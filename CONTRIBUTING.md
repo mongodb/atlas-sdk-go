@@ -71,6 +71,16 @@ The following is a short list of commands that can be run in the root of the pro
 
 We provide a git pre-commit hook to format and check the code, to install it run `make link-git-hooks`
 
+## Repository structure
+
+Repository contains following SDKs
+
+- `core`: (internal) contains information about version and other cross functional dependencies for all SDKs
+- `auth`: Atlas Auth SDK
+- `admin`: Atlas Admin SDK
+- `tools`: tooling used to generate Atlas Admin SDK. See [./tools](./tools) for more information.
+- `examples`: SDK examples
+
 ## Maintainer's Guide
 
 Reviewers, please ensure that the CLA has been signed by referring to [the contributors tool](https://contributors.corp.mongodb.com/) (internal link).
