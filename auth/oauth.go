@@ -26,13 +26,13 @@ import (
 	"runtime"
 	"strings"
 
-	atlas "go.mongodb.org/atlas/mongodbatlas"
+	"go.mongodb.org/atlas-sdk/core"
 )
 
-const defaultBaseURL = atlas.CloudURL
+const defaultBaseURL = "https://cloud.mongodb.com/"
 
 var (
-	userAgent = fmt.Sprintf("go-mongodbatlas/%s (%s;%s)", atlas.Version, runtime.GOOS, runtime.GOARCH)
+	userAgent = fmt.Sprintf("go-mongodbatlas/%s (%s;%s)", core.Version, runtime.GOOS, runtime.GOARCH)
 )
 
 type Config struct {
@@ -125,8 +125,8 @@ type TokenSource interface {
 	Token() (*Token, error)
 }
 
-func (c *Config) Do(ctx context.Context, req *http.Request, v interface{}) (*atlas.Response, error) {
-	resp, err := atlas.DoRequestWithClient(ctx, c.client, req)
+func (c *Config) Do(ctx context.Context, req *http.Request, v interface{}) (*core.Response, error) {
+	resp, err := core.DoRequestWithClient(ctx, c.client, req)
 	if err != nil {
 		// If we got an error, and the context has been canceled,
 		// the context's error is probably more useful.
@@ -141,7 +141,7 @@ func (c *Config) Do(ctx context.Context, req *http.Request, v interface{}) (*atl
 
 	defer resp.Body.Close()
 
-	r := &atlas.Response{Response: resp}
+	r := &core.Response{Response: resp}
 	body := resp.Body
 
 	if c.withRaw {
