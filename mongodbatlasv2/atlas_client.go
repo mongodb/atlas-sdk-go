@@ -8,16 +8,16 @@ import (
 	"strings"
 
 	"github.com/mongodb-forks/digest"
-	"go.mongodb.org/atlas/mongodbatlas"
+	"go.mongodb.org/atlas-sdk/core"
 )
 
 const (
 	// CloudURL is default base URL for the services.
 	DefaultCloudURL = "https://cloud.mongodb.com"
 	// Version the version of the current API client inherited from.
-	Version = mongodbatlas.Version
+	Version = core.Version
 	// Name of the v2 API client.
-	ClientName = "go-mongodbatlas-v2"
+	ClientName = "go-atlas-sdk"
 )
 
 // NewClient returns a new MongoDBAtlas API Client.
