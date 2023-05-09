@@ -2,12 +2,11 @@
 [![PkgGoDev](https://pkg.go.dev/badge/go.mongodb.org/atlas)](https://pkg.go.dev/go.mongodb.org/atlas)
 ![CI](https://github.com/mongodb/go-client-mongodb-atlas/workflows/CI/badge.svg)
 
+> NOTE: THIS REPOSITORY IS NOT READY FOR PUBLIC CONSUMPTION.
+> For official Atlas Golang SDK please go to https://github.com/mongodb/go-client-mongodb-atlas
+
 A Go HTTP client for the [MongoDB Atlas API](https://docs.atlas.mongodb.com/api/).
-
 Note that `go-client-mongodb-atlas` only supports the two most recent major versions of Go.
-
-> NOTE: Atlas API v2 client is still under development. 
-> Please consider using v1 client: `go.mongodb.org/atlas/mongodbatlas` for production usage.
 
 
 ## Usage
