@@ -1,11 +1,11 @@
-# Contributing to go-client-mongodb-atlas
+# Contributing to atlas-sdk-go
 
-Thanks for your interest in contributing to `go-client-mongodb-atlas`,
+Thanks for your interest in contributing to `atlas-sdk-go`,
 The following is a set of guidelines for contributing to this project.
 These are just guidelines, not rules. Use your best judgment, and
 feel free to propose changes to this document in a pull request.
 
-Note that `go-client-mongodb-atlas` is an evolving project, so expect things to change over
+Note that `atlas-sdk-go` is an evolving project, so expect things to change over
 time as the team learns, listens and refines how we work with the community.
 
 ## What should I know before I get started?
@@ -22,14 +22,14 @@ using the following email alias: [community-conduct@mongodb.com](mailto:communit
 ### Reporting Bugs or Suggesting Enhancements
 
 Before reporting a bug or suggesting an enhancements please perform a
-**[cursory search](https://github.com/mongodb/go-client-mongodb-atlas/issues)**
+**[cursory search](https://github.com/mongodb/atlas-sdk-go/issues)**
 to see if the bug or enhancement has already been suggested. If it has, add a
 :thumbsup: to indicate your interest in it, or comment if there is additional
 information you would like to add.
 
 Bugs and enhancement suggestions are tracked as [GitHub issues](https://guides.github.com/features/issues/).
 
-Simply create an issue on the [project issue tracker](https://github.com/mongodb/go-client-mongodb-atlas/issues/new)
+Simply create an issue on the [project issue tracker](https://github.com/mongodb/atlas-sdk-go/issues/new)
 and fill our the form.
 
 Some additional advice:
@@ -48,6 +48,10 @@ please check [this section](#reporting-bugs-or-suggesting-enhancements) on how w
 
 - After 30 days of no activity (no comments or commits on an issue/PR) we automatically tag it as "stale" and add a message: ```This issue/PR has gone 30 days without any activity and meets the project's definition of "stale". This will be auto-closed if there is no new activity over the next 60 days. If the issue is still relevant and active, you can simply comment with a "bump" to keep it open, or add the label "not_stale". Thanks for keeping our repository healthy!```
 - After 60 more days of no activity we automatically close the issue/PR.
+
+## Maintainer's Guide
+
+Reviewers, please ensure that the CLA has been signed by referring to [the contributors tool](https://contributors.corp.mongodb.com/) (internal link).
 
 ### Development setup
 
@@ -81,6 +85,5 @@ Repository contains following SDKs
 - `tools`: tooling used to generate Atlas Admin SDK. See [./tools](./tools) for more information.
 - `examples`: SDK examples
 
-## Maintainer's Guide
 
-Reviewers, please ensure that the CLA has been signed by referring to [the contributors tool](https://contributors.corp.mongodb.com/) (internal link).
+
