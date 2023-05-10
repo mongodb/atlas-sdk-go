@@ -14,16 +14,16 @@ import (
 type ServerlessPrivateEndpointsApi interface {
 
 	/*
-			CreateServerlessPrivateEndpoint Create One Private Endpoint for One Serverless Instance
+		CreateServerlessPrivateEndpoint Create One Private Endpoint for One Serverless Instance
 
-			Creates one private endpoint for one serverless instance. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
+		Creates one private endpoint for one serverless instance. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
-		 A new endpoint won't be immediately available after creation.  Read the steps in the linked tutorial for detailed guidance.
+	 A new endpoint won't be immediately available after creation.  Read the steps in the linked tutorial for detailed guidance.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-			@param instanceName Human-readable label that identifies the serverless instance for which the tenant endpoint will be created.
-			@return CreateServerlessPrivateEndpointApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param instanceName Human-readable label that identifies the serverless instance for which the tenant endpoint will be created.
+		@return CreateServerlessPrivateEndpointApiRequest
 	*/
 	CreateServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string) CreateServerlessPrivateEndpointApiRequest
 	/*
