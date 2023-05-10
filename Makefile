@@ -23,8 +23,8 @@ test:
 .PHONY: fmt
 fmt:
 	@echo "==> Fixing source code with gofmt..."
-	gofmt -s -w ./$(SOURCE_FILES)
-	goimports -w ./$(SOURCE_FILES)
+	gofmt -s -w ./**/*.go
+	goimports -w ./**/*.go
 
 .PHONY: lint-fix
 lint-fix:
@@ -57,5 +57,5 @@ openapi-pipeline:
 	echo "Running client generation"
 	$(MAKE) -C tools generate_client
 	echo "Validating generated SDK"
-	go test ${SOURCE_FILES}
+	go test go.mongodb.org/atlas-sdk/test
 
