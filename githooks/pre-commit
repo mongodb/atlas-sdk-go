@@ -11,7 +11,7 @@ done
 
 if [[ -n "${STAGED_GO_FILES}" ]]; then
     set -o errexit
-    go test -race ./mongodbatlas...
+    go test -race ./...
     make lint-fix
     set +o errexit
 fi

@@ -17,7 +17,7 @@ Package auth provides a way to follow a Device Authorization Grant https://datat
 
 Usage
 
-	import "go.mongodb.org/atlas/auth"
+	import "go.mongodb.org/atlas-sdk/auth"
 
 Construct a new client Config, then use the various methods to complete a flow.
 For example:

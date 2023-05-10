@@ -1,11 +1,11 @@
 export OPENAPI_FOLDER=../openapi
-export SDK_FOLDER=../mongodbatlasv2
+export SDK_FOLDER=../admin
 
 .DEFAULT_GOAL := generate_client
 
 .PHONY: clean_client
 clean_client:
-	rm -Rf ../mongodbatlasv2
+	rm -Rf ../admin
 
 .PHONY: fetch_openapi
 fetch_openapi:
@@ -18,6 +18,7 @@ transform_openapi:
 .PHONY: generate_client
 generate_client:
 	./scripts/generate.sh
+	goimports -w ./${SDK_FOLDER}/*.go
 
 .PHONY: clean_and_generate
 clean_and_generate: clean_client generate_client

@@ -14,25 +14,25 @@ Note that `atlas-sdk-go` only supports the two most recent major versions of Go.
 ### Adding Dependency
 
 ```
-go install go.mongodb.org/atlas
+go install go.mongodb.org/atlas-sdk
 ```
 
 ### Using in the code
 
 ```go
-mongodbatlas import "go.mongodb.org/atlas/mongodbatlasv2"
+import "go.mongodb.org/atlas-sdk/admin"
 ```
 
-Construct a new Atlas client, then use the various services on the client to
+Construct a new Atlas SDK client, then use the various services on the client to
 access different parts of the Atlas API. For example:
 
 ```go
-	mongodbatlas import "go.mongodb.org/atlas/mongodbatlasv2"
+	import "go.mongodb.org/atlas-sdk/admin"
 
    	apiKey := os.Getenv("MDB_API_KEY")
 	apiSecret := os.Getenv("MDB_API_SECRET")
 
-	sdk := mongodbatlas.NewClient(mongodbatlas.UseDigestAuth(apiKey, apiSecret))
+	sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 	projects, response, err := sdk.ProjectsApi.ListProjects(ctx).Execute()
 ```
 
@@ -52,43 +52,19 @@ go run ./examples/example_cluster_aws.go
 
 ### Authentication
 
-The `atlas-sdk-go` library does not directly handle authentication. Instead, when
-creating a new client, pass an `http.Client` that can handle Digest Access authentication for
-you. The easiest way to do this is using the [digest](https://github.com/mongodb-forks/digest)
-library, but you can always use any other library that provides an `http.Client`.
-If you have a private and public API token pair (https://docs.atlas.mongodb.com/configure-api-access),
-you can use it with the digest library like:
+The `atlas-sdk-go` library uses Digest authentication. 
+To obtain authentication tokens users can use Atlas UI or Atlas CLI 
+For more information please follow: https://www.mongodb.com/docs/atlas/api/api-authentication,
 
-```go
-import (
-    "context"
-    "log"
+## Error Handling
 
-    "github.com/mongodb-forks/digest"
-    "go.mongodb.org/atlas/mongodbatlas"
-)
-
-func main() {
-    t := digest.NewTransport("your public key", "your private key")
-    tc, err := t.Client()
-    if err != nil {
-        log.Fatalf(err.Error())
-    }
-
-    client := mongodbatlas.NewClient(tc)
-    projects, _, err := client.Projects.GetAllProjects(context.Background(), nil)
-}
-```
-
-Note that when using an authenticated Client, all calls made by the client will
-include the specified tokens. Therefore, authenticated clients should
-almost never be shared between different users.
-
-## Error handling
+SDK enables users to obtain exact information about errors. 
+Errors are represented by [ErrorObject](./admin/model_error.go).
+Users should rely on the error code for detection of specific error cases.
 
 Fetching error code:
 ```go
-import errors "go.mongodb.org/atlas/mongodbatlasv2"
+import errors "go.mongodb.org/atlas-sdk/admin"
 
 apiError := errors.AsError(err)
 fmt.Println(apiError)
@@ -96,7 +72,7 @@ fmt.Println(apiError)
 
 Checking if error code exists:
 ```go
-import errors "go.mongodb.org/atlas/mongodbatlasv2"
+import errors "go.mongodb.org/atlas-sdk/admin"
 
 
 if errors.IsErrorCode(err, "code"){
@@ -130,7 +106,6 @@ Struct based API is particularly useful for HTTP GET requests where we need to p
 ```    
 
 > NOTE: Struct based API is an still experimental feature.
-
 
 ## Contributing
 
