@@ -13,7 +13,7 @@ var _ MappedNullable = &ThresholdViewInteger{}
 type ThresholdViewInteger struct {
 	Operator *Operator `json:"operator,omitempty"`
 	// Value of metric that, when exceeded, triggers an alert.
-	Threshold *int32 `json:"threshold,omitempty"`
+	Threshold *int `json:"threshold,omitempty"`
 	// Element used to express the quantity. This can be an element of time, storage capacity, and the like.
 	Units *string `json:"units,omitempty"`
 }
@@ -68,9 +68,9 @@ func (o *ThresholdViewInteger) SetOperator(v Operator) {
 }
 
 // GetThreshold returns the Threshold field value if set, zero value otherwise.
-func (o *ThresholdViewInteger) GetThreshold() int32 {
+func (o *ThresholdViewInteger) GetThreshold() int {
 	if o == nil || IsNil(o.Threshold) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.Threshold
@@ -78,7 +78,7 @@ func (o *ThresholdViewInteger) GetThreshold() int32 {
 
 // GetThresholdOk returns a tuple with the Threshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ThresholdViewInteger) GetThresholdOk() (*int32, bool) {
+func (o *ThresholdViewInteger) GetThresholdOk() (*int, bool) {
 	if o == nil || IsNil(o.Threshold) {
 		return nil, false
 	}
@@ -94,8 +94,8 @@ func (o *ThresholdViewInteger) HasThreshold() bool {
 	return false
 }
 
-// SetThreshold gets a reference to the given int32 and assigns it to the Threshold field.
-func (o *ThresholdViewInteger) SetThreshold(v int32) {
+// SetThreshold gets a reference to the given int and assigns it to the Threshold field.
+func (o *ThresholdViewInteger) SetThreshold(v int) {
 	o.Threshold = &v
 }
 

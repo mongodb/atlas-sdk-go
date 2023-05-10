@@ -28,7 +28,7 @@ type NDSLDAP struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	Links []Link `json:"links,omitempty"`
 	// Port to which the Lightweight Directory Access Protocol (LDAP) host listens for client connections.
-	Port *int32 `json:"port,omitempty"`
+	Port *int `json:"port,omitempty"`
 	// User-to-Distinguished Name (DN) map that MongoDB Cloud uses to transform a Lightweight Directory Access Protocol (LDAP) username into an LDAP DN.
 	UserToDNMapping []NDSUserToDNMapping `json:"userToDNMapping,omitempty"`
 }
@@ -41,7 +41,7 @@ func NewNDSLDAP() *NDSLDAP {
 	this := NDSLDAP{}
 	var authzQueryTemplate string = "{USER}?memberOf?base"
 	this.AuthzQueryTemplate = &authzQueryTemplate
-	var port int32 = 636
+	var port int = 636
 	this.Port = &port
 	return &this
 }
@@ -53,7 +53,7 @@ func NewNDSLDAPWithDefaults() *NDSLDAP {
 	this := NDSLDAP{}
 	var authzQueryTemplate string = "{USER}?memberOf?base"
 	this.AuthzQueryTemplate = &authzQueryTemplate
-	var port int32 = 636
+	var port int = 636
 	this.Port = &port
 	return &this
 }
@@ -315,9 +315,9 @@ func (o *NDSLDAP) SetLinks(v []Link) {
 }
 
 // GetPort returns the Port field value if set, zero value otherwise.
-func (o *NDSLDAP) GetPort() int32 {
+func (o *NDSLDAP) GetPort() int {
 	if o == nil || IsNil(o.Port) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.Port
@@ -325,7 +325,7 @@ func (o *NDSLDAP) GetPort() int32 {
 
 // GetPortOk returns a tuple with the Port field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NDSLDAP) GetPortOk() (*int32, bool) {
+func (o *NDSLDAP) GetPortOk() (*int, bool) {
 	if o == nil || IsNil(o.Port) {
 		return nil, false
 	}
@@ -341,8 +341,8 @@ func (o *NDSLDAP) HasPort() bool {
 	return false
 }
 
-// SetPort gets a reference to the given int32 and assigns it to the Port field.
-func (o *NDSLDAP) SetPort(v int32) {
+// SetPort gets a reference to the given int and assigns it to the Port field.
+func (o *NDSLDAP) SetPort(v int) {
 	o.Port = &v
 }
 

@@ -12,7 +12,7 @@ var _ MappedNullable = &TokenizeruaxUrlEmail{}
 // TokenizeruaxUrlEmail Tokenizer that creates tokens from URLs and email addresses. Although this tokenizer uses word break rules from the Unicode Text Segmentation algorithm, we recommend using it only when the indexed field value includes URLs and email addresses. For fields that don't include URLs or email addresses, use the **standard** tokenizer to create tokens based on word break rules.
 type TokenizeruaxUrlEmail struct {
 	// Maximum number of characters in a single token. Tokens greater than this length are split at this length into multiple tokens.
-	MaxTokenLength *int32 `json:"maxTokenLength,omitempty"`
+	MaxTokenLength *int `json:"maxTokenLength,omitempty"`
 	// Human-readable label that identifies this tokenizer type.
 	Type string `json:"type"`
 }
@@ -23,7 +23,7 @@ type TokenizeruaxUrlEmail struct {
 // will change when the set of required properties is changed
 func NewTokenizeruaxUrlEmail(type_ string) *TokenizeruaxUrlEmail {
 	this := TokenizeruaxUrlEmail{}
-	var maxTokenLength int32 = 255
+	var maxTokenLength int = 255
 	this.MaxTokenLength = &maxTokenLength
 	this.Type = type_
 	return &this
@@ -34,15 +34,15 @@ func NewTokenizeruaxUrlEmail(type_ string) *TokenizeruaxUrlEmail {
 // but it doesn't guarantee that properties required by API are set
 func NewTokenizeruaxUrlEmailWithDefaults() *TokenizeruaxUrlEmail {
 	this := TokenizeruaxUrlEmail{}
-	var maxTokenLength int32 = 255
+	var maxTokenLength int = 255
 	this.MaxTokenLength = &maxTokenLength
 	return &this
 }
 
 // GetMaxTokenLength returns the MaxTokenLength field value if set, zero value otherwise.
-func (o *TokenizeruaxUrlEmail) GetMaxTokenLength() int32 {
+func (o *TokenizeruaxUrlEmail) GetMaxTokenLength() int {
 	if o == nil || IsNil(o.MaxTokenLength) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.MaxTokenLength
@@ -50,7 +50,7 @@ func (o *TokenizeruaxUrlEmail) GetMaxTokenLength() int32 {
 
 // GetMaxTokenLengthOk returns a tuple with the MaxTokenLength field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenizeruaxUrlEmail) GetMaxTokenLengthOk() (*int32, bool) {
+func (o *TokenizeruaxUrlEmail) GetMaxTokenLengthOk() (*int, bool) {
 	if o == nil || IsNil(o.MaxTokenLength) {
 		return nil, false
 	}
@@ -66,8 +66,8 @@ func (o *TokenizeruaxUrlEmail) HasMaxTokenLength() bool {
 	return false
 }
 
-// SetMaxTokenLength gets a reference to the given int32 and assigns it to the MaxTokenLength field.
-func (o *TokenizeruaxUrlEmail) SetMaxTokenLength(v int32) {
+// SetMaxTokenLength gets a reference to the given int and assigns it to the MaxTokenLength field.
+func (o *TokenizeruaxUrlEmail) SetMaxTokenLength(v int) {
 	o.MaxTokenLength = &v
 }
 

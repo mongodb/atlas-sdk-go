@@ -3373,16 +3373,16 @@ type ListBackupExportJobsApiRequest struct {
 	groupId      string
 	clusterName  string
 	includeCount *bool
-	itemsPerPage *int32
-	pageNum      *int32
+	itemsPerPage *int
+	pageNum      *int
 }
 
 type ListBackupExportJobsApiParams struct {
 	GroupId      string
 	ClusterName  string
 	IncludeCount *bool
-	ItemsPerPage *int32
-	PageNum      *int32
+	ItemsPerPage *int
+	PageNum      *int
 }
 
 func (a *CloudBackupsApiService) ListBackupExportJobsWithParams(ctx context.Context, args *ListBackupExportJobsApiParams) ListBackupExportJobsApiRequest {
@@ -3404,13 +3404,13 @@ func (r ListBackupExportJobsApiRequest) IncludeCount(includeCount bool) ListBack
 }
 
 // Number of items that the response returns per page.
-func (r ListBackupExportJobsApiRequest) ItemsPerPage(itemsPerPage int32) ListBackupExportJobsApiRequest {
+func (r ListBackupExportJobsApiRequest) ItemsPerPage(itemsPerPage int) ListBackupExportJobsApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListBackupExportJobsApiRequest) PageNum(pageNum int32) ListBackupExportJobsApiRequest {
+func (r ListBackupExportJobsApiRequest) PageNum(pageNum int) ListBackupExportJobsApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
@@ -3484,14 +3484,14 @@ func (a *CloudBackupsApiService) listBackupExportJobsExecute(r ListBackupExportJ
 	if r.itemsPerPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int = 100
 		r.itemsPerPage = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.pageNum != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	} else {
-		var defaultValue int32 = 1
+		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	}
@@ -3563,16 +3563,16 @@ type ListBackupRestoreJobsApiRequest struct {
 	groupId      string
 	clusterName  string
 	includeCount *bool
-	itemsPerPage *int32
-	pageNum      *int32
+	itemsPerPage *int
+	pageNum      *int
 }
 
 type ListBackupRestoreJobsApiParams struct {
 	GroupId      string
 	ClusterName  string
 	IncludeCount *bool
-	ItemsPerPage *int32
-	PageNum      *int32
+	ItemsPerPage *int
+	PageNum      *int
 }
 
 func (a *CloudBackupsApiService) ListBackupRestoreJobsWithParams(ctx context.Context, args *ListBackupRestoreJobsApiParams) ListBackupRestoreJobsApiRequest {
@@ -3594,13 +3594,13 @@ func (r ListBackupRestoreJobsApiRequest) IncludeCount(includeCount bool) ListBac
 }
 
 // Number of items that the response returns per page.
-func (r ListBackupRestoreJobsApiRequest) ItemsPerPage(itemsPerPage int32) ListBackupRestoreJobsApiRequest {
+func (r ListBackupRestoreJobsApiRequest) ItemsPerPage(itemsPerPage int) ListBackupRestoreJobsApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListBackupRestoreJobsApiRequest) PageNum(pageNum int32) ListBackupRestoreJobsApiRequest {
+func (r ListBackupRestoreJobsApiRequest) PageNum(pageNum int) ListBackupRestoreJobsApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
@@ -3674,14 +3674,14 @@ func (a *CloudBackupsApiService) listBackupRestoreJobsExecute(r ListBackupRestor
 	if r.itemsPerPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int = 100
 		r.itemsPerPage = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.pageNum != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	} else {
-		var defaultValue int32 = 1
+		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	}
@@ -3883,16 +3883,16 @@ type ListReplicaSetBackupsApiRequest struct {
 	groupId      string
 	clusterName  string
 	includeCount *bool
-	itemsPerPage *int32
-	pageNum      *int32
+	itemsPerPage *int
+	pageNum      *int
 }
 
 type ListReplicaSetBackupsApiParams struct {
 	GroupId      string
 	ClusterName  string
 	IncludeCount *bool
-	ItemsPerPage *int32
-	PageNum      *int32
+	ItemsPerPage *int
+	PageNum      *int
 }
 
 func (a *CloudBackupsApiService) ListReplicaSetBackupsWithParams(ctx context.Context, args *ListReplicaSetBackupsApiParams) ListReplicaSetBackupsApiRequest {
@@ -3914,13 +3914,13 @@ func (r ListReplicaSetBackupsApiRequest) IncludeCount(includeCount bool) ListRep
 }
 
 // Number of items that the response returns per page.
-func (r ListReplicaSetBackupsApiRequest) ItemsPerPage(itemsPerPage int32) ListReplicaSetBackupsApiRequest {
+func (r ListReplicaSetBackupsApiRequest) ItemsPerPage(itemsPerPage int) ListReplicaSetBackupsApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListReplicaSetBackupsApiRequest) PageNum(pageNum int32) ListReplicaSetBackupsApiRequest {
+func (r ListReplicaSetBackupsApiRequest) PageNum(pageNum int) ListReplicaSetBackupsApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
@@ -3994,14 +3994,14 @@ func (a *CloudBackupsApiService) listReplicaSetBackupsExecute(r ListReplicaSetBa
 	if r.itemsPerPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int = 100
 		r.itemsPerPage = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.pageNum != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	} else {
-		var defaultValue int32 = 1
+		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	}
@@ -4215,16 +4215,16 @@ type ListServerlessBackupsApiRequest struct {
 	groupId      string
 	clusterName  string
 	includeCount *bool
-	itemsPerPage *int32
-	pageNum      *int32
+	itemsPerPage *int
+	pageNum      *int
 }
 
 type ListServerlessBackupsApiParams struct {
 	GroupId      string
 	ClusterName  string
 	IncludeCount *bool
-	ItemsPerPage *int32
-	PageNum      *int32
+	ItemsPerPage *int
+	PageNum      *int
 }
 
 func (a *CloudBackupsApiService) ListServerlessBackupsWithParams(ctx context.Context, args *ListServerlessBackupsApiParams) ListServerlessBackupsApiRequest {
@@ -4246,13 +4246,13 @@ func (r ListServerlessBackupsApiRequest) IncludeCount(includeCount bool) ListSer
 }
 
 // Number of items that the response returns per page.
-func (r ListServerlessBackupsApiRequest) ItemsPerPage(itemsPerPage int32) ListServerlessBackupsApiRequest {
+func (r ListServerlessBackupsApiRequest) ItemsPerPage(itemsPerPage int) ListServerlessBackupsApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListServerlessBackupsApiRequest) PageNum(pageNum int32) ListServerlessBackupsApiRequest {
+func (r ListServerlessBackupsApiRequest) PageNum(pageNum int) ListServerlessBackupsApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
@@ -4326,14 +4326,14 @@ func (a *CloudBackupsApiService) listServerlessBackupsExecute(r ListServerlessBa
 	if r.itemsPerPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int = 100
 		r.itemsPerPage = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.pageNum != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	} else {
-		var defaultValue int32 = 1
+		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	}

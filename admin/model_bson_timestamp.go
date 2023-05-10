@@ -15,7 +15,7 @@ type BSONTimestamp struct {
 	// Date and time when the oplog recorded this database operation. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	Date *time.Time `json:"date,omitempty"`
 	// Order of the database operation that the oplog recorded at specific date and time.
-	Increment *int32 `json:"increment,omitempty"`
+	Increment *int `json:"increment,omitempty"`
 }
 
 // NewBSONTimestamp instantiates a new BSONTimestamp object
@@ -68,9 +68,9 @@ func (o *BSONTimestamp) SetDate(v time.Time) {
 }
 
 // GetIncrement returns the Increment field value if set, zero value otherwise.
-func (o *BSONTimestamp) GetIncrement() int32 {
+func (o *BSONTimestamp) GetIncrement() int {
 	if o == nil || IsNil(o.Increment) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.Increment
@@ -78,7 +78,7 @@ func (o *BSONTimestamp) GetIncrement() int32 {
 
 // GetIncrementOk returns a tuple with the Increment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BSONTimestamp) GetIncrementOk() (*int32, bool) {
+func (o *BSONTimestamp) GetIncrementOk() (*int, bool) {
 	if o == nil || IsNil(o.Increment) {
 		return nil, false
 	}
@@ -94,8 +94,8 @@ func (o *BSONTimestamp) HasIncrement() bool {
 	return false
 }
 
-// SetIncrement gets a reference to the given int32 and assigns it to the Increment field.
-func (o *BSONTimestamp) SetIncrement(v int32) {
+// SetIncrement gets a reference to the given int and assigns it to the Increment field.
+func (o *BSONTimestamp) SetIncrement(v int) {
 	o.Increment = &v
 }
 

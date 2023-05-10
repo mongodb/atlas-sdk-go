@@ -12,7 +12,7 @@ var _ MappedNullable = &DataLakeAtlasStoreReadPreference{}
 // DataLakeAtlasStoreReadPreference MongoDB Cloud cluster read preference, which describes how to route read requests to the cluster.
 type DataLakeAtlasStoreReadPreference struct {
 	// Maximum replication lag, or **staleness**, for reads from secondaries.
-	MaxStalenessSeconds *int32 `json:"maxStalenessSeconds,omitempty"`
+	MaxStalenessSeconds *int `json:"maxStalenessSeconds,omitempty"`
 	// [Read preference mode](https://docs.mongodb.com/manual/core/read-preference/#read-preference-modes) that specifies to which replica set member to route the read requests.
 	Mode *string `json:"mode,omitempty"`
 	// List that contains [tag sets](https://docs.mongodb.com/manual/core/read-preference-tags/) or tag specification documents. If specified, Atlas Data Lake routes read requests to replica set member or members that are associated with the specified tags.
@@ -37,9 +37,9 @@ func NewDataLakeAtlasStoreReadPreferenceWithDefaults() *DataLakeAtlasStoreReadPr
 }
 
 // GetMaxStalenessSeconds returns the MaxStalenessSeconds field value if set, zero value otherwise.
-func (o *DataLakeAtlasStoreReadPreference) GetMaxStalenessSeconds() int32 {
+func (o *DataLakeAtlasStoreReadPreference) GetMaxStalenessSeconds() int {
 	if o == nil || IsNil(o.MaxStalenessSeconds) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.MaxStalenessSeconds
@@ -47,7 +47,7 @@ func (o *DataLakeAtlasStoreReadPreference) GetMaxStalenessSeconds() int32 {
 
 // GetMaxStalenessSecondsOk returns a tuple with the MaxStalenessSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DataLakeAtlasStoreReadPreference) GetMaxStalenessSecondsOk() (*int32, bool) {
+func (o *DataLakeAtlasStoreReadPreference) GetMaxStalenessSecondsOk() (*int, bool) {
 	if o == nil || IsNil(o.MaxStalenessSeconds) {
 		return nil, false
 	}
@@ -63,8 +63,8 @@ func (o *DataLakeAtlasStoreReadPreference) HasMaxStalenessSeconds() bool {
 	return false
 }
 
-// SetMaxStalenessSeconds gets a reference to the given int32 and assigns it to the MaxStalenessSeconds field.
-func (o *DataLakeAtlasStoreReadPreference) SetMaxStalenessSeconds(v int32) {
+// SetMaxStalenessSeconds gets a reference to the given int and assigns it to the MaxStalenessSeconds field.
+func (o *DataLakeAtlasStoreReadPreference) SetMaxStalenessSeconds(v int) {
 	o.MaxStalenessSeconds = &v
 }
 

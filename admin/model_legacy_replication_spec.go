@@ -14,7 +14,7 @@ type LegacyReplicationSpec struct {
 	// Unique 24-hexadecimal digit string that identifies the replication object for a zone in a Global Cluster.  - If you include existing zones in the request, you must specify this parameter.  - If you add a new zone to an existing Global Cluster, you may specify this parameter. The request deletes any existing zones in a Global Cluster that you exclude from the request.
 	Id *string `json:"id,omitempty"`
 	// Positive integer that specifies the number of shards to deploy in each specified zone If you set this value to `1` and **clusterType** is `SHARDED`, MongoDB Cloud deploys a single-shard sharded cluster. Don't create a sharded cluster with a single shard for production environments. Single-shard sharded clusters don't provide the same benefits as multi-shard configurations.
-	NumShards *int32 `json:"numShards,omitempty"`
+	NumShards *int `json:"numShards,omitempty"`
 	// Physical location where MongoDB Cloud provisions cluster nodes.
 	RegionsConfig *map[string]RegionSpec `json:"regionsConfig,omitempty"`
 	// Human-readable label that identifies the zone in a Global Cluster. Provide this value only if **clusterType** is `GEOSHARDED`.
@@ -27,7 +27,7 @@ type LegacyReplicationSpec struct {
 // will change when the set of required properties is changed
 func NewLegacyReplicationSpec() *LegacyReplicationSpec {
 	this := LegacyReplicationSpec{}
-	var numShards int32 = 1
+	var numShards int = 1
 	this.NumShards = &numShards
 	return &this
 }
@@ -37,7 +37,7 @@ func NewLegacyReplicationSpec() *LegacyReplicationSpec {
 // but it doesn't guarantee that properties required by API are set
 func NewLegacyReplicationSpecWithDefaults() *LegacyReplicationSpec {
 	this := LegacyReplicationSpec{}
-	var numShards int32 = 1
+	var numShards int = 1
 	this.NumShards = &numShards
 	return &this
 }
@@ -75,9 +75,9 @@ func (o *LegacyReplicationSpec) SetId(v string) {
 }
 
 // GetNumShards returns the NumShards field value if set, zero value otherwise.
-func (o *LegacyReplicationSpec) GetNumShards() int32 {
+func (o *LegacyReplicationSpec) GetNumShards() int {
 	if o == nil || IsNil(o.NumShards) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.NumShards
@@ -85,7 +85,7 @@ func (o *LegacyReplicationSpec) GetNumShards() int32 {
 
 // GetNumShardsOk returns a tuple with the NumShards field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LegacyReplicationSpec) GetNumShardsOk() (*int32, bool) {
+func (o *LegacyReplicationSpec) GetNumShardsOk() (*int, bool) {
 	if o == nil || IsNil(o.NumShards) {
 		return nil, false
 	}
@@ -101,8 +101,8 @@ func (o *LegacyReplicationSpec) HasNumShards() bool {
 	return false
 }
 
-// SetNumShards gets a reference to the given int32 and assigns it to the NumShards field.
-func (o *LegacyReplicationSpec) SetNumShards(v int32) {
+// SetNumShards gets a reference to the given int and assigns it to the NumShards field.
+func (o *LegacyReplicationSpec) SetNumShards(v int) {
 	o.NumShards = &v
 }
 

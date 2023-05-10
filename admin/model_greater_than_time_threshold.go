@@ -14,7 +14,7 @@ type GreaterThanTimeThreshold struct {
 	// Comparison operator to apply when checking the current metric value.
 	Operator *string `json:"operator,omitempty"`
 	// Value of metric that, when exceeded, triggers an alert.
-	Threshold *int32           `json:"threshold,omitempty"`
+	Threshold *int             `json:"threshold,omitempty"`
 	Units     *TimeMetricUnits `json:"units,omitempty"`
 }
 
@@ -72,9 +72,9 @@ func (o *GreaterThanTimeThreshold) SetOperator(v string) {
 }
 
 // GetThreshold returns the Threshold field value if set, zero value otherwise.
-func (o *GreaterThanTimeThreshold) GetThreshold() int32 {
+func (o *GreaterThanTimeThreshold) GetThreshold() int {
 	if o == nil || IsNil(o.Threshold) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.Threshold
@@ -82,7 +82,7 @@ func (o *GreaterThanTimeThreshold) GetThreshold() int32 {
 
 // GetThresholdOk returns a tuple with the Threshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GreaterThanTimeThreshold) GetThresholdOk() (*int32, bool) {
+func (o *GreaterThanTimeThreshold) GetThresholdOk() (*int, bool) {
 	if o == nil || IsNil(o.Threshold) {
 		return nil, false
 	}
@@ -98,8 +98,8 @@ func (o *GreaterThanTimeThreshold) HasThreshold() bool {
 	return false
 }
 
-// SetThreshold gets a reference to the given int32 and assigns it to the Threshold field.
-func (o *GreaterThanTimeThreshold) SetThreshold(v int32) {
+// SetThreshold gets a reference to the given int and assigns it to the Threshold field.
+func (o *GreaterThanTimeThreshold) SetThreshold(v int) {
 	o.Threshold = &v
 }
 

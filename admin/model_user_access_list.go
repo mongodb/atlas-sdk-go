@@ -15,7 +15,7 @@ type UserAccessList struct {
 	// Range of network addresses that you want to add to the access list for the API key. This parameter requires the range to be expressed in classless inter-domain routing (CIDR) notation of Internet Protocol version 4 or version 6 addresses. You can set a value for this parameter or **ipAddress** but not both in the same request.
 	CidrBlock *string `json:"cidrBlock,omitempty"`
 	// Total number of requests that have originated from the Internet Protocol (IP) address given as the value of the *lastUsedAddress* parameter.
-	Count *int32 `json:"count,omitempty"`
+	Count *int `json:"count,omitempty"`
 	// Date and time when someone added the network addresses to the specified API access list. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	Created *time.Time `json:"created,omitempty"`
 	// Network address that you want to add to the access list for the API key. This parameter requires the address to be expressed as one Internet Protocol version 4 or version 6 address. You can set a value for this parameter or **cidrBlock** but not both in the same request.
@@ -78,9 +78,9 @@ func (o *UserAccessList) SetCidrBlock(v string) {
 }
 
 // GetCount returns the Count field value if set, zero value otherwise.
-func (o *UserAccessList) GetCount() int32 {
+func (o *UserAccessList) GetCount() int {
 	if o == nil || IsNil(o.Count) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.Count
@@ -88,7 +88,7 @@ func (o *UserAccessList) GetCount() int32 {
 
 // GetCountOk returns a tuple with the Count field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserAccessList) GetCountOk() (*int32, bool) {
+func (o *UserAccessList) GetCountOk() (*int, bool) {
 	if o == nil || IsNil(o.Count) {
 		return nil, false
 	}
@@ -104,8 +104,8 @@ func (o *UserAccessList) HasCount() bool {
 	return false
 }
 
-// SetCount gets a reference to the given int32 and assigns it to the Count field.
-func (o *UserAccessList) SetCount(v int32) {
+// SetCount gets a reference to the given int and assigns it to the Count field.
+func (o *UserAccessList) SetCount(v int) {
 	o.Count = &v
 }
 

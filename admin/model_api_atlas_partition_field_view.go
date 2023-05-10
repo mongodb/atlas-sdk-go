@@ -14,14 +14,14 @@ type ApiAtlasPartitionFieldView struct {
 	// Human-readable label that identifies the field name used to partition data.
 	FieldName string `json:"fieldName"`
 	// Sequence in which MongoDB Cloud slices the collection data to create partitions. The resource expresses this sequence starting with zero.
-	Order int32 `json:"order"`
+	Order int `json:"order"`
 }
 
 // NewApiAtlasPartitionFieldView instantiates a new ApiAtlasPartitionFieldView object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApiAtlasPartitionFieldView(fieldName string, order int32) *ApiAtlasPartitionFieldView {
+func NewApiAtlasPartitionFieldView(fieldName string, order int) *ApiAtlasPartitionFieldView {
 	this := ApiAtlasPartitionFieldView{}
 	this.FieldName = fieldName
 	this.Order = order
@@ -33,7 +33,7 @@ func NewApiAtlasPartitionFieldView(fieldName string, order int32) *ApiAtlasParti
 // but it doesn't guarantee that properties required by API are set
 func NewApiAtlasPartitionFieldViewWithDefaults() *ApiAtlasPartitionFieldView {
 	this := ApiAtlasPartitionFieldView{}
-	var order int32 = 0
+	var order int = 0
 	this.Order = order
 	return &this
 }
@@ -63,9 +63,9 @@ func (o *ApiAtlasPartitionFieldView) SetFieldName(v string) {
 }
 
 // GetOrder returns the Order field value
-func (o *ApiAtlasPartitionFieldView) GetOrder() int32 {
+func (o *ApiAtlasPartitionFieldView) GetOrder() int {
 	if o == nil {
-		var ret int32
+		var ret int
 		return ret
 	}
 
@@ -74,7 +74,7 @@ func (o *ApiAtlasPartitionFieldView) GetOrder() int32 {
 
 // GetOrderOk returns a tuple with the Order field value
 // and a boolean to check if the value has been set.
-func (o *ApiAtlasPartitionFieldView) GetOrderOk() (*int32, bool) {
+func (o *ApiAtlasPartitionFieldView) GetOrderOk() (*int, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -82,7 +82,7 @@ func (o *ApiAtlasPartitionFieldView) GetOrderOk() (*int32, bool) {
 }
 
 // SetOrder sets field value
-func (o *ApiAtlasPartitionFieldView) SetOrder(v int32) {
+func (o *ApiAtlasPartitionFieldView) SetOrder(v int) {
 	o.Order = v
 }
 

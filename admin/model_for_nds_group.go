@@ -24,8 +24,8 @@ type ForNdsGroup struct {
 	// Unique 24-hexadecimal digit string that identifies the organization to which these events apply.
 	OrgId *string `json:"orgId,omitempty"`
 	// IANA port on which the MongoDB process listens for requests.
-	Port *int32 `json:"port,omitempty"`
-	Raw  *Raw   `json:"raw,omitempty"`
+	Port *int `json:"port,omitempty"`
+	Raw  *Raw `json:"raw,omitempty"`
 	// Human-readable label of the replica set associated with the event.
 	ReplicaSetName *string `json:"replicaSetName,omitempty"`
 	// Human-readable label of the shard associated with the event.
@@ -221,9 +221,9 @@ func (o *ForNdsGroup) SetOrgId(v string) {
 }
 
 // GetPort returns the Port field value if set, zero value otherwise.
-func (o *ForNdsGroup) GetPort() int32 {
+func (o *ForNdsGroup) GetPort() int {
 	if o == nil || IsNil(o.Port) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.Port
@@ -231,7 +231,7 @@ func (o *ForNdsGroup) GetPort() int32 {
 
 // GetPortOk returns a tuple with the Port field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ForNdsGroup) GetPortOk() (*int32, bool) {
+func (o *ForNdsGroup) GetPortOk() (*int, bool) {
 	if o == nil || IsNil(o.Port) {
 		return nil, false
 	}
@@ -247,8 +247,8 @@ func (o *ForNdsGroup) HasPort() bool {
 	return false
 }
 
-// SetPort gets a reference to the given int32 and assigns it to the Port field.
-func (o *ForNdsGroup) SetPort(v int32) {
+// SetPort gets a reference to the given int and assigns it to the Port field.
+func (o *ForNdsGroup) SetPort(v int) {
 	o.Port = &v
 }
 

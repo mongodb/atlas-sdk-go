@@ -734,8 +734,8 @@ type ListSuggestedIndexesApiRequest struct {
 	groupId      string
 	processId    string
 	includeCount *bool
-	itemsPerPage *int32
-	pageNum      *int32
+	itemsPerPage *int
+	pageNum      *int
 	duration     *float32
 	namespaces   *[]string
 	nExamples    *int64
@@ -747,8 +747,8 @@ type ListSuggestedIndexesApiParams struct {
 	GroupId      string
 	ProcessId    string
 	IncludeCount *bool
-	ItemsPerPage *int32
-	PageNum      *int32
+	ItemsPerPage *int
+	PageNum      *int
 	Duration     *float32
 	Namespaces   *[]string
 	NExamples    *int64
@@ -780,13 +780,13 @@ func (r ListSuggestedIndexesApiRequest) IncludeCount(includeCount bool) ListSugg
 }
 
 // Number of items that the response returns per page.
-func (r ListSuggestedIndexesApiRequest) ItemsPerPage(itemsPerPage int32) ListSuggestedIndexesApiRequest {
+func (r ListSuggestedIndexesApiRequest) ItemsPerPage(itemsPerPage int) ListSuggestedIndexesApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListSuggestedIndexesApiRequest) PageNum(pageNum int32) ListSuggestedIndexesApiRequest {
+func (r ListSuggestedIndexesApiRequest) PageNum(pageNum int) ListSuggestedIndexesApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
@@ -884,14 +884,14 @@ func (a *PerformanceAdvisorApiService) listSuggestedIndexesExecute(r ListSuggest
 	if r.itemsPerPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int = 100
 		r.itemsPerPage = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.pageNum != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	} else {
-		var defaultValue int32 = 1
+		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	}

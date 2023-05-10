@@ -12,7 +12,7 @@ var _ MappedNullable = &Tokenizerstandard{}
 // Tokenizerstandard Tokenizer that splits tokens based on word break rules from the Unicode Text Segmentation algorithm.
 type Tokenizerstandard struct {
 	// Maximum number of characters in a single token. Tokens greater than this length are split at this length into multiple tokens.
-	MaxTokenLength *int32 `json:"maxTokenLength,omitempty"`
+	MaxTokenLength *int `json:"maxTokenLength,omitempty"`
 	// Human-readable label that identifies this tokenizer type.
 	Type string `json:"type"`
 }
@@ -23,7 +23,7 @@ type Tokenizerstandard struct {
 // will change when the set of required properties is changed
 func NewTokenizerstandard(type_ string) *Tokenizerstandard {
 	this := Tokenizerstandard{}
-	var maxTokenLength int32 = 255
+	var maxTokenLength int = 255
 	this.MaxTokenLength = &maxTokenLength
 	this.Type = type_
 	return &this
@@ -34,15 +34,15 @@ func NewTokenizerstandard(type_ string) *Tokenizerstandard {
 // but it doesn't guarantee that properties required by API are set
 func NewTokenizerstandardWithDefaults() *Tokenizerstandard {
 	this := Tokenizerstandard{}
-	var maxTokenLength int32 = 255
+	var maxTokenLength int = 255
 	this.MaxTokenLength = &maxTokenLength
 	return &this
 }
 
 // GetMaxTokenLength returns the MaxTokenLength field value if set, zero value otherwise.
-func (o *Tokenizerstandard) GetMaxTokenLength() int32 {
+func (o *Tokenizerstandard) GetMaxTokenLength() int {
 	if o == nil || IsNil(o.MaxTokenLength) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.MaxTokenLength
@@ -50,7 +50,7 @@ func (o *Tokenizerstandard) GetMaxTokenLength() int32 {
 
 // GetMaxTokenLengthOk returns a tuple with the MaxTokenLength field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Tokenizerstandard) GetMaxTokenLengthOk() (*int32, bool) {
+func (o *Tokenizerstandard) GetMaxTokenLengthOk() (*int, bool) {
 	if o == nil || IsNil(o.MaxTokenLength) {
 		return nil, false
 	}
@@ -66,8 +66,8 @@ func (o *Tokenizerstandard) HasMaxTokenLength() bool {
 	return false
 }
 
-// SetMaxTokenLength gets a reference to the given int32 and assigns it to the MaxTokenLength field.
-func (o *Tokenizerstandard) SetMaxTokenLength(v int32) {
+// SetMaxTokenLength gets a reference to the given int and assigns it to the MaxTokenLength field.
+func (o *Tokenizerstandard) SetMaxTokenLength(v int) {
 	o.MaxTokenLength = &v
 }
 

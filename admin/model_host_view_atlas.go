@@ -25,7 +25,7 @@ type HostViewAtlas struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	Links []LinkAtlas `json:"links,omitempty"`
 	// Internet Assigned Numbers Authority (IANA) port on which the MongoDB process listens for requests.
-	Port *int32 `json:"port,omitempty"`
+	Port *int `json:"port,omitempty"`
 	// Human-readable label that identifies the replica set that contains this process. This resource returns this parameter if this process belongs to a replica set.
 	ReplicaSetName *string `json:"replicaSetName,omitempty"`
 	// Type of MongoDB process that MongoDB Cloud tracks. MongoDB Cloud returns new processes as **NO_DATA** until MongoDB Cloud completes deploying the process.
@@ -246,9 +246,9 @@ func (o *HostViewAtlas) SetLinks(v []LinkAtlas) {
 }
 
 // GetPort returns the Port field value if set, zero value otherwise.
-func (o *HostViewAtlas) GetPort() int32 {
+func (o *HostViewAtlas) GetPort() int {
 	if o == nil || IsNil(o.Port) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.Port
@@ -256,7 +256,7 @@ func (o *HostViewAtlas) GetPort() int32 {
 
 // GetPortOk returns a tuple with the Port field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HostViewAtlas) GetPortOk() (*int32, bool) {
+func (o *HostViewAtlas) GetPortOk() (*int, bool) {
 	if o == nil || IsNil(o.Port) {
 		return nil, false
 	}
@@ -272,8 +272,8 @@ func (o *HostViewAtlas) HasPort() bool {
 	return false
 }
 
-// SetPort gets a reference to the given int32 and assigns it to the Port field.
-func (o *HostViewAtlas) SetPort(v int32) {
+// SetPort gets a reference to the given int and assigns it to the Port field.
+func (o *HostViewAtlas) SetPort(v int) {
 	o.Port = &v
 }
 

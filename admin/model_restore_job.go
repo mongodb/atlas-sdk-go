@@ -36,7 +36,7 @@ type RestoreJob struct {
 	// Universally Unique Identifier (UUID) that identifies the Key Management Interoperability (KMIP) master key used to encrypt the snapshot data. This parameter applies only when `\"encryptionEnabled\" : \"true\"`.
 	MasterKeyUUID *string `json:"masterKeyUUID,omitempty"`
 	// Thirty-two-bit incrementing ordinal that represents operations within a given second. When paired with **oplogTs**, this represents the point in time to which MongoDB Cloud restores your data. This parameter applies when `\"delivery.methodName\" : \"AUTOMATED_RESTORE\"`.  - If you set **oplogInc**, you must set **oplogTs**, and can't set **checkpointId**, **snapshotId**, or **pointInTimeUTCMillis**. - If you provide this parameter, this endpoint restores all data up to and including this Oplog timestamp to the database you specified in the **delivery** object.
-	OplogInc *int32 `json:"oplogInc,omitempty"`
+	OplogInc *int `json:"oplogInc,omitempty"`
 	// Date and time from which you want to restore this snapshot. This parameter expresses its value in ISO 8601 format in UTC. This represents the first part of an Oplog timestamp. When paired with **oplogInc**, they represent the last database operation to which you want to restore your data. This parameter applies when `\"delivery.methodName\" : \"AUTOMATED_RESTORE\"`. Run a query against **local.oplog.rs** on your replica set to find the desired timestamp.  - If you set **oplogTs**, you must set **oplogInc**, and you can't set **checkpointId**, **snapshotId**, or **pointInTimeUTCMillis**. - If you provide this parameter, this endpoint restores all data up to and including this Oplog timestamp to the database you specified in the **delivery** object.
 	OplogTs *string `json:"oplogTs,omitempty"`
 	// Timestamp from which you want to restore this snapshot. This parameter expresses its value in the number of milliseconds elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time). This timestamp must fall within the last 24 hours of the current time. This parameter applies when `\"delivery.methodName\" : \"AUTOMATED_RESTORE\"`.  - If you provide this parameter, this endpoint restores all data up to this point in time to the database you specified in the **delivery** object. - If you set **pointInTimeUTCMillis**, you can't set **oplogInc**, **oplogTs**, **snapshotId**, or **checkpointId**.
@@ -443,9 +443,9 @@ func (o *RestoreJob) SetMasterKeyUUID(v string) {
 }
 
 // GetOplogInc returns the OplogInc field value if set, zero value otherwise.
-func (o *RestoreJob) GetOplogInc() int32 {
+func (o *RestoreJob) GetOplogInc() int {
 	if o == nil || IsNil(o.OplogInc) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.OplogInc
@@ -453,7 +453,7 @@ func (o *RestoreJob) GetOplogInc() int32 {
 
 // GetOplogIncOk returns a tuple with the OplogInc field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RestoreJob) GetOplogIncOk() (*int32, bool) {
+func (o *RestoreJob) GetOplogIncOk() (*int, bool) {
 	if o == nil || IsNil(o.OplogInc) {
 		return nil, false
 	}
@@ -469,8 +469,8 @@ func (o *RestoreJob) HasOplogInc() bool {
 	return false
 }
 
-// SetOplogInc gets a reference to the given int32 and assigns it to the OplogInc field.
-func (o *RestoreJob) SetOplogInc(v int32) {
+// SetOplogInc gets a reference to the given int and assigns it to the OplogInc field.
+func (o *RestoreJob) SetOplogInc(v int) {
 	o.OplogInc = &v
 }
 

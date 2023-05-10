@@ -12,7 +12,7 @@ var _ MappedNullable = &Cluster{}
 // Cluster Settings that describe the clusters in each project that the API key is authorized to view.
 type Cluster struct {
 	// Whole number that indicates the quantity of alerts open on the cluster.
-	AlertCount *int32 `json:"alertCount,omitempty"`
+	AlertCount *int `json:"alertCount,omitempty"`
 	// Flag that indicates whether authentication is required to access the nodes in this cluster.
 	AuthEnabled *bool `json:"authEnabled,omitempty"`
 	// Term that expresses how many nodes of the cluster can be accessed when MongoDB Cloud receives this request. This parameter returns `available` when all nodes are accessible, `warning` only when some nodes in the cluster can be accessed, `unavailable` when the cluster can't be accessed, or `dead` when the cluster has been deactivated.
@@ -26,7 +26,7 @@ type Cluster struct {
 	// Human-readable label that identifies the cluster.
 	Name *string `json:"name,omitempty"`
 	// Whole number that indicates the quantity of nodes that comprise the cluster.
-	NodeCount *int32 `json:"nodeCount,omitempty"`
+	NodeCount *int `json:"nodeCount,omitempty"`
 	// Flag that indicates whether TLS authentication is required to access the nodes in this cluster.
 	SslEnabled *bool `json:"sslEnabled,omitempty"`
 	// Human-readable label that indicates the cluster type.
@@ -53,9 +53,9 @@ func NewClusterWithDefaults() *Cluster {
 }
 
 // GetAlertCount returns the AlertCount field value if set, zero value otherwise.
-func (o *Cluster) GetAlertCount() int32 {
+func (o *Cluster) GetAlertCount() int {
 	if o == nil || IsNil(o.AlertCount) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.AlertCount
@@ -63,7 +63,7 @@ func (o *Cluster) GetAlertCount() int32 {
 
 // GetAlertCountOk returns a tuple with the AlertCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Cluster) GetAlertCountOk() (*int32, bool) {
+func (o *Cluster) GetAlertCountOk() (*int, bool) {
 	if o == nil || IsNil(o.AlertCount) {
 		return nil, false
 	}
@@ -79,8 +79,8 @@ func (o *Cluster) HasAlertCount() bool {
 	return false
 }
 
-// SetAlertCount gets a reference to the given int32 and assigns it to the AlertCount field.
-func (o *Cluster) SetAlertCount(v int32) {
+// SetAlertCount gets a reference to the given int and assigns it to the AlertCount field.
+func (o *Cluster) SetAlertCount(v int) {
 	o.AlertCount = &v
 }
 
@@ -277,9 +277,9 @@ func (o *Cluster) SetName(v string) {
 }
 
 // GetNodeCount returns the NodeCount field value if set, zero value otherwise.
-func (o *Cluster) GetNodeCount() int32 {
+func (o *Cluster) GetNodeCount() int {
 	if o == nil || IsNil(o.NodeCount) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.NodeCount
@@ -287,7 +287,7 @@ func (o *Cluster) GetNodeCount() int32 {
 
 // GetNodeCountOk returns a tuple with the NodeCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Cluster) GetNodeCountOk() (*int32, bool) {
+func (o *Cluster) GetNodeCountOk() (*int, bool) {
 	if o == nil || IsNil(o.NodeCount) {
 		return nil, false
 	}
@@ -303,8 +303,8 @@ func (o *Cluster) HasNodeCount() bool {
 	return false
 }
 
-// SetNodeCount gets a reference to the given int32 and assigns it to the NodeCount field.
-func (o *Cluster) SetNodeCount(v int32) {
+// SetNodeCount gets a reference to the given int and assigns it to the NodeCount field.
+func (o *Cluster) SetNodeCount(v int) {
 	o.NodeCount = &v
 }
 

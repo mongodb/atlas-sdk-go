@@ -16,7 +16,7 @@ type OrgPaginatedEvent struct {
 	// List of returned documents that MongoDB Cloud providers when completing this request.
 	Results []EventViewForOrg `json:"results,omitempty"`
 	// Number of documents returned in this response if **includeCount** query param is true.
-	TotalCount *int32 `json:"totalCount,omitempty"`
+	TotalCount *int `json:"totalCount,omitempty"`
 }
 
 // NewOrgPaginatedEvent instantiates a new OrgPaginatedEvent object
@@ -101,9 +101,9 @@ func (o *OrgPaginatedEvent) SetResults(v []EventViewForOrg) {
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise.
-func (o *OrgPaginatedEvent) GetTotalCount() int32 {
+func (o *OrgPaginatedEvent) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.TotalCount
@@ -111,7 +111,7 @@ func (o *OrgPaginatedEvent) GetTotalCount() int32 {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrgPaginatedEvent) GetTotalCountOk() (*int32, bool) {
+func (o *OrgPaginatedEvent) GetTotalCountOk() (*int, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
@@ -127,8 +127,8 @@ func (o *OrgPaginatedEvent) HasTotalCount() bool {
 	return false
 }
 
-// SetTotalCount gets a reference to the given int32 and assigns it to the TotalCount field.
-func (o *OrgPaginatedEvent) SetTotalCount(v int32) {
+// SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
+func (o *OrgPaginatedEvent) SetTotalCount(v int) {
 	o.TotalCount = &v
 }
 

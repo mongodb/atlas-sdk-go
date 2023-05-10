@@ -16,14 +16,14 @@ type PartitionField struct {
 	// Data type of the parameter that that MongoDB Cloud uses to partition data. Partition parameters of type [UUID](http://bsonspec.org/spec.html) must be of binary subtype 4. MongoDB Cloud skips partition parameters of type UUID with subtype 3.
 	FieldType *string `json:"fieldType,omitempty"`
 	// Sequence in which MongoDB Cloud slices the collection data to create partitions. The resource expresses this sequence starting with zero. The value of the **criteria.dateField** parameter defaults as the first item in the partition sequence.
-	Order int32 `json:"order"`
+	Order int `json:"order"`
 }
 
 // NewPartitionField instantiates a new PartitionField object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPartitionField(fieldName string, order int32) *PartitionField {
+func NewPartitionField(fieldName string, order int) *PartitionField {
 	this := PartitionField{}
 	this.FieldName = fieldName
 	this.Order = order
@@ -35,7 +35,7 @@ func NewPartitionField(fieldName string, order int32) *PartitionField {
 // but it doesn't guarantee that properties required by API are set
 func NewPartitionFieldWithDefaults() *PartitionField {
 	this := PartitionField{}
-	var order int32 = 0
+	var order int = 0
 	this.Order = order
 	return &this
 }
@@ -97,9 +97,9 @@ func (o *PartitionField) SetFieldType(v string) {
 }
 
 // GetOrder returns the Order field value
-func (o *PartitionField) GetOrder() int32 {
+func (o *PartitionField) GetOrder() int {
 	if o == nil {
-		var ret int32
+		var ret int
 		return ret
 	}
 
@@ -108,7 +108,7 @@ func (o *PartitionField) GetOrder() int32 {
 
 // GetOrderOk returns a tuple with the Order field value
 // and a boolean to check if the value has been set.
-func (o *PartitionField) GetOrderOk() (*int32, bool) {
+func (o *PartitionField) GetOrderOk() (*int, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -116,7 +116,7 @@ func (o *PartitionField) GetOrderOk() (*int32, bool) {
 }
 
 // SetOrder sets field value
-func (o *PartitionField) SetOrder(v int32) {
+func (o *PartitionField) SetOrder(v int) {
 	o.Order = v
 }
 

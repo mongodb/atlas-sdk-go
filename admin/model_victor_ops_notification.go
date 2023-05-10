@@ -12,9 +12,9 @@ var _ MappedNullable = &VictorOpsNotification{}
 // VictorOpsNotification VictorOps notification configuration for MongoDB Cloud to send information when an event triggers an alert condition.
 type VictorOpsNotification struct {
 	// Number of minutes that MongoDB Cloud waits after detecting an alert condition before it sends out the first notification.
-	DelayMin *int32 `json:"delayMin,omitempty"`
+	DelayMin *int `json:"delayMin,omitempty"`
 	// Number of minutes to wait between successive notifications. MongoDB Cloud sends notifications until someone acknowledges the unacknowledged alert.  PagerDuty, VictorOps, and OpsGenie notifications don't return this element. Configure and manage the notification interval within each of those services.
-	IntervalMin *int32 `json:"intervalMin,omitempty"`
+	IntervalMin *int `json:"intervalMin,omitempty"`
 	// Human-readable label that displays the alert notification type.
 	TypeName string `json:"typeName"`
 	// API key that MongoDB Cloud needs to send alert notifications to Splunk On-Call. The resource requires this parameter when `\"notifications.[n].typeName\" : \"VICTOR_OPS\"`. If the key later becomes invalid, MongoDB Cloud sends an email to the project owners. If the key remains invalid, MongoDB Cloud removes it.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.
@@ -42,9 +42,9 @@ func NewVictorOpsNotificationWithDefaults() *VictorOpsNotification {
 }
 
 // GetDelayMin returns the DelayMin field value if set, zero value otherwise.
-func (o *VictorOpsNotification) GetDelayMin() int32 {
+func (o *VictorOpsNotification) GetDelayMin() int {
 	if o == nil || IsNil(o.DelayMin) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.DelayMin
@@ -52,7 +52,7 @@ func (o *VictorOpsNotification) GetDelayMin() int32 {
 
 // GetDelayMinOk returns a tuple with the DelayMin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VictorOpsNotification) GetDelayMinOk() (*int32, bool) {
+func (o *VictorOpsNotification) GetDelayMinOk() (*int, bool) {
 	if o == nil || IsNil(o.DelayMin) {
 		return nil, false
 	}
@@ -68,15 +68,15 @@ func (o *VictorOpsNotification) HasDelayMin() bool {
 	return false
 }
 
-// SetDelayMin gets a reference to the given int32 and assigns it to the DelayMin field.
-func (o *VictorOpsNotification) SetDelayMin(v int32) {
+// SetDelayMin gets a reference to the given int and assigns it to the DelayMin field.
+func (o *VictorOpsNotification) SetDelayMin(v int) {
 	o.DelayMin = &v
 }
 
 // GetIntervalMin returns the IntervalMin field value if set, zero value otherwise.
-func (o *VictorOpsNotification) GetIntervalMin() int32 {
+func (o *VictorOpsNotification) GetIntervalMin() int {
 	if o == nil || IsNil(o.IntervalMin) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.IntervalMin
@@ -84,7 +84,7 @@ func (o *VictorOpsNotification) GetIntervalMin() int32 {
 
 // GetIntervalMinOk returns a tuple with the IntervalMin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VictorOpsNotification) GetIntervalMinOk() (*int32, bool) {
+func (o *VictorOpsNotification) GetIntervalMinOk() (*int, bool) {
 	if o == nil || IsNil(o.IntervalMin) {
 		return nil, false
 	}
@@ -100,8 +100,8 @@ func (o *VictorOpsNotification) HasIntervalMin() bool {
 	return false
 }
 
-// SetIntervalMin gets a reference to the given int32 and assigns it to the IntervalMin field.
-func (o *VictorOpsNotification) SetIntervalMin(v int32) {
+// SetIntervalMin gets a reference to the given int and assigns it to the IntervalMin field.
+func (o *VictorOpsNotification) SetIntervalMin(v int) {
 	o.IntervalMin = &v
 }
 

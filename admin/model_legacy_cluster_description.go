@@ -46,7 +46,7 @@ type LegacyClusterDescription struct {
 	// Human-readable label that identifies the cluster.
 	Name *string `json:"name,omitempty"`
 	// Number of shards up to 50 to deploy for a sharded cluster. The resource returns `1` to indicate a replica set and values of `2` and higher to indicate a sharded cluster. The returned value equals the number of shards in the cluster.
-	NumShards *int32 `json:"numShards,omitempty"`
+	NumShards *int `json:"numShards,omitempty"`
 	// Flag that indicates whether the cluster is paused.
 	Paused *bool `json:"paused,omitempty"`
 	// Flag that indicates whether the cluster uses continuous cloud backups.
@@ -56,7 +56,7 @@ type LegacyClusterDescription struct {
 	ProviderSettings      *ClusterProviderSettings `json:"providerSettings,omitempty"`
 	// Number of members that belong to the replica set. Each member retains a copy of your databases, providing high availability and data redundancy. Use **replicationSpecs** instead.
 	// Deprecated
-	ReplicationFactor *int32 `json:"replicationFactor,omitempty"`
+	ReplicationFactor *int `json:"replicationFactor,omitempty"`
 	// Physical location where MongoDB Cloud provisions cluster nodes.
 	// Deprecated
 	ReplicationSpec *map[string]RegionSpec `json:"replicationSpec,omitempty"`
@@ -82,9 +82,9 @@ func NewLegacyClusterDescription() *LegacyClusterDescription {
 	this := LegacyClusterDescription{}
 	var mongoDBMajorVersion string = "6.0"
 	this.MongoDBMajorVersion = &mongoDBMajorVersion
-	var numShards int32 = 1
+	var numShards int = 1
 	this.NumShards = &numShards
-	var replicationFactor int32 = 3
+	var replicationFactor int = 3
 	this.ReplicationFactor = &replicationFactor
 	var rootCertType string = "ISRGROOTX1"
 	this.RootCertType = &rootCertType
@@ -102,9 +102,9 @@ func NewLegacyClusterDescriptionWithDefaults() *LegacyClusterDescription {
 	this := LegacyClusterDescription{}
 	var mongoDBMajorVersion string = "6.0"
 	this.MongoDBMajorVersion = &mongoDBMajorVersion
-	var numShards int32 = 1
+	var numShards int = 1
 	this.NumShards = &numShards
-	var replicationFactor int32 = 3
+	var replicationFactor int = 3
 	this.ReplicationFactor = &replicationFactor
 	var rootCertType string = "ISRGROOTX1"
 	this.RootCertType = &rootCertType
@@ -692,9 +692,9 @@ func (o *LegacyClusterDescription) SetName(v string) {
 }
 
 // GetNumShards returns the NumShards field value if set, zero value otherwise.
-func (o *LegacyClusterDescription) GetNumShards() int32 {
+func (o *LegacyClusterDescription) GetNumShards() int {
 	if o == nil || IsNil(o.NumShards) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.NumShards
@@ -702,7 +702,7 @@ func (o *LegacyClusterDescription) GetNumShards() int32 {
 
 // GetNumShardsOk returns a tuple with the NumShards field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LegacyClusterDescription) GetNumShardsOk() (*int32, bool) {
+func (o *LegacyClusterDescription) GetNumShardsOk() (*int, bool) {
 	if o == nil || IsNil(o.NumShards) {
 		return nil, false
 	}
@@ -718,8 +718,8 @@ func (o *LegacyClusterDescription) HasNumShards() bool {
 	return false
 }
 
-// SetNumShards gets a reference to the given int32 and assigns it to the NumShards field.
-func (o *LegacyClusterDescription) SetNumShards(v int32) {
+// SetNumShards gets a reference to the given int and assigns it to the NumShards field.
+func (o *LegacyClusterDescription) SetNumShards(v int) {
 	o.NumShards = &v
 }
 
@@ -853,9 +853,9 @@ func (o *LegacyClusterDescription) SetProviderSettings(v ClusterProviderSettings
 
 // GetReplicationFactor returns the ReplicationFactor field value if set, zero value otherwise.
 // Deprecated
-func (o *LegacyClusterDescription) GetReplicationFactor() int32 {
+func (o *LegacyClusterDescription) GetReplicationFactor() int {
 	if o == nil || IsNil(o.ReplicationFactor) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.ReplicationFactor
@@ -864,7 +864,7 @@ func (o *LegacyClusterDescription) GetReplicationFactor() int32 {
 // GetReplicationFactorOk returns a tuple with the ReplicationFactor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // Deprecated
-func (o *LegacyClusterDescription) GetReplicationFactorOk() (*int32, bool) {
+func (o *LegacyClusterDescription) GetReplicationFactorOk() (*int, bool) {
 	if o == nil || IsNil(o.ReplicationFactor) {
 		return nil, false
 	}
@@ -880,9 +880,9 @@ func (o *LegacyClusterDescription) HasReplicationFactor() bool {
 	return false
 }
 
-// SetReplicationFactor gets a reference to the given int32 and assigns it to the ReplicationFactor field.
+// SetReplicationFactor gets a reference to the given int and assigns it to the ReplicationFactor field.
 // Deprecated
-func (o *LegacyClusterDescription) SetReplicationFactor(v int32) {
+func (o *LegacyClusterDescription) SetReplicationFactor(v int) {
 	o.ReplicationFactor = &v
 }
 

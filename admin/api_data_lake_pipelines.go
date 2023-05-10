@@ -1048,8 +1048,8 @@ type ListPipelineRunsApiRequest struct {
 	groupId       string
 	pipelineName  string
 	includeCount  *bool
-	itemsPerPage  *int32
-	pageNum       *int32
+	itemsPerPage  *int
+	pageNum       *int
 	createdBefore *time.Time
 }
 
@@ -1057,8 +1057,8 @@ type ListPipelineRunsApiParams struct {
 	GroupId       string
 	PipelineName  string
 	IncludeCount  *bool
-	ItemsPerPage  *int32
-	PageNum       *int32
+	ItemsPerPage  *int
+	PageNum       *int
 	CreatedBefore *time.Time
 }
 
@@ -1082,13 +1082,13 @@ func (r ListPipelineRunsApiRequest) IncludeCount(includeCount bool) ListPipeline
 }
 
 // Number of items that the response returns per page.
-func (r ListPipelineRunsApiRequest) ItemsPerPage(itemsPerPage int32) ListPipelineRunsApiRequest {
+func (r ListPipelineRunsApiRequest) ItemsPerPage(itemsPerPage int) ListPipelineRunsApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListPipelineRunsApiRequest) PageNum(pageNum int32) ListPipelineRunsApiRequest {
+func (r ListPipelineRunsApiRequest) PageNum(pageNum int) ListPipelineRunsApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
@@ -1168,14 +1168,14 @@ func (a *DataLakePipelinesApiService) listPipelineRunsExecute(r ListPipelineRuns
 	if r.itemsPerPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int = 100
 		r.itemsPerPage = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.pageNum != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	} else {
-		var defaultValue int32 = 1
+		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	}
@@ -1392,8 +1392,8 @@ type ListPipelineSnapshotsApiRequest struct {
 	groupId        string
 	pipelineName   string
 	includeCount   *bool
-	itemsPerPage   *int32
-	pageNum        *int32
+	itemsPerPage   *int
+	pageNum        *int
 	completedAfter *time.Time
 }
 
@@ -1401,8 +1401,8 @@ type ListPipelineSnapshotsApiParams struct {
 	GroupId        string
 	PipelineName   string
 	IncludeCount   *bool
-	ItemsPerPage   *int32
-	PageNum        *int32
+	ItemsPerPage   *int
+	PageNum        *int
 	CompletedAfter *time.Time
 }
 
@@ -1426,13 +1426,13 @@ func (r ListPipelineSnapshotsApiRequest) IncludeCount(includeCount bool) ListPip
 }
 
 // Number of items that the response returns per page.
-func (r ListPipelineSnapshotsApiRequest) ItemsPerPage(itemsPerPage int32) ListPipelineSnapshotsApiRequest {
+func (r ListPipelineSnapshotsApiRequest) ItemsPerPage(itemsPerPage int) ListPipelineSnapshotsApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListPipelineSnapshotsApiRequest) PageNum(pageNum int32) ListPipelineSnapshotsApiRequest {
+func (r ListPipelineSnapshotsApiRequest) PageNum(pageNum int) ListPipelineSnapshotsApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
@@ -1512,14 +1512,14 @@ func (a *DataLakePipelinesApiService) listPipelineSnapshotsExecute(r ListPipelin
 	if r.itemsPerPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int = 100
 		r.itemsPerPage = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.pageNum != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	} else {
-		var defaultValue int32 = 1
+		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	}

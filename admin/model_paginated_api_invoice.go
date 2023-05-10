@@ -16,7 +16,7 @@ type PaginatedApiInvoice struct {
 	// List of returned documents that MongoDB Cloud providers when completing this request.
 	Results []Invoice `json:"results,omitempty"`
 	// Number of documents returned in this response.
-	TotalCount *int32 `json:"totalCount,omitempty"`
+	TotalCount *int `json:"totalCount,omitempty"`
 }
 
 // NewPaginatedApiInvoice instantiates a new PaginatedApiInvoice object
@@ -101,9 +101,9 @@ func (o *PaginatedApiInvoice) SetResults(v []Invoice) {
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise.
-func (o *PaginatedApiInvoice) GetTotalCount() int32 {
+func (o *PaginatedApiInvoice) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.TotalCount
@@ -111,7 +111,7 @@ func (o *PaginatedApiInvoice) GetTotalCount() int32 {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedApiInvoice) GetTotalCountOk() (*int32, bool) {
+func (o *PaginatedApiInvoice) GetTotalCountOk() (*int, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
@@ -127,8 +127,8 @@ func (o *PaginatedApiInvoice) HasTotalCount() bool {
 	return false
 }
 
-// SetTotalCount gets a reference to the given int32 and assigns it to the TotalCount field.
-func (o *PaginatedApiInvoice) SetTotalCount(v int32) {
+// SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
+func (o *PaginatedApiInvoice) SetTotalCount(v int) {
 	o.TotalCount = &v
 }
 

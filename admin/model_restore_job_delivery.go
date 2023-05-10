@@ -17,11 +17,11 @@ type RestoreJobDelivery struct {
 	// Header value to use when downloading the restore, used with `\"delivery.methodName\" : \"HTTP\"`.
 	AuthValue *string `json:"authValue,omitempty"`
 	// Number of hours after the restore job completes that indicates when the Uniform Resource Locator (URL) for the snapshot download file expires. The resource returns this parameter when `\"delivery.methodName\" : \"HTTP\"`.
-	ExpirationHours *int32 `json:"expirationHours,omitempty"`
+	ExpirationHours *int `json:"expirationHours,omitempty"`
 	// Date and time when the Uniform Resource Locator (URL) for the snapshot download file expires. This parameter expresses its value in the ISO 8601 timestamp format in UTC. The resource returns this parameter when `\"delivery.methodName\" : \"HTTP\"`.
 	Expires *time.Time `json:"expires,omitempty"`
 	// Positive integer that indicates how many times you can use the Uniform Resource Locator (URL) for the snapshot download file. The resource returns this parameter when `\"delivery.methodName\" : \"HTTP\"`.
-	MaxDownloads *int32 `json:"maxDownloads,omitempty"`
+	MaxDownloads *int `json:"maxDownloads,omitempty"`
 	// Human-readable label that identifies the means for delivering the data. If you set `\"delivery.methodName\" : \"AUTOMATED_RESTORE\"`, you must also set: **delivery.targetGroupId** and **delivery.targetClusterName** or **delivery.targetClusterId**. The response returns `\"delivery.methodName\" : \"HTTP\"` as an automated restore uses HyperText Transport Protocol (HTTP) to deliver the restore job to the target host.
 	MethodName string `json:"methodName"`
 	// State of the downloadable snapshot file when MongoDB Cloud received this request.
@@ -122,9 +122,9 @@ func (o *RestoreJobDelivery) SetAuthValue(v string) {
 }
 
 // GetExpirationHours returns the ExpirationHours field value if set, zero value otherwise.
-func (o *RestoreJobDelivery) GetExpirationHours() int32 {
+func (o *RestoreJobDelivery) GetExpirationHours() int {
 	if o == nil || IsNil(o.ExpirationHours) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.ExpirationHours
@@ -132,7 +132,7 @@ func (o *RestoreJobDelivery) GetExpirationHours() int32 {
 
 // GetExpirationHoursOk returns a tuple with the ExpirationHours field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RestoreJobDelivery) GetExpirationHoursOk() (*int32, bool) {
+func (o *RestoreJobDelivery) GetExpirationHoursOk() (*int, bool) {
 	if o == nil || IsNil(o.ExpirationHours) {
 		return nil, false
 	}
@@ -148,8 +148,8 @@ func (o *RestoreJobDelivery) HasExpirationHours() bool {
 	return false
 }
 
-// SetExpirationHours gets a reference to the given int32 and assigns it to the ExpirationHours field.
-func (o *RestoreJobDelivery) SetExpirationHours(v int32) {
+// SetExpirationHours gets a reference to the given int and assigns it to the ExpirationHours field.
+func (o *RestoreJobDelivery) SetExpirationHours(v int) {
 	o.ExpirationHours = &v
 }
 
@@ -186,9 +186,9 @@ func (o *RestoreJobDelivery) SetExpires(v time.Time) {
 }
 
 // GetMaxDownloads returns the MaxDownloads field value if set, zero value otherwise.
-func (o *RestoreJobDelivery) GetMaxDownloads() int32 {
+func (o *RestoreJobDelivery) GetMaxDownloads() int {
 	if o == nil || IsNil(o.MaxDownloads) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.MaxDownloads
@@ -196,7 +196,7 @@ func (o *RestoreJobDelivery) GetMaxDownloads() int32 {
 
 // GetMaxDownloadsOk returns a tuple with the MaxDownloads field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RestoreJobDelivery) GetMaxDownloadsOk() (*int32, bool) {
+func (o *RestoreJobDelivery) GetMaxDownloadsOk() (*int, bool) {
 	if o == nil || IsNil(o.MaxDownloads) {
 		return nil, false
 	}
@@ -212,8 +212,8 @@ func (o *RestoreJobDelivery) HasMaxDownloads() bool {
 	return false
 }
 
-// SetMaxDownloads gets a reference to the given int32 and assigns it to the MaxDownloads field.
-func (o *RestoreJobDelivery) SetMaxDownloads(v int32) {
+// SetMaxDownloads gets a reference to the given int and assigns it to the MaxDownloads field.
+func (o *RestoreJobDelivery) SetMaxDownloads(v int) {
 	o.MaxDownloads = &v
 }
 

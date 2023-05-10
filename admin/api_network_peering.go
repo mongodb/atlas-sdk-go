@@ -1315,16 +1315,16 @@ type ListPeeringConnectionsApiRequest struct {
 	ApiService   NetworkPeeringApi
 	groupId      string
 	includeCount *bool
-	itemsPerPage *int32
-	pageNum      *int32
+	itemsPerPage *int
+	pageNum      *int
 	providerName *string
 }
 
 type ListPeeringConnectionsApiParams struct {
 	GroupId      string
 	IncludeCount *bool
-	ItemsPerPage *int32
-	PageNum      *int32
+	ItemsPerPage *int
+	PageNum      *int
 	ProviderName *string
 }
 
@@ -1347,13 +1347,13 @@ func (r ListPeeringConnectionsApiRequest) IncludeCount(includeCount bool) ListPe
 }
 
 // Number of items that the response returns per page.
-func (r ListPeeringConnectionsApiRequest) ItemsPerPage(itemsPerPage int32) ListPeeringConnectionsApiRequest {
+func (r ListPeeringConnectionsApiRequest) ItemsPerPage(itemsPerPage int) ListPeeringConnectionsApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListPeeringConnectionsApiRequest) PageNum(pageNum int32) ListPeeringConnectionsApiRequest {
+func (r ListPeeringConnectionsApiRequest) PageNum(pageNum int) ListPeeringConnectionsApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
@@ -1424,14 +1424,14 @@ func (a *NetworkPeeringApiService) listPeeringConnectionsExecute(r ListPeeringCo
 	if r.itemsPerPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int = 100
 		r.itemsPerPage = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.pageNum != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	} else {
-		var defaultValue int32 = 1
+		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	}
@@ -1510,16 +1510,16 @@ type ListPeeringContainerByCloudProviderApiRequest struct {
 	groupId      string
 	providerName *string
 	includeCount *bool
-	itemsPerPage *int32
-	pageNum      *int32
+	itemsPerPage *int
+	pageNum      *int
 }
 
 type ListPeeringContainerByCloudProviderApiParams struct {
 	GroupId      string
 	ProviderName *string
 	IncludeCount *bool
-	ItemsPerPage *int32
-	PageNum      *int32
+	ItemsPerPage *int
+	PageNum      *int
 }
 
 func (a *NetworkPeeringApiService) ListPeeringContainerByCloudProviderWithParams(ctx context.Context, args *ListPeeringContainerByCloudProviderApiParams) ListPeeringContainerByCloudProviderApiRequest {
@@ -1547,13 +1547,13 @@ func (r ListPeeringContainerByCloudProviderApiRequest) IncludeCount(includeCount
 }
 
 // Number of items that the response returns per page.
-func (r ListPeeringContainerByCloudProviderApiRequest) ItemsPerPage(itemsPerPage int32) ListPeeringContainerByCloudProviderApiRequest {
+func (r ListPeeringContainerByCloudProviderApiRequest) ItemsPerPage(itemsPerPage int) ListPeeringContainerByCloudProviderApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListPeeringContainerByCloudProviderApiRequest) PageNum(pageNum int32) ListPeeringContainerByCloudProviderApiRequest {
+func (r ListPeeringContainerByCloudProviderApiRequest) PageNum(pageNum int) ListPeeringContainerByCloudProviderApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
@@ -1621,14 +1621,14 @@ func (a *NetworkPeeringApiService) listPeeringContainerByCloudProviderExecute(r 
 	if r.itemsPerPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int = 100
 		r.itemsPerPage = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.pageNum != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	} else {
-		var defaultValue int32 = 1
+		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	}
@@ -1700,15 +1700,15 @@ type ListPeeringContainersApiRequest struct {
 	ApiService   NetworkPeeringApi
 	groupId      string
 	includeCount *bool
-	itemsPerPage *int32
-	pageNum      *int32
+	itemsPerPage *int
+	pageNum      *int
 }
 
 type ListPeeringContainersApiParams struct {
 	GroupId      string
 	IncludeCount *bool
-	ItemsPerPage *int32
-	PageNum      *int32
+	ItemsPerPage *int
+	PageNum      *int
 }
 
 func (a *NetworkPeeringApiService) ListPeeringContainersWithParams(ctx context.Context, args *ListPeeringContainersApiParams) ListPeeringContainersApiRequest {
@@ -1729,13 +1729,13 @@ func (r ListPeeringContainersApiRequest) IncludeCount(includeCount bool) ListPee
 }
 
 // Number of items that the response returns per page.
-func (r ListPeeringContainersApiRequest) ItemsPerPage(itemsPerPage int32) ListPeeringContainersApiRequest {
+func (r ListPeeringContainersApiRequest) ItemsPerPage(itemsPerPage int) ListPeeringContainersApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListPeeringContainersApiRequest) PageNum(pageNum int32) ListPeeringContainersApiRequest {
+func (r ListPeeringContainersApiRequest) PageNum(pageNum int) ListPeeringContainersApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
@@ -1800,14 +1800,14 @@ func (a *NetworkPeeringApiService) listPeeringContainersExecute(r ListPeeringCon
 	if r.itemsPerPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int = 100
 		r.itemsPerPage = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.pageNum != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	} else {
-		var defaultValue int32 = 1
+		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	}

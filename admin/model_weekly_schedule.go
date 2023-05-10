@@ -12,15 +12,15 @@ var _ MappedNullable = &WeeklySchedule{}
 // WeeklySchedule struct for WeeklySchedule
 type WeeklySchedule struct {
 	// Day of the week when the scheduled archive starts. The week starts with Monday (`1`) and ends with Sunday (`7`).
-	DayOfWeek *int32 `json:"dayOfWeek,omitempty"`
+	DayOfWeek *int `json:"dayOfWeek,omitempty"`
 	// Hour of the day when the scheduled window to run one online archive ends.
-	EndHour *int32 `json:"endHour,omitempty"`
+	EndHour *int `json:"endHour,omitempty"`
 	// Minute of the hour when the scheduled window to run one online archive ends.
-	EndMinute *int32 `json:"endMinute,omitempty"`
+	EndMinute *int `json:"endMinute,omitempty"`
 	// Hour of the day when the when the scheduled window to run one online archive starts.
-	StartHour *int32 `json:"startHour,omitempty"`
+	StartHour *int `json:"startHour,omitempty"`
 	// Minute of the hour when the scheduled window to run one online archive starts.
-	StartMinute *int32 `json:"startMinute,omitempty"`
+	StartMinute *int   `json:"startMinute,omitempty"`
 	Type        string `json:"type"`
 }
 
@@ -43,9 +43,9 @@ func NewWeeklyScheduleWithDefaults() *WeeklySchedule {
 }
 
 // GetDayOfWeek returns the DayOfWeek field value if set, zero value otherwise.
-func (o *WeeklySchedule) GetDayOfWeek() int32 {
+func (o *WeeklySchedule) GetDayOfWeek() int {
 	if o == nil || IsNil(o.DayOfWeek) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.DayOfWeek
@@ -53,7 +53,7 @@ func (o *WeeklySchedule) GetDayOfWeek() int32 {
 
 // GetDayOfWeekOk returns a tuple with the DayOfWeek field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WeeklySchedule) GetDayOfWeekOk() (*int32, bool) {
+func (o *WeeklySchedule) GetDayOfWeekOk() (*int, bool) {
 	if o == nil || IsNil(o.DayOfWeek) {
 		return nil, false
 	}
@@ -69,15 +69,15 @@ func (o *WeeklySchedule) HasDayOfWeek() bool {
 	return false
 }
 
-// SetDayOfWeek gets a reference to the given int32 and assigns it to the DayOfWeek field.
-func (o *WeeklySchedule) SetDayOfWeek(v int32) {
+// SetDayOfWeek gets a reference to the given int and assigns it to the DayOfWeek field.
+func (o *WeeklySchedule) SetDayOfWeek(v int) {
 	o.DayOfWeek = &v
 }
 
 // GetEndHour returns the EndHour field value if set, zero value otherwise.
-func (o *WeeklySchedule) GetEndHour() int32 {
+func (o *WeeklySchedule) GetEndHour() int {
 	if o == nil || IsNil(o.EndHour) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.EndHour
@@ -85,7 +85,7 @@ func (o *WeeklySchedule) GetEndHour() int32 {
 
 // GetEndHourOk returns a tuple with the EndHour field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WeeklySchedule) GetEndHourOk() (*int32, bool) {
+func (o *WeeklySchedule) GetEndHourOk() (*int, bool) {
 	if o == nil || IsNil(o.EndHour) {
 		return nil, false
 	}
@@ -101,15 +101,15 @@ func (o *WeeklySchedule) HasEndHour() bool {
 	return false
 }
 
-// SetEndHour gets a reference to the given int32 and assigns it to the EndHour field.
-func (o *WeeklySchedule) SetEndHour(v int32) {
+// SetEndHour gets a reference to the given int and assigns it to the EndHour field.
+func (o *WeeklySchedule) SetEndHour(v int) {
 	o.EndHour = &v
 }
 
 // GetEndMinute returns the EndMinute field value if set, zero value otherwise.
-func (o *WeeklySchedule) GetEndMinute() int32 {
+func (o *WeeklySchedule) GetEndMinute() int {
 	if o == nil || IsNil(o.EndMinute) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.EndMinute
@@ -117,7 +117,7 @@ func (o *WeeklySchedule) GetEndMinute() int32 {
 
 // GetEndMinuteOk returns a tuple with the EndMinute field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WeeklySchedule) GetEndMinuteOk() (*int32, bool) {
+func (o *WeeklySchedule) GetEndMinuteOk() (*int, bool) {
 	if o == nil || IsNil(o.EndMinute) {
 		return nil, false
 	}
@@ -133,15 +133,15 @@ func (o *WeeklySchedule) HasEndMinute() bool {
 	return false
 }
 
-// SetEndMinute gets a reference to the given int32 and assigns it to the EndMinute field.
-func (o *WeeklySchedule) SetEndMinute(v int32) {
+// SetEndMinute gets a reference to the given int and assigns it to the EndMinute field.
+func (o *WeeklySchedule) SetEndMinute(v int) {
 	o.EndMinute = &v
 }
 
 // GetStartHour returns the StartHour field value if set, zero value otherwise.
-func (o *WeeklySchedule) GetStartHour() int32 {
+func (o *WeeklySchedule) GetStartHour() int {
 	if o == nil || IsNil(o.StartHour) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.StartHour
@@ -149,7 +149,7 @@ func (o *WeeklySchedule) GetStartHour() int32 {
 
 // GetStartHourOk returns a tuple with the StartHour field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WeeklySchedule) GetStartHourOk() (*int32, bool) {
+func (o *WeeklySchedule) GetStartHourOk() (*int, bool) {
 	if o == nil || IsNil(o.StartHour) {
 		return nil, false
 	}
@@ -165,15 +165,15 @@ func (o *WeeklySchedule) HasStartHour() bool {
 	return false
 }
 
-// SetStartHour gets a reference to the given int32 and assigns it to the StartHour field.
-func (o *WeeklySchedule) SetStartHour(v int32) {
+// SetStartHour gets a reference to the given int and assigns it to the StartHour field.
+func (o *WeeklySchedule) SetStartHour(v int) {
 	o.StartHour = &v
 }
 
 // GetStartMinute returns the StartMinute field value if set, zero value otherwise.
-func (o *WeeklySchedule) GetStartMinute() int32 {
+func (o *WeeklySchedule) GetStartMinute() int {
 	if o == nil || IsNil(o.StartMinute) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.StartMinute
@@ -181,7 +181,7 @@ func (o *WeeklySchedule) GetStartMinute() int32 {
 
 // GetStartMinuteOk returns a tuple with the StartMinute field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WeeklySchedule) GetStartMinuteOk() (*int32, bool) {
+func (o *WeeklySchedule) GetStartMinuteOk() (*int, bool) {
 	if o == nil || IsNil(o.StartMinute) {
 		return nil, false
 	}
@@ -197,8 +197,8 @@ func (o *WeeklySchedule) HasStartMinute() bool {
 	return false
 }
 
-// SetStartMinute gets a reference to the given int32 and assigns it to the StartMinute field.
-func (o *WeeklySchedule) SetStartMinute(v int32) {
+// SetStartMinute gets a reference to the given int and assigns it to the StartMinute field.
+func (o *WeeklySchedule) SetStartMinute(v int) {
 	o.StartMinute = &v
 }
 

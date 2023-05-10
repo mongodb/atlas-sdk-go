@@ -26,11 +26,11 @@ type AvailableDeployment struct {
 	// Human-readable label that identifies this cluster.
 	Name string `json:"name"`
 	// Size of the Oplog on disk at the time of the request expressed in MB.
-	OplogSizeMB *int32 `json:"oplogSizeMB,omitempty"`
+	OplogSizeMB *int `json:"oplogSizeMB,omitempty"`
 	// Flag that indicates whether someone configured this cluster as a sharded cluster.  - If `true`, this cluster serves as a sharded cluster. - If `false`, this cluster serves as a replica set.
 	Sharded bool `json:"sharded"`
 	// Number of shards that comprise this cluster.
-	ShardsSize *int32 `json:"shardsSize,omitempty"`
+	ShardsSize *int `json:"shardsSize,omitempty"`
 	// Flag that indicates whether someone enabled TLS for this cluster.
 	TlsEnabled bool `json:"tlsEnabled"`
 }
@@ -251,9 +251,9 @@ func (o *AvailableDeployment) SetName(v string) {
 }
 
 // GetOplogSizeMB returns the OplogSizeMB field value if set, zero value otherwise.
-func (o *AvailableDeployment) GetOplogSizeMB() int32 {
+func (o *AvailableDeployment) GetOplogSizeMB() int {
 	if o == nil || IsNil(o.OplogSizeMB) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.OplogSizeMB
@@ -261,7 +261,7 @@ func (o *AvailableDeployment) GetOplogSizeMB() int32 {
 
 // GetOplogSizeMBOk returns a tuple with the OplogSizeMB field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AvailableDeployment) GetOplogSizeMBOk() (*int32, bool) {
+func (o *AvailableDeployment) GetOplogSizeMBOk() (*int, bool) {
 	if o == nil || IsNil(o.OplogSizeMB) {
 		return nil, false
 	}
@@ -277,8 +277,8 @@ func (o *AvailableDeployment) HasOplogSizeMB() bool {
 	return false
 }
 
-// SetOplogSizeMB gets a reference to the given int32 and assigns it to the OplogSizeMB field.
-func (o *AvailableDeployment) SetOplogSizeMB(v int32) {
+// SetOplogSizeMB gets a reference to the given int and assigns it to the OplogSizeMB field.
+func (o *AvailableDeployment) SetOplogSizeMB(v int) {
 	o.OplogSizeMB = &v
 }
 
@@ -307,9 +307,9 @@ func (o *AvailableDeployment) SetSharded(v bool) {
 }
 
 // GetShardsSize returns the ShardsSize field value if set, zero value otherwise.
-func (o *AvailableDeployment) GetShardsSize() int32 {
+func (o *AvailableDeployment) GetShardsSize() int {
 	if o == nil || IsNil(o.ShardsSize) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.ShardsSize
@@ -317,7 +317,7 @@ func (o *AvailableDeployment) GetShardsSize() int32 {
 
 // GetShardsSizeOk returns a tuple with the ShardsSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AvailableDeployment) GetShardsSizeOk() (*int32, bool) {
+func (o *AvailableDeployment) GetShardsSizeOk() (*int, bool) {
 	if o == nil || IsNil(o.ShardsSize) {
 		return nil, false
 	}
@@ -333,8 +333,8 @@ func (o *AvailableDeployment) HasShardsSize() bool {
 	return false
 }
 
-// SetShardsSize gets a reference to the given int32 and assigns it to the ShardsSize field.
-func (o *AvailableDeployment) SetShardsSize(v int32) {
+// SetShardsSize gets a reference to the given int and assigns it to the ShardsSize field.
+func (o *AvailableDeployment) SetShardsSize(v int) {
 	o.ShardsSize = &v
 }
 

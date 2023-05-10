@@ -14,9 +14,9 @@ type GroupMaintenanceWindow struct {
 	// Flag that indicates whether MongoDB Cloud should defer all maintenance windows for one week after you enable them.
 	AutoDeferOnceEnabled *bool `json:"autoDeferOnceEnabled,omitempty"`
 	// One-based integer that represents the day of the week that the maintenance window starts.  | Value | Day of Week | |---|---| | `1` | Sunday | | `2` | Monday | | `3` | Tuesday | | `4` | Wednesday | | `5` | Thursday | | `6` | Friday | | `7` | Saturday |
-	DayOfWeek int32 `json:"dayOfWeek"`
+	DayOfWeek int `json:"dayOfWeek"`
 	// Zero-based integer that represents the hour of the of the day that the maintenance window starts according to a 24-hour clock. Use `0` for midnight and `12` for noon.
-	HourOfDay int32 `json:"hourOfDay"`
+	HourOfDay int `json:"hourOfDay"`
 	// Flag that indicates whether MongoDB Cloud starts the maintenance window immediately upon receiving this request. To start the maintenance window immediately for your project, MongoDB Cloud must have maintenance scheduled and you must set a maintenance window. This flag resets to `false` after MongoDB Cloud completes maintenance.
 	StartASAP *bool `json:"startASAP,omitempty"`
 }
@@ -25,7 +25,7 @@ type GroupMaintenanceWindow struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGroupMaintenanceWindow(dayOfWeek int32, hourOfDay int32) *GroupMaintenanceWindow {
+func NewGroupMaintenanceWindow(dayOfWeek int, hourOfDay int) *GroupMaintenanceWindow {
 	this := GroupMaintenanceWindow{}
 	this.DayOfWeek = dayOfWeek
 	this.HourOfDay = hourOfDay
@@ -73,9 +73,9 @@ func (o *GroupMaintenanceWindow) SetAutoDeferOnceEnabled(v bool) {
 }
 
 // GetDayOfWeek returns the DayOfWeek field value
-func (o *GroupMaintenanceWindow) GetDayOfWeek() int32 {
+func (o *GroupMaintenanceWindow) GetDayOfWeek() int {
 	if o == nil {
-		var ret int32
+		var ret int
 		return ret
 	}
 
@@ -84,7 +84,7 @@ func (o *GroupMaintenanceWindow) GetDayOfWeek() int32 {
 
 // GetDayOfWeekOk returns a tuple with the DayOfWeek field value
 // and a boolean to check if the value has been set.
-func (o *GroupMaintenanceWindow) GetDayOfWeekOk() (*int32, bool) {
+func (o *GroupMaintenanceWindow) GetDayOfWeekOk() (*int, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -92,14 +92,14 @@ func (o *GroupMaintenanceWindow) GetDayOfWeekOk() (*int32, bool) {
 }
 
 // SetDayOfWeek sets field value
-func (o *GroupMaintenanceWindow) SetDayOfWeek(v int32) {
+func (o *GroupMaintenanceWindow) SetDayOfWeek(v int) {
 	o.DayOfWeek = v
 }
 
 // GetHourOfDay returns the HourOfDay field value
-func (o *GroupMaintenanceWindow) GetHourOfDay() int32 {
+func (o *GroupMaintenanceWindow) GetHourOfDay() int {
 	if o == nil {
-		var ret int32
+		var ret int
 		return ret
 	}
 
@@ -108,7 +108,7 @@ func (o *GroupMaintenanceWindow) GetHourOfDay() int32 {
 
 // GetHourOfDayOk returns a tuple with the HourOfDay field value
 // and a boolean to check if the value has been set.
-func (o *GroupMaintenanceWindow) GetHourOfDayOk() (*int32, bool) {
+func (o *GroupMaintenanceWindow) GetHourOfDayOk() (*int, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -116,7 +116,7 @@ func (o *GroupMaintenanceWindow) GetHourOfDayOk() (*int32, bool) {
 }
 
 // SetHourOfDay sets field value
-func (o *GroupMaintenanceWindow) SetHourOfDay(v int32) {
+func (o *GroupMaintenanceWindow) SetHourOfDay(v int) {
 	o.HourOfDay = v
 }
 

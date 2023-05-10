@@ -12,11 +12,11 @@ var _ MappedNullable = &SummaryNotification{}
 // SummaryNotification Summary notification configuration for MongoDB Cloud to send information when an event triggers an alert condition.
 type SummaryNotification struct {
 	// Number of minutes that MongoDB Cloud waits after detecting an alert condition before it sends out the first notification.
-	DelayMin *int32 `json:"delayMin,omitempty"`
+	DelayMin *int `json:"delayMin,omitempty"`
 	// Email address to which MongoDB Cloud sends alert notifications. The resource requires this parameter when `\"notifications.[n].typeName\" : \"EMAIL\"`. You don’t need to set this value to send emails to individual or groups of MongoDB Cloud users including:  - specific MongoDB Cloud users (`\"notifications.[n].typeName\" : \"USER\"`) - MongoDB Cloud users with specific project roles (`\"notifications.[n].typeName\" : \"GROUP\"`) - MongoDB Cloud users with specific organization roles (`\"notifications.[n].typeName\" : \"ORG\"`) - MongoDB Cloud teams (`\"notifications.[n].typeName\" : \"TEAM\"`)  To send emails to one MongoDB Cloud user or grouping of users, set the **notifications.[n].emailEnabled** parameter.
 	EmailAddress *string `json:"emailAddress,omitempty"`
 	// Number of minutes to wait between successive notifications. MongoDB Cloud sends notifications until someone acknowledges the unacknowledged alert.  PagerDuty, VictorOps, and OpsGenie notifications don't return this element. Configure and manage the notification interval within each of those services.
-	IntervalMin *int32 `json:"intervalMin,omitempty"`
+	IntervalMin *int `json:"intervalMin,omitempty"`
 	// Human-readable label that displays the alert notification type.
 	TypeName string `json:"typeName"`
 }
@@ -40,9 +40,9 @@ func NewSummaryNotificationWithDefaults() *SummaryNotification {
 }
 
 // GetDelayMin returns the DelayMin field value if set, zero value otherwise.
-func (o *SummaryNotification) GetDelayMin() int32 {
+func (o *SummaryNotification) GetDelayMin() int {
 	if o == nil || IsNil(o.DelayMin) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.DelayMin
@@ -50,7 +50,7 @@ func (o *SummaryNotification) GetDelayMin() int32 {
 
 // GetDelayMinOk returns a tuple with the DelayMin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SummaryNotification) GetDelayMinOk() (*int32, bool) {
+func (o *SummaryNotification) GetDelayMinOk() (*int, bool) {
 	if o == nil || IsNil(o.DelayMin) {
 		return nil, false
 	}
@@ -66,8 +66,8 @@ func (o *SummaryNotification) HasDelayMin() bool {
 	return false
 }
 
-// SetDelayMin gets a reference to the given int32 and assigns it to the DelayMin field.
-func (o *SummaryNotification) SetDelayMin(v int32) {
+// SetDelayMin gets a reference to the given int and assigns it to the DelayMin field.
+func (o *SummaryNotification) SetDelayMin(v int) {
 	o.DelayMin = &v
 }
 
@@ -104,9 +104,9 @@ func (o *SummaryNotification) SetEmailAddress(v string) {
 }
 
 // GetIntervalMin returns the IntervalMin field value if set, zero value otherwise.
-func (o *SummaryNotification) GetIntervalMin() int32 {
+func (o *SummaryNotification) GetIntervalMin() int {
 	if o == nil || IsNil(o.IntervalMin) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.IntervalMin
@@ -114,7 +114,7 @@ func (o *SummaryNotification) GetIntervalMin() int32 {
 
 // GetIntervalMinOk returns a tuple with the IntervalMin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SummaryNotification) GetIntervalMinOk() (*int32, bool) {
+func (o *SummaryNotification) GetIntervalMinOk() (*int, bool) {
 	if o == nil || IsNil(o.IntervalMin) {
 		return nil, false
 	}
@@ -130,8 +130,8 @@ func (o *SummaryNotification) HasIntervalMin() bool {
 	return false
 }
 
-// SetIntervalMin gets a reference to the given int32 and assigns it to the IntervalMin field.
-func (o *SummaryNotification) SetIntervalMin(v int32) {
+// SetIntervalMin gets a reference to the given int and assigns it to the IntervalMin field.
+func (o *SummaryNotification) SetIntervalMin(v int) {
 	o.IntervalMin = &v
 }
 

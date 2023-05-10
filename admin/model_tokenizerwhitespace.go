@@ -12,7 +12,7 @@ var _ MappedNullable = &Tokenizerwhitespace{}
 // Tokenizerwhitespace Tokenizer that creates tokens based on occurrences of whitespace between words.
 type Tokenizerwhitespace struct {
 	// Maximum number of characters in a single token. Tokens greater than this length are split at this length into multiple tokens.
-	MaxTokenLength *int32 `json:"maxTokenLength,omitempty"`
+	MaxTokenLength *int `json:"maxTokenLength,omitempty"`
 	// Human-readable label that identifies this tokenizer type.
 	Type string `json:"type"`
 }
@@ -23,7 +23,7 @@ type Tokenizerwhitespace struct {
 // will change when the set of required properties is changed
 func NewTokenizerwhitespace(type_ string) *Tokenizerwhitespace {
 	this := Tokenizerwhitespace{}
-	var maxTokenLength int32 = 255
+	var maxTokenLength int = 255
 	this.MaxTokenLength = &maxTokenLength
 	this.Type = type_
 	return &this
@@ -34,15 +34,15 @@ func NewTokenizerwhitespace(type_ string) *Tokenizerwhitespace {
 // but it doesn't guarantee that properties required by API are set
 func NewTokenizerwhitespaceWithDefaults() *Tokenizerwhitespace {
 	this := Tokenizerwhitespace{}
-	var maxTokenLength int32 = 255
+	var maxTokenLength int = 255
 	this.MaxTokenLength = &maxTokenLength
 	return &this
 }
 
 // GetMaxTokenLength returns the MaxTokenLength field value if set, zero value otherwise.
-func (o *Tokenizerwhitespace) GetMaxTokenLength() int32 {
+func (o *Tokenizerwhitespace) GetMaxTokenLength() int {
 	if o == nil || IsNil(o.MaxTokenLength) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.MaxTokenLength
@@ -50,7 +50,7 @@ func (o *Tokenizerwhitespace) GetMaxTokenLength() int32 {
 
 // GetMaxTokenLengthOk returns a tuple with the MaxTokenLength field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Tokenizerwhitespace) GetMaxTokenLengthOk() (*int32, bool) {
+func (o *Tokenizerwhitespace) GetMaxTokenLengthOk() (*int, bool) {
 	if o == nil || IsNil(o.MaxTokenLength) {
 		return nil, false
 	}
@@ -66,8 +66,8 @@ func (o *Tokenizerwhitespace) HasMaxTokenLength() bool {
 	return false
 }
 
-// SetMaxTokenLength gets a reference to the given int32 and assigns it to the MaxTokenLength field.
-func (o *Tokenizerwhitespace) SetMaxTokenLength(v int32) {
+// SetMaxTokenLength gets a reference to the given int and assigns it to the MaxTokenLength field.
+func (o *Tokenizerwhitespace) SetMaxTokenLength(v int) {
 	o.MaxTokenLength = &v
 }
 

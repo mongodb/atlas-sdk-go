@@ -17,7 +17,7 @@ type GCPRegionConfig struct {
 	ReadOnlySpecs        *DedicatedHardwareSpec `json:"readOnlySpecs,omitempty"`
 	ElectableSpecs       *HardwareSpec          `json:"electableSpecs,omitempty"`
 	// Precedence is given to this region when a primary election occurs. If your **regionConfigs** has only **readOnlySpecs**, **analyticsSpecs**, or both, set this value to `0`. If you have multiple **regionConfigs** objects (your cluster is multi-region or multi-cloud), they must have priorities in descending order. The highest priority is `7`.  **Example:** If you have three regions, their priorities would be `7`, `6`, and `5` respectively. If you added two more regions for supporting electable nodes, the priorities of those regions would be `4` and `3` respectively.
-	Priority *int32 `json:"priority,omitempty"`
+	Priority *int `json:"priority,omitempty"`
 	// Cloud service provider on which MongoDB Cloud provisions the hosts. Set dedicated clusters to `AWS`, `GCP`, `AZURE` or `TENANT`.
 	ProviderName *string `json:"providerName,omitempty"`
 	// Physical location of your MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. It assigns the VPC a Classless Inter-Domain Routing (CIDR) block. To limit a new VPC peering connection to one Classless Inter-Domain Routing (CIDR) block and region, create the connection first. Deploy the cluster after the connection starts. GCP Clusters and Multi-region clusters require one VPC peering connection for each region. MongoDB nodes can use only the peering connection that resides in the same region as the nodes to communicate with the peered VPC.
@@ -202,9 +202,9 @@ func (o *GCPRegionConfig) SetElectableSpecs(v HardwareSpec) {
 }
 
 // GetPriority returns the Priority field value if set, zero value otherwise.
-func (o *GCPRegionConfig) GetPriority() int32 {
+func (o *GCPRegionConfig) GetPriority() int {
 	if o == nil || IsNil(o.Priority) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.Priority
@@ -212,7 +212,7 @@ func (o *GCPRegionConfig) GetPriority() int32 {
 
 // GetPriorityOk returns a tuple with the Priority field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GCPRegionConfig) GetPriorityOk() (*int32, bool) {
+func (o *GCPRegionConfig) GetPriorityOk() (*int, bool) {
 	if o == nil || IsNil(o.Priority) {
 		return nil, false
 	}
@@ -228,8 +228,8 @@ func (o *GCPRegionConfig) HasPriority() bool {
 	return false
 }
 
-// SetPriority gets a reference to the given int32 and assigns it to the Priority field.
-func (o *GCPRegionConfig) SetPriority(v int32) {
+// SetPriority gets a reference to the given int and assigns it to the Priority field.
+func (o *GCPRegionConfig) SetPriority(v int) {
 	o.Priority = &v
 }
 

@@ -13,7 +13,7 @@ var _ MappedNullable = &Error{}
 type Error struct {
 	Detail *string `json:"detail,omitempty"`
 	// HTTP status code returned with this error.
-	Error *int32 `json:"error,omitempty"`
+	Error *int `json:"error,omitempty"`
 	// Application error code returned with this error.
 	ErrorCode *string `json:"errorCode,omitempty"`
 	// Parameter uses to give more information about the error.
@@ -72,9 +72,9 @@ func (o *Error) SetDetail(v string) {
 }
 
 // GetError returns the Error field value if set, zero value otherwise.
-func (o *Error) GetError() int32 {
+func (o *Error) GetError() int {
 	if o == nil || IsNil(o.Error) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.Error
@@ -82,7 +82,7 @@ func (o *Error) GetError() int32 {
 
 // GetErrorOk returns a tuple with the Error field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Error) GetErrorOk() (*int32, bool) {
+func (o *Error) GetErrorOk() (*int, bool) {
 	if o == nil || IsNil(o.Error) {
 		return nil, false
 	}
@@ -98,8 +98,8 @@ func (o *Error) HasError() bool {
 	return false
 }
 
-// SetError gets a reference to the given int32 and assigns it to the Error field.
-func (o *Error) SetError(v int32) {
+// SetError gets a reference to the given int and assigns it to the Error field.
+func (o *Error) SetError(v int) {
 	o.Error = &v
 }
 

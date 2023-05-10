@@ -24,7 +24,7 @@ type DataProtectionSettings struct {
 	// Unique 24-hexadecimal digit string that identifies the project for the Backup Compliance Policy.
 	ProjectId *string `json:"projectId,omitempty"`
 	// Number of previous days that you can restore back to with Continuous Cloud Backup with a Backup Compliance Policy. You must specify a positive, non-zero integer, and the maximum retention window can't exceed the hourly retention time. This parameter applies only to Continuous Cloud Backups with a Backup Compliance Policy.
-	RestoreWindowDays *int32 `json:"restoreWindowDays,omitempty"`
+	RestoreWindowDays *int `json:"restoreWindowDays,omitempty"`
 	// List that contains the specifications for one scheduled policy.
 	ScheduledPolicyItems []PolicyItem `json:"scheduledPolicyItems,omitempty"`
 	// Label that indicates the state of the Backup Compliance Policy settings. MongoDB Cloud ignores this setting when you enable or update the Backup Compliance Policy settings.
@@ -257,9 +257,9 @@ func (o *DataProtectionSettings) SetProjectId(v string) {
 }
 
 // GetRestoreWindowDays returns the RestoreWindowDays field value if set, zero value otherwise.
-func (o *DataProtectionSettings) GetRestoreWindowDays() int32 {
+func (o *DataProtectionSettings) GetRestoreWindowDays() int {
 	if o == nil || IsNil(o.RestoreWindowDays) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.RestoreWindowDays
@@ -267,7 +267,7 @@ func (o *DataProtectionSettings) GetRestoreWindowDays() int32 {
 
 // GetRestoreWindowDaysOk returns a tuple with the RestoreWindowDays field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DataProtectionSettings) GetRestoreWindowDaysOk() (*int32, bool) {
+func (o *DataProtectionSettings) GetRestoreWindowDaysOk() (*int, bool) {
 	if o == nil || IsNil(o.RestoreWindowDays) {
 		return nil, false
 	}
@@ -283,8 +283,8 @@ func (o *DataProtectionSettings) HasRestoreWindowDays() bool {
 	return false
 }
 
-// SetRestoreWindowDays gets a reference to the given int32 and assigns it to the RestoreWindowDays field.
-func (o *DataProtectionSettings) SetRestoreWindowDays(v int32) {
+// SetRestoreWindowDays gets a reference to the given int and assigns it to the RestoreWindowDays field.
+func (o *DataProtectionSettings) SetRestoreWindowDays(v int) {
 	o.RestoreWindowDays = &v
 }
 

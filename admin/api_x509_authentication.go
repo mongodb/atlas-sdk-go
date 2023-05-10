@@ -374,16 +374,16 @@ type ListDatabaseUserCertificatesApiRequest struct {
 	groupId      string
 	username     string
 	includeCount *bool
-	itemsPerPage *int32
-	pageNum      *int32
+	itemsPerPage *int
+	pageNum      *int
 }
 
 type ListDatabaseUserCertificatesApiParams struct {
 	GroupId      string
 	Username     string
 	IncludeCount *bool
-	ItemsPerPage *int32
-	PageNum      *int32
+	ItemsPerPage *int
+	PageNum      *int
 }
 
 func (a *X509AuthenticationApiService) ListDatabaseUserCertificatesWithParams(ctx context.Context, args *ListDatabaseUserCertificatesApiParams) ListDatabaseUserCertificatesApiRequest {
@@ -405,13 +405,13 @@ func (r ListDatabaseUserCertificatesApiRequest) IncludeCount(includeCount bool) 
 }
 
 // Number of items that the response returns per page.
-func (r ListDatabaseUserCertificatesApiRequest) ItemsPerPage(itemsPerPage int32) ListDatabaseUserCertificatesApiRequest {
+func (r ListDatabaseUserCertificatesApiRequest) ItemsPerPage(itemsPerPage int) ListDatabaseUserCertificatesApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListDatabaseUserCertificatesApiRequest) PageNum(pageNum int32) ListDatabaseUserCertificatesApiRequest {
+func (r ListDatabaseUserCertificatesApiRequest) PageNum(pageNum int) ListDatabaseUserCertificatesApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
@@ -479,14 +479,14 @@ func (a *X509AuthenticationApiService) listDatabaseUserCertificatesExecute(r Lis
 	if r.itemsPerPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int = 100
 		r.itemsPerPage = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.pageNum != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	} else {
-		var defaultValue int32 = 1
+		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	}

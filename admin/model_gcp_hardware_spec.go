@@ -14,7 +14,7 @@ type GCPHardwareSpec struct {
 	// Hardware specification for the instance sizes in this region. Each instance size has a default storage and memory capacity. The instance size you select applies to all the data-bearing hosts in your instance size.
 	InstanceSize *string `json:"instanceSize,omitempty"`
 	// Number of nodes of the given type for MongoDB Cloud to deploy to the region.
-	NodeCount *int32 `json:"nodeCount,omitempty"`
+	NodeCount *int `json:"nodeCount,omitempty"`
 }
 
 // NewGCPHardwareSpec instantiates a new GCPHardwareSpec object
@@ -67,9 +67,9 @@ func (o *GCPHardwareSpec) SetInstanceSize(v string) {
 }
 
 // GetNodeCount returns the NodeCount field value if set, zero value otherwise.
-func (o *GCPHardwareSpec) GetNodeCount() int32 {
+func (o *GCPHardwareSpec) GetNodeCount() int {
 	if o == nil || IsNil(o.NodeCount) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.NodeCount
@@ -77,7 +77,7 @@ func (o *GCPHardwareSpec) GetNodeCount() int32 {
 
 // GetNodeCountOk returns a tuple with the NodeCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GCPHardwareSpec) GetNodeCountOk() (*int32, bool) {
+func (o *GCPHardwareSpec) GetNodeCountOk() (*int, bool) {
 	if o == nil || IsNil(o.NodeCount) {
 		return nil, false
 	}
@@ -93,8 +93,8 @@ func (o *GCPHardwareSpec) HasNodeCount() bool {
 	return false
 }
 
-// SetNodeCount gets a reference to the given int32 and assigns it to the NodeCount field.
-func (o *GCPHardwareSpec) SetNodeCount(v int32) {
+// SetNodeCount gets a reference to the given int and assigns it to the NodeCount field.
+func (o *GCPHardwareSpec) SetNodeCount(v int) {
 	o.NodeCount = &v
 }
 

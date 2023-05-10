@@ -12,32 +12,32 @@ var _ MappedNullable = &SnapshotSchedule{}
 // SnapshotSchedule struct for SnapshotSchedule
 type SnapshotSchedule struct {
 	// Quantity of time expressed in minutes between successive cluster checkpoints. This parameter applies only to sharded clusters. This number determines the granularity of continuous cloud backups for sharded clusters.
-	ClusterCheckpointIntervalMin int32 `json:"clusterCheckpointIntervalMin"`
+	ClusterCheckpointIntervalMin int `json:"clusterCheckpointIntervalMin"`
 	// Unique 24-hexadecimal digit string that identifies the cluster with the snapshot you want to return.
 	ClusterId string `json:"clusterId"`
 	// Quantity of time to keep daily snapshots. MongoDB Cloud expresses this value in days. Set this value to `0` to disable daily snapshot retention.
-	DailySnapshotRetentionDays int32 `json:"dailySnapshotRetentionDays"`
+	DailySnapshotRetentionDays int `json:"dailySnapshotRetentionDays"`
 	// Unique 24-hexadecimal digit string that identifies the project that contains the cluster.
 	GroupId string `json:"groupId"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	Links []Link `json:"links,omitempty"`
 	// Number of months that MongoDB Cloud must keep monthly snapshots. Set this value to `0` to disable monthly snapshot retention.
-	MonthlySnapshotRetentionMonths int32 `json:"monthlySnapshotRetentionMonths"`
+	MonthlySnapshotRetentionMonths int `json:"monthlySnapshotRetentionMonths"`
 	// Number of hours before the current time from which MongoDB Cloud can create a Continuous Cloud Backup snapshot.
-	PointInTimeWindowHours int32 `json:"pointInTimeWindowHours"`
+	PointInTimeWindowHours int `json:"pointInTimeWindowHours"`
 	// Number of hours that must elapse before taking another snapshot.
-	SnapshotIntervalHours int32 `json:"snapshotIntervalHours"`
+	SnapshotIntervalHours int `json:"snapshotIntervalHours"`
 	// Number of days that MongoDB Cloud must keep recent snapshots.
-	SnapshotRetentionDays int32 `json:"snapshotRetentionDays"`
+	SnapshotRetentionDays int `json:"snapshotRetentionDays"`
 	// Number of weeks that MongoDB Cloud must keep weekly snapshots. Set this value to `0` to disable weekly snapshot retention.
-	WeeklySnapshotRetentionWeeks int32 `json:"weeklySnapshotRetentionWeeks"`
+	WeeklySnapshotRetentionWeeks int `json:"weeklySnapshotRetentionWeeks"`
 }
 
 // NewSnapshotSchedule instantiates a new SnapshotSchedule object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSnapshotSchedule(clusterCheckpointIntervalMin int32, clusterId string, dailySnapshotRetentionDays int32, groupId string, monthlySnapshotRetentionMonths int32, pointInTimeWindowHours int32, snapshotIntervalHours int32, snapshotRetentionDays int32, weeklySnapshotRetentionWeeks int32) *SnapshotSchedule {
+func NewSnapshotSchedule(clusterCheckpointIntervalMin int, clusterId string, dailySnapshotRetentionDays int, groupId string, monthlySnapshotRetentionMonths int, pointInTimeWindowHours int, snapshotIntervalHours int, snapshotRetentionDays int, weeklySnapshotRetentionWeeks int) *SnapshotSchedule {
 	this := SnapshotSchedule{}
 	this.ClusterCheckpointIntervalMin = clusterCheckpointIntervalMin
 	this.ClusterId = clusterId
@@ -60,9 +60,9 @@ func NewSnapshotScheduleWithDefaults() *SnapshotSchedule {
 }
 
 // GetClusterCheckpointIntervalMin returns the ClusterCheckpointIntervalMin field value
-func (o *SnapshotSchedule) GetClusterCheckpointIntervalMin() int32 {
+func (o *SnapshotSchedule) GetClusterCheckpointIntervalMin() int {
 	if o == nil {
-		var ret int32
+		var ret int
 		return ret
 	}
 
@@ -71,7 +71,7 @@ func (o *SnapshotSchedule) GetClusterCheckpointIntervalMin() int32 {
 
 // GetClusterCheckpointIntervalMinOk returns a tuple with the ClusterCheckpointIntervalMin field value
 // and a boolean to check if the value has been set.
-func (o *SnapshotSchedule) GetClusterCheckpointIntervalMinOk() (*int32, bool) {
+func (o *SnapshotSchedule) GetClusterCheckpointIntervalMinOk() (*int, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -79,7 +79,7 @@ func (o *SnapshotSchedule) GetClusterCheckpointIntervalMinOk() (*int32, bool) {
 }
 
 // SetClusterCheckpointIntervalMin sets field value
-func (o *SnapshotSchedule) SetClusterCheckpointIntervalMin(v int32) {
+func (o *SnapshotSchedule) SetClusterCheckpointIntervalMin(v int) {
 	o.ClusterCheckpointIntervalMin = v
 }
 
@@ -108,9 +108,9 @@ func (o *SnapshotSchedule) SetClusterId(v string) {
 }
 
 // GetDailySnapshotRetentionDays returns the DailySnapshotRetentionDays field value
-func (o *SnapshotSchedule) GetDailySnapshotRetentionDays() int32 {
+func (o *SnapshotSchedule) GetDailySnapshotRetentionDays() int {
 	if o == nil {
-		var ret int32
+		var ret int
 		return ret
 	}
 
@@ -119,7 +119,7 @@ func (o *SnapshotSchedule) GetDailySnapshotRetentionDays() int32 {
 
 // GetDailySnapshotRetentionDaysOk returns a tuple with the DailySnapshotRetentionDays field value
 // and a boolean to check if the value has been set.
-func (o *SnapshotSchedule) GetDailySnapshotRetentionDaysOk() (*int32, bool) {
+func (o *SnapshotSchedule) GetDailySnapshotRetentionDaysOk() (*int, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -127,7 +127,7 @@ func (o *SnapshotSchedule) GetDailySnapshotRetentionDaysOk() (*int32, bool) {
 }
 
 // SetDailySnapshotRetentionDays sets field value
-func (o *SnapshotSchedule) SetDailySnapshotRetentionDays(v int32) {
+func (o *SnapshotSchedule) SetDailySnapshotRetentionDays(v int) {
 	o.DailySnapshotRetentionDays = v
 }
 
@@ -188,9 +188,9 @@ func (o *SnapshotSchedule) SetLinks(v []Link) {
 }
 
 // GetMonthlySnapshotRetentionMonths returns the MonthlySnapshotRetentionMonths field value
-func (o *SnapshotSchedule) GetMonthlySnapshotRetentionMonths() int32 {
+func (o *SnapshotSchedule) GetMonthlySnapshotRetentionMonths() int {
 	if o == nil {
-		var ret int32
+		var ret int
 		return ret
 	}
 
@@ -199,7 +199,7 @@ func (o *SnapshotSchedule) GetMonthlySnapshotRetentionMonths() int32 {
 
 // GetMonthlySnapshotRetentionMonthsOk returns a tuple with the MonthlySnapshotRetentionMonths field value
 // and a boolean to check if the value has been set.
-func (o *SnapshotSchedule) GetMonthlySnapshotRetentionMonthsOk() (*int32, bool) {
+func (o *SnapshotSchedule) GetMonthlySnapshotRetentionMonthsOk() (*int, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -207,14 +207,14 @@ func (o *SnapshotSchedule) GetMonthlySnapshotRetentionMonthsOk() (*int32, bool) 
 }
 
 // SetMonthlySnapshotRetentionMonths sets field value
-func (o *SnapshotSchedule) SetMonthlySnapshotRetentionMonths(v int32) {
+func (o *SnapshotSchedule) SetMonthlySnapshotRetentionMonths(v int) {
 	o.MonthlySnapshotRetentionMonths = v
 }
 
 // GetPointInTimeWindowHours returns the PointInTimeWindowHours field value
-func (o *SnapshotSchedule) GetPointInTimeWindowHours() int32 {
+func (o *SnapshotSchedule) GetPointInTimeWindowHours() int {
 	if o == nil {
-		var ret int32
+		var ret int
 		return ret
 	}
 
@@ -223,7 +223,7 @@ func (o *SnapshotSchedule) GetPointInTimeWindowHours() int32 {
 
 // GetPointInTimeWindowHoursOk returns a tuple with the PointInTimeWindowHours field value
 // and a boolean to check if the value has been set.
-func (o *SnapshotSchedule) GetPointInTimeWindowHoursOk() (*int32, bool) {
+func (o *SnapshotSchedule) GetPointInTimeWindowHoursOk() (*int, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -231,14 +231,14 @@ func (o *SnapshotSchedule) GetPointInTimeWindowHoursOk() (*int32, bool) {
 }
 
 // SetPointInTimeWindowHours sets field value
-func (o *SnapshotSchedule) SetPointInTimeWindowHours(v int32) {
+func (o *SnapshotSchedule) SetPointInTimeWindowHours(v int) {
 	o.PointInTimeWindowHours = v
 }
 
 // GetSnapshotIntervalHours returns the SnapshotIntervalHours field value
-func (o *SnapshotSchedule) GetSnapshotIntervalHours() int32 {
+func (o *SnapshotSchedule) GetSnapshotIntervalHours() int {
 	if o == nil {
-		var ret int32
+		var ret int
 		return ret
 	}
 
@@ -247,7 +247,7 @@ func (o *SnapshotSchedule) GetSnapshotIntervalHours() int32 {
 
 // GetSnapshotIntervalHoursOk returns a tuple with the SnapshotIntervalHours field value
 // and a boolean to check if the value has been set.
-func (o *SnapshotSchedule) GetSnapshotIntervalHoursOk() (*int32, bool) {
+func (o *SnapshotSchedule) GetSnapshotIntervalHoursOk() (*int, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -255,14 +255,14 @@ func (o *SnapshotSchedule) GetSnapshotIntervalHoursOk() (*int32, bool) {
 }
 
 // SetSnapshotIntervalHours sets field value
-func (o *SnapshotSchedule) SetSnapshotIntervalHours(v int32) {
+func (o *SnapshotSchedule) SetSnapshotIntervalHours(v int) {
 	o.SnapshotIntervalHours = v
 }
 
 // GetSnapshotRetentionDays returns the SnapshotRetentionDays field value
-func (o *SnapshotSchedule) GetSnapshotRetentionDays() int32 {
+func (o *SnapshotSchedule) GetSnapshotRetentionDays() int {
 	if o == nil {
-		var ret int32
+		var ret int
 		return ret
 	}
 
@@ -271,7 +271,7 @@ func (o *SnapshotSchedule) GetSnapshotRetentionDays() int32 {
 
 // GetSnapshotRetentionDaysOk returns a tuple with the SnapshotRetentionDays field value
 // and a boolean to check if the value has been set.
-func (o *SnapshotSchedule) GetSnapshotRetentionDaysOk() (*int32, bool) {
+func (o *SnapshotSchedule) GetSnapshotRetentionDaysOk() (*int, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -279,14 +279,14 @@ func (o *SnapshotSchedule) GetSnapshotRetentionDaysOk() (*int32, bool) {
 }
 
 // SetSnapshotRetentionDays sets field value
-func (o *SnapshotSchedule) SetSnapshotRetentionDays(v int32) {
+func (o *SnapshotSchedule) SetSnapshotRetentionDays(v int) {
 	o.SnapshotRetentionDays = v
 }
 
 // GetWeeklySnapshotRetentionWeeks returns the WeeklySnapshotRetentionWeeks field value
-func (o *SnapshotSchedule) GetWeeklySnapshotRetentionWeeks() int32 {
+func (o *SnapshotSchedule) GetWeeklySnapshotRetentionWeeks() int {
 	if o == nil {
-		var ret int32
+		var ret int
 		return ret
 	}
 
@@ -295,7 +295,7 @@ func (o *SnapshotSchedule) GetWeeklySnapshotRetentionWeeks() int32 {
 
 // GetWeeklySnapshotRetentionWeeksOk returns a tuple with the WeeklySnapshotRetentionWeeks field value
 // and a boolean to check if the value has been set.
-func (o *SnapshotSchedule) GetWeeklySnapshotRetentionWeeksOk() (*int32, bool) {
+func (o *SnapshotSchedule) GetWeeklySnapshotRetentionWeeksOk() (*int, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -303,7 +303,7 @@ func (o *SnapshotSchedule) GetWeeklySnapshotRetentionWeeksOk() (*int32, bool) {
 }
 
 // SetWeeklySnapshotRetentionWeeks sets field value
-func (o *SnapshotSchedule) SetWeeklySnapshotRetentionWeeks(v int32) {
+func (o *SnapshotSchedule) SetWeeklySnapshotRetentionWeeks(v int) {
 	o.WeeklySnapshotRetentionWeeks = v
 }
 
