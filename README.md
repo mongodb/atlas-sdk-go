@@ -27,13 +27,13 @@ Construct a new Atlas SDK client, then use the various services on the client to
 access different parts of the Atlas API. For example:
 
 ```go
-	import "go.mongodb.org/atlas-sdk/admin"
+import "go.mongodb.org/atlas-sdk/admin"
 
-   	apiKey := os.Getenv("MDB_API_KEY")
-	apiSecret := os.Getenv("MDB_API_SECRET")
+apiKey := os.Getenv("MDB_API_KEY")
+apiSecret := os.Getenv("MDB_API_SECRET")
 
-	sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-	projects, response, err := sdk.ProjectsApi.ListProjects(ctx).Execute()
+sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+projects, response, err := sdk.ProjectsApi.ListProjects(ctx).Execute()
 ```
 
 For documentation about obtaining private and public API token go to
@@ -46,11 +46,11 @@ https://www.mongodb.com/docs/atlas/reference/api-resources-spec/.
 
 Example for creating an dedicated MongoDB cluster on AWS infrastructure
 
-```
+```bash
 go run ./examples/example_cluster_aws.go
 ```
 
-### Authentication
+## Authentication
 
 The `atlas-sdk-go` library uses Digest authentication. 
 To obtain authentication tokens users can use Atlas UI or Atlas CLI 
@@ -58,19 +58,20 @@ For more information please follow: https://www.mongodb.com/docs/atlas/api/api-a
 
 ## Error Handling
 
-SDK enables users to obtain exact information about errors. 
+SDK enables users to obtain detailed information about errors returned from backend.
 Errors are represented by [ErrorObject](./admin/model_error.go).
 Users should rely on the error code for detection of specific error cases.
 
-Fetching error code:
+### Fetching Error Object
 ```go
 import errors "go.mongodb.org/atlas-sdk/admin"
 
+projects, response, err := sdk.ProjectsApi.ListProjects(ctx).Execute()
 apiError := errors.AsError(err)
 fmt.Println(apiError)
 ```
 
-Checking if error code exists:
+### Checking for existence of specific error code
 ```go
 import errors "go.mongodb.org/atlas-sdk/admin"
 
