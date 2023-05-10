@@ -1,5 +1,5 @@
 generatorName: go
-gitRepoId: go-client-mongodb-atlas
+gitRepoId: atlas-sdk-go
 gitUserId: mongodb
 vanityURL: go.mongodb.org/atlas
 templateDir: "./config/go-templates"
