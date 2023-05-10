@@ -1,6 +1,8 @@
-name: Generate Client Dev
+name: Generate Dev SDK 
 on:
   workflow_dispatch:
+  schedule:
+   - cron: '30 8 * * MON'
   
 jobs:
   generate-client:
@@ -8,11 +10,9 @@ jobs:
     steps:
       - uses: actions/setup-go@v4
         with:
-          go-version: 1.19
+          go-version: 1.20
       - name: Checkout
         uses: actions/checkout@v3
-        with:
-          ref: sdkv2
       - name: Fetch changes
         working-directory: ./tools
         run: |
@@ -30,11 +30,38 @@ jobs:
       - uses: peter-evans/create-pull-request@v5
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         with:
-          title: "Test OpenAPI client update"
-          commit-message: "openapi client update"
+          title: "APIBot: GO SDK Dev Preview"
+          commit-message: "temp: client update"
           delete-branch: true
           draft: true
-          base: sdkv2
-          branch: sdkv2dev
-          body: "Alpha SDK for testing"
+          branch: dev-latest
+          body: |
+            Automatic update for MongoDB Atlas Go Client based on **release candidate* OpenAPI file.
+
+            > NOTE: This PR provides notifications for stability of the RC OpenAPI files
+            > It is not intented to be merged!
+            > When PR is closed the new PR will be automatically regenerated
+            
+            ## Using early development changes
+
+            ```
+              ▶ go get go.mongodb.org/atlas@dev-latest   
+            ```
+
+            ## Automated checks done for dev sdk
+
+            1. Compilation and unit tests
+            2. Documentation style
+            3. Transformation engine linting
+
+            ## Release schedule
+            
+            PR is updated every Monday with latest changes from the RC for the API.
+            PR can be updated manually by running workflow: https://github.com/mongodb/atlas-sdk-go/actions/workflows/autoupdate-dev.yaml
+
+
+            
+
+
+
 
