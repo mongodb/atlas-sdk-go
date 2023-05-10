@@ -20,14 +20,14 @@ go install go.mongodb.org/atlas
 ### Using in the code
 
 ```go
-mongodbatlas import "go.mongodb.org/atlas/mongodbatlasv2"
+mongodbatlas import "go.mongodb.org/atlas/admin"
 ```
 
 Construct a new Atlas client, then use the various services on the client to
 access different parts of the Atlas API. For example:
 
 ```go
-	mongodbatlas import "go.mongodb.org/atlas/mongodbatlasv2"
+	mongodbatlas import "go.mongodb.org/atlas/admin"
 
    	apiKey := os.Getenv("MDB_API_KEY")
 	apiSecret := os.Getenv("MDB_API_SECRET")
@@ -88,7 +88,7 @@ almost never be shared between different users.
 
 Fetching error code:
 ```go
-import errors "go.mongodb.org/atlas/mongodbatlasv2"
+import errors "go.mongodb.org/atlas/admin"
 
 apiError := errors.AsError(err)
 fmt.Println(apiError)
@@ -96,7 +96,7 @@ fmt.Println(apiError)
 
 Checking if error code exists:
 ```go
-import errors "go.mongodb.org/atlas/mongodbatlasv2"
+import errors "go.mongodb.org/atlas/admin"
 
 
 if errors.IsErrorCode(err, "code"){
