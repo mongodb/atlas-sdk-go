@@ -59,17 +59,17 @@ type OrganizationsApi interface {
 	createOrganizationInvitationExecute(r CreateOrganizationInvitationApiRequest) (*OrganizationInvitation, *http.Response, error)
 
 	/*
-			DeleteOrganization Remove One Organization
+		DeleteOrganization Remove One Organization
 
-			Removes one specified organization. MongoDB Cloud imposes the following limits on this resource:
+		Removes one specified organization. MongoDB Cloud imposes the following limits on this resource:
 
-		 - Organizations with active projects cannot be removed.
-		 - All projects in the organization must be removed before you can remove the organization.
-		 To use this resource, the requesting API Key must have the Organization Owner role. This resource doesn't require the API Key to have an Access List.
+	 - Organizations with active projects cannot be removed.
+	 - All projects in the organization must be removed before you can remove the organization.
+	 To use this resource, the requesting API Key must have the Organization Owner role. This resource doesn't require the API Key to have an Access List.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-			@return DeleteOrganizationApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@return DeleteOrganizationApiRequest
 	*/
 	DeleteOrganization(ctx context.Context, orgId string) DeleteOrganizationApiRequest
 	/*
@@ -203,20 +203,20 @@ type OrganizationsApi interface {
 	listOrganizationInvitationsExecute(r ListOrganizationInvitationsApiRequest) ([]OrganizationInvitation, *http.Response, error)
 
 	/*
-			ListOrganizationProjects Return One or More Projects in One Organization
+		ListOrganizationProjects Return One or More Projects in One Organization
 
-			Returns multiple projects in the specified organization. Each organization can have multiple projects. Use projects to:
+		Returns multiple projects in the specified organization. Each organization can have multiple projects. Use projects to:
 
-		- Isolate different environments, such as development, test, or production environments, from each other.
-		- Associate different MongoDB Cloud users or teams with different environments, or give different permission to MongoDB Cloud users in different environments.
-		- Maintain separate cluster security configurations.
-		- Create different alert settings.
+	- Isolate different environments, such as development, test, or production environments, from each other.
+	- Associate different MongoDB Cloud users or teams with different environments, or give different permission to MongoDB Cloud users in different environments.
+	- Maintain separate cluster security configurations.
+	- Create different alert settings.
 
-		To use this resource, the requesting API Key must have the Organization Member role. This resource doesn't require the API Key to have an Access List.
+	To use this resource, the requesting API Key must have the Organization Member role. This resource doesn't require the API Key to have an Access List.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-			@return ListOrganizationProjectsApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@return ListOrganizationProjectsApiRequest
 	*/
 	ListOrganizationProjects(ctx context.Context, orgId string) ListOrganizationProjectsApiRequest
 	/*

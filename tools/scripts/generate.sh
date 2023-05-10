@@ -36,3 +36,4 @@ npm exec openapi-generator-cli -- generate \
     --type-mappings=integer=int\
     --ignore-file-override=config/.go-ignore
 
+gofmt -s -w "$SDK_FOLDER/"*.go

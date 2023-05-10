@@ -14,18 +14,18 @@ import (
 type X509AuthenticationApi interface {
 
 	/*
-			CreateDatabaseUserCertificate Create One X.509 Certificate for One MongoDB User
+		CreateDatabaseUserCertificate Create One X.509 Certificate for One MongoDB User
 
-			Generates one X.509 certificate for the specified MongoDB user. Atlas manages the certificate and MongoDB user that belong to one project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
+		Generates one X.509 certificate for the specified MongoDB user. Atlas manages the certificate and MongoDB user that belong to one project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
-		To get MongoDB Cloud to generate a managed certificate for a database user, set `"x509Type" : "MANAGED"` on the desired MongoDB Database User.
+	To get MongoDB Cloud to generate a managed certificate for a database user, set `"x509Type" : "MANAGED"` on the desired MongoDB Database User.
 
-		If you are managing your own Certificate Authority (CA) in Self-Managed X.509 mode, you must generate certificates for database users using your own CA.
+	If you are managing your own Certificate Authority (CA) in Self-Managed X.509 mode, you must generate certificates for database users using your own CA.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-			@param username Human-readable label that represents the MongoDB database user account for whom to create a certificate.
-			@return CreateDatabaseUserCertificateApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param username Human-readable label that represents the MongoDB database user account for whom to create a certificate.
+		@return CreateDatabaseUserCertificateApiRequest
 	*/
 	CreateDatabaseUserCertificate(ctx context.Context, groupId string, username string) CreateDatabaseUserCertificateApiRequest
 	/*
@@ -42,15 +42,15 @@ type X509AuthenticationApi interface {
 	createDatabaseUserCertificateExecute(r CreateDatabaseUserCertificateApiRequest) (*http.Response, error)
 
 	/*
-			DisableCustomerManagedX509 Disable Customer-Managed X.509
+		DisableCustomerManagedX509 Disable Customer-Managed X.509
 
-			Clears the customer-managed X.509 settings on a project, including the uploaded Certificate Authority, which disables self-managed X.509.
+		Clears the customer-managed X.509 settings on a project, including the uploaded Certificate Authority, which disables self-managed X.509.
 
-		 Updating this configuration triggers a rolling restart of the database. You must have the Project Owner role to use this endpoint. This resource doesn't require the API Key to have an Access List.
+	 Updating this configuration triggers a rolling restart of the database. You must have the Project Owner role to use this endpoint. This resource doesn't require the API Key to have an Access List.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-			@return DisableCustomerManagedX509ApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@return DisableCustomerManagedX509ApiRequest
 	*/
 	DisableCustomerManagedX509(ctx context.Context, groupId string) DisableCustomerManagedX509ApiRequest
 	/*
