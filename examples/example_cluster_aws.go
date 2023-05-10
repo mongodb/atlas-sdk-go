@@ -116,9 +116,9 @@ func createClusterRequest(projectId string) *admin.ClusterDescriptionV15 {
 	regionName := "US_EAST_1"
 
 	// Size
-	numShards := int32(1)
-	priority := int32(7)
-	nodeCount := int32(3)
+	numShards := int(1)
+	priority := int(7)
+	nodeCount := int(3)
 	instanceSize := "M10"
 
 	return &admin.ClusterDescriptionV15{
