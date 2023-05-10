@@ -1,8 +1,8 @@
-# Contributing OpenAPI generation tools
+# Contributing OpenAPI Generation Tools
 
 ## Changes in tools
 
-We need to regenerate our SDK every time tools are changed as - changes might affect the generated clients.
+We need to regenerate our SDK every time tools are changed as - changes might affect the generated SDK.
 PR based checks will verify if changes are up to date.
 
 ```bash
