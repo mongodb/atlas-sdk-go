@@ -58,5 +58,5 @@ openapi-pipeline:
 	echo "Running client generation"
 	$(MAKE) -C tools generate_client
 	echo "Validating generated SDK"
-	go test go.mongodb.org/atlas/test  
+	go test go.mongodb.org/atlas-sdk/test  
 
