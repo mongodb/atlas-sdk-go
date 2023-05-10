@@ -160,11 +160,11 @@ func (r DeleteLDAPConfigurationApiRequest) Execute() (*http.Response, error) {
 /*
 DeleteLDAPConfiguration Remove the Current LDAP User to DN Mapping
 
-Removes the current LDAP Distinguished Name mapping captured in the “userToDNMapping“ document from the LDAP configuration for the specified project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
+Removes the current LDAP Distinguished Name mapping captured in the ``userToDNMapping`` document from the LDAP configuration for the specified project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return DeleteLDAPConfigurationApiRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+ @return DeleteLDAPConfigurationApiRequest
 */
 func (a *LDAPConfigurationApiService) DeleteLDAPConfiguration(ctx context.Context, groupId string) DeleteLDAPConfigurationApiRequest {
 	return DeleteLDAPConfigurationApiRequest{
@@ -280,9 +280,9 @@ GetLDAPConfiguration Return the Current LDAP or X.509 Configuration
 
 Returns the current LDAP configuration for the specified project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return GetLDAPConfigurationApiRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+ @return GetLDAPConfigurationApiRequest
 */
 func (a *LDAPConfigurationApiService) GetLDAPConfiguration(ctx context.Context, groupId string) GetLDAPConfigurationApiRequest {
 	return GetLDAPConfigurationApiRequest{
@@ -293,8 +293,7 @@ func (a *LDAPConfigurationApiService) GetLDAPConfiguration(ctx context.Context, 
 }
 
 // Execute executes the request
-//
-//	@return UserSecurity
+//  @return UserSecurity
 func (a *LDAPConfigurationApiService) getLDAPConfigurationExecute(r GetLDAPConfigurationApiRequest) (*UserSecurity, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -413,10 +412,10 @@ GetLDAPConfigurationStatus Return the Status of One Verify LDAP Configuration Re
 
 Returns the status of one request to verify one LDAP configuration for the specified project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param requestId Unique string that identifies the request to verify an <abbr title=\"Lightweight Directory Access Protocol\">LDAP</abbr> configuration.
-	@return GetLDAPConfigurationStatusApiRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+ @param requestId Unique string that identifies the request to verify an <abbr title=\"Lightweight Directory Access Protocol\">LDAP</abbr> configuration.
+ @return GetLDAPConfigurationStatusApiRequest
 */
 func (a *LDAPConfigurationApiService) GetLDAPConfigurationStatus(ctx context.Context, groupId string, requestId string) GetLDAPConfigurationStatusApiRequest {
 	return GetLDAPConfigurationStatusApiRequest{
@@ -428,8 +427,7 @@ func (a *LDAPConfigurationApiService) GetLDAPConfigurationStatus(ctx context.Con
 }
 
 // Execute executes the request
-//
-//	@return NDSLDAPVerifyConnectivityJobRequest
+//  @return NDSLDAPVerifyConnectivityJobRequest
 func (a *LDAPConfigurationApiService) getLDAPConfigurationStatusExecute(r GetLDAPConfigurationStatusApiRequest) (*NDSLDAPVerifyConnectivityJobRequest, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -563,9 +561,9 @@ Edits the LDAP configuration for the specified project. To use this resource, th
 
 Updating this configuration triggers a rolling restart of the database.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return SaveLDAPConfigurationApiRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+ @return SaveLDAPConfigurationApiRequest
 */
 func (a *LDAPConfigurationApiService) SaveLDAPConfiguration(ctx context.Context, groupId string) SaveLDAPConfigurationApiRequest {
 	return SaveLDAPConfigurationApiRequest{
@@ -576,8 +574,7 @@ func (a *LDAPConfigurationApiService) SaveLDAPConfiguration(ctx context.Context,
 }
 
 // Execute executes the request
-//
-//	@return UserSecurity
+//  @return UserSecurity
 func (a *LDAPConfigurationApiService) saveLDAPConfigurationExecute(r SaveLDAPConfigurationApiRequest) (*UserSecurity, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -707,9 +704,9 @@ VerifyLDAPConfiguration Verify the LDAP Configuration in One Project
 
 Verifies the LDAP configuration for the specified project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return VerifyLDAPConfigurationApiRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+ @return VerifyLDAPConfigurationApiRequest
 */
 func (a *LDAPConfigurationApiService) VerifyLDAPConfiguration(ctx context.Context, groupId string) VerifyLDAPConfigurationApiRequest {
 	return VerifyLDAPConfigurationApiRequest{
@@ -720,8 +717,7 @@ func (a *LDAPConfigurationApiService) VerifyLDAPConfiguration(ctx context.Contex
 }
 
 // Execute executes the request
-//
-//	@return NDSLDAPVerifyConnectivityJobRequest
+//  @return NDSLDAPVerifyConnectivityJobRequest
 func (a *LDAPConfigurationApiService) verifyLDAPConfigurationExecute(r VerifyLDAPConfigurationApiRequest) (*NDSLDAPVerifyConnectivityJobRequest, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost

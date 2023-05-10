@@ -3,15 +3,18 @@ info:
   description: |-
     The MongoDB Atlas Administration API allows developers to manage all components in MongoDB Atlas.
 
-     The Atlas Administration API authenticates using HTTP Digest Authentication. Provide a programmatic API public key and corresponding private key as the username and password when constructing the HTTP request. For example, with [curl](https://en.wikipedia.org/wiki/CURL): `curl --user "{PUBLIC-KEY}:{PRIVATE-KEY}" --digest`
+    The Atlas Administration API uses HTTP Digest Authentication to authenticate requests. Provide a programmatic API public key and corresponding private key as the username and password when constructing the HTTP request. For example, to [return database access history](#tag/Access-Tracking/operation/listAccessLogsByClusterName) with [cURL](https://en.wikipedia.org/wiki/CURL), run the following command in the terminal:
 
-     To learn more, see [Get Started with the Atlas Administration API](https://www.mongodb.com/docs/atlas/configure-api-access/). For support, see [MongoDB Support](https://www.mongodb.com/support/get-started)
+    `curl --user "{PUBLIC-KEY}:{PRIVATE-KEY}" --digest "https://cloud.mongodb.com/api/atlas/v2.0/groups/{groupId}/dbAccessHistory/clusters/{clusterName}"`
+
+    To learn more, see [Get Started with the Atlas Administration API](https://www.mongodb.com/docs/atlas/configure-api-access/). For support, see [MongoDB Support](https://www.mongodb.com/support/get-started).
   license:
     name: CC BY-NC-SA 3.0 US
     url: https://creativecommons.org/licenses/by-nc-sa/3.0/us/
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
-  version: "2.0"
+  version: 2.0~473e95105a
+  x-xgen-sha: 473e95105a9395552133445d056cd3217a60ae01
 servers:
 - url: https://cloud.mongodb.com
 tags:
@@ -133,8 +136,9 @@ tags:
 
     If your MongoDB Cloud project contains a custom role that uses actions introduced in a specific MongoDB version, you must delete that role before you create clusters with an earlier MongoDB version. MongoDB Cloud clusters created after July 2020 use TLS version 1.2 by default. When you create a cluster, MongoDB Cloud creates a network container in the project for the cloud provider to which you deploy the cluster if one doesn't already exist.
   name: Multi-Cloud Clusters
-- description: "Returns, adds, edits, and removes network peering containers and peering\
-    \ connections."
+- description: |-
+    Returns, adds, edits, and removes network peering containers and peering connections.
+    When you deploy an M10+ dedicated cluster, Atlas creates a VPC for the selected provider and region or regions if no existing VPC or VPC peering connection exists for that provider and region. Atlas assigns the VPC a Classless Inter-Domain Routing (CIDR) block.
   name: Network Peering
 - description: "Returns, adds, edits, or removes an online archive."
   name: Online Archive
@@ -393,7 +397,12 @@ paths:
           pattern: "^([a-f0-9]{24})$"
       responses:
         "204":
-          $ref: '#/components/responses/noBody'
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/noBody'
+              x-xgen-version: 2023-01-01
+          description: Endpoint does not return a response body.
         "400":
           $ref: '#/components/responses/badRequest'
         "401":
@@ -774,7 +783,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: '#/components/schemas/IdentityProviderUpdate'
+              $ref: '#/components/schemas/SamlIdentityProviderUpdate'
         description: The identity provider that you want to update.
         required: true
       responses:
@@ -962,7 +971,12 @@ paths:
       - $ref: '#/components/parameters/groupId'
       responses:
         "204":
-          $ref: '#/components/responses/noBody'
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/noBody'
+              x-xgen-version: 2023-01-01
+          description: Endpoint does not return a response body.
         "400":
           $ref: '#/components/responses/badRequest'
         "409":
@@ -1013,9 +1027,11 @@ paths:
       - $ref: '#/components/parameters/groupId'
       requestBody:
         content:
-          application/json:
+          application/vnd.atlas.2023-01-01+json:
             schema:
               $ref: '#/components/schemas/ApiAtlasGroupNameView'
+        description: Project to update.
+        required: true
       responses:
         "200":
           content:
@@ -1169,7 +1185,12 @@ paths:
             -[a-f0-9]{8})?$"
       responses:
         "204":
-          $ref: '#/components/responses/noBody'
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/noBody'
+              x-xgen-version: 2023-01-01
+          description: Endpoint does not return a response body.
         "403":
           $ref: '#/components/responses/forbidden'
         "404":
@@ -1786,7 +1807,7 @@ paths:
             schema:
               $ref: '#/components/schemas/ApiCreateApiKeyView'
         description: Organization API key to be created and assigned to the specified
-          project. This request requires a minimum of one of the two body parameters.
+          project. This request requires both body parameters.
         required: true
       responses:
         "200":
@@ -1828,7 +1849,12 @@ paths:
           pattern: "^([a-f0-9]{24})$"
       responses:
         "204":
-          $ref: '#/components/responses/noBody'
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/noBody'
+              x-xgen-version: 2023-01-01
+          description: Endpoint does not return a response body.
         "400":
           $ref: '#/components/responses/badRequest'
         "401":
@@ -2141,7 +2167,12 @@ paths:
           pattern: "^((?!xn--)(?!.*-s3alias)[a-z0-9][a-z0-9-]{1,61}[a-z0-9])$"
       responses:
         "204":
-          $ref: '#/components/responses/noBody'
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/noBody'
+              x-xgen-version: 2023-01-01
+          description: Endpoint does not return a response body.
         "400":
           $ref: '#/components/responses/badRequest'
         "401":
@@ -2731,7 +2762,8 @@ paths:
         \ project. The cluster must have termination protection disabled in order\
         \ to be deleted. To use this resource, the requesting API Key must have the\
         \ Project Owner role. This resource doesn't require the API Key to have an\
-        \ Access List. This feature is not available for serverless clusters."
+        \ Access List. This feature is not available for serverless clusters. Deprecated\
+        \ versions: v2-{2023-01-01}"
       operationId: deleteCluster
       parameters:
       - $ref: '#/components/parameters/groupId'
@@ -2752,7 +2784,10 @@ paths:
           type: boolean
       responses:
         "204":
-          $ref: '#/components/responses/noBody'
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              x-xgen-version: 2023-02-01
+          description: Endpoint does not return a response body.
         "400":
           $ref: '#/components/responses/badRequest'
         "401":
@@ -3100,7 +3135,12 @@ paths:
           pattern: "^([a-f0-9]{24})$"
       responses:
         "204":
-          $ref: '#/components/responses/noBody'
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/noBody'
+              x-xgen-version: 2023-01-01
+          description: Endpoint does not return a response body.
         "400":
           $ref: '#/components/responses/badRequest'
         "405":
@@ -3387,7 +3427,12 @@ paths:
           pattern: "^([a-f0-9]{24})$"
       responses:
         "204":
-          $ref: '#/components/responses/noBody'
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/noBody'
+              x-xgen-version: 2023-01-01
+          description: Endpoint does not return a response body.
         "404":
           $ref: '#/components/responses/notFound'
         "500":
@@ -3509,7 +3554,12 @@ paths:
           pattern: "^([a-f0-9]{24})$"
       responses:
         "204":
-          $ref: '#/components/responses/noBody'
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/noBody'
+              x-xgen-version: 2023-01-01
+          description: Endpoint does not return a response body.
         "400":
           $ref: '#/components/responses/badRequest'
         "404":
@@ -4117,7 +4167,12 @@ paths:
           pattern: "^([a-f0-9]{24})$"
       responses:
         "204":
-          $ref: '#/components/responses/noBody'
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/noBody'
+              x-xgen-version: 2023-01-01
+          description: Endpoint does not return a response body.
         "400":
           $ref: '#/components/responses/badRequest'
         "404":
@@ -4486,7 +4541,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               x-xgen-version: 2023-01-01
-          description: This endpoint does not return a response body.
+          description: Endpoint does not return a response body.
         "400":
           $ref: '#/components/responses/badRequest'
         "404":
@@ -4702,7 +4757,12 @@ paths:
           pattern: "^[a-zA-Z0-9][a-zA-Z0-9-]*$"
       responses:
         "204":
-          $ref: '#/components/responses/noBody'
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/noBody'
+              x-xgen-version: 2023-01-01
+          description: Endpoint does not return a response body.
         "401":
           $ref: '#/components/responses/unauthorized'
         "404":
@@ -5073,7 +5133,7 @@ paths:
           content:
             application/vnd.atlas.2023-02-01+json:
               x-xgen-version: 2023-02-01
-          description: This endpoint does not return a response body.
+          description: Endpoint does not return a response body.
         "401":
           $ref: '#/components/responses/unauthorized'
         "500":
@@ -5418,7 +5478,12 @@ paths:
           pattern: "^([a-f0-9]{24})$"
       responses:
         "204":
-          $ref: '#/components/responses/noBody'
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/noBody'
+              x-xgen-version: 2023-01-01
+          description: Endpoint does not return a response body.
         "400":
           $ref: '#/components/responses/badRequest'
         "401":
@@ -5790,7 +5855,12 @@ paths:
           pattern: "^([a-f0-9]{24})$"
       responses:
         "204":
-          $ref: '#/components/responses/noBody'
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/noBody'
+              x-xgen-version: 2023-01-01
+          description: Endpoint does not return a response body.
         "400":
           $ref: '#/components/responses/badRequest'
         "401":
@@ -6178,7 +6248,12 @@ paths:
           type: string
       responses:
         "204":
-          $ref: '#/components/responses/noBody'
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/noBody'
+              x-xgen-version: 2023-01-01
+          description: Endpoint does not return a response body.
         "404":
           $ref: '#/components/responses/notFound'
         "500":
@@ -6348,7 +6423,12 @@ paths:
           - bytesProcessed.monthly
       responses:
         "204":
-          $ref: '#/components/responses/noBody'
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/noBody'
+              x-xgen-version: 2023-01-01
+          description: Endpoint does not return a response body.
         "400":
           $ref: '#/components/responses/badRequest'
         "500":
@@ -6701,7 +6781,12 @@ paths:
             \ orx.509 or LDAP: CN=Dylan Bloggs,OU=Enterprise,OU=Sales,DC=Example,DC=COM"
       responses:
         "204":
-          $ref: '#/components/responses/noBody'
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/noBody'
+              x-xgen-version: 2023-01-01
+          description: Endpoint does not return a response body.
         "401":
           $ref: '#/components/responses/unauthorized'
         "403":
@@ -6959,11 +7044,12 @@ paths:
           pattern: "^[a-zA-Z0-9][a-zA-Z0-9-]*$"
       - description: "Date and time when to stop retrieving database history. If you\
           \ specify **end**, you must also specify **start**. This parameter uses\
-          \ the ISO 8601 timestamp format in UTC."
+          \ UNIX epoch time in milliseconds."
         in: query
         name: end
         schema:
-          type: string
+          type: integer
+          format: int64
       - description: One Internet Protocol address that attempted to authenticate
           with the database.
         in: query
@@ -6977,18 +7063,18 @@ paths:
         name: nLogs
         schema:
           type: integer
-          format: int64
+          format: int32
           default: 20000
           maximum: 20000
           minimum: 0
       - description: "Date and time when MongoDB Cloud begins retrieving database\
           \ history. If you specify **start**, you must also specify **end**. This\
-          \ parameter uses the ISO 8601 timestamp format in UTC."
+          \ parameter uses UNIX epoch time in milliseconds."
         in: query
         name: start
         schema:
-          type: string
-          format: date-time
+          type: integer
+          format: int64
       responses:
         "200":
           content:
@@ -7029,12 +7115,12 @@ paths:
           type: boolean
       - description: "Date and time when to stop retrieving database history. If you\
           \ specify **end**, you must also specify **start**. This parameter uses\
-          \ the ISO 8601 timestamp format in UTC."
+          \ UNIX epoch time in milliseconds."
         in: query
         name: end
         schema:
-          type: string
-          format: date-time
+          type: integer
+          format: int64
       - description: Fully qualified domain name or IP address of the MongoDB host
           that stores the log files that you want to download.
         in: path
@@ -7061,12 +7147,12 @@ paths:
           minimum: 0
       - description: "Date and time when MongoDB Cloud begins retrieving database\
           \ history. If you specify **start**, you must also specify **end**. This\
-          \ parameter uses the ISO 8601 timestamp format in UTC."
+          \ parameter uses UNIX epoch time in milliseconds."
         in: query
         name: start
         schema:
-          type: string
-          format: date-time
+          type: integer
+          format: int64
       responses:
         "200":
           content:
@@ -7286,8 +7372,9 @@ paths:
       - Events
   /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics:
     get:
-      description: Return all Atlas Search metric types available for one process
-        in the specified project.
+      description: Returns all Atlas Search metric types available for one process
+        in the specified project. You must have the Project Read Only or higher role
+        to view the Atlas Search metric types.
       operationId: listMetricTypes
       parameters:
       - $ref: '#/components/parameters/processId'
@@ -7372,7 +7459,9 @@ paths:
   /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/indexes/{databaseName}/{collectionName}/{indexName}/measurements:
     get:
       description: Returns the Atlas Search metrics data series within the provided
-        time range for one namespace and index name on the specified process.
+        time range for one namespace and index name on the specified process. You
+        must have the Project Read Only or higher role to view the Atlas Search metric
+        types.
       operationId: getIndexMetrics
       parameters:
       - $ref: '#/components/parameters/processId'
@@ -7431,7 +7520,9 @@ paths:
   /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/measurements:
     get:
       description: Returns the Atlas Search hardware and status data series within
-        the provided time range for one process in the specified project.
+        the provided time range for one process in the specified project. You must
+        have the Project Read Only or higher role to view the Atlas Search metric
+        types.
       operationId: getMeasurements
       parameters:
       - $ref: '#/components/parameters/processId'
@@ -7556,7 +7647,12 @@ paths:
       - $ref: '#/components/parameters/groupId'
       responses:
         "204":
-          $ref: '#/components/responses/noBody'
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/noBody'
+              x-xgen-version: 2023-01-01
+          description: Endpoint does not return a response body.
         "400":
           $ref: '#/components/responses/badRequest'
         "401":
@@ -7865,7 +7961,12 @@ paths:
           pattern: "^([a-f0-9]{24})$"
       responses:
         "204":
-          $ref: '#/components/responses/noBody'
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/noBody'
+              x-xgen-version: 2023-01-01
+          description: Endpoint does not return a response body.
         "401":
           $ref: '#/components/responses/unauthorized'
         "500":
@@ -8032,7 +8133,12 @@ paths:
       - $ref: '#/components/parameters/groupId'
       responses:
         "204":
-          $ref: '#/components/responses/noBody'
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/noBody'
+              x-xgen-version: 2023-01-01
+          description: Endpoint does not return a response body.
         "400":
           $ref: '#/components/responses/badRequest'
         "404":
@@ -8148,9 +8254,11 @@ paths:
       - $ref: '#/components/parameters/groupId'
       requestBody:
         content:
-          application/json:
+          application/vnd.atlas.2023-01-01+json:
             schema:
               $ref: '#/components/schemas/ApiLimitView'
+        description: Limit to update.
+        required: true
       responses:
         "200":
           content:
@@ -8376,7 +8484,12 @@ paths:
       - $ref: '#/components/parameters/groupId'
       responses:
         "204":
-          $ref: '#/components/responses/noBody'
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/noBody'
+              x-xgen-version: 2023-01-01
+          description: Endpoint does not return a response body.
         "400":
           $ref: '#/components/responses/badRequest'
         "404":
@@ -8443,7 +8556,12 @@ paths:
         required: true
       responses:
         "204":
-          $ref: '#/components/responses/noBody'
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/noBody'
+              x-xgen-version: 2023-01-01
+          description: Endpoint does not return a response body.
         "400":
           $ref: '#/components/responses/badRequest'
         "404":
@@ -8469,7 +8587,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               x-xgen-version: 2023-01-01
-          description: This endpoint does not return a response body.
+          description: Endpoint does not return a response body.
         "400":
           $ref: '#/components/responses/badRequest'
         "404":
@@ -8502,7 +8620,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               x-xgen-version: 2023-01-01
-          description: This endpoint does not return a response body.
+          description: Endpoint does not return a response body.
         "400":
           $ref: '#/components/responses/badRequest'
         "404":
@@ -8534,7 +8652,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               x-xgen-version: 2023-01-01
-          description: This endpoint does not return a response body.
+          description: Endpoint does not return a response body.
         "401":
           $ref: '#/components/responses/unauthorized'
         "403":
@@ -8566,7 +8684,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               x-xgen-version: 2023-01-01
-          description: This endpoint does not return a response body.
+          description: Endpoint does not return a response body.
         "401":
           $ref: '#/components/responses/unauthorized'
         "403":
@@ -8606,10 +8724,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                oneOf:
-                - $ref: '#/components/schemas/PaginatedAWSPeerVpcView'
-                - $ref: '#/components/schemas/PaginatedAzurePeerNetworkView'
-                - $ref: '#/components/schemas/PaginatedGCPPeerVpcView'
+                $ref: '#/components/schemas/PaginatedContainerPeerView'
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -8640,7 +8755,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: '#/components/schemas/ApiAtlasContainerPeerViewRequest'
+              $ref: '#/components/schemas/ApiAtlasContainerPeerView'
         description: Create one network peering connection.
         required: true
       responses:
@@ -8648,11 +8763,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                type: object
-                oneOf:
-                - $ref: '#/components/schemas/ApiAtlasAWSPeerVpcView'
-                - $ref: '#/components/schemas/ApiAtlasAzurePeerNetworkView'
-                - $ref: '#/components/schemas/ApiAtlasGCPPeerVpcView'
+                $ref: '#/components/schemas/ApiAtlasContainerPeerView'
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -8693,7 +8804,12 @@ paths:
           pattern: "^([a-f0-9]{24})$"
       responses:
         "202":
-          $ref: '#/components/responses/accepted'
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/accepted'
+              x-xgen-version: 2023-01-01
+          description: Accepted
         "404":
           $ref: '#/components/responses/notFound'
         "409":
@@ -8728,10 +8844,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                oneOf:
-                - $ref: '#/components/schemas/ApiAtlasAWSPeerVpcView'
-                - $ref: '#/components/schemas/ApiAtlasAzurePeerNetworkView'
-                - $ref: '#/components/schemas/ApiAtlasGCPPeerVpcView'
+                $ref: '#/components/schemas/ApiAtlasContainerPeerView'
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -8767,7 +8880,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: '#/components/schemas/ApiAtlasContainerPeerViewRequest'
+              $ref: '#/components/schemas/ApiAtlasContainerPeerView'
         description: Modify one network peering connection.
         required: true
       responses:
@@ -8775,10 +8888,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                oneOf:
-                - $ref: '#/components/schemas/ApiAtlasAWSPeerVpcView'
-                - $ref: '#/components/schemas/ApiAtlasAzurePeerNetworkView'
-                - $ref: '#/components/schemas/ApiAtlasGCPPeerVpcView'
+                $ref: '#/components/schemas/ApiAtlasContainerPeerView'
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -8874,7 +8984,12 @@ paths:
           pattern: "^[^/\\\\ \"$]{1,64}$"
       responses:
         "204":
-          $ref: '#/components/responses/noBody'
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/noBody'
+              x-xgen-version: 2023-01-01
+          description: Endpoint does not return a response body.
         "401":
           $ref: '#/components/responses/unauthorized'
         "404":
@@ -9199,7 +9314,12 @@ paths:
           pattern: "^([a-f0-9]{24})$"
       responses:
         "202":
-          $ref: '#/components/responses/accepted'
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/accepted'
+              x-xgen-version: 2023-01-01
+          description: Accepted
         "400":
           $ref: '#/components/responses/badRequest'
         "404":
@@ -9519,7 +9639,12 @@ paths:
           pattern: "^([a-f0-9]{24})$"
       responses:
         "204":
-          $ref: '#/components/responses/noBody'
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/noBody'
+              x-xgen-version: 2023-01-01
+          description: Endpoint does not return a response body.
         "400":
           $ref: '#/components/responses/badRequest'
         "404":
@@ -9605,9 +9730,11 @@ paths:
           pattern: "^([a-f0-9]{24})$"
       requestBody:
         content:
-          application/json:
+          application/vnd.atlas.2023-01-01+json:
             schema:
               $ref: '#/components/schemas/ApiAtlasServerlessTenantEndpointUpdateView'
+        description: Object used for update.
+        required: true
       responses:
         "200":
           content:
@@ -9698,7 +9825,12 @@ paths:
           pattern: "^([a-f0-9]{24})$"
       responses:
         "204":
-          $ref: '#/components/responses/noBody'
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/noBody'
+              x-xgen-version: 2023-01-01
+          description: Endpoint does not return a response body.
         "400":
           $ref: '#/components/responses/badRequest'
         "500":
@@ -9827,10 +9959,11 @@ paths:
       - Private Endpoint Services
   /api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId}/endpoint/{endpointId}:
     delete:
-      description: "Removes one private endpoint from the specified project. This\
-        \ cloud service provider manages the private endpoint service that manages\
-        \ the private endpoint that belongs to the project. To use this resource,\
-        \ the requesting API Key must have the Project Owner role. This resource doesn't\
+      description: "Removes one private endpoint from the specified project and private\
+        \ endpoint service, as managed by the specified cloud service provider. When\
+        \ the last private endpoint is removed from a given private endpoint service,\
+        \ that private endpoint service is also removed. To use this resource, the\
+        \ requesting API Key must have the Project Owner role. This resource doesn't\
         \ require the API Key to have an Access List."
       operationId: deletePrivateEndpoint
       parameters:
@@ -9869,7 +10002,12 @@ paths:
           pattern: "^([a-f0-9]{24})$"
       responses:
         "204":
-          $ref: '#/components/responses/noBody'
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/noBody'
+              x-xgen-version: 2023-01-01
+          description: Endpoint does not return a response body.
         "400":
           $ref: '#/components/responses/badRequest'
         "500":
@@ -10115,7 +10253,12 @@ paths:
           pattern: "^vpce-[0-9a-f]{17}$"
       responses:
         "204":
-          $ref: '#/components/responses/noBody'
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/noBody'
+              x-xgen-version: 2023-01-01
+          description: Endpoint does not return a response body.
         "401":
           $ref: '#/components/responses/unauthorized'
         "404":
@@ -10242,9 +10385,11 @@ paths:
   /api/atlas/v2/groups/{groupId}/processes/{processId}/databases:
     get:
       description: "Returns the list of databases running on the specified host for\
-        \ the specified project. To use this resource, the requesting API Key must\
-        \ have the Project Read Only role. This resource doesn't require the API Key\
-        \ to have an Access List."
+        \ the specified project. `M0` free clusters, `M2`, `M5`, and serverless clusters\
+        \ have some [operational limits](https://www.mongodb.com/docs/atlas/reference/free-shared-limitations/#operational-limitations).\
+        \ The MongoDB Cloud process must be a `mongod`. To use this resource, the\
+        \ requesting API Key must have the Project Read Only role. This resource doesn't\
+        \ require the API Key to have an Access List."
       operationId: listDatabases
       parameters:
       - $ref: '#/components/parameters/groupId'
@@ -10254,9 +10399,8 @@ paths:
       - description: "Combination of hostname and Internet Assigned Numbers Authority\
           \ (IANA) port that serves the MongoDB process. The host must be the hostname,\
           \ fully qualified domain name (FQDN), or Internet Protocol address (IPv4\
-          \ or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`).\
-          \ The port must be the IANA port on which the MongoDB process listens for\
-          \ requests."
+          \ or IPv6) of the host that runs the MongoDB process (`mongod`). The port\
+          \ must be the IANA port on which the MongoDB process listens for requests."
         in: path
         name: processId
         required: true
@@ -10333,9 +10477,13 @@ paths:
     get:
       description: "Returns the measurements of one database for the specified host\
         \ for the specified project. Returns the database's on-disk storage space\
-        \ based on the MongoDB `dbStats` command output. To use this resource, the\
-        \ requesting API Key must have the Project Read Only role. This resource doesn't\
-        \ require the API Key to have an Access List."
+        \ based on the MongoDB `dbStats` command output. To calculate some metric\
+        \ series, MongoDB Cloud takes the rate between every two adjacent points.\
+        \ For these metric series, the first data point has a null value because MongoDB\
+        \ Cloud can't calculate a rate for the first data point given the query time\
+        \ range. To use this resource, the requesting API Key must have the Project\
+        \ Read Only role. This resource doesn't require the API Key to have an Access\
+        \ List."
       operationId: getDatabaseMeasurements
       parameters:
       - $ref: '#/components/parameters/groupId'
@@ -10951,7 +11099,8 @@ paths:
         in: query
         name: duration
         schema:
-          type: number
+          type: integer
+          format: int64
       - description: "Namespaces from which to retrieve suggested indexes. A namespace\
           \ consists of one database and one collection resource written as `.`: `<database>.<collection>`.\
           \ To include multiple namespaces, pass the parameter multiple times delimited\
@@ -10997,7 +11146,8 @@ paths:
         in: query
         name: since
         schema:
-          type: number
+          type: integer
+          format: int64
       responses:
         "200":
           content:
@@ -11402,7 +11552,12 @@ paths:
           pattern: "^[a-zA-Z0-9][a-zA-Z0-9-]*$"
       responses:
         "204":
-          $ref: '#/components/responses/noBody'
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/noBody'
+              x-xgen-version: 2023-01-01
+          description: Endpoint does not return a response body.
         "400":
           $ref: '#/components/responses/badRequest'
         "404":
@@ -11535,9 +11690,11 @@ paths:
       - $ref: '#/components/parameters/groupId'
       requestBody:
         content:
-          application/json:
+          application/vnd.atlas.2023-01-01+json:
             schema:
               $ref: '#/components/schemas/ApiAtlasGroupSettingsView'
+        description: Settings to update.
+        required: true
       responses:
         "200":
           content:
@@ -11663,7 +11820,12 @@ paths:
           pattern: "^([a-f0-9]{24})$"
       responses:
         "204":
-          $ref: '#/components/responses/noBody'
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/noBody'
+              x-xgen-version: 2023-01-01
+          description: Endpoint does not return a response body.
         "400":
           $ref: '#/components/responses/badRequest'
         "401":
@@ -11831,7 +11993,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               x-xgen-version: 2023-01-01
-          description: This endpoint does not return a response body.
+          description: Endpoint does not return a response body.
         "404":
           $ref: '#/components/responses/notFound'
         "500":
@@ -11989,7 +12151,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               x-xgen-version: 2023-01-01
-          description: This endpoint does not return a response body.
+          description: Endpoint does not return a response body.
         "400":
           $ref: '#/components/responses/badRequest'
         "403":
@@ -12098,7 +12260,12 @@ paths:
       - $ref: '#/components/parameters/orgId'
       responses:
         "204":
-          $ref: '#/components/responses/noBody'
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/noBody'
+              x-xgen-version: 2023-01-01
+          description: Endpoint does not return a response body.
         "400":
           $ref: '#/components/responses/badRequest'
         "401":
@@ -12235,8 +12402,8 @@ paths:
           application/vnd.atlas.2023-01-01+json:
             schema:
               $ref: '#/components/schemas/ApiCreateApiKeyView'
-        description: Organization API Key to be created. This request requires a minimum
-          of one of the two body parameters.
+        description: Organization API Key to be created. This request requires both
+          body parameters.
         required: true
       responses:
         "200":
@@ -12280,7 +12447,12 @@ paths:
           pattern: "^([a-f0-9]{24})$"
       responses:
         "204":
-          $ref: '#/components/responses/noBody'
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/noBody'
+              x-xgen-version: 2023-01-01
+          description: Endpoint does not return a response body.
         "401":
           $ref: '#/components/responses/unauthorized'
         "500":
@@ -12355,7 +12527,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: '#/components/schemas/ApiApiUserView'
+              $ref: '#/components/schemas/ApiCreateApiKeyView'
         description: Organization API key to be updated. This request requires a minimum
           of one of the two body parameters.
         required: true
@@ -12510,7 +12682,12 @@ paths:
             :){7}[0-9a-f]{1,4}(%2[fF][0-9]{1,3})?|([0-9a-f]{1,4}\\:){1,6}\\:(%2[fF][0-9]{1,3})?$"
       responses:
         "204":
-          $ref: '#/components/responses/noBody'
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/noBody'
+              x-xgen-version: 2023-01-01
+          description: Endpoint does not return a response body.
         "400":
           $ref: '#/components/responses/badRequest'
         "401":
@@ -12895,7 +13072,12 @@ paths:
           type: string
       responses:
         "204":
-          $ref: '#/components/responses/noBody'
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/noBody'
+              x-xgen-version: 2023-01-01
+          description: Endpoint does not return a response body.
         "400":
           $ref: '#/components/responses/badRequest'
         "401":
@@ -13175,7 +13357,12 @@ paths:
       - $ref: '#/components/parameters/orgId'
       responses:
         "204":
-          $ref: '#/components/responses/noBody'
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/noBody'
+              x-xgen-version: 2023-01-01
+          description: Endpoint does not return a response body.
         "400":
           $ref: '#/components/responses/badRequest'
         "404":
@@ -13430,7 +13617,12 @@ paths:
           pattern: "^([a-f0-9]{24})$"
       responses:
         "204":
-          $ref: '#/components/responses/noBody'
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/noBody'
+              x-xgen-version: 2023-01-01
+          description: Endpoint does not return a response body.
         "400":
           $ref: '#/components/responses/badRequest'
         "401":
@@ -13681,7 +13873,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               x-xgen-version: 2023-01-01
-          description: This endpoint does not return a response body.
+          description: Endpoint does not return a response body.
         "400":
           $ref: '#/components/responses/badRequest'
         "401":
@@ -13742,7 +13934,7 @@ paths:
       parameters: []
       requestBody:
         content:
-          application/json:
+          application/vnd.atlas.2023-01-01+json:
             schema:
               $ref: '#/components/schemas/ApiAppUserView'
         description: MongoDB Cloud user account to create.
@@ -14887,20 +15079,25 @@ components:
             - EU_WEST_2
             - EU_WEST_3
             - EU_CENTRAL_1
+            - EU_CENTRAL_2
             - SA_EAST_1
             - AP_EAST_1
             - AP_SOUTHEAST_2
             - AP_SOUTHEAST_3
+            - AP_SOUTHEAST_4
             - AP_NORTHEAST_1
             - AP_NORTHEAST_2
             - AP_NORTHEAST_3
             - AP_SOUTHEAST_1
             - AP_SOUTH_1
+            - AP_SOUTH_2
             - CN_NORTH_1
             - CN_NORTHWEST_1
+            - ME_CENTRAL_1
             - ME_SOUTH_1
             - AF_SOUTH_1
             - EU_SOUTH_1
+            - EU_SOUTH_2
             - GLOBAL
             - US_GOV_WEST_1
             - US_GOV_EAST_1
@@ -15143,6 +15340,7 @@ components:
           - EU_WEST_2
           - EU_WEST_3
           - EU_CENTRAL_1
+          - EU_CENTRAL_2
           - AP_EAST_1
           - AP_NORTHEAST_1
           - AP_NORTHEAST_2
@@ -15150,13 +15348,17 @@ components:
           - AP_SOUTHEAST_1
           - AP_SOUTHEAST_2
           - AP_SOUTHEAST_3
+          - AP_SOUTHEAST_4
           - AP_SOUTH_1
+          - AP_SOUTH_2
           - SA_EAST_1
           - CN_NORTH_1
           - CN_NORTHWEST_1
           - ME_SOUTH_1
+          - ME_CENTRAL_1
           - AF_SOUTH_1
           - EU_SOUTH_1
+          - EU_SOUTH_2
           - GLOBAL
           title: AWS Regions
         roleId:
@@ -15180,11 +15382,6 @@ components:
           description: Flag that indicates whether the Amazon Web Services (AWS) Key
             Management Service (KMS) encryption key can encrypt and decrypt data.
           readOnly: true
-    ApiAtlasAWSPeerVpcRequestView:
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/ApiAtlasNetPeerRequestBase'
-      - $ref: '#/components/schemas/ApiAtlasAWSPeerVpcView'
     ApiAtlasAWSPeerVpcView:
       type: object
       description: Group of Network Peering connection settings.
@@ -15239,9 +15436,15 @@ components:
           description: Cloud service provider that serves the requested network peering
             connection.
           enum:
+          - NONE
           - AWS
           - GCP
           - AZURE
+          - FREE
+          - SERVERLESS
+          - AWS
+          - AZURE
+          - GCP
         routeTableCidrBlock:
           type: string
           description: Internet Protocol (IP) addresses expressed in Classless Inter-Domain
@@ -15404,6 +15607,7 @@ components:
             - EU_WEST_2
             - EU_WEST_3
             - EU_CENTRAL_1
+            - EU_CENTRAL_2
             - AP_EAST_1
             - AP_NORTHEAST_1
             - AP_NORTHEAST_2
@@ -15411,13 +15615,17 @@ components:
             - AP_SOUTHEAST_1
             - AP_SOUTHEAST_2
             - AP_SOUTHEAST_3
+            - AP_SOUTHEAST_4
             - AP_SOUTH_1
+            - AP_SOUTH_2
             - SA_EAST_1
             - CN_NORTH_1
             - CN_NORTHWEST_1
             - ME_SOUTH_1
+            - ME_CENTRAL_1
             - AF_SOUTH_1
             - EU_SOUTH_1
+            - EU_SOUTH_2
             - GLOBAL
             externalDocs:
               description: AWS
@@ -15514,6 +15722,22 @@ components:
           description: Flag that indicates whether someone enabled disk auto-scaling
             for this cluster.
       title: Automatic Cluster Scaling Settings
+    ApiAtlasAvailableRegionView:
+      type: object
+      description: List of regions that this cloud provider supports for this instance
+        size.
+      properties:
+        default:
+          type: boolean
+          description: "Flag that indicates whether the cloud provider sets this region\
+            \ as its default. AWS defaults to US_EAST_1, GCP defaults to CENTRAL_US,\
+            \ and AZURE defaults to US_WEST_2."
+          readOnly: true
+        name:
+          type: string
+          description: Human-readable label that identifies the supported region.
+          readOnly: true
+      readOnly: true
     ApiAtlasAzureAutoScalingView:
       type: object
       description: Range of instance sizes to which your cluster can scale.
@@ -15784,11 +16008,6 @@ components:
           description: Flag that indicates whether the Azure encryption key can encrypt
             and decrypt data.
           readOnly: true
-    ApiAtlasAzurePeerNetworkRequestView:
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/ApiAtlasNetPeerRequestBase'
-      - $ref: '#/components/schemas/ApiAtlasAzurePeerNetworkView'
     ApiAtlasAzurePeerNetworkView:
       type: object
       description: Group of Network Peering connection settings.
@@ -15837,9 +16056,15 @@ components:
           description: Cloud service provider that serves the requested network peering
             connection.
           enum:
+          - NONE
           - AWS
           - GCP
           - AZURE
+          - FREE
+          - SERVERLESS
+          - AWS
+          - AZURE
+          - GCP
         resourceGroupName:
           type: string
           description: Human-readable label that identifies the resource group in
@@ -17136,6 +17361,16 @@ components:
             \ enable this option, specify a value for **providerSettings.autoScaling.compute.minInstanceSize**."
     ApiAtlasContainerPeerView:
       type: object
+      discriminator:
+        mapping:
+          AWS: '#/components/schemas/ApiAtlasAWSPeerVpcView'
+          AZURE: '#/components/schemas/ApiAtlasAzurePeerNetworkView'
+          GCP: '#/components/schemas/ApiAtlasGCPPeerVpcView'
+        propertyName: providerName
+      oneOf:
+      - $ref: '#/components/schemas/ApiAtlasAWSPeerVpcView'
+      - $ref: '#/components/schemas/ApiAtlasAzurePeerNetworkView'
+      - $ref: '#/components/schemas/ApiAtlasGCPPeerVpcView'
       properties:
         containerId:
           type: string
@@ -17159,25 +17394,17 @@ components:
           description: Cloud service provider that serves the requested network peering
             connection.
           enum:
+          - NONE
           - AWS
           - GCP
           - AZURE
+          - FREE
+          - SERVERLESS
+          - AWS
+          - AZURE
+          - GCP
       required:
       - containerId
-    ApiAtlasContainerPeerViewRequest:
-      type: object
-      description: Collection of settings that configures the network connection for
-        a virtual private connection.
-      discriminator:
-        mapping:
-          AWS: '#/components/schemas/ApiAtlasAWSPeerVpcRequestView'
-          AZURE: '#/components/schemas/ApiAtlasAzurePeerNetworkRequestView'
-          GCP: '#/components/schemas/ApiAtlasGCPPeerVpcRequestView'
-        propertyName: providerName
-      oneOf:
-      - $ref: '#/components/schemas/ApiAtlasAWSPeerVpcRequestView'
-      - $ref: '#/components/schemas/ApiAtlasAzurePeerNetworkRequestView'
-      - $ref: '#/components/schemas/ApiAtlasGCPPeerVpcRequestView'
     ApiAtlasCreateAWSEndpointRequestView:
       type: object
       allOf:
@@ -17301,11 +17528,10 @@ components:
           pattern: "^[\\p{L}\\p{N}\\-_.(),:&@+']{1,64}$"
         orgOwnerId:
           type: string
-          description: "Unique 24-hexadecimal digit string that identifies the Atlas\
-            \ user that you want to assign the Organization Owner role. This user\
-            \ must be a member of the same organization as the calling API key. This\
-            \ is required if you call the Admin API endpoint directly, but not required\
-            \ when you call through the Atlas CLI."
+          description: Unique 24-hexadecimal digit string that identifies the Atlas
+            user that you want to assign the Organization Owner role. This user must
+            be a member of the same organization as the calling API key. This is only
+            required when authenticating with Programmatic API Keys.
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
@@ -17991,6 +18217,7 @@ components:
             - EU_WEST_2
             - EU_WEST_3
             - EU_CENTRAL_1
+            - EU_CENTRAL_2
             - AP_EAST_1
             - AP_NORTHEAST_1
             - AP_NORTHEAST_2
@@ -17998,13 +18225,17 @@ components:
             - AP_SOUTHEAST_1
             - AP_SOUTHEAST_2
             - AP_SOUTHEAST_3
+            - AP_SOUTHEAST_4
             - AP_SOUTH_1
+            - AP_SOUTH_2
             - SA_EAST_1
             - CN_NORTH_1
             - CN_NORTHWEST_1
             - ME_SOUTH_1
+            - ME_CENTRAL_1
             - AF_SOUTH_1
             - EU_SOUTH_1
+            - EU_SOUTH_2
             - GLOBAL
             title: AWS Regions
     ApiAtlasDataLakeStorageView:
@@ -18087,7 +18318,6 @@ components:
           format: email
           description: Email address of the user who authorized to updated the Backup
             Compliance Policy  settings.
-          readOnly: true
         copyProtectionEnabled:
           type: boolean
           default: false
@@ -19979,11 +20209,6 @@ components:
           format: int32
           description: Number of nodes of the given type for MongoDB Cloud to deploy
             to the region.
-    ApiAtlasGCPPeerVpcRequestView:
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/ApiAtlasNetPeerRequestBase'
-      - $ref: '#/components/schemas/ApiAtlasGCPPeerVpcView'
     ApiAtlasGCPPeerVpcView:
       type: object
       description: Group of Network Peering connection settings.
@@ -20029,9 +20254,15 @@ components:
           description: Cloud service provider that serves the requested network peering
             connection.
           enum:
+          - NONE
           - AWS
           - GCP
           - AZURE
+          - FREE
+          - SERVERLESS
+          - AWS
+          - AZURE
+          - GCP
         status:
           type: string
           description: State of the network peering connection at the time you made
@@ -20323,6 +20554,15 @@ components:
           maxLength: 24
           minLength: 24
           pattern: "^([a-f0-9]{24})$"
+        regionUsageRestrictions:
+          type: string
+          default: NONE
+          description: Region usage restrictions that designate the project's AWS
+            region.
+          enum:
+          - GOV_REGIONS_ONLY
+          - COMMERCIAL_FEDRAMP_REGIONS_ONLY
+          - NONE
         withDefaultAlertsSettings:
           type: boolean
           description: Flag that indicates whether to create the project with default
@@ -21246,29 +21486,6 @@ components:
       required:
       - match
       title: User to Distinguished Name Mapping
-    ApiAtlasNetPeerRequestBase:
-      type: object
-      properties:
-        containerId:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies the MongoDB
-            Cloud network container that contains the specified network peering connection.
-          example: 2f3ed24096c4b70db8993cb7
-          maxLength: 24
-          minLength: 24
-          pattern: "^([a-f0-9]{24})$"
-        providerName:
-          type: string
-          description: Cloud service provider that determines the needed settings
-            to configure the network connection for a virtual private connection.
-          enum:
-          - AWS
-          - AZURE
-          - GCP
-          writeOnly: true
-      required:
-      - containerId
-      - providerName
     ApiAtlasNetworkPermissionEntryStatusView:
       type: object
       properties:
@@ -21611,6 +21828,23 @@ components:
           - DATA_LAKE
       required:
       - endpointId
+    ApiAtlasProviderInstanceSizeView:
+      type: object
+      description: List of instances sizes that this cloud provider supports.
+      properties:
+        availableRegions:
+          type: array
+          description: List of regions that this cloud provider supports for this
+            instance size.
+          items:
+            $ref: '#/components/schemas/ApiAtlasAvailableRegionView'
+          readOnly: true
+        name:
+          type: string
+          description: Human-readable label that identifies the instance size or cluster
+            tier.
+          readOnly: true
+      readOnly: true
     ApiAtlasProviderRegionsView:
       type: object
       properties:
@@ -21618,7 +21852,7 @@ components:
           type: array
           description: List of instances sizes that this cloud provider supports.
           items:
-            $ref: '#/components/schemas/ApiInstanceSizeView'
+            $ref: '#/components/schemas/ApiAtlasProviderInstanceSizeView'
           readOnly: true
         provider:
           type: string
@@ -21700,6 +21934,7 @@ components:
             - EU_WEST_2
             - EU_WEST_3
             - EU_CENTRAL_1
+            - EU_CENTRAL_2
             - AP_EAST_1
             - AP_NORTHEAST_1
             - AP_NORTHEAST_2
@@ -21707,13 +21942,17 @@ components:
             - AP_SOUTHEAST_1
             - AP_SOUTHEAST_2
             - AP_SOUTHEAST_3
+            - AP_SOUTHEAST_4
             - AP_SOUTH_1
+            - AP_SOUTH_2
             - SA_EAST_1
             - CN_NORTH_1
             - CN_NORTHWEST_1
             - ME_SOUTH_1
+            - ME_CENTRAL_1
             - AF_SOUTH_1
             - EU_SOUTH_1
+            - EU_SOUTH_2
             - GLOBAL
             title: AWS Regions
           - type: string
@@ -21918,7 +22157,6 @@ components:
           - readWriteAnyDatabase
           - <a custom role name>
       required:
-      - collectionName
       - databaseName
       - roleName
       title: Database User Role
@@ -23194,22 +23432,6 @@ components:
       - location
       - zone
       title: Global Cluster Zone
-    ApiAvailableRegionView:
-      type: object
-      description: List of regions that this cloud provider supports for this instance
-        size.
-      properties:
-        default:
-          type: boolean
-          description: "Flag that indicates whether the cloud provider sets this region\
-            \ as its default. AWS defaults to US_EAST_1, GCP defaults to CENTRAL_US,\
-            \ and AZURE defaults to US_WEST_2."
-          readOnly: true
-        name:
-          type: string
-          description: Human-readable label that identifies the supported region.
-          readOnly: true
-      readOnly: true
     ApiBSONTimestampView:
       type: object
       description: BSON timestamp that indicates when the checkpoint token entry in
@@ -23826,23 +24048,6 @@ components:
       required:
       - collection
       - db
-    ApiInstanceSizeView:
-      type: object
-      description: List of instances sizes that this cloud provider supports.
-      properties:
-        availableRegions:
-          type: array
-          description: List of regions that this cloud provider supports for this
-            instance size.
-          items:
-            $ref: '#/components/schemas/ApiAvailableRegionView'
-          readOnly: true
-        name:
-          type: string
-          description: Human-readable label that identifies the instance size or cluster
-            tier.
-          readOnly: true
-      readOnly: true
     ApiIntegrationView:
       type: object
       description: Collection of settings that describe third-party integrations.
@@ -25376,6 +25581,7 @@ components:
           - FAILED_AUTHENTICATION
           - PROCESSING
           - PENDING_REVERSAL
+          - REFUNDED
         subtotalCents:
           type: integer
           format: int64
@@ -26414,7 +26620,6 @@ components:
               Cloud users to in this team.
           uniqueItems: true
       required:
-      - id
       - name
     ApiUserAccessListView:
       type: object
@@ -28673,6 +28878,19 @@ components:
     ConnectedOrgConfigView:
       type: object
       properties:
+        dataAccessIdentityProviderIds:
+          type: array
+          description: The collection of unique ids of the identity providers for
+            org's data access.
+          items:
+            type: string
+            description: Unique 24-hexadecimal digit string that identifies the id
+              of the identity provider for org's data access.
+            example: 32b6e34b3d91647abb20e7b8
+            maxLength: 24
+            minLength: 24
+            pattern: "^([a-f0-9]{24})$"
+          uniqueItems: true
         domainAllowList:
           type: array
           description: Approved domains that restrict users who can join the organization
@@ -28781,6 +28999,7 @@ components:
       description: Event type that triggers an alert.
       enum:
       - CPS_SNAPSHOT_BEHIND
+      - CPS_OPLOG_BEHIND
       example: CPS_SNAPSHOT_BEHIND
       title: Cps Backup Event Type
     CpsBackupThresholdAlertConfigViewForNdsGroup:
@@ -29522,7 +29741,9 @@ components:
             title: Billing Event Types
           - type: string
             enum:
+            - CPS_SNAPSHOT_STARTED
             - CPS_SNAPSHOT_SUCCESSFUL
+            - CPS_SNAPSHOT_FAILED
             - CPS_SNAPSHOT_FALLBACK_SUCCESSFUL
             - CPS_SNAPSHOT_FALLBACK_FAILED
             - CPS_RESTORE_SUCCESSFUL
@@ -29530,6 +29751,7 @@ components:
             - CPS_RESTORE_FAILED
             - CPS_EXPORT_FAILED
             - CPS_SNAPSHOT_DOWNLOAD_REQUEST_FAILED
+            - CPS_OPLOG_CAUGHT_UP
             title: Cps Backup Event Types
           - type: string
             enum:
@@ -29677,7 +29899,9 @@ components:
             title: Billing Event Types
           - type: string
             enum:
+            - CPS_SNAPSHOT_STARTED
             - CPS_SNAPSHOT_SUCCESSFUL
+            - CPS_SNAPSHOT_FAILED
             - CPS_SNAPSHOT_BEHIND
             - CPS_SNAPSHOT_FALLBACK_SUCCESSFUL
             - CPS_SNAPSHOT_FALLBACK_FAILED
@@ -29686,6 +29910,8 @@ components:
             - CPS_RESTORE_FAILED
             - CPS_EXPORT_FAILED
             - CPS_SNAPSHOT_DOWNLOAD_REQUEST_FAILED
+            - CPS_OPLOG_BEHIND
+            - CPS_OPLOG_CAUGHT_UP
             title: Cps Backup Event Types
           - type: string
             enum:
@@ -29885,7 +30111,9 @@ components:
             title: Cluster Connection Audit Types
           - type: string
             enum:
+            - CPS_SNAPSHOT_STARTED
             - CPS_SNAPSHOT_SUCCESSFUL
+            - CPS_SNAPSHOT_FAILED
             - CPS_SNAPSHOT_FALLBACK_SUCCESSFUL
             - CPS_SNAPSHOT_BEHIND
             - CPS_SNAPSHOT_FALLBACK_FAILED
@@ -29894,6 +30122,8 @@ components:
             - CPS_RESTORE_FAILED
             - CPS_EXPORT_FAILED
             - CPS_SNAPSHOT_DOWNLOAD_REQUEST_FAILED
+            - CPS_OPLOG_BEHIND
+            - CPS_OPLOG_CAUGHT_UP
             title: Cps Backup Event Types
           - type: string
             enum:
@@ -30045,6 +30275,7 @@ components:
             - SERVERLESS_DEPLOYMENT_INSTANCE_REBOOTED
             - SERVERLESS_DEPLOYMENT_ENDPOINT_SERVICE_LINKED
             - SERVERLESS_DEPLOYMENT_ENDPOINT_SERVICE_UNLINKED
+            - SERVERLESS_DEPLOYMENT_ENVOY_INSTANCE_UIS_KEYS_ROTATED
             title: Serverless Deployment Audit Types
           - type: string
             enum:
@@ -30643,7 +30874,9 @@ components:
         title: Cluster Event Types
       - type: string
         enum:
+        - CPS_SNAPSHOT_STARTED
         - CPS_SNAPSHOT_SUCCESSFUL
+        - CPS_SNAPSHOT_FAILED
         - CPS_SNAPSHOT_FALLBACK_SUCCESSFUL
         - CPS_SNAPSHOT_BEHIND
         - CPS_SNAPSHOT_FALLBACK_FAILED
@@ -30652,6 +30885,8 @@ components:
         - CPS_RESTORE_FAILED
         - CPS_EXPORT_FAILED
         - CPS_SNAPSHOT_DOWNLOAD_REQUEST_FAILED
+        - CPS_OPLOG_BEHIND
+        - CPS_OPLOG_CAUGHT_UP
         title: Cps Backup Event Types
       - type: string
         enum:
@@ -31047,6 +31282,7 @@ components:
         - SERVERLESS_DEPLOYMENT_INSTANCE_REBOOTED
         - SERVERLESS_DEPLOYMENT_ENDPOINT_SERVICE_LINKED
         - SERVERLESS_DEPLOYMENT_ENDPOINT_SERVICE_UNLINKED
+        - SERVERLESS_DEPLOYMENT_ENVOY_INSTANCE_UIS_KEYS_ROTATED
         title: Serverless Deployment Audit Types
       - type: string
         enum:
@@ -31101,6 +31337,10 @@ components:
         - AGENT_VERSION_FIXED
         - AGENT_VERSION_UNFIXED
         title: Version Audit Types
+      - type: string
+        enum:
+        - TAGS_MODIFIED
+        title: Resource Event Types
     EventTypeForOrg:
       type: object
       oneOf:
@@ -31360,6 +31600,7 @@ components:
       - $ref: '#/components/schemas/ForNdsGroup'
       - $ref: '#/components/schemas/TeamEventViewForNdsGroup'
       - $ref: '#/components/schemas/UserEventViewForNdsGroup'
+      - $ref: '#/components/schemas/ResourceEventViewForNdsGroup'
       x-xgen-go-transform: merge-oneOf
     EventViewForOrg:
       type: object
@@ -33308,60 +33549,6 @@ components:
           - billion
           - ""
       readOnly: true
-    IdentityProviderUpdate:
-      type: object
-      properties:
-        associatedDomains:
-          type: array
-          description: List that contains the domains associated with the identity
-            provider.
-          items:
-            type: string
-          uniqueItems: true
-        displayName:
-          type: string
-          description: Human-readable label that identifies the identity provider.
-          maxLength: 50
-          minLength: 1
-        issuerUri:
-          type: string
-          description: Unique string that identifies the issuer of the SAML Assertion.
-          example: urn:idp:default
-        pemFileInfo:
-          $ref: '#/components/schemas/PemFileInfo'
-        requestBinding:
-          type: string
-          description: SAML Authentication Request Protocol HTTP method binding (POST
-            or REDIRECT) that Federated Authentication uses to send the authentication
-            request.
-          enum:
-          - HTTP-POST
-          - HTTP-REDIRECT
-        responseSignatureAlgorithm:
-          type: string
-          description: Signature algorithm that Federated Authentication uses to encrypt
-            the identity provider signature.
-          enum:
-          - SHA-1
-          - SHA-256
-        ssoDebugEnabled:
-          type: boolean
-          description: Flag that indicates whether the identity provider has SSO debug
-            enabled.
-        ssoUrl:
-          type: string
-          description: Unique string that identifies the intended audience of the
-            SAML assertion.
-          example: https://example.com
-        status:
-          type: string
-          description: String enum that indicates whether the identity provider is
-            active.
-          enum:
-          - ACTIVE
-          - INACTIVE
-      required:
-      - ssoDebugEnabled
     IdentityProviderView:
       type: object
       properties:
@@ -35710,35 +35897,6 @@ components:
       required:
       - typeName
       title: PagerDuty Notification
-    PaginatedAWSPeerVpcView:
-      type: object
-      description: Group of Network Peering connection settings.
-      properties:
-        links:
-          type: array
-          description: "List of one or more Uniform Resource Locators (URLs) that\
-            \ point to API sub-resources, related API resources, or both. RFC 5988\
-            \ outlines these relationships."
-          externalDocs:
-            description: Web Linking Specification (RFC 5988)
-            url: https://datatracker.ietf.org/doc/html/rfc5988
-          items:
-            $ref: '#/components/schemas/Link'
-          readOnly: true
-        results:
-          type: array
-          description: List of returned documents that MongoDB Cloud providers when
-            completing this request.
-          items:
-            $ref: '#/components/schemas/ApiAtlasAWSPeerVpcView'
-          readOnly: true
-        totalCount:
-          type: integer
-          format: int32
-          description: Number of documents returned in this response.
-          minimum: 0
-          readOnly: true
-      title: AWS
     PaginatedAlertConfigView:
       type: object
       properties:
@@ -36121,35 +36279,6 @@ components:
           description: Number of documents returned in this response.
           minimum: 0
           readOnly: true
-    PaginatedAzurePeerNetworkView:
-      type: object
-      description: Group of Network Peering connection settings.
-      properties:
-        links:
-          type: array
-          description: "List of one or more Uniform Resource Locators (URLs) that\
-            \ point to API sub-resources, related API resources, or both. RFC 5988\
-            \ outlines these relationships."
-          externalDocs:
-            description: Web Linking Specification (RFC 5988)
-            url: https://datatracker.ietf.org/doc/html/rfc5988
-          items:
-            $ref: '#/components/schemas/Link'
-          readOnly: true
-        results:
-          type: array
-          description: List of returned documents that MongoDB Cloud providers when
-            completing this request.
-          items:
-            $ref: '#/components/schemas/ApiAtlasAzurePeerNetworkView'
-          readOnly: true
-        totalCount:
-          type: integer
-          format: int32
-          description: Number of documents returned in this response.
-          minimum: 0
-          readOnly: true
-      title: AZURE
     PaginatedBackupSnapshotExportBucketView:
       type: object
       properties:
@@ -36341,6 +36470,35 @@ components:
           description: Number of documents returned in this response.
           minimum: 0
           readOnly: true
+    PaginatedContainerPeerView:
+      type: object
+      description: Group of Network Peering connection settings.
+      properties:
+        links:
+          type: array
+          description: "List of one or more Uniform Resource Locators (URLs) that\
+            \ point to API sub-resources, related API resources, or both. RFC 5988\
+            \ outlines these relationships."
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: '#/components/schemas/Link'
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud providers when
+            completing this request.
+          items:
+            $ref: '#/components/schemas/ApiAtlasContainerPeerView'
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Number of documents returned in this response if **includeCount**
+            query param is true.
+          minimum: 0
+          readOnly: true
     PaginatedDatabaseView:
       type: object
       properties:
@@ -36395,35 +36553,6 @@ components:
           description: Number of documents returned in this response.
           minimum: 0
           readOnly: true
-    PaginatedGCPPeerVpcView:
-      type: object
-      description: Group of Network Peering connection settings.
-      properties:
-        links:
-          type: array
-          description: "List of one or more Uniform Resource Locators (URLs) that\
-            \ point to API sub-resources, related API resources, or both. RFC 5988\
-            \ outlines these relationships."
-          externalDocs:
-            description: Web Linking Specification (RFC 5988)
-            url: https://datatracker.ietf.org/doc/html/rfc5988
-          items:
-            $ref: '#/components/schemas/Link'
-          readOnly: true
-        results:
-          type: array
-          description: List of returned documents that MongoDB Cloud providers when
-            completing this request.
-          items:
-            $ref: '#/components/schemas/ApiAtlasGCPPeerVpcView'
-          readOnly: true
-        totalCount:
-          type: integer
-          format: int32
-          description: Number of documents returned in this response.
-          minimum: 0
-          readOnly: true
-      title: GCP
     PaginatedHostView_Atlas:
       type: object
       properties:
@@ -37798,6 +37927,134 @@ components:
       required:
       - eventTypeName
       title: Replica Set Threshold Alert Configuration
+    ResourceEventTypeView:
+      type: string
+      description: Unique identifier of event type.
+      enum:
+      - TAGS_MODIFIED
+      example: TAGS_MODIFIED
+      title: Resource Event Types
+    ResourceEventViewForNdsGroup:
+      type: object
+      description: Resource event reflects different activities about resources.
+      properties:
+        apiKeyId:
+          type: string
+          description: "Unique 24-hexadecimal digit string that identifies the [API\
+            \ Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key) that\
+            \ triggered the event. If this resource returns this parameter, it doesn't\
+            \ return the **userId** parameter."
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          description: Date and time when this event occurred. This parameter expresses
+            its value in the <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank"
+            rel="noopener noreferrer">ISO 8601</a> timestamp format in UTC.
+          readOnly: true
+        eventTypeName:
+          $ref: '#/components/schemas/ResourceEventTypeView'
+        groupId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the project
+            in which the event occurred. The **eventId** identifies the specific event.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the event.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        isGlobalAdmin:
+          type: boolean
+          default: false
+          description: Flag that indicates whether a MongoDB employee triggered the
+            specified event.
+          readOnly: true
+        links:
+          type: array
+          description: "List of one or more Uniform Resource Locators (URLs) that\
+            \ point to API sub-resources, related API resources, or both. RFC 5988\
+            \ outlines these relationships."
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: '#/components/schemas/Link'
+          readOnly: true
+        orgId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the organization
+            to which these events apply.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        publicKey:
+          type: string
+          format: email
+          description: "Public part of the [API Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key)\
+            \ that triggered the event. If this resource returns this parameter, it\
+            \ doesn't return the **username** parameter."
+          example: test.user@mongodb.com
+          readOnly: true
+        raw:
+          $ref: '#/components/schemas/raw'
+        remoteAddress:
+          type: string
+          description: IPv4 or IPv6 address from which the user triggered this event.
+          example: 216.172.40.186
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
+            :){7}[0-9a-f]{1,4}$"
+          readOnly: true
+        resourceId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the resource
+            associated with the event.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        resourceType:
+          type: string
+          description: Unique identifier of resource type.
+          example: cluster
+        userId:
+          type: string
+          description: "Unique 24-hexadecimal digit string that identifies the console\
+            \ user who triggered the event. If this resource returns this parameter,\
+            \ it doesn't return the **apiKeyId** parameter."
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        username:
+          type: string
+          format: email
+          description: "Email address for the user who triggered this event. If this\
+            \ resource returns this parameter, it doesn't return the **publicApiKey**\
+            \ parameter."
+          example: test.user@mongodb.com
+          readOnly: true
+      required:
+      - created
+      - eventTypeName
+      - id
+      - resourceType
+      title: Resource Events
     RoleAssignment:
       type: object
       properties:
@@ -37916,6 +38173,66 @@ components:
       required:
       - typeName
       title: SMS Notification
+    SamlIdentityProviderUpdate:
+      type: object
+      properties:
+        associatedDomains:
+          type: array
+          description: List that contains the domains associated with the identity
+            provider.
+          items:
+            type: string
+          uniqueItems: true
+        description:
+          type: string
+          description: The description for the identity provider.
+        displayName:
+          type: string
+          description: Human-readable label that identifies the identity provider.
+          maxLength: 50
+          minLength: 1
+        issuerUri:
+          type: string
+          description: Unique string that identifies the issuer of the SAML Assertion.
+          example: urn:idp:default
+        pemFileInfo:
+          $ref: '#/components/schemas/PemFileInfo'
+        protocol:
+          type: string
+          description: The protocol for the identity provider.
+        requestBinding:
+          type: string
+          description: SAML Authentication Request Protocol HTTP method binding (POST
+            or REDIRECT) that Federated Authentication uses to send the authentication
+            request.
+          enum:
+          - HTTP-POST
+          - HTTP-REDIRECT
+        responseSignatureAlgorithm:
+          type: string
+          description: Signature algorithm that Federated Authentication uses to encrypt
+            the identity provider signature.
+          enum:
+          - SHA-1
+          - SHA-256
+        ssoDebugEnabled:
+          type: boolean
+          description: Flag that indicates whether the identity provider has SSO debug
+            enabled.
+        ssoUrl:
+          type: string
+          description: Unique string that identifies the intended audience of the
+            SAML assertion.
+          example: https://example.com
+        status:
+          type: string
+          description: String enum that indicates whether the identity provider is
+            active.
+          enum:
+          - ACTIVE
+          - INACTIVE
+      required:
+      - ssoDebugEnabled
     ServerlessEventTypeViewAlertable:
       type: string
       description: Event type that triggers an alert.
@@ -39497,6 +39814,9 @@ components:
           type: string
           format: date-time
           description: Earliest date that the certificate is valid.
+    accepted:
+      type: object
+      description: Accepted
     charFilterhtmlStrip:
       type: object
       description: Filter that strips out HTML constructs.
@@ -39570,6 +39890,15 @@ components:
       required:
       - type
       title: persian
+    created:
+      type: object
+      description: Created
+    noBody:
+      type: object
+      description: Endpoint does not return a response body.
+    ok:
+      type: object
+      description: Ok
     raw:
       type: object
       description: Additional meta information captured about this event. The response
@@ -39647,6 +39976,9 @@ components:
           - WARNING
           - ERROR
       readOnly: true
+    succeeded:
+      type: object
+      description: Succeeded
     tokenFilterasciiFolding:
       type: object
       description: "Filter that converts alphabetic, numeric, and symbolic unicode\

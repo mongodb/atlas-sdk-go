@@ -14,7 +14,7 @@ type CreateOrganizationRequest struct {
 	ApiKey *CreateApiKey `json:"apiKey,omitempty"`
 	// Human-readable label that identifies the organization.
 	Name string `json:"name"`
-	// Unique 24-hexadecimal digit string that identifies the Atlas user that you want to assign the Organization Owner role. This user must be a member of the same organization as the calling API key. This is required if you call the Admin API endpoint directly, but not required when you call through the Atlas CLI.
+	// Unique 24-hexadecimal digit string that identifies the Atlas user that you want to assign the Organization Owner role. This user must be a member of the same organization as the calling API key. This is only required when authenticating with Programmatic API Keys.
 	OrgOwnerId *string `json:"orgOwnerId,omitempty"`
 }
 

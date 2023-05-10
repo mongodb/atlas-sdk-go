@@ -12,12 +12,14 @@ type CpsBackupEventTypeViewForNdsGroupAlertableWithThreshold string
 
 // List of CpsBackupEventTypeViewForNdsGroupAlertableWithThreshold
 const (
-	CPSBACKUPEVENTTYPEVIEWFORNDSGROUPALERTABLEWITHTHRESHOLD_CPS_SNAPSHOT_BEHIND CpsBackupEventTypeViewForNdsGroupAlertableWithThreshold = "CPS_SNAPSHOT_BEHIND"
+	CPSBACKUPEVENTTYPEVIEWFORNDSGROUPALERTABLEWITHTHRESHOLD_SNAPSHOT_BEHIND CpsBackupEventTypeViewForNdsGroupAlertableWithThreshold = "CPS_SNAPSHOT_BEHIND"
+	CPSBACKUPEVENTTYPEVIEWFORNDSGROUPALERTABLEWITHTHRESHOLD_OPLOG_BEHIND    CpsBackupEventTypeViewForNdsGroupAlertableWithThreshold = "CPS_OPLOG_BEHIND"
 )
 
 // All allowed values of CpsBackupEventTypeViewForNdsGroupAlertableWithThreshold enum
 var AllowedCpsBackupEventTypeViewForNdsGroupAlertableWithThresholdEnumValues = []CpsBackupEventTypeViewForNdsGroupAlertableWithThreshold{
 	"CPS_SNAPSHOT_BEHIND",
+	"CPS_OPLOG_BEHIND",
 }
 
 func (v *CpsBackupEventTypeViewForNdsGroupAlertableWithThreshold) UnmarshalJSON(src []byte) error {
