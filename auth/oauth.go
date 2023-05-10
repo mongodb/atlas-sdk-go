@@ -32,7 +32,7 @@ import (
 const defaultBaseURL = "https://cloud.mongodb.com/"
 
 var (
-	userAgent = fmt.Sprintf("go-mongodbatlas/%s (%s;%s)", core.Version, runtime.GOOS, runtime.GOARCH)
+	userAgent = fmt.Sprintf("go-atlas-sdk-auth/%s (%s;%s)", core.Version, runtime.GOOS, runtime.GOARCH)
 )
 
 type Config struct {

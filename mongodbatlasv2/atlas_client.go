@@ -17,7 +17,7 @@ const (
 	// Version the version of the current API client inherited from.
 	Version = core.Version
 	// Name of the v2 API client.
-	ClientName = "go-atlas-sdk"
+	ClientName = "go-atlas-sdk-admin"
 )
 
 // NewClient returns a new MongoDBAtlas API Client.
