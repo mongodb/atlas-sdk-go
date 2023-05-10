@@ -16,14 +16,14 @@ type SnapshotRetention struct {
 	// Quantity of time in which MongoDB Cloud measures snapshot retention.
 	RetentionUnit string `json:"retentionUnit"`
 	// Number that indicates the amount of days, weeks, or months that MongoDB Cloud retains the snapshot. For less frequent policy items, MongoDB Cloud requires that you specify a value greater than or equal to the value specified for more frequent policy items. If the hourly policy item specifies a retention of two days, specify two days or greater for the retention of the weekly policy item.
-	RetentionValue int32 `json:"retentionValue"`
+	RetentionValue int `json:"retentionValue"`
 }
 
 // NewSnapshotRetention instantiates a new SnapshotRetention object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSnapshotRetention(retentionUnit string, retentionValue int32) *SnapshotRetention {
+func NewSnapshotRetention(retentionUnit string, retentionValue int) *SnapshotRetention {
 	this := SnapshotRetention{}
 	this.RetentionUnit = retentionUnit
 	this.RetentionValue = retentionValue
@@ -95,9 +95,9 @@ func (o *SnapshotRetention) SetRetentionUnit(v string) {
 }
 
 // GetRetentionValue returns the RetentionValue field value
-func (o *SnapshotRetention) GetRetentionValue() int32 {
+func (o *SnapshotRetention) GetRetentionValue() int {
 	if o == nil {
-		var ret int32
+		var ret int
 		return ret
 	}
 
@@ -106,7 +106,7 @@ func (o *SnapshotRetention) GetRetentionValue() int32 {
 
 // GetRetentionValueOk returns a tuple with the RetentionValue field value
 // and a boolean to check if the value has been set.
-func (o *SnapshotRetention) GetRetentionValueOk() (*int32, bool) {
+func (o *SnapshotRetention) GetRetentionValueOk() (*int, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -114,7 +114,7 @@ func (o *SnapshotRetention) GetRetentionValueOk() (*int32, bool) {
 }
 
 // SetRetentionValue sets field value
-func (o *SnapshotRetention) SetRetentionValue(v int32) {
+func (o *SnapshotRetention) SetRetentionValue(v int) {
 	o.RetentionValue = v
 }
 

@@ -32,11 +32,11 @@ type ServerlessBackupRestoreJob struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	Links []Link `json:"links,omitempty"`
 	// Oplog operation number from which you want to restore this snapshot. This number represents the second part of an Oplog timestamp. The resource returns this parameter when `\"deliveryType\" : \"pointInTime\"` and **oplogTs** exceeds `0`.
-	OplogInc *int32 `json:"oplogInc,omitempty"`
+	OplogInc *int `json:"oplogInc,omitempty"`
 	// Date and time from which you want to restore this snapshot. This parameter expresses this timestamp in the number of seconds that have elapsed since the UNIX epoch. This number represents the first part of an Oplog timestamp. The resource returns this parameter when `\"deliveryType\" : \"pointInTime\"` and **oplogTs** exceeds `0`.
-	OplogTs *int32 `json:"oplogTs,omitempty"`
+	OplogTs *int `json:"oplogTs,omitempty"`
 	// Date and time from which MongoDB Cloud restored this snapshot. This parameter expresses this timestamp in the number of seconds that have elapsed since the UNIX epoch. The resource returns this parameter when `\"deliveryType\" : \"pointInTime\"` and **pointInTimeUTCSeconds** exceeds `0`.
-	PointInTimeUTCSeconds *int32 `json:"pointInTimeUTCSeconds,omitempty"`
+	PointInTimeUTCSeconds *int `json:"pointInTimeUTCSeconds,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the snapshot.
 	SnapshotId *string `json:"snapshotId,omitempty"`
 	// Human-readable label that identifies the target cluster to which the restore job restores the snapshot. The resource returns this parameter when `\"deliveryType\":` `\"automated\"`.
@@ -380,9 +380,9 @@ func (o *ServerlessBackupRestoreJob) SetLinks(v []Link) {
 }
 
 // GetOplogInc returns the OplogInc field value if set, zero value otherwise.
-func (o *ServerlessBackupRestoreJob) GetOplogInc() int32 {
+func (o *ServerlessBackupRestoreJob) GetOplogInc() int {
 	if o == nil || IsNil(o.OplogInc) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.OplogInc
@@ -390,7 +390,7 @@ func (o *ServerlessBackupRestoreJob) GetOplogInc() int32 {
 
 // GetOplogIncOk returns a tuple with the OplogInc field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServerlessBackupRestoreJob) GetOplogIncOk() (*int32, bool) {
+func (o *ServerlessBackupRestoreJob) GetOplogIncOk() (*int, bool) {
 	if o == nil || IsNil(o.OplogInc) {
 		return nil, false
 	}
@@ -406,15 +406,15 @@ func (o *ServerlessBackupRestoreJob) HasOplogInc() bool {
 	return false
 }
 
-// SetOplogInc gets a reference to the given int32 and assigns it to the OplogInc field.
-func (o *ServerlessBackupRestoreJob) SetOplogInc(v int32) {
+// SetOplogInc gets a reference to the given int and assigns it to the OplogInc field.
+func (o *ServerlessBackupRestoreJob) SetOplogInc(v int) {
 	o.OplogInc = &v
 }
 
 // GetOplogTs returns the OplogTs field value if set, zero value otherwise.
-func (o *ServerlessBackupRestoreJob) GetOplogTs() int32 {
+func (o *ServerlessBackupRestoreJob) GetOplogTs() int {
 	if o == nil || IsNil(o.OplogTs) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.OplogTs
@@ -422,7 +422,7 @@ func (o *ServerlessBackupRestoreJob) GetOplogTs() int32 {
 
 // GetOplogTsOk returns a tuple with the OplogTs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServerlessBackupRestoreJob) GetOplogTsOk() (*int32, bool) {
+func (o *ServerlessBackupRestoreJob) GetOplogTsOk() (*int, bool) {
 	if o == nil || IsNil(o.OplogTs) {
 		return nil, false
 	}
@@ -438,15 +438,15 @@ func (o *ServerlessBackupRestoreJob) HasOplogTs() bool {
 	return false
 }
 
-// SetOplogTs gets a reference to the given int32 and assigns it to the OplogTs field.
-func (o *ServerlessBackupRestoreJob) SetOplogTs(v int32) {
+// SetOplogTs gets a reference to the given int and assigns it to the OplogTs field.
+func (o *ServerlessBackupRestoreJob) SetOplogTs(v int) {
 	o.OplogTs = &v
 }
 
 // GetPointInTimeUTCSeconds returns the PointInTimeUTCSeconds field value if set, zero value otherwise.
-func (o *ServerlessBackupRestoreJob) GetPointInTimeUTCSeconds() int32 {
+func (o *ServerlessBackupRestoreJob) GetPointInTimeUTCSeconds() int {
 	if o == nil || IsNil(o.PointInTimeUTCSeconds) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.PointInTimeUTCSeconds
@@ -454,7 +454,7 @@ func (o *ServerlessBackupRestoreJob) GetPointInTimeUTCSeconds() int32 {
 
 // GetPointInTimeUTCSecondsOk returns a tuple with the PointInTimeUTCSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServerlessBackupRestoreJob) GetPointInTimeUTCSecondsOk() (*int32, bool) {
+func (o *ServerlessBackupRestoreJob) GetPointInTimeUTCSecondsOk() (*int, bool) {
 	if o == nil || IsNil(o.PointInTimeUTCSeconds) {
 		return nil, false
 	}
@@ -470,8 +470,8 @@ func (o *ServerlessBackupRestoreJob) HasPointInTimeUTCSeconds() bool {
 	return false
 }
 
-// SetPointInTimeUTCSeconds gets a reference to the given int32 and assigns it to the PointInTimeUTCSeconds field.
-func (o *ServerlessBackupRestoreJob) SetPointInTimeUTCSeconds(v int32) {
+// SetPointInTimeUTCSeconds gets a reference to the given int and assigns it to the PointInTimeUTCSeconds field.
+func (o *ServerlessBackupRestoreJob) SetPointInTimeUTCSeconds(v int) {
 	o.PointInTimeUTCSeconds = &v
 }
 

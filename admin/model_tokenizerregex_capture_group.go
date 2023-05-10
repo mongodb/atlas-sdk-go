@@ -12,7 +12,7 @@ var _ MappedNullable = &TokenizerregexCaptureGroup{}
 // TokenizerregexCaptureGroup Tokenizer that uses a regular expression pattern to extract tokens.
 type TokenizerregexCaptureGroup struct {
 	// Index of the character group within the matching expression to extract into tokens. Use `0` to extract all character groups.
-	Group int32 `json:"group"`
+	Group int `json:"group"`
 	// Regular expression to match against.
 	Pattern string `json:"pattern"`
 	// Human-readable label that identifies this tokenizer type.
@@ -23,7 +23,7 @@ type TokenizerregexCaptureGroup struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTokenizerregexCaptureGroup(group int32, pattern string, type_ string) *TokenizerregexCaptureGroup {
+func NewTokenizerregexCaptureGroup(group int, pattern string, type_ string) *TokenizerregexCaptureGroup {
 	this := TokenizerregexCaptureGroup{}
 	this.Group = group
 	this.Pattern = pattern
@@ -40,9 +40,9 @@ func NewTokenizerregexCaptureGroupWithDefaults() *TokenizerregexCaptureGroup {
 }
 
 // GetGroup returns the Group field value
-func (o *TokenizerregexCaptureGroup) GetGroup() int32 {
+func (o *TokenizerregexCaptureGroup) GetGroup() int {
 	if o == nil {
-		var ret int32
+		var ret int
 		return ret
 	}
 
@@ -51,7 +51,7 @@ func (o *TokenizerregexCaptureGroup) GetGroup() int32 {
 
 // GetGroupOk returns a tuple with the Group field value
 // and a boolean to check if the value has been set.
-func (o *TokenizerregexCaptureGroup) GetGroupOk() (*int32, bool) {
+func (o *TokenizerregexCaptureGroup) GetGroupOk() (*int, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -59,7 +59,7 @@ func (o *TokenizerregexCaptureGroup) GetGroupOk() (*int32, bool) {
 }
 
 // SetGroup sets field value
-func (o *TokenizerregexCaptureGroup) SetGroup(v int32) {
+func (o *TokenizerregexCaptureGroup) SetGroup(v int) {
 	o.Group = v
 }
 

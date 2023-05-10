@@ -805,16 +805,16 @@ type ListOnlineArchivesApiRequest struct {
 	groupId      string
 	clusterName  string
 	includeCount *bool
-	itemsPerPage *int32
-	pageNum      *int32
+	itemsPerPage *int
+	pageNum      *int
 }
 
 type ListOnlineArchivesApiParams struct {
 	GroupId      string
 	ClusterName  string
 	IncludeCount *bool
-	ItemsPerPage *int32
-	PageNum      *int32
+	ItemsPerPage *int
+	PageNum      *int
 }
 
 func (a *OnlineArchiveApiService) ListOnlineArchivesWithParams(ctx context.Context, args *ListOnlineArchivesApiParams) ListOnlineArchivesApiRequest {
@@ -836,13 +836,13 @@ func (r ListOnlineArchivesApiRequest) IncludeCount(includeCount bool) ListOnline
 }
 
 // Number of items that the response returns per page.
-func (r ListOnlineArchivesApiRequest) ItemsPerPage(itemsPerPage int32) ListOnlineArchivesApiRequest {
+func (r ListOnlineArchivesApiRequest) ItemsPerPage(itemsPerPage int) ListOnlineArchivesApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListOnlineArchivesApiRequest) PageNum(pageNum int32) ListOnlineArchivesApiRequest {
+func (r ListOnlineArchivesApiRequest) PageNum(pageNum int) ListOnlineArchivesApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
@@ -916,14 +916,14 @@ func (a *OnlineArchiveApiService) listOnlineArchivesExecute(r ListOnlineArchives
 	if r.itemsPerPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int = 100
 		r.itemsPerPage = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.pageNum != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	} else {
-		var defaultValue int32 = 1
+		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	}

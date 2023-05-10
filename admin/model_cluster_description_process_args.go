@@ -26,11 +26,11 @@ type ClusterDescriptionProcessArgs struct {
 	// Minimum retention window for cluster's oplog expressed in hours. A value of null indicates that the cluster uses the default minimum oplog window that MongoDB Cloud calculates.
 	OplogMinRetentionHours NullableFloat64 `json:"oplogMinRetentionHours,omitempty"`
 	// Storage limit of cluster's oplog expressed in megabytes. A value of null indicates that the cluster uses the default oplog size that MongoDB Cloud calculates.
-	OplogSizeMB NullableInt32 `json:"oplogSizeMB,omitempty"`
+	OplogSizeMB NullableInt `json:"oplogSizeMB,omitempty"`
 	// Interval in seconds at which the mongosqld process re-samples data to create its relational schema.
-	SampleRefreshIntervalBIConnector *int32 `json:"sampleRefreshIntervalBIConnector,omitempty"`
+	SampleRefreshIntervalBIConnector *int `json:"sampleRefreshIntervalBIConnector,omitempty"`
 	// Number of documents per database to sample when gathering schema information.
-	SampleSizeBIConnector *int32 `json:"sampleSizeBIConnector,omitempty"`
+	SampleSizeBIConnector *int `json:"sampleSizeBIConnector,omitempty"`
 }
 
 // NewClusterDescriptionProcessArgs instantiates a new ClusterDescriptionProcessArgs object
@@ -49,9 +49,9 @@ func NewClusterDescriptionProcessArgs() *ClusterDescriptionProcessArgs {
 	this.JavascriptEnabled = &javascriptEnabled
 	var noTableScan bool = false
 	this.NoTableScan = &noTableScan
-	var sampleRefreshIntervalBIConnector int32 = 0
+	var sampleRefreshIntervalBIConnector int = 0
 	this.SampleRefreshIntervalBIConnector = &sampleRefreshIntervalBIConnector
-	var sampleSizeBIConnector int32 = 1000
+	var sampleSizeBIConnector int = 1000
 	this.SampleSizeBIConnector = &sampleSizeBIConnector
 	return &this
 }
@@ -71,9 +71,9 @@ func NewClusterDescriptionProcessArgsWithDefaults() *ClusterDescriptionProcessAr
 	this.JavascriptEnabled = &javascriptEnabled
 	var noTableScan bool = false
 	this.NoTableScan = &noTableScan
-	var sampleRefreshIntervalBIConnector int32 = 0
+	var sampleRefreshIntervalBIConnector int = 0
 	this.SampleRefreshIntervalBIConnector = &sampleRefreshIntervalBIConnector
-	var sampleSizeBIConnector int32 = 1000
+	var sampleSizeBIConnector int = 1000
 	this.SampleSizeBIConnector = &sampleSizeBIConnector
 	return &this
 }
@@ -314,9 +314,9 @@ func (o *ClusterDescriptionProcessArgs) UnsetOplogMinRetentionHours() {
 }
 
 // GetOplogSizeMB returns the OplogSizeMB field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ClusterDescriptionProcessArgs) GetOplogSizeMB() int32 {
+func (o *ClusterDescriptionProcessArgs) GetOplogSizeMB() int {
 	if o == nil || IsNil(o.OplogSizeMB.Get()) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.OplogSizeMB.Get()
@@ -325,7 +325,7 @@ func (o *ClusterDescriptionProcessArgs) GetOplogSizeMB() int32 {
 // GetOplogSizeMBOk returns a tuple with the OplogSizeMB field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ClusterDescriptionProcessArgs) GetOplogSizeMBOk() (*int32, bool) {
+func (o *ClusterDescriptionProcessArgs) GetOplogSizeMBOk() (*int, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -341,8 +341,8 @@ func (o *ClusterDescriptionProcessArgs) HasOplogSizeMB() bool {
 	return false
 }
 
-// SetOplogSizeMB gets a reference to the given NullableInt32 and assigns it to the OplogSizeMB field.
-func (o *ClusterDescriptionProcessArgs) SetOplogSizeMB(v int32) {
+// SetOplogSizeMB gets a reference to the given NullableInt and assigns it to the OplogSizeMB field.
+func (o *ClusterDescriptionProcessArgs) SetOplogSizeMB(v int) {
 	o.OplogSizeMB.Set(&v)
 }
 
@@ -357,9 +357,9 @@ func (o *ClusterDescriptionProcessArgs) UnsetOplogSizeMB() {
 }
 
 // GetSampleRefreshIntervalBIConnector returns the SampleRefreshIntervalBIConnector field value if set, zero value otherwise.
-func (o *ClusterDescriptionProcessArgs) GetSampleRefreshIntervalBIConnector() int32 {
+func (o *ClusterDescriptionProcessArgs) GetSampleRefreshIntervalBIConnector() int {
 	if o == nil || IsNil(o.SampleRefreshIntervalBIConnector) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.SampleRefreshIntervalBIConnector
@@ -367,7 +367,7 @@ func (o *ClusterDescriptionProcessArgs) GetSampleRefreshIntervalBIConnector() in
 
 // GetSampleRefreshIntervalBIConnectorOk returns a tuple with the SampleRefreshIntervalBIConnector field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescriptionProcessArgs) GetSampleRefreshIntervalBIConnectorOk() (*int32, bool) {
+func (o *ClusterDescriptionProcessArgs) GetSampleRefreshIntervalBIConnectorOk() (*int, bool) {
 	if o == nil || IsNil(o.SampleRefreshIntervalBIConnector) {
 		return nil, false
 	}
@@ -383,15 +383,15 @@ func (o *ClusterDescriptionProcessArgs) HasSampleRefreshIntervalBIConnector() bo
 	return false
 }
 
-// SetSampleRefreshIntervalBIConnector gets a reference to the given int32 and assigns it to the SampleRefreshIntervalBIConnector field.
-func (o *ClusterDescriptionProcessArgs) SetSampleRefreshIntervalBIConnector(v int32) {
+// SetSampleRefreshIntervalBIConnector gets a reference to the given int and assigns it to the SampleRefreshIntervalBIConnector field.
+func (o *ClusterDescriptionProcessArgs) SetSampleRefreshIntervalBIConnector(v int) {
 	o.SampleRefreshIntervalBIConnector = &v
 }
 
 // GetSampleSizeBIConnector returns the SampleSizeBIConnector field value if set, zero value otherwise.
-func (o *ClusterDescriptionProcessArgs) GetSampleSizeBIConnector() int32 {
+func (o *ClusterDescriptionProcessArgs) GetSampleSizeBIConnector() int {
 	if o == nil || IsNil(o.SampleSizeBIConnector) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.SampleSizeBIConnector
@@ -399,7 +399,7 @@ func (o *ClusterDescriptionProcessArgs) GetSampleSizeBIConnector() int32 {
 
 // GetSampleSizeBIConnectorOk returns a tuple with the SampleSizeBIConnector field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescriptionProcessArgs) GetSampleSizeBIConnectorOk() (*int32, bool) {
+func (o *ClusterDescriptionProcessArgs) GetSampleSizeBIConnectorOk() (*int, bool) {
 	if o == nil || IsNil(o.SampleSizeBIConnector) {
 		return nil, false
 	}
@@ -415,8 +415,8 @@ func (o *ClusterDescriptionProcessArgs) HasSampleSizeBIConnector() bool {
 	return false
 }
 
-// SetSampleSizeBIConnector gets a reference to the given int32 and assigns it to the SampleSizeBIConnector field.
-func (o *ClusterDescriptionProcessArgs) SetSampleSizeBIConnector(v int32) {
+// SetSampleSizeBIConnector gets a reference to the given int and assigns it to the SampleSizeBIConnector field.
+func (o *ClusterDescriptionProcessArgs) SetSampleSizeBIConnector(v int) {
 	o.SampleSizeBIConnector = &v
 }
 

@@ -12,9 +12,9 @@ var _ MappedNullable = &OpsGenieNotification{}
 // OpsGenieNotification OpsGenie notification configuration for MongoDB Cloud to send information when an event triggers an alert condition.
 type OpsGenieNotification struct {
 	// Number of minutes that MongoDB Cloud waits after detecting an alert condition before it sends out the first notification.
-	DelayMin *int32 `json:"delayMin,omitempty"`
+	DelayMin *int `json:"delayMin,omitempty"`
 	// Number of minutes to wait between successive notifications. MongoDB Cloud sends notifications until someone acknowledges the unacknowledged alert.  PagerDuty, VictorOps, and OpsGenie notifications don't return this element. Configure and manage the notification interval within each of those services.
-	IntervalMin *int32 `json:"intervalMin,omitempty"`
+	IntervalMin *int `json:"intervalMin,omitempty"`
 	// API Key that MongoDB Cloud needs to send this notification via Opsgenie. The resource requires this parameter when `\"notifications.[n].typeName\" : \"OPS_GENIE\"`. If the key later becomes invalid, MongoDB Cloud sends an email to the project owners. If the key remains invalid, MongoDB Cloud removes it.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.
 	OpsGenieApiKey *string `json:"opsGenieApiKey,omitempty"`
 	// Opsgenie region that indicates which API Uniform Resource Locator (URL) to use.
@@ -46,9 +46,9 @@ func NewOpsGenieNotificationWithDefaults() *OpsGenieNotification {
 }
 
 // GetDelayMin returns the DelayMin field value if set, zero value otherwise.
-func (o *OpsGenieNotification) GetDelayMin() int32 {
+func (o *OpsGenieNotification) GetDelayMin() int {
 	if o == nil || IsNil(o.DelayMin) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.DelayMin
@@ -56,7 +56,7 @@ func (o *OpsGenieNotification) GetDelayMin() int32 {
 
 // GetDelayMinOk returns a tuple with the DelayMin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OpsGenieNotification) GetDelayMinOk() (*int32, bool) {
+func (o *OpsGenieNotification) GetDelayMinOk() (*int, bool) {
 	if o == nil || IsNil(o.DelayMin) {
 		return nil, false
 	}
@@ -72,15 +72,15 @@ func (o *OpsGenieNotification) HasDelayMin() bool {
 	return false
 }
 
-// SetDelayMin gets a reference to the given int32 and assigns it to the DelayMin field.
-func (o *OpsGenieNotification) SetDelayMin(v int32) {
+// SetDelayMin gets a reference to the given int and assigns it to the DelayMin field.
+func (o *OpsGenieNotification) SetDelayMin(v int) {
 	o.DelayMin = &v
 }
 
 // GetIntervalMin returns the IntervalMin field value if set, zero value otherwise.
-func (o *OpsGenieNotification) GetIntervalMin() int32 {
+func (o *OpsGenieNotification) GetIntervalMin() int {
 	if o == nil || IsNil(o.IntervalMin) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.IntervalMin
@@ -88,7 +88,7 @@ func (o *OpsGenieNotification) GetIntervalMin() int32 {
 
 // GetIntervalMinOk returns a tuple with the IntervalMin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OpsGenieNotification) GetIntervalMinOk() (*int32, bool) {
+func (o *OpsGenieNotification) GetIntervalMinOk() (*int, bool) {
 	if o == nil || IsNil(o.IntervalMin) {
 		return nil, false
 	}
@@ -104,8 +104,8 @@ func (o *OpsGenieNotification) HasIntervalMin() bool {
 	return false
 }
 
-// SetIntervalMin gets a reference to the given int32 and assigns it to the IntervalMin field.
-func (o *OpsGenieNotification) SetIntervalMin(v int32) {
+// SetIntervalMin gets a reference to the given int and assigns it to the IntervalMin field.
+func (o *OpsGenieNotification) SetIntervalMin(v int) {
 	o.IntervalMin = &v
 }
 

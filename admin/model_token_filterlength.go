@@ -12,9 +12,9 @@ var _ MappedNullable = &TokenFilterlength{}
 // TokenFilterlength Filter that removes tokens that are too short or too long.
 type TokenFilterlength struct {
 	// Number that specifies the maximum length of a token. Value must be greater than or equal to **min**.
-	Max *int32 `json:"max,omitempty"`
+	Max *int `json:"max,omitempty"`
 	// Number that specifies the minimum length of a token. This value must be less than or equal to **max**.
-	Min *int32 `json:"min,omitempty"`
+	Min *int `json:"min,omitempty"`
 	// Human-readable label that identifies this token filter type.
 	Type string `json:"type"`
 }
@@ -25,9 +25,9 @@ type TokenFilterlength struct {
 // will change when the set of required properties is changed
 func NewTokenFilterlength(type_ string) *TokenFilterlength {
 	this := TokenFilterlength{}
-	var max int32 = 255
+	var max int = 255
 	this.Max = &max
-	var min int32 = 0
+	var min int = 0
 	this.Min = &min
 	this.Type = type_
 	return &this
@@ -38,17 +38,17 @@ func NewTokenFilterlength(type_ string) *TokenFilterlength {
 // but it doesn't guarantee that properties required by API are set
 func NewTokenFilterlengthWithDefaults() *TokenFilterlength {
 	this := TokenFilterlength{}
-	var max int32 = 255
+	var max int = 255
 	this.Max = &max
-	var min int32 = 0
+	var min int = 0
 	this.Min = &min
 	return &this
 }
 
 // GetMax returns the Max field value if set, zero value otherwise.
-func (o *TokenFilterlength) GetMax() int32 {
+func (o *TokenFilterlength) GetMax() int {
 	if o == nil || IsNil(o.Max) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.Max
@@ -56,7 +56,7 @@ func (o *TokenFilterlength) GetMax() int32 {
 
 // GetMaxOk returns a tuple with the Max field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenFilterlength) GetMaxOk() (*int32, bool) {
+func (o *TokenFilterlength) GetMaxOk() (*int, bool) {
 	if o == nil || IsNil(o.Max) {
 		return nil, false
 	}
@@ -72,15 +72,15 @@ func (o *TokenFilterlength) HasMax() bool {
 	return false
 }
 
-// SetMax gets a reference to the given int32 and assigns it to the Max field.
-func (o *TokenFilterlength) SetMax(v int32) {
+// SetMax gets a reference to the given int and assigns it to the Max field.
+func (o *TokenFilterlength) SetMax(v int) {
 	o.Max = &v
 }
 
 // GetMin returns the Min field value if set, zero value otherwise.
-func (o *TokenFilterlength) GetMin() int32 {
+func (o *TokenFilterlength) GetMin() int {
 	if o == nil || IsNil(o.Min) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.Min
@@ -88,7 +88,7 @@ func (o *TokenFilterlength) GetMin() int32 {
 
 // GetMinOk returns a tuple with the Min field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TokenFilterlength) GetMinOk() (*int32, bool) {
+func (o *TokenFilterlength) GetMinOk() (*int, bool) {
 	if o == nil || IsNil(o.Min) {
 		return nil, false
 	}
@@ -104,8 +104,8 @@ func (o *TokenFilterlength) HasMin() bool {
 	return false
 }
 
-// SetMin gets a reference to the given int32 and assigns it to the Min field.
-func (o *TokenFilterlength) SetMin(v int32) {
+// SetMin gets a reference to the given int and assigns it to the Min field.
+func (o *TokenFilterlength) SetMin(v int) {
 	o.Min = &v
 }
 

@@ -13,7 +13,7 @@ var _ MappedNullable = &AWSProviderSettings{}
 type AWSProviderSettings struct {
 	AutoScaling *AWSAutoScaling `json:"autoScaling,omitempty"`
 	// Maximum Disk Input/Output Operations per Second (IOPS) that the database host can perform.
-	DiskIOPS *int32 `json:"diskIOPS,omitempty"`
+	DiskIOPS *int `json:"diskIOPS,omitempty"`
 	// Flag that indicates whether the Amazon Elastic Block Store (EBS) encryption feature encrypts the host's root volume for both data at rest within the volume and for data moving between the volume and the cluster. Clusters always have this setting enabled.
 	// Deprecated
 	EncryptEBSVolume *bool `json:"encryptEBSVolume,omitempty"`
@@ -81,9 +81,9 @@ func (o *AWSProviderSettings) SetAutoScaling(v AWSAutoScaling) {
 }
 
 // GetDiskIOPS returns the DiskIOPS field value if set, zero value otherwise.
-func (o *AWSProviderSettings) GetDiskIOPS() int32 {
+func (o *AWSProviderSettings) GetDiskIOPS() int {
 	if o == nil || IsNil(o.DiskIOPS) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.DiskIOPS
@@ -91,7 +91,7 @@ func (o *AWSProviderSettings) GetDiskIOPS() int32 {
 
 // GetDiskIOPSOk returns a tuple with the DiskIOPS field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AWSProviderSettings) GetDiskIOPSOk() (*int32, bool) {
+func (o *AWSProviderSettings) GetDiskIOPSOk() (*int, bool) {
 	if o == nil || IsNil(o.DiskIOPS) {
 		return nil, false
 	}
@@ -107,8 +107,8 @@ func (o *AWSProviderSettings) HasDiskIOPS() bool {
 	return false
 }
 
-// SetDiskIOPS gets a reference to the given int32 and assigns it to the DiskIOPS field.
-func (o *AWSProviderSettings) SetDiskIOPS(v int32) {
+// SetDiskIOPS gets a reference to the given int and assigns it to the DiskIOPS field.
+func (o *AWSProviderSettings) SetDiskIOPS(v int) {
 	o.DiskIOPS = &v
 }
 

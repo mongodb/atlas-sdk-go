@@ -141,16 +141,16 @@ type CreateProjectIpAccessListApiRequest struct {
 	groupId                string
 	networkPermissionEntry *[]NetworkPermissionEntry
 	includeCount           *bool
-	itemsPerPage           *int32
-	pageNum                *int32
+	itemsPerPage           *int
+	pageNum                *int
 }
 
 type CreateProjectIpAccessListApiParams struct {
 	GroupId                string
 	NetworkPermissionEntry *[]NetworkPermissionEntry
 	IncludeCount           *bool
-	ItemsPerPage           *int32
-	PageNum                *int32
+	ItemsPerPage           *int
+	PageNum                *int
 }
 
 func (a *ProjectIPAccessListApiService) CreateProjectIpAccessListWithParams(ctx context.Context, args *CreateProjectIpAccessListApiParams) CreateProjectIpAccessListApiRequest {
@@ -178,13 +178,13 @@ func (r CreateProjectIpAccessListApiRequest) IncludeCount(includeCount bool) Cre
 }
 
 // Number of items that the response returns per page.
-func (r CreateProjectIpAccessListApiRequest) ItemsPerPage(itemsPerPage int32) CreateProjectIpAccessListApiRequest {
+func (r CreateProjectIpAccessListApiRequest) ItemsPerPage(itemsPerPage int) CreateProjectIpAccessListApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r CreateProjectIpAccessListApiRequest) PageNum(pageNum int32) CreateProjectIpAccessListApiRequest {
+func (r CreateProjectIpAccessListApiRequest) PageNum(pageNum int) CreateProjectIpAccessListApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
@@ -252,14 +252,14 @@ func (a *ProjectIPAccessListApiService) createProjectIpAccessListExecute(r Creat
 	if r.itemsPerPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int = 100
 		r.itemsPerPage = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.pageNum != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	} else {
-		var defaultValue int32 = 1
+		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	}
@@ -728,15 +728,15 @@ type ListProjectIpAccessListsApiRequest struct {
 	ApiService   ProjectIPAccessListApi
 	groupId      string
 	includeCount *bool
-	itemsPerPage *int32
-	pageNum      *int32
+	itemsPerPage *int
+	pageNum      *int
 }
 
 type ListProjectIpAccessListsApiParams struct {
 	GroupId      string
 	IncludeCount *bool
-	ItemsPerPage *int32
-	PageNum      *int32
+	ItemsPerPage *int
+	PageNum      *int
 }
 
 func (a *ProjectIPAccessListApiService) ListProjectIpAccessListsWithParams(ctx context.Context, args *ListProjectIpAccessListsApiParams) ListProjectIpAccessListsApiRequest {
@@ -757,13 +757,13 @@ func (r ListProjectIpAccessListsApiRequest) IncludeCount(includeCount bool) List
 }
 
 // Number of items that the response returns per page.
-func (r ListProjectIpAccessListsApiRequest) ItemsPerPage(itemsPerPage int32) ListProjectIpAccessListsApiRequest {
+func (r ListProjectIpAccessListsApiRequest) ItemsPerPage(itemsPerPage int) ListProjectIpAccessListsApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListProjectIpAccessListsApiRequest) PageNum(pageNum int32) ListProjectIpAccessListsApiRequest {
+func (r ListProjectIpAccessListsApiRequest) PageNum(pageNum int) ListProjectIpAccessListsApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
@@ -828,14 +828,14 @@ func (a *ProjectIPAccessListApiService) listProjectIpAccessListsExecute(r ListPr
 	if r.itemsPerPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int = 100
 		r.itemsPerPage = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.pageNum != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	} else {
-		var defaultValue int32 = 1
+		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	}

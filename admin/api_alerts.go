@@ -427,16 +427,16 @@ type ListAlertsApiRequest struct {
 	ApiService   AlertsApi
 	groupId      string
 	includeCount *bool
-	itemsPerPage *int32
-	pageNum      *int32
+	itemsPerPage *int
+	pageNum      *int
 	status       *string
 }
 
 type ListAlertsApiParams struct {
 	GroupId      string
 	IncludeCount *bool
-	ItemsPerPage *int32
-	PageNum      *int32
+	ItemsPerPage *int
+	PageNum      *int
 	Status       *string
 }
 
@@ -459,13 +459,13 @@ func (r ListAlertsApiRequest) IncludeCount(includeCount bool) ListAlertsApiReque
 }
 
 // Number of items that the response returns per page.
-func (r ListAlertsApiRequest) ItemsPerPage(itemsPerPage int32) ListAlertsApiRequest {
+func (r ListAlertsApiRequest) ItemsPerPage(itemsPerPage int) ListAlertsApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListAlertsApiRequest) PageNum(pageNum int32) ListAlertsApiRequest {
+func (r ListAlertsApiRequest) PageNum(pageNum int) ListAlertsApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
@@ -538,14 +538,14 @@ func (a *AlertsApiService) listAlertsExecute(r ListAlertsApiRequest) (*Paginated
 	if r.itemsPerPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int = 100
 		r.itemsPerPage = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.pageNum != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	} else {
-		var defaultValue int32 = 1
+		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	}
@@ -620,16 +620,16 @@ type ListAlertsByAlertConfigurationIdApiRequest struct {
 	groupId       string
 	alertConfigId string
 	includeCount  *bool
-	itemsPerPage  *int32
-	pageNum       *int32
+	itemsPerPage  *int
+	pageNum       *int
 }
 
 type ListAlertsByAlertConfigurationIdApiParams struct {
 	GroupId       string
 	AlertConfigId string
 	IncludeCount  *bool
-	ItemsPerPage  *int32
-	PageNum       *int32
+	ItemsPerPage  *int
+	PageNum       *int
 }
 
 func (a *AlertsApiService) ListAlertsByAlertConfigurationIdWithParams(ctx context.Context, args *ListAlertsByAlertConfigurationIdApiParams) ListAlertsByAlertConfigurationIdApiRequest {
@@ -651,13 +651,13 @@ func (r ListAlertsByAlertConfigurationIdApiRequest) IncludeCount(includeCount bo
 }
 
 // Number of items that the response returns per page.
-func (r ListAlertsByAlertConfigurationIdApiRequest) ItemsPerPage(itemsPerPage int32) ListAlertsByAlertConfigurationIdApiRequest {
+func (r ListAlertsByAlertConfigurationIdApiRequest) ItemsPerPage(itemsPerPage int) ListAlertsByAlertConfigurationIdApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListAlertsByAlertConfigurationIdApiRequest) PageNum(pageNum int32) ListAlertsByAlertConfigurationIdApiRequest {
+func (r ListAlertsByAlertConfigurationIdApiRequest) PageNum(pageNum int) ListAlertsByAlertConfigurationIdApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
@@ -733,14 +733,14 @@ func (a *AlertsApiService) listAlertsByAlertConfigurationIdExecute(r ListAlertsB
 	if r.itemsPerPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int = 100
 		r.itemsPerPage = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.pageNum != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	} else {
-		var defaultValue int32 = 1
+		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	}

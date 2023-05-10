@@ -16,7 +16,7 @@ type Prometheus struct {
 	// Combination of IPv4 address and Internet Assigned Numbers Authority (IANA) port or the IANA port alone to which Prometheus binds to ingest MongoDB metrics.
 	ListenAddress     *string `json:"listenAddress,omitempty"`
 	Password          *string `json:"password,omitempty"`
-	RateLimitInterval *int32  `json:"rateLimitInterval,omitempty"`
+	RateLimitInterval *int    `json:"rateLimitInterval,omitempty"`
 	// Security Scheme to apply to HyperText Transfer Protocol (HTTP) traffic between Prometheus and MongoDB Cloud.
 	Scheme string `json:"scheme"`
 	// Desired method to discover the Prometheus service.
@@ -143,9 +143,9 @@ func (o *Prometheus) SetPassword(v string) {
 }
 
 // GetRateLimitInterval returns the RateLimitInterval field value if set, zero value otherwise.
-func (o *Prometheus) GetRateLimitInterval() int32 {
+func (o *Prometheus) GetRateLimitInterval() int {
 	if o == nil || IsNil(o.RateLimitInterval) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.RateLimitInterval
@@ -153,7 +153,7 @@ func (o *Prometheus) GetRateLimitInterval() int32 {
 
 // GetRateLimitIntervalOk returns a tuple with the RateLimitInterval field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Prometheus) GetRateLimitIntervalOk() (*int32, bool) {
+func (o *Prometheus) GetRateLimitIntervalOk() (*int, bool) {
 	if o == nil || IsNil(o.RateLimitInterval) {
 		return nil, false
 	}
@@ -169,8 +169,8 @@ func (o *Prometheus) HasRateLimitInterval() bool {
 	return false
 }
 
-// SetRateLimitInterval gets a reference to the given int32 and assigns it to the RateLimitInterval field.
-func (o *Prometheus) SetRateLimitInterval(v int32) {
+// SetRateLimitInterval gets a reference to the given int and assigns it to the RateLimitInterval field.
+func (o *Prometheus) SetRateLimitInterval(v int) {
 	o.RateLimitInterval = &v
 }
 

@@ -53,7 +53,7 @@ type EventViewForNdsGroup struct {
 	// Action that the database attempted to execute when the event triggered. The response returns this parameter when `eventTypeName\" : \"DATA_EXPLORER\"`.
 	OpType *string `json:"opType,omitempty"`
 	// IANA port on which the MongoDB process listens for requests.
-	Port *int32 `json:"port,omitempty"`
+	Port *int `json:"port,omitempty"`
 	// Human-readable label of the replica set associated with the event.
 	ReplicaSetName *string          `json:"replicaSetName,omitempty"`
 	CurrentValue   *HostMetricValue `json:"currentValue,omitempty"`
@@ -761,9 +761,9 @@ func (o *EventViewForNdsGroup) SetOpType(v string) {
 }
 
 // GetPort returns the Port field value if set, zero value otherwise.
-func (o *EventViewForNdsGroup) GetPort() int32 {
+func (o *EventViewForNdsGroup) GetPort() int {
 	if o == nil || IsNil(o.Port) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.Port
@@ -771,7 +771,7 @@ func (o *EventViewForNdsGroup) GetPort() int32 {
 
 // GetPortOk returns a tuple with the Port field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EventViewForNdsGroup) GetPortOk() (*int32, bool) {
+func (o *EventViewForNdsGroup) GetPortOk() (*int, bool) {
 	if o == nil || IsNil(o.Port) {
 		return nil, false
 	}
@@ -787,8 +787,8 @@ func (o *EventViewForNdsGroup) HasPort() bool {
 	return false
 }
 
-// SetPort gets a reference to the given int32 and assigns it to the Port field.
-func (o *EventViewForNdsGroup) SetPort(v int32) {
+// SetPort gets a reference to the given int and assigns it to the Port field.
+func (o *EventViewForNdsGroup) SetPort(v int) {
 	o.Port = &v
 }
 

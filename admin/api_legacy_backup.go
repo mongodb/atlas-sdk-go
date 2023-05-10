@@ -1085,16 +1085,16 @@ type ListLegacyBackupCheckpointsApiRequest struct {
 	groupId      string
 	clusterName  string
 	includeCount *bool
-	itemsPerPage *int32
-	pageNum      *int32
+	itemsPerPage *int
+	pageNum      *int
 }
 
 type ListLegacyBackupCheckpointsApiParams struct {
 	GroupId      string
 	ClusterName  string
 	IncludeCount *bool
-	ItemsPerPage *int32
-	PageNum      *int32
+	ItemsPerPage *int
+	PageNum      *int
 }
 
 func (a *LegacyBackupApiService) ListLegacyBackupCheckpointsWithParams(ctx context.Context, args *ListLegacyBackupCheckpointsApiParams) ListLegacyBackupCheckpointsApiRequest {
@@ -1116,13 +1116,13 @@ func (r ListLegacyBackupCheckpointsApiRequest) IncludeCount(includeCount bool) L
 }
 
 // Number of items that the response returns per page.
-func (r ListLegacyBackupCheckpointsApiRequest) ItemsPerPage(itemsPerPage int32) ListLegacyBackupCheckpointsApiRequest {
+func (r ListLegacyBackupCheckpointsApiRequest) ItemsPerPage(itemsPerPage int) ListLegacyBackupCheckpointsApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListLegacyBackupCheckpointsApiRequest) PageNum(pageNum int32) ListLegacyBackupCheckpointsApiRequest {
+func (r ListLegacyBackupCheckpointsApiRequest) PageNum(pageNum int) ListLegacyBackupCheckpointsApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
@@ -1200,14 +1200,14 @@ func (a *LegacyBackupApiService) listLegacyBackupCheckpointsExecute(r ListLegacy
 	if r.itemsPerPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int = 100
 		r.itemsPerPage = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.pageNum != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	} else {
-		var defaultValue int32 = 1
+		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	}
@@ -1279,8 +1279,8 @@ type ListLegacyBackupRestoreJobsApiRequest struct {
 	groupId      string
 	clusterName  string
 	includeCount *bool
-	itemsPerPage *int32
-	pageNum      *int32
+	itemsPerPage *int
+	pageNum      *int
 	batchId      *string
 }
 
@@ -1288,8 +1288,8 @@ type ListLegacyBackupRestoreJobsApiParams struct {
 	GroupId      string
 	ClusterName  string
 	IncludeCount *bool
-	ItemsPerPage *int32
-	PageNum      *int32
+	ItemsPerPage *int
+	PageNum      *int
 	BatchId      *string
 }
 
@@ -1313,13 +1313,13 @@ func (r ListLegacyBackupRestoreJobsApiRequest) IncludeCount(includeCount bool) L
 }
 
 // Number of items that the response returns per page.
-func (r ListLegacyBackupRestoreJobsApiRequest) ItemsPerPage(itemsPerPage int32) ListLegacyBackupRestoreJobsApiRequest {
+func (r ListLegacyBackupRestoreJobsApiRequest) ItemsPerPage(itemsPerPage int) ListLegacyBackupRestoreJobsApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListLegacyBackupRestoreJobsApiRequest) PageNum(pageNum int32) ListLegacyBackupRestoreJobsApiRequest {
+func (r ListLegacyBackupRestoreJobsApiRequest) PageNum(pageNum int) ListLegacyBackupRestoreJobsApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
@@ -1405,14 +1405,14 @@ func (a *LegacyBackupApiService) listLegacyBackupRestoreJobsExecute(r ListLegacy
 	if r.itemsPerPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int = 100
 		r.itemsPerPage = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.pageNum != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	} else {
-		var defaultValue int32 = 1
+		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	}
@@ -1487,8 +1487,8 @@ type ListLegacySnapshotsApiRequest struct {
 	groupId      string
 	clusterName  string
 	includeCount *bool
-	itemsPerPage *int32
-	pageNum      *int32
+	itemsPerPage *int
+	pageNum      *int
 	completed    *string
 }
 
@@ -1496,8 +1496,8 @@ type ListLegacySnapshotsApiParams struct {
 	GroupId      string
 	ClusterName  string
 	IncludeCount *bool
-	ItemsPerPage *int32
-	PageNum      *int32
+	ItemsPerPage *int
+	PageNum      *int
 	Completed    *string
 }
 
@@ -1521,13 +1521,13 @@ func (r ListLegacySnapshotsApiRequest) IncludeCount(includeCount bool) ListLegac
 }
 
 // Number of items that the response returns per page.
-func (r ListLegacySnapshotsApiRequest) ItemsPerPage(itemsPerPage int32) ListLegacySnapshotsApiRequest {
+func (r ListLegacySnapshotsApiRequest) ItemsPerPage(itemsPerPage int) ListLegacySnapshotsApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListLegacySnapshotsApiRequest) PageNum(pageNum int32) ListLegacySnapshotsApiRequest {
+func (r ListLegacySnapshotsApiRequest) PageNum(pageNum int) ListLegacySnapshotsApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
@@ -1611,14 +1611,14 @@ func (a *LegacyBackupApiService) listLegacySnapshotsExecute(r ListLegacySnapshot
 	if r.itemsPerPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int = 100
 		r.itemsPerPage = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.pageNum != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	} else {
-		var defaultValue int32 = 1
+		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	}

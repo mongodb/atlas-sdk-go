@@ -12,27 +12,27 @@ var _ MappedNullable = &IndexOptions{}
 // IndexOptions One or more settings that determine how the MongoDB Cloud creates this MongoDB index.
 type IndexOptions struct {
 	// Index version number applied to the 2dsphere index. MongoDB 3.2 and later use version 3. Use this option to override the default version number. This option applies to the **2dsphere** index type only.
-	Var2dsphereIndexVersion int32 `json:"2dsphereIndexVersion"`
+	Var2dsphereIndexVersion int `json:"2dsphereIndexVersion"`
 	// Flag that indicates whether MongoDB should build the index in the background. This applies to MongoDB databases running feature compatibility version 4.0 or earlier. MongoDB databases running FCV 4.2 or later build indexes using an optimized build process. This process holds the exclusive lock only at the beginning and end of the build process. The rest of the build process yields to interleaving read and write operations. MongoDB databases running FCV 4.2 or later ignore this option. This option applies to all index types.
 	Background *bool `json:"background,omitempty"`
 	// Number of precision applied to the stored geohash value of the location data. This option applies to the **2d** index type only.
-	Bits *int32 `json:"bits,omitempty"`
+	Bits *int `json:"bits,omitempty"`
 	// Number of units within which to group the location values. You could group in the same bucket those location values within the specified number of units to each other. This option applies to the geoHaystack index type only.  MongoDB 5.0 removed geoHaystack Indexes and the `geoSearch` command.
-	BucketSize *int32 `json:"bucketSize,omitempty"`
+	BucketSize *int `json:"bucketSize,omitempty"`
 	// The columnstoreProjection document allows to include or exclude subschemas schema. One cannot combine inclusion and exclusion statements. Accordingly, the <value> can be either of the following: 1 or true to include the field and recursively all fields it is a prefix of in the index 0 or false to exclude the field and recursively all fields it is a prefix of from the index.
-	ColumnstoreProjection *map[string]int32 `json:"columnstoreProjection,omitempty"`
+	ColumnstoreProjection *map[string]int `json:"columnstoreProjection,omitempty"`
 	// Human language that determines the list of stop words and the rules for the stemmer and tokenizer. This option accepts the supported languages using its name in lowercase english or the ISO 639-2 code. If you set this parameter to `\"none\"`, then the text search uses simple tokenization with no list of stop words and no stemming. This option applies to the **text** index type only.
 	DefaultLanguage *string `json:"default_language,omitempty"`
 	// Number of seconds that MongoDB retains documents in a Time To Live (TTL) index.
-	ExpireAfterSeconds *int32 `json:"expireAfterSeconds,omitempty"`
+	ExpireAfterSeconds *int `json:"expireAfterSeconds,omitempty"`
 	// Flag that determines whether the index is hidden from the query planner. A hidden index is not evaluated as part of the query plan selection.
 	Hidden *bool `json:"hidden,omitempty"`
 	// Human-readable label that identifies the document parameter that contains the override language for the document. This option applies to the **text** index type only.
 	LanguageOverride *string `json:"language_override,omitempty"`
 	// Upper inclusive boundary to limit the longitude and latitude values. This option applies to the 2d index type only.
-	Max *int32 `json:"max,omitempty"`
+	Max *int `json:"max,omitempty"`
 	// Lower inclusive boundary to limit the longitude and latitude values. This option applies to the 2d index type only.
-	Min *int32 `json:"min,omitempty"`
+	Min *int `json:"min,omitempty"`
 	// Human-readable label that identifies this index. This option applies to all index types.
 	Name *string `json:"name,omitempty"`
 	// Rules that limit the documents that the index references to a filter expression. All MongoDB index types accept a **partialFilterExpression** option. **partialFilterExpression** can include following expressions:  - equality (`\"parameter\" : \"value\"` or using the `$eq` operator) - `\"$exists\": true` , maximum: `$gt`, `$gte`, `$lt`, `$lte` comparisons - `$type` - `$and` (top-level only)  This option applies to all index types.
@@ -42,7 +42,7 @@ type IndexOptions struct {
 	// Storage engine set for the specific index. This value can be set only at creation. This option uses the following format: `\"storageEngine\" : { \"<storage-engine-name>\" : \"<options>\" }` MongoDB validates storage engine configuration options when creating indexes. To support replica sets with members with different storage engines, MongoDB logs these options to the oplog during replication. This option applies to all index types.
 	StorageEngine map[string]map[string]interface{} `json:"storageEngine,omitempty"`
 	// Version applied to this text index. MongoDB 3.2 and later use version `3`. Use this option to override the default version number. This option applies to the **text** index type only.
-	TextIndexVersion *int32 `json:"textIndexVersion,omitempty"`
+	TextIndexVersion *int `json:"textIndexVersion,omitempty"`
 	// Flag that indicates whether this index can accept insertion or update of documents when the index key value matches an existing index key value. Set `\"unique\" : true` to set this index as unique. You can't set a hashed index to be unique. This option applies to all index types.
 	Unique *bool `json:"unique,omitempty"`
 	// Relative importance to place upon provided index parameters. This object expresses this as key/value pairs of index parameter and weight to apply to that parameter. You can specify weights for some or all the indexed parameters. The weight must be an integer between 1 and 99,999. MongoDB 5.0 and later can apply **weights** to **text** indexes only.
@@ -53,12 +53,12 @@ type IndexOptions struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIndexOptions(var2dsphereIndexVersion int32) *IndexOptions {
+func NewIndexOptions(var2dsphereIndexVersion int) *IndexOptions {
 	this := IndexOptions{}
 	this.Var2dsphereIndexVersion = var2dsphereIndexVersion
 	var background bool = false
 	this.Background = &background
-	var bits int32 = 26
+	var bits int = 26
 	this.Bits = &bits
 	var defaultLanguage string = "english"
 	this.DefaultLanguage = &defaultLanguage
@@ -66,13 +66,13 @@ func NewIndexOptions(var2dsphereIndexVersion int32) *IndexOptions {
 	this.Hidden = &hidden
 	var languageOverride string = "language"
 	this.LanguageOverride = &languageOverride
-	var max int32 = 180
+	var max int = 180
 	this.Max = &max
-	var min int32 = -180
+	var min int = -180
 	this.Min = &min
 	var sparse bool = false
 	this.Sparse = &sparse
-	var textIndexVersion int32 = 3
+	var textIndexVersion int = 3
 	this.TextIndexVersion = &textIndexVersion
 	var unique bool = false
 	this.Unique = &unique
@@ -84,11 +84,11 @@ func NewIndexOptions(var2dsphereIndexVersion int32) *IndexOptions {
 // but it doesn't guarantee that properties required by API are set
 func NewIndexOptionsWithDefaults() *IndexOptions {
 	this := IndexOptions{}
-	var var2dsphereIndexVersion int32 = 3
+	var var2dsphereIndexVersion int = 3
 	this.Var2dsphereIndexVersion = var2dsphereIndexVersion
 	var background bool = false
 	this.Background = &background
-	var bits int32 = 26
+	var bits int = 26
 	this.Bits = &bits
 	var defaultLanguage string = "english"
 	this.DefaultLanguage = &defaultLanguage
@@ -96,13 +96,13 @@ func NewIndexOptionsWithDefaults() *IndexOptions {
 	this.Hidden = &hidden
 	var languageOverride string = "language"
 	this.LanguageOverride = &languageOverride
-	var max int32 = 180
+	var max int = 180
 	this.Max = &max
-	var min int32 = -180
+	var min int = -180
 	this.Min = &min
 	var sparse bool = false
 	this.Sparse = &sparse
-	var textIndexVersion int32 = 3
+	var textIndexVersion int = 3
 	this.TextIndexVersion = &textIndexVersion
 	var unique bool = false
 	this.Unique = &unique
@@ -110,9 +110,9 @@ func NewIndexOptionsWithDefaults() *IndexOptions {
 }
 
 // GetVar2dsphereIndexVersion returns the Var2dsphereIndexVersion field value
-func (o *IndexOptions) GetVar2dsphereIndexVersion() int32 {
+func (o *IndexOptions) GetVar2dsphereIndexVersion() int {
 	if o == nil {
-		var ret int32
+		var ret int
 		return ret
 	}
 
@@ -121,7 +121,7 @@ func (o *IndexOptions) GetVar2dsphereIndexVersion() int32 {
 
 // GetVar2dsphereIndexVersionOk returns a tuple with the Var2dsphereIndexVersion field value
 // and a boolean to check if the value has been set.
-func (o *IndexOptions) GetVar2dsphereIndexVersionOk() (*int32, bool) {
+func (o *IndexOptions) GetVar2dsphereIndexVersionOk() (*int, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -129,7 +129,7 @@ func (o *IndexOptions) GetVar2dsphereIndexVersionOk() (*int32, bool) {
 }
 
 // SetVar2dsphereIndexVersion sets field value
-func (o *IndexOptions) SetVar2dsphereIndexVersion(v int32) {
+func (o *IndexOptions) SetVar2dsphereIndexVersion(v int) {
 	o.Var2dsphereIndexVersion = v
 }
 
@@ -166,9 +166,9 @@ func (o *IndexOptions) SetBackground(v bool) {
 }
 
 // GetBits returns the Bits field value if set, zero value otherwise.
-func (o *IndexOptions) GetBits() int32 {
+func (o *IndexOptions) GetBits() int {
 	if o == nil || IsNil(o.Bits) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.Bits
@@ -176,7 +176,7 @@ func (o *IndexOptions) GetBits() int32 {
 
 // GetBitsOk returns a tuple with the Bits field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IndexOptions) GetBitsOk() (*int32, bool) {
+func (o *IndexOptions) GetBitsOk() (*int, bool) {
 	if o == nil || IsNil(o.Bits) {
 		return nil, false
 	}
@@ -192,15 +192,15 @@ func (o *IndexOptions) HasBits() bool {
 	return false
 }
 
-// SetBits gets a reference to the given int32 and assigns it to the Bits field.
-func (o *IndexOptions) SetBits(v int32) {
+// SetBits gets a reference to the given int and assigns it to the Bits field.
+func (o *IndexOptions) SetBits(v int) {
 	o.Bits = &v
 }
 
 // GetBucketSize returns the BucketSize field value if set, zero value otherwise.
-func (o *IndexOptions) GetBucketSize() int32 {
+func (o *IndexOptions) GetBucketSize() int {
 	if o == nil || IsNil(o.BucketSize) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.BucketSize
@@ -208,7 +208,7 @@ func (o *IndexOptions) GetBucketSize() int32 {
 
 // GetBucketSizeOk returns a tuple with the BucketSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IndexOptions) GetBucketSizeOk() (*int32, bool) {
+func (o *IndexOptions) GetBucketSizeOk() (*int, bool) {
 	if o == nil || IsNil(o.BucketSize) {
 		return nil, false
 	}
@@ -224,15 +224,15 @@ func (o *IndexOptions) HasBucketSize() bool {
 	return false
 }
 
-// SetBucketSize gets a reference to the given int32 and assigns it to the BucketSize field.
-func (o *IndexOptions) SetBucketSize(v int32) {
+// SetBucketSize gets a reference to the given int and assigns it to the BucketSize field.
+func (o *IndexOptions) SetBucketSize(v int) {
 	o.BucketSize = &v
 }
 
 // GetColumnstoreProjection returns the ColumnstoreProjection field value if set, zero value otherwise.
-func (o *IndexOptions) GetColumnstoreProjection() map[string]int32 {
+func (o *IndexOptions) GetColumnstoreProjection() map[string]int {
 	if o == nil || IsNil(o.ColumnstoreProjection) {
-		var ret map[string]int32
+		var ret map[string]int
 		return ret
 	}
 	return *o.ColumnstoreProjection
@@ -240,7 +240,7 @@ func (o *IndexOptions) GetColumnstoreProjection() map[string]int32 {
 
 // GetColumnstoreProjectionOk returns a tuple with the ColumnstoreProjection field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IndexOptions) GetColumnstoreProjectionOk() (*map[string]int32, bool) {
+func (o *IndexOptions) GetColumnstoreProjectionOk() (*map[string]int, bool) {
 	if o == nil || IsNil(o.ColumnstoreProjection) {
 		return nil, false
 	}
@@ -256,8 +256,8 @@ func (o *IndexOptions) HasColumnstoreProjection() bool {
 	return false
 }
 
-// SetColumnstoreProjection gets a reference to the given map[string]int32 and assigns it to the ColumnstoreProjection field.
-func (o *IndexOptions) SetColumnstoreProjection(v map[string]int32) {
+// SetColumnstoreProjection gets a reference to the given map[string]int and assigns it to the ColumnstoreProjection field.
+func (o *IndexOptions) SetColumnstoreProjection(v map[string]int) {
 	o.ColumnstoreProjection = &v
 }
 
@@ -294,9 +294,9 @@ func (o *IndexOptions) SetDefaultLanguage(v string) {
 }
 
 // GetExpireAfterSeconds returns the ExpireAfterSeconds field value if set, zero value otherwise.
-func (o *IndexOptions) GetExpireAfterSeconds() int32 {
+func (o *IndexOptions) GetExpireAfterSeconds() int {
 	if o == nil || IsNil(o.ExpireAfterSeconds) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.ExpireAfterSeconds
@@ -304,7 +304,7 @@ func (o *IndexOptions) GetExpireAfterSeconds() int32 {
 
 // GetExpireAfterSecondsOk returns a tuple with the ExpireAfterSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IndexOptions) GetExpireAfterSecondsOk() (*int32, bool) {
+func (o *IndexOptions) GetExpireAfterSecondsOk() (*int, bool) {
 	if o == nil || IsNil(o.ExpireAfterSeconds) {
 		return nil, false
 	}
@@ -320,8 +320,8 @@ func (o *IndexOptions) HasExpireAfterSeconds() bool {
 	return false
 }
 
-// SetExpireAfterSeconds gets a reference to the given int32 and assigns it to the ExpireAfterSeconds field.
-func (o *IndexOptions) SetExpireAfterSeconds(v int32) {
+// SetExpireAfterSeconds gets a reference to the given int and assigns it to the ExpireAfterSeconds field.
+func (o *IndexOptions) SetExpireAfterSeconds(v int) {
 	o.ExpireAfterSeconds = &v
 }
 
@@ -390,9 +390,9 @@ func (o *IndexOptions) SetLanguageOverride(v string) {
 }
 
 // GetMax returns the Max field value if set, zero value otherwise.
-func (o *IndexOptions) GetMax() int32 {
+func (o *IndexOptions) GetMax() int {
 	if o == nil || IsNil(o.Max) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.Max
@@ -400,7 +400,7 @@ func (o *IndexOptions) GetMax() int32 {
 
 // GetMaxOk returns a tuple with the Max field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IndexOptions) GetMaxOk() (*int32, bool) {
+func (o *IndexOptions) GetMaxOk() (*int, bool) {
 	if o == nil || IsNil(o.Max) {
 		return nil, false
 	}
@@ -416,15 +416,15 @@ func (o *IndexOptions) HasMax() bool {
 	return false
 }
 
-// SetMax gets a reference to the given int32 and assigns it to the Max field.
-func (o *IndexOptions) SetMax(v int32) {
+// SetMax gets a reference to the given int and assigns it to the Max field.
+func (o *IndexOptions) SetMax(v int) {
 	o.Max = &v
 }
 
 // GetMin returns the Min field value if set, zero value otherwise.
-func (o *IndexOptions) GetMin() int32 {
+func (o *IndexOptions) GetMin() int {
 	if o == nil || IsNil(o.Min) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.Min
@@ -432,7 +432,7 @@ func (o *IndexOptions) GetMin() int32 {
 
 // GetMinOk returns a tuple with the Min field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IndexOptions) GetMinOk() (*int32, bool) {
+func (o *IndexOptions) GetMinOk() (*int, bool) {
 	if o == nil || IsNil(o.Min) {
 		return nil, false
 	}
@@ -448,8 +448,8 @@ func (o *IndexOptions) HasMin() bool {
 	return false
 }
 
-// SetMin gets a reference to the given int32 and assigns it to the Min field.
-func (o *IndexOptions) SetMin(v int32) {
+// SetMin gets a reference to the given int and assigns it to the Min field.
+func (o *IndexOptions) SetMin(v int) {
 	o.Min = &v
 }
 
@@ -582,9 +582,9 @@ func (o *IndexOptions) SetStorageEngine(v map[string]map[string]interface{}) {
 }
 
 // GetTextIndexVersion returns the TextIndexVersion field value if set, zero value otherwise.
-func (o *IndexOptions) GetTextIndexVersion() int32 {
+func (o *IndexOptions) GetTextIndexVersion() int {
 	if o == nil || IsNil(o.TextIndexVersion) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.TextIndexVersion
@@ -592,7 +592,7 @@ func (o *IndexOptions) GetTextIndexVersion() int32 {
 
 // GetTextIndexVersionOk returns a tuple with the TextIndexVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IndexOptions) GetTextIndexVersionOk() (*int32, bool) {
+func (o *IndexOptions) GetTextIndexVersionOk() (*int, bool) {
 	if o == nil || IsNil(o.TextIndexVersion) {
 		return nil, false
 	}
@@ -608,8 +608,8 @@ func (o *IndexOptions) HasTextIndexVersion() bool {
 	return false
 }
 
-// SetTextIndexVersion gets a reference to the given int32 and assigns it to the TextIndexVersion field.
-func (o *IndexOptions) SetTextIndexVersion(v int32) {
+// SetTextIndexVersion gets a reference to the given int and assigns it to the TextIndexVersion field.
+func (o *IndexOptions) SetTextIndexVersion(v int) {
 	o.TextIndexVersion = &v
 }
 

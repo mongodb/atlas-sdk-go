@@ -12,15 +12,15 @@ var _ MappedNullable = &MonthlySchedule{}
 // MonthlySchedule struct for MonthlySchedule
 type MonthlySchedule struct {
 	// Day of the month when the scheduled archive starts.
-	DayOfMonth *int32 `json:"dayOfMonth,omitempty"`
+	DayOfMonth *int `json:"dayOfMonth,omitempty"`
 	// Hour of the day when the scheduled window to run one online archive ends.
-	EndHour *int32 `json:"endHour,omitempty"`
+	EndHour *int `json:"endHour,omitempty"`
 	// Minute of the hour when the scheduled window to run one online archive ends.
-	EndMinute *int32 `json:"endMinute,omitempty"`
+	EndMinute *int `json:"endMinute,omitempty"`
 	// Hour of the day when the when the scheduled window to run one online archive starts.
-	StartHour *int32 `json:"startHour,omitempty"`
+	StartHour *int `json:"startHour,omitempty"`
 	// Minute of the hour when the scheduled window to run one online archive starts.
-	StartMinute *int32 `json:"startMinute,omitempty"`
+	StartMinute *int   `json:"startMinute,omitempty"`
 	Type        string `json:"type"`
 }
 
@@ -43,9 +43,9 @@ func NewMonthlyScheduleWithDefaults() *MonthlySchedule {
 }
 
 // GetDayOfMonth returns the DayOfMonth field value if set, zero value otherwise.
-func (o *MonthlySchedule) GetDayOfMonth() int32 {
+func (o *MonthlySchedule) GetDayOfMonth() int {
 	if o == nil || IsNil(o.DayOfMonth) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.DayOfMonth
@@ -53,7 +53,7 @@ func (o *MonthlySchedule) GetDayOfMonth() int32 {
 
 // GetDayOfMonthOk returns a tuple with the DayOfMonth field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MonthlySchedule) GetDayOfMonthOk() (*int32, bool) {
+func (o *MonthlySchedule) GetDayOfMonthOk() (*int, bool) {
 	if o == nil || IsNil(o.DayOfMonth) {
 		return nil, false
 	}
@@ -69,15 +69,15 @@ func (o *MonthlySchedule) HasDayOfMonth() bool {
 	return false
 }
 
-// SetDayOfMonth gets a reference to the given int32 and assigns it to the DayOfMonth field.
-func (o *MonthlySchedule) SetDayOfMonth(v int32) {
+// SetDayOfMonth gets a reference to the given int and assigns it to the DayOfMonth field.
+func (o *MonthlySchedule) SetDayOfMonth(v int) {
 	o.DayOfMonth = &v
 }
 
 // GetEndHour returns the EndHour field value if set, zero value otherwise.
-func (o *MonthlySchedule) GetEndHour() int32 {
+func (o *MonthlySchedule) GetEndHour() int {
 	if o == nil || IsNil(o.EndHour) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.EndHour
@@ -85,7 +85,7 @@ func (o *MonthlySchedule) GetEndHour() int32 {
 
 // GetEndHourOk returns a tuple with the EndHour field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MonthlySchedule) GetEndHourOk() (*int32, bool) {
+func (o *MonthlySchedule) GetEndHourOk() (*int, bool) {
 	if o == nil || IsNil(o.EndHour) {
 		return nil, false
 	}
@@ -101,15 +101,15 @@ func (o *MonthlySchedule) HasEndHour() bool {
 	return false
 }
 
-// SetEndHour gets a reference to the given int32 and assigns it to the EndHour field.
-func (o *MonthlySchedule) SetEndHour(v int32) {
+// SetEndHour gets a reference to the given int and assigns it to the EndHour field.
+func (o *MonthlySchedule) SetEndHour(v int) {
 	o.EndHour = &v
 }
 
 // GetEndMinute returns the EndMinute field value if set, zero value otherwise.
-func (o *MonthlySchedule) GetEndMinute() int32 {
+func (o *MonthlySchedule) GetEndMinute() int {
 	if o == nil || IsNil(o.EndMinute) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.EndMinute
@@ -117,7 +117,7 @@ func (o *MonthlySchedule) GetEndMinute() int32 {
 
 // GetEndMinuteOk returns a tuple with the EndMinute field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MonthlySchedule) GetEndMinuteOk() (*int32, bool) {
+func (o *MonthlySchedule) GetEndMinuteOk() (*int, bool) {
 	if o == nil || IsNil(o.EndMinute) {
 		return nil, false
 	}
@@ -133,15 +133,15 @@ func (o *MonthlySchedule) HasEndMinute() bool {
 	return false
 }
 
-// SetEndMinute gets a reference to the given int32 and assigns it to the EndMinute field.
-func (o *MonthlySchedule) SetEndMinute(v int32) {
+// SetEndMinute gets a reference to the given int and assigns it to the EndMinute field.
+func (o *MonthlySchedule) SetEndMinute(v int) {
 	o.EndMinute = &v
 }
 
 // GetStartHour returns the StartHour field value if set, zero value otherwise.
-func (o *MonthlySchedule) GetStartHour() int32 {
+func (o *MonthlySchedule) GetStartHour() int {
 	if o == nil || IsNil(o.StartHour) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.StartHour
@@ -149,7 +149,7 @@ func (o *MonthlySchedule) GetStartHour() int32 {
 
 // GetStartHourOk returns a tuple with the StartHour field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MonthlySchedule) GetStartHourOk() (*int32, bool) {
+func (o *MonthlySchedule) GetStartHourOk() (*int, bool) {
 	if o == nil || IsNil(o.StartHour) {
 		return nil, false
 	}
@@ -165,15 +165,15 @@ func (o *MonthlySchedule) HasStartHour() bool {
 	return false
 }
 
-// SetStartHour gets a reference to the given int32 and assigns it to the StartHour field.
-func (o *MonthlySchedule) SetStartHour(v int32) {
+// SetStartHour gets a reference to the given int and assigns it to the StartHour field.
+func (o *MonthlySchedule) SetStartHour(v int) {
 	o.StartHour = &v
 }
 
 // GetStartMinute returns the StartMinute field value if set, zero value otherwise.
-func (o *MonthlySchedule) GetStartMinute() int32 {
+func (o *MonthlySchedule) GetStartMinute() int {
 	if o == nil || IsNil(o.StartMinute) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.StartMinute
@@ -181,7 +181,7 @@ func (o *MonthlySchedule) GetStartMinute() int32 {
 
 // GetStartMinuteOk returns a tuple with the StartMinute field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MonthlySchedule) GetStartMinuteOk() (*int32, bool) {
+func (o *MonthlySchedule) GetStartMinuteOk() (*int, bool) {
 	if o == nil || IsNil(o.StartMinute) {
 		return nil, false
 	}
@@ -197,8 +197,8 @@ func (o *MonthlySchedule) HasStartMinute() bool {
 	return false
 }
 
-// SetStartMinute gets a reference to the given int32 and assigns it to the StartMinute field.
-func (o *MonthlySchedule) SetStartMinute(v int32) {
+// SetStartMinute gets a reference to the given int and assigns it to the StartMinute field.
+func (o *MonthlySchedule) SetStartMinute(v int) {
 	o.StartMinute = &v
 }
 

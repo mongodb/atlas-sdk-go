@@ -1776,15 +1776,15 @@ type ListAtlasProcessesApiRequest struct {
 	ApiService   MonitoringAndLogsApi
 	groupId      string
 	includeCount *bool
-	itemsPerPage *int32
-	pageNum      *int32
+	itemsPerPage *int
+	pageNum      *int
 }
 
 type ListAtlasProcessesApiParams struct {
 	GroupId      string
 	IncludeCount *bool
-	ItemsPerPage *int32
-	PageNum      *int32
+	ItemsPerPage *int
+	PageNum      *int
 }
 
 func (a *MonitoringAndLogsApiService) ListAtlasProcessesWithParams(ctx context.Context, args *ListAtlasProcessesApiParams) ListAtlasProcessesApiRequest {
@@ -1805,13 +1805,13 @@ func (r ListAtlasProcessesApiRequest) IncludeCount(includeCount bool) ListAtlasP
 }
 
 // Number of items that the response returns per page.
-func (r ListAtlasProcessesApiRequest) ItemsPerPage(itemsPerPage int32) ListAtlasProcessesApiRequest {
+func (r ListAtlasProcessesApiRequest) ItemsPerPage(itemsPerPage int) ListAtlasProcessesApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListAtlasProcessesApiRequest) PageNum(pageNum int32) ListAtlasProcessesApiRequest {
+func (r ListAtlasProcessesApiRequest) PageNum(pageNum int) ListAtlasProcessesApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
@@ -1876,14 +1876,14 @@ func (a *MonitoringAndLogsApiService) listAtlasProcessesExecute(r ListAtlasProce
 	if r.itemsPerPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int = 100
 		r.itemsPerPage = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.pageNum != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	} else {
-		var defaultValue int32 = 1
+		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	}
@@ -1955,16 +1955,16 @@ type ListDatabasesApiRequest struct {
 	groupId      string
 	processId    string
 	includeCount *bool
-	itemsPerPage *int32
-	pageNum      *int32
+	itemsPerPage *int
+	pageNum      *int
 }
 
 type ListDatabasesApiParams struct {
 	GroupId      string
 	ProcessId    string
 	IncludeCount *bool
-	ItemsPerPage *int32
-	PageNum      *int32
+	ItemsPerPage *int
+	PageNum      *int
 }
 
 func (a *MonitoringAndLogsApiService) ListDatabasesWithParams(ctx context.Context, args *ListDatabasesApiParams) ListDatabasesApiRequest {
@@ -1986,13 +1986,13 @@ func (r ListDatabasesApiRequest) IncludeCount(includeCount bool) ListDatabasesAp
 }
 
 // Number of items that the response returns per page.
-func (r ListDatabasesApiRequest) ItemsPerPage(itemsPerPage int32) ListDatabasesApiRequest {
+func (r ListDatabasesApiRequest) ItemsPerPage(itemsPerPage int) ListDatabasesApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListDatabasesApiRequest) PageNum(pageNum int32) ListDatabasesApiRequest {
+func (r ListDatabasesApiRequest) PageNum(pageNum int) ListDatabasesApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
@@ -2060,14 +2060,14 @@ func (a *MonitoringAndLogsApiService) listDatabasesExecute(r ListDatabasesApiReq
 	if r.itemsPerPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int = 100
 		r.itemsPerPage = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.pageNum != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	} else {
-		var defaultValue int32 = 1
+		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	}
@@ -2287,16 +2287,16 @@ type ListDiskPartitionsApiRequest struct {
 	groupId      string
 	processId    string
 	includeCount *bool
-	itemsPerPage *int32
-	pageNum      *int32
+	itemsPerPage *int
+	pageNum      *int
 }
 
 type ListDiskPartitionsApiParams struct {
 	GroupId      string
 	ProcessId    string
 	IncludeCount *bool
-	ItemsPerPage *int32
-	PageNum      *int32
+	ItemsPerPage *int
+	PageNum      *int
 }
 
 func (a *MonitoringAndLogsApiService) ListDiskPartitionsWithParams(ctx context.Context, args *ListDiskPartitionsApiParams) ListDiskPartitionsApiRequest {
@@ -2318,13 +2318,13 @@ func (r ListDiskPartitionsApiRequest) IncludeCount(includeCount bool) ListDiskPa
 }
 
 // Number of items that the response returns per page.
-func (r ListDiskPartitionsApiRequest) ItemsPerPage(itemsPerPage int32) ListDiskPartitionsApiRequest {
+func (r ListDiskPartitionsApiRequest) ItemsPerPage(itemsPerPage int) ListDiskPartitionsApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListDiskPartitionsApiRequest) PageNum(pageNum int32) ListDiskPartitionsApiRequest {
+func (r ListDiskPartitionsApiRequest) PageNum(pageNum int) ListDiskPartitionsApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
@@ -2392,14 +2392,14 @@ func (a *MonitoringAndLogsApiService) listDiskPartitionsExecute(r ListDiskPartit
 	if r.itemsPerPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int = 100
 		r.itemsPerPage = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.pageNum != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	} else {
-		var defaultValue int32 = 1
+		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	}

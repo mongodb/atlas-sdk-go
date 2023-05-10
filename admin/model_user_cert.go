@@ -21,7 +21,7 @@ type UserCert struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	Links []Link `json:"links,omitempty"`
 	// Number of months that the certificate remains valid until it expires.
-	MonthsUntilExpiration *int32 `json:"monthsUntilExpiration,omitempty"`
+	MonthsUntilExpiration *int `json:"monthsUntilExpiration,omitempty"`
 	// Date and time when this certificate expires. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	NotAfter *time.Time `json:"notAfter,omitempty"`
 	// Subject Alternative Name associated with this certificate. This parameter expresses its value as a distinguished name as defined in [RFC 2253](https://tools.ietf.org/html/2253).
@@ -34,7 +34,7 @@ type UserCert struct {
 // will change when the set of required properties is changed
 func NewUserCert() *UserCert {
 	this := UserCert{}
-	var monthsUntilExpiration int32 = 3
+	var monthsUntilExpiration int = 3
 	this.MonthsUntilExpiration = &monthsUntilExpiration
 	return &this
 }
@@ -44,7 +44,7 @@ func NewUserCert() *UserCert {
 // but it doesn't guarantee that properties required by API are set
 func NewUserCertWithDefaults() *UserCert {
 	this := UserCert{}
-	var monthsUntilExpiration int32 = 3
+	var monthsUntilExpiration int = 3
 	this.MonthsUntilExpiration = &monthsUntilExpiration
 	return &this
 }
@@ -178,9 +178,9 @@ func (o *UserCert) SetLinks(v []Link) {
 }
 
 // GetMonthsUntilExpiration returns the MonthsUntilExpiration field value if set, zero value otherwise.
-func (o *UserCert) GetMonthsUntilExpiration() int32 {
+func (o *UserCert) GetMonthsUntilExpiration() int {
 	if o == nil || IsNil(o.MonthsUntilExpiration) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.MonthsUntilExpiration
@@ -188,7 +188,7 @@ func (o *UserCert) GetMonthsUntilExpiration() int32 {
 
 // GetMonthsUntilExpirationOk returns a tuple with the MonthsUntilExpiration field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserCert) GetMonthsUntilExpirationOk() (*int32, bool) {
+func (o *UserCert) GetMonthsUntilExpirationOk() (*int, bool) {
 	if o == nil || IsNil(o.MonthsUntilExpiration) {
 		return nil, false
 	}
@@ -204,8 +204,8 @@ func (o *UserCert) HasMonthsUntilExpiration() bool {
 	return false
 }
 
-// SetMonthsUntilExpiration gets a reference to the given int32 and assigns it to the MonthsUntilExpiration field.
-func (o *UserCert) SetMonthsUntilExpiration(v int32) {
+// SetMonthsUntilExpiration gets a reference to the given int and assigns it to the MonthsUntilExpiration field.
+func (o *UserCert) SetMonthsUntilExpiration(v int) {
 	o.MonthsUntilExpiration = &v
 }
 

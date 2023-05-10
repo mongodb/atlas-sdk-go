@@ -14,7 +14,7 @@ type DataLakeDatabase struct {
 	// Array of collections and data sources that map to a ``stores`` data store.
 	Collections []DataLakeDatabaseCollection `json:"collections,omitempty"`
 	// Maximum number of wildcard collections in the database. This only applies to S3 data sources.
-	MaxWildcardCollections *int32 `json:"maxWildcardCollections,omitempty"`
+	MaxWildcardCollections *int `json:"maxWildcardCollections,omitempty"`
 	// Human-readable label that identifies the database to which the data lake maps data.
 	Name *string `json:"name,omitempty"`
 	// Array of aggregation pipelines that apply to the collection. This only applies to S3 data sources.
@@ -27,7 +27,7 @@ type DataLakeDatabase struct {
 // will change when the set of required properties is changed
 func NewDataLakeDatabase() *DataLakeDatabase {
 	this := DataLakeDatabase{}
-	var maxWildcardCollections int32 = 100
+	var maxWildcardCollections int = 100
 	this.MaxWildcardCollections = &maxWildcardCollections
 	return &this
 }
@@ -37,7 +37,7 @@ func NewDataLakeDatabase() *DataLakeDatabase {
 // but it doesn't guarantee that properties required by API are set
 func NewDataLakeDatabaseWithDefaults() *DataLakeDatabase {
 	this := DataLakeDatabase{}
-	var maxWildcardCollections int32 = 100
+	var maxWildcardCollections int = 100
 	this.MaxWildcardCollections = &maxWildcardCollections
 	return &this
 }
@@ -75,9 +75,9 @@ func (o *DataLakeDatabase) SetCollections(v []DataLakeDatabaseCollection) {
 }
 
 // GetMaxWildcardCollections returns the MaxWildcardCollections field value if set, zero value otherwise.
-func (o *DataLakeDatabase) GetMaxWildcardCollections() int32 {
+func (o *DataLakeDatabase) GetMaxWildcardCollections() int {
 	if o == nil || IsNil(o.MaxWildcardCollections) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.MaxWildcardCollections
@@ -85,7 +85,7 @@ func (o *DataLakeDatabase) GetMaxWildcardCollections() int32 {
 
 // GetMaxWildcardCollectionsOk returns a tuple with the MaxWildcardCollections field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DataLakeDatabase) GetMaxWildcardCollectionsOk() (*int32, bool) {
+func (o *DataLakeDatabase) GetMaxWildcardCollectionsOk() (*int, bool) {
 	if o == nil || IsNil(o.MaxWildcardCollections) {
 		return nil, false
 	}
@@ -101,8 +101,8 @@ func (o *DataLakeDatabase) HasMaxWildcardCollections() bool {
 	return false
 }
 
-// SetMaxWildcardCollections gets a reference to the given int32 and assigns it to the MaxWildcardCollections field.
-func (o *DataLakeDatabase) SetMaxWildcardCollections(v int32) {
+// SetMaxWildcardCollections gets a reference to the given int and assigns it to the MaxWildcardCollections field.
+func (o *DataLakeDatabase) SetMaxWildcardCollections(v int) {
 	o.MaxWildcardCollections = &v
 }
 

@@ -12,9 +12,9 @@ var _ MappedNullable = &NDSNotification{}
 // NDSNotification NDS notification configuration for MongoDB Cloud to send information when an event triggers an alert condition.
 type NDSNotification struct {
 	// Number of minutes that MongoDB Cloud waits after detecting an alert condition before it sends out the first notification.
-	DelayMin *int32 `json:"delayMin,omitempty"`
+	DelayMin *int `json:"delayMin,omitempty"`
 	// Number of minutes to wait between successive notifications. MongoDB Cloud sends notifications until someone acknowledges the unacknowledged alert.  PagerDuty, VictorOps, and OpsGenie notifications don't return this element. Configure and manage the notification interval within each of those services.
-	IntervalMin *int32 `json:"intervalMin,omitempty"`
+	IntervalMin *int `json:"intervalMin,omitempty"`
 	// Degree of seriousness given to this notification.
 	Severity *string `json:"severity,omitempty"`
 	// Human-readable label that displays the alert notification type.
@@ -40,9 +40,9 @@ func NewNDSNotificationWithDefaults() *NDSNotification {
 }
 
 // GetDelayMin returns the DelayMin field value if set, zero value otherwise.
-func (o *NDSNotification) GetDelayMin() int32 {
+func (o *NDSNotification) GetDelayMin() int {
 	if o == nil || IsNil(o.DelayMin) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.DelayMin
@@ -50,7 +50,7 @@ func (o *NDSNotification) GetDelayMin() int32 {
 
 // GetDelayMinOk returns a tuple with the DelayMin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NDSNotification) GetDelayMinOk() (*int32, bool) {
+func (o *NDSNotification) GetDelayMinOk() (*int, bool) {
 	if o == nil || IsNil(o.DelayMin) {
 		return nil, false
 	}
@@ -66,15 +66,15 @@ func (o *NDSNotification) HasDelayMin() bool {
 	return false
 }
 
-// SetDelayMin gets a reference to the given int32 and assigns it to the DelayMin field.
-func (o *NDSNotification) SetDelayMin(v int32) {
+// SetDelayMin gets a reference to the given int and assigns it to the DelayMin field.
+func (o *NDSNotification) SetDelayMin(v int) {
 	o.DelayMin = &v
 }
 
 // GetIntervalMin returns the IntervalMin field value if set, zero value otherwise.
-func (o *NDSNotification) GetIntervalMin() int32 {
+func (o *NDSNotification) GetIntervalMin() int {
 	if o == nil || IsNil(o.IntervalMin) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.IntervalMin
@@ -82,7 +82,7 @@ func (o *NDSNotification) GetIntervalMin() int32 {
 
 // GetIntervalMinOk returns a tuple with the IntervalMin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NDSNotification) GetIntervalMinOk() (*int32, bool) {
+func (o *NDSNotification) GetIntervalMinOk() (*int, bool) {
 	if o == nil || IsNil(o.IntervalMin) {
 		return nil, false
 	}
@@ -98,8 +98,8 @@ func (o *NDSNotification) HasIntervalMin() bool {
 	return false
 }
 
-// SetIntervalMin gets a reference to the given int32 and assigns it to the IntervalMin field.
-func (o *NDSNotification) SetIntervalMin(v int32) {
+// SetIntervalMin gets a reference to the given int and assigns it to the IntervalMin field.
+func (o *NDSNotification) SetIntervalMin(v int) {
 	o.IntervalMin = &v
 }
 

@@ -16,7 +16,7 @@ type DiskBackupOnDemandSnapshotRequest struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	Links []Link `json:"links,omitempty"`
 	// Number of days that MongoDB Cloud should retain the on-demand snapshot. Must be at least **1**.
-	RetentionInDays *int32 `json:"retentionInDays,omitempty"`
+	RetentionInDays *int `json:"retentionInDays,omitempty"`
 }
 
 // NewDiskBackupOnDemandSnapshotRequest instantiates a new DiskBackupOnDemandSnapshotRequest object
@@ -101,9 +101,9 @@ func (o *DiskBackupOnDemandSnapshotRequest) SetLinks(v []Link) {
 }
 
 // GetRetentionInDays returns the RetentionInDays field value if set, zero value otherwise.
-func (o *DiskBackupOnDemandSnapshotRequest) GetRetentionInDays() int32 {
+func (o *DiskBackupOnDemandSnapshotRequest) GetRetentionInDays() int {
 	if o == nil || IsNil(o.RetentionInDays) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.RetentionInDays
@@ -111,7 +111,7 @@ func (o *DiskBackupOnDemandSnapshotRequest) GetRetentionInDays() int32 {
 
 // GetRetentionInDaysOk returns a tuple with the RetentionInDays field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupOnDemandSnapshotRequest) GetRetentionInDaysOk() (*int32, bool) {
+func (o *DiskBackupOnDemandSnapshotRequest) GetRetentionInDaysOk() (*int, bool) {
 	if o == nil || IsNil(o.RetentionInDays) {
 		return nil, false
 	}
@@ -127,8 +127,8 @@ func (o *DiskBackupOnDemandSnapshotRequest) HasRetentionInDays() bool {
 	return false
 }
 
-// SetRetentionInDays gets a reference to the given int32 and assigns it to the RetentionInDays field.
-func (o *DiskBackupOnDemandSnapshotRequest) SetRetentionInDays(v int32) {
+// SetRetentionInDays gets a reference to the given int and assigns it to the RetentionInDays field.
+func (o *DiskBackupOnDemandSnapshotRequest) SetRetentionInDays(v int) {
 	o.RetentionInDays = &v
 }
 

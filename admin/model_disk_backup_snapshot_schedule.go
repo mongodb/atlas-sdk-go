@@ -30,11 +30,11 @@ type DiskBackupSnapshotSchedule struct {
 	// Rules set for this backup schedule.
 	Policies []Policy `json:"policies,omitempty"`
 	// Hour of day in Coordinated Universal Time (UTC) that represents when MongoDB Cloud takes the snapshot.
-	ReferenceHourOfDay *int32 `json:"referenceHourOfDay,omitempty"`
+	ReferenceHourOfDay *int `json:"referenceHourOfDay,omitempty"`
 	// Minute of the **referenceHourOfDay** that represents when MongoDB Cloud takes the snapshot.
-	ReferenceMinuteOfHour *int32 `json:"referenceMinuteOfHour,omitempty"`
+	ReferenceMinuteOfHour *int `json:"referenceMinuteOfHour,omitempty"`
 	// Number of previous days that you can restore back to with Continuous Cloud Backup accuracy. You must specify a positive, non-zero integer. This parameter applies to continuous cloud backups only.
-	RestoreWindowDays *int32 `json:"restoreWindowDays,omitempty"`
+	RestoreWindowDays *int `json:"restoreWindowDays,omitempty"`
 	// Flag that indicates whether to apply the retention changes in the updated backup policy to snapshots that MongoDB Cloud took previously.
 	UpdateSnapshots *bool `json:"updateSnapshots,omitempty"`
 	// Flag that indicates whether to use organization and project names instead of organization and project UUIDs in the path to the metadata files that MongoDB Cloud uploads to your AWS bucket.
@@ -347,9 +347,9 @@ func (o *DiskBackupSnapshotSchedule) SetPolicies(v []Policy) {
 }
 
 // GetReferenceHourOfDay returns the ReferenceHourOfDay field value if set, zero value otherwise.
-func (o *DiskBackupSnapshotSchedule) GetReferenceHourOfDay() int32 {
+func (o *DiskBackupSnapshotSchedule) GetReferenceHourOfDay() int {
 	if o == nil || IsNil(o.ReferenceHourOfDay) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.ReferenceHourOfDay
@@ -357,7 +357,7 @@ func (o *DiskBackupSnapshotSchedule) GetReferenceHourOfDay() int32 {
 
 // GetReferenceHourOfDayOk returns a tuple with the ReferenceHourOfDay field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupSnapshotSchedule) GetReferenceHourOfDayOk() (*int32, bool) {
+func (o *DiskBackupSnapshotSchedule) GetReferenceHourOfDayOk() (*int, bool) {
 	if o == nil || IsNil(o.ReferenceHourOfDay) {
 		return nil, false
 	}
@@ -373,15 +373,15 @@ func (o *DiskBackupSnapshotSchedule) HasReferenceHourOfDay() bool {
 	return false
 }
 
-// SetReferenceHourOfDay gets a reference to the given int32 and assigns it to the ReferenceHourOfDay field.
-func (o *DiskBackupSnapshotSchedule) SetReferenceHourOfDay(v int32) {
+// SetReferenceHourOfDay gets a reference to the given int and assigns it to the ReferenceHourOfDay field.
+func (o *DiskBackupSnapshotSchedule) SetReferenceHourOfDay(v int) {
 	o.ReferenceHourOfDay = &v
 }
 
 // GetReferenceMinuteOfHour returns the ReferenceMinuteOfHour field value if set, zero value otherwise.
-func (o *DiskBackupSnapshotSchedule) GetReferenceMinuteOfHour() int32 {
+func (o *DiskBackupSnapshotSchedule) GetReferenceMinuteOfHour() int {
 	if o == nil || IsNil(o.ReferenceMinuteOfHour) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.ReferenceMinuteOfHour
@@ -389,7 +389,7 @@ func (o *DiskBackupSnapshotSchedule) GetReferenceMinuteOfHour() int32 {
 
 // GetReferenceMinuteOfHourOk returns a tuple with the ReferenceMinuteOfHour field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupSnapshotSchedule) GetReferenceMinuteOfHourOk() (*int32, bool) {
+func (o *DiskBackupSnapshotSchedule) GetReferenceMinuteOfHourOk() (*int, bool) {
 	if o == nil || IsNil(o.ReferenceMinuteOfHour) {
 		return nil, false
 	}
@@ -405,15 +405,15 @@ func (o *DiskBackupSnapshotSchedule) HasReferenceMinuteOfHour() bool {
 	return false
 }
 
-// SetReferenceMinuteOfHour gets a reference to the given int32 and assigns it to the ReferenceMinuteOfHour field.
-func (o *DiskBackupSnapshotSchedule) SetReferenceMinuteOfHour(v int32) {
+// SetReferenceMinuteOfHour gets a reference to the given int and assigns it to the ReferenceMinuteOfHour field.
+func (o *DiskBackupSnapshotSchedule) SetReferenceMinuteOfHour(v int) {
 	o.ReferenceMinuteOfHour = &v
 }
 
 // GetRestoreWindowDays returns the RestoreWindowDays field value if set, zero value otherwise.
-func (o *DiskBackupSnapshotSchedule) GetRestoreWindowDays() int32 {
+func (o *DiskBackupSnapshotSchedule) GetRestoreWindowDays() int {
 	if o == nil || IsNil(o.RestoreWindowDays) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.RestoreWindowDays
@@ -421,7 +421,7 @@ func (o *DiskBackupSnapshotSchedule) GetRestoreWindowDays() int32 {
 
 // GetRestoreWindowDaysOk returns a tuple with the RestoreWindowDays field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupSnapshotSchedule) GetRestoreWindowDaysOk() (*int32, bool) {
+func (o *DiskBackupSnapshotSchedule) GetRestoreWindowDaysOk() (*int, bool) {
 	if o == nil || IsNil(o.RestoreWindowDays) {
 		return nil, false
 	}
@@ -437,8 +437,8 @@ func (o *DiskBackupSnapshotSchedule) HasRestoreWindowDays() bool {
 	return false
 }
 
-// SetRestoreWindowDays gets a reference to the given int32 and assigns it to the RestoreWindowDays field.
-func (o *DiskBackupSnapshotSchedule) SetRestoreWindowDays(v int32) {
+// SetRestoreWindowDays gets a reference to the given int and assigns it to the RestoreWindowDays field.
+func (o *DiskBackupSnapshotSchedule) SetRestoreWindowDays(v int) {
 	o.RestoreWindowDays = &v
 }
 

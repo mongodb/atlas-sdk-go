@@ -658,8 +658,8 @@ type CreateApiKeyAccessListApiRequest struct {
 	apiUserId      string
 	userAccessList *[]UserAccessList
 	includeCount   *bool
-	itemsPerPage   *int32
-	pageNum        *int32
+	itemsPerPage   *int
+	pageNum        *int
 }
 
 type CreateApiKeyAccessListApiParams struct {
@@ -667,8 +667,8 @@ type CreateApiKeyAccessListApiParams struct {
 	ApiUserId      string
 	UserAccessList *[]UserAccessList
 	IncludeCount   *bool
-	ItemsPerPage   *int32
-	PageNum        *int32
+	ItemsPerPage   *int
+	PageNum        *int
 }
 
 func (a *ProgrammaticAPIKeysApiService) CreateApiKeyAccessListWithParams(ctx context.Context, args *CreateApiKeyAccessListApiParams) CreateApiKeyAccessListApiRequest {
@@ -697,13 +697,13 @@ func (r CreateApiKeyAccessListApiRequest) IncludeCount(includeCount bool) Create
 }
 
 // Number of items that the response returns per page.
-func (r CreateApiKeyAccessListApiRequest) ItemsPerPage(itemsPerPage int32) CreateApiKeyAccessListApiRequest {
+func (r CreateApiKeyAccessListApiRequest) ItemsPerPage(itemsPerPage int) CreateApiKeyAccessListApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r CreateApiKeyAccessListApiRequest) PageNum(pageNum int32) CreateApiKeyAccessListApiRequest {
+func (r CreateApiKeyAccessListApiRequest) PageNum(pageNum int) CreateApiKeyAccessListApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
@@ -780,14 +780,14 @@ func (a *ProgrammaticAPIKeysApiService) createApiKeyAccessListExecute(r CreateAp
 	if r.itemsPerPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int = 100
 		r.itemsPerPage = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.pageNum != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	} else {
-		var defaultValue int32 = 1
+		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	}
@@ -1561,16 +1561,16 @@ type ListApiKeyAccessListsEntriesApiRequest struct {
 	orgId        string
 	apiUserId    string
 	includeCount *bool
-	itemsPerPage *int32
-	pageNum      *int32
+	itemsPerPage *int
+	pageNum      *int
 }
 
 type ListApiKeyAccessListsEntriesApiParams struct {
 	OrgId        string
 	ApiUserId    string
 	IncludeCount *bool
-	ItemsPerPage *int32
-	PageNum      *int32
+	ItemsPerPage *int
+	PageNum      *int
 }
 
 func (a *ProgrammaticAPIKeysApiService) ListApiKeyAccessListsEntriesWithParams(ctx context.Context, args *ListApiKeyAccessListsEntriesApiParams) ListApiKeyAccessListsEntriesApiRequest {
@@ -1592,13 +1592,13 @@ func (r ListApiKeyAccessListsEntriesApiRequest) IncludeCount(includeCount bool) 
 }
 
 // Number of items that the response returns per page.
-func (r ListApiKeyAccessListsEntriesApiRequest) ItemsPerPage(itemsPerPage int32) ListApiKeyAccessListsEntriesApiRequest {
+func (r ListApiKeyAccessListsEntriesApiRequest) ItemsPerPage(itemsPerPage int) ListApiKeyAccessListsEntriesApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListApiKeyAccessListsEntriesApiRequest) PageNum(pageNum int32) ListApiKeyAccessListsEntriesApiRequest {
+func (r ListApiKeyAccessListsEntriesApiRequest) PageNum(pageNum int) ListApiKeyAccessListsEntriesApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
@@ -1672,14 +1672,14 @@ func (a *ProgrammaticAPIKeysApiService) listApiKeyAccessListsEntriesExecute(r Li
 	if r.itemsPerPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int = 100
 		r.itemsPerPage = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.pageNum != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	} else {
-		var defaultValue int32 = 1
+		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	}
@@ -1750,15 +1750,15 @@ type ListApiKeysApiRequest struct {
 	ApiService   ProgrammaticAPIKeysApi
 	orgId        string
 	includeCount *bool
-	itemsPerPage *int32
-	pageNum      *int32
+	itemsPerPage *int
+	pageNum      *int
 }
 
 type ListApiKeysApiParams struct {
 	OrgId        string
 	IncludeCount *bool
-	ItemsPerPage *int32
-	PageNum      *int32
+	ItemsPerPage *int
+	PageNum      *int
 }
 
 func (a *ProgrammaticAPIKeysApiService) ListApiKeysWithParams(ctx context.Context, args *ListApiKeysApiParams) ListApiKeysApiRequest {
@@ -1779,13 +1779,13 @@ func (r ListApiKeysApiRequest) IncludeCount(includeCount bool) ListApiKeysApiReq
 }
 
 // Number of items that the response returns per page.
-func (r ListApiKeysApiRequest) ItemsPerPage(itemsPerPage int32) ListApiKeysApiRequest {
+func (r ListApiKeysApiRequest) ItemsPerPage(itemsPerPage int) ListApiKeysApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListApiKeysApiRequest) PageNum(pageNum int32) ListApiKeysApiRequest {
+func (r ListApiKeysApiRequest) PageNum(pageNum int) ListApiKeysApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
@@ -1850,14 +1850,14 @@ func (a *ProgrammaticAPIKeysApiService) listApiKeysExecute(r ListApiKeysApiReque
 	if r.itemsPerPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int = 100
 		r.itemsPerPage = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.pageNum != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	} else {
-		var defaultValue int32 = 1
+		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	}
@@ -1928,15 +1928,15 @@ type ListProjectApiKeysApiRequest struct {
 	ApiService   ProgrammaticAPIKeysApi
 	groupId      string
 	includeCount *bool
-	itemsPerPage *int32
-	pageNum      *int32
+	itemsPerPage *int
+	pageNum      *int
 }
 
 type ListProjectApiKeysApiParams struct {
 	GroupId      string
 	IncludeCount *bool
-	ItemsPerPage *int32
-	PageNum      *int32
+	ItemsPerPage *int
+	PageNum      *int
 }
 
 func (a *ProgrammaticAPIKeysApiService) ListProjectApiKeysWithParams(ctx context.Context, args *ListProjectApiKeysApiParams) ListProjectApiKeysApiRequest {
@@ -1957,13 +1957,13 @@ func (r ListProjectApiKeysApiRequest) IncludeCount(includeCount bool) ListProjec
 }
 
 // Number of items that the response returns per page.
-func (r ListProjectApiKeysApiRequest) ItemsPerPage(itemsPerPage int32) ListProjectApiKeysApiRequest {
+func (r ListProjectApiKeysApiRequest) ItemsPerPage(itemsPerPage int) ListProjectApiKeysApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListProjectApiKeysApiRequest) PageNum(pageNum int32) ListProjectApiKeysApiRequest {
+func (r ListProjectApiKeysApiRequest) PageNum(pageNum int) ListProjectApiKeysApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
@@ -2028,14 +2028,14 @@ func (a *ProgrammaticAPIKeysApiService) listProjectApiKeysExecute(r ListProjectA
 	if r.itemsPerPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int = 100
 		r.itemsPerPage = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.pageNum != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	} else {
-		var defaultValue int32 = 1
+		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	}
@@ -2393,8 +2393,8 @@ type UpdateApiKeyRolesApiRequest struct {
 	groupId      string
 	apiUserId    string
 	createApiKey *CreateApiKey
-	pageNum      *int32
-	itemsPerPage *int32
+	pageNum      *int
+	itemsPerPage *int
 	includeCount *bool
 }
 
@@ -2402,8 +2402,8 @@ type UpdateApiKeyRolesApiParams struct {
 	GroupId      string
 	ApiUserId    string
 	CreateApiKey *CreateApiKey
-	PageNum      *int32
-	ItemsPerPage *int32
+	PageNum      *int
+	ItemsPerPage *int
 	IncludeCount *bool
 }
 
@@ -2427,13 +2427,13 @@ func (r UpdateApiKeyRolesApiRequest) CreateApiKey(createApiKey CreateApiKey) Upd
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r UpdateApiKeyRolesApiRequest) PageNum(pageNum int32) UpdateApiKeyRolesApiRequest {
+func (r UpdateApiKeyRolesApiRequest) PageNum(pageNum int) UpdateApiKeyRolesApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
 
 // Number of items that the response returns per page.
-func (r UpdateApiKeyRolesApiRequest) ItemsPerPage(itemsPerPage int32) UpdateApiKeyRolesApiRequest {
+func (r UpdateApiKeyRolesApiRequest) ItemsPerPage(itemsPerPage int) UpdateApiKeyRolesApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
@@ -2509,14 +2509,14 @@ func (a *ProgrammaticAPIKeysApiService) updateApiKeyRolesExecute(r UpdateApiKeyR
 	if r.pageNum != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	} else {
-		var defaultValue int32 = 1
+		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	}
 	if r.itemsPerPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int = 100
 		r.itemsPerPage = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}

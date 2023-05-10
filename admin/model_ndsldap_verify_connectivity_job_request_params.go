@@ -24,14 +24,14 @@ type NDSLDAPVerifyConnectivityJobRequestParams struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	Links []Link `json:"links,omitempty"`
 	// IANA port to which the Lightweight Directory Access Protocol (LDAP) host listens for client connections.
-	Port int32 `json:"port"`
+	Port int `json:"port"`
 }
 
 // NewNDSLDAPVerifyConnectivityJobRequestParams instantiates a new NDSLDAPVerifyConnectivityJobRequestParams object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewNDSLDAPVerifyConnectivityJobRequestParams(bindPassword string, bindUsername string, hostname string, port int32) *NDSLDAPVerifyConnectivityJobRequestParams {
+func NewNDSLDAPVerifyConnectivityJobRequestParams(bindPassword string, bindUsername string, hostname string, port int) *NDSLDAPVerifyConnectivityJobRequestParams {
 	this := NDSLDAPVerifyConnectivityJobRequestParams{}
 	var authzQueryTemplate string = "{USER}?memberOf?base"
 	this.AuthzQueryTemplate = &authzQueryTemplate
@@ -49,7 +49,7 @@ func NewNDSLDAPVerifyConnectivityJobRequestParamsWithDefaults() *NDSLDAPVerifyCo
 	this := NDSLDAPVerifyConnectivityJobRequestParams{}
 	var authzQueryTemplate string = "{USER}?memberOf?base"
 	this.AuthzQueryTemplate = &authzQueryTemplate
-	var port int32 = 636
+	var port int = 636
 	this.Port = port
 	return &this
 }
@@ -223,9 +223,9 @@ func (o *NDSLDAPVerifyConnectivityJobRequestParams) SetLinks(v []Link) {
 }
 
 // GetPort returns the Port field value
-func (o *NDSLDAPVerifyConnectivityJobRequestParams) GetPort() int32 {
+func (o *NDSLDAPVerifyConnectivityJobRequestParams) GetPort() int {
 	if o == nil {
-		var ret int32
+		var ret int
 		return ret
 	}
 
@@ -234,7 +234,7 @@ func (o *NDSLDAPVerifyConnectivityJobRequestParams) GetPort() int32 {
 
 // GetPortOk returns a tuple with the Port field value
 // and a boolean to check if the value has been set.
-func (o *NDSLDAPVerifyConnectivityJobRequestParams) GetPortOk() (*int32, bool) {
+func (o *NDSLDAPVerifyConnectivityJobRequestParams) GetPortOk() (*int, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -242,7 +242,7 @@ func (o *NDSLDAPVerifyConnectivityJobRequestParams) GetPortOk() (*int32, bool) {
 }
 
 // SetPort sets field value
-func (o *NDSLDAPVerifyConnectivityJobRequestParams) SetPort(v int32) {
+func (o *NDSLDAPVerifyConnectivityJobRequestParams) SetPort(v int) {
 	o.Port = v
 }
 

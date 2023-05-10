@@ -16,7 +16,7 @@ type PaginatedPrivateLinkConnection struct {
 	// List of returned documents that MongoDB Cloud providers when completing this request.
 	Results []EndpointService `json:"results,omitempty"`
 	// Number of documents returned in this response.
-	TotalCount *int32 `json:"totalCount,omitempty"`
+	TotalCount *int `json:"totalCount,omitempty"`
 }
 
 // NewPaginatedPrivateLinkConnection instantiates a new PaginatedPrivateLinkConnection object
@@ -101,9 +101,9 @@ func (o *PaginatedPrivateLinkConnection) SetResults(v []EndpointService) {
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise.
-func (o *PaginatedPrivateLinkConnection) GetTotalCount() int32 {
+func (o *PaginatedPrivateLinkConnection) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.TotalCount
@@ -111,7 +111,7 @@ func (o *PaginatedPrivateLinkConnection) GetTotalCount() int32 {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedPrivateLinkConnection) GetTotalCountOk() (*int32, bool) {
+func (o *PaginatedPrivateLinkConnection) GetTotalCountOk() (*int, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
@@ -127,8 +127,8 @@ func (o *PaginatedPrivateLinkConnection) HasTotalCount() bool {
 	return false
 }
 
-// SetTotalCount gets a reference to the given int32 and assigns it to the TotalCount field.
-func (o *PaginatedPrivateLinkConnection) SetTotalCount(v int32) {
+// SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
+func (o *PaginatedPrivateLinkConnection) SetTotalCount(v int) {
 	o.TotalCount = &v
 }
 

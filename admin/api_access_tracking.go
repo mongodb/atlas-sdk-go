@@ -280,7 +280,7 @@ type ListAccessLogsByHostnameApiRequest struct {
 	authResult *bool
 	end        *time.Time
 	ipAddress  *string
-	nLogs      *int32
+	nLogs      *int
 	start      *time.Time
 }
 
@@ -290,7 +290,7 @@ type ListAccessLogsByHostnameApiParams struct {
 	AuthResult *bool
 	End        *time.Time
 	IpAddress  *string
-	NLogs      *int32
+	NLogs      *int
 	Start      *time.Time
 }
 
@@ -327,7 +327,7 @@ func (r ListAccessLogsByHostnameApiRequest) IpAddress(ipAddress string) ListAcce
 }
 
 // Maximum number of lines from the log to return.
-func (r ListAccessLogsByHostnameApiRequest) NLogs(nLogs int32) ListAccessLogsByHostnameApiRequest {
+func (r ListAccessLogsByHostnameApiRequest) NLogs(nLogs int) ListAccessLogsByHostnameApiRequest {
 	r.nLogs = &nLogs
 	return r
 }
@@ -403,7 +403,7 @@ func (a *AccessTrackingApiService) listAccessLogsByHostnameExecute(r ListAccessL
 	if r.nLogs != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "nLogs", r.nLogs, "")
 	} else {
-		var defaultValue int32 = 20000
+		var defaultValue int = 20000
 		r.nLogs = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "nLogs", r.nLogs, "")
 	}

@@ -12,9 +12,9 @@ var _ MappedNullable = &HipChatNotification{}
 // HipChatNotification HipChat notification configuration for MongoDB Cloud to send information when an event triggers an alert condition.
 type HipChatNotification struct {
 	// Number of minutes that MongoDB Cloud waits after detecting an alert condition before it sends out the first notification.
-	DelayMin *int32 `json:"delayMin,omitempty"`
+	DelayMin *int `json:"delayMin,omitempty"`
 	// Number of minutes to wait between successive notifications. MongoDB Cloud sends notifications until someone acknowledges the unacknowledged alert.  PagerDuty, VictorOps, and OpsGenie notifications don't return this element. Configure and manage the notification interval within each of those services.
-	IntervalMin *int32 `json:"intervalMin,omitempty"`
+	IntervalMin *int `json:"intervalMin,omitempty"`
 	// HipChat API token that MongoDB Cloud needs to send alert notifications to HipChat. The resource requires this parameter when `\"notifications.[n].typeName\" : \"HIP_CHAT\"`\". If the token later becomes invalid, MongoDB Cloud sends an email to the project owners. If the token remains invalid, MongoDB Cloud removes it.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.
 	NotificationToken *string `json:"notificationToken,omitempty"`
 	// HipChat API room name to which MongoDB Cloud sends alert notifications. The resource requires this parameter when `\"notifications.[n].typeName\" : \"HIP_CHAT\"`\".
@@ -42,9 +42,9 @@ func NewHipChatNotificationWithDefaults() *HipChatNotification {
 }
 
 // GetDelayMin returns the DelayMin field value if set, zero value otherwise.
-func (o *HipChatNotification) GetDelayMin() int32 {
+func (o *HipChatNotification) GetDelayMin() int {
 	if o == nil || IsNil(o.DelayMin) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.DelayMin
@@ -52,7 +52,7 @@ func (o *HipChatNotification) GetDelayMin() int32 {
 
 // GetDelayMinOk returns a tuple with the DelayMin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HipChatNotification) GetDelayMinOk() (*int32, bool) {
+func (o *HipChatNotification) GetDelayMinOk() (*int, bool) {
 	if o == nil || IsNil(o.DelayMin) {
 		return nil, false
 	}
@@ -68,15 +68,15 @@ func (o *HipChatNotification) HasDelayMin() bool {
 	return false
 }
 
-// SetDelayMin gets a reference to the given int32 and assigns it to the DelayMin field.
-func (o *HipChatNotification) SetDelayMin(v int32) {
+// SetDelayMin gets a reference to the given int and assigns it to the DelayMin field.
+func (o *HipChatNotification) SetDelayMin(v int) {
 	o.DelayMin = &v
 }
 
 // GetIntervalMin returns the IntervalMin field value if set, zero value otherwise.
-func (o *HipChatNotification) GetIntervalMin() int32 {
+func (o *HipChatNotification) GetIntervalMin() int {
 	if o == nil || IsNil(o.IntervalMin) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.IntervalMin
@@ -84,7 +84,7 @@ func (o *HipChatNotification) GetIntervalMin() int32 {
 
 // GetIntervalMinOk returns a tuple with the IntervalMin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HipChatNotification) GetIntervalMinOk() (*int32, bool) {
+func (o *HipChatNotification) GetIntervalMinOk() (*int, bool) {
 	if o == nil || IsNil(o.IntervalMin) {
 		return nil, false
 	}
@@ -100,8 +100,8 @@ func (o *HipChatNotification) HasIntervalMin() bool {
 	return false
 }
 
-// SetIntervalMin gets a reference to the given int32 and assigns it to the IntervalMin field.
-func (o *HipChatNotification) SetIntervalMin(v int32) {
+// SetIntervalMin gets a reference to the given int and assigns it to the IntervalMin field.
+func (o *HipChatNotification) SetIntervalMin(v int) {
 	o.IntervalMin = &v
 }
 

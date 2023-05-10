@@ -12,9 +12,9 @@ var _ MappedNullable = &TokenFiltershingle{}
 // TokenFiltershingle Filter that constructs shingles (token n-grams) from a series of tokens. You can't use this token filter in synonym or autocomplete mapping definitions.
 type TokenFiltershingle struct {
 	// Value that specifies the maximum number of tokens per shingle. This value must be greater than or equal to **minShingleSize**.
-	MaxShingleSize int32 `json:"maxShingleSize"`
+	MaxShingleSize int `json:"maxShingleSize"`
 	// Value that specifies the minimum number of tokens per shingle. This value must be less than or equal to **maxShingleSize**.
-	MinShingleSize int32 `json:"minShingleSize"`
+	MinShingleSize int `json:"minShingleSize"`
 	// Human-readable label that identifies this token filter type.
 	Type string `json:"type"`
 }
@@ -23,7 +23,7 @@ type TokenFiltershingle struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTokenFiltershingle(maxShingleSize int32, minShingleSize int32, type_ string) *TokenFiltershingle {
+func NewTokenFiltershingle(maxShingleSize int, minShingleSize int, type_ string) *TokenFiltershingle {
 	this := TokenFiltershingle{}
 	this.MaxShingleSize = maxShingleSize
 	this.MinShingleSize = minShingleSize
@@ -40,9 +40,9 @@ func NewTokenFiltershingleWithDefaults() *TokenFiltershingle {
 }
 
 // GetMaxShingleSize returns the MaxShingleSize field value
-func (o *TokenFiltershingle) GetMaxShingleSize() int32 {
+func (o *TokenFiltershingle) GetMaxShingleSize() int {
 	if o == nil {
-		var ret int32
+		var ret int
 		return ret
 	}
 
@@ -51,7 +51,7 @@ func (o *TokenFiltershingle) GetMaxShingleSize() int32 {
 
 // GetMaxShingleSizeOk returns a tuple with the MaxShingleSize field value
 // and a boolean to check if the value has been set.
-func (o *TokenFiltershingle) GetMaxShingleSizeOk() (*int32, bool) {
+func (o *TokenFiltershingle) GetMaxShingleSizeOk() (*int, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -59,14 +59,14 @@ func (o *TokenFiltershingle) GetMaxShingleSizeOk() (*int32, bool) {
 }
 
 // SetMaxShingleSize sets field value
-func (o *TokenFiltershingle) SetMaxShingleSize(v int32) {
+func (o *TokenFiltershingle) SetMaxShingleSize(v int) {
 	o.MaxShingleSize = v
 }
 
 // GetMinShingleSize returns the MinShingleSize field value
-func (o *TokenFiltershingle) GetMinShingleSize() int32 {
+func (o *TokenFiltershingle) GetMinShingleSize() int {
 	if o == nil {
-		var ret int32
+		var ret int
 		return ret
 	}
 
@@ -75,7 +75,7 @@ func (o *TokenFiltershingle) GetMinShingleSize() int32 {
 
 // GetMinShingleSizeOk returns a tuple with the MinShingleSize field value
 // and a boolean to check if the value has been set.
-func (o *TokenFiltershingle) GetMinShingleSizeOk() (*int32, bool) {
+func (o *TokenFiltershingle) GetMinShingleSizeOk() (*int, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -83,7 +83,7 @@ func (o *TokenFiltershingle) GetMinShingleSizeOk() (*int32, bool) {
 }
 
 // SetMinShingleSize sets field value
-func (o *TokenFiltershingle) SetMinShingleSize(v int32) {
+func (o *TokenFiltershingle) SetMinShingleSize(v int) {
 	o.MinShingleSize = v
 }
 

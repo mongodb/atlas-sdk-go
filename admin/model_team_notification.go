@@ -12,11 +12,11 @@ var _ MappedNullable = &TeamNotification{}
 // TeamNotification Team notification configuration for MongoDB Cloud to send information when an event triggers an alert condition.
 type TeamNotification struct {
 	// Number of minutes that MongoDB Cloud waits after detecting an alert condition before it sends out the first notification.
-	DelayMin *int32 `json:"delayMin,omitempty"`
+	DelayMin *int `json:"delayMin,omitempty"`
 	// Flag that indicates whether MongoDB Cloud should send email notifications. The resource requires this parameter when one of the following values have been set:  - `\"notifications.[n].typeName\" : \"ORG\"` - `\"notifications.[n].typeName\" : \"GROUP\"` - `\"notifications.[n].typeName\" : \"USER\"`
 	EmailEnabled *bool `json:"emailEnabled,omitempty"`
 	// Number of minutes to wait between successive notifications. MongoDB Cloud sends notifications until someone acknowledges the unacknowledged alert.  PagerDuty, VictorOps, and OpsGenie notifications don't return this element. Configure and manage the notification interval within each of those services.
-	IntervalMin *int32 `json:"intervalMin,omitempty"`
+	IntervalMin *int `json:"intervalMin,omitempty"`
 	// Flag that indicates whether MongoDB Cloud should send text message notifications. The resource requires this parameter when one of the following values have been set:  - `\"notifications.[n].typeName\" : \"ORG\"` - `\"notifications.[n].typeName\" : \"GROUP\"` - `\"notifications.[n].typeName\" : \"USER\"`
 	SmsEnabled *bool `json:"smsEnabled,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies one MongoDB Cloud team. The resource requires this parameter when `\"notifications.[n].typeName\" : \"TEAM\"`.
@@ -46,9 +46,9 @@ func NewTeamNotificationWithDefaults() *TeamNotification {
 }
 
 // GetDelayMin returns the DelayMin field value if set, zero value otherwise.
-func (o *TeamNotification) GetDelayMin() int32 {
+func (o *TeamNotification) GetDelayMin() int {
 	if o == nil || IsNil(o.DelayMin) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.DelayMin
@@ -56,7 +56,7 @@ func (o *TeamNotification) GetDelayMin() int32 {
 
 // GetDelayMinOk returns a tuple with the DelayMin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TeamNotification) GetDelayMinOk() (*int32, bool) {
+func (o *TeamNotification) GetDelayMinOk() (*int, bool) {
 	if o == nil || IsNil(o.DelayMin) {
 		return nil, false
 	}
@@ -72,8 +72,8 @@ func (o *TeamNotification) HasDelayMin() bool {
 	return false
 }
 
-// SetDelayMin gets a reference to the given int32 and assigns it to the DelayMin field.
-func (o *TeamNotification) SetDelayMin(v int32) {
+// SetDelayMin gets a reference to the given int and assigns it to the DelayMin field.
+func (o *TeamNotification) SetDelayMin(v int) {
 	o.DelayMin = &v
 }
 
@@ -110,9 +110,9 @@ func (o *TeamNotification) SetEmailEnabled(v bool) {
 }
 
 // GetIntervalMin returns the IntervalMin field value if set, zero value otherwise.
-func (o *TeamNotification) GetIntervalMin() int32 {
+func (o *TeamNotification) GetIntervalMin() int {
 	if o == nil || IsNil(o.IntervalMin) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.IntervalMin
@@ -120,7 +120,7 @@ func (o *TeamNotification) GetIntervalMin() int32 {
 
 // GetIntervalMinOk returns a tuple with the IntervalMin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TeamNotification) GetIntervalMinOk() (*int32, bool) {
+func (o *TeamNotification) GetIntervalMinOk() (*int, bool) {
 	if o == nil || IsNil(o.IntervalMin) {
 		return nil, false
 	}
@@ -136,8 +136,8 @@ func (o *TeamNotification) HasIntervalMin() bool {
 	return false
 }
 
-// SetIntervalMin gets a reference to the given int32 and assigns it to the IntervalMin field.
-func (o *TeamNotification) SetIntervalMin(v int32) {
+// SetIntervalMin gets a reference to the given int and assigns it to the IntervalMin field.
+func (o *TeamNotification) SetIntervalMin(v int) {
 	o.IntervalMin = &v
 }
 

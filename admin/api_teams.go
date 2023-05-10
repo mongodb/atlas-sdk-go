@@ -1182,16 +1182,16 @@ type ListOrganizationTeamsApiRequest struct {
 	ctx          context.Context
 	ApiService   TeamsApi
 	orgId        string
-	itemsPerPage *int32
+	itemsPerPage *int
 	includeCount *bool
-	pageNum      *int32
+	pageNum      *int
 }
 
 type ListOrganizationTeamsApiParams struct {
 	OrgId        string
-	ItemsPerPage *int32
+	ItemsPerPage *int
 	IncludeCount *bool
-	PageNum      *int32
+	PageNum      *int
 }
 
 func (a *TeamsApiService) ListOrganizationTeamsWithParams(ctx context.Context, args *ListOrganizationTeamsApiParams) ListOrganizationTeamsApiRequest {
@@ -1206,7 +1206,7 @@ func (a *TeamsApiService) ListOrganizationTeamsWithParams(ctx context.Context, a
 }
 
 // Number of items that the response returns per page.
-func (r ListOrganizationTeamsApiRequest) ItemsPerPage(itemsPerPage int32) ListOrganizationTeamsApiRequest {
+func (r ListOrganizationTeamsApiRequest) ItemsPerPage(itemsPerPage int) ListOrganizationTeamsApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
@@ -1218,7 +1218,7 @@ func (r ListOrganizationTeamsApiRequest) IncludeCount(includeCount bool) ListOrg
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListOrganizationTeamsApiRequest) PageNum(pageNum int32) ListOrganizationTeamsApiRequest {
+func (r ListOrganizationTeamsApiRequest) PageNum(pageNum int) ListOrganizationTeamsApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
@@ -1276,7 +1276,7 @@ func (a *TeamsApiService) listOrganizationTeamsExecute(r ListOrganizationTeamsAp
 	if r.itemsPerPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int = 100
 		r.itemsPerPage = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
@@ -1290,7 +1290,7 @@ func (a *TeamsApiService) listOrganizationTeamsExecute(r ListOrganizationTeamsAp
 	if r.pageNum != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	} else {
-		var defaultValue int32 = 1
+		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	}
@@ -1361,15 +1361,15 @@ type ListProjectTeamsApiRequest struct {
 	ApiService   TeamsApi
 	groupId      string
 	includeCount *bool
-	itemsPerPage *int32
-	pageNum      *int32
+	itemsPerPage *int
+	pageNum      *int
 }
 
 type ListProjectTeamsApiParams struct {
 	GroupId      string
 	IncludeCount *bool
-	ItemsPerPage *int32
-	PageNum      *int32
+	ItemsPerPage *int
+	PageNum      *int
 }
 
 func (a *TeamsApiService) ListProjectTeamsWithParams(ctx context.Context, args *ListProjectTeamsApiParams) ListProjectTeamsApiRequest {
@@ -1390,13 +1390,13 @@ func (r ListProjectTeamsApiRequest) IncludeCount(includeCount bool) ListProjectT
 }
 
 // Number of items that the response returns per page.
-func (r ListProjectTeamsApiRequest) ItemsPerPage(itemsPerPage int32) ListProjectTeamsApiRequest {
+func (r ListProjectTeamsApiRequest) ItemsPerPage(itemsPerPage int) ListProjectTeamsApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListProjectTeamsApiRequest) PageNum(pageNum int32) ListProjectTeamsApiRequest {
+func (r ListProjectTeamsApiRequest) PageNum(pageNum int) ListProjectTeamsApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
@@ -1461,14 +1461,14 @@ func (a *TeamsApiService) listProjectTeamsExecute(r ListProjectTeamsApiRequest) 
 	if r.itemsPerPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int = 100
 		r.itemsPerPage = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.pageNum != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	} else {
-		var defaultValue int32 = 1
+		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	}
@@ -1539,15 +1539,15 @@ type ListTeamUsersApiRequest struct {
 	ApiService   TeamsApi
 	orgId        string
 	teamId       string
-	itemsPerPage *int32
-	pageNum      *int32
+	itemsPerPage *int
+	pageNum      *int
 }
 
 type ListTeamUsersApiParams struct {
 	OrgId        string
 	TeamId       string
-	ItemsPerPage *int32
-	PageNum      *int32
+	ItemsPerPage *int
+	PageNum      *int
 }
 
 func (a *TeamsApiService) ListTeamUsersWithParams(ctx context.Context, args *ListTeamUsersApiParams) ListTeamUsersApiRequest {
@@ -1562,13 +1562,13 @@ func (a *TeamsApiService) ListTeamUsersWithParams(ctx context.Context, args *Lis
 }
 
 // Number of items that the response returns per page.
-func (r ListTeamUsersApiRequest) ItemsPerPage(itemsPerPage int32) ListTeamUsersApiRequest {
+func (r ListTeamUsersApiRequest) ItemsPerPage(itemsPerPage int) ListTeamUsersApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListTeamUsersApiRequest) PageNum(pageNum int32) ListTeamUsersApiRequest {
+func (r ListTeamUsersApiRequest) PageNum(pageNum int) ListTeamUsersApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
@@ -1635,14 +1635,14 @@ func (a *TeamsApiService) listTeamUsersExecute(r ListTeamUsersApiRequest) (*Pagi
 	if r.itemsPerPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int = 100
 		r.itemsPerPage = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.pageNum != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	} else {
-		var defaultValue int32 = 1
+		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	}

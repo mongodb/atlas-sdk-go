@@ -12,9 +12,9 @@ var _ MappedNullable = &TokenizeredgeGram{}
 // TokenizeredgeGram Tokenizer that splits input from the left side, or \"edge\", of a text input into n-grams of given sizes. You can't use the edgeGram tokenizer in synonym or autocomplete mapping definitions.
 type TokenizeredgeGram struct {
 	// Characters to include in the longest token that Atlas Search creates.
-	MaxGram int32 `json:"maxGram"`
+	MaxGram int `json:"maxGram"`
 	// Characters to include in the shortest token that Atlas Search creates.
-	MinGram int32 `json:"minGram"`
+	MinGram int `json:"minGram"`
 	// Human-readable label that identifies this tokenizer type.
 	Type string `json:"type"`
 }
@@ -23,7 +23,7 @@ type TokenizeredgeGram struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTokenizeredgeGram(maxGram int32, minGram int32, type_ string) *TokenizeredgeGram {
+func NewTokenizeredgeGram(maxGram int, minGram int, type_ string) *TokenizeredgeGram {
 	this := TokenizeredgeGram{}
 	this.MaxGram = maxGram
 	this.MinGram = minGram
@@ -40,9 +40,9 @@ func NewTokenizeredgeGramWithDefaults() *TokenizeredgeGram {
 }
 
 // GetMaxGram returns the MaxGram field value
-func (o *TokenizeredgeGram) GetMaxGram() int32 {
+func (o *TokenizeredgeGram) GetMaxGram() int {
 	if o == nil {
-		var ret int32
+		var ret int
 		return ret
 	}
 
@@ -51,7 +51,7 @@ func (o *TokenizeredgeGram) GetMaxGram() int32 {
 
 // GetMaxGramOk returns a tuple with the MaxGram field value
 // and a boolean to check if the value has been set.
-func (o *TokenizeredgeGram) GetMaxGramOk() (*int32, bool) {
+func (o *TokenizeredgeGram) GetMaxGramOk() (*int, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -59,14 +59,14 @@ func (o *TokenizeredgeGram) GetMaxGramOk() (*int32, bool) {
 }
 
 // SetMaxGram sets field value
-func (o *TokenizeredgeGram) SetMaxGram(v int32) {
+func (o *TokenizeredgeGram) SetMaxGram(v int) {
 	o.MaxGram = v
 }
 
 // GetMinGram returns the MinGram field value
-func (o *TokenizeredgeGram) GetMinGram() int32 {
+func (o *TokenizeredgeGram) GetMinGram() int {
 	if o == nil {
-		var ret int32
+		var ret int
 		return ret
 	}
 
@@ -75,7 +75,7 @@ func (o *TokenizeredgeGram) GetMinGram() int32 {
 
 // GetMinGramOk returns a tuple with the MinGram field value
 // and a boolean to check if the value has been set.
-func (o *TokenizeredgeGram) GetMinGramOk() (*int32, bool) {
+func (o *TokenizeredgeGram) GetMinGramOk() (*int, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -83,7 +83,7 @@ func (o *TokenizeredgeGram) GetMinGramOk() (*int32, bool) {
 }
 
 // SetMinGram sets field value
-func (o *TokenizeredgeGram) SetMinGram(v int32) {
+func (o *TokenizeredgeGram) SetMinGram(v int) {
 	o.MinGram = v
 }
 

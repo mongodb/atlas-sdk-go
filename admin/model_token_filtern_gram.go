@@ -12,9 +12,9 @@ var _ MappedNullable = &TokenFilternGram{}
 // TokenFilternGram Filter that tokenizes input into n-grams of configured sizes. You can't use this token filter in synonym or autocomplete mapping definitions.
 type TokenFilternGram struct {
 	// Value that specifies the maximum length of generated n-grams. This value must be greater than or equal to **minGram**.
-	MaxGram int32 `json:"maxGram"`
+	MaxGram int `json:"maxGram"`
 	// Value that specifies the minimum length of generated n-grams. This value must be less than or equal to **maxGram**.
-	MinGram int32 `json:"minGram"`
+	MinGram int `json:"minGram"`
 	// Value that indicates whether to index tokens shorter than **minGram** or longer than **maxGram**.
 	TermNotInBounds *string `json:"termNotInBounds,omitempty"`
 	// Human-readable label that identifies this token filter type.
@@ -25,7 +25,7 @@ type TokenFilternGram struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTokenFilternGram(maxGram int32, minGram int32, type_ string) *TokenFilternGram {
+func NewTokenFilternGram(maxGram int, minGram int, type_ string) *TokenFilternGram {
 	this := TokenFilternGram{}
 	this.MaxGram = maxGram
 	this.MinGram = minGram
@@ -46,9 +46,9 @@ func NewTokenFilternGramWithDefaults() *TokenFilternGram {
 }
 
 // GetMaxGram returns the MaxGram field value
-func (o *TokenFilternGram) GetMaxGram() int32 {
+func (o *TokenFilternGram) GetMaxGram() int {
 	if o == nil {
-		var ret int32
+		var ret int
 		return ret
 	}
 
@@ -57,7 +57,7 @@ func (o *TokenFilternGram) GetMaxGram() int32 {
 
 // GetMaxGramOk returns a tuple with the MaxGram field value
 // and a boolean to check if the value has been set.
-func (o *TokenFilternGram) GetMaxGramOk() (*int32, bool) {
+func (o *TokenFilternGram) GetMaxGramOk() (*int, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -65,14 +65,14 @@ func (o *TokenFilternGram) GetMaxGramOk() (*int32, bool) {
 }
 
 // SetMaxGram sets field value
-func (o *TokenFilternGram) SetMaxGram(v int32) {
+func (o *TokenFilternGram) SetMaxGram(v int) {
 	o.MaxGram = v
 }
 
 // GetMinGram returns the MinGram field value
-func (o *TokenFilternGram) GetMinGram() int32 {
+func (o *TokenFilternGram) GetMinGram() int {
 	if o == nil {
-		var ret int32
+		var ret int
 		return ret
 	}
 
@@ -81,7 +81,7 @@ func (o *TokenFilternGram) GetMinGram() int32 {
 
 // GetMinGramOk returns a tuple with the MinGram field value
 // and a boolean to check if the value has been set.
-func (o *TokenFilternGram) GetMinGramOk() (*int32, bool) {
+func (o *TokenFilternGram) GetMinGramOk() (*int, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -89,7 +89,7 @@ func (o *TokenFilternGram) GetMinGramOk() (*int32, bool) {
 }
 
 // SetMinGram sets field value
-func (o *TokenFilternGram) SetMinGram(v int32) {
+func (o *TokenFilternGram) SetMinGram(v int) {
 	o.MinGram = v
 }
 

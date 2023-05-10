@@ -14,7 +14,7 @@ type LessThanDaysThreshold struct {
 	// Comparison operator to apply when checking the current metric value.
 	Operator *string `json:"operator,omitempty"`
 	// Value of metric that, when exceeded, triggers an alert.
-	Threshold *int32 `json:"threshold,omitempty"`
+	Threshold *int `json:"threshold,omitempty"`
 	// Element used to express the quantity. This can be an element of time, storage capacity, and the like.
 	Units *string `json:"units,omitempty"`
 }
@@ -69,9 +69,9 @@ func (o *LessThanDaysThreshold) SetOperator(v string) {
 }
 
 // GetThreshold returns the Threshold field value if set, zero value otherwise.
-func (o *LessThanDaysThreshold) GetThreshold() int32 {
+func (o *LessThanDaysThreshold) GetThreshold() int {
 	if o == nil || IsNil(o.Threshold) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.Threshold
@@ -79,7 +79,7 @@ func (o *LessThanDaysThreshold) GetThreshold() int32 {
 
 // GetThresholdOk returns a tuple with the Threshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LessThanDaysThreshold) GetThresholdOk() (*int32, bool) {
+func (o *LessThanDaysThreshold) GetThresholdOk() (*int, bool) {
 	if o == nil || IsNil(o.Threshold) {
 		return nil, false
 	}
@@ -95,8 +95,8 @@ func (o *LessThanDaysThreshold) HasThreshold() bool {
 	return false
 }
 
-// SetThreshold gets a reference to the given int32 and assigns it to the Threshold field.
-func (o *LessThanDaysThreshold) SetThreshold(v int32) {
+// SetThreshold gets a reference to the given int and assigns it to the Threshold field.
+func (o *LessThanDaysThreshold) SetThreshold(v int) {
 	o.Threshold = &v
 }
 

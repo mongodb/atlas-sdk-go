@@ -660,8 +660,8 @@ type ListCloudProviderRegionsApiRequest struct {
 	ApiService   ClustersApi
 	groupId      string
 	includeCount *bool
-	itemsPerPage *int32
-	pageNum      *int32
+	itemsPerPage *int
+	pageNum      *int
 	providers    *[]string
 	tier         *string
 }
@@ -669,8 +669,8 @@ type ListCloudProviderRegionsApiRequest struct {
 type ListCloudProviderRegionsApiParams struct {
 	GroupId      string
 	IncludeCount *bool
-	ItemsPerPage *int32
-	PageNum      *int32
+	ItemsPerPage *int
+	PageNum      *int
 	Providers    *[]string
 	Tier         *string
 }
@@ -695,13 +695,13 @@ func (r ListCloudProviderRegionsApiRequest) IncludeCount(includeCount bool) List
 }
 
 // Number of items that the response returns per page.
-func (r ListCloudProviderRegionsApiRequest) ItemsPerPage(itemsPerPage int32) ListCloudProviderRegionsApiRequest {
+func (r ListCloudProviderRegionsApiRequest) ItemsPerPage(itemsPerPage int) ListCloudProviderRegionsApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListCloudProviderRegionsApiRequest) PageNum(pageNum int32) ListCloudProviderRegionsApiRequest {
+func (r ListCloudProviderRegionsApiRequest) PageNum(pageNum int) ListCloudProviderRegionsApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
@@ -778,14 +778,14 @@ func (a *ClustersApiService) listCloudProviderRegionsExecute(r ListCloudProvider
 	if r.itemsPerPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int = 100
 		r.itemsPerPage = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.pageNum != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	} else {
-		var defaultValue int32 = 1
+		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	}
@@ -869,14 +869,14 @@ type ListClustersForAllProjectsApiRequest struct {
 	ctx          context.Context
 	ApiService   ClustersApi
 	includeCount *bool
-	itemsPerPage *int32
-	pageNum      *int32
+	itemsPerPage *int
+	pageNum      *int
 }
 
 type ListClustersForAllProjectsApiParams struct {
 	IncludeCount *bool
-	ItemsPerPage *int32
-	PageNum      *int32
+	ItemsPerPage *int
+	PageNum      *int
 }
 
 func (a *ClustersApiService) ListClustersForAllProjectsWithParams(ctx context.Context, args *ListClustersForAllProjectsApiParams) ListClustersForAllProjectsApiRequest {
@@ -896,13 +896,13 @@ func (r ListClustersForAllProjectsApiRequest) IncludeCount(includeCount bool) Li
 }
 
 // Number of items that the response returns per page.
-func (r ListClustersForAllProjectsApiRequest) ItemsPerPage(itemsPerPage int32) ListClustersForAllProjectsApiRequest {
+func (r ListClustersForAllProjectsApiRequest) ItemsPerPage(itemsPerPage int) ListClustersForAllProjectsApiRequest {
 	r.itemsPerPage = &itemsPerPage
 	return r
 }
 
 // Number of the page that displays the current set of the total objects that the response returns.
-func (r ListClustersForAllProjectsApiRequest) PageNum(pageNum int32) ListClustersForAllProjectsApiRequest {
+func (r ListClustersForAllProjectsApiRequest) PageNum(pageNum int) ListClustersForAllProjectsApiRequest {
 	r.pageNum = &pageNum
 	return r
 }
@@ -958,14 +958,14 @@ func (a *ClustersApiService) listClustersForAllProjectsExecute(r ListClustersFor
 	if r.itemsPerPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue int = 100
 		r.itemsPerPage = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
 	}
 	if r.pageNum != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	} else {
-		var defaultValue int32 = 1
+		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
 	}

@@ -12,13 +12,13 @@ var _ MappedNullable = &AWSHardwareSpec{}
 // AWSHardwareSpec Hardware specifications for nodes deployed in the region.
 type AWSHardwareSpec struct {
 	// Target throughput desired for storage attached to your AWS-provisioned cluster. Change this parameter only if you:  - set `\"replicationSpecs[n].regionConfigs[m].providerName\" : \"AWS\"`. - set `\"replicationSpecs[n].regionConfigs[m].electableSpecs.instanceSize\" : \"M30\"` or greater not including `Mxx_NVME` tiers.  The maximum input/output operations per second (IOPS) depend on the selected **.instanceSize** and **.diskSizeGB**. This parameter defaults to the cluster tier's standard IOPS value. Changing this value impacts cluster cost. MongoDB Cloud enforces minimum ratios of storage capacity to system memory for given cluster tiers. This keeps cluster performance consistent with large datasets.  - Instance sizes `M10` to `M40` have a ratio of disk capacity to system memory of 60:1. - Instance sizes greater than `M40` have a ratio of 120:1.
-	DiskIOPS *int32 `json:"diskIOPS,omitempty"`
+	DiskIOPS *int `json:"diskIOPS,omitempty"`
 	// Type of storage you want to attach to your AWS-provisioned cluster.  - `STANDARD` volume types can't exceed the default input/output operations per second (IOPS) rate for the selected volume size.   - `PROVISIONED` volume types must fall within the allowable IOPS range for the selected volume size.
 	EbsVolumeType *string `json:"ebsVolumeType,omitempty"`
 	// Hardware specification for the instance sizes in this region. Each instance size has a default storage and memory capacity. The instance size you select applies to all the data-bearing hosts in your instance size.
 	InstanceSize *string `json:"instanceSize,omitempty"`
 	// Number of nodes of the given type for MongoDB Cloud to deploy to the region.
-	NodeCount *int32 `json:"nodeCount,omitempty"`
+	NodeCount *int `json:"nodeCount,omitempty"`
 }
 
 // NewAWSHardwareSpec instantiates a new AWSHardwareSpec object
@@ -43,9 +43,9 @@ func NewAWSHardwareSpecWithDefaults() *AWSHardwareSpec {
 }
 
 // GetDiskIOPS returns the DiskIOPS field value if set, zero value otherwise.
-func (o *AWSHardwareSpec) GetDiskIOPS() int32 {
+func (o *AWSHardwareSpec) GetDiskIOPS() int {
 	if o == nil || IsNil(o.DiskIOPS) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.DiskIOPS
@@ -53,7 +53,7 @@ func (o *AWSHardwareSpec) GetDiskIOPS() int32 {
 
 // GetDiskIOPSOk returns a tuple with the DiskIOPS field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AWSHardwareSpec) GetDiskIOPSOk() (*int32, bool) {
+func (o *AWSHardwareSpec) GetDiskIOPSOk() (*int, bool) {
 	if o == nil || IsNil(o.DiskIOPS) {
 		return nil, false
 	}
@@ -69,8 +69,8 @@ func (o *AWSHardwareSpec) HasDiskIOPS() bool {
 	return false
 }
 
-// SetDiskIOPS gets a reference to the given int32 and assigns it to the DiskIOPS field.
-func (o *AWSHardwareSpec) SetDiskIOPS(v int32) {
+// SetDiskIOPS gets a reference to the given int and assigns it to the DiskIOPS field.
+func (o *AWSHardwareSpec) SetDiskIOPS(v int) {
 	o.DiskIOPS = &v
 }
 
@@ -139,9 +139,9 @@ func (o *AWSHardwareSpec) SetInstanceSize(v string) {
 }
 
 // GetNodeCount returns the NodeCount field value if set, zero value otherwise.
-func (o *AWSHardwareSpec) GetNodeCount() int32 {
+func (o *AWSHardwareSpec) GetNodeCount() int {
 	if o == nil || IsNil(o.NodeCount) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.NodeCount
@@ -149,7 +149,7 @@ func (o *AWSHardwareSpec) GetNodeCount() int32 {
 
 // GetNodeCountOk returns a tuple with the NodeCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AWSHardwareSpec) GetNodeCountOk() (*int32, bool) {
+func (o *AWSHardwareSpec) GetNodeCountOk() (*int, bool) {
 	if o == nil || IsNil(o.NodeCount) {
 		return nil, false
 	}
@@ -165,8 +165,8 @@ func (o *AWSHardwareSpec) HasNodeCount() bool {
 	return false
 }
 
-// SetNodeCount gets a reference to the given int32 and assigns it to the NodeCount field.
-func (o *AWSHardwareSpec) SetNodeCount(v int32) {
+// SetNodeCount gets a reference to the given int and assigns it to the NodeCount field.
+func (o *AWSHardwareSpec) SetNodeCount(v int) {
 	o.NodeCount = &v
 }
 

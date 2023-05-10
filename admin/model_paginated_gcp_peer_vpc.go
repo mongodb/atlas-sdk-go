@@ -16,7 +16,7 @@ type PaginatedGCPPeerVpc struct {
 	// List of returned documents that MongoDB Cloud providers when completing this request.
 	Results []GCPPeerVpc `json:"results,omitempty"`
 	// Number of documents returned in this response.
-	TotalCount *int32 `json:"totalCount,omitempty"`
+	TotalCount *int `json:"totalCount,omitempty"`
 }
 
 // NewPaginatedGCPPeerVpc instantiates a new PaginatedGCPPeerVpc object
@@ -101,9 +101,9 @@ func (o *PaginatedGCPPeerVpc) SetResults(v []GCPPeerVpc) {
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise.
-func (o *PaginatedGCPPeerVpc) GetTotalCount() int32 {
+func (o *PaginatedGCPPeerVpc) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.TotalCount
@@ -111,7 +111,7 @@ func (o *PaginatedGCPPeerVpc) GetTotalCount() int32 {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedGCPPeerVpc) GetTotalCountOk() (*int32, bool) {
+func (o *PaginatedGCPPeerVpc) GetTotalCountOk() (*int, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
@@ -127,8 +127,8 @@ func (o *PaginatedGCPPeerVpc) HasTotalCount() bool {
 	return false
 }
 
-// SetTotalCount gets a reference to the given int32 and assigns it to the TotalCount field.
-func (o *PaginatedGCPPeerVpc) SetTotalCount(v int32) {
+// SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
+func (o *PaginatedGCPPeerVpc) SetTotalCount(v int) {
 	o.TotalCount = &v
 }
 

@@ -28,7 +28,7 @@ type Collation struct {
 	// Flag that indicates whether to compare sequences of digits as numbers or as strings.  | Value | Comparison Method |  |---|---| | `true` | Compare as numbers. This results in `10 > 2`. | | `false` | Compare as strings. This results in `\"10\" < \"2\"`. |
 	NumericOrdering *bool `json:"numericOrdering,omitempty"`
 	// Degree of comparison to perform when sorting words. MongoDB Cloud accepts the following values:  | Value | Comparison Level | Comparison Method | |---|---|---| | 1 | Primary | Compares the base characters only, ignoring other differences such as diacritics and case. | | 2 | Secondary | Compares base characters (primary) and diacritics (secondary). Primary differences take precedence over secondary differences. | | 3 | Tertiary | Compares base characters (primary), diacritics (secondary), and case and variants (tertiary). Differences between base characters takes precedence over secondary differences which take precedence over tertiary differences. | | 4 | Quaternary | Compares for the specific use case to consider punctuation when levels 1 through 3 ignore punctuation or for processing Japanese text. | | 5 | Identical | Compares for the specific use case of tie breaker. |
-	Strength *int32 `json:"strength,omitempty"`
+	Strength *int `json:"strength,omitempty"`
 }
 
 // NewCollation instantiates a new Collation object
@@ -50,7 +50,7 @@ func NewCollation(locale string) *Collation {
 	this.Normalization = &normalization
 	var numericOrdering bool = false
 	this.NumericOrdering = &numericOrdering
-	var strength int32 = 3
+	var strength int = 3
 	this.Strength = &strength
 	return &this
 }
@@ -72,7 +72,7 @@ func NewCollationWithDefaults() *Collation {
 	this.Normalization = &normalization
 	var numericOrdering bool = false
 	this.NumericOrdering = &numericOrdering
-	var strength int32 = 3
+	var strength int = 3
 	this.Strength = &strength
 	return &this
 }
@@ -326,9 +326,9 @@ func (o *Collation) SetNumericOrdering(v bool) {
 }
 
 // GetStrength returns the Strength field value if set, zero value otherwise.
-func (o *Collation) GetStrength() int32 {
+func (o *Collation) GetStrength() int {
 	if o == nil || IsNil(o.Strength) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.Strength
@@ -336,7 +336,7 @@ func (o *Collation) GetStrength() int32 {
 
 // GetStrengthOk returns a tuple with the Strength field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Collation) GetStrengthOk() (*int32, bool) {
+func (o *Collation) GetStrengthOk() (*int, bool) {
 	if o == nil || IsNil(o.Strength) {
 		return nil, false
 	}
@@ -352,8 +352,8 @@ func (o *Collation) HasStrength() bool {
 	return false
 }
 
-// SetStrength gets a reference to the given int32 and assigns it to the Strength field.
-func (o *Collation) SetStrength(v int32) {
+// SetStrength gets a reference to the given int and assigns it to the Strength field.
+func (o *Collation) SetStrength(v int) {
 	o.Strength = &v
 }
 

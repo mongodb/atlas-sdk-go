@@ -12,9 +12,9 @@ var _ MappedNullable = &TokenizernGram{}
 // TokenizernGram Tokenizer that splits input into text chunks, or \"n-grams\", of into given sizes. You can't use the nGram tokenizer in synonym or autocomplete mapping definitions.
 type TokenizernGram struct {
 	// Characters to include in the longest token that Atlas Search creates.
-	MaxGram int32 `json:"maxGram"`
+	MaxGram int `json:"maxGram"`
 	// Characters to include in the shortest token that Atlas Search creates.
-	MinGram int32 `json:"minGram"`
+	MinGram int `json:"minGram"`
 	// Human-readable label that identifies this tokenizer type.
 	Type string `json:"type"`
 }
@@ -23,7 +23,7 @@ type TokenizernGram struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTokenizernGram(maxGram int32, minGram int32, type_ string) *TokenizernGram {
+func NewTokenizernGram(maxGram int, minGram int, type_ string) *TokenizernGram {
 	this := TokenizernGram{}
 	this.MaxGram = maxGram
 	this.MinGram = minGram
@@ -40,9 +40,9 @@ func NewTokenizernGramWithDefaults() *TokenizernGram {
 }
 
 // GetMaxGram returns the MaxGram field value
-func (o *TokenizernGram) GetMaxGram() int32 {
+func (o *TokenizernGram) GetMaxGram() int {
 	if o == nil {
-		var ret int32
+		var ret int
 		return ret
 	}
 
@@ -51,7 +51,7 @@ func (o *TokenizernGram) GetMaxGram() int32 {
 
 // GetMaxGramOk returns a tuple with the MaxGram field value
 // and a boolean to check if the value has been set.
-func (o *TokenizernGram) GetMaxGramOk() (*int32, bool) {
+func (o *TokenizernGram) GetMaxGramOk() (*int, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -59,14 +59,14 @@ func (o *TokenizernGram) GetMaxGramOk() (*int32, bool) {
 }
 
 // SetMaxGram sets field value
-func (o *TokenizernGram) SetMaxGram(v int32) {
+func (o *TokenizernGram) SetMaxGram(v int) {
 	o.MaxGram = v
 }
 
 // GetMinGram returns the MinGram field value
-func (o *TokenizernGram) GetMinGram() int32 {
+func (o *TokenizernGram) GetMinGram() int {
 	if o == nil {
-		var ret int32
+		var ret int
 		return ret
 	}
 
@@ -75,7 +75,7 @@ func (o *TokenizernGram) GetMinGram() int32 {
 
 // GetMinGramOk returns a tuple with the MinGram field value
 // and a boolean to check if the value has been set.
-func (o *TokenizernGram) GetMinGramOk() (*int32, bool) {
+func (o *TokenizernGram) GetMinGramOk() (*int, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -83,7 +83,7 @@ func (o *TokenizernGram) GetMinGramOk() (*int32, bool) {
 }
 
 // SetMinGram sets field value
-func (o *TokenizernGram) SetMinGram(v int32) {
+func (o *TokenizernGram) SetMinGram(v int) {
 	o.MinGram = v
 }
 

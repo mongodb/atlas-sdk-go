@@ -12,13 +12,13 @@ var _ MappedNullable = &DailySchedule{}
 // DailySchedule struct for DailySchedule
 type DailySchedule struct {
 	// Hour of the day when the scheduled window to run one online archive ends.
-	EndHour *int32 `json:"endHour,omitempty"`
+	EndHour *int `json:"endHour,omitempty"`
 	// Minute of the hour when the scheduled window to run one online archive ends.
-	EndMinute *int32 `json:"endMinute,omitempty"`
+	EndMinute *int `json:"endMinute,omitempty"`
 	// Hour of the day when the when the scheduled window to run one online archive starts.
-	StartHour *int32 `json:"startHour,omitempty"`
+	StartHour *int `json:"startHour,omitempty"`
 	// Minute of the hour when the scheduled window to run one online archive starts.
-	StartMinute *int32 `json:"startMinute,omitempty"`
+	StartMinute *int   `json:"startMinute,omitempty"`
 	Type        string `json:"type"`
 }
 
@@ -41,9 +41,9 @@ func NewDailyScheduleWithDefaults() *DailySchedule {
 }
 
 // GetEndHour returns the EndHour field value if set, zero value otherwise.
-func (o *DailySchedule) GetEndHour() int32 {
+func (o *DailySchedule) GetEndHour() int {
 	if o == nil || IsNil(o.EndHour) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.EndHour
@@ -51,7 +51,7 @@ func (o *DailySchedule) GetEndHour() int32 {
 
 // GetEndHourOk returns a tuple with the EndHour field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DailySchedule) GetEndHourOk() (*int32, bool) {
+func (o *DailySchedule) GetEndHourOk() (*int, bool) {
 	if o == nil || IsNil(o.EndHour) {
 		return nil, false
 	}
@@ -67,15 +67,15 @@ func (o *DailySchedule) HasEndHour() bool {
 	return false
 }
 
-// SetEndHour gets a reference to the given int32 and assigns it to the EndHour field.
-func (o *DailySchedule) SetEndHour(v int32) {
+// SetEndHour gets a reference to the given int and assigns it to the EndHour field.
+func (o *DailySchedule) SetEndHour(v int) {
 	o.EndHour = &v
 }
 
 // GetEndMinute returns the EndMinute field value if set, zero value otherwise.
-func (o *DailySchedule) GetEndMinute() int32 {
+func (o *DailySchedule) GetEndMinute() int {
 	if o == nil || IsNil(o.EndMinute) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.EndMinute
@@ -83,7 +83,7 @@ func (o *DailySchedule) GetEndMinute() int32 {
 
 // GetEndMinuteOk returns a tuple with the EndMinute field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DailySchedule) GetEndMinuteOk() (*int32, bool) {
+func (o *DailySchedule) GetEndMinuteOk() (*int, bool) {
 	if o == nil || IsNil(o.EndMinute) {
 		return nil, false
 	}
@@ -99,15 +99,15 @@ func (o *DailySchedule) HasEndMinute() bool {
 	return false
 }
 
-// SetEndMinute gets a reference to the given int32 and assigns it to the EndMinute field.
-func (o *DailySchedule) SetEndMinute(v int32) {
+// SetEndMinute gets a reference to the given int and assigns it to the EndMinute field.
+func (o *DailySchedule) SetEndMinute(v int) {
 	o.EndMinute = &v
 }
 
 // GetStartHour returns the StartHour field value if set, zero value otherwise.
-func (o *DailySchedule) GetStartHour() int32 {
+func (o *DailySchedule) GetStartHour() int {
 	if o == nil || IsNil(o.StartHour) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.StartHour
@@ -115,7 +115,7 @@ func (o *DailySchedule) GetStartHour() int32 {
 
 // GetStartHourOk returns a tuple with the StartHour field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DailySchedule) GetStartHourOk() (*int32, bool) {
+func (o *DailySchedule) GetStartHourOk() (*int, bool) {
 	if o == nil || IsNil(o.StartHour) {
 		return nil, false
 	}
@@ -131,15 +131,15 @@ func (o *DailySchedule) HasStartHour() bool {
 	return false
 }
 
-// SetStartHour gets a reference to the given int32 and assigns it to the StartHour field.
-func (o *DailySchedule) SetStartHour(v int32) {
+// SetStartHour gets a reference to the given int and assigns it to the StartHour field.
+func (o *DailySchedule) SetStartHour(v int) {
 	o.StartHour = &v
 }
 
 // GetStartMinute returns the StartMinute field value if set, zero value otherwise.
-func (o *DailySchedule) GetStartMinute() int32 {
+func (o *DailySchedule) GetStartMinute() int {
 	if o == nil || IsNil(o.StartMinute) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.StartMinute
@@ -147,7 +147,7 @@ func (o *DailySchedule) GetStartMinute() int32 {
 
 // GetStartMinuteOk returns a tuple with the StartMinute field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DailySchedule) GetStartMinuteOk() (*int32, bool) {
+func (o *DailySchedule) GetStartMinuteOk() (*int, bool) {
 	if o == nil || IsNil(o.StartMinute) {
 		return nil, false
 	}
@@ -163,8 +163,8 @@ func (o *DailySchedule) HasStartMinute() bool {
 	return false
 }
 
-// SetStartMinute gets a reference to the given int32 and assigns it to the StartMinute field.
-func (o *DailySchedule) SetStartMinute(v int32) {
+// SetStartMinute gets a reference to the given int and assigns it to the StartMinute field.
+func (o *DailySchedule) SetStartMinute(v int) {
 	o.StartMinute = &v
 }
 

@@ -16,7 +16,7 @@ type DateCriteria struct {
 	// Syntax used to write the date after which data moves to the online archive. Date can be expressed as ISO 8601 or Epoch timestamps. The Epoch timestamp can be expressed as nanoseconds, milliseconds, or seconds. Set this parameter when **\"criteria.type\" : \"DATE\"**. You must set **\"criteria.type\" : \"DATE\"** if **\"collectionType\": \"TIMESERIES\"**.
 	DateFormat *string `json:"dateFormat,omitempty"`
 	// Number of days after the value in the **criteria.dateField** when MongoDB Cloud archives data in the specified cluster. Set this parameter when you set **\"criteria.type\" : \"DATE\"**.
-	ExpireAfterDays *int32 `json:"expireAfterDays,omitempty"`
+	ExpireAfterDays *int `json:"expireAfterDays,omitempty"`
 	// Means by which MongoDB Cloud selects data to archive. Data can be chosen using the age of the data or a MongoDB query. **DATE** selects documents to archive based on a date. **CUSTOM** selects documents to archive based on a custom JSON query. MongoDB Cloud doesn't support **CUSTOM** when `\"collectionType\": \"TIMESERIES\"`.
 	Type *string `json:"type,omitempty"`
 }
@@ -107,9 +107,9 @@ func (o *DateCriteria) SetDateFormat(v string) {
 }
 
 // GetExpireAfterDays returns the ExpireAfterDays field value if set, zero value otherwise.
-func (o *DateCriteria) GetExpireAfterDays() int32 {
+func (o *DateCriteria) GetExpireAfterDays() int {
 	if o == nil || IsNil(o.ExpireAfterDays) {
-		var ret int32
+		var ret int
 		return ret
 	}
 	return *o.ExpireAfterDays
@@ -117,7 +117,7 @@ func (o *DateCriteria) GetExpireAfterDays() int32 {
 
 // GetExpireAfterDaysOk returns a tuple with the ExpireAfterDays field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DateCriteria) GetExpireAfterDaysOk() (*int32, bool) {
+func (o *DateCriteria) GetExpireAfterDaysOk() (*int, bool) {
 	if o == nil || IsNil(o.ExpireAfterDays) {
 		return nil, false
 	}
@@ -133,8 +133,8 @@ func (o *DateCriteria) HasExpireAfterDays() bool {
 	return false
 }
 
-// SetExpireAfterDays gets a reference to the given int32 and assigns it to the ExpireAfterDays field.
-func (o *DateCriteria) SetExpireAfterDays(v int32) {
+// SetExpireAfterDays gets a reference to the given int and assigns it to the ExpireAfterDays field.
+func (o *DateCriteria) SetExpireAfterDays(v int) {
 	o.ExpireAfterDays = &v
 }
 
