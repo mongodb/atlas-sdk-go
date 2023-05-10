@@ -14,11 +14,11 @@ type RawMetricThreshold struct {
 	// Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
 	MetricName *string `json:"metricName,omitempty"`
 	// MongoDB Cloud computes the current metric value as an average.
-	Mode *string `json:"mode,omitempty"`
+	Mode     *string   `json:"mode,omitempty"`
 	Operator *Operator `json:"operator,omitempty"`
 	// Value of metric that, when exceeded, triggers an alert.
-	Threshold *float64 `json:"threshold,omitempty"`
-	Units *RawMetricUnits `json:"units,omitempty"`
+	Threshold *float64        `json:"threshold,omitempty"`
+	Units     *RawMetricUnits `json:"units,omitempty"`
 }
 
 // NewRawMetricThreshold instantiates a new RawMetricThreshold object
@@ -203,7 +203,7 @@ func (o *RawMetricThreshold) SetUnits(v RawMetricUnits) {
 }
 
 func (o RawMetricThreshold) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -264,5 +264,3 @@ func (v *NullableRawMetricThreshold) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

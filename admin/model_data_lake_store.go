@@ -9,10 +9,10 @@ import (
 
 // DataLakeStore - Group of settings that define where the data is stored.
 type DataLakeStore struct {
-	DataLakeAtlasStore *DataLakeAtlasStore
-	DataLakeHTTPStore *DataLakeHTTPStore
+	DataLakeAtlasStore         *DataLakeAtlasStore
+	DataLakeHTTPStore          *DataLakeHTTPStore
 	DataLakeOnlineArchiveStore *DataLakeOnlineArchiveStore
-	DataLakeS3Store *DataLakeS3Store
+	DataLakeS3Store            *DataLakeS3Store
 }
 
 // DataLakeAtlasStoreAsDataLakeStore is a convenience function that returns DataLakeAtlasStore wrapped in DataLakeStore
@@ -42,7 +42,6 @@ func DataLakeS3StoreAsDataLakeStore(v *DataLakeS3Store) DataLakeStore {
 		DataLakeS3Store: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *DataLakeStore) UnmarshalJSON(data []byte) error {
@@ -175,7 +174,7 @@ func (src DataLakeStore) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *DataLakeStore) GetActualInstance() (interface{}) {
+func (obj *DataLakeStore) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -234,5 +233,3 @@ func (v *NullableDataLakeStore) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

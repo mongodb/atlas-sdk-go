@@ -9,7 +9,7 @@ import (
 
 // ServerlessTenantEndpointUpdate - Update view for a serverless tenant endpoint.
 type ServerlessTenantEndpointUpdate struct {
-	ServerlessAWSTenantEndpointUpdate *ServerlessAWSTenantEndpointUpdate
+	ServerlessAWSTenantEndpointUpdate   *ServerlessAWSTenantEndpointUpdate
 	ServerlessAzureTenantEndpointUpdate *ServerlessAzureTenantEndpointUpdate
 }
 
@@ -26,7 +26,6 @@ func ServerlessAzureTenantEndpointUpdateAsServerlessTenantEndpointUpdate(v *Serv
 		ServerlessAzureTenantEndpointUpdate: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *ServerlessTenantEndpointUpdate) UnmarshalJSON(data []byte) error {
@@ -103,7 +102,7 @@ func (src ServerlessTenantEndpointUpdate) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *ServerlessTenantEndpointUpdate) GetActualInstance() (interface{}) {
+func (obj *ServerlessTenantEndpointUpdate) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -154,5 +153,3 @@ func (v *NullableServerlessTenantEndpointUpdate) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

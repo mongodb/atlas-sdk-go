@@ -17,8 +17,8 @@ type IndexRequest struct {
 	// Human-readable label of the database that holds the collection on which MongoDB Cloud creates an index.
 	Db string `json:"db"`
 	// List that contains one or more objects that describe the parameters that you want to index.
-	Keys []map[string]string `json:"keys,omitempty"`
-	Options *IndexOptions `json:"options,omitempty"`
+	Keys    []map[string]string `json:"keys,omitempty"`
+	Options *IndexOptions       `json:"options,omitempty"`
 }
 
 // NewIndexRequest instantiates a new IndexRequest object
@@ -185,7 +185,7 @@ func (o *IndexRequest) SetOptions(v IndexOptions) {
 }
 
 func (o IndexRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -242,5 +242,3 @@ func (v *NullableIndexRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

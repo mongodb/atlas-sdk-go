@@ -9,27 +9,27 @@ import (
 
 // FTSAnalyzersTokenFiltersInner struct for FTSAnalyzersTokenFiltersInner
 type FTSAnalyzersTokenFiltersInner struct {
-	TokenFilterasciiFolding *TokenFilterasciiFolding
+	TokenFilterasciiFolding          *TokenFilterasciiFolding
 	TokenFilterdaitchMokotoffSoundex *TokenFilterdaitchMokotoffSoundex
-	TokenFilteredgeGram *TokenFilteredgeGram
-	TokenFiltericuFolding *TokenFiltericuFolding
-	TokenFiltericuNormalizer *TokenFiltericuNormalizer
-	TokenFilterlength *TokenFilterlength
-	TokenFilterlowercase *TokenFilterlowercase
-	TokenFilternGram *TokenFilternGram
-	TokenFilterregex *TokenFilterregex
-	TokenFilterreverse *TokenFilterreverse
-	TokenFiltershingle *TokenFiltershingle
-	TokenFiltersnowballStemming *TokenFiltersnowballStemming
-	TokenFilterstopword *TokenFilterstopword
-	TokenFiltertrim *TokenFiltertrim
+	TokenFilteredgeGram              *TokenFilteredgeGram
+	TokenFiltericuFolding            *TokenFiltericuFolding
+	TokenFiltericuNormalizer         *TokenFiltericuNormalizer
+	TokenFilterlength                *TokenFilterlength
+	TokenFilterlowercase             *TokenFilterlowercase
+	TokenFilternGram                 *TokenFilternGram
+	TokenFilterregex                 *TokenFilterregex
+	TokenFilterreverse               *TokenFilterreverse
+	TokenFiltershingle               *TokenFiltershingle
+	TokenFiltersnowballStemming      *TokenFiltersnowballStemming
+	TokenFilterstopword              *TokenFilterstopword
+	TokenFiltertrim                  *TokenFiltertrim
 }
 
 // Unmarshal JSON data into any of the pointers in the struct
 func (dst *FTSAnalyzersTokenFiltersInner) UnmarshalJSON(data []byte) error {
 	var err error
 	// try to unmarshal JSON data into TokenFilterasciiFolding
-	err = json.Unmarshal(data, &dst.TokenFilterasciiFolding);
+	err = json.Unmarshal(data, &dst.TokenFilterasciiFolding)
 	if err == nil {
 		jsonTokenFilterasciiFolding, _ := json.Marshal(dst.TokenFilterasciiFolding)
 		if string(jsonTokenFilterasciiFolding) == "{}" { // empty struct
@@ -42,7 +42,7 @@ func (dst *FTSAnalyzersTokenFiltersInner) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into TokenFilterdaitchMokotoffSoundex
-	err = json.Unmarshal(data, &dst.TokenFilterdaitchMokotoffSoundex);
+	err = json.Unmarshal(data, &dst.TokenFilterdaitchMokotoffSoundex)
 	if err == nil {
 		jsonTokenFilterdaitchMokotoffSoundex, _ := json.Marshal(dst.TokenFilterdaitchMokotoffSoundex)
 		if string(jsonTokenFilterdaitchMokotoffSoundex) == "{}" { // empty struct
@@ -55,7 +55,7 @@ func (dst *FTSAnalyzersTokenFiltersInner) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into TokenFilteredgeGram
-	err = json.Unmarshal(data, &dst.TokenFilteredgeGram);
+	err = json.Unmarshal(data, &dst.TokenFilteredgeGram)
 	if err == nil {
 		jsonTokenFilteredgeGram, _ := json.Marshal(dst.TokenFilteredgeGram)
 		if string(jsonTokenFilteredgeGram) == "{}" { // empty struct
@@ -68,7 +68,7 @@ func (dst *FTSAnalyzersTokenFiltersInner) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into TokenFiltericuFolding
-	err = json.Unmarshal(data, &dst.TokenFiltericuFolding);
+	err = json.Unmarshal(data, &dst.TokenFiltericuFolding)
 	if err == nil {
 		jsonTokenFiltericuFolding, _ := json.Marshal(dst.TokenFiltericuFolding)
 		if string(jsonTokenFiltericuFolding) == "{}" { // empty struct
@@ -81,7 +81,7 @@ func (dst *FTSAnalyzersTokenFiltersInner) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into TokenFiltericuNormalizer
-	err = json.Unmarshal(data, &dst.TokenFiltericuNormalizer);
+	err = json.Unmarshal(data, &dst.TokenFiltericuNormalizer)
 	if err == nil {
 		jsonTokenFiltericuNormalizer, _ := json.Marshal(dst.TokenFiltericuNormalizer)
 		if string(jsonTokenFiltericuNormalizer) == "{}" { // empty struct
@@ -94,7 +94,7 @@ func (dst *FTSAnalyzersTokenFiltersInner) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into TokenFilterlength
-	err = json.Unmarshal(data, &dst.TokenFilterlength);
+	err = json.Unmarshal(data, &dst.TokenFilterlength)
 	if err == nil {
 		jsonTokenFilterlength, _ := json.Marshal(dst.TokenFilterlength)
 		if string(jsonTokenFilterlength) == "{}" { // empty struct
@@ -107,7 +107,7 @@ func (dst *FTSAnalyzersTokenFiltersInner) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into TokenFilterlowercase
-	err = json.Unmarshal(data, &dst.TokenFilterlowercase);
+	err = json.Unmarshal(data, &dst.TokenFilterlowercase)
 	if err == nil {
 		jsonTokenFilterlowercase, _ := json.Marshal(dst.TokenFilterlowercase)
 		if string(jsonTokenFilterlowercase) == "{}" { // empty struct
@@ -120,7 +120,7 @@ func (dst *FTSAnalyzersTokenFiltersInner) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into TokenFilternGram
-	err = json.Unmarshal(data, &dst.TokenFilternGram);
+	err = json.Unmarshal(data, &dst.TokenFilternGram)
 	if err == nil {
 		jsonTokenFilternGram, _ := json.Marshal(dst.TokenFilternGram)
 		if string(jsonTokenFilternGram) == "{}" { // empty struct
@@ -133,7 +133,7 @@ func (dst *FTSAnalyzersTokenFiltersInner) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into TokenFilterregex
-	err = json.Unmarshal(data, &dst.TokenFilterregex);
+	err = json.Unmarshal(data, &dst.TokenFilterregex)
 	if err == nil {
 		jsonTokenFilterregex, _ := json.Marshal(dst.TokenFilterregex)
 		if string(jsonTokenFilterregex) == "{}" { // empty struct
@@ -146,7 +146,7 @@ func (dst *FTSAnalyzersTokenFiltersInner) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into TokenFilterreverse
-	err = json.Unmarshal(data, &dst.TokenFilterreverse);
+	err = json.Unmarshal(data, &dst.TokenFilterreverse)
 	if err == nil {
 		jsonTokenFilterreverse, _ := json.Marshal(dst.TokenFilterreverse)
 		if string(jsonTokenFilterreverse) == "{}" { // empty struct
@@ -159,7 +159,7 @@ func (dst *FTSAnalyzersTokenFiltersInner) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into TokenFiltershingle
-	err = json.Unmarshal(data, &dst.TokenFiltershingle);
+	err = json.Unmarshal(data, &dst.TokenFiltershingle)
 	if err == nil {
 		jsonTokenFiltershingle, _ := json.Marshal(dst.TokenFiltershingle)
 		if string(jsonTokenFiltershingle) == "{}" { // empty struct
@@ -172,7 +172,7 @@ func (dst *FTSAnalyzersTokenFiltersInner) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into TokenFiltersnowballStemming
-	err = json.Unmarshal(data, &dst.TokenFiltersnowballStemming);
+	err = json.Unmarshal(data, &dst.TokenFiltersnowballStemming)
 	if err == nil {
 		jsonTokenFiltersnowballStemming, _ := json.Marshal(dst.TokenFiltersnowballStemming)
 		if string(jsonTokenFiltersnowballStemming) == "{}" { // empty struct
@@ -185,7 +185,7 @@ func (dst *FTSAnalyzersTokenFiltersInner) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into TokenFilterstopword
-	err = json.Unmarshal(data, &dst.TokenFilterstopword);
+	err = json.Unmarshal(data, &dst.TokenFilterstopword)
 	if err == nil {
 		jsonTokenFilterstopword, _ := json.Marshal(dst.TokenFilterstopword)
 		if string(jsonTokenFilterstopword) == "{}" { // empty struct
@@ -198,7 +198,7 @@ func (dst *FTSAnalyzersTokenFiltersInner) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal JSON data into TokenFiltertrim
-	err = json.Unmarshal(data, &dst.TokenFiltertrim);
+	err = json.Unmarshal(data, &dst.TokenFiltertrim)
 	if err == nil {
 		jsonTokenFiltertrim, _ := json.Marshal(dst.TokenFiltertrim)
 		if string(jsonTokenFiltertrim) == "{}" { // empty struct
@@ -309,5 +309,3 @@ func (v *NullableFTSAnalyzersTokenFiltersInner) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

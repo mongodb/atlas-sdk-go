@@ -11,7 +11,7 @@ var _ MappedNullable = &NetworkPermissionEntryStatus{}
 
 // NetworkPermissionEntryStatus struct for NetworkPermissionEntryStatus
 type NetworkPermissionEntryStatus struct {
-	// State of the access list entry when MongoDB Cloud made this request.  | Status | Activity | |---|---| | `ACTIVE` | This access list entry applies to all relevant cloud providers. | | `PENDING` | MongoDB Cloud has started to add access list entry. This access list entry may not apply to all cloud providers at the time of this request. | | `FAILED` | MongoDB Cloud didn't succeed in adding this access list entry. | 
+	// State of the access list entry when MongoDB Cloud made this request.  | Status | Activity | |---|---| | `ACTIVE` | This access list entry applies to all relevant cloud providers. | | `PENDING` | MongoDB Cloud has started to add access list entry. This access list entry may not apply to all cloud providers at the time of this request. | | `FAILED` | MongoDB Cloud didn't succeed in adding this access list entry. |
 	STATUS string `json:"STATUS"`
 }
 
@@ -58,7 +58,7 @@ func (o *NetworkPermissionEntryStatus) SetSTATUS(v string) {
 }
 
 func (o NetworkPermissionEntryStatus) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -104,5 +104,3 @@ func (v *NullableNetworkPermissionEntryStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

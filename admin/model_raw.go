@@ -29,7 +29,7 @@ type Raw struct {
 	// Unique 24-hexadecimal digit string that identifies the organization to which these events apply.
 	OrgId *string `json:"orgId,omitempty"`
 	// Human-readable label that identifies the organization that contains the project.
-	OrgName *string `json:"orgName,omitempty"`
+	OrgName  *string `json:"orgName,omitempty"`
 	Severity *string `json:"severity,omitempty"`
 }
 
@@ -371,7 +371,7 @@ func (o *Raw) SetSeverity(v string) {
 }
 
 func (o Raw) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -432,5 +432,3 @@ func (v *NullableRaw) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

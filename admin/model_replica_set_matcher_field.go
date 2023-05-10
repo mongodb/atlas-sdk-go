@@ -13,8 +13,8 @@ type ReplicaSetMatcherField string
 // List of ReplicaSetMatcherField
 const (
 	REPLICASETMATCHERFIELD_REPLICA_SET_NAME ReplicaSetMatcherField = "REPLICA_SET_NAME"
-	REPLICASETMATCHERFIELD_SHARD_NAME ReplicaSetMatcherField = "SHARD_NAME"
-	REPLICASETMATCHERFIELD_CLUSTER_NAME ReplicaSetMatcherField = "CLUSTER_NAME"
+	REPLICASETMATCHERFIELD_SHARD_NAME       ReplicaSetMatcherField = "SHARD_NAME"
+	REPLICASETMATCHERFIELD_CLUSTER_NAME     ReplicaSetMatcherField = "CLUSTER_NAME"
 )
 
 // All allowed values of ReplicaSetMatcherField enum
@@ -66,5 +66,3 @@ func (v ReplicaSetMatcherField) IsValid() bool {
 func (v ReplicaSetMatcherField) Ptr() *ReplicaSetMatcherField {
 	return &v
 }
-
-

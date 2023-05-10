@@ -11,27 +11,26 @@ import (
 	"strings"
 )
 
-
 type ClusterOutageSimulationApi interface {
 
 	/*
-	EndOutageSimulation End an Outage Simulation
+		EndOutageSimulation End an Outage Simulation
 
-	Ends a cluster outage simulation.
+		Ends a cluster outage simulation.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param clusterName Human-readable label that identifies the cluster that is undergoing outage simulation.
-	@return EndOutageSimulationApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param clusterName Human-readable label that identifies the cluster that is undergoing outage simulation.
+		@return EndOutageSimulationApiRequest
 	*/
 	EndOutageSimulation(ctx context.Context, groupId string, clusterName string) EndOutageSimulationApiRequest
 	/*
-	EndOutageSimulation End an Outage Simulation
+		EndOutageSimulation End an Outage Simulation
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param EndOutageSimulationApiParams - Parameters for the request
-	@return EndOutageSimulationApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param EndOutageSimulationApiParams - Parameters for the request
+		@return EndOutageSimulationApiRequest
 	*/
 	EndOutageSimulationWithParams(ctx context.Context, args *EndOutageSimulationApiParams) EndOutageSimulationApiRequest
 
@@ -39,23 +38,23 @@ type ClusterOutageSimulationApi interface {
 	endOutageSimulationExecute(r EndOutageSimulationApiRequest) (*ClusterOutageSimulation, *http.Response, error)
 
 	/*
-	GetOutageSimulation Return One Outage Simulation
+		GetOutageSimulation Return One Outage Simulation
 
-	Returns one outage simulation for one cluster.
+		Returns one outage simulation for one cluster.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param clusterName Human-readable label that identifies the cluster that is undergoing outage simulation.
-	@return GetOutageSimulationApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param clusterName Human-readable label that identifies the cluster that is undergoing outage simulation.
+		@return GetOutageSimulationApiRequest
 	*/
 	GetOutageSimulation(ctx context.Context, groupId string, clusterName string) GetOutageSimulationApiRequest
 	/*
-	GetOutageSimulation Return One Outage Simulation
+		GetOutageSimulation Return One Outage Simulation
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param GetOutageSimulationApiParams - Parameters for the request
-	@return GetOutageSimulationApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetOutageSimulationApiParams - Parameters for the request
+		@return GetOutageSimulationApiRequest
 	*/
 	GetOutageSimulationWithParams(ctx context.Context, args *GetOutageSimulationApiParams) GetOutageSimulationApiRequest
 
@@ -63,23 +62,23 @@ type ClusterOutageSimulationApi interface {
 	getOutageSimulationExecute(r GetOutageSimulationApiRequest) (*ClusterOutageSimulation, *http.Response, error)
 
 	/*
-	StartOutageSimulation Start an Outage Simulation
+		StartOutageSimulation Start an Outage Simulation
 
-	Starts a cluster outage simulation.
+		Starts a cluster outage simulation.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param clusterName Human-readable label that identifies the cluster to undergo an outage simulation.
-	@return StartOutageSimulationApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param clusterName Human-readable label that identifies the cluster to undergo an outage simulation.
+		@return StartOutageSimulationApiRequest
 	*/
 	StartOutageSimulation(ctx context.Context, groupId string, clusterName string) StartOutageSimulationApiRequest
 	/*
-	StartOutageSimulation Start an Outage Simulation
+		StartOutageSimulation Start an Outage Simulation
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param StartOutageSimulationApiParams - Parameters for the request
-	@return StartOutageSimulationApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param StartOutageSimulationApiParams - Parameters for the request
+		@return StartOutageSimulationApiRequest
 	*/
 	StartOutageSimulationWithParams(ctx context.Context, args *StartOutageSimulationApiParams) StartOutageSimulationApiRequest
 
@@ -91,22 +90,22 @@ type ClusterOutageSimulationApi interface {
 type ClusterOutageSimulationApiService service
 
 type EndOutageSimulationApiRequest struct {
-	ctx context.Context
-	ApiService ClusterOutageSimulationApi
-	groupId string
+	ctx         context.Context
+	ApiService  ClusterOutageSimulationApi
+	groupId     string
 	clusterName string
 }
 
 type EndOutageSimulationApiParams struct {
-		GroupId string
-		ClusterName string
+	GroupId     string
+	ClusterName string
 }
 
 func (a *ClusterOutageSimulationApiService) EndOutageSimulationWithParams(ctx context.Context, args *EndOutageSimulationApiParams) EndOutageSimulationApiRequest {
 	return EndOutageSimulationApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: args.GroupId,
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     args.GroupId,
 		clusterName: args.ClusterName,
 	}
 }
@@ -120,28 +119,29 @@ EndOutageSimulation End an Outage Simulation
 
 Ends a cluster outage simulation.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param clusterName Human-readable label that identifies the cluster that is undergoing outage simulation.
- @return EndOutageSimulationApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies the cluster that is undergoing outage simulation.
+	@return EndOutageSimulationApiRequest
 */
 func (a *ClusterOutageSimulationApiService) EndOutageSimulation(ctx context.Context, groupId string, clusterName string) EndOutageSimulationApiRequest {
 	return EndOutageSimulationApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: groupId,
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     groupId,
 		clusterName: clusterName,
 	}
 }
 
 // Execute executes the request
-//  @return ClusterOutageSimulation
+//
+//	@return ClusterOutageSimulation
 func (a *ClusterOutageSimulationApiService) endOutageSimulationExecute(r EndOutageSimulationApiRequest) (*ClusterOutageSimulation, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ClusterOutageSimulation
+		localVarHTTPMethod  = http.MethodDelete
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClusterOutageSimulation
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClusterOutageSimulationApiService.EndOutageSimulation")
@@ -232,22 +232,22 @@ func (a *ClusterOutageSimulationApiService) endOutageSimulationExecute(r EndOuta
 }
 
 type GetOutageSimulationApiRequest struct {
-	ctx context.Context
-	ApiService ClusterOutageSimulationApi
-	groupId string
+	ctx         context.Context
+	ApiService  ClusterOutageSimulationApi
+	groupId     string
 	clusterName string
 }
 
 type GetOutageSimulationApiParams struct {
-		GroupId string
-		ClusterName string
+	GroupId     string
+	ClusterName string
 }
 
 func (a *ClusterOutageSimulationApiService) GetOutageSimulationWithParams(ctx context.Context, args *GetOutageSimulationApiParams) GetOutageSimulationApiRequest {
 	return GetOutageSimulationApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: args.GroupId,
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     args.GroupId,
 		clusterName: args.ClusterName,
 	}
 }
@@ -261,28 +261,29 @@ GetOutageSimulation Return One Outage Simulation
 
 Returns one outage simulation for one cluster.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param clusterName Human-readable label that identifies the cluster that is undergoing outage simulation.
- @return GetOutageSimulationApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies the cluster that is undergoing outage simulation.
+	@return GetOutageSimulationApiRequest
 */
 func (a *ClusterOutageSimulationApiService) GetOutageSimulation(ctx context.Context, groupId string, clusterName string) GetOutageSimulationApiRequest {
 	return GetOutageSimulationApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: groupId,
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     groupId,
 		clusterName: clusterName,
 	}
 }
 
 // Execute executes the request
-//  @return ClusterOutageSimulation
+//
+//	@return ClusterOutageSimulation
 func (a *ClusterOutageSimulationApiService) getOutageSimulationExecute(r GetOutageSimulationApiRequest) (*ClusterOutageSimulation, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ClusterOutageSimulation
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClusterOutageSimulation
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClusterOutageSimulationApiService.GetOutageSimulation")
@@ -373,25 +374,25 @@ func (a *ClusterOutageSimulationApiService) getOutageSimulationExecute(r GetOuta
 }
 
 type StartOutageSimulationApiRequest struct {
-	ctx context.Context
-	ApiService ClusterOutageSimulationApi
-	groupId string
-	clusterName string
+	ctx                     context.Context
+	ApiService              ClusterOutageSimulationApi
+	groupId                 string
+	clusterName             string
 	clusterOutageSimulation *ClusterOutageSimulation
 }
 
 type StartOutageSimulationApiParams struct {
-		GroupId string
-		ClusterName string
-		ClusterOutageSimulation *ClusterOutageSimulation
+	GroupId                 string
+	ClusterName             string
+	ClusterOutageSimulation *ClusterOutageSimulation
 }
 
 func (a *ClusterOutageSimulationApiService) StartOutageSimulationWithParams(ctx context.Context, args *StartOutageSimulationApiParams) StartOutageSimulationApiRequest {
 	return StartOutageSimulationApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: args.GroupId,
-		clusterName: args.ClusterName,
+		ApiService:              a,
+		ctx:                     ctx,
+		groupId:                 args.GroupId,
+		clusterName:             args.ClusterName,
 		clusterOutageSimulation: args.ClusterOutageSimulation,
 	}
 }
@@ -411,28 +412,29 @@ StartOutageSimulation Start an Outage Simulation
 
 Starts a cluster outage simulation.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param clusterName Human-readable label that identifies the cluster to undergo an outage simulation.
- @return StartOutageSimulationApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies the cluster to undergo an outage simulation.
+	@return StartOutageSimulationApiRequest
 */
 func (a *ClusterOutageSimulationApiService) StartOutageSimulation(ctx context.Context, groupId string, clusterName string) StartOutageSimulationApiRequest {
 	return StartOutageSimulationApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: groupId,
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     groupId,
 		clusterName: clusterName,
 	}
 }
 
 // Execute executes the request
-//  @return ClusterOutageSimulation
+//
+//	@return ClusterOutageSimulation
 func (a *ClusterOutageSimulationApiService) startOutageSimulationExecute(r StartOutageSimulationApiRequest) (*ClusterOutageSimulation, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ClusterOutageSimulation
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClusterOutageSimulation
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClusterOutageSimulationApiService.StartOutageSimulation")

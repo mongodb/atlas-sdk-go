@@ -9,10 +9,10 @@ import (
 
 // HostMetricEvent - Host Metric Event reflects different measurements and metrics about mongod host.
 type HostMetricEvent struct {
-	DataMetricEvent *DataMetricEvent
+	DataMetricEvent   *DataMetricEvent
 	NumberMetricEvent *NumberMetricEvent
-	RawMetricEvent *RawMetricEvent
-	TimeMetricEvent *TimeMetricEvent
+	RawMetricEvent    *RawMetricEvent
+	TimeMetricEvent   *TimeMetricEvent
 }
 
 // DataMetricEventAsHostMetricEvent is a convenience function that returns DataMetricEvent wrapped in HostMetricEvent
@@ -42,7 +42,6 @@ func TimeMetricEventAsHostMetricEvent(v *TimeMetricEvent) HostMetricEvent {
 		TimeMetricEvent: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *HostMetricEvent) UnmarshalJSON(data []byte) error {
@@ -2047,7 +2046,7 @@ func (src HostMetricEvent) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *HostMetricEvent) GetActualInstance() (interface{}) {
+func (obj *HostMetricEvent) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -2106,5 +2105,3 @@ func (v *NullableHostMetricEvent) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

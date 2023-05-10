@@ -308,7 +308,7 @@ func (o *SnapshotSchedule) SetWeeklySnapshotRetentionWeeks(v int32) {
 }
 
 func (o SnapshotSchedule) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -362,5 +362,3 @@ func (v *NullableSnapshotSchedule) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

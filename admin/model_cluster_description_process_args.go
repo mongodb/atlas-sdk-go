@@ -302,6 +302,7 @@ func (o *ClusterDescriptionProcessArgs) HasOplogMinRetentionHours() bool {
 func (o *ClusterDescriptionProcessArgs) SetOplogMinRetentionHours(v float64) {
 	o.OplogMinRetentionHours.Set(&v)
 }
+
 // SetOplogMinRetentionHoursNil sets the value for OplogMinRetentionHours to be an explicit nil
 func (o *ClusterDescriptionProcessArgs) SetOplogMinRetentionHoursNil() {
 	o.OplogMinRetentionHours.Set(nil)
@@ -344,6 +345,7 @@ func (o *ClusterDescriptionProcessArgs) HasOplogSizeMB() bool {
 func (o *ClusterDescriptionProcessArgs) SetOplogSizeMB(v int32) {
 	o.OplogSizeMB.Set(&v)
 }
+
 // SetOplogSizeMBNil sets the value for OplogSizeMB to be an explicit nil
 func (o *ClusterDescriptionProcessArgs) SetOplogSizeMBNil() {
 	o.OplogSizeMB.Set(nil)
@@ -419,7 +421,7 @@ func (o *ClusterDescriptionProcessArgs) SetSampleSizeBIConnector(v int32) {
 }
 
 func (o ClusterDescriptionProcessArgs) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -495,5 +497,3 @@ func (v *NullableClusterDescriptionProcessArgs) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

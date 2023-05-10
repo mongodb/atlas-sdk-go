@@ -12,7 +12,7 @@ var _ MappedNullable = &PemFileInfo{}
 // PemFileInfo PEM file information for the identity provider's certificates.
 type PemFileInfo struct {
 	Certificates []X509Certificate `json:"certificates,omitempty"`
-	FileName *string `json:"fileName,omitempty"`
+	FileName     *string           `json:"fileName,omitempty"`
 }
 
 // NewPemFileInfo instantiates a new PemFileInfo object
@@ -97,7 +97,7 @@ func (o *PemFileInfo) SetFileName(v string) {
 }
 
 func (o PemFileInfo) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -149,5 +149,3 @@ func (v *NullablePemFileInfo) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

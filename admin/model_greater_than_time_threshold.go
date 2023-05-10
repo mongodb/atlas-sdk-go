@@ -14,8 +14,8 @@ type GreaterThanTimeThreshold struct {
 	// Comparison operator to apply when checking the current metric value.
 	Operator *string `json:"operator,omitempty"`
 	// Value of metric that, when exceeded, triggers an alert.
-	Threshold *int32 `json:"threshold,omitempty"`
-	Units *TimeMetricUnits `json:"units,omitempty"`
+	Threshold *int32           `json:"threshold,omitempty"`
+	Units     *TimeMetricUnits `json:"units,omitempty"`
 }
 
 // NewGreaterThanTimeThreshold instantiates a new GreaterThanTimeThreshold object
@@ -136,7 +136,7 @@ func (o *GreaterThanTimeThreshold) SetUnits(v TimeMetricUnits) {
 }
 
 func (o GreaterThanTimeThreshold) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -191,5 +191,3 @@ func (v *NullableGreaterThanTimeThreshold) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

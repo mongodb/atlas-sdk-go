@@ -9,10 +9,10 @@ import (
 
 // HostMetricThreshold - Threshold for the metric that, when exceeded, triggers an alert. The metric threshold pertains to event types which reflects changes of measurements and metrics about mongod host.
 type HostMetricThreshold struct {
-	DataMetricThreshold *DataMetricThreshold
+	DataMetricThreshold   *DataMetricThreshold
 	NumberMetricThreshold *NumberMetricThreshold
-	RawMetricThreshold *RawMetricThreshold
-	TimeMetricThreshold *TimeMetricThreshold
+	RawMetricThreshold    *RawMetricThreshold
+	TimeMetricThreshold   *TimeMetricThreshold
 }
 
 // DataMetricThresholdAsHostMetricThreshold is a convenience function that returns DataMetricThreshold wrapped in HostMetricThreshold
@@ -42,7 +42,6 @@ func TimeMetricThresholdAsHostMetricThreshold(v *TimeMetricThreshold) HostMetric
 		TimeMetricThreshold: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *HostMetricThreshold) UnmarshalJSON(data []byte) error {
@@ -2047,7 +2046,7 @@ func (src HostMetricThreshold) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *HostMetricThreshold) GetActualInstance() (interface{}) {
+func (obj *HostMetricThreshold) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -2106,5 +2105,3 @@ func (v *NullableHostMetricThreshold) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

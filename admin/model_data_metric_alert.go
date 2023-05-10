@@ -23,8 +23,8 @@ type DataMetricAlert struct {
 	// Human-readable label that identifies the cluster to which this alert applies. This resource returns this parameter for alerts of events impacting backups, replica sets, or sharded clusters.
 	ClusterName *string `json:"clusterName,omitempty"`
 	// Date and time when MongoDB Cloud created this alert. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC.
-	Created time.Time `json:"created"`
-	CurrentValue *DataMetricValue `json:"currentValue,omitempty"`
+	Created       time.Time                        `json:"created"`
+	CurrentValue  *DataMetricValue                 `json:"currentValue,omitempty"`
 	EventTypeName HostMetricEventTypeViewAlertable `json:"eventTypeName"`
 	// Unique 24-hexadecimal digit string that identifies the project that owns this alert.
 	GroupId *string `json:"groupId,omitempty"`
@@ -627,7 +627,7 @@ func (o *DataMetricAlert) SetUpdated(v time.Time) {
 }
 
 func (o DataMetricAlert) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -681,5 +681,3 @@ func (v *NullableDataMetricAlert) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

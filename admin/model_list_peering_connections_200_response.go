@@ -9,9 +9,9 @@ import (
 
 // ListPeeringConnections200Response - struct for ListPeeringConnections200Response
 type ListPeeringConnections200Response struct {
-	PaginatedAWSPeerVpc *PaginatedAWSPeerVpc
+	PaginatedAWSPeerVpc       *PaginatedAWSPeerVpc
 	PaginatedAzurePeerNetwork *PaginatedAzurePeerNetwork
-	PaginatedGCPPeerVpc *PaginatedGCPPeerVpc
+	PaginatedGCPPeerVpc       *PaginatedGCPPeerVpc
 }
 
 // PaginatedAWSPeerVpcAsListPeeringConnections200Response is a convenience function that returns PaginatedAWSPeerVpc wrapped in ListPeeringConnections200Response
@@ -34,7 +34,6 @@ func PaginatedGCPPeerVpcAsListPeeringConnections200Response(v *PaginatedGCPPeerV
 		PaginatedGCPPeerVpc: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *ListPeeringConnections200Response) UnmarshalJSON(data []byte) error {
@@ -111,7 +110,7 @@ func (src ListPeeringConnections200Response) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *ListPeeringConnections200Response) GetActualInstance() (interface{}) {
+func (obj *ListPeeringConnections200Response) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -166,5 +165,3 @@ func (v *NullableListPeeringConnections200Response) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

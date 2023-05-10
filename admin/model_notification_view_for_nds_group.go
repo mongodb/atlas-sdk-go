@@ -9,20 +9,20 @@ import (
 
 // NotificationViewForNdsGroup - One target that MongoDB Cloud sends notifications when an alert triggers.
 type NotificationViewForNdsGroup struct {
-	DatadogNotification *DatadogNotification
-	EmailNotification *EmailNotification
-	GroupNotification *GroupNotification
-	HipChatNotification *HipChatNotification
+	DatadogNotification        *DatadogNotification
+	EmailNotification          *EmailNotification
+	GroupNotification          *GroupNotification
+	HipChatNotification        *HipChatNotification
 	MicrosoftTeamsNotification *MicrosoftTeamsNotification
-	OpsGenieNotification *OpsGenieNotification
-	OrgNotification *OrgNotification
-	PagerDutyNotification *PagerDutyNotification
-	SMSNotification *SMSNotification
-	SlackNotification *SlackNotification
-	TeamNotification *TeamNotification
-	UserNotification *UserNotification
-	VictorOpsNotification *VictorOpsNotification
-	WebhookNotification *WebhookNotification
+	OpsGenieNotification       *OpsGenieNotification
+	OrgNotification            *OrgNotification
+	PagerDutyNotification      *PagerDutyNotification
+	SMSNotification            *SMSNotification
+	SlackNotification          *SlackNotification
+	TeamNotification           *TeamNotification
+	UserNotification           *UserNotification
+	VictorOpsNotification      *VictorOpsNotification
+	WebhookNotification        *WebhookNotification
 }
 
 // DatadogNotificationAsNotificationViewForNdsGroup is a convenience function that returns DatadogNotification wrapped in NotificationViewForNdsGroup
@@ -122,7 +122,6 @@ func WebhookNotificationAsNotificationViewForNdsGroup(v *WebhookNotification) No
 		WebhookNotification: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *NotificationViewForNdsGroup) UnmarshalJSON(data []byte) error {
@@ -397,7 +396,7 @@ func (src NotificationViewForNdsGroup) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *NotificationViewForNdsGroup) GetActualInstance() (interface{}) {
+func (obj *NotificationViewForNdsGroup) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -496,5 +495,3 @@ func (v *NullableNotificationViewForNdsGroup) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

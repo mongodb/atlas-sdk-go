@@ -13,7 +13,7 @@ var _ MappedNullable = &CreateOrganizationResponse{}
 type CreateOrganizationResponse struct {
 	ApiKey *ApiUser `json:"apiKey,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the Atlas user that you want to assign the Organization Owner role.
-	OrgOwnerId *string `json:"orgOwnerId,omitempty"`
+	OrgOwnerId   *string       `json:"orgOwnerId,omitempty"`
 	Organization *Organization `json:"organization,omitempty"`
 }
 
@@ -131,7 +131,7 @@ func (o *CreateOrganizationResponse) SetOrganization(v Organization) {
 }
 
 func (o CreateOrganizationResponse) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -183,5 +183,3 @@ func (v *NullableCreateOrganizationResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

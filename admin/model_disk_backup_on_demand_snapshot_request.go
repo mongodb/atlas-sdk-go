@@ -133,7 +133,7 @@ func (o *DiskBackupOnDemandSnapshotRequest) SetRetentionInDays(v int32) {
 }
 
 func (o DiskBackupOnDemandSnapshotRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -185,5 +185,3 @@ func (v *NullableDiskBackupOnDemandSnapshotRequest) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

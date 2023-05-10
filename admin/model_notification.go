@@ -9,22 +9,22 @@ import (
 
 // Notification - One target that MongoDB Cloud sends notifications when an alert triggers.
 type Notification struct {
-	DatadogNotification *DatadogNotification
-	EmailNotification *EmailNotification
-	GroupNotification *GroupNotification
-	HipChatNotification *HipChatNotification
+	DatadogNotification        *DatadogNotification
+	EmailNotification          *EmailNotification
+	GroupNotification          *GroupNotification
+	HipChatNotification        *HipChatNotification
 	MicrosoftTeamsNotification *MicrosoftTeamsNotification
-	NDSNotification *NDSNotification
-	OpsGenieNotification *OpsGenieNotification
-	OrgNotification *OrgNotification
-	PagerDutyNotification *PagerDutyNotification
-	SMSNotification *SMSNotification
-	SlackNotification *SlackNotification
-	SummaryNotification *SummaryNotification
-	TeamNotification *TeamNotification
-	UserNotification *UserNotification
-	VictorOpsNotification *VictorOpsNotification
-	WebhookNotification *WebhookNotification
+	NDSNotification            *NDSNotification
+	OpsGenieNotification       *OpsGenieNotification
+	OrgNotification            *OrgNotification
+	PagerDutyNotification      *PagerDutyNotification
+	SMSNotification            *SMSNotification
+	SlackNotification          *SlackNotification
+	SummaryNotification        *SummaryNotification
+	TeamNotification           *TeamNotification
+	UserNotification           *UserNotification
+	VictorOpsNotification      *VictorOpsNotification
+	WebhookNotification        *WebhookNotification
 }
 
 // DatadogNotificationAsNotification is a convenience function that returns DatadogNotification wrapped in Notification
@@ -138,7 +138,6 @@ func WebhookNotificationAsNotification(v *WebhookNotification) Notification {
 		WebhookNotification: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *Notification) UnmarshalJSON(data []byte) error {
@@ -449,7 +448,7 @@ func (src Notification) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *Notification) GetActualInstance() (interface{}) {
+func (obj *Notification) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -556,5 +555,3 @@ func (v *NullableNotification) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

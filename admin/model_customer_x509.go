@@ -99,7 +99,7 @@ func (o *CustomerX509) SetLinks(v []Link) {
 }
 
 func (o CustomerX509) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -148,5 +148,3 @@ func (v *NullableCustomerX509) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

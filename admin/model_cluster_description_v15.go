@@ -13,10 +13,10 @@ var _ MappedNullable = &ClusterDescriptionV15{}
 // ClusterDescriptionV15 struct for ClusterDescriptionV15
 type ClusterDescriptionV15 struct {
 	// Flag that indicates whether the cluster can perform backups. If set to `true`, the cluster can perform backups. You must set this value to `true` for NVMe clusters. Backup uses [Cloud Backups](https://docs.atlas.mongodb.com/backup/cloud-backup/overview/) for dedicated clusters and [Shared Cluster Backups](https://docs.atlas.mongodb.com/backup/shared-tier/overview/) for tenant clusters. If set to `false`, the cluster doesn't use backups.
-	BackupEnabled *bool `json:"backupEnabled,omitempty"`
-	BiConnector *BiConnector `json:"biConnector,omitempty"`
+	BackupEnabled *bool        `json:"backupEnabled,omitempty"`
+	BiConnector   *BiConnector `json:"biConnector,omitempty"`
 	// Configuration of nodes that comprise the cluster.
-	ClusterType *string `json:"clusterType,omitempty"`
+	ClusterType       *string                              `json:"clusterType,omitempty"`
 	ConnectionStrings *ClusterDescriptionConnectionStrings `json:"connectionStrings,omitempty"`
 	// Date and time when MongoDB Cloud created this cluster. This parameter expresses its value in ISO 8601 format in UTC.
 	CreateDate *time.Time `json:"createDate,omitempty"`
@@ -764,7 +764,7 @@ func (o *ClusterDescriptionV15) SetVersionReleaseSystem(v string) {
 }
 
 func (o ClusterDescriptionV15) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -855,5 +855,3 @@ func (v *NullableClusterDescriptionV15) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

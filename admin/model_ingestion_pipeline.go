@@ -21,8 +21,8 @@ type IngestionPipeline struct {
 	// Timestamp that indicates the last time that the Data Lake Pipeline was updated.
 	LastUpdatedDate *time.Time `json:"lastUpdatedDate,omitempty"`
 	// Name of this Data Lake Pipeline.
-	Name *string `json:"name,omitempty"`
-	Sink *IngestionSink `json:"sink,omitempty"`
+	Name   *string          `json:"name,omitempty"`
+	Sink   *IngestionSink   `json:"sink,omitempty"`
 	Source *IngestionSource `json:"source,omitempty"`
 	// State of this Data Lake Pipeline.
 	State *string `json:"state,omitempty"`
@@ -336,7 +336,7 @@ func (o *IngestionPipeline) SetTransformations(v []FieldTransformation) {
 }
 
 func (o IngestionPipeline) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -394,5 +394,3 @@ func (v *NullableIngestionPipeline) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

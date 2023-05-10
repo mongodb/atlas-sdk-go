@@ -9,9 +9,9 @@ import (
 
 // EndpointService - struct for EndpointService
 type EndpointService struct {
-	AWSPrivateLinkConnection *AWSPrivateLinkConnection
+	AWSPrivateLinkConnection   *AWSPrivateLinkConnection
 	AzurePrivateLinkConnection *AzurePrivateLinkConnection
-	GCPEndpointService *GCPEndpointService
+	GCPEndpointService         *GCPEndpointService
 }
 
 // AWSPrivateLinkConnectionAsEndpointService is a convenience function that returns AWSPrivateLinkConnection wrapped in EndpointService
@@ -34,7 +34,6 @@ func GCPEndpointServiceAsEndpointService(v *GCPEndpointService) EndpointService 
 		GCPEndpointService: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *EndpointService) UnmarshalJSON(data []byte) error {
@@ -111,7 +110,7 @@ func (src EndpointService) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *EndpointService) GetActualInstance() (interface{}) {
+func (obj *EndpointService) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -166,5 +165,3 @@ func (v *NullableEndpointService) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

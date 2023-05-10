@@ -27,7 +27,6 @@ func PeriodicCpsSnapshotSourceAsIngestionSource(v *PeriodicCpsSnapshotSource) In
 	}
 }
 
-
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *IngestionSource) UnmarshalJSON(data []byte) error {
 	var err error
@@ -103,7 +102,7 @@ func (src IngestionSource) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *IngestionSource) GetActualInstance() (interface{}) {
+func (obj *IngestionSource) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -154,5 +153,3 @@ func (v *NullableIngestionSource) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

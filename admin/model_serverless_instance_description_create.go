@@ -12,9 +12,9 @@ var _ MappedNullable = &ServerlessInstanceDescriptionCreate{}
 // ServerlessInstanceDescriptionCreate Settings that you can specify when you create a serverless instance.
 type ServerlessInstanceDescriptionCreate struct {
 	// Human-readable label that identifies the serverless instance.
-	Name string `json:"name"`
-	ProviderSettings ServerlessProviderSettings `json:"providerSettings"`
-	ServerlessBackupOptions *ServerlessBackupOptions `json:"serverlessBackupOptions,omitempty"`
+	Name                    string                     `json:"name"`
+	ProviderSettings        ServerlessProviderSettings `json:"providerSettings"`
+	ServerlessBackupOptions *ServerlessBackupOptions   `json:"serverlessBackupOptions,omitempty"`
 	// Human-readable label that indicates the current operating condition of the serverless instance.
 	StateName *string `json:"stateName,omitempty"`
 	// Flag that indicates whether termination protection is enabled on the serverless instance. If set to `true`, MongoDB Cloud won't delete the serverless instance. If set to `false`, MongoDB Cloud will delete the serverless instance.
@@ -189,7 +189,7 @@ func (o *ServerlessInstanceDescriptionCreate) SetTerminationProtectionEnabled(v 
 }
 
 func (o ServerlessInstanceDescriptionCreate) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -243,5 +243,3 @@ func (v *NullableServerlessInstanceDescriptionCreate) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

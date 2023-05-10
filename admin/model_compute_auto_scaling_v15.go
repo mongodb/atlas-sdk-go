@@ -12,7 +12,7 @@ var _ MappedNullable = &ComputeAutoScalingV15{}
 // ComputeAutoScalingV15 Options that determine how this cluster handles CPU scaling.
 type ComputeAutoScalingV15 struct {
 	// Flag that indicates whether someone enabled instance size auto-scaling.  - Set to `true` to enable instance size auto-scaling. If enabled, you must specify a value for **replicationSpecs[n].regionConfigs[m].autoScaling.compute.maxInstanceSize**. - Set to `false` to disable instance size automatic scaling.
-	Enabled *bool `json:"enabled,omitempty"`
+	Enabled         *bool         `json:"enabled,omitempty"`
 	MaxInstanceSize *InstanceSize `json:"maxInstanceSize,omitempty"`
 	MinInstanceSize *InstanceSize `json:"minInstanceSize,omitempty"`
 	// Flag that indicates whether the instance size may scale down. MongoDB Cloud requires this parameter if `\"replicationSpecs[n].regionConfigs[m].autoScaling.compute.enabled\" : true`. If you enable this option, specify a value for **replicationSpecs[n].regionConfigs[m].autoScaling.compute.minInstanceSize**.
@@ -165,7 +165,7 @@ func (o *ComputeAutoScalingV15) SetScaleDownEnabled(v bool) {
 }
 
 func (o ComputeAutoScalingV15) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -223,5 +223,3 @@ func (v *NullableComputeAutoScalingV15) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

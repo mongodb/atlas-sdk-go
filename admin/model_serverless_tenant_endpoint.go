@@ -9,7 +9,7 @@ import (
 
 // ServerlessTenantEndpoint - struct for ServerlessTenantEndpoint
 type ServerlessTenantEndpoint struct {
-	ServerlessAWSTenantEndpoint *ServerlessAWSTenantEndpoint
+	ServerlessAWSTenantEndpoint   *ServerlessAWSTenantEndpoint
 	ServerlessAzureTenantEndpoint *ServerlessAzureTenantEndpoint
 }
 
@@ -26,7 +26,6 @@ func ServerlessAzureTenantEndpointAsServerlessTenantEndpoint(v *ServerlessAzureT
 		ServerlessAzureTenantEndpoint: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *ServerlessTenantEndpoint) UnmarshalJSON(data []byte) error {
@@ -85,7 +84,7 @@ func (src ServerlessTenantEndpoint) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *ServerlessTenantEndpoint) GetActualInstance() (interface{}) {
+func (obj *ServerlessTenantEndpoint) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -136,5 +135,3 @@ func (v *NullableServerlessTenantEndpoint) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

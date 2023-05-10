@@ -9,10 +9,10 @@ import (
 
 // ClusterProviderSettings - Group of cloud provider settings that configure the provisioned MongoDB hosts.
 type ClusterProviderSettings struct {
-	AWSProviderSettings *AWSProviderSettings
+	AWSProviderSettings   *AWSProviderSettings
 	AzureProviderSettings *AzureProviderSettings
-	FreeProviderSettings *FreeProviderSettings
-	GCPProviderSettings *GCPProviderSettings
+	FreeProviderSettings  *FreeProviderSettings
+	GCPProviderSettings   *GCPProviderSettings
 }
 
 // AWSProviderSettingsAsClusterProviderSettings is a convenience function that returns AWSProviderSettings wrapped in ClusterProviderSettings
@@ -42,7 +42,6 @@ func GCPProviderSettingsAsClusterProviderSettings(v *GCPProviderSettings) Cluste
 		GCPProviderSettings: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *ClusterProviderSettings) UnmarshalJSON(data []byte) error {
@@ -175,7 +174,7 @@ func (src ClusterProviderSettings) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *ClusterProviderSettings) GetActualInstance() (interface{}) {
+func (obj *ClusterProviderSettings) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -234,5 +233,3 @@ func (v *NullableClusterProviderSettings) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

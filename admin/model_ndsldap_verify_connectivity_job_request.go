@@ -14,7 +14,7 @@ type NDSLDAPVerifyConnectivityJobRequest struct {
 	// Unique 24-hexadecimal digit string that identifies the project associated with this Lightweight Directory Access Protocol (LDAP) over Transport Layer Security (TLS) configuration.
 	GroupId *string `json:"groupId,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links   []Link                                     `json:"links,omitempty"`
 	Request *NDSLDAPVerifyConnectivityJobRequestParams `json:"request,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies this request to verify an Lightweight Directory Access Protocol (LDAP) configuration.
 	RequestId *string `json:"requestId,omitempty"`
@@ -234,7 +234,7 @@ func (o *NDSLDAPVerifyConnectivityJobRequest) SetValidations(v []NDSLDAPVerifyCo
 }
 
 func (o NDSLDAPVerifyConnectivityJobRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -283,5 +283,3 @@ func (v *NullableNDSLDAPVerifyConnectivityJobRequest) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

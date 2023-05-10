@@ -15,7 +15,7 @@ type HostMetricAlertConfigViewForNdsGroup struct {
 	// Date and time when MongoDB Cloud created the alert configuration. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC.
 	Created *time.Time `json:"created,omitempty"`
 	// Flag that indicates whether someone enabled this alert configuration for the specified project.
-	Enabled *bool `json:"enabled,omitempty"`
+	Enabled       *bool                            `json:"enabled,omitempty"`
 	EventTypeName HostMetricEventTypeViewAlertable `json:"eventTypeName"`
 	// Unique 24-hexadecimal digit string that identifies the project that owns this alert configuration.
 	GroupId *string `json:"groupId,omitempty"`
@@ -24,7 +24,7 @@ type HostMetricAlertConfigViewForNdsGroup struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	Links []Link `json:"links,omitempty"`
 	// List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster.
-	Matchers []HostMatcher `json:"matchers,omitempty"`
+	Matchers        []HostMatcher        `json:"matchers,omitempty"`
 	MetricThreshold *HostMetricThreshold `json:"metricThreshold,omitempty"`
 	// List that contains the targets that MongoDB Cloud sends notifications.
 	Notifications []NotificationViewForNdsGroup `json:"notifications,omitempty"`
@@ -367,7 +367,7 @@ func (o *HostMetricAlertConfigViewForNdsGroup) SetUpdated(v time.Time) {
 }
 
 func (o HostMetricAlertConfigViewForNdsGroup) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -426,5 +426,3 @@ func (v *NullableHostMetricAlertConfigViewForNdsGroup) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

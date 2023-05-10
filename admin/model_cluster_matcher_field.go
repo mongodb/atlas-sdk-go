@@ -62,5 +62,3 @@ func (v ClusterMatcherField) IsValid() bool {
 func (v ClusterMatcherField) Ptr() *ClusterMatcherField {
 	return &v
 }
-
-

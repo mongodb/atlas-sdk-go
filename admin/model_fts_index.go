@@ -20,13 +20,13 @@ type FTSIndex struct {
 	// Human-readable label that identifies the database that contains the collection with one or more Atlas Search indexes.
 	Database string `json:"database"`
 	// Unique 24-hexadecimal digit string that identifies this Atlas Search index.
-	IndexID *string `json:"indexID,omitempty"`
+	IndexID  *string      `json:"indexID,omitempty"`
 	Mappings *FTSMappings `json:"mappings,omitempty"`
 	// Human-readable label that identifies this index. Within each namespace, names of all indexes in the namespace must be unique.
 	Name string `json:"name"`
 	// Method applied to identify words when searching this index.
 	SearchAnalyzer *string `json:"searchAnalyzer,omitempty"`
-	// Condition of the search index when you made this request.  | Status | Index Condition |  |---|---|  | IN_PROGRESS | Atlas is building or re-building the index after an edit. |  | STEADY | You can use this search index. |  | FAILED | Atlas could not build the index. |  | MIGRATING | Atlas is upgrading the underlying cluster tier and migrating indexes. |  | PAUSED | The cluster is paused. | 
+	// Condition of the search index when you made this request.  | Status | Index Condition |  |---|---|  | IN_PROGRESS | Atlas is building or re-building the index after an edit. |  | STEADY | You can use this search index. |  | FAILED | Atlas could not build the index. |  | MIGRATING | Atlas is upgrading the underlying cluster tier and migrating indexes. |  | PAUSED | The cluster is paused. |
 	Status *string `json:"status,omitempty"`
 	// Rule sets that map words to their synonyms in this index.
 	Synonyms []FTSSynonymMappingDefinition `json:"synonyms,omitempty"`
@@ -357,7 +357,7 @@ func (o *FTSIndex) SetSynonyms(v []FTSSynonymMappingDefinition) {
 }
 
 func (o FTSIndex) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -421,5 +421,3 @@ func (v *NullableFTSIndex) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

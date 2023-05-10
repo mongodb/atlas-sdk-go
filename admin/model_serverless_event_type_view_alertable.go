@@ -62,5 +62,3 @@ func (v ServerlessEventTypeViewAlertable) IsValid() bool {
 func (v ServerlessEventTypeViewAlertable) Ptr() *ServerlessEventTypeViewAlertable {
 	return &v
 }
-
-

@@ -11,26 +11,25 @@ import (
 	"strings"
 )
 
-
 type NetworkPeeringApi interface {
 
 	/*
-	CreatePeeringConnection Create One New Network Peering Connection
+		CreatePeeringConnection Create One New Network Peering Connection
 
-	Creates one new network peering connection in the specified project. Network peering allows multiple cloud-hosted applications to securely connect to the same project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List. To learn more about considerations and prerequisites, see the Network Peering Documentation.
+		Creates one new network peering connection in the specified project. Network peering allows multiple cloud-hosted applications to securely connect to the same project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List. To learn more about considerations and prerequisites, see the Network Peering Documentation.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return CreatePeeringConnectionApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@return CreatePeeringConnectionApiRequest
 	*/
 	CreatePeeringConnection(ctx context.Context, groupId string) CreatePeeringConnectionApiRequest
 	/*
-	CreatePeeringConnection Create One New Network Peering Connection
+		CreatePeeringConnection Create One New Network Peering Connection
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param CreatePeeringConnectionApiParams - Parameters for the request
-	@return CreatePeeringConnectionApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param CreatePeeringConnectionApiParams - Parameters for the request
+		@return CreatePeeringConnectionApiRequest
 	*/
 	CreatePeeringConnectionWithParams(ctx context.Context, args *CreatePeeringConnectionApiParams) CreatePeeringConnectionApiRequest
 
@@ -38,22 +37,22 @@ type NetworkPeeringApi interface {
 	createPeeringConnectionExecute(r CreatePeeringConnectionApiRequest) (*CreatePeeringConnection200Response, *http.Response, error)
 
 	/*
-	CreatePeeringContainer Create One New Network Peering Container
+		CreatePeeringContainer Create One New Network Peering Container
 
-	Creates one new network peering container in the specified project. MongoDB Cloud can deploy Network Peering connections in a network peering container. GCP can have one container per project. AWS and Azure can have one container per cloud provider region. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
+		Creates one new network peering container in the specified project. MongoDB Cloud can deploy Network Peering connections in a network peering container. GCP can have one container per project. AWS and Azure can have one container per cloud provider region. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return CreatePeeringContainerApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@return CreatePeeringContainerApiRequest
 	*/
 	CreatePeeringContainer(ctx context.Context, groupId string) CreatePeeringContainerApiRequest
 	/*
-	CreatePeeringContainer Create One New Network Peering Container
+		CreatePeeringContainer Create One New Network Peering Container
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param CreatePeeringContainerApiParams - Parameters for the request
-	@return CreatePeeringContainerApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param CreatePeeringContainerApiParams - Parameters for the request
+		@return CreatePeeringContainerApiRequest
 	*/
 	CreatePeeringContainerWithParams(ctx context.Context, args *CreatePeeringContainerApiParams) CreatePeeringContainerApiRequest
 
@@ -61,23 +60,23 @@ type NetworkPeeringApi interface {
 	createPeeringContainerExecute(r CreatePeeringContainerApiRequest) (*CloudProviderContainer, *http.Response, error)
 
 	/*
-	DeletePeeringConnection Remove One Existing Network Peering Connection
+		DeletePeeringConnection Remove One Existing Network Peering Connection
 
-	Removes one network peering connection in the specified project. If you Removes the last network peering connection associated with a project, MongoDB Cloud also removes any AWS security groups from the project IP access list. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
+		Removes one network peering connection in the specified project. If you Removes the last network peering connection associated with a project, MongoDB Cloud also removes any AWS security groups from the project IP access list. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param peerId Unique 24-hexadecimal digit string that identifies the network peering connection that you want to delete.
-	@return DeletePeeringConnectionApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param peerId Unique 24-hexadecimal digit string that identifies the network peering connection that you want to delete.
+		@return DeletePeeringConnectionApiRequest
 	*/
 	DeletePeeringConnection(ctx context.Context, groupId string, peerId string) DeletePeeringConnectionApiRequest
 	/*
-	DeletePeeringConnection Remove One Existing Network Peering Connection
+		DeletePeeringConnection Remove One Existing Network Peering Connection
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param DeletePeeringConnectionApiParams - Parameters for the request
-	@return DeletePeeringConnectionApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param DeletePeeringConnectionApiParams - Parameters for the request
+		@return DeletePeeringConnectionApiRequest
 	*/
 	DeletePeeringConnectionWithParams(ctx context.Context, args *DeletePeeringConnectionApiParams) DeletePeeringConnectionApiRequest
 
@@ -85,23 +84,23 @@ type NetworkPeeringApi interface {
 	deletePeeringConnectionExecute(r DeletePeeringConnectionApiRequest) (*http.Response, error)
 
 	/*
-	DeletePeeringContainer Remove One Network Peering Container
+		DeletePeeringContainer Remove One Network Peering Container
 
-	Removes one network peering container in the specified project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
+		Removes one network peering container in the specified project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param containerId Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container that you want to remove.
-	@return DeletePeeringContainerApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param containerId Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container that you want to remove.
+		@return DeletePeeringContainerApiRequest
 	*/
 	DeletePeeringContainer(ctx context.Context, groupId string, containerId string) DeletePeeringContainerApiRequest
 	/*
-	DeletePeeringContainer Remove One Network Peering Container
+		DeletePeeringContainer Remove One Network Peering Container
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param DeletePeeringContainerApiParams - Parameters for the request
-	@return DeletePeeringContainerApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param DeletePeeringContainerApiParams - Parameters for the request
+		@return DeletePeeringContainerApiRequest
 	*/
 	DeletePeeringContainerWithParams(ctx context.Context, args *DeletePeeringContainerApiParams) DeletePeeringContainerApiRequest
 
@@ -109,26 +108,26 @@ type NetworkPeeringApi interface {
 	deletePeeringContainerExecute(r DeletePeeringContainerApiRequest) (*http.Response, error)
 
 	/*
-	DisablePeering Disable Connect via Peering Only Mode for One Project
+		DisablePeering Disable Connect via Peering Only Mode for One Project
 
-	Disables Connect via Peering Only mode for the specified project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
+		Disables Connect via Peering Only mode for the specified project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return DisablePeeringApiRequest
-	
-	Deprecated: this method has been deprecated. Please check the latest resource version for NetworkPeeringApi
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@return DisablePeeringApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for NetworkPeeringApi
 	*/
 	DisablePeering(ctx context.Context, groupId string) DisablePeeringApiRequest
 	/*
-	DisablePeering Disable Connect via Peering Only Mode for One Project
+		DisablePeering Disable Connect via Peering Only Mode for One Project
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param DisablePeeringApiParams - Parameters for the request
-	@return DisablePeeringApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param DisablePeeringApiParams - Parameters for the request
+		@return DisablePeeringApiRequest
 
-	Deprecated: this method has been deprecated. Please check the latest resource version for NetworkPeeringApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for NetworkPeeringApi
 	*/
 	DisablePeeringWithParams(ctx context.Context, args *DisablePeeringApiParams) DisablePeeringApiRequest
 
@@ -136,23 +135,23 @@ type NetworkPeeringApi interface {
 	disablePeeringExecute(r DisablePeeringApiRequest) (*PrivateIPMode, *http.Response, error)
 
 	/*
-	GetPeeringConnection Return One Network Peering Connection in One Project
+		GetPeeringConnection Return One Network Peering Connection in One Project
 
-	Returns details about one specified network peering connection in the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+		Returns details about one specified network peering connection in the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param peerId Unique 24-hexadecimal digit string that identifies the network peering connection that you want to retrieve.
-	@return GetPeeringConnectionApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param peerId Unique 24-hexadecimal digit string that identifies the network peering connection that you want to retrieve.
+		@return GetPeeringConnectionApiRequest
 	*/
 	GetPeeringConnection(ctx context.Context, groupId string, peerId string) GetPeeringConnectionApiRequest
 	/*
-	GetPeeringConnection Return One Network Peering Connection in One Project
+		GetPeeringConnection Return One Network Peering Connection in One Project
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param GetPeeringConnectionApiParams - Parameters for the request
-	@return GetPeeringConnectionApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetPeeringConnectionApiParams - Parameters for the request
+		@return GetPeeringConnectionApiRequest
 	*/
 	GetPeeringConnectionWithParams(ctx context.Context, args *GetPeeringConnectionApiParams) GetPeeringConnectionApiRequest
 
@@ -160,23 +159,23 @@ type NetworkPeeringApi interface {
 	getPeeringConnectionExecute(r GetPeeringConnectionApiRequest) (*GetPeeringConnection200Response, *http.Response, error)
 
 	/*
-	GetPeeringContainer Return One Network Peering Container
+		GetPeeringContainer Return One Network Peering Container
 
-	Returns details about one network peering container in one specified project. Network peering containers contain network peering connections. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+		Returns details about one network peering container in one specified project. Network peering containers contain network peering connections. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param containerId Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container that you want to remove.
-	@return GetPeeringContainerApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param containerId Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container that you want to remove.
+		@return GetPeeringContainerApiRequest
 	*/
 	GetPeeringContainer(ctx context.Context, groupId string, containerId string) GetPeeringContainerApiRequest
 	/*
-	GetPeeringContainer Return One Network Peering Container
+		GetPeeringContainer Return One Network Peering Container
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param GetPeeringContainerApiParams - Parameters for the request
-	@return GetPeeringContainerApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetPeeringContainerApiParams - Parameters for the request
+		@return GetPeeringContainerApiRequest
 	*/
 	GetPeeringContainerWithParams(ctx context.Context, args *GetPeeringContainerApiParams) GetPeeringContainerApiRequest
 
@@ -184,22 +183,22 @@ type NetworkPeeringApi interface {
 	getPeeringContainerExecute(r GetPeeringContainerApiRequest) (*CloudProviderContainer, *http.Response, error)
 
 	/*
-	ListPeeringConnections Return All Network Peering Connections in One Project
+		ListPeeringConnections Return All Network Peering Connections in One Project
 
-	Returns details about all network peering connections in the specified project. Network peering allows multiple cloud-hosted applications to securely connect to the same project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+		Returns details about all network peering connections in the specified project. Network peering allows multiple cloud-hosted applications to securely connect to the same project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return ListPeeringConnectionsApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@return ListPeeringConnectionsApiRequest
 	*/
 	ListPeeringConnections(ctx context.Context, groupId string) ListPeeringConnectionsApiRequest
 	/*
-	ListPeeringConnections Return All Network Peering Connections in One Project
+		ListPeeringConnections Return All Network Peering Connections in One Project
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param ListPeeringConnectionsApiParams - Parameters for the request
-	@return ListPeeringConnectionsApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListPeeringConnectionsApiParams - Parameters for the request
+		@return ListPeeringConnectionsApiRequest
 	*/
 	ListPeeringConnectionsWithParams(ctx context.Context, args *ListPeeringConnectionsApiParams) ListPeeringConnectionsApiRequest
 
@@ -207,22 +206,22 @@ type NetworkPeeringApi interface {
 	listPeeringConnectionsExecute(r ListPeeringConnectionsApiRequest) (*ListPeeringConnections200Response, *http.Response, error)
 
 	/*
-	ListPeeringContainerByCloudProvider Return All Network Peering Containers in One Project for One Cloud Provider
+		ListPeeringContainerByCloudProvider Return All Network Peering Containers in One Project for One Cloud Provider
 
-	Returns details about all network peering containers in the specified project for the specified cloud provider. If you do not specify the cloud provider, MongoDB Cloud returns details about all network peering containers in the project for Amazon Web Services (AWS). To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+		Returns details about all network peering containers in the specified project for the specified cloud provider. If you do not specify the cloud provider, MongoDB Cloud returns details about all network peering containers in the project for Amazon Web Services (AWS). To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return ListPeeringContainerByCloudProviderApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@return ListPeeringContainerByCloudProviderApiRequest
 	*/
 	ListPeeringContainerByCloudProvider(ctx context.Context, groupId string) ListPeeringContainerByCloudProviderApiRequest
 	/*
-	ListPeeringContainerByCloudProvider Return All Network Peering Containers in One Project for One Cloud Provider
+		ListPeeringContainerByCloudProvider Return All Network Peering Containers in One Project for One Cloud Provider
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param ListPeeringContainerByCloudProviderApiParams - Parameters for the request
-	@return ListPeeringContainerByCloudProviderApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListPeeringContainerByCloudProviderApiParams - Parameters for the request
+		@return ListPeeringContainerByCloudProviderApiRequest
 	*/
 	ListPeeringContainerByCloudProviderWithParams(ctx context.Context, args *ListPeeringContainerByCloudProviderApiParams) ListPeeringContainerByCloudProviderApiRequest
 
@@ -230,22 +229,22 @@ type NetworkPeeringApi interface {
 	listPeeringContainerByCloudProviderExecute(r ListPeeringContainerByCloudProviderApiRequest) (*PaginatedCloudProviderContainer, *http.Response, error)
 
 	/*
-	ListPeeringContainers Return All Network Peering Containers in One Project
+		ListPeeringContainers Return All Network Peering Containers in One Project
 
-	Returns details about all network peering containers in the specified project. Network peering containers contain network peering connections. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+		Returns details about all network peering containers in the specified project. Network peering containers contain network peering connections. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return ListPeeringContainersApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@return ListPeeringContainersApiRequest
 	*/
 	ListPeeringContainers(ctx context.Context, groupId string) ListPeeringContainersApiRequest
 	/*
-	ListPeeringContainers Return All Network Peering Containers in One Project
+		ListPeeringContainers Return All Network Peering Containers in One Project
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param ListPeeringContainersApiParams - Parameters for the request
-	@return ListPeeringContainersApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListPeeringContainersApiParams - Parameters for the request
+		@return ListPeeringContainersApiRequest
 	*/
 	ListPeeringContainersWithParams(ctx context.Context, args *ListPeeringContainersApiParams) ListPeeringContainersApiRequest
 
@@ -253,23 +252,23 @@ type NetworkPeeringApi interface {
 	listPeeringContainersExecute(r ListPeeringContainersApiRequest) (*PaginatedCloudProviderContainer, *http.Response, error)
 
 	/*
-	UpdatePeeringConnection Update One New Network Peering Connection
+		UpdatePeeringConnection Update One New Network Peering Connection
 
-	Updates one specified network peering connection in the specified project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
+		Updates one specified network peering connection in the specified project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param peerId Unique 24-hexadecimal digit string that identifies the network peering connection that you want to update.
-	@return UpdatePeeringConnectionApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param peerId Unique 24-hexadecimal digit string that identifies the network peering connection that you want to update.
+		@return UpdatePeeringConnectionApiRequest
 	*/
 	UpdatePeeringConnection(ctx context.Context, groupId string, peerId string) UpdatePeeringConnectionApiRequest
 	/*
-	UpdatePeeringConnection Update One New Network Peering Connection
+		UpdatePeeringConnection Update One New Network Peering Connection
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param UpdatePeeringConnectionApiParams - Parameters for the request
-	@return UpdatePeeringConnectionApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param UpdatePeeringConnectionApiParams - Parameters for the request
+		@return UpdatePeeringConnectionApiRequest
 	*/
 	UpdatePeeringConnectionWithParams(ctx context.Context, args *UpdatePeeringConnectionApiParams) UpdatePeeringConnectionApiRequest
 
@@ -277,23 +276,23 @@ type NetworkPeeringApi interface {
 	updatePeeringConnectionExecute(r UpdatePeeringConnectionApiRequest) (*GetPeeringConnection200Response, *http.Response, error)
 
 	/*
-	UpdatePeeringContainer Update One Network Peering Container
+		UpdatePeeringContainer Update One Network Peering Container
 
-	Updates the network details and labels of one specified network peering container in the specified project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
+		Updates the network details and labels of one specified network peering container in the specified project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param containerId Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container that you want to remove.
-	@return UpdatePeeringContainerApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param containerId Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container that you want to remove.
+		@return UpdatePeeringContainerApiRequest
 	*/
 	UpdatePeeringContainer(ctx context.Context, groupId string, containerId string) UpdatePeeringContainerApiRequest
 	/*
-	UpdatePeeringContainer Update One Network Peering Container
+		UpdatePeeringContainer Update One Network Peering Container
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param UpdatePeeringContainerApiParams - Parameters for the request
-	@return UpdatePeeringContainerApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param UpdatePeeringContainerApiParams - Parameters for the request
+		@return UpdatePeeringContainerApiRequest
 	*/
 	UpdatePeeringContainerWithParams(ctx context.Context, args *UpdatePeeringContainerApiParams) UpdatePeeringContainerApiRequest
 
@@ -301,26 +300,26 @@ type NetworkPeeringApi interface {
 	updatePeeringContainerExecute(r UpdatePeeringContainerApiRequest) (*CloudProviderContainer, *http.Response, error)
 
 	/*
-	VerifyConnectViaPeeringOnlyModeForOneProject Verify Connect via Peering Only Mode for One Project
+		VerifyConnectViaPeeringOnlyModeForOneProject Verify Connect via Peering Only Mode for One Project
 
-	Verifies if someone set the specified project to **Connect via Peering Only** mode. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+		Verifies if someone set the specified project to **Connect via Peering Only** mode. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest
-	
-	Deprecated: this method has been deprecated. Please check the latest resource version for NetworkPeeringApi
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@return VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for NetworkPeeringApi
 	*/
 	VerifyConnectViaPeeringOnlyModeForOneProject(ctx context.Context, groupId string) VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest
 	/*
-	VerifyConnectViaPeeringOnlyModeForOneProject Verify Connect via Peering Only Mode for One Project
+		VerifyConnectViaPeeringOnlyModeForOneProject Verify Connect via Peering Only Mode for One Project
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param VerifyConnectViaPeeringOnlyModeForOneProjectApiParams - Parameters for the request
-	@return VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param VerifyConnectViaPeeringOnlyModeForOneProjectApiParams - Parameters for the request
+		@return VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest
 
-	Deprecated: this method has been deprecated. Please check the latest resource version for NetworkPeeringApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for NetworkPeeringApi
 	*/
 	VerifyConnectViaPeeringOnlyModeForOneProjectWithParams(ctx context.Context, args *VerifyConnectViaPeeringOnlyModeForOneProjectApiParams) VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest
 
@@ -332,22 +331,22 @@ type NetworkPeeringApi interface {
 type NetworkPeeringApiService service
 
 type CreatePeeringConnectionApiRequest struct {
-	ctx context.Context
-	ApiService NetworkPeeringApi
-	groupId string
+	ctx                      context.Context
+	ApiService               NetworkPeeringApi
+	groupId                  string
 	containerPeerViewRequest *ContainerPeerViewRequest
 }
 
 type CreatePeeringConnectionApiParams struct {
-		GroupId string
-		ContainerPeerViewRequest *ContainerPeerViewRequest
+	GroupId                  string
+	ContainerPeerViewRequest *ContainerPeerViewRequest
 }
 
 func (a *NetworkPeeringApiService) CreatePeeringConnectionWithParams(ctx context.Context, args *CreatePeeringConnectionApiParams) CreatePeeringConnectionApiRequest {
 	return CreatePeeringConnectionApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: args.GroupId,
+		ApiService:               a,
+		ctx:                      ctx,
+		groupId:                  args.GroupId,
 		containerPeerViewRequest: args.ContainerPeerViewRequest,
 	}
 }
@@ -367,26 +366,27 @@ CreatePeeringConnection Create One New Network Peering Connection
 
 Creates one new network peering connection in the specified project. Network peering allows multiple cloud-hosted applications to securely connect to the same project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List. To learn more about considerations and prerequisites, see the Network Peering Documentation.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @return CreatePeeringConnectionApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return CreatePeeringConnectionApiRequest
 */
 func (a *NetworkPeeringApiService) CreatePeeringConnection(ctx context.Context, groupId string) CreatePeeringConnectionApiRequest {
 	return CreatePeeringConnectionApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupId: groupId,
+		ctx:        ctx,
+		groupId:    groupId,
 	}
 }
 
 // Execute executes the request
-//  @return CreatePeeringConnection200Response
+//
+//	@return CreatePeeringConnection200Response
 func (a *NetworkPeeringApiService) createPeeringConnectionExecute(r CreatePeeringConnectionApiRequest) (*CreatePeeringConnection200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CreatePeeringConnection200Response
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CreatePeeringConnection200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.CreatePeeringConnection")
@@ -475,22 +475,22 @@ func (a *NetworkPeeringApiService) createPeeringConnectionExecute(r CreatePeerin
 }
 
 type CreatePeeringContainerApiRequest struct {
-	ctx context.Context
-	ApiService NetworkPeeringApi
-	groupId string
+	ctx                    context.Context
+	ApiService             NetworkPeeringApi
+	groupId                string
 	cloudProviderContainer *CloudProviderContainer
 }
 
 type CreatePeeringContainerApiParams struct {
-		GroupId string
-		CloudProviderContainer *CloudProviderContainer
+	GroupId                string
+	CloudProviderContainer *CloudProviderContainer
 }
 
 func (a *NetworkPeeringApiService) CreatePeeringContainerWithParams(ctx context.Context, args *CreatePeeringContainerApiParams) CreatePeeringContainerApiRequest {
 	return CreatePeeringContainerApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: args.GroupId,
+		ApiService:             a,
+		ctx:                    ctx,
+		groupId:                args.GroupId,
 		cloudProviderContainer: args.CloudProviderContainer,
 	}
 }
@@ -510,26 +510,27 @@ CreatePeeringContainer Create One New Network Peering Container
 
 Creates one new network peering container in the specified project. MongoDB Cloud can deploy Network Peering connections in a network peering container. GCP can have one container per project. AWS and Azure can have one container per cloud provider region. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @return CreatePeeringContainerApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return CreatePeeringContainerApiRequest
 */
 func (a *NetworkPeeringApiService) CreatePeeringContainer(ctx context.Context, groupId string) CreatePeeringContainerApiRequest {
 	return CreatePeeringContainerApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupId: groupId,
+		ctx:        ctx,
+		groupId:    groupId,
 	}
 }
 
 // Execute executes the request
-//  @return CloudProviderContainer
+//
+//	@return CloudProviderContainer
 func (a *NetworkPeeringApiService) createPeeringContainerExecute(r CreatePeeringContainerApiRequest) (*CloudProviderContainer, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CloudProviderContainer
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CloudProviderContainer
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.CreatePeeringContainer")
@@ -618,23 +619,23 @@ func (a *NetworkPeeringApiService) createPeeringContainerExecute(r CreatePeering
 }
 
 type DeletePeeringConnectionApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService NetworkPeeringApi
-	groupId string
-	peerId string
+	groupId    string
+	peerId     string
 }
 
 type DeletePeeringConnectionApiParams struct {
-		GroupId string
-		PeerId string
+	GroupId string
+	PeerId  string
 }
 
 func (a *NetworkPeeringApiService) DeletePeeringConnectionWithParams(ctx context.Context, args *DeletePeeringConnectionApiParams) DeletePeeringConnectionApiRequest {
 	return DeletePeeringConnectionApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupId: args.GroupId,
-		peerId: args.PeerId,
+		ctx:        ctx,
+		groupId:    args.GroupId,
+		peerId:     args.PeerId,
 	}
 }
 
@@ -647,26 +648,26 @@ DeletePeeringConnection Remove One Existing Network Peering Connection
 
 Removes one network peering connection in the specified project. If you Removes the last network peering connection associated with a project, MongoDB Cloud also removes any AWS security groups from the project IP access list. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param peerId Unique 24-hexadecimal digit string that identifies the network peering connection that you want to delete.
- @return DeletePeeringConnectionApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param peerId Unique 24-hexadecimal digit string that identifies the network peering connection that you want to delete.
+	@return DeletePeeringConnectionApiRequest
 */
 func (a *NetworkPeeringApiService) DeletePeeringConnection(ctx context.Context, groupId string, peerId string) DeletePeeringConnectionApiRequest {
 	return DeletePeeringConnectionApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupId: groupId,
-		peerId: peerId,
+		ctx:        ctx,
+		groupId:    groupId,
+		peerId:     peerId,
 	}
 }
 
 // Execute executes the request
 func (a *NetworkPeeringApiService) deletePeeringConnectionExecute(r DeletePeeringConnectionApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.DeletePeeringConnection")
@@ -748,22 +749,22 @@ func (a *NetworkPeeringApiService) deletePeeringConnectionExecute(r DeletePeerin
 }
 
 type DeletePeeringContainerApiRequest struct {
-	ctx context.Context
-	ApiService NetworkPeeringApi
-	groupId string
+	ctx         context.Context
+	ApiService  NetworkPeeringApi
+	groupId     string
 	containerId string
 }
 
 type DeletePeeringContainerApiParams struct {
-		GroupId string
-		ContainerId string
+	GroupId     string
+	ContainerId string
 }
 
 func (a *NetworkPeeringApiService) DeletePeeringContainerWithParams(ctx context.Context, args *DeletePeeringContainerApiParams) DeletePeeringContainerApiRequest {
 	return DeletePeeringContainerApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: args.GroupId,
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     args.GroupId,
 		containerId: args.ContainerId,
 	}
 }
@@ -777,16 +778,16 @@ DeletePeeringContainer Remove One Network Peering Container
 
 Removes one network peering container in the specified project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param containerId Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container that you want to remove.
- @return DeletePeeringContainerApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param containerId Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container that you want to remove.
+	@return DeletePeeringContainerApiRequest
 */
 func (a *NetworkPeeringApiService) DeletePeeringContainer(ctx context.Context, groupId string, containerId string) DeletePeeringContainerApiRequest {
 	return DeletePeeringContainerApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: groupId,
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     groupId,
 		containerId: containerId,
 	}
 }
@@ -794,9 +795,9 @@ func (a *NetworkPeeringApiService) DeletePeeringContainer(ctx context.Context, g
 // Execute executes the request
 func (a *NetworkPeeringApiService) deletePeeringContainerExecute(r DeletePeeringContainerApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.DeletePeeringContainer")
@@ -878,22 +879,22 @@ func (a *NetworkPeeringApiService) deletePeeringContainerExecute(r DeletePeering
 }
 
 type DisablePeeringApiRequest struct {
-	ctx context.Context
-	ApiService NetworkPeeringApi
-	groupId string
+	ctx           context.Context
+	ApiService    NetworkPeeringApi
+	groupId       string
 	privateIPMode *PrivateIPMode
 }
 
 type DisablePeeringApiParams struct {
-		GroupId string
-		PrivateIPMode *PrivateIPMode
+	GroupId       string
+	PrivateIPMode *PrivateIPMode
 }
 
 func (a *NetworkPeeringApiService) DisablePeeringWithParams(ctx context.Context, args *DisablePeeringApiParams) DisablePeeringApiRequest {
 	return DisablePeeringApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: args.GroupId,
+		ApiService:    a,
+		ctx:           ctx,
+		groupId:       args.GroupId,
 		privateIPMode: args.PrivateIPMode,
 	}
 }
@@ -913,29 +914,31 @@ DisablePeering Disable Connect via Peering Only Mode for One Project
 
 Disables Connect via Peering Only mode for the specified project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @return DisablePeeringApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return DisablePeeringApiRequest
 
 Deprecated
 */
 func (a *NetworkPeeringApiService) DisablePeering(ctx context.Context, groupId string) DisablePeeringApiRequest {
 	return DisablePeeringApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupId: groupId,
+		ctx:        ctx,
+		groupId:    groupId,
 	}
 }
 
 // Execute executes the request
-//  @return PrivateIPMode
+//
+//	@return PrivateIPMode
+//
 // Deprecated
 func (a *NetworkPeeringApiService) disablePeeringExecute(r DisablePeeringApiRequest) (*PrivateIPMode, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PrivateIPMode
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PrivateIPMode
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.DisablePeering")
@@ -1024,23 +1027,23 @@ func (a *NetworkPeeringApiService) disablePeeringExecute(r DisablePeeringApiRequ
 }
 
 type GetPeeringConnectionApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService NetworkPeeringApi
-	groupId string
-	peerId string
+	groupId    string
+	peerId     string
 }
 
 type GetPeeringConnectionApiParams struct {
-		GroupId string
-		PeerId string
+	GroupId string
+	PeerId  string
 }
 
 func (a *NetworkPeeringApiService) GetPeeringConnectionWithParams(ctx context.Context, args *GetPeeringConnectionApiParams) GetPeeringConnectionApiRequest {
 	return GetPeeringConnectionApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupId: args.GroupId,
-		peerId: args.PeerId,
+		ctx:        ctx,
+		groupId:    args.GroupId,
+		peerId:     args.PeerId,
 	}
 }
 
@@ -1053,28 +1056,29 @@ GetPeeringConnection Return One Network Peering Connection in One Project
 
 Returns details about one specified network peering connection in the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param peerId Unique 24-hexadecimal digit string that identifies the network peering connection that you want to retrieve.
- @return GetPeeringConnectionApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param peerId Unique 24-hexadecimal digit string that identifies the network peering connection that you want to retrieve.
+	@return GetPeeringConnectionApiRequest
 */
 func (a *NetworkPeeringApiService) GetPeeringConnection(ctx context.Context, groupId string, peerId string) GetPeeringConnectionApiRequest {
 	return GetPeeringConnectionApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupId: groupId,
-		peerId: peerId,
+		ctx:        ctx,
+		groupId:    groupId,
+		peerId:     peerId,
 	}
 }
 
 // Execute executes the request
-//  @return GetPeeringConnection200Response
+//
+//	@return GetPeeringConnection200Response
 func (a *NetworkPeeringApiService) getPeeringConnectionExecute(r GetPeeringConnectionApiRequest) (*GetPeeringConnection200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GetPeeringConnection200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GetPeeringConnection200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.GetPeeringConnection")
@@ -1165,22 +1169,22 @@ func (a *NetworkPeeringApiService) getPeeringConnectionExecute(r GetPeeringConne
 }
 
 type GetPeeringContainerApiRequest struct {
-	ctx context.Context
-	ApiService NetworkPeeringApi
-	groupId string
+	ctx         context.Context
+	ApiService  NetworkPeeringApi
+	groupId     string
 	containerId string
 }
 
 type GetPeeringContainerApiParams struct {
-		GroupId string
-		ContainerId string
+	GroupId     string
+	ContainerId string
 }
 
 func (a *NetworkPeeringApiService) GetPeeringContainerWithParams(ctx context.Context, args *GetPeeringContainerApiParams) GetPeeringContainerApiRequest {
 	return GetPeeringContainerApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: args.GroupId,
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     args.GroupId,
 		containerId: args.ContainerId,
 	}
 }
@@ -1194,28 +1198,29 @@ GetPeeringContainer Return One Network Peering Container
 
 Returns details about one network peering container in one specified project. Network peering containers contain network peering connections. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param containerId Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container that you want to remove.
- @return GetPeeringContainerApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param containerId Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container that you want to remove.
+	@return GetPeeringContainerApiRequest
 */
 func (a *NetworkPeeringApiService) GetPeeringContainer(ctx context.Context, groupId string, containerId string) GetPeeringContainerApiRequest {
 	return GetPeeringContainerApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: groupId,
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     groupId,
 		containerId: containerId,
 	}
 }
 
 // Execute executes the request
-//  @return CloudProviderContainer
+//
+//	@return CloudProviderContainer
 func (a *NetworkPeeringApiService) getPeeringContainerExecute(r GetPeeringContainerApiRequest) (*CloudProviderContainer, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CloudProviderContainer
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CloudProviderContainer
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.GetPeeringContainer")
@@ -1306,31 +1311,31 @@ func (a *NetworkPeeringApiService) getPeeringContainerExecute(r GetPeeringContai
 }
 
 type ListPeeringConnectionsApiRequest struct {
-	ctx context.Context
-	ApiService NetworkPeeringApi
-	groupId string
+	ctx          context.Context
+	ApiService   NetworkPeeringApi
+	groupId      string
 	includeCount *bool
 	itemsPerPage *int32
-	pageNum *int32
+	pageNum      *int32
 	providerName *string
 }
 
 type ListPeeringConnectionsApiParams struct {
-		GroupId string
-		IncludeCount *bool
-		ItemsPerPage *int32
-		PageNum *int32
-		ProviderName *string
+	GroupId      string
+	IncludeCount *bool
+	ItemsPerPage *int32
+	PageNum      *int32
+	ProviderName *string
 }
 
 func (a *NetworkPeeringApiService) ListPeeringConnectionsWithParams(ctx context.Context, args *ListPeeringConnectionsApiParams) ListPeeringConnectionsApiRequest {
 	return ListPeeringConnectionsApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: args.GroupId,
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      args.GroupId,
 		includeCount: args.IncludeCount,
 		itemsPerPage: args.ItemsPerPage,
-		pageNum: args.PageNum,
+		pageNum:      args.PageNum,
 		providerName: args.ProviderName,
 	}
 }
@@ -1368,26 +1373,27 @@ ListPeeringConnections Return All Network Peering Connections in One Project
 
 Returns details about all network peering connections in the specified project. Network peering allows multiple cloud-hosted applications to securely connect to the same project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @return ListPeeringConnectionsApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return ListPeeringConnectionsApiRequest
 */
 func (a *NetworkPeeringApiService) ListPeeringConnections(ctx context.Context, groupId string) ListPeeringConnectionsApiRequest {
 	return ListPeeringConnectionsApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupId: groupId,
+		ctx:        ctx,
+		groupId:    groupId,
 	}
 }
 
 // Execute executes the request
-//  @return ListPeeringConnections200Response
+//
+//	@return ListPeeringConnections200Response
 func (a *NetworkPeeringApiService) listPeeringConnectionsExecute(r ListPeeringConnectionsApiRequest) (*ListPeeringConnections200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ListPeeringConnections200Response
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ListPeeringConnections200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.ListPeeringConnections")
@@ -1499,32 +1505,32 @@ func (a *NetworkPeeringApiService) listPeeringConnectionsExecute(r ListPeeringCo
 }
 
 type ListPeeringContainerByCloudProviderApiRequest struct {
-	ctx context.Context
-	ApiService NetworkPeeringApi
-	groupId string
+	ctx          context.Context
+	ApiService   NetworkPeeringApi
+	groupId      string
 	providerName *string
 	includeCount *bool
 	itemsPerPage *int32
-	pageNum *int32
+	pageNum      *int32
 }
 
 type ListPeeringContainerByCloudProviderApiParams struct {
-		GroupId string
-		ProviderName *string
-		IncludeCount *bool
-		ItemsPerPage *int32
-		PageNum *int32
+	GroupId      string
+	ProviderName *string
+	IncludeCount *bool
+	ItemsPerPage *int32
+	PageNum      *int32
 }
 
 func (a *NetworkPeeringApiService) ListPeeringContainerByCloudProviderWithParams(ctx context.Context, args *ListPeeringContainerByCloudProviderApiParams) ListPeeringContainerByCloudProviderApiRequest {
 	return ListPeeringContainerByCloudProviderApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: args.GroupId,
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      args.GroupId,
 		providerName: args.ProviderName,
 		includeCount: args.IncludeCount,
 		itemsPerPage: args.ItemsPerPage,
-		pageNum: args.PageNum,
+		pageNum:      args.PageNum,
 	}
 }
 
@@ -1561,26 +1567,27 @@ ListPeeringContainerByCloudProvider Return All Network Peering Containers in One
 
 Returns details about all network peering containers in the specified project for the specified cloud provider. If you do not specify the cloud provider, MongoDB Cloud returns details about all network peering containers in the project for Amazon Web Services (AWS). To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @return ListPeeringContainerByCloudProviderApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return ListPeeringContainerByCloudProviderApiRequest
 */
 func (a *NetworkPeeringApiService) ListPeeringContainerByCloudProvider(ctx context.Context, groupId string) ListPeeringContainerByCloudProviderApiRequest {
 	return ListPeeringContainerByCloudProviderApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupId: groupId,
+		ctx:        ctx,
+		groupId:    groupId,
 	}
 }
 
 // Execute executes the request
-//  @return PaginatedCloudProviderContainer
+//
+//	@return PaginatedCloudProviderContainer
 func (a *NetworkPeeringApiService) listPeeringContainerByCloudProviderExecute(r ListPeeringContainerByCloudProviderApiRequest) (*PaginatedCloudProviderContainer, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PaginatedCloudProviderContainer
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedCloudProviderContainer
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.ListPeeringContainerByCloudProvider")
@@ -1689,29 +1696,29 @@ func (a *NetworkPeeringApiService) listPeeringContainerByCloudProviderExecute(r 
 }
 
 type ListPeeringContainersApiRequest struct {
-	ctx context.Context
-	ApiService NetworkPeeringApi
-	groupId string
+	ctx          context.Context
+	ApiService   NetworkPeeringApi
+	groupId      string
 	includeCount *bool
 	itemsPerPage *int32
-	pageNum *int32
+	pageNum      *int32
 }
 
 type ListPeeringContainersApiParams struct {
-		GroupId string
-		IncludeCount *bool
-		ItemsPerPage *int32
-		PageNum *int32
+	GroupId      string
+	IncludeCount *bool
+	ItemsPerPage *int32
+	PageNum      *int32
 }
 
 func (a *NetworkPeeringApiService) ListPeeringContainersWithParams(ctx context.Context, args *ListPeeringContainersApiParams) ListPeeringContainersApiRequest {
 	return ListPeeringContainersApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: args.GroupId,
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      args.GroupId,
 		includeCount: args.IncludeCount,
 		itemsPerPage: args.ItemsPerPage,
-		pageNum: args.PageNum,
+		pageNum:      args.PageNum,
 	}
 }
 
@@ -1742,26 +1749,27 @@ ListPeeringContainers Return All Network Peering Containers in One Project
 
 Returns details about all network peering containers in the specified project. Network peering containers contain network peering connections. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @return ListPeeringContainersApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return ListPeeringContainersApiRequest
 */
 func (a *NetworkPeeringApiService) ListPeeringContainers(ctx context.Context, groupId string) ListPeeringContainersApiRequest {
 	return ListPeeringContainersApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupId: groupId,
+		ctx:        ctx,
+		groupId:    groupId,
 	}
 }
 
 // Execute executes the request
-//  @return PaginatedCloudProviderContainer
+//
+//	@return PaginatedCloudProviderContainer
 func (a *NetworkPeeringApiService) listPeeringContainersExecute(r ListPeeringContainersApiRequest) (*PaginatedCloudProviderContainer, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PaginatedCloudProviderContainer
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedCloudProviderContainer
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.ListPeeringContainers")
@@ -1866,25 +1874,25 @@ func (a *NetworkPeeringApiService) listPeeringContainersExecute(r ListPeeringCon
 }
 
 type UpdatePeeringConnectionApiRequest struct {
-	ctx context.Context
-	ApiService NetworkPeeringApi
-	groupId string
-	peerId string
+	ctx                      context.Context
+	ApiService               NetworkPeeringApi
+	groupId                  string
+	peerId                   string
 	containerPeerViewRequest *ContainerPeerViewRequest
 }
 
 type UpdatePeeringConnectionApiParams struct {
-		GroupId string
-		PeerId string
-		ContainerPeerViewRequest *ContainerPeerViewRequest
+	GroupId                  string
+	PeerId                   string
+	ContainerPeerViewRequest *ContainerPeerViewRequest
 }
 
 func (a *NetworkPeeringApiService) UpdatePeeringConnectionWithParams(ctx context.Context, args *UpdatePeeringConnectionApiParams) UpdatePeeringConnectionApiRequest {
 	return UpdatePeeringConnectionApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: args.GroupId,
-		peerId: args.PeerId,
+		ApiService:               a,
+		ctx:                      ctx,
+		groupId:                  args.GroupId,
+		peerId:                   args.PeerId,
 		containerPeerViewRequest: args.ContainerPeerViewRequest,
 	}
 }
@@ -1904,28 +1912,29 @@ UpdatePeeringConnection Update One New Network Peering Connection
 
 Updates one specified network peering connection in the specified project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param peerId Unique 24-hexadecimal digit string that identifies the network peering connection that you want to update.
- @return UpdatePeeringConnectionApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param peerId Unique 24-hexadecimal digit string that identifies the network peering connection that you want to update.
+	@return UpdatePeeringConnectionApiRequest
 */
 func (a *NetworkPeeringApiService) UpdatePeeringConnection(ctx context.Context, groupId string, peerId string) UpdatePeeringConnectionApiRequest {
 	return UpdatePeeringConnectionApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupId: groupId,
-		peerId: peerId,
+		ctx:        ctx,
+		groupId:    groupId,
+		peerId:     peerId,
 	}
 }
 
 // Execute executes the request
-//  @return GetPeeringConnection200Response
+//
+//	@return GetPeeringConnection200Response
 func (a *NetworkPeeringApiService) updatePeeringConnectionExecute(r UpdatePeeringConnectionApiRequest) (*GetPeeringConnection200Response, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GetPeeringConnection200Response
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GetPeeringConnection200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.UpdatePeeringConnection")
@@ -2021,25 +2030,25 @@ func (a *NetworkPeeringApiService) updatePeeringConnectionExecute(r UpdatePeerin
 }
 
 type UpdatePeeringContainerApiRequest struct {
-	ctx context.Context
-	ApiService NetworkPeeringApi
-	groupId string
-	containerId string
+	ctx                    context.Context
+	ApiService             NetworkPeeringApi
+	groupId                string
+	containerId            string
 	cloudProviderContainer *CloudProviderContainer
 }
 
 type UpdatePeeringContainerApiParams struct {
-		GroupId string
-		ContainerId string
-		CloudProviderContainer *CloudProviderContainer
+	GroupId                string
+	ContainerId            string
+	CloudProviderContainer *CloudProviderContainer
 }
 
 func (a *NetworkPeeringApiService) UpdatePeeringContainerWithParams(ctx context.Context, args *UpdatePeeringContainerApiParams) UpdatePeeringContainerApiRequest {
 	return UpdatePeeringContainerApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: args.GroupId,
-		containerId: args.ContainerId,
+		ApiService:             a,
+		ctx:                    ctx,
+		groupId:                args.GroupId,
+		containerId:            args.ContainerId,
 		cloudProviderContainer: args.CloudProviderContainer,
 	}
 }
@@ -2059,28 +2068,29 @@ UpdatePeeringContainer Update One Network Peering Container
 
 Updates the network details and labels of one specified network peering container in the specified project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param containerId Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container that you want to remove.
- @return UpdatePeeringContainerApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param containerId Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container that you want to remove.
+	@return UpdatePeeringContainerApiRequest
 */
 func (a *NetworkPeeringApiService) UpdatePeeringContainer(ctx context.Context, groupId string, containerId string) UpdatePeeringContainerApiRequest {
 	return UpdatePeeringContainerApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: groupId,
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     groupId,
 		containerId: containerId,
 	}
 }
 
 // Execute executes the request
-//  @return CloudProviderContainer
+//
+//	@return CloudProviderContainer
 func (a *NetworkPeeringApiService) updatePeeringContainerExecute(r UpdatePeeringContainerApiRequest) (*CloudProviderContainer, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *CloudProviderContainer
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CloudProviderContainer
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.UpdatePeeringContainer")
@@ -2176,20 +2186,20 @@ func (a *NetworkPeeringApiService) updatePeeringContainerExecute(r UpdatePeering
 }
 
 type VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService NetworkPeeringApi
-	groupId string
+	groupId    string
 }
 
 type VerifyConnectViaPeeringOnlyModeForOneProjectApiParams struct {
-		GroupId string
+	GroupId string
 }
 
 func (a *NetworkPeeringApiService) VerifyConnectViaPeeringOnlyModeForOneProjectWithParams(ctx context.Context, args *VerifyConnectViaPeeringOnlyModeForOneProjectApiParams) VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest {
 	return VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupId: args.GroupId,
+		ctx:        ctx,
+		groupId:    args.GroupId,
 	}
 }
 
@@ -2202,29 +2212,31 @@ VerifyConnectViaPeeringOnlyModeForOneProject Verify Connect via Peering Only Mod
 
 Verifies if someone set the specified project to **Connect via Peering Only** mode. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @return VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest
 
 Deprecated
 */
 func (a *NetworkPeeringApiService) VerifyConnectViaPeeringOnlyModeForOneProject(ctx context.Context, groupId string) VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest {
 	return VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupId: groupId,
+		ctx:        ctx,
+		groupId:    groupId,
 	}
 }
 
 // Execute executes the request
-//  @return PrivateIPMode
+//
+//	@return PrivateIPMode
+//
 // Deprecated
 func (a *NetworkPeeringApiService) verifyConnectViaPeeringOnlyModeForOneProjectExecute(r VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest) (*PrivateIPMode, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PrivateIPMode
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PrivateIPMode
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.VerifyConnectViaPeeringOnlyModeForOneProject")

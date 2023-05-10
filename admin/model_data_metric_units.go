@@ -12,11 +12,11 @@ type DataMetricUnits string
 
 // List of DataMetricUnits
 const (
-	DATAMETRICUNITS_BITS DataMetricUnits = "BITS"
-	DATAMETRICUNITS_KILOBITS DataMetricUnits = "KILOBITS"
-	DATAMETRICUNITS_MEGABITS DataMetricUnits = "MEGABITS"
-	DATAMETRICUNITS_GIGABITS DataMetricUnits = "GIGABITS"
-	DATAMETRICUNITS_BYTES DataMetricUnits = "BYTES"
+	DATAMETRICUNITS_BITS      DataMetricUnits = "BITS"
+	DATAMETRICUNITS_KILOBITS  DataMetricUnits = "KILOBITS"
+	DATAMETRICUNITS_MEGABITS  DataMetricUnits = "MEGABITS"
+	DATAMETRICUNITS_GIGABITS  DataMetricUnits = "GIGABITS"
+	DATAMETRICUNITS_BYTES     DataMetricUnits = "BYTES"
 	DATAMETRICUNITS_KILOBYTES DataMetricUnits = "KILOBYTES"
 	DATAMETRICUNITS_MEGABYTES DataMetricUnits = "MEGABYTES"
 	DATAMETRICUNITS_GIGABYTES DataMetricUnits = "GIGABYTES"
@@ -80,5 +80,3 @@ func (v DataMetricUnits) IsValid() bool {
 func (v DataMetricUnits) Ptr() *DataMetricUnits {
 	return &v
 }
-
-

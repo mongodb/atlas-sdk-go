@@ -14,10 +14,10 @@ var _ MappedNullable = &LegacyClusterDescription{}
 type LegacyClusterDescription struct {
 	AutoScaling *AutoScaling `json:"autoScaling,omitempty"`
 	// Flag that indicates whether the cluster can perform backups. If set to `true`, the cluster can perform backups. You must set this value to `true` for NVMe clusters. Backup uses Cloud Backups for dedicated clusters and Shared Cluster Backups for tenant clusters. If set to `false`, the cluster doesn't use MongoDB Cloud backups.
-	BackupEnabled *bool `json:"backupEnabled,omitempty"`
-	BiConnector *BiConnector `json:"biConnector,omitempty"`
+	BackupEnabled *bool        `json:"backupEnabled,omitempty"`
+	BiConnector   *BiConnector `json:"biConnector,omitempty"`
 	// Configuration of nodes that comprise the cluster.
-	ClusterType *string `json:"clusterType,omitempty"`
+	ClusterType       *string                              `json:"clusterType,omitempty"`
 	ConnectionStrings *ClusterDescriptionConnectionStrings `json:"connectionStrings,omitempty"`
 	// Date and time when MongoDB Cloud created this serverless instance. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
 	CreateDate *time.Time `json:"createDate,omitempty"`
@@ -52,8 +52,8 @@ type LegacyClusterDescription struct {
 	// Flag that indicates whether the cluster uses continuous cloud backups.
 	PitEnabled *bool `json:"pitEnabled,omitempty"`
 	// Flag that indicates whether the M10 or higher cluster can perform Cloud Backups. If set to `true`, the cluster can perform backups. If this and **backupEnabled** are set to `false`, the cluster doesn't use MongoDB Cloud backups.
-	ProviderBackupEnabled *bool `json:"providerBackupEnabled,omitempty"`
-	ProviderSettings *ClusterProviderSettings `json:"providerSettings,omitempty"`
+	ProviderBackupEnabled *bool                    `json:"providerBackupEnabled,omitempty"`
+	ProviderSettings      *ClusterProviderSettings `json:"providerSettings,omitempty"`
 	// Number of members that belong to the replica set. Each member retains a copy of your databases, providing high availability and data redundancy. Use **replicationSpecs** instead.
 	// Deprecated
 	ReplicationFactor *int32 `json:"replicationFactor,omitempty"`
@@ -1114,7 +1114,7 @@ func (o *LegacyClusterDescription) SetVersionReleaseSystem(v string) {
 }
 
 func (o LegacyClusterDescription) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1226,5 +1226,3 @@ func (v *NullableLegacyClusterDescription) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

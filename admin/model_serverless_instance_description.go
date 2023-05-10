@@ -24,9 +24,9 @@ type ServerlessInstanceDescription struct {
 	// Version of MongoDB that the serverless instance runs.
 	MongoDBVersion *string `json:"mongoDBVersion,omitempty"`
 	// Human-readable label that identifies the serverless instance.
-	Name *string `json:"name,omitempty"`
-	ProviderSettings ServerlessProviderSettings `json:"providerSettings"`
-	ServerlessBackupOptions *ServerlessBackupOptions `json:"serverlessBackupOptions,omitempty"`
+	Name                    *string                    `json:"name,omitempty"`
+	ProviderSettings        ServerlessProviderSettings `json:"providerSettings"`
+	ServerlessBackupOptions *ServerlessBackupOptions   `json:"serverlessBackupOptions,omitempty"`
 	// Human-readable label that indicates the current operating condition of the serverless instance.
 	StateName *string `json:"stateName,omitempty"`
 	// Flag that indicates whether termination protection is enabled on the serverless instance. If set to `true`, MongoDB Cloud won't delete the serverless instance. If set to `false`, MongoDB Cloud will delete the serverless instance.
@@ -400,7 +400,7 @@ func (o *ServerlessInstanceDescription) SetTerminationProtectionEnabled(v bool) 
 }
 
 func (o ServerlessInstanceDescription) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -456,5 +456,3 @@ func (v *NullableServerlessInstanceDescription) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -22,7 +22,7 @@ type Payment struct {
 	Id *string `json:"id,omitempty"`
 	// Sum of sales tax applied to this invoice. This parameter expresses its value in cents (100ths of one US Dollar).
 	SalesTaxCents *int64 `json:"salesTaxCents,omitempty"`
-	// Phase of payment processing for the associated invoice when you made this request.  These phases include:  | Phase Value | Reason | |---|---| | `CANCELLED` | Customer or MongoDB cancelled the payment. | | `ERROR` | Issue arose when attempting to complete payment. | | `FAILED` | MongoDB tried to charge the credit card without success. | | `FAILED_AUTHENTICATION` | Strong Customer Authentication has failed. Confirm that your payment method is authenticated. | | `FORGIVEN` | Customer initiated payment which MongoDB later forgave. | | `INVOICED` | MongoDB issued an invoice that included this line item. | | `NEW` | Customer provided a method of payment, but MongoDB hasn't tried to charge the credit card. | | `PAID` | Customer submitted a successful payment. | | `PARTIAL_PAID` | Customer paid for part of this line item. | 
+	// Phase of payment processing for the associated invoice when you made this request.  These phases include:  | Phase Value | Reason | |---|---| | `CANCELLED` | Customer or MongoDB cancelled the payment. | | `ERROR` | Issue arose when attempting to complete payment. | | `FAILED` | MongoDB tried to charge the credit card without success. | | `FAILED_AUTHENTICATION` | Strong Customer Authentication has failed. Confirm that your payment method is authenticated. | | `FORGIVEN` | Customer initiated payment which MongoDB later forgave. | | `INVOICED` | MongoDB issued an invoice that included this line item. | | `NEW` | Customer provided a method of payment, but MongoDB hasn't tried to charge the credit card. | | `PAID` | Customer submitted a successful payment. | | `PARTIAL_PAID` | Customer paid for part of this line item. |
 	StatusName *string `json:"statusName,omitempty"`
 	// Sum of all positive invoice line items contained in this invoice. This parameter expresses its value in cents (100ths of one US Dollar).
 	SubtotalCents *int64 `json:"subtotalCents,omitempty"`
@@ -304,7 +304,7 @@ func (o *Payment) SetUpdated(v time.Time) {
 }
 
 func (o Payment) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -353,5 +353,3 @@ func (v *NullablePayment) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

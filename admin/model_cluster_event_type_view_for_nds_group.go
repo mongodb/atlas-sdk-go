@@ -64,5 +64,3 @@ func (v ClusterEventTypeViewForNdsGroup) IsValid() bool {
 func (v ClusterEventTypeViewForNdsGroup) Ptr() *ClusterEventTypeViewForNdsGroup {
 	return &v
 }
-
-

@@ -17,7 +17,7 @@ type FTSAnalyzers struct {
 	Name string `json:"name"`
 	// Filter that performs operations such as:  - Stemming, which reduces related words, such as \"talking\", \"talked\", and \"talks\" to their root word \"talk\".  - Redaction, the removal of sensitive information from public documents.
 	TokenFilters []FTSAnalyzersTokenFiltersInner `json:"tokenFilters,omitempty"`
-	Tokenizer FTSAnalyzersTokenizer `json:"tokenizer"`
+	Tokenizer    FTSAnalyzersTokenizer           `json:"tokenizer"`
 }
 
 // NewFTSAnalyzers instantiates a new FTSAnalyzers object
@@ -152,7 +152,7 @@ func (o *FTSAnalyzers) SetTokenizer(v FTSAnalyzersTokenizer) {
 }
 
 func (o FTSAnalyzers) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -206,5 +206,3 @@ func (v *NullableFTSAnalyzers) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -11,7 +11,7 @@ import (
 type Endpoint struct {
 	AWSInterfaceEndpoint *AWSInterfaceEndpoint
 	AzurePrivateEndpoint *AzurePrivateEndpoint
-	GCPEndpointGroup *GCPEndpointGroup
+	GCPEndpointGroup     *GCPEndpointGroup
 }
 
 // AWSInterfaceEndpointAsEndpoint is a convenience function that returns AWSInterfaceEndpoint wrapped in Endpoint
@@ -34,7 +34,6 @@ func GCPEndpointGroupAsEndpoint(v *GCPEndpointGroup) Endpoint {
 		GCPEndpointGroup: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *Endpoint) UnmarshalJSON(data []byte) error {
@@ -111,7 +110,7 @@ func (src Endpoint) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *Endpoint) GetActualInstance() (interface{}) {
+func (obj *Endpoint) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -166,5 +165,3 @@ func (v *NullableEndpoint) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

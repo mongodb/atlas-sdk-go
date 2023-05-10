@@ -14,7 +14,7 @@ type FTSSynonymMappingDefinition struct {
 	// Specific pre-defined method chosen to apply to the synonyms to be searched.
 	Analyzer string `json:"analyzer"`
 	// Human-readable label that identifies the synonym definition. Each **synonym.name** must be unique within the same index definition.
-	Name string `json:"name"`
+	Name   string        `json:"name"`
 	Source SynonymSource `json:"source"`
 }
 
@@ -113,7 +113,7 @@ func (o *FTSSynonymMappingDefinition) SetSource(v SynonymSource) {
 }
 
 func (o FTSSynonymMappingDefinition) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -162,5 +162,3 @@ func (v *NullableFTSSynonymMappingDefinition) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

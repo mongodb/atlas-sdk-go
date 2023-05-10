@@ -21,7 +21,7 @@ type AppServiceAlert struct {
 	// Unique 24-hexadecimal digit string that identifies the alert configuration that sets this alert.
 	AlertConfigId string `json:"alertConfigId"`
 	// Date and time when MongoDB Cloud created this alert. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC.
-	Created time.Time `json:"created"`
+	Created       time.Time                        `json:"created"`
 	EventTypeName AppServiceEventTypeViewAlertable `json:"eventTypeName"`
 	// Unique 24-hexadecimal digit string that identifies the project that owns this alert.
 	GroupId *string `json:"groupId,omitempty"`
@@ -458,7 +458,7 @@ func (o *AppServiceAlert) SetUpdated(v time.Time) {
 }
 
 func (o AppServiceAlert) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -509,5 +509,3 @@ func (v *NullableAppServiceAlert) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

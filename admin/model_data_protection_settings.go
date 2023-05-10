@@ -17,8 +17,8 @@ type DataProtectionSettings struct {
 	// Flag that indicates whether to enable additional backup copies for the cluster. If unspecified, this value defaults to false.
 	CopyProtectionEnabled *bool `json:"copyProtectionEnabled,omitempty"`
 	// Flag that indicates whether Encryption at Rest using Customer Key  Management is required for all clusters with a Backup Compliance Policy. If unspecified, this value defaults to false.
-	EncryptionAtRestEnabled *bool `json:"encryptionAtRestEnabled,omitempty"`
-	OnDemandPolicyItem *PolicyItem `json:"onDemandPolicyItem,omitempty"`
+	EncryptionAtRestEnabled *bool       `json:"encryptionAtRestEnabled,omitempty"`
+	OnDemandPolicyItem      *PolicyItem `json:"onDemandPolicyItem,omitempty"`
 	// Flag that indicates whether the cluster uses Continuous Cloud Backups with a Backup Compliance Policy. If unspecified, this value defaults to false.
 	PitEnabled *bool `json:"pitEnabled,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project for the Backup Compliance Policy.
@@ -417,7 +417,7 @@ func (o *DataProtectionSettings) SetUpdatedUser(v string) {
 }
 
 func (o DataProtectionSettings) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -484,5 +484,3 @@ func (v *NullableDataProtectionSettings) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

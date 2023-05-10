@@ -62,5 +62,3 @@ func (v NDSAuditTypeViewForOrg) IsValid() bool {
 func (v NDSAuditTypeViewForOrg) Ptr() *NDSAuditTypeViewForOrg {
 	return &v
 }
-
-

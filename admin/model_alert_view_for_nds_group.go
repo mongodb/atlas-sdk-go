@@ -21,7 +21,7 @@ type AlertViewForNdsGroup struct {
 	// Unique 24-hexadecimal digit string that identifies the alert configuration that sets this alert.
 	AlertConfigId *string `json:"alertConfigId,omitempty"`
 	// Date and time when MongoDB Cloud created this alert. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC.
-	Created *time.Time `json:"created,omitempty"`
+	Created       *time.Time                                   `json:"created,omitempty"`
 	EventTypeName *ReplicaSetEventTypeViewForNdsGroupAlertable `json:"eventTypeName,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project that owns this alert.
 	GroupId *string `json:"groupId,omitempty"`
@@ -44,10 +44,10 @@ type AlertViewForNdsGroup struct {
 	// Hostname and port of the host to which this alert applies. The resource returns this parameter for alerts of events impacting hosts or replica sets.
 	HostnameAndPort *string `json:"hostnameAndPort,omitempty"`
 	// Name of the replica set to which this alert applies. The response returns this parameter for alerts of events impacting backups, hosts, or replica sets.
-	ReplicaSetName *string `json:"replicaSetName,omitempty"`
-	CurrentValue *HostMetricValue `json:"currentValue,omitempty"`
+	ReplicaSetName *string          `json:"replicaSetName,omitempty"`
+	CurrentValue   *HostMetricValue `json:"currentValue,omitempty"`
 	// Name of the metric against which Atlas checks the configured `metricThreshold.threshold`.  To learn more about the available metrics, see <a href=\"https://www.mongodb.com/docs/atlas/reference/alert-host-metrics/#std-label-measurement-types\" target=\"_blank\">Host Metrics</a>.  **NOTE**: If you set eventTypeName to OUTSIDE_SERVERLESS_METRIC_THRESHOLD, you can specify only metrics available for serverless. To learn more, see <a href=\"https://dochub.mongodb.org/core/alert-config-serverless-measurements\" target=\"_blank\">Serverless Measurements</a>.
-	MetricName *string `json:"metricName,omitempty"`
+	MetricName        *string  `json:"metricName,omitempty"`
 	NonRunningHostIds []string `json:"nonRunningHostIds,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the parent cluster to which this alert applies. The parent cluster contains the sharded nodes. MongoDB Cloud returns this parameter only for alerts of events impacting sharded clusters.
 	ParentClusterId *string `json:"parentClusterId,omitempty"`
@@ -743,7 +743,7 @@ func (o *AlertViewForNdsGroup) SetParentClusterId(v string) {
 }
 
 func (o AlertViewForNdsGroup) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -801,5 +801,3 @@ func (v *NullableAlertViewForNdsGroup) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

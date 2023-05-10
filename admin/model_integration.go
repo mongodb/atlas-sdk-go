@@ -9,15 +9,15 @@ import (
 
 // Integration - Collection of settings that describe third-party integrations.
 type Integration struct {
-	Datadog *Datadog
+	Datadog        *Datadog
 	MicrosoftTeams *MicrosoftTeams
-	NewRelic *NewRelic
-	OpsGenie *OpsGenie
-	PagerDuty *PagerDuty
-	Prometheus *Prometheus
-	Slack *Slack
-	VictorOps *VictorOps
-	Webhook *Webhook
+	NewRelic       *NewRelic
+	OpsGenie       *OpsGenie
+	PagerDuty      *PagerDuty
+	Prometheus     *Prometheus
+	Slack          *Slack
+	VictorOps      *VictorOps
+	Webhook        *Webhook
 }
 
 // DatadogAsIntegration is a convenience function that returns Datadog wrapped in Integration
@@ -82,7 +82,6 @@ func WebhookAsIntegration(v *Webhook) Integration {
 		Webhook: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *Integration) UnmarshalJSON(data []byte) error {
@@ -355,7 +354,7 @@ func (src Integration) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *Integration) GetActualInstance() (interface{}) {
+func (obj *Integration) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -434,5 +433,3 @@ func (v *NullableIntegration) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

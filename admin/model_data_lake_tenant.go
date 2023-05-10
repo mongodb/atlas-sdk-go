@@ -12,9 +12,9 @@ var _ MappedNullable = &DataLakeTenant{}
 // DataLakeTenant struct for DataLakeTenant
 type DataLakeTenant struct {
 	CloudProviderConfig *DataLakeCloudProviderConfig `json:"cloudProviderConfig,omitempty"`
-	DataProcessRegion *DataLakeDataProcessRegion `json:"dataProcessRegion,omitempty"`
+	DataProcessRegion   *DataLakeDataProcessRegion   `json:"dataProcessRegion,omitempty"`
 	// Human-readable label that identifies the data lake.
-	Name *string `json:"name,omitempty"`
+	Name    *string          `json:"name,omitempty"`
 	Storage *DataLakeStorage `json:"storage,omitempty"`
 }
 
@@ -164,7 +164,7 @@ func (o *DataLakeTenant) SetStorage(v DataLakeStorage) {
 }
 
 func (o DataLakeTenant) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -222,5 +222,3 @@ func (v *NullableDataLakeTenant) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

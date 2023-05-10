@@ -12,8 +12,8 @@ var _ MappedNullable = &TenantRegionConfig{}
 // TenantRegionConfig Details that explain how MongoDB Cloud replicates data in one region on the specified MongoDB database.
 type TenantRegionConfig struct {
 	// Cloud service provider on which MongoDB Cloud provisioned the multi-tenant cluster. The resource returns this parameter when **providerSettings.providerName** is `TENANT` and **providerSetting.instanceSizeName** is `M2` or `M5`.
-	BackingProviderName *string `json:"backingProviderName,omitempty"`
-	ElectableSpecs *HardwareSpec `json:"electableSpecs,omitempty"`
+	BackingProviderName *string       `json:"backingProviderName,omitempty"`
+	ElectableSpecs      *HardwareSpec `json:"electableSpecs,omitempty"`
 	// Precedence is given to this region when a primary election occurs. If your **regionConfigs** has only **readOnlySpecs**, **analyticsSpecs**, or both, set this value to `0`. If you have multiple **regionConfigs** objects (your cluster is multi-region or multi-cloud), they must have priorities in descending order. The highest priority is `7`.  **Example:** If you have three regions, their priorities would be `7`, `6`, and `5` respectively. If you added two more regions for supporting electable nodes, the priorities of those regions would be `4` and `3` respectively.
 	Priority *int32 `json:"priority,omitempty"`
 	// Cloud service provider on which MongoDB Cloud provisions the hosts. Set dedicated clusters to `AWS`, `GCP`, `AZURE` or `TENANT`.
@@ -200,7 +200,7 @@ func (o *TenantRegionConfig) SetRegionName(v string) {
 }
 
 func (o TenantRegionConfig) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -261,5 +261,3 @@ func (v *NullableTenantRegionConfig) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

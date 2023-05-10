@@ -13,7 +13,7 @@ type BillingEventTypeViewAlertableWithThreshold string
 // List of BillingEventTypeViewAlertableWithThreshold
 const (
 	BILLINGEVENTTYPEVIEWALERTABLEWITHTHRESHOLD_PENDING_INVOICE_OVER_THRESHOLD BillingEventTypeViewAlertableWithThreshold = "PENDING_INVOICE_OVER_THRESHOLD"
-	BILLINGEVENTTYPEVIEWALERTABLEWITHTHRESHOLD_DAILY_BILL_OVER_THRESHOLD BillingEventTypeViewAlertableWithThreshold = "DAILY_BILL_OVER_THRESHOLD"
+	BILLINGEVENTTYPEVIEWALERTABLEWITHTHRESHOLD_DAILY_BILL_OVER_THRESHOLD      BillingEventTypeViewAlertableWithThreshold = "DAILY_BILL_OVER_THRESHOLD"
 )
 
 // All allowed values of BillingEventTypeViewAlertableWithThreshold enum
@@ -64,5 +64,3 @@ func (v BillingEventTypeViewAlertableWithThreshold) IsValid() bool {
 func (v BillingEventTypeViewAlertableWithThreshold) Ptr() *BillingEventTypeViewAlertableWithThreshold {
 	return &v
 }
-
-

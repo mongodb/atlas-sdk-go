@@ -22,8 +22,8 @@ type AWSProviderSettings struct {
 	//  Physical location where MongoDB Cloud deploys your AWS-hosted MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. MongoDB Cloud assigns the VPC a CIDR block. To limit a new VPC peering connection to one CIDR block and region, create the connection first. Deploy the cluster after the connection starts.
 	RegionName *string `json:"regionName,omitempty"`
 	// Disk Input/Output Operations per Second (IOPS) setting for Amazon Web Services (AWS) storage that you configure only for abbr title=\"Amazon Web Services\">AWS</abbr>. Specify whether Disk Input/Output Operations per Second (IOPS) must not exceed the default Input/Output Operations per Second (IOPS) rate for the selected volume size (`STANDARD`), or must fall within the allowable Input/Output Operations per Second (IOPS) range for the selected volume size (`PROVISIONED`).
-	VolumeType *string `json:"volumeType,omitempty"`
-	ProviderName string `json:"providerName"`
+	VolumeType   *string `json:"volumeType,omitempty"`
+	ProviderName string  `json:"providerName"`
 }
 
 // NewAWSProviderSettings instantiates a new AWSProviderSettings object
@@ -268,7 +268,7 @@ func (o *AWSProviderSettings) SetProviderName(v string) {
 }
 
 func (o AWSProviderSettings) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -333,5 +333,3 @@ func (v *NullableAWSProviderSettings) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

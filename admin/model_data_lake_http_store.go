@@ -18,8 +18,8 @@ type DataLakeHTTPStore struct {
 	// Comma-separated list of publicly accessible HTTP URLs where data is stored. You can't specify URLs that require authentication.
 	Urls []string `json:"urls,omitempty"`
 	// Human-readable label that identifies the data store. The **databases.[n].collections.[n].dataSources.[n].storeName** field references this values as part of the mapping configuration. To use MongoDB Cloud as a data store, the data lake requires a serverless instance or an `M10` or higher cluster.
-	Name *string `json:"name,omitempty"`
-	Provider string `json:"provider"`
+	Name     *string `json:"name,omitempty"`
+	Provider string  `json:"provider"`
 }
 
 // NewDataLakeHTTPStore instantiates a new DataLakeHTTPStore object
@@ -197,7 +197,7 @@ func (o *DataLakeHTTPStore) SetProvider(v string) {
 }
 
 func (o DataLakeHTTPStore) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -256,5 +256,3 @@ func (v *NullableDataLakeHTTPStore) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

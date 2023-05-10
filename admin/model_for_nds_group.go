@@ -13,7 +13,7 @@ var _ MappedNullable = &ForNdsGroup{}
 // ForNdsGroup ReplicaSet Event identifies different activities about replica set of mongod instances.
 type ForNdsGroup struct {
 	// Date and time when this event occurred. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC.
-	Created time.Time `json:"created"`
+	Created       time.Time                          `json:"created"`
 	EventTypeName ReplicaSetEventTypeViewForNdsGroup `json:"eventTypeName"`
 	// Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The **eventId** identifies the specific event.
 	GroupId *string `json:"groupId,omitempty"`
@@ -25,7 +25,7 @@ type ForNdsGroup struct {
 	OrgId *string `json:"orgId,omitempty"`
 	// IANA port on which the MongoDB process listens for requests.
 	Port *int32 `json:"port,omitempty"`
-	Raw *Raw `json:"raw,omitempty"`
+	Raw  *Raw   `json:"raw,omitempty"`
 	// Human-readable label of the replica set associated with the event.
 	ReplicaSetName *string `json:"replicaSetName,omitempty"`
 	// Human-readable label of the shard associated with the event.
@@ -349,7 +349,7 @@ func (o *ForNdsGroup) SetShardName(v string) {
 }
 
 func (o ForNdsGroup) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -399,5 +399,3 @@ func (v *NullableForNdsGroup) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

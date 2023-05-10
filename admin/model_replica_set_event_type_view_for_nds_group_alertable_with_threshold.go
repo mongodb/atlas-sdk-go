@@ -12,7 +12,7 @@ type ReplicaSetEventTypeViewForNdsGroupAlertableWithThreshold string
 
 // List of ReplicaSetEventTypeViewForNdsGroupAlertableWithThreshold
 const (
-	REPLICASETEVENTTYPEVIEWFORNDSGROUPALERTABLEWITHTHRESHOLD_TOO_MANY_ELECTIONS ReplicaSetEventTypeViewForNdsGroupAlertableWithThreshold = "TOO_MANY_ELECTIONS"
+	REPLICASETEVENTTYPEVIEWFORNDSGROUPALERTABLEWITHTHRESHOLD_TOO_MANY_ELECTIONS                   ReplicaSetEventTypeViewForNdsGroupAlertableWithThreshold = "TOO_MANY_ELECTIONS"
 	REPLICASETEVENTTYPEVIEWFORNDSGROUPALERTABLEWITHTHRESHOLD_REPLICATION_OPLOG_WINDOW_RUNNING_OUT ReplicaSetEventTypeViewForNdsGroupAlertableWithThreshold = "REPLICATION_OPLOG_WINDOW_RUNNING_OUT"
 )
 
@@ -64,5 +64,3 @@ func (v ReplicaSetEventTypeViewForNdsGroupAlertableWithThreshold) IsValid() bool
 func (v ReplicaSetEventTypeViewForNdsGroupAlertableWithThreshold) Ptr() *ReplicaSetEventTypeViewForNdsGroupAlertableWithThreshold {
 	return &v
 }
-
-

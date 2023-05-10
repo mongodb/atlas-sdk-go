@@ -98,7 +98,7 @@ func (o *CloudProviderAccessExportSnapshotFeatureUsage) SetFeatureType(v string)
 }
 
 func (o CloudProviderAccessExportSnapshotFeatureUsage) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -147,5 +147,3 @@ func (v *NullableCloudProviderAccessExportSnapshotFeatureUsage) UnmarshalJSON(sr
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

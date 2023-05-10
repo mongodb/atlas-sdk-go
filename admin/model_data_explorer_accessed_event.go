@@ -19,7 +19,7 @@ type DataExplorerAccessedEvent struct {
 	// Date and time when this event occurred. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC.
 	Created time.Time `json:"created"`
 	// Human-readable label of the database on which this incident occurred. The resource returns this parameter when `\"eventTypeName\" : \"DATA_EXPLORER\"` or `\"eventTypeName\" : \"DATA_EXPLORER_CRUD\"`.
-	Database *string `json:"database,omitempty"`
+	Database      *string                       `json:"database,omitempty"`
 	EventTypeName DataExplorerAccessedEventType `json:"eventTypeName"`
 	// Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The **eventId** identifies the specific event.
 	GroupId *string `json:"groupId,omitempty"`
@@ -35,7 +35,7 @@ type DataExplorerAccessedEvent struct {
 	OrgId *string `json:"orgId,omitempty"`
 	// Public part of the [API Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key) that triggered the event. If this resource returns this parameter, it doesn't return the **username** parameter.
 	PublicKey *string `json:"publicKey,omitempty"`
-	Raw *Raw `json:"raw,omitempty"`
+	Raw       *Raw    `json:"raw,omitempty"`
 	// IPv4 or IPv6 address from which the user triggered this event.
 	RemoteAddress *string `json:"remoteAddress,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the console user who triggered the event. If this resource returns this parameter, it doesn't return the **apiKeyId** parameter.
@@ -553,7 +553,7 @@ func (o *DataExplorerAccessedEvent) SetUsername(v string) {
 }
 
 func (o DataExplorerAccessedEvent) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -603,5 +603,3 @@ func (v *NullableDataExplorerAccessedEvent) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

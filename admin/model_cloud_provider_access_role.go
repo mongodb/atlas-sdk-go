@@ -9,7 +9,7 @@ import (
 
 // CloudProviderAccessRole - Cloud provider access role.
 type CloudProviderAccessRole struct {
-	CloudProviderAccessAWSIAMRole *CloudProviderAccessAWSIAMRole
+	CloudProviderAccessAWSIAMRole            *CloudProviderAccessAWSIAMRole
 	CloudProviderAccessAzureServicePrincipal *CloudProviderAccessAzureServicePrincipal
 }
 
@@ -26,7 +26,6 @@ func CloudProviderAccessAzureServicePrincipalAsCloudProviderAccessRole(v *CloudP
 		CloudProviderAccessAzureServicePrincipal: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *CloudProviderAccessRole) UnmarshalJSON(data []byte) error {
@@ -103,7 +102,7 @@ func (src CloudProviderAccessRole) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *CloudProviderAccessRole) GetActualInstance() (interface{}) {
+func (obj *CloudProviderAccessRole) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -154,5 +153,3 @@ func (v *NullableCloudProviderAccessRole) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -11,26 +11,25 @@ import (
 	"strings"
 )
 
-
 type ServerlessInstancesApi interface {
 
 	/*
-	CreateServerlessInstance Create One Serverless Instance in One Project
+		CreateServerlessInstance Create One Serverless Instance in One Project
 
-	Creates one serverless instance in the specified project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
+		Creates one serverless instance in the specified project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return CreateServerlessInstanceApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@return CreateServerlessInstanceApiRequest
 	*/
 	CreateServerlessInstance(ctx context.Context, groupId string) CreateServerlessInstanceApiRequest
 	/*
-	CreateServerlessInstance Create One Serverless Instance in One Project
+		CreateServerlessInstance Create One Serverless Instance in One Project
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param CreateServerlessInstanceApiParams - Parameters for the request
-	@return CreateServerlessInstanceApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param CreateServerlessInstanceApiParams - Parameters for the request
+		@return CreateServerlessInstanceApiRequest
 	*/
 	CreateServerlessInstanceWithParams(ctx context.Context, args *CreateServerlessInstanceApiParams) CreateServerlessInstanceApiRequest
 
@@ -38,23 +37,23 @@ type ServerlessInstancesApi interface {
 	createServerlessInstanceExecute(r CreateServerlessInstanceApiRequest) (*ServerlessInstanceDescription, *http.Response, error)
 
 	/*
-	DeleteServerlessInstance Remove One Serverless Instance from One Project
+		DeleteServerlessInstance Remove One Serverless Instance from One Project
 
-	Removes one serverless instance from the specified project. The serverless instance must have termination protection disabled in order to be deleted. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
+		Removes one serverless instance from the specified project. The serverless instance must have termination protection disabled in order to be deleted. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param name Human-readable label that identifies the serverless instance.
-	@return DeleteServerlessInstanceApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param name Human-readable label that identifies the serverless instance.
+		@return DeleteServerlessInstanceApiRequest
 	*/
 	DeleteServerlessInstance(ctx context.Context, groupId string, name string) DeleteServerlessInstanceApiRequest
 	/*
-	DeleteServerlessInstance Remove One Serverless Instance from One Project
+		DeleteServerlessInstance Remove One Serverless Instance from One Project
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param DeleteServerlessInstanceApiParams - Parameters for the request
-	@return DeleteServerlessInstanceApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param DeleteServerlessInstanceApiParams - Parameters for the request
+		@return DeleteServerlessInstanceApiRequest
 	*/
 	DeleteServerlessInstanceWithParams(ctx context.Context, args *DeleteServerlessInstanceApiParams) DeleteServerlessInstanceApiRequest
 
@@ -62,23 +61,23 @@ type ServerlessInstancesApi interface {
 	deleteServerlessInstanceExecute(r DeleteServerlessInstanceApiRequest) (*http.Response, error)
 
 	/*
-	GetServerlessInstance Return One Serverless Instance from One Project
+		GetServerlessInstance Return One Serverless Instance from One Project
 
-	Returns details for one serverless instance in the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+		Returns details for one serverless instance in the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param name Human-readable label that identifies the serverless instance.
-	@return GetServerlessInstanceApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param name Human-readable label that identifies the serverless instance.
+		@return GetServerlessInstanceApiRequest
 	*/
 	GetServerlessInstance(ctx context.Context, groupId string, name string) GetServerlessInstanceApiRequest
 	/*
-	GetServerlessInstance Return One Serverless Instance from One Project
+		GetServerlessInstance Return One Serverless Instance from One Project
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param GetServerlessInstanceApiParams - Parameters for the request
-	@return GetServerlessInstanceApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetServerlessInstanceApiParams - Parameters for the request
+		@return GetServerlessInstanceApiRequest
 	*/
 	GetServerlessInstanceWithParams(ctx context.Context, args *GetServerlessInstanceApiParams) GetServerlessInstanceApiRequest
 
@@ -86,22 +85,22 @@ type ServerlessInstancesApi interface {
 	getServerlessInstanceExecute(r GetServerlessInstanceApiRequest) (*ServerlessInstanceDescription, *http.Response, error)
 
 	/*
-	ListServerlessInstances Return All Serverless Instances from One Project
+		ListServerlessInstances Return All Serverless Instances from One Project
 
-	Returns details for all serverless instances in the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+		Returns details for all serverless instances in the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return ListServerlessInstancesApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@return ListServerlessInstancesApiRequest
 	*/
 	ListServerlessInstances(ctx context.Context, groupId string) ListServerlessInstancesApiRequest
 	/*
-	ListServerlessInstances Return All Serverless Instances from One Project
+		ListServerlessInstances Return All Serverless Instances from One Project
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param ListServerlessInstancesApiParams - Parameters for the request
-	@return ListServerlessInstancesApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListServerlessInstancesApiParams - Parameters for the request
+		@return ListServerlessInstancesApiRequest
 	*/
 	ListServerlessInstancesWithParams(ctx context.Context, args *ListServerlessInstancesApiParams) ListServerlessInstancesApiRequest
 
@@ -109,23 +108,23 @@ type ServerlessInstancesApi interface {
 	listServerlessInstancesExecute(r ListServerlessInstancesApiRequest) (*PaginatedServerlessInstanceDescription, *http.Response, error)
 
 	/*
-	UpdateServerlessInstance Update One Serverless Instance in One Project
+		UpdateServerlessInstance Update One Serverless Instance in One Project
 
-	Updates one serverless instance in the specified project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
+		Updates one serverless instance in the specified project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param name Human-readable label that identifies the serverless instance.
-	@return UpdateServerlessInstanceApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param name Human-readable label that identifies the serverless instance.
+		@return UpdateServerlessInstanceApiRequest
 	*/
 	UpdateServerlessInstance(ctx context.Context, groupId string, name string) UpdateServerlessInstanceApiRequest
 	/*
-	UpdateServerlessInstance Update One Serverless Instance in One Project
+		UpdateServerlessInstance Update One Serverless Instance in One Project
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param UpdateServerlessInstanceApiParams - Parameters for the request
-	@return UpdateServerlessInstanceApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param UpdateServerlessInstanceApiParams - Parameters for the request
+		@return UpdateServerlessInstanceApiRequest
 	*/
 	UpdateServerlessInstanceWithParams(ctx context.Context, args *UpdateServerlessInstanceApiParams) UpdateServerlessInstanceApiRequest
 
@@ -137,22 +136,22 @@ type ServerlessInstancesApi interface {
 type ServerlessInstancesApiService service
 
 type CreateServerlessInstanceApiRequest struct {
-	ctx context.Context
-	ApiService ServerlessInstancesApi
-	groupId string
+	ctx                                 context.Context
+	ApiService                          ServerlessInstancesApi
+	groupId                             string
 	serverlessInstanceDescriptionCreate *ServerlessInstanceDescriptionCreate
 }
 
 type CreateServerlessInstanceApiParams struct {
-		GroupId string
-		ServerlessInstanceDescriptionCreate *ServerlessInstanceDescriptionCreate
+	GroupId                             string
+	ServerlessInstanceDescriptionCreate *ServerlessInstanceDescriptionCreate
 }
 
 func (a *ServerlessInstancesApiService) CreateServerlessInstanceWithParams(ctx context.Context, args *CreateServerlessInstanceApiParams) CreateServerlessInstanceApiRequest {
 	return CreateServerlessInstanceApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: args.GroupId,
+		ApiService:                          a,
+		ctx:                                 ctx,
+		groupId:                             args.GroupId,
 		serverlessInstanceDescriptionCreate: args.ServerlessInstanceDescriptionCreate,
 	}
 }
@@ -172,26 +171,27 @@ CreateServerlessInstance Create One Serverless Instance in One Project
 
 Creates one serverless instance in the specified project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @return CreateServerlessInstanceApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return CreateServerlessInstanceApiRequest
 */
 func (a *ServerlessInstancesApiService) CreateServerlessInstance(ctx context.Context, groupId string) CreateServerlessInstanceApiRequest {
 	return CreateServerlessInstanceApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupId: groupId,
+		ctx:        ctx,
+		groupId:    groupId,
 	}
 }
 
 // Execute executes the request
-//  @return ServerlessInstanceDescription
+//
+//	@return ServerlessInstanceDescription
 func (a *ServerlessInstancesApiService) createServerlessInstanceExecute(r CreateServerlessInstanceApiRequest) (*ServerlessInstanceDescription, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ServerlessInstanceDescription
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ServerlessInstanceDescription
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessInstancesApiService.CreateServerlessInstance")
@@ -280,23 +280,23 @@ func (a *ServerlessInstancesApiService) createServerlessInstanceExecute(r Create
 }
 
 type DeleteServerlessInstanceApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService ServerlessInstancesApi
-	groupId string
-	name string
+	groupId    string
+	name       string
 }
 
 type DeleteServerlessInstanceApiParams struct {
-		GroupId string
-		Name string
+	GroupId string
+	Name    string
 }
 
 func (a *ServerlessInstancesApiService) DeleteServerlessInstanceWithParams(ctx context.Context, args *DeleteServerlessInstanceApiParams) DeleteServerlessInstanceApiRequest {
 	return DeleteServerlessInstanceApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupId: args.GroupId,
-		name: args.Name,
+		ctx:        ctx,
+		groupId:    args.GroupId,
+		name:       args.Name,
 	}
 }
 
@@ -309,26 +309,26 @@ DeleteServerlessInstance Remove One Serverless Instance from One Project
 
 Removes one serverless instance from the specified project. The serverless instance must have termination protection disabled in order to be deleted. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param name Human-readable label that identifies the serverless instance.
- @return DeleteServerlessInstanceApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param name Human-readable label that identifies the serverless instance.
+	@return DeleteServerlessInstanceApiRequest
 */
 func (a *ServerlessInstancesApiService) DeleteServerlessInstance(ctx context.Context, groupId string, name string) DeleteServerlessInstanceApiRequest {
 	return DeleteServerlessInstanceApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupId: groupId,
-		name: name,
+		ctx:        ctx,
+		groupId:    groupId,
+		name:       name,
 	}
 }
 
 // Execute executes the request
 func (a *ServerlessInstancesApiService) deleteServerlessInstanceExecute(r DeleteServerlessInstanceApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessInstancesApiService.DeleteServerlessInstance")
@@ -410,23 +410,23 @@ func (a *ServerlessInstancesApiService) deleteServerlessInstanceExecute(r Delete
 }
 
 type GetServerlessInstanceApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService ServerlessInstancesApi
-	groupId string
-	name string
+	groupId    string
+	name       string
 }
 
 type GetServerlessInstanceApiParams struct {
-		GroupId string
-		Name string
+	GroupId string
+	Name    string
 }
 
 func (a *ServerlessInstancesApiService) GetServerlessInstanceWithParams(ctx context.Context, args *GetServerlessInstanceApiParams) GetServerlessInstanceApiRequest {
 	return GetServerlessInstanceApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupId: args.GroupId,
-		name: args.Name,
+		ctx:        ctx,
+		groupId:    args.GroupId,
+		name:       args.Name,
 	}
 }
 
@@ -439,28 +439,29 @@ GetServerlessInstance Return One Serverless Instance from One Project
 
 Returns details for one serverless instance in the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param name Human-readable label that identifies the serverless instance.
- @return GetServerlessInstanceApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param name Human-readable label that identifies the serverless instance.
+	@return GetServerlessInstanceApiRequest
 */
 func (a *ServerlessInstancesApiService) GetServerlessInstance(ctx context.Context, groupId string, name string) GetServerlessInstanceApiRequest {
 	return GetServerlessInstanceApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupId: groupId,
-		name: name,
+		ctx:        ctx,
+		groupId:    groupId,
+		name:       name,
 	}
 }
 
 // Execute executes the request
-//  @return ServerlessInstanceDescription
+//
+//	@return ServerlessInstanceDescription
 func (a *ServerlessInstancesApiService) getServerlessInstanceExecute(r GetServerlessInstanceApiRequest) (*ServerlessInstanceDescription, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ServerlessInstanceDescription
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ServerlessInstanceDescription
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessInstancesApiService.GetServerlessInstance")
@@ -551,29 +552,29 @@ func (a *ServerlessInstancesApiService) getServerlessInstanceExecute(r GetServer
 }
 
 type ListServerlessInstancesApiRequest struct {
-	ctx context.Context
-	ApiService ServerlessInstancesApi
-	groupId string
+	ctx          context.Context
+	ApiService   ServerlessInstancesApi
+	groupId      string
 	includeCount *bool
 	itemsPerPage *int32
-	pageNum *int32
+	pageNum      *int32
 }
 
 type ListServerlessInstancesApiParams struct {
-		GroupId string
-		IncludeCount *bool
-		ItemsPerPage *int32
-		PageNum *int32
+	GroupId      string
+	IncludeCount *bool
+	ItemsPerPage *int32
+	PageNum      *int32
 }
 
 func (a *ServerlessInstancesApiService) ListServerlessInstancesWithParams(ctx context.Context, args *ListServerlessInstancesApiParams) ListServerlessInstancesApiRequest {
 	return ListServerlessInstancesApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: args.GroupId,
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      args.GroupId,
 		includeCount: args.IncludeCount,
 		itemsPerPage: args.ItemsPerPage,
-		pageNum: args.PageNum,
+		pageNum:      args.PageNum,
 	}
 }
 
@@ -604,26 +605,27 @@ ListServerlessInstances Return All Serverless Instances from One Project
 
 Returns details for all serverless instances in the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @return ListServerlessInstancesApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return ListServerlessInstancesApiRequest
 */
 func (a *ServerlessInstancesApiService) ListServerlessInstances(ctx context.Context, groupId string) ListServerlessInstancesApiRequest {
 	return ListServerlessInstancesApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupId: groupId,
+		ctx:        ctx,
+		groupId:    groupId,
 	}
 }
 
 // Execute executes the request
-//  @return PaginatedServerlessInstanceDescription
+//
+//	@return PaginatedServerlessInstanceDescription
 func (a *ServerlessInstancesApiService) listServerlessInstancesExecute(r ListServerlessInstancesApiRequest) (*PaginatedServerlessInstanceDescription, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PaginatedServerlessInstanceDescription
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedServerlessInstanceDescription
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessInstancesApiService.ListServerlessInstances")
@@ -728,25 +730,25 @@ func (a *ServerlessInstancesApiService) listServerlessInstancesExecute(r ListSer
 }
 
 type UpdateServerlessInstanceApiRequest struct {
-	ctx context.Context
-	ApiService ServerlessInstancesApi
-	groupId string
-	name string
+	ctx                                 context.Context
+	ApiService                          ServerlessInstancesApi
+	groupId                             string
+	name                                string
 	serverlessInstanceDescriptionUpdate *ServerlessInstanceDescriptionUpdate
 }
 
 type UpdateServerlessInstanceApiParams struct {
-		GroupId string
-		Name string
-		ServerlessInstanceDescriptionUpdate *ServerlessInstanceDescriptionUpdate
+	GroupId                             string
+	Name                                string
+	ServerlessInstanceDescriptionUpdate *ServerlessInstanceDescriptionUpdate
 }
 
 func (a *ServerlessInstancesApiService) UpdateServerlessInstanceWithParams(ctx context.Context, args *UpdateServerlessInstanceApiParams) UpdateServerlessInstanceApiRequest {
 	return UpdateServerlessInstanceApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: args.GroupId,
-		name: args.Name,
+		ApiService:                          a,
+		ctx:                                 ctx,
+		groupId:                             args.GroupId,
+		name:                                args.Name,
 		serverlessInstanceDescriptionUpdate: args.ServerlessInstanceDescriptionUpdate,
 	}
 }
@@ -766,28 +768,29 @@ UpdateServerlessInstance Update One Serverless Instance in One Project
 
 Updates one serverless instance in the specified project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param name Human-readable label that identifies the serverless instance.
- @return UpdateServerlessInstanceApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param name Human-readable label that identifies the serverless instance.
+	@return UpdateServerlessInstanceApiRequest
 */
 func (a *ServerlessInstancesApiService) UpdateServerlessInstance(ctx context.Context, groupId string, name string) UpdateServerlessInstanceApiRequest {
 	return UpdateServerlessInstanceApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupId: groupId,
-		name: name,
+		ctx:        ctx,
+		groupId:    groupId,
+		name:       name,
 	}
 }
 
 // Execute executes the request
-//  @return ServerlessInstanceDescription
+//
+//	@return ServerlessInstanceDescription
 func (a *ServerlessInstancesApiService) updateServerlessInstanceExecute(r UpdateServerlessInstanceApiRequest) (*ServerlessInstanceDescription, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPatch
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ServerlessInstanceDescription
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ServerlessInstanceDescription
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessInstancesApiService.UpdateServerlessInstance")

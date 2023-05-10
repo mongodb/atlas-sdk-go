@@ -62,5 +62,3 @@ func (v ClusterEventTypeViewAlertable) IsValid() bool {
 func (v ClusterEventTypeViewAlertable) Ptr() *ClusterEventTypeViewAlertable {
 	return &v
 }
-
-

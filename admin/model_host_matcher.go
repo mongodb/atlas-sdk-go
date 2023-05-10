@@ -13,8 +13,8 @@ var _ MappedNullable = &HostMatcher{}
 type HostMatcher struct {
 	FieldName *HostMatcherField `json:"fieldName,omitempty"`
 	// Comparison operator to apply when checking the current metric value against **matcher[n].value**.
-	Operator *string `json:"operator,omitempty"`
-	Value *MatcherHostType `json:"value,omitempty"`
+	Operator *string          `json:"operator,omitempty"`
+	Value    *MatcherHostType `json:"value,omitempty"`
 }
 
 // NewHostMatcher instantiates a new HostMatcher object
@@ -131,7 +131,7 @@ func (o *HostMatcher) SetValue(v MatcherHostType) {
 }
 
 func (o HostMatcher) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -186,5 +186,3 @@ func (v *NullableHostMatcher) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -16,8 +16,8 @@ type CheckpointPart struct {
 	// Human-readable label that identifies the shard to which this checkpoint applies.
 	ShardName *string `json:"shardName,omitempty"`
 	// Flag that indicates whether the token exists.
-	TokenDiscovered *bool `json:"tokenDiscovered,omitempty"`
-	TokenTimestamp *BSONTimestamp `json:"tokenTimestamp,omitempty"`
+	TokenDiscovered *bool          `json:"tokenDiscovered,omitempty"`
+	TokenTimestamp  *BSONTimestamp `json:"tokenTimestamp,omitempty"`
 	// Human-readable label that identifies the type of host that the part represents.
 	TypeName *string `json:"typeName,omitempty"`
 }
@@ -200,7 +200,7 @@ func (o *CheckpointPart) SetTypeName(v string) {
 }
 
 func (o CheckpointPart) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -249,5 +249,3 @@ func (v *NullableCheckpointPart) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -15,8 +15,8 @@ type Snapshot struct {
 	// Unique 24-hexadecimal digit string that identifies the cluster with the snapshots you want to return.
 	ClusterId *string `json:"clusterId,omitempty"`
 	// Flag that indicates whether the snapshot exists. This flag returns `false` while MongoDB Cloud creates the snapshot.
-	Complete *bool `json:"complete,omitempty"`
-	Created *BSONTimestamp `json:"created,omitempty"`
+	Complete *bool          `json:"complete,omitempty"`
+	Created  *BSONTimestamp `json:"created,omitempty"`
 	// Flag that indicates whether someone can delete this snapshot. You can't set `\"doNotDelete\" : true` and set a timestamp for **expires** in the same request.
 	DoNotDelete *bool `json:"doNotDelete,omitempty"`
 	// Date and time when MongoDB Cloud deletes the snapshot. If `\"doNotDelete\" : true`, MongoDB Cloud removes any value set for this parameter.
@@ -24,7 +24,7 @@ type Snapshot struct {
 	// Unique 24-hexadecimal digit string that identifies the project that owns the snapshots.
 	GroupId *string `json:"groupId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the snapshot.
-	Id *string `json:"id,omitempty"`
+	Id                        *string        `json:"id,omitempty"`
 	LastOplogAppliedTimestamp *BSONTimestamp `json:"lastOplogAppliedTimestamp,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	Links []Link `json:"links,omitempty"`
@@ -370,7 +370,7 @@ func (o *Snapshot) SetParts(v []SnapshotPart) {
 }
 
 func (o Snapshot) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -428,5 +428,3 @@ func (v *NullableSnapshot) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

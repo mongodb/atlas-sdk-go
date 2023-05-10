@@ -14,8 +14,8 @@ type ServerlessAWSTenantEndpointUpdate struct {
 	// Unique string that identifies the private endpoint's network interface.
 	CloudProviderEndpointId *string `json:"cloudProviderEndpointId,omitempty"`
 	// Human-readable comment associated with the private endpoint.
-	Comment *string `json:"comment,omitempty"`
-	ProviderName string `json:"providerName"`
+	Comment      *string `json:"comment,omitempty"`
+	ProviderName string  `json:"providerName"`
 }
 
 // NewServerlessAWSTenantEndpointUpdate instantiates a new ServerlessAWSTenantEndpointUpdate object
@@ -125,7 +125,7 @@ func (o *ServerlessAWSTenantEndpointUpdate) SetProviderName(v string) {
 }
 
 func (o ServerlessAWSTenantEndpointUpdate) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -178,5 +178,3 @@ func (v *NullableServerlessAWSTenantEndpointUpdate) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -12,7 +12,7 @@ type Operator string
 
 // List of Operator
 const (
-	OPERATOR_LESS_THAN Operator = "<"
+	OPERATOR_LESS_THAN    Operator = "<"
 	OPERATOR_GREATER_THAN Operator = ">"
 )
 
@@ -64,5 +64,3 @@ func (v Operator) IsValid() bool {
 func (v Operator) Ptr() *Operator {
 	return &v
 }
-
-

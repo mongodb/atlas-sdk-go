@@ -10,7 +10,7 @@ import (
 // Criteria - Rules by which MongoDB MongoDB Cloud archives data.  Use the **criteria.type** field to choose how MongoDB Cloud selects data to archive. Choose data using the age of the data or a MongoDB query. **\"criteria.type\": \"DATE\"** selects documents to archive based on a date. **\"criteria.type\": \"CUSTOM\"** selects documents to archive based on a custom JSON query. MongoDB Cloud doesn't support **\"criteria.type\": \"CUSTOM\"** when **\"collectionType\": \"TIMESERIES\"**.
 type Criteria struct {
 	CustomCriteria *CustomCriteria
-	DateCriteria *DateCriteria
+	DateCriteria   *DateCriteria
 }
 
 // CustomCriteriaAsCriteria is a convenience function that returns CustomCriteria wrapped in Criteria
@@ -26,7 +26,6 @@ func DateCriteriaAsCriteria(v *DateCriteria) Criteria {
 		DateCriteria: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *Criteria) UnmarshalJSON(data []byte) error {
@@ -103,7 +102,7 @@ func (src Criteria) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *Criteria) GetActualInstance() (interface{}) {
+func (obj *Criteria) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -154,5 +153,3 @@ func (v *NullableCriteria) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

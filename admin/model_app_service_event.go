@@ -13,7 +13,7 @@ var _ MappedNullable = &AppServiceEvent{}
 // AppServiceEvent App Services event identifies different activities about a BAAS application.
 type AppServiceEvent struct {
 	// Date and time when this event occurred. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC.
-	Created time.Time `json:"created"`
+	Created       time.Time           `json:"created"`
 	EventTypeName AppServiceEventType `json:"eventTypeName"`
 	// Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The **eventId** identifies the specific event.
 	GroupId *string `json:"groupId,omitempty"`
@@ -23,7 +23,7 @@ type AppServiceEvent struct {
 	Links []Link `json:"links,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the organization to which these events apply.
 	OrgId *string `json:"orgId,omitempty"`
-	Raw *Raw `json:"raw,omitempty"`
+	Raw   *Raw    `json:"raw,omitempty"`
 }
 
 // NewAppServiceEvent instantiates a new AppServiceEvent object
@@ -247,7 +247,7 @@ func (o *AppServiceEvent) SetRaw(v Raw) {
 }
 
 func (o AppServiceEvent) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -297,5 +297,3 @@ func (v *NullableAppServiceEvent) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -62,5 +62,3 @@ func (v AppServiceEventTypeViewAlertableWithThreshold) IsValid() bool {
 func (v AppServiceEventTypeViewAlertableWithThreshold) Ptr() *AppServiceEventTypeViewAlertableWithThreshold {
 	return &v
 }
-
-

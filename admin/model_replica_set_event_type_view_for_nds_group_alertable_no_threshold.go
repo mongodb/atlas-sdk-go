@@ -12,7 +12,7 @@ type ReplicaSetEventTypeViewForNdsGroupAlertableNoThreshold string
 
 // List of ReplicaSetEventTypeViewForNdsGroupAlertableNoThreshold
 const (
-	REPLICASETEVENTTYPEVIEWFORNDSGROUPALERTABLENOTHRESHOLD_NO_PRIMARY ReplicaSetEventTypeViewForNdsGroupAlertableNoThreshold = "NO_PRIMARY"
+	REPLICASETEVENTTYPEVIEWFORNDSGROUPALERTABLENOTHRESHOLD_NO_PRIMARY      ReplicaSetEventTypeViewForNdsGroupAlertableNoThreshold = "NO_PRIMARY"
 	REPLICASETEVENTTYPEVIEWFORNDSGROUPALERTABLENOTHRESHOLD_PRIMARY_ELECTED ReplicaSetEventTypeViewForNdsGroupAlertableNoThreshold = "PRIMARY_ELECTED"
 )
 
@@ -64,5 +64,3 @@ func (v ReplicaSetEventTypeViewForNdsGroupAlertableNoThreshold) IsValid() bool {
 func (v ReplicaSetEventTypeViewForNdsGroupAlertableNoThreshold) Ptr() *ReplicaSetEventTypeViewForNdsGroupAlertableNoThreshold {
 	return &v
 }
-
-

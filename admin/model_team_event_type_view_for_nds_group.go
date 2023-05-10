@@ -12,9 +12,9 @@ type TeamEventTypeViewForNdsGroup string
 
 // List of TeamEventTypeViewForNdsGroup
 const (
-	TEAMEVENTTYPEVIEWFORNDSGROUP_ADDED_TO_GROUP TeamEventTypeViewForNdsGroup = "TEAM_ADDED_TO_GROUP"
+	TEAMEVENTTYPEVIEWFORNDSGROUP_ADDED_TO_GROUP     TeamEventTypeViewForNdsGroup = "TEAM_ADDED_TO_GROUP"
 	TEAMEVENTTYPEVIEWFORNDSGROUP_REMOVED_FROM_GROUP TeamEventTypeViewForNdsGroup = "TEAM_REMOVED_FROM_GROUP"
-	TEAMEVENTTYPEVIEWFORNDSGROUP_ROLES_MODIFIED TeamEventTypeViewForNdsGroup = "TEAM_ROLES_MODIFIED"
+	TEAMEVENTTYPEVIEWFORNDSGROUP_ROLES_MODIFIED     TeamEventTypeViewForNdsGroup = "TEAM_ROLES_MODIFIED"
 )
 
 // All allowed values of TeamEventTypeViewForNdsGroup enum
@@ -66,5 +66,3 @@ func (v TeamEventTypeViewForNdsGroup) IsValid() bool {
 func (v TeamEventTypeViewForNdsGroup) Ptr() *TeamEventTypeViewForNdsGroup {
 	return &v
 }
-
-

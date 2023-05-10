@@ -261,7 +261,7 @@ func (o *{{classname}}) Unset{{name}}() {
 {{/required}}
 {{/vars}}
 func (o {{classname}}) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}

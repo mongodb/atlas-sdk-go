@@ -12,7 +12,7 @@ var _ MappedNullable = &UserSecurity{}
 // UserSecurity struct for UserSecurity
 type UserSecurity struct {
 	CustomerX509 *CustomerX509 `json:"customerX509,omitempty"`
-	Ldap *NDSLDAP `json:"ldap,omitempty"`
+	Ldap         *NDSLDAP      `json:"ldap,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	Links []Link `json:"links,omitempty"`
 }
@@ -131,7 +131,7 @@ func (o *UserSecurity) SetLinks(v []Link) {
 }
 
 func (o UserSecurity) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -183,5 +183,3 @@ func (v *NullableUserSecurity) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

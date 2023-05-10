@@ -12,7 +12,7 @@ type AlertAuditType string
 
 // List of AlertAuditType
 const (
-	ALERTAUDITTYPE_ACKNOWLEDGED_AUDIT AlertAuditType = "ALERT_ACKNOWLEDGED_AUDIT"
+	ALERTAUDITTYPE_ACKNOWLEDGED_AUDIT   AlertAuditType = "ALERT_ACKNOWLEDGED_AUDIT"
 	ALERTAUDITTYPE_UNACKNOWLEDGED_AUDIT AlertAuditType = "ALERT_UNACKNOWLEDGED_AUDIT"
 )
 
@@ -64,5 +64,3 @@ func (v AlertAuditType) IsValid() bool {
 func (v AlertAuditType) Ptr() *AlertAuditType {
 	return &v
 }
-
-

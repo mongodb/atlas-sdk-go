@@ -9,7 +9,7 @@ import (
 
 // DiskBackupSnapshot - struct for DiskBackupSnapshot
 type DiskBackupSnapshot struct {
-	DiskBackupReplicaSet *DiskBackupReplicaSet
+	DiskBackupReplicaSet             *DiskBackupReplicaSet
 	DiskBackupShardedClusterSnapshot *DiskBackupShardedClusterSnapshot
 }
 
@@ -26,7 +26,6 @@ func DiskBackupShardedClusterSnapshotAsDiskBackupSnapshot(v *DiskBackupShardedCl
 		DiskBackupShardedClusterSnapshot: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *DiskBackupSnapshot) UnmarshalJSON(data []byte) error {
@@ -103,7 +102,7 @@ func (src DiskBackupSnapshot) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *DiskBackupSnapshot) GetActualInstance() (interface{}) {
+func (obj *DiskBackupSnapshot) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -154,5 +153,3 @@ func (v *NullableDiskBackupSnapshot) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

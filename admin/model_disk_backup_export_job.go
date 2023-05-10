@@ -21,8 +21,8 @@ type DiskBackupExportJob struct {
 	// One or more Uniform Resource Locators (URLs) that point to the compressed snapshot files for manual download. MongoDB Cloud returns this parameter when `\"deliveryType\" : \"download\"`.
 	DeliveryUrl []string `json:"deliveryUrl,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the AWS bucket to which MongoDB Cloud exports the Cloud Backup snapshot.
-	ExportBucketId string `json:"exportBucketId"`
-	ExportStatus *ExportStatus `json:"exportStatus,omitempty"`
+	ExportBucketId string        `json:"exportBucketId"`
+	ExportStatus   *ExportStatus `json:"exportStatus,omitempty"`
 	// Date and time when this export job completed. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
 	FinishedAt *time.Time `json:"finishedAt,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the restore job.
@@ -432,7 +432,7 @@ func (o *DiskBackupExportJob) SetState(v string) {
 }
 
 func (o DiskBackupExportJob) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -487,5 +487,3 @@ func (v *NullableDiskBackupExportJob) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

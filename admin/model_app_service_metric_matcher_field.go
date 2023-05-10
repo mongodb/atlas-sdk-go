@@ -62,5 +62,3 @@ func (v AppServiceMetricMatcherField) IsValid() bool {
 func (v AppServiceMetricMatcherField) Ptr() *AppServiceMetricMatcherField {
 	return &v
 }
-
-

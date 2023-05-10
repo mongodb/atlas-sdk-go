@@ -10,7 +10,7 @@ import (
 // AppServiceMetricThreshold - Threshold for the metric that, when exceeded, triggers an alert. The metric threshold pertains to event types which reflects changes of measurements and metrics in the app services.
 type AppServiceMetricThreshold struct {
 	DataMetricThreshold *DataMetricThreshold
-	RawMetricThreshold *RawMetricThreshold
+	RawMetricThreshold  *RawMetricThreshold
 	TimeMetricThreshold *TimeMetricThreshold
 }
 
@@ -34,7 +34,6 @@ func TimeMetricThresholdAsAppServiceMetricThreshold(v *TimeMetricThreshold) AppS
 		TimeMetricThreshold: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *AppServiceMetricThreshold) UnmarshalJSON(data []byte) error {
@@ -499,7 +498,7 @@ func (src AppServiceMetricThreshold) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *AppServiceMetricThreshold) GetActualInstance() (interface{}) {
+func (obj *AppServiceMetricThreshold) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -554,5 +553,3 @@ func (v *NullableAppServiceMetricThreshold) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

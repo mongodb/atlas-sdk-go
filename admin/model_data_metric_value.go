@@ -12,8 +12,8 @@ var _ MappedNullable = &DataMetricValue{}
 // DataMetricValue Measurement of the **metricName** recorded at the time of the event.
 type DataMetricValue struct {
 	// Amount of the **metricName** recorded at the time of the event. This value triggered the alert.
-	Number *float64 `json:"number,omitempty"`
-	Units *DataMetricUnits `json:"units,omitempty"`
+	Number *float64         `json:"number,omitempty"`
+	Units  *DataMetricUnits `json:"units,omitempty"`
 }
 
 // NewDataMetricValue instantiates a new DataMetricValue object
@@ -98,7 +98,7 @@ func (o *DataMetricValue) SetUnits(v DataMetricUnits) {
 }
 
 func (o DataMetricValue) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -147,5 +147,3 @@ func (v *NullableDataMetricValue) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

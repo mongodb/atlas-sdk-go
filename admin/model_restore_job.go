@@ -21,7 +21,7 @@ type RestoreJob struct {
 	// Human-readable label that identifies the cluster containing the snapshots you want to retrieve.
 	ClusterName *string `json:"clusterName,omitempty"`
 	// Date and time when someone requested this restore job. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-	Created *time.Time `json:"created,omitempty"`
+	Created  *time.Time         `json:"created,omitempty"`
 	Delivery RestoreJobDelivery `json:"delivery"`
 	// Flag that indicates whether someone encrypted the data in the restored snapshot.
 	EncryptionEnabled *bool `json:"encryptionEnabled,omitempty"`
@@ -44,8 +44,8 @@ type RestoreJob struct {
 	// Unique 24-hexadecimal digit string that identifies the snapshot to restore. If you set **snapshotId**, you can't set **oplogInc**, **oplogTs**, **pointInTimeUTCMillis**, or **checkpointId**.
 	SnapshotId *string `json:"snapshotId,omitempty"`
 	// Human-readable label that identifies the status of the downloadable file at the time of the request.
-	StatusName *string `json:"statusName,omitempty"`
-	Timestamp *BSONTimestamp `json:"timestamp,omitempty"`
+	StatusName *string        `json:"statusName,omitempty"`
+	Timestamp  *BSONTimestamp `json:"timestamp,omitempty"`
 }
 
 // NewRestoreJob instantiates a new RestoreJob object
@@ -635,7 +635,7 @@ func (o *RestoreJob) SetTimestamp(v BSONTimestamp) {
 }
 
 func (o RestoreJob) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -700,5 +700,3 @@ func (v *NullableRestoreJob) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

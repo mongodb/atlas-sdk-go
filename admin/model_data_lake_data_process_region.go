@@ -12,8 +12,8 @@ var _ MappedNullable = &DataLakeDataProcessRegion{}
 // DataLakeDataProcessRegion Information about the cloud provider region to which the data lake routes client connections. MongoDB Cloud supports AWS only.
 type DataLakeDataProcessRegion struct {
 	// Name of the cloud service that hosts the data lake's data stores.
-	CloudProvider string `json:"cloudProvider"`
-	Region DataLakeRegion `json:"region"`
+	CloudProvider string         `json:"cloudProvider"`
+	Region        DataLakeRegion `json:"region"`
 }
 
 // NewDataLakeDataProcessRegion instantiates a new DataLakeDataProcessRegion object
@@ -84,7 +84,7 @@ func (o *DataLakeDataProcessRegion) SetRegion(v DataLakeRegion) {
 }
 
 func (o DataLakeDataProcessRegion) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -132,5 +132,3 @@ func (v *NullableDataLakeDataProcessRegion) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

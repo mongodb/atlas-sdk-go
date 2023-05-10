@@ -133,7 +133,7 @@ func (o *PaginatedApiAtlasProviderRegions) SetTotalCount(v int32) {
 }
 
 func (o PaginatedApiAtlasProviderRegions) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -179,5 +179,3 @@ func (v *NullablePaginatedApiAtlasProviderRegions) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

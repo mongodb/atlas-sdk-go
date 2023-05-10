@@ -10,25 +10,24 @@ import (
 	"net/url"
 )
 
-
 type TestApi interface {
 
 	/*
-	VersionedExample Example resource info for versioning of the Atlas API
+		VersionedExample Example resource info for versioning of the Atlas API
 
-	Returns some text dummy data for test purposes. Deprecated versions: v2-{2023-01-01}
+		Returns some text dummy data for test purposes. Deprecated versions: v2-{2023-01-01}
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return VersionedExampleApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return VersionedExampleApiRequest
 	*/
 	VersionedExample(ctx context.Context) VersionedExampleApiRequest
 	/*
-	VersionedExample Example resource info for versioning of the Atlas API
+		VersionedExample Example resource info for versioning of the Atlas API
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param VersionedExampleApiParams - Parameters for the request
-	@return VersionedExampleApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param VersionedExampleApiParams - Parameters for the request
+		@return VersionedExampleApiRequest
 	*/
 	VersionedExampleWithParams(ctx context.Context, args *VersionedExampleApiParams) VersionedExampleApiRequest
 
@@ -40,19 +39,19 @@ type TestApi interface {
 type TestApiService service
 
 type VersionedExampleApiRequest struct {
-	ctx context.Context
-	ApiService TestApi
+	ctx            context.Context
+	ApiService     TestApi
 	additionalInfo *bool
 }
 
 type VersionedExampleApiParams struct {
-		AdditionalInfo *bool
+	AdditionalInfo *bool
 }
 
 func (a *TestApiService) VersionedExampleWithParams(ctx context.Context, args *VersionedExampleApiParams) VersionedExampleApiRequest {
 	return VersionedExampleApiRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:     a,
+		ctx:            ctx,
 		additionalInfo: args.AdditionalInfo,
 	}
 }
@@ -71,24 +70,25 @@ VersionedExample Example resource info for versioning of the Atlas API
 
 Returns some text dummy data for test purposes. Deprecated versions: v2-{2023-01-01}
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return VersionedExampleApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return VersionedExampleApiRequest
 */
 func (a *TestApiService) VersionedExample(ctx context.Context) VersionedExampleApiRequest {
 	return VersionedExampleApiRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ExampleResourceResponseView20230201
+//
+//	@return ExampleResourceResponseView20230201
 func (a *TestApiService) versionedExampleExecute(r VersionedExampleApiRequest) (*ExampleResourceResponseView20230201, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *ExampleResourceResponseView20230201
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ExampleResourceResponseView20230201
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TestApiService.VersionedExample")

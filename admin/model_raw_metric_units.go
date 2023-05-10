@@ -62,5 +62,3 @@ func (v RawMetricUnits) IsValid() bool {
 func (v RawMetricUnits) Ptr() *RawMetricUnits {
 	return &v
 }
-
-

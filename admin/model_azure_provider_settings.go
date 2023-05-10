@@ -17,8 +17,8 @@ type AzureProviderSettings struct {
 	// Cluster tier, with a default storage and memory capacity, that applies to all the data-bearing hosts in your cluster.
 	InstanceSizeName *string `json:"instanceSizeName,omitempty"`
 	// Microsoft Azure Regions.
-	RegionName *string `json:"regionName,omitempty"`
-	ProviderName string `json:"providerName"`
+	RegionName   *string `json:"regionName,omitempty"`
+	ProviderName string  `json:"providerName"`
 }
 
 // NewAzureProviderSettings instantiates a new AzureProviderSettings object
@@ -192,7 +192,7 @@ func (o *AzureProviderSettings) SetProviderName(v string) {
 }
 
 func (o AzureProviderSettings) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -251,5 +251,3 @@ func (v *NullableAzureProviderSettings) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

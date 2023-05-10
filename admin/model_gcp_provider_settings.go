@@ -15,8 +15,8 @@ type GCPProviderSettings struct {
 	// Cluster tier, with a default storage and memory capacity, that applies to all the data-bearing hosts in your cluster.
 	InstanceSizeName *string `json:"instanceSizeName,omitempty"`
 	// Google Compute Regions.
-	RegionName *string `json:"regionName,omitempty"`
-	ProviderName string `json:"providerName"`
+	RegionName   *string `json:"regionName,omitempty"`
+	ProviderName string  `json:"providerName"`
 }
 
 // NewGCPProviderSettings instantiates a new GCPProviderSettings object
@@ -158,7 +158,7 @@ func (o *GCPProviderSettings) SetProviderName(v string) {
 }
 
 func (o GCPProviderSettings) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -214,5 +214,3 @@ func (v *NullableGCPProviderSettings) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

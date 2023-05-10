@@ -15,7 +15,7 @@ type NDSServerlessInstanceAudit struct {
 	// Unique 24-hexadecimal digit string that identifies the [API Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key) that triggered the event. If this resource returns this parameter, it doesn't return the **userId** parameter.
 	ApiKeyId *string `json:"apiKeyId,omitempty"`
 	// Date and time when this event occurred. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC.
-	Created time.Time `json:"created"`
+	Created       time.Time                      `json:"created"`
 	EventTypeName NDSServerlessInstanceAuditType `json:"eventTypeName"`
 	// Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The **eventId** identifies the specific event.
 	GroupId *string `json:"groupId,omitempty"`
@@ -29,7 +29,7 @@ type NDSServerlessInstanceAudit struct {
 	OrgId *string `json:"orgId,omitempty"`
 	// Public part of the [API Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key) that triggered the event. If this resource returns this parameter, it doesn't return the **username** parameter.
 	PublicKey *string `json:"publicKey,omitempty"`
-	Raw *Raw `json:"raw,omitempty"`
+	Raw       *Raw    `json:"raw,omitempty"`
 	// IPv4 or IPv6 address from which the user triggered this event.
 	RemoteAddress *string `json:"remoteAddress,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the console user who triggered the event. If this resource returns this parameter, it doesn't return the **apiKeyId** parameter.
@@ -451,7 +451,7 @@ func (o *NDSServerlessInstanceAudit) SetUsername(v string) {
 }
 
 func (o NDSServerlessInstanceAudit) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -501,5 +501,3 @@ func (v *NullableNDSServerlessInstanceAudit) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

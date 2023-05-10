@@ -12,7 +12,7 @@ type HostMetricEventType string
 
 // List of HostMetricEventType
 const (
-	HOSTMETRICEVENTTYPE_INSIDE_METRIC_THRESHOLD HostMetricEventType = "INSIDE_METRIC_THRESHOLD"
+	HOSTMETRICEVENTTYPE_INSIDE_METRIC_THRESHOLD  HostMetricEventType = "INSIDE_METRIC_THRESHOLD"
 	HOSTMETRICEVENTTYPE_OUTSIDE_METRIC_THRESHOLD HostMetricEventType = "OUTSIDE_METRIC_THRESHOLD"
 )
 
@@ -64,5 +64,3 @@ func (v HostMetricEventType) IsValid() bool {
 func (v HostMetricEventType) Ptr() *HostMetricEventType {
 	return &v
 }
-
-

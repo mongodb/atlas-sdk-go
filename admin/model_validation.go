@@ -104,6 +104,7 @@ func (o *Validation) HasErrorMessage() bool {
 func (o *Validation) SetErrorMessage(v string) {
 	o.ErrorMessage.Set(&v)
 }
+
 // SetErrorMessageNil sets the value for ErrorMessage to be an explicit nil
 func (o *Validation) SetErrorMessageNil() {
 	o.ErrorMessage.Set(nil)
@@ -210,6 +211,7 @@ func (o *Validation) HasStatus() bool {
 func (o *Validation) SetStatus(v string) {
 	o.Status.Set(&v)
 }
+
 // SetStatusNil sets the value for Status to be an explicit nil
 func (o *Validation) SetStatusNil() {
 	o.Status.Set(nil)
@@ -221,7 +223,7 @@ func (o *Validation) UnsetStatus() {
 }
 
 func (o Validation) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -276,5 +278,3 @@ func (v *NullableValidation) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

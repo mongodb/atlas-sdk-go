@@ -12,13 +12,13 @@ var _ MappedNullable = &LiveMigrationRequest{}
 // LiveMigrationRequest struct for LiveMigrationRequest
 type LiveMigrationRequest struct {
 	// Unique 24-hexadecimal digit string that identifies the migration request.
-	Id *string `json:"_id,omitempty"`
+	Id          *string     `json:"_id,omitempty"`
 	Destination Destination `json:"destination"`
 	// Flag that indicates whether the migration process drops all collections from the destination cluster before the migration starts.
 	DropEnabled bool `json:"dropEnabled"`
 	// List of migration hosts used for this migration.
 	MigrationHosts []string `json:"migrationHosts,omitempty"`
-	Source Source `json:"source"`
+	Source         Source   `json:"source"`
 }
 
 // NewLiveMigrationRequest instantiates a new LiveMigrationRequest object
@@ -178,7 +178,7 @@ func (o *LiveMigrationRequest) SetSource(v Source) {
 }
 
 func (o LiveMigrationRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -230,5 +230,3 @@ func (v *NullableLiveMigrationRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

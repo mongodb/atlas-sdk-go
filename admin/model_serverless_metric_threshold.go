@@ -10,8 +10,8 @@ import (
 // ServerlessMetricThreshold - Threshold for the metric that, when exceeded, triggers an alert. The metric threshold pertains to event types which reflects changes of measurements and metrics about the serverless database.
 type ServerlessMetricThreshold struct {
 	DataMetricThreshold *DataMetricThreshold
-	RPUMetricThreshold *RPUMetricThreshold
-	RawMetricThreshold *RawMetricThreshold
+	RPUMetricThreshold  *RPUMetricThreshold
+	RawMetricThreshold  *RawMetricThreshold
 	TimeMetricThreshold *TimeMetricThreshold
 }
 
@@ -42,7 +42,6 @@ func TimeMetricThresholdAsServerlessMetricThreshold(v *TimeMetricThreshold) Serv
 		TimeMetricThreshold: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *ServerlessMetricThreshold) UnmarshalJSON(data []byte) error {
@@ -331,7 +330,7 @@ func (src ServerlessMetricThreshold) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *ServerlessMetricThreshold) GetActualInstance() (interface{}) {
+func (obj *ServerlessMetricThreshold) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -390,5 +389,3 @@ func (v *NullableServerlessMetricThreshold) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

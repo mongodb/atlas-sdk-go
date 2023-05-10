@@ -9,14 +9,14 @@ import (
 
 // FTSAnalyzersTokenizer - Tokenizer that you want to use to create tokens. Tokens determine how Atlas Search splits up text into discrete chunks for indexing.
 type FTSAnalyzersTokenizer struct {
-	TokenizeredgeGram *TokenizeredgeGram
-	Tokenizerkeyword *Tokenizerkeyword
-	TokenizernGram *TokenizernGram
+	TokenizeredgeGram          *TokenizeredgeGram
+	Tokenizerkeyword           *Tokenizerkeyword
+	TokenizernGram             *TokenizernGram
 	TokenizerregexCaptureGroup *TokenizerregexCaptureGroup
-	TokenizerregexSplit *TokenizerregexSplit
-	Tokenizerstandard *Tokenizerstandard
-	TokenizeruaxUrlEmail *TokenizeruaxUrlEmail
-	Tokenizerwhitespace *Tokenizerwhitespace
+	TokenizerregexSplit        *TokenizerregexSplit
+	Tokenizerstandard          *Tokenizerstandard
+	TokenizeruaxUrlEmail       *TokenizeruaxUrlEmail
+	Tokenizerwhitespace        *Tokenizerwhitespace
 }
 
 // TokenizeredgeGramAsFTSAnalyzersTokenizer is a convenience function that returns TokenizeredgeGram wrapped in FTSAnalyzersTokenizer
@@ -74,7 +74,6 @@ func TokenizerwhitespaceAsFTSAnalyzersTokenizer(v *Tokenizerwhitespace) FTSAnaly
 		Tokenizerwhitespace: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *FTSAnalyzersTokenizer) UnmarshalJSON(data []byte) error {
@@ -241,7 +240,7 @@ func (src FTSAnalyzersTokenizer) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *FTSAnalyzersTokenizer) GetActualInstance() (interface{}) {
+func (obj *FTSAnalyzersTokenizer) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -316,5 +315,3 @@ func (v *NullableFTSAnalyzersTokenizer) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

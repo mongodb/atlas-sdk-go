@@ -9,7 +9,7 @@ import (
 // checks if the DataLakeDatabaseCollection type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &DataLakeDatabaseCollection{}
 
-// DataLakeDatabaseCollection A collection and data sources that map to a ``stores`` data store.
+// DataLakeDatabaseCollection A collection and data sources that map to a “stores“ data store.
 type DataLakeDatabaseCollection struct {
 	// Array that contains the data stores that map to a collection for this data lake.
 	DataSources []DataLakeDatabaseDataSource `json:"dataSources,omitempty"`
@@ -99,7 +99,7 @@ func (o *DataLakeDatabaseCollection) SetName(v string) {
 }
 
 func (o DataLakeDatabaseCollection) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -151,5 +151,3 @@ func (v *NullableDataLakeDatabaseCollection) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

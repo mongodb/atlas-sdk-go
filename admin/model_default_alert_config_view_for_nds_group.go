@@ -335,7 +335,7 @@ func (o *DefaultAlertConfigViewForNdsGroup) SetUpdated(v time.Time) {
 }
 
 func (o DefaultAlertConfigViewForNdsGroup) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -388,5 +388,3 @@ func (v *NullableDefaultAlertConfigViewForNdsGroup) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

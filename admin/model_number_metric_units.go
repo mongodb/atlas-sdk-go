@@ -12,10 +12,10 @@ type NumberMetricUnits string
 
 // List of NumberMetricUnits
 const (
-	NUMBERMETRICUNITS_COUNT NumberMetricUnits = "COUNT"
+	NUMBERMETRICUNITS_COUNT    NumberMetricUnits = "COUNT"
 	NUMBERMETRICUNITS_THOUSAND NumberMetricUnits = "THOUSAND"
-	NUMBERMETRICUNITS_MILLION NumberMetricUnits = "MILLION"
-	NUMBERMETRICUNITS_BILLION NumberMetricUnits = "BILLION"
+	NUMBERMETRICUNITS_MILLION  NumberMetricUnits = "MILLION"
+	NUMBERMETRICUNITS_BILLION  NumberMetricUnits = "BILLION"
 )
 
 // All allowed values of NumberMetricUnits enum
@@ -68,5 +68,3 @@ func (v NumberMetricUnits) IsValid() bool {
 func (v NumberMetricUnits) Ptr() *NumberMetricUnits {
 	return &v
 }
-
-

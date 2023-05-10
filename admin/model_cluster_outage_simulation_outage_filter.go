@@ -133,7 +133,7 @@ func (o *ClusterOutageSimulationOutageFilter) SetType(v string) {
 }
 
 func (o ClusterOutageSimulationOutageFilter) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -188,5 +188,3 @@ func (v *NullableClusterOutageSimulationOutageFilter) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

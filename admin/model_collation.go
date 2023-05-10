@@ -11,23 +11,23 @@ var _ MappedNullable = &Collation{}
 
 // Collation One or more settings that specify language-specific rules to compare strings within this index.
 type Collation struct {
-	// Method to handle whitespace and punctuation as base characters for purposes of comparison.  | Value | Evaluate Whitespace and Punctuation as Base Characters | |---|---| | `\"non-ignorable\"` | Yes | | `\"shifted\"` | No. MongoDB Cloud distinguishes these characters when `\"strength\" > 3`. | 
+	// Method to handle whitespace and punctuation as base characters for purposes of comparison.  | Value | Evaluate Whitespace and Punctuation as Base Characters | |---|---| | `\"non-ignorable\"` | Yes | | `\"shifted\"` | No. MongoDB Cloud distinguishes these characters when `\"strength\" > 3`. |
 	Alternate *string `json:"alternate,omitempty"`
-	// Flag that indicates whether strings with diacritics sort from back of the string. Some French dictionary orders strings in this way.  | Value | String Comparison Method |  |---|---| | `true` | Compare from back to front. | | `false` | Compare from front to back. | 
+	// Flag that indicates whether strings with diacritics sort from back of the string. Some French dictionary orders strings in this way.  | Value | String Comparison Method |  |---|---| | `true` | Compare from back to front. | | `false` | Compare from front to back. |
 	Backwards *bool `json:"backwards,omitempty"`
-	// Method to handle sort order of case differences during tertiary level comparisons.  | Value | Sort Order Method |  |---|---|  | `\"upper\"` | Uppercase sorts before lowercase. |  | `\"lower\"` | Lowercase sorts before uppercase. |  | `\"off\"` | Similar to \"lower\" with slight differences. | 
+	// Method to handle sort order of case differences during tertiary level comparisons.  | Value | Sort Order Method |  |---|---|  | `\"upper\"` | Uppercase sorts before lowercase. |  | `\"lower\"` | Lowercase sorts before uppercase. |  | `\"off\"` | Similar to \"lower\" with slight differences. |
 	CaseFirst *string `json:"caseFirst,omitempty"`
-	// Flag that indicates whether to include case comparison when `\"strength\" : 1` or `\"strength\" : 2`.  | Value | Compare case at level 1 or 2? | Strength Level | Comparisons Include |  |---|---|---|---|  | true | Yes | 1 | Base characters and case. |  |  |  | 2 | Base characters, diacritics (and possible other secondary differences),   and case. |  | false | No |  |  | 
+	// Flag that indicates whether to include case comparison when `\"strength\" : 1` or `\"strength\" : 2`.  | Value | Compare case at level 1 or 2? | Strength Level | Comparisons Include |  |---|---|---|---|  | true | Yes | 1 | Base characters and case. |  |  |  | 2 | Base characters, diacritics (and possible other secondary differences),   and case. |  | false | No |  |  |
 	CaseLevel *bool `json:"caseLevel,omitempty"`
 	// International Components for Unicode (ICU) code that represents a localized language. To specify simple binary comparison, set `\"locale\" : \"simple\"`.
 	Locale string `json:"locale"`
-	// Field that indicates which characters can be ignored when `\"alternate\" : \"shifted\"`. This has no affect if `\"alternate\" : \"non-ignorable\"`.  | Value | Ignore |  |---|---| | `\"punct\"` | Both whitespace and punctuation | | `\"space\"` | Whitespace | 
+	// Field that indicates which characters can be ignored when `\"alternate\" : \"shifted\"`. This has no affect if `\"alternate\" : \"non-ignorable\"`.  | Value | Ignore |  |---|---| | `\"punct\"` | Both whitespace and punctuation | | `\"space\"` | Whitespace |
 	MaxVariable *string `json:"maxVariable,omitempty"`
-	// Flag that indicates whether to check if the text requires normalization and then perform it. Most text doesn't require this normalization processing.  | Value | Normalization Method |  |---|---| | `true` | Yes, check if fully normalized and perform normalization to compare text. | | `false` | No, don't check. | 
+	// Flag that indicates whether to check if the text requires normalization and then perform it. Most text doesn't require this normalization processing.  | Value | Normalization Method |  |---|---| | `true` | Yes, check if fully normalized and perform normalization to compare text. | | `false` | No, don't check. |
 	Normalization *bool `json:"normalization,omitempty"`
-	// Flag that indicates whether to compare sequences of digits as numbers or as strings.  | Value | Comparison Method |  |---|---| | `true` | Compare as numbers. This results in `10 > 2`. | | `false` | Compare as strings. This results in `\"10\" < \"2\"`. | 
+	// Flag that indicates whether to compare sequences of digits as numbers or as strings.  | Value | Comparison Method |  |---|---| | `true` | Compare as numbers. This results in `10 > 2`. | | `false` | Compare as strings. This results in `\"10\" < \"2\"`. |
 	NumericOrdering *bool `json:"numericOrdering,omitempty"`
-	// Degree of comparison to perform when sorting words. MongoDB Cloud accepts the following values:  | Value | Comparison Level | Comparison Method | |---|---|---| | 1 | Primary | Compares the base characters only, ignoring other differences such as diacritics and case. | | 2 | Secondary | Compares base characters (primary) and diacritics (secondary). Primary differences take precedence over secondary differences. | | 3 | Tertiary | Compares base characters (primary), diacritics (secondary), and case and variants (tertiary). Differences between base characters takes precedence over secondary differences which take precedence over tertiary differences. | | 4 | Quaternary | Compares for the specific use case to consider punctuation when levels 1 through 3 ignore punctuation or for processing Japanese text. | | 5 | Identical | Compares for the specific use case of tie breaker. | 
+	// Degree of comparison to perform when sorting words. MongoDB Cloud accepts the following values:  | Value | Comparison Level | Comparison Method | |---|---|---| | 1 | Primary | Compares the base characters only, ignoring other differences such as diacritics and case. | | 2 | Secondary | Compares base characters (primary) and diacritics (secondary). Primary differences take precedence over secondary differences. | | 3 | Tertiary | Compares base characters (primary), diacritics (secondary), and case and variants (tertiary). Differences between base characters takes precedence over secondary differences which take precedence over tertiary differences. | | 4 | Quaternary | Compares for the specific use case to consider punctuation when levels 1 through 3 ignore punctuation or for processing Japanese text. | | 5 | Identical | Compares for the specific use case of tie breaker. |
 	Strength *int32 `json:"strength,omitempty"`
 }
 
@@ -358,7 +358,7 @@ func (o *Collation) SetStrength(v int32) {
 }
 
 func (o Collation) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -429,5 +429,3 @@ func (v *NullableCollation) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

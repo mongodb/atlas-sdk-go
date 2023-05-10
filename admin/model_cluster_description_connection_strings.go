@@ -269,7 +269,7 @@ func (o *ClusterDescriptionConnectionStrings) SetStandardSrv(v string) {
 }
 
 func (o ClusterDescriptionConnectionStrings) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -315,5 +315,3 @@ func (v *NullableClusterDescriptionConnectionStrings) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

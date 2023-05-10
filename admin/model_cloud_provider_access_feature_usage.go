@@ -9,9 +9,9 @@ import (
 
 // CloudProviderAccessFeatureUsage - MongoDB Cloud features associated with this Amazon Web Services (AWS) Identity and Access Management (IAM) role.
 type CloudProviderAccessFeatureUsage struct {
-	CloudProviderAccessDataLakeFeatureUsage *CloudProviderAccessDataLakeFeatureUsage
+	CloudProviderAccessDataLakeFeatureUsage         *CloudProviderAccessDataLakeFeatureUsage
 	CloudProviderAccessEncryptionAtRestFeatureUsage *CloudProviderAccessEncryptionAtRestFeatureUsage
-	CloudProviderAccessExportSnapshotFeatureUsage *CloudProviderAccessExportSnapshotFeatureUsage
+	CloudProviderAccessExportSnapshotFeatureUsage   *CloudProviderAccessExportSnapshotFeatureUsage
 }
 
 // CloudProviderAccessDataLakeFeatureUsageAsCloudProviderAccessFeatureUsage is a convenience function that returns CloudProviderAccessDataLakeFeatureUsage wrapped in CloudProviderAccessFeatureUsage
@@ -34,7 +34,6 @@ func CloudProviderAccessExportSnapshotFeatureUsageAsCloudProviderAccessFeatureUs
 		CloudProviderAccessExportSnapshotFeatureUsage: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *CloudProviderAccessFeatureUsage) UnmarshalJSON(data []byte) error {
@@ -139,7 +138,7 @@ func (src CloudProviderAccessFeatureUsage) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *CloudProviderAccessFeatureUsage) GetActualInstance() (interface{}) {
+func (obj *CloudProviderAccessFeatureUsage) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -194,5 +193,3 @@ func (v *NullableCloudProviderAccessFeatureUsage) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

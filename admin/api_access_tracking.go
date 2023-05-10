@@ -12,27 +12,26 @@ import (
 	"time"
 )
 
-
 type AccessTrackingApi interface {
 
 	/*
-	ListAccessLogsByClusterName Return Database Access History for One Cluster using Its Cluster Name
+		ListAccessLogsByClusterName Return Database Access History for One Cluster using Its Cluster Name
 
-	Returns the access logs of one cluster identified by the cluster's name. Access logs contain a list of authentication requests made against your cluster. You can't use this feature on tenant-tier clusters (M0, M2, M5). To use this resource, the requesting API Key must have the Project Monitoring Admin role.
+		Returns the access logs of one cluster identified by the cluster's name. Access logs contain a list of authentication requests made against your cluster. You can't use this feature on tenant-tier clusters (M0, M2, M5). To use this resource, the requesting API Key must have the Project Monitoring Admin role.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param clusterName Human-readable label that identifies the cluster.
-	@return ListAccessLogsByClusterNameApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param clusterName Human-readable label that identifies the cluster.
+		@return ListAccessLogsByClusterNameApiRequest
 	*/
 	ListAccessLogsByClusterName(ctx context.Context, groupId string, clusterName string) ListAccessLogsByClusterNameApiRequest
 	/*
-	ListAccessLogsByClusterName Return Database Access History for One Cluster using Its Cluster Name
+		ListAccessLogsByClusterName Return Database Access History for One Cluster using Its Cluster Name
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param ListAccessLogsByClusterNameApiParams - Parameters for the request
-	@return ListAccessLogsByClusterNameApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListAccessLogsByClusterNameApiParams - Parameters for the request
+		@return ListAccessLogsByClusterNameApiRequest
 	*/
 	ListAccessLogsByClusterNameWithParams(ctx context.Context, args *ListAccessLogsByClusterNameApiParams) ListAccessLogsByClusterNameApiRequest
 
@@ -40,23 +39,23 @@ type AccessTrackingApi interface {
 	listAccessLogsByClusterNameExecute(r ListAccessLogsByClusterNameApiRequest) (*MongoDBAccessLogsList, *http.Response, error)
 
 	/*
-	ListAccessLogsByHostname Return Database Access History for One Cluster using Its Hostname
+		ListAccessLogsByHostname Return Database Access History for One Cluster using Its Hostname
 
-	Returns the access logs of one cluster identified by the cluster's hostname. Access logs contain a list of authentication requests made against your clusters. You can't use this feature on tenant-tier clusters (M0, M2, M5). To use this resource, the requesting API Key must have the Project Monitoring Admin role.
+		Returns the access logs of one cluster identified by the cluster's hostname. Access logs contain a list of authentication requests made against your clusters. You can't use this feature on tenant-tier clusters (M0, M2, M5). To use this resource, the requesting API Key must have the Project Monitoring Admin role.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param hostname Fully qualified domain name or IP address of the MongoDB host that stores the log files that you want to download.
-	@return ListAccessLogsByHostnameApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param hostname Fully qualified domain name or IP address of the MongoDB host that stores the log files that you want to download.
+		@return ListAccessLogsByHostnameApiRequest
 	*/
 	ListAccessLogsByHostname(ctx context.Context, groupId string, hostname string) ListAccessLogsByHostnameApiRequest
 	/*
-	ListAccessLogsByHostname Return Database Access History for One Cluster using Its Hostname
+		ListAccessLogsByHostname Return Database Access History for One Cluster using Its Hostname
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param ListAccessLogsByHostnameApiParams - Parameters for the request
-	@return ListAccessLogsByHostnameApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListAccessLogsByHostnameApiParams - Parameters for the request
+		@return ListAccessLogsByHostnameApiRequest
 	*/
 	ListAccessLogsByHostnameWithParams(ctx context.Context, args *ListAccessLogsByHostnameApiParams) ListAccessLogsByHostnameApiRequest
 
@@ -68,38 +67,38 @@ type AccessTrackingApi interface {
 type AccessTrackingApiService service
 
 type ListAccessLogsByClusterNameApiRequest struct {
-	ctx context.Context
-	ApiService AccessTrackingApi
-	groupId string
+	ctx         context.Context
+	ApiService  AccessTrackingApi
+	groupId     string
 	clusterName string
-	authResult *bool
-	end *string
-	ipAddress *string
-	nLogs *int64
-	start *time.Time
+	authResult  *bool
+	end         *string
+	ipAddress   *string
+	nLogs       *int64
+	start       *time.Time
 }
 
 type ListAccessLogsByClusterNameApiParams struct {
-		GroupId string
-		ClusterName string
-		AuthResult *bool
-		End *string
-		IpAddress *string
-		NLogs *int64
-		Start *time.Time
+	GroupId     string
+	ClusterName string
+	AuthResult  *bool
+	End         *string
+	IpAddress   *string
+	NLogs       *int64
+	Start       *time.Time
 }
 
 func (a *AccessTrackingApiService) ListAccessLogsByClusterNameWithParams(ctx context.Context, args *ListAccessLogsByClusterNameApiParams) ListAccessLogsByClusterNameApiRequest {
 	return ListAccessLogsByClusterNameApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: args.GroupId,
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     args.GroupId,
 		clusterName: args.ClusterName,
-		authResult: args.AuthResult,
-		end: args.End,
-		ipAddress: args.IpAddress,
-		nLogs: args.NLogs,
-		start: args.Start,
+		authResult:  args.AuthResult,
+		end:         args.End,
+		ipAddress:   args.IpAddress,
+		nLogs:       args.NLogs,
+		start:       args.Start,
 	}
 }
 
@@ -142,28 +141,29 @@ ListAccessLogsByClusterName Return Database Access History for One Cluster using
 
 Returns the access logs of one cluster identified by the cluster's name. Access logs contain a list of authentication requests made against your cluster. You can't use this feature on tenant-tier clusters (M0, M2, M5). To use this resource, the requesting API Key must have the Project Monitoring Admin role.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param clusterName Human-readable label that identifies the cluster.
- @return ListAccessLogsByClusterNameApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies the cluster.
+	@return ListAccessLogsByClusterNameApiRequest
 */
 func (a *AccessTrackingApiService) ListAccessLogsByClusterName(ctx context.Context, groupId string, clusterName string) ListAccessLogsByClusterNameApiRequest {
 	return ListAccessLogsByClusterNameApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: groupId,
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     groupId,
 		clusterName: clusterName,
 	}
 }
 
 // Execute executes the request
-//  @return MongoDBAccessLogsList
+//
+//	@return MongoDBAccessLogsList
 func (a *AccessTrackingApiService) listAccessLogsByClusterNameExecute(r ListAccessLogsByClusterNameApiRequest) (*MongoDBAccessLogsList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *MongoDBAccessLogsList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MongoDBAccessLogsList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessTrackingApiService.ListAccessLogsByClusterName")
@@ -273,38 +273,38 @@ func (a *AccessTrackingApiService) listAccessLogsByClusterNameExecute(r ListAcce
 }
 
 type ListAccessLogsByHostnameApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService AccessTrackingApi
-	groupId string
-	hostname string
+	groupId    string
+	hostname   string
 	authResult *bool
-	end *time.Time
-	ipAddress *string
-	nLogs *int32
-	start *time.Time
+	end        *time.Time
+	ipAddress  *string
+	nLogs      *int32
+	start      *time.Time
 }
 
 type ListAccessLogsByHostnameApiParams struct {
-		GroupId string
-		Hostname string
-		AuthResult *bool
-		End *time.Time
-		IpAddress *string
-		NLogs *int32
-		Start *time.Time
+	GroupId    string
+	Hostname   string
+	AuthResult *bool
+	End        *time.Time
+	IpAddress  *string
+	NLogs      *int32
+	Start      *time.Time
 }
 
 func (a *AccessTrackingApiService) ListAccessLogsByHostnameWithParams(ctx context.Context, args *ListAccessLogsByHostnameApiParams) ListAccessLogsByHostnameApiRequest {
 	return ListAccessLogsByHostnameApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupId: args.GroupId,
-		hostname: args.Hostname,
+		ctx:        ctx,
+		groupId:    args.GroupId,
+		hostname:   args.Hostname,
 		authResult: args.AuthResult,
-		end: args.End,
-		ipAddress: args.IpAddress,
-		nLogs: args.NLogs,
-		start: args.Start,
+		end:        args.End,
+		ipAddress:  args.IpAddress,
+		nLogs:      args.NLogs,
+		start:      args.Start,
 	}
 }
 
@@ -347,28 +347,29 @@ ListAccessLogsByHostname Return Database Access History for One Cluster using It
 
 Returns the access logs of one cluster identified by the cluster's hostname. Access logs contain a list of authentication requests made against your clusters. You can't use this feature on tenant-tier clusters (M0, M2, M5). To use this resource, the requesting API Key must have the Project Monitoring Admin role.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param hostname Fully qualified domain name or IP address of the MongoDB host that stores the log files that you want to download.
- @return ListAccessLogsByHostnameApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param hostname Fully qualified domain name or IP address of the MongoDB host that stores the log files that you want to download.
+	@return ListAccessLogsByHostnameApiRequest
 */
 func (a *AccessTrackingApiService) ListAccessLogsByHostname(ctx context.Context, groupId string, hostname string) ListAccessLogsByHostnameApiRequest {
 	return ListAccessLogsByHostnameApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupId: groupId,
-		hostname: hostname,
+		ctx:        ctx,
+		groupId:    groupId,
+		hostname:   hostname,
 	}
 }
 
 // Execute executes the request
-//  @return MongoDBAccessLogsList
+//
+//	@return MongoDBAccessLogsList
 func (a *AccessTrackingApiService) listAccessLogsByHostnameExecute(r ListAccessLogsByHostnameApiRequest) (*MongoDBAccessLogsList, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *MongoDBAccessLogsList
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MongoDBAccessLogsList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessTrackingApiService.ListAccessLogsByHostname")

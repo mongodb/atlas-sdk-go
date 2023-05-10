@@ -11,27 +11,26 @@ import (
 	"strings"
 )
 
-
 type RollingIndexApi interface {
 
 	/*
-	CreateRollingIndex Create One Rolling Index
+		CreateRollingIndex Create One Rolling Index
 
-	Creates an index on the cluster identified by its name in a rolling manner. Creating the index in this way allows index builds on one replica set member as a standalone at a time, starting with the secondary members. Creating indexes in this way requires at least one replica set election. To use this resource, the requesting API Key must have the Project Data Access Admin role. This resource doesn't require the API Key to have an Access List.
+		Creates an index on the cluster identified by its name in a rolling manner. Creating the index in this way allows index builds on one replica set member as a standalone at a time, starting with the secondary members. Creating indexes in this way requires at least one replica set election. To use this resource, the requesting API Key must have the Project Data Access Admin role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param clusterName Human-readable label that identifies the cluster on which MongoDB Cloud creates an index.
-	@return CreateRollingIndexApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param clusterName Human-readable label that identifies the cluster on which MongoDB Cloud creates an index.
+		@return CreateRollingIndexApiRequest
 	*/
 	CreateRollingIndex(ctx context.Context, groupId string, clusterName string) CreateRollingIndexApiRequest
 	/*
-	CreateRollingIndex Create One Rolling Index
+		CreateRollingIndex Create One Rolling Index
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param CreateRollingIndexApiParams - Parameters for the request
-	@return CreateRollingIndexApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param CreateRollingIndexApiParams - Parameters for the request
+		@return CreateRollingIndexApiRequest
 	*/
 	CreateRollingIndexWithParams(ctx context.Context, args *CreateRollingIndexApiParams) CreateRollingIndexApiRequest
 
@@ -43,25 +42,25 @@ type RollingIndexApi interface {
 type RollingIndexApiService service
 
 type CreateRollingIndexApiRequest struct {
-	ctx context.Context
-	ApiService RollingIndexApi
-	groupId string
-	clusterName string
+	ctx          context.Context
+	ApiService   RollingIndexApi
+	groupId      string
+	clusterName  string
 	indexRequest *IndexRequest
 }
 
 type CreateRollingIndexApiParams struct {
-		GroupId string
-		ClusterName string
-		IndexRequest *IndexRequest
+	GroupId      string
+	ClusterName  string
+	IndexRequest *IndexRequest
 }
 
 func (a *RollingIndexApiService) CreateRollingIndexWithParams(ctx context.Context, args *CreateRollingIndexApiParams) CreateRollingIndexApiRequest {
 	return CreateRollingIndexApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: args.GroupId,
-		clusterName: args.ClusterName,
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      args.GroupId,
+		clusterName:  args.ClusterName,
 		indexRequest: args.IndexRequest,
 	}
 }
@@ -81,16 +80,16 @@ CreateRollingIndex Create One Rolling Index
 
 Creates an index on the cluster identified by its name in a rolling manner. Creating the index in this way allows index builds on one replica set member as a standalone at a time, starting with the secondary members. Creating indexes in this way requires at least one replica set election. To use this resource, the requesting API Key must have the Project Data Access Admin role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param clusterName Human-readable label that identifies the cluster on which MongoDB Cloud creates an index.
- @return CreateRollingIndexApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies the cluster on which MongoDB Cloud creates an index.
+	@return CreateRollingIndexApiRequest
 */
 func (a *RollingIndexApiService) CreateRollingIndex(ctx context.Context, groupId string, clusterName string) CreateRollingIndexApiRequest {
 	return CreateRollingIndexApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: groupId,
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     groupId,
 		clusterName: clusterName,
 	}
 }
@@ -98,9 +97,9 @@ func (a *RollingIndexApiService) CreateRollingIndex(ctx context.Context, groupId
 // Execute executes the request
 func (a *RollingIndexApiService) createRollingIndexExecute(r CreateRollingIndexApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RollingIndexApiService.CreateRollingIndex")

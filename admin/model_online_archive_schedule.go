@@ -9,10 +9,10 @@ import (
 
 // OnlineArchiveSchedule - Regular frequency and duration when archiving process occurs.
 type OnlineArchiveSchedule struct {
-	DailySchedule *DailySchedule
+	DailySchedule   *DailySchedule
 	DefaultSchedule *DefaultSchedule
 	MonthlySchedule *MonthlySchedule
-	WeeklySchedule *WeeklySchedule
+	WeeklySchedule  *WeeklySchedule
 }
 
 // DailyScheduleAsOnlineArchiveSchedule is a convenience function that returns DailySchedule wrapped in OnlineArchiveSchedule
@@ -42,7 +42,6 @@ func WeeklyScheduleAsOnlineArchiveSchedule(v *WeeklySchedule) OnlineArchiveSched
 		WeeklySchedule: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *OnlineArchiveSchedule) UnmarshalJSON(data []byte) error {
@@ -175,7 +174,7 @@ func (src OnlineArchiveSchedule) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *OnlineArchiveSchedule) GetActualInstance() (interface{}) {
+func (obj *OnlineArchiveSchedule) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -234,5 +233,3 @@ func (v *NullableOnlineArchiveSchedule) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

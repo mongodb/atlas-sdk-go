@@ -13,7 +13,7 @@ var _ MappedNullable = &GroupMaintenanceWindow{}
 type GroupMaintenanceWindow struct {
 	// Flag that indicates whether MongoDB Cloud should defer all maintenance windows for one week after you enable them.
 	AutoDeferOnceEnabled *bool `json:"autoDeferOnceEnabled,omitempty"`
-	// One-based integer that represents the day of the week that the maintenance window starts.  | Value | Day of Week | |---|---| | `1` | Sunday | | `2` | Monday | | `3` | Tuesday | | `4` | Wednesday | | `5` | Thursday | | `6` | Friday | | `7` | Saturday | 
+	// One-based integer that represents the day of the week that the maintenance window starts.  | Value | Day of Week | |---|---| | `1` | Sunday | | `2` | Monday | | `3` | Tuesday | | `4` | Wednesday | | `5` | Thursday | | `6` | Friday | | `7` | Saturday |
 	DayOfWeek int32 `json:"dayOfWeek"`
 	// Zero-based integer that represents the hour of the of the day that the maintenance window starts according to a 24-hour clock. Use `0` for midnight and `12` for noon.
 	HourOfDay int32 `json:"hourOfDay"`
@@ -153,7 +153,7 @@ func (o *GroupMaintenanceWindow) SetStartASAP(v bool) {
 }
 
 func (o GroupMaintenanceWindow) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -207,5 +207,3 @@ func (v *NullableGroupMaintenanceWindow) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

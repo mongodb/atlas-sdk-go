@@ -16,7 +16,7 @@ type IdentityProviderUpdate struct {
 	// Human-readable label that identifies the identity provider.
 	DisplayName *string `json:"displayName,omitempty"`
 	// Unique string that identifies the issuer of the SAML Assertion.
-	IssuerUri *string `json:"issuerUri,omitempty"`
+	IssuerUri   *string      `json:"issuerUri,omitempty"`
 	PemFileInfo *PemFileInfo `json:"pemFileInfo,omitempty"`
 	// SAML Authentication Request Protocol HTTP method binding (POST or REDIRECT) that Federated Authentication uses to send the authentication request.
 	RequestBinding *string `json:"requestBinding,omitempty"`
@@ -329,7 +329,7 @@ func (o *IdentityProviderUpdate) SetStatus(v string) {
 }
 
 func (o IdentityProviderUpdate) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -400,5 +400,3 @@ func (v *NullableIdentityProviderUpdate) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

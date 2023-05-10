@@ -11,27 +11,26 @@ import (
 	"strings"
 )
 
-
 type SharedTierRestoreJobsApi interface {
 
 	/*
-	CreateSharedClusterBackupRestoreJob Create One Restore Job from One M2 or M5 Cluster
+		CreateSharedClusterBackupRestoreJob Create One Restore Job from One M2 or M5 Cluster
 
-	Restores the specified cluster. MongoDB Cloud limits which clusters can be the target clusters of a restore. The target cluster can't use encryption at rest, run a major release MongoDB version different than the snapshot, or receive client requests during restores. MongoDB Cloud deletes all existing data on the target cluster prior to the restore operation. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
+		Restores the specified cluster. MongoDB Cloud limits which clusters can be the target clusters of a restore. The target cluster can't use encryption at rest, run a major release MongoDB version different than the snapshot, or receive client requests during restores. MongoDB Cloud deletes all existing data on the target cluster prior to the restore operation. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param clusterName Human-readable label that identifies the cluster.
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return CreateSharedClusterBackupRestoreJobApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param clusterName Human-readable label that identifies the cluster.
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@return CreateSharedClusterBackupRestoreJobApiRequest
 	*/
 	CreateSharedClusterBackupRestoreJob(ctx context.Context, clusterName string, groupId string) CreateSharedClusterBackupRestoreJobApiRequest
 	/*
-	CreateSharedClusterBackupRestoreJob Create One Restore Job from One M2 or M5 Cluster
+		CreateSharedClusterBackupRestoreJob Create One Restore Job from One M2 or M5 Cluster
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param CreateSharedClusterBackupRestoreJobApiParams - Parameters for the request
-	@return CreateSharedClusterBackupRestoreJobApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param CreateSharedClusterBackupRestoreJobApiParams - Parameters for the request
+		@return CreateSharedClusterBackupRestoreJobApiRequest
 	*/
 	CreateSharedClusterBackupRestoreJobWithParams(ctx context.Context, args *CreateSharedClusterBackupRestoreJobApiParams) CreateSharedClusterBackupRestoreJobApiRequest
 
@@ -39,24 +38,24 @@ type SharedTierRestoreJobsApi interface {
 	createSharedClusterBackupRestoreJobExecute(r CreateSharedClusterBackupRestoreJobApiRequest) (*TenantRestore, *http.Response, error)
 
 	/*
-	GetSharedClusterBackupRestoreJob Return One Restore Job for One M2 or M5 Cluster
+		GetSharedClusterBackupRestoreJob Return One Restore Job for One M2 or M5 Cluster
 
-	Returns the specified restore job. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+		Returns the specified restore job. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param clusterName Human-readable label that identifies the cluster.
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param restoreId Unique 24-hexadecimal digit string that identifies the restore job to return.
-	@return GetSharedClusterBackupRestoreJobApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param clusterName Human-readable label that identifies the cluster.
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param restoreId Unique 24-hexadecimal digit string that identifies the restore job to return.
+		@return GetSharedClusterBackupRestoreJobApiRequest
 	*/
 	GetSharedClusterBackupRestoreJob(ctx context.Context, clusterName string, groupId string, restoreId string) GetSharedClusterBackupRestoreJobApiRequest
 	/*
-	GetSharedClusterBackupRestoreJob Return One Restore Job for One M2 or M5 Cluster
+		GetSharedClusterBackupRestoreJob Return One Restore Job for One M2 or M5 Cluster
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param GetSharedClusterBackupRestoreJobApiParams - Parameters for the request
-	@return GetSharedClusterBackupRestoreJobApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetSharedClusterBackupRestoreJobApiParams - Parameters for the request
+		@return GetSharedClusterBackupRestoreJobApiRequest
 	*/
 	GetSharedClusterBackupRestoreJobWithParams(ctx context.Context, args *GetSharedClusterBackupRestoreJobApiParams) GetSharedClusterBackupRestoreJobApiRequest
 
@@ -64,23 +63,23 @@ type SharedTierRestoreJobsApi interface {
 	getSharedClusterBackupRestoreJobExecute(r GetSharedClusterBackupRestoreJobApiRequest) (*TenantRestore, *http.Response, error)
 
 	/*
-	ListSharedClusterBackupRestoreJobs Return All Restore Jobs for One M2 or M5 Cluster
+		ListSharedClusterBackupRestoreJobs Return All Restore Jobs for One M2 or M5 Cluster
 
-	Returns all restore jobs for the specified M2 or M5 cluster. Restore jobs restore a cluster using a snapshot. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+		Returns all restore jobs for the specified M2 or M5 cluster. Restore jobs restore a cluster using a snapshot. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param clusterName Human-readable label that identifies the cluster.
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return ListSharedClusterBackupRestoreJobsApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param clusterName Human-readable label that identifies the cluster.
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@return ListSharedClusterBackupRestoreJobsApiRequest
 	*/
 	ListSharedClusterBackupRestoreJobs(ctx context.Context, clusterName string, groupId string) ListSharedClusterBackupRestoreJobsApiRequest
 	/*
-	ListSharedClusterBackupRestoreJobs Return All Restore Jobs for One M2 or M5 Cluster
+		ListSharedClusterBackupRestoreJobs Return All Restore Jobs for One M2 or M5 Cluster
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param ListSharedClusterBackupRestoreJobsApiParams - Parameters for the request
-	@return ListSharedClusterBackupRestoreJobsApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListSharedClusterBackupRestoreJobsApiParams - Parameters for the request
+		@return ListSharedClusterBackupRestoreJobsApiRequest
 	*/
 	ListSharedClusterBackupRestoreJobsWithParams(ctx context.Context, args *ListSharedClusterBackupRestoreJobsApiParams) ListSharedClusterBackupRestoreJobsApiRequest
 
@@ -92,25 +91,25 @@ type SharedTierRestoreJobsApi interface {
 type SharedTierRestoreJobsApiService service
 
 type CreateSharedClusterBackupRestoreJobApiRequest struct {
-	ctx context.Context
-	ApiService SharedTierRestoreJobsApi
-	clusterName string
-	groupId string
+	ctx           context.Context
+	ApiService    SharedTierRestoreJobsApi
+	clusterName   string
+	groupId       string
 	tenantRestore *TenantRestore
 }
 
 type CreateSharedClusterBackupRestoreJobApiParams struct {
-		ClusterName string
-		GroupId string
-		TenantRestore *TenantRestore
+	ClusterName   string
+	GroupId       string
+	TenantRestore *TenantRestore
 }
 
 func (a *SharedTierRestoreJobsApiService) CreateSharedClusterBackupRestoreJobWithParams(ctx context.Context, args *CreateSharedClusterBackupRestoreJobApiParams) CreateSharedClusterBackupRestoreJobApiRequest {
 	return CreateSharedClusterBackupRestoreJobApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		clusterName: args.ClusterName,
-		groupId: args.GroupId,
+		ApiService:    a,
+		ctx:           ctx,
+		clusterName:   args.ClusterName,
+		groupId:       args.GroupId,
 		tenantRestore: args.TenantRestore,
 	}
 }
@@ -130,28 +129,29 @@ CreateSharedClusterBackupRestoreJob Create One Restore Job from One M2 or M5 Clu
 
 Restores the specified cluster. MongoDB Cloud limits which clusters can be the target clusters of a restore. The target cluster can't use encryption at rest, run a major release MongoDB version different than the snapshot, or receive client requests during restores. MongoDB Cloud deletes all existing data on the target cluster prior to the restore operation. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param clusterName Human-readable label that identifies the cluster.
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @return CreateSharedClusterBackupRestoreJobApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param clusterName Human-readable label that identifies the cluster.
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return CreateSharedClusterBackupRestoreJobApiRequest
 */
 func (a *SharedTierRestoreJobsApiService) CreateSharedClusterBackupRestoreJob(ctx context.Context, clusterName string, groupId string) CreateSharedClusterBackupRestoreJobApiRequest {
 	return CreateSharedClusterBackupRestoreJobApiRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:  a,
+		ctx:         ctx,
 		clusterName: clusterName,
-		groupId: groupId,
+		groupId:     groupId,
 	}
 }
 
 // Execute executes the request
-//  @return TenantRestore
+//
+//	@return TenantRestore
 func (a *SharedTierRestoreJobsApiService) createSharedClusterBackupRestoreJobExecute(r CreateSharedClusterBackupRestoreJobApiRequest) (*TenantRestore, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *TenantRestore
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *TenantRestore
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharedTierRestoreJobsApiService.CreateSharedClusterBackupRestoreJob")
@@ -247,26 +247,26 @@ func (a *SharedTierRestoreJobsApiService) createSharedClusterBackupRestoreJobExe
 }
 
 type GetSharedClusterBackupRestoreJobApiRequest struct {
-	ctx context.Context
-	ApiService SharedTierRestoreJobsApi
+	ctx         context.Context
+	ApiService  SharedTierRestoreJobsApi
 	clusterName string
-	groupId string
-	restoreId string
+	groupId     string
+	restoreId   string
 }
 
 type GetSharedClusterBackupRestoreJobApiParams struct {
-		ClusterName string
-		GroupId string
-		RestoreId string
+	ClusterName string
+	GroupId     string
+	RestoreId   string
 }
 
 func (a *SharedTierRestoreJobsApiService) GetSharedClusterBackupRestoreJobWithParams(ctx context.Context, args *GetSharedClusterBackupRestoreJobApiParams) GetSharedClusterBackupRestoreJobApiRequest {
 	return GetSharedClusterBackupRestoreJobApiRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:  a,
+		ctx:         ctx,
 		clusterName: args.ClusterName,
-		groupId: args.GroupId,
-		restoreId: args.RestoreId,
+		groupId:     args.GroupId,
+		restoreId:   args.RestoreId,
 	}
 }
 
@@ -279,30 +279,31 @@ GetSharedClusterBackupRestoreJob Return One Restore Job for One M2 or M5 Cluster
 
 Returns the specified restore job. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param clusterName Human-readable label that identifies the cluster.
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param restoreId Unique 24-hexadecimal digit string that identifies the restore job to return.
- @return GetSharedClusterBackupRestoreJobApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param clusterName Human-readable label that identifies the cluster.
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param restoreId Unique 24-hexadecimal digit string that identifies the restore job to return.
+	@return GetSharedClusterBackupRestoreJobApiRequest
 */
 func (a *SharedTierRestoreJobsApiService) GetSharedClusterBackupRestoreJob(ctx context.Context, clusterName string, groupId string, restoreId string) GetSharedClusterBackupRestoreJobApiRequest {
 	return GetSharedClusterBackupRestoreJobApiRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:  a,
+		ctx:         ctx,
 		clusterName: clusterName,
-		groupId: groupId,
-		restoreId: restoreId,
+		groupId:     groupId,
+		restoreId:   restoreId,
 	}
 }
 
 // Execute executes the request
-//  @return TenantRestore
+//
+//	@return TenantRestore
 func (a *SharedTierRestoreJobsApiService) getSharedClusterBackupRestoreJobExecute(r GetSharedClusterBackupRestoreJobApiRequest) (*TenantRestore, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *TenantRestore
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *TenantRestore
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharedTierRestoreJobsApiService.GetSharedClusterBackupRestoreJob")
@@ -400,23 +401,23 @@ func (a *SharedTierRestoreJobsApiService) getSharedClusterBackupRestoreJobExecut
 }
 
 type ListSharedClusterBackupRestoreJobsApiRequest struct {
-	ctx context.Context
-	ApiService SharedTierRestoreJobsApi
+	ctx         context.Context
+	ApiService  SharedTierRestoreJobsApi
 	clusterName string
-	groupId string
+	groupId     string
 }
 
 type ListSharedClusterBackupRestoreJobsApiParams struct {
-		ClusterName string
-		GroupId string
+	ClusterName string
+	GroupId     string
 }
 
 func (a *SharedTierRestoreJobsApiService) ListSharedClusterBackupRestoreJobsWithParams(ctx context.Context, args *ListSharedClusterBackupRestoreJobsApiParams) ListSharedClusterBackupRestoreJobsApiRequest {
 	return ListSharedClusterBackupRestoreJobsApiRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:  a,
+		ctx:         ctx,
 		clusterName: args.ClusterName,
-		groupId: args.GroupId,
+		groupId:     args.GroupId,
 	}
 }
 
@@ -429,28 +430,29 @@ ListSharedClusterBackupRestoreJobs Return All Restore Jobs for One M2 or M5 Clus
 
 Returns all restore jobs for the specified M2 or M5 cluster. Restore jobs restore a cluster using a snapshot. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param clusterName Human-readable label that identifies the cluster.
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @return ListSharedClusterBackupRestoreJobsApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param clusterName Human-readable label that identifies the cluster.
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return ListSharedClusterBackupRestoreJobsApiRequest
 */
 func (a *SharedTierRestoreJobsApiService) ListSharedClusterBackupRestoreJobs(ctx context.Context, clusterName string, groupId string) ListSharedClusterBackupRestoreJobsApiRequest {
 	return ListSharedClusterBackupRestoreJobsApiRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:  a,
+		ctx:         ctx,
 		clusterName: clusterName,
-		groupId: groupId,
+		groupId:     groupId,
 	}
 }
 
 // Execute executes the request
-//  @return PaginatedTenantRestore
+//
+//	@return PaginatedTenantRestore
 func (a *SharedTierRestoreJobsApiService) listSharedClusterBackupRestoreJobsExecute(r ListSharedClusterBackupRestoreJobsApiRequest) (*PaginatedTenantRestore, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PaginatedTenantRestore
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedTenantRestore
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharedTierRestoreJobsApiService.ListSharedClusterBackupRestoreJobs")

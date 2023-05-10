@@ -31,7 +31,7 @@ type IngestionPipelineRun struct {
 	// Unique 24-hexadecimal character string that identifies the snapshot of a cluster.
 	SnapshotId *string `json:"snapshotId,omitempty"`
 	// State of the pipeline run.
-	State *string `json:"state,omitempty"`
+	State *string           `json:"state,omitempty"`
 	Stats *PipelineRunStats `json:"stats,omitempty"`
 }
 
@@ -405,7 +405,7 @@ func (o *IngestionPipelineRun) SetStats(v PipelineRunStats) {
 }
 
 func (o IngestionPipelineRun) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -454,5 +454,3 @@ func (v *NullableIngestionPipelineRun) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

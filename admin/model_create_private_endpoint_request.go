@@ -9,8 +9,8 @@ import (
 
 // CreatePrivateEndpointRequest - struct for CreatePrivateEndpointRequest
 type CreatePrivateEndpointRequest struct {
-	CreateAWSEndpointRequest *CreateAWSEndpointRequest
-	CreateAzureEndpointRequest *CreateAzureEndpointRequest
+	CreateAWSEndpointRequest      *CreateAWSEndpointRequest
+	CreateAzureEndpointRequest    *CreateAzureEndpointRequest
 	CreateGCPEndpointGroupRequest *CreateGCPEndpointGroupRequest
 }
 
@@ -34,7 +34,6 @@ func CreateGCPEndpointGroupRequestAsCreatePrivateEndpointRequest(v *CreateGCPEnd
 		CreateGCPEndpointGroupRequest: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *CreatePrivateEndpointRequest) UnmarshalJSON(data []byte) error {
@@ -111,7 +110,7 @@ func (src CreatePrivateEndpointRequest) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *CreatePrivateEndpointRequest) GetActualInstance() (interface{}) {
+func (obj *CreatePrivateEndpointRequest) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -166,5 +165,3 @@ func (v *NullableCreatePrivateEndpointRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -12,13 +12,13 @@ type TimeMetricUnits string
 
 // List of TimeMetricUnits
 const (
-	TIMEMETRICUNITS_NANOSECONDS TimeMetricUnits = "NANOSECONDS"
-	TIMEMETRICUNITS_MILLISECONDS TimeMetricUnits = "MILLISECONDS"
+	TIMEMETRICUNITS_NANOSECONDS     TimeMetricUnits = "NANOSECONDS"
+	TIMEMETRICUNITS_MILLISECONDS    TimeMetricUnits = "MILLISECONDS"
 	TIMEMETRICUNITS_MILLION_MINUTES TimeMetricUnits = "MILLION_MINUTES"
-	TIMEMETRICUNITS_SECONDS TimeMetricUnits = "SECONDS"
-	TIMEMETRICUNITS_MINUTES TimeMetricUnits = "MINUTES"
-	TIMEMETRICUNITS_HOURS TimeMetricUnits = "HOURS"
-	TIMEMETRICUNITS_DAYS TimeMetricUnits = "DAYS"
+	TIMEMETRICUNITS_SECONDS         TimeMetricUnits = "SECONDS"
+	TIMEMETRICUNITS_MINUTES         TimeMetricUnits = "MINUTES"
+	TIMEMETRICUNITS_HOURS           TimeMetricUnits = "HOURS"
+	TIMEMETRICUNITS_DAYS            TimeMetricUnits = "DAYS"
 )
 
 // All allowed values of TimeMetricUnits enum
@@ -74,5 +74,3 @@ func (v TimeMetricUnits) IsValid() bool {
 func (v TimeMetricUnits) Ptr() *TimeMetricUnits {
 	return &v
 }
-
-

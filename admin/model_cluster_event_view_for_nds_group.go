@@ -13,7 +13,7 @@ var _ MappedNullable = &ClusterEventViewForNdsGroup{}
 // ClusterEventViewForNdsGroup Cluster event identifies different activities about cluster of mongod hosts.
 type ClusterEventViewForNdsGroup struct {
 	// Date and time when this event occurred. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC.
-	Created time.Time `json:"created"`
+	Created       time.Time                       `json:"created"`
 	EventTypeName ClusterEventTypeViewForNdsGroup `json:"eventTypeName"`
 	// Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The **eventId** identifies the specific event.
 	GroupId *string `json:"groupId,omitempty"`
@@ -23,7 +23,7 @@ type ClusterEventViewForNdsGroup struct {
 	Links []Link `json:"links,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the organization to which these events apply.
 	OrgId *string `json:"orgId,omitempty"`
-	Raw *Raw `json:"raw,omitempty"`
+	Raw   *Raw    `json:"raw,omitempty"`
 	// Human-readable label of the shard associated with the event.
 	ShardName *string `json:"shardName,omitempty"`
 }
@@ -281,7 +281,7 @@ func (o *ClusterEventViewForNdsGroup) SetShardName(v string) {
 }
 
 func (o ClusterEventViewForNdsGroup) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -331,5 +331,3 @@ func (v *NullableClusterEventViewForNdsGroup) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

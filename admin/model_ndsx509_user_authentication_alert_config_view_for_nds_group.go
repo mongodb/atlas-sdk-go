@@ -15,7 +15,7 @@ type NDSX509UserAuthenticationAlertConfigViewForNdsGroup struct {
 	// Date and time when MongoDB Cloud created the alert configuration. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC.
 	Created *time.Time `json:"created,omitempty"`
 	// Flag that indicates whether someone enabled this alert configuration for the specified project.
-	Enabled *bool `json:"enabled,omitempty"`
+	Enabled       *bool                                           `json:"enabled,omitempty"`
 	EventTypeName NDSX509UserAuthenticationEventTypeViewAlertable `json:"eventTypeName"`
 	// Unique 24-hexadecimal digit string that identifies the project that owns this alert configuration.
 	GroupId *string `json:"groupId,omitempty"`
@@ -27,7 +27,7 @@ type NDSX509UserAuthenticationAlertConfigViewForNdsGroup struct {
 	Matchers []map[string]interface{} `json:"matchers,omitempty"`
 	// List that contains the targets that MongoDB Cloud sends notifications.
 	Notifications []NotificationViewForNdsGroup `json:"notifications,omitempty"`
-	Threshold *LessThanDaysThreshold `json:"threshold,omitempty"`
+	Threshold     *LessThanDaysThreshold        `json:"threshold,omitempty"`
 	// Date and time when someone last updated this alert configuration. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC.
 	Updated *time.Time `json:"updated,omitempty"`
 }
@@ -367,7 +367,7 @@ func (o *NDSX509UserAuthenticationAlertConfigViewForNdsGroup) SetUpdated(v time.
 }
 
 func (o NDSX509UserAuthenticationAlertConfigViewForNdsGroup) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -423,5 +423,3 @@ func (v *NullableNDSX509UserAuthenticationAlertConfigViewForNdsGroup) UnmarshalJ
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

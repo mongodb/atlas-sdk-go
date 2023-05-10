@@ -23,7 +23,7 @@ type ReplicaSetAlertViewForNdsGroup struct {
 	// Human-readable label that identifies the cluster to which this alert applies. This resource returns this parameter for alerts of events impacting backups, replica sets, or sharded clusters.
 	ClusterName *string `json:"clusterName,omitempty"`
 	// Date and time when MongoDB Cloud created this alert. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC.
-	Created time.Time `json:"created"`
+	Created       time.Time                                   `json:"created"`
 	EventTypeName ReplicaSetEventTypeViewForNdsGroupAlertable `json:"eventTypeName"`
 	// Unique 24-hexadecimal digit string that identifies the project that owns this alert.
 	GroupId *string `json:"groupId,omitempty"`
@@ -34,7 +34,7 @@ type ReplicaSetAlertViewForNdsGroup struct {
 	// Date and time that any notifications were last sent for this alert. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC. The resource returns this parameter if MongoDB Cloud has sent notifications for this alert.
 	LastNotified *time.Time `json:"lastNotified,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links             []Link   `json:"links,omitempty"`
 	NonRunningHostIds []string `json:"nonRunningHostIds,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the organization that owns the project to which this alert applies.
 	OrgId *string `json:"orgId,omitempty"`
@@ -627,7 +627,7 @@ func (o *ReplicaSetAlertViewForNdsGroup) SetUpdated(v time.Time) {
 }
 
 func (o ReplicaSetAlertViewForNdsGroup) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -678,5 +678,3 @@ func (v *NullableReplicaSetAlertViewForNdsGroup) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

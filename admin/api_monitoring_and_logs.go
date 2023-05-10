@@ -8,33 +8,32 @@ import (
 	"io"
 	"net/http"
 	"net/url"
-	"strings"
-	"reflect"
 	"os"
+	"reflect"
+	"strings"
 	"time"
 )
-
 
 type MonitoringAndLogsApi interface {
 
 	/*
-	GetAtlasProcess Return One MongoDB Process by ID
+		GetAtlasProcess Return One MongoDB Process by ID
 
-	Returns the processes for the specified host for the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+		Returns the processes for the specified host for the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
-	@return GetAtlasProcessApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
+		@return GetAtlasProcessApiRequest
 	*/
 	GetAtlasProcess(ctx context.Context, groupId string, processId string) GetAtlasProcessApiRequest
 	/*
-	GetAtlasProcess Return One MongoDB Process by ID
+		GetAtlasProcess Return One MongoDB Process by ID
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param GetAtlasProcessApiParams - Parameters for the request
-	@return GetAtlasProcessApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetAtlasProcessApiParams - Parameters for the request
+		@return GetAtlasProcessApiRequest
 	*/
 	GetAtlasProcessWithParams(ctx context.Context, args *GetAtlasProcessApiParams) GetAtlasProcessApiRequest
 
@@ -42,24 +41,24 @@ type MonitoringAndLogsApi interface {
 	getAtlasProcessExecute(r GetAtlasProcessApiRequest) (*HostViewAtlas, *http.Response, error)
 
 	/*
-	GetDatabase Return One Database for a MongoDB Process
+		GetDatabase Return One Database for a MongoDB Process
 
-	Returns one database running on the specified host for the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+		Returns one database running on the specified host for the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param databaseName Human-readable label that identifies the database that the specified MongoDB process serves.
-	@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
-	@return GetDatabaseApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param databaseName Human-readable label that identifies the database that the specified MongoDB process serves.
+		@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
+		@return GetDatabaseApiRequest
 	*/
 	GetDatabase(ctx context.Context, groupId string, databaseName string, processId string) GetDatabaseApiRequest
 	/*
-	GetDatabase Return One Database for a MongoDB Process
+		GetDatabase Return One Database for a MongoDB Process
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param GetDatabaseApiParams - Parameters for the request
-	@return GetDatabaseApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetDatabaseApiParams - Parameters for the request
+		@return GetDatabaseApiRequest
 	*/
 	GetDatabaseWithParams(ctx context.Context, args *GetDatabaseApiParams) GetDatabaseApiRequest
 
@@ -67,24 +66,24 @@ type MonitoringAndLogsApi interface {
 	getDatabaseExecute(r GetDatabaseApiRequest) (*Database, *http.Response, error)
 
 	/*
-	GetDatabaseMeasurements Return Measurements of One Database for One MongoDB Process
+		GetDatabaseMeasurements Return Measurements of One Database for One MongoDB Process
 
-	Returns the measurements of one database for the specified host for the specified project. Returns the database's on-disk storage space based on the MongoDB `dbStats` command output. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+		Returns the measurements of one database for the specified host for the specified project. Returns the database's on-disk storage space based on the MongoDB `dbStats` command output. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param databaseName Human-readable label that identifies the database that the specified MongoDB process serves.
-	@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
-	@return GetDatabaseMeasurementsApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param databaseName Human-readable label that identifies the database that the specified MongoDB process serves.
+		@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
+		@return GetDatabaseMeasurementsApiRequest
 	*/
 	GetDatabaseMeasurements(ctx context.Context, groupId string, databaseName string, processId string) GetDatabaseMeasurementsApiRequest
 	/*
-	GetDatabaseMeasurements Return Measurements of One Database for One MongoDB Process
+		GetDatabaseMeasurements Return Measurements of One Database for One MongoDB Process
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param GetDatabaseMeasurementsApiParams - Parameters for the request
-	@return GetDatabaseMeasurementsApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetDatabaseMeasurementsApiParams - Parameters for the request
+		@return GetDatabaseMeasurementsApiRequest
 	*/
 	GetDatabaseMeasurementsWithParams(ctx context.Context, args *GetDatabaseMeasurementsApiParams) GetDatabaseMeasurementsApiRequest
 
@@ -92,30 +91,30 @@ type MonitoringAndLogsApi interface {
 	getDatabaseMeasurementsExecute(r GetDatabaseMeasurementsApiRequest) (*MeasurementsGeneralViewAtlas, *http.Response, error)
 
 	/*
-	GetDiskMeasurements Return Measurements of One Disk for One MongoDB Process
+			GetDiskMeasurements Return Measurements of One Disk for One MongoDB Process
 
-	Returns the measurements of one disk or partition for the specified host for the specified project. Returned value can be one of the following:
-- Throughput of I/O operations for the disk partition used for the MongoDB process
-- Percentage of time during which requests the partition issued and serviced
-- Latency per operation type of the disk partition used for the MongoDB process
-- Amount of free and used disk space on the disk partition used for the MongoDB process
+			Returns the measurements of one disk or partition for the specified host for the specified project. Returned value can be one of the following:
+		- Throughput of I/O operations for the disk partition used for the MongoDB process
+		- Percentage of time during which requests the partition issued and serviced
+		- Latency per operation type of the disk partition used for the MongoDB process
+		- Amount of free and used disk space on the disk partition used for the MongoDB process
 
-To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+		To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param partitionName Human-readable label of the disk or partition to which the measurements apply.
-	@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
-	@return GetDiskMeasurementsApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param partitionName Human-readable label of the disk or partition to which the measurements apply.
+			@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
+			@return GetDiskMeasurementsApiRequest
 	*/
 	GetDiskMeasurements(ctx context.Context, groupId string, partitionName string, processId string) GetDiskMeasurementsApiRequest
 	/*
-	GetDiskMeasurements Return Measurements of One Disk for One MongoDB Process
+		GetDiskMeasurements Return Measurements of One Disk for One MongoDB Process
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param GetDiskMeasurementsApiParams - Parameters for the request
-	@return GetDiskMeasurementsApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetDiskMeasurementsApiParams - Parameters for the request
+		@return GetDiskMeasurementsApiRequest
 	*/
 	GetDiskMeasurementsWithParams(ctx context.Context, args *GetDiskMeasurementsApiParams) GetDiskMeasurementsApiRequest
 
@@ -123,24 +122,24 @@ To use this resource, the requesting API Key must have the Project Read Only rol
 	getDiskMeasurementsExecute(r GetDiskMeasurementsApiRequest) (*MeasurementsGeneralViewAtlas, *http.Response, error)
 
 	/*
-	GetHostLogs Download Logs for One Multi-Cloud Cluster Host in One Project
+		GetHostLogs Download Logs for One Multi-Cloud Cluster Host in One Project
 
-	Returns a compressed (.gz) log file that contains a range of log messages for the specified host for the specified project. To use this resource, the requesting API Key must have the Project Owner or Project Data Access Read Write roles. This resource doesn't require the API Key to have an Access List. Deprecated versions: v2-{2023-01-01}
+		Returns a compressed (.gz) log file that contains a range of log messages for the specified host for the specified project. To use this resource, the requesting API Key must have the Project Owner or Project Data Access Read Write roles. This resource doesn't require the API Key to have an Access List. Deprecated versions: v2-{2023-01-01}
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param hostName Fully qualified domain name or IP address of the MongoDB host that stores the log files that you want to download.
-	@param logName Human-readable label of the log file that you want to return. You can return audit logs only if you enable Database Auditing for the specified project.
-	@return GetHostLogsApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param hostName Fully qualified domain name or IP address of the MongoDB host that stores the log files that you want to download.
+		@param logName Human-readable label of the log file that you want to return. You can return audit logs only if you enable Database Auditing for the specified project.
+		@return GetHostLogsApiRequest
 	*/
 	GetHostLogs(ctx context.Context, groupId string, hostName string, logName string) GetHostLogsApiRequest
 	/*
-	GetHostLogs Download Logs for One Multi-Cloud Cluster Host in One Project
+		GetHostLogs Download Logs for One Multi-Cloud Cluster Host in One Project
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param GetHostLogsApiParams - Parameters for the request
-	@return GetHostLogsApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetHostLogsApiParams - Parameters for the request
+		@return GetHostLogsApiRequest
 	*/
 	GetHostLogsWithParams(ctx context.Context, args *GetHostLogsApiParams) GetHostLogsApiRequest
 
@@ -148,29 +147,29 @@ To use this resource, the requesting API Key must have the Project Read Only rol
 	getHostLogsExecute(r GetHostLogsApiRequest) (*os.File, *http.Response, error)
 
 	/*
-	GetHostMeasurements Return Measurements for One MongoDB Process
+			GetHostMeasurements Return Measurements for One MongoDB Process
 
-	Returns measurements of the disk or partition per process for the specified host for the specified project. Returned value can be one of the following:
-- Throughput of I/O operations for the disk partition used for the MongoDB process
-- Percentage of time during which requests the partition issued and serviced
-- Latency per operation type of the disk partition used for the MongoDB process
-- Amount of free and used disk space on the disk partition used for the MongoDB process 
+			Returns measurements of the disk or partition per process for the specified host for the specified project. Returned value can be one of the following:
+		- Throughput of I/O operations for the disk partition used for the MongoDB process
+		- Percentage of time during which requests the partition issued and serviced
+		- Latency per operation type of the disk partition used for the MongoDB process
+		- Amount of free and used disk space on the disk partition used for the MongoDB process
 
-To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+		To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
-	@return GetHostMeasurementsApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
+			@return GetHostMeasurementsApiRequest
 	*/
 	GetHostMeasurements(ctx context.Context, groupId string, processId string) GetHostMeasurementsApiRequest
 	/*
-	GetHostMeasurements Return Measurements for One MongoDB Process
+		GetHostMeasurements Return Measurements for One MongoDB Process
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param GetHostMeasurementsApiParams - Parameters for the request
-	@return GetHostMeasurementsApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetHostMeasurementsApiParams - Parameters for the request
+		@return GetHostMeasurementsApiRequest
 	*/
 	GetHostMeasurementsWithParams(ctx context.Context, args *GetHostMeasurementsApiParams) GetHostMeasurementsApiRequest
 
@@ -178,26 +177,26 @@ To use this resource, the requesting API Key must have the Project Read Only rol
 	getHostMeasurementsExecute(r GetHostMeasurementsApiRequest) (*MeasurementsGeneralViewAtlas, *http.Response, error)
 
 	/*
-	GetIndexMetrics Return Atlas Search Metrics for One Index in One Specified Namespace
+		GetIndexMetrics Return Atlas Search Metrics for One Index in One Specified Namespace
 
-	Returns the Atlas Search metrics data series within the provided time range for one namespace and index name on the specified process.
+		Returns the Atlas Search metrics data series within the provided time range for one namespace and index name on the specified process.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
-	@param indexName Human-readable label that identifies the index.
-	@param databaseName Human-readable label that identifies the database.
-	@param collectionName Human-readable label that identifies the collection.
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return GetIndexMetricsApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
+		@param indexName Human-readable label that identifies the index.
+		@param databaseName Human-readable label that identifies the database.
+		@param collectionName Human-readable label that identifies the collection.
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@return GetIndexMetricsApiRequest
 	*/
 	GetIndexMetrics(ctx context.Context, processId string, indexName string, databaseName string, collectionName string, groupId string) GetIndexMetricsApiRequest
 	/*
-	GetIndexMetrics Return Atlas Search Metrics for One Index in One Specified Namespace
+		GetIndexMetrics Return Atlas Search Metrics for One Index in One Specified Namespace
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param GetIndexMetricsApiParams - Parameters for the request
-	@return GetIndexMetricsApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetIndexMetricsApiParams - Parameters for the request
+		@return GetIndexMetricsApiRequest
 	*/
 	GetIndexMetricsWithParams(ctx context.Context, args *GetIndexMetricsApiParams) GetIndexMetricsApiRequest
 
@@ -205,23 +204,23 @@ To use this resource, the requesting API Key must have the Project Read Only rol
 	getIndexMetricsExecute(r GetIndexMetricsApiRequest) (*MeasurementsIndexes, *http.Response, error)
 
 	/*
-	GetMeasurements Return Atlas Search Hardware and Status Metrics
+		GetMeasurements Return Atlas Search Hardware and Status Metrics
 
-	Returns the Atlas Search hardware and status data series within the provided time range for one process in the specified project.
+		Returns the Atlas Search hardware and status data series within the provided time range for one process in the specified project.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return GetMeasurementsApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@return GetMeasurementsApiRequest
 	*/
 	GetMeasurements(ctx context.Context, processId string, groupId string) GetMeasurementsApiRequest
 	/*
-	GetMeasurements Return Atlas Search Hardware and Status Metrics
+		GetMeasurements Return Atlas Search Hardware and Status Metrics
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param GetMeasurementsApiParams - Parameters for the request
-	@return GetMeasurementsApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetMeasurementsApiParams - Parameters for the request
+		@return GetMeasurementsApiRequest
 	*/
 	GetMeasurementsWithParams(ctx context.Context, args *GetMeasurementsApiParams) GetMeasurementsApiRequest
 
@@ -229,22 +228,22 @@ To use this resource, the requesting API Key must have the Project Read Only rol
 	getMeasurementsExecute(r GetMeasurementsApiRequest) (*MeasurementsNonIndex, *http.Response, error)
 
 	/*
-	ListAtlasProcesses Return All MongoDB Processes in One Project
+		ListAtlasProcesses Return All MongoDB Processes in One Project
 
-	Returns details of all processes for the specified project. A MongoDB process can be either a `mongod` or `mongos`. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+		Returns details of all processes for the specified project. A MongoDB process can be either a `mongod` or `mongos`. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return ListAtlasProcessesApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@return ListAtlasProcessesApiRequest
 	*/
 	ListAtlasProcesses(ctx context.Context, groupId string) ListAtlasProcessesApiRequest
 	/*
-	ListAtlasProcesses Return All MongoDB Processes in One Project
+		ListAtlasProcesses Return All MongoDB Processes in One Project
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param ListAtlasProcessesApiParams - Parameters for the request
-	@return ListAtlasProcessesApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListAtlasProcessesApiParams - Parameters for the request
+		@return ListAtlasProcessesApiRequest
 	*/
 	ListAtlasProcessesWithParams(ctx context.Context, args *ListAtlasProcessesApiParams) ListAtlasProcessesApiRequest
 
@@ -252,23 +251,23 @@ To use this resource, the requesting API Key must have the Project Read Only rol
 	listAtlasProcessesExecute(r ListAtlasProcessesApiRequest) (*PaginatedHostViewAtlas, *http.Response, error)
 
 	/*
-	ListDatabases Return Available Databases for One MongoDB Process
+		ListDatabases Return Available Databases for One MongoDB Process
 
-	Returns the list of databases running on the specified host for the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+		Returns the list of databases running on the specified host for the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
-	@return ListDatabasesApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
+		@return ListDatabasesApiRequest
 	*/
 	ListDatabases(ctx context.Context, groupId string, processId string) ListDatabasesApiRequest
 	/*
-	ListDatabases Return Available Databases for One MongoDB Process
+		ListDatabases Return Available Databases for One MongoDB Process
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param ListDatabasesApiParams - Parameters for the request
-	@return ListDatabasesApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListDatabasesApiParams - Parameters for the request
+		@return ListDatabasesApiRequest
 	*/
 	ListDatabasesWithParams(ctx context.Context, args *ListDatabasesApiParams) ListDatabasesApiRequest
 
@@ -276,30 +275,30 @@ To use this resource, the requesting API Key must have the Project Read Only rol
 	listDatabasesExecute(r ListDatabasesApiRequest) (*PaginatedDatabase, *http.Response, error)
 
 	/*
-	ListDiskMeasurements Return Measurements of One Disk
+			ListDiskMeasurements Return Measurements of One Disk
 
-	Returns the measurements of one disk or partition for the specified host for the specified project. Returned value can be one of the following:
-- Throughput of I/O operations for the disk partition used for the MongoDB process
-- Percentage of time during which requests the partition issued and serviced
-- Latency per operation type of the disk partition used for the MongoDB process
-- Amount of free and used disk space on the disk partition used for the MongoDB process 
+			Returns the measurements of one disk or partition for the specified host for the specified project. Returned value can be one of the following:
+		- Throughput of I/O operations for the disk partition used for the MongoDB process
+		- Percentage of time during which requests the partition issued and serviced
+		- Latency per operation type of the disk partition used for the MongoDB process
+		- Amount of free and used disk space on the disk partition used for the MongoDB process
 
-To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+		To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param partitionName Human-readable label of the disk or partition to which the measurements apply.
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
-	@return ListDiskMeasurementsApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param partitionName Human-readable label of the disk or partition to which the measurements apply.
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
+			@return ListDiskMeasurementsApiRequest
 	*/
 	ListDiskMeasurements(ctx context.Context, partitionName string, groupId string, processId string) ListDiskMeasurementsApiRequest
 	/*
-	ListDiskMeasurements Return Measurements of One Disk
+		ListDiskMeasurements Return Measurements of One Disk
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param ListDiskMeasurementsApiParams - Parameters for the request
-	@return ListDiskMeasurementsApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListDiskMeasurementsApiParams - Parameters for the request
+		@return ListDiskMeasurementsApiRequest
 	*/
 	ListDiskMeasurementsWithParams(ctx context.Context, args *ListDiskMeasurementsApiParams) ListDiskMeasurementsApiRequest
 
@@ -307,23 +306,23 @@ To use this resource, the requesting API Key must have the Project Read Only rol
 	listDiskMeasurementsExecute(r ListDiskMeasurementsApiRequest) (*DiskPartition, *http.Response, error)
 
 	/*
-	ListDiskPartitions Return Available Disks for One MongoDB Process
+		ListDiskPartitions Return Available Disks for One MongoDB Process
 
-	Returns the list of disks or partitions for the specified host for the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+		Returns the list of disks or partitions for the specified host for the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
-	@return ListDiskPartitionsApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
+		@return ListDiskPartitionsApiRequest
 	*/
 	ListDiskPartitions(ctx context.Context, groupId string, processId string) ListDiskPartitionsApiRequest
 	/*
-	ListDiskPartitions Return Available Disks for One MongoDB Process
+		ListDiskPartitions Return Available Disks for One MongoDB Process
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param ListDiskPartitionsApiParams - Parameters for the request
-	@return ListDiskPartitionsApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListDiskPartitionsApiParams - Parameters for the request
+		@return ListDiskPartitionsApiRequest
 	*/
 	ListDiskPartitionsWithParams(ctx context.Context, args *ListDiskPartitionsApiParams) ListDiskPartitionsApiRequest
 
@@ -331,25 +330,25 @@ To use this resource, the requesting API Key must have the Project Read Only rol
 	listDiskPartitionsExecute(r ListDiskPartitionsApiRequest) (*PaginatedDiskPartition, *http.Response, error)
 
 	/*
-	ListIndexMetrics Return All Atlas Search Index Metrics for One Namespace
+		ListIndexMetrics Return All Atlas Search Index Metrics for One Namespace
 
-	Returns the Atlas Search index metrics within the specified time range for one namespace in the specified process.
+		Returns the Atlas Search index metrics within the specified time range for one namespace in the specified process.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
-	@param databaseName Human-readable label that identifies the database.
-	@param collectionName Human-readable label that identifies the collection.
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return ListIndexMetricsApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
+		@param databaseName Human-readable label that identifies the database.
+		@param collectionName Human-readable label that identifies the collection.
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@return ListIndexMetricsApiRequest
 	*/
 	ListIndexMetrics(ctx context.Context, processId string, databaseName string, collectionName string, groupId string) ListIndexMetricsApiRequest
 	/*
-	ListIndexMetrics Return All Atlas Search Index Metrics for One Namespace
+		ListIndexMetrics Return All Atlas Search Index Metrics for One Namespace
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param ListIndexMetricsApiParams - Parameters for the request
-	@return ListIndexMetricsApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListIndexMetricsApiParams - Parameters for the request
+		@return ListIndexMetricsApiRequest
 	*/
 	ListIndexMetricsWithParams(ctx context.Context, args *ListIndexMetricsApiParams) ListIndexMetricsApiRequest
 
@@ -357,23 +356,23 @@ To use this resource, the requesting API Key must have the Project Read Only rol
 	listIndexMetricsExecute(r ListIndexMetricsApiRequest) (*MeasurementsIndexes, *http.Response, error)
 
 	/*
-	ListMetricTypes Return All Atlas Search Metric Types for One Process
+		ListMetricTypes Return All Atlas Search Metric Types for One Process
 
-	Return all Atlas Search metric types available for one process in the specified project.
+		Return all Atlas Search metric types available for one process in the specified project.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return ListMetricTypesApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@return ListMetricTypesApiRequest
 	*/
 	ListMetricTypes(ctx context.Context, processId string, groupId string) ListMetricTypesApiRequest
 	/*
-	ListMetricTypes Return All Atlas Search Metric Types for One Process
+		ListMetricTypes Return All Atlas Search Metric Types for One Process
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param ListMetricTypesApiParams - Parameters for the request
-	@return ListMetricTypesApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListMetricTypesApiParams - Parameters for the request
+		@return ListMetricTypesApiRequest
 	*/
 	ListMetricTypesWithParams(ctx context.Context, args *ListMetricTypesApiParams) ListMetricTypesApiRequest
 
@@ -385,23 +384,23 @@ To use this resource, the requesting API Key must have the Project Read Only rol
 type MonitoringAndLogsApiService service
 
 type GetAtlasProcessApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService MonitoringAndLogsApi
-	groupId string
-	processId string
+	groupId    string
+	processId  string
 }
 
 type GetAtlasProcessApiParams struct {
-		GroupId string
-		ProcessId string
+	GroupId   string
+	ProcessId string
 }
 
 func (a *MonitoringAndLogsApiService) GetAtlasProcessWithParams(ctx context.Context, args *GetAtlasProcessApiParams) GetAtlasProcessApiRequest {
 	return GetAtlasProcessApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupId: args.GroupId,
-		processId: args.ProcessId,
+		ctx:        ctx,
+		groupId:    args.GroupId,
+		processId:  args.ProcessId,
 	}
 }
 
@@ -414,28 +413,29 @@ GetAtlasProcess Return One MongoDB Process by ID
 
 Returns the processes for the specified host for the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
- @return GetAtlasProcessApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
+	@return GetAtlasProcessApiRequest
 */
 func (a *MonitoringAndLogsApiService) GetAtlasProcess(ctx context.Context, groupId string, processId string) GetAtlasProcessApiRequest {
 	return GetAtlasProcessApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupId: groupId,
-		processId: processId,
+		ctx:        ctx,
+		groupId:    groupId,
+		processId:  processId,
 	}
 }
 
 // Execute executes the request
-//  @return HostViewAtlas
+//
+//	@return HostViewAtlas
 func (a *MonitoringAndLogsApiService) getAtlasProcessExecute(r GetAtlasProcessApiRequest) (*HostViewAtlas, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *HostViewAtlas
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *HostViewAtlas
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.GetAtlasProcess")
@@ -520,26 +520,26 @@ func (a *MonitoringAndLogsApiService) getAtlasProcessExecute(r GetAtlasProcessAp
 }
 
 type GetDatabaseApiRequest struct {
-	ctx context.Context
-	ApiService MonitoringAndLogsApi
-	groupId string
+	ctx          context.Context
+	ApiService   MonitoringAndLogsApi
+	groupId      string
 	databaseName string
-	processId string
+	processId    string
 }
 
 type GetDatabaseApiParams struct {
-		GroupId string
-		DatabaseName string
-		ProcessId string
+	GroupId      string
+	DatabaseName string
+	ProcessId    string
 }
 
 func (a *MonitoringAndLogsApiService) GetDatabaseWithParams(ctx context.Context, args *GetDatabaseApiParams) GetDatabaseApiRequest {
 	return GetDatabaseApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: args.GroupId,
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      args.GroupId,
 		databaseName: args.DatabaseName,
-		processId: args.ProcessId,
+		processId:    args.ProcessId,
 	}
 }
 
@@ -552,30 +552,31 @@ GetDatabase Return One Database for a MongoDB Process
 
 Returns one database running on the specified host for the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param databaseName Human-readable label that identifies the database that the specified MongoDB process serves.
- @param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
- @return GetDatabaseApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param databaseName Human-readable label that identifies the database that the specified MongoDB process serves.
+	@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
+	@return GetDatabaseApiRequest
 */
 func (a *MonitoringAndLogsApiService) GetDatabase(ctx context.Context, groupId string, databaseName string, processId string) GetDatabaseApiRequest {
 	return GetDatabaseApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: groupId,
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      groupId,
 		databaseName: databaseName,
-		processId: processId,
+		processId:    processId,
 	}
 }
 
 // Execute executes the request
-//  @return Database
+//
+//	@return Database
 func (a *MonitoringAndLogsApiService) getDatabaseExecute(r GetDatabaseApiRequest) (*Database, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Database
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Database
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.GetDatabase")
@@ -661,29 +662,29 @@ func (a *MonitoringAndLogsApiService) getDatabaseExecute(r GetDatabaseApiRequest
 }
 
 type GetDatabaseMeasurementsApiRequest struct {
-	ctx context.Context
-	ApiService MonitoringAndLogsApi
-	groupId string
+	ctx          context.Context
+	ApiService   MonitoringAndLogsApi
+	groupId      string
 	databaseName string
-	processId string
-	m *[]string
+	processId    string
+	m            *[]string
 }
 
 type GetDatabaseMeasurementsApiParams struct {
-		GroupId string
-		DatabaseName string
-		ProcessId string
-		M *[]string
+	GroupId      string
+	DatabaseName string
+	ProcessId    string
+	M            *[]string
 }
 
 func (a *MonitoringAndLogsApiService) GetDatabaseMeasurementsWithParams(ctx context.Context, args *GetDatabaseMeasurementsApiParams) GetDatabaseMeasurementsApiRequest {
 	return GetDatabaseMeasurementsApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: args.GroupId,
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      args.GroupId,
 		databaseName: args.DatabaseName,
-		processId: args.ProcessId,
-		m: args.M,
+		processId:    args.ProcessId,
+		m:            args.M,
 	}
 }
 
@@ -702,30 +703,31 @@ GetDatabaseMeasurements Return Measurements of One Database for One MongoDB Proc
 
 Returns the measurements of one database for the specified host for the specified project. Returns the database's on-disk storage space based on the MongoDB `dbStats` command output. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param databaseName Human-readable label that identifies the database that the specified MongoDB process serves.
- @param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
- @return GetDatabaseMeasurementsApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param databaseName Human-readable label that identifies the database that the specified MongoDB process serves.
+	@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
+	@return GetDatabaseMeasurementsApiRequest
 */
 func (a *MonitoringAndLogsApiService) GetDatabaseMeasurements(ctx context.Context, groupId string, databaseName string, processId string) GetDatabaseMeasurementsApiRequest {
 	return GetDatabaseMeasurementsApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: groupId,
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      groupId,
 		databaseName: databaseName,
-		processId: processId,
+		processId:    processId,
 	}
 }
 
 // Execute executes the request
-//  @return MeasurementsGeneralViewAtlas
+//
+//	@return MeasurementsGeneralViewAtlas
 func (a *MonitoringAndLogsApiService) getDatabaseMeasurementsExecute(r GetDatabaseMeasurementsApiRequest) (*MeasurementsGeneralViewAtlas, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *MeasurementsGeneralViewAtlas
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MeasurementsGeneralViewAtlas
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.GetDatabaseMeasurements")
@@ -822,29 +824,29 @@ func (a *MonitoringAndLogsApiService) getDatabaseMeasurementsExecute(r GetDataba
 }
 
 type GetDiskMeasurementsApiRequest struct {
-	ctx context.Context
-	ApiService MonitoringAndLogsApi
-	groupId string
+	ctx           context.Context
+	ApiService    MonitoringAndLogsApi
+	groupId       string
 	partitionName string
-	processId string
-	m *[]string
+	processId     string
+	m             *[]string
 }
 
 type GetDiskMeasurementsApiParams struct {
-		GroupId string
-		PartitionName string
-		ProcessId string
-		M *[]string
+	GroupId       string
+	PartitionName string
+	ProcessId     string
+	M             *[]string
 }
 
 func (a *MonitoringAndLogsApiService) GetDiskMeasurementsWithParams(ctx context.Context, args *GetDiskMeasurementsApiParams) GetDiskMeasurementsApiRequest {
 	return GetDiskMeasurementsApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: args.GroupId,
+		ApiService:    a,
+		ctx:           ctx,
+		groupId:       args.GroupId,
 		partitionName: args.PartitionName,
-		processId: args.ProcessId,
-		m: args.M,
+		processId:     args.ProcessId,
+		m:             args.M,
 	}
 }
 
@@ -869,30 +871,31 @@ Returns the measurements of one disk or partition for the specified host for the
 
 To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param partitionName Human-readable label of the disk or partition to which the measurements apply.
- @param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
- @return GetDiskMeasurementsApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param partitionName Human-readable label of the disk or partition to which the measurements apply.
+	@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
+	@return GetDiskMeasurementsApiRequest
 */
 func (a *MonitoringAndLogsApiService) GetDiskMeasurements(ctx context.Context, groupId string, partitionName string, processId string) GetDiskMeasurementsApiRequest {
 	return GetDiskMeasurementsApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: groupId,
+		ApiService:    a,
+		ctx:           ctx,
+		groupId:       groupId,
 		partitionName: partitionName,
-		processId: processId,
+		processId:     processId,
 	}
 }
 
 // Execute executes the request
-//  @return MeasurementsGeneralViewAtlas
+//
+//	@return MeasurementsGeneralViewAtlas
 func (a *MonitoringAndLogsApiService) getDiskMeasurementsExecute(r GetDiskMeasurementsApiRequest) (*MeasurementsGeneralViewAtlas, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *MeasurementsGeneralViewAtlas
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MeasurementsGeneralViewAtlas
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.GetDiskMeasurements")
@@ -989,32 +992,32 @@ func (a *MonitoringAndLogsApiService) getDiskMeasurementsExecute(r GetDiskMeasur
 }
 
 type GetHostLogsApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService MonitoringAndLogsApi
-	groupId string
-	hostName string
-	logName string
-	endDate *int64
-	startDate *int64
+	groupId    string
+	hostName   string
+	logName    string
+	endDate    *int64
+	startDate  *int64
 }
 
 type GetHostLogsApiParams struct {
-		GroupId string
-		HostName string
-		LogName string
-		EndDate *int64
-		StartDate *int64
+	GroupId   string
+	HostName  string
+	LogName   string
+	EndDate   *int64
+	StartDate *int64
 }
 
 func (a *MonitoringAndLogsApiService) GetHostLogsWithParams(ctx context.Context, args *GetHostLogsApiParams) GetHostLogsApiRequest {
 	return GetHostLogsApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupId: args.GroupId,
-		hostName: args.HostName,
-		logName: args.LogName,
-		endDate: args.EndDate,
-		startDate: args.StartDate,
+		ctx:        ctx,
+		groupId:    args.GroupId,
+		hostName:   args.HostName,
+		logName:    args.LogName,
+		endDate:    args.EndDate,
+		startDate:  args.StartDate,
 	}
 }
 
@@ -1039,30 +1042,31 @@ GetHostLogs Download Logs for One Multi-Cloud Cluster Host in One Project
 
 Returns a compressed (.gz) log file that contains a range of log messages for the specified host for the specified project. To use this resource, the requesting API Key must have the Project Owner or Project Data Access Read Write roles. This resource doesn't require the API Key to have an Access List. Deprecated versions: v2-{2023-01-01}
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param hostName Fully qualified domain name or IP address of the MongoDB host that stores the log files that you want to download.
- @param logName Human-readable label of the log file that you want to return. You can return audit logs only if you enable Database Auditing for the specified project.
- @return GetHostLogsApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param hostName Fully qualified domain name or IP address of the MongoDB host that stores the log files that you want to download.
+	@param logName Human-readable label of the log file that you want to return. You can return audit logs only if you enable Database Auditing for the specified project.
+	@return GetHostLogsApiRequest
 */
 func (a *MonitoringAndLogsApiService) GetHostLogs(ctx context.Context, groupId string, hostName string, logName string) GetHostLogsApiRequest {
 	return GetHostLogsApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupId: groupId,
-		hostName: hostName,
-		logName: logName,
+		ctx:        ctx,
+		groupId:    groupId,
+		hostName:   hostName,
+		logName:    logName,
 	}
 }
 
 // Execute executes the request
-//  @return *os.File
+//
+//	@return *os.File
 func (a *MonitoringAndLogsApiService) getHostLogsExecute(r GetHostLogsApiRequest) (*os.File, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *os.File
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *os.File
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.GetHostLogs")
@@ -1154,29 +1158,29 @@ func (a *MonitoringAndLogsApiService) getHostLogsExecute(r GetHostLogsApiRequest
 }
 
 type GetHostMeasurementsApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService MonitoringAndLogsApi
-	groupId string
-	processId string
-	m *[]string
-	period *time.Time
+	groupId    string
+	processId  string
+	m          *[]string
+	period     *time.Time
 }
 
 type GetHostMeasurementsApiParams struct {
-		GroupId string
-		ProcessId string
-		M *[]string
-		Period *time.Time
+	GroupId   string
+	ProcessId string
+	M         *[]string
+	Period    *time.Time
 }
 
 func (a *MonitoringAndLogsApiService) GetHostMeasurementsWithParams(ctx context.Context, args *GetHostMeasurementsApiParams) GetHostMeasurementsApiRequest {
 	return GetHostMeasurementsApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupId: args.GroupId,
-		processId: args.ProcessId,
-		m: args.M,
-		period: args.Period,
+		ctx:        ctx,
+		groupId:    args.GroupId,
+		processId:  args.ProcessId,
+		m:          args.M,
+		period:     args.Period,
 	}
 }
 
@@ -1203,32 +1207,33 @@ Returns measurements of the disk or partition per process for the specified host
 - Throughput of I/O operations for the disk partition used for the MongoDB process
 - Percentage of time during which requests the partition issued and serviced
 - Latency per operation type of the disk partition used for the MongoDB process
-- Amount of free and used disk space on the disk partition used for the MongoDB process 
+- Amount of free and used disk space on the disk partition used for the MongoDB process
 
 To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
- @return GetHostMeasurementsApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
+	@return GetHostMeasurementsApiRequest
 */
 func (a *MonitoringAndLogsApiService) GetHostMeasurements(ctx context.Context, groupId string, processId string) GetHostMeasurementsApiRequest {
 	return GetHostMeasurementsApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupId: groupId,
-		processId: processId,
+		ctx:        ctx,
+		groupId:    groupId,
+		processId:  processId,
 	}
 }
 
 // Execute executes the request
-//  @return MeasurementsGeneralViewAtlas
+//
+//	@return MeasurementsGeneralViewAtlas
 func (a *MonitoringAndLogsApiService) getHostMeasurementsExecute(r GetHostMeasurementsApiRequest) (*MeasurementsGeneralViewAtlas, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *MeasurementsGeneralViewAtlas
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MeasurementsGeneralViewAtlas
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.GetHostMeasurements")
@@ -1327,47 +1332,47 @@ func (a *MonitoringAndLogsApiService) getHostMeasurementsExecute(r GetHostMeasur
 }
 
 type GetIndexMetricsApiRequest struct {
-	ctx context.Context
-	ApiService MonitoringAndLogsApi
-	processId string
-	indexName string
-	databaseName string
+	ctx            context.Context
+	ApiService     MonitoringAndLogsApi
+	processId      string
+	indexName      string
+	databaseName   string
 	collectionName string
-	groupId string
-	granularity *string
-	metrics *[]string
-	period *string
-	start *time.Time
-	end *time.Time
+	groupId        string
+	granularity    *string
+	metrics        *[]string
+	period         *string
+	start          *time.Time
+	end            *time.Time
 }
 
 type GetIndexMetricsApiParams struct {
-		ProcessId string
-		IndexName string
-		DatabaseName string
-		CollectionName string
-		GroupId string
-		Granularity *string
-		Metrics *[]string
-		Period *string
-		Start *time.Time
-		End *time.Time
+	ProcessId      string
+	IndexName      string
+	DatabaseName   string
+	CollectionName string
+	GroupId        string
+	Granularity    *string
+	Metrics        *[]string
+	Period         *string
+	Start          *time.Time
+	End            *time.Time
 }
 
 func (a *MonitoringAndLogsApiService) GetIndexMetricsWithParams(ctx context.Context, args *GetIndexMetricsApiParams) GetIndexMetricsApiRequest {
 	return GetIndexMetricsApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		processId: args.ProcessId,
-		indexName: args.IndexName,
-		databaseName: args.DatabaseName,
+		ApiService:     a,
+		ctx:            ctx,
+		processId:      args.ProcessId,
+		indexName:      args.IndexName,
+		databaseName:   args.DatabaseName,
 		collectionName: args.CollectionName,
-		groupId: args.GroupId,
-		granularity: args.Granularity,
-		metrics: args.Metrics,
-		period: args.Period,
-		start: args.Start,
-		end: args.End,
+		groupId:        args.GroupId,
+		granularity:    args.Granularity,
+		metrics:        args.Metrics,
+		period:         args.Period,
+		start:          args.Start,
+		end:            args.End,
 	}
 }
 
@@ -1410,34 +1415,35 @@ GetIndexMetrics Return Atlas Search Metrics for One Index in One Specified Names
 
 Returns the Atlas Search metrics data series within the provided time range for one namespace and index name on the specified process.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
- @param indexName Human-readable label that identifies the index.
- @param databaseName Human-readable label that identifies the database.
- @param collectionName Human-readable label that identifies the collection.
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @return GetIndexMetricsApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
+	@param indexName Human-readable label that identifies the index.
+	@param databaseName Human-readable label that identifies the database.
+	@param collectionName Human-readable label that identifies the collection.
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return GetIndexMetricsApiRequest
 */
 func (a *MonitoringAndLogsApiService) GetIndexMetrics(ctx context.Context, processId string, indexName string, databaseName string, collectionName string, groupId string) GetIndexMetricsApiRequest {
 	return GetIndexMetricsApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		processId: processId,
-		indexName: indexName,
-		databaseName: databaseName,
+		ApiService:     a,
+		ctx:            ctx,
+		processId:      processId,
+		indexName:      indexName,
+		databaseName:   databaseName,
 		collectionName: collectionName,
-		groupId: groupId,
+		groupId:        groupId,
 	}
 }
 
 // Execute executes the request
-//  @return MeasurementsIndexes
+//
+//	@return MeasurementsIndexes
 func (a *MonitoringAndLogsApiService) getIndexMetricsExecute(r GetIndexMetricsApiRequest) (*MeasurementsIndexes, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *MeasurementsIndexes
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MeasurementsIndexes
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.GetIndexMetrics")
@@ -1555,38 +1561,38 @@ func (a *MonitoringAndLogsApiService) getIndexMetricsExecute(r GetIndexMetricsAp
 }
 
 type GetMeasurementsApiRequest struct {
-	ctx context.Context
-	ApiService MonitoringAndLogsApi
-	processId string
-	groupId string
+	ctx         context.Context
+	ApiService  MonitoringAndLogsApi
+	processId   string
+	groupId     string
 	granularity *string
-	metrics *[]string
-	period *string
-	start *time.Time
-	end *time.Time
+	metrics     *[]string
+	period      *string
+	start       *time.Time
+	end         *time.Time
 }
 
 type GetMeasurementsApiParams struct {
-		ProcessId string
-		GroupId string
-		Granularity *string
-		Metrics *[]string
-		Period *string
-		Start *time.Time
-		End *time.Time
+	ProcessId   string
+	GroupId     string
+	Granularity *string
+	Metrics     *[]string
+	Period      *string
+	Start       *time.Time
+	End         *time.Time
 }
 
 func (a *MonitoringAndLogsApiService) GetMeasurementsWithParams(ctx context.Context, args *GetMeasurementsApiParams) GetMeasurementsApiRequest {
 	return GetMeasurementsApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		processId: args.ProcessId,
-		groupId: args.GroupId,
+		ApiService:  a,
+		ctx:         ctx,
+		processId:   args.ProcessId,
+		groupId:     args.GroupId,
 		granularity: args.Granularity,
-		metrics: args.Metrics,
-		period: args.Period,
-		start: args.Start,
-		end: args.End,
+		metrics:     args.Metrics,
+		period:      args.Period,
+		start:       args.Start,
+		end:         args.End,
 	}
 }
 
@@ -1629,28 +1635,29 @@ GetMeasurements Return Atlas Search Hardware and Status Metrics
 
 Returns the Atlas Search hardware and status data series within the provided time range for one process in the specified project.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @return GetMeasurementsApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return GetMeasurementsApiRequest
 */
 func (a *MonitoringAndLogsApiService) GetMeasurements(ctx context.Context, processId string, groupId string) GetMeasurementsApiRequest {
 	return GetMeasurementsApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		processId: processId,
-		groupId: groupId,
+		ctx:        ctx,
+		processId:  processId,
+		groupId:    groupId,
 	}
 }
 
 // Execute executes the request
-//  @return MeasurementsNonIndex
+//
+//	@return MeasurementsNonIndex
 func (a *MonitoringAndLogsApiService) getMeasurementsExecute(r GetMeasurementsApiRequest) (*MeasurementsNonIndex, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *MeasurementsNonIndex
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MeasurementsNonIndex
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.GetMeasurements")
@@ -1765,29 +1772,29 @@ func (a *MonitoringAndLogsApiService) getMeasurementsExecute(r GetMeasurementsAp
 }
 
 type ListAtlasProcessesApiRequest struct {
-	ctx context.Context
-	ApiService MonitoringAndLogsApi
-	groupId string
+	ctx          context.Context
+	ApiService   MonitoringAndLogsApi
+	groupId      string
 	includeCount *bool
 	itemsPerPage *int32
-	pageNum *int32
+	pageNum      *int32
 }
 
 type ListAtlasProcessesApiParams struct {
-		GroupId string
-		IncludeCount *bool
-		ItemsPerPage *int32
-		PageNum *int32
+	GroupId      string
+	IncludeCount *bool
+	ItemsPerPage *int32
+	PageNum      *int32
 }
 
 func (a *MonitoringAndLogsApiService) ListAtlasProcessesWithParams(ctx context.Context, args *ListAtlasProcessesApiParams) ListAtlasProcessesApiRequest {
 	return ListAtlasProcessesApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: args.GroupId,
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      args.GroupId,
 		includeCount: args.IncludeCount,
 		itemsPerPage: args.ItemsPerPage,
-		pageNum: args.PageNum,
+		pageNum:      args.PageNum,
 	}
 }
 
@@ -1818,26 +1825,27 @@ ListAtlasProcesses Return All MongoDB Processes in One Project
 
 Returns details of all processes for the specified project. A MongoDB process can be either a `mongod` or `mongos`. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @return ListAtlasProcessesApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return ListAtlasProcessesApiRequest
 */
 func (a *MonitoringAndLogsApiService) ListAtlasProcesses(ctx context.Context, groupId string) ListAtlasProcessesApiRequest {
 	return ListAtlasProcessesApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupId: groupId,
+		ctx:        ctx,
+		groupId:    groupId,
 	}
 }
 
 // Execute executes the request
-//  @return PaginatedHostViewAtlas
+//
+//	@return PaginatedHostViewAtlas
 func (a *MonitoringAndLogsApiService) listAtlasProcessesExecute(r ListAtlasProcessesApiRequest) (*PaginatedHostViewAtlas, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PaginatedHostViewAtlas
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedHostViewAtlas
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.ListAtlasProcesses")
@@ -1942,32 +1950,32 @@ func (a *MonitoringAndLogsApiService) listAtlasProcessesExecute(r ListAtlasProce
 }
 
 type ListDatabasesApiRequest struct {
-	ctx context.Context
-	ApiService MonitoringAndLogsApi
-	groupId string
-	processId string
+	ctx          context.Context
+	ApiService   MonitoringAndLogsApi
+	groupId      string
+	processId    string
 	includeCount *bool
 	itemsPerPage *int32
-	pageNum *int32
+	pageNum      *int32
 }
 
 type ListDatabasesApiParams struct {
-		GroupId string
-		ProcessId string
-		IncludeCount *bool
-		ItemsPerPage *int32
-		PageNum *int32
+	GroupId      string
+	ProcessId    string
+	IncludeCount *bool
+	ItemsPerPage *int32
+	PageNum      *int32
 }
 
 func (a *MonitoringAndLogsApiService) ListDatabasesWithParams(ctx context.Context, args *ListDatabasesApiParams) ListDatabasesApiRequest {
 	return ListDatabasesApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: args.GroupId,
-		processId: args.ProcessId,
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      args.GroupId,
+		processId:    args.ProcessId,
 		includeCount: args.IncludeCount,
 		itemsPerPage: args.ItemsPerPage,
-		pageNum: args.PageNum,
+		pageNum:      args.PageNum,
 	}
 }
 
@@ -1998,28 +2006,29 @@ ListDatabases Return Available Databases for One MongoDB Process
 
 Returns the list of databases running on the specified host for the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
- @return ListDatabasesApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
+	@return ListDatabasesApiRequest
 */
 func (a *MonitoringAndLogsApiService) ListDatabases(ctx context.Context, groupId string, processId string) ListDatabasesApiRequest {
 	return ListDatabasesApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupId: groupId,
-		processId: processId,
+		ctx:        ctx,
+		groupId:    groupId,
+		processId:  processId,
 	}
 }
 
 // Execute executes the request
-//  @return PaginatedDatabase
+//
+//	@return PaginatedDatabase
 func (a *MonitoringAndLogsApiService) listDatabasesExecute(r ListDatabasesApiRequest) (*PaginatedDatabase, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PaginatedDatabase
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedDatabase
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.ListDatabases")
@@ -2125,26 +2134,26 @@ func (a *MonitoringAndLogsApiService) listDatabasesExecute(r ListDatabasesApiReq
 }
 
 type ListDiskMeasurementsApiRequest struct {
-	ctx context.Context
-	ApiService MonitoringAndLogsApi
+	ctx           context.Context
+	ApiService    MonitoringAndLogsApi
 	partitionName string
-	groupId string
-	processId string
+	groupId       string
+	processId     string
 }
 
 type ListDiskMeasurementsApiParams struct {
-		PartitionName string
-		GroupId string
-		ProcessId string
+	PartitionName string
+	GroupId       string
+	ProcessId     string
 }
 
 func (a *MonitoringAndLogsApiService) ListDiskMeasurementsWithParams(ctx context.Context, args *ListDiskMeasurementsApiParams) ListDiskMeasurementsApiRequest {
 	return ListDiskMeasurementsApiRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		partitionName: args.PartitionName,
-		groupId: args.GroupId,
-		processId: args.ProcessId,
+		groupId:       args.GroupId,
+		processId:     args.ProcessId,
 	}
 }
 
@@ -2159,34 +2168,35 @@ Returns the measurements of one disk or partition for the specified host for the
 - Throughput of I/O operations for the disk partition used for the MongoDB process
 - Percentage of time during which requests the partition issued and serviced
 - Latency per operation type of the disk partition used for the MongoDB process
-- Amount of free and used disk space on the disk partition used for the MongoDB process 
+- Amount of free and used disk space on the disk partition used for the MongoDB process
 
 To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param partitionName Human-readable label of the disk or partition to which the measurements apply.
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
- @return ListDiskMeasurementsApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param partitionName Human-readable label of the disk or partition to which the measurements apply.
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
+	@return ListDiskMeasurementsApiRequest
 */
 func (a *MonitoringAndLogsApiService) ListDiskMeasurements(ctx context.Context, partitionName string, groupId string, processId string) ListDiskMeasurementsApiRequest {
 	return ListDiskMeasurementsApiRequest{
-		ApiService: a,
-		ctx: ctx,
+		ApiService:    a,
+		ctx:           ctx,
 		partitionName: partitionName,
-		groupId: groupId,
-		processId: processId,
+		groupId:       groupId,
+		processId:     processId,
 	}
 }
 
 // Execute executes the request
-//  @return DiskPartition
+//
+//	@return DiskPartition
 func (a *MonitoringAndLogsApiService) listDiskMeasurementsExecute(r ListDiskMeasurementsApiRequest) (*DiskPartition, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *DiskPartition
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DiskPartition
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.ListDiskMeasurements")
@@ -2272,32 +2282,32 @@ func (a *MonitoringAndLogsApiService) listDiskMeasurementsExecute(r ListDiskMeas
 }
 
 type ListDiskPartitionsApiRequest struct {
-	ctx context.Context
-	ApiService MonitoringAndLogsApi
-	groupId string
-	processId string
+	ctx          context.Context
+	ApiService   MonitoringAndLogsApi
+	groupId      string
+	processId    string
 	includeCount *bool
 	itemsPerPage *int32
-	pageNum *int32
+	pageNum      *int32
 }
 
 type ListDiskPartitionsApiParams struct {
-		GroupId string
-		ProcessId string
-		IncludeCount *bool
-		ItemsPerPage *int32
-		PageNum *int32
+	GroupId      string
+	ProcessId    string
+	IncludeCount *bool
+	ItemsPerPage *int32
+	PageNum      *int32
 }
 
 func (a *MonitoringAndLogsApiService) ListDiskPartitionsWithParams(ctx context.Context, args *ListDiskPartitionsApiParams) ListDiskPartitionsApiRequest {
 	return ListDiskPartitionsApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: args.GroupId,
-		processId: args.ProcessId,
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      args.GroupId,
+		processId:    args.ProcessId,
 		includeCount: args.IncludeCount,
 		itemsPerPage: args.ItemsPerPage,
-		pageNum: args.PageNum,
+		pageNum:      args.PageNum,
 	}
 }
 
@@ -2328,28 +2338,29 @@ ListDiskPartitions Return Available Disks for One MongoDB Process
 
 Returns the list of disks or partitions for the specified host for the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
- @return ListDiskPartitionsApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
+	@return ListDiskPartitionsApiRequest
 */
 func (a *MonitoringAndLogsApiService) ListDiskPartitions(ctx context.Context, groupId string, processId string) ListDiskPartitionsApiRequest {
 	return ListDiskPartitionsApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupId: groupId,
-		processId: processId,
+		ctx:        ctx,
+		groupId:    groupId,
+		processId:  processId,
 	}
 }
 
 // Execute executes the request
-//  @return PaginatedDiskPartition
+//
+//	@return PaginatedDiskPartition
 func (a *MonitoringAndLogsApiService) listDiskPartitionsExecute(r ListDiskPartitionsApiRequest) (*PaginatedDiskPartition, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PaginatedDiskPartition
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedDiskPartition
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.ListDiskPartitions")
@@ -2455,44 +2466,44 @@ func (a *MonitoringAndLogsApiService) listDiskPartitionsExecute(r ListDiskPartit
 }
 
 type ListIndexMetricsApiRequest struct {
-	ctx context.Context
-	ApiService MonitoringAndLogsApi
-	processId string
-	databaseName string
+	ctx            context.Context
+	ApiService     MonitoringAndLogsApi
+	processId      string
+	databaseName   string
 	collectionName string
-	groupId string
-	granularity *string
-	metrics *[]string
-	period *string
-	start *time.Time
-	end *time.Time
+	groupId        string
+	granularity    *string
+	metrics        *[]string
+	period         *string
+	start          *time.Time
+	end            *time.Time
 }
 
 type ListIndexMetricsApiParams struct {
-		ProcessId string
-		DatabaseName string
-		CollectionName string
-		GroupId string
-		Granularity *string
-		Metrics *[]string
-		Period *string
-		Start *time.Time
-		End *time.Time
+	ProcessId      string
+	DatabaseName   string
+	CollectionName string
+	GroupId        string
+	Granularity    *string
+	Metrics        *[]string
+	Period         *string
+	Start          *time.Time
+	End            *time.Time
 }
 
 func (a *MonitoringAndLogsApiService) ListIndexMetricsWithParams(ctx context.Context, args *ListIndexMetricsApiParams) ListIndexMetricsApiRequest {
 	return ListIndexMetricsApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		processId: args.ProcessId,
-		databaseName: args.DatabaseName,
+		ApiService:     a,
+		ctx:            ctx,
+		processId:      args.ProcessId,
+		databaseName:   args.DatabaseName,
 		collectionName: args.CollectionName,
-		groupId: args.GroupId,
-		granularity: args.Granularity,
-		metrics: args.Metrics,
-		period: args.Period,
-		start: args.Start,
-		end: args.End,
+		groupId:        args.GroupId,
+		granularity:    args.Granularity,
+		metrics:        args.Metrics,
+		period:         args.Period,
+		start:          args.Start,
+		end:            args.End,
 	}
 }
 
@@ -2535,32 +2546,33 @@ ListIndexMetrics Return All Atlas Search Index Metrics for One Namespace
 
 Returns the Atlas Search index metrics within the specified time range for one namespace in the specified process.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
- @param databaseName Human-readable label that identifies the database.
- @param collectionName Human-readable label that identifies the collection.
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @return ListIndexMetricsApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
+	@param databaseName Human-readable label that identifies the database.
+	@param collectionName Human-readable label that identifies the collection.
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return ListIndexMetricsApiRequest
 */
 func (a *MonitoringAndLogsApiService) ListIndexMetrics(ctx context.Context, processId string, databaseName string, collectionName string, groupId string) ListIndexMetricsApiRequest {
 	return ListIndexMetricsApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		processId: processId,
-		databaseName: databaseName,
+		ApiService:     a,
+		ctx:            ctx,
+		processId:      processId,
+		databaseName:   databaseName,
 		collectionName: collectionName,
-		groupId: groupId,
+		groupId:        groupId,
 	}
 }
 
 // Execute executes the request
-//  @return MeasurementsIndexes
+//
+//	@return MeasurementsIndexes
 func (a *MonitoringAndLogsApiService) listIndexMetricsExecute(r ListIndexMetricsApiRequest) (*MeasurementsIndexes, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *MeasurementsIndexes
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *MeasurementsIndexes
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.ListIndexMetrics")
@@ -2677,23 +2689,23 @@ func (a *MonitoringAndLogsApiService) listIndexMetricsExecute(r ListIndexMetrics
 }
 
 type ListMetricTypesApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService MonitoringAndLogsApi
-	processId string
-	groupId string
+	processId  string
+	groupId    string
 }
 
 type ListMetricTypesApiParams struct {
-		ProcessId string
-		GroupId string
+	ProcessId string
+	GroupId   string
 }
 
 func (a *MonitoringAndLogsApiService) ListMetricTypesWithParams(ctx context.Context, args *ListMetricTypesApiParams) ListMetricTypesApiRequest {
 	return ListMetricTypesApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		processId: args.ProcessId,
-		groupId: args.GroupId,
+		ctx:        ctx,
+		processId:  args.ProcessId,
+		groupId:    args.GroupId,
 	}
 }
 
@@ -2706,28 +2718,29 @@ ListMetricTypes Return All Atlas Search Metric Types for One Process
 
 Return all Atlas Search metric types available for one process in the specified project.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @return ListMetricTypesApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return ListMetricTypesApiRequest
 */
 func (a *MonitoringAndLogsApiService) ListMetricTypes(ctx context.Context, processId string, groupId string) ListMetricTypesApiRequest {
 	return ListMetricTypesApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		processId: processId,
-		groupId: groupId,
+		ctx:        ctx,
+		processId:  processId,
+		groupId:    groupId,
 	}
 }
 
 // Execute executes the request
-//  @return FTSMetrics
+//
+//	@return FTSMetrics
 func (a *MonitoringAndLogsApiService) listMetricTypesExecute(r ListMetricTypesApiRequest) (*FTSMetrics, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *FTSMetrics
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *FTSMetrics
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.ListMetricTypes")

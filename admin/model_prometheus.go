@@ -14,9 +14,9 @@ type Prometheus struct {
 	// Flag that indicates whether someone has activated the Prometheus integration.
 	Enabled bool `json:"enabled"`
 	// Combination of IPv4 address and Internet Assigned Numbers Authority (IANA) port or the IANA port alone to which Prometheus binds to ingest MongoDB metrics.
-	ListenAddress *string `json:"listenAddress,omitempty"`
-	Password *string `json:"password,omitempty"`
-	RateLimitInterval *int32 `json:"rateLimitInterval,omitempty"`
+	ListenAddress     *string `json:"listenAddress,omitempty"`
+	Password          *string `json:"password,omitempty"`
+	RateLimitInterval *int32  `json:"rateLimitInterval,omitempty"`
 	// Security Scheme to apply to HyperText Transfer Protocol (HTTP) traffic between Prometheus and MongoDB Cloud.
 	Scheme string `json:"scheme"`
 	// Desired method to discover the Prometheus service.
@@ -311,7 +311,7 @@ func (o *Prometheus) SetUsername(v string) {
 }
 
 func (o Prometheus) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -376,5 +376,3 @@ func (v *NullablePrometheus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

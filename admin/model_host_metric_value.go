@@ -13,7 +13,7 @@ var _ MappedNullable = &HostMetricValue{}
 type HostMetricValue struct {
 	// Amount of the **metricName** recorded at the time of the event. This value triggered the alert.
 	Number *float64 `json:"number,omitempty"`
-	Units *string `json:"units,omitempty"`
+	Units  *string  `json:"units,omitempty"`
 }
 
 // NewHostMetricValue instantiates a new HostMetricValue object
@@ -98,7 +98,7 @@ func (o *HostMetricValue) SetUnits(v string) {
 }
 
 func (o HostMetricValue) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -147,5 +147,3 @@ func (v *NullableHostMetricValue) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

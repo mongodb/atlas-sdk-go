@@ -92,7 +92,7 @@ func (o *ExampleResourceResponseView20230101) SetLinks(v []Link) {
 }
 
 func (o ExampleResourceResponseView20230101) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -139,5 +139,3 @@ func (v *NullableExampleResourceResponseView20230101) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

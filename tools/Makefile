@@ -18,6 +18,7 @@ transform_openapi:
 .PHONY: generate_client
 generate_client:
 	./scripts/generate.sh
+	goimports -w ./${SDK_FOLDER}/*.go
 
 .PHONY: clean_and_generate
 clean_and_generate: clean_client generate_client

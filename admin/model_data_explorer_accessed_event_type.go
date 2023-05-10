@@ -12,10 +12,10 @@ type DataExplorerAccessedEventType string
 
 // List of DataExplorerAccessedEventType
 const (
-	DATAEXPLORERACCESSEDEVENTTYPE_EXPLORER DataExplorerAccessedEventType = "DATA_EXPLORER"
+	DATAEXPLORERACCESSEDEVENTTYPE_EXPLORER              DataExplorerAccessedEventType = "DATA_EXPLORER"
 	DATAEXPLORERACCESSEDEVENTTYPE_EXPLORER_CRUD_ATTEMPT DataExplorerAccessedEventType = "DATA_EXPLORER_CRUD_ATTEMPT"
-	DATAEXPLORERACCESSEDEVENTTYPE_EXPLORER_CRUD_ERROR DataExplorerAccessedEventType = "DATA_EXPLORER_CRUD_ERROR"
-	DATAEXPLORERACCESSEDEVENTTYPE_EXPLORER_CRUD DataExplorerAccessedEventType = "DATA_EXPLORER_CRUD"
+	DATAEXPLORERACCESSEDEVENTTYPE_EXPLORER_CRUD_ERROR   DataExplorerAccessedEventType = "DATA_EXPLORER_CRUD_ERROR"
+	DATAEXPLORERACCESSEDEVENTTYPE_EXPLORER_CRUD         DataExplorerAccessedEventType = "DATA_EXPLORER_CRUD"
 )
 
 // All allowed values of DataExplorerAccessedEventType enum
@@ -68,5 +68,3 @@ func (v DataExplorerAccessedEventType) IsValid() bool {
 func (v DataExplorerAccessedEventType) Ptr() *DataExplorerAccessedEventType {
 	return &v
 }
-
-

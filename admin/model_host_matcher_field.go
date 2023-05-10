@@ -12,11 +12,11 @@ type HostMatcherField string
 
 // List of HostMatcherField
 const (
-	HOSTMATCHERFIELD_TYPE_NAME HostMatcherField = "TYPE_NAME"
-	HOSTMATCHERFIELD_HOSTNAME HostMatcherField = "HOSTNAME"
-	HOSTMATCHERFIELD_PORT HostMatcherField = "PORT"
+	HOSTMATCHERFIELD_TYPE_NAME         HostMatcherField = "TYPE_NAME"
+	HOSTMATCHERFIELD_HOSTNAME          HostMatcherField = "HOSTNAME"
+	HOSTMATCHERFIELD_PORT              HostMatcherField = "PORT"
 	HOSTMATCHERFIELD_HOSTNAME_AND_PORT HostMatcherField = "HOSTNAME_AND_PORT"
-	HOSTMATCHERFIELD_REPLICA_SET_NAME HostMatcherField = "REPLICA_SET_NAME"
+	HOSTMATCHERFIELD_REPLICA_SET_NAME  HostMatcherField = "REPLICA_SET_NAME"
 )
 
 // All allowed values of HostMatcherField enum
@@ -70,5 +70,3 @@ func (v HostMatcherField) IsValid() bool {
 func (v HostMatcherField) Ptr() *HostMatcherField {
 	return &v
 }
-
-

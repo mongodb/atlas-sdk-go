@@ -62,5 +62,3 @@ func (v CpsBackupEventTypeViewForNdsGroupAlertableWithThreshold) IsValid() bool 
 func (v CpsBackupEventTypeViewForNdsGroupAlertableWithThreshold) Ptr() *CpsBackupEventTypeViewForNdsGroupAlertableWithThreshold {
 	return &v
 }
-
-

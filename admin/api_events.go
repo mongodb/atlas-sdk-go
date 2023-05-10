@@ -8,34 +8,33 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"reflect"
 	"strings"
 	"time"
-	"reflect"
 )
-
 
 type EventsApi interface {
 
 	/*
-	GetOrganizationEvent Return One Event from One Organization
+			GetOrganizationEvent Return One Event from One Organization
 
-	Returns one event for the specified organization. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Organization Member role. This resource doesn't require the API Key to have an Access List.
+			Returns one event for the specified organization. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Organization Member role. This resource doesn't require the API Key to have an Access List.
 
- This resource remains under revision and may change. Refer to the [legacy documentation for this resource](https://www.mongodb.com/docs/atlas/reference/api/events-orgs-get-one/).
+		 This resource remains under revision and may change. Refer to the [legacy documentation for this resource](https://www.mongodb.com/docs/atlas/reference/api/events-orgs-get-one/).
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-	@param eventId Unique 24-hexadecimal digit string that identifies the event that you want to return. Use the [/events](#tag/Events/operation/listOrganizationEvents) endpoint to retrieve all events to which the authenticated user has access.
-	@return GetOrganizationEventApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@param eventId Unique 24-hexadecimal digit string that identifies the event that you want to return. Use the [/events](#tag/Events/operation/listOrganizationEvents) endpoint to retrieve all events to which the authenticated user has access.
+			@return GetOrganizationEventApiRequest
 	*/
 	GetOrganizationEvent(ctx context.Context, orgId string, eventId string) GetOrganizationEventApiRequest
 	/*
-	GetOrganizationEvent Return One Event from One Organization
+		GetOrganizationEvent Return One Event from One Organization
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param GetOrganizationEventApiParams - Parameters for the request
-	@return GetOrganizationEventApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetOrganizationEventApiParams - Parameters for the request
+		@return GetOrganizationEventApiRequest
 	*/
 	GetOrganizationEventWithParams(ctx context.Context, args *GetOrganizationEventApiParams) GetOrganizationEventApiRequest
 
@@ -43,25 +42,25 @@ type EventsApi interface {
 	getOrganizationEventExecute(r GetOrganizationEventApiRequest) (*EventViewForOrg, *http.Response, error)
 
 	/*
-	GetProjectEvent Return One Event from One Project
+			GetProjectEvent Return One Event from One Project
 
-	Returns one event for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+			Returns one event for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
- This resource remains under revision and may change. Refer to the [legacy documentation for this resource](https://www.mongodb.com/docs/atlas/reference/api/events-projects-get-one/).
+		 This resource remains under revision and may change. Refer to the [legacy documentation for this resource](https://www.mongodb.com/docs/atlas/reference/api/events-projects-get-one/).
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param eventId Unique 24-hexadecimal digit string that identifies the event that you want to return. Use the [/events](#tag/Events/operation/listProjectEvents) endpoint to retrieve all events to which the authenticated user has access.
-	@return GetProjectEventApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param eventId Unique 24-hexadecimal digit string that identifies the event that you want to return. Use the [/events](#tag/Events/operation/listProjectEvents) endpoint to retrieve all events to which the authenticated user has access.
+			@return GetProjectEventApiRequest
 	*/
 	GetProjectEvent(ctx context.Context, groupId string, eventId string) GetProjectEventApiRequest
 	/*
-	GetProjectEvent Return One Event from One Project
+		GetProjectEvent Return One Event from One Project
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param GetProjectEventApiParams - Parameters for the request
-	@return GetProjectEventApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetProjectEventApiParams - Parameters for the request
+		@return GetProjectEventApiRequest
 	*/
 	GetProjectEventWithParams(ctx context.Context, args *GetProjectEventApiParams) GetProjectEventApiRequest
 
@@ -69,24 +68,24 @@ type EventsApi interface {
 	getProjectEventExecute(r GetProjectEventApiRequest) (*EventViewForNdsGroup, *http.Response, error)
 
 	/*
-	ListOrganizationEvents Return All Events from One Organization
+			ListOrganizationEvents Return All Events from One Organization
 
-	Returns all events for the specified organization. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Organization Member role. This resource doesn't require the API Key to have an Access List.
+			Returns all events for the specified organization. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Organization Member role. This resource doesn't require the API Key to have an Access List.
 
- This resource remains under revision and may change. Refer to the [legacy documentation for this resource](https://www.mongodb.com/docs/atlas/reference/api/events-orgs-get-all/).
+		 This resource remains under revision and may change. Refer to the [legacy documentation for this resource](https://www.mongodb.com/docs/atlas/reference/api/events-orgs-get-all/).
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-	@return ListOrganizationEventsApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@return ListOrganizationEventsApiRequest
 	*/
 	ListOrganizationEvents(ctx context.Context, orgId string) ListOrganizationEventsApiRequest
 	/*
-	ListOrganizationEvents Return All Events from One Organization
+		ListOrganizationEvents Return All Events from One Organization
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param ListOrganizationEventsApiParams - Parameters for the request
-	@return ListOrganizationEventsApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListOrganizationEventsApiParams - Parameters for the request
+		@return ListOrganizationEventsApiRequest
 	*/
 	ListOrganizationEventsWithParams(ctx context.Context, args *ListOrganizationEventsApiParams) ListOrganizationEventsApiRequest
 
@@ -94,24 +93,24 @@ type EventsApi interface {
 	listOrganizationEventsExecute(r ListOrganizationEventsApiRequest) (*OrgPaginatedEvent, *http.Response, error)
 
 	/*
-	ListProjectEvents Return All Events from One Project
+			ListProjectEvents Return All Events from One Project
 
-	Returns one event for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+			Returns one event for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
- This resource remains under revision and may change. Refer to the [legacy documentation for this resource](https://www.mongodb.com/docs/atlas/reference/api/events-projects-get-all/).
+		 This resource remains under revision and may change. Refer to the [legacy documentation for this resource](https://www.mongodb.com/docs/atlas/reference/api/events-projects-get-all/).
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return ListProjectEventsApiRequest
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@return ListProjectEventsApiRequest
 	*/
 	ListProjectEvents(ctx context.Context, groupId string) ListProjectEventsApiRequest
 	/*
-	ListProjectEvents Return All Events from One Project
+		ListProjectEvents Return All Events from One Project
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param ListProjectEventsApiParams - Parameters for the request
-	@return ListProjectEventsApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListProjectEventsApiParams - Parameters for the request
+		@return ListProjectEventsApiRequest
 	*/
 	ListProjectEventsWithParams(ctx context.Context, args *ListProjectEventsApiParams) ListProjectEventsApiRequest
 
@@ -123,25 +122,25 @@ type EventsApi interface {
 type EventsApiService service
 
 type GetOrganizationEventApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService EventsApi
-	orgId string
-	eventId string
+	orgId      string
+	eventId    string
 	includeRaw *bool
 }
 
 type GetOrganizationEventApiParams struct {
-		OrgId string
-		EventId string
-		IncludeRaw *bool
+	OrgId      string
+	EventId    string
+	IncludeRaw *bool
 }
 
 func (a *EventsApiService) GetOrganizationEventWithParams(ctx context.Context, args *GetOrganizationEventApiParams) GetOrganizationEventApiRequest {
 	return GetOrganizationEventApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		orgId: args.OrgId,
-		eventId: args.EventId,
+		ctx:        ctx,
+		orgId:      args.OrgId,
+		eventId:    args.EventId,
 		includeRaw: args.IncludeRaw,
 	}
 }
@@ -161,30 +160,31 @@ GetOrganizationEvent Return One Event from One Organization
 
 Returns one event for the specified organization. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Organization Member role. This resource doesn't require the API Key to have an Access List.
 
- This resource remains under revision and may change. Refer to the [legacy documentation for this resource](https://www.mongodb.com/docs/atlas/reference/api/events-orgs-get-one/).
+	This resource remains under revision and may change. Refer to the [legacy documentation for this resource](https://www.mongodb.com/docs/atlas/reference/api/events-orgs-get-one/).
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
- @param eventId Unique 24-hexadecimal digit string that identifies the event that you want to return. Use the [/events](#tag/Events/operation/listOrganizationEvents) endpoint to retrieve all events to which the authenticated user has access.
- @return GetOrganizationEventApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param eventId Unique 24-hexadecimal digit string that identifies the event that you want to return. Use the [/events](#tag/Events/operation/listOrganizationEvents) endpoint to retrieve all events to which the authenticated user has access.
+	@return GetOrganizationEventApiRequest
 */
 func (a *EventsApiService) GetOrganizationEvent(ctx context.Context, orgId string, eventId string) GetOrganizationEventApiRequest {
 	return GetOrganizationEventApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		orgId: orgId,
-		eventId: eventId,
+		ctx:        ctx,
+		orgId:      orgId,
+		eventId:    eventId,
 	}
 }
 
 // Execute executes the request
-//  @return EventViewForOrg
+//
+//	@return EventViewForOrg
 func (a *EventsApiService) getOrganizationEventExecute(r GetOrganizationEventApiRequest) (*EventViewForOrg, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *EventViewForOrg
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *EventViewForOrg
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.GetOrganizationEvent")
@@ -282,25 +282,25 @@ func (a *EventsApiService) getOrganizationEventExecute(r GetOrganizationEventApi
 }
 
 type GetProjectEventApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService EventsApi
-	groupId string
-	eventId string
+	groupId    string
+	eventId    string
 	includeRaw *bool
 }
 
 type GetProjectEventApiParams struct {
-		GroupId string
-		EventId string
-		IncludeRaw *bool
+	GroupId    string
+	EventId    string
+	IncludeRaw *bool
 }
 
 func (a *EventsApiService) GetProjectEventWithParams(ctx context.Context, args *GetProjectEventApiParams) GetProjectEventApiRequest {
 	return GetProjectEventApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupId: args.GroupId,
-		eventId: args.EventId,
+		ctx:        ctx,
+		groupId:    args.GroupId,
+		eventId:    args.EventId,
 		includeRaw: args.IncludeRaw,
 	}
 }
@@ -320,30 +320,31 @@ GetProjectEvent Return One Event from One Project
 
 Returns one event for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
- This resource remains under revision and may change. Refer to the [legacy documentation for this resource](https://www.mongodb.com/docs/atlas/reference/api/events-projects-get-one/).
+	This resource remains under revision and may change. Refer to the [legacy documentation for this resource](https://www.mongodb.com/docs/atlas/reference/api/events-projects-get-one/).
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param eventId Unique 24-hexadecimal digit string that identifies the event that you want to return. Use the [/events](#tag/Events/operation/listProjectEvents) endpoint to retrieve all events to which the authenticated user has access.
- @return GetProjectEventApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param eventId Unique 24-hexadecimal digit string that identifies the event that you want to return. Use the [/events](#tag/Events/operation/listProjectEvents) endpoint to retrieve all events to which the authenticated user has access.
+	@return GetProjectEventApiRequest
 */
 func (a *EventsApiService) GetProjectEvent(ctx context.Context, groupId string, eventId string) GetProjectEventApiRequest {
 	return GetProjectEventApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupId: groupId,
-		eventId: eventId,
+		ctx:        ctx,
+		groupId:    groupId,
+		eventId:    eventId,
 	}
 }
 
 // Execute executes the request
-//  @return EventViewForNdsGroup
+//
+//	@return EventViewForNdsGroup
 func (a *EventsApiService) getProjectEventExecute(r GetProjectEventApiRequest) (*EventViewForNdsGroup, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *EventViewForNdsGroup
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *EventViewForNdsGroup
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.GetProjectEvent")
@@ -441,41 +442,41 @@ func (a *EventsApiService) getProjectEventExecute(r GetProjectEventApiRequest) (
 }
 
 type ListOrganizationEventsApiRequest struct {
-	ctx context.Context
-	ApiService EventsApi
-	orgId string
+	ctx          context.Context
+	ApiService   EventsApi
+	orgId        string
 	includeCount *bool
 	itemsPerPage *int32
-	pageNum *int32
-	eventType *EventTypeForOrg
-	includeRaw *bool
-	maxDate *time.Time
-	minDate *time.Time
+	pageNum      *int32
+	eventType    *EventTypeForOrg
+	includeRaw   *bool
+	maxDate      *time.Time
+	minDate      *time.Time
 }
 
 type ListOrganizationEventsApiParams struct {
-		OrgId string
-		IncludeCount *bool
-		ItemsPerPage *int32
-		PageNum *int32
-		EventType *EventTypeForOrg
-		IncludeRaw *bool
-		MaxDate *time.Time
-		MinDate *time.Time
+	OrgId        string
+	IncludeCount *bool
+	ItemsPerPage *int32
+	PageNum      *int32
+	EventType    *EventTypeForOrg
+	IncludeRaw   *bool
+	MaxDate      *time.Time
+	MinDate      *time.Time
 }
 
 func (a *EventsApiService) ListOrganizationEventsWithParams(ctx context.Context, args *ListOrganizationEventsApiParams) ListOrganizationEventsApiRequest {
 	return ListOrganizationEventsApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		orgId: args.OrgId,
+		ApiService:   a,
+		ctx:          ctx,
+		orgId:        args.OrgId,
 		includeCount: args.IncludeCount,
 		itemsPerPage: args.ItemsPerPage,
-		pageNum: args.PageNum,
-		eventType: args.EventType,
-		includeRaw: args.IncludeRaw,
-		maxDate: args.MaxDate,
-		minDate: args.MinDate,
+		pageNum:      args.PageNum,
+		eventType:    args.EventType,
+		includeRaw:   args.IncludeRaw,
+		maxDate:      args.MaxDate,
+		minDate:      args.MinDate,
 	}
 }
 
@@ -530,28 +531,29 @@ ListOrganizationEvents Return All Events from One Organization
 
 Returns all events for the specified organization. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Organization Member role. This resource doesn't require the API Key to have an Access List.
 
- This resource remains under revision and may change. Refer to the [legacy documentation for this resource](https://www.mongodb.com/docs/atlas/reference/api/events-orgs-get-all/).
+	This resource remains under revision and may change. Refer to the [legacy documentation for this resource](https://www.mongodb.com/docs/atlas/reference/api/events-orgs-get-all/).
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
- @return ListOrganizationEventsApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return ListOrganizationEventsApiRequest
 */
 func (a *EventsApiService) ListOrganizationEvents(ctx context.Context, orgId string) ListOrganizationEventsApiRequest {
 	return ListOrganizationEventsApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		orgId: orgId,
+		ctx:        ctx,
+		orgId:      orgId,
 	}
 }
 
 // Execute executes the request
-//  @return OrgPaginatedEvent
+//
+//	@return OrgPaginatedEvent
 func (a *EventsApiService) listOrganizationEventsExecute(r ListOrganizationEventsApiRequest) (*OrgPaginatedEvent, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *OrgPaginatedEvent
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *OrgPaginatedEvent
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.ListOrganizationEvents")
@@ -672,44 +674,44 @@ func (a *EventsApiService) listOrganizationEventsExecute(r ListOrganizationEvent
 }
 
 type ListProjectEventsApiRequest struct {
-	ctx context.Context
-	ApiService EventsApi
-	groupId string
+	ctx          context.Context
+	ApiService   EventsApi
+	groupId      string
 	includeCount *bool
 	itemsPerPage *int32
-	pageNum *int32
+	pageNum      *int32
 	clusterNames *[]string
-	eventType *EventTypeForNdsGroup
-	includeRaw *bool
-	maxDate *time.Time
-	minDate *time.Time
+	eventType    *EventTypeForNdsGroup
+	includeRaw   *bool
+	maxDate      *time.Time
+	minDate      *time.Time
 }
 
 type ListProjectEventsApiParams struct {
-		GroupId string
-		IncludeCount *bool
-		ItemsPerPage *int32
-		PageNum *int32
-		ClusterNames *[]string
-		EventType *EventTypeForNdsGroup
-		IncludeRaw *bool
-		MaxDate *time.Time
-		MinDate *time.Time
+	GroupId      string
+	IncludeCount *bool
+	ItemsPerPage *int32
+	PageNum      *int32
+	ClusterNames *[]string
+	EventType    *EventTypeForNdsGroup
+	IncludeRaw   *bool
+	MaxDate      *time.Time
+	MinDate      *time.Time
 }
 
 func (a *EventsApiService) ListProjectEventsWithParams(ctx context.Context, args *ListProjectEventsApiParams) ListProjectEventsApiRequest {
 	return ListProjectEventsApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		groupId: args.GroupId,
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      args.GroupId,
 		includeCount: args.IncludeCount,
 		itemsPerPage: args.ItemsPerPage,
-		pageNum: args.PageNum,
+		pageNum:      args.PageNum,
 		clusterNames: args.ClusterNames,
-		eventType: args.EventType,
-		includeRaw: args.IncludeRaw,
-		maxDate: args.MaxDate,
-		minDate: args.MinDate,
+		eventType:    args.EventType,
+		includeRaw:   args.IncludeRaw,
+		maxDate:      args.MaxDate,
+		minDate:      args.MinDate,
 	}
 }
 
@@ -770,28 +772,29 @@ ListProjectEvents Return All Events from One Project
 
 Returns one event for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
- This resource remains under revision and may change. Refer to the [legacy documentation for this resource](https://www.mongodb.com/docs/atlas/reference/api/events-projects-get-all/).
+	This resource remains under revision and may change. Refer to the [legacy documentation for this resource](https://www.mongodb.com/docs/atlas/reference/api/events-projects-get-all/).
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @return ListProjectEventsApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return ListProjectEventsApiRequest
 */
 func (a *EventsApiService) ListProjectEvents(ctx context.Context, groupId string) ListProjectEventsApiRequest {
 	return ListProjectEventsApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		groupId: groupId,
+		ctx:        ctx,
+		groupId:    groupId,
 	}
 }
 
 // Execute executes the request
-//  @return GroupPaginatedEvent
+//
+//	@return GroupPaginatedEvent
 func (a *EventsApiService) listProjectEventsExecute(r ListProjectEventsApiRequest) (*GroupPaginatedEvent, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *GroupPaginatedEvent
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *GroupPaginatedEvent
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.ListProjectEvents")

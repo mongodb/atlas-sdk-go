@@ -24,7 +24,7 @@ type IdentityProvider struct {
 	// Unique string that identifies the issuer of the SAML Assertion.
 	IssuerUri *string `json:"issuerUri,omitempty"`
 	// Unique 20-hexadecimal digit string that identifies the identity provider.
-	OktaIdpId string `json:"oktaIdpId"`
+	OktaIdpId   string       `json:"oktaIdpId"`
 	PemFileInfo *PemFileInfo `json:"pemFileInfo,omitempty"`
 	// SAML Authentication Request Protocol HTTP method binding (POST or REDIRECT) that Federated Authentication uses to send the authentication request.
 	RequestBinding *string `json:"requestBinding,omitempty"`
@@ -465,7 +465,7 @@ func (o *IdentityProvider) SetStatus(v string) {
 }
 
 func (o IdentityProvider) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -548,5 +548,3 @@ func (v *NullableIdentityProvider) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

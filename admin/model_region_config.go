@@ -9,9 +9,9 @@ import (
 
 // RegionConfig - Cloud service provider on which MongoDB Cloud provisions the hosts.
 type RegionConfig struct {
-	AWSRegionConfig *AWSRegionConfig
-	AzureRegionConfig *AzureRegionConfig
-	GCPRegionConfig *GCPRegionConfig
+	AWSRegionConfig    *AWSRegionConfig
+	AzureRegionConfig  *AzureRegionConfig
+	GCPRegionConfig    *GCPRegionConfig
 	TenantRegionConfig *TenantRegionConfig
 }
 
@@ -42,7 +42,6 @@ func TenantRegionConfigAsRegionConfig(v *TenantRegionConfig) RegionConfig {
 		TenantRegionConfig: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *RegionConfig) UnmarshalJSON(data []byte) error {
@@ -175,7 +174,7 @@ func (src RegionConfig) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *RegionConfig) GetActualInstance() (interface{}) {
+func (obj *RegionConfig) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -234,5 +233,3 @@ func (v *NullableRegionConfig) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

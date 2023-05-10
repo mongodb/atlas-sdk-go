@@ -9,10 +9,10 @@ import (
 
 // HostMetricAlert - Host Metric Alert notifies about changes of measurements or metrics for mongod host.
 type HostMetricAlert struct {
-	DataMetricAlert *DataMetricAlert
+	DataMetricAlert   *DataMetricAlert
 	NumberMetricAlert *NumberMetricAlert
-	RawMetricAlert *RawMetricAlert
-	TimeMetricAlert *TimeMetricAlert
+	RawMetricAlert    *RawMetricAlert
+	TimeMetricAlert   *TimeMetricAlert
 }
 
 // DataMetricAlertAsHostMetricAlert is a convenience function that returns DataMetricAlert wrapped in HostMetricAlert
@@ -42,7 +42,6 @@ func TimeMetricAlertAsHostMetricAlert(v *TimeMetricAlert) HostMetricAlert {
 		TimeMetricAlert: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *HostMetricAlert) UnmarshalJSON(data []byte) error {
@@ -2047,7 +2046,7 @@ func (src HostMetricAlert) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *HostMetricAlert) GetActualInstance() (interface{}) {
+func (obj *HostMetricAlert) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -2106,5 +2105,3 @@ func (v *NullableHostMetricAlert) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

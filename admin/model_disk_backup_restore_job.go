@@ -19,7 +19,7 @@ type DiskBackupRestoreJob struct {
 	// Human-readable label that categorizes the restore job to create.
 	DeliveryType string `json:"deliveryType"`
 	// One or more Uniform Resource Locators (URLs) that point to the compressed snapshot files for manual download. MongoDB Cloud returns this parameter when `\"deliveryType\" : \"download\"`.
-	DeliveryUrl []string `json:"deliveryUrl,omitempty"`
+	DeliveryUrl      []string       `json:"deliveryUrl,omitempty"`
 	DesiredTimestamp *BSONTimestamp `json:"desiredTimestamp,omitempty"`
 	// Flag that indicates whether the restore job expired.
 	Expired *bool `json:"expired,omitempty"`
@@ -622,7 +622,7 @@ func (o *DiskBackupRestoreJob) SetTimestamp(v time.Time) {
 }
 
 func (o DiskBackupRestoreJob) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -686,5 +686,3 @@ func (v *NullableDiskBackupRestoreJob) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

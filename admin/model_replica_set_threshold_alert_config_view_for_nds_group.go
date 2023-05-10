@@ -10,7 +10,7 @@ import (
 // ReplicaSetThresholdAlertConfigViewForNdsGroup - Replica Set threshold alert configuration allows to select thresholds for conditions of mongod replica set which trigger alerts and how users are notified.
 type ReplicaSetThresholdAlertConfigViewForNdsGroup struct {
 	GreaterThanRawThresholdAlertConfigViewForNdsGroup *GreaterThanRawThresholdAlertConfigViewForNdsGroup
-	LessThanTimeThresholdAlertConfigViewForNdsGroup *LessThanTimeThresholdAlertConfigViewForNdsGroup
+	LessThanTimeThresholdAlertConfigViewForNdsGroup   *LessThanTimeThresholdAlertConfigViewForNdsGroup
 }
 
 // GreaterThanRawThresholdAlertConfigViewForNdsGroupAsReplicaSetThresholdAlertConfigViewForNdsGroup is a convenience function that returns GreaterThanRawThresholdAlertConfigViewForNdsGroup wrapped in ReplicaSetThresholdAlertConfigViewForNdsGroup
@@ -26,7 +26,6 @@ func LessThanTimeThresholdAlertConfigViewForNdsGroupAsReplicaSetThresholdAlertCo
 		LessThanTimeThresholdAlertConfigViewForNdsGroup: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *ReplicaSetThresholdAlertConfigViewForNdsGroup) UnmarshalJSON(data []byte) error {
@@ -103,7 +102,7 @@ func (src ReplicaSetThresholdAlertConfigViewForNdsGroup) MarshalJSON() ([]byte, 
 }
 
 // Get the actual instance
-func (obj *ReplicaSetThresholdAlertConfigViewForNdsGroup) GetActualInstance() (interface{}) {
+func (obj *ReplicaSetThresholdAlertConfigViewForNdsGroup) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -154,5 +153,3 @@ func (v *NullableReplicaSetThresholdAlertConfigViewForNdsGroup) UnmarshalJSON(sr
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

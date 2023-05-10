@@ -13,11 +13,11 @@ type MatcherHostType string
 // List of MatcherHostType
 const (
 	MATCHERHOSTTYPE_STANDALONE MatcherHostType = "STANDALONE"
-	MATCHERHOSTTYPE_PRIMARY MatcherHostType = "PRIMARY"
-	MATCHERHOSTTYPE_SECONDARY MatcherHostType = "SECONDARY"
-	MATCHERHOSTTYPE_ARBITER MatcherHostType = "ARBITER"
-	MATCHERHOSTTYPE_MONGOS MatcherHostType = "MONGOS"
-	MATCHERHOSTTYPE_CONFIG MatcherHostType = "CONFIG"
+	MATCHERHOSTTYPE_PRIMARY    MatcherHostType = "PRIMARY"
+	MATCHERHOSTTYPE_SECONDARY  MatcherHostType = "SECONDARY"
+	MATCHERHOSTTYPE_ARBITER    MatcherHostType = "ARBITER"
+	MATCHERHOSTTYPE_MONGOS     MatcherHostType = "MONGOS"
+	MATCHERHOSTTYPE_CONFIG     MatcherHostType = "CONFIG"
 )
 
 // All allowed values of MatcherHostType enum
@@ -72,5 +72,3 @@ func (v MatcherHostType) IsValid() bool {
 func (v MatcherHostType) Ptr() *MatcherHostType {
 	return &v
 }
-
-

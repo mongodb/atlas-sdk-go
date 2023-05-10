@@ -17,8 +17,8 @@ type FreeProviderSettings struct {
 	// Cluster tier, with a default storage and memory capacity, that applies to all the data-bearing hosts in your cluster. You must set **providerSettings.providerName** to `TENANT` and specify the cloud service provider in **providerSettings.backingProviderName**.
 	InstanceSizeName *string `json:"instanceSizeName,omitempty"`
 	// Human-readable label that identifies the geographic location of your MongoDB cluster. The region you choose can affect network latency for clients accessing your databases. For a complete list of region names, see [AWS](https://docs.atlas.mongodb.com/reference/amazon-aws/#std-label-amazon-aws), [GCP](https://docs.atlas.mongodb.com/reference/google-gcp/), and [Azure](https://docs.atlas.mongodb.com/reference/microsoft-azure/). For multi-region clusters, see **replicationSpec.{region}**.
-	RegionName *string `json:"regionName,omitempty"`
-	ProviderName string `json:"providerName"`
+	RegionName   *string `json:"regionName,omitempty"`
+	ProviderName string  `json:"providerName"`
 }
 
 // NewFreeProviderSettings instantiates a new FreeProviderSettings object
@@ -192,7 +192,7 @@ func (o *FreeProviderSettings) SetProviderName(v string) {
 }
 
 func (o FreeProviderSettings) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -251,5 +251,3 @@ func (v *NullableFreeProviderSettings) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

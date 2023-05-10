@@ -337,7 +337,7 @@ func (o *ServerlessAzureTenantEndpoint) SetStatus(v string) {
 }
 
 func (o ServerlessAzureTenantEndpoint) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -383,5 +383,3 @@ func (v *NullableServerlessAzureTenantEndpoint) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

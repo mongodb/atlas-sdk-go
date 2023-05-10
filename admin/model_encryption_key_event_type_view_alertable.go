@@ -12,9 +12,9 @@ type EncryptionKeyEventTypeViewAlertable string
 
 // List of EncryptionKeyEventTypeViewAlertable
 const (
-	ENCRYPTIONKEYEVENTTYPEVIEWALERTABLE_AWS_ENCRYPTION_KEY_NEEDS_ROTATION EncryptionKeyEventTypeViewAlertable = "AWS_ENCRYPTION_KEY_NEEDS_ROTATION"
+	ENCRYPTIONKEYEVENTTYPEVIEWALERTABLE_AWS_ENCRYPTION_KEY_NEEDS_ROTATION   EncryptionKeyEventTypeViewAlertable = "AWS_ENCRYPTION_KEY_NEEDS_ROTATION"
 	ENCRYPTIONKEYEVENTTYPEVIEWALERTABLE_AZURE_ENCRYPTION_KEY_NEEDS_ROTATION EncryptionKeyEventTypeViewAlertable = "AZURE_ENCRYPTION_KEY_NEEDS_ROTATION"
-	ENCRYPTIONKEYEVENTTYPEVIEWALERTABLE_GCP_ENCRYPTION_KEY_NEEDS_ROTATION EncryptionKeyEventTypeViewAlertable = "GCP_ENCRYPTION_KEY_NEEDS_ROTATION"
+	ENCRYPTIONKEYEVENTTYPEVIEWALERTABLE_GCP_ENCRYPTION_KEY_NEEDS_ROTATION   EncryptionKeyEventTypeViewAlertable = "GCP_ENCRYPTION_KEY_NEEDS_ROTATION"
 )
 
 // All allowed values of EncryptionKeyEventTypeViewAlertable enum
@@ -66,5 +66,3 @@ func (v EncryptionKeyEventTypeViewAlertable) IsValid() bool {
 func (v EncryptionKeyEventTypeViewAlertable) Ptr() *EncryptionKeyEventTypeViewAlertable {
 	return &v
 }
-
-

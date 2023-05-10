@@ -19,7 +19,7 @@ type LiveMigrationResponse struct {
 	MigrationHosts []string `json:"migrationHosts,omitempty"`
 	// Flag that indicates the migrated cluster can be cut over to MongoDB Atlas.
 	ReadyForCutover *bool `json:"readyForCutover,omitempty"`
-	// Progress made in migrating one cluster to MongoDB Atlas.  | Status   | Explanation | |----------|-------------| | NEW      | Someone scheduled a local cluster migration to MongoDB Atlas. | | FAILED   | The cluster migration to MongoDB Atlas failed.                | | COMPLETE | The cluster migration to MongoDB Atlas succeeded.             | | EXPIRED  | MongoDB Atlas prepares to begin the cut over of the migrating cluster when source and target clusters have almost synchronized. If `\"readyForCutover\" : true`, this synchronization starts a timer of 120 hours. You can extend this timer. If the timer expires, MongoDB Atlas returns this status. | | WORKING  | The cluster migration to MongoDB Atlas is performing one of the following tasks:<ul><li>Preparing connections to source and target clusters</li><li>Replicating data from source to target</li><li>Verifying MongoDB Atlas connection settings</li><li>Stopping replication after the cut over</li></ul> | 
+	// Progress made in migrating one cluster to MongoDB Atlas.  | Status   | Explanation | |----------|-------------| | NEW      | Someone scheduled a local cluster migration to MongoDB Atlas. | | FAILED   | The cluster migration to MongoDB Atlas failed.                | | COMPLETE | The cluster migration to MongoDB Atlas succeeded.             | | EXPIRED  | MongoDB Atlas prepares to begin the cut over of the migrating cluster when source and target clusters have almost synchronized. If `\"readyForCutover\" : true`, this synchronization starts a timer of 120 hours. You can extend this timer. If the timer expires, MongoDB Atlas returns this status. | | WORKING  | The cluster migration to MongoDB Atlas is performing one of the following tasks:<ul><li>Preparing connections to source and target clusters</li><li>Replicating data from source to target</li><li>Verifying MongoDB Atlas connection settings</li><li>Stopping replication after the cut over</li></ul> |
 	Status *string `json:"status,omitempty"`
 }
 
@@ -104,6 +104,7 @@ func (o *LiveMigrationResponse) HasLagTimeSeconds() bool {
 func (o *LiveMigrationResponse) SetLagTimeSeconds(v int64) {
 	o.LagTimeSeconds.Set(&v)
 }
+
 // SetLagTimeSecondsNil sets the value for LagTimeSeconds to be an explicit nil
 func (o *LiveMigrationResponse) SetLagTimeSecondsNil() {
 	o.LagTimeSeconds.Set(nil)
@@ -211,7 +212,7 @@ func (o *LiveMigrationResponse) SetStatus(v string) {
 }
 
 func (o LiveMigrationResponse) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -260,5 +261,3 @@ func (v *NullableLiveMigrationResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

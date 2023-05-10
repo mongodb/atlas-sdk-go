@@ -9,10 +9,10 @@ import (
 
 // FTSAnalyzersCharFiltersInner - struct for FTSAnalyzersCharFiltersInner
 type FTSAnalyzersCharFiltersInner struct {
-	CharFilterhtmlStrip *CharFilterhtmlStrip
+	CharFilterhtmlStrip    *CharFilterhtmlStrip
 	CharFiltericuNormalize *CharFiltericuNormalize
-	CharFiltermapping *CharFiltermapping
-	CharFilterpersian *CharFilterpersian
+	CharFiltermapping      *CharFiltermapping
+	CharFilterpersian      *CharFilterpersian
 }
 
 // CharFilterhtmlStripAsFTSAnalyzersCharFiltersInner is a convenience function that returns CharFilterhtmlStrip wrapped in FTSAnalyzersCharFiltersInner
@@ -42,7 +42,6 @@ func CharFilterpersianAsFTSAnalyzersCharFiltersInner(v *CharFilterpersian) FTSAn
 		CharFilterpersian: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *FTSAnalyzersCharFiltersInner) UnmarshalJSON(data []byte) error {
@@ -137,7 +136,7 @@ func (src FTSAnalyzersCharFiltersInner) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *FTSAnalyzersCharFiltersInner) GetActualInstance() (interface{}) {
+func (obj *FTSAnalyzersCharFiltersInner) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -196,5 +195,3 @@ func (v *NullableFTSAnalyzersCharFiltersInner) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -12,14 +12,14 @@ type MatcherField string
 
 // List of MatcherField
 const (
-	MATCHERFIELD_APPLICATION_ID MatcherField = "APPLICATION_ID"
-	MATCHERFIELD_CLUSTER_NAME MatcherField = "CLUSTER_NAME"
-	MATCHERFIELD_TYPE_NAME MatcherField = "TYPE_NAME"
-	MATCHERFIELD_HOSTNAME MatcherField = "HOSTNAME"
-	MATCHERFIELD_PORT MatcherField = "PORT"
+	MATCHERFIELD_APPLICATION_ID    MatcherField = "APPLICATION_ID"
+	MATCHERFIELD_CLUSTER_NAME      MatcherField = "CLUSTER_NAME"
+	MATCHERFIELD_TYPE_NAME         MatcherField = "TYPE_NAME"
+	MATCHERFIELD_HOSTNAME          MatcherField = "HOSTNAME"
+	MATCHERFIELD_PORT              MatcherField = "PORT"
 	MATCHERFIELD_HOSTNAME_AND_PORT MatcherField = "HOSTNAME_AND_PORT"
-	MATCHERFIELD_REPLICA_SET_NAME MatcherField = "REPLICA_SET_NAME"
-	MATCHERFIELD_SHARD_NAME MatcherField = "SHARD_NAME"
+	MATCHERFIELD_REPLICA_SET_NAME  MatcherField = "REPLICA_SET_NAME"
+	MATCHERFIELD_SHARD_NAME        MatcherField = "SHARD_NAME"
 )
 
 // All allowed values of MatcherField enum
@@ -76,5 +76,3 @@ func (v MatcherField) IsValid() bool {
 func (v MatcherField) Ptr() *MatcherField {
 	return &v
 }
-
-

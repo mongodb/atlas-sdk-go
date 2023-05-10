@@ -62,5 +62,3 @@ func (v AutomationConfigEventType) IsValid() bool {
 func (v AutomationConfigEventType) Ptr() *AutomationConfigEventType {
 	return &v
 }
-
-

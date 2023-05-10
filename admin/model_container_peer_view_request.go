@@ -9,9 +9,9 @@ import (
 
 // ContainerPeerViewRequest - Collection of settings that configures the network connection for a virtual private connection.
 type ContainerPeerViewRequest struct {
-	AWSPeerVpcRequest *AWSPeerVpcRequest
+	AWSPeerVpcRequest       *AWSPeerVpcRequest
 	AzurePeerNetworkRequest *AzurePeerNetworkRequest
-	GCPPeerVpcRequest *GCPPeerVpcRequest
+	GCPPeerVpcRequest       *GCPPeerVpcRequest
 }
 
 // AWSPeerVpcRequestAsContainerPeerViewRequest is a convenience function that returns AWSPeerVpcRequest wrapped in ContainerPeerViewRequest
@@ -34,7 +34,6 @@ func GCPPeerVpcRequestAsContainerPeerViewRequest(v *GCPPeerVpcRequest) Container
 		GCPPeerVpcRequest: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *ContainerPeerViewRequest) UnmarshalJSON(data []byte) error {
@@ -139,7 +138,7 @@ func (src ContainerPeerViewRequest) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *ContainerPeerViewRequest) GetActualInstance() (interface{}) {
+func (obj *ContainerPeerViewRequest) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -194,5 +193,3 @@ func (v *NullableContainerPeerViewRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

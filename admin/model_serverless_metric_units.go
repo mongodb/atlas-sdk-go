@@ -12,12 +12,12 @@ type ServerlessMetricUnits string
 
 // List of ServerlessMetricUnits
 const (
-	SERVERLESSMETRICUNITS_RPU ServerlessMetricUnits = "RPU"
+	SERVERLESSMETRICUNITS_RPU          ServerlessMetricUnits = "RPU"
 	SERVERLESSMETRICUNITS_THOUSAND_RPU ServerlessMetricUnits = "THOUSAND_RPU"
-	SERVERLESSMETRICUNITS_MILLION_RPU ServerlessMetricUnits = "MILLION_RPU"
-	SERVERLESSMETRICUNITS_WPU ServerlessMetricUnits = "WPU"
+	SERVERLESSMETRICUNITS_MILLION_RPU  ServerlessMetricUnits = "MILLION_RPU"
+	SERVERLESSMETRICUNITS_WPU          ServerlessMetricUnits = "WPU"
 	SERVERLESSMETRICUNITS_THOUSAND_WPU ServerlessMetricUnits = "THOUSAND_WPU"
-	SERVERLESSMETRICUNITS_MILLION_WPU ServerlessMetricUnits = "MILLION_WPU"
+	SERVERLESSMETRICUNITS_MILLION_WPU  ServerlessMetricUnits = "MILLION_WPU"
 )
 
 // All allowed values of ServerlessMetricUnits enum
@@ -72,5 +72,3 @@ func (v ServerlessMetricUnits) IsValid() bool {
 func (v ServerlessMetricUnits) Ptr() *ServerlessMetricUnits {
 	return &v
 }
-
-

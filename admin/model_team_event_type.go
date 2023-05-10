@@ -12,13 +12,13 @@ type TeamEventType string
 
 // List of TeamEventType
 const (
-	TEAMEVENTTYPE_CREATED TeamEventType = "TEAM_CREATED"
-	TEAMEVENTTYPE_DELETED TeamEventType = "TEAM_DELETED"
-	TEAMEVENTTYPE_UPDATED TeamEventType = "TEAM_UPDATED"
-	TEAMEVENTTYPE_NAME_CHANGED TeamEventType = "TEAM_NAME_CHANGED"
-	TEAMEVENTTYPE_ADDED_TO_GROUP TeamEventType = "TEAM_ADDED_TO_GROUP"
+	TEAMEVENTTYPE_CREATED            TeamEventType = "TEAM_CREATED"
+	TEAMEVENTTYPE_DELETED            TeamEventType = "TEAM_DELETED"
+	TEAMEVENTTYPE_UPDATED            TeamEventType = "TEAM_UPDATED"
+	TEAMEVENTTYPE_NAME_CHANGED       TeamEventType = "TEAM_NAME_CHANGED"
+	TEAMEVENTTYPE_ADDED_TO_GROUP     TeamEventType = "TEAM_ADDED_TO_GROUP"
 	TEAMEVENTTYPE_REMOVED_FROM_GROUP TeamEventType = "TEAM_REMOVED_FROM_GROUP"
-	TEAMEVENTTYPE_ROLES_MODIFIED TeamEventType = "TEAM_ROLES_MODIFIED"
+	TEAMEVENTTYPE_ROLES_MODIFIED     TeamEventType = "TEAM_ROLES_MODIFIED"
 )
 
 // All allowed values of TeamEventType enum
@@ -74,5 +74,3 @@ func (v TeamEventType) IsValid() bool {
 func (v TeamEventType) Ptr() *TeamEventType {
 	return &v
 }
-
-

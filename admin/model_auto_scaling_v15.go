@@ -12,7 +12,7 @@ var _ MappedNullable = &AutoScalingV15{}
 // AutoScalingV15 Options that determine how this cluster handles resource scaling.
 type AutoScalingV15 struct {
 	Compute *ComputeAutoScalingV15 `json:"compute,omitempty"`
-	DiskGB *DiskGBAutoScaling `json:"diskGB,omitempty"`
+	DiskGB  *DiskGBAutoScaling     `json:"diskGB,omitempty"`
 }
 
 // NewAutoScalingV15 instantiates a new AutoScalingV15 object
@@ -97,7 +97,7 @@ func (o *AutoScalingV15) SetDiskGB(v DiskGBAutoScaling) {
 }
 
 func (o AutoScalingV15) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -149,5 +149,3 @@ func (v *NullableAutoScalingV15) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

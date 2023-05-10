@@ -16,8 +16,8 @@ type ServerlessAzureTenantEndpointUpdate struct {
 	// IPv4 address of the private endpoint in your Azure VNet that someone added to this private endpoint service.
 	PrivateEndpointIpAddress *string `json:"privateEndpointIpAddress,omitempty"`
 	// Human-readable comment associated with the private endpoint.
-	Comment *string `json:"comment,omitempty"`
-	ProviderName string `json:"providerName"`
+	Comment      *string `json:"comment,omitempty"`
+	ProviderName string  `json:"providerName"`
 }
 
 // NewServerlessAzureTenantEndpointUpdate instantiates a new ServerlessAzureTenantEndpointUpdate object
@@ -159,7 +159,7 @@ func (o *ServerlessAzureTenantEndpointUpdate) SetProviderName(v string) {
 }
 
 func (o ServerlessAzureTenantEndpointUpdate) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -215,5 +215,3 @@ func (v *NullableServerlessAzureTenantEndpointUpdate) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

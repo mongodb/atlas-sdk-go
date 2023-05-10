@@ -12,8 +12,8 @@ var _ MappedNullable = &X509Certificate{}
 
 // X509Certificate struct for X509Certificate
 type X509Certificate struct {
-	Content *string `json:"content,omitempty"`
-	NotAfter *time.Time `json:"notAfter,omitempty"`
+	Content   *string    `json:"content,omitempty"`
+	NotAfter  *time.Time `json:"notAfter,omitempty"`
 	NotBefore *time.Time `json:"notBefore,omitempty"`
 }
 
@@ -131,7 +131,7 @@ func (o *X509Certificate) SetNotBefore(v time.Time) {
 }
 
 func (o X509Certificate) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -186,5 +186,3 @@ func (v *NullableX509Certificate) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

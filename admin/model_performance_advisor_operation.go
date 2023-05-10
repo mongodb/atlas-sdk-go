@@ -12,8 +12,8 @@ var _ MappedNullable = &PerformanceAdvisorOperation{}
 // PerformanceAdvisorOperation struct for PerformanceAdvisorOperation
 type PerformanceAdvisorOperation struct {
 	// List that contains the search criteria that the query uses. To use the values in key-value pairs in these predicates requires **Project Data Access Read Only** permissions or greater. Otherwise, MongoDB Cloud redacts these values.
-	Predicates []map[string]interface{} `json:"predicates,omitempty"`
-	Stats *PerformanceAdvisorOpStats `json:"stats,omitempty"`
+	Predicates []map[string]interface{}   `json:"predicates,omitempty"`
+	Stats      *PerformanceAdvisorOpStats `json:"stats,omitempty"`
 }
 
 // NewPerformanceAdvisorOperation instantiates a new PerformanceAdvisorOperation object
@@ -98,7 +98,7 @@ func (o *PerformanceAdvisorOperation) SetStats(v PerformanceAdvisorOpStats) {
 }
 
 func (o PerformanceAdvisorOperation) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -147,5 +147,3 @@ func (v *NullablePerformanceAdvisorOperation) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

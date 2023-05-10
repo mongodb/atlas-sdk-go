@@ -10,25 +10,24 @@ import (
 	"net/url"
 )
 
-
 type RootApi interface {
 
 	/*
-	GetSystemStatus Return the status of this MongoDB application
+		GetSystemStatus Return the status of this MongoDB application
 
-	This resource returns information about the MongoDB application along with API key meta data.
+		This resource returns information about the MongoDB application along with API key meta data.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return GetSystemStatusApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return GetSystemStatusApiRequest
 	*/
 	GetSystemStatus(ctx context.Context) GetSystemStatusApiRequest
 	/*
-	GetSystemStatus Return the status of this MongoDB application
+		GetSystemStatus Return the status of this MongoDB application
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param GetSystemStatusApiParams - Parameters for the request
-	@return GetSystemStatusApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetSystemStatusApiParams - Parameters for the request
+		@return GetSystemStatusApiRequest
 	*/
 	GetSystemStatusWithParams(ctx context.Context, args *GetSystemStatusApiParams) GetSystemStatusApiRequest
 
@@ -40,7 +39,7 @@ type RootApi interface {
 type RootApiService service
 
 type GetSystemStatusApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService RootApi
 }
 
@@ -50,7 +49,7 @@ type GetSystemStatusApiParams struct {
 func (a *RootApiService) GetSystemStatusWithParams(ctx context.Context, args *GetSystemStatusApiParams) GetSystemStatusApiRequest {
 	return GetSystemStatusApiRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -63,24 +62,25 @@ GetSystemStatus Return the status of this MongoDB application
 
 This resource returns information about the MongoDB application along with API key meta data.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return GetSystemStatusApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return GetSystemStatusApiRequest
 */
 func (a *RootApiService) GetSystemStatus(ctx context.Context) GetSystemStatusApiRequest {
 	return GetSystemStatusApiRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return SystemStatus
+//
+//	@return SystemStatus
 func (a *RootApiService) getSystemStatusExecute(r GetSystemStatusApiRequest) (*SystemStatus, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *SystemStatus
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SystemStatus
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RootApiService.GetSystemStatus")

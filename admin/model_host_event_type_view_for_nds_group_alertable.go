@@ -12,11 +12,11 @@ type HostEventTypeViewForNdsGroupAlertable string
 
 // List of HostEventTypeViewForNdsGroupAlertable
 const (
-	HOSTEVENTTYPEVIEWFORNDSGROUPALERTABLE_DOWN HostEventTypeViewForNdsGroupAlertable = "HOST_DOWN"
-	HOSTEVENTTYPEVIEWFORNDSGROUPALERTABLE_HAS_INDEX_SUGGESTIONS HostEventTypeViewForNdsGroupAlertable = "HOST_HAS_INDEX_SUGGESTIONS"
-	HOSTEVENTTYPEVIEWFORNDSGROUPALERTABLE_MONGOT_CRASHING_OOM HostEventTypeViewForNdsGroupAlertable = "HOST_MONGOT_CRASHING_OOM"
+	HOSTEVENTTYPEVIEWFORNDSGROUPALERTABLE_DOWN                                             HostEventTypeViewForNdsGroupAlertable = "HOST_DOWN"
+	HOSTEVENTTYPEVIEWFORNDSGROUPALERTABLE_HAS_INDEX_SUGGESTIONS                            HostEventTypeViewForNdsGroupAlertable = "HOST_HAS_INDEX_SUGGESTIONS"
+	HOSTEVENTTYPEVIEWFORNDSGROUPALERTABLE_MONGOT_CRASHING_OOM                              HostEventTypeViewForNdsGroupAlertable = "HOST_MONGOT_CRASHING_OOM"
 	HOSTEVENTTYPEVIEWFORNDSGROUPALERTABLE_DISK_SPACE_INSUFFICIENT_FOR_SEARCH_INDEX_REBUILD HostEventTypeViewForNdsGroupAlertable = "HOST_DISK_SPACE_INSUFFICIENT_FOR_SEARCH_INDEX_REBUILD"
-	HOSTEVENTTYPEVIEWFORNDSGROUPALERTABLE_NOT_ENOUGH_DISK_SPACE HostEventTypeViewForNdsGroupAlertable = "HOST_NOT_ENOUGH_DISK_SPACE"
+	HOSTEVENTTYPEVIEWFORNDSGROUPALERTABLE_NOT_ENOUGH_DISK_SPACE                            HostEventTypeViewForNdsGroupAlertable = "HOST_NOT_ENOUGH_DISK_SPACE"
 )
 
 // All allowed values of HostEventTypeViewForNdsGroupAlertable enum
@@ -70,5 +70,3 @@ func (v HostEventTypeViewForNdsGroupAlertable) IsValid() bool {
 func (v HostEventTypeViewForNdsGroupAlertable) Ptr() *HostEventTypeViewForNdsGroupAlertable {
 	return &v
 }
-
-

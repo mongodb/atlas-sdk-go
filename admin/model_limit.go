@@ -10,7 +10,7 @@ import (
 // Limit - Details of user managed limits.
 type Limit struct {
 	DataFederationQueryLimit *DataFederationQueryLimit
-	DefaultLimit *DefaultLimit
+	DefaultLimit             *DefaultLimit
 }
 
 // DataFederationQueryLimitAsLimit is a convenience function that returns DataFederationQueryLimit wrapped in Limit
@@ -26,7 +26,6 @@ func DefaultLimitAsLimit(v *DefaultLimit) Limit {
 		DefaultLimit: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *Limit) UnmarshalJSON(data []byte) error {
@@ -199,7 +198,7 @@ func (src Limit) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *Limit) GetActualInstance() (interface{}) {
+func (obj *Limit) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -250,5 +249,3 @@ func (v *NullableLimit) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

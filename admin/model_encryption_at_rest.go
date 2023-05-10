@@ -11,8 +11,8 @@ var _ MappedNullable = &EncryptionAtRest{}
 
 // EncryptionAtRest struct for EncryptionAtRest
 type EncryptionAtRest struct {
-	AwsKms *AWSKMS `json:"awsKms,omitempty"`
-	AzureKeyVault *AzureKeyVault `json:"azureKeyVault,omitempty"`
+	AwsKms         *AWSKMS         `json:"awsKms,omitempty"`
+	AzureKeyVault  *AzureKeyVault  `json:"azureKeyVault,omitempty"`
 	GoogleCloudKms *GoogleCloudKMS `json:"googleCloudKms,omitempty"`
 }
 
@@ -130,7 +130,7 @@ func (o *EncryptionAtRest) SetGoogleCloudKms(v GoogleCloudKMS) {
 }
 
 func (o EncryptionAtRest) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -185,5 +185,3 @@ func (v *NullableEncryptionAtRest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

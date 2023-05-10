@@ -14,11 +14,11 @@ type DataLakeAtlasStore struct {
 	// Human-readable label of the MongoDB Cloud cluster on which the store is based.
 	ClusterName *string `json:"clusterName,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project.
-	ProjectId *string `json:"projectId,omitempty"`
+	ProjectId      *string                           `json:"projectId,omitempty"`
 	ReadPreference *DataLakeAtlasStoreReadPreference `json:"readPreference,omitempty"`
 	// Human-readable label that identifies the data store. The **databases.[n].collections.[n].dataSources.[n].storeName** field references this values as part of the mapping configuration. To use MongoDB Cloud as a data store, the data lake requires a serverless instance or an `M10` or higher cluster.
-	Name *string `json:"name,omitempty"`
-	Provider string `json:"provider"`
+	Name     *string `json:"name,omitempty"`
+	Provider string  `json:"provider"`
 }
 
 // NewDataLakeAtlasStore instantiates a new DataLakeAtlasStore object
@@ -192,7 +192,7 @@ func (o *DataLakeAtlasStore) SetProvider(v string) {
 }
 
 func (o DataLakeAtlasStore) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -248,5 +248,3 @@ func (v *NullableDataLakeAtlasStore) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

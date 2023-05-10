@@ -21,7 +21,7 @@ type MonthlySchedule struct {
 	StartHour *int32 `json:"startHour,omitempty"`
 	// Minute of the hour when the scheduled window to run one online archive starts.
 	StartMinute *int32 `json:"startMinute,omitempty"`
-	Type string `json:"type"`
+	Type        string `json:"type"`
 }
 
 // NewMonthlySchedule instantiates a new MonthlySchedule object
@@ -227,7 +227,7 @@ func (o *MonthlySchedule) SetType(v string) {
 }
 
 func (o MonthlySchedule) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -289,5 +289,3 @@ func (v *NullableMonthlySchedule) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

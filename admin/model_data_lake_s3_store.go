@@ -26,8 +26,8 @@ type DataLakeS3Store struct {
 	//  Physical location where MongoDB Cloud deploys your AWS-hosted MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. MongoDB Cloud assigns the VPC a CIDR block. To limit a new VPC peering connection to one CIDR block and region, create the connection first. Deploy the cluster after the connection starts.
 	Region *string `json:"region,omitempty"`
 	// Human-readable label that identifies the data store. The **databases.[n].collections.[n].dataSources.[n].storeName** field references this values as part of the mapping configuration. To use MongoDB Cloud as a data store, the data lake requires a serverless instance or an `M10` or higher cluster.
-	Name *string `json:"name,omitempty"`
-	Provider string `json:"provider"`
+	Name     *string `json:"name,omitempty"`
+	Provider string  `json:"provider"`
 }
 
 // NewDataLakeS3Store instantiates a new DataLakeS3Store object
@@ -337,7 +337,7 @@ func (o *DataLakeS3Store) SetProvider(v string) {
 }
 
 func (o DataLakeS3Store) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -408,5 +408,3 @@ func (v *NullableDataLakeS3Store) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

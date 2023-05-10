@@ -678,7 +678,7 @@ func (o *IndexOptions) SetWeights(v map[string]map[string]interface{}) {
 }
 
 func (o IndexOptions) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -776,5 +776,3 @@ func (v *NullableIndexOptions) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

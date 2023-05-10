@@ -201,7 +201,7 @@ func (o *DiskBackupCopySetting) SetShouldCopyOplogs(v bool) {
 }
 
 func (o DiskBackupCopySetting) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -262,5 +262,3 @@ func (v *NullableDiskBackupCopySetting) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

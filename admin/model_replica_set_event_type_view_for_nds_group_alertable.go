@@ -13,9 +13,9 @@ type ReplicaSetEventTypeViewForNdsGroupAlertable string
 // List of ReplicaSetEventTypeViewForNdsGroupAlertable
 const (
 	REPLICASETEVENTTYPEVIEWFORNDSGROUPALERTABLE_REPLICATION_OPLOG_WINDOW_RUNNING_OUT ReplicaSetEventTypeViewForNdsGroupAlertable = "REPLICATION_OPLOG_WINDOW_RUNNING_OUT"
-	REPLICASETEVENTTYPEVIEWFORNDSGROUPALERTABLE_NO_PRIMARY ReplicaSetEventTypeViewForNdsGroupAlertable = "NO_PRIMARY"
-	REPLICASETEVENTTYPEVIEWFORNDSGROUPALERTABLE_PRIMARY_ELECTED ReplicaSetEventTypeViewForNdsGroupAlertable = "PRIMARY_ELECTED"
-	REPLICASETEVENTTYPEVIEWFORNDSGROUPALERTABLE_TOO_MANY_ELECTIONS ReplicaSetEventTypeViewForNdsGroupAlertable = "TOO_MANY_ELECTIONS"
+	REPLICASETEVENTTYPEVIEWFORNDSGROUPALERTABLE_NO_PRIMARY                           ReplicaSetEventTypeViewForNdsGroupAlertable = "NO_PRIMARY"
+	REPLICASETEVENTTYPEVIEWFORNDSGROUPALERTABLE_PRIMARY_ELECTED                      ReplicaSetEventTypeViewForNdsGroupAlertable = "PRIMARY_ELECTED"
+	REPLICASETEVENTTYPEVIEWFORNDSGROUPALERTABLE_TOO_MANY_ELECTIONS                   ReplicaSetEventTypeViewForNdsGroupAlertable = "TOO_MANY_ELECTIONS"
 )
 
 // All allowed values of ReplicaSetEventTypeViewForNdsGroupAlertable enum
@@ -68,5 +68,3 @@ func (v ReplicaSetEventTypeViewForNdsGroupAlertable) IsValid() bool {
 func (v ReplicaSetEventTypeViewForNdsGroupAlertable) Ptr() *ReplicaSetEventTypeViewForNdsGroupAlertable {
 	return &v
 }
-
-

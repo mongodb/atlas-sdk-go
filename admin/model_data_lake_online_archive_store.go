@@ -18,8 +18,8 @@ type DataLakeOnlineArchiveStore struct {
 	// ID of the Project the Online Archive belongs to.
 	ProjectId string `json:"projectId"`
 	// Human-readable label that identifies the data store. The **databases.[n].collections.[n].dataSources.[n].storeName** field references this values as part of the mapping configuration. To use MongoDB Cloud as a data store, the data lake requires a serverless instance or an `M10` or higher cluster.
-	Name *string `json:"name,omitempty"`
-	Provider string `json:"provider"`
+	Name     *string `json:"name,omitempty"`
+	Provider string  `json:"provider"`
 }
 
 // NewDataLakeOnlineArchiveStore instantiates a new DataLakeOnlineArchiveStore object
@@ -172,7 +172,7 @@ func (o *DataLakeOnlineArchiveStore) SetProvider(v string) {
 }
 
 func (o DataLakeOnlineArchiveStore) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -225,5 +225,3 @@ func (v *NullableDataLakeOnlineArchiveStore) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

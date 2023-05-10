@@ -62,5 +62,3 @@ func (v HostMetricEventTypeViewAlertable) IsValid() bool {
 func (v HostMetricEventTypeViewAlertable) Ptr() *HostMetricEventTypeViewAlertable {
 	return &v
 }
-
-

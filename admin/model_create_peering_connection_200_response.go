@@ -9,9 +9,9 @@ import (
 
 // CreatePeeringConnection200Response - struct for CreatePeeringConnection200Response
 type CreatePeeringConnection200Response struct {
-	AWSPeerVpc *AWSPeerVpc
+	AWSPeerVpc       *AWSPeerVpc
 	AzurePeerNetwork *AzurePeerNetwork
-	GCPPeerVpc *GCPPeerVpc
+	GCPPeerVpc       *GCPPeerVpc
 }
 
 // AWSPeerVpcAsCreatePeeringConnection200Response is a convenience function that returns AWSPeerVpc wrapped in CreatePeeringConnection200Response
@@ -34,7 +34,6 @@ func GCPPeerVpcAsCreatePeeringConnection200Response(v *GCPPeerVpc) CreatePeering
 		GCPPeerVpc: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *CreatePeeringConnection200Response) UnmarshalJSON(data []byte) error {
@@ -111,7 +110,7 @@ func (src CreatePeeringConnection200Response) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *CreatePeeringConnection200Response) GetActualInstance() (interface{}) {
+func (obj *CreatePeeringConnection200Response) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -166,5 +165,3 @@ func (v *NullableCreatePeeringConnection200Response) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -11,27 +11,26 @@ import (
 	"strings"
 )
 
-
 type InvoicesApi interface {
 
 	/*
-	DownloadInvoiceCSV Return One Organization Invoice as CSV
+		DownloadInvoiceCSV Return One Organization Invoice as CSV
 
-	Returns one invoice that MongoDB issued to the specified organization in CSV format. A unique 24-hexadecimal digit string identifies the invoice. To use this resource, the requesting API Key must have the Organization Member role. If you have a cross-organization setup, you can query for a linked invoice if you have an Organization Billing Admin or Organization Owner Role. This resource doesn't require the API Key to have an Access List.
+		Returns one invoice that MongoDB issued to the specified organization in CSV format. A unique 24-hexadecimal digit string identifies the invoice. To use this resource, the requesting API Key must have the Organization Member role. If you have a cross-organization setup, you can query for a linked invoice if you have an Organization Billing Admin or Organization Owner Role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-	@param invoiceId Unique 24-hexadecimal digit string that identifies the invoice submitted to the specified organization. Charges typically post the next day.
-	@return DownloadInvoiceCSVApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param invoiceId Unique 24-hexadecimal digit string that identifies the invoice submitted to the specified organization. Charges typically post the next day.
+		@return DownloadInvoiceCSVApiRequest
 	*/
 	DownloadInvoiceCSV(ctx context.Context, orgId string, invoiceId string) DownloadInvoiceCSVApiRequest
 	/*
-	DownloadInvoiceCSV Return One Organization Invoice as CSV
+		DownloadInvoiceCSV Return One Organization Invoice as CSV
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param DownloadInvoiceCSVApiParams - Parameters for the request
-	@return DownloadInvoiceCSVApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param DownloadInvoiceCSVApiParams - Parameters for the request
+		@return DownloadInvoiceCSVApiRequest
 	*/
 	DownloadInvoiceCSVWithParams(ctx context.Context, args *DownloadInvoiceCSVApiParams) DownloadInvoiceCSVApiRequest
 
@@ -39,23 +38,23 @@ type InvoicesApi interface {
 	downloadInvoiceCSVExecute(r DownloadInvoiceCSVApiRequest) (*http.Response, error)
 
 	/*
-	GetInvoice Return One Organization Invoice
+		GetInvoice Return One Organization Invoice
 
-	Returns one invoice that MongoDB issued to the specified organization. A unique 24-hexadecimal digit string identifies the invoice. You can choose to receive this invoice in JSON or CSV format. To use this resource, the requesting API Key must have the Organization Member role. If you have a cross-organization setup, you can query for a linked invoice if you have an Organization Billing Admin or Organization Owner role. This resource doesn't require the API Key to have an Access List.
+		Returns one invoice that MongoDB issued to the specified organization. A unique 24-hexadecimal digit string identifies the invoice. You can choose to receive this invoice in JSON or CSV format. To use this resource, the requesting API Key must have the Organization Member role. If you have a cross-organization setup, you can query for a linked invoice if you have an Organization Billing Admin or Organization Owner role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-	@param invoiceId Unique 24-hexadecimal digit string that identifies the invoice submitted to the specified organization. Charges typically post the next day.
-	@return GetInvoiceApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param invoiceId Unique 24-hexadecimal digit string that identifies the invoice submitted to the specified organization. Charges typically post the next day.
+		@return GetInvoiceApiRequest
 	*/
 	GetInvoice(ctx context.Context, orgId string, invoiceId string) GetInvoiceApiRequest
 	/*
-	GetInvoice Return One Organization Invoice
+		GetInvoice Return One Organization Invoice
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param GetInvoiceApiParams - Parameters for the request
-	@return GetInvoiceApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetInvoiceApiParams - Parameters for the request
+		@return GetInvoiceApiRequest
 	*/
 	GetInvoiceWithParams(ctx context.Context, args *GetInvoiceApiParams) GetInvoiceApiRequest
 
@@ -63,22 +62,22 @@ type InvoicesApi interface {
 	getInvoiceExecute(r GetInvoiceApiRequest) (*Invoice, *http.Response, error)
 
 	/*
-	ListInvoices Return All Invoices for One Organization
+		ListInvoices Return All Invoices for One Organization
 
-	Returns all invoices that MongoDB issued to the specified organization. This list includes all invoices regardless of invoice status. To use this resource, the requesting API Key must have the Organization Member role. If you have a cross-organization setup, to view linked invoices, you must have an Organization Billing Admin or Organization Owner role. This resource doesn't require the API Key to have an Access List.
+		Returns all invoices that MongoDB issued to the specified organization. This list includes all invoices regardless of invoice status. To use this resource, the requesting API Key must have the Organization Member role. If you have a cross-organization setup, to view linked invoices, you must have an Organization Billing Admin or Organization Owner role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-	@return ListInvoicesApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@return ListInvoicesApiRequest
 	*/
 	ListInvoices(ctx context.Context, orgId string) ListInvoicesApiRequest
 	/*
-	ListInvoices Return All Invoices for One Organization
+		ListInvoices Return All Invoices for One Organization
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param ListInvoicesApiParams - Parameters for the request
-	@return ListInvoicesApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListInvoicesApiParams - Parameters for the request
+		@return ListInvoicesApiRequest
 	*/
 	ListInvoicesWithParams(ctx context.Context, args *ListInvoicesApiParams) ListInvoicesApiRequest
 
@@ -86,22 +85,22 @@ type InvoicesApi interface {
 	listInvoicesExecute(r ListInvoicesApiRequest) (*PaginatedApiInvoice, *http.Response, error)
 
 	/*
-	ListPendingInvoices Return All Pending Invoices for One Organization
+		ListPendingInvoices Return All Pending Invoices for One Organization
 
-	Returns all invoices accruing charges for the current billing cycle for the specified organization. To use this resource, the requesting API Key must have the Organization Member role.  If you have a cross-organization setup, to view linked invoices, you must have an Organization Billing Admin or Organization Owner Role. This resource doesn't require the API Key to have an Access List.
+		Returns all invoices accruing charges for the current billing cycle for the specified organization. To use this resource, the requesting API Key must have the Organization Member role.  If you have a cross-organization setup, to view linked invoices, you must have an Organization Billing Admin or Organization Owner Role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-	@return ListPendingInvoicesApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@return ListPendingInvoicesApiRequest
 	*/
 	ListPendingInvoices(ctx context.Context, orgId string) ListPendingInvoicesApiRequest
 	/*
-	ListPendingInvoices Return All Pending Invoices for One Organization
+		ListPendingInvoices Return All Pending Invoices for One Organization
 
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param ListPendingInvoicesApiParams - Parameters for the request
-	@return ListPendingInvoicesApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListPendingInvoicesApiParams - Parameters for the request
+		@return ListPendingInvoicesApiRequest
 	*/
 	ListPendingInvoicesWithParams(ctx context.Context, args *ListPendingInvoicesApiParams) ListPendingInvoicesApiRequest
 
@@ -113,23 +112,23 @@ type InvoicesApi interface {
 type InvoicesApiService service
 
 type DownloadInvoiceCSVApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService InvoicesApi
-	orgId string
-	invoiceId string
+	orgId      string
+	invoiceId  string
 }
 
 type DownloadInvoiceCSVApiParams struct {
-		OrgId string
-		InvoiceId string
+	OrgId     string
+	InvoiceId string
 }
 
 func (a *InvoicesApiService) DownloadInvoiceCSVWithParams(ctx context.Context, args *DownloadInvoiceCSVApiParams) DownloadInvoiceCSVApiRequest {
 	return DownloadInvoiceCSVApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		orgId: args.OrgId,
-		invoiceId: args.InvoiceId,
+		ctx:        ctx,
+		orgId:      args.OrgId,
+		invoiceId:  args.InvoiceId,
 	}
 }
 
@@ -142,26 +141,26 @@ DownloadInvoiceCSV Return One Organization Invoice as CSV
 
 Returns one invoice that MongoDB issued to the specified organization in CSV format. A unique 24-hexadecimal digit string identifies the invoice. To use this resource, the requesting API Key must have the Organization Member role. If you have a cross-organization setup, you can query for a linked invoice if you have an Organization Billing Admin or Organization Owner Role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
- @param invoiceId Unique 24-hexadecimal digit string that identifies the invoice submitted to the specified organization. Charges typically post the next day.
- @return DownloadInvoiceCSVApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param invoiceId Unique 24-hexadecimal digit string that identifies the invoice submitted to the specified organization. Charges typically post the next day.
+	@return DownloadInvoiceCSVApiRequest
 */
 func (a *InvoicesApiService) DownloadInvoiceCSV(ctx context.Context, orgId string, invoiceId string) DownloadInvoiceCSVApiRequest {
 	return DownloadInvoiceCSVApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		orgId: orgId,
-		invoiceId: invoiceId,
+		ctx:        ctx,
+		orgId:      orgId,
+		invoiceId:  invoiceId,
 	}
 }
 
 // Execute executes the request
 func (a *InvoicesApiService) downloadInvoiceCSVExecute(r DownloadInvoiceCSVApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesApiService.DownloadInvoiceCSV")
@@ -237,23 +236,23 @@ func (a *InvoicesApiService) downloadInvoiceCSVExecute(r DownloadInvoiceCSVApiRe
 }
 
 type GetInvoiceApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService InvoicesApi
-	orgId string
-	invoiceId string
+	orgId      string
+	invoiceId  string
 }
 
 type GetInvoiceApiParams struct {
-		OrgId string
-		InvoiceId string
+	OrgId     string
+	InvoiceId string
 }
 
 func (a *InvoicesApiService) GetInvoiceWithParams(ctx context.Context, args *GetInvoiceApiParams) GetInvoiceApiRequest {
 	return GetInvoiceApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		orgId: args.OrgId,
-		invoiceId: args.InvoiceId,
+		ctx:        ctx,
+		orgId:      args.OrgId,
+		invoiceId:  args.InvoiceId,
 	}
 }
 
@@ -266,28 +265,29 @@ GetInvoice Return One Organization Invoice
 
 Returns one invoice that MongoDB issued to the specified organization. A unique 24-hexadecimal digit string identifies the invoice. You can choose to receive this invoice in JSON or CSV format. To use this resource, the requesting API Key must have the Organization Member role. If you have a cross-organization setup, you can query for a linked invoice if you have an Organization Billing Admin or Organization Owner role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
- @param invoiceId Unique 24-hexadecimal digit string that identifies the invoice submitted to the specified organization. Charges typically post the next day.
- @return GetInvoiceApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param invoiceId Unique 24-hexadecimal digit string that identifies the invoice submitted to the specified organization. Charges typically post the next day.
+	@return GetInvoiceApiRequest
 */
 func (a *InvoicesApiService) GetInvoice(ctx context.Context, orgId string, invoiceId string) GetInvoiceApiRequest {
 	return GetInvoiceApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		orgId: orgId,
-		invoiceId: invoiceId,
+		ctx:        ctx,
+		orgId:      orgId,
+		invoiceId:  invoiceId,
 	}
 }
 
 // Execute executes the request
-//  @return Invoice
+//
+//	@return Invoice
 func (a *InvoicesApiService) getInvoiceExecute(r GetInvoiceApiRequest) (*Invoice, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Invoice
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Invoice
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesApiService.GetInvoice")
@@ -378,29 +378,29 @@ func (a *InvoicesApiService) getInvoiceExecute(r GetInvoiceApiRequest) (*Invoice
 }
 
 type ListInvoicesApiRequest struct {
-	ctx context.Context
-	ApiService InvoicesApi
-	orgId string
+	ctx          context.Context
+	ApiService   InvoicesApi
+	orgId        string
 	includeCount *bool
 	itemsPerPage *int32
-	pageNum *int32
+	pageNum      *int32
 }
 
 type ListInvoicesApiParams struct {
-		OrgId string
-		IncludeCount *bool
-		ItemsPerPage *int32
-		PageNum *int32
+	OrgId        string
+	IncludeCount *bool
+	ItemsPerPage *int32
+	PageNum      *int32
 }
 
 func (a *InvoicesApiService) ListInvoicesWithParams(ctx context.Context, args *ListInvoicesApiParams) ListInvoicesApiRequest {
 	return ListInvoicesApiRequest{
-		ApiService: a,
-		ctx: ctx,
-		orgId: args.OrgId,
+		ApiService:   a,
+		ctx:          ctx,
+		orgId:        args.OrgId,
 		includeCount: args.IncludeCount,
 		itemsPerPage: args.ItemsPerPage,
-		pageNum: args.PageNum,
+		pageNum:      args.PageNum,
 	}
 }
 
@@ -431,26 +431,27 @@ ListInvoices Return All Invoices for One Organization
 
 Returns all invoices that MongoDB issued to the specified organization. This list includes all invoices regardless of invoice status. To use this resource, the requesting API Key must have the Organization Member role. If you have a cross-organization setup, to view linked invoices, you must have an Organization Billing Admin or Organization Owner role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
- @return ListInvoicesApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return ListInvoicesApiRequest
 */
 func (a *InvoicesApiService) ListInvoices(ctx context.Context, orgId string) ListInvoicesApiRequest {
 	return ListInvoicesApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		orgId: orgId,
+		ctx:        ctx,
+		orgId:      orgId,
 	}
 }
 
 // Execute executes the request
-//  @return PaginatedApiInvoice
+//
+//	@return PaginatedApiInvoice
 func (a *InvoicesApiService) listInvoicesExecute(r ListInvoicesApiRequest) (*PaginatedApiInvoice, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PaginatedApiInvoice
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedApiInvoice
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesApiService.ListInvoices")
@@ -555,20 +556,20 @@ func (a *InvoicesApiService) listInvoicesExecute(r ListInvoicesApiRequest) (*Pag
 }
 
 type ListPendingInvoicesApiRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService InvoicesApi
-	orgId string
+	orgId      string
 }
 
 type ListPendingInvoicesApiParams struct {
-		OrgId string
+	OrgId string
 }
 
 func (a *InvoicesApiService) ListPendingInvoicesWithParams(ctx context.Context, args *ListPendingInvoicesApiParams) ListPendingInvoicesApiRequest {
 	return ListPendingInvoicesApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		orgId: args.OrgId,
+		ctx:        ctx,
+		orgId:      args.OrgId,
 	}
 }
 
@@ -581,26 +582,27 @@ ListPendingInvoices Return All Pending Invoices for One Organization
 
 Returns all invoices accruing charges for the current billing cycle for the specified organization. To use this resource, the requesting API Key must have the Organization Member role.  If you have a cross-organization setup, to view linked invoices, you must have an Organization Billing Admin or Organization Owner Role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
- @return ListPendingInvoicesApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return ListPendingInvoicesApiRequest
 */
 func (a *InvoicesApiService) ListPendingInvoices(ctx context.Context, orgId string) ListPendingInvoicesApiRequest {
 	return ListPendingInvoicesApiRequest{
 		ApiService: a,
-		ctx: ctx,
-		orgId: orgId,
+		ctx:        ctx,
+		orgId:      orgId,
 	}
 }
 
 // Execute executes the request
-//  @return PaginatedApiInvoice
+//
+//	@return PaginatedApiInvoice
 func (a *InvoicesApiService) listPendingInvoicesExecute(r ListPendingInvoicesApiRequest) (*PaginatedApiInvoice, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *PaginatedApiInvoice
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedApiInvoice
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesApiService.ListPendingInvoices")

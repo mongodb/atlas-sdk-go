@@ -23,7 +23,6 @@ test:
 .PHONY: fmt
 fmt:
 	@echo "==> Fixing source code with gofmt..."
-	gofmt -s -w ./**/*.go
 	goimports -w ./**/*.go
 
 .PHONY: lint-fix

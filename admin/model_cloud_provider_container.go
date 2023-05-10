@@ -9,9 +9,9 @@ import (
 
 // CloudProviderContainer - Collection of settings that configures the network container for a virtual private connection on Amazon Web Services.
 type CloudProviderContainer struct {
-	AWSCloudProviderContainer *AWSCloudProviderContainer
+	AWSCloudProviderContainer   *AWSCloudProviderContainer
 	AzureCloudProviderContainer *AzureCloudProviderContainer
-	GCPCloudProviderContainer *GCPCloudProviderContainer
+	GCPCloudProviderContainer   *GCPCloudProviderContainer
 }
 
 // AWSCloudProviderContainerAsCloudProviderContainer is a convenience function that returns AWSCloudProviderContainer wrapped in CloudProviderContainer
@@ -34,7 +34,6 @@ func GCPCloudProviderContainerAsCloudProviderContainer(v *GCPCloudProviderContai
 		GCPCloudProviderContainer: v,
 	}
 }
-
 
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *CloudProviderContainer) UnmarshalJSON(data []byte) error {
@@ -139,7 +138,7 @@ func (src CloudProviderContainer) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *CloudProviderContainer) GetActualInstance() (interface{}) {
+func (obj *CloudProviderContainer) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -194,5 +193,3 @@ func (v *NullableCloudProviderContainer) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

@@ -133,7 +133,7 @@ func (o *PaginatedServerlessInstanceDescription) SetTotalCount(v int32) {
 }
 
 func (o PaginatedServerlessInstanceDescription) MarshalJSONWithoutReadOnly() ([]byte, error) {
-	toSerialize,err := o.ToMap()
+	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -179,5 +179,3 @@ func (v *NullablePaginatedServerlessInstanceDescription) UnmarshalJSON(src []byt
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
