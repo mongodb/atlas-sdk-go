@@ -3,6 +3,11 @@ on:
   workflow_dispatch:
   schedule:
    - cron: '30 8 * * MON'
+  push:
+    branches:
+      - master
+    paths:
+      - "tools/**"
   
 jobs:
   generate-client:
