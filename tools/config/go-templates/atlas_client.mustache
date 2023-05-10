@@ -1,4 +1,4 @@
-{{! X-XGEN-CUSTOM }}package {{packageName}} // import "go.mongodb.org/atlas-sdk/mongodbatlas/v2"
+{{! X-XGEN-CUSTOM }}package {{packageName}}
 
 import (
 	"errors"
@@ -20,7 +20,7 @@ const (
 	ClientName = "go-atlas-sdk-admin"
 )
 
-// NewClient returns a new MongoDBAtlas API Client.
+// NewClient returns a new API Client.
 func NewClient(modifiers ...ClientModifier) (*APIClient, error) {
 	userAgent := fmt.Sprintf("%s/%s (%s;%s)", ClientName, Version, runtime.GOOS, runtime.GOARCH)
 	defaultConfig := &Configuration{

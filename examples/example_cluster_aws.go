@@ -9,7 +9,7 @@ import (
 
 	"context"
 
-	mongodbatlas "go.mongodb.org/atlas-sdk/admin"
+	"go.mongodb.org/atlas-sdk/admin"
 	utils "go.mongodb.org/atlas-sdk/test/generators"
 )
 
@@ -29,10 +29,10 @@ func main() {
 	apiKey := os.Getenv("MDB_API_KEY")
 	apiSecret := os.Getenv("MDB_API_SECRET")
 
-	sdk, err := mongodbatlas.NewClient(
-		mongodbatlas.UseDigestAuth(apiKey, apiSecret),
-		mongodbatlas.UseBaseURL("https://cloud.mongodb.com"),
-		mongodbatlas.UseDebug(false))
+	sdk, err := admin.NewClient(
+		admin.UseDigestAuth(apiKey, apiSecret),
+		admin.UseBaseURL("https://cloud.mongodb.com"),
+		admin.UseDebug(false))
 	handleErr(err, nil)
 
 	// -- 1. Get first project
@@ -66,7 +66,7 @@ func main() {
 	ipAddress := getIpAddress()
 	_, resp, err = sdk.ProjectIPAccessListApi.
 		CreateProjectIpAccessList(context.Background(), projectId).
-		NetworkPermissionEntry([]mongodbatlas.NetworkPermissionEntry{{IpAddress: &ipAddress}}).
+		NetworkPermissionEntry([]admin.NetworkPermissionEntry{{IpAddress: &ipAddress}}).
 		Execute()
 	handleErr(err, resp)
 
@@ -75,7 +75,7 @@ func main() {
 	fmt.Println("Please wait up to 10 minutes for cluster to provision.")
 }
 
-func createDatabaseUserRequest(sdk *mongodbatlas.APIClient, groupId string) *mongodbatlas.DatabaseUser {
+func createDatabaseUserRequest(sdk *admin.APIClient, groupId string) *admin.DatabaseUser {
 	username := "sdk-example"
 	databaseName := "admin"
 
@@ -92,11 +92,11 @@ func createDatabaseUserRequest(sdk *mongodbatlas.APIClient, groupId string) *mon
 		log.Fatal(err)
 	}
 
-	return &mongodbatlas.DatabaseUser{
+	return &admin.DatabaseUser{
 		Username:     username,
 		Password:     &password,
 		DatabaseName: databaseName,
-		Roles: []mongodbatlas.Role{
+		Roles: []admin.Role{
 			{
 				DatabaseName:   databaseName,
 				CollectionName: collectionName,
@@ -106,7 +106,7 @@ func createDatabaseUserRequest(sdk *mongodbatlas.APIClient, groupId string) *mon
 	}
 }
 
-func createClusterRequest(projectId string) *mongodbatlas.ClusterDescriptionV15 {
+func createClusterRequest(projectId string) *admin.ClusterDescriptionV15 {
 	// Input arguments used for creation of the cluster
 	clusterName, _ := utils.UniqueName("example-aws-cluster")
 
@@ -121,19 +121,19 @@ func createClusterRequest(projectId string) *mongodbatlas.ClusterDescriptionV15 
 	nodeCount := int32(3)
 	instanceSize := "M10"
 
-	return &mongodbatlas.ClusterDescriptionV15{
+	return &admin.ClusterDescriptionV15{
 		Name:        &clusterName,
 		ClusterType: &clusterType,
-		ReplicationSpecs: []mongodbatlas.ReplicationSpec{
+		ReplicationSpecs: []admin.ReplicationSpec{
 			{
 				NumShards: &numShards,
-				RegionConfigs: []mongodbatlas.RegionConfig{
+				RegionConfigs: []admin.RegionConfig{
 					{
-						AWSRegionConfig: &mongodbatlas.AWSRegionConfig{
+						AWSRegionConfig: &admin.AWSRegionConfig{
 							ProviderName: &providerName,
 							Priority:     &priority,
 							RegionName:   &regionName,
-							ElectableSpecs: &mongodbatlas.HardwareSpec{
+							ElectableSpecs: &admin.HardwareSpec{
 								InstanceSize: &instanceSize,
 								NodeCount:    &nodeCount,
 							},
@@ -156,7 +156,7 @@ func handleErr(err error, resp *http.Response) {
 		// Printing generic message
 		fmt.Println(err.Error())
 	}
-	apiErr, _ := mongodbatlas.AsError(err)
+	apiErr, _ := admin.AsError(err)
 	log.Fatalf("Error when performing SDK request: %v", apiErr.GetDetail())
 
 }

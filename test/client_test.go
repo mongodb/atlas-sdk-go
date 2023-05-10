@@ -3,7 +3,7 @@ package test
 import (
 	"fmt"
 
-	mongodbatlas "go.mongodb.org/atlas-sdk/admin"
+	"go.mongodb.org/atlas-sdk/admin"
 )
 
 func ExampleNewClient() {
@@ -11,10 +11,10 @@ func ExampleNewClient() {
 	apiSecret := "test"
 	host := "https://cloud.mongodb.com"
 
-	sdk, err := mongodbatlas.NewClient(
-		mongodbatlas.UseDigestAuth(apiKey, apiSecret),
-		mongodbatlas.UseBaseURL(host),
-		mongodbatlas.UseDebug(false))
+	sdk, err := admin.NewClient(
+		admin.UseDigestAuth(apiKey, apiSecret),
+		admin.UseBaseURL(host),
+		admin.UseDebug(false))
 
 	if err != nil {
 		panic(err)
