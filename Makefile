@@ -1,6 +1,5 @@
 SOURCE_FILES?=./...
-PKG_NAME=mongodbatlas
-GOLANGCI_VERSION=v1.50.1
+GOLANGCI_VERSION=v1.52.2
 COVERAGE=coverage.out
 
 export GO111MODULE := on
@@ -15,7 +14,7 @@ link-git-hooks:
 
 .PHONY: build
 build:
-	go install ./$(PKG_NAME)
+	go install $(SOURCE_FILES)
 
 .PHONY: test
 test:
@@ -24,8 +23,8 @@ test:
 .PHONY: fmt
 fmt:
 	@echo "==> Fixing source code with gofmt..."
-	gofmt -s -w ./$(PKG_NAME)
-	goimports -w ./$(PKG_NAME)
+	gofmt -s -w ./$(SOURCE_FILES)
+	goimports -w ./$(SOURCE_FILES)
 
 .PHONY: lint-fix
 lint-fix:
@@ -58,5 +57,5 @@ openapi-pipeline:
 	echo "Running client generation"
 	$(MAKE) -C tools generate_client
 	echo "Validating generated SDK"
-	go test go.mongodb.org/atlas-sdk/test  
+	go test ${SOURCE_FILES}
 
