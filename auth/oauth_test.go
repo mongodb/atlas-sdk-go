@@ -24,7 +24,7 @@ import (
 	"reflect"
 	"testing"
 
-	atlas "go.mongodb.org/atlas/mongodbatlas"
+	core "go.mongodb.org/atlas-sdk/core"
 )
 
 const (
@@ -112,7 +112,7 @@ func TestNewConfigWithOptions(t *testing.T) {
 }
 
 func TestNewRequest_withCustomUserAgent(t *testing.T) {
-	ua := fmt.Sprintf("testing/%s", atlas.Version)
+	ua := fmt.Sprintf("testing/%s", core.Version)
 	c, err := NewConfigWithOptions(nil, SetUserAgent(ua))
 
 	if err != nil {
@@ -185,7 +185,7 @@ func TestDo(t *testing.T) {
 }
 
 func TestCustomUserAgent(t *testing.T) {
-	ua := fmt.Sprintf("testing/%s", atlas.Version)
+	ua := fmt.Sprintf("testing/%s", core.Version)
 	c, err := NewConfigWithOptions(nil, SetUserAgent(ua))
 
 	if err != nil {

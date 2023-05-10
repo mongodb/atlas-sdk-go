@@ -22,7 +22,7 @@ import (
 	"strings"
 	"time"
 
-	atlas "go.mongodb.org/atlas/mongodbatlas"
+	core "go.mongodb.org/atlas-sdk/core"
 )
 
 const authExpiredError = "DEVICE_AUTHORIZATION_EXPIRED"
@@ -46,7 +46,7 @@ type RegistrationConfig struct {
 const deviceBasePath = "api/private/unauth/account/device"
 
 // RequestCode initiates the authorization flow by requesting a code.
-func (c Config) RequestCode(ctx context.Context) (*DeviceCode, *atlas.Response, error) {
+func (c Config) RequestCode(ctx context.Context) (*DeviceCode, *core.Response, error) {
 	req, err := c.NewRequest(ctx, http.MethodPost, deviceBasePath+"/authorize",
 		url.Values{
 			"client_id": {c.ClientID},
@@ -62,7 +62,7 @@ func (c Config) RequestCode(ctx context.Context) (*DeviceCode, *atlas.Response, 
 }
 
 // GetToken gets a device token.
-func (c Config) GetToken(ctx context.Context, deviceCode string) (*Token, *atlas.Response, error) {
+func (c Config) GetToken(ctx context.Context, deviceCode string) (*Token, *core.Response, error) {
 	req, err := c.NewRequest(ctx, http.MethodPost, deviceBasePath+"/token",
 		url.Values{
 			"client_id":   {c.ClientID},
@@ -85,7 +85,7 @@ func (c Config) GetToken(ctx context.Context, deviceCode string) (*Token, *atlas
 var ErrTimeout = errors.New("authentication timed out")
 
 // PollToken polls the server until an access token is granted or denied.
-func (c Config) PollToken(ctx context.Context, code *DeviceCode) (*Token, *atlas.Response, error) {
+func (c Config) PollToken(ctx context.Context, code *DeviceCode) (*Token, *core.Response, error) {
 	timeNow := code.timeNow
 	if timeNow == nil {
 		timeNow = time.Now
@@ -101,7 +101,7 @@ func (c Config) PollToken(ctx context.Context, code *DeviceCode) (*Token, *atlas
 	for {
 		timeSleep(checkInterval)
 		token, resp, err := c.GetToken(ctx, code.DeviceCode)
-		var target *atlas.ErrorResponse
+		var target *core.ErrorResponse
 		if errors.As(err, &target) && target.ErrorCode == "DEVICE_AUTHORIZATION_PENDING" {
 			continue
 		}
@@ -117,7 +117,7 @@ func (c Config) PollToken(ctx context.Context, code *DeviceCode) (*Token, *atlas
 }
 
 // RefreshToken takes a refresh token and gets a new access token.
-func (c Config) RefreshToken(ctx context.Context, token string) (*Token, *atlas.Response, error) {
+func (c Config) RefreshToken(ctx context.Context, token string) (*Token, *core.Response, error) {
 	req, err := c.NewRequest(ctx, http.MethodPost, deviceBasePath+"/token",
 		url.Values{
 			"client_id":     {c.ClientID},
@@ -138,7 +138,7 @@ func (c Config) RefreshToken(ctx context.Context, token string) (*Token, *atlas.
 }
 
 // RevokeToken takes an access or refresh token and revokes it.
-func (c Config) RevokeToken(ctx context.Context, token, tokenTypeHint string) (*atlas.Response, error) {
+func (c Config) RevokeToken(ctx context.Context, token, tokenTypeHint string) (*core.Response, error) {
 	req, err := c.NewRequest(ctx, http.MethodPost, deviceBasePath+"/revoke",
 		url.Values{
 			"client_id":       {c.ClientID},
@@ -154,7 +154,7 @@ func (c Config) RevokeToken(ctx context.Context, token, tokenTypeHint string) (*
 }
 
 // RegistrationConfig retrieves the config used for registration.
-func (c Config) RegistrationConfig(ctx context.Context) (*RegistrationConfig, *atlas.Response, error) {
+func (c Config) RegistrationConfig(ctx context.Context) (*RegistrationConfig, *core.Response, error) {
 	req, err := c.NewRequest(ctx, http.MethodGet, deviceBasePath+"/registration", url.Values{})
 	if err != nil {
 		return nil, nil, err
@@ -168,6 +168,6 @@ func (c Config) RegistrationConfig(ctx context.Context) (*RegistrationConfig, *a
 }
 
 func IsTimeoutErr(err error) bool {
-	var target *atlas.ErrorResponse
+	var target *core.ErrorResponse
 	return errors.Is(err, ErrTimeout) || (errors.As(err, &target) && target.ErrorCode == authExpiredError)
 }

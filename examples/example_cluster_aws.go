@@ -9,8 +9,8 @@ import (
 
 	"context"
 
-	mongodbatlas "go.mongodb.org/atlas/mongodbatlasv2"
-	utils "go.mongodb.org/atlas/test/generators"
+	mongodbatlas "go.mongodb.org/atlas-sdk/mongodbatlasv2"
+	utils "go.mongodb.org/atlas-sdk/test/generators"
 )
 
 /*

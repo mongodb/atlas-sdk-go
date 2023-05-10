@@ -19,7 +19,7 @@
 # matches the version defined in the VERSION_FILE.
 #
 set -ueo pipefail
-declare -r VERSION_FILE="mongodbatlas/mongodbatlas.go"
+declare -r VERSION_FILE="core/version.go"
 
 if [[ $# -lt 1 ]]; then
     echo
