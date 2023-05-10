@@ -35,4 +35,4 @@ npm exec openapi-generator-cli -- generate \
     --package-name="$client_package" \
     --ignore-file-override=config/.go-ignore
 
-gofmt -s -w ./${SDK_FOLDER}/*.go
+gofmt -s -w "$SDK_FOLDER/"*.go

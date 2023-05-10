@@ -300,20 +300,20 @@ type FederatedAuthenticationApi interface {
 	removeConnectedOrgConfigExecute(r RemoveConnectedOrgConfigApiRequest) (*http.Response, error)
 
 	/*
-			UpdateConnectedOrgConfig Update One Org Config Connected to One Federation
+		UpdateConnectedOrgConfig Update One Org Config Connected to One Federation
 
-			Updates one connected organization configuration from the specified federation. To use this resource, the requesting API Key must have the Organization Owner role. This resource doesn't require the API Key to have an Access List.
+		Updates one connected organization configuration from the specified federation. To use this resource, the requesting API Key must have the Organization Owner role. This resource doesn't require the API Key to have an Access List.
 
-		**Note** If the organization configuration has no associated identity provider, you can't use this resource to update role mappings or post authorization role grants.
+	**Note** If the organization configuration has no associated identity provider, you can't use this resource to update role mappings or post authorization role grants.
 
-		**Note**: The domainRestrictionEnabled field defaults to false if not provided in the request.
+	**Note**: The domainRestrictionEnabled field defaults to false if not provided in the request.
 
-		**Note**: If the identityProviderId field is not provided, you will disconnect the organization and the identity provider.
+	**Note**: If the identityProviderId field is not provided, you will disconnect the organization and the identity provider.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
-			@param orgId Unique 24-hexadecimal digit string that identifies the connected organization configuration to update.
-			@return UpdateConnectedOrgConfigApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
+		@param orgId Unique 24-hexadecimal digit string that identifies the connected organization configuration to update.
+		@return UpdateConnectedOrgConfigApiRequest
 	*/
 	UpdateConnectedOrgConfig(ctx context.Context, federationSettingsId string, orgId string) UpdateConnectedOrgConfigApiRequest
 	/*

@@ -91,21 +91,21 @@ type MonitoringAndLogsApi interface {
 	getDatabaseMeasurementsExecute(r GetDatabaseMeasurementsApiRequest) (*MeasurementsGeneralViewAtlas, *http.Response, error)
 
 	/*
-			GetDiskMeasurements Return Measurements of One Disk for One MongoDB Process
+		GetDiskMeasurements Return Measurements of One Disk for One MongoDB Process
 
-			Returns the measurements of one disk or partition for the specified host for the specified project. Returned value can be one of the following:
-		- Throughput of I/O operations for the disk partition used for the MongoDB process
-		- Percentage of time during which requests the partition issued and serviced
-		- Latency per operation type of the disk partition used for the MongoDB process
-		- Amount of free and used disk space on the disk partition used for the MongoDB process
+		Returns the measurements of one disk or partition for the specified host for the specified project. Returned value can be one of the following:
+	- Throughput of I/O operations for the disk partition used for the MongoDB process
+	- Percentage of time during which requests the partition issued and serviced
+	- Latency per operation type of the disk partition used for the MongoDB process
+	- Amount of free and used disk space on the disk partition used for the MongoDB process
 
-		To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+	To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-			@param partitionName Human-readable label of the disk or partition to which the measurements apply.
-			@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
-			@return GetDiskMeasurementsApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param partitionName Human-readable label of the disk or partition to which the measurements apply.
+		@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
+		@return GetDiskMeasurementsApiRequest
 	*/
 	GetDiskMeasurements(ctx context.Context, groupId string, partitionName string, processId string) GetDiskMeasurementsApiRequest
 	/*
@@ -147,20 +147,20 @@ type MonitoringAndLogsApi interface {
 	getHostLogsExecute(r GetHostLogsApiRequest) (*os.File, *http.Response, error)
 
 	/*
-			GetHostMeasurements Return Measurements for One MongoDB Process
+		GetHostMeasurements Return Measurements for One MongoDB Process
 
-			Returns measurements of the disk or partition per process for the specified host for the specified project. Returned value can be one of the following:
-		- Throughput of I/O operations for the disk partition used for the MongoDB process
-		- Percentage of time during which requests the partition issued and serviced
-		- Latency per operation type of the disk partition used for the MongoDB process
-		- Amount of free and used disk space on the disk partition used for the MongoDB process
+		Returns measurements of the disk or partition per process for the specified host for the specified project. Returned value can be one of the following:
+	- Throughput of I/O operations for the disk partition used for the MongoDB process
+	- Percentage of time during which requests the partition issued and serviced
+	- Latency per operation type of the disk partition used for the MongoDB process
+	- Amount of free and used disk space on the disk partition used for the MongoDB process
 
-		To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+	To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-			@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
-			@return GetHostMeasurementsApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
+		@return GetHostMeasurementsApiRequest
 	*/
 	GetHostMeasurements(ctx context.Context, groupId string, processId string) GetHostMeasurementsApiRequest
 	/*
@@ -275,21 +275,21 @@ type MonitoringAndLogsApi interface {
 	listDatabasesExecute(r ListDatabasesApiRequest) (*PaginatedDatabase, *http.Response, error)
 
 	/*
-			ListDiskMeasurements Return Measurements of One Disk
+		ListDiskMeasurements Return Measurements of One Disk
 
-			Returns the measurements of one disk or partition for the specified host for the specified project. Returned value can be one of the following:
-		- Throughput of I/O operations for the disk partition used for the MongoDB process
-		- Percentage of time during which requests the partition issued and serviced
-		- Latency per operation type of the disk partition used for the MongoDB process
-		- Amount of free and used disk space on the disk partition used for the MongoDB process
+		Returns the measurements of one disk or partition for the specified host for the specified project. Returned value can be one of the following:
+	- Throughput of I/O operations for the disk partition used for the MongoDB process
+	- Percentage of time during which requests the partition issued and serviced
+	- Latency per operation type of the disk partition used for the MongoDB process
+	- Amount of free and used disk space on the disk partition used for the MongoDB process
 
-		To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+	To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
-			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param partitionName Human-readable label of the disk or partition to which the measurements apply.
-			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-			@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
-			@return ListDiskMeasurementsApiRequest
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param partitionName Human-readable label of the disk or partition to which the measurements apply.
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param processId Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
+		@return ListDiskMeasurementsApiRequest
 	*/
 	ListDiskMeasurements(ctx context.Context, partitionName string, groupId string, processId string) ListDiskMeasurementsApiRequest
 	/*
