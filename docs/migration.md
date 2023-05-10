@@ -1,22 +1,22 @@
 # Migrating to Atlas-SDK-GO
 
-Atlas SDK GO represents second generation of the Atlas API and clients.
-This guide provides migration information for https://github.com/mongodb/go-client-mongodb-atlas users.
+Atlas-sdk-go presents second generation of the Atlas API and client.
+This guide provides migration information for https://github.com/mongodb/go-client-mongodb-atlas users who wish to update to 
+latest Atlas features available as part of this client.
 
 ## Summary
 
-Atlas SDK v2 is no longer written manually and it is entirely based on the Atlas API OpenAPI file giving users ability to automatically receive all relevant Atlas updates almost instantly after Atlas release.
+Atlas-sdk-go is no longer written manually and it is entirely based on the Atlas API OpenAPI file giving users ability to automatically receive all relevant Atlas updates almost instantly after Atlas release.
 
-End users can migrate from [mongodb/go-client-mongodb-atlas](https://github.com/mongodb/go-client-mongodb-atlas) SDK to a new repository. 
-If you are looking for integrating SDK into a new project please follow official getting started guide. 
+End users can migrate from [mongodb/go-client-mongodb-atlas](https://github.com/mongodb/go-client-mongodb-atlas) SDK to the current repository. 
+If you are looking for integrating SDK into a new project please follow [official getting started guide](../README.md).
 
 An [go-client-mongodb-atlas](https://github.com/mongodb/go-client-mongodb-atlas) will no longer receive major updates.
 We strongly recommend updating to [mongodb/atlas-sdk-go](https://github.com/mongodb/atlas-sdk-go) for the latest changes.
 
+## Background
 
-## Required concepts
-
-Apart from being generated from the OpenAPI file, the new SDK is based on Atlas V2 API.  
+Atlas-sdk-go is based on Atlas V2 API. 
 That API introduces the concept of Resource Version: 
  
 **Resource version**: A new version of a Public API resource in the versioned API usually represented as custom (e.g. `application/vnd.atlas.2023-06-01+json`) content type. Version is applied by _Accept _and_ Content-Type _headers.
@@ -80,7 +80,6 @@ Model names and properties using now PascalCase format for clarity and predictab
 The same applies to property names
 
 For example, `ID` fields will become `Id` etc. 
-
 
 ### Structural changes 
 
