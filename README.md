@@ -1,13 +1,13 @@
-# go-client-mongodb-atlas
-[![PkgGoDev](https://pkg.go.dev/badge/go.mongodb.org/atlas)](https://pkg.go.dev/go.mongodb.org/atlas)
-![CI](https://github.com/mongodb/go-client-mongodb-atlas/workflows/CI/badge.svg)
+# atlas-sdk-go
+[![PkgGoDev](https://pkg.go.dev/badge/go.mongodb.org/atlas-sdk)](https://pkg.go.dev/go.mongodb.org/atlas-sdk)
+![CI](https://github.com/mongodb/atlas-sdk-go/workflows/CI/badge.svg)
 
 > NOTE: THIS REPOSITORY IS NOT READY FOR PUBLIC CONSUMPTION.
 > For official Atlas Golang SDK please go to https://github.com/mongodb/go-client-mongodb-atlas
 
-A Go HTTP client for the [MongoDB Atlas API](https://docs.atlas.mongodb.com/api/).
-Note that `go-client-mongodb-atlas` only supports the two most recent major versions of Go.
+A Go SDK for the [MongoDB Atlas API](https://docs.atlas.mongodb.com/api/).
 
+Note that `atlas-sdk-go` only supports the two most recent major versions of Go.
 
 ## Usage
 
@@ -77,31 +77,9 @@ Struct based API is particularly useful for HTTP GET requests where we need to p
 
 > NOTE: Struct based API is an still experimental feature.
 
-## Usage for v1 client
-
-```go
-import "go.mongodb.org/atlas/mongodbatlas"
-```
-
-Construct a new Atlas client, then use the various services on the client to
-access different parts of the Atlas API. For example:
-
-```go
-client := mongodbatlas.NewClient(nil)
-```
-
-The services of a client divide the API into logical chunks and correspond to
-the structure of the Atlas API documentation at
-https://docs.atlas.mongodb.com/api/.
-
-**NOTE:** Using the [context](https://godoc.org/context) package, one can easily
-pass cancellation signals and deadlines to various services of the client for
-handling a request. In case there is no context available, then `context.Background()`
-can be used as a starting point.
-
 ### Authentication
 
-The `go-client-mongodb-atlas` library does not directly handle authentication. Instead, when
+The `atlas-sdk-go` library does not directly handle authentication. Instead, when
 creating a new client, pass an `http.Client` that can handle Digest Access authentication for
 you. The easiest way to do this is using the [digest](https://github.com/mongodb-forks/digest)
 library, but you can always use any other library that provides an `http.Client`.
@@ -162,19 +140,10 @@ if errors.IsErrorCode(err, "code"){
 }
 ```
 
-## Roadmap
-
-This library is being initially developed for [mongocli](https://github.com/mongodb/mongocli),
-[Atlas Terraform Provider](https://github.com/mongodb/terraform-provider-mongodbatlas), 
-[Atlas Vault Plugin](https://github.com/hashicorp/vault-plugin-secrets-mongodbatlas), and 
-[Atlas Cloudformation Provider](https://github.com/mongodb/mongodbatlas-cloudformation-resources)
-so API methods will likely be implemented in the order that they are
-needed by those projects.
-
 ## Contributing
 
 See our [CONTRIBUTING.md](CONTRIBUTING.md) Guide.
 
 ## License
 
-`go-client-mongodb-atlas` is released under the Apache 2.0 license. See [LICENSE](LICENSE)
+`atlas-sdk-go` is released under the Apache 2.0 license. See [LICENSE](LICENSE)
