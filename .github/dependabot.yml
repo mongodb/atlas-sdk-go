@@ -4,13 +4,13 @@ updates:
     directory: "/"
     schedule:
       interval: weekly
-      day: tuesday
+      day: monday
     reviewers:
-      - "mongodb/apix"
+      - "mongodb/apix-1"
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
       interval: weekly
-      day: tuesday
+      day: monday
     reviewers:
-      - "mongodb/apix"
+      - "mongodb/apix-1"
