@@ -42,6 +42,10 @@ The services of a client divide the API into logical chunks and correspond to
 the structure of the Atlas API documentation at
 https://www.mongodb.com/docs/atlas/reference/api-resources-spec/.
 
+## Documentation
+
+Please refer to the [docs](./docs)
+
 ## Examples
 
 Example for creating an dedicated MongoDB cluster on AWS infrastructure
@@ -49,41 +53,6 @@ Example for creating an dedicated MongoDB cluster on AWS infrastructure
 ```bash
 go run ./examples/example_cluster_aws.go
 ```
-
-## Authentication
-
-The `atlas-sdk-go` library uses Digest authentication. 
-To obtain authentication tokens users can use Atlas UI or Atlas CLI 
-For more information please follow: https://www.mongodb.com/docs/atlas/api/api-authentication,
-
-## Error Handling
-
-SDK enables users to obtain detailed information about errors returned from backend.
-Errors are represented by [ErrorObject](./admin/model_error.go).
-Users should rely on the error code for detection of specific error cases.
-
-### Fetching Error Object
-```go
-import "go.mongodb.org/atlas-sdk/admin"
-
-projects, response, err := admin.ProjectsApi.ListProjects(ctx).Execute()
-apiError := admin.AsError(err)
-fmt.Println(apiError)
-```
-
-### Checking for existence of specific error code
-```go
-import admin "go.mongodb.org/atlas-sdk/admin"
-
-projects, response, err := admin.ProjectsApi.ListProjects(ctx).Execute()
-if admin.IsErrorCode(err, "code"){
- // Do something
-}
-```
-
-## Documentation
-
-Please refer to the [docs](./docs)
 
 ## Contributing
 

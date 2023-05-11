@@ -19,4 +19,6 @@
       * [Different naming conventions for SDK methods](./docs/doc_3_migration.md#different-naming-conventions-for-sdk-methods)
       * [Multiple choices when creating request body objects](./docs/doc_3_migration.md#multiple-choices-when-creating-request-body-objects)
 
+* [Authentication](./docs/doc_4_authentication.md#authentication)
+
 <!-- Created by https://github.com/ekalinin/github-markdown-toc -->

@@ -1,4 +1,4 @@
-# Atlas-SDK-GO Migration Guide
+# Migration Guide
 
 This document is meant to help you migrate from [go-client-mongodb-atlas](https://github.com/mongodb/go-client-mongodb-atlas) to [mongodb/atlas-sdk-go](https://github.com/mongodb/atlas-sdk-go).
 
