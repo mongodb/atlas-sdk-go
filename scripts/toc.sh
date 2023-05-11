@@ -11,4 +11,4 @@ fi
 
 echo "generating table of contents"
 echo "# Atlas SDK GO documentation" > ./docs/README.md
-./scripts/gh-md-toc --skip-header ./docs/doc_*.md  >> ./docs/README.md
+cd  ./docs/ && ../scripts/gh-md-toc --skip-header ./doc_*.md  >> ./README.md
