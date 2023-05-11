@@ -1,3 +1,7 @@
+#!/usr/bin/env bash
+set -o errexit
+set -o nounset
+
 if which "./scripts/gh-md-toc" >/dev/null 2>&1; then
   echo "Binary gh-md-toc exists."
 else
