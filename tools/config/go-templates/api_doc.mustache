@@ -38,7 +38,6 @@ func main() {
     apiSecret := os.Getenv("MDB_API_SECRET")
 
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    projects, response, err := sdk.ProjectsApi.ListProjects(ctx).Execute()
 
     {{#allParams}}
     {{paramName}} := {{{vendorExtensions.x-go-example}}} // {{{dataType}}} | {{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}

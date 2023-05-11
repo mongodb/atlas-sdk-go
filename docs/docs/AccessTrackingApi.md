@@ -35,7 +35,6 @@ func main() {
     apiSecret := os.Getenv("MDB_API_SECRET")
 
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    projects, response, err := sdk.ProjectsApi.ListProjects(ctx).Execute()
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
@@ -123,7 +122,6 @@ func main() {
     apiSecret := os.Getenv("MDB_API_SECRET")
 
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    projects, response, err := sdk.ProjectsApi.ListProjects(ctx).Execute()
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     hostname := "hostname_example" // string | 
