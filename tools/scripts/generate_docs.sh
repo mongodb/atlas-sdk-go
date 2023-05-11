@@ -12,28 +12,18 @@ set -o nounset
 
 OPENAPI_FOLDER=${OPENAPI_FOLDER:-./openapi}
 OPENAPI_FILE_NAME=${OPENAPI_FILE_NAME:-atlas-api.yaml}
-SDK_FOLDER=${SDK_FOLDER:-./}
+DOC_FOLDER=${DOC_FOLDER:-./docs}
 
 transformed_file="atlas-api-transformed.yaml"
 client_package="admin"
 openapiFileLocation="$OPENAPI_FOLDER/$transformed_file"
 
-echo "# Running generation pipeline"
-echo "# Running transformation based on $OPENAPI_FILE_NAME to the $transformed_file"
-cp "$OPENAPI_FOLDER/$OPENAPI_FILE_NAME" "$openapiFileLocation"
-
-npm install
-npm run sdk:transform -- "$openapiFileLocation"
-
-echo "# Running OpenAPI generator validation"
-npm exec openapi-generator-cli -- validate -i "$openapiFileLocation"
-
 echo "# Running Client Generation"
 
 npm exec openapi-generator-cli -- generate \
-    -c "./config/config.yaml" -i "$openapiFileLocation" -o "$SDK_FOLDER" \
+    -c "./config/config.yaml" -i "$openapiFileLocation" -o "$DOC_FOLDER" \
     --package-name="$client_package" \
     --type-mappings=integer=int \
-    --ignore-file-override=config/.go-ignore
+    --ignore-file-override=config/.go-ignore-docs
 
-gofmt -s -w "$SDK_FOLDER/"*.go
+mv "$DOC_FOLDER"/README.md "$DOC_FOLDER"/doc_1_reference.md

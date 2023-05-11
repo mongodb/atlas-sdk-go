@@ -1,4 +1,4 @@
-# {{invokerPackage}}\{{classname}}{{#description}}
+{{!X-GEN-CUSTOM}}# {{invokerPackage}}\{{classname}}{{#description}}
 
 {{.}}{{/description}}
 
@@ -29,23 +29,25 @@ import (
     "context"
     "fmt"
     "os"
-{{#vendorExtensions.x-go-import}}
-{{{vendorExtensions.x-go-import}}}
-{{/vendorExtensions.x-go-import}}
-    {{goImportAlias}} "{{gitHost}}/{{gitUserId}}/{{gitRepoId}}{{#isGoSubmodule}}/{{packageName}}{{/isGoSubmodule}}"
+
+    "go.mongodb.org/atlas-sdk/admin"
 )
 
 func main() {
+    apiKey := os.Getenv("MDB_API_KEY")
+    apiSecret := os.Getenv("MDB_API_SECRET")
+
+    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+
     {{#allParams}}
-    {{paramName}} := {{{vendorExtensions.x-go-example}}} // {{{dataType}}} | {{{description}}}{{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
+    {{paramName}} := {{{vendorExtensions.x-go-example}}} // {{{dataType}}} | {{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
     {{/allParams}}
 
-    configuration := {{goImportAlias}}.NewConfiguration()
-    apiClient := {{goImportAlias}}.NewAPIClient(configuration)
-    {{#returnType}}resp, {{/returnType}}r, err := apiClient.{{classname}}.{{operationId}}(context.Background(){{#pathParams}}, {{paramName}}{{/pathParams}}){{#allParams}}{{^isPathParam}}.{{vendorExtensions.x-export-param-name}}({{paramName}}){{/isPathParam}}{{/allParams}}.Execute()
+    {{#returnType}}resp, {{/returnType}}r, err := sdk.{{classname}}.{{operationId}}(context.Background(){{#pathParams}}, {{paramName}}{{/pathParams}}){{#allParams}}{{^isPathParam}}.{{vendorExtensions.x-export-param-name}}({{paramName}}){{/isPathParam}}{{/allParams}}.Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `{{classname}}.{{operationId}}``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+        apiError := admin.AsError(err)
+        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
     {{#returnType}}
     // response from `{{operationId}}`: {{{.}}}
@@ -76,8 +78,8 @@ Name | Type | Description  | Notes
 {{#returnType}}{{#returnTypeIsPrimitive}}**{{{returnType}}}**{{/returnTypeIsPrimitive}}{{^returnTypeIsPrimitive}}[**{{{returnType}}}**]({{returnBaseType}}.md){{/returnTypeIsPrimitive}}{{/returnType}}{{^returnType}} (empty response body){{/returnType}}
 
 ### Authorization
-
-{{^authMethods}}No authorization required{{/authMethods}}{{#authMethods}}[{{{name}}}](../README.md#{{{name}}}){{^-last}}, {{/-last}}{{/authMethods}}
+{{!X-GEN-CUSTOM}}
+[DigestAuth](../../README.md)
 
 ### HTTP request headers
 
