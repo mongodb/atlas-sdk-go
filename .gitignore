@@ -40,3 +40,5 @@ example_cluster_aws
 admin/api
 admin/.openapi-generator
 scripts/gh-md-toc
+docs/.openapi-generator/*
+

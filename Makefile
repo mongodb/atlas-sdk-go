@@ -60,4 +60,5 @@ openapi-pipeline:
 
 .PHONY: generate-docs
 generate-docs:
+	$(MAKE) -C tools generate_docs
 	./scripts/toc.sh
