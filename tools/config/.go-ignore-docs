@@ -4,13 +4,6 @@
 # Use this file to prevent files from being overwritten by the generator.
 # The patterns follow closely to .gitignore or .dockerignore.
 
-**/docs/*.md
-**/test/*
-**FILES
-**VERSION
-**go.mod
-**go.sum
-**openapi-generator-ignore
-**travis.yml
-**git_push.sh
-**/README.md
+**/*.*
+!**/*.md
+.openapi-generator
