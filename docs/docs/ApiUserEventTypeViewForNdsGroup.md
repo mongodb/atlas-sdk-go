@@ -1,0 +1,29 @@
+# ApiUserEventTypeViewForNdsGroup
+
+## Enum
+
+
+* `CREATED` (value: `"API_KEY_CREATED"`)
+
+* `DELETED` (value: `"API_KEY_DELETED"`)
+
+* `ACCESS_LIST_ENTRY_ADDED` (value: `"API_KEY_ACCESS_LIST_ENTRY_ADDED"`)
+
+* `ACCESS_LIST_ENTRY_DELETED` (value: `"API_KEY_ACCESS_LIST_ENTRY_DELETED"`)
+
+* `ROLES_CHANGED` (value: `"API_KEY_ROLES_CHANGED"`)
+
+* `DESCRIPTION_CHANGED` (value: `"API_KEY_DESCRIPTION_CHANGED"`)
+
+* `ADDED_TO_GROUP` (value: `"API_KEY_ADDED_TO_GROUP"`)
+
+* `REMOVED_FROM_GROUP` (value: `"API_KEY_REMOVED_FROM_GROUP"`)
+
+* `UI_IP_ACCESS_LIST_INHERITANCE_ENABLED` (value: `"API_KEY_UI_IP_ACCESS_LIST_INHERITANCE_ENABLED"`)
+
+* `UI_IP_ACCESS_LIST_INHERITANCE_DISABLED` (value: `"API_KEY_UI_IP_ACCESS_LIST_INHERITANCE_DISABLED"`)
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
