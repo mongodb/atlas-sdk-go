@@ -1,0 +1,108 @@
+# PaginatedTeamRole
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
+**Results** | Pointer to [**[]TeamRole**](TeamRole.md) | List of returned documents that MongoDB Cloud providers when completing this request. | [optional] [readonly] 
+**TotalCount** | Pointer to **int** | Number of documents returned in this response. | [optional] [readonly] 
+
+## Methods
+
+### NewPaginatedTeamRole
+
+`func NewPaginatedTeamRole() *PaginatedTeamRole`
+
+NewPaginatedTeamRole instantiates a new PaginatedTeamRole object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewPaginatedTeamRoleWithDefaults
+
+`func NewPaginatedTeamRoleWithDefaults() *PaginatedTeamRole`
+
+NewPaginatedTeamRoleWithDefaults instantiates a new PaginatedTeamRole object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetLinks
+
+`func (o *PaginatedTeamRole) GetLinks() []Link`
+
+GetLinks returns the Links field if non-nil, zero value otherwise.
+
+### GetLinksOk
+
+`func (o *PaginatedTeamRole) GetLinksOk() (*[]Link, bool)`
+
+GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLinks
+
+`func (o *PaginatedTeamRole) SetLinks(v []Link)`
+
+SetLinks sets Links field to given value.
+
+### HasLinks
+
+`func (o *PaginatedTeamRole) HasLinks() bool`
+
+HasLinks returns a boolean if a field has been set.
+
+### GetResults
+
+`func (o *PaginatedTeamRole) GetResults() []TeamRole`
+
+GetResults returns the Results field if non-nil, zero value otherwise.
+
+### GetResultsOk
+
+`func (o *PaginatedTeamRole) GetResultsOk() (*[]TeamRole, bool)`
+
+GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResults
+
+`func (o *PaginatedTeamRole) SetResults(v []TeamRole)`
+
+SetResults sets Results field to given value.
+
+### HasResults
+
+`func (o *PaginatedTeamRole) HasResults() bool`
+
+HasResults returns a boolean if a field has been set.
+
+### GetTotalCount
+
+`func (o *PaginatedTeamRole) GetTotalCount() int`
+
+GetTotalCount returns the TotalCount field if non-nil, zero value otherwise.
+
+### GetTotalCountOk
+
+`func (o *PaginatedTeamRole) GetTotalCountOk() (*int, bool)`
+
+GetTotalCountOk returns a tuple with the TotalCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTotalCount
+
+`func (o *PaginatedTeamRole) SetTotalCount(v int)`
+
+SetTotalCount sets TotalCount field to given value.
+
+### HasTotalCount
+
+`func (o *PaginatedTeamRole) HasTotalCount() bool`
+
+HasTotalCount returns a boolean if a field has been set.
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

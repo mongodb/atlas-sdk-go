@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 [**MongoDBAccessLogsList**](MongoDBAccessLogsList.md)
 
 ### Authorization
-[DigestAuth](../../README.md)
+[DigestAuth](../README.md#Authentication)
 
 ### HTTP request headers
 
@@ -171,7 +171,7 @@ Name | Type | Description  | Notes
 [**MongoDBAccessLogsList**](MongoDBAccessLogsList.md)
 
 ### Authorization
-[DigestAuth](../../README.md)
+[DigestAuth](../README.md#Authentication)
 
 ### HTTP request headers
 
