@@ -64,19 +64,19 @@ Users should rely on the error code for detection of specific error cases.
 
 ### Fetching Error Object
 ```go
-import errors "go.mongodb.org/atlas-sdk/admin"
+import "go.mongodb.org/atlas-sdk/admin"
 
-projects, response, err := sdk.ProjectsApi.ListProjects(ctx).Execute()
-apiError := errors.AsError(err)
+projects, response, err := admin.ProjectsApi.ListProjects(ctx).Execute()
+apiError := admin.AsError(err)
 fmt.Println(apiError)
 ```
 
 ### Checking for existence of specific error code
 ```go
-import errors "go.mongodb.org/atlas-sdk/admin"
+import admin "go.mongodb.org/atlas-sdk/admin"
 
-
-if errors.IsErrorCode(err, "code"){
+projects, response, err := admin.ProjectsApi.ListProjects(ctx).Execute()
+if admin.IsErrorCode(err, "code"){
  // Do something
 }
 ```
