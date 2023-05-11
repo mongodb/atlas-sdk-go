@@ -4,12 +4,11 @@
    * [Documentation for API Endpoints](./docs/doc_1_reference.md#documentation-for-api-endpoints)
    * [Documentation For Models](./docs/doc_1_reference.md#documentation-for-models)
 
-* [Advanced usage](./docs/doc_2_advanced_usage.md#advanced-usage)
-   * [Fluent and Struct Based API](./docs/doc_2_advanced_usage.md#fluent-and-struct-based-api)
-      * [Fluent API example](./docs/doc_2_advanced_usage.md#fluent-api-example)
-      * [Struct based API example](./docs/doc_2_advanced_usage.md#struct-based-api-example)
+* [Error Handling](./docs/doc_2_error_handling.md#error-handling)
+   * [Fetching Error Object](./docs/doc_2_error_handling.md#fetching-error-object)
+   * [Checking for existence of specific error code](./docs/doc_2_error_handling.md#checking-for-existence-of-specific-error-code)
 
-* [Atlas-SDK-GO Migration Guide](./docs/doc_3_migration.md#atlas-sdk-go-migration-guide)
+* [Migration Guide](./docs/doc_3_migration.md#migration-guide)
    * [Summary](./docs/doc_3_migration.md#summary)
    * [Background](./docs/doc_3_migration.md#background)
    * [Structural changes](./docs/doc_3_migration.md#structural-changes)
@@ -20,5 +19,10 @@
       * [Multiple choices when creating request body objects](./docs/doc_3_migration.md#multiple-choices-when-creating-request-body-objects)
 
 * [Authentication](./docs/doc_4_authentication.md#authentication)
+
+* [Advanced usage](./docs/doc_5_advanced_usage.md#advanced-usage)
+   * [Fluent and Struct Based API](./docs/doc_5_advanced_usage.md#fluent-and-struct-based-api)
+      * [Fluent API example](./docs/doc_5_advanced_usage.md#fluent-api-example)
+      * [Struct based API example](./docs/doc_5_advanced_usage.md#struct-based-api-example)
 
 <!-- Created by https://github.com/ekalinin/github-markdown-toc -->
