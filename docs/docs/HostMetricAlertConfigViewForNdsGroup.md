@@ -1,0 +1,285 @@
+# HostMetricAlertConfigViewForNdsGroup
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Created** | Pointer to **time.Time** | Date and time when MongoDB Cloud created the alert configuration. This parameter expresses its value in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_8601\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;ISO 8601&lt;/a&gt; timestamp format in UTC. | [optional] [readonly] 
+**Enabled** | Pointer to **bool** | Flag that indicates whether someone enabled this alert configuration for the specified project. | [optional] [default to false]
+**EventTypeName** | [**HostMetricEventTypeViewAlertable**](HostMetricEventTypeViewAlertable.md) |  | 
+**GroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the project that owns this alert configuration. | [optional] [readonly] 
+**Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies this alert configuration. | [optional] [readonly] 
+**Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
+**Matchers** | Pointer to [**[]HostMatcher**](HostMatcher.md) | List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster. | [optional] 
+**MetricThreshold** | Pointer to [**HostMetricThreshold**](HostMetricThreshold.md) |  | [optional] 
+**Notifications** | Pointer to [**[]NotificationViewForNdsGroup**](NotificationViewForNdsGroup.md) | List that contains the targets that MongoDB Cloud sends notifications. | [optional] 
+**Updated** | Pointer to **time.Time** | Date and time when someone last updated this alert configuration. This parameter expresses its value in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_8601\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;ISO 8601&lt;/a&gt; timestamp format in UTC. | [optional] [readonly] 
+
+## Methods
+
+### NewHostMetricAlertConfigViewForNdsGroup
+
+`func NewHostMetricAlertConfigViewForNdsGroup(eventTypeName HostMetricEventTypeViewAlertable, ) *HostMetricAlertConfigViewForNdsGroup`
+
+NewHostMetricAlertConfigViewForNdsGroup instantiates a new HostMetricAlertConfigViewForNdsGroup object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewHostMetricAlertConfigViewForNdsGroupWithDefaults
+
+`func NewHostMetricAlertConfigViewForNdsGroupWithDefaults() *HostMetricAlertConfigViewForNdsGroup`
+
+NewHostMetricAlertConfigViewForNdsGroupWithDefaults instantiates a new HostMetricAlertConfigViewForNdsGroup object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetCreated
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) GetCreated() time.Time`
+
+GetCreated returns the Created field if non-nil, zero value otherwise.
+
+### GetCreatedOk
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) GetCreatedOk() (*time.Time, bool)`
+
+GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreated
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) SetCreated(v time.Time)`
+
+SetCreated sets Created field to given value.
+
+### HasCreated
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) HasCreated() bool`
+
+HasCreated returns a boolean if a field has been set.
+
+### GetEnabled
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) GetEnabled() bool`
+
+GetEnabled returns the Enabled field if non-nil, zero value otherwise.
+
+### GetEnabledOk
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) GetEnabledOk() (*bool, bool)`
+
+GetEnabledOk returns a tuple with the Enabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnabled
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) SetEnabled(v bool)`
+
+SetEnabled sets Enabled field to given value.
+
+### HasEnabled
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) HasEnabled() bool`
+
+HasEnabled returns a boolean if a field has been set.
+
+### GetEventTypeName
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) GetEventTypeName() HostMetricEventTypeViewAlertable`
+
+GetEventTypeName returns the EventTypeName field if non-nil, zero value otherwise.
+
+### GetEventTypeNameOk
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) GetEventTypeNameOk() (*HostMetricEventTypeViewAlertable, bool)`
+
+GetEventTypeNameOk returns a tuple with the EventTypeName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEventTypeName
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) SetEventTypeName(v HostMetricEventTypeViewAlertable)`
+
+SetEventTypeName sets EventTypeName field to given value.
+
+
+### GetGroupId
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) GetGroupId() string`
+
+GetGroupId returns the GroupId field if non-nil, zero value otherwise.
+
+### GetGroupIdOk
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) GetGroupIdOk() (*string, bool)`
+
+GetGroupIdOk returns a tuple with the GroupId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroupId
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) SetGroupId(v string)`
+
+SetGroupId sets GroupId field to given value.
+
+### HasGroupId
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) HasGroupId() bool`
+
+HasGroupId returns a boolean if a field has been set.
+
+### GetId
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) HasId() bool`
+
+HasId returns a boolean if a field has been set.
+
+### GetLinks
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) GetLinks() []Link`
+
+GetLinks returns the Links field if non-nil, zero value otherwise.
+
+### GetLinksOk
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) GetLinksOk() (*[]Link, bool)`
+
+GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLinks
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) SetLinks(v []Link)`
+
+SetLinks sets Links field to given value.
+
+### HasLinks
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) HasLinks() bool`
+
+HasLinks returns a boolean if a field has been set.
+
+### GetMatchers
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) GetMatchers() []HostMatcher`
+
+GetMatchers returns the Matchers field if non-nil, zero value otherwise.
+
+### GetMatchersOk
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) GetMatchersOk() (*[]HostMatcher, bool)`
+
+GetMatchersOk returns a tuple with the Matchers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMatchers
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) SetMatchers(v []HostMatcher)`
+
+SetMatchers sets Matchers field to given value.
+
+### HasMatchers
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) HasMatchers() bool`
+
+HasMatchers returns a boolean if a field has been set.
+
+### GetMetricThreshold
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) GetMetricThreshold() HostMetricThreshold`
+
+GetMetricThreshold returns the MetricThreshold field if non-nil, zero value otherwise.
+
+### GetMetricThresholdOk
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) GetMetricThresholdOk() (*HostMetricThreshold, bool)`
+
+GetMetricThresholdOk returns a tuple with the MetricThreshold field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetricThreshold
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) SetMetricThreshold(v HostMetricThreshold)`
+
+SetMetricThreshold sets MetricThreshold field to given value.
+
+### HasMetricThreshold
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) HasMetricThreshold() bool`
+
+HasMetricThreshold returns a boolean if a field has been set.
+
+### GetNotifications
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) GetNotifications() []NotificationViewForNdsGroup`
+
+GetNotifications returns the Notifications field if non-nil, zero value otherwise.
+
+### GetNotificationsOk
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) GetNotificationsOk() (*[]NotificationViewForNdsGroup, bool)`
+
+GetNotificationsOk returns a tuple with the Notifications field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNotifications
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) SetNotifications(v []NotificationViewForNdsGroup)`
+
+SetNotifications sets Notifications field to given value.
+
+### HasNotifications
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) HasNotifications() bool`
+
+HasNotifications returns a boolean if a field has been set.
+
+### GetUpdated
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) GetUpdated() time.Time`
+
+GetUpdated returns the Updated field if non-nil, zero value otherwise.
+
+### GetUpdatedOk
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) GetUpdatedOk() (*time.Time, bool)`
+
+GetUpdatedOk returns a tuple with the Updated field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdated
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) SetUpdated(v time.Time)`
+
+SetUpdated sets Updated field to given value.
+
+### HasUpdated
+
+`func (o *HostMetricAlertConfigViewForNdsGroup) HasUpdated() bool`
+
+HasUpdated returns a boolean if a field has been set.
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
