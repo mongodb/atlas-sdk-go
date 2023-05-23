@@ -29,7 +29,7 @@ function removeUnusedSchemas(openapiData) {
     });
   }
   // Return the updated OpenAPI document
-  return openapiData, hasSchemaChanges;
+  return hasSchemaChanges;
 }
 
 /**
