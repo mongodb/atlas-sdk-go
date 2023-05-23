@@ -5,6 +5,8 @@ const {
   applyDiscriminatorTransformations,
 } = require("./transformations");
 
+const removeUnusedSchemas = require("./engine/removeUnused");
+
 const ignoredModelNames = require("./name.ignore.json").ignoreModels;
 
 /**
@@ -54,6 +56,13 @@ module.exports = function runTransformations(openapi) {
   // Temp workaround for CLOUDP-168427
   if (openapi.components.schemas.Error) {
     openapi.components.schemas.Error.properties.parameters.items = {};
+  }
+
+  let hasSchemaChanges = true;
+  // Remove referencing objects that become unused
+  while (hasSchemaChanges) {
+    console.info("Checking for unused schemas");
+    hasSchemaChanges = removeUnusedSchemas(openapi);
   }
 
   return openapi;
