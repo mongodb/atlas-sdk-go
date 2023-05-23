@@ -58,8 +58,12 @@ module.exports = function runTransformations(openapi) {
     openapi.components.schemas.Error.properties.parameters.items = {};
   }
 
-  removeUnusedSchemas(openapi);
-  removeUnusedSchemas(openapi);
+  let hasSchemaChanges = true;
+  // Remove referencing objects that become unused
+  while (hasSchemaChanges) {
+    console.info("Checking for unused schemas")
+    openapi, hasSchemaChanges = removeUnusedSchemas(openapi);
+  }
   
   return openapi;
 };
