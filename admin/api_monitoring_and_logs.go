@@ -752,14 +752,10 @@ func (a *MonitoringAndLogsApiService) getDatabaseMeasurementsExecute(r GetDataba
 
 	if r.m != nil {
 		t := *r.m
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "m", s.Index(i), "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "m", t, "multi")
-		}
+		// Workaround for unused import
+		_ = reflect.Append
+		parameterAddToHeaderOrQuery(localVarQueryParams, "m", t, "multi")
+
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -920,14 +916,10 @@ func (a *MonitoringAndLogsApiService) getDiskMeasurementsExecute(r GetDiskMeasur
 
 	if r.m != nil {
 		t := *r.m
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "m", s.Index(i), "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "m", t, "multi")
-		}
+		// Workaround for unused import
+		_ = reflect.Append
+		parameterAddToHeaderOrQuery(localVarQueryParams, "m", t, "multi")
+
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1257,14 +1249,10 @@ func (a *MonitoringAndLogsApiService) getHostMeasurementsExecute(r GetHostMeasur
 
 	if r.m != nil {
 		t := *r.m
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "m", s.Index(i), "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "m", t, "multi")
-		}
+		// Workaround for unused import
+		_ = reflect.Append
+		parameterAddToHeaderOrQuery(localVarQueryParams, "m", t, "multi")
+
 	}
 	if r.period != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "period", r.period, "")
@@ -1489,14 +1477,9 @@ func (a *MonitoringAndLogsApiService) getIndexMetricsExecute(r GetIndexMetricsAp
 	}
 	{
 		t := *r.metrics
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "metrics", s.Index(i), "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "metrics", t, "multi")
-		}
+		// Workaround for unused import
+		_ = reflect.Append
+		parameterAddToHeaderOrQuery(localVarQueryParams, "metrics", t, "multi")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1700,14 +1683,9 @@ func (a *MonitoringAndLogsApiService) getMeasurementsExecute(r GetMeasurementsAp
 	}
 	{
 		t := *r.metrics
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "metrics", s.Index(i), "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "metrics", t, "multi")
-		}
+		// Workaround for unused import
+		_ = reflect.Append
+		parameterAddToHeaderOrQuery(localVarQueryParams, "metrics", t, "multi")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2617,14 +2595,9 @@ func (a *MonitoringAndLogsApiService) listIndexMetricsExecute(r ListIndexMetrics
 	}
 	{
 		t := *r.metrics
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "metrics", s.Index(i), "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "metrics", t, "multi")
-		}
+		// Workaround for unused import
+		_ = reflect.Append
+		parameterAddToHeaderOrQuery(localVarQueryParams, "metrics", t, "multi")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

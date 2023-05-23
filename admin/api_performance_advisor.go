@@ -487,14 +487,10 @@ func (a *PerformanceAdvisorApiService) listSlowQueriesExecute(r ListSlowQueriesA
 	}
 	if r.namespaces != nil {
 		t := *r.namespaces
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "namespaces", s.Index(i), "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "namespaces", t, "multi")
-		}
+		// Workaround for unused import
+		_ = reflect.Append
+		parameterAddToHeaderOrQuery(localVarQueryParams, "namespaces", t, "multi")
+
 	}
 	if r.nLogs != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "nLogs", r.nLogs, "")
@@ -900,14 +896,10 @@ func (a *PerformanceAdvisorApiService) listSuggestedIndexesExecute(r ListSuggest
 	}
 	if r.namespaces != nil {
 		t := *r.namespaces
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "namespaces", s.Index(i), "multi")
-			}
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "namespaces", t, "multi")
-		}
+		// Workaround for unused import
+		_ = reflect.Append
+		parameterAddToHeaderOrQuery(localVarQueryParams, "namespaces", t, "multi")
+
 	}
 	if r.nExamples != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "nExamples", r.nExamples, "")
