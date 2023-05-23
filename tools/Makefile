@@ -25,5 +25,6 @@ clean_and_generate: clean_client generate_client
 
 .PHONY: generate_docs
 generate_docs:	
+	rm -Rf ../docs/docs/*
 	./scripts/generate_docs.sh
 
