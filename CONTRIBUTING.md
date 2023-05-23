@@ -85,5 +85,36 @@ Repository contains following SDKs
 - `tools`: tooling used to generate Atlas Admin SDK. See [./tools](./tools) for more information.
 - `examples`: SDK examples
 
+## VSCode debugging configuration
+VSCode developers might use following debugging configuration for transformer and go debugging
+```
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug Go App",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "${file}"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Transform",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "env": {
+                "OPENAPI_FILE_NAME": "./openapi/atlas-api.yaml"
+            },
+            "args": ["./openapi/atlas-api.yaml"],
+            "program": "${workspaceFolder}/tools/transformer/src/transform"
+        }
+    ]
+}
+
+```
+
 
 
