@@ -213,11 +213,9 @@ func (a *{{{classname}}}Service) {{#lambda.camelcase}}{{{nickname}}}{{/lambda.ca
 	{{#isCollectionFormatMulti}}
 	{
 		t := *r.{{paramName}}
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "{{baseName}}", t, "{{collectionFormat}}")
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "{{baseName}}", t, "{{collectionFormat}}")
-		}
+		// Workaround for unused import
+		_ = reflect.Append;
+		parameterAddToHeaderOrQuery(localVarQueryParams, "{{baseName}}", t, "{{collectionFormat}}")
 	}
 	{{/isCollectionFormatMulti}}
 	{{^isCollectionFormatMulti}}
@@ -228,11 +226,10 @@ func (a *{{{classname}}}Service) {{#lambda.camelcase}}{{{nickname}}}{{/lambda.ca
 	if r.{{paramName}} != nil {
 	{{#isCollectionFormatMulti}}
 		t := *r.{{paramName}}
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "{{baseName}}", t, "{{collectionFormat}}")
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "{{baseName}}", t, "{{collectionFormat}}")
-		}
+		// Workaround for unused import
+		_ = reflect.Append;
+		parameterAddToHeaderOrQuery(localVarQueryParams, "{{baseName}}", t, "{{collectionFormat}}")
+		
 	{{/isCollectionFormatMulti}}
 	{{^isCollectionFormatMulti}}
 		parameterAddToHeaderOrQuery(localVarQueryParams, "{{baseName}}", r.{{paramName}}, "{{collectionFormat}}")

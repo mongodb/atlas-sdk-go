@@ -838,11 +838,10 @@ func (a *EventsApiService) listProjectEventsExecute(r ListProjectEventsApiReques
 	}
 	if r.clusterNames != nil {
 		t := *r.clusterNames
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "clusterNames", t, "multi")
-		} else {
-			parameterAddToHeaderOrQuery(localVarQueryParams, "clusterNames", t, "multi")
-		}
+		// Workaround for unused import
+		_ = reflect.Append
+		parameterAddToHeaderOrQuery(localVarQueryParams, "clusterNames", t, "multi")
+
 	}
 	if r.eventType != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "eventType", r.eventType, "")
