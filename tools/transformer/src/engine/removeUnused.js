@@ -1,7 +1,7 @@
 /**
  * Helper function used to traverse the OpenAPI document and remove unused schemas
- * @param {*} openapiData 
- * @returns 
+ * @param {*} openapiData
+ * @returns
  */
 function removeUnusedSchemas(openapiData) {
   const allRefs = [];
@@ -12,8 +12,8 @@ function removeUnusedSchemas(openapiData) {
 
   // Extract unique references used in the OpenAPI document
   allRefs.forEach((ref) => {
-    const refParts = ref.split('/');
-    if (refParts[1] === 'components' && refParts[2] === 'schemas') {
+    const refParts = ref.split("/");
+    if (refParts[1] === "components" && refParts[2] === "schemas") {
       usedRefs.push(refParts[3]);
     }
   });
@@ -24,7 +24,7 @@ function removeUnusedSchemas(openapiData) {
     Object.keys(schemas).forEach((schemaName) => {
       if (!usedRefs.includes(schemaName)) {
         delete schemas[schemaName];
-        hasSchemaChanges = true
+        hasSchemaChanges = true;
       }
     });
   }
@@ -34,16 +34,16 @@ function removeUnusedSchemas(openapiData) {
 
 /**
  * Recursive function for finding all $ref occurrences in the OpenAPI document
- * @param {*} obj 
- * @param {*} refs 
+ * @param {*} obj
+ * @param {*} refs
  */
 function findRefs(obj, refs) {
-  if (typeof obj === 'object' && obj !== null) {
+  if (typeof obj === "object" && obj !== null) {
     if (Array.isArray(obj)) {
       obj.forEach((item) => findRefs(item, refs));
     } else {
       Object.keys(obj).forEach((key) => {
-        if (key === '$ref') {
+        if (key === "$ref") {
           refs.push(obj[key]);
         } else {
           findRefs(obj[key], refs);
@@ -53,4 +53,4 @@ function findRefs(obj, refs) {
   }
 }
 
-module.exports = removeUnusedSchemas
+module.exports = removeUnusedSchemas;

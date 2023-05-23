@@ -61,9 +61,9 @@ module.exports = function runTransformations(openapi) {
   let hasSchemaChanges = true;
   // Remove referencing objects that become unused
   while (hasSchemaChanges) {
-    console.info("Checking for unused schemas")
-    openapi, hasSchemaChanges = removeUnusedSchemas(openapi);
+    console.info("Checking for unused schemas");
+    openapi, (hasSchemaChanges = removeUnusedSchemas(openapi));
   }
-  
+
   return openapi;
 };
