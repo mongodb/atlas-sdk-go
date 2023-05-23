@@ -5,6 +5,8 @@ const {
   applyDiscriminatorTransformations,
 } = require("./transformations");
 
+const removeUnusedSchemas = require("./engine/removeUnused");
+
 const ignoredModelNames = require("./name.ignore.json").ignoreModels;
 
 /**
@@ -56,5 +58,8 @@ module.exports = function runTransformations(openapi) {
     openapi.components.schemas.Error.properties.parameters.items = {};
   }
 
+  removeUnusedSchemas(openapi);
+  removeUnusedSchemas(openapi);
+  
   return openapi;
 };
