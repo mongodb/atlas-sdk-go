@@ -839,10 +839,7 @@ func (a *EventsApiService) listProjectEventsExecute(r ListProjectEventsApiReques
 	if r.clusterNames != nil {
 		t := *r.clusterNames
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "clusterNames", s.Index(i), "multi")
-			}
+			parameterAddToHeaderOrQuery(localVarQueryParams, "clusterNames", t, "multi")
 		} else {
 			parameterAddToHeaderOrQuery(localVarQueryParams, "clusterNames", t, "multi")
 		}

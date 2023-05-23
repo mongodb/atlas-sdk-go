@@ -488,10 +488,7 @@ func (a *PerformanceAdvisorApiService) listSlowQueriesExecute(r ListSlowQueriesA
 	if r.namespaces != nil {
 		t := *r.namespaces
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "namespaces", s.Index(i), "multi")
-			}
+			parameterAddToHeaderOrQuery(localVarQueryParams, "namespaces", t, "multi")
 		} else {
 			parameterAddToHeaderOrQuery(localVarQueryParams, "namespaces", t, "multi")
 		}
@@ -901,10 +898,7 @@ func (a *PerformanceAdvisorApiService) listSuggestedIndexesExecute(r ListSuggest
 	if r.namespaces != nil {
 		t := *r.namespaces
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "namespaces", s.Index(i), "multi")
-			}
+			parameterAddToHeaderOrQuery(localVarQueryParams, "namespaces", t, "multi")
 		} else {
 			parameterAddToHeaderOrQuery(localVarQueryParams, "namespaces", t, "multi")
 		}

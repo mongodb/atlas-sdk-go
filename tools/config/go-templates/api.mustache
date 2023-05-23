@@ -214,10 +214,7 @@ func (a *{{{classname}}}Service) {{#lambda.camelcase}}{{{nickname}}}{{/lambda.ca
 	{
 		t := *r.{{paramName}}
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "{{baseName}}", s.Index(i), "{{collectionFormat}}")
-			}
+			parameterAddToHeaderOrQuery(localVarQueryParams, "{{baseName}}", t, "{{collectionFormat}}")
 		} else {
 			parameterAddToHeaderOrQuery(localVarQueryParams, "{{baseName}}", t, "{{collectionFormat}}")
 		}
@@ -232,10 +229,7 @@ func (a *{{{classname}}}Service) {{#lambda.camelcase}}{{{nickname}}}{{/lambda.ca
 	{{#isCollectionFormatMulti}}
 		t := *r.{{paramName}}
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "{{baseName}}", s.Index(i), "{{collectionFormat}}")
-			}
+			parameterAddToHeaderOrQuery(localVarQueryParams, "{{baseName}}", t, "{{collectionFormat}}")
 		} else {
 			parameterAddToHeaderOrQuery(localVarQueryParams, "{{baseName}}", t, "{{collectionFormat}}")
 		}

@@ -792,10 +792,7 @@ func (a *ClustersApiService) listCloudProviderRegionsExecute(r ListCloudProvider
 	if r.providers != nil {
 		t := *r.providers
 		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				parameterAddToHeaderOrQuery(localVarQueryParams, "providers", s.Index(i), "multi")
-			}
+			parameterAddToHeaderOrQuery(localVarQueryParams, "providers", t, "multi")
 		} else {
 			parameterAddToHeaderOrQuery(localVarQueryParams, "providers", t, "multi")
 		}
