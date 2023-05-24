@@ -1,4 +1,4 @@
-# Advanced usage
+# SDK concepts
 
 ##  Fluent and Struct Based API
 
@@ -17,10 +17,9 @@ Fluent API should be used by default to handle all requests.
 
 ### Struct based API example
 
-Struct based API is particularly useful for HTTP GET requests where we need to pass number of arguments to the function without checking 
+Struct based API is particularly useful for HTTP GET requests where we need to pass number of arguments to the function:
+
 ```go
-	listParams := &mongodbatlas.ListProjectsApiParams{ItemsPerPage: mongodbatlas.PtrInt32(1)}
+	listParams := &admin.ListProjectsApiParams{ItemsPerPage: admin.PtrInt32(1)}
 	projects, response, err := sdk.ProjectsApi.ListProjectsWithParams(ctx, listParams).Execute()
 ```    
-
-> NOTE: Struct based API is an still experimental feature.
