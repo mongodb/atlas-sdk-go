@@ -36,8 +36,9 @@ sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 projects, response, err := sdk.ProjectsApi.ListProjects(ctx).Execute()
 ```
 
-For documentation about obtaining private and public API token go to
+For documentation about obtaining apiKey and apiSecret go to
 https://docs.atlas.mongodb.com/configure-api-access.
+
 The services of a client divide the API into logical chunks and correspond to
 the structure of the Atlas API documentation at
 https://www.mongodb.com/docs/atlas/reference/api-resources-spec/.
@@ -48,11 +49,7 @@ Please refer to the [docs](./docs)
 
 ## Examples
 
-Example for creating an dedicated MongoDB cluster on AWS infrastructure
-
-```bash
-go run ./examples/example_cluster_aws.go
-```
+See [examples](./examples)
 
 ## Contributing
 

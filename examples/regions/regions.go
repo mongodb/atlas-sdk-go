@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"log"
-	"net"
 	"net/http"
 	"os"
 
@@ -13,13 +12,7 @@ import (
 )
 
 /*
-* MongoDB Atlas Go SDK Example
-*
-* Example performs following actions:
-* - Finds first project in the user organization
-* - Creates new MongoDB cluster backed by AWS provider in that project
-* - Creates database user for connection
-* - Creates IP access to enable connection
+* MongoDB Atlas Go SDK Example for fetching cloud provider regions
  */
 func main() {
 	ctx := context.Background()
@@ -30,7 +23,7 @@ func main() {
 
 	sdk, err := admin.NewClient(
 		admin.UseDigestAuth(apiKey, apiSecret),
-		admin.UseBaseURL("https://cloud-dev.mongodb.com"),
+		admin.UseBaseURL("https://cloud.mongodb.com"),
 		admin.UseDebug(false))
 	handleErr(err, nil)
 
@@ -61,17 +54,4 @@ func handleErr(err error, resp *http.Response) {
 	}
 	apiErr, _ := admin.AsError(err)
 	log.Fatalf("Error when performing SDK request: %v", apiErr.GetDetail())
-
-}
-
-func getIpAddress() string {
-	conn, err := net.Dial("udp", "8.8.8.8:80")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer conn.Close()
-
-	localAddr := conn.LocalAddr().(*net.UDPAddr)
-
-	return localAddr.IP.String()
 }
