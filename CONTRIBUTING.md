@@ -79,11 +79,11 @@ We provide a git pre-commit hook to format and check the code, to install it run
 
 Repository contains following SDKs
 
-- `core`: (internal) contains information about version and other cross functional dependencies for all SDKs
 - `auth`: Atlas Auth SDK
 - `admin`: Atlas Admin SDK
 - `tools`: tooling used to generate Atlas Admin SDK. See [./tools](./tools) for more information.
 - `examples`: SDK examples
+- `internal`: folder for hosting non user facing SDK methods and core helpers
 
 ## VSCode debugging configuration
 VSCode developers might use following debugging configuration for transformer and go debugging

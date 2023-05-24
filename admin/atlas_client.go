@@ -9,7 +9,7 @@ import (
 	"strings"
 
 	"github.com/mongodb-forks/digest"
-	"go.mongodb.org/atlas-sdk/core"
+	"go.mongodb.org/atlas-sdk/internal/core"
 )
 
 const (
