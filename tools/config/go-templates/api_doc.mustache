@@ -43,7 +43,7 @@ func main() {
     {{paramName}} := {{{vendorExtensions.x-go-example}}} // {{{dataType}}} | {{^required}} (optional){{/required}}{{#defaultValue}} (default to {{{.}}}){{/defaultValue}}
     {{/allParams}}
 
-    {{#returnType}}resp, {{/returnType}}r, err := sdk.{{classname}}.{{operationId}}(context.Background(){{#pathParams}}, {{paramName}}{{/pathParams}}){{#allParams}}{{^isPathParam}}.{{vendorExtensions.x-export-param-name}}({{paramName}}){{/isPathParam}}{{/allParams}}.Execute()
+    {{#returnType}}resp, {{/returnType}}r, err := sdk.{{classname}}.{{operationId}}(context.Background(){{#pathParams}}, {{paramName}}{{/pathParams}}){{#allParams}}{{^isPathParam}}.{{vendorExtensions.x-export-param-name}}({{#isModel}}&{{/isModel}}{{paramName}}){{/isPathParam}}{{/allParams}}.Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `{{classname}}.{{operationId}}``: %v\n", err)
         apiError := admin.AsError(err)
