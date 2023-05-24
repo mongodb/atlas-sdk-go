@@ -12,7 +12,7 @@ import (
 )
 
 /*
-* MongoDB Atlas Go SDK Example for fetching cloud provider regions
+* MongoDB Atlas Go SDK Basic Example
  */
 func main() {
 	ctx := context.Background()
@@ -24,17 +24,20 @@ func main() {
 
 	sdk, err := admin.NewClient(
 		admin.UseDigestAuth(apiKey, apiSecret),
-		admin.UseBaseURL(url),
-		admin.UseDebug(false))
+		admin.UseBaseURL(url))
 	examples.HandleErr(err, nil)
 
 	// -- 1. Get first project
-	projects, response, err := sdk.ProjectsApi.ListProjectsWithParams(ctx, 
+	request := sdk.ProjectsApi.ListProjectsWithParams(ctx,
+		// 2. We passing struct with all parameters to the request
 		&admin.ListProjectsApiParams{
 			ItemsPerPage: admin.PtrInt(1),
 			IncludeCount: admin.PtrBool(true),
-			PageNum: 	admin.PtrInt(1),
-	}).Execute()
+			PageNum:      admin.PtrInt(1),
+		})
+
+	// 3. We can also use builder pattern to construct request
+	projects, response, err := request.IncludeCount(true).PageNum(1).Execute()
 	examples.HandleErr(err, response)
 
 	if projects.GetTotalCount() == 0 {
@@ -42,8 +45,6 @@ func main() {
 	}
 
 	projectId := projects.GetResults()[0].GetId()
-	providers := []string{"AWS","GCP","AZURE"}
-	regions,response, err := sdk.ClustersApi.ListCloudProviderRegions(ctx,projectId).Providers(providers).Execute()
-	examples.HandleErr(err,response)
-	fmt.Println(regions);
+	fmt.Printf("Project we use %v", projectId)
 }
+ 

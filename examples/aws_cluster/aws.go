@@ -4,12 +4,12 @@ import (
 	"fmt"
 	"log"
 	"net"
-	"net/http"
 	"os"
 
 	"context"
 
 	"go.mongodb.org/atlas-sdk/admin"
+	"go.mongodb.org/atlas-sdk/examples"
 	utils "go.mongodb.org/atlas-sdk/test/generators"
 )
 
@@ -29,16 +29,25 @@ func main() {
 	apiKey := os.Getenv("MDB_API_KEY")
 	apiSecret := os.Getenv("MDB_API_SECRET")
 	url := os.Getenv("MDB_BASE_URL")
-
+	
 	sdk, err := admin.NewClient(
 		admin.UseDigestAuth(apiKey, apiSecret),
 		admin.UseBaseURL(url),
 		admin.UseDebug(false))
-	handleErr(err, nil)
+	examples.HandleErr(err, nil)
 
 	// -- 1. Get first project
-	projects, response, err := sdk.ProjectsApi.ListProjects(ctx).Execute()
-	handleErr(err, response)
+	request := sdk.ProjectsApi.ListProjectsWithParams(ctx,
+		// 2. We passing struct with all parameters to the request
+		&admin.ListProjectsApiParams{
+			ItemsPerPage: admin.PtrInt(1),
+			IncludeCount: admin.PtrBool(true),
+			PageNum:      admin.PtrInt(1),
+		})
+
+	// 3. We can also use builder pattern to construct request
+	projects, response, err := request.IncludeCount(true).PageNum(1).Execute()
+	examples.HandleErr(err, response)
 
 	if projects.GetTotalCount() == 0 {
 		log.Fatal("account should have at least single project")
@@ -49,26 +58,27 @@ func main() {
 	// -- 2. Create Cluster
 	cluster := createClusterRequest(projectId)
 	createdCluster, resp, err := sdk.MultiCloudClustersApi.CreateCluster(ctx, projectId).
-		ClusterDescriptionV15(*cluster).Execute()
-	handleErr(err, resp)
+		ClusterDescriptionV15(cluster).Execute()
+	examples.HandleErr(err, resp)
 
 	// -- 3. Create Database User
 	user := createDatabaseUserRequest(sdk, projectId)
 	if user != nil {
 		_, resp, err = sdk.DatabaseUsersApi.
 			CreateDatabaseUser(ctx, projectId).
-			DatabaseUser(*user).
+			DatabaseUser(user).
 			Execute()
-		handleErr(err, resp)
+		examples.HandleErr(err, resp)
 	}
 
-	// -- 4. Enable IP access
 	ipAddress := getIpAddress()
+	ipAddressEntry := []admin.NetworkPermissionEntry{{IpAddress: &ipAddress}}
+	// -- 4. Enable IP access
 	_, resp, err = sdk.ProjectIPAccessListApi.
 		CreateProjectIpAccessList(context.Background(), projectId).
-		NetworkPermissionEntry([]admin.NetworkPermissionEntry{{IpAddress: &ipAddress}}).
+		NetworkPermissionEntry(ipAddressEntry).
 		Execute()
-	handleErr(err, resp)
+	examples.HandleErr(err, resp)
 
 	// -- Print connection details to user
 	fmt.Printf("SDK: Created new MongoDB cluster: %v \n", createdCluster.GetId())
@@ -143,21 +153,6 @@ func createClusterRequest(projectId string) *admin.ClusterDescriptionV15 {
 			},
 		},
 	}
-
-}
-
-func handleErr(err error, resp *http.Response) {
-	if err == nil {
-		return
-	}
-
-	if resp != nil {
-		fmt.Println(resp.Body)
-		// Printing generic message
-		fmt.Println(err.Error())
-	}
-	apiErr, _ := admin.AsError(err)
-	log.Fatalf("Error when performing SDK request: %v", apiErr.GetDetail())
 
 }
 
