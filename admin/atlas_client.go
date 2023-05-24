@@ -75,9 +75,12 @@ func UseDebug(debug bool) ClientModifier {
 	}
 }
 
-// UseBaseURL set custom base url.
+// UseBaseURL set custom base url. If empty, default is used.
 func UseBaseURL(baseURL string) ClientModifier {
 	return func(c *Configuration) error {
+		if baseURL == "" {
+			baseURL = DefaultCloudURL
+		}
 		urlWithoutSuffix := strings.TrimSuffix(baseURL, "/")
 		c.Servers = ServerConfigurations{ServerConfiguration{
 			URL: urlWithoutSuffix,
