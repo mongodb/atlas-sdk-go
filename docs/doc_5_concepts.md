@@ -23,3 +23,5 @@ Struct based API is particularly useful for HTTP GET requests where we need to p
 	listParams := &admin.ListProjectsApiParams{ItemsPerPage: admin.PtrInt32(1)}
 	projects, response, err := sdk.ProjectsApi.ListProjectsWithParams(ctx, listParams).Execute()
 ```    
+
+For more information about usage of those two APIs please refer to the [basic example](../examples/)
