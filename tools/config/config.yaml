@@ -11,3 +11,6 @@ files:
   atlas_client.mustache:
     templateType: SupportingFiles
     destinationFilename: atlas_client.go
+  doc.mustache:
+    templateType: SupportingFiles
+    destinationFilename: doc.go
