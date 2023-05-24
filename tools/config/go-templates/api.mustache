@@ -64,14 +64,14 @@ type {{operationId}}ApiRequest struct {
 	ApiService *{{classname}}Service
 {{/generateInterfaces}}
 {{#allParams}}
-	{{paramName}} {{^isPathParam}}{{^isFile}}*{{/isFile}}{{/isPathParam}}{{{dataType}}}
+	{{paramName}} {{^isPathParam}}*{{/isPathParam}}{{{dataType}}}
 {{/allParams}}
 }
 
 {{!X-GEN-CUSTOM}}
 type {{operationId}}ApiParams struct {
 {{#allParams}}
-		{{#lambda.titlecase}}{{paramName}}{{/lambda.titlecase}} {{^isPathParam}}{{^isFile}}*{{/isFile}}{{/isPathParam}}{{{dataType}}}
+		{{#lambda.titlecase}}{{paramName}}{{/lambda.titlecase}} {{^isPathParam}}*{{/isPathParam}}{{{dataType}}}
 {{/allParams}}
 }
 
@@ -94,8 +94,8 @@ func (a *{{{classname}}}Service) {{{nickname}}}WithParams(ctx context.Context, a
 {{#isDeprecated}}
 // Deprecated
 {{/isDeprecated}}
-func (r {{operationId}}ApiRequest) {{vendorExtensions.x-export-param-name}}({{paramName}} {{{dataType}}}) {{operationId}}ApiRequest {
-	r.{{paramName}} = {{^isFile}}&{{/isFile}}{{paramName}}
+func (r {{operationId}}ApiRequest) {{vendorExtensions.x-export-param-name}}({{paramName}} {{#isModel}}*{{/isModel}}{{dataType}}) {{operationId}}ApiRequest {
+	r.{{paramName}} = {{^isModel}}&{{/isModel}}{{paramName}}
 	return r
 }
 
@@ -279,9 +279,7 @@ func (a *{{{classname}}}Service) {{#lambda.camelcase}}{{{nickname}}}{{/lambda.ca
 	var {{paramName}}LocalVarFileBytes    []byte
 
 	{{paramName}}LocalVarFormFileName = "{{baseName}}"
-
-
-	{{paramName}}LocalVarFile := r.{{paramName}}
+	{{paramName}}LocalVarFile := *r.{{paramName}}
 
 	if {{paramName}}LocalVarFile != nil {
 		fbs, _ := io.ReadAll({{paramName}}LocalVarFile)
