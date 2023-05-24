@@ -20,10 +20,11 @@ func main() {
 	// See: https://www.mongodb.com/docs/atlas/app-services/authentication/api-key/
 	apiKey := os.Getenv("MDB_API_KEY")
 	apiSecret := os.Getenv("MDB_API_SECRET")
+	url := os.Getenv("MDB_BASE_URL")
 
 	sdk, err := admin.NewClient(
 		admin.UseDigestAuth(apiKey, apiSecret),
-		admin.UseBaseURL("https://cloud.mongodb.com"),
+		admin.UseBaseURL(url),
 		admin.UseDebug(false))
 	handleErr(err, nil)
 
