@@ -436,7 +436,7 @@ func main() {
     name := "name_example" // string | 
     sampleDatasetStatus := *openapiclient.NewSampleDatasetStatus() // SampleDatasetStatus | 
 
-    resp, r, err := sdk.ClustersApi.LoadSampleDataset(context.Background(), groupId, name).SampleDatasetStatus(sampleDatasetStatus).Execute()
+    resp, r, err := sdk.ClustersApi.LoadSampleDataset(context.Background(), groupId, name).SampleDatasetStatus(&sampleDatasetStatus).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.LoadSampleDataset``: %v\n", err)
         apiError := admin.AsError(err)
@@ -515,7 +515,7 @@ func main() {
     clusterName := "clusterName_example" // string | 
     clusterDescriptionProcessArgs := *openapiclient.NewClusterDescriptionProcessArgs() // ClusterDescriptionProcessArgs | 
 
-    resp, r, err := sdk.ClustersApi.UpdateClusterAdvancedConfiguration(context.Background(), groupId, clusterName).ClusterDescriptionProcessArgs(clusterDescriptionProcessArgs).Execute()
+    resp, r, err := sdk.ClustersApi.UpdateClusterAdvancedConfiguration(context.Background(), groupId, clusterName).ClusterDescriptionProcessArgs(&clusterDescriptionProcessArgs).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.UpdateClusterAdvancedConfiguration``: %v\n", err)
         apiError := admin.AsError(err)
@@ -593,7 +593,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     legacyClusterDescription := *openapiclient.NewLegacyClusterDescription() // LegacyClusterDescription | 
 
-    resp, r, err := sdk.ClustersApi.UpgradeSharedCluster(context.Background(), groupId).LegacyClusterDescription(legacyClusterDescription).Execute()
+    resp, r, err := sdk.ClustersApi.UpgradeSharedCluster(context.Background(), groupId).LegacyClusterDescription(&legacyClusterDescription).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.UpgradeSharedCluster``: %v\n", err)
         apiError := admin.AsError(err)
@@ -669,7 +669,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     serverlessInstanceDescription := *openapiclient.NewServerlessInstanceDescription(*openapiclient.NewServerlessProviderSettings("BackingProviderName_example", "RegionName_example")) // ServerlessInstanceDescription | 
 
-    resp, r, err := sdk.ClustersApi.UpgradeSharedClusterToServerless(context.Background(), groupId).ServerlessInstanceDescription(serverlessInstanceDescription).Execute()
+    resp, r, err := sdk.ClustersApi.UpgradeSharedClusterToServerless(context.Background(), groupId).ServerlessInstanceDescription(&serverlessInstanceDescription).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.UpgradeSharedClusterToServerless``: %v\n", err)
         apiError := admin.AsError(err)

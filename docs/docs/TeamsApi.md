@@ -205,7 +205,7 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     team := *openapiclient.NewTeam("32b6e34b3d91647abb20e7b8", "Name_example") // Team | 
 
-    resp, r, err := sdk.TeamsApi.CreateTeam(context.Background(), orgId).Team(team).Execute()
+    resp, r, err := sdk.TeamsApi.CreateTeam(context.Background(), orgId).Team(&team).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.CreateTeam``: %v\n", err)
         apiError := admin.AsError(err)
@@ -905,7 +905,7 @@ func main() {
     teamId := "teamId_example" // string | 
     team := *openapiclient.NewTeam("32b6e34b3d91647abb20e7b8", "Name_example") // Team | 
 
-    resp, r, err := sdk.TeamsApi.RenameTeam(context.Background(), orgId, teamId).Team(team).Execute()
+    resp, r, err := sdk.TeamsApi.RenameTeam(context.Background(), orgId, teamId).Team(&team).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.RenameTeam``: %v\n", err)
         apiError := admin.AsError(err)
@@ -984,7 +984,7 @@ func main() {
     teamId := "teamId_example" // string | 
     teamRole := *openapiclient.NewTeamRole() // TeamRole | 
 
-    resp, r, err := sdk.TeamsApi.UpdateTeamRoles(context.Background(), groupId, teamId).TeamRole(teamRole).Execute()
+    resp, r, err := sdk.TeamsApi.UpdateTeamRoles(context.Background(), groupId, teamId).TeamRole(&teamRole).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.UpdateTeamRoles``: %v\n", err)
         apiError := admin.AsError(err)

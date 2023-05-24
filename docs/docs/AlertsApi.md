@@ -42,7 +42,7 @@ func main() {
     alertId := "alertId_example" // string | 
     alertViewForNdsGroup := *openapiclient.NewAlertViewForNdsGroup() // AlertViewForNdsGroup | 
 
-    resp, r, err := sdk.AlertsApi.AcknowledgeAlert(context.Background(), groupId, alertId).AlertViewForNdsGroup(alertViewForNdsGroup).Execute()
+    resp, r, err := sdk.AlertsApi.AcknowledgeAlert(context.Background(), groupId, alertId).AlertViewForNdsGroup(&alertViewForNdsGroup).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AlertsApi.AcknowledgeAlert``: %v\n", err)
         apiError := admin.AsError(err)

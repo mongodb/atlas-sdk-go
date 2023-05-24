@@ -113,7 +113,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     encryptionAtRest := *openapiclient.NewEncryptionAtRest() // EncryptionAtRest | 
 
-    resp, r, err := sdk.EncryptionAtRestUsingCustomerKeyManagementApi.UpdateEncryptionAtRest(context.Background(), groupId).EncryptionAtRest(encryptionAtRest).Execute()
+    resp, r, err := sdk.EncryptionAtRestUsingCustomerKeyManagementApi.UpdateEncryptionAtRest(context.Background(), groupId).EncryptionAtRest(&encryptionAtRest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EncryptionAtRestUsingCustomerKeyManagementApi.UpdateEncryptionAtRest``: %v\n", err)
         apiError := admin.AsError(err)

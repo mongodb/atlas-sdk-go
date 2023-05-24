@@ -39,7 +39,7 @@ func main() {
     clusterName := "clusterName_example" // string | 
     indexRequest := *openapiclient.NewIndexRequest("Collection_example", "Db_example") // IndexRequest | 
 
-    r, err := sdk.RollingIndexApi.CreateRollingIndex(context.Background(), groupId, clusterName).IndexRequest(indexRequest).Execute()
+    r, err := sdk.RollingIndexApi.CreateRollingIndex(context.Background(), groupId, clusterName).IndexRequest(&indexRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `RollingIndexApi.CreateRollingIndex``: %v\n", err)
         apiError := admin.AsError(err)

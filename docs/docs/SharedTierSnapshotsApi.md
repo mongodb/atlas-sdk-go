@@ -41,7 +41,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantRestore := *openapiclient.NewTenantRestore("32b6e34b3d91647abb20e7b8", "TargetDeploymentItemName_example") // TenantRestore | 
 
-    resp, r, err := sdk.SharedTierSnapshotsApi.DownloadSharedClusterBackup(context.Background(), clusterName, groupId).TenantRestore(tenantRestore).Execute()
+    resp, r, err := sdk.SharedTierSnapshotsApi.DownloadSharedClusterBackup(context.Background(), clusterName, groupId).TenantRestore(&tenantRestore).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `SharedTierSnapshotsApi.DownloadSharedClusterBackup``: %v\n", err)
         apiError := admin.AsError(err)

@@ -50,7 +50,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     ingestionPipeline := *openapiclient.NewIngestionPipeline() // IngestionPipeline | 
 
-    resp, r, err := sdk.DataLakePipelinesApi.CreatePipeline(context.Background(), groupId).IngestionPipeline(ingestionPipeline).Execute()
+    resp, r, err := sdk.DataLakePipelinesApi.CreatePipeline(context.Background(), groupId).IngestionPipeline(&ingestionPipeline).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.CreatePipeline``: %v\n", err)
         apiError := admin.AsError(err)
@@ -912,7 +912,7 @@ func main() {
     pipelineName := "pipelineName_example" // string | 
     triggerIngestionRequest := *openapiclient.NewTriggerIngestionRequest("32b6e34b3d91647abb20e7b8") // TriggerIngestionRequest | 
 
-    resp, r, err := sdk.DataLakePipelinesApi.TriggerSnapshotIngestion(context.Background(), groupId, pipelineName).TriggerIngestionRequest(triggerIngestionRequest).Execute()
+    resp, r, err := sdk.DataLakePipelinesApi.TriggerSnapshotIngestion(context.Background(), groupId, pipelineName).TriggerIngestionRequest(&triggerIngestionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.TriggerSnapshotIngestion``: %v\n", err)
         apiError := admin.AsError(err)
@@ -991,7 +991,7 @@ func main() {
     pipelineName := "pipelineName_example" // string | 
     ingestionPipeline := *openapiclient.NewIngestionPipeline() // IngestionPipeline | 
 
-    resp, r, err := sdk.DataLakePipelinesApi.UpdatePipeline(context.Background(), groupId, pipelineName).IngestionPipeline(ingestionPipeline).Execute()
+    resp, r, err := sdk.DataLakePipelinesApi.UpdatePipeline(context.Background(), groupId, pipelineName).IngestionPipeline(&ingestionPipeline).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.UpdatePipeline``: %v\n", err)
         apiError := admin.AsError(err)

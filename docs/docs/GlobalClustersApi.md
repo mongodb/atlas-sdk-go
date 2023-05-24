@@ -43,7 +43,7 @@ func main() {
     clusterName := "clusterName_example" // string | 
     geoSharding := *openapiclient.NewGeoSharding() // GeoSharding | 
 
-    resp, r, err := sdk.GlobalClustersApi.CreateCustomZoneMapping(context.Background(), groupId, clusterName).GeoSharding(geoSharding).Execute()
+    resp, r, err := sdk.GlobalClustersApi.CreateCustomZoneMapping(context.Background(), groupId, clusterName).GeoSharding(&geoSharding).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GlobalClustersApi.CreateCustomZoneMapping``: %v\n", err)
         apiError := admin.AsError(err)
@@ -122,7 +122,7 @@ func main() {
     clusterName := "clusterName_example" // string | 
     managedNamespace := *openapiclient.NewManagedNamespace() // ManagedNamespace | 
 
-    resp, r, err := sdk.GlobalClustersApi.CreateManagedNamespace(context.Background(), groupId, clusterName).ManagedNamespace(managedNamespace).Execute()
+    resp, r, err := sdk.GlobalClustersApi.CreateManagedNamespace(context.Background(), groupId, clusterName).ManagedNamespace(&managedNamespace).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GlobalClustersApi.CreateManagedNamespace``: %v\n", err)
         apiError := admin.AsError(err)

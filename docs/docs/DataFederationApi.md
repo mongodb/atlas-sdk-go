@@ -51,7 +51,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     privateNetworkEndpointIdEntry := *openapiclient.NewPrivateNetworkEndpointIdEntry("vpce-3bf78b0ddee411ba1") // PrivateNetworkEndpointIdEntry | 
 
-    resp, r, err := sdk.DataFederationApi.CreateDataFederationPrivateEndpoint(context.Background(), groupId).PrivateNetworkEndpointIdEntry(privateNetworkEndpointIdEntry).Execute()
+    resp, r, err := sdk.DataFederationApi.CreateDataFederationPrivateEndpoint(context.Background(), groupId).PrivateNetworkEndpointIdEntry(&privateNetworkEndpointIdEntry).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.CreateDataFederationPrivateEndpoint``: %v\n", err)
         apiError := admin.AsError(err)
@@ -128,7 +128,7 @@ func main() {
     dataLakeTenant := *openapiclient.NewDataLakeTenant() // DataLakeTenant | 
     skipRoleValidation := true // bool |  (optional) (default to false)
 
-    resp, r, err := sdk.DataFederationApi.CreateFederatedDatabase(context.Background(), groupId).DataLakeTenant(dataLakeTenant).SkipRoleValidation(skipRoleValidation).Execute()
+    resp, r, err := sdk.DataFederationApi.CreateFederatedDatabase(context.Background(), groupId).DataLakeTenant(&dataLakeTenant).SkipRoleValidation(skipRoleValidation).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.CreateFederatedDatabase``: %v\n", err)
         apiError := admin.AsError(err)
@@ -207,7 +207,7 @@ func main() {
     limitName := "limitName_example" // string | 
     dataFederationTenantQueryLimit := *openapiclient.NewDataFederationTenantQueryLimit("Name_example", int64(123)) // DataFederationTenantQueryLimit | 
 
-    resp, r, err := sdk.DataFederationApi.CreateOneDataFederationQueryLimit(context.Background(), groupId, tenantName, limitName).DataFederationTenantQueryLimit(dataFederationTenantQueryLimit).Execute()
+    resp, r, err := sdk.DataFederationApi.CreateOneDataFederationQueryLimit(context.Background(), groupId, tenantName, limitName).DataFederationTenantQueryLimit(&dataFederationTenantQueryLimit).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.CreateOneDataFederationQueryLimit``: %v\n", err)
         apiError := admin.AsError(err)
@@ -1059,7 +1059,7 @@ func main() {
     skipRoleValidation := true // bool | 
     dataLakeTenant := *openapiclient.NewDataLakeTenant() // DataLakeTenant | 
 
-    resp, r, err := sdk.DataFederationApi.UpdateFederatedDatabase(context.Background(), groupId, tenantName).SkipRoleValidation(skipRoleValidation).DataLakeTenant(dataLakeTenant).Execute()
+    resp, r, err := sdk.DataFederationApi.UpdateFederatedDatabase(context.Background(), groupId, tenantName).SkipRoleValidation(skipRoleValidation).DataLakeTenant(&dataLakeTenant).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.UpdateFederatedDatabase``: %v\n", err)
         apiError := admin.AsError(err)

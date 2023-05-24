@@ -43,7 +43,7 @@ func main() {
     clusterName := "clusterName_example" // string | 
     fTSIndex := *openapiclient.NewFTSIndex("CollectionName_example", "Database_example", "Name_example") // FTSIndex | 
 
-    resp, r, err := sdk.AtlasSearchApi.CreateAtlasSearchIndex(context.Background(), groupId, clusterName).FTSIndex(fTSIndex).Execute()
+    resp, r, err := sdk.AtlasSearchApi.CreateAtlasSearchIndex(context.Background(), groupId, clusterName).FTSIndex(&fTSIndex).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.CreateAtlasSearchIndex``: %v\n", err)
         apiError := admin.AsError(err)
@@ -364,7 +364,7 @@ func main() {
     indexId := "indexId_example" // string | 
     fTSIndex := *openapiclient.NewFTSIndex("CollectionName_example", "Database_example", "Name_example") // FTSIndex | 
 
-    resp, r, err := sdk.AtlasSearchApi.UpdateAtlasSearchIndex(context.Background(), groupId, clusterName, indexId).FTSIndex(fTSIndex).Execute()
+    resp, r, err := sdk.AtlasSearchApi.UpdateAtlasSearchIndex(context.Background(), groupId, clusterName, indexId).FTSIndex(&fTSIndex).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.UpdateAtlasSearchIndex``: %v\n", err)
         apiError := admin.AsError(err)

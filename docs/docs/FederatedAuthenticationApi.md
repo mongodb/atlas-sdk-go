@@ -53,7 +53,7 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     roleMapping := *openapiclient.NewRoleMapping("ExternalGroupName_example") // RoleMapping | 
 
-    resp, r, err := sdk.FederatedAuthenticationApi.CreateRoleMapping(context.Background(), federationSettingsId, orgId).RoleMapping(roleMapping).Execute()
+    resp, r, err := sdk.FederatedAuthenticationApi.CreateRoleMapping(context.Background(), federationSettingsId, orgId).RoleMapping(&roleMapping).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.CreateRoleMapping``: %v\n", err)
         apiError := admin.AsError(err)
@@ -967,7 +967,7 @@ func main() {
     orgId := "32b6e34b3d91647abb20e7b8" // string | 
     connectedOrgConfig := *openapiclient.NewConnectedOrgConfig(false, "IdentityProviderId_example", "32b6e34b3d91647abb20e7b8") // ConnectedOrgConfig | 
 
-    resp, r, err := sdk.FederatedAuthenticationApi.UpdateConnectedOrgConfig(context.Background(), federationSettingsId, orgId).ConnectedOrgConfig(connectedOrgConfig).Execute()
+    resp, r, err := sdk.FederatedAuthenticationApi.UpdateConnectedOrgConfig(context.Background(), federationSettingsId, orgId).ConnectedOrgConfig(&connectedOrgConfig).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.UpdateConnectedOrgConfig``: %v\n", err)
         apiError := admin.AsError(err)
@@ -1046,7 +1046,7 @@ func main() {
     identityProviderId := "c2777a9eca931f29fc2f" // string | 
     identityProviderUpdate := *openapiclient.NewIdentityProviderUpdate(false) // IdentityProviderUpdate | 
 
-    resp, r, err := sdk.FederatedAuthenticationApi.UpdateIdentityProvider(context.Background(), federationSettingsId, identityProviderId).IdentityProviderUpdate(identityProviderUpdate).Execute()
+    resp, r, err := sdk.FederatedAuthenticationApi.UpdateIdentityProvider(context.Background(), federationSettingsId, identityProviderId).IdentityProviderUpdate(&identityProviderUpdate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.UpdateIdentityProvider``: %v\n", err)
         apiError := admin.AsError(err)
@@ -1126,7 +1126,7 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     roleMapping := *openapiclient.NewRoleMapping("ExternalGroupName_example") // RoleMapping | 
 
-    resp, r, err := sdk.FederatedAuthenticationApi.UpdateRoleMapping(context.Background(), federationSettingsId, id, orgId).RoleMapping(roleMapping).Execute()
+    resp, r, err := sdk.FederatedAuthenticationApi.UpdateRoleMapping(context.Background(), federationSettingsId, id, orgId).RoleMapping(&roleMapping).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.UpdateRoleMapping``: %v\n", err)
         apiError := admin.AsError(err)

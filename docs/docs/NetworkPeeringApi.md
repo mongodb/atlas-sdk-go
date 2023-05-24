@@ -50,7 +50,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     containerPeerViewRequest := openapiclient.ContainerPeerViewRequest{AWSPeerVpcRequest: openapiclient.NewAWSPeerVpcRequest("32b6e34b3d91647abb20e7b8", "ProviderName_example", "AccepterRegionName_example", "AwsAccountId_example", "RouteTableCidrBlock_example", "VpcId_example")} // ContainerPeerViewRequest | 
 
-    resp, r, err := sdk.NetworkPeeringApi.CreatePeeringConnection(context.Background(), groupId).ContainerPeerViewRequest(containerPeerViewRequest).Execute()
+    resp, r, err := sdk.NetworkPeeringApi.CreatePeeringConnection(context.Background(), groupId).ContainerPeerViewRequest(&containerPeerViewRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.CreatePeeringConnection``: %v\n", err)
         apiError := admin.AsError(err)
@@ -126,7 +126,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     cloudProviderContainer := openapiclient.CloudProviderContainer{AWSCloudProviderContainer: openapiclient.NewAWSCloudProviderContainer("RegionName_example")} // CloudProviderContainer | 
 
-    resp, r, err := sdk.NetworkPeeringApi.CreatePeeringContainer(context.Background(), groupId).CloudProviderContainer(cloudProviderContainer).Execute()
+    resp, r, err := sdk.NetworkPeeringApi.CreatePeeringContainer(context.Background(), groupId).CloudProviderContainer(&cloudProviderContainer).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.CreatePeeringContainer``: %v\n", err)
         apiError := admin.AsError(err)
@@ -352,7 +352,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     privateIPMode := *openapiclient.NewPrivateIPMode(false) // PrivateIPMode | 
 
-    resp, r, err := sdk.NetworkPeeringApi.DisablePeering(context.Background(), groupId).PrivateIPMode(privateIPMode).Execute()
+    resp, r, err := sdk.NetworkPeeringApi.DisablePeering(context.Background(), groupId).PrivateIPMode(&privateIPMode).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.DisablePeering``: %v\n", err)
         apiError := admin.AsError(err)
@@ -827,7 +827,7 @@ func main() {
     peerId := "peerId_example" // string | 
     containerPeerViewRequest := openapiclient.ContainerPeerViewRequest{AWSPeerVpcRequest: openapiclient.NewAWSPeerVpcRequest("32b6e34b3d91647abb20e7b8", "ProviderName_example", "AccepterRegionName_example", "AwsAccountId_example", "RouteTableCidrBlock_example", "VpcId_example")} // ContainerPeerViewRequest | 
 
-    resp, r, err := sdk.NetworkPeeringApi.UpdatePeeringConnection(context.Background(), groupId, peerId).ContainerPeerViewRequest(containerPeerViewRequest).Execute()
+    resp, r, err := sdk.NetworkPeeringApi.UpdatePeeringConnection(context.Background(), groupId, peerId).ContainerPeerViewRequest(&containerPeerViewRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.UpdatePeeringConnection``: %v\n", err)
         apiError := admin.AsError(err)
@@ -906,7 +906,7 @@ func main() {
     containerId := "32b6e34b3d91647abb20e7b8" // string | 
     cloudProviderContainer := openapiclient.CloudProviderContainer{AWSCloudProviderContainer: openapiclient.NewAWSCloudProviderContainer("RegionName_example")} // CloudProviderContainer | 
 
-    resp, r, err := sdk.NetworkPeeringApi.UpdatePeeringContainer(context.Background(), groupId, containerId).CloudProviderContainer(cloudProviderContainer).Execute()
+    resp, r, err := sdk.NetworkPeeringApi.UpdatePeeringContainer(context.Background(), groupId, containerId).CloudProviderContainer(&cloudProviderContainer).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.UpdatePeeringContainer``: %v\n", err)
         apiError := admin.AsError(err)

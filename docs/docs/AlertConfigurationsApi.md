@@ -45,7 +45,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     alertConfigViewForNdsGroup := *openapiclient.NewAlertConfigViewForNdsGroup() // AlertConfigViewForNdsGroup | 
 
-    resp, r, err := sdk.AlertConfigurationsApi.CreateAlertConfiguration(context.Background(), groupId).AlertConfigViewForNdsGroup(alertConfigViewForNdsGroup).Execute()
+    resp, r, err := sdk.AlertConfigurationsApi.CreateAlertConfiguration(context.Background(), groupId).AlertConfigViewForNdsGroup(&alertConfigViewForNdsGroup).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AlertConfigurationsApi.CreateAlertConfiguration``: %v\n", err)
         apiError := admin.AsError(err)
@@ -502,7 +502,7 @@ func main() {
     alertConfigId := "32b6e34b3d91647abb20e7b8" // string | 
     toggle := *openapiclient.NewToggle() // Toggle | 
 
-    resp, r, err := sdk.AlertConfigurationsApi.ToggleAlertConfiguration(context.Background(), groupId, alertConfigId).Toggle(toggle).Execute()
+    resp, r, err := sdk.AlertConfigurationsApi.ToggleAlertConfiguration(context.Background(), groupId, alertConfigId).Toggle(&toggle).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AlertConfigurationsApi.ToggleAlertConfiguration``: %v\n", err)
         apiError := admin.AsError(err)
@@ -581,7 +581,7 @@ func main() {
     alertConfigId := "32b6e34b3d91647abb20e7b8" // string | 
     alertConfigViewForNdsGroup := *openapiclient.NewAlertConfigViewForNdsGroup() // AlertConfigViewForNdsGroup | 
 
-    resp, r, err := sdk.AlertConfigurationsApi.UpdateAlertConfiguration(context.Background(), groupId, alertConfigId).AlertConfigViewForNdsGroup(alertConfigViewForNdsGroup).Execute()
+    resp, r, err := sdk.AlertConfigurationsApi.UpdateAlertConfiguration(context.Background(), groupId, alertConfigId).AlertConfigViewForNdsGroup(&alertConfigViewForNdsGroup).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AlertConfigurationsApi.UpdateAlertConfiguration``: %v\n", err)
         apiError := admin.AsError(err)

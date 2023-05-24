@@ -697,7 +697,7 @@ func main() {
     snapshotId := "snapshotId_example" // string | 
     snapshot := *openapiclient.NewSnapshot() // Snapshot | 
 
-    resp, r, err := sdk.LegacyBackupApi.UpdateLegacySnapshotRetention(context.Background(), groupId, clusterName, snapshotId).Snapshot(snapshot).Execute()
+    resp, r, err := sdk.LegacyBackupApi.UpdateLegacySnapshotRetention(context.Background(), groupId, clusterName, snapshotId).Snapshot(&snapshot).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.UpdateLegacySnapshotRetention``: %v\n", err)
         apiError := admin.AsError(err)
@@ -778,7 +778,7 @@ func main() {
     clusterName := "clusterName_example" // string | 
     snapshotSchedule := *openapiclient.NewSnapshotSchedule(int(123), "32b6e34b3d91647abb20e7b8", int(123), "32b6e34b3d91647abb20e7b8", int(123), int(123), int(123), int(123), int(123)) // SnapshotSchedule | 
 
-    resp, r, err := sdk.LegacyBackupApi.UpdateLegacySnapshotSchedule(context.Background(), groupId, clusterName).SnapshotSchedule(snapshotSchedule).Execute()
+    resp, r, err := sdk.LegacyBackupApi.UpdateLegacySnapshotSchedule(context.Background(), groupId, clusterName).SnapshotSchedule(&snapshotSchedule).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.UpdateLegacySnapshotSchedule``: %v\n", err)
         apiError := admin.AsError(err)
