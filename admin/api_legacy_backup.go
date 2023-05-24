@@ -1719,8 +1719,8 @@ func (a *LegacyBackupApiService) UpdateLegacySnapshotRetentionWithParams(ctx con
 }
 
 // Changes One Legacy Backup Snapshot Expiration.
-func (r UpdateLegacySnapshotRetentionApiRequest) Snapshot(snapshot Snapshot) UpdateLegacySnapshotRetentionApiRequest {
-	r.snapshot = &snapshot
+func (r UpdateLegacySnapshotRetentionApiRequest) Snapshot(snapshot *Snapshot) UpdateLegacySnapshotRetentionApiRequest {
+	r.snapshot = snapshot
 	return r
 }
 
@@ -1888,8 +1888,8 @@ func (a *LegacyBackupApiService) UpdateLegacySnapshotScheduleWithParams(ctx cont
 }
 
 // Update the snapshot schedule for one cluster in the specified project.
-func (r UpdateLegacySnapshotScheduleApiRequest) SnapshotSchedule(snapshotSchedule SnapshotSchedule) UpdateLegacySnapshotScheduleApiRequest {
-	r.snapshotSchedule = &snapshotSchedule
+func (r UpdateLegacySnapshotScheduleApiRequest) SnapshotSchedule(snapshotSchedule *SnapshotSchedule) UpdateLegacySnapshotScheduleApiRequest {
+	r.snapshotSchedule = snapshotSchedule
 	return r
 }
 

@@ -108,8 +108,8 @@ func (a *MongoDBCloudUsersApiService) CreateUserWithParams(ctx context.Context, 
 }
 
 // MongoDB Cloud user account to create.
-func (r CreateUserApiRequest) AppUser(appUser AppUser) CreateUserApiRequest {
-	r.appUser = &appUser
+func (r CreateUserApiRequest) AppUser(appUser *AppUser) CreateUserApiRequest {
+	r.appUser = appUser
 	return r
 }
 

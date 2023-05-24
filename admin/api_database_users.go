@@ -160,8 +160,8 @@ func (a *DatabaseUsersApiService) CreateDatabaseUserWithParams(ctx context.Conte
 }
 
 // Creates one database user in the specified project.
-func (r CreateDatabaseUserApiRequest) DatabaseUser(databaseUser DatabaseUser) CreateDatabaseUserApiRequest {
-	r.databaseUser = &databaseUser
+func (r CreateDatabaseUserApiRequest) DatabaseUser(databaseUser *DatabaseUser) CreateDatabaseUserApiRequest {
+	r.databaseUser = databaseUser
 	return r
 }
 
@@ -760,8 +760,8 @@ func (a *DatabaseUsersApiService) UpdateDatabaseUserWithParams(ctx context.Conte
 }
 
 // Updates one database user that belongs to the specified project.
-func (r UpdateDatabaseUserApiRequest) DatabaseUser(databaseUser DatabaseUser) UpdateDatabaseUserApiRequest {
-	r.databaseUser = &databaseUser
+func (r UpdateDatabaseUserApiRequest) DatabaseUser(databaseUser *DatabaseUser) UpdateDatabaseUserApiRequest {
+	r.databaseUser = databaseUser
 	return r
 }
 

@@ -157,8 +157,8 @@ func (a *ServerlessInstancesApiService) CreateServerlessInstanceWithParams(ctx c
 }
 
 // Create One Serverless Instance in One Project.
-func (r CreateServerlessInstanceApiRequest) ServerlessInstanceDescriptionCreate(serverlessInstanceDescriptionCreate ServerlessInstanceDescriptionCreate) CreateServerlessInstanceApiRequest {
-	r.serverlessInstanceDescriptionCreate = &serverlessInstanceDescriptionCreate
+func (r CreateServerlessInstanceApiRequest) ServerlessInstanceDescriptionCreate(serverlessInstanceDescriptionCreate *ServerlessInstanceDescriptionCreate) CreateServerlessInstanceApiRequest {
+	r.serverlessInstanceDescriptionCreate = serverlessInstanceDescriptionCreate
 	return r
 }
 
@@ -754,8 +754,8 @@ func (a *ServerlessInstancesApiService) UpdateServerlessInstanceWithParams(ctx c
 }
 
 // Update One Serverless Instance in One Project.
-func (r UpdateServerlessInstanceApiRequest) ServerlessInstanceDescriptionUpdate(serverlessInstanceDescriptionUpdate ServerlessInstanceDescriptionUpdate) UpdateServerlessInstanceApiRequest {
-	r.serverlessInstanceDescriptionUpdate = &serverlessInstanceDescriptionUpdate
+func (r UpdateServerlessInstanceApiRequest) ServerlessInstanceDescriptionUpdate(serverlessInstanceDescriptionUpdate *ServerlessInstanceDescriptionUpdate) UpdateServerlessInstanceApiRequest {
+	r.serverlessInstanceDescriptionUpdate = serverlessInstanceDescriptionUpdate
 	return r
 }
 

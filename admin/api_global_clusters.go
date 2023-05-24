@@ -162,8 +162,8 @@ func (a *GlobalClustersApiService) CreateCustomZoneMappingWithParams(ctx context
 }
 
 // Custom zone mapping to add to the specified global cluster.
-func (r CreateCustomZoneMappingApiRequest) GeoSharding(geoSharding GeoSharding) CreateCustomZoneMappingApiRequest {
-	r.geoSharding = &geoSharding
+func (r CreateCustomZoneMappingApiRequest) GeoSharding(geoSharding *GeoSharding) CreateCustomZoneMappingApiRequest {
+	r.geoSharding = geoSharding
 	return r
 }
 
@@ -318,8 +318,8 @@ func (a *GlobalClustersApiService) CreateManagedNamespaceWithParams(ctx context.
 }
 
 // Managed namespace to create within the specified global cluster.
-func (r CreateManagedNamespaceApiRequest) ManagedNamespace(managedNamespace ManagedNamespace) CreateManagedNamespaceApiRequest {
-	r.managedNamespace = &managedNamespace
+func (r CreateManagedNamespaceApiRequest) ManagedNamespace(managedNamespace *ManagedNamespace) CreateManagedNamespaceApiRequest {
+	r.managedNamespace = managedNamespace
 	return r
 }
 

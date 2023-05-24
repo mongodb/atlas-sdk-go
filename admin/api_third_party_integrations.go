@@ -170,8 +170,8 @@ func (a *ThirdPartyIntegrationsApiService) CreateThirdPartyIntegrationWithParams
 }
 
 // Third-party integration that you want to configure for your project.
-func (r CreateThirdPartyIntegrationApiRequest) Integration(integration Integration) CreateThirdPartyIntegrationApiRequest {
-	r.integration = &integration
+func (r CreateThirdPartyIntegrationApiRequest) Integration(integration *Integration) CreateThirdPartyIntegrationApiRequest {
+	r.integration = integration
 	return r
 }
 
@@ -806,8 +806,8 @@ func (a *ThirdPartyIntegrationsApiService) UpdateThirdPartyIntegrationWithParams
 }
 
 // Third-party integration that you want to configure for your project.
-func (r UpdateThirdPartyIntegrationApiRequest) Integration(integration Integration) UpdateThirdPartyIntegrationApiRequest {
-	r.integration = &integration
+func (r UpdateThirdPartyIntegrationApiRequest) Integration(integration *Integration) UpdateThirdPartyIntegrationApiRequest {
+	r.integration = integration
 	return r
 }
 

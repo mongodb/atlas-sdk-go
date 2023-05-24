@@ -529,8 +529,8 @@ func (a *ProgrammaticAPIKeysApiService) CreateApiKeyWithParams(ctx context.Conte
 }
 
 // Organization API Key to be created. This request requires a minimum of one of the two body parameters.
-func (r CreateApiKeyApiRequest) CreateApiKey(createApiKey CreateApiKey) CreateApiKeyApiRequest {
-	r.createApiKey = &createApiKey
+func (r CreateApiKeyApiRequest) CreateApiKey(createApiKey *CreateApiKey) CreateApiKeyApiRequest {
+	r.createApiKey = createApiKey
 	return r
 }
 
@@ -877,8 +877,8 @@ func (a *ProgrammaticAPIKeysApiService) CreateProjectApiKeyWithParams(ctx contex
 }
 
 // Organization API key to be created and assigned to the specified project. This request requires a minimum of one of the two body parameters.
-func (r CreateProjectApiKeyApiRequest) CreateApiKey(createApiKey CreateApiKey) CreateProjectApiKeyApiRequest {
-	r.createApiKey = &createApiKey
+func (r CreateProjectApiKeyApiRequest) CreateApiKey(createApiKey *CreateApiKey) CreateProjectApiKeyApiRequest {
+	r.createApiKey = createApiKey
 	return r
 }
 
@@ -2256,8 +2256,8 @@ func (a *ProgrammaticAPIKeysApiService) UpdateApiKeyWithParams(ctx context.Conte
 }
 
 // Organization API key to be updated. This request requires a minimum of one of the two body parameters.
-func (r UpdateApiKeyApiRequest) ApiUser(apiUser ApiUser) UpdateApiKeyApiRequest {
-	r.apiUser = &apiUser
+func (r UpdateApiKeyApiRequest) ApiUser(apiUser *ApiUser) UpdateApiKeyApiRequest {
+	r.apiUser = apiUser
 	return r
 }
 
@@ -2421,8 +2421,8 @@ func (a *ProgrammaticAPIKeysApiService) UpdateApiKeyRolesWithParams(ctx context.
 }
 
 // Organization API Key to be updated. This request requires a minimum of one of the two body parameters.
-func (r UpdateApiKeyRolesApiRequest) CreateApiKey(createApiKey CreateApiKey) UpdateApiKeyRolesApiRequest {
-	r.createApiKey = &createApiKey
+func (r UpdateApiKeyRolesApiRequest) CreateApiKey(createApiKey *CreateApiKey) UpdateApiKeyRolesApiRequest {
+	r.createApiKey = createApiKey
 	return r
 }
 

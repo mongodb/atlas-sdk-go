@@ -265,8 +265,8 @@ func (a *PrivateEndpointServicesApiService) CreatePrivateEndpointWithParams(ctx 
 }
 
 // Creates one private endpoint for the specified cloud service provider.
-func (r CreatePrivateEndpointApiRequest) CreatePrivateEndpointRequest(createPrivateEndpointRequest CreatePrivateEndpointRequest) CreatePrivateEndpointApiRequest {
-	r.createPrivateEndpointRequest = &createPrivateEndpointRequest
+func (r CreatePrivateEndpointApiRequest) CreatePrivateEndpointRequest(createPrivateEndpointRequest *CreatePrivateEndpointRequest) CreatePrivateEndpointApiRequest {
+	r.createPrivateEndpointRequest = createPrivateEndpointRequest
 	return r
 }
 
@@ -421,8 +421,8 @@ func (a *PrivateEndpointServicesApiService) CreatePrivateEndpointServiceWithPara
 }
 
 // Creates one private endpoint for the specified cloud service provider.
-func (r CreatePrivateEndpointServiceApiRequest) CreateEndpointServiceRequest(createEndpointServiceRequest CreateEndpointServiceRequest) CreatePrivateEndpointServiceApiRequest {
-	r.createEndpointServiceRequest = &createEndpointServiceRequest
+func (r CreatePrivateEndpointServiceApiRequest) CreateEndpointServiceRequest(createEndpointServiceRequest *CreateEndpointServiceRequest) CreatePrivateEndpointServiceApiRequest {
+	r.createEndpointServiceRequest = createEndpointServiceRequest
 	return r
 }
 
@@ -1411,8 +1411,8 @@ func (a *PrivateEndpointServicesApiService) ToggleRegionalizedPrivateEndpointSet
 }
 
 // Enables or disables the ability to create multiple private endpoints per region in all cloud service providers in one project.
-func (r ToggleRegionalizedPrivateEndpointSettingApiRequest) ProjectSettingItem(projectSettingItem ProjectSettingItem) ToggleRegionalizedPrivateEndpointSettingApiRequest {
-	r.projectSettingItem = &projectSettingItem
+func (r ToggleRegionalizedPrivateEndpointSettingApiRequest) ProjectSettingItem(projectSettingItem *ProjectSettingItem) ToggleRegionalizedPrivateEndpointSettingApiRequest {
+	r.projectSettingItem = projectSettingItem
 	return r
 }
 

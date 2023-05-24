@@ -167,8 +167,8 @@ func (a *ServerlessPrivateEndpointsApiService) CreateServerlessPrivateEndpointWi
 }
 
 // Information about the Private Endpoint to create for the Serverless Instance.
-func (r CreateServerlessPrivateEndpointApiRequest) ServerlessTenantEndpointCreate(serverlessTenantEndpointCreate ServerlessTenantEndpointCreate) CreateServerlessPrivateEndpointApiRequest {
-	r.serverlessTenantEndpointCreate = &serverlessTenantEndpointCreate
+func (r CreateServerlessPrivateEndpointApiRequest) ServerlessTenantEndpointCreate(serverlessTenantEndpointCreate *ServerlessTenantEndpointCreate) CreateServerlessPrivateEndpointApiRequest {
+	r.serverlessTenantEndpointCreate = serverlessTenantEndpointCreate
 	return r
 }
 
@@ -753,8 +753,8 @@ func (a *ServerlessPrivateEndpointsApiService) UpdateServerlessPrivateEndpointWi
 	}
 }
 
-func (r UpdateServerlessPrivateEndpointApiRequest) ServerlessTenantEndpointUpdate(serverlessTenantEndpointUpdate ServerlessTenantEndpointUpdate) UpdateServerlessPrivateEndpointApiRequest {
-	r.serverlessTenantEndpointUpdate = &serverlessTenantEndpointUpdate
+func (r UpdateServerlessPrivateEndpointApiRequest) ServerlessTenantEndpointUpdate(serverlessTenantEndpointUpdate *ServerlessTenantEndpointUpdate) UpdateServerlessPrivateEndpointApiRequest {
+	r.serverlessTenantEndpointUpdate = serverlessTenantEndpointUpdate
 	return r
 }
 

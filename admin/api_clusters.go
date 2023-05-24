@@ -1052,8 +1052,8 @@ func (a *ClustersApiService) LoadSampleDatasetWithParams(ctx context.Context, ar
 }
 
 // Cluster into which to load the sample dataset.
-func (r LoadSampleDatasetApiRequest) SampleDatasetStatus(sampleDatasetStatus SampleDatasetStatus) LoadSampleDatasetApiRequest {
-	r.sampleDatasetStatus = &sampleDatasetStatus
+func (r LoadSampleDatasetApiRequest) SampleDatasetStatus(sampleDatasetStatus *SampleDatasetStatus) LoadSampleDatasetApiRequest {
+	r.sampleDatasetStatus = sampleDatasetStatus
 	return r
 }
 
@@ -1208,8 +1208,8 @@ func (a *ClustersApiService) UpdateClusterAdvancedConfigurationWithParams(ctx co
 }
 
 // Advanced configuration details to add for one cluster in the specified project.
-func (r UpdateClusterAdvancedConfigurationApiRequest) ClusterDescriptionProcessArgs(clusterDescriptionProcessArgs ClusterDescriptionProcessArgs) UpdateClusterAdvancedConfigurationApiRequest {
-	r.clusterDescriptionProcessArgs = &clusterDescriptionProcessArgs
+func (r UpdateClusterAdvancedConfigurationApiRequest) ClusterDescriptionProcessArgs(clusterDescriptionProcessArgs *ClusterDescriptionProcessArgs) UpdateClusterAdvancedConfigurationApiRequest {
+	r.clusterDescriptionProcessArgs = clusterDescriptionProcessArgs
 	return r
 }
 
@@ -1361,8 +1361,8 @@ func (a *ClustersApiService) UpgradeSharedClusterWithParams(ctx context.Context,
 }
 
 // Details of the shared-tier cluster upgrade in the specified project.
-func (r UpgradeSharedClusterApiRequest) LegacyClusterDescription(legacyClusterDescription LegacyClusterDescription) UpgradeSharedClusterApiRequest {
-	r.legacyClusterDescription = &legacyClusterDescription
+func (r UpgradeSharedClusterApiRequest) LegacyClusterDescription(legacyClusterDescription *LegacyClusterDescription) UpgradeSharedClusterApiRequest {
+	r.legacyClusterDescription = legacyClusterDescription
 	return r
 }
 
@@ -1505,8 +1505,8 @@ func (a *ClustersApiService) UpgradeSharedClusterToServerlessWithParams(ctx cont
 }
 
 // Details of the shared-tier cluster upgrade in the specified project.
-func (r UpgradeSharedClusterToServerlessApiRequest) ServerlessInstanceDescription(serverlessInstanceDescription ServerlessInstanceDescription) UpgradeSharedClusterToServerlessApiRequest {
-	r.serverlessInstanceDescription = &serverlessInstanceDescription
+func (r UpgradeSharedClusterToServerlessApiRequest) ServerlessInstanceDescription(serverlessInstanceDescription *ServerlessInstanceDescription) UpgradeSharedClusterToServerlessApiRequest {
+	r.serverlessInstanceDescription = serverlessInstanceDescription
 	return r
 }
 

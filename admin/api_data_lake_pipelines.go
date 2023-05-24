@@ -352,8 +352,8 @@ func (a *DataLakePipelinesApiService) CreatePipelineWithParams(ctx context.Conte
 }
 
 // Creates one Data Lake Pipeline.
-func (r CreatePipelineApiRequest) IngestionPipeline(ingestionPipeline IngestionPipeline) CreatePipelineApiRequest {
-	r.ingestionPipeline = &ingestionPipeline
+func (r CreatePipelineApiRequest) IngestionPipeline(ingestionPipeline *IngestionPipeline) CreatePipelineApiRequest {
+	r.ingestionPipeline = ingestionPipeline
 	return r
 }
 
@@ -2027,8 +2027,8 @@ func (a *DataLakePipelinesApiService) TriggerSnapshotIngestionWithParams(ctx con
 }
 
 // Triggers a single ingestion run of a snapshot.
-func (r TriggerSnapshotIngestionApiRequest) TriggerIngestionRequest(triggerIngestionRequest TriggerIngestionRequest) TriggerSnapshotIngestionApiRequest {
-	r.triggerIngestionRequest = &triggerIngestionRequest
+func (r TriggerSnapshotIngestionApiRequest) TriggerIngestionRequest(triggerIngestionRequest *TriggerIngestionRequest) TriggerSnapshotIngestionApiRequest {
+	r.triggerIngestionRequest = triggerIngestionRequest
 	return r
 }
 
@@ -2183,8 +2183,8 @@ func (a *DataLakePipelinesApiService) UpdatePipelineWithParams(ctx context.Conte
 }
 
 // Updates one Data Lake Pipeline.
-func (r UpdatePipelineApiRequest) IngestionPipeline(ingestionPipeline IngestionPipeline) UpdatePipelineApiRequest {
-	r.ingestionPipeline = &ingestionPipeline
+func (r UpdatePipelineApiRequest) IngestionPipeline(ingestionPipeline *IngestionPipeline) UpdatePipelineApiRequest {
+	r.ingestionPipeline = ingestionPipeline
 	return r
 }
 

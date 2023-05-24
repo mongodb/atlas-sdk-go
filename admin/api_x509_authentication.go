@@ -119,8 +119,8 @@ func (a *X509AuthenticationApiService) CreateDatabaseUserCertificateWithParams(c
 }
 
 // Generates one X.509 certificate for the specified MongoDB user.
-func (r CreateDatabaseUserCertificateApiRequest) UserCert(userCert UserCert) CreateDatabaseUserCertificateApiRequest {
-	r.userCert = &userCert
+func (r CreateDatabaseUserCertificateApiRequest) UserCert(userCert *UserCert) CreateDatabaseUserCertificateApiRequest {
+	r.userCert = userCert
 	return r
 }
 

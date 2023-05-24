@@ -890,8 +890,8 @@ func (a *CloudBackupsApiService) CreateBackupExportJobWithParams(ctx context.Con
 }
 
 // Information about the Cloud Backup Snapshot Export Job to create.
-func (r CreateBackupExportJobApiRequest) DiskBackupExportJobRequest(diskBackupExportJobRequest DiskBackupExportJobRequest) CreateBackupExportJobApiRequest {
-	r.diskBackupExportJobRequest = &diskBackupExportJobRequest
+func (r CreateBackupExportJobApiRequest) DiskBackupExportJobRequest(diskBackupExportJobRequest *DiskBackupExportJobRequest) CreateBackupExportJobApiRequest {
+	r.diskBackupExportJobRequest = diskBackupExportJobRequest
 	return r
 }
 
@@ -1046,8 +1046,8 @@ func (a *CloudBackupsApiService) CreateBackupRestoreJobWithParams(ctx context.Co
 }
 
 // Restores one snapshot of one cluster from the specified project.
-func (r CreateBackupRestoreJobApiRequest) DiskBackupRestoreJob(diskBackupRestoreJob DiskBackupRestoreJob) CreateBackupRestoreJobApiRequest {
-	r.diskBackupRestoreJob = &diskBackupRestoreJob
+func (r CreateBackupRestoreJobApiRequest) DiskBackupRestoreJob(diskBackupRestoreJob *DiskBackupRestoreJob) CreateBackupRestoreJobApiRequest {
+	r.diskBackupRestoreJob = diskBackupRestoreJob
 	return r
 }
 
@@ -1201,8 +1201,8 @@ func (a *CloudBackupsApiService) CreateExportBucketWithParams(ctx context.Contex
 }
 
 // Grants MongoDB Cloud access to the specified AWS S3 bucket.
-func (r CreateExportBucketApiRequest) DiskBackupSnapshotAWSExportBucket(diskBackupSnapshotAWSExportBucket DiskBackupSnapshotAWSExportBucket) CreateExportBucketApiRequest {
-	r.diskBackupSnapshotAWSExportBucket = &diskBackupSnapshotAWSExportBucket
+func (r CreateExportBucketApiRequest) DiskBackupSnapshotAWSExportBucket(diskBackupSnapshotAWSExportBucket *DiskBackupSnapshotAWSExportBucket) CreateExportBucketApiRequest {
+	r.diskBackupSnapshotAWSExportBucket = diskBackupSnapshotAWSExportBucket
 	return r
 }
 
@@ -1348,8 +1348,8 @@ func (a *CloudBackupsApiService) CreateServerlessBackupRestoreJobWithParams(ctx 
 }
 
 // Restores one snapshot of one serverless instance from the specified project.
-func (r CreateServerlessBackupRestoreJobApiRequest) ServerlessBackupRestoreJob(serverlessBackupRestoreJob ServerlessBackupRestoreJob) CreateServerlessBackupRestoreJobApiRequest {
-	r.serverlessBackupRestoreJob = &serverlessBackupRestoreJob
+func (r CreateServerlessBackupRestoreJobApiRequest) ServerlessBackupRestoreJob(serverlessBackupRestoreJob *ServerlessBackupRestoreJob) CreateServerlessBackupRestoreJobApiRequest {
+	r.serverlessBackupRestoreJob = serverlessBackupRestoreJob
 	return r
 }
 
@@ -4566,8 +4566,8 @@ func (a *CloudBackupsApiService) TakeSnapshotWithParams(ctx context.Context, arg
 }
 
 // Takes one on-demand snapshot.
-func (r TakeSnapshotApiRequest) DiskBackupOnDemandSnapshotRequest(diskBackupOnDemandSnapshotRequest DiskBackupOnDemandSnapshotRequest) TakeSnapshotApiRequest {
-	r.diskBackupOnDemandSnapshotRequest = &diskBackupOnDemandSnapshotRequest
+func (r TakeSnapshotApiRequest) DiskBackupOnDemandSnapshotRequest(diskBackupOnDemandSnapshotRequest *DiskBackupOnDemandSnapshotRequest) TakeSnapshotApiRequest {
+	r.diskBackupOnDemandSnapshotRequest = diskBackupOnDemandSnapshotRequest
 	return r
 }
 
@@ -4724,8 +4724,8 @@ func (a *CloudBackupsApiService) UpdateBackupScheduleWithParams(ctx context.Cont
 }
 
 // Updates the cloud backup schedule for one cluster within the specified project.  **Note**: In the request body, provide only the fields that you want to update.
-func (r UpdateBackupScheduleApiRequest) DiskBackupSnapshotSchedule(diskBackupSnapshotSchedule DiskBackupSnapshotSchedule) UpdateBackupScheduleApiRequest {
-	r.diskBackupSnapshotSchedule = &diskBackupSnapshotSchedule
+func (r UpdateBackupScheduleApiRequest) DiskBackupSnapshotSchedule(diskBackupSnapshotSchedule *DiskBackupSnapshotSchedule) UpdateBackupScheduleApiRequest {
+	r.diskBackupSnapshotSchedule = diskBackupSnapshotSchedule
 	return r
 }
 
@@ -4877,8 +4877,8 @@ func (a *CloudBackupsApiService) UpdateDataProtectionSettingsWithParams(ctx cont
 }
 
 // The new Backup Compliance Policy settings.
-func (r UpdateDataProtectionSettingsApiRequest) DataProtectionSettings(dataProtectionSettings DataProtectionSettings) UpdateDataProtectionSettingsApiRequest {
-	r.dataProtectionSettings = &dataProtectionSettings
+func (r UpdateDataProtectionSettingsApiRequest) DataProtectionSettings(dataProtectionSettings *DataProtectionSettings) UpdateDataProtectionSettingsApiRequest {
+	r.dataProtectionSettings = dataProtectionSettings
 	return r
 }
 
@@ -5027,8 +5027,8 @@ func (a *CloudBackupsApiService) UpdateSnapshotRetentionWithParams(ctx context.C
 }
 
 // Changes the expiration date for one cloud backup snapshot for one cluster in the specified project.
-func (r UpdateSnapshotRetentionApiRequest) SnapshotRetention(snapshotRetention SnapshotRetention) UpdateSnapshotRetentionApiRequest {
-	r.snapshotRetention = &snapshotRetention
+func (r UpdateSnapshotRetentionApiRequest) SnapshotRetention(snapshotRetention *SnapshotRetention) UpdateSnapshotRetentionApiRequest {
+	r.snapshotRetention = snapshotRetention
 	return r
 }
 

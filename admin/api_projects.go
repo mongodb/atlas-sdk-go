@@ -506,8 +506,8 @@ func (a *ProjectsApiService) CreateProjectWithParams(ctx context.Context, args *
 }
 
 // Creates one project.
-func (r CreateProjectApiRequest) Group(group Group) CreateProjectApiRequest {
-	r.group = &group
+func (r CreateProjectApiRequest) Group(group *Group) CreateProjectApiRequest {
+	r.group = group
 	return r
 }
 
@@ -650,8 +650,8 @@ func (a *ProjectsApiService) CreateProjectInvitationWithParams(ctx context.Conte
 }
 
 // Invites one MongoDB Cloud user to join the specified project.
-func (r CreateProjectInvitationApiRequest) GroupInvitationRequest(groupInvitationRequest GroupInvitationRequest) CreateProjectInvitationApiRequest {
-	r.groupInvitationRequest = &groupInvitationRequest
+func (r CreateProjectInvitationApiRequest) GroupInvitationRequest(groupInvitationRequest *GroupInvitationRequest) CreateProjectInvitationApiRequest {
+	r.groupInvitationRequest = groupInvitationRequest
 	return r
 }
 
@@ -2614,8 +2614,8 @@ func (a *ProjectsApiService) SetProjectLimitWithParams(ctx context.Context, args
 	}
 }
 
-func (r SetProjectLimitApiRequest) Limit(limit Limit) SetProjectLimitApiRequest {
-	r.limit = &limit
+func (r SetProjectLimitApiRequest) Limit(limit *Limit) SetProjectLimitApiRequest {
+	r.limit = limit
 	return r
 }
 
@@ -2759,8 +2759,8 @@ func (a *ProjectsApiService) UpdateProjectWithParams(ctx context.Context, args *
 	}
 }
 
-func (r UpdateProjectApiRequest) GroupName(groupName GroupName) UpdateProjectApiRequest {
-	r.groupName = &groupName
+func (r UpdateProjectApiRequest) GroupName(groupName *GroupName) UpdateProjectApiRequest {
+	r.groupName = groupName
 	return r
 }
 
@@ -2900,8 +2900,8 @@ func (a *ProjectsApiService) UpdateProjectInvitationWithParams(ctx context.Conte
 }
 
 // Updates the details of one pending invitation to the specified project.
-func (r UpdateProjectInvitationApiRequest) GroupInvitationRequest(groupInvitationRequest GroupInvitationRequest) UpdateProjectInvitationApiRequest {
-	r.groupInvitationRequest = &groupInvitationRequest
+func (r UpdateProjectInvitationApiRequest) GroupInvitationRequest(groupInvitationRequest *GroupInvitationRequest) UpdateProjectInvitationApiRequest {
+	r.groupInvitationRequest = groupInvitationRequest
 	return r
 }
 
@@ -3047,8 +3047,8 @@ func (a *ProjectsApiService) UpdateProjectInvitationByIdWithParams(ctx context.C
 }
 
 // Updates the details of one pending invitation to the specified project.
-func (r UpdateProjectInvitationByIdApiRequest) GroupInvitationUpdateRequest(groupInvitationUpdateRequest GroupInvitationUpdateRequest) UpdateProjectInvitationByIdApiRequest {
-	r.groupInvitationUpdateRequest = &groupInvitationUpdateRequest
+func (r UpdateProjectInvitationByIdApiRequest) GroupInvitationUpdateRequest(groupInvitationUpdateRequest *GroupInvitationUpdateRequest) UpdateProjectInvitationByIdApiRequest {
+	r.groupInvitationUpdateRequest = groupInvitationUpdateRequest
 	return r
 }
 
@@ -3199,8 +3199,8 @@ func (a *ProjectsApiService) UpdateProjectSettingsWithParams(ctx context.Context
 	}
 }
 
-func (r UpdateProjectSettingsApiRequest) GroupSettings(groupSettings GroupSettings) UpdateProjectSettingsApiRequest {
-	r.groupSettings = &groupSettings
+func (r UpdateProjectSettingsApiRequest) GroupSettings(groupSettings *GroupSettings) UpdateProjectSettingsApiRequest {
+	r.groupSettings = groupSettings
 	return r
 }
 

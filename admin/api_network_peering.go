@@ -352,8 +352,8 @@ func (a *NetworkPeeringApiService) CreatePeeringConnectionWithParams(ctx context
 }
 
 // Create one network peering connection.
-func (r CreatePeeringConnectionApiRequest) ContainerPeerViewRequest(containerPeerViewRequest ContainerPeerViewRequest) CreatePeeringConnectionApiRequest {
-	r.containerPeerViewRequest = &containerPeerViewRequest
+func (r CreatePeeringConnectionApiRequest) ContainerPeerViewRequest(containerPeerViewRequest *ContainerPeerViewRequest) CreatePeeringConnectionApiRequest {
+	r.containerPeerViewRequest = containerPeerViewRequest
 	return r
 }
 
@@ -496,8 +496,8 @@ func (a *NetworkPeeringApiService) CreatePeeringContainerWithParams(ctx context.
 }
 
 // Creates one new network peering container in the specified project.
-func (r CreatePeeringContainerApiRequest) CloudProviderContainer(cloudProviderContainer CloudProviderContainer) CreatePeeringContainerApiRequest {
-	r.cloudProviderContainer = &cloudProviderContainer
+func (r CreatePeeringContainerApiRequest) CloudProviderContainer(cloudProviderContainer *CloudProviderContainer) CreatePeeringContainerApiRequest {
+	r.cloudProviderContainer = cloudProviderContainer
 	return r
 }
 
@@ -900,8 +900,8 @@ func (a *NetworkPeeringApiService) DisablePeeringWithParams(ctx context.Context,
 }
 
 // Disables Connect via Peering Only mode for the specified project.
-func (r DisablePeeringApiRequest) PrivateIPMode(privateIPMode PrivateIPMode) DisablePeeringApiRequest {
-	r.privateIPMode = &privateIPMode
+func (r DisablePeeringApiRequest) PrivateIPMode(privateIPMode *PrivateIPMode) DisablePeeringApiRequest {
+	r.privateIPMode = privateIPMode
 	return r
 }
 
@@ -1898,8 +1898,8 @@ func (a *NetworkPeeringApiService) UpdatePeeringConnectionWithParams(ctx context
 }
 
 // Modify one network peering connection.
-func (r UpdatePeeringConnectionApiRequest) ContainerPeerViewRequest(containerPeerViewRequest ContainerPeerViewRequest) UpdatePeeringConnectionApiRequest {
-	r.containerPeerViewRequest = &containerPeerViewRequest
+func (r UpdatePeeringConnectionApiRequest) ContainerPeerViewRequest(containerPeerViewRequest *ContainerPeerViewRequest) UpdatePeeringConnectionApiRequest {
+	r.containerPeerViewRequest = containerPeerViewRequest
 	return r
 }
 
@@ -2054,8 +2054,8 @@ func (a *NetworkPeeringApiService) UpdatePeeringContainerWithParams(ctx context.
 }
 
 // Updates the network details and labels of one specified network peering container in the specified project.
-func (r UpdatePeeringContainerApiRequest) CloudProviderContainer(cloudProviderContainer CloudProviderContainer) UpdatePeeringContainerApiRequest {
-	r.cloudProviderContainer = &cloudProviderContainer
+func (r UpdatePeeringContainerApiRequest) CloudProviderContainer(cloudProviderContainer *CloudProviderContainer) UpdatePeeringContainerApiRequest {
+	r.cloudProviderContainer = cloudProviderContainer
 	return r
 }
 

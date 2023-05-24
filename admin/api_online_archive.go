@@ -190,8 +190,8 @@ func (a *OnlineArchiveApiService) CreateOnlineArchiveWithParams(ctx context.Cont
 }
 
 // Creates one online archive.
-func (r CreateOnlineArchiveApiRequest) OnlineArchive(onlineArchive OnlineArchive) CreateOnlineArchiveApiRequest {
-	r.onlineArchive = &onlineArchive
+func (r CreateOnlineArchiveApiRequest) OnlineArchive(onlineArchive *OnlineArchive) CreateOnlineArchiveApiRequest {
+	r.onlineArchive = onlineArchive
 	return r
 }
 
@@ -1017,8 +1017,8 @@ func (a *OnlineArchiveApiService) UpdateOnlineArchiveWithParams(ctx context.Cont
 }
 
 // Updates, pauses, or resumes one online archive.
-func (r UpdateOnlineArchiveApiRequest) OnlineArchive(onlineArchive OnlineArchive) UpdateOnlineArchiveApiRequest {
-	r.onlineArchive = &onlineArchive
+func (r UpdateOnlineArchiveApiRequest) OnlineArchive(onlineArchive *OnlineArchive) UpdateOnlineArchiveApiRequest {
+	r.onlineArchive = onlineArchive
 	return r
 }
 

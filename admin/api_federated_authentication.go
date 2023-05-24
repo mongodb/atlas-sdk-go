@@ -407,8 +407,8 @@ func (a *FederatedAuthenticationApiService) CreateRoleMappingWithParams(ctx cont
 }
 
 // The role mapping that you want to create.
-func (r CreateRoleMappingApiRequest) RoleMapping(roleMapping RoleMapping) CreateRoleMappingApiRequest {
-	r.roleMapping = &roleMapping
+func (r CreateRoleMappingApiRequest) RoleMapping(roleMapping *RoleMapping) CreateRoleMappingApiRequest {
+	r.roleMapping = roleMapping
 	return r
 }
 
@@ -2065,8 +2065,8 @@ func (a *FederatedAuthenticationApiService) UpdateConnectedOrgConfigWithParams(c
 }
 
 // The connected organization configuration that you want to update.
-func (r UpdateConnectedOrgConfigApiRequest) ConnectedOrgConfig(connectedOrgConfig ConnectedOrgConfig) UpdateConnectedOrgConfigApiRequest {
-	r.connectedOrgConfig = &connectedOrgConfig
+func (r UpdateConnectedOrgConfigApiRequest) ConnectedOrgConfig(connectedOrgConfig *ConnectedOrgConfig) UpdateConnectedOrgConfigApiRequest {
+	r.connectedOrgConfig = connectedOrgConfig
 	return r
 }
 
@@ -2227,8 +2227,8 @@ func (a *FederatedAuthenticationApiService) UpdateIdentityProviderWithParams(ctx
 }
 
 // The identity provider that you want to update.
-func (r UpdateIdentityProviderApiRequest) IdentityProviderUpdate(identityProviderUpdate IdentityProviderUpdate) UpdateIdentityProviderApiRequest {
-	r.identityProviderUpdate = &identityProviderUpdate
+func (r UpdateIdentityProviderApiRequest) IdentityProviderUpdate(identityProviderUpdate *IdentityProviderUpdate) UpdateIdentityProviderApiRequest {
+	r.identityProviderUpdate = identityProviderUpdate
 	return r
 }
 
@@ -2386,8 +2386,8 @@ func (a *FederatedAuthenticationApiService) UpdateRoleMappingWithParams(ctx cont
 }
 
 // The role mapping that you want to update.
-func (r UpdateRoleMappingApiRequest) RoleMapping(roleMapping RoleMapping) UpdateRoleMappingApiRequest {
-	r.roleMapping = &roleMapping
+func (r UpdateRoleMappingApiRequest) RoleMapping(roleMapping *RoleMapping) UpdateRoleMappingApiRequest {
+	r.roleMapping = roleMapping
 	return r
 }
 

@@ -157,8 +157,8 @@ func (a *CustomDatabaseRolesApiService) CreateCustomDatabaseRoleWithParams(ctx c
 }
 
 // Creates one custom role in the specified project.
-func (r CreateCustomDatabaseRoleApiRequest) CustomDBRole(customDBRole CustomDBRole) CreateCustomDatabaseRoleApiRequest {
-	r.customDBRole = &customDBRole
+func (r CreateCustomDatabaseRoleApiRequest) CustomDBRole(customDBRole *CustomDBRole) CreateCustomDatabaseRoleApiRequest {
+	r.customDBRole = customDBRole
 	return r
 }
 
@@ -694,8 +694,8 @@ func (a *CustomDatabaseRolesApiService) UpdateCustomDatabaseRoleWithParams(ctx c
 }
 
 // Updates one custom role in the specified project.
-func (r UpdateCustomDatabaseRoleApiRequest) UpdateCustomDBRole(updateCustomDBRole UpdateCustomDBRole) UpdateCustomDatabaseRoleApiRequest {
-	r.updateCustomDBRole = &updateCustomDBRole
+func (r UpdateCustomDatabaseRoleApiRequest) UpdateCustomDBRole(updateCustomDBRole *UpdateCustomDBRole) UpdateCustomDatabaseRoleApiRequest {
+	r.updateCustomDBRole = updateCustomDBRole
 	return r
 }
 
