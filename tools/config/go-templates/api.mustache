@@ -1,3 +1,4 @@
+{{!X-GEN-CUSTOM}}
 {{>partial_header}}
 package {{packageName}}
 
@@ -31,8 +32,7 @@ type {{classname}} interface {
 	Deprecated: this method has been deprecated. Please check the latest resource version for {{classname}}
 	{{/isDeprecated}}
 	*/
-	{{{nickname}}}(ctx context.Context{{#pathParams}}, {{paramName}} {{{dataType}}}{{/pathParams}}) {{operationId}}ApiRequest
-	{{!X-GEN-CUSTOM}}
+	{{{nickname}}}(ctx context.Context{{#pathParams}}, {{paramName}} {{{dataType}}}{{/pathParams}}{{#bodyParams}}, {{paramName}} *{{{dataType}}}{{/bodyParams}}) {{operationId}}ApiRequest
 	/*
 	{{operationId}} {{{summary}}}{{^summary}}Method for {{operationId}}{{/summary}}
 
@@ -68,10 +68,9 @@ type {{operationId}}ApiRequest struct {
 {{/allParams}}
 }
 
-{{!X-GEN-CUSTOM}}
 type {{operationId}}ApiParams struct {
 {{#allParams}}
-		{{#lambda.titlecase}}{{paramName}}{{/lambda.titlecase}} {{^isPathParam}}*{{/isPathParam}}{{{dataType}}}
+	{{#lambda.titlecase}}{{paramName}}{{/lambda.titlecase}} {{^isPathParam}}*{{/isPathParam}}{{{dataType}}}
 {{/allParams}}
 }
 
@@ -85,9 +84,9 @@ func (a *{{{classname}}}Service) {{{nickname}}}WithParams(ctx context.Context, a
 	}
 }
 
-{{!/X-GEN-CUSTOM}}
 {{#allParams}}
 {{^isPathParam}}
+{{^isBodyParam}}
 {{#description}}
 // {{.}}
 {{/description}}
@@ -99,6 +98,7 @@ func (r {{operationId}}ApiRequest) {{vendorExtensions.x-export-param-name}}({{pa
 	return r
 }
 
+{{/isBodyParam}}
 {{/isPathParam}}
 {{/allParams}}
 func (r {{operationId}}ApiRequest) Execute() ({{#returnType}}{{^isArray}}{{^returnTypeIsPrimitive}}{{^isResponseFile}}*{{/isResponseFile}}{{/returnTypeIsPrimitive}}{{/isArray}}{{{.}}}, {{/returnType}}*http.Response, error) {
@@ -120,13 +120,16 @@ func (r {{operationId}}ApiRequest) Execute() ({{#returnType}}{{^isArray}}{{^retu
 Deprecated
 {{/isDeprecated}}
 */
-func (a *{{{classname}}}Service) {{{nickname}}}(ctx context.Context{{#pathParams}}, {{paramName}} {{{dataType}}}{{/pathParams}}) {{operationId}}ApiRequest {
+func (a *{{{classname}}}Service) {{{nickname}}}(ctx context.Context{{#pathParams}}, {{paramName}} {{{dataType}}}{{/pathParams}}{{#bodyParams}}, {{paramName}} *{{{dataType}}}{{/bodyParams}}) {{operationId}}ApiRequest {
 	return {{operationId}}ApiRequest{
 		ApiService: a,
 		ctx: ctx,
 		{{#pathParams}}
 		{{paramName}}: {{paramName}},
 		{{/pathParams}}
+		{{#bodyParams}}
+		{{paramName}}: {{paramName}},
+		{{/bodyParams}}
 	}
 }
 
@@ -316,42 +319,6 @@ func (a *{{{classname}}}Service) {{#lambda.camelcase}}{{{nickname}}}{{/lambda.ca
 	// body params
 	localVarPostBody = r.{{paramName}}
 {{/bodyParams}}
-{{#authMethods}}
-{{#isApiKey}}
-{{^isKeyInCookie}}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			{{#vendorExtensions.x-auth-id-alias}}
-			if apiKey, ok := auth["{{.}}"]; ok {
-				var key string
-				if prefix, ok := auth["{{name}}"]; ok && prefix.Prefix != "" {
-					key = prefix.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-			{{/vendorExtensions.x-auth-id-alias}}
-			{{^vendorExtensions.x-auth-id-alias}}
-			if apiKey, ok := auth["{{name}}"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-			{{/vendorExtensions.x-auth-id-alias}}
-				{{#isKeyInHeader}}
-				localVarHeaderParams["{{keyParamName}}"] = key
-				{{/isKeyInHeader}}
-				{{#isKeyInQuery}}
-				localVarQueryParams.Add("{{keyParamName}}", key)
-				{{/isKeyInQuery}}
-			}
-		}
-	}
-{{/isKeyInCookie}}
-{{/isApiKey}}
-{{/authMethods}}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return {{#returnType}}localVarReturnValue, {{/returnType}}nil, err
@@ -373,7 +340,7 @@ func (a *{{{classname}}}Service) {{#lambda.camelcase}}{{{nickname}}}{{/lambda.ca
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
-		}{{!X-GEN-MODIFIED}}
+		}
 		var v Error
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
