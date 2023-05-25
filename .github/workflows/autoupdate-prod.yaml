@@ -26,7 +26,7 @@ jobs:
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         working-directory: ./tools
         run: make clean_and_generate
-      - name: Run generation
+      - name: Run docs generation
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         working-directory: ./tools
         run: make generate_docs
