@@ -45,7 +45,7 @@ type AuditingApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return UpdateAuditingConfigurationApiRequest
 	*/
-	UpdateAuditingConfiguration(ctx context.Context, groupId string) UpdateAuditingConfigurationApiRequest
+	UpdateAuditingConfiguration(ctx context.Context, groupId string, auditLog *AuditLog) UpdateAuditingConfigurationApiRequest
 	/*
 		UpdateAuditingConfiguration Update Auditing Configuration for One Project
 
@@ -90,9 +90,9 @@ GetAuditingConfiguration Return the Auditing Configuration for One Project
 
 Returns the auditing configuration for the specified project. The auditing configuration defines the events that MongoDB Cloud records in the audit log. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List. This feature isn't available for `M0`, `M2`, `M5`, or serverless clusters.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @return GetAuditingConfigurationApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return GetAuditingConfigurationApiRequest
 */
 func (a *AuditingApiService) GetAuditingConfiguration(ctx context.Context, groupId string) GetAuditingConfigurationApiRequest {
 	return GetAuditingConfigurationApiRequest{
@@ -103,7 +103,8 @@ func (a *AuditingApiService) GetAuditingConfiguration(ctx context.Context, group
 }
 
 // Execute executes the request
-//  @return AuditLog
+//
+//	@return AuditLog
 func (a *AuditingApiService) getAuditingConfigurationExecute(r GetAuditingConfigurationApiRequest) (*AuditLog, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -213,12 +214,6 @@ func (a *AuditingApiService) UpdateAuditingConfigurationWithParams(ctx context.C
 	}
 }
 
-// Updated auditing configuration for the specified project.
-func (r UpdateAuditingConfigurationApiRequest) AuditLog(auditLog *AuditLog) UpdateAuditingConfigurationApiRequest {
-	r.auditLog = auditLog
-	return r
-}
-
 func (r UpdateAuditingConfigurationApiRequest) Execute() (*AuditLog, *http.Response, error) {
 	return r.ApiService.updateAuditingConfigurationExecute(r)
 }
@@ -228,20 +223,22 @@ UpdateAuditingConfiguration Update Auditing Configuration for One Project
 
 Updates the auditing configuration for the specified project. The auditing configuration defines the events that MongoDB Cloud records in the audit log. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List. This feature isn't available for `M0`, `M2`, `M5`, or serverless clusters.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @return UpdateAuditingConfigurationApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return UpdateAuditingConfigurationApiRequest
 */
-func (a *AuditingApiService) UpdateAuditingConfiguration(ctx context.Context, groupId string) UpdateAuditingConfigurationApiRequest {
+func (a *AuditingApiService) UpdateAuditingConfiguration(ctx context.Context, groupId string, auditLog *AuditLog) UpdateAuditingConfigurationApiRequest {
 	return UpdateAuditingConfigurationApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    groupId,
+		auditLog:   auditLog,
 	}
 }
 
 // Execute executes the request
-//  @return AuditLog
+//
+//	@return AuditLog
 func (a *AuditingApiService) updateAuditingConfigurationExecute(r UpdateAuditingConfigurationApiRequest) (*AuditLog, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch

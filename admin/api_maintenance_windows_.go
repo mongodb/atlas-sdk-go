@@ -114,7 +114,7 @@ type MaintenanceWindowsApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return UpdateMaintenanceWindowApiRequest
 	*/
-	UpdateMaintenanceWindow(ctx context.Context, groupId string) UpdateMaintenanceWindowApiRequest
+	UpdateMaintenanceWindow(ctx context.Context, groupId string, groupMaintenanceWindow *GroupMaintenanceWindow) UpdateMaintenanceWindowApiRequest
 	/*
 		UpdateMaintenanceWindow Update Maintenance Window for One Project
 
@@ -159,9 +159,9 @@ DeferMaintenanceWindow Defer One Maintenance Window for One Project
 
 Defers the maintenance window for the specified project. Urgent maintenance activities such as security patches can't wait for your chosen window. MongoDB Cloud starts those maintenance activities when needed. After you schedule maintenance for your cluster, you can't change your maintenance window until the current maintenance efforts complete. The maintenance procedure that MongoDB Cloud performs requires at least one replica set election during the maintenance window per replica set. Maintenance always begins as close to the scheduled hour as possible, but in-progress cluster updates or unexpected system issues could delay the start time. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @return DeferMaintenanceWindowApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return DeferMaintenanceWindowApiRequest
 */
 func (a *MaintenanceWindowsApiService) DeferMaintenanceWindow(ctx context.Context, groupId string) DeferMaintenanceWindowApiRequest {
 	return DeferMaintenanceWindowApiRequest{
@@ -277,9 +277,9 @@ GetMaintenanceWindow Return One Maintenance Window for One Project
 
 Returns the maintenance window for the specified project. MongoDB Cloud starts those maintenance activities when needed. You can't change your maintenance window until the current maintenance efforts complete. The maintenance procedure that MongoDB Cloud performs requires at least one replica set election during the maintenance window per replica set. Maintenance always begins as close to the scheduled hour as possible, but in-progress cluster updates or unexpected system issues could delay the start time. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @return GetMaintenanceWindowApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return GetMaintenanceWindowApiRequest
 */
 func (a *MaintenanceWindowsApiService) GetMaintenanceWindow(ctx context.Context, groupId string) GetMaintenanceWindowApiRequest {
 	return GetMaintenanceWindowApiRequest{
@@ -290,7 +290,8 @@ func (a *MaintenanceWindowsApiService) GetMaintenanceWindow(ctx context.Context,
 }
 
 // Execute executes the request
-//  @return GroupMaintenanceWindow
+//
+//	@return GroupMaintenanceWindow
 func (a *MaintenanceWindowsApiService) getMaintenanceWindowExecute(r GetMaintenanceWindowApiRequest) (*GroupMaintenanceWindow, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -406,9 +407,9 @@ ResetMaintenanceWindow Reset One Maintenance Window for One Project
 
 Resets the maintenance window for the specified project. To use this resource, the requesting API Key must have the Project Owner role. Urgent maintenance activities such as security patches can't wait for your chosen window. MongoDB Cloud starts those maintenance activities when needed. After you schedule maintenance for your cluster, you can't change your maintenance window until the current maintenance efforts complete. The maintenance procedure that MongoDB Cloud performs requires at least one replica set election during the maintenance window per replica set. Maintenance always begins as close to the scheduled hour as possible, but in-progress cluster updates or unexpected system issues could delay the start time. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @return ResetMaintenanceWindowApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return ResetMaintenanceWindowApiRequest
 */
 func (a *MaintenanceWindowsApiService) ResetMaintenanceWindow(ctx context.Context, groupId string) ResetMaintenanceWindowApiRequest {
 	return ResetMaintenanceWindowApiRequest{
@@ -419,7 +420,8 @@ func (a *MaintenanceWindowsApiService) ResetMaintenanceWindow(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *MaintenanceWindowsApiService) resetMaintenanceWindowExecute(r ResetMaintenanceWindowApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
@@ -535,9 +537,9 @@ ToggleMaintenanceAutoDefer Toggle Automatic Deferral of Maintenance for One Proj
 
 Toggles automatic deferral of the maintenance window for the specified project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @return ToggleMaintenanceAutoDeferApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return ToggleMaintenanceAutoDeferApiRequest
 */
 func (a *MaintenanceWindowsApiService) ToggleMaintenanceAutoDefer(ctx context.Context, groupId string) ToggleMaintenanceAutoDeferApiRequest {
 	return ToggleMaintenanceAutoDeferApiRequest{
@@ -647,12 +649,6 @@ func (a *MaintenanceWindowsApiService) UpdateMaintenanceWindowWithParams(ctx con
 	}
 }
 
-// Updates the maintenance window for the specified project.
-func (r UpdateMaintenanceWindowApiRequest) GroupMaintenanceWindow(groupMaintenanceWindow *GroupMaintenanceWindow) UpdateMaintenanceWindowApiRequest {
-	r.groupMaintenanceWindow = groupMaintenanceWindow
-	return r
-}
-
 func (r UpdateMaintenanceWindowApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.updateMaintenanceWindowExecute(r)
 }
@@ -662,20 +658,22 @@ UpdateMaintenanceWindow Update Maintenance Window for One Project
 
 Updates the maintenance window for the specified project. Urgent maintenance activities such as security patches can't wait for your chosen window. MongoDB Cloud starts those maintenance activities when needed. After you schedule maintenance for your cluster, you can't change your maintenance window until the current maintenance efforts complete. The maintenance procedure that MongoDB Cloud performs requires at least one replica set election during the maintenance window per replica set. Maintenance always begins as close to the scheduled hour as possible, but in-progress cluster updates or unexpected system issues could delay the start time. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @return UpdateMaintenanceWindowApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return UpdateMaintenanceWindowApiRequest
 */
-func (a *MaintenanceWindowsApiService) UpdateMaintenanceWindow(ctx context.Context, groupId string) UpdateMaintenanceWindowApiRequest {
+func (a *MaintenanceWindowsApiService) UpdateMaintenanceWindow(ctx context.Context, groupId string, groupMaintenanceWindow *GroupMaintenanceWindow) UpdateMaintenanceWindowApiRequest {
 	return UpdateMaintenanceWindowApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		groupId:    groupId,
+		ApiService:             a,
+		ctx:                    ctx,
+		groupId:                groupId,
+		groupMaintenanceWindow: groupMaintenanceWindow,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *MaintenanceWindowsApiService) updateMaintenanceWindowExecute(r UpdateMaintenanceWindowApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch

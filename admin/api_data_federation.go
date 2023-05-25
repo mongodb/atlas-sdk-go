@@ -41,7 +41,7 @@ type DataFederationApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return CreateDataFederationPrivateEndpointApiRequest
 	*/
-	CreateDataFederationPrivateEndpoint(ctx context.Context, groupId string) CreateDataFederationPrivateEndpointApiRequest
+	CreateDataFederationPrivateEndpoint(ctx context.Context, groupId string, privateNetworkEndpointIdEntry *PrivateNetworkEndpointIdEntry) CreateDataFederationPrivateEndpointApiRequest
 	/*
 		CreateDataFederationPrivateEndpoint Create One Federated Database Instance and Online Archive Private Endpoint for One Project
 
@@ -64,7 +64,7 @@ type DataFederationApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return CreateFederatedDatabaseApiRequest
 	*/
-	CreateFederatedDatabase(ctx context.Context, groupId string) CreateFederatedDatabaseApiRequest
+	CreateFederatedDatabase(ctx context.Context, groupId string, dataLakeTenant *DataLakeTenant) CreateFederatedDatabaseApiRequest
 	/*
 		CreateFederatedDatabase Create One Federated Database Instance in One Project
 
@@ -89,7 +89,7 @@ type DataFederationApi interface {
 		@param limitName Human-readable label that identifies this data federation instance limit.  | Limit Name | Description | Default | | --- | --- | --- | | bytesProcessed.query | Limit on the number of bytes processed during a single data federation query | N/A | | bytesProcessed.daily | Limit on the number of bytes processed for the data federation instance for the current day | N/A | | bytesProcessed.weekly | Limit on the number of bytes processed for the data federation instance for the current week | N/A | | bytesProcessed.monthly | Limit on the number of bytes processed for the data federation instance for the current month | N/A |
 		@return CreateOneDataFederationQueryLimitApiRequest
 	*/
-	CreateOneDataFederationQueryLimit(ctx context.Context, groupId string, tenantName string, limitName string) CreateOneDataFederationQueryLimitApiRequest
+	CreateOneDataFederationQueryLimit(ctx context.Context, groupId string, tenantName string, limitName string, dataFederationTenantQueryLimit *DataFederationTenantQueryLimit) CreateOneDataFederationQueryLimitApiRequest
 	/*
 		CreateOneDataFederationQueryLimit Configure One Query Limit for One Federated Database Instance
 
@@ -353,7 +353,7 @@ type DataFederationApi interface {
 		@param tenantName Human-readable label that identifies the federated database instance to update.
 		@return UpdateFederatedDatabaseApiRequest
 	*/
-	UpdateFederatedDatabase(ctx context.Context, groupId string, tenantName string) UpdateFederatedDatabaseApiRequest
+	UpdateFederatedDatabase(ctx context.Context, groupId string, tenantName string, dataLakeTenant *DataLakeTenant) UpdateFederatedDatabaseApiRequest
 	/*
 		UpdateFederatedDatabase Update One Federated Database Instance in One Project
 
@@ -385,17 +385,11 @@ type CreateDataFederationPrivateEndpointApiParams struct {
 
 func (a *DataFederationApiService) CreateDataFederationPrivateEndpointWithParams(ctx context.Context, args *CreateDataFederationPrivateEndpointApiParams) CreateDataFederationPrivateEndpointApiRequest {
 	return CreateDataFederationPrivateEndpointApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		groupId:    args.GroupId,
+		ApiService:                    a,
+		ctx:                           ctx,
+		groupId:                       args.GroupId,
 		privateNetworkEndpointIdEntry: args.PrivateNetworkEndpointIdEntry,
 	}
-}
-
-// Private endpoint for Federated Database Instances and Online Archives to add to the specified project.
-func (r CreateDataFederationPrivateEndpointApiRequest) PrivateNetworkEndpointIdEntry(privateNetworkEndpointIdEntry *PrivateNetworkEndpointIdEntry) CreateDataFederationPrivateEndpointApiRequest {
-	r.privateNetworkEndpointIdEntry = privateNetworkEndpointIdEntry
-	return r
 }
 
 func (r CreateDataFederationPrivateEndpointApiRequest) Execute() (*PaginatedPrivateNetworkEndpointIdEntry, *http.Response, error) {
@@ -407,38 +401,40 @@ CreateDataFederationPrivateEndpoint Create One Federated Database Instance and O
 
 Adds one private endpoint for Federated Database Instances and Online Archives to the specified projects. If the endpoint ID already exists and the associated comment is unchanged, Atlas Data Federation makes no change to the endpoint ID list. If the endpoint ID already exists and the associated comment is changed, Atlas Data Federation updates the comment value only in the endpoint ID list. If the endpoint ID doesn't exist, Atlas Data Federation appends the new endpoint to the list of endpoints in the endpoint ID list. Each region has an associated service name for the various endpoints in each region.
 
- `us-east-1` is `com.amazonaws.vpce.us-east-1.vpce-svc-00e311695874992b4`.
+	`us-east-1` is `com.amazonaws.vpce.us-east-1.vpce-svc-00e311695874992b4`.
 
- `us-west-1` is `com.amazonaws.vpce.us-west-2.vpce-svc-09d86b19e59d1b4bb`.
+	`us-west-1` is `com.amazonaws.vpce.us-west-2.vpce-svc-09d86b19e59d1b4bb`.
 
- `eu-west-1` is `com.amazonaws.vpce.eu-west-1.vpce-svc-0824460b72e1a420e`.
+	`eu-west-1` is `com.amazonaws.vpce.eu-west-1.vpce-svc-0824460b72e1a420e`.
 
- `eu-west-2` is `com.amazonaws.vpce.eu-west-2.vpce-svc-052f1840aa0c4f1f9`.
+	`eu-west-2` is `com.amazonaws.vpce.eu-west-2.vpce-svc-052f1840aa0c4f1f9`.
 
- `eu-central-1` is `com.amazonaws.vpce.eu-central-1.vpce-svc-0ac8ce91871138c0d`.
+	`eu-central-1` is `com.amazonaws.vpce.eu-central-1.vpce-svc-0ac8ce91871138c0d`.
 
- `sa-east-1` is `com.amazonaws.vpce.sa-east-1.vpce-svc-0b56e75e8cdf50044`.
+	`sa-east-1` is `com.amazonaws.vpce.sa-east-1.vpce-svc-0b56e75e8cdf50044`.
 
- `ap-southeast-2` is `com.amazonaws.vpce.ap-southeast-2.vpce-svc-036f1de74d761706e`.
+	`ap-southeast-2` is `com.amazonaws.vpce.ap-southeast-2.vpce-svc-036f1de74d761706e`.
 
- `ap-south-1` is `com.amazonaws.vpce.ap-south-1.vpce-svc-03eb8a541f96d356d`.
+	`ap-south-1` is `com.amazonaws.vpce.ap-south-1.vpce-svc-03eb8a541f96d356d`.
 
- To use this resource, the requesting API Key must have the Project Owner or Project Charts Admin roles. This resource doesn't require the API Key to have an Access List.
+	To use this resource, the requesting API Key must have the Project Owner or Project Charts Admin roles. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @return CreateDataFederationPrivateEndpointApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return CreateDataFederationPrivateEndpointApiRequest
 */
-func (a *DataFederationApiService) CreateDataFederationPrivateEndpoint(ctx context.Context, groupId string) CreateDataFederationPrivateEndpointApiRequest {
+func (a *DataFederationApiService) CreateDataFederationPrivateEndpoint(ctx context.Context, groupId string, privateNetworkEndpointIdEntry *PrivateNetworkEndpointIdEntry) CreateDataFederationPrivateEndpointApiRequest {
 	return CreateDataFederationPrivateEndpointApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		groupId:    groupId,
+		ApiService:                    a,
+		ctx:                           ctx,
+		groupId:                       groupId,
+		privateNetworkEndpointIdEntry: privateNetworkEndpointIdEntry,
 	}
 }
 
 // Execute executes the request
-//  @return PaginatedPrivateNetworkEndpointIdEntry
+//
+//	@return PaginatedPrivateNetworkEndpointIdEntry
 func (a *DataFederationApiService) createDataFederationPrivateEndpointExecute(r CreateDataFederationPrivateEndpointApiRequest) (*PaginatedPrivateNetworkEndpointIdEntry, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -556,12 +552,6 @@ func (a *DataFederationApiService) CreateFederatedDatabaseWithParams(ctx context
 	}
 }
 
-// Details to create one federated database instance in the specified project.
-func (r CreateFederatedDatabaseApiRequest) DataLakeTenant(dataLakeTenant *DataLakeTenant) CreateFederatedDatabaseApiRequest {
-	r.dataLakeTenant = dataLakeTenant
-	return r
-}
-
 // Flag that indicates whether this request should check if the requesting IAM role can read from the S3 bucket. AWS checks if the role can list the objects in the bucket before writing to it. Some IAM roles only need write permissions. This flag allows you to skip that check.
 func (r CreateFederatedDatabaseApiRequest) SkipRoleValidation(skipRoleValidation bool) CreateFederatedDatabaseApiRequest {
 	r.skipRoleValidation = &skipRoleValidation
@@ -577,20 +567,22 @@ CreateFederatedDatabase Create One Federated Database Instance in One Project
 
 Creates one federated database instance in the specified project. To use this resource, the requesting API Key must have the Project Owner or Project Charts Admin roles. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @return CreateFederatedDatabaseApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return CreateFederatedDatabaseApiRequest
 */
-func (a *DataFederationApiService) CreateFederatedDatabase(ctx context.Context, groupId string) CreateFederatedDatabaseApiRequest {
+func (a *DataFederationApiService) CreateFederatedDatabase(ctx context.Context, groupId string, dataLakeTenant *DataLakeTenant) CreateFederatedDatabaseApiRequest {
 	return CreateFederatedDatabaseApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		groupId:    groupId,
+		ApiService:     a,
+		ctx:            ctx,
+		groupId:        groupId,
+		dataLakeTenant: dataLakeTenant,
 	}
 }
 
 // Execute executes the request
-//  @return DataLakeTenant
+//
+//	@return DataLakeTenant
 func (a *DataFederationApiService) createFederatedDatabaseExecute(r CreateFederatedDatabaseApiRequest) (*DataLakeTenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -718,12 +710,6 @@ func (a *DataFederationApiService) CreateOneDataFederationQueryLimitWithParams(c
 	}
 }
 
-// Creates or updates one query limit for one federated database instance.
-func (r CreateOneDataFederationQueryLimitApiRequest) DataFederationTenantQueryLimit(dataFederationTenantQueryLimit *DataFederationTenantQueryLimit) CreateOneDataFederationQueryLimitApiRequest {
-	r.dataFederationTenantQueryLimit = dataFederationTenantQueryLimit
-	return r
-}
-
 func (r CreateOneDataFederationQueryLimitApiRequest) Execute() ([]DataFederationTenantQueryLimit, *http.Response, error) {
 	return r.ApiService.createOneDataFederationQueryLimitExecute(r)
 }
@@ -733,24 +719,26 @@ CreateOneDataFederationQueryLimit Configure One Query Limit for One Federated Da
 
 Creates or updates one query limit for one federated database instance. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param tenantName Human-readable label that identifies the federated database instance to which the query limit applies.
- @param limitName Human-readable label that identifies this data federation instance limit.  | Limit Name | Description | Default | | --- | --- | --- | | bytesProcessed.query | Limit on the number of bytes processed during a single data federation query | N/A | | bytesProcessed.daily | Limit on the number of bytes processed for the data federation instance for the current day | N/A | | bytesProcessed.weekly | Limit on the number of bytes processed for the data federation instance for the current week | N/A | | bytesProcessed.monthly | Limit on the number of bytes processed for the data federation instance for the current month | N/A |
- @return CreateOneDataFederationQueryLimitApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param tenantName Human-readable label that identifies the federated database instance to which the query limit applies.
+	@param limitName Human-readable label that identifies this data federation instance limit.  | Limit Name | Description | Default | | --- | --- | --- | | bytesProcessed.query | Limit on the number of bytes processed during a single data federation query | N/A | | bytesProcessed.daily | Limit on the number of bytes processed for the data federation instance for the current day | N/A | | bytesProcessed.weekly | Limit on the number of bytes processed for the data federation instance for the current week | N/A | | bytesProcessed.monthly | Limit on the number of bytes processed for the data federation instance for the current month | N/A |
+	@return CreateOneDataFederationQueryLimitApiRequest
 */
-func (a *DataFederationApiService) CreateOneDataFederationQueryLimit(ctx context.Context, groupId string, tenantName string, limitName string) CreateOneDataFederationQueryLimitApiRequest {
+func (a *DataFederationApiService) CreateOneDataFederationQueryLimit(ctx context.Context, groupId string, tenantName string, limitName string, dataFederationTenantQueryLimit *DataFederationTenantQueryLimit) CreateOneDataFederationQueryLimitApiRequest {
 	return CreateOneDataFederationQueryLimitApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		groupId:    groupId,
-		tenantName: tenantName,
-		limitName:  limitName,
+		ApiService:                     a,
+		ctx:                            ctx,
+		groupId:                        groupId,
+		tenantName:                     tenantName,
+		limitName:                      limitName,
+		dataFederationTenantQueryLimit: dataFederationTenantQueryLimit,
 	}
 }
 
 // Execute executes the request
-//  @return []DataFederationTenantQueryLimit
+//
+//	@return []DataFederationTenantQueryLimit
 func (a *DataFederationApiService) createOneDataFederationQueryLimitExecute(r CreateOneDataFederationQueryLimitApiRequest) ([]DataFederationTenantQueryLimit, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -876,10 +864,10 @@ DeleteDataFederationPrivateEndpoint Remove One Federated Database Instance and O
 
 Removes one private endpoint for Federated Database Instances and Online Archives in the specified project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param endpointId Unique 22-character alphanumeric string that identifies the private endpoint to remove. Atlas Data Federation supports AWS private endpoints using the AWS PrivateLink feature.
- @return DeleteDataFederationPrivateEndpointApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param endpointId Unique 22-character alphanumeric string that identifies the private endpoint to remove. Atlas Data Federation supports AWS private endpoints using the AWS PrivateLink feature.
+	@return DeleteDataFederationPrivateEndpointApiRequest
 */
 func (a *DataFederationApiService) DeleteDataFederationPrivateEndpoint(ctx context.Context, groupId string, endpointId string) DeleteDataFederationPrivateEndpointApiRequest {
 	return DeleteDataFederationPrivateEndpointApiRequest{
@@ -891,7 +879,8 @@ func (a *DataFederationApiService) DeleteDataFederationPrivateEndpoint(ctx conte
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *DataFederationApiService) deleteDataFederationPrivateEndpointExecute(r DeleteDataFederationPrivateEndpointApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
@@ -1017,10 +1006,10 @@ DeleteFederatedDatabase Remove One Federated Database Instance from One Project
 
 Removes one federated database instance from the specified project. To use this resource, the requesting API Key must have the Project Owner or Project Charts Admin roles. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param tenantName Human-readable label that identifies the federated database instance to remove.
- @return DeleteFederatedDatabaseApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param tenantName Human-readable label that identifies the federated database instance to remove.
+	@return DeleteFederatedDatabaseApiRequest
 */
 func (a *DataFederationApiService) DeleteFederatedDatabase(ctx context.Context, groupId string, tenantName string) DeleteFederatedDatabaseApiRequest {
 	return DeleteFederatedDatabaseApiRequest{
@@ -1032,7 +1021,8 @@ func (a *DataFederationApiService) DeleteFederatedDatabase(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *DataFederationApiService) deleteFederatedDatabaseExecute(r DeleteFederatedDatabaseApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
@@ -1155,11 +1145,11 @@ DeleteOneDataFederationInstanceQueryLimit Delete One Query Limit For One Federat
 
 Deletes one query limit for one federated database instance. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param tenantName Human-readable label that identifies the federated database instance to which the query limit applies.
- @param limitName Human-readable label that identifies this data federation instance limit.  | Limit Name | Description | Default | | --- | --- | --- | | bytesProcessed.query | Limit on the number of bytes processed during a single data federation query | N/A | | bytesProcessed.daily | Limit on the number of bytes processed for the data federation instance for the current day | N/A | | bytesProcessed.weekly | Limit on the number of bytes processed for the data federation instance for the current week | N/A | | bytesProcessed.monthly | Limit on the number of bytes processed for the data federation instance for the current month | N/A |
- @return DeleteOneDataFederationInstanceQueryLimitApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param tenantName Human-readable label that identifies the federated database instance to which the query limit applies.
+	@param limitName Human-readable label that identifies this data federation instance limit.  | Limit Name | Description | Default | | --- | --- | --- | | bytesProcessed.query | Limit on the number of bytes processed during a single data federation query | N/A | | bytesProcessed.daily | Limit on the number of bytes processed for the data federation instance for the current day | N/A | | bytesProcessed.weekly | Limit on the number of bytes processed for the data federation instance for the current week | N/A | | bytesProcessed.monthly | Limit on the number of bytes processed for the data federation instance for the current month | N/A |
+	@return DeleteOneDataFederationInstanceQueryLimitApiRequest
 */
 func (a *DataFederationApiService) DeleteOneDataFederationInstanceQueryLimit(ctx context.Context, groupId string, tenantName string, limitName string) DeleteOneDataFederationInstanceQueryLimitApiRequest {
 	return DeleteOneDataFederationInstanceQueryLimitApiRequest{
@@ -1172,7 +1162,8 @@ func (a *DataFederationApiService) DeleteOneDataFederationInstanceQueryLimit(ctx
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *DataFederationApiService) deleteOneDataFederationInstanceQueryLimitExecute(r DeleteOneDataFederationInstanceQueryLimitApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
@@ -1311,10 +1302,10 @@ DownloadFederatedDatabaseQueryLogs Download Query Logs for One Federated Databas
 
 Downloads the query logs for the specified federated database instance. To use this resource, the requesting API Key must have the Project Owner or Project Data Access Read Write roles. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param tenantName Human-readable label that identifies the federated database instance for which you want to download query logs.
- @return DownloadFederatedDatabaseQueryLogsApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param tenantName Human-readable label that identifies the federated database instance for which you want to download query logs.
+	@return DownloadFederatedDatabaseQueryLogsApiRequest
 */
 func (a *DataFederationApiService) DownloadFederatedDatabaseQueryLogs(ctx context.Context, groupId string, tenantName string) DownloadFederatedDatabaseQueryLogsApiRequest {
 	return DownloadFederatedDatabaseQueryLogsApiRequest{
@@ -1326,7 +1317,8 @@ func (a *DataFederationApiService) DownloadFederatedDatabaseQueryLogs(ctx contex
 }
 
 // Execute executes the request
-//  @return *os.File
+//
+//	@return *os.File
 func (a *DataFederationApiService) downloadFederatedDatabaseQueryLogsExecute(r DownloadFederatedDatabaseQueryLogsApiRequest) (*os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1452,10 +1444,10 @@ GetDataFederationPrivateEndpoint Return One Federated Database Instance and Onli
 
 Returns the specified private endpoint for Federated Database Instances or Online Archives in the specified project. To use this resource, the requesting API Key must have the Project Read Only or Project Charts Admin roles. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param endpointId Unique 22-character alphanumeric string that identifies the private endpoint to return. Atlas Data Federation supports AWS private endpoints using the AWS PrivateLink feature.
- @return GetDataFederationPrivateEndpointApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param endpointId Unique 22-character alphanumeric string that identifies the private endpoint to return. Atlas Data Federation supports AWS private endpoints using the AWS PrivateLink feature.
+	@return GetDataFederationPrivateEndpointApiRequest
 */
 func (a *DataFederationApiService) GetDataFederationPrivateEndpoint(ctx context.Context, groupId string, endpointId string) GetDataFederationPrivateEndpointApiRequest {
 	return GetDataFederationPrivateEndpointApiRequest{
@@ -1467,7 +1459,8 @@ func (a *DataFederationApiService) GetDataFederationPrivateEndpoint(ctx context.
 }
 
 // Execute executes the request
-//  @return PrivateNetworkEndpointIdEntry
+//
+//	@return PrivateNetworkEndpointIdEntry
 func (a *DataFederationApiService) getDataFederationPrivateEndpointExecute(r GetDataFederationPrivateEndpointApiRequest) (*PrivateNetworkEndpointIdEntry, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1593,10 +1586,10 @@ GetFederatedDatabase Return One Federated Database Instance in One Project
 
 Returns the details of one federated database instance within the specified project. To use this resource, the requesting API Key must have the Project Read Only or Project Charts Admin roles. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param tenantName Human-readable label that identifies the Federated Database to return.
- @return GetFederatedDatabaseApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param tenantName Human-readable label that identifies the Federated Database to return.
+	@return GetFederatedDatabaseApiRequest
 */
 func (a *DataFederationApiService) GetFederatedDatabase(ctx context.Context, groupId string, tenantName string) GetFederatedDatabaseApiRequest {
 	return GetFederatedDatabaseApiRequest{
@@ -1608,7 +1601,8 @@ func (a *DataFederationApiService) GetFederatedDatabase(ctx context.Context, gro
 }
 
 // Execute executes the request
-//  @return DataLakeTenant
+//
+//	@return DataLakeTenant
 func (a *DataFederationApiService) getFederatedDatabaseExecute(r GetFederatedDatabaseApiRequest) (*DataLakeTenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1752,9 +1746,9 @@ ListDataFederationPrivateEndpoints Return All Federated Database Instance and On
 
 Returns all private endpoints for Federated Database Instances and Online Archives in the specified project. To use this resource, the requesting API Key must have the Project Read Only or Project Charts Admin roles. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @return ListDataFederationPrivateEndpointsApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return ListDataFederationPrivateEndpointsApiRequest
 */
 func (a *DataFederationApiService) ListDataFederationPrivateEndpoints(ctx context.Context, groupId string) ListDataFederationPrivateEndpointsApiRequest {
 	return ListDataFederationPrivateEndpointsApiRequest{
@@ -1765,7 +1759,8 @@ func (a *DataFederationApiService) ListDataFederationPrivateEndpoints(ctx contex
 }
 
 // Execute executes the request
-//  @return PaginatedPrivateNetworkEndpointIdEntry
+//
+//	@return PaginatedPrivateNetworkEndpointIdEntry
 func (a *DataFederationApiService) listDataFederationPrivateEndpointsExecute(r ListDataFederationPrivateEndpointsApiRequest) (*PaginatedPrivateNetworkEndpointIdEntry, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1911,9 +1906,9 @@ ListFederatedDatabases Return All Federated Database Instances in One Project
 
 Returns the details of all federated database instances in the specified project. To use this resource, the requesting API Key must have the Project Read Only or higher role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @return ListFederatedDatabasesApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return ListFederatedDatabasesApiRequest
 */
 func (a *DataFederationApiService) ListFederatedDatabases(ctx context.Context, groupId string) ListFederatedDatabasesApiRequest {
 	return ListFederatedDatabasesApiRequest{
@@ -1924,7 +1919,8 @@ func (a *DataFederationApiService) ListFederatedDatabases(ctx context.Context, g
 }
 
 // Execute executes the request
-//  @return []DataLakeTenant
+//
+//	@return []DataLakeTenant
 func (a *DataFederationApiService) listFederatedDatabasesExecute(r ListFederatedDatabasesApiRequest) ([]DataLakeTenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2053,11 +2049,11 @@ ReturnFederatedDatabaseQueryLimit Return One Federated Database Instance Query L
 
 Returns the details of one query limit for the specified federated database instance in the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param tenantName Human-readable label that identifies the federated database instance to which the query limit applies.
- @param limitName Human-readable label that identifies this data federation instance limit.  | Limit Name | Description | Default | | --- | --- | --- | | bytesProcessed.query | Limit on the number of bytes processed during a single data federation query | N/A | | bytesProcessed.daily | Limit on the number of bytes processed for the data federation instance for the current day | N/A | | bytesProcessed.weekly | Limit on the number of bytes processed for the data federation instance for the current week | N/A | | bytesProcessed.monthly | Limit on the number of bytes processed for the data federation instance for the current month | N/A |
- @return ReturnFederatedDatabaseQueryLimitApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param tenantName Human-readable label that identifies the federated database instance to which the query limit applies.
+	@param limitName Human-readable label that identifies this data federation instance limit.  | Limit Name | Description | Default | | --- | --- | --- | | bytesProcessed.query | Limit on the number of bytes processed during a single data federation query | N/A | | bytesProcessed.daily | Limit on the number of bytes processed for the data federation instance for the current day | N/A | | bytesProcessed.weekly | Limit on the number of bytes processed for the data federation instance for the current week | N/A | | bytesProcessed.monthly | Limit on the number of bytes processed for the data federation instance for the current month | N/A |
+	@return ReturnFederatedDatabaseQueryLimitApiRequest
 */
 func (a *DataFederationApiService) ReturnFederatedDatabaseQueryLimit(ctx context.Context, groupId string, tenantName string, limitName string) ReturnFederatedDatabaseQueryLimitApiRequest {
 	return ReturnFederatedDatabaseQueryLimitApiRequest{
@@ -2070,7 +2066,8 @@ func (a *DataFederationApiService) ReturnFederatedDatabaseQueryLimit(ctx context
 }
 
 // Execute executes the request
-//  @return []DataFederationTenantQueryLimit
+//
+//	@return []DataFederationTenantQueryLimit
 func (a *DataFederationApiService) returnFederatedDatabaseQueryLimitExecute(r ReturnFederatedDatabaseQueryLimitApiRequest) ([]DataFederationTenantQueryLimit, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2191,10 +2188,10 @@ ReturnFederatedDatabaseQueryLimits Return All Query Limits for One Federated Dat
 
 Returns query limits for a federated databases instance in the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param tenantName Human-readable label that identifies the federated database instance for which you want to retrieve query limits.
- @return ReturnFederatedDatabaseQueryLimitsApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param tenantName Human-readable label that identifies the federated database instance for which you want to retrieve query limits.
+	@return ReturnFederatedDatabaseQueryLimitsApiRequest
 */
 func (a *DataFederationApiService) ReturnFederatedDatabaseQueryLimits(ctx context.Context, groupId string, tenantName string) ReturnFederatedDatabaseQueryLimitsApiRequest {
 	return ReturnFederatedDatabaseQueryLimitsApiRequest{
@@ -2206,7 +2203,8 @@ func (a *DataFederationApiService) ReturnFederatedDatabaseQueryLimits(ctx contex
 }
 
 // Execute executes the request
-//  @return []DataFederationTenantQueryLimit
+//
+//	@return []DataFederationTenantQueryLimit
 func (a *DataFederationApiService) returnFederatedDatabaseQueryLimitsExecute(r ReturnFederatedDatabaseQueryLimitsApiRequest) ([]DataFederationTenantQueryLimit, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2329,12 +2327,6 @@ func (r UpdateFederatedDatabaseApiRequest) SkipRoleValidation(skipRoleValidation
 	return r
 }
 
-// Details of one Federated Database to update in the specified project.
-func (r UpdateFederatedDatabaseApiRequest) DataLakeTenant(dataLakeTenant *DataLakeTenant) UpdateFederatedDatabaseApiRequest {
-	r.dataLakeTenant = dataLakeTenant
-	return r
-}
-
 func (r UpdateFederatedDatabaseApiRequest) Execute() (*DataLakeTenant, *http.Response, error) {
 	return r.ApiService.updateFederatedDatabaseExecute(r)
 }
@@ -2344,22 +2336,24 @@ UpdateFederatedDatabase Update One Federated Database Instance in One Project
 
 Updates the details of one federated database instance in the specified project. To use this resource, the requesting API Key must have the Project Owner or higher role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param tenantName Human-readable label that identifies the federated database instance to update.
- @return UpdateFederatedDatabaseApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param tenantName Human-readable label that identifies the federated database instance to update.
+	@return UpdateFederatedDatabaseApiRequest
 */
-func (a *DataFederationApiService) UpdateFederatedDatabase(ctx context.Context, groupId string, tenantName string) UpdateFederatedDatabaseApiRequest {
+func (a *DataFederationApiService) UpdateFederatedDatabase(ctx context.Context, groupId string, tenantName string, dataLakeTenant *DataLakeTenant) UpdateFederatedDatabaseApiRequest {
 	return UpdateFederatedDatabaseApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		groupId:    groupId,
-		tenantName: tenantName,
+		ApiService:     a,
+		ctx:            ctx,
+		groupId:        groupId,
+		tenantName:     tenantName,
+		dataLakeTenant: dataLakeTenant,
 	}
 }
 
 // Execute executes the request
-//  @return DataLakeTenant
+//
+//	@return DataLakeTenant
 func (a *DataFederationApiService) updateFederatedDatabaseExecute(r UpdateFederatedDatabaseApiRequest) (*DataLakeTenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch

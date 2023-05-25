@@ -23,7 +23,7 @@ type FederatedAuthenticationApi interface {
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@return CreateRoleMappingApiRequest
 	*/
-	CreateRoleMapping(ctx context.Context, federationSettingsId string, orgId string) CreateRoleMappingApiRequest
+	CreateRoleMapping(ctx context.Context, federationSettingsId string, orgId string, roleMapping *RoleMapping) CreateRoleMappingApiRequest
 	/*
 		CreateRoleMapping Add One Role Mapping to One Organization
 
@@ -315,7 +315,7 @@ type FederatedAuthenticationApi interface {
 		@param orgId Unique 24-hexadecimal digit string that identifies the connected organization configuration to update.
 		@return UpdateConnectedOrgConfigApiRequest
 	*/
-	UpdateConnectedOrgConfig(ctx context.Context, federationSettingsId string, orgId string) UpdateConnectedOrgConfigApiRequest
+	UpdateConnectedOrgConfig(ctx context.Context, federationSettingsId string, orgId string, connectedOrgConfig *ConnectedOrgConfig) UpdateConnectedOrgConfigApiRequest
 	/*
 		UpdateConnectedOrgConfig Update One Org Config Connected to One Federation
 
@@ -339,7 +339,7 @@ type FederatedAuthenticationApi interface {
 		@param identityProviderId Unique 20-hexadecimal digit string that identifies the identity provider.
 		@return UpdateIdentityProviderApiRequest
 	*/
-	UpdateIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string) UpdateIdentityProviderApiRequest
+	UpdateIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string, samlIdentityProviderUpdate *SamlIdentityProviderUpdate) UpdateIdentityProviderApiRequest
 	/*
 		UpdateIdentityProvider Update the identity provider.
 
@@ -364,7 +364,7 @@ type FederatedAuthenticationApi interface {
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@return UpdateRoleMappingApiRequest
 	*/
-	UpdateRoleMapping(ctx context.Context, federationSettingsId string, id string, orgId string) UpdateRoleMappingApiRequest
+	UpdateRoleMapping(ctx context.Context, federationSettingsId string, id string, orgId string, roleMapping *RoleMapping) UpdateRoleMappingApiRequest
 	/*
 		UpdateRoleMapping Update One Role Mapping in One Organization
 
@@ -406,12 +406,6 @@ func (a *FederatedAuthenticationApiService) CreateRoleMappingWithParams(ctx cont
 	}
 }
 
-// The role mapping that you want to create.
-func (r CreateRoleMappingApiRequest) RoleMapping(roleMapping *RoleMapping) CreateRoleMappingApiRequest {
-	r.roleMapping = roleMapping
-	return r
-}
-
 func (r CreateRoleMappingApiRequest) Execute() (*RoleMapping, *http.Response, error) {
 	return r.ApiService.createRoleMappingExecute(r)
 }
@@ -421,22 +415,24 @@ CreateRoleMapping Add One Role Mapping to One Organization
 
 Adds one role mapping to the specified organization in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
- @param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
- @return CreateRoleMappingApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return CreateRoleMappingApiRequest
 */
-func (a *FederatedAuthenticationApiService) CreateRoleMapping(ctx context.Context, federationSettingsId string, orgId string) CreateRoleMappingApiRequest {
+func (a *FederatedAuthenticationApiService) CreateRoleMapping(ctx context.Context, federationSettingsId string, orgId string, roleMapping *RoleMapping) CreateRoleMappingApiRequest {
 	return CreateRoleMappingApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
 		federationSettingsId: federationSettingsId,
 		orgId:                orgId,
+		roleMapping:          roleMapping,
 	}
 }
 
 // Execute executes the request
-//  @return RoleMapping
+//
+//	@return RoleMapping
 func (a *FederatedAuthenticationApiService) createRoleMappingExecute(r CreateRoleMappingApiRequest) (*RoleMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -564,9 +560,9 @@ DeleteFederationApp Delete the federation settings instance.
 
 Deletes the federation settings instance and all associated data, including identity providers and domains. To use this resource, the requesting API Key must have the Organization Owner role in the last remaining connected organization. This resource doesn't require the API Key to have an Access List. **Note**: requests to this resource will fail if there is more than one connected organization in the federation.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
- @return DeleteFederationAppApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
+	@return DeleteFederationAppApiRequest
 */
 func (a *FederatedAuthenticationApiService) DeleteFederationApp(ctx context.Context, federationSettingsId string) DeleteFederationAppApiRequest {
 	return DeleteFederationAppApiRequest{
@@ -688,11 +684,11 @@ DeleteRoleMapping Remove One Role Mapping from One Organization
 
 Removes one role mapping in the specified organization from the specified federation. To use this resource, the requesting API Key must have the Organization Owner role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
- @param id Unique 24-hexadecimal digit string that identifies the role mapping that you want to remove.
- @param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
- @return DeleteRoleMappingApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
+	@param id Unique 24-hexadecimal digit string that identifies the role mapping that you want to remove.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return DeleteRoleMappingApiRequest
 */
 func (a *FederatedAuthenticationApiService) DeleteRoleMapping(ctx context.Context, federationSettingsId string, id string, orgId string) DeleteRoleMappingApiRequest {
 	return DeleteRoleMappingApiRequest{
@@ -827,10 +823,10 @@ GetConnectedOrgConfig Return One Org Config Connected to One Federation
 
 Returns the specified connected org config from the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in the connected org. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
- @param orgId Unique 24-hexadecimal digit string that identifies the connected organization configuration to return.
- @return GetConnectedOrgConfigApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
+	@param orgId Unique 24-hexadecimal digit string that identifies the connected organization configuration to return.
+	@return GetConnectedOrgConfigApiRequest
 */
 func (a *FederatedAuthenticationApiService) GetConnectedOrgConfig(ctx context.Context, federationSettingsId string, orgId string) GetConnectedOrgConfigApiRequest {
 	return GetConnectedOrgConfigApiRequest{
@@ -842,7 +838,8 @@ func (a *FederatedAuthenticationApiService) GetConnectedOrgConfig(ctx context.Co
 }
 
 // Execute executes the request
-//  @return ConnectedOrgConfig
+//
+//	@return ConnectedOrgConfig
 func (a *FederatedAuthenticationApiService) getConnectedOrgConfigExecute(r GetConnectedOrgConfigApiRequest) (*ConnectedOrgConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -965,9 +962,9 @@ GetFederationSettings Return Federation Settings for One Organization
 
 Returns information about the federation settings for the specified organization. To use this resource, the requesting API Key must have the Organization Owner role in the connected org. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
- @return GetFederationSettingsApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return GetFederationSettingsApiRequest
 */
 func (a *FederatedAuthenticationApiService) GetFederationSettings(ctx context.Context, orgId string) GetFederationSettingsApiRequest {
 	return GetFederationSettingsApiRequest{
@@ -978,7 +975,8 @@ func (a *FederatedAuthenticationApiService) GetFederationSettings(ctx context.Co
 }
 
 // Execute executes the request
-//  @return OrgFederationSettings
+//
+//	@return OrgFederationSettings
 func (a *FederatedAuthenticationApiService) getFederationSettingsExecute(r GetFederationSettingsApiRequest) (*OrgFederationSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1097,10 +1095,10 @@ GetIdentityProvider Return one identity provider from the specified federation.
 
 Returns one identity provider from the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
- @param identityProviderId Unique 20-hexadecimal digit string that identifies the identity provider.
- @return GetIdentityProviderApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
+	@param identityProviderId Unique 20-hexadecimal digit string that identifies the identity provider.
+	@return GetIdentityProviderApiRequest
 */
 func (a *FederatedAuthenticationApiService) GetIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string) GetIdentityProviderApiRequest {
 	return GetIdentityProviderApiRequest{
@@ -1112,7 +1110,8 @@ func (a *FederatedAuthenticationApiService) GetIdentityProvider(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return IdentityProvider
+//
+//	@return IdentityProvider
 func (a *FederatedAuthenticationApiService) getIdentityProviderExecute(r GetIdentityProviderApiRequest) (*IdentityProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1238,10 +1237,10 @@ GetIdentityProviderMetadata Return the metadata of one identity provider in the 
 
 Returns the metadata of one identity provider in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
- @param identityProviderId Unique 20-hexadecimal digit string that identifies the identity provider.
- @return GetIdentityProviderMetadataApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
+	@param identityProviderId Unique 20-hexadecimal digit string that identifies the identity provider.
+	@return GetIdentityProviderMetadataApiRequest
 */
 func (a *FederatedAuthenticationApiService) GetIdentityProviderMetadata(ctx context.Context, federationSettingsId string, identityProviderId string) GetIdentityProviderMetadataApiRequest {
 	return GetIdentityProviderMetadataApiRequest{
@@ -1253,7 +1252,8 @@ func (a *FederatedAuthenticationApiService) GetIdentityProviderMetadata(ctx cont
 }
 
 // Execute executes the request
-//  @return string
+//
+//	@return string
 func (a *FederatedAuthenticationApiService) getIdentityProviderMetadataExecute(r GetIdentityProviderMetadataApiRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1382,11 +1382,11 @@ GetRoleMapping Return One Role Mapping from One Organization
 
 Returns one role mapping from the specified organization in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
- @param id Unique 24-hexadecimal digit string that identifies the role mapping that you want to return.
- @param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
- @return GetRoleMappingApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
+	@param id Unique 24-hexadecimal digit string that identifies the role mapping that you want to return.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return GetRoleMappingApiRequest
 */
 func (a *FederatedAuthenticationApiService) GetRoleMapping(ctx context.Context, federationSettingsId string, id string, orgId string) GetRoleMappingApiRequest {
 	return GetRoleMappingApiRequest{
@@ -1399,7 +1399,8 @@ func (a *FederatedAuthenticationApiService) GetRoleMapping(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return RoleMapping
+//
+//	@return RoleMapping
 func (a *FederatedAuthenticationApiService) getRoleMappingExecute(r GetRoleMappingApiRequest) (*RoleMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1529,9 +1530,9 @@ ListConnectedOrgConfigs Return All Connected Org Configs from the Federation
 
 Returns all connected org configs in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected orgs. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
- @return ListConnectedOrgConfigsApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
+	@return ListConnectedOrgConfigsApiRequest
 */
 func (a *FederatedAuthenticationApiService) ListConnectedOrgConfigs(ctx context.Context, federationSettingsId string) ListConnectedOrgConfigsApiRequest {
 	return ListConnectedOrgConfigsApiRequest{
@@ -1542,7 +1543,8 @@ func (a *FederatedAuthenticationApiService) ListConnectedOrgConfigs(ctx context.
 }
 
 // Execute executes the request
-//  @return []ConnectedOrgConfig
+//
+//	@return []ConnectedOrgConfig
 func (a *FederatedAuthenticationApiService) listConnectedOrgConfigsExecute(r ListConnectedOrgConfigsApiRequest) ([]ConnectedOrgConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1658,9 +1660,9 @@ ListIdentityProviders Return all identity providers from the specified federatio
 
 Returns all identity providers in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
- @return ListIdentityProvidersApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
+	@return ListIdentityProvidersApiRequest
 */
 func (a *FederatedAuthenticationApiService) ListIdentityProviders(ctx context.Context, federationSettingsId string) ListIdentityProvidersApiRequest {
 	return ListIdentityProvidersApiRequest{
@@ -1671,7 +1673,8 @@ func (a *FederatedAuthenticationApiService) ListIdentityProviders(ctx context.Co
 }
 
 // Execute executes the request
-//  @return []IdentityProvider
+//
+//	@return []IdentityProvider
 func (a *FederatedAuthenticationApiService) listIdentityProvidersExecute(r ListIdentityProvidersApiRequest) ([]IdentityProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1790,10 +1793,10 @@ ListRoleMappings Return All Role Mappings from One Organization
 
 Returns all role mappings from the specified organization in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
- @param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
- @return ListRoleMappingsApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return ListRoleMappingsApiRequest
 */
 func (a *FederatedAuthenticationApiService) ListRoleMappings(ctx context.Context, federationSettingsId string, orgId string) ListRoleMappingsApiRequest {
 	return ListRoleMappingsApiRequest{
@@ -1805,7 +1808,8 @@ func (a *FederatedAuthenticationApiService) ListRoleMappings(ctx context.Context
 }
 
 // Execute executes the request
-//  @return []RoleMapping
+//
+//	@return []RoleMapping
 func (a *FederatedAuthenticationApiService) listRoleMappingsExecute(r ListRoleMappingsApiRequest) ([]RoleMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1931,10 +1935,10 @@ RemoveConnectedOrgConfig Remove One Org Config Connected to One Federation
 
 Removes one connected organization configuration from the specified federation. To use this resource, the requesting API Key must have the Organization Owner role. This resource doesn't require the API Key to have an Access List. Note: This request fails if only one connected organization exists in the federation.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
- @param orgId Unique 24-hexadecimal digit string that identifies the connected organization configuration to remove.
- @return RemoveConnectedOrgConfigApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
+	@param orgId Unique 24-hexadecimal digit string that identifies the connected organization configuration to remove.
+	@return RemoveConnectedOrgConfigApiRequest
 */
 func (a *FederatedAuthenticationApiService) RemoveConnectedOrgConfig(ctx context.Context, federationSettingsId string, orgId string) RemoveConnectedOrgConfigApiRequest {
 	return RemoveConnectedOrgConfigApiRequest{
@@ -1946,7 +1950,8 @@ func (a *FederatedAuthenticationApiService) RemoveConnectedOrgConfig(ctx context
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *FederatedAuthenticationApiService) removeConnectedOrgConfigExecute(r RemoveConnectedOrgConfigApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
@@ -2066,12 +2071,6 @@ func (a *FederatedAuthenticationApiService) UpdateConnectedOrgConfigWithParams(c
 	}
 }
 
-// The connected organization configuration that you want to update.
-func (r UpdateConnectedOrgConfigApiRequest) ConnectedOrgConfig(connectedOrgConfig *ConnectedOrgConfig) UpdateConnectedOrgConfigApiRequest {
-	r.connectedOrgConfig = connectedOrgConfig
-	return r
-}
-
 func (r UpdateConnectedOrgConfigApiRequest) Execute() (*ConnectedOrgConfig, *http.Response, error) {
 	return r.ApiService.updateConnectedOrgConfigExecute(r)
 }
@@ -2087,22 +2086,24 @@ Updates one connected organization configuration from the specified federation. 
 
 **Note**: If the identityProviderId field is not provided, you will disconnect the organization and the identity provider.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
- @param orgId Unique 24-hexadecimal digit string that identifies the connected organization configuration to update.
- @return UpdateConnectedOrgConfigApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
+	@param orgId Unique 24-hexadecimal digit string that identifies the connected organization configuration to update.
+	@return UpdateConnectedOrgConfigApiRequest
 */
-func (a *FederatedAuthenticationApiService) UpdateConnectedOrgConfig(ctx context.Context, federationSettingsId string, orgId string) UpdateConnectedOrgConfigApiRequest {
+func (a *FederatedAuthenticationApiService) UpdateConnectedOrgConfig(ctx context.Context, federationSettingsId string, orgId string, connectedOrgConfig *ConnectedOrgConfig) UpdateConnectedOrgConfigApiRequest {
 	return UpdateConnectedOrgConfigApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
 		federationSettingsId: federationSettingsId,
 		orgId:                orgId,
+		connectedOrgConfig:   connectedOrgConfig,
 	}
 }
 
 // Execute executes the request
-//  @return ConnectedOrgConfig
+//
+//	@return ConnectedOrgConfig
 func (a *FederatedAuthenticationApiService) updateConnectedOrgConfigExecute(r UpdateConnectedOrgConfigApiRequest) (*ConnectedOrgConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -2227,12 +2228,6 @@ func (a *FederatedAuthenticationApiService) UpdateIdentityProviderWithParams(ctx
 	}
 }
 
-// The identity provider that you want to update.
-func (r UpdateIdentityProviderApiRequest) SamlIdentityProviderUpdate(samlIdentityProviderUpdate *SamlIdentityProviderUpdate) UpdateIdentityProviderApiRequest {
-	r.samlIdentityProviderUpdate = samlIdentityProviderUpdate
-	return r
-}
-
 func (r UpdateIdentityProviderApiRequest) Execute() (*IdentityProvider, *http.Response, error) {
 	return r.ApiService.updateIdentityProviderExecute(r)
 }
@@ -2242,22 +2237,24 @@ UpdateIdentityProvider Update the identity provider.
 
 Updates one identity provider in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
- @param identityProviderId Unique 20-hexadecimal digit string that identifies the identity provider.
- @return UpdateIdentityProviderApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
+	@param identityProviderId Unique 20-hexadecimal digit string that identifies the identity provider.
+	@return UpdateIdentityProviderApiRequest
 */
-func (a *FederatedAuthenticationApiService) UpdateIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string) UpdateIdentityProviderApiRequest {
+func (a *FederatedAuthenticationApiService) UpdateIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string, samlIdentityProviderUpdate *SamlIdentityProviderUpdate) UpdateIdentityProviderApiRequest {
 	return UpdateIdentityProviderApiRequest{
-		ApiService:           a,
-		ctx:                  ctx,
-		federationSettingsId: federationSettingsId,
-		identityProviderId:   identityProviderId,
+		ApiService:                 a,
+		ctx:                        ctx,
+		federationSettingsId:       federationSettingsId,
+		identityProviderId:         identityProviderId,
+		samlIdentityProviderUpdate: samlIdentityProviderUpdate,
 	}
 }
 
 // Execute executes the request
-//  @return IdentityProvider
+//
+//	@return IdentityProvider
 func (a *FederatedAuthenticationApiService) updateIdentityProviderExecute(r UpdateIdentityProviderApiRequest) (*IdentityProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -2385,12 +2382,6 @@ func (a *FederatedAuthenticationApiService) UpdateRoleMappingWithParams(ctx cont
 	}
 }
 
-// The role mapping that you want to update.
-func (r UpdateRoleMappingApiRequest) RoleMapping(roleMapping *RoleMapping) UpdateRoleMappingApiRequest {
-	r.roleMapping = roleMapping
-	return r
-}
-
 func (r UpdateRoleMappingApiRequest) Execute() (*RoleMapping, *http.Response, error) {
 	return r.ApiService.updateRoleMappingExecute(r)
 }
@@ -2400,24 +2391,26 @@ UpdateRoleMapping Update One Role Mapping in One Organization
 
 Updates one role mapping in the specified organization in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
- @param id Unique 24-hexadecimal digit string that identifies the role mapping that you want to update.
- @param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
- @return UpdateRoleMappingApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
+	@param id Unique 24-hexadecimal digit string that identifies the role mapping that you want to update.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return UpdateRoleMappingApiRequest
 */
-func (a *FederatedAuthenticationApiService) UpdateRoleMapping(ctx context.Context, federationSettingsId string, id string, orgId string) UpdateRoleMappingApiRequest {
+func (a *FederatedAuthenticationApiService) UpdateRoleMapping(ctx context.Context, federationSettingsId string, id string, orgId string, roleMapping *RoleMapping) UpdateRoleMappingApiRequest {
 	return UpdateRoleMappingApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
 		federationSettingsId: federationSettingsId,
 		id:                   id,
 		orgId:                orgId,
+		roleMapping:          roleMapping,
 	}
 }
 
 // Execute executes the request
-//  @return RoleMapping
+//
+//	@return RoleMapping
 func (a *FederatedAuthenticationApiService) updateRoleMappingExecute(r UpdateRoleMappingApiRequest) (*RoleMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
