@@ -32,7 +32,7 @@ var (
 	queryDescape    = strings.NewReplacer("%5B", "[", "%5D", "]")
 )
 
-// APIClient manages communication with the MongoDB Atlas Administration API API v2.0~7a59ec7cbb
+// APIClient manages communication with the MongoDB Atlas Administration API API v2.0~c78855213c
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration
@@ -575,12 +575,8 @@ func (c *APIClient) decode(v interface{}, b []byte, contentType string) (err err
 		return nil
 	}
 	if jsonCheck.MatchString(contentType) {
-		if actualObj, ok := v.(interface {
-			GetActualInstance() interface{}
-		}); ok { // oneOf, anyOf schemas
-			if unmarshalObj, ok := actualObj.(interface {
-				UnmarshalJSON([]byte) error
-			}); ok { // make sure it has UnmarshalJSON defined
+		if actualObj, ok := v.(interface{ GetActualInstance() interface{} }); ok { // oneOf, anyOf schemas
+			if unmarshalObj, ok := actualObj.(interface{ UnmarshalJSON([]byte) error }); ok { // make sure it has UnmarshalJSON defined
 				if err = unmarshalObj.UnmarshalJSON(b); err != nil {
 					return err
 				}

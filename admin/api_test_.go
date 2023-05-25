@@ -70,8 +70,8 @@ VersionedExample Example resource info for versioning of the Atlas API
 
 Returns some text dummy data for test purposes. Deprecated versions: v2-{2023-01-01}
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return VersionedExampleApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return VersionedExampleApiRequest
 */
 func (a *TestApiService) VersionedExample(ctx context.Context) VersionedExampleApiRequest {
 	return VersionedExampleApiRequest{
@@ -81,7 +81,8 @@ func (a *TestApiService) VersionedExample(ctx context.Context) VersionedExampleA
 }
 
 // Execute executes the request
-//  @return ExampleResourceResponseView20230201
+//
+//	@return ExampleResourceResponseView20230201
 func (a *TestApiService) versionedExampleExecute(r VersionedExampleApiRequest) (*ExampleResourceResponseView20230201, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

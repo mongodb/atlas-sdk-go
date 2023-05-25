@@ -259,10 +259,10 @@ GetClusterAdvancedConfiguration Return One Advanced Configuration Options for On
 
 Returns the advanced configuration details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. Advanced configuration details include the read/write concern, index and oplog limits, and other database settings. This feature isn't available for `M0` free clusters, `M2` and `M5` shared-tier clusters, or serverless clusters. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param clusterName Human-readable label that identifies the cluster.
- @return GetClusterAdvancedConfigurationApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies the cluster.
+	@return GetClusterAdvancedConfigurationApiRequest
 */
 func (a *ClustersApiService) GetClusterAdvancedConfiguration(ctx context.Context, groupId string, clusterName string) GetClusterAdvancedConfigurationApiRequest {
 	return GetClusterAdvancedConfigurationApiRequest{
@@ -274,7 +274,8 @@ func (a *ClustersApiService) GetClusterAdvancedConfiguration(ctx context.Context
 }
 
 // Execute executes the request
-//  @return ClusterDescriptionProcessArgs
+//
+//	@return ClusterDescriptionProcessArgs
 func (a *ClustersApiService) getClusterAdvancedConfigurationExecute(r GetClusterAdvancedConfigurationApiRequest) (*ClusterDescriptionProcessArgs, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -400,10 +401,10 @@ GetClusterStatus Return Status of All Cluster Operations
 
 Returns the status of all changes that you made to the specified cluster in the specified project. Use this resource to check the progress MongoDB Cloud has made in processing your changes. The response does not include the deployment of new dedicated clusters. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param clusterName Human-readable label that identifies the cluster.
- @return GetClusterStatusApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies the cluster.
+	@return GetClusterStatusApiRequest
 */
 func (a *ClustersApiService) GetClusterStatus(ctx context.Context, groupId string, clusterName string) GetClusterStatusApiRequest {
 	return GetClusterStatusApiRequest{
@@ -415,7 +416,8 @@ func (a *ClustersApiService) GetClusterStatus(ctx context.Context, groupId strin
 }
 
 // Execute executes the request
-//  @return ClusterStatus
+//
+//	@return ClusterStatus
 func (a *ClustersApiService) getClusterStatusExecute(r GetClusterStatusApiRequest) (*ClusterStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -541,10 +543,10 @@ GetSampleDatasetLoadStatus Check Status of Cluster Sample Dataset Request
 
 Checks the progress of loading the sample dataset into one cluster. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param sampleDatasetId Unique 24-hexadecimal digit string that identifies the loaded sample dataset.
- @return GetSampleDatasetLoadStatusApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param sampleDatasetId Unique 24-hexadecimal digit string that identifies the loaded sample dataset.
+	@return GetSampleDatasetLoadStatusApiRequest
 */
 func (a *ClustersApiService) GetSampleDatasetLoadStatus(ctx context.Context, groupId string, sampleDatasetId string) GetSampleDatasetLoadStatusApiRequest {
 	return GetSampleDatasetLoadStatusApiRequest{
@@ -556,7 +558,8 @@ func (a *ClustersApiService) GetSampleDatasetLoadStatus(ctx context.Context, gro
 }
 
 // Execute executes the request
-//  @return SampleDatasetStatus
+//
+//	@return SampleDatasetStatus
 func (a *ClustersApiService) getSampleDatasetLoadStatusExecute(r GetSampleDatasetLoadStatusApiRequest) (*SampleDatasetStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -724,9 +727,9 @@ ListCloudProviderRegions Return All Cloud Provider Regions
 
 Returns the list of regions available for the specified cloud provider at the specified tier. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @return ListCloudProviderRegionsApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return ListCloudProviderRegionsApiRequest
 */
 func (a *ClustersApiService) ListCloudProviderRegions(ctx context.Context, groupId string) ListCloudProviderRegionsApiRequest {
 	return ListCloudProviderRegionsApiRequest{
@@ -737,7 +740,8 @@ func (a *ClustersApiService) ListCloudProviderRegions(ctx context.Context, group
 }
 
 // Execute executes the request
-//  @return PaginatedApiAtlasProviderRegions
+//
+//	@return PaginatedApiAtlasProviderRegions
 func (a *ClustersApiService) listCloudProviderRegionsExecute(r ListCloudProviderRegionsApiRequest) (*PaginatedApiAtlasProviderRegions, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -908,8 +912,8 @@ ListClustersForAllProjects Return All Authorized Clusters in All Projects
 
 Returns the details for all clusters in all projects to which you have access. Clusters contain a group of hosts that maintain the same data set. The response does not include multi-cloud clusters. To use this resource, the requesting API Key can have any cluster-level role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ListClustersForAllProjectsApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ListClustersForAllProjectsApiRequest
 */
 func (a *ClustersApiService) ListClustersForAllProjects(ctx context.Context) ListClustersForAllProjectsApiRequest {
 	return ListClustersForAllProjectsApiRequest{
@@ -919,7 +923,8 @@ func (a *ClustersApiService) ListClustersForAllProjects(ctx context.Context) Lis
 }
 
 // Execute executes the request
-//  @return PaginatedOrgGroup
+//
+//	@return PaginatedOrgGroup
 func (a *ClustersApiService) listClustersForAllProjectsExecute(r ListClustersForAllProjectsApiRequest) (*PaginatedOrgGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1052,10 +1057,10 @@ LoadSampleDataset Load Sample Dataset Request into Cluster
 
 Requests loading the MongoDB sample dataset into the specified cluster. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param name Human-readable label that identifies the cluster into which you load the sample dataset.
- @return LoadSampleDatasetApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param name Human-readable label that identifies the cluster into which you load the sample dataset.
+	@return LoadSampleDatasetApiRequest
 */
 func (a *ClustersApiService) LoadSampleDataset(ctx context.Context, groupId string, name string) LoadSampleDatasetApiRequest {
 	return LoadSampleDatasetApiRequest{
@@ -1067,7 +1072,8 @@ func (a *ClustersApiService) LoadSampleDataset(ctx context.Context, groupId stri
 }
 
 // Execute executes the request
-//  @return SampleDatasetStatus
+//
+//	@return SampleDatasetStatus
 func (a *ClustersApiService) loadSampleDatasetExecute(r LoadSampleDatasetApiRequest) (*SampleDatasetStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -1202,10 +1208,10 @@ UpdateClusterAdvancedConfiguration Update Advanced Configuration Options for One
 
 Updates the advanced configuration details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. Advanced configuration details include the read/write concern, index and oplog limits, and other database settings. To use this resource, the requesting API Key must have the Project Cluster Manager role. This resource doesn't require the API Key to have an Access List. This feature isn't available for `M0` free clusters, `M2` and `M5` shared-tier clusters, or serverless clusters.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param clusterName Human-readable label that identifies the cluster.
- @return UpdateClusterAdvancedConfigurationApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies the cluster.
+	@return UpdateClusterAdvancedConfigurationApiRequest
 */
 func (a *ClustersApiService) UpdateClusterAdvancedConfiguration(ctx context.Context, groupId string, clusterName string) UpdateClusterAdvancedConfigurationApiRequest {
 	return UpdateClusterAdvancedConfigurationApiRequest{
@@ -1217,7 +1223,8 @@ func (a *ClustersApiService) UpdateClusterAdvancedConfiguration(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return ClusterDescriptionProcessArgs
+//
+//	@return ClusterDescriptionProcessArgs
 func (a *ClustersApiService) updateClusterAdvancedConfigurationExecute(r UpdateClusterAdvancedConfigurationApiRequest) (*ClusterDescriptionProcessArgs, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -1354,9 +1361,9 @@ UpgradeSharedCluster Upgrade One Shared-tier Cluster
 
 Upgrades a shared-tier cluster in the specified project. To use this resource, the requesting API key must have the Project Cluster Manager role. This resource doesn't require the API key to have an Access List. Each project supports up to 25 clusters.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @return UpgradeSharedClusterApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return UpgradeSharedClusterApiRequest
 */
 func (a *ClustersApiService) UpgradeSharedCluster(ctx context.Context, groupId string) UpgradeSharedClusterApiRequest {
 	return UpgradeSharedClusterApiRequest{
@@ -1367,7 +1374,8 @@ func (a *ClustersApiService) UpgradeSharedCluster(ctx context.Context, groupId s
 }
 
 // Execute executes the request
-//  @return LegacyClusterDescription
+//
+//	@return LegacyClusterDescription
 func (a *ClustersApiService) upgradeSharedClusterExecute(r UpgradeSharedClusterApiRequest) (*LegacyClusterDescription, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -1475,9 +1483,9 @@ type UpgradeSharedClusterToServerlessApiParams struct {
 
 func (a *ClustersApiService) UpgradeSharedClusterToServerlessWithParams(ctx context.Context, args *UpgradeSharedClusterToServerlessApiParams) UpgradeSharedClusterToServerlessApiRequest {
 	return UpgradeSharedClusterToServerlessApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		groupId:    args.GroupId,
+		ApiService:                    a,
+		ctx:                           ctx,
+		groupId:                       args.GroupId,
 		serverlessInstanceDescription: args.ServerlessInstanceDescription,
 	}
 }
@@ -1497,9 +1505,9 @@ UpgradeSharedClusterToServerless Upgrades One Shared-Tier Cluster to the Serverl
 
 Upgrades a shared-tier cluster to a serverless instance in the specified project. To use this resource, the requesting API key must have the Project Cluster Manager role. This resource doesn't require the API key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @return UpgradeSharedClusterToServerlessApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return UpgradeSharedClusterToServerlessApiRequest
 */
 func (a *ClustersApiService) UpgradeSharedClusterToServerless(ctx context.Context, groupId string) UpgradeSharedClusterToServerlessApiRequest {
 	return UpgradeSharedClusterToServerlessApiRequest{
@@ -1510,7 +1518,8 @@ func (a *ClustersApiService) UpgradeSharedClusterToServerless(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return ServerlessInstanceDescription
+//
+//	@return ServerlessInstanceDescription
 func (a *ClustersApiService) upgradeSharedClusterToServerlessExecute(r UpgradeSharedClusterToServerlessApiRequest) (*ServerlessInstanceDescription, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost

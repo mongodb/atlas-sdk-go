@@ -278,6 +278,30 @@ type OrganizationsApi interface {
 	listOrganizationsExecute(r ListOrganizationsApiRequest) (*PaginatedOrganization, *http.Response, error)
 
 	/*
+		RemoveOrganizationUser Remove One MongoDB Cloud User from One Organization
+
+		Removes one MongoDB Cloud user from the specified organization. To use this resource, the requesting API Key must have the Organization User Admin role. This resource doesn't require the API Key to have an Access List.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param userId Unique 24-hexadecimal digit string that identifies the user to be deleted.
+		@return RemoveOrganizationUserApiRequest
+	*/
+	RemoveOrganizationUser(ctx context.Context, orgId string, userId string) RemoveOrganizationUserApiRequest
+	/*
+		RemoveOrganizationUser Remove One MongoDB Cloud User from One Organization
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param RemoveOrganizationUserApiParams - Parameters for the request
+		@return RemoveOrganizationUserApiRequest
+	*/
+	RemoveOrganizationUserWithParams(ctx context.Context, args *RemoveOrganizationUserApiParams) RemoveOrganizationUserApiRequest
+
+	// Interface only available internally
+	removeOrganizationUserExecute(r RemoveOrganizationUserApiRequest) (map[string]interface{}, *http.Response, error)
+
+	/*
 		RenameOrganization Rename One Organization
 
 		Renames one organization. To use this resource, the requesting API Key must have the Organization Owner role. This resource doesn't require the API Key to have an Access List.
@@ -386,8 +410,8 @@ type CreateOrganizationApiParams struct {
 
 func (a *OrganizationsApiService) CreateOrganizationWithParams(ctx context.Context, args *CreateOrganizationApiParams) CreateOrganizationApiRequest {
 	return CreateOrganizationApiRequest{
-		ApiService: a,
-		ctx:        ctx,
+		ApiService:                a,
+		ctx:                       ctx,
 		createOrganizationRequest: args.CreateOrganizationRequest,
 	}
 }
@@ -407,8 +431,8 @@ CreateOrganization Create One Organization
 
 Creates one organization in MongoDB Cloud and links it to the requesting API Key's organization. To use this resource, the requesting API Key must have the Organization Owner role. The requesting API Key's organization must be a paying organization. To learn more, see [Configure a Paying Organization](https://www.mongodb.com/docs/atlas/billing/#configure-a-paying-organization) in the MongoDB Atlas documentation. This resource doesn't require the API Key to have an API Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return CreateOrganizationApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return CreateOrganizationApiRequest
 */
 func (a *OrganizationsApiService) CreateOrganization(ctx context.Context) CreateOrganizationApiRequest {
 	return CreateOrganizationApiRequest{
@@ -418,7 +442,8 @@ func (a *OrganizationsApiService) CreateOrganization(ctx context.Context) Create
 }
 
 // Execute executes the request
-//  @return CreateOrganizationResponse
+//
+//	@return CreateOrganizationResponse
 func (a *OrganizationsApiService) createOrganizationExecute(r CreateOrganizationApiRequest) (*CreateOrganizationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -519,9 +544,9 @@ type CreateOrganizationInvitationApiParams struct {
 
 func (a *OrganizationsApiService) CreateOrganizationInvitationWithParams(ctx context.Context, args *CreateOrganizationInvitationApiParams) CreateOrganizationInvitationApiRequest {
 	return CreateOrganizationInvitationApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		orgId:      args.OrgId,
+		ApiService:                    a,
+		ctx:                           ctx,
+		orgId:                         args.OrgId,
 		organizationInvitationRequest: args.OrganizationInvitationRequest,
 	}
 }
@@ -541,9 +566,9 @@ CreateOrganizationInvitation Invite One MongoDB Cloud User to Join One Atlas Org
 
 Invites one MongoDB Cloud user to join the specified organization. The user must accept the invitation to access information within the specified organization. To use this resource, the requesting API Key must have the Organization User Admin role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
- @return CreateOrganizationInvitationApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return CreateOrganizationInvitationApiRequest
 */
 func (a *OrganizationsApiService) CreateOrganizationInvitation(ctx context.Context, orgId string) CreateOrganizationInvitationApiRequest {
 	return CreateOrganizationInvitationApiRequest{
@@ -554,7 +579,8 @@ func (a *OrganizationsApiService) CreateOrganizationInvitation(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return OrganizationInvitation
+//
+//	@return OrganizationInvitation
 func (a *OrganizationsApiService) createOrganizationInvitationExecute(r CreateOrganizationInvitationApiRequest) (*OrganizationInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -675,13 +701,14 @@ DeleteOrganization Remove One Organization
 
 Removes one specified organization. MongoDB Cloud imposes the following limits on this resource:
 
- - Organizations with active projects cannot be removed.
- - All projects in the organization must be removed before you can remove the organization.
- To use this resource, the requesting API Key must have the Organization Owner role. This resource doesn't require the API Key to have an Access List.
+  - Organizations with active projects cannot be removed.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
- @return DeleteOrganizationApiRequest
+  - All projects in the organization must be removed before you can remove the organization.
+    To use this resource, the requesting API Key must have the Organization Owner role. This resource doesn't require the API Key to have an Access List.
+
+    @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+    @param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+    @return DeleteOrganizationApiRequest
 */
 func (a *OrganizationsApiService) DeleteOrganization(ctx context.Context, orgId string) DeleteOrganizationApiRequest {
 	return DeleteOrganizationApiRequest{
@@ -692,7 +719,8 @@ func (a *OrganizationsApiService) DeleteOrganization(ctx context.Context, orgId 
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *OrganizationsApiService) deleteOrganizationExecute(r DeleteOrganizationApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
@@ -811,10 +839,10 @@ DeleteOrganizationInvitation Cancel One Organization Invitation
 
 Cancels one pending invitation sent to the specified MongoDB Cloud user to join an organization. You can't cancel an invitation that the user accepted. To use this resource, the requesting API Key must have the Organization User Admin role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
- @param invitationId Unique 24-hexadecimal digit string that identifies the invitation.
- @return DeleteOrganizationInvitationApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param invitationId Unique 24-hexadecimal digit string that identifies the invitation.
+	@return DeleteOrganizationInvitationApiRequest
 */
 func (a *OrganizationsApiService) DeleteOrganizationInvitation(ctx context.Context, orgId string, invitationId string) DeleteOrganizationInvitationApiRequest {
 	return DeleteOrganizationInvitationApiRequest{
@@ -826,7 +854,8 @@ func (a *OrganizationsApiService) DeleteOrganizationInvitation(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *OrganizationsApiService) deleteOrganizationInvitationExecute(r DeleteOrganizationInvitationApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
@@ -943,9 +972,9 @@ GetOrganization Return One Organization
 
 Returns one organization to which the requesting API key has access. To use this resource, the requesting API Key must have the Organization Member role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
- @return GetOrganizationApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return GetOrganizationApiRequest
 */
 func (a *OrganizationsApiService) GetOrganization(ctx context.Context, orgId string) GetOrganizationApiRequest {
 	return GetOrganizationApiRequest{
@@ -956,7 +985,8 @@ func (a *OrganizationsApiService) GetOrganization(ctx context.Context, orgId str
 }
 
 // Execute executes the request
-//  @return Organization
+//
+//	@return Organization
 func (a *OrganizationsApiService) getOrganizationExecute(r GetOrganizationApiRequest) (*Organization, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1075,10 +1105,10 @@ GetOrganizationInvitation Return One Organization Invitation
 
 Returns the details of one pending invitation to the specified organization. To use this resource, the requesting API Key must have the Organization User Admin role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
- @param invitationId Unique 24-hexadecimal digit string that identifies the invitation.
- @return GetOrganizationInvitationApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param invitationId Unique 24-hexadecimal digit string that identifies the invitation.
+	@return GetOrganizationInvitationApiRequest
 */
 func (a *OrganizationsApiService) GetOrganizationInvitation(ctx context.Context, orgId string, invitationId string) GetOrganizationInvitationApiRequest {
 	return GetOrganizationInvitationApiRequest{
@@ -1090,7 +1120,8 @@ func (a *OrganizationsApiService) GetOrganizationInvitation(ctx context.Context,
 }
 
 // Execute executes the request
-//  @return OrganizationInvitation
+//
+//	@return OrganizationInvitation
 func (a *OrganizationsApiService) getOrganizationInvitationExecute(r GetOrganizationInvitationApiRequest) (*OrganizationInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1213,9 +1244,9 @@ GetOrganizationSettings Return Settings for One Organization
 
 Returns details about the specified organization's settings. To use this resource, the requesting API Key must have the Organization Owner role. This resource does not require the API Key to have an API access list.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
- @return GetOrganizationSettingsApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return GetOrganizationSettingsApiRequest
 */
 func (a *OrganizationsApiService) GetOrganizationSettings(ctx context.Context, orgId string) GetOrganizationSettingsApiRequest {
 	return GetOrganizationSettingsApiRequest{
@@ -1226,7 +1257,8 @@ func (a *OrganizationsApiService) GetOrganizationSettings(ctx context.Context, o
 }
 
 // Execute executes the request
-//  @return OrganizationSettings
+//
+//	@return OrganizationSettings
 func (a *OrganizationsApiService) getOrganizationSettingsExecute(r GetOrganizationSettingsApiRequest) (*OrganizationSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1351,9 +1383,9 @@ ListOrganizationInvitations Return All Organization Invitations
 
 Returns all pending invitations to the specified organization. To use this resource, the requesting API Key must have the Organization User Admin role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
- @return ListOrganizationInvitationsApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return ListOrganizationInvitationsApiRequest
 */
 func (a *OrganizationsApiService) ListOrganizationInvitations(ctx context.Context, orgId string) ListOrganizationInvitationsApiRequest {
 	return ListOrganizationInvitationsApiRequest{
@@ -1364,7 +1396,8 @@ func (a *OrganizationsApiService) ListOrganizationInvitations(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return []OrganizationInvitation
+//
+//	@return []OrganizationInvitation
 func (a *OrganizationsApiService) listOrganizationInvitationsExecute(r ListOrganizationInvitationsApiRequest) ([]OrganizationInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1526,9 +1559,9 @@ Returns multiple projects in the specified organization. Each organization can h
 
 To use this resource, the requesting API Key must have the Organization Member role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
- @return ListOrganizationProjectsApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return ListOrganizationProjectsApiRequest
 */
 func (a *OrganizationsApiService) ListOrganizationProjects(ctx context.Context, orgId string) ListOrganizationProjectsApiRequest {
 	return ListOrganizationProjectsApiRequest{
@@ -1539,7 +1572,8 @@ func (a *OrganizationsApiService) ListOrganizationProjects(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return PaginatedAtlasGroup
+//
+//	@return PaginatedAtlasGroup
 func (a *OrganizationsApiService) listOrganizationProjectsExecute(r ListOrganizationProjectsApiRequest) (*PaginatedAtlasGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1706,9 +1740,9 @@ ListOrganizationUsers Return All MongoDB Cloud Users in One Organization
 
 Returns details about the MongoDB Cloud users associated with the specified organization. Each MongoDB Cloud user returned must belong to the specified organization or to a project within the specified organization. To use this resource, the requesting API Key must have the Organization Member role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
- @return ListOrganizationUsersApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return ListOrganizationUsersApiRequest
 */
 func (a *OrganizationsApiService) ListOrganizationUsers(ctx context.Context, orgId string) ListOrganizationUsersApiRequest {
 	return ListOrganizationUsersApiRequest{
@@ -1719,7 +1753,8 @@ func (a *OrganizationsApiService) ListOrganizationUsers(ctx context.Context, org
 }
 
 // Execute executes the request
-//  @return PaginatedAppUser
+//
+//	@return PaginatedAppUser
 func (a *OrganizationsApiService) listOrganizationUsersExecute(r ListOrganizationUsersApiRequest) (*PaginatedAppUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1889,8 +1924,8 @@ ListOrganizations Return All Organizations
 
 Returns all organizations to which you belong. To use this resource, the requesting API Key must have the Organization Member role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ListOrganizationsApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ListOrganizationsApiRequest
 */
 func (a *OrganizationsApiService) ListOrganizations(ctx context.Context) ListOrganizationsApiRequest {
 	return ListOrganizationsApiRequest{
@@ -1900,7 +1935,8 @@ func (a *OrganizationsApiService) ListOrganizations(ctx context.Context) ListOrg
 }
 
 // Execute executes the request
-//  @return PaginatedOrganization
+//
+//	@return PaginatedOrganization
 func (a *OrganizationsApiService) listOrganizationsExecute(r ListOrganizationsApiRequest) (*PaginatedOrganization, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2006,6 +2042,148 @@ func (a *OrganizationsApiService) listOrganizationsExecute(r ListOrganizationsAp
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type RemoveOrganizationUserApiRequest struct {
+	ctx        context.Context
+	ApiService OrganizationsApi
+	orgId      string
+	userId     string
+}
+
+type RemoveOrganizationUserApiParams struct {
+	OrgId  string
+	UserId string
+}
+
+func (a *OrganizationsApiService) RemoveOrganizationUserWithParams(ctx context.Context, args *RemoveOrganizationUserApiParams) RemoveOrganizationUserApiRequest {
+	return RemoveOrganizationUserApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		orgId:      args.OrgId,
+		userId:     args.UserId,
+	}
+}
+
+func (r RemoveOrganizationUserApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.removeOrganizationUserExecute(r)
+}
+
+/*
+RemoveOrganizationUser Remove One MongoDB Cloud User from One Organization
+
+Removes one MongoDB Cloud user from the specified organization. To use this resource, the requesting API Key must have the Organization User Admin role. This resource doesn't require the API Key to have an Access List.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param userId Unique 24-hexadecimal digit string that identifies the user to be deleted.
+	@return RemoveOrganizationUserApiRequest
+*/
+func (a *OrganizationsApiService) RemoveOrganizationUser(ctx context.Context, orgId string, userId string) RemoveOrganizationUserApiRequest {
+	return RemoveOrganizationUserApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		orgId:      orgId,
+		userId:     userId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return map[string]interface{}
+func (a *OrganizationsApiService) removeOrganizationUserExecute(r RemoveOrganizationUserApiRequest) (map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodDelete
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.RemoveOrganizationUser")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/users/{userId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(parameterValueToString(r.userId, "userId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if strlen(r.orgId) < 24 {
+		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
+	}
+	if strlen(r.orgId) > 24 {
+		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
+	}
+	if strlen(r.userId) < 24 {
+		return localVarReturnValue, nil, reportError("userId must have at least 24 elements")
+	}
+	if strlen(r.userId) > 24 {
+		return localVarReturnValue, nil, reportError("userId must have less than 24 elements")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		var v Error
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
+		newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type RenameOrganizationApiRequest struct {
 	ctx          context.Context
 	ApiService   OrganizationsApi
@@ -2042,9 +2220,9 @@ RenameOrganization Rename One Organization
 
 Renames one organization. To use this resource, the requesting API Key must have the Organization Owner role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
- @return RenameOrganizationApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return RenameOrganizationApiRequest
 */
 func (a *OrganizationsApiService) RenameOrganization(ctx context.Context, orgId string) RenameOrganizationApiRequest {
 	return RenameOrganizationApiRequest{
@@ -2055,7 +2233,8 @@ func (a *OrganizationsApiService) RenameOrganization(ctx context.Context, orgId 
 }
 
 // Execute executes the request
-//  @return Organization
+//
+//	@return Organization
 func (a *OrganizationsApiService) renameOrganizationExecute(r RenameOrganizationApiRequest) (*Organization, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -2163,9 +2342,9 @@ type UpdateOrganizationInvitationApiParams struct {
 
 func (a *OrganizationsApiService) UpdateOrganizationInvitationWithParams(ctx context.Context, args *UpdateOrganizationInvitationApiParams) UpdateOrganizationInvitationApiRequest {
 	return UpdateOrganizationInvitationApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		orgId:      args.OrgId,
+		ApiService:                    a,
+		ctx:                           ctx,
+		orgId:                         args.OrgId,
 		organizationInvitationRequest: args.OrganizationInvitationRequest,
 	}
 }
@@ -2185,9 +2364,9 @@ UpdateOrganizationInvitation Update One Organization Invitation
 
 Updates the details of one pending invitation to the specified organization. To specify which invitation, provide the username of the invited user. To use this resource, the requesting API Key must have the Organization User Admin role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
- @return UpdateOrganizationInvitationApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return UpdateOrganizationInvitationApiRequest
 */
 func (a *OrganizationsApiService) UpdateOrganizationInvitation(ctx context.Context, orgId string) UpdateOrganizationInvitationApiRequest {
 	return UpdateOrganizationInvitationApiRequest{
@@ -2198,7 +2377,8 @@ func (a *OrganizationsApiService) UpdateOrganizationInvitation(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return OrganizationInvitation
+//
+//	@return OrganizationInvitation
 func (a *OrganizationsApiService) updateOrganizationInvitationExecute(r UpdateOrganizationInvitationApiRequest) (*OrganizationInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -2331,10 +2511,10 @@ UpdateOrganizationInvitationById Update One Organization Invitation by Invitatio
 
 Updates the details of one pending invitation to the specified organization. To specify which invitation, provide the unique identification string for that invitation. Use the Return All Organization Invitations endpoint to retrieve IDs for all pending organization invitations. To use this resource, the requesting API Key must have the Organization Owner role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
- @param invitationId Unique 24-hexadecimal digit string that identifies the invitation.
- @return UpdateOrganizationInvitationByIdApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param invitationId Unique 24-hexadecimal digit string that identifies the invitation.
+	@return UpdateOrganizationInvitationByIdApiRequest
 */
 func (a *OrganizationsApiService) UpdateOrganizationInvitationById(ctx context.Context, orgId string, invitationId string) UpdateOrganizationInvitationByIdApiRequest {
 	return UpdateOrganizationInvitationByIdApiRequest{
@@ -2346,7 +2526,8 @@ func (a *OrganizationsApiService) UpdateOrganizationInvitationById(ctx context.C
 }
 
 // Execute executes the request
-//  @return OrganizationInvitation
+//
+//	@return OrganizationInvitation
 func (a *OrganizationsApiService) updateOrganizationInvitationByIdExecute(r UpdateOrganizationInvitationByIdApiRequest) (*OrganizationInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -2483,9 +2664,9 @@ UpdateOrganizationSettings Update Settings for One Organization
 
 Updates the organization's settings. To use this resource, the requesting API Key must have the Organization Owner role. This resource does not require the API Key to have an API access list.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
- @return UpdateOrganizationSettingsApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return UpdateOrganizationSettingsApiRequest
 */
 func (a *OrganizationsApiService) UpdateOrganizationSettings(ctx context.Context, orgId string) UpdateOrganizationSettingsApiRequest {
 	return UpdateOrganizationSettingsApiRequest{
@@ -2496,7 +2677,8 @@ func (a *OrganizationsApiService) UpdateOrganizationSettings(ctx context.Context
 }
 
 // Execute executes the request
-//  @return OrganizationSettings
+//
+//	@return OrganizationSettings
 func (a *OrganizationsApiService) updateOrganizationSettingsExecute(r UpdateOrganizationSettingsApiRequest) (*OrganizationSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
