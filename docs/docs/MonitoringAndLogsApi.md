@@ -180,7 +180,7 @@ Name | Type | Description  | Notes
 
 ## GetDatabaseMeasurements
 
-> MeasurementsGeneralViewAtlas GetDatabaseMeasurements(ctx, groupId, databaseName, processId).M(m).Execute()
+> MeasurementsGeneralViewAtlas GetDatabaseMeasurements(ctx, groupId, databaseName, processId).Granularity(granularity).M(m).Period(period).Start(start).End(end).Execute()
 
 Return Measurements of One Database for One MongoDB Process
 
@@ -208,9 +208,13 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     databaseName := "databaseName_example" // string | 
     processId := "mongodb.example.com:27017" // string | 
+    granularity := "PT1M" // string | 
     m := []string{"M_example"} // []string |  (optional)
+    period := "PT10H" // string |  (optional)
+    start := time.Now() // time.Time |  (optional)
+    end := time.Now() // time.Time |  (optional)
 
-    resp, r, err := sdk.MonitoringAndLogsApi.GetDatabaseMeasurements(context.Background(), groupId, databaseName, processId).M(m).Execute()
+    resp, r, err := sdk.MonitoringAndLogsApi.GetDatabaseMeasurements(context.Background(), groupId, databaseName, processId).Granularity(granularity).M(m).Period(period).Start(start).End(end).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.GetDatabaseMeasurements``: %v\n", err)
         apiError := admin.AsError(err)
@@ -241,7 +245,11 @@ Name | Type | Description  | Notes
 
 
 
+ **granularity** | **string** | Duration that specifies the interval at which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. | 
  **m** | **[]string** | One or more types of measurement to request for this MongoDB process. If omitted, the resource returns all measurements. To specify multiple values for &#x60;m&#x60;, repeat the &#x60;m&#x60; parameter for each value. Specify measurements that apply to the specified host. MongoDB Cloud returns an error if you specified any invalid measurements. | 
+ **period** | **string** | Duration over which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. Include this parameter when you do not set **start** and **end**. | 
+ **start** | **time.Time** | Date and time when MongoDB Cloud begins reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**. | 
+ **end** | **time.Time** | Date and time when MongoDB Cloud stops reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**. | 
 
 ### Return type
 
@@ -262,7 +270,7 @@ Name | Type | Description  | Notes
 
 ## GetDiskMeasurements
 
-> MeasurementsGeneralViewAtlas GetDiskMeasurements(ctx, groupId, partitionName, processId).M(m).Execute()
+> MeasurementsGeneralViewAtlas GetDiskMeasurements(ctx, groupId, partitionName, processId).Granularity(granularity).M(m).Period(period).Start(start).End(end).Execute()
 
 Return Measurements of One Disk for One MongoDB Process
 
@@ -290,9 +298,13 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     partitionName := "partitionName_example" // string | 
     processId := "mongodb.example.com:27017" // string | 
+    granularity := "PT1M" // string | 
     m := []string{"M_example"} // []string |  (optional)
+    period := "PT10H" // string |  (optional)
+    start := time.Now() // time.Time |  (optional)
+    end := time.Now() // time.Time |  (optional)
 
-    resp, r, err := sdk.MonitoringAndLogsApi.GetDiskMeasurements(context.Background(), groupId, partitionName, processId).M(m).Execute()
+    resp, r, err := sdk.MonitoringAndLogsApi.GetDiskMeasurements(context.Background(), groupId, partitionName, processId).Granularity(granularity).M(m).Period(period).Start(start).End(end).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.GetDiskMeasurements``: %v\n", err)
         apiError := admin.AsError(err)
@@ -323,7 +335,11 @@ Name | Type | Description  | Notes
 
 
 
+ **granularity** | **string** | Duration that specifies the interval at which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. | 
  **m** | **[]string** | One or more types of measurement to request for this MongoDB process. If omitted, the resource returns all measurements. To specify multiple values for &#x60;m&#x60;, repeat the &#x60;m&#x60; parameter for each value. Specify measurements that apply to the specified host. MongoDB Cloud returns an error if you specified any invalid measurements. | 
+ **period** | **string** | Duration over which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. Include this parameter when you do not set **start** and **end**. | 
+ **start** | **time.Time** | Date and time when MongoDB Cloud begins reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**. | 
+ **end** | **time.Time** | Date and time when MongoDB Cloud stops reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**. | 
 
 ### Return type
 
@@ -428,7 +444,7 @@ Name | Type | Description  | Notes
 
 ## GetHostMeasurements
 
-> MeasurementsGeneralViewAtlas GetHostMeasurements(ctx, groupId, processId).M(m).Period(period).Execute()
+> MeasurementsGeneralViewAtlas GetHostMeasurements(ctx, groupId, processId).Granularity(granularity).M(m).Period(period).Start(start).End(end).Execute()
 
 Return Measurements for One MongoDB Process
 
@@ -455,10 +471,13 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     processId := "mongodb.example.com:27017" // string | 
+    granularity := "PT1M" // string | 
     m := []string{"M_example"} // []string |  (optional)
-    period := time.Now() // time.Time |  (optional)
+    period := "PT10H" // string |  (optional)
+    start := time.Now() // time.Time |  (optional)
+    end := time.Now() // time.Time |  (optional)
 
-    resp, r, err := sdk.MonitoringAndLogsApi.GetHostMeasurements(context.Background(), groupId, processId).M(m).Period(period).Execute()
+    resp, r, err := sdk.MonitoringAndLogsApi.GetHostMeasurements(context.Background(), groupId, processId).Granularity(granularity).M(m).Period(period).Start(start).End(end).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MonitoringAndLogsApi.GetHostMeasurements``: %v\n", err)
         apiError := admin.AsError(err)
@@ -487,8 +506,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **granularity** | **string** | Duration that specifies the interval at which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. | 
  **m** | **[]string** | One or more types of measurement to request for this MongoDB process. If omitted, the resource returns all measurements. To specify multiple values for &#x60;m&#x60;, repeat the &#x60;m&#x60; parameter for each value. Specify measurements that apply to the specified host. MongoDB Cloud returns an error if you specified any invalid measurements. | 
- **period** | **time.Time** | Date and time that indicates how far in the past to query. You can&#39;t set this value with **start** and **end** in the same request. This parameter expresses its value in the ISO 8601 duration format in UTC | 
+ **period** | **string** | Duration over which Atlas reports the metrics. This parameter expresses its value in the ISO 8601 duration format in UTC. Include this parameter when you do not set **start** and **end**. | 
+ **start** | **time.Time** | Date and time when MongoDB Cloud begins reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**. | 
+ **end** | **time.Time** | Date and time when MongoDB Cloud stops reporting the metrics. This parameter expresses its value in the ISO 8601 timestamp format in UTC. Include this parameter when you do not set **period**. | 
 
 ### Return type
 
@@ -821,7 +843,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**processId** | **string** | Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (&#x60;mongod&#x60; or &#x60;mongos&#x60;). The port must be the IANA port on which the MongoDB process listens for requests. | 
+**processId** | **string** | Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (&#x60;mongod&#x60;). The port must be the IANA port on which the MongoDB process listens for requests. | 
 
 ### Other Parameters
 

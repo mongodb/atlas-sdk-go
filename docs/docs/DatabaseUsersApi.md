@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 ## DeleteDatabaseUser
 
-> DeleteDatabaseUser(ctx, groupId, databaseName, username).Execute()
+> map[string]interface{} DeleteDatabaseUser(ctx, groupId, databaseName, username).Execute()
 
 Remove One Database User from One Project
 
@@ -119,12 +119,14 @@ func main() {
     databaseName := "databaseName_example" // string | 
     username := "SCRAM-SHA: dylan or AWS IAM: arn:aws:iam::123456789012:user/sales/enterprise/DylanBloggs orx.509 or LDAP: CN=Dylan Bloggs,OU=Enterprise,OU=Sales,DC=Example,DC=COM" // string | 
 
-    r, err := sdk.DatabaseUsersApi.DeleteDatabaseUser(context.Background(), groupId, databaseName, username).Execute()
+    resp, r, err := sdk.DatabaseUsersApi.DeleteDatabaseUser(context.Background(), groupId, databaseName, username).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseUsersApi.DeleteDatabaseUser``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
+    // response from `DeleteDatabaseUser`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `DatabaseUsersApi.DeleteDatabaseUser`: %v\n", resp)
 }
 ```
 
@@ -151,7 +153,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

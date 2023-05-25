@@ -1,104 +1,104 @@
-# PaginatedAWSPeerVpc
+# PaginatedContainerPeer
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
-**Results** | Pointer to [**[]AWSPeerVpc**](AWSPeerVpc.md) | List of returned documents that MongoDB Cloud providers when completing this request. | [optional] [readonly] 
-**TotalCount** | Pointer to **int** | Number of documents returned in this response. | [optional] [readonly] 
+**Results** | Pointer to [**[]ContainerPeer**](ContainerPeer.md) | List of returned documents that MongoDB Cloud providers when completing this request. | [optional] [readonly] 
+**TotalCount** | Pointer to **int** | Number of documents returned in this response if **includeCount** query param is true. | [optional] [readonly] 
 
 ## Methods
 
-### NewPaginatedAWSPeerVpc
+### NewPaginatedContainerPeer
 
-`func NewPaginatedAWSPeerVpc() *PaginatedAWSPeerVpc`
+`func NewPaginatedContainerPeer() *PaginatedContainerPeer`
 
-NewPaginatedAWSPeerVpc instantiates a new PaginatedAWSPeerVpc object
+NewPaginatedContainerPeer instantiates a new PaginatedContainerPeer object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewPaginatedAWSPeerVpcWithDefaults
+### NewPaginatedContainerPeerWithDefaults
 
-`func NewPaginatedAWSPeerVpcWithDefaults() *PaginatedAWSPeerVpc`
+`func NewPaginatedContainerPeerWithDefaults() *PaginatedContainerPeer`
 
-NewPaginatedAWSPeerVpcWithDefaults instantiates a new PaginatedAWSPeerVpc object
+NewPaginatedContainerPeerWithDefaults instantiates a new PaginatedContainerPeer object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetLinks
 
-`func (o *PaginatedAWSPeerVpc) GetLinks() []Link`
+`func (o *PaginatedContainerPeer) GetLinks() []Link`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *PaginatedAWSPeerVpc) GetLinksOk() (*[]Link, bool)`
+`func (o *PaginatedContainerPeer) GetLinksOk() (*[]Link, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *PaginatedAWSPeerVpc) SetLinks(v []Link)`
+`func (o *PaginatedContainerPeer) SetLinks(v []Link)`
 
 SetLinks sets Links field to given value.
 
 ### HasLinks
 
-`func (o *PaginatedAWSPeerVpc) HasLinks() bool`
+`func (o *PaginatedContainerPeer) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
 
 ### GetResults
 
-`func (o *PaginatedAWSPeerVpc) GetResults() []AWSPeerVpc`
+`func (o *PaginatedContainerPeer) GetResults() []ContainerPeer`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *PaginatedAWSPeerVpc) GetResultsOk() (*[]AWSPeerVpc, bool)`
+`func (o *PaginatedContainerPeer) GetResultsOk() (*[]ContainerPeer, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *PaginatedAWSPeerVpc) SetResults(v []AWSPeerVpc)`
+`func (o *PaginatedContainerPeer) SetResults(v []ContainerPeer)`
 
 SetResults sets Results field to given value.
 
 ### HasResults
 
-`func (o *PaginatedAWSPeerVpc) HasResults() bool`
+`func (o *PaginatedContainerPeer) HasResults() bool`
 
 HasResults returns a boolean if a field has been set.
 
 ### GetTotalCount
 
-`func (o *PaginatedAWSPeerVpc) GetTotalCount() int`
+`func (o *PaginatedContainerPeer) GetTotalCount() int`
 
 GetTotalCount returns the TotalCount field if non-nil, zero value otherwise.
 
 ### GetTotalCountOk
 
-`func (o *PaginatedAWSPeerVpc) GetTotalCountOk() (*int, bool)`
+`func (o *PaginatedContainerPeer) GetTotalCountOk() (*int, bool)`
 
 GetTotalCountOk returns a tuple with the TotalCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTotalCount
 
-`func (o *PaginatedAWSPeerVpc) SetTotalCount(v int)`
+`func (o *PaginatedContainerPeer) SetTotalCount(v int)`
 
 SetTotalCount sets TotalCount field to given value.
 
 ### HasTotalCount
 
-`func (o *PaginatedAWSPeerVpc) HasTotalCount() bool`
+`func (o *PaginatedContainerPeer) HasTotalCount() bool`
 
 HasTotalCount returns a boolean if a field has been set.
 

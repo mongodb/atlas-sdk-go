@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Unique 24-hexadecimal digit string that identifies this team. | [readonly] 
+**Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies this team. | [optional] [readonly] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Name** | **string** | Human-readable label that identifies the team. | 
 **Usernames** | Pointer to **[]string** | List that contains the MongoDB Cloud users in this team. | [optional] 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewTeam
 
-`func NewTeam(id string, name string, ) *Team`
+`func NewTeam(name string, ) *Team`
 
 NewTeam instantiates a new Team object
 This constructor will assign default values to properties that have it defined,
@@ -47,6 +47,11 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
+### HasId
+
+`func (o *Team) HasId() bool`
+
+HasId returns a boolean if a field has been set.
 
 ### GetLinks
 

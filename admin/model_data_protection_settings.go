@@ -425,6 +425,9 @@ func (o DataProtectionSettings) MarshalJSONWithoutReadOnly() ([]byte, error) {
 }
 func (o DataProtectionSettings) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AuthorizedEmail) {
+		toSerialize["authorizedEmail"] = o.AuthorizedEmail
+	}
 	if !IsNil(o.CopyProtectionEnabled) {
 		toSerialize["copyProtectionEnabled"] = o.CopyProtectionEnabled
 	}

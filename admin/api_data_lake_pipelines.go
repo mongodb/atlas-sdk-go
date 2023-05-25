@@ -59,7 +59,7 @@ type DataLakePipelinesApi interface {
 	DeletePipelineWithParams(ctx context.Context, args *DeletePipelineApiParams) DeletePipelineApiRequest
 
 	// Interface only available internally
-	deletePipelineExecute(r DeletePipelineApiRequest) (*http.Response, error)
+	deletePipelineExecute(r DeletePipelineApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
 		DeletePipelineRunDataset Delete Pipeline Run Dataset
@@ -84,7 +84,7 @@ type DataLakePipelinesApi interface {
 	DeletePipelineRunDatasetWithParams(ctx context.Context, args *DeletePipelineRunDatasetApiParams) DeletePipelineRunDatasetApiRequest
 
 	// Interface only available internally
-	deletePipelineRunDatasetExecute(r DeletePipelineRunDatasetApiRequest) (*http.Response, error)
+	deletePipelineRunDatasetExecute(r DeletePipelineRunDatasetApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
 		GetPipeline Return One Data Lake Pipeline
@@ -366,9 +366,9 @@ CreatePipeline Create One Data Lake Pipeline
 
 Creates one Data Lake Pipeline.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return CreatePipelineApiRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+ @return CreatePipelineApiRequest
 */
 func (a *DataLakePipelinesApiService) CreatePipeline(ctx context.Context, groupId string) CreatePipelineApiRequest {
 	return CreatePipelineApiRequest{
@@ -379,8 +379,7 @@ func (a *DataLakePipelinesApiService) CreatePipeline(ctx context.Context, groupI
 }
 
 // Execute executes the request
-//
-//	@return IngestionPipeline
+//  @return IngestionPipeline
 func (a *DataLakePipelinesApiService) createPipelineExecute(r CreatePipelineApiRequest) (*IngestionPipeline, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -495,7 +494,7 @@ func (a *DataLakePipelinesApiService) DeletePipelineWithParams(ctx context.Conte
 	}
 }
 
-func (r DeletePipelineApiRequest) Execute() (*http.Response, error) {
+func (r DeletePipelineApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.deletePipelineExecute(r)
 }
 
@@ -504,10 +503,10 @@ DeletePipeline Remove One Data Lake Pipeline
 
 Removes one Data Lake Pipeline.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param pipelineName Human-readable label that identifies the Data Lake Pipeline.
-	@return DeletePipelineApiRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+ @param pipelineName Human-readable label that identifies the Data Lake Pipeline.
+ @return DeletePipelineApiRequest
 */
 func (a *DataLakePipelinesApiService) DeletePipeline(ctx context.Context, groupId string, pipelineName string) DeletePipelineApiRequest {
 	return DeletePipelineApiRequest{
@@ -519,16 +518,18 @@ func (a *DataLakePipelinesApiService) DeletePipeline(ctx context.Context, groupI
 }
 
 // Execute executes the request
-func (a *DataLakePipelinesApiService) deletePipelineExecute(r DeletePipelineApiRequest) (*http.Response, error) {
+//  @return map[string]interface{}
+func (a *DataLakePipelinesApiService) deletePipelineExecute(r DeletePipelineApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod  = http.MethodDelete
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesApiService.DeletePipeline")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}"
@@ -539,16 +540,16 @@ func (a *DataLakePipelinesApiService) deletePipelineExecute(r DeletePipelineApiR
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 	if strlen(r.groupId) < 24 {
-		return nil, reportError("groupId must have at least 24 elements")
+		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
 	}
 	if strlen(r.groupId) > 24 {
-		return nil, reportError("groupId must have less than 24 elements")
+		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
 	if strlen(r.pipelineName) < 1 {
-		return nil, reportError("pipelineName must have at least 1 elements")
+		return localVarReturnValue, nil, reportError("pipelineName must have at least 1 elements")
 	}
 	if strlen(r.pipelineName) > 64 {
-		return nil, reportError("pipelineName must have less than 64 elements")
+		return localVarReturnValue, nil, reportError("pipelineName must have less than 64 elements")
 	}
 
 	// to determine the Content-Type header
@@ -570,19 +571,19 @@ func (a *DataLakePipelinesApiService) deletePipelineExecute(r DeletePipelineApiR
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -594,14 +595,23 @@ func (a *DataLakePipelinesApiService) deletePipelineExecute(r DeletePipelineApiR
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
 		newErr.model = v
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type DeletePipelineRunDatasetApiRequest struct {
@@ -628,7 +638,7 @@ func (a *DataLakePipelinesApiService) DeletePipelineRunDatasetWithParams(ctx con
 	}
 }
 
-func (r DeletePipelineRunDatasetApiRequest) Execute() (*http.Response, error) {
+func (r DeletePipelineRunDatasetApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.deletePipelineRunDatasetExecute(r)
 }
 
@@ -637,11 +647,11 @@ DeletePipelineRunDataset Delete Pipeline Run Dataset
 
 Deletes dataset that Atlas generated during the specified pipeline run.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param pipelineName Human-readable label that identifies the Data Lake Pipeline.
-	@param pipelineRunId Unique 24-hexadecimal character string that identifies a Data Lake Pipeline run.
-	@return DeletePipelineRunDatasetApiRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+ @param pipelineName Human-readable label that identifies the Data Lake Pipeline.
+ @param pipelineRunId Unique 24-hexadecimal character string that identifies a Data Lake Pipeline run.
+ @return DeletePipelineRunDatasetApiRequest
 */
 func (a *DataLakePipelinesApiService) DeletePipelineRunDataset(ctx context.Context, groupId string, pipelineName string, pipelineRunId string) DeletePipelineRunDatasetApiRequest {
 	return DeletePipelineRunDatasetApiRequest{
@@ -654,16 +664,18 @@ func (a *DataLakePipelinesApiService) DeletePipelineRunDataset(ctx context.Conte
 }
 
 // Execute executes the request
-func (a *DataLakePipelinesApiService) deletePipelineRunDatasetExecute(r DeletePipelineRunDatasetApiRequest) (*http.Response, error) {
+//  @return map[string]interface{}
+func (a *DataLakePipelinesApiService) deletePipelineRunDatasetExecute(r DeletePipelineRunDatasetApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod  = http.MethodDelete
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesApiService.DeletePipelineRunDataset")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs/{pipelineRunId}"
@@ -675,22 +687,22 @@ func (a *DataLakePipelinesApiService) deletePipelineRunDatasetExecute(r DeletePi
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 	if strlen(r.groupId) < 24 {
-		return nil, reportError("groupId must have at least 24 elements")
+		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
 	}
 	if strlen(r.groupId) > 24 {
-		return nil, reportError("groupId must have less than 24 elements")
+		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
 	if strlen(r.pipelineName) < 1 {
-		return nil, reportError("pipelineName must have at least 1 elements")
+		return localVarReturnValue, nil, reportError("pipelineName must have at least 1 elements")
 	}
 	if strlen(r.pipelineName) > 64 {
-		return nil, reportError("pipelineName must have less than 64 elements")
+		return localVarReturnValue, nil, reportError("pipelineName must have less than 64 elements")
 	}
 	if strlen(r.pipelineRunId) < 24 {
-		return nil, reportError("pipelineRunId must have at least 24 elements")
+		return localVarReturnValue, nil, reportError("pipelineRunId must have at least 24 elements")
 	}
 	if strlen(r.pipelineRunId) > 24 {
-		return nil, reportError("pipelineRunId must have less than 24 elements")
+		return localVarReturnValue, nil, reportError("pipelineRunId must have less than 24 elements")
 	}
 
 	// to determine the Content-Type header
@@ -703,7 +715,7 @@ func (a *DataLakePipelinesApiService) deletePipelineRunDatasetExecute(r DeletePi
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json", "application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -712,19 +724,19 @@ func (a *DataLakePipelinesApiService) deletePipelineRunDatasetExecute(r DeletePi
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -736,14 +748,23 @@ func (a *DataLakePipelinesApiService) deletePipelineRunDatasetExecute(r DeletePi
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
 		newErr.model = v
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type GetPipelineApiRequest struct {
@@ -776,10 +797,10 @@ GetPipeline Return One Data Lake Pipeline
 
 Returns the details of one Data Lake Pipeline within the specified project. To use this resource, the requesting API Key must have the Project Read Only role.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param pipelineName Human-readable label that identifies the Data Lake Pipeline.
-	@return GetPipelineApiRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+ @param pipelineName Human-readable label that identifies the Data Lake Pipeline.
+ @return GetPipelineApiRequest
 */
 func (a *DataLakePipelinesApiService) GetPipeline(ctx context.Context, groupId string, pipelineName string) GetPipelineApiRequest {
 	return GetPipelineApiRequest{
@@ -791,8 +812,7 @@ func (a *DataLakePipelinesApiService) GetPipeline(ctx context.Context, groupId s
 }
 
 // Execute executes the request
-//
-//	@return IngestionPipeline
+//  @return IngestionPipeline
 func (a *DataLakePipelinesApiService) getPipelineExecute(r GetPipelineApiRequest) (*IngestionPipeline, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -921,11 +941,11 @@ GetPipelineRun Return One Data Lake Pipeline Run
 
 Returns the details of one Data Lake Pipeline run within the specified project. To use this resource, the requesting API Key must have the Project Read Only role.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param pipelineName Human-readable label that identifies the Data Lake Pipeline.
-	@param pipelineRunId Unique 24-hexadecimal character string that identifies a Data Lake Pipeline run.
-	@return GetPipelineRunApiRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+ @param pipelineName Human-readable label that identifies the Data Lake Pipeline.
+ @param pipelineRunId Unique 24-hexadecimal character string that identifies a Data Lake Pipeline run.
+ @return GetPipelineRunApiRequest
 */
 func (a *DataLakePipelinesApiService) GetPipelineRun(ctx context.Context, groupId string, pipelineName string, pipelineRunId string) GetPipelineRunApiRequest {
 	return GetPipelineRunApiRequest{
@@ -938,8 +958,7 @@ func (a *DataLakePipelinesApiService) GetPipelineRun(ctx context.Context, groupI
 }
 
 // Execute executes the request
-//
-//	@return IngestionPipelineRun
+//  @return IngestionPipelineRun
 func (a *DataLakePipelinesApiService) getPipelineRunExecute(r GetPipelineRunApiRequest) (*IngestionPipelineRun, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1108,10 +1127,10 @@ ListPipelineRuns Return All Data Lake Pipeline Runs from One Project
 
 Returns a list of past Data Lake Pipeline runs. To use this resource, the requesting API Key must have the Project Read Only role.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param pipelineName Human-readable label that identifies the Data Lake Pipeline.
-	@return ListPipelineRunsApiRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+ @param pipelineName Human-readable label that identifies the Data Lake Pipeline.
+ @return ListPipelineRunsApiRequest
 */
 func (a *DataLakePipelinesApiService) ListPipelineRuns(ctx context.Context, groupId string, pipelineName string) ListPipelineRunsApiRequest {
 	return ListPipelineRunsApiRequest{
@@ -1123,8 +1142,7 @@ func (a *DataLakePipelinesApiService) ListPipelineRuns(ctx context.Context, grou
 }
 
 // Execute executes the request
-//
-//	@return PaginatedPipelineRun
+//  @return PaginatedPipelineRun
 func (a *DataLakePipelinesApiService) listPipelineRunsExecute(r ListPipelineRunsApiRequest) (*PaginatedPipelineRun, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1274,10 +1292,10 @@ ListPipelineSchedules Return Available Ingestion Schedules for One Data Lake Pip
 
 Returns a list of backup schedule policy items that you can use as a Data Lake Pipeline source. To use this resource, the requesting API Key must have the Project Read Only role.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param pipelineName Human-readable label that identifies the Data Lake Pipeline.
-	@return ListPipelineSchedulesApiRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+ @param pipelineName Human-readable label that identifies the Data Lake Pipeline.
+ @return ListPipelineSchedulesApiRequest
 */
 func (a *DataLakePipelinesApiService) ListPipelineSchedules(ctx context.Context, groupId string, pipelineName string) ListPipelineSchedulesApiRequest {
 	return ListPipelineSchedulesApiRequest{
@@ -1289,8 +1307,7 @@ func (a *DataLakePipelinesApiService) ListPipelineSchedules(ctx context.Context,
 }
 
 // Execute executes the request
-//
-//	@return []PolicyItem
+//  @return []PolicyItem
 func (a *DataLakePipelinesApiService) listPipelineSchedulesExecute(r ListPipelineSchedulesApiRequest) ([]PolicyItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1452,10 +1469,10 @@ ListPipelineSnapshots Return Available Backup Snapshots for One Data Lake Pipeli
 
 Returns a list of backup snapshots that you can use to trigger an on demand pipeline run. To use this resource, the requesting API Key must have the Project Read Only role.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param pipelineName Human-readable label that identifies the Data Lake Pipeline.
-	@return ListPipelineSnapshotsApiRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+ @param pipelineName Human-readable label that identifies the Data Lake Pipeline.
+ @return ListPipelineSnapshotsApiRequest
 */
 func (a *DataLakePipelinesApiService) ListPipelineSnapshots(ctx context.Context, groupId string, pipelineName string) ListPipelineSnapshotsApiRequest {
 	return ListPipelineSnapshotsApiRequest{
@@ -1467,8 +1484,7 @@ func (a *DataLakePipelinesApiService) ListPipelineSnapshots(ctx context.Context,
 }
 
 // Execute executes the request
-//
-//	@return PaginatedBackupSnapshot
+//  @return PaginatedBackupSnapshot
 func (a *DataLakePipelinesApiService) listPipelineSnapshotsExecute(r ListPipelineSnapshotsApiRequest) (*PaginatedBackupSnapshot, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1615,9 +1631,9 @@ ListPipelines Return All Data Lake Pipelines from One Project
 
 Returns a list of Data Lake Pipelines. To use this resource, the requesting API Key must have the Project Read Only role.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return ListPipelinesApiRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+ @return ListPipelinesApiRequest
 */
 func (a *DataLakePipelinesApiService) ListPipelines(ctx context.Context, groupId string) ListPipelinesApiRequest {
 	return ListPipelinesApiRequest{
@@ -1628,8 +1644,7 @@ func (a *DataLakePipelinesApiService) ListPipelines(ctx context.Context, groupId
 }
 
 // Execute executes the request
-//
-//	@return []IngestionPipeline
+//  @return []IngestionPipeline
 func (a *DataLakePipelinesApiService) listPipelinesExecute(r ListPipelinesApiRequest) ([]IngestionPipeline, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1748,10 +1763,10 @@ PausePipeline Pause One Data Lake Pipeline
 
 Pauses ingestion for a Data Lake Pipeline within the specified project. To use this resource, the requesting API Key must have the Project Read Only role.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param pipelineName Human-readable label that identifies the Data Lake Pipeline.
-	@return PausePipelineApiRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+ @param pipelineName Human-readable label that identifies the Data Lake Pipeline.
+ @return PausePipelineApiRequest
 */
 func (a *DataLakePipelinesApiService) PausePipeline(ctx context.Context, groupId string, pipelineName string) PausePipelineApiRequest {
 	return PausePipelineApiRequest{
@@ -1763,8 +1778,7 @@ func (a *DataLakePipelinesApiService) PausePipeline(ctx context.Context, groupId
 }
 
 // Execute executes the request
-//
-//	@return IngestionPipeline
+//  @return IngestionPipeline
 func (a *DataLakePipelinesApiService) pausePipelineExecute(r PausePipelineApiRequest) (*IngestionPipeline, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -1890,10 +1904,10 @@ ResumePipeline Resume One Data Lake Pipeline
 
 Resumes ingestion for a Data Lake Pipeline within the specified project. To use this resource, the requesting API Key must have the Project Read Only role.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param pipelineName Human-readable label that identifies the Data Lake Pipeline.
-	@return ResumePipelineApiRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+ @param pipelineName Human-readable label that identifies the Data Lake Pipeline.
+ @return ResumePipelineApiRequest
 */
 func (a *DataLakePipelinesApiService) ResumePipeline(ctx context.Context, groupId string, pipelineName string) ResumePipelineApiRequest {
 	return ResumePipelineApiRequest{
@@ -1905,8 +1919,7 @@ func (a *DataLakePipelinesApiService) ResumePipeline(ctx context.Context, groupI
 }
 
 // Execute executes the request
-//
-//	@return IngestionPipeline
+//  @return IngestionPipeline
 func (a *DataLakePipelinesApiService) resumePipelineExecute(r ResumePipelineApiRequest) (*IngestionPipeline, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -2041,10 +2054,10 @@ TriggerSnapshotIngestion Trigger on demand snapshot ingestion
 
 Triggers a Data Lake Pipeline ingestion of a specified snapshot.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param pipelineName Human-readable label that identifies the Data Lake Pipeline.
-	@return TriggerSnapshotIngestionApiRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+ @param pipelineName Human-readable label that identifies the Data Lake Pipeline.
+ @return TriggerSnapshotIngestionApiRequest
 */
 func (a *DataLakePipelinesApiService) TriggerSnapshotIngestion(ctx context.Context, groupId string, pipelineName string) TriggerSnapshotIngestionApiRequest {
 	return TriggerSnapshotIngestionApiRequest{
@@ -2056,8 +2069,7 @@ func (a *DataLakePipelinesApiService) TriggerSnapshotIngestion(ctx context.Conte
 }
 
 // Execute executes the request
-//
-//	@return IngestionPipelineRun
+//  @return IngestionPipelineRun
 func (a *DataLakePipelinesApiService) triggerSnapshotIngestionExecute(r TriggerSnapshotIngestionApiRequest) (*IngestionPipelineRun, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -2197,10 +2209,10 @@ UpdatePipeline Update One Data Lake Pipeline
 
 Updates one Data Lake Pipeline.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param pipelineName Human-readable label that identifies the Data Lake Pipeline.
-	@return UpdatePipelineApiRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+ @param pipelineName Human-readable label that identifies the Data Lake Pipeline.
+ @return UpdatePipelineApiRequest
 */
 func (a *DataLakePipelinesApiService) UpdatePipeline(ctx context.Context, groupId string, pipelineName string) UpdatePipelineApiRequest {
 	return UpdatePipelineApiRequest{
@@ -2212,8 +2224,7 @@ func (a *DataLakePipelinesApiService) UpdatePipeline(ctx context.Context, groupI
 }
 
 // Execute executes the request
-//
-//	@return IngestionPipeline
+//  @return IngestionPipeline
 func (a *DataLakePipelinesApiService) updatePipelineExecute(r UpdatePipelineApiRequest) (*IngestionPipeline, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch

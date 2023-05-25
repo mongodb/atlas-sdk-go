@@ -39,7 +39,7 @@ type MultiCloudClustersApi interface {
 	/*
 		DeleteCluster Remove One Multi-Cloud Cluster from One Project
 
-		Removes one cluster with advanced features from the specified project. The cluster must have termination protection disabled in order to be deleted. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List. This feature is not available for serverless clusters.
+		Removes one cluster with advanced features from the specified project. The cluster must have termination protection disabled in order to be deleted. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List. This feature is not available for serverless clusters. Deprecated versions: v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -195,9 +195,9 @@ CreateCluster Create One Multi-Cloud Cluster from One Project
 
 Creates one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can create multi-cloud clusters. Each project supports up to 25 database deployments. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List. This feature is not available for serverless clusters. Deprecated versions: v2-{2023-01-01}
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return CreateClusterApiRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+ @return CreateClusterApiRequest
 */
 func (a *MultiCloudClustersApiService) CreateCluster(ctx context.Context, groupId string) CreateClusterApiRequest {
 	return CreateClusterApiRequest{
@@ -208,8 +208,7 @@ func (a *MultiCloudClustersApiService) CreateCluster(ctx context.Context, groupI
 }
 
 // Execute executes the request
-//
-//	@return ClusterDescriptionV15
+//  @return ClusterDescriptionV15
 func (a *MultiCloudClustersApiService) createClusterExecute(r CreateClusterApiRequest) (*ClusterDescriptionV15, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -340,12 +339,12 @@ func (r DeleteClusterApiRequest) Execute() (*http.Response, error) {
 /*
 DeleteCluster Remove One Multi-Cloud Cluster from One Project
 
-Removes one cluster with advanced features from the specified project. The cluster must have termination protection disabled in order to be deleted. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List. This feature is not available for serverless clusters.
+Removes one cluster with advanced features from the specified project. The cluster must have termination protection disabled in order to be deleted. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List. This feature is not available for serverless clusters. Deprecated versions: v2-{2023-01-01}
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param clusterName Human-readable label that identifies the cluster.
-	@return DeleteClusterApiRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+ @param clusterName Human-readable label that identifies the cluster.
+ @return DeleteClusterApiRequest
 */
 func (a *MultiCloudClustersApiService) DeleteCluster(ctx context.Context, groupId string, clusterName string) DeleteClusterApiRequest {
 	return DeleteClusterApiRequest{
@@ -402,7 +401,7 @@ func (a *MultiCloudClustersApiService) deleteClusterExecute(r DeleteClusterApiRe
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-02-01+json", "application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -475,10 +474,10 @@ GetCluster Return One Multi-Cloud Cluster from One Project
 
 Returns the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. The response includes multi-cloud clusters. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List. This feature is not available for serverless clusters. Deprecated versions: v2-{2023-01-01}
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param clusterName Human-readable label that identifies this advanced cluster.
-	@return GetClusterApiRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+ @param clusterName Human-readable label that identifies this advanced cluster.
+ @return GetClusterApiRequest
 */
 func (a *MultiCloudClustersApiService) GetCluster(ctx context.Context, groupId string, clusterName string) GetClusterApiRequest {
 	return GetClusterApiRequest{
@@ -490,8 +489,7 @@ func (a *MultiCloudClustersApiService) GetCluster(ctx context.Context, groupId s
 }
 
 // Execute executes the request
-//
-//	@return ClusterDescriptionV15
+//  @return ClusterDescriptionV15
 func (a *MultiCloudClustersApiService) getClusterExecute(r GetClusterApiRequest) (*ClusterDescriptionV15, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -641,9 +639,9 @@ ListClusters Return All Multi-Cloud Clusters from One Project
 
 Returns the details for all clusters in the specific project to which you have access. Clusters contain a group of hosts that maintain the same data set. The response includes multi-cloud clusters. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List. This feature is not available for serverless clusters. Deprecated versions: v2-{2023-01-01}
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return ListClustersApiRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+ @return ListClustersApiRequest
 */
 func (a *MultiCloudClustersApiService) ListClusters(ctx context.Context, groupId string) ListClustersApiRequest {
 	return ListClustersApiRequest{
@@ -654,8 +652,7 @@ func (a *MultiCloudClustersApiService) ListClusters(ctx context.Context, groupId
 }
 
 // Execute executes the request
-//
-//	@return PaginatedClusterDescriptionV15
+//  @return PaginatedClusterDescriptionV15
 func (a *MultiCloudClustersApiService) listClustersExecute(r ListClustersApiRequest) (*PaginatedClusterDescriptionV15, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -795,10 +792,10 @@ TestFailover Test Failover for One Multi-Cloud Cluster
 
 Starts a failover test for the specified cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. A failover test checks how MongoDB Cloud handles the failure of the cluster's primary node. During the test, MongoDB Cloud shuts down the primary node and elects a new primary. To use this resource, the requesting API Key must have the Project Cluster Manager role. This resource doesn't require the API Key to have an Access List. Deprecated versions: v2-{2023-01-01}
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param clusterName Human-readable label that identifies the cluster.
-	@return TestFailoverApiRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+ @param clusterName Human-readable label that identifies the cluster.
+ @return TestFailoverApiRequest
 */
 func (a *MultiCloudClustersApiService) TestFailover(ctx context.Context, groupId string, clusterName string) TestFailoverApiRequest {
 	return TestFailoverApiRequest{
@@ -934,10 +931,10 @@ UpdateCluster Modify One Multi-Cloud Cluster from One Project
 
 Updates the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can update multi-cloud clusters. To update a cluster's termination protection, the requesting API Key must have the Project Owner role. For all other updates, the requesting API Key must have the Project Cluster Manager role. This resource doesn't require the API Key to have an Access List. You can't modify a paused cluster (`paused : true`). You must call this endpoint to set `paused : false`. After this endpoint responds with `paused : false`, you can call it again with the changes you want to make to the cluster. This feature is not available for serverless clusters. Deprecated versions: v2-{2023-01-01}
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param clusterName Human-readable label that identifies the advanced cluster to modify.
-	@return UpdateClusterApiRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+ @param clusterName Human-readable label that identifies the advanced cluster to modify.
+ @return UpdateClusterApiRequest
 */
 func (a *MultiCloudClustersApiService) UpdateCluster(ctx context.Context, groupId string, clusterName string) UpdateClusterApiRequest {
 	return UpdateClusterApiRequest{
@@ -949,8 +946,7 @@ func (a *MultiCloudClustersApiService) UpdateCluster(ctx context.Context, groupI
 }
 
 // Execute executes the request
-//
-//	@return ClusterDescriptionV15
+//  @return ClusterDescriptionV15
 func (a *MultiCloudClustersApiService) updateClusterExecute(r UpdateClusterApiRequest) (*ClusterDescriptionV15, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch

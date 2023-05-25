@@ -407,7 +407,7 @@ Name | Type | Description  | Notes
 
 ## LoadSampleDataset
 
-> []SampleDatasetStatus LoadSampleDataset(ctx, groupId, name).SampleDatasetStatus(sampleDatasetStatus).Execute()
+> SampleDatasetStatus LoadSampleDataset(ctx, groupId, name).Execute()
 
 Load Sample Dataset Request into Cluster
 
@@ -434,15 +434,14 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     name := "name_example" // string | 
-    sampleDatasetStatus := *openapiclient.NewSampleDatasetStatus() // SampleDatasetStatus | 
 
-    resp, r, err := sdk.ClustersApi.LoadSampleDataset(context.Background(), groupId, name).SampleDatasetStatus(sampleDatasetStatus).Execute()
+    resp, r, err := sdk.ClustersApi.LoadSampleDataset(context.Background(), groupId, name).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.LoadSampleDataset``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `LoadSampleDataset`: []SampleDatasetStatus
+    // response from `LoadSampleDataset`: SampleDatasetStatus
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.LoadSampleDataset`: %v\n", resp)
 }
 ```
@@ -465,18 +464,17 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **sampleDatasetStatus** | [**SampleDatasetStatus**](SampleDatasetStatus.md) | Cluster into which to load the sample dataset. | 
 
 ### Return type
 
-[**[]SampleDatasetStatus**](SampleDatasetStatus.md)
+[**SampleDatasetStatus**](SampleDatasetStatus.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
 
 ### HTTP request headers
 
-- **Content-Type**: application/vnd.atlas.2023-01-01+json
+- **Content-Type**: Not defined
 - **Accept**: application/vnd.atlas.2023-01-01+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

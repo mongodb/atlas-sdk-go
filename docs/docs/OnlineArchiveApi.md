@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 
 ## DeleteOnlineArchive
 
-> DeleteOnlineArchive(ctx, groupId, archiveId, clusterName).Execute()
+> map[string]interface{} DeleteOnlineArchive(ctx, groupId, archiveId, clusterName).Execute()
 
 Remove One Online Archive
 
@@ -123,12 +123,14 @@ func main() {
     archiveId := "archiveId_example" // string | 
     clusterName := "clusterName_example" // string | 
 
-    r, err := sdk.OnlineArchiveApi.DeleteOnlineArchive(context.Background(), groupId, archiveId, clusterName).Execute()
+    resp, r, err := sdk.OnlineArchiveApi.DeleteOnlineArchive(context.Background(), groupId, archiveId, clusterName).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OnlineArchiveApi.DeleteOnlineArchive``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
+    // response from `DeleteOnlineArchive`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `OnlineArchiveApi.DeleteOnlineArchive`: %v\n", resp)
 }
 ```
 
@@ -155,7 +157,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

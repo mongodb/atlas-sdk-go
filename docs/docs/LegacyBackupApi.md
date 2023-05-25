@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 ## DeleteLegacySnapshot
 
-> DeleteLegacySnapshot(ctx, groupId, clusterName, snapshotId).Execute()
+> map[string]interface{} DeleteLegacySnapshot(ctx, groupId, clusterName, snapshotId).Execute()
 
 Remove One Legacy Backup Snapshot
 
@@ -48,12 +48,14 @@ func main() {
     clusterName := "clusterName_example" // string | 
     snapshotId := "snapshotId_example" // string | 
 
-    r, err := sdk.LegacyBackupApi.DeleteLegacySnapshot(context.Background(), groupId, clusterName, snapshotId).Execute()
+    resp, r, err := sdk.LegacyBackupApi.DeleteLegacySnapshot(context.Background(), groupId, clusterName, snapshotId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.DeleteLegacySnapshot``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
+    // response from `DeleteLegacySnapshot`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.DeleteLegacySnapshot`: %v\n", resp)
 }
 ```
 
@@ -80,7 +82,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

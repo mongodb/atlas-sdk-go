@@ -160,7 +160,7 @@ Name | Type | Description  | Notes
 
 ## ResetMaintenanceWindow
 
-> ResetMaintenanceWindow(ctx, groupId).Execute()
+> map[string]interface{} ResetMaintenanceWindow(ctx, groupId).Execute()
 
 Reset One Maintenance Window for One Project
 
@@ -187,12 +187,14 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    r, err := sdk.MaintenanceWindowsApi.ResetMaintenanceWindow(context.Background(), groupId).Execute()
+    resp, r, err := sdk.MaintenanceWindowsApi.ResetMaintenanceWindow(context.Background(), groupId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MaintenanceWindowsApi.ResetMaintenanceWindow``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
+    // response from `ResetMaintenanceWindow`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `MaintenanceWindowsApi.ResetMaintenanceWindow`: %v\n", resp)
 }
 ```
 
@@ -215,7 +217,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -304,7 +306,7 @@ Name | Type | Description  | Notes
 
 ## UpdateMaintenanceWindow
 
-> UpdateMaintenanceWindow(ctx, groupId).GroupMaintenanceWindow(groupMaintenanceWindow).Execute()
+> map[string]interface{} UpdateMaintenanceWindow(ctx, groupId).GroupMaintenanceWindow(groupMaintenanceWindow).Execute()
 
 Update Maintenance Window for One Project
 
@@ -332,12 +334,14 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     groupMaintenanceWindow := *openapiclient.NewGroupMaintenanceWindow(int(123), int(123)) // GroupMaintenanceWindow | 
 
-    r, err := sdk.MaintenanceWindowsApi.UpdateMaintenanceWindow(context.Background(), groupId).GroupMaintenanceWindow(groupMaintenanceWindow).Execute()
+    resp, r, err := sdk.MaintenanceWindowsApi.UpdateMaintenanceWindow(context.Background(), groupId).GroupMaintenanceWindow(groupMaintenanceWindow).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MaintenanceWindowsApi.UpdateMaintenanceWindow``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
+    // response from `UpdateMaintenanceWindow`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `MaintenanceWindowsApi.UpdateMaintenanceWindow`: %v\n", resp)
 }
 ```
 
@@ -361,7 +365,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

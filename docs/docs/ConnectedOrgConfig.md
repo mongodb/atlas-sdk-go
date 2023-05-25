@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DataAccessIdentityProviderIds** | Pointer to **[]string** | The collection of unique ids of the identity providers for org&#39;s data access. | [optional] 
 **DomainAllowList** | Pointer to **[]string** | Approved domains that restrict users who can join the organization based on their email address. | [optional] 
 **DomainRestrictionEnabled** | **bool** | Value that indicates whether domain restriction is enabled for this connected org. | 
 **IdentityProviderId** | **string** | Unique 20-hexadecimal digit string that identifies the identity provider that this connected org config is associated with. | 
@@ -30,6 +31,31 @@ will change when the set of required properties is changed
 NewConnectedOrgConfigWithDefaults instantiates a new ConnectedOrgConfig object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetDataAccessIdentityProviderIds
+
+`func (o *ConnectedOrgConfig) GetDataAccessIdentityProviderIds() []string`
+
+GetDataAccessIdentityProviderIds returns the DataAccessIdentityProviderIds field if non-nil, zero value otherwise.
+
+### GetDataAccessIdentityProviderIdsOk
+
+`func (o *ConnectedOrgConfig) GetDataAccessIdentityProviderIdsOk() (*[]string, bool)`
+
+GetDataAccessIdentityProviderIdsOk returns a tuple with the DataAccessIdentityProviderIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDataAccessIdentityProviderIds
+
+`func (o *ConnectedOrgConfig) SetDataAccessIdentityProviderIds(v []string)`
+
+SetDataAccessIdentityProviderIds sets DataAccessIdentityProviderIds field to given value.
+
+### HasDataAccessIdentityProviderIds
+
+`func (o *ConnectedOrgConfig) HasDataAccessIdentityProviderIds() bool`
+
+HasDataAccessIdentityProviderIds returns a boolean if a field has been set.
 
 ### GetDomainAllowList
 

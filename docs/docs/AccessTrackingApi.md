@@ -39,10 +39,10 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
     authResult := true // bool |  (optional)
-    end := "end_example" // string |  (optional)
+    end := int64(789) // int64 |  (optional)
     ipAddress := "ipAddress_example" // string |  (optional)
-    nLogs := int64(789) // int64 |  (optional) (default to 20000)
-    start := time.Now() // time.Time |  (optional)
+    nLogs := int(56) // int |  (optional) (default to 20000)
+    start := int64(789) // int64 |  (optional)
 
     resp, r, err := sdk.AccessTrackingApi.ListAccessLogsByClusterName(context.Background(), groupId, clusterName).AuthResult(authResult).End(end).IpAddress(ipAddress).NLogs(nLogs).Start(start).Execute()
     if err != nil {
@@ -74,10 +74,10 @@ Name | Type | Description  | Notes
 
 
  **authResult** | **bool** | Flag that indicates whether the response returns the successful authentication attempts only. | 
- **end** | **string** | Date and time when to stop retrieving database history. If you specify **end**, you must also specify **start**. This parameter uses the ISO 8601 timestamp format in UTC. | 
+ **end** | **int64** | Date and time when to stop retrieving database history. If you specify **end**, you must also specify **start**. This parameter uses UNIX epoch time in milliseconds. | 
  **ipAddress** | **string** | One Internet Protocol address that attempted to authenticate with the database. | 
- **nLogs** | **int64** | Maximum number of lines from the log to return. | [default to 20000]
- **start** | **time.Time** | Date and time when MongoDB Cloud begins retrieving database history. If you specify **start**, you must also specify **end**. This parameter uses the ISO 8601 timestamp format in UTC. | 
+ **nLogs** | **int** | Maximum number of lines from the log to return. | [default to 20000]
+ **start** | **int64** | Date and time when MongoDB Cloud begins retrieving database history. If you specify **start**, you must also specify **end**. This parameter uses UNIX epoch time in milliseconds. | 
 
 ### Return type
 
@@ -126,10 +126,10 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     hostname := "hostname_example" // string | 
     authResult := true // bool |  (optional)
-    end := time.Now() // time.Time |  (optional)
+    end := int64(789) // int64 |  (optional)
     ipAddress := "ipAddress_example" // string |  (optional)
     nLogs := int(56) // int |  (optional) (default to 20000)
-    start := time.Now() // time.Time |  (optional)
+    start := int64(789) // int64 |  (optional)
 
     resp, r, err := sdk.AccessTrackingApi.ListAccessLogsByHostname(context.Background(), groupId, hostname).AuthResult(authResult).End(end).IpAddress(ipAddress).NLogs(nLogs).Start(start).Execute()
     if err != nil {
@@ -161,10 +161,10 @@ Name | Type | Description  | Notes
 
 
  **authResult** | **bool** | Flag that indicates whether the response returns the successful authentication attempts only. | 
- **end** | **time.Time** | Date and time when to stop retrieving database history. If you specify **end**, you must also specify **start**. This parameter uses the ISO 8601 timestamp format in UTC. | 
+ **end** | **int64** | Date and time when to stop retrieving database history. If you specify **end**, you must also specify **start**. This parameter uses UNIX epoch time in milliseconds. | 
  **ipAddress** | **string** | One Internet Protocol address that attempted to authenticate with the database. | 
  **nLogs** | **int** | Maximum number of lines from the log to return. | [default to 20000]
- **start** | **time.Time** | Date and time when MongoDB Cloud begins retrieving database history. If you specify **start**, you must also specify **end**. This parameter uses the ISO 8601 timestamp format in UTC. | 
+ **start** | **int64** | Date and time when MongoDB Cloud begins retrieving database history. If you specify **start**, you must also specify **end**. This parameter uses UNIX epoch time in milliseconds. | 
 
 ### Return type
 

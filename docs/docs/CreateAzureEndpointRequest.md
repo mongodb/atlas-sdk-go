@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** | Unique string that identifies the private endpoint&#39;s network interface that someone added to this private endpoint service. | [optional] 
-**PrivateEndpointIPAddress** | Pointer to **string** | IPv4 address of the private endpoint in your Azure VNet that someone added to this private endpoint service. | [optional] 
+**Id** | **string** | Unique string that identifies the private endpoint&#39;s network interface that someone added to this private endpoint service. | 
+**PrivateEndpointIPAddress** | **string** | IPv4 address of the private endpoint in your Azure VNet that someone added to this private endpoint service. | 
 
 ## Methods
 
 ### NewCreateAzureEndpointRequest
 
-`func NewCreateAzureEndpointRequest() *CreateAzureEndpointRequest`
+`func NewCreateAzureEndpointRequest(id string, privateEndpointIPAddress string, ) *CreateAzureEndpointRequest`
 
 NewCreateAzureEndpointRequest instantiates a new CreateAzureEndpointRequest object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *CreateAzureEndpointRequest) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetPrivateEndpointIPAddress
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetPrivateEndpointIPAddress sets PrivateEndpointIPAddress field to given value.
 
-### HasPrivateEndpointIPAddress
-
-`func (o *CreateAzureEndpointRequest) HasPrivateEndpointIPAddress() bool`
-
-HasPrivateEndpointIPAddress returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

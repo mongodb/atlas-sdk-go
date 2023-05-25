@@ -11,6 +11,8 @@ var _ MappedNullable = &AWSPrivateLinkConnection{}
 
 // AWSPrivateLinkConnection Group of Private Endpoint Service settings.
 type AWSPrivateLinkConnection struct {
+	// Cloud service provider that serves the requested endpoint service.
+	CloudProvider string `json:"cloudProvider"`
 	// Unique string that identifies the Amazon Web Services (AWS) PrivateLink endpoint service. MongoDB Cloud returns null while it creates the endpoint service.
 	EndpointServiceName *string `json:"endpointServiceName,omitempty"`
 	// Error message returned when requesting private connection resource. The resource returns `null` if the request succeeded.
@@ -29,8 +31,9 @@ type AWSPrivateLinkConnection struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAWSPrivateLinkConnection() *AWSPrivateLinkConnection {
+func NewAWSPrivateLinkConnection(cloudProvider string) *AWSPrivateLinkConnection {
 	this := AWSPrivateLinkConnection{}
+	this.CloudProvider = cloudProvider
 	return &this
 }
 
@@ -40,6 +43,30 @@ func NewAWSPrivateLinkConnection() *AWSPrivateLinkConnection {
 func NewAWSPrivateLinkConnectionWithDefaults() *AWSPrivateLinkConnection {
 	this := AWSPrivateLinkConnection{}
 	return &this
+}
+
+// GetCloudProvider returns the CloudProvider field value
+func (o *AWSPrivateLinkConnection) GetCloudProvider() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.CloudProvider
+}
+
+// GetCloudProviderOk returns a tuple with the CloudProvider field value
+// and a boolean to check if the value has been set.
+func (o *AWSPrivateLinkConnection) GetCloudProviderOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CloudProvider, true
+}
+
+// SetCloudProvider sets field value
+func (o *AWSPrivateLinkConnection) SetCloudProvider(v string) {
+	o.CloudProvider = v
 }
 
 // GetEndpointServiceName returns the EndpointServiceName field value if set, zero value otherwise.

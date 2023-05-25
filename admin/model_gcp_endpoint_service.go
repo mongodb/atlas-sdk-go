@@ -11,6 +11,8 @@ var _ MappedNullable = &GCPEndpointService{}
 
 // GCPEndpointService Group of Private Endpoint Service settings.
 type GCPEndpointService struct {
+	// Cloud service provider that serves the requested endpoint service.
+	CloudProvider string `json:"cloudProvider"`
 	// List of Google Cloud network endpoint groups that corresponds to the Private Service Connect endpoint service.
 	EndpointGroupNames []string `json:"endpointGroupNames,omitempty"`
 	// Error message returned when requesting private connection resource. The resource returns `null` if the request succeeded.
@@ -29,8 +31,9 @@ type GCPEndpointService struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGCPEndpointService() *GCPEndpointService {
+func NewGCPEndpointService(cloudProvider string) *GCPEndpointService {
 	this := GCPEndpointService{}
+	this.CloudProvider = cloudProvider
 	return &this
 }
 
@@ -40,6 +43,30 @@ func NewGCPEndpointService() *GCPEndpointService {
 func NewGCPEndpointServiceWithDefaults() *GCPEndpointService {
 	this := GCPEndpointService{}
 	return &this
+}
+
+// GetCloudProvider returns the CloudProvider field value
+func (o *GCPEndpointService) GetCloudProvider() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.CloudProvider
+}
+
+// GetCloudProviderOk returns a tuple with the CloudProvider field value
+// and a boolean to check if the value has been set.
+func (o *GCPEndpointService) GetCloudProviderOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CloudProvider, true
+}
+
+// SetCloudProvider sets field value
+func (o *GCPEndpointService) SetCloudProvider(v string) {
+	o.CloudProvider = v
 }
 
 // GetEndpointGroupNames returns the EndpointGroupNames field value if set, zero value otherwise.

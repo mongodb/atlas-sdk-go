@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CloudProvider** | **string** | Cloud service provider that serves the requested endpoint service. | [readonly] 
 **EndpointGroupNames** | Pointer to **[]string** | List of Google Cloud network endpoint groups that corresponds to the Private Service Connect endpoint service. | [optional] 
 **ErrorMessage** | Pointer to **string** | Error message returned when requesting private connection resource. The resource returns &#x60;null&#x60; if the request succeeded. | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the Private Endpoint Service. | [optional] [readonly] 
@@ -15,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewGCPEndpointService
 
-`func NewGCPEndpointService() *GCPEndpointService`
+`func NewGCPEndpointService(cloudProvider string, ) *GCPEndpointService`
 
 NewGCPEndpointService instantiates a new GCPEndpointService object
 This constructor will assign default values to properties that have it defined,
@@ -29,6 +30,26 @@ will change when the set of required properties is changed
 NewGCPEndpointServiceWithDefaults instantiates a new GCPEndpointService object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCloudProvider
+
+`func (o *GCPEndpointService) GetCloudProvider() string`
+
+GetCloudProvider returns the CloudProvider field if non-nil, zero value otherwise.
+
+### GetCloudProviderOk
+
+`func (o *GCPEndpointService) GetCloudProviderOk() (*string, bool)`
+
+GetCloudProviderOk returns a tuple with the CloudProvider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCloudProvider
+
+`func (o *GCPEndpointService) SetCloudProvider(v string)`
+
+SetCloudProvider sets CloudProvider field to given value.
+
 
 ### GetEndpointGroupNames
 
