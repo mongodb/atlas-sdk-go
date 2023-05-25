@@ -245,8 +245,8 @@ func (a *AlertConfigurationsApiService) CreateAlertConfigurationWithParams(ctx c
 }
 
 // Creates one alert configuration for the specified project.
-func (r CreateAlertConfigurationApiRequest) AlertConfigViewForNdsGroup(alertConfigViewForNdsGroup AlertConfigViewForNdsGroup) CreateAlertConfigurationApiRequest {
-	r.alertConfigViewForNdsGroup = &alertConfigViewForNdsGroup
+func (r CreateAlertConfigurationApiRequest) AlertConfigViewForNdsGroup(alertConfigViewForNdsGroup *AlertConfigViewForNdsGroup) CreateAlertConfigurationApiRequest {
+	r.alertConfigViewForNdsGroup = alertConfigViewForNdsGroup
 	return r
 }
 
@@ -1160,8 +1160,8 @@ func (a *AlertConfigurationsApiService) ToggleAlertConfigurationWithParams(ctx c
 }
 
 // Enables or disables the specified alert configuration in the specified project.
-func (r ToggleAlertConfigurationApiRequest) Toggle(toggle Toggle) ToggleAlertConfigurationApiRequest {
-	r.toggle = &toggle
+func (r ToggleAlertConfigurationApiRequest) Toggle(toggle *Toggle) ToggleAlertConfigurationApiRequest {
+	r.toggle = toggle
 	return r
 }
 
@@ -1320,8 +1320,8 @@ func (a *AlertConfigurationsApiService) UpdateAlertConfigurationWithParams(ctx c
 }
 
 // Updates one alert configuration in the specified project.
-func (r UpdateAlertConfigurationApiRequest) AlertConfigViewForNdsGroup(alertConfigViewForNdsGroup AlertConfigViewForNdsGroup) UpdateAlertConfigurationApiRequest {
-	r.alertConfigViewForNdsGroup = &alertConfigViewForNdsGroup
+func (r UpdateAlertConfigurationApiRequest) AlertConfigViewForNdsGroup(alertConfigViewForNdsGroup *AlertConfigViewForNdsGroup) UpdateAlertConfigurationApiRequest {
+	r.alertConfigViewForNdsGroup = alertConfigViewForNdsGroup
 	return r
 }
 

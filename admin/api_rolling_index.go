@@ -66,8 +66,8 @@ func (a *RollingIndexApiService) CreateRollingIndexWithParams(ctx context.Contex
 }
 
 // Rolling index to create on the specified cluster.
-func (r CreateRollingIndexApiRequest) IndexRequest(indexRequest IndexRequest) CreateRollingIndexApiRequest {
-	r.indexRequest = &indexRequest
+func (r CreateRollingIndexApiRequest) IndexRequest(indexRequest *IndexRequest) CreateRollingIndexApiRequest {
+	r.indexRequest = indexRequest
 	return r
 }
 

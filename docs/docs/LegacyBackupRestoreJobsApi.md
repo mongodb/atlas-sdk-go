@@ -39,7 +39,7 @@ func main() {
     clusterName := "clusterName_example" // string | 
     restoreJob := *openapiclient.NewRestoreJob(*openapiclient.NewRestoreJobDelivery("MethodName_example")) // RestoreJob | 
 
-    resp, r, err := sdk.LegacyBackupRestoreJobsApi.CreateLegacyBackupRestoreJob(context.Background(), groupId, clusterName).RestoreJob(restoreJob).Execute()
+    resp, r, err := sdk.LegacyBackupRestoreJobsApi.CreateLegacyBackupRestoreJob(context.Background(), groupId, clusterName).RestoreJob(&restoreJob).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupRestoreJobsApi.CreateLegacyBackupRestoreJob``: %v\n", err)
         apiError := admin.AsError(err)

@@ -393,8 +393,8 @@ func (a *OrganizationsApiService) CreateOrganizationWithParams(ctx context.Conte
 }
 
 // Organization that you want to create.
-func (r CreateOrganizationApiRequest) CreateOrganizationRequest(createOrganizationRequest CreateOrganizationRequest) CreateOrganizationApiRequest {
-	r.createOrganizationRequest = &createOrganizationRequest
+func (r CreateOrganizationApiRequest) CreateOrganizationRequest(createOrganizationRequest *CreateOrganizationRequest) CreateOrganizationApiRequest {
+	r.createOrganizationRequest = createOrganizationRequest
 	return r
 }
 
@@ -528,8 +528,8 @@ func (a *OrganizationsApiService) CreateOrganizationInvitationWithParams(ctx con
 }
 
 // Invites one MongoDB Cloud user to join the specified organization.
-func (r CreateOrganizationInvitationApiRequest) OrganizationInvitationRequest(organizationInvitationRequest OrganizationInvitationRequest) CreateOrganizationInvitationApiRequest {
-	r.organizationInvitationRequest = &organizationInvitationRequest
+func (r CreateOrganizationInvitationApiRequest) OrganizationInvitationRequest(organizationInvitationRequest *OrganizationInvitationRequest) CreateOrganizationInvitationApiRequest {
+	r.organizationInvitationRequest = organizationInvitationRequest
 	return r
 }
 
@@ -2016,8 +2016,8 @@ func (a *OrganizationsApiService) RenameOrganizationWithParams(ctx context.Conte
 }
 
 // Details to update on the specified organization.
-func (r RenameOrganizationApiRequest) Organization(organization Organization) RenameOrganizationApiRequest {
-	r.organization = &organization
+func (r RenameOrganizationApiRequest) Organization(organization *Organization) RenameOrganizationApiRequest {
+	r.organization = organization
 	return r
 }
 
@@ -2160,8 +2160,8 @@ func (a *OrganizationsApiService) UpdateOrganizationInvitationWithParams(ctx con
 }
 
 // Updates the details of one pending invitation to the specified organization.
-func (r UpdateOrganizationInvitationApiRequest) OrganizationInvitationRequest(organizationInvitationRequest OrganizationInvitationRequest) UpdateOrganizationInvitationApiRequest {
-	r.organizationInvitationRequest = &organizationInvitationRequest
+func (r UpdateOrganizationInvitationApiRequest) OrganizationInvitationRequest(organizationInvitationRequest *OrganizationInvitationRequest) UpdateOrganizationInvitationApiRequest {
+	r.organizationInvitationRequest = organizationInvitationRequest
 	return r
 }
 
@@ -2307,8 +2307,8 @@ func (a *OrganizationsApiService) UpdateOrganizationInvitationByIdWithParams(ctx
 }
 
 // Updates the details of one pending invitation to the specified organization.
-func (r UpdateOrganizationInvitationByIdApiRequest) OrganizationInvitationUpdateRequest(organizationInvitationUpdateRequest OrganizationInvitationUpdateRequest) UpdateOrganizationInvitationByIdApiRequest {
-	r.organizationInvitationUpdateRequest = &organizationInvitationUpdateRequest
+func (r UpdateOrganizationInvitationByIdApiRequest) OrganizationInvitationUpdateRequest(organizationInvitationUpdateRequest *OrganizationInvitationUpdateRequest) UpdateOrganizationInvitationByIdApiRequest {
+	r.organizationInvitationUpdateRequest = organizationInvitationUpdateRequest
 	return r
 }
 
@@ -2460,8 +2460,8 @@ func (a *OrganizationsApiService) UpdateOrganizationSettingsWithParams(ctx conte
 }
 
 // Details to update on the specified organization&#39;s settings.
-func (r UpdateOrganizationSettingsApiRequest) OrganizationSettings(organizationSettings OrganizationSettings) UpdateOrganizationSettingsApiRequest {
-	r.organizationSettings = &organizationSettings
+func (r UpdateOrganizationSettingsApiRequest) OrganizationSettings(organizationSettings *OrganizationSettings) UpdateOrganizationSettingsApiRequest {
+	r.organizationSettings = organizationSettings
 	return r
 }
 

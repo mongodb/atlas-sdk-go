@@ -145,8 +145,8 @@ func (a *AlertsApiService) AcknowledgeAlertWithParams(ctx context.Context, args 
 }
 
 // Confirm one alert.
-func (r AcknowledgeAlertApiRequest) AlertViewForNdsGroup(alertViewForNdsGroup AlertViewForNdsGroup) AcknowledgeAlertApiRequest {
-	r.alertViewForNdsGroup = &alertViewForNdsGroup
+func (r AcknowledgeAlertApiRequest) AlertViewForNdsGroup(alertViewForNdsGroup *AlertViewForNdsGroup) AcknowledgeAlertApiRequest {
+	r.alertViewForNdsGroup = alertViewForNdsGroup
 	return r
 }
 

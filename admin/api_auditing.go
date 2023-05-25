@@ -215,8 +215,8 @@ func (a *AuditingApiService) UpdateAuditingConfigurationWithParams(ctx context.C
 }
 
 // Updated auditing configuration for the specified project.
-func (r UpdateAuditingConfigurationApiRequest) AuditLog(auditLog AuditLog) UpdateAuditingConfigurationApiRequest {
-	r.auditLog = &auditLog
+func (r UpdateAuditingConfigurationApiRequest) AuditLog(auditLog *AuditLog) UpdateAuditingConfigurationApiRequest {
+	r.auditLog = auditLog
 	return r
 }
 

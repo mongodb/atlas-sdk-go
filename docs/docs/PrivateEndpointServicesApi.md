@@ -48,7 +48,7 @@ func main() {
     endpointServiceId := "endpointServiceId_example" // string | 
     createPrivateEndpointRequest := openapiclient.createPrivateEndpoint_request{CreateAWSEndpointRequest: openapiclient.NewCreateAWSEndpointRequest()} // CreatePrivateEndpointRequest | 
 
-    resp, r, err := sdk.PrivateEndpointServicesApi.CreatePrivateEndpoint(context.Background(), groupId, cloudProvider, endpointServiceId).CreatePrivateEndpointRequest(createPrivateEndpointRequest).Execute()
+    resp, r, err := sdk.PrivateEndpointServicesApi.CreatePrivateEndpoint(context.Background(), groupId, cloudProvider, endpointServiceId).CreatePrivateEndpointRequest(&createPrivateEndpointRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesApi.CreatePrivateEndpoint``: %v\n", err)
         apiError := admin.AsError(err)
@@ -128,7 +128,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     createEndpointServiceRequest := *openapiclient.NewCreateEndpointServiceRequest("ProviderName_example", "Region_example") // CreateEndpointServiceRequest | 
 
-    resp, r, err := sdk.PrivateEndpointServicesApi.CreatePrivateEndpointService(context.Background(), groupId).CreateEndpointServiceRequest(createEndpointServiceRequest).Execute()
+    resp, r, err := sdk.PrivateEndpointServicesApi.CreatePrivateEndpointService(context.Background(), groupId).CreateEndpointServiceRequest(&createEndpointServiceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesApi.CreatePrivateEndpointService``: %v\n", err)
         apiError := admin.AsError(err)
@@ -677,7 +677,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     projectSettingItem := *openapiclient.NewProjectSettingItem(false) // ProjectSettingItem | 
 
-    resp, r, err := sdk.PrivateEndpointServicesApi.ToggleRegionalizedPrivateEndpointSetting(context.Background(), groupId).ProjectSettingItem(projectSettingItem).Execute()
+    resp, r, err := sdk.PrivateEndpointServicesApi.ToggleRegionalizedPrivateEndpointSetting(context.Background(), groupId).ProjectSettingItem(&projectSettingItem).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesApi.ToggleRegionalizedPrivateEndpointSetting``: %v\n", err)
         apiError := admin.AsError(err)

@@ -332,7 +332,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     groupMaintenanceWindow := *openapiclient.NewGroupMaintenanceWindow(int(123), int(123)) // GroupMaintenanceWindow | 
 
-    r, err := sdk.MaintenanceWindowsApi.UpdateMaintenanceWindow(context.Background(), groupId).GroupMaintenanceWindow(groupMaintenanceWindow).Execute()
+    r, err := sdk.MaintenanceWindowsApi.UpdateMaintenanceWindow(context.Background(), groupId).GroupMaintenanceWindow(&groupMaintenanceWindow).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MaintenanceWindowsApi.UpdateMaintenanceWindow``: %v\n", err)
         apiError := admin.AsError(err)

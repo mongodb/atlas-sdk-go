@@ -393,8 +393,8 @@ func (a *DataFederationApiService) CreateDataFederationPrivateEndpointWithParams
 }
 
 // Private endpoint for Federated Database Instances and Online Archives to add to the specified project.
-func (r CreateDataFederationPrivateEndpointApiRequest) PrivateNetworkEndpointIdEntry(privateNetworkEndpointIdEntry PrivateNetworkEndpointIdEntry) CreateDataFederationPrivateEndpointApiRequest {
-	r.privateNetworkEndpointIdEntry = &privateNetworkEndpointIdEntry
+func (r CreateDataFederationPrivateEndpointApiRequest) PrivateNetworkEndpointIdEntry(privateNetworkEndpointIdEntry *PrivateNetworkEndpointIdEntry) CreateDataFederationPrivateEndpointApiRequest {
+	r.privateNetworkEndpointIdEntry = privateNetworkEndpointIdEntry
 	return r
 }
 
@@ -558,8 +558,8 @@ func (a *DataFederationApiService) CreateFederatedDatabaseWithParams(ctx context
 }
 
 // Details to create one federated database instance in the specified project.
-func (r CreateFederatedDatabaseApiRequest) DataLakeTenant(dataLakeTenant DataLakeTenant) CreateFederatedDatabaseApiRequest {
-	r.dataLakeTenant = &dataLakeTenant
+func (r CreateFederatedDatabaseApiRequest) DataLakeTenant(dataLakeTenant *DataLakeTenant) CreateFederatedDatabaseApiRequest {
+	r.dataLakeTenant = dataLakeTenant
 	return r
 }
 
@@ -721,8 +721,8 @@ func (a *DataFederationApiService) CreateOneDataFederationQueryLimitWithParams(c
 }
 
 // Creates or updates one query limit for one federated database instance.
-func (r CreateOneDataFederationQueryLimitApiRequest) DataFederationTenantQueryLimit(dataFederationTenantQueryLimit DataFederationTenantQueryLimit) CreateOneDataFederationQueryLimitApiRequest {
-	r.dataFederationTenantQueryLimit = &dataFederationTenantQueryLimit
+func (r CreateOneDataFederationQueryLimitApiRequest) DataFederationTenantQueryLimit(dataFederationTenantQueryLimit *DataFederationTenantQueryLimit) CreateOneDataFederationQueryLimitApiRequest {
+	r.dataFederationTenantQueryLimit = dataFederationTenantQueryLimit
 	return r
 }
 
@@ -2259,8 +2259,8 @@ func (r UpdateFederatedDatabaseApiRequest) SkipRoleValidation(skipRoleValidation
 }
 
 // Details of one Federated Database to update in the specified project.
-func (r UpdateFederatedDatabaseApiRequest) DataLakeTenant(dataLakeTenant DataLakeTenant) UpdateFederatedDatabaseApiRequest {
-	r.dataLakeTenant = &dataLakeTenant
+func (r UpdateFederatedDatabaseApiRequest) DataLakeTenant(dataLakeTenant *DataLakeTenant) UpdateFederatedDatabaseApiRequest {
+	r.dataLakeTenant = dataLakeTenant
 	return r
 }
 

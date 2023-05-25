@@ -638,8 +638,8 @@ func (a *MaintenanceWindowsApiService) UpdateMaintenanceWindowWithParams(ctx con
 }
 
 // Updates the maintenance window for the specified project.
-func (r UpdateMaintenanceWindowApiRequest) GroupMaintenanceWindow(groupMaintenanceWindow GroupMaintenanceWindow) UpdateMaintenanceWindowApiRequest {
-	r.groupMaintenanceWindow = &groupMaintenanceWindow
+func (r UpdateMaintenanceWindowApiRequest) GroupMaintenanceWindow(groupMaintenanceWindow *GroupMaintenanceWindow) UpdateMaintenanceWindowApiRequest {
+	r.groupMaintenanceWindow = groupMaintenanceWindow
 	return r
 }
 

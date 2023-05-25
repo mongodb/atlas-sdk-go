@@ -230,8 +230,8 @@ func (a *CloudMigrationServiceApiService) CreateLinkTokenWithParams(ctx context.
 }
 
 // IP address access list entries associated with the migration.
-func (r CreateLinkTokenApiRequest) TargetOrgRequest(targetOrgRequest TargetOrgRequest) CreateLinkTokenApiRequest {
-	r.targetOrgRequest = &targetOrgRequest
+func (r CreateLinkTokenApiRequest) TargetOrgRequest(targetOrgRequest *TargetOrgRequest) CreateLinkTokenApiRequest {
+	r.targetOrgRequest = targetOrgRequest
 	return r
 }
 
@@ -374,8 +374,8 @@ func (a *CloudMigrationServiceApiService) CreatePushMigrationWithParams(ctx cont
 }
 
 // One migration to be created.
-func (r CreatePushMigrationApiRequest) LiveMigrationRequest(liveMigrationRequest LiveMigrationRequest) CreatePushMigrationApiRequest {
-	r.liveMigrationRequest = &liveMigrationRequest
+func (r CreatePushMigrationApiRequest) LiveMigrationRequest(liveMigrationRequest *LiveMigrationRequest) CreatePushMigrationApiRequest {
+	r.liveMigrationRequest = liveMigrationRequest
 	return r
 }
 
@@ -1184,8 +1184,8 @@ func (a *CloudMigrationServiceApiService) ValidateMigrationWithParams(ctx contex
 }
 
 // One migration to be validated.
-func (r ValidateMigrationApiRequest) LiveMigrationRequest(liveMigrationRequest LiveMigrationRequest) ValidateMigrationApiRequest {
-	r.liveMigrationRequest = &liveMigrationRequest
+func (r ValidateMigrationApiRequest) LiveMigrationRequest(liveMigrationRequest *LiveMigrationRequest) ValidateMigrationApiRequest {
+	r.liveMigrationRequest = liveMigrationRequest
 	return r
 }
 

@@ -115,8 +115,8 @@ func (a *SharedTierSnapshotsApiService) DownloadSharedClusterBackupWithParams(ct
 }
 
 // Snapshot to be downloaded.
-func (r DownloadSharedClusterBackupApiRequest) TenantRestore(tenantRestore TenantRestore) DownloadSharedClusterBackupApiRequest {
-	r.tenantRestore = &tenantRestore
+func (r DownloadSharedClusterBackupApiRequest) TenantRestore(tenantRestore *TenantRestore) DownloadSharedClusterBackupApiRequest {
+	r.tenantRestore = tenantRestore
 	return r
 }
 

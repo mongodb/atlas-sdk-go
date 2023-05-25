@@ -215,8 +215,8 @@ func (a *AWSClustersDNSApiService) ToggleAWSCustomDNSWithParams(ctx context.Cont
 }
 
 // Enables or disables the custom DNS configuration for AWS clusters in the specified project.
-func (r ToggleAWSCustomDNSApiRequest) AWSCustomDNSEnabled(aWSCustomDNSEnabled AWSCustomDNSEnabled) ToggleAWSCustomDNSApiRequest {
-	r.aWSCustomDNSEnabled = &aWSCustomDNSEnabled
+func (r ToggleAWSCustomDNSApiRequest) AWSCustomDNSEnabled(aWSCustomDNSEnabled *AWSCustomDNSEnabled) ToggleAWSCustomDNSApiRequest {
+	r.aWSCustomDNSEnabled = aWSCustomDNSEnabled
 	return r
 }
 

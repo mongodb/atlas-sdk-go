@@ -398,8 +398,8 @@ func (a *ClusterOutageSimulationApiService) StartOutageSimulationWithParams(ctx 
 }
 
 // Describes the outage simulation.
-func (r StartOutageSimulationApiRequest) ClusterOutageSimulation(clusterOutageSimulation ClusterOutageSimulation) StartOutageSimulationApiRequest {
-	r.clusterOutageSimulation = &clusterOutageSimulation
+func (r StartOutageSimulationApiRequest) ClusterOutageSimulation(clusterOutageSimulation *ClusterOutageSimulation) StartOutageSimulationApiRequest {
+	r.clusterOutageSimulation = clusterOutageSimulation
 	return r
 }
 

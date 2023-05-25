@@ -43,7 +43,7 @@ func main() {
     instanceName := "instanceName_example" // string | 
     serverlessTenantEndpointCreate := *openapiclient.NewServerlessTenantEndpointCreate() // ServerlessTenantEndpointCreate | 
 
-    resp, r, err := sdk.ServerlessPrivateEndpointsApi.CreateServerlessPrivateEndpoint(context.Background(), groupId, instanceName).ServerlessTenantEndpointCreate(serverlessTenantEndpointCreate).Execute()
+    resp, r, err := sdk.ServerlessPrivateEndpointsApi.CreateServerlessPrivateEndpoint(context.Background(), groupId, instanceName).ServerlessTenantEndpointCreate(&serverlessTenantEndpointCreate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServerlessPrivateEndpointsApi.CreateServerlessPrivateEndpoint``: %v\n", err)
         apiError := admin.AsError(err)
@@ -358,7 +358,7 @@ func main() {
     endpointId := "endpointId_example" // string | 
     serverlessTenantEndpointUpdate := openapiclient.ServerlessTenantEndpointUpdate{ServerlessAWSTenantEndpointUpdate: openapiclient.NewServerlessAWSTenantEndpointUpdate("ProviderName_example")} // ServerlessTenantEndpointUpdate |  (optional)
 
-    resp, r, err := sdk.ServerlessPrivateEndpointsApi.UpdateServerlessPrivateEndpoint(context.Background(), groupId, instanceName, endpointId).ServerlessTenantEndpointUpdate(serverlessTenantEndpointUpdate).Execute()
+    resp, r, err := sdk.ServerlessPrivateEndpointsApi.UpdateServerlessPrivateEndpoint(context.Background(), groupId, instanceName, endpointId).ServerlessTenantEndpointUpdate(&serverlessTenantEndpointUpdate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServerlessPrivateEndpointsApi.UpdateServerlessPrivateEndpoint``: %v\n", err)
         apiError := admin.AsError(err)

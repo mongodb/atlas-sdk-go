@@ -115,8 +115,8 @@ func (a *SharedTierRestoreJobsApiService) CreateSharedClusterBackupRestoreJobWit
 }
 
 // The restore job details.
-func (r CreateSharedClusterBackupRestoreJobApiRequest) TenantRestore(tenantRestore TenantRestore) CreateSharedClusterBackupRestoreJobApiRequest {
-	r.tenantRestore = &tenantRestore
+func (r CreateSharedClusterBackupRestoreJobApiRequest) TenantRestore(tenantRestore *TenantRestore) CreateSharedClusterBackupRestoreJobApiRequest {
+	r.tenantRestore = tenantRestore
 	return r
 }
 

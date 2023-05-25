@@ -70,8 +70,8 @@ func (a *LegacyBackupRestoreJobsApiService) CreateLegacyBackupRestoreJobWithPara
 }
 
 // Legacy backup to restore to one cluster in the specified project.
-func (r CreateLegacyBackupRestoreJobApiRequest) RestoreJob(restoreJob RestoreJob) CreateLegacyBackupRestoreJobApiRequest {
-	r.restoreJob = &restoreJob
+func (r CreateLegacyBackupRestoreJobApiRequest) RestoreJob(restoreJob *RestoreJob) CreateLegacyBackupRestoreJobApiRequest {
+	r.restoreJob = restoreJob
 	return r
 }
 

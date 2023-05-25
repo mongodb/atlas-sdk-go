@@ -45,7 +45,7 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     targetOrgRequest := *openapiclient.NewTargetOrgRequest() // TargetOrgRequest | 
 
-    resp, r, err := sdk.CloudMigrationServiceApi.CreateLinkToken(context.Background(), orgId).TargetOrgRequest(targetOrgRequest).Execute()
+    resp, r, err := sdk.CloudMigrationServiceApi.CreateLinkToken(context.Background(), orgId).TargetOrgRequest(&targetOrgRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.CreateLinkToken``: %v\n", err)
         apiError := admin.AsError(err)
@@ -121,7 +121,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     liveMigrationRequest := *openapiclient.NewLiveMigrationRequest(*openapiclient.NewDestination("ClusterName_example", "9b43a5b329223c3a1591a678", "HostnameSchemaType_example"), false, *openapiclient.NewSource("ClusterName_example", "9b43a5b329223c3a1591a678", false, false)) // LiveMigrationRequest | 
 
-    resp, r, err := sdk.CloudMigrationServiceApi.CreatePushMigration(context.Background(), groupId).LiveMigrationRequest(liveMigrationRequest).Execute()
+    resp, r, err := sdk.CloudMigrationServiceApi.CreatePushMigration(context.Background(), groupId).LiveMigrationRequest(&liveMigrationRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.CreatePushMigration``: %v\n", err)
         apiError := admin.AsError(err)
@@ -572,7 +572,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     liveMigrationRequest := *openapiclient.NewLiveMigrationRequest(*openapiclient.NewDestination("ClusterName_example", "9b43a5b329223c3a1591a678", "HostnameSchemaType_example"), false, *openapiclient.NewSource("ClusterName_example", "9b43a5b329223c3a1591a678", false, false)) // LiveMigrationRequest | 
 
-    resp, r, err := sdk.CloudMigrationServiceApi.ValidateMigration(context.Background(), groupId).LiveMigrationRequest(liveMigrationRequest).Execute()
+    resp, r, err := sdk.CloudMigrationServiceApi.ValidateMigration(context.Background(), groupId).LiveMigrationRequest(&liveMigrationRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.ValidateMigration``: %v\n", err)
         apiError := admin.AsError(err)

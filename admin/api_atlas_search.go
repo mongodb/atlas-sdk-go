@@ -167,8 +167,8 @@ func (a *AtlasSearchApiService) CreateAtlasSearchIndexWithParams(ctx context.Con
 }
 
 // Creates one Atlas Search index on the specified collection.
-func (r CreateAtlasSearchIndexApiRequest) FTSIndex(fTSIndex FTSIndex) CreateAtlasSearchIndexApiRequest {
-	r.fTSIndex = &fTSIndex
+func (r CreateAtlasSearchIndexApiRequest) FTSIndex(fTSIndex *FTSIndex) CreateAtlasSearchIndexApiRequest {
+	r.fTSIndex = fTSIndex
 	return r
 }
 
@@ -776,8 +776,8 @@ func (a *AtlasSearchApiService) UpdateAtlasSearchIndexWithParams(ctx context.Con
 }
 
 // Details to update on the Atlas Search index.
-func (r UpdateAtlasSearchIndexApiRequest) FTSIndex(fTSIndex FTSIndex) UpdateAtlasSearchIndexApiRequest {
-	r.fTSIndex = &fTSIndex
+func (r UpdateAtlasSearchIndexApiRequest) FTSIndex(fTSIndex *FTSIndex) UpdateAtlasSearchIndexApiRequest {
+	r.fTSIndex = fTSIndex
 	return r
 }
 

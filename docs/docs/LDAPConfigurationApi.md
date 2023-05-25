@@ -265,7 +265,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     userSecurity := *openapiclient.NewUserSecurity() // UserSecurity | 
 
-    resp, r, err := sdk.LDAPConfigurationApi.SaveLDAPConfiguration(context.Background(), groupId).UserSecurity(userSecurity).Execute()
+    resp, r, err := sdk.LDAPConfigurationApi.SaveLDAPConfiguration(context.Background(), groupId).UserSecurity(&userSecurity).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.SaveLDAPConfiguration``: %v\n", err)
         apiError := admin.AsError(err)
@@ -341,7 +341,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     nDSLDAPVerifyConnectivityJobRequestParams := *openapiclient.NewNDSLDAPVerifyConnectivityJobRequestParams("BindPassword_example", "CN=BindUser,CN=Users,DC=myldapserver,DC=mycompany,DC=com", "Hostname_example", int(123)) // NDSLDAPVerifyConnectivityJobRequestParams | 
 
-    resp, r, err := sdk.LDAPConfigurationApi.VerifyLDAPConfiguration(context.Background(), groupId).NDSLDAPVerifyConnectivityJobRequestParams(nDSLDAPVerifyConnectivityJobRequestParams).Execute()
+    resp, r, err := sdk.LDAPConfigurationApi.VerifyLDAPConfiguration(context.Background(), groupId).NDSLDAPVerifyConnectivityJobRequestParams(&nDSLDAPVerifyConnectivityJobRequestParams).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.VerifyLDAPConfiguration``: %v\n", err)
         apiError := admin.AsError(err)

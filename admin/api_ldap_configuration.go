@@ -547,8 +547,8 @@ func (a *LDAPConfigurationApiService) SaveLDAPConfigurationWithParams(ctx contex
 }
 
 // Updates the LDAP configuration for the specified project.
-func (r SaveLDAPConfigurationApiRequest) UserSecurity(userSecurity UserSecurity) SaveLDAPConfigurationApiRequest {
-	r.userSecurity = &userSecurity
+func (r SaveLDAPConfigurationApiRequest) UserSecurity(userSecurity *UserSecurity) SaveLDAPConfigurationApiRequest {
+	r.userSecurity = userSecurity
 	return r
 }
 
@@ -693,8 +693,8 @@ func (a *LDAPConfigurationApiService) VerifyLDAPConfigurationWithParams(ctx cont
 }
 
 // The LDAP configuration for the specified project that you want to verify.
-func (r VerifyLDAPConfigurationApiRequest) NDSLDAPVerifyConnectivityJobRequestParams(nDSLDAPVerifyConnectivityJobRequestParams NDSLDAPVerifyConnectivityJobRequestParams) VerifyLDAPConfigurationApiRequest {
-	r.nDSLDAPVerifyConnectivityJobRequestParams = &nDSLDAPVerifyConnectivityJobRequestParams
+func (r VerifyLDAPConfigurationApiRequest) NDSLDAPVerifyConnectivityJobRequestParams(nDSLDAPVerifyConnectivityJobRequestParams *NDSLDAPVerifyConnectivityJobRequestParams) VerifyLDAPConfigurationApiRequest {
+	r.nDSLDAPVerifyConnectivityJobRequestParams = nDSLDAPVerifyConnectivityJobRequestParams
 	return r
 }
 

@@ -648,8 +648,8 @@ func (a *TeamsApiService) CreateTeamWithParams(ctx context.Context, args *Create
 }
 
 // Team that you want to create in the specified organization.
-func (r CreateTeamApiRequest) Team(team Team) CreateTeamApiRequest {
-	r.team = &team
+func (r CreateTeamApiRequest) Team(team *Team) CreateTeamApiRequest {
+	r.team = team
 	return r
 }
 
@@ -2005,8 +2005,8 @@ func (a *TeamsApiService) RenameTeamWithParams(ctx context.Context, args *Rename
 }
 
 // Details to update on the specified team.
-func (r RenameTeamApiRequest) Team(team Team) RenameTeamApiRequest {
-	r.team = &team
+func (r RenameTeamApiRequest) Team(team *Team) RenameTeamApiRequest {
+	r.team = team
 	return r
 }
 
@@ -2161,8 +2161,8 @@ func (a *TeamsApiService) UpdateTeamRolesWithParams(ctx context.Context, args *U
 }
 
 // The project roles assigned to the specified team.
-func (r UpdateTeamRolesApiRequest) TeamRole(teamRole TeamRole) UpdateTeamRolesApiRequest {
-	r.teamRole = &teamRole
+func (r UpdateTeamRolesApiRequest) TeamRole(teamRole *TeamRole) UpdateTeamRolesApiRequest {
+	r.teamRole = teamRole
 	return r
 }
 

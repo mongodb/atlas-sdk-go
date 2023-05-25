@@ -163,8 +163,8 @@ func (a *CloudProviderAccessApiService) AuthorizeCloudProviderAccessRoleWithPara
 }
 
 // Grants access to the specified project for the specified AWS IAM role.
-func (r AuthorizeCloudProviderAccessRoleApiRequest) CloudProviderAccessRole(cloudProviderAccessRole CloudProviderAccessRole) AuthorizeCloudProviderAccessRoleApiRequest {
-	r.cloudProviderAccessRole = &cloudProviderAccessRole
+func (r AuthorizeCloudProviderAccessRoleApiRequest) CloudProviderAccessRole(cloudProviderAccessRole *CloudProviderAccessRole) AuthorizeCloudProviderAccessRoleApiRequest {
+	r.cloudProviderAccessRole = cloudProviderAccessRole
 	return r
 }
 
@@ -316,8 +316,8 @@ func (a *CloudProviderAccessApiService) CreateCloudProviderAccessRoleWithParams(
 }
 
 // Creates one AWS IAM role.
-func (r CreateCloudProviderAccessRoleApiRequest) CloudProviderAccessRole(cloudProviderAccessRole CloudProviderAccessRole) CreateCloudProviderAccessRoleApiRequest {
-	r.cloudProviderAccessRole = &cloudProviderAccessRole
+func (r CreateCloudProviderAccessRoleApiRequest) CloudProviderAccessRole(cloudProviderAccessRole *CloudProviderAccessRole) CreateCloudProviderAccessRoleApiRequest {
+	r.cloudProviderAccessRole = cloudProviderAccessRole
 	return r
 }
 

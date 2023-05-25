@@ -113,7 +113,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     auditLog := *openapiclient.NewAuditLog(false, "AuditFilter_example", false) // AuditLog | 
 
-    resp, r, err := sdk.AuditingApi.UpdateAuditingConfiguration(context.Background(), groupId).AuditLog(auditLog).Execute()
+    resp, r, err := sdk.AuditingApi.UpdateAuditingConfiguration(context.Background(), groupId).AuditLog(&auditLog).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AuditingApi.UpdateAuditingConfiguration``: %v\n", err)
         apiError := admin.AsError(err)

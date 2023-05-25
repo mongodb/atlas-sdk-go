@@ -39,7 +39,7 @@ func main() {
 
     appUser := *openapiclient.NewAppUser("Country_example", "EmailAddress_example", "FirstName_example", "LastName_example", "MobileNumber_example", "Password_example", "Username_example") // AppUser | 
 
-    resp, r, err := sdk.MongoDBCloudUsersApi.CreateUser(context.Background()).AppUser(appUser).Execute()
+    resp, r, err := sdk.MongoDBCloudUsersApi.CreateUser(context.Background()).AppUser(&appUser).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersApi.CreateUser``: %v\n", err)
         apiError := admin.AsError(err)

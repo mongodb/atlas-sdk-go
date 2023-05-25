@@ -181,8 +181,8 @@ func (a *MultiCloudClustersApiService) CreateClusterWithParams(ctx context.Conte
 }
 
 // Cluster to create in the specific project.
-func (r CreateClusterApiRequest) ClusterDescriptionV15(clusterDescriptionV15 ClusterDescriptionV15) CreateClusterApiRequest {
-	r.clusterDescriptionV15 = &clusterDescriptionV15
+func (r CreateClusterApiRequest) ClusterDescriptionV15(clusterDescriptionV15 *ClusterDescriptionV15) CreateClusterApiRequest {
+	r.clusterDescriptionV15 = clusterDescriptionV15
 	return r
 }
 
@@ -920,8 +920,8 @@ func (a *MultiCloudClustersApiService) UpdateClusterWithParams(ctx context.Conte
 }
 
 // Cluster to update in the specified project.
-func (r UpdateClusterApiRequest) ClusterDescriptionV15(clusterDescriptionV15 ClusterDescriptionV15) UpdateClusterApiRequest {
-	r.clusterDescriptionV15 = &clusterDescriptionV15
+func (r UpdateClusterApiRequest) ClusterDescriptionV15(clusterDescriptionV15 *ClusterDescriptionV15) UpdateClusterApiRequest {
+	r.clusterDescriptionV15 = clusterDescriptionV15
 	return r
 }
 

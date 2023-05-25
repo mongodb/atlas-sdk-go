@@ -221,8 +221,8 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) UpdateEncryptionA
 }
 
 // Required parameters depend on whether someone has enabled Encryption at Rest using Customer Key Management:  If you have enabled Encryption at Rest using Customer Key Management (CMK), Atlas requires all of the parameters for the desired encryption provider.  - To use AWS Key Management Service (KMS), MongoDB Cloud requires all the fields in the **awsKms** object. - To use Azure Key Vault, MongoDB Cloud requires all the fields in the **azureKeyVault** object. - To use Google Cloud Key Management Service (KMS), MongoDB Cloud requires all the fields in the **googleCloudKms** object.  If you enabled Encryption at Rest using Customer Key  Management, administrators can pass only the changed fields for the **awsKms**, **azureKeyVault**, or **googleCloudKms** object to update the configuration to this endpoint.
-func (r UpdateEncryptionAtRestApiRequest) EncryptionAtRest(encryptionAtRest EncryptionAtRest) UpdateEncryptionAtRestApiRequest {
-	r.encryptionAtRest = &encryptionAtRest
+func (r UpdateEncryptionAtRestApiRequest) EncryptionAtRest(encryptionAtRest *EncryptionAtRest) UpdateEncryptionAtRestApiRequest {
+	r.encryptionAtRest = encryptionAtRest
 	return r
 }
 

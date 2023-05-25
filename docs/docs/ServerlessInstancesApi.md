@@ -42,7 +42,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     serverlessInstanceDescriptionCreate := *openapiclient.NewServerlessInstanceDescriptionCreate("Name_example", *openapiclient.NewServerlessProviderSettings("BackingProviderName_example", "RegionName_example")) // ServerlessInstanceDescriptionCreate | 
 
-    resp, r, err := sdk.ServerlessInstancesApi.CreateServerlessInstance(context.Background(), groupId).ServerlessInstanceDescriptionCreate(serverlessInstanceDescriptionCreate).Execute()
+    resp, r, err := sdk.ServerlessInstancesApi.CreateServerlessInstance(context.Background(), groupId).ServerlessInstanceDescriptionCreate(&serverlessInstanceDescriptionCreate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServerlessInstancesApi.CreateServerlessInstance``: %v\n", err)
         apiError := admin.AsError(err)
@@ -351,7 +351,7 @@ func main() {
     name := "name_example" // string | 
     serverlessInstanceDescriptionUpdate := *openapiclient.NewServerlessInstanceDescriptionUpdate() // ServerlessInstanceDescriptionUpdate | 
 
-    resp, r, err := sdk.ServerlessInstancesApi.UpdateServerlessInstance(context.Background(), groupId, name).ServerlessInstanceDescriptionUpdate(serverlessInstanceDescriptionUpdate).Execute()
+    resp, r, err := sdk.ServerlessInstancesApi.UpdateServerlessInstance(context.Background(), groupId, name).ServerlessInstanceDescriptionUpdate(&serverlessInstanceDescriptionUpdate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServerlessInstancesApi.UpdateServerlessInstance``: %v\n", err)
         apiError := admin.AsError(err)

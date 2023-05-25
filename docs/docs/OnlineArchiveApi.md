@@ -44,7 +44,7 @@ func main() {
     clusterName := "clusterName_example" // string | 
     onlineArchive := *openapiclient.NewOnlineArchive() // OnlineArchive | 
 
-    resp, r, err := sdk.OnlineArchiveApi.CreateOnlineArchive(context.Background(), groupId, clusterName).OnlineArchive(onlineArchive).Execute()
+    resp, r, err := sdk.OnlineArchiveApi.CreateOnlineArchive(context.Background(), groupId, clusterName).OnlineArchive(&onlineArchive).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OnlineArchiveApi.CreateOnlineArchive``: %v\n", err)
         apiError := admin.AsError(err)
@@ -448,7 +448,7 @@ func main() {
     clusterName := "clusterName_example" // string | 
     onlineArchive := *openapiclient.NewOnlineArchive() // OnlineArchive | 
 
-    resp, r, err := sdk.OnlineArchiveApi.UpdateOnlineArchive(context.Background(), groupId, archiveId, clusterName).OnlineArchive(onlineArchive).Execute()
+    resp, r, err := sdk.OnlineArchiveApi.UpdateOnlineArchive(context.Background(), groupId, archiveId, clusterName).OnlineArchive(&onlineArchive).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OnlineArchiveApi.UpdateOnlineArchive``: %v\n", err)
         apiError := admin.AsError(err)

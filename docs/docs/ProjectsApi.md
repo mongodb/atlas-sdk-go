@@ -57,7 +57,7 @@ func main() {
     group := *openapiclient.NewGroup(int64(123), time.Now(), "Name_example", "32b6e34b3d91647abb20e7b8") // Group | 
     projectOwnerId := "projectOwnerId_example" // string |  (optional)
 
-    resp, r, err := sdk.ProjectsApi.CreateProject(context.Background()).Group(group).ProjectOwnerId(projectOwnerId).Execute()
+    resp, r, err := sdk.ProjectsApi.CreateProject(context.Background()).Group(&group).ProjectOwnerId(projectOwnerId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.CreateProject``: %v\n", err)
         apiError := admin.AsError(err)
@@ -129,7 +129,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     groupInvitationRequest := *openapiclient.NewGroupInvitationRequest() // GroupInvitationRequest | 
 
-    resp, r, err := sdk.ProjectsApi.CreateProjectInvitation(context.Background(), groupId).GroupInvitationRequest(groupInvitationRequest).Execute()
+    resp, r, err := sdk.ProjectsApi.CreateProjectInvitation(context.Background(), groupId).GroupInvitationRequest(&groupInvitationRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.CreateProjectInvitation``: %v\n", err)
         apiError := admin.AsError(err)
@@ -1187,7 +1187,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     limit := openapiclient.Limit{DataFederationQueryLimit: openapiclient.NewDataFederationQueryLimit("Name_example", int64(123))} // Limit |  (optional)
 
-    resp, r, err := sdk.ProjectsApi.SetProjectLimit(context.Background(), limitName, groupId).Limit(limit).Execute()
+    resp, r, err := sdk.ProjectsApi.SetProjectLimit(context.Background(), limitName, groupId).Limit(&limit).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.SetProjectLimit``: %v\n", err)
         apiError := admin.AsError(err)
@@ -1265,7 +1265,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     groupName := *openapiclient.NewGroupName() // GroupName |  (optional)
 
-    resp, r, err := sdk.ProjectsApi.UpdateProject(context.Background(), groupId).GroupName(groupName).Execute()
+    resp, r, err := sdk.ProjectsApi.UpdateProject(context.Background(), groupId).GroupName(&groupName).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.UpdateProject``: %v\n", err)
         apiError := admin.AsError(err)
@@ -1341,7 +1341,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     groupInvitationRequest := *openapiclient.NewGroupInvitationRequest() // GroupInvitationRequest | 
 
-    resp, r, err := sdk.ProjectsApi.UpdateProjectInvitation(context.Background(), groupId).GroupInvitationRequest(groupInvitationRequest).Execute()
+    resp, r, err := sdk.ProjectsApi.UpdateProjectInvitation(context.Background(), groupId).GroupInvitationRequest(&groupInvitationRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.UpdateProjectInvitation``: %v\n", err)
         apiError := admin.AsError(err)
@@ -1418,7 +1418,7 @@ func main() {
     invitationId := "invitationId_example" // string | 
     groupInvitationUpdateRequest := *openapiclient.NewGroupInvitationUpdateRequest() // GroupInvitationUpdateRequest | 
 
-    resp, r, err := sdk.ProjectsApi.UpdateProjectInvitationById(context.Background(), groupId, invitationId).GroupInvitationUpdateRequest(groupInvitationUpdateRequest).Execute()
+    resp, r, err := sdk.ProjectsApi.UpdateProjectInvitationById(context.Background(), groupId, invitationId).GroupInvitationUpdateRequest(&groupInvitationUpdateRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.UpdateProjectInvitationById``: %v\n", err)
         apiError := admin.AsError(err)
@@ -1496,7 +1496,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     groupSettings := *openapiclient.NewGroupSettings() // GroupSettings |  (optional)
 
-    resp, r, err := sdk.ProjectsApi.UpdateProjectSettings(context.Background(), groupId).GroupSettings(groupSettings).Execute()
+    resp, r, err := sdk.ProjectsApi.UpdateProjectSettings(context.Background(), groupId).GroupSettings(&groupSettings).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.UpdateProjectSettings``: %v\n", err)
         apiError := admin.AsError(err)
