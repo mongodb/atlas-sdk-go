@@ -6,38 +6,38 @@ import (
 	"encoding/json"
 )
 
-// checks if the PaginatedAWSPeerVpc type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PaginatedAWSPeerVpc{}
+// checks if the PaginatedContainerPeer type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PaginatedContainerPeer{}
 
-// PaginatedAWSPeerVpc Group of Network Peering connection settings.
-type PaginatedAWSPeerVpc struct {
+// PaginatedContainerPeer Group of Network Peering connection settings.
+type PaginatedContainerPeer struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	Links []Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud providers when completing this request.
-	Results []AWSPeerVpc `json:"results,omitempty"`
-	// Number of documents returned in this response.
+	Results []ContainerPeer `json:"results,omitempty"`
+	// Number of documents returned in this response if **includeCount** query param is true.
 	TotalCount *int `json:"totalCount,omitempty"`
 }
 
-// NewPaginatedAWSPeerVpc instantiates a new PaginatedAWSPeerVpc object
+// NewPaginatedContainerPeer instantiates a new PaginatedContainerPeer object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedAWSPeerVpc() *PaginatedAWSPeerVpc {
-	this := PaginatedAWSPeerVpc{}
+func NewPaginatedContainerPeer() *PaginatedContainerPeer {
+	this := PaginatedContainerPeer{}
 	return &this
 }
 
-// NewPaginatedAWSPeerVpcWithDefaults instantiates a new PaginatedAWSPeerVpc object
+// NewPaginatedContainerPeerWithDefaults instantiates a new PaginatedContainerPeer object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewPaginatedAWSPeerVpcWithDefaults() *PaginatedAWSPeerVpc {
-	this := PaginatedAWSPeerVpc{}
+func NewPaginatedContainerPeerWithDefaults() *PaginatedContainerPeer {
+	this := PaginatedContainerPeer{}
 	return &this
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *PaginatedAWSPeerVpc) GetLinks() []Link {
+func (o *PaginatedContainerPeer) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
 		return ret
@@ -47,7 +47,7 @@ func (o *PaginatedAWSPeerVpc) GetLinks() []Link {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedAWSPeerVpc) GetLinksOk() ([]Link, bool) {
+func (o *PaginatedContainerPeer) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -55,7 +55,7 @@ func (o *PaginatedAWSPeerVpc) GetLinksOk() ([]Link, bool) {
 }
 
 // HasLinks returns a boolean if a field has been set.
-func (o *PaginatedAWSPeerVpc) HasLinks() bool {
+func (o *PaginatedContainerPeer) HasLinks() bool {
 	if o != nil && !IsNil(o.Links) {
 		return true
 	}
@@ -64,14 +64,14 @@ func (o *PaginatedAWSPeerVpc) HasLinks() bool {
 }
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
-func (o *PaginatedAWSPeerVpc) SetLinks(v []Link) {
+func (o *PaginatedContainerPeer) SetLinks(v []Link) {
 	o.Links = v
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *PaginatedAWSPeerVpc) GetResults() []AWSPeerVpc {
+func (o *PaginatedContainerPeer) GetResults() []ContainerPeer {
 	if o == nil || IsNil(o.Results) {
-		var ret []AWSPeerVpc
+		var ret []ContainerPeer
 		return ret
 	}
 	return o.Results
@@ -79,7 +79,7 @@ func (o *PaginatedAWSPeerVpc) GetResults() []AWSPeerVpc {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedAWSPeerVpc) GetResultsOk() ([]AWSPeerVpc, bool) {
+func (o *PaginatedContainerPeer) GetResultsOk() ([]ContainerPeer, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -87,7 +87,7 @@ func (o *PaginatedAWSPeerVpc) GetResultsOk() ([]AWSPeerVpc, bool) {
 }
 
 // HasResults returns a boolean if a field has been set.
-func (o *PaginatedAWSPeerVpc) HasResults() bool {
+func (o *PaginatedContainerPeer) HasResults() bool {
 	if o != nil && !IsNil(o.Results) {
 		return true
 	}
@@ -95,13 +95,13 @@ func (o *PaginatedAWSPeerVpc) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []AWSPeerVpc and assigns it to the Results field.
-func (o *PaginatedAWSPeerVpc) SetResults(v []AWSPeerVpc) {
+// SetResults gets a reference to the given []ContainerPeer and assigns it to the Results field.
+func (o *PaginatedContainerPeer) SetResults(v []ContainerPeer) {
 	o.Results = v
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise.
-func (o *PaginatedAWSPeerVpc) GetTotalCount() int {
+func (o *PaginatedContainerPeer) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int
 		return ret
@@ -111,7 +111,7 @@ func (o *PaginatedAWSPeerVpc) GetTotalCount() int {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedAWSPeerVpc) GetTotalCountOk() (*int, bool) {
+func (o *PaginatedContainerPeer) GetTotalCountOk() (*int, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
@@ -119,7 +119,7 @@ func (o *PaginatedAWSPeerVpc) GetTotalCountOk() (*int, bool) {
 }
 
 // HasTotalCount returns a boolean if a field has been set.
-func (o *PaginatedAWSPeerVpc) HasTotalCount() bool {
+func (o *PaginatedContainerPeer) HasTotalCount() bool {
 	if o != nil && !IsNil(o.TotalCount) {
 		return true
 	}
@@ -128,54 +128,54 @@ func (o *PaginatedAWSPeerVpc) HasTotalCount() bool {
 }
 
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
-func (o *PaginatedAWSPeerVpc) SetTotalCount(v int) {
+func (o *PaginatedContainerPeer) SetTotalCount(v int) {
 	o.TotalCount = &v
 }
 
-func (o PaginatedAWSPeerVpc) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o PaginatedContainerPeer) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o PaginatedAWSPeerVpc) ToMap() (map[string]interface{}, error) {
+func (o PaginatedContainerPeer) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }
 
-type NullablePaginatedAWSPeerVpc struct {
-	value *PaginatedAWSPeerVpc
+type NullablePaginatedContainerPeer struct {
+	value *PaginatedContainerPeer
 	isSet bool
 }
 
-func (v NullablePaginatedAWSPeerVpc) Get() *PaginatedAWSPeerVpc {
+func (v NullablePaginatedContainerPeer) Get() *PaginatedContainerPeer {
 	return v.value
 }
 
-func (v *NullablePaginatedAWSPeerVpc) Set(val *PaginatedAWSPeerVpc) {
+func (v *NullablePaginatedContainerPeer) Set(val *PaginatedContainerPeer) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullablePaginatedAWSPeerVpc) IsSet() bool {
+func (v NullablePaginatedContainerPeer) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullablePaginatedAWSPeerVpc) Unset() {
+func (v *NullablePaginatedContainerPeer) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullablePaginatedAWSPeerVpc(val *PaginatedAWSPeerVpc) *NullablePaginatedAWSPeerVpc {
-	return &NullablePaginatedAWSPeerVpc{value: val, isSet: true}
+func NewNullablePaginatedContainerPeer(val *PaginatedContainerPeer) *NullablePaginatedContainerPeer {
+	return &NullablePaginatedContainerPeer{value: val, isSet: true}
 }
 
-func (v NullablePaginatedAWSPeerVpc) MarshalJSON() ([]byte, error) {
+func (v NullablePaginatedContainerPeer) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullablePaginatedAWSPeerVpc) UnmarshalJSON(src []byte) error {
+func (v *NullablePaginatedContainerPeer) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

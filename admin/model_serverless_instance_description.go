@@ -29,6 +29,8 @@ type ServerlessInstanceDescription struct {
 	ServerlessBackupOptions *ServerlessBackupOptions   `json:"serverlessBackupOptions,omitempty"`
 	// Human-readable label that indicates the current operating condition of the serverless instance.
 	StateName *string `json:"stateName,omitempty"`
+	// Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster.
+	Tags []Tag `json:"tags,omitempty"`
 	// Flag that indicates whether termination protection is enabled on the serverless instance. If set to `true`, MongoDB Cloud won't delete the serverless instance. If set to `false`, MongoDB Cloud will delete the serverless instance.
 	TerminationProtectionEnabled *bool `json:"terminationProtectionEnabled,omitempty"`
 }
@@ -367,6 +369,38 @@ func (o *ServerlessInstanceDescription) SetStateName(v string) {
 	o.StateName = &v
 }
 
+// GetTags returns the Tags field value if set, zero value otherwise.
+func (o *ServerlessInstanceDescription) GetTags() []Tag {
+	if o == nil || IsNil(o.Tags) {
+		var ret []Tag
+		return ret
+	}
+	return o.Tags
+}
+
+// GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServerlessInstanceDescription) GetTagsOk() ([]Tag, bool) {
+	if o == nil || IsNil(o.Tags) {
+		return nil, false
+	}
+	return o.Tags, true
+}
+
+// HasTags returns a boolean if a field has been set.
+func (o *ServerlessInstanceDescription) HasTags() bool {
+	if o != nil && !IsNil(o.Tags) {
+		return true
+	}
+
+	return false
+}
+
+// SetTags gets a reference to the given []Tag and assigns it to the Tags field.
+func (o *ServerlessInstanceDescription) SetTags(v []Tag) {
+	o.Tags = v
+}
+
 // GetTerminationProtectionEnabled returns the TerminationProtectionEnabled field value if set, zero value otherwise.
 func (o *ServerlessInstanceDescription) GetTerminationProtectionEnabled() bool {
 	if o == nil || IsNil(o.TerminationProtectionEnabled) {
@@ -414,6 +448,9 @@ func (o ServerlessInstanceDescription) ToMap() (map[string]interface{}, error) {
 	toSerialize["providerSettings"] = o.ProviderSettings
 	if !IsNil(o.ServerlessBackupOptions) {
 		toSerialize["serverlessBackupOptions"] = o.ServerlessBackupOptions
+	}
+	if !IsNil(o.Tags) {
+		toSerialize["tags"] = o.Tags
 	}
 	if !IsNil(o.TerminationProtectionEnabled) {
 		toSerialize["terminationProtectionEnabled"] = o.TerminationProtectionEnabled

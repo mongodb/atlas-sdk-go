@@ -12,7 +12,7 @@ var _ MappedNullable = &Role{}
 // Role Range of resources available to this database user.
 type Role struct {
 	// Collection on which this role applies.
-	CollectionName string `json:"collectionName"`
+	CollectionName *string `json:"collectionName,omitempty"`
 	// Database against which the database user authenticates. Database users must provide both a username and authentication database to log into MongoDB.
 	DatabaseName string `json:"databaseName"`
 	// Human-readable label that identifies a group of privileges assigned to a database user. This value can either be a built-in role or a custom role.
@@ -23,9 +23,8 @@ type Role struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRole(collectionName string, databaseName string, roleName string) *Role {
+func NewRole(databaseName string, roleName string) *Role {
 	this := Role{}
-	this.CollectionName = collectionName
 	this.DatabaseName = databaseName
 	this.RoleName = roleName
 	return &this
@@ -39,28 +38,36 @@ func NewRoleWithDefaults() *Role {
 	return &this
 }
 
-// GetCollectionName returns the CollectionName field value
+// GetCollectionName returns the CollectionName field value if set, zero value otherwise.
 func (o *Role) GetCollectionName() string {
-	if o == nil {
+	if o == nil || IsNil(o.CollectionName) {
 		var ret string
 		return ret
 	}
-
-	return o.CollectionName
+	return *o.CollectionName
 }
 
-// GetCollectionNameOk returns a tuple with the CollectionName field value
+// GetCollectionNameOk returns a tuple with the CollectionName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Role) GetCollectionNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CollectionName) {
 		return nil, false
 	}
-	return &o.CollectionName, true
+	return o.CollectionName, true
 }
 
-// SetCollectionName sets field value
+// HasCollectionName returns a boolean if a field has been set.
+func (o *Role) HasCollectionName() bool {
+	if o != nil && !IsNil(o.CollectionName) {
+		return true
+	}
+
+	return false
+}
+
+// SetCollectionName gets a reference to the given string and assigns it to the CollectionName field.
 func (o *Role) SetCollectionName(v string) {
-	o.CollectionName = v
+	o.CollectionName = &v
 }
 
 // GetDatabaseName returns the DatabaseName field value
@@ -120,7 +127,9 @@ func (o Role) MarshalJSONWithoutReadOnly() ([]byte, error) {
 }
 func (o Role) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["collectionName"] = o.CollectionName
+	if !IsNil(o.CollectionName) {
+		toSerialize["collectionName"] = o.CollectionName
+	}
 	toSerialize["databaseName"] = o.DatabaseName
 	toSerialize["roleName"] = o.RoleName
 	return toSerialize, nil
