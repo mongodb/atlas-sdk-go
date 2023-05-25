@@ -57,16 +57,14 @@ func main() {
 
 	// -- 2. Create Cluster
 	cluster := createClusterRequest(projectId)
-	createdCluster, resp, err := sdk.MultiCloudClustersApi.CreateCluster(ctx, projectId).
-		ClusterDescriptionV15(cluster).Execute()
+	createdCluster, resp, err := sdk.MultiCloudClustersApi.CreateCluster(ctx, projectId, cluster).Execute()
 	examples.HandleErr(err, resp)
 
 	// -- 3. Create Database User
 	user := createDatabaseUserRequest(sdk, projectId)
 	if user != nil {
 		_, resp, err = sdk.DatabaseUsersApi.
-			CreateDatabaseUser(ctx, projectId).
-			DatabaseUser(user).
+			CreateDatabaseUser(ctx, projectId, user).
 			Execute()
 		examples.HandleErr(err, resp)
 	}
@@ -75,8 +73,7 @@ func main() {
 	ipAddressEntry := []admin.NetworkPermissionEntry{{IpAddress: &ipAddress}}
 	// -- 4. Enable IP access
 	_, resp, err = sdk.ProjectIPAccessListApi.
-		CreateProjectIpAccessList(context.Background(), projectId).
-		NetworkPermissionEntry(ipAddressEntry).
+		CreateProjectIpAccessList(context.Background(), projectId, &ipAddressEntry).
 		Execute()
 	examples.HandleErr(err, resp)
 
