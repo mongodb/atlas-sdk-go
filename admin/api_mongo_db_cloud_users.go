@@ -122,12 +122,12 @@ CreateUser Create One MongoDB Cloud User
 
 Creates one MongoDB Cloud user account. A MongoDB Cloud user account grants access to only the MongoDB Cloud application. To grant database access, create a database user. MongoDB Cloud sends an email to the users you specify, inviting them to join the project. Invited users don't have access to the project until they accept the invitation. Invitations expire after 30 days.
 
-	MongoDB Cloud limits MongoDB Cloud user membership to a maximum of 250 MongoDB Cloud users per team. MongoDB Cloud limits MongoDB Cloud user membership to 500 MongoDB Cloud users per project and 500 MongoDB Cloud users per organization, which includes the combined membership of all projects in the organization. MongoDB Cloud raises an error if an operation exceeds these limits. For example, if you have an organization with five projects, and each project has 100 MongoDB Cloud users, and each MongoDB Cloud user belongs to only one project, you can't add any MongoDB Cloud users to this organization without first removing existing MongoDB Cloud users from the organization.
+ MongoDB Cloud limits MongoDB Cloud user membership to a maximum of 250 MongoDB Cloud users per team. MongoDB Cloud limits MongoDB Cloud user membership to 500 MongoDB Cloud users per project and 500 MongoDB Cloud users per organization, which includes the combined membership of all projects in the organization. MongoDB Cloud raises an error if an operation exceeds these limits. For example, if you have an organization with five projects, and each project has 100 MongoDB Cloud users, and each MongoDB Cloud user belongs to only one project, you can't add any MongoDB Cloud users to this organization without first removing existing MongoDB Cloud users from the organization.
 
-	To use this resource, the requesting API Key can have any role. This resource doesn't require the API Key to have an Access List.
+ To use this resource, the requesting API Key can have any role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return CreateUserApiRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return CreateUserApiRequest
 */
 func (a *MongoDBCloudUsersApiService) CreateUser(ctx context.Context) CreateUserApiRequest {
 	return CreateUserApiRequest{
@@ -137,8 +137,7 @@ func (a *MongoDBCloudUsersApiService) CreateUser(ctx context.Context) CreateUser
 }
 
 // Execute executes the request
-//
-//	@return AppUser
+//  @return AppUser
 func (a *MongoDBCloudUsersApiService) createUserExecute(r CreateUserApiRequest) (*AppUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -162,7 +161,7 @@ func (a *MongoDBCloudUsersApiService) createUserExecute(r CreateUserApiRequest) 
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -252,9 +251,9 @@ GetUser Return One MongoDB Cloud User using Its ID
 
 Returns the details for one MongoDB Cloud user account with the specified unique identifier for the user. You can't use this endpoint to return information on an API Key. To return information about an API Key, use the [Return One Organization](#tag/Organizations/operation/getOrganization) API Key endpoint. You can always retrieve your own user account. If you are the owner of a MongoDB Cloud organization or project, you can also retrieve the user profile for any user with membership in that organization or project. To use this resource, the requesting API Key can have any role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param userId Unique 24-hexadecimal digit string that identifies this user.
-	@return GetUserApiRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param userId Unique 24-hexadecimal digit string that identifies this user.
+ @return GetUserApiRequest
 */
 func (a *MongoDBCloudUsersApiService) GetUser(ctx context.Context, userId string) GetUserApiRequest {
 	return GetUserApiRequest{
@@ -265,8 +264,7 @@ func (a *MongoDBCloudUsersApiService) GetUser(ctx context.Context, userId string
 }
 
 // Execute executes the request
-//
-//	@return AppUser
+//  @return AppUser
 func (a *MongoDBCloudUsersApiService) getUserExecute(r GetUserApiRequest) (*AppUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -382,9 +380,9 @@ GetUserByUsername Return One MongoDB Cloud User using Their Username
 
 Returns the details for one MongoDB Cloud user account with the specified username. You can't use this endpoint to return information about an API Key. To return information about an API Key, use the [Return One Organization](#tag/Organizations/operation/getOrganization) API Key endpoint. To use this resource, the requesting API Key can have any role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param userName Email address that belongs to the MongoDB Cloud user account. You cannot modify this address after creating the user.
-	@return GetUserByUsernameApiRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param userName Email address that belongs to the MongoDB Cloud user account. You cannot modify this address after creating the user.
+ @return GetUserByUsernameApiRequest
 */
 func (a *MongoDBCloudUsersApiService) GetUserByUsername(ctx context.Context, userName string) GetUserByUsernameApiRequest {
 	return GetUserByUsernameApiRequest{
@@ -395,8 +393,7 @@ func (a *MongoDBCloudUsersApiService) GetUserByUsername(ctx context.Context, use
 }
 
 // Execute executes the request
-//
-//	@return AppUser
+//  @return AppUser
 func (a *MongoDBCloudUsersApiService) getUserByUsernameExecute(r GetUserByUsernameApiRequest) (*AppUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

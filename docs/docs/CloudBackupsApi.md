@@ -38,7 +38,7 @@ Method | HTTP request | Description
 
 ## CancelBackupRestoreJob
 
-> CancelBackupRestoreJob(ctx, groupId, clusterName, restoreJobId).Execute()
+> map[string]interface{} CancelBackupRestoreJob(ctx, groupId, clusterName, restoreJobId).Execute()
 
 Cancel One Restore Job of One Cluster
 
@@ -67,12 +67,14 @@ func main() {
     clusterName := "clusterName_example" // string | 
     restoreJobId := "restoreJobId_example" // string | 
 
-    r, err := sdk.CloudBackupsApi.CancelBackupRestoreJob(context.Background(), groupId, clusterName, restoreJobId).Execute()
+    resp, r, err := sdk.CloudBackupsApi.CancelBackupRestoreJob(context.Background(), groupId, clusterName, restoreJobId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.CancelBackupRestoreJob``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
+    // response from `CancelBackupRestoreJob`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.CancelBackupRestoreJob`: %v\n", resp)
 }
 ```
 
@@ -99,7 +101,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -506,7 +508,7 @@ Name | Type | Description  | Notes
 
 ## DeleteExportBucket
 
-> DeleteExportBucket(ctx, groupId, exportBucketId).Execute()
+> map[string]interface{} DeleteExportBucket(ctx, groupId, exportBucketId).Execute()
 
 Revoke Access to AWS S3 Bucket for Cloud Backup Snapshot Exports
 
@@ -534,12 +536,14 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     exportBucketId := "exportBucketId_example" // string | 
 
-    r, err := sdk.CloudBackupsApi.DeleteExportBucket(context.Background(), groupId, exportBucketId).Execute()
+    resp, r, err := sdk.CloudBackupsApi.DeleteExportBucket(context.Background(), groupId, exportBucketId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.DeleteExportBucket``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
+    // response from `DeleteExportBucket`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.DeleteExportBucket`: %v\n", resp)
 }
 ```
 
@@ -564,7 +568,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -581,7 +585,7 @@ Name | Type | Description  | Notes
 
 ## DeleteReplicaSetBackup
 
-> DeleteReplicaSetBackup(ctx, groupId, clusterName, snapshotId).Execute()
+> map[string]interface{} DeleteReplicaSetBackup(ctx, groupId, clusterName, snapshotId).Execute()
 
 Remove One Replica Set Cloud Backup
 
@@ -610,12 +614,14 @@ func main() {
     clusterName := "clusterName_example" // string | 
     snapshotId := "snapshotId_example" // string | 
 
-    r, err := sdk.CloudBackupsApi.DeleteReplicaSetBackup(context.Background(), groupId, clusterName, snapshotId).Execute()
+    resp, r, err := sdk.CloudBackupsApi.DeleteReplicaSetBackup(context.Background(), groupId, clusterName, snapshotId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.DeleteReplicaSetBackup``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
+    // response from `DeleteReplicaSetBackup`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.DeleteReplicaSetBackup`: %v\n", resp)
 }
 ```
 
@@ -642,7 +648,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -659,7 +665,7 @@ Name | Type | Description  | Notes
 
 ## DeleteShardedClusterBackup
 
-> DeleteShardedClusterBackup(ctx, groupId, clusterName, snapshotId).Execute()
+> map[string]interface{} DeleteShardedClusterBackup(ctx, groupId, clusterName, snapshotId).Execute()
 
 Remove One Sharded Cluster Cloud Backup
 
@@ -688,12 +694,14 @@ func main() {
     clusterName := "clusterName_example" // string | 
     snapshotId := "snapshotId_example" // string | 
 
-    r, err := sdk.CloudBackupsApi.DeleteShardedClusterBackup(context.Background(), groupId, clusterName, snapshotId).Execute()
+    resp, r, err := sdk.CloudBackupsApi.DeleteShardedClusterBackup(context.Background(), groupId, clusterName, snapshotId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.DeleteShardedClusterBackup``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
+    // response from `DeleteShardedClusterBackup`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.DeleteShardedClusterBackup`: %v\n", resp)
 }
 ```
 
@@ -720,7 +728,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -1611,7 +1619,7 @@ Name | Type | Description  | Notes
 
 ## ListExportBuckets
 
-> PaginatedBackupSnapshotExportBucket ListExportBuckets(ctx, groupId).Execute()
+> PaginatedBackupSnapshotExportBucket ListExportBuckets(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Return All AWS S3 Buckets Used for Cloud Backup Snapshot Exports
 
@@ -1637,8 +1645,11 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    includeCount := true // bool |  (optional) (default to true)
+    itemsPerPage := int(100) // int |  (optional) (default to 100)
+    pageNum := int(1) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.CloudBackupsApi.ListExportBuckets(context.Background(), groupId).Execute()
+    resp, r, err := sdk.CloudBackupsApi.ListExportBuckets(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.ListExportBuckets``: %v\n", err)
         apiError := admin.AsError(err)
@@ -1665,6 +1676,9 @@ Other parameters are passed through a pointer to a apiListExportBucketsRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (**totalCount**) in the response. | [default to true]
+ **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
+ **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
 
 ### Return type
 
@@ -1768,7 +1782,7 @@ Name | Type | Description  | Notes
 
 ## ListServerlessBackupRestoreJobs
 
-> PaginatedApiAtlasServerlessBackupRestoreJob ListServerlessBackupRestoreJobs(ctx, groupId, clusterName).Execute()
+> PaginatedApiAtlasServerlessBackupRestoreJob ListServerlessBackupRestoreJobs(ctx, groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Return All Restore Jobs for One Serverless Instance
 
@@ -1795,8 +1809,11 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
+    includeCount := true // bool |  (optional) (default to true)
+    itemsPerPage := int(100) // int |  (optional) (default to 100)
+    pageNum := int(1) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.CloudBackupsApi.ListServerlessBackupRestoreJobs(context.Background(), groupId, clusterName).Execute()
+    resp, r, err := sdk.CloudBackupsApi.ListServerlessBackupRestoreJobs(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.ListServerlessBackupRestoreJobs``: %v\n", err)
         apiError := admin.AsError(err)
@@ -1825,6 +1842,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (**totalCount**) in the response. | [default to true]
+ **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
+ **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
 
 ### Return type
 

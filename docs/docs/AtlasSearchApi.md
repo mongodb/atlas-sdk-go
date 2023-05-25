@@ -93,7 +93,7 @@ Name | Type | Description  | Notes
 
 ## DeleteAtlasSearchIndex
 
-> DeleteAtlasSearchIndex(ctx, groupId, clusterName, indexId).Execute()
+> map[string]interface{} DeleteAtlasSearchIndex(ctx, groupId, clusterName, indexId).Execute()
 
 Remove One Atlas Search Index
 
@@ -122,12 +122,14 @@ func main() {
     clusterName := "clusterName_example" // string | 
     indexId := "indexId_example" // string | 
 
-    r, err := sdk.AtlasSearchApi.DeleteAtlasSearchIndex(context.Background(), groupId, clusterName, indexId).Execute()
+    resp, r, err := sdk.AtlasSearchApi.DeleteAtlasSearchIndex(context.Background(), groupId, clusterName, indexId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.DeleteAtlasSearchIndex``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
+    // response from `DeleteAtlasSearchIndex`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.DeleteAtlasSearchIndex`: %v\n", resp)
 }
 ```
 
@@ -154,7 +156,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

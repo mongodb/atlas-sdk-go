@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CloudProvider** | **string** | Cloud service provider that serves the requested endpoint. | [readonly] 
 **DeleteRequested** | Pointer to **bool** | Flag that indicates whether MongoDB Cloud received a request to remove the specified private endpoint from the private endpoint service. | [optional] [readonly] 
 **EndpointGroupName** | Pointer to **string** | Human-readable label that identifies a set of endpoints. | [optional] [readonly] 
 **Endpoints** | Pointer to [**[]GCPConsumerForwardingRule**](GCPConsumerForwardingRule.md) | List of individual private endpoints that comprise this endpoint group. | [optional] [readonly] 
@@ -14,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewGCPEndpointGroup
 
-`func NewGCPEndpointGroup() *GCPEndpointGroup`
+`func NewGCPEndpointGroup(cloudProvider string, ) *GCPEndpointGroup`
 
 NewGCPEndpointGroup instantiates a new GCPEndpointGroup object
 This constructor will assign default values to properties that have it defined,
@@ -28,6 +29,26 @@ will change when the set of required properties is changed
 NewGCPEndpointGroupWithDefaults instantiates a new GCPEndpointGroup object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCloudProvider
+
+`func (o *GCPEndpointGroup) GetCloudProvider() string`
+
+GetCloudProvider returns the CloudProvider field if non-nil, zero value otherwise.
+
+### GetCloudProviderOk
+
+`func (o *GCPEndpointGroup) GetCloudProviderOk() (*string, bool)`
+
+GetCloudProviderOk returns a tuple with the CloudProvider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCloudProvider
+
+`func (o *GCPEndpointGroup) SetCloudProvider(v string)`
+
+SetCloudProvider sets CloudProvider field to given value.
+
 
 ### GetDeleteRequested
 

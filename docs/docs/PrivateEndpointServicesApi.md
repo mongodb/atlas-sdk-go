@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 ## CreatePrivateEndpoint
 
-> Endpoint CreatePrivateEndpoint(ctx, groupId, cloudProvider, endpointServiceId).CreatePrivateEndpointRequest(createPrivateEndpointRequest).Execute()
+> Endpoint CreatePrivateEndpoint(ctx, groupId, cloudProvider, endpointServiceId).CreateEndpointRequest(createEndpointRequest).Execute()
 
 Create One Private Endpoint for One Provider
 
@@ -46,9 +46,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     cloudProvider := "cloudProvider_example" // string |  (default to "AWS")
     endpointServiceId := "endpointServiceId_example" // string | 
-    createPrivateEndpointRequest := openapiclient.createPrivateEndpoint_request{CreateAWSEndpointRequest: openapiclient.NewCreateAWSEndpointRequest()} // CreatePrivateEndpointRequest | 
+    createEndpointRequest := openapiclient.CreateEndpointRequest{CreateAWSEndpointRequest: openapiclient.NewCreateAWSEndpointRequest("vpce-3bf78b0ddee411ba1")} // CreateEndpointRequest | 
 
-    resp, r, err := sdk.PrivateEndpointServicesApi.CreatePrivateEndpoint(context.Background(), groupId, cloudProvider, endpointServiceId).CreatePrivateEndpointRequest(&createPrivateEndpointRequest).Execute()
+    resp, r, err := sdk.PrivateEndpointServicesApi.CreatePrivateEndpoint(context.Background(), groupId, cloudProvider, endpointServiceId).CreateEndpointRequest(&createEndpointRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesApi.CreatePrivateEndpoint``: %v\n", err)
         apiError := admin.AsError(err)
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 
 
- **createPrivateEndpointRequest** | [**CreatePrivateEndpointRequest**](CreatePrivateEndpointRequest.md) | Creates one private endpoint for the specified cloud service provider. | 
+ **createEndpointRequest** | [**CreateEndpointRequest**](CreateEndpointRequest.md) | Creates one private endpoint for the specified cloud service provider. | 
 
 ### Return type
 
@@ -176,7 +176,7 @@ Name | Type | Description  | Notes
 
 ## DeletePrivateEndpoint
 
-> DeletePrivateEndpoint(ctx, groupId, cloudProvider, endpointId, endpointServiceId).Execute()
+> map[string]interface{} DeletePrivateEndpoint(ctx, groupId, cloudProvider, endpointId, endpointServiceId).Execute()
 
 Remove One Private Endpoint for One Provider
 
@@ -206,12 +206,14 @@ func main() {
     endpointId := "endpointId_example" // string | 
     endpointServiceId := "endpointServiceId_example" // string | 
 
-    r, err := sdk.PrivateEndpointServicesApi.DeletePrivateEndpoint(context.Background(), groupId, cloudProvider, endpointId, endpointServiceId).Execute()
+    resp, r, err := sdk.PrivateEndpointServicesApi.DeletePrivateEndpoint(context.Background(), groupId, cloudProvider, endpointId, endpointServiceId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesApi.DeletePrivateEndpoint``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
+    // response from `DeletePrivateEndpoint`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `PrivateEndpointServicesApi.DeletePrivateEndpoint`: %v\n", resp)
 }
 ```
 
@@ -240,7 +242,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -257,7 +259,7 @@ Name | Type | Description  | Notes
 
 ## DeletePrivateEndpointService
 
-> DeletePrivateEndpointService(ctx, groupId, cloudProvider, endpointServiceId).Execute()
+> map[string]interface{} DeletePrivateEndpointService(ctx, groupId, cloudProvider, endpointServiceId).Execute()
 
 Remove One Private Endpoint Service for One Provider
 
@@ -286,12 +288,14 @@ func main() {
     cloudProvider := "cloudProvider_example" // string |  (default to "AWS")
     endpointServiceId := "endpointServiceId_example" // string | 
 
-    r, err := sdk.PrivateEndpointServicesApi.DeletePrivateEndpointService(context.Background(), groupId, cloudProvider, endpointServiceId).Execute()
+    resp, r, err := sdk.PrivateEndpointServicesApi.DeletePrivateEndpointService(context.Background(), groupId, cloudProvider, endpointServiceId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesApi.DeletePrivateEndpointService``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
+    // response from `DeletePrivateEndpointService`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `PrivateEndpointServicesApi.DeletePrivateEndpointService`: %v\n", resp)
 }
 ```
 
@@ -318,7 +322,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -572,7 +576,7 @@ Name | Type | Description  | Notes
 
 ## ListPrivateEndpointServices
 
-> PaginatedPrivateLinkConnection ListPrivateEndpointServices(ctx, groupId, cloudProvider).Execute()
+> []EndpointService ListPrivateEndpointServices(ctx, groupId, cloudProvider).Execute()
 
 Return All Private Endpoint Services for One Provider
 
@@ -606,7 +610,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `ListPrivateEndpointServices`: PaginatedPrivateLinkConnection
+    // response from `ListPrivateEndpointServices`: []EndpointService
     fmt.Fprintf(os.Stdout, "Response from `PrivateEndpointServicesApi.ListPrivateEndpointServices`: %v\n", resp)
 }
 ```
@@ -632,7 +636,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PaginatedPrivateLinkConnection**](PaginatedPrivateLinkConnection.md)
+[**[]EndpointService**](EndpointService.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

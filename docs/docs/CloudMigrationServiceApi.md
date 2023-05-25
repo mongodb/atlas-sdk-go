@@ -244,7 +244,7 @@ Name | Type | Description  | Notes
 
 ## DeleteLinkToken
 
-> DeleteLinkToken(ctx, orgId).Execute()
+> map[string]interface{} DeleteLinkToken(ctx, orgId).Execute()
 
 Remove One Link-Token
 
@@ -271,12 +271,14 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
 
-    r, err := sdk.CloudMigrationServiceApi.DeleteLinkToken(context.Background(), orgId).Execute()
+    resp, r, err := sdk.CloudMigrationServiceApi.DeleteLinkToken(context.Background(), orgId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudMigrationServiceApi.DeleteLinkToken``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
+    // response from `DeleteLinkToken`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceApi.DeleteLinkToken`: %v\n", resp)
 }
 ```
 
@@ -299,7 +301,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

@@ -137,10 +137,10 @@ To get MongoDB Cloud to generate a managed certificate for a database user, set 
 
 If you are managing your own Certificate Authority (CA) in Self-Managed X.509 mode, you must generate certificates for database users using your own CA.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param username Human-readable label that represents the MongoDB database user account for whom to create a certificate.
-	@return CreateDatabaseUserCertificateApiRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+ @param username Human-readable label that represents the MongoDB database user account for whom to create a certificate.
+ @return CreateDatabaseUserCertificateApiRequest
 */
 func (a *X509AuthenticationApiService) CreateDatabaseUserCertificate(ctx context.Context, groupId string, username string) CreateDatabaseUserCertificateApiRequest {
 	return CreateDatabaseUserCertificateApiRequest{
@@ -263,11 +263,11 @@ DisableCustomerManagedX509 Disable Customer-Managed X.509
 
 Clears the customer-managed X.509 settings on a project, including the uploaded Certificate Authority, which disables self-managed X.509.
 
-	Updating this configuration triggers a rolling restart of the database. You must have the Project Owner role to use this endpoint. This resource doesn't require the API Key to have an Access List.
+ Updating this configuration triggers a rolling restart of the database. You must have the Project Owner role to use this endpoint. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@return DisableCustomerManagedX509ApiRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+ @return DisableCustomerManagedX509ApiRequest
 */
 func (a *X509AuthenticationApiService) DisableCustomerManagedX509(ctx context.Context, groupId string) DisableCustomerManagedX509ApiRequest {
 	return DisableCustomerManagedX509ApiRequest{
@@ -278,8 +278,7 @@ func (a *X509AuthenticationApiService) DisableCustomerManagedX509(ctx context.Co
 }
 
 // Execute executes the request
-//
-//	@return UserSecurity
+//  @return UserSecurity
 func (a *X509AuthenticationApiService) disableCustomerManagedX509Execute(r DisableCustomerManagedX509ApiRequest) (*UserSecurity, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
@@ -425,10 +424,10 @@ ListDatabaseUserCertificates Return All X.509 Certificates Assigned to One Mongo
 
 Returns all unexpired X.509 certificates for the specified MongoDB user. This MongoDB user belongs to one project. Atlas manages these certificates and the MongoDB user. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param username Human-readable label that represents the MongoDB database user account whose certificates you want to return.
-	@return ListDatabaseUserCertificatesApiRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+ @param username Human-readable label that represents the MongoDB database user account whose certificates you want to return.
+ @return ListDatabaseUserCertificatesApiRequest
 */
 func (a *X509AuthenticationApiService) ListDatabaseUserCertificates(ctx context.Context, groupId string, username string) ListDatabaseUserCertificatesApiRequest {
 	return ListDatabaseUserCertificatesApiRequest{
@@ -440,8 +439,7 @@ func (a *X509AuthenticationApiService) ListDatabaseUserCertificates(ctx context.
 }
 
 // Execute executes the request
-//
-//	@return PaginatedUserCert
+//  @return PaginatedUserCert
 func (a *X509AuthenticationApiService) listDatabaseUserCertificatesExecute(r ListDatabaseUserCertificatesApiRequest) (*PaginatedUserCert, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

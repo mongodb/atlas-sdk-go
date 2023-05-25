@@ -61,8 +61,8 @@ func (dst *DiskBackupSnapshot) UnmarshalJSON(data []byte) error {
 		}
 	}
 
-	// check if the discriminator value is 'REPLICA_SET'
-	if jsonDict["type"] == "REPLICA_SET" {
+	// check if the discriminator value is 'replicaSet'
+	if jsonDict["type"] == "replicaSet" {
 		// try to unmarshal JSON data into DiskBackupReplicaSet
 		err = json.Unmarshal(data, &dst.DiskBackupReplicaSet)
 		if err == nil {
@@ -73,8 +73,8 @@ func (dst *DiskBackupSnapshot) UnmarshalJSON(data []byte) error {
 		}
 	}
 
-	// check if the discriminator value is 'SHARDED_CLUSTER'
-	if jsonDict["type"] == "SHARDED_CLUSTER" {
+	// check if the discriminator value is 'shardedCluster'
+	if jsonDict["type"] == "shardedCluster" {
 		// try to unmarshal JSON data into DiskBackupShardedClusterSnapshot
 		err = json.Unmarshal(data, &dst.DiskBackupShardedClusterSnapshot)
 		if err == nil {

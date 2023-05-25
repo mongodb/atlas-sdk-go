@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AuthorizedEmail** | Pointer to **string** | Email address of the user who authorized to updated the Backup Compliance Policy  settings. | [optional] [readonly] 
+**AuthorizedEmail** | Pointer to **string** | Email address of the user who authorized to updated the Backup Compliance Policy  settings. | [optional] 
 **CopyProtectionEnabled** | Pointer to **bool** | Flag that indicates whether to enable additional backup copies for the cluster. If unspecified, this value defaults to false. | [optional] [default to false]
 **EncryptionAtRestEnabled** | Pointer to **bool** | Flag that indicates whether Encryption at Rest using Customer Key  Management is required for all clusters with a Backup Compliance Policy. If unspecified, this value defaults to false. | [optional] [default to false]
 **OnDemandPolicyItem** | Pointer to [**PolicyItem**](PolicyItem.md) |  | [optional] 

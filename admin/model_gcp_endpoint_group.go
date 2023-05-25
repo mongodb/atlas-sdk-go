@@ -11,6 +11,8 @@ var _ MappedNullable = &GCPEndpointGroup{}
 
 // GCPEndpointGroup Group of Private Endpoint settings.
 type GCPEndpointGroup struct {
+	// Cloud service provider that serves the requested endpoint.
+	CloudProvider string `json:"cloudProvider"`
 	// Flag that indicates whether MongoDB Cloud received a request to remove the specified private endpoint from the private endpoint service.
 	DeleteRequested *bool `json:"deleteRequested,omitempty"`
 	// Human-readable label that identifies a set of endpoints.
@@ -27,8 +29,9 @@ type GCPEndpointGroup struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGCPEndpointGroup() *GCPEndpointGroup {
+func NewGCPEndpointGroup(cloudProvider string) *GCPEndpointGroup {
 	this := GCPEndpointGroup{}
+	this.CloudProvider = cloudProvider
 	return &this
 }
 
@@ -38,6 +41,30 @@ func NewGCPEndpointGroup() *GCPEndpointGroup {
 func NewGCPEndpointGroupWithDefaults() *GCPEndpointGroup {
 	this := GCPEndpointGroup{}
 	return &this
+}
+
+// GetCloudProvider returns the CloudProvider field value
+func (o *GCPEndpointGroup) GetCloudProvider() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.CloudProvider
+}
+
+// GetCloudProviderOk returns a tuple with the CloudProvider field value
+// and a boolean to check if the value has been set.
+func (o *GCPEndpointGroup) GetCloudProviderOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CloudProvider, true
+}
+
+// SetCloudProvider sets field value
+func (o *GCPEndpointGroup) SetCloudProvider(v string) {
+	o.CloudProvider = v
 }
 
 // GetDeleteRequested returns the DeleteRequested field value if set, zero value otherwise.

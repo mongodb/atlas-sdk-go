@@ -12,7 +12,7 @@ var _ MappedNullable = &IndexOptions{}
 // IndexOptions One or more settings that determine how the MongoDB Cloud creates this MongoDB index.
 type IndexOptions struct {
 	// Index version number applied to the 2dsphere index. MongoDB 3.2 and later use version 3. Use this option to override the default version number. This option applies to the **2dsphere** index type only.
-	Var2dsphereIndexVersion int `json:"2dsphereIndexVersion"`
+	Var2dsphereIndexVersion *int `json:"2dsphereIndexVersion,omitempty"`
 	// Flag that indicates whether MongoDB should build the index in the background. This applies to MongoDB databases running feature compatibility version 4.0 or earlier. MongoDB databases running FCV 4.2 or later build indexes using an optimized build process. This process holds the exclusive lock only at the beginning and end of the build process. The rest of the build process yields to interleaving read and write operations. MongoDB databases running FCV 4.2 or later ignore this option. This option applies to all index types.
 	Background *bool `json:"background,omitempty"`
 	// Number of precision applied to the stored geohash value of the location data. This option applies to the **2d** index type only.
@@ -53,9 +53,10 @@ type IndexOptions struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewIndexOptions(var2dsphereIndexVersion int) *IndexOptions {
+func NewIndexOptions() *IndexOptions {
 	this := IndexOptions{}
-	this.Var2dsphereIndexVersion = var2dsphereIndexVersion
+	var var2dsphereIndexVersion int = 3
+	this.Var2dsphereIndexVersion = &var2dsphereIndexVersion
 	var background bool = false
 	this.Background = &background
 	var bits int = 26
@@ -85,7 +86,7 @@ func NewIndexOptions(var2dsphereIndexVersion int) *IndexOptions {
 func NewIndexOptionsWithDefaults() *IndexOptions {
 	this := IndexOptions{}
 	var var2dsphereIndexVersion int = 3
-	this.Var2dsphereIndexVersion = var2dsphereIndexVersion
+	this.Var2dsphereIndexVersion = &var2dsphereIndexVersion
 	var background bool = false
 	this.Background = &background
 	var bits int = 26
@@ -109,28 +110,36 @@ func NewIndexOptionsWithDefaults() *IndexOptions {
 	return &this
 }
 
-// GetVar2dsphereIndexVersion returns the Var2dsphereIndexVersion field value
+// GetVar2dsphereIndexVersion returns the Var2dsphereIndexVersion field value if set, zero value otherwise.
 func (o *IndexOptions) GetVar2dsphereIndexVersion() int {
-	if o == nil {
+	if o == nil || IsNil(o.Var2dsphereIndexVersion) {
 		var ret int
 		return ret
 	}
-
-	return o.Var2dsphereIndexVersion
+	return *o.Var2dsphereIndexVersion
 }
 
-// GetVar2dsphereIndexVersionOk returns a tuple with the Var2dsphereIndexVersion field value
+// GetVar2dsphereIndexVersionOk returns a tuple with the Var2dsphereIndexVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IndexOptions) GetVar2dsphereIndexVersionOk() (*int, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Var2dsphereIndexVersion) {
 		return nil, false
 	}
-	return &o.Var2dsphereIndexVersion, true
+	return o.Var2dsphereIndexVersion, true
 }
 
-// SetVar2dsphereIndexVersion sets field value
+// HasVar2dsphereIndexVersion returns a boolean if a field has been set.
+func (o *IndexOptions) HasVar2dsphereIndexVersion() bool {
+	if o != nil && !IsNil(o.Var2dsphereIndexVersion) {
+		return true
+	}
+
+	return false
+}
+
+// SetVar2dsphereIndexVersion gets a reference to the given int and assigns it to the Var2dsphereIndexVersion field.
 func (o *IndexOptions) SetVar2dsphereIndexVersion(v int) {
-	o.Var2dsphereIndexVersion = v
+	o.Var2dsphereIndexVersion = &v
 }
 
 // GetBackground returns the Background field value if set, zero value otherwise.
@@ -686,7 +695,9 @@ func (o IndexOptions) MarshalJSONWithoutReadOnly() ([]byte, error) {
 }
 func (o IndexOptions) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["2dsphereIndexVersion"] = o.Var2dsphereIndexVersion
+	if !IsNil(o.Var2dsphereIndexVersion) {
+		toSerialize["2dsphereIndexVersion"] = o.Var2dsphereIndexVersion
+	}
 	if !IsNil(o.Background) {
 		toSerialize["background"] = o.Background
 	}

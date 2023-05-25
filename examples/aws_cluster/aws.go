@@ -109,7 +109,7 @@ func createDatabaseUserRequest(sdk *admin.APIClient, groupId string) *admin.Data
 		Roles: []admin.Role{
 			{
 				DatabaseName:   databaseName,
-				CollectionName: collectionName,
+				CollectionName: &collectionName,
 				RoleName:       "read",
 			},
 		},
