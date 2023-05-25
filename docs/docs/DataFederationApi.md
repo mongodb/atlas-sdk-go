@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 ## CreateDataFederationPrivateEndpoint
 
-> []PrivateNetworkEndpointIdEntry CreateDataFederationPrivateEndpoint(ctx, groupId).PrivateNetworkEndpointIdEntry(privateNetworkEndpointIdEntry).Execute()
+> PaginatedPrivateNetworkEndpointIdEntry CreateDataFederationPrivateEndpoint(ctx, groupId).PrivateNetworkEndpointIdEntry(privateNetworkEndpointIdEntry).Execute()
 
 Create One Federated Database Instance and Online Archive Private Endpoint for One Project
 
@@ -57,7 +57,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `CreateDataFederationPrivateEndpoint`: []PrivateNetworkEndpointIdEntry
+    // response from `CreateDataFederationPrivateEndpoint`: PaginatedPrivateNetworkEndpointIdEntry
     fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.CreateDataFederationPrivateEndpoint`: %v\n", resp)
 }
 ```
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]PrivateNetworkEndpointIdEntry**](PrivateNetworkEndpointIdEntry.md)
+[**PaginatedPrivateNetworkEndpointIdEntry**](PaginatedPrivateNetworkEndpointIdEntry.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -259,7 +259,7 @@ Name | Type | Description  | Notes
 
 ## DeleteDataFederationPrivateEndpoint
 
-> DeleteDataFederationPrivateEndpoint(ctx, groupId, endpointId).Execute()
+> map[string]interface{} DeleteDataFederationPrivateEndpoint(ctx, groupId, endpointId).Execute()
 
 Remove One Federated Database Instance and Online Archive Private Endpoint from One Project
 
@@ -287,12 +287,14 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     endpointId := "endpointId_example" // string | 
 
-    r, err := sdk.DataFederationApi.DeleteDataFederationPrivateEndpoint(context.Background(), groupId, endpointId).Execute()
+    resp, r, err := sdk.DataFederationApi.DeleteDataFederationPrivateEndpoint(context.Background(), groupId, endpointId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.DeleteDataFederationPrivateEndpoint``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
+    // response from `DeleteDataFederationPrivateEndpoint`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.DeleteDataFederationPrivateEndpoint`: %v\n", resp)
 }
 ```
 
@@ -317,7 +319,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -334,7 +336,7 @@ Name | Type | Description  | Notes
 
 ## DeleteFederatedDatabase
 
-> DeleteFederatedDatabase(ctx, groupId, tenantName).Execute()
+> map[string]interface{} DeleteFederatedDatabase(ctx, groupId, tenantName).Execute()
 
 Remove One Federated Database Instance from One Project
 
@@ -362,12 +364,14 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
 
-    r, err := sdk.DataFederationApi.DeleteFederatedDatabase(context.Background(), groupId, tenantName).Execute()
+    resp, r, err := sdk.DataFederationApi.DeleteFederatedDatabase(context.Background(), groupId, tenantName).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.DeleteFederatedDatabase``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
+    // response from `DeleteFederatedDatabase`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.DeleteFederatedDatabase`: %v\n", resp)
 }
 ```
 
@@ -392,7 +396,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -409,7 +413,7 @@ Name | Type | Description  | Notes
 
 ## DeleteOneDataFederationInstanceQueryLimit
 
-> DeleteOneDataFederationInstanceQueryLimit(ctx, groupId, tenantName, limitName).Execute()
+> map[string]interface{} DeleteOneDataFederationInstanceQueryLimit(ctx, groupId, tenantName, limitName).Execute()
 
 Delete One Query Limit For One Federated Database Instance
 
@@ -438,12 +442,14 @@ func main() {
     tenantName := "tenantName_example" // string | 
     limitName := "limitName_example" // string | 
 
-    r, err := sdk.DataFederationApi.DeleteOneDataFederationInstanceQueryLimit(context.Background(), groupId, tenantName, limitName).Execute()
+    resp, r, err := sdk.DataFederationApi.DeleteOneDataFederationInstanceQueryLimit(context.Background(), groupId, tenantName, limitName).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.DeleteOneDataFederationInstanceQueryLimit``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
+    // response from `DeleteOneDataFederationInstanceQueryLimit`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.DeleteOneDataFederationInstanceQueryLimit`: %v\n", resp)
 }
 ```
 
@@ -470,7 +476,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -722,7 +728,7 @@ Name | Type | Description  | Notes
 
 ## ListDataFederationPrivateEndpoints
 
-> []PrivateNetworkEndpointIdEntry ListDataFederationPrivateEndpoints(ctx, groupId).Execute()
+> PaginatedPrivateNetworkEndpointIdEntry ListDataFederationPrivateEndpoints(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Return All Federated Database Instance and Online Archive Private Endpoints in One Project
 
@@ -748,14 +754,17 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    includeCount := true // bool |  (optional) (default to true)
+    itemsPerPage := int(100) // int |  (optional) (default to 100)
+    pageNum := int(1) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.DataFederationApi.ListDataFederationPrivateEndpoints(context.Background(), groupId).Execute()
+    resp, r, err := sdk.DataFederationApi.ListDataFederationPrivateEndpoints(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.ListDataFederationPrivateEndpoints``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `ListDataFederationPrivateEndpoints`: []PrivateNetworkEndpointIdEntry
+    // response from `ListDataFederationPrivateEndpoints`: PaginatedPrivateNetworkEndpointIdEntry
     fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.ListDataFederationPrivateEndpoints`: %v\n", resp)
 }
 ```
@@ -776,10 +785,13 @@ Other parameters are passed through a pointer to a apiListDataFederationPrivateE
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (**totalCount**) in the response. | [default to true]
+ **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
+ **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
 
 ### Return type
 
-[**[]PrivateNetworkEndpointIdEntry**](PrivateNetworkEndpointIdEntry.md)
+[**PaginatedPrivateNetworkEndpointIdEntry**](PaginatedPrivateNetworkEndpointIdEntry.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

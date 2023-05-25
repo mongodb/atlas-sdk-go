@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CloudProvider** | **string** | Cloud service provider that serves the requested endpoint. | [readonly] 
 **DeleteRequested** | Pointer to **bool** | Flag that indicates whether MongoDB Cloud received a request to remove the specified private endpoint from the private endpoint service. | [optional] [readonly] 
 **ErrorMessage** | Pointer to **string** | Error message returned when requesting private connection resource. The resource returns &#x60;null&#x60; if the request succeeded. | [optional] [readonly] 
 **PrivateEndpointConnectionName** | Pointer to **string** | Human-readable label that MongoDB Cloud generates that identifies the private endpoint connection. | [optional] [readonly] 
@@ -15,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewAzurePrivateEndpoint
 
-`func NewAzurePrivateEndpoint() *AzurePrivateEndpoint`
+`func NewAzurePrivateEndpoint(cloudProvider string, ) *AzurePrivateEndpoint`
 
 NewAzurePrivateEndpoint instantiates a new AzurePrivateEndpoint object
 This constructor will assign default values to properties that have it defined,
@@ -29,6 +30,26 @@ will change when the set of required properties is changed
 NewAzurePrivateEndpointWithDefaults instantiates a new AzurePrivateEndpoint object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCloudProvider
+
+`func (o *AzurePrivateEndpoint) GetCloudProvider() string`
+
+GetCloudProvider returns the CloudProvider field if non-nil, zero value otherwise.
+
+### GetCloudProviderOk
+
+`func (o *AzurePrivateEndpoint) GetCloudProviderOk() (*string, bool)`
+
+GetCloudProviderOk returns a tuple with the CloudProvider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCloudProvider
+
+`func (o *AzurePrivateEndpoint) SetCloudProvider(v string)`
+
+SetCloudProvider sets CloudProvider field to given value.
+
 
 ### GetDeleteRequested
 

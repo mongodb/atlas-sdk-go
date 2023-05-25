@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CollectionName** | **string** | Collection on which this role applies. | 
+**CollectionName** | Pointer to **string** | Collection on which this role applies. | [optional] 
 **DatabaseName** | **string** | Database against which the database user authenticates. Database users must provide both a username and authentication database to log into MongoDB. | 
 **RoleName** | **string** | Human-readable label that identifies a group of privileges assigned to a database user. This value can either be a built-in role or a custom role. | 
 
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewRole
 
-`func NewRole(collectionName string, databaseName string, roleName string, ) *Role`
+`func NewRole(databaseName string, roleName string, ) *Role`
 
 NewRole instantiates a new Role object
 This constructor will assign default values to properties that have it defined,
@@ -46,6 +46,11 @@ and a boolean to check if the value has been set.
 
 SetCollectionName sets CollectionName field to given value.
 
+### HasCollectionName
+
+`func (o *Role) HasCollectionName() bool`
+
+HasCollectionName returns a boolean if a field has been set.
 
 ### GetDatabaseName
 

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ApiKey** | Pointer to [**CreateApiKey**](CreateApiKey.md) |  | [optional] 
 **Name** | **string** | Human-readable label that identifies the organization. | 
-**OrgOwnerId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the Atlas user that you want to assign the Organization Owner role. This user must be a member of the same organization as the calling API key. This is required if you call the Admin API endpoint directly, but not required when you call through the Atlas CLI. | [optional] 
+**OrgOwnerId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the Atlas user that you want to assign the Organization Owner role. This user must be a member of the same organization as the calling API key. This is only required when authenticating with Programmatic API Keys. | [optional] 
 
 ## Methods
 

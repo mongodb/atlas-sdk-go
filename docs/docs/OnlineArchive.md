@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **DbName** | Pointer to **string** | Human-readable label of the database that contains the collection that contains the online archive. | [optional] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the project that contains the specified cluster. The specified cluster contains the collection for which to create the online archive. | [optional] [readonly] 
 **PartitionFields** | Pointer to [**[]PartitionField**](PartitionField.md) | List that contains document parameters to use to logically divide data within a collection. Partitions provide a coarse level of filtering of the underlying collection data. To divide your data, specify up to two parameters that you frequently query. Any queries that don&#39;t use these parameters result in a full collection scan of all archived documents. This takes more time and increase your costs. | [optional] 
+**Paused** | Pointer to **bool** | Flag that indicates whether this online archive exists in the paused state. A request to resume fails if the collection has another active online archive. To pause an active online archive or resume a paused online archive, you must include this parameter. To pause an active archive, set this to **true**. To resume a paused archive, set this to **false**. | [optional] 
 **Schedule** | Pointer to [**OnlineArchiveSchedule**](OnlineArchiveSchedule.md) |  | [optional] 
 **State** | Pointer to **string** | Phase of the process to create this online archive when you made this request.  | State       | Indication | |-------------|------------| | &#x60;PENDING&#x60;   | MongoDB Cloud has queued documents for archive. Archiving hasn&#39;t started. | | &#x60;ARCHIVING&#x60; | MongoDB Cloud started archiving documents that meet the archival criteria. | | &#x60;IDLE&#x60;      | MongoDB Cloud waits to start the next archival job. | | &#x60;PAUSING&#x60;   | Someone chose to stop archiving. MongoDB Cloud finishes the running archival job then changes the state to &#x60;PAUSED&#x60; when that job completes. | | &#x60;PAUSED&#x60;    | MongoDB Cloud has stopped archiving. Archived documents can be queried. The specified archiving operation on the active cluster cannot archive additional documents. You can resume archiving for paused archives at any time. | | &#x60;ORPHANED&#x60;  | Someone has deleted the collection associated with an active or paused archive. MongoDB Cloud doesn&#39;t delete the archived data. You must manually delete the online archives associated with the deleted collection. | | &#x60;DELETED&#x60;   | Someone has deleted the archive was deleted. When someone deletes an online archive, MongoDB Cloud removes all associated archived documents from the cloud object storage. | | [optional] [readonly] 
 
@@ -233,6 +234,31 @@ SetPartitionFields sets PartitionFields field to given value.
 `func (o *OnlineArchive) HasPartitionFields() bool`
 
 HasPartitionFields returns a boolean if a field has been set.
+
+### GetPaused
+
+`func (o *OnlineArchive) GetPaused() bool`
+
+GetPaused returns the Paused field if non-nil, zero value otherwise.
+
+### GetPausedOk
+
+`func (o *OnlineArchive) GetPausedOk() (*bool, bool)`
+
+GetPausedOk returns a tuple with the Paused field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPaused
+
+`func (o *OnlineArchive) SetPaused(v bool)`
+
+SetPaused sets Paused field to given value.
+
+### HasPaused
+
+`func (o *OnlineArchive) HasPaused() bool`
+
+HasPaused returns a boolean if a field has been set.
 
 ### GetSchedule
 

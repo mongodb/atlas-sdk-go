@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**InstanceSizes** | Pointer to [**[]InstanceSize**](InstanceSize.md) | List of instances sizes that this cloud provider supports. | [optional] [readonly] 
+**InstanceSizes** | Pointer to [**[]ProviderInstanceSize**](ProviderInstanceSize.md) | List of instances sizes that this cloud provider supports. | [optional] [readonly] 
 **Provider** | Pointer to **string** | Human-readable label that identifies the Cloud provider. | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetInstanceSizes
 
-`func (o *ProviderRegions) GetInstanceSizes() []InstanceSize`
+`func (o *ProviderRegions) GetInstanceSizes() []ProviderInstanceSize`
 
 GetInstanceSizes returns the InstanceSizes field if non-nil, zero value otherwise.
 
 ### GetInstanceSizesOk
 
-`func (o *ProviderRegions) GetInstanceSizesOk() (*[]InstanceSize, bool)`
+`func (o *ProviderRegions) GetInstanceSizesOk() (*[]ProviderInstanceSize, bool)`
 
 GetInstanceSizesOk returns a tuple with the InstanceSizes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInstanceSizes
 
-`func (o *ProviderRegions) SetInstanceSizes(v []InstanceSize)`
+`func (o *ProviderRegions) SetInstanceSizes(v []ProviderInstanceSize)`
 
 SetInstanceSizes sets InstanceSizes field to given value.
 

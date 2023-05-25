@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Expires** | Pointer to **time.Time** | Date and time when MongoDB Cloud deletes the snapshot. If &#x60;\&quot;doNotDelete\&quot; : true&#x60;, MongoDB Cloud removes any value set for this parameter. | [optional] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the project that owns the snapshots. | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the snapshot. | [optional] [readonly] 
+**Incremental** | Pointer to **bool** | Flag indicating if this is an incremental or a full snapshot. | [optional] [readonly] 
 **LastOplogAppliedTimestamp** | Pointer to [**BSONTimestamp**](BSONTimestamp.md) |  | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Parts** | Pointer to [**[]SnapshotPart**](SnapshotPart.md) | Metadata that describes the complete snapshot.  - For a replica set, this array contains a single document. - For a sharded cluster, this array contains one document for each shard plus one document for the config host. | [optional] [readonly] 
@@ -208,6 +209,31 @@ SetId sets Id field to given value.
 `func (o *Snapshot) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### GetIncremental
+
+`func (o *Snapshot) GetIncremental() bool`
+
+GetIncremental returns the Incremental field if non-nil, zero value otherwise.
+
+### GetIncrementalOk
+
+`func (o *Snapshot) GetIncrementalOk() (*bool, bool)`
+
+GetIncrementalOk returns a tuple with the Incremental field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIncremental
+
+`func (o *Snapshot) SetIncremental(v bool)`
+
+SetIncremental sets Incremental field to given value.
+
+### HasIncremental
+
+`func (o *Snapshot) HasIncremental() bool`
+
+HasIncremental returns a boolean if a field has been set.
 
 ### GetLastOplogAppliedTimestamp
 

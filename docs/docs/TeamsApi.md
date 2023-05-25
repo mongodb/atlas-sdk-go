@@ -203,7 +203,7 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     orgId := "4888442a3354817a7320eb61" // string | 
-    team := *openapiclient.NewTeam("32b6e34b3d91647abb20e7b8", "Name_example") // Team | 
+    team := *openapiclient.NewTeam("Name_example") // Team | 
 
     resp, r, err := sdk.TeamsApi.CreateTeam(context.Background(), orgId).Team(&team).Execute()
     if err != nil {
@@ -253,7 +253,7 @@ Name | Type | Description  | Notes
 
 ## DeleteTeam
 
-> DeleteTeam(ctx, orgId, teamId).Execute()
+> map[string]interface{} DeleteTeam(ctx, orgId, teamId).Execute()
 
 Remove One Team from One Organization
 
@@ -281,12 +281,14 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     teamId := "teamId_example" // string | 
 
-    r, err := sdk.TeamsApi.DeleteTeam(context.Background(), orgId, teamId).Execute()
+    resp, r, err := sdk.TeamsApi.DeleteTeam(context.Background(), orgId, teamId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.DeleteTeam``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
+    // response from `DeleteTeam`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.DeleteTeam`: %v\n", resp)
 }
 ```
 
@@ -311,7 +313,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -723,7 +725,7 @@ Name | Type | Description  | Notes
 
 ## RemoveProjectTeam
 
-> RemoveProjectTeam(ctx, groupId, teamId).Execute()
+> map[string]interface{} RemoveProjectTeam(ctx, groupId, teamId).Execute()
 
 Remove One Team from One Project
 
@@ -751,12 +753,14 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     teamId := "teamId_example" // string | 
 
-    r, err := sdk.TeamsApi.RemoveProjectTeam(context.Background(), groupId, teamId).Execute()
+    resp, r, err := sdk.TeamsApi.RemoveProjectTeam(context.Background(), groupId, teamId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.RemoveProjectTeam``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
+    // response from `RemoveProjectTeam`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.RemoveProjectTeam`: %v\n", resp)
 }
 ```
 
@@ -781,7 +785,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -903,7 +907,7 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
     teamId := "teamId_example" // string | 
-    team := *openapiclient.NewTeam("32b6e34b3d91647abb20e7b8", "Name_example") // Team | 
+    team := *openapiclient.NewTeam("Name_example") // Team | 
 
     resp, r, err := sdk.TeamsApi.RenameTeam(context.Background(), orgId, teamId).Team(&team).Execute()
     if err != nil {

@@ -6,7 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CloudProviderConfig** | Pointer to [**DataLakeCloudProviderConfig**](DataLakeCloudProviderConfig.md) |  | [optional] 
 **DataProcessRegion** | Pointer to [**DataLakeDataProcessRegion**](DataLakeDataProcessRegion.md) |  | [optional] 
+**GroupId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the project. | [optional] [readonly] 
+**Hostnames** | Pointer to **[]string** | List that contains the hostnames assigned to the Data Lake instance. | [optional] [readonly] 
 **Name** | Pointer to **string** | Human-readable label that identifies the data lake. | [optional] 
+**State** | Pointer to **string** | Label that indicates the status of the Data Lake instance. | [optional] [readonly] 
 **Storage** | Pointer to [**DataLakeStorage**](DataLakeStorage.md) |  | [optional] 
 
 ## Methods
@@ -78,6 +81,56 @@ SetDataProcessRegion sets DataProcessRegion field to given value.
 
 HasDataProcessRegion returns a boolean if a field has been set.
 
+### GetGroupId
+
+`func (o *DataLakeTenant) GetGroupId() string`
+
+GetGroupId returns the GroupId field if non-nil, zero value otherwise.
+
+### GetGroupIdOk
+
+`func (o *DataLakeTenant) GetGroupIdOk() (*string, bool)`
+
+GetGroupIdOk returns a tuple with the GroupId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroupId
+
+`func (o *DataLakeTenant) SetGroupId(v string)`
+
+SetGroupId sets GroupId field to given value.
+
+### HasGroupId
+
+`func (o *DataLakeTenant) HasGroupId() bool`
+
+HasGroupId returns a boolean if a field has been set.
+
+### GetHostnames
+
+`func (o *DataLakeTenant) GetHostnames() []string`
+
+GetHostnames returns the Hostnames field if non-nil, zero value otherwise.
+
+### GetHostnamesOk
+
+`func (o *DataLakeTenant) GetHostnamesOk() (*[]string, bool)`
+
+GetHostnamesOk returns a tuple with the Hostnames field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHostnames
+
+`func (o *DataLakeTenant) SetHostnames(v []string)`
+
+SetHostnames sets Hostnames field to given value.
+
+### HasHostnames
+
+`func (o *DataLakeTenant) HasHostnames() bool`
+
+HasHostnames returns a boolean if a field has been set.
+
 ### GetName
 
 `func (o *DataLakeTenant) GetName() string`
@@ -102,6 +155,31 @@ SetName sets Name field to given value.
 `func (o *DataLakeTenant) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetState
+
+`func (o *DataLakeTenant) GetState() string`
+
+GetState returns the State field if non-nil, zero value otherwise.
+
+### GetStateOk
+
+`func (o *DataLakeTenant) GetStateOk() (*string, bool)`
+
+GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetState
+
+`func (o *DataLakeTenant) SetState(v string)`
+
+SetState sets State field to given value.
+
+### HasState
+
+`func (o *DataLakeTenant) HasState() bool`
+
+HasState returns a boolean if a field has been set.
 
 ### GetStorage
 

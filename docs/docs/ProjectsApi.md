@@ -177,7 +177,7 @@ Name | Type | Description  | Notes
 
 ## DeleteProject
 
-> DeleteProject(ctx, groupId).Execute()
+> map[string]interface{} DeleteProject(ctx, groupId).Execute()
 
 Remove One Project
 
@@ -204,12 +204,14 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    r, err := sdk.ProjectsApi.DeleteProject(context.Background(), groupId).Execute()
+    resp, r, err := sdk.ProjectsApi.DeleteProject(context.Background(), groupId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.DeleteProject``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
+    // response from `DeleteProject`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.DeleteProject`: %v\n", resp)
 }
 ```
 
@@ -232,7 +234,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -249,7 +251,7 @@ Name | Type | Description  | Notes
 
 ## DeleteProjectInvitation
 
-> DeleteProjectInvitation(ctx, groupId, invitationId).Execute()
+> map[string]interface{} DeleteProjectInvitation(ctx, groupId, invitationId).Execute()
 
 Cancel One Project Invitation
 
@@ -277,12 +279,14 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     invitationId := "invitationId_example" // string | 
 
-    r, err := sdk.ProjectsApi.DeleteProjectInvitation(context.Background(), groupId, invitationId).Execute()
+    resp, r, err := sdk.ProjectsApi.DeleteProjectInvitation(context.Background(), groupId, invitationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.DeleteProjectInvitation``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
+    // response from `DeleteProjectInvitation`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.DeleteProjectInvitation`: %v\n", resp)
 }
 ```
 
@@ -307,7 +311,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -324,7 +328,7 @@ Name | Type | Description  | Notes
 
 ## DeleteProjectLimit
 
-> DeleteProjectLimit(ctx, limitName, groupId).Execute()
+> map[string]interface{} DeleteProjectLimit(ctx, limitName, groupId).Execute()
 
 Remove One Project Limit
 
@@ -352,12 +356,14 @@ func main() {
     limitName := "limitName_example" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    r, err := sdk.ProjectsApi.DeleteProjectLimit(context.Background(), limitName, groupId).Execute()
+    resp, r, err := sdk.ProjectsApi.DeleteProjectLimit(context.Background(), limitName, groupId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.DeleteProjectLimit``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
+    // response from `DeleteProjectLimit`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.DeleteProjectLimit`: %v\n", resp)
 }
 ```
 
@@ -382,7 +388,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -1185,7 +1191,7 @@ func main() {
 
     limitName := "limitName_example" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    limit := openapiclient.Limit{DataFederationQueryLimit: openapiclient.NewDataFederationQueryLimit("Name_example", int64(123))} // Limit |  (optional)
+    limit := openapiclient.Limit{DataFederationQueryLimit: openapiclient.NewDataFederationQueryLimit("Name_example", int64(123))} // Limit | 
 
     resp, r, err := sdk.ProjectsApi.SetProjectLimit(context.Background(), limitName, groupId).Limit(&limit).Execute()
     if err != nil {
@@ -1216,7 +1222,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **limit** | [**Limit**](Limit.md) |  | 
+ **limit** | [**Limit**](Limit.md) | Limit to update. | 
 
 ### Return type
 
@@ -1227,7 +1233,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: application/vnd.atlas.2023-01-01+json
 - **Accept**: application/vnd.atlas.2023-01-01+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1263,7 +1269,7 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    groupName := *openapiclient.NewGroupName() // GroupName |  (optional)
+    groupName := *openapiclient.NewGroupName() // GroupName | 
 
     resp, r, err := sdk.ProjectsApi.UpdateProject(context.Background(), groupId).GroupName(&groupName).Execute()
     if err != nil {
@@ -1292,7 +1298,7 @@ Other parameters are passed through a pointer to a apiUpdateProjectRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **groupName** | [**GroupName**](GroupName.md) |  | 
+ **groupName** | [**GroupName**](GroupName.md) | Project to update. | 
 
 ### Return type
 
@@ -1303,7 +1309,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: application/vnd.atlas.2023-01-01+json
 - **Accept**: application/vnd.atlas.2023-01-01+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1494,7 +1500,7 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    groupSettings := *openapiclient.NewGroupSettings() // GroupSettings |  (optional)
+    groupSettings := *openapiclient.NewGroupSettings() // GroupSettings | 
 
     resp, r, err := sdk.ProjectsApi.UpdateProjectSettings(context.Background(), groupId).GroupSettings(&groupSettings).Execute()
     if err != nil {
@@ -1523,7 +1529,7 @@ Other parameters are passed through a pointer to a apiUpdateProjectSettingsReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **groupSettings** | [**GroupSettings**](GroupSettings.md) |  | 
+ **groupSettings** | [**GroupSettings**](GroupSettings.md) | Settings to update. | 
 
 ### Return type
 
@@ -1534,7 +1540,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: application/vnd.atlas.2023-01-01+json
 - **Accept**: application/vnd.atlas.2023-01-01+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

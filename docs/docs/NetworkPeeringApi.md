@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 ## CreatePeeringConnection
 
-> CreatePeeringConnection200Response CreatePeeringConnection(ctx, groupId).ContainerPeerViewRequest(containerPeerViewRequest).Execute()
+> ContainerPeer CreatePeeringConnection(ctx, groupId).ContainerPeer(containerPeer).Execute()
 
 Create One New Network Peering Connection
 
@@ -48,15 +48,15 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    containerPeerViewRequest := openapiclient.ContainerPeerViewRequest{AWSPeerVpcRequest: openapiclient.NewAWSPeerVpcRequest("32b6e34b3d91647abb20e7b8", "ProviderName_example", "AccepterRegionName_example", "AwsAccountId_example", "RouteTableCidrBlock_example", "VpcId_example")} // ContainerPeerViewRequest | 
+    containerPeer := openapiclient.ContainerPeer{AWSPeerVpc: openapiclient.NewAWSPeerVpc("AccepterRegionName_example", "AwsAccountId_example", "32b6e34b3d91647abb20e7b8", "RouteTableCidrBlock_example", "VpcId_example")} // ContainerPeer | 
 
-    resp, r, err := sdk.NetworkPeeringApi.CreatePeeringConnection(context.Background(), groupId).ContainerPeerViewRequest(&containerPeerViewRequest).Execute()
+    resp, r, err := sdk.NetworkPeeringApi.CreatePeeringConnection(context.Background(), groupId).ContainerPeer(&containerPeer).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.CreatePeeringConnection``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `CreatePeeringConnection`: CreatePeeringConnection200Response
+    // response from `CreatePeeringConnection`: ContainerPeer
     fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.CreatePeeringConnection`: %v\n", resp)
 }
 ```
@@ -77,11 +77,11 @@ Other parameters are passed through a pointer to a apiCreatePeeringConnectionReq
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **containerPeerViewRequest** | [**ContainerPeerViewRequest**](ContainerPeerViewRequest.md) | Create one network peering connection. | 
+ **containerPeer** | [**ContainerPeer**](ContainerPeer.md) | Create one network peering connection. | 
 
 ### Return type
 
-[**CreatePeeringConnection200Response**](CreatePeeringConnection200Response.md)
+[**ContainerPeer**](ContainerPeer.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -174,7 +174,7 @@ Name | Type | Description  | Notes
 
 ## DeletePeeringConnection
 
-> DeletePeeringConnection(ctx, groupId, peerId).Execute()
+> map[string]interface{} DeletePeeringConnection(ctx, groupId, peerId).Execute()
 
 Remove One Existing Network Peering Connection
 
@@ -202,12 +202,14 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     peerId := "peerId_example" // string | 
 
-    r, err := sdk.NetworkPeeringApi.DeletePeeringConnection(context.Background(), groupId, peerId).Execute()
+    resp, r, err := sdk.NetworkPeeringApi.DeletePeeringConnection(context.Background(), groupId, peerId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.DeletePeeringConnection``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
+    // response from `DeletePeeringConnection`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.DeletePeeringConnection`: %v\n", resp)
 }
 ```
 
@@ -232,7 +234,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -240,7 +242,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -249,7 +251,7 @@ Name | Type | Description  | Notes
 
 ## DeletePeeringContainer
 
-> DeletePeeringContainer(ctx, groupId, containerId).Execute()
+> map[string]interface{} DeletePeeringContainer(ctx, groupId, containerId).Execute()
 
 Remove One Network Peering Container
 
@@ -277,12 +279,14 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     containerId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    r, err := sdk.NetworkPeeringApi.DeletePeeringContainer(context.Background(), groupId, containerId).Execute()
+    resp, r, err := sdk.NetworkPeeringApi.DeletePeeringContainer(context.Background(), groupId, containerId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.DeletePeeringContainer``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
+    // response from `DeletePeeringContainer`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.DeletePeeringContainer`: %v\n", resp)
 }
 ```
 
@@ -307,7 +311,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -400,7 +404,7 @@ Name | Type | Description  | Notes
 
 ## GetPeeringConnection
 
-> GetPeeringConnection200Response GetPeeringConnection(ctx, groupId, peerId).Execute()
+> ContainerPeer GetPeeringConnection(ctx, groupId, peerId).Execute()
 
 Return One Network Peering Connection in One Project
 
@@ -434,7 +438,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetPeeringConnection`: GetPeeringConnection200Response
+    // response from `GetPeeringConnection`: ContainerPeer
     fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.GetPeeringConnection`: %v\n", resp)
 }
 ```
@@ -460,7 +464,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetPeeringConnection200Response**](GetPeeringConnection200Response.md)
+[**ContainerPeer**](ContainerPeer.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -554,7 +558,7 @@ Name | Type | Description  | Notes
 
 ## ListPeeringConnections
 
-> ListPeeringConnections200Response ListPeeringConnections(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).ProviderName(providerName).Execute()
+> PaginatedContainerPeer ListPeeringConnections(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).ProviderName(providerName).Execute()
 
 Return All Network Peering Connections in One Project
 
@@ -591,7 +595,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `ListPeeringConnections`: ListPeeringConnections200Response
+    // response from `ListPeeringConnections`: PaginatedContainerPeer
     fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.ListPeeringConnections`: %v\n", resp)
 }
 ```
@@ -619,7 +623,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListPeeringConnections200Response**](ListPeeringConnections200Response.md)
+[**PaginatedContainerPeer**](PaginatedContainerPeer.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -798,7 +802,7 @@ Name | Type | Description  | Notes
 
 ## UpdatePeeringConnection
 
-> GetPeeringConnection200Response UpdatePeeringConnection(ctx, groupId, peerId).ContainerPeerViewRequest(containerPeerViewRequest).Execute()
+> ContainerPeer UpdatePeeringConnection(ctx, groupId, peerId).ContainerPeer(containerPeer).Execute()
 
 Update One New Network Peering Connection
 
@@ -825,15 +829,15 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     peerId := "peerId_example" // string | 
-    containerPeerViewRequest := openapiclient.ContainerPeerViewRequest{AWSPeerVpcRequest: openapiclient.NewAWSPeerVpcRequest("32b6e34b3d91647abb20e7b8", "ProviderName_example", "AccepterRegionName_example", "AwsAccountId_example", "RouteTableCidrBlock_example", "VpcId_example")} // ContainerPeerViewRequest | 
+    containerPeer := openapiclient.ContainerPeer{AWSPeerVpc: openapiclient.NewAWSPeerVpc("AccepterRegionName_example", "AwsAccountId_example", "32b6e34b3d91647abb20e7b8", "RouteTableCidrBlock_example", "VpcId_example")} // ContainerPeer | 
 
-    resp, r, err := sdk.NetworkPeeringApi.UpdatePeeringConnection(context.Background(), groupId, peerId).ContainerPeerViewRequest(&containerPeerViewRequest).Execute()
+    resp, r, err := sdk.NetworkPeeringApi.UpdatePeeringConnection(context.Background(), groupId, peerId).ContainerPeer(&containerPeer).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.UpdatePeeringConnection``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `UpdatePeeringConnection`: GetPeeringConnection200Response
+    // response from `UpdatePeeringConnection`: ContainerPeer
     fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.UpdatePeeringConnection`: %v\n", resp)
 }
 ```
@@ -856,11 +860,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **containerPeerViewRequest** | [**ContainerPeerViewRequest**](ContainerPeerViewRequest.md) | Modify one network peering connection. | 
+ **containerPeer** | [**ContainerPeer**](ContainerPeer.md) | Modify one network peering connection. | 
 
 ### Return type
 
-[**GetPeeringConnection200Response**](GetPeeringConnection200Response.md)
+[**ContainerPeer**](ContainerPeer.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

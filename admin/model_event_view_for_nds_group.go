@@ -15,8 +15,8 @@ type EventViewForNdsGroup struct {
 	// Unique 24-hexadecimal digit string that identifies the [API Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key) that triggered the event. If this resource returns this parameter, it doesn't return the **userId** parameter.
 	ApiKeyId *string `json:"apiKeyId,omitempty"`
 	// Date and time when this event occurred. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC.
-	Created       *time.Time                    `json:"created,omitempty"`
-	EventTypeName *UserEventTypeViewForNdsGroup `json:"eventTypeName,omitempty"`
+	Created       *time.Time         `json:"created,omitempty"`
+	EventTypeName *ResourceEventType `json:"eventTypeName,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The **eventId** identifies the specific event.
 	GroupId *string `json:"groupId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the event.
@@ -69,6 +69,10 @@ type EventViewForNdsGroup struct {
 	TeamId *string `json:"teamId,omitempty"`
 	// Email address for the console user that this event targets. The resource returns this parameter when `\"eventTypeName\" : \"USER\"`.
 	TargetUsername *string `json:"targetUsername,omitempty"`
+	// Unique 24-hexadecimal digit string that identifies the resource associated with the event.
+	ResourceId *string `json:"resourceId,omitempty"`
+	// Unique identifier of resource type.
+	ResourceType *string `json:"resourceType,omitempty"`
 }
 
 // NewEventViewForNdsGroup instantiates a new EventViewForNdsGroup object
@@ -153,9 +157,9 @@ func (o *EventViewForNdsGroup) SetCreated(v time.Time) {
 }
 
 // GetEventTypeName returns the EventTypeName field value if set, zero value otherwise.
-func (o *EventViewForNdsGroup) GetEventTypeName() UserEventTypeViewForNdsGroup {
+func (o *EventViewForNdsGroup) GetEventTypeName() ResourceEventType {
 	if o == nil || IsNil(o.EventTypeName) {
-		var ret UserEventTypeViewForNdsGroup
+		var ret ResourceEventType
 		return ret
 	}
 	return *o.EventTypeName
@@ -163,7 +167,7 @@ func (o *EventViewForNdsGroup) GetEventTypeName() UserEventTypeViewForNdsGroup {
 
 // GetEventTypeNameOk returns a tuple with the EventTypeName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EventViewForNdsGroup) GetEventTypeNameOk() (*UserEventTypeViewForNdsGroup, bool) {
+func (o *EventViewForNdsGroup) GetEventTypeNameOk() (*ResourceEventType, bool) {
 	if o == nil || IsNil(o.EventTypeName) {
 		return nil, false
 	}
@@ -179,8 +183,8 @@ func (o *EventViewForNdsGroup) HasEventTypeName() bool {
 	return false
 }
 
-// SetEventTypeName gets a reference to the given UserEventTypeViewForNdsGroup and assigns it to the EventTypeName field.
-func (o *EventViewForNdsGroup) SetEventTypeName(v UserEventTypeViewForNdsGroup) {
+// SetEventTypeName gets a reference to the given ResourceEventType and assigns it to the EventTypeName field.
+func (o *EventViewForNdsGroup) SetEventTypeName(v ResourceEventType) {
 	o.EventTypeName = &v
 }
 
@@ -1048,6 +1052,70 @@ func (o *EventViewForNdsGroup) SetTargetUsername(v string) {
 	o.TargetUsername = &v
 }
 
+// GetResourceId returns the ResourceId field value if set, zero value otherwise.
+func (o *EventViewForNdsGroup) GetResourceId() string {
+	if o == nil || IsNil(o.ResourceId) {
+		var ret string
+		return ret
+	}
+	return *o.ResourceId
+}
+
+// GetResourceIdOk returns a tuple with the ResourceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForNdsGroup) GetResourceIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ResourceId) {
+		return nil, false
+	}
+	return o.ResourceId, true
+}
+
+// HasResourceId returns a boolean if a field has been set.
+func (o *EventViewForNdsGroup) HasResourceId() bool {
+	if o != nil && !IsNil(o.ResourceId) {
+		return true
+	}
+
+	return false
+}
+
+// SetResourceId gets a reference to the given string and assigns it to the ResourceId field.
+func (o *EventViewForNdsGroup) SetResourceId(v string) {
+	o.ResourceId = &v
+}
+
+// GetResourceType returns the ResourceType field value if set, zero value otherwise.
+func (o *EventViewForNdsGroup) GetResourceType() string {
+	if o == nil || IsNil(o.ResourceType) {
+		var ret string
+		return ret
+	}
+	return *o.ResourceType
+}
+
+// GetResourceTypeOk returns a tuple with the ResourceType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForNdsGroup) GetResourceTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.ResourceType) {
+		return nil, false
+	}
+	return o.ResourceType, true
+}
+
+// HasResourceType returns a boolean if a field has been set.
+func (o *EventViewForNdsGroup) HasResourceType() bool {
+	if o != nil && !IsNil(o.ResourceType) {
+		return true
+	}
+
+	return false
+}
+
+// SetResourceType gets a reference to the given string and assigns it to the ResourceType field.
+func (o *EventViewForNdsGroup) SetResourceType(v string) {
+	o.ResourceType = &v
+}
+
 func (o EventViewForNdsGroup) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -1065,6 +1133,9 @@ func (o EventViewForNdsGroup) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.CurrentValue) {
 		toSerialize["currentValue"] = o.CurrentValue
+	}
+	if !IsNil(o.ResourceType) {
+		toSerialize["resourceType"] = o.ResourceType
 	}
 	return toSerialize, nil
 }

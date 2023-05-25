@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Name** | **string** | Human-readable label that identifies the project included in the MongoDB Cloud organization. | 
 **OrgId** | **string** | Unique 24-hexadecimal digit string that identifies the MongoDB Cloud organization to which the project belongs. | 
+**RegionUsageRestrictions** | Pointer to **string** | Region usage restrictions that designate the project&#39;s AWS region. | [optional] [default to "NONE"]
 **WithDefaultAlertsSettings** | Pointer to **bool** | Flag that indicates whether to create the project with default alert settings. | [optional] 
 
 ## Methods
@@ -160,6 +161,31 @@ and a boolean to check if the value has been set.
 
 SetOrgId sets OrgId field to given value.
 
+
+### GetRegionUsageRestrictions
+
+`func (o *Group) GetRegionUsageRestrictions() string`
+
+GetRegionUsageRestrictions returns the RegionUsageRestrictions field if non-nil, zero value otherwise.
+
+### GetRegionUsageRestrictionsOk
+
+`func (o *Group) GetRegionUsageRestrictionsOk() (*string, bool)`
+
+GetRegionUsageRestrictionsOk returns a tuple with the RegionUsageRestrictions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRegionUsageRestrictions
+
+`func (o *Group) SetRegionUsageRestrictions(v string)`
+
+SetRegionUsageRestrictions sets RegionUsageRestrictions field to given value.
+
+### HasRegionUsageRestrictions
+
+`func (o *Group) HasRegionUsageRestrictions() bool`
+
+HasRegionUsageRestrictions returns a boolean if a field has been set.
 
 ### GetWithDefaultAlertsSettings
 

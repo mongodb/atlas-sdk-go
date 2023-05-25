@@ -170,7 +170,7 @@ Name | Type | Description  | Notes
 
 ## DeleteOrganization
 
-> DeleteOrganization(ctx, orgId).Execute()
+> map[string]interface{} DeleteOrganization(ctx, orgId).Execute()
 
 Remove One Organization
 
@@ -197,12 +197,14 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
 
-    r, err := sdk.OrganizationsApi.DeleteOrganization(context.Background(), orgId).Execute()
+    resp, r, err := sdk.OrganizationsApi.DeleteOrganization(context.Background(), orgId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.DeleteOrganization``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
+    // response from `DeleteOrganization`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.DeleteOrganization`: %v\n", resp)
 }
 ```
 
@@ -225,7 +227,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -242,7 +244,7 @@ Name | Type | Description  | Notes
 
 ## DeleteOrganizationInvitation
 
-> DeleteOrganizationInvitation(ctx, orgId, invitationId).Execute()
+> map[string]interface{} DeleteOrganizationInvitation(ctx, orgId, invitationId).Execute()
 
 Cancel One Organization Invitation
 
@@ -270,12 +272,14 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     invitationId := "invitationId_example" // string | 
 
-    r, err := sdk.OrganizationsApi.DeleteOrganizationInvitation(context.Background(), orgId, invitationId).Execute()
+    resp, r, err := sdk.OrganizationsApi.DeleteOrganizationInvitation(context.Background(), orgId, invitationId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.DeleteOrganizationInvitation``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
+    // response from `DeleteOrganizationInvitation`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.DeleteOrganizationInvitation`: %v\n", resp)
 }
 ```
 
@@ -300,7 +304,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

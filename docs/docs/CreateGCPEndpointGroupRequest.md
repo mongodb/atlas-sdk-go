@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EndpointGroupName** | Pointer to **string** | Human-readable label that identifies a set of endpoints. | [optional] 
+**EndpointGroupName** | **string** | Human-readable label that identifies a set of endpoints. | 
 **Endpoints** | Pointer to [**[]CreateGCPForwardingRuleRequest**](CreateGCPForwardingRuleRequest.md) | List of individual private endpoints that comprise this endpoint group. | [optional] 
-**GcpProjectId** | Pointer to **string** | Unique string that identifies the Google Cloud project in which you created the endpoints. | [optional] 
+**GcpProjectId** | **string** | Unique string that identifies the Google Cloud project in which you created the endpoints. | 
 
 ## Methods
 
 ### NewCreateGCPEndpointGroupRequest
 
-`func NewCreateGCPEndpointGroupRequest() *CreateGCPEndpointGroupRequest`
+`func NewCreateGCPEndpointGroupRequest(endpointGroupName string, gcpProjectId string, ) *CreateGCPEndpointGroupRequest`
 
 NewCreateGCPEndpointGroupRequest instantiates a new CreateGCPEndpointGroupRequest object
 This constructor will assign default values to properties that have it defined,
@@ -46,11 +46,6 @@ and a boolean to check if the value has been set.
 
 SetEndpointGroupName sets EndpointGroupName field to given value.
 
-### HasEndpointGroupName
-
-`func (o *CreateGCPEndpointGroupRequest) HasEndpointGroupName() bool`
-
-HasEndpointGroupName returns a boolean if a field has been set.
 
 ### GetEndpoints
 
@@ -96,11 +91,6 @@ and a boolean to check if the value has been set.
 
 SetGcpProjectId sets GcpProjectId field to given value.
 
-### HasGcpProjectId
-
-`func (o *CreateGCPEndpointGroupRequest) HasGcpProjectId() bool`
-
-HasGcpProjectId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

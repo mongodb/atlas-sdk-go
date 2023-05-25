@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CloudProvider** | **string** | Cloud service provider that serves the requested endpoint service. | [readonly] 
 **EndpointServiceName** | Pointer to **string** | Unique string that identifies the Amazon Web Services (AWS) PrivateLink endpoint service. MongoDB Cloud returns null while it creates the endpoint service. | [optional] [readonly] 
 **ErrorMessage** | Pointer to **string** | Error message returned when requesting private connection resource. The resource returns &#x60;null&#x60; if the request succeeded. | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the Private Endpoint Service. | [optional] [readonly] 
@@ -20,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewEndpointService
 
-`func NewEndpointService() *EndpointService`
+`func NewEndpointService(cloudProvider string, ) *EndpointService`
 
 NewEndpointService instantiates a new EndpointService object
 This constructor will assign default values to properties that have it defined,
@@ -34,6 +35,26 @@ will change when the set of required properties is changed
 NewEndpointServiceWithDefaults instantiates a new EndpointService object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCloudProvider
+
+`func (o *EndpointService) GetCloudProvider() string`
+
+GetCloudProvider returns the CloudProvider field if non-nil, zero value otherwise.
+
+### GetCloudProviderOk
+
+`func (o *EndpointService) GetCloudProviderOk() (*string, bool)`
+
+GetCloudProviderOk returns a tuple with the CloudProvider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCloudProvider
+
+`func (o *EndpointService) SetCloudProvider(v string)`
+
+SetCloudProvider sets CloudProvider field to given value.
+
 
 ### GetEndpointServiceName
 

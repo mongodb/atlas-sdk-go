@@ -98,7 +98,7 @@ Name | Type | Description  | Notes
 
 ## DeletePipeline
 
-> DeletePipeline(ctx, groupId, pipelineName).Execute()
+> map[string]interface{} DeletePipeline(ctx, groupId, pipelineName).Execute()
 
 Remove One Data Lake Pipeline
 
@@ -126,12 +126,14 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     pipelineName := "pipelineName_example" // string | 
 
-    r, err := sdk.DataLakePipelinesApi.DeletePipeline(context.Background(), groupId, pipelineName).Execute()
+    resp, r, err := sdk.DataLakePipelinesApi.DeletePipeline(context.Background(), groupId, pipelineName).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.DeletePipeline``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
+    // response from `DeletePipeline`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.DeletePipeline`: %v\n", resp)
 }
 ```
 
@@ -156,7 +158,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -173,7 +175,7 @@ Name | Type | Description  | Notes
 
 ## DeletePipelineRunDataset
 
-> DeletePipelineRunDataset(ctx, groupId, pipelineName, pipelineRunId).Execute()
+> map[string]interface{} DeletePipelineRunDataset(ctx, groupId, pipelineName, pipelineRunId).Execute()
 
 Delete Pipeline Run Dataset
 
@@ -202,12 +204,14 @@ func main() {
     pipelineName := "pipelineName_example" // string | 
     pipelineRunId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    r, err := sdk.DataLakePipelinesApi.DeletePipelineRunDataset(context.Background(), groupId, pipelineName, pipelineRunId).Execute()
+    resp, r, err := sdk.DataLakePipelinesApi.DeletePipelineRunDataset(context.Background(), groupId, pipelineName, pipelineRunId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.DeletePipelineRunDataset``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
+    // response from `DeletePipelineRunDataset`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.DeletePipelineRunDataset`: %v\n", resp)
 }
 ```
 
@@ -234,7 +238,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -242,7 +246,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

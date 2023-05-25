@@ -11,6 +11,8 @@ var _ MappedNullable = &AzurePrivateLinkConnection{}
 
 // AzurePrivateLinkConnection Group of Private Endpoint Service settings.
 type AzurePrivateLinkConnection struct {
+	// Cloud service provider that serves the requested endpoint service.
+	CloudProvider string `json:"cloudProvider"`
 	// Error message returned when requesting private connection resource. The resource returns `null` if the request succeeded.
 	ErrorMessage *string `json:"errorMessage,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the Private Endpoint Service.
@@ -31,8 +33,9 @@ type AzurePrivateLinkConnection struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAzurePrivateLinkConnection() *AzurePrivateLinkConnection {
+func NewAzurePrivateLinkConnection(cloudProvider string) *AzurePrivateLinkConnection {
 	this := AzurePrivateLinkConnection{}
+	this.CloudProvider = cloudProvider
 	return &this
 }
 
@@ -42,6 +45,30 @@ func NewAzurePrivateLinkConnection() *AzurePrivateLinkConnection {
 func NewAzurePrivateLinkConnectionWithDefaults() *AzurePrivateLinkConnection {
 	this := AzurePrivateLinkConnection{}
 	return &this
+}
+
+// GetCloudProvider returns the CloudProvider field value
+func (o *AzurePrivateLinkConnection) GetCloudProvider() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.CloudProvider
+}
+
+// GetCloudProviderOk returns a tuple with the CloudProvider field value
+// and a boolean to check if the value has been set.
+func (o *AzurePrivateLinkConnection) GetCloudProviderOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CloudProvider, true
+}
+
+// SetCloudProvider sets field value
+func (o *AzurePrivateLinkConnection) SetCloudProvider(v string) {
+	o.CloudProvider = v
 }
 
 // GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise.

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Var2dsphereIndexVersion** | **int** | Index version number applied to the 2dsphere index. MongoDB 3.2 and later use version 3. Use this option to override the default version number. This option applies to the **2dsphere** index type only. | [default to 3]
+**Var2dsphereIndexVersion** | Pointer to **int** | Index version number applied to the 2dsphere index. MongoDB 3.2 and later use version 3. Use this option to override the default version number. This option applies to the **2dsphere** index type only. | [optional] [default to 3]
 **Background** | Pointer to **bool** | Flag that indicates whether MongoDB should build the index in the background. This applies to MongoDB databases running feature compatibility version 4.0 or earlier. MongoDB databases running FCV 4.2 or later build indexes using an optimized build process. This process holds the exclusive lock only at the beginning and end of the build process. The rest of the build process yields to interleaving read and write operations. MongoDB databases running FCV 4.2 or later ignore this option. This option applies to all index types. | [optional] [default to false]
 **Bits** | Pointer to **int** | Number of precision applied to the stored geohash value of the location data. This option applies to the **2d** index type only. | [optional] [default to 26]
 **BucketSize** | Pointer to **int** | Number of units within which to group the location values. You could group in the same bucket those location values within the specified number of units to each other. This option applies to the geoHaystack index type only.  MongoDB 5.0 removed geoHaystack Indexes and the &#x60;geoSearch&#x60; command. | [optional] 
@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 
 ### NewIndexOptions
 
-`func NewIndexOptions(var2dsphereIndexVersion int, ) *IndexOptions`
+`func NewIndexOptions() *IndexOptions`
 
 NewIndexOptions instantiates a new IndexOptions object
 This constructor will assign default values to properties that have it defined,
@@ -61,6 +61,11 @@ and a boolean to check if the value has been set.
 
 SetVar2dsphereIndexVersion sets Var2dsphereIndexVersion field to given value.
 
+### HasVar2dsphereIndexVersion
+
+`func (o *IndexOptions) HasVar2dsphereIndexVersion() bool`
+
+HasVar2dsphereIndexVersion returns a boolean if a field has been set.
 
 ### GetBackground
 

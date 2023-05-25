@@ -93,7 +93,7 @@ Name | Type | Description  | Notes
 
 ## DeleteServerlessPrivateEndpoint
 
-> DeleteServerlessPrivateEndpoint(ctx, groupId, instanceName, endpointId).Execute()
+> map[string]interface{} DeleteServerlessPrivateEndpoint(ctx, groupId, instanceName, endpointId).Execute()
 
 Remove One Private Endpoint for One Serverless Instance
 
@@ -122,12 +122,14 @@ func main() {
     instanceName := "instanceName_example" // string | 
     endpointId := "endpointId_example" // string | 
 
-    r, err := sdk.ServerlessPrivateEndpointsApi.DeleteServerlessPrivateEndpoint(context.Background(), groupId, instanceName, endpointId).Execute()
+    resp, r, err := sdk.ServerlessPrivateEndpointsApi.DeleteServerlessPrivateEndpoint(context.Background(), groupId, instanceName, endpointId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServerlessPrivateEndpointsApi.DeleteServerlessPrivateEndpoint``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
+    // response from `DeleteServerlessPrivateEndpoint`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `ServerlessPrivateEndpointsApi.DeleteServerlessPrivateEndpoint`: %v\n", resp)
 }
 ```
 
@@ -154,7 +156,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -356,7 +358,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     instanceName := "instanceName_example" // string | 
     endpointId := "endpointId_example" // string | 
-    serverlessTenantEndpointUpdate := openapiclient.ServerlessTenantEndpointUpdate{ServerlessAWSTenantEndpointUpdate: openapiclient.NewServerlessAWSTenantEndpointUpdate("ProviderName_example")} // ServerlessTenantEndpointUpdate |  (optional)
+    serverlessTenantEndpointUpdate := openapiclient.ServerlessTenantEndpointUpdate{ServerlessAWSTenantEndpointUpdate: openapiclient.NewServerlessAWSTenantEndpointUpdate("ProviderName_example")} // ServerlessTenantEndpointUpdate | 
 
     resp, r, err := sdk.ServerlessPrivateEndpointsApi.UpdateServerlessPrivateEndpoint(context.Background(), groupId, instanceName, endpointId).ServerlessTenantEndpointUpdate(&serverlessTenantEndpointUpdate).Execute()
     if err != nil {
@@ -389,7 +391,7 @@ Name | Type | Description  | Notes
 
 
 
- **serverlessTenantEndpointUpdate** | [**ServerlessTenantEndpointUpdate**](ServerlessTenantEndpointUpdate.md) |  | 
+ **serverlessTenantEndpointUpdate** | [**ServerlessTenantEndpointUpdate**](ServerlessTenantEndpointUpdate.md) | Object used for update. | 
 
 ### Return type
 
@@ -400,7 +402,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: application/vnd.atlas.2023-01-01+json
 - **Accept**: application/vnd.atlas.2023-01-01+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

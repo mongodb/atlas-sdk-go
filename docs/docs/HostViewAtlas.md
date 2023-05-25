@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Links** | Pointer to [**[]LinkAtlas**](LinkAtlas.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Port** | Pointer to **int** | Internet Assigned Numbers Authority (IANA) port on which the MongoDB process listens for requests. | [optional] [readonly] 
 **ReplicaSetName** | Pointer to **string** | Human-readable label that identifies the replica set that contains this process. This resource returns this parameter if this process belongs to a replica set. | [optional] [readonly] 
+**ShardName** | Pointer to **string** | Human-readable label that identifies the shard that contains this process. This resource returns this value only if this process belongs to a sharded cluster. | [optional] [readonly] 
 **TypeName** | Pointer to **string** | Type of MongoDB process that MongoDB Cloud tracks. MongoDB Cloud returns new processes as **NO_DATA** until MongoDB Cloud completes deploying the process. | [optional] [readonly] 
 **UserAlias** | Pointer to **string** | Human-readable label that identifies the cluster node. MongoDB Cloud sets this hostname usually to the standard hostname for the cluster node. It appears in the connection string for a cluster instead of the value of the hostname parameter. | [optional] [readonly] 
 **Version** | Pointer to **string** | Version of MongoDB that this process runs. | [optional] [readonly] 
@@ -234,6 +235,31 @@ SetReplicaSetName sets ReplicaSetName field to given value.
 `func (o *HostViewAtlas) HasReplicaSetName() bool`
 
 HasReplicaSetName returns a boolean if a field has been set.
+
+### GetShardName
+
+`func (o *HostViewAtlas) GetShardName() string`
+
+GetShardName returns the ShardName field if non-nil, zero value otherwise.
+
+### GetShardNameOk
+
+`func (o *HostViewAtlas) GetShardNameOk() (*string, bool)`
+
+GetShardNameOk returns a tuple with the ShardName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShardName
+
+`func (o *HostViewAtlas) SetShardName(v string)`
+
+SetShardName sets ShardName field to given value.
+
+### HasShardName
+
+`func (o *HostViewAtlas) HasShardName() bool`
+
+HasShardName returns a boolean if a field has been set.
 
 ### GetTypeName
 

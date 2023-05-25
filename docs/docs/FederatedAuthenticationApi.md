@@ -863,7 +863,7 @@ Name | Type | Description  | Notes
 
 ## RemoveConnectedOrgConfig
 
-> RemoveConnectedOrgConfig(ctx, federationSettingsId, orgId).Execute()
+> map[string]interface{} RemoveConnectedOrgConfig(ctx, federationSettingsId, orgId).Execute()
 
 Remove One Org Config Connected to One Federation
 
@@ -891,12 +891,14 @@ func main() {
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     orgId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    r, err := sdk.FederatedAuthenticationApi.RemoveConnectedOrgConfig(context.Background(), federationSettingsId, orgId).Execute()
+    resp, r, err := sdk.FederatedAuthenticationApi.RemoveConnectedOrgConfig(context.Background(), federationSettingsId, orgId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.RemoveConnectedOrgConfig``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
+    // response from `RemoveConnectedOrgConfig`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.RemoveConnectedOrgConfig`: %v\n", resp)
 }
 ```
 
@@ -921,7 +923,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**map[string]interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -1017,7 +1019,7 @@ Name | Type | Description  | Notes
 
 ## UpdateIdentityProvider
 
-> IdentityProvider UpdateIdentityProvider(ctx, federationSettingsId, identityProviderId).IdentityProviderUpdate(identityProviderUpdate).Execute()
+> IdentityProvider UpdateIdentityProvider(ctx, federationSettingsId, identityProviderId).SamlIdentityProviderUpdate(samlIdentityProviderUpdate).Execute()
 
 Update the identity provider.
 
@@ -1044,9 +1046,9 @@ func main() {
 
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     identityProviderId := "c2777a9eca931f29fc2f" // string | 
-    identityProviderUpdate := *openapiclient.NewIdentityProviderUpdate(false) // IdentityProviderUpdate | 
+    samlIdentityProviderUpdate := *openapiclient.NewSamlIdentityProviderUpdate(false) // SamlIdentityProviderUpdate | 
 
-    resp, r, err := sdk.FederatedAuthenticationApi.UpdateIdentityProvider(context.Background(), federationSettingsId, identityProviderId).IdentityProviderUpdate(&identityProviderUpdate).Execute()
+    resp, r, err := sdk.FederatedAuthenticationApi.UpdateIdentityProvider(context.Background(), federationSettingsId, identityProviderId).SamlIdentityProviderUpdate(&samlIdentityProviderUpdate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.UpdateIdentityProvider``: %v\n", err)
         apiError := admin.AsError(err)
@@ -1075,7 +1077,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **identityProviderUpdate** | [**IdentityProviderUpdate**](IdentityProviderUpdate.md) | The identity provider that you want to update. | 
+ **samlIdentityProviderUpdate** | [**SamlIdentityProviderUpdate**](SamlIdentityProviderUpdate.md) | The identity provider that you want to update. | 
 
 ### Return type
 

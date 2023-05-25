@@ -68,6 +68,8 @@ type LegacyClusterDescription struct {
 	SrvAddress *string `json:"srvAddress,omitempty"`
 	// Human-readable label that indicates the current operating condition of the cluster.
 	StateName *string `json:"stateName,omitempty"`
+	// Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster.
+	Tags []Tag `json:"tags,omitempty"`
 	// Flag that indicates whether termination protection is enabled on the cluster. If set to `true`, MongoDB Cloud won't delete the cluster. If set to `false`, MongoDB Cloud will delete the cluster.
 	TerminationProtectionEnabled *bool `json:"terminationProtectionEnabled,omitempty"`
 	// Method by which the cluster maintains the MongoDB versions. If value is `CONTINUOUS`, you must not specify **mongoDBMajorVersion**.
@@ -1049,6 +1051,38 @@ func (o *LegacyClusterDescription) SetStateName(v string) {
 	o.StateName = &v
 }
 
+// GetTags returns the Tags field value if set, zero value otherwise.
+func (o *LegacyClusterDescription) GetTags() []Tag {
+	if o == nil || IsNil(o.Tags) {
+		var ret []Tag
+		return ret
+	}
+	return o.Tags
+}
+
+// GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LegacyClusterDescription) GetTagsOk() ([]Tag, bool) {
+	if o == nil || IsNil(o.Tags) {
+		return nil, false
+	}
+	return o.Tags, true
+}
+
+// HasTags returns a boolean if a field has been set.
+func (o *LegacyClusterDescription) HasTags() bool {
+	if o != nil && !IsNil(o.Tags) {
+		return true
+	}
+
+	return false
+}
+
+// SetTags gets a reference to the given []Tag and assigns it to the Tags field.
+func (o *LegacyClusterDescription) SetTags(v []Tag) {
+	o.Tags = v
+}
+
 // GetTerminationProtectionEnabled returns the TerminationProtectionEnabled field value if set, zero value otherwise.
 func (o *LegacyClusterDescription) GetTerminationProtectionEnabled() bool {
 	if o == nil || IsNil(o.TerminationProtectionEnabled) {
@@ -1181,6 +1215,9 @@ func (o LegacyClusterDescription) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.RootCertType) {
 		toSerialize["rootCertType"] = o.RootCertType
+	}
+	if !IsNil(o.Tags) {
+		toSerialize["tags"] = o.Tags
 	}
 	if !IsNil(o.TerminationProtectionEnabled) {
 		toSerialize["terminationProtectionEnabled"] = o.TerminationProtectionEnabled
