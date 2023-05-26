@@ -1,5 +1,6 @@
-# Atlas Go API client
-## Documentation for API Endpoints
+# SDK Reference 
+
+## Documentation for SDK Endpoints
 
 All URIs are relative to *https://cloud.mongodb.com*
 
