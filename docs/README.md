@@ -3,7 +3,7 @@
 * [Concepts used in Atlas SDK GO](./doc_1_concepts.md#concepts-used-in-atlas-sdk-go)
    * [Introduction](./doc_1_concepts.md#introduction)
    * [Fetching Data from the Backend](./doc_1_concepts.md#fetching-data-from-the-backend)
-      * [Performing Data Modification](./doc_1_concepts.md#performing-data-modification)
+   * [Performing Data Modification](./doc_1_concepts.md#performing-data-modification)
    * [Example](./doc_1_concepts.md#example)
 
 * [SDK Reference](./doc_1_reference.md#sdk-reference)
