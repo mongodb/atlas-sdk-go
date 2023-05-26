@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateServerlessPrivateEndpoint
 
-> ServerlessTenantEndpoint CreateServerlessPrivateEndpoint(ctx, groupId, instanceName).ServerlessTenantEndpointCreate(serverlessTenantEndpointCreate).Execute()
+> ServerlessTenantEndpoint CreateServerlessPrivateEndpoint(ctx, groupId, instanceName, serverlessTenantEndpointCreate ServerlessTenantEndpointCreate).Execute()
 
 Create One Private Endpoint for One Serverless Instance
 
@@ -43,7 +43,7 @@ func main() {
     instanceName := "instanceName_example" // string | 
     serverlessTenantEndpointCreate := *openapiclient.NewServerlessTenantEndpointCreate() // ServerlessTenantEndpointCreate | 
 
-    resp, r, err := sdk.ServerlessPrivateEndpointsApi.CreateServerlessPrivateEndpoint(context.Background(), groupId, instanceName).ServerlessTenantEndpointCreate(&serverlessTenantEndpointCreate).Execute()
+    resp, r, err := sdk.ServerlessPrivateEndpointsApi.CreateServerlessPrivateEndpoint(context.Background(), groupId, instanceName, &serverlessTenantEndpointCreate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServerlessPrivateEndpointsApi.CreateServerlessPrivateEndpoint``: %v\n", err)
         apiError := admin.AsError(err)
@@ -330,7 +330,7 @@ Name | Type | Description  | Notes
 
 ## UpdateServerlessPrivateEndpoint
 
-> ServerlessTenantEndpoint UpdateServerlessPrivateEndpoint(ctx, groupId, instanceName, endpointId).ServerlessTenantEndpointUpdate(serverlessTenantEndpointUpdate).Execute()
+> ServerlessTenantEndpoint UpdateServerlessPrivateEndpoint(ctx, groupId, instanceName, endpointId, serverlessTenantEndpointUpdate ServerlessTenantEndpointUpdate).Execute()
 
 Update One Private Endpoint for One Serverless Instance
 
@@ -360,7 +360,7 @@ func main() {
     endpointId := "endpointId_example" // string | 
     serverlessTenantEndpointUpdate := openapiclient.ServerlessTenantEndpointUpdate{ServerlessAWSTenantEndpointUpdate: openapiclient.NewServerlessAWSTenantEndpointUpdate("ProviderName_example")} // ServerlessTenantEndpointUpdate | 
 
-    resp, r, err := sdk.ServerlessPrivateEndpointsApi.UpdateServerlessPrivateEndpoint(context.Background(), groupId, instanceName, endpointId).ServerlessTenantEndpointUpdate(&serverlessTenantEndpointUpdate).Execute()
+    resp, r, err := sdk.ServerlessPrivateEndpointsApi.UpdateServerlessPrivateEndpoint(context.Background(), groupId, instanceName, endpointId, &serverlessTenantEndpointUpdate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServerlessPrivateEndpointsApi.UpdateServerlessPrivateEndpoint``: %v\n", err)
         apiError := admin.AsError(err)

@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 ## CreatePrivateEndpoint
 
-> Endpoint CreatePrivateEndpoint(ctx, groupId, cloudProvider, endpointServiceId).CreateEndpointRequest(createEndpointRequest).Execute()
+> Endpoint CreatePrivateEndpoint(ctx, groupId, cloudProvider, endpointServiceId, createEndpointRequest CreateEndpointRequest).Execute()
 
 Create One Private Endpoint for One Provider
 
@@ -48,7 +48,7 @@ func main() {
     endpointServiceId := "endpointServiceId_example" // string | 
     createEndpointRequest := openapiclient.CreateEndpointRequest{CreateAWSEndpointRequest: openapiclient.NewCreateAWSEndpointRequest("vpce-3bf78b0ddee411ba1")} // CreateEndpointRequest | 
 
-    resp, r, err := sdk.PrivateEndpointServicesApi.CreatePrivateEndpoint(context.Background(), groupId, cloudProvider, endpointServiceId).CreateEndpointRequest(&createEndpointRequest).Execute()
+    resp, r, err := sdk.PrivateEndpointServicesApi.CreatePrivateEndpoint(context.Background(), groupId, cloudProvider, endpointServiceId, &createEndpointRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesApi.CreatePrivateEndpoint``: %v\n", err)
         apiError := admin.AsError(err)
@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 
 ## CreatePrivateEndpointService
 
-> EndpointService CreatePrivateEndpointService(ctx, groupId).CreateEndpointServiceRequest(createEndpointServiceRequest).Execute()
+> EndpointService CreatePrivateEndpointService(ctx, groupId, createEndpointServiceRequest CreateEndpointServiceRequest).Execute()
 
 Create One Private Endpoint Service for One Provider
 
@@ -128,7 +128,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     createEndpointServiceRequest := *openapiclient.NewCreateEndpointServiceRequest("ProviderName_example", "Region_example") // CreateEndpointServiceRequest | 
 
-    resp, r, err := sdk.PrivateEndpointServicesApi.CreatePrivateEndpointService(context.Background(), groupId).CreateEndpointServiceRequest(&createEndpointServiceRequest).Execute()
+    resp, r, err := sdk.PrivateEndpointServicesApi.CreatePrivateEndpointService(context.Background(), groupId, &createEndpointServiceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesApi.CreatePrivateEndpointService``: %v\n", err)
         apiError := admin.AsError(err)
@@ -653,7 +653,7 @@ Name | Type | Description  | Notes
 
 ## ToggleRegionalizedPrivateEndpointSetting
 
-> ProjectSettingItem ToggleRegionalizedPrivateEndpointSetting(ctx, groupId).ProjectSettingItem(projectSettingItem).Execute()
+> ProjectSettingItem ToggleRegionalizedPrivateEndpointSetting(ctx, groupId, projectSettingItem ProjectSettingItem).Execute()
 
 Toggle Regionalized Private Endpoint Status
 
@@ -681,7 +681,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     projectSettingItem := *openapiclient.NewProjectSettingItem(false) // ProjectSettingItem | 
 
-    resp, r, err := sdk.PrivateEndpointServicesApi.ToggleRegionalizedPrivateEndpointSetting(context.Background(), groupId).ProjectSettingItem(&projectSettingItem).Execute()
+    resp, r, err := sdk.PrivateEndpointServicesApi.ToggleRegionalizedPrivateEndpointSetting(context.Background(), groupId, &projectSettingItem).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesApi.ToggleRegionalizedPrivateEndpointSetting``: %v\n", err)
         apiError := admin.AsError(err)

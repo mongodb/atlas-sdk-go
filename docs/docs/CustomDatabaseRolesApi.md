@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateCustomDatabaseRole
 
-> CustomDBRole CreateCustomDatabaseRole(ctx, groupId).CustomDBRole(customDBRole).Execute()
+> CustomDBRole CreateCustomDatabaseRole(ctx, groupId, customDBRole CustomDBRole).Execute()
 
 Create One Custom Role
 
@@ -42,7 +42,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     customDBRole := *openapiclient.NewCustomDBRole("RoleName_example") // CustomDBRole | 
 
-    resp, r, err := sdk.CustomDatabaseRolesApi.CreateCustomDatabaseRole(context.Background(), groupId).CustomDBRole(&customDBRole).Execute()
+    resp, r, err := sdk.CustomDatabaseRolesApi.CreateCustomDatabaseRole(context.Background(), groupId, &customDBRole).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CustomDatabaseRolesApi.CreateCustomDatabaseRole``: %v\n", err)
         apiError := admin.AsError(err)
@@ -316,7 +316,7 @@ Name | Type | Description  | Notes
 
 ## UpdateCustomDatabaseRole
 
-> CustomDBRole UpdateCustomDatabaseRole(ctx, groupId, roleName).UpdateCustomDBRole(updateCustomDBRole).Execute()
+> CustomDBRole UpdateCustomDatabaseRole(ctx, groupId, roleName, updateCustomDBRole UpdateCustomDBRole).Execute()
 
 Update One Custom Role in One Project
 
@@ -345,7 +345,7 @@ func main() {
     roleName := "roleName_example" // string | 
     updateCustomDBRole := *openapiclient.NewUpdateCustomDBRole() // UpdateCustomDBRole | 
 
-    resp, r, err := sdk.CustomDatabaseRolesApi.UpdateCustomDatabaseRole(context.Background(), groupId, roleName).UpdateCustomDBRole(&updateCustomDBRole).Execute()
+    resp, r, err := sdk.CustomDatabaseRolesApi.UpdateCustomDatabaseRole(context.Background(), groupId, roleName, &updateCustomDBRole).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CustomDatabaseRolesApi.UpdateCustomDatabaseRole``: %v\n", err)
         apiError := admin.AsError(err)

@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## AuthorizeCloudProviderAccessRole
 
-> CloudProviderAccessRole AuthorizeCloudProviderAccessRole(ctx, groupId, roleId).CloudProviderAccessRole(cloudProviderAccessRole).Execute()
+> CloudProviderAccessRole AuthorizeCloudProviderAccessRole(ctx, groupId, roleId, cloudProviderAccessRole CloudProviderAccessRole).Execute()
 
 Authorize One Cloud Provider Access Role
 
@@ -43,7 +43,7 @@ func main() {
     roleId := "roleId_example" // string | 
     cloudProviderAccessRole := openapiclient.CloudProviderAccessRole{CloudProviderAccessAWSIAMRole: openapiclient.NewCloudProviderAccessAWSIAMRole("ProviderName_example")} // CloudProviderAccessRole | 
 
-    resp, r, err := sdk.CloudProviderAccessApi.AuthorizeCloudProviderAccessRole(context.Background(), groupId, roleId).CloudProviderAccessRole(&cloudProviderAccessRole).Execute()
+    resp, r, err := sdk.CloudProviderAccessApi.AuthorizeCloudProviderAccessRole(context.Background(), groupId, roleId, &cloudProviderAccessRole).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAccessApi.AuthorizeCloudProviderAccessRole``: %v\n", err)
         apiError := admin.AsError(err)
@@ -93,7 +93,7 @@ Name | Type | Description  | Notes
 
 ## CreateCloudProviderAccessRole
 
-> CloudProviderAccessRole CreateCloudProviderAccessRole(ctx, groupId).CloudProviderAccessRole(cloudProviderAccessRole).Execute()
+> CloudProviderAccessRole CreateCloudProviderAccessRole(ctx, groupId, cloudProviderAccessRole CloudProviderAccessRole).Execute()
 
 Create One Cloud Provider Access Role
 
@@ -121,7 +121,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     cloudProviderAccessRole := openapiclient.CloudProviderAccessRole{CloudProviderAccessAWSIAMRole: openapiclient.NewCloudProviderAccessAWSIAMRole("ProviderName_example")} // CloudProviderAccessRole | 
 
-    resp, r, err := sdk.CloudProviderAccessApi.CreateCloudProviderAccessRole(context.Background(), groupId).CloudProviderAccessRole(&cloudProviderAccessRole).Execute()
+    resp, r, err := sdk.CloudProviderAccessApi.CreateCloudProviderAccessRole(context.Background(), groupId, &cloudProviderAccessRole).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAccessApi.CreateCloudProviderAccessRole``: %v\n", err)
         apiError := admin.AsError(err)

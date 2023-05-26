@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## CreateAlertConfiguration
 
-> AlertConfigViewForNdsGroup CreateAlertConfiguration(ctx, groupId).AlertConfigViewForNdsGroup(alertConfigViewForNdsGroup).Execute()
+> AlertConfigViewForNdsGroup CreateAlertConfiguration(ctx, groupId, alertConfigViewForNdsGroup AlertConfigViewForNdsGroup).Execute()
 
 Create One Alert Configuration in One Project
 
@@ -45,7 +45,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     alertConfigViewForNdsGroup := *openapiclient.NewAlertConfigViewForNdsGroup() // AlertConfigViewForNdsGroup | 
 
-    resp, r, err := sdk.AlertConfigurationsApi.CreateAlertConfiguration(context.Background(), groupId).AlertConfigViewForNdsGroup(&alertConfigViewForNdsGroup).Execute()
+    resp, r, err := sdk.AlertConfigurationsApi.CreateAlertConfiguration(context.Background(), groupId, &alertConfigViewForNdsGroup).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AlertConfigurationsApi.CreateAlertConfiguration``: %v\n", err)
         apiError := admin.AsError(err)
@@ -473,7 +473,7 @@ Name | Type | Description  | Notes
 
 ## ToggleAlertConfiguration
 
-> AlertConfigViewForNdsGroup ToggleAlertConfiguration(ctx, groupId, alertConfigId).Toggle(toggle).Execute()
+> AlertConfigViewForNdsGroup ToggleAlertConfiguration(ctx, groupId, alertConfigId, toggle Toggle).Execute()
 
 Toggle One State of One Alert Configuration in One Project
 
@@ -502,7 +502,7 @@ func main() {
     alertConfigId := "32b6e34b3d91647abb20e7b8" // string | 
     toggle := *openapiclient.NewToggle() // Toggle | 
 
-    resp, r, err := sdk.AlertConfigurationsApi.ToggleAlertConfiguration(context.Background(), groupId, alertConfigId).Toggle(&toggle).Execute()
+    resp, r, err := sdk.AlertConfigurationsApi.ToggleAlertConfiguration(context.Background(), groupId, alertConfigId, &toggle).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AlertConfigurationsApi.ToggleAlertConfiguration``: %v\n", err)
         apiError := admin.AsError(err)
@@ -552,7 +552,7 @@ Name | Type | Description  | Notes
 
 ## UpdateAlertConfiguration
 
-> AlertConfigViewForNdsGroup UpdateAlertConfiguration(ctx, groupId, alertConfigId).AlertConfigViewForNdsGroup(alertConfigViewForNdsGroup).Execute()
+> AlertConfigViewForNdsGroup UpdateAlertConfiguration(ctx, groupId, alertConfigId, alertConfigViewForNdsGroup AlertConfigViewForNdsGroup).Execute()
 
 Update One Alert Configuration for One Project
 
@@ -581,7 +581,7 @@ func main() {
     alertConfigId := "32b6e34b3d91647abb20e7b8" // string | 
     alertConfigViewForNdsGroup := *openapiclient.NewAlertConfigViewForNdsGroup() // AlertConfigViewForNdsGroup | 
 
-    resp, r, err := sdk.AlertConfigurationsApi.UpdateAlertConfiguration(context.Background(), groupId, alertConfigId).AlertConfigViewForNdsGroup(&alertConfigViewForNdsGroup).Execute()
+    resp, r, err := sdk.AlertConfigurationsApi.UpdateAlertConfiguration(context.Background(), groupId, alertConfigId, &alertConfigViewForNdsGroup).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AlertConfigurationsApi.UpdateAlertConfiguration``: %v\n", err)
         apiError := admin.AsError(err)

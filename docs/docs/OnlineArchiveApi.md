@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## CreateOnlineArchive
 
-> OnlineArchive CreateOnlineArchive(ctx, groupId, clusterName).OnlineArchive(onlineArchive).Execute()
+> OnlineArchive CreateOnlineArchive(ctx, groupId, clusterName, onlineArchive OnlineArchive).Execute()
 
 Create One Online Archive
 
@@ -44,7 +44,7 @@ func main() {
     clusterName := "clusterName_example" // string | 
     onlineArchive := *openapiclient.NewOnlineArchive() // OnlineArchive | 
 
-    resp, r, err := sdk.OnlineArchiveApi.CreateOnlineArchive(context.Background(), groupId, clusterName).OnlineArchive(&onlineArchive).Execute()
+    resp, r, err := sdk.OnlineArchiveApi.CreateOnlineArchive(context.Background(), groupId, clusterName, &onlineArchive).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OnlineArchiveApi.CreateOnlineArchive``: %v\n", err)
         apiError := admin.AsError(err)
@@ -420,7 +420,7 @@ Name | Type | Description  | Notes
 
 ## UpdateOnlineArchive
 
-> OnlineArchive UpdateOnlineArchive(ctx, groupId, archiveId, clusterName).OnlineArchive(onlineArchive).Execute()
+> OnlineArchive UpdateOnlineArchive(ctx, groupId, archiveId, clusterName, onlineArchive OnlineArchive).Execute()
 
 Update One Online Archive
 
@@ -450,7 +450,7 @@ func main() {
     clusterName := "clusterName_example" // string | 
     onlineArchive := *openapiclient.NewOnlineArchive() // OnlineArchive | 
 
-    resp, r, err := sdk.OnlineArchiveApi.UpdateOnlineArchive(context.Background(), groupId, archiveId, clusterName).OnlineArchive(&onlineArchive).Execute()
+    resp, r, err := sdk.OnlineArchiveApi.UpdateOnlineArchive(context.Background(), groupId, archiveId, clusterName, &onlineArchive).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OnlineArchiveApi.UpdateOnlineArchive``: %v\n", err)
         apiError := admin.AsError(err)

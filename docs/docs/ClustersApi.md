@@ -484,7 +484,7 @@ Name | Type | Description  | Notes
 
 ## UpdateClusterAdvancedConfiguration
 
-> ClusterDescriptionProcessArgs UpdateClusterAdvancedConfiguration(ctx, groupId, clusterName).ClusterDescriptionProcessArgs(clusterDescriptionProcessArgs).Execute()
+> ClusterDescriptionProcessArgs UpdateClusterAdvancedConfiguration(ctx, groupId, clusterName, clusterDescriptionProcessArgs ClusterDescriptionProcessArgs).Execute()
 
 Update Advanced Configuration Options for One Cluster
 
@@ -513,7 +513,7 @@ func main() {
     clusterName := "clusterName_example" // string | 
     clusterDescriptionProcessArgs := *openapiclient.NewClusterDescriptionProcessArgs() // ClusterDescriptionProcessArgs | 
 
-    resp, r, err := sdk.ClustersApi.UpdateClusterAdvancedConfiguration(context.Background(), groupId, clusterName).ClusterDescriptionProcessArgs(&clusterDescriptionProcessArgs).Execute()
+    resp, r, err := sdk.ClustersApi.UpdateClusterAdvancedConfiguration(context.Background(), groupId, clusterName, &clusterDescriptionProcessArgs).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.UpdateClusterAdvancedConfiguration``: %v\n", err)
         apiError := admin.AsError(err)
@@ -563,7 +563,7 @@ Name | Type | Description  | Notes
 
 ## UpgradeSharedCluster
 
-> LegacyClusterDescription UpgradeSharedCluster(ctx, groupId).LegacyClusterDescription(legacyClusterDescription).Execute()
+> LegacyClusterDescription UpgradeSharedCluster(ctx, groupId, legacyClusterDescription LegacyClusterDescription).Execute()
 
 Upgrade One Shared-tier Cluster
 
@@ -591,7 +591,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     legacyClusterDescription := *openapiclient.NewLegacyClusterDescription() // LegacyClusterDescription | 
 
-    resp, r, err := sdk.ClustersApi.UpgradeSharedCluster(context.Background(), groupId).LegacyClusterDescription(&legacyClusterDescription).Execute()
+    resp, r, err := sdk.ClustersApi.UpgradeSharedCluster(context.Background(), groupId, &legacyClusterDescription).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.UpgradeSharedCluster``: %v\n", err)
         apiError := admin.AsError(err)
@@ -639,7 +639,7 @@ Name | Type | Description  | Notes
 
 ## UpgradeSharedClusterToServerless
 
-> ServerlessInstanceDescription UpgradeSharedClusterToServerless(ctx, groupId).ServerlessInstanceDescription(serverlessInstanceDescription).Execute()
+> ServerlessInstanceDescription UpgradeSharedClusterToServerless(ctx, groupId, serverlessInstanceDescription ServerlessInstanceDescription).Execute()
 
 Upgrades One Shared-Tier Cluster to the Serverless Instance
 
@@ -667,7 +667,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     serverlessInstanceDescription := *openapiclient.NewServerlessInstanceDescription(*openapiclient.NewServerlessProviderSettings("BackingProviderName_example", "RegionName_example")) // ServerlessInstanceDescription | 
 
-    resp, r, err := sdk.ClustersApi.UpgradeSharedClusterToServerless(context.Background(), groupId).ServerlessInstanceDescription(&serverlessInstanceDescription).Execute()
+    resp, r, err := sdk.ClustersApi.UpgradeSharedClusterToServerless(context.Background(), groupId, &serverlessInstanceDescription).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.UpgradeSharedClusterToServerless``: %v\n", err)
         apiError := admin.AsError(err)

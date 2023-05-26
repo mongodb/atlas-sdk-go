@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 ## CreatePeeringConnection
 
-> ContainerPeer CreatePeeringConnection(ctx, groupId).ContainerPeer(containerPeer).Execute()
+> ContainerPeer CreatePeeringConnection(ctx, groupId, containerPeer ContainerPeer).Execute()
 
 Create One New Network Peering Connection
 
@@ -50,7 +50,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     containerPeer := openapiclient.ContainerPeer{AWSPeerVpc: openapiclient.NewAWSPeerVpc("AccepterRegionName_example", "AwsAccountId_example", "32b6e34b3d91647abb20e7b8", "RouteTableCidrBlock_example", "VpcId_example")} // ContainerPeer | 
 
-    resp, r, err := sdk.NetworkPeeringApi.CreatePeeringConnection(context.Background(), groupId).ContainerPeer(&containerPeer).Execute()
+    resp, r, err := sdk.NetworkPeeringApi.CreatePeeringConnection(context.Background(), groupId, &containerPeer).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.CreatePeeringConnection``: %v\n", err)
         apiError := admin.AsError(err)
@@ -98,7 +98,7 @@ Name | Type | Description  | Notes
 
 ## CreatePeeringContainer
 
-> CloudProviderContainer CreatePeeringContainer(ctx, groupId).CloudProviderContainer(cloudProviderContainer).Execute()
+> CloudProviderContainer CreatePeeringContainer(ctx, groupId, cloudProviderContainer CloudProviderContainer).Execute()
 
 Create One New Network Peering Container
 
@@ -126,7 +126,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     cloudProviderContainer := openapiclient.CloudProviderContainer{AWSCloudProviderContainer: openapiclient.NewAWSCloudProviderContainer("RegionName_example")} // CloudProviderContainer | 
 
-    resp, r, err := sdk.NetworkPeeringApi.CreatePeeringContainer(context.Background(), groupId).CloudProviderContainer(&cloudProviderContainer).Execute()
+    resp, r, err := sdk.NetworkPeeringApi.CreatePeeringContainer(context.Background(), groupId, &cloudProviderContainer).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.CreatePeeringContainer``: %v\n", err)
         apiError := admin.AsError(err)
@@ -328,7 +328,7 @@ Name | Type | Description  | Notes
 
 ## DisablePeering
 
-> PrivateIPMode DisablePeering(ctx, groupId).PrivateIPMode(privateIPMode).Execute()
+> PrivateIPMode DisablePeering(ctx, groupId, privateIPMode PrivateIPMode).Execute()
 
 Disable Connect via Peering Only Mode for One Project
 
@@ -356,7 +356,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     privateIPMode := *openapiclient.NewPrivateIPMode(false) // PrivateIPMode | 
 
-    resp, r, err := sdk.NetworkPeeringApi.DisablePeering(context.Background(), groupId).PrivateIPMode(&privateIPMode).Execute()
+    resp, r, err := sdk.NetworkPeeringApi.DisablePeering(context.Background(), groupId, &privateIPMode).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.DisablePeering``: %v\n", err)
         apiError := admin.AsError(err)
@@ -802,7 +802,7 @@ Name | Type | Description  | Notes
 
 ## UpdatePeeringConnection
 
-> ContainerPeer UpdatePeeringConnection(ctx, groupId, peerId).ContainerPeer(containerPeer).Execute()
+> ContainerPeer UpdatePeeringConnection(ctx, groupId, peerId, containerPeer ContainerPeer).Execute()
 
 Update One New Network Peering Connection
 
@@ -831,7 +831,7 @@ func main() {
     peerId := "peerId_example" // string | 
     containerPeer := openapiclient.ContainerPeer{AWSPeerVpc: openapiclient.NewAWSPeerVpc("AccepterRegionName_example", "AwsAccountId_example", "32b6e34b3d91647abb20e7b8", "RouteTableCidrBlock_example", "VpcId_example")} // ContainerPeer | 
 
-    resp, r, err := sdk.NetworkPeeringApi.UpdatePeeringConnection(context.Background(), groupId, peerId).ContainerPeer(&containerPeer).Execute()
+    resp, r, err := sdk.NetworkPeeringApi.UpdatePeeringConnection(context.Background(), groupId, peerId, &containerPeer).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.UpdatePeeringConnection``: %v\n", err)
         apiError := admin.AsError(err)
@@ -881,7 +881,7 @@ Name | Type | Description  | Notes
 
 ## UpdatePeeringContainer
 
-> CloudProviderContainer UpdatePeeringContainer(ctx, groupId, containerId).CloudProviderContainer(cloudProviderContainer).Execute()
+> CloudProviderContainer UpdatePeeringContainer(ctx, groupId, containerId, cloudProviderContainer CloudProviderContainer).Execute()
 
 Update One Network Peering Container
 
@@ -910,7 +910,7 @@ func main() {
     containerId := "32b6e34b3d91647abb20e7b8" // string | 
     cloudProviderContainer := openapiclient.CloudProviderContainer{AWSCloudProviderContainer: openapiclient.NewAWSCloudProviderContainer("RegionName_example")} // CloudProviderContainer | 
 
-    resp, r, err := sdk.NetworkPeeringApi.UpdatePeeringContainer(context.Background(), groupId, containerId).CloudProviderContainer(&cloudProviderContainer).Execute()
+    resp, r, err := sdk.NetworkPeeringApi.UpdatePeeringContainer(context.Background(), groupId, containerId, &cloudProviderContainer).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.UpdatePeeringContainer``: %v\n", err)
         apiError := admin.AsError(err)

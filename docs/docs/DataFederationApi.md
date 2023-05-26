@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 ## CreateDataFederationPrivateEndpoint
 
-> PaginatedPrivateNetworkEndpointIdEntry CreateDataFederationPrivateEndpoint(ctx, groupId).PrivateNetworkEndpointIdEntry(privateNetworkEndpointIdEntry).Execute()
+> PaginatedPrivateNetworkEndpointIdEntry CreateDataFederationPrivateEndpoint(ctx, groupId, privateNetworkEndpointIdEntry PrivateNetworkEndpointIdEntry).Execute()
 
 Create One Federated Database Instance and Online Archive Private Endpoint for One Project
 
@@ -51,7 +51,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     privateNetworkEndpointIdEntry := *openapiclient.NewPrivateNetworkEndpointIdEntry("vpce-3bf78b0ddee411ba1") // PrivateNetworkEndpointIdEntry | 
 
-    resp, r, err := sdk.DataFederationApi.CreateDataFederationPrivateEndpoint(context.Background(), groupId).PrivateNetworkEndpointIdEntry(&privateNetworkEndpointIdEntry).Execute()
+    resp, r, err := sdk.DataFederationApi.CreateDataFederationPrivateEndpoint(context.Background(), groupId, &privateNetworkEndpointIdEntry).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.CreateDataFederationPrivateEndpoint``: %v\n", err)
         apiError := admin.AsError(err)
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 
 ## CreateFederatedDatabase
 
-> DataLakeTenant CreateFederatedDatabase(ctx, groupId).DataLakeTenant(dataLakeTenant).SkipRoleValidation(skipRoleValidation).Execute()
+> DataLakeTenant CreateFederatedDatabase(ctx, groupId, dataLakeTenant DataLakeTenant).SkipRoleValidation(skipRoleValidation).Execute()
 
 Create One Federated Database Instance in One Project
 
@@ -128,7 +128,7 @@ func main() {
     dataLakeTenant := *openapiclient.NewDataLakeTenant() // DataLakeTenant | 
     skipRoleValidation := true // bool |  (optional) (default to false)
 
-    resp, r, err := sdk.DataFederationApi.CreateFederatedDatabase(context.Background(), groupId).DataLakeTenant(&dataLakeTenant).SkipRoleValidation(skipRoleValidation).Execute()
+    resp, r, err := sdk.DataFederationApi.CreateFederatedDatabase(context.Background(), groupId, &dataLakeTenant).SkipRoleValidation(skipRoleValidation).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.CreateFederatedDatabase``: %v\n", err)
         apiError := admin.AsError(err)
@@ -177,7 +177,7 @@ Name | Type | Description  | Notes
 
 ## CreateOneDataFederationQueryLimit
 
-> []DataFederationTenantQueryLimit CreateOneDataFederationQueryLimit(ctx, groupId, tenantName, limitName).DataFederationTenantQueryLimit(dataFederationTenantQueryLimit).Execute()
+> []DataFederationTenantQueryLimit CreateOneDataFederationQueryLimit(ctx, groupId, tenantName, limitName, dataFederationTenantQueryLimit DataFederationTenantQueryLimit).Execute()
 
 Configure One Query Limit for One Federated Database Instance
 
@@ -207,7 +207,7 @@ func main() {
     limitName := "limitName_example" // string | 
     dataFederationTenantQueryLimit := *openapiclient.NewDataFederationTenantQueryLimit("Name_example", int64(123)) // DataFederationTenantQueryLimit | 
 
-    resp, r, err := sdk.DataFederationApi.CreateOneDataFederationQueryLimit(context.Background(), groupId, tenantName, limitName).DataFederationTenantQueryLimit(&dataFederationTenantQueryLimit).Execute()
+    resp, r, err := sdk.DataFederationApi.CreateOneDataFederationQueryLimit(context.Background(), groupId, tenantName, limitName, &dataFederationTenantQueryLimit).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.CreateOneDataFederationQueryLimit``: %v\n", err)
         apiError := admin.AsError(err)
@@ -1041,7 +1041,7 @@ Name | Type | Description  | Notes
 
 ## UpdateFederatedDatabase
 
-> DataLakeTenant UpdateFederatedDatabase(ctx, groupId, tenantName).SkipRoleValidation(skipRoleValidation).DataLakeTenant(dataLakeTenant).Execute()
+> DataLakeTenant UpdateFederatedDatabase(ctx, groupId, tenantName, dataLakeTenant DataLakeTenant).SkipRoleValidation(skipRoleValidation).Execute()
 
 Update One Federated Database Instance in One Project
 
@@ -1071,7 +1071,7 @@ func main() {
     skipRoleValidation := true // bool | 
     dataLakeTenant := *openapiclient.NewDataLakeTenant() // DataLakeTenant | 
 
-    resp, r, err := sdk.DataFederationApi.UpdateFederatedDatabase(context.Background(), groupId, tenantName).SkipRoleValidation(skipRoleValidation).DataLakeTenant(&dataLakeTenant).Execute()
+    resp, r, err := sdk.DataFederationApi.UpdateFederatedDatabase(context.Background(), groupId, tenantName, &dataLakeTenant).SkipRoleValidation(skipRoleValidation).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DataFederationApi.UpdateFederatedDatabase``: %v\n", err)
         apiError := admin.AsError(err)

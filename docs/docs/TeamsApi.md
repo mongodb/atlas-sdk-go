@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 ## AddAllTeamsToProject
 
-> PaginatedTeamRole AddAllTeamsToProject(ctx, groupId).TeamRole(teamRole).Execute()
+> PaginatedTeamRole AddAllTeamsToProject(ctx, groupId, teamRole []TeamRole).Execute()
 
 Add One or More Teams to One Project
 
@@ -50,7 +50,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     teamRole := []openapiclient.TeamRole{*openapiclient.NewTeamRole()} // []TeamRole | 
 
-    resp, r, err := sdk.TeamsApi.AddAllTeamsToProject(context.Background(), groupId).TeamRole(teamRole).Execute()
+    resp, r, err := sdk.TeamsApi.AddAllTeamsToProject(context.Background(), groupId, &teamRole).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.AddAllTeamsToProject``: %v\n", err)
         apiError := admin.AsError(err)
@@ -98,7 +98,7 @@ Name | Type | Description  | Notes
 
 ## AddTeamUser
 
-> PaginatedApiAppUser AddTeamUser(ctx, orgId, teamId).AddUserToTeam(addUserToTeam).Execute()
+> PaginatedApiAppUser AddTeamUser(ctx, orgId, teamId, addUserToTeam []AddUserToTeam).Execute()
 
 Assign MongoDB Cloud Users from One Organization to One Team
 
@@ -127,7 +127,7 @@ func main() {
     teamId := "teamId_example" // string | 
     addUserToTeam := []openapiclient.AddUserToTeam{*openapiclient.NewAddUserToTeam("32b6e34b3d91647abb20e7b8")} // []AddUserToTeam | 
 
-    resp, r, err := sdk.TeamsApi.AddTeamUser(context.Background(), orgId, teamId).AddUserToTeam(addUserToTeam).Execute()
+    resp, r, err := sdk.TeamsApi.AddTeamUser(context.Background(), orgId, teamId, &addUserToTeam).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.AddTeamUser``: %v\n", err)
         apiError := admin.AsError(err)
@@ -177,7 +177,7 @@ Name | Type | Description  | Notes
 
 ## CreateTeam
 
-> Team CreateTeam(ctx, orgId).Team(team).Execute()
+> Team CreateTeam(ctx, orgId, team Team).Execute()
 
 Create One Team in One Organization
 
@@ -205,7 +205,7 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     team := *openapiclient.NewTeam("Name_example") // Team | 
 
-    resp, r, err := sdk.TeamsApi.CreateTeam(context.Background(), orgId).Team(&team).Execute()
+    resp, r, err := sdk.TeamsApi.CreateTeam(context.Background(), orgId, &team).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.CreateTeam``: %v\n", err)
         apiError := admin.AsError(err)
@@ -880,7 +880,7 @@ Name | Type | Description  | Notes
 
 ## RenameTeam
 
-> TeamResponse RenameTeam(ctx, orgId, teamId).Team(team).Execute()
+> TeamResponse RenameTeam(ctx, orgId, teamId, team Team).Execute()
 
 Rename One Team
 
@@ -909,7 +909,7 @@ func main() {
     teamId := "teamId_example" // string | 
     team := *openapiclient.NewTeam("Name_example") // Team | 
 
-    resp, r, err := sdk.TeamsApi.RenameTeam(context.Background(), orgId, teamId).Team(&team).Execute()
+    resp, r, err := sdk.TeamsApi.RenameTeam(context.Background(), orgId, teamId, &team).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.RenameTeam``: %v\n", err)
         apiError := admin.AsError(err)
@@ -959,7 +959,7 @@ Name | Type | Description  | Notes
 
 ## UpdateTeamRoles
 
-> PaginatedTeamRole UpdateTeamRoles(ctx, groupId, teamId).TeamRole(teamRole).Execute()
+> PaginatedTeamRole UpdateTeamRoles(ctx, groupId, teamId, teamRole TeamRole).Execute()
 
 Update Team Roles in One Project
 
@@ -988,7 +988,7 @@ func main() {
     teamId := "teamId_example" // string | 
     teamRole := *openapiclient.NewTeamRole() // TeamRole | 
 
-    resp, r, err := sdk.TeamsApi.UpdateTeamRoles(context.Background(), groupId, teamId).TeamRole(&teamRole).Execute()
+    resp, r, err := sdk.TeamsApi.UpdateTeamRoles(context.Background(), groupId, teamId, &teamRole).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.UpdateTeamRoles``: %v\n", err)
         apiError := admin.AsError(err)

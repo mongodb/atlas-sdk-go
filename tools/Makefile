@@ -28,3 +28,7 @@ generate_docs:
 	rm -Rf ../docs/docs/*
 	./scripts/generate_docs.sh
 
+.PHONY: generate_tests
+generate_tests:	
+	rm -Rf ../test/generated/test*
+	./scripts/generate_tests.sh

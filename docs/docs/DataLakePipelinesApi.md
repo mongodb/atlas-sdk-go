@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 ## CreatePipeline
 
-> IngestionPipeline CreatePipeline(ctx, groupId).IngestionPipeline(ingestionPipeline).Execute()
+> IngestionPipeline CreatePipeline(ctx, groupId, ingestionPipeline IngestionPipeline).Execute()
 
 Create One Data Lake Pipeline
 
@@ -50,7 +50,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     ingestionPipeline := *openapiclient.NewIngestionPipeline() // IngestionPipeline | 
 
-    resp, r, err := sdk.DataLakePipelinesApi.CreatePipeline(context.Background(), groupId).IngestionPipeline(&ingestionPipeline).Execute()
+    resp, r, err := sdk.DataLakePipelinesApi.CreatePipeline(context.Background(), groupId, &ingestionPipeline).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.CreatePipeline``: %v\n", err)
         apiError := admin.AsError(err)
@@ -887,7 +887,7 @@ Name | Type | Description  | Notes
 
 ## TriggerSnapshotIngestion
 
-> IngestionPipelineRun TriggerSnapshotIngestion(ctx, groupId, pipelineName).TriggerIngestionRequest(triggerIngestionRequest).Execute()
+> IngestionPipelineRun TriggerSnapshotIngestion(ctx, groupId, pipelineName, triggerIngestionRequest TriggerIngestionRequest).Execute()
 
 Trigger on demand snapshot ingestion
 
@@ -916,7 +916,7 @@ func main() {
     pipelineName := "pipelineName_example" // string | 
     triggerIngestionRequest := *openapiclient.NewTriggerIngestionRequest("32b6e34b3d91647abb20e7b8") // TriggerIngestionRequest | 
 
-    resp, r, err := sdk.DataLakePipelinesApi.TriggerSnapshotIngestion(context.Background(), groupId, pipelineName).TriggerIngestionRequest(&triggerIngestionRequest).Execute()
+    resp, r, err := sdk.DataLakePipelinesApi.TriggerSnapshotIngestion(context.Background(), groupId, pipelineName, &triggerIngestionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.TriggerSnapshotIngestion``: %v\n", err)
         apiError := admin.AsError(err)
@@ -966,7 +966,7 @@ Name | Type | Description  | Notes
 
 ## UpdatePipeline
 
-> IngestionPipeline UpdatePipeline(ctx, groupId, pipelineName).IngestionPipeline(ingestionPipeline).Execute()
+> IngestionPipeline UpdatePipeline(ctx, groupId, pipelineName, ingestionPipeline IngestionPipeline).Execute()
 
 Update One Data Lake Pipeline
 
@@ -995,7 +995,7 @@ func main() {
     pipelineName := "pipelineName_example" // string | 
     ingestionPipeline := *openapiclient.NewIngestionPipeline() // IngestionPipeline | 
 
-    resp, r, err := sdk.DataLakePipelinesApi.UpdatePipeline(context.Background(), groupId, pipelineName).IngestionPipeline(&ingestionPipeline).Execute()
+    resp, r, err := sdk.DataLakePipelinesApi.UpdatePipeline(context.Background(), groupId, pipelineName, &ingestionPipeline).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.UpdatePipeline``: %v\n", err)
         apiError := admin.AsError(err)

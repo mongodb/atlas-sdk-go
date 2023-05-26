@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateProjectIpAccessList
 
-> PaginatedNetworkAccess CreateProjectIpAccessList(ctx, groupId).NetworkPermissionEntry(networkPermissionEntry).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+> PaginatedNetworkAccess CreateProjectIpAccessList(ctx, groupId, networkPermissionEntry []NetworkPermissionEntry).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Add Entries to Project IP Access List
 
@@ -45,7 +45,7 @@ func main() {
     itemsPerPage := int(100) // int |  (optional) (default to 100)
     pageNum := int(1) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.ProjectIPAccessListApi.CreateProjectIpAccessList(context.Background(), groupId).NetworkPermissionEntry(networkPermissionEntry).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.ProjectIPAccessListApi.CreateProjectIpAccessList(context.Background(), groupId, &networkPermissionEntry).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectIPAccessListApi.CreateProjectIpAccessList``: %v\n", err)
         apiError := admin.AsError(err)

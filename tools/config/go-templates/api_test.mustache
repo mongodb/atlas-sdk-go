@@ -27,19 +27,26 @@ func Test_{{packageName}}_{{classname}}Service(t *testing.T) {
 {{#operations}}
 {{#operation}}
 	t.Run("Test {{classname}}Service {{{nickname}}}", func(t *testing.T) {
-
-		{{^pathParams}}
+		// TODO this test is incomplete. You should add your own test code here.
 		t.Skip("skip test")  // remove to run test
-		{{/pathParams}}
+
 		{{#pathParams}}
-		{{#-first}}
-		t.Skip("skip test")  // remove to run test
-
-		{{/-first}}
 		var {{paramName}} {{{dataType}}}
-		{{/pathParams}}
+		{{/pathParams}}	
+		{{#queryParams}}
+		// var {{paramName}} {{{dataType}}}
+		{{/queryParams}}	
+		{{#bodyParams}}
+		// TODO: create model
+		{{#isArray}}
+		var {{paramName}} []openapiclient.{{{baseType}}}
+		{{/isArray}}
+		{{^isArray}}
+		var {{paramName}} openapiclient.{{{dataType}}} = openapiclient.{{{dataType}}}{}
+		{{/isArray}}
+		{{/bodyParams}}
 
-		{{#returnType}}resp, {{/returnType}}httpRes, err := apiClient.{{classname}}.{{operationId}}(context.Background(){{#pathParams}}, {{paramName}}{{/pathParams}}).Execute()
+		{{#returnType}}resp, {{/returnType}}httpRes, err := apiClient.{{classname}}.{{operationId}}(context.Background(){{#pathParams}}, {{paramName}}{{/pathParams}}{{#bodyParams}}, &{{paramName}}{{/bodyParams}}).Execute()
 
 		require.Nil(t, err)
 		{{#returnType}}

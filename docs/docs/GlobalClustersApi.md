@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateCustomZoneMapping
 
-> GeoSharding CreateCustomZoneMapping(ctx, groupId, clusterName).GeoSharding(geoSharding).Execute()
+> GeoSharding CreateCustomZoneMapping(ctx, groupId, clusterName, geoSharding GeoSharding).Execute()
 
 Add One Entry to One Custom Zone Mapping
 
@@ -43,7 +43,7 @@ func main() {
     clusterName := "clusterName_example" // string | 
     geoSharding := *openapiclient.NewGeoSharding() // GeoSharding | 
 
-    resp, r, err := sdk.GlobalClustersApi.CreateCustomZoneMapping(context.Background(), groupId, clusterName).GeoSharding(&geoSharding).Execute()
+    resp, r, err := sdk.GlobalClustersApi.CreateCustomZoneMapping(context.Background(), groupId, clusterName, &geoSharding).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GlobalClustersApi.CreateCustomZoneMapping``: %v\n", err)
         apiError := admin.AsError(err)
@@ -93,7 +93,7 @@ Name | Type | Description  | Notes
 
 ## CreateManagedNamespace
 
-> GeoSharding CreateManagedNamespace(ctx, groupId, clusterName).ManagedNamespace(managedNamespace).Execute()
+> GeoSharding CreateManagedNamespace(ctx, groupId, clusterName, managedNamespace ManagedNamespace).Execute()
 
 Create One Managed Namespace in One Global Multi-Cloud Cluster
 
@@ -122,7 +122,7 @@ func main() {
     clusterName := "clusterName_example" // string | 
     managedNamespace := *openapiclient.NewManagedNamespace() // ManagedNamespace | 
 
-    resp, r, err := sdk.GlobalClustersApi.CreateManagedNamespace(context.Background(), groupId, clusterName).ManagedNamespace(&managedNamespace).Execute()
+    resp, r, err := sdk.GlobalClustersApi.CreateManagedNamespace(context.Background(), groupId, clusterName, &managedNamespace).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GlobalClustersApi.CreateManagedNamespace``: %v\n", err)
         apiError := admin.AsError(err)

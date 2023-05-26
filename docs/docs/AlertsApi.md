@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## AcknowledgeAlert
 
-> AlertViewForNdsGroup AcknowledgeAlert(ctx, groupId, alertId).AlertViewForNdsGroup(alertViewForNdsGroup).Execute()
+> AlertViewForNdsGroup AcknowledgeAlert(ctx, groupId, alertId, alertViewForNdsGroup AlertViewForNdsGroup).Execute()
 
 Acknowledge One Alert from One Project
 
@@ -42,7 +42,7 @@ func main() {
     alertId := "alertId_example" // string | 
     alertViewForNdsGroup := *openapiclient.NewAlertViewForNdsGroup() // AlertViewForNdsGroup | 
 
-    resp, r, err := sdk.AlertsApi.AcknowledgeAlert(context.Background(), groupId, alertId).AlertViewForNdsGroup(&alertViewForNdsGroup).Execute()
+    resp, r, err := sdk.AlertsApi.AcknowledgeAlert(context.Background(), groupId, alertId, &alertViewForNdsGroup).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AlertsApi.AcknowledgeAlert``: %v\n", err)
         apiError := admin.AsError(err)

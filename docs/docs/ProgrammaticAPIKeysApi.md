@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 ## AddProjectApiKey
 
-> ApiUser AddProjectApiKey(ctx, groupId, apiUserId).UserRoleAssignment(userRoleAssignment).Execute()
+> ApiUser AddProjectApiKey(ctx, groupId, apiUserId, userRoleAssignment []UserRoleAssignment).Execute()
 
 Assign One Organization API Key to One Project
 
@@ -52,7 +52,7 @@ func main() {
     apiUserId := "apiUserId_example" // string | 
     userRoleAssignment := []openapiclient.UserRoleAssignment{*openapiclient.NewUserRoleAssignment()} // []UserRoleAssignment | 
 
-    resp, r, err := sdk.ProgrammaticAPIKeysApi.AddProjectApiKey(context.Background(), groupId, apiUserId).UserRoleAssignment(userRoleAssignment).Execute()
+    resp, r, err := sdk.ProgrammaticAPIKeysApi.AddProjectApiKey(context.Background(), groupId, apiUserId, &userRoleAssignment).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.AddProjectApiKey``: %v\n", err)
         apiError := admin.AsError(err)
@@ -102,7 +102,7 @@ Name | Type | Description  | Notes
 
 ## CreateApiKey
 
-> ApiUser CreateApiKey(ctx, orgId).CreateApiKey(createApiKey).Execute()
+> ApiUser CreateApiKey(ctx, orgId, createApiKey CreateApiKey).Execute()
 
 Create One Organization API Key
 
@@ -130,7 +130,7 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     createApiKey := *openapiclient.NewCreateApiKey() // CreateApiKey | 
 
-    resp, r, err := sdk.ProgrammaticAPIKeysApi.CreateApiKey(context.Background(), orgId).CreateApiKey(&createApiKey).Execute()
+    resp, r, err := sdk.ProgrammaticAPIKeysApi.CreateApiKey(context.Background(), orgId, &createApiKey).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.CreateApiKey``: %v\n", err)
         apiError := admin.AsError(err)
@@ -178,7 +178,7 @@ Name | Type | Description  | Notes
 
 ## CreateApiKeyAccessList
 
-> UserAccessList CreateApiKeyAccessList(ctx, orgId, apiUserId).UserAccessList(userAccessList).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+> UserAccessList CreateApiKeyAccessList(ctx, orgId, apiUserId, userAccessList []UserAccessList).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Create Access List Entries for One Organization API Key
 
@@ -210,7 +210,7 @@ func main() {
     itemsPerPage := int(100) // int |  (optional) (default to 100)
     pageNum := int(1) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.ProgrammaticAPIKeysApi.CreateApiKeyAccessList(context.Background(), orgId, apiUserId).UserAccessList(userAccessList).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.ProgrammaticAPIKeysApi.CreateApiKeyAccessList(context.Background(), orgId, apiUserId, &userAccessList).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.CreateApiKeyAccessList``: %v\n", err)
         apiError := admin.AsError(err)
@@ -263,7 +263,7 @@ Name | Type | Description  | Notes
 
 ## CreateProjectApiKey
 
-> ApiUser CreateProjectApiKey(ctx, groupId).CreateApiKey(createApiKey).Execute()
+> ApiUser CreateProjectApiKey(ctx, groupId, createApiKey CreateApiKey).Execute()
 
 Create and Assign One Organization API Key to One Project
 
@@ -291,7 +291,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     createApiKey := *openapiclient.NewCreateApiKey() // CreateApiKey | 
 
-    resp, r, err := sdk.ProgrammaticAPIKeysApi.CreateProjectApiKey(context.Background(), groupId).CreateApiKey(&createApiKey).Execute()
+    resp, r, err := sdk.ProgrammaticAPIKeysApi.CreateProjectApiKey(context.Background(), groupId, &createApiKey).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.CreateProjectApiKey``: %v\n", err)
         apiError := admin.AsError(err)
@@ -973,7 +973,7 @@ Name | Type | Description  | Notes
 
 ## UpdateApiKey
 
-> ApiUser UpdateApiKey(ctx, orgId, apiUserId).CreateApiKey(createApiKey).Execute()
+> ApiUser UpdateApiKey(ctx, orgId, apiUserId, createApiKey CreateApiKey).Execute()
 
 Update One Organization API Key
 
@@ -1002,7 +1002,7 @@ func main() {
     apiUserId := "apiUserId_example" // string | 
     createApiKey := *openapiclient.NewCreateApiKey() // CreateApiKey | 
 
-    resp, r, err := sdk.ProgrammaticAPIKeysApi.UpdateApiKey(context.Background(), orgId, apiUserId).CreateApiKey(&createApiKey).Execute()
+    resp, r, err := sdk.ProgrammaticAPIKeysApi.UpdateApiKey(context.Background(), orgId, apiUserId, &createApiKey).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.UpdateApiKey``: %v\n", err)
         apiError := admin.AsError(err)
@@ -1052,7 +1052,7 @@ Name | Type | Description  | Notes
 
 ## UpdateApiKeyRoles
 
-> ApiUser UpdateApiKeyRoles(ctx, groupId, apiUserId).CreateApiKey(createApiKey).PageNum(pageNum).ItemsPerPage(itemsPerPage).IncludeCount(includeCount).Execute()
+> ApiUser UpdateApiKeyRoles(ctx, groupId, apiUserId, createApiKey CreateApiKey).PageNum(pageNum).ItemsPerPage(itemsPerPage).IncludeCount(includeCount).Execute()
 
 Update Roles of One Organization API Key to One Project
 
@@ -1084,7 +1084,7 @@ func main() {
     itemsPerPage := int(100) // int |  (optional) (default to 100)
     includeCount := true // bool |  (optional) (default to true)
 
-    resp, r, err := sdk.ProgrammaticAPIKeysApi.UpdateApiKeyRoles(context.Background(), groupId, apiUserId).CreateApiKey(&createApiKey).PageNum(pageNum).ItemsPerPage(itemsPerPage).IncludeCount(includeCount).Execute()
+    resp, r, err := sdk.ProgrammaticAPIKeysApi.UpdateApiKeyRoles(context.Background(), groupId, apiUserId, &createApiKey).PageNum(pageNum).ItemsPerPage(itemsPerPage).IncludeCount(includeCount).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.UpdateApiKeyRoles``: %v\n", err)
         apiError := admin.AsError(err)

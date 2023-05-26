@@ -118,7 +118,7 @@ Name | Type | Description  | Notes
 
 ## CreateBackupExportJob
 
-> DiskBackupExportJob CreateBackupExportJob(ctx, groupId, clusterName).DiskBackupExportJobRequest(diskBackupExportJobRequest).Execute()
+> DiskBackupExportJob CreateBackupExportJob(ctx, groupId, clusterName, diskBackupExportJobRequest DiskBackupExportJobRequest).Execute()
 
 Create One Cloud Backup Snapshot Export Job
 
@@ -147,7 +147,7 @@ func main() {
     clusterName := "clusterName_example" // string | 
     diskBackupExportJobRequest := *openapiclient.NewDiskBackupExportJobRequest("32b6e34b3d91647abb20e7b8", "32b6e34b3d91647abb20e7b8") // DiskBackupExportJobRequest | 
 
-    resp, r, err := sdk.CloudBackupsApi.CreateBackupExportJob(context.Background(), groupId, clusterName).DiskBackupExportJobRequest(&diskBackupExportJobRequest).Execute()
+    resp, r, err := sdk.CloudBackupsApi.CreateBackupExportJob(context.Background(), groupId, clusterName, &diskBackupExportJobRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.CreateBackupExportJob``: %v\n", err)
         apiError := admin.AsError(err)
@@ -197,7 +197,7 @@ Name | Type | Description  | Notes
 
 ## CreateBackupRestoreJob
 
-> DiskBackupRestoreJob CreateBackupRestoreJob(ctx, groupId, clusterName).DiskBackupRestoreJob(diskBackupRestoreJob).Execute()
+> DiskBackupRestoreJob CreateBackupRestoreJob(ctx, groupId, clusterName, diskBackupRestoreJob DiskBackupRestoreJob).Execute()
 
 Restore One Snapshot of One Cluster
 
@@ -226,7 +226,7 @@ func main() {
     clusterName := "clusterName_example" // string | 
     diskBackupRestoreJob := *openapiclient.NewDiskBackupRestoreJob("DeliveryType_example", "TargetClusterName_example", "32b6e34b3d91647abb20e7b8") // DiskBackupRestoreJob | 
 
-    resp, r, err := sdk.CloudBackupsApi.CreateBackupRestoreJob(context.Background(), groupId, clusterName).DiskBackupRestoreJob(&diskBackupRestoreJob).Execute()
+    resp, r, err := sdk.CloudBackupsApi.CreateBackupRestoreJob(context.Background(), groupId, clusterName, &diskBackupRestoreJob).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.CreateBackupRestoreJob``: %v\n", err)
         apiError := admin.AsError(err)
@@ -276,7 +276,7 @@ Name | Type | Description  | Notes
 
 ## CreateExportBucket
 
-> DiskBackupSnapshotAWSExportBucket CreateExportBucket(ctx, groupId).DiskBackupSnapshotAWSExportBucket(diskBackupSnapshotAWSExportBucket).Execute()
+> DiskBackupSnapshotAWSExportBucket CreateExportBucket(ctx, groupId, diskBackupSnapshotAWSExportBucket DiskBackupSnapshotAWSExportBucket).Execute()
 
 Grant Access to AWS S3 Bucket for Cloud Backup Snapshot Exports
 
@@ -304,7 +304,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     diskBackupSnapshotAWSExportBucket := *openapiclient.NewDiskBackupSnapshotAWSExportBucket() // DiskBackupSnapshotAWSExportBucket | 
 
-    resp, r, err := sdk.CloudBackupsApi.CreateExportBucket(context.Background(), groupId).DiskBackupSnapshotAWSExportBucket(&diskBackupSnapshotAWSExportBucket).Execute()
+    resp, r, err := sdk.CloudBackupsApi.CreateExportBucket(context.Background(), groupId, &diskBackupSnapshotAWSExportBucket).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.CreateExportBucket``: %v\n", err)
         apiError := admin.AsError(err)
@@ -352,7 +352,7 @@ Name | Type | Description  | Notes
 
 ## CreateServerlessBackupRestoreJob
 
-> ServerlessBackupRestoreJob CreateServerlessBackupRestoreJob(ctx, groupId, clusterName).ServerlessBackupRestoreJob(serverlessBackupRestoreJob).Execute()
+> ServerlessBackupRestoreJob CreateServerlessBackupRestoreJob(ctx, groupId, clusterName, serverlessBackupRestoreJob ServerlessBackupRestoreJob).Execute()
 
 Restore One Snapshot of One Serverless Instance
 
@@ -381,7 +381,7 @@ func main() {
     clusterName := "clusterName_example" // string | 
     serverlessBackupRestoreJob := *openapiclient.NewServerlessBackupRestoreJob("DeliveryType_example", "TargetClusterName_example", "32b6e34b3d91647abb20e7b8") // ServerlessBackupRestoreJob | 
 
-    resp, r, err := sdk.CloudBackupsApi.CreateServerlessBackupRestoreJob(context.Background(), groupId, clusterName).ServerlessBackupRestoreJob(&serverlessBackupRestoreJob).Execute()
+    resp, r, err := sdk.CloudBackupsApi.CreateServerlessBackupRestoreJob(context.Background(), groupId, clusterName, &serverlessBackupRestoreJob).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.CreateServerlessBackupRestoreJob``: %v\n", err)
         apiError := admin.AsError(err)
@@ -2025,7 +2025,7 @@ Name | Type | Description  | Notes
 
 ## TakeSnapshot
 
-> DiskBackupSnapshot TakeSnapshot(ctx, groupId, clusterName).DiskBackupOnDemandSnapshotRequest(diskBackupOnDemandSnapshotRequest).Execute()
+> DiskBackupSnapshot TakeSnapshot(ctx, groupId, clusterName, diskBackupOnDemandSnapshotRequest DiskBackupOnDemandSnapshotRequest).Execute()
 
 Take One On-Demand Snapshot
 
@@ -2054,7 +2054,7 @@ func main() {
     clusterName := "clusterName_example" // string | 
     diskBackupOnDemandSnapshotRequest := *openapiclient.NewDiskBackupOnDemandSnapshotRequest() // DiskBackupOnDemandSnapshotRequest | 
 
-    resp, r, err := sdk.CloudBackupsApi.TakeSnapshot(context.Background(), groupId, clusterName).DiskBackupOnDemandSnapshotRequest(&diskBackupOnDemandSnapshotRequest).Execute()
+    resp, r, err := sdk.CloudBackupsApi.TakeSnapshot(context.Background(), groupId, clusterName, &diskBackupOnDemandSnapshotRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.TakeSnapshot``: %v\n", err)
         apiError := admin.AsError(err)
@@ -2104,7 +2104,7 @@ Name | Type | Description  | Notes
 
 ## UpdateBackupSchedule
 
-> DiskBackupSnapshotSchedule UpdateBackupSchedule(ctx, groupId, clusterName).DiskBackupSnapshotSchedule(diskBackupSnapshotSchedule).Execute()
+> DiskBackupSnapshotSchedule UpdateBackupSchedule(ctx, groupId, clusterName, diskBackupSnapshotSchedule DiskBackupSnapshotSchedule).Execute()
 
 Update Cloud Backup Schedule for One Cluster
 
@@ -2133,7 +2133,7 @@ func main() {
     clusterName := "clusterName_example" // string | 
     diskBackupSnapshotSchedule := *openapiclient.NewDiskBackupSnapshotSchedule() // DiskBackupSnapshotSchedule | 
 
-    resp, r, err := sdk.CloudBackupsApi.UpdateBackupSchedule(context.Background(), groupId, clusterName).DiskBackupSnapshotSchedule(&diskBackupSnapshotSchedule).Execute()
+    resp, r, err := sdk.CloudBackupsApi.UpdateBackupSchedule(context.Background(), groupId, clusterName, &diskBackupSnapshotSchedule).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.UpdateBackupSchedule``: %v\n", err)
         apiError := admin.AsError(err)
@@ -2183,7 +2183,7 @@ Name | Type | Description  | Notes
 
 ## UpdateDataProtectionSettings
 
-> DataProtectionSettings UpdateDataProtectionSettings(ctx, groupId).DataProtectionSettings(dataProtectionSettings).Execute()
+> DataProtectionSettings UpdateDataProtectionSettings(ctx, groupId, dataProtectionSettings DataProtectionSettings).Execute()
 
 Update or enable the Backup Compliance Policy settings
 
@@ -2211,7 +2211,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     dataProtectionSettings := *openapiclient.NewDataProtectionSettings() // DataProtectionSettings | 
 
-    resp, r, err := sdk.CloudBackupsApi.UpdateDataProtectionSettings(context.Background(), groupId).DataProtectionSettings(&dataProtectionSettings).Execute()
+    resp, r, err := sdk.CloudBackupsApi.UpdateDataProtectionSettings(context.Background(), groupId, &dataProtectionSettings).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.UpdateDataProtectionSettings``: %v\n", err)
         apiError := admin.AsError(err)
@@ -2259,7 +2259,7 @@ Name | Type | Description  | Notes
 
 ## UpdateSnapshotRetention
 
-> DiskBackupReplicaSet UpdateSnapshotRetention(ctx, groupId, clusterName, snapshotId).SnapshotRetention(snapshotRetention).Execute()
+> DiskBackupReplicaSet UpdateSnapshotRetention(ctx, groupId, clusterName, snapshotId, snapshotRetention SnapshotRetention).Execute()
 
 Change Expiration Date for One Cloud Backup
 
@@ -2289,7 +2289,7 @@ func main() {
     snapshotId := "snapshotId_example" // string | 
     snapshotRetention := *openapiclient.NewSnapshotRetention("RetentionUnit_example", int(5)) // SnapshotRetention | 
 
-    resp, r, err := sdk.CloudBackupsApi.UpdateSnapshotRetention(context.Background(), groupId, clusterName, snapshotId).SnapshotRetention(&snapshotRetention).Execute()
+    resp, r, err := sdk.CloudBackupsApi.UpdateSnapshotRetention(context.Background(), groupId, clusterName, snapshotId, &snapshotRetention).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.UpdateSnapshotRetention``: %v\n", err)
         apiError := admin.AsError(err)
