@@ -181,12 +181,12 @@ CreateServerlessPrivateEndpoint Create One Private Endpoint for One Serverless I
 
 Creates one private endpoint for one serverless instance. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
- A new endpoint won't be immediately available after creation.  Read the steps in the linked tutorial for detailed guidance.
+	A new endpoint won't be immediately available after creation.  Read the steps in the linked tutorial for detailed guidance.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param instanceName Human-readable label that identifies the serverless instance for which the tenant endpoint will be created.
- @return CreateServerlessPrivateEndpointApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param instanceName Human-readable label that identifies the serverless instance for which the tenant endpoint will be created.
+	@return CreateServerlessPrivateEndpointApiRequest
 */
 func (a *ServerlessPrivateEndpointsApiService) CreateServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string) CreateServerlessPrivateEndpointApiRequest {
 	return CreateServerlessPrivateEndpointApiRequest{
@@ -198,7 +198,8 @@ func (a *ServerlessPrivateEndpointsApiService) CreateServerlessPrivateEndpoint(c
 }
 
 // Execute executes the request
-//  @return ServerlessTenantEndpoint
+//
+//	@return ServerlessTenantEndpoint
 func (a *ServerlessPrivateEndpointsApiService) createServerlessPrivateEndpointExecute(r CreateServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -329,11 +330,11 @@ DeleteServerlessPrivateEndpoint Remove One Private Endpoint for One Serverless I
 
 Remove one private endpoint from one serverless instance. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param instanceName Human-readable label that identifies the serverless instance from which the tenant endpoint will be removed.
- @param endpointId Unique 24-hexadecimal digit string that identifies the tenant endpoint which will be removed.
- @return DeleteServerlessPrivateEndpointApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param instanceName Human-readable label that identifies the serverless instance from which the tenant endpoint will be removed.
+	@param endpointId Unique 24-hexadecimal digit string that identifies the tenant endpoint which will be removed.
+	@return DeleteServerlessPrivateEndpointApiRequest
 */
 func (a *ServerlessPrivateEndpointsApiService) DeleteServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, endpointId string) DeleteServerlessPrivateEndpointApiRequest {
 	return DeleteServerlessPrivateEndpointApiRequest{
@@ -346,7 +347,8 @@ func (a *ServerlessPrivateEndpointsApiService) DeleteServerlessPrivateEndpoint(c
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *ServerlessPrivateEndpointsApiService) deleteServerlessPrivateEndpointExecute(r DeleteServerlessPrivateEndpointApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
@@ -479,11 +481,11 @@ GetServerlessPrivateEndpoint Return One Private Endpoint for One Serverless Inst
 
 Return one private endpoint for one serverless instance. Identify this endpoint using its unique ID. You must have at least the Project Read Only role for the project to successfully call this resource. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param instanceName Human-readable label that identifies the serverless instance associated with the tenant endpoint.
- @param endpointId Unique 24-hexadecimal digit string that identifies the tenant endpoint.
- @return GetServerlessPrivateEndpointApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param instanceName Human-readable label that identifies the serverless instance associated with the tenant endpoint.
+	@param endpointId Unique 24-hexadecimal digit string that identifies the tenant endpoint.
+	@return GetServerlessPrivateEndpointApiRequest
 */
 func (a *ServerlessPrivateEndpointsApiService) GetServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, endpointId string) GetServerlessPrivateEndpointApiRequest {
 	return GetServerlessPrivateEndpointApiRequest{
@@ -496,7 +498,8 @@ func (a *ServerlessPrivateEndpointsApiService) GetServerlessPrivateEndpoint(ctx 
 }
 
 // Execute executes the request
-//  @return ServerlessTenantEndpoint
+//
+//	@return ServerlessTenantEndpoint
 func (a *ServerlessPrivateEndpointsApiService) getServerlessPrivateEndpointExecute(r GetServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -626,10 +629,10 @@ ListServerlessPrivateEndpoints Return All Private Endpoints for One Serverless I
 
 Returns all private endpoints for one serverless instance. You must have at least the Project Read Only role for the project to successfully call this resource. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param instanceName Human-readable label that identifies the serverless instance associated with the tenant endpoint.
- @return ListServerlessPrivateEndpointsApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param instanceName Human-readable label that identifies the serverless instance associated with the tenant endpoint.
+	@return ListServerlessPrivateEndpointsApiRequest
 */
 func (a *ServerlessPrivateEndpointsApiService) ListServerlessPrivateEndpoints(ctx context.Context, groupId string, instanceName string) ListServerlessPrivateEndpointsApiRequest {
 	return ListServerlessPrivateEndpointsApiRequest{
@@ -641,7 +644,8 @@ func (a *ServerlessPrivateEndpointsApiService) ListServerlessPrivateEndpoints(ct
 }
 
 // Execute executes the request
-//  @return []ServerlessTenantEndpoint
+//
+//	@return []ServerlessTenantEndpoint
 func (a *ServerlessPrivateEndpointsApiService) listServerlessPrivateEndpointsExecute(r ListServerlessPrivateEndpointsApiRequest) ([]ServerlessTenantEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -776,11 +780,11 @@ UpdateServerlessPrivateEndpoint Update One Private Endpoint for One Serverless I
 
 Updates one private endpoint for one serverless instance. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param instanceName Human-readable label that identifies the serverless instance associated with the tenant endpoint that will be updated.
- @param endpointId Unique 24-hexadecimal digit string that identifies the tenant endpoint which will be updated.
- @return UpdateServerlessPrivateEndpointApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param instanceName Human-readable label that identifies the serverless instance associated with the tenant endpoint that will be updated.
+	@param endpointId Unique 24-hexadecimal digit string that identifies the tenant endpoint which will be updated.
+	@return UpdateServerlessPrivateEndpointApiRequest
 */
 func (a *ServerlessPrivateEndpointsApiService) UpdateServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, endpointId string) UpdateServerlessPrivateEndpointApiRequest {
 	return UpdateServerlessPrivateEndpointApiRequest{
@@ -793,7 +797,8 @@ func (a *ServerlessPrivateEndpointsApiService) UpdateServerlessPrivateEndpoint(c
 }
 
 // Execute executes the request
-//  @return ServerlessTenantEndpoint
+//
+//	@return ServerlessTenantEndpoint
 func (a *ServerlessPrivateEndpointsApiService) updateServerlessPrivateEndpointExecute(r UpdateServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch

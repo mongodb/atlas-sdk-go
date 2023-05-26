@@ -171,9 +171,9 @@ CreateCustomDatabaseRole Create One Custom Role
 
 Creates one custom role in the specified project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @return CreateCustomDatabaseRoleApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return CreateCustomDatabaseRoleApiRequest
 */
 func (a *CustomDatabaseRolesApiService) CreateCustomDatabaseRole(ctx context.Context, groupId string) CreateCustomDatabaseRoleApiRequest {
 	return CreateCustomDatabaseRoleApiRequest{
@@ -184,7 +184,8 @@ func (a *CustomDatabaseRolesApiService) CreateCustomDatabaseRole(ctx context.Con
 }
 
 // Execute executes the request
-//  @return CustomDBRole
+//
+//	@return CustomDBRole
 func (a *CustomDatabaseRolesApiService) createCustomDatabaseRoleExecute(r CreateCustomDatabaseRoleApiRequest) (*CustomDBRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -308,10 +309,10 @@ DeleteCustomDatabaseRole Remove One Custom Role from One Project
 
 Removes one custom role from the specified project. You can't remove a custom role that would leave one or more child roles with no parent roles or actions. You also can't remove a custom role that would leave one or more database users without roles. To use this resource, the requesting API Key must have the Project Atlas Admin role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param roleName Human-readable label that identifies the role for the request. This name must be unique for this custom role in this project.
- @return DeleteCustomDatabaseRoleApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param roleName Human-readable label that identifies the role for the request. This name must be unique for this custom role in this project.
+	@return DeleteCustomDatabaseRoleApiRequest
 */
 func (a *CustomDatabaseRolesApiService) DeleteCustomDatabaseRole(ctx context.Context, groupId string, roleName string) DeleteCustomDatabaseRoleApiRequest {
 	return DeleteCustomDatabaseRoleApiRequest{
@@ -432,10 +433,10 @@ GetCustomDatabaseRole Return One Custom Role in One Project
 
 Returns one custom role for the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param roleName Human-readable label that identifies the role for the request. This name must be unique for this custom role in this project.
- @return GetCustomDatabaseRoleApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param roleName Human-readable label that identifies the role for the request. This name must be unique for this custom role in this project.
+	@return GetCustomDatabaseRoleApiRequest
 */
 func (a *CustomDatabaseRolesApiService) GetCustomDatabaseRole(ctx context.Context, groupId string, roleName string) GetCustomDatabaseRoleApiRequest {
 	return GetCustomDatabaseRoleApiRequest{
@@ -447,7 +448,8 @@ func (a *CustomDatabaseRolesApiService) GetCustomDatabaseRole(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return CustomDBRole
+//
+//	@return CustomDBRole
 func (a *CustomDatabaseRolesApiService) getCustomDatabaseRoleExecute(r GetCustomDatabaseRoleApiRequest) (*CustomDBRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -564,9 +566,9 @@ ListCustomDatabaseRoles Return All Custom Roles in One Project
 
 Returns all custom roles for the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @return ListCustomDatabaseRolesApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return ListCustomDatabaseRolesApiRequest
 */
 func (a *CustomDatabaseRolesApiService) ListCustomDatabaseRoles(ctx context.Context, groupId string) ListCustomDatabaseRolesApiRequest {
 	return ListCustomDatabaseRolesApiRequest{
@@ -577,7 +579,8 @@ func (a *CustomDatabaseRolesApiService) ListCustomDatabaseRoles(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return []CustomDBRole
+//
+//	@return []CustomDBRole
 func (a *CustomDatabaseRolesApiService) listCustomDatabaseRolesExecute(r ListCustomDatabaseRolesApiRequest) ([]CustomDBRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -705,10 +708,10 @@ UpdateCustomDatabaseRole Update One Custom Role in One Project
 
 Updates one custom role in the specified project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
- @param roleName Human-readable label that identifies the role for the request. This name must beunique for this custom role in this project.
- @return UpdateCustomDatabaseRoleApiRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param roleName Human-readable label that identifies the role for the request. This name must beunique for this custom role in this project.
+	@return UpdateCustomDatabaseRoleApiRequest
 */
 func (a *CustomDatabaseRolesApiService) UpdateCustomDatabaseRole(ctx context.Context, groupId string, roleName string) UpdateCustomDatabaseRoleApiRequest {
 	return UpdateCustomDatabaseRoleApiRequest{
@@ -720,7 +723,8 @@ func (a *CustomDatabaseRolesApiService) UpdateCustomDatabaseRole(ctx context.Con
 }
 
 // Execute executes the request
-//  @return CustomDBRole
+//
+//	@return CustomDBRole
 func (a *CustomDatabaseRolesApiService) updateCustomDatabaseRoleExecute(r UpdateCustomDatabaseRoleApiRequest) (*CustomDBRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch

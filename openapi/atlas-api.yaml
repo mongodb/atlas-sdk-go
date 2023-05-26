@@ -13,8 +13,8 @@ info:
     url: https://creativecommons.org/licenses/by-nc-sa/3.0/us/
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
-  version: 2.0~7a59ec7cbb
-  x-xgen-sha: 7a59ec7cbb61408e0e15e2b395292de3d5a7296e
+  version: 2.0~61723fd7f1
+  x-xgen-sha: 61723fd7f198274a7201bbdb81bbb5b4cf494430
 servers:
 - url: https://cloud.mongodb.com
 tags:
