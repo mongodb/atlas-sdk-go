@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 ## CreateOrganization
 
-> CreateOrganizationResponse CreateOrganization(ctx).CreateOrganizationRequest(createOrganizationRequest).Execute()
+> CreateOrganizationResponse CreateOrganization(ctx, createOrganizationRequest CreateOrganizationRequest).Execute()
 
 Create One Organization
 
@@ -51,7 +51,7 @@ func main() {
 
     createOrganizationRequest := *openapiclient.NewCreateOrganizationRequest("Name_example") // CreateOrganizationRequest | 
 
-    resp, r, err := sdk.OrganizationsApi.CreateOrganization(context.Background()).CreateOrganizationRequest(&createOrganizationRequest).Execute()
+    resp, r, err := sdk.OrganizationsApi.CreateOrganization(context.Background(), &createOrganizationRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.CreateOrganization``: %v\n", err)
         apiError := admin.AsError(err)
@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 
 ## CreateOrganizationInvitation
 
-> OrganizationInvitation CreateOrganizationInvitation(ctx, orgId).OrganizationInvitationRequest(organizationInvitationRequest).Execute()
+> OrganizationInvitation CreateOrganizationInvitation(ctx, orgId, organizationInvitationRequest OrganizationInvitationRequest).Execute()
 
 Invite One MongoDB Cloud User to Join One Atlas Organization
 
@@ -122,7 +122,7 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     organizationInvitationRequest := *openapiclient.NewOrganizationInvitationRequest() // OrganizationInvitationRequest | 
 
-    resp, r, err := sdk.OrganizationsApi.CreateOrganizationInvitation(context.Background(), orgId).OrganizationInvitationRequest(&organizationInvitationRequest).Execute()
+    resp, r, err := sdk.OrganizationsApi.CreateOrganizationInvitation(context.Background(), orgId, &organizationInvitationRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.CreateOrganizationInvitation``: %v\n", err)
         apiError := admin.AsError(err)
@@ -860,7 +860,7 @@ Name | Type | Description  | Notes
 
 ## RenameOrganization
 
-> Organization RenameOrganization(ctx, orgId).Organization(organization).Execute()
+> Organization RenameOrganization(ctx, orgId, organization Organization).Execute()
 
 Rename One Organization
 
@@ -888,7 +888,7 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     organization := *openapiclient.NewOrganization("Name_example") // Organization | 
 
-    resp, r, err := sdk.OrganizationsApi.RenameOrganization(context.Background(), orgId).Organization(&organization).Execute()
+    resp, r, err := sdk.OrganizationsApi.RenameOrganization(context.Background(), orgId, &organization).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.RenameOrganization``: %v\n", err)
         apiError := admin.AsError(err)
@@ -936,7 +936,7 @@ Name | Type | Description  | Notes
 
 ## UpdateOrganizationInvitation
 
-> OrganizationInvitation UpdateOrganizationInvitation(ctx, orgId).OrganizationInvitationRequest(organizationInvitationRequest).Execute()
+> OrganizationInvitation UpdateOrganizationInvitation(ctx, orgId, organizationInvitationRequest OrganizationInvitationRequest).Execute()
 
 Update One Organization Invitation
 
@@ -964,7 +964,7 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     organizationInvitationRequest := *openapiclient.NewOrganizationInvitationRequest() // OrganizationInvitationRequest | 
 
-    resp, r, err := sdk.OrganizationsApi.UpdateOrganizationInvitation(context.Background(), orgId).OrganizationInvitationRequest(&organizationInvitationRequest).Execute()
+    resp, r, err := sdk.OrganizationsApi.UpdateOrganizationInvitation(context.Background(), orgId, &organizationInvitationRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.UpdateOrganizationInvitation``: %v\n", err)
         apiError := admin.AsError(err)
@@ -1012,7 +1012,7 @@ Name | Type | Description  | Notes
 
 ## UpdateOrganizationInvitationById
 
-> OrganizationInvitation UpdateOrganizationInvitationById(ctx, orgId, invitationId).OrganizationInvitationUpdateRequest(organizationInvitationUpdateRequest).Execute()
+> OrganizationInvitation UpdateOrganizationInvitationById(ctx, orgId, invitationId, organizationInvitationUpdateRequest OrganizationInvitationUpdateRequest).Execute()
 
 Update One Organization Invitation by Invitation ID
 
@@ -1041,7 +1041,7 @@ func main() {
     invitationId := "invitationId_example" // string | 
     organizationInvitationUpdateRequest := *openapiclient.NewOrganizationInvitationUpdateRequest() // OrganizationInvitationUpdateRequest | 
 
-    resp, r, err := sdk.OrganizationsApi.UpdateOrganizationInvitationById(context.Background(), orgId, invitationId).OrganizationInvitationUpdateRequest(&organizationInvitationUpdateRequest).Execute()
+    resp, r, err := sdk.OrganizationsApi.UpdateOrganizationInvitationById(context.Background(), orgId, invitationId, &organizationInvitationUpdateRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.UpdateOrganizationInvitationById``: %v\n", err)
         apiError := admin.AsError(err)
@@ -1091,7 +1091,7 @@ Name | Type | Description  | Notes
 
 ## UpdateOrganizationSettings
 
-> OrganizationSettings UpdateOrganizationSettings(ctx, orgId).OrganizationSettings(organizationSettings).Execute()
+> OrganizationSettings UpdateOrganizationSettings(ctx, orgId, organizationSettings OrganizationSettings).Execute()
 
 Update Settings for One Organization
 
@@ -1119,7 +1119,7 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     organizationSettings := *openapiclient.NewOrganizationSettings() // OrganizationSettings | 
 
-    resp, r, err := sdk.OrganizationsApi.UpdateOrganizationSettings(context.Background(), orgId).OrganizationSettings(&organizationSettings).Execute()
+    resp, r, err := sdk.OrganizationsApi.UpdateOrganizationSettings(context.Background(), orgId, &organizationSettings).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.UpdateOrganizationSettings``: %v\n", err)
         apiError := admin.AsError(err)

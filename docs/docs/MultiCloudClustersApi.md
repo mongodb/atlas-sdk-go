@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## CreateCluster
 
-> ClusterDescriptionV15 CreateCluster(ctx, groupId).ClusterDescriptionV15(clusterDescriptionV15).Execute()
+> ClusterDescriptionV15 CreateCluster(ctx, groupId, clusterDescriptionV15 ClusterDescriptionV15).Execute()
 
 Create One Multi-Cloud Cluster from One Project
 
@@ -43,7 +43,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterDescriptionV15 := *openapiclient.NewClusterDescriptionV15() // ClusterDescriptionV15 | 
 
-    resp, r, err := sdk.MultiCloudClustersApi.CreateCluster(context.Background(), groupId).ClusterDescriptionV15(&clusterDescriptionV15).Execute()
+    resp, r, err := sdk.MultiCloudClustersApi.CreateCluster(context.Background(), groupId, &clusterDescriptionV15).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MultiCloudClustersApi.CreateCluster``: %v\n", err)
         apiError := admin.AsError(err)
@@ -400,7 +400,7 @@ Name | Type | Description  | Notes
 
 ## UpdateCluster
 
-> ClusterDescriptionV15 UpdateCluster(ctx, groupId, clusterName).ClusterDescriptionV15(clusterDescriptionV15).Execute()
+> ClusterDescriptionV15 UpdateCluster(ctx, groupId, clusterName, clusterDescriptionV15 ClusterDescriptionV15).Execute()
 
 Modify One Multi-Cloud Cluster from One Project
 
@@ -429,7 +429,7 @@ func main() {
     clusterName := "clusterName_example" // string | 
     clusterDescriptionV15 := *openapiclient.NewClusterDescriptionV15() // ClusterDescriptionV15 | 
 
-    resp, r, err := sdk.MultiCloudClustersApi.UpdateCluster(context.Background(), groupId, clusterName).ClusterDescriptionV15(&clusterDescriptionV15).Execute()
+    resp, r, err := sdk.MultiCloudClustersApi.UpdateCluster(context.Background(), groupId, clusterName, &clusterDescriptionV15).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MultiCloudClustersApi.UpdateCluster``: %v\n", err)
         apiError := admin.AsError(err)

@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 ## CreateRoleMapping
 
-> RoleMapping CreateRoleMapping(ctx, federationSettingsId, orgId).RoleMapping(roleMapping).Execute()
+> RoleMapping CreateRoleMapping(ctx, federationSettingsId, orgId, roleMapping RoleMapping).Execute()
 
 Add One Role Mapping to One Organization
 
@@ -53,7 +53,7 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     roleMapping := *openapiclient.NewRoleMapping("ExternalGroupName_example") // RoleMapping | 
 
-    resp, r, err := sdk.FederatedAuthenticationApi.CreateRoleMapping(context.Background(), federationSettingsId, orgId).RoleMapping(&roleMapping).Execute()
+    resp, r, err := sdk.FederatedAuthenticationApi.CreateRoleMapping(context.Background(), federationSettingsId, orgId, &roleMapping).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.CreateRoleMapping``: %v\n", err)
         apiError := admin.AsError(err)
@@ -940,7 +940,7 @@ Name | Type | Description  | Notes
 
 ## UpdateConnectedOrgConfig
 
-> ConnectedOrgConfig UpdateConnectedOrgConfig(ctx, federationSettingsId, orgId).ConnectedOrgConfig(connectedOrgConfig).Execute()
+> ConnectedOrgConfig UpdateConnectedOrgConfig(ctx, federationSettingsId, orgId, connectedOrgConfig ConnectedOrgConfig).Execute()
 
 Update One Org Config Connected to One Federation
 
@@ -969,7 +969,7 @@ func main() {
     orgId := "32b6e34b3d91647abb20e7b8" // string | 
     connectedOrgConfig := *openapiclient.NewConnectedOrgConfig(false, "IdentityProviderId_example", "32b6e34b3d91647abb20e7b8") // ConnectedOrgConfig | 
 
-    resp, r, err := sdk.FederatedAuthenticationApi.UpdateConnectedOrgConfig(context.Background(), federationSettingsId, orgId).ConnectedOrgConfig(&connectedOrgConfig).Execute()
+    resp, r, err := sdk.FederatedAuthenticationApi.UpdateConnectedOrgConfig(context.Background(), federationSettingsId, orgId, &connectedOrgConfig).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.UpdateConnectedOrgConfig``: %v\n", err)
         apiError := admin.AsError(err)
@@ -1019,7 +1019,7 @@ Name | Type | Description  | Notes
 
 ## UpdateIdentityProvider
 
-> IdentityProvider UpdateIdentityProvider(ctx, federationSettingsId, identityProviderId).SamlIdentityProviderUpdate(samlIdentityProviderUpdate).Execute()
+> IdentityProvider UpdateIdentityProvider(ctx, federationSettingsId, identityProviderId, samlIdentityProviderUpdate SamlIdentityProviderUpdate).Execute()
 
 Update the identity provider.
 
@@ -1048,7 +1048,7 @@ func main() {
     identityProviderId := "c2777a9eca931f29fc2f" // string | 
     samlIdentityProviderUpdate := *openapiclient.NewSamlIdentityProviderUpdate(false) // SamlIdentityProviderUpdate | 
 
-    resp, r, err := sdk.FederatedAuthenticationApi.UpdateIdentityProvider(context.Background(), federationSettingsId, identityProviderId).SamlIdentityProviderUpdate(&samlIdentityProviderUpdate).Execute()
+    resp, r, err := sdk.FederatedAuthenticationApi.UpdateIdentityProvider(context.Background(), federationSettingsId, identityProviderId, &samlIdentityProviderUpdate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.UpdateIdentityProvider``: %v\n", err)
         apiError := admin.AsError(err)
@@ -1098,7 +1098,7 @@ Name | Type | Description  | Notes
 
 ## UpdateRoleMapping
 
-> RoleMapping UpdateRoleMapping(ctx, federationSettingsId, id, orgId).RoleMapping(roleMapping).Execute()
+> RoleMapping UpdateRoleMapping(ctx, federationSettingsId, id, orgId, roleMapping RoleMapping).Execute()
 
 Update One Role Mapping in One Organization
 
@@ -1128,7 +1128,7 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     roleMapping := *openapiclient.NewRoleMapping("ExternalGroupName_example") // RoleMapping | 
 
-    resp, r, err := sdk.FederatedAuthenticationApi.UpdateRoleMapping(context.Background(), federationSettingsId, id, orgId).RoleMapping(&roleMapping).Execute()
+    resp, r, err := sdk.FederatedAuthenticationApi.UpdateRoleMapping(context.Background(), federationSettingsId, id, orgId, &roleMapping).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.UpdateRoleMapping``: %v\n", err)
         apiError := admin.AsError(err)

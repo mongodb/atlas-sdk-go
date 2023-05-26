@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateAtlasSearchIndex
 
-> FTSIndex CreateAtlasSearchIndex(ctx, groupId, clusterName).FTSIndex(fTSIndex).Execute()
+> FTSIndex CreateAtlasSearchIndex(ctx, groupId, clusterName, fTSIndex FTSIndex).Execute()
 
 Create One Atlas Search Index
 
@@ -43,7 +43,7 @@ func main() {
     clusterName := "clusterName_example" // string | 
     fTSIndex := *openapiclient.NewFTSIndex("CollectionName_example", "Database_example", "Name_example") // FTSIndex | 
 
-    resp, r, err := sdk.AtlasSearchApi.CreateAtlasSearchIndex(context.Background(), groupId, clusterName).FTSIndex(&fTSIndex).Execute()
+    resp, r, err := sdk.AtlasSearchApi.CreateAtlasSearchIndex(context.Background(), groupId, clusterName, &fTSIndex).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.CreateAtlasSearchIndex``: %v\n", err)
         apiError := admin.AsError(err)
@@ -336,7 +336,7 @@ Name | Type | Description  | Notes
 
 ## UpdateAtlasSearchIndex
 
-> FTSIndex UpdateAtlasSearchIndex(ctx, groupId, clusterName, indexId).FTSIndex(fTSIndex).Execute()
+> FTSIndex UpdateAtlasSearchIndex(ctx, groupId, clusterName, indexId, fTSIndex FTSIndex).Execute()
 
 Update One Atlas Search Index
 
@@ -366,7 +366,7 @@ func main() {
     indexId := "indexId_example" // string | 
     fTSIndex := *openapiclient.NewFTSIndex("CollectionName_example", "Database_example", "Name_example") // FTSIndex | 
 
-    resp, r, err := sdk.AtlasSearchApi.UpdateAtlasSearchIndex(context.Background(), groupId, clusterName, indexId).FTSIndex(&fTSIndex).Execute()
+    resp, r, err := sdk.AtlasSearchApi.UpdateAtlasSearchIndex(context.Background(), groupId, clusterName, indexId, &fTSIndex).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.UpdateAtlasSearchIndex``: %v\n", err)
         apiError := admin.AsError(err)

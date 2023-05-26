@@ -306,7 +306,7 @@ Name | Type | Description  | Notes
 
 ## UpdateMaintenanceWindow
 
-> map[string]interface{} UpdateMaintenanceWindow(ctx, groupId).GroupMaintenanceWindow(groupMaintenanceWindow).Execute()
+> map[string]interface{} UpdateMaintenanceWindow(ctx, groupId, groupMaintenanceWindow GroupMaintenanceWindow).Execute()
 
 Update Maintenance Window for One Project
 
@@ -334,7 +334,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     groupMaintenanceWindow := *openapiclient.NewGroupMaintenanceWindow(int(123), int(123)) // GroupMaintenanceWindow | 
 
-    resp, r, err := sdk.MaintenanceWindowsApi.UpdateMaintenanceWindow(context.Background(), groupId).GroupMaintenanceWindow(&groupMaintenanceWindow).Execute()
+    resp, r, err := sdk.MaintenanceWindowsApi.UpdateMaintenanceWindow(context.Background(), groupId, &groupMaintenanceWindow).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MaintenanceWindowsApi.UpdateMaintenanceWindow``: %v\n", err)
         apiError := admin.AsError(err)

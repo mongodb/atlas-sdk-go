@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## CreateDatabaseUserCertificate
 
-> CreateDatabaseUserCertificate(ctx, groupId, username).UserCert(userCert).Execute()
+> CreateDatabaseUserCertificate(ctx, groupId, username, userCert UserCert).Execute()
 
 Create One X.509 Certificate for One MongoDB User
 
@@ -41,7 +41,7 @@ func main() {
     username := "username_example" // string | 
     userCert := *openapiclient.NewUserCert() // UserCert | 
 
-    r, err := sdk.X509AuthenticationApi.CreateDatabaseUserCertificate(context.Background(), groupId, username).UserCert(&userCert).Execute()
+    r, err := sdk.X509AuthenticationApi.CreateDatabaseUserCertificate(context.Background(), groupId, username, &userCert).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `X509AuthenticationApi.CreateDatabaseUserCertificate``: %v\n", err)
         apiError := admin.AsError(err)

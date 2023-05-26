@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateServerlessInstance
 
-> ServerlessInstanceDescription CreateServerlessInstance(ctx, groupId).ServerlessInstanceDescriptionCreate(serverlessInstanceDescriptionCreate).Execute()
+> ServerlessInstanceDescription CreateServerlessInstance(ctx, groupId, serverlessInstanceDescriptionCreate ServerlessInstanceDescriptionCreate).Execute()
 
 Create One Serverless Instance in One Project
 
@@ -42,7 +42,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     serverlessInstanceDescriptionCreate := *openapiclient.NewServerlessInstanceDescriptionCreate("Name_example", *openapiclient.NewServerlessProviderSettings("BackingProviderName_example", "RegionName_example")) // ServerlessInstanceDescriptionCreate | 
 
-    resp, r, err := sdk.ServerlessInstancesApi.CreateServerlessInstance(context.Background(), groupId).ServerlessInstanceDescriptionCreate(&serverlessInstanceDescriptionCreate).Execute()
+    resp, r, err := sdk.ServerlessInstancesApi.CreateServerlessInstance(context.Background(), groupId, &serverlessInstanceDescriptionCreate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServerlessInstancesApi.CreateServerlessInstance``: %v\n", err)
         apiError := admin.AsError(err)
@@ -324,7 +324,7 @@ Name | Type | Description  | Notes
 
 ## UpdateServerlessInstance
 
-> ServerlessInstanceDescription UpdateServerlessInstance(ctx, groupId, name).ServerlessInstanceDescriptionUpdate(serverlessInstanceDescriptionUpdate).Execute()
+> ServerlessInstanceDescription UpdateServerlessInstance(ctx, groupId, name, serverlessInstanceDescriptionUpdate ServerlessInstanceDescriptionUpdate).Execute()
 
 Update One Serverless Instance in One Project
 
@@ -353,7 +353,7 @@ func main() {
     name := "name_example" // string | 
     serverlessInstanceDescriptionUpdate := *openapiclient.NewServerlessInstanceDescriptionUpdate() // ServerlessInstanceDescriptionUpdate | 
 
-    resp, r, err := sdk.ServerlessInstancesApi.UpdateServerlessInstance(context.Background(), groupId, name).ServerlessInstanceDescriptionUpdate(&serverlessInstanceDescriptionUpdate).Execute()
+    resp, r, err := sdk.ServerlessInstancesApi.UpdateServerlessInstance(context.Background(), groupId, name, &serverlessInstanceDescriptionUpdate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServerlessInstancesApi.UpdateServerlessInstance``: %v\n", err)
         apiError := admin.AsError(err)

@@ -166,7 +166,7 @@ Name | Type | Description  | Notes
 
 ## StartOutageSimulation
 
-> ClusterOutageSimulation StartOutageSimulation(ctx, groupId, clusterName).ClusterOutageSimulation(clusterOutageSimulation).Execute()
+> ClusterOutageSimulation StartOutageSimulation(ctx, groupId, clusterName, clusterOutageSimulation ClusterOutageSimulation).Execute()
 
 Start an Outage Simulation
 
@@ -195,7 +195,7 @@ func main() {
     clusterName := "clusterName_example" // string | 
     clusterOutageSimulation := *openapiclient.NewClusterOutageSimulation() // ClusterOutageSimulation | 
 
-    resp, r, err := sdk.ClusterOutageSimulationApi.StartOutageSimulation(context.Background(), groupId, clusterName).ClusterOutageSimulation(&clusterOutageSimulation).Execute()
+    resp, r, err := sdk.ClusterOutageSimulationApi.StartOutageSimulation(context.Background(), groupId, clusterName, &clusterOutageSimulation).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClusterOutageSimulationApi.StartOutageSimulation``: %v\n", err)
         apiError := admin.AsError(err)

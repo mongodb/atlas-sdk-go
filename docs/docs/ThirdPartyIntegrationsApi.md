@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateThirdPartyIntegration
 
-> PaginatedIntegration CreateThirdPartyIntegration(ctx, integrationType, groupId).Integration(integration).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+> PaginatedIntegration CreateThirdPartyIntegration(ctx, integrationType, groupId, integration Integration).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Configure One Third-Party Service Integration
 
@@ -46,7 +46,7 @@ func main() {
     itemsPerPage := int(100) // int |  (optional) (default to 100)
     pageNum := int(1) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.ThirdPartyIntegrationsApi.CreateThirdPartyIntegration(context.Background(), integrationType, groupId).Integration(&integration).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.ThirdPartyIntegrationsApi.CreateThirdPartyIntegration(context.Background(), integrationType, groupId, &integration).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsApi.CreateThirdPartyIntegration``: %v\n", err)
         apiError := admin.AsError(err)
@@ -333,7 +333,7 @@ Name | Type | Description  | Notes
 
 ## UpdateThirdPartyIntegration
 
-> PaginatedIntegration UpdateThirdPartyIntegration(ctx, integrationType, groupId).Integration(integration).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+> PaginatedIntegration UpdateThirdPartyIntegration(ctx, integrationType, groupId, integration Integration).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Update One Third-Party Service Integration
 
@@ -365,7 +365,7 @@ func main() {
     itemsPerPage := int(100) // int |  (optional) (default to 100)
     pageNum := int(1) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.ThirdPartyIntegrationsApi.UpdateThirdPartyIntegration(context.Background(), integrationType, groupId).Integration(&integration).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.ThirdPartyIntegrationsApi.UpdateThirdPartyIntegration(context.Background(), integrationType, groupId, &integration).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsApi.UpdateThirdPartyIntegration``: %v\n", err)
         apiError := admin.AsError(err)
