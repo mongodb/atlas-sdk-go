@@ -37,7 +37,7 @@ Alternatively you can use shorter `{Operation}()` method using builder pattern t
 > NOTE: SDK supplies default values for both query and post objects.
 
 
-### Performing Data Modification
+## Performing Data Modification
 
  Use `{Operation}()` method to perform modifications. For example:
 
