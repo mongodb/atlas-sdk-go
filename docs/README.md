@@ -6,8 +6,8 @@
       * [Performing Data Modification](./doc_1_concepts.md#performing-data-modification)
    * [Example](./doc_1_concepts.md#example)
 
-* [Atlas Go API client](./doc_1_reference.md#atlas-go-api-client)
-   * [Documentation for API Endpoints](./doc_1_reference.md#documentation-for-api-endpoints)
+* [SDK Reference](./doc_1_reference.md#sdk-reference)
+   * [Documentation for SDK Endpoints](./doc_1_reference.md#documentation-for-sdk-endpoints)
    * [Documentation For Models](./doc_1_reference.md#documentation-for-models)
 
 * [Error Handling](./doc_2_error_handling.md#error-handling)
