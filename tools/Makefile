@@ -32,3 +32,7 @@ generate_docs:
 generate_tests:	
 	rm -Rf ../test/generated/test*
 	./scripts/generate_tests.sh
+
+.PHONY: generate_mocks
+generate_mocks:	
+	./scripts/generate_mocks.sh

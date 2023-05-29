@@ -30,6 +30,10 @@ jobs:
       - name: Run docs generation
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         run: make generate-docs
+      - name: Run mock generation
+        working-directory: ./tools
+        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        run: make generate_mocks
       - uses: peter-evans/create-pull-request@v5
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         env:
