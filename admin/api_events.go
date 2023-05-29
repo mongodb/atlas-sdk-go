@@ -685,7 +685,7 @@ type ListProjectEventsApiRequest struct {
 	itemsPerPage *int
 	pageNum      *int
 	clusterNames *[]string
-	eventType    *EventTypeForNdsGroup
+	eventType    *[]string
 	includeRaw   *bool
 	maxDate      *time.Time
 	minDate      *time.Time
@@ -697,7 +697,7 @@ type ListProjectEventsApiParams struct {
 	ItemsPerPage *int
 	PageNum      *int
 	ClusterNames *[]string
-	EventType    *EventTypeForNdsGroup
+	EventType    *[]string
 	IncludeRaw   *bool
 	MaxDate      *time.Time
 	MinDate      *time.Time
@@ -744,7 +744,7 @@ func (r ListProjectEventsApiRequest) ClusterNames(clusterNames []string) ListPro
 }
 
 // Category of incident recorded at this moment in time.  **IMPORTANT**: The complete list of event type values changes frequently.
-func (r ListProjectEventsApiRequest) EventType(eventType EventTypeForNdsGroup) ListProjectEventsApiRequest {
+func (r ListProjectEventsApiRequest) EventType(eventType []string) ListProjectEventsApiRequest {
 	r.eventType = &eventType
 	return r
 }
@@ -848,7 +848,11 @@ func (a *EventsApiService) listProjectEventsExecute(r ListProjectEventsApiReques
 
 	}
 	if r.eventType != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "eventType", r.eventType, "")
+		t := *r.eventType
+		// Workaround for unused import
+		_ = reflect.Append
+		parameterAddToHeaderOrQuery(localVarQueryParams, "eventType", t, "multi")
+
 	}
 	if r.includeRaw != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeRaw", r.includeRaw, "")
