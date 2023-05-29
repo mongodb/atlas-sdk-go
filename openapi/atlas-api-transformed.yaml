@@ -17,8 +17,8 @@ info:
     url: https://creativecommons.org/licenses/by-nc-sa/3.0/us/
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
-  version: 2.0~e62a6b96c8
-  x-xgen-sha: e62a6b96c8633100515569b64f45cb6d06444149
+  version: 2.0~174fbe22f0
+  x-xgen-sha: 174fbe22f083f5843ba7e0fbb34dd80c6b9e8fd1
 servers:
   - url: https://cloud.mongodb.com
 tags:
@@ -1895,7 +1895,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: "#/components/schemas/CreateApiKey"
+              $ref: "#/components/schemas/CreateProjectApiKey"
         description: Organization API key to be created and assigned to the specified
           project. This request requires both body parameters.
         required: true
@@ -1982,7 +1982,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: "#/components/schemas/CreateApiKey"
+              $ref: "#/components/schemas/CreateProjectApiKey"
         description: Organization API Key to be updated. This request requires a minimum
           of one of the two body parameters.
         required: true
@@ -12755,7 +12755,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: "#/components/schemas/CreateApiKey"
+              $ref: "#/components/schemas/CreateOrganizationApiKey"
         description: Organization API Key to be created. This request requires both body
           parameters.
         required: true
@@ -12881,7 +12881,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: "#/components/schemas/CreateApiKey"
+              $ref: "#/components/schemas/CreateOrganizationApiKey"
         description: Organization API key to be updated. This request requires a minimum
           of one of the two body parameters.
         required: true
@@ -13135,9 +13135,7 @@ paths:
           in: query
           name: eventType
           schema:
-            type: array
-            items:
-              $ref: "#/components/schemas/EventTypeForOrg"
+            $ref: "#/components/schemas/EventTypeForOrg"
         - description: Flag that indicates whether to include the raw document in the
             output. The raw document contains additional meta information about
             the event.
@@ -14300,6 +14298,48 @@ paths:
       security:
         - DigestAuth: []
       summary: Return All MongoDB Cloud Users in One Organization
+      tags:
+        - Organizations
+  "/api/atlas/v2/orgs/{orgId}/users/{userId}":
+    delete:
+      description: Removes one MongoDB Cloud user from the specified organization. To
+        use this resource, the requesting API Key must have the Organization
+        User Admin role. This resource doesn't require the API Key to have an
+        Access List.
+      operationId: removeOrganizationUser
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - description: Unique 24-hexadecimal digit string that identifies the user to be
+            deleted.
+          in: path
+          name: userId
+          required: true
+          schema:
+            type: string
+            maxLength: 24
+            minLength: 24
+            pattern: ^([a-f0-9]{24})$
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: "#/components/schemas/noBody"
+              x-xgen-version: 2023-01-01
+          description: Endpoint does not return a response body.
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Remove One MongoDB Cloud User from One Organization
       tags:
         - Organizations
   /api/atlas/v2/users:
@@ -15739,6 +15779,8 @@ components:
         - DATA_FEDERATION_QUERY_LIMIT_DELETED
         - DATA_API_SETUP_FOR_VERCEL
         - ADMIN_CLUSTER_LOCK_UPDATED
+        - DB_CHECK_SUBMITTED
+        - DB_CHECK_UPDATED
         - COMPUTE_AUTO_SCALE_INITIATED
         - DISK_AUTO_SCALE_INITIATED
         - COMPUTE_AUTO_SCALE_INITIATED_BASE
@@ -15837,7 +15879,204 @@ components:
         - AGENT_VERSION_UNFIXED
         - TAGS_MODIFIED
     EventTypeForOrg:
-      type: object
+      type: string
+      enum:
+        - ALERT_ACKNOWLEDGED_AUDIT
+        - ALERT_UNACKNOWLEDGED_AUDIT
+        - ALERT_CONFIG_DISABLED_AUDIT
+        - ALERT_CONFIG_ENABLED_AUDIT
+        - ALERT_CONFIG_ADDED_AUDIT
+        - ALERT_CONFIG_DELETED_AUDIT
+        - ALERT_CONFIG_CHANGED_AUDIT
+        - API_KEY_CREATED
+        - API_KEY_DELETED
+        - API_KEY_ACCESS_LIST_ENTRY_ADDED
+        - API_KEY_ACCESS_LIST_ENTRY_DELETED
+        - API_KEY_ROLES_CHANGED
+        - API_KEY_DESCRIPTION_CHANGED
+        - API_KEY_ADDED_TO_GROUP
+        - API_KEY_REMOVED_FROM_GROUP
+        - API_KEY_UI_IP_ACCESS_LIST_INHERITANCE_ENABLED
+        - API_KEY_UI_IP_ACCESS_LIST_INHERITANCE_DISABLED
+        - CHARGE_SUCCEEDED
+        - CHARGE_FAILED
+        - CHARGE_PROCESSING
+        - CHARGE_PENDING_REVERSAL
+        - BRAINTREE_CHARGE_FAILED
+        - INVOICE_CLOSED
+        - CHECK_PAYMENT_RECEIVED
+        - WIRE_TRANSFER_PAYMENT_RECEIVED
+        - DISCOUNT_APPLIED
+        - CREDIT_ISSUED
+        - CREDIT_PULLED_FWD
+        - CREDIT_END_DATE_MODIFIED
+        - PROMO_CODE_APPLIED
+        - PAYMENT_FORGIVEN
+        - REFUND_ISSUED
+        - ACCOUNT_DOWNGRADED
+        - ACCOUNT_UPGRADED
+        - ACCOUNT_MODIFIED
+        - SUPPORT_PLAN_ACTIVATED
+        - SUPPORT_PLAN_CANCELLED
+        - SUPPORT_PLAN_CANCELLATION_SCHEDULED
+        - INITIATE_SALESFORCE_SERVICE_CLOUD_SYNC
+        - INVOICE_ADDRESS_CHANGED
+        - INVOICE_ADDRESS_ADDED
+        - PREPAID_PLAN_ACTIVATED
+        - ELASTIC_INVOICING_MODE_ACTIVATED
+        - ELASTIC_INVOICING_MODE_DEACTIVATED
+        - TERMINATE_PAID_SERVICES
+        - BILLING_EMAIL_ADDRESS_ADDED
+        - BILLING_EMAIL_ADDRESS_CHANGED
+        - BILLING_EMAIL_ADDRESS_REMOVED
+        - AWS_BILLING_ACCOUNT_CREDIT_ISSUED
+        - GCP_BILLING_ACCOUNT_CREDIT_ISSUED
+        - CREDIT_SFOLI_MODIFIED
+        - CREDIT_SFOLID_MODIFIED
+        - CREDIT_AMOUNT_MODIFIED
+        - PREPAID_PLAN_MODIFIED
+        - AWS_USAGE_REPORTED
+        - AZURE_USAGE_REPORTED
+        - GCP_USAGE_REPORTED
+        - BECAME_PAYING_ORG
+        - NEW_LINKED_ORG
+        - UNLINKED_ORG
+        - ORG_LINKED_TO_PAYING_ORG
+        - ORG_UNLINKED_FROM_PAYING_ORG
+        - PAYMENT_UPDATED_THROUGH_API
+        - AZURE_BILLING_ACCOUNT_CREDIT_ISSUED
+        - CREDIT_START_DATE_MODIFIED
+        - CREDIT_ELASTIC_INVOICING_MODIFIED
+        - CREDIT_TYPE_MODIFIED
+        - CREDIT_AMOUNT_CENTS_MODIFIED
+        - CREDIT_AMOUNT_REMAINING_CENTS_MODIFIED
+        - CREDIT_TOTAL_BILLED_CENTS_MODIFIED
+        - CREDIT_AWS_CUSTOMER_ID_MODIFIED
+        - CREDIT_AWS_PRODUCT_CODE_MODIFIED
+        - CREDIT_GCP_MARKETPLACE_ENTITLEMENT_ID_MODIFIED
+        - CREDIT_AZURE_SUBSCRIPTION_ID_MODIFIED
+        - FEDERATION_SETTINGS_CREATED
+        - FEDERATION_SETTINGS_DELETED
+        - FEDERATION_SETTINGS_UPDATED
+        - IDENTITY_PROVIDER_CREATED
+        - IDENTITY_PROVIDER_UPDATED
+        - IDENTITY_PROVIDER_DELETED
+        - IDENTITY_PROVIDER_ACTIVATED
+        - OIDC_IDENTITY_PROVIDER_UPDATED
+        - IDENTITY_PROVIDER_DEACTIVATED
+        - IDENTITY_PROVIDER_JWKS_REVOKED
+        - OIDC_IDENTITY_PROVIDER_ENABLED
+        - OIDC_IDENTITY_PROVIDER_DISABLED
+        - DOMAINS_ASSOCIATED
+        - DOMAIN_CREATED
+        - DOMAIN_DELETED
+        - DOMAIN_VERIFIED
+        - ORG_SETTINGS_CONFIGURED
+        - ORG_SETTINGS_UPDATED
+        - ORG_SETTINGS_DELETED
+        - RESTRICT_ORG_MEMBERSHIP_ENABLED
+        - RESTRICT_ORG_MEMBERSHIP_DISABLED
+        - ROLE_MAPPING_CREATED
+        - ROLE_MAPPING_UPDATED
+        - ROLE_MAPPING_DELETED
+        - GROUP_DELETED
+        - GROUP_CREATED
+        - GROUP_MOVED
+        - MLAB_MIGRATION_COMPLETED
+        - MLAB_MIGRATION_TARGET_CLUSTER_CREATED
+        - MLAB_MIGRATION_DATABASE_USERS_IMPORTED
+        - MLAB_MIGRATION_IP_WHITELIST_IMPORTED
+        - MLAB_MIGRATION_TARGET_CLUSTER_SET
+        - MLAB_MIGRATION_DATABASE_RENAMED
+        - MLAB_MIGRATION_LIVE_IMPORT_STARTED
+        - MLAB_MIGRATION_LIVE_IMPORT_READY_FOR_CUTOVER
+        - MLAB_MIGRATION_LIVE_IMPORT_CUTOVER_COMPLETE
+        - MLAB_MIGRATION_LIVE_IMPORT_ERROR
+        - MLAB_MIGRATION_LIVE_IMPORT_CANCELLED
+        - MLAB_MIGRATION_DUMP_AND_RESTORE_TEST_STARTED
+        - MLAB_MIGRATION_DUMP_AND_RESTORE_TEST_SKIPPED
+        - MLAB_MIGRATION_DUMP_AND_RESTORE_STARTED
+        - MLAB_MIGRATION_SUPPORT_PLAN_SELECTED
+        - MLAB_MIGRATION_SUPPORT_PLAN_OPTED_OUT
+        - ORG_LIMIT_UPDATED
+        - ORG_CREATED
+        - ORG_CREDIT_CARD_ADDED
+        - ORG_CREDIT_CARD_UPDATED
+        - ORG_CREDIT_CARD_CURRENT
+        - ORG_CREDIT_CARD_ABOUT_TO_EXPIRE
+        - ORG_PAYPAL_LINKED
+        - ORG_PAYPAL_UPDATED
+        - ORG_PAYPAL_CANCELLED
+        - ORG_OVERRIDE_PAYMENT_METHOD_ADDED
+        - ORG_ACTIVATED
+        - ORG_TEMPORARILY_ACTIVATED
+        - ORG_SUSPENDED
+        - ORG_ADMIN_SUSPENDED
+        - ORG_ADMIN_LOCKED
+        - ORG_CLUSTERS_DELETED
+        - ORG_CLUSTERS_PAUSED
+        - ORG_LOCKED
+        - ORG_RENAMED
+        - ALL_ORG_USERS_HAVE_MFA
+        - ORG_USERS_WITHOUT_MFA
+        - ORG_INVOICE_UNDER_THRESHOLD
+        - ORG_INVOICE_OVER_THRESHOLD
+        - ORG_DAILY_BILL_UNDER_THRESHOLD
+        - ORG_DAILY_BILL_OVER_THRESHOLD
+        - ORG_GROUP_CHARGES_UNDER_THRESHOLD
+        - ORG_GROUP_CHARGES_OVER_THRESHOLD
+        - ORG_TWO_FACTOR_AUTH_REQUIRED
+        - ORG_TWO_FACTOR_AUTH_OPTIONAL
+        - ORG_PUBLIC_API_ACCESS_LIST_REQUIRED
+        - ORG_PUBLIC_API_ACCESS_LIST_NOT_REQUIRED
+        - ORG_EMPLOYEE_ACCESS_RESTRICTED
+        - ORG_EMPLOYEE_ACCESS_UNRESTRICTED
+        - ORG_SFDC_ACCOUNT_ID_CHANGED
+        - ORG_CONNECTED_TO_MLAB
+        - ORG_DISCONNECTED_FROM_MLAB
+        - ORG_IDP_CERTIFICATE_CURRENT
+        - ORG_IDP_CERTIFICATE_ABOUT_TO_EXPIRE
+        - ORG_CONNECTED_TO_VERCEL
+        - ORG_DISCONNECTED_FROM_VERCEL
+        - ORG_DISCONNECTED_TO_VERCEL
+        - ORG_CONNECTION_UNINSTALLED_FROM_VERCEL
+        - ORG_UI_IP_ACCESS_LIST_ENABLED
+        - ORG_UI_IP_ACCESS_LIST_DISABLED
+        - ORG_EDITED_UI_IP_ACCESS_LIST_ENTRIES
+        - AWS_SELF_SERVE_ACCOUNT_LINKED
+        - AWS_SELF_SERVE_ACCOUNT_LINK_PENDING
+        - AWS_SELF_SERVE_ACCOUNT_CANCELLED
+        - AWS_SELF_SERVE_ACCOUNT_LINK_FAILED
+        - GCP_SELF_SERVE_ACCOUNT_LINK_PENDING
+        - GCP_SELF_SERVE_ACCOUNT_LINK_FAILED
+        - AZURE_SELF_SERVE_ACCOUNT_LINKED
+        - AZURE_SELF_SERVE_ACCOUNT_LINK_PENDING
+        - AZURE_SELF_SERVE_ACCOUNT_CANCELLED
+        - AZURE_SELF_SERVE_ACCOUNT_LINK_FAILED
+        - GCP_SELF_SERVE_ACCOUNT_LINKED
+        - GCP_SELF_SERVE_ACCOUNT_CANCELLED
+        - ORG_POLICY_CREATED
+        - ORG_POLICY_DELETED
+        - ORG_POLICY_EDITED
+        - ORG_POLICY_CLONED
+        - SUPPORT_EMAILS_SENT_SUCCESSFULLY
+        - SUPPORT_EMAILS_SENT_FAILURE
+        - TEAM_CREATED
+        - TEAM_DELETED
+        - TEAM_UPDATED
+        - TEAM_NAME_CHANGED
+        - TEAM_ADDED_TO_GROUP
+        - TEAM_REMOVED_FROM_GROUP
+        - TEAM_ROLES_MODIFIED
+        - JOINED_ORG
+        - JOINED_TEAM
+        - INVITED_TO_ORG
+        - ORG_INVITATION_DELETED
+        - REMOVED_FROM_ORG
+        - REMOVED_FROM_TEAM
+        - USER_ROLES_CHANGED_AUDIT
+        - ORG_FLEX_CONSULTING_PURCHASED
+        - ORG_FLEX_CONSULTING_PURCHASE_FAILED
     EventViewForNdsGroup:
       type: object
       x-xgen-go-transform: merge-oneOf
@@ -21255,7 +21494,7 @@ components:
             - CONFIG_SERVER_REPLICA_SET
           readOnly: true
       readOnly: true
-    CreateApiKey:
+    CreateOrganizationApiKey:
       type: object
       properties:
         desc:
@@ -21268,7 +21507,7 @@ components:
           type: array
           description: List of roles to grant this API key. If you provide this list,
             provide a minimum of one role and ensure each role applies to this
-            organization or project.
+            organization.
           items:
             type: string
             enum:
@@ -21277,6 +21516,44 @@ components:
               - ORG_GROUP_CREATOR
               - ORG_BILLING_ADMIN
               - ORG_READ_ONLY
+              - ORG_TEAM_MEMBERS_ADMIN
+    CreateProjectApiKey:
+      type: object
+      properties:
+        desc:
+          type: string
+          description: Purpose or explanation provided when someone created this project
+            API key.
+          maxLength: 250
+          minLength: 1
+        roles:
+          type: array
+          description: List of roles to grant this API key. If you provide this list,
+            provide a minimum of one role and ensure each role applies to this
+            project.
+          items:
+            type: string
+            enum:
+              - ORG_OWNER
+              - ORG_MEMBER
+              - ORG_GROUP_CREATOR
+              - ORG_BILLING_ADMIN
+              - ORG_READ_ONLY
+              - ORG_TEAM_MEMBERS_ADMIN
+              - GROUP_ATLAS_ADMIN
+              - GROUP_AUTOMATION_ADMIN
+              - GROUP_BACKUP_ADMIN
+              - GROUP_MONITORING_ADMIN
+              - GROUP_OWNER
+              - GROUP_READ_ONLY
+              - GROUP_USER_ADMIN
+              - GROUP_BILLING_ADMIN
+              - GROUP_DATA_ACCESS_ADMIN
+              - GROUP_DATA_ACCESS_READ_ONLY
+              - GROUP_DATA_ACCESS_READ_WRITE
+              - GROUP_CHARTS_ADMIN
+              - GROUP_CLUSTER_MANAGER
+              - GROUP_SEARCH_INDEX_EDITOR
     Database:
       type: object
       properties:
@@ -27095,7 +27372,18 @@ components:
       type: object
       properties:
         apiKey:
-          $ref: "#/components/schemas/CreateApiKey"
+          $ref: "#/components/schemas/CreateOrganizationApiKey"
+        federationSettingsId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the federation
+            to link the newly created organization to. If specified, the
+            proposed Organization Owner of the new organization must have the
+            Organization Owner role in an organization associated with the
+            federation.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
         name:
           type: string
           description: Human-readable label that identifies the organization.
@@ -27104,10 +27392,13 @@ components:
           pattern: ^[\p{L}\p{N}\-_.(),:&@+']{1,64}$
         orgOwnerId:
           type: string
-          description: Unique 24-hexadecimal digit string that identifies the Atlas user
-            that you want to assign the Organization Owner role. This user must
-            be a member of the same organization as the calling API key. This is
-            only required when authenticating with Programmatic API Keys.
+          description: Unique 24-hexadecimal digit string that identifies the MongoDB
+            Cloud user that you want to assign the Organization Owner role. This
+            user must be a member of the same organization as the calling API
+            key. If you provide `federationSettingsId`,  this user must instead
+            have the Organization Owner role on an organization in the specified
+            federation. This parameter is required only when you authenticate
+            with Programmatic API Keys.
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
@@ -27119,10 +27410,20 @@ components:
       properties:
         apiKey:
           $ref: "#/components/schemas/ApiUser"
+        federationSettingsId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the federation
+            that you linked the newly created organization to.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
         orgOwnerId:
           type: string
-          description: Unique 24-hexadecimal digit string that identifies the Atlas user
-            that you want to assign the Organization Owner role.
+          description: Unique 24-hexadecimal digit string that identifies the MongoDB
+            Cloud user that you assigned the Organization Owner role in the new
+            organization.
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
@@ -28582,9 +28883,6 @@ components:
           type: string
           description: Human-readable label that categorizes the cluster as a replica set
             or sharded cluster.
-          enum:
-            - replicaSet
-            - shardedCluster
           readOnly: true
       title: Replica Set Snapshot
     DiskBackupRestoreJob:
@@ -28883,9 +29181,6 @@ components:
           type: string
           description: Human-readable label that categorizes the cluster as a replica set
             or sharded cluster.
-          enum:
-            - replicaSet
-            - shardedCluster
           readOnly: true
       title: Sharded Cluster Snapshot
     DiskBackupSnapshotAWSExportBucket:
@@ -32288,6 +32583,12 @@ components:
             - DELETED
             - REPAIRING
           readOnly: true
+        tags:
+          type: array
+          description: Collection of key-value pairs between 1 to 255 characters in length
+            that tag and categorize the cluster.
+          items:
+            $ref: "#/components/schemas/Tag"
         terminationProtectionEnabled:
           type: boolean
           default: false
@@ -32306,6 +32607,12 @@ components:
       properties:
         serverlessBackupOptions:
           $ref: "#/components/schemas/ServerlessBackupOptions"
+        tags:
+          type: array
+          description: Collection of key-value pairs between 1 to 255 characters in length
+            that tag and categorize the cluster.
+          items:
+            $ref: "#/components/schemas/Tag"
         terminationProtectionEnabled:
           type: boolean
           default: false
@@ -32384,6 +32691,8 @@ components:
           readOnly: true
         tags:
           type: array
+          description: Collection of key-value pairs between 1 to 255 characters in length
+            that tag and categorize the cluster.
           items:
             $ref: "#/components/schemas/Tag"
         terminationProtectionEnabled:
