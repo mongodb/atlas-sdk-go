@@ -1,14 +1,10 @@
 name: Generate Dev SDK 
 on:
   workflow_dispatch:
-  schedule:
-   - cron: '30 8 * * MON'
   push:
     branches:
       - master
       - add-verbose-flags
-    paths:
-      - "tools/**"
   
 jobs:
   generate-client:
