@@ -53,7 +53,7 @@ jobs:
             ## Using early development changes
 
             ```
-              ▶ go get go.mongodb.org/atlas@dev-latest   
+              ▶ go get go.mongodb.org/atlas-sdk@dev-latest   
             ```
 
             ## Automated checks done for dev sdk
