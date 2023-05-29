@@ -6,6 +6,7 @@ on:
   push:
     branches:
       - master
+      - add-verbose-flags
     paths:
       - "tools/**"
   
@@ -23,53 +24,4 @@ jobs:
         working-directory: ./tools
         run: |
           API_BASE_URL=${{ secrets.MDB_CURRENT_API_PREVIEW_URL }} make fetch_openapi
-      - name: Verify Changed files
-        uses: tj-actions/verify-changed-files@v14
-        id: verify-changed-files
-        with:
-          files: |
-             **/atlas-api.yaml
-      - name: Run generation
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
-        working-directory: ./tools
-        run: make clean_and_generate
-      - uses: peter-evans/create-pull-request@v5
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
-        env:
-           GITHUB_TOKEN: ${{ secrets.REPO_SCOPED_GITHUB_TOKEN }}
-        with:
-          title: "APIBot: GO SDK Dev Preview"
-          commit-message: "temp: client update"
-          delete-branch: true
-          draft: true
-          branch: dev-latest
-          body: |
-            Automatic update for MongoDB Atlas Go Client based on **release candidate* OpenAPI file.
-
-            > NOTE: This PR provides notifications for stability of the RC OpenAPI files
-            > It is not intented to be merged!
-            > When PR is closed the new PR will be automatically regenerated
-            
-            ## Using early development changes
-
-            ```
-              ▶ go get go.mongodb.org/atlas-sdk@dev-latest   
-            ```
-
-            ## Automated checks done for dev sdk
-
-            1. Compilation and unit tests
-            2. Documentation style
-            3. Transformation engine linting
-
-            ## Release schedule
-            
-            PR is updated every Monday with latest changes from the RC for the API.
-            PR can be updated manually by running workflow: https://github.com/mongodb/atlas-sdk-go/actions/workflows/autoupdate-dev.yaml
-
-
-            
-
-
-
-
+  
