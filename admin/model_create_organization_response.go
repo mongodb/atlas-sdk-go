@@ -12,9 +12,7 @@ var _ MappedNullable = &CreateOrganizationResponse{}
 // CreateOrganizationResponse struct for CreateOrganizationResponse
 type CreateOrganizationResponse struct {
 	ApiKey *ApiUser `json:"apiKey,omitempty"`
-	// Unique 24-hexadecimal digit string that identifies the federation that you linked the newly created organization to.
-	FederationSettingsId *string `json:"federationSettingsId,omitempty"`
-	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud user that you assigned the Organization Owner role in the new organization.
+	// Unique 24-hexadecimal digit string that identifies the Atlas user that you want to assign the Organization Owner role.
 	OrgOwnerId   *string       `json:"orgOwnerId,omitempty"`
 	Organization *Organization `json:"organization,omitempty"`
 }
@@ -66,38 +64,6 @@ func (o *CreateOrganizationResponse) HasApiKey() bool {
 // SetApiKey gets a reference to the given ApiUser and assigns it to the ApiKey field.
 func (o *CreateOrganizationResponse) SetApiKey(v ApiUser) {
 	o.ApiKey = &v
-}
-
-// GetFederationSettingsId returns the FederationSettingsId field value if set, zero value otherwise.
-func (o *CreateOrganizationResponse) GetFederationSettingsId() string {
-	if o == nil || IsNil(o.FederationSettingsId) {
-		var ret string
-		return ret
-	}
-	return *o.FederationSettingsId
-}
-
-// GetFederationSettingsIdOk returns a tuple with the FederationSettingsId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateOrganizationResponse) GetFederationSettingsIdOk() (*string, bool) {
-	if o == nil || IsNil(o.FederationSettingsId) {
-		return nil, false
-	}
-	return o.FederationSettingsId, true
-}
-
-// HasFederationSettingsId returns a boolean if a field has been set.
-func (o *CreateOrganizationResponse) HasFederationSettingsId() bool {
-	if o != nil && !IsNil(o.FederationSettingsId) {
-		return true
-	}
-
-	return false
-}
-
-// SetFederationSettingsId gets a reference to the given string and assigns it to the FederationSettingsId field.
-func (o *CreateOrganizationResponse) SetFederationSettingsId(v string) {
-	o.FederationSettingsId = &v
 }
 
 // GetOrgOwnerId returns the OrgOwnerId field value if set, zero value otherwise.
