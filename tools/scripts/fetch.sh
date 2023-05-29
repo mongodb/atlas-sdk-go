@@ -31,12 +31,12 @@ pushd "$OPENAPI_FOLDER"
 
 echo "Fetching versions from $versions_url"
 
-curl --show-error --fail --silent -o "versions.yaml" \
+curl --show-error --fail -v -o "versions.yaml" \
      -H "Accept: application/yaml" "$versions_url"
 
 echo "Fetching api from $openapi_url to $OPENAPI_FILE_NAME"
 
-curl --show-error --fail --silent -o "$OPENAPI_FILE_NAME" \
+curl --show-error --fail -v -o "$OPENAPI_FILE_NAME" \
      -H "Accept: application/yaml" "$openapi_url"
 
 popd -0 
