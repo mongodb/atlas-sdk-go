@@ -29,7 +29,8 @@ type ServerlessInstanceDescription struct {
 	ServerlessBackupOptions *ServerlessBackupOptions   `json:"serverlessBackupOptions,omitempty"`
 	// Human-readable label that indicates the current operating condition of the serverless instance.
 	StateName *string `json:"stateName,omitempty"`
-	Tags      []Tag   `json:"tags,omitempty"`
+	// Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster.
+	Tags []Tag `json:"tags,omitempty"`
 	// Flag that indicates whether termination protection is enabled on the serverless instance. If set to `true`, MongoDB Cloud won't delete the serverless instance. If set to `false`, MongoDB Cloud will delete the serverless instance.
 	TerminationProtectionEnabled *bool `json:"terminationProtectionEnabled,omitempty"`
 }

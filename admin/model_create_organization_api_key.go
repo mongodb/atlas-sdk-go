@@ -6,36 +6,36 @@ import (
 	"encoding/json"
 )
 
-// checks if the CreateApiKey type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CreateApiKey{}
+// checks if the CreateOrganizationApiKey type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CreateOrganizationApiKey{}
 
-// CreateApiKey struct for CreateApiKey
-type CreateApiKey struct {
+// CreateOrganizationApiKey struct for CreateOrganizationApiKey
+type CreateOrganizationApiKey struct {
 	// Purpose or explanation provided when someone created this organization API key.
 	Desc *string `json:"desc,omitempty"`
-	// List of roles to grant this API key. If you provide this list, provide a minimum of one role and ensure each role applies to this organization or project.
+	// List of roles to grant this API key. If you provide this list, provide a minimum of one role and ensure each role applies to this organization.
 	Roles []string `json:"roles,omitempty"`
 }
 
-// NewCreateApiKey instantiates a new CreateApiKey object
+// NewCreateOrganizationApiKey instantiates a new CreateOrganizationApiKey object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateApiKey() *CreateApiKey {
-	this := CreateApiKey{}
+func NewCreateOrganizationApiKey() *CreateOrganizationApiKey {
+	this := CreateOrganizationApiKey{}
 	return &this
 }
 
-// NewCreateApiKeyWithDefaults instantiates a new CreateApiKey object
+// NewCreateOrganizationApiKeyWithDefaults instantiates a new CreateOrganizationApiKey object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCreateApiKeyWithDefaults() *CreateApiKey {
-	this := CreateApiKey{}
+func NewCreateOrganizationApiKeyWithDefaults() *CreateOrganizationApiKey {
+	this := CreateOrganizationApiKey{}
 	return &this
 }
 
 // GetDesc returns the Desc field value if set, zero value otherwise.
-func (o *CreateApiKey) GetDesc() string {
+func (o *CreateOrganizationApiKey) GetDesc() string {
 	if o == nil || IsNil(o.Desc) {
 		var ret string
 		return ret
@@ -45,7 +45,7 @@ func (o *CreateApiKey) GetDesc() string {
 
 // GetDescOk returns a tuple with the Desc field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateApiKey) GetDescOk() (*string, bool) {
+func (o *CreateOrganizationApiKey) GetDescOk() (*string, bool) {
 	if o == nil || IsNil(o.Desc) {
 		return nil, false
 	}
@@ -53,7 +53,7 @@ func (o *CreateApiKey) GetDescOk() (*string, bool) {
 }
 
 // HasDesc returns a boolean if a field has been set.
-func (o *CreateApiKey) HasDesc() bool {
+func (o *CreateOrganizationApiKey) HasDesc() bool {
 	if o != nil && !IsNil(o.Desc) {
 		return true
 	}
@@ -62,12 +62,12 @@ func (o *CreateApiKey) HasDesc() bool {
 }
 
 // SetDesc gets a reference to the given string and assigns it to the Desc field.
-func (o *CreateApiKey) SetDesc(v string) {
+func (o *CreateOrganizationApiKey) SetDesc(v string) {
 	o.Desc = &v
 }
 
 // GetRoles returns the Roles field value if set, zero value otherwise.
-func (o *CreateApiKey) GetRoles() []string {
+func (o *CreateOrganizationApiKey) GetRoles() []string {
 	if o == nil || IsNil(o.Roles) {
 		var ret []string
 		return ret
@@ -77,7 +77,7 @@ func (o *CreateApiKey) GetRoles() []string {
 
 // GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateApiKey) GetRolesOk() ([]string, bool) {
+func (o *CreateOrganizationApiKey) GetRolesOk() ([]string, bool) {
 	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
@@ -85,7 +85,7 @@ func (o *CreateApiKey) GetRolesOk() ([]string, bool) {
 }
 
 // HasRoles returns a boolean if a field has been set.
-func (o *CreateApiKey) HasRoles() bool {
+func (o *CreateOrganizationApiKey) HasRoles() bool {
 	if o != nil && !IsNil(o.Roles) {
 		return true
 	}
@@ -94,18 +94,18 @@ func (o *CreateApiKey) HasRoles() bool {
 }
 
 // SetRoles gets a reference to the given []string and assigns it to the Roles field.
-func (o *CreateApiKey) SetRoles(v []string) {
+func (o *CreateOrganizationApiKey) SetRoles(v []string) {
 	o.Roles = v
 }
 
-func (o CreateApiKey) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o CreateOrganizationApiKey) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o CreateApiKey) ToMap() (map[string]interface{}, error) {
+func (o CreateOrganizationApiKey) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Desc) {
 		toSerialize["desc"] = o.Desc
@@ -116,38 +116,38 @@ func (o CreateApiKey) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableCreateApiKey struct {
-	value *CreateApiKey
+type NullableCreateOrganizationApiKey struct {
+	value *CreateOrganizationApiKey
 	isSet bool
 }
 
-func (v NullableCreateApiKey) Get() *CreateApiKey {
+func (v NullableCreateOrganizationApiKey) Get() *CreateOrganizationApiKey {
 	return v.value
 }
 
-func (v *NullableCreateApiKey) Set(val *CreateApiKey) {
+func (v *NullableCreateOrganizationApiKey) Set(val *CreateOrganizationApiKey) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCreateApiKey) IsSet() bool {
+func (v NullableCreateOrganizationApiKey) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCreateApiKey) Unset() {
+func (v *NullableCreateOrganizationApiKey) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCreateApiKey(val *CreateApiKey) *NullableCreateApiKey {
-	return &NullableCreateApiKey{value: val, isSet: true}
+func NewNullableCreateOrganizationApiKey(val *CreateOrganizationApiKey) *NullableCreateOrganizationApiKey {
+	return &NullableCreateOrganizationApiKey{value: val, isSet: true}
 }
 
-func (v NullableCreateApiKey) MarshalJSON() ([]byte, error) {
+func (v NullableCreateOrganizationApiKey) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCreateApiKey) UnmarshalJSON(src []byte) error {
+func (v *NullableCreateOrganizationApiKey) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
