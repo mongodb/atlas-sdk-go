@@ -41,3 +41,7 @@ new-release:
 update-version:
 	## When manually updating major version
 	./releaser/scripts/update-version.sh
+	
+.PHONY: generate_mocks
+generate_mocks:	
+	./scripts/generate_mocks.sh
