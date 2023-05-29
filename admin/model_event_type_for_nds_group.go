@@ -378,8 +378,6 @@ const (
 	EVENTTYPEFORNDSGROUP_DATA_FEDERATION_QUERY_LIMIT_DELETED                                        EventTypeForNdsGroup = "DATA_FEDERATION_QUERY_LIMIT_DELETED"
 	EVENTTYPEFORNDSGROUP_DATA_API_SETUP_FOR_VERCEL                                                  EventTypeForNdsGroup = "DATA_API_SETUP_FOR_VERCEL"
 	EVENTTYPEFORNDSGROUP_ADMIN_CLUSTER_LOCK_UPDATED                                                 EventTypeForNdsGroup = "ADMIN_CLUSTER_LOCK_UPDATED"
-	EVENTTYPEFORNDSGROUP_DB_CHECK_SUBMITTED                                                         EventTypeForNdsGroup = "DB_CHECK_SUBMITTED"
-	EVENTTYPEFORNDSGROUP_DB_CHECK_UPDATED                                                           EventTypeForNdsGroup = "DB_CHECK_UPDATED"
 	EVENTTYPEFORNDSGROUP_COMPUTE_AUTO_SCALE_INITIATED                                               EventTypeForNdsGroup = "COMPUTE_AUTO_SCALE_INITIATED"
 	EVENTTYPEFORNDSGROUP_DISK_AUTO_SCALE_INITIATED                                                  EventTypeForNdsGroup = "DISK_AUTO_SCALE_INITIATED"
 	EVENTTYPEFORNDSGROUP_COMPUTE_AUTO_SCALE_INITIATED_BASE                                          EventTypeForNdsGroup = "COMPUTE_AUTO_SCALE_INITIATED_BASE"
@@ -847,8 +845,6 @@ var AllowedEventTypeForNdsGroupEnumValues = []EventTypeForNdsGroup{
 	"DATA_FEDERATION_QUERY_LIMIT_DELETED",
 	"DATA_API_SETUP_FOR_VERCEL",
 	"ADMIN_CLUSTER_LOCK_UPDATED",
-	"DB_CHECK_SUBMITTED",
-	"DB_CHECK_UPDATED",
 	"COMPUTE_AUTO_SCALE_INITIATED",
 	"DISK_AUTO_SCALE_INITIATED",
 	"COMPUTE_AUTO_SCALE_INITIATED_BASE",
