@@ -32,7 +32,7 @@ var (
 	queryDescape    = strings.NewReplacer("%5B", "[", "%5D", "]")
 )
 
-// APIClient manages communication with the MongoDB Atlas Administration API API v2.0~e62a6b96c8
+// APIClient manages communication with the MongoDB Atlas Administration API API v2.0~1653a3d73e
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration

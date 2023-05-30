@@ -200,7 +200,7 @@ func main() {
     includeCount := true // bool |  (optional) (default to true)
     itemsPerPage := int(100) // int |  (optional) (default to 100)
     pageNum := int(1) // int |  (optional) (default to 1)
-    eventType := []map[string]interface{}{map[string]interface{}(123)} // []map[string]interface{} |  (optional)
+    eventType := []string{"EventType_example"} // []string |  (optional)
     includeRaw := true // bool |  (optional) (default to false)
     maxDate := time.Now() // time.Time |  (optional)
     minDate := time.Now() // time.Time |  (optional)
@@ -235,7 +235,7 @@ Name | Type | Description  | Notes
  **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (**totalCount**) in the response. | [default to true]
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
- **eventType** | **[]map[string]interface{}** | Category of incident recorded at this moment in time.  **IMPORTANT**: The complete list of event type values changes frequently. | 
+ **eventType** | **[]string** | Category of incident recorded at this moment in time.  **IMPORTANT**: The complete list of event type values changes frequently. | 
  **includeRaw** | **bool** | Flag that indicates whether to include the raw document in the output. The raw document contains additional meta information about the event. | [default to false]
  **maxDate** | **time.Time** | Date and time from when MongoDB Cloud stops returning events. This parameter uses the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_8601\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;ISO 8601&lt;/a&gt; timestamp format in UTC. | 
  **minDate** | **time.Time** | Date and time from when MongoDB Cloud starts returning events. This parameter uses the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_8601\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;ISO 8601&lt;/a&gt; timestamp format in UTC. | 
@@ -289,7 +289,7 @@ func main() {
     itemsPerPage := int(100) // int |  (optional) (default to 100)
     pageNum := int(1) // int |  (optional) (default to 1)
     clusterNames := []string{"Inner_example"} // []string |  (optional)
-    eventType := openapiclient.EventTypeForNdsGroup("ALERT_ACKNOWLEDGED_AUDIT") // EventTypeForNdsGroup |  (optional)
+    eventType := []string{"EventType_example"} // []string |  (optional)
     includeRaw := true // bool |  (optional) (default to false)
     maxDate := time.Now() // time.Time |  (optional)
     minDate := time.Now() // time.Time |  (optional)
@@ -325,7 +325,7 @@ Name | Type | Description  | Notes
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
  **clusterNames** | **[]string** | Human-readable label that identifies the cluster. | 
- **eventType** | [**EventTypeForNdsGroup**](EventTypeForNdsGroup.md) | Category of incident recorded at this moment in time.  **IMPORTANT**: The complete list of event type values changes frequently. | 
+ **eventType** | **[]string** | Category of incident recorded at this moment in time.  **IMPORTANT**: The complete list of event type values changes frequently. | 
  **includeRaw** | **bool** | Flag that indicates whether to include the raw document in the output. The raw document contains additional meta information about the event. | [default to false]
  **maxDate** | **time.Time** | Date and time from when MongoDB Cloud stops returning events. This parameter uses the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_8601\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;ISO 8601&lt;/a&gt; timestamp format in UTC. | 
  **minDate** | **time.Time** | Date and time from when MongoDB Cloud starts returning events. This parameter uses the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_8601\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;ISO 8601&lt;/a&gt; timestamp format in UTC. | 

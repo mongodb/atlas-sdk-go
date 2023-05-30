@@ -448,7 +448,7 @@ type ListOrganizationEventsApiRequest struct {
 	includeCount *bool
 	itemsPerPage *int
 	pageNum      *int
-	eventType    *[][]map[string]interface{}
+	eventType    *[]string
 	includeRaw   *bool
 	maxDate      *time.Time
 	minDate      *time.Time
@@ -459,7 +459,7 @@ type ListOrganizationEventsApiParams struct {
 	IncludeCount *bool
 	ItemsPerPage *int
 	PageNum      *int
-	EventType    *[][]map[string]interface{}
+	EventType    *[]string
 	IncludeRaw   *bool
 	MaxDate      *time.Time
 	MinDate      *time.Time
@@ -499,7 +499,7 @@ func (r ListOrganizationEventsApiRequest) PageNum(pageNum int) ListOrganizationE
 }
 
 // Category of incident recorded at this moment in time.  **IMPORTANT**: The complete list of event type values changes frequently.
-func (r ListOrganizationEventsApiRequest) EventType(eventType [][]map[string]interface{}) ListOrganizationEventsApiRequest {
+func (r ListOrganizationEventsApiRequest) EventType(eventType []string) ListOrganizationEventsApiRequest {
 	r.eventType = &eventType
 	return r
 }
