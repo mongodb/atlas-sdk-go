@@ -24,8 +24,8 @@ function applyArrayTransformations(api, modelNames) {
         ...model,
       },
     };
-    return api;
   }
+  return api;
 }
 
 module.exports = {
