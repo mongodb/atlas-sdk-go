@@ -32,7 +32,7 @@ var (
 	queryDescape    = strings.NewReplacer("%5B", "[", "%5D", "]")
 )
 
-// APIClient manages communication with the MongoDB Atlas Administration API API v2.0~e62a6b96c8
+// APIClient manages communication with the MongoDB Atlas Administration API API v2.0~944f55d3b4
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration
@@ -124,8 +124,6 @@ type APIClient struct {
 
 	TeamsApi TeamsApi
 
-	TestApi TestApi
-
 	ThirdPartyIntegrationsApi ThirdPartyIntegrationsApi
 
 	X509AuthenticationApi X509AuthenticationApi
@@ -189,7 +187,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.SharedTierRestoreJobsApi = (*SharedTierRestoreJobsApiService)(&c.common)
 	c.SharedTierSnapshotsApi = (*SharedTierSnapshotsApiService)(&c.common)
 	c.TeamsApi = (*TeamsApiService)(&c.common)
-	c.TestApi = (*TestApiService)(&c.common)
 	c.ThirdPartyIntegrationsApi = (*ThirdPartyIntegrationsApiService)(&c.common)
 	c.X509AuthenticationApi = (*X509AuthenticationApiService)(&c.common)
 
