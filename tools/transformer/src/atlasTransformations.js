@@ -62,7 +62,7 @@ module.exports = function runTransformations(openapi) {
   // Temp workaround for CLOUDP-170462
   openapi = applyArrayTransformations(openapi, [
     "EventTypeForNdsGroup",
-    "EventTypeForForOrg",
+    "EventTypeForOrg",
   ]);
 
   let hasSchemaChanges = true;
