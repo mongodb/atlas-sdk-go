@@ -15839,7 +15839,9 @@ components:
           - AGENT_VERSION_UNFIXED
           - TAGS_MODIFIED
     EventTypeForOrg:
-      type: object
+      type: array
+      items:
+        type: object
     EventViewForNdsGroup:
       type: object
       x-xgen-go-transform: merge-oneOf
