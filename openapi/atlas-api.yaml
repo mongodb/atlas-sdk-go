@@ -13,8 +13,8 @@ info:
     url: https://creativecommons.org/licenses/by-nc-sa/3.0/us/
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
-  version: 2.0~e62a6b96c8
-  x-xgen-sha: e62a6b96c8633100515569b64f45cb6d06444149
+  version: 2.0~1653a3d73e
+  x-xgen-sha: 1653a3d73e875778c2de2189dc4eb53c090e4919
 servers:
 - url: https://cloud.mongodb.com
 tags:
@@ -12759,9 +12759,7 @@ paths:
         in: query
         name: eventType
         schema:
-          type: array
-          items:
-            $ref: '#/components/schemas/EventTypeForOrg'
+          $ref: '#/components/schemas/EventTypeForOrg'
       - description: Flag that indicates whether to include the raw document in the
           output. The raw document contains additional meta information about the
           event.
@@ -31528,6 +31526,244 @@ components:
         title: Resource Event Types
     EventTypeForOrg:
       type: object
+      oneOf:
+      - type: string
+        enum:
+        - ALERT_ACKNOWLEDGED_AUDIT
+        - ALERT_UNACKNOWLEDGED_AUDIT
+        title: Alert Audit Types
+      - type: string
+        enum:
+        - ALERT_CONFIG_DISABLED_AUDIT
+        - ALERT_CONFIG_ENABLED_AUDIT
+        - ALERT_CONFIG_ADDED_AUDIT
+        - ALERT_CONFIG_DELETED_AUDIT
+        - ALERT_CONFIG_CHANGED_AUDIT
+        title: Alert Audit Types
+      - type: string
+        enum:
+        - API_KEY_CREATED
+        - API_KEY_DELETED
+        - API_KEY_ACCESS_LIST_ENTRY_ADDED
+        - API_KEY_ACCESS_LIST_ENTRY_DELETED
+        - API_KEY_ROLES_CHANGED
+        - API_KEY_DESCRIPTION_CHANGED
+        - API_KEY_ADDED_TO_GROUP
+        - API_KEY_REMOVED_FROM_GROUP
+        - API_KEY_UI_IP_ACCESS_LIST_INHERITANCE_ENABLED
+        - API_KEY_UI_IP_ACCESS_LIST_INHERITANCE_DISABLED
+        title: API User Event Types
+      - type: string
+        enum:
+        - CHARGE_SUCCEEDED
+        - CHARGE_FAILED
+        - CHARGE_PROCESSING
+        - CHARGE_PENDING_REVERSAL
+        - BRAINTREE_CHARGE_FAILED
+        - INVOICE_CLOSED
+        - CHECK_PAYMENT_RECEIVED
+        - WIRE_TRANSFER_PAYMENT_RECEIVED
+        - DISCOUNT_APPLIED
+        - CREDIT_ISSUED
+        - CREDIT_PULLED_FWD
+        - CREDIT_END_DATE_MODIFIED
+        - PROMO_CODE_APPLIED
+        - PAYMENT_FORGIVEN
+        - REFUND_ISSUED
+        - ACCOUNT_DOWNGRADED
+        - ACCOUNT_UPGRADED
+        - ACCOUNT_MODIFIED
+        - SUPPORT_PLAN_ACTIVATED
+        - SUPPORT_PLAN_CANCELLED
+        - SUPPORT_PLAN_CANCELLATION_SCHEDULED
+        - INITIATE_SALESFORCE_SERVICE_CLOUD_SYNC
+        - INVOICE_ADDRESS_CHANGED
+        - INVOICE_ADDRESS_ADDED
+        - PREPAID_PLAN_ACTIVATED
+        - ELASTIC_INVOICING_MODE_ACTIVATED
+        - ELASTIC_INVOICING_MODE_DEACTIVATED
+        - TERMINATE_PAID_SERVICES
+        - BILLING_EMAIL_ADDRESS_ADDED
+        - BILLING_EMAIL_ADDRESS_CHANGED
+        - BILLING_EMAIL_ADDRESS_REMOVED
+        - AWS_BILLING_ACCOUNT_CREDIT_ISSUED
+        - GCP_BILLING_ACCOUNT_CREDIT_ISSUED
+        - CREDIT_SFOLI_MODIFIED
+        - CREDIT_SFOLID_MODIFIED
+        - CREDIT_AMOUNT_MODIFIED
+        - PREPAID_PLAN_MODIFIED
+        - AWS_USAGE_REPORTED
+        - AZURE_USAGE_REPORTED
+        - GCP_USAGE_REPORTED
+        - BECAME_PAYING_ORG
+        - NEW_LINKED_ORG
+        - UNLINKED_ORG
+        - ORG_LINKED_TO_PAYING_ORG
+        - ORG_UNLINKED_FROM_PAYING_ORG
+        - PAYMENT_UPDATED_THROUGH_API
+        - AZURE_BILLING_ACCOUNT_CREDIT_ISSUED
+        - CREDIT_START_DATE_MODIFIED
+        - CREDIT_ELASTIC_INVOICING_MODIFIED
+        - CREDIT_TYPE_MODIFIED
+        - CREDIT_AMOUNT_CENTS_MODIFIED
+        - CREDIT_AMOUNT_REMAINING_CENTS_MODIFIED
+        - CREDIT_TOTAL_BILLED_CENTS_MODIFIED
+        - CREDIT_AWS_CUSTOMER_ID_MODIFIED
+        - CREDIT_AWS_PRODUCT_CODE_MODIFIED
+        - CREDIT_GCP_MARKETPLACE_ENTITLEMENT_ID_MODIFIED
+        - CREDIT_AZURE_SUBSCRIPTION_ID_MODIFIED
+        title: Billing Event Types
+      - type: string
+        enum:
+        - FEDERATION_SETTINGS_CREATED
+        - FEDERATION_SETTINGS_DELETED
+        - FEDERATION_SETTINGS_UPDATED
+        - IDENTITY_PROVIDER_CREATED
+        - IDENTITY_PROVIDER_UPDATED
+        - IDENTITY_PROVIDER_DELETED
+        - IDENTITY_PROVIDER_ACTIVATED
+        - IDENTITY_PROVIDER_DEACTIVATED
+        - IDENTITY_PROVIDER_JWKS_REVOKED
+        - OIDC_IDENTITY_PROVIDER_ENABLED
+        - OIDC_IDENTITY_PROVIDER_DISABLED
+        - DOMAINS_ASSOCIATED
+        - DOMAIN_CREATED
+        - DOMAIN_DELETED
+        - DOMAIN_VERIFIED
+        - ORG_SETTINGS_CONFIGURED
+        - ORG_SETTINGS_UPDATED
+        - ORG_SETTINGS_DELETED
+        - RESTRICT_ORG_MEMBERSHIP_ENABLED
+        - RESTRICT_ORG_MEMBERSHIP_DISABLED
+        - ROLE_MAPPING_CREATED
+        - ROLE_MAPPING_UPDATED
+        - ROLE_MAPPING_DELETED
+        title: Federation Settings Event Types
+      - type: string
+        enum:
+        - GROUP_DELETED
+        - GROUP_CREATED
+        - GROUP_MOVED
+        title: Group Audit Types
+      - type: string
+        enum:
+        - MLAB_MIGRATION_COMPLETED
+        - MLAB_MIGRATION_TARGET_CLUSTER_CREATED
+        - MLAB_MIGRATION_DATABASE_USERS_IMPORTED
+        - MLAB_MIGRATION_IP_WHITELIST_IMPORTED
+        - MLAB_MIGRATION_TARGET_CLUSTER_SET
+        - MLAB_MIGRATION_DATABASE_RENAMED
+        - MLAB_MIGRATION_LIVE_IMPORT_STARTED
+        - MLAB_MIGRATION_LIVE_IMPORT_READY_FOR_CUTOVER
+        - MLAB_MIGRATION_LIVE_IMPORT_CUTOVER_COMPLETE
+        - MLAB_MIGRATION_LIVE_IMPORT_ERROR
+        - MLAB_MIGRATION_LIVE_IMPORT_CANCELLED
+        - MLAB_MIGRATION_DUMP_AND_RESTORE_TEST_STARTED
+        - MLAB_MIGRATION_DUMP_AND_RESTORE_TEST_SKIPPED
+        - MLAB_MIGRATION_DUMP_AND_RESTORE_STARTED
+        - MLAB_MIGRATION_SUPPORT_PLAN_SELECTED
+        - MLAB_MIGRATION_SUPPORT_PLAN_OPTED_OUT
+        title: Mlab Migration Audit Types
+      - type: string
+        enum:
+        - ORG_LIMIT_UPDATED
+        title: NDS Audit Types
+      - type: string
+        enum:
+        - ORG_CREATED
+        - ORG_CREDIT_CARD_ADDED
+        - ORG_CREDIT_CARD_UPDATED
+        - ORG_CREDIT_CARD_CURRENT
+        - ORG_CREDIT_CARD_ABOUT_TO_EXPIRE
+        - ORG_PAYPAL_LINKED
+        - ORG_PAYPAL_UPDATED
+        - ORG_PAYPAL_CANCELLED
+        - ORG_OVERRIDE_PAYMENT_METHOD_ADDED
+        - ORG_ACTIVATED
+        - ORG_TEMPORARILY_ACTIVATED
+        - ORG_SUSPENDED
+        - ORG_ADMIN_SUSPENDED
+        - ORG_ADMIN_LOCKED
+        - ORG_CLUSTERS_DELETED
+        - ORG_CLUSTERS_PAUSED
+        - ORG_LOCKED
+        - ORG_RENAMED
+        - ALL_ORG_USERS_HAVE_MFA
+        - ORG_USERS_WITHOUT_MFA
+        - ORG_INVOICE_UNDER_THRESHOLD
+        - ORG_INVOICE_OVER_THRESHOLD
+        - ORG_DAILY_BILL_UNDER_THRESHOLD
+        - ORG_DAILY_BILL_OVER_THRESHOLD
+        - ORG_GROUP_CHARGES_UNDER_THRESHOLD
+        - ORG_GROUP_CHARGES_OVER_THRESHOLD
+        - ORG_TWO_FACTOR_AUTH_REQUIRED
+        - ORG_TWO_FACTOR_AUTH_OPTIONAL
+        - ORG_PUBLIC_API_ACCESS_LIST_REQUIRED
+        - ORG_PUBLIC_API_ACCESS_LIST_NOT_REQUIRED
+        - ORG_EMPLOYEE_ACCESS_RESTRICTED
+        - ORG_EMPLOYEE_ACCESS_UNRESTRICTED
+        - ORG_SFDC_ACCOUNT_ID_CHANGED
+        - ORG_CONNECTED_TO_MLAB
+        - ORG_DISCONNECTED_FROM_MLAB
+        - ORG_IDP_CERTIFICATE_CURRENT
+        - ORG_IDP_CERTIFICATE_ABOUT_TO_EXPIRE
+        - ORG_CONNECTED_TO_VERCEL
+        - ORG_DISCONNECTED_FROM_VERCEL
+        - ORG_DISCONNECTED_TO_VERCEL
+        - ORG_CONNECTION_UNINSTALLED_FROM_VERCEL
+        - ORG_UI_IP_ACCESS_LIST_ENABLED
+        - ORG_UI_IP_ACCESS_LIST_DISABLED
+        - ORG_EDITED_UI_IP_ACCESS_LIST_ENTRIES
+        title: Org Event Types
+      - type: string
+        enum:
+        - AWS_SELF_SERVE_ACCOUNT_LINKED
+        - AWS_SELF_SERVE_ACCOUNT_LINK_PENDING
+        - AWS_SELF_SERVE_ACCOUNT_CANCELLED
+        - AWS_SELF_SERVE_ACCOUNT_LINK_FAILED
+        - GCP_SELF_SERVE_ACCOUNT_LINK_PENDING
+        - GCP_SELF_SERVE_ACCOUNT_LINK_FAILED
+        - AZURE_SELF_SERVE_ACCOUNT_LINKED
+        - AZURE_SELF_SERVE_ACCOUNT_LINK_PENDING
+        - AZURE_SELF_SERVE_ACCOUNT_CANCELLED
+        - AZURE_SELF_SERVE_ACCOUNT_LINK_FAILED
+        - GCP_SELF_SERVE_ACCOUNT_LINKED
+        - GCP_SELF_SERVE_ACCOUNT_CANCELLED
+        title: Partner Event Types
+      - type: string
+        enum:
+        - ORG_POLICY_CREATED
+        - ORG_POLICY_DELETED
+        - ORG_POLICY_EDITED
+        - ORG_POLICY_CLONED
+        title: Policy Event Types
+      - type: string
+        enum:
+        - SUPPORT_EMAILS_SENT_SUCCESSFULLY
+        - SUPPORT_EMAILS_SENT_FAILURE
+        title: Support Event Types
+      - type: string
+        enum:
+        - TEAM_CREATED
+        - TEAM_DELETED
+        - TEAM_UPDATED
+        - TEAM_NAME_CHANGED
+        - TEAM_ADDED_TO_GROUP
+        - TEAM_REMOVED_FROM_GROUP
+        - TEAM_ROLES_MODIFIED
+        title: Team Event Types
+      - type: string
+        enum:
+        - JOINED_ORG
+        - JOINED_TEAM
+        - INVITED_TO_ORG
+        - ORG_INVITATION_DELETED
+        - REMOVED_FROM_ORG
+        - REMOVED_FROM_TEAM
+        - USER_ROLES_CHANGED_AUDIT
+        - ORG_FLEX_CONSULTING_PURCHASED
+        - ORG_FLEX_CONSULTING_PURCHASE_FAILED
+        title: User Event Types
     EventViewForNdsGroup:
       type: object
       oneOf:

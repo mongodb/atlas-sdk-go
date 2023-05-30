@@ -460,7 +460,6 @@ Class | Method | HTTP request | Description
  - [Endpoint](docs/Endpoint.md)
  - [EndpointService](docs/EndpointService.md)
  - [Error](docs/Error.md)
- - [EventTypeForNdsGroup](docs/EventTypeForNdsGroup.md)
  - [EventViewForNdsGroup](docs/EventViewForNdsGroup.md)
  - [EventViewForOrg](docs/EventViewForOrg.md)
  - [ExampleResourceResponseView20230201](docs/ExampleResourceResponseView20230201.md)
