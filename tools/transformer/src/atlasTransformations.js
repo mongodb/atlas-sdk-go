@@ -3,6 +3,7 @@ const {
   applyOneOfTransformations,
   applyModelNameTransformations,
   applyDiscriminatorTransformations,
+  applyArrayTransformations,
 } = require("./transformations");
 
 const removeUnusedSchemas = require("./engine/removeUnused");
@@ -57,6 +58,12 @@ module.exports = function runTransformations(openapi) {
   if (openapi.components.schemas.Error) {
     openapi.components.schemas.Error.properties.parameters.items = {};
   }
+
+  // Temp workaround for CLOUDP-170462
+  openapi = applyArrayTransformations(openapi, [
+    "EventTypeForNdsGroup",
+    "EventTypeForForOrg",
+  ]);
 
   let hasSchemaChanges = true;
   // Remove referencing objects that become unused
