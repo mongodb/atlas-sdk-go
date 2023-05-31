@@ -15,15 +15,17 @@ function applyArrayTransformations(api, modelNames) {
   }
   for (const modelName of modelNames) {
     if (!api.components.schemas[modelName]) {
-      throw new Error(`Missing schema ${modelName} in openapi`);
+      // For cases when openapi is already fixed
+      console.info(`Missing schema ${modelName} in openapi`);
+    } else if (api.components.schemas[modelName].type !== "array") {
+      model = api.components.schemas[modelName];
+      api.components.schemas[modelName] = {
+        type: "array",
+        items: {
+          ...model,
+        },
+      };
     }
-    model = api.components.schemas[modelName];
-    api.components.schemas[modelName] = {
-      type: "array",
-      items: {
-        ...model,
-      },
-    };
   }
   return api;
 }
