@@ -32,9 +32,9 @@ Alternatively you can use shorter `{Operation}()` method using builder pattern t
 	    ItemsPerPage(1).Execute()
 ```
 
-> NOTE: Path parameters are always required and they will be supplied directly in the `{Operation}()` method:
+Note: Path parameters are always required and they will be supplied directly in the `{Operation}()` method:
 
-> NOTE: SDK supplies default values for both query and post objects.
+Note: SDK supplies default values for both query and post objects.
 
 
 ## Performing Data Modification
