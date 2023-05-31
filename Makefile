@@ -58,7 +58,7 @@ openapi-pipeline:
 	echo "Validating generated SDK"
 	go test go.mongodb.org/atlas-sdk/test
 
-.PHONY: generate-docs
-generate-docs:
+.PHONY: gen-docs
+gen-docs:
 	$(MAKE) -C tools generate_docs
 	./scripts/toc.sh
