@@ -33,7 +33,7 @@ sdk, err := admin.NewClient(
     admin.UseDigestAuth(apiKey, apiSecret))
 ```
 
-> NOTE: Both SDKs use Digest based authentication. The same credentials will apply. 
+Note: Both SDKs use Digest based authentication. The same credentials will apply. 
 
 Please follow [authentication guide](https://github.com/mongodb/atlas-sdk-go#authentication) for more information.
 
