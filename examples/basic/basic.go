@@ -18,9 +18,9 @@ func main() {
 	ctx := context.Background()
 	// Values provided as part of env variables
 	// See: https://www.mongodb.com/docs/atlas/app-services/authentication/api-key/
-	apiKey := os.Getenv("MDB_API_KEY")
-	apiSecret := os.Getenv("MDB_API_SECRET")
-	url := os.Getenv("MDB_BASE_URL")
+	apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+	apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+	url := os.Getenv("MONGODB_ATLAS_URL")
 
 	sdk, err := admin.NewClient(
 		admin.UseDigestAuth(apiKey, apiSecret),
