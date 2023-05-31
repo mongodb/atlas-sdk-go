@@ -38,8 +38,8 @@ import (
 )
 
 func main() {
-    apiKey := os.Getenv("MDB_API_KEY")
-    apiSecret := os.Getenv("MDB_API_SECRET")
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
@@ -120,8 +120,8 @@ import (
 )
 
 func main() {
-    apiKey := os.Getenv("MDB_API_KEY")
-    apiSecret := os.Getenv("MDB_API_SECRET")
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
@@ -196,8 +196,8 @@ import (
 )
 
 func main() {
-    apiKey := os.Getenv("MDB_API_KEY")
-    apiSecret := os.Getenv("MDB_API_SECRET")
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
@@ -279,8 +279,8 @@ import (
 )
 
 func main() {
-    apiKey := os.Getenv("MDB_API_KEY")
-    apiSecret := os.Getenv("MDB_API_SECRET")
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
@@ -359,8 +359,8 @@ import (
 )
 
 func main() {
-    apiKey := os.Getenv("MDB_API_KEY")
-    apiSecret := os.Getenv("MDB_API_SECRET")
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
@@ -442,8 +442,8 @@ import (
 )
 
 func main() {
-    apiKey := os.Getenv("MDB_API_KEY")
-    apiSecret := os.Getenv("MDB_API_SECRET")
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
@@ -522,8 +522,8 @@ import (
 )
 
 func main() {
-    apiKey := os.Getenv("MDB_API_KEY")
-    apiSecret := os.Getenv("MDB_API_SECRET")
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
@@ -596,8 +596,8 @@ import (
 )
 
 func main() {
-    apiKey := os.Getenv("MDB_API_KEY")
-    apiSecret := os.Getenv("MDB_API_SECRET")
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
@@ -673,8 +673,8 @@ import (
 )
 
 func main() {
-    apiKey := os.Getenv("MDB_API_KEY")
-    apiSecret := os.Getenv("MDB_API_SECRET")
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 

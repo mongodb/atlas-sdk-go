@@ -29,8 +29,8 @@ access different parts of the Atlas API. For example:
 ```go
 import "go.mongodb.org/atlas-sdk/admin"
 
-apiKey := os.Getenv("MDB_API_KEY")
-apiSecret := os.Getenv("MDB_API_SECRET")
+apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
 sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 projects, response, err := sdk.ProjectsApi.ListProjects(ctx).Execute()
