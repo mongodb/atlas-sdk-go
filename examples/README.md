@@ -6,8 +6,8 @@ For documentation about obtaining apiKey and apiSecret go to
 https://docs.atlas.mongodb.com/configure-api-access.
 
 ```bash
-MDB_API_KEY=somekey \
-MDB_API_SECRET=some-secret-key-for-gosdkapi \
+MONGODB_ATLAS_PUBLIC_KEY=somekey \
+MONGODB_ATLAS_PRIVATE_KEY=some-secret-key-for-gosdkapi \
 go run ./aws_cluster/aws.go
 ```
 
