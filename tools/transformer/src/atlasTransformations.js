@@ -4,9 +4,11 @@ const {
   applyModelNameTransformations,
   applyDiscriminatorTransformations,
   applyArrayTransformations,
+  transformOneOfProperties,
 } = require("./transformations");
 
 const removeUnusedSchemas = require("./engine/removeUnused");
+const { getObjectFromYamlPath } = require("./engine/readers");
 
 const ignoredModelNames = require("./name.ignore.json").ignoreModels;
 
@@ -64,6 +66,15 @@ module.exports = function runTransformations(openapi) {
     "EventTypeForNdsGroup",
     "EventTypeForOrg",
   ]);
+
+  // Temp workaround for ApiAtlasRegionConfigView
+  const parentObject = getObjectFromYamlPath(
+    ".components.schemas.RegionConfig",
+    openapi
+  );
+  if (parentObject) {
+    transformOneOfProperties(parentObject, openapi);
+  }
 
   let hasSchemaChanges = true;
   // Remove referencing objects that become unused
