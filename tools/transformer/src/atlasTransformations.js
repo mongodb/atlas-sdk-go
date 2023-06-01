@@ -67,13 +67,19 @@ module.exports = function runTransformations(openapi) {
     "EventTypeForOrg",
   ]);
 
-  // Temp workaround for ApiAtlasRegionConfigView
-  const parentObject = getObjectFromYamlPath(
-    ".components.schemas.RegionConfig",
-    openapi
-  );
-  if (parentObject) {
-    transformOneOfProperties(parentObject, openapi);
+  try {
+    // Temp workaround for ApiAtlasRegionConfigView
+    // Reason why we running this separately is we 
+    // want to ensure that this transformation is executed after renames
+    const parentObject = getObjectFromYamlPath(
+      ".components.schemas.RegionConfig",
+      openapi
+    );
+    if (parentObject) {
+      transformOneOfProperties(parentObject, openapi);
+    }
+  } catch (e) {
+    throw new ("ApiAtlasRegionConfigView cannot be renamed", e);
   }
 
   let hasSchemaChanges = true;
