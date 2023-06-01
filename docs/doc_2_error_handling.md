@@ -1,11 +1,14 @@
 
 # Error Handling
 
-SDK enables users to obtain detailed information about errors returned from backend.
+You can obtain detailed information about errors returned by the API when you use the Atlas Go SDK. Use the error code to determine the cause of the error. To learn more about API error codes, see [Atlas Administration API Error Codes](https://www.mongodb.com/docs/atlas/reference/api-errors/).
+
 Errors are represented by [ErrorObject](./admin/model_error.go).
-Users should rely on the error code for detection of specific error cases.
 
 ## Fetching Error Object
+
+To fetch the error object, execute the following:
+
 ```go
 import "go.mongodb.org/atlas-sdk/admin"
 
@@ -14,7 +17,10 @@ apiError := admin.AsError(err)
 fmt.Println(apiError)
 ```
 
-## Checking for existence of specific error code
+## Checking for the Existence of a Specific Error Code
+
+To check for the existence of a specific error code, execute the following:
+
 ```go
 import admin "go.mongodb.org/atlas-sdk/admin"
 

@@ -1,13 +1,13 @@
-# Concepts used in Atlas SDK GO
+# Learn Concepts for the Atlas Go SDK
 
 ## Introduction
 
-For each API SDK provides number of methods that users can call to fetch or modify data on the backend.
-SDK offers flexibility in how various arguments can be passed to the client.
+You can use the Atlas Go SDK to fetch or modify data from the Atlas Admin API.
+The Atlas Go SDK is flexible because it accepts many different types of arguments.
 
-## Fetching Data from the Backend
+## Fetching Data from the Back End
 
-To fetch data execute `{Api}.{Operation}WithParams()` method:
+To fetch data, you can execute the `{Api}.{Operation}WithParams()` method:
 
 ```go 
 	// 1. Calling API method
@@ -19,27 +19,27 @@ To fetch data execute `{Api}.{Operation}WithParams()` method:
 			PageNum:      admin.PtrInt(1),
 		})
 
-	// 3. Values in requests can be also supplied using individual methods
+	// 3. You can also supply values in requests using individual methods
 	// This can be helpful when passing request objects to other methods. 
 	projects, response, err := request.ItemsPerPage(10).Execute()
 	examples.HandleErr(err, response)
 ```
 
-Alternatively you can use shorter `{Operation}()` method using builder pattern to supply all arguments:
+Alternatively, you can use the shorter `{Operation}()` method with a builder pattern to supply all arguments:
 
 ```go
     projects, response, err := sdk.ProjectsApi.ListProjects(ctx).
 	    ItemsPerPage(1).Execute()
 ```
 
-Note: Path parameters are always required and they will be supplied directly in the `{Operation}()` method:
+Note: The Atlas Go SDK requires path parameters and they must be provided directly in the `{Operation}()` method.
 
-Note: SDK supplies default values for both query and post objects.
+Note: The Atlas Go SDK supplies default values for both query and post objects.
 
 
 ## Performing Data Modification
 
- Use `{Operation}()` method to perform modifications. For example:
+Use the `{Operation}()` method to perform modifications. For example:
 
 
 ```go
@@ -49,4 +49,4 @@ Note: SDK supplies default values for both query and post objects.
 
 ## Example
 
-For more information about usage please refer to the [basic example](../examples/)
+To learn more about using the SDK, see the [basic example](../examples/)

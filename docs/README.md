@@ -1,6 +1,6 @@
-# Atlas SDK GO documentation
+# Atlas Go SDK Documentation
 
-* [Concepts used in Atlas SDK GO](./doc_1_concepts.md#concepts-used-in-atlas-sdk-go)
+* [Learn Concepts for the Atlas Go SDK](./doc_1_concepts.md#concepts-used-in-atlas-sdk-go)
    * [Introduction](./doc_1_concepts.md#introduction)
    * [Fetching Data from the Backend](./doc_1_concepts.md#fetching-data-from-the-backend)
    * [Performing Data Modification](./doc_1_concepts.md#performing-data-modification)
@@ -14,7 +14,7 @@
    * [Fetching Error Object](./doc_2_error_handling.md#fetching-error-object)
    * [Checking for existence of specific error code](./doc_2_error_handling.md#checking-for-existence-of-specific-error-code)
 
-* [Migration Guide](./doc_3_migration.md#migration-guide)
+* [Migrate from the Go HTTP Client to the Atlas Go SDK](./doc_3_migration.md#migration-guide)
    * [Summary](./doc_3_migration.md#summary)
    * [Background](./doc_3_migration.md#background)
    * [Structural changes](./doc_3_migration.md#structural-changes)
