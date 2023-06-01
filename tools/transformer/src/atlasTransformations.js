@@ -5,6 +5,7 @@ const {
   applyDiscriminatorTransformations,
   applyArrayTransformations,
   transformOneOfProperties,
+  applyRemoveEnumsTransformations,
 } = require("./transformations");
 
 const removeUnusedSchemas = require("./engine/removeUnused");
@@ -68,6 +69,7 @@ module.exports = function runTransformations(openapi) {
   ]);
 
   try {
+    // TODO - inject to the OpenAPI schema
     // Temp workaround for ApiAtlasRegionConfigView
     // Reason why we running this separately is we
     // want to ensure that this transformation is executed after renames
@@ -81,6 +83,8 @@ module.exports = function runTransformations(openapi) {
   } catch (e) {
     throw new ("ApiAtlasRegionConfigView cannot be renamed", e)();
   }
+
+  applyRemoveEnumsTransformations(openapi);
 
   let hasSchemaChanges = true;
   // Remove referencing objects that become unused

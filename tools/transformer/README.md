@@ -82,6 +82,11 @@ For each model:
 - Remove prefix or suffix from model name
 - Ignore if model name is not matching prefix or suffix
 
+5. Remove enums transformation
+
+For each model we will effectively remove all enum instances.
+Enums in current form are hard to ensure backwards compatibility.
+
 ## Transformation Validation
 
 Transformation engine does perform validation for invalid cases.

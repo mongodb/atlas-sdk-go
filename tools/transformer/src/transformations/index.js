@@ -7,6 +7,7 @@ const {
 } = require("./oneOf");
 const { applyDiscriminatorTransformations } = require("./discriminator");
 const { applyArrayTransformations } = require("./swapArray");
+const { applyRemoveEnumsTransformations } = require("./removeEnums");
 
 module.exports = {
   applyModelNameTransformations,
@@ -17,4 +18,5 @@ module.exports = {
   applyOneOfTransformations,
   applyDiscriminatorTransformations,
   applyArrayTransformations,
+  applyRemoveEnumsTransformations
 };
