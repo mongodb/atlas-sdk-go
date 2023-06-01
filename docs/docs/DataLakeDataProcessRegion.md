@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CloudProvider** | **string** | Name of the cloud service that hosts the data lake&#39;s data stores. | 
-**Region** | [**DataLakeRegion**](DataLakeRegion.md) |  | 
+**Region** | **string** | Atlas Data Lake Regions. | 
 
 ## Methods
 
 ### NewDataLakeDataProcessRegion
 
-`func NewDataLakeDataProcessRegion(cloudProvider string, region DataLakeRegion, ) *DataLakeDataProcessRegion`
+`func NewDataLakeDataProcessRegion(cloudProvider string, region string, ) *DataLakeDataProcessRegion`
 
 NewDataLakeDataProcessRegion instantiates a new DataLakeDataProcessRegion object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetCloudProvider sets CloudProvider field to given value.
 
 ### GetRegion
 
-`func (o *DataLakeDataProcessRegion) GetRegion() DataLakeRegion`
+`func (o *DataLakeDataProcessRegion) GetRegion() string`
 
 GetRegion returns the Region field if non-nil, zero value otherwise.
 
 ### GetRegionOk
 
-`func (o *DataLakeDataProcessRegion) GetRegionOk() (*DataLakeRegion, bool)`
+`func (o *DataLakeDataProcessRegion) GetRegionOk() (*string, bool)`
 
 GetRegionOk returns a tuple with the Region field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRegion
 
-`func (o *DataLakeDataProcessRegion) SetRegion(v DataLakeRegion)`
+`func (o *DataLakeDataProcessRegion) SetRegion(v string)`
 
 SetRegion sets Region field to given value.
 

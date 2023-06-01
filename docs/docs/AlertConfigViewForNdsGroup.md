@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Created** | Pointer to **time.Time** | Date and time when MongoDB Cloud created the alert configuration. This parameter expresses its value in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_8601\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;ISO 8601&lt;/a&gt; timestamp format in UTC. | [optional] [readonly] 
 **Enabled** | Pointer to **bool** | Flag that indicates whether someone enabled this alert configuration for the specified project. | [optional] [default to false]
-**EventTypeName** | Pointer to [**ServerlessEventTypeViewAlertable**](ServerlessEventTypeViewAlertable.md) |  | [optional] 
+**EventTypeName** | Pointer to **string** | Event type that triggers an alert. | [optional] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the project that owns this alert configuration. | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies this alert configuration. | [optional] [readonly] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
@@ -87,20 +87,20 @@ HasEnabled returns a boolean if a field has been set.
 
 ### GetEventTypeName
 
-`func (o *AlertConfigViewForNdsGroup) GetEventTypeName() ServerlessEventTypeViewAlertable`
+`func (o *AlertConfigViewForNdsGroup) GetEventTypeName() string`
 
 GetEventTypeName returns the EventTypeName field if non-nil, zero value otherwise.
 
 ### GetEventTypeNameOk
 
-`func (o *AlertConfigViewForNdsGroup) GetEventTypeNameOk() (*ServerlessEventTypeViewAlertable, bool)`
+`func (o *AlertConfigViewForNdsGroup) GetEventTypeNameOk() (*string, bool)`
 
 GetEventTypeNameOk returns a tuple with the EventTypeName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEventTypeName
 
-`func (o *AlertConfigViewForNdsGroup) SetEventTypeName(v ServerlessEventTypeViewAlertable)`
+`func (o *AlertConfigViewForNdsGroup) SetEventTypeName(v string)`
 
 SetEventTypeName sets EventTypeName field to given value.
 

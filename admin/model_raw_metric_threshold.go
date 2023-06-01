@@ -14,11 +14,13 @@ type RawMetricThreshold struct {
 	// Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
 	MetricName *string `json:"metricName,omitempty"`
 	// MongoDB Cloud computes the current metric value as an average.
-	Mode     *string   `json:"mode,omitempty"`
-	Operator *Operator `json:"operator,omitempty"`
+	Mode *string `json:"mode,omitempty"`
+	// Comparison operator to apply when checking the current metric value.
+	Operator *string `json:"operator,omitempty"`
 	// Value of metric that, when exceeded, triggers an alert.
-	Threshold *float64        `json:"threshold,omitempty"`
-	Units     *RawMetricUnits `json:"units,omitempty"`
+	Threshold *float64 `json:"threshold,omitempty"`
+	// Element used to express the quantity. This can be an element of time, storage capacity, and the like.
+	Units *string `json:"units,omitempty"`
 }
 
 // NewRawMetricThreshold instantiates a new RawMetricThreshold object
@@ -27,7 +29,7 @@ type RawMetricThreshold struct {
 // will change when the set of required properties is changed
 func NewRawMetricThreshold() *RawMetricThreshold {
 	this := RawMetricThreshold{}
-	var units RawMetricUnits = RAWMETRICUNITS_RAW
+	var units string = "RAW"
 	this.Units = &units
 	return &this
 }
@@ -37,7 +39,7 @@ func NewRawMetricThreshold() *RawMetricThreshold {
 // but it doesn't guarantee that properties required by API are set
 func NewRawMetricThresholdWithDefaults() *RawMetricThreshold {
 	this := RawMetricThreshold{}
-	var units RawMetricUnits = RAWMETRICUNITS_RAW
+	var units string = "RAW"
 	this.Units = &units
 	return &this
 }
@@ -107,9 +109,9 @@ func (o *RawMetricThreshold) SetMode(v string) {
 }
 
 // GetOperator returns the Operator field value if set, zero value otherwise.
-func (o *RawMetricThreshold) GetOperator() Operator {
+func (o *RawMetricThreshold) GetOperator() string {
 	if o == nil || IsNil(o.Operator) {
-		var ret Operator
+		var ret string
 		return ret
 	}
 	return *o.Operator
@@ -117,7 +119,7 @@ func (o *RawMetricThreshold) GetOperator() Operator {
 
 // GetOperatorOk returns a tuple with the Operator field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RawMetricThreshold) GetOperatorOk() (*Operator, bool) {
+func (o *RawMetricThreshold) GetOperatorOk() (*string, bool) {
 	if o == nil || IsNil(o.Operator) {
 		return nil, false
 	}
@@ -133,8 +135,8 @@ func (o *RawMetricThreshold) HasOperator() bool {
 	return false
 }
 
-// SetOperator gets a reference to the given Operator and assigns it to the Operator field.
-func (o *RawMetricThreshold) SetOperator(v Operator) {
+// SetOperator gets a reference to the given string and assigns it to the Operator field.
+func (o *RawMetricThreshold) SetOperator(v string) {
 	o.Operator = &v
 }
 
@@ -171,9 +173,9 @@ func (o *RawMetricThreshold) SetThreshold(v float64) {
 }
 
 // GetUnits returns the Units field value if set, zero value otherwise.
-func (o *RawMetricThreshold) GetUnits() RawMetricUnits {
+func (o *RawMetricThreshold) GetUnits() string {
 	if o == nil || IsNil(o.Units) {
-		var ret RawMetricUnits
+		var ret string
 		return ret
 	}
 	return *o.Units
@@ -181,7 +183,7 @@ func (o *RawMetricThreshold) GetUnits() RawMetricUnits {
 
 // GetUnitsOk returns a tuple with the Units field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RawMetricThreshold) GetUnitsOk() (*RawMetricUnits, bool) {
+func (o *RawMetricThreshold) GetUnitsOk() (*string, bool) {
 	if o == nil || IsNil(o.Units) {
 		return nil, false
 	}
@@ -197,8 +199,8 @@ func (o *RawMetricThreshold) HasUnits() bool {
 	return false
 }
 
-// SetUnits gets a reference to the given RawMetricUnits and assigns it to the Units field.
-func (o *RawMetricThreshold) SetUnits(v RawMetricUnits) {
+// SetUnits gets a reference to the given string and assigns it to the Units field.
+func (o *RawMetricThreshold) SetUnits(v string) {
 	o.Units = &v
 }
 

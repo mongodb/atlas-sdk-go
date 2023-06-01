@@ -15,8 +15,9 @@ type EventViewForOrg struct {
 	// Unique 24-hexadecimal digit string that identifies the [API Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key) that triggered the event. If this resource returns this parameter, it doesn't return the **userId** parameter.
 	ApiKeyId *string `json:"apiKeyId,omitempty"`
 	// Date and time when this event occurred. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC.
-	Created       *time.Time               `json:"created,omitempty"`
-	EventTypeName *UserEventTypeViewForOrg `json:"eventTypeName,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
+	// Unique identifier of event type.
+	EventTypeName *string `json:"eventTypeName,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The **eventId** identifies the specific event.
 	GroupId *string `json:"groupId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the event.
@@ -134,9 +135,9 @@ func (o *EventViewForOrg) SetCreated(v time.Time) {
 }
 
 // GetEventTypeName returns the EventTypeName field value if set, zero value otherwise.
-func (o *EventViewForOrg) GetEventTypeName() UserEventTypeViewForOrg {
+func (o *EventViewForOrg) GetEventTypeName() string {
 	if o == nil || IsNil(o.EventTypeName) {
-		var ret UserEventTypeViewForOrg
+		var ret string
 		return ret
 	}
 	return *o.EventTypeName
@@ -144,7 +145,7 @@ func (o *EventViewForOrg) GetEventTypeName() UserEventTypeViewForOrg {
 
 // GetEventTypeNameOk returns a tuple with the EventTypeName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EventViewForOrg) GetEventTypeNameOk() (*UserEventTypeViewForOrg, bool) {
+func (o *EventViewForOrg) GetEventTypeNameOk() (*string, bool) {
 	if o == nil || IsNil(o.EventTypeName) {
 		return nil, false
 	}
@@ -160,8 +161,8 @@ func (o *EventViewForOrg) HasEventTypeName() bool {
 	return false
 }
 
-// SetEventTypeName gets a reference to the given UserEventTypeViewForOrg and assigns it to the EventTypeName field.
-func (o *EventViewForOrg) SetEventTypeName(v UserEventTypeViewForOrg) {
+// SetEventTypeName gets a reference to the given string and assigns it to the EventTypeName field.
+func (o *EventViewForOrg) SetEventTypeName(v string) {
 	o.EventTypeName = &v
 }
 

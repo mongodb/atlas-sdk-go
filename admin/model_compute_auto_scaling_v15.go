@@ -12,9 +12,11 @@ var _ MappedNullable = &ComputeAutoScalingV15{}
 // ComputeAutoScalingV15 Options that determine how this cluster handles CPU scaling.
 type ComputeAutoScalingV15 struct {
 	// Flag that indicates whether someone enabled instance size auto-scaling.  - Set to `true` to enable instance size auto-scaling. If enabled, you must specify a value for **replicationSpecs[n].regionConfigs[m].autoScaling.compute.maxInstanceSize**. - Set to `false` to disable instance size automatic scaling.
-	Enabled         *bool         `json:"enabled,omitempty"`
-	MaxInstanceSize *InstanceSize `json:"maxInstanceSize,omitempty"`
-	MinInstanceSize *InstanceSize `json:"minInstanceSize,omitempty"`
+	Enabled *bool `json:"enabled,omitempty"`
+	// Minimum instance size to which your cluster can automatically scale. MongoDB Cloud requires this parameter if `\"replicationSpecs[n].regionConfigs[m].autoScaling.compute.scaleDownEnabled\" : true`.
+	MaxInstanceSize *string `json:"maxInstanceSize,omitempty"`
+	// Minimum instance size to which your cluster can automatically scale. MongoDB Cloud requires this parameter if `\"replicationSpecs[n].regionConfigs[m].autoScaling.compute.scaleDownEnabled\" : true`.
+	MinInstanceSize *string `json:"minInstanceSize,omitempty"`
 	// Flag that indicates whether the instance size may scale down. MongoDB Cloud requires this parameter if `\"replicationSpecs[n].regionConfigs[m].autoScaling.compute.enabled\" : true`. If you enable this option, specify a value for **replicationSpecs[n].regionConfigs[m].autoScaling.compute.minInstanceSize**.
 	ScaleDownEnabled *bool `json:"scaleDownEnabled,omitempty"`
 }
@@ -69,9 +71,9 @@ func (o *ComputeAutoScalingV15) SetEnabled(v bool) {
 }
 
 // GetMaxInstanceSize returns the MaxInstanceSize field value if set, zero value otherwise.
-func (o *ComputeAutoScalingV15) GetMaxInstanceSize() InstanceSize {
+func (o *ComputeAutoScalingV15) GetMaxInstanceSize() string {
 	if o == nil || IsNil(o.MaxInstanceSize) {
-		var ret InstanceSize
+		var ret string
 		return ret
 	}
 	return *o.MaxInstanceSize
@@ -79,7 +81,7 @@ func (o *ComputeAutoScalingV15) GetMaxInstanceSize() InstanceSize {
 
 // GetMaxInstanceSizeOk returns a tuple with the MaxInstanceSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ComputeAutoScalingV15) GetMaxInstanceSizeOk() (*InstanceSize, bool) {
+func (o *ComputeAutoScalingV15) GetMaxInstanceSizeOk() (*string, bool) {
 	if o == nil || IsNil(o.MaxInstanceSize) {
 		return nil, false
 	}
@@ -95,15 +97,15 @@ func (o *ComputeAutoScalingV15) HasMaxInstanceSize() bool {
 	return false
 }
 
-// SetMaxInstanceSize gets a reference to the given InstanceSize and assigns it to the MaxInstanceSize field.
-func (o *ComputeAutoScalingV15) SetMaxInstanceSize(v InstanceSize) {
+// SetMaxInstanceSize gets a reference to the given string and assigns it to the MaxInstanceSize field.
+func (o *ComputeAutoScalingV15) SetMaxInstanceSize(v string) {
 	o.MaxInstanceSize = &v
 }
 
 // GetMinInstanceSize returns the MinInstanceSize field value if set, zero value otherwise.
-func (o *ComputeAutoScalingV15) GetMinInstanceSize() InstanceSize {
+func (o *ComputeAutoScalingV15) GetMinInstanceSize() string {
 	if o == nil || IsNil(o.MinInstanceSize) {
-		var ret InstanceSize
+		var ret string
 		return ret
 	}
 	return *o.MinInstanceSize
@@ -111,7 +113,7 @@ func (o *ComputeAutoScalingV15) GetMinInstanceSize() InstanceSize {
 
 // GetMinInstanceSizeOk returns a tuple with the MinInstanceSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ComputeAutoScalingV15) GetMinInstanceSizeOk() (*InstanceSize, bool) {
+func (o *ComputeAutoScalingV15) GetMinInstanceSizeOk() (*string, bool) {
 	if o == nil || IsNil(o.MinInstanceSize) {
 		return nil, false
 	}
@@ -127,8 +129,8 @@ func (o *ComputeAutoScalingV15) HasMinInstanceSize() bool {
 	return false
 }
 
-// SetMinInstanceSize gets a reference to the given InstanceSize and assigns it to the MinInstanceSize field.
-func (o *ComputeAutoScalingV15) SetMinInstanceSize(v InstanceSize) {
+// SetMinInstanceSize gets a reference to the given string and assigns it to the MinInstanceSize field.
+func (o *ComputeAutoScalingV15) SetMinInstanceSize(v string) {
 	o.MinInstanceSize = &v
 }
 

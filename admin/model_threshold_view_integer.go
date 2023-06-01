@@ -11,7 +11,8 @@ var _ MappedNullable = &ThresholdViewInteger{}
 
 // ThresholdViewInteger A Limit that triggers an alert when  exceeded. The resource returns this parameter when **eventTypeName** has not been set to `OUTSIDE_METRIC_THRESHOLD`.
 type ThresholdViewInteger struct {
-	Operator *Operator `json:"operator,omitempty"`
+	// Comparison operator to apply when checking the current metric value.
+	Operator *string `json:"operator,omitempty"`
 	// Value of metric that, when exceeded, triggers an alert.
 	Threshold *int `json:"threshold,omitempty"`
 	// Element used to express the quantity. This can be an element of time, storage capacity, and the like.
@@ -36,9 +37,9 @@ func NewThresholdViewIntegerWithDefaults() *ThresholdViewInteger {
 }
 
 // GetOperator returns the Operator field value if set, zero value otherwise.
-func (o *ThresholdViewInteger) GetOperator() Operator {
+func (o *ThresholdViewInteger) GetOperator() string {
 	if o == nil || IsNil(o.Operator) {
-		var ret Operator
+		var ret string
 		return ret
 	}
 	return *o.Operator
@@ -46,7 +47,7 @@ func (o *ThresholdViewInteger) GetOperator() Operator {
 
 // GetOperatorOk returns a tuple with the Operator field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ThresholdViewInteger) GetOperatorOk() (*Operator, bool) {
+func (o *ThresholdViewInteger) GetOperatorOk() (*string, bool) {
 	if o == nil || IsNil(o.Operator) {
 		return nil, false
 	}
@@ -62,8 +63,8 @@ func (o *ThresholdViewInteger) HasOperator() bool {
 	return false
 }
 
-// SetOperator gets a reference to the given Operator and assigns it to the Operator field.
-func (o *ThresholdViewInteger) SetOperator(v Operator) {
+// SetOperator gets a reference to the given string and assigns it to the Operator field.
+func (o *ThresholdViewInteger) SetOperator(v string) {
 	o.Operator = &v
 }
 

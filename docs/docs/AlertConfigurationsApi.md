@@ -245,7 +245,7 @@ Name | Type | Description  | Notes
 
 ## ListAlertConfigurationMatchersFieldNames
 
-> []MatcherField ListAlertConfigurationMatchersFieldNames(ctx).Execute()
+> []string ListAlertConfigurationMatchersFieldNames(ctx).Execute()
 
 Get All Alert Configuration Matchers Field Names
 
@@ -277,7 +277,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `ListAlertConfigurationMatchersFieldNames`: []MatcherField
+    // response from `ListAlertConfigurationMatchersFieldNames`: []string
     fmt.Fprintf(os.Stdout, "Response from `AlertConfigurationsApi.ListAlertConfigurationMatchersFieldNames`: %v\n", resp)
 }
 ```
@@ -293,7 +293,7 @@ Other parameters are passed through a pointer to a apiListAlertConfigurationMatc
 
 ### Return type
 
-[**[]MatcherField**](MatcherField.md)
+**[]string**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

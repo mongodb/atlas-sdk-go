@@ -14,11 +14,13 @@ type TimeMetricThreshold struct {
 	// Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
 	MetricName *string `json:"metricName,omitempty"`
 	// MongoDB Cloud computes the current metric value as an average.
-	Mode     *string   `json:"mode,omitempty"`
-	Operator *Operator `json:"operator,omitempty"`
+	Mode *string `json:"mode,omitempty"`
+	// Comparison operator to apply when checking the current metric value.
+	Operator *string `json:"operator,omitempty"`
 	// Value of metric that, when exceeded, triggers an alert.
-	Threshold *float64         `json:"threshold,omitempty"`
-	Units     *TimeMetricUnits `json:"units,omitempty"`
+	Threshold *float64 `json:"threshold,omitempty"`
+	// Element used to express the quantity. This can be an element of time, storage capacity, and the like.
+	Units *string `json:"units,omitempty"`
 }
 
 // NewTimeMetricThreshold instantiates a new TimeMetricThreshold object
@@ -27,7 +29,7 @@ type TimeMetricThreshold struct {
 // will change when the set of required properties is changed
 func NewTimeMetricThreshold() *TimeMetricThreshold {
 	this := TimeMetricThreshold{}
-	var units TimeMetricUnits = TIMEMETRICUNITS_HOURS
+	var units string = "HOURS"
 	this.Units = &units
 	return &this
 }
@@ -37,7 +39,7 @@ func NewTimeMetricThreshold() *TimeMetricThreshold {
 // but it doesn't guarantee that properties required by API are set
 func NewTimeMetricThresholdWithDefaults() *TimeMetricThreshold {
 	this := TimeMetricThreshold{}
-	var units TimeMetricUnits = TIMEMETRICUNITS_HOURS
+	var units string = "HOURS"
 	this.Units = &units
 	return &this
 }
@@ -107,9 +109,9 @@ func (o *TimeMetricThreshold) SetMode(v string) {
 }
 
 // GetOperator returns the Operator field value if set, zero value otherwise.
-func (o *TimeMetricThreshold) GetOperator() Operator {
+func (o *TimeMetricThreshold) GetOperator() string {
 	if o == nil || IsNil(o.Operator) {
-		var ret Operator
+		var ret string
 		return ret
 	}
 	return *o.Operator
@@ -117,7 +119,7 @@ func (o *TimeMetricThreshold) GetOperator() Operator {
 
 // GetOperatorOk returns a tuple with the Operator field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TimeMetricThreshold) GetOperatorOk() (*Operator, bool) {
+func (o *TimeMetricThreshold) GetOperatorOk() (*string, bool) {
 	if o == nil || IsNil(o.Operator) {
 		return nil, false
 	}
@@ -133,8 +135,8 @@ func (o *TimeMetricThreshold) HasOperator() bool {
 	return false
 }
 
-// SetOperator gets a reference to the given Operator and assigns it to the Operator field.
-func (o *TimeMetricThreshold) SetOperator(v Operator) {
+// SetOperator gets a reference to the given string and assigns it to the Operator field.
+func (o *TimeMetricThreshold) SetOperator(v string) {
 	o.Operator = &v
 }
 
@@ -171,9 +173,9 @@ func (o *TimeMetricThreshold) SetThreshold(v float64) {
 }
 
 // GetUnits returns the Units field value if set, zero value otherwise.
-func (o *TimeMetricThreshold) GetUnits() TimeMetricUnits {
+func (o *TimeMetricThreshold) GetUnits() string {
 	if o == nil || IsNil(o.Units) {
-		var ret TimeMetricUnits
+		var ret string
 		return ret
 	}
 	return *o.Units
@@ -181,7 +183,7 @@ func (o *TimeMetricThreshold) GetUnits() TimeMetricUnits {
 
 // GetUnitsOk returns a tuple with the Units field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TimeMetricThreshold) GetUnitsOk() (*TimeMetricUnits, bool) {
+func (o *TimeMetricThreshold) GetUnitsOk() (*string, bool) {
 	if o == nil || IsNil(o.Units) {
 		return nil, false
 	}
@@ -197,8 +199,8 @@ func (o *TimeMetricThreshold) HasUnits() bool {
 	return false
 }
 
-// SetUnits gets a reference to the given TimeMetricUnits and assigns it to the Units field.
-func (o *TimeMetricThreshold) SetUnits(v TimeMetricUnits) {
+// SetUnits gets a reference to the given string and assigns it to the Units field.
+func (o *TimeMetricThreshold) SetUnits(v string) {
 	o.Units = &v
 }
 

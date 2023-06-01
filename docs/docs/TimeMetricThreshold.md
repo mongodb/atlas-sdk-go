@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **MetricName** | Pointer to **string** | Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**. | [optional] 
 **Mode** | Pointer to **string** | MongoDB Cloud computes the current metric value as an average. | [optional] 
-**Operator** | Pointer to [**Operator**](Operator.md) |  | [optional] 
+**Operator** | Pointer to **string** | Comparison operator to apply when checking the current metric value. | [optional] 
 **Threshold** | Pointer to **float64** | Value of metric that, when exceeded, triggers an alert. | [optional] 
-**Units** | Pointer to [**TimeMetricUnits**](TimeMetricUnits.md) |  | [optional] [default to TIMEMETRICUNITS_HOURS]
+**Units** | Pointer to **string** | Element used to express the quantity. This can be an element of time, storage capacity, and the like. | [optional] [default to "HOURS"]
 
 ## Methods
 
@@ -81,20 +81,20 @@ HasMode returns a boolean if a field has been set.
 
 ### GetOperator
 
-`func (o *TimeMetricThreshold) GetOperator() Operator`
+`func (o *TimeMetricThreshold) GetOperator() string`
 
 GetOperator returns the Operator field if non-nil, zero value otherwise.
 
 ### GetOperatorOk
 
-`func (o *TimeMetricThreshold) GetOperatorOk() (*Operator, bool)`
+`func (o *TimeMetricThreshold) GetOperatorOk() (*string, bool)`
 
 GetOperatorOk returns a tuple with the Operator field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOperator
 
-`func (o *TimeMetricThreshold) SetOperator(v Operator)`
+`func (o *TimeMetricThreshold) SetOperator(v string)`
 
 SetOperator sets Operator field to given value.
 
@@ -131,20 +131,20 @@ HasThreshold returns a boolean if a field has been set.
 
 ### GetUnits
 
-`func (o *TimeMetricThreshold) GetUnits() TimeMetricUnits`
+`func (o *TimeMetricThreshold) GetUnits() string`
 
 GetUnits returns the Units field if non-nil, zero value otherwise.
 
 ### GetUnitsOk
 
-`func (o *TimeMetricThreshold) GetUnitsOk() (*TimeMetricUnits, bool)`
+`func (o *TimeMetricThreshold) GetUnitsOk() (*string, bool)`
 
 GetUnitsOk returns a tuple with the Units field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUnits
 
-`func (o *TimeMetricThreshold) SetUnits(v TimeMetricUnits)`
+`func (o *TimeMetricThreshold) SetUnits(v string)`
 
 SetUnits sets Units field to given value.
 

@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **MetricName** | Pointer to **string** | Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**. | [optional] 
 **Mode** | Pointer to **string** | MongoDB Cloud computes the current metric value as an average. | [optional] 
-**Operator** | Pointer to [**Operator**](Operator.md) |  | [optional] 
+**Operator** | Pointer to **string** | Comparison operator to apply when checking the current metric value. | [optional] 
 **Threshold** | Pointer to **float64** | Value of metric that, when exceeded, triggers an alert. | [optional] 
-**Units** | Pointer to [**DataMetricUnits**](DataMetricUnits.md) |  | [optional] 
+**Units** | Pointer to **string** | Element used to express the quantity. This can be an element of time, storage capacity, and the like. | [optional] 
 
 ## Methods
 
@@ -81,20 +81,20 @@ HasMode returns a boolean if a field has been set.
 
 ### GetOperator
 
-`func (o *DataMetricThreshold) GetOperator() Operator`
+`func (o *DataMetricThreshold) GetOperator() string`
 
 GetOperator returns the Operator field if non-nil, zero value otherwise.
 
 ### GetOperatorOk
 
-`func (o *DataMetricThreshold) GetOperatorOk() (*Operator, bool)`
+`func (o *DataMetricThreshold) GetOperatorOk() (*string, bool)`
 
 GetOperatorOk returns a tuple with the Operator field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOperator
 
-`func (o *DataMetricThreshold) SetOperator(v Operator)`
+`func (o *DataMetricThreshold) SetOperator(v string)`
 
 SetOperator sets Operator field to given value.
 
@@ -131,20 +131,20 @@ HasThreshold returns a boolean if a field has been set.
 
 ### GetUnits
 
-`func (o *DataMetricThreshold) GetUnits() DataMetricUnits`
+`func (o *DataMetricThreshold) GetUnits() string`
 
 GetUnits returns the Units field if non-nil, zero value otherwise.
 
 ### GetUnitsOk
 
-`func (o *DataMetricThreshold) GetUnitsOk() (*DataMetricUnits, bool)`
+`func (o *DataMetricThreshold) GetUnitsOk() (*string, bool)`
 
 GetUnitsOk returns a tuple with the Units field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUnits
 
-`func (o *DataMetricThreshold) SetUnits(v DataMetricUnits)`
+`func (o *DataMetricThreshold) SetUnits(v string)`
 
 SetUnits sets Units field to given value.
 

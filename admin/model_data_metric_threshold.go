@@ -14,11 +14,13 @@ type DataMetricThreshold struct {
 	// Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
 	MetricName *string `json:"metricName,omitempty"`
 	// MongoDB Cloud computes the current metric value as an average.
-	Mode     *string   `json:"mode,omitempty"`
-	Operator *Operator `json:"operator,omitempty"`
+	Mode *string `json:"mode,omitempty"`
+	// Comparison operator to apply when checking the current metric value.
+	Operator *string `json:"operator,omitempty"`
 	// Value of metric that, when exceeded, triggers an alert.
-	Threshold *float64         `json:"threshold,omitempty"`
-	Units     *DataMetricUnits `json:"units,omitempty"`
+	Threshold *float64 `json:"threshold,omitempty"`
+	// Element used to express the quantity. This can be an element of time, storage capacity, and the like.
+	Units *string `json:"units,omitempty"`
 }
 
 // NewDataMetricThreshold instantiates a new DataMetricThreshold object
@@ -103,9 +105,9 @@ func (o *DataMetricThreshold) SetMode(v string) {
 }
 
 // GetOperator returns the Operator field value if set, zero value otherwise.
-func (o *DataMetricThreshold) GetOperator() Operator {
+func (o *DataMetricThreshold) GetOperator() string {
 	if o == nil || IsNil(o.Operator) {
-		var ret Operator
+		var ret string
 		return ret
 	}
 	return *o.Operator
@@ -113,7 +115,7 @@ func (o *DataMetricThreshold) GetOperator() Operator {
 
 // GetOperatorOk returns a tuple with the Operator field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DataMetricThreshold) GetOperatorOk() (*Operator, bool) {
+func (o *DataMetricThreshold) GetOperatorOk() (*string, bool) {
 	if o == nil || IsNil(o.Operator) {
 		return nil, false
 	}
@@ -129,8 +131,8 @@ func (o *DataMetricThreshold) HasOperator() bool {
 	return false
 }
 
-// SetOperator gets a reference to the given Operator and assigns it to the Operator field.
-func (o *DataMetricThreshold) SetOperator(v Operator) {
+// SetOperator gets a reference to the given string and assigns it to the Operator field.
+func (o *DataMetricThreshold) SetOperator(v string) {
 	o.Operator = &v
 }
 
@@ -167,9 +169,9 @@ func (o *DataMetricThreshold) SetThreshold(v float64) {
 }
 
 // GetUnits returns the Units field value if set, zero value otherwise.
-func (o *DataMetricThreshold) GetUnits() DataMetricUnits {
+func (o *DataMetricThreshold) GetUnits() string {
 	if o == nil || IsNil(o.Units) {
-		var ret DataMetricUnits
+		var ret string
 		return ret
 	}
 	return *o.Units
@@ -177,7 +179,7 @@ func (o *DataMetricThreshold) GetUnits() DataMetricUnits {
 
 // GetUnitsOk returns a tuple with the Units field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DataMetricThreshold) GetUnitsOk() (*DataMetricUnits, bool) {
+func (o *DataMetricThreshold) GetUnitsOk() (*string, bool) {
 	if o == nil || IsNil(o.Units) {
 		return nil, false
 	}
@@ -193,8 +195,8 @@ func (o *DataMetricThreshold) HasUnits() bool {
 	return false
 }
 
-// SetUnits gets a reference to the given DataMetricUnits and assigns it to the Units field.
-func (o *DataMetricThreshold) SetUnits(v DataMetricUnits) {
+// SetUnits gets a reference to the given string and assigns it to the Units field.
+func (o *DataMetricThreshold) SetUnits(v string) {
 	o.Units = &v
 }
 

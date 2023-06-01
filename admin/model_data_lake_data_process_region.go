@@ -12,15 +12,16 @@ var _ MappedNullable = &DataLakeDataProcessRegion{}
 // DataLakeDataProcessRegion Information about the cloud provider region to which the data lake routes client connections. MongoDB Cloud supports AWS only.
 type DataLakeDataProcessRegion struct {
 	// Name of the cloud service that hosts the data lake's data stores.
-	CloudProvider string         `json:"cloudProvider"`
-	Region        DataLakeRegion `json:"region"`
+	CloudProvider string `json:"cloudProvider"`
+	// Atlas Data Lake Regions.
+	Region string `json:"region"`
 }
 
 // NewDataLakeDataProcessRegion instantiates a new DataLakeDataProcessRegion object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDataLakeDataProcessRegion(cloudProvider string, region DataLakeRegion) *DataLakeDataProcessRegion {
+func NewDataLakeDataProcessRegion(cloudProvider string, region string) *DataLakeDataProcessRegion {
 	this := DataLakeDataProcessRegion{}
 	this.CloudProvider = cloudProvider
 	this.Region = region
@@ -60,9 +61,9 @@ func (o *DataLakeDataProcessRegion) SetCloudProvider(v string) {
 }
 
 // GetRegion returns the Region field value
-func (o *DataLakeDataProcessRegion) GetRegion() DataLakeRegion {
+func (o *DataLakeDataProcessRegion) GetRegion() string {
 	if o == nil {
-		var ret DataLakeRegion
+		var ret string
 		return ret
 	}
 
@@ -71,7 +72,7 @@ func (o *DataLakeDataProcessRegion) GetRegion() DataLakeRegion {
 
 // GetRegionOk returns a tuple with the Region field value
 // and a boolean to check if the value has been set.
-func (o *DataLakeDataProcessRegion) GetRegionOk() (*DataLakeRegion, bool) {
+func (o *DataLakeDataProcessRegion) GetRegionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -79,7 +80,7 @@ func (o *DataLakeDataProcessRegion) GetRegionOk() (*DataLakeRegion, bool) {
 }
 
 // SetRegion sets field value
-func (o *DataLakeDataProcessRegion) SetRegion(v DataLakeRegion) {
+func (o *DataLakeDataProcessRegion) SetRegion(v string) {
 	o.Region = v
 }
 
