@@ -1,30 +1,21 @@
-# Migration Guide
+# Migrate from the Go HTTP Client to the Atlas Go SDK
 
-This document is meant to help you migrate from [go-client-mongodb-atlas](https://github.com/mongodb/go-client-mongodb-atlas) to [mongodb/atlas-sdk-go](https://github.com/mongodb/atlas-sdk-go).
+Use this guide to migrate from the Go HTTP client ([go-client-mongodb-atlas](https://github.com/mongodb/go-client-mongodb-atlas)) to the Atlas Go SDK ([mongodb/atlas-sdk-go](https://github.com/mongodb/atlas-sdk-go)).
 
-## Summary
-
-End users can migrate from [mongodb/go-client-mongodb-atlas](https://github.com/mongodb/go-client-mongodb-atlas) to [mongodb/atlas-sdk-go](https://github.com/mongodb/atlas-sdk-go) partially
-by using both librarires at the same time. 
-
-An [go-client-mongodb-atlas](https://github.com/mongodb/go-client-mongodb-atlas) will no longer receive major feature updates.
-We strongly recommend updating to [mongodb/atlas-sdk-go](https://github.com/mongodb/atlas-sdk-go) for the latest changes.
+The [go-client-mongodb-atlas](https://github.com/mongodb/go-client-mongodb-atlas) is deprecated and doesn't receive major feature updates. We strongly recommend migrating to the [Atlas Go SDK](https://github.com/mongodb/atlas-sdk-go) for the latest changes. You can also migrate partially by using both libraries at the same time. 
 
 ## Background
 
-[mongodb/atlas-sdk-go](https://github.com/mongodb/atlas-sdk-go) is based on Atlas V2 API. 
-Atlas-sdk-go hides a complexity related to Versioned API by exposing versioned API as golang methods.
-End users need to be aware that major sdk releases can introduce breaking changes only in the small subset of the Atlas APIs.
+The Atlas Go SDK ([mongodb/atlas-sdk-go](https://github.com/mongodb/atlas-sdk-go)) is based on the Atlas Admin API V2. 
+The Atlas Go SDK simplifies the complexity of the versioned API by exposing the versioned API as Golang methods. Major SDK releases can introduce breaking changes only in a small subset of the Atlas Admin API endpoints.
 
-## Structural changes
+## Structural Changes
 
-SDK have been rewriten completely from scratch. 
-Our team made attempts to minimize amount of changes required for the end users. 
-brings a number of changes in how API requests are made. 
+The Atlas Go SDK doesn't rely on the deprecated [go-client-mongodb-atlas](https://github.com/mongodb/go-client-mongodb-atlas). It changes how API requests are made, but minimizes the changes required for the end users.
 
 ### Client Initialization
 
-New SDK has different methods for the initialization of the clients. 
+The Atlas Go SDK has different methods for the initialization of the clients:
 
 ```go
 import admin "go.mongodb.org/atlas-sdk/admin" 
@@ -33,24 +24,25 @@ sdk, err := admin.NewClient(
     admin.UseDigestAuth(apiKey, apiSecret))
 ```
 
-Note: Both SDKs use Digest based authentication. The same credentials will apply. 
+Note: Both the deprecated [go-client-mongodb-atlas](https://github.com/mongodb/go-client-mongodb-atlas) and the Atlas Go SDK use Digest-based authentication. The same credentials apply. 
 
-Please follow [authentication guide](https://github.com/mongodb/atlas-sdk-go#authentication) for more information.
+To learn more, see [Authenticate using the Atlas Go SDK](https://github.com/mongodb/atlas-sdk-go#authentication).
 
-### Error handling 
+### Error Handling 
 
-Error handling requires developers to use dedicated methods for casting errors to APIError objects.
+Error handling requires developers to use dedicated methods for casting errors to API error objects:
 
 ```go
     apiErr, _ := admin.AsError(err)
     log.Fatalf("Error when performing SDK request: %v", apiErr.GetDetail())
 ```
-Please follow [error handling guide](https://github.com/mongodb/atlas-sdk-go#error-handling) for more information.
+To learn more, see [Error Handling](https://github.com/mongodb/atlas-sdk-go#error-handling).
 
-### Format of the API interface
+### Format of the API Interface
 
-API interface has changed to differentiate APIs from other methods in the SDK.  
-Each API method has an Api suffix. For example:
+The Atlas Go SDK changes the API interface to differentiate APIs from other methods.  
+
+Each API method has an API suffix. For example:
 
 `sdk.Projects` will now `sdk.ProjectsApi`
 
@@ -58,20 +50,18 @@ Each method now explains the object that is created. For example:
 
 `sdk.Projects.create()` will become `sdk.ProjectsApi.createProject(...)`
 
-Please refer to the [endpoint documentation](https://github.com/mongodb/go-client-mongodb-atlas/tree/main/mongodbatlasv2#documentation-for-api-endpoints) for more information.
+To learn more, see the [Endpoint Documentation](https://github.com/mongodb/go-client-mongodb-atlas/tree/main/mongodbatlasv2#documentation-for-api-endpoints).
 
-### Different naming conventions for SDK methods
+### Different Naming Conventions for SDK Methods
 
 Model names and properties are formatted in PascalCase format for clarity and predictability of the methods and field names. 
 For example, _ClusterAWSProviderSettings_ will become now _ClusterAwsProviderSettings_.  
 
-The same applies to property names:
+The same applies to property names. For example, `ID` fields will become `Id` etc. 
 
-For example, `ID` fields will become `Id` etc. 
+### Multiple Choices when Creating Request Body Objects
 
-### Multiple choices when creating request body objects
-
-New SDK improves clarity for request and response objects. For situations when the endpoint accepts multiple formats of the payload (polymorphism), users are able to specify instances of the Api models they want to use for a particular request. For example, when creating a cluster we can use one of the dedicated RegionConfigs objects (AWSRegionConfig, GCPRegionConfig, etc.): 
+The Atlas Go SDK improves the clarity for request and response objects. For situations when the endpoint accepts multiple formats of the payload (polymorphism), you can specify instances of the API models that you want to use for a particular request. For example, when creating a cluster you can use one of the dedicated RegionConfigs objects (AWSRegionConfig, GCPRegionConfig, etc.): 
 
 
 ```go

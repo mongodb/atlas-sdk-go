@@ -1,7 +1,7 @@
-# Authentication
+# Authenticate using the Atlas Go SDK
 
 The `atlas-sdk-go` library uses Digest authentication. 
-To obtain authentication tokens users can use Atlas UI or Atlas CLI 
+You can [create an API key](https://www.mongodb.com/docs/atlas/configure-api-access/#create-an-api-key-in-an-organization) through the Atlas UI or the Atlas CLI.
 
-For more information please follow: https://www.mongodb.com/docs/atlas/api/api-authentication
+To learn more about API authentication, see  [Atlas Administration API Authentication](https://www.mongodb.com/docs/atlas/api/api-authentication).
 
