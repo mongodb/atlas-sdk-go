@@ -3,7 +3,7 @@
 
 You can obtain detailed information about errors returned by the API when you use the Atlas Go SDK. Use the error code to determine the cause of the error. To learn more about API error codes, see [Atlas Administration API Error Codes](https://www.mongodb.com/docs/atlas/reference/api-errors/).
 
-Errors are represented by [ErrorObject](./admin/model_error.go).
+Errors are represented by [ErrorObject](https://github.com/mongodb/atlas-sdk-go/blob/main/admin/model_error.go).
 
 ## Fetching Error Object
 

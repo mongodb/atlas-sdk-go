@@ -49,4 +49,4 @@ Use the `{Operation}()` method to perform modifications. For example:
 
 ## Example
 
-To learn more about using the SDK, see the [basic example](../examples/)
+To learn more about using the SDK, see the [basic example](https://github.com/mongodb/atlas-sdk-go/blob/main/examples/basic/basic.go).
