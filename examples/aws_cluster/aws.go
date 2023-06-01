@@ -136,14 +136,12 @@ func createClusterRequest(projectId string) *admin.ClusterDescriptionV15 {
 				NumShards: &numShards,
 				RegionConfigs: []admin.RegionConfig{
 					{
-						AWSRegionConfig: &admin.AWSRegionConfig{
-							ProviderName: &providerName,
-							Priority:     &priority,
-							RegionName:   &regionName,
-							ElectableSpecs: &admin.HardwareSpec{
-								InstanceSize: &instanceSize,
-								NodeCount:    &nodeCount,
-							},
+						ProviderName: &providerName,
+						Priority:     &priority,
+						RegionName:   &regionName,
+						ElectableSpecs: &admin.HardwareSpec{
+							InstanceSize: &instanceSize,
+							NodeCount:    &nodeCount,
 						},
 					},
 				},

@@ -133,4 +133,5 @@ function canApplyOneOfTransformation(obj, api) {
 module.exports = {
   applyOneOfTransformations,
   transformOneOf,
+  transformOneOfProperties,
 };

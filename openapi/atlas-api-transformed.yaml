@@ -25103,177 +25103,6 @@ components:
           type: string
       required:
         - providerName
-    AWSRegionConfig:
-      type: object
-      description: Details that explain how MongoDB Cloud replicates data in one
-        region on the specified MongoDB database.
-      title: AWS Regional Replication Specifications
-      properties:
-        analyticsAutoScaling:
-          $ref: "#/components/schemas/AutoScalingV15"
-        analyticsSpecs:
-          $ref: "#/components/schemas/DedicatedHardwareSpec"
-        autoScaling:
-          $ref: "#/components/schemas/AutoScalingV15"
-        readOnlySpecs:
-          $ref: "#/components/schemas/DedicatedHardwareSpec"
-        electableSpecs:
-          $ref: "#/components/schemas/HardwareSpec"
-        priority:
-          type: integer
-          format: int32
-          description: >-
-            Precedence is given to this region when a primary election occurs.
-            If your **regionConfigs** has only **readOnlySpecs**,
-            **analyticsSpecs**, or both, set this value to `0`. If you have
-            multiple **regionConfigs** objects (your cluster is multi-region or
-            multi-cloud), they must have priorities in descending order. The
-            highest priority is `7`.
-
-
-            **Example:** If you have three regions, their priorities would be `7`, `6`, and `5` respectively. If you added two more regions for supporting electable nodes, the priorities of those regions would be `4` and `3` respectively.
-          maximum: 7
-          minimum: 0
-        providerName:
-          type: string
-          description: Cloud service provider on which MongoDB Cloud provisions the hosts.
-            Set dedicated clusters to `AWS`, `GCP`, `AZURE` or `TENANT`.
-          enum:
-            - AWS
-            - AZURE
-            - GCP
-            - TENANT
-        regionName:
-          type: string
-          description: Physical location of your MongoDB cluster nodes. The region you
-            choose can affect network latency for clients accessing your
-            databases. When MongoDB Cloud deploys a dedicated cluster, it checks
-            if a VPC or VPC connection exists for that provider and region. If
-            not, MongoDB Cloud creates them as part of the deployment. It
-            assigns the VPC a Classless Inter-Domain Routing (CIDR) block. To
-            limit a new VPC peering connection to one Classless Inter-Domain
-            Routing (CIDR) block and region, create the connection first. Deploy
-            the cluster after the connection starts. GCP Clusters and
-            Multi-region clusters require one VPC peering connection for each
-            region. MongoDB nodes can use only the peering connection that
-            resides in the same region as the nodes to communicate with the
-            peered VPC.
-          enum:
-            - US_GOV_WEST_1
-            - US_GOV_EAST_1
-            - US_EAST_1
-            - US_EAST_2
-            - US_WEST_1
-            - US_WEST_2
-            - CA_CENTRAL_1
-            - EU_NORTH_1
-            - EU_WEST_1
-            - EU_WEST_2
-            - EU_WEST_3
-            - EU_CENTRAL_1
-            - EU_CENTRAL_2
-            - AP_EAST_1
-            - AP_NORTHEAST_1
-            - AP_NORTHEAST_2
-            - AP_NORTHEAST_3
-            - AP_SOUTHEAST_1
-            - AP_SOUTHEAST_2
-            - AP_SOUTHEAST_3
-            - AP_SOUTHEAST_4
-            - AP_SOUTH_1
-            - AP_SOUTH_2
-            - SA_EAST_1
-            - CN_NORTH_1
-            - CN_NORTHWEST_1
-            - ME_SOUTH_1
-            - ME_CENTRAL_1
-            - AF_SOUTH_1
-            - EU_SOUTH_1
-            - EU_SOUTH_2
-            - GLOBAL
-            - US_CENTRAL
-            - US_EAST
-            - US_NORTH_CENTRAL
-            - US_WEST
-            - US_SOUTH_CENTRAL
-            - EUROPE_NORTH
-            - EUROPE_WEST
-            - US_WEST_CENTRAL
-            - US_WEST_3
-            - CANADA_EAST
-            - CANADA_CENTRAL
-            - BRAZIL_SOUTH
-            - BRAZIL_SOUTHEAST
-            - AUSTRALIA_CENTRAL
-            - AUSTRALIA_CENTRAL_2
-            - AUSTRALIA_EAST
-            - AUSTRALIA_SOUTH_EAST
-            - GERMANY_CENTRAL
-            - GERMANY_NORTH_EAST
-            - GERMANY_WEST_CENTRAL
-            - GERMANY_NORTH
-            - SWEDEN_CENTRAL
-            - SWEDEN_SOUTH
-            - SWITZERLAND_NORTH
-            - SWITZERLAND_WEST
-            - UK_SOUTH
-            - UK_WEST
-            - NORWAY_EAST
-            - NORWAY_WEST
-            - INDIA_CENTRAL
-            - INDIA_SOUTH
-            - INDIA_WEST
-            - CHINA_EAST
-            - CHINA_NORTH
-            - ASIA_EAST
-            - JAPAN_EAST
-            - JAPAN_WEST
-            - ASIA_SOUTH_EAST
-            - KOREA_CENTRAL
-            - KOREA_SOUTH
-            - FRANCE_CENTRAL
-            - FRANCE_SOUTH
-            - SOUTH_AFRICA_NORTH
-            - SOUTH_AFRICA_WEST
-            - UAE_CENTRAL
-            - UAE_NORTH
-            - QATAR_CENTRAL
-            - EASTERN_US
-            - US_EAST_4
-            - US_EAST_5
-            - US_WEST_4
-            - US_SOUTH_1
-            - CENTRAL_US
-            - WESTERN_US
-            - NORTH_AMERICA_NORTHEAST_1
-            - NORTH_AMERICA_NORTHEAST_2
-            - SOUTH_AMERICA_EAST_1
-            - SOUTH_AMERICA_WEST_1
-            - WESTERN_EUROPE
-            - EUROPE_NORTH_1
-            - EUROPE_WEST_2
-            - EUROPE_WEST_3
-            - EUROPE_WEST_4
-            - EUROPE_WEST_6
-            - EUROPE_WEST_8
-            - EUROPE_WEST_9
-            - EUROPE_WEST_12
-            - EUROPE_SOUTHWEST_1
-            - EUROPE_CENTRAL_2
-            - MIDDLE_EAST_CENTRAL_1
-            - MIDDLE_EAST_WEST_1
-            - AUSTRALIA_SOUTHEAST_1
-            - AUSTRALIA_SOUTHEAST_2
-            - EASTERN_ASIA_PACIFIC
-            - NORTHEASTERN_ASIA_PACIFIC
-            - SOUTHEASTERN_ASIA_PACIFIC
-            - ASIA_EAST_2
-            - ASIA_NORTHEAST_2
-            - ASIA_NORTHEAST_3
-            - ASIA_SOUTH_1
-            - ASIA_SOUTH_2
-            - ASIA_SOUTHEAST_2
-      required: []
     AuditLog:
       type: object
       properties:
@@ -25931,177 +25760,6 @@ components:
           type: string
       required:
         - providerName
-    AzureRegionConfig:
-      type: object
-      description: Details that explain how MongoDB Cloud replicates data in one
-        region on the specified MongoDB database.
-      title: Azure Regional Replication Specifications
-      properties:
-        analyticsAutoScaling:
-          $ref: "#/components/schemas/AutoScalingV15"
-        analyticsSpecs:
-          $ref: "#/components/schemas/DedicatedHardwareSpec"
-        autoScaling:
-          $ref: "#/components/schemas/AutoScalingV15"
-        readOnlySpecs:
-          $ref: "#/components/schemas/DedicatedHardwareSpec"
-        electableSpecs:
-          $ref: "#/components/schemas/HardwareSpec"
-        priority:
-          type: integer
-          format: int32
-          description: >-
-            Precedence is given to this region when a primary election occurs.
-            If your **regionConfigs** has only **readOnlySpecs**,
-            **analyticsSpecs**, or both, set this value to `0`. If you have
-            multiple **regionConfigs** objects (your cluster is multi-region or
-            multi-cloud), they must have priorities in descending order. The
-            highest priority is `7`.
-
-
-            **Example:** If you have three regions, their priorities would be `7`, `6`, and `5` respectively. If you added two more regions for supporting electable nodes, the priorities of those regions would be `4` and `3` respectively.
-          maximum: 7
-          minimum: 0
-        providerName:
-          type: string
-          description: Cloud service provider on which MongoDB Cloud provisions the hosts.
-            Set dedicated clusters to `AWS`, `GCP`, `AZURE` or `TENANT`.
-          enum:
-            - AWS
-            - AZURE
-            - GCP
-            - TENANT
-        regionName:
-          type: string
-          description: Physical location of your MongoDB cluster nodes. The region you
-            choose can affect network latency for clients accessing your
-            databases. When MongoDB Cloud deploys a dedicated cluster, it checks
-            if a VPC or VPC connection exists for that provider and region. If
-            not, MongoDB Cloud creates them as part of the deployment. It
-            assigns the VPC a Classless Inter-Domain Routing (CIDR) block. To
-            limit a new VPC peering connection to one Classless Inter-Domain
-            Routing (CIDR) block and region, create the connection first. Deploy
-            the cluster after the connection starts. GCP Clusters and
-            Multi-region clusters require one VPC peering connection for each
-            region. MongoDB nodes can use only the peering connection that
-            resides in the same region as the nodes to communicate with the
-            peered VPC.
-          enum:
-            - US_GOV_WEST_1
-            - US_GOV_EAST_1
-            - US_EAST_1
-            - US_EAST_2
-            - US_WEST_1
-            - US_WEST_2
-            - CA_CENTRAL_1
-            - EU_NORTH_1
-            - EU_WEST_1
-            - EU_WEST_2
-            - EU_WEST_3
-            - EU_CENTRAL_1
-            - EU_CENTRAL_2
-            - AP_EAST_1
-            - AP_NORTHEAST_1
-            - AP_NORTHEAST_2
-            - AP_NORTHEAST_3
-            - AP_SOUTHEAST_1
-            - AP_SOUTHEAST_2
-            - AP_SOUTHEAST_3
-            - AP_SOUTHEAST_4
-            - AP_SOUTH_1
-            - AP_SOUTH_2
-            - SA_EAST_1
-            - CN_NORTH_1
-            - CN_NORTHWEST_1
-            - ME_SOUTH_1
-            - ME_CENTRAL_1
-            - AF_SOUTH_1
-            - EU_SOUTH_1
-            - EU_SOUTH_2
-            - GLOBAL
-            - US_CENTRAL
-            - US_EAST
-            - US_NORTH_CENTRAL
-            - US_WEST
-            - US_SOUTH_CENTRAL
-            - EUROPE_NORTH
-            - EUROPE_WEST
-            - US_WEST_CENTRAL
-            - US_WEST_3
-            - CANADA_EAST
-            - CANADA_CENTRAL
-            - BRAZIL_SOUTH
-            - BRAZIL_SOUTHEAST
-            - AUSTRALIA_CENTRAL
-            - AUSTRALIA_CENTRAL_2
-            - AUSTRALIA_EAST
-            - AUSTRALIA_SOUTH_EAST
-            - GERMANY_CENTRAL
-            - GERMANY_NORTH_EAST
-            - GERMANY_WEST_CENTRAL
-            - GERMANY_NORTH
-            - SWEDEN_CENTRAL
-            - SWEDEN_SOUTH
-            - SWITZERLAND_NORTH
-            - SWITZERLAND_WEST
-            - UK_SOUTH
-            - UK_WEST
-            - NORWAY_EAST
-            - NORWAY_WEST
-            - INDIA_CENTRAL
-            - INDIA_SOUTH
-            - INDIA_WEST
-            - CHINA_EAST
-            - CHINA_NORTH
-            - ASIA_EAST
-            - JAPAN_EAST
-            - JAPAN_WEST
-            - ASIA_SOUTH_EAST
-            - KOREA_CENTRAL
-            - KOREA_SOUTH
-            - FRANCE_CENTRAL
-            - FRANCE_SOUTH
-            - SOUTH_AFRICA_NORTH
-            - SOUTH_AFRICA_WEST
-            - UAE_CENTRAL
-            - UAE_NORTH
-            - QATAR_CENTRAL
-            - EASTERN_US
-            - US_EAST_4
-            - US_EAST_5
-            - US_WEST_4
-            - US_SOUTH_1
-            - CENTRAL_US
-            - WESTERN_US
-            - NORTH_AMERICA_NORTHEAST_1
-            - NORTH_AMERICA_NORTHEAST_2
-            - SOUTH_AMERICA_EAST_1
-            - SOUTH_AMERICA_WEST_1
-            - WESTERN_EUROPE
-            - EUROPE_NORTH_1
-            - EUROPE_WEST_2
-            - EUROPE_WEST_3
-            - EUROPE_WEST_4
-            - EUROPE_WEST_6
-            - EUROPE_WEST_8
-            - EUROPE_WEST_9
-            - EUROPE_WEST_12
-            - EUROPE_SOUTHWEST_1
-            - EUROPE_CENTRAL_2
-            - MIDDLE_EAST_CENTRAL_1
-            - MIDDLE_EAST_WEST_1
-            - AUSTRALIA_SOUTHEAST_1
-            - AUSTRALIA_SOUTHEAST_2
-            - EASTERN_ASIA_PACIFIC
-            - NORTHEASTERN_ASIA_PACIFIC
-            - SOUTHEASTERN_ASIA_PACIFIC
-            - ASIA_EAST_2
-            - ASIA_NORTHEAST_2
-            - ASIA_NORTHEAST_3
-            - ASIA_SOUTH_1
-            - ASIA_SOUTH_2
-            - ASIA_SOUTHEAST_2
-      required: []
     BiConnector:
       type: object
       description: Settings needed to configure the MongoDB Connector for Business
@@ -30089,177 +29747,6 @@ components:
           type: string
       required:
         - providerName
-    GCPRegionConfig:
-      type: object
-      description: Details that explain how MongoDB Cloud replicates data in one
-        region on the specified MongoDB database.
-      title: GCP Regional Replication Specifications
-      properties:
-        analyticsAutoScaling:
-          $ref: "#/components/schemas/AutoScalingV15"
-        analyticsSpecs:
-          $ref: "#/components/schemas/DedicatedHardwareSpec"
-        autoScaling:
-          $ref: "#/components/schemas/AutoScalingV15"
-        readOnlySpecs:
-          $ref: "#/components/schemas/DedicatedHardwareSpec"
-        electableSpecs:
-          $ref: "#/components/schemas/HardwareSpec"
-        priority:
-          type: integer
-          format: int32
-          description: >-
-            Precedence is given to this region when a primary election occurs.
-            If your **regionConfigs** has only **readOnlySpecs**,
-            **analyticsSpecs**, or both, set this value to `0`. If you have
-            multiple **regionConfigs** objects (your cluster is multi-region or
-            multi-cloud), they must have priorities in descending order. The
-            highest priority is `7`.
-
-
-            **Example:** If you have three regions, their priorities would be `7`, `6`, and `5` respectively. If you added two more regions for supporting electable nodes, the priorities of those regions would be `4` and `3` respectively.
-          maximum: 7
-          minimum: 0
-        providerName:
-          type: string
-          description: Cloud service provider on which MongoDB Cloud provisions the hosts.
-            Set dedicated clusters to `AWS`, `GCP`, `AZURE` or `TENANT`.
-          enum:
-            - AWS
-            - AZURE
-            - GCP
-            - TENANT
-        regionName:
-          type: string
-          description: Physical location of your MongoDB cluster nodes. The region you
-            choose can affect network latency for clients accessing your
-            databases. When MongoDB Cloud deploys a dedicated cluster, it checks
-            if a VPC or VPC connection exists for that provider and region. If
-            not, MongoDB Cloud creates them as part of the deployment. It
-            assigns the VPC a Classless Inter-Domain Routing (CIDR) block. To
-            limit a new VPC peering connection to one Classless Inter-Domain
-            Routing (CIDR) block and region, create the connection first. Deploy
-            the cluster after the connection starts. GCP Clusters and
-            Multi-region clusters require one VPC peering connection for each
-            region. MongoDB nodes can use only the peering connection that
-            resides in the same region as the nodes to communicate with the
-            peered VPC.
-          enum:
-            - US_GOV_WEST_1
-            - US_GOV_EAST_1
-            - US_EAST_1
-            - US_EAST_2
-            - US_WEST_1
-            - US_WEST_2
-            - CA_CENTRAL_1
-            - EU_NORTH_1
-            - EU_WEST_1
-            - EU_WEST_2
-            - EU_WEST_3
-            - EU_CENTRAL_1
-            - EU_CENTRAL_2
-            - AP_EAST_1
-            - AP_NORTHEAST_1
-            - AP_NORTHEAST_2
-            - AP_NORTHEAST_3
-            - AP_SOUTHEAST_1
-            - AP_SOUTHEAST_2
-            - AP_SOUTHEAST_3
-            - AP_SOUTHEAST_4
-            - AP_SOUTH_1
-            - AP_SOUTH_2
-            - SA_EAST_1
-            - CN_NORTH_1
-            - CN_NORTHWEST_1
-            - ME_SOUTH_1
-            - ME_CENTRAL_1
-            - AF_SOUTH_1
-            - EU_SOUTH_1
-            - EU_SOUTH_2
-            - GLOBAL
-            - US_CENTRAL
-            - US_EAST
-            - US_NORTH_CENTRAL
-            - US_WEST
-            - US_SOUTH_CENTRAL
-            - EUROPE_NORTH
-            - EUROPE_WEST
-            - US_WEST_CENTRAL
-            - US_WEST_3
-            - CANADA_EAST
-            - CANADA_CENTRAL
-            - BRAZIL_SOUTH
-            - BRAZIL_SOUTHEAST
-            - AUSTRALIA_CENTRAL
-            - AUSTRALIA_CENTRAL_2
-            - AUSTRALIA_EAST
-            - AUSTRALIA_SOUTH_EAST
-            - GERMANY_CENTRAL
-            - GERMANY_NORTH_EAST
-            - GERMANY_WEST_CENTRAL
-            - GERMANY_NORTH
-            - SWEDEN_CENTRAL
-            - SWEDEN_SOUTH
-            - SWITZERLAND_NORTH
-            - SWITZERLAND_WEST
-            - UK_SOUTH
-            - UK_WEST
-            - NORWAY_EAST
-            - NORWAY_WEST
-            - INDIA_CENTRAL
-            - INDIA_SOUTH
-            - INDIA_WEST
-            - CHINA_EAST
-            - CHINA_NORTH
-            - ASIA_EAST
-            - JAPAN_EAST
-            - JAPAN_WEST
-            - ASIA_SOUTH_EAST
-            - KOREA_CENTRAL
-            - KOREA_SOUTH
-            - FRANCE_CENTRAL
-            - FRANCE_SOUTH
-            - SOUTH_AFRICA_NORTH
-            - SOUTH_AFRICA_WEST
-            - UAE_CENTRAL
-            - UAE_NORTH
-            - QATAR_CENTRAL
-            - EASTERN_US
-            - US_EAST_4
-            - US_EAST_5
-            - US_WEST_4
-            - US_SOUTH_1
-            - CENTRAL_US
-            - WESTERN_US
-            - NORTH_AMERICA_NORTHEAST_1
-            - NORTH_AMERICA_NORTHEAST_2
-            - SOUTH_AMERICA_EAST_1
-            - SOUTH_AMERICA_WEST_1
-            - WESTERN_EUROPE
-            - EUROPE_NORTH_1
-            - EUROPE_WEST_2
-            - EUROPE_WEST_3
-            - EUROPE_WEST_4
-            - EUROPE_WEST_6
-            - EUROPE_WEST_8
-            - EUROPE_WEST_9
-            - EUROPE_WEST_12
-            - EUROPE_SOUTHWEST_1
-            - EUROPE_CENTRAL_2
-            - MIDDLE_EAST_CENTRAL_1
-            - MIDDLE_EAST_WEST_1
-            - AUSTRALIA_SOUTHEAST_1
-            - AUSTRALIA_SOUTHEAST_2
-            - EASTERN_ASIA_PACIFIC
-            - NORTHEASTERN_ASIA_PACIFIC
-            - SOUTHEASTERN_ASIA_PACIFIC
-            - ASIA_EAST_2
-            - ASIA_NORTHEAST_2
-            - ASIA_NORTHEAST_3
-            - ASIA_SOUTH_1
-            - ASIA_SOUTH_2
-            - ASIA_SOUTHEAST_2
-      required: []
     GeoSharding:
       type: object
       properties:
@@ -31800,19 +31287,182 @@ components:
     RegionConfig:
       type: object
       description: Cloud service provider on which MongoDB Cloud provisions the hosts.
-      discriminator:
-        mapping:
-          AWS: "#/components/schemas/AWSRegionConfig"
-          AZURE: "#/components/schemas/AzureRegionConfig"
-          GCP: "#/components/schemas/GCPRegionConfig"
-          TENANT: "#/components/schemas/TenantRegionConfig"
-        propertyName: providerName
-      oneOf:
-        - $ref: "#/components/schemas/AWSRegionConfig"
-        - $ref: "#/components/schemas/AzureRegionConfig"
-        - $ref: "#/components/schemas/GCPRegionConfig"
-        - $ref: "#/components/schemas/TenantRegionConfig"
       title: Cloud Service Provider Settings for Multi-Cloud Clusters
+      properties:
+        analyticsAutoScaling:
+          $ref: "#/components/schemas/AutoScalingV15"
+        analyticsSpecs:
+          $ref: "#/components/schemas/DedicatedHardwareSpec"
+        autoScaling:
+          $ref: "#/components/schemas/AutoScalingV15"
+        readOnlySpecs:
+          $ref: "#/components/schemas/DedicatedHardwareSpec"
+        electableSpecs:
+          $ref: "#/components/schemas/HardwareSpec"
+        priority:
+          type: integer
+          format: int32
+          description: >-
+            Precedence is given to this region when a primary election occurs.
+            If your **regionConfigs** has only **readOnlySpecs**,
+            **analyticsSpecs**, or both, set this value to `0`. If you have
+            multiple **regionConfigs** objects (your cluster is multi-region or
+            multi-cloud), they must have priorities in descending order. The
+            highest priority is `7`.
+
+
+            **Example:** If you have three regions, their priorities would be `7`, `6`, and `5` respectively. If you added two more regions for supporting electable nodes, the priorities of those regions would be `4` and `3` respectively.
+          maximum: 7
+          minimum: 0
+        providerName:
+          type: string
+          description: Cloud service provider on which MongoDB Cloud provisions the hosts.
+            Set dedicated clusters to `AWS`, `GCP`, `AZURE` or `TENANT`.
+          enum:
+            - AWS
+            - AZURE
+            - GCP
+            - TENANT
+        regionName:
+          type: string
+          description: Physical location of your MongoDB cluster nodes. The region you
+            choose can affect network latency for clients accessing your
+            databases. When MongoDB Cloud deploys a dedicated cluster, it checks
+            if a VPC or VPC connection exists for that provider and region. If
+            not, MongoDB Cloud creates them as part of the deployment. It
+            assigns the VPC a Classless Inter-Domain Routing (CIDR) block. To
+            limit a new VPC peering connection to one Classless Inter-Domain
+            Routing (CIDR) block and region, create the connection first. Deploy
+            the cluster after the connection starts. GCP Clusters and
+            Multi-region clusters require one VPC peering connection for each
+            region. MongoDB nodes can use only the peering connection that
+            resides in the same region as the nodes to communicate with the
+            peered VPC.
+          enum:
+            - US_GOV_WEST_1
+            - US_GOV_EAST_1
+            - US_EAST_1
+            - US_EAST_2
+            - US_WEST_1
+            - US_WEST_2
+            - CA_CENTRAL_1
+            - EU_NORTH_1
+            - EU_WEST_1
+            - EU_WEST_2
+            - EU_WEST_3
+            - EU_CENTRAL_1
+            - EU_CENTRAL_2
+            - AP_EAST_1
+            - AP_NORTHEAST_1
+            - AP_NORTHEAST_2
+            - AP_NORTHEAST_3
+            - AP_SOUTHEAST_1
+            - AP_SOUTHEAST_2
+            - AP_SOUTHEAST_3
+            - AP_SOUTHEAST_4
+            - AP_SOUTH_1
+            - AP_SOUTH_2
+            - SA_EAST_1
+            - CN_NORTH_1
+            - CN_NORTHWEST_1
+            - ME_SOUTH_1
+            - ME_CENTRAL_1
+            - AF_SOUTH_1
+            - EU_SOUTH_1
+            - EU_SOUTH_2
+            - GLOBAL
+            - US_CENTRAL
+            - US_EAST
+            - US_NORTH_CENTRAL
+            - US_WEST
+            - US_SOUTH_CENTRAL
+            - EUROPE_NORTH
+            - EUROPE_WEST
+            - US_WEST_CENTRAL
+            - US_WEST_3
+            - CANADA_EAST
+            - CANADA_CENTRAL
+            - BRAZIL_SOUTH
+            - BRAZIL_SOUTHEAST
+            - AUSTRALIA_CENTRAL
+            - AUSTRALIA_CENTRAL_2
+            - AUSTRALIA_EAST
+            - AUSTRALIA_SOUTH_EAST
+            - GERMANY_CENTRAL
+            - GERMANY_NORTH_EAST
+            - GERMANY_WEST_CENTRAL
+            - GERMANY_NORTH
+            - SWEDEN_CENTRAL
+            - SWEDEN_SOUTH
+            - SWITZERLAND_NORTH
+            - SWITZERLAND_WEST
+            - UK_SOUTH
+            - UK_WEST
+            - NORWAY_EAST
+            - NORWAY_WEST
+            - INDIA_CENTRAL
+            - INDIA_SOUTH
+            - INDIA_WEST
+            - CHINA_EAST
+            - CHINA_NORTH
+            - ASIA_EAST
+            - JAPAN_EAST
+            - JAPAN_WEST
+            - ASIA_SOUTH_EAST
+            - KOREA_CENTRAL
+            - KOREA_SOUTH
+            - FRANCE_CENTRAL
+            - FRANCE_SOUTH
+            - SOUTH_AFRICA_NORTH
+            - SOUTH_AFRICA_WEST
+            - UAE_CENTRAL
+            - UAE_NORTH
+            - QATAR_CENTRAL
+            - EASTERN_US
+            - US_EAST_4
+            - US_EAST_5
+            - US_WEST_4
+            - US_SOUTH_1
+            - CENTRAL_US
+            - WESTERN_US
+            - NORTH_AMERICA_NORTHEAST_1
+            - NORTH_AMERICA_NORTHEAST_2
+            - SOUTH_AMERICA_EAST_1
+            - SOUTH_AMERICA_WEST_1
+            - WESTERN_EUROPE
+            - EUROPE_NORTH_1
+            - EUROPE_WEST_2
+            - EUROPE_WEST_3
+            - EUROPE_WEST_4
+            - EUROPE_WEST_6
+            - EUROPE_WEST_8
+            - EUROPE_WEST_9
+            - EUROPE_WEST_12
+            - EUROPE_SOUTHWEST_1
+            - EUROPE_CENTRAL_2
+            - MIDDLE_EAST_CENTRAL_1
+            - MIDDLE_EAST_WEST_1
+            - AUSTRALIA_SOUTHEAST_1
+            - AUSTRALIA_SOUTHEAST_2
+            - EASTERN_ASIA_PACIFIC
+            - NORTHEASTERN_ASIA_PACIFIC
+            - SOUTHEASTERN_ASIA_PACIFIC
+            - ASIA_EAST_2
+            - ASIA_NORTHEAST_2
+            - ASIA_NORTHEAST_3
+            - ASIA_SOUTH_1
+            - ASIA_SOUTH_2
+            - ASIA_SOUTHEAST_2
+        backingProviderName:
+          type: string
+          description: Cloud service provider on which MongoDB Cloud provisioned the
+            multi-tenant cluster. The resource returns this parameter when
+            **providerSettings.providerName** is `TENANT` and
+            **providerSetting.instanceSizeName** is `M2` or `M5`.
+          enum:
+            - AWS
+            - GCP
+            - AZURE
     RegionSpec:
       type: object
       description: Physical location where MongoDB Cloud provisions cluster nodes.
@@ -32838,179 +32488,6 @@ components:
           maxLength: 255
           minLength: 1
       title: Resource Tag
-    TenantRegionConfig:
-      type: object
-      description: Details that explain how MongoDB Cloud replicates data in one
-        region on the specified MongoDB database.
-      title: Tenant Regional Replication Specifications
-      properties:
-        backingProviderName:
-          type: string
-          description: Cloud service provider on which MongoDB Cloud provisioned the
-            multi-tenant cluster. The resource returns this parameter when
-            **providerSettings.providerName** is `TENANT` and
-            **providerSetting.instanceSizeName** is `M2` or `M5`.
-          enum:
-            - AWS
-            - GCP
-            - AZURE
-        electableSpecs:
-          $ref: "#/components/schemas/HardwareSpec"
-        priority:
-          type: integer
-          format: int32
-          description: >-
-            Precedence is given to this region when a primary election occurs.
-            If your **regionConfigs** has only **readOnlySpecs**,
-            **analyticsSpecs**, or both, set this value to `0`. If you have
-            multiple **regionConfigs** objects (your cluster is multi-region or
-            multi-cloud), they must have priorities in descending order. The
-            highest priority is `7`.
-
-
-            **Example:** If you have three regions, their priorities would be `7`, `6`, and `5` respectively. If you added two more regions for supporting electable nodes, the priorities of those regions would be `4` and `3` respectively.
-          maximum: 7
-          minimum: 0
-        providerName:
-          type: string
-          description: Cloud service provider on which MongoDB Cloud provisions the hosts.
-            Set dedicated clusters to `AWS`, `GCP`, `AZURE` or `TENANT`.
-          enum:
-            - AWS
-            - AZURE
-            - GCP
-            - TENANT
-        regionName:
-          type: string
-          description: Physical location of your MongoDB cluster nodes. The region you
-            choose can affect network latency for clients accessing your
-            databases. When MongoDB Cloud deploys a dedicated cluster, it checks
-            if a VPC or VPC connection exists for that provider and region. If
-            not, MongoDB Cloud creates them as part of the deployment. It
-            assigns the VPC a Classless Inter-Domain Routing (CIDR) block. To
-            limit a new VPC peering connection to one Classless Inter-Domain
-            Routing (CIDR) block and region, create the connection first. Deploy
-            the cluster after the connection starts. GCP Clusters and
-            Multi-region clusters require one VPC peering connection for each
-            region. MongoDB nodes can use only the peering connection that
-            resides in the same region as the nodes to communicate with the
-            peered VPC.
-          enum:
-            - US_GOV_WEST_1
-            - US_GOV_EAST_1
-            - US_EAST_1
-            - US_EAST_2
-            - US_WEST_1
-            - US_WEST_2
-            - CA_CENTRAL_1
-            - EU_NORTH_1
-            - EU_WEST_1
-            - EU_WEST_2
-            - EU_WEST_3
-            - EU_CENTRAL_1
-            - EU_CENTRAL_2
-            - AP_EAST_1
-            - AP_NORTHEAST_1
-            - AP_NORTHEAST_2
-            - AP_NORTHEAST_3
-            - AP_SOUTHEAST_1
-            - AP_SOUTHEAST_2
-            - AP_SOUTHEAST_3
-            - AP_SOUTHEAST_4
-            - AP_SOUTH_1
-            - AP_SOUTH_2
-            - SA_EAST_1
-            - CN_NORTH_1
-            - CN_NORTHWEST_1
-            - ME_SOUTH_1
-            - ME_CENTRAL_1
-            - AF_SOUTH_1
-            - EU_SOUTH_1
-            - EU_SOUTH_2
-            - GLOBAL
-            - US_CENTRAL
-            - US_EAST
-            - US_NORTH_CENTRAL
-            - US_WEST
-            - US_SOUTH_CENTRAL
-            - EUROPE_NORTH
-            - EUROPE_WEST
-            - US_WEST_CENTRAL
-            - US_WEST_3
-            - CANADA_EAST
-            - CANADA_CENTRAL
-            - BRAZIL_SOUTH
-            - BRAZIL_SOUTHEAST
-            - AUSTRALIA_CENTRAL
-            - AUSTRALIA_CENTRAL_2
-            - AUSTRALIA_EAST
-            - AUSTRALIA_SOUTH_EAST
-            - GERMANY_CENTRAL
-            - GERMANY_NORTH_EAST
-            - GERMANY_WEST_CENTRAL
-            - GERMANY_NORTH
-            - SWEDEN_CENTRAL
-            - SWEDEN_SOUTH
-            - SWITZERLAND_NORTH
-            - SWITZERLAND_WEST
-            - UK_SOUTH
-            - UK_WEST
-            - NORWAY_EAST
-            - NORWAY_WEST
-            - INDIA_CENTRAL
-            - INDIA_SOUTH
-            - INDIA_WEST
-            - CHINA_EAST
-            - CHINA_NORTH
-            - ASIA_EAST
-            - JAPAN_EAST
-            - JAPAN_WEST
-            - ASIA_SOUTH_EAST
-            - KOREA_CENTRAL
-            - KOREA_SOUTH
-            - FRANCE_CENTRAL
-            - FRANCE_SOUTH
-            - SOUTH_AFRICA_NORTH
-            - SOUTH_AFRICA_WEST
-            - UAE_CENTRAL
-            - UAE_NORTH
-            - QATAR_CENTRAL
-            - EASTERN_US
-            - US_EAST_4
-            - US_EAST_5
-            - US_WEST_4
-            - US_SOUTH_1
-            - CENTRAL_US
-            - WESTERN_US
-            - NORTH_AMERICA_NORTHEAST_1
-            - NORTH_AMERICA_NORTHEAST_2
-            - SOUTH_AMERICA_EAST_1
-            - SOUTH_AMERICA_WEST_1
-            - WESTERN_EUROPE
-            - EUROPE_NORTH_1
-            - EUROPE_WEST_2
-            - EUROPE_WEST_3
-            - EUROPE_WEST_4
-            - EUROPE_WEST_6
-            - EUROPE_WEST_8
-            - EUROPE_WEST_9
-            - EUROPE_WEST_12
-            - EUROPE_SOUTHWEST_1
-            - EUROPE_CENTRAL_2
-            - MIDDLE_EAST_CENTRAL_1
-            - MIDDLE_EAST_WEST_1
-            - AUSTRALIA_SOUTHEAST_1
-            - AUSTRALIA_SOUTHEAST_2
-            - EASTERN_ASIA_PACIFIC
-            - NORTHEASTERN_ASIA_PACIFIC
-            - SOUTHEASTERN_ASIA_PACIFIC
-            - ASIA_EAST_2
-            - ASIA_NORTHEAST_2
-            - ASIA_NORTHEAST_3
-            - ASIA_SOUTH_1
-            - ASIA_SOUTH_2
-            - ASIA_SOUTHEAST_2
-      required: []
     TenantRestore:
       type: object
       properties:
