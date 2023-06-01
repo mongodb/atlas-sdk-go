@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ApiKeyId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the [API Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key) that triggered the event. If this resource returns this parameter, it doesn&#39;t return the **userId** parameter. | [optional] [readonly] 
 **Created** | Pointer to **time.Time** | Date and time when this event occurred. This parameter expresses its value in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_8601\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;ISO 8601&lt;/a&gt; timestamp format in UTC. | [optional] [readonly] 
-**EventTypeName** | Pointer to [**ResourceEventType**](ResourceEventType.md) |  | [optional] 
+**EventTypeName** | Pointer to **string** | Unique identifier of event type. | [optional] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The **eventId** identifies the specific event. | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the event. | [optional] [readonly] 
 **IsGlobalAdmin** | Pointer to **bool** | Flag that indicates whether a MongoDB employee triggered the specified event. | [optional] [readonly] [default to false]
@@ -108,20 +108,20 @@ HasCreated returns a boolean if a field has been set.
 
 ### GetEventTypeName
 
-`func (o *EventViewForNdsGroup) GetEventTypeName() ResourceEventType`
+`func (o *EventViewForNdsGroup) GetEventTypeName() string`
 
 GetEventTypeName returns the EventTypeName field if non-nil, zero value otherwise.
 
 ### GetEventTypeNameOk
 
-`func (o *EventViewForNdsGroup) GetEventTypeNameOk() (*ResourceEventType, bool)`
+`func (o *EventViewForNdsGroup) GetEventTypeNameOk() (*string, bool)`
 
 GetEventTypeNameOk returns a tuple with the EventTypeName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEventTypeName
 
-`func (o *EventViewForNdsGroup) SetEventTypeName(v ResourceEventType)`
+`func (o *EventViewForNdsGroup) SetEventTypeName(v string)`
 
 SetEventTypeName sets EventTypeName field to given value.
 

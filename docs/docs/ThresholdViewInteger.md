@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Operator** | Pointer to [**Operator**](Operator.md) |  | [optional] 
+**Operator** | Pointer to **string** | Comparison operator to apply when checking the current metric value. | [optional] 
 **Threshold** | Pointer to **int** | Value of metric that, when exceeded, triggers an alert. | [optional] 
 **Units** | Pointer to **string** | Element used to express the quantity. This can be an element of time, storage capacity, and the like. | [optional] 
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetOperator
 
-`func (o *ThresholdViewInteger) GetOperator() Operator`
+`func (o *ThresholdViewInteger) GetOperator() string`
 
 GetOperator returns the Operator field if non-nil, zero value otherwise.
 
 ### GetOperatorOk
 
-`func (o *ThresholdViewInteger) GetOperatorOk() (*Operator, bool)`
+`func (o *ThresholdViewInteger) GetOperatorOk() (*string, bool)`
 
 GetOperatorOk returns a tuple with the Operator field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOperator
 
-`func (o *ThresholdViewInteger) SetOperator(v Operator)`
+`func (o *ThresholdViewInteger) SetOperator(v string)`
 
 SetOperator sets Operator field to given value.
 

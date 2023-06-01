@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Enabled** | Pointer to **bool** | Flag that indicates whether someone enabled instance size auto-scaling.  - Set to &#x60;true&#x60; to enable instance size auto-scaling. If enabled, you must specify a value for **replicationSpecs[n].regionConfigs[m].autoScaling.compute.maxInstanceSize**. - Set to &#x60;false&#x60; to disable instance size automatic scaling. | [optional] 
-**MaxInstanceSize** | Pointer to [**InstanceSize**](InstanceSize.md) |  | [optional] 
-**MinInstanceSize** | Pointer to [**InstanceSize**](InstanceSize.md) |  | [optional] 
+**MaxInstanceSize** | Pointer to **string** | Minimum instance size to which your cluster can automatically scale. MongoDB Cloud requires this parameter if &#x60;\&quot;replicationSpecs[n].regionConfigs[m].autoScaling.compute.scaleDownEnabled\&quot; : true&#x60;. | [optional] 
+**MinInstanceSize** | Pointer to **string** | Minimum instance size to which your cluster can automatically scale. MongoDB Cloud requires this parameter if &#x60;\&quot;replicationSpecs[n].regionConfigs[m].autoScaling.compute.scaleDownEnabled\&quot; : true&#x60;. | [optional] 
 **ScaleDownEnabled** | Pointer to **bool** | Flag that indicates whether the instance size may scale down. MongoDB Cloud requires this parameter if &#x60;\&quot;replicationSpecs[n].regionConfigs[m].autoScaling.compute.enabled\&quot; : true&#x60;. If you enable this option, specify a value for **replicationSpecs[n].regionConfigs[m].autoScaling.compute.minInstanceSize**. | [optional] 
 
 ## Methods
@@ -55,20 +55,20 @@ HasEnabled returns a boolean if a field has been set.
 
 ### GetMaxInstanceSize
 
-`func (o *ComputeAutoScalingV15) GetMaxInstanceSize() InstanceSize`
+`func (o *ComputeAutoScalingV15) GetMaxInstanceSize() string`
 
 GetMaxInstanceSize returns the MaxInstanceSize field if non-nil, zero value otherwise.
 
 ### GetMaxInstanceSizeOk
 
-`func (o *ComputeAutoScalingV15) GetMaxInstanceSizeOk() (*InstanceSize, bool)`
+`func (o *ComputeAutoScalingV15) GetMaxInstanceSizeOk() (*string, bool)`
 
 GetMaxInstanceSizeOk returns a tuple with the MaxInstanceSize field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMaxInstanceSize
 
-`func (o *ComputeAutoScalingV15) SetMaxInstanceSize(v InstanceSize)`
+`func (o *ComputeAutoScalingV15) SetMaxInstanceSize(v string)`
 
 SetMaxInstanceSize sets MaxInstanceSize field to given value.
 
@@ -80,20 +80,20 @@ HasMaxInstanceSize returns a boolean if a field has been set.
 
 ### GetMinInstanceSize
 
-`func (o *ComputeAutoScalingV15) GetMinInstanceSize() InstanceSize`
+`func (o *ComputeAutoScalingV15) GetMinInstanceSize() string`
 
 GetMinInstanceSize returns the MinInstanceSize field if non-nil, zero value otherwise.
 
 ### GetMinInstanceSizeOk
 
-`func (o *ComputeAutoScalingV15) GetMinInstanceSizeOk() (*InstanceSize, bool)`
+`func (o *ComputeAutoScalingV15) GetMinInstanceSizeOk() (*string, bool)`
 
 GetMinInstanceSizeOk returns a tuple with the MinInstanceSize field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMinInstanceSize
 
-`func (o *ComputeAutoScalingV15) SetMinInstanceSize(v InstanceSize)`
+`func (o *ComputeAutoScalingV15) SetMinInstanceSize(v string)`
 
 SetMinInstanceSize sets MinInstanceSize field to given value.
 

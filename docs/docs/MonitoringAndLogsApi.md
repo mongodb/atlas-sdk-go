@@ -209,7 +209,7 @@ func main() {
     databaseName := "databaseName_example" // string | 
     processId := "mongodb.example.com:27017" // string | 
     granularity := "PT1M" // string | 
-    m := []string{"M_example"} // []string |  (optional)
+    m := []string{"Inner_example"} // []string |  (optional)
     period := "PT10H" // string |  (optional)
     start := time.Now() // time.Time |  (optional)
     end := time.Now() // time.Time |  (optional)
@@ -299,7 +299,7 @@ func main() {
     partitionName := "partitionName_example" // string | 
     processId := "mongodb.example.com:27017" // string | 
     granularity := "PT1M" // string | 
-    m := []string{"M_example"} // []string |  (optional)
+    m := []string{"Inner_example"} // []string |  (optional)
     period := "PT10H" // string |  (optional)
     start := time.Now() // time.Time |  (optional)
     end := time.Now() // time.Time |  (optional)
@@ -472,7 +472,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     processId := "mongodb.example.com:27017" // string | 
     granularity := "PT1M" // string | 
-    m := []string{"M_example"} // []string |  (optional)
+    m := []string{"Inner_example"} // []string |  (optional)
     period := "PT10H" // string |  (optional)
     start := time.Now() // time.Time |  (optional)
     end := time.Now() // time.Time |  (optional)
@@ -562,7 +562,7 @@ func main() {
     collectionName := "mycoll" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     granularity := "PT1M" // string | 
-    metrics := []string{"Metrics_example"} // []string | 
+    metrics := []string{"Inner_example"} // []string | 
     period := "PT10H" // string |  (optional)
     start := time.Now() // time.Time |  (optional)
     end := time.Now() // time.Time |  (optional)
@@ -655,7 +655,7 @@ func main() {
     processId := "my.host.name.com:27017" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     granularity := "PT1M" // string | 
-    metrics := []string{"Metrics_example"} // []string | 
+    metrics := []string{"Inner_example"} // []string | 
     period := "PT10H" // string |  (optional)
     start := time.Now() // time.Time |  (optional)
     end := time.Now() // time.Time |  (optional)
@@ -1070,7 +1070,7 @@ func main() {
     collectionName := "mycoll" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     granularity := "PT1M" // string | 
-    metrics := []string{"Metrics_example"} // []string | 
+    metrics := []string{"Inner_example"} // []string | 
     period := "PT10H" // string |  (optional)
     start := time.Now() // time.Time |  (optional)
     end := time.Now() // time.Time |  (optional)
