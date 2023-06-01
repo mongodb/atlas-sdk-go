@@ -18,5 +18,5 @@ module.exports = {
   applyOneOfTransformations,
   applyDiscriminatorTransformations,
   applyArrayTransformations,
-  applyRemoveEnumsTransformations
+  applyRemoveEnumsTransformations,
 };
