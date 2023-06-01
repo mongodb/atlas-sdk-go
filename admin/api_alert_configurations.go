@@ -110,7 +110,7 @@ type AlertConfigurationsApi interface {
 	ListAlertConfigurationMatchersFieldNamesWithParams(ctx context.Context, args *ListAlertConfigurationMatchersFieldNamesApiParams) ListAlertConfigurationMatchersFieldNamesApiRequest
 
 	// Interface only available internally
-	listAlertConfigurationMatchersFieldNamesExecute(r ListAlertConfigurationMatchersFieldNamesApiRequest) ([]MatcherField, *http.Response, error)
+	listAlertConfigurationMatchersFieldNamesExecute(r ListAlertConfigurationMatchersFieldNamesApiRequest) ([]string, *http.Response, error)
 
 	/*
 		ListAlertConfigurations Return All Alert Configurations for One Project
@@ -655,7 +655,7 @@ func (a *AlertConfigurationsApiService) ListAlertConfigurationMatchersFieldNames
 	}
 }
 
-func (r ListAlertConfigurationMatchersFieldNamesApiRequest) Execute() ([]MatcherField, *http.Response, error) {
+func (r ListAlertConfigurationMatchersFieldNamesApiRequest) Execute() ([]string, *http.Response, error) {
 	return r.ApiService.listAlertConfigurationMatchersFieldNamesExecute(r)
 }
 
@@ -676,13 +676,13 @@ func (a *AlertConfigurationsApiService) ListAlertConfigurationMatchersFieldNames
 
 // Execute executes the request
 //
-//	@return []MatcherField
-func (a *AlertConfigurationsApiService) listAlertConfigurationMatchersFieldNamesExecute(r ListAlertConfigurationMatchersFieldNamesApiRequest) ([]MatcherField, *http.Response, error) {
+//	@return []string
+func (a *AlertConfigurationsApiService) listAlertConfigurationMatchersFieldNamesExecute(r ListAlertConfigurationMatchersFieldNamesApiRequest) ([]string, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []MatcherField
+		localVarReturnValue []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertConfigurationsApiService.ListAlertConfigurationMatchersFieldNames")

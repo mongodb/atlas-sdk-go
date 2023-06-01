@@ -15,8 +15,9 @@ type EventViewForNdsGroup struct {
 	// Unique 24-hexadecimal digit string that identifies the [API Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key) that triggered the event. If this resource returns this parameter, it doesn't return the **userId** parameter.
 	ApiKeyId *string `json:"apiKeyId,omitempty"`
 	// Date and time when this event occurred. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC.
-	Created       *time.Time         `json:"created,omitempty"`
-	EventTypeName *ResourceEventType `json:"eventTypeName,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
+	// Unique identifier of event type.
+	EventTypeName *string `json:"eventTypeName,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The **eventId** identifies the specific event.
 	GroupId *string `json:"groupId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the event.
@@ -157,9 +158,9 @@ func (o *EventViewForNdsGroup) SetCreated(v time.Time) {
 }
 
 // GetEventTypeName returns the EventTypeName field value if set, zero value otherwise.
-func (o *EventViewForNdsGroup) GetEventTypeName() ResourceEventType {
+func (o *EventViewForNdsGroup) GetEventTypeName() string {
 	if o == nil || IsNil(o.EventTypeName) {
-		var ret ResourceEventType
+		var ret string
 		return ret
 	}
 	return *o.EventTypeName
@@ -167,7 +168,7 @@ func (o *EventViewForNdsGroup) GetEventTypeName() ResourceEventType {
 
 // GetEventTypeNameOk returns a tuple with the EventTypeName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EventViewForNdsGroup) GetEventTypeNameOk() (*ResourceEventType, bool) {
+func (o *EventViewForNdsGroup) GetEventTypeNameOk() (*string, bool) {
 	if o == nil || IsNil(o.EventTypeName) {
 		return nil, false
 	}
@@ -183,8 +184,8 @@ func (o *EventViewForNdsGroup) HasEventTypeName() bool {
 	return false
 }
 
-// SetEventTypeName gets a reference to the given ResourceEventType and assigns it to the EventTypeName field.
-func (o *EventViewForNdsGroup) SetEventTypeName(v ResourceEventType) {
+// SetEventTypeName gets a reference to the given string and assigns it to the EventTypeName field.
+func (o *EventViewForNdsGroup) SetEventTypeName(v string) {
 	o.EventTypeName = &v
 }
 
