@@ -26,7 +26,7 @@ sdk, err := admin.NewClient(
 
 Note: Both the deprecated [go-client-mongodb-atlas](https://github.com/mongodb/go-client-mongodb-atlas) and the Atlas Go SDK use Digest-based authentication. The same credentials apply. 
 
-To learn more, see [Authenticate using the Atlas Go SDK](https://github.com/mongodb/atlas-sdk-go#authentication).
+To learn more, see [Authenticate using the Atlas Go SDK](https://github.com/mongodb/atlas-sdk-go/blob/main/docs/doc_4_authentication.md).
 
 ### Error Handling 
 
@@ -36,7 +36,7 @@ Error handling requires developers to use dedicated methods for casting errors t
     apiErr, _ := admin.AsError(err)
     log.Fatalf("Error when performing SDK request: %v", apiErr.GetDetail())
 ```
-To learn more, see [Error Handling](https://github.com/mongodb/atlas-sdk-go#error-handling).
+To learn more, see [Error Handling](https://github.com/mongodb/atlas-sdk-go/blob/main/docs/doc_2_error_handling.md).
 
 ### Format of the API Interface
 
@@ -50,7 +50,7 @@ Each method now explains the object that is created. For example:
 
 `sdk.Projects.create()` will become `sdk.ProjectsApi.createProject(...)`
 
-To learn more, see the [Endpoint Documentation](https://github.com/mongodb/go-client-mongodb-atlas/tree/main/mongodbatlasv2#documentation-for-api-endpoints).
+To learn more, see the [Endpoint Documentation](https://github.com/mongodb/atlas-sdk-go/blob/main/docs/doc_1_reference.md).
 
 ### Different Naming Conventions for SDK Methods
 
