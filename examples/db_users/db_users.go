@@ -17,7 +17,7 @@ const (
 )
 
 /*
-* MongoDB Atlas Go SDK Example for updating
+* MongoDB Atlas Go SDK Example for updating database users.
  */
 func main() {
 	ctx := context.Background()
