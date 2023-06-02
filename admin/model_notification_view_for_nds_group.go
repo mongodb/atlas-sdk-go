@@ -4,460 +4,1016 @@ package admin
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
-// NotificationViewForNdsGroup - One target that MongoDB Cloud sends notifications when an alert triggers.
+// checks if the NotificationViewForNdsGroup type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NotificationViewForNdsGroup{}
+
+// NotificationViewForNdsGroup One target that MongoDB Cloud sends notifications when an alert triggers.
 type NotificationViewForNdsGroup struct {
-	DatadogNotification        *DatadogNotification
-	EmailNotification          *EmailNotification
-	GroupNotification          *GroupNotification
-	HipChatNotification        *HipChatNotification
-	MicrosoftTeamsNotification *MicrosoftTeamsNotification
-	OpsGenieNotification       *OpsGenieNotification
-	OrgNotification            *OrgNotification
-	PagerDutyNotification      *PagerDutyNotification
-	SMSNotification            *SMSNotification
-	SlackNotification          *SlackNotification
-	TeamNotification           *TeamNotification
-	UserNotification           *UserNotification
-	VictorOpsNotification      *VictorOpsNotification
-	WebhookNotification        *WebhookNotification
+	// Datadog API Key that MongoDB Cloud needs to send alert notifications to Datadog. You can find this API key in the Datadog dashboard. The resource requires this parameter when `\"notifications.[n].typeName\" : \"DATADOG\"`.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.
+	DatadogApiKey *string `json:"datadogApiKey,omitempty"`
+	// Datadog region that indicates which API Uniform Resource Locator (URL) to use. The resource requires this parameter when `\"notifications.[n].typeName\" : \"DATADOG\"`.  To learn more about Datadog's regions, see <a href=\"https://docs.datadoghq.com/getting_started/site/\" target=\"_blank\" rel=\"noopener noreferrer\">Datadog Sites</a>.
+	DatadogRegion *string `json:"datadogRegion,omitempty"`
+	// Number of minutes that MongoDB Cloud waits after detecting an alert condition before it sends out the first notification.
+	DelayMin *int `json:"delayMin,omitempty"`
+	// Number of minutes to wait between successive notifications. MongoDB Cloud sends notifications until someone acknowledges the unacknowledged alert.  PagerDuty, VictorOps, and OpsGenie notifications don't return this element. Configure and manage the notification interval within each of those services.
+	IntervalMin *int `json:"intervalMin,omitempty"`
+	// Human-readable label that displays the alert notification type.
+	TypeName *string `json:"typeName,omitempty"`
+	// Email address to which MongoDB Cloud sends alert notifications. The resource requires this parameter when `\"notifications.[n].typeName\" : \"EMAIL\"`. You don’t need to set this value to send emails to individual or groups of MongoDB Cloud users including:  - specific MongoDB Cloud users (`\"notifications.[n].typeName\" : \"USER\"`) - MongoDB Cloud users with specific project roles (`\"notifications.[n].typeName\" : \"GROUP\"`) - MongoDB Cloud users with specific organization roles (`\"notifications.[n].typeName\" : \"ORG\"`) - MongoDB Cloud teams (`\"notifications.[n].typeName\" : \"TEAM\"`)  To send emails to one MongoDB Cloud user or grouping of users, set the `notifications.[n].emailEnabled` parameter.
+	EmailAddress *string `json:"emailAddress,omitempty"`
+	// Flag that indicates whether MongoDB Cloud should send email notifications. The resource requires this parameter when one of the following values have been set:  - `\"notifications.[n].typeName\" : \"ORG\"` - `\"notifications.[n].typeName\" : \"GROUP\"` - `\"notifications.[n].typeName\" : \"USER\"`
+	EmailEnabled *bool `json:"emailEnabled,omitempty"`
+	// List that contains the one or more [organization](https://dochub.mongodb.org/core/atlas-org-roles) or [project roles](https://dochub.mongodb.org/core/atlas-proj-roles) that receive the configured alert. The resource requires this parameter when `\"notifications.[n].typeName\" : \"GROUP\"` or `\"notifications.[n].typeName\" : \"ORG\"`. If you include this parameter, MongoDB Cloud sends alerts only to users assigned the roles you specify in the array. If you omit this parameter, MongoDB Cloud sends alerts to users assigned any role.
+	Roles []string `json:"roles,omitempty"`
+	// Flag that indicates whether MongoDB Cloud should send text message notifications. The resource requires this parameter when one of the following values have been set:  - `\"notifications.[n].typeName\" : \"ORG\"` - `\"notifications.[n].typeName\" : \"GROUP\"` - `\"notifications.[n].typeName\" : \"USER\"`
+	SmsEnabled *bool `json:"smsEnabled,omitempty"`
+	// HipChat API token that MongoDB Cloud needs to send alert notifications to HipChat. The resource requires this parameter when `\"notifications.[n].typeName\" : \"HIP_CHAT\"`\". If the token later becomes invalid, MongoDB Cloud sends an email to the project owners. If the token remains invalid, MongoDB Cloud removes it.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.
+	NotificationToken *string `json:"notificationToken,omitempty"`
+	// HipChat API room name to which MongoDB Cloud sends alert notifications. The resource requires this parameter when `\"notifications.[n].typeName\" : \"HIP_CHAT\"`\".
+	RoomName *string `json:"roomName,omitempty"`
+	// Microsoft Teams Webhook Uniform Resource Locator (URL) that MongoDB Cloud needs to send this notification via Microsoft Teams. The resource requires this parameter when `\"notifications.[n].typeName\" : \"MICROSOFT_TEAMS\"`. If the URL later becomes invalid, MongoDB Cloud sends an email to the project owners. If the key remains invalid, MongoDB Cloud removes it.  **NOTE**: When you view or edit the alert for a Microsoft Teams notification, the URL appears partially redacted.
+	MicrosoftTeamsWebhookUrl *string `json:"microsoftTeamsWebhookUrl,omitempty"`
+	// API Key that MongoDB Cloud needs to send this notification via Opsgenie. The resource requires this parameter when `\"notifications.[n].typeName\" : \"OPS_GENIE\"`. If the key later becomes invalid, MongoDB Cloud sends an email to the project owners. If the key remains invalid, MongoDB Cloud removes it.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.
+	OpsGenieApiKey *string `json:"opsGenieApiKey,omitempty"`
+	// Opsgenie region that indicates which API Uniform Resource Locator (URL) to use.
+	OpsGenieRegion *string `json:"opsGenieRegion,omitempty"`
+	// PagerDuty region that indicates which API Uniform Resource Locator (URL) to use.
+	Region *string `json:"region,omitempty"`
+	// PagerDuty service key that MongoDB Cloud needs to send notifications via PagerDuty. The resource requires this parameter when `\"notifications.[n].typeName\" : \"PAGER_DUTY\"`. If the key later becomes invalid, MongoDB Cloud sends an email to the project owners. If the key remains invalid, MongoDB Cloud removes it.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.
+	ServiceKey *string `json:"serviceKey,omitempty"`
+	// Slack API token or Bot token that MongoDB Cloud needs to send alert notifications via Slack. The resource requires this parameter when `\"notifications.[n].typeName\" : \"SLACK\"`. If the token later becomes invalid, MongoDB Cloud sends an email to the project owners. If the token remains invalid, MongoDB Cloud removes the token.   **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.
+	ApiToken *string `json:"apiToken,omitempty"`
+	// Name of the Slack channel to which MongoDB Cloud sends alert notifications. The resource requires this parameter when `\"notifications.[n].typeName\" : \"SLACK\"`.
+	ChannelName *string `json:"channelName,omitempty"`
+	// Mobile phone number to which MongoDB Cloud sends alert notifications. The resource requires this parameter when `\"notifications.[n].typeName\" : \"SMS\"`.
+	MobileNumber *string `json:"mobileNumber,omitempty"`
+	// Unique 24-hexadecimal digit string that identifies one MongoDB Cloud team. The resource requires this parameter when `\"notifications.[n].typeName\" : \"TEAM\"`.
+	TeamId *string `json:"teamId,omitempty"`
+	// Name of the MongoDB Cloud team that receives this notification. The resource requires this parameter when `\"notifications.[n].typeName\" : \"TEAM\"`.
+	TeamName *string `json:"teamName,omitempty"`
+	// MongoDB Cloud username of the person to whom MongoDB Cloud sends notifications. Specify only MongoDB Cloud users who belong to the project that owns the alert configuration. The resource requires this parameter when `\"notifications.[n].typeName\" : \"USER\"`.
+	Username *string `json:"username,omitempty"`
+	// API key that MongoDB Cloud needs to send alert notifications to Splunk On-Call. The resource requires this parameter when `\"notifications.[n].typeName\" : \"VICTOR_OPS\"`. If the key later becomes invalid, MongoDB Cloud sends an email to the project owners. If the key remains invalid, MongoDB Cloud removes it.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.
+	VictorOpsApiKey *string `json:"victorOpsApiKey,omitempty"`
+	// Routing key that MongoDB Cloud needs to send alert notifications to Splunk On-Call. The resource requires this parameter when `\"notifications.[n].typeName\" : \"VICTOR_OPS\"`. If the key later becomes invalid, MongoDB Cloud sends an email to the project owners. If the key remains invalid, MongoDB Cloud removes it.
+	VictorOpsRoutingKey *string `json:"victorOpsRoutingKey,omitempty"`
+	// Authentication secret for a webhook-based alert.  Atlas returns this value if you set `\"notifications.[n].typeName\" :\"WEBHOOK\"` and either: * You set `notification.[n].webhookSecret` to a non-empty string * You set a default webhookSecret either on the [Integrations](https://www.mongodb.com/docs/atlas/tutorial/third-party-service-integrations/#std-label-third-party-integrations) page, or with the [Integrations API](#tag/Third-Party-Service-Integrations/operation/createIntegration)  **NOTE**: When you view or edit the alert for a webhook notification, the secret appears completely redacted.
+	WebhookSecret *string `json:"webhookSecret,omitempty"`
+	// Target URL for a webhook-based alert.  Atlas returns this value if you set `\"notifications.[n].typeName\" :\"WEBHOOK\"` and either: * You set `notification.[n].webhookURL` to a non-empty string * You set a default webhookUrl either on the [Integrations](https://www.mongodb.com/docs/atlas/tutorial/third-party-service-integrations/#std-label-third-party-integrations) page, or with the [Integrations API](#tag/Third-Party-Service-Integrations/operation/createIntegration)  **NOTE**: When you view or edit the alert for a Webhook URL notification, the URL appears partially redacted.
+	WebhookUrl *string `json:"webhookUrl,omitempty"`
 }
 
-// DatadogNotificationAsNotificationViewForNdsGroup is a convenience function that returns DatadogNotification wrapped in NotificationViewForNdsGroup
-func DatadogNotificationAsNotificationViewForNdsGroup(v *DatadogNotification) NotificationViewForNdsGroup {
-	return NotificationViewForNdsGroup{
-		DatadogNotification: v,
-	}
+// NewNotificationViewForNdsGroup instantiates a new NotificationViewForNdsGroup object
+// This constructor will assign default values to properties that have it defined,
+// and makes sure properties required by API are set, but the set of arguments
+// will change when the set of required properties is changed
+func NewNotificationViewForNdsGroup() *NotificationViewForNdsGroup {
+	this := NotificationViewForNdsGroup{}
+	var datadogRegion string = "US"
+	this.DatadogRegion = &datadogRegion
+	var opsGenieRegion string = "US"
+	this.OpsGenieRegion = &opsGenieRegion
+	var region string = "US"
+	this.Region = &region
+	return &this
 }
 
-// EmailNotificationAsNotificationViewForNdsGroup is a convenience function that returns EmailNotification wrapped in NotificationViewForNdsGroup
-func EmailNotificationAsNotificationViewForNdsGroup(v *EmailNotification) NotificationViewForNdsGroup {
-	return NotificationViewForNdsGroup{
-		EmailNotification: v,
-	}
+// NewNotificationViewForNdsGroupWithDefaults instantiates a new NotificationViewForNdsGroup object
+// This constructor will only assign default values to properties that have it defined,
+// but it doesn't guarantee that properties required by API are set
+func NewNotificationViewForNdsGroupWithDefaults() *NotificationViewForNdsGroup {
+	this := NotificationViewForNdsGroup{}
+	var datadogRegion string = "US"
+	this.DatadogRegion = &datadogRegion
+	var opsGenieRegion string = "US"
+	this.OpsGenieRegion = &opsGenieRegion
+	var region string = "US"
+	this.Region = &region
+	return &this
 }
 
-// GroupNotificationAsNotificationViewForNdsGroup is a convenience function that returns GroupNotification wrapped in NotificationViewForNdsGroup
-func GroupNotificationAsNotificationViewForNdsGroup(v *GroupNotification) NotificationViewForNdsGroup {
-	return NotificationViewForNdsGroup{
-		GroupNotification: v,
+// GetDatadogApiKey returns the DatadogApiKey field value if set, zero value otherwise.
+func (o *NotificationViewForNdsGroup) GetDatadogApiKey() string {
+	if o == nil || IsNil(o.DatadogApiKey) {
+		var ret string
+		return ret
 	}
+	return *o.DatadogApiKey
 }
 
-// HipChatNotificationAsNotificationViewForNdsGroup is a convenience function that returns HipChatNotification wrapped in NotificationViewForNdsGroup
-func HipChatNotificationAsNotificationViewForNdsGroup(v *HipChatNotification) NotificationViewForNdsGroup {
-	return NotificationViewForNdsGroup{
-		HipChatNotification: v,
+// GetDatadogApiKeyOk returns a tuple with the DatadogApiKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationViewForNdsGroup) GetDatadogApiKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.DatadogApiKey) {
+		return nil, false
 	}
+	return o.DatadogApiKey, true
 }
 
-// MicrosoftTeamsNotificationAsNotificationViewForNdsGroup is a convenience function that returns MicrosoftTeamsNotification wrapped in NotificationViewForNdsGroup
-func MicrosoftTeamsNotificationAsNotificationViewForNdsGroup(v *MicrosoftTeamsNotification) NotificationViewForNdsGroup {
-	return NotificationViewForNdsGroup{
-		MicrosoftTeamsNotification: v,
+// HasDatadogApiKey returns a boolean if a field has been set.
+func (o *NotificationViewForNdsGroup) HasDatadogApiKey() bool {
+	if o != nil && !IsNil(o.DatadogApiKey) {
+		return true
 	}
+
+	return false
 }
 
-// OpsGenieNotificationAsNotificationViewForNdsGroup is a convenience function that returns OpsGenieNotification wrapped in NotificationViewForNdsGroup
-func OpsGenieNotificationAsNotificationViewForNdsGroup(v *OpsGenieNotification) NotificationViewForNdsGroup {
-	return NotificationViewForNdsGroup{
-		OpsGenieNotification: v,
-	}
+// SetDatadogApiKey gets a reference to the given string and assigns it to the DatadogApiKey field.
+func (o *NotificationViewForNdsGroup) SetDatadogApiKey(v string) {
+	o.DatadogApiKey = &v
 }
 
-// OrgNotificationAsNotificationViewForNdsGroup is a convenience function that returns OrgNotification wrapped in NotificationViewForNdsGroup
-func OrgNotificationAsNotificationViewForNdsGroup(v *OrgNotification) NotificationViewForNdsGroup {
-	return NotificationViewForNdsGroup{
-		OrgNotification: v,
+// GetDatadogRegion returns the DatadogRegion field value if set, zero value otherwise.
+func (o *NotificationViewForNdsGroup) GetDatadogRegion() string {
+	if o == nil || IsNil(o.DatadogRegion) {
+		var ret string
+		return ret
 	}
+	return *o.DatadogRegion
 }
 
-// PagerDutyNotificationAsNotificationViewForNdsGroup is a convenience function that returns PagerDutyNotification wrapped in NotificationViewForNdsGroup
-func PagerDutyNotificationAsNotificationViewForNdsGroup(v *PagerDutyNotification) NotificationViewForNdsGroup {
-	return NotificationViewForNdsGroup{
-		PagerDutyNotification: v,
+// GetDatadogRegionOk returns a tuple with the DatadogRegion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationViewForNdsGroup) GetDatadogRegionOk() (*string, bool) {
+	if o == nil || IsNil(o.DatadogRegion) {
+		return nil, false
 	}
+	return o.DatadogRegion, true
 }
 
-// SMSNotificationAsNotificationViewForNdsGroup is a convenience function that returns SMSNotification wrapped in NotificationViewForNdsGroup
-func SMSNotificationAsNotificationViewForNdsGroup(v *SMSNotification) NotificationViewForNdsGroup {
-	return NotificationViewForNdsGroup{
-		SMSNotification: v,
+// HasDatadogRegion returns a boolean if a field has been set.
+func (o *NotificationViewForNdsGroup) HasDatadogRegion() bool {
+	if o != nil && !IsNil(o.DatadogRegion) {
+		return true
 	}
+
+	return false
 }
 
-// SlackNotificationAsNotificationViewForNdsGroup is a convenience function that returns SlackNotification wrapped in NotificationViewForNdsGroup
-func SlackNotificationAsNotificationViewForNdsGroup(v *SlackNotification) NotificationViewForNdsGroup {
-	return NotificationViewForNdsGroup{
-		SlackNotification: v,
-	}
+// SetDatadogRegion gets a reference to the given string and assigns it to the DatadogRegion field.
+func (o *NotificationViewForNdsGroup) SetDatadogRegion(v string) {
+	o.DatadogRegion = &v
 }
 
-// TeamNotificationAsNotificationViewForNdsGroup is a convenience function that returns TeamNotification wrapped in NotificationViewForNdsGroup
-func TeamNotificationAsNotificationViewForNdsGroup(v *TeamNotification) NotificationViewForNdsGroup {
-	return NotificationViewForNdsGroup{
-		TeamNotification: v,
+// GetDelayMin returns the DelayMin field value if set, zero value otherwise.
+func (o *NotificationViewForNdsGroup) GetDelayMin() int {
+	if o == nil || IsNil(o.DelayMin) {
+		var ret int
+		return ret
 	}
+	return *o.DelayMin
 }
 
-// UserNotificationAsNotificationViewForNdsGroup is a convenience function that returns UserNotification wrapped in NotificationViewForNdsGroup
-func UserNotificationAsNotificationViewForNdsGroup(v *UserNotification) NotificationViewForNdsGroup {
-	return NotificationViewForNdsGroup{
-		UserNotification: v,
+// GetDelayMinOk returns a tuple with the DelayMin field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationViewForNdsGroup) GetDelayMinOk() (*int, bool) {
+	if o == nil || IsNil(o.DelayMin) {
+		return nil, false
 	}
+	return o.DelayMin, true
 }
 
-// VictorOpsNotificationAsNotificationViewForNdsGroup is a convenience function that returns VictorOpsNotification wrapped in NotificationViewForNdsGroup
-func VictorOpsNotificationAsNotificationViewForNdsGroup(v *VictorOpsNotification) NotificationViewForNdsGroup {
-	return NotificationViewForNdsGroup{
-		VictorOpsNotification: v,
+// HasDelayMin returns a boolean if a field has been set.
+func (o *NotificationViewForNdsGroup) HasDelayMin() bool {
+	if o != nil && !IsNil(o.DelayMin) {
+		return true
 	}
+
+	return false
 }
 
-// WebhookNotificationAsNotificationViewForNdsGroup is a convenience function that returns WebhookNotification wrapped in NotificationViewForNdsGroup
-func WebhookNotificationAsNotificationViewForNdsGroup(v *WebhookNotification) NotificationViewForNdsGroup {
-	return NotificationViewForNdsGroup{
-		WebhookNotification: v,
-	}
+// SetDelayMin gets a reference to the given int and assigns it to the DelayMin field.
+func (o *NotificationViewForNdsGroup) SetDelayMin(v int) {
+	o.DelayMin = &v
 }
 
-// Unmarshal JSON data into one of the pointers in the struct
-func (dst *NotificationViewForNdsGroup) UnmarshalJSON(data []byte) error {
-	var err error
-	match := 0
-	// try to unmarshal data into DatadogNotification
-	err = json.Unmarshal(data, &dst.DatadogNotification)
-	if err == nil {
-		jsonDatadogNotification, _ := json.Marshal(dst.DatadogNotification)
-		if string(jsonDatadogNotification) == "{}" { // empty struct
-			dst.DatadogNotification = nil
-		} else {
-			match++
-		}
-	} else {
-		dst.DatadogNotification = nil
+// GetIntervalMin returns the IntervalMin field value if set, zero value otherwise.
+func (o *NotificationViewForNdsGroup) GetIntervalMin() int {
+	if o == nil || IsNil(o.IntervalMin) {
+		var ret int
+		return ret
 	}
-
-	// try to unmarshal data into EmailNotification
-	err = json.Unmarshal(data, &dst.EmailNotification)
-	if err == nil {
-		jsonEmailNotification, _ := json.Marshal(dst.EmailNotification)
-		if string(jsonEmailNotification) == "{}" { // empty struct
-			dst.EmailNotification = nil
-		} else {
-			match++
-		}
-	} else {
-		dst.EmailNotification = nil
-	}
-
-	// try to unmarshal data into GroupNotification
-	err = json.Unmarshal(data, &dst.GroupNotification)
-	if err == nil {
-		jsonGroupNotification, _ := json.Marshal(dst.GroupNotification)
-		if string(jsonGroupNotification) == "{}" { // empty struct
-			dst.GroupNotification = nil
-		} else {
-			match++
-		}
-	} else {
-		dst.GroupNotification = nil
-	}
-
-	// try to unmarshal data into HipChatNotification
-	err = json.Unmarshal(data, &dst.HipChatNotification)
-	if err == nil {
-		jsonHipChatNotification, _ := json.Marshal(dst.HipChatNotification)
-		if string(jsonHipChatNotification) == "{}" { // empty struct
-			dst.HipChatNotification = nil
-		} else {
-			match++
-		}
-	} else {
-		dst.HipChatNotification = nil
-	}
-
-	// try to unmarshal data into MicrosoftTeamsNotification
-	err = json.Unmarshal(data, &dst.MicrosoftTeamsNotification)
-	if err == nil {
-		jsonMicrosoftTeamsNotification, _ := json.Marshal(dst.MicrosoftTeamsNotification)
-		if string(jsonMicrosoftTeamsNotification) == "{}" { // empty struct
-			dst.MicrosoftTeamsNotification = nil
-		} else {
-			match++
-		}
-	} else {
-		dst.MicrosoftTeamsNotification = nil
-	}
-
-	// try to unmarshal data into OpsGenieNotification
-	err = json.Unmarshal(data, &dst.OpsGenieNotification)
-	if err == nil {
-		jsonOpsGenieNotification, _ := json.Marshal(dst.OpsGenieNotification)
-		if string(jsonOpsGenieNotification) == "{}" { // empty struct
-			dst.OpsGenieNotification = nil
-		} else {
-			match++
-		}
-	} else {
-		dst.OpsGenieNotification = nil
-	}
-
-	// try to unmarshal data into OrgNotification
-	err = json.Unmarshal(data, &dst.OrgNotification)
-	if err == nil {
-		jsonOrgNotification, _ := json.Marshal(dst.OrgNotification)
-		if string(jsonOrgNotification) == "{}" { // empty struct
-			dst.OrgNotification = nil
-		} else {
-			match++
-		}
-	} else {
-		dst.OrgNotification = nil
-	}
-
-	// try to unmarshal data into PagerDutyNotification
-	err = json.Unmarshal(data, &dst.PagerDutyNotification)
-	if err == nil {
-		jsonPagerDutyNotification, _ := json.Marshal(dst.PagerDutyNotification)
-		if string(jsonPagerDutyNotification) == "{}" { // empty struct
-			dst.PagerDutyNotification = nil
-		} else {
-			match++
-		}
-	} else {
-		dst.PagerDutyNotification = nil
-	}
-
-	// try to unmarshal data into SMSNotification
-	err = json.Unmarshal(data, &dst.SMSNotification)
-	if err == nil {
-		jsonSMSNotification, _ := json.Marshal(dst.SMSNotification)
-		if string(jsonSMSNotification) == "{}" { // empty struct
-			dst.SMSNotification = nil
-		} else {
-			match++
-		}
-	} else {
-		dst.SMSNotification = nil
-	}
-
-	// try to unmarshal data into SlackNotification
-	err = json.Unmarshal(data, &dst.SlackNotification)
-	if err == nil {
-		jsonSlackNotification, _ := json.Marshal(dst.SlackNotification)
-		if string(jsonSlackNotification) == "{}" { // empty struct
-			dst.SlackNotification = nil
-		} else {
-			match++
-		}
-	} else {
-		dst.SlackNotification = nil
-	}
-
-	// try to unmarshal data into TeamNotification
-	err = json.Unmarshal(data, &dst.TeamNotification)
-	if err == nil {
-		jsonTeamNotification, _ := json.Marshal(dst.TeamNotification)
-		if string(jsonTeamNotification) == "{}" { // empty struct
-			dst.TeamNotification = nil
-		} else {
-			match++
-		}
-	} else {
-		dst.TeamNotification = nil
-	}
-
-	// try to unmarshal data into UserNotification
-	err = json.Unmarshal(data, &dst.UserNotification)
-	if err == nil {
-		jsonUserNotification, _ := json.Marshal(dst.UserNotification)
-		if string(jsonUserNotification) == "{}" { // empty struct
-			dst.UserNotification = nil
-		} else {
-			match++
-		}
-	} else {
-		dst.UserNotification = nil
-	}
-
-	// try to unmarshal data into VictorOpsNotification
-	err = json.Unmarshal(data, &dst.VictorOpsNotification)
-	if err == nil {
-		jsonVictorOpsNotification, _ := json.Marshal(dst.VictorOpsNotification)
-		if string(jsonVictorOpsNotification) == "{}" { // empty struct
-			dst.VictorOpsNotification = nil
-		} else {
-			match++
-		}
-	} else {
-		dst.VictorOpsNotification = nil
-	}
-
-	// try to unmarshal data into WebhookNotification
-	err = json.Unmarshal(data, &dst.WebhookNotification)
-	if err == nil {
-		jsonWebhookNotification, _ := json.Marshal(dst.WebhookNotification)
-		if string(jsonWebhookNotification) == "{}" { // empty struct
-			dst.WebhookNotification = nil
-		} else {
-			match++
-		}
-	} else {
-		dst.WebhookNotification = nil
-	}
-
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.DatadogNotification = nil
-		dst.EmailNotification = nil
-		dst.GroupNotification = nil
-		dst.HipChatNotification = nil
-		dst.MicrosoftTeamsNotification = nil
-		dst.OpsGenieNotification = nil
-		dst.OrgNotification = nil
-		dst.PagerDutyNotification = nil
-		dst.SMSNotification = nil
-		dst.SlackNotification = nil
-		dst.TeamNotification = nil
-		dst.UserNotification = nil
-		dst.VictorOpsNotification = nil
-		dst.WebhookNotification = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(NotificationViewForNdsGroup)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(NotificationViewForNdsGroup)")
-	}
+	return *o.IntervalMin
 }
 
-// Marshal data from the first non-nil pointers in the struct to JSON
-func (src NotificationViewForNdsGroup) MarshalJSON() ([]byte, error) {
-	if src.DatadogNotification != nil {
-		return json.Marshal(&src.DatadogNotification)
+// GetIntervalMinOk returns a tuple with the IntervalMin field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationViewForNdsGroup) GetIntervalMinOk() (*int, bool) {
+	if o == nil || IsNil(o.IntervalMin) {
+		return nil, false
 	}
-
-	if src.EmailNotification != nil {
-		return json.Marshal(&src.EmailNotification)
-	}
-
-	if src.GroupNotification != nil {
-		return json.Marshal(&src.GroupNotification)
-	}
-
-	if src.HipChatNotification != nil {
-		return json.Marshal(&src.HipChatNotification)
-	}
-
-	if src.MicrosoftTeamsNotification != nil {
-		return json.Marshal(&src.MicrosoftTeamsNotification)
-	}
-
-	if src.OpsGenieNotification != nil {
-		return json.Marshal(&src.OpsGenieNotification)
-	}
-
-	if src.OrgNotification != nil {
-		return json.Marshal(&src.OrgNotification)
-	}
-
-	if src.PagerDutyNotification != nil {
-		return json.Marshal(&src.PagerDutyNotification)
-	}
-
-	if src.SMSNotification != nil {
-		return json.Marshal(&src.SMSNotification)
-	}
-
-	if src.SlackNotification != nil {
-		return json.Marshal(&src.SlackNotification)
-	}
-
-	if src.TeamNotification != nil {
-		return json.Marshal(&src.TeamNotification)
-	}
-
-	if src.UserNotification != nil {
-		return json.Marshal(&src.UserNotification)
-	}
-
-	if src.VictorOpsNotification != nil {
-		return json.Marshal(&src.VictorOpsNotification)
-	}
-
-	if src.WebhookNotification != nil {
-		return json.Marshal(&src.WebhookNotification)
-	}
-
-	return nil, nil // no data in oneOf schemas
+	return o.IntervalMin, true
 }
 
-// Get the actual instance
-func (obj *NotificationViewForNdsGroup) GetActualInstance() interface{} {
-	if obj == nil {
-		return nil
-	}
-	if obj.DatadogNotification != nil {
-		return obj.DatadogNotification
+// HasIntervalMin returns a boolean if a field has been set.
+func (o *NotificationViewForNdsGroup) HasIntervalMin() bool {
+	if o != nil && !IsNil(o.IntervalMin) {
+		return true
 	}
 
-	if obj.EmailNotification != nil {
-		return obj.EmailNotification
+	return false
+}
+
+// SetIntervalMin gets a reference to the given int and assigns it to the IntervalMin field.
+func (o *NotificationViewForNdsGroup) SetIntervalMin(v int) {
+	o.IntervalMin = &v
+}
+
+// GetTypeName returns the TypeName field value if set, zero value otherwise.
+func (o *NotificationViewForNdsGroup) GetTypeName() string {
+	if o == nil || IsNil(o.TypeName) {
+		var ret string
+		return ret
+	}
+	return *o.TypeName
+}
+
+// GetTypeNameOk returns a tuple with the TypeName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationViewForNdsGroup) GetTypeNameOk() (*string, bool) {
+	if o == nil || IsNil(o.TypeName) {
+		return nil, false
+	}
+	return o.TypeName, true
+}
+
+// HasTypeName returns a boolean if a field has been set.
+func (o *NotificationViewForNdsGroup) HasTypeName() bool {
+	if o != nil && !IsNil(o.TypeName) {
+		return true
 	}
 
-	if obj.GroupNotification != nil {
-		return obj.GroupNotification
+	return false
+}
+
+// SetTypeName gets a reference to the given string and assigns it to the TypeName field.
+func (o *NotificationViewForNdsGroup) SetTypeName(v string) {
+	o.TypeName = &v
+}
+
+// GetEmailAddress returns the EmailAddress field value if set, zero value otherwise.
+func (o *NotificationViewForNdsGroup) GetEmailAddress() string {
+	if o == nil || IsNil(o.EmailAddress) {
+		var ret string
+		return ret
+	}
+	return *o.EmailAddress
+}
+
+// GetEmailAddressOk returns a tuple with the EmailAddress field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationViewForNdsGroup) GetEmailAddressOk() (*string, bool) {
+	if o == nil || IsNil(o.EmailAddress) {
+		return nil, false
+	}
+	return o.EmailAddress, true
+}
+
+// HasEmailAddress returns a boolean if a field has been set.
+func (o *NotificationViewForNdsGroup) HasEmailAddress() bool {
+	if o != nil && !IsNil(o.EmailAddress) {
+		return true
 	}
 
-	if obj.HipChatNotification != nil {
-		return obj.HipChatNotification
+	return false
+}
+
+// SetEmailAddress gets a reference to the given string and assigns it to the EmailAddress field.
+func (o *NotificationViewForNdsGroup) SetEmailAddress(v string) {
+	o.EmailAddress = &v
+}
+
+// GetEmailEnabled returns the EmailEnabled field value if set, zero value otherwise.
+func (o *NotificationViewForNdsGroup) GetEmailEnabled() bool {
+	if o == nil || IsNil(o.EmailEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.EmailEnabled
+}
+
+// GetEmailEnabledOk returns a tuple with the EmailEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationViewForNdsGroup) GetEmailEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.EmailEnabled) {
+		return nil, false
+	}
+	return o.EmailEnabled, true
+}
+
+// HasEmailEnabled returns a boolean if a field has been set.
+func (o *NotificationViewForNdsGroup) HasEmailEnabled() bool {
+	if o != nil && !IsNil(o.EmailEnabled) {
+		return true
 	}
 
-	if obj.MicrosoftTeamsNotification != nil {
-		return obj.MicrosoftTeamsNotification
+	return false
+}
+
+// SetEmailEnabled gets a reference to the given bool and assigns it to the EmailEnabled field.
+func (o *NotificationViewForNdsGroup) SetEmailEnabled(v bool) {
+	o.EmailEnabled = &v
+}
+
+// GetRoles returns the Roles field value if set, zero value otherwise.
+func (o *NotificationViewForNdsGroup) GetRoles() []string {
+	if o == nil || IsNil(o.Roles) {
+		var ret []string
+		return ret
+	}
+	return o.Roles
+}
+
+// GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationViewForNdsGroup) GetRolesOk() ([]string, bool) {
+	if o == nil || IsNil(o.Roles) {
+		return nil, false
+	}
+	return o.Roles, true
+}
+
+// HasRoles returns a boolean if a field has been set.
+func (o *NotificationViewForNdsGroup) HasRoles() bool {
+	if o != nil && !IsNil(o.Roles) {
+		return true
 	}
 
-	if obj.OpsGenieNotification != nil {
-		return obj.OpsGenieNotification
+	return false
+}
+
+// SetRoles gets a reference to the given []string and assigns it to the Roles field.
+func (o *NotificationViewForNdsGroup) SetRoles(v []string) {
+	o.Roles = v
+}
+
+// GetSmsEnabled returns the SmsEnabled field value if set, zero value otherwise.
+func (o *NotificationViewForNdsGroup) GetSmsEnabled() bool {
+	if o == nil || IsNil(o.SmsEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.SmsEnabled
+}
+
+// GetSmsEnabledOk returns a tuple with the SmsEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationViewForNdsGroup) GetSmsEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.SmsEnabled) {
+		return nil, false
+	}
+	return o.SmsEnabled, true
+}
+
+// HasSmsEnabled returns a boolean if a field has been set.
+func (o *NotificationViewForNdsGroup) HasSmsEnabled() bool {
+	if o != nil && !IsNil(o.SmsEnabled) {
+		return true
 	}
 
-	if obj.OrgNotification != nil {
-		return obj.OrgNotification
+	return false
+}
+
+// SetSmsEnabled gets a reference to the given bool and assigns it to the SmsEnabled field.
+func (o *NotificationViewForNdsGroup) SetSmsEnabled(v bool) {
+	o.SmsEnabled = &v
+}
+
+// GetNotificationToken returns the NotificationToken field value if set, zero value otherwise.
+func (o *NotificationViewForNdsGroup) GetNotificationToken() string {
+	if o == nil || IsNil(o.NotificationToken) {
+		var ret string
+		return ret
+	}
+	return *o.NotificationToken
+}
+
+// GetNotificationTokenOk returns a tuple with the NotificationToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationViewForNdsGroup) GetNotificationTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.NotificationToken) {
+		return nil, false
+	}
+	return o.NotificationToken, true
+}
+
+// HasNotificationToken returns a boolean if a field has been set.
+func (o *NotificationViewForNdsGroup) HasNotificationToken() bool {
+	if o != nil && !IsNil(o.NotificationToken) {
+		return true
 	}
 
-	if obj.PagerDutyNotification != nil {
-		return obj.PagerDutyNotification
+	return false
+}
+
+// SetNotificationToken gets a reference to the given string and assigns it to the NotificationToken field.
+func (o *NotificationViewForNdsGroup) SetNotificationToken(v string) {
+	o.NotificationToken = &v
+}
+
+// GetRoomName returns the RoomName field value if set, zero value otherwise.
+func (o *NotificationViewForNdsGroup) GetRoomName() string {
+	if o == nil || IsNil(o.RoomName) {
+		var ret string
+		return ret
+	}
+	return *o.RoomName
+}
+
+// GetRoomNameOk returns a tuple with the RoomName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationViewForNdsGroup) GetRoomNameOk() (*string, bool) {
+	if o == nil || IsNil(o.RoomName) {
+		return nil, false
+	}
+	return o.RoomName, true
+}
+
+// HasRoomName returns a boolean if a field has been set.
+func (o *NotificationViewForNdsGroup) HasRoomName() bool {
+	if o != nil && !IsNil(o.RoomName) {
+		return true
 	}
 
-	if obj.SMSNotification != nil {
-		return obj.SMSNotification
+	return false
+}
+
+// SetRoomName gets a reference to the given string and assigns it to the RoomName field.
+func (o *NotificationViewForNdsGroup) SetRoomName(v string) {
+	o.RoomName = &v
+}
+
+// GetMicrosoftTeamsWebhookUrl returns the MicrosoftTeamsWebhookUrl field value if set, zero value otherwise.
+func (o *NotificationViewForNdsGroup) GetMicrosoftTeamsWebhookUrl() string {
+	if o == nil || IsNil(o.MicrosoftTeamsWebhookUrl) {
+		var ret string
+		return ret
+	}
+	return *o.MicrosoftTeamsWebhookUrl
+}
+
+// GetMicrosoftTeamsWebhookUrlOk returns a tuple with the MicrosoftTeamsWebhookUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationViewForNdsGroup) GetMicrosoftTeamsWebhookUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.MicrosoftTeamsWebhookUrl) {
+		return nil, false
+	}
+	return o.MicrosoftTeamsWebhookUrl, true
+}
+
+// HasMicrosoftTeamsWebhookUrl returns a boolean if a field has been set.
+func (o *NotificationViewForNdsGroup) HasMicrosoftTeamsWebhookUrl() bool {
+	if o != nil && !IsNil(o.MicrosoftTeamsWebhookUrl) {
+		return true
 	}
 
-	if obj.SlackNotification != nil {
-		return obj.SlackNotification
+	return false
+}
+
+// SetMicrosoftTeamsWebhookUrl gets a reference to the given string and assigns it to the MicrosoftTeamsWebhookUrl field.
+func (o *NotificationViewForNdsGroup) SetMicrosoftTeamsWebhookUrl(v string) {
+	o.MicrosoftTeamsWebhookUrl = &v
+}
+
+// GetOpsGenieApiKey returns the OpsGenieApiKey field value if set, zero value otherwise.
+func (o *NotificationViewForNdsGroup) GetOpsGenieApiKey() string {
+	if o == nil || IsNil(o.OpsGenieApiKey) {
+		var ret string
+		return ret
+	}
+	return *o.OpsGenieApiKey
+}
+
+// GetOpsGenieApiKeyOk returns a tuple with the OpsGenieApiKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationViewForNdsGroup) GetOpsGenieApiKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.OpsGenieApiKey) {
+		return nil, false
+	}
+	return o.OpsGenieApiKey, true
+}
+
+// HasOpsGenieApiKey returns a boolean if a field has been set.
+func (o *NotificationViewForNdsGroup) HasOpsGenieApiKey() bool {
+	if o != nil && !IsNil(o.OpsGenieApiKey) {
+		return true
 	}
 
-	if obj.TeamNotification != nil {
-		return obj.TeamNotification
+	return false
+}
+
+// SetOpsGenieApiKey gets a reference to the given string and assigns it to the OpsGenieApiKey field.
+func (o *NotificationViewForNdsGroup) SetOpsGenieApiKey(v string) {
+	o.OpsGenieApiKey = &v
+}
+
+// GetOpsGenieRegion returns the OpsGenieRegion field value if set, zero value otherwise.
+func (o *NotificationViewForNdsGroup) GetOpsGenieRegion() string {
+	if o == nil || IsNil(o.OpsGenieRegion) {
+		var ret string
+		return ret
+	}
+	return *o.OpsGenieRegion
+}
+
+// GetOpsGenieRegionOk returns a tuple with the OpsGenieRegion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationViewForNdsGroup) GetOpsGenieRegionOk() (*string, bool) {
+	if o == nil || IsNil(o.OpsGenieRegion) {
+		return nil, false
+	}
+	return o.OpsGenieRegion, true
+}
+
+// HasOpsGenieRegion returns a boolean if a field has been set.
+func (o *NotificationViewForNdsGroup) HasOpsGenieRegion() bool {
+	if o != nil && !IsNil(o.OpsGenieRegion) {
+		return true
 	}
 
-	if obj.UserNotification != nil {
-		return obj.UserNotification
+	return false
+}
+
+// SetOpsGenieRegion gets a reference to the given string and assigns it to the OpsGenieRegion field.
+func (o *NotificationViewForNdsGroup) SetOpsGenieRegion(v string) {
+	o.OpsGenieRegion = &v
+}
+
+// GetRegion returns the Region field value if set, zero value otherwise.
+func (o *NotificationViewForNdsGroup) GetRegion() string {
+	if o == nil || IsNil(o.Region) {
+		var ret string
+		return ret
+	}
+	return *o.Region
+}
+
+// GetRegionOk returns a tuple with the Region field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationViewForNdsGroup) GetRegionOk() (*string, bool) {
+	if o == nil || IsNil(o.Region) {
+		return nil, false
+	}
+	return o.Region, true
+}
+
+// HasRegion returns a boolean if a field has been set.
+func (o *NotificationViewForNdsGroup) HasRegion() bool {
+	if o != nil && !IsNil(o.Region) {
+		return true
 	}
 
-	if obj.VictorOpsNotification != nil {
-		return obj.VictorOpsNotification
+	return false
+}
+
+// SetRegion gets a reference to the given string and assigns it to the Region field.
+func (o *NotificationViewForNdsGroup) SetRegion(v string) {
+	o.Region = &v
+}
+
+// GetServiceKey returns the ServiceKey field value if set, zero value otherwise.
+func (o *NotificationViewForNdsGroup) GetServiceKey() string {
+	if o == nil || IsNil(o.ServiceKey) {
+		var ret string
+		return ret
+	}
+	return *o.ServiceKey
+}
+
+// GetServiceKeyOk returns a tuple with the ServiceKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationViewForNdsGroup) GetServiceKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.ServiceKey) {
+		return nil, false
+	}
+	return o.ServiceKey, true
+}
+
+// HasServiceKey returns a boolean if a field has been set.
+func (o *NotificationViewForNdsGroup) HasServiceKey() bool {
+	if o != nil && !IsNil(o.ServiceKey) {
+		return true
 	}
 
-	if obj.WebhookNotification != nil {
-		return obj.WebhookNotification
+	return false
+}
+
+// SetServiceKey gets a reference to the given string and assigns it to the ServiceKey field.
+func (o *NotificationViewForNdsGroup) SetServiceKey(v string) {
+	o.ServiceKey = &v
+}
+
+// GetApiToken returns the ApiToken field value if set, zero value otherwise.
+func (o *NotificationViewForNdsGroup) GetApiToken() string {
+	if o == nil || IsNil(o.ApiToken) {
+		var ret string
+		return ret
+	}
+	return *o.ApiToken
+}
+
+// GetApiTokenOk returns a tuple with the ApiToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationViewForNdsGroup) GetApiTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.ApiToken) {
+		return nil, false
+	}
+	return o.ApiToken, true
+}
+
+// HasApiToken returns a boolean if a field has been set.
+func (o *NotificationViewForNdsGroup) HasApiToken() bool {
+	if o != nil && !IsNil(o.ApiToken) {
+		return true
 	}
 
-	// all schemas are nil
-	return nil
+	return false
+}
+
+// SetApiToken gets a reference to the given string and assigns it to the ApiToken field.
+func (o *NotificationViewForNdsGroup) SetApiToken(v string) {
+	o.ApiToken = &v
+}
+
+// GetChannelName returns the ChannelName field value if set, zero value otherwise.
+func (o *NotificationViewForNdsGroup) GetChannelName() string {
+	if o == nil || IsNil(o.ChannelName) {
+		var ret string
+		return ret
+	}
+	return *o.ChannelName
+}
+
+// GetChannelNameOk returns a tuple with the ChannelName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationViewForNdsGroup) GetChannelNameOk() (*string, bool) {
+	if o == nil || IsNil(o.ChannelName) {
+		return nil, false
+	}
+	return o.ChannelName, true
+}
+
+// HasChannelName returns a boolean if a field has been set.
+func (o *NotificationViewForNdsGroup) HasChannelName() bool {
+	if o != nil && !IsNil(o.ChannelName) {
+		return true
+	}
+
+	return false
+}
+
+// SetChannelName gets a reference to the given string and assigns it to the ChannelName field.
+func (o *NotificationViewForNdsGroup) SetChannelName(v string) {
+	o.ChannelName = &v
+}
+
+// GetMobileNumber returns the MobileNumber field value if set, zero value otherwise.
+func (o *NotificationViewForNdsGroup) GetMobileNumber() string {
+	if o == nil || IsNil(o.MobileNumber) {
+		var ret string
+		return ret
+	}
+	return *o.MobileNumber
+}
+
+// GetMobileNumberOk returns a tuple with the MobileNumber field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationViewForNdsGroup) GetMobileNumberOk() (*string, bool) {
+	if o == nil || IsNil(o.MobileNumber) {
+		return nil, false
+	}
+	return o.MobileNumber, true
+}
+
+// HasMobileNumber returns a boolean if a field has been set.
+func (o *NotificationViewForNdsGroup) HasMobileNumber() bool {
+	if o != nil && !IsNil(o.MobileNumber) {
+		return true
+	}
+
+	return false
+}
+
+// SetMobileNumber gets a reference to the given string and assigns it to the MobileNumber field.
+func (o *NotificationViewForNdsGroup) SetMobileNumber(v string) {
+	o.MobileNumber = &v
+}
+
+// GetTeamId returns the TeamId field value if set, zero value otherwise.
+func (o *NotificationViewForNdsGroup) GetTeamId() string {
+	if o == nil || IsNil(o.TeamId) {
+		var ret string
+		return ret
+	}
+	return *o.TeamId
+}
+
+// GetTeamIdOk returns a tuple with the TeamId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationViewForNdsGroup) GetTeamIdOk() (*string, bool) {
+	if o == nil || IsNil(o.TeamId) {
+		return nil, false
+	}
+	return o.TeamId, true
+}
+
+// HasTeamId returns a boolean if a field has been set.
+func (o *NotificationViewForNdsGroup) HasTeamId() bool {
+	if o != nil && !IsNil(o.TeamId) {
+		return true
+	}
+
+	return false
+}
+
+// SetTeamId gets a reference to the given string and assigns it to the TeamId field.
+func (o *NotificationViewForNdsGroup) SetTeamId(v string) {
+	o.TeamId = &v
+}
+
+// GetTeamName returns the TeamName field value if set, zero value otherwise.
+func (o *NotificationViewForNdsGroup) GetTeamName() string {
+	if o == nil || IsNil(o.TeamName) {
+		var ret string
+		return ret
+	}
+	return *o.TeamName
+}
+
+// GetTeamNameOk returns a tuple with the TeamName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationViewForNdsGroup) GetTeamNameOk() (*string, bool) {
+	if o == nil || IsNil(o.TeamName) {
+		return nil, false
+	}
+	return o.TeamName, true
+}
+
+// HasTeamName returns a boolean if a field has been set.
+func (o *NotificationViewForNdsGroup) HasTeamName() bool {
+	if o != nil && !IsNil(o.TeamName) {
+		return true
+	}
+
+	return false
+}
+
+// SetTeamName gets a reference to the given string and assigns it to the TeamName field.
+func (o *NotificationViewForNdsGroup) SetTeamName(v string) {
+	o.TeamName = &v
+}
+
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *NotificationViewForNdsGroup) GetUsername() string {
+	if o == nil || IsNil(o.Username) {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationViewForNdsGroup) GetUsernameOk() (*string, bool) {
+	if o == nil || IsNil(o.Username) {
+		return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *NotificationViewForNdsGroup) HasUsername() bool {
+	if o != nil && !IsNil(o.Username) {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *NotificationViewForNdsGroup) SetUsername(v string) {
+	o.Username = &v
+}
+
+// GetVictorOpsApiKey returns the VictorOpsApiKey field value if set, zero value otherwise.
+func (o *NotificationViewForNdsGroup) GetVictorOpsApiKey() string {
+	if o == nil || IsNil(o.VictorOpsApiKey) {
+		var ret string
+		return ret
+	}
+	return *o.VictorOpsApiKey
+}
+
+// GetVictorOpsApiKeyOk returns a tuple with the VictorOpsApiKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationViewForNdsGroup) GetVictorOpsApiKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.VictorOpsApiKey) {
+		return nil, false
+	}
+	return o.VictorOpsApiKey, true
+}
+
+// HasVictorOpsApiKey returns a boolean if a field has been set.
+func (o *NotificationViewForNdsGroup) HasVictorOpsApiKey() bool {
+	if o != nil && !IsNil(o.VictorOpsApiKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetVictorOpsApiKey gets a reference to the given string and assigns it to the VictorOpsApiKey field.
+func (o *NotificationViewForNdsGroup) SetVictorOpsApiKey(v string) {
+	o.VictorOpsApiKey = &v
+}
+
+// GetVictorOpsRoutingKey returns the VictorOpsRoutingKey field value if set, zero value otherwise.
+func (o *NotificationViewForNdsGroup) GetVictorOpsRoutingKey() string {
+	if o == nil || IsNil(o.VictorOpsRoutingKey) {
+		var ret string
+		return ret
+	}
+	return *o.VictorOpsRoutingKey
+}
+
+// GetVictorOpsRoutingKeyOk returns a tuple with the VictorOpsRoutingKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationViewForNdsGroup) GetVictorOpsRoutingKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.VictorOpsRoutingKey) {
+		return nil, false
+	}
+	return o.VictorOpsRoutingKey, true
+}
+
+// HasVictorOpsRoutingKey returns a boolean if a field has been set.
+func (o *NotificationViewForNdsGroup) HasVictorOpsRoutingKey() bool {
+	if o != nil && !IsNil(o.VictorOpsRoutingKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetVictorOpsRoutingKey gets a reference to the given string and assigns it to the VictorOpsRoutingKey field.
+func (o *NotificationViewForNdsGroup) SetVictorOpsRoutingKey(v string) {
+	o.VictorOpsRoutingKey = &v
+}
+
+// GetWebhookSecret returns the WebhookSecret field value if set, zero value otherwise.
+func (o *NotificationViewForNdsGroup) GetWebhookSecret() string {
+	if o == nil || IsNil(o.WebhookSecret) {
+		var ret string
+		return ret
+	}
+	return *o.WebhookSecret
+}
+
+// GetWebhookSecretOk returns a tuple with the WebhookSecret field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationViewForNdsGroup) GetWebhookSecretOk() (*string, bool) {
+	if o == nil || IsNil(o.WebhookSecret) {
+		return nil, false
+	}
+	return o.WebhookSecret, true
+}
+
+// HasWebhookSecret returns a boolean if a field has been set.
+func (o *NotificationViewForNdsGroup) HasWebhookSecret() bool {
+	if o != nil && !IsNil(o.WebhookSecret) {
+		return true
+	}
+
+	return false
+}
+
+// SetWebhookSecret gets a reference to the given string and assigns it to the WebhookSecret field.
+func (o *NotificationViewForNdsGroup) SetWebhookSecret(v string) {
+	o.WebhookSecret = &v
+}
+
+// GetWebhookUrl returns the WebhookUrl field value if set, zero value otherwise.
+func (o *NotificationViewForNdsGroup) GetWebhookUrl() string {
+	if o == nil || IsNil(o.WebhookUrl) {
+		var ret string
+		return ret
+	}
+	return *o.WebhookUrl
+}
+
+// GetWebhookUrlOk returns a tuple with the WebhookUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationViewForNdsGroup) GetWebhookUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.WebhookUrl) {
+		return nil, false
+	}
+	return o.WebhookUrl, true
+}
+
+// HasWebhookUrl returns a boolean if a field has been set.
+func (o *NotificationViewForNdsGroup) HasWebhookUrl() bool {
+	if o != nil && !IsNil(o.WebhookUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetWebhookUrl gets a reference to the given string and assigns it to the WebhookUrl field.
+func (o *NotificationViewForNdsGroup) SetWebhookUrl(v string) {
+	o.WebhookUrl = &v
+}
+
+func (o NotificationViewForNdsGroup) MarshalJSONWithoutReadOnly() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+func (o NotificationViewForNdsGroup) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.DatadogApiKey) {
+		toSerialize["datadogApiKey"] = o.DatadogApiKey
+	}
+	if !IsNil(o.DatadogRegion) {
+		toSerialize["datadogRegion"] = o.DatadogRegion
+	}
+	if !IsNil(o.DelayMin) {
+		toSerialize["delayMin"] = o.DelayMin
+	}
+	if !IsNil(o.IntervalMin) {
+		toSerialize["intervalMin"] = o.IntervalMin
+	}
+	if !IsNil(o.TypeName) {
+		toSerialize["typeName"] = o.TypeName
+	}
+	if !IsNil(o.EmailAddress) {
+		toSerialize["emailAddress"] = o.EmailAddress
+	}
+	if !IsNil(o.EmailEnabled) {
+		toSerialize["emailEnabled"] = o.EmailEnabled
+	}
+	if !IsNil(o.Roles) {
+		toSerialize["roles"] = o.Roles
+	}
+	if !IsNil(o.SmsEnabled) {
+		toSerialize["smsEnabled"] = o.SmsEnabled
+	}
+	if !IsNil(o.NotificationToken) {
+		toSerialize["notificationToken"] = o.NotificationToken
+	}
+	if !IsNil(o.RoomName) {
+		toSerialize["roomName"] = o.RoomName
+	}
+	if !IsNil(o.MicrosoftTeamsWebhookUrl) {
+		toSerialize["microsoftTeamsWebhookUrl"] = o.MicrosoftTeamsWebhookUrl
+	}
+	if !IsNil(o.OpsGenieApiKey) {
+		toSerialize["opsGenieApiKey"] = o.OpsGenieApiKey
+	}
+	if !IsNil(o.OpsGenieRegion) {
+		toSerialize["opsGenieRegion"] = o.OpsGenieRegion
+	}
+	if !IsNil(o.Region) {
+		toSerialize["region"] = o.Region
+	}
+	if !IsNil(o.ServiceKey) {
+		toSerialize["serviceKey"] = o.ServiceKey
+	}
+	if !IsNil(o.ApiToken) {
+		toSerialize["apiToken"] = o.ApiToken
+	}
+	if !IsNil(o.ChannelName) {
+		toSerialize["channelName"] = o.ChannelName
+	}
+	if !IsNil(o.MobileNumber) {
+		toSerialize["mobileNumber"] = o.MobileNumber
+	}
+	if !IsNil(o.TeamId) {
+		toSerialize["teamId"] = o.TeamId
+	}
+	if !IsNil(o.TeamName) {
+		toSerialize["teamName"] = o.TeamName
+	}
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
+	}
+	if !IsNil(o.VictorOpsApiKey) {
+		toSerialize["victorOpsApiKey"] = o.VictorOpsApiKey
+	}
+	if !IsNil(o.VictorOpsRoutingKey) {
+		toSerialize["victorOpsRoutingKey"] = o.VictorOpsRoutingKey
+	}
+	if !IsNil(o.WebhookSecret) {
+		toSerialize["webhookSecret"] = o.WebhookSecret
+	}
+	if !IsNil(o.WebhookUrl) {
+		toSerialize["webhookUrl"] = o.WebhookUrl
+	}
+	return toSerialize, nil
 }
 
 type NullableNotificationViewForNdsGroup struct {

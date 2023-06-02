@@ -90,6 +90,9 @@ function transformOneOfProperties(parentObject, api) {
   );
 
   for (let childObject of childObjects) {
+    if (!childObject.properties) {
+      throw new Error(`${JSON.stringify(childObjects, "", 2)}`);
+    }
     const childProperties = JSON.parse(JSON.stringify(childObject.properties));
     console.debug(`${childObject.title}: moving child properties into parent`);
     const duplicates = detectDuplicates([

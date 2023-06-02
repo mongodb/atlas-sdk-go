@@ -17,6 +17,14 @@ const ignoredModelNames = require("./name.ignore.json").ignoreModels;
  * Function specifies list of transformations to run
  */
 module.exports = function runTransformations(openapi) {
+  // Patching till upstream change will be merged
+  // Will be applied upstream as well
+  addOneOfTransform(openapi, [
+    "NotificationViewForNdsGroup",
+    "ApiAtlasServerlessTenantEndpointView",
+    "ApiAtlasEndpointServiceView",
+  ]);
+
   openapi = applyDiscriminatorTransformations(openapi);
   openapi = applyOneOfTransformations(openapi);
   openapi = applyAllOfTransformations(openapi);
@@ -68,23 +76,10 @@ module.exports = function runTransformations(openapi) {
     "EventTypeForOrg",
   ]);
 
-  try {
-    // TODO - inject to the OpenAPI schema
-    // Temp workaround for ApiAtlasRegionConfigView
-    // Reason why we running this separately is we
-    // want to ensure that this transformation is executed after renames
-    const parentObject = getObjectFromYamlPath(
-      ".components.schemas.RegionConfig",
-      openapi
-    );
-    if (parentObject) {
-      transformOneOfProperties(parentObject, openapi);
-    }
-  } catch (e) {
-    throw new ("ApiAtlasRegionConfigView cannot be renamed", e)();
-  }
-
   applyRemoveEnumsTransformations(openapi);
+
+  // Required for RegionConfig
+  workaroundNestedTransformations(openapi);
 
   let hasSchemaChanges = true;
   // Remove referencing objects that become unused
@@ -95,3 +90,28 @@ module.exports = function runTransformations(openapi) {
 
   return openapi;
 };
+
+function workaroundNestedTransformations(openapi) {
+  try {
+    const parentObject = getObjectFromYamlPath(
+      ".components.schemas.RegionConfig",
+      openapi
+    );
+    if (parentObject) {
+      transformOneOfProperties(parentObject, openapi);
+    }
+  } catch (e) {
+    throw new Error("ApiAtlasRegionConfigView cannot be renamed" + e);
+  }
+}
+
+// Patch  "x-xgen-go-transform": "merge-oneOf"
+function addOneOfTransform(openapi, objectNames) {
+  objectNames.forEach((name) => {
+    if (openapi.components.schemas[name]) {
+      openapi.components.schemas[name]["x-xgen-go-transform"] = "merge-oneOf";
+    } else {
+      console.warning("Missing object to add x-xgen-go-transform" + object);
+    }
+  });
+}
