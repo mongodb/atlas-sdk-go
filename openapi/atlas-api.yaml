@@ -12614,7 +12614,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: '#/components/schemas/ApiUserAccessListView'
+                $ref: '#/components/schemas/PaginatedApiUserAccessListView'
               x-xgen-version: 2023-01-01
           description: OK
         "400":
