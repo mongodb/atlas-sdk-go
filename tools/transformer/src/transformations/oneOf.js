@@ -22,7 +22,7 @@ function applyOneOfTransformations(api) {
     return canApplyOneOfTransformation(obj, api);
   });
 
-  console.error(
+  console.info(
     "# OneOf transformations: ",
     oneOfTransformations.map((e) => e.path)
   );
