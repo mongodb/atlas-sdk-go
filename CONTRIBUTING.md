@@ -116,5 +116,20 @@ VSCode developers might use following debugging configuration for transformer an
 
 ```
 
+## Documentation
+
+Documentation can be regenerated using `make gen-docs`
+
+### Folder Structure
+
+- `./docs` - mostly manual documentation (only README.md and reference is generated)
+- `./docs/docs/`- generated documentation for each SDK API
+
+### Rules
+
+Documentation links in docs should always have full path url to github.
+Please do not use relative links.
+
+
 
 
