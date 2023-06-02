@@ -21,8 +21,9 @@ type AlertViewForNdsGroup struct {
 	// Unique 24-hexadecimal digit string that identifies the alert configuration that sets this alert.
 	AlertConfigId *string `json:"alertConfigId,omitempty"`
 	// Date and time when MongoDB Cloud created this alert. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC.
-	Created       *time.Time                         `json:"created,omitempty"`
-	EventTypeName *AlertViewForNdsGroupEventTypeName `json:"eventTypeName,omitempty"`
+	Created *time.Time `json:"created,omitempty"`
+	// Incident that triggered this alert.
+	EventTypeName *string `json:"eventTypeName,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project that owns this alert.
 	GroupId *string `json:"groupId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies this alert.
@@ -231,9 +232,9 @@ func (o *AlertViewForNdsGroup) SetCreated(v time.Time) {
 }
 
 // GetEventTypeName returns the EventTypeName field value if set, zero value otherwise.
-func (o *AlertViewForNdsGroup) GetEventTypeName() AlertViewForNdsGroupEventTypeName {
+func (o *AlertViewForNdsGroup) GetEventTypeName() string {
 	if o == nil || IsNil(o.EventTypeName) {
-		var ret AlertViewForNdsGroupEventTypeName
+		var ret string
 		return ret
 	}
 	return *o.EventTypeName
@@ -241,7 +242,7 @@ func (o *AlertViewForNdsGroup) GetEventTypeName() AlertViewForNdsGroupEventTypeN
 
 // GetEventTypeNameOk returns a tuple with the EventTypeName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AlertViewForNdsGroup) GetEventTypeNameOk() (*AlertViewForNdsGroupEventTypeName, bool) {
+func (o *AlertViewForNdsGroup) GetEventTypeNameOk() (*string, bool) {
 	if o == nil || IsNil(o.EventTypeName) {
 		return nil, false
 	}
@@ -257,8 +258,8 @@ func (o *AlertViewForNdsGroup) HasEventTypeName() bool {
 	return false
 }
 
-// SetEventTypeName gets a reference to the given AlertViewForNdsGroupEventTypeName and assigns it to the EventTypeName field.
-func (o *AlertViewForNdsGroup) SetEventTypeName(v AlertViewForNdsGroupEventTypeName) {
+// SetEventTypeName gets a reference to the given string and assigns it to the EventTypeName field.
+func (o *AlertViewForNdsGroup) SetEventTypeName(v string) {
 	o.EventTypeName = &v
 }
 
@@ -756,9 +757,6 @@ func (o AlertViewForNdsGroup) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AcknowledgementComment) {
 		toSerialize["acknowledgementComment"] = o.AcknowledgementComment
-	}
-	if !IsNil(o.EventTypeName) {
-		toSerialize["eventTypeName"] = o.EventTypeName
 	}
 	if !IsNil(o.CurrentValue) {
 		toSerialize["currentValue"] = o.CurrentValue

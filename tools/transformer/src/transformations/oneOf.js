@@ -22,9 +22,6 @@ function applyOneOfTransformations(api) {
     return canApplyOneOfTransformation(obj, api);
   });
 
-  // Always start with transforming from the bottom if nested structures happen
-  oneOfTransformations.reverse();
-
   console.error(
     "# OneOf transformations: ",
     oneOfTransformations.map((e) => e.path)

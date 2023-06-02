@@ -21,7 +21,6 @@ module.exports = function runTransformations(openapi) {
   // Will be applied upstream as well
   addOneOfTransform(openapi, [
     "NotificationViewForNdsGroup",
-    "ApiIntegrationView",
     "ApiAtlasServerlessTenantEndpointView",
     "ApiAtlasEndpointServiceView",
   ]);
