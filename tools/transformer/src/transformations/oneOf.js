@@ -93,7 +93,7 @@ function transformOneOfProperties(parentObject, api) {
   );
 
   for (let childObject of childObjects) {
-    if(!childObject.properties) {
+    if (!childObject.properties) {
       throw new Error(`${JSON.stringify(childObjects, "", 2)}`);
     }
     const childProperties = JSON.parse(JSON.stringify(childObject.properties));

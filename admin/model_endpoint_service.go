@@ -4,158 +4,449 @@ package admin
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
-// EndpointService - struct for EndpointService
+// checks if the EndpointService type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &EndpointService{}
+
+// EndpointService struct for EndpointService
 type EndpointService struct {
-	AWSPrivateLinkConnection   *AWSPrivateLinkConnection
-	AzurePrivateLinkConnection *AzurePrivateLinkConnection
-	GCPEndpointService         *GCPEndpointService
+	// Cloud service provider that serves the requested endpoint service.
+	CloudProvider string `json:"cloudProvider"`
+	// Error message returned when requesting private connection resource. The resource returns `null` if the request succeeded.
+	ErrorMessage *string `json:"errorMessage,omitempty"`
+	// Unique 24-hexadecimal digit string that identifies the Private Endpoint Service.
+	Id *string `json:"id,omitempty"`
+	// Cloud provider region that manages this Private Endpoint Service.
+	RegionName *string `json:"regionName,omitempty"`
+	// State of the Private Endpoint Service connection when MongoDB Cloud received this request.
+	Status *string `json:"status,omitempty"`
+	// Unique string that identifies the Amazon Web Services (AWS) PrivateLink endpoint service. MongoDB Cloud returns null while it creates the endpoint service.
+	EndpointServiceName *string `json:"endpointServiceName,omitempty"`
+	// List of strings that identify private endpoint interfaces applied to the specified project.
+	InterfaceEndpoints []string `json:"interfaceEndpoints,omitempty"`
+	// List of private endpoints assigned to this Azure Private Link Service.
+	PrivateEndpoints []string `json:"privateEndpoints,omitempty"`
+	// Unique string that identifies the Azure Private Link Service that MongoDB Cloud manages.
+	PrivateLinkServiceName *string `json:"privateLinkServiceName,omitempty"`
+	// Root-relative path that identifies of the Azure Private Link Service that MongoDB Cloud manages. Use this value to create a private endpoint connection to an Azure VNet.
+	PrivateLinkServiceResourceId *string `json:"privateLinkServiceResourceId,omitempty"`
+	// List of Google Cloud network endpoint groups that corresponds to the Private Service Connect endpoint service.
+	EndpointGroupNames []string `json:"endpointGroupNames,omitempty"`
+	// List of Uniform Resource Locators (URLs) that identifies endpoints that MongoDB Cloud can use to access one Google Cloud Service across a Google Cloud Virtual Private Connection (VPC) network.
+	ServiceAttachmentNames []string `json:"serviceAttachmentNames,omitempty"`
 }
 
-// AWSPrivateLinkConnectionAsEndpointService is a convenience function that returns AWSPrivateLinkConnection wrapped in EndpointService
-func AWSPrivateLinkConnectionAsEndpointService(v *AWSPrivateLinkConnection) EndpointService {
-	return EndpointService{
-		AWSPrivateLinkConnection: v,
+// NewEndpointService instantiates a new EndpointService object
+// This constructor will assign default values to properties that have it defined,
+// and makes sure properties required by API are set, but the set of arguments
+// will change when the set of required properties is changed
+func NewEndpointService(cloudProvider string) *EndpointService {
+	this := EndpointService{}
+	this.CloudProvider = cloudProvider
+	return &this
+}
+
+// NewEndpointServiceWithDefaults instantiates a new EndpointService object
+// This constructor will only assign default values to properties that have it defined,
+// but it doesn't guarantee that properties required by API are set
+func NewEndpointServiceWithDefaults() *EndpointService {
+	this := EndpointService{}
+	return &this
+}
+
+// GetCloudProvider returns the CloudProvider field value
+func (o *EndpointService) GetCloudProvider() string {
+	if o == nil {
+		var ret string
+		return ret
 	}
+
+	return o.CloudProvider
 }
 
-// AzurePrivateLinkConnectionAsEndpointService is a convenience function that returns AzurePrivateLinkConnection wrapped in EndpointService
-func AzurePrivateLinkConnectionAsEndpointService(v *AzurePrivateLinkConnection) EndpointService {
-	return EndpointService{
-		AzurePrivateLinkConnection: v,
+// GetCloudProviderOk returns a tuple with the CloudProvider field value
+// and a boolean to check if the value has been set.
+func (o *EndpointService) GetCloudProviderOk() (*string, bool) {
+	if o == nil {
+		return nil, false
 	}
+	return &o.CloudProvider, true
 }
 
-// GCPEndpointServiceAsEndpointService is a convenience function that returns GCPEndpointService wrapped in EndpointService
-func GCPEndpointServiceAsEndpointService(v *GCPEndpointService) EndpointService {
-	return EndpointService{
-		GCPEndpointService: v,
+// SetCloudProvider sets field value
+func (o *EndpointService) SetCloudProvider(v string) {
+	o.CloudProvider = v
+}
+
+// GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise.
+func (o *EndpointService) GetErrorMessage() string {
+	if o == nil || IsNil(o.ErrorMessage) {
+		var ret string
+		return ret
 	}
+	return *o.ErrorMessage
 }
 
-// Unmarshal JSON data into one of the pointers in the struct
-func (dst *EndpointService) UnmarshalJSON(data []byte) error {
-	var err error
-	// use discriminator value to speed up the lookup
-	var jsonDict map[string]interface{}
-	err = newStrictDecoder(data).Decode(&jsonDict)
+// GetErrorMessageOk returns a tuple with the ErrorMessage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EndpointService) GetErrorMessageOk() (*string, bool) {
+	if o == nil || IsNil(o.ErrorMessage) {
+		return nil, false
+	}
+	return o.ErrorMessage, true
+}
+
+// HasErrorMessage returns a boolean if a field has been set.
+func (o *EndpointService) HasErrorMessage() bool {
+	if o != nil && !IsNil(o.ErrorMessage) {
+		return true
+	}
+
+	return false
+}
+
+// SetErrorMessage gets a reference to the given string and assigns it to the ErrorMessage field.
+func (o *EndpointService) SetErrorMessage(v string) {
+	o.ErrorMessage = &v
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *EndpointService) GetId() string {
+	if o == nil || IsNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EndpointService) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *EndpointService) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *EndpointService) SetId(v string) {
+	o.Id = &v
+}
+
+// GetRegionName returns the RegionName field value if set, zero value otherwise.
+func (o *EndpointService) GetRegionName() string {
+	if o == nil || IsNil(o.RegionName) {
+		var ret string
+		return ret
+	}
+	return *o.RegionName
+}
+
+// GetRegionNameOk returns a tuple with the RegionName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EndpointService) GetRegionNameOk() (*string, bool) {
+	if o == nil || IsNil(o.RegionName) {
+		return nil, false
+	}
+	return o.RegionName, true
+}
+
+// HasRegionName returns a boolean if a field has been set.
+func (o *EndpointService) HasRegionName() bool {
+	if o != nil && !IsNil(o.RegionName) {
+		return true
+	}
+
+	return false
+}
+
+// SetRegionName gets a reference to the given string and assigns it to the RegionName field.
+func (o *EndpointService) SetRegionName(v string) {
+	o.RegionName = &v
+}
+
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *EndpointService) GetStatus() string {
+	if o == nil || IsNil(o.Status) {
+		var ret string
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EndpointService) GetStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.Status) {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *EndpointService) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given string and assigns it to the Status field.
+func (o *EndpointService) SetStatus(v string) {
+	o.Status = &v
+}
+
+// GetEndpointServiceName returns the EndpointServiceName field value if set, zero value otherwise.
+func (o *EndpointService) GetEndpointServiceName() string {
+	if o == nil || IsNil(o.EndpointServiceName) {
+		var ret string
+		return ret
+	}
+	return *o.EndpointServiceName
+}
+
+// GetEndpointServiceNameOk returns a tuple with the EndpointServiceName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EndpointService) GetEndpointServiceNameOk() (*string, bool) {
+	if o == nil || IsNil(o.EndpointServiceName) {
+		return nil, false
+	}
+	return o.EndpointServiceName, true
+}
+
+// HasEndpointServiceName returns a boolean if a field has been set.
+func (o *EndpointService) HasEndpointServiceName() bool {
+	if o != nil && !IsNil(o.EndpointServiceName) {
+		return true
+	}
+
+	return false
+}
+
+// SetEndpointServiceName gets a reference to the given string and assigns it to the EndpointServiceName field.
+func (o *EndpointService) SetEndpointServiceName(v string) {
+	o.EndpointServiceName = &v
+}
+
+// GetInterfaceEndpoints returns the InterfaceEndpoints field value if set, zero value otherwise.
+func (o *EndpointService) GetInterfaceEndpoints() []string {
+	if o == nil || IsNil(o.InterfaceEndpoints) {
+		var ret []string
+		return ret
+	}
+	return o.InterfaceEndpoints
+}
+
+// GetInterfaceEndpointsOk returns a tuple with the InterfaceEndpoints field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EndpointService) GetInterfaceEndpointsOk() ([]string, bool) {
+	if o == nil || IsNil(o.InterfaceEndpoints) {
+		return nil, false
+	}
+	return o.InterfaceEndpoints, true
+}
+
+// HasInterfaceEndpoints returns a boolean if a field has been set.
+func (o *EndpointService) HasInterfaceEndpoints() bool {
+	if o != nil && !IsNil(o.InterfaceEndpoints) {
+		return true
+	}
+
+	return false
+}
+
+// SetInterfaceEndpoints gets a reference to the given []string and assigns it to the InterfaceEndpoints field.
+func (o *EndpointService) SetInterfaceEndpoints(v []string) {
+	o.InterfaceEndpoints = v
+}
+
+// GetPrivateEndpoints returns the PrivateEndpoints field value if set, zero value otherwise.
+func (o *EndpointService) GetPrivateEndpoints() []string {
+	if o == nil || IsNil(o.PrivateEndpoints) {
+		var ret []string
+		return ret
+	}
+	return o.PrivateEndpoints
+}
+
+// GetPrivateEndpointsOk returns a tuple with the PrivateEndpoints field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EndpointService) GetPrivateEndpointsOk() ([]string, bool) {
+	if o == nil || IsNil(o.PrivateEndpoints) {
+		return nil, false
+	}
+	return o.PrivateEndpoints, true
+}
+
+// HasPrivateEndpoints returns a boolean if a field has been set.
+func (o *EndpointService) HasPrivateEndpoints() bool {
+	if o != nil && !IsNil(o.PrivateEndpoints) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivateEndpoints gets a reference to the given []string and assigns it to the PrivateEndpoints field.
+func (o *EndpointService) SetPrivateEndpoints(v []string) {
+	o.PrivateEndpoints = v
+}
+
+// GetPrivateLinkServiceName returns the PrivateLinkServiceName field value if set, zero value otherwise.
+func (o *EndpointService) GetPrivateLinkServiceName() string {
+	if o == nil || IsNil(o.PrivateLinkServiceName) {
+		var ret string
+		return ret
+	}
+	return *o.PrivateLinkServiceName
+}
+
+// GetPrivateLinkServiceNameOk returns a tuple with the PrivateLinkServiceName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EndpointService) GetPrivateLinkServiceNameOk() (*string, bool) {
+	if o == nil || IsNil(o.PrivateLinkServiceName) {
+		return nil, false
+	}
+	return o.PrivateLinkServiceName, true
+}
+
+// HasPrivateLinkServiceName returns a boolean if a field has been set.
+func (o *EndpointService) HasPrivateLinkServiceName() bool {
+	if o != nil && !IsNil(o.PrivateLinkServiceName) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivateLinkServiceName gets a reference to the given string and assigns it to the PrivateLinkServiceName field.
+func (o *EndpointService) SetPrivateLinkServiceName(v string) {
+	o.PrivateLinkServiceName = &v
+}
+
+// GetPrivateLinkServiceResourceId returns the PrivateLinkServiceResourceId field value if set, zero value otherwise.
+func (o *EndpointService) GetPrivateLinkServiceResourceId() string {
+	if o == nil || IsNil(o.PrivateLinkServiceResourceId) {
+		var ret string
+		return ret
+	}
+	return *o.PrivateLinkServiceResourceId
+}
+
+// GetPrivateLinkServiceResourceIdOk returns a tuple with the PrivateLinkServiceResourceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EndpointService) GetPrivateLinkServiceResourceIdOk() (*string, bool) {
+	if o == nil || IsNil(o.PrivateLinkServiceResourceId) {
+		return nil, false
+	}
+	return o.PrivateLinkServiceResourceId, true
+}
+
+// HasPrivateLinkServiceResourceId returns a boolean if a field has been set.
+func (o *EndpointService) HasPrivateLinkServiceResourceId() bool {
+	if o != nil && !IsNil(o.PrivateLinkServiceResourceId) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivateLinkServiceResourceId gets a reference to the given string and assigns it to the PrivateLinkServiceResourceId field.
+func (o *EndpointService) SetPrivateLinkServiceResourceId(v string) {
+	o.PrivateLinkServiceResourceId = &v
+}
+
+// GetEndpointGroupNames returns the EndpointGroupNames field value if set, zero value otherwise.
+func (o *EndpointService) GetEndpointGroupNames() []string {
+	if o == nil || IsNil(o.EndpointGroupNames) {
+		var ret []string
+		return ret
+	}
+	return o.EndpointGroupNames
+}
+
+// GetEndpointGroupNamesOk returns a tuple with the EndpointGroupNames field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EndpointService) GetEndpointGroupNamesOk() ([]string, bool) {
+	if o == nil || IsNil(o.EndpointGroupNames) {
+		return nil, false
+	}
+	return o.EndpointGroupNames, true
+}
+
+// HasEndpointGroupNames returns a boolean if a field has been set.
+func (o *EndpointService) HasEndpointGroupNames() bool {
+	if o != nil && !IsNil(o.EndpointGroupNames) {
+		return true
+	}
+
+	return false
+}
+
+// SetEndpointGroupNames gets a reference to the given []string and assigns it to the EndpointGroupNames field.
+func (o *EndpointService) SetEndpointGroupNames(v []string) {
+	o.EndpointGroupNames = v
+}
+
+// GetServiceAttachmentNames returns the ServiceAttachmentNames field value if set, zero value otherwise.
+func (o *EndpointService) GetServiceAttachmentNames() []string {
+	if o == nil || IsNil(o.ServiceAttachmentNames) {
+		var ret []string
+		return ret
+	}
+	return o.ServiceAttachmentNames
+}
+
+// GetServiceAttachmentNamesOk returns a tuple with the ServiceAttachmentNames field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EndpointService) GetServiceAttachmentNamesOk() ([]string, bool) {
+	if o == nil || IsNil(o.ServiceAttachmentNames) {
+		return nil, false
+	}
+	return o.ServiceAttachmentNames, true
+}
+
+// HasServiceAttachmentNames returns a boolean if a field has been set.
+func (o *EndpointService) HasServiceAttachmentNames() bool {
+	if o != nil && !IsNil(o.ServiceAttachmentNames) {
+		return true
+	}
+
+	return false
+}
+
+// SetServiceAttachmentNames gets a reference to the given []string and assigns it to the ServiceAttachmentNames field.
+func (o *EndpointService) SetServiceAttachmentNames(v []string) {
+	o.ServiceAttachmentNames = v
+}
+
+func (o EndpointService) MarshalJSONWithoutReadOnly() ([]byte, error) {
+	toSerialize, err := o.ToMap()
 	if err != nil {
-		return fmt.Errorf("failed to unmarshal JSON into map for the discriminator lookup")
+		return []byte{}, err
 	}
-
-	// check if the discriminator value is 'AWS'
-	if jsonDict["cloudProvider"] == "AWS" {
-		// try to unmarshal JSON data into AWSPrivateLinkConnection
-		err = json.Unmarshal(data, &dst.AWSPrivateLinkConnection)
-		if err == nil {
-			return nil // data stored in dst.AWSPrivateLinkConnection, return on the first match
-		} else {
-			dst.AWSPrivateLinkConnection = nil
-			return fmt.Errorf("failed to unmarshal EndpointService as AWSPrivateLinkConnection: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'AWSPrivateLinkConnection'
-	if jsonDict["cloudProvider"] == "AWSPrivateLinkConnection" {
-		// try to unmarshal JSON data into AWSPrivateLinkConnection
-		err = json.Unmarshal(data, &dst.AWSPrivateLinkConnection)
-		if err == nil {
-			return nil // data stored in dst.AWSPrivateLinkConnection, return on the first match
-		} else {
-			dst.AWSPrivateLinkConnection = nil
-			return fmt.Errorf("failed to unmarshal EndpointService as AWSPrivateLinkConnection: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'AZURE'
-	if jsonDict["cloudProvider"] == "AZURE" {
-		// try to unmarshal JSON data into AzurePrivateLinkConnection
-		err = json.Unmarshal(data, &dst.AzurePrivateLinkConnection)
-		if err == nil {
-			return nil // data stored in dst.AzurePrivateLinkConnection, return on the first match
-		} else {
-			dst.AzurePrivateLinkConnection = nil
-			return fmt.Errorf("failed to unmarshal EndpointService as AzurePrivateLinkConnection: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'AzurePrivateLinkConnection'
-	if jsonDict["cloudProvider"] == "AzurePrivateLinkConnection" {
-		// try to unmarshal JSON data into AzurePrivateLinkConnection
-		err = json.Unmarshal(data, &dst.AzurePrivateLinkConnection)
-		if err == nil {
-			return nil // data stored in dst.AzurePrivateLinkConnection, return on the first match
-		} else {
-			dst.AzurePrivateLinkConnection = nil
-			return fmt.Errorf("failed to unmarshal EndpointService as AzurePrivateLinkConnection: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'GCP'
-	if jsonDict["cloudProvider"] == "GCP" {
-		// try to unmarshal JSON data into GCPEndpointService
-		err = json.Unmarshal(data, &dst.GCPEndpointService)
-		if err == nil {
-			return nil // data stored in dst.GCPEndpointService, return on the first match
-		} else {
-			dst.GCPEndpointService = nil
-			return fmt.Errorf("failed to unmarshal EndpointService as GCPEndpointService: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'GCPEndpointService'
-	if jsonDict["cloudProvider"] == "GCPEndpointService" {
-		// try to unmarshal JSON data into GCPEndpointService
-		err = json.Unmarshal(data, &dst.GCPEndpointService)
-		if err == nil {
-			return nil // data stored in dst.GCPEndpointService, return on the first match
-		} else {
-			dst.GCPEndpointService = nil
-			return fmt.Errorf("failed to unmarshal EndpointService as GCPEndpointService: %s", err.Error())
-		}
-	}
-
-	return nil
+	return json.Marshal(toSerialize)
 }
-
-// Marshal data from the first non-nil pointers in the struct to JSON
-func (src EndpointService) MarshalJSON() ([]byte, error) {
-	if src.AWSPrivateLinkConnection != nil {
-		return json.Marshal(&src.AWSPrivateLinkConnection)
+func (o EndpointService) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.EndpointGroupNames) {
+		toSerialize["endpointGroupNames"] = o.EndpointGroupNames
 	}
-
-	if src.AzurePrivateLinkConnection != nil {
-		return json.Marshal(&src.AzurePrivateLinkConnection)
+	if !IsNil(o.ServiceAttachmentNames) {
+		toSerialize["serviceAttachmentNames"] = o.ServiceAttachmentNames
 	}
-
-	if src.GCPEndpointService != nil {
-		return json.Marshal(&src.GCPEndpointService)
-	}
-
-	return nil, nil // no data in oneOf schemas
-}
-
-// Get the actual instance
-func (obj *EndpointService) GetActualInstance() interface{} {
-	if obj == nil {
-		return nil
-	}
-	if obj.AWSPrivateLinkConnection != nil {
-		return obj.AWSPrivateLinkConnection
-	}
-
-	if obj.AzurePrivateLinkConnection != nil {
-		return obj.AzurePrivateLinkConnection
-	}
-
-	if obj.GCPEndpointService != nil {
-		return obj.GCPEndpointService
-	}
-
-	// all schemas are nil
-	return nil
+	return toSerialize, nil
 }
 
 type NullableEndpointService struct {

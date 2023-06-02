@@ -23,7 +23,8 @@ module.exports = function runTransformations(openapi) {
     "NotificationViewForNdsGroup",
     "ApiIntegrationView",
     "ApiAtlasServerlessTenantEndpointView",
-    "ApiAtlasEndpointServiceView"]);
+    "ApiAtlasEndpointServiceView",
+  ]);
 
   openapi = applyDiscriminatorTransformations(openapi);
   openapi = applyOneOfTransformations(openapi);
@@ -76,10 +77,10 @@ module.exports = function runTransformations(openapi) {
     "EventTypeForOrg",
   ]);
 
+  applyRemoveEnumsTransformations(openapi);
+
   // Required for RegionConfig
   workaroundNestedTransformations(openapi);
-
-  applyRemoveEnumsTransformations(openapi);
 
   let hasSchemaChanges = true;
   // Remove referencing objects that become unused
@@ -92,7 +93,7 @@ module.exports = function runTransformations(openapi) {
 };
 
 function workaroundNestedTransformations(openapi) {
- //try {
+  try {
     const parentObject = getObjectFromYamlPath(
       ".components.schemas.RegionConfig",
       openapi
@@ -100,18 +101,18 @@ function workaroundNestedTransformations(openapi) {
     if (parentObject) {
       transformOneOfProperties(parentObject, openapi);
     }
-  // } catch (e) {
-  //   throw new Error("ApiAtlasRegionConfigView cannot be renamed" + e);
-  // }
+  } catch (e) {
+    throw new Error("ApiAtlasRegionConfigView cannot be renamed" + e);
+  }
 }
 
 // Patch  "x-xgen-go-transform": "merge-oneOf"
 function addOneOfTransform(openapi, objectNames) {
   objectNames.forEach((name) => {
-    if(openapi.components.schemas[name]){
+    if (openapi.components.schemas[name]) {
       openapi.components.schemas[name]["x-xgen-go-transform"] = "merge-oneOf";
-    }else{
-      console.info("Missing object to add x-xgen-go-transform" + object);
+    } else {
+      console.warning("Missing object to add x-xgen-go-transform" + object);
     }
   });
 }

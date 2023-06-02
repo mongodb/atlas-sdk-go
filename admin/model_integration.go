@@ -4,398 +4,906 @@ package admin
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
-// Integration - Collection of settings that describe third-party integrations.
+// checks if the Integration type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Integration{}
+
+// Integration Collection of settings that describe third-party integrations.
 type Integration struct {
-	Datadog        *Datadog
-	MicrosoftTeams *MicrosoftTeams
-	NewRelic       *NewRelic
-	OpsGenie       *OpsGenie
-	PagerDuty      *PagerDuty
-	Prometheus     *Prometheus
-	Slack          *Slack
-	VictorOps      *VictorOps
-	Webhook        *Webhook
+	// Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.
+	Type *string `json:"type,omitempty"`
+	// Key that allows MongoDB Cloud to access your VictorOps account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.
+	ApiKey *string `json:"apiKey,omitempty"`
+	// PagerDuty region that indicates the API Uniform Resource Locator (URL) to use.
+	Region *string `json:"region,omitempty"`
+	// Endpoint web address of the Microsoft Teams webhook to which MongoDB Cloud sends notifications.  **NOTE**: When you view or edit the alert for a Microsoft Teams notification, the URL appears partially redacted.
+	MicrosoftTeamsWebhookUrl *string `json:"microsoftTeamsWebhookUrl,omitempty"`
+	// Unique 40-hexadecimal digit string that identifies your New Relic account.
+	AccountId *string `json:"accountId,omitempty"`
+	// Unique 40-hexadecimal digit string that identifies your New Relic license.  **IMPORTANT**: Effective Wednesday, June 16th, 2021, New Relic no longer supports the plugin-based integration with MongoDB. We do not recommend that you sign up for the plugin-based integration. To learn more, see the <a href=\"https://discuss.newrelic.com/t/new-relic-plugin-eol-wednesday-june-16th-2021/127267\" target=\"_blank\">New Relic Plugin EOL Statement</a> Consider configuring an alternative monitoring integration before June 16th to maintain visibility into your MongoDB deployments.
+	LicenseKey *string `json:"licenseKey,omitempty"`
+	// Query key used to access your New Relic account.
+	ReadToken *string `json:"readToken,omitempty"`
+	// Insert key associated with your New Relic account.
+	WriteToken *string `json:"writeToken,omitempty"`
+	// Service key associated with your PagerDuty account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.
+	ServiceKey *string `json:"serviceKey,omitempty"`
+	// Flag that indicates whether someone has activated the Prometheus integration.
+	Enabled *bool `json:"enabled,omitempty"`
+	// Combination of IPv4 address and Internet Assigned Numbers Authority (IANA) port or the IANA port alone to which Prometheus binds to ingest MongoDB metrics.
+	ListenAddress     *string `json:"listenAddress,omitempty"`
+	Password          *string `json:"password,omitempty"`
+	RateLimitInterval *int    `json:"rateLimitInterval,omitempty"`
+	// Security Scheme to apply to HyperText Transfer Protocol (HTTP) traffic between Prometheus and MongoDB Cloud.
+	Scheme *string `json:"scheme,omitempty"`
+	// Desired method to discover the Prometheus service.
+	ServiceDiscovery *string `json:"serviceDiscovery,omitempty"`
+	// Root-relative path to the Transport Layer Security (TLS) Privacy Enhanced Mail (PEM) key and certificate file on the host.
+	TlsPemPath *string `json:"tlsPemPath,omitempty"`
+	// Human-readable label that identifies your Prometheus incoming webhook.
+	Username *string `json:"username,omitempty"`
+	// Key that allows MongoDB Cloud to access your Slack account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.  **IMPORTANT**: Slack integrations now use the OAuth2 verification method and must  be initially configured, or updated from a legacy integration, through the Atlas  third-party service integrations page. Legacy tokens will soon no longer be  supported.
+	ApiToken *string `json:"apiToken,omitempty"`
+	// Name of the Slack channel to which MongoDB Cloud sends alert notifications.
+	ChannelName NullableString `json:"channelName,omitempty"`
+	// Human-readable label that identifies your Slack team. Set this parameter when you configure a legacy Slack integration.
+	TeamName *string `json:"teamName,omitempty"`
+	// Routing key associated with your Splunk On-Call account.
+	RoutingKey *string `json:"routingKey,omitempty"`
+	// An optional field returned if your webhook is configured with a secret.  **NOTE**: When you view or edit the alert for a webhook notification, the secret appears completely redacted.
+	Secret *string `json:"secret,omitempty"`
+	// Endpoint web address to which MongoDB Cloud sends notifications.  **NOTE**: When you view or edit the alert for a webhook notification, the URL appears partially redacted.
+	Url *string `json:"url,omitempty"`
 }
 
-// DatadogAsIntegration is a convenience function that returns Datadog wrapped in Integration
-func DatadogAsIntegration(v *Datadog) Integration {
-	return Integration{
-		Datadog: v,
+// NewIntegration instantiates a new Integration object
+// This constructor will assign default values to properties that have it defined,
+// and makes sure properties required by API are set, but the set of arguments
+// will change when the set of required properties is changed
+func NewIntegration() *Integration {
+	this := Integration{}
+	var listenAddress string = ":9216"
+	this.ListenAddress = &listenAddress
+	return &this
+}
+
+// NewIntegrationWithDefaults instantiates a new Integration object
+// This constructor will only assign default values to properties that have it defined,
+// but it doesn't guarantee that properties required by API are set
+func NewIntegrationWithDefaults() *Integration {
+	this := Integration{}
+	var listenAddress string = ":9216"
+	this.ListenAddress = &listenAddress
+	return &this
+}
+
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *Integration) GetType() string {
+	if o == nil || IsNil(o.Type) {
+		var ret string
+		return ret
 	}
+	return *o.Type
 }
 
-// MicrosoftTeamsAsIntegration is a convenience function that returns MicrosoftTeams wrapped in Integration
-func MicrosoftTeamsAsIntegration(v *MicrosoftTeams) Integration {
-	return Integration{
-		MicrosoftTeams: v,
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Integration) GetTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
 	}
+	return o.Type, true
 }
 
-// NewRelicAsIntegration is a convenience function that returns NewRelic wrapped in Integration
-func NewRelicAsIntegration(v *NewRelic) Integration {
-	return Integration{
-		NewRelic: v,
+// HasType returns a boolean if a field has been set.
+func (o *Integration) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
 	}
+
+	return false
 }
 
-// OpsGenieAsIntegration is a convenience function that returns OpsGenie wrapped in Integration
-func OpsGenieAsIntegration(v *OpsGenie) Integration {
-	return Integration{
-		OpsGenie: v,
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *Integration) SetType(v string) {
+	o.Type = &v
+}
+
+// GetApiKey returns the ApiKey field value if set, zero value otherwise.
+func (o *Integration) GetApiKey() string {
+	if o == nil || IsNil(o.ApiKey) {
+		var ret string
+		return ret
 	}
+	return *o.ApiKey
 }
 
-// PagerDutyAsIntegration is a convenience function that returns PagerDuty wrapped in Integration
-func PagerDutyAsIntegration(v *PagerDuty) Integration {
-	return Integration{
-		PagerDuty: v,
+// GetApiKeyOk returns a tuple with the ApiKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Integration) GetApiKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.ApiKey) {
+		return nil, false
 	}
+	return o.ApiKey, true
 }
 
-// PrometheusAsIntegration is a convenience function that returns Prometheus wrapped in Integration
-func PrometheusAsIntegration(v *Prometheus) Integration {
-	return Integration{
-		Prometheus: v,
+// HasApiKey returns a boolean if a field has been set.
+func (o *Integration) HasApiKey() bool {
+	if o != nil && !IsNil(o.ApiKey) {
+		return true
 	}
+
+	return false
 }
 
-// SlackAsIntegration is a convenience function that returns Slack wrapped in Integration
-func SlackAsIntegration(v *Slack) Integration {
-	return Integration{
-		Slack: v,
+// SetApiKey gets a reference to the given string and assigns it to the ApiKey field.
+func (o *Integration) SetApiKey(v string) {
+	o.ApiKey = &v
+}
+
+// GetRegion returns the Region field value if set, zero value otherwise.
+func (o *Integration) GetRegion() string {
+	if o == nil || IsNil(o.Region) {
+		var ret string
+		return ret
 	}
+	return *o.Region
 }
 
-// VictorOpsAsIntegration is a convenience function that returns VictorOps wrapped in Integration
-func VictorOpsAsIntegration(v *VictorOps) Integration {
-	return Integration{
-		VictorOps: v,
+// GetRegionOk returns a tuple with the Region field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Integration) GetRegionOk() (*string, bool) {
+	if o == nil || IsNil(o.Region) {
+		return nil, false
 	}
+	return o.Region, true
 }
 
-// WebhookAsIntegration is a convenience function that returns Webhook wrapped in Integration
-func WebhookAsIntegration(v *Webhook) Integration {
-	return Integration{
-		Webhook: v,
+// HasRegion returns a boolean if a field has been set.
+func (o *Integration) HasRegion() bool {
+	if o != nil && !IsNil(o.Region) {
+		return true
 	}
+
+	return false
 }
 
-// Unmarshal JSON data into one of the pointers in the struct
-func (dst *Integration) UnmarshalJSON(data []byte) error {
-	var err error
-	// use discriminator value to speed up the lookup
-	var jsonDict map[string]interface{}
-	err = newStrictDecoder(data).Decode(&jsonDict)
+// SetRegion gets a reference to the given string and assigns it to the Region field.
+func (o *Integration) SetRegion(v string) {
+	o.Region = &v
+}
+
+// GetMicrosoftTeamsWebhookUrl returns the MicrosoftTeamsWebhookUrl field value if set, zero value otherwise.
+func (o *Integration) GetMicrosoftTeamsWebhookUrl() string {
+	if o == nil || IsNil(o.MicrosoftTeamsWebhookUrl) {
+		var ret string
+		return ret
+	}
+	return *o.MicrosoftTeamsWebhookUrl
+}
+
+// GetMicrosoftTeamsWebhookUrlOk returns a tuple with the MicrosoftTeamsWebhookUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Integration) GetMicrosoftTeamsWebhookUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.MicrosoftTeamsWebhookUrl) {
+		return nil, false
+	}
+	return o.MicrosoftTeamsWebhookUrl, true
+}
+
+// HasMicrosoftTeamsWebhookUrl returns a boolean if a field has been set.
+func (o *Integration) HasMicrosoftTeamsWebhookUrl() bool {
+	if o != nil && !IsNil(o.MicrosoftTeamsWebhookUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetMicrosoftTeamsWebhookUrl gets a reference to the given string and assigns it to the MicrosoftTeamsWebhookUrl field.
+func (o *Integration) SetMicrosoftTeamsWebhookUrl(v string) {
+	o.MicrosoftTeamsWebhookUrl = &v
+}
+
+// GetAccountId returns the AccountId field value if set, zero value otherwise.
+func (o *Integration) GetAccountId() string {
+	if o == nil || IsNil(o.AccountId) {
+		var ret string
+		return ret
+	}
+	return *o.AccountId
+}
+
+// GetAccountIdOk returns a tuple with the AccountId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Integration) GetAccountIdOk() (*string, bool) {
+	if o == nil || IsNil(o.AccountId) {
+		return nil, false
+	}
+	return o.AccountId, true
+}
+
+// HasAccountId returns a boolean if a field has been set.
+func (o *Integration) HasAccountId() bool {
+	if o != nil && !IsNil(o.AccountId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccountId gets a reference to the given string and assigns it to the AccountId field.
+func (o *Integration) SetAccountId(v string) {
+	o.AccountId = &v
+}
+
+// GetLicenseKey returns the LicenseKey field value if set, zero value otherwise.
+func (o *Integration) GetLicenseKey() string {
+	if o == nil || IsNil(o.LicenseKey) {
+		var ret string
+		return ret
+	}
+	return *o.LicenseKey
+}
+
+// GetLicenseKeyOk returns a tuple with the LicenseKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Integration) GetLicenseKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.LicenseKey) {
+		return nil, false
+	}
+	return o.LicenseKey, true
+}
+
+// HasLicenseKey returns a boolean if a field has been set.
+func (o *Integration) HasLicenseKey() bool {
+	if o != nil && !IsNil(o.LicenseKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetLicenseKey gets a reference to the given string and assigns it to the LicenseKey field.
+func (o *Integration) SetLicenseKey(v string) {
+	o.LicenseKey = &v
+}
+
+// GetReadToken returns the ReadToken field value if set, zero value otherwise.
+func (o *Integration) GetReadToken() string {
+	if o == nil || IsNil(o.ReadToken) {
+		var ret string
+		return ret
+	}
+	return *o.ReadToken
+}
+
+// GetReadTokenOk returns a tuple with the ReadToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Integration) GetReadTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.ReadToken) {
+		return nil, false
+	}
+	return o.ReadToken, true
+}
+
+// HasReadToken returns a boolean if a field has been set.
+func (o *Integration) HasReadToken() bool {
+	if o != nil && !IsNil(o.ReadToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetReadToken gets a reference to the given string and assigns it to the ReadToken field.
+func (o *Integration) SetReadToken(v string) {
+	o.ReadToken = &v
+}
+
+// GetWriteToken returns the WriteToken field value if set, zero value otherwise.
+func (o *Integration) GetWriteToken() string {
+	if o == nil || IsNil(o.WriteToken) {
+		var ret string
+		return ret
+	}
+	return *o.WriteToken
+}
+
+// GetWriteTokenOk returns a tuple with the WriteToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Integration) GetWriteTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.WriteToken) {
+		return nil, false
+	}
+	return o.WriteToken, true
+}
+
+// HasWriteToken returns a boolean if a field has been set.
+func (o *Integration) HasWriteToken() bool {
+	if o != nil && !IsNil(o.WriteToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetWriteToken gets a reference to the given string and assigns it to the WriteToken field.
+func (o *Integration) SetWriteToken(v string) {
+	o.WriteToken = &v
+}
+
+// GetServiceKey returns the ServiceKey field value if set, zero value otherwise.
+func (o *Integration) GetServiceKey() string {
+	if o == nil || IsNil(o.ServiceKey) {
+		var ret string
+		return ret
+	}
+	return *o.ServiceKey
+}
+
+// GetServiceKeyOk returns a tuple with the ServiceKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Integration) GetServiceKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.ServiceKey) {
+		return nil, false
+	}
+	return o.ServiceKey, true
+}
+
+// HasServiceKey returns a boolean if a field has been set.
+func (o *Integration) HasServiceKey() bool {
+	if o != nil && !IsNil(o.ServiceKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetServiceKey gets a reference to the given string and assigns it to the ServiceKey field.
+func (o *Integration) SetServiceKey(v string) {
+	o.ServiceKey = &v
+}
+
+// GetEnabled returns the Enabled field value if set, zero value otherwise.
+func (o *Integration) GetEnabled() bool {
+	if o == nil || IsNil(o.Enabled) {
+		var ret bool
+		return ret
+	}
+	return *o.Enabled
+}
+
+// GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Integration) GetEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.Enabled) {
+		return nil, false
+	}
+	return o.Enabled, true
+}
+
+// HasEnabled returns a boolean if a field has been set.
+func (o *Integration) HasEnabled() bool {
+	if o != nil && !IsNil(o.Enabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
+func (o *Integration) SetEnabled(v bool) {
+	o.Enabled = &v
+}
+
+// GetListenAddress returns the ListenAddress field value if set, zero value otherwise.
+func (o *Integration) GetListenAddress() string {
+	if o == nil || IsNil(o.ListenAddress) {
+		var ret string
+		return ret
+	}
+	return *o.ListenAddress
+}
+
+// GetListenAddressOk returns a tuple with the ListenAddress field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Integration) GetListenAddressOk() (*string, bool) {
+	if o == nil || IsNil(o.ListenAddress) {
+		return nil, false
+	}
+	return o.ListenAddress, true
+}
+
+// HasListenAddress returns a boolean if a field has been set.
+func (o *Integration) HasListenAddress() bool {
+	if o != nil && !IsNil(o.ListenAddress) {
+		return true
+	}
+
+	return false
+}
+
+// SetListenAddress gets a reference to the given string and assigns it to the ListenAddress field.
+func (o *Integration) SetListenAddress(v string) {
+	o.ListenAddress = &v
+}
+
+// GetPassword returns the Password field value if set, zero value otherwise.
+func (o *Integration) GetPassword() string {
+	if o == nil || IsNil(o.Password) {
+		var ret string
+		return ret
+	}
+	return *o.Password
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Integration) GetPasswordOk() (*string, bool) {
+	if o == nil || IsNil(o.Password) {
+		return nil, false
+	}
+	return o.Password, true
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *Integration) HasPassword() bool {
+	if o != nil && !IsNil(o.Password) {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given string and assigns it to the Password field.
+func (o *Integration) SetPassword(v string) {
+	o.Password = &v
+}
+
+// GetRateLimitInterval returns the RateLimitInterval field value if set, zero value otherwise.
+func (o *Integration) GetRateLimitInterval() int {
+	if o == nil || IsNil(o.RateLimitInterval) {
+		var ret int
+		return ret
+	}
+	return *o.RateLimitInterval
+}
+
+// GetRateLimitIntervalOk returns a tuple with the RateLimitInterval field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Integration) GetRateLimitIntervalOk() (*int, bool) {
+	if o == nil || IsNil(o.RateLimitInterval) {
+		return nil, false
+	}
+	return o.RateLimitInterval, true
+}
+
+// HasRateLimitInterval returns a boolean if a field has been set.
+func (o *Integration) HasRateLimitInterval() bool {
+	if o != nil && !IsNil(o.RateLimitInterval) {
+		return true
+	}
+
+	return false
+}
+
+// SetRateLimitInterval gets a reference to the given int and assigns it to the RateLimitInterval field.
+func (o *Integration) SetRateLimitInterval(v int) {
+	o.RateLimitInterval = &v
+}
+
+// GetScheme returns the Scheme field value if set, zero value otherwise.
+func (o *Integration) GetScheme() string {
+	if o == nil || IsNil(o.Scheme) {
+		var ret string
+		return ret
+	}
+	return *o.Scheme
+}
+
+// GetSchemeOk returns a tuple with the Scheme field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Integration) GetSchemeOk() (*string, bool) {
+	if o == nil || IsNil(o.Scheme) {
+		return nil, false
+	}
+	return o.Scheme, true
+}
+
+// HasScheme returns a boolean if a field has been set.
+func (o *Integration) HasScheme() bool {
+	if o != nil && !IsNil(o.Scheme) {
+		return true
+	}
+
+	return false
+}
+
+// SetScheme gets a reference to the given string and assigns it to the Scheme field.
+func (o *Integration) SetScheme(v string) {
+	o.Scheme = &v
+}
+
+// GetServiceDiscovery returns the ServiceDiscovery field value if set, zero value otherwise.
+func (o *Integration) GetServiceDiscovery() string {
+	if o == nil || IsNil(o.ServiceDiscovery) {
+		var ret string
+		return ret
+	}
+	return *o.ServiceDiscovery
+}
+
+// GetServiceDiscoveryOk returns a tuple with the ServiceDiscovery field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Integration) GetServiceDiscoveryOk() (*string, bool) {
+	if o == nil || IsNil(o.ServiceDiscovery) {
+		return nil, false
+	}
+	return o.ServiceDiscovery, true
+}
+
+// HasServiceDiscovery returns a boolean if a field has been set.
+func (o *Integration) HasServiceDiscovery() bool {
+	if o != nil && !IsNil(o.ServiceDiscovery) {
+		return true
+	}
+
+	return false
+}
+
+// SetServiceDiscovery gets a reference to the given string and assigns it to the ServiceDiscovery field.
+func (o *Integration) SetServiceDiscovery(v string) {
+	o.ServiceDiscovery = &v
+}
+
+// GetTlsPemPath returns the TlsPemPath field value if set, zero value otherwise.
+func (o *Integration) GetTlsPemPath() string {
+	if o == nil || IsNil(o.TlsPemPath) {
+		var ret string
+		return ret
+	}
+	return *o.TlsPemPath
+}
+
+// GetTlsPemPathOk returns a tuple with the TlsPemPath field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Integration) GetTlsPemPathOk() (*string, bool) {
+	if o == nil || IsNil(o.TlsPemPath) {
+		return nil, false
+	}
+	return o.TlsPemPath, true
+}
+
+// HasTlsPemPath returns a boolean if a field has been set.
+func (o *Integration) HasTlsPemPath() bool {
+	if o != nil && !IsNil(o.TlsPemPath) {
+		return true
+	}
+
+	return false
+}
+
+// SetTlsPemPath gets a reference to the given string and assigns it to the TlsPemPath field.
+func (o *Integration) SetTlsPemPath(v string) {
+	o.TlsPemPath = &v
+}
+
+// GetUsername returns the Username field value if set, zero value otherwise.
+func (o *Integration) GetUsername() string {
+	if o == nil || IsNil(o.Username) {
+		var ret string
+		return ret
+	}
+	return *o.Username
+}
+
+// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Integration) GetUsernameOk() (*string, bool) {
+	if o == nil || IsNil(o.Username) {
+		return nil, false
+	}
+	return o.Username, true
+}
+
+// HasUsername returns a boolean if a field has been set.
+func (o *Integration) HasUsername() bool {
+	if o != nil && !IsNil(o.Username) {
+		return true
+	}
+
+	return false
+}
+
+// SetUsername gets a reference to the given string and assigns it to the Username field.
+func (o *Integration) SetUsername(v string) {
+	o.Username = &v
+}
+
+// GetApiToken returns the ApiToken field value if set, zero value otherwise.
+func (o *Integration) GetApiToken() string {
+	if o == nil || IsNil(o.ApiToken) {
+		var ret string
+		return ret
+	}
+	return *o.ApiToken
+}
+
+// GetApiTokenOk returns a tuple with the ApiToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Integration) GetApiTokenOk() (*string, bool) {
+	if o == nil || IsNil(o.ApiToken) {
+		return nil, false
+	}
+	return o.ApiToken, true
+}
+
+// HasApiToken returns a boolean if a field has been set.
+func (o *Integration) HasApiToken() bool {
+	if o != nil && !IsNil(o.ApiToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetApiToken gets a reference to the given string and assigns it to the ApiToken field.
+func (o *Integration) SetApiToken(v string) {
+	o.ApiToken = &v
+}
+
+// GetChannelName returns the ChannelName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Integration) GetChannelName() string {
+	if o == nil || IsNil(o.ChannelName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ChannelName.Get()
+}
+
+// GetChannelNameOk returns a tuple with the ChannelName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Integration) GetChannelNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ChannelName.Get(), o.ChannelName.IsSet()
+}
+
+// HasChannelName returns a boolean if a field has been set.
+func (o *Integration) HasChannelName() bool {
+	if o != nil && o.ChannelName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetChannelName gets a reference to the given NullableString and assigns it to the ChannelName field.
+func (o *Integration) SetChannelName(v string) {
+	o.ChannelName.Set(&v)
+}
+
+// SetChannelNameNil sets the value for ChannelName to be an explicit nil
+func (o *Integration) SetChannelNameNil() {
+	o.ChannelName.Set(nil)
+}
+
+// UnsetChannelName ensures that no value is present for ChannelName, not even an explicit nil
+func (o *Integration) UnsetChannelName() {
+	o.ChannelName.Unset()
+}
+
+// GetTeamName returns the TeamName field value if set, zero value otherwise.
+func (o *Integration) GetTeamName() string {
+	if o == nil || IsNil(o.TeamName) {
+		var ret string
+		return ret
+	}
+	return *o.TeamName
+}
+
+// GetTeamNameOk returns a tuple with the TeamName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Integration) GetTeamNameOk() (*string, bool) {
+	if o == nil || IsNil(o.TeamName) {
+		return nil, false
+	}
+	return o.TeamName, true
+}
+
+// HasTeamName returns a boolean if a field has been set.
+func (o *Integration) HasTeamName() bool {
+	if o != nil && !IsNil(o.TeamName) {
+		return true
+	}
+
+	return false
+}
+
+// SetTeamName gets a reference to the given string and assigns it to the TeamName field.
+func (o *Integration) SetTeamName(v string) {
+	o.TeamName = &v
+}
+
+// GetRoutingKey returns the RoutingKey field value if set, zero value otherwise.
+func (o *Integration) GetRoutingKey() string {
+	if o == nil || IsNil(o.RoutingKey) {
+		var ret string
+		return ret
+	}
+	return *o.RoutingKey
+}
+
+// GetRoutingKeyOk returns a tuple with the RoutingKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Integration) GetRoutingKeyOk() (*string, bool) {
+	if o == nil || IsNil(o.RoutingKey) {
+		return nil, false
+	}
+	return o.RoutingKey, true
+}
+
+// HasRoutingKey returns a boolean if a field has been set.
+func (o *Integration) HasRoutingKey() bool {
+	if o != nil && !IsNil(o.RoutingKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetRoutingKey gets a reference to the given string and assigns it to the RoutingKey field.
+func (o *Integration) SetRoutingKey(v string) {
+	o.RoutingKey = &v
+}
+
+// GetSecret returns the Secret field value if set, zero value otherwise.
+func (o *Integration) GetSecret() string {
+	if o == nil || IsNil(o.Secret) {
+		var ret string
+		return ret
+	}
+	return *o.Secret
+}
+
+// GetSecretOk returns a tuple with the Secret field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Integration) GetSecretOk() (*string, bool) {
+	if o == nil || IsNil(o.Secret) {
+		return nil, false
+	}
+	return o.Secret, true
+}
+
+// HasSecret returns a boolean if a field has been set.
+func (o *Integration) HasSecret() bool {
+	if o != nil && !IsNil(o.Secret) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecret gets a reference to the given string and assigns it to the Secret field.
+func (o *Integration) SetSecret(v string) {
+	o.Secret = &v
+}
+
+// GetUrl returns the Url field value if set, zero value otherwise.
+func (o *Integration) GetUrl() string {
+	if o == nil || IsNil(o.Url) {
+		var ret string
+		return ret
+	}
+	return *o.Url
+}
+
+// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Integration) GetUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.Url) {
+		return nil, false
+	}
+	return o.Url, true
+}
+
+// HasUrl returns a boolean if a field has been set.
+func (o *Integration) HasUrl() bool {
+	if o != nil && !IsNil(o.Url) {
+		return true
+	}
+
+	return false
+}
+
+// SetUrl gets a reference to the given string and assigns it to the Url field.
+func (o *Integration) SetUrl(v string) {
+	o.Url = &v
+}
+
+func (o Integration) MarshalJSONWithoutReadOnly() ([]byte, error) {
+	toSerialize, err := o.ToMap()
 	if err != nil {
-		return fmt.Errorf("failed to unmarshal JSON into map for the discriminator lookup")
+		return []byte{}, err
 	}
-
-	// check if the discriminator value is 'DATADOG'
-	if jsonDict["type"] == "DATADOG" {
-		// try to unmarshal JSON data into Datadog
-		err = json.Unmarshal(data, &dst.Datadog)
-		if err == nil {
-			return nil // data stored in dst.Datadog, return on the first match
-		} else {
-			dst.Datadog = nil
-			return fmt.Errorf("failed to unmarshal Integration as Datadog: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'Datadog'
-	if jsonDict["type"] == "Datadog" {
-		// try to unmarshal JSON data into Datadog
-		err = json.Unmarshal(data, &dst.Datadog)
-		if err == nil {
-			return nil // data stored in dst.Datadog, return on the first match
-		} else {
-			dst.Datadog = nil
-			return fmt.Errorf("failed to unmarshal Integration as Datadog: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'MICROSOFT_TEAMS'
-	if jsonDict["type"] == "MICROSOFT_TEAMS" {
-		// try to unmarshal JSON data into MicrosoftTeams
-		err = json.Unmarshal(data, &dst.MicrosoftTeams)
-		if err == nil {
-			return nil // data stored in dst.MicrosoftTeams, return on the first match
-		} else {
-			dst.MicrosoftTeams = nil
-			return fmt.Errorf("failed to unmarshal Integration as MicrosoftTeams: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'MicrosoftTeams'
-	if jsonDict["type"] == "MicrosoftTeams" {
-		// try to unmarshal JSON data into MicrosoftTeams
-		err = json.Unmarshal(data, &dst.MicrosoftTeams)
-		if err == nil {
-			return nil // data stored in dst.MicrosoftTeams, return on the first match
-		} else {
-			dst.MicrosoftTeams = nil
-			return fmt.Errorf("failed to unmarshal Integration as MicrosoftTeams: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'NEW_RELIC'
-	if jsonDict["type"] == "NEW_RELIC" {
-		// try to unmarshal JSON data into NewRelic
-		err = json.Unmarshal(data, &dst.NewRelic)
-		if err == nil {
-			return nil // data stored in dst.NewRelic, return on the first match
-		} else {
-			dst.NewRelic = nil
-			return fmt.Errorf("failed to unmarshal Integration as NewRelic: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'NewRelic'
-	if jsonDict["type"] == "NewRelic" {
-		// try to unmarshal JSON data into NewRelic
-		err = json.Unmarshal(data, &dst.NewRelic)
-		if err == nil {
-			return nil // data stored in dst.NewRelic, return on the first match
-		} else {
-			dst.NewRelic = nil
-			return fmt.Errorf("failed to unmarshal Integration as NewRelic: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'OPS_GENIE'
-	if jsonDict["type"] == "OPS_GENIE" {
-		// try to unmarshal JSON data into OpsGenie
-		err = json.Unmarshal(data, &dst.OpsGenie)
-		if err == nil {
-			return nil // data stored in dst.OpsGenie, return on the first match
-		} else {
-			dst.OpsGenie = nil
-			return fmt.Errorf("failed to unmarshal Integration as OpsGenie: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'OpsGenie'
-	if jsonDict["type"] == "OpsGenie" {
-		// try to unmarshal JSON data into OpsGenie
-		err = json.Unmarshal(data, &dst.OpsGenie)
-		if err == nil {
-			return nil // data stored in dst.OpsGenie, return on the first match
-		} else {
-			dst.OpsGenie = nil
-			return fmt.Errorf("failed to unmarshal Integration as OpsGenie: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'PAGER_DUTY'
-	if jsonDict["type"] == "PAGER_DUTY" {
-		// try to unmarshal JSON data into PagerDuty
-		err = json.Unmarshal(data, &dst.PagerDuty)
-		if err == nil {
-			return nil // data stored in dst.PagerDuty, return on the first match
-		} else {
-			dst.PagerDuty = nil
-			return fmt.Errorf("failed to unmarshal Integration as PagerDuty: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'PROMETHEUS'
-	if jsonDict["type"] == "PROMETHEUS" {
-		// try to unmarshal JSON data into Prometheus
-		err = json.Unmarshal(data, &dst.Prometheus)
-		if err == nil {
-			return nil // data stored in dst.Prometheus, return on the first match
-		} else {
-			dst.Prometheus = nil
-			return fmt.Errorf("failed to unmarshal Integration as Prometheus: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'PagerDuty'
-	if jsonDict["type"] == "PagerDuty" {
-		// try to unmarshal JSON data into PagerDuty
-		err = json.Unmarshal(data, &dst.PagerDuty)
-		if err == nil {
-			return nil // data stored in dst.PagerDuty, return on the first match
-		} else {
-			dst.PagerDuty = nil
-			return fmt.Errorf("failed to unmarshal Integration as PagerDuty: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'Prometheus'
-	if jsonDict["type"] == "Prometheus" {
-		// try to unmarshal JSON data into Prometheus
-		err = json.Unmarshal(data, &dst.Prometheus)
-		if err == nil {
-			return nil // data stored in dst.Prometheus, return on the first match
-		} else {
-			dst.Prometheus = nil
-			return fmt.Errorf("failed to unmarshal Integration as Prometheus: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'SLACK'
-	if jsonDict["type"] == "SLACK" {
-		// try to unmarshal JSON data into Slack
-		err = json.Unmarshal(data, &dst.Slack)
-		if err == nil {
-			return nil // data stored in dst.Slack, return on the first match
-		} else {
-			dst.Slack = nil
-			return fmt.Errorf("failed to unmarshal Integration as Slack: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'Slack'
-	if jsonDict["type"] == "Slack" {
-		// try to unmarshal JSON data into Slack
-		err = json.Unmarshal(data, &dst.Slack)
-		if err == nil {
-			return nil // data stored in dst.Slack, return on the first match
-		} else {
-			dst.Slack = nil
-			return fmt.Errorf("failed to unmarshal Integration as Slack: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'VICTOR_OPS'
-	if jsonDict["type"] == "VICTOR_OPS" {
-		// try to unmarshal JSON data into VictorOps
-		err = json.Unmarshal(data, &dst.VictorOps)
-		if err == nil {
-			return nil // data stored in dst.VictorOps, return on the first match
-		} else {
-			dst.VictorOps = nil
-			return fmt.Errorf("failed to unmarshal Integration as VictorOps: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'VictorOps'
-	if jsonDict["type"] == "VictorOps" {
-		// try to unmarshal JSON data into VictorOps
-		err = json.Unmarshal(data, &dst.VictorOps)
-		if err == nil {
-			return nil // data stored in dst.VictorOps, return on the first match
-		} else {
-			dst.VictorOps = nil
-			return fmt.Errorf("failed to unmarshal Integration as VictorOps: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'WEBHOOK'
-	if jsonDict["type"] == "WEBHOOK" {
-		// try to unmarshal JSON data into Webhook
-		err = json.Unmarshal(data, &dst.Webhook)
-		if err == nil {
-			return nil // data stored in dst.Webhook, return on the first match
-		} else {
-			dst.Webhook = nil
-			return fmt.Errorf("failed to unmarshal Integration as Webhook: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'Webhook'
-	if jsonDict["type"] == "Webhook" {
-		// try to unmarshal JSON data into Webhook
-		err = json.Unmarshal(data, &dst.Webhook)
-		if err == nil {
-			return nil // data stored in dst.Webhook, return on the first match
-		} else {
-			dst.Webhook = nil
-			return fmt.Errorf("failed to unmarshal Integration as Webhook: %s", err.Error())
-		}
-	}
-
-	return nil
+	return json.Marshal(toSerialize)
 }
-
-// Marshal data from the first non-nil pointers in the struct to JSON
-func (src Integration) MarshalJSON() ([]byte, error) {
-	if src.Datadog != nil {
-		return json.Marshal(&src.Datadog)
+func (o Integration) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
 	}
-
-	if src.MicrosoftTeams != nil {
-		return json.Marshal(&src.MicrosoftTeams)
+	if !IsNil(o.ApiKey) {
+		toSerialize["apiKey"] = o.ApiKey
 	}
-
-	if src.NewRelic != nil {
-		return json.Marshal(&src.NewRelic)
+	if !IsNil(o.Region) {
+		toSerialize["region"] = o.Region
 	}
-
-	if src.OpsGenie != nil {
-		return json.Marshal(&src.OpsGenie)
+	if !IsNil(o.MicrosoftTeamsWebhookUrl) {
+		toSerialize["microsoftTeamsWebhookUrl"] = o.MicrosoftTeamsWebhookUrl
 	}
-
-	if src.PagerDuty != nil {
-		return json.Marshal(&src.PagerDuty)
+	if !IsNil(o.AccountId) {
+		toSerialize["accountId"] = o.AccountId
 	}
-
-	if src.Prometheus != nil {
-		return json.Marshal(&src.Prometheus)
+	if !IsNil(o.LicenseKey) {
+		toSerialize["licenseKey"] = o.LicenseKey
 	}
-
-	if src.Slack != nil {
-		return json.Marshal(&src.Slack)
+	if !IsNil(o.ReadToken) {
+		toSerialize["readToken"] = o.ReadToken
 	}
-
-	if src.VictorOps != nil {
-		return json.Marshal(&src.VictorOps)
+	if !IsNil(o.WriteToken) {
+		toSerialize["writeToken"] = o.WriteToken
 	}
-
-	if src.Webhook != nil {
-		return json.Marshal(&src.Webhook)
+	if !IsNil(o.ServiceKey) {
+		toSerialize["serviceKey"] = o.ServiceKey
 	}
-
-	return nil, nil // no data in oneOf schemas
-}
-
-// Get the actual instance
-func (obj *Integration) GetActualInstance() interface{} {
-	if obj == nil {
-		return nil
+	if !IsNil(o.Enabled) {
+		toSerialize["enabled"] = o.Enabled
 	}
-	if obj.Datadog != nil {
-		return obj.Datadog
+	if !IsNil(o.ListenAddress) {
+		toSerialize["listenAddress"] = o.ListenAddress
 	}
-
-	if obj.MicrosoftTeams != nil {
-		return obj.MicrosoftTeams
+	if !IsNil(o.Password) {
+		toSerialize["password"] = o.Password
 	}
-
-	if obj.NewRelic != nil {
-		return obj.NewRelic
+	if !IsNil(o.RateLimitInterval) {
+		toSerialize["rateLimitInterval"] = o.RateLimitInterval
 	}
-
-	if obj.OpsGenie != nil {
-		return obj.OpsGenie
+	if !IsNil(o.Scheme) {
+		toSerialize["scheme"] = o.Scheme
 	}
-
-	if obj.PagerDuty != nil {
-		return obj.PagerDuty
+	if !IsNil(o.ServiceDiscovery) {
+		toSerialize["serviceDiscovery"] = o.ServiceDiscovery
 	}
-
-	if obj.Prometheus != nil {
-		return obj.Prometheus
+	if !IsNil(o.TlsPemPath) {
+		toSerialize["tlsPemPath"] = o.TlsPemPath
 	}
-
-	if obj.Slack != nil {
-		return obj.Slack
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
 	}
-
-	if obj.VictorOps != nil {
-		return obj.VictorOps
+	if !IsNil(o.ApiToken) {
+		toSerialize["apiToken"] = o.ApiToken
 	}
-
-	if obj.Webhook != nil {
-		return obj.Webhook
+	if o.ChannelName.IsSet() {
+		toSerialize["channelName"] = o.ChannelName.Get()
 	}
-
-	// all schemas are nil
-	return nil
+	if !IsNil(o.TeamName) {
+		toSerialize["teamName"] = o.TeamName
+	}
+	if !IsNil(o.RoutingKey) {
+		toSerialize["routingKey"] = o.RoutingKey
+	}
+	if !IsNil(o.Secret) {
+		toSerialize["secret"] = o.Secret
+	}
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
+	}
+	return toSerialize, nil
 }
 
 type NullableIntegration struct {

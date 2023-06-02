@@ -14540,8 +14540,31 @@ components:
             rel="noopener noreferrer">ISO 8601</a> timestamp format in UTC.
           readOnly: true
         eventTypeName:
-          type: string
+          type: object
           description: Incident that triggered this alert.
+          oneOf:
+            - type: string
+              title: Billing Event Types
+            - type: string
+              title: Cps Backup Event Types
+            - type: string
+              title: Encryption Event Types
+            - type: string
+              title: FTS Index Audit Types
+            - type: string
+              title: Group Event Types
+            - type: string
+              title: NDS Audit Types
+            - type: string
+              title: NDS Maintenance Window Audit Types
+            - type: string
+              title: NDS x509 User Auth Event Types
+            - type: string
+              title: Online Archive Event Types
+            - type: string
+              title: Serverless Event Types
+            - type: string
+              title: User Event Types
           readOnly: true
           x-xgen-go-transform: merge-oneOf
         groupId:
@@ -15522,21 +15545,306 @@ components:
     NotificationViewForNdsGroup:
       type: object
       description: One target that MongoDB Cloud sends notifications when an alert triggers.
-      oneOf:
-        - $ref: "#/components/schemas/DatadogNotification"
-        - $ref: "#/components/schemas/EmailNotification"
-        - $ref: "#/components/schemas/GroupNotification"
-        - $ref: "#/components/schemas/HipChatNotification"
-        - $ref: "#/components/schemas/MicrosoftTeamsNotification"
-        - $ref: "#/components/schemas/OpsGenieNotification"
-        - $ref: "#/components/schemas/OrgNotification"
-        - $ref: "#/components/schemas/PagerDutyNotification"
-        - $ref: "#/components/schemas/SlackNotification"
-        - $ref: "#/components/schemas/SMSNotification"
-        - $ref: "#/components/schemas/TeamNotification"
-        - $ref: "#/components/schemas/UserNotification"
-        - $ref: "#/components/schemas/VictorOpsNotification"
-        - $ref: "#/components/schemas/WebhookNotification"
+      x-xgen-go-transform: merge-oneOf
+      properties:
+        datadogApiKey:
+          type: string
+          description: >-
+            Datadog API Key that MongoDB Cloud needs to send alert
+            notifications to Datadog. You can find this API key in the Datadog
+            dashboard. The resource requires this parameter when
+            `"notifications.[n].typeName" : "DATADOG"`.
+
+
+            **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
+
+
+            * View or edit the alert through the Atlas UI.
+
+
+            * Query the alert for the notification through the Atlas Administration API.
+          example: "****************************a23c"
+        datadogRegion:
+          type: string
+          default: US
+          description: >-
+            Datadog region that indicates which API Uniform Resource Locator
+            (URL) to use. The resource requires this parameter when
+            `"notifications.[n].typeName" : "DATADOG"`.
+
+
+            To learn more about Datadog's regions, see <a href="https://docs.datadoghq.com/getting_started/site/" target="_blank" rel="noopener noreferrer">Datadog Sites</a>.
+        delayMin:
+          type: integer
+          format: int32
+          description: Number of minutes that MongoDB Cloud waits after detecting an alert
+            condition before it sends out the first notification.
+        intervalMin:
+          type: integer
+          format: int32
+          description: >-
+            Number of minutes to wait between successive notifications. MongoDB
+            Cloud sends notifications until someone acknowledges the
+            unacknowledged alert.
+
+
+            PagerDuty, VictorOps, and OpsGenie notifications don't return this element. Configure and manage the notification interval within each of those services.
+          minimum: 5
+        typeName:
+          type: string
+          description: Human-readable label that displays the alert notification type.
+        emailAddress:
+          type: string
+          format: email
+          description: >-
+            Email address to which MongoDB Cloud sends alert notifications. The
+            resource requires this parameter when `"notifications.[n].typeName"
+            : "EMAIL"`. You don’t need to set this value to send emails to
+            individual or groups of MongoDB Cloud users including:
+
+
+            - specific MongoDB Cloud users (`"notifications.[n].typeName" : "USER"`)
+
+            - MongoDB Cloud users with specific project roles (`"notifications.[n].typeName" : "GROUP"`)
+
+            - MongoDB Cloud users with specific organization roles (`"notifications.[n].typeName" : "ORG"`)
+
+            - MongoDB Cloud teams (`"notifications.[n].typeName" : "TEAM"`)
+
+
+            To send emails to one MongoDB Cloud user or grouping of users, set the `notifications.[n].emailEnabled` parameter.
+        emailEnabled:
+          type: boolean
+          description: >-
+            Flag that indicates whether MongoDB Cloud should send email
+            notifications. The resource requires this parameter when one of the
+            following values have been set:
+
+
+            - `"notifications.[n].typeName" : "ORG"`
+
+            - `"notifications.[n].typeName" : "GROUP"`
+
+            - `"notifications.[n].typeName" : "USER"`
+        roles:
+          type: array
+          description: 'List that contains the one or more
+            [organization](https://dochub.mongodb.org/core/atlas-org-roles) or
+            [project roles](https://dochub.mongodb.org/core/atlas-proj-roles)
+            that receive the configured alert. The resource requires this
+            parameter when `"notifications.[n].typeName" : "GROUP"` or
+            `"notifications.[n].typeName" : "ORG"`. If you include this
+            parameter, MongoDB Cloud sends alerts only to users assigned the
+            roles you specify in the array. If you omit this parameter, MongoDB
+            Cloud sends alerts to users assigned any role.'
+          items:
+            type: string
+            description: One organization or project role that receive the configured alert.
+        smsEnabled:
+          type: boolean
+          description: >-
+            Flag that indicates whether MongoDB Cloud should send text message
+            notifications. The resource requires this parameter when one of the
+            following values have been set:
+
+
+            - `"notifications.[n].typeName" : "ORG"`
+
+            - `"notifications.[n].typeName" : "GROUP"`
+
+            - `"notifications.[n].typeName" : "USER"`
+        notificationToken:
+          type: string
+          description: >-
+            HipChat API token that MongoDB Cloud needs to send alert
+            notifications to HipChat. The resource requires this parameter when
+            `"notifications.[n].typeName" : "HIP_CHAT"`". If the token later
+            becomes invalid, MongoDB Cloud sends an email to the project owners.
+            If the token remains invalid, MongoDB Cloud removes it.
+
+
+            **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
+
+
+            * View or edit the alert through the Atlas UI.
+
+
+            * Query the alert for the notification through the Atlas Administration API.
+          example: "************************************1234"
+        roomName:
+          type: string
+          description: 'HipChat API room name to which MongoDB Cloud sends alert
+            notifications. The resource requires this parameter when
+            `"notifications.[n].typeName" : "HIP_CHAT"`".'
+          example: test room
+        microsoftTeamsWebhookUrl:
+          type: string
+          description: >-
+            Microsoft Teams Webhook Uniform Resource Locator (URL) that MongoDB
+            Cloud needs to send this notification via Microsoft Teams. The
+            resource requires this parameter when `"notifications.[n].typeName"
+            : "MICROSOFT_TEAMS"`. If the URL later becomes invalid, MongoDB
+            Cloud sends an email to the project owners. If the key remains
+            invalid, MongoDB Cloud removes it.
+
+
+            **NOTE**: When you view or edit the alert for a Microsoft Teams notification, the URL appears partially redacted.
+          example: https://webhook.com/****
+        opsGenieApiKey:
+          type: string
+          description: >-
+            API Key that MongoDB Cloud needs to send this notification via
+            Opsgenie. The resource requires this parameter when
+            `"notifications.[n].typeName" : "OPS_GENIE"`. If the key later
+            becomes invalid, MongoDB Cloud sends an email to the project owners.
+            If the key remains invalid, MongoDB Cloud removes it.
+
+
+            **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
+
+
+            * View or edit the alert through the Atlas UI.
+
+
+            * Query the alert for the notification through the Atlas Administration API.
+          example: "********************************a111"
+        opsGenieRegion:
+          type: string
+          default: US
+          description: Opsgenie region that indicates which API Uniform Resource Locator
+            (URL) to use.
+        region:
+          type: string
+          default: US
+          description: PagerDuty region that indicates which API Uniform Resource Locator
+            (URL) to use.
+        serviceKey:
+          type: string
+          description: >-
+            PagerDuty service key that MongoDB Cloud needs to send
+            notifications via PagerDuty. The resource requires this parameter
+            when `"notifications.[n].typeName" : "PAGER_DUTY"`. If the key later
+            becomes invalid, MongoDB Cloud sends an email to the project owners.
+            If the key remains invalid, MongoDB Cloud removes it.
+
+
+            **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
+
+
+            * View or edit the alert through the Atlas UI.
+
+
+            * Query the alert for the notification through the Atlas Administration API.
+          example: "****************************7890"
+        apiToken:
+          type: string
+          description: >-
+            Slack API token or Bot token that MongoDB Cloud needs to send alert
+            notifications via Slack. The resource requires this parameter when
+            `"notifications.[n].typeName" : "SLACK"`. If the token later becomes
+            invalid, MongoDB Cloud sends an email to the project owners. If the
+            token remains invalid, MongoDB Cloud removes the token. 
+
+
+            **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
+
+
+            * View or edit the alert through the Atlas UI.
+
+
+            * Query the alert for the notification through the Atlas Administration API.
+          example: "*********************************************************************\
+            *abcd"
+        channelName:
+          type: string
+          description: 'Name of the Slack channel to which MongoDB Cloud sends alert
+            notifications. The resource requires this parameter when
+            `"notifications.[n].typeName" : "SLACK"`.'
+          example: alerts
+        mobileNumber:
+          type: string
+          description: 'Mobile phone number to which MongoDB Cloud sends alert
+            notifications. The resource requires this parameter when
+            `"notifications.[n].typeName" : "SMS"`.'
+          example: "1233337892"
+        teamId:
+          type: string
+          description: 'Unique 24-hexadecimal digit string that identifies one MongoDB
+            Cloud team. The resource requires this parameter when
+            `"notifications.[n].typeName" : "TEAM"`.'
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+        teamName:
+          type: string
+          description: 'Name of the MongoDB Cloud team that receives this notification.
+            The resource requires this parameter when
+            `"notifications.[n].typeName" : "TEAM"`.'
+          example: Atlas
+        username:
+          type: string
+          format: email
+          description: 'MongoDB Cloud username of the person to whom MongoDB Cloud sends
+            notifications. Specify only MongoDB Cloud users who belong to the
+            project that owns the alert configuration. The resource requires
+            this parameter when `"notifications.[n].typeName" : "USER"`.'
+        victorOpsApiKey:
+          type: string
+          description: >-
+            API key that MongoDB Cloud needs to send alert notifications to
+            Splunk On-Call. The resource requires this parameter when
+            `"notifications.[n].typeName" : "VICTOR_OPS"`. If the key later
+            becomes invalid, MongoDB Cloud sends an email to the project owners.
+            If the key remains invalid, MongoDB Cloud removes it.
+
+
+            **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
+
+
+            * View or edit the alert through the Atlas UI.
+
+
+            * Query the alert for the notification through the Atlas Administration API.
+          example: "********************************9abc"
+        victorOpsRoutingKey:
+          type: string
+          description: 'Routing key that MongoDB Cloud needs to send alert notifications
+            to Splunk On-Call. The resource requires this parameter when
+            `"notifications.[n].typeName" : "VICTOR_OPS"`. If the key later
+            becomes invalid, MongoDB Cloud sends an email to the project owners.
+            If the key remains invalid, MongoDB Cloud removes it.'
+          example: test routing
+        webhookSecret:
+          type: string
+          description: >-
+            Authentication secret for a webhook-based alert.
+
+
+            Atlas returns this value if you set `"notifications.[n].typeName" :"WEBHOOK"` and either:
+
+            * You set `notification.[n].webhookSecret` to a non-empty string
+
+            * You set a default webhookSecret either on the [Integrations](https://www.mongodb.com/docs/atlas/tutorial/third-party-service-integrations/#std-label-third-party-integrations) page, or with the [Integrations API](#tag/Third-Party-Service-Integrations/operation/createIntegration)
+
+
+            **NOTE**: When you view or edit the alert for a webhook notification, the secret appears completely redacted.
+          example: "******"
+        webhookUrl:
+          type: string
+          description: >-
+            Target URL for a webhook-based alert.
+
+
+            Atlas returns this value if you set `"notifications.[n].typeName" :"WEBHOOK"` and either:
+
+            * You set `notification.[n].webhookURL` to a non-empty string
+
+            * You set a default webhookUrl either on the [Integrations](https://www.mongodb.com/docs/atlas/tutorial/third-party-service-integrations/#std-label-third-party-integrations) page, or with the [Integrations API](#tag/Third-Party-Service-Integrations/operation/createIntegration)
+
+
+            **NOTE**: When you view or edit the alert for a Webhook URL notification, the URL appears partially redacted.
+          example: https://webhook.com/****
     Operator:
       type: string
       description: Comparison operator to apply when checking the current metric value.
@@ -17003,60 +17311,6 @@ components:
           description: Value of metric that, when exceeded, triggers an alert.
         units:
           $ref: "#/components/schemas/DataMetricUnits"
-    DatadogNotification:
-      type: object
-      description: Datadog notification configuration for MongoDB Cloud to send
-        information when an event triggers an alert condition.
-      properties:
-        datadogApiKey:
-          type: string
-          description: >-
-            Datadog API Key that MongoDB Cloud needs to send alert
-            notifications to Datadog. You can find this API key in the Datadog
-            dashboard. The resource requires this parameter when
-            `"notifications.[n].typeName" : "DATADOG"`.
-
-
-            **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
-
-
-            * View or edit the alert through the Atlas UI.
-
-
-            * Query the alert for the notification through the Atlas Administration API.
-          example: "****************************a23c"
-        datadogRegion:
-          type: string
-          default: US
-          description: >-
-            Datadog region that indicates which API Uniform Resource Locator
-            (URL) to use. The resource requires this parameter when
-            `"notifications.[n].typeName" : "DATADOG"`.
-
-
-            To learn more about Datadog's regions, see <a href="https://docs.datadoghq.com/getting_started/site/" target="_blank" rel="noopener noreferrer">Datadog Sites</a>.
-        delayMin:
-          type: integer
-          format: int32
-          description: Number of minutes that MongoDB Cloud waits after detecting an alert
-            condition before it sends out the first notification.
-        intervalMin:
-          type: integer
-          format: int32
-          description: >-
-            Number of minutes to wait between successive notifications. MongoDB
-            Cloud sends notifications until someone acknowledges the
-            unacknowledged alert.
-
-
-            PagerDuty, VictorOps, and OpsGenie notifications don't return this element. Configure and manage the notification interval within each of those services.
-          minimum: 5
-        typeName:
-          type: string
-          description: Human-readable label that displays the alert notification type.
-      required:
-        - typeName
-      title: Datadog Notification
     DateCriteria:
       type: object
       description: "**DATE criteria.type**."
@@ -17103,53 +17357,6 @@ components:
           type: string
       required:
         - type
-    EmailNotification:
-      type: object
-      description: Email notification configuration for MongoDB Cloud to send
-        information when an event triggers an alert condition.
-      properties:
-        delayMin:
-          type: integer
-          format: int32
-          description: Number of minutes that MongoDB Cloud waits after detecting an alert
-            condition before it sends out the first notification.
-        emailAddress:
-          type: string
-          format: email
-          description: >-
-            Email address to which MongoDB Cloud sends alert notifications. The
-            resource requires this parameter when `"notifications.[n].typeName"
-            : "EMAIL"`. You don’t need to set this value to send emails to
-            individual or groups of MongoDB Cloud users including:
-
-
-            - specific MongoDB Cloud users (`"notifications.[n].typeName" : "USER"`)
-
-            - MongoDB Cloud users with specific project roles (`"notifications.[n].typeName" : "GROUP"`)
-
-            - MongoDB Cloud users with specific organization roles (`"notifications.[n].typeName" : "ORG"`)
-
-            - MongoDB Cloud teams (`"notifications.[n].typeName" : "TEAM"`)
-
-
-            To send emails to one MongoDB Cloud user or grouping of users, set the `notifications.[n].emailEnabled` parameter.
-        intervalMin:
-          type: integer
-          format: int32
-          description: >-
-            Number of minutes to wait between successive notifications. MongoDB
-            Cloud sends notifications until someone acknowledges the
-            unacknowledged alert.
-
-
-            PagerDuty, VictorOps, and OpsGenie notifications don't return this element. Configure and manage the notification interval within each of those services.
-          minimum: 5
-        typeName:
-          type: string
-          description: Human-readable label that displays the alert notification type.
-      required:
-        - typeName
-      title: Email Notification
     FederatedUser:
       type: object
       description: MongoDB Cloud user linked to this federated authentication.
@@ -17187,73 +17394,6 @@ components:
         - firstName
         - lastName
       title: Federated User
-    GroupNotification:
-      type: object
-      description: Group notification configuration for MongoDB Cloud to send
-        information when an event triggers an alert condition.
-      properties:
-        delayMin:
-          type: integer
-          format: int32
-          description: Number of minutes that MongoDB Cloud waits after detecting an alert
-            condition before it sends out the first notification.
-        emailEnabled:
-          type: boolean
-          description: >-
-            Flag that indicates whether MongoDB Cloud should send email
-            notifications. The resource requires this parameter when one of the
-            following values have been set:
-
-
-            - `"notifications.[n].typeName" : "ORG"`
-
-            - `"notifications.[n].typeName" : "GROUP"`
-
-            - `"notifications.[n].typeName" : "USER"`
-        intervalMin:
-          type: integer
-          format: int32
-          description: >-
-            Number of minutes to wait between successive notifications. MongoDB
-            Cloud sends notifications until someone acknowledges the
-            unacknowledged alert.
-
-
-            PagerDuty, VictorOps, and OpsGenie notifications don't return this element. Configure and manage the notification interval within each of those services.
-          minimum: 5
-        roles:
-          type: array
-          description: 'List that contains the one or more
-            [organization](https://dochub.mongodb.org/core/atlas-org-roles) or
-            [project roles](https://dochub.mongodb.org/core/atlas-proj-roles)
-            that receive the configured alert. The resource requires this
-            parameter when `"notifications.[n].typeName" : "GROUP"` or
-            `"notifications.[n].typeName" : "ORG"`. If you include this
-            parameter, MongoDB Cloud sends alerts only to users assigned the
-            roles you specify in the array. If you omit this parameter, MongoDB
-            Cloud sends alerts to users assigned any role.'
-          items:
-            type: string
-            description: One organization or project role that receive the configured alert.
-        smsEnabled:
-          type: boolean
-          description: >-
-            Flag that indicates whether MongoDB Cloud should send text message
-            notifications. The resource requires this parameter when one of the
-            following values have been set:
-
-
-            - `"notifications.[n].typeName" : "ORG"`
-
-            - `"notifications.[n].typeName" : "GROUP"`
-
-            - `"notifications.[n].typeName" : "USER"`
-        typeName:
-          type: string
-          description: Human-readable label that displays the alert notification type.
-      required:
-        - typeName
-      title: Group Notification
     GroupPaginatedEvent:
       type: object
       properties:
@@ -17282,57 +17422,6 @@ components:
             query param is true.
           minimum: 0
           readOnly: true
-    HipChatNotification:
-      type: object
-      description: HipChat notification configuration for MongoDB Cloud to send
-        information when an event triggers an alert condition.
-      properties:
-        delayMin:
-          type: integer
-          format: int32
-          description: Number of minutes that MongoDB Cloud waits after detecting an alert
-            condition before it sends out the first notification.
-        intervalMin:
-          type: integer
-          format: int32
-          description: >-
-            Number of minutes to wait between successive notifications. MongoDB
-            Cloud sends notifications until someone acknowledges the
-            unacknowledged alert.
-
-
-            PagerDuty, VictorOps, and OpsGenie notifications don't return this element. Configure and manage the notification interval within each of those services.
-          minimum: 5
-        notificationToken:
-          type: string
-          description: >-
-            HipChat API token that MongoDB Cloud needs to send alert
-            notifications to HipChat. The resource requires this parameter when
-            `"notifications.[n].typeName" : "HIP_CHAT"`". If the token later
-            becomes invalid, MongoDB Cloud sends an email to the project owners.
-            If the token remains invalid, MongoDB Cloud removes it.
-
-
-            **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
-
-
-            * View or edit the alert through the Atlas UI.
-
-
-            * Query the alert for the notification through the Atlas Administration API.
-          example: "************************************1234"
-        roomName:
-          type: string
-          description: 'HipChat API room name to which MongoDB Cloud sends alert
-            notifications. The resource requires this parameter when
-            `"notifications.[n].typeName" : "HIP_CHAT"`".'
-          example: test room
-        typeName:
-          type: string
-          description: Human-readable label that displays the alert notification type.
-      required:
-        - typeName
-      title: HipChat Notification
     HostMetricValue:
       type: object
       description: Value of the metric that triggered the alert. The resource returns
@@ -17536,46 +17625,6 @@ components:
             ranges for the collection.
     MatcherField:
       type: string
-    MicrosoftTeamsNotification:
-      type: object
-      description: Microsoft Teams notification configuration for MongoDB Cloud to
-        send information when an event triggers an alert condition.
-      properties:
-        delayMin:
-          type: integer
-          format: int32
-          description: Number of minutes that MongoDB Cloud waits after detecting an alert
-            condition before it sends out the first notification.
-        intervalMin:
-          type: integer
-          format: int32
-          description: >-
-            Number of minutes to wait between successive notifications. MongoDB
-            Cloud sends notifications until someone acknowledges the
-            unacknowledged alert.
-
-
-            PagerDuty, VictorOps, and OpsGenie notifications don't return this element. Configure and manage the notification interval within each of those services.
-          minimum: 5
-        microsoftTeamsWebhookUrl:
-          type: string
-          description: >-
-            Microsoft Teams Webhook Uniform Resource Locator (URL) that MongoDB
-            Cloud needs to send this notification via Microsoft Teams. The
-            resource requires this parameter when `"notifications.[n].typeName"
-            : "MICROSOFT_TEAMS"`. If the URL later becomes invalid, MongoDB
-            Cloud sends an email to the project owners. If the key remains
-            invalid, MongoDB Cloud removes it.
-
-
-            **NOTE**: When you view or edit the alert for a Microsoft Teams notification, the URL appears partially redacted.
-          example: https://webhook.com/****
-        typeName:
-          type: string
-          description: Human-readable label that displays the alert notification type.
-      required:
-        - typeName
-      title: Microsoft Teams Notification
     MonthlySchedule:
       type: object
       properties:
@@ -17617,56 +17666,6 @@ components:
           type: string
       required:
         - type
-    OpsGenieNotification:
-      type: object
-      description: OpsGenie notification configuration for MongoDB Cloud to send
-        information when an event triggers an alert condition.
-      properties:
-        delayMin:
-          type: integer
-          format: int32
-          description: Number of minutes that MongoDB Cloud waits after detecting an alert
-            condition before it sends out the first notification.
-        intervalMin:
-          type: integer
-          format: int32
-          description: >-
-            Number of minutes to wait between successive notifications. MongoDB
-            Cloud sends notifications until someone acknowledges the
-            unacknowledged alert.
-
-
-            PagerDuty, VictorOps, and OpsGenie notifications don't return this element. Configure and manage the notification interval within each of those services.
-          minimum: 5
-        opsGenieApiKey:
-          type: string
-          description: >-
-            API Key that MongoDB Cloud needs to send this notification via
-            Opsgenie. The resource requires this parameter when
-            `"notifications.[n].typeName" : "OPS_GENIE"`. If the key later
-            becomes invalid, MongoDB Cloud sends an email to the project owners.
-            If the key remains invalid, MongoDB Cloud removes it.
-
-
-            **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
-
-
-            * View or edit the alert through the Atlas UI.
-
-
-            * Query the alert for the notification through the Atlas Administration API.
-          example: "********************************a111"
-        opsGenieRegion:
-          type: string
-          default: US
-          description: Opsgenie region that indicates which API Uniform Resource Locator
-            (URL) to use.
-        typeName:
-          type: string
-          description: Human-readable label that displays the alert notification type.
-      required:
-        - typeName
-      title: OpsGenie Notification
     OrgFederationSettings:
       type: object
       description: Details that define how to connect one MongoDB Cloud organization
@@ -17752,73 +17751,6 @@ components:
             type: string
             readOnly: true
           readOnly: true
-    OrgNotification:
-      type: object
-      description: Org notification configuration for MongoDB Cloud to send
-        information when an event triggers an alert condition.
-      properties:
-        delayMin:
-          type: integer
-          format: int32
-          description: Number of minutes that MongoDB Cloud waits after detecting an alert
-            condition before it sends out the first notification.
-        emailEnabled:
-          type: boolean
-          description: >-
-            Flag that indicates whether MongoDB Cloud should send email
-            notifications. The resource requires this parameter when one of the
-            following values have been set:
-
-
-            - `"notifications.[n].typeName" : "ORG"`
-
-            - `"notifications.[n].typeName" : "GROUP"`
-
-            - `"notifications.[n].typeName" : "USER"`
-        intervalMin:
-          type: integer
-          format: int32
-          description: >-
-            Number of minutes to wait between successive notifications. MongoDB
-            Cloud sends notifications until someone acknowledges the
-            unacknowledged alert.
-
-
-            PagerDuty, VictorOps, and OpsGenie notifications don't return this element. Configure and manage the notification interval within each of those services.
-          minimum: 5
-        roles:
-          type: array
-          description: 'List that contains the one or more
-            [organization](https://dochub.mongodb.org/core/atlas-org-roles) or
-            [project roles](https://dochub.mongodb.org/core/atlas-proj-roles)
-            that receive the configured alert. The resource requires this
-            parameter when `"notifications.[n].typeName" : "GROUP"` or
-            `"notifications.[n].typeName" : "ORG"`. If you include this
-            parameter, MongoDB Cloud sends alerts only to users assigned the
-            roles you specify in the array. If you omit this parameter, MongoDB
-            Cloud sends alerts to users assigned any role.'
-          items:
-            type: string
-            description: One organization or project role that receive the configured alert.
-        smsEnabled:
-          type: boolean
-          description: >-
-            Flag that indicates whether MongoDB Cloud should send text message
-            notifications. The resource requires this parameter when one of the
-            following values have been set:
-
-
-            - `"notifications.[n].typeName" : "ORG"`
-
-            - `"notifications.[n].typeName" : "GROUP"`
-
-            - `"notifications.[n].typeName" : "USER"`
-        typeName:
-          type: string
-          description: Human-readable label that displays the alert notification type.
-      required:
-        - typeName
-      title: Org Notification
     OrgPaginatedEvent:
       type: object
       properties:
@@ -17847,56 +17779,6 @@ components:
             query param is true.
           minimum: 0
           readOnly: true
-    PagerDutyNotification:
-      type: object
-      description: PagerDuty notification configuration for MongoDB Cloud to send
-        information when an event triggers an alert condition.
-      properties:
-        delayMin:
-          type: integer
-          format: int32
-          description: Number of minutes that MongoDB Cloud waits after detecting an alert
-            condition before it sends out the first notification.
-        intervalMin:
-          type: integer
-          format: int32
-          description: >-
-            Number of minutes to wait between successive notifications. MongoDB
-            Cloud sends notifications until someone acknowledges the
-            unacknowledged alert.
-
-
-            PagerDuty, VictorOps, and OpsGenie notifications don't return this element. Configure and manage the notification interval within each of those services.
-          minimum: 5
-        region:
-          type: string
-          default: US
-          description: PagerDuty region that indicates which API Uniform Resource Locator
-            (URL) to use.
-        serviceKey:
-          type: string
-          description: >-
-            PagerDuty service key that MongoDB Cloud needs to send
-            notifications via PagerDuty. The resource requires this parameter
-            when `"notifications.[n].typeName" : "PAGER_DUTY"`. If the key later
-            becomes invalid, MongoDB Cloud sends an email to the project owners.
-            If the key remains invalid, MongoDB Cloud removes it.
-
-
-            **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
-
-
-            * View or edit the alert through the Atlas UI.
-
-
-            * Query the alert for the notification through the Atlas Administration API.
-          example: "****************************7890"
-        typeName:
-          type: string
-          description: Human-readable label that displays the alert notification type.
-      required:
-        - typeName
-      title: PagerDuty Notification
     PaginatedAlertConfig:
       type: object
       properties:
@@ -19140,39 +19022,6 @@ components:
       required:
         - externalGroupName
       title: Federated Authentication Role Mapping
-    SMSNotification:
-      type: object
-      description: SMS notification configuration for MongoDB Cloud to send
-        information when an event triggers an alert condition.
-      properties:
-        delayMin:
-          type: integer
-          format: int32
-          description: Number of minutes that MongoDB Cloud waits after detecting an alert
-            condition before it sends out the first notification.
-        intervalMin:
-          type: integer
-          format: int32
-          description: >-
-            Number of minutes to wait between successive notifications. MongoDB
-            Cloud sends notifications until someone acknowledges the
-            unacknowledged alert.
-
-
-            PagerDuty, VictorOps, and OpsGenie notifications don't return this element. Configure and manage the notification interval within each of those services.
-          minimum: 5
-        mobileNumber:
-          type: string
-          description: 'Mobile phone number to which MongoDB Cloud sends alert
-            notifications. The resource requires this parameter when
-            `"notifications.[n].typeName" : "SMS"`.'
-          example: "1233337892"
-        typeName:
-          type: string
-          description: Human-readable label that displays the alert notification type.
-      required:
-        - typeName
-      title: SMS Notification
     ServerlessMetricThreshold:
       type: object
       description: Threshold for the metric that, when exceeded, triggers an alert.
@@ -19204,58 +19053,6 @@ components:
         - $ref: "#/components/schemas/RawMetricThreshold"
         - $ref: "#/components/schemas/DataMetricThreshold"
         - $ref: "#/components/schemas/RPUMetricThreshold"
-    SlackNotification:
-      type: object
-      description: Slack notification configuration for MongoDB Cloud to send
-        information when an event triggers an alert condition.
-      properties:
-        apiToken:
-          type: string
-          description: >-
-            Slack API token or Bot token that MongoDB Cloud needs to send alert
-            notifications via Slack. The resource requires this parameter when
-            `"notifications.[n].typeName" : "SLACK"`. If the token later becomes
-            invalid, MongoDB Cloud sends an email to the project owners. If the
-            token remains invalid, MongoDB Cloud removes the token. 
-
-
-            **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
-
-
-            * View or edit the alert through the Atlas UI.
-
-
-            * Query the alert for the notification through the Atlas Administration API.
-          example: "*********************************************************************\
-            *abcd"
-        channelName:
-          type: string
-          description: 'Name of the Slack channel to which MongoDB Cloud sends alert
-            notifications. The resource requires this parameter when
-            `"notifications.[n].typeName" : "SLACK"`.'
-          example: alerts
-        delayMin:
-          type: integer
-          format: int32
-          description: Number of minutes that MongoDB Cloud waits after detecting an alert
-            condition before it sends out the first notification.
-        intervalMin:
-          type: integer
-          format: int32
-          description: >-
-            Number of minutes to wait between successive notifications. MongoDB
-            Cloud sends notifications until someone acknowledges the
-            unacknowledged alert.
-
-
-            PagerDuty, VictorOps, and OpsGenie notifications don't return this element. Configure and manage the notification interval within each of those services.
-          minimum: 5
-        typeName:
-          type: string
-          description: Human-readable label that displays the alert notification type.
-      required:
-        - typeName
-      title: Slack Notification
     TargetOrgRequest:
       type: object
       properties:
@@ -19274,74 +19071,6 @@ components:
             the link.
       required:
         - linkToken
-    TeamNotification:
-      type: object
-      description: Team notification configuration for MongoDB Cloud to send
-        information when an event triggers an alert condition.
-      properties:
-        delayMin:
-          type: integer
-          format: int32
-          description: Number of minutes that MongoDB Cloud waits after detecting an alert
-            condition before it sends out the first notification.
-        emailEnabled:
-          type: boolean
-          description: >-
-            Flag that indicates whether MongoDB Cloud should send email
-            notifications. The resource requires this parameter when one of the
-            following values have been set:
-
-
-            - `"notifications.[n].typeName" : "ORG"`
-
-            - `"notifications.[n].typeName" : "GROUP"`
-
-            - `"notifications.[n].typeName" : "USER"`
-        intervalMin:
-          type: integer
-          format: int32
-          description: >-
-            Number of minutes to wait between successive notifications. MongoDB
-            Cloud sends notifications until someone acknowledges the
-            unacknowledged alert.
-
-
-            PagerDuty, VictorOps, and OpsGenie notifications don't return this element. Configure and manage the notification interval within each of those services.
-          minimum: 5
-        smsEnabled:
-          type: boolean
-          description: >-
-            Flag that indicates whether MongoDB Cloud should send text message
-            notifications. The resource requires this parameter when one of the
-            following values have been set:
-
-
-            - `"notifications.[n].typeName" : "ORG"`
-
-            - `"notifications.[n].typeName" : "GROUP"`
-
-            - `"notifications.[n].typeName" : "USER"`
-        teamId:
-          type: string
-          description: 'Unique 24-hexadecimal digit string that identifies one MongoDB
-            Cloud team. The resource requires this parameter when
-            `"notifications.[n].typeName" : "TEAM"`.'
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-        teamName:
-          type: string
-          description: 'Name of the MongoDB Cloud team that receives this notification.
-            The resource requires this parameter when
-            `"notifications.[n].typeName" : "TEAM"`.'
-          example: Atlas
-        typeName:
-          type: string
-          description: Human-readable label that displays the alert notification type.
-      required:
-        - typeName
-      title: Team Notification
     TimeMetricThreshold:
       type: object
       properties:
@@ -19370,66 +19099,6 @@ components:
           description: Flag that indicates whether to enable or disable the specified
             alert configuration in the specified project.
       title: Toggle Request
-    UserNotification:
-      type: object
-      description: User notification configuration for MongoDB Cloud to send
-        information when an event triggers an alert condition.
-      properties:
-        delayMin:
-          type: integer
-          format: int32
-          description: Number of minutes that MongoDB Cloud waits after detecting an alert
-            condition before it sends out the first notification.
-        emailEnabled:
-          type: boolean
-          description: >-
-            Flag that indicates whether MongoDB Cloud should send email
-            notifications. The resource requires this parameter when one of the
-            following values have been set:
-
-
-            - `"notifications.[n].typeName" : "ORG"`
-
-            - `"notifications.[n].typeName" : "GROUP"`
-
-            - `"notifications.[n].typeName" : "USER"`
-        intervalMin:
-          type: integer
-          format: int32
-          description: >-
-            Number of minutes to wait between successive notifications. MongoDB
-            Cloud sends notifications until someone acknowledges the
-            unacknowledged alert.
-
-
-            PagerDuty, VictorOps, and OpsGenie notifications don't return this element. Configure and manage the notification interval within each of those services.
-          minimum: 5
-        smsEnabled:
-          type: boolean
-          description: >-
-            Flag that indicates whether MongoDB Cloud should send text message
-            notifications. The resource requires this parameter when one of the
-            following values have been set:
-
-
-            - `"notifications.[n].typeName" : "ORG"`
-
-            - `"notifications.[n].typeName" : "GROUP"`
-
-            - `"notifications.[n].typeName" : "USER"`
-        typeName:
-          type: string
-          description: Human-readable label that displays the alert notification type.
-        username:
-          type: string
-          format: email
-          description: 'MongoDB Cloud username of the person to whom MongoDB Cloud sends
-            notifications. Specify only MongoDB Cloud users who belong to the
-            project that owns the alert configuration. The resource requires
-            this parameter when `"notifications.[n].typeName" : "USER"`.'
-      required:
-        - typeName
-      title: User Notification
     Validation:
       type: object
       properties:
@@ -19469,116 +19138,6 @@ components:
             request.
           nullable: true
           readOnly: true
-    VictorOpsNotification:
-      type: object
-      description: VictorOps notification configuration for MongoDB Cloud to send
-        information when an event triggers an alert condition.
-      properties:
-        delayMin:
-          type: integer
-          format: int32
-          description: Number of minutes that MongoDB Cloud waits after detecting an alert
-            condition before it sends out the first notification.
-        intervalMin:
-          type: integer
-          format: int32
-          description: >-
-            Number of minutes to wait between successive notifications. MongoDB
-            Cloud sends notifications until someone acknowledges the
-            unacknowledged alert.
-
-
-            PagerDuty, VictorOps, and OpsGenie notifications don't return this element. Configure and manage the notification interval within each of those services.
-          minimum: 5
-        typeName:
-          type: string
-          description: Human-readable label that displays the alert notification type.
-        victorOpsApiKey:
-          type: string
-          description: >-
-            API key that MongoDB Cloud needs to send alert notifications to
-            Splunk On-Call. The resource requires this parameter when
-            `"notifications.[n].typeName" : "VICTOR_OPS"`. If the key later
-            becomes invalid, MongoDB Cloud sends an email to the project owners.
-            If the key remains invalid, MongoDB Cloud removes it.
-
-
-            **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
-
-
-            * View or edit the alert through the Atlas UI.
-
-
-            * Query the alert for the notification through the Atlas Administration API.
-          example: "********************************9abc"
-        victorOpsRoutingKey:
-          type: string
-          description: 'Routing key that MongoDB Cloud needs to send alert notifications
-            to Splunk On-Call. The resource requires this parameter when
-            `"notifications.[n].typeName" : "VICTOR_OPS"`. If the key later
-            becomes invalid, MongoDB Cloud sends an email to the project owners.
-            If the key remains invalid, MongoDB Cloud removes it.'
-          example: test routing
-      required:
-        - typeName
-      title: VictorOps Notification
-    WebhookNotification:
-      type: object
-      description: Webhook notification configuration for MongoDB Cloud to send
-        information when an event triggers an alert condition.
-      properties:
-        delayMin:
-          type: integer
-          format: int32
-          description: Number of minutes that MongoDB Cloud waits after detecting an alert
-            condition before it sends out the first notification.
-        intervalMin:
-          type: integer
-          format: int32
-          description: >-
-            Number of minutes to wait between successive notifications. MongoDB
-            Cloud sends notifications until someone acknowledges the
-            unacknowledged alert.
-
-
-            PagerDuty, VictorOps, and OpsGenie notifications don't return this element. Configure and manage the notification interval within each of those services.
-          minimum: 5
-        typeName:
-          type: string
-          description: Human-readable label that displays the alert notification type.
-        webhookSecret:
-          type: string
-          description: >-
-            Authentication secret for a webhook-based alert.
-
-
-            Atlas returns this value if you set `"notifications.[n].typeName" :"WEBHOOK"` and either:
-
-            * You set `notification.[n].webhookSecret` to a non-empty string
-
-            * You set a default webhookSecret either on the [Integrations](https://www.mongodb.com/docs/atlas/tutorial/third-party-service-integrations/#std-label-third-party-integrations) page, or with the [Integrations API](#tag/Third-Party-Service-Integrations/operation/createIntegration)
-
-
-            **NOTE**: When you view or edit the alert for a webhook notification, the secret appears completely redacted.
-          example: "******"
-        webhookUrl:
-          type: string
-          description: >-
-            Target URL for a webhook-based alert.
-
-
-            Atlas returns this value if you set `"notifications.[n].typeName" :"WEBHOOK"` and either:
-
-            * You set `notification.[n].webhookURL` to a non-empty string
-
-            * You set a default webhookUrl either on the [Integrations](https://www.mongodb.com/docs/atlas/tutorial/third-party-service-integrations/#std-label-third-party-integrations) page, or with the [Integrations API](#tag/Third-Party-Service-Integrations/operation/createIntegration)
-
-
-            **NOTE**: When you view or edit the alert for a Webhook URL notification, the URL appears partially redacted.
-          example: https://webhook.com/****
-      required:
-        - typeName
-      title: Webhook Notification
     WeeklySchedule:
       type: object
       properties:
@@ -19865,40 +19424,6 @@ components:
           items:
             $ref: "#/components/schemas/Link"
           readOnly: true
-    Datadog:
-      type: object
-      description: Details to integrate one Datadog account with one MongoDB Cloud project.
-      properties:
-        apiKey:
-          type: string
-          description: >-
-            Key that allows MongoDB Cloud to access your Datadog account.
-
-
-            **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
-
-
-            * View or edit the alert through the Atlas UI.
-
-
-            * Query the alert for the notification through the Atlas Administration API.
-          example: "****************************a23c"
-        region:
-          type: string
-          description: >-
-            Two-letter code that indicates which regional URL MongoDB uses to
-            access the Datadog API.
-
-
-            To learn more about Datadog's regions, see <a href="https://docs.datadoghq.com/getting_started/site/" target="_blank" rel="noopener noreferrer">Datadog Sites</a>.
-        type:
-          type: string
-          description: Human-readable label that identifies the service to which you want
-            to integrate with MongoDB Cloud. The value must match the
-            third-party service integration type.
-      required:
-        - apiKey
-      title: DATADOG
     DefaultLimit:
       type: object
       description: Details of user managed limits
@@ -20209,29 +19734,171 @@ components:
     Integration:
       type: object
       description: Collection of settings that describe third-party integrations.
-      discriminator:
-        mapping:
-          DATADOG: "#/components/schemas/Datadog"
-          MICROSOFT_TEAMS: "#/components/schemas/MicrosoftTeams"
-          NEW_RELIC: "#/components/schemas/NewRelic"
-          OPS_GENIE: "#/components/schemas/OpsGenie"
-          PAGER_DUTY: "#/components/schemas/PagerDuty"
-          PROMETHEUS: "#/components/schemas/Prometheus"
-          SLACK: "#/components/schemas/Slack"
-          VICTOR_OPS: "#/components/schemas/VictorOps"
-          WEBHOOK: "#/components/schemas/Webhook"
-        propertyName: type
+      properties:
+        type:
+          type: string
+          description: Human-readable label that identifies the service to which you want
+            to integrate with MongoDB Cloud. The value must match the
+            third-party service integration type.
+        apiKey:
+          type: string
+          description: >-
+            Key that allows MongoDB Cloud to access your VictorOps account.
+
+
+            **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
+
+
+            * View or edit the alert through the Atlas UI.
+
+
+            * Query the alert for the notification through the Atlas Administration API.
+          example: "********************************9abc"
+        region:
+          type: string
+          description: PagerDuty region that indicates the API Uniform Resource Locator
+            (URL) to use.
+        microsoftTeamsWebhookUrl:
+          type: string
+          description: >-
+            Endpoint web address of the Microsoft Teams webhook to which
+            MongoDB Cloud sends notifications.
+
+
+            **NOTE**: When you view or edit the alert for a Microsoft Teams notification, the URL appears partially redacted.
+          example: https://webhook.com/****
+        accountId:
+          type: string
+          description: Unique 40-hexadecimal digit string that identifies your New Relic
+            account.
+          example: bcc3c81b344a6030a3935c2527e2216535af7718
+          maxLength: 40
+          minLength: 40
+          pattern: ^([0-9a-f]){40}$
+        licenseKey:
+          type: string
+          description: >-
+            Unique 40-hexadecimal digit string that identifies your New Relic
+            license.
+
+
+            **IMPORTANT**: Effective Wednesday, June 16th, 2021, New Relic no longer supports the plugin-based integration with MongoDB. We do not recommend that you sign up for the plugin-based integration.
+
+            To learn more, see the <a href="https://discuss.newrelic.com/t/new-relic-plugin-eol-wednesday-june-16th-2021/127267" target="_blank">New Relic Plugin EOL Statement</a> Consider configuring an alternative monitoring integration before June 16th to maintain visibility into your MongoDB deployments.
+          example: bc3768f44193c282b2688ab39e00f8e4fc8d75ea
+          maxLength: 40
+          minLength: 40
+          pattern: ^([0-9a-f]){40}$
+        readToken:
+          type: string
+          description: Query key used to access your New Relic account.
+          example: 193c96aee4a3ac640b98634562e2631f17ae0a69
+        writeToken:
+          type: string
+          description: Insert key associated with your New Relic account.
+          example: a67b10e5cd7f8fb6a34b501136c409f373edc218
+        serviceKey:
+          type: string
+          description: >-
+            Service key associated with your PagerDuty account.
+
+
+            **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
+
+
+            * View or edit the alert through the Atlas UI.
+
+
+            * Query the alert for the notification through the Atlas Administration API.
+          example: "****************************7890"
+        enabled:
+          type: boolean
+          description: Flag that indicates whether someone has activated the Prometheus
+            integration.
+        listenAddress:
+          type: string
+          default: :9216
+          description: Combination of IPv4 address and Internet Assigned Numbers Authority
+            (IANA) port or the IANA port alone to which Prometheus binds to
+            ingest MongoDB metrics.
+        password:
+          type: string
+          writeOnly: true
+        rateLimitInterval:
+          type: integer
+          format: int32
+          writeOnly: true
+        scheme:
+          type: string
+          description: Security Scheme to apply to HyperText Transfer Protocol (HTTP)
+            traffic between Prometheus and MongoDB Cloud.
+        serviceDiscovery:
+          type: string
+          description: Desired method to discover the Prometheus service.
+        tlsPemPath:
+          type: string
+          description: Root-relative path to the Transport Layer Security (TLS) Privacy
+            Enhanced Mail (PEM) key and certificate file on the host.
+          example: /path/to/file
+        username:
+          type: string
+          description: Human-readable label that identifies your Prometheus incoming
+            webhook.
+          example: prom_user_618d48e05277a606ed2496fe
+        apiToken:
+          type: string
+          description: >-
+            Key that allows MongoDB Cloud to access your Slack account.
+
+
+            **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
+
+
+            * View or edit the alert through the Atlas UI.
+
+
+            * Query the alert for the notification through the Atlas Administration API.
+
+
+            **IMPORTANT**: Slack integrations now use the OAuth2 verification method and must  be initially configured, or updated from a legacy integration, through the Atlas  third-party service integrations page. Legacy tokens will soon no longer be  supported.
+          example: "*********************************************************************\
+            *abcd"
+        channelName:
+          type: string
+          description: Name of the Slack channel to which MongoDB Cloud sends alert
+            notifications.
+          example: alerts
+          maxLength: 80
+          minLength: 1
+          nullable: true
+        teamName:
+          type: string
+          description: Human-readable label that identifies your Slack team. Set this
+            parameter when you configure a legacy Slack integration.
+          example: MongoDB
+        routingKey:
+          type: string
+          description: Routing key associated with your Splunk On-Call account.
+          example: test routing
+        secret:
+          type: string
+          description: >-
+            An optional field returned if your webhook is configured with a
+            secret.
+
+
+            **NOTE**: When you view or edit the alert for a webhook notification, the secret appears completely redacted.
+          example: "******"
+        url:
+          type: string
+          description: >-
+            Endpoint web address to which MongoDB Cloud sends notifications.
+
+
+            **NOTE**: When you view or edit the alert for a webhook notification, the URL appears partially redacted.
+          example: https://webhook.com/****
       title: Third-Party Integration
-      oneOf:
-        - $ref: "#/components/schemas/Datadog"
-        - $ref: "#/components/schemas/MicrosoftTeams"
-        - $ref: "#/components/schemas/NewRelic"
-        - $ref: "#/components/schemas/OpsGenie"
-        - $ref: "#/components/schemas/PagerDuty"
-        - $ref: "#/components/schemas/Prometheus"
-        - $ref: "#/components/schemas/Slack"
-        - $ref: "#/components/schemas/VictorOps"
-        - $ref: "#/components/schemas/Webhook"
+      x-xgen-go-transform: merge-oneOf
     Invoice:
       type: object
       properties:
@@ -20768,28 +20435,6 @@ components:
           description: Value that comprises this data point.
           readOnly: true
       readOnly: true
-    MicrosoftTeams:
-      type: object
-      description: Details to integrate one Microsoft Teams account with one MongoDB
-        Cloud project.
-      properties:
-        microsoftTeamsWebhookUrl:
-          type: string
-          description: >-
-            Endpoint web address of the Microsoft Teams webhook to which
-            MongoDB Cloud sends notifications.
-
-
-            **NOTE**: When you view or edit the alert for a Microsoft Teams notification, the URL appears partially redacted.
-          example: https://webhook.com/****
-        type:
-          type: string
-          description: Human-readable label that identifies the service to which you want
-            to integrate with MongoDB Cloud. The value must match the
-            third-party service integration type.
-      required:
-        - microsoftTeamsWebhookUrl
-      title: MICROSOFT_TEAMS
     MongoDBAccessLogsList:
       type: object
       properties:
@@ -20877,90 +20522,6 @@ components:
             $ref: "#/components/schemas/NamespaceObj"
           readOnly: true
           uniqueItems: true
-    NewRelic:
-      type: object
-      description: >-
-        Details to integrate one New Relic account with one MongoDB Cloud
-        project.
-
-
-        ***IMPORTANT**: Effective Wednesday, June 16th, 2021, New Relic no longer supports the plugin-based integration with MongoDB. We do not recommend that you sign up for the plugin-based integration.
-
-
-        To learn more, see the <a href="https://discuss.newrelic.com/t/new-relic-plugin-eol-wednesday-june-16th-2021/127267" target="_blank">New Relic Plugin EOL Statement</a>. Consider configuring an alternative monitoring integration before June 16th to maintain visibility into your MongoDB deployments.
-      properties:
-        accountId:
-          type: string
-          description: Unique 40-hexadecimal digit string that identifies your New Relic
-            account.
-          example: bcc3c81b344a6030a3935c2527e2216535af7718
-          maxLength: 40
-          minLength: 40
-          pattern: ^([0-9a-f]){40}$
-        licenseKey:
-          type: string
-          description: >-
-            Unique 40-hexadecimal digit string that identifies your New Relic
-            license.
-
-
-            **IMPORTANT**: Effective Wednesday, June 16th, 2021, New Relic no longer supports the plugin-based integration with MongoDB. We do not recommend that you sign up for the plugin-based integration.
-
-            To learn more, see the <a href="https://discuss.newrelic.com/t/new-relic-plugin-eol-wednesday-june-16th-2021/127267" target="_blank">New Relic Plugin EOL Statement</a> Consider configuring an alternative monitoring integration before June 16th to maintain visibility into your MongoDB deployments.
-          example: bc3768f44193c282b2688ab39e00f8e4fc8d75ea
-          maxLength: 40
-          minLength: 40
-          pattern: ^([0-9a-f]){40}$
-        readToken:
-          type: string
-          description: Query key used to access your New Relic account.
-          example: 193c96aee4a3ac640b98634562e2631f17ae0a69
-        type:
-          type: string
-          description: Human-readable label that identifies the service to which you want
-            to integrate with MongoDB Cloud. The value must match the
-            third-party service integration type.
-        writeToken:
-          type: string
-          description: Insert key associated with your New Relic account.
-          example: a67b10e5cd7f8fb6a34b501136c409f373edc218
-      required:
-        - accountId
-        - licenseKey
-        - readToken
-        - writeToken
-      title: NEW_RELIC
-    OpsGenie:
-      type: object
-      description: Details to integrate one Opsgenie account with one MongoDB Cloud project.
-      properties:
-        apiKey:
-          type: string
-          description: >-
-            Key that allows MongoDB Cloud to access your Opsgenie account.
-
-
-            **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
-
-
-            * View or edit the alert through the Atlas UI.
-
-
-            * Query the alert for the notification through the Atlas Administration API.
-          example: "********************************a111"
-        region:
-          type: string
-          default: US
-          description: Two-letter code that indicates which regional URL MongoDB uses to
-            access the Opsgenie API.
-        type:
-          type: string
-          description: Human-readable label that identifies the service to which you want
-            to integrate with MongoDB Cloud. The value must match the
-            third-party service integration type.
-      required:
-        - apiKey
-      title: OPS_GENIE
     OrganizationInvitationRequest:
       type: object
       properties:
@@ -21122,37 +20683,6 @@ components:
           pattern: ^[\p{L}\p{N}\-_.(),:&@+']{1,64}$
       required:
         - name
-    PagerDuty:
-      type: object
-      description: Details to integrate one PagerDuty account with one MongoDB Cloud
-        project.
-      properties:
-        region:
-          type: string
-          description: PagerDuty region that indicates the API Uniform Resource Locator
-            (URL) to use.
-        serviceKey:
-          type: string
-          description: >-
-            Service key associated with your PagerDuty account.
-
-
-            **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
-
-
-            * View or edit the alert through the Atlas UI.
-
-
-            * Query the alert for the notification through the Atlas Administration API.
-          example: "****************************7890"
-        type:
-          type: string
-          description: Human-readable label that identifies the service to which you want
-            to integrate with MongoDB Cloud. The value must match the
-            third-party service integration type.
-      required:
-        - serviceKey
-      title: PAGER_DUTY
     Payment:
       type: object
       description: Funds transferred to MongoDB to cover the specified service in this
@@ -21454,56 +20984,6 @@ components:
           description: List that contains the specifications for one policy.
           items:
             $ref: "#/components/schemas/PolicyItem"
-    Prometheus:
-      type: object
-      description: Details to integrate one Prometheus account with one MongoDB Cloud
-        project.
-      properties:
-        enabled:
-          type: boolean
-          description: Flag that indicates whether someone has activated the Prometheus
-            integration.
-        listenAddress:
-          type: string
-          default: :9216
-          description: Combination of IPv4 address and Internet Assigned Numbers Authority
-            (IANA) port or the IANA port alone to which Prometheus binds to
-            ingest MongoDB metrics.
-        password:
-          type: string
-          writeOnly: true
-        rateLimitInterval:
-          type: integer
-          format: int32
-          writeOnly: true
-        scheme:
-          type: string
-          description: Security Scheme to apply to HyperText Transfer Protocol (HTTP)
-            traffic between Prometheus and MongoDB Cloud.
-        serviceDiscovery:
-          type: string
-          description: Desired method to discover the Prometheus service.
-        tlsPemPath:
-          type: string
-          description: Root-relative path to the Transport Layer Security (TLS) Privacy
-            Enhanced Mail (PEM) key and certificate file on the host.
-          example: /path/to/file
-        type:
-          type: string
-          description: Human-readable label that identifies the service to which you want
-            to integrate with MongoDB Cloud. The value must match the
-            third-party service integration type.
-        username:
-          type: string
-          description: Human-readable label that identifies your Prometheus incoming
-            webhook.
-          example: prom_user_618d48e05277a606ed2496fe
-      required:
-        - enabled
-        - scheme
-        - serviceDiscovery
-        - username
-      title: PROMETHEUS
     Refund:
       type: object
       description: One payment that MongoDB returned to the organization for this invoice.
@@ -21867,50 +21347,6 @@ components:
           $ref: "#/components/schemas/BSONTimestamp"
       required:
         - delivery
-    Slack:
-      type: object
-      description: Details to integrate one Slack account with one MongoDB Cloud project.
-      properties:
-        apiToken:
-          type: string
-          description: >-
-            Key that allows MongoDB Cloud to access your Slack account.
-
-
-            **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
-
-
-            * View or edit the alert through the Atlas UI.
-
-
-            * Query the alert for the notification through the Atlas Administration API.
-
-
-            **IMPORTANT**: Slack integrations now use the OAuth2 verification method and must  be initially configured, or updated from a legacy integration, through the Atlas  third-party service integrations page. Legacy tokens will soon no longer be  supported.
-          example: "*********************************************************************\
-            *abcd"
-        channelName:
-          type: string
-          description: Name of the Slack channel to which MongoDB Cloud sends alert
-            notifications.
-          example: alerts
-          maxLength: 80
-          minLength: 1
-          nullable: true
-        teamName:
-          type: string
-          description: Human-readable label that identifies your Slack team. Set this
-            parameter when you configure a legacy Slack integration.
-          example: MongoDB
-        type:
-          type: string
-          description: Human-readable label that identifies the service to which you want
-            to integrate with MongoDB Cloud. The value must match the
-            third-party service integration type.
-      required:
-        - apiToken
-        - channelName
-      title: SLACK
     SnapshotPart:
       type: object
       description: Characteristics that identify this snapshot.
@@ -22261,66 +21697,6 @@ components:
             project.
           items:
             type: string
-    VictorOps:
-      type: object
-      description: Details to integrate one Splunk On-Call account with one MongoDB
-        Cloud project.
-      properties:
-        apiKey:
-          type: string
-          description: >-
-            Key that allows MongoDB Cloud to access your VictorOps account.
-
-
-            **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
-
-
-            * View or edit the alert through the Atlas UI.
-
-
-            * Query the alert for the notification through the Atlas Administration API.
-          example: "********************************9abc"
-        routingKey:
-          type: string
-          description: Routing key associated with your Splunk On-Call account.
-          example: test routing
-        type:
-          type: string
-          description: Human-readable label that identifies the service to which you want
-            to integrate with MongoDB Cloud. The value must match the
-            third-party service integration type.
-      required:
-        - apiKey
-      title: VICTOR_OPS
-    Webhook:
-      type: object
-      description: Details to integrate one webhook with one MongoDB Cloud project.
-      properties:
-        secret:
-          type: string
-          description: >-
-            An optional field returned if your webhook is configured with a
-            secret.
-
-
-            **NOTE**: When you view or edit the alert for a webhook notification, the secret appears completely redacted.
-          example: "******"
-        type:
-          type: string
-          description: Human-readable label that identifies the service to which you want
-            to integrate with MongoDB Cloud. The value must match the
-            third-party service integration type.
-        url:
-          type: string
-          description: >-
-            Endpoint web address to which MongoDB Cloud sends notifications.
-
-
-            **NOTE**: When you view or edit the alert for a webhook notification, the URL appears partially redacted.
-          example: https://webhook.com/****
-      required:
-        - url
-      title: WEBHOOK
     AWSAutoScaling:
       type: object
       description: Range of instance sizes to which your cluster can scale.
@@ -22579,61 +21955,6 @@ components:
         - containerId
         - routeTableCidrBlock
         - vpcId
-      title: AWS
-    AWSPrivateLinkConnection:
-      type: object
-      description: Group of Private Endpoint Service settings.
-      properties:
-        cloudProvider:
-          type: string
-          description: Cloud service provider that serves the requested endpoint service.
-          readOnly: true
-        endpointServiceName:
-          type: string
-          description: Unique string that identifies the Amazon Web Services (AWS)
-            PrivateLink endpoint service. MongoDB Cloud returns null while it
-            creates the endpoint service.
-          pattern: ^com\.amazonaws\.vpce\.[a-z-0-9]+\.vpce-svc-[0-9a-f]{17}
-          readOnly: true
-        errorMessage:
-          type: string
-          description: Error message returned when requesting private connection resource.
-            The resource returns `null` if the request succeeded.
-          readOnly: true
-        id:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies the Private
-            Endpoint Service.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-          readOnly: true
-        interfaceEndpoints:
-          type: array
-          description: List of strings that identify private endpoint interfaces applied
-            to the specified project.
-          items:
-            type: string
-            description: Unique 24-hexadecimal digit string that identifies the interface
-              endpoint.
-            example: 32b6e34b3d91647abb20e7b8
-            maxLength: 24
-            minLength: 24
-            pattern: ^([a-f0-9]{24})$
-            readOnly: true
-          readOnly: true
-        regionName:
-          type: string
-          description: Cloud provider region that manages this Private Endpoint Service.
-          readOnly: true
-        status:
-          type: string
-          description: State of the Private Endpoint Service connection when MongoDB Cloud
-            received this request.
-          readOnly: true
-      required:
-        - cloudProvider
       title: AWS
     AWSProviderSettings:
       type: object
@@ -23022,66 +22343,6 @@ components:
           type: string
           description: State of the Azure Private Link Service connection when MongoDB
             Cloud received this request.
-          readOnly: true
-      required:
-        - cloudProvider
-      title: AZURE
-    AzurePrivateLinkConnection:
-      type: object
-      description: Group of Private Endpoint Service settings.
-      properties:
-        cloudProvider:
-          type: string
-          description: Cloud service provider that serves the requested endpoint service.
-          readOnly: true
-        errorMessage:
-          type: string
-          description: Error message returned when requesting private connection resource.
-            The resource returns `null` if the request succeeded.
-          readOnly: true
-        id:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies the Private
-            Endpoint Service.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-          readOnly: true
-        privateEndpoints:
-          type: array
-          description: List of private endpoints assigned to this Azure Private Link
-            Service.
-          items:
-            type: string
-            description: Root-relative path to one private endpoint assigned to this Azure
-              Private Link Service.
-            pattern: ^\/subscriptions\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\/resource[gG]roups\/([-\w._()]+)\/providers\/Microsoft\.Network\/privateEndpoints\/([-\w._()]+)
-            readOnly: true
-          readOnly: true
-        privateLinkServiceName:
-          type: string
-          description: Unique string that identifies the Azure Private Link Service that
-            MongoDB Cloud manages.
-          maxLength: 24
-          minLength: 24
-          pattern: ^pls_[0-9a-f]{24}$
-          readOnly: true
-        privateLinkServiceResourceId:
-          type: string
-          description: Root-relative path that identifies of the Azure Private Link
-            Service that MongoDB Cloud manages. Use this value to create a
-            private endpoint connection to an Azure VNet.
-          example: /subscriptions/ae349d51-d12b-ee3d-2a27-7d53f6479cf0/resourcegroups/KObGGz/providers/Microsoft.Network/privateLinkServices/pls_d1820713f8153388d533e9de
-          readOnly: true
-        regionName:
-          type: string
-          description: Cloud provider region that manages this Private Endpoint Service.
-          readOnly: true
-        status:
-          type: string
-          description: State of the Private Endpoint Service connection when MongoDB Cloud
-            received this request.
           readOnly: true
       required:
         - cloudProvider
@@ -25927,16 +25188,109 @@ components:
           $ref: "#/components/schemas/GoogleCloudKMS"
     EndpointService:
       type: object
-      discriminator:
-        mapping:
-          AWS: "#/components/schemas/AWSPrivateLinkConnection"
-          AZURE: "#/components/schemas/AzurePrivateLinkConnection"
-          GCP: "#/components/schemas/GCPEndpointService"
-        propertyName: cloudProvider
-      oneOf:
-        - $ref: "#/components/schemas/AWSPrivateLinkConnection"
-        - $ref: "#/components/schemas/AzurePrivateLinkConnection"
-        - $ref: "#/components/schemas/GCPEndpointService"
+      properties:
+        cloudProvider:
+          type: string
+          description: Cloud service provider that serves the requested endpoint service.
+          readOnly: true
+        errorMessage:
+          type: string
+          description: Error message returned when requesting private connection resource.
+            The resource returns `null` if the request succeeded.
+          readOnly: true
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the Private
+            Endpoint Service.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        regionName:
+          type: string
+          description: Cloud provider region that manages this Private Endpoint Service.
+          readOnly: true
+        status:
+          type: string
+          description: State of the Private Endpoint Service connection when MongoDB Cloud
+            received this request.
+          readOnly: true
+        endpointServiceName:
+          type: string
+          description: Unique string that identifies the Amazon Web Services (AWS)
+            PrivateLink endpoint service. MongoDB Cloud returns null while it
+            creates the endpoint service.
+          pattern: ^com\.amazonaws\.vpce\.[a-z-0-9]+\.vpce-svc-[0-9a-f]{17}
+          readOnly: true
+        interfaceEndpoints:
+          type: array
+          description: List of strings that identify private endpoint interfaces applied
+            to the specified project.
+          items:
+            type: string
+            description: Unique 24-hexadecimal digit string that identifies the interface
+              endpoint.
+            example: 32b6e34b3d91647abb20e7b8
+            maxLength: 24
+            minLength: 24
+            pattern: ^([a-f0-9]{24})$
+            readOnly: true
+          readOnly: true
+        privateEndpoints:
+          type: array
+          description: List of private endpoints assigned to this Azure Private Link
+            Service.
+          items:
+            type: string
+            description: Root-relative path to one private endpoint assigned to this Azure
+              Private Link Service.
+            pattern: ^\/subscriptions\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\/resource[gG]roups\/([-\w._()]+)\/providers\/Microsoft\.Network\/privateEndpoints\/([-\w._()]+)
+            readOnly: true
+          readOnly: true
+        privateLinkServiceName:
+          type: string
+          description: Unique string that identifies the Azure Private Link Service that
+            MongoDB Cloud manages.
+          maxLength: 24
+          minLength: 24
+          pattern: ^pls_[0-9a-f]{24}$
+          readOnly: true
+        privateLinkServiceResourceId:
+          type: string
+          description: Root-relative path that identifies of the Azure Private Link
+            Service that MongoDB Cloud manages. Use this value to create a
+            private endpoint connection to an Azure VNet.
+          example: /subscriptions/ae349d51-d12b-ee3d-2a27-7d53f6479cf0/resourcegroups/KObGGz/providers/Microsoft.Network/privateLinkServices/pls_d1820713f8153388d533e9de
+          readOnly: true
+        endpointGroupNames:
+          type: array
+          description: List of Google Cloud network endpoint groups that corresponds to
+            the Private Service Connect endpoint service.
+          externalDocs:
+            description: Google Cloud Forwarding Rule Concepts
+            url: https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts
+          items:
+            type: string
+            description: One Google Cloud network endpoint group that corresponds to the
+              Private Service Connect endpoint service.
+        serviceAttachmentNames:
+          type: array
+          description: List of Uniform Resource Locators (URLs) that identifies endpoints
+            that MongoDB Cloud can use to access one Google Cloud Service across
+            a Google Cloud Virtual Private Connection (VPC) network.
+          externalDocs:
+            description: Google Cloud Private Service Connect Service Attachments
+            url: https://cloud.google.com/vpc/docs/private-service-connect#service-attachments
+          items:
+            type: string
+            description: Uniform Resource Locator (URL) that identifies one endpoint that
+              MongoDB Cloud can use to access one Google Cloud Service across a
+              Google Cloud Virtual Private Connection (VPC) network.
+            pattern: https:\/\/([a-z0-9\.]+)+\.[a-z]{2,}(\/[a-z0-9\-]+)+\/projects\/p-[a-z0-9]+\/regions\/[a-z\-0-9]+\/serviceAttachments\/[a-z0-9\-]+
+      required:
+        - cloudProvider
+      x-xgen-go-transform: merge-oneOf
     Endpoint:
       type: object
       discriminator:
@@ -26283,65 +25637,6 @@ components:
         status:
           type: string
           description: State of the Google Cloud network endpoint group when MongoDB Cloud
-            received this request.
-          readOnly: true
-      required:
-        - cloudProvider
-      title: GCP
-    GCPEndpointService:
-      type: object
-      description: Group of Private Endpoint Service settings.
-      properties:
-        cloudProvider:
-          type: string
-          description: Cloud service provider that serves the requested endpoint service.
-          readOnly: true
-        endpointGroupNames:
-          type: array
-          description: List of Google Cloud network endpoint groups that corresponds to
-            the Private Service Connect endpoint service.
-          externalDocs:
-            description: Google Cloud Forwarding Rule Concepts
-            url: https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts
-          items:
-            type: string
-            description: One Google Cloud network endpoint group that corresponds to the
-              Private Service Connect endpoint service.
-        errorMessage:
-          type: string
-          description: Error message returned when requesting private connection resource.
-            The resource returns `null` if the request succeeded.
-          readOnly: true
-        id:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies the Private
-            Endpoint Service.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-          readOnly: true
-        regionName:
-          type: string
-          description: Cloud provider region that manages this Private Endpoint Service.
-          readOnly: true
-        serviceAttachmentNames:
-          type: array
-          description: List of Uniform Resource Locators (URLs) that identifies endpoints
-            that MongoDB Cloud can use to access one Google Cloud Service across
-            a Google Cloud Virtual Private Connection (VPC) network.
-          externalDocs:
-            description: Google Cloud Private Service Connect Service Attachments
-            url: https://cloud.google.com/vpc/docs/private-service-connect#service-attachments
-          items:
-            type: string
-            description: Uniform Resource Locator (URL) that identifies one endpoint that
-              MongoDB Cloud can use to access one Google Cloud Service across a
-              Google Cloud Virtual Private Connection (VPC) network.
-            pattern: https:\/\/([a-z0-9\.]+)+\.[a-z]{2,}(\/[a-z0-9\-]+)+\/projects\/p-[a-z0-9]+\/regions\/[a-z\-0-9]+\/serviceAttachments\/[a-z0-9\-]+
-        status:
-          type: string
-          description: State of the Private Endpoint Service connection when MongoDB Cloud
             received this request.
           readOnly: true
       required:
@@ -28052,52 +27347,6 @@ components:
           type: string
       required:
         - providerName
-    ServerlessAWSTenantEndpoint:
-      type: object
-      description: View for a serverless AWS tenant endpoint.
-      properties:
-        _id:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies the private
-            endpoint.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-          readOnly: true
-        cloudProviderEndpointId:
-          type: string
-          description: Unique string that identifies the private endpoint's network
-            interface.
-          pattern: ^(vpce-[0-9a-f]{17}$
-          readOnly: true
-        comment:
-          type: string
-          description: Human-readable comment associated with the private endpoint.
-          maxLength: 80
-          readOnly: true
-        endpointServiceName:
-          type: string
-          description: Unique string that identifies the Amazon Web Services (AWS)
-            PrivateLink endpoint service. MongoDB Cloud returns null while it
-            creates the endpoint service.
-          pattern: ^com\.amazonaws\.vpce\.[a-z-0-9]+\.vpce-svc-[0-9a-f]{17}
-          readOnly: true
-        errorMessage:
-          type: string
-          description: Human-readable error message that indicates error condition
-            associated with establishing the private endpoint connection.
-          readOnly: true
-        providerName:
-          type: string
-          description: Human-readable label that identifies the cloud service provider.
-          readOnly: true
-        status:
-          type: string
-          description: Human-readable label that indicates the current operating status of
-            the private endpoint.
-          readOnly: true
-      title: AWS
     ServerlessAzureTenantEndpointUpdate:
       type: object
       description: Updates to a serverless Azure tenant endpoint.
@@ -28124,65 +27373,6 @@ components:
           type: string
       required:
         - providerName
-    ServerlessAzureTenantEndpoint:
-      type: object
-      description: View for a serverless Azure tenant endpoint.
-      properties:
-        _id:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies the private
-            endpoint.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-          readOnly: true
-        cloudProviderEndpointId:
-          type: string
-          description: Unique string that identifies the Azure private endpoint's network
-            interface that someone added to this private endpoint service.
-          pattern: ^\/subscriptions\/[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12}\/resource[gG]roups\/private[Ll]ink\/providers\/Microsoft\.Network\/privateEndpoints\/[-\w._()]+)$
-          readOnly: true
-        comment:
-          type: string
-          description: Human-readable comment associated with the private endpoint.
-          maxLength: 80
-          readOnly: true
-        endpointServiceName:
-          type: string
-          description: Unique string that identifies the Azure private endpoint service.
-            MongoDB Cloud returns null while it creates the endpoint service.
-          pattern: ^pls_[0-9a-f]{24}$
-          readOnly: true
-        errorMessage:
-          type: string
-          description: Human-readable error message that indicates error condition
-            associated with establishing the private endpoint connection.
-          readOnly: true
-        privateEndpointIpAddress:
-          type: string
-          description: IPv4 address of the private endpoint in your Azure VNet that
-            someone added to this private endpoint service.
-          maxLength: 24
-          minLength: 24
-          pattern: ^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)(\.(?!$)|$)){4}|([0-9a-f]{1,4}\:){7}[0-9a-f]{1,4}$
-          readOnly: true
-        privateLinkServiceResourceId:
-          type: string
-          description: Root-relative path that identifies the Azure Private Link Service
-            that MongoDB Cloud manages. MongoDB Cloud returns null while it
-            creates the endpoint service.
-          readOnly: true
-        providerName:
-          type: string
-          description: Human-readable label that identifies the cloud service provider.
-          readOnly: true
-        status:
-          type: string
-          description: Human-readable label that indicates the current operating status of
-            the private endpoint.
-          readOnly: true
-      title: Azure
     ServerlessBackupOptions:
       type: object
       description: Group of settings that configure serverless backup.
@@ -28634,9 +27824,62 @@ components:
         - $ref: "#/components/schemas/ServerlessAzureTenantEndpointUpdate"
     ServerlessTenantEndpoint:
       type: object
-      oneOf:
-        - $ref: "#/components/schemas/ServerlessAWSTenantEndpoint"
-        - $ref: "#/components/schemas/ServerlessAzureTenantEndpoint"
+      properties:
+        _id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the private
+            endpoint.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        cloudProviderEndpointId:
+          type: string
+          description: Unique string that identifies the Azure private endpoint's network
+            interface that someone added to this private endpoint service.
+          pattern: ^\/subscriptions\/[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12}\/resource[gG]roups\/private[Ll]ink\/providers\/Microsoft\.Network\/privateEndpoints\/[-\w._()]+)$
+          readOnly: true
+        comment:
+          type: string
+          description: Human-readable comment associated with the private endpoint.
+          maxLength: 80
+          readOnly: true
+        endpointServiceName:
+          type: string
+          description: Unique string that identifies the Azure private endpoint service.
+            MongoDB Cloud returns null while it creates the endpoint service.
+          pattern: ^pls_[0-9a-f]{24}$
+          readOnly: true
+        errorMessage:
+          type: string
+          description: Human-readable error message that indicates error condition
+            associated with establishing the private endpoint connection.
+          readOnly: true
+        status:
+          type: string
+          description: Human-readable label that indicates the current operating status of
+            the private endpoint.
+          readOnly: true
+        providerName:
+          type: string
+          description: Human-readable label that identifies the cloud service provider.
+          readOnly: true
+        privateEndpointIpAddress:
+          type: string
+          description: IPv4 address of the private endpoint in your Azure VNet that
+            someone added to this private endpoint service.
+          maxLength: 24
+          minLength: 24
+          pattern: ^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)(\.(?!$)|$)){4}|([0-9a-f]{1,4}\:){7}[0-9a-f]{1,4}$
+          readOnly: true
+        privateLinkServiceResourceId:
+          type: string
+          description: Root-relative path that identifies the Azure Private Link Service
+            that MongoDB Cloud manages. MongoDB Cloud returns null while it
+            creates the endpoint service.
+          readOnly: true
+      x-xgen-go-transform: merge-oneOf
     SnapshotRetention:
       type: object
       properties:
