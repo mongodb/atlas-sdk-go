@@ -337,3 +337,11 @@ func IsNil(i interface{}) bool {
 type MappedNullable interface {
 	ToMap() (map[string]interface{}, error)
 }
+
+// GetOrDefault returns the value of a pointer or a default value
+func GetOrDefault[T any](ptr *T, defaultValue T) T {
+	if ptr != nil {
+		return *ptr
+	}
+	return defaultValue
+}
