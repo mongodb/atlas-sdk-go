@@ -4,18 +4,17 @@ Follow these best practices when using the Atlas Go SDK.
 
 ## Using Getters Instead of Direct Field Access
 
-When accessing responses prefer the getter function instead of direct field access.
+When accessing responses, use the getter function instead of direct field access.
 
-Instead of `response.Field` use `response.GetField()`.
+For example, use `response.GetField()` instead of `response.Field`.
 
-Using Getters will allow seamless pointer handling and help you to avoid panic errors.
-Additionally SDK provides `Set`, `IsSet` and `Unset` methods for safe field modifications.
+Using geter functions allows seamless pointer handling and can help prevent panic errors.
+Additionally, the Atlas Go SDK provides `Set`, `IsSet` and `Unset` methods for safe field modifications.
 
 ## Check for Empty Strings for String Pointers
 
-When model contains an pointer to the `string` 
-we need to be aware that setting that field to the empty string (`""`)
-will send that value to the server.
+When a model contains a pointer to a `string`, the Atlas Go SDK sends that value to the server,
+even if it is set to an empty string (`""`).
 
 Instead of direct assignment:
 ```go
@@ -29,13 +28,12 @@ if test != ""
     requestBody.StringPointerValue = test
 ```
 
-> NOTE: if field is an string type and empty string (`""`) assignment 
-will be valid.
 
 ## Use Method for Creating Models
 
-You should prefer to use dedicated methods for creating new models.
-Instead of using 
+Use dedicated methods for creating new models.
+
+For example, instead of using the following:
 
 ```
 GroupInvitationUpdateRequest{
@@ -49,13 +47,12 @@ admin.NewGroupInvitationUpdateRequest(...)
 
 ## Use golangci-lint Validators
 
-[golangci-lint](https://golangci-lint.run/) should be used to 
-detect common errors with usage of Atlas SDK. 
-We do not provide our own linter 
+Use [golangci-lint](https://golangci-lint.run/) to detect common errors when using the Atlas Go SDK. 
+The Atlas Go SDK doesn't provide its own linter.
 
 ### Linting Issues
 
-We do not recomend using `bodyclose` rule with the Atlas CLI 
-as it cannot detect response body closed in the SDK. 
+We don't recommend using the `bodyclose` rule with the Atlas CLI 
+as it can't detect the response body close when using the Atlas Go SDK. 
 
-See: https://github.com/timakin/bodyclose/issues/39 for more informatiuon
+To learn more, see [bodyclose](https://github.com/timakin/bodyclose/issues/39).
