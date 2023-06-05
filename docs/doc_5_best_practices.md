@@ -53,7 +53,6 @@ The Atlas Go SDK doesn't provide its own linter.
 
 ### Linting Issues
 
-We don't recommend using the `bodyclose` rule with the Atlas CLI 
-as it can't detect the response body close when using the Atlas Go SDK. 
+We don't recommend using the `bodyclose` rule as it reports an many false positives with Atlas GO SDK and other libraries.
 
 To learn more, see [bodyclose](https://github.com/timakin/bodyclose/issues/39).
