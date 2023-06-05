@@ -40,7 +40,8 @@ GroupInvitationUpdateRequest{
     ...
 }
 ```
-Prefer:
+
+Use the following dedicated method:
 ```
 admin.NewGroupInvitationUpdateRequest(...)
 ```
