@@ -26,4 +26,4 @@ npm exec openapi-generator-cli -- generate \
     --type-mappings=integer=int \
     --ignore-file-override=config/.go-ignore-docs
 
-mv "$DOC_FOLDER"/README.md "$DOC_FOLDER"/doc_1_reference.md
+mv "$DOC_FOLDER"/README.md "$DOC_FOLDER"/doc_last_reference.md

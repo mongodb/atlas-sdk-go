@@ -1,2 +1,8 @@
 # Maintained by the API experience team
-*       @mongodb/apix1
+* @mongodb/apix1
+# Manual docs
+/docs @mongodb/docs-cloud-team
+
+# Removing teams
+/docs/docs @mongodb/apix1
+/docs/doc_last_reference.md @mongodb/apix1
