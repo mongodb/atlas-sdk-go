@@ -21,6 +21,13 @@
 
 * [Authenticate using the Atlas Go SDK](./doc_4_authentication.md#authenticate-using-the-atlas-go-sdk)
 
+* [Best Practices](./doc_5_best_practices.md#best-practices)
+   * [Using Getters Instead of Direct Field Access](./doc_5_best_practices.md#using-getters-instead-of-direct-field-access)
+   * [Check for Empty Strings for String Pointers](./doc_5_best_practices.md#check-for-empty-strings-for-string-pointers)
+   * [Use Method for Creating Models](./doc_5_best_practices.md#use-method-for-creating-models)
+   * [Use golangci-lint Validators](./doc_5_best_practices.md#use-golangci-lint-validators)
+      * [Linting Issues](./doc_5_best_practices.md#linting-issues)
+
 * [SDK Reference](./doc_last_reference.md#sdk-reference)
    * [Reference Documentation for SDK Endpoints](./doc_last_reference.md#reference-documentation-for-sdk-endpoints)
    * [Documentation For Models](./doc_last_reference.md#documentation-for-models)
