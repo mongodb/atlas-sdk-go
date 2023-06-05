@@ -1,6 +1,6 @@
 # Best Practices
 
-An number of best practices for Atlas SDK users.
+Follow these best practices when using the Atlas Go SDK.
 
 ## Using Getters Instead of Direct Field Access
 
