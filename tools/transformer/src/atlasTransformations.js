@@ -6,6 +6,7 @@ const {
   applyArrayTransformations,
   transformOneOfProperties,
   applyRemoveEnumsTransformations,
+  applyRemoveObjectAdditonalProperties,
 } = require("./transformations");
 
 const removeUnusedSchemas = require("./engine/removeUnused");
@@ -77,6 +78,7 @@ module.exports = function runTransformations(openapi) {
   ]);
 
   applyRemoveEnumsTransformations(openapi);
+  applyRemoveObjectAdditonalProperties(openapi);
 
   // Required for RegionConfig
   workaroundNestedTransformations(openapi);
