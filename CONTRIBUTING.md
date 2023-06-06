@@ -125,10 +125,10 @@ Documentation can be regenerated using `make gen-docs`
 - `./docs` - mostly manual documentation (only README.md and reference is generated)
 - `./docs/docs/`- generated documentation for each SDK API
 
-### Rules
+### Changes in manual documentation
 
-Documentation links in docs should always have full path url to github.
-Please do not use relative links.
+We recomend to create separate PR containing only documentation files each time manual documentation is changed.
+Documentation team will be assigned as reviewer automatically and will help with review of the PR.
 
 
 
