@@ -8,7 +8,7 @@ When accessing responses, use the getter function instead of direct field access
 
 For example, use `response.GetField()` instead of `response.Field`.
 
-Using geter functions allows seamless pointer handling and can help prevent panic errors.
+Using getter functions allows seamless pointer handling and can help prevent panic errors.
 Additionally, the Atlas Go SDK provides `Set`, `IsSet` and `Unset` methods for safe field modifications.
 
 ## Check for Empty Strings for String Pointers
