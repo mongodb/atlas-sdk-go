@@ -50,7 +50,7 @@ Each method now explains the object that is created. For example:
 
 `sdk.Projects.create()` will become `sdk.ProjectsApi.createProject(...)`
 
-To learn more, see the [Endpoint Documentation](https://github.com/mongodb/atlas-sdk-go/blob/main/docs/doc_1_reference.md).
+To learn more, see the [Endpoint Documentation](https://github.com/mongodb/atlas-sdk-go/blob/main/docs/doc_last_reference.md).
 
 ### Different Naming Conventions for SDK Methods
 
