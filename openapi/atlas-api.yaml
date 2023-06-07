@@ -33902,7 +33902,6 @@ components:
         partialFilterExpression:
           type: object
           additionalProperties:
-            type: object
             description: |-
               Rules that limit the documents that the index references to a filter expression. All MongoDB index types accept a **partialFilterExpression** option. **partialFilterExpression** can include following expressions:
 

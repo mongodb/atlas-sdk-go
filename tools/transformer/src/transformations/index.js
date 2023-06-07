@@ -8,6 +8,9 @@ const {
 const { applyDiscriminatorTransformations } = require("./discriminator");
 const { applyArrayTransformations } = require("./swapArray");
 const { applyRemoveEnumsTransformations } = require("./removeEnums");
+const {
+  applyRemoveObjectAdditonalProperties,
+} = require("./additionalPropertiesObject");
 
 module.exports = {
   applyModelNameTransformations,
@@ -19,4 +22,5 @@ module.exports = {
   applyDiscriminatorTransformations,
   applyArrayTransformations,
   applyRemoveEnumsTransformations,
+  applyRemoveObjectAdditonalProperties,
 };

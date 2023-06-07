@@ -14,7 +14,7 @@ type FTSMappings struct {
 	// Flag that indicates whether the index uses dynamic or static mappings. Required if **mappings.fields** is omitted.
 	Dynamic *bool `json:"dynamic,omitempty"`
 	// One or more field specifications for the Atlas Search index. Required if **mappings.dynamic** is omitted or set to **false**.
-	Fields map[string]map[string]interface{} `json:"fields,omitempty"`
+	Fields map[string]interface{} `json:"fields,omitempty"`
 }
 
 // NewFTSMappings instantiates a new FTSMappings object
@@ -71,9 +71,9 @@ func (o *FTSMappings) SetDynamic(v bool) {
 }
 
 // GetFields returns the Fields field value if set, zero value otherwise.
-func (o *FTSMappings) GetFields() map[string]map[string]interface{} {
+func (o *FTSMappings) GetFields() map[string]interface{} {
 	if o == nil || IsNil(o.Fields) {
-		var ret map[string]map[string]interface{}
+		var ret map[string]interface{}
 		return ret
 	}
 	return o.Fields
@@ -81,9 +81,9 @@ func (o *FTSMappings) GetFields() map[string]map[string]interface{} {
 
 // GetFieldsOk returns a tuple with the Fields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FTSMappings) GetFieldsOk() (map[string]map[string]interface{}, bool) {
+func (o *FTSMappings) GetFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Fields) {
-		return map[string]map[string]interface{}{}, false
+		return map[string]interface{}{}, false
 	}
 	return o.Fields, true
 }
@@ -97,8 +97,8 @@ func (o *FTSMappings) HasFields() bool {
 	return false
 }
 
-// SetFields gets a reference to the given map[string]map[string]interface{} and assigns it to the Fields field.
-func (o *FTSMappings) SetFields(v map[string]map[string]interface{}) {
+// SetFields gets a reference to the given map[string]interface{} and assigns it to the Fields field.
+func (o *FTSMappings) SetFields(v map[string]interface{}) {
 	o.Fields = v
 }
 

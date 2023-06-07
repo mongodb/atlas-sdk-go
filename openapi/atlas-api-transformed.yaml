@@ -15386,7 +15386,6 @@ components:
         partialFilterExpression:
           type: object
           additionalProperties:
-            type: object
             description: >-
               Rules that limit the documents that the index references to a
               filter expression. All MongoDB index types accept a
@@ -15436,7 +15435,6 @@ components:
         storageEngine:
           type: object
           additionalProperties:
-            type: object
             description: 'Storage engine set for the specific index. This value can be set
               only at creation. This option uses the following format:
               `"storageEngine" : { "<storage-engine-name>" : "<options>" }`
@@ -15475,7 +15473,6 @@ components:
         weights:
           type: object
           additionalProperties:
-            type: object
             description: Relative importance to place upon provided index parameters. This
               object expresses this as key/value pairs of index parameter and
               weight to apply to that parameter. You can specify weights for
@@ -28536,7 +28533,6 @@ components:
         fields:
           type: object
           additionalProperties:
-            type: object
             externalDocs:
               description: Atlas Search Field Mappings
               url: https://www.mongodb.com/docs/atlas/atlas-search/define-field-mappings/#define-field-mappings
