@@ -13,7 +13,7 @@ To fetch the error object, execute the following:
 import "go.mongodb.org/atlas-sdk/admin"
 
 projects, response, err := admin.ProjectsApi.ListProjects(ctx).Execute()
-apiError := admin.AsError(err)
+apiError, ok := admin.AsError(err)
 fmt.Println(apiError)
 ```
 
