@@ -13,7 +13,7 @@ import (
 )
 
 /*
-* MongoDB Atlas Go SDK Example for fetching cloud provider regions
+* MongoDB Atlas Go SDK Example for fetching file content for the Golang SDK 
  */
 func main() {
 	ctx := context.Background()
