@@ -13,7 +13,7 @@ import (
 )
 
 /*
-* MongoDB Atlas Go SDK Example for fetching file content for the Golang SDK 
+* MongoDB Atlas Go SDK Example for fetching cluster logs file content
  */
 func main() {
 	ctx := context.Background()
