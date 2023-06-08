@@ -16083,70 +16083,6 @@ components:
     accepted:
       type: object
       description: Accepted
-    charFilterhtmlStrip:
-      type: object
-      description: Filter that strips out HTML constructs.
-      properties:
-        ignoredTags:
-          type: array
-          description: The HTML tags that you want to exclude from filtering.
-          items:
-            type: string
-        type:
-          type: string
-          description: Human-readable label that identifies this character filter type.
-      required:
-        - type
-      title: htmlStrip
-    charFiltericuNormalize:
-      type: object
-      description: Filter that processes normalized text with the ICU Normalizer. It
-        is based on Lucene's ICUNormalizer2CharFilter.
-      properties:
-        type:
-          type: string
-          description: Human-readable label that identifies this character filter type.
-      required:
-        - type
-      title: icuNormalize
-    charFiltermapping:
-      type: object
-      description: Filter that applies normalization mappings that you specify to
-        characters.
-      properties:
-        mappings:
-          type: object
-          description: >-
-            Comma-separated list of mappings. A mapping indicates that one
-            character or group of characters should be substituted for another,
-            using the following format:
-
-
-            `<original> : <replacement>`
-          properties:
-            additionalProperties:
-              type: string
-        type:
-          type: string
-          description: Human-readable label that identifies this character filter type.
-      required:
-        - mappings
-        - type
-      title: mapping
-    charFilterpersian:
-      type: object
-      description: Filter that replaces instances of a zero-width non-joiner with an
-        ordinary space. It is based on Lucene's PersianCharFilter.
-      externalDocs:
-        description: PersianCharFilter
-        url: https://lucene.apache.org/core/8_0_0/analyzers-common/org/apache/lucene/analysis/fa/PersianCharFilter.html
-      properties:
-        type:
-          type: string
-          description: Human-readable label that identifies this character filter type.
-      required:
-        - type
-      title: persian
     noBody:
       type: object
       description: Endpoint does not return a response body.
@@ -16509,149 +16445,6 @@ components:
       required:
         - type
       title: trim
-    tokenizeredgeGram:
-      type: object
-      description: Tokenizer that splits input from the left side, or "edge", of a
-        text input into n-grams of given sizes. You can't use the edgeGram
-        tokenizer in synonym or autocomplete mapping definitions.
-      properties:
-        maxGram:
-          type: integer
-          description: Characters to include in the longest token that Atlas Search creates.
-        minGram:
-          type: integer
-          description: Characters to include in the shortest token that Atlas Search
-            creates.
-        type:
-          type: string
-          description: Human-readable label that identifies this tokenizer type.
-      required:
-        - maxGram
-        - minGram
-        - type
-      title: edgeGram
-    tokenizerkeyword:
-      type: object
-      description: Tokenizer that combines the entire input as a single token.
-      properties:
-        type:
-          type: string
-          description: Human-readable label that identifies this tokenizer type.
-      required:
-        - type
-      title: keyword
-    tokenizernGram:
-      type: object
-      description: Tokenizer that splits input into text chunks, or "n-grams", of into
-        given sizes. You can't use the nGram tokenizer in synonym or
-        autocomplete mapping definitions.
-      properties:
-        maxGram:
-          type: integer
-          description: Characters to include in the longest token that Atlas Search creates.
-        minGram:
-          type: integer
-          description: Characters to include in the shortest token that Atlas Search
-            creates.
-        type:
-          type: string
-          description: Human-readable label that identifies this tokenizer type.
-      required:
-        - maxGram
-        - minGram
-        - type
-      title: nGram
-    tokenizerregexCaptureGroup:
-      type: object
-      description: Tokenizer that uses a regular expression pattern to extract tokens.
-      properties:
-        group:
-          type: integer
-          description: Index of the character group within the matching expression to
-            extract into tokens. Use `0` to extract all character groups.
-        pattern:
-          type: string
-          description: Regular expression to match against.
-        type:
-          type: string
-          description: Human-readable label that identifies this tokenizer type.
-      required:
-        - group
-        - pattern
-        - type
-      title: regexCaptureGroup
-    tokenizerregexSplit:
-      type: object
-      description: Tokenizer that splits tokens using a regular-expression based delimiter.
-      properties:
-        pattern:
-          type: string
-          description: Regular expression to match against.
-        type:
-          type: string
-          description: Human-readable label that identifies this tokenizer type.
-      required:
-        - pattern
-        - type
-      title: regexSplit
-    tokenizerstandard:
-      type: object
-      description: Tokenizer that splits tokens based on word break rules from the
-        Unicode Text Segmentation algorithm.
-      externalDocs:
-        description: Unicode Text Segmentation Algorithm
-        url: https://www.unicode.org/L2/L2019/19034-uax29-34-draft.pdf
-      properties:
-        maxTokenLength:
-          type: integer
-          default: 255
-          description: Maximum number of characters in a single token. Tokens greater than
-            this length are split at this length into multiple tokens.
-        type:
-          type: string
-          description: Human-readable label that identifies this tokenizer type.
-      required:
-        - type
-      title: standard
-    tokenizeruaxUrlEmail:
-      type: object
-      description: Tokenizer that creates tokens from URLs and email addresses.
-        Although this tokenizer uses word break rules from the Unicode Text
-        Segmentation algorithm, we recommend using it only when the indexed
-        field value includes URLs and email addresses. For fields that don't
-        include URLs or email addresses, use the **standard** tokenizer to
-        create tokens based on word break rules.
-      externalDocs:
-        description: Unicode Text Segmentation Algorithm
-        url: https://www.unicode.org/L2/L2019/19034-uax29-34-draft.pdf
-      properties:
-        maxTokenLength:
-          type: integer
-          default: 255
-          description: Maximum number of characters in a single token. Tokens greater than
-            this length are split at this length into multiple tokens.
-        type:
-          type: string
-          description: Human-readable label that identifies this tokenizer type.
-      required:
-        - type
-      title: uaxUrlEmail
-    tokenizerwhitespace:
-      type: object
-      description: Tokenizer that creates tokens based on occurrences of whitespace
-        between words.
-      properties:
-        maxTokenLength:
-          type: integer
-          default: 255
-          description: Maximum number of characters in a single token. Tokens greater than
-            this length are split at this length into multiple tokens.
-        type:
-          type: string
-          description: Human-readable label that identifies this tokenizer type.
-      required:
-        - type
-      title: whitespace
     Error:
       type: object
       properties:
@@ -28461,11 +28254,28 @@ components:
             filtering operations.
           items:
             type: object
-            oneOf:
-              - $ref: "#/components/schemas/charFilterhtmlStrip"
-              - $ref: "#/components/schemas/charFiltericuNormalize"
-              - $ref: "#/components/schemas/charFiltermapping"
-              - $ref: "#/components/schemas/charFilterpersian"
+            x-xgen-go-transform: merge-oneOf
+            properties:
+              ignoredTags:
+                type: array
+                description: The HTML tags that you want to exclude from filtering.
+                items:
+                  type: string
+              type:
+                type: string
+                description: Human-readable label that identifies this character filter type.
+              mappings:
+                type: object
+                description: >-
+                  Comma-separated list of mappings. A mapping indicates that one
+                  character or group of characters should be substituted for
+                  another, using the following format:
+
+
+                  `<original> : <replacement>`
+                properties:
+                  additionalProperties:
+                    type: string
         name:
           type: string
           description: >-
@@ -28508,15 +28318,31 @@ components:
           type: object
           description: Tokenizer that you want to use to create tokens. Tokens determine
             how Atlas Search splits up text into discrete chunks for indexing.
-          oneOf:
-            - $ref: "#/components/schemas/tokenizeredgeGram"
-            - $ref: "#/components/schemas/tokenizerkeyword"
-            - $ref: "#/components/schemas/tokenizernGram"
-            - $ref: "#/components/schemas/tokenizerregexCaptureGroup"
-            - $ref: "#/components/schemas/tokenizerregexSplit"
-            - $ref: "#/components/schemas/tokenizerstandard"
-            - $ref: "#/components/schemas/tokenizeruaxUrlEmail"
-            - $ref: "#/components/schemas/tokenizerwhitespace"
+          x-xgen-go-transform: merge-oneOf
+          properties:
+            maxGram:
+              type: integer
+              description: Characters to include in the longest token that Atlas Search
+                creates.
+            minGram:
+              type: integer
+              description: Characters to include in the shortest token that Atlas Search
+                creates.
+            type:
+              type: string
+              description: Human-readable label that identifies this tokenizer type.
+            group:
+              type: integer
+              description: Index of the character group within the matching expression to
+                extract into tokens. Use `0` to extract all character groups.
+            pattern:
+              type: string
+              description: Regular expression to match against.
+            maxTokenLength:
+              type: integer
+              default: 255
+              description: Maximum number of characters in a single token. Tokens greater than
+                this length are split at this length into multiple tokens.
       required:
         - name
         - tokenizer

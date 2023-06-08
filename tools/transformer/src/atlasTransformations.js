@@ -20,9 +20,11 @@ module.exports = function runTransformations(openapi) {
   // Patching till upstream change will be merged
   // Will be applied upstream as well
   addOneOfTransform(openapi, [
-    "NotificationViewForNdsGroup",
-    "ApiAtlasServerlessTenantEndpointView",
-    "ApiAtlasEndpointServiceView",
+    ".components.schemas.NotificationViewForNdsGroup",
+    ".components.schemas.ApiAtlasServerlessTenantEndpointView",
+    ".components.schemas.ApiAtlasEndpointServiceView",
+    ".components.schemas.ApiAtlasFTSAnalyzersViewManual.properties.charFilters.items",
+    ".components.schemas.ApiAtlasFTSAnalyzersViewManual.properties.tokenizer",
   ]);
 
   openapi = applyDiscriminatorTransformations(openapi);
@@ -108,10 +110,11 @@ function workaroundNestedTransformations(openapi) {
 // Patch  "x-xgen-go-transform": "merge-oneOf"
 function addOneOfTransform(openapi, objectNames) {
   objectNames.forEach((name) => {
-    if (openapi.components.schemas[name]) {
-      openapi.components.schemas[name]["x-xgen-go-transform"] = "merge-oneOf";
+    schemObj = getObjectFromYamlPath(name, openapi);
+    if (schemObj) {
+      schemObj["x-xgen-go-transform"] = "merge-oneOf";
     } else {
-      console.warning("Missing object to add x-xgen-go-transform" + object);
+      console.warn("Missing object to add x-xgen-go-transform",  name);
     }
   });
 }
