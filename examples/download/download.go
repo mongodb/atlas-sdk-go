@@ -48,9 +48,14 @@ func main() {
 	hosts, response, err := sdk.MonitoringAndLogsApi.ListAtlasProcesses(ctx, projectId).Execute()
 	examples.HandleErr(err, response)
 	host := hosts.GetResults()[0].GetHostname()
+	params := &admin.GetHostLogsApiParams{
+		GroupId:  projectId,
+		HostName: host,
+		LogName:  "mongos",
+	}
 
-	logs, response, err := sdk.MonitoringAndLogsApi.GetHostLogs(ctx, projectId, host, "mongos").Execute()
+	logs, response, err := sdk.MonitoringAndLogsApi.GetHostLogsWithParams(ctx, params).Execute()
 	examples.HandleErr(err, response)
 	_, err = io.Copy(out, logs)
-	fmt.Println(out)
+	fmt.Println(err)
 }
