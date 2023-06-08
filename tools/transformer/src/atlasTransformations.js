@@ -114,7 +114,7 @@ function addOneOfTransform(openapi, objectNames) {
     if (schemObj) {
       schemObj["x-xgen-go-transform"] = "merge-oneOf";
     } else {
-      console.warn("Missing object to add x-xgen-go-transform",  name);
+      console.warn("Missing object to add x-xgen-go-transform", name);
     }
   });
 }
