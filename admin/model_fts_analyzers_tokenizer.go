@@ -184,17 +184,9 @@ func (dst *FTSAnalyzersTokenizer) UnmarshalJSON(data []byte) error {
 	}
 
 	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.TokenizeredgeGram = nil
-		dst.Tokenizerkeyword = nil
-		dst.TokenizernGram = nil
-		dst.TokenizerregexCaptureGroup = nil
-		dst.TokenizerregexSplit = nil
-		dst.Tokenizerstandard = nil
-		dst.TokenizeruaxUrlEmail = nil
-		dst.Tokenizerwhitespace = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(FTSAnalyzersTokenizer)")
+		// We give number of objects to clients that can be parsed.
+		// Typically that should return error
+		return nil
 	} else if match == 1 {
 		return nil // exactly one match
 	} else { // no match

@@ -100,13 +100,9 @@ func (dst *FTSAnalyzersCharFiltersInner) UnmarshalJSON(data []byte) error {
 	}
 
 	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.CharFilterhtmlStrip = nil
-		dst.CharFiltericuNormalize = nil
-		dst.CharFiltermapping = nil
-		dst.CharFilterpersian = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(FTSAnalyzersCharFiltersInner)")
+		// We give number of objects to clients that can be parsed.
+		// Typically that should return error
+		return nil
 	} else if match == 1 {
 		return nil // exactly one match
 	} else { // no match
