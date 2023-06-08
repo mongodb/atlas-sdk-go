@@ -79,12 +79,8 @@ func (dst *CreateEndpointRequest) UnmarshalJSON(data []byte) error {
 	}
 
 	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.CreateAWSEndpointRequest = nil
-		dst.CreateAzureEndpointRequest = nil
-		dst.CreateGCPEndpointGroupRequest = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(CreateEndpointRequest)")
+		// We give number of objects to clients that can be parsed.
+		// Typically that should return error
 	} else if match == 1 {
 		return nil // exactly one match
 	} else { // no match

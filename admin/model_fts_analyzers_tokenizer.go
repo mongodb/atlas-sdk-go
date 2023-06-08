@@ -4,280 +4,268 @@ package admin
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
-// FTSAnalyzersTokenizer - Tokenizer that you want to use to create tokens. Tokens determine how Atlas Search splits up text into discrete chunks for indexing.
+// checks if the FTSAnalyzersTokenizer type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &FTSAnalyzersTokenizer{}
+
+// FTSAnalyzersTokenizer Tokenizer that you want to use to create tokens. Tokens determine how Atlas Search splits up text into discrete chunks for indexing.
 type FTSAnalyzersTokenizer struct {
-	TokenizeredgeGram          *TokenizeredgeGram
-	Tokenizerkeyword           *Tokenizerkeyword
-	TokenizernGram             *TokenizernGram
-	TokenizerregexCaptureGroup *TokenizerregexCaptureGroup
-	TokenizerregexSplit        *TokenizerregexSplit
-	Tokenizerstandard          *Tokenizerstandard
-	TokenizeruaxUrlEmail       *TokenizeruaxUrlEmail
-	Tokenizerwhitespace        *Tokenizerwhitespace
+	// Characters to include in the longest token that Atlas Search creates.
+	MaxGram *int `json:"maxGram,omitempty"`
+	// Characters to include in the shortest token that Atlas Search creates.
+	MinGram *int `json:"minGram,omitempty"`
+	// Human-readable label that identifies this tokenizer type.
+	Type *string `json:"type,omitempty"`
+	// Index of the character group within the matching expression to extract into tokens. Use `0` to extract all character groups.
+	Group *int `json:"group,omitempty"`
+	// Regular expression to match against.
+	Pattern *string `json:"pattern,omitempty"`
+	// Maximum number of characters in a single token. Tokens greater than this length are split at this length into multiple tokens.
+	MaxTokenLength *int `json:"maxTokenLength,omitempty"`
 }
 
-// TokenizeredgeGramAsFTSAnalyzersTokenizer is a convenience function that returns TokenizeredgeGram wrapped in FTSAnalyzersTokenizer
-func TokenizeredgeGramAsFTSAnalyzersTokenizer(v *TokenizeredgeGram) FTSAnalyzersTokenizer {
-	return FTSAnalyzersTokenizer{
-		TokenizeredgeGram: v,
-	}
+// NewFTSAnalyzersTokenizer instantiates a new FTSAnalyzersTokenizer object
+// This constructor will assign default values to properties that have it defined,
+// and makes sure properties required by API are set, but the set of arguments
+// will change when the set of required properties is changed
+func NewFTSAnalyzersTokenizer() *FTSAnalyzersTokenizer {
+	this := FTSAnalyzersTokenizer{}
+	var maxTokenLength int = 255
+	this.MaxTokenLength = &maxTokenLength
+	return &this
 }
 
-// TokenizerkeywordAsFTSAnalyzersTokenizer is a convenience function that returns Tokenizerkeyword wrapped in FTSAnalyzersTokenizer
-func TokenizerkeywordAsFTSAnalyzersTokenizer(v *Tokenizerkeyword) FTSAnalyzersTokenizer {
-	return FTSAnalyzersTokenizer{
-		Tokenizerkeyword: v,
-	}
+// NewFTSAnalyzersTokenizerWithDefaults instantiates a new FTSAnalyzersTokenizer object
+// This constructor will only assign default values to properties that have it defined,
+// but it doesn't guarantee that properties required by API are set
+func NewFTSAnalyzersTokenizerWithDefaults() *FTSAnalyzersTokenizer {
+	this := FTSAnalyzersTokenizer{}
+	var maxTokenLength int = 255
+	this.MaxTokenLength = &maxTokenLength
+	return &this
 }
 
-// TokenizernGramAsFTSAnalyzersTokenizer is a convenience function that returns TokenizernGram wrapped in FTSAnalyzersTokenizer
-func TokenizernGramAsFTSAnalyzersTokenizer(v *TokenizernGram) FTSAnalyzersTokenizer {
-	return FTSAnalyzersTokenizer{
-		TokenizernGram: v,
+// GetMaxGram returns the MaxGram field value if set, zero value otherwise.
+func (o *FTSAnalyzersTokenizer) GetMaxGram() int {
+	if o == nil || IsNil(o.MaxGram) {
+		var ret int
+		return ret
 	}
+	return *o.MaxGram
 }
 
-// TokenizerregexCaptureGroupAsFTSAnalyzersTokenizer is a convenience function that returns TokenizerregexCaptureGroup wrapped in FTSAnalyzersTokenizer
-func TokenizerregexCaptureGroupAsFTSAnalyzersTokenizer(v *TokenizerregexCaptureGroup) FTSAnalyzersTokenizer {
-	return FTSAnalyzersTokenizer{
-		TokenizerregexCaptureGroup: v,
+// GetMaxGramOk returns a tuple with the MaxGram field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FTSAnalyzersTokenizer) GetMaxGramOk() (*int, bool) {
+	if o == nil || IsNil(o.MaxGram) {
+		return nil, false
 	}
+	return o.MaxGram, true
 }
 
-// TokenizerregexSplitAsFTSAnalyzersTokenizer is a convenience function that returns TokenizerregexSplit wrapped in FTSAnalyzersTokenizer
-func TokenizerregexSplitAsFTSAnalyzersTokenizer(v *TokenizerregexSplit) FTSAnalyzersTokenizer {
-	return FTSAnalyzersTokenizer{
-		TokenizerregexSplit: v,
+// HasMaxGram returns a boolean if a field has been set.
+func (o *FTSAnalyzersTokenizer) HasMaxGram() bool {
+	if o != nil && !IsNil(o.MaxGram) {
+		return true
 	}
+
+	return false
 }
 
-// TokenizerstandardAsFTSAnalyzersTokenizer is a convenience function that returns Tokenizerstandard wrapped in FTSAnalyzersTokenizer
-func TokenizerstandardAsFTSAnalyzersTokenizer(v *Tokenizerstandard) FTSAnalyzersTokenizer {
-	return FTSAnalyzersTokenizer{
-		Tokenizerstandard: v,
-	}
+// SetMaxGram gets a reference to the given int and assigns it to the MaxGram field.
+func (o *FTSAnalyzersTokenizer) SetMaxGram(v int) {
+	o.MaxGram = &v
 }
 
-// TokenizeruaxUrlEmailAsFTSAnalyzersTokenizer is a convenience function that returns TokenizeruaxUrlEmail wrapped in FTSAnalyzersTokenizer
-func TokenizeruaxUrlEmailAsFTSAnalyzersTokenizer(v *TokenizeruaxUrlEmail) FTSAnalyzersTokenizer {
-	return FTSAnalyzersTokenizer{
-		TokenizeruaxUrlEmail: v,
+// GetMinGram returns the MinGram field value if set, zero value otherwise.
+func (o *FTSAnalyzersTokenizer) GetMinGram() int {
+	if o == nil || IsNil(o.MinGram) {
+		var ret int
+		return ret
 	}
+	return *o.MinGram
 }
 
-// TokenizerwhitespaceAsFTSAnalyzersTokenizer is a convenience function that returns Tokenizerwhitespace wrapped in FTSAnalyzersTokenizer
-func TokenizerwhitespaceAsFTSAnalyzersTokenizer(v *Tokenizerwhitespace) FTSAnalyzersTokenizer {
-	return FTSAnalyzersTokenizer{
-		Tokenizerwhitespace: v,
+// GetMinGramOk returns a tuple with the MinGram field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FTSAnalyzersTokenizer) GetMinGramOk() (*int, bool) {
+	if o == nil || IsNil(o.MinGram) {
+		return nil, false
 	}
+	return o.MinGram, true
 }
 
-// Unmarshal JSON data into one of the pointers in the struct
-func (dst *FTSAnalyzersTokenizer) UnmarshalJSON(data []byte) error {
-	var err error
-	match := 0
-	// try to unmarshal data into TokenizeredgeGram
-	err = json.Unmarshal(data, &dst.TokenizeredgeGram)
-	if err == nil {
-		jsonTokenizeredgeGram, _ := json.Marshal(dst.TokenizeredgeGram)
-		if string(jsonTokenizeredgeGram) == "{}" { // empty struct
-			dst.TokenizeredgeGram = nil
-		} else {
-			match++
-		}
-	} else {
-		dst.TokenizeredgeGram = nil
+// HasMinGram returns a boolean if a field has been set.
+func (o *FTSAnalyzersTokenizer) HasMinGram() bool {
+	if o != nil && !IsNil(o.MinGram) {
+		return true
 	}
 
-	// try to unmarshal data into Tokenizerkeyword
-	err = json.Unmarshal(data, &dst.Tokenizerkeyword)
-	if err == nil {
-		jsonTokenizerkeyword, _ := json.Marshal(dst.Tokenizerkeyword)
-		if string(jsonTokenizerkeyword) == "{}" { // empty struct
-			dst.Tokenizerkeyword = nil
-		} else {
-			match++
-		}
-	} else {
-		dst.Tokenizerkeyword = nil
-	}
-
-	// try to unmarshal data into TokenizernGram
-	err = json.Unmarshal(data, &dst.TokenizernGram)
-	if err == nil {
-		jsonTokenizernGram, _ := json.Marshal(dst.TokenizernGram)
-		if string(jsonTokenizernGram) == "{}" { // empty struct
-			dst.TokenizernGram = nil
-		} else {
-			match++
-		}
-	} else {
-		dst.TokenizernGram = nil
-	}
-
-	// try to unmarshal data into TokenizerregexCaptureGroup
-	err = json.Unmarshal(data, &dst.TokenizerregexCaptureGroup)
-	if err == nil {
-		jsonTokenizerregexCaptureGroup, _ := json.Marshal(dst.TokenizerregexCaptureGroup)
-		if string(jsonTokenizerregexCaptureGroup) == "{}" { // empty struct
-			dst.TokenizerregexCaptureGroup = nil
-		} else {
-			match++
-		}
-	} else {
-		dst.TokenizerregexCaptureGroup = nil
-	}
-
-	// try to unmarshal data into TokenizerregexSplit
-	err = json.Unmarshal(data, &dst.TokenizerregexSplit)
-	if err == nil {
-		jsonTokenizerregexSplit, _ := json.Marshal(dst.TokenizerregexSplit)
-		if string(jsonTokenizerregexSplit) == "{}" { // empty struct
-			dst.TokenizerregexSplit = nil
-		} else {
-			match++
-		}
-	} else {
-		dst.TokenizerregexSplit = nil
-	}
-
-	// try to unmarshal data into Tokenizerstandard
-	err = json.Unmarshal(data, &dst.Tokenizerstandard)
-	if err == nil {
-		jsonTokenizerstandard, _ := json.Marshal(dst.Tokenizerstandard)
-		if string(jsonTokenizerstandard) == "{}" { // empty struct
-			dst.Tokenizerstandard = nil
-		} else {
-			match++
-		}
-	} else {
-		dst.Tokenizerstandard = nil
-	}
-
-	// try to unmarshal data into TokenizeruaxUrlEmail
-	err = json.Unmarshal(data, &dst.TokenizeruaxUrlEmail)
-	if err == nil {
-		jsonTokenizeruaxUrlEmail, _ := json.Marshal(dst.TokenizeruaxUrlEmail)
-		if string(jsonTokenizeruaxUrlEmail) == "{}" { // empty struct
-			dst.TokenizeruaxUrlEmail = nil
-		} else {
-			match++
-		}
-	} else {
-		dst.TokenizeruaxUrlEmail = nil
-	}
-
-	// try to unmarshal data into Tokenizerwhitespace
-	err = json.Unmarshal(data, &dst.Tokenizerwhitespace)
-	if err == nil {
-		jsonTokenizerwhitespace, _ := json.Marshal(dst.Tokenizerwhitespace)
-		if string(jsonTokenizerwhitespace) == "{}" { // empty struct
-			dst.Tokenizerwhitespace = nil
-		} else {
-			match++
-		}
-	} else {
-		dst.Tokenizerwhitespace = nil
-	}
-
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.TokenizeredgeGram = nil
-		dst.Tokenizerkeyword = nil
-		dst.TokenizernGram = nil
-		dst.TokenizerregexCaptureGroup = nil
-		dst.TokenizerregexSplit = nil
-		dst.Tokenizerstandard = nil
-		dst.TokenizeruaxUrlEmail = nil
-		dst.Tokenizerwhitespace = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(FTSAnalyzersTokenizer)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(FTSAnalyzersTokenizer)")
-	}
+	return false
 }
 
-// Marshal data from the first non-nil pointers in the struct to JSON
-func (src FTSAnalyzersTokenizer) MarshalJSON() ([]byte, error) {
-	if src.TokenizeredgeGram != nil {
-		return json.Marshal(&src.TokenizeredgeGram)
-	}
-
-	if src.Tokenizerkeyword != nil {
-		return json.Marshal(&src.Tokenizerkeyword)
-	}
-
-	if src.TokenizernGram != nil {
-		return json.Marshal(&src.TokenizernGram)
-	}
-
-	if src.TokenizerregexCaptureGroup != nil {
-		return json.Marshal(&src.TokenizerregexCaptureGroup)
-	}
-
-	if src.TokenizerregexSplit != nil {
-		return json.Marshal(&src.TokenizerregexSplit)
-	}
-
-	if src.Tokenizerstandard != nil {
-		return json.Marshal(&src.Tokenizerstandard)
-	}
-
-	if src.TokenizeruaxUrlEmail != nil {
-		return json.Marshal(&src.TokenizeruaxUrlEmail)
-	}
-
-	if src.Tokenizerwhitespace != nil {
-		return json.Marshal(&src.Tokenizerwhitespace)
-	}
-
-	return nil, nil // no data in oneOf schemas
+// SetMinGram gets a reference to the given int and assigns it to the MinGram field.
+func (o *FTSAnalyzersTokenizer) SetMinGram(v int) {
+	o.MinGram = &v
 }
 
-// Get the actual instance
-func (obj *FTSAnalyzersTokenizer) GetActualInstance() interface{} {
-	if obj == nil {
-		return nil
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *FTSAnalyzersTokenizer) GetType() string {
+	if o == nil || IsNil(o.Type) {
+		var ret string
+		return ret
 	}
-	if obj.TokenizeredgeGram != nil {
-		return obj.TokenizeredgeGram
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FTSAnalyzersTokenizer) GetTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *FTSAnalyzersTokenizer) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
 	}
 
-	if obj.Tokenizerkeyword != nil {
-		return obj.Tokenizerkeyword
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *FTSAnalyzersTokenizer) SetType(v string) {
+	o.Type = &v
+}
+
+// GetGroup returns the Group field value if set, zero value otherwise.
+func (o *FTSAnalyzersTokenizer) GetGroup() int {
+	if o == nil || IsNil(o.Group) {
+		var ret int
+		return ret
+	}
+	return *o.Group
+}
+
+// GetGroupOk returns a tuple with the Group field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FTSAnalyzersTokenizer) GetGroupOk() (*int, bool) {
+	if o == nil || IsNil(o.Group) {
+		return nil, false
+	}
+	return o.Group, true
+}
+
+// HasGroup returns a boolean if a field has been set.
+func (o *FTSAnalyzersTokenizer) HasGroup() bool {
+	if o != nil && !IsNil(o.Group) {
+		return true
 	}
 
-	if obj.TokenizernGram != nil {
-		return obj.TokenizernGram
+	return false
+}
+
+// SetGroup gets a reference to the given int and assigns it to the Group field.
+func (o *FTSAnalyzersTokenizer) SetGroup(v int) {
+	o.Group = &v
+}
+
+// GetPattern returns the Pattern field value if set, zero value otherwise.
+func (o *FTSAnalyzersTokenizer) GetPattern() string {
+	if o == nil || IsNil(o.Pattern) {
+		var ret string
+		return ret
+	}
+	return *o.Pattern
+}
+
+// GetPatternOk returns a tuple with the Pattern field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FTSAnalyzersTokenizer) GetPatternOk() (*string, bool) {
+	if o == nil || IsNil(o.Pattern) {
+		return nil, false
+	}
+	return o.Pattern, true
+}
+
+// HasPattern returns a boolean if a field has been set.
+func (o *FTSAnalyzersTokenizer) HasPattern() bool {
+	if o != nil && !IsNil(o.Pattern) {
+		return true
 	}
 
-	if obj.TokenizerregexCaptureGroup != nil {
-		return obj.TokenizerregexCaptureGroup
+	return false
+}
+
+// SetPattern gets a reference to the given string and assigns it to the Pattern field.
+func (o *FTSAnalyzersTokenizer) SetPattern(v string) {
+	o.Pattern = &v
+}
+
+// GetMaxTokenLength returns the MaxTokenLength field value if set, zero value otherwise.
+func (o *FTSAnalyzersTokenizer) GetMaxTokenLength() int {
+	if o == nil || IsNil(o.MaxTokenLength) {
+		var ret int
+		return ret
+	}
+	return *o.MaxTokenLength
+}
+
+// GetMaxTokenLengthOk returns a tuple with the MaxTokenLength field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FTSAnalyzersTokenizer) GetMaxTokenLengthOk() (*int, bool) {
+	if o == nil || IsNil(o.MaxTokenLength) {
+		return nil, false
+	}
+	return o.MaxTokenLength, true
+}
+
+// HasMaxTokenLength returns a boolean if a field has been set.
+func (o *FTSAnalyzersTokenizer) HasMaxTokenLength() bool {
+	if o != nil && !IsNil(o.MaxTokenLength) {
+		return true
 	}
 
-	if obj.TokenizerregexSplit != nil {
-		return obj.TokenizerregexSplit
-	}
+	return false
+}
 
-	if obj.Tokenizerstandard != nil {
-		return obj.Tokenizerstandard
-	}
+// SetMaxTokenLength gets a reference to the given int and assigns it to the MaxTokenLength field.
+func (o *FTSAnalyzersTokenizer) SetMaxTokenLength(v int) {
+	o.MaxTokenLength = &v
+}
 
-	if obj.TokenizeruaxUrlEmail != nil {
-		return obj.TokenizeruaxUrlEmail
+func (o FTSAnalyzersTokenizer) MarshalJSONWithoutReadOnly() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
-
-	if obj.Tokenizerwhitespace != nil {
-		return obj.Tokenizerwhitespace
+	return json.Marshal(toSerialize)
+}
+func (o FTSAnalyzersTokenizer) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.MaxGram) {
+		toSerialize["maxGram"] = o.MaxGram
 	}
-
-	// all schemas are nil
-	return nil
+	if !IsNil(o.MinGram) {
+		toSerialize["minGram"] = o.MinGram
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.Group) {
+		toSerialize["group"] = o.Group
+	}
+	if !IsNil(o.Pattern) {
+		toSerialize["pattern"] = o.Pattern
+	}
+	if !IsNil(o.MaxTokenLength) {
+		toSerialize["maxTokenLength"] = o.MaxTokenLength
+	}
+	return toSerialize, nil
 }
 
 type NullableFTSAnalyzersTokenizer struct {
