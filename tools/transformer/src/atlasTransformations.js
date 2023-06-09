@@ -26,6 +26,12 @@ module.exports = function runTransformations(openapi) {
     "ApiAtlasEndpointServiceView",
   ]);
 
+  addOneOfTransformNested(openapi,[
+    "ApiAtlasFTSAnalyzersViewManual.properties.tokenizer",
+    "ApiAtlasFTSAnalyzersViewManual.properties.charFilters.items"
+  ]);
+  
+
   openapi = applyDiscriminatorTransformations(openapi);
   openapi = applyOneOfTransformations(openapi);
   openapi = applyAllOfTransformations(openapi);
@@ -113,7 +119,28 @@ function addOneOfTransform(openapi, objectNames) {
     if (openapi.components.schemas[name]) {
       openapi.components.schemas[name]["x-xgen-go-transform"] = "merge-oneOf";
     } else {
-      console.warning("Missing object to add x-xgen-go-transform" + object);
+      console.warn("Missing object to add x-xgen-go-transform" + object);
+    }
+  });
+}
+
+// Patch  "x-xgen-go-transform": "merge-oneOf" for nested objects
+function addOneOfTransformNested(openapi, nestedObjectNames) {
+  nestedObjectNames.forEach((nestedObject) => {
+    const keys = nestedObject.split('.');
+    let currentObj = openapi.components.schemas;
+    for (let i = 0; i < keys.length; i++) {
+      const key = keys[i];
+      if (currentObj.hasOwnProperty(key)) {
+        currentObj = currentObj[key];
+        if (i === keys.length - 1) {
+          currentObj["x-xgen-go-transform"] = "merge-oneOf";
+        }
+      }
+      else {
+        console.warn("Missing object to add x-xgen-go-transform" + nestedObject);
+        break;
+      }
     }
   });
 }
