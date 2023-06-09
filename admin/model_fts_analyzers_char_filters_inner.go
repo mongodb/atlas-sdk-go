@@ -4,160 +4,152 @@ package admin
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
-// FTSAnalyzersCharFiltersInner - struct for FTSAnalyzersCharFiltersInner
+// checks if the FTSAnalyzersCharFiltersInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &FTSAnalyzersCharFiltersInner{}
+
+// FTSAnalyzersCharFiltersInner struct for FTSAnalyzersCharFiltersInner
 type FTSAnalyzersCharFiltersInner struct {
-	CharFilterhtmlStrip    *CharFilterhtmlStrip
-	CharFiltericuNormalize *CharFiltericuNormalize
-	CharFiltermapping      *CharFiltermapping
-	CharFilterpersian      *CharFilterpersian
+	// The HTML tags that you want to exclude from filtering.
+	IgnoredTags []string `json:"ignoredTags,omitempty"`
+	// Human-readable label that identifies this character filter type.
+	Type     *string                               `json:"type,omitempty"`
+	Mappings *FTSAnalyzersCharFiltersInnerMappings `json:"mappings,omitempty"`
 }
 
-// CharFilterhtmlStripAsFTSAnalyzersCharFiltersInner is a convenience function that returns CharFilterhtmlStrip wrapped in FTSAnalyzersCharFiltersInner
-func CharFilterhtmlStripAsFTSAnalyzersCharFiltersInner(v *CharFilterhtmlStrip) FTSAnalyzersCharFiltersInner {
-	return FTSAnalyzersCharFiltersInner{
-		CharFilterhtmlStrip: v,
-	}
+// NewFTSAnalyzersCharFiltersInner instantiates a new FTSAnalyzersCharFiltersInner object
+// This constructor will assign default values to properties that have it defined,
+// and makes sure properties required by API are set, but the set of arguments
+// will change when the set of required properties is changed
+func NewFTSAnalyzersCharFiltersInner() *FTSAnalyzersCharFiltersInner {
+	this := FTSAnalyzersCharFiltersInner{}
+	return &this
 }
 
-// CharFiltericuNormalizeAsFTSAnalyzersCharFiltersInner is a convenience function that returns CharFiltericuNormalize wrapped in FTSAnalyzersCharFiltersInner
-func CharFiltericuNormalizeAsFTSAnalyzersCharFiltersInner(v *CharFiltericuNormalize) FTSAnalyzersCharFiltersInner {
-	return FTSAnalyzersCharFiltersInner{
-		CharFiltericuNormalize: v,
-	}
+// NewFTSAnalyzersCharFiltersInnerWithDefaults instantiates a new FTSAnalyzersCharFiltersInner object
+// This constructor will only assign default values to properties that have it defined,
+// but it doesn't guarantee that properties required by API are set
+func NewFTSAnalyzersCharFiltersInnerWithDefaults() *FTSAnalyzersCharFiltersInner {
+	this := FTSAnalyzersCharFiltersInner{}
+	return &this
 }
 
-// CharFiltermappingAsFTSAnalyzersCharFiltersInner is a convenience function that returns CharFiltermapping wrapped in FTSAnalyzersCharFiltersInner
-func CharFiltermappingAsFTSAnalyzersCharFiltersInner(v *CharFiltermapping) FTSAnalyzersCharFiltersInner {
-	return FTSAnalyzersCharFiltersInner{
-		CharFiltermapping: v,
+// GetIgnoredTags returns the IgnoredTags field value if set, zero value otherwise.
+func (o *FTSAnalyzersCharFiltersInner) GetIgnoredTags() []string {
+	if o == nil || IsNil(o.IgnoredTags) {
+		var ret []string
+		return ret
 	}
+	return o.IgnoredTags
 }
 
-// CharFilterpersianAsFTSAnalyzersCharFiltersInner is a convenience function that returns CharFilterpersian wrapped in FTSAnalyzersCharFiltersInner
-func CharFilterpersianAsFTSAnalyzersCharFiltersInner(v *CharFilterpersian) FTSAnalyzersCharFiltersInner {
-	return FTSAnalyzersCharFiltersInner{
-		CharFilterpersian: v,
+// GetIgnoredTagsOk returns a tuple with the IgnoredTags field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FTSAnalyzersCharFiltersInner) GetIgnoredTagsOk() ([]string, bool) {
+	if o == nil || IsNil(o.IgnoredTags) {
+		return nil, false
 	}
+	return o.IgnoredTags, true
 }
 
-// Unmarshal JSON data into one of the pointers in the struct
-func (dst *FTSAnalyzersCharFiltersInner) UnmarshalJSON(data []byte) error {
-	var err error
-	match := 0
-	// try to unmarshal data into CharFilterhtmlStrip
-	err = json.Unmarshal(data, &dst.CharFilterhtmlStrip)
-	if err == nil {
-		jsonCharFilterhtmlStrip, _ := json.Marshal(dst.CharFilterhtmlStrip)
-		if string(jsonCharFilterhtmlStrip) == "{}" { // empty struct
-			dst.CharFilterhtmlStrip = nil
-		} else {
-			match++
-		}
-	} else {
-		dst.CharFilterhtmlStrip = nil
+// HasIgnoredTags returns a boolean if a field has been set.
+func (o *FTSAnalyzersCharFiltersInner) HasIgnoredTags() bool {
+	if o != nil && !IsNil(o.IgnoredTags) {
+		return true
 	}
 
-	// try to unmarshal data into CharFiltericuNormalize
-	err = json.Unmarshal(data, &dst.CharFiltericuNormalize)
-	if err == nil {
-		jsonCharFiltericuNormalize, _ := json.Marshal(dst.CharFiltericuNormalize)
-		if string(jsonCharFiltericuNormalize) == "{}" { // empty struct
-			dst.CharFiltericuNormalize = nil
-		} else {
-			match++
-		}
-	} else {
-		dst.CharFiltericuNormalize = nil
-	}
-
-	// try to unmarshal data into CharFiltermapping
-	err = json.Unmarshal(data, &dst.CharFiltermapping)
-	if err == nil {
-		jsonCharFiltermapping, _ := json.Marshal(dst.CharFiltermapping)
-		if string(jsonCharFiltermapping) == "{}" { // empty struct
-			dst.CharFiltermapping = nil
-		} else {
-			match++
-		}
-	} else {
-		dst.CharFiltermapping = nil
-	}
-
-	// try to unmarshal data into CharFilterpersian
-	err = json.Unmarshal(data, &dst.CharFilterpersian)
-	if err == nil {
-		jsonCharFilterpersian, _ := json.Marshal(dst.CharFilterpersian)
-		if string(jsonCharFilterpersian) == "{}" { // empty struct
-			dst.CharFilterpersian = nil
-		} else {
-			match++
-		}
-	} else {
-		dst.CharFilterpersian = nil
-	}
-
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.CharFilterhtmlStrip = nil
-		dst.CharFiltericuNormalize = nil
-		dst.CharFiltermapping = nil
-		dst.CharFilterpersian = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(FTSAnalyzersCharFiltersInner)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(FTSAnalyzersCharFiltersInner)")
-	}
+	return false
 }
 
-// Marshal data from the first non-nil pointers in the struct to JSON
-func (src FTSAnalyzersCharFiltersInner) MarshalJSON() ([]byte, error) {
-	if src.CharFilterhtmlStrip != nil {
-		return json.Marshal(&src.CharFilterhtmlStrip)
-	}
-
-	if src.CharFiltericuNormalize != nil {
-		return json.Marshal(&src.CharFiltericuNormalize)
-	}
-
-	if src.CharFiltermapping != nil {
-		return json.Marshal(&src.CharFiltermapping)
-	}
-
-	if src.CharFilterpersian != nil {
-		return json.Marshal(&src.CharFilterpersian)
-	}
-
-	return nil, nil // no data in oneOf schemas
+// SetIgnoredTags gets a reference to the given []string and assigns it to the IgnoredTags field.
+func (o *FTSAnalyzersCharFiltersInner) SetIgnoredTags(v []string) {
+	o.IgnoredTags = v
 }
 
-// Get the actual instance
-func (obj *FTSAnalyzersCharFiltersInner) GetActualInstance() interface{} {
-	if obj == nil {
-		return nil
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *FTSAnalyzersCharFiltersInner) GetType() string {
+	if o == nil || IsNil(o.Type) {
+		var ret string
+		return ret
 	}
-	if obj.CharFilterhtmlStrip != nil {
-		return obj.CharFilterhtmlStrip
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FTSAnalyzersCharFiltersInner) GetTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *FTSAnalyzersCharFiltersInner) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
 	}
 
-	if obj.CharFiltericuNormalize != nil {
-		return obj.CharFiltericuNormalize
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *FTSAnalyzersCharFiltersInner) SetType(v string) {
+	o.Type = &v
+}
+
+// GetMappings returns the Mappings field value if set, zero value otherwise.
+func (o *FTSAnalyzersCharFiltersInner) GetMappings() FTSAnalyzersCharFiltersInnerMappings {
+	if o == nil || IsNil(o.Mappings) {
+		var ret FTSAnalyzersCharFiltersInnerMappings
+		return ret
+	}
+	return *o.Mappings
+}
+
+// GetMappingsOk returns a tuple with the Mappings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FTSAnalyzersCharFiltersInner) GetMappingsOk() (*FTSAnalyzersCharFiltersInnerMappings, bool) {
+	if o == nil || IsNil(o.Mappings) {
+		return nil, false
+	}
+	return o.Mappings, true
+}
+
+// HasMappings returns a boolean if a field has been set.
+func (o *FTSAnalyzersCharFiltersInner) HasMappings() bool {
+	if o != nil && !IsNil(o.Mappings) {
+		return true
 	}
 
-	if obj.CharFiltermapping != nil {
-		return obj.CharFiltermapping
-	}
+	return false
+}
 
-	if obj.CharFilterpersian != nil {
-		return obj.CharFilterpersian
-	}
+// SetMappings gets a reference to the given FTSAnalyzersCharFiltersInnerMappings and assigns it to the Mappings field.
+func (o *FTSAnalyzersCharFiltersInner) SetMappings(v FTSAnalyzersCharFiltersInnerMappings) {
+	o.Mappings = &v
+}
 
-	// all schemas are nil
-	return nil
+func (o FTSAnalyzersCharFiltersInner) MarshalJSONWithoutReadOnly() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+func (o FTSAnalyzersCharFiltersInner) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.IgnoredTags) {
+		toSerialize["ignoredTags"] = o.IgnoredTags
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.Mappings) {
+		toSerialize["mappings"] = o.Mappings
+	}
+	return toSerialize, nil
 }
 
 type NullableFTSAnalyzersCharFiltersInner struct {
