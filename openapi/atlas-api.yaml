@@ -13,8 +13,8 @@ info:
     url: https://creativecommons.org/licenses/by-nc-sa/3.0/us/
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
-  version: 2.0~b0d2861b4b
-  x-xgen-sha: b0d2861b4bfc9f349f9e26e3ed2d70c43c950779
+  version: 2.0~09e7854356
+  x-xgen-sha: 09e785435652c466fff6f798fc0779fbe3fd23a3
 servers:
 - url: https://cloud.mongodb.com
 tags:
@@ -12614,7 +12614,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: '#/components/schemas/PaginatedApiUserAccessListView'
+                $ref: '#/components/schemas/ApiUserAccessListView'
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -33902,6 +33902,7 @@ components:
         partialFilterExpression:
           type: object
           additionalProperties:
+            type: object
             description: |-
               Rules that limit the documents that the index references to a filter expression. All MongoDB index types accept a **partialFilterExpression** option. **partialFilterExpression** can include following expressions:
 

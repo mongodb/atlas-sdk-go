@@ -82,7 +82,7 @@ type ProgrammaticAPIKeysApi interface {
 	CreateApiKeyAccessListWithParams(ctx context.Context, args *CreateApiKeyAccessListApiParams) CreateApiKeyAccessListApiRequest
 
 	// Interface only available internally
-	createApiKeyAccessListExecute(r CreateApiKeyAccessListApiRequest) (*PaginatedApiUserAccessList, *http.Response, error)
+	createApiKeyAccessListExecute(r CreateApiKeyAccessListApiRequest) (*UserAccessList, *http.Response, error)
 
 	/*
 		CreateProjectApiKey Create and Assign One Organization API Key to One Project
@@ -692,7 +692,7 @@ func (r CreateApiKeyAccessListApiRequest) PageNum(pageNum int) CreateApiKeyAcces
 	return r
 }
 
-func (r CreateApiKeyAccessListApiRequest) Execute() (*PaginatedApiUserAccessList, *http.Response, error) {
+func (r CreateApiKeyAccessListApiRequest) Execute() (*UserAccessList, *http.Response, error) {
 	return r.ApiService.createApiKeyAccessListExecute(r)
 }
 
@@ -718,13 +718,13 @@ func (a *ProgrammaticAPIKeysApiService) CreateApiKeyAccessList(ctx context.Conte
 
 // Execute executes the request
 //
-//	@return PaginatedApiUserAccessList
-func (a *ProgrammaticAPIKeysApiService) createApiKeyAccessListExecute(r CreateApiKeyAccessListApiRequest) (*PaginatedApiUserAccessList, *http.Response, error) {
+//	@return UserAccessList
+func (a *ProgrammaticAPIKeysApiService) createApiKeyAccessListExecute(r CreateApiKeyAccessListApiRequest) (*UserAccessList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *PaginatedApiUserAccessList
+		localVarReturnValue *UserAccessList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysApiService.CreateApiKeyAccessList")
