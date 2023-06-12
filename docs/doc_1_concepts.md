@@ -47,6 +47,10 @@ Use the `{Operation}()` method to perform modifications. For example:
  resp, r, err := sdk.ProjectsApi.CreateProjectInvitation(context.Background(), groupId, &groupInvitationRequest).Execute()
 ```
 
+## Experimental Tag
+
+Please note that some endpoints, denoted by the (experimental) tag in the operation description, have not undergone extensive end-to-end validation and may undergo changes in future releases.
+
 ## Example
 
 To learn more about using the SDK, see the [basic example](https://github.com/mongodb/atlas-sdk-go/blob/main/examples/basic/basic.go).
