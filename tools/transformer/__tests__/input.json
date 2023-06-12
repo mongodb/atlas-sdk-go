@@ -3,6 +3,7 @@
   "paths": {
     "/api/atlas/v1.5/groups/{groupId}/clusters": {
       "post": {
+        "description": "Clusters description.",
         "operationId": "createCluster",
         "requestBody": {
           "content": {
@@ -28,7 +29,24 @@
         "summary": "Create One Multi-Cloud Cluster from One Project",
         "tags": ["Multi-Cloud Clusters"]
       }
-    }
+    },
+      "/api/atlas/v2/example/info": {
+        "get": {
+          "description": "Info description.",
+          "operationId": "versionedExample",
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ExampleResourceResponseView20230201"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
   },
   "components": {
     "schemas": {
@@ -531,6 +549,9 @@
             "title": "GCP Instance Sizes"
           }
         ]
+      },
+      "ExampleResourceResponseView20230201": {
+        "type": "object"
       }
     }
   }

@@ -4,6 +4,7 @@ const {
   applyModelNameTransformations,
   transformAllOf,
   transformOneOf,
+  applyAddExperimentalToDescriptions,
 } = require("../src/transformations");
 const cases = require("./transformations-snapshots");
 
@@ -61,4 +62,18 @@ test("applyModelNameTransformations", () => {
     expect(modelKey.startsWith("Api")).toBeFalsy();
     expect(modelKey.endsWith("View")).toBeFalsy();
   }
+});
+
+test("applyAddExperimentalToDescriptions for stable operationId", () => {
+  api = applyAddExperimentalToDescriptions(api);
+  expect(
+    api.paths["/api/atlas/v1.5/groups/{groupId}/clusters"].post.description
+  ).toEqual("Clusters description.");
+});
+
+test("applyAddExperimentalToDescriptions for experimental operationId", () => {
+  api = applyAddExperimentalToDescriptions(api);
+  expect(
+    api.paths["/api/atlas/v2/example/info"].get.description
+  ).toEqual("(experimental) Info description.");
 });
