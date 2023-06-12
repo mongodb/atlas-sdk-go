@@ -67,7 +67,7 @@ type AlertConfigurationsApi interface {
 	/*
 		GetAlertConfiguration Return One Alert Configuration from One Project
 
-		Returns the specified alert configuration from the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+		(experimental) Returns the specified alert configuration from the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
 	 This resource remains under revision and may change.
 
@@ -140,7 +140,7 @@ type AlertConfigurationsApi interface {
 	/*
 		ListAlertConfigurationsByAlertId Return All Alert Configurations Set for One Alert
 
-		Returns all alert configurations set for the specified alert. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+		(experimental) Returns all alert configurations set for the specified alert. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
 	 This resource remains under revision and may change.
 
@@ -524,7 +524,7 @@ func (r GetAlertConfigurationApiRequest) Execute() (*AlertConfigViewForNdsGroup,
 /*
 GetAlertConfiguration Return One Alert Configuration from One Project
 
-Returns the specified alert configuration from the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+(experimental) Returns the specified alert configuration from the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
 	This resource remains under revision and may change.
 
@@ -993,7 +993,7 @@ func (r ListAlertConfigurationsByAlertIdApiRequest) Execute() (*PaginatedAlertCo
 /*
 ListAlertConfigurationsByAlertId Return All Alert Configurations Set for One Alert
 
-Returns all alert configurations set for the specified alert. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+(experimental) Returns all alert configurations set for the specified alert. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
 	This resource remains under revision and may change.
 

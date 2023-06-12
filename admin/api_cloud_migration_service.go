@@ -161,7 +161,7 @@ type CloudMigrationServiceApi interface {
 	/*
 		ListSourceProjects Return All Projects Available for Migration
 
-		Return all projects that you can migrate to the specified organization.
+		(experimental) Return all projects that you can migrate to the specified organization.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -1059,7 +1059,7 @@ func (r ListSourceProjectsApiRequest) Execute() ([]AvailableProject, *http.Respo
 /*
 ListSourceProjects Return All Projects Available for Migration
 
-Return all projects that you can migrate to the specified organization.
+(experimental) Return all projects that you can migrate to the specified organization.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
