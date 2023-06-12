@@ -7,12 +7,14 @@ const {
   transformOneOfProperties,
   applyRemoveEnumsTransformations,
   applyRemoveObjectAdditonalProperties,
+  applyAddExperimentalToDescriptions,
 } = require("./transformations");
 
 const removeUnusedSchemas = require("./engine/removeUnused");
 const { getObjectFromYamlPath } = require("./engine/readers");
 
 const ignoredModelNames = require("./name.ignore.json").ignoreModels;
+const stableOperationIds = require("./operations.stable.json").stableIds;
 
 /**
  * Function specifies list of transformations to run
@@ -28,6 +30,7 @@ module.exports = function runTransformations(openapi) {
     ".components.schemas.ApiAtlasFTSAnalyzersViewManual.properties.tokenizer",
   ]);
 
+  openapi = applyAddExperimentalToDescriptions(openapi, stableOperationIds);
   openapi = applyDiscriminatorTransformations(openapi);
   openapi = applyOneOfTransformations(openapi);
   openapi = applyAllOfTransformations(openapi);
@@ -81,6 +84,7 @@ module.exports = function runTransformations(openapi) {
 
   applyRemoveEnumsTransformations(openapi);
   applyRemoveObjectAdditonalProperties(openapi);
+  
 
   // Required for RegionConfig
   workaroundNestedTransformations(openapi);
