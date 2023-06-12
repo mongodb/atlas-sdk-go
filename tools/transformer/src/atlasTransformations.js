@@ -84,7 +84,6 @@ module.exports = function runTransformations(openapi) {
 
   applyRemoveEnumsTransformations(openapi);
   applyRemoveObjectAdditonalProperties(openapi);
-  
 
   // Required for RegionConfig
   workaroundNestedTransformations(openapi);

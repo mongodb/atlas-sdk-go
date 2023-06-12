@@ -73,7 +73,7 @@ test("applyAddExperimentalToDescriptions for stable operationId", () => {
 
 test("applyAddExperimentalToDescriptions for experimental operationId", () => {
   api = applyAddExperimentalToDescriptions(api);
-  expect(
-    api.paths["/api/atlas/v2/example/info"].get.description
-  ).toEqual("(experimental) Info description.");
+  expect(api.paths["/api/atlas/v2/example/info"].get.description).toEqual(
+    "(experimental) Info description."
+  );
 });

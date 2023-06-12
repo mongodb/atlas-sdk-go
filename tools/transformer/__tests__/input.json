@@ -30,23 +30,23 @@
         "tags": ["Multi-Cloud Clusters"]
       }
     },
-      "/api/atlas/v2/example/info": {
-        "get": {
-          "description": "Info description.",
-          "operationId": "versionedExample",
-          "responses": {
-            "200": {
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ExampleResourceResponseView20230201"
-                  }
+    "/api/atlas/v2/example/info": {
+      "get": {
+        "description": "Info description.",
+        "operationId": "versionedExample",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExampleResourceResponseView20230201"
                 }
               }
             }
           }
         }
       }
+    }
   },
   "components": {
     "schemas": {
