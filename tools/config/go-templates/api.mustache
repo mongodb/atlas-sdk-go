@@ -108,7 +108,8 @@ func (r {{operationId}}ApiRequest) Execute() ({{#returnType}}{{^isArray}}{{^retu
 /*
 {{operationId}} {{{summary}}}{{^summary}}Method for {{operationId}}{{/summary}}
 {{#notes}}
-{{#vendorExtensions.x-experimental}}[experimental]{{/vendorExtensions.x-experimental}} {{{unescapedNotes}}}
+
+{{#vendorExtensions.x-experimental}}[experimental] {{/vendorExtensions.x-experimental}}{{{unescapedNotes}}}
 {{/notes}}
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().{{#pathParams}}
