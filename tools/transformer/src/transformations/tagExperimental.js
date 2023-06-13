@@ -6,13 +6,14 @@ const stableOperationIds = require("../operations.stable.json").stableIds;
  * @param {*} api OpenAPI JSON File
  * @returns OpenAPI JSON File
  */
-function applyAddExperimentalToDescriptions(api) {
+function applyAddExperimentalTag(api) {
   Object.values(api.paths).forEach((path) => {
     Object.values(path).forEach((requestMethod) => {
       if (
         requestMethod.operationId &&
         !stableOperationIds.includes(requestMethod.operationId)
       ) {
+        requestMethod.description = `${requestMethod.description}`;
         requestMethod["x-experimental"] = true;
       }
     });
@@ -21,5 +22,5 @@ function applyAddExperimentalToDescriptions(api) {
 }
 
 module.exports = {
-  applyAddExperimentalToDescriptions,
+  applyAddExperimentalTag,
 };
