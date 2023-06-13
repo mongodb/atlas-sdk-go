@@ -106,6 +106,7 @@ Create One Federated Database Instance in One Project
 ## Experimental
 
 This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -187,6 +188,7 @@ Configure One Query Limit for One Federated Database Instance
 ## Experimental
 
 This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -348,6 +350,7 @@ Remove One Federated Database Instance from One Project
 ## Experimental
 
 This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -428,6 +431,7 @@ Delete One Query Limit For One Federated Database Instance
 ## Experimental
 
 This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -511,6 +515,7 @@ Download Query Logs for One Federated Database Instance
 ## Experimental
 
 This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -671,6 +676,7 @@ Return One Federated Database Instance in One Project
 ## Experimental
 
 This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -830,6 +836,7 @@ Return All Federated Database Instances in One Project
 ## Experimental
 
 This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -909,6 +916,7 @@ Return One Federated Database Instance Query Limit for One Project
 ## Experimental
 
 This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -992,6 +1000,7 @@ Return All Query Limits for One Federated Database Instance
 ## Experimental
 
 This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -1072,6 +1081,7 @@ Update One Federated Database Instance in One Project
 ## Experimental
 
 This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 

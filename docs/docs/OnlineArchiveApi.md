@@ -20,7 +20,6 @@ Method | HTTP request | Description
 Create One Online Archive
 
 
-
 ### Example
 
 ```go
@@ -97,7 +96,6 @@ Name | Type | Description  | Notes
 > map[string]interface{} DeleteOnlineArchive(ctx, groupId, archiveId, clusterName).Execute()
 
 Remove One Online Archive
-
 
 
 ### Example
@@ -179,6 +177,10 @@ Name | Type | Description  | Notes
 Download Online Archive Query Logs
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -262,7 +264,6 @@ Name | Type | Description  | Notes
 Return One Online Archive
 
 
-
 ### Example
 
 ```go
@@ -340,7 +341,6 @@ Name | Type | Description  | Notes
 > PaginatedOnlineArchive ListOnlineArchives(ctx, groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Return All Online Archives for One Cluster
-
 
 
 ### Example
@@ -423,7 +423,6 @@ Name | Type | Description  | Notes
 > OnlineArchive UpdateOnlineArchive(ctx, groupId, archiveId, clusterName, onlineArchive OnlineArchive).Execute()
 
 Update One Online Archive
-
 
 
 ### Example

@@ -20,7 +20,6 @@ Method | HTTP request | Description
 Create One Multi-Cloud Cluster from One Project
 
 
-
 ### Example
 
 ```go
@@ -94,7 +93,6 @@ Name | Type | Description  | Notes
 > DeleteCluster(ctx, groupId, clusterName).RetainBackups(retainBackups).Execute()
 
 Remove One Multi-Cloud Cluster from One Project
-
 
 
 ### Example
@@ -173,7 +171,6 @@ Name | Type | Description  | Notes
 Return One Multi-Cloud Cluster from One Project
 
 
-
 ### Example
 
 ```go
@@ -248,7 +245,6 @@ Name | Type | Description  | Notes
 > PaginatedClusterDescriptionV15 ListClusters(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Return All Multi-Cloud Clusters from One Project
-
 
 
 ### Example
@@ -330,7 +326,6 @@ Name | Type | Description  | Notes
 Test Failover for One Multi-Cloud Cluster
 
 
-
 ### Example
 
 ```go
@@ -403,7 +398,6 @@ Name | Type | Description  | Notes
 > ClusterDescriptionV15 UpdateCluster(ctx, groupId, clusterName, clusterDescriptionV15 ClusterDescriptionV15).Execute()
 
 Modify One Multi-Cloud Cluster from One Project
-
 
 
 ### Example

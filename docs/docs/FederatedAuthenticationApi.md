@@ -32,6 +32,7 @@ Add One Role Mapping to One Organization
 ## Experimental
 
 This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -114,6 +115,7 @@ Delete the federation settings instance.
 ## Experimental
 
 This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -189,6 +191,7 @@ Remove One Role Mapping from One Organization
 ## Experimental
 
 This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -270,6 +273,7 @@ Return One Org Config Connected to One Federation
 ## Experimental
 
 This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -350,6 +354,7 @@ Return Federation Settings for One Organization
 ## Experimental
 
 This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -427,6 +432,7 @@ Return one identity provider from the specified federation.
 ## Experimental
 
 This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -507,6 +513,7 @@ Return the metadata of one identity provider in the specified federation.
 ## Experimental
 
 This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -587,6 +594,7 @@ Return One Role Mapping from One Organization
 ## Experimental
 
 This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -670,6 +678,7 @@ Return All Connected Org Configs from the Federation
 ## Experimental
 
 This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -747,6 +756,7 @@ Return all identity providers from the specified federation.
 ## Experimental
 
 This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -824,6 +834,7 @@ Return All Role Mappings from One Organization
 ## Experimental
 
 This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -904,6 +915,7 @@ Remove One Org Config Connected to One Federation
 ## Experimental
 
 This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -984,6 +996,7 @@ Update One Org Config Connected to One Federation
 ## Experimental
 
 This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -1066,6 +1079,7 @@ Update the identity provider.
 ## Experimental
 
 This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -1148,6 +1162,7 @@ Update One Role Mapping in One Organization
 ## Experimental
 
 This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 

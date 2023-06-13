@@ -12,7 +12,7 @@ if which "./gh-md-toc" >/dev/null 2>&1; then
 else
   echo Downloading scripts
 
-  wget https://raw.githubusercontent.com/ekalinin/github-markdown-toc/master/gh-md-toc
+  curl -O https://raw.githubusercontent.com/ekalinin/github-markdown-toc/master/gh-md-toc
   chmod a+x gh-md-toc
 fi
 

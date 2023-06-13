@@ -20,6 +20,7 @@ End an Outage Simulation
 ## Experimental
 
 This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -100,6 +101,7 @@ Return One Outage Simulation
 ## Experimental
 
 This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -180,6 +182,7 @@ Start an Outage Simulation
 ## Experimental
 
 This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 

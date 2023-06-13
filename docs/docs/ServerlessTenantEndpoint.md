@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **Comment** | Pointer to **string** | Human-readable comment associated with the private endpoint. | [optional] [readonly] 
 **EndpointServiceName** | Pointer to **string** | Unique string that identifies the Azure private endpoint service. MongoDB Cloud returns null while it creates the endpoint service. | [optional] [readonly] 
 **ErrorMessage** | Pointer to **string** | Human-readable error message that indicates error condition associated with establishing the private endpoint connection. | [optional] [readonly] 
-**ProviderName** | Pointer to **string** | Human-readable label that identifies the cloud service provider. | [optional] [readonly] 
 **Status** | Pointer to **string** | Human-readable label that indicates the current operating status of the private endpoint. | [optional] [readonly] 
+**ProviderName** | Pointer to **string** | Human-readable label that identifies the cloud service provider. | [optional] [readonly] 
 **PrivateEndpointIpAddress** | Pointer to **string** | IPv4 address of the private endpoint in your Azure VNet that someone added to this private endpoint service. | [optional] [readonly] 
 **PrivateLinkServiceResourceId** | Pointer to **string** | Root-relative path that identifies the Azure Private Link Service that MongoDB Cloud manages. MongoDB Cloud returns null while it creates the endpoint service. | [optional] [readonly] 
 
@@ -158,31 +158,6 @@ SetErrorMessage sets ErrorMessage field to given value.
 
 HasErrorMessage returns a boolean if a field has been set.
 
-### GetProviderName
-
-`func (o *ServerlessTenantEndpoint) GetProviderName() string`
-
-GetProviderName returns the ProviderName field if non-nil, zero value otherwise.
-
-### GetProviderNameOk
-
-`func (o *ServerlessTenantEndpoint) GetProviderNameOk() (*string, bool)`
-
-GetProviderNameOk returns a tuple with the ProviderName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProviderName
-
-`func (o *ServerlessTenantEndpoint) SetProviderName(v string)`
-
-SetProviderName sets ProviderName field to given value.
-
-### HasProviderName
-
-`func (o *ServerlessTenantEndpoint) HasProviderName() bool`
-
-HasProviderName returns a boolean if a field has been set.
-
 ### GetStatus
 
 `func (o *ServerlessTenantEndpoint) GetStatus() string`
@@ -207,6 +182,31 @@ SetStatus sets Status field to given value.
 `func (o *ServerlessTenantEndpoint) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### GetProviderName
+
+`func (o *ServerlessTenantEndpoint) GetProviderName() string`
+
+GetProviderName returns the ProviderName field if non-nil, zero value otherwise.
+
+### GetProviderNameOk
+
+`func (o *ServerlessTenantEndpoint) GetProviderNameOk() (*string, bool)`
+
+GetProviderNameOk returns a tuple with the ProviderName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProviderName
+
+`func (o *ServerlessTenantEndpoint) SetProviderName(v string)`
+
+SetProviderName sets ProviderName field to given value.
+
+### HasProviderName
+
+`func (o *ServerlessTenantEndpoint) HasProviderName() bool`
+
+HasProviderName returns a boolean if a field has been set.
 
 ### GetPrivateEndpointIpAddress
 

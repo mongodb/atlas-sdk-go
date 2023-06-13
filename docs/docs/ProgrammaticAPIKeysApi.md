@@ -28,6 +28,10 @@ Method | HTTP request | Description
 Assign One Organization API Key to One Project
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -107,7 +111,6 @@ Name | Type | Description  | Notes
 Create One Organization API Key
 
 
-
 ### Example
 
 ```go
@@ -178,10 +181,9 @@ Name | Type | Description  | Notes
 
 ## CreateApiKeyAccessList
 
-> UserAccessList CreateApiKeyAccessList(ctx, orgId, apiUserId, userAccessList []UserAccessList).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+> PaginatedApiUserAccessList CreateApiKeyAccessList(ctx, orgId, apiUserId, userAccessList []UserAccessList).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Create Access List Entries for One Organization API Key
-
 
 
 ### Example
@@ -216,7 +218,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `CreateApiKeyAccessList`: UserAccessList
+    // response from `CreateApiKeyAccessList`: PaginatedApiUserAccessList
     fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.CreateApiKeyAccessList`: %v\n", resp)
 }
 ```
@@ -246,7 +248,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserAccessList**](UserAccessList.md)
+[**PaginatedApiUserAccessList**](PaginatedApiUserAccessList.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -266,7 +268,6 @@ Name | Type | Description  | Notes
 > ApiUser CreateProjectApiKey(ctx, groupId, createApiKey CreateApiKey).Execute()
 
 Create and Assign One Organization API Key to One Project
-
 
 
 ### Example
@@ -344,7 +345,6 @@ Name | Type | Description  | Notes
 Remove One Organization API Key
 
 
-
 ### Example
 
 ```go
@@ -419,7 +419,6 @@ Name | Type | Description  | Notes
 > map[string]interface{} DeleteApiKeyAccessListEntry(ctx, orgId, apiUserId, ipAddress).Execute()
 
 Remove One Access List Entry for One Organization API Key
-
 
 
 ### Example
@@ -501,7 +500,6 @@ Name | Type | Description  | Notes
 Return One Organization API Key
 
 
-
 ### Example
 
 ```go
@@ -578,6 +576,10 @@ Name | Type | Description  | Notes
 Return One Access List Entry for One Organization API Key
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -656,7 +658,6 @@ Name | Type | Description  | Notes
 > PaginatedApiUserAccessList ListApiKeyAccessListsEntries(ctx, orgId, apiUserId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Return All Access List Entries for One Organization API Key
-
 
 
 ### Example
@@ -741,7 +742,6 @@ Name | Type | Description  | Notes
 Return All Organization API Keys
 
 
-
 ### Example
 
 ```go
@@ -819,7 +819,6 @@ Name | Type | Description  | Notes
 > PaginatedApiApiUser ListProjectApiKeys(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Return All Organization API Keys Assigned to One Project
-
 
 
 ### Example
@@ -901,7 +900,6 @@ Name | Type | Description  | Notes
 Unassign One Organization API Key from One Project
 
 
-
 ### Example
 
 ```go
@@ -976,7 +974,6 @@ Name | Type | Description  | Notes
 > ApiUser UpdateApiKey(ctx, orgId, apiUserId, createApiKey CreateApiKey).Execute()
 
 Update One Organization API Key
-
 
 
 ### Example
@@ -1055,7 +1052,6 @@ Name | Type | Description  | Notes
 > ApiUser UpdateApiKeyRoles(ctx, groupId, apiUserId, createApiKey CreateApiKey).PageNum(pageNum).ItemsPerPage(itemsPerPage).IncludeCount(includeCount).Execute()
 
 Update Roles of One Organization API Key to One Project
-
 
 
 ### Example

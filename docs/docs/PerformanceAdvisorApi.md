@@ -19,7 +19,6 @@ Method | HTTP request | Description
 Disable Managed Slow Operation Threshold
 
 
-
 ### Example
 
 ```go
@@ -91,7 +90,6 @@ Name | Type | Description  | Notes
 Enable Managed Slow Operation Threshold
 
 
-
 ### Example
 
 ```go
@@ -161,7 +159,6 @@ Name | Type | Description  | Notes
 > PerformanceAdvisorSlowQueryList ListSlowQueries(ctx, groupId, processId).Duration(duration).Namespaces(namespaces).NLogs(nLogs).Since(since).Execute()
 
 Return Slow Queries
-
 
 
 ### Example
@@ -248,7 +245,6 @@ Name | Type | Description  | Notes
 Return All Namespaces for One Host
 
 
-
 ### Example
 
 ```go
@@ -327,7 +323,6 @@ Name | Type | Description  | Notes
 > PerformanceAdvisorResponse ListSuggestedIndexes(ctx, groupId, processId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Duration(duration).Namespaces(namespaces).NExamples(nExamples).NIndexes(nIndexes).Since(since).Execute()
 
 Return Suggested Indexes
-
 
 
 ### Example

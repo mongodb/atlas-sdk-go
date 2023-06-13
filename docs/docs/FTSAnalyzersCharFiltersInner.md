@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **IgnoredTags** | Pointer to **[]string** | The HTML tags that you want to exclude from filtering. | [optional] 
-**Type** | **string** | Human-readable label that identifies this character filter type. | 
-**Mappings** | [**CharFiltermappingMappings**](CharFiltermappingMappings.md) |  | 
+**Type** | Pointer to **string** | Human-readable label that identifies this character filter type. | [optional] 
+**Mappings** | Pointer to [**FTSAnalyzersCharFiltersInnerMappings**](FTSAnalyzersCharFiltersInnerMappings.md) |  | [optional] 
 
 ## Methods
 
 ### NewFTSAnalyzersCharFiltersInner
 
-`func NewFTSAnalyzersCharFiltersInner(type_ string, mappings CharFiltermappingMappings, ) *FTSAnalyzersCharFiltersInner`
+`func NewFTSAnalyzersCharFiltersInner() *FTSAnalyzersCharFiltersInner`
 
 NewFTSAnalyzersCharFiltersInner instantiates a new FTSAnalyzersCharFiltersInner object
 This constructor will assign default values to properties that have it defined,
@@ -71,26 +71,36 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
+### HasType
+
+`func (o *FTSAnalyzersCharFiltersInner) HasType() bool`
+
+HasType returns a boolean if a field has been set.
 
 ### GetMappings
 
-`func (o *FTSAnalyzersCharFiltersInner) GetMappings() CharFiltermappingMappings`
+`func (o *FTSAnalyzersCharFiltersInner) GetMappings() FTSAnalyzersCharFiltersInnerMappings`
 
 GetMappings returns the Mappings field if non-nil, zero value otherwise.
 
 ### GetMappingsOk
 
-`func (o *FTSAnalyzersCharFiltersInner) GetMappingsOk() (*CharFiltermappingMappings, bool)`
+`func (o *FTSAnalyzersCharFiltersInner) GetMappingsOk() (*FTSAnalyzersCharFiltersInnerMappings, bool)`
 
 GetMappingsOk returns a tuple with the Mappings field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMappings
 
-`func (o *FTSAnalyzersCharFiltersInner) SetMappings(v CharFiltermappingMappings)`
+`func (o *FTSAnalyzersCharFiltersInner) SetMappings(v FTSAnalyzersCharFiltersInnerMappings)`
 
 SetMappings sets Mappings field to given value.
 
+### HasMappings
+
+`func (o *FTSAnalyzersCharFiltersInner) HasMappings() bool`
+
+HasMappings returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

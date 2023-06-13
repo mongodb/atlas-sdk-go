@@ -19,7 +19,6 @@ Method | HTTP request | Description
 Defer One Maintenance Window for One Project
 
 
-
 ### Example
 
 ```go
@@ -89,7 +88,6 @@ Name | Type | Description  | Notes
 > GroupMaintenanceWindow GetMaintenanceWindow(ctx, groupId).Execute()
 
 Return One Maintenance Window for One Project
-
 
 
 ### Example
@@ -165,7 +163,6 @@ Name | Type | Description  | Notes
 Reset One Maintenance Window for One Project
 
 
-
 ### Example
 
 ```go
@@ -239,6 +236,10 @@ Name | Type | Description  | Notes
 Toggle Automatic Deferral of Maintenance for One Project
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -309,7 +310,6 @@ Name | Type | Description  | Notes
 > map[string]interface{} UpdateMaintenanceWindow(ctx, groupId, groupMaintenanceWindow GroupMaintenanceWindow).Execute()
 
 Update Maintenance Window for One Project
-
 
 
 ### Example

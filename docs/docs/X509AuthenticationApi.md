@@ -17,7 +17,6 @@ Method | HTTP request | Description
 Create One X.509 Certificate for One MongoDB User
 
 
-
 ### Example
 
 ```go
@@ -94,7 +93,6 @@ Name | Type | Description  | Notes
 Disable Customer-Managed X.509
 
 
-
 ### Example
 
 ```go
@@ -166,7 +164,6 @@ Name | Type | Description  | Notes
 > PaginatedUserCert ListDatabaseUserCertificates(ctx, groupId, username).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Return All X.509 Certificates Assigned to One MongoDB User
-
 
 
 ### Example

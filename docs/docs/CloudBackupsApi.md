@@ -46,6 +46,7 @@ Cancel One Restore Job of One Cluster
 ## Experimental
 
 This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -669,6 +670,7 @@ Remove One Sharded Cluster Cloud Backup
 ## Experimental
 
 This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -986,6 +988,7 @@ Return the Backup Compliance Policy settings
 ## Experimental
 
 This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -1376,6 +1379,7 @@ Return One Sharded Cluster Cloud Backup
 ## Experimental
 
 This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -1948,6 +1952,7 @@ Return All Sharded Cluster Cloud Backups
 ## Experimental
 
 This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -2184,6 +2189,7 @@ Update or enable the Backup Compliance Policy settings
 ## Experimental
 
 This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -2263,6 +2269,7 @@ Change Expiration Date for One Cloud Backup
 ## Experimental
 
 This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
