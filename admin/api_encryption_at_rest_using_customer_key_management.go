@@ -16,7 +16,7 @@ type EncryptionAtRestUsingCustomerKeyManagementApi interface {
 	/*
 		GetEncryptionAtRest Return One Configuration for Encryption at Rest using Customer-Managed Keys for One Project
 
-		 Returns the configuration for encryption at rest using the keys you manage through your cloud provider. MongoDB Cloud encrypts all storage even if you don't use your own key management. This resource requires the requesting API Key to have the Project Owner role.
+		Returns the configuration for encryption at rest using the keys you manage through your cloud provider. MongoDB Cloud encrypts all storage even if you don't use your own key management. This resource requires the requesting API Key to have the Project Owner role.
 
 	**LIMITED TO M10 OR GREATER:** MongoDB Cloud limits this feature to dedicated cluster tiers of M10 and greater.
 

@@ -70,7 +70,7 @@ type EventsApi interface {
 	/*
 		ListOrganizationEvents Return All Events from One Organization
 
-		 Returns all events for the specified organization. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Organization Member role. This resource doesn't require the API Key to have an Access List.
+		Returns all events for the specified organization. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Organization Member role. This resource doesn't require the API Key to have an Access List.
 
 	 This resource remains under revision and may change.
 
@@ -95,7 +95,7 @@ type EventsApi interface {
 	/*
 		ListProjectEvents Return All Events from One Project
 
-		 Returns one event for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+		Returns one event for the specified project. Events identify significant database, billing, or security activities or status changes. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
 	 This resource remains under revision and may change.
 
