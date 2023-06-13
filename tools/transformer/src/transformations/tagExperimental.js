@@ -15,7 +15,8 @@ function applyAddExperimentalToDescriptions(api) {
         requestMethod.operationId &&
         !stableOperationIds.includes(requestMethod.operationId)
       ) {
-        requestMethod.description = `(experimental) ${requestMethod.description}`;
+        requestMethod.description = `[experimental] ${requestMethod.description}`;
+        requestMethod["x-experimental"] = true;
       }
     });
   });
