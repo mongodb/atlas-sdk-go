@@ -16,7 +16,6 @@ Method | HTTP request | Description
 Return the Auditing Configuration for One Project
 
 
-
 ### Example
 
 ```go
@@ -90,6 +89,9 @@ Name | Type | Description  | Notes
 Update Auditing Configuration for One Project
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
 
 ### Example
 

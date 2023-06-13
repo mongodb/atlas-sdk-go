@@ -19,7 +19,6 @@ Method | HTTP request | Description
 Create One Atlas Search Index
 
 
-
 ### Example
 
 ```go
@@ -96,7 +95,6 @@ Name | Type | Description  | Notes
 > map[string]interface{} DeleteAtlasSearchIndex(ctx, groupId, clusterName, indexId).Execute()
 
 Remove One Atlas Search Index
-
 
 
 ### Example
@@ -178,7 +176,6 @@ Name | Type | Description  | Notes
 Return One Atlas Search Index
 
 
-
 ### Example
 
 ```go
@@ -256,7 +253,6 @@ Name | Type | Description  | Notes
 > []FTSIndex ListAtlasSearchIndexes(ctx, groupId, clusterName, collectionName, databaseName).Execute()
 
 Return All Atlas Search Indexes for One Collection
-
 
 
 ### Example
@@ -339,7 +335,6 @@ Name | Type | Description  | Notes
 > FTSIndex UpdateAtlasSearchIndex(ctx, groupId, clusterName, indexId, fTSIndex FTSIndex).Execute()
 
 Update One Atlas Search Index
-
 
 
 ### Example

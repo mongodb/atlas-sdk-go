@@ -23,7 +23,6 @@ Method | HTTP request | Description
 Return One Advanced Configuration Options for One Cluster
 
 
-
 ### Example
 
 ```go
@@ -100,6 +99,9 @@ Name | Type | Description  | Notes
 Return Status of All Cluster Operations
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
 
 ### Example
 
@@ -177,7 +179,6 @@ Name | Type | Description  | Notes
 Check Status of Cluster Sample Dataset Request
 
 
-
 ### Example
 
 ```go
@@ -252,7 +253,6 @@ Name | Type | Description  | Notes
 > PaginatedApiAtlasProviderRegions ListCloudProviderRegions(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Providers(providers).Tier(tier).Execute()
 
 Return All Cloud Provider Regions
-
 
 
 ### Example
@@ -338,6 +338,9 @@ Name | Type | Description  | Notes
 Return All Authorized Clusters in All Projects
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
 
 ### Example
 
@@ -410,7 +413,6 @@ Name | Type | Description  | Notes
 > SampleDatasetStatus LoadSampleDataset(ctx, groupId, name).Execute()
 
 Load Sample Dataset Request into Cluster
-
 
 
 ### Example
@@ -487,7 +489,6 @@ Name | Type | Description  | Notes
 > ClusterDescriptionProcessArgs UpdateClusterAdvancedConfiguration(ctx, groupId, clusterName, clusterDescriptionProcessArgs ClusterDescriptionProcessArgs).Execute()
 
 Update Advanced Configuration Options for One Cluster
-
 
 
 ### Example
@@ -568,6 +569,9 @@ Name | Type | Description  | Notes
 Upgrade One Shared-tier Cluster
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
 
 ### Example
 
@@ -644,6 +648,9 @@ Name | Type | Description  | Notes
 Upgrades One Shared-Tier Cluster to the Serverless Instance
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
 
 ### Example
 

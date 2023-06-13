@@ -43,6 +43,9 @@ Method | HTTP request | Description
 Cancel One Restore Job of One Cluster
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
 
 ### Example
 
@@ -123,7 +126,6 @@ Name | Type | Description  | Notes
 Create One Cloud Backup Snapshot Export Job
 
 
-
 ### Example
 
 ```go
@@ -200,7 +202,6 @@ Name | Type | Description  | Notes
 > DiskBackupRestoreJob CreateBackupRestoreJob(ctx, groupId, clusterName, diskBackupRestoreJob DiskBackupRestoreJob).Execute()
 
 Restore One Snapshot of One Cluster
-
 
 
 ### Example
@@ -281,7 +282,6 @@ Name | Type | Description  | Notes
 Grant Access to AWS S3 Bucket for Cloud Backup Snapshot Exports
 
 
-
 ### Example
 
 ```go
@@ -355,7 +355,6 @@ Name | Type | Description  | Notes
 > ServerlessBackupRestoreJob CreateServerlessBackupRestoreJob(ctx, groupId, clusterName, serverlessBackupRestoreJob ServerlessBackupRestoreJob).Execute()
 
 Restore One Snapshot of One Serverless Instance
-
 
 
 ### Example
@@ -436,7 +435,6 @@ Name | Type | Description  | Notes
 Remove All Cloud Backup Schedules
 
 
-
 ### Example
 
 ```go
@@ -513,7 +511,6 @@ Name | Type | Description  | Notes
 Revoke Access to AWS S3 Bucket for Cloud Backup Snapshot Exports
 
 
-
 ### Example
 
 ```go
@@ -588,7 +585,6 @@ Name | Type | Description  | Notes
 > map[string]interface{} DeleteReplicaSetBackup(ctx, groupId, clusterName, snapshotId).Execute()
 
 Remove One Replica Set Cloud Backup
-
 
 
 ### Example
@@ -670,6 +666,9 @@ Name | Type | Description  | Notes
 Remove One Sharded Cluster Cloud Backup
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
 
 ### Example
 
@@ -748,7 +747,6 @@ Name | Type | Description  | Notes
 > DiskBackupExportJob GetBackupExportJob(ctx, groupId, clusterName, exportId).Execute()
 
 Return One Cloud Backup Snapshot Export Job
-
 
 
 ### Example
@@ -830,7 +828,6 @@ Name | Type | Description  | Notes
 Return One Restore Job of One Cluster
 
 
-
 ### Example
 
 ```go
@@ -910,7 +907,6 @@ Name | Type | Description  | Notes
 Return One Cloud Backup Schedule
 
 
-
 ### Example
 
 ```go
@@ -987,6 +983,9 @@ Name | Type | Description  | Notes
 Return the Backup Compliance Policy settings
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
 
 ### Example
 
@@ -1059,7 +1058,6 @@ Name | Type | Description  | Notes
 > DiskBackupSnapshotAWSExportBucket GetExportBucket(ctx, groupId, exportBucketId).Execute()
 
 Return One AWS S3 Bucket Used for Cloud Backup Snapshot Exports
-
 
 
 ### Example
@@ -1136,7 +1134,6 @@ Name | Type | Description  | Notes
 > DiskBackupReplicaSet GetReplicaSetBackup(ctx, groupId, clusterName, snapshotId).Execute()
 
 Return One Replica Set Cloud Backup
-
 
 
 ### Example
@@ -1218,7 +1215,6 @@ Name | Type | Description  | Notes
 Return One Snapshot of One Serverless Instance
 
 
-
 ### Example
 
 ```go
@@ -1296,7 +1292,6 @@ Name | Type | Description  | Notes
 > ServerlessBackupRestoreJob GetServerlessBackupRestoreJob(ctx, groupId, clusterName, restoreJobId).Execute()
 
 Return One Restore Job for One Serverless Instance
-
 
 
 ### Example
@@ -1378,6 +1373,9 @@ Name | Type | Description  | Notes
 Return One Sharded Cluster Cloud Backup
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
 
 ### Example
 
@@ -1456,7 +1454,6 @@ Name | Type | Description  | Notes
 > PaginatedApiAtlasDiskBackupExportJob ListBackupExportJobs(ctx, groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Return All Cloud Backup Snapshot Export Jobs
-
 
 
 ### Example
@@ -1541,7 +1538,6 @@ Name | Type | Description  | Notes
 Return All Restore Jobs for One Cluster
 
 
-
 ### Example
 
 ```go
@@ -1624,7 +1620,6 @@ Name | Type | Description  | Notes
 Return All AWS S3 Buckets Used for Cloud Backup Snapshot Exports
 
 
-
 ### Example
 
 ```go
@@ -1702,7 +1697,6 @@ Name | Type | Description  | Notes
 > PaginatedCloudBackupReplicaSet ListReplicaSetBackups(ctx, groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Return All Replica Set Cloud Backups
-
 
 
 ### Example
@@ -1787,7 +1781,6 @@ Name | Type | Description  | Notes
 Return All Restore Jobs for One Serverless Instance
 
 
-
 ### Example
 
 ```go
@@ -1868,7 +1861,6 @@ Name | Type | Description  | Notes
 > PaginatedApiAtlasServerlessBackupSnapshot ListServerlessBackups(ctx, groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Return All Snapshots of One Serverless Instance
-
 
 
 ### Example
@@ -1953,6 +1945,9 @@ Name | Type | Description  | Notes
 Return All Sharded Cluster Cloud Backups
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
 
 ### Example
 
@@ -2028,7 +2023,6 @@ Name | Type | Description  | Notes
 > DiskBackupSnapshot TakeSnapshot(ctx, groupId, clusterName, diskBackupOnDemandSnapshotRequest DiskBackupOnDemandSnapshotRequest).Execute()
 
 Take One On-Demand Snapshot
-
 
 
 ### Example
@@ -2109,7 +2103,6 @@ Name | Type | Description  | Notes
 Update Cloud Backup Schedule for One Cluster
 
 
-
 ### Example
 
 ```go
@@ -2188,6 +2181,9 @@ Name | Type | Description  | Notes
 Update or enable the Backup Compliance Policy settings
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
 
 ### Example
 
@@ -2264,6 +2260,9 @@ Name | Type | Description  | Notes
 Change Expiration Date for One Cloud Backup
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
 
 ### Example
 
