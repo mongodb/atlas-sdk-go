@@ -93,7 +93,7 @@ type AlertsApi interface {
 	/*
 		ListAlertsByAlertConfigurationId Return All Open Alerts for Alert Configuration
 
-		Returns all open alerts that the specified alert configuration triggers. These alert configurations apply to the specified project only. Alert configurations define the triggers and notification methods for alerts. Open alerts have been triggered but remain unacknowledged. To use this resource, the requesting API Key must have the Project Read Only role.
+		[experimental] Returns all open alerts that the specified alert configuration triggers. These alert configurations apply to the specified project only. Alert configurations define the triggers and notification methods for alerts. Open alerts have been triggered but remain unacknowledged. To use this resource, the requesting API Key must have the Project Read Only role.
 
 	 This resource remains under revision and may change.
 
@@ -664,7 +664,7 @@ func (r ListAlertsByAlertConfigurationIdApiRequest) Execute() (*PaginatedAlert, 
 /*
 ListAlertsByAlertConfigurationId Return All Open Alerts for Alert Configuration
 
-Returns all open alerts that the specified alert configuration triggers. These alert configurations apply to the specified project only. Alert configurations define the triggers and notification methods for alerts. Open alerts have been triggered but remain unacknowledged. To use this resource, the requesting API Key must have the Project Read Only role.
+[experimental] Returns all open alerts that the specified alert configuration triggers. These alert configurations apply to the specified project only. Alert configurations define the triggers and notification methods for alerts. Open alerts have been triggered but remain unacknowledged. To use this resource, the requesting API Key must have the Project Read Only role.
 
 	This resource remains under revision and may change.
 

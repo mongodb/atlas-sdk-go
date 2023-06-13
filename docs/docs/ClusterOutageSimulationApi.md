@@ -17,6 +17,10 @@ Method | HTTP request | Description
 End an Outage Simulation
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -94,6 +98,10 @@ Name | Type | Description  | Notes
 Return One Outage Simulation
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -171,6 +179,10 @@ Name | Type | Description  | Notes
 Start an Outage Simulation
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 

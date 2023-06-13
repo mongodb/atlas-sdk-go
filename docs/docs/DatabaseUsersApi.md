@@ -19,7 +19,6 @@ Method | HTTP request | Description
 Create One Database User in One Project
 
 
-
 ### Example
 
 ```go
@@ -93,7 +92,6 @@ Name | Type | Description  | Notes
 > map[string]interface{} DeleteDatabaseUser(ctx, groupId, databaseName, username).Execute()
 
 Remove One Database User from One Project
-
 
 
 ### Example
@@ -175,7 +173,6 @@ Name | Type | Description  | Notes
 Return One Database User from One Project
 
 
-
 ### Example
 
 ```go
@@ -255,7 +252,6 @@ Name | Type | Description  | Notes
 Return All Database Users from One Project
 
 
-
 ### Example
 
 ```go
@@ -333,7 +329,6 @@ Name | Type | Description  | Notes
 > DatabaseUser UpdateDatabaseUser(ctx, groupId, databaseName, username, databaseUser DatabaseUser).Execute()
 
 Update One Database User in One Project
-
 
 
 ### Example

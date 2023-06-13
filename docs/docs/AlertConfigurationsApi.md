@@ -22,7 +22,6 @@ Method | HTTP request | Description
 Create One Alert Configuration in One Project
 
 
-
 ### Example
 
 ```go
@@ -96,7 +95,6 @@ Name | Type | Description  | Notes
 > DeleteAlertConfiguration(ctx, groupId, alertConfigId).Execute()
 
 Remove One Alert Configuration from One Project
-
 
 
 ### Example
@@ -173,6 +171,10 @@ Name | Type | Description  | Notes
 Return One Alert Configuration from One Project
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -250,7 +252,6 @@ Name | Type | Description  | Notes
 Get All Alert Configuration Matchers Field Names
 
 
-
 ### Example
 
 ```go
@@ -313,7 +314,6 @@ Other parameters are passed through a pointer to a apiListAlertConfigurationMatc
 > PaginatedAlertConfig ListAlertConfigurations(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Return All Alert Configurations for One Project
-
 
 
 ### Example
@@ -395,6 +395,10 @@ Name | Type | Description  | Notes
 Return All Alert Configurations Set for One Alert
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -478,7 +482,6 @@ Name | Type | Description  | Notes
 Toggle One State of One Alert Configuration in One Project
 
 
-
 ### Example
 
 ```go
@@ -555,7 +558,6 @@ Name | Type | Description  | Notes
 > AlertConfigViewForNdsGroup UpdateAlertConfiguration(ctx, groupId, alertConfigId, alertConfigViewForNdsGroup AlertConfigViewForNdsGroup).Execute()
 
 Update One Alert Configuration for One Project
-
 
 
 ### Example

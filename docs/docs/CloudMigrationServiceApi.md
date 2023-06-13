@@ -22,7 +22,6 @@ Method | HTTP request | Description
 Create One Link-Token
 
 
-
 ### Example
 
 ```go
@@ -96,7 +95,6 @@ Name | Type | Description  | Notes
 > LiveMigrationResponse CreatePushMigration(ctx, groupId, liveMigrationRequest LiveMigrationRequest).Execute()
 
 Migrate One Local Managed Cluster to MongoDB Atlas
-
 
 
 ### Example
@@ -174,7 +172,6 @@ Name | Type | Description  | Notes
 Cut Over the Migrated Cluster
 
 
-
 ### Example
 
 ```go
@@ -249,7 +246,6 @@ Name | Type | Description  | Notes
 Remove One Link-Token
 
 
-
 ### Example
 
 ```go
@@ -321,7 +317,6 @@ Name | Type | Description  | Notes
 > LiveMigrationResponse GetPushMigration(ctx, groupId, liveMigrationId).Execute()
 
 Return One Migration Job
-
 
 
 ### Example
@@ -400,7 +395,6 @@ Name | Type | Description  | Notes
 Return One Migration Validation Job
 
 
-
 ### Example
 
 ```go
@@ -477,6 +471,10 @@ Name | Type | Description  | Notes
 Return All Projects Available for Migration
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -549,7 +547,6 @@ Name | Type | Description  | Notes
 > Validation ValidateMigration(ctx, groupId, liveMigrationRequest LiveMigrationRequest).Execute()
 
 Validate One Migration Request
-
 
 
 ### Example

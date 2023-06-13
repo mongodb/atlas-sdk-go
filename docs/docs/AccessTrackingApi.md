@@ -16,7 +16,6 @@ Method | HTTP request | Description
 Return Database Access History for One Cluster using Its Cluster Name
 
 
-
 ### Example
 
 ```go
@@ -101,7 +100,6 @@ Name | Type | Description  | Notes
 > MongoDBAccessLogsList ListAccessLogsByHostname(ctx, groupId, hostname).AuthResult(authResult).End(end).IpAddress(ipAddress).NLogs(nLogs).Start(start).Execute()
 
 Return Database Access History for One Cluster using Its Hostname
-
 
 
 ### Example

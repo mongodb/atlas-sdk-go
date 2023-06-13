@@ -15,7 +15,6 @@ Method | HTTP request | Description
 Create One Rolling Index
 
 
-
 ### Example
 
 ```go

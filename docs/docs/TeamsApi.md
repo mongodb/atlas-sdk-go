@@ -27,7 +27,6 @@ Method | HTTP request | Description
 Add One or More Teams to One Project
 
 
-
 ### Example
 
 ```go
@@ -101,7 +100,6 @@ Name | Type | Description  | Notes
 > PaginatedApiAppUser AddTeamUser(ctx, orgId, teamId, addUserToTeam []AddUserToTeam).Execute()
 
 Assign MongoDB Cloud Users from One Organization to One Team
-
 
 
 ### Example
@@ -182,7 +180,6 @@ Name | Type | Description  | Notes
 Create One Team in One Organization
 
 
-
 ### Example
 
 ```go
@@ -256,7 +253,6 @@ Name | Type | Description  | Notes
 > map[string]interface{} DeleteTeam(ctx, orgId, teamId).Execute()
 
 Remove One Team from One Organization
-
 
 
 ### Example
@@ -335,7 +331,6 @@ Name | Type | Description  | Notes
 Return One Team using its ID
 
 
-
 ### Example
 
 ```go
@@ -412,7 +407,6 @@ Name | Type | Description  | Notes
 Return One Team using its Name
 
 
-
 ### Example
 
 ```go
@@ -487,7 +481,6 @@ Name | Type | Description  | Notes
 > PaginatedTeam ListOrganizationTeams(ctx, orgId).ItemsPerPage(itemsPerPage).IncludeCount(includeCount).PageNum(pageNum).Execute()
 
 Return All Teams in One Organization
-
 
 
 ### Example
@@ -569,7 +562,6 @@ Name | Type | Description  | Notes
 Return All Teams in One Project
 
 
-
 ### Example
 
 ```go
@@ -647,7 +639,6 @@ Name | Type | Description  | Notes
 > PaginatedApiAppUser ListTeamUsers(ctx, orgId, teamId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Return All MongoDB Cloud Users Assigned to One Team
-
 
 
 ### Example
@@ -730,7 +721,6 @@ Name | Type | Description  | Notes
 Remove One Team from One Project
 
 
-
 ### Example
 
 ```go
@@ -805,7 +795,6 @@ Name | Type | Description  | Notes
 > RemoveTeamUser(ctx, orgId, teamId, userId).Execute()
 
 Remove One MongoDB Cloud User from One Team
-
 
 
 ### Example
@@ -885,6 +874,10 @@ Name | Type | Description  | Notes
 Rename One Team
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -962,7 +955,6 @@ Name | Type | Description  | Notes
 > PaginatedTeamRole UpdateTeamRoles(ctx, groupId, teamId, teamRole TeamRole).Execute()
 
 Update Team Roles in One Project
-
 
 
 ### Example

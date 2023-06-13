@@ -16,7 +16,6 @@ Method | HTTP request | Description
 Return One Configuration for Encryption at Rest using Customer-Managed Keys for One Project
 
 
-
 ### Example
 
 ```go
@@ -90,6 +89,10 @@ Name | Type | Description  | Notes
 Update Configuration for Encryption at Rest using Customer-Managed Keys for One Project
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 

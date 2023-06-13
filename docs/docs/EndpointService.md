@@ -5,12 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CloudProvider** | **string** | Cloud service provider that serves the requested endpoint service. | [readonly] 
-**EndpointServiceName** | Pointer to **string** | Unique string that identifies the Amazon Web Services (AWS) PrivateLink endpoint service. MongoDB Cloud returns null while it creates the endpoint service. | [optional] [readonly] 
 **ErrorMessage** | Pointer to **string** | Error message returned when requesting private connection resource. The resource returns &#x60;null&#x60; if the request succeeded. | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the Private Endpoint Service. | [optional] [readonly] 
-**InterfaceEndpoints** | Pointer to **[]string** | List of strings that identify private endpoint interfaces applied to the specified project. | [optional] [readonly] 
 **RegionName** | Pointer to **string** | Cloud provider region that manages this Private Endpoint Service. | [optional] [readonly] 
 **Status** | Pointer to **string** | State of the Private Endpoint Service connection when MongoDB Cloud received this request. | [optional] [readonly] 
+**EndpointServiceName** | Pointer to **string** | Unique string that identifies the Amazon Web Services (AWS) PrivateLink endpoint service. MongoDB Cloud returns null while it creates the endpoint service. | [optional] [readonly] 
+**InterfaceEndpoints** | Pointer to **[]string** | List of strings that identify private endpoint interfaces applied to the specified project. | [optional] [readonly] 
 **PrivateEndpoints** | Pointer to **[]string** | List of private endpoints assigned to this Azure Private Link Service. | [optional] [readonly] 
 **PrivateLinkServiceName** | Pointer to **string** | Unique string that identifies the Azure Private Link Service that MongoDB Cloud manages. | [optional] [readonly] 
 **PrivateLinkServiceResourceId** | Pointer to **string** | Root-relative path that identifies of the Azure Private Link Service that MongoDB Cloud manages. Use this value to create a private endpoint connection to an Azure VNet. | [optional] [readonly] 
@@ -55,31 +55,6 @@ and a boolean to check if the value has been set.
 
 SetCloudProvider sets CloudProvider field to given value.
 
-
-### GetEndpointServiceName
-
-`func (o *EndpointService) GetEndpointServiceName() string`
-
-GetEndpointServiceName returns the EndpointServiceName field if non-nil, zero value otherwise.
-
-### GetEndpointServiceNameOk
-
-`func (o *EndpointService) GetEndpointServiceNameOk() (*string, bool)`
-
-GetEndpointServiceNameOk returns a tuple with the EndpointServiceName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEndpointServiceName
-
-`func (o *EndpointService) SetEndpointServiceName(v string)`
-
-SetEndpointServiceName sets EndpointServiceName field to given value.
-
-### HasEndpointServiceName
-
-`func (o *EndpointService) HasEndpointServiceName() bool`
-
-HasEndpointServiceName returns a boolean if a field has been set.
 
 ### GetErrorMessage
 
@@ -131,31 +106,6 @@ SetId sets Id field to given value.
 
 HasId returns a boolean if a field has been set.
 
-### GetInterfaceEndpoints
-
-`func (o *EndpointService) GetInterfaceEndpoints() []string`
-
-GetInterfaceEndpoints returns the InterfaceEndpoints field if non-nil, zero value otherwise.
-
-### GetInterfaceEndpointsOk
-
-`func (o *EndpointService) GetInterfaceEndpointsOk() (*[]string, bool)`
-
-GetInterfaceEndpointsOk returns a tuple with the InterfaceEndpoints field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetInterfaceEndpoints
-
-`func (o *EndpointService) SetInterfaceEndpoints(v []string)`
-
-SetInterfaceEndpoints sets InterfaceEndpoints field to given value.
-
-### HasInterfaceEndpoints
-
-`func (o *EndpointService) HasInterfaceEndpoints() bool`
-
-HasInterfaceEndpoints returns a boolean if a field has been set.
-
 ### GetRegionName
 
 `func (o *EndpointService) GetRegionName() string`
@@ -205,6 +155,56 @@ SetStatus sets Status field to given value.
 `func (o *EndpointService) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### GetEndpointServiceName
+
+`func (o *EndpointService) GetEndpointServiceName() string`
+
+GetEndpointServiceName returns the EndpointServiceName field if non-nil, zero value otherwise.
+
+### GetEndpointServiceNameOk
+
+`func (o *EndpointService) GetEndpointServiceNameOk() (*string, bool)`
+
+GetEndpointServiceNameOk returns a tuple with the EndpointServiceName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEndpointServiceName
+
+`func (o *EndpointService) SetEndpointServiceName(v string)`
+
+SetEndpointServiceName sets EndpointServiceName field to given value.
+
+### HasEndpointServiceName
+
+`func (o *EndpointService) HasEndpointServiceName() bool`
+
+HasEndpointServiceName returns a boolean if a field has been set.
+
+### GetInterfaceEndpoints
+
+`func (o *EndpointService) GetInterfaceEndpoints() []string`
+
+GetInterfaceEndpoints returns the InterfaceEndpoints field if non-nil, zero value otherwise.
+
+### GetInterfaceEndpointsOk
+
+`func (o *EndpointService) GetInterfaceEndpointsOk() (*[]string, bool)`
+
+GetInterfaceEndpointsOk returns a tuple with the InterfaceEndpoints field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInterfaceEndpoints
+
+`func (o *EndpointService) SetInterfaceEndpoints(v []string)`
+
+SetInterfaceEndpoints sets InterfaceEndpoints field to given value.
+
+### HasInterfaceEndpoints
+
+`func (o *EndpointService) HasInterfaceEndpoints() bool`
+
+HasInterfaceEndpoints returns a boolean if a field has been set.
 
 ### GetPrivateEndpoints
 

@@ -19,6 +19,10 @@ Method | HTTP request | Description
 Add One Entry to One Custom Zone Mapping
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -98,6 +102,10 @@ Name | Type | Description  | Notes
 Create One Managed Namespace in One Global Multi-Cloud Cluster
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -177,6 +185,10 @@ Name | Type | Description  | Notes
 Remove All Custom Zone Mappings from One Global Multi-Cloud Cluster
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -254,6 +266,10 @@ Name | Type | Description  | Notes
 Remove One Managed Namespace from One Global Multi-Cloud Cluster
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -333,7 +349,6 @@ Name | Type | Description  | Notes
 > GeoSharding GetManagedNamespace(ctx, groupId, clusterName).Execute()
 
 Return One Managed Namespace in One Global Multi-Cloud Cluster
-
 
 
 ### Example

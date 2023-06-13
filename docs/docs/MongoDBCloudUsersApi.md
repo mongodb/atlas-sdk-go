@@ -17,7 +17,6 @@ Method | HTTP request | Description
 Create One MongoDB Cloud User
 
 
-
 ### Example
 
 ```go
@@ -85,7 +84,6 @@ Name | Type | Description  | Notes
 > AppUser GetUser(ctx, userId).Execute()
 
 Return One MongoDB Cloud User using Its ID
-
 
 
 ### Example
@@ -159,7 +157,6 @@ Name | Type | Description  | Notes
 > AppUser GetUserByUsername(ctx, userName).Execute()
 
 Return One MongoDB Cloud User using Their Username
-
 
 
 ### Example

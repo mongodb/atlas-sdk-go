@@ -34,7 +34,6 @@ Method | HTTP request | Description
 Create One Project
 
 
-
 ### Example
 
 ```go
@@ -104,7 +103,6 @@ Name | Type | Description  | Notes
 > GroupInvitation CreateProjectInvitation(ctx, groupId, groupInvitationRequest GroupInvitationRequest).Execute()
 
 Invite One MongoDB Cloud User to Join One Project
-
 
 
 ### Example
@@ -182,7 +180,6 @@ Name | Type | Description  | Notes
 Remove One Project
 
 
-
 ### Example
 
 ```go
@@ -254,7 +251,6 @@ Name | Type | Description  | Notes
 > map[string]interface{} DeleteProjectInvitation(ctx, groupId, invitationId).Execute()
 
 Cancel One Project Invitation
-
 
 
 ### Example
@@ -333,6 +329,10 @@ Name | Type | Description  | Notes
 Remove One Project Limit
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -410,7 +410,6 @@ Name | Type | Description  | Notes
 Return One Project
 
 
-
 ### Example
 
 ```go
@@ -484,7 +483,6 @@ Name | Type | Description  | Notes
 Return One Project using Its Name
 
 
-
 ### Example
 
 ```go
@@ -556,7 +554,6 @@ Name | Type | Description  | Notes
 > GroupInvitation GetProjectInvitation(ctx, groupId, invitationId).Execute()
 
 Return One Project Invitation
-
 
 
 ### Example
@@ -635,6 +632,10 @@ Name | Type | Description  | Notes
 Return One Limit for One Project
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -712,7 +713,6 @@ Name | Type | Description  | Notes
 Return One Project Settings
 
 
-
 ### Example
 
 ```go
@@ -784,7 +784,6 @@ Name | Type | Description  | Notes
 > []GroupInvitation ListProjectInvitations(ctx, groupId).Username(username).Execute()
 
 Return All Project Invitations
-
 
 
 ### Example
@@ -862,6 +861,10 @@ Name | Type | Description  | Notes
 Return All Limits for One Project
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -934,7 +937,6 @@ Name | Type | Description  | Notes
 > PaginatedApiAppUser ListProjectUsers(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).FlattenTeams(flattenTeams).IncludeOrgUsers(includeOrgUsers).Execute()
 
 Return All Users in One Project
-
 
 
 ### Example
@@ -1020,7 +1022,6 @@ Name | Type | Description  | Notes
 Return All Projects
 
 
-
 ### Example
 
 ```go
@@ -1092,7 +1093,6 @@ Name | Type | Description  | Notes
 > RemoveProjectUser(ctx, groupId, userId).Execute()
 
 Remove One User from One Project
-
 
 
 ### Example
@@ -1169,6 +1169,10 @@ Name | Type | Description  | Notes
 Set One Project Limit
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -1248,6 +1252,10 @@ Name | Type | Description  | Notes
 Update One Project Name
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -1324,7 +1332,6 @@ Name | Type | Description  | Notes
 Update One Project Invitation
 
 
-
 ### Example
 
 ```go
@@ -1398,7 +1405,6 @@ Name | Type | Description  | Notes
 > GroupInvitation UpdateProjectInvitationById(ctx, groupId, invitationId, groupInvitationUpdateRequest GroupInvitationUpdateRequest).Execute()
 
 Update One Project Invitation by Invitation ID
-
 
 
 ### Example
@@ -1477,7 +1483,6 @@ Name | Type | Description  | Notes
 > GroupSettings UpdateProjectSettings(ctx, groupId, groupSettings GroupSettings).Execute()
 
 Update One Project Settings
-
 
 
 ### Example

@@ -19,7 +19,6 @@ Method | HTTP request | Description
 Create One Serverless Instance in One Project
 
 
-
 ### Example
 
 ```go
@@ -93,7 +92,6 @@ Name | Type | Description  | Notes
 > map[string]interface{} DeleteServerlessInstance(ctx, groupId, name).Execute()
 
 Remove One Serverless Instance from One Project
-
 
 
 ### Example
@@ -172,7 +170,6 @@ Name | Type | Description  | Notes
 Return One Serverless Instance from One Project
 
 
-
 ### Example
 
 ```go
@@ -247,7 +244,6 @@ Name | Type | Description  | Notes
 > PaginatedServerlessInstanceDescription ListServerlessInstances(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Return All Serverless Instances from One Project
-
 
 
 ### Example
@@ -327,7 +323,6 @@ Name | Type | Description  | Notes
 > ServerlessInstanceDescription UpdateServerlessInstance(ctx, groupId, name, serverlessInstanceDescriptionUpdate ServerlessInstanceDescriptionUpdate).Execute()
 
 Update One Serverless Instance in One Project
-
 
 
 ### Example

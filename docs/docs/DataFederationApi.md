@@ -28,7 +28,6 @@ Method | HTTP request | Description
 Create One Federated Database Instance and Online Archive Private Endpoint for One Project
 
 
-
 ### Example
 
 ```go
@@ -104,6 +103,10 @@ Name | Type | Description  | Notes
 Create One Federated Database Instance in One Project
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -182,6 +185,10 @@ Name | Type | Description  | Notes
 Configure One Query Limit for One Federated Database Instance
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -264,7 +271,6 @@ Name | Type | Description  | Notes
 Remove One Federated Database Instance and Online Archive Private Endpoint from One Project
 
 
-
 ### Example
 
 ```go
@@ -341,6 +347,10 @@ Name | Type | Description  | Notes
 Remove One Federated Database Instance from One Project
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -418,6 +428,10 @@ Name | Type | Description  | Notes
 Delete One Query Limit For One Federated Database Instance
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -498,6 +512,10 @@ Name | Type | Description  | Notes
 Download Query Logs for One Federated Database Instance
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -579,7 +597,6 @@ Name | Type | Description  | Notes
 Return One Federated Database Instance and Online Archive Private Endpoint in One Project
 
 
-
 ### Example
 
 ```go
@@ -656,6 +673,10 @@ Name | Type | Description  | Notes
 Return One Federated Database Instance in One Project
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -731,7 +752,6 @@ Name | Type | Description  | Notes
 > PaginatedPrivateNetworkEndpointIdEntry ListDataFederationPrivateEndpoints(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Return All Federated Database Instance and Online Archive Private Endpoints in One Project
-
 
 
 ### Example
@@ -813,6 +833,10 @@ Name | Type | Description  | Notes
 Return All Federated Database Instances in One Project
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -889,6 +913,10 @@ Name | Type | Description  | Notes
 Return One Federated Database Instance Query Limit for One Project
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -969,6 +997,10 @@ Name | Type | Description  | Notes
 Return All Query Limits for One Federated Database Instance
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -1046,6 +1078,10 @@ Name | Type | Description  | Notes
 Update One Federated Database Instance in One Project
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 

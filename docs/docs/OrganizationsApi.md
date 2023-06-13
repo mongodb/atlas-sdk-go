@@ -29,7 +29,6 @@ Method | HTTP request | Description
 Create One Organization
 
 
-
 ### Example
 
 ```go
@@ -97,7 +96,6 @@ Name | Type | Description  | Notes
 > OrganizationInvitation CreateOrganizationInvitation(ctx, orgId, organizationInvitationRequest OrganizationInvitationRequest).Execute()
 
 Invite One MongoDB Cloud User to Join One Atlas Organization
-
 
 
 ### Example
@@ -175,7 +173,6 @@ Name | Type | Description  | Notes
 Remove One Organization
 
 
-
 ### Example
 
 ```go
@@ -247,7 +244,6 @@ Name | Type | Description  | Notes
 > map[string]interface{} DeleteOrganizationInvitation(ctx, orgId, invitationId).Execute()
 
 Cancel One Organization Invitation
-
 
 
 ### Example
@@ -326,7 +322,6 @@ Name | Type | Description  | Notes
 Return One Organization
 
 
-
 ### Example
 
 ```go
@@ -398,7 +393,6 @@ Name | Type | Description  | Notes
 > OrganizationInvitation GetOrganizationInvitation(ctx, orgId, invitationId).Execute()
 
 Return One Organization Invitation
-
 
 
 ### Example
@@ -477,6 +471,10 @@ Name | Type | Description  | Notes
 Return Settings for One Organization
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -549,7 +547,6 @@ Name | Type | Description  | Notes
 > []OrganizationInvitation ListOrganizationInvitations(ctx, orgId).Username(username).Execute()
 
 Return All Organization Invitations
-
 
 
 ### Example
@@ -625,7 +622,6 @@ Name | Type | Description  | Notes
 > PaginatedAtlasGroup ListOrganizationProjects(ctx, orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Name(name).Execute()
 
 Return One or More Projects in One Organization
-
 
 
 ### Example
@@ -709,7 +705,6 @@ Name | Type | Description  | Notes
 Return All MongoDB Cloud Users in One Organization
 
 
-
 ### Example
 
 ```go
@@ -789,7 +784,6 @@ Name | Type | Description  | Notes
 Return All Organizations
 
 
-
 ### Example
 
 ```go
@@ -865,6 +859,10 @@ Name | Type | Description  | Notes
 Rename One Organization
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -941,7 +939,6 @@ Name | Type | Description  | Notes
 Update One Organization Invitation
 
 
-
 ### Example
 
 ```go
@@ -1015,7 +1012,6 @@ Name | Type | Description  | Notes
 > OrganizationInvitation UpdateOrganizationInvitationById(ctx, orgId, invitationId, organizationInvitationUpdateRequest OrganizationInvitationUpdateRequest).Execute()
 
 Update One Organization Invitation by Invitation ID
-
 
 
 ### Example
@@ -1096,6 +1092,10 @@ Name | Type | Description  | Notes
 Update Settings for One Organization
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 

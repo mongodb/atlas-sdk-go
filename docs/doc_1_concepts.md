@@ -47,6 +47,15 @@ Use the `{Operation}()` method to perform modifications. For example:
  resp, r, err := sdk.ProjectsApi.CreateProjectInvitation(context.Background(), groupId, &groupInvitationRequest).Execute()
 ```
 
+## Experimental Methods
+
+Please note that we have some methods marked as experimental, denoted by the [experimental] tag in the operation description. 
+This signifies that the method might be changed in the future without compatibility guarantees.
+
+If you encounter any problems with methods marked as experimental, feel free to raise a [Github issue](https://github.com/mongodb/atlas-sdk-go/issues/new/choose) and the team will work to resolve it.
+
+If you belive a method should be marked as stable, feel free to raise a PR appending the method's OperationId to our [operations.stable.json](../tools/transformer/src/operations.stable.json) set
+
 ## Example
 
 To learn more about using the SDK, see the [basic example](https://github.com/mongodb/atlas-sdk-go/blob/main/examples/basic/basic.go).

@@ -19,7 +19,6 @@ Method | HTTP request | Description
 Configure One Third-Party Service Integration
 
 
-
 ### Example
 
 ```go
@@ -104,7 +103,6 @@ Name | Type | Description  | Notes
 Remove One Third-Party Service Integration
 
 
-
 ### Example
 
 ```go
@@ -181,7 +179,6 @@ Name | Type | Description  | Notes
 Return One Third-Party Service Integration
 
 
-
 ### Example
 
 ```go
@@ -256,7 +253,6 @@ Name | Type | Description  | Notes
 > PaginatedIntegration ListThirdPartyIntegrations(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Return All Active Third-Party Service Integrations
-
 
 
 ### Example
@@ -338,6 +334,10 @@ Name | Type | Description  | Notes
 Update One Third-Party Service Integration
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 

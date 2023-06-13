@@ -4,18 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MaxGram** | **int** | Characters to include in the longest token that Atlas Search creates. | 
-**MinGram** | **int** | Characters to include in the shortest token that Atlas Search creates. | 
-**Type** | **string** | Human-readable label that identifies this tokenizer type. | 
-**Group** | **int** | Index of the character group within the matching expression to extract into tokens. Use &#x60;0&#x60; to extract all character groups. | 
-**Pattern** | **string** | Regular expression to match against. | 
+**MaxGram** | Pointer to **int** | Characters to include in the longest token that Atlas Search creates. | [optional] 
+**MinGram** | Pointer to **int** | Characters to include in the shortest token that Atlas Search creates. | [optional] 
+**Type** | Pointer to **string** | Human-readable label that identifies this tokenizer type. | [optional] 
+**Group** | Pointer to **int** | Index of the character group within the matching expression to extract into tokens. Use &#x60;0&#x60; to extract all character groups. | [optional] 
+**Pattern** | Pointer to **string** | Regular expression to match against. | [optional] 
 **MaxTokenLength** | Pointer to **int** | Maximum number of characters in a single token. Tokens greater than this length are split at this length into multiple tokens. | [optional] [default to 255]
 
 ## Methods
 
 ### NewFTSAnalyzersTokenizer
 
-`func NewFTSAnalyzersTokenizer(maxGram int, minGram int, type_ string, group int, pattern string, ) *FTSAnalyzersTokenizer`
+`func NewFTSAnalyzersTokenizer() *FTSAnalyzersTokenizer`
 
 NewFTSAnalyzersTokenizer instantiates a new FTSAnalyzersTokenizer object
 This constructor will assign default values to properties that have it defined,
@@ -49,6 +49,11 @@ and a boolean to check if the value has been set.
 
 SetMaxGram sets MaxGram field to given value.
 
+### HasMaxGram
+
+`func (o *FTSAnalyzersTokenizer) HasMaxGram() bool`
+
+HasMaxGram returns a boolean if a field has been set.
 
 ### GetMinGram
 
@@ -69,6 +74,11 @@ and a boolean to check if the value has been set.
 
 SetMinGram sets MinGram field to given value.
 
+### HasMinGram
+
+`func (o *FTSAnalyzersTokenizer) HasMinGram() bool`
+
+HasMinGram returns a boolean if a field has been set.
 
 ### GetType
 
@@ -89,6 +99,11 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
+### HasType
+
+`func (o *FTSAnalyzersTokenizer) HasType() bool`
+
+HasType returns a boolean if a field has been set.
 
 ### GetGroup
 
@@ -109,6 +124,11 @@ and a boolean to check if the value has been set.
 
 SetGroup sets Group field to given value.
 
+### HasGroup
+
+`func (o *FTSAnalyzersTokenizer) HasGroup() bool`
+
+HasGroup returns a boolean if a field has been set.
 
 ### GetPattern
 
@@ -129,6 +149,11 @@ and a boolean to check if the value has been set.
 
 SetPattern sets Pattern field to given value.
 
+### HasPattern
+
+`func (o *FTSAnalyzersTokenizer) HasPattern() bool`
+
+HasPattern returns a boolean if a field has been set.
 
 ### GetMaxTokenLength
 

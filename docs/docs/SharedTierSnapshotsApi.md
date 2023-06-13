@@ -17,6 +17,10 @@ Method | HTTP request | Description
 Download One M2 or M5 Cluster Snapshot
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -96,6 +100,10 @@ Name | Type | Description  | Notes
 Return One Snapshot for One M2 or M5 Cluster
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -176,6 +184,10 @@ Name | Type | Description  | Notes
 Return All Snapshots for One M2 or M5 Cluster
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 

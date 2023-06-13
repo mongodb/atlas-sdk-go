@@ -19,6 +19,10 @@ Method | HTTP request | Description
 Create One Private Endpoint for One Serverless Instance
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -98,6 +102,10 @@ Name | Type | Description  | Notes
 Remove One Private Endpoint for One Serverless Instance
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -178,6 +186,10 @@ Name | Type | Description  | Notes
 Return One Private Endpoint for One Serverless Instance
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
@@ -258,7 +270,6 @@ Name | Type | Description  | Notes
 Return All Private Endpoints for One Serverless Instance
 
 
-
 ### Example
 
 ```go
@@ -335,6 +346,10 @@ Name | Type | Description  | Notes
 Update One Private Endpoint for One Serverless Instance
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
