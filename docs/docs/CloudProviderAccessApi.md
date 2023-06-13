@@ -19,7 +19,6 @@ Method | HTTP request | Description
 Authorize One Cloud Provider Access Role
 
 
-
 ### Example
 
 ```go
@@ -98,7 +97,6 @@ Name | Type | Description  | Notes
 Create One Cloud Provider Access Role
 
 
-
 ### Example
 
 ```go
@@ -172,7 +170,6 @@ Name | Type | Description  | Notes
 > DeauthorizeCloudProviderAccessRole(ctx, groupId, cloudProvider, roleId).Execute()
 
 Deauthorize One Cloud Provider Access Role
-
 
 
 ### Example
@@ -252,6 +249,9 @@ Name | Type | Description  | Notes
 Return specified Cloud Provider Access Role
 
 
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
 
 ### Example
 
@@ -327,7 +327,6 @@ Name | Type | Description  | Notes
 > CloudProviderAccess ListCloudProviderAccessRoles(ctx, groupId).Execute()
 
 Return All Cloud Provider Access Roles
-
 
 
 ### Example

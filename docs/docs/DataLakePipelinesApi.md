@@ -27,7 +27,6 @@ Method | HTTP request | Description
 Create One Data Lake Pipeline
 
 
-
 ### Example
 
 ```go
@@ -101,7 +100,6 @@ Name | Type | Description  | Notes
 > map[string]interface{} DeletePipeline(ctx, groupId, pipelineName).Execute()
 
 Remove One Data Lake Pipeline
-
 
 
 ### Example
@@ -178,7 +176,6 @@ Name | Type | Description  | Notes
 > map[string]interface{} DeletePipelineRunDataset(ctx, groupId, pipelineName, pipelineRunId).Execute()
 
 Delete Pipeline Run Dataset
-
 
 
 ### Example
@@ -260,7 +257,6 @@ Name | Type | Description  | Notes
 Return One Data Lake Pipeline
 
 
-
 ### Example
 
 ```go
@@ -335,7 +331,6 @@ Name | Type | Description  | Notes
 > IngestionPipelineRun GetPipelineRun(ctx, groupId, pipelineName, pipelineRunId).Execute()
 
 Return One Data Lake Pipeline Run
-
 
 
 ### Example
@@ -415,7 +410,6 @@ Name | Type | Description  | Notes
 > PaginatedPipelineRun ListPipelineRuns(ctx, groupId, pipelineName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).CreatedBefore(createdBefore).Execute()
 
 Return All Data Lake Pipeline Runs from One Project
-
 
 
 ### Example
@@ -502,7 +496,6 @@ Name | Type | Description  | Notes
 Return Available Ingestion Schedules for One Data Lake Pipeline
 
 
-
 ### Example
 
 ```go
@@ -577,7 +570,6 @@ Name | Type | Description  | Notes
 > PaginatedBackupSnapshot ListPipelineSnapshots(ctx, groupId, pipelineName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).CompletedAfter(completedAfter).Execute()
 
 Return Available Backup Snapshots for One Data Lake Pipeline
-
 
 
 ### Example
@@ -664,7 +656,6 @@ Name | Type | Description  | Notes
 Return All Data Lake Pipelines from One Project
 
 
-
 ### Example
 
 ```go
@@ -736,7 +727,6 @@ Name | Type | Description  | Notes
 > IngestionPipeline PausePipeline(ctx, groupId, pipelineName).Execute()
 
 Pause One Data Lake Pipeline
-
 
 
 ### Example
@@ -815,7 +805,6 @@ Name | Type | Description  | Notes
 Resume One Data Lake Pipeline
 
 
-
 ### Example
 
 ```go
@@ -890,7 +879,6 @@ Name | Type | Description  | Notes
 > IngestionPipelineRun TriggerSnapshotIngestion(ctx, groupId, pipelineName, triggerIngestionRequest TriggerIngestionRequest).Execute()
 
 Trigger on demand snapshot ingestion
-
 
 
 ### Example
@@ -969,7 +957,6 @@ Name | Type | Description  | Notes
 > IngestionPipeline UpdatePipeline(ctx, groupId, pipelineName, ingestionPipeline IngestionPipeline).Execute()
 
 Update One Data Lake Pipeline
-
 
 
 ### Example

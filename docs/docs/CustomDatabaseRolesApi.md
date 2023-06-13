@@ -19,7 +19,6 @@ Method | HTTP request | Description
 Create One Custom Role
 
 
-
 ### Example
 
 ```go
@@ -95,7 +94,6 @@ Name | Type | Description  | Notes
 Remove One Custom Role from One Project
 
 
-
 ### Example
 
 ```go
@@ -168,7 +166,6 @@ Name | Type | Description  | Notes
 > CustomDBRole GetCustomDatabaseRole(ctx, groupId, roleName).Execute()
 
 Return One Custom Role in One Project
-
 
 
 ### Example
@@ -247,7 +244,6 @@ Name | Type | Description  | Notes
 Return All Custom Roles in One Project
 
 
-
 ### Example
 
 ```go
@@ -319,7 +315,6 @@ Name | Type | Description  | Notes
 > CustomDBRole UpdateCustomDatabaseRole(ctx, groupId, roleName, updateCustomDBRole UpdateCustomDBRole).Execute()
 
 Update One Custom Role in One Project
-
 
 
 ### Example
