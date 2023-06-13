@@ -116,6 +116,7 @@ func (r EndOutageSimulationApiRequest) Execute() (*ClusterOutageSimulation, *htt
 
 /*
 EndOutageSimulation End an Outage Simulation
+
 [experimental] Ends a cluster outage simulation.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -257,6 +258,7 @@ func (r GetOutageSimulationApiRequest) Execute() (*ClusterOutageSimulation, *htt
 
 /*
 GetOutageSimulation Return One Outage Simulation
+
 [experimental] Returns one outage simulation for one cluster.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -401,6 +403,7 @@ func (r StartOutageSimulationApiRequest) Execute() (*ClusterOutageSimulation, *h
 
 /*
 StartOutageSimulation Start an Outage Simulation
+
 [experimental] Starts a cluster outage simulation.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

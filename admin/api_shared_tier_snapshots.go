@@ -120,6 +120,7 @@ func (r DownloadSharedClusterBackupApiRequest) Execute() (*TenantRestore, *http.
 
 /*
 DownloadSharedClusterBackup Download One M2 or M5 Cluster Snapshot
+
 [experimental] Requests one snapshot for the specified shared cluster. This resource returns a `snapshotURL` that you can use to download the snapshot. This `snapshotURL` remains active for four hours after you make the request. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -270,6 +271,7 @@ func (r GetSharedClusterBackupApiRequest) Execute() (*TenantSnapshot, *http.Resp
 
 /*
 GetSharedClusterBackup Return One Snapshot for One M2 or M5 Cluster
+
 [experimental] Returns details for one snapshot for the specified shared cluster. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -420,6 +422,7 @@ func (r ListSharedClusterBackupsApiRequest) Execute() (*PaginatedTenantSnapshot,
 
 /*
 ListSharedClusterBackups Return All Snapshots for One M2 or M5 Cluster
+
 [experimental] Returns details for all snapshots for the specified shared cluster. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

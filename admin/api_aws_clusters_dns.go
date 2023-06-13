@@ -87,6 +87,7 @@ func (r GetAWSCustomDNSApiRequest) Execute() (*AWSCustomDNSEnabled, *http.Respon
 
 /*
 GetAWSCustomDNS Return One Custom DNS Configuration for Atlas Clusters on AWS
+
 [experimental] Returns the custom DNS configuration for AWS clusters in the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -219,6 +220,7 @@ func (r ToggleAWSCustomDNSApiRequest) Execute() (*AWSCustomDNSEnabled, *http.Res
 
 /*
 ToggleAWSCustomDNS Toggle State of One Custom DNS Configuration for Atlas Clusters on AWS
+
 [experimental] Enables or disables the custom DNS configuration for AWS clusters in the specified project. Enable custom DNS if you use AWS VPC peering and use your own DNS servers. To use this resource, the requesting API Key must have the Project Atlas Admin role. This resource doesn't require the API Key to have an Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

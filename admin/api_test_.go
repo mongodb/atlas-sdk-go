@@ -67,6 +67,7 @@ func (r VersionedExampleApiRequest) Execute() (*ExampleResourceResponseView20230
 
 /*
 VersionedExample Example resource info for versioning of the Atlas API
+
 [experimental] Returns some text dummy data for test purposes. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

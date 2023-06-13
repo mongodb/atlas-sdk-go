@@ -159,6 +159,7 @@ func (r DeleteLDAPConfigurationApiRequest) Execute() (*http.Response, error) {
 
 /*
 DeleteLDAPConfiguration Remove the Current LDAP User to DN Mapping
+
 [experimental] Removes the current LDAP Distinguished Name mapping captured in the “userToDNMapping“ document from the LDAP configuration for the specified project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -276,6 +277,7 @@ func (r GetLDAPConfigurationApiRequest) Execute() (*UserSecurity, *http.Response
 
 /*
 GetLDAPConfiguration Return the Current LDAP or X.509 Configuration
+
 [experimental] Returns the current LDAP configuration for the specified project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -408,6 +410,7 @@ func (r GetLDAPConfigurationStatusApiRequest) Execute() (*NDSLDAPVerifyConnectiv
 
 /*
 GetLDAPConfigurationStatus Return the Status of One Verify LDAP Configuration Request
+
 [experimental] Returns the status of one request to verify one LDAP configuration for the specified project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -549,6 +552,7 @@ func (r SaveLDAPConfigurationApiRequest) Execute() (*UserSecurity, *http.Respons
 
 /*
 SaveLDAPConfiguration Edit the LDAP or X.509 Configuration
+
 [experimental] Edits the LDAP configuration for the specified project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
 Updating this configuration triggers a rolling restart of the database.
@@ -689,6 +693,7 @@ func (r VerifyLDAPConfigurationApiRequest) Execute() (*NDSLDAPVerifyConnectivity
 
 /*
 VerifyLDAPConfiguration Verify the LDAP Configuration in One Project
+
 [experimental] Verifies the LDAP configuration for the specified project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

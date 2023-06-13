@@ -399,7 +399,7 @@ func (r CreateDataFederationPrivateEndpointApiRequest) Execute() (*PaginatedPriv
 /*
 CreateDataFederationPrivateEndpoint Create One Federated Database Instance and Online Archive Private Endpoint for One Project
 
-	Adds one private endpoint for Federated Database Instances and Online Archives to the specified projects. If the endpoint ID already exists and the associated comment is unchanged, Atlas Data Federation makes no change to the endpoint ID list. If the endpoint ID already exists and the associated comment is changed, Atlas Data Federation updates the comment value only in the endpoint ID list. If the endpoint ID doesn't exist, Atlas Data Federation appends the new endpoint to the list of endpoints in the endpoint ID list. Each region has an associated service name for the various endpoints in each region.
+Adds one private endpoint for Federated Database Instances and Online Archives to the specified projects. If the endpoint ID already exists and the associated comment is unchanged, Atlas Data Federation makes no change to the endpoint ID list. If the endpoint ID already exists and the associated comment is changed, Atlas Data Federation updates the comment value only in the endpoint ID list. If the endpoint ID doesn't exist, Atlas Data Federation appends the new endpoint to the list of endpoints in the endpoint ID list. Each region has an associated service name for the various endpoints in each region.
 
 	`us-east-1` is `com.amazonaws.vpce.us-east-1.vpce-svc-00e311695874992b4`.
 
@@ -564,6 +564,7 @@ func (r CreateFederatedDatabaseApiRequest) Execute() (*DataLakeTenant, *http.Res
 
 /*
 CreateFederatedDatabase Create One Federated Database Instance in One Project
+
 [experimental] Creates one federated database instance in the specified project. To use this resource, the requesting API Key must have the Project Owner or Project Charts Admin roles. This resource doesn't require the API Key to have an Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -715,6 +716,7 @@ func (r CreateOneDataFederationQueryLimitApiRequest) Execute() ([]DataFederation
 
 /*
 CreateOneDataFederationQueryLimit Configure One Query Limit for One Federated Database Instance
+
 [experimental] Creates or updates one query limit for one federated database instance. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -860,7 +862,7 @@ func (r DeleteDataFederationPrivateEndpointApiRequest) Execute() (map[string]int
 /*
 DeleteDataFederationPrivateEndpoint Remove One Federated Database Instance and Online Archive Private Endpoint from One Project
 
-	Removes one private endpoint for Federated Database Instances and Online Archives in the specified project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
+Removes one private endpoint for Federated Database Instances and Online Archives in the specified project. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1001,6 +1003,7 @@ func (r DeleteFederatedDatabaseApiRequest) Execute() (map[string]interface{}, *h
 
 /*
 DeleteFederatedDatabase Remove One Federated Database Instance from One Project
+
 [experimental] Removes one federated database instance from the specified project. To use this resource, the requesting API Key must have the Project Owner or Project Charts Admin roles. This resource doesn't require the API Key to have an Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -1139,6 +1142,7 @@ func (r DeleteOneDataFederationInstanceQueryLimitApiRequest) Execute() (map[stri
 
 /*
 DeleteOneDataFederationInstanceQueryLimit Delete One Query Limit For One Federated Database Instance
+
 [experimental] Deletes one query limit for one federated database instance. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -1295,6 +1299,7 @@ func (r DownloadFederatedDatabaseQueryLogsApiRequest) Execute() (*os.File, *http
 
 /*
 DownloadFederatedDatabaseQueryLogs Download Query Logs for One Federated Database Instance
+
 [experimental] Downloads the query logs for the specified federated database instance. To use this resource, the requesting API Key must have the Project Owner or Project Data Access Read Write roles. This resource doesn't require the API Key to have an Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -1437,7 +1442,7 @@ func (r GetDataFederationPrivateEndpointApiRequest) Execute() (*PrivateNetworkEn
 /*
 GetDataFederationPrivateEndpoint Return One Federated Database Instance and Online Archive Private Endpoint in One Project
 
-	Returns the specified private endpoint for Federated Database Instances or Online Archives in the specified project. To use this resource, the requesting API Key must have the Project Read Only or Project Charts Admin roles. This resource doesn't require the API Key to have an Access List.
+Returns the specified private endpoint for Federated Database Instances or Online Archives in the specified project. To use this resource, the requesting API Key must have the Project Read Only or Project Charts Admin roles. This resource doesn't require the API Key to have an Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1578,6 +1583,7 @@ func (r GetFederatedDatabaseApiRequest) Execute() (*DataLakeTenant, *http.Respon
 
 /*
 GetFederatedDatabase Return One Federated Database Instance in One Project
+
 [experimental] Returns the details of one federated database instance within the specified project. To use this resource, the requesting API Key must have the Project Read Only or Project Charts Admin roles. This resource doesn't require the API Key to have an Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -1738,7 +1744,7 @@ func (r ListDataFederationPrivateEndpointsApiRequest) Execute() (*PaginatedPriva
 /*
 ListDataFederationPrivateEndpoints Return All Federated Database Instance and Online Archive Private Endpoints in One Project
 
-	Returns all private endpoints for Federated Database Instances and Online Archives in the specified project. To use this resource, the requesting API Key must have the Project Read Only or Project Charts Admin roles. This resource doesn't require the API Key to have an Access List.
+Returns all private endpoints for Federated Database Instances and Online Archives in the specified project. To use this resource, the requesting API Key must have the Project Read Only or Project Charts Admin roles. This resource doesn't require the API Key to have an Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1897,6 +1903,7 @@ func (r ListFederatedDatabasesApiRequest) Execute() ([]DataLakeTenant, *http.Res
 
 /*
 ListFederatedDatabases Return All Federated Database Instances in One Project
+
 [experimental] Returns the details of all federated database instances in the specified project. To use this resource, the requesting API Key must have the Project Read Only or higher role. This resource doesn't require the API Key to have an Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -2039,6 +2046,7 @@ func (r ReturnFederatedDatabaseQueryLimitApiRequest) Execute() ([]DataFederation
 
 /*
 ReturnFederatedDatabaseQueryLimit Return One Federated Database Instance Query Limit for One Project
+
 [experimental] Returns the details of one query limit for the specified federated database instance in the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -2177,6 +2185,7 @@ func (r ReturnFederatedDatabaseQueryLimitsApiRequest) Execute() ([]DataFederatio
 
 /*
 ReturnFederatedDatabaseQueryLimits Return All Query Limits for One Federated Database Instance
+
 [experimental] Returns query limits for a federated databases instance in the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -2324,6 +2333,7 @@ func (r UpdateFederatedDatabaseApiRequest) Execute() (*DataLakeTenant, *http.Res
 
 /*
 UpdateFederatedDatabase Update One Federated Database Instance in One Project
+
 [experimental] Updates the details of one federated database instance in the specified project. To use this resource, the requesting API Key must have the Project Owner or higher role. This resource doesn't require the API Key to have an Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

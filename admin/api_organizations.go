@@ -399,7 +399,7 @@ func (r CreateOrganizationApiRequest) Execute() (*CreateOrganizationResponse, *h
 /*
 CreateOrganization Create One Organization
 
-	Creates one organization in MongoDB Cloud and links it to the requesting API Key's organization. To use this resource, the requesting API Key must have the Organization Owner role. The requesting API Key's organization must be a paying organization. To learn more, see [Configure a Paying Organization](https://www.mongodb.com/docs/atlas/billing/#configure-a-paying-organization) in the MongoDB Atlas documentation. This resource doesn't require the API Key to have an API Access List.
+Creates one organization in MongoDB Cloud and links it to the requesting API Key's organization. To use this resource, the requesting API Key must have the Organization Owner role. The requesting API Key's organization must be a paying organization. To learn more, see [Configure a Paying Organization](https://www.mongodb.com/docs/atlas/billing/#configure-a-paying-organization) in the MongoDB Atlas documentation. This resource doesn't require the API Key to have an API Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return CreateOrganizationApiRequest
@@ -529,7 +529,7 @@ func (r CreateOrganizationInvitationApiRequest) Execute() (*OrganizationInvitati
 /*
 CreateOrganizationInvitation Invite One MongoDB Cloud User to Join One Atlas Organization
 
-	Invites one MongoDB Cloud user to join the specified organization. The user must accept the invitation to access information within the specified organization. To use this resource, the requesting API Key must have the Organization User Admin role. This resource doesn't require the API Key to have an Access List.
+Invites one MongoDB Cloud user to join the specified organization. The user must accept the invitation to access information within the specified organization. To use this resource, the requesting API Key must have the Organization User Admin role. This resource doesn't require the API Key to have an Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -665,15 +665,16 @@ func (r DeleteOrganizationApiRequest) Execute() (map[string]interface{}, *http.R
 /*
 DeleteOrganization Remove One Organization
 
-	Removes one specified organization. MongoDB Cloud imposes the following limits on this resource:
+Removes one specified organization. MongoDB Cloud imposes the following limits on this resource:
 
-	- Organizations with active projects cannot be removed.
-	- All projects in the organization must be removed before you can remove the organization.
-	To use this resource, the requesting API Key must have the Organization Owner role. This resource doesn't require the API Key to have an Access List.
+  - Organizations with active projects cannot be removed.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-	@return DeleteOrganizationApiRequest
+  - All projects in the organization must be removed before you can remove the organization.
+    To use this resource, the requesting API Key must have the Organization Owner role. This resource doesn't require the API Key to have an Access List.
+
+    @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+    @param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+    @return DeleteOrganizationApiRequest
 */
 func (a *OrganizationsApiService) DeleteOrganization(ctx context.Context, orgId string) DeleteOrganizationApiRequest {
 	return DeleteOrganizationApiRequest{
@@ -802,7 +803,7 @@ func (r DeleteOrganizationInvitationApiRequest) Execute() (map[string]interface{
 /*
 DeleteOrganizationInvitation Cancel One Organization Invitation
 
-	Cancels one pending invitation sent to the specified MongoDB Cloud user to join an organization. You can't cancel an invitation that the user accepted. To use this resource, the requesting API Key must have the Organization User Admin role. This resource doesn't require the API Key to have an Access List.
+Cancels one pending invitation sent to the specified MongoDB Cloud user to join an organization. You can't cancel an invitation that the user accepted. To use this resource, the requesting API Key must have the Organization User Admin role. This resource doesn't require the API Key to have an Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -935,7 +936,7 @@ func (r GetOrganizationApiRequest) Execute() (*Organization, *http.Response, err
 /*
 GetOrganization Return One Organization
 
-	Returns one organization to which the requesting API key has access. To use this resource, the requesting API Key must have the Organization Member role. This resource doesn't require the API Key to have an Access List.
+Returns one organization to which the requesting API key has access. To use this resource, the requesting API Key must have the Organization Member role. This resource doesn't require the API Key to have an Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -1068,7 +1069,7 @@ func (r GetOrganizationInvitationApiRequest) Execute() (*OrganizationInvitation,
 /*
 GetOrganizationInvitation Return One Organization Invitation
 
-	Returns the details of one pending invitation to the specified organization. To use this resource, the requesting API Key must have the Organization User Admin role. This resource doesn't require the API Key to have an Access List.
+Returns the details of one pending invitation to the specified organization. To use this resource, the requesting API Key must have the Organization User Admin role. This resource doesn't require the API Key to have an Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -1206,6 +1207,7 @@ func (r GetOrganizationSettingsApiRequest) Execute() (*OrganizationSettings, *ht
 
 /*
 GetOrganizationSettings Return Settings for One Organization
+
 [experimental] Returns details about the specified organization's settings. To use this resource, the requesting API Key must have the Organization Owner role. This resource does not require the API Key to have an API access list.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -1345,7 +1347,7 @@ func (r ListOrganizationInvitationsApiRequest) Execute() ([]OrganizationInvitati
 /*
 ListOrganizationInvitations Return All Organization Invitations
 
-	Returns all pending invitations to the specified organization. To use this resource, the requesting API Key must have the Organization User Admin role. This resource doesn't require the API Key to have an Access List.
+Returns all pending invitations to the specified organization. To use this resource, the requesting API Key must have the Organization User Admin role. This resource doesn't require the API Key to have an Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -1514,7 +1516,7 @@ func (r ListOrganizationProjectsApiRequest) Execute() (*PaginatedAtlasGroup, *ht
 /*
 ListOrganizationProjects Return One or More Projects in One Organization
 
-	Returns multiple projects in the specified organization. Each organization can have multiple projects. Use projects to:
+Returns multiple projects in the specified organization. Each organization can have multiple projects. Use projects to:
 
 - Isolate different environments, such as development, test, or production environments, from each other.
 - Associate different MongoDB Cloud users or teams with different environments, or give different permission to MongoDB Cloud users in different environments.
@@ -1702,7 +1704,7 @@ func (r ListOrganizationUsersApiRequest) Execute() (*PaginatedAppUser, *http.Res
 /*
 ListOrganizationUsers Return All MongoDB Cloud Users in One Organization
 
-	Returns details about the MongoDB Cloud users associated with the specified organization. Each MongoDB Cloud user returned must belong to the specified organization or to a project within the specified organization. To use this resource, the requesting API Key must have the Organization Member role. This resource doesn't require the API Key to have an Access List.
+Returns details about the MongoDB Cloud users associated with the specified organization. Each MongoDB Cloud user returned must belong to the specified organization or to a project within the specified organization. To use this resource, the requesting API Key must have the Organization Member role. This resource doesn't require the API Key to have an Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -1886,7 +1888,7 @@ func (r ListOrganizationsApiRequest) Execute() (*PaginatedOrganization, *http.Re
 /*
 ListOrganizations Return All Organizations
 
-	Returns all organizations to which you belong. To use this resource, the requesting API Key must have the Organization Member role. This resource doesn't require the API Key to have an Access List.
+Returns all organizations to which you belong. To use this resource, the requesting API Key must have the Organization Member role. This resource doesn't require the API Key to have an Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ListOrganizationsApiRequest
@@ -2033,6 +2035,7 @@ func (r RenameOrganizationApiRequest) Execute() (*Organization, *http.Response, 
 
 /*
 RenameOrganization Rename One Organization
+
 [experimental] Renames one organization. To use this resource, the requesting API Key must have the Organization Owner role. This resource doesn't require the API Key to have an Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -2172,7 +2175,7 @@ func (r UpdateOrganizationInvitationApiRequest) Execute() (*OrganizationInvitati
 /*
 UpdateOrganizationInvitation Update One Organization Invitation
 
-	Updates the details of one pending invitation to the specified organization. To specify which invitation, provide the username of the invited user. To use this resource, the requesting API Key must have the Organization User Admin role. This resource doesn't require the API Key to have an Access List.
+Updates the details of one pending invitation to the specified organization. To specify which invitation, provide the username of the invited user. To use this resource, the requesting API Key must have the Organization User Admin role. This resource doesn't require the API Key to have an Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -2314,7 +2317,7 @@ func (r UpdateOrganizationInvitationByIdApiRequest) Execute() (*OrganizationInvi
 /*
 UpdateOrganizationInvitationById Update One Organization Invitation by Invitation ID
 
-	Updates the details of one pending invitation to the specified organization. To specify which invitation, provide the unique identification string for that invitation. Use the Return All Organization Invitations endpoint to retrieve IDs for all pending organization invitations. To use this resource, the requesting API Key must have the Organization Owner role. This resource doesn't require the API Key to have an Access List.
+Updates the details of one pending invitation to the specified organization. To specify which invitation, provide the unique identification string for that invitation. Use the Return All Organization Invitations endpoint to retrieve IDs for all pending organization invitations. To use this resource, the requesting API Key must have the Organization Owner role. This resource doesn't require the API Key to have an Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -2461,6 +2464,7 @@ func (r UpdateOrganizationSettingsApiRequest) Execute() (*OrganizationSettings, 
 
 /*
 UpdateOrganizationSettings Update Settings for One Organization
+
 [experimental] Updates the organization's settings. To use this resource, the requesting API Key must have the Organization Owner role. This resource does not require the API Key to have an API access list.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

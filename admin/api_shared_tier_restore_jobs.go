@@ -120,6 +120,7 @@ func (r CreateSharedClusterBackupRestoreJobApiRequest) Execute() (*TenantRestore
 
 /*
 CreateSharedClusterBackupRestoreJob Create One Restore Job from One M2 or M5 Cluster
+
 [experimental] Restores the specified cluster. MongoDB Cloud limits which clusters can be the target clusters of a restore. The target cluster can't use encryption at rest, run a major release MongoDB version different than the snapshot, or receive client requests during restores. MongoDB Cloud deletes all existing data on the target cluster prior to the restore operation. To use this resource, the requesting API Key must have the Project Owner role. This resource doesn't require the API Key to have an Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -270,6 +271,7 @@ func (r GetSharedClusterBackupRestoreJobApiRequest) Execute() (*TenantRestore, *
 
 /*
 GetSharedClusterBackupRestoreJob Return One Restore Job for One M2 or M5 Cluster
+
 [experimental] Returns the specified restore job. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -420,6 +422,7 @@ func (r ListSharedClusterBackupRestoreJobsApiRequest) Execute() (*PaginatedTenan
 
 /*
 ListSharedClusterBackupRestoreJobs Return All Restore Jobs for One M2 or M5 Cluster
+
 [experimental] Returns all restore jobs for the specified M2 or M5 cluster. Restore jobs restore a cluster using a snapshot. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
