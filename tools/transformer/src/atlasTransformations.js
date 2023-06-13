@@ -7,7 +7,7 @@ const {
   transformOneOfProperties,
   applyRemoveEnumsTransformations,
   applyRemoveObjectAdditonalProperties,
-  applyAddExperimentalToDescriptions,
+  applyAddExperimentalTag,
 } = require("./transformations");
 
 const removeUnusedSchemas = require("./engine/removeUnused");
@@ -30,7 +30,7 @@ module.exports = function runTransformations(openapi) {
     ".components.schemas.ApiAtlasFTSAnalyzersViewManual.properties.tokenizer",
   ]);
 
-  openapi = applyAddExperimentalToDescriptions(openapi, stableOperationIds);
+  openapi = applyAddExperimentalTag(openapi, stableOperationIds);
   openapi = applyDiscriminatorTransformations(openapi);
   openapi = applyOneOfTransformations(openapi);
   openapi = applyAllOfTransformations(openapi);
