@@ -6,7 +6,7 @@ All URIs are relative to *{{basePath}}*
 
 Class        | Method        | HTTP request  | Description   | Experimental   
 ------------ | ------------- | ------------- | ------------- | -------------
-{{#apiInfo}}{{#apis}}{{#operations}}{{#operation}}*{{classname}}* | [{{operationId}}](./{{apiDocPath}}{{classname}}.md#{{operationIdLowerCase}}) | **{{httpMethod}}** {{path}} | {{summary}} | {{vendorExtensions.x-experimental}}
+{{#apiInfo}}{{#apis}}{{#operations}}{{#operation}}*{{classname}}* | [{{operationId}}](./{{apiDocPath}}{{classname}}.md#{{operationIdLowerCase}}) | **{{httpMethod}}** {{path}} | {{summary}} | {{#vendorExtensions.x-experimental}}YES{{/vendorExtensions.x-experimental}}{{^vendorExtensions.x-experimental}}NO{{/vendorExtensions.x-experimental}}
 {{/operation}}{{/operations}}{{/apis}}{{/apiInfo}}
 
 ## Documentation For Models
