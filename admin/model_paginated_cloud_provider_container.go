@@ -9,7 +9,7 @@ import (
 // checks if the PaginatedCloudProviderContainer type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &PaginatedCloudProviderContainer{}
 
-// PaginatedCloudProviderContainer List of Network Peering Containers that Amazon Web Services serves.
+// PaginatedCloudProviderContainer struct for PaginatedCloudProviderContainer
 type PaginatedCloudProviderContainer struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	Links []Link `json:"links,omitempty"`

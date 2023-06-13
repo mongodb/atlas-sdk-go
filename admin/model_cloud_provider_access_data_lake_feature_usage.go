@@ -9,7 +9,7 @@ import (
 // checks if the CloudProviderAccessDataLakeFeatureUsage type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &CloudProviderAccessDataLakeFeatureUsage{}
 
-// CloudProviderAccessDataLakeFeatureUsage Details that describe the Atlas Data Lakes linked to this Amazon Web Services (AWS) Identity and Access Management (IAM) role.
+// CloudProviderAccessDataLakeFeatureUsage struct for CloudProviderAccessDataLakeFeatureUsage
 type CloudProviderAccessDataLakeFeatureUsage struct {
 	FeatureId *CloudProviderAccessFeatureUsageDataLakeFeatureId `json:"featureId,omitempty"`
 	// Human-readable label that describes one MongoDB Cloud feature linked to this Amazon Web Services (AWS) Identity and Access Management (IAM) role.

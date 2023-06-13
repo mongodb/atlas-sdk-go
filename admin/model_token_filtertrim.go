@@ -9,7 +9,7 @@ import (
 // checks if the TokenFiltertrim type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &TokenFiltertrim{}
 
-// TokenFiltertrim Filter that trims leading and trailing whitespace from tokens.
+// TokenFiltertrim struct for TokenFiltertrim
 type TokenFiltertrim struct {
 	// Human-readable label that identifies this token filter type.
 	Type string `json:"type"`

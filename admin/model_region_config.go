@@ -9,7 +9,7 @@ import (
 // checks if the RegionConfig type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &RegionConfig{}
 
-// RegionConfig Cloud service provider on which MongoDB Cloud provisions the hosts.
+// RegionConfig struct for RegionConfig
 type RegionConfig struct {
 	AnalyticsAutoScaling *AutoScalingV15        `json:"analyticsAutoScaling,omitempty"`
 	AnalyticsSpecs       *DedicatedHardwareSpec `json:"analyticsSpecs,omitempty"`

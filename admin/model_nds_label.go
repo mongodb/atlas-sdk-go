@@ -9,7 +9,7 @@ import (
 // checks if the NDSLabel type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &NDSLabel{}
 
-// NDSLabel Human-readable labels applied to this MongoDB Cloud component.
+// NDSLabel struct for NDSLabel
 type NDSLabel struct {
 	// Key applied to tag and categorize this component.
 	Key *string `json:"key,omitempty"`

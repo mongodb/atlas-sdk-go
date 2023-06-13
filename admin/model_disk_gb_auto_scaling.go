@@ -9,7 +9,7 @@ import (
 // checks if the DiskGBAutoScaling type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &DiskGBAutoScaling{}
 
-// DiskGBAutoScaling Setting that enables disk auto-scaling.
+// DiskGBAutoScaling struct for DiskGBAutoScaling
 type DiskGBAutoScaling struct {
 	// Flag that indicates whether this cluster enables disk auto-scaling. The maximum memory allowed for the selected cluster tier and the oplog size can limit storage auto-scaling.
 	Enabled *bool `json:"enabled,omitempty"`

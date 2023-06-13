@@ -9,7 +9,7 @@ import (
 // checks if the ClusterDescriptionConnectionStringsPrivateEndpoint type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ClusterDescriptionConnectionStringsPrivateEndpoint{}
 
-// ClusterDescriptionConnectionStringsPrivateEndpoint Private endpoint-aware connection string that you can use to connect to this cluster through a private endpoint.
+// ClusterDescriptionConnectionStringsPrivateEndpoint struct for ClusterDescriptionConnectionStringsPrivateEndpoint
 type ClusterDescriptionConnectionStringsPrivateEndpoint struct {
 	// Private endpoint-aware connection string that uses the `mongodb://` protocol to connect to MongoDB Cloud through a private endpoint.
 	ConnectionString *string `json:"connectionString,omitempty"`

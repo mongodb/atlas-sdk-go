@@ -10,7 +10,7 @@ import (
 // checks if the DiskBackupReplicaSet type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &DiskBackupReplicaSet{}
 
-// DiskBackupReplicaSet Details of the replica set snapshot that MongoDB Cloud created.
+// DiskBackupReplicaSet struct for DiskBackupReplicaSet
 type DiskBackupReplicaSet struct {
 	// Human-readable label that identifies the cloud provider that stores this snapshot. The resource returns this parameter when `\"type\": \"replicaSet\"`.
 	CloudProvider *string `json:"cloudProvider,omitempty"`

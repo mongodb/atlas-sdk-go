@@ -9,7 +9,7 @@ import (
 // checks if the DiskBackupShardedClusterSnapshotMember type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &DiskBackupShardedClusterSnapshotMember{}
 
-// DiskBackupShardedClusterSnapshotMember List that includes the snapshots and the cloud provider that stores the snapshots. The resource returns this parameter when `\"type\" : \"SHARDED_CLUSTER\"`.
+// DiskBackupShardedClusterSnapshotMember struct for DiskBackupShardedClusterSnapshotMember
 type DiskBackupShardedClusterSnapshotMember struct {
 	// Human-readable label that identifies the cloud provider that stores this snapshot. The resource returns this parameter when `\"type\": \"replicaSet\"`.
 	CloudProvider string `json:"cloudProvider"`

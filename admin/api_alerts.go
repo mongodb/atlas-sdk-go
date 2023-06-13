@@ -91,9 +91,9 @@ type AlertsApi interface {
 	listAlertsExecute(r ListAlertsApiRequest) (*PaginatedAlert, *http.Response, error)
 
 	/*
-		ListAlertsByAlertConfigurationId Return All Open Alerts for Alert Configuration
+		ListAlertsByAlertConfigurationId [experimental] Returns all open alerts that the specified alert configuration triggers. These alert configurations apply to the specified project only. Alert configurations define the triggers and notification methods for alerts. Open alerts have been triggered but remain unacknowledged. To use this resource, the requesting API Key must have the Project Read Only role.   This resource remains under revision and may change.
 
-		(experimental) Returns all open alerts that the specified alert configuration triggers. These alert configurations apply to the specified project only. Alert configurations define the triggers and notification methods for alerts. Open alerts have been triggered but remain unacknowledged. To use this resource, the requesting API Key must have the Project Read Only role.
+		Returns all open alerts that the specified alert configuration triggers. These alert configurations apply to the specified project only. Alert configurations define the triggers and notification methods for alerts. Open alerts have been triggered but remain unacknowledged. To use this resource, the requesting API Key must have the Project Read Only role.
 
 	 This resource remains under revision and may change.
 
@@ -104,7 +104,7 @@ type AlertsApi interface {
 	*/
 	ListAlertsByAlertConfigurationId(ctx context.Context, groupId string, alertConfigId string) ListAlertsByAlertConfigurationIdApiRequest
 	/*
-		ListAlertsByAlertConfigurationId Return All Open Alerts for Alert Configuration
+		ListAlertsByAlertConfigurationId [experimental] Returns all open alerts that the specified alert configuration triggers. These alert configurations apply to the specified project only. Alert configurations define the triggers and notification methods for alerts. Open alerts have been triggered but remain unacknowledged. To use this resource, the requesting API Key must have the Project Read Only role.   This resource remains under revision and may change.
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -662,9 +662,9 @@ func (r ListAlertsByAlertConfigurationIdApiRequest) Execute() (*PaginatedAlert, 
 }
 
 /*
-ListAlertsByAlertConfigurationId Return All Open Alerts for Alert Configuration
+ListAlertsByAlertConfigurationId [experimental] Returns all open alerts that the specified alert configuration triggers. These alert configurations apply to the specified project only. Alert configurations define the triggers and notification methods for alerts. Open alerts have been triggered but remain unacknowledged. To use this resource, the requesting API Key must have the Project Read Only role.   This resource remains under revision and may change.
 
-(experimental) Returns all open alerts that the specified alert configuration triggers. These alert configurations apply to the specified project only. Alert configurations define the triggers and notification methods for alerts. Open alerts have been triggered but remain unacknowledged. To use this resource, the requesting API Key must have the Project Read Only role.
+Returns all open alerts that the specified alert configuration triggers. These alert configurations apply to the specified project only. Alert configurations define the triggers and notification methods for alerts. Open alerts have been triggered but remain unacknowledged. To use this resource, the requesting API Key must have the Project Read Only role.
 
 	This resource remains under revision and may change.
 

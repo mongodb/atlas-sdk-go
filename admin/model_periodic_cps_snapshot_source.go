@@ -9,7 +9,7 @@ import (
 // checks if the PeriodicCpsSnapshotSource type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &PeriodicCpsSnapshotSource{}
 
-// PeriodicCpsSnapshotSource Scheduled Cloud Provider Snapshot as Source for a Data Lake Pipeline.
+// PeriodicCpsSnapshotSource struct for PeriodicCpsSnapshotSource
 type PeriodicCpsSnapshotSource struct {
 	// Human-readable name that identifies the cluster.
 	ClusterName *string `json:"clusterName,omitempty"`

@@ -9,7 +9,7 @@ import (
 // checks if the DeleteCopiedBackups type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &DeleteCopiedBackups{}
 
-// DeleteCopiedBackups Deleted copy setting whose backup copies need to also be deleted.
+// DeleteCopiedBackups struct for DeleteCopiedBackups
 type DeleteCopiedBackups struct {
 	// Human-readable label that identifies the cloud provider for the deleted copy setting whose backup copies you want to delete.
 	CloudProvider *string `json:"cloudProvider,omitempty"`

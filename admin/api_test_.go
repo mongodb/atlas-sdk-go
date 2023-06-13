@@ -13,16 +13,16 @@ import (
 type TestApi interface {
 
 	/*
-		VersionedExample Example resource info for versioning of the Atlas API
+		VersionedExample [experimental] Returns some text dummy data for test purposes. Deprecated versions: v2-{2023-01-01}
 
-		(experimental) Returns some text dummy data for test purposes. Deprecated versions: v2-{2023-01-01}
+		Returns some text dummy data for test purposes. Deprecated versions: v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@return VersionedExampleApiRequest
 	*/
 	VersionedExample(ctx context.Context) VersionedExampleApiRequest
 	/*
-		VersionedExample Example resource info for versioning of the Atlas API
+		VersionedExample [experimental] Returns some text dummy data for test purposes. Deprecated versions: v2-{2023-01-01}
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -66,9 +66,9 @@ func (r VersionedExampleApiRequest) Execute() (*ExampleResourceResponseView20230
 }
 
 /*
-VersionedExample Example resource info for versioning of the Atlas API
+VersionedExample [experimental] Returns some text dummy data for test purposes. Deprecated versions: v2-{2023-01-01}
 
-(experimental) Returns some text dummy data for test purposes. Deprecated versions: v2-{2023-01-01}
+Returns some text dummy data for test purposes. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return VersionedExampleApiRequest

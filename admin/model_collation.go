@@ -9,7 +9,7 @@ import (
 // checks if the Collation type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Collation{}
 
-// Collation One or more settings that specify language-specific rules to compare strings within this index.
+// Collation struct for Collation
 type Collation struct {
 	// Method to handle whitespace and punctuation as base characters for purposes of comparison.  | Value | Evaluate Whitespace and Punctuation as Base Characters | |---|---| | `\"non-ignorable\"` | Yes | | `\"shifted\"` | No. MongoDB Cloud distinguishes these characters when `\"strength\" > 3`. |
 	Alternate *string `json:"alternate,omitempty"`

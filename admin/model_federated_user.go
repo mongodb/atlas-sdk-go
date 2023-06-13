@@ -9,7 +9,7 @@ import (
 // checks if the FederatedUser type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &FederatedUser{}
 
-// FederatedUser MongoDB Cloud user linked to this federated authentication.
+// FederatedUser struct for FederatedUser
 type FederatedUser struct {
 	// Email address of the MongoDB Cloud user linked to the federated organization.
 	EmailAddress string `json:"emailAddress"`

@@ -9,7 +9,7 @@ import (
 // checks if the TokenFilterlength type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &TokenFilterlength{}
 
-// TokenFilterlength Filter that removes tokens that are too short or too long.
+// TokenFilterlength struct for TokenFilterlength
 type TokenFilterlength struct {
 	// Number that specifies the maximum length of a token. Value must be greater than or equal to **min**.
 	Max *int `json:"max,omitempty"`

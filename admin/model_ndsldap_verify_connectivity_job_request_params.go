@@ -9,7 +9,7 @@ import (
 // checks if the NDSLDAPVerifyConnectivityJobRequestParams type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &NDSLDAPVerifyConnectivityJobRequestParams{}
 
-// NDSLDAPVerifyConnectivityJobRequestParams Request information needed to verify an Lightweight Directory Access Protocol (LDAP) over Transport Layer Security (TLS) configuration. The response does not return the **bindPassword**.
+// NDSLDAPVerifyConnectivityJobRequestParams struct for NDSLDAPVerifyConnectivityJobRequestParams
 type NDSLDAPVerifyConnectivityJobRequestParams struct {
 	// Lightweight Directory Access Protocol (LDAP) query template that MongoDB Cloud applies to create an LDAP query to return the LDAP groups associated with the authenticated MongoDB user. MongoDB Cloud uses this parameter only for user authorization.  Use the `{USER}` placeholder in the Uniform Resource Locator (URL) to substitute the authenticated username. The query relates to the host specified with the hostname. Format this query per [RFC 4515](https://tools.ietf.org/search/rfc4515) and [RFC 4516](https://datatracker.ietf.org/doc/html/rfc4516).
 	AuthzQueryTemplate *string `json:"authzQueryTemplate,omitempty"`

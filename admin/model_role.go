@@ -9,7 +9,7 @@ import (
 // checks if the Role type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Role{}
 
-// Role Range of resources available to this database user.
+// Role struct for Role
 type Role struct {
 	// Collection on which this role applies.
 	CollectionName *string `json:"collectionName,omitempty"`

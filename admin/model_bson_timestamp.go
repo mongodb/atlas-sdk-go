@@ -10,7 +10,7 @@ import (
 // checks if the BSONTimestamp type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &BSONTimestamp{}
 
-// BSONTimestamp BSON timestamp that indicates when the checkpoint token entry in the oplog occurred.
+// BSONTimestamp struct for BSONTimestamp
 type BSONTimestamp struct {
 	// Date and time when the oplog recorded this database operation. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	Date *time.Time `json:"date,omitempty"`

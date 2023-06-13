@@ -9,7 +9,7 @@ import (
 // checks if the Tag type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Tag{}
 
-// Tag A key-value pair that tags and categorizes a MongoDB Cloud org, project, or cluster
+// Tag struct for Tag
 type Tag struct {
 	// Key applied to the tag.
 	Key *string `json:"key,omitempty"`

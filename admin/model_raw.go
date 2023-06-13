@@ -10,7 +10,7 @@ import (
 // checks if the Raw type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Raw{}
 
-// Raw Additional meta information captured about this event. The response returns this parameter as a JSON object when the query parameter `includeRaw=true`. The list of fields in the raw document may change. Don't rely on raw values for formal monitoring.
+// Raw struct for Raw
 type Raw struct {
 	// Unique identifier of event type.
 	T *string `json:"_t,omitempty"`

@@ -9,7 +9,7 @@ import (
 // checks if the DBAction type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &DBAction{}
 
-// DBAction Privilege action that the role grants.
+// DBAction struct for DBAction
 type DBAction struct {
 	// Human-readable label that identifies the privilege action.
 	Action string `json:"action"`

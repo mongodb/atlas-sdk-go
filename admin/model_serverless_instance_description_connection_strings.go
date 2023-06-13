@@ -9,7 +9,7 @@ import (
 // checks if the ServerlessInstanceDescriptionConnectionStrings type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ServerlessInstanceDescriptionConnectionStrings{}
 
-// ServerlessInstanceDescriptionConnectionStrings Collection of Uniform Resource Locators that point to the MongoDB database.
+// ServerlessInstanceDescriptionConnectionStrings struct for ServerlessInstanceDescriptionConnectionStrings
 type ServerlessInstanceDescriptionConnectionStrings struct {
 	// List of private endpoint-aware connection strings that you can use to connect to this serverless instance through a private endpoint. This parameter returns only if you created a private endpoint for this serverless instance and it is AVAILABLE.
 	PrivateEndpoint []ServerlessInstanceDescriptionConnectionStringsPrivateEndpoint `json:"privateEndpoint,omitempty"`

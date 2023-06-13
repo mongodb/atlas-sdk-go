@@ -41,9 +41,9 @@ type MonitoringAndLogsApi interface {
 	getAtlasProcessExecute(r GetAtlasProcessApiRequest) (*HostViewAtlas, *http.Response, error)
 
 	/*
-		GetDatabase Return One Database for a MongoDB Process
+		GetDatabase [experimental] Returns one database running on the specified host for the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
-		(experimental) Returns one database running on the specified host for the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+		Returns one database running on the specified host for the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -53,7 +53,7 @@ type MonitoringAndLogsApi interface {
 	*/
 	GetDatabase(ctx context.Context, groupId string, databaseName string, processId string) GetDatabaseApiRequest
 	/*
-		GetDatabase Return One Database for a MongoDB Process
+		GetDatabase [experimental] Returns one database running on the specified host for the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -177,9 +177,9 @@ type MonitoringAndLogsApi interface {
 	getHostMeasurementsExecute(r GetHostMeasurementsApiRequest) (*MeasurementsGeneralViewAtlas, *http.Response, error)
 
 	/*
-		GetIndexMetrics Return Atlas Search Metrics for One Index in One Specified Namespace
+		GetIndexMetrics [experimental] Returns the Atlas Search metrics data series within the provided time range for one namespace and index name on the specified process. You must have the Project Read Only or higher role to view the Atlas Search metric types.
 
-		(experimental) Returns the Atlas Search metrics data series within the provided time range for one namespace and index name on the specified process. You must have the Project Read Only or higher role to view the Atlas Search metric types.
+		Returns the Atlas Search metrics data series within the provided time range for one namespace and index name on the specified process. You must have the Project Read Only or higher role to view the Atlas Search metric types.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
@@ -191,7 +191,7 @@ type MonitoringAndLogsApi interface {
 	*/
 	GetIndexMetrics(ctx context.Context, processId string, indexName string, databaseName string, collectionName string, groupId string) GetIndexMetricsApiRequest
 	/*
-		GetIndexMetrics Return Atlas Search Metrics for One Index in One Specified Namespace
+		GetIndexMetrics [experimental] Returns the Atlas Search metrics data series within the provided time range for one namespace and index name on the specified process. You must have the Project Read Only or higher role to view the Atlas Search metric types.
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -204,9 +204,9 @@ type MonitoringAndLogsApi interface {
 	getIndexMetricsExecute(r GetIndexMetricsApiRequest) (*MeasurementsIndexes, *http.Response, error)
 
 	/*
-		GetMeasurements Return Atlas Search Hardware and Status Metrics
+		GetMeasurements [experimental] Returns the Atlas Search hardware and status data series within the provided time range for one process in the specified project. You must have the Project Read Only or higher role to view the Atlas Search metric types.
 
-		(experimental) Returns the Atlas Search hardware and status data series within the provided time range for one process in the specified project. You must have the Project Read Only or higher role to view the Atlas Search metric types.
+		Returns the Atlas Search hardware and status data series within the provided time range for one process in the specified project. You must have the Project Read Only or higher role to view the Atlas Search metric types.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
@@ -215,7 +215,7 @@ type MonitoringAndLogsApi interface {
 	*/
 	GetMeasurements(ctx context.Context, processId string, groupId string) GetMeasurementsApiRequest
 	/*
-		GetMeasurements Return Atlas Search Hardware and Status Metrics
+		GetMeasurements [experimental] Returns the Atlas Search hardware and status data series within the provided time range for one process in the specified project. You must have the Project Read Only or higher role to view the Atlas Search metric types.
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -275,9 +275,9 @@ type MonitoringAndLogsApi interface {
 	listDatabasesExecute(r ListDatabasesApiRequest) (*PaginatedDatabase, *http.Response, error)
 
 	/*
-		ListDiskMeasurements Return Measurements of One Disk
+		ListDiskMeasurements [experimental] Returns the measurements of one disk or partition for the specified host for the specified project. Returned value can be one of the following: - Throughput of I/O operations for the disk partition used for the MongoDB process - Percentage of time during which requests the partition issued and serviced - Latency per operation type of the disk partition used for the MongoDB process - Amount of free and used disk space on the disk partition used for the MongoDB process   To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
-		(experimental) Returns the measurements of one disk or partition for the specified host for the specified project. Returned value can be one of the following:
+		Returns the measurements of one disk or partition for the specified host for the specified project. Returned value can be one of the following:
 	- Throughput of I/O operations for the disk partition used for the MongoDB process
 	- Percentage of time during which requests the partition issued and serviced
 	- Latency per operation type of the disk partition used for the MongoDB process
@@ -293,7 +293,7 @@ type MonitoringAndLogsApi interface {
 	*/
 	ListDiskMeasurements(ctx context.Context, partitionName string, groupId string, processId string) ListDiskMeasurementsApiRequest
 	/*
-		ListDiskMeasurements Return Measurements of One Disk
+		ListDiskMeasurements [experimental] Returns the measurements of one disk or partition for the specified host for the specified project. Returned value can be one of the following: - Throughput of I/O operations for the disk partition used for the MongoDB process - Percentage of time during which requests the partition issued and serviced - Latency per operation type of the disk partition used for the MongoDB process - Amount of free and used disk space on the disk partition used for the MongoDB process   To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -330,9 +330,9 @@ type MonitoringAndLogsApi interface {
 	listDiskPartitionsExecute(r ListDiskPartitionsApiRequest) (*PaginatedDiskPartition, *http.Response, error)
 
 	/*
-		ListIndexMetrics Return All Atlas Search Index Metrics for One Namespace
+		ListIndexMetrics [experimental] Returns the Atlas Search index metrics within the specified time range for one namespace in the specified process.
 
-		(experimental) Returns the Atlas Search index metrics within the specified time range for one namespace in the specified process.
+		Returns the Atlas Search index metrics within the specified time range for one namespace in the specified process.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
@@ -343,7 +343,7 @@ type MonitoringAndLogsApi interface {
 	*/
 	ListIndexMetrics(ctx context.Context, processId string, databaseName string, collectionName string, groupId string) ListIndexMetricsApiRequest
 	/*
-		ListIndexMetrics Return All Atlas Search Index Metrics for One Namespace
+		ListIndexMetrics [experimental] Returns the Atlas Search index metrics within the specified time range for one namespace in the specified process.
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -356,9 +356,9 @@ type MonitoringAndLogsApi interface {
 	listIndexMetricsExecute(r ListIndexMetricsApiRequest) (*MeasurementsIndexes, *http.Response, error)
 
 	/*
-		ListMetricTypes Return All Atlas Search Metric Types for One Process
+		ListMetricTypes [experimental] Returns all Atlas Search metric types available for one process in the specified project. You must have the Project Read Only or higher role to view the Atlas Search metric types.
 
-		(experimental) Returns all Atlas Search metric types available for one process in the specified project. You must have the Project Read Only or higher role to view the Atlas Search metric types.
+		Returns all Atlas Search metric types available for one process in the specified project. You must have the Project Read Only or higher role to view the Atlas Search metric types.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
@@ -367,7 +367,7 @@ type MonitoringAndLogsApi interface {
 	*/
 	ListMetricTypes(ctx context.Context, processId string, groupId string) ListMetricTypesApiRequest
 	/*
-		ListMetricTypes Return All Atlas Search Metric Types for One Process
+		ListMetricTypes [experimental] Returns all Atlas Search metric types available for one process in the specified project. You must have the Project Read Only or higher role to view the Atlas Search metric types.
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -548,9 +548,9 @@ func (r GetDatabaseApiRequest) Execute() (*Database, *http.Response, error) {
 }
 
 /*
-GetDatabase Return One Database for a MongoDB Process
+GetDatabase [experimental] Returns one database running on the specified host for the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
-(experimental) Returns one database running on the specified host for the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+Returns one database running on the specified host for the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1534,9 +1534,9 @@ func (r GetIndexMetricsApiRequest) Execute() (*MeasurementsIndexes, *http.Respon
 }
 
 /*
-GetIndexMetrics Return Atlas Search Metrics for One Index in One Specified Namespace
+GetIndexMetrics [experimental] Returns the Atlas Search metrics data series within the provided time range for one namespace and index name on the specified process. You must have the Project Read Only or higher role to view the Atlas Search metric types.
 
-(experimental) Returns the Atlas Search metrics data series within the provided time range for one namespace and index name on the specified process. You must have the Project Read Only or higher role to view the Atlas Search metric types.
+Returns the Atlas Search metrics data series within the provided time range for one namespace and index name on the specified process. You must have the Project Read Only or higher role to view the Atlas Search metric types.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
@@ -1749,9 +1749,9 @@ func (r GetMeasurementsApiRequest) Execute() (*MeasurementsNonIndex, *http.Respo
 }
 
 /*
-GetMeasurements Return Atlas Search Hardware and Status Metrics
+GetMeasurements [experimental] Returns the Atlas Search hardware and status data series within the provided time range for one process in the specified project. You must have the Project Read Only or higher role to view the Atlas Search metric types.
 
-(experimental) Returns the Atlas Search hardware and status data series within the provided time range for one process in the specified project. You must have the Project Read Only or higher role to view the Atlas Search metric types.
+Returns the Atlas Search hardware and status data series within the provided time range for one process in the specified project. You must have the Project Read Only or higher role to view the Atlas Search metric types.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
@@ -2275,9 +2275,9 @@ func (r ListDiskMeasurementsApiRequest) Execute() (*DiskPartition, *http.Respons
 }
 
 /*
-ListDiskMeasurements Return Measurements of One Disk
+ListDiskMeasurements [experimental] Returns the measurements of one disk or partition for the specified host for the specified project. Returned value can be one of the following: - Throughput of I/O operations for the disk partition used for the MongoDB process - Percentage of time during which requests the partition issued and serviced - Latency per operation type of the disk partition used for the MongoDB process - Amount of free and used disk space on the disk partition used for the MongoDB process   To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
-(experimental) Returns the measurements of one disk or partition for the specified host for the specified project. Returned value can be one of the following:
+Returns the measurements of one disk or partition for the specified host for the specified project. Returned value can be one of the following:
 - Throughput of I/O operations for the disk partition used for the MongoDB process
 - Percentage of time during which requests the partition issued and serviced
 - Latency per operation type of the disk partition used for the MongoDB process
@@ -2655,9 +2655,9 @@ func (r ListIndexMetricsApiRequest) Execute() (*MeasurementsIndexes, *http.Respo
 }
 
 /*
-ListIndexMetrics Return All Atlas Search Index Metrics for One Namespace
+ListIndexMetrics [experimental] Returns the Atlas Search index metrics within the specified time range for one namespace in the specified process.
 
-(experimental) Returns the Atlas Search index metrics within the specified time range for one namespace in the specified process.
+Returns the Atlas Search index metrics within the specified time range for one namespace in the specified process.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
@@ -2822,9 +2822,9 @@ func (r ListMetricTypesApiRequest) Execute() (*FTSMetrics, *http.Response, error
 }
 
 /*
-ListMetricTypes Return All Atlas Search Metric Types for One Process
+ListMetricTypes [experimental] Returns all Atlas Search metric types available for one process in the specified project. You must have the Project Read Only or higher role to view the Atlas Search metric types.
 
-(experimental) Returns all Atlas Search metric types available for one process in the specified project. You must have the Project Read Only or higher role to view the Atlas Search metric types.
+Returns all Atlas Search metric types available for one process in the specified project. You must have the Project Read Only or higher role to view the Atlas Search metric types.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.

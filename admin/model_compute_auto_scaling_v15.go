@@ -9,7 +9,7 @@ import (
 // checks if the ComputeAutoScalingV15 type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ComputeAutoScalingV15{}
 
-// ComputeAutoScalingV15 Options that determine how this cluster handles CPU scaling.
+// ComputeAutoScalingV15 struct for ComputeAutoScalingV15
 type ComputeAutoScalingV15 struct {
 	// Flag that indicates whether someone enabled instance size auto-scaling.  - Set to `true` to enable instance size auto-scaling. If enabled, you must specify a value for **replicationSpecs[n].regionConfigs[m].autoScaling.compute.maxInstanceSize**. - Set to `false` to disable instance size automatic scaling.
 	Enabled *bool `json:"enabled,omitempty"`

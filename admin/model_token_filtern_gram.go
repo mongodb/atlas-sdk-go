@@ -9,7 +9,7 @@ import (
 // checks if the TokenFilternGram type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &TokenFilternGram{}
 
-// TokenFilternGram Filter that tokenizes input into n-grams of configured sizes. You can't use this token filter in synonym or autocomplete mapping definitions.
+// TokenFilternGram struct for TokenFilternGram
 type TokenFilternGram struct {
 	// Value that specifies the maximum length of generated n-grams. This value must be greater than or equal to **minGram**.
 	MaxGram int `json:"maxGram"`

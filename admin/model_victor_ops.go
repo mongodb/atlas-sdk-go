@@ -9,7 +9,7 @@ import (
 // checks if the VictorOps type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &VictorOps{}
 
-// VictorOps Details to integrate one Splunk On-Call account with one MongoDB Cloud project.
+// VictorOps struct for VictorOps
 type VictorOps struct {
 	// Key that allows MongoDB Cloud to access your VictorOps account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.
 	ApiKey string `json:"apiKey"`

@@ -9,7 +9,7 @@ import (
 // checks if the NDSLDAP type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &NDSLDAP{}
 
-// NDSLDAP Lightweight Directory Access Protocol (LDAP) over Transport Layer Security (TLS) configuration details that apply to the specified project.
+// NDSLDAP struct for NDSLDAP
 type NDSLDAP struct {
 	// Flag that indicates whether users can authenticate using an Lightweight Directory Access Protocol (LDAP) host.
 	AuthenticationEnabled *bool `json:"authenticationEnabled,omitempty"`

@@ -10,7 +10,7 @@ import (
 // checks if the Refund type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Refund{}
 
-// Refund One payment that MongoDB returned to the organization for this invoice.
+// Refund struct for Refund
 type Refund struct {
 	// Sum of the funds returned to the specified organization expressed in cents (100th of US Dollar).
 	AmountCents *int64 `json:"amountCents,omitempty"`

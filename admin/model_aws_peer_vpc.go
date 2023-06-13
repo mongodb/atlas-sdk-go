@@ -9,7 +9,7 @@ import (
 // checks if the AWSPeerVpc type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AWSPeerVpc{}
 
-// AWSPeerVpc Group of Network Peering connection settings.
+// AWSPeerVpc struct for AWSPeerVpc
 type AWSPeerVpc struct {
 	// Amazon Web Services (AWS) region where the Virtual Peering Connection (VPC) that you peered with the MongoDB Cloud VPC resides. The resource returns `null` if your VPC and the MongoDB Cloud VPC reside in the same region.
 	AccepterRegionName string `json:"accepterRegionName"`

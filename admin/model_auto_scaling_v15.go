@@ -9,7 +9,7 @@ import (
 // checks if the AutoScalingV15 type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AutoScalingV15{}
 
-// AutoScalingV15 Options that determine how this cluster handles resource scaling.
+// AutoScalingV15 struct for AutoScalingV15
 type AutoScalingV15 struct {
 	Compute *ComputeAutoScalingV15 `json:"compute,omitempty"`
 	DiskGB  *DiskGBAutoScaling     `json:"diskGB,omitempty"`

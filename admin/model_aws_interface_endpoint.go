@@ -9,7 +9,7 @@ import (
 // checks if the AWSInterfaceEndpoint type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AWSInterfaceEndpoint{}
 
-// AWSInterfaceEndpoint Group of Private Endpoint settings.
+// AWSInterfaceEndpoint struct for AWSInterfaceEndpoint
 type AWSInterfaceEndpoint struct {
 	// Cloud service provider that serves the requested endpoint.
 	CloudProvider string `json:"cloudProvider"`

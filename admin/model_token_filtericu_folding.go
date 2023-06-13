@@ -9,7 +9,7 @@ import (
 // checks if the TokenFiltericuFolding type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &TokenFiltericuFolding{}
 
-// TokenFiltericuFolding Filter that applies character folding from Unicode Technical Report #30.
+// TokenFiltericuFolding struct for TokenFiltericuFolding
 type TokenFiltericuFolding struct {
 	// Human-readable label that identifies this token filter type.
 	Type string `json:"type"`

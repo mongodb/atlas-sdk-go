@@ -9,7 +9,7 @@ import (
 // checks if the ServerlessProviderSettings type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ServerlessProviderSettings{}
 
-// ServerlessProviderSettings Group of cloud provider settings that configure the provisioned MongoDB serverless instance.
+// ServerlessProviderSettings struct for ServerlessProviderSettings
 type ServerlessProviderSettings struct {
 	// Cloud service provider on which MongoDB Cloud provisioned the serverless instance.
 	BackingProviderName string `json:"backingProviderName"`

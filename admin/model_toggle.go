@@ -9,7 +9,7 @@ import (
 // checks if the Toggle type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Toggle{}
 
-// Toggle Enables or disables the specified alert configuration in the specified project.
+// Toggle struct for Toggle
 type Toggle struct {
 	// Flag that indicates whether to enable or disable the specified alert configuration in the specified project.
 	Enabled *bool `json:"enabled,omitempty"`

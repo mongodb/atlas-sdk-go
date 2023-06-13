@@ -9,7 +9,7 @@ import (
 // checks if the DataLakeDataProcessRegion type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &DataLakeDataProcessRegion{}
 
-// DataLakeDataProcessRegion Information about the cloud provider region to which the data lake routes client connections. MongoDB Cloud supports AWS only.
+// DataLakeDataProcessRegion struct for DataLakeDataProcessRegion
 type DataLakeDataProcessRegion struct {
 	// Name of the cloud service that hosts the data lake's data stores.
 	CloudProvider string `json:"cloudProvider"`

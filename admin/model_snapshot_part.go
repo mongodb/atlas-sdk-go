@@ -9,7 +9,7 @@ import (
 // checks if the SnapshotPart type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &SnapshotPart{}
 
-// SnapshotPart Characteristics that identify this snapshot.
+// SnapshotPart struct for SnapshotPart
 type SnapshotPart struct {
 	// Unique 24-hexadecimal digit string that identifies the cluster with the snapshots you want to return.
 	ClusterId *string `json:"clusterId,omitempty"`

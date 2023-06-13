@@ -9,7 +9,7 @@ import (
 // checks if the PaginatedContainerPeer type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &PaginatedContainerPeer{}
 
-// PaginatedContainerPeer Group of Network Peering connection settings.
+// PaginatedContainerPeer struct for PaginatedContainerPeer
 type PaginatedContainerPeer struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	Links []Link `json:"links,omitempty"`

@@ -9,7 +9,7 @@ import (
 // checks if the Destination type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Destination{}
 
-// Destination Document that describes the destination of the migration.
+// Destination struct for Destination
 type Destination struct {
 	// Label that identifies the destination cluster.
 	ClusterName string `json:"clusterName"`

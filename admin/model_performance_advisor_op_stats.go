@@ -9,7 +9,7 @@ import (
 // checks if the PerformanceAdvisorOpStats type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &PerformanceAdvisorOpStats{}
 
-// PerformanceAdvisorOpStats Details that this resource returned about the specified query.
+// PerformanceAdvisorOpStats struct for PerformanceAdvisorOpStats
 type PerformanceAdvisorOpStats struct {
 	// Length of time expressed during which the query finds suggested indexes among the managed namespaces in the cluster. This parameter expresses its value in milliseconds. This parameter relates to the **duration** query parameter.
 	Ms *int64 `json:"ms,omitempty"`

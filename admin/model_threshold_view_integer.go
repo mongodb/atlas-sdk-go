@@ -9,7 +9,7 @@ import (
 // checks if the ThresholdViewInteger type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ThresholdViewInteger{}
 
-// ThresholdViewInteger A Limit that triggers an alert when  exceeded. The resource returns this parameter when **eventTypeName** has not been set to `OUTSIDE_METRIC_THRESHOLD`.
+// ThresholdViewInteger struct for ThresholdViewInteger
 type ThresholdViewInteger struct {
 	// Comparison operator to apply when checking the current metric value.
 	Operator *string `json:"operator,omitempty"`

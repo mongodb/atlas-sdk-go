@@ -9,7 +9,7 @@ import (
 // checks if the PartitionField type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &PartitionField{}
 
-// PartitionField Metadata to partition this online archive.
+// PartitionField struct for PartitionField
 type PartitionField struct {
 	// Human-readable label that identifies the parameter that MongoDB Cloud uses to partition data. To specify a nested parameter, use the dot notation.
 	FieldName string `json:"fieldName"`

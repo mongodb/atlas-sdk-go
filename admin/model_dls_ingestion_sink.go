@@ -9,7 +9,7 @@ import (
 // checks if the DLSIngestionSink type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &DLSIngestionSink{}
 
-// DLSIngestionSink Atlas Data Lake Storage as the destination for a Data Lake Pipeline.
+// DLSIngestionSink struct for DLSIngestionSink
 type DLSIngestionSink struct {
 	// Target cloud provider for this Data Lake Pipeline.
 	MetadataProvider *string `json:"metadataProvider,omitempty"`

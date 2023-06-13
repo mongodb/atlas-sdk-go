@@ -9,7 +9,7 @@ import (
 // checks if the CreateGCPEndpointGroupRequest type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &CreateGCPEndpointGroupRequest{}
 
-// CreateGCPEndpointGroupRequest Group of Private Endpoint settings.
+// CreateGCPEndpointGroupRequest struct for CreateGCPEndpointGroupRequest
 type CreateGCPEndpointGroupRequest struct {
 	// Human-readable label that identifies a set of endpoints.
 	EndpointGroupName string `json:"endpointGroupName"`

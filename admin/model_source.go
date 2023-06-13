@@ -9,7 +9,7 @@ import (
 // checks if the Source type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Source{}
 
-// Source Document that describes the source of the migration.
+// Source struct for Source
 type Source struct {
 	// Path to the CA certificate that signed SSL certificates use to authenticate to the source cluster.
 	CaCertificatePath *string `json:"caCertificatePath,omitempty"`

@@ -9,7 +9,7 @@ import (
 // checks if the DedicatedHardwareSpec type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &DedicatedHardwareSpec{}
 
-// DedicatedHardwareSpec Hardware specifications for read-only nodes in the region. Read-only nodes can never become the primary member, but can enable local reads.If you don't specify this parameter, no read-only nodes are deployed to the region.
+// DedicatedHardwareSpec struct for DedicatedHardwareSpec
 type DedicatedHardwareSpec struct {
 	// Number of nodes of the given type for MongoDB Cloud to deploy to the region.
 	NodeCount *int `json:"nodeCount,omitempty"`

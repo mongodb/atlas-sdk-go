@@ -9,7 +9,7 @@ import (
 // checks if the MicrosoftTeams type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &MicrosoftTeams{}
 
-// MicrosoftTeams Details to integrate one Microsoft Teams account with one MongoDB Cloud project.
+// MicrosoftTeams struct for MicrosoftTeams
 type MicrosoftTeams struct {
 	// Endpoint web address of the Microsoft Teams webhook to which MongoDB Cloud sends notifications.  **NOTE**: When you view or edit the alert for a Microsoft Teams notification, the URL appears partially redacted.
 	MicrosoftTeamsWebhookUrl string `json:"microsoftTeamsWebhookUrl"`

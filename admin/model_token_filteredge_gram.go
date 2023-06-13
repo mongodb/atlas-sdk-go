@@ -9,7 +9,7 @@ import (
 // checks if the TokenFilteredgeGram type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &TokenFilteredgeGram{}
 
-// TokenFilteredgeGram Filter that tokenizes input from the left side, or \"edge\", of a text input into n-grams of configured sizes. You can't use this token filter in synonym or autocomplete mapping definitions.
+// TokenFilteredgeGram struct for TokenFilteredgeGram
 type TokenFilteredgeGram struct {
 	// Value that specifies the maximum length of generated n-grams. This value must be greater than or equal to **minGram**.
 	MaxGram int `json:"maxGram"`

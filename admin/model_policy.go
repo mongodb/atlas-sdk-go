@@ -9,7 +9,7 @@ import (
 // checks if the Policy type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Policy{}
 
-// Policy List that contains a document for each backup policy item in the desired backup policy.
+// Policy struct for Policy
 type Policy struct {
 	// Unique 24-hexadecimal digit string that identifies this backup policy.
 	Id *string `json:"id,omitempty"`

@@ -9,7 +9,7 @@ import (
 // checks if the AvailableDeployment type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AvailableDeployment{}
 
-// AvailableDeployment Deployments that can be migrated to MongoDB Atlas.
+// AvailableDeployment struct for AvailableDeployment
 type AvailableDeployment struct {
 	// Version of MongoDB Agent that monitors/manages the cluster.
 	AgentVersion *string `json:"agentVersion,omitempty"`

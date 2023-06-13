@@ -228,8 +228,8 @@ tags:
 paths:
   /api/atlas/v2:
     get:
-      description: (experimental) This resource returns information about the MongoDB
-        application along with API key meta data.
+      description: This resource returns information about the MongoDB application
+        along with API key meta data.
       operationId: getSystemStatus
       parameters: []
       responses:
@@ -246,7 +246,8 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Return the status of this MongoDB application
+      summary: "[experimental] This resource returns information about the MongoDB
+        application along with API key meta data."
       tags:
         - Root
   /api/atlas/v2/alertConfigs/matchers/fieldNames:
@@ -277,12 +278,11 @@ paths:
         - Alert Configurations
   /api/atlas/v2/clusters:
     get:
-      description: (experimental) Returns the details for all clusters in all projects
-        to which you have access. Clusters contain a group of hosts that
-        maintain the same data set. The response does not include multi-cloud
-        clusters. To use this resource, the requesting API Key can have any
-        cluster-level role. This resource doesn't require the API Key to have an
-        Access List.
+      description: Returns the details for all clusters in all projects to which you
+        have access. Clusters contain a group of hosts that maintain the same
+        data set. The response does not include multi-cloud clusters. To use
+        this resource, the requesting API Key can have any cluster-level role.
+        This resource doesn't require the API Key to have an Access List.
       operationId: listClustersForAllProjects
       parameters:
         - $ref: "#/components/parameters/includeCount"
@@ -302,13 +302,17 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return All Authorized Clusters in All Projects
+      summary: "[experimental] Returns the details for all clusters in all projects to
+        which you have access. Clusters contain a group of hosts that maintain
+        the same data set. The response does not include multi-cloud clusters.
+        To use this resource, the requesting API Key can have any cluster-level
+        role. This resource doesn't require the API Key to have an Access List."
       tags:
         - Clusters
   /api/atlas/v2/example/info:
     get:
-      description: "(experimental) Returns some text dummy data for test purposes.
-        Deprecated versions: v2-{2023-01-01}"
+      description: "Returns some text dummy data for test purposes. Deprecated
+        versions: v2-{2023-01-01}"
       operationId: versionedExample
       parameters:
         - in: query
@@ -330,18 +334,19 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Example resource info for versioning of the Atlas API
+      summary: "[experimental] Returns some text dummy data for test purposes.
+        Deprecated versions: v2-{2023-01-01}"
       tags:
         - Test
   "/api/atlas/v2/federationSettings/{federationSettingsId}":
     delete:
-      description: "(experimental) Deletes the federation settings instance and all
-        associated data, including identity providers and domains. To use this
-        resource, the requesting API Key must have the Organization Owner role
-        in the last remaining connected organization. This resource doesn't
-        require the API Key to have an Access List. **Note**: requests to this
-        resource will fail if there is more than one connected organization in
-        the federation."
+      description: "Deletes the federation settings instance and all associated data,
+        including identity providers and domains. To use this resource, the
+        requesting API Key must have the Organization Owner role in the last
+        remaining connected organization. This resource doesn't require the API
+        Key to have an Access List. **Note**: requests to this resource will
+        fail if there is more than one connected organization in the
+        federation."
       operationId: deleteFederationApp
       parameters:
         - $ref: "#/components/parameters/federationSettingsId"
@@ -361,15 +366,21 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Delete the federation settings instance.
+      summary: "[experimental] Deletes the federation settings instance and all
+        associated data, including identity providers and domains. To use this
+        resource, the requesting API Key must have the Organization Owner role
+        in the last remaining connected organization. This resource doesn't
+        require the API Key to have an Access List. **Note**: requests to this
+        resource will fail if there is more than one connected organization in
+        the federation."
       tags:
         - Federated Authentication
   "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs":
     get:
-      description: (experimental) Returns all connected org configs in the specified
-        federation. To use this resource, the requesting API Key must have the
-        Organization Owner role in one of the connected orgs. This resource
-        doesn't require the API Key to have an Access List.
+      description: Returns all connected org configs in the specified federation. To
+        use this resource, the requesting API Key must have the Organization
+        Owner role in one of the connected orgs. This resource doesn't require
+        the API Key to have an Access List.
       operationId: listConnectedOrgConfigs
       parameters:
         - $ref: "#/components/parameters/federationSettingsId"
@@ -391,15 +402,18 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
-      summary: Return All Connected Org Configs from the Federation
+      summary: "[experimental] Returns all connected org configs in the specified
+        federation. To use this resource, the requesting API Key must have the
+        Organization Owner role in one of the connected orgs. This resource
+        doesn't require the API Key to have an Access List."
       tags:
         - Federated Authentication
   "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}":
     delete:
-      description: "(experimental) Removes one connected organization configuration
-        from the specified federation. To use this resource, the requesting API
-        Key must have the Organization Owner role. This resource doesn't require
-        the API Key to have an Access List. Note: This request fails if only one
+      description: "Removes one connected organization configuration from the
+        specified federation. To use this resource, the requesting API Key must
+        have the Organization Owner role. This resource doesn't require the API
+        Key to have an Access List. Note: This request fails if only one
         connected organization exists in the federation."
       operationId: removeConnectedOrgConfig
       parameters:
@@ -433,14 +447,18 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Remove One Org Config Connected to One Federation
+      summary: "[experimental] Removes one connected organization configuration from
+        the specified federation. To use this resource, the requesting API Key
+        must have the Organization Owner role. This resource doesn't require the
+        API Key to have an Access List. Note: This request fails if only one
+        connected organization exists in the federation."
       tags:
         - Federated Authentication
     get:
-      description: (experimental) Returns the specified connected org config from the
-        specified federation. To use this resource, the requesting API Key must
-        have the Organization Owner role in the connected org. This resource
-        doesn't require the API Key to have an Access List.
+      description: Returns the specified connected org config from the specified
+        federation. To use this resource, the requesting API Key must have the
+        Organization Owner role in the connected org. This resource doesn't
+        require the API Key to have an Access List.
       operationId: getConnectedOrgConfig
       parameters:
         - $ref: "#/components/parameters/federationSettingsId"
@@ -473,15 +491,18 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return One Org Config Connected to One Federation
+      summary: "[experimental] Returns the specified connected org config from the
+        specified federation. To use this resource, the requesting API Key must
+        have the Organization Owner role in the connected org. This resource
+        doesn't require the API Key to have an Access List."
       tags:
         - Federated Authentication
     patch:
       description: >-
-        (experimental) Updates one connected organization configuration
-        from the specified federation. To use this resource, the requesting API
-        Key must have the Organization Owner role. This resource doesn't require
-        the API Key to have an Access List. 
+        Updates one connected organization configuration from the specified
+        federation. To use this resource, the requesting API Key must have the
+        Organization Owner role. This resource doesn't require the API Key to
+        have an Access List. 
 
 
         **Note** If the organization configuration has no associated identity provider, you can't use this resource to update role mappings or post authorization role grants.  
@@ -530,15 +551,28 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Update One Org Config Connected to One Federation
+      summary: >-
+        [experimental] Updates one connected organization configuration from
+        the specified federation. To use this resource, the requesting API Key
+        must have the Organization Owner role. This resource doesn't require the
+        API Key to have an Access List. 
+
+
+        **Note** If the organization configuration has no associated identity provider, you can't use this resource to update role mappings or post authorization role grants.  
+
+
+        **Note**: The domainRestrictionEnabled field defaults to false if not provided in the request. 
+
+
+        **Note**: If the identityProviderId field is not provided, you will disconnect the organization and the identity provider.
       tags:
         - Federated Authentication
   "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings":
     get:
-      description: (experimental) Returns all role mappings from the specified
-        organization in the specified federation. To use this resource, the
-        requesting API Key must have the Organization Owner role. This resource
-        doesn't require the API Key to have an Access List.
+      description: Returns all role mappings from the specified organization in the
+        specified federation. To use this resource, the requesting API Key must
+        have the Organization Owner role. This resource doesn't require the API
+        Key to have an Access List.
       operationId: listRoleMappings
       parameters:
         - $ref: "#/components/parameters/federationSettingsId"
@@ -563,14 +597,17 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return All Role Mappings from One Organization
+      summary: "[experimental] Returns all role mappings from the specified
+        organization in the specified federation. To use this resource, the
+        requesting API Key must have the Organization Owner role. This resource
+        doesn't require the API Key to have an Access List."
       tags:
         - Federated Authentication
     post:
-      description: (experimental) Adds one role mapping to the specified organization
-        in the specified federation. To use this resource, the requesting API
-        Key must have the Organization Owner role. This resource doesn't require
-        the API Key to have an Access List.
+      description: Adds one role mapping to the specified organization in the
+        specified federation. To use this resource, the requesting API Key must
+        have the Organization Owner role. This resource doesn't require the API
+        Key to have an Access List.
       operationId: createRoleMapping
       parameters:
         - $ref: "#/components/parameters/federationSettingsId"
@@ -600,15 +637,18 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Add One Role Mapping to One Organization
+      summary: "[experimental] Adds one role mapping to the specified organization in
+        the specified federation. To use this resource, the requesting API Key
+        must have the Organization Owner role. This resource doesn't require the
+        API Key to have an Access List."
       tags:
         - Federated Authentication
   "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id}":
     delete:
-      description: (experimental) Removes one role mapping in the specified
-        organization from the specified federation. To use this resource, the
-        requesting API Key must have the Organization Owner role. This resource
-        doesn't require the API Key to have an Access List.
+      description: Removes one role mapping in the specified organization from the
+        specified federation. To use this resource, the requesting API Key must
+        have the Organization Owner role. This resource doesn't require the API
+        Key to have an Access List.
       operationId: deleteRoleMapping
       parameters:
         - $ref: "#/components/parameters/federationSettingsId"
@@ -640,14 +680,17 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Remove One Role Mapping from One Organization
+      summary: "[experimental] Removes one role mapping in the specified organization
+        from the specified federation. To use this resource, the requesting API
+        Key must have the Organization Owner role. This resource doesn't require
+        the API Key to have an Access List."
       tags:
         - Federated Authentication
     get:
-      description: (experimental) Returns one role mapping from the specified
-        organization in the specified federation. To use this resource, the
-        requesting API Key must have the Organization Owner role. This resource
-        doesn't require the API Key to have an Access List.
+      description: Returns one role mapping from the specified organization in the
+        specified federation. To use this resource, the requesting API Key must
+        have the Organization Owner role. This resource doesn't require the API
+        Key to have an Access List.
       operationId: getRoleMapping
       parameters:
         - $ref: "#/components/parameters/federationSettingsId"
@@ -681,14 +724,17 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return One Role Mapping from One Organization
+      summary: "[experimental] Returns one role mapping from the specified
+        organization in the specified federation. To use this resource, the
+        requesting API Key must have the Organization Owner role. This resource
+        doesn't require the API Key to have an Access List."
       tags:
         - Federated Authentication
     put:
-      description: (experimental) Updates one role mapping in the specified
-        organization in the specified federation. To use this resource, the
-        requesting API Key must have the Organization Owner role. This resource
-        doesn't require the API Key to have an Access List.
+      description: Updates one role mapping in the specified organization in the
+        specified federation. To use this resource, the requesting API Key must
+        have the Organization Owner role. This resource doesn't require the API
+        Key to have an Access List.
       operationId: updateRoleMapping
       parameters:
         - $ref: "#/components/parameters/federationSettingsId"
@@ -729,15 +775,18 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Update One Role Mapping in One Organization
+      summary: "[experimental] Updates one role mapping in the specified organization
+        in the specified federation. To use this resource, the requesting API
+        Key must have the Organization Owner role. This resource doesn't require
+        the API Key to have an Access List."
       tags:
         - Federated Authentication
   "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders":
     get:
-      description: (experimental) Returns all identity providers in the specified
-        federation. To use this resource, the requesting API Key must have the
-        Organization Owner role in one of the connected organizations. This
-        resource doesn't require the API Key to have an Access List.
+      description: Returns all identity providers in the specified federation. To use
+        this resource, the requesting API Key must have the Organization Owner
+        role in one of the connected organizations. This resource doesn't
+        require the API Key to have an Access List.
       operationId: listIdentityProviders
       parameters:
         - $ref: "#/components/parameters/federationSettingsId"
@@ -761,15 +810,18 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return all identity providers from the specified federation.
+      summary: "[experimental] Returns all identity providers in the specified
+        federation. To use this resource, the requesting API Key must have the
+        Organization Owner role in one of the connected organizations. This
+        resource doesn't require the API Key to have an Access List."
       tags:
         - Federated Authentication
   "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}":
     get:
-      description: (experimental) Returns one identity provider from the specified
-        federation. To use this resource, the requesting API Key must have the
-        Organization Owner role in one of the connected organizations. This
-        resource doesn't require the API Key to have an Access List.
+      description: Returns one identity provider from the specified federation. To use
+        this resource, the requesting API Key must have the Organization Owner
+        role in one of the connected organizations. This resource doesn't
+        require the API Key to have an Access List.
       operationId: getIdentityProvider
       parameters:
         - $ref: "#/components/parameters/federationSettingsId"
@@ -792,14 +844,17 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return one identity provider from the specified federation.
+      summary: "[experimental] Returns one identity provider from the specified
+        federation. To use this resource, the requesting API Key must have the
+        Organization Owner role in one of the connected organizations. This
+        resource doesn't require the API Key to have an Access List."
       tags:
         - Federated Authentication
     patch:
-      description: (experimental) Updates one identity provider in the specified
-        federation. To use this resource, the requesting API Key must have the
-        Organization Owner role in one of the connected organizations. This
-        resource doesn't require the API Key to have an Access List.
+      description: Updates one identity provider in the specified federation. To use
+        this resource, the requesting API Key must have the Organization Owner
+        role in one of the connected organizations. This resource doesn't
+        require the API Key to have an Access List.
       operationId: updateIdentityProvider
       parameters:
         - $ref: "#/components/parameters/federationSettingsId"
@@ -829,15 +884,18 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Update the identity provider.
+      summary: "[experimental] Updates one identity provider in the specified
+        federation. To use this resource, the requesting API Key must have the
+        Organization Owner role in one of the connected organizations. This
+        resource doesn't require the API Key to have an Access List."
       tags:
         - Federated Authentication
   "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/metadata.xml":
     get:
-      description: (experimental) Returns the metadata of one identity provider in the
-        specified federation. To use this resource, the requesting API Key must
-        have the Organization Owner role in one of the connected organizations.
-        This resource doesn't require the API Key to have an Access List.
+      description: Returns the metadata of one identity provider in the specified
+        federation. To use this resource, the requesting API Key must have the
+        Organization Owner role in one of the connected organizations. This
+        resource doesn't require the API Key to have an Access List.
       operationId: getIdentityProviderMetadata
       parameters:
         - $ref: "#/components/parameters/federationSettingsId"
@@ -860,7 +918,10 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return the metadata of one identity provider in the specified federation.
+      summary: "[experimental] Returns the metadata of one identity provider in the
+        specified federation. To use this resource, the requesting API Key must
+        have the Organization Owner role in one of the connected organizations.
+        This resource doesn't require the API Key to have an Access List."
       tags:
         - Federated Authentication
   /api/atlas/v2/groups:
@@ -1045,10 +1106,10 @@ paths:
       tags:
         - Projects
     patch:
-      description: (experimental) Updates the human-readable label that identifies the
-        specified project. To use this resource, the requesting API Key must
-        have the Project Owner role. This resource does not require the API Key
-        to have an Access List.
+      description: Updates the human-readable label that identifies the specified
+        project. To use this resource, the requesting API Key must have the
+        Project Owner role. This resource does not require the API Key to have
+        an Access List.
       operationId: updateProject
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -1079,7 +1140,10 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Update One Project Name
+      summary: "[experimental] Updates the human-readable label that identifies the
+        specified project. To use this resource, the requesting API Key must
+        have the Project Owner role. This resource does not require the API Key
+        to have an Access List."
       tags:
         - Projects
   "/api/atlas/v2/groups/{groupId}/accessList":
@@ -1301,10 +1365,9 @@ paths:
         - Project IP Access List
   "/api/atlas/v2/groups/{groupId}/accessList/{entryValue}/status":
     get:
-      description: (experimental) Returns the status of one project IP access list
-        entry. This resource checks if the provided project IP access list entry
-        applies to all cloud providers serving clusters from the specified
-        project.
+      description: Returns the status of one project IP access list entry. This
+        resource checks if the provided project IP access list entry applies to
+        all cloud providers serving clusters from the specified project.
       operationId: getProjectIpAccessListStatus
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -1339,7 +1402,10 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return Status of One Project IP Access List Entry
+      summary: "[experimental] Returns the status of one project IP access list entry.
+        This resource checks if the provided project IP access list entry
+        applies to all cloud providers serving clusters from the specified
+        project."
       tags:
         - Project IP Access List
   "/api/atlas/v2/groups/{groupId}/alertConfigs":
@@ -1457,10 +1523,10 @@ paths:
         - Alert Configurations
     get:
       description: >-
-        (experimental) Returns the specified alert configuration from the
-        specified project. To use this resource, the requesting API Key must
-        have the Project Read Only role. This resource doesn't require the API
-        Key to have an Access List.
+        Returns the specified alert configuration from the specified
+        project. To use this resource, the requesting API Key must have the
+        Project Read Only role. This resource doesn't require the API Key to
+        have an Access List.
 
          This resource remains under revision and may change.
       operationId: getAlertConfiguration
@@ -1496,7 +1562,13 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return One Alert Configuration from One Project
+      summary: >-
+        [experimental] Returns the specified alert configuration from the
+        specified project. To use this resource, the requesting API Key must
+        have the Project Read Only role. This resource doesn't require the API
+        Key to have an Access List.
+
+         This resource remains under revision and may change.
       tags:
         - Alert Configurations
     patch:
@@ -1616,12 +1688,12 @@ paths:
   "/api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId}/alerts":
     get:
       description: >-
-        (experimental) Returns all open alerts that the specified alert
-        configuration triggers. These alert configurations apply to the
-        specified project only. Alert configurations define the triggers and
-        notification methods for alerts. Open alerts have been triggered but
-        remain unacknowledged. To use this resource, the requesting API Key must
-        have the Project Read Only role.
+        Returns all open alerts that the specified alert configuration
+        triggers. These alert configurations apply to the specified project
+        only. Alert configurations define the triggers and notification methods
+        for alerts. Open alerts have been triggered but remain unacknowledged.
+        To use this resource, the requesting API Key must have the Project Read
+        Only role.
 
          This resource remains under revision and may change.
       operationId: listAlertsByAlertConfigurationId
@@ -1660,7 +1732,15 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return All Open Alerts for Alert Configuration
+      summary: >-
+        [experimental] Returns all open alerts that the specified alert
+        configuration triggers. These alert configurations apply to the
+        specified project only. Alert configurations define the triggers and
+        notification methods for alerts. Open alerts have been triggered but
+        remain unacknowledged. To use this resource, the requesting API Key must
+        have the Project Read Only role.
+
+         This resource remains under revision and may change.
       tags:
         - Alerts
   "/api/atlas/v2/groups/{groupId}/alerts":
@@ -1803,10 +1883,10 @@ paths:
   "/api/atlas/v2/groups/{groupId}/alerts/{alertId}/alertConfigs":
     get:
       description: >-
-        (experimental) Returns all alert configurations set for the
-        specified alert. To use this resource, the requesting API Key must have
-        the Project Read Only role. This resource doesn't require the API Key to
-        have an Access List.
+        Returns all alert configurations set for the specified alert. To
+        use this resource, the requesting API Key must have the Project Read
+        Only role. This resource doesn't require the API Key to have an Access
+        List.
 
          This resource remains under revision and may change.
       operationId: listAlertConfigurationsByAlertId
@@ -1842,7 +1922,13 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return All Alert Configurations Set for One Alert
+      summary: >-
+        [experimental] Returns all alert configurations set for the specified
+        alert. To use this resource, the requesting API Key must have the
+        Project Read Only role. This resource doesn't require the API Key to
+        have an Access List.
+
+         This resource remains under revision and may change.
       tags:
         - Alert Configurations
   "/api/atlas/v2/groups/{groupId}/apiKeys":
@@ -2004,12 +2090,12 @@ paths:
       tags:
         - Programmatic API Keys
     post:
-      description: (experimental) Assigns the specified organization API key to the
-        specified project. Users with the Project Owner role in the project
-        associated with the API key can then use the organization API key to
-        access the resources. To use this resource, the requesting API Key must
-        have the Project User Admin role. This resource doesn't require the API
-        Key to have an Access List.
+      description: Assigns the specified organization API key to the specified
+        project. Users with the Project Owner role in the project associated
+        with the API key can then use the organization API key to access the
+        resources. To use this resource, the requesting API Key must have the
+        Project User Admin role. This resource doesn't require the API Key to
+        have an Access List.
       operationId: addProjectApiKey
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -2046,7 +2132,12 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Assign One Organization API Key to One Project
+      summary: "[experimental] Assigns the specified organization API key to the
+        specified project. Users with the Project Owner role in the project
+        associated with the API key can then use the organization API key to
+        access the resources. To use this resource, the requesting API Key must
+        have the Project User Admin role. This resource doesn't require the API
+        Key to have an Access List."
       tags:
         - Programmatic API Keys
   "/api/atlas/v2/groups/{groupId}/auditLog":
@@ -2078,12 +2169,12 @@ paths:
       tags:
         - Auditing
     patch:
-      description: (experimental) Updates the auditing configuration for the specified
-        project. The auditing configuration defines the events that MongoDB
-        Cloud records in the audit log. To use this resource, the requesting API
-        Key must have the Project Owner role. This resource doesn't require the
-        API Key to have an Access List. This feature isn't available for `M0`,
-        `M2`, `M5`, or serverless clusters.
+      description: Updates the auditing configuration for the specified project. The
+        auditing configuration defines the events that MongoDB Cloud records in
+        the audit log. To use this resource, the requesting API Key must have
+        the Project Owner role. This resource doesn't require the API Key to
+        have an Access List. This feature isn't available for `M0`, `M2`, `M5`,
+        or serverless clusters.
       operationId: updateAuditingConfiguration
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -2110,15 +2201,20 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Update Auditing Configuration for One Project
+      summary: "[experimental] Updates the auditing configuration for the specified
+        project. The auditing configuration defines the events that MongoDB
+        Cloud records in the audit log. To use this resource, the requesting API
+        Key must have the Project Owner role. This resource doesn't require the
+        API Key to have an Access List. This feature isn't available for `M0`,
+        `M2`, `M5`, or serverless clusters."
       tags:
         - Auditing
   "/api/atlas/v2/groups/{groupId}/awsCustomDNS":
     get:
-      description: (experimental) Returns the custom DNS configuration for AWS
-        clusters in the specified project. To use this resource, the requesting
-        API Key must have the Project Read Only role. This resource doesn't
-        require the API Key to have an Access List.
+      description: Returns the custom DNS configuration for AWS clusters in the
+        specified project. To use this resource, the requesting API Key must
+        have the Project Read Only role. This resource doesn't require the API
+        Key to have an Access List.
       operationId: getAWSCustomDNS
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -2136,15 +2232,18 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return One Custom DNS Configuration for Atlas Clusters on AWS
+      summary: "[experimental] Returns the custom DNS configuration for AWS clusters
+        in the specified project. To use this resource, the requesting API Key
+        must have the Project Read Only role. This resource doesn't require the
+        API Key to have an Access List."
       tags:
         - AWS Clusters DNS
     patch:
-      description: (experimental) Enables or disables the custom DNS configuration for
-        AWS clusters in the specified project. Enable custom DNS if you use AWS
-        VPC peering and use your own DNS servers. To use this resource, the
-        requesting API Key must have the Project Atlas Admin role. This resource
-        doesn't require the API Key to have an Access List.
+      description: Enables or disables the custom DNS configuration for AWS clusters
+        in the specified project. Enable custom DNS if you use AWS VPC peering
+        and use your own DNS servers. To use this resource, the requesting API
+        Key must have the Project Atlas Admin role. This resource doesn't
+        require the API Key to have an Access List.
       operationId: toggleAWSCustomDNS
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -2170,7 +2269,11 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Toggle State of One Custom DNS Configuration for Atlas Clusters on AWS
+      summary: "[experimental] Enables or disables the custom DNS configuration for
+        AWS clusters in the specified project. Enable custom DNS if you use AWS
+        VPC peering and use your own DNS servers. To use this resource, the
+        requesting API Key must have the Project Atlas Admin role. This resource
+        doesn't require the API Key to have an Access List."
       tags:
         - AWS Clusters DNS
   "/api/atlas/v2/groups/{groupId}/backup/exportBuckets":
@@ -2317,10 +2420,10 @@ paths:
         - Cloud Backups
   "/api/atlas/v2/groups/{groupId}/backupCompliancePolicy":
     get:
-      description: (experimental) Returns the Backup Compliance Policy settings with
-        the specified project. To use this resource, the requesting API Key must
-        have the Project Owner role. This resource doesn't require the API Key
-        to have an Access List.
+      description: Returns the Backup Compliance Policy settings with the specified
+        project. To use this resource, the requesting API Key must have the
+        Project Owner role. This resource doesn't require the API Key to have an
+        Access List.
       operationId: getDataProtectionSettings
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -2340,14 +2443,17 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return the Backup Compliance Policy settings
+      summary: "[experimental] Returns the Backup Compliance Policy settings with the
+        specified project. To use this resource, the requesting API Key must
+        have the Project Owner role. This resource doesn't require the API Key
+        to have an Access List."
       tags:
         - Cloud Backups
     put:
-      description: (experimental) Updates the Backup Compliance Policy settings for
-        the specified project. To use this resource, the requesting API Key must
-        have the Project Owner role. This resource doesn't require the API Key
-        to have an Access List.
+      description: Updates the Backup Compliance Policy settings for the specified
+        project. To use this resource, the requesting API Key must have the
+        Project Owner role. This resource doesn't require the API Key to have an
+        Access List.
       operationId: updateDataProtectionSettings
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -2375,7 +2481,10 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Update or enable the Backup Compliance Policy settings
+      summary: "[experimental] Updates the Backup Compliance Policy settings for the
+        specified project. To use this resource, the requesting API Key must
+        have the Project Owner role. This resource doesn't require the API Key
+        to have an Access List."
       tags:
         - Cloud Backups
   "/api/atlas/v2/groups/{groupId}/cloudProviderAccess":
@@ -2488,9 +2597,9 @@ paths:
         - Cloud Provider Access
   "/api/atlas/v2/groups/{groupId}/cloudProviderAccess/{roleId}":
     get:
-      description: (experimental) Returns the Amazon Web Services (AWS) Identity and
-        Access Management (IAM) role with the specified id and with access to
-        the specified project. To use this resource, the requesting API Key must
+      description: Returns the Amazon Web Services (AWS) Identity and Access
+        Management (IAM) role with the specified id and with access to the
+        specified project. To use this resource, the requesting API Key must
         have the Project Owner role. This resource doesn't require the API Key
         to have an Access List.
       operationId: getCloudProviderAccessRole
@@ -2519,7 +2628,11 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return specified Cloud Provider Access Role
+      summary: "[experimental] Returns the Amazon Web Services (AWS) Identity and
+        Access Management (IAM) role with the specified id and with access to
+        the specified project. To use this resource, the requesting API Key must
+        have the Project Owner role. This resource doesn't require the API Key
+        to have an Access List."
       tags:
         - Cloud Provider Access
     patch:
@@ -2773,10 +2886,10 @@ paths:
         - Clusters
   "/api/atlas/v2/groups/{groupId}/clusters/tenantUpgrade":
     post:
-      description: (experimental) Upgrades a shared-tier cluster in the specified
-        project. To use this resource, the requesting API key must have the
-        Project Cluster Manager role. This resource doesn't require the API key
-        to have an Access List. Each project supports up to 25 clusters.
+      description: Upgrades a shared-tier cluster in the specified project. To use
+        this resource, the requesting API key must have the Project Cluster
+        Manager role. This resource doesn't require the API key to have an
+        Access List. Each project supports up to 25 clusters.
       operationId: upgradeSharedCluster
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -2809,15 +2922,18 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Upgrade One Shared-tier Cluster
+      summary: "[experimental] Upgrades a shared-tier cluster in the specified
+        project. To use this resource, the requesting API key must have the
+        Project Cluster Manager role. This resource doesn't require the API key
+        to have an Access List. Each project supports up to 25 clusters."
       tags:
         - Clusters
   "/api/atlas/v2/groups/{groupId}/clusters/tenantUpgradeToServerless":
     post:
-      description: (experimental) Upgrades a shared-tier cluster to a serverless
-        instance in the specified project. To use this resource, the requesting
-        API key must have the Project Cluster Manager role. This resource
-        doesn't require the API key to have an Access List.
+      description: Upgrades a shared-tier cluster to a serverless instance in the
+        specified project. To use this resource, the requesting API key must
+        have the Project Cluster Manager role. This resource doesn't require the
+        API key to have an Access List.
       operationId: upgradeSharedClusterToServerless
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -2850,7 +2966,10 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Upgrades One Shared-Tier Cluster to the Serverless Instance
+      summary: "[experimental] Upgrades a shared-tier cluster to a serverless instance
+        in the specified project. To use this resource, the requesting API key
+        must have the Project Cluster Manager role. This resource doesn't
+        require the API key to have an Access List."
       tags:
         - Clusters
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}":
@@ -3209,10 +3328,9 @@ paths:
         - Cloud Backups
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs/{restoreJobId}":
     delete:
-      description: (experimental) Cancels one cloud backup restore job of one cluster
-        from the specified project. To use this resource, the requesting API Key
-        must have the Project Owner role and an entry for the project access
-        list.
+      description: Cancels one cloud backup restore job of one cluster from the
+        specified project. To use this resource, the requesting API Key must
+        have the Project Owner role and an entry for the project access list.
       operationId: cancelBackupRestoreJob
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -3251,7 +3369,10 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Cancel One Restore Job of One Cluster
+      summary: "[experimental] Cancels one cloud backup restore job of one cluster
+        from the specified project. To use this resource, the requesting API Key
+        must have the Project Owner role and an entry for the project access
+        list."
       tags:
         - Cloud Backups
     get:
@@ -3509,9 +3630,9 @@ paths:
         - Cloud Backups
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/shardedCluster/{snapshotId}":
     delete:
-      description: (experimental) Removes one snapshot of one sharded cluster from the
-        specified project. To use this resource, the requesting API Key must
-        have the Project Owner role and an entry for the project access list.
+      description: Removes one snapshot of one sharded cluster from the specified
+        project. To use this resource, the requesting API Key must have the
+        Project Owner role and an entry for the project access list.
       operationId: deleteShardedClusterBackup
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -3548,14 +3669,16 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Remove One Sharded Cluster Cloud Backup
+      summary: "[experimental] Removes one snapshot of one sharded cluster from the
+        specified project. To use this resource, the requesting API Key must
+        have the Project Owner role and an entry for the project access list."
       tags:
         - Cloud Backups
     get:
-      description: (experimental) Returns one snapshot of one sharded cluster from the
-        specified project. To use this resource, the requesting API Key must
-        have the Project Read Only role. This resource doesn't require the API
-        Key to have an Access List.
+      description: Returns one snapshot of one sharded cluster from the specified
+        project. To use this resource, the requesting API Key must have the
+        Project Read Only role. This resource doesn't require the API Key to
+        have an Access List.
       operationId: getShardedClusterBackup
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -3594,15 +3717,18 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return One Sharded Cluster Cloud Backup
+      summary: "[experimental] Returns one snapshot of one sharded cluster from the
+        specified project. To use this resource, the requesting API Key must
+        have the Project Read Only role. This resource doesn't require the API
+        Key to have an Access List."
       tags:
         - Cloud Backups
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/shardedClusters":
     get:
-      description: (experimental) Returns all snapshots of one sharded cluster from
-        the specified project. To use this resource, the requesting API Key must
-        have the Project Read Only role. This resource doesn't require the API
-        Key to have an Access List.
+      description: Returns all snapshots of one sharded cluster from the specified
+        project. To use this resource, the requesting API Key must have the
+        Project Read Only role. This resource doesn't require the API Key to
+        have an Access List.
       operationId: listShardedClusterBackups
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -3631,7 +3757,10 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return All Sharded Cluster Cloud Backups
+      summary: "[experimental] Returns all snapshots of one sharded cluster from the
+        specified project. To use this resource, the requesting API Key must
+        have the Project Read Only role. This resource doesn't require the API
+        Key to have an Access List."
       tags:
         - Cloud Backups
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}":
@@ -3726,9 +3855,9 @@ paths:
       tags:
         - Cloud Backups
     patch:
-      description: (experimental) Changes the expiration date for one cloud backup
-        snapshot for one cluster in the specified project. This resource doesn't
-        require the API Key to have an Access List.
+      description: Changes the expiration date for one cloud backup snapshot for one
+        cluster in the specified project. This resource doesn't require the API
+        Key to have an Access List.
       operationId: updateSnapshotRetention
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -3775,17 +3904,19 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Change Expiration Date for One Cloud Backup
+      summary: "[experimental] Changes the expiration date for one cloud backup
+        snapshot for one cluster in the specified project. This resource doesn't
+        require the API Key to have an Access List."
       tags:
         - Cloud Backups
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/download":
     post:
-      description: (experimental) Requests one snapshot for the specified shared
-        cluster. This resource returns a `snapshotURL` that you can use to
-        download the snapshot. This `snapshotURL` remains active for four hours
-        after you make the request. To use this resource, the requesting API Key
-        must have the Project Owner role. This resource doesn't require the API
-        Key to have an Access List.
+      description: Requests one snapshot for the specified shared cluster. This
+        resource returns a `snapshotURL` that you can use to download the
+        snapshot. This `snapshotURL` remains active for four hours after you
+        make the request. To use this resource, the requesting API Key must have
+        the Project Owner role. This resource doesn't require the API Key to
+        have an Access List.
       operationId: downloadSharedClusterBackup
       parameters:
         - description: Human-readable label that identifies the cluster.
@@ -3827,19 +3958,24 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Download One M2 or M5 Cluster Snapshot
+      summary: "[experimental] Requests one snapshot for the specified shared cluster.
+        This resource returns a `snapshotURL` that you can use to download the
+        snapshot. This `snapshotURL` remains active for four hours after you
+        make the request. To use this resource, the requesting API Key must have
+        the Project Owner role. This resource doesn't require the API Key to
+        have an Access List."
       tags:
         - Shared-Tier Snapshots
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/restore":
     post:
-      description: (experimental) Restores the specified cluster. MongoDB Cloud limits
-        which clusters can be the target clusters of a restore. The target
-        cluster can't use encryption at rest, run a major release MongoDB
-        version different than the snapshot, or receive client requests during
-        restores. MongoDB Cloud deletes all existing data on the target cluster
-        prior to the restore operation. To use this resource, the requesting API
-        Key must have the Project Owner role. This resource doesn't require the
-        API Key to have an Access List.
+      description: Restores the specified cluster. MongoDB Cloud limits which clusters
+        can be the target clusters of a restore. The target cluster can't use
+        encryption at rest, run a major release MongoDB version different than
+        the snapshot, or receive client requests during restores. MongoDB Cloud
+        deletes all existing data on the target cluster prior to the restore
+        operation. To use this resource, the requesting API Key must have the
+        Project Owner role. This resource doesn't require the API Key to have an
+        Access List.
       operationId: createSharedClusterBackupRestoreJob
       parameters:
         - description: Human-readable label that identifies the cluster.
@@ -3879,15 +4015,22 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Create One Restore Job from One M2 or M5 Cluster
+      summary: "[experimental] Restores the specified cluster. MongoDB Cloud limits
+        which clusters can be the target clusters of a restore. The target
+        cluster can't use encryption at rest, run a major release MongoDB
+        version different than the snapshot, or receive client requests during
+        restores. MongoDB Cloud deletes all existing data on the target cluster
+        prior to the restore operation. To use this resource, the requesting API
+        Key must have the Project Owner role. This resource doesn't require the
+        API Key to have an Access List."
       tags:
         - Shared-Tier Restore Jobs
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/restores":
     get:
-      description: (experimental) Returns all restore jobs for the specified M2 or M5
-        cluster. Restore jobs restore a cluster using a snapshot. To use this
-        resource, the requesting API Key must have the Project Read Only role.
-        This resource doesn't require the API Key to have an Access List.
+      description: Returns all restore jobs for the specified M2 or M5 cluster.
+        Restore jobs restore a cluster using a snapshot. To use this resource,
+        the requesting API Key must have the Project Read Only role. This
+        resource doesn't require the API Key to have an Access List.
       operationId: listSharedClusterBackupRestoreJobs
       parameters:
         - description: Human-readable label that identifies the cluster.
@@ -3916,14 +4059,17 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return All Restore Jobs for One M2 or M5 Cluster
+      summary: "[experimental] Returns all restore jobs for the specified M2 or M5
+        cluster. Restore jobs restore a cluster using a snapshot. To use this
+        resource, the requesting API Key must have the Project Read Only role.
+        This resource doesn't require the API Key to have an Access List."
       tags:
         - Shared-Tier Restore Jobs
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/restores/{restoreId}":
     get:
-      description: (experimental) Returns the specified restore job. To use this
-        resource, the requesting API Key must have the Project Read Only role.
-        This resource doesn't require the API Key to have an Access List.
+      description: Returns the specified restore job. To use this resource, the
+        requesting API Key must have the Project Read Only role. This resource
+        doesn't require the API Key to have an Access List.
       operationId: getSharedClusterBackupRestoreJob
       parameters:
         - description: Human-readable label that identifies the cluster.
@@ -3962,15 +4108,17 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return One Restore Job for One M2 or M5 Cluster
+      summary: "[experimental] Returns the specified restore job. To use this
+        resource, the requesting API Key must have the Project Read Only role.
+        This resource doesn't require the API Key to have an Access List."
       tags:
         - Shared-Tier Restore Jobs
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/snapshots":
     get:
-      description: (experimental) Returns details for all snapshots for the specified
-        shared cluster. To use this resource, the requesting API Key must have
-        the Project Read Only role. This resource doesn't require the API Key to
-        have an Access List.
+      description: Returns details for all snapshots for the specified shared cluster.
+        To use this resource, the requesting API Key must have the Project Read
+        Only role. This resource doesn't require the API Key to have an Access
+        List.
       operationId: listSharedClusterBackups
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -3999,15 +4147,18 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return All Snapshots for One M2 or M5 Cluster
+      summary: "[experimental] Returns details for all snapshots for the specified
+        shared cluster. To use this resource, the requesting API Key must have
+        the Project Read Only role. This resource doesn't require the API Key to
+        have an Access List."
       tags:
         - Shared-Tier Snapshots
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/snapshots/{snapshotId}":
     get:
-      description: (experimental) Returns details for one snapshot for the specified
-        shared cluster. To use this resource, the requesting API Key must have
-        the Project Read Only role. This resource doesn't require the API Key to
-        have an Access List.
+      description: Returns details for one snapshot for the specified shared cluster.
+        To use this resource, the requesting API Key must have the Project Read
+        Only role. This resource doesn't require the API Key to have an Access
+        List.
       operationId: getSharedClusterBackup
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -4046,16 +4197,19 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return One Snapshot for One M2 or M5 Cluster
+      summary: "[experimental] Returns details for one snapshot for the specified
+        shared cluster. To use this resource, the requesting API Key must have
+        the Project Read Only role. This resource doesn't require the API Key to
+        have an Access List."
       tags:
         - Shared-Tier Snapshots
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backupCheckpoints":
     get:
       deprecated: true
-      description: (experimental) Returns all legacy backup checkpoints for one
-        cluster in the specified project. To use this resource, the requesting
-        API Key must have the Project Read Only role. This resource doesn't
-        require the API Key to have an Access List.
+      description: Returns all legacy backup checkpoints for one cluster in the
+        specified project. To use this resource, the requesting API Key must
+        have the Project Read Only role. This resource doesn't require the API
+        Key to have an Access List.
       operationId: listLegacyBackupCheckpoints
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -4086,16 +4240,19 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return All Legacy Backup Checkpoints
+      summary: "[experimental] Returns all legacy backup checkpoints for one cluster
+        in the specified project. To use this resource, the requesting API Key
+        must have the Project Read Only role. This resource doesn't require the
+        API Key to have an Access List."
       tags:
         - Legacy Backup
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backupCheckpoints/{checkpointId}":
     get:
       deprecated: true
-      description: (experimental) Returns one legacy backup checkpoint for one cluster
-        in the specified project. To use this resource, the requesting API Key
-        must have the Project Read Only role. This resource doesn't require the
-        API Key to have an Access List.
+      description: Returns one legacy backup checkpoint for one cluster in the
+        specified project. To use this resource, the requesting API Key must
+        have the Project Read Only role. This resource doesn't require the API
+        Key to have an Access List.
       operationId: getLegacyBackupCheckpoint
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -4136,7 +4293,10 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return One Legacy Backup Checkpoint
+      summary: "[experimental] Returns one legacy backup checkpoint for one cluster in
+        the specified project. To use this resource, the requesting API Key must
+        have the Project Read Only role. This resource doesn't require the API
+        Key to have an Access List."
       tags:
         - Legacy Backup
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes":
@@ -4450,14 +4610,13 @@ paths:
         - Global Clusters
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping":
     delete:
-      description: "(experimental) Removes all custom zone mappings for the specified
-        global cluster. A custom zone mapping matches one ISO 3166-2 location
-        code to a zone in your global cluster. Removing the custom zone mappings
-        restores the default mapping. By default, MongoDB Cloud maps each
-        location code to the closest geographical zone. To use this resource,
-        the requesting API Key must have the Project Owner role. This resource
-        doesn't require the API Key to have an Access List. Deprecated versions:
-        v2-{2023-01-01}"
+      description: "Removes all custom zone mappings for the specified global cluster.
+        A custom zone mapping matches one ISO 3166-2 location code to a zone in
+        your global cluster. Removing the custom zone mappings restores the
+        default mapping. By default, MongoDB Cloud maps each location code to
+        the closest geographical zone. To use this resource, the requesting API
+        Key must have the Project Owner role. This resource doesn't require the
+        API Key to have an Access List. Deprecated versions: v2-{2023-01-01}"
       operationId: deleteAllCustomZoneMappings
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -4484,17 +4643,24 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Remove All Custom Zone Mappings from One Global Multi-Cloud Cluster
+      summary: "[experimental] Removes all custom zone mappings for the specified
+        global cluster. A custom zone mapping matches one ISO 3166-2 location
+        code to a zone in your global cluster. Removing the custom zone mappings
+        restores the default mapping. By default, MongoDB Cloud maps each
+        location code to the closest geographical zone. To use this resource,
+        the requesting API Key must have the Project Owner role. This resource
+        doesn't require the API Key to have an Access List. Deprecated versions:
+        v2-{2023-01-01}"
       tags:
         - Global Clusters
     post:
-      description: "(experimental) Creates one custom zone mapping for the specified
-        global cluster. A custom zone mapping matches one ISO 3166-2 location
-        code to a zone in your global cluster. By default, MongoDB Cloud maps
-        each location code to the closest geographical zone. To use this
-        resource, the requesting API Key must have the Project Owner role. This
-        resource doesn't require the API Key to have an Access List. Deprecated
-        versions: v2-{2023-01-01}"
+      description: "Creates one custom zone mapping for the specified global cluster.
+        A custom zone mapping matches one ISO 3166-2 location code to a zone in
+        your global cluster. By default, MongoDB Cloud maps each location code
+        to the closest geographical zone. To use this resource, the requesting
+        API Key must have the Project Owner role. This resource doesn't require
+        the API Key to have an Access List. Deprecated versions:
+        v2-{2023-01-01}"
       operationId: createCustomZoneMapping
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -4528,18 +4694,24 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Add One Entry to One Custom Zone Mapping
+      summary: "[experimental] Creates one custom zone mapping for the specified
+        global cluster. A custom zone mapping matches one ISO 3166-2 location
+        code to a zone in your global cluster. By default, MongoDB Cloud maps
+        each location code to the closest geographical zone. To use this
+        resource, the requesting API Key must have the Project Owner role. This
+        resource doesn't require the API Key to have an Access List. Deprecated
+        versions: v2-{2023-01-01}"
       tags:
         - Global Clusters
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces":
     delete:
-      description: "(experimental) Removes one managed namespace within the specified
-        global cluster. A managed namespace identifies a collection using the
-        database name, the dot separator, and the collection name. Deleting a
-        managed namespace does not remove the associated collection or data. To
-        use this resource, the requesting API Key must have the Project Data
-        Access Admin role. This resource doesn't require the API Key to have an
-        Access List. Deprecated versions: v2-{2023-01-01}"
+      description: "Removes one managed namespace within the specified global cluster.
+        A managed namespace identifies a collection using the database name, the
+        dot separator, and the collection name. Deleting a managed namespace
+        does not remove the associated collection or data. To use this resource,
+        the requesting API Key must have the Project Data Access Admin role.
+        This resource doesn't require the API Key to have an Access List.
+        Deprecated versions: v2-{2023-01-01}"
       operationId: deleteManagedNamespace
       parameters:
         - description: Human-readable label that identifies this advanced cluster.
@@ -4578,16 +4750,22 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Remove One Managed Namespace from One Global Multi-Cloud Cluster
+      summary: "[experimental] Removes one managed namespace within the specified
+        global cluster. A managed namespace identifies a collection using the
+        database name, the dot separator, and the collection name. Deleting a
+        managed namespace does not remove the associated collection or data. To
+        use this resource, the requesting API Key must have the Project Data
+        Access Admin role. This resource doesn't require the API Key to have an
+        Access List. Deprecated versions: v2-{2023-01-01}"
       tags:
         - Global Clusters
     post:
-      description: "(experimental) Creates one managed namespace within the specified
-        global cluster. A managed namespace identifies a collection using the
-        database name, the dot separator, and the collection name. To use this
-        resource, the requesting API Key must have the Project Data Access Admin
-        role. This resource doesn't require the API Key to have an Access List.
-        Deprecated versions: v2-{2023-01-01}"
+      description: "Creates one managed namespace within the specified global cluster.
+        A managed namespace identifies a collection using the database name, the
+        dot separator, and the collection name. To use this resource, the
+        requesting API Key must have the Project Data Access Admin role. This
+        resource doesn't require the API Key to have an Access List. Deprecated
+        versions: v2-{2023-01-01}"
       operationId: createManagedNamespace
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -4623,7 +4801,12 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Create One Managed Namespace in One Global Multi-Cloud Cluster
+      summary: "[experimental] Creates one managed namespace within the specified
+        global cluster. A managed namespace identifies a collection using the
+        database name, the dot separator, and the collection name. To use this
+        resource, the requesting API Key must have the Project Data Access Admin
+        role. This resource doesn't require the API Key to have an Access List.
+        Deprecated versions: v2-{2023-01-01}"
       tags:
         - Global Clusters
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/index":
@@ -4770,10 +4953,10 @@ paths:
         - Online Archive
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/queryLogs.gz":
     get:
-      description: (experimental) Downloads query logs for the specified online
-        archive. To use this resource, the requesting API Key must have the
-        Project Data Access Read Only or higher role. This resource doesn't
-        require the API Key to have an Access List.
+      description: Downloads query logs for the specified online archive. To use this
+        resource, the requesting API Key must have the Project Data Access Read
+        Only or higher role. This resource doesn't require the API Key to have
+        an Access List.
       externalDocs:
         description: Online Archive
         url: https://docs.atlas.mongodb.com/online-archive/manage-online-archive/#std-label-manage-online-archive
@@ -4845,7 +5028,10 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Download Online Archive Query Logs
+      summary: "[experimental] Downloads query logs for the specified online archive.
+        To use this resource, the requesting API Key must have the Project Data
+        Access Read Only or higher role. This resource doesn't require the API
+        Key to have an Access List."
       tags:
         - Online Archive
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId}":
@@ -5016,7 +5202,7 @@ paths:
         - Online Archive
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/outageSimulation":
     delete:
-      description: (experimental) Ends a cluster outage simulation.
+      description: Ends a cluster outage simulation.
       externalDocs:
         description: Cluster Outage Simulation
         url: https://dochub.mongodb.org/core/test-regional-outage
@@ -5051,11 +5237,11 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: End an Outage Simulation
+      summary: "[experimental] Ends a cluster outage simulation."
       tags:
         - Cluster Outage Simulation
     get:
-      description: (experimental) Returns one outage simulation for one cluster.
+      description: Returns one outage simulation for one cluster.
       externalDocs:
         description: Cluster Outage Simulation
         url: https://dochub.mongodb.org/core/test-regional-outage
@@ -5090,11 +5276,11 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return One Outage Simulation
+      summary: "[experimental] Returns one outage simulation for one cluster."
       tags:
         - Cluster Outage Simulation
     post:
-      description: (experimental) Starts a cluster outage simulation.
+      description: Starts a cluster outage simulation.
       externalDocs:
         description: Cluster Outage Simulation
         url: https://dochub.mongodb.org/core/test-regional-outage
@@ -5134,7 +5320,7 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Start an Outage Simulation
+      summary: "[experimental] Starts a cluster outage simulation."
       tags:
         - Cluster Outage Simulation
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs":
@@ -5275,10 +5461,10 @@ paths:
     get:
       deprecated: true
       description: >-
-        (experimental) Returns all legacy backup restore jobs for one
-        cluster in the specified project. To use this resource, the requesting
-        API Key must have the Project Read Only role. This resource doesn't
-        require the API Key to have an Access List.
+        Returns all legacy backup restore jobs for one cluster in the
+        specified project. To use this resource, the requesting API Key must
+        have the Project Read Only role. This resource doesn't require the API
+        Key to have an Access List.
 
          Effective 23 March 2020, all new clusters can use only Cloud Backups. When you upgrade to 4.2, your backup system upgrades to cloud backup if it is currently set to legacy backup. After this upgrade, all your existing legacy backup snapshots remain available. They expire over time in accordance with your retention policy. Your backup policy resets to the default schedule. If you had a custom backup policy in place with legacy backups, you must re-create it with the procedure outlined in the [Cloud Backup documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/scheduling/#std-label-cloud-provider-backup-schedule). If you use the `BATCH-ID` query parameter, you can retrieve all restore jobs in the specified batch. When creating a restore job for a sharded cluster, MongoDB Cloud creates a separate job for each shard, plus another for the config server. Each of those jobs are part of a batch. However, a batch can't include a restore job for a replica set.
       operationId: listLegacyBackupRestoreJobs
@@ -5326,22 +5512,28 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return All Legacy Backup Restore Jobs
+      summary: >-
+        [experimental] Returns all legacy backup restore jobs for one cluster
+        in the specified project. To use this resource, the requesting API Key
+        must have the Project Read Only role. This resource doesn't require the
+        API Key to have an Access List.
+
+         Effective 23 March 2020, all new clusters can use only Cloud Backups. When you upgrade to 4.2, your backup system upgrades to cloud backup if it is currently set to legacy backup. After this upgrade, all your existing legacy backup snapshots remain available. They expire over time in accordance with your retention policy. Your backup policy resets to the default schedule. If you had a custom backup policy in place with legacy backups, you must re-create it with the procedure outlined in the [Cloud Backup documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/scheduling/#std-label-cloud-provider-backup-schedule). If you use the `BATCH-ID` query parameter, you can retrieve all restore jobs in the specified batch. When creating a restore job for a sharded cluster, MongoDB Cloud creates a separate job for each shard, plus another for the config server. Each of those jobs are part of a batch. However, a batch can't include a restore job for a replica set.
       tags:
         - Legacy Backup
     post:
       deprecated: true
-      description: (experimental) Restores one legacy backup for one cluster in the
-        specified project. To use this resource, the requesting API Key must
-        have the Project Owner role and an entry for the project access list.
-        Effective 23 March 2020, all new clusters can use only Cloud Backups.
-        When you upgrade to 4.2, your backup system upgrades to cloud backup if
-        it is currently set to legacy backup. After this upgrade, all your
-        existing legacy backup snapshots remain available. They expire over time
-        in accordance with your retention policy. Your backup policy resets to
-        the default schedule. If you had a custom backup policy in place with
-        legacy backups, you must re-create it with the procedure outlined in the
-        [Cloud Backup
+      description: Restores one legacy backup for one cluster in the specified
+        project. To use this resource, the requesting API Key must have the
+        Project Owner role and an entry for the project access list. Effective
+        23 March 2020, all new clusters can use only Cloud Backups. When you
+        upgrade to 4.2, your backup system upgrades to cloud backup if it is
+        currently set to legacy backup. After this upgrade, all your existing
+        legacy backup snapshots remain available. They expire over time in
+        accordance with your retention policy. Your backup policy resets to the
+        default schedule. If you had a custom backup policy in place with legacy
+        backups, you must re-create it with the procedure outlined in the [Cloud
+        Backup
         documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/scheduling/#std-label-cloud-provider-backup-schedule).
         This endpoint doesn't support creating checkpoint restore jobs for
         sharded clusters, or creating restore jobs for queryable backup
@@ -5385,17 +5577,34 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Create One Legacy Backup Restore Job
+      summary: "[experimental] Restores one legacy backup for one cluster in the
+        specified project. To use this resource, the requesting API Key must
+        have the Project Owner role and an entry for the project access list.
+        Effective 23 March 2020, all new clusters can use only Cloud Backups.
+        When you upgrade to 4.2, your backup system upgrades to cloud backup if
+        it is currently set to legacy backup. After this upgrade, all your
+        existing legacy backup snapshots remain available. They expire over time
+        in accordance with your retention policy. Your backup policy resets to
+        the default schedule. If you had a custom backup policy in place with
+        legacy backups, you must re-create it with the procedure outlined in the
+        [Cloud Backup
+        documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/s\
+        cheduling/#std-label-cloud-provider-backup-schedule). This endpoint
+        doesn't support creating checkpoint restore jobs for sharded clusters,
+        or creating restore jobs for queryable backup snapshots. If you create
+        an automated restore job by specifying `delivery.methodName` of
+        `AUTOMATED_RESTORE` in your request body, MongoDB Cloud removes all
+        existing data on the target cluster prior to the restore."
       tags:
         - Legacy Backup Restore Jobs
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restoreJobs/{jobId}":
     get:
       deprecated: true
       description: >-
-        (experimental) Returns one legacy backup restore job for one
-        cluster in the specified project. To use this resource, the requesting
-        API Key must have the Project Read Only role. This resource doesn't
-        require the API Key to have an Access List.
+        Returns one legacy backup restore job for one cluster in the
+        specified project. To use this resource, the requesting API Key must
+        have the Project Read Only role. This resource doesn't require the API
+        Key to have an Access List.
 
          Effective 23 March 2020, all new clusters can use only Cloud Backups. When you upgrade to 4.2, your backup system upgrades to cloud backup if it is currently set to legacy backup. After this upgrade, all your existing legacy backup snapshots remain available. They expire over time in accordance with your retention policy. Your backup policy resets to the default schedule. If you had a custom backup policy in place with legacy backups, you must re-create it with the procedure outlined in the [Cloud Backup documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/scheduling/#std-label-cloud-provider-backup-schedule).
       operationId: getLegacyBackupRestoreJob
@@ -5436,16 +5645,22 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return One Legacy Backup Restore Job
+      summary: >-
+        [experimental] Returns one legacy backup restore job for one cluster in
+        the specified project. To use this resource, the requesting API Key must
+        have the Project Read Only role. This resource doesn't require the API
+        Key to have an Access List.
+
+         Effective 23 March 2020, all new clusters can use only Cloud Backups. When you upgrade to 4.2, your backup system upgrades to cloud backup if it is currently set to legacy backup. After this upgrade, all your existing legacy backup snapshots remain available. They expire over time in accordance with your retention policy. Your backup policy resets to the default schedule. If you had a custom backup policy in place with legacy backups, you must re-create it with the procedure outlined in the [Cloud Backup documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/scheduling/#std-label-cloud-provider-backup-schedule).
       tags:
         - Legacy Backup
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshotSchedule":
     get:
       deprecated: true
       description: >-
-        (experimental) Returns the snapshot schedule for one cluster in the
-        specified project. To use this resource, the requesting API Key must
-        have the Project Read Only role.
+        Returns the snapshot schedule for one cluster in the specified
+        project. To use this resource, the requesting API Key must have the
+        Project Read Only role.
 
          Effective 23 March 2020, all new clusters can use only Cloud Backups. When you upgrade to 4.2, your backup system upgrades to cloud backup if it is currently set to legacy backup. After this upgrade, all your existing legacy backup snapshots remain available. They expire over time in accordance with your retention policy. Your backup policy resets to the default schedule. If you had a custom backup policy in place with legacy backups, you must re-create it with the procedure outlined in the [Cloud Backup documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/scheduling/#std-label-cloud-provider-backup-schedule).
       operationId: getLegacySnapshotSchedule
@@ -5475,15 +5690,20 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return One Snapshot Schedule
+      summary: >-
+        [experimental] Returns the snapshot schedule for one cluster in the
+        specified project. To use this resource, the requesting API Key must
+        have the Project Read Only role.
+
+         Effective 23 March 2020, all new clusters can use only Cloud Backups. When you upgrade to 4.2, your backup system upgrades to cloud backup if it is currently set to legacy backup. After this upgrade, all your existing legacy backup snapshots remain available. They expire over time in accordance with your retention policy. Your backup policy resets to the default schedule. If you had a custom backup policy in place with legacy backups, you must re-create it with the procedure outlined in the [Cloud Backup documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/scheduling/#std-label-cloud-provider-backup-schedule).
       tags:
         - Legacy Backup
     patch:
       deprecated: true
       description: >-
-        (experimental) Updates the snapshot schedule for one cluster in the
-        specified project. To use this resource, the requesting API Key must
-        have the Project Owner role.
+        Updates the snapshot schedule for one cluster in the specified
+        project. To use this resource, the requesting API Key must have the
+        Project Owner role.
 
          Effective 23 March 2020, all new clusters can use only Cloud Backups. When you upgrade to 4.2, your backup system upgrades to cloud backup if it is currently set to legacy backup. After this upgrade, all your existing legacy backup snapshots remain available. They expire over time in accordance with your retention policy. Your backup policy resets to the default schedule. If you had a custom backup policy in place with legacy backups, you must re-create it with the procedure outlined in the [Cloud Backup documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/scheduling/#std-label-cloud-provider-backup-schedule).
       operationId: updateLegacySnapshotSchedule
@@ -5520,23 +5740,28 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Update Snapshot Schedule for One Cluster
+      summary: >-
+        [experimental] Updates the snapshot schedule for one cluster in the
+        specified project. To use this resource, the requesting API Key must
+        have the Project Owner role.
+
+         Effective 23 March 2020, all new clusters can use only Cloud Backups. When you upgrade to 4.2, your backup system upgrades to cloud backup if it is currently set to legacy backup. After this upgrade, all your existing legacy backup snapshots remain available. They expire over time in accordance with your retention policy. Your backup policy resets to the default schedule. If you had a custom backup policy in place with legacy backups, you must re-create it with the procedure outlined in the [Cloud Backup documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/scheduling/#std-label-cloud-provider-backup-schedule).
       tags:
         - Legacy Backup
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshots":
     get:
       deprecated: true
-      description: (experimental) Returns all legacy backup snapshots for one cluster
-        in the specified project. To use this resource, the requesting API Key
-        must have the Project Read Only role. This resource doesn't require the
-        API Key to have an Access List. Effective 23 March 2020, all new
-        clusters can use only Cloud Backups. When you upgrade to 4.2, your
-        backup system upgrades to cloud backup if it is currently set to legacy
-        backup. After this upgrade, all your existing legacy backup snapshots
-        remain available. They expire over time in accordance with your
-        retention policy. Your backup policy resets to the default schedule. If
-        you had a custom backup policy in place with legacy backups, you must
-        re-create it with the procedure outlined in the [Cloud Backup
+      description: Returns all legacy backup snapshots for one cluster in the
+        specified project. To use this resource, the requesting API Key must
+        have the Project Read Only role. This resource doesn't require the API
+        Key to have an Access List. Effective 23 March 2020, all new clusters
+        can use only Cloud Backups. When you upgrade to 4.2, your backup system
+        upgrades to cloud backup if it is currently set to legacy backup. After
+        this upgrade, all your existing legacy backup snapshots remain
+        available. They expire over time in accordance with your retention
+        policy. Your backup policy resets to the default schedule. If you had a
+        custom backup policy in place with legacy backups, you must re-create it
+        with the procedure outlined in the [Cloud Backup
         documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/scheduling/#std-label-cloud-provider-backup-schedule).
       operationId: listLegacySnapshots
       parameters:
@@ -5575,23 +5800,35 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return All Legacy Backup Snapshots
+      summary: "[experimental] Returns all legacy backup snapshots for one cluster in
+        the specified project. To use this resource, the requesting API Key must
+        have the Project Read Only role. This resource doesn't require the API
+        Key to have an Access List. Effective 23 March 2020, all new clusters
+        can use only Cloud Backups. When you upgrade to 4.2, your backup system
+        upgrades to cloud backup if it is currently set to legacy backup. After
+        this upgrade, all your existing legacy backup snapshots remain
+        available. They expire over time in accordance with your retention
+        policy. Your backup policy resets to the default schedule. If you had a
+        custom backup policy in place with legacy backups, you must re-create it
+        with the procedure outlined in the [Cloud Backup
+        documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/s\
+        cheduling/#std-label-cloud-provider-backup-schedule)."
       tags:
         - Legacy Backup
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshots/{snapshotId}":
     delete:
       deprecated: true
-      description: (experimental) Removes one legacy backup snapshot for one cluster
-        in the specified project. To use this resource, the requesting API Key
-        must have the Project Owner role and an entry for the project access
-        list. Effective 23 March 2020, all new clusters can use only Cloud
-        Backups. When you upgrade to 4.2, your backup system upgrades to cloud
-        backup if it is currently set to legacy backup. After this upgrade, all
-        your existing legacy backup snapshots remain available. They expire over
-        time in accordance with your retention policy. Your backup policy resets
-        to the default schedule. If you had a custom backup policy in place with
-        legacy backups, you must re-create it with the procedure outlined in the
-        [Cloud Backup
+      description: Removes one legacy backup snapshot for one cluster in the specified
+        project. To use this resource, the requesting API Key must have the
+        Project Owner role and an entry for the project access list. Effective
+        23 March 2020, all new clusters can use only Cloud Backups. When you
+        upgrade to 4.2, your backup system upgrades to cloud backup if it is
+        currently set to legacy backup. After this upgrade, all your existing
+        legacy backup snapshots remain available. They expire over time in
+        accordance with your retention policy. Your backup policy resets to the
+        default schedule. If you had a custom backup policy in place with legacy
+        backups, you must re-create it with the procedure outlined in the [Cloud
+        Backup
         documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/scheduling/#std-label-cloud-provider-backup-schedule).
       operationId: deleteLegacySnapshot
       parameters:
@@ -5631,22 +5868,34 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Remove One Legacy Backup Snapshot
+      summary: "[experimental] Removes one legacy backup snapshot for one cluster in
+        the specified project. To use this resource, the requesting API Key must
+        have the Project Owner role and an entry for the project access list.
+        Effective 23 March 2020, all new clusters can use only Cloud Backups.
+        When you upgrade to 4.2, your backup system upgrades to cloud backup if
+        it is currently set to legacy backup. After this upgrade, all your
+        existing legacy backup snapshots remain available. They expire over time
+        in accordance with your retention policy. Your backup policy resets to
+        the default schedule. If you had a custom backup policy in place with
+        legacy backups, you must re-create it with the procedure outlined in the
+        [Cloud Backup
+        documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/s\
+        cheduling/#std-label-cloud-provider-backup-schedule)."
       tags:
         - Legacy Backup
     get:
       deprecated: true
-      description: (experimental) Returns one legacy backup snapshot for one cluster
-        in the specified project. To use this resource, the requesting API Key
-        must have the Project Read Only role. This resource doesn't require the
-        API Key to have an Access List. Effective 23 March 2020, all new
-        clusters can use only Cloud Backups. When you upgrade to 4.2, your
-        backup system upgrades to cloud backup if it is currently set to legacy
-        backup. After this upgrade, all your existing legacy backup snapshots
-        remain available. They expire over time in accordance with your
-        retention policy. Your backup policy resets to the default schedule. If
-        you had a custom backup policy in place with legacy backups, you must
-        re-create it with the procedure outlined in the [Cloud Backup
+      description: Returns one legacy backup snapshot for one cluster in the specified
+        project. To use this resource, the requesting API Key must have the
+        Project Read Only role. This resource doesn't require the API Key to
+        have an Access List. Effective 23 March 2020, all new clusters can use
+        only Cloud Backups. When you upgrade to 4.2, your backup system upgrades
+        to cloud backup if it is currently set to legacy backup. After this
+        upgrade, all your existing legacy backup snapshots remain available.
+        They expire over time in accordance with your retention policy. Your
+        backup policy resets to the default schedule. If you had a custom backup
+        policy in place with legacy backups, you must re-create it with the
+        procedure outlined in the [Cloud Backup
         documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/scheduling/#std-label-cloud-provider-backup-schedule).
       operationId: getLegacySnapshot
       parameters:
@@ -5684,22 +5933,34 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return One Legacy Backup Snapshot
-      tags:
-        - Legacy Backup
-    patch:
-      deprecated: true
-      description: (experimental) Changes the expiration date for one legacy backup
-        snapshot for one cluster in the specified project. To use this resource,
-        the requesting API Key must have the Project Owner role and an entry for
-        the project access list. Effective 23 March 2020, all new clusters can
-        use only Cloud Backups. When you upgrade to 4.2, your backup system
+      summary: "[experimental] Returns one legacy backup snapshot for one cluster in
+        the specified project. To use this resource, the requesting API Key must
+        have the Project Read Only role. This resource doesn't require the API
+        Key to have an Access List. Effective 23 March 2020, all new clusters
+        can use only Cloud Backups. When you upgrade to 4.2, your backup system
         upgrades to cloud backup if it is currently set to legacy backup. After
         this upgrade, all your existing legacy backup snapshots remain
         available. They expire over time in accordance with your retention
         policy. Your backup policy resets to the default schedule. If you had a
         custom backup policy in place with legacy backups, you must re-create it
         with the procedure outlined in the [Cloud Backup
+        documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/s\
+        cheduling/#std-label-cloud-provider-backup-schedule)."
+      tags:
+        - Legacy Backup
+    patch:
+      deprecated: true
+      description: Changes the expiration date for one legacy backup snapshot for one
+        cluster in the specified project. To use this resource, the requesting
+        API Key must have the Project Owner role and an entry for the project
+        access list. Effective 23 March 2020, all new clusters can use only
+        Cloud Backups. When you upgrade to 4.2, your backup system upgrades to
+        cloud backup if it is currently set to legacy backup. After this
+        upgrade, all your existing legacy backup snapshots remain available.
+        They expire over time in accordance with your retention policy. Your
+        backup policy resets to the default schedule. If you had a custom backup
+        policy in place with legacy backups, you must re-create it with the
+        procedure outlined in the [Cloud Backup
         documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/scheduling/#std-label-cloud-provider-backup-schedule).
       operationId: updateLegacySnapshotRetention
       parameters:
@@ -5744,18 +6005,29 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Change One Legacy Backup Snapshot Expiration
+      summary: "[experimental] Changes the expiration date for one legacy backup
+        snapshot for one cluster in the specified project. To use this resource,
+        the requesting API Key must have the Project Owner role and an entry for
+        the project access list. Effective 23 March 2020, all new clusters can
+        use only Cloud Backups. When you upgrade to 4.2, your backup system
+        upgrades to cloud backup if it is currently set to legacy backup. After
+        this upgrade, all your existing legacy backup snapshots remain
+        available. They expire over time in accordance with your retention
+        policy. Your backup policy resets to the default schedule. If you had a
+        custom backup policy in place with legacy backups, you must re-create it
+        with the procedure outlined in the [Cloud Backup
+        documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/s\
+        cheduling/#std-label-cloud-provider-backup-schedule)."
       tags:
         - Legacy Backup
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/status":
     get:
-      description: (experimental) Returns the status of all changes that you made to
-        the specified cluster in the specified project. Use this resource to
-        check the progress MongoDB Cloud has made in processing your changes.
-        The response does not include the deployment of new dedicated clusters.
-        To use this resource, the requesting API Key must have the Project Read
-        Only role. This resource doesn't require the API Key to have an Access
-        List.
+      description: Returns the status of all changes that you made to the specified
+        cluster in the specified project. Use this resource to check the
+        progress MongoDB Cloud has made in processing your changes. The response
+        does not include the deployment of new dedicated clusters. To use this
+        resource, the requesting API Key must have the Project Read Only role.
+        This resource doesn't require the API Key to have an Access List.
       operationId: getClusterStatus
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -5782,7 +6054,13 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return Status of All Cluster Operations
+      summary: "[experimental] Returns the status of all changes that you made to the
+        specified cluster in the specified project. Use this resource to check
+        the progress MongoDB Cloud has made in processing your changes. The
+        response does not include the deployment of new dedicated clusters. To
+        use this resource, the requesting API Key must have the Project Read
+        Only role. This resource doesn't require the API Key to have an Access
+        List."
       tags:
         - Clusters
   "/api/atlas/v2/groups/{groupId}/clusters/{hostName}/logs/{logName}.gz":
@@ -6053,10 +6331,10 @@ paths:
       tags:
         - Network Peering
     patch:
-      description: (experimental) Updates the network details and labels of one
-        specified network peering container in the specified project. To use
-        this resource, the requesting API Key must have the Project Owner role.
-        This resource doesn't require the API Key to have an Access List.
+      description: Updates the network details and labels of one specified network
+        peering container in the specified project. To use this resource, the
+        requesting API Key must have the Project Owner role. This resource
+        doesn't require the API Key to have an Access List.
       operationId: updatePeeringContainer
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -6101,7 +6379,10 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Update One Network Peering Container
+      summary: "[experimental] Updates the network details and labels of one specified
+        network peering container in the specified project. To use this
+        resource, the requesting API Key must have the Project Owner role. This
+        resource doesn't require the API Key to have an Access List."
       tags:
         - Network Peering
   "/api/atlas/v2/groups/{groupId}/customDBRoles/roles":
@@ -6293,10 +6574,10 @@ paths:
         - Custom Database Roles
   "/api/atlas/v2/groups/{groupId}/dataFederation":
     get:
-      description: (experimental) Returns the details of all federated database
-        instances in the specified project. To use this resource, the requesting
-        API Key must have the Project Read Only or higher role. This resource
-        doesn't require the API Key to have an Access List.
+      description: Returns the details of all federated database instances in the
+        specified project. To use this resource, the requesting API Key must
+        have the Project Read Only or higher role. This resource doesn't require
+        the API Key to have an Access List.
       operationId: listFederatedDatabases
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -6322,14 +6603,17 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return All Federated Database Instances in One Project
+      summary: "[experimental] Returns the details of all federated database instances
+        in the specified project. To use this resource, the requesting API Key
+        must have the Project Read Only or higher role. This resource doesn't
+        require the API Key to have an Access List."
       tags:
         - Data Federation
     post:
-      description: (experimental) Creates one federated database instance in the
-        specified project. To use this resource, the requesting API Key must
-        have the Project Owner or Project Charts Admin roles. This resource
-        doesn't require the API Key to have an Access List.
+      description: Creates one federated database instance in the specified project.
+        To use this resource, the requesting API Key must have the Project Owner
+        or Project Charts Admin roles. This resource doesn't require the API Key
+        to have an Access List.
       operationId: createFederatedDatabase
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -6365,15 +6649,18 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Create One Federated Database Instance in One Project
+      summary: "[experimental] Creates one federated database instance in the
+        specified project. To use this resource, the requesting API Key must
+        have the Project Owner or Project Charts Admin roles. This resource
+        doesn't require the API Key to have an Access List."
       tags:
         - Data Federation
   "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}":
     delete:
-      description: (experimental) Removes one federated database instance from the
-        specified project. To use this resource, the requesting API Key must
-        have the Project Owner or Project Charts Admin roles. This resource
-        doesn't require the API Key to have an Access List.
+      description: Removes one federated database instance from the specified project.
+        To use this resource, the requesting API Key must have the Project Owner
+        or Project Charts Admin roles. This resource doesn't require the API Key
+        to have an Access List.
       operationId: deleteFederatedDatabase
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -6398,15 +6685,17 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Remove One Federated Database Instance from One Project
+      summary: "[experimental] Removes one federated database instance from the
+        specified project. To use this resource, the requesting API Key must
+        have the Project Owner or Project Charts Admin roles. This resource
+        doesn't require the API Key to have an Access List."
       tags:
         - Data Federation
     get:
-      description: (experimental) Returns the details of one federated database
-        instance within the specified project. To use this resource, the
-        requesting API Key must have the Project Read Only or Project Charts
-        Admin roles. This resource doesn't require the API Key to have an Access
-        List.
+      description: Returns the details of one federated database instance within the
+        specified project. To use this resource, the requesting API Key must
+        have the Project Read Only or Project Charts Admin roles. This resource
+        doesn't require the API Key to have an Access List.
       operationId: getFederatedDatabase
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -6435,14 +6724,17 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return One Federated Database Instance in One Project
+      summary: "[experimental] Returns the details of one federated database instance
+        within the specified project. To use this resource, the requesting API
+        Key must have the Project Read Only or Project Charts Admin roles. This
+        resource doesn't require the API Key to have an Access List."
       tags:
         - Data Federation
     patch:
-      description: (experimental) Updates the details of one federated database
-        instance in the specified project. To use this resource, the requesting
-        API Key must have the Project Owner or higher role. This resource
-        doesn't require the API Key to have an Access List.
+      description: Updates the details of one federated database instance in the
+        specified project. To use this resource, the requesting API Key must
+        have the Project Owner or higher role. This resource doesn't require the
+        API Key to have an Access List.
       operationId: updateFederatedDatabase
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -6486,15 +6778,18 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Update One Federated Database Instance in One Project
+      summary: "[experimental] Updates the details of one federated database instance
+        in the specified project. To use this resource, the requesting API Key
+        must have the Project Owner or higher role. This resource doesn't
+        require the API Key to have an Access List."
       tags:
         - Data Federation
   "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits":
     get:
-      description: (experimental) Returns query limits for a federated databases
-        instance in the specified project. To use this resource, the requesting
-        API Key must have the Project Read Only role. This resource doesn't
-        require the API Key to have an Access List.
+      description: Returns query limits for a federated databases instance in the
+        specified project. To use this resource, the requesting API Key must
+        have the Project Read Only role. This resource doesn't require the API
+        Key to have an Access List.
       operationId: returnFederatedDatabaseQueryLimits
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -6523,15 +6818,17 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return All Query Limits for One Federated Database Instance
+      summary: "[experimental] Returns query limits for a federated databases instance
+        in the specified project. To use this resource, the requesting API Key
+        must have the Project Read Only role. This resource doesn't require the
+        API Key to have an Access List."
       tags:
         - Data Federation
   "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits/{limitName}":
     delete:
-      description: (experimental) Deletes one query limit for one federated database
-        instance. To use this resource, the requesting API Key must have the
-        Project Owner role. This resource doesn't require the API Key to have an
-        Access List.
+      description: Deletes one query limit for one federated database instance. To use
+        this resource, the requesting API Key must have the Project Owner role.
+        This resource doesn't require the API Key to have an Access List.
       operationId: deleteOneDataFederationInstanceQueryLimit
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -6577,14 +6874,17 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Delete One Query Limit For One Federated Database Instance
+      summary: "[experimental] Deletes one query limit for one federated database
+        instance. To use this resource, the requesting API Key must have the
+        Project Owner role. This resource doesn't require the API Key to have an
+        Access List."
       tags:
         - Data Federation
     get:
-      description: (experimental) Returns the details of one query limit for the
-        specified federated database instance in the specified project. To use
-        this resource, the requesting API Key must have the Project Read Only
-        role. This resource doesn't require the API Key to have an Access List.
+      description: Returns the details of one query limit for the specified federated
+        database instance in the specified project. To use this resource, the
+        requesting API Key must have the Project Read Only role. This resource
+        doesn't require the API Key to have an Access List.
       operationId: returnFederatedDatabaseQueryLimit
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -6632,14 +6932,17 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return One Federated Database Instance Query Limit for One Project
+      summary: "[experimental] Returns the details of one query limit for the
+        specified federated database instance in the specified project. To use
+        this resource, the requesting API Key must have the Project Read Only
+        role. This resource doesn't require the API Key to have an Access List."
       tags:
         - Data Federation
     patch:
-      description: (experimental) Creates or updates one query limit for one federated
-        database instance. To use this resource, the requesting API Key must
-        have the Project Owner role. This resource doesn't require the API Key
-        to have an Access List.
+      description: Creates or updates one query limit for one federated database
+        instance. To use this resource, the requesting API Key must have the
+        Project Owner role. This resource doesn't require the API Key to have an
+        Access List.
       operationId: createOneDataFederationQueryLimit
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -6698,15 +7001,18 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Configure One Query Limit for One Federated Database Instance
+      summary: "[experimental] Creates or updates one query limit for one federated
+        database instance. To use this resource, the requesting API Key must
+        have the Project Owner role. This resource doesn't require the API Key
+        to have an Access List."
       tags:
         - Data Federation
   "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/queryLogs.gz":
     get:
-      description: (experimental) Downloads the query logs for the specified federated
-        database instance. To use this resource, the requesting API Key must
-        have the Project Owner or Project Data Access Read Write roles. This
-        resource doesn't require the API Key to have an Access List.
+      description: Downloads the query logs for the specified federated database
+        instance. To use this resource, the requesting API Key must have the
+        Project Owner or Project Data Access Read Write roles. This resource
+        doesn't require the API Key to have an Access List.
       operationId: downloadFederatedDatabaseQueryLogs
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -6761,7 +7067,10 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Download Query Logs for One Federated Database Instance
+      summary: "[experimental] Downloads the query logs for the specified federated
+        database instance. To use this resource, the requesting API Key must
+        have the Project Owner or Project Data Access Read Write roles. This
+        resource doesn't require the API Key to have an Access List."
       tags:
         - Data Federation
   "/api/atlas/v2/groups/{groupId}/databaseUsers":
@@ -7398,12 +7707,12 @@ paths:
         - Encryption at Rest using Customer Key Management
     patch:
       description: >-
-        (experimental) Updates the configuration for encryption at rest
-        using the keys you manage through your cloud provider. MongoDB Cloud
-        encrypts all storage even if you don't use your own key management. This
-        resource requires the requesting API Key to have the Project Owner role.
-        This feature isn't available for `M0` free clusters, `M2`, `M5`, or
-        serverless clusters.
+        Updates the configuration for encryption at rest using the keys you
+        manage through your cloud provider. MongoDB Cloud encrypts all storage
+        even if you don't use your own key management. This resource requires
+        the requesting API Key to have the Project Owner role. This feature
+        isn't available for `M0` free clusters, `M2`, `M5`, or serverless
+        clusters.
 
          After you configure at least one Encryption at Rest using a Customer Key Management provider for the MongoDB Cloud project, Project Owners can enable Encryption at Rest using Customer Key Management for each MongoDB Cloud cluster for which they require encryption. The Encryption at Rest using Customer Key Management provider doesn't have to match the cluster cloud service provider. MongoDB Cloud doesn't automatically rotate user-managed encryption keys. Defer to your preferred Encryption at Rest using Customer Key Management provider's documentation and guidance for best practices on key rotation. MongoDB Cloud automatically creates a 90-day key rotation alert when you configure Encryption at Rest using Customer Key Management using your Key Management in an MongoDB Cloud project. MongoDB Cloud encrypts all storage whether or not you use your own key management.
       operationId: updateEncryptionAtRest
@@ -7451,8 +7760,15 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Update Configuration for Encryption at Rest using Customer-Managed Keys
-        for One Project
+      summary: >-
+        [experimental] Updates the configuration for encryption at rest using
+        the keys you manage through your cloud provider. MongoDB Cloud encrypts
+        all storage even if you don't use your own key management. This resource
+        requires the requesting API Key to have the Project Owner role. This
+        feature isn't available for `M0` free clusters, `M2`, `M5`, or
+        serverless clusters.
+
+         After you configure at least one Encryption at Rest using a Customer Key Management provider for the MongoDB Cloud project, Project Owners can enable Encryption at Rest using Customer Key Management for each MongoDB Cloud cluster for which they require encryption. The Encryption at Rest using Customer Key Management provider doesn't have to match the cluster cloud service provider. MongoDB Cloud doesn't automatically rotate user-managed encryption keys. Defer to your preferred Encryption at Rest using Customer Key Management provider's documentation and guidance for best practices on key rotation. MongoDB Cloud automatically creates a 90-day key rotation alert when you configure Encryption at Rest using Customer Key Management using your Key Management in an MongoDB Cloud project. MongoDB Cloud encrypts all storage whether or not you use your own key management.
       tags:
         - Encryption at Rest using Customer Key Management
   "/api/atlas/v2/groups/{groupId}/events":
@@ -7539,11 +7855,11 @@ paths:
   "/api/atlas/v2/groups/{groupId}/events/{eventId}":
     get:
       description: >-
-        (experimental) Returns one event for the specified project. Events
-        identify significant database, billing, or security activities or status
-        changes. To use this resource, the requesting API Key must have the
-        Project Read Only role. This resource doesn't require the API Key to
-        have an Access List.
+        Returns one event for the specified project. Events identify
+        significant database, billing, or security activities or status changes.
+        To use this resource, the requesting API Key must have the Project Read
+        Only role. This resource doesn't require the API Key to have an Access
+        List.
 
          This resource remains under revision and may change.
       operationId: getProjectEvent
@@ -7585,14 +7901,21 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return One Event from One Project
+      summary: >-
+        [experimental] Returns one event for the specified project. Events
+        identify significant database, billing, or security activities or status
+        changes. To use this resource, the requesting API Key must have the
+        Project Read Only role. This resource doesn't require the API Key to
+        have an Access List.
+
+         This resource remains under revision and may change.
       tags:
         - Events
   "/api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics":
     get:
-      description: (experimental) Returns all Atlas Search metric types available for
-        one process in the specified project. You must have the Project Read
-        Only or higher role to view the Atlas Search metric types.
+      description: Returns all Atlas Search metric types available for one process in
+        the specified project. You must have the Project Read Only or higher
+        role to view the Atlas Search metric types.
       operationId: listMetricTypes
       parameters:
         - $ref: "#/components/parameters/processId"
@@ -7613,13 +7936,15 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return All Atlas Search Metric Types for One Process
+      summary: "[experimental] Returns all Atlas Search metric types available for one
+        process in the specified project. You must have the Project Read Only or
+        higher role to view the Atlas Search metric types."
       tags:
         - Monitoring and Logs
   "/api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/indexes/{databaseName}/{collectionName}/measurements":
     get:
-      description: (experimental) Returns the Atlas Search index metrics within the
-        specified time range for one namespace in the specified process.
+      description: Returns the Atlas Search index metrics within the specified time
+        range for one namespace in the specified process.
       operationId: listIndexMetrics
       parameters:
         - $ref: "#/components/parameters/processId"
@@ -7660,15 +7985,16 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return All Atlas Search Index Metrics for One Namespace
+      summary: "[experimental] Returns the Atlas Search index metrics within the
+        specified time range for one namespace in the specified process."
       tags:
         - Monitoring and Logs
   "/api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/indexes/{databaseName}/{collectionName}/{indexName}/measurements":
     get:
-      description: (experimental) Returns the Atlas Search metrics data series within
-        the provided time range for one namespace and index name on the
-        specified process. You must have the Project Read Only or higher role to
-        view the Atlas Search metric types.
+      description: Returns the Atlas Search metrics data series within the provided
+        time range for one namespace and index name on the specified process.
+        You must have the Project Read Only or higher role to view the Atlas
+        Search metric types.
       operationId: getIndexMetrics
       parameters:
         - $ref: "#/components/parameters/processId"
@@ -7710,15 +8036,18 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return Atlas Search Metrics for One Index in One Specified Namespace
+      summary: "[experimental] Returns the Atlas Search metrics data series within the
+        provided time range for one namespace and index name on the specified
+        process. You must have the Project Read Only or higher role to view the
+        Atlas Search metric types."
       tags:
         - Monitoring and Logs
   "/api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/measurements":
     get:
-      description: (experimental) Returns the Atlas Search hardware and status data
-        series within the provided time range for one process in the specified
-        project. You must have the Project Read Only or higher role to view the
-        Atlas Search metric types.
+      description: Returns the Atlas Search hardware and status data series within the
+        provided time range for one process in the specified project. You must
+        have the Project Read Only or higher role to view the Atlas Search
+        metric types.
       operationId: getMeasurements
       parameters:
         - $ref: "#/components/parameters/processId"
@@ -7761,7 +8090,10 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return Atlas Search Hardware and Status Metrics
+      summary: "[experimental] Returns the Atlas Search hardware and status data
+        series within the provided time range for one process in the specified
+        project. You must have the Project Read Only or higher role to view the
+        Atlas Search metric types."
       tags:
         - Monitoring and Logs
   "/api/atlas/v2/groups/{groupId}/integrations":
@@ -7930,11 +8262,11 @@ paths:
       tags:
         - Third-Party Integrations
     put:
-      description: (experimental) Updates the settings for configuring integration
-        with one third-party service. These settings apply to all databases
-        managed in one MongoDB Cloud project. To use this resource, the
-        requesting API Key must have the Organization Owner or Project Owner
-        role. This resource doesn't require the API Key to have an Access List.
+      description: Updates the settings for configuring integration with one
+        third-party service. These settings apply to all databases managed in
+        one MongoDB Cloud project. To use this resource, the requesting API Key
+        must have the Organization Owner or Project Owner role. This resource
+        doesn't require the API Key to have an Access List.
       operationId: updateThirdPartyIntegration
       parameters:
         - description: Human-readable label that identifies the service which you want to
@@ -7974,7 +8306,11 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Update One Third-Party Service Integration
+      summary: "[experimental] Updates the settings for configuring integration with
+        one third-party service. These settings apply to all databases managed
+        in one MongoDB Cloud project. To use this resource, the requesting API
+        Key must have the Organization Owner or Project Owner role. This
+        resource doesn't require the API Key to have an Access List."
       tags:
         - Third-Party Integrations
   "/api/atlas/v2/groups/{groupId}/invites":
@@ -8202,10 +8538,9 @@ paths:
         - Projects
   "/api/atlas/v2/groups/{groupId}/limits":
     get:
-      description: (experimental) Returns all the limits for the specified project. To
-        use this resource, the requesting API Key must have the Project Read
-        Only role. This resource doesn't require the API Key to have an Access
-        List.
+      description: Returns all the limits for the specified project. To use this
+        resource, the requesting API Key must have the Project Read Only role.
+        This resource doesn't require the API Key to have an Access List.
       operationId: listProjectLimits
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -8229,16 +8564,19 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return All Limits for One Project
+      summary: "[experimental] Returns all the limits for the specified project. To
+        use this resource, the requesting API Key must have the Project Read
+        Only role. This resource doesn't require the API Key to have an Access
+        List."
       tags:
         - Projects
   "/api/atlas/v2/groups/{groupId}/limits/{limitName}":
     delete:
-      description: (experimental) Removes the specified project limit. Depending on
-        the limit, Atlas either resets the limit to its default value or removes
-        the limit entirely. To use this resource, the requesting API Key must
-        have the Project Owner role. This resource doesn't require the API Key
-        to have an Access List.
+      description: Removes the specified project limit. Depending on the limit, Atlas
+        either resets the limit to its default value or removes the limit
+        entirely. To use this resource, the requesting API Key must have the
+        Project Owner role. This resource doesn't require the API Key to have an
+        Access List.
       operationId: deleteProjectLimit
       parameters:
         - description: >
@@ -8292,14 +8630,17 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Remove One Project Limit
+      summary: "[experimental] Removes the specified project limit. Depending on the
+        limit, Atlas either resets the limit to its default value or removes the
+        limit entirely. To use this resource, the requesting API Key must have
+        the Project Owner role. This resource doesn't require the API Key to
+        have an Access List."
       tags:
         - Projects
     get:
-      description: (experimental) Returns the specified limit for the specified
-        project. To use this resource, the requesting API Key must have the
-        Project Read Only role. This resource doesn't require the API Key to
-        have an Access List.
+      description: Returns the specified limit for the specified project. To use this
+        resource, the requesting API Key must have the Project Read Only role.
+        This resource doesn't require the API Key to have an Access List.
       operationId: getProjectLimit
       parameters:
         - description: >
@@ -8355,14 +8696,17 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return One Limit for One Project
+      summary: "[experimental] Returns the specified limit for the specified project.
+        To use this resource, the requesting API Key must have the Project Read
+        Only role. This resource doesn't require the API Key to have an Access
+        List."
       tags:
         - Projects
     patch:
       description: >-
-        (experimental) Sets the specified project limit. To use this
-        resource, the requesting API Key must have the Project Owner role. This
-        resource doesn't require the API Key to have an Access List.
+        Sets the specified project limit. To use this resource, the
+        requesting API Key must have the Project Owner role. This resource
+        doesn't require the API Key to have an Access List.
 
 
         **NOTE**: Increasing the following configuration limits might lead to slower response times in the MongoDB Cloud UI or increased user management overhead leading to authentication or authorization re-architecture. If possible, we recommend that you create additional projects to gain access to more of these resources for a more sustainable growth pattern.
@@ -8428,7 +8772,13 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Set One Project Limit
+      summary: >-
+        [experimental] Sets the specified project limit. To use this resource,
+        the requesting API Key must have the Project Owner role. This resource
+        doesn't require the API Key to have an Access List.
+
+
+        **NOTE**: Increasing the following configuration limits might lead to slower response times in the MongoDB Cloud UI or increased user management overhead leading to authentication or authorization re-architecture. If possible, we recommend that you create additional projects to gain access to more of these resources for a more sustainable growth pattern.
       tags:
         - Projects
   "/api/atlas/v2/groups/{groupId}/liveMigrations":
@@ -8729,10 +9079,10 @@ paths:
         - Maintenance Windows
   "/api/atlas/v2/groups/{groupId}/maintenanceWindow/autoDefer":
     post:
-      description: (experimental) Toggles automatic deferral of the maintenance window
-        for the specified project. To use this resource, the requesting API Key
-        must have the Project Owner role. This resource doesn't require the API
-        Key to have an Access List.
+      description: Toggles automatic deferral of the maintenance window for the
+        specified project. To use this resource, the requesting API Key must
+        have the Project Owner role. This resource doesn't require the API Key
+        to have an Access List.
       operationId: toggleMaintenanceAutoDefer
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -8750,7 +9100,10 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Toggle Automatic Deferral of Maintenance for One Project
+      summary: "[experimental] Toggles automatic deferral of the maintenance window
+        for the specified project. To use this resource, the requesting API Key
+        must have the Project Owner role. This resource doesn't require the API
+        Key to have an Access List."
       tags:
         - Maintenance Windows
   "/api/atlas/v2/groups/{groupId}/maintenanceWindow/defer":
@@ -9012,10 +9365,10 @@ paths:
       tags:
         - Network Peering
     patch:
-      description: (experimental) Updates one specified network peering connection in
-        the specified project. To use this resource, the requesting API Key must
-        have the Project Owner role. This resource doesn't require the API Key
-        to have an Access List.
+      description: Updates one specified network peering connection in the specified
+        project. To use this resource, the requesting API Key must have the
+        Project Owner role. This resource doesn't require the API Key to have an
+        Access List.
       operationId: updatePeeringConnection
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -9056,7 +9409,10 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Update One New Network Peering Connection
+      summary: "[experimental] Updates one specified network peering connection in the
+        specified project. To use this resource, the requesting API Key must
+        have the Project Owner role. This resource doesn't require the API Key
+        to have an Access List."
       tags:
         - Network Peering
   "/api/atlas/v2/groups/{groupId}/pipelines":
@@ -9718,10 +10074,9 @@ paths:
         - Serverless Private Endpoints
     post:
       description: >-
-        (experimental) Creates one private endpoint for one serverless
-        instance. To use this resource, the requesting API Key must have the
-        Project Owner role. This resource doesn't require the API Key to have an
-        Access List.
+        Creates one private endpoint for one serverless instance. To use
+        this resource, the requesting API Key must have the Project Owner role.
+        This resource doesn't require the API Key to have an Access List.
 
          A new endpoint won't be immediately available after creation.  Read the steps in the linked tutorial for detailed guidance.
       externalDocs:
@@ -9763,15 +10118,20 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Create One Private Endpoint for One Serverless Instance
+      summary: >-
+        [experimental] Creates one private endpoint for one serverless
+        instance. To use this resource, the requesting API Key must have the
+        Project Owner role. This resource doesn't require the API Key to have an
+        Access List.
+
+         A new endpoint won't be immediately available after creation.  Read the steps in the linked tutorial for detailed guidance.
       tags:
         - Serverless Private Endpoints
   "/api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint/{endpointId}":
     delete:
-      description: (experimental) Remove one private endpoint from one serverless
-        instance. To use this resource, the requesting API Key must have the
-        Project Owner role. This resource doesn't require the API Key to have an
-        Access List.
+      description: Remove one private endpoint from one serverless instance. To use
+        this resource, the requesting API Key must have the Project Owner role.
+        This resource doesn't require the API Key to have an Access List.
       operationId: deleteServerlessPrivateEndpoint
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -9810,15 +10170,17 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Remove One Private Endpoint for One Serverless Instance
+      summary: "[experimental] Remove one private endpoint from one serverless
+        instance. To use this resource, the requesting API Key must have the
+        Project Owner role. This resource doesn't require the API Key to have an
+        Access List."
       tags:
         - Serverless Private Endpoints
     get:
-      description: (experimental) Return one private endpoint for one serverless
-        instance. Identify this endpoint using its unique ID. You must have at
-        least the Project Read Only role for the project to successfully call
-        this resource. This resource doesn't require the API Key to have an
-        Access List.
+      description: Return one private endpoint for one serverless instance. Identify
+        this endpoint using its unique ID. You must have at least the Project
+        Read Only role for the project to successfully call this resource. This
+        resource doesn't require the API Key to have an Access List.
       operationId: getServerlessPrivateEndpoint
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -9857,14 +10219,17 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return One Private Endpoint for One Serverless Instance
+      summary: "[experimental] Return one private endpoint for one serverless
+        instance. Identify this endpoint using its unique ID. You must have at
+        least the Project Read Only role for the project to successfully call
+        this resource. This resource doesn't require the API Key to have an
+        Access List."
       tags:
         - Serverless Private Endpoints
     patch:
-      description: (experimental) Updates one private endpoint for one serverless
-        instance. To use this resource, the requesting API Key must have the
-        Project Owner role. This resource doesn't require the API Key to have an
-        Access List.
+      description: Updates one private endpoint for one serverless instance. To use
+        this resource, the requesting API Key must have the Project Owner role.
+        This resource doesn't require the API Key to have an Access List.
       operationId: updateServerlessPrivateEndpoint
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -9910,7 +10275,10 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Update One Private Endpoint for One Serverless Instance
+      summary: "[experimental] Updates one private endpoint for one serverless
+        instance. To use this resource, the requesting API Key must have the
+        Project Owner role. This resource doesn't require the API Key to have an
+        Access List."
       tags:
         - Serverless Private Endpoints
   "/api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService":
@@ -10040,14 +10408,13 @@ paths:
         - Private Endpoint Services
   "/api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId}/endpoint":
     post:
-      description: (experimental) Creates one private endpoint for the specified cloud
-        service provider. This cloud service provider manages the private
-        endpoint service, which in turn manages the private endpoints for the
-        project. To use this resource, the requesting API Key must have the
-        Project Owner role. This resource doesn't require the API Key to have an
-        Access List. To learn more about considerations, limitations, and
-        prerequisites, see the MongoDB documentation for setting up a private
-        endpoint.
+      description: Creates one private endpoint for the specified cloud service
+        provider. This cloud service provider manages the private endpoint
+        service, which in turn manages the private endpoints for the project. To
+        use this resource, the requesting API Key must have the Project Owner
+        role. This resource doesn't require the API Key to have an Access List.
+        To learn more about considerations, limitations, and prerequisites, see
+        the MongoDB documentation for setting up a private endpoint.
       operationId: createPrivateEndpoint
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -10095,7 +10462,14 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Create One Private Endpoint for One Provider
+      summary: "[experimental] Creates one private endpoint for the specified cloud
+        service provider. This cloud service provider manages the private
+        endpoint service, which in turn manages the private endpoints for the
+        project. To use this resource, the requesting API Key must have the
+        Project Owner role. This resource doesn't require the API Key to have an
+        Access List. To learn more about considerations, limitations, and
+        prerequisites, see the MongoDB documentation for setting up a private
+        endpoint."
       tags:
         - Private Endpoint Services
   "/api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId}/endpoint/{endpointId}":
@@ -10211,10 +10585,10 @@ paths:
   "/api/atlas/v2/groups/{groupId}/privateIpMode":
     get:
       deprecated: true
-      description: (experimental) Verifies if someone set the specified project to
-        **Connect via Peering Only** mode. To use this resource, the requesting
-        API Key must have the Project Read Only role. This resource doesn't
-        require the API Key to have an Access List.
+      description: Verifies if someone set the specified project to **Connect via
+        Peering Only** mode. To use this resource, the requesting API Key must
+        have the Project Read Only role. This resource doesn't require the API
+        Key to have an Access List.
       externalDocs:
         description: Changes to Connection Strings
         url: https://docs.atlas.mongodb.com/reference/faq/connection-changes/
@@ -10235,15 +10609,17 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Verify Connect via Peering Only Mode for One Project
+      summary: "[experimental] Verifies if someone set the specified project to
+        **Connect via Peering Only** mode. To use this resource, the requesting
+        API Key must have the Project Read Only role. This resource doesn't
+        require the API Key to have an Access List."
       tags:
         - Network Peering
     patch:
       deprecated: true
-      description: (experimental) Disables Connect via Peering Only mode for the
-        specified project. To use this resource, the requesting API Key must
-        have the Project Owner role. This resource doesn't require the API Key
-        to have an Access List.
+      description: Disables Connect via Peering Only mode for the specified project.
+        To use this resource, the requesting API Key must have the Project Owner
+        role. This resource doesn't require the API Key to have an Access List.
       externalDocs:
         description: Changes to Connection Strings
         url: https://docs.atlas.mongodb.com/reference/faq/connection-changes/
@@ -10273,7 +10649,10 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Disable Connect via Peering Only Mode for One Project
+      summary: "[experimental] Disables Connect via Peering Only mode for the
+        specified project. To use this resource, the requesting API Key must
+        have the Project Owner role. This resource doesn't require the API Key
+        to have an Access List."
       tags:
         - Network Peering
   "/api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds":
@@ -10568,10 +10947,10 @@ paths:
         - Monitoring and Logs
   "/api/atlas/v2/groups/{groupId}/processes/{processId}/databases/{databaseName}":
     get:
-      description: (experimental) Returns one database running on the specified host
-        for the specified project. To use this resource, the requesting API Key
-        must have the Project Read Only role. This resource doesn't require the
-        API Key to have an Access List.
+      description: Returns one database running on the specified host for the
+        specified project. To use this resource, the requesting API Key must
+        have the Project Read Only role. This resource doesn't require the API
+        Key to have an Access List.
       operationId: getDatabase
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -10609,7 +10988,10 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return One Database for a MongoDB Process
+      summary: "[experimental] Returns one database running on the specified host for
+        the specified project. To use this resource, the requesting API Key must
+        have the Project Read Only role. This resource doesn't require the API
+        Key to have an Access List."
       tags:
         - Monitoring and Logs
   "/api/atlas/v2/groups/{groupId}/processes/{processId}/databases/{databaseName}/measurements":
@@ -10727,9 +11109,9 @@ paths:
   "/api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName}":
     get:
       description: >-
-        (experimental) Returns the measurements of one disk or partition
-        for the specified host for the specified project. Returned value can be
-        one of the following:
+        Returns the measurements of one disk or partition for the specified
+        host for the specified project. Returned value can be one of the
+        following:
 
         - Throughput of I/O operations for the disk partition used for the MongoDB process
 
@@ -10778,7 +11160,21 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return Measurements of One Disk
+      summary: >-
+        [experimental] Returns the measurements of one disk or partition for
+        the specified host for the specified project. Returned value can be one
+        of the following:
+
+        - Throughput of I/O operations for the disk partition used for the MongoDB process
+
+        - Percentage of time during which requests the partition issued and serviced
+
+        - Latency per operation type of the disk partition used for the MongoDB process
+
+        - Amount of free and used disk space on the disk partition used for the MongoDB process 
+
+
+        To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
       tags:
         - Monitoring and Logs
   "/api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName}/measurements":
@@ -11915,10 +12311,9 @@ paths:
         - Teams
   "/api/atlas/v2/groups/{groupId}/userSecurity":
     get:
-      description: (experimental) Returns the current LDAP configuration for the
-        specified project. To use this resource, the requesting API Key must
-        have the Project Owner role. This resource doesn't require the API Key
-        to have an Access List.
+      description: Returns the current LDAP configuration for the specified project.
+        To use this resource, the requesting API Key must have the Project Owner
+        role. This resource doesn't require the API Key to have an Access List.
       operationId: getLDAPConfiguration
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -11936,15 +12331,17 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return the Current LDAP or X.509 Configuration
+      summary: "[experimental] Returns the current LDAP configuration for the
+        specified project. To use this resource, the requesting API Key must
+        have the Project Owner role. This resource doesn't require the API Key
+        to have an Access List."
       tags:
         - LDAP Configuration
     patch:
       description: >-
-        (experimental) Edits the LDAP configuration for the specified
-        project. To use this resource, the requesting API Key must have the
-        Project Owner role. This resource doesn't require the API Key to have an
-        Access List.
+        Edits the LDAP configuration for the specified project. To use this
+        resource, the requesting API Key must have the Project Owner role. This
+        resource doesn't require the API Key to have an Access List.
 
 
         Updating this configuration triggers a rolling restart of the database.
@@ -11974,7 +12371,13 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Edit the LDAP or X.509 Configuration
+      summary: >-
+        [experimental] Edits the LDAP configuration for the specified project.
+        To use this resource, the requesting API Key must have the Project Owner
+        role. This resource doesn't require the API Key to have an Access List.
+
+
+        Updating this configuration triggers a rolling restart of the database.
       tags:
         - LDAP Configuration
   "/api/atlas/v2/groups/{groupId}/userSecurity/customerX509":
@@ -12006,11 +12409,11 @@ paths:
         - X.509 Authentication
   "/api/atlas/v2/groups/{groupId}/userSecurity/ldap/userToDNMapping":
     delete:
-      description: (experimental) Removes the current LDAP Distinguished Name mapping
-        captured in the ``userToDNMapping`` document from the LDAP configuration
-        for the specified project. To use this resource, the requesting API Key
-        must have the Project Owner role. This resource doesn't require the API
-        Key to have an Access List.
+      description: Removes the current LDAP Distinguished Name mapping captured in the
+        ``userToDNMapping`` document from the LDAP configuration for the
+        specified project. To use this resource, the requesting API Key must
+        have the Project Owner role. This resource doesn't require the API Key
+        to have an Access List.
       operationId: deleteLDAPConfiguration
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -12026,15 +12429,18 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Remove the Current LDAP User to DN Mapping
+      summary: "[experimental] Removes the current LDAP Distinguished Name mapping
+        captured in the ``userToDNMapping`` document from the LDAP configuration
+        for the specified project. To use this resource, the requesting API Key
+        must have the Project Owner role. This resource doesn't require the API
+        Key to have an Access List."
       tags:
         - LDAP Configuration
   "/api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify":
     post:
-      description: (experimental) Verifies the LDAP configuration for the specified
-        project. To use this resource, the requesting API Key must have the
-        Project Owner role. This resource doesn't require the API Key to have an
-        Access List.
+      description: Verifies the LDAP configuration for the specified project. To use
+        this resource, the requesting API Key must have the Project Owner role.
+        This resource doesn't require the API Key to have an Access List.
       operationId: verifyLDAPConfiguration
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -12062,15 +12468,18 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Verify the LDAP Configuration in One Project
+      summary: "[experimental] Verifies the LDAP configuration for the specified
+        project. To use this resource, the requesting API Key must have the
+        Project Owner role. This resource doesn't require the API Key to have an
+        Access List."
       tags:
         - LDAP Configuration
   "/api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify/{requestId}":
     get:
-      description: (experimental) Returns the status of one request to verify one LDAP
-        configuration for the specified project. To use this resource, the
-        requesting API Key must have the Project Owner role. This resource
-        doesn't require the API Key to have an Access List.
+      description: Returns the status of one request to verify one LDAP configuration
+        for the specified project. To use this resource, the requesting API Key
+        must have the Project Owner role. This resource doesn't require the API
+        Key to have an Access List.
       operationId: getLDAPConfigurationStatus
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -12099,7 +12508,10 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return the Status of One Verify LDAP Configuration Request
+      summary: "[experimental] Returns the status of one request to verify one LDAP
+        configuration for the specified project. To use this resource, the
+        requesting API Key must have the Project Owner role. This resource
+        doesn't require the API Key to have an Access List."
       tags:
         - LDAP Configuration
   "/api/atlas/v2/groups/{groupId}/users":
@@ -12347,9 +12759,9 @@ paths:
       tags:
         - Organizations
     patch:
-      description: (experimental) Renames one organization. To use this resource, the
-        requesting API Key must have the Organization Owner role. This resource
-        doesn't require the API Key to have an Access List.
+      description: Renames one organization. To use this resource, the requesting API
+        Key must have the Organization Owner role. This resource doesn't require
+        the API Key to have an Access List.
       operationId: renameOrganization
       parameters:
         - $ref: "#/components/parameters/orgId"
@@ -12380,7 +12792,9 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Rename One Organization
+      summary: "[experimental] Renames one organization. To use this resource, the
+        requesting API Key must have the Organization Owner role. This resource
+        doesn't require the API Key to have an Access List."
       tags:
         - Organizations
   "/api/atlas/v2/orgs/{orgId}/apiKeys":
@@ -12736,11 +13150,11 @@ paths:
       tags:
         - Programmatic API Keys
     get:
-      description: (experimental) Returns one access list entry for the specified
-        organization API key. Resources require  all API requests originate from
-        IP addresses on the API access list. To use this resource,  the
-        requesting API Key must have the Organization Member role. This
-        resource  doesn't require the API Key to have an Access List.
+      description: Returns one access list entry for the specified organization API
+        key. Resources require  all API requests originate from IP addresses on
+        the API access list. To use this resource,  the requesting API Key must
+        have the Organization Member role. This resource  doesn't require the
+        API Key to have an Access List.
       externalDocs:
         description: Configure Atlas API Access
         url: https://docs.atlas.mongodb.com/configure-api-access/#std-label-enable-api-access-list
@@ -12786,7 +13200,11 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return One Access List Entry for One Organization API Key
+      summary: "[experimental] Returns one access list entry for the specified
+        organization API key. Resources require  all API requests originate from
+        IP addresses on the API access list. To use this resource,  the
+        requesting API Key must have the Organization Member role. This
+        resource  doesn't require the API Key to have an Access List."
       tags:
         - Programmatic API Keys
   "/api/atlas/v2/orgs/{orgId}/events":
@@ -12861,11 +13279,11 @@ paths:
   "/api/atlas/v2/orgs/{orgId}/events/{eventId}":
     get:
       description: >-
-        (experimental) Returns one event for the specified organization.
-        Events identify significant database, billing, or security activities or
-        status changes. To use this resource, the requesting API Key must have
-        the Organization Member role. This resource doesn't require the API Key
-        to have an Access List.
+        Returns one event for the specified organization. Events identify
+        significant database, billing, or security activities or status changes.
+        To use this resource, the requesting API Key must have the Organization
+        Member role. This resource doesn't require the API Key to have an Access
+        List.
 
          This resource remains under revision and may change.
       operationId: getOrganizationEvent
@@ -12907,15 +13325,22 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return One Event from One Organization
+      summary: >-
+        [experimental] Returns one event for the specified organization. Events
+        identify significant database, billing, or security activities or status
+        changes. To use this resource, the requesting API Key must have the
+        Organization Member role. This resource doesn't require the API Key to
+        have an Access List.
+
+         This resource remains under revision and may change.
       tags:
         - Events
   "/api/atlas/v2/orgs/{orgId}/federationSettings":
     get:
-      description: (experimental) Returns information about the federation settings
-        for the specified organization. To use this resource, the requesting API
-        Key must have the Organization Owner role in the connected org. This
-        resource doesn't require the API Key to have an Access List.
+      description: Returns information about the federation settings for the specified
+        organization. To use this resource, the requesting API Key must have the
+        Organization Owner role in the connected org. This resource doesn't
+        require the API Key to have an Access List.
       operationId: getFederationSettings
       parameters:
         - $ref: "#/components/parameters/orgId"
@@ -12937,7 +13362,10 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return Federation Settings for One Organization
+      summary: "[experimental] Returns information about the federation settings for
+        the specified organization. To use this resource, the requesting API Key
+        must have the Organization Owner role in the connected org. This
+        resource doesn't require the API Key to have an Access List."
       tags:
         - Federated Authentication
   "/api/atlas/v2/orgs/{orgId}/groups":
@@ -13232,10 +13660,10 @@ paths:
         - Organizations
   "/api/atlas/v2/orgs/{orgId}/invoices":
     get:
-      description: (experimental) Returns all invoices that MongoDB issued to the
-        specified organization. This list includes all invoices regardless of
-        invoice status. To use this resource, the requesting API Key must have
-        the Organization Member role. If you have a cross-organization setup, to
+      description: Returns all invoices that MongoDB issued to the specified
+        organization. This list includes all invoices regardless of invoice
+        status. To use this resource, the requesting API Key must have the
+        Organization Member role. If you have a cross-organization setup, to
         view linked invoices, you must have an Organization Billing Admin or
         Organization Owner role. This resource doesn't require the API Key to
         have an Access List.
@@ -13261,17 +13689,23 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return All Invoices for One Organization
+      summary: "[experimental] Returns all invoices that MongoDB issued to the
+        specified organization. This list includes all invoices regardless of
+        invoice status. To use this resource, the requesting API Key must have
+        the Organization Member role. If you have a cross-organization setup, to
+        view linked invoices, you must have an Organization Billing Admin or
+        Organization Owner role. This resource doesn't require the API Key to
+        have an Access List."
       tags:
         - Invoices
   "/api/atlas/v2/orgs/{orgId}/invoices/pending":
     get:
-      description: (experimental) Returns all invoices accruing charges for the
-        current billing cycle for the specified organization. To use this
-        resource, the requesting API Key must have the Organization Member
-        role.  If you have a cross-organization setup, to view linked invoices,
-        you must have an Organization Billing Admin or Organization Owner Role.
-        This resource doesn't require the API Key to have an Access List.
+      description: Returns all invoices accruing charges for the current billing cycle
+        for the specified organization. To use this resource, the requesting API
+        Key must have the Organization Member role.  If you have a
+        cross-organization setup, to view linked invoices, you must have an
+        Organization Billing Admin or Organization Owner Role. This resource
+        doesn't require the API Key to have an Access List.
       operationId: listPendingInvoices
       parameters:
         - $ref: "#/components/parameters/orgId"
@@ -13291,19 +13725,24 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return All Pending Invoices for One Organization
+      summary: "[experimental] Returns all invoices accruing charges for the current
+        billing cycle for the specified organization. To use this resource, the
+        requesting API Key must have the Organization Member role.  If you have
+        a cross-organization setup, to view linked invoices, you must have an
+        Organization Billing Admin or Organization Owner Role. This resource
+        doesn't require the API Key to have an Access List."
       tags:
         - Invoices
   "/api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}":
     get:
-      description: (experimental) Returns one invoice that MongoDB issued to the
-        specified organization. A unique 24-hexadecimal digit string identifies
-        the invoice. You can choose to receive this invoice in JSON or CSV
-        format. To use this resource, the requesting API Key must have the
-        Organization Member role. If you have a cross-organization setup, you
-        can query for a linked invoice if you have an Organization Billing Admin
-        or Organization Owner role. This resource doesn't require the API Key to
-        have an Access List.
+      description: Returns one invoice that MongoDB issued to the specified
+        organization. A unique 24-hexadecimal digit string identifies the
+        invoice. You can choose to receive this invoice in JSON or CSV format.
+        To use this resource, the requesting API Key must have the Organization
+        Member role. If you have a cross-organization setup, you can query for a
+        linked invoice if you have an Organization Billing Admin or Organization
+        Owner role. This resource doesn't require the API Key to have an Access
+        List.
       operationId: getInvoice
       parameters:
         - $ref: "#/components/parameters/orgId"
@@ -13334,18 +13773,25 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return One Organization Invoice
+      summary: "[experimental] Returns one invoice that MongoDB issued to the
+        specified organization. A unique 24-hexadecimal digit string identifies
+        the invoice. You can choose to receive this invoice in JSON or CSV
+        format. To use this resource, the requesting API Key must have the
+        Organization Member role. If you have a cross-organization setup, you
+        can query for a linked invoice if you have an Organization Billing Admin
+        or Organization Owner role. This resource doesn't require the API Key to
+        have an Access List."
       tags:
         - Invoices
   "/api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/csv":
     get:
-      description: (experimental) Returns one invoice that MongoDB issued to the
-        specified organization in CSV format. A unique 24-hexadecimal digit
-        string identifies the invoice. To use this resource, the requesting API
-        Key must have the Organization Member role. If you have a
-        cross-organization setup, you can query for a linked invoice if you have
-        an Organization Billing Admin or Organization Owner Role. This resource
-        doesn't require the API Key to have an Access List.
+      description: Returns one invoice that MongoDB issued to the specified
+        organization in CSV format. A unique 24-hexadecimal digit string
+        identifies the invoice. To use this resource, the requesting API Key
+        must have the Organization Member role. If you have a cross-organization
+        setup, you can query for a linked invoice if you have an Organization
+        Billing Admin or Organization Owner Role. This resource doesn't require
+        the API Key to have an Access List.
       operationId: downloadInvoiceCSV
       parameters:
         - $ref: "#/components/parameters/orgId"
@@ -13370,13 +13816,18 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return One Organization Invoice as CSV
+      summary: "[experimental] Returns one invoice that MongoDB issued to the
+        specified organization in CSV format. A unique 24-hexadecimal digit
+        string identifies the invoice. To use this resource, the requesting API
+        Key must have the Organization Member role. If you have a
+        cross-organization setup, you can query for a linked invoice if you have
+        an Organization Billing Admin or Organization Owner Role. This resource
+        doesn't require the API Key to have an Access List."
       tags:
         - Invoices
   "/api/atlas/v2/orgs/{orgId}/liveMigrations/availableProjects":
     get:
-      description: (experimental) Return all projects that you can migrate to the
-        specified organization.
+      description: Return all projects that you can migrate to the specified organization.
       operationId: listSourceProjects
       parameters:
         - $ref: "#/components/parameters/orgId"
@@ -13398,7 +13849,8 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return All Projects Available for Migration
+      summary: "[experimental] Return all projects that you can migrate to the
+        specified organization."
       tags:
         - Cloud Migration Service
   "/api/atlas/v2/orgs/{orgId}/liveMigrations/linkTokens":
@@ -13467,10 +13919,10 @@ paths:
         - Cloud Migration Service
   "/api/atlas/v2/orgs/{orgId}/settings":
     get:
-      description: (experimental) Returns details about the specified organization's
-        settings. To use this resource, the requesting API Key must have the
-        Organization Owner role. This resource does not require the API Key to
-        have an API access list.
+      description: Returns details about the specified organization's settings. To use
+        this resource, the requesting API Key must have the Organization Owner
+        role. This resource does not require the API Key to have an API access
+        list.
       operationId: getOrganizationSettings
       parameters:
         - $ref: "#/components/parameters/orgId"
@@ -13492,13 +13944,16 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return Settings for One Organization
+      summary: "[experimental] Returns details about the specified organization's
+        settings. To use this resource, the requesting API Key must have the
+        Organization Owner role. This resource does not require the API Key to
+        have an API access list."
       tags:
         - Organizations
     patch:
-      description: (experimental) Updates the organization's settings. To use this
-        resource, the requesting API Key must have the Organization Owner role.
-        This resource does not require the API Key to have an API access list.
+      description: Updates the organization's settings. To use this resource, the
+        requesting API Key must have the Organization Owner role. This resource
+        does not require the API Key to have an API access list.
       operationId: updateOrganizationSettings
       parameters:
         - $ref: "#/components/parameters/orgId"
@@ -13527,7 +13982,9 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Update Settings for One Organization
+      summary: "[experimental] Updates the organization's settings. To use this
+        resource, the requesting API Key must have the Organization Owner role.
+        This resource does not require the API Key to have an API access list."
       tags:
         - Organizations
   "/api/atlas/v2/orgs/{orgId}/teams":
@@ -13737,11 +14194,10 @@ paths:
       tags:
         - Teams
     patch:
-      description: (experimental) Renames one team in the specified organization.
-        Teams enable you to grant project access roles to MongoDB Cloud users.
-        To use this resource, the requesting API Key must have the Organization
-        User Admin role. This resource doesn't require the API Key to have an
-        Access List.
+      description: Renames one team in the specified organization. Teams enable you to
+        grant project access roles to MongoDB Cloud users. To use this resource,
+        the requesting API Key must have the Organization User Admin role. This
+        resource doesn't require the API Key to have an Access List.
       externalDocs:
         description: Manage Organization Teams
         url: https://docs.atlas.mongodb.com/access/manage-teams-in-orgs/#std-label-manage-teams
@@ -13785,7 +14241,11 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Rename One Team
+      summary: "[experimental] Renames one team in the specified organization. Teams
+        enable you to grant project access roles to MongoDB Cloud users. To use
+        this resource, the requesting API Key must have the Organization User
+        Admin role. This resource doesn't require the API Key to have an Access
+        List."
       tags:
         - Teams
   "/api/atlas/v2/orgs/{orgId}/teams/{teamId}/users":

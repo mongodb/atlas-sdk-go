@@ -9,7 +9,7 @@ import (
 // checks if the PerformanceAdvisorSlowQuery type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &PerformanceAdvisorSlowQuery{}
 
-// PerformanceAdvisorSlowQuery Details of one slow query that the Performance Advisor detected.
+// PerformanceAdvisorSlowQuery struct for PerformanceAdvisorSlowQuery
 type PerformanceAdvisorSlowQuery struct {
 	// Text of the MongoDB log related to this slow query.
 	Line *string `json:"line,omitempty"`

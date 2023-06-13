@@ -9,7 +9,7 @@ import (
 // checks if the ServerlessAWSTenantEndpointUpdate type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ServerlessAWSTenantEndpointUpdate{}
 
-// ServerlessAWSTenantEndpointUpdate Updates to a serverless AWS tenant endpoint.
+// ServerlessAWSTenantEndpointUpdate struct for ServerlessAWSTenantEndpointUpdate
 type ServerlessAWSTenantEndpointUpdate struct {
 	// Unique string that identifies the private endpoint's network interface.
 	CloudProviderEndpointId *string `json:"cloudProviderEndpointId,omitempty"`

@@ -9,7 +9,7 @@ import (
 // checks if the DataLakeCloudProviderConfig type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &DataLakeCloudProviderConfig{}
 
-// DataLakeCloudProviderConfig Cloud provider linked to this data lake.
+// DataLakeCloudProviderConfig struct for DataLakeCloudProviderConfig
 type DataLakeCloudProviderConfig struct {
 	Aws DataLakeAWSCloudProviderConfig `json:"aws"`
 }

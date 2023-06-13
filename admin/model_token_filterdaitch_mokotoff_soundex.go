@@ -9,7 +9,7 @@ import (
 // checks if the TokenFilterdaitchMokotoffSoundex type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &TokenFilterdaitchMokotoffSoundex{}
 
-// TokenFilterdaitchMokotoffSoundex Filter that creates tokens for words that sound the same based on the Daitch-Mokotoff Soundex phonetic algorithm. This filter can generate multiple encodings for each input, where each encoded token is a 6 digit number.  **NOTE**: Don't use the **daitchMokotoffSoundex** token filter in:  -Synonym or autocomplete mapping definitions - Operators where **fuzzy** is enabled. Atlas Search supports the **fuzzy** option only for the **autocomplete**, **term**, and **text** operators.
+// TokenFilterdaitchMokotoffSoundex struct for TokenFilterdaitchMokotoffSoundex
 type TokenFilterdaitchMokotoffSoundex struct {
 	// Value that indicates whether to include or omit the original tokens in the output of the token filter.  Choose `include` if you want to support queries on both the original tokens as well as the converted forms.   Choose `omit` if you want to query only on the converted forms of the original tokens.
 	OriginalTokens *string `json:"originalTokens,omitempty"`

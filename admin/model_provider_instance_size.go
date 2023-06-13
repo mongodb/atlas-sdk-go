@@ -9,7 +9,7 @@ import (
 // checks if the ProviderInstanceSize type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ProviderInstanceSize{}
 
-// ProviderInstanceSize List of instances sizes that this cloud provider supports.
+// ProviderInstanceSize struct for ProviderInstanceSize
 type ProviderInstanceSize struct {
 	// List of regions that this cloud provider supports for this instance size.
 	AvailableRegions []AvailableRegion `json:"availableRegions,omitempty"`

@@ -9,7 +9,7 @@ import (
 // checks if the PagerDuty type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &PagerDuty{}
 
-// PagerDuty Details to integrate one PagerDuty account with one MongoDB Cloud project.
+// PagerDuty struct for PagerDuty
 type PagerDuty struct {
 	// PagerDuty region that indicates the API Uniform Resource Locator (URL) to use.
 	Region *string `json:"region,omitempty"`

@@ -9,7 +9,7 @@ import (
 // checks if the Cluster type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Cluster{}
 
-// Cluster Settings that describe the clusters in each project that the API key is authorized to view.
+// Cluster struct for Cluster
 type Cluster struct {
 	// Whole number that indicates the quantity of alerts open on the cluster.
 	AlertCount *int `json:"alertCount,omitempty"`

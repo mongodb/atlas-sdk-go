@@ -9,7 +9,7 @@ import (
 // checks if the AzurePrivateEndpoint type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AzurePrivateEndpoint{}
 
-// AzurePrivateEndpoint Group of Private Endpoint settings.
+// AzurePrivateEndpoint struct for AzurePrivateEndpoint
 type AzurePrivateEndpoint struct {
 	// Cloud service provider that serves the requested endpoint.
 	CloudProvider string `json:"cloudProvider"`

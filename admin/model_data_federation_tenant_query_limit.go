@@ -10,7 +10,7 @@ import (
 // checks if the DataFederationTenantQueryLimit type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &DataFederationTenantQueryLimit{}
 
-// DataFederationTenantQueryLimit Details of a tenant-level query limit for Data Federation. Query limit is the limit on the amount of usage during a time period based on cost.
+// DataFederationTenantQueryLimit struct for DataFederationTenantQueryLimit
 type DataFederationTenantQueryLimit struct {
 	// Amount that indicates the current usage of the limit.
 	CurrentUsage *int64 `json:"currentUsage,omitempty"`

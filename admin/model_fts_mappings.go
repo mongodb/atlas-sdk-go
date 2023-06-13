@@ -9,7 +9,7 @@ import (
 // checks if the FTSMappings type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &FTSMappings{}
 
-// FTSMappings Index specifications for the collection's fields.
+// FTSMappings struct for FTSMappings
 type FTSMappings struct {
 	// Flag that indicates whether the index uses dynamic or static mappings. Required if **mappings.fields** is omitted.
 	Dynamic *bool `json:"dynamic,omitempty"`

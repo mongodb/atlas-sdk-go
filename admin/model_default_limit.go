@@ -9,7 +9,7 @@ import (
 // checks if the DefaultLimit type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &DefaultLimit{}
 
-// DefaultLimit Details of user managed limits
+// DefaultLimit struct for DefaultLimit
 type DefaultLimit struct {
 	// Amount that indicates the current usage of the limit.
 	CurrentUsage *int64 `json:"currentUsage,omitempty"`

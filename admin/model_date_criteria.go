@@ -9,7 +9,7 @@ import (
 // checks if the DateCriteria type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &DateCriteria{}
 
-// DateCriteria **DATE criteria.type**.
+// DateCriteria struct for DateCriteria
 type DateCriteria struct {
 	// Indexed database parameter that stores the date that determines when data moves to the online archive. MongoDB Cloud archives the data when the current date exceeds the date in this database parameter plus the number of days specified through the **expireAfterDays** parameter. Set this parameter when you set `\"criteria.type\" : \"DATE\"`.
 	DateField *string `json:"dateField,omitempty"`

@@ -9,7 +9,7 @@ import (
 // checks if the DataLakeAtlasStoreReadPreference type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &DataLakeAtlasStoreReadPreference{}
 
-// DataLakeAtlasStoreReadPreference MongoDB Cloud cluster read preference, which describes how to route read requests to the cluster.
+// DataLakeAtlasStoreReadPreference struct for DataLakeAtlasStoreReadPreference
 type DataLakeAtlasStoreReadPreference struct {
 	// Maximum replication lag, or **staleness**, for reads from secondaries.
 	MaxStalenessSeconds *int `json:"maxStalenessSeconds,omitempty"`

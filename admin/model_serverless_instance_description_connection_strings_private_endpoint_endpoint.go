@@ -9,7 +9,7 @@ import (
 // checks if the ServerlessInstanceDescriptionConnectionStringsPrivateEndpointEndpoint type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ServerlessInstanceDescriptionConnectionStringsPrivateEndpointEndpoint{}
 
-// ServerlessInstanceDescriptionConnectionStringsPrivateEndpointEndpoint Details of a private endpoint deployed for this serverless instance.
+// ServerlessInstanceDescriptionConnectionStringsPrivateEndpointEndpoint struct for ServerlessInstanceDescriptionConnectionStringsPrivateEndpointEndpoint
 type ServerlessInstanceDescriptionConnectionStringsPrivateEndpointEndpoint struct {
 	// Unique string that the cloud provider uses to identify the private endpoint.
 	EndpointId *string `json:"endpointId,omitempty"`

@@ -9,7 +9,7 @@ import (
 // checks if the TokenFilterstopword type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &TokenFilterstopword{}
 
-// TokenFilterstopword Filter that removes tokens that correspond to the specified stop words. This token filter doesn't analyze the stop words that you specify.
+// TokenFilterstopword struct for TokenFilterstopword
 type TokenFilterstopword struct {
 	// Flag that indicates whether to ignore the case of stop words when filtering the tokens to remove.
 	IgnoreCase *bool `json:"ignoreCase,omitempty"`

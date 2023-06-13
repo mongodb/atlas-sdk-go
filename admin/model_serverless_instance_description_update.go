@@ -9,7 +9,7 @@ import (
 // checks if the ServerlessInstanceDescriptionUpdate type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ServerlessInstanceDescriptionUpdate{}
 
-// ServerlessInstanceDescriptionUpdate Settings that you can update when you request a serverless cluster update.
+// ServerlessInstanceDescriptionUpdate struct for ServerlessInstanceDescriptionUpdate
 type ServerlessInstanceDescriptionUpdate struct {
 	ServerlessBackupOptions *ServerlessBackupOptions `json:"serverlessBackupOptions,omitempty"`
 	// Flag that indicates whether termination protection is enabled on the serverless instance. If set to `true`, MongoDB Cloud won't delete the serverless instance. If set to `false`, MongoDB Cloud will delete the serverless instance.

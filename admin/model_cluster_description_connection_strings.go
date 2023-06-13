@@ -9,7 +9,7 @@ import (
 // checks if the ClusterDescriptionConnectionStrings type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ClusterDescriptionConnectionStrings{}
 
-// ClusterDescriptionConnectionStrings Collection of Uniform Resource Locators that point to the MongoDB database.
+// ClusterDescriptionConnectionStrings struct for ClusterDescriptionConnectionStrings
 type ClusterDescriptionConnectionStrings struct {
 	// Private endpoint-aware connection strings that use AWS-hosted clusters with Amazon Web Services (AWS) PrivateLink. Each key identifies an Amazon Web Services (AWS) interface endpoint. Each value identifies the related `mongodb://` connection string that you use to connect to MongoDB Cloud through the interface endpoint that the key names.
 	AwsPrivateLink *map[string]string `json:"awsPrivateLink,omitempty"`

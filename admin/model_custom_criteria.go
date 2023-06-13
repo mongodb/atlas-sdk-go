@@ -9,7 +9,7 @@ import (
 // checks if the CustomCriteria type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &CustomCriteria{}
 
-// CustomCriteria **CUSTOM criteria.type**.
+// CustomCriteria struct for CustomCriteria
 type CustomCriteria struct {
 	// MongoDB find query that selects documents to archive. The specified query follows the syntax of the `db.collection.find(query)` command. This query can't use the empty document (`{}`) to return all documents. Set this parameter when **\"criteria.type\" : \"CUSTOM\"**.
 	Query string `json:"query"`

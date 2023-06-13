@@ -10,7 +10,7 @@ import (
 // checks if the LineItem type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &LineItem{}
 
-// LineItem One service included in this invoice.
+// LineItem struct for LineItem
 type LineItem struct {
 	// Human-readable label that identifies the cluster that incurred the charge.
 	ClusterName *string `json:"clusterName,omitempty"`

@@ -9,7 +9,7 @@ import (
 // checks if the NDSLDAPVerifyConnectivityJobRequestValidation type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &NDSLDAPVerifyConnectivityJobRequestValidation{}
 
-// NDSLDAPVerifyConnectivityJobRequestValidation One test that MongoDB Cloud runs to test verification of the provided Lightweight Directory Access Protocol (LDAP) over Transport Layer Security (TLS) configuration details.
+// NDSLDAPVerifyConnectivityJobRequestValidation struct for NDSLDAPVerifyConnectivityJobRequestValidation
 type NDSLDAPVerifyConnectivityJobRequestValidation struct {
 	// Human-readable string that indicates the result of this verification test.
 	Status *string `json:"status,omitempty"`

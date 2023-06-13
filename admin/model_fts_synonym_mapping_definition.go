@@ -9,7 +9,7 @@ import (
 // checks if the FTSSynonymMappingDefinition type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &FTSSynonymMappingDefinition{}
 
-// FTSSynonymMappingDefinition Synonyms used for this full text index.
+// FTSSynonymMappingDefinition struct for FTSSynonymMappingDefinition
 type FTSSynonymMappingDefinition struct {
 	// Specific pre-defined method chosen to apply to the synonyms to be searched.
 	Analyzer string `json:"analyzer"`

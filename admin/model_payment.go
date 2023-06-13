@@ -10,7 +10,7 @@ import (
 // checks if the Payment type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Payment{}
 
-// Payment Funds transferred to MongoDB to cover the specified service in this invoice.
+// Payment struct for Payment
 type Payment struct {
 	// Sum of services that the specified organization consumed in the period covered in this invoice. This parameter expresses its value in cents (100ths of one US Dollar) and calculates its value as **subtotalCents** + **salesTaxCents** - **startingBalanceCents**.
 	AmountBilledCents *int64 `json:"amountBilledCents,omitempty"`

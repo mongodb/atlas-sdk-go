@@ -9,7 +9,7 @@ import (
 // checks if the RestoreJobFileHash type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &RestoreJobFileHash{}
 
-// RestoreJobFileHash Key and value pair that map one restore file to one hashed checksum. This parameter applies after you download the corresponding **delivery.url**.
+// RestoreJobFileHash struct for RestoreJobFileHash
 type RestoreJobFileHash struct {
 	// Human-readable label that identifies the hashed file.
 	FileName *string `json:"fileName,omitempty"`

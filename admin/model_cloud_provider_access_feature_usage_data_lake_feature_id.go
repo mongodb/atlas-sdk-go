@@ -9,7 +9,7 @@ import (
 // checks if the CloudProviderAccessFeatureUsageDataLakeFeatureId type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &CloudProviderAccessFeatureUsageDataLakeFeatureId{}
 
-// CloudProviderAccessFeatureUsageDataLakeFeatureId Identifying characteristics about the data lake linked to this Amazon Web Services (AWS) Identity and Access Management (IAM) role.
+// CloudProviderAccessFeatureUsageDataLakeFeatureId struct for CloudProviderAccessFeatureUsageDataLakeFeatureId
 type CloudProviderAccessFeatureUsageDataLakeFeatureId struct {
 	// Unique 24-hexadecimal digit string that identifies your project.
 	GroupId *string `json:"groupId,omitempty"`

@@ -9,7 +9,7 @@ import (
 // checks if the DataLakeAtlasStoreReadPreferenceTag type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &DataLakeAtlasStoreReadPreferenceTag{}
 
-// DataLakeAtlasStoreReadPreferenceTag List that contains [tag sets](https://docs.mongodb.com/manual/core/read-preference-tags/) or tag specification documents. If specified, Atlas Data Lake routes read requests to replica set member or members that are associated with the specified tags.
+// DataLakeAtlasStoreReadPreferenceTag struct for DataLakeAtlasStoreReadPreferenceTag
 type DataLakeAtlasStoreReadPreferenceTag struct {
 	// Human-readable label of the tag.
 	Name *string `json:"name,omitempty"`

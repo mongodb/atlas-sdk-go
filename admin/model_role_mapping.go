@@ -9,7 +9,7 @@ import (
 // checks if the RoleMapping type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &RoleMapping{}
 
-// RoleMapping Mapping settings that link one IdP and MongoDB Cloud.
+// RoleMapping struct for RoleMapping
 type RoleMapping struct {
 	// Unique human-readable label that identifies the identity provider group to whichthis role mapping applies.
 	ExternalGroupName string `json:"externalGroupName"`

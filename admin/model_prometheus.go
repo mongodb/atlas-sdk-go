@@ -9,7 +9,7 @@ import (
 // checks if the Prometheus type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Prometheus{}
 
-// Prometheus Details to integrate one Prometheus account with one MongoDB Cloud project.
+// Prometheus struct for Prometheus
 type Prometheus struct {
 	// Flag that indicates whether someone has activated the Prometheus integration.
 	Enabled bool `json:"enabled"`

@@ -9,7 +9,7 @@ import (
 // checks if the CheckpointPart type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &CheckpointPart{}
 
-// CheckpointPart Metadata contained in one document that describes the complete snapshot taken for this node.
+// CheckpointPart struct for CheckpointPart
 type CheckpointPart struct {
 	// Human-readable label that identifies the replica set to which this checkpoint applies.
 	ReplicaSetName *string `json:"replicaSetName,omitempty"`

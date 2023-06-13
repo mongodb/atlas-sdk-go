@@ -9,7 +9,7 @@ import (
 // checks if the FreeAutoScaling type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &FreeAutoScaling{}
 
-// FreeAutoScaling Range of instance sizes to which your cluster can scale.
+// FreeAutoScaling struct for FreeAutoScaling
 type FreeAutoScaling struct {
 	// Collection of settings that configures how a cluster might scale its cluster tier and whether the cluster can scale down.
 	Compute *string `json:"compute,omitempty"`

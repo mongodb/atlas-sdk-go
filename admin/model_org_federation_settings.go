@@ -9,7 +9,7 @@ import (
 // checks if the OrgFederationSettings type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &OrgFederationSettings{}
 
-// OrgFederationSettings Details that define how to connect one MongoDB Cloud organization to one federated authentication service.
+// OrgFederationSettings struct for OrgFederationSettings
 type OrgFederationSettings struct {
 	// List of domains associated with the organization's identity provider.
 	FederatedDomains []string `json:"federatedDomains,omitempty"`

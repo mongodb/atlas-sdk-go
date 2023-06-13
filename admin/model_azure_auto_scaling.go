@@ -9,7 +9,7 @@ import (
 // checks if the AzureAutoScaling type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AzureAutoScaling{}
 
-// AzureAutoScaling Range of instance sizes to which your cluster can scale.
+// AzureAutoScaling struct for AzureAutoScaling
 type AzureAutoScaling struct {
 	Compute *AzureComputeAutoScaling `json:"compute,omitempty"`
 }

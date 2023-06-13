@@ -9,7 +9,7 @@ import (
 // checks if the ReplicationSpec type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ReplicationSpec{}
 
-// ReplicationSpec Details that explain how MongoDB Cloud replicates data on the specified MongoDB database.
+// ReplicationSpec struct for ReplicationSpec
 type ReplicationSpec struct {
 	// Unique 24-hexadecimal digit string that identifies the replication object for a zone in a Multi-Cloud Cluster. If you include existing zones in the request, you must specify this parameter. If you add a new zone to an existing Multi-Cloud Cluster, you may specify this parameter. The request deletes any existing zones in the Multi-Cloud Cluster that you exclude from the request.
 	Id *string `json:"id,omitempty"`

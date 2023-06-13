@@ -9,7 +9,7 @@ import (
 // checks if the MongoDBAccessLogs type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &MongoDBAccessLogs{}
 
-// MongoDBAccessLogs Authentication attempt, one per object, made against the cluster.
+// MongoDBAccessLogs struct for MongoDBAccessLogs
 type MongoDBAccessLogs struct {
 	// Flag that indicates whether the response should return successful authentication attempts only.
 	AuthResult *bool `json:"authResult,omitempty"`

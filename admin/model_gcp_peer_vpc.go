@@ -9,7 +9,7 @@ import (
 // checks if the GCPPeerVpc type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &GCPPeerVpc{}
 
-// GCPPeerVpc Group of Network Peering connection settings.
+// GCPPeerVpc struct for GCPPeerVpc
 type GCPPeerVpc struct {
 	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container that contains the specified network peering connection.
 	ContainerId string `json:"containerId"`

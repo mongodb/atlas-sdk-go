@@ -9,7 +9,7 @@ import (
 // checks if the CreateAWSEndpointRequest type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &CreateAWSEndpointRequest{}
 
-// CreateAWSEndpointRequest Group of Private Endpoint settings.
+// CreateAWSEndpointRequest struct for CreateAWSEndpointRequest
 type CreateAWSEndpointRequest struct {
 	// Unique string that identifies the private endpoint's network interface that someone added to this private endpoint service.
 	Id string `json:"id"`

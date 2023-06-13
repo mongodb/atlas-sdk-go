@@ -9,7 +9,7 @@ import (
 // checks if the GCPEndpointGroup type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &GCPEndpointGroup{}
 
-// GCPEndpointGroup Group of Private Endpoint settings.
+// GCPEndpointGroup struct for GCPEndpointGroup
 type GCPEndpointGroup struct {
 	// Cloud service provider that serves the requested endpoint.
 	CloudProvider string `json:"cloudProvider"`

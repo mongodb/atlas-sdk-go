@@ -9,7 +9,7 @@ import (
 // checks if the CloudProviderAccessExportSnapshotFeatureUsage type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &CloudProviderAccessExportSnapshotFeatureUsage{}
 
-// CloudProviderAccessExportSnapshotFeatureUsage Details that describe the Amazon Web Services (AWS) Simple Storage Service (S3) export buckets linked to this AWS Identity and Access Management (IAM) role.
+// CloudProviderAccessExportSnapshotFeatureUsage struct for CloudProviderAccessExportSnapshotFeatureUsage
 type CloudProviderAccessExportSnapshotFeatureUsage struct {
 	FeatureId *CloudProviderAccessFeatureUsageExportSnapshotFeatureId `json:"featureId,omitempty"`
 	// Human-readable label that describes one MongoDB Cloud feature linked to this Amazon Web Services (AWS) Identity and Access Management (IAM) role.

@@ -9,7 +9,7 @@ import (
 // checks if the DataLakeStorage type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &DataLakeStorage{}
 
-// DataLakeStorage Configuration information for each data store and its mapping to MongoDB Cloud databases.
+// DataLakeStorage struct for DataLakeStorage
 type DataLakeStorage struct {
 	// Array that contains the queryable databases and collections for this data lake.
 	Databases []DataLakeDatabase `json:"databases,omitempty"`

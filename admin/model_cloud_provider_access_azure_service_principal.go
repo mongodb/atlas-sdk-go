@@ -10,7 +10,7 @@ import (
 // checks if the CloudProviderAccessAzureServicePrincipal type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &CloudProviderAccessAzureServicePrincipal{}
 
-// CloudProviderAccessAzureServicePrincipal Details that describe the features linked to the Azure Service Principal.
+// CloudProviderAccessAzureServicePrincipal struct for CloudProviderAccessAzureServicePrincipal
 type CloudProviderAccessAzureServicePrincipal struct {
 	// Unique 24-hexadecimal digit string that identifies the Azure Service Principal in Atlas.
 	Id *string `json:"_id,omitempty"`

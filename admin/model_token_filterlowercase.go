@@ -9,7 +9,7 @@ import (
 // checks if the TokenFilterlowercase type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &TokenFilterlowercase{}
 
-// TokenFilterlowercase Filter that normalizes token text to lowercase.
+// TokenFilterlowercase struct for TokenFilterlowercase
 type TokenFilterlowercase struct {
 	// Human-readable label that identifies this token filter type.
 	Type string `json:"type"`

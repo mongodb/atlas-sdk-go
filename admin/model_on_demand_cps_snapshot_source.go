@@ -9,7 +9,7 @@ import (
 // checks if the OnDemandCpsSnapshotSource type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &OnDemandCpsSnapshotSource{}
 
-// OnDemandCpsSnapshotSource On-Demand Cloud Provider Snapshots as Source for a Data Lake Pipeline.
+// OnDemandCpsSnapshotSource struct for OnDemandCpsSnapshotSource
 type OnDemandCpsSnapshotSource struct {
 	// Human-readable name that identifies the cluster.
 	ClusterName *string `json:"clusterName,omitempty"`

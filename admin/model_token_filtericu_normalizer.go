@@ -9,7 +9,7 @@ import (
 // checks if the TokenFiltericuNormalizer type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &TokenFiltericuNormalizer{}
 
-// TokenFiltericuNormalizer Filter that normalizes tokens using a standard Unicode Normalization Mode.
+// TokenFiltericuNormalizer struct for TokenFiltericuNormalizer
 type TokenFiltericuNormalizer struct {
 	// Normalization form to apply.
 	NormalizationForm *string `json:"normalizationForm,omitempty"`

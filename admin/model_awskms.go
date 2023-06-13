@@ -9,7 +9,7 @@ import (
 // checks if the AWSKMS type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AWSKMS{}
 
-// AWSKMS Amazon Web Services (AWS) KMS configuration details and encryption at rest configuration set for the specified project.
+// AWSKMS struct for AWSKMS
 type AWSKMS struct {
 	// Unique alphanumeric string that identifies an Identity and Access Management (IAM) access key with permissions required to access your Amazon Web Services (AWS) Customer Master Key (CMK).
 	AccessKeyID *string `json:"accessKeyID,omitempty"`

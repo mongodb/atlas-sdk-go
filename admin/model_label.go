@@ -9,7 +9,7 @@ import (
 // checks if the Label type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Label{}
 
-// Label Collection of key-value pairs that represent custom data to add to the metadata file that MongoDB Cloud uploads to the bucket when the export job finishes.
+// Label struct for Label
 type Label struct {
 	// Key for the metadata file that MongoDB Cloud uploads to the bucket when the export job finishes.
 	Key *string `json:"key,omitempty"`

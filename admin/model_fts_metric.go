@@ -9,7 +9,7 @@ import (
 // checks if the FTSMetric type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &FTSMetric{}
 
-// FTSMetric Measurement of one Atlas Search status when MongoDB Atlas received this request.
+// FTSMetric struct for FTSMetric
 type FTSMetric struct {
 	// Human-readable label that identifies this Atlas Search hardware, status, or index measurement.
 	MetricName string `json:"metricName"`

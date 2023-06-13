@@ -9,7 +9,7 @@ import (
 // checks if the TokenFiltershingle type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &TokenFiltershingle{}
 
-// TokenFiltershingle Filter that constructs shingles (token n-grams) from a series of tokens. You can't use this token filter in synonym or autocomplete mapping definitions.
+// TokenFiltershingle struct for TokenFiltershingle
 type TokenFiltershingle struct {
 	// Value that specifies the maximum number of tokens per shingle. This value must be greater than or equal to **minShingleSize**.
 	MaxShingleSize int `json:"maxShingleSize"`

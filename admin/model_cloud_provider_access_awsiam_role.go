@@ -10,7 +10,7 @@ import (
 // checks if the CloudProviderAccessAWSIAMRole type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &CloudProviderAccessAWSIAMRole{}
 
-// CloudProviderAccessAWSIAMRole Details that describe the features linked to the Amazon Web Services (AWS) Identity and Access Management (IAM) role.
+// CloudProviderAccessAWSIAMRole struct for CloudProviderAccessAWSIAMRole
 type CloudProviderAccessAWSIAMRole struct {
 	// Amazon Resource Name that identifies the Amazon Web Services (AWS) user account that MongoDB Cloud uses when it assumes the Identity and Access Management (IAM) role.
 	AtlasAWSAccountArn *string `json:"atlasAWSAccountArn,omitempty"`

@@ -9,7 +9,7 @@ import (
 // checks if the DataLakeDatabaseDataSource type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &DataLakeDatabaseDataSource{}
 
-// DataLakeDatabaseDataSource Data store that maps to a collection for this data lake.
+// DataLakeDatabaseDataSource struct for DataLakeDatabaseDataSource
 type DataLakeDatabaseDataSource struct {
 	// Flag that validates the scheme in the specified URLs. If `true`, allows insecure `HTTP` scheme, doesn't verify the server's certificate chain and hostname, and accepts any certificate with any hostname presented by the server. If `false`, allows secure `HTTPS` scheme only.
 	AllowInsecure *bool `json:"allowInsecure,omitempty"`

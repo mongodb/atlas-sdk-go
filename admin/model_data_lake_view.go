@@ -9,7 +9,7 @@ import (
 // checks if the DataLakeView type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &DataLakeView{}
 
-// DataLakeView An aggregation pipeline that applies to the collection.
+// DataLakeView struct for DataLakeView
 type DataLakeView struct {
 	// Human-readable label that identifies the view, which corresponds to an aggregation pipeline on a collection.
 	Name *string `json:"name,omitempty"`

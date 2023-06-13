@@ -9,7 +9,7 @@ import (
 // checks if the DBResource type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &DBResource{}
 
-// DBResource Namespace to which this database user has access.
+// DBResource struct for DBResource
 type DBResource struct {
 	// Flag that indicates whether to grant the action on the cluster resource. If `true`, MongoDB Cloud ignores the **actions.resources.collection** and **actions.resources.db** parameters.
 	Cluster bool `json:"cluster"`

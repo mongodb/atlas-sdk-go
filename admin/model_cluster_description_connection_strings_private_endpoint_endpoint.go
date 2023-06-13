@@ -9,7 +9,7 @@ import (
 // checks if the ClusterDescriptionConnectionStringsPrivateEndpointEndpoint type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ClusterDescriptionConnectionStringsPrivateEndpointEndpoint{}
 
-// ClusterDescriptionConnectionStringsPrivateEndpointEndpoint Details of a private endpoint deployed for this cluster.
+// ClusterDescriptionConnectionStringsPrivateEndpointEndpoint struct for ClusterDescriptionConnectionStringsPrivateEndpointEndpoint
 type ClusterDescriptionConnectionStringsPrivateEndpointEndpoint struct {
 	// Unique string that the cloud provider uses to identify the private endpoint.
 	EndpointId *string `json:"endpointId,omitempty"`

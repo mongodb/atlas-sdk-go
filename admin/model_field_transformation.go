@@ -9,7 +9,7 @@ import (
 // checks if the FieldTransformation type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &FieldTransformation{}
 
-// FieldTransformation Field Transformations during ingestion of a Data Lake Pipeline.
+// FieldTransformation struct for FieldTransformation
 type FieldTransformation struct {
 	// Key in the document.
 	Field *string `json:"field,omitempty"`

@@ -1,7 +1,7 @@
 // checks if the {{classname}} type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &{{classname}}{}
 
-// {{classname}} {{{description}}}{{^description}}struct for {{{classname}}}{{/description}}
+// {{classname}} {{{summary}}}{{^summary}}struct for {{{classname}}}{{/summary}}
 type {{classname}} struct {
 {{#parent}}
 {{^isMap}}

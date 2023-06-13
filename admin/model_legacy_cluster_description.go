@@ -10,7 +10,7 @@ import (
 // checks if the LegacyClusterDescription type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &LegacyClusterDescription{}
 
-// LegacyClusterDescription Group of settings that configure a MongoDB cluster.
+// LegacyClusterDescription struct for LegacyClusterDescription
 type LegacyClusterDescription struct {
 	AutoScaling *AutoScaling `json:"autoScaling,omitempty"`
 	// Flag that indicates whether the cluster can perform backups. If set to `true`, the cluster can perform backups. You must set this value to `true` for NVMe clusters. Backup uses Cloud Backups for dedicated clusters and Shared Cluster Backups for tenant clusters. If set to `false`, the cluster doesn't use MongoDB Cloud backups.

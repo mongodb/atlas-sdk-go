@@ -9,7 +9,7 @@ import (
 // checks if the NamespaceObj type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &NamespaceObj{}
 
-// NamespaceObj Human-readable label that identifies the namespace on the specified host. The resource expresses this parameter value as `<database>.<collection>`.
+// NamespaceObj struct for NamespaceObj
 type NamespaceObj struct {
 	// Human-readable label that identifies the namespace on the specified host. The resource expresses this parameter value as `<database>.<collection>`.
 	Namespace *string `json:"namespace,omitempty"`

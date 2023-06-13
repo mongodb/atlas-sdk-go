@@ -9,7 +9,7 @@ import (
 // checks if the HostMetricValue type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &HostMetricValue{}
 
-// HostMetricValue Value of the metric that triggered the alert. The resource returns this parameter for alerts of events impacting hosts.
+// HostMetricValue struct for HostMetricValue
 type HostMetricValue struct {
 	// Amount of the **metricName** recorded at the time of the event. This value triggered the alert.
 	Number *float64 `json:"number,omitempty"`

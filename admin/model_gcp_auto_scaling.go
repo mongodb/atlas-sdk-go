@@ -9,7 +9,7 @@ import (
 // checks if the GCPAutoScaling type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &GCPAutoScaling{}
 
-// GCPAutoScaling Range of instance sizes to which your cluster can scale.
+// GCPAutoScaling struct for GCPAutoScaling
 type GCPAutoScaling struct {
 	Compute *GCPComputeAutoScaling `json:"compute,omitempty"`
 }

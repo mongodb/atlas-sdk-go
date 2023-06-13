@@ -9,7 +9,7 @@ import (
 // checks if the GCPCloudProviderContainer type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &GCPCloudProviderContainer{}
 
-// GCPCloudProviderContainer Collection of settings that configures the network container for a virtual private connection on Amazon Web Services.
+// GCPCloudProviderContainer struct for GCPCloudProviderContainer
 type GCPCloudProviderContainer struct {
 	// IP addresses expressed in Classless Inter-Domain Routing (CIDR) notation that MongoDB Cloud uses for the network peering containers in your project. MongoDB Cloud assigns all of the project's clusters deployed to this cloud provider an IP address from this range. MongoDB Cloud locks this value if an M10 or greater cluster or a network peering connection exists in this project.  These CIDR blocks must fall within the ranges reserved per RFC 1918. GCP further limits the block to a lower bound of the `/18` range.  To modify the CIDR block, the target project cannot have:  - Any M10 or greater clusters - Any other VPC peering connections   You can also create a new project and create a network peering connection to set the desired MongoDB Cloud network peering container CIDR block for that project. MongoDB Cloud limits the number of MongoDB nodes per network peering connection based on the CIDR block and the region selected for the project.   **Example:** A project in an Google Cloud (GCP) region supporting three availability zones and an MongoDB CIDR network peering container block of limit of `/24` equals 27 three-node replica sets.
 	AtlasCidrBlock string `json:"atlasCidrBlock"`

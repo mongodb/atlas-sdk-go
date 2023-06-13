@@ -9,7 +9,7 @@ import (
 // checks if the AutoScaling type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AutoScaling{}
 
-// AutoScaling Range of instance sizes to which your cluster can scale.
+// AutoScaling struct for AutoScaling
 type AutoScaling struct {
 	Compute *ComputeAutoScaling `json:"compute,omitempty"`
 	// Flag that indicates whether someone enabled disk auto-scaling for this cluster.

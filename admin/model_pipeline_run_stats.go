@@ -9,7 +9,7 @@ import (
 // checks if the PipelineRunStats type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &PipelineRunStats{}
 
-// PipelineRunStats Runtime statistics for this Data Lake Pipeline run.
+// PipelineRunStats struct for PipelineRunStats
 type PipelineRunStats struct {
 	// Total data size in bytes exported for this pipeline run.
 	BytesExported *int64 `json:"bytesExported,omitempty"`

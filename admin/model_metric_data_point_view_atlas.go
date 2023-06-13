@@ -10,7 +10,7 @@ import (
 // checks if the MetricDataPointViewAtlas type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &MetricDataPointViewAtlas{}
 
-// MetricDataPointViewAtlas value of, and metadata provided for, one data point generated at a particular moment in time. If no data point exists for a particular moment in time, the `value` parameter returns `null`.
+// MetricDataPointViewAtlas struct for MetricDataPointViewAtlas
 type MetricDataPointViewAtlas struct {
 	// Date and time when this data point occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	Timestamp *time.Time `json:"timestamp,omitempty"`

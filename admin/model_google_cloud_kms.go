@@ -9,7 +9,7 @@ import (
 // checks if the GoogleCloudKMS type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &GoogleCloudKMS{}
 
-// GoogleCloudKMS Details that define the configuration of Encryption at Rest using Google Cloud Key Management Service (KMS).
+// GoogleCloudKMS struct for GoogleCloudKMS
 type GoogleCloudKMS struct {
 	// Flag that indicates whether someone enabled encryption at rest for the specified  project. To disable encryption at rest using customer key management and remove the configuration details, pass only this parameter with a value of `false`.
 	Enabled *bool `json:"enabled,omitempty"`

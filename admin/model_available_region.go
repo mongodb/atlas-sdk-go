@@ -9,7 +9,7 @@ import (
 // checks if the AvailableRegion type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AvailableRegion{}
 
-// AvailableRegion List of regions that this cloud provider supports for this instance size.
+// AvailableRegion struct for AvailableRegion
 type AvailableRegion struct {
 	// Flag that indicates whether the cloud provider sets this region as its default. AWS defaults to US_EAST_1, GCP defaults to CENTRAL_US, and AZURE defaults to US_WEST_2.
 	Default *bool `json:"default,omitempty"`

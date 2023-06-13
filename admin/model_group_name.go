@@ -9,7 +9,7 @@ import (
 // checks if the GroupName type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &GroupName{}
 
-// GroupName Request view to update the group name.
+// GroupName struct for GroupName
 type GroupName struct {
 	// Human-readable label that identifies the project included in the MongoDB Cloud organization.
 	Name *string `json:"name,omitempty"`

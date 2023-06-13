@@ -9,7 +9,7 @@ import (
 // checks if the AzureKeyVault type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AzureKeyVault{}
 
-// AzureKeyVault Details that define the configuration of Encryption at Rest using Azure Key Vault (AKV).
+// AzureKeyVault struct for AzureKeyVault
 type AzureKeyVault struct {
 	// Azure environment in which your account credentials reside.
 	AzureEnvironment *string `json:"azureEnvironment,omitempty"`

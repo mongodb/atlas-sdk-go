@@ -9,7 +9,7 @@ import (
 // checks if the AutoExportPolicy type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AutoExportPolicy{}
 
-// AutoExportPolicy Policy for automatically exporting cloud backup snapshots.
+// AutoExportPolicy struct for AutoExportPolicy
 type AutoExportPolicy struct {
 	// Unique 24-hexadecimal character string that identifies the AWS Bucket.
 	ExportBucketId *string `json:"exportBucketId,omitempty"`

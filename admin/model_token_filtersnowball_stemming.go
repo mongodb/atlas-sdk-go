@@ -9,7 +9,7 @@ import (
 // checks if the TokenFiltersnowballStemming type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &TokenFiltersnowballStemming{}
 
-// TokenFiltersnowballStemming Filter that stems tokens using a Snowball-generated stemmer.
+// TokenFiltersnowballStemming struct for TokenFiltersnowballStemming
 type TokenFiltersnowballStemming struct {
 	// Snowball-generated stemmer to use.
 	StemmerName string `json:"stemmerName"`

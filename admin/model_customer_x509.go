@@ -9,7 +9,7 @@ import (
 // checks if the CustomerX509 type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &CustomerX509{}
 
-// CustomerX509 Settings to configure TLS Certificates for database users.
+// CustomerX509 struct for CustomerX509
 type CustomerX509 struct {
 	// Concatenated list of customer certificate authority (CA) certificates needed to authenticate database users. MongoDB Cloud expects this as a PEM-formatted certificate.
 	Cas *string `json:"cas,omitempty"`

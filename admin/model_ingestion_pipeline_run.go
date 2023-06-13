@@ -10,7 +10,7 @@ import (
 // checks if the IngestionPipelineRun type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &IngestionPipelineRun{}
 
-// IngestionPipelineRun Run details of a Data Lake Pipeline.
+// IngestionPipelineRun struct for IngestionPipelineRun
 type IngestionPipelineRun struct {
 	// Unique 24-hexadecimal character string that identifies a Data Lake Pipeline run.
 	Id *string `json:"_id,omitempty"`

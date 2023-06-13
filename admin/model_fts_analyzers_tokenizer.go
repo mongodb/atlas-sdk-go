@@ -9,7 +9,7 @@ import (
 // checks if the FTSAnalyzersTokenizer type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &FTSAnalyzersTokenizer{}
 
-// FTSAnalyzersTokenizer Tokenizer that you want to use to create tokens. Tokens determine how Atlas Search splits up text into discrete chunks for indexing.
+// FTSAnalyzersTokenizer struct for FTSAnalyzersTokenizer
 type FTSAnalyzersTokenizer struct {
 	// Characters to include in the longest token that Atlas Search creates.
 	MaxGram *int `json:"maxGram,omitempty"`

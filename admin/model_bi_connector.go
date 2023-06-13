@@ -9,7 +9,7 @@ import (
 // checks if the BiConnector type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &BiConnector{}
 
-// BiConnector Settings needed to configure the MongoDB Connector for Business Intelligence for this cluster.
+// BiConnector struct for BiConnector
 type BiConnector struct {
 	// Flag that indicates whether MongoDB Connector for Business Intelligence is enabled on the specified cluster.
 	Enabled *bool `json:"enabled,omitempty"`

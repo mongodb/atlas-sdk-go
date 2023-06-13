@@ -9,7 +9,7 @@ import (
 // checks if the UserScope type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &UserScope{}
 
-// UserScope Range of resources available to this database user.
+// UserScope struct for UserScope
 type UserScope struct {
 	// Human-readable label that identifies the cluster or MongoDB Atlas Data Lake that this database user can access.
 	Name string `json:"name"`

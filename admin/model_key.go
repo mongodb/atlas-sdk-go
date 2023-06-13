@@ -9,7 +9,7 @@ import (
 // checks if the Key type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Key{}
 
-// Key Details contained in one API key.
+// Key struct for Key
 type Key struct {
 	// List of network addresses granted access to this API using this API key.
 	AccessList []AccessListItem `json:"accessList,omitempty"`

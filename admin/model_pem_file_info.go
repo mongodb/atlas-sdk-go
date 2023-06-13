@@ -9,7 +9,7 @@ import (
 // checks if the PemFileInfo type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &PemFileInfo{}
 
-// PemFileInfo PEM file information for the identity provider's certificates.
+// PemFileInfo struct for PemFileInfo
 type PemFileInfo struct {
 	Certificates []X509Certificate `json:"certificates,omitempty"`
 	FileName     *string           `json:"fileName,omitempty"`

@@ -13,16 +13,16 @@ import (
 type RootApi interface {
 
 	/*
-		GetSystemStatus Return the status of this MongoDB application
+		GetSystemStatus [experimental] This resource returns information about the MongoDB application along with API key meta data.
 
-		(experimental) This resource returns information about the MongoDB application along with API key meta data.
+		This resource returns information about the MongoDB application along with API key meta data.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@return GetSystemStatusApiRequest
 	*/
 	GetSystemStatus(ctx context.Context) GetSystemStatusApiRequest
 	/*
-		GetSystemStatus Return the status of this MongoDB application
+		GetSystemStatus [experimental] This resource returns information about the MongoDB application along with API key meta data.
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -58,9 +58,9 @@ func (r GetSystemStatusApiRequest) Execute() (*SystemStatus, *http.Response, err
 }
 
 /*
-GetSystemStatus Return the status of this MongoDB application
+GetSystemStatus [experimental] This resource returns information about the MongoDB application along with API key meta data.
 
-(experimental) This resource returns information about the MongoDB application along with API key meta data.
+This resource returns information about the MongoDB application along with API key meta data.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return GetSystemStatusApiRequest

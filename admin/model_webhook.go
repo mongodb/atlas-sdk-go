@@ -9,7 +9,7 @@ import (
 // checks if the Webhook type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Webhook{}
 
-// Webhook Details to integrate one webhook with one MongoDB Cloud project.
+// Webhook struct for Webhook
 type Webhook struct {
 	// An optional field returned if your webhook is configured with a secret.  **NOTE**: When you view or edit the alert for a webhook notification, the secret appears completely redacted.
 	Secret *string `json:"secret,omitempty"`

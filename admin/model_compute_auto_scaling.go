@@ -9,7 +9,7 @@ import (
 // checks if the ComputeAutoScaling type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ComputeAutoScaling{}
 
-// ComputeAutoScaling Collection of settings that configures how a cluster might scale its cluster tier and whether the cluster can scale down. Cluster tier auto-scaling is unavailable for clusters using Low CPU or NVME storage classes.
+// ComputeAutoScaling struct for ComputeAutoScaling
 type ComputeAutoScaling struct {
 	// Flag that indicates whether cluster tier auto-scaling is enabled. Set to `true` to enable cluster tier auto-scaling. If enabled, you must specify a value for **providerSettings.autoScaling.compute.maxInstanceSize** also. Set to `false` to disable cluster tier auto-scaling.
 	Enabled *bool `json:"enabled,omitempty"`

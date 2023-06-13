@@ -9,7 +9,7 @@ import (
 // checks if the FTSAnalyzersCharFiltersInnerMappings type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &FTSAnalyzersCharFiltersInnerMappings{}
 
-// FTSAnalyzersCharFiltersInnerMappings Comma-separated list of mappings. A mapping indicates that one character or group of characters should be substituted for another, using the following format:  `<original> : <replacement>`
+// FTSAnalyzersCharFiltersInnerMappings struct for FTSAnalyzersCharFiltersInnerMappings
 type FTSAnalyzersCharFiltersInnerMappings struct {
 	AdditionalPropertiesField *string `json:"additionalProperties,omitempty"`
 }

@@ -9,7 +9,7 @@ import (
 // checks if the CloudProviderAccessEncryptionAtRestFeatureUsage type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &CloudProviderAccessEncryptionAtRestFeatureUsage{}
 
-// CloudProviderAccessEncryptionAtRestFeatureUsage Details that describe the Key Management Service (KMS) linked to this Amazon Web Services (AWS) Identity and Access Management (IAM) role.
+// CloudProviderAccessEncryptionAtRestFeatureUsage struct for CloudProviderAccessEncryptionAtRestFeatureUsage
 type CloudProviderAccessEncryptionAtRestFeatureUsage struct {
 	// Object that contains the identifying characteristics of the Amazon Web Services (AWS) Key Management Service (KMS). This field always returns a null value.
 	FeatureId map[string]interface{} `json:"featureId,omitempty"`

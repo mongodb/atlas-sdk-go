@@ -9,7 +9,7 @@ import (
 // checks if the IndexOptions type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &IndexOptions{}
 
-// IndexOptions One or more settings that determine how the MongoDB Cloud creates this MongoDB index.
+// IndexOptions struct for IndexOptions
 type IndexOptions struct {
 	// Index version number applied to the 2dsphere index. MongoDB 3.2 and later use version 3. Use this option to override the default version number. This option applies to the **2dsphere** index type only.
 	Var2dsphereIndexVersion *int `json:"2dsphereIndexVersion,omitempty"`

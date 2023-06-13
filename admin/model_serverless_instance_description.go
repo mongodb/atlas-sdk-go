@@ -10,7 +10,7 @@ import (
 // checks if the ServerlessInstanceDescription type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ServerlessInstanceDescription{}
 
-// ServerlessInstanceDescription Group of settings that configure a MongoDB serverless instance.
+// ServerlessInstanceDescription struct for ServerlessInstanceDescription
 type ServerlessInstanceDescription struct {
 	ConnectionStrings *ServerlessInstanceDescriptionConnectionStrings `json:"connectionStrings,omitempty"`
 	// Date and time when MongoDB Cloud created this serverless instance. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.

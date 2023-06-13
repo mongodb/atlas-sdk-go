@@ -9,7 +9,7 @@ import (
 // checks if the SynonymSource type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &SynonymSource{}
 
-// SynonymSource Data set that stores the mapping one or more words map to one or more synonyms of those words.
+// SynonymSource struct for SynonymSource
 type SynonymSource struct {
 	// Human-readable label that identifies the MongoDB collection that stores words and their applicable synonyms.
 	Collection string `json:"collection"`

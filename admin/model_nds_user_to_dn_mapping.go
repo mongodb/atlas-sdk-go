@@ -9,7 +9,7 @@ import (
 // checks if the NDSUserToDNMapping type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &NDSUserToDNMapping{}
 
-// NDSUserToDNMapping User-to-Distinguished Name (DN) map that MongoDB Cloud uses to transform a Lightweight Directory Access Protocol (LDAP) username into an LDAP DN.
+// NDSUserToDNMapping struct for NDSUserToDNMapping
 type NDSUserToDNMapping struct {
 	// Lightweight Directory Access Protocol (LDAP) query template that inserts the LDAP name that the regular expression matches into an LDAP query Uniform Resource Identifier (URI). The formatting for the query must conform to [RFC 4515](https://datatracker.ietf.org/doc/html/rfc4515) and [RFC 4516](https://datatracker.ietf.org/doc/html/rfc4516).
 	LdapQuery *string `json:"ldapQuery,omitempty"`

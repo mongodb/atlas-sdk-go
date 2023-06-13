@@ -10,7 +10,7 @@ import (
 // checks if the DiskBackupShardedClusterSnapshot type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &DiskBackupShardedClusterSnapshot{}
 
-// DiskBackupShardedClusterSnapshot Details of the sharded cluster snapshot that MongoDB Cloud created.
+// DiskBackupShardedClusterSnapshot struct for DiskBackupShardedClusterSnapshot
 type DiskBackupShardedClusterSnapshot struct {
 	// Date and time when MongoDB Cloud took the snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`

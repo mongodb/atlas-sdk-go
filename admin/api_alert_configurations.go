@@ -65,9 +65,9 @@ type AlertConfigurationsApi interface {
 	deleteAlertConfigurationExecute(r DeleteAlertConfigurationApiRequest) (*http.Response, error)
 
 	/*
-		GetAlertConfiguration Return One Alert Configuration from One Project
+		GetAlertConfiguration [experimental] Returns the specified alert configuration from the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.   This resource remains under revision and may change.
 
-		(experimental) Returns the specified alert configuration from the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+		Returns the specified alert configuration from the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
 	 This resource remains under revision and may change.
 
@@ -78,7 +78,7 @@ type AlertConfigurationsApi interface {
 	*/
 	GetAlertConfiguration(ctx context.Context, groupId string, alertConfigId string) GetAlertConfigurationApiRequest
 	/*
-		GetAlertConfiguration Return One Alert Configuration from One Project
+		GetAlertConfiguration [experimental] Returns the specified alert configuration from the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.   This resource remains under revision and may change.
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -138,9 +138,9 @@ type AlertConfigurationsApi interface {
 	listAlertConfigurationsExecute(r ListAlertConfigurationsApiRequest) (*PaginatedAlertConfig, *http.Response, error)
 
 	/*
-		ListAlertConfigurationsByAlertId Return All Alert Configurations Set for One Alert
+		ListAlertConfigurationsByAlertId [experimental] Returns all alert configurations set for the specified alert. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.   This resource remains under revision and may change.
 
-		(experimental) Returns all alert configurations set for the specified alert. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+		Returns all alert configurations set for the specified alert. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
 	 This resource remains under revision and may change.
 
@@ -151,7 +151,7 @@ type AlertConfigurationsApi interface {
 	*/
 	ListAlertConfigurationsByAlertId(ctx context.Context, groupId string, alertId string) ListAlertConfigurationsByAlertIdApiRequest
 	/*
-		ListAlertConfigurationsByAlertId Return All Alert Configurations Set for One Alert
+		ListAlertConfigurationsByAlertId [experimental] Returns all alert configurations set for the specified alert. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.   This resource remains under revision and may change.
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -522,9 +522,9 @@ func (r GetAlertConfigurationApiRequest) Execute() (*AlertConfigViewForNdsGroup,
 }
 
 /*
-GetAlertConfiguration Return One Alert Configuration from One Project
+GetAlertConfiguration [experimental] Returns the specified alert configuration from the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.   This resource remains under revision and may change.
 
-(experimental) Returns the specified alert configuration from the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+Returns the specified alert configuration from the specified project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
 	This resource remains under revision and may change.
 
@@ -991,9 +991,9 @@ func (r ListAlertConfigurationsByAlertIdApiRequest) Execute() (*PaginatedAlertCo
 }
 
 /*
-ListAlertConfigurationsByAlertId Return All Alert Configurations Set for One Alert
+ListAlertConfigurationsByAlertId [experimental] Returns all alert configurations set for the specified alert. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.   This resource remains under revision and may change.
 
-(experimental) Returns all alert configurations set for the specified alert. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+Returns all alert configurations set for the specified alert. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
 	This resource remains under revision and may change.
 

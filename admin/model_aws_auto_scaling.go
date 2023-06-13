@@ -9,7 +9,7 @@ import (
 // checks if the AWSAutoScaling type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AWSAutoScaling{}
 
-// AWSAutoScaling Range of instance sizes to which your cluster can scale.
+// AWSAutoScaling struct for AWSAutoScaling
 type AWSAutoScaling struct {
 	Compute *AWSComputeAutoScaling `json:"compute,omitempty"`
 }

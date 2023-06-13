@@ -9,7 +9,7 @@ import (
 // checks if the Datadog type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Datadog{}
 
-// Datadog Details to integrate one Datadog account with one MongoDB Cloud project.
+// Datadog struct for Datadog
 type Datadog struct {
 	// Key that allows MongoDB Cloud to access your Datadog account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.
 	ApiKey string `json:"apiKey"`

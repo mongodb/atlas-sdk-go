@@ -9,7 +9,7 @@ import (
 // checks if the DiskBackupCopySetting type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &DiskBackupCopySetting{}
 
-// DiskBackupCopySetting Copy setting item in the desired backup policy.
+// DiskBackupCopySetting struct for DiskBackupCopySetting
 type DiskBackupCopySetting struct {
 	// Human-readable label that identifies the cloud provider that stores the snapshot copy.
 	CloudProvider *string `json:"cloudProvider,omitempty"`

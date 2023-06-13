@@ -9,7 +9,7 @@ import (
 // checks if the FTSAnalyzers type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &FTSAnalyzers{}
 
-// FTSAnalyzers Settings that describe one Atlas Search custom analyzer.
+// FTSAnalyzers struct for FTSAnalyzers
 type FTSAnalyzers struct {
 	// Filters that examine text one character at a time and perform filtering operations.
 	CharFilters []FTSAnalyzersCharFiltersInner `json:"charFilters,omitempty"`

@@ -9,7 +9,7 @@ import (
 // checks if the InheritedRole type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &InheritedRole{}
 
-// InheritedRole Role inherited from another context for this database user.
+// InheritedRole struct for InheritedRole
 type InheritedRole struct {
 	// Human-readable label that identifies the database on which someone grants the action to one MongoDB user.
 	Db string `json:"db"`

@@ -9,7 +9,7 @@ import (
 // checks if the AWSComputeAutoScaling type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AWSComputeAutoScaling{}
 
-// AWSComputeAutoScaling Collection of settings that configures how a cluster might scale its cluster tier and whether the cluster can scale down. Cluster tier auto-scaling is unavailable for clusters using Low CPU or NVME storage classes.
+// AWSComputeAutoScaling struct for AWSComputeAutoScaling
 type AWSComputeAutoScaling struct {
 	// Maximum instance size to which your cluster can automatically scale.
 	MaxInstanceSize *string `json:"maxInstanceSize,omitempty"`

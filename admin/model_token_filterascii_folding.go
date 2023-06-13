@@ -9,7 +9,7 @@ import (
 // checks if the TokenFilterasciiFolding type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &TokenFilterasciiFolding{}
 
-// TokenFilterasciiFolding Filter that converts alphabetic, numeric, and symbolic unicode characters that are not in the Basic Latin Unicode block to their ASCII equivalents, if available.
+// TokenFilterasciiFolding struct for TokenFilterasciiFolding
 type TokenFilterasciiFolding struct {
 	// Value that indicates whether to include or omit the original tokens in the output of the token filter.  Choose `include` if you want to support queries on both the original tokens as well as the converted forms.   Choose `omit` if you want to query only on the converted forms of the original tokens.
 	OriginalTokens *string `json:"originalTokens,omitempty"`

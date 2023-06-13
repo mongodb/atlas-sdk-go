@@ -10,7 +10,7 @@ import (
 // checks if the IngestionPipeline type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &IngestionPipeline{}
 
-// IngestionPipeline Details of a Data Lake Pipeline.
+// IngestionPipeline struct for IngestionPipeline
 type IngestionPipeline struct {
 	// Unique 24-hexadecimal digit string that identifies the Data Lake Pipeline.
 	Id *string `json:"_id,omitempty"`

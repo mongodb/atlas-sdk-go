@@ -10,7 +10,7 @@ import (
 // checks if the RestoreJobDelivery type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &RestoreJobDelivery{}
 
-// RestoreJobDelivery Method and details that indicate how to deliver the restored snapshot data.
+// RestoreJobDelivery struct for RestoreJobDelivery
 type RestoreJobDelivery struct {
 	// Header name to use when downloading the restore, used with `\"delivery.methodName\" : \"HTTP\"`.
 	AuthHeader *string `json:"authHeader,omitempty"`

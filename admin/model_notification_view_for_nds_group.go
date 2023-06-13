@@ -9,7 +9,7 @@ import (
 // checks if the NotificationViewForNdsGroup type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &NotificationViewForNdsGroup{}
 
-// NotificationViewForNdsGroup One target that MongoDB Cloud sends notifications when an alert triggers.
+// NotificationViewForNdsGroup struct for NotificationViewForNdsGroup
 type NotificationViewForNdsGroup struct {
 	// Datadog API Key that MongoDB Cloud needs to send alert notifications to Datadog. You can find this API key in the Datadog dashboard. The resource requires this parameter when `\"notifications.[n].typeName\" : \"DATADOG\"`.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.
 	DatadogApiKey *string `json:"datadogApiKey,omitempty"`

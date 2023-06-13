@@ -9,7 +9,7 @@ import (
 // checks if the DataLakeDatabase type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &DataLakeDatabase{}
 
-// DataLakeDatabase Database associated with this data lake. Databases contain collections and views.
+// DataLakeDatabase struct for DataLakeDatabase
 type DataLakeDatabase struct {
 	// Array of collections and data sources that map to a ``stores`` data store.
 	Collections []DataLakeDatabaseCollection `json:"collections,omitempty"`

@@ -9,7 +9,7 @@ import (
 // checks if the GroupSettings type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &GroupSettings{}
 
-// GroupSettings Collection of settings that configures the project.
+// GroupSettings struct for GroupSettings
 type GroupSettings struct {
 	// Flag that indicates whether to collect database-specific metrics  for the specified project.
 	IsCollectDatabaseSpecificsStatisticsEnabled *bool `json:"isCollectDatabaseSpecificsStatisticsEnabled,omitempty"`

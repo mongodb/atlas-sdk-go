@@ -9,7 +9,7 @@ import (
 // checks if the ServerlessInstanceDescriptionConnectionStringsPrivateEndpoint type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ServerlessInstanceDescriptionConnectionStringsPrivateEndpoint{}
 
-// ServerlessInstanceDescriptionConnectionStringsPrivateEndpoint Private endpoint connection string that you can use to connect to this serverless instance through a private endpoint.
+// ServerlessInstanceDescriptionConnectionStringsPrivateEndpoint struct for ServerlessInstanceDescriptionConnectionStringsPrivateEndpoint
 type ServerlessInstanceDescriptionConnectionStringsPrivateEndpoint struct {
 	// List that contains the private endpoints through which you connect to MongoDB Cloud when you use **connectionStrings.privateEndpoint[n].srvConnectionString**.
 	Endpoints []ServerlessInstanceDescriptionConnectionStringsPrivateEndpointEndpoint `json:"endpoints,omitempty"`

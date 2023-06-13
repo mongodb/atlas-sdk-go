@@ -9,7 +9,7 @@ import (
 // checks if the AzurePeerNetwork type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AzurePeerNetwork{}
 
-// AzurePeerNetwork Group of Network Peering connection settings.
+// AzurePeerNetwork struct for AzurePeerNetwork
 type AzurePeerNetwork struct {
 	// Unique string that identifies the Azure AD directory in which the VNet peered with the MongoDB Cloud VNet resides.
 	AzureDirectoryId string `json:"azureDirectoryId"`

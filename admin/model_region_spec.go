@@ -9,7 +9,7 @@ import (
 // checks if the RegionSpec type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &RegionSpec{}
 
-// RegionSpec Physical location where MongoDB Cloud provisions cluster nodes.
+// RegionSpec struct for RegionSpec
 type RegionSpec struct {
 	// Number of analytics nodes in the region. Analytics nodes handle analytic data such as reporting queries from MongoDB Connector for Business Intelligence on MongoDB Cloud. Analytics nodes are read-only, and can never become the primary. Use **replicationSpecs[n].{region}.analyticsNodes** instead.
 	AnalyticsNodes *int `json:"analyticsNodes,omitempty"`

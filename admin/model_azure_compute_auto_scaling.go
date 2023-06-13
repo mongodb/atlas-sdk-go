@@ -9,7 +9,7 @@ import (
 // checks if the AzureComputeAutoScaling type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &AzureComputeAutoScaling{}
 
-// AzureComputeAutoScaling Collection of settings that configures how a cluster might scale its cluster tier and whether the cluster can scale down. Cluster tier auto-scaling is unavailable for clusters using Low CPU or NVME storage classes.
+// AzureComputeAutoScaling struct for AzureComputeAutoScaling
 type AzureComputeAutoScaling struct {
 	// Maximum instance size to which your cluster can automatically scale.
 	MaxInstanceSize *string `json:"maxInstanceSize,omitempty"`

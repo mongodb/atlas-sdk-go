@@ -9,7 +9,7 @@ import (
 // checks if the ExportStatus type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ExportStatus{}
 
-// ExportStatus State of the export job for the collections on the replica set only.
+// ExportStatus struct for ExportStatus
 type ExportStatus struct {
 	// Number of collections on the replica set that MongoDB Cloud exported.
 	ExportedCollections *int `json:"exportedCollections,omitempty"`

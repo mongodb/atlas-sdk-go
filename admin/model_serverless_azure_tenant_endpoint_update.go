@@ -9,7 +9,7 @@ import (
 // checks if the ServerlessAzureTenantEndpointUpdate type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ServerlessAzureTenantEndpointUpdate{}
 
-// ServerlessAzureTenantEndpointUpdate Updates to a serverless Azure tenant endpoint.
+// ServerlessAzureTenantEndpointUpdate struct for ServerlessAzureTenantEndpointUpdate
 type ServerlessAzureTenantEndpointUpdate struct {
 	// Unique string that identifies the Azure private endpoint's network interface for this private endpoint service.
 	CloudProviderEndpointId *string `json:"cloudProviderEndpointId,omitempty"`

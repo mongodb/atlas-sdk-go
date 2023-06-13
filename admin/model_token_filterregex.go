@@ -9,7 +9,7 @@ import (
 // checks if the TokenFilterregex type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &TokenFilterregex{}
 
-// TokenFilterregex Filter that applies a regular expression to each token, replacing matches with a specified string.
+// TokenFilterregex struct for TokenFilterregex
 type TokenFilterregex struct {
 	// Value that indicates whether to replace only the first matching pattern or all matching patterns.
 	Matches string `json:"matches"`

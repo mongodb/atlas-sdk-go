@@ -9,7 +9,7 @@ import (
 // checks if the OrganizationSettings type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &OrganizationSettings{}
 
-// OrganizationSettings Collection of settings that configures the organization.
+// OrganizationSettings struct for OrganizationSettings
 type OrganizationSettings struct {
 	// Flag that indicates whether to require API operations to originate from an IP Address added to the API access list for the specified organization.
 	ApiAccessListRequired *bool `json:"apiAccessListRequired,omitempty"`

@@ -9,7 +9,7 @@ import (
 // checks if the ServerlessInstanceDescriptionCreate type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ServerlessInstanceDescriptionCreate{}
 
-// ServerlessInstanceDescriptionCreate Settings that you can specify when you create a serverless instance.
+// ServerlessInstanceDescriptionCreate struct for ServerlessInstanceDescriptionCreate
 type ServerlessInstanceDescriptionCreate struct {
 	// Human-readable label that identifies the serverless instance.
 	Name                    string                     `json:"name"`

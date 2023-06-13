@@ -9,7 +9,7 @@ import (
 // checks if the PaginatedApiAtlasDatabaseUser type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &PaginatedApiAtlasDatabaseUser{}
 
-// PaginatedApiAtlasDatabaseUser List of MongoDB Database users granted access to databases in the specified project.
+// PaginatedApiAtlasDatabaseUser struct for PaginatedApiAtlasDatabaseUser
 type PaginatedApiAtlasDatabaseUser struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	Links []Link `json:"links,omitempty"`

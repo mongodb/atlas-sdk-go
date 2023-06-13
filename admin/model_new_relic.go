@@ -9,7 +9,7 @@ import (
 // checks if the NewRelic type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &NewRelic{}
 
-// NewRelic Details to integrate one New Relic account with one MongoDB Cloud project.  ***IMPORTANT**: Effective Wednesday, June 16th, 2021, New Relic no longer supports the plugin-based integration with MongoDB. We do not recommend that you sign up for the plugin-based integration.  To learn more, see the <a href=\"https://discuss.newrelic.com/t/new-relic-plugin-eol-wednesday-june-16th-2021/127267\" target=\"_blank\">New Relic Plugin EOL Statement</a>. Consider configuring an alternative monitoring integration before June 16th to maintain visibility into your MongoDB deployments.
+// NewRelic struct for NewRelic
 type NewRelic struct {
 	// Unique 40-hexadecimal digit string that identifies your New Relic account.
 	AccountId string `json:"accountId"`

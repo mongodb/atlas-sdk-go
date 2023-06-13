@@ -9,7 +9,7 @@ import (
 // checks if the TokenFilterreverse type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &TokenFilterreverse{}
 
-// TokenFilterreverse Filter that reverses each string token.
+// TokenFilterreverse struct for TokenFilterreverse
 type TokenFilterreverse struct {
 	// Human-readable label that identifies this token filter type.
 	Type string `json:"type"`
