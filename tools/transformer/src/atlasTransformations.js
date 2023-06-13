@@ -124,14 +124,13 @@ function workaroundNestedTransformations(openapi) {
 function addOneOfTransform(openapi, objectNames) {
   objectNames.forEach((name) => {
     try {
-      schemObj = getObjectFromYamlPath(name, openapi);
+      schemaObj = getObjectFromYamlPath(name, openapi);
+      if (schemaObj) {
+        schemaObj["x-xgen-go-transform"] = "merge-oneOf";
+      } else {
+        console.warn("Missing object to add x-xgen-go-transform", name);
+      }
     } catch (e) {
-      console.warn("Missing object to add x-xgen-go-transform", name);
-    }
-
-    if (schemObj) {
-      schemObj["x-xgen-go-transform"] = "merge-oneOf";
-    } else {
       console.warn("Missing object to add x-xgen-go-transform", name);
     }
   });
