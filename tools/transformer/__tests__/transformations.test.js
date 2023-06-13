@@ -68,7 +68,7 @@ test("applyAddExperimentalTag for stable operationId", () => {
   api = applyAddExperimentalTag(api);
   expect(
     api.paths["/api/atlas/v1.5/groups/{groupId}/clusters"].post[
-      "x-experimental"
+      "x-xgen-experimental"
     ]
   ).toBeFalsy();
 });
@@ -76,6 +76,6 @@ test("applyAddExperimentalTag for stable operationId", () => {
 test("applyAddExperimentalTag for experimental operationId", () => {
   api = applyAddExperimentalTag(api);
   expect(
-    api.paths["/api/atlas/v2/example/info"].get["x-experimental"]
+    api.paths["/api/atlas/v2/example/info"].get["x-xgen-experimental"]
   ).toBeTruthy();
 });

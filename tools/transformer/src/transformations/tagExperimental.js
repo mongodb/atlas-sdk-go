@@ -14,7 +14,7 @@ function applyAddExperimentalTag(api) {
         !stableOperationIds.includes(requestMethod.operationId)
       ) {
         requestMethod.description = `${requestMethod.description}`;
-        requestMethod["x-experimental"] = true;
+        requestMethod["x-xgen-experimental"] = true;
       }
     });
   });
