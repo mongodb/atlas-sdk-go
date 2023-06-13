@@ -16,7 +16,7 @@ type AlertsApi interface {
 	/*
 		AcknowledgeAlert Acknowledge One Alert from One Project
 
-		Confirms receipt of one existing alert. This alert applies to any component in one project. Acknowledging an alert prevents successive notifications. You receive an alert when a monitored component meets or exceeds a value you set until you acknowledge the alert. To use this resource, the requesting API Key must have the Organization Owner or Project Owner role. This resource doesn't require the API Key to have an Access List.
+		 Confirms receipt of one existing alert. This alert applies to any component in one project. Acknowledging an alert prevents successive notifications. You receive an alert when a monitored component meets or exceeds a value you set until you acknowledge the alert. To use this resource, the requesting API Key must have the Organization Owner or Project Owner role. This resource doesn't require the API Key to have an Access List.
 
 	 This resource remains under revision and may change.
 
@@ -42,7 +42,7 @@ type AlertsApi interface {
 	/*
 		GetAlert Return One Alert from One Project
 
-		Returns one alert. This alert applies to any component in one project. You receive an alert when a monitored component meets or exceeds a value you set. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+		 Returns one alert. This alert applies to any component in one project. You receive an alert when a monitored component meets or exceeds a value you set. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
 	 This resource remains under revision and may change.
 
@@ -68,7 +68,7 @@ type AlertsApi interface {
 	/*
 		ListAlerts Return All Alerts from One Project
 
-		Returns all alerts. These alerts apply to all components in one project. You receive an alert when a monitored component meets or exceeds a value you set. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+		 Returns all alerts. These alerts apply to all components in one project. You receive an alert when a monitored component meets or exceeds a value you set. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
 	 This resource remains under revision and may change.
 
@@ -93,7 +93,7 @@ type AlertsApi interface {
 	/*
 		ListAlertsByAlertConfigurationId Return All Open Alerts for Alert Configuration
 
-		(experimental) Returns all open alerts that the specified alert configuration triggers. These alert configurations apply to the specified project only. Alert configurations define the triggers and notification methods for alerts. Open alerts have been triggered but remain unacknowledged. To use this resource, the requesting API Key must have the Project Read Only role.
+		[experimental] Returns all open alerts that the specified alert configuration triggers. These alert configurations apply to the specified project only. Alert configurations define the triggers and notification methods for alerts. Open alerts have been triggered but remain unacknowledged. To use this resource, the requesting API Key must have the Project Read Only role.
 
 	 This resource remains under revision and may change.
 
@@ -151,7 +151,7 @@ func (r AcknowledgeAlertApiRequest) Execute() (*AlertViewForNdsGroup, *http.Resp
 /*
 AcknowledgeAlert Acknowledge One Alert from One Project
 
-Confirms receipt of one existing alert. This alert applies to any component in one project. Acknowledging an alert prevents successive notifications. You receive an alert when a monitored component meets or exceeds a value you set until you acknowledge the alert. To use this resource, the requesting API Key must have the Organization Owner or Project Owner role. This resource doesn't require the API Key to have an Access List.
+	Confirms receipt of one existing alert. This alert applies to any component in one project. Acknowledging an alert prevents successive notifications. You receive an alert when a monitored component meets or exceeds a value you set until you acknowledge the alert. To use this resource, the requesting API Key must have the Organization Owner or Project Owner role. This resource doesn't require the API Key to have an Access List.
 
 	This resource remains under revision and may change.
 
@@ -301,7 +301,7 @@ func (r GetAlertApiRequest) Execute() (*AlertViewForNdsGroup, *http.Response, er
 /*
 GetAlert Return One Alert from One Project
 
-Returns one alert. This alert applies to any component in one project. You receive an alert when a monitored component meets or exceeds a value you set. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+	Returns one alert. This alert applies to any component in one project. You receive an alert when a monitored component meets or exceeds a value you set. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
 	This resource remains under revision and may change.
 
@@ -478,7 +478,7 @@ func (r ListAlertsApiRequest) Execute() (*PaginatedAlert, *http.Response, error)
 /*
 ListAlerts Return All Alerts from One Project
 
-Returns all alerts. These alerts apply to all components in one project. You receive an alert when a monitored component meets or exceeds a value you set. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+	Returns all alerts. These alerts apply to all components in one project. You receive an alert when a monitored component meets or exceeds a value you set. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
 
 	This resource remains under revision and may change.
 
@@ -663,8 +663,7 @@ func (r ListAlertsByAlertConfigurationIdApiRequest) Execute() (*PaginatedAlert, 
 
 /*
 ListAlertsByAlertConfigurationId Return All Open Alerts for Alert Configuration
-
-(experimental) Returns all open alerts that the specified alert configuration triggers. These alert configurations apply to the specified project only. Alert configurations define the triggers and notification methods for alerts. Open alerts have been triggered but remain unacknowledged. To use this resource, the requesting API Key must have the Project Read Only role.
+[experimental] Returns all open alerts that the specified alert configuration triggers. These alert configurations apply to the specified project only. Alert configurations define the triggers and notification methods for alerts. Open alerts have been triggered but remain unacknowledged. To use this resource, the requesting API Key must have the Project Read Only role.
 
 	This resource remains under revision and may change.
 
