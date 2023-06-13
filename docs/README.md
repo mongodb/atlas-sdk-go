@@ -4,6 +4,7 @@
    * [Introduction](./doc_1_concepts.md#introduction)
    * [Fetching Data from the Back End](./doc_1_concepts.md#fetching-data-from-the-back-end)
    * [Performing Data Modification](./doc_1_concepts.md#performing-data-modification)
+   * [Experimental Methods](./doc_1_concepts.md#experimental-methods)
    * [Example](./doc_1_concepts.md#example)
 
 * [Error Handling](./doc_2_error_handling.md#error-handling)
