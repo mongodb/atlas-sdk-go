@@ -2,9 +2,6 @@
 [![PkgGoDev](https://pkg.go.dev/badge/go.mongodb.org/atlas-sdk)](https://pkg.go.dev/go.mongodb.org/atlas-sdk)
 ![CI](https://github.com/mongodb/atlas-sdk-go/workflows/CI/badge.svg)
 
-> NOTE: THIS REPOSITORY IS NOT READY FOR PUBLIC CONSUMPTION.
-> For official Atlas Golang SDK please go to https://github.com/mongodb/go-client-mongodb-atlas
-
 A Go SDK for the [MongoDB Atlas API](https://docs.atlas.mongodb.com/api/).
 
 Note that `atlas-sdk-go` only supports the two most recent major versions of Go.
