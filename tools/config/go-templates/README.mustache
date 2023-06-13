@@ -4,9 +4,9 @@
 
 All URIs are relative to *{{basePath}}*
 
-Class        | Method        | HTTP request  | Description   | Experimental   
+Class        | Method        | HTTP request  | Description   | Stability level   
 ------------ | ------------- | ------------- | ------------- | -------------
-{{#apiInfo}}{{#apis}}{{#operations}}{{#operation}}*{{classname}}* | [{{operationId}}](./{{apiDocPath}}{{classname}}.md#{{operationIdLowerCase}}) | **{{httpMethod}}** {{path}} | {{summary}} | {{#vendorExtensions.x-xgen-experimental}}YES{{/vendorExtensions.x-xgen-experimental}}{{^vendorExtensions.x-xgen-experimental}}NO{{/vendorExtensions.x-xgen-experimental}}
+{{#apiInfo}}{{#apis}}{{#operations}}{{#operation}}*{{classname}}* | [{{operationId}}](./{{apiDocPath}}{{classname}}.md#{{operationIdLowerCase}}) | **{{httpMethod}}** {{path}} | {{summary}} | {{#vendorExtensions.x-xgen-experimental}}Experimental{{/vendorExtensions.x-xgen-experimental}}{{^vendorExtensions.x-xgen-experimental}}Stable{{/vendorExtensions.x-xgen-experimental}}
 {{/operation}}{{/operations}}{{/apis}}{{/apiInfo}}
 
 ## Documentation For Models
