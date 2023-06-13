@@ -23,9 +23,16 @@ module.exports = function runTransformations(openapi) {
   // Patching till upstream change will be merged
   // Will be applied upstream as well
   addOneOfTransform(openapi, [
+    // To be removed after CLOUDP-170462 is available upstream
     ".components.schemas.NotificationViewForNdsGroup",
     ".components.schemas.ApiAtlasServerlessTenantEndpointView",
     ".components.schemas.ApiAtlasEndpointServiceView",
+
+    // Renamed objects
+    ".components.schemas.AlertNotificationViewGroup",
+    ".components.schemas.ServerlessTenantEndpoint",
+    ".components.schemas.EndpointService",
+
     ".components.schemas.ApiAtlasFTSAnalyzersViewManual.properties.charFilters.items",
     ".components.schemas.ApiAtlasFTSAnalyzersViewManual.properties.tokenizer",
   ]);
@@ -35,6 +42,7 @@ module.exports = function runTransformations(openapi) {
   openapi = applyOneOfTransformations(openapi);
   openapi = applyAllOfTransformations(openapi);
 
+  // To be removed after CLOUDP-170462 is available upstream
   openapi = applyModelNameTransformations(
     openapi,
     "Api",
@@ -108,14 +116,19 @@ function workaroundNestedTransformations(openapi) {
       transformOneOfProperties(parentObject, openapi);
     }
   } catch (e) {
-    throw new Error("ApiAtlasRegionConfigView cannot be renamed" + e);
+    throw new Error("RegionConfig cannot be renamed" + e);
   }
 }
 
 // Patch  "x-xgen-go-transform": "merge-oneOf"
 function addOneOfTransform(openapi, objectNames) {
   objectNames.forEach((name) => {
-    schemObj = getObjectFromYamlPath(name, openapi);
+    try {
+      schemObj = getObjectFromYamlPath(name, openapi);
+    } catch (e) {
+      console.warn("Missing object to add x-xgen-go-transform", name);
+    }
+
     if (schemObj) {
       schemObj["x-xgen-go-transform"] = "merge-oneOf";
     } else {
