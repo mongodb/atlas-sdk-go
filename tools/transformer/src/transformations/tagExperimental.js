@@ -1,9 +1,7 @@
 const stableOperationIds = require("../operations.stable.json").stableIds;
 
 /**
- * Transforms the path description to mark paths as "experimental" where paths are not flagged as stable.
- * Transformation prepends the tag "(experimental)" at the start of the path description
- *
+ * Transforms the path methods to mark them as "experimental" where paths are not flagged as stable.
  *
  * @param {*} api OpenAPI JSON File
  * @returns OpenAPI JSON File
@@ -15,7 +13,6 @@ function applyAddExperimentalToDescriptions(api) {
         requestMethod.operationId &&
         !stableOperationIds.includes(requestMethod.operationId)
       ) {
-        requestMethod.description = `[experimental] ${requestMethod.description}`;
         requestMethod["x-experimental"] = true;
       }
     });
