@@ -107,15 +107,21 @@ module.exports = function runTransformations(openapi) {
 };
 
 function workaroundNestedTransformations(openapi) {
+  let parentObject;
   try {
-    const parentObject = getObjectFromYamlPath(
+    parentObject = getObjectFromYamlPath(
       ".components.schemas.RegionConfig",
       openapi
     );
-    if (parentObject) {
-      transformOneOfProperties(parentObject, openapi);
-    }
-  } catch (e) {
+  } catch (e) {}
+  try {
+    parentObject =
+      parentObject ||
+      getObjectFromYamlPath(".components.schemas.CloudRegionConfig", openapi);
+  } catch (e) {}
+  if (parentObject) {
+    transformOneOfProperties(parentObject, openapi);
+  } else {
     throw new Error("RegionConfig cannot be renamed" + e);
   }
 }
