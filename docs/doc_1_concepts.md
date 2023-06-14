@@ -54,7 +54,7 @@ This signifies that the method might be changed in the future without compatibil
 
 If you encounter any problems with methods marked as experimental, feel free to raise a [Github issue](https://github.com/mongodb/atlas-sdk-go/issues/new/choose) and the team will work to resolve it.
 
-If you belive a method should be marked as stable, feel free to raise a PR appending the method's OperationId to our [operations.stable.json](../tools/transformer/src/operations.stable.json) set
+If you belive a method should be marked as stable, feel free to raise a PR appending the method's OperationId to our [operations.stable.json](https://github.com/mongodb/atlas-sdk-go/blob/main/tools/transformer/src/operations.stable.json) set.
 
 ## Example
 
