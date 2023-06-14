@@ -115,10 +115,9 @@ function workaroundNestedTransformations(openapi) {
     );
   } catch (e) {}
   try {
-    parentObject = parentObject || getObjectFromYamlPath(
-      ".components.schemas.CloudRegionConfig",
-      openapi
-    );
+    parentObject =
+      parentObject ||
+      getObjectFromYamlPath(".components.schemas.CloudRegionConfig", openapi);
   } catch (e) {}
   if (parentObject) {
     transformOneOfProperties(parentObject, openapi);
