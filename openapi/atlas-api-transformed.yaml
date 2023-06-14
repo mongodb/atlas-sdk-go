@@ -15027,13 +15027,9 @@ components:
         - groupId
         - hostnameSchemaType
     EventTypeForNdsGroup:
-      type: array
-      items:
-        type: string
+      type: string
     EventTypeForOrg:
-      type: array
-      items:
-        type: string
+      type: string
     EventViewForNdsGroup:
       type: object
       x-xgen-go-transform: merge-oneOf

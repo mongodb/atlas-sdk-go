@@ -3,7 +3,6 @@ const {
   applyOneOfTransformations,
   applyModelNameTransformations,
   applyDiscriminatorTransformations,
-  applyArrayTransformations,
   transformOneOfProperties,
   applyRemoveEnumsTransformations,
   applyRemoveObjectAdditonalProperties,
@@ -83,12 +82,6 @@ module.exports = function runTransformations(openapi) {
   if (openapi.components.schemas.Error) {
     openapi.components.schemas.Error.properties.parameters.items = {};
   }
-
-  // Temp workaround for CLOUDP-170462
-  openapi = applyArrayTransformations(openapi, [
-    "EventTypeForNdsGroup",
-    "EventTypeForOrg",
-  ]);
 
   applyRemoveEnumsTransformations(openapi);
   applyRemoveObjectAdditonalProperties(openapi);
