@@ -115,7 +115,7 @@ function workaroundNestedTransformations(openapi) {
     );
   } catch (e) {}
   try {
-    parentObject = getObjectFromYamlPath(
+    parentObject = parentObject || getObjectFromYamlPath(
       ".components.schemas.CloudRegionConfig",
       openapi
     );
