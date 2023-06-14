@@ -26,13 +26,15 @@ type DatabaseUser struct {
 	LdapAuthType *string `json:"ldapAuthType,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	Links []Link `json:"links,omitempty"`
+	// Human-readable label that indicates whether the new database user authenticates with OIDC federated authentication. To create a federated authentication user, specify the value of IDP_GROUP for this field.
+	OidcAuthType *string `json:"oidcAuthType,omitempty"`
 	// Alphanumeric string that authenticates this database user against the database specified in `databaseName`. To authenticate with SCRAM-SHA, you must specify this parameter. This parameter doesn't appear in this response.
 	Password *string `json:"password,omitempty"`
 	// List that provides the pairings of one role with one applicable database.
 	Roles []Role `json:"roles,omitempty"`
 	// List that contains clusters and MongoDB Atlas Data Lakes that this database user can access. If omitted, MongoDB Cloud grants the database user access to all the clusters and MongoDB Atlas Data Lakes in the project.
 	Scopes []UserScope `json:"scopes,omitempty"`
-	// Human-readable label that represents the user that authenticates to MongoDB. The format of this label depends on the method of authentication:  | Authentication Method | Parameter Needed | Parameter Value | username Format | |---|---|---|---| | AWS IAM | awsType | ROLE | <abbr title=\"Amazon Resource Name\">ARN</abbr> | | AWS IAM | awsType | USER | <abbr title=\"Amazon Resource Name\">ARN</abbr> | | x.509 | x509Type | CUSTOMER | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | x.509 | x509Type | MANAGED | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | LDAP | ldapAuthType | USER | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | LDAP | ldapAuthType | GROUP | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | SCRAM-SHA | awsType, x509Type, ldapAuthType | NONE | Alphanumeric string |
+	// Human-readable label that represents the user that authenticates to MongoDB. The format of this label depends on the method of authentication:  | Authentication Method | Parameter Needed | Parameter Value | username Format | |---|---|---|---| | AWS IAM | awsType | ROLE | <abbr title=\"Amazon Resource Name\">ARN</abbr> | | AWS IAM | awsType | USER | <abbr title=\"Amazon Resource Name\">ARN</abbr> | | x.509 | x509Type | CUSTOMER | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | x.509 | x509Type | MANAGED | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | LDAP | ldapAuthType | USER | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | LDAP | ldapAuthType | GROUP | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | OIDC | oidcAuthType | IDP_GROUP | Atlas OIDC IdP Identifier (found in Federation Settings, or contact Support), followed by a '/', followed by the IdP group name | | SCRAM-SHA | awsType, x509Type, ldapAuthType, oidcAuthType | NONE | Alphanumeric string |
 	Username string `json:"username"`
 	// X.509 method that MongoDB Cloud uses to authenticate the database user.  - For application-managed X.509, specify `MANAGED`. - For self-managed X.509, specify `CUSTOMER`.  Users created with the `CUSTOMER` method require a Common Name (CN) in the **username** parameter. You must create externally authenticated users on the `$external` database.
 	X509Type *string `json:"x509Type,omitempty"`
@@ -50,6 +52,8 @@ func NewDatabaseUser(databaseName string, groupId string, username string) *Data
 	this.GroupId = groupId
 	var ldapAuthType string = "NONE"
 	this.LdapAuthType = &ldapAuthType
+	var oidcAuthType string = "NONE"
+	this.OidcAuthType = &oidcAuthType
 	this.Username = username
 	var x509Type string = "NONE"
 	this.X509Type = &x509Type
@@ -67,6 +71,8 @@ func NewDatabaseUserWithDefaults() *DatabaseUser {
 	this.DatabaseName = databaseName
 	var ldapAuthType string = "NONE"
 	this.LdapAuthType = &ldapAuthType
+	var oidcAuthType string = "NONE"
+	this.OidcAuthType = &oidcAuthType
 	var x509Type string = "NONE"
 	this.X509Type = &x509Type
 	return &this
@@ -280,6 +286,38 @@ func (o *DatabaseUser) SetLinks(v []Link) {
 	o.Links = v
 }
 
+// GetOidcAuthType returns the OidcAuthType field value if set, zero value otherwise.
+func (o *DatabaseUser) GetOidcAuthType() string {
+	if o == nil || IsNil(o.OidcAuthType) {
+		var ret string
+		return ret
+	}
+	return *o.OidcAuthType
+}
+
+// GetOidcAuthTypeOk returns a tuple with the OidcAuthType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DatabaseUser) GetOidcAuthTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.OidcAuthType) {
+		return nil, false
+	}
+	return o.OidcAuthType, true
+}
+
+// HasOidcAuthType returns a boolean if a field has been set.
+func (o *DatabaseUser) HasOidcAuthType() bool {
+	if o != nil && !IsNil(o.OidcAuthType) {
+		return true
+	}
+
+	return false
+}
+
+// SetOidcAuthType gets a reference to the given string and assigns it to the OidcAuthType field.
+func (o *DatabaseUser) SetOidcAuthType(v string) {
+	o.OidcAuthType = &v
+}
+
 // GetPassword returns the Password field value if set, zero value otherwise.
 func (o *DatabaseUser) GetPassword() string {
 	if o == nil || IsNil(o.Password) {
@@ -454,6 +492,9 @@ func (o DatabaseUser) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.LdapAuthType) {
 		toSerialize["ldapAuthType"] = o.LdapAuthType
+	}
+	if !IsNil(o.OidcAuthType) {
+		toSerialize["oidcAuthType"] = o.OidcAuthType
 	}
 	if !IsNil(o.Password) {
 		toSerialize["password"] = o.Password

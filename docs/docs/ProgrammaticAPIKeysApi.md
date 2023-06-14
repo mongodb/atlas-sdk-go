@@ -106,7 +106,7 @@ Name | Type | Description  | Notes
 
 ## CreateApiKey
 
-> ApiUser CreateApiKey(ctx, orgId, createApiKey CreateApiKey).Execute()
+> ApiUser CreateApiKey(ctx, orgId, createOrganizationApiKey CreateOrganizationApiKey).Execute()
 
 Create One Organization API Key
 
@@ -131,9 +131,9 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     orgId := "4888442a3354817a7320eb61" // string | 
-    createApiKey := *openapiclient.NewCreateApiKey() // CreateApiKey | 
+    createOrganizationApiKey := *openapiclient.NewCreateOrganizationApiKey() // CreateOrganizationApiKey | 
 
-    resp, r, err := sdk.ProgrammaticAPIKeysApi.CreateApiKey(context.Background(), orgId, &createApiKey).Execute()
+    resp, r, err := sdk.ProgrammaticAPIKeysApi.CreateApiKey(context.Background(), orgId, &createOrganizationApiKey).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.CreateApiKey``: %v\n", err)
         apiError := admin.AsError(err)
@@ -160,7 +160,7 @@ Other parameters are passed through a pointer to a apiCreateApiKeyRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **createApiKey** | [**CreateApiKey**](CreateApiKey.md) | Organization API Key to be created. This request requires both body parameters. | 
+ **createOrganizationApiKey** | [**CreateOrganizationApiKey**](CreateOrganizationApiKey.md) | Organization API Key to be created. This request requires both body parameters. | 
 
 ### Return type
 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ## CreateProjectApiKey
 
-> ApiUser CreateProjectApiKey(ctx, groupId, createApiKey CreateApiKey).Execute()
+> ApiUser CreateProjectApiKey(ctx, groupId, createProjectApiKey CreateProjectApiKey).Execute()
 
 Create and Assign One Organization API Key to One Project
 
@@ -290,9 +290,9 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    createApiKey := *openapiclient.NewCreateApiKey() // CreateApiKey | 
+    createProjectApiKey := *openapiclient.NewCreateProjectApiKey() // CreateProjectApiKey | 
 
-    resp, r, err := sdk.ProgrammaticAPIKeysApi.CreateProjectApiKey(context.Background(), groupId, &createApiKey).Execute()
+    resp, r, err := sdk.ProgrammaticAPIKeysApi.CreateProjectApiKey(context.Background(), groupId, &createProjectApiKey).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.CreateProjectApiKey``: %v\n", err)
         apiError := admin.AsError(err)
@@ -319,7 +319,7 @@ Other parameters are passed through a pointer to a apiCreateProjectApiKeyRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **createApiKey** | [**CreateApiKey**](CreateApiKey.md) | Organization API key to be created and assigned to the specified project. This request requires both body parameters. | 
+ **createProjectApiKey** | [**CreateProjectApiKey**](CreateProjectApiKey.md) | Organization API key to be created and assigned to the specified project. This request requires both body parameters. | 
 
 ### Return type
 
@@ -971,7 +971,7 @@ Name | Type | Description  | Notes
 
 ## UpdateApiKey
 
-> ApiUser UpdateApiKey(ctx, orgId, apiUserId, createApiKey CreateApiKey).Execute()
+> ApiUser UpdateApiKey(ctx, orgId, apiUserId, createOrganizationApiKey CreateOrganizationApiKey).Execute()
 
 Update One Organization API Key
 
@@ -997,9 +997,9 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
     apiUserId := "apiUserId_example" // string | 
-    createApiKey := *openapiclient.NewCreateApiKey() // CreateApiKey | 
+    createOrganizationApiKey := *openapiclient.NewCreateOrganizationApiKey() // CreateOrganizationApiKey | 
 
-    resp, r, err := sdk.ProgrammaticAPIKeysApi.UpdateApiKey(context.Background(), orgId, apiUserId, &createApiKey).Execute()
+    resp, r, err := sdk.ProgrammaticAPIKeysApi.UpdateApiKey(context.Background(), orgId, apiUserId, &createOrganizationApiKey).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.UpdateApiKey``: %v\n", err)
         apiError := admin.AsError(err)
@@ -1028,7 +1028,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **createApiKey** | [**CreateApiKey**](CreateApiKey.md) | Organization API key to be updated. This request requires a minimum of one of the two body parameters. | 
+ **createOrganizationApiKey** | [**CreateOrganizationApiKey**](CreateOrganizationApiKey.md) | Organization API key to be updated. This request requires a minimum of one of the two body parameters. | 
 
 ### Return type
 
@@ -1049,7 +1049,7 @@ Name | Type | Description  | Notes
 
 ## UpdateApiKeyRoles
 
-> ApiUser UpdateApiKeyRoles(ctx, groupId, apiUserId, createApiKey CreateApiKey).PageNum(pageNum).ItemsPerPage(itemsPerPage).IncludeCount(includeCount).Execute()
+> ApiUser UpdateApiKeyRoles(ctx, groupId, apiUserId, createProjectApiKey CreateProjectApiKey).PageNum(pageNum).ItemsPerPage(itemsPerPage).IncludeCount(includeCount).Execute()
 
 Update Roles of One Organization API Key to One Project
 
@@ -1075,12 +1075,12 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     apiUserId := "apiUserId_example" // string | 
-    createApiKey := *openapiclient.NewCreateApiKey() // CreateApiKey | 
+    createProjectApiKey := *openapiclient.NewCreateProjectApiKey() // CreateProjectApiKey | 
     pageNum := int(1) // int |  (optional) (default to 1)
     itemsPerPage := int(100) // int |  (optional) (default to 100)
     includeCount := true // bool |  (optional) (default to true)
 
-    resp, r, err := sdk.ProgrammaticAPIKeysApi.UpdateApiKeyRoles(context.Background(), groupId, apiUserId, &createApiKey).PageNum(pageNum).ItemsPerPage(itemsPerPage).IncludeCount(includeCount).Execute()
+    resp, r, err := sdk.ProgrammaticAPIKeysApi.UpdateApiKeyRoles(context.Background(), groupId, apiUserId, &createProjectApiKey).PageNum(pageNum).ItemsPerPage(itemsPerPage).IncludeCount(includeCount).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.UpdateApiKeyRoles``: %v\n", err)
         apiError := admin.AsError(err)
@@ -1109,7 +1109,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **createApiKey** | [**CreateApiKey**](CreateApiKey.md) | Organization API Key to be updated. This request requires a minimum of one of the two body parameters. | 
+ **createProjectApiKey** | [**CreateProjectApiKey**](CreateProjectApiKey.md) | Organization API Key to be updated. This request requires a minimum of one of the two body parameters. | 
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
  **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (**totalCount**) in the response. | [default to true]

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ServerlessBackupOptions** | Pointer to [**ServerlessBackupOptions**](ServerlessBackupOptions.md) |  | [optional] 
+**Tags** | Pointer to [**[]Tag**](Tag.md) | List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the serverless instance. | [optional] 
 **TerminationProtectionEnabled** | Pointer to **bool** | Flag that indicates whether termination protection is enabled on the serverless instance. If set to &#x60;true&#x60;, MongoDB Cloud won&#39;t delete the serverless instance. If set to &#x60;false&#x60;, MongoDB Cloud will delete the serverless instance. | [optional] [default to false]
 
 ## Methods
@@ -50,6 +51,31 @@ SetServerlessBackupOptions sets ServerlessBackupOptions field to given value.
 `func (o *ServerlessInstanceDescriptionUpdate) HasServerlessBackupOptions() bool`
 
 HasServerlessBackupOptions returns a boolean if a field has been set.
+
+### GetTags
+
+`func (o *ServerlessInstanceDescriptionUpdate) GetTags() []Tag`
+
+GetTags returns the Tags field if non-nil, zero value otherwise.
+
+### GetTagsOk
+
+`func (o *ServerlessInstanceDescriptionUpdate) GetTagsOk() (*[]Tag, bool)`
+
+GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTags
+
+`func (o *ServerlessInstanceDescriptionUpdate) SetTags(v []Tag)`
+
+SetTags sets Tags field to given value.
+
+### HasTags
+
+`func (o *ServerlessInstanceDescriptionUpdate) HasTags() bool`
+
+HasTags returns a boolean if a field has been set.
 
 ### GetTerminationProtectionEnabled
 

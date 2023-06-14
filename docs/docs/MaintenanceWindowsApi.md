@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 
 ## ResetMaintenanceWindow
 
-> map[string]interface{} ResetMaintenanceWindow(ctx, groupId).Execute()
+> ResetMaintenanceWindow(ctx, groupId).Execute()
 
 Reset One Maintenance Window for One Project
 
@@ -184,14 +184,12 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    resp, r, err := sdk.MaintenanceWindowsApi.ResetMaintenanceWindow(context.Background(), groupId).Execute()
+    r, err := sdk.MaintenanceWindowsApi.ResetMaintenanceWindow(context.Background(), groupId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MaintenanceWindowsApi.ResetMaintenanceWindow``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `ResetMaintenanceWindow`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `MaintenanceWindowsApi.ResetMaintenanceWindow`: %v\n", resp)
 }
 ```
 
@@ -214,7 +212,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

@@ -34,7 +34,7 @@ type LDAPConfigurationApi interface {
 	DeleteLDAPConfigurationWithParams(ctx context.Context, args *DeleteLDAPConfigurationApiParams) DeleteLDAPConfigurationApiRequest
 
 	// Interface only available internally
-	deleteLDAPConfigurationExecute(r DeleteLDAPConfigurationApiRequest) (*http.Response, error)
+	deleteLDAPConfigurationExecute(r DeleteLDAPConfigurationApiRequest) (*UserSecurity, *http.Response, error)
 
 	/*
 		GetLDAPConfiguration Return the Current LDAP or X.509 Configuration
@@ -153,7 +153,7 @@ func (a *LDAPConfigurationApiService) DeleteLDAPConfigurationWithParams(ctx cont
 	}
 }
 
-func (r DeleteLDAPConfigurationApiRequest) Execute() (*http.Response, error) {
+func (r DeleteLDAPConfigurationApiRequest) Execute() (*UserSecurity, *http.Response, error) {
 	return r.ApiService.deleteLDAPConfigurationExecute(r)
 }
 
@@ -175,16 +175,19 @@ func (a *LDAPConfigurationApiService) DeleteLDAPConfiguration(ctx context.Contex
 }
 
 // Execute executes the request
-func (a *LDAPConfigurationApiService) deleteLDAPConfigurationExecute(r DeleteLDAPConfigurationApiRequest) (*http.Response, error) {
+//
+//	@return UserSecurity
+func (a *LDAPConfigurationApiService) deleteLDAPConfigurationExecute(r DeleteLDAPConfigurationApiRequest) (*UserSecurity, *http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod  = http.MethodDelete
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UserSecurity
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LDAPConfigurationApiService.DeleteLDAPConfiguration")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/userSecurity/ldap/userToDNMapping"
@@ -194,10 +197,10 @@ func (a *LDAPConfigurationApiService) deleteLDAPConfigurationExecute(r DeleteLDA
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 	if strlen(r.groupId) < 24 {
-		return nil, reportError("groupId must have at least 24 elements")
+		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
 	}
 	if strlen(r.groupId) > 24 {
-		return nil, reportError("groupId must have less than 24 elements")
+		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
 
 	// to determine the Content-Type header
@@ -219,19 +222,19 @@ func (a *LDAPConfigurationApiService) deleteLDAPConfigurationExecute(r DeleteLDA
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -243,14 +246,23 @@ func (a *LDAPConfigurationApiService) deleteLDAPConfigurationExecute(r DeleteLDA
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
 		newErr.model = v
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type GetLDAPConfigurationApiRequest struct {

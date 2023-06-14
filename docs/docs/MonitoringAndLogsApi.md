@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**GetDatabase**](MonitoringAndLogsApi.md#GetDatabase) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/databases/{databaseName} | Return One Database for a MongoDB Process
 [**GetDatabaseMeasurements**](MonitoringAndLogsApi.md#GetDatabaseMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/databases/{databaseName}/measurements | Return Measurements of One Database for One MongoDB Process
 [**GetDiskMeasurements**](MonitoringAndLogsApi.md#GetDiskMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName}/measurements | Return Measurements of One Disk for One MongoDB Process
-[**GetHostLogs**](MonitoringAndLogsApi.md#GetHostLogs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{hostName}/logs/{logName}.gz | Download Logs for One Multi-Cloud Cluster Host in One Project
+[**GetHostLogs**](MonitoringAndLogsApi.md#GetHostLogs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{hostName}/logs/{logName}.gz | Download Logs for One Cluster Host in One Project
 [**GetHostMeasurements**](MonitoringAndLogsApi.md#GetHostMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/measurements | Return Measurements for One MongoDB Process
 [**GetIndexMetrics**](MonitoringAndLogsApi.md#GetIndexMetrics) | **Get** /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/indexes/{databaseName}/{collectionName}/{indexName}/measurements | Return Atlas Search Metrics for One Index in One Specified Namespace
 [**GetMeasurements**](MonitoringAndLogsApi.md#GetMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/measurements | Return Atlas Search Hardware and Status Metrics
@@ -363,7 +363,7 @@ Name | Type | Description  | Notes
 
 > *os.File GetHostLogs(ctx, groupId, hostName, logName).EndDate(endDate).StartDate(startDate).Execute()
 
-Download Logs for One Multi-Cloud Cluster Host in One Project
+Download Logs for One Cluster Host in One Project
 
 
 ### Example
@@ -409,8 +409,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**hostName** | **string** | Fully qualified domain name or IP address of the MongoDB host that stores the log files that you want to download. | 
-**logName** | **string** | Human-readable label of the log file that you want to return. You can return audit logs only if you enable Database Auditing for the specified project. | 
+**hostName** | **string** | Human-readable label that identifies the host that stores the log files that you want to download. | 
+**logName** | **string** | Human-readable label that identifies the log file that you want to return. To return audit logs, enable *Database Auditing* for the specified project. | 
 
 ### Other Parameters
 

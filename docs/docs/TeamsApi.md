@@ -716,7 +716,7 @@ Name | Type | Description  | Notes
 
 ## RemoveProjectTeam
 
-> map[string]interface{} RemoveProjectTeam(ctx, groupId, teamId).Execute()
+> RemoveProjectTeam(ctx, groupId, teamId).Execute()
 
 Remove One Team from One Project
 
@@ -743,14 +743,12 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     teamId := "teamId_example" // string | 
 
-    resp, r, err := sdk.TeamsApi.RemoveProjectTeam(context.Background(), groupId, teamId).Execute()
+    r, err := sdk.TeamsApi.RemoveProjectTeam(context.Background(), groupId, teamId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TeamsApi.RemoveProjectTeam``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `RemoveProjectTeam`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `TeamsApi.RemoveProjectTeam`: %v\n", resp)
 }
 ```
 
@@ -775,7 +773,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

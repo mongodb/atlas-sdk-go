@@ -178,7 +178,7 @@ Class        | Method        | HTTP request  | Description   | Stability level
 *MonitoringAndLogsApi* | [GetDatabase](./docs/MonitoringAndLogsApi.md#getdatabase) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/databases/{databaseName} | Return One Database for a MongoDB Process | Experimental
 *MonitoringAndLogsApi* | [GetDatabaseMeasurements](./docs/MonitoringAndLogsApi.md#getdatabasemeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/databases/{databaseName}/measurements | Return Measurements of One Database for One MongoDB Process | Stable
 *MonitoringAndLogsApi* | [GetDiskMeasurements](./docs/MonitoringAndLogsApi.md#getdiskmeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName}/measurements | Return Measurements of One Disk for One MongoDB Process | Stable
-*MonitoringAndLogsApi* | [GetHostLogs](./docs/MonitoringAndLogsApi.md#gethostlogs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{hostName}/logs/{logName}.gz | Download Logs for One Multi-Cloud Cluster Host in One Project | Stable
+*MonitoringAndLogsApi* | [GetHostLogs](./docs/MonitoringAndLogsApi.md#gethostlogs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{hostName}/logs/{logName}.gz | Download Logs for One Cluster Host in One Project | Stable
 *MonitoringAndLogsApi* | [GetHostMeasurements](./docs/MonitoringAndLogsApi.md#gethostmeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/measurements | Return Measurements for One MongoDB Process | Stable
 *MonitoringAndLogsApi* | [GetIndexMetrics](./docs/MonitoringAndLogsApi.md#getindexmetrics) | **Get** /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/indexes/{databaseName}/{collectionName}/{indexName}/measurements | Return Atlas Search Metrics for One Index in One Specified Namespace | Experimental
 *MonitoringAndLogsApi* | [GetMeasurements](./docs/MonitoringAndLogsApi.md#getmeasurements) | **Get** /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/measurements | Return Atlas Search Hardware and Status Metrics | Experimental
@@ -191,7 +191,7 @@ Class        | Method        | HTTP request  | Description   | Stability level
 *MultiCloudClustersApi* | [CreateCluster](./docs/MultiCloudClustersApi.md#createcluster) | **Post** /api/atlas/v2/groups/{groupId}/clusters | Create One Multi-Cloud Cluster from One Project | Stable
 *MultiCloudClustersApi* | [DeleteCluster](./docs/MultiCloudClustersApi.md#deletecluster) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Remove One Multi-Cloud Cluster from One Project | Stable
 *MultiCloudClustersApi* | [GetCluster](./docs/MultiCloudClustersApi.md#getcluster) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Return One Multi-Cloud Cluster from One Project | Stable
-*MultiCloudClustersApi* | [ListClusters](./docs/MultiCloudClustersApi.md#listclusters) | **Get** /api/atlas/v2/groups/{groupId}/clusters | Return All Multi-Cloud Clusters from One Project | Stable
+*MultiCloudClustersApi* | [ListClusters](./docs/MultiCloudClustersApi.md#listclusters) | **Get** /api/atlas/v2/groups/{groupId}/clusters | Return All Clusters in One Project | Stable
 *MultiCloudClustersApi* | [TestFailover](./docs/MultiCloudClustersApi.md#testfailover) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restartPrimaries | Test Failover for One Multi-Cloud Cluster | Stable
 *MultiCloudClustersApi* | [UpdateCluster](./docs/MultiCloudClustersApi.md#updatecluster) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Modify One Multi-Cloud Cluster from One Project | Stable
 *NetworkPeeringApi* | [CreatePeeringConnection](./docs/NetworkPeeringApi.md#createpeeringconnection) | **Post** /api/atlas/v2/groups/{groupId}/peers | Create One New Network Peering Connection | Stable
@@ -224,6 +224,7 @@ Class        | Method        | HTTP request  | Description   | Stability level
 *OrganizationsApi* | [ListOrganizationProjects](./docs/OrganizationsApi.md#listorganizationprojects) | **Get** /api/atlas/v2/orgs/{orgId}/groups | Return One or More Projects in One Organization | Stable
 *OrganizationsApi* | [ListOrganizationUsers](./docs/OrganizationsApi.md#listorganizationusers) | **Get** /api/atlas/v2/orgs/{orgId}/users | Return All MongoDB Cloud Users in One Organization | Stable
 *OrganizationsApi* | [ListOrganizations](./docs/OrganizationsApi.md#listorganizations) | **Get** /api/atlas/v2/orgs | Return All Organizations | Stable
+*OrganizationsApi* | [RemoveOrganizationUser](./docs/OrganizationsApi.md#removeorganizationuser) | **Delete** /api/atlas/v2/orgs/{orgId}/users/{userId} | Remove One MongoDB Cloud User from One Organization | Experimental
 *OrganizationsApi* | [RenameOrganization](./docs/OrganizationsApi.md#renameorganization) | **Patch** /api/atlas/v2/orgs/{orgId} | Rename One Organization | Experimental
 *OrganizationsApi* | [UpdateOrganizationInvitation](./docs/OrganizationsApi.md#updateorganizationinvitation) | **Patch** /api/atlas/v2/orgs/{orgId}/invites | Update One Organization Invitation | Stable
 *OrganizationsApi* | [UpdateOrganizationInvitationById](./docs/OrganizationsApi.md#updateorganizationinvitationbyid) | **Patch** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Update One Organization Invitation by Invitation ID | Stable
@@ -312,7 +313,6 @@ Class        | Method        | HTTP request  | Description   | Stability level
 *TeamsApi* | [RemoveTeamUser](./docs/TeamsApi.md#removeteamuser) | **Delete** /api/atlas/v2/orgs/{orgId}/teams/{teamId}/users/{userId} | Remove One MongoDB Cloud User from One Team | Stable
 *TeamsApi* | [RenameTeam](./docs/TeamsApi.md#renameteam) | **Patch** /api/atlas/v2/orgs/{orgId}/teams/{teamId} | Rename One Team | Experimental
 *TeamsApi* | [UpdateTeamRoles](./docs/TeamsApi.md#updateteamroles) | **Patch** /api/atlas/v2/groups/{groupId}/teams/{teamId} | Update Team Roles in One Project | Stable
-*TestApi* | [VersionedExample](./docs/TestApi.md#versionedexample) | **Get** /api/atlas/v2/example/info | Example resource info for versioning of the Atlas API | Experimental
 *ThirdPartyIntegrationsApi* | [CreateThirdPartyIntegration](./docs/ThirdPartyIntegrationsApi.md#createthirdpartyintegration) | **Post** /api/atlas/v2/groups/{groupId}/integrations/{integrationType} | Configure One Third-Party Service Integration | Stable
 *ThirdPartyIntegrationsApi* | [DeleteThirdPartyIntegration](./docs/ThirdPartyIntegrationsApi.md#deletethirdpartyintegration) | **Delete** /api/atlas/v2/groups/{groupId}/integrations/{integrationType} | Remove One Third-Party Service Integration | Stable
 *ThirdPartyIntegrationsApi* | [GetThirdPartyIntegration](./docs/ThirdPartyIntegrationsApi.md#getthirdpartyintegration) | **Get** /api/atlas/v2/groups/{groupId}/integrations/{integrationType} | Return One Third-Party Service Integration | Stable
@@ -384,14 +384,15 @@ Class        | Method        | HTTP request  | Description   | Stability level
  - [ConnectedOrgConfig](./docs/ConnectedOrgConfig.md)
  - [ContainerPeer](./docs/ContainerPeer.md)
  - [CreateAWSEndpointRequest](./docs/CreateAWSEndpointRequest.md)
- - [CreateApiKey](./docs/CreateApiKey.md)
  - [CreateAzureEndpointRequest](./docs/CreateAzureEndpointRequest.md)
  - [CreateEndpointRequest](./docs/CreateEndpointRequest.md)
  - [CreateEndpointServiceRequest](./docs/CreateEndpointServiceRequest.md)
  - [CreateGCPEndpointGroupRequest](./docs/CreateGCPEndpointGroupRequest.md)
  - [CreateGCPForwardingRuleRequest](./docs/CreateGCPForwardingRuleRequest.md)
+ - [CreateOrganizationApiKey](./docs/CreateOrganizationApiKey.md)
  - [CreateOrganizationRequest](./docs/CreateOrganizationRequest.md)
  - [CreateOrganizationResponse](./docs/CreateOrganizationResponse.md)
+ - [CreateProjectApiKey](./docs/CreateProjectApiKey.md)
  - [Criteria](./docs/Criteria.md)
  - [CustomCriteria](./docs/CustomCriteria.md)
  - [CustomDBRole](./docs/CustomDBRole.md)
@@ -449,7 +450,6 @@ Class        | Method        | HTTP request  | Description   | Stability level
  - [Error](./docs/Error.md)
  - [EventViewForNdsGroup](./docs/EventViewForNdsGroup.md)
  - [EventViewForOrg](./docs/EventViewForOrg.md)
- - [ExampleResourceResponseView20230201](./docs/ExampleResourceResponseView20230201.md)
  - [ExportStatus](./docs/ExportStatus.md)
  - [FTSAnalyzers](./docs/FTSAnalyzers.md)
  - [FTSAnalyzersCharFiltersInner](./docs/FTSAnalyzersCharFiltersInner.md)

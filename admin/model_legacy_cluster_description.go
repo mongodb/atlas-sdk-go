@@ -58,7 +58,6 @@ type LegacyClusterDescription struct {
 	// Deprecated
 	ReplicationFactor *int `json:"replicationFactor,omitempty"`
 	// Physical location where MongoDB Cloud provisions cluster nodes.
-	// Deprecated
 	ReplicationSpec *map[string]RegionSpec `json:"replicationSpec,omitempty"`
 	// List of settings that configure your cluster regions.  - For Global Clusters, each object in the array represents one zone where MongoDB Cloud deploys your clusters nodes. - For non-Global sharded clusters and replica sets, the single object represents where MongoDB Cloud deploys your clusters nodes.
 	ReplicationSpecs []LegacyReplicationSpec `json:"replicationSpecs,omitempty"`
@@ -68,7 +67,7 @@ type LegacyClusterDescription struct {
 	SrvAddress *string `json:"srvAddress,omitempty"`
 	// Human-readable label that indicates the current operating condition of the cluster.
 	StateName *string `json:"stateName,omitempty"`
-	// Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster.
+	// List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the cluster.
 	Tags []Tag `json:"tags,omitempty"`
 	// Flag that indicates whether termination protection is enabled on the cluster. If set to `true`, MongoDB Cloud won't delete the cluster. If set to `false`, MongoDB Cloud will delete the cluster.
 	TerminationProtectionEnabled *bool `json:"terminationProtectionEnabled,omitempty"`
@@ -889,7 +888,6 @@ func (o *LegacyClusterDescription) SetReplicationFactor(v int) {
 }
 
 // GetReplicationSpec returns the ReplicationSpec field value if set, zero value otherwise.
-// Deprecated
 func (o *LegacyClusterDescription) GetReplicationSpec() map[string]RegionSpec {
 	if o == nil || IsNil(o.ReplicationSpec) {
 		var ret map[string]RegionSpec
@@ -900,7 +898,6 @@ func (o *LegacyClusterDescription) GetReplicationSpec() map[string]RegionSpec {
 
 // GetReplicationSpecOk returns a tuple with the ReplicationSpec field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// Deprecated
 func (o *LegacyClusterDescription) GetReplicationSpecOk() (*map[string]RegionSpec, bool) {
 	if o == nil || IsNil(o.ReplicationSpec) {
 		return nil, false
@@ -918,7 +915,6 @@ func (o *LegacyClusterDescription) HasReplicationSpec() bool {
 }
 
 // SetReplicationSpec gets a reference to the given map[string]RegionSpec and assigns it to the ReplicationSpec field.
-// Deprecated
 func (o *LegacyClusterDescription) SetReplicationSpec(v map[string]RegionSpec) {
 	o.ReplicationSpec = &v
 }

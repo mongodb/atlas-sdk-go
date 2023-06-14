@@ -448,7 +448,7 @@ type ListOrganizationEventsApiRequest struct {
 	includeCount *bool
 	itemsPerPage *int
 	pageNum      *int
-	eventType    *[]string
+	eventType    *[][]string
 	includeRaw   *bool
 	maxDate      *time.Time
 	minDate      *time.Time
@@ -459,7 +459,7 @@ type ListOrganizationEventsApiParams struct {
 	IncludeCount *bool
 	ItemsPerPage *int
 	PageNum      *int
-	EventType    *[]string
+	EventType    *[][]string
 	IncludeRaw   *bool
 	MaxDate      *time.Time
 	MinDate      *time.Time
@@ -499,7 +499,7 @@ func (r ListOrganizationEventsApiRequest) PageNum(pageNum int) ListOrganizationE
 }
 
 // Category of incident recorded at this moment in time.  **IMPORTANT**: The complete list of event type values changes frequently.
-func (r ListOrganizationEventsApiRequest) EventType(eventType []string) ListOrganizationEventsApiRequest {
+func (r ListOrganizationEventsApiRequest) EventType(eventType [][]string) ListOrganizationEventsApiRequest {
 	r.eventType = &eventType
 	return r
 }
@@ -685,7 +685,7 @@ type ListProjectEventsApiRequest struct {
 	itemsPerPage *int
 	pageNum      *int
 	clusterNames *[]string
-	eventType    *[]string
+	eventType    *[][]string
 	includeRaw   *bool
 	maxDate      *time.Time
 	minDate      *time.Time
@@ -697,7 +697,7 @@ type ListProjectEventsApiParams struct {
 	ItemsPerPage *int
 	PageNum      *int
 	ClusterNames *[]string
-	EventType    *[]string
+	EventType    *[][]string
 	IncludeRaw   *bool
 	MaxDate      *time.Time
 	MinDate      *time.Time
@@ -744,7 +744,7 @@ func (r ListProjectEventsApiRequest) ClusterNames(clusterNames []string) ListPro
 }
 
 // Category of incident recorded at this moment in time.  **IMPORTANT**: The complete list of event type values changes frequently.
-func (r ListProjectEventsApiRequest) EventType(eventType []string) ListProjectEventsApiRequest {
+func (r ListProjectEventsApiRequest) EventType(eventType [][]string) ListProjectEventsApiRequest {
 	r.eventType = &eventType
 	return r
 }

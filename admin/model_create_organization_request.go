@@ -11,10 +11,12 @@ var _ MappedNullable = &CreateOrganizationRequest{}
 
 // CreateOrganizationRequest struct for CreateOrganizationRequest
 type CreateOrganizationRequest struct {
-	ApiKey *CreateApiKey `json:"apiKey,omitempty"`
+	ApiKey *CreateOrganizationApiKey `json:"apiKey,omitempty"`
+	// Unique 24-hexadecimal digit string that identifies the federation to link the newly created organization to. If specified, the proposed Organization Owner of the new organization must have the Organization Owner role in an organization associated with the federation.
+	FederationSettingsId *string `json:"federationSettingsId,omitempty"`
 	// Human-readable label that identifies the organization.
 	Name string `json:"name"`
-	// Unique 24-hexadecimal digit string that identifies the Atlas user that you want to assign the Organization Owner role. This user must be a member of the same organization as the calling API key. This is only required when authenticating with Programmatic API Keys.
+	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud user that you want to assign the Organization Owner role. This user must be a member of the same organization as the calling API key. If you provide `federationSettingsId`,  this user must instead have the Organization Owner role on an organization in the specified federation. This parameter is required only when you authenticate with Programmatic API Keys.
 	OrgOwnerId *string `json:"orgOwnerId,omitempty"`
 }
 
@@ -37,9 +39,9 @@ func NewCreateOrganizationRequestWithDefaults() *CreateOrganizationRequest {
 }
 
 // GetApiKey returns the ApiKey field value if set, zero value otherwise.
-func (o *CreateOrganizationRequest) GetApiKey() CreateApiKey {
+func (o *CreateOrganizationRequest) GetApiKey() CreateOrganizationApiKey {
 	if o == nil || IsNil(o.ApiKey) {
-		var ret CreateApiKey
+		var ret CreateOrganizationApiKey
 		return ret
 	}
 	return *o.ApiKey
@@ -47,7 +49,7 @@ func (o *CreateOrganizationRequest) GetApiKey() CreateApiKey {
 
 // GetApiKeyOk returns a tuple with the ApiKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateOrganizationRequest) GetApiKeyOk() (*CreateApiKey, bool) {
+func (o *CreateOrganizationRequest) GetApiKeyOk() (*CreateOrganizationApiKey, bool) {
 	if o == nil || IsNil(o.ApiKey) {
 		return nil, false
 	}
@@ -63,9 +65,41 @@ func (o *CreateOrganizationRequest) HasApiKey() bool {
 	return false
 }
 
-// SetApiKey gets a reference to the given CreateApiKey and assigns it to the ApiKey field.
-func (o *CreateOrganizationRequest) SetApiKey(v CreateApiKey) {
+// SetApiKey gets a reference to the given CreateOrganizationApiKey and assigns it to the ApiKey field.
+func (o *CreateOrganizationRequest) SetApiKey(v CreateOrganizationApiKey) {
 	o.ApiKey = &v
+}
+
+// GetFederationSettingsId returns the FederationSettingsId field value if set, zero value otherwise.
+func (o *CreateOrganizationRequest) GetFederationSettingsId() string {
+	if o == nil || IsNil(o.FederationSettingsId) {
+		var ret string
+		return ret
+	}
+	return *o.FederationSettingsId
+}
+
+// GetFederationSettingsIdOk returns a tuple with the FederationSettingsId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateOrganizationRequest) GetFederationSettingsIdOk() (*string, bool) {
+	if o == nil || IsNil(o.FederationSettingsId) {
+		return nil, false
+	}
+	return o.FederationSettingsId, true
+}
+
+// HasFederationSettingsId returns a boolean if a field has been set.
+func (o *CreateOrganizationRequest) HasFederationSettingsId() bool {
+	if o != nil && !IsNil(o.FederationSettingsId) {
+		return true
+	}
+
+	return false
+}
+
+// SetFederationSettingsId gets a reference to the given string and assigns it to the FederationSettingsId field.
+func (o *CreateOrganizationRequest) SetFederationSettingsId(v string) {
+	o.FederationSettingsId = &v
 }
 
 // GetName returns the Name field value
@@ -135,6 +169,9 @@ func (o CreateOrganizationRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.ApiKey) {
 		toSerialize["apiKey"] = o.ApiKey
+	}
+	if !IsNil(o.FederationSettingsId) {
+		toSerialize["federationSettingsId"] = o.FederationSettingsId
 	}
 	toSerialize["name"] = o.Name
 	if !IsNil(o.OrgOwnerId) {

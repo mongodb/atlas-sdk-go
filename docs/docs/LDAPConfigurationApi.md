@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## DeleteLDAPConfiguration
 
-> DeleteLDAPConfiguration(ctx, groupId).Execute()
+> UserSecurity DeleteLDAPConfiguration(ctx, groupId).Execute()
 
 Remove the Current LDAP User to DN Mapping
 
@@ -45,12 +45,14 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
 
-    r, err := sdk.LDAPConfigurationApi.DeleteLDAPConfiguration(context.Background(), groupId).Execute()
+    resp, r, err := sdk.LDAPConfigurationApi.DeleteLDAPConfiguration(context.Background(), groupId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.DeleteLDAPConfiguration``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
+    // response from `DeleteLDAPConfiguration`: UserSecurity
+    fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.DeleteLDAPConfiguration`: %v\n", resp)
 }
 ```
 
@@ -73,7 +75,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**UserSecurity**](UserSecurity.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

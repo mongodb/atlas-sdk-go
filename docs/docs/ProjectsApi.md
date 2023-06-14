@@ -856,7 +856,7 @@ Name | Type | Description  | Notes
 
 ## ListProjectLimits
 
-> Limit ListProjectLimits(ctx, groupId).Execute()
+> []Limit ListProjectLimits(ctx, groupId).Execute()
 
 Return All Limits for One Project
 
@@ -893,7 +893,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `ListProjectLimits`: Limit
+    // response from `ListProjectLimits`: []Limit
     fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.ListProjectLimits`: %v\n", resp)
 }
 ```
@@ -917,7 +917,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Limit**](Limit.md)
+[**[]Limit**](Limit.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

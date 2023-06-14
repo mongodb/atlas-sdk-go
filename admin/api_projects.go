@@ -290,7 +290,7 @@ type ProjectsApi interface {
 	ListProjectLimitsWithParams(ctx context.Context, args *ListProjectLimitsApiParams) ListProjectLimitsApiRequest
 
 	// Interface only available internally
-	listProjectLimitsExecute(r ListProjectLimitsApiRequest) (*Limit, *http.Response, error)
+	listProjectLimitsExecute(r ListProjectLimitsApiRequest) ([]Limit, *http.Response, error)
 
 	/*
 		ListProjectUsers Return All Users in One Project
@@ -1998,7 +1998,7 @@ func (a *ProjectsApiService) ListProjectLimitsWithParams(ctx context.Context, ar
 	}
 }
 
-func (r ListProjectLimitsApiRequest) Execute() (*Limit, *http.Response, error) {
+func (r ListProjectLimitsApiRequest) Execute() ([]Limit, *http.Response, error) {
 	return r.ApiService.listProjectLimitsExecute(r)
 }
 
@@ -2021,13 +2021,13 @@ func (a *ProjectsApiService) ListProjectLimits(ctx context.Context, groupId stri
 
 // Execute executes the request
 //
-//	@return Limit
-func (a *ProjectsApiService) listProjectLimitsExecute(r ListProjectLimitsApiRequest) (*Limit, *http.Response, error) {
+//	@return []Limit
+func (a *ProjectsApiService) listProjectLimitsExecute(r ListProjectLimitsApiRequest) ([]Limit, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Limit
+		localVarReturnValue []Limit
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.ListProjectLimits")
