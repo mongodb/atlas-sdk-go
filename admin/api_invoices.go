@@ -35,7 +35,7 @@ type InvoicesApi interface {
 	DownloadInvoiceCSVWithParams(ctx context.Context, args *DownloadInvoiceCSVApiParams) DownloadInvoiceCSVApiRequest
 
 	// Interface only available internally
-	downloadInvoiceCSVExecute(r DownloadInvoiceCSVApiRequest) (*http.Response, error)
+	downloadInvoiceCSVExecute(r DownloadInvoiceCSVApiRequest) (string, *http.Response, error)
 
 	/*
 		GetInvoice Return One Organization Invoice
@@ -59,7 +59,7 @@ type InvoicesApi interface {
 	GetInvoiceWithParams(ctx context.Context, args *GetInvoiceApiParams) GetInvoiceApiRequest
 
 	// Interface only available internally
-	getInvoiceExecute(r GetInvoiceApiRequest) (*Invoice, *http.Response, error)
+	getInvoiceExecute(r GetInvoiceApiRequest) (string, *http.Response, error)
 
 	/*
 		ListInvoices Return All Invoices for One Organization
@@ -132,7 +132,7 @@ func (a *InvoicesApiService) DownloadInvoiceCSVWithParams(ctx context.Context, a
 	}
 }
 
-func (r DownloadInvoiceCSVApiRequest) Execute() (*http.Response, error) {
+func (r DownloadInvoiceCSVApiRequest) Execute() (string, *http.Response, error) {
 	return r.ApiService.downloadInvoiceCSVExecute(r)
 }
 
@@ -156,16 +156,19 @@ func (a *InvoicesApiService) DownloadInvoiceCSV(ctx context.Context, orgId strin
 }
 
 // Execute executes the request
-func (a *InvoicesApiService) downloadInvoiceCSVExecute(r DownloadInvoiceCSVApiRequest) (*http.Response, error) {
+//
+//	@return string
+func (a *InvoicesApiService) downloadInvoiceCSVExecute(r DownloadInvoiceCSVApiRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesApiService.DownloadInvoiceCSV")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/csv"
@@ -176,10 +179,10 @@ func (a *InvoicesApiService) downloadInvoiceCSVExecute(r DownloadInvoiceCSVApiRe
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 	if strlen(r.orgId) < 24 {
-		return nil, reportError("orgId must have at least 24 elements")
+		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
 	}
 	if strlen(r.orgId) > 24 {
-		return nil, reportError("orgId must have less than 24 elements")
+		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
 	}
 
 	// to determine the Content-Type header
@@ -201,19 +204,19 @@ func (a *InvoicesApiService) downloadInvoiceCSVExecute(r DownloadInvoiceCSVApiRe
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -225,14 +228,23 @@ func (a *InvoicesApiService) downloadInvoiceCSVExecute(r DownloadInvoiceCSVApiRe
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
 		newErr.model = v
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type GetInvoiceApiRequest struct {
@@ -256,7 +268,7 @@ func (a *InvoicesApiService) GetInvoiceWithParams(ctx context.Context, args *Get
 	}
 }
 
-func (r GetInvoiceApiRequest) Execute() (*Invoice, *http.Response, error) {
+func (r GetInvoiceApiRequest) Execute() (string, *http.Response, error) {
 	return r.ApiService.getInvoiceExecute(r)
 }
 
@@ -281,13 +293,13 @@ func (a *InvoicesApiService) GetInvoice(ctx context.Context, orgId string, invoi
 
 // Execute executes the request
 //
-//	@return Invoice
-func (a *InvoicesApiService) getInvoiceExecute(r GetInvoiceApiRequest) (*Invoice, *http.Response, error) {
+//	@return string
+func (a *InvoicesApiService) getInvoiceExecute(r GetInvoiceApiRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Invoice
+		localVarReturnValue string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesApiService.GetInvoice")
@@ -325,7 +337,7 @@ func (a *InvoicesApiService) getInvoiceExecute(r GetInvoiceApiRequest) (*Invoice
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+csv", "application/vnd.atlas.2023-01-01+json", "application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)

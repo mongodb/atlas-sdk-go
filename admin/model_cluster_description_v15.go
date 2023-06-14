@@ -48,7 +48,7 @@ type ClusterDescriptionV15 struct {
 	RootCertType *string `json:"rootCertType,omitempty"`
 	// Human-readable label that indicates the current operating condition of this cluster.
 	StateName *string `json:"stateName,omitempty"`
-	// Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster.
+	// List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the cluster.
 	Tags []Tag `json:"tags,omitempty"`
 	// Flag that indicates whether termination protection is enabled on the cluster. If set to `true`, MongoDB Cloud won't delete the cluster. If set to `false`, MongoDB Cloud will delete the cluster.
 	TerminationProtectionEnabled *bool `json:"terminationProtectionEnabled,omitempty"`

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **DatadogRegion** | Pointer to **string** | Datadog region that indicates which API Uniform Resource Locator (URL) to use. The resource requires this parameter when &#x60;\&quot;notifications.[n].typeName\&quot; : \&quot;DATADOG\&quot;&#x60;.  To learn more about Datadog&#39;s regions, see &lt;a href&#x3D;\&quot;https://docs.datadoghq.com/getting_started/site/\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;Datadog Sites&lt;/a&gt;. | [optional] [default to "US"]
 **DelayMin** | Pointer to **int** | Number of minutes that MongoDB Cloud waits after detecting an alert condition before it sends out the first notification. | [optional] 
 **IntervalMin** | Pointer to **int** | Number of minutes to wait between successive notifications. MongoDB Cloud sends notifications until someone acknowledges the unacknowledged alert.  PagerDuty, VictorOps, and OpsGenie notifications don&#39;t return this element. Configure and manage the notification interval within each of those services. | [optional] 
+**NotifierId** | Pointer to **string** | The notifierId is a system-generated unique identifier assigned to each notification method. This is needed when updating third-party notifications without requiring explicit authentication credentials. | [optional] 
 **TypeName** | Pointer to **string** | Human-readable label that displays the alert notification type. | [optional] 
 **EmailAddress** | Pointer to **string** | Email address to which MongoDB Cloud sends alert notifications. The resource requires this parameter when &#x60;\&quot;notifications.[n].typeName\&quot; : \&quot;EMAIL\&quot;&#x60;. You don’t need to set this value to send emails to individual or groups of MongoDB Cloud users including:  - specific MongoDB Cloud users (&#x60;\&quot;notifications.[n].typeName\&quot; : \&quot;USER\&quot;&#x60;) - MongoDB Cloud users with specific project roles (&#x60;\&quot;notifications.[n].typeName\&quot; : \&quot;GROUP\&quot;&#x60;) - MongoDB Cloud users with specific organization roles (&#x60;\&quot;notifications.[n].typeName\&quot; : \&quot;ORG\&quot;&#x60;) - MongoDB Cloud teams (&#x60;\&quot;notifications.[n].typeName\&quot; : \&quot;TEAM\&quot;&#x60;)  To send emails to one MongoDB Cloud user or grouping of users, set the &#x60;notifications.[n].emailEnabled&#x60; parameter. | [optional] 
 **EmailEnabled** | Pointer to **bool** | Flag that indicates whether MongoDB Cloud should send email notifications. The resource requires this parameter when one of the following values have been set:  - &#x60;\&quot;notifications.[n].typeName\&quot; : \&quot;ORG\&quot;&#x60; - &#x60;\&quot;notifications.[n].typeName\&quot; : \&quot;GROUP\&quot;&#x60; - &#x60;\&quot;notifications.[n].typeName\&quot; : \&quot;USER\&quot;&#x60; | [optional] 
@@ -149,6 +150,31 @@ SetIntervalMin sets IntervalMin field to given value.
 `func (o *NotificationViewForNdsGroup) HasIntervalMin() bool`
 
 HasIntervalMin returns a boolean if a field has been set.
+
+### GetNotifierId
+
+`func (o *NotificationViewForNdsGroup) GetNotifierId() string`
+
+GetNotifierId returns the NotifierId field if non-nil, zero value otherwise.
+
+### GetNotifierIdOk
+
+`func (o *NotificationViewForNdsGroup) GetNotifierIdOk() (*string, bool)`
+
+GetNotifierIdOk returns a tuple with the NotifierId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNotifierId
+
+`func (o *NotificationViewForNdsGroup) SetNotifierId(v string)`
+
+SetNotifierId sets NotifierId field to given value.
+
+### HasNotifierId
+
+`func (o *NotificationViewForNdsGroup) HasNotifierId() bool`
+
+HasNotifierId returns a boolean if a field has been set.
 
 ### GetTypeName
 

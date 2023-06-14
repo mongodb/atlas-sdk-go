@@ -122,19 +122,19 @@ type MonitoringAndLogsApi interface {
 	getDiskMeasurementsExecute(r GetDiskMeasurementsApiRequest) (*MeasurementsGeneralViewAtlas, *http.Response, error)
 
 	/*
-		GetHostLogs Download Logs for One Multi-Cloud Cluster Host in One Project
+		GetHostLogs Download Logs for One Cluster Host in One Project
 
-		Returns a compressed (.gz) log file that contains a range of log messages for the specified host for the specified project. To use this resource, the requesting API Key must have the Project Owner or Project Data Access Read Write roles. This resource doesn't require the API Key to have an Access List. Deprecated versions: v2-{2023-01-01}
+		Returns a compressed (.gz) log file that contains a range of log messages for the specified host for the specified project. MongoDB updates process and audit logs from the cluster backend infrastructure every five minutes and contain log data from the previous five minutes. If you poll the API for log files, we recommend polling every five minutes. For example, if the logs are updated at 4:00 UTC and then you poll the API, the API returns log data from the interval between 3:55 UTC and 4:00 UTC. This feature isn't available for `M0` free clusters, `M2`, `M5`, or serverless clusters. To use this resource, the requesting API Key must have the Project Owner or Project Data Access Read/Write roles. This resource doesn't require the API Key to have an Access List. Deprecated versions: v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param hostName Fully qualified domain name or IP address of the MongoDB host that stores the log files that you want to download.
-		@param logName Human-readable label of the log file that you want to return. You can return audit logs only if you enable Database Auditing for the specified project.
+		@param hostName Human-readable label that identifies the host that stores the log files that you want to download.
+		@param logName Human-readable label that identifies the log file that you want to return. To return audit logs, enable *Database Auditing* for the specified project.
 		@return GetHostLogsApiRequest
 	*/
 	GetHostLogs(ctx context.Context, groupId string, hostName string, logName string) GetHostLogsApiRequest
 	/*
-		GetHostLogs Download Logs for One Multi-Cloud Cluster Host in One Project
+		GetHostLogs Download Logs for One Cluster Host in One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -1128,14 +1128,14 @@ func (r GetHostLogsApiRequest) Execute() (*os.File, *http.Response, error) {
 }
 
 /*
-GetHostLogs Download Logs for One Multi-Cloud Cluster Host in One Project
+GetHostLogs Download Logs for One Cluster Host in One Project
 
-Returns a compressed (.gz) log file that contains a range of log messages for the specified host for the specified project. To use this resource, the requesting API Key must have the Project Owner or Project Data Access Read Write roles. This resource doesn't require the API Key to have an Access List. Deprecated versions: v2-{2023-01-01}
+Returns a compressed (.gz) log file that contains a range of log messages for the specified host for the specified project. MongoDB updates process and audit logs from the cluster backend infrastructure every five minutes and contain log data from the previous five minutes. If you poll the API for log files, we recommend polling every five minutes. For example, if the logs are updated at 4:00 UTC and then you poll the API, the API returns log data from the interval between 3:55 UTC and 4:00 UTC. This feature isn't available for `M0` free clusters, `M2`, `M5`, or serverless clusters. To use this resource, the requesting API Key must have the Project Owner or Project Data Access Read/Write roles. This resource doesn't require the API Key to have an Access List. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param hostName Fully qualified domain name or IP address of the MongoDB host that stores the log files that you want to download.
-	@param logName Human-readable label of the log file that you want to return. You can return audit logs only if you enable Database Auditing for the specified project.
+	@param hostName Human-readable label that identifies the host that stores the log files that you want to download.
+	@param logName Human-readable label that identifies the log file that you want to return. To return audit logs, enable *Database Auditing* for the specified project.
 	@return GetHostLogsApiRequest
 */
 func (a *MonitoringAndLogsApiService) GetHostLogs(ctx context.Context, groupId string, hostName string, logName string) GetHostLogsApiRequest {

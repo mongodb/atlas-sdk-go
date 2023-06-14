@@ -180,7 +180,7 @@ Name | Type | Description  | Notes
 
 ## CreateOneDataFederationQueryLimit
 
-> []DataFederationTenantQueryLimit CreateOneDataFederationQueryLimit(ctx, groupId, tenantName, limitName, dataFederationTenantQueryLimit DataFederationTenantQueryLimit).Execute()
+> DataFederationTenantQueryLimit CreateOneDataFederationQueryLimit(ctx, groupId, tenantName, limitName, dataFederationTenantQueryLimit DataFederationTenantQueryLimit).Execute()
 
 Configure One Query Limit for One Federated Database Instance
 
@@ -220,7 +220,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `CreateOneDataFederationQueryLimit`: []DataFederationTenantQueryLimit
+    // response from `CreateOneDataFederationQueryLimit`: DataFederationTenantQueryLimit
     fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.CreateOneDataFederationQueryLimit`: %v\n", resp)
 }
 ```
@@ -249,7 +249,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]DataFederationTenantQueryLimit**](DataFederationTenantQueryLimit.md)
+[**DataFederationTenantQueryLimit**](DataFederationTenantQueryLimit.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -908,7 +908,7 @@ Name | Type | Description  | Notes
 
 ## ReturnFederatedDatabaseQueryLimit
 
-> []DataFederationTenantQueryLimit ReturnFederatedDatabaseQueryLimit(ctx, groupId, tenantName, limitName).Execute()
+> DataFederationTenantQueryLimit ReturnFederatedDatabaseQueryLimit(ctx, groupId, tenantName, limitName).Execute()
 
 Return One Federated Database Instance Query Limit for One Project
 
@@ -947,7 +947,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `ReturnFederatedDatabaseQueryLimit`: []DataFederationTenantQueryLimit
+    // response from `ReturnFederatedDatabaseQueryLimit`: DataFederationTenantQueryLimit
     fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.ReturnFederatedDatabaseQueryLimit`: %v\n", resp)
 }
 ```
@@ -975,7 +975,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]DataFederationTenantQueryLimit**](DataFederationTenantQueryLimit.md)
+[**DataFederationTenantQueryLimit**](DataFederationTenantQueryLimit.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

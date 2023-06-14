@@ -247,7 +247,7 @@ type TeamsApi interface {
 	RemoveProjectTeamWithParams(ctx context.Context, args *RemoveProjectTeamApiParams) RemoveProjectTeamApiRequest
 
 	// Interface only available internally
-	removeProjectTeamExecute(r RemoveProjectTeamApiRequest) (map[string]interface{}, *http.Response, error)
+	removeProjectTeamExecute(r RemoveProjectTeamApiRequest) (*http.Response, error)
 
 	/*
 		RemoveTeamUser Remove One MongoDB Cloud User from One Team
@@ -1726,7 +1726,7 @@ func (a *TeamsApiService) RemoveProjectTeamWithParams(ctx context.Context, args 
 	}
 }
 
-func (r RemoveProjectTeamApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r RemoveProjectTeamApiRequest) Execute() (*http.Response, error) {
 	return r.ApiService.removeProjectTeamExecute(r)
 }
 
@@ -1750,19 +1750,16 @@ func (a *TeamsApiService) RemoveProjectTeam(ctx context.Context, groupId string,
 }
 
 // Execute executes the request
-//
-//	@return map[string]interface{}
-func (a *TeamsApiService) removeProjectTeamExecute(r RemoveProjectTeamApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *TeamsApiService) removeProjectTeamExecute(r RemoveProjectTeamApiRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodDelete
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsApiService.RemoveProjectTeam")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/teams/{teamId}"
@@ -1773,16 +1770,16 @@ func (a *TeamsApiService) removeProjectTeamExecute(r RemoveProjectTeamApiRequest
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
+		return nil, reportError("groupId must have at least 24 elements")
 	}
 	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
+		return nil, reportError("groupId must have less than 24 elements")
 	}
 	if strlen(r.teamId) < 24 {
-		return localVarReturnValue, nil, reportError("teamId must have at least 24 elements")
+		return nil, reportError("teamId must have at least 24 elements")
 	}
 	if strlen(r.teamId) > 24 {
-		return localVarReturnValue, nil, reportError("teamId must have less than 24 elements")
+		return nil, reportError("teamId must have less than 24 elements")
 	}
 
 	// to determine the Content-Type header
@@ -1804,19 +1801,19 @@ func (a *TeamsApiService) removeProjectTeamExecute(r RemoveProjectTeamApiRequest
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -1828,23 +1825,14 @@ func (a *TeamsApiService) removeProjectTeamExecute(r RemoveProjectTeamApiRequest
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
-			return localVarReturnValue, localVarHTTPResponse, newErr
+			return localVarHTTPResponse, newErr
 		}
 		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
 		newErr.model = v
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type RemoveTeamUserApiRequest struct {

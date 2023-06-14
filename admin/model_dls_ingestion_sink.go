@@ -184,9 +184,6 @@ func (o DLSIngestionSink) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PartitionFields) {
 		toSerialize["partitionFields"] = o.PartitionFields
 	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
 	return toSerialize, nil
 }
 

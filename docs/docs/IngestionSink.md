@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **MetadataProvider** | Pointer to **string** | Target cloud provider for this Data Lake Pipeline. | [optional] 
 **MetadataRegion** | Pointer to **string** | Target cloud provider region for this Data Lake Pipeline. | [optional] 
 **PartitionFields** | Pointer to [**[]PartitionField**](PartitionField.md) | Ordered fields used to physically organize data in the destination. | [optional] 
-**Type** | Pointer to **string** | Type of ingestion destination of this Data Lake Pipeline. | [optional] 
+**Type** | Pointer to **string** | Type of ingestion destination of this Data Lake Pipeline. | [optional] [readonly] 
 
 ## Methods
 

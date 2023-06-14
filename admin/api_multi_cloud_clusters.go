@@ -85,7 +85,7 @@ type MultiCloudClustersApi interface {
 	getClusterExecute(r GetClusterApiRequest) (*ClusterDescriptionV15, *http.Response, error)
 
 	/*
-		ListClusters Return All Multi-Cloud Clusters from One Project
+		ListClusters Return All Clusters in One Project
 
 		Returns the details for all clusters in the specific project to which you have access. Clusters contain a group of hosts that maintain the same data set. The response includes multi-cloud clusters. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List. This feature is not available for serverless clusters. Deprecated versions: v2-{2023-01-01}
 
@@ -95,7 +95,7 @@ type MultiCloudClustersApi interface {
 	*/
 	ListClusters(ctx context.Context, groupId string) ListClustersApiRequest
 	/*
-		ListClusters Return All Multi-Cloud Clusters from One Project
+		ListClusters Return All Clusters in One Project
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -138,7 +138,7 @@ type MultiCloudClustersApi interface {
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param clusterName Human-readable label that identifies the advanced cluster to modify.
+		@param clusterName Human-readable label that identifies the cluster.
 		@return UpdateClusterApiRequest
 	*/
 	UpdateCluster(ctx context.Context, groupId string, clusterName string, clusterDescriptionV15 *ClusterDescriptionV15) UpdateClusterApiRequest
@@ -632,7 +632,7 @@ func (r ListClustersApiRequest) Execute() (*PaginatedClusterDescriptionV15, *htt
 }
 
 /*
-ListClusters Return All Multi-Cloud Clusters from One Project
+ListClusters Return All Clusters in One Project
 
 Returns the details for all clusters in the specific project to which you have access. Clusters contain a group of hosts that maintain the same data set. The response includes multi-cloud clusters. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List. This feature is not available for serverless clusters. Deprecated versions: v2-{2023-01-01}
 
@@ -925,7 +925,7 @@ Updates the details for one cluster in the specified project. Clusters contain a
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param clusterName Human-readable label that identifies the advanced cluster to modify.
+	@param clusterName Human-readable label that identifies the cluster.
 	@return UpdateClusterApiRequest
 */
 func (a *MultiCloudClustersApiService) UpdateCluster(ctx context.Context, groupId string, clusterName string, clusterDescriptionV15 *ClusterDescriptionV15) UpdateClusterApiRequest {

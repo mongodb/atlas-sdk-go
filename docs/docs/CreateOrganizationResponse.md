@@ -5,7 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ApiKey** | Pointer to [**ApiUser**](ApiUser.md) |  | [optional] 
-**OrgOwnerId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the Atlas user that you want to assign the Organization Owner role. | [optional] [readonly] 
+**FederationSettingsId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the federation that you linked the newly created organization to. | [optional] [readonly] 
+**OrgOwnerId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the MongoDB Cloud user that you assigned the Organization Owner role in the new organization. | [optional] [readonly] 
 **Organization** | Pointer to [**Organization**](Organization.md) |  | [optional] 
 
 ## Methods
@@ -51,6 +52,31 @@ SetApiKey sets ApiKey field to given value.
 `func (o *CreateOrganizationResponse) HasApiKey() bool`
 
 HasApiKey returns a boolean if a field has been set.
+
+### GetFederationSettingsId
+
+`func (o *CreateOrganizationResponse) GetFederationSettingsId() string`
+
+GetFederationSettingsId returns the FederationSettingsId field if non-nil, zero value otherwise.
+
+### GetFederationSettingsIdOk
+
+`func (o *CreateOrganizationResponse) GetFederationSettingsIdOk() (*string, bool)`
+
+GetFederationSettingsIdOk returns a tuple with the FederationSettingsId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFederationSettingsId
+
+`func (o *CreateOrganizationResponse) SetFederationSettingsId(v string)`
+
+SetFederationSettingsId sets FederationSettingsId field to given value.
+
+### HasFederationSettingsId
+
+`func (o *CreateOrganizationResponse) HasFederationSettingsId() bool`
+
+HasFederationSettingsId returns a boolean if a field has been set.
 
 ### GetOrgOwnerId
 

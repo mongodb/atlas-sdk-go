@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## DownloadInvoiceCSV
 
-> DownloadInvoiceCSV(ctx, orgId, invoiceId).Execute()
+> string DownloadInvoiceCSV(ctx, orgId, invoiceId).Execute()
 
 Return One Organization Invoice as CSV
 
@@ -45,12 +45,14 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     invoiceId := "invoiceId_example" // string | 
 
-    r, err := sdk.InvoicesApi.DownloadInvoiceCSV(context.Background(), orgId, invoiceId).Execute()
+    resp, r, err := sdk.InvoicesApi.DownloadInvoiceCSV(context.Background(), orgId, invoiceId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `InvoicesApi.DownloadInvoiceCSV``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
+    // response from `DownloadInvoiceCSV`: string
+    fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.DownloadInvoiceCSV`: %v\n", resp)
 }
 ```
 
@@ -75,7 +77,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+**string**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -92,7 +94,7 @@ Name | Type | Description  | Notes
 
 ## GetInvoice
 
-> Invoice GetInvoice(ctx, orgId, invoiceId).Execute()
+> string GetInvoice(ctx, orgId, invoiceId).Execute()
 
 Return One Organization Invoice
 
@@ -130,7 +132,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetInvoice`: Invoice
+    // response from `GetInvoice`: string
     fmt.Fprintf(os.Stdout, "Response from `InvoicesApi.GetInvoice`: %v\n", resp)
 }
 ```
@@ -156,7 +158,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Invoice**](Invoice.md)
+**string**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -164,7 +166,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Accept**: application/vnd.atlas.2023-01-01+csv, application/vnd.atlas.2023-01-01+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

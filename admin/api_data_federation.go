@@ -101,7 +101,7 @@ type DataFederationApi interface {
 	CreateOneDataFederationQueryLimitWithParams(ctx context.Context, args *CreateOneDataFederationQueryLimitApiParams) CreateOneDataFederationQueryLimitApiRequest
 
 	// Interface only available internally
-	createOneDataFederationQueryLimitExecute(r CreateOneDataFederationQueryLimitApiRequest) ([]DataFederationTenantQueryLimit, *http.Response, error)
+	createOneDataFederationQueryLimitExecute(r CreateOneDataFederationQueryLimitApiRequest) (*DataFederationTenantQueryLimit, *http.Response, error)
 
 	/*
 		DeleteDataFederationPrivateEndpoint Remove One Federated Database Instance and Online Archive Private Endpoint from One Project
@@ -317,7 +317,7 @@ type DataFederationApi interface {
 	ReturnFederatedDatabaseQueryLimitWithParams(ctx context.Context, args *ReturnFederatedDatabaseQueryLimitApiParams) ReturnFederatedDatabaseQueryLimitApiRequest
 
 	// Interface only available internally
-	returnFederatedDatabaseQueryLimitExecute(r ReturnFederatedDatabaseQueryLimitApiRequest) ([]DataFederationTenantQueryLimit, *http.Response, error)
+	returnFederatedDatabaseQueryLimitExecute(r ReturnFederatedDatabaseQueryLimitApiRequest) (*DataFederationTenantQueryLimit, *http.Response, error)
 
 	/*
 		ReturnFederatedDatabaseQueryLimits Return All Query Limits for One Federated Database Instance
@@ -710,7 +710,7 @@ func (a *DataFederationApiService) CreateOneDataFederationQueryLimitWithParams(c
 	}
 }
 
-func (r CreateOneDataFederationQueryLimitApiRequest) Execute() ([]DataFederationTenantQueryLimit, *http.Response, error) {
+func (r CreateOneDataFederationQueryLimitApiRequest) Execute() (*DataFederationTenantQueryLimit, *http.Response, error) {
 	return r.ApiService.createOneDataFederationQueryLimitExecute(r)
 }
 
@@ -738,13 +738,13 @@ func (a *DataFederationApiService) CreateOneDataFederationQueryLimit(ctx context
 
 // Execute executes the request
 //
-//	@return []DataFederationTenantQueryLimit
-func (a *DataFederationApiService) createOneDataFederationQueryLimitExecute(r CreateOneDataFederationQueryLimitApiRequest) ([]DataFederationTenantQueryLimit, *http.Response, error) {
+//	@return DataFederationTenantQueryLimit
+func (a *DataFederationApiService) createOneDataFederationQueryLimitExecute(r CreateOneDataFederationQueryLimitApiRequest) (*DataFederationTenantQueryLimit, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []DataFederationTenantQueryLimit
+		localVarReturnValue *DataFederationTenantQueryLimit
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationApiService.CreateOneDataFederationQueryLimit")
@@ -2040,7 +2040,7 @@ func (a *DataFederationApiService) ReturnFederatedDatabaseQueryLimitWithParams(c
 	}
 }
 
-func (r ReturnFederatedDatabaseQueryLimitApiRequest) Execute() ([]DataFederationTenantQueryLimit, *http.Response, error) {
+func (r ReturnFederatedDatabaseQueryLimitApiRequest) Execute() (*DataFederationTenantQueryLimit, *http.Response, error) {
 	return r.ApiService.returnFederatedDatabaseQueryLimitExecute(r)
 }
 
@@ -2067,13 +2067,13 @@ func (a *DataFederationApiService) ReturnFederatedDatabaseQueryLimit(ctx context
 
 // Execute executes the request
 //
-//	@return []DataFederationTenantQueryLimit
-func (a *DataFederationApiService) returnFederatedDatabaseQueryLimitExecute(r ReturnFederatedDatabaseQueryLimitApiRequest) ([]DataFederationTenantQueryLimit, *http.Response, error) {
+//	@return DataFederationTenantQueryLimit
+func (a *DataFederationApiService) returnFederatedDatabaseQueryLimitExecute(r ReturnFederatedDatabaseQueryLimitApiRequest) (*DataFederationTenantQueryLimit, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []DataFederationTenantQueryLimit
+		localVarReturnValue *DataFederationTenantQueryLimit
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationApiService.ReturnFederatedDatabaseQueryLimit")

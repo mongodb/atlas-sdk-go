@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Key** | Pointer to **string** | Key applied to the tag. | [optional] 
-**Value** | Pointer to **string** | Value applied to the tag. | [optional] 
+**Key** | Pointer to **string** | Constant that defines the set of the tag. For example, &#x60;environment&#x60; in the &#x60;environment : production&#x60; tag. | [optional] 
+**Value** | Pointer to **string** | Variable that belongs to the set of the tag. For example, &#x60;production&#x60; in the &#x60;environment : production&#x60; tag. | [optional] 
 
 ## Methods
 

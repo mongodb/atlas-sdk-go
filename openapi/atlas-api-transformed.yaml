@@ -8,7 +8,13 @@ info:
     The Atlas Administration API uses HTTP Digest Authentication to authenticate requests. Provide a programmatic API public key and corresponding private key as the username and password when constructing the HTTP request. For example, to [return database access history](#tag/Access-Tracking/operation/listAccessLogsByClusterName) with [cURL](https://en.wikipedia.org/wiki/CURL), run the following command in the terminal:
 
 
-    `curl --user "{PUBLIC-KEY}:{PRIVATE-KEY}" --digest "https://cloud.mongodb.com/api/atlas/v2.0/groups/{groupId}/dbAccessHistory/clusters/{clusterName}"`
+    ```
+
+    curl --user "{PUBLIC-KEY}:{PRIVATE-KEY}" \
+      --digest \
+      --header "Accept: application/vnd.atlas.2023-02-01+json" \
+      GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/dbAccessHistory/clusters/{clusterName}?pretty=true"
+    ```
 
 
     To learn more, see [Get Started with the Atlas Administration API](https://www.mongodb.com/docs/atlas/configure-api-access/). For support, see [MongoDB Support](https://www.mongodb.com/support/get-started).
@@ -17,8 +23,8 @@ info:
     url: https://creativecommons.org/licenses/by-nc-sa/3.0/us/
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
-  version: 2.0~b0d2861b4b
-  x-xgen-sha: b0d2861b4bfc9f349f9e26e3ed2d70c43c950779
+  version: 2.0~1056ca6d98
+  x-xgen-sha: 1056ca6d981acf30dfc69b4c7a2a67a43a2939fe
 servers:
   - url: https://cloud.mongodb.com
 tags:
@@ -201,8 +207,6 @@ tags:
     name: Shared-Tier Snapshots
   - description: Returns, adds, edits, or removes teams.
     name: Teams
-  - description: Atlas test endpoints.
-    name: Test
   - description: >-
       Returns, adds, edits, and removes third-party service integration
       configurations. MongoDB Cloud sends alerts to each third-party service
@@ -306,35 +310,6 @@ paths:
       tags:
         - Clusters
       x-xgen-experimental: true
-  /api/atlas/v2/example/info:
-    get:
-      description: "Returns some text dummy data for test purposes. Deprecated
-        versions: v2-{2023-01-01}"
-      operationId: versionedExample
-      parameters:
-        - in: query
-          name: additionalInfo
-          schema:
-            type: boolean
-            default: false
-      responses:
-        "200":
-          content:
-            application/vnd.atlas.2023-02-01+json:
-              schema:
-                $ref: "#/components/schemas/ExampleResourceResponseView20230201"
-              x-xgen-version: 2023-02-01
-          description: OK
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "500":
-          $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
-      summary: Example resource info for versioning of the Atlas API
-      tags:
-        - Test
-      x-xgen-experimental: true
   "/api/atlas/v2/federationSettings/{federationSettingsId}":
     delete:
       description: "Deletes the federation settings instance and all associated data,
@@ -426,7 +401,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/noBody"
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
         "401":
@@ -1019,7 +994,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/noBody"
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
         "409":
@@ -1248,7 +1223,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/noBody"
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: This endpoint does not return a response body.
         "403":
           $ref: "#/components/responses/forbidden"
         "404":
@@ -1913,7 +1888,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: "#/components/schemas/CreateApiKey"
+              $ref: "#/components/schemas/CreateProjectApiKey"
         description: Organization API key to be created and assigned to the specified
           project. This request requires both body parameters.
         required: true
@@ -1962,7 +1937,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/noBody"
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
         "401":
@@ -2000,7 +1975,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: "#/components/schemas/CreateApiKey"
+              $ref: "#/components/schemas/CreateProjectApiKey"
         description: Organization API Key to be updated. This request requires a minimum
           of one of the two body parameters.
         required: true
@@ -2288,7 +2263,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/noBody"
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
         "401":
@@ -2628,7 +2603,7 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return All Multi-Cloud Clusters from One Project
+      summary: Return All Clusters in One Project
       tags:
         - Multi-Cloud Clusters
     post:
@@ -2909,11 +2884,11 @@ paths:
           schema:
             type: boolean
       responses:
-        "204":
+        "202":
           content:
             application/vnd.atlas.2023-02-01+json:
               x-xgen-version: 2023-02-01
-          description: Endpoint does not return a response body.
+          description: Accepted
         "400":
           $ref: "#/components/responses/badRequest"
         "401":
@@ -2958,6 +2933,10 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
       security:
@@ -2980,7 +2959,7 @@ paths:
       operationId: updateCluster
       parameters:
         - $ref: "#/components/parameters/groupId"
-        - description: Human-readable label that identifies the advanced cluster to modify.
+        - description: Human-readable label that identifies the cluster.
           in: path
           name: clusterName
           required: true
@@ -3270,7 +3249,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/noBody"
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
         "405":
@@ -3570,7 +3549,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/noBody"
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: This endpoint does not return a response body.
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -3700,7 +3679,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/noBody"
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
         "404":
@@ -4327,7 +4306,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/noBody"
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
         "404":
@@ -4462,6 +4441,9 @@ paths:
         requesting API Key must have the Project Read Only role. This resource
         doesn't require the API Key to have an Access List. Deprecated versions:
         v2-{2023-01-01}"
+      externalDocs:
+        description: Global Clusters
+        url: https://www.mongodb.com/docs/atlas/global-clusters/
       operationId: getManagedNamespace
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -4482,6 +4464,8 @@ paths:
                 $ref: "#/components/schemas/GeoSharding"
               x-xgen-version: 2023-02-01
           description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
       security:
@@ -4498,6 +4482,9 @@ paths:
         the closest geographical zone. To use this resource, the requesting API
         Key must have the Project Owner role. This resource doesn't require the
         API Key to have an Access List. Deprecated versions: v2-{2023-01-01}"
+      externalDocs:
+        description: Global Clusters
+        url: https://www.mongodb.com/docs/atlas/global-clusters/
       operationId: deleteAllCustomZoneMappings
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -4536,6 +4523,9 @@ paths:
         API Key must have the Project Owner role. This resource doesn't require
         the API Key to have an Access List. Deprecated versions:
         v2-{2023-01-01}"
+      externalDocs:
+        description: Global Clusters
+        url: https://www.mongodb.com/docs/atlas/global-clusters/
       operationId: createCustomZoneMapping
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -4565,6 +4555,8 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
       security:
@@ -4582,6 +4574,9 @@ paths:
         the requesting API Key must have the Project Data Access Admin role.
         This resource doesn't require the API Key to have an Access List.
         Deprecated versions: v2-{2023-01-01}"
+      externalDocs:
+        description: Global Clusters
+        url: https://www.mongodb.com/docs/atlas/global-clusters/
       operationId: deleteManagedNamespace
       parameters:
         - description: Human-readable label that identifies this advanced cluster.
@@ -4616,6 +4611,8 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
       security:
@@ -4631,6 +4628,9 @@ paths:
         requesting API Key must have the Project Data Access Admin role. This
         resource doesn't require the API Key to have an Access List. Deprecated
         versions: v2-{2023-01-01}"
+      externalDocs:
+        description: Global Clusters
+        url: https://www.mongodb.com/docs/atlas/global-clusters/
       operationId: createManagedNamespace
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -4660,6 +4660,8 @@ paths:
           description: OK
         "400":
           $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
         "405":
           $ref: "#/components/responses/methodNotAllowed"
         "500":
@@ -4703,11 +4705,11 @@ paths:
         description: Rolling index to create on the specified cluster.
         required: true
       responses:
-        "204":
+        "202":
           content:
             application/vnd.atlas.2023-01-01+json:
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: Accepted
         "400":
           $ref: "#/components/responses/badRequest"
         "404":
@@ -4932,7 +4934,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/noBody"
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: This endpoint does not return a response body.
         "401":
           $ref: "#/components/responses/unauthorized"
         "404":
@@ -5305,11 +5307,11 @@ paths:
             minLength: 1
             pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
       responses:
-        "204":
+        "200":
           content:
             application/vnd.atlas.2023-02-01+json:
               x-xgen-version: 2023-02-01
-          description: Endpoint does not return a response body.
+          description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
         "500":
@@ -5676,7 +5678,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/noBody"
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
         "401":
@@ -5845,28 +5847,39 @@ paths:
   "/api/atlas/v2/groups/{groupId}/clusters/{hostName}/logs/{logName}.gz":
     get:
       description: "Returns a compressed (.gz) log file that contains a range of log
-        messages for the specified host for the specified project. To use this
-        resource, the requesting API Key must have the Project Owner or Project
-        Data Access Read Write roles. This resource doesn't require the API Key
-        to have an Access List. Deprecated versions: v2-{2023-01-01}"
+        messages for the specified host for the specified project. MongoDB
+        updates process and audit logs from the cluster backend infrastructure
+        every five minutes and contain log data from the previous five minutes.
+        If you poll the API for log files, we recommend polling every five
+        minutes. For example, if the logs are updated at 4:00 UTC and then you
+        poll the API, the API returns log data from the interval between 3:55
+        UTC and 4:00 UTC. This feature isn't available for `M0` free clusters,
+        `M2`, `M5`, or serverless clusters. To use this resource, the requesting
+        API Key must have the Project Owner or Project Data Access Read/Write
+        roles. This resource doesn't require the API Key to have an Access List.
+        Deprecated versions: v2-{2023-01-01}"
       operationId: getHostLogs
       parameters:
         - $ref: "#/components/parameters/groupId"
-        - description: Fully qualified domain name or IP address of the MongoDB host that
-            stores the log files that you want to download.
+        - description: Human-readable label that identifies the host that stores the log
+            files that you want to download.
           in: path
           name: hostName
           required: true
           schema:
             type: string
-        - description: Human-readable label of the log file that you want to return. You
-            can return audit logs only if you enable Database Auditing for the
+            pattern: ^([0-9]{1,3}\.){3}[0-9]{1,3}|([0-9a-f]{1,4}\:){7}([0-9a-f]{1,4})|(([a-z0-9]+\.){1,10}[a-z]+)?$
+        - description: Human-readable label that identifies the log file that you want to
+            return. To return audit logs, enable *Database Auditing* for the
             specified project.
           in: path
           name: logName
           required: true
           schema:
             type: string
+            externalDocs:
+              description: Set up Database Auditing
+              url: https://docs.atlas.mongodb.com/database-auditing/
         - description: Date and time when the period specifies the inclusive ending point
             for the range of log messages to retrieve. This parameter expresses
             its value in the number of seconds that have elapsed since the UNIX
@@ -5912,7 +5925,7 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Download Logs for One Multi-Cloud Cluster Host in One Project
+      summary: Download Logs for One Cluster Host in One Project
       tags:
         - Monitoring and Logs
   "/api/atlas/v2/groups/{groupId}/containers":
@@ -6056,7 +6069,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/noBody"
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
         "401":
@@ -6451,7 +6464,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/noBody"
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: This endpoint does not return a response body.
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -6632,7 +6645,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/noBody"
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
         "500":
@@ -6684,9 +6697,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/DataFederationTenantQueryLimit"
+                $ref: "#/components/schemas/DataFederationTenantQueryLimit"
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -6747,9 +6758,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/DataFederationTenantQueryLimit"
+                $ref: "#/components/schemas/DataFederationTenantQueryLimit"
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -6966,8 +6975,8 @@ paths:
             database user authenticates. Database users must provide both a
             username and authentication database to log into MongoDB. If the
             user authenticates with AWS IAM, x.509, or LDAP, this value should
-            be `$external`. If the user authenticates with SCRAM-SHA, this value
-            should be `admin`.
+            be `$external`. If the user authenticates with SCRAM-SHA or OIDC,
+            this value should be `admin`.
           in: path
           name: databaseName
           required: true
@@ -6995,16 +7004,19 @@ paths:
 
             | LDAP | ldapAuthType | GROUP | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name |
 
-            | SCRAM-SHA | awsType, x509Type, ldapAuthType | NONE | Alphanumeric string |
+            | OIDC | oidcAuthType | IDP_GROUP | Atlas OIDC IdP Identifier (found in Federation Settings, or contact Support), followed by a '/', followed by the IdP group name |
+
+            | SCRAM-SHA | awsType, x509Type, ldapAuthType, oidcAuthType | NONE | Alphanumeric string |
           in: path
           name: username
           required: true
           schema:
             type: string
             example: "SCRAM-SHA: dylan or AWS IAM:
-              arn:aws:iam::123456789012:user/sales/enterprise/DylanBloggs
-              orx.509 or LDAP: CN=Dylan
-              Bloggs,OU=Enterprise,OU=Sales,DC=Example,DC=COM"
+              arn:aws:iam::123456789012:user/sales/enterprise/DylanBloggs or
+              x.509/LDAP: CN=Dylan
+              Bloggs,OU=Enterprise,OU=Sales,DC=Example,DC=COM or OIDC:
+              IdPIdentifier/IdPGroupName"
       responses:
         "204":
           content:
@@ -7012,7 +7024,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/noBody"
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: This endpoint does not return a response body.
         "401":
           $ref: "#/components/responses/unauthorized"
         "403":
@@ -7038,8 +7050,8 @@ paths:
             database user authenticates. Database users must provide both a
             username and authentication database to log into MongoDB. If the
             user authenticates with AWS IAM, x.509, or LDAP, this value should
-            be `$external`. If the user authenticates with SCRAM-SHA, this value
-            should be `admin`.
+            be `$external`. If the user authenticates with SCRAM-SHA or OIDC,
+            this value should be `admin`.
           in: path
           name: databaseName
           required: true
@@ -7067,16 +7079,19 @@ paths:
 
             | LDAP | ldapAuthType | GROUP | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name |
 
-            | SCRAM-SHA | awsType, x509Type, ldapAuthType | NONE | Alphanumeric string |
+            | OIDC | oidcAuthType | IDP_GROUP | Atlas OIDC IdP Identifier (found in Federation Settings, or contact Support), followed by a '/', followed by the IdP group name |
+
+            | SCRAM-SHA | awsType, x509Type, ldapAuthType, oidcAuthType | NONE | Alphanumeric string |
           in: path
           name: username
           required: true
           schema:
             type: string
             example: "SCRAM-SHA: dylan or AWS IAM:
-              arn:aws:iam::123456789012:user/sales/enterprise/DylanBloggs
-              orx.509 or LDAP: CN=Dylan
-              Bloggs,OU=Enterprise,OU=Sales,DC=Example,DC=COM"
+              arn:aws:iam::123456789012:user/sales/enterprise/DylanBloggs or
+              x.509/LDAP: CN=Dylan
+              Bloggs,OU=Enterprise,OU=Sales,DC=Example,DC=COM or OIDC:
+              IdPIdentifier/IdPGroupName"
       responses:
         "200":
           content:
@@ -7108,8 +7123,8 @@ paths:
             database user authenticates. Database users must provide both a
             username and authentication database to log into MongoDB. If the
             user authenticates with AWS IAM, x.509, or LDAP, this value should
-            be `$external`. If the user authenticates with SCRAM-SHA, this value
-            should be `admin`.
+            be `$external`. If the user authenticates with SCRAM-SHA or OIDC,
+            this value should be `admin`.
           in: path
           name: databaseName
           required: true
@@ -7137,16 +7152,19 @@ paths:
 
             | LDAP | ldapAuthType | GROUP | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name |
 
-            | SCRAM-SHA | awsType, x509Type, ldapAuthType | NONE | Alphanumeric string |
+            | OIDC | oidcAuthType | IDP_GROUP | Atlas OIDC IdP Identifier (found in Federation Settings, or contact Support), followed by a '/', followed by the IdP group name |
+
+            | SCRAM-SHA | awsType, x509Type, ldapAuthType, oidcAuthType | NONE | Alphanumeric string |
           in: path
           name: username
           required: true
           schema:
             type: string
             example: "SCRAM-SHA: dylan or AWS IAM:
-              arn:aws:iam::123456789012:user/sales/enterprise/DylanBloggs
-              orx.509 or LDAP: CN=Dylan
-              Bloggs,OU=Enterprise,OU=Sales,DC=Example,DC=COM"
+              arn:aws:iam::123456789012:user/sales/enterprise/DylanBloggs or
+              x.509/LDAP: CN=Dylan
+              Bloggs,OU=Enterprise,OU=Sales,DC=Example,DC=COM or OIDC:
+              IdPIdentifier/IdPGroupName"
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -7557,7 +7575,9 @@ paths:
           in: query
           name: eventType
           schema:
-            $ref: "#/components/schemas/EventTypeForNdsGroup"
+            type: array
+            items:
+              $ref: "#/components/schemas/EventTypeForNdsGroup"
         - description: Flag that indicates whether to include the raw document in the
             output. The raw document contains additional meta information about
             the event.
@@ -7898,7 +7918,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/noBody"
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
         "401":
@@ -8179,7 +8199,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/noBody"
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: This endpoint does not return a response body.
         "401":
           $ref: "#/components/responses/unauthorized"
         "500":
@@ -8286,7 +8306,9 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/Limit"
+                type: array
+                items:
+                  $ref: "#/components/schemas/Limit"
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -8354,7 +8376,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/noBody"
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
         "404":
@@ -8714,10 +8736,8 @@ paths:
         "204":
           content:
             application/vnd.atlas.2023-01-01+json:
-              schema:
-                $ref: "#/components/schemas/noBody"
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
         "404":
@@ -8784,13 +8804,13 @@ paths:
         description: Updates the maintenance window for the specified project.
         required: true
       responses:
-        "204":
+        "200":
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/noBody"
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: OK
         "400":
           $ref: "#/components/responses/badRequest"
         "404":
@@ -8812,11 +8832,11 @@ paths:
       parameters:
         - $ref: "#/components/parameters/groupId"
       responses:
-        "204":
+        "200":
           content:
             application/vnd.atlas.2023-01-01+json:
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: OK
         "400":
           $ref: "#/components/responses/badRequest"
         "404":
@@ -8847,11 +8867,11 @@ paths:
       parameters:
         - $ref: "#/components/parameters/groupId"
       responses:
-        "204":
+        "200":
           content:
             application/vnd.atlas.2023-01-01+json:
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: OK
         "400":
           $ref: "#/components/responses/badRequest"
         "404":
@@ -8884,7 +8904,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: This endpoint does not return a response body.
         "401":
           $ref: "#/components/responses/unauthorized"
         "403":
@@ -8917,7 +8937,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: This endpoint does not return a response body.
         "401":
           $ref: "#/components/responses/unauthorized"
         "403":
@@ -9219,7 +9239,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/noBody"
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: This endpoint does not return a response body.
         "401":
           $ref: "#/components/responses/unauthorized"
         "404":
@@ -9877,7 +9897,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/noBody"
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
         "404":
@@ -10060,7 +10080,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/noBody"
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
         "500":
@@ -10220,7 +10240,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/noBody"
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
         "500":
@@ -10476,7 +10496,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/noBody"
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: This endpoint does not return a response body.
         "401":
           $ref: "#/components/responses/unauthorized"
         "404":
@@ -11655,7 +11675,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/noBody"
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
         "404":
@@ -11922,10 +11942,8 @@ paths:
         "204":
           content:
             application/vnd.atlas.2023-01-01+json:
-              schema:
-                $ref: "#/components/schemas/noBody"
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
         "401":
@@ -12038,13 +12056,13 @@ paths:
         description: Updates the LDAP configuration for the specified project.
         required: true
       responses:
-        "200":
+        "202":
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/UserSecurity"
               x-xgen-version: 2023-01-01
-          description: OK
+          description: Accepted
         "400":
           $ref: "#/components/responses/badRequest"
         "404":
@@ -12068,13 +12086,13 @@ paths:
       parameters:
         - $ref: "#/components/parameters/groupId"
       responses:
-        "200":
+        "202":
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/UserSecurity"
               x-xgen-version: 2023-01-01
-          description: OK
+          description: Accepted
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -12095,11 +12113,13 @@ paths:
       parameters:
         - $ref: "#/components/parameters/groupId"
       responses:
-        "204":
+        "202":
           content:
             application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: "#/components/schemas/UserSecurity"
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: Accepted
         "404":
           $ref: "#/components/responses/notFound"
         "500":
@@ -12263,7 +12283,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
         "403":
@@ -12379,7 +12399,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/noBody"
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
         "401":
@@ -12516,7 +12536,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: "#/components/schemas/CreateApiKey"
+              $ref: "#/components/schemas/CreateOrganizationApiKey"
         description: Organization API Key to be created. This request requires both body
           parameters.
         required: true
@@ -12567,7 +12587,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/noBody"
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: This endpoint does not return a response body.
         "401":
           $ref: "#/components/responses/unauthorized"
         "500":
@@ -12642,7 +12662,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: "#/components/schemas/CreateApiKey"
+              $ref: "#/components/schemas/CreateOrganizationApiKey"
         description: Organization API key to be updated. This request requires a minimum
           of one of the two body parameters.
         required: true
@@ -12804,7 +12824,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/noBody"
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
         "401":
@@ -12897,7 +12917,9 @@ paths:
           in: query
           name: eventType
           schema:
-            $ref: "#/components/schemas/EventTypeForOrg"
+            type: array
+            items:
+              $ref: "#/components/schemas/EventTypeForOrg"
         - description: Flag that indicates whether to include the raw document in the
             output. The raw document contains additional meta information about
             the event.
@@ -13215,7 +13237,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/noBody"
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
         "401":
@@ -13409,6 +13431,10 @@ paths:
       responses:
         "200":
           content:
+            application/vnd.atlas.2023-01-01+csv:
+              schema:
+                type: string
+              x-xgen-version: 2023-01-01
             application/vnd.atlas.2023-01-01+json:
               schema:
                 $ref: "#/components/schemas/Invoice"
@@ -13451,6 +13477,8 @@ paths:
         "200":
           content:
             application/vnd.atlas.2023-01-01+csv:
+              schema:
+                type: string
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -13508,7 +13536,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/noBody"
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
         "404":
@@ -13771,7 +13799,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/noBody"
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
         "401":
@@ -14023,7 +14051,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               x-xgen-version: 2023-01-01
-          description: Endpoint does not return a response body.
+          description: This endpoint does not return a response body.
         "400":
           $ref: "#/components/responses/badRequest"
         "401":
@@ -14072,6 +14100,49 @@ paths:
       summary: Return All MongoDB Cloud Users in One Organization
       tags:
         - Organizations
+  "/api/atlas/v2/orgs/{orgId}/users/{userId}":
+    delete:
+      description: Removes one MongoDB Cloud user from the specified organization. To
+        use this resource, the requesting API Key must have the Organization
+        User Admin role. This resource doesn't require the API Key to have an
+        Access List.
+      operationId: removeOrganizationUser
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - description: Unique 24-hexadecimal digit string that identifies the user to be
+            deleted.
+          in: path
+          name: userId
+          required: true
+          schema:
+            type: string
+            maxLength: 24
+            minLength: 24
+            pattern: ^([a-f0-9]{24})$
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: "#/components/schemas/noBody"
+              x-xgen-version: 2023-01-01
+          description: This endpoint does not return a response body.
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Remove One MongoDB Cloud User from One Organization
+      tags:
+        - Organizations
+      x-xgen-experimental: true
   /api/atlas/v2/users:
     post:
       description: >-
@@ -14956,13 +15027,9 @@ components:
         - groupId
         - hostnameSchemaType
     EventTypeForNdsGroup:
-      type: array
-      items:
-        type: string
+      type: string
     EventTypeForOrg:
-      type: array
-      items:
-        type: string
+      type: string
     EventViewForNdsGroup:
       type: object
       x-xgen-go-transform: merge-oneOf
@@ -15359,34 +15426,6 @@ components:
             resource returns this parameter when `"eventTypeName" : "USER"`.'
           example: test.user@mongodb.com
           readOnly: true
-    ExampleResourceResponseView20230201:
-      type: object
-      properties:
-        additionalInfo:
-          type: string
-          description: Dummy additional field added to the response.
-        data:
-          type: array
-          description: Array that contains the dummy metadata.
-          items:
-            type: string
-            description: Dummy data added as response.
-        description:
-          type: string
-          description: Dummy description added as response.
-        links:
-          type: array
-          description: List of one or more Uniform Resource Locators (URLs) that point to
-            API sub-resources, related API resources, or both. RFC 5988 outlines
-            these relationships.
-          externalDocs:
-            description: Web Linking Specification (RFC 5988)
-            url: https://datatracker.ietf.org/doc/html/rfc5988
-          items:
-            $ref: "#/components/schemas/Link"
-          readOnly: true
-      required:
-        - description
     IndexOptions:
       type: object
       description: One or more settings that determine how the MongoDB Cloud creates
@@ -15676,6 +15715,12 @@ components:
 
             PagerDuty, VictorOps, and OpsGenie notifications don't return this element. Configure and manage the notification interval within each of those services.
           minimum: 5
+        notifierId:
+          type: string
+          description: The notifierId is a system-generated unique identifier assigned to
+            each notification method. This is needed when updating third-party
+            notifications without requiring explicit authentication credentials.
+          example: 6462742adc47d365036da07c
         typeName:
           type: string
           description: Human-readable label that displays the alert notification type.
@@ -19269,7 +19314,7 @@ components:
             represents.
           readOnly: true
       readOnly: true
-    CreateApiKey:
+    CreateOrganizationApiKey:
       type: object
       properties:
         desc:
@@ -19282,7 +19327,23 @@ components:
           type: array
           description: List of roles to grant this API key. If you provide this list,
             provide a minimum of one role and ensure each role applies to this
-            organization or project.
+            organization.
+          items:
+            type: string
+    CreateProjectApiKey:
+      type: object
+      properties:
+        desc:
+          type: string
+          description: Purpose or explanation provided when someone created this project
+            API key.
+          maxLength: 250
+          minLength: 1
+        roles:
+          type: array
+          description: List of roles to grant this API key. If you provide this list,
+            provide a minimum of one role and ensure each role applies to this
+            project.
           items:
             type: string
     Database:
@@ -23239,8 +23300,8 @@ components:
           readOnly: true
         tags:
           type: array
-          description: Collection of key-value pairs between 1 to 255 characters in length
-            that tag and categorize the cluster.
+          description: List that contains key-value pairs between 1 to 255 characters in
+            length for tagging and categorizing the cluster.
           items:
             $ref: "#/components/schemas/Tag"
         terminationProtectionEnabled:
@@ -23545,7 +23606,18 @@ components:
       type: object
       properties:
         apiKey:
-          $ref: "#/components/schemas/CreateApiKey"
+          $ref: "#/components/schemas/CreateOrganizationApiKey"
+        federationSettingsId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the federation
+            to link the newly created organization to. If specified, the
+            proposed Organization Owner of the new organization must have the
+            Organization Owner role in an organization associated with the
+            federation.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
         name:
           type: string
           description: Human-readable label that identifies the organization.
@@ -23554,10 +23626,13 @@ components:
           pattern: ^[\p{L}\p{N}\-_.(),:&@+']{1,64}$
         orgOwnerId:
           type: string
-          description: Unique 24-hexadecimal digit string that identifies the Atlas user
-            that you want to assign the Organization Owner role. This user must
-            be a member of the same organization as the calling API key. This is
-            only required when authenticating with Programmatic API Keys.
+          description: Unique 24-hexadecimal digit string that identifies the MongoDB
+            Cloud user that you want to assign the Organization Owner role. This
+            user must be a member of the same organization as the calling API
+            key. If you provide `federationSettingsId`,  this user must instead
+            have the Organization Owner role on an organization in the specified
+            federation. This parameter is required only when you authenticate
+            with Programmatic API Keys.
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
@@ -23569,10 +23644,20 @@ components:
       properties:
         apiKey:
           $ref: "#/components/schemas/ApiUser"
+        federationSettingsId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the federation
+            that you linked the newly created organization to.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
         orgOwnerId:
           type: string
-          description: Unique 24-hexadecimal digit string that identifies the Atlas user
-            that you want to assign the Organization Owner role.
+          description: Unique 24-hexadecimal digit string that identifies the MongoDB
+            Cloud user that you assigned the Organization Owner role in the new
+            organization.
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
@@ -23691,6 +23776,7 @@ components:
         type:
           type: string
           description: Type of ingestion destination of this Data Lake Pipeline.
+          readOnly: true
       required: []
     DataFederationQueryLimit:
       type: object
@@ -24379,6 +24465,13 @@ components:
           items:
             $ref: "#/components/schemas/Link"
           readOnly: true
+        oidcAuthType:
+          type: string
+          default: NONE
+          description: Human-readable label that indicates whether the new database user
+            authenticates with OIDC federated authentication. To create a
+            federated authentication user, specify the value of IDP_GROUP for
+            this field.
         password:
           type: string
           description: Alphanumeric string that authenticates this database user against
@@ -24428,7 +24521,9 @@ components:
 
             | LDAP | ldapAuthType | GROUP | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name |
 
-            | SCRAM-SHA | awsType, x509Type, ldapAuthType | NONE | Alphanumeric string |
+            | OIDC | oidcAuthType | IDP_GROUP | Atlas OIDC IdP Identifier (found in Federation Settings, or contact Support), followed by a '/', followed by the IdP group name |
+
+            | SCRAM-SHA | awsType, x509Type, ldapAuthType, oidcAuthType | NONE | Alphanumeric string |
           maxLength: 1024
         x509Type:
           type: string
@@ -24716,9 +24811,6 @@ components:
             snapshot.
           items:
             type: string
-            description: List that identifies the regions to which MongoDB Cloud copies the
-              snapshot.
-            readOnly: true
           readOnly: true
         createdAt:
           type: string
@@ -24945,9 +25037,6 @@ components:
         - targetGroupId
     DiskBackupShardedClusterSnapshotMember:
       type: object
-      description: 'List that includes the snapshots and the cloud provider that
-        stores the snapshots. The resource returns this parameter when `"type" :
-        "SHARDED_CLUSTER"`.'
       properties:
         cloudProvider:
           type: string
@@ -24968,7 +25057,6 @@ components:
           description: Human-readable label that identifies the shard or config host from
             which MongoDB Cloud took this snapshot.
           readOnly: true
-      readOnly: true
       required:
         - cloudProvider
         - id
@@ -26405,7 +26493,6 @@ components:
           type: object
           additionalProperties:
             $ref: "#/components/schemas/RegionSpec"
-          deprecated: true
           description: Physical location where MongoDB Cloud provisions cluster nodes.
           title: Region Configuration
         replicationSpecs:
@@ -26440,8 +26527,8 @@ components:
           readOnly: true
         tags:
           type: array
-          description: Collection of key-value pairs between 1 to 255 characters in length
-            that tag and categorize the cluster.
+          description: List that contains key-value pairs between 1 to 255 characters in
+            length for tagging and categorizing the cluster.
           items:
             $ref: "#/components/schemas/Tag"
         terminationProtectionEnabled:
@@ -27738,6 +27825,12 @@ components:
           description: Human-readable label that indicates the current operating condition
             of the serverless instance.
           readOnly: true
+        tags:
+          type: array
+          description: List that contains key-value pairs between 1 to 255 characters in
+            length for tagging and categorizing the serverless instance.
+          items:
+            $ref: "#/components/schemas/Tag"
         terminationProtectionEnabled:
           type: boolean
           default: false
@@ -27756,6 +27849,12 @@ components:
       properties:
         serverlessBackupOptions:
           $ref: "#/components/schemas/ServerlessBackupOptions"
+        tags:
+          type: array
+          description: List that contains key-value pairs between 1 to 255 characters in
+            length for tagging and categorizing the serverless instance.
+          items:
+            $ref: "#/components/schemas/Tag"
         terminationProtectionEnabled:
           type: boolean
           default: false
@@ -27827,6 +27926,8 @@ components:
           readOnly: true
         tags:
           type: array
+          description: List that contains key-value pairs between 1 to 255 characters in
+            length for tagging and categorizing the serverless instance.
           items:
             $ref: "#/components/schemas/Tag"
         terminationProtectionEnabled:
@@ -28051,17 +28152,20 @@ components:
         - weeklySnapshotRetentionWeeks
     Tag:
       type: object
-      description: A key-value pair that tags and categorizes a MongoDB Cloud org,
-        project, or cluster
+      description: "Key-value pair that tags and categorizes a MongoDB Cloud
+        organization, project, or cluster. For example, `environment :
+        production`."
       properties:
         key:
           type: string
-          description: Key applied to the tag.
+          description: "Constant that defines the set of the tag. For example,
+            `environment` in the `environment : production` tag."
           maxLength: 255
           minLength: 1
         value:
           type: string
-          description: Value applied to the tag.
+          description: "Variable that belongs to the set of the tag. For example,
+            `production` in the `environment : production` tag."
           maxLength: 255
           minLength: 1
       title: Resource Tag

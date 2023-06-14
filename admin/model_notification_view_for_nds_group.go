@@ -19,6 +19,8 @@ type NotificationViewForNdsGroup struct {
 	DelayMin *int `json:"delayMin,omitempty"`
 	// Number of minutes to wait between successive notifications. MongoDB Cloud sends notifications until someone acknowledges the unacknowledged alert.  PagerDuty, VictorOps, and OpsGenie notifications don't return this element. Configure and manage the notification interval within each of those services.
 	IntervalMin *int `json:"intervalMin,omitempty"`
+	// The notifierId is a system-generated unique identifier assigned to each notification method. This is needed when updating third-party notifications without requiring explicit authentication credentials.
+	NotifierId *string `json:"notifierId,omitempty"`
 	// Human-readable label that displays the alert notification type.
 	TypeName *string `json:"typeName,omitempty"`
 	// Email address to which MongoDB Cloud sends alert notifications. The resource requires this parameter when `\"notifications.[n].typeName\" : \"EMAIL\"`. You don’t need to set this value to send emails to individual or groups of MongoDB Cloud users including:  - specific MongoDB Cloud users (`\"notifications.[n].typeName\" : \"USER\"`) - MongoDB Cloud users with specific project roles (`\"notifications.[n].typeName\" : \"GROUP\"`) - MongoDB Cloud users with specific organization roles (`\"notifications.[n].typeName\" : \"ORG\"`) - MongoDB Cloud teams (`\"notifications.[n].typeName\" : \"TEAM\"`)  To send emails to one MongoDB Cloud user or grouping of users, set the `notifications.[n].emailEnabled` parameter.
@@ -220,6 +222,38 @@ func (o *NotificationViewForNdsGroup) HasIntervalMin() bool {
 // SetIntervalMin gets a reference to the given int and assigns it to the IntervalMin field.
 func (o *NotificationViewForNdsGroup) SetIntervalMin(v int) {
 	o.IntervalMin = &v
+}
+
+// GetNotifierId returns the NotifierId field value if set, zero value otherwise.
+func (o *NotificationViewForNdsGroup) GetNotifierId() string {
+	if o == nil || IsNil(o.NotifierId) {
+		var ret string
+		return ret
+	}
+	return *o.NotifierId
+}
+
+// GetNotifierIdOk returns a tuple with the NotifierId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NotificationViewForNdsGroup) GetNotifierIdOk() (*string, bool) {
+	if o == nil || IsNil(o.NotifierId) {
+		return nil, false
+	}
+	return o.NotifierId, true
+}
+
+// HasNotifierId returns a boolean if a field has been set.
+func (o *NotificationViewForNdsGroup) HasNotifierId() bool {
+	if o != nil && !IsNil(o.NotifierId) {
+		return true
+	}
+
+	return false
+}
+
+// SetNotifierId gets a reference to the given string and assigns it to the NotifierId field.
+func (o *NotificationViewForNdsGroup) SetNotifierId(v string) {
+	o.NotifierId = &v
 }
 
 // GetTypeName returns the TypeName field value if set, zero value otherwise.
@@ -946,6 +980,9 @@ func (o NotificationViewForNdsGroup) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IntervalMin) {
 		toSerialize["intervalMin"] = o.IntervalMin
+	}
+	if !IsNil(o.NotifierId) {
+		toSerialize["notifierId"] = o.NotifierId
 	}
 	if !IsNil(o.TypeName) {
 		toSerialize["typeName"] = o.TypeName
