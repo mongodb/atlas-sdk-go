@@ -107,7 +107,7 @@ module.exports = function runTransformations(openapi) {
 };
 
 function workaroundNestedTransformations(openapi) {
-  var parentObject;
+  let parentObject;
   try {
     parentObject = getObjectFromYamlPath(
       ".components.schemas.RegionConfig",
