@@ -88,6 +88,7 @@ module.exports = function runTransformations(openapi) {
 
   // Required for RegionConfig
   workaroundNestedTransformations(openapi);
+  workaroundReadOnly(openapi);
 
   let hasSchemaChanges = true;
   // Remove referencing objects that become unused
@@ -98,6 +99,12 @@ module.exports = function runTransformations(openapi) {
 
   return openapi;
 };
+
+// Schema contains both read and write only.
+function workaroundReadOnly(openapi) {
+  delete openapi.components?.schemas?.StreamsTenant?.properties?.connections
+    ?.readOnly;
+}
 
 function workaroundNestedTransformations(openapi) {
   let parentObject;
