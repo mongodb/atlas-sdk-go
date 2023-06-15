@@ -17,7 +17,7 @@ func ExampleNewClient() {
 		admin.UseDebug(false))
 
 	if err != nil {
-		panic(err)
+		fmt.Println(err)
 	}
 
 	serverURL := sdk.GetConfig().Servers[0].URL
