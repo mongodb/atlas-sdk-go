@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CustomerX509** | Pointer to [**CustomerX509**](CustomerX509.md) |  | [optional] 
-**Ldap** | Pointer to [**NDSLDAP**](NDSLDAP.md) |  | [optional] 
+**CustomerX509** | Pointer to [**DBUserTLSX509Settings**](DBUserTLSX509Settings.md) |  | [optional] 
+**Ldap** | Pointer to [**LDAPSecuritySettings**](LDAPSecuritySettings.md) |  | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 
 ## Methods
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCustomerX509
 
-`func (o *UserSecurity) GetCustomerX509() CustomerX509`
+`func (o *UserSecurity) GetCustomerX509() DBUserTLSX509Settings`
 
 GetCustomerX509 returns the CustomerX509 field if non-nil, zero value otherwise.
 
 ### GetCustomerX509Ok
 
-`func (o *UserSecurity) GetCustomerX509Ok() (*CustomerX509, bool)`
+`func (o *UserSecurity) GetCustomerX509Ok() (*DBUserTLSX509Settings, bool)`
 
 GetCustomerX509Ok returns a tuple with the CustomerX509 field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCustomerX509
 
-`func (o *UserSecurity) SetCustomerX509(v CustomerX509)`
+`func (o *UserSecurity) SetCustomerX509(v DBUserTLSX509Settings)`
 
 SetCustomerX509 sets CustomerX509 field to given value.
 
@@ -54,20 +54,20 @@ HasCustomerX509 returns a boolean if a field has been set.
 
 ### GetLdap
 
-`func (o *UserSecurity) GetLdap() NDSLDAP`
+`func (o *UserSecurity) GetLdap() LDAPSecuritySettings`
 
 GetLdap returns the Ldap field if non-nil, zero value otherwise.
 
 ### GetLdapOk
 
-`func (o *UserSecurity) GetLdapOk() (*NDSLDAP, bool)`
+`func (o *UserSecurity) GetLdapOk() (*LDAPSecuritySettings, bool)`
 
 GetLdapOk returns a tuple with the Ldap field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLdap
 
-`func (o *UserSecurity) SetLdap(v NDSLDAP)`
+`func (o *UserSecurity) SetLdap(v LDAPSecuritySettings)`
 
 SetLdap sets Ldap field to given value.
 

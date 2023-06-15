@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AwsKms** | Pointer to [**AWSKMS**](AWSKMS.md) |  | [optional] 
+**AwsKms** | Pointer to [**AWSKMSConfiguration**](AWSKMSConfiguration.md) |  | [optional] 
 **AzureKeyVault** | Pointer to [**AzureKeyVault**](AzureKeyVault.md) |  | [optional] 
 **GoogleCloudKms** | Pointer to [**GoogleCloudKMS**](GoogleCloudKMS.md) |  | [optional] 
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAwsKms
 
-`func (o *EncryptionAtRest) GetAwsKms() AWSKMS`
+`func (o *EncryptionAtRest) GetAwsKms() AWSKMSConfiguration`
 
 GetAwsKms returns the AwsKms field if non-nil, zero value otherwise.
 
 ### GetAwsKmsOk
 
-`func (o *EncryptionAtRest) GetAwsKmsOk() (*AWSKMS, bool)`
+`func (o *EncryptionAtRest) GetAwsKmsOk() (*AWSKMSConfiguration, bool)`
 
 GetAwsKmsOk returns a tuple with the AwsKms field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAwsKms
 
-`func (o *EncryptionAtRest) SetAwsKms(v AWSKMS)`
+`func (o *EncryptionAtRest) SetAwsKms(v AWSKMSConfiguration)`
 
 SetAwsKms sets AwsKms field to given value.
 

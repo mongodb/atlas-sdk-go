@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CustomData** | Pointer to [**[]Label**](Label.md) | Collection of key-value pairs that represent custom data to add to the metadata file that MongoDB Cloud uploads to the bucket when the export job finishes. | [optional] 
+**CustomData** | Pointer to [**[]BackupLabel**](BackupLabel.md) | Collection of key-value pairs that represent custom data to add to the metadata file that MongoDB Cloud uploads to the bucket when the export job finishes. | [optional] 
 **ExportBucketId** | **string** | Unique 24-hexadecimal character string that identifies the AWS bucket to which MongoDB Cloud exports the Cloud Backup snapshot. | 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **SnapshotId** | **string** | Unique 24-hexadecimal character string that identifies the Cloud Backup snasphot to export. | 
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetCustomData
 
-`func (o *DiskBackupExportJobRequest) GetCustomData() []Label`
+`func (o *DiskBackupExportJobRequest) GetCustomData() []BackupLabel`
 
 GetCustomData returns the CustomData field if non-nil, zero value otherwise.
 
 ### GetCustomDataOk
 
-`func (o *DiskBackupExportJobRequest) GetCustomDataOk() (*[]Label, bool)`
+`func (o *DiskBackupExportJobRequest) GetCustomDataOk() (*[]BackupLabel, bool)`
 
 GetCustomDataOk returns a tuple with the CustomData field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCustomData
 
-`func (o *DiskBackupExportJobRequest) SetCustomData(v []Label)`
+`func (o *DiskBackupExportJobRequest) SetCustomData(v []BackupLabel)`
 
 SetCustomData sets CustomData field to given value.
 

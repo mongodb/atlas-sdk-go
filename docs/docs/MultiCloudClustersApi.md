@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## CreateCluster
 
-> ClusterDescriptionV15 CreateCluster(ctx, groupId, clusterDescriptionV15 ClusterDescriptionV15).Execute()
+> AdvancedClusterDescription CreateCluster(ctx, groupId, advancedClusterDescription AdvancedClusterDescription).Execute()
 
 Create One Multi-Cloud Cluster from One Project
 
@@ -40,15 +40,15 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    clusterDescriptionV15 := *openapiclient.NewClusterDescriptionV15() // ClusterDescriptionV15 | 
+    advancedClusterDescription := *openapiclient.NewAdvancedClusterDescription() // AdvancedClusterDescription | 
 
-    resp, r, err := sdk.MultiCloudClustersApi.CreateCluster(context.Background(), groupId, &clusterDescriptionV15).Execute()
+    resp, r, err := sdk.MultiCloudClustersApi.CreateCluster(context.Background(), groupId, &advancedClusterDescription).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MultiCloudClustersApi.CreateCluster``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `CreateCluster`: ClusterDescriptionV15
+    // response from `CreateCluster`: AdvancedClusterDescription
     fmt.Fprintf(os.Stdout, "Response from `MultiCloudClustersApi.CreateCluster`: %v\n", resp)
 }
 ```
@@ -69,11 +69,11 @@ Other parameters are passed through a pointer to a apiCreateClusterRequest struc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **clusterDescriptionV15** | [**ClusterDescriptionV15**](ClusterDescriptionV15.md) | Cluster to create in the specific project. | 
+ **advancedClusterDescription** | [**AdvancedClusterDescription**](AdvancedClusterDescription.md) | Cluster to create in the specific project. | 
 
 ### Return type
 
-[**ClusterDescriptionV15**](ClusterDescriptionV15.md)
+[**AdvancedClusterDescription**](AdvancedClusterDescription.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -166,7 +166,7 @@ Name | Type | Description  | Notes
 
 ## GetCluster
 
-> ClusterDescriptionV15 GetCluster(ctx, groupId, clusterName).Execute()
+> AdvancedClusterDescription GetCluster(ctx, groupId, clusterName).Execute()
 
 Return One Multi-Cloud Cluster from One Project
 
@@ -199,7 +199,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetCluster`: ClusterDescriptionV15
+    // response from `GetCluster`: AdvancedClusterDescription
     fmt.Fprintf(os.Stdout, "Response from `MultiCloudClustersApi.GetCluster`: %v\n", resp)
 }
 ```
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ClusterDescriptionV15**](ClusterDescriptionV15.md)
+[**AdvancedClusterDescription**](AdvancedClusterDescription.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -242,7 +242,7 @@ Name | Type | Description  | Notes
 
 ## ListClusters
 
-> PaginatedClusterDescriptionV15 ListClusters(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+> PaginatedAdvancedClusterDescription ListClusters(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Return All Clusters in One Project
 
@@ -277,7 +277,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `ListClusters`: PaginatedClusterDescriptionV15
+    // response from `ListClusters`: PaginatedAdvancedClusterDescription
     fmt.Fprintf(os.Stdout, "Response from `MultiCloudClustersApi.ListClusters`: %v\n", resp)
 }
 ```
@@ -304,7 +304,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PaginatedClusterDescriptionV15**](PaginatedClusterDescriptionV15.md)
+[**PaginatedAdvancedClusterDescription**](PaginatedAdvancedClusterDescription.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -395,7 +395,7 @@ Name | Type | Description  | Notes
 
 ## UpdateCluster
 
-> ClusterDescriptionV15 UpdateCluster(ctx, groupId, clusterName, clusterDescriptionV15 ClusterDescriptionV15).Execute()
+> AdvancedClusterDescription UpdateCluster(ctx, groupId, clusterName, advancedClusterDescription AdvancedClusterDescription).Execute()
 
 Modify One Multi-Cloud Cluster from One Project
 
@@ -421,15 +421,15 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    clusterDescriptionV15 := *openapiclient.NewClusterDescriptionV15() // ClusterDescriptionV15 | 
+    advancedClusterDescription := *openapiclient.NewAdvancedClusterDescription() // AdvancedClusterDescription | 
 
-    resp, r, err := sdk.MultiCloudClustersApi.UpdateCluster(context.Background(), groupId, clusterName, &clusterDescriptionV15).Execute()
+    resp, r, err := sdk.MultiCloudClustersApi.UpdateCluster(context.Background(), groupId, clusterName, &advancedClusterDescription).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MultiCloudClustersApi.UpdateCluster``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `UpdateCluster`: ClusterDescriptionV15
+    // response from `UpdateCluster`: AdvancedClusterDescription
     fmt.Fprintf(os.Stdout, "Response from `MultiCloudClustersApi.UpdateCluster`: %v\n", resp)
 }
 ```
@@ -452,11 +452,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **clusterDescriptionV15** | [**ClusterDescriptionV15**](ClusterDescriptionV15.md) | Cluster to update in the specified project. | 
+ **advancedClusterDescription** | [**AdvancedClusterDescription**](AdvancedClusterDescription.md) | Cluster to update in the specified project. | 
 
 ### Return type
 
-[**ClusterDescriptionV15**](ClusterDescriptionV15.md)
+[**AdvancedClusterDescription**](AdvancedClusterDescription.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Components** | Pointer to [**[]DiskBackupBaseRestoreMember**](DiskBackupBaseRestoreMember.md) | Information on the export job for each replica set in the sharded cluster. | [optional] [readonly] 
 **CreatedAt** | Pointer to **time.Time** | Date and time when someone created this export job. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC. | [optional] [readonly] 
-**CustomData** | Pointer to [**[]Label**](Label.md) | Collection of key-value pairs that represent custom data for the metadata file that MongoDB Cloud uploads to the bucket when the export job finishes. | [optional] 
+**CustomData** | Pointer to [**[]BackupLabel**](BackupLabel.md) | Collection of key-value pairs that represent custom data for the metadata file that MongoDB Cloud uploads to the bucket when the export job finishes. | [optional] 
 **DeliveryUrl** | Pointer to **[]string** | One or more Uniform Resource Locators (URLs) that point to the compressed snapshot files for manual download. MongoDB Cloud returns this parameter when &#x60;\&quot;deliveryType\&quot; : \&quot;download\&quot;&#x60;. | [optional] [readonly] 
 **ExportBucketId** | **string** | Unique 24-hexadecimal character string that identifies the AWS bucket to which MongoDB Cloud exports the Cloud Backup snapshot. | [readonly] 
 **ExportStatus** | Pointer to [**ExportStatus**](ExportStatus.md) |  | [optional] 
@@ -88,20 +88,20 @@ HasCreatedAt returns a boolean if a field has been set.
 
 ### GetCustomData
 
-`func (o *DiskBackupExportJob) GetCustomData() []Label`
+`func (o *DiskBackupExportJob) GetCustomData() []BackupLabel`
 
 GetCustomData returns the CustomData field if non-nil, zero value otherwise.
 
 ### GetCustomDataOk
 
-`func (o *DiskBackupExportJob) GetCustomDataOk() (*[]Label, bool)`
+`func (o *DiskBackupExportJob) GetCustomDataOk() (*[]BackupLabel, bool)`
 
 GetCustomDataOk returns a tuple with the CustomData field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCustomData
 
-`func (o *DiskBackupExportJob) SetCustomData(v []Label)`
+`func (o *DiskBackupExportJob) SetCustomData(v []BackupLabel)`
 
 SetCustomData sets CustomData field to given value.
 

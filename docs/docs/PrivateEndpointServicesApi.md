@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 ## CreatePrivateEndpoint
 
-> Endpoint CreatePrivateEndpoint(ctx, groupId, cloudProvider, endpointServiceId, createEndpointRequest CreateEndpointRequest).Execute()
+> PrivateLinkEndpoint CreatePrivateEndpoint(ctx, groupId, cloudProvider, endpointServiceId, createEndpointRequest CreateEndpointRequest).Execute()
 
 Create One Private Endpoint for One Provider
 
@@ -58,7 +58,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `CreatePrivateEndpoint`: Endpoint
+    // response from `CreatePrivateEndpoint`: PrivateLinkEndpoint
     fmt.Fprintf(os.Stdout, "Response from `PrivateEndpointServicesApi.CreatePrivateEndpoint`: %v\n", resp)
 }
 ```
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Endpoint**](Endpoint.md)
+[**PrivateLinkEndpoint**](PrivateLinkEndpoint.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -104,7 +104,7 @@ Name | Type | Description  | Notes
 
 ## CreatePrivateEndpointService
 
-> EndpointService CreatePrivateEndpointService(ctx, groupId, createEndpointServiceRequest CreateEndpointServiceRequest).Execute()
+> EndpointService CreatePrivateEndpointService(ctx, groupId, cloudProviderEndpointServiceRequest CloudProviderEndpointServiceRequest).Execute()
 
 Create One Private Endpoint Service for One Provider
 
@@ -129,9 +129,9 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    createEndpointServiceRequest := *openapiclient.NewCreateEndpointServiceRequest("ProviderName_example", "Region_example") // CreateEndpointServiceRequest | 
+    cloudProviderEndpointServiceRequest := *openapiclient.NewCloudProviderEndpointServiceRequest("ProviderName_example", "Region_example") // CloudProviderEndpointServiceRequest | 
 
-    resp, r, err := sdk.PrivateEndpointServicesApi.CreatePrivateEndpointService(context.Background(), groupId, &createEndpointServiceRequest).Execute()
+    resp, r, err := sdk.PrivateEndpointServicesApi.CreatePrivateEndpointService(context.Background(), groupId, &cloudProviderEndpointServiceRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesApi.CreatePrivateEndpointService``: %v\n", err)
         apiError := admin.AsError(err)
@@ -158,7 +158,7 @@ Other parameters are passed through a pointer to a apiCreatePrivateEndpointServi
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **createEndpointServiceRequest** | [**CreateEndpointServiceRequest**](CreateEndpointServiceRequest.md) | Creates one private endpoint for the specified cloud service provider. | 
+ **cloudProviderEndpointServiceRequest** | [**CloudProviderEndpointServiceRequest**](CloudProviderEndpointServiceRequest.md) | Creates one private endpoint for the specified cloud service provider. | 
 
 ### Return type
 
@@ -340,7 +340,7 @@ Name | Type | Description  | Notes
 
 ## GetPrivateEndpoint
 
-> Endpoint GetPrivateEndpoint(ctx, groupId, cloudProvider, endpointId, endpointServiceId).Execute()
+> PrivateLinkEndpoint GetPrivateEndpoint(ctx, groupId, cloudProvider, endpointId, endpointServiceId).Execute()
 
 Return One Private Endpoint for One Provider
 
@@ -375,7 +375,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetPrivateEndpoint`: Endpoint
+    // response from `GetPrivateEndpoint`: PrivateLinkEndpoint
     fmt.Fprintf(os.Stdout, "Response from `PrivateEndpointServicesApi.GetPrivateEndpoint`: %v\n", resp)
 }
 ```
@@ -405,7 +405,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Endpoint**](Endpoint.md)
+[**PrivateLinkEndpoint**](PrivateLinkEndpoint.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

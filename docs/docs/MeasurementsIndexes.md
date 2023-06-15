@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Granularity** | Pointer to **string** | Duration that specifies the interval between measurement data points. The parameter expresses its value in ISO 8601 timestamp format in UTC. If you set this parameter, you must set either **period** or **start** and **end**. | [optional] [readonly] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the project. The project contains MongoDB processes that you want to return. The MongoDB process can be either the &#x60;mongod&#x60; or &#x60;mongos&#x60;. | [optional] [readonly] 
 **IndexIds** | Pointer to **[]string** | List that contains the Atlas Search index identifiers. | [optional] [readonly] 
-**IndexStatsMeasurements** | Pointer to [**[]Measurement**](Measurement.md) | List that contains the Atlas Search index stats measurements. | [optional] [readonly] 
+**IndexStatsMeasurements** | Pointer to [**[]MetricsMeasurement**](MetricsMeasurement.md) | List that contains the Atlas Search index stats measurements. | [optional] [readonly] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **ProcessId** | Pointer to **string** | Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (&#x60;mongod&#x60; or &#x60;mongos&#x60;). The port must be the IANA port on which the MongoDB process listens for requests. | [optional] [readonly] 
 **Start** | Pointer to **time.Time** | Date and time that specifies when to start retrieving measurements. If you set **start**, you must set **end**. You can&#39;t set this parameter and **period** in the same request. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
@@ -186,20 +186,20 @@ HasIndexIds returns a boolean if a field has been set.
 
 ### GetIndexStatsMeasurements
 
-`func (o *MeasurementsIndexes) GetIndexStatsMeasurements() []Measurement`
+`func (o *MeasurementsIndexes) GetIndexStatsMeasurements() []MetricsMeasurement`
 
 GetIndexStatsMeasurements returns the IndexStatsMeasurements field if non-nil, zero value otherwise.
 
 ### GetIndexStatsMeasurementsOk
 
-`func (o *MeasurementsIndexes) GetIndexStatsMeasurementsOk() (*[]Measurement, bool)`
+`func (o *MeasurementsIndexes) GetIndexStatsMeasurementsOk() (*[]MetricsMeasurement, bool)`
 
 GetIndexStatsMeasurementsOk returns a tuple with the IndexStatsMeasurements field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIndexStatsMeasurements
 
-`func (o *MeasurementsIndexes) SetIndexStatsMeasurements(v []Measurement)`
+`func (o *MeasurementsIndexes) SetIndexStatsMeasurements(v []MetricsMeasurement)`
 
 SetIndexStatsMeasurements sets IndexStatsMeasurements field to given value.
 

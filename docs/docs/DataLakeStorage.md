@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Databases** | Pointer to [**[]DataLakeDatabase**](DataLakeDatabase.md) | Array that contains the queryable databases and collections for this data lake. | [optional] 
-**Stores** | Pointer to [**[]DataLakeStore**](DataLakeStore.md) | Array that contains the data stores for the data lake. | [optional] 
+**Databases** | Pointer to [**[]DataLakeDatabaseInstance**](DataLakeDatabaseInstance.md) | Array that contains the queryable databases and collections for this data lake. | [optional] 
+**Stores** | Pointer to [**[]DataLakeStoreSettings**](DataLakeStoreSettings.md) | Array that contains the data stores for the data lake. | [optional] 
 
 ## Methods
 
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetDatabases
 
-`func (o *DataLakeStorage) GetDatabases() []DataLakeDatabase`
+`func (o *DataLakeStorage) GetDatabases() []DataLakeDatabaseInstance`
 
 GetDatabases returns the Databases field if non-nil, zero value otherwise.
 
 ### GetDatabasesOk
 
-`func (o *DataLakeStorage) GetDatabasesOk() (*[]DataLakeDatabase, bool)`
+`func (o *DataLakeStorage) GetDatabasesOk() (*[]DataLakeDatabaseInstance, bool)`
 
 GetDatabasesOk returns a tuple with the Databases field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDatabases
 
-`func (o *DataLakeStorage) SetDatabases(v []DataLakeDatabase)`
+`func (o *DataLakeStorage) SetDatabases(v []DataLakeDatabaseInstance)`
 
 SetDatabases sets Databases field to given value.
 
@@ -53,20 +53,20 @@ HasDatabases returns a boolean if a field has been set.
 
 ### GetStores
 
-`func (o *DataLakeStorage) GetStores() []DataLakeStore`
+`func (o *DataLakeStorage) GetStores() []DataLakeStoreSettings`
 
 GetStores returns the Stores field if non-nil, zero value otherwise.
 
 ### GetStoresOk
 
-`func (o *DataLakeStorage) GetStoresOk() (*[]DataLakeStore, bool)`
+`func (o *DataLakeStorage) GetStoresOk() (*[]DataLakeStoreSettings, bool)`
 
 GetStoresOk returns a tuple with the Stores field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStores
 
-`func (o *DataLakeStorage) SetStores(v []DataLakeStore)`
+`func (o *DataLakeStorage) SetStores(v []DataLakeStoreSettings)`
 
 SetStores sets Stores field to given value.
 

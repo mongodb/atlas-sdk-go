@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Clusters** | Pointer to [**[]Cluster**](Cluster.md) | Settings that describe the clusters in each project that the API key is authorized to view. | [optional] [readonly] 
+**Clusters** | Pointer to [**[]CloudCluster**](CloudCluster.md) | Settings that describe the clusters in each project that the API key is authorized to view. | [optional] [readonly] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the project. | [optional] [readonly] 
 **GroupName** | Pointer to **string** | Human-readable label that identifies the project. | [optional] 
 **OrgId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the organization that contains the project. | [optional] [readonly] 
@@ -33,20 +33,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetClusters
 
-`func (o *OrgGroup) GetClusters() []Cluster`
+`func (o *OrgGroup) GetClusters() []CloudCluster`
 
 GetClusters returns the Clusters field if non-nil, zero value otherwise.
 
 ### GetClustersOk
 
-`func (o *OrgGroup) GetClustersOk() (*[]Cluster, bool)`
+`func (o *OrgGroup) GetClustersOk() (*[]CloudCluster, bool)`
 
 GetClustersOk returns a tuple with the Clusters field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetClusters
 
-`func (o *OrgGroup) SetClusters(v []Cluster)`
+`func (o *OrgGroup) SetClusters(v []CloudCluster)`
 
 SetClusters sets Clusters field to given value.
 

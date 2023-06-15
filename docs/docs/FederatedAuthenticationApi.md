@@ -24,7 +24,7 @@ Method | HTTP request | Description
 
 ## CreateRoleMapping
 
-> RoleMapping CreateRoleMapping(ctx, federationSettingsId, orgId, roleMapping RoleMapping).Execute()
+> AuthFederationRoleMapping CreateRoleMapping(ctx, federationSettingsId, orgId, authFederationRoleMapping AuthFederationRoleMapping).Execute()
 
 Add One Role Mapping to One Organization
 
@@ -55,15 +55,15 @@ func main() {
 
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     orgId := "4888442a3354817a7320eb61" // string | 
-    roleMapping := *openapiclient.NewRoleMapping("ExternalGroupName_example") // RoleMapping | 
+    authFederationRoleMapping := *openapiclient.NewAuthFederationRoleMapping("ExternalGroupName_example") // AuthFederationRoleMapping | 
 
-    resp, r, err := sdk.FederatedAuthenticationApi.CreateRoleMapping(context.Background(), federationSettingsId, orgId, &roleMapping).Execute()
+    resp, r, err := sdk.FederatedAuthenticationApi.CreateRoleMapping(context.Background(), federationSettingsId, orgId, &authFederationRoleMapping).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.CreateRoleMapping``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `CreateRoleMapping`: RoleMapping
+    // response from `CreateRoleMapping`: AuthFederationRoleMapping
     fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.CreateRoleMapping`: %v\n", resp)
 }
 ```
@@ -86,11 +86,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **roleMapping** | [**RoleMapping**](RoleMapping.md) | The role mapping that you want to create. | 
+ **authFederationRoleMapping** | [**AuthFederationRoleMapping**](AuthFederationRoleMapping.md) | The role mapping that you want to create. | 
 
 ### Return type
 
-[**RoleMapping**](RoleMapping.md)
+[**AuthFederationRoleMapping**](AuthFederationRoleMapping.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -424,7 +424,7 @@ Name | Type | Description  | Notes
 
 ## GetIdentityProvider
 
-> IdentityProvider GetIdentityProvider(ctx, federationSettingsId, identityProviderId).Execute()
+> FederationIdentityProvider GetIdentityProvider(ctx, federationSettingsId, identityProviderId).Execute()
 
 Return one identity provider from the specified federation.
 
@@ -462,7 +462,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetIdentityProvider`: IdentityProvider
+    // response from `GetIdentityProvider`: FederationIdentityProvider
     fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.GetIdentityProvider`: %v\n", resp)
 }
 ```
@@ -488,7 +488,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IdentityProvider**](IdentityProvider.md)
+[**FederationIdentityProvider**](FederationIdentityProvider.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -586,7 +586,7 @@ Name | Type | Description  | Notes
 
 ## GetRoleMapping
 
-> RoleMapping GetRoleMapping(ctx, federationSettingsId, id, orgId).Execute()
+> AuthFederationRoleMapping GetRoleMapping(ctx, federationSettingsId, id, orgId).Execute()
 
 Return One Role Mapping from One Organization
 
@@ -625,7 +625,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetRoleMapping`: RoleMapping
+    // response from `GetRoleMapping`: AuthFederationRoleMapping
     fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.GetRoleMapping`: %v\n", resp)
 }
 ```
@@ -653,7 +653,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**RoleMapping**](RoleMapping.md)
+[**AuthFederationRoleMapping**](AuthFederationRoleMapping.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -748,7 +748,7 @@ Name | Type | Description  | Notes
 
 ## ListIdentityProviders
 
-> []IdentityProvider ListIdentityProviders(ctx, federationSettingsId).Execute()
+> []FederationIdentityProvider ListIdentityProviders(ctx, federationSettingsId).Execute()
 
 Return all identity providers from the specified federation.
 
@@ -785,7 +785,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `ListIdentityProviders`: []IdentityProvider
+    // response from `ListIdentityProviders`: []FederationIdentityProvider
     fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.ListIdentityProviders`: %v\n", resp)
 }
 ```
@@ -809,7 +809,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]IdentityProvider**](IdentityProvider.md)
+[**[]FederationIdentityProvider**](FederationIdentityProvider.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -826,7 +826,7 @@ Name | Type | Description  | Notes
 
 ## ListRoleMappings
 
-> []RoleMapping ListRoleMappings(ctx, federationSettingsId, orgId).Execute()
+> []AuthFederationRoleMapping ListRoleMappings(ctx, federationSettingsId, orgId).Execute()
 
 Return All Role Mappings from One Organization
 
@@ -864,7 +864,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `ListRoleMappings`: []RoleMapping
+    // response from `ListRoleMappings`: []AuthFederationRoleMapping
     fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.ListRoleMappings`: %v\n", resp)
 }
 ```
@@ -890,7 +890,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]RoleMapping**](RoleMapping.md)
+[**[]AuthFederationRoleMapping**](AuthFederationRoleMapping.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -1071,7 +1071,7 @@ Name | Type | Description  | Notes
 
 ## UpdateIdentityProvider
 
-> IdentityProvider UpdateIdentityProvider(ctx, federationSettingsId, identityProviderId, samlIdentityProviderUpdate SamlIdentityProviderUpdate).Execute()
+> FederationIdentityProvider UpdateIdentityProvider(ctx, federationSettingsId, identityProviderId, samlIdentityProviderUpdate SamlIdentityProviderUpdate).Execute()
 
 Update the identity provider.
 
@@ -1110,7 +1110,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `UpdateIdentityProvider`: IdentityProvider
+    // response from `UpdateIdentityProvider`: FederationIdentityProvider
     fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.UpdateIdentityProvider`: %v\n", resp)
 }
 ```
@@ -1137,7 +1137,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IdentityProvider**](IdentityProvider.md)
+[**FederationIdentityProvider**](FederationIdentityProvider.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -1154,7 +1154,7 @@ Name | Type | Description  | Notes
 
 ## UpdateRoleMapping
 
-> RoleMapping UpdateRoleMapping(ctx, federationSettingsId, id, orgId, roleMapping RoleMapping).Execute()
+> AuthFederationRoleMapping UpdateRoleMapping(ctx, federationSettingsId, id, orgId, authFederationRoleMapping AuthFederationRoleMapping).Execute()
 
 Update One Role Mapping in One Organization
 
@@ -1186,15 +1186,15 @@ func main() {
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     id := "32b6e34b3d91647abb20e7b8" // string | 
     orgId := "4888442a3354817a7320eb61" // string | 
-    roleMapping := *openapiclient.NewRoleMapping("ExternalGroupName_example") // RoleMapping | 
+    authFederationRoleMapping := *openapiclient.NewAuthFederationRoleMapping("ExternalGroupName_example") // AuthFederationRoleMapping | 
 
-    resp, r, err := sdk.FederatedAuthenticationApi.UpdateRoleMapping(context.Background(), federationSettingsId, id, orgId, &roleMapping).Execute()
+    resp, r, err := sdk.FederatedAuthenticationApi.UpdateRoleMapping(context.Background(), federationSettingsId, id, orgId, &authFederationRoleMapping).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.UpdateRoleMapping``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `UpdateRoleMapping`: RoleMapping
+    // response from `UpdateRoleMapping`: AuthFederationRoleMapping
     fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.UpdateRoleMapping`: %v\n", resp)
 }
 ```
@@ -1219,11 +1219,11 @@ Name | Type | Description  | Notes
 
 
 
- **roleMapping** | [**RoleMapping**](RoleMapping.md) | The role mapping that you want to update. | 
+ **authFederationRoleMapping** | [**AuthFederationRoleMapping**](AuthFederationRoleMapping.md) | The role mapping that you want to update. | 
 
 ### Return type
 
-[**RoleMapping**](RoleMapping.md)
+[**AuthFederationRoleMapping**](AuthFederationRoleMapping.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

@@ -187,7 +187,7 @@ Name | Type | Description  | Notes
 
 ## GetLegacyBackupRestoreJob
 
-> RestoreJob GetLegacyBackupRestoreJob(ctx, groupId, clusterName, jobId).Execute()
+> BackupRestoreJob GetLegacyBackupRestoreJob(ctx, groupId, clusterName, jobId).Execute()
 
 Return One Legacy Backup Restore Job
 
@@ -226,7 +226,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetLegacyBackupRestoreJob`: RestoreJob
+    // response from `GetLegacyBackupRestoreJob`: BackupRestoreJob
     fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.GetLegacyBackupRestoreJob`: %v\n", resp)
 }
 ```
@@ -254,7 +254,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**RestoreJob**](RestoreJob.md)
+[**BackupRestoreJob**](BackupRestoreJob.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -271,7 +271,7 @@ Name | Type | Description  | Notes
 
 ## GetLegacySnapshot
 
-> Snapshot GetLegacySnapshot(ctx, groupId, clusterName, snapshotId).Execute()
+> BackupSnapshot GetLegacySnapshot(ctx, groupId, clusterName, snapshotId).Execute()
 
 Return One Legacy Backup Snapshot
 
@@ -310,7 +310,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetLegacySnapshot`: Snapshot
+    // response from `GetLegacySnapshot`: BackupSnapshot
     fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.GetLegacySnapshot`: %v\n", resp)
 }
 ```
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Snapshot**](Snapshot.md)
+[**BackupSnapshot**](BackupSnapshot.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -701,7 +701,7 @@ Name | Type | Description  | Notes
 
 ## UpdateLegacySnapshotRetention
 
-> Snapshot UpdateLegacySnapshotRetention(ctx, groupId, clusterName, snapshotId, snapshot Snapshot).Execute()
+> BackupSnapshot UpdateLegacySnapshotRetention(ctx, groupId, clusterName, snapshotId, backupSnapshot BackupSnapshot).Execute()
 
 Change One Legacy Backup Snapshot Expiration
 
@@ -733,15 +733,15 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
     snapshotId := "snapshotId_example" // string | 
-    snapshot := *openapiclient.NewSnapshot() // Snapshot | 
+    backupSnapshot := *openapiclient.NewBackupSnapshot() // BackupSnapshot | 
 
-    resp, r, err := sdk.LegacyBackupApi.UpdateLegacySnapshotRetention(context.Background(), groupId, clusterName, snapshotId, &snapshot).Execute()
+    resp, r, err := sdk.LegacyBackupApi.UpdateLegacySnapshotRetention(context.Background(), groupId, clusterName, snapshotId, &backupSnapshot).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.UpdateLegacySnapshotRetention``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `UpdateLegacySnapshotRetention`: Snapshot
+    // response from `UpdateLegacySnapshotRetention`: BackupSnapshot
     fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.UpdateLegacySnapshotRetention`: %v\n", resp)
 }
 ```
@@ -766,11 +766,11 @@ Name | Type | Description  | Notes
 
 
 
- **snapshot** | [**Snapshot**](Snapshot.md) | Changes One Legacy Backup Snapshot Expiration. | 
+ **backupSnapshot** | [**BackupSnapshot**](BackupSnapshot.md) | Changes One Legacy Backup Snapshot Expiration. | 
 
 ### Return type
 
-[**Snapshot**](Snapshot.md)
+[**BackupSnapshot**](BackupSnapshot.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

@@ -7,11 +7,11 @@ Name | Type | Description | Notes
 **End** | Pointer to **time.Time** | Date and time that specifies when to stop retrieving measurements. If you set **end**, you must set **start**. You can&#39;t set this parameter and **period** in the same request. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **Granularity** | Pointer to **string** | Duration that specifies the interval between measurement data points. The parameter expresses its value in ISO 8601 timestamp format in UTC. If you set this parameter, you must set either **period** or **start** and **end**. | [optional] [readonly] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the project. The project contains MongoDB processes that you want to return. The MongoDB process can be either the &#x60;mongod&#x60; or &#x60;mongos&#x60;. | [optional] [readonly] 
-**HardwareMeasurements** | Pointer to [**[]Measurement**](Measurement.md) | List that contains the Atlas Search hardware measurements. | [optional] [readonly] 
+**HardwareMeasurements** | Pointer to [**[]MetricsMeasurement**](MetricsMeasurement.md) | List that contains the Atlas Search hardware measurements. | [optional] [readonly] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **ProcessId** | Pointer to **string** | Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (&#x60;mongod&#x60; or &#x60;mongos&#x60;). The port must be the IANA port on which the MongoDB process listens for requests. | [optional] [readonly] 
 **Start** | Pointer to **time.Time** | Date and time that specifies when to start retrieving measurements. If you set **start**, you must set **end**. You can&#39;t set this parameter and **period** in the same request. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
-**StatusMeasurements** | Pointer to [**[]Measurement**](Measurement.md) | List that contains the Atlas Search status measurements. | [optional] [readonly] 
+**StatusMeasurements** | Pointer to [**[]MetricsMeasurement**](MetricsMeasurement.md) | List that contains the Atlas Search status measurements. | [optional] [readonly] 
 
 ## Methods
 
@@ -109,20 +109,20 @@ HasGroupId returns a boolean if a field has been set.
 
 ### GetHardwareMeasurements
 
-`func (o *MeasurementsNonIndex) GetHardwareMeasurements() []Measurement`
+`func (o *MeasurementsNonIndex) GetHardwareMeasurements() []MetricsMeasurement`
 
 GetHardwareMeasurements returns the HardwareMeasurements field if non-nil, zero value otherwise.
 
 ### GetHardwareMeasurementsOk
 
-`func (o *MeasurementsNonIndex) GetHardwareMeasurementsOk() (*[]Measurement, bool)`
+`func (o *MeasurementsNonIndex) GetHardwareMeasurementsOk() (*[]MetricsMeasurement, bool)`
 
 GetHardwareMeasurementsOk returns a tuple with the HardwareMeasurements field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHardwareMeasurements
 
-`func (o *MeasurementsNonIndex) SetHardwareMeasurements(v []Measurement)`
+`func (o *MeasurementsNonIndex) SetHardwareMeasurements(v []MetricsMeasurement)`
 
 SetHardwareMeasurements sets HardwareMeasurements field to given value.
 
@@ -209,20 +209,20 @@ HasStart returns a boolean if a field has been set.
 
 ### GetStatusMeasurements
 
-`func (o *MeasurementsNonIndex) GetStatusMeasurements() []Measurement`
+`func (o *MeasurementsNonIndex) GetStatusMeasurements() []MetricsMeasurement`
 
 GetStatusMeasurements returns the StatusMeasurements field if non-nil, zero value otherwise.
 
 ### GetStatusMeasurementsOk
 
-`func (o *MeasurementsNonIndex) GetStatusMeasurementsOk() (*[]Measurement, bool)`
+`func (o *MeasurementsNonIndex) GetStatusMeasurementsOk() (*[]MetricsMeasurement, bool)`
 
 GetStatusMeasurementsOk returns a tuple with the StatusMeasurements field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatusMeasurements
 
-`func (o *MeasurementsNonIndex) SetStatusMeasurements(v []Measurement)`
+`func (o *MeasurementsNonIndex) SetStatusMeasurements(v []MetricsMeasurement)`
 
 SetStatusMeasurements sets StatusMeasurements field to given value.
 

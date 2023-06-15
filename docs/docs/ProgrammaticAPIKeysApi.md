@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 ## AddProjectApiKey
 
-> ApiUser AddProjectApiKey(ctx, groupId, apiUserId, userRoleAssignment []UserRoleAssignment).Execute()
+> KeyUser AddProjectApiKey(ctx, groupId, apiUserId, userRoleAssignment []UserRoleAssignment).Execute()
 
 Assign One Organization API Key to One Project
 
@@ -62,7 +62,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `AddProjectApiKey`: ApiUser
+    // response from `AddProjectApiKey`: KeyUser
     fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.AddProjectApiKey`: %v\n", resp)
 }
 ```
@@ -89,7 +89,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiUser**](ApiUser.md)
+[**KeyUser**](KeyUser.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -106,7 +106,7 @@ Name | Type | Description  | Notes
 
 ## CreateApiKey
 
-> ApiUser CreateApiKey(ctx, orgId, createOrganizationApiKey CreateOrganizationApiKey).Execute()
+> KeyUser CreateApiKey(ctx, orgId, createOrganizationKey CreateOrganizationKey).Execute()
 
 Create One Organization API Key
 
@@ -131,15 +131,15 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     orgId := "4888442a3354817a7320eb61" // string | 
-    createOrganizationApiKey := *openapiclient.NewCreateOrganizationApiKey() // CreateOrganizationApiKey | 
+    createOrganizationKey := *openapiclient.NewCreateOrganizationKey() // CreateOrganizationKey | 
 
-    resp, r, err := sdk.ProgrammaticAPIKeysApi.CreateApiKey(context.Background(), orgId, &createOrganizationApiKey).Execute()
+    resp, r, err := sdk.ProgrammaticAPIKeysApi.CreateApiKey(context.Background(), orgId, &createOrganizationKey).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.CreateApiKey``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `CreateApiKey`: ApiUser
+    // response from `CreateApiKey`: KeyUser
     fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.CreateApiKey`: %v\n", resp)
 }
 ```
@@ -160,11 +160,11 @@ Other parameters are passed through a pointer to a apiCreateApiKeyRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **createOrganizationApiKey** | [**CreateOrganizationApiKey**](CreateOrganizationApiKey.md) | Organization API Key to be created. This request requires both body parameters. | 
+ **createOrganizationKey** | [**CreateOrganizationKey**](CreateOrganizationKey.md) | Organization API Key to be created. This request requires both body parameters. | 
 
 ### Return type
 
-[**ApiUser**](ApiUser.md)
+[**KeyUser**](KeyUser.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ## CreateProjectApiKey
 
-> ApiUser CreateProjectApiKey(ctx, groupId, createProjectApiKey CreateProjectApiKey).Execute()
+> KeyUser CreateProjectApiKey(ctx, groupId, createProjectKey CreateProjectKey).Execute()
 
 Create and Assign One Organization API Key to One Project
 
@@ -290,15 +290,15 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    createProjectApiKey := *openapiclient.NewCreateProjectApiKey() // CreateProjectApiKey | 
+    createProjectKey := *openapiclient.NewCreateProjectKey() // CreateProjectKey | 
 
-    resp, r, err := sdk.ProgrammaticAPIKeysApi.CreateProjectApiKey(context.Background(), groupId, &createProjectApiKey).Execute()
+    resp, r, err := sdk.ProgrammaticAPIKeysApi.CreateProjectApiKey(context.Background(), groupId, &createProjectKey).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.CreateProjectApiKey``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `CreateProjectApiKey`: ApiUser
+    // response from `CreateProjectApiKey`: KeyUser
     fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.CreateProjectApiKey`: %v\n", resp)
 }
 ```
@@ -319,11 +319,11 @@ Other parameters are passed through a pointer to a apiCreateProjectApiKeyRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **createProjectApiKey** | [**CreateProjectApiKey**](CreateProjectApiKey.md) | Organization API key to be created and assigned to the specified project. This request requires both body parameters. | 
+ **createProjectKey** | [**CreateProjectKey**](CreateProjectKey.md) | Organization API key to be created and assigned to the specified project. This request requires both body parameters. | 
 
 ### Return type
 
-[**ApiUser**](ApiUser.md)
+[**KeyUser**](KeyUser.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -495,7 +495,7 @@ Name | Type | Description  | Notes
 
 ## GetApiKey
 
-> ApiUser GetApiKey(ctx, orgId, apiUserId).Execute()
+> KeyUser GetApiKey(ctx, orgId, apiUserId).Execute()
 
 Return One Organization API Key
 
@@ -528,7 +528,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetApiKey`: ApiUser
+    // response from `GetApiKey`: KeyUser
     fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.GetApiKey`: %v\n", resp)
 }
 ```
@@ -554,7 +554,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiUser**](ApiUser.md)
+[**KeyUser**](KeyUser.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -971,7 +971,7 @@ Name | Type | Description  | Notes
 
 ## UpdateApiKey
 
-> ApiUser UpdateApiKey(ctx, orgId, apiUserId, createOrganizationApiKey CreateOrganizationApiKey).Execute()
+> KeyUser UpdateApiKey(ctx, orgId, apiUserId, createOrganizationKey CreateOrganizationKey).Execute()
 
 Update One Organization API Key
 
@@ -997,15 +997,15 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
     apiUserId := "apiUserId_example" // string | 
-    createOrganizationApiKey := *openapiclient.NewCreateOrganizationApiKey() // CreateOrganizationApiKey | 
+    createOrganizationKey := *openapiclient.NewCreateOrganizationKey() // CreateOrganizationKey | 
 
-    resp, r, err := sdk.ProgrammaticAPIKeysApi.UpdateApiKey(context.Background(), orgId, apiUserId, &createOrganizationApiKey).Execute()
+    resp, r, err := sdk.ProgrammaticAPIKeysApi.UpdateApiKey(context.Background(), orgId, apiUserId, &createOrganizationKey).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.UpdateApiKey``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `UpdateApiKey`: ApiUser
+    // response from `UpdateApiKey`: KeyUser
     fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.UpdateApiKey`: %v\n", resp)
 }
 ```
@@ -1028,11 +1028,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **createOrganizationApiKey** | [**CreateOrganizationApiKey**](CreateOrganizationApiKey.md) | Organization API key to be updated. This request requires a minimum of one of the two body parameters. | 
+ **createOrganizationKey** | [**CreateOrganizationKey**](CreateOrganizationKey.md) | Organization API key to be updated. This request requires a minimum of one of the two body parameters. | 
 
 ### Return type
 
-[**ApiUser**](ApiUser.md)
+[**KeyUser**](KeyUser.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -1049,7 +1049,7 @@ Name | Type | Description  | Notes
 
 ## UpdateApiKeyRoles
 
-> ApiUser UpdateApiKeyRoles(ctx, groupId, apiUserId, createProjectApiKey CreateProjectApiKey).PageNum(pageNum).ItemsPerPage(itemsPerPage).IncludeCount(includeCount).Execute()
+> KeyUser UpdateApiKeyRoles(ctx, groupId, apiUserId, createProjectKey CreateProjectKey).PageNum(pageNum).ItemsPerPage(itemsPerPage).IncludeCount(includeCount).Execute()
 
 Update Roles of One Organization API Key to One Project
 
@@ -1075,18 +1075,18 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     apiUserId := "apiUserId_example" // string | 
-    createProjectApiKey := *openapiclient.NewCreateProjectApiKey() // CreateProjectApiKey | 
+    createProjectKey := *openapiclient.NewCreateProjectKey() // CreateProjectKey | 
     pageNum := int(1) // int |  (optional) (default to 1)
     itemsPerPage := int(100) // int |  (optional) (default to 100)
     includeCount := true // bool |  (optional) (default to true)
 
-    resp, r, err := sdk.ProgrammaticAPIKeysApi.UpdateApiKeyRoles(context.Background(), groupId, apiUserId, &createProjectApiKey).PageNum(pageNum).ItemsPerPage(itemsPerPage).IncludeCount(includeCount).Execute()
+    resp, r, err := sdk.ProgrammaticAPIKeysApi.UpdateApiKeyRoles(context.Background(), groupId, apiUserId, &createProjectKey).PageNum(pageNum).ItemsPerPage(itemsPerPage).IncludeCount(includeCount).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.UpdateApiKeyRoles``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `UpdateApiKeyRoles`: ApiUser
+    // response from `UpdateApiKeyRoles`: KeyUser
     fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.UpdateApiKeyRoles`: %v\n", resp)
 }
 ```
@@ -1109,14 +1109,14 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **createProjectApiKey** | [**CreateProjectApiKey**](CreateProjectApiKey.md) | Organization API Key to be updated. This request requires a minimum of one of the two body parameters. | 
+ **createProjectKey** | [**CreateProjectKey**](CreateProjectKey.md) | Organization API Key to be updated. This request requires a minimum of one of the two body parameters. | 
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
  **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (**totalCount**) in the response. | [default to true]
 
 ### Return type
 
-[**ApiUser**](ApiUser.md)
+[**KeyUser**](KeyUser.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

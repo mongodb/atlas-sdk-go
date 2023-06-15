@@ -390,7 +390,7 @@ Name | Type | Description  | Notes
 
 ## GetValidationStatus
 
-> Validation GetValidationStatus(ctx, groupId, validationId).Execute()
+> LiveImportValidation GetValidationStatus(ctx, groupId, validationId).Execute()
 
 Return One Migration Validation Job
 
@@ -423,7 +423,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetValidationStatus`: Validation
+    // response from `GetValidationStatus`: LiveImportValidation
     fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceApi.GetValidationStatus`: %v\n", resp)
 }
 ```
@@ -449,7 +449,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Validation**](Validation.md)
+[**LiveImportValidation**](LiveImportValidation.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -466,7 +466,7 @@ Name | Type | Description  | Notes
 
 ## ListSourceProjects
 
-> []AvailableProject ListSourceProjects(ctx, orgId).Execute()
+> []LiveImportAvailableProject ListSourceProjects(ctx, orgId).Execute()
 
 Return All Projects Available for Migration
 
@@ -503,7 +503,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `ListSourceProjects`: []AvailableProject
+    // response from `ListSourceProjects`: []LiveImportAvailableProject
     fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceApi.ListSourceProjects`: %v\n", resp)
 }
 ```
@@ -527,7 +527,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]AvailableProject**](AvailableProject.md)
+[**[]LiveImportAvailableProject**](LiveImportAvailableProject.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -544,7 +544,7 @@ Name | Type | Description  | Notes
 
 ## ValidateMigration
 
-> Validation ValidateMigration(ctx, groupId, liveMigrationRequest LiveMigrationRequest).Execute()
+> LiveImportValidation ValidateMigration(ctx, groupId, liveMigrationRequest LiveMigrationRequest).Execute()
 
 Validate One Migration Request
 
@@ -577,7 +577,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `ValidateMigration`: Validation
+    // response from `ValidateMigration`: LiveImportValidation
     fmt.Fprintf(os.Stdout, "Response from `CloudMigrationServiceApi.ValidateMigration`: %v\n", resp)
 }
 ```
@@ -602,7 +602,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Validation**](Validation.md)
+[**LiveImportValidation**](LiveImportValidation.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
