@@ -14,7 +14,7 @@ type PaginatedRestoreJob struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	Links []Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud providers when completing this request.
-	Results []RestoreJob `json:"results,omitempty"`
+	Results []BackupRestoreJob `json:"results,omitempty"`
 	// Number of documents returned in this response.
 	TotalCount *int `json:"totalCount,omitempty"`
 }
@@ -69,9 +69,9 @@ func (o *PaginatedRestoreJob) SetLinks(v []Link) {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *PaginatedRestoreJob) GetResults() []RestoreJob {
+func (o *PaginatedRestoreJob) GetResults() []BackupRestoreJob {
 	if o == nil || IsNil(o.Results) {
-		var ret []RestoreJob
+		var ret []BackupRestoreJob
 		return ret
 	}
 	return o.Results
@@ -79,7 +79,7 @@ func (o *PaginatedRestoreJob) GetResults() []RestoreJob {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedRestoreJob) GetResultsOk() ([]RestoreJob, bool) {
+func (o *PaginatedRestoreJob) GetResultsOk() ([]BackupRestoreJob, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -95,8 +95,8 @@ func (o *PaginatedRestoreJob) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []RestoreJob and assigns it to the Results field.
-func (o *PaginatedRestoreJob) SetResults(v []RestoreJob) {
+// SetResults gets a reference to the given []BackupRestoreJob and assigns it to the Results field.
+func (o *PaginatedRestoreJob) SetResults(v []BackupRestoreJob) {
 	o.Results = v
 }
 

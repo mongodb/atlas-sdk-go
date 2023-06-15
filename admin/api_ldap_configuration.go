@@ -81,7 +81,7 @@ type LDAPConfigurationApi interface {
 	GetLDAPConfigurationStatusWithParams(ctx context.Context, args *GetLDAPConfigurationStatusApiParams) GetLDAPConfigurationStatusApiRequest
 
 	// Interface only available internally
-	getLDAPConfigurationStatusExecute(r GetLDAPConfigurationStatusApiRequest) (*NDSLDAPVerifyConnectivityJobRequest, *http.Response, error)
+	getLDAPConfigurationStatusExecute(r GetLDAPConfigurationStatusApiRequest) (*LDAPVerifyConnectivityJobRequest, *http.Response, error)
 
 	/*
 		SaveLDAPConfiguration Edit the LDAP or X.509 Configuration
@@ -117,7 +117,7 @@ type LDAPConfigurationApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return VerifyLDAPConfigurationApiRequest
 	*/
-	VerifyLDAPConfiguration(ctx context.Context, groupId string, nDSLDAPVerifyConnectivityJobRequestParams *NDSLDAPVerifyConnectivityJobRequestParams) VerifyLDAPConfigurationApiRequest
+	VerifyLDAPConfiguration(ctx context.Context, groupId string, lDAPVerifyConnectivityJobRequestParams *LDAPVerifyConnectivityJobRequestParams) VerifyLDAPConfigurationApiRequest
 	/*
 		VerifyLDAPConfiguration Verify the LDAP Configuration in One Project
 
@@ -129,7 +129,7 @@ type LDAPConfigurationApi interface {
 	VerifyLDAPConfigurationWithParams(ctx context.Context, args *VerifyLDAPConfigurationApiParams) VerifyLDAPConfigurationApiRequest
 
 	// Interface only available internally
-	verifyLDAPConfigurationExecute(r VerifyLDAPConfigurationApiRequest) (*NDSLDAPVerifyConnectivityJobRequest, *http.Response, error)
+	verifyLDAPConfigurationExecute(r VerifyLDAPConfigurationApiRequest) (*LDAPVerifyConnectivityJobRequest, *http.Response, error)
 }
 
 // LDAPConfigurationApiService LDAPConfigurationApi service
@@ -139,10 +139,14 @@ type DeleteLDAPConfigurationApiRequest struct {
 	ctx        context.Context
 	ApiService LDAPConfigurationApi
 	groupId    string
+	envelope   *bool
+	pretty     *bool
 }
 
 type DeleteLDAPConfigurationApiParams struct {
-	GroupId string
+	GroupId  string
+	Envelope *bool
+	Pretty   *bool
 }
 
 func (a *LDAPConfigurationApiService) DeleteLDAPConfigurationWithParams(ctx context.Context, args *DeleteLDAPConfigurationApiParams) DeleteLDAPConfigurationApiRequest {
@@ -150,7 +154,21 @@ func (a *LDAPConfigurationApiService) DeleteLDAPConfigurationWithParams(ctx cont
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    args.GroupId,
+		envelope:   args.Envelope,
+		pretty:     args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r DeleteLDAPConfigurationApiRequest) Envelope(envelope bool) DeleteLDAPConfigurationApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r DeleteLDAPConfigurationApiRequest) Pretty(pretty bool) DeleteLDAPConfigurationApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r DeleteLDAPConfigurationApiRequest) Execute() (*UserSecurity, *http.Response, error) {
@@ -203,6 +221,20 @@ func (a *LDAPConfigurationApiService) deleteLDAPConfigurationExecute(r DeleteLDA
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -269,10 +301,14 @@ type GetLDAPConfigurationApiRequest struct {
 	ctx        context.Context
 	ApiService LDAPConfigurationApi
 	groupId    string
+	envelope   *bool
+	pretty     *bool
 }
 
 type GetLDAPConfigurationApiParams struct {
-	GroupId string
+	GroupId  string
+	Envelope *bool
+	Pretty   *bool
 }
 
 func (a *LDAPConfigurationApiService) GetLDAPConfigurationWithParams(ctx context.Context, args *GetLDAPConfigurationApiParams) GetLDAPConfigurationApiRequest {
@@ -280,7 +316,21 @@ func (a *LDAPConfigurationApiService) GetLDAPConfigurationWithParams(ctx context
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    args.GroupId,
+		envelope:   args.Envelope,
+		pretty:     args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r GetLDAPConfigurationApiRequest) Envelope(envelope bool) GetLDAPConfigurationApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r GetLDAPConfigurationApiRequest) Pretty(pretty bool) GetLDAPConfigurationApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r GetLDAPConfigurationApiRequest) Execute() (*UserSecurity, *http.Response, error) {
@@ -333,6 +383,20 @@ func (a *LDAPConfigurationApiService) getLDAPConfigurationExecute(r GetLDAPConfi
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -400,11 +464,15 @@ type GetLDAPConfigurationStatusApiRequest struct {
 	ApiService LDAPConfigurationApi
 	groupId    string
 	requestId  string
+	envelope   *bool
+	pretty     *bool
 }
 
 type GetLDAPConfigurationStatusApiParams struct {
 	GroupId   string
 	RequestId string
+	Envelope  *bool
+	Pretty    *bool
 }
 
 func (a *LDAPConfigurationApiService) GetLDAPConfigurationStatusWithParams(ctx context.Context, args *GetLDAPConfigurationStatusApiParams) GetLDAPConfigurationStatusApiRequest {
@@ -413,10 +481,24 @@ func (a *LDAPConfigurationApiService) GetLDAPConfigurationStatusWithParams(ctx c
 		ctx:        ctx,
 		groupId:    args.GroupId,
 		requestId:  args.RequestId,
+		envelope:   args.Envelope,
+		pretty:     args.Pretty,
 	}
 }
 
-func (r GetLDAPConfigurationStatusApiRequest) Execute() (*NDSLDAPVerifyConnectivityJobRequest, *http.Response, error) {
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r GetLDAPConfigurationStatusApiRequest) Envelope(envelope bool) GetLDAPConfigurationStatusApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r GetLDAPConfigurationStatusApiRequest) Pretty(pretty bool) GetLDAPConfigurationStatusApiRequest {
+	r.pretty = &pretty
+	return r
+}
+
+func (r GetLDAPConfigurationStatusApiRequest) Execute() (*LDAPVerifyConnectivityJobRequest, *http.Response, error) {
 	return r.ApiService.getLDAPConfigurationStatusExecute(r)
 }
 
@@ -441,13 +523,13 @@ func (a *LDAPConfigurationApiService) GetLDAPConfigurationStatus(ctx context.Con
 
 // Execute executes the request
 //
-//	@return NDSLDAPVerifyConnectivityJobRequest
-func (a *LDAPConfigurationApiService) getLDAPConfigurationStatusExecute(r GetLDAPConfigurationStatusApiRequest) (*NDSLDAPVerifyConnectivityJobRequest, *http.Response, error) {
+//	@return LDAPVerifyConnectivityJobRequest
+func (a *LDAPConfigurationApiService) getLDAPConfigurationStatusExecute(r GetLDAPConfigurationStatusApiRequest) (*LDAPVerifyConnectivityJobRequest, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *NDSLDAPVerifyConnectivityJobRequest
+		localVarReturnValue *LDAPVerifyConnectivityJobRequest
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LDAPConfigurationApiService.GetLDAPConfigurationStatus")
@@ -475,6 +557,20 @@ func (a *LDAPConfigurationApiService) getLDAPConfigurationStatusExecute(r GetLDA
 		return localVarReturnValue, nil, reportError("requestId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -542,11 +638,15 @@ type SaveLDAPConfigurationApiRequest struct {
 	ApiService   LDAPConfigurationApi
 	groupId      string
 	userSecurity *UserSecurity
+	envelope     *bool
+	pretty       *bool
 }
 
 type SaveLDAPConfigurationApiParams struct {
 	GroupId      string
 	UserSecurity *UserSecurity
+	Envelope     *bool
+	Pretty       *bool
 }
 
 func (a *LDAPConfigurationApiService) SaveLDAPConfigurationWithParams(ctx context.Context, args *SaveLDAPConfigurationApiParams) SaveLDAPConfigurationApiRequest {
@@ -555,7 +655,21 @@ func (a *LDAPConfigurationApiService) SaveLDAPConfigurationWithParams(ctx contex
 		ctx:          ctx,
 		groupId:      args.GroupId,
 		userSecurity: args.UserSecurity,
+		envelope:     args.Envelope,
+		pretty:       args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r SaveLDAPConfigurationApiRequest) Envelope(envelope bool) SaveLDAPConfigurationApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r SaveLDAPConfigurationApiRequest) Pretty(pretty bool) SaveLDAPConfigurationApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r SaveLDAPConfigurationApiRequest) Execute() (*UserSecurity, *http.Response, error) {
@@ -614,6 +728,20 @@ func (a *LDAPConfigurationApiService) saveLDAPConfigurationExecute(r SaveLDAPCon
 		return localVarReturnValue, nil, reportError("userSecurity is required and must be specified")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
@@ -679,27 +807,45 @@ func (a *LDAPConfigurationApiService) saveLDAPConfigurationExecute(r SaveLDAPCon
 }
 
 type VerifyLDAPConfigurationApiRequest struct {
-	ctx                                       context.Context
-	ApiService                                LDAPConfigurationApi
-	groupId                                   string
-	nDSLDAPVerifyConnectivityJobRequestParams *NDSLDAPVerifyConnectivityJobRequestParams
+	ctx                                    context.Context
+	ApiService                             LDAPConfigurationApi
+	groupId                                string
+	lDAPVerifyConnectivityJobRequestParams *LDAPVerifyConnectivityJobRequestParams
+	envelope                               *bool
+	pretty                                 *bool
 }
 
 type VerifyLDAPConfigurationApiParams struct {
-	GroupId                                   string
-	NDSLDAPVerifyConnectivityJobRequestParams *NDSLDAPVerifyConnectivityJobRequestParams
+	GroupId                                string
+	LDAPVerifyConnectivityJobRequestParams *LDAPVerifyConnectivityJobRequestParams
+	Envelope                               *bool
+	Pretty                                 *bool
 }
 
 func (a *LDAPConfigurationApiService) VerifyLDAPConfigurationWithParams(ctx context.Context, args *VerifyLDAPConfigurationApiParams) VerifyLDAPConfigurationApiRequest {
 	return VerifyLDAPConfigurationApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		groupId:    args.GroupId,
-		nDSLDAPVerifyConnectivityJobRequestParams: args.NDSLDAPVerifyConnectivityJobRequestParams,
+		ApiService:                             a,
+		ctx:                                    ctx,
+		groupId:                                args.GroupId,
+		lDAPVerifyConnectivityJobRequestParams: args.LDAPVerifyConnectivityJobRequestParams,
+		envelope:                               args.Envelope,
+		pretty:                                 args.Pretty,
 	}
 }
 
-func (r VerifyLDAPConfigurationApiRequest) Execute() (*NDSLDAPVerifyConnectivityJobRequest, *http.Response, error) {
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r VerifyLDAPConfigurationApiRequest) Envelope(envelope bool) VerifyLDAPConfigurationApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r VerifyLDAPConfigurationApiRequest) Pretty(pretty bool) VerifyLDAPConfigurationApiRequest {
+	r.pretty = &pretty
+	return r
+}
+
+func (r VerifyLDAPConfigurationApiRequest) Execute() (*LDAPVerifyConnectivityJobRequest, *http.Response, error) {
 	return r.ApiService.verifyLDAPConfigurationExecute(r)
 }
 
@@ -712,24 +858,24 @@ VerifyLDAPConfiguration Verify the LDAP Configuration in One Project
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return VerifyLDAPConfigurationApiRequest
 */
-func (a *LDAPConfigurationApiService) VerifyLDAPConfiguration(ctx context.Context, groupId string, nDSLDAPVerifyConnectivityJobRequestParams *NDSLDAPVerifyConnectivityJobRequestParams) VerifyLDAPConfigurationApiRequest {
+func (a *LDAPConfigurationApiService) VerifyLDAPConfiguration(ctx context.Context, groupId string, lDAPVerifyConnectivityJobRequestParams *LDAPVerifyConnectivityJobRequestParams) VerifyLDAPConfigurationApiRequest {
 	return VerifyLDAPConfigurationApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		groupId:    groupId,
-		nDSLDAPVerifyConnectivityJobRequestParams: nDSLDAPVerifyConnectivityJobRequestParams,
+		ApiService:                             a,
+		ctx:                                    ctx,
+		groupId:                                groupId,
+		lDAPVerifyConnectivityJobRequestParams: lDAPVerifyConnectivityJobRequestParams,
 	}
 }
 
 // Execute executes the request
 //
-//	@return NDSLDAPVerifyConnectivityJobRequest
-func (a *LDAPConfigurationApiService) verifyLDAPConfigurationExecute(r VerifyLDAPConfigurationApiRequest) (*NDSLDAPVerifyConnectivityJobRequest, *http.Response, error) {
+//	@return LDAPVerifyConnectivityJobRequest
+func (a *LDAPConfigurationApiService) verifyLDAPConfigurationExecute(r VerifyLDAPConfigurationApiRequest) (*LDAPVerifyConnectivityJobRequest, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *NDSLDAPVerifyConnectivityJobRequest
+		localVarReturnValue *LDAPVerifyConnectivityJobRequest
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LDAPConfigurationApiService.VerifyLDAPConfiguration")
@@ -749,10 +895,24 @@ func (a *LDAPConfigurationApiService) verifyLDAPConfigurationExecute(r VerifyLDA
 	if strlen(r.groupId) > 24 {
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
-	if r.nDSLDAPVerifyConnectivityJobRequestParams == nil {
-		return localVarReturnValue, nil, reportError("nDSLDAPVerifyConnectivityJobRequestParams is required and must be specified")
+	if r.lDAPVerifyConnectivityJobRequestParams == nil {
+		return localVarReturnValue, nil, reportError("lDAPVerifyConnectivityJobRequestParams is required and must be specified")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
@@ -771,7 +931,7 @@ func (a *LDAPConfigurationApiService) verifyLDAPConfigurationExecute(r VerifyLDA
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.nDSLDAPVerifyConnectivityJobRequestParams
+	localVarPostBody = r.lDAPVerifyConnectivityJobRequestParams
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

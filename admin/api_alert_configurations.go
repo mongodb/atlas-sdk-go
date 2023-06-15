@@ -24,7 +24,7 @@ type AlertConfigurationsApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return CreateAlertConfigurationApiRequest
 	*/
-	CreateAlertConfiguration(ctx context.Context, groupId string, alertConfigViewForNdsGroup *AlertConfigViewForNdsGroup) CreateAlertConfigurationApiRequest
+	CreateAlertConfiguration(ctx context.Context, groupId string, groupAlertsConfig *GroupAlertsConfig) CreateAlertConfigurationApiRequest
 	/*
 		CreateAlertConfiguration Create One Alert Configuration in One Project
 
@@ -36,7 +36,7 @@ type AlertConfigurationsApi interface {
 	CreateAlertConfigurationWithParams(ctx context.Context, args *CreateAlertConfigurationApiParams) CreateAlertConfigurationApiRequest
 
 	// Interface only available internally
-	createAlertConfigurationExecute(r CreateAlertConfigurationApiRequest) (*AlertConfigViewForNdsGroup, *http.Response, error)
+	createAlertConfigurationExecute(r CreateAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error)
 
 	/*
 		DeleteAlertConfiguration Remove One Alert Configuration from One Project
@@ -88,7 +88,7 @@ type AlertConfigurationsApi interface {
 	GetAlertConfigurationWithParams(ctx context.Context, args *GetAlertConfigurationApiParams) GetAlertConfigurationApiRequest
 
 	// Interface only available internally
-	getAlertConfigurationExecute(r GetAlertConfigurationApiRequest) (*AlertConfigViewForNdsGroup, *http.Response, error)
+	getAlertConfigurationExecute(r GetAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error)
 
 	/*
 		ListAlertConfigurationMatchersFieldNames Get All Alert Configuration Matchers Field Names
@@ -177,7 +177,7 @@ type AlertConfigurationsApi interface {
 		@param alertConfigId Unique 24-hexadecimal digit string that identifies the alert configuration that triggered this alert. Use the [/alertConfigs](#tag/Alert-Configurations/operation/listAlertConfigurations) endpoint to retrieve all alert configurations to which the authenticated user has access.
 		@return ToggleAlertConfigurationApiRequest
 	*/
-	ToggleAlertConfiguration(ctx context.Context, groupId string, alertConfigId string, toggle *Toggle) ToggleAlertConfigurationApiRequest
+	ToggleAlertConfiguration(ctx context.Context, groupId string, alertConfigId string, alertsToggle *AlertsToggle) ToggleAlertConfigurationApiRequest
 	/*
 		ToggleAlertConfiguration Toggle One State of One Alert Configuration in One Project
 
@@ -189,7 +189,7 @@ type AlertConfigurationsApi interface {
 	ToggleAlertConfigurationWithParams(ctx context.Context, args *ToggleAlertConfigurationApiParams) ToggleAlertConfigurationApiRequest
 
 	// Interface only available internally
-	toggleAlertConfigurationExecute(r ToggleAlertConfigurationApiRequest) (*AlertConfigViewForNdsGroup, *http.Response, error)
+	toggleAlertConfigurationExecute(r ToggleAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error)
 
 	/*
 		UpdateAlertConfiguration Update One Alert Configuration for One Project
@@ -205,7 +205,7 @@ type AlertConfigurationsApi interface {
 		@param alertConfigId Unique 24-hexadecimal digit string that identifies the alert configuration. Use the [/alertConfigs](#tag/Alert-Configurations/operation/listAlertConfigurations) endpoint to retrieve all alert configurations to which the authenticated user has access.
 		@return UpdateAlertConfigurationApiRequest
 	*/
-	UpdateAlertConfiguration(ctx context.Context, groupId string, alertConfigId string, alertConfigViewForNdsGroup *AlertConfigViewForNdsGroup) UpdateAlertConfigurationApiRequest
+	UpdateAlertConfiguration(ctx context.Context, groupId string, alertConfigId string, groupAlertsConfig *GroupAlertsConfig) UpdateAlertConfigurationApiRequest
 	/*
 		UpdateAlertConfiguration Update One Alert Configuration for One Project
 
@@ -217,34 +217,52 @@ type AlertConfigurationsApi interface {
 	UpdateAlertConfigurationWithParams(ctx context.Context, args *UpdateAlertConfigurationApiParams) UpdateAlertConfigurationApiRequest
 
 	// Interface only available internally
-	updateAlertConfigurationExecute(r UpdateAlertConfigurationApiRequest) (*AlertConfigViewForNdsGroup, *http.Response, error)
+	updateAlertConfigurationExecute(r UpdateAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error)
 }
 
 // AlertConfigurationsApiService AlertConfigurationsApi service
 type AlertConfigurationsApiService service
 
 type CreateAlertConfigurationApiRequest struct {
-	ctx                        context.Context
-	ApiService                 AlertConfigurationsApi
-	groupId                    string
-	alertConfigViewForNdsGroup *AlertConfigViewForNdsGroup
+	ctx               context.Context
+	ApiService        AlertConfigurationsApi
+	groupId           string
+	groupAlertsConfig *GroupAlertsConfig
+	envelope          *bool
+	pretty            *bool
 }
 
 type CreateAlertConfigurationApiParams struct {
-	GroupId                    string
-	AlertConfigViewForNdsGroup *AlertConfigViewForNdsGroup
+	GroupId           string
+	GroupAlertsConfig *GroupAlertsConfig
+	Envelope          *bool
+	Pretty            *bool
 }
 
 func (a *AlertConfigurationsApiService) CreateAlertConfigurationWithParams(ctx context.Context, args *CreateAlertConfigurationApiParams) CreateAlertConfigurationApiRequest {
 	return CreateAlertConfigurationApiRequest{
-		ApiService:                 a,
-		ctx:                        ctx,
-		groupId:                    args.GroupId,
-		alertConfigViewForNdsGroup: args.AlertConfigViewForNdsGroup,
+		ApiService:        a,
+		ctx:               ctx,
+		groupId:           args.GroupId,
+		groupAlertsConfig: args.GroupAlertsConfig,
+		envelope:          args.Envelope,
+		pretty:            args.Pretty,
 	}
 }
 
-func (r CreateAlertConfigurationApiRequest) Execute() (*AlertConfigViewForNdsGroup, *http.Response, error) {
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r CreateAlertConfigurationApiRequest) Envelope(envelope bool) CreateAlertConfigurationApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r CreateAlertConfigurationApiRequest) Pretty(pretty bool) CreateAlertConfigurationApiRequest {
+	r.pretty = &pretty
+	return r
+}
+
+func (r CreateAlertConfigurationApiRequest) Execute() (*GroupAlertsConfig, *http.Response, error) {
 	return r.ApiService.createAlertConfigurationExecute(r)
 }
 
@@ -259,24 +277,24 @@ Creates one alert configuration for the specified project. Alert configurations 
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateAlertConfigurationApiRequest
 */
-func (a *AlertConfigurationsApiService) CreateAlertConfiguration(ctx context.Context, groupId string, alertConfigViewForNdsGroup *AlertConfigViewForNdsGroup) CreateAlertConfigurationApiRequest {
+func (a *AlertConfigurationsApiService) CreateAlertConfiguration(ctx context.Context, groupId string, groupAlertsConfig *GroupAlertsConfig) CreateAlertConfigurationApiRequest {
 	return CreateAlertConfigurationApiRequest{
-		ApiService:                 a,
-		ctx:                        ctx,
-		groupId:                    groupId,
-		alertConfigViewForNdsGroup: alertConfigViewForNdsGroup,
+		ApiService:        a,
+		ctx:               ctx,
+		groupId:           groupId,
+		groupAlertsConfig: groupAlertsConfig,
 	}
 }
 
 // Execute executes the request
 //
-//	@return AlertConfigViewForNdsGroup
-func (a *AlertConfigurationsApiService) createAlertConfigurationExecute(r CreateAlertConfigurationApiRequest) (*AlertConfigViewForNdsGroup, *http.Response, error) {
+//	@return GroupAlertsConfig
+func (a *AlertConfigurationsApiService) createAlertConfigurationExecute(r CreateAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *AlertConfigViewForNdsGroup
+		localVarReturnValue *GroupAlertsConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertConfigurationsApiService.CreateAlertConfiguration")
@@ -296,10 +314,24 @@ func (a *AlertConfigurationsApiService) createAlertConfigurationExecute(r Create
 	if strlen(r.groupId) > 24 {
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
-	if r.alertConfigViewForNdsGroup == nil {
-		return localVarReturnValue, nil, reportError("alertConfigViewForNdsGroup is required and must be specified")
+	if r.groupAlertsConfig == nil {
+		return localVarReturnValue, nil, reportError("groupAlertsConfig is required and must be specified")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
@@ -318,7 +350,7 @@ func (a *AlertConfigurationsApiService) createAlertConfigurationExecute(r Create
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.alertConfigViewForNdsGroup
+	localVarPostBody = r.groupAlertsConfig
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -369,11 +401,15 @@ type DeleteAlertConfigurationApiRequest struct {
 	ApiService    AlertConfigurationsApi
 	groupId       string
 	alertConfigId string
+	envelope      *bool
+	pretty        *bool
 }
 
 type DeleteAlertConfigurationApiParams struct {
 	GroupId       string
 	AlertConfigId string
+	Envelope      *bool
+	Pretty        *bool
 }
 
 func (a *AlertConfigurationsApiService) DeleteAlertConfigurationWithParams(ctx context.Context, args *DeleteAlertConfigurationApiParams) DeleteAlertConfigurationApiRequest {
@@ -382,7 +418,21 @@ func (a *AlertConfigurationsApiService) DeleteAlertConfigurationWithParams(ctx c
 		ctx:           ctx,
 		groupId:       args.GroupId,
 		alertConfigId: args.AlertConfigId,
+		envelope:      args.Envelope,
+		pretty:        args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r DeleteAlertConfigurationApiRequest) Envelope(envelope bool) DeleteAlertConfigurationApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r DeleteAlertConfigurationApiRequest) Pretty(pretty bool) DeleteAlertConfigurationApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r DeleteAlertConfigurationApiRequest) Execute() (*http.Response, error) {
@@ -443,6 +493,20 @@ func (a *AlertConfigurationsApiService) deleteAlertConfigurationExecute(r Delete
 		return nil, reportError("alertConfigId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -501,11 +565,15 @@ type GetAlertConfigurationApiRequest struct {
 	ApiService    AlertConfigurationsApi
 	groupId       string
 	alertConfigId string
+	envelope      *bool
+	pretty        *bool
 }
 
 type GetAlertConfigurationApiParams struct {
 	GroupId       string
 	AlertConfigId string
+	Envelope      *bool
+	Pretty        *bool
 }
 
 func (a *AlertConfigurationsApiService) GetAlertConfigurationWithParams(ctx context.Context, args *GetAlertConfigurationApiParams) GetAlertConfigurationApiRequest {
@@ -514,10 +582,24 @@ func (a *AlertConfigurationsApiService) GetAlertConfigurationWithParams(ctx cont
 		ctx:           ctx,
 		groupId:       args.GroupId,
 		alertConfigId: args.AlertConfigId,
+		envelope:      args.Envelope,
+		pretty:        args.Pretty,
 	}
 }
 
-func (r GetAlertConfigurationApiRequest) Execute() (*AlertConfigViewForNdsGroup, *http.Response, error) {
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r GetAlertConfigurationApiRequest) Envelope(envelope bool) GetAlertConfigurationApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r GetAlertConfigurationApiRequest) Pretty(pretty bool) GetAlertConfigurationApiRequest {
+	r.pretty = &pretty
+	return r
+}
+
+func (r GetAlertConfigurationApiRequest) Execute() (*GroupAlertsConfig, *http.Response, error) {
 	return r.ApiService.getAlertConfigurationExecute(r)
 }
 
@@ -544,13 +626,13 @@ func (a *AlertConfigurationsApiService) GetAlertConfiguration(ctx context.Contex
 
 // Execute executes the request
 //
-//	@return AlertConfigViewForNdsGroup
-func (a *AlertConfigurationsApiService) getAlertConfigurationExecute(r GetAlertConfigurationApiRequest) (*AlertConfigViewForNdsGroup, *http.Response, error) {
+//	@return GroupAlertsConfig
+func (a *AlertConfigurationsApiService) getAlertConfigurationExecute(r GetAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *AlertConfigViewForNdsGroup
+		localVarReturnValue *GroupAlertsConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertConfigurationsApiService.GetAlertConfiguration")
@@ -578,6 +660,20 @@ func (a *AlertConfigurationsApiService) getAlertConfigurationExecute(r GetAlertC
 		return localVarReturnValue, nil, reportError("alertConfigId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -643,16 +739,34 @@ func (a *AlertConfigurationsApiService) getAlertConfigurationExecute(r GetAlertC
 type ListAlertConfigurationMatchersFieldNamesApiRequest struct {
 	ctx        context.Context
 	ApiService AlertConfigurationsApi
+	envelope   *bool
+	pretty     *bool
 }
 
 type ListAlertConfigurationMatchersFieldNamesApiParams struct {
+	Envelope *bool
+	Pretty   *bool
 }
 
 func (a *AlertConfigurationsApiService) ListAlertConfigurationMatchersFieldNamesWithParams(ctx context.Context, args *ListAlertConfigurationMatchersFieldNamesApiParams) ListAlertConfigurationMatchersFieldNamesApiRequest {
 	return ListAlertConfigurationMatchersFieldNamesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
+		envelope:   args.Envelope,
+		pretty:     args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r ListAlertConfigurationMatchersFieldNamesApiRequest) Envelope(envelope bool) ListAlertConfigurationMatchersFieldNamesApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r ListAlertConfigurationMatchersFieldNamesApiRequest) Pretty(pretty bool) ListAlertConfigurationMatchersFieldNamesApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r ListAlertConfigurationMatchersFieldNamesApiRequest) Execute() ([]string, *http.Response, error) {
@@ -696,6 +810,20 @@ func (a *AlertConfigurationsApiService) listAlertConfigurationMatchersFieldNames
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -762,16 +890,20 @@ type ListAlertConfigurationsApiRequest struct {
 	ctx          context.Context
 	ApiService   AlertConfigurationsApi
 	groupId      string
+	envelope     *bool
 	includeCount *bool
 	itemsPerPage *int
 	pageNum      *int
+	pretty       *bool
 }
 
 type ListAlertConfigurationsApiParams struct {
 	GroupId      string
+	Envelope     *bool
 	IncludeCount *bool
 	ItemsPerPage *int
 	PageNum      *int
+	Pretty       *bool
 }
 
 func (a *AlertConfigurationsApiService) ListAlertConfigurationsWithParams(ctx context.Context, args *ListAlertConfigurationsApiParams) ListAlertConfigurationsApiRequest {
@@ -779,10 +911,18 @@ func (a *AlertConfigurationsApiService) ListAlertConfigurationsWithParams(ctx co
 		ApiService:   a,
 		ctx:          ctx,
 		groupId:      args.GroupId,
+		envelope:     args.Envelope,
 		includeCount: args.IncludeCount,
 		itemsPerPage: args.ItemsPerPage,
 		pageNum:      args.PageNum,
+		pretty:       args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r ListAlertConfigurationsApiRequest) Envelope(envelope bool) ListAlertConfigurationsApiRequest {
+	r.envelope = &envelope
+	return r
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
@@ -800,6 +940,12 @@ func (r ListAlertConfigurationsApiRequest) ItemsPerPage(itemsPerPage int) ListAl
 // Number of the page that displays the current set of the total objects that the response returns.
 func (r ListAlertConfigurationsApiRequest) PageNum(pageNum int) ListAlertConfigurationsApiRequest {
 	r.pageNum = &pageNum
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r ListAlertConfigurationsApiRequest) Pretty(pretty bool) ListAlertConfigurationsApiRequest {
+	r.pretty = &pretty
 	return r
 }
 
@@ -855,6 +1001,13 @@ func (a *AlertConfigurationsApiService) listAlertConfigurationsExecute(r ListAle
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
 	if r.includeCount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
 	} else {
@@ -875,6 +1028,13 @@ func (a *AlertConfigurationsApiService) listAlertConfigurationsExecute(r ListAle
 		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -943,6 +1103,8 @@ type ListAlertConfigurationsByAlertIdApiRequest struct {
 	ApiService   AlertConfigurationsApi
 	groupId      string
 	alertId      string
+	envelope     *bool
+	pretty       *bool
 	includeCount *bool
 	itemsPerPage *int
 	pageNum      *int
@@ -951,6 +1113,8 @@ type ListAlertConfigurationsByAlertIdApiRequest struct {
 type ListAlertConfigurationsByAlertIdApiParams struct {
 	GroupId      string
 	AlertId      string
+	Envelope     *bool
+	Pretty       *bool
 	IncludeCount *bool
 	ItemsPerPage *int
 	PageNum      *int
@@ -962,10 +1126,24 @@ func (a *AlertConfigurationsApiService) ListAlertConfigurationsByAlertIdWithPara
 		ctx:          ctx,
 		groupId:      args.GroupId,
 		alertId:      args.AlertId,
+		envelope:     args.Envelope,
+		pretty:       args.Pretty,
 		includeCount: args.IncludeCount,
 		itemsPerPage: args.ItemsPerPage,
 		pageNum:      args.PageNum,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r ListAlertConfigurationsByAlertIdApiRequest) Envelope(envelope bool) ListAlertConfigurationsByAlertIdApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r ListAlertConfigurationsByAlertIdApiRequest) Pretty(pretty bool) ListAlertConfigurationsByAlertIdApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
@@ -1047,6 +1225,20 @@ func (a *AlertConfigurationsApiService) listAlertConfigurationsByAlertIdExecute(
 		return localVarReturnValue, nil, reportError("alertId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	if r.includeCount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
 	} else {
@@ -1135,13 +1327,17 @@ type ToggleAlertConfigurationApiRequest struct {
 	ApiService    AlertConfigurationsApi
 	groupId       string
 	alertConfigId string
-	toggle        *Toggle
+	alertsToggle  *AlertsToggle
+	envelope      *bool
+	pretty        *bool
 }
 
 type ToggleAlertConfigurationApiParams struct {
 	GroupId       string
 	AlertConfigId string
-	Toggle        *Toggle
+	AlertsToggle  *AlertsToggle
+	Envelope      *bool
+	Pretty        *bool
 }
 
 func (a *AlertConfigurationsApiService) ToggleAlertConfigurationWithParams(ctx context.Context, args *ToggleAlertConfigurationApiParams) ToggleAlertConfigurationApiRequest {
@@ -1150,11 +1346,25 @@ func (a *AlertConfigurationsApiService) ToggleAlertConfigurationWithParams(ctx c
 		ctx:           ctx,
 		groupId:       args.GroupId,
 		alertConfigId: args.AlertConfigId,
-		toggle:        args.Toggle,
+		alertsToggle:  args.AlertsToggle,
+		envelope:      args.Envelope,
+		pretty:        args.Pretty,
 	}
 }
 
-func (r ToggleAlertConfigurationApiRequest) Execute() (*AlertConfigViewForNdsGroup, *http.Response, error) {
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r ToggleAlertConfigurationApiRequest) Envelope(envelope bool) ToggleAlertConfigurationApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r ToggleAlertConfigurationApiRequest) Pretty(pretty bool) ToggleAlertConfigurationApiRequest {
+	r.pretty = &pretty
+	return r
+}
+
+func (r ToggleAlertConfigurationApiRequest) Execute() (*GroupAlertsConfig, *http.Response, error) {
 	return r.ApiService.toggleAlertConfigurationExecute(r)
 }
 
@@ -1172,25 +1382,25 @@ This resource remains under revision and may change.
 	@param alertConfigId Unique 24-hexadecimal digit string that identifies the alert configuration that triggered this alert. Use the [/alertConfigs](#tag/Alert-Configurations/operation/listAlertConfigurations) endpoint to retrieve all alert configurations to which the authenticated user has access.
 	@return ToggleAlertConfigurationApiRequest
 */
-func (a *AlertConfigurationsApiService) ToggleAlertConfiguration(ctx context.Context, groupId string, alertConfigId string, toggle *Toggle) ToggleAlertConfigurationApiRequest {
+func (a *AlertConfigurationsApiService) ToggleAlertConfiguration(ctx context.Context, groupId string, alertConfigId string, alertsToggle *AlertsToggle) ToggleAlertConfigurationApiRequest {
 	return ToggleAlertConfigurationApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
 		groupId:       groupId,
 		alertConfigId: alertConfigId,
-		toggle:        toggle,
+		alertsToggle:  alertsToggle,
 	}
 }
 
 // Execute executes the request
 //
-//	@return AlertConfigViewForNdsGroup
-func (a *AlertConfigurationsApiService) toggleAlertConfigurationExecute(r ToggleAlertConfigurationApiRequest) (*AlertConfigViewForNdsGroup, *http.Response, error) {
+//	@return GroupAlertsConfig
+func (a *AlertConfigurationsApiService) toggleAlertConfigurationExecute(r ToggleAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *AlertConfigViewForNdsGroup
+		localVarReturnValue *GroupAlertsConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertConfigurationsApiService.ToggleAlertConfiguration")
@@ -1217,10 +1427,24 @@ func (a *AlertConfigurationsApiService) toggleAlertConfigurationExecute(r Toggle
 	if strlen(r.alertConfigId) > 24 {
 		return localVarReturnValue, nil, reportError("alertConfigId must have less than 24 elements")
 	}
-	if r.toggle == nil {
-		return localVarReturnValue, nil, reportError("toggle is required and must be specified")
+	if r.alertsToggle == nil {
+		return localVarReturnValue, nil, reportError("alertsToggle is required and must be specified")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
@@ -1239,7 +1463,7 @@ func (a *AlertConfigurationsApiService) toggleAlertConfigurationExecute(r Toggle
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.toggle
+	localVarPostBody = r.alertsToggle
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1286,30 +1510,48 @@ func (a *AlertConfigurationsApiService) toggleAlertConfigurationExecute(r Toggle
 }
 
 type UpdateAlertConfigurationApiRequest struct {
-	ctx                        context.Context
-	ApiService                 AlertConfigurationsApi
-	groupId                    string
-	alertConfigId              string
-	alertConfigViewForNdsGroup *AlertConfigViewForNdsGroup
+	ctx               context.Context
+	ApiService        AlertConfigurationsApi
+	groupId           string
+	alertConfigId     string
+	groupAlertsConfig *GroupAlertsConfig
+	envelope          *bool
+	pretty            *bool
 }
 
 type UpdateAlertConfigurationApiParams struct {
-	GroupId                    string
-	AlertConfigId              string
-	AlertConfigViewForNdsGroup *AlertConfigViewForNdsGroup
+	GroupId           string
+	AlertConfigId     string
+	GroupAlertsConfig *GroupAlertsConfig
+	Envelope          *bool
+	Pretty            *bool
 }
 
 func (a *AlertConfigurationsApiService) UpdateAlertConfigurationWithParams(ctx context.Context, args *UpdateAlertConfigurationApiParams) UpdateAlertConfigurationApiRequest {
 	return UpdateAlertConfigurationApiRequest{
-		ApiService:                 a,
-		ctx:                        ctx,
-		groupId:                    args.GroupId,
-		alertConfigId:              args.AlertConfigId,
-		alertConfigViewForNdsGroup: args.AlertConfigViewForNdsGroup,
+		ApiService:        a,
+		ctx:               ctx,
+		groupId:           args.GroupId,
+		alertConfigId:     args.AlertConfigId,
+		groupAlertsConfig: args.GroupAlertsConfig,
+		envelope:          args.Envelope,
+		pretty:            args.Pretty,
 	}
 }
 
-func (r UpdateAlertConfigurationApiRequest) Execute() (*AlertConfigViewForNdsGroup, *http.Response, error) {
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r UpdateAlertConfigurationApiRequest) Envelope(envelope bool) UpdateAlertConfigurationApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r UpdateAlertConfigurationApiRequest) Pretty(pretty bool) UpdateAlertConfigurationApiRequest {
+	r.pretty = &pretty
+	return r
+}
+
+func (r UpdateAlertConfigurationApiRequest) Execute() (*GroupAlertsConfig, *http.Response, error) {
 	return r.ApiService.updateAlertConfigurationExecute(r)
 }
 
@@ -1327,25 +1569,25 @@ Updates one alert configuration in the specified project. Alert configurations d
 	@param alertConfigId Unique 24-hexadecimal digit string that identifies the alert configuration. Use the [/alertConfigs](#tag/Alert-Configurations/operation/listAlertConfigurations) endpoint to retrieve all alert configurations to which the authenticated user has access.
 	@return UpdateAlertConfigurationApiRequest
 */
-func (a *AlertConfigurationsApiService) UpdateAlertConfiguration(ctx context.Context, groupId string, alertConfigId string, alertConfigViewForNdsGroup *AlertConfigViewForNdsGroup) UpdateAlertConfigurationApiRequest {
+func (a *AlertConfigurationsApiService) UpdateAlertConfiguration(ctx context.Context, groupId string, alertConfigId string, groupAlertsConfig *GroupAlertsConfig) UpdateAlertConfigurationApiRequest {
 	return UpdateAlertConfigurationApiRequest{
-		ApiService:                 a,
-		ctx:                        ctx,
-		groupId:                    groupId,
-		alertConfigId:              alertConfigId,
-		alertConfigViewForNdsGroup: alertConfigViewForNdsGroup,
+		ApiService:        a,
+		ctx:               ctx,
+		groupId:           groupId,
+		alertConfigId:     alertConfigId,
+		groupAlertsConfig: groupAlertsConfig,
 	}
 }
 
 // Execute executes the request
 //
-//	@return AlertConfigViewForNdsGroup
-func (a *AlertConfigurationsApiService) updateAlertConfigurationExecute(r UpdateAlertConfigurationApiRequest) (*AlertConfigViewForNdsGroup, *http.Response, error) {
+//	@return GroupAlertsConfig
+func (a *AlertConfigurationsApiService) updateAlertConfigurationExecute(r UpdateAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *AlertConfigViewForNdsGroup
+		localVarReturnValue *GroupAlertsConfig
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertConfigurationsApiService.UpdateAlertConfiguration")
@@ -1372,10 +1614,24 @@ func (a *AlertConfigurationsApiService) updateAlertConfigurationExecute(r Update
 	if strlen(r.alertConfigId) > 24 {
 		return localVarReturnValue, nil, reportError("alertConfigId must have less than 24 elements")
 	}
-	if r.alertConfigViewForNdsGroup == nil {
-		return localVarReturnValue, nil, reportError("alertConfigViewForNdsGroup is required and must be specified")
+	if r.groupAlertsConfig == nil {
+		return localVarReturnValue, nil, reportError("groupAlertsConfig is required and must be specified")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
@@ -1394,7 +1650,7 @@ func (a *AlertConfigurationsApiService) updateAlertConfigurationExecute(r Update
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.alertConfigViewForNdsGroup
+	localVarPostBody = r.groupAlertsConfig
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

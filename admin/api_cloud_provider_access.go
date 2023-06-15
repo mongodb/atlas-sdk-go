@@ -109,7 +109,7 @@ type CloudProviderAccessApi interface {
 	GetCloudProviderAccessRoleWithParams(ctx context.Context, args *GetCloudProviderAccessRoleApiParams) GetCloudProviderAccessRoleApiRequest
 
 	// Interface only available internally
-	getCloudProviderAccessRoleExecute(r GetCloudProviderAccessRoleApiRequest) (*CloudProviderAccess, *http.Response, error)
+	getCloudProviderAccessRoleExecute(r GetCloudProviderAccessRoleApiRequest) (*CloudProviderAccessRoles, *http.Response, error)
 
 	/*
 		ListCloudProviderAccessRoles Return All Cloud Provider Access Roles
@@ -132,7 +132,7 @@ type CloudProviderAccessApi interface {
 	ListCloudProviderAccessRolesWithParams(ctx context.Context, args *ListCloudProviderAccessRolesApiParams) ListCloudProviderAccessRolesApiRequest
 
 	// Interface only available internally
-	listCloudProviderAccessRolesExecute(r ListCloudProviderAccessRolesApiRequest) (*CloudProviderAccess, *http.Response, error)
+	listCloudProviderAccessRolesExecute(r ListCloudProviderAccessRolesApiRequest) (*CloudProviderAccessRoles, *http.Response, error)
 }
 
 // CloudProviderAccessApiService CloudProviderAccessApi service
@@ -144,12 +144,16 @@ type AuthorizeCloudProviderAccessRoleApiRequest struct {
 	groupId                 string
 	roleId                  string
 	cloudProviderAccessRole *CloudProviderAccessRole
+	envelope                *bool
+	pretty                  *bool
 }
 
 type AuthorizeCloudProviderAccessRoleApiParams struct {
 	GroupId                 string
 	RoleId                  string
 	CloudProviderAccessRole *CloudProviderAccessRole
+	Envelope                *bool
+	Pretty                  *bool
 }
 
 func (a *CloudProviderAccessApiService) AuthorizeCloudProviderAccessRoleWithParams(ctx context.Context, args *AuthorizeCloudProviderAccessRoleApiParams) AuthorizeCloudProviderAccessRoleApiRequest {
@@ -159,7 +163,21 @@ func (a *CloudProviderAccessApiService) AuthorizeCloudProviderAccessRoleWithPara
 		groupId:                 args.GroupId,
 		roleId:                  args.RoleId,
 		cloudProviderAccessRole: args.CloudProviderAccessRole,
+		envelope:                args.Envelope,
+		pretty:                  args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r AuthorizeCloudProviderAccessRoleApiRequest) Envelope(envelope bool) AuthorizeCloudProviderAccessRoleApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r AuthorizeCloudProviderAccessRoleApiRequest) Pretty(pretty bool) AuthorizeCloudProviderAccessRoleApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r AuthorizeCloudProviderAccessRoleApiRequest) Execute() (*CloudProviderAccessRole, *http.Response, error) {
@@ -225,6 +243,20 @@ func (a *CloudProviderAccessApiService) authorizeCloudProviderAccessRoleExecute(
 		return localVarReturnValue, nil, reportError("cloudProviderAccessRole is required and must be specified")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
@@ -294,11 +326,15 @@ type CreateCloudProviderAccessRoleApiRequest struct {
 	ApiService              CloudProviderAccessApi
 	groupId                 string
 	cloudProviderAccessRole *CloudProviderAccessRole
+	envelope                *bool
+	pretty                  *bool
 }
 
 type CreateCloudProviderAccessRoleApiParams struct {
 	GroupId                 string
 	CloudProviderAccessRole *CloudProviderAccessRole
+	Envelope                *bool
+	Pretty                  *bool
 }
 
 func (a *CloudProviderAccessApiService) CreateCloudProviderAccessRoleWithParams(ctx context.Context, args *CreateCloudProviderAccessRoleApiParams) CreateCloudProviderAccessRoleApiRequest {
@@ -307,7 +343,21 @@ func (a *CloudProviderAccessApiService) CreateCloudProviderAccessRoleWithParams(
 		ctx:                     ctx,
 		groupId:                 args.GroupId,
 		cloudProviderAccessRole: args.CloudProviderAccessRole,
+		envelope:                args.Envelope,
+		pretty:                  args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r CreateCloudProviderAccessRoleApiRequest) Envelope(envelope bool) CreateCloudProviderAccessRoleApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r CreateCloudProviderAccessRoleApiRequest) Pretty(pretty bool) CreateCloudProviderAccessRoleApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r CreateCloudProviderAccessRoleApiRequest) Execute() (*CloudProviderAccessRole, *http.Response, error) {
@@ -366,6 +416,20 @@ func (a *CloudProviderAccessApiService) createCloudProviderAccessRoleExecute(r C
 		return localVarReturnValue, nil, reportError("cloudProviderAccessRole is required and must be specified")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
@@ -436,12 +500,16 @@ type DeauthorizeCloudProviderAccessRoleApiRequest struct {
 	groupId       string
 	cloudProvider string
 	roleId        string
+	envelope      *bool
+	pretty        *bool
 }
 
 type DeauthorizeCloudProviderAccessRoleApiParams struct {
 	GroupId       string
 	CloudProvider string
 	RoleId        string
+	Envelope      *bool
+	Pretty        *bool
 }
 
 func (a *CloudProviderAccessApiService) DeauthorizeCloudProviderAccessRoleWithParams(ctx context.Context, args *DeauthorizeCloudProviderAccessRoleApiParams) DeauthorizeCloudProviderAccessRoleApiRequest {
@@ -451,7 +519,21 @@ func (a *CloudProviderAccessApiService) DeauthorizeCloudProviderAccessRoleWithPa
 		groupId:       args.GroupId,
 		cloudProvider: args.CloudProvider,
 		roleId:        args.RoleId,
+		envelope:      args.Envelope,
+		pretty:        args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r DeauthorizeCloudProviderAccessRoleApiRequest) Envelope(envelope bool) DeauthorizeCloudProviderAccessRoleApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r DeauthorizeCloudProviderAccessRoleApiRequest) Pretty(pretty bool) DeauthorizeCloudProviderAccessRoleApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r DeauthorizeCloudProviderAccessRoleApiRequest) Execute() (*http.Response, error) {
@@ -513,6 +595,20 @@ func (a *CloudProviderAccessApiService) deauthorizeCloudProviderAccessRoleExecut
 		return nil, reportError("roleId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -571,11 +667,15 @@ type GetCloudProviderAccessRoleApiRequest struct {
 	ApiService CloudProviderAccessApi
 	groupId    string
 	roleId     string
+	envelope   *bool
+	pretty     *bool
 }
 
 type GetCloudProviderAccessRoleApiParams struct {
-	GroupId string
-	RoleId  string
+	GroupId  string
+	RoleId   string
+	Envelope *bool
+	Pretty   *bool
 }
 
 func (a *CloudProviderAccessApiService) GetCloudProviderAccessRoleWithParams(ctx context.Context, args *GetCloudProviderAccessRoleApiParams) GetCloudProviderAccessRoleApiRequest {
@@ -584,10 +684,24 @@ func (a *CloudProviderAccessApiService) GetCloudProviderAccessRoleWithParams(ctx
 		ctx:        ctx,
 		groupId:    args.GroupId,
 		roleId:     args.RoleId,
+		envelope:   args.Envelope,
+		pretty:     args.Pretty,
 	}
 }
 
-func (r GetCloudProviderAccessRoleApiRequest) Execute() (*CloudProviderAccess, *http.Response, error) {
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r GetCloudProviderAccessRoleApiRequest) Envelope(envelope bool) GetCloudProviderAccessRoleApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r GetCloudProviderAccessRoleApiRequest) Pretty(pretty bool) GetCloudProviderAccessRoleApiRequest {
+	r.pretty = &pretty
+	return r
+}
+
+func (r GetCloudProviderAccessRoleApiRequest) Execute() (*CloudProviderAccessRoles, *http.Response, error) {
 	return r.ApiService.getCloudProviderAccessRoleExecute(r)
 }
 
@@ -612,13 +726,13 @@ func (a *CloudProviderAccessApiService) GetCloudProviderAccessRole(ctx context.C
 
 // Execute executes the request
 //
-//	@return CloudProviderAccess
-func (a *CloudProviderAccessApiService) getCloudProviderAccessRoleExecute(r GetCloudProviderAccessRoleApiRequest) (*CloudProviderAccess, *http.Response, error) {
+//	@return CloudProviderAccessRoles
+func (a *CloudProviderAccessApiService) getCloudProviderAccessRoleExecute(r GetCloudProviderAccessRoleApiRequest) (*CloudProviderAccessRoles, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *CloudProviderAccess
+		localVarReturnValue *CloudProviderAccessRoles
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAccessApiService.GetCloudProviderAccessRole")
@@ -646,6 +760,20 @@ func (a *CloudProviderAccessApiService) getCloudProviderAccessRoleExecute(r GetC
 		return localVarReturnValue, nil, reportError("roleId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -712,10 +840,14 @@ type ListCloudProviderAccessRolesApiRequest struct {
 	ctx        context.Context
 	ApiService CloudProviderAccessApi
 	groupId    string
+	envelope   *bool
+	pretty     *bool
 }
 
 type ListCloudProviderAccessRolesApiParams struct {
-	GroupId string
+	GroupId  string
+	Envelope *bool
+	Pretty   *bool
 }
 
 func (a *CloudProviderAccessApiService) ListCloudProviderAccessRolesWithParams(ctx context.Context, args *ListCloudProviderAccessRolesApiParams) ListCloudProviderAccessRolesApiRequest {
@@ -723,10 +855,24 @@ func (a *CloudProviderAccessApiService) ListCloudProviderAccessRolesWithParams(c
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    args.GroupId,
+		envelope:   args.Envelope,
+		pretty:     args.Pretty,
 	}
 }
 
-func (r ListCloudProviderAccessRolesApiRequest) Execute() (*CloudProviderAccess, *http.Response, error) {
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r ListCloudProviderAccessRolesApiRequest) Envelope(envelope bool) ListCloudProviderAccessRolesApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r ListCloudProviderAccessRolesApiRequest) Pretty(pretty bool) ListCloudProviderAccessRolesApiRequest {
+	r.pretty = &pretty
+	return r
+}
+
+func (r ListCloudProviderAccessRolesApiRequest) Execute() (*CloudProviderAccessRoles, *http.Response, error) {
 	return r.ApiService.listCloudProviderAccessRolesExecute(r)
 }
 
@@ -749,13 +895,13 @@ func (a *CloudProviderAccessApiService) ListCloudProviderAccessRoles(ctx context
 
 // Execute executes the request
 //
-//	@return CloudProviderAccess
-func (a *CloudProviderAccessApiService) listCloudProviderAccessRolesExecute(r ListCloudProviderAccessRolesApiRequest) (*CloudProviderAccess, *http.Response, error) {
+//	@return CloudProviderAccessRoles
+func (a *CloudProviderAccessApiService) listCloudProviderAccessRolesExecute(r ListCloudProviderAccessRolesApiRequest) (*CloudProviderAccessRoles, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *CloudProviderAccess
+		localVarReturnValue *CloudProviderAccessRoles
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAccessApiService.ListCloudProviderAccessRoles")
@@ -776,6 +922,20 @@ func (a *CloudProviderAccessApiService) listCloudProviderAccessRolesExecute(r Li
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

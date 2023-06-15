@@ -70,6 +70,8 @@ type ListAccessLogsByClusterNameApiRequest struct {
 	ApiService  AccessTrackingApi
 	groupId     string
 	clusterName string
+	envelope    *bool
+	pretty      *bool
 	authResult  *bool
 	end         *int64
 	ipAddress   *string
@@ -80,6 +82,8 @@ type ListAccessLogsByClusterNameApiRequest struct {
 type ListAccessLogsByClusterNameApiParams struct {
 	GroupId     string
 	ClusterName string
+	Envelope    *bool
+	Pretty      *bool
 	AuthResult  *bool
 	End         *int64
 	IpAddress   *string
@@ -93,12 +97,26 @@ func (a *AccessTrackingApiService) ListAccessLogsByClusterNameWithParams(ctx con
 		ctx:         ctx,
 		groupId:     args.GroupId,
 		clusterName: args.ClusterName,
+		envelope:    args.Envelope,
+		pretty:      args.Pretty,
 		authResult:  args.AuthResult,
 		end:         args.End,
 		ipAddress:   args.IpAddress,
 		nLogs:       args.NLogs,
 		start:       args.Start,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r ListAccessLogsByClusterNameApiRequest) Envelope(envelope bool) ListAccessLogsByClusterNameApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r ListAccessLogsByClusterNameApiRequest) Pretty(pretty bool) ListAccessLogsByClusterNameApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 // Flag that indicates whether the response returns the successful authentication attempts only.
@@ -190,6 +208,20 @@ func (a *AccessTrackingApiService) listAccessLogsByClusterNameExecute(r ListAcce
 		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	if r.authResult != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "authResult", r.authResult, "")
 	}
@@ -276,6 +308,8 @@ type ListAccessLogsByHostnameApiRequest struct {
 	ApiService AccessTrackingApi
 	groupId    string
 	hostname   string
+	envelope   *bool
+	pretty     *bool
 	authResult *bool
 	end        *int64
 	ipAddress  *string
@@ -286,6 +320,8 @@ type ListAccessLogsByHostnameApiRequest struct {
 type ListAccessLogsByHostnameApiParams struct {
 	GroupId    string
 	Hostname   string
+	Envelope   *bool
+	Pretty     *bool
 	AuthResult *bool
 	End        *int64
 	IpAddress  *string
@@ -299,12 +335,26 @@ func (a *AccessTrackingApiService) ListAccessLogsByHostnameWithParams(ctx contex
 		ctx:        ctx,
 		groupId:    args.GroupId,
 		hostname:   args.Hostname,
+		envelope:   args.Envelope,
+		pretty:     args.Pretty,
 		authResult: args.AuthResult,
 		end:        args.End,
 		ipAddress:  args.IpAddress,
 		nLogs:      args.NLogs,
 		start:      args.Start,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r ListAccessLogsByHostnameApiRequest) Envelope(envelope bool) ListAccessLogsByHostnameApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r ListAccessLogsByHostnameApiRequest) Pretty(pretty bool) ListAccessLogsByHostnameApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 // Flag that indicates whether the response returns the successful authentication attempts only.
@@ -390,6 +440,20 @@ func (a *AccessTrackingApiService) listAccessLogsByHostnameExecute(r ListAccessL
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	if r.authResult != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "authResult", r.authResult, "")
 	}

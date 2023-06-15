@@ -17,7 +17,7 @@ type DiskBackupExportJob struct {
 	// Date and time when someone created this export job. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// Collection of key-value pairs that represent custom data for the metadata file that MongoDB Cloud uploads to the bucket when the export job finishes.
-	CustomData []Label `json:"customData,omitempty"`
+	CustomData []BackupLabel `json:"customData,omitempty"`
 	// One or more Uniform Resource Locators (URLs) that point to the compressed snapshot files for manual download. MongoDB Cloud returns this parameter when `\"deliveryType\" : \"download\"`.
 	DeliveryUrl []string `json:"deliveryUrl,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the AWS bucket to which MongoDB Cloud exports the Cloud Backup snapshot.
@@ -120,9 +120,9 @@ func (o *DiskBackupExportJob) SetCreatedAt(v time.Time) {
 }
 
 // GetCustomData returns the CustomData field value if set, zero value otherwise.
-func (o *DiskBackupExportJob) GetCustomData() []Label {
+func (o *DiskBackupExportJob) GetCustomData() []BackupLabel {
 	if o == nil || IsNil(o.CustomData) {
-		var ret []Label
+		var ret []BackupLabel
 		return ret
 	}
 	return o.CustomData
@@ -130,7 +130,7 @@ func (o *DiskBackupExportJob) GetCustomData() []Label {
 
 // GetCustomDataOk returns a tuple with the CustomData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupExportJob) GetCustomDataOk() ([]Label, bool) {
+func (o *DiskBackupExportJob) GetCustomDataOk() ([]BackupLabel, bool) {
 	if o == nil || IsNil(o.CustomData) {
 		return nil, false
 	}
@@ -146,8 +146,8 @@ func (o *DiskBackupExportJob) HasCustomData() bool {
 	return false
 }
 
-// SetCustomData gets a reference to the given []Label and assigns it to the CustomData field.
-func (o *DiskBackupExportJob) SetCustomData(v []Label) {
+// SetCustomData gets a reference to the given []BackupLabel and assigns it to the CustomData field.
+func (o *DiskBackupExportJob) SetCustomData(v []BackupLabel) {
 	o.CustomData = v
 }
 

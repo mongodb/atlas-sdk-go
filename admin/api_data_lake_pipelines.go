@@ -23,7 +23,7 @@ type DataLakePipelinesApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return CreatePipelineApiRequest
 	*/
-	CreatePipeline(ctx context.Context, groupId string, ingestionPipeline *IngestionPipeline) CreatePipelineApiRequest
+	CreatePipeline(ctx context.Context, groupId string, dataLakeIngestionPipeline *DataLakeIngestionPipeline) CreatePipelineApiRequest
 	/*
 		CreatePipeline Create One Data Lake Pipeline
 
@@ -35,7 +35,7 @@ type DataLakePipelinesApi interface {
 	CreatePipelineWithParams(ctx context.Context, args *CreatePipelineApiParams) CreatePipelineApiRequest
 
 	// Interface only available internally
-	createPipelineExecute(r CreatePipelineApiRequest) (*IngestionPipeline, *http.Response, error)
+	createPipelineExecute(r CreatePipelineApiRequest) (*DataLakeIngestionPipeline, *http.Response, error)
 
 	/*
 		DeletePipeline Remove One Data Lake Pipeline
@@ -108,7 +108,7 @@ type DataLakePipelinesApi interface {
 	GetPipelineWithParams(ctx context.Context, args *GetPipelineApiParams) GetPipelineApiRequest
 
 	// Interface only available internally
-	getPipelineExecute(r GetPipelineApiRequest) (*IngestionPipeline, *http.Response, error)
+	getPipelineExecute(r GetPipelineApiRequest) (*DataLakeIngestionPipeline, *http.Response, error)
 
 	/*
 		GetPipelineRun Return One Data Lake Pipeline Run
@@ -228,7 +228,7 @@ type DataLakePipelinesApi interface {
 	ListPipelinesWithParams(ctx context.Context, args *ListPipelinesApiParams) ListPipelinesApiRequest
 
 	// Interface only available internally
-	listPipelinesExecute(r ListPipelinesApiRequest) ([]IngestionPipeline, *http.Response, error)
+	listPipelinesExecute(r ListPipelinesApiRequest) ([]DataLakeIngestionPipeline, *http.Response, error)
 
 	/*
 		PausePipeline Pause One Data Lake Pipeline
@@ -252,7 +252,7 @@ type DataLakePipelinesApi interface {
 	PausePipelineWithParams(ctx context.Context, args *PausePipelineApiParams) PausePipelineApiRequest
 
 	// Interface only available internally
-	pausePipelineExecute(r PausePipelineApiRequest) (*IngestionPipeline, *http.Response, error)
+	pausePipelineExecute(r PausePipelineApiRequest) (*DataLakeIngestionPipeline, *http.Response, error)
 
 	/*
 		ResumePipeline Resume One Data Lake Pipeline
@@ -276,7 +276,7 @@ type DataLakePipelinesApi interface {
 	ResumePipelineWithParams(ctx context.Context, args *ResumePipelineApiParams) ResumePipelineApiRequest
 
 	// Interface only available internally
-	resumePipelineExecute(r ResumePipelineApiRequest) (*IngestionPipeline, *http.Response, error)
+	resumePipelineExecute(r ResumePipelineApiRequest) (*DataLakeIngestionPipeline, *http.Response, error)
 
 	/*
 		TriggerSnapshotIngestion Trigger on demand snapshot ingestion
@@ -288,7 +288,7 @@ type DataLakePipelinesApi interface {
 		@param pipelineName Human-readable label that identifies the Data Lake Pipeline.
 		@return TriggerSnapshotIngestionApiRequest
 	*/
-	TriggerSnapshotIngestion(ctx context.Context, groupId string, pipelineName string, triggerIngestionRequest *TriggerIngestionRequest) TriggerSnapshotIngestionApiRequest
+	TriggerSnapshotIngestion(ctx context.Context, groupId string, pipelineName string, triggerIngestionPipelineRequest *TriggerIngestionPipelineRequest) TriggerSnapshotIngestionApiRequest
 	/*
 		TriggerSnapshotIngestion Trigger on demand snapshot ingestion
 
@@ -312,7 +312,7 @@ type DataLakePipelinesApi interface {
 		@param pipelineName Human-readable label that identifies the Data Lake Pipeline.
 		@return UpdatePipelineApiRequest
 	*/
-	UpdatePipeline(ctx context.Context, groupId string, pipelineName string, ingestionPipeline *IngestionPipeline) UpdatePipelineApiRequest
+	UpdatePipeline(ctx context.Context, groupId string, pipelineName string, dataLakeIngestionPipeline *DataLakeIngestionPipeline) UpdatePipelineApiRequest
 	/*
 		UpdatePipeline Update One Data Lake Pipeline
 
@@ -324,34 +324,43 @@ type DataLakePipelinesApi interface {
 	UpdatePipelineWithParams(ctx context.Context, args *UpdatePipelineApiParams) UpdatePipelineApiRequest
 
 	// Interface only available internally
-	updatePipelineExecute(r UpdatePipelineApiRequest) (*IngestionPipeline, *http.Response, error)
+	updatePipelineExecute(r UpdatePipelineApiRequest) (*DataLakeIngestionPipeline, *http.Response, error)
 }
 
 // DataLakePipelinesApiService DataLakePipelinesApi service
 type DataLakePipelinesApiService service
 
 type CreatePipelineApiRequest struct {
-	ctx               context.Context
-	ApiService        DataLakePipelinesApi
-	groupId           string
-	ingestionPipeline *IngestionPipeline
+	ctx                       context.Context
+	ApiService                DataLakePipelinesApi
+	groupId                   string
+	dataLakeIngestionPipeline *DataLakeIngestionPipeline
+	envelope                  *bool
 }
 
 type CreatePipelineApiParams struct {
-	GroupId           string
-	IngestionPipeline *IngestionPipeline
+	GroupId                   string
+	DataLakeIngestionPipeline *DataLakeIngestionPipeline
+	Envelope                  *bool
 }
 
 func (a *DataLakePipelinesApiService) CreatePipelineWithParams(ctx context.Context, args *CreatePipelineApiParams) CreatePipelineApiRequest {
 	return CreatePipelineApiRequest{
-		ApiService:        a,
-		ctx:               ctx,
-		groupId:           args.GroupId,
-		ingestionPipeline: args.IngestionPipeline,
+		ApiService:                a,
+		ctx:                       ctx,
+		groupId:                   args.GroupId,
+		dataLakeIngestionPipeline: args.DataLakeIngestionPipeline,
+		envelope:                  args.Envelope,
 	}
 }
 
-func (r CreatePipelineApiRequest) Execute() (*IngestionPipeline, *http.Response, error) {
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r CreatePipelineApiRequest) Envelope(envelope bool) CreatePipelineApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+func (r CreatePipelineApiRequest) Execute() (*DataLakeIngestionPipeline, *http.Response, error) {
 	return r.ApiService.createPipelineExecute(r)
 }
 
@@ -364,24 +373,24 @@ Creates one Data Lake Pipeline.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreatePipelineApiRequest
 */
-func (a *DataLakePipelinesApiService) CreatePipeline(ctx context.Context, groupId string, ingestionPipeline *IngestionPipeline) CreatePipelineApiRequest {
+func (a *DataLakePipelinesApiService) CreatePipeline(ctx context.Context, groupId string, dataLakeIngestionPipeline *DataLakeIngestionPipeline) CreatePipelineApiRequest {
 	return CreatePipelineApiRequest{
-		ApiService:        a,
-		ctx:               ctx,
-		groupId:           groupId,
-		ingestionPipeline: ingestionPipeline,
+		ApiService:                a,
+		ctx:                       ctx,
+		groupId:                   groupId,
+		dataLakeIngestionPipeline: dataLakeIngestionPipeline,
 	}
 }
 
 // Execute executes the request
 //
-//	@return IngestionPipeline
-func (a *DataLakePipelinesApiService) createPipelineExecute(r CreatePipelineApiRequest) (*IngestionPipeline, *http.Response, error) {
+//	@return DataLakeIngestionPipeline
+func (a *DataLakePipelinesApiService) createPipelineExecute(r CreatePipelineApiRequest) (*DataLakeIngestionPipeline, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *IngestionPipeline
+		localVarReturnValue *DataLakeIngestionPipeline
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesApiService.CreatePipeline")
@@ -401,10 +410,17 @@ func (a *DataLakePipelinesApiService) createPipelineExecute(r CreatePipelineApiR
 	if strlen(r.groupId) > 24 {
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
-	if r.ingestionPipeline == nil {
-		return localVarReturnValue, nil, reportError("ingestionPipeline is required and must be specified")
+	if r.dataLakeIngestionPipeline == nil {
+		return localVarReturnValue, nil, reportError("dataLakeIngestionPipeline is required and must be specified")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
@@ -423,7 +439,7 @@ func (a *DataLakePipelinesApiService) createPipelineExecute(r CreatePipelineApiR
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.ingestionPipeline
+	localVarPostBody = r.dataLakeIngestionPipeline
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -474,11 +490,13 @@ type DeletePipelineApiRequest struct {
 	ApiService   DataLakePipelinesApi
 	groupId      string
 	pipelineName string
+	envelope     *bool
 }
 
 type DeletePipelineApiParams struct {
 	GroupId      string
 	PipelineName string
+	Envelope     *bool
 }
 
 func (a *DataLakePipelinesApiService) DeletePipelineWithParams(ctx context.Context, args *DeletePipelineApiParams) DeletePipelineApiRequest {
@@ -487,7 +505,14 @@ func (a *DataLakePipelinesApiService) DeletePipelineWithParams(ctx context.Conte
 		ctx:          ctx,
 		groupId:      args.GroupId,
 		pipelineName: args.PipelineName,
+		envelope:     args.Envelope,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r DeletePipelineApiRequest) Envelope(envelope bool) DeletePipelineApiRequest {
+	r.envelope = &envelope
+	return r
 }
 
 func (r DeletePipelineApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -549,6 +574,13 @@ func (a *DataLakePipelinesApiService) deletePipelineExecute(r DeletePipelineApiR
 		return localVarReturnValue, nil, reportError("pipelineName must have less than 64 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -617,12 +649,16 @@ type DeletePipelineRunDatasetApiRequest struct {
 	groupId       string
 	pipelineName  string
 	pipelineRunId string
+	envelope      *bool
+	pretty        *bool
 }
 
 type DeletePipelineRunDatasetApiParams struct {
 	GroupId       string
 	PipelineName  string
 	PipelineRunId string
+	Envelope      *bool
+	Pretty        *bool
 }
 
 func (a *DataLakePipelinesApiService) DeletePipelineRunDatasetWithParams(ctx context.Context, args *DeletePipelineRunDatasetApiParams) DeletePipelineRunDatasetApiRequest {
@@ -632,7 +668,21 @@ func (a *DataLakePipelinesApiService) DeletePipelineRunDatasetWithParams(ctx con
 		groupId:       args.GroupId,
 		pipelineName:  args.PipelineName,
 		pipelineRunId: args.PipelineRunId,
+		envelope:      args.Envelope,
+		pretty:        args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r DeletePipelineRunDatasetApiRequest) Envelope(envelope bool) DeletePipelineRunDatasetApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r DeletePipelineRunDatasetApiRequest) Pretty(pretty bool) DeletePipelineRunDatasetApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r DeletePipelineRunDatasetApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -703,6 +753,20 @@ func (a *DataLakePipelinesApiService) deletePipelineRunDatasetExecute(r DeletePi
 		return localVarReturnValue, nil, reportError("pipelineRunId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -770,11 +834,15 @@ type GetPipelineApiRequest struct {
 	ApiService   DataLakePipelinesApi
 	groupId      string
 	pipelineName string
+	envelope     *bool
+	pretty       *bool
 }
 
 type GetPipelineApiParams struct {
 	GroupId      string
 	PipelineName string
+	Envelope     *bool
+	Pretty       *bool
 }
 
 func (a *DataLakePipelinesApiService) GetPipelineWithParams(ctx context.Context, args *GetPipelineApiParams) GetPipelineApiRequest {
@@ -783,10 +851,24 @@ func (a *DataLakePipelinesApiService) GetPipelineWithParams(ctx context.Context,
 		ctx:          ctx,
 		groupId:      args.GroupId,
 		pipelineName: args.PipelineName,
+		envelope:     args.Envelope,
+		pretty:       args.Pretty,
 	}
 }
 
-func (r GetPipelineApiRequest) Execute() (*IngestionPipeline, *http.Response, error) {
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r GetPipelineApiRequest) Envelope(envelope bool) GetPipelineApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r GetPipelineApiRequest) Pretty(pretty bool) GetPipelineApiRequest {
+	r.pretty = &pretty
+	return r
+}
+
+func (r GetPipelineApiRequest) Execute() (*DataLakeIngestionPipeline, *http.Response, error) {
 	return r.ApiService.getPipelineExecute(r)
 }
 
@@ -811,13 +893,13 @@ func (a *DataLakePipelinesApiService) GetPipeline(ctx context.Context, groupId s
 
 // Execute executes the request
 //
-//	@return IngestionPipeline
-func (a *DataLakePipelinesApiService) getPipelineExecute(r GetPipelineApiRequest) (*IngestionPipeline, *http.Response, error) {
+//	@return DataLakeIngestionPipeline
+func (a *DataLakePipelinesApiService) getPipelineExecute(r GetPipelineApiRequest) (*DataLakeIngestionPipeline, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *IngestionPipeline
+		localVarReturnValue *DataLakeIngestionPipeline
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesApiService.GetPipeline")
@@ -845,6 +927,20 @@ func (a *DataLakePipelinesApiService) getPipelineExecute(r GetPipelineApiRequest
 		return localVarReturnValue, nil, reportError("pipelineName must have less than 64 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -913,12 +1009,16 @@ type GetPipelineRunApiRequest struct {
 	groupId       string
 	pipelineName  string
 	pipelineRunId string
+	envelope      *bool
+	pretty        *bool
 }
 
 type GetPipelineRunApiParams struct {
 	GroupId       string
 	PipelineName  string
 	PipelineRunId string
+	Envelope      *bool
+	Pretty        *bool
 }
 
 func (a *DataLakePipelinesApiService) GetPipelineRunWithParams(ctx context.Context, args *GetPipelineRunApiParams) GetPipelineRunApiRequest {
@@ -928,7 +1028,21 @@ func (a *DataLakePipelinesApiService) GetPipelineRunWithParams(ctx context.Conte
 		groupId:       args.GroupId,
 		pipelineName:  args.PipelineName,
 		pipelineRunId: args.PipelineRunId,
+		envelope:      args.Envelope,
+		pretty:        args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r GetPipelineRunApiRequest) Envelope(envelope bool) GetPipelineRunApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r GetPipelineRunApiRequest) Pretty(pretty bool) GetPipelineRunApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r GetPipelineRunApiRequest) Execute() (*IngestionPipelineRun, *http.Response, error) {
@@ -999,6 +1113,20 @@ func (a *DataLakePipelinesApiService) getPipelineRunExecute(r GetPipelineRunApiR
 		return localVarReturnValue, nil, reportError("pipelineRunId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1066,18 +1194,22 @@ type ListPipelineRunsApiRequest struct {
 	ApiService    DataLakePipelinesApi
 	groupId       string
 	pipelineName  string
+	envelope      *bool
 	includeCount  *bool
 	itemsPerPage  *int
 	pageNum       *int
+	pretty        *bool
 	createdBefore *time.Time
 }
 
 type ListPipelineRunsApiParams struct {
 	GroupId       string
 	PipelineName  string
+	Envelope      *bool
 	IncludeCount  *bool
 	ItemsPerPage  *int
 	PageNum       *int
+	Pretty        *bool
 	CreatedBefore *time.Time
 }
 
@@ -1087,11 +1219,19 @@ func (a *DataLakePipelinesApiService) ListPipelineRunsWithParams(ctx context.Con
 		ctx:           ctx,
 		groupId:       args.GroupId,
 		pipelineName:  args.PipelineName,
+		envelope:      args.Envelope,
 		includeCount:  args.IncludeCount,
 		itemsPerPage:  args.ItemsPerPage,
 		pageNum:       args.PageNum,
+		pretty:        args.Pretty,
 		createdBefore: args.CreatedBefore,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r ListPipelineRunsApiRequest) Envelope(envelope bool) ListPipelineRunsApiRequest {
+	r.envelope = &envelope
+	return r
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
@@ -1109,6 +1249,12 @@ func (r ListPipelineRunsApiRequest) ItemsPerPage(itemsPerPage int) ListPipelineR
 // Number of the page that displays the current set of the total objects that the response returns.
 func (r ListPipelineRunsApiRequest) PageNum(pageNum int) ListPipelineRunsApiRequest {
 	r.pageNum = &pageNum
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r ListPipelineRunsApiRequest) Pretty(pretty bool) ListPipelineRunsApiRequest {
+	r.pretty = &pretty
 	return r
 }
 
@@ -1177,6 +1323,13 @@ func (a *DataLakePipelinesApiService) listPipelineRunsExecute(r ListPipelineRuns
 		return localVarReturnValue, nil, reportError("pipelineName must have less than 64 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
 	if r.includeCount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
 	} else {
@@ -1197,6 +1350,13 @@ func (a *DataLakePipelinesApiService) listPipelineRunsExecute(r ListPipelineRuns
 		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
 	}
 	if r.createdBefore != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "createdBefore", r.createdBefore, "")
@@ -1268,11 +1428,15 @@ type ListPipelineSchedulesApiRequest struct {
 	ApiService   DataLakePipelinesApi
 	groupId      string
 	pipelineName string
+	envelope     *bool
+	pretty       *bool
 }
 
 type ListPipelineSchedulesApiParams struct {
 	GroupId      string
 	PipelineName string
+	Envelope     *bool
+	Pretty       *bool
 }
 
 func (a *DataLakePipelinesApiService) ListPipelineSchedulesWithParams(ctx context.Context, args *ListPipelineSchedulesApiParams) ListPipelineSchedulesApiRequest {
@@ -1281,7 +1445,21 @@ func (a *DataLakePipelinesApiService) ListPipelineSchedulesWithParams(ctx contex
 		ctx:          ctx,
 		groupId:      args.GroupId,
 		pipelineName: args.PipelineName,
+		envelope:     args.Envelope,
+		pretty:       args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r ListPipelineSchedulesApiRequest) Envelope(envelope bool) ListPipelineSchedulesApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r ListPipelineSchedulesApiRequest) Pretty(pretty bool) ListPipelineSchedulesApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r ListPipelineSchedulesApiRequest) Execute() ([]PolicyItem, *http.Response, error) {
@@ -1343,6 +1521,20 @@ func (a *DataLakePipelinesApiService) listPipelineSchedulesExecute(r ListPipelin
 		return localVarReturnValue, nil, reportError("pipelineName must have less than 64 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1410,18 +1602,22 @@ type ListPipelineSnapshotsApiRequest struct {
 	ApiService     DataLakePipelinesApi
 	groupId        string
 	pipelineName   string
+	envelope       *bool
 	includeCount   *bool
 	itemsPerPage   *int
 	pageNum        *int
+	pretty         *bool
 	completedAfter *time.Time
 }
 
 type ListPipelineSnapshotsApiParams struct {
 	GroupId        string
 	PipelineName   string
+	Envelope       *bool
 	IncludeCount   *bool
 	ItemsPerPage   *int
 	PageNum        *int
+	Pretty         *bool
 	CompletedAfter *time.Time
 }
 
@@ -1431,11 +1627,19 @@ func (a *DataLakePipelinesApiService) ListPipelineSnapshotsWithParams(ctx contex
 		ctx:            ctx,
 		groupId:        args.GroupId,
 		pipelineName:   args.PipelineName,
+		envelope:       args.Envelope,
 		includeCount:   args.IncludeCount,
 		itemsPerPage:   args.ItemsPerPage,
 		pageNum:        args.PageNum,
+		pretty:         args.Pretty,
 		completedAfter: args.CompletedAfter,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r ListPipelineSnapshotsApiRequest) Envelope(envelope bool) ListPipelineSnapshotsApiRequest {
+	r.envelope = &envelope
+	return r
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
@@ -1453,6 +1657,12 @@ func (r ListPipelineSnapshotsApiRequest) ItemsPerPage(itemsPerPage int) ListPipe
 // Number of the page that displays the current set of the total objects that the response returns.
 func (r ListPipelineSnapshotsApiRequest) PageNum(pageNum int) ListPipelineSnapshotsApiRequest {
 	r.pageNum = &pageNum
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r ListPipelineSnapshotsApiRequest) Pretty(pretty bool) ListPipelineSnapshotsApiRequest {
+	r.pretty = &pretty
 	return r
 }
 
@@ -1521,6 +1731,13 @@ func (a *DataLakePipelinesApiService) listPipelineSnapshotsExecute(r ListPipelin
 		return localVarReturnValue, nil, reportError("pipelineName must have less than 64 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
 	if r.includeCount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
 	} else {
@@ -1541,6 +1758,13 @@ func (a *DataLakePipelinesApiService) listPipelineSnapshotsExecute(r ListPipelin
 		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
 	}
 	if r.completedAfter != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "completedAfter", r.completedAfter, "")
@@ -1611,10 +1835,12 @@ type ListPipelinesApiRequest struct {
 	ctx        context.Context
 	ApiService DataLakePipelinesApi
 	groupId    string
+	envelope   *bool
 }
 
 type ListPipelinesApiParams struct {
-	GroupId string
+	GroupId  string
+	Envelope *bool
 }
 
 func (a *DataLakePipelinesApiService) ListPipelinesWithParams(ctx context.Context, args *ListPipelinesApiParams) ListPipelinesApiRequest {
@@ -1622,10 +1848,17 @@ func (a *DataLakePipelinesApiService) ListPipelinesWithParams(ctx context.Contex
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    args.GroupId,
+		envelope:   args.Envelope,
 	}
 }
 
-func (r ListPipelinesApiRequest) Execute() ([]IngestionPipeline, *http.Response, error) {
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r ListPipelinesApiRequest) Envelope(envelope bool) ListPipelinesApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+func (r ListPipelinesApiRequest) Execute() ([]DataLakeIngestionPipeline, *http.Response, error) {
 	return r.ApiService.listPipelinesExecute(r)
 }
 
@@ -1648,13 +1881,13 @@ func (a *DataLakePipelinesApiService) ListPipelines(ctx context.Context, groupId
 
 // Execute executes the request
 //
-//	@return []IngestionPipeline
-func (a *DataLakePipelinesApiService) listPipelinesExecute(r ListPipelinesApiRequest) ([]IngestionPipeline, *http.Response, error) {
+//	@return []DataLakeIngestionPipeline
+func (a *DataLakePipelinesApiService) listPipelinesExecute(r ListPipelinesApiRequest) ([]DataLakeIngestionPipeline, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []IngestionPipeline
+		localVarReturnValue []DataLakeIngestionPipeline
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesApiService.ListPipelines")
@@ -1675,6 +1908,13 @@ func (a *DataLakePipelinesApiService) listPipelinesExecute(r ListPipelinesApiReq
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1742,11 +1982,15 @@ type PausePipelineApiRequest struct {
 	ApiService   DataLakePipelinesApi
 	groupId      string
 	pipelineName string
+	envelope     *bool
+	pretty       *bool
 }
 
 type PausePipelineApiParams struct {
 	GroupId      string
 	PipelineName string
+	Envelope     *bool
+	Pretty       *bool
 }
 
 func (a *DataLakePipelinesApiService) PausePipelineWithParams(ctx context.Context, args *PausePipelineApiParams) PausePipelineApiRequest {
@@ -1755,10 +1999,24 @@ func (a *DataLakePipelinesApiService) PausePipelineWithParams(ctx context.Contex
 		ctx:          ctx,
 		groupId:      args.GroupId,
 		pipelineName: args.PipelineName,
+		envelope:     args.Envelope,
+		pretty:       args.Pretty,
 	}
 }
 
-func (r PausePipelineApiRequest) Execute() (*IngestionPipeline, *http.Response, error) {
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r PausePipelineApiRequest) Envelope(envelope bool) PausePipelineApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r PausePipelineApiRequest) Pretty(pretty bool) PausePipelineApiRequest {
+	r.pretty = &pretty
+	return r
+}
+
+func (r PausePipelineApiRequest) Execute() (*DataLakeIngestionPipeline, *http.Response, error) {
 	return r.ApiService.pausePipelineExecute(r)
 }
 
@@ -1783,13 +2041,13 @@ func (a *DataLakePipelinesApiService) PausePipeline(ctx context.Context, groupId
 
 // Execute executes the request
 //
-//	@return IngestionPipeline
-func (a *DataLakePipelinesApiService) pausePipelineExecute(r PausePipelineApiRequest) (*IngestionPipeline, *http.Response, error) {
+//	@return DataLakeIngestionPipeline
+func (a *DataLakePipelinesApiService) pausePipelineExecute(r PausePipelineApiRequest) (*DataLakeIngestionPipeline, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *IngestionPipeline
+		localVarReturnValue *DataLakeIngestionPipeline
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesApiService.PausePipeline")
@@ -1817,6 +2075,20 @@ func (a *DataLakePipelinesApiService) pausePipelineExecute(r PausePipelineApiReq
 		return localVarReturnValue, nil, reportError("pipelineName must have less than 64 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1884,11 +2156,15 @@ type ResumePipelineApiRequest struct {
 	ApiService   DataLakePipelinesApi
 	groupId      string
 	pipelineName string
+	envelope     *bool
+	pretty       *bool
 }
 
 type ResumePipelineApiParams struct {
 	GroupId      string
 	PipelineName string
+	Envelope     *bool
+	Pretty       *bool
 }
 
 func (a *DataLakePipelinesApiService) ResumePipelineWithParams(ctx context.Context, args *ResumePipelineApiParams) ResumePipelineApiRequest {
@@ -1897,10 +2173,24 @@ func (a *DataLakePipelinesApiService) ResumePipelineWithParams(ctx context.Conte
 		ctx:          ctx,
 		groupId:      args.GroupId,
 		pipelineName: args.PipelineName,
+		envelope:     args.Envelope,
+		pretty:       args.Pretty,
 	}
 }
 
-func (r ResumePipelineApiRequest) Execute() (*IngestionPipeline, *http.Response, error) {
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r ResumePipelineApiRequest) Envelope(envelope bool) ResumePipelineApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r ResumePipelineApiRequest) Pretty(pretty bool) ResumePipelineApiRequest {
+	r.pretty = &pretty
+	return r
+}
+
+func (r ResumePipelineApiRequest) Execute() (*DataLakeIngestionPipeline, *http.Response, error) {
 	return r.ApiService.resumePipelineExecute(r)
 }
 
@@ -1925,13 +2215,13 @@ func (a *DataLakePipelinesApiService) ResumePipeline(ctx context.Context, groupI
 
 // Execute executes the request
 //
-//	@return IngestionPipeline
-func (a *DataLakePipelinesApiService) resumePipelineExecute(r ResumePipelineApiRequest) (*IngestionPipeline, *http.Response, error) {
+//	@return DataLakeIngestionPipeline
+func (a *DataLakePipelinesApiService) resumePipelineExecute(r ResumePipelineApiRequest) (*DataLakeIngestionPipeline, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *IngestionPipeline
+		localVarReturnValue *DataLakeIngestionPipeline
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesApiService.ResumePipeline")
@@ -1959,6 +2249,20 @@ func (a *DataLakePipelinesApiService) resumePipelineExecute(r ResumePipelineApiR
 		return localVarReturnValue, nil, reportError("pipelineName must have less than 64 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -2022,27 +2326,45 @@ func (a *DataLakePipelinesApiService) resumePipelineExecute(r ResumePipelineApiR
 }
 
 type TriggerSnapshotIngestionApiRequest struct {
-	ctx                     context.Context
-	ApiService              DataLakePipelinesApi
-	groupId                 string
-	pipelineName            string
-	triggerIngestionRequest *TriggerIngestionRequest
+	ctx                             context.Context
+	ApiService                      DataLakePipelinesApi
+	groupId                         string
+	pipelineName                    string
+	triggerIngestionPipelineRequest *TriggerIngestionPipelineRequest
+	envelope                        *bool
+	pretty                          *bool
 }
 
 type TriggerSnapshotIngestionApiParams struct {
-	GroupId                 string
-	PipelineName            string
-	TriggerIngestionRequest *TriggerIngestionRequest
+	GroupId                         string
+	PipelineName                    string
+	TriggerIngestionPipelineRequest *TriggerIngestionPipelineRequest
+	Envelope                        *bool
+	Pretty                          *bool
 }
 
 func (a *DataLakePipelinesApiService) TriggerSnapshotIngestionWithParams(ctx context.Context, args *TriggerSnapshotIngestionApiParams) TriggerSnapshotIngestionApiRequest {
 	return TriggerSnapshotIngestionApiRequest{
-		ApiService:              a,
-		ctx:                     ctx,
-		groupId:                 args.GroupId,
-		pipelineName:            args.PipelineName,
-		triggerIngestionRequest: args.TriggerIngestionRequest,
+		ApiService:                      a,
+		ctx:                             ctx,
+		groupId:                         args.GroupId,
+		pipelineName:                    args.PipelineName,
+		triggerIngestionPipelineRequest: args.TriggerIngestionPipelineRequest,
+		envelope:                        args.Envelope,
+		pretty:                          args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r TriggerSnapshotIngestionApiRequest) Envelope(envelope bool) TriggerSnapshotIngestionApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r TriggerSnapshotIngestionApiRequest) Pretty(pretty bool) TriggerSnapshotIngestionApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r TriggerSnapshotIngestionApiRequest) Execute() (*IngestionPipelineRun, *http.Response, error) {
@@ -2059,13 +2381,13 @@ Triggers a Data Lake Pipeline ingestion of a specified snapshot.
 	@param pipelineName Human-readable label that identifies the Data Lake Pipeline.
 	@return TriggerSnapshotIngestionApiRequest
 */
-func (a *DataLakePipelinesApiService) TriggerSnapshotIngestion(ctx context.Context, groupId string, pipelineName string, triggerIngestionRequest *TriggerIngestionRequest) TriggerSnapshotIngestionApiRequest {
+func (a *DataLakePipelinesApiService) TriggerSnapshotIngestion(ctx context.Context, groupId string, pipelineName string, triggerIngestionPipelineRequest *TriggerIngestionPipelineRequest) TriggerSnapshotIngestionApiRequest {
 	return TriggerSnapshotIngestionApiRequest{
-		ApiService:              a,
-		ctx:                     ctx,
-		groupId:                 groupId,
-		pipelineName:            pipelineName,
-		triggerIngestionRequest: triggerIngestionRequest,
+		ApiService:                      a,
+		ctx:                             ctx,
+		groupId:                         groupId,
+		pipelineName:                    pipelineName,
+		triggerIngestionPipelineRequest: triggerIngestionPipelineRequest,
 	}
 }
 
@@ -2104,10 +2426,24 @@ func (a *DataLakePipelinesApiService) triggerSnapshotIngestionExecute(r TriggerS
 	if strlen(r.pipelineName) > 64 {
 		return localVarReturnValue, nil, reportError("pipelineName must have less than 64 elements")
 	}
-	if r.triggerIngestionRequest == nil {
-		return localVarReturnValue, nil, reportError("triggerIngestionRequest is required and must be specified")
+	if r.triggerIngestionPipelineRequest == nil {
+		return localVarReturnValue, nil, reportError("triggerIngestionPipelineRequest is required and must be specified")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
@@ -2126,7 +2462,7 @@ func (a *DataLakePipelinesApiService) triggerSnapshotIngestionExecute(r TriggerS
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.triggerIngestionRequest
+	localVarPostBody = r.triggerIngestionPipelineRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2173,30 +2509,39 @@ func (a *DataLakePipelinesApiService) triggerSnapshotIngestionExecute(r TriggerS
 }
 
 type UpdatePipelineApiRequest struct {
-	ctx               context.Context
-	ApiService        DataLakePipelinesApi
-	groupId           string
-	pipelineName      string
-	ingestionPipeline *IngestionPipeline
+	ctx                       context.Context
+	ApiService                DataLakePipelinesApi
+	groupId                   string
+	pipelineName              string
+	dataLakeIngestionPipeline *DataLakeIngestionPipeline
+	envelope                  *bool
 }
 
 type UpdatePipelineApiParams struct {
-	GroupId           string
-	PipelineName      string
-	IngestionPipeline *IngestionPipeline
+	GroupId                   string
+	PipelineName              string
+	DataLakeIngestionPipeline *DataLakeIngestionPipeline
+	Envelope                  *bool
 }
 
 func (a *DataLakePipelinesApiService) UpdatePipelineWithParams(ctx context.Context, args *UpdatePipelineApiParams) UpdatePipelineApiRequest {
 	return UpdatePipelineApiRequest{
-		ApiService:        a,
-		ctx:               ctx,
-		groupId:           args.GroupId,
-		pipelineName:      args.PipelineName,
-		ingestionPipeline: args.IngestionPipeline,
+		ApiService:                a,
+		ctx:                       ctx,
+		groupId:                   args.GroupId,
+		pipelineName:              args.PipelineName,
+		dataLakeIngestionPipeline: args.DataLakeIngestionPipeline,
+		envelope:                  args.Envelope,
 	}
 }
 
-func (r UpdatePipelineApiRequest) Execute() (*IngestionPipeline, *http.Response, error) {
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r UpdatePipelineApiRequest) Envelope(envelope bool) UpdatePipelineApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+func (r UpdatePipelineApiRequest) Execute() (*DataLakeIngestionPipeline, *http.Response, error) {
 	return r.ApiService.updatePipelineExecute(r)
 }
 
@@ -2210,25 +2555,25 @@ Updates one Data Lake Pipeline.
 	@param pipelineName Human-readable label that identifies the Data Lake Pipeline.
 	@return UpdatePipelineApiRequest
 */
-func (a *DataLakePipelinesApiService) UpdatePipeline(ctx context.Context, groupId string, pipelineName string, ingestionPipeline *IngestionPipeline) UpdatePipelineApiRequest {
+func (a *DataLakePipelinesApiService) UpdatePipeline(ctx context.Context, groupId string, pipelineName string, dataLakeIngestionPipeline *DataLakeIngestionPipeline) UpdatePipelineApiRequest {
 	return UpdatePipelineApiRequest{
-		ApiService:        a,
-		ctx:               ctx,
-		groupId:           groupId,
-		pipelineName:      pipelineName,
-		ingestionPipeline: ingestionPipeline,
+		ApiService:                a,
+		ctx:                       ctx,
+		groupId:                   groupId,
+		pipelineName:              pipelineName,
+		dataLakeIngestionPipeline: dataLakeIngestionPipeline,
 	}
 }
 
 // Execute executes the request
 //
-//	@return IngestionPipeline
-func (a *DataLakePipelinesApiService) updatePipelineExecute(r UpdatePipelineApiRequest) (*IngestionPipeline, *http.Response, error) {
+//	@return DataLakeIngestionPipeline
+func (a *DataLakePipelinesApiService) updatePipelineExecute(r UpdatePipelineApiRequest) (*DataLakeIngestionPipeline, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *IngestionPipeline
+		localVarReturnValue *DataLakeIngestionPipeline
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesApiService.UpdatePipeline")
@@ -2255,10 +2600,17 @@ func (a *DataLakePipelinesApiService) updatePipelineExecute(r UpdatePipelineApiR
 	if strlen(r.pipelineName) > 64 {
 		return localVarReturnValue, nil, reportError("pipelineName must have less than 64 elements")
 	}
-	if r.ingestionPipeline == nil {
-		return localVarReturnValue, nil, reportError("ingestionPipeline is required and must be specified")
+	if r.dataLakeIngestionPipeline == nil {
+		return localVarReturnValue, nil, reportError("dataLakeIngestionPipeline is required and must be specified")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
@@ -2277,7 +2629,7 @@ func (a *DataLakePipelinesApiService) updatePipelineExecute(r UpdatePipelineApiR
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.ingestionPipeline
+	localVarPostBody = r.dataLakeIngestionPipeline
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

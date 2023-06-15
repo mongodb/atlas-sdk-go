@@ -12,7 +12,7 @@ var _ MappedNullable = &DiskBackupExportJobRequest{}
 // DiskBackupExportJobRequest struct for DiskBackupExportJobRequest
 type DiskBackupExportJobRequest struct {
 	// Collection of key-value pairs that represent custom data to add to the metadata file that MongoDB Cloud uploads to the bucket when the export job finishes.
-	CustomData []Label `json:"customData,omitempty"`
+	CustomData []BackupLabel `json:"customData,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the AWS bucket to which MongoDB Cloud exports the Cloud Backup snapshot.
 	ExportBucketId string `json:"exportBucketId"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -41,9 +41,9 @@ func NewDiskBackupExportJobRequestWithDefaults() *DiskBackupExportJobRequest {
 }
 
 // GetCustomData returns the CustomData field value if set, zero value otherwise.
-func (o *DiskBackupExportJobRequest) GetCustomData() []Label {
+func (o *DiskBackupExportJobRequest) GetCustomData() []BackupLabel {
 	if o == nil || IsNil(o.CustomData) {
-		var ret []Label
+		var ret []BackupLabel
 		return ret
 	}
 	return o.CustomData
@@ -51,7 +51,7 @@ func (o *DiskBackupExportJobRequest) GetCustomData() []Label {
 
 // GetCustomDataOk returns a tuple with the CustomData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupExportJobRequest) GetCustomDataOk() ([]Label, bool) {
+func (o *DiskBackupExportJobRequest) GetCustomDataOk() ([]BackupLabel, bool) {
 	if o == nil || IsNil(o.CustomData) {
 		return nil, false
 	}
@@ -67,8 +67,8 @@ func (o *DiskBackupExportJobRequest) HasCustomData() bool {
 	return false
 }
 
-// SetCustomData gets a reference to the given []Label and assigns it to the CustomData field.
-func (o *DiskBackupExportJobRequest) SetCustomData(v []Label) {
+// SetCustomData gets a reference to the given []BackupLabel and assigns it to the CustomData field.
+func (o *DiskBackupExportJobRequest) SetCustomData(v []BackupLabel) {
 	o.CustomData = v
 }
 

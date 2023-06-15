@@ -36,7 +36,7 @@ type PrivateEndpointServicesApi interface {
 	CreatePrivateEndpointWithParams(ctx context.Context, args *CreatePrivateEndpointApiParams) CreatePrivateEndpointApiRequest
 
 	// Interface only available internally
-	createPrivateEndpointExecute(r CreatePrivateEndpointApiRequest) (*Endpoint, *http.Response, error)
+	createPrivateEndpointExecute(r CreatePrivateEndpointApiRequest) (*PrivateLinkEndpoint, *http.Response, error)
 
 	/*
 		CreatePrivateEndpointService Create One Private Endpoint Service for One Provider
@@ -47,7 +47,7 @@ type PrivateEndpointServicesApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return CreatePrivateEndpointServiceApiRequest
 	*/
-	CreatePrivateEndpointService(ctx context.Context, groupId string, createEndpointServiceRequest *CreateEndpointServiceRequest) CreatePrivateEndpointServiceApiRequest
+	CreatePrivateEndpointService(ctx context.Context, groupId string, cloudProviderEndpointServiceRequest *CloudProviderEndpointServiceRequest) CreatePrivateEndpointServiceApiRequest
 	/*
 		CreatePrivateEndpointService Create One Private Endpoint Service for One Provider
 
@@ -136,7 +136,7 @@ type PrivateEndpointServicesApi interface {
 	GetPrivateEndpointWithParams(ctx context.Context, args *GetPrivateEndpointApiParams) GetPrivateEndpointApiRequest
 
 	// Interface only available internally
-	getPrivateEndpointExecute(r GetPrivateEndpointApiRequest) (*Endpoint, *http.Response, error)
+	getPrivateEndpointExecute(r GetPrivateEndpointApiRequest) (*PrivateLinkEndpoint, *http.Response, error)
 
 	/*
 		GetPrivateEndpointService Return One Private Endpoint Service for One Provider
@@ -244,6 +244,8 @@ type CreatePrivateEndpointApiRequest struct {
 	cloudProvider         string
 	endpointServiceId     string
 	createEndpointRequest *CreateEndpointRequest
+	envelope              *bool
+	pretty                *bool
 }
 
 type CreatePrivateEndpointApiParams struct {
@@ -251,6 +253,8 @@ type CreatePrivateEndpointApiParams struct {
 	CloudProvider         string
 	EndpointServiceId     string
 	CreateEndpointRequest *CreateEndpointRequest
+	Envelope              *bool
+	Pretty                *bool
 }
 
 func (a *PrivateEndpointServicesApiService) CreatePrivateEndpointWithParams(ctx context.Context, args *CreatePrivateEndpointApiParams) CreatePrivateEndpointApiRequest {
@@ -261,10 +265,24 @@ func (a *PrivateEndpointServicesApiService) CreatePrivateEndpointWithParams(ctx 
 		cloudProvider:         args.CloudProvider,
 		endpointServiceId:     args.EndpointServiceId,
 		createEndpointRequest: args.CreateEndpointRequest,
+		envelope:              args.Envelope,
+		pretty:                args.Pretty,
 	}
 }
 
-func (r CreatePrivateEndpointApiRequest) Execute() (*Endpoint, *http.Response, error) {
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r CreatePrivateEndpointApiRequest) Envelope(envelope bool) CreatePrivateEndpointApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r CreatePrivateEndpointApiRequest) Pretty(pretty bool) CreatePrivateEndpointApiRequest {
+	r.pretty = &pretty
+	return r
+}
+
+func (r CreatePrivateEndpointApiRequest) Execute() (*PrivateLinkEndpoint, *http.Response, error) {
 	return r.ApiService.createPrivateEndpointExecute(r)
 }
 
@@ -292,13 +310,13 @@ func (a *PrivateEndpointServicesApiService) CreatePrivateEndpoint(ctx context.Co
 
 // Execute executes the request
 //
-//	@return Endpoint
-func (a *PrivateEndpointServicesApiService) createPrivateEndpointExecute(r CreatePrivateEndpointApiRequest) (*Endpoint, *http.Response, error) {
+//	@return PrivateLinkEndpoint
+func (a *PrivateEndpointServicesApiService) createPrivateEndpointExecute(r CreatePrivateEndpointApiRequest) (*PrivateLinkEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Endpoint
+		localVarReturnValue *PrivateLinkEndpoint
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivateEndpointServicesApiService.CreatePrivateEndpoint")
@@ -330,6 +348,20 @@ func (a *PrivateEndpointServicesApiService) createPrivateEndpointExecute(r Creat
 		return localVarReturnValue, nil, reportError("createEndpointRequest is required and must be specified")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
@@ -395,24 +427,42 @@ func (a *PrivateEndpointServicesApiService) createPrivateEndpointExecute(r Creat
 }
 
 type CreatePrivateEndpointServiceApiRequest struct {
-	ctx                          context.Context
-	ApiService                   PrivateEndpointServicesApi
-	groupId                      string
-	createEndpointServiceRequest *CreateEndpointServiceRequest
+	ctx                                 context.Context
+	ApiService                          PrivateEndpointServicesApi
+	groupId                             string
+	cloudProviderEndpointServiceRequest *CloudProviderEndpointServiceRequest
+	envelope                            *bool
+	pretty                              *bool
 }
 
 type CreatePrivateEndpointServiceApiParams struct {
-	GroupId                      string
-	CreateEndpointServiceRequest *CreateEndpointServiceRequest
+	GroupId                             string
+	CloudProviderEndpointServiceRequest *CloudProviderEndpointServiceRequest
+	Envelope                            *bool
+	Pretty                              *bool
 }
 
 func (a *PrivateEndpointServicesApiService) CreatePrivateEndpointServiceWithParams(ctx context.Context, args *CreatePrivateEndpointServiceApiParams) CreatePrivateEndpointServiceApiRequest {
 	return CreatePrivateEndpointServiceApiRequest{
-		ApiService:                   a,
-		ctx:                          ctx,
-		groupId:                      args.GroupId,
-		createEndpointServiceRequest: args.CreateEndpointServiceRequest,
+		ApiService:                          a,
+		ctx:                                 ctx,
+		groupId:                             args.GroupId,
+		cloudProviderEndpointServiceRequest: args.CloudProviderEndpointServiceRequest,
+		envelope:                            args.Envelope,
+		pretty:                              args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r CreatePrivateEndpointServiceApiRequest) Envelope(envelope bool) CreatePrivateEndpointServiceApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r CreatePrivateEndpointServiceApiRequest) Pretty(pretty bool) CreatePrivateEndpointServiceApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r CreatePrivateEndpointServiceApiRequest) Execute() (*EndpointService, *http.Response, error) {
@@ -428,12 +478,12 @@ Creates one private endpoint service for the specified cloud service provider. T
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreatePrivateEndpointServiceApiRequest
 */
-func (a *PrivateEndpointServicesApiService) CreatePrivateEndpointService(ctx context.Context, groupId string, createEndpointServiceRequest *CreateEndpointServiceRequest) CreatePrivateEndpointServiceApiRequest {
+func (a *PrivateEndpointServicesApiService) CreatePrivateEndpointService(ctx context.Context, groupId string, cloudProviderEndpointServiceRequest *CloudProviderEndpointServiceRequest) CreatePrivateEndpointServiceApiRequest {
 	return CreatePrivateEndpointServiceApiRequest{
-		ApiService:                   a,
-		ctx:                          ctx,
-		groupId:                      groupId,
-		createEndpointServiceRequest: createEndpointServiceRequest,
+		ApiService:                          a,
+		ctx:                                 ctx,
+		groupId:                             groupId,
+		cloudProviderEndpointServiceRequest: cloudProviderEndpointServiceRequest,
 	}
 }
 
@@ -465,10 +515,24 @@ func (a *PrivateEndpointServicesApiService) createPrivateEndpointServiceExecute(
 	if strlen(r.groupId) > 24 {
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
-	if r.createEndpointServiceRequest == nil {
-		return localVarReturnValue, nil, reportError("createEndpointServiceRequest is required and must be specified")
+	if r.cloudProviderEndpointServiceRequest == nil {
+		return localVarReturnValue, nil, reportError("cloudProviderEndpointServiceRequest is required and must be specified")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
@@ -487,7 +551,7 @@ func (a *PrivateEndpointServicesApiService) createPrivateEndpointServiceExecute(
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.createEndpointServiceRequest
+	localVarPostBody = r.cloudProviderEndpointServiceRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -540,6 +604,8 @@ type DeletePrivateEndpointApiRequest struct {
 	cloudProvider     string
 	endpointId        string
 	endpointServiceId string
+	envelope          *bool
+	pretty            *bool
 }
 
 type DeletePrivateEndpointApiParams struct {
@@ -547,6 +613,8 @@ type DeletePrivateEndpointApiParams struct {
 	CloudProvider     string
 	EndpointId        string
 	EndpointServiceId string
+	Envelope          *bool
+	Pretty            *bool
 }
 
 func (a *PrivateEndpointServicesApiService) DeletePrivateEndpointWithParams(ctx context.Context, args *DeletePrivateEndpointApiParams) DeletePrivateEndpointApiRequest {
@@ -557,7 +625,21 @@ func (a *PrivateEndpointServicesApiService) DeletePrivateEndpointWithParams(ctx 
 		cloudProvider:     args.CloudProvider,
 		endpointId:        args.EndpointId,
 		endpointServiceId: args.EndpointServiceId,
+		envelope:          args.Envelope,
+		pretty:            args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r DeletePrivateEndpointApiRequest) Envelope(envelope bool) DeletePrivateEndpointApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r DeletePrivateEndpointApiRequest) Pretty(pretty bool) DeletePrivateEndpointApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r DeletePrivateEndpointApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -625,6 +707,20 @@ func (a *PrivateEndpointServicesApiService) deletePrivateEndpointExecute(r Delet
 		return localVarReturnValue, nil, reportError("endpointServiceId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -693,12 +789,16 @@ type DeletePrivateEndpointServiceApiRequest struct {
 	groupId           string
 	cloudProvider     string
 	endpointServiceId string
+	envelope          *bool
+	pretty            *bool
 }
 
 type DeletePrivateEndpointServiceApiParams struct {
 	GroupId           string
 	CloudProvider     string
 	EndpointServiceId string
+	Envelope          *bool
+	Pretty            *bool
 }
 
 func (a *PrivateEndpointServicesApiService) DeletePrivateEndpointServiceWithParams(ctx context.Context, args *DeletePrivateEndpointServiceApiParams) DeletePrivateEndpointServiceApiRequest {
@@ -708,7 +808,21 @@ func (a *PrivateEndpointServicesApiService) DeletePrivateEndpointServiceWithPara
 		groupId:           args.GroupId,
 		cloudProvider:     args.CloudProvider,
 		endpointServiceId: args.EndpointServiceId,
+		envelope:          args.Envelope,
+		pretty:            args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r DeletePrivateEndpointServiceApiRequest) Envelope(envelope bool) DeletePrivateEndpointServiceApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r DeletePrivateEndpointServiceApiRequest) Pretty(pretty bool) DeletePrivateEndpointServiceApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r DeletePrivateEndpointServiceApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -773,6 +887,20 @@ func (a *PrivateEndpointServicesApiService) deletePrivateEndpointServiceExecute(
 		return localVarReturnValue, nil, reportError("endpointServiceId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -842,6 +970,8 @@ type GetPrivateEndpointApiRequest struct {
 	cloudProvider     string
 	endpointId        string
 	endpointServiceId string
+	envelope          *bool
+	pretty            *bool
 }
 
 type GetPrivateEndpointApiParams struct {
@@ -849,6 +979,8 @@ type GetPrivateEndpointApiParams struct {
 	CloudProvider     string
 	EndpointId        string
 	EndpointServiceId string
+	Envelope          *bool
+	Pretty            *bool
 }
 
 func (a *PrivateEndpointServicesApiService) GetPrivateEndpointWithParams(ctx context.Context, args *GetPrivateEndpointApiParams) GetPrivateEndpointApiRequest {
@@ -859,10 +991,24 @@ func (a *PrivateEndpointServicesApiService) GetPrivateEndpointWithParams(ctx con
 		cloudProvider:     args.CloudProvider,
 		endpointId:        args.EndpointId,
 		endpointServiceId: args.EndpointServiceId,
+		envelope:          args.Envelope,
+		pretty:            args.Pretty,
 	}
 }
 
-func (r GetPrivateEndpointApiRequest) Execute() (*Endpoint, *http.Response, error) {
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r GetPrivateEndpointApiRequest) Envelope(envelope bool) GetPrivateEndpointApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r GetPrivateEndpointApiRequest) Pretty(pretty bool) GetPrivateEndpointApiRequest {
+	r.pretty = &pretty
+	return r
+}
+
+func (r GetPrivateEndpointApiRequest) Execute() (*PrivateLinkEndpoint, *http.Response, error) {
 	return r.ApiService.getPrivateEndpointExecute(r)
 }
 
@@ -891,13 +1037,13 @@ func (a *PrivateEndpointServicesApiService) GetPrivateEndpoint(ctx context.Conte
 
 // Execute executes the request
 //
-//	@return Endpoint
-func (a *PrivateEndpointServicesApiService) getPrivateEndpointExecute(r GetPrivateEndpointApiRequest) (*Endpoint, *http.Response, error) {
+//	@return PrivateLinkEndpoint
+func (a *PrivateEndpointServicesApiService) getPrivateEndpointExecute(r GetPrivateEndpointApiRequest) (*PrivateLinkEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Endpoint
+		localVarReturnValue *PrivateLinkEndpoint
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivateEndpointServicesApiService.GetPrivateEndpoint")
@@ -927,6 +1073,20 @@ func (a *PrivateEndpointServicesApiService) getPrivateEndpointExecute(r GetPriva
 		return localVarReturnValue, nil, reportError("endpointServiceId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -995,12 +1155,16 @@ type GetPrivateEndpointServiceApiRequest struct {
 	groupId           string
 	cloudProvider     string
 	endpointServiceId string
+	envelope          *bool
+	pretty            *bool
 }
 
 type GetPrivateEndpointServiceApiParams struct {
 	GroupId           string
 	CloudProvider     string
 	EndpointServiceId string
+	Envelope          *bool
+	Pretty            *bool
 }
 
 func (a *PrivateEndpointServicesApiService) GetPrivateEndpointServiceWithParams(ctx context.Context, args *GetPrivateEndpointServiceApiParams) GetPrivateEndpointServiceApiRequest {
@@ -1010,7 +1174,21 @@ func (a *PrivateEndpointServicesApiService) GetPrivateEndpointServiceWithParams(
 		groupId:           args.GroupId,
 		cloudProvider:     args.CloudProvider,
 		endpointServiceId: args.EndpointServiceId,
+		envelope:          args.Envelope,
+		pretty:            args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r GetPrivateEndpointServiceApiRequest) Envelope(envelope bool) GetPrivateEndpointServiceApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r GetPrivateEndpointServiceApiRequest) Pretty(pretty bool) GetPrivateEndpointServiceApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r GetPrivateEndpointServiceApiRequest) Execute() (*EndpointService, *http.Response, error) {
@@ -1075,6 +1253,20 @@ func (a *PrivateEndpointServicesApiService) getPrivateEndpointServiceExecute(r G
 		return localVarReturnValue, nil, reportError("endpointServiceId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1141,10 +1333,14 @@ type GetRegionalizedPrivateEndpointSettingApiRequest struct {
 	ctx        context.Context
 	ApiService PrivateEndpointServicesApi
 	groupId    string
+	envelope   *bool
+	pretty     *bool
 }
 
 type GetRegionalizedPrivateEndpointSettingApiParams struct {
-	GroupId string
+	GroupId  string
+	Envelope *bool
+	Pretty   *bool
 }
 
 func (a *PrivateEndpointServicesApiService) GetRegionalizedPrivateEndpointSettingWithParams(ctx context.Context, args *GetRegionalizedPrivateEndpointSettingApiParams) GetRegionalizedPrivateEndpointSettingApiRequest {
@@ -1152,7 +1348,21 @@ func (a *PrivateEndpointServicesApiService) GetRegionalizedPrivateEndpointSettin
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    args.GroupId,
+		envelope:   args.Envelope,
+		pretty:     args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r GetRegionalizedPrivateEndpointSettingApiRequest) Envelope(envelope bool) GetRegionalizedPrivateEndpointSettingApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r GetRegionalizedPrivateEndpointSettingApiRequest) Pretty(pretty bool) GetRegionalizedPrivateEndpointSettingApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r GetRegionalizedPrivateEndpointSettingApiRequest) Execute() (*ProjectSettingItem, *http.Response, error) {
@@ -1205,6 +1415,20 @@ func (a *PrivateEndpointServicesApiService) getRegionalizedPrivateEndpointSettin
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1272,11 +1496,15 @@ type ListPrivateEndpointServicesApiRequest struct {
 	ApiService    PrivateEndpointServicesApi
 	groupId       string
 	cloudProvider string
+	envelope      *bool
+	pretty        *bool
 }
 
 type ListPrivateEndpointServicesApiParams struct {
 	GroupId       string
 	CloudProvider string
+	Envelope      *bool
+	Pretty        *bool
 }
 
 func (a *PrivateEndpointServicesApiService) ListPrivateEndpointServicesWithParams(ctx context.Context, args *ListPrivateEndpointServicesApiParams) ListPrivateEndpointServicesApiRequest {
@@ -1285,7 +1513,21 @@ func (a *PrivateEndpointServicesApiService) ListPrivateEndpointServicesWithParam
 		ctx:           ctx,
 		groupId:       args.GroupId,
 		cloudProvider: args.CloudProvider,
+		envelope:      args.Envelope,
+		pretty:        args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r ListPrivateEndpointServicesApiRequest) Envelope(envelope bool) ListPrivateEndpointServicesApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r ListPrivateEndpointServicesApiRequest) Pretty(pretty bool) ListPrivateEndpointServicesApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r ListPrivateEndpointServicesApiRequest) Execute() ([]EndpointService, *http.Response, error) {
@@ -1341,6 +1583,20 @@ func (a *PrivateEndpointServicesApiService) listPrivateEndpointServicesExecute(r
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1408,11 +1664,15 @@ type ToggleRegionalizedPrivateEndpointSettingApiRequest struct {
 	ApiService         PrivateEndpointServicesApi
 	groupId            string
 	projectSettingItem *ProjectSettingItem
+	envelope           *bool
+	pretty             *bool
 }
 
 type ToggleRegionalizedPrivateEndpointSettingApiParams struct {
 	GroupId            string
 	ProjectSettingItem *ProjectSettingItem
+	Envelope           *bool
+	Pretty             *bool
 }
 
 func (a *PrivateEndpointServicesApiService) ToggleRegionalizedPrivateEndpointSettingWithParams(ctx context.Context, args *ToggleRegionalizedPrivateEndpointSettingApiParams) ToggleRegionalizedPrivateEndpointSettingApiRequest {
@@ -1421,7 +1681,21 @@ func (a *PrivateEndpointServicesApiService) ToggleRegionalizedPrivateEndpointSet
 		ctx:                ctx,
 		groupId:            args.GroupId,
 		projectSettingItem: args.ProjectSettingItem,
+		envelope:           args.Envelope,
+		pretty:             args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r ToggleRegionalizedPrivateEndpointSettingApiRequest) Envelope(envelope bool) ToggleRegionalizedPrivateEndpointSettingApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r ToggleRegionalizedPrivateEndpointSettingApiRequest) Pretty(pretty bool) ToggleRegionalizedPrivateEndpointSettingApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r ToggleRegionalizedPrivateEndpointSettingApiRequest) Execute() (*ProjectSettingItem, *http.Response, error) {
@@ -1478,6 +1752,20 @@ func (a *PrivateEndpointServicesApiService) toggleRegionalizedPrivateEndpointSet
 		return localVarReturnValue, nil, reportError("projectSettingItem is required and must be specified")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 

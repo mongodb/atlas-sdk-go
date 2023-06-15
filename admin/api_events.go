@@ -126,12 +126,16 @@ type GetOrganizationEventApiRequest struct {
 	ApiService EventsApi
 	orgId      string
 	eventId    string
+	envelope   *bool
+	pretty     *bool
 	includeRaw *bool
 }
 
 type GetOrganizationEventApiParams struct {
 	OrgId      string
 	EventId    string
+	Envelope   *bool
+	Pretty     *bool
 	IncludeRaw *bool
 }
 
@@ -141,8 +145,22 @@ func (a *EventsApiService) GetOrganizationEventWithParams(ctx context.Context, a
 		ctx:        ctx,
 		orgId:      args.OrgId,
 		eventId:    args.EventId,
+		envelope:   args.Envelope,
+		pretty:     args.Pretty,
 		includeRaw: args.IncludeRaw,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r GetOrganizationEventApiRequest) Envelope(envelope bool) GetOrganizationEventApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r GetOrganizationEventApiRequest) Pretty(pretty bool) GetOrganizationEventApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 // Flag that indicates whether to include the raw document in the output. The raw document contains additional meta information about the event.
@@ -212,6 +230,20 @@ func (a *EventsApiService) getOrganizationEventExecute(r GetOrganizationEventApi
 		return localVarReturnValue, nil, reportError("eventId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	if r.includeRaw != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeRaw", r.includeRaw, "")
 	} else {
@@ -286,12 +318,16 @@ type GetProjectEventApiRequest struct {
 	ApiService EventsApi
 	groupId    string
 	eventId    string
+	envelope   *bool
+	pretty     *bool
 	includeRaw *bool
 }
 
 type GetProjectEventApiParams struct {
 	GroupId    string
 	EventId    string
+	Envelope   *bool
+	Pretty     *bool
 	IncludeRaw *bool
 }
 
@@ -301,8 +337,22 @@ func (a *EventsApiService) GetProjectEventWithParams(ctx context.Context, args *
 		ctx:        ctx,
 		groupId:    args.GroupId,
 		eventId:    args.EventId,
+		envelope:   args.Envelope,
+		pretty:     args.Pretty,
 		includeRaw: args.IncludeRaw,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r GetProjectEventApiRequest) Envelope(envelope bool) GetProjectEventApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r GetProjectEventApiRequest) Pretty(pretty bool) GetProjectEventApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 // Flag that indicates whether to include the raw document in the output. The raw document contains additional meta information about the event.
@@ -372,6 +422,20 @@ func (a *EventsApiService) getProjectEventExecute(r GetProjectEventApiRequest) (
 		return localVarReturnValue, nil, reportError("eventId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	if r.includeRaw != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeRaw", r.includeRaw, "")
 	} else {
@@ -445,9 +509,11 @@ type ListOrganizationEventsApiRequest struct {
 	ctx          context.Context
 	ApiService   EventsApi
 	orgId        string
+	envelope     *bool
 	includeCount *bool
 	itemsPerPage *int
 	pageNum      *int
+	pretty       *bool
 	eventType    *[]string
 	includeRaw   *bool
 	maxDate      *time.Time
@@ -456,9 +522,11 @@ type ListOrganizationEventsApiRequest struct {
 
 type ListOrganizationEventsApiParams struct {
 	OrgId        string
+	Envelope     *bool
 	IncludeCount *bool
 	ItemsPerPage *int
 	PageNum      *int
+	Pretty       *bool
 	EventType    *[]string
 	IncludeRaw   *bool
 	MaxDate      *time.Time
@@ -470,14 +538,22 @@ func (a *EventsApiService) ListOrganizationEventsWithParams(ctx context.Context,
 		ApiService:   a,
 		ctx:          ctx,
 		orgId:        args.OrgId,
+		envelope:     args.Envelope,
 		includeCount: args.IncludeCount,
 		itemsPerPage: args.ItemsPerPage,
 		pageNum:      args.PageNum,
+		pretty:       args.Pretty,
 		eventType:    args.EventType,
 		includeRaw:   args.IncludeRaw,
 		maxDate:      args.MaxDate,
 		minDate:      args.MinDate,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r ListOrganizationEventsApiRequest) Envelope(envelope bool) ListOrganizationEventsApiRequest {
+	r.envelope = &envelope
+	return r
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
@@ -495,6 +571,12 @@ func (r ListOrganizationEventsApiRequest) ItemsPerPage(itemsPerPage int) ListOrg
 // Number of the page that displays the current set of the total objects that the response returns.
 func (r ListOrganizationEventsApiRequest) PageNum(pageNum int) ListOrganizationEventsApiRequest {
 	r.pageNum = &pageNum
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r ListOrganizationEventsApiRequest) Pretty(pretty bool) ListOrganizationEventsApiRequest {
+	r.pretty = &pretty
 	return r
 }
 
@@ -574,6 +656,13 @@ func (a *EventsApiService) listOrganizationEventsExecute(r ListOrganizationEvent
 		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
 	if r.includeCount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
 	} else {
@@ -594,6 +683,13 @@ func (a *EventsApiService) listOrganizationEventsExecute(r ListOrganizationEvent
 		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
 	}
 	if r.eventType != nil {
 		t := *r.eventType
@@ -681,9 +777,11 @@ type ListProjectEventsApiRequest struct {
 	ctx          context.Context
 	ApiService   EventsApi
 	groupId      string
+	envelope     *bool
 	includeCount *bool
 	itemsPerPage *int
 	pageNum      *int
+	pretty       *bool
 	clusterNames *[]string
 	eventType    *[]string
 	includeRaw   *bool
@@ -693,9 +791,11 @@ type ListProjectEventsApiRequest struct {
 
 type ListProjectEventsApiParams struct {
 	GroupId      string
+	Envelope     *bool
 	IncludeCount *bool
 	ItemsPerPage *int
 	PageNum      *int
+	Pretty       *bool
 	ClusterNames *[]string
 	EventType    *[]string
 	IncludeRaw   *bool
@@ -708,15 +808,23 @@ func (a *EventsApiService) ListProjectEventsWithParams(ctx context.Context, args
 		ApiService:   a,
 		ctx:          ctx,
 		groupId:      args.GroupId,
+		envelope:     args.Envelope,
 		includeCount: args.IncludeCount,
 		itemsPerPage: args.ItemsPerPage,
 		pageNum:      args.PageNum,
+		pretty:       args.Pretty,
 		clusterNames: args.ClusterNames,
 		eventType:    args.EventType,
 		includeRaw:   args.IncludeRaw,
 		maxDate:      args.MaxDate,
 		minDate:      args.MinDate,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r ListProjectEventsApiRequest) Envelope(envelope bool) ListProjectEventsApiRequest {
+	r.envelope = &envelope
+	return r
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
@@ -734,6 +842,12 @@ func (r ListProjectEventsApiRequest) ItemsPerPage(itemsPerPage int) ListProjectE
 // Number of the page that displays the current set of the total objects that the response returns.
 func (r ListProjectEventsApiRequest) PageNum(pageNum int) ListProjectEventsApiRequest {
 	r.pageNum = &pageNum
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r ListProjectEventsApiRequest) Pretty(pretty bool) ListProjectEventsApiRequest {
+	r.pretty = &pretty
 	return r
 }
 
@@ -819,6 +933,13 @@ func (a *EventsApiService) listProjectEventsExecute(r ListProjectEventsApiReques
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
 	if r.includeCount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
 	} else {
@@ -839,6 +960,13 @@ func (a *EventsApiService) listProjectEventsExecute(r ListProjectEventsApiReques
 		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
 	}
 	if r.clusterNames != nil {
 		t := *r.clusterNames

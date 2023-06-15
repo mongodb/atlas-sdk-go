@@ -126,12 +126,16 @@ type AcknowledgeAlertApiRequest struct {
 	groupId              string
 	alertId              string
 	alertViewForNdsGroup *AlertViewForNdsGroup
+	envelope             *bool
+	pretty               *bool
 }
 
 type AcknowledgeAlertApiParams struct {
 	GroupId              string
 	AlertId              string
 	AlertViewForNdsGroup *AlertViewForNdsGroup
+	Envelope             *bool
+	Pretty               *bool
 }
 
 func (a *AlertsApiService) AcknowledgeAlertWithParams(ctx context.Context, args *AcknowledgeAlertApiParams) AcknowledgeAlertApiRequest {
@@ -141,7 +145,21 @@ func (a *AlertsApiService) AcknowledgeAlertWithParams(ctx context.Context, args 
 		groupId:              args.GroupId,
 		alertId:              args.AlertId,
 		alertViewForNdsGroup: args.AlertViewForNdsGroup,
+		envelope:             args.Envelope,
+		pretty:               args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r AcknowledgeAlertApiRequest) Envelope(envelope bool) AcknowledgeAlertApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r AcknowledgeAlertApiRequest) Pretty(pretty bool) AcknowledgeAlertApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r AcknowledgeAlertApiRequest) Execute() (*AlertViewForNdsGroup, *http.Response, error) {
@@ -209,6 +227,20 @@ func (a *AlertsApiService) acknowledgeAlertExecute(r AcknowledgeAlertApiRequest)
 		return localVarReturnValue, nil, reportError("alertViewForNdsGroup is required and must be specified")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
@@ -278,11 +310,15 @@ type GetAlertApiRequest struct {
 	ApiService AlertsApi
 	groupId    string
 	alertId    string
+	envelope   *bool
+	pretty     *bool
 }
 
 type GetAlertApiParams struct {
-	GroupId string
-	AlertId string
+	GroupId  string
+	AlertId  string
+	Envelope *bool
+	Pretty   *bool
 }
 
 func (a *AlertsApiService) GetAlertWithParams(ctx context.Context, args *GetAlertApiParams) GetAlertApiRequest {
@@ -291,7 +327,21 @@ func (a *AlertsApiService) GetAlertWithParams(ctx context.Context, args *GetAler
 		ctx:        ctx,
 		groupId:    args.GroupId,
 		alertId:    args.AlertId,
+		envelope:   args.Envelope,
+		pretty:     args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r GetAlertApiRequest) Envelope(envelope bool) GetAlertApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r GetAlertApiRequest) Pretty(pretty bool) GetAlertApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r GetAlertApiRequest) Execute() (*AlertViewForNdsGroup, *http.Response, error) {
@@ -355,6 +405,20 @@ func (a *AlertsApiService) getAlertExecute(r GetAlertApiRequest) (*AlertViewForN
 		return localVarReturnValue, nil, reportError("alertId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -421,17 +485,21 @@ type ListAlertsApiRequest struct {
 	ctx          context.Context
 	ApiService   AlertsApi
 	groupId      string
+	envelope     *bool
 	includeCount *bool
 	itemsPerPage *int
 	pageNum      *int
+	pretty       *bool
 	status       *string
 }
 
 type ListAlertsApiParams struct {
 	GroupId      string
+	Envelope     *bool
 	IncludeCount *bool
 	ItemsPerPage *int
 	PageNum      *int
+	Pretty       *bool
 	Status       *string
 }
 
@@ -440,11 +508,19 @@ func (a *AlertsApiService) ListAlertsWithParams(ctx context.Context, args *ListA
 		ApiService:   a,
 		ctx:          ctx,
 		groupId:      args.GroupId,
+		envelope:     args.Envelope,
 		includeCount: args.IncludeCount,
 		itemsPerPage: args.ItemsPerPage,
 		pageNum:      args.PageNum,
+		pretty:       args.Pretty,
 		status:       args.Status,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r ListAlertsApiRequest) Envelope(envelope bool) ListAlertsApiRequest {
+	r.envelope = &envelope
+	return r
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
@@ -462,6 +538,12 @@ func (r ListAlertsApiRequest) ItemsPerPage(itemsPerPage int) ListAlertsApiReques
 // Number of the page that displays the current set of the total objects that the response returns.
 func (r ListAlertsApiRequest) PageNum(pageNum int) ListAlertsApiRequest {
 	r.pageNum = &pageNum
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r ListAlertsApiRequest) Pretty(pretty bool) ListAlertsApiRequest {
+	r.pretty = &pretty
 	return r
 }
 
@@ -523,6 +605,13 @@ func (a *AlertsApiService) listAlertsExecute(r ListAlertsApiRequest) (*Paginated
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
 	if r.includeCount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
 	} else {
@@ -543,6 +632,13 @@ func (a *AlertsApiService) listAlertsExecute(r ListAlertsApiRequest) (*Paginated
 		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
 	}
 	if r.status != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "")
@@ -614,17 +710,21 @@ type ListAlertsByAlertConfigurationIdApiRequest struct {
 	ApiService    AlertsApi
 	groupId       string
 	alertConfigId string
+	envelope      *bool
 	includeCount  *bool
 	itemsPerPage  *int
 	pageNum       *int
+	pretty        *bool
 }
 
 type ListAlertsByAlertConfigurationIdApiParams struct {
 	GroupId       string
 	AlertConfigId string
+	Envelope      *bool
 	IncludeCount  *bool
 	ItemsPerPage  *int
 	PageNum       *int
+	Pretty        *bool
 }
 
 func (a *AlertsApiService) ListAlertsByAlertConfigurationIdWithParams(ctx context.Context, args *ListAlertsByAlertConfigurationIdApiParams) ListAlertsByAlertConfigurationIdApiRequest {
@@ -633,10 +733,18 @@ func (a *AlertsApiService) ListAlertsByAlertConfigurationIdWithParams(ctx contex
 		ctx:           ctx,
 		groupId:       args.GroupId,
 		alertConfigId: args.AlertConfigId,
+		envelope:      args.Envelope,
 		includeCount:  args.IncludeCount,
 		itemsPerPage:  args.ItemsPerPage,
 		pageNum:       args.PageNum,
+		pretty:        args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r ListAlertsByAlertConfigurationIdApiRequest) Envelope(envelope bool) ListAlertsByAlertConfigurationIdApiRequest {
+	r.envelope = &envelope
+	return r
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
@@ -654,6 +762,12 @@ func (r ListAlertsByAlertConfigurationIdApiRequest) ItemsPerPage(itemsPerPage in
 // Number of the page that displays the current set of the total objects that the response returns.
 func (r ListAlertsByAlertConfigurationIdApiRequest) PageNum(pageNum int) ListAlertsByAlertConfigurationIdApiRequest {
 	r.pageNum = &pageNum
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r ListAlertsByAlertConfigurationIdApiRequest) Pretty(pretty bool) ListAlertsByAlertConfigurationIdApiRequest {
+	r.pretty = &pretty
 	return r
 }
 
@@ -718,6 +832,13 @@ func (a *AlertsApiService) listAlertsByAlertConfigurationIdExecute(r ListAlertsB
 		return localVarReturnValue, nil, reportError("alertConfigId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
 	if r.includeCount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
 	} else {
@@ -738,6 +859,13 @@ func (a *AlertsApiService) listAlertsByAlertConfigurationIdExecute(r ListAlertsB
 		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

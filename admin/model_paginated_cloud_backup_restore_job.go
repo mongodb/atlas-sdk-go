@@ -14,7 +14,7 @@ type PaginatedCloudBackupRestoreJob struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	Links []Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud providers when completing this request.
-	Results []DiskBackupRestoreJob `json:"results,omitempty"`
+	Results []DiskBackupSnapshotRestoreJob `json:"results,omitempty"`
 	// Number of documents returned in this response.
 	TotalCount *int `json:"totalCount,omitempty"`
 }
@@ -69,9 +69,9 @@ func (o *PaginatedCloudBackupRestoreJob) SetLinks(v []Link) {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *PaginatedCloudBackupRestoreJob) GetResults() []DiskBackupRestoreJob {
+func (o *PaginatedCloudBackupRestoreJob) GetResults() []DiskBackupSnapshotRestoreJob {
 	if o == nil || IsNil(o.Results) {
-		var ret []DiskBackupRestoreJob
+		var ret []DiskBackupSnapshotRestoreJob
 		return ret
 	}
 	return o.Results
@@ -79,7 +79,7 @@ func (o *PaginatedCloudBackupRestoreJob) GetResults() []DiskBackupRestoreJob {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedCloudBackupRestoreJob) GetResultsOk() ([]DiskBackupRestoreJob, bool) {
+func (o *PaginatedCloudBackupRestoreJob) GetResultsOk() ([]DiskBackupSnapshotRestoreJob, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -95,8 +95,8 @@ func (o *PaginatedCloudBackupRestoreJob) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []DiskBackupRestoreJob and assigns it to the Results field.
-func (o *PaginatedCloudBackupRestoreJob) SetResults(v []DiskBackupRestoreJob) {
+// SetResults gets a reference to the given []DiskBackupSnapshotRestoreJob and assigns it to the Results field.
+func (o *PaginatedCloudBackupRestoreJob) SetResults(v []DiskBackupSnapshotRestoreJob) {
 	o.Results = v
 }
 

@@ -12,7 +12,7 @@ var _ MappedNullable = &OrgGroup{}
 // OrgGroup struct for OrgGroup
 type OrgGroup struct {
 	// Settings that describe the clusters in each project that the API key is authorized to view.
-	Clusters []Cluster `json:"clusters,omitempty"`
+	Clusters []CloudCluster `json:"clusters,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project.
 	GroupId *string `json:"groupId,omitempty"`
 	// Human-readable label that identifies the project.
@@ -45,9 +45,9 @@ func NewOrgGroupWithDefaults() *OrgGroup {
 }
 
 // GetClusters returns the Clusters field value if set, zero value otherwise.
-func (o *OrgGroup) GetClusters() []Cluster {
+func (o *OrgGroup) GetClusters() []CloudCluster {
 	if o == nil || IsNil(o.Clusters) {
-		var ret []Cluster
+		var ret []CloudCluster
 		return ret
 	}
 	return o.Clusters
@@ -55,7 +55,7 @@ func (o *OrgGroup) GetClusters() []Cluster {
 
 // GetClustersOk returns a tuple with the Clusters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrgGroup) GetClustersOk() ([]Cluster, bool) {
+func (o *OrgGroup) GetClustersOk() ([]CloudCluster, bool) {
 	if o == nil || IsNil(o.Clusters) {
 		return nil, false
 	}
@@ -71,8 +71,8 @@ func (o *OrgGroup) HasClusters() bool {
 	return false
 }
 
-// SetClusters gets a reference to the given []Cluster and assigns it to the Clusters field.
-func (o *OrgGroup) SetClusters(v []Cluster) {
+// SetClusters gets a reference to the given []CloudCluster and assigns it to the Clusters field.
+func (o *OrgGroup) SetClusters(v []CloudCluster) {
 	o.Clusters = v
 }
 

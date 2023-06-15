@@ -25,7 +25,7 @@ type MongoDBCloudUsersApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@return CreateUserApiRequest
 	*/
-	CreateUser(ctx context.Context, appUser *AppUser) CreateUserApiRequest
+	CreateUser(ctx context.Context, cloudUser *CloudUser) CreateUserApiRequest
 	/*
 		CreateUser Create One MongoDB Cloud User
 
@@ -37,7 +37,7 @@ type MongoDBCloudUsersApi interface {
 	CreateUserWithParams(ctx context.Context, args *CreateUserApiParams) CreateUserApiRequest
 
 	// Interface only available internally
-	createUserExecute(r CreateUserApiRequest) (*AppUser, *http.Response, error)
+	createUserExecute(r CreateUserApiRequest) (*CloudUser, *http.Response, error)
 
 	/*
 		GetUser Return One MongoDB Cloud User using Its ID
@@ -60,7 +60,7 @@ type MongoDBCloudUsersApi interface {
 	GetUserWithParams(ctx context.Context, args *GetUserApiParams) GetUserApiRequest
 
 	// Interface only available internally
-	getUserExecute(r GetUserApiRequest) (*AppUser, *http.Response, error)
+	getUserExecute(r GetUserApiRequest) (*CloudUser, *http.Response, error)
 
 	/*
 		GetUserByUsername Return One MongoDB Cloud User using Their Username
@@ -83,7 +83,7 @@ type MongoDBCloudUsersApi interface {
 	GetUserByUsernameWithParams(ctx context.Context, args *GetUserByUsernameApiParams) GetUserByUsernameApiRequest
 
 	// Interface only available internally
-	getUserByUsernameExecute(r GetUserByUsernameApiRequest) (*AppUser, *http.Response, error)
+	getUserByUsernameExecute(r GetUserByUsernameApiRequest) (*CloudUser, *http.Response, error)
 }
 
 // MongoDBCloudUsersApiService MongoDBCloudUsersApi service
@@ -92,22 +92,40 @@ type MongoDBCloudUsersApiService service
 type CreateUserApiRequest struct {
 	ctx        context.Context
 	ApiService MongoDBCloudUsersApi
-	appUser    *AppUser
+	cloudUser  *CloudUser
+	envelope   *bool
+	pretty     *bool
 }
 
 type CreateUserApiParams struct {
-	AppUser *AppUser
+	CloudUser *CloudUser
+	Envelope  *bool
+	Pretty    *bool
 }
 
 func (a *MongoDBCloudUsersApiService) CreateUserWithParams(ctx context.Context, args *CreateUserApiParams) CreateUserApiRequest {
 	return CreateUserApiRequest{
 		ApiService: a,
 		ctx:        ctx,
-		appUser:    args.AppUser,
+		cloudUser:  args.CloudUser,
+		envelope:   args.Envelope,
+		pretty:     args.Pretty,
 	}
 }
 
-func (r CreateUserApiRequest) Execute() (*AppUser, *http.Response, error) {
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r CreateUserApiRequest) Envelope(envelope bool) CreateUserApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r CreateUserApiRequest) Pretty(pretty bool) CreateUserApiRequest {
+	r.pretty = &pretty
+	return r
+}
+
+func (r CreateUserApiRequest) Execute() (*CloudUser, *http.Response, error) {
 	return r.ApiService.createUserExecute(r)
 }
 
@@ -123,23 +141,23 @@ Creates one MongoDB Cloud user account. A MongoDB Cloud user account grants acce
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return CreateUserApiRequest
 */
-func (a *MongoDBCloudUsersApiService) CreateUser(ctx context.Context, appUser *AppUser) CreateUserApiRequest {
+func (a *MongoDBCloudUsersApiService) CreateUser(ctx context.Context, cloudUser *CloudUser) CreateUserApiRequest {
 	return CreateUserApiRequest{
 		ApiService: a,
 		ctx:        ctx,
-		appUser:    appUser,
+		cloudUser:  cloudUser,
 	}
 }
 
 // Execute executes the request
 //
-//	@return AppUser
-func (a *MongoDBCloudUsersApiService) createUserExecute(r CreateUserApiRequest) (*AppUser, *http.Response, error) {
+//	@return CloudUser
+func (a *MongoDBCloudUsersApiService) createUserExecute(r CreateUserApiRequest) (*CloudUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *AppUser
+		localVarReturnValue *CloudUser
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.CreateUser")
@@ -152,10 +170,24 @@ func (a *MongoDBCloudUsersApiService) createUserExecute(r CreateUserApiRequest) 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.appUser == nil {
-		return localVarReturnValue, nil, reportError("appUser is required and must be specified")
+	if r.cloudUser == nil {
+		return localVarReturnValue, nil, reportError("cloudUser is required and must be specified")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
@@ -174,7 +206,7 @@ func (a *MongoDBCloudUsersApiService) createUserExecute(r CreateUserApiRequest) 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.appUser
+	localVarPostBody = r.cloudUser
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -224,10 +256,14 @@ type GetUserApiRequest struct {
 	ctx        context.Context
 	ApiService MongoDBCloudUsersApi
 	userId     string
+	envelope   *bool
+	pretty     *bool
 }
 
 type GetUserApiParams struct {
-	UserId string
+	UserId   string
+	Envelope *bool
+	Pretty   *bool
 }
 
 func (a *MongoDBCloudUsersApiService) GetUserWithParams(ctx context.Context, args *GetUserApiParams) GetUserApiRequest {
@@ -235,10 +271,24 @@ func (a *MongoDBCloudUsersApiService) GetUserWithParams(ctx context.Context, arg
 		ApiService: a,
 		ctx:        ctx,
 		userId:     args.UserId,
+		envelope:   args.Envelope,
+		pretty:     args.Pretty,
 	}
 }
 
-func (r GetUserApiRequest) Execute() (*AppUser, *http.Response, error) {
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r GetUserApiRequest) Envelope(envelope bool) GetUserApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r GetUserApiRequest) Pretty(pretty bool) GetUserApiRequest {
+	r.pretty = &pretty
+	return r
+}
+
+func (r GetUserApiRequest) Execute() (*CloudUser, *http.Response, error) {
 	return r.ApiService.getUserExecute(r)
 }
 
@@ -261,13 +311,13 @@ func (a *MongoDBCloudUsersApiService) GetUser(ctx context.Context, userId string
 
 // Execute executes the request
 //
-//	@return AppUser
-func (a *MongoDBCloudUsersApiService) getUserExecute(r GetUserApiRequest) (*AppUser, *http.Response, error) {
+//	@return CloudUser
+func (a *MongoDBCloudUsersApiService) getUserExecute(r GetUserApiRequest) (*CloudUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *AppUser
+		localVarReturnValue *CloudUser
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.GetUser")
@@ -288,6 +338,20 @@ func (a *MongoDBCloudUsersApiService) getUserExecute(r GetUserApiRequest) (*AppU
 		return localVarReturnValue, nil, reportError("userId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -354,10 +418,14 @@ type GetUserByUsernameApiRequest struct {
 	ctx        context.Context
 	ApiService MongoDBCloudUsersApi
 	userName   string
+	envelope   *bool
+	pretty     *bool
 }
 
 type GetUserByUsernameApiParams struct {
 	UserName string
+	Envelope *bool
+	Pretty   *bool
 }
 
 func (a *MongoDBCloudUsersApiService) GetUserByUsernameWithParams(ctx context.Context, args *GetUserByUsernameApiParams) GetUserByUsernameApiRequest {
@@ -365,10 +433,24 @@ func (a *MongoDBCloudUsersApiService) GetUserByUsernameWithParams(ctx context.Co
 		ApiService: a,
 		ctx:        ctx,
 		userName:   args.UserName,
+		envelope:   args.Envelope,
+		pretty:     args.Pretty,
 	}
 }
 
-func (r GetUserByUsernameApiRequest) Execute() (*AppUser, *http.Response, error) {
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r GetUserByUsernameApiRequest) Envelope(envelope bool) GetUserByUsernameApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r GetUserByUsernameApiRequest) Pretty(pretty bool) GetUserByUsernameApiRequest {
+	r.pretty = &pretty
+	return r
+}
+
+func (r GetUserByUsernameApiRequest) Execute() (*CloudUser, *http.Response, error) {
 	return r.ApiService.getUserByUsernameExecute(r)
 }
 
@@ -391,13 +473,13 @@ func (a *MongoDBCloudUsersApiService) GetUserByUsername(ctx context.Context, use
 
 // Execute executes the request
 //
-//	@return AppUser
-func (a *MongoDBCloudUsersApiService) getUserByUsernameExecute(r GetUserByUsernameApiRequest) (*AppUser, *http.Response, error) {
+//	@return CloudUser
+func (a *MongoDBCloudUsersApiService) getUserByUsernameExecute(r GetUserByUsernameApiRequest) (*CloudUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *AppUser
+		localVarReturnValue *CloudUser
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.GetUserByUsername")
@@ -412,6 +494,20 @@ func (a *MongoDBCloudUsersApiService) getUserByUsernameExecute(r GetUserByUserna
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

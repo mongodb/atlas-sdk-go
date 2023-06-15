@@ -11,9 +11,9 @@ var _ MappedNullable = &EncryptionAtRest{}
 
 // EncryptionAtRest struct for EncryptionAtRest
 type EncryptionAtRest struct {
-	AwsKms         *AWSKMS         `json:"awsKms,omitempty"`
-	AzureKeyVault  *AzureKeyVault  `json:"azureKeyVault,omitempty"`
-	GoogleCloudKms *GoogleCloudKMS `json:"googleCloudKms,omitempty"`
+	AwsKms         *AWSKMSConfiguration `json:"awsKms,omitempty"`
+	AzureKeyVault  *AzureKeyVault       `json:"azureKeyVault,omitempty"`
+	GoogleCloudKms *GoogleCloudKMS      `json:"googleCloudKms,omitempty"`
 }
 
 // NewEncryptionAtRest instantiates a new EncryptionAtRest object
@@ -34,9 +34,9 @@ func NewEncryptionAtRestWithDefaults() *EncryptionAtRest {
 }
 
 // GetAwsKms returns the AwsKms field value if set, zero value otherwise.
-func (o *EncryptionAtRest) GetAwsKms() AWSKMS {
+func (o *EncryptionAtRest) GetAwsKms() AWSKMSConfiguration {
 	if o == nil || IsNil(o.AwsKms) {
-		var ret AWSKMS
+		var ret AWSKMSConfiguration
 		return ret
 	}
 	return *o.AwsKms
@@ -44,7 +44,7 @@ func (o *EncryptionAtRest) GetAwsKms() AWSKMS {
 
 // GetAwsKmsOk returns a tuple with the AwsKms field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EncryptionAtRest) GetAwsKmsOk() (*AWSKMS, bool) {
+func (o *EncryptionAtRest) GetAwsKmsOk() (*AWSKMSConfiguration, bool) {
 	if o == nil || IsNil(o.AwsKms) {
 		return nil, false
 	}
@@ -60,8 +60,8 @@ func (o *EncryptionAtRest) HasAwsKms() bool {
 	return false
 }
 
-// SetAwsKms gets a reference to the given AWSKMS and assigns it to the AwsKms field.
-func (o *EncryptionAtRest) SetAwsKms(v AWSKMS) {
+// SetAwsKms gets a reference to the given AWSKMSConfiguration and assigns it to the AwsKms field.
+func (o *EncryptionAtRest) SetAwsKms(v AWSKMSConfiguration) {
 	o.AwsKms = &v
 }
 

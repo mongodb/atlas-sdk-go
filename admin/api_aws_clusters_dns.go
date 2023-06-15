@@ -67,10 +67,14 @@ type GetAWSCustomDNSApiRequest struct {
 	ctx        context.Context
 	ApiService AWSClustersDNSApi
 	groupId    string
+	envelope   *bool
+	pretty     *bool
 }
 
 type GetAWSCustomDNSApiParams struct {
-	GroupId string
+	GroupId  string
+	Envelope *bool
+	Pretty   *bool
 }
 
 func (a *AWSClustersDNSApiService) GetAWSCustomDNSWithParams(ctx context.Context, args *GetAWSCustomDNSApiParams) GetAWSCustomDNSApiRequest {
@@ -78,7 +82,21 @@ func (a *AWSClustersDNSApiService) GetAWSCustomDNSWithParams(ctx context.Context
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    args.GroupId,
+		envelope:   args.Envelope,
+		pretty:     args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r GetAWSCustomDNSApiRequest) Envelope(envelope bool) GetAWSCustomDNSApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r GetAWSCustomDNSApiRequest) Pretty(pretty bool) GetAWSCustomDNSApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r GetAWSCustomDNSApiRequest) Execute() (*AWSCustomDNSEnabled, *http.Response, error) {
@@ -131,6 +149,20 @@ func (a *AWSClustersDNSApiService) getAWSCustomDNSExecute(r GetAWSCustomDNSApiRe
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -198,11 +230,15 @@ type ToggleAWSCustomDNSApiRequest struct {
 	ApiService          AWSClustersDNSApi
 	groupId             string
 	aWSCustomDNSEnabled *AWSCustomDNSEnabled
+	envelope            *bool
+	pretty              *bool
 }
 
 type ToggleAWSCustomDNSApiParams struct {
 	GroupId             string
 	AWSCustomDNSEnabled *AWSCustomDNSEnabled
+	Envelope            *bool
+	Pretty              *bool
 }
 
 func (a *AWSClustersDNSApiService) ToggleAWSCustomDNSWithParams(ctx context.Context, args *ToggleAWSCustomDNSApiParams) ToggleAWSCustomDNSApiRequest {
@@ -211,7 +247,21 @@ func (a *AWSClustersDNSApiService) ToggleAWSCustomDNSWithParams(ctx context.Cont
 		ctx:                 ctx,
 		groupId:             args.GroupId,
 		aWSCustomDNSEnabled: args.AWSCustomDNSEnabled,
+		envelope:            args.Envelope,
+		pretty:              args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r ToggleAWSCustomDNSApiRequest) Envelope(envelope bool) ToggleAWSCustomDNSApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r ToggleAWSCustomDNSApiRequest) Pretty(pretty bool) ToggleAWSCustomDNSApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r ToggleAWSCustomDNSApiRequest) Execute() (*AWSCustomDNSEnabled, *http.Response, error) {
@@ -268,6 +318,20 @@ func (a *AWSClustersDNSApiService) toggleAWSCustomDNSExecute(r ToggleAWSCustomDN
 		return localVarReturnValue, nil, reportError("aWSCustomDNSEnabled is required and must be specified")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 

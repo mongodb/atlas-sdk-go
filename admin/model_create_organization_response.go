@@ -11,7 +11,7 @@ var _ MappedNullable = &CreateOrganizationResponse{}
 
 // CreateOrganizationResponse struct for CreateOrganizationResponse
 type CreateOrganizationResponse struct {
-	ApiKey *ApiUser `json:"apiKey,omitempty"`
+	ApiKey *KeyUser `json:"apiKey,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the federation that you linked the newly created organization to.
 	FederationSettingsId *string `json:"federationSettingsId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud user that you assigned the Organization Owner role in the new organization.
@@ -37,9 +37,9 @@ func NewCreateOrganizationResponseWithDefaults() *CreateOrganizationResponse {
 }
 
 // GetApiKey returns the ApiKey field value if set, zero value otherwise.
-func (o *CreateOrganizationResponse) GetApiKey() ApiUser {
+func (o *CreateOrganizationResponse) GetApiKey() KeyUser {
 	if o == nil || IsNil(o.ApiKey) {
-		var ret ApiUser
+		var ret KeyUser
 		return ret
 	}
 	return *o.ApiKey
@@ -47,7 +47,7 @@ func (o *CreateOrganizationResponse) GetApiKey() ApiUser {
 
 // GetApiKeyOk returns a tuple with the ApiKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateOrganizationResponse) GetApiKeyOk() (*ApiUser, bool) {
+func (o *CreateOrganizationResponse) GetApiKeyOk() (*KeyUser, bool) {
 	if o == nil || IsNil(o.ApiKey) {
 		return nil, false
 	}
@@ -63,8 +63,8 @@ func (o *CreateOrganizationResponse) HasApiKey() bool {
 	return false
 }
 
-// SetApiKey gets a reference to the given ApiUser and assigns it to the ApiKey field.
-func (o *CreateOrganizationResponse) SetApiKey(v ApiUser) {
+// SetApiKey gets a reference to the given KeyUser and assigns it to the ApiKey field.
+func (o *CreateOrganizationResponse) SetApiKey(v KeyUser) {
 	o.ApiKey = &v
 }
 

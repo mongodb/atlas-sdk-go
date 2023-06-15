@@ -24,7 +24,7 @@ type ConnectedOrgConfig struct {
 	// Atlas roles that are granted to a user in this organization after authenticating.
 	PostAuthRoleGrants []string `json:"postAuthRoleGrants,omitempty"`
 	// Role mappings that are configured in this organization.
-	RoleMappings []RoleMapping `json:"roleMappings,omitempty"`
+	RoleMappings []AuthFederationRoleMapping `json:"roleMappings,omitempty"`
 	// List that contains the users who have an email address that doesn't match any domain on the allowed list.
 	UserConflicts []FederatedUser `json:"userConflicts,omitempty"`
 }
@@ -218,9 +218,9 @@ func (o *ConnectedOrgConfig) SetPostAuthRoleGrants(v []string) {
 }
 
 // GetRoleMappings returns the RoleMappings field value if set, zero value otherwise.
-func (o *ConnectedOrgConfig) GetRoleMappings() []RoleMapping {
+func (o *ConnectedOrgConfig) GetRoleMappings() []AuthFederationRoleMapping {
 	if o == nil || IsNil(o.RoleMappings) {
-		var ret []RoleMapping
+		var ret []AuthFederationRoleMapping
 		return ret
 	}
 	return o.RoleMappings
@@ -228,7 +228,7 @@ func (o *ConnectedOrgConfig) GetRoleMappings() []RoleMapping {
 
 // GetRoleMappingsOk returns a tuple with the RoleMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ConnectedOrgConfig) GetRoleMappingsOk() ([]RoleMapping, bool) {
+func (o *ConnectedOrgConfig) GetRoleMappingsOk() ([]AuthFederationRoleMapping, bool) {
 	if o == nil || IsNil(o.RoleMappings) {
 		return nil, false
 	}
@@ -244,8 +244,8 @@ func (o *ConnectedOrgConfig) HasRoleMappings() bool {
 	return false
 }
 
-// SetRoleMappings gets a reference to the given []RoleMapping and assigns it to the RoleMappings field.
-func (o *ConnectedOrgConfig) SetRoleMappings(v []RoleMapping) {
+// SetRoleMappings gets a reference to the given []AuthFederationRoleMapping and assigns it to the RoleMappings field.
+func (o *ConnectedOrgConfig) SetRoleMappings(v []AuthFederationRoleMapping) {
 	o.RoleMappings = v
 }
 

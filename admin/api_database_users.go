@@ -22,7 +22,7 @@ type DatabaseUsersApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return CreateDatabaseUserApiRequest
 	*/
-	CreateDatabaseUser(ctx context.Context, groupId string, databaseUser *DatabaseUser) CreateDatabaseUserApiRequest
+	CreateDatabaseUser(ctx context.Context, groupId string, cloudDatabaseUser *CloudDatabaseUser) CreateDatabaseUserApiRequest
 	/*
 		CreateDatabaseUser Create One Database User in One Project
 
@@ -34,7 +34,7 @@ type DatabaseUsersApi interface {
 	CreateDatabaseUserWithParams(ctx context.Context, args *CreateDatabaseUserApiParams) CreateDatabaseUserApiRequest
 
 	// Interface only available internally
-	createDatabaseUserExecute(r CreateDatabaseUserApiRequest) (*DatabaseUser, *http.Response, error)
+	createDatabaseUserExecute(r CreateDatabaseUserApiRequest) (*CloudDatabaseUser, *http.Response, error)
 
 	/*
 		DeleteDatabaseUser Remove One Database User from One Project
@@ -84,7 +84,7 @@ type DatabaseUsersApi interface {
 	GetDatabaseUserWithParams(ctx context.Context, args *GetDatabaseUserApiParams) GetDatabaseUserApiRequest
 
 	// Interface only available internally
-	getDatabaseUserExecute(r GetDatabaseUserApiRequest) (*DatabaseUser, *http.Response, error)
+	getDatabaseUserExecute(r GetDatabaseUserApiRequest) (*CloudDatabaseUser, *http.Response, error)
 
 	/*
 		ListDatabaseUsers Return All Database Users from One Project
@@ -120,7 +120,7 @@ type DatabaseUsersApi interface {
 		@param username Human-readable label that represents the user that authenticates to MongoDB. The format of this label depends on the method of authentication:  | Authentication Method | Parameter Needed | Parameter Value | username Format | |---|---|---|---| | AWS IAM | awsType | ROLE | <abbr title=\"Amazon Resource Name\">ARN</abbr> | | AWS IAM | awsType | USER | <abbr title=\"Amazon Resource Name\">ARN</abbr> | | x.509 | x509Type | CUSTOMER | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | x.509 | x509Type | MANAGED | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | LDAP | ldapAuthType | USER | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | LDAP | ldapAuthType | GROUP | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | OIDC | oidcAuthType | IDP_GROUP | Atlas OIDC IdP Identifier (found in Federation Settings, or contact Support), followed by a '/', followed by the IdP group name | | SCRAM-SHA | awsType, x509Type, ldapAuthType, oidcAuthType | NONE | Alphanumeric string |
 		@return UpdateDatabaseUserApiRequest
 	*/
-	UpdateDatabaseUser(ctx context.Context, groupId string, databaseName string, username string, databaseUser *DatabaseUser) UpdateDatabaseUserApiRequest
+	UpdateDatabaseUser(ctx context.Context, groupId string, databaseName string, username string, cloudDatabaseUser *CloudDatabaseUser) UpdateDatabaseUserApiRequest
 	/*
 		UpdateDatabaseUser Update One Database User in One Project
 
@@ -132,34 +132,52 @@ type DatabaseUsersApi interface {
 	UpdateDatabaseUserWithParams(ctx context.Context, args *UpdateDatabaseUserApiParams) UpdateDatabaseUserApiRequest
 
 	// Interface only available internally
-	updateDatabaseUserExecute(r UpdateDatabaseUserApiRequest) (*DatabaseUser, *http.Response, error)
+	updateDatabaseUserExecute(r UpdateDatabaseUserApiRequest) (*CloudDatabaseUser, *http.Response, error)
 }
 
 // DatabaseUsersApiService DatabaseUsersApi service
 type DatabaseUsersApiService service
 
 type CreateDatabaseUserApiRequest struct {
-	ctx          context.Context
-	ApiService   DatabaseUsersApi
-	groupId      string
-	databaseUser *DatabaseUser
+	ctx               context.Context
+	ApiService        DatabaseUsersApi
+	groupId           string
+	cloudDatabaseUser *CloudDatabaseUser
+	envelope          *bool
+	pretty            *bool
 }
 
 type CreateDatabaseUserApiParams struct {
-	GroupId      string
-	DatabaseUser *DatabaseUser
+	GroupId           string
+	CloudDatabaseUser *CloudDatabaseUser
+	Envelope          *bool
+	Pretty            *bool
 }
 
 func (a *DatabaseUsersApiService) CreateDatabaseUserWithParams(ctx context.Context, args *CreateDatabaseUserApiParams) CreateDatabaseUserApiRequest {
 	return CreateDatabaseUserApiRequest{
-		ApiService:   a,
-		ctx:          ctx,
-		groupId:      args.GroupId,
-		databaseUser: args.DatabaseUser,
+		ApiService:        a,
+		ctx:               ctx,
+		groupId:           args.GroupId,
+		cloudDatabaseUser: args.CloudDatabaseUser,
+		envelope:          args.Envelope,
+		pretty:            args.Pretty,
 	}
 }
 
-func (r CreateDatabaseUserApiRequest) Execute() (*DatabaseUser, *http.Response, error) {
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r CreateDatabaseUserApiRequest) Envelope(envelope bool) CreateDatabaseUserApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r CreateDatabaseUserApiRequest) Pretty(pretty bool) CreateDatabaseUserApiRequest {
+	r.pretty = &pretty
+	return r
+}
+
+func (r CreateDatabaseUserApiRequest) Execute() (*CloudDatabaseUser, *http.Response, error) {
 	return r.ApiService.createDatabaseUserExecute(r)
 }
 
@@ -172,24 +190,24 @@ Creates one database user in the specified project. This MongoDB Cloud supports 
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateDatabaseUserApiRequest
 */
-func (a *DatabaseUsersApiService) CreateDatabaseUser(ctx context.Context, groupId string, databaseUser *DatabaseUser) CreateDatabaseUserApiRequest {
+func (a *DatabaseUsersApiService) CreateDatabaseUser(ctx context.Context, groupId string, cloudDatabaseUser *CloudDatabaseUser) CreateDatabaseUserApiRequest {
 	return CreateDatabaseUserApiRequest{
-		ApiService:   a,
-		ctx:          ctx,
-		groupId:      groupId,
-		databaseUser: databaseUser,
+		ApiService:        a,
+		ctx:               ctx,
+		groupId:           groupId,
+		cloudDatabaseUser: cloudDatabaseUser,
 	}
 }
 
 // Execute executes the request
 //
-//	@return DatabaseUser
-func (a *DatabaseUsersApiService) createDatabaseUserExecute(r CreateDatabaseUserApiRequest) (*DatabaseUser, *http.Response, error) {
+//	@return CloudDatabaseUser
+func (a *DatabaseUsersApiService) createDatabaseUserExecute(r CreateDatabaseUserApiRequest) (*CloudDatabaseUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *DatabaseUser
+		localVarReturnValue *CloudDatabaseUser
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseUsersApiService.CreateDatabaseUser")
@@ -209,10 +227,24 @@ func (a *DatabaseUsersApiService) createDatabaseUserExecute(r CreateDatabaseUser
 	if strlen(r.groupId) > 24 {
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
-	if r.databaseUser == nil {
-		return localVarReturnValue, nil, reportError("databaseUser is required and must be specified")
+	if r.cloudDatabaseUser == nil {
+		return localVarReturnValue, nil, reportError("cloudDatabaseUser is required and must be specified")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
@@ -231,7 +263,7 @@ func (a *DatabaseUsersApiService) createDatabaseUserExecute(r CreateDatabaseUser
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.databaseUser
+	localVarPostBody = r.cloudDatabaseUser
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -283,12 +315,16 @@ type DeleteDatabaseUserApiRequest struct {
 	groupId      string
 	databaseName string
 	username     string
+	envelope     *bool
+	pretty       *bool
 }
 
 type DeleteDatabaseUserApiParams struct {
 	GroupId      string
 	DatabaseName string
 	Username     string
+	Envelope     *bool
+	Pretty       *bool
 }
 
 func (a *DatabaseUsersApiService) DeleteDatabaseUserWithParams(ctx context.Context, args *DeleteDatabaseUserApiParams) DeleteDatabaseUserApiRequest {
@@ -298,7 +334,21 @@ func (a *DatabaseUsersApiService) DeleteDatabaseUserWithParams(ctx context.Conte
 		groupId:      args.GroupId,
 		databaseName: args.DatabaseName,
 		username:     args.Username,
+		envelope:     args.Envelope,
+		pretty:       args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r DeleteDatabaseUserApiRequest) Envelope(envelope bool) DeleteDatabaseUserApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r DeleteDatabaseUserApiRequest) Pretty(pretty bool) DeleteDatabaseUserApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r DeleteDatabaseUserApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -357,6 +407,20 @@ func (a *DatabaseUsersApiService) deleteDatabaseUserExecute(r DeleteDatabaseUser
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -425,12 +489,16 @@ type GetDatabaseUserApiRequest struct {
 	groupId      string
 	databaseName string
 	username     string
+	envelope     *bool
+	pretty       *bool
 }
 
 type GetDatabaseUserApiParams struct {
 	GroupId      string
 	DatabaseName string
 	Username     string
+	Envelope     *bool
+	Pretty       *bool
 }
 
 func (a *DatabaseUsersApiService) GetDatabaseUserWithParams(ctx context.Context, args *GetDatabaseUserApiParams) GetDatabaseUserApiRequest {
@@ -440,10 +508,24 @@ func (a *DatabaseUsersApiService) GetDatabaseUserWithParams(ctx context.Context,
 		groupId:      args.GroupId,
 		databaseName: args.DatabaseName,
 		username:     args.Username,
+		envelope:     args.Envelope,
+		pretty:       args.Pretty,
 	}
 }
 
-func (r GetDatabaseUserApiRequest) Execute() (*DatabaseUser, *http.Response, error) {
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r GetDatabaseUserApiRequest) Envelope(envelope bool) GetDatabaseUserApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r GetDatabaseUserApiRequest) Pretty(pretty bool) GetDatabaseUserApiRequest {
+	r.pretty = &pretty
+	return r
+}
+
+func (r GetDatabaseUserApiRequest) Execute() (*CloudDatabaseUser, *http.Response, error) {
 	return r.ApiService.getDatabaseUserExecute(r)
 }
 
@@ -470,13 +552,13 @@ func (a *DatabaseUsersApiService) GetDatabaseUser(ctx context.Context, groupId s
 
 // Execute executes the request
 //
-//	@return DatabaseUser
-func (a *DatabaseUsersApiService) getDatabaseUserExecute(r GetDatabaseUserApiRequest) (*DatabaseUser, *http.Response, error) {
+//	@return CloudDatabaseUser
+func (a *DatabaseUsersApiService) getDatabaseUserExecute(r GetDatabaseUserApiRequest) (*CloudDatabaseUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *DatabaseUser
+		localVarReturnValue *CloudDatabaseUser
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseUsersApiService.GetDatabaseUser")
@@ -499,6 +581,20 @@ func (a *DatabaseUsersApiService) getDatabaseUserExecute(r GetDatabaseUserApiReq
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -565,16 +661,20 @@ type ListDatabaseUsersApiRequest struct {
 	ctx          context.Context
 	ApiService   DatabaseUsersApi
 	groupId      string
+	envelope     *bool
 	includeCount *bool
 	itemsPerPage *int
 	pageNum      *int
+	pretty       *bool
 }
 
 type ListDatabaseUsersApiParams struct {
 	GroupId      string
+	Envelope     *bool
 	IncludeCount *bool
 	ItemsPerPage *int
 	PageNum      *int
+	Pretty       *bool
 }
 
 func (a *DatabaseUsersApiService) ListDatabaseUsersWithParams(ctx context.Context, args *ListDatabaseUsersApiParams) ListDatabaseUsersApiRequest {
@@ -582,10 +682,18 @@ func (a *DatabaseUsersApiService) ListDatabaseUsersWithParams(ctx context.Contex
 		ApiService:   a,
 		ctx:          ctx,
 		groupId:      args.GroupId,
+		envelope:     args.Envelope,
 		includeCount: args.IncludeCount,
 		itemsPerPage: args.ItemsPerPage,
 		pageNum:      args.PageNum,
+		pretty:       args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r ListDatabaseUsersApiRequest) Envelope(envelope bool) ListDatabaseUsersApiRequest {
+	r.envelope = &envelope
+	return r
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
@@ -603,6 +711,12 @@ func (r ListDatabaseUsersApiRequest) ItemsPerPage(itemsPerPage int) ListDatabase
 // Number of the page that displays the current set of the total objects that the response returns.
 func (r ListDatabaseUsersApiRequest) PageNum(pageNum int) ListDatabaseUsersApiRequest {
 	r.pageNum = &pageNum
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r ListDatabaseUsersApiRequest) Pretty(pretty bool) ListDatabaseUsersApiRequest {
+	r.pretty = &pretty
 	return r
 }
 
@@ -656,6 +770,13 @@ func (a *DatabaseUsersApiService) listDatabaseUsersExecute(r ListDatabaseUsersAp
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
 	if r.includeCount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
 	} else {
@@ -676,6 +797,13 @@ func (a *DatabaseUsersApiService) listDatabaseUsersExecute(r ListDatabaseUsersAp
 		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -740,33 +868,51 @@ func (a *DatabaseUsersApiService) listDatabaseUsersExecute(r ListDatabaseUsersAp
 }
 
 type UpdateDatabaseUserApiRequest struct {
-	ctx          context.Context
-	ApiService   DatabaseUsersApi
-	groupId      string
-	databaseName string
-	username     string
-	databaseUser *DatabaseUser
+	ctx               context.Context
+	ApiService        DatabaseUsersApi
+	groupId           string
+	databaseName      string
+	username          string
+	cloudDatabaseUser *CloudDatabaseUser
+	envelope          *bool
+	pretty            *bool
 }
 
 type UpdateDatabaseUserApiParams struct {
-	GroupId      string
-	DatabaseName string
-	Username     string
-	DatabaseUser *DatabaseUser
+	GroupId           string
+	DatabaseName      string
+	Username          string
+	CloudDatabaseUser *CloudDatabaseUser
+	Envelope          *bool
+	Pretty            *bool
 }
 
 func (a *DatabaseUsersApiService) UpdateDatabaseUserWithParams(ctx context.Context, args *UpdateDatabaseUserApiParams) UpdateDatabaseUserApiRequest {
 	return UpdateDatabaseUserApiRequest{
-		ApiService:   a,
-		ctx:          ctx,
-		groupId:      args.GroupId,
-		databaseName: args.DatabaseName,
-		username:     args.Username,
-		databaseUser: args.DatabaseUser,
+		ApiService:        a,
+		ctx:               ctx,
+		groupId:           args.GroupId,
+		databaseName:      args.DatabaseName,
+		username:          args.Username,
+		cloudDatabaseUser: args.CloudDatabaseUser,
+		envelope:          args.Envelope,
+		pretty:            args.Pretty,
 	}
 }
 
-func (r UpdateDatabaseUserApiRequest) Execute() (*DatabaseUser, *http.Response, error) {
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r UpdateDatabaseUserApiRequest) Envelope(envelope bool) UpdateDatabaseUserApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r UpdateDatabaseUserApiRequest) Pretty(pretty bool) UpdateDatabaseUserApiRequest {
+	r.pretty = &pretty
+	return r
+}
+
+func (r UpdateDatabaseUserApiRequest) Execute() (*CloudDatabaseUser, *http.Response, error) {
 	return r.ApiService.updateDatabaseUserExecute(r)
 }
 
@@ -781,26 +927,26 @@ Updates one database user that belongs to the specified project. To use this res
 	@param username Human-readable label that represents the user that authenticates to MongoDB. The format of this label depends on the method of authentication:  | Authentication Method | Parameter Needed | Parameter Value | username Format | |---|---|---|---| | AWS IAM | awsType | ROLE | <abbr title=\"Amazon Resource Name\">ARN</abbr> | | AWS IAM | awsType | USER | <abbr title=\"Amazon Resource Name\">ARN</abbr> | | x.509 | x509Type | CUSTOMER | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | x.509 | x509Type | MANAGED | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | LDAP | ldapAuthType | USER | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | LDAP | ldapAuthType | GROUP | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | OIDC | oidcAuthType | IDP_GROUP | Atlas OIDC IdP Identifier (found in Federation Settings, or contact Support), followed by a '/', followed by the IdP group name | | SCRAM-SHA | awsType, x509Type, ldapAuthType, oidcAuthType | NONE | Alphanumeric string |
 	@return UpdateDatabaseUserApiRequest
 */
-func (a *DatabaseUsersApiService) UpdateDatabaseUser(ctx context.Context, groupId string, databaseName string, username string, databaseUser *DatabaseUser) UpdateDatabaseUserApiRequest {
+func (a *DatabaseUsersApiService) UpdateDatabaseUser(ctx context.Context, groupId string, databaseName string, username string, cloudDatabaseUser *CloudDatabaseUser) UpdateDatabaseUserApiRequest {
 	return UpdateDatabaseUserApiRequest{
-		ApiService:   a,
-		ctx:          ctx,
-		groupId:      groupId,
-		databaseName: databaseName,
-		username:     username,
-		databaseUser: databaseUser,
+		ApiService:        a,
+		ctx:               ctx,
+		groupId:           groupId,
+		databaseName:      databaseName,
+		username:          username,
+		cloudDatabaseUser: cloudDatabaseUser,
 	}
 }
 
 // Execute executes the request
 //
-//	@return DatabaseUser
-func (a *DatabaseUsersApiService) updateDatabaseUserExecute(r UpdateDatabaseUserApiRequest) (*DatabaseUser, *http.Response, error) {
+//	@return CloudDatabaseUser
+func (a *DatabaseUsersApiService) updateDatabaseUserExecute(r UpdateDatabaseUserApiRequest) (*CloudDatabaseUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *DatabaseUser
+		localVarReturnValue *CloudDatabaseUser
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseUsersApiService.UpdateDatabaseUser")
@@ -822,10 +968,24 @@ func (a *DatabaseUsersApiService) updateDatabaseUserExecute(r UpdateDatabaseUser
 	if strlen(r.groupId) > 24 {
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
-	if r.databaseUser == nil {
-		return localVarReturnValue, nil, reportError("databaseUser is required and must be specified")
+	if r.cloudDatabaseUser == nil {
+		return localVarReturnValue, nil, reportError("cloudDatabaseUser is required and must be specified")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
@@ -844,7 +1004,7 @@ func (a *DatabaseUsersApiService) updateDatabaseUserExecute(r UpdateDatabaseUser
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.databaseUser
+	localVarPostBody = r.cloudDatabaseUser
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

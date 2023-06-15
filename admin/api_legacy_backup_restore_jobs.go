@@ -25,7 +25,7 @@ type LegacyBackupRestoreJobsApi interface {
 
 		Deprecated: this method has been deprecated. Please check the latest resource version for LegacyBackupRestoreJobsApi
 	*/
-	CreateLegacyBackupRestoreJob(ctx context.Context, groupId string, clusterName string, restoreJob *RestoreJob) CreateLegacyBackupRestoreJobApiRequest
+	CreateLegacyBackupRestoreJob(ctx context.Context, groupId string, clusterName string, backupRestoreJob *BackupRestoreJob) CreateLegacyBackupRestoreJobApiRequest
 	/*
 		CreateLegacyBackupRestoreJob Create One Legacy Backup Restore Job
 
@@ -46,27 +46,45 @@ type LegacyBackupRestoreJobsApi interface {
 type LegacyBackupRestoreJobsApiService service
 
 type CreateLegacyBackupRestoreJobApiRequest struct {
-	ctx         context.Context
-	ApiService  LegacyBackupRestoreJobsApi
-	groupId     string
-	clusterName string
-	restoreJob  *RestoreJob
+	ctx              context.Context
+	ApiService       LegacyBackupRestoreJobsApi
+	groupId          string
+	clusterName      string
+	backupRestoreJob *BackupRestoreJob
+	envelope         *bool
+	pretty           *bool
 }
 
 type CreateLegacyBackupRestoreJobApiParams struct {
-	GroupId     string
-	ClusterName string
-	RestoreJob  *RestoreJob
+	GroupId          string
+	ClusterName      string
+	BackupRestoreJob *BackupRestoreJob
+	Envelope         *bool
+	Pretty           *bool
 }
 
 func (a *LegacyBackupRestoreJobsApiService) CreateLegacyBackupRestoreJobWithParams(ctx context.Context, args *CreateLegacyBackupRestoreJobApiParams) CreateLegacyBackupRestoreJobApiRequest {
 	return CreateLegacyBackupRestoreJobApiRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		groupId:     args.GroupId,
-		clusterName: args.ClusterName,
-		restoreJob:  args.RestoreJob,
+		ApiService:       a,
+		ctx:              ctx,
+		groupId:          args.GroupId,
+		clusterName:      args.ClusterName,
+		backupRestoreJob: args.BackupRestoreJob,
+		envelope:         args.Envelope,
+		pretty:           args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r CreateLegacyBackupRestoreJobApiRequest) Envelope(envelope bool) CreateLegacyBackupRestoreJobApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r CreateLegacyBackupRestoreJobApiRequest) Pretty(pretty bool) CreateLegacyBackupRestoreJobApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r CreateLegacyBackupRestoreJobApiRequest) Execute() (*PaginatedRestoreJob, *http.Response, error) {
@@ -85,13 +103,13 @@ CreateLegacyBackupRestoreJob Create One Legacy Backup Restore Job
 
 Deprecated
 */
-func (a *LegacyBackupRestoreJobsApiService) CreateLegacyBackupRestoreJob(ctx context.Context, groupId string, clusterName string, restoreJob *RestoreJob) CreateLegacyBackupRestoreJobApiRequest {
+func (a *LegacyBackupRestoreJobsApiService) CreateLegacyBackupRestoreJob(ctx context.Context, groupId string, clusterName string, backupRestoreJob *BackupRestoreJob) CreateLegacyBackupRestoreJobApiRequest {
 	return CreateLegacyBackupRestoreJobApiRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		groupId:     groupId,
-		clusterName: clusterName,
-		restoreJob:  restoreJob,
+		ApiService:       a,
+		ctx:              ctx,
+		groupId:          groupId,
+		clusterName:      clusterName,
+		backupRestoreJob: backupRestoreJob,
 	}
 }
 
@@ -132,10 +150,24 @@ func (a *LegacyBackupRestoreJobsApiService) createLegacyBackupRestoreJobExecute(
 	if strlen(r.clusterName) > 64 {
 		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
 	}
-	if r.restoreJob == nil {
-		return localVarReturnValue, nil, reportError("restoreJob is required and must be specified")
+	if r.backupRestoreJob == nil {
+		return localVarReturnValue, nil, reportError("backupRestoreJob is required and must be specified")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
@@ -154,7 +186,7 @@ func (a *LegacyBackupRestoreJobsApiService) createLegacyBackupRestoreJobExecute(
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.restoreJob
+	localVarPostBody = r.backupRestoreJob
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

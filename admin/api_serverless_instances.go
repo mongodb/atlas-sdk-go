@@ -140,11 +140,15 @@ type CreateServerlessInstanceApiRequest struct {
 	ApiService                          ServerlessInstancesApi
 	groupId                             string
 	serverlessInstanceDescriptionCreate *ServerlessInstanceDescriptionCreate
+	envelope                            *bool
+	pretty                              *bool
 }
 
 type CreateServerlessInstanceApiParams struct {
 	GroupId                             string
 	ServerlessInstanceDescriptionCreate *ServerlessInstanceDescriptionCreate
+	Envelope                            *bool
+	Pretty                              *bool
 }
 
 func (a *ServerlessInstancesApiService) CreateServerlessInstanceWithParams(ctx context.Context, args *CreateServerlessInstanceApiParams) CreateServerlessInstanceApiRequest {
@@ -153,7 +157,21 @@ func (a *ServerlessInstancesApiService) CreateServerlessInstanceWithParams(ctx c
 		ctx:                                 ctx,
 		groupId:                             args.GroupId,
 		serverlessInstanceDescriptionCreate: args.ServerlessInstanceDescriptionCreate,
+		envelope:                            args.Envelope,
+		pretty:                              args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r CreateServerlessInstanceApiRequest) Envelope(envelope bool) CreateServerlessInstanceApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r CreateServerlessInstanceApiRequest) Pretty(pretty bool) CreateServerlessInstanceApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r CreateServerlessInstanceApiRequest) Execute() (*ServerlessInstanceDescription, *http.Response, error) {
@@ -210,6 +228,20 @@ func (a *ServerlessInstancesApiService) createServerlessInstanceExecute(r Create
 		return localVarReturnValue, nil, reportError("serverlessInstanceDescriptionCreate is required and must be specified")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
@@ -279,11 +311,15 @@ type DeleteServerlessInstanceApiRequest struct {
 	ApiService ServerlessInstancesApi
 	groupId    string
 	name       string
+	envelope   *bool
+	pretty     *bool
 }
 
 type DeleteServerlessInstanceApiParams struct {
-	GroupId string
-	Name    string
+	GroupId  string
+	Name     string
+	Envelope *bool
+	Pretty   *bool
 }
 
 func (a *ServerlessInstancesApiService) DeleteServerlessInstanceWithParams(ctx context.Context, args *DeleteServerlessInstanceApiParams) DeleteServerlessInstanceApiRequest {
@@ -292,7 +328,21 @@ func (a *ServerlessInstancesApiService) DeleteServerlessInstanceWithParams(ctx c
 		ctx:        ctx,
 		groupId:    args.GroupId,
 		name:       args.Name,
+		envelope:   args.Envelope,
+		pretty:     args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r DeleteServerlessInstanceApiRequest) Envelope(envelope bool) DeleteServerlessInstanceApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r DeleteServerlessInstanceApiRequest) Pretty(pretty bool) DeleteServerlessInstanceApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r DeleteServerlessInstanceApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -354,6 +404,20 @@ func (a *ServerlessInstancesApiService) deleteServerlessInstanceExecute(r Delete
 		return localVarReturnValue, nil, reportError("name must have less than 64 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -421,11 +485,15 @@ type GetServerlessInstanceApiRequest struct {
 	ApiService ServerlessInstancesApi
 	groupId    string
 	name       string
+	envelope   *bool
+	pretty     *bool
 }
 
 type GetServerlessInstanceApiParams struct {
-	GroupId string
-	Name    string
+	GroupId  string
+	Name     string
+	Envelope *bool
+	Pretty   *bool
 }
 
 func (a *ServerlessInstancesApiService) GetServerlessInstanceWithParams(ctx context.Context, args *GetServerlessInstanceApiParams) GetServerlessInstanceApiRequest {
@@ -434,7 +502,21 @@ func (a *ServerlessInstancesApiService) GetServerlessInstanceWithParams(ctx cont
 		ctx:        ctx,
 		groupId:    args.GroupId,
 		name:       args.Name,
+		envelope:   args.Envelope,
+		pretty:     args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r GetServerlessInstanceApiRequest) Envelope(envelope bool) GetServerlessInstanceApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r GetServerlessInstanceApiRequest) Pretty(pretty bool) GetServerlessInstanceApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r GetServerlessInstanceApiRequest) Execute() (*ServerlessInstanceDescription, *http.Response, error) {
@@ -496,6 +578,20 @@ func (a *ServerlessInstancesApiService) getServerlessInstanceExecute(r GetServer
 		return localVarReturnValue, nil, reportError("name must have less than 64 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -562,16 +658,20 @@ type ListServerlessInstancesApiRequest struct {
 	ctx          context.Context
 	ApiService   ServerlessInstancesApi
 	groupId      string
+	envelope     *bool
 	includeCount *bool
 	itemsPerPage *int
 	pageNum      *int
+	pretty       *bool
 }
 
 type ListServerlessInstancesApiParams struct {
 	GroupId      string
+	Envelope     *bool
 	IncludeCount *bool
 	ItemsPerPage *int
 	PageNum      *int
+	Pretty       *bool
 }
 
 func (a *ServerlessInstancesApiService) ListServerlessInstancesWithParams(ctx context.Context, args *ListServerlessInstancesApiParams) ListServerlessInstancesApiRequest {
@@ -579,10 +679,18 @@ func (a *ServerlessInstancesApiService) ListServerlessInstancesWithParams(ctx co
 		ApiService:   a,
 		ctx:          ctx,
 		groupId:      args.GroupId,
+		envelope:     args.Envelope,
 		includeCount: args.IncludeCount,
 		itemsPerPage: args.ItemsPerPage,
 		pageNum:      args.PageNum,
+		pretty:       args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r ListServerlessInstancesApiRequest) Envelope(envelope bool) ListServerlessInstancesApiRequest {
+	r.envelope = &envelope
+	return r
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
@@ -600,6 +708,12 @@ func (r ListServerlessInstancesApiRequest) ItemsPerPage(itemsPerPage int) ListSe
 // Number of the page that displays the current set of the total objects that the response returns.
 func (r ListServerlessInstancesApiRequest) PageNum(pageNum int) ListServerlessInstancesApiRequest {
 	r.pageNum = &pageNum
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r ListServerlessInstancesApiRequest) Pretty(pretty bool) ListServerlessInstancesApiRequest {
+	r.pretty = &pretty
 	return r
 }
 
@@ -653,6 +767,13 @@ func (a *ServerlessInstancesApiService) listServerlessInstancesExecute(r ListSer
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
 	if r.includeCount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
 	} else {
@@ -673,6 +794,13 @@ func (a *ServerlessInstancesApiService) listServerlessInstancesExecute(r ListSer
 		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -742,12 +870,16 @@ type UpdateServerlessInstanceApiRequest struct {
 	groupId                             string
 	name                                string
 	serverlessInstanceDescriptionUpdate *ServerlessInstanceDescriptionUpdate
+	envelope                            *bool
+	pretty                              *bool
 }
 
 type UpdateServerlessInstanceApiParams struct {
 	GroupId                             string
 	Name                                string
 	ServerlessInstanceDescriptionUpdate *ServerlessInstanceDescriptionUpdate
+	Envelope                            *bool
+	Pretty                              *bool
 }
 
 func (a *ServerlessInstancesApiService) UpdateServerlessInstanceWithParams(ctx context.Context, args *UpdateServerlessInstanceApiParams) UpdateServerlessInstanceApiRequest {
@@ -757,7 +889,21 @@ func (a *ServerlessInstancesApiService) UpdateServerlessInstanceWithParams(ctx c
 		groupId:                             args.GroupId,
 		name:                                args.Name,
 		serverlessInstanceDescriptionUpdate: args.ServerlessInstanceDescriptionUpdate,
+		envelope:                            args.Envelope,
+		pretty:                              args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r UpdateServerlessInstanceApiRequest) Envelope(envelope bool) UpdateServerlessInstanceApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r UpdateServerlessInstanceApiRequest) Pretty(pretty bool) UpdateServerlessInstanceApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r UpdateServerlessInstanceApiRequest) Execute() (*ServerlessInstanceDescription, *http.Response, error) {
@@ -823,6 +969,20 @@ func (a *ServerlessInstancesApiService) updateServerlessInstanceExecute(r Update
 		return localVarReturnValue, nil, reportError("serverlessInstanceDescriptionUpdate is required and must be specified")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 

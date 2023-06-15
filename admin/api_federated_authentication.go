@@ -23,7 +23,7 @@ type FederatedAuthenticationApi interface {
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@return CreateRoleMappingApiRequest
 	*/
-	CreateRoleMapping(ctx context.Context, federationSettingsId string, orgId string, roleMapping *RoleMapping) CreateRoleMappingApiRequest
+	CreateRoleMapping(ctx context.Context, federationSettingsId string, orgId string, authFederationRoleMapping *AuthFederationRoleMapping) CreateRoleMappingApiRequest
 	/*
 		CreateRoleMapping Add One Role Mapping to One Organization
 
@@ -35,7 +35,7 @@ type FederatedAuthenticationApi interface {
 	CreateRoleMappingWithParams(ctx context.Context, args *CreateRoleMappingApiParams) CreateRoleMappingApiRequest
 
 	// Interface only available internally
-	createRoleMappingExecute(r CreateRoleMappingApiRequest) (*RoleMapping, *http.Response, error)
+	createRoleMappingExecute(r CreateRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error)
 
 	/*
 		DeleteFederationApp Delete the federation settings instance.
@@ -154,7 +154,7 @@ type FederatedAuthenticationApi interface {
 	GetIdentityProviderWithParams(ctx context.Context, args *GetIdentityProviderApiParams) GetIdentityProviderApiRequest
 
 	// Interface only available internally
-	getIdentityProviderExecute(r GetIdentityProviderApiRequest) (*IdentityProvider, *http.Response, error)
+	getIdentityProviderExecute(r GetIdentityProviderApiRequest) (*FederationIdentityProvider, *http.Response, error)
 
 	/*
 		GetIdentityProviderMetadata Return the metadata of one identity provider in the specified federation.
@@ -203,7 +203,7 @@ type FederatedAuthenticationApi interface {
 	GetRoleMappingWithParams(ctx context.Context, args *GetRoleMappingApiParams) GetRoleMappingApiRequest
 
 	// Interface only available internally
-	getRoleMappingExecute(r GetRoleMappingApiRequest) (*RoleMapping, *http.Response, error)
+	getRoleMappingExecute(r GetRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error)
 
 	/*
 		ListConnectedOrgConfigs Return All Connected Org Configs from the Federation
@@ -249,7 +249,7 @@ type FederatedAuthenticationApi interface {
 	ListIdentityProvidersWithParams(ctx context.Context, args *ListIdentityProvidersApiParams) ListIdentityProvidersApiRequest
 
 	// Interface only available internally
-	listIdentityProvidersExecute(r ListIdentityProvidersApiRequest) ([]IdentityProvider, *http.Response, error)
+	listIdentityProvidersExecute(r ListIdentityProvidersApiRequest) ([]FederationIdentityProvider, *http.Response, error)
 
 	/*
 		ListRoleMappings Return All Role Mappings from One Organization
@@ -273,7 +273,7 @@ type FederatedAuthenticationApi interface {
 	ListRoleMappingsWithParams(ctx context.Context, args *ListRoleMappingsApiParams) ListRoleMappingsApiRequest
 
 	// Interface only available internally
-	listRoleMappingsExecute(r ListRoleMappingsApiRequest) ([]RoleMapping, *http.Response, error)
+	listRoleMappingsExecute(r ListRoleMappingsApiRequest) ([]AuthFederationRoleMapping, *http.Response, error)
 
 	/*
 		RemoveConnectedOrgConfig Remove One Org Config Connected to One Federation
@@ -351,7 +351,7 @@ type FederatedAuthenticationApi interface {
 	UpdateIdentityProviderWithParams(ctx context.Context, args *UpdateIdentityProviderApiParams) UpdateIdentityProviderApiRequest
 
 	// Interface only available internally
-	updateIdentityProviderExecute(r UpdateIdentityProviderApiRequest) (*IdentityProvider, *http.Response, error)
+	updateIdentityProviderExecute(r UpdateIdentityProviderApiRequest) (*FederationIdentityProvider, *http.Response, error)
 
 	/*
 		UpdateRoleMapping Update One Role Mapping in One Organization
@@ -364,7 +364,7 @@ type FederatedAuthenticationApi interface {
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@return UpdateRoleMappingApiRequest
 	*/
-	UpdateRoleMapping(ctx context.Context, federationSettingsId string, id string, orgId string, roleMapping *RoleMapping) UpdateRoleMappingApiRequest
+	UpdateRoleMapping(ctx context.Context, federationSettingsId string, id string, orgId string, authFederationRoleMapping *AuthFederationRoleMapping) UpdateRoleMappingApiRequest
 	/*
 		UpdateRoleMapping Update One Role Mapping in One Organization
 
@@ -376,37 +376,46 @@ type FederatedAuthenticationApi interface {
 	UpdateRoleMappingWithParams(ctx context.Context, args *UpdateRoleMappingApiParams) UpdateRoleMappingApiRequest
 
 	// Interface only available internally
-	updateRoleMappingExecute(r UpdateRoleMappingApiRequest) (*RoleMapping, *http.Response, error)
+	updateRoleMappingExecute(r UpdateRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error)
 }
 
 // FederatedAuthenticationApiService FederatedAuthenticationApi service
 type FederatedAuthenticationApiService service
 
 type CreateRoleMappingApiRequest struct {
-	ctx                  context.Context
-	ApiService           FederatedAuthenticationApi
-	federationSettingsId string
-	orgId                string
-	roleMapping          *RoleMapping
+	ctx                       context.Context
+	ApiService                FederatedAuthenticationApi
+	federationSettingsId      string
+	orgId                     string
+	authFederationRoleMapping *AuthFederationRoleMapping
+	envelope                  *bool
 }
 
 type CreateRoleMappingApiParams struct {
-	FederationSettingsId string
-	OrgId                string
-	RoleMapping          *RoleMapping
+	FederationSettingsId      string
+	OrgId                     string
+	AuthFederationRoleMapping *AuthFederationRoleMapping
+	Envelope                  *bool
 }
 
 func (a *FederatedAuthenticationApiService) CreateRoleMappingWithParams(ctx context.Context, args *CreateRoleMappingApiParams) CreateRoleMappingApiRequest {
 	return CreateRoleMappingApiRequest{
-		ApiService:           a,
-		ctx:                  ctx,
-		federationSettingsId: args.FederationSettingsId,
-		orgId:                args.OrgId,
-		roleMapping:          args.RoleMapping,
+		ApiService:                a,
+		ctx:                       ctx,
+		federationSettingsId:      args.FederationSettingsId,
+		orgId:                     args.OrgId,
+		authFederationRoleMapping: args.AuthFederationRoleMapping,
+		envelope:                  args.Envelope,
 	}
 }
 
-func (r CreateRoleMappingApiRequest) Execute() (*RoleMapping, *http.Response, error) {
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r CreateRoleMappingApiRequest) Envelope(envelope bool) CreateRoleMappingApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+func (r CreateRoleMappingApiRequest) Execute() (*AuthFederationRoleMapping, *http.Response, error) {
 	return r.ApiService.createRoleMappingExecute(r)
 }
 
@@ -420,25 +429,25 @@ CreateRoleMapping Add One Role Mapping to One Organization
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return CreateRoleMappingApiRequest
 */
-func (a *FederatedAuthenticationApiService) CreateRoleMapping(ctx context.Context, federationSettingsId string, orgId string, roleMapping *RoleMapping) CreateRoleMappingApiRequest {
+func (a *FederatedAuthenticationApiService) CreateRoleMapping(ctx context.Context, federationSettingsId string, orgId string, authFederationRoleMapping *AuthFederationRoleMapping) CreateRoleMappingApiRequest {
 	return CreateRoleMappingApiRequest{
-		ApiService:           a,
-		ctx:                  ctx,
-		federationSettingsId: federationSettingsId,
-		orgId:                orgId,
-		roleMapping:          roleMapping,
+		ApiService:                a,
+		ctx:                       ctx,
+		federationSettingsId:      federationSettingsId,
+		orgId:                     orgId,
+		authFederationRoleMapping: authFederationRoleMapping,
 	}
 }
 
 // Execute executes the request
 //
-//	@return RoleMapping
-func (a *FederatedAuthenticationApiService) createRoleMappingExecute(r CreateRoleMappingApiRequest) (*RoleMapping, *http.Response, error) {
+//	@return AuthFederationRoleMapping
+func (a *FederatedAuthenticationApiService) createRoleMappingExecute(r CreateRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *RoleMapping
+		localVarReturnValue *AuthFederationRoleMapping
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.CreateRoleMapping")
@@ -465,10 +474,17 @@ func (a *FederatedAuthenticationApiService) createRoleMappingExecute(r CreateRol
 	if strlen(r.orgId) > 24 {
 		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
 	}
-	if r.roleMapping == nil {
-		return localVarReturnValue, nil, reportError("roleMapping is required and must be specified")
+	if r.authFederationRoleMapping == nil {
+		return localVarReturnValue, nil, reportError("authFederationRoleMapping is required and must be specified")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
@@ -487,7 +503,7 @@ func (a *FederatedAuthenticationApiService) createRoleMappingExecute(r CreateRol
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.roleMapping
+	localVarPostBody = r.authFederationRoleMapping
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -657,12 +673,14 @@ type DeleteRoleMappingApiRequest struct {
 	federationSettingsId string
 	id                   string
 	orgId                string
+	envelope             *bool
 }
 
 type DeleteRoleMappingApiParams struct {
 	FederationSettingsId string
 	Id                   string
 	OrgId                string
+	Envelope             *bool
 }
 
 func (a *FederatedAuthenticationApiService) DeleteRoleMappingWithParams(ctx context.Context, args *DeleteRoleMappingApiParams) DeleteRoleMappingApiRequest {
@@ -672,7 +690,14 @@ func (a *FederatedAuthenticationApiService) DeleteRoleMappingWithParams(ctx cont
 		federationSettingsId: args.FederationSettingsId,
 		id:                   args.Id,
 		orgId:                args.OrgId,
+		envelope:             args.Envelope,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r DeleteRoleMappingApiRequest) Envelope(envelope bool) DeleteRoleMappingApiRequest {
+	r.envelope = &envelope
+	return r
 }
 
 func (r DeleteRoleMappingApiRequest) Execute() (*http.Response, error) {
@@ -740,6 +765,13 @@ func (a *FederatedAuthenticationApiService) deleteRoleMappingExecute(r DeleteRol
 		return nil, reportError("orgId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -798,11 +830,13 @@ type GetConnectedOrgConfigApiRequest struct {
 	ApiService           FederatedAuthenticationApi
 	federationSettingsId string
 	orgId                string
+	envelope             *bool
 }
 
 type GetConnectedOrgConfigApiParams struct {
 	FederationSettingsId string
 	OrgId                string
+	Envelope             *bool
 }
 
 func (a *FederatedAuthenticationApiService) GetConnectedOrgConfigWithParams(ctx context.Context, args *GetConnectedOrgConfigApiParams) GetConnectedOrgConfigApiRequest {
@@ -811,7 +845,14 @@ func (a *FederatedAuthenticationApiService) GetConnectedOrgConfigWithParams(ctx 
 		ctx:                  ctx,
 		federationSettingsId: args.FederationSettingsId,
 		orgId:                args.OrgId,
+		envelope:             args.Envelope,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r GetConnectedOrgConfigApiRequest) Envelope(envelope bool) GetConnectedOrgConfigApiRequest {
+	r.envelope = &envelope
+	return r
 }
 
 func (r GetConnectedOrgConfigApiRequest) Execute() (*ConnectedOrgConfig, *http.Response, error) {
@@ -873,6 +914,13 @@ func (a *FederatedAuthenticationApiService) getConnectedOrgConfigExecute(r GetCo
 		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -939,10 +987,14 @@ type GetFederationSettingsApiRequest struct {
 	ctx        context.Context
 	ApiService FederatedAuthenticationApi
 	orgId      string
+	envelope   *bool
+	pretty     *bool
 }
 
 type GetFederationSettingsApiParams struct {
-	OrgId string
+	OrgId    string
+	Envelope *bool
+	Pretty   *bool
 }
 
 func (a *FederatedAuthenticationApiService) GetFederationSettingsWithParams(ctx context.Context, args *GetFederationSettingsApiParams) GetFederationSettingsApiRequest {
@@ -950,7 +1002,21 @@ func (a *FederatedAuthenticationApiService) GetFederationSettingsWithParams(ctx 
 		ApiService: a,
 		ctx:        ctx,
 		orgId:      args.OrgId,
+		envelope:   args.Envelope,
+		pretty:     args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r GetFederationSettingsApiRequest) Envelope(envelope bool) GetFederationSettingsApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r GetFederationSettingsApiRequest) Pretty(pretty bool) GetFederationSettingsApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r GetFederationSettingsApiRequest) Execute() (*OrgFederationSettings, *http.Response, error) {
@@ -1003,6 +1069,20 @@ func (a *FederatedAuthenticationApiService) getFederationSettingsExecute(r GetFe
 		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1070,11 +1150,13 @@ type GetIdentityProviderApiRequest struct {
 	ApiService           FederatedAuthenticationApi
 	federationSettingsId string
 	identityProviderId   string
+	envelope             *bool
 }
 
 type GetIdentityProviderApiParams struct {
 	FederationSettingsId string
 	IdentityProviderId   string
+	Envelope             *bool
 }
 
 func (a *FederatedAuthenticationApiService) GetIdentityProviderWithParams(ctx context.Context, args *GetIdentityProviderApiParams) GetIdentityProviderApiRequest {
@@ -1083,10 +1165,17 @@ func (a *FederatedAuthenticationApiService) GetIdentityProviderWithParams(ctx co
 		ctx:                  ctx,
 		federationSettingsId: args.FederationSettingsId,
 		identityProviderId:   args.IdentityProviderId,
+		envelope:             args.Envelope,
 	}
 }
 
-func (r GetIdentityProviderApiRequest) Execute() (*IdentityProvider, *http.Response, error) {
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r GetIdentityProviderApiRequest) Envelope(envelope bool) GetIdentityProviderApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+func (r GetIdentityProviderApiRequest) Execute() (*FederationIdentityProvider, *http.Response, error) {
 	return r.ApiService.getIdentityProviderExecute(r)
 }
 
@@ -1111,13 +1200,13 @@ func (a *FederatedAuthenticationApiService) GetIdentityProvider(ctx context.Cont
 
 // Execute executes the request
 //
-//	@return IdentityProvider
-func (a *FederatedAuthenticationApiService) getIdentityProviderExecute(r GetIdentityProviderApiRequest) (*IdentityProvider, *http.Response, error) {
+//	@return FederationIdentityProvider
+func (a *FederatedAuthenticationApiService) getIdentityProviderExecute(r GetIdentityProviderApiRequest) (*FederationIdentityProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *IdentityProvider
+		localVarReturnValue *FederationIdentityProvider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.GetIdentityProvider")
@@ -1145,6 +1234,13 @@ func (a *FederatedAuthenticationApiService) getIdentityProviderExecute(r GetIden
 		return localVarReturnValue, nil, reportError("identityProviderId must have less than 20 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1355,12 +1451,14 @@ type GetRoleMappingApiRequest struct {
 	federationSettingsId string
 	id                   string
 	orgId                string
+	envelope             *bool
 }
 
 type GetRoleMappingApiParams struct {
 	FederationSettingsId string
 	Id                   string
 	OrgId                string
+	Envelope             *bool
 }
 
 func (a *FederatedAuthenticationApiService) GetRoleMappingWithParams(ctx context.Context, args *GetRoleMappingApiParams) GetRoleMappingApiRequest {
@@ -1370,10 +1468,17 @@ func (a *FederatedAuthenticationApiService) GetRoleMappingWithParams(ctx context
 		federationSettingsId: args.FederationSettingsId,
 		id:                   args.Id,
 		orgId:                args.OrgId,
+		envelope:             args.Envelope,
 	}
 }
 
-func (r GetRoleMappingApiRequest) Execute() (*RoleMapping, *http.Response, error) {
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r GetRoleMappingApiRequest) Envelope(envelope bool) GetRoleMappingApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+func (r GetRoleMappingApiRequest) Execute() (*AuthFederationRoleMapping, *http.Response, error) {
 	return r.ApiService.getRoleMappingExecute(r)
 }
 
@@ -1400,13 +1505,13 @@ func (a *FederatedAuthenticationApiService) GetRoleMapping(ctx context.Context, 
 
 // Execute executes the request
 //
-//	@return RoleMapping
-func (a *FederatedAuthenticationApiService) getRoleMappingExecute(r GetRoleMappingApiRequest) (*RoleMapping, *http.Response, error) {
+//	@return AuthFederationRoleMapping
+func (a *FederatedAuthenticationApiService) getRoleMappingExecute(r GetRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *RoleMapping
+		localVarReturnValue *AuthFederationRoleMapping
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.GetRoleMapping")
@@ -1441,6 +1546,13 @@ func (a *FederatedAuthenticationApiService) getRoleMappingExecute(r GetRoleMappi
 		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1507,10 +1619,12 @@ type ListConnectedOrgConfigsApiRequest struct {
 	ctx                  context.Context
 	ApiService           FederatedAuthenticationApi
 	federationSettingsId string
+	envelope             *bool
 }
 
 type ListConnectedOrgConfigsApiParams struct {
 	FederationSettingsId string
+	Envelope             *bool
 }
 
 func (a *FederatedAuthenticationApiService) ListConnectedOrgConfigsWithParams(ctx context.Context, args *ListConnectedOrgConfigsApiParams) ListConnectedOrgConfigsApiRequest {
@@ -1518,7 +1632,14 @@ func (a *FederatedAuthenticationApiService) ListConnectedOrgConfigsWithParams(ct
 		ApiService:           a,
 		ctx:                  ctx,
 		federationSettingsId: args.FederationSettingsId,
+		envelope:             args.Envelope,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r ListConnectedOrgConfigsApiRequest) Envelope(envelope bool) ListConnectedOrgConfigsApiRequest {
+	r.envelope = &envelope
+	return r
 }
 
 func (r ListConnectedOrgConfigsApiRequest) Execute() ([]ConnectedOrgConfig, *http.Response, error) {
@@ -1571,6 +1692,13 @@ func (a *FederatedAuthenticationApiService) listConnectedOrgConfigsExecute(r Lis
 		return localVarReturnValue, nil, reportError("federationSettingsId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1637,10 +1765,12 @@ type ListIdentityProvidersApiRequest struct {
 	ctx                  context.Context
 	ApiService           FederatedAuthenticationApi
 	federationSettingsId string
+	envelope             *bool
 }
 
 type ListIdentityProvidersApiParams struct {
 	FederationSettingsId string
+	Envelope             *bool
 }
 
 func (a *FederatedAuthenticationApiService) ListIdentityProvidersWithParams(ctx context.Context, args *ListIdentityProvidersApiParams) ListIdentityProvidersApiRequest {
@@ -1648,10 +1778,17 @@ func (a *FederatedAuthenticationApiService) ListIdentityProvidersWithParams(ctx 
 		ApiService:           a,
 		ctx:                  ctx,
 		federationSettingsId: args.FederationSettingsId,
+		envelope:             args.Envelope,
 	}
 }
 
-func (r ListIdentityProvidersApiRequest) Execute() ([]IdentityProvider, *http.Response, error) {
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r ListIdentityProvidersApiRequest) Envelope(envelope bool) ListIdentityProvidersApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+func (r ListIdentityProvidersApiRequest) Execute() ([]FederationIdentityProvider, *http.Response, error) {
 	return r.ApiService.listIdentityProvidersExecute(r)
 }
 
@@ -1674,13 +1811,13 @@ func (a *FederatedAuthenticationApiService) ListIdentityProviders(ctx context.Co
 
 // Execute executes the request
 //
-//	@return []IdentityProvider
-func (a *FederatedAuthenticationApiService) listIdentityProvidersExecute(r ListIdentityProvidersApiRequest) ([]IdentityProvider, *http.Response, error) {
+//	@return []FederationIdentityProvider
+func (a *FederatedAuthenticationApiService) listIdentityProvidersExecute(r ListIdentityProvidersApiRequest) ([]FederationIdentityProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []IdentityProvider
+		localVarReturnValue []FederationIdentityProvider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.ListIdentityProviders")
@@ -1701,6 +1838,13 @@ func (a *FederatedAuthenticationApiService) listIdentityProvidersExecute(r ListI
 		return localVarReturnValue, nil, reportError("federationSettingsId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1768,11 +1912,13 @@ type ListRoleMappingsApiRequest struct {
 	ApiService           FederatedAuthenticationApi
 	federationSettingsId string
 	orgId                string
+	envelope             *bool
 }
 
 type ListRoleMappingsApiParams struct {
 	FederationSettingsId string
 	OrgId                string
+	Envelope             *bool
 }
 
 func (a *FederatedAuthenticationApiService) ListRoleMappingsWithParams(ctx context.Context, args *ListRoleMappingsApiParams) ListRoleMappingsApiRequest {
@@ -1781,10 +1927,17 @@ func (a *FederatedAuthenticationApiService) ListRoleMappingsWithParams(ctx conte
 		ctx:                  ctx,
 		federationSettingsId: args.FederationSettingsId,
 		orgId:                args.OrgId,
+		envelope:             args.Envelope,
 	}
 }
 
-func (r ListRoleMappingsApiRequest) Execute() ([]RoleMapping, *http.Response, error) {
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r ListRoleMappingsApiRequest) Envelope(envelope bool) ListRoleMappingsApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+func (r ListRoleMappingsApiRequest) Execute() ([]AuthFederationRoleMapping, *http.Response, error) {
 	return r.ApiService.listRoleMappingsExecute(r)
 }
 
@@ -1809,13 +1962,13 @@ func (a *FederatedAuthenticationApiService) ListRoleMappings(ctx context.Context
 
 // Execute executes the request
 //
-//	@return []RoleMapping
-func (a *FederatedAuthenticationApiService) listRoleMappingsExecute(r ListRoleMappingsApiRequest) ([]RoleMapping, *http.Response, error) {
+//	@return []AuthFederationRoleMapping
+func (a *FederatedAuthenticationApiService) listRoleMappingsExecute(r ListRoleMappingsApiRequest) ([]AuthFederationRoleMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []RoleMapping
+		localVarReturnValue []AuthFederationRoleMapping
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.ListRoleMappings")
@@ -1843,6 +1996,13 @@ func (a *FederatedAuthenticationApiService) listRoleMappingsExecute(r ListRoleMa
 		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1910,11 +2070,13 @@ type RemoveConnectedOrgConfigApiRequest struct {
 	ApiService           FederatedAuthenticationApi
 	federationSettingsId string
 	orgId                string
+	envelope             *bool
 }
 
 type RemoveConnectedOrgConfigApiParams struct {
 	FederationSettingsId string
 	OrgId                string
+	Envelope             *bool
 }
 
 func (a *FederatedAuthenticationApiService) RemoveConnectedOrgConfigWithParams(ctx context.Context, args *RemoveConnectedOrgConfigApiParams) RemoveConnectedOrgConfigApiRequest {
@@ -1923,7 +2085,14 @@ func (a *FederatedAuthenticationApiService) RemoveConnectedOrgConfigWithParams(c
 		ctx:                  ctx,
 		federationSettingsId: args.FederationSettingsId,
 		orgId:                args.OrgId,
+		envelope:             args.Envelope,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r RemoveConnectedOrgConfigApiRequest) Envelope(envelope bool) RemoveConnectedOrgConfigApiRequest {
+	r.envelope = &envelope
+	return r
 }
 
 func (r RemoveConnectedOrgConfigApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -1985,6 +2154,13 @@ func (a *FederatedAuthenticationApiService) removeConnectedOrgConfigExecute(r Re
 		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -2053,12 +2229,14 @@ type UpdateConnectedOrgConfigApiRequest struct {
 	federationSettingsId string
 	orgId                string
 	connectedOrgConfig   *ConnectedOrgConfig
+	envelope             *bool
 }
 
 type UpdateConnectedOrgConfigApiParams struct {
 	FederationSettingsId string
 	OrgId                string
 	ConnectedOrgConfig   *ConnectedOrgConfig
+	Envelope             *bool
 }
 
 func (a *FederatedAuthenticationApiService) UpdateConnectedOrgConfigWithParams(ctx context.Context, args *UpdateConnectedOrgConfigApiParams) UpdateConnectedOrgConfigApiRequest {
@@ -2068,7 +2246,14 @@ func (a *FederatedAuthenticationApiService) UpdateConnectedOrgConfigWithParams(c
 		federationSettingsId: args.FederationSettingsId,
 		orgId:                args.OrgId,
 		connectedOrgConfig:   args.ConnectedOrgConfig,
+		envelope:             args.Envelope,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r UpdateConnectedOrgConfigApiRequest) Envelope(envelope bool) UpdateConnectedOrgConfigApiRequest {
+	r.envelope = &envelope
+	return r
 }
 
 func (r UpdateConnectedOrgConfigApiRequest) Execute() (*ConnectedOrgConfig, *http.Response, error) {
@@ -2140,6 +2325,13 @@ func (a *FederatedAuthenticationApiService) updateConnectedOrgConfigExecute(r Up
 		return localVarReturnValue, nil, reportError("connectedOrgConfig is required and must be specified")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
@@ -2210,12 +2402,14 @@ type UpdateIdentityProviderApiRequest struct {
 	federationSettingsId       string
 	identityProviderId         string
 	samlIdentityProviderUpdate *SamlIdentityProviderUpdate
+	envelope                   *bool
 }
 
 type UpdateIdentityProviderApiParams struct {
 	FederationSettingsId       string
 	IdentityProviderId         string
 	SamlIdentityProviderUpdate *SamlIdentityProviderUpdate
+	Envelope                   *bool
 }
 
 func (a *FederatedAuthenticationApiService) UpdateIdentityProviderWithParams(ctx context.Context, args *UpdateIdentityProviderApiParams) UpdateIdentityProviderApiRequest {
@@ -2225,10 +2419,17 @@ func (a *FederatedAuthenticationApiService) UpdateIdentityProviderWithParams(ctx
 		federationSettingsId:       args.FederationSettingsId,
 		identityProviderId:         args.IdentityProviderId,
 		samlIdentityProviderUpdate: args.SamlIdentityProviderUpdate,
+		envelope:                   args.Envelope,
 	}
 }
 
-func (r UpdateIdentityProviderApiRequest) Execute() (*IdentityProvider, *http.Response, error) {
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r UpdateIdentityProviderApiRequest) Envelope(envelope bool) UpdateIdentityProviderApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+func (r UpdateIdentityProviderApiRequest) Execute() (*FederationIdentityProvider, *http.Response, error) {
 	return r.ApiService.updateIdentityProviderExecute(r)
 }
 
@@ -2254,13 +2455,13 @@ func (a *FederatedAuthenticationApiService) UpdateIdentityProvider(ctx context.C
 
 // Execute executes the request
 //
-//	@return IdentityProvider
-func (a *FederatedAuthenticationApiService) updateIdentityProviderExecute(r UpdateIdentityProviderApiRequest) (*IdentityProvider, *http.Response, error) {
+//	@return FederationIdentityProvider
+func (a *FederatedAuthenticationApiService) updateIdentityProviderExecute(r UpdateIdentityProviderApiRequest) (*FederationIdentityProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *IdentityProvider
+		localVarReturnValue *FederationIdentityProvider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.UpdateIdentityProvider")
@@ -2291,6 +2492,13 @@ func (a *FederatedAuthenticationApiService) updateIdentityProviderExecute(r Upda
 		return localVarReturnValue, nil, reportError("samlIdentityProviderUpdate is required and must be specified")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
@@ -2356,33 +2564,42 @@ func (a *FederatedAuthenticationApiService) updateIdentityProviderExecute(r Upda
 }
 
 type UpdateRoleMappingApiRequest struct {
-	ctx                  context.Context
-	ApiService           FederatedAuthenticationApi
-	federationSettingsId string
-	id                   string
-	orgId                string
-	roleMapping          *RoleMapping
+	ctx                       context.Context
+	ApiService                FederatedAuthenticationApi
+	federationSettingsId      string
+	id                        string
+	orgId                     string
+	authFederationRoleMapping *AuthFederationRoleMapping
+	envelope                  *bool
 }
 
 type UpdateRoleMappingApiParams struct {
-	FederationSettingsId string
-	Id                   string
-	OrgId                string
-	RoleMapping          *RoleMapping
+	FederationSettingsId      string
+	Id                        string
+	OrgId                     string
+	AuthFederationRoleMapping *AuthFederationRoleMapping
+	Envelope                  *bool
 }
 
 func (a *FederatedAuthenticationApiService) UpdateRoleMappingWithParams(ctx context.Context, args *UpdateRoleMappingApiParams) UpdateRoleMappingApiRequest {
 	return UpdateRoleMappingApiRequest{
-		ApiService:           a,
-		ctx:                  ctx,
-		federationSettingsId: args.FederationSettingsId,
-		id:                   args.Id,
-		orgId:                args.OrgId,
-		roleMapping:          args.RoleMapping,
+		ApiService:                a,
+		ctx:                       ctx,
+		federationSettingsId:      args.FederationSettingsId,
+		id:                        args.Id,
+		orgId:                     args.OrgId,
+		authFederationRoleMapping: args.AuthFederationRoleMapping,
+		envelope:                  args.Envelope,
 	}
 }
 
-func (r UpdateRoleMappingApiRequest) Execute() (*RoleMapping, *http.Response, error) {
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r UpdateRoleMappingApiRequest) Envelope(envelope bool) UpdateRoleMappingApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+func (r UpdateRoleMappingApiRequest) Execute() (*AuthFederationRoleMapping, *http.Response, error) {
 	return r.ApiService.updateRoleMappingExecute(r)
 }
 
@@ -2397,26 +2614,26 @@ UpdateRoleMapping Update One Role Mapping in One Organization
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return UpdateRoleMappingApiRequest
 */
-func (a *FederatedAuthenticationApiService) UpdateRoleMapping(ctx context.Context, federationSettingsId string, id string, orgId string, roleMapping *RoleMapping) UpdateRoleMappingApiRequest {
+func (a *FederatedAuthenticationApiService) UpdateRoleMapping(ctx context.Context, federationSettingsId string, id string, orgId string, authFederationRoleMapping *AuthFederationRoleMapping) UpdateRoleMappingApiRequest {
 	return UpdateRoleMappingApiRequest{
-		ApiService:           a,
-		ctx:                  ctx,
-		federationSettingsId: federationSettingsId,
-		id:                   id,
-		orgId:                orgId,
-		roleMapping:          roleMapping,
+		ApiService:                a,
+		ctx:                       ctx,
+		federationSettingsId:      federationSettingsId,
+		id:                        id,
+		orgId:                     orgId,
+		authFederationRoleMapping: authFederationRoleMapping,
 	}
 }
 
 // Execute executes the request
 //
-//	@return RoleMapping
-func (a *FederatedAuthenticationApiService) updateRoleMappingExecute(r UpdateRoleMappingApiRequest) (*RoleMapping, *http.Response, error) {
+//	@return AuthFederationRoleMapping
+func (a *FederatedAuthenticationApiService) updateRoleMappingExecute(r UpdateRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *RoleMapping
+		localVarReturnValue *AuthFederationRoleMapping
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.UpdateRoleMapping")
@@ -2450,10 +2667,17 @@ func (a *FederatedAuthenticationApiService) updateRoleMappingExecute(r UpdateRol
 	if strlen(r.orgId) > 24 {
 		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
 	}
-	if r.roleMapping == nil {
-		return localVarReturnValue, nil, reportError("roleMapping is required and must be specified")
+	if r.authFederationRoleMapping == nil {
+		return localVarReturnValue, nil, reportError("authFederationRoleMapping is required and must be specified")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
@@ -2472,7 +2696,7 @@ func (a *FederatedAuthenticationApiService) updateRoleMappingExecute(r UpdateRol
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.roleMapping
+	localVarPostBody = r.authFederationRoleMapping
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

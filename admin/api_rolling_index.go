@@ -23,7 +23,7 @@ type RollingIndexApi interface {
 		@param clusterName Human-readable label that identifies the cluster on which MongoDB Cloud creates an index.
 		@return CreateRollingIndexApiRequest
 	*/
-	CreateRollingIndex(ctx context.Context, groupId string, clusterName string, indexRequest *IndexRequest) CreateRollingIndexApiRequest
+	CreateRollingIndex(ctx context.Context, groupId string, clusterName string, rollingIndexRequest *RollingIndexRequest) CreateRollingIndexApiRequest
 	/*
 		CreateRollingIndex Create One Rolling Index
 
@@ -42,27 +42,45 @@ type RollingIndexApi interface {
 type RollingIndexApiService service
 
 type CreateRollingIndexApiRequest struct {
-	ctx          context.Context
-	ApiService   RollingIndexApi
-	groupId      string
-	clusterName  string
-	indexRequest *IndexRequest
+	ctx                 context.Context
+	ApiService          RollingIndexApi
+	groupId             string
+	clusterName         string
+	rollingIndexRequest *RollingIndexRequest
+	envelope            *bool
+	pretty              *bool
 }
 
 type CreateRollingIndexApiParams struct {
-	GroupId      string
-	ClusterName  string
-	IndexRequest *IndexRequest
+	GroupId             string
+	ClusterName         string
+	RollingIndexRequest *RollingIndexRequest
+	Envelope            *bool
+	Pretty              *bool
 }
 
 func (a *RollingIndexApiService) CreateRollingIndexWithParams(ctx context.Context, args *CreateRollingIndexApiParams) CreateRollingIndexApiRequest {
 	return CreateRollingIndexApiRequest{
-		ApiService:   a,
-		ctx:          ctx,
-		groupId:      args.GroupId,
-		clusterName:  args.ClusterName,
-		indexRequest: args.IndexRequest,
+		ApiService:          a,
+		ctx:                 ctx,
+		groupId:             args.GroupId,
+		clusterName:         args.ClusterName,
+		rollingIndexRequest: args.RollingIndexRequest,
+		envelope:            args.Envelope,
+		pretty:              args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r CreateRollingIndexApiRequest) Envelope(envelope bool) CreateRollingIndexApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r CreateRollingIndexApiRequest) Pretty(pretty bool) CreateRollingIndexApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r CreateRollingIndexApiRequest) Execute() (*http.Response, error) {
@@ -79,13 +97,13 @@ Creates an index on the cluster identified by its name in a rolling manner. Crea
 	@param clusterName Human-readable label that identifies the cluster on which MongoDB Cloud creates an index.
 	@return CreateRollingIndexApiRequest
 */
-func (a *RollingIndexApiService) CreateRollingIndex(ctx context.Context, groupId string, clusterName string, indexRequest *IndexRequest) CreateRollingIndexApiRequest {
+func (a *RollingIndexApiService) CreateRollingIndex(ctx context.Context, groupId string, clusterName string, rollingIndexRequest *RollingIndexRequest) CreateRollingIndexApiRequest {
 	return CreateRollingIndexApiRequest{
-		ApiService:   a,
-		ctx:          ctx,
-		groupId:      groupId,
-		clusterName:  clusterName,
-		indexRequest: indexRequest,
+		ApiService:          a,
+		ctx:                 ctx,
+		groupId:             groupId,
+		clusterName:         clusterName,
+		rollingIndexRequest: rollingIndexRequest,
 	}
 }
 
@@ -121,10 +139,24 @@ func (a *RollingIndexApiService) createRollingIndexExecute(r CreateRollingIndexA
 	if strlen(r.clusterName) > 64 {
 		return nil, reportError("clusterName must have less than 64 elements")
 	}
-	if r.indexRequest == nil {
-		return nil, reportError("indexRequest is required and must be specified")
+	if r.rollingIndexRequest == nil {
+		return nil, reportError("rollingIndexRequest is required and must be specified")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
@@ -143,7 +175,7 @@ func (a *RollingIndexApiService) createRollingIndexExecute(r CreateRollingIndexA
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.indexRequest
+	localVarPostBody = r.rollingIndexRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err

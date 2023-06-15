@@ -25,7 +25,7 @@ type ServerlessPrivateEndpointsApi interface {
 		@param instanceName Human-readable label that identifies the serverless instance for which the tenant endpoint will be created.
 		@return CreateServerlessPrivateEndpointApiRequest
 	*/
-	CreateServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, serverlessTenantEndpointCreate *ServerlessTenantEndpointCreate) CreateServerlessPrivateEndpointApiRequest
+	CreateServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, serverlessTenantCreateRequest *ServerlessTenantCreateRequest) CreateServerlessPrivateEndpointApiRequest
 	/*
 		CreateServerlessPrivateEndpoint Create One Private Endpoint for One Serverless Instance
 
@@ -143,27 +143,36 @@ type ServerlessPrivateEndpointsApi interface {
 type ServerlessPrivateEndpointsApiService service
 
 type CreateServerlessPrivateEndpointApiRequest struct {
-	ctx                            context.Context
-	ApiService                     ServerlessPrivateEndpointsApi
-	groupId                        string
-	instanceName                   string
-	serverlessTenantEndpointCreate *ServerlessTenantEndpointCreate
+	ctx                           context.Context
+	ApiService                    ServerlessPrivateEndpointsApi
+	groupId                       string
+	instanceName                  string
+	serverlessTenantCreateRequest *ServerlessTenantCreateRequest
+	envelope                      *bool
 }
 
 type CreateServerlessPrivateEndpointApiParams struct {
-	GroupId                        string
-	InstanceName                   string
-	ServerlessTenantEndpointCreate *ServerlessTenantEndpointCreate
+	GroupId                       string
+	InstanceName                  string
+	ServerlessTenantCreateRequest *ServerlessTenantCreateRequest
+	Envelope                      *bool
 }
 
 func (a *ServerlessPrivateEndpointsApiService) CreateServerlessPrivateEndpointWithParams(ctx context.Context, args *CreateServerlessPrivateEndpointApiParams) CreateServerlessPrivateEndpointApiRequest {
 	return CreateServerlessPrivateEndpointApiRequest{
-		ApiService:                     a,
-		ctx:                            ctx,
-		groupId:                        args.GroupId,
-		instanceName:                   args.InstanceName,
-		serverlessTenantEndpointCreate: args.ServerlessTenantEndpointCreate,
+		ApiService:                    a,
+		ctx:                           ctx,
+		groupId:                       args.GroupId,
+		instanceName:                  args.InstanceName,
+		serverlessTenantCreateRequest: args.ServerlessTenantCreateRequest,
+		envelope:                      args.Envelope,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r CreateServerlessPrivateEndpointApiRequest) Envelope(envelope bool) CreateServerlessPrivateEndpointApiRequest {
+	r.envelope = &envelope
+	return r
 }
 
 func (r CreateServerlessPrivateEndpointApiRequest) Execute() (*ServerlessTenantEndpoint, *http.Response, error) {
@@ -182,13 +191,13 @@ CreateServerlessPrivateEndpoint Create One Private Endpoint for One Serverless I
 	@param instanceName Human-readable label that identifies the serverless instance for which the tenant endpoint will be created.
 	@return CreateServerlessPrivateEndpointApiRequest
 */
-func (a *ServerlessPrivateEndpointsApiService) CreateServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, serverlessTenantEndpointCreate *ServerlessTenantEndpointCreate) CreateServerlessPrivateEndpointApiRequest {
+func (a *ServerlessPrivateEndpointsApiService) CreateServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, serverlessTenantCreateRequest *ServerlessTenantCreateRequest) CreateServerlessPrivateEndpointApiRequest {
 	return CreateServerlessPrivateEndpointApiRequest{
-		ApiService:                     a,
-		ctx:                            ctx,
-		groupId:                        groupId,
-		instanceName:                   instanceName,
-		serverlessTenantEndpointCreate: serverlessTenantEndpointCreate,
+		ApiService:                    a,
+		ctx:                           ctx,
+		groupId:                       groupId,
+		instanceName:                  instanceName,
+		serverlessTenantCreateRequest: serverlessTenantCreateRequest,
 	}
 }
 
@@ -224,10 +233,17 @@ func (a *ServerlessPrivateEndpointsApiService) createServerlessPrivateEndpointEx
 	if strlen(r.instanceName) > 64 {
 		return localVarReturnValue, nil, reportError("instanceName must have less than 64 elements")
 	}
-	if r.serverlessTenantEndpointCreate == nil {
-		return localVarReturnValue, nil, reportError("serverlessTenantEndpointCreate is required and must be specified")
+	if r.serverlessTenantCreateRequest == nil {
+		return localVarReturnValue, nil, reportError("serverlessTenantCreateRequest is required and must be specified")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
@@ -246,7 +262,7 @@ func (a *ServerlessPrivateEndpointsApiService) createServerlessPrivateEndpointEx
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.serverlessTenantEndpointCreate
+	localVarPostBody = r.serverlessTenantCreateRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -298,12 +314,14 @@ type DeleteServerlessPrivateEndpointApiRequest struct {
 	groupId      string
 	instanceName string
 	endpointId   string
+	envelope     *bool
 }
 
 type DeleteServerlessPrivateEndpointApiParams struct {
 	GroupId      string
 	InstanceName string
 	EndpointId   string
+	Envelope     *bool
 }
 
 func (a *ServerlessPrivateEndpointsApiService) DeleteServerlessPrivateEndpointWithParams(ctx context.Context, args *DeleteServerlessPrivateEndpointApiParams) DeleteServerlessPrivateEndpointApiRequest {
@@ -313,7 +331,14 @@ func (a *ServerlessPrivateEndpointsApiService) DeleteServerlessPrivateEndpointWi
 		groupId:      args.GroupId,
 		instanceName: args.InstanceName,
 		endpointId:   args.EndpointId,
+		envelope:     args.Envelope,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r DeleteServerlessPrivateEndpointApiRequest) Envelope(envelope bool) DeleteServerlessPrivateEndpointApiRequest {
+	r.envelope = &envelope
+	return r
 }
 
 func (r DeleteServerlessPrivateEndpointApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -381,6 +406,13 @@ func (a *ServerlessPrivateEndpointsApiService) deleteServerlessPrivateEndpointEx
 		return localVarReturnValue, nil, reportError("endpointId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -449,12 +481,14 @@ type GetServerlessPrivateEndpointApiRequest struct {
 	groupId      string
 	instanceName string
 	endpointId   string
+	envelope     *bool
 }
 
 type GetServerlessPrivateEndpointApiParams struct {
 	GroupId      string
 	InstanceName string
 	EndpointId   string
+	Envelope     *bool
 }
 
 func (a *ServerlessPrivateEndpointsApiService) GetServerlessPrivateEndpointWithParams(ctx context.Context, args *GetServerlessPrivateEndpointApiParams) GetServerlessPrivateEndpointApiRequest {
@@ -464,7 +498,14 @@ func (a *ServerlessPrivateEndpointsApiService) GetServerlessPrivateEndpointWithP
 		groupId:      args.GroupId,
 		instanceName: args.InstanceName,
 		endpointId:   args.EndpointId,
+		envelope:     args.Envelope,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r GetServerlessPrivateEndpointApiRequest) Envelope(envelope bool) GetServerlessPrivateEndpointApiRequest {
+	r.envelope = &envelope
+	return r
 }
 
 func (r GetServerlessPrivateEndpointApiRequest) Execute() (*ServerlessTenantEndpoint, *http.Response, error) {
@@ -532,6 +573,13 @@ func (a *ServerlessPrivateEndpointsApiService) getServerlessPrivateEndpointExecu
 		return localVarReturnValue, nil, reportError("endpointId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -599,11 +647,13 @@ type ListServerlessPrivateEndpointsApiRequest struct {
 	ApiService   ServerlessPrivateEndpointsApi
 	groupId      string
 	instanceName string
+	envelope     *bool
 }
 
 type ListServerlessPrivateEndpointsApiParams struct {
 	GroupId      string
 	InstanceName string
+	Envelope     *bool
 }
 
 func (a *ServerlessPrivateEndpointsApiService) ListServerlessPrivateEndpointsWithParams(ctx context.Context, args *ListServerlessPrivateEndpointsApiParams) ListServerlessPrivateEndpointsApiRequest {
@@ -612,7 +662,14 @@ func (a *ServerlessPrivateEndpointsApiService) ListServerlessPrivateEndpointsWit
 		ctx:          ctx,
 		groupId:      args.GroupId,
 		instanceName: args.InstanceName,
+		envelope:     args.Envelope,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r ListServerlessPrivateEndpointsApiRequest) Envelope(envelope bool) ListServerlessPrivateEndpointsApiRequest {
+	r.envelope = &envelope
+	return r
 }
 
 func (r ListServerlessPrivateEndpointsApiRequest) Execute() ([]ServerlessTenantEndpoint, *http.Response, error) {
@@ -671,6 +728,13 @@ func (a *ServerlessPrivateEndpointsApiService) listServerlessPrivateEndpointsExe
 		return localVarReturnValue, nil, reportError("instanceName must have less than 64 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -740,6 +804,7 @@ type UpdateServerlessPrivateEndpointApiRequest struct {
 	instanceName                   string
 	endpointId                     string
 	serverlessTenantEndpointUpdate *ServerlessTenantEndpointUpdate
+	envelope                       *bool
 }
 
 type UpdateServerlessPrivateEndpointApiParams struct {
@@ -747,6 +812,7 @@ type UpdateServerlessPrivateEndpointApiParams struct {
 	InstanceName                   string
 	EndpointId                     string
 	ServerlessTenantEndpointUpdate *ServerlessTenantEndpointUpdate
+	Envelope                       *bool
 }
 
 func (a *ServerlessPrivateEndpointsApiService) UpdateServerlessPrivateEndpointWithParams(ctx context.Context, args *UpdateServerlessPrivateEndpointApiParams) UpdateServerlessPrivateEndpointApiRequest {
@@ -757,7 +823,14 @@ func (a *ServerlessPrivateEndpointsApiService) UpdateServerlessPrivateEndpointWi
 		instanceName:                   args.InstanceName,
 		endpointId:                     args.EndpointId,
 		serverlessTenantEndpointUpdate: args.ServerlessTenantEndpointUpdate,
+		envelope:                       args.Envelope,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r UpdateServerlessPrivateEndpointApiRequest) Envelope(envelope bool) UpdateServerlessPrivateEndpointApiRequest {
+	r.envelope = &envelope
+	return r
 }
 
 func (r UpdateServerlessPrivateEndpointApiRequest) Execute() (*ServerlessTenantEndpoint, *http.Response, error) {
@@ -829,6 +902,13 @@ func (a *ServerlessPrivateEndpointsApiService) updateServerlessPrivateEndpointEx
 		return localVarReturnValue, nil, reportError("serverlessTenantEndpointUpdate is required and must be specified")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 

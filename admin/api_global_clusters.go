@@ -143,12 +143,16 @@ type CreateCustomZoneMappingApiRequest struct {
 	groupId     string
 	clusterName string
 	geoSharding *GeoSharding
+	envelope    *bool
+	pretty      *bool
 }
 
 type CreateCustomZoneMappingApiParams struct {
 	GroupId     string
 	ClusterName string
 	GeoSharding *GeoSharding
+	Envelope    *bool
+	Pretty      *bool
 }
 
 func (a *GlobalClustersApiService) CreateCustomZoneMappingWithParams(ctx context.Context, args *CreateCustomZoneMappingApiParams) CreateCustomZoneMappingApiRequest {
@@ -158,7 +162,21 @@ func (a *GlobalClustersApiService) CreateCustomZoneMappingWithParams(ctx context
 		groupId:     args.GroupId,
 		clusterName: args.ClusterName,
 		geoSharding: args.GeoSharding,
+		envelope:    args.Envelope,
+		pretty:      args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r CreateCustomZoneMappingApiRequest) Envelope(envelope bool) CreateCustomZoneMappingApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r CreateCustomZoneMappingApiRequest) Pretty(pretty bool) CreateCustomZoneMappingApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r CreateCustomZoneMappingApiRequest) Execute() (*GeoSharding, *http.Response, error) {
@@ -224,6 +242,20 @@ func (a *GlobalClustersApiService) createCustomZoneMappingExecute(r CreateCustom
 		return localVarReturnValue, nil, reportError("geoSharding is required and must be specified")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-02-01+json"}
 
@@ -294,12 +326,16 @@ type CreateManagedNamespaceApiRequest struct {
 	groupId          string
 	clusterName      string
 	managedNamespace *ManagedNamespace
+	envelope         *bool
+	pretty           *bool
 }
 
 type CreateManagedNamespaceApiParams struct {
 	GroupId          string
 	ClusterName      string
 	ManagedNamespace *ManagedNamespace
+	Envelope         *bool
+	Pretty           *bool
 }
 
 func (a *GlobalClustersApiService) CreateManagedNamespaceWithParams(ctx context.Context, args *CreateManagedNamespaceApiParams) CreateManagedNamespaceApiRequest {
@@ -309,7 +345,21 @@ func (a *GlobalClustersApiService) CreateManagedNamespaceWithParams(ctx context.
 		groupId:          args.GroupId,
 		clusterName:      args.ClusterName,
 		managedNamespace: args.ManagedNamespace,
+		envelope:         args.Envelope,
+		pretty:           args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r CreateManagedNamespaceApiRequest) Envelope(envelope bool) CreateManagedNamespaceApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r CreateManagedNamespaceApiRequest) Pretty(pretty bool) CreateManagedNamespaceApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r CreateManagedNamespaceApiRequest) Execute() (*GeoSharding, *http.Response, error) {
@@ -375,6 +425,20 @@ func (a *GlobalClustersApiService) createManagedNamespaceExecute(r CreateManaged
 		return localVarReturnValue, nil, reportError("managedNamespace is required and must be specified")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-02-01+json"}
 
@@ -444,11 +508,15 @@ type DeleteAllCustomZoneMappingsApiRequest struct {
 	ApiService  GlobalClustersApi
 	groupId     string
 	clusterName string
+	envelope    *bool
+	pretty      *bool
 }
 
 type DeleteAllCustomZoneMappingsApiParams struct {
 	GroupId     string
 	ClusterName string
+	Envelope    *bool
+	Pretty      *bool
 }
 
 func (a *GlobalClustersApiService) DeleteAllCustomZoneMappingsWithParams(ctx context.Context, args *DeleteAllCustomZoneMappingsApiParams) DeleteAllCustomZoneMappingsApiRequest {
@@ -457,7 +525,21 @@ func (a *GlobalClustersApiService) DeleteAllCustomZoneMappingsWithParams(ctx con
 		ctx:         ctx,
 		groupId:     args.GroupId,
 		clusterName: args.ClusterName,
+		envelope:    args.Envelope,
+		pretty:      args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r DeleteAllCustomZoneMappingsApiRequest) Envelope(envelope bool) DeleteAllCustomZoneMappingsApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r DeleteAllCustomZoneMappingsApiRequest) Pretty(pretty bool) DeleteAllCustomZoneMappingsApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r DeleteAllCustomZoneMappingsApiRequest) Execute() (*GeoSharding, *http.Response, error) {
@@ -519,6 +601,20 @@ func (a *GlobalClustersApiService) deleteAllCustomZoneMappingsExecute(r DeleteAl
 		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -586,6 +682,8 @@ type DeleteManagedNamespaceApiRequest struct {
 	ApiService  GlobalClustersApi
 	clusterName string
 	groupId     string
+	envelope    *bool
+	pretty      *bool
 	db          *string
 	collection  *string
 }
@@ -593,6 +691,8 @@ type DeleteManagedNamespaceApiRequest struct {
 type DeleteManagedNamespaceApiParams struct {
 	ClusterName string
 	GroupId     string
+	Envelope    *bool
+	Pretty      *bool
 	Db          *string
 	Collection  *string
 }
@@ -603,9 +703,23 @@ func (a *GlobalClustersApiService) DeleteManagedNamespaceWithParams(ctx context.
 		ctx:         ctx,
 		clusterName: args.ClusterName,
 		groupId:     args.GroupId,
+		envelope:    args.Envelope,
+		pretty:      args.Pretty,
 		db:          args.Db,
 		collection:  args.Collection,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r DeleteManagedNamespaceApiRequest) Envelope(envelope bool) DeleteManagedNamespaceApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r DeleteManagedNamespaceApiRequest) Pretty(pretty bool) DeleteManagedNamespaceApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 // Human-readable label that identifies the database that contains the collection.
@@ -679,6 +793,20 @@ func (a *GlobalClustersApiService) deleteManagedNamespaceExecute(r DeleteManaged
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	if r.db != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "db", r.db, "")
 	}
@@ -752,11 +880,15 @@ type GetManagedNamespaceApiRequest struct {
 	ApiService  GlobalClustersApi
 	groupId     string
 	clusterName string
+	envelope    *bool
+	pretty      *bool
 }
 
 type GetManagedNamespaceApiParams struct {
 	GroupId     string
 	ClusterName string
+	Envelope    *bool
+	Pretty      *bool
 }
 
 func (a *GlobalClustersApiService) GetManagedNamespaceWithParams(ctx context.Context, args *GetManagedNamespaceApiParams) GetManagedNamespaceApiRequest {
@@ -765,7 +897,21 @@ func (a *GlobalClustersApiService) GetManagedNamespaceWithParams(ctx context.Con
 		ctx:         ctx,
 		groupId:     args.GroupId,
 		clusterName: args.ClusterName,
+		envelope:    args.Envelope,
+		pretty:      args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r GetManagedNamespaceApiRequest) Envelope(envelope bool) GetManagedNamespaceApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r GetManagedNamespaceApiRequest) Pretty(pretty bool) GetManagedNamespaceApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r GetManagedNamespaceApiRequest) Execute() (*GeoSharding, *http.Response, error) {
@@ -827,6 +973,20 @@ func (a *GlobalClustersApiService) getManagedNamespaceExecute(r GetManagedNamesp
 		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

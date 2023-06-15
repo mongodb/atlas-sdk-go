@@ -23,7 +23,7 @@ type AtlasSearchApi interface {
 		@param clusterName Name of the cluster that contains the collection on which to create an Atlas Search index.
 		@return CreateAtlasSearchIndexApiRequest
 	*/
-	CreateAtlasSearchIndex(ctx context.Context, groupId string, clusterName string, fTSIndex *FTSIndex) CreateAtlasSearchIndexApiRequest
+	CreateAtlasSearchIndex(ctx context.Context, groupId string, clusterName string, clusterSearchIndex *ClusterSearchIndex) CreateAtlasSearchIndexApiRequest
 	/*
 		CreateAtlasSearchIndex Create One Atlas Search Index
 
@@ -35,7 +35,7 @@ type AtlasSearchApi interface {
 	CreateAtlasSearchIndexWithParams(ctx context.Context, args *CreateAtlasSearchIndexApiParams) CreateAtlasSearchIndexApiRequest
 
 	// Interface only available internally
-	createAtlasSearchIndexExecute(r CreateAtlasSearchIndexApiRequest) (*FTSIndex, *http.Response, error)
+	createAtlasSearchIndexExecute(r CreateAtlasSearchIndexApiRequest) (*ClusterSearchIndex, *http.Response, error)
 
 	/*
 		DeleteAtlasSearchIndex Remove One Atlas Search Index
@@ -85,7 +85,7 @@ type AtlasSearchApi interface {
 	GetAtlasSearchIndexWithParams(ctx context.Context, args *GetAtlasSearchIndexApiParams) GetAtlasSearchIndexApiRequest
 
 	// Interface only available internally
-	getAtlasSearchIndexExecute(r GetAtlasSearchIndexApiRequest) (*FTSIndex, *http.Response, error)
+	getAtlasSearchIndexExecute(r GetAtlasSearchIndexApiRequest) (*ClusterSearchIndex, *http.Response, error)
 
 	/*
 		ListAtlasSearchIndexes Return All Atlas Search Indexes for One Collection
@@ -111,7 +111,7 @@ type AtlasSearchApi interface {
 	ListAtlasSearchIndexesWithParams(ctx context.Context, args *ListAtlasSearchIndexesApiParams) ListAtlasSearchIndexesApiRequest
 
 	// Interface only available internally
-	listAtlasSearchIndexesExecute(r ListAtlasSearchIndexesApiRequest) ([]FTSIndex, *http.Response, error)
+	listAtlasSearchIndexesExecute(r ListAtlasSearchIndexesApiRequest) ([]ClusterSearchIndex, *http.Response, error)
 
 	/*
 		UpdateAtlasSearchIndex Update One Atlas Search Index
@@ -124,7 +124,7 @@ type AtlasSearchApi interface {
 		@param indexId Unique 24-hexadecimal digit string that identifies the Atlas Search [index](https://docs.atlas.mongodb.com/reference/atlas-search/index-definitions/). Use the [Get All Atlas Search Indexes for a Collection API](https://docs.atlas.mongodb.com/reference/api/fts-indexes-get-all/) endpoint to find the IDs of all Atlas Search indexes.
 		@return UpdateAtlasSearchIndexApiRequest
 	*/
-	UpdateAtlasSearchIndex(ctx context.Context, groupId string, clusterName string, indexId string, fTSIndex *FTSIndex) UpdateAtlasSearchIndexApiRequest
+	UpdateAtlasSearchIndex(ctx context.Context, groupId string, clusterName string, indexId string, clusterSearchIndex *ClusterSearchIndex) UpdateAtlasSearchIndexApiRequest
 	/*
 		UpdateAtlasSearchIndex Update One Atlas Search Index
 
@@ -136,37 +136,55 @@ type AtlasSearchApi interface {
 	UpdateAtlasSearchIndexWithParams(ctx context.Context, args *UpdateAtlasSearchIndexApiParams) UpdateAtlasSearchIndexApiRequest
 
 	// Interface only available internally
-	updateAtlasSearchIndexExecute(r UpdateAtlasSearchIndexApiRequest) (*FTSIndex, *http.Response, error)
+	updateAtlasSearchIndexExecute(r UpdateAtlasSearchIndexApiRequest) (*ClusterSearchIndex, *http.Response, error)
 }
 
 // AtlasSearchApiService AtlasSearchApi service
 type AtlasSearchApiService service
 
 type CreateAtlasSearchIndexApiRequest struct {
-	ctx         context.Context
-	ApiService  AtlasSearchApi
-	groupId     string
-	clusterName string
-	fTSIndex    *FTSIndex
+	ctx                context.Context
+	ApiService         AtlasSearchApi
+	groupId            string
+	clusterName        string
+	clusterSearchIndex *ClusterSearchIndex
+	envelope           *bool
+	pretty             *bool
 }
 
 type CreateAtlasSearchIndexApiParams struct {
-	GroupId     string
-	ClusterName string
-	FTSIndex    *FTSIndex
+	GroupId            string
+	ClusterName        string
+	ClusterSearchIndex *ClusterSearchIndex
+	Envelope           *bool
+	Pretty             *bool
 }
 
 func (a *AtlasSearchApiService) CreateAtlasSearchIndexWithParams(ctx context.Context, args *CreateAtlasSearchIndexApiParams) CreateAtlasSearchIndexApiRequest {
 	return CreateAtlasSearchIndexApiRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		groupId:     args.GroupId,
-		clusterName: args.ClusterName,
-		fTSIndex:    args.FTSIndex,
+		ApiService:         a,
+		ctx:                ctx,
+		groupId:            args.GroupId,
+		clusterName:        args.ClusterName,
+		clusterSearchIndex: args.ClusterSearchIndex,
+		envelope:           args.Envelope,
+		pretty:             args.Pretty,
 	}
 }
 
-func (r CreateAtlasSearchIndexApiRequest) Execute() (*FTSIndex, *http.Response, error) {
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r CreateAtlasSearchIndexApiRequest) Envelope(envelope bool) CreateAtlasSearchIndexApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r CreateAtlasSearchIndexApiRequest) Pretty(pretty bool) CreateAtlasSearchIndexApiRequest {
+	r.pretty = &pretty
+	return r
+}
+
+func (r CreateAtlasSearchIndexApiRequest) Execute() (*ClusterSearchIndex, *http.Response, error) {
 	return r.ApiService.createAtlasSearchIndexExecute(r)
 }
 
@@ -180,25 +198,25 @@ Creates one Atlas Search index on the specified collection. Atlas Search indexes
 	@param clusterName Name of the cluster that contains the collection on which to create an Atlas Search index.
 	@return CreateAtlasSearchIndexApiRequest
 */
-func (a *AtlasSearchApiService) CreateAtlasSearchIndex(ctx context.Context, groupId string, clusterName string, fTSIndex *FTSIndex) CreateAtlasSearchIndexApiRequest {
+func (a *AtlasSearchApiService) CreateAtlasSearchIndex(ctx context.Context, groupId string, clusterName string, clusterSearchIndex *ClusterSearchIndex) CreateAtlasSearchIndexApiRequest {
 	return CreateAtlasSearchIndexApiRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		groupId:     groupId,
-		clusterName: clusterName,
-		fTSIndex:    fTSIndex,
+		ApiService:         a,
+		ctx:                ctx,
+		groupId:            groupId,
+		clusterName:        clusterName,
+		clusterSearchIndex: clusterSearchIndex,
 	}
 }
 
 // Execute executes the request
 //
-//	@return FTSIndex
-func (a *AtlasSearchApiService) createAtlasSearchIndexExecute(r CreateAtlasSearchIndexApiRequest) (*FTSIndex, *http.Response, error) {
+//	@return ClusterSearchIndex
+func (a *AtlasSearchApiService) createAtlasSearchIndexExecute(r CreateAtlasSearchIndexApiRequest) (*ClusterSearchIndex, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *FTSIndex
+		localVarReturnValue *ClusterSearchIndex
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AtlasSearchApiService.CreateAtlasSearchIndex")
@@ -225,10 +243,24 @@ func (a *AtlasSearchApiService) createAtlasSearchIndexExecute(r CreateAtlasSearc
 	if strlen(r.clusterName) > 64 {
 		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
 	}
-	if r.fTSIndex == nil {
-		return localVarReturnValue, nil, reportError("fTSIndex is required and must be specified")
+	if r.clusterSearchIndex == nil {
+		return localVarReturnValue, nil, reportError("clusterSearchIndex is required and must be specified")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
@@ -247,7 +279,7 @@ func (a *AtlasSearchApiService) createAtlasSearchIndexExecute(r CreateAtlasSearc
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.fTSIndex
+	localVarPostBody = r.clusterSearchIndex
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -299,12 +331,16 @@ type DeleteAtlasSearchIndexApiRequest struct {
 	groupId     string
 	clusterName string
 	indexId     string
+	envelope    *bool
+	pretty      *bool
 }
 
 type DeleteAtlasSearchIndexApiParams struct {
 	GroupId     string
 	ClusterName string
 	IndexId     string
+	Envelope    *bool
+	Pretty      *bool
 }
 
 func (a *AtlasSearchApiService) DeleteAtlasSearchIndexWithParams(ctx context.Context, args *DeleteAtlasSearchIndexApiParams) DeleteAtlasSearchIndexApiRequest {
@@ -314,7 +350,21 @@ func (a *AtlasSearchApiService) DeleteAtlasSearchIndexWithParams(ctx context.Con
 		groupId:     args.GroupId,
 		clusterName: args.ClusterName,
 		indexId:     args.IndexId,
+		envelope:    args.Envelope,
+		pretty:      args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r DeleteAtlasSearchIndexApiRequest) Envelope(envelope bool) DeleteAtlasSearchIndexApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r DeleteAtlasSearchIndexApiRequest) Pretty(pretty bool) DeleteAtlasSearchIndexApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r DeleteAtlasSearchIndexApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -385,6 +435,20 @@ func (a *AtlasSearchApiService) deleteAtlasSearchIndexExecute(r DeleteAtlasSearc
 		return localVarReturnValue, nil, reportError("indexId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -453,12 +517,16 @@ type GetAtlasSearchIndexApiRequest struct {
 	groupId     string
 	clusterName string
 	indexId     string
+	envelope    *bool
+	pretty      *bool
 }
 
 type GetAtlasSearchIndexApiParams struct {
 	GroupId     string
 	ClusterName string
 	IndexId     string
+	Envelope    *bool
+	Pretty      *bool
 }
 
 func (a *AtlasSearchApiService) GetAtlasSearchIndexWithParams(ctx context.Context, args *GetAtlasSearchIndexApiParams) GetAtlasSearchIndexApiRequest {
@@ -468,10 +536,24 @@ func (a *AtlasSearchApiService) GetAtlasSearchIndexWithParams(ctx context.Contex
 		groupId:     args.GroupId,
 		clusterName: args.ClusterName,
 		indexId:     args.IndexId,
+		envelope:    args.Envelope,
+		pretty:      args.Pretty,
 	}
 }
 
-func (r GetAtlasSearchIndexApiRequest) Execute() (*FTSIndex, *http.Response, error) {
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r GetAtlasSearchIndexApiRequest) Envelope(envelope bool) GetAtlasSearchIndexApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r GetAtlasSearchIndexApiRequest) Pretty(pretty bool) GetAtlasSearchIndexApiRequest {
+	r.pretty = &pretty
+	return r
+}
+
+func (r GetAtlasSearchIndexApiRequest) Execute() (*ClusterSearchIndex, *http.Response, error) {
 	return r.ApiService.getAtlasSearchIndexExecute(r)
 }
 
@@ -498,13 +580,13 @@ func (a *AtlasSearchApiService) GetAtlasSearchIndex(ctx context.Context, groupId
 
 // Execute executes the request
 //
-//	@return FTSIndex
-func (a *AtlasSearchApiService) getAtlasSearchIndexExecute(r GetAtlasSearchIndexApiRequest) (*FTSIndex, *http.Response, error) {
+//	@return ClusterSearchIndex
+func (a *AtlasSearchApiService) getAtlasSearchIndexExecute(r GetAtlasSearchIndexApiRequest) (*ClusterSearchIndex, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *FTSIndex
+		localVarReturnValue *ClusterSearchIndex
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AtlasSearchApiService.GetAtlasSearchIndex")
@@ -539,6 +621,20 @@ func (a *AtlasSearchApiService) getAtlasSearchIndexExecute(r GetAtlasSearchIndex
 		return localVarReturnValue, nil, reportError("indexId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -608,6 +704,8 @@ type ListAtlasSearchIndexesApiRequest struct {
 	clusterName    string
 	collectionName string
 	databaseName   string
+	envelope       *bool
+	pretty         *bool
 }
 
 type ListAtlasSearchIndexesApiParams struct {
@@ -615,6 +713,8 @@ type ListAtlasSearchIndexesApiParams struct {
 	ClusterName    string
 	CollectionName string
 	DatabaseName   string
+	Envelope       *bool
+	Pretty         *bool
 }
 
 func (a *AtlasSearchApiService) ListAtlasSearchIndexesWithParams(ctx context.Context, args *ListAtlasSearchIndexesApiParams) ListAtlasSearchIndexesApiRequest {
@@ -625,10 +725,24 @@ func (a *AtlasSearchApiService) ListAtlasSearchIndexesWithParams(ctx context.Con
 		clusterName:    args.ClusterName,
 		collectionName: args.CollectionName,
 		databaseName:   args.DatabaseName,
+		envelope:       args.Envelope,
+		pretty:         args.Pretty,
 	}
 }
 
-func (r ListAtlasSearchIndexesApiRequest) Execute() ([]FTSIndex, *http.Response, error) {
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r ListAtlasSearchIndexesApiRequest) Envelope(envelope bool) ListAtlasSearchIndexesApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r ListAtlasSearchIndexesApiRequest) Pretty(pretty bool) ListAtlasSearchIndexesApiRequest {
+	r.pretty = &pretty
+	return r
+}
+
+func (r ListAtlasSearchIndexesApiRequest) Execute() ([]ClusterSearchIndex, *http.Response, error) {
 	return r.ApiService.listAtlasSearchIndexesExecute(r)
 }
 
@@ -657,13 +771,13 @@ func (a *AtlasSearchApiService) ListAtlasSearchIndexes(ctx context.Context, grou
 
 // Execute executes the request
 //
-//	@return []FTSIndex
-func (a *AtlasSearchApiService) listAtlasSearchIndexesExecute(r ListAtlasSearchIndexesApiRequest) ([]FTSIndex, *http.Response, error) {
+//	@return []ClusterSearchIndex
+func (a *AtlasSearchApiService) listAtlasSearchIndexesExecute(r ListAtlasSearchIndexesApiRequest) ([]ClusterSearchIndex, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []FTSIndex
+		localVarReturnValue []ClusterSearchIndex
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AtlasSearchApiService.ListAtlasSearchIndexes")
@@ -693,6 +807,20 @@ func (a *AtlasSearchApiService) listAtlasSearchIndexesExecute(r ListAtlasSearchI
 		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -756,33 +884,51 @@ func (a *AtlasSearchApiService) listAtlasSearchIndexesExecute(r ListAtlasSearchI
 }
 
 type UpdateAtlasSearchIndexApiRequest struct {
-	ctx         context.Context
-	ApiService  AtlasSearchApi
-	groupId     string
-	clusterName string
-	indexId     string
-	fTSIndex    *FTSIndex
+	ctx                context.Context
+	ApiService         AtlasSearchApi
+	groupId            string
+	clusterName        string
+	indexId            string
+	clusterSearchIndex *ClusterSearchIndex
+	envelope           *bool
+	pretty             *bool
 }
 
 type UpdateAtlasSearchIndexApiParams struct {
-	GroupId     string
-	ClusterName string
-	IndexId     string
-	FTSIndex    *FTSIndex
+	GroupId            string
+	ClusterName        string
+	IndexId            string
+	ClusterSearchIndex *ClusterSearchIndex
+	Envelope           *bool
+	Pretty             *bool
 }
 
 func (a *AtlasSearchApiService) UpdateAtlasSearchIndexWithParams(ctx context.Context, args *UpdateAtlasSearchIndexApiParams) UpdateAtlasSearchIndexApiRequest {
 	return UpdateAtlasSearchIndexApiRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		groupId:     args.GroupId,
-		clusterName: args.ClusterName,
-		indexId:     args.IndexId,
-		fTSIndex:    args.FTSIndex,
+		ApiService:         a,
+		ctx:                ctx,
+		groupId:            args.GroupId,
+		clusterName:        args.ClusterName,
+		indexId:            args.IndexId,
+		clusterSearchIndex: args.ClusterSearchIndex,
+		envelope:           args.Envelope,
+		pretty:             args.Pretty,
 	}
 }
 
-func (r UpdateAtlasSearchIndexApiRequest) Execute() (*FTSIndex, *http.Response, error) {
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r UpdateAtlasSearchIndexApiRequest) Envelope(envelope bool) UpdateAtlasSearchIndexApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r UpdateAtlasSearchIndexApiRequest) Pretty(pretty bool) UpdateAtlasSearchIndexApiRequest {
+	r.pretty = &pretty
+	return r
+}
+
+func (r UpdateAtlasSearchIndexApiRequest) Execute() (*ClusterSearchIndex, *http.Response, error) {
 	return r.ApiService.updateAtlasSearchIndexExecute(r)
 }
 
@@ -797,26 +943,26 @@ Updates one Atlas Search index that you identified with its unique ID. Atlas Sea
 	@param indexId Unique 24-hexadecimal digit string that identifies the Atlas Search [index](https://docs.atlas.mongodb.com/reference/atlas-search/index-definitions/). Use the [Get All Atlas Search Indexes for a Collection API](https://docs.atlas.mongodb.com/reference/api/fts-indexes-get-all/) endpoint to find the IDs of all Atlas Search indexes.
 	@return UpdateAtlasSearchIndexApiRequest
 */
-func (a *AtlasSearchApiService) UpdateAtlasSearchIndex(ctx context.Context, groupId string, clusterName string, indexId string, fTSIndex *FTSIndex) UpdateAtlasSearchIndexApiRequest {
+func (a *AtlasSearchApiService) UpdateAtlasSearchIndex(ctx context.Context, groupId string, clusterName string, indexId string, clusterSearchIndex *ClusterSearchIndex) UpdateAtlasSearchIndexApiRequest {
 	return UpdateAtlasSearchIndexApiRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		groupId:     groupId,
-		clusterName: clusterName,
-		indexId:     indexId,
-		fTSIndex:    fTSIndex,
+		ApiService:         a,
+		ctx:                ctx,
+		groupId:            groupId,
+		clusterName:        clusterName,
+		indexId:            indexId,
+		clusterSearchIndex: clusterSearchIndex,
 	}
 }
 
 // Execute executes the request
 //
-//	@return FTSIndex
-func (a *AtlasSearchApiService) updateAtlasSearchIndexExecute(r UpdateAtlasSearchIndexApiRequest) (*FTSIndex, *http.Response, error) {
+//	@return ClusterSearchIndex
+func (a *AtlasSearchApiService) updateAtlasSearchIndexExecute(r UpdateAtlasSearchIndexApiRequest) (*ClusterSearchIndex, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *FTSIndex
+		localVarReturnValue *ClusterSearchIndex
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AtlasSearchApiService.UpdateAtlasSearchIndex")
@@ -850,10 +996,24 @@ func (a *AtlasSearchApiService) updateAtlasSearchIndexExecute(r UpdateAtlasSearc
 	if strlen(r.indexId) > 24 {
 		return localVarReturnValue, nil, reportError("indexId must have less than 24 elements")
 	}
-	if r.fTSIndex == nil {
-		return localVarReturnValue, nil, reportError("fTSIndex is required and must be specified")
+	if r.clusterSearchIndex == nil {
+		return localVarReturnValue, nil, reportError("clusterSearchIndex is required and must be specified")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
@@ -872,7 +1032,7 @@ func (a *AtlasSearchApiService) updateAtlasSearchIndexExecute(r UpdateAtlasSearc
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.fTSIndex
+	localVarPostBody = r.clusterSearchIndex
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

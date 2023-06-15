@@ -71,10 +71,14 @@ type GetEncryptionAtRestApiRequest struct {
 	ctx        context.Context
 	ApiService EncryptionAtRestUsingCustomerKeyManagementApi
 	groupId    string
+	envelope   *bool
+	pretty     *bool
 }
 
 type GetEncryptionAtRestApiParams struct {
-	GroupId string
+	GroupId  string
+	Envelope *bool
+	Pretty   *bool
 }
 
 func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) GetEncryptionAtRestWithParams(ctx context.Context, args *GetEncryptionAtRestApiParams) GetEncryptionAtRestApiRequest {
@@ -82,7 +86,21 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) GetEncryptionAtRe
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    args.GroupId,
+		envelope:   args.Envelope,
+		pretty:     args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r GetEncryptionAtRestApiRequest) Envelope(envelope bool) GetEncryptionAtRestApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r GetEncryptionAtRestApiRequest) Pretty(pretty bool) GetEncryptionAtRestApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r GetEncryptionAtRestApiRequest) Execute() (*EncryptionAtRest, *http.Response, error) {
@@ -137,6 +155,20 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) getEncryptionAtRe
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -204,11 +236,15 @@ type UpdateEncryptionAtRestApiRequest struct {
 	ApiService       EncryptionAtRestUsingCustomerKeyManagementApi
 	groupId          string
 	encryptionAtRest *EncryptionAtRest
+	envelope         *bool
+	pretty           *bool
 }
 
 type UpdateEncryptionAtRestApiParams struct {
 	GroupId          string
 	EncryptionAtRest *EncryptionAtRest
+	Envelope         *bool
+	Pretty           *bool
 }
 
 func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) UpdateEncryptionAtRestWithParams(ctx context.Context, args *UpdateEncryptionAtRestApiParams) UpdateEncryptionAtRestApiRequest {
@@ -217,7 +253,21 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) UpdateEncryptionA
 		ctx:              ctx,
 		groupId:          args.GroupId,
 		encryptionAtRest: args.EncryptionAtRest,
+		envelope:         args.Envelope,
+		pretty:           args.Pretty,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r UpdateEncryptionAtRestApiRequest) Envelope(envelope bool) UpdateEncryptionAtRestApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
+func (r UpdateEncryptionAtRestApiRequest) Pretty(pretty bool) UpdateEncryptionAtRestApiRequest {
+	r.pretty = &pretty
+	return r
 }
 
 func (r UpdateEncryptionAtRestApiRequest) Execute() (*EncryptionAtRest, *http.Response, error) {
@@ -276,6 +326,20 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) updateEncryptionA
 		return localVarReturnValue, nil, reportError("encryptionAtRest is required and must be specified")
 	}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = false
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
+	if r.pretty != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	} else {
+		var defaultValue bool = false
+		r.pretty = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
