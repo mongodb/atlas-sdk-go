@@ -627,7 +627,7 @@ Name | Type | Description  | Notes
 
 ## GetProjectLimit
 
-> Limit GetProjectLimit(ctx, limitName, groupId).Execute()
+> DataFederationLimit GetProjectLimit(ctx, limitName, groupId).Execute()
 
 Return One Limit for One Project
 
@@ -665,7 +665,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetProjectLimit`: Limit
+    // response from `GetProjectLimit`: DataFederationLimit
     fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.GetProjectLimit`: %v\n", resp)
 }
 ```
@@ -691,7 +691,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Limit**](Limit.md)
+[**DataFederationLimit**](DataFederationLimit.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -856,7 +856,7 @@ Name | Type | Description  | Notes
 
 ## ListProjectLimits
 
-> []Limit ListProjectLimits(ctx, groupId).Execute()
+> []DataFederationLimit ListProjectLimits(ctx, groupId).Execute()
 
 Return All Limits for One Project
 
@@ -893,7 +893,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `ListProjectLimits`: []Limit
+    // response from `ListProjectLimits`: []DataFederationLimit
     fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.ListProjectLimits`: %v\n", resp)
 }
 ```
@@ -917,7 +917,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Limit**](Limit.md)
+[**[]DataFederationLimit**](DataFederationLimit.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -1164,7 +1164,7 @@ Name | Type | Description  | Notes
 
 ## SetProjectLimit
 
-> Limit SetProjectLimit(ctx, limitName, groupId, limit Limit).Execute()
+> DataFederationLimit SetProjectLimit(ctx, limitName, groupId, dataFederationLimit DataFederationLimit).Execute()
 
 Set One Project Limit
 
@@ -1195,15 +1195,15 @@ func main() {
 
     limitName := "limitName_example" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    limit := openapiclient.Limit{DataFederationQueryLimit: openapiclient.NewDataFederationQueryLimit("Name_example", int64(123))} // Limit | 
+    dataFederationLimit := openapiclient.DataFederationLimit{DataFederationQueryLimit: openapiclient.NewDataFederationQueryLimit("Name_example", int64(123))} // DataFederationLimit | 
 
-    resp, r, err := sdk.ProjectsApi.SetProjectLimit(context.Background(), limitName, groupId, &limit).Execute()
+    resp, r, err := sdk.ProjectsApi.SetProjectLimit(context.Background(), limitName, groupId, &dataFederationLimit).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.SetProjectLimit``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `SetProjectLimit`: Limit
+    // response from `SetProjectLimit`: DataFederationLimit
     fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.SetProjectLimit`: %v\n", resp)
 }
 ```
@@ -1226,11 +1226,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **limit** | [**Limit**](Limit.md) | Limit to update. | 
+ **dataFederationLimit** | [**DataFederationLimit**](DataFederationLimit.md) | Limit to update. | 
 
 ### Return type
 
-[**Limit**](Limit.md)
+[**DataFederationLimit**](DataFederationLimit.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

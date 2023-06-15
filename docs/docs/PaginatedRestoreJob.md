@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
-**Results** | Pointer to [**[]RestoreJob**](RestoreJob.md) | List of returned documents that MongoDB Cloud providers when completing this request. | [optional] [readonly] 
+**Results** | Pointer to [**[]BackupRestoreJob**](BackupRestoreJob.md) | List of returned documents that MongoDB Cloud providers when completing this request. | [optional] [readonly] 
 **TotalCount** | Pointer to **int** | Number of documents returned in this response. | [optional] [readonly] 
 
 ## Methods
@@ -54,20 +54,20 @@ HasLinks returns a boolean if a field has been set.
 
 ### GetResults
 
-`func (o *PaginatedRestoreJob) GetResults() []RestoreJob`
+`func (o *PaginatedRestoreJob) GetResults() []BackupRestoreJob`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *PaginatedRestoreJob) GetResultsOk() (*[]RestoreJob, bool)`
+`func (o *PaginatedRestoreJob) GetResultsOk() (*[]BackupRestoreJob, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *PaginatedRestoreJob) SetResults(v []RestoreJob)`
+`func (o *PaginatedRestoreJob) SetResults(v []BackupRestoreJob)`
 
 SetResults sets Results field to given value.
 

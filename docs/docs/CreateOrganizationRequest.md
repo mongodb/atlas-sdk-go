@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ApiKey** | Pointer to [**CreateOrganizationApiKey**](CreateOrganizationApiKey.md) |  | [optional] 
+**ApiKey** | Pointer to [**CreateOrganizationKey**](CreateOrganizationKey.md) |  | [optional] 
 **FederationSettingsId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the federation to link the newly created organization to. If specified, the proposed Organization Owner of the new organization must have the Organization Owner role in an organization associated with the federation. | [optional] 
 **Name** | **string** | Human-readable label that identifies the organization. | 
 **OrgOwnerId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the MongoDB Cloud user that you want to assign the Organization Owner role. This user must be a member of the same organization as the calling API key. If you provide &#x60;federationSettingsId&#x60;,  this user must instead have the Organization Owner role on an organization in the specified federation. This parameter is required only when you authenticate with Programmatic API Keys. | [optional] 
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetApiKey
 
-`func (o *CreateOrganizationRequest) GetApiKey() CreateOrganizationApiKey`
+`func (o *CreateOrganizationRequest) GetApiKey() CreateOrganizationKey`
 
 GetApiKey returns the ApiKey field if non-nil, zero value otherwise.
 
 ### GetApiKeyOk
 
-`func (o *CreateOrganizationRequest) GetApiKeyOk() (*CreateOrganizationApiKey, bool)`
+`func (o *CreateOrganizationRequest) GetApiKeyOk() (*CreateOrganizationKey, bool)`
 
 GetApiKeyOk returns a tuple with the ApiKey field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApiKey
 
-`func (o *CreateOrganizationRequest) SetApiKey(v CreateOrganizationApiKey)`
+`func (o *CreateOrganizationRequest) SetApiKey(v CreateOrganizationKey)`
 
 SetApiKey sets ApiKey field to given value.
 

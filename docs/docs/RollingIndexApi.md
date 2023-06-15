@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## CreateRollingIndex
 
-> CreateRollingIndex(ctx, groupId, clusterName, indexRequest IndexRequest).Execute()
+> CreateRollingIndex(ctx, groupId, clusterName, rollingIndexRequest RollingIndexRequest).Execute()
 
 Create One Rolling Index
 
@@ -36,9 +36,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    indexRequest := *openapiclient.NewIndexRequest("Collection_example", "Db_example") // IndexRequest | 
+    rollingIndexRequest := *openapiclient.NewRollingIndexRequest("Collection_example", "Db_example") // RollingIndexRequest | 
 
-    r, err := sdk.RollingIndexApi.CreateRollingIndex(context.Background(), groupId, clusterName, &indexRequest).Execute()
+    r, err := sdk.RollingIndexApi.CreateRollingIndex(context.Background(), groupId, clusterName, &rollingIndexRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `RollingIndexApi.CreateRollingIndex``: %v\n", err)
         apiError := admin.AsError(err)
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **indexRequest** | [**IndexRequest**](IndexRequest.md) | Rolling index to create on the specified cluster. | 
+ **rollingIndexRequest** | [**RollingIndexRequest**](RollingIndexRequest.md) | Rolling index to create on the specified cluster. | 
 
 ### Return type
 

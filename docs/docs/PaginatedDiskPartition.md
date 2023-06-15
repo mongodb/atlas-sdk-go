@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
-**Results** | Pointer to [**[]DiskPartition**](DiskPartition.md) | List of returned documents that MongoDB Cloud providers when completing this request. | [optional] [readonly] 
+**Results** | Pointer to [**[]MeasurementDiskPartition**](MeasurementDiskPartition.md) | List of returned documents that MongoDB Cloud providers when completing this request. | [optional] [readonly] 
 **TotalCount** | Pointer to **int** | Number of documents returned in this response. | [optional] [readonly] 
 
 ## Methods
@@ -54,20 +54,20 @@ HasLinks returns a boolean if a field has been set.
 
 ### GetResults
 
-`func (o *PaginatedDiskPartition) GetResults() []DiskPartition`
+`func (o *PaginatedDiskPartition) GetResults() []MeasurementDiskPartition`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *PaginatedDiskPartition) GetResultsOk() (*[]DiskPartition, bool)`
+`func (o *PaginatedDiskPartition) GetResultsOk() (*[]MeasurementDiskPartition, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *PaginatedDiskPartition) SetResults(v []DiskPartition)`
+`func (o *PaginatedDiskPartition) SetResults(v []MeasurementDiskPartition)`
 
 SetResults sets Results field to given value.
 

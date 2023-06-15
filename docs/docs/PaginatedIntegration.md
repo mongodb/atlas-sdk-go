@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
-**Results** | Pointer to [**[]Integration**](Integration.md) | List of returned documents that MongoDB Cloud providers when completing this request. | [optional] [readonly] 
+**Results** | Pointer to [**[]ThridPartyIntegration**](ThridPartyIntegration.md) | List of returned documents that MongoDB Cloud providers when completing this request. | [optional] [readonly] 
 **TotalCount** | Pointer to **int** | Number of documents returned in this response if **includeCount** query param is true. | [optional] [readonly] 
 
 ## Methods
@@ -54,20 +54,20 @@ HasLinks returns a boolean if a field has been set.
 
 ### GetResults
 
-`func (o *PaginatedIntegration) GetResults() []Integration`
+`func (o *PaginatedIntegration) GetResults() []ThridPartyIntegration`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *PaginatedIntegration) GetResultsOk() (*[]Integration, bool)`
+`func (o *PaginatedIntegration) GetResultsOk() (*[]ThridPartyIntegration, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *PaginatedIntegration) SetResults(v []Integration)`
+`func (o *PaginatedIntegration) SetResults(v []ThridPartyIntegration)`
 
 SetResults sets Results field to given value.
 

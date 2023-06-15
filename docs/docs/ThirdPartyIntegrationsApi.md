@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateThirdPartyIntegration
 
-> PaginatedIntegration CreateThirdPartyIntegration(ctx, integrationType, groupId, integration Integration).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+> PaginatedIntegration CreateThirdPartyIntegration(ctx, integrationType, groupId, thridPartyIntegration ThridPartyIntegration).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Configure One Third-Party Service Integration
 
@@ -40,12 +40,12 @@ func main() {
 
     integrationType := "integrationType_example" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    integration := openapiclient.Integration{Datadog: openapiclient.NewDatadog("****************************a23c")} // Integration | 
+    thridPartyIntegration := openapiclient.ThridPartyIntegration{Datadog: openapiclient.NewDatadog("****************************a23c")} // ThridPartyIntegration | 
     includeCount := true // bool |  (optional) (default to true)
     itemsPerPage := int(100) // int |  (optional) (default to 100)
     pageNum := int(1) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.ThirdPartyIntegrationsApi.CreateThirdPartyIntegration(context.Background(), integrationType, groupId, &integration).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.ThirdPartyIntegrationsApi.CreateThirdPartyIntegration(context.Background(), integrationType, groupId, &thridPartyIntegration).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsApi.CreateThirdPartyIntegration``: %v\n", err)
         apiError := admin.AsError(err)
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **integration** | [**Integration**](Integration.md) | Third-party integration that you want to configure for your project. | 
+ **thridPartyIntegration** | [**ThridPartyIntegration**](ThridPartyIntegration.md) | Third-party integration that you want to configure for your project. | 
  **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (**totalCount**) in the response. | [default to true]
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
@@ -174,7 +174,7 @@ Name | Type | Description  | Notes
 
 ## GetThirdPartyIntegration
 
-> Integration GetThirdPartyIntegration(ctx, groupId, integrationType).Execute()
+> ThridPartyIntegration GetThirdPartyIntegration(ctx, groupId, integrationType).Execute()
 
 Return One Third-Party Service Integration
 
@@ -207,7 +207,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetThirdPartyIntegration`: Integration
+    // response from `GetThirdPartyIntegration`: ThridPartyIntegration
     fmt.Fprintf(os.Stdout, "Response from `ThirdPartyIntegrationsApi.GetThirdPartyIntegration`: %v\n", resp)
 }
 ```
@@ -233,7 +233,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Integration**](Integration.md)
+[**ThridPartyIntegration**](ThridPartyIntegration.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -329,7 +329,7 @@ Name | Type | Description  | Notes
 
 ## UpdateThirdPartyIntegration
 
-> PaginatedIntegration UpdateThirdPartyIntegration(ctx, integrationType, groupId, integration Integration).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+> PaginatedIntegration UpdateThirdPartyIntegration(ctx, integrationType, groupId, thridPartyIntegration ThridPartyIntegration).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
 
 Update One Third-Party Service Integration
 
@@ -360,12 +360,12 @@ func main() {
 
     integrationType := "integrationType_example" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    integration := openapiclient.Integration{Datadog: openapiclient.NewDatadog("****************************a23c")} // Integration | 
+    thridPartyIntegration := openapiclient.ThridPartyIntegration{Datadog: openapiclient.NewDatadog("****************************a23c")} // ThridPartyIntegration | 
     includeCount := true // bool |  (optional) (default to true)
     itemsPerPage := int(100) // int |  (optional) (default to 100)
     pageNum := int(1) // int |  (optional) (default to 1)
 
-    resp, r, err := sdk.ThirdPartyIntegrationsApi.UpdateThirdPartyIntegration(context.Background(), integrationType, groupId, &integration).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.ThirdPartyIntegrationsApi.UpdateThirdPartyIntegration(context.Background(), integrationType, groupId, &thridPartyIntegration).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ThirdPartyIntegrationsApi.UpdateThirdPartyIntegration``: %v\n", err)
         apiError := admin.AsError(err)
@@ -394,7 +394,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **integration** | [**Integration**](Integration.md) | Third-party integration that you want to configure for your project. | 
+ **thridPartyIntegration** | [**ThridPartyIntegration**](ThridPartyIntegration.md) | Third-party integration that you want to configure for your project. | 
  **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (**totalCount**) in the response. | [default to true]
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]

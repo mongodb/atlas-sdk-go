@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the project. The project contains MongoDB processes that you want to return. The MongoDB process can be either the &#x60;mongod&#x60; or &#x60;mongos&#x60;. | [optional] [readonly] 
 **HostId** | Pointer to **string** | Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (&#x60;mongod&#x60; or &#x60;mongos&#x60;). The port must be the IANA port on which the MongoDB process listens for requests. | [optional] [readonly] 
 **Links** | Pointer to [**[]LinkAtlas**](LinkAtlas.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
-**Measurements** | Pointer to [**[]MeasurementViewAtlas**](MeasurementViewAtlas.md) | List that contains measurements and their data points. | [optional] [readonly] 
+**Measurements** | Pointer to [**[]MetricsMeasurementAtlas**](MetricsMeasurementAtlas.md) | List that contains measurements and their data points. | [optional] [readonly] 
 **PartitionName** | Pointer to **string** | Human-readable label of the disk or partition to which the measurements apply. | [optional] [readonly] 
 **ProcessId** | Pointer to **string** | Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (&#x60;mongod&#x60; or &#x60;mongos&#x60;). The port must be the IANA port on which the MongoDB process listens for requests. | [optional] [readonly] 
 **Start** | Pointer to **time.Time** | Date and time that specifies when to start retrieving measurements. If you set **start**, you must set **end**. You can&#39;t set this parameter and **period** in the same request. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
@@ -186,20 +186,20 @@ HasLinks returns a boolean if a field has been set.
 
 ### GetMeasurements
 
-`func (o *MeasurementsGeneralViewAtlas) GetMeasurements() []MeasurementViewAtlas`
+`func (o *MeasurementsGeneralViewAtlas) GetMeasurements() []MetricsMeasurementAtlas`
 
 GetMeasurements returns the Measurements field if non-nil, zero value otherwise.
 
 ### GetMeasurementsOk
 
-`func (o *MeasurementsGeneralViewAtlas) GetMeasurementsOk() (*[]MeasurementViewAtlas, bool)`
+`func (o *MeasurementsGeneralViewAtlas) GetMeasurementsOk() (*[]MetricsMeasurementAtlas, bool)`
 
 GetMeasurementsOk returns a tuple with the Measurements field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMeasurements
 
-`func (o *MeasurementsGeneralViewAtlas) SetMeasurements(v []MeasurementViewAtlas)`
+`func (o *MeasurementsGeneralViewAtlas) SetMeasurements(v []MetricsMeasurementAtlas)`
 
 SetMeasurements sets Measurements field to given value.
 

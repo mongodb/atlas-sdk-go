@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ## CreateBackupRestoreJob
 
-> DiskBackupRestoreJob CreateBackupRestoreJob(ctx, groupId, clusterName, diskBackupRestoreJob DiskBackupRestoreJob).Execute()
+> DiskBackupSnapshotRestoreJob CreateBackupRestoreJob(ctx, groupId, clusterName, diskBackupSnapshotRestoreJob DiskBackupSnapshotRestoreJob).Execute()
 
 Restore One Snapshot of One Cluster
 
@@ -226,15 +226,15 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    diskBackupRestoreJob := *openapiclient.NewDiskBackupRestoreJob("DeliveryType_example", "TargetClusterName_example", "32b6e34b3d91647abb20e7b8") // DiskBackupRestoreJob | 
+    diskBackupSnapshotRestoreJob := *openapiclient.NewDiskBackupSnapshotRestoreJob("DeliveryType_example", "TargetClusterName_example", "32b6e34b3d91647abb20e7b8") // DiskBackupSnapshotRestoreJob | 
 
-    resp, r, err := sdk.CloudBackupsApi.CreateBackupRestoreJob(context.Background(), groupId, clusterName, &diskBackupRestoreJob).Execute()
+    resp, r, err := sdk.CloudBackupsApi.CreateBackupRestoreJob(context.Background(), groupId, clusterName, &diskBackupSnapshotRestoreJob).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.CreateBackupRestoreJob``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `CreateBackupRestoreJob`: DiskBackupRestoreJob
+    // response from `CreateBackupRestoreJob`: DiskBackupSnapshotRestoreJob
     fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.CreateBackupRestoreJob`: %v\n", resp)
 }
 ```
@@ -257,11 +257,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **diskBackupRestoreJob** | [**DiskBackupRestoreJob**](DiskBackupRestoreJob.md) | Restores one snapshot of one cluster from the specified project. | 
+ **diskBackupSnapshotRestoreJob** | [**DiskBackupSnapshotRestoreJob**](DiskBackupSnapshotRestoreJob.md) | Restores one snapshot of one cluster from the specified project. | 
 
 ### Return type
 
-[**DiskBackupRestoreJob**](DiskBackupRestoreJob.md)
+[**DiskBackupSnapshotRestoreJob**](DiskBackupSnapshotRestoreJob.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -825,7 +825,7 @@ Name | Type | Description  | Notes
 
 ## GetBackupRestoreJob
 
-> DiskBackupRestoreJob GetBackupRestoreJob(ctx, groupId, clusterName, restoreJobId).Execute()
+> DiskBackupSnapshotRestoreJob GetBackupRestoreJob(ctx, groupId, clusterName, restoreJobId).Execute()
 
 Return One Restore Job of One Cluster
 
@@ -859,7 +859,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetBackupRestoreJob`: DiskBackupRestoreJob
+    // response from `GetBackupRestoreJob`: DiskBackupSnapshotRestoreJob
     fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.GetBackupRestoreJob`: %v\n", resp)
 }
 ```
@@ -887,7 +887,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DiskBackupRestoreJob**](DiskBackupRestoreJob.md)
+[**DiskBackupSnapshotRestoreJob**](DiskBackupSnapshotRestoreJob.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -2261,7 +2261,7 @@ Name | Type | Description  | Notes
 
 ## UpdateSnapshotRetention
 
-> DiskBackupReplicaSet UpdateSnapshotRetention(ctx, groupId, clusterName, snapshotId, snapshotRetention SnapshotRetention).Execute()
+> DiskBackupReplicaSet UpdateSnapshotRetention(ctx, groupId, clusterName, snapshotId, backupSnapshotRetention BackupSnapshotRetention).Execute()
 
 Change Expiration Date for One Cloud Backup
 
@@ -2293,9 +2293,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
     snapshotId := "snapshotId_example" // string | 
-    snapshotRetention := *openapiclient.NewSnapshotRetention("RetentionUnit_example", int(5)) // SnapshotRetention | 
+    backupSnapshotRetention := *openapiclient.NewBackupSnapshotRetention("RetentionUnit_example", int(5)) // BackupSnapshotRetention | 
 
-    resp, r, err := sdk.CloudBackupsApi.UpdateSnapshotRetention(context.Background(), groupId, clusterName, snapshotId, &snapshotRetention).Execute()
+    resp, r, err := sdk.CloudBackupsApi.UpdateSnapshotRetention(context.Background(), groupId, clusterName, snapshotId, &backupSnapshotRetention).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.UpdateSnapshotRetention``: %v\n", err)
         apiError := admin.AsError(err)
@@ -2326,7 +2326,7 @@ Name | Type | Description  | Notes
 
 
 
- **snapshotRetention** | [**SnapshotRetention**](SnapshotRetention.md) | Changes the expiration date for one cloud backup snapshot for one cluster in the specified project. | 
+ **backupSnapshotRetention** | [**BackupSnapshotRetention**](BackupSnapshotRetention.md) | Changes the expiration date for one cloud backup snapshot for one cluster in the specified project. | 
 
 ### Return type
 
