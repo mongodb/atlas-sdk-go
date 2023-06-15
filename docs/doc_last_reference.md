@@ -5,7 +5,7 @@
 All URIs are relative to *https://cloud.mongodb.com*
 
 Class        | Method        | Description   | Stability level   
------------- | ------------- | ------------- | ------------- | -------------
+------------ | ------------- | ------------- | ------------- 
 *AWSClustersDNSApi* | [GetAWSCustomDNS](./docs/AWSClustersDNSApi.md#getawscustomdns) |  Return One Custom DNS Configuration for Atlas Clusters on AWS | Experimental
 *AWSClustersDNSApi* | [ToggleAWSCustomDNS](./docs/AWSClustersDNSApi.md#toggleawscustomdns) |  Toggle State of One Custom DNS Configuration for Atlas Clusters on AWS | Experimental
 *AccessTrackingApi* | [ListAccessLogsByClusterName](./docs/AccessTrackingApi.md#listaccesslogsbyclustername) |  Return Database Access History for One Cluster using Its Cluster Name | Stable
