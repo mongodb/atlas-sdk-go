@@ -102,8 +102,9 @@ module.exports = function runTransformations(openapi) {
 
 // Schema contains both read and write only.
 function workaroundReadOnly(openapi) {
-  delete openapi.components?.schemas?.StreamsTenant?.properties?.connections
-    ?.readOnly;
+  const tenantObj = openapi.components.schemas.StreamsTenant;
+  delete tenantObj?.properties?.connections?.readOnly;
+  delete tenantObj?.properties?.connections?.writeOnly;
 }
 
 function workaroundNestedTransformations(openapi) {
