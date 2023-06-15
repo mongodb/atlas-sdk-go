@@ -750,6 +750,16 @@ func (e GenericOpenAPIError) Model() Error {
 	return e.model
 }
 
+// Sets model instance: Should be only used for testing
+func (e GenericOpenAPIError) SetModel(errorModel Error) {
+	e.model = errorModel
+}
+
+// Sets error string: Should be only used for testing
+func (e GenericOpenAPIError) SetError(errorString string) {
+	e.error = errorString
+}
+
 // format error message using title and detail when model implements Error
 func formatErrorMessage(status, path, method string, v Error) string {
 	return fmt.Sprintf("%v %v: HTTP %d (Error code: %q) Detail: %v Reason: %v. Params: %v",
