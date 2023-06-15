@@ -14,7 +14,7 @@ type PaginatedContainerPeer struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	Links []Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud providers when completing this request.
-	Results []ContainerPeer `json:"results,omitempty"`
+	Results []NetworkContainerPeer `json:"results,omitempty"`
 	// Number of documents returned in this response if **includeCount** query param is true.
 	TotalCount *int `json:"totalCount,omitempty"`
 }
@@ -69,9 +69,9 @@ func (o *PaginatedContainerPeer) SetLinks(v []Link) {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *PaginatedContainerPeer) GetResults() []ContainerPeer {
+func (o *PaginatedContainerPeer) GetResults() []NetworkContainerPeer {
 	if o == nil || IsNil(o.Results) {
-		var ret []ContainerPeer
+		var ret []NetworkContainerPeer
 		return ret
 	}
 	return o.Results
@@ -79,7 +79,7 @@ func (o *PaginatedContainerPeer) GetResults() []ContainerPeer {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedContainerPeer) GetResultsOk() ([]ContainerPeer, bool) {
+func (o *PaginatedContainerPeer) GetResultsOk() ([]NetworkContainerPeer, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -95,8 +95,8 @@ func (o *PaginatedContainerPeer) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []ContainerPeer and assigns it to the Results field.
-func (o *PaginatedContainerPeer) SetResults(v []ContainerPeer) {
+// SetResults gets a reference to the given []NetworkContainerPeer and assigns it to the Results field.
+func (o *PaginatedContainerPeer) SetResults(v []NetworkContainerPeer) {
 	o.Results = v
 }
 

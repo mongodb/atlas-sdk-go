@@ -74,7 +74,7 @@ type CloudBackupsApi interface {
 		@param clusterName Human-readable label that identifies the cluster.
 		@return CreateBackupRestoreJobApiRequest
 	*/
-	CreateBackupRestoreJob(ctx context.Context, groupId string, clusterName string, diskBackupRestoreJob *DiskBackupRestoreJob) CreateBackupRestoreJobApiRequest
+	CreateBackupRestoreJob(ctx context.Context, groupId string, clusterName string, diskBackupSnapshotRestoreJob *DiskBackupSnapshotRestoreJob) CreateBackupRestoreJobApiRequest
 	/*
 		CreateBackupRestoreJob Restore One Snapshot of One Cluster
 
@@ -86,7 +86,7 @@ type CloudBackupsApi interface {
 	CreateBackupRestoreJobWithParams(ctx context.Context, args *CreateBackupRestoreJobApiParams) CreateBackupRestoreJobApiRequest
 
 	// Interface only available internally
-	createBackupRestoreJobExecute(r CreateBackupRestoreJobApiRequest) (*DiskBackupRestoreJob, *http.Response, error)
+	createBackupRestoreJobExecute(r CreateBackupRestoreJobApiRequest) (*DiskBackupSnapshotRestoreJob, *http.Response, error)
 
 	/*
 		CreateExportBucket Grant Access to AWS S3 Bucket for Cloud Backup Snapshot Exports
@@ -281,7 +281,7 @@ type CloudBackupsApi interface {
 	GetBackupRestoreJobWithParams(ctx context.Context, args *GetBackupRestoreJobApiParams) GetBackupRestoreJobApiRequest
 
 	// Interface only available internally
-	getBackupRestoreJobExecute(r GetBackupRestoreJobApiRequest) (*DiskBackupRestoreJob, *http.Response, error)
+	getBackupRestoreJobExecute(r GetBackupRestoreJobApiRequest) (*DiskBackupSnapshotRestoreJob, *http.Response, error)
 
 	/*
 		GetBackupSchedule Return One Cloud Backup Schedule
@@ -705,7 +705,7 @@ type CloudBackupsApi interface {
 		@param snapshotId Unique 24-hexadecimal digit string that identifies the desired snapshot.
 		@return UpdateSnapshotRetentionApiRequest
 	*/
-	UpdateSnapshotRetention(ctx context.Context, groupId string, clusterName string, snapshotId string, snapshotRetention *SnapshotRetention) UpdateSnapshotRetentionApiRequest
+	UpdateSnapshotRetention(ctx context.Context, groupId string, clusterName string, snapshotId string, backupSnapshotRetention *BackupSnapshotRetention) UpdateSnapshotRetentionApiRequest
 	/*
 		UpdateSnapshotRetention Change Expiration Date for One Cloud Backup
 
@@ -1029,30 +1029,30 @@ func (a *CloudBackupsApiService) createBackupExportJobExecute(r CreateBackupExpo
 }
 
 type CreateBackupRestoreJobApiRequest struct {
-	ctx                  context.Context
-	ApiService           CloudBackupsApi
-	groupId              string
-	clusterName          string
-	diskBackupRestoreJob *DiskBackupRestoreJob
+	ctx                          context.Context
+	ApiService                   CloudBackupsApi
+	groupId                      string
+	clusterName                  string
+	diskBackupSnapshotRestoreJob *DiskBackupSnapshotRestoreJob
 }
 
 type CreateBackupRestoreJobApiParams struct {
-	GroupId              string
-	ClusterName          string
-	DiskBackupRestoreJob *DiskBackupRestoreJob
+	GroupId                      string
+	ClusterName                  string
+	DiskBackupSnapshotRestoreJob *DiskBackupSnapshotRestoreJob
 }
 
 func (a *CloudBackupsApiService) CreateBackupRestoreJobWithParams(ctx context.Context, args *CreateBackupRestoreJobApiParams) CreateBackupRestoreJobApiRequest {
 	return CreateBackupRestoreJobApiRequest{
-		ApiService:           a,
-		ctx:                  ctx,
-		groupId:              args.GroupId,
-		clusterName:          args.ClusterName,
-		diskBackupRestoreJob: args.DiskBackupRestoreJob,
+		ApiService:                   a,
+		ctx:                          ctx,
+		groupId:                      args.GroupId,
+		clusterName:                  args.ClusterName,
+		diskBackupSnapshotRestoreJob: args.DiskBackupSnapshotRestoreJob,
 	}
 }
 
-func (r CreateBackupRestoreJobApiRequest) Execute() (*DiskBackupRestoreJob, *http.Response, error) {
+func (r CreateBackupRestoreJobApiRequest) Execute() (*DiskBackupSnapshotRestoreJob, *http.Response, error) {
 	return r.ApiService.createBackupRestoreJobExecute(r)
 }
 
@@ -1068,25 +1068,25 @@ Restores one snapshot of one cluster from the specified project. Atlas takes on-
 	@param clusterName Human-readable label that identifies the cluster.
 	@return CreateBackupRestoreJobApiRequest
 */
-func (a *CloudBackupsApiService) CreateBackupRestoreJob(ctx context.Context, groupId string, clusterName string, diskBackupRestoreJob *DiskBackupRestoreJob) CreateBackupRestoreJobApiRequest {
+func (a *CloudBackupsApiService) CreateBackupRestoreJob(ctx context.Context, groupId string, clusterName string, diskBackupSnapshotRestoreJob *DiskBackupSnapshotRestoreJob) CreateBackupRestoreJobApiRequest {
 	return CreateBackupRestoreJobApiRequest{
-		ApiService:           a,
-		ctx:                  ctx,
-		groupId:              groupId,
-		clusterName:          clusterName,
-		diskBackupRestoreJob: diskBackupRestoreJob,
+		ApiService:                   a,
+		ctx:                          ctx,
+		groupId:                      groupId,
+		clusterName:                  clusterName,
+		diskBackupSnapshotRestoreJob: diskBackupSnapshotRestoreJob,
 	}
 }
 
 // Execute executes the request
 //
-//	@return DiskBackupRestoreJob
-func (a *CloudBackupsApiService) createBackupRestoreJobExecute(r CreateBackupRestoreJobApiRequest) (*DiskBackupRestoreJob, *http.Response, error) {
+//	@return DiskBackupSnapshotRestoreJob
+func (a *CloudBackupsApiService) createBackupRestoreJobExecute(r CreateBackupRestoreJobApiRequest) (*DiskBackupSnapshotRestoreJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *DiskBackupRestoreJob
+		localVarReturnValue *DiskBackupSnapshotRestoreJob
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.CreateBackupRestoreJob")
@@ -1113,8 +1113,8 @@ func (a *CloudBackupsApiService) createBackupRestoreJobExecute(r CreateBackupRes
 	if strlen(r.clusterName) > 64 {
 		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
 	}
-	if r.diskBackupRestoreJob == nil {
-		return localVarReturnValue, nil, reportError("diskBackupRestoreJob is required and must be specified")
+	if r.diskBackupSnapshotRestoreJob == nil {
+		return localVarReturnValue, nil, reportError("diskBackupSnapshotRestoreJob is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1135,7 +1135,7 @@ func (a *CloudBackupsApiService) createBackupRestoreJobExecute(r CreateBackupRes
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.diskBackupRestoreJob
+	localVarPostBody = r.diskBackupSnapshotRestoreJob
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2235,7 +2235,7 @@ func (a *CloudBackupsApiService) GetBackupRestoreJobWithParams(ctx context.Conte
 	}
 }
 
-func (r GetBackupRestoreJobApiRequest) Execute() (*DiskBackupRestoreJob, *http.Response, error) {
+func (r GetBackupRestoreJobApiRequest) Execute() (*DiskBackupSnapshotRestoreJob, *http.Response, error) {
 	return r.ApiService.getBackupRestoreJobExecute(r)
 }
 
@@ -2262,13 +2262,13 @@ func (a *CloudBackupsApiService) GetBackupRestoreJob(ctx context.Context, groupI
 
 // Execute executes the request
 //
-//	@return DiskBackupRestoreJob
-func (a *CloudBackupsApiService) getBackupRestoreJobExecute(r GetBackupRestoreJobApiRequest) (*DiskBackupRestoreJob, *http.Response, error) {
+//	@return DiskBackupSnapshotRestoreJob
+func (a *CloudBackupsApiService) getBackupRestoreJobExecute(r GetBackupRestoreJobApiRequest) (*DiskBackupSnapshotRestoreJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *DiskBackupRestoreJob
+		localVarReturnValue *DiskBackupSnapshotRestoreJob
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.GetBackupRestoreJob")
@@ -5109,29 +5109,29 @@ func (a *CloudBackupsApiService) updateDataProtectionSettingsExecute(r UpdateDat
 }
 
 type UpdateSnapshotRetentionApiRequest struct {
-	ctx               context.Context
-	ApiService        CloudBackupsApi
-	groupId           string
-	clusterName       string
-	snapshotId        string
-	snapshotRetention *SnapshotRetention
+	ctx                     context.Context
+	ApiService              CloudBackupsApi
+	groupId                 string
+	clusterName             string
+	snapshotId              string
+	backupSnapshotRetention *BackupSnapshotRetention
 }
 
 type UpdateSnapshotRetentionApiParams struct {
-	GroupId           string
-	ClusterName       string
-	SnapshotId        string
-	SnapshotRetention *SnapshotRetention
+	GroupId                 string
+	ClusterName             string
+	SnapshotId              string
+	BackupSnapshotRetention *BackupSnapshotRetention
 }
 
 func (a *CloudBackupsApiService) UpdateSnapshotRetentionWithParams(ctx context.Context, args *UpdateSnapshotRetentionApiParams) UpdateSnapshotRetentionApiRequest {
 	return UpdateSnapshotRetentionApiRequest{
-		ApiService:        a,
-		ctx:               ctx,
-		groupId:           args.GroupId,
-		clusterName:       args.ClusterName,
-		snapshotId:        args.SnapshotId,
-		snapshotRetention: args.SnapshotRetention,
+		ApiService:              a,
+		ctx:                     ctx,
+		groupId:                 args.GroupId,
+		clusterName:             args.ClusterName,
+		snapshotId:              args.SnapshotId,
+		backupSnapshotRetention: args.BackupSnapshotRetention,
 	}
 }
 
@@ -5150,14 +5150,14 @@ UpdateSnapshotRetention Change Expiration Date for One Cloud Backup
 	@param snapshotId Unique 24-hexadecimal digit string that identifies the desired snapshot.
 	@return UpdateSnapshotRetentionApiRequest
 */
-func (a *CloudBackupsApiService) UpdateSnapshotRetention(ctx context.Context, groupId string, clusterName string, snapshotId string, snapshotRetention *SnapshotRetention) UpdateSnapshotRetentionApiRequest {
+func (a *CloudBackupsApiService) UpdateSnapshotRetention(ctx context.Context, groupId string, clusterName string, snapshotId string, backupSnapshotRetention *BackupSnapshotRetention) UpdateSnapshotRetentionApiRequest {
 	return UpdateSnapshotRetentionApiRequest{
-		ApiService:        a,
-		ctx:               ctx,
-		groupId:           groupId,
-		clusterName:       clusterName,
-		snapshotId:        snapshotId,
-		snapshotRetention: snapshotRetention,
+		ApiService:              a,
+		ctx:                     ctx,
+		groupId:                 groupId,
+		clusterName:             clusterName,
+		snapshotId:              snapshotId,
+		backupSnapshotRetention: backupSnapshotRetention,
 	}
 }
 
@@ -5203,8 +5203,8 @@ func (a *CloudBackupsApiService) updateSnapshotRetentionExecute(r UpdateSnapshot
 	if strlen(r.snapshotId) > 24 {
 		return localVarReturnValue, nil, reportError("snapshotId must have less than 24 elements")
 	}
-	if r.snapshotRetention == nil {
-		return localVarReturnValue, nil, reportError("snapshotRetention is required and must be specified")
+	if r.backupSnapshotRetention == nil {
+		return localVarReturnValue, nil, reportError("backupSnapshotRetention is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -5225,7 +5225,7 @@ func (a *CloudBackupsApiService) updateSnapshotRetentionExecute(r UpdateSnapshot
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.snapshotRetention
+	localVarPostBody = r.backupSnapshotRetention
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

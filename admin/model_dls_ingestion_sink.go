@@ -16,7 +16,7 @@ type DLSIngestionSink struct {
 	// Target cloud provider region for this Data Lake Pipeline.
 	MetadataRegion *string `json:"metadataRegion,omitempty"`
 	// Ordered fields used to physically organize data in the destination.
-	PartitionFields []PartitionField `json:"partitionFields,omitempty"`
+	PartitionFields []PipelinesPartitionField `json:"partitionFields,omitempty"`
 	// Type of ingestion destination of this Data Lake Pipeline.
 	Type *string `json:"type,omitempty"`
 }
@@ -103,9 +103,9 @@ func (o *DLSIngestionSink) SetMetadataRegion(v string) {
 }
 
 // GetPartitionFields returns the PartitionFields field value if set, zero value otherwise.
-func (o *DLSIngestionSink) GetPartitionFields() []PartitionField {
+func (o *DLSIngestionSink) GetPartitionFields() []PipelinesPartitionField {
 	if o == nil || IsNil(o.PartitionFields) {
-		var ret []PartitionField
+		var ret []PipelinesPartitionField
 		return ret
 	}
 	return o.PartitionFields
@@ -113,7 +113,7 @@ func (o *DLSIngestionSink) GetPartitionFields() []PartitionField {
 
 // GetPartitionFieldsOk returns a tuple with the PartitionFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DLSIngestionSink) GetPartitionFieldsOk() ([]PartitionField, bool) {
+func (o *DLSIngestionSink) GetPartitionFieldsOk() ([]PipelinesPartitionField, bool) {
 	if o == nil || IsNil(o.PartitionFields) {
 		return nil, false
 	}
@@ -129,8 +129,8 @@ func (o *DLSIngestionSink) HasPartitionFields() bool {
 	return false
 }
 
-// SetPartitionFields gets a reference to the given []PartitionField and assigns it to the PartitionFields field.
-func (o *DLSIngestionSink) SetPartitionFields(v []PartitionField) {
+// SetPartitionFields gets a reference to the given []PipelinesPartitionField and assigns it to the PartitionFields field.
+func (o *DLSIngestionSink) SetPartitionFields(v []PipelinesPartitionField) {
 	o.PartitionFields = v
 }
 

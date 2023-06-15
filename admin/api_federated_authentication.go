@@ -23,7 +23,7 @@ type FederatedAuthenticationApi interface {
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@return CreateRoleMappingApiRequest
 	*/
-	CreateRoleMapping(ctx context.Context, federationSettingsId string, orgId string, roleMapping *RoleMapping) CreateRoleMappingApiRequest
+	CreateRoleMapping(ctx context.Context, federationSettingsId string, orgId string, authFederationRoleMapping *AuthFederationRoleMapping) CreateRoleMappingApiRequest
 	/*
 		CreateRoleMapping Add One Role Mapping to One Organization
 
@@ -35,7 +35,7 @@ type FederatedAuthenticationApi interface {
 	CreateRoleMappingWithParams(ctx context.Context, args *CreateRoleMappingApiParams) CreateRoleMappingApiRequest
 
 	// Interface only available internally
-	createRoleMappingExecute(r CreateRoleMappingApiRequest) (*RoleMapping, *http.Response, error)
+	createRoleMappingExecute(r CreateRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error)
 
 	/*
 		DeleteFederationApp Delete the federation settings instance.
@@ -154,7 +154,7 @@ type FederatedAuthenticationApi interface {
 	GetIdentityProviderWithParams(ctx context.Context, args *GetIdentityProviderApiParams) GetIdentityProviderApiRequest
 
 	// Interface only available internally
-	getIdentityProviderExecute(r GetIdentityProviderApiRequest) (*IdentityProvider, *http.Response, error)
+	getIdentityProviderExecute(r GetIdentityProviderApiRequest) (*FederationIdentityProvider, *http.Response, error)
 
 	/*
 		GetIdentityProviderMetadata Return the metadata of one identity provider in the specified federation.
@@ -203,7 +203,7 @@ type FederatedAuthenticationApi interface {
 	GetRoleMappingWithParams(ctx context.Context, args *GetRoleMappingApiParams) GetRoleMappingApiRequest
 
 	// Interface only available internally
-	getRoleMappingExecute(r GetRoleMappingApiRequest) (*RoleMapping, *http.Response, error)
+	getRoleMappingExecute(r GetRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error)
 
 	/*
 		ListConnectedOrgConfigs Return All Connected Org Configs from the Federation
@@ -249,7 +249,7 @@ type FederatedAuthenticationApi interface {
 	ListIdentityProvidersWithParams(ctx context.Context, args *ListIdentityProvidersApiParams) ListIdentityProvidersApiRequest
 
 	// Interface only available internally
-	listIdentityProvidersExecute(r ListIdentityProvidersApiRequest) ([]IdentityProvider, *http.Response, error)
+	listIdentityProvidersExecute(r ListIdentityProvidersApiRequest) ([]FederationIdentityProvider, *http.Response, error)
 
 	/*
 		ListRoleMappings Return All Role Mappings from One Organization
@@ -273,7 +273,7 @@ type FederatedAuthenticationApi interface {
 	ListRoleMappingsWithParams(ctx context.Context, args *ListRoleMappingsApiParams) ListRoleMappingsApiRequest
 
 	// Interface only available internally
-	listRoleMappingsExecute(r ListRoleMappingsApiRequest) ([]RoleMapping, *http.Response, error)
+	listRoleMappingsExecute(r ListRoleMappingsApiRequest) ([]AuthFederationRoleMapping, *http.Response, error)
 
 	/*
 		RemoveConnectedOrgConfig Remove One Org Config Connected to One Federation
@@ -351,7 +351,7 @@ type FederatedAuthenticationApi interface {
 	UpdateIdentityProviderWithParams(ctx context.Context, args *UpdateIdentityProviderApiParams) UpdateIdentityProviderApiRequest
 
 	// Interface only available internally
-	updateIdentityProviderExecute(r UpdateIdentityProviderApiRequest) (*IdentityProvider, *http.Response, error)
+	updateIdentityProviderExecute(r UpdateIdentityProviderApiRequest) (*FederationIdentityProvider, *http.Response, error)
 
 	/*
 		UpdateRoleMapping Update One Role Mapping in One Organization
@@ -364,7 +364,7 @@ type FederatedAuthenticationApi interface {
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@return UpdateRoleMappingApiRequest
 	*/
-	UpdateRoleMapping(ctx context.Context, federationSettingsId string, id string, orgId string, roleMapping *RoleMapping) UpdateRoleMappingApiRequest
+	UpdateRoleMapping(ctx context.Context, federationSettingsId string, id string, orgId string, authFederationRoleMapping *AuthFederationRoleMapping) UpdateRoleMappingApiRequest
 	/*
 		UpdateRoleMapping Update One Role Mapping in One Organization
 
@@ -376,37 +376,37 @@ type FederatedAuthenticationApi interface {
 	UpdateRoleMappingWithParams(ctx context.Context, args *UpdateRoleMappingApiParams) UpdateRoleMappingApiRequest
 
 	// Interface only available internally
-	updateRoleMappingExecute(r UpdateRoleMappingApiRequest) (*RoleMapping, *http.Response, error)
+	updateRoleMappingExecute(r UpdateRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error)
 }
 
 // FederatedAuthenticationApiService FederatedAuthenticationApi service
 type FederatedAuthenticationApiService service
 
 type CreateRoleMappingApiRequest struct {
-	ctx                  context.Context
-	ApiService           FederatedAuthenticationApi
-	federationSettingsId string
-	orgId                string
-	roleMapping          *RoleMapping
+	ctx                       context.Context
+	ApiService                FederatedAuthenticationApi
+	federationSettingsId      string
+	orgId                     string
+	authFederationRoleMapping *AuthFederationRoleMapping
 }
 
 type CreateRoleMappingApiParams struct {
-	FederationSettingsId string
-	OrgId                string
-	RoleMapping          *RoleMapping
+	FederationSettingsId      string
+	OrgId                     string
+	AuthFederationRoleMapping *AuthFederationRoleMapping
 }
 
 func (a *FederatedAuthenticationApiService) CreateRoleMappingWithParams(ctx context.Context, args *CreateRoleMappingApiParams) CreateRoleMappingApiRequest {
 	return CreateRoleMappingApiRequest{
-		ApiService:           a,
-		ctx:                  ctx,
-		federationSettingsId: args.FederationSettingsId,
-		orgId:                args.OrgId,
-		roleMapping:          args.RoleMapping,
+		ApiService:                a,
+		ctx:                       ctx,
+		federationSettingsId:      args.FederationSettingsId,
+		orgId:                     args.OrgId,
+		authFederationRoleMapping: args.AuthFederationRoleMapping,
 	}
 }
 
-func (r CreateRoleMappingApiRequest) Execute() (*RoleMapping, *http.Response, error) {
+func (r CreateRoleMappingApiRequest) Execute() (*AuthFederationRoleMapping, *http.Response, error) {
 	return r.ApiService.createRoleMappingExecute(r)
 }
 
@@ -420,25 +420,25 @@ CreateRoleMapping Add One Role Mapping to One Organization
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return CreateRoleMappingApiRequest
 */
-func (a *FederatedAuthenticationApiService) CreateRoleMapping(ctx context.Context, federationSettingsId string, orgId string, roleMapping *RoleMapping) CreateRoleMappingApiRequest {
+func (a *FederatedAuthenticationApiService) CreateRoleMapping(ctx context.Context, federationSettingsId string, orgId string, authFederationRoleMapping *AuthFederationRoleMapping) CreateRoleMappingApiRequest {
 	return CreateRoleMappingApiRequest{
-		ApiService:           a,
-		ctx:                  ctx,
-		federationSettingsId: federationSettingsId,
-		orgId:                orgId,
-		roleMapping:          roleMapping,
+		ApiService:                a,
+		ctx:                       ctx,
+		federationSettingsId:      federationSettingsId,
+		orgId:                     orgId,
+		authFederationRoleMapping: authFederationRoleMapping,
 	}
 }
 
 // Execute executes the request
 //
-//	@return RoleMapping
-func (a *FederatedAuthenticationApiService) createRoleMappingExecute(r CreateRoleMappingApiRequest) (*RoleMapping, *http.Response, error) {
+//	@return AuthFederationRoleMapping
+func (a *FederatedAuthenticationApiService) createRoleMappingExecute(r CreateRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *RoleMapping
+		localVarReturnValue *AuthFederationRoleMapping
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.CreateRoleMapping")
@@ -465,8 +465,8 @@ func (a *FederatedAuthenticationApiService) createRoleMappingExecute(r CreateRol
 	if strlen(r.orgId) > 24 {
 		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
 	}
-	if r.roleMapping == nil {
-		return localVarReturnValue, nil, reportError("roleMapping is required and must be specified")
+	if r.authFederationRoleMapping == nil {
+		return localVarReturnValue, nil, reportError("authFederationRoleMapping is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -487,7 +487,7 @@ func (a *FederatedAuthenticationApiService) createRoleMappingExecute(r CreateRol
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.roleMapping
+	localVarPostBody = r.authFederationRoleMapping
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1086,7 +1086,7 @@ func (a *FederatedAuthenticationApiService) GetIdentityProviderWithParams(ctx co
 	}
 }
 
-func (r GetIdentityProviderApiRequest) Execute() (*IdentityProvider, *http.Response, error) {
+func (r GetIdentityProviderApiRequest) Execute() (*FederationIdentityProvider, *http.Response, error) {
 	return r.ApiService.getIdentityProviderExecute(r)
 }
 
@@ -1111,13 +1111,13 @@ func (a *FederatedAuthenticationApiService) GetIdentityProvider(ctx context.Cont
 
 // Execute executes the request
 //
-//	@return IdentityProvider
-func (a *FederatedAuthenticationApiService) getIdentityProviderExecute(r GetIdentityProviderApiRequest) (*IdentityProvider, *http.Response, error) {
+//	@return FederationIdentityProvider
+func (a *FederatedAuthenticationApiService) getIdentityProviderExecute(r GetIdentityProviderApiRequest) (*FederationIdentityProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *IdentityProvider
+		localVarReturnValue *FederationIdentityProvider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.GetIdentityProvider")
@@ -1373,7 +1373,7 @@ func (a *FederatedAuthenticationApiService) GetRoleMappingWithParams(ctx context
 	}
 }
 
-func (r GetRoleMappingApiRequest) Execute() (*RoleMapping, *http.Response, error) {
+func (r GetRoleMappingApiRequest) Execute() (*AuthFederationRoleMapping, *http.Response, error) {
 	return r.ApiService.getRoleMappingExecute(r)
 }
 
@@ -1400,13 +1400,13 @@ func (a *FederatedAuthenticationApiService) GetRoleMapping(ctx context.Context, 
 
 // Execute executes the request
 //
-//	@return RoleMapping
-func (a *FederatedAuthenticationApiService) getRoleMappingExecute(r GetRoleMappingApiRequest) (*RoleMapping, *http.Response, error) {
+//	@return AuthFederationRoleMapping
+func (a *FederatedAuthenticationApiService) getRoleMappingExecute(r GetRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *RoleMapping
+		localVarReturnValue *AuthFederationRoleMapping
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.GetRoleMapping")
@@ -1651,7 +1651,7 @@ func (a *FederatedAuthenticationApiService) ListIdentityProvidersWithParams(ctx 
 	}
 }
 
-func (r ListIdentityProvidersApiRequest) Execute() ([]IdentityProvider, *http.Response, error) {
+func (r ListIdentityProvidersApiRequest) Execute() ([]FederationIdentityProvider, *http.Response, error) {
 	return r.ApiService.listIdentityProvidersExecute(r)
 }
 
@@ -1674,13 +1674,13 @@ func (a *FederatedAuthenticationApiService) ListIdentityProviders(ctx context.Co
 
 // Execute executes the request
 //
-//	@return []IdentityProvider
-func (a *FederatedAuthenticationApiService) listIdentityProvidersExecute(r ListIdentityProvidersApiRequest) ([]IdentityProvider, *http.Response, error) {
+//	@return []FederationIdentityProvider
+func (a *FederatedAuthenticationApiService) listIdentityProvidersExecute(r ListIdentityProvidersApiRequest) ([]FederationIdentityProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []IdentityProvider
+		localVarReturnValue []FederationIdentityProvider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.ListIdentityProviders")
@@ -1784,7 +1784,7 @@ func (a *FederatedAuthenticationApiService) ListRoleMappingsWithParams(ctx conte
 	}
 }
 
-func (r ListRoleMappingsApiRequest) Execute() ([]RoleMapping, *http.Response, error) {
+func (r ListRoleMappingsApiRequest) Execute() ([]AuthFederationRoleMapping, *http.Response, error) {
 	return r.ApiService.listRoleMappingsExecute(r)
 }
 
@@ -1809,13 +1809,13 @@ func (a *FederatedAuthenticationApiService) ListRoleMappings(ctx context.Context
 
 // Execute executes the request
 //
-//	@return []RoleMapping
-func (a *FederatedAuthenticationApiService) listRoleMappingsExecute(r ListRoleMappingsApiRequest) ([]RoleMapping, *http.Response, error) {
+//	@return []AuthFederationRoleMapping
+func (a *FederatedAuthenticationApiService) listRoleMappingsExecute(r ListRoleMappingsApiRequest) ([]AuthFederationRoleMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []RoleMapping
+		localVarReturnValue []AuthFederationRoleMapping
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.ListRoleMappings")
@@ -2228,7 +2228,7 @@ func (a *FederatedAuthenticationApiService) UpdateIdentityProviderWithParams(ctx
 	}
 }
 
-func (r UpdateIdentityProviderApiRequest) Execute() (*IdentityProvider, *http.Response, error) {
+func (r UpdateIdentityProviderApiRequest) Execute() (*FederationIdentityProvider, *http.Response, error) {
 	return r.ApiService.updateIdentityProviderExecute(r)
 }
 
@@ -2254,13 +2254,13 @@ func (a *FederatedAuthenticationApiService) UpdateIdentityProvider(ctx context.C
 
 // Execute executes the request
 //
-//	@return IdentityProvider
-func (a *FederatedAuthenticationApiService) updateIdentityProviderExecute(r UpdateIdentityProviderApiRequest) (*IdentityProvider, *http.Response, error) {
+//	@return FederationIdentityProvider
+func (a *FederatedAuthenticationApiService) updateIdentityProviderExecute(r UpdateIdentityProviderApiRequest) (*FederationIdentityProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *IdentityProvider
+		localVarReturnValue *FederationIdentityProvider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.UpdateIdentityProvider")
@@ -2356,33 +2356,33 @@ func (a *FederatedAuthenticationApiService) updateIdentityProviderExecute(r Upda
 }
 
 type UpdateRoleMappingApiRequest struct {
-	ctx                  context.Context
-	ApiService           FederatedAuthenticationApi
-	federationSettingsId string
-	id                   string
-	orgId                string
-	roleMapping          *RoleMapping
+	ctx                       context.Context
+	ApiService                FederatedAuthenticationApi
+	federationSettingsId      string
+	id                        string
+	orgId                     string
+	authFederationRoleMapping *AuthFederationRoleMapping
 }
 
 type UpdateRoleMappingApiParams struct {
-	FederationSettingsId string
-	Id                   string
-	OrgId                string
-	RoleMapping          *RoleMapping
+	FederationSettingsId      string
+	Id                        string
+	OrgId                     string
+	AuthFederationRoleMapping *AuthFederationRoleMapping
 }
 
 func (a *FederatedAuthenticationApiService) UpdateRoleMappingWithParams(ctx context.Context, args *UpdateRoleMappingApiParams) UpdateRoleMappingApiRequest {
 	return UpdateRoleMappingApiRequest{
-		ApiService:           a,
-		ctx:                  ctx,
-		federationSettingsId: args.FederationSettingsId,
-		id:                   args.Id,
-		orgId:                args.OrgId,
-		roleMapping:          args.RoleMapping,
+		ApiService:                a,
+		ctx:                       ctx,
+		federationSettingsId:      args.FederationSettingsId,
+		id:                        args.Id,
+		orgId:                     args.OrgId,
+		authFederationRoleMapping: args.AuthFederationRoleMapping,
 	}
 }
 
-func (r UpdateRoleMappingApiRequest) Execute() (*RoleMapping, *http.Response, error) {
+func (r UpdateRoleMappingApiRequest) Execute() (*AuthFederationRoleMapping, *http.Response, error) {
 	return r.ApiService.updateRoleMappingExecute(r)
 }
 
@@ -2397,26 +2397,26 @@ UpdateRoleMapping Update One Role Mapping in One Organization
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return UpdateRoleMappingApiRequest
 */
-func (a *FederatedAuthenticationApiService) UpdateRoleMapping(ctx context.Context, federationSettingsId string, id string, orgId string, roleMapping *RoleMapping) UpdateRoleMappingApiRequest {
+func (a *FederatedAuthenticationApiService) UpdateRoleMapping(ctx context.Context, federationSettingsId string, id string, orgId string, authFederationRoleMapping *AuthFederationRoleMapping) UpdateRoleMappingApiRequest {
 	return UpdateRoleMappingApiRequest{
-		ApiService:           a,
-		ctx:                  ctx,
-		federationSettingsId: federationSettingsId,
-		id:                   id,
-		orgId:                orgId,
-		roleMapping:          roleMapping,
+		ApiService:                a,
+		ctx:                       ctx,
+		federationSettingsId:      federationSettingsId,
+		id:                        id,
+		orgId:                     orgId,
+		authFederationRoleMapping: authFederationRoleMapping,
 	}
 }
 
 // Execute executes the request
 //
-//	@return RoleMapping
-func (a *FederatedAuthenticationApiService) updateRoleMappingExecute(r UpdateRoleMappingApiRequest) (*RoleMapping, *http.Response, error) {
+//	@return AuthFederationRoleMapping
+func (a *FederatedAuthenticationApiService) updateRoleMappingExecute(r UpdateRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *RoleMapping
+		localVarReturnValue *AuthFederationRoleMapping
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.UpdateRoleMapping")
@@ -2450,8 +2450,8 @@ func (a *FederatedAuthenticationApiService) updateRoleMappingExecute(r UpdateRol
 	if strlen(r.orgId) > 24 {
 		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
 	}
-	if r.roleMapping == nil {
-		return localVarReturnValue, nil, reportError("roleMapping is required and must be specified")
+	if r.authFederationRoleMapping == nil {
+		return localVarReturnValue, nil, reportError("authFederationRoleMapping is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2472,7 +2472,7 @@ func (a *FederatedAuthenticationApiService) updateRoleMappingExecute(r UpdateRol
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.roleMapping
+	localVarPostBody = r.authFederationRoleMapping
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

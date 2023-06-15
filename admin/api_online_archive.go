@@ -24,7 +24,7 @@ type OnlineArchiveApi interface {
 		@param clusterName Human-readable label that identifies the cluster that contains the collection for which you want to create one online archive.
 		@return CreateOnlineArchiveApiRequest
 	*/
-	CreateOnlineArchive(ctx context.Context, groupId string, clusterName string, onlineArchive *OnlineArchive) CreateOnlineArchiveApiRequest
+	CreateOnlineArchive(ctx context.Context, groupId string, clusterName string, backupOnlineArchive *BackupOnlineArchive) CreateOnlineArchiveApiRequest
 	/*
 		CreateOnlineArchive Create One Online Archive
 
@@ -36,7 +36,7 @@ type OnlineArchiveApi interface {
 	CreateOnlineArchiveWithParams(ctx context.Context, args *CreateOnlineArchiveApiParams) CreateOnlineArchiveApiRequest
 
 	// Interface only available internally
-	createOnlineArchiveExecute(r CreateOnlineArchiveApiRequest) (*OnlineArchive, *http.Response, error)
+	createOnlineArchiveExecute(r CreateOnlineArchiveApiRequest) (*BackupOnlineArchive, *http.Response, error)
 
 	/*
 		DeleteOnlineArchive Remove One Online Archive
@@ -110,7 +110,7 @@ type OnlineArchiveApi interface {
 	GetOnlineArchiveWithParams(ctx context.Context, args *GetOnlineArchiveApiParams) GetOnlineArchiveApiRequest
 
 	// Interface only available internally
-	getOnlineArchiveExecute(r GetOnlineArchiveApiRequest) (*OnlineArchive, *http.Response, error)
+	getOnlineArchiveExecute(r GetOnlineArchiveApiRequest) (*BackupOnlineArchive, *http.Response, error)
 
 	/*
 		ListOnlineArchives Return All Online Archives for One Cluster
@@ -147,7 +147,7 @@ type OnlineArchiveApi interface {
 		@param clusterName Human-readable label that identifies the cluster that contains the specified collection from which Application created the online archive.
 		@return UpdateOnlineArchiveApiRequest
 	*/
-	UpdateOnlineArchive(ctx context.Context, groupId string, archiveId string, clusterName string, onlineArchive *OnlineArchive) UpdateOnlineArchiveApiRequest
+	UpdateOnlineArchive(ctx context.Context, groupId string, archiveId string, clusterName string, backupOnlineArchive *BackupOnlineArchive) UpdateOnlineArchiveApiRequest
 	/*
 		UpdateOnlineArchive Update One Online Archive
 
@@ -159,37 +159,37 @@ type OnlineArchiveApi interface {
 	UpdateOnlineArchiveWithParams(ctx context.Context, args *UpdateOnlineArchiveApiParams) UpdateOnlineArchiveApiRequest
 
 	// Interface only available internally
-	updateOnlineArchiveExecute(r UpdateOnlineArchiveApiRequest) (*OnlineArchive, *http.Response, error)
+	updateOnlineArchiveExecute(r UpdateOnlineArchiveApiRequest) (*BackupOnlineArchive, *http.Response, error)
 }
 
 // OnlineArchiveApiService OnlineArchiveApi service
 type OnlineArchiveApiService service
 
 type CreateOnlineArchiveApiRequest struct {
-	ctx           context.Context
-	ApiService    OnlineArchiveApi
-	groupId       string
-	clusterName   string
-	onlineArchive *OnlineArchive
+	ctx                 context.Context
+	ApiService          OnlineArchiveApi
+	groupId             string
+	clusterName         string
+	backupOnlineArchive *BackupOnlineArchive
 }
 
 type CreateOnlineArchiveApiParams struct {
-	GroupId       string
-	ClusterName   string
-	OnlineArchive *OnlineArchive
+	GroupId             string
+	ClusterName         string
+	BackupOnlineArchive *BackupOnlineArchive
 }
 
 func (a *OnlineArchiveApiService) CreateOnlineArchiveWithParams(ctx context.Context, args *CreateOnlineArchiveApiParams) CreateOnlineArchiveApiRequest {
 	return CreateOnlineArchiveApiRequest{
-		ApiService:    a,
-		ctx:           ctx,
-		groupId:       args.GroupId,
-		clusterName:   args.ClusterName,
-		onlineArchive: args.OnlineArchive,
+		ApiService:          a,
+		ctx:                 ctx,
+		groupId:             args.GroupId,
+		clusterName:         args.ClusterName,
+		backupOnlineArchive: args.BackupOnlineArchive,
 	}
 }
 
-func (r CreateOnlineArchiveApiRequest) Execute() (*OnlineArchive, *http.Response, error) {
+func (r CreateOnlineArchiveApiRequest) Execute() (*BackupOnlineArchive, *http.Response, error) {
 	return r.ApiService.createOnlineArchiveExecute(r)
 }
 
@@ -203,25 +203,25 @@ Creates one online archive. This archive stores data from one cluster within one
 	@param clusterName Human-readable label that identifies the cluster that contains the collection for which you want to create one online archive.
 	@return CreateOnlineArchiveApiRequest
 */
-func (a *OnlineArchiveApiService) CreateOnlineArchive(ctx context.Context, groupId string, clusterName string, onlineArchive *OnlineArchive) CreateOnlineArchiveApiRequest {
+func (a *OnlineArchiveApiService) CreateOnlineArchive(ctx context.Context, groupId string, clusterName string, backupOnlineArchive *BackupOnlineArchive) CreateOnlineArchiveApiRequest {
 	return CreateOnlineArchiveApiRequest{
-		ApiService:    a,
-		ctx:           ctx,
-		groupId:       groupId,
-		clusterName:   clusterName,
-		onlineArchive: onlineArchive,
+		ApiService:          a,
+		ctx:                 ctx,
+		groupId:             groupId,
+		clusterName:         clusterName,
+		backupOnlineArchive: backupOnlineArchive,
 	}
 }
 
 // Execute executes the request
 //
-//	@return OnlineArchive
-func (a *OnlineArchiveApiService) createOnlineArchiveExecute(r CreateOnlineArchiveApiRequest) (*OnlineArchive, *http.Response, error) {
+//	@return BackupOnlineArchive
+func (a *OnlineArchiveApiService) createOnlineArchiveExecute(r CreateOnlineArchiveApiRequest) (*BackupOnlineArchive, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *OnlineArchive
+		localVarReturnValue *BackupOnlineArchive
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OnlineArchiveApiService.CreateOnlineArchive")
@@ -248,8 +248,8 @@ func (a *OnlineArchiveApiService) createOnlineArchiveExecute(r CreateOnlineArchi
 	if strlen(r.clusterName) > 64 {
 		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
 	}
-	if r.onlineArchive == nil {
-		return localVarReturnValue, nil, reportError("onlineArchive is required and must be specified")
+	if r.backupOnlineArchive == nil {
+		return localVarReturnValue, nil, reportError("backupOnlineArchive is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -270,7 +270,7 @@ func (a *OnlineArchiveApiService) createOnlineArchiveExecute(r CreateOnlineArchi
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.onlineArchive
+	localVarPostBody = r.backupOnlineArchive
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -676,7 +676,7 @@ func (a *OnlineArchiveApiService) GetOnlineArchiveWithParams(ctx context.Context
 	}
 }
 
-func (r GetOnlineArchiveApiRequest) Execute() (*OnlineArchive, *http.Response, error) {
+func (r GetOnlineArchiveApiRequest) Execute() (*BackupOnlineArchive, *http.Response, error) {
 	return r.ApiService.getOnlineArchiveExecute(r)
 }
 
@@ -703,13 +703,13 @@ func (a *OnlineArchiveApiService) GetOnlineArchive(ctx context.Context, groupId 
 
 // Execute executes the request
 //
-//	@return OnlineArchive
-func (a *OnlineArchiveApiService) getOnlineArchiveExecute(r GetOnlineArchiveApiRequest) (*OnlineArchive, *http.Response, error) {
+//	@return BackupOnlineArchive
+func (a *OnlineArchiveApiService) getOnlineArchiveExecute(r GetOnlineArchiveApiRequest) (*BackupOnlineArchive, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *OnlineArchive
+		localVarReturnValue *BackupOnlineArchive
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OnlineArchiveApiService.GetOnlineArchive")
@@ -997,33 +997,33 @@ func (a *OnlineArchiveApiService) listOnlineArchivesExecute(r ListOnlineArchives
 }
 
 type UpdateOnlineArchiveApiRequest struct {
-	ctx           context.Context
-	ApiService    OnlineArchiveApi
-	groupId       string
-	archiveId     string
-	clusterName   string
-	onlineArchive *OnlineArchive
+	ctx                 context.Context
+	ApiService          OnlineArchiveApi
+	groupId             string
+	archiveId           string
+	clusterName         string
+	backupOnlineArchive *BackupOnlineArchive
 }
 
 type UpdateOnlineArchiveApiParams struct {
-	GroupId       string
-	ArchiveId     string
-	ClusterName   string
-	OnlineArchive *OnlineArchive
+	GroupId             string
+	ArchiveId           string
+	ClusterName         string
+	BackupOnlineArchive *BackupOnlineArchive
 }
 
 func (a *OnlineArchiveApiService) UpdateOnlineArchiveWithParams(ctx context.Context, args *UpdateOnlineArchiveApiParams) UpdateOnlineArchiveApiRequest {
 	return UpdateOnlineArchiveApiRequest{
-		ApiService:    a,
-		ctx:           ctx,
-		groupId:       args.GroupId,
-		archiveId:     args.ArchiveId,
-		clusterName:   args.ClusterName,
-		onlineArchive: args.OnlineArchive,
+		ApiService:          a,
+		ctx:                 ctx,
+		groupId:             args.GroupId,
+		archiveId:           args.ArchiveId,
+		clusterName:         args.ClusterName,
+		backupOnlineArchive: args.BackupOnlineArchive,
 	}
 }
 
-func (r UpdateOnlineArchiveApiRequest) Execute() (*OnlineArchive, *http.Response, error) {
+func (r UpdateOnlineArchiveApiRequest) Execute() (*BackupOnlineArchive, *http.Response, error) {
 	return r.ApiService.updateOnlineArchiveExecute(r)
 }
 
@@ -1038,26 +1038,26 @@ Updates, pauses, or resumes one online archive. This archive stores data from on
 	@param clusterName Human-readable label that identifies the cluster that contains the specified collection from which Application created the online archive.
 	@return UpdateOnlineArchiveApiRequest
 */
-func (a *OnlineArchiveApiService) UpdateOnlineArchive(ctx context.Context, groupId string, archiveId string, clusterName string, onlineArchive *OnlineArchive) UpdateOnlineArchiveApiRequest {
+func (a *OnlineArchiveApiService) UpdateOnlineArchive(ctx context.Context, groupId string, archiveId string, clusterName string, backupOnlineArchive *BackupOnlineArchive) UpdateOnlineArchiveApiRequest {
 	return UpdateOnlineArchiveApiRequest{
-		ApiService:    a,
-		ctx:           ctx,
-		groupId:       groupId,
-		archiveId:     archiveId,
-		clusterName:   clusterName,
-		onlineArchive: onlineArchive,
+		ApiService:          a,
+		ctx:                 ctx,
+		groupId:             groupId,
+		archiveId:           archiveId,
+		clusterName:         clusterName,
+		backupOnlineArchive: backupOnlineArchive,
 	}
 }
 
 // Execute executes the request
 //
-//	@return OnlineArchive
-func (a *OnlineArchiveApiService) updateOnlineArchiveExecute(r UpdateOnlineArchiveApiRequest) (*OnlineArchive, *http.Response, error) {
+//	@return BackupOnlineArchive
+func (a *OnlineArchiveApiService) updateOnlineArchiveExecute(r UpdateOnlineArchiveApiRequest) (*BackupOnlineArchive, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *OnlineArchive
+		localVarReturnValue *BackupOnlineArchive
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OnlineArchiveApiService.UpdateOnlineArchive")
@@ -1091,8 +1091,8 @@ func (a *OnlineArchiveApiService) updateOnlineArchiveExecute(r UpdateOnlineArchi
 	if strlen(r.clusterName) > 64 {
 		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
 	}
-	if r.onlineArchive == nil {
-		return localVarReturnValue, nil, reportError("onlineArchive is required and must be specified")
+	if r.backupOnlineArchive == nil {
+		return localVarReturnValue, nil, reportError("backupOnlineArchive is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1113,7 +1113,7 @@ func (a *OnlineArchiveApiService) updateOnlineArchiveExecute(r UpdateOnlineArchi
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.onlineArchive
+	localVarPostBody = r.backupOnlineArchive
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

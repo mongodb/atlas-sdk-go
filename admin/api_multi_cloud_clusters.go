@@ -22,7 +22,7 @@ type MultiCloudClustersApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return CreateClusterApiRequest
 	*/
-	CreateCluster(ctx context.Context, groupId string, clusterDescriptionV15 *ClusterDescriptionV15) CreateClusterApiRequest
+	CreateCluster(ctx context.Context, groupId string, advancedClusterDescription *AdvancedClusterDescription) CreateClusterApiRequest
 	/*
 		CreateCluster Create One Multi-Cloud Cluster from One Project
 
@@ -34,7 +34,7 @@ type MultiCloudClustersApi interface {
 	CreateClusterWithParams(ctx context.Context, args *CreateClusterApiParams) CreateClusterApiRequest
 
 	// Interface only available internally
-	createClusterExecute(r CreateClusterApiRequest) (*ClusterDescriptionV15, *http.Response, error)
+	createClusterExecute(r CreateClusterApiRequest) (*AdvancedClusterDescription, *http.Response, error)
 
 	/*
 		DeleteCluster Remove One Multi-Cloud Cluster from One Project
@@ -82,7 +82,7 @@ type MultiCloudClustersApi interface {
 	GetClusterWithParams(ctx context.Context, args *GetClusterApiParams) GetClusterApiRequest
 
 	// Interface only available internally
-	getClusterExecute(r GetClusterApiRequest) (*ClusterDescriptionV15, *http.Response, error)
+	getClusterExecute(r GetClusterApiRequest) (*AdvancedClusterDescription, *http.Response, error)
 
 	/*
 		ListClusters Return All Clusters in One Project
@@ -105,7 +105,7 @@ type MultiCloudClustersApi interface {
 	ListClustersWithParams(ctx context.Context, args *ListClustersApiParams) ListClustersApiRequest
 
 	// Interface only available internally
-	listClustersExecute(r ListClustersApiRequest) (*PaginatedClusterDescriptionV15, *http.Response, error)
+	listClustersExecute(r ListClustersApiRequest) (*PaginatedAdvancedClusterDescription, *http.Response, error)
 
 	/*
 		TestFailover Test Failover for One Multi-Cloud Cluster
@@ -141,7 +141,7 @@ type MultiCloudClustersApi interface {
 		@param clusterName Human-readable label that identifies the cluster.
 		@return UpdateClusterApiRequest
 	*/
-	UpdateCluster(ctx context.Context, groupId string, clusterName string, clusterDescriptionV15 *ClusterDescriptionV15) UpdateClusterApiRequest
+	UpdateCluster(ctx context.Context, groupId string, clusterName string, advancedClusterDescription *AdvancedClusterDescription) UpdateClusterApiRequest
 	/*
 		UpdateCluster Modify One Multi-Cloud Cluster from One Project
 
@@ -153,34 +153,34 @@ type MultiCloudClustersApi interface {
 	UpdateClusterWithParams(ctx context.Context, args *UpdateClusterApiParams) UpdateClusterApiRequest
 
 	// Interface only available internally
-	updateClusterExecute(r UpdateClusterApiRequest) (*ClusterDescriptionV15, *http.Response, error)
+	updateClusterExecute(r UpdateClusterApiRequest) (*AdvancedClusterDescription, *http.Response, error)
 }
 
 // MultiCloudClustersApiService MultiCloudClustersApi service
 type MultiCloudClustersApiService service
 
 type CreateClusterApiRequest struct {
-	ctx                   context.Context
-	ApiService            MultiCloudClustersApi
-	groupId               string
-	clusterDescriptionV15 *ClusterDescriptionV15
+	ctx                        context.Context
+	ApiService                 MultiCloudClustersApi
+	groupId                    string
+	advancedClusterDescription *AdvancedClusterDescription
 }
 
 type CreateClusterApiParams struct {
-	GroupId               string
-	ClusterDescriptionV15 *ClusterDescriptionV15
+	GroupId                    string
+	AdvancedClusterDescription *AdvancedClusterDescription
 }
 
 func (a *MultiCloudClustersApiService) CreateClusterWithParams(ctx context.Context, args *CreateClusterApiParams) CreateClusterApiRequest {
 	return CreateClusterApiRequest{
-		ApiService:            a,
-		ctx:                   ctx,
-		groupId:               args.GroupId,
-		clusterDescriptionV15: args.ClusterDescriptionV15,
+		ApiService:                 a,
+		ctx:                        ctx,
+		groupId:                    args.GroupId,
+		advancedClusterDescription: args.AdvancedClusterDescription,
 	}
 }
 
-func (r CreateClusterApiRequest) Execute() (*ClusterDescriptionV15, *http.Response, error) {
+func (r CreateClusterApiRequest) Execute() (*AdvancedClusterDescription, *http.Response, error) {
 	return r.ApiService.createClusterExecute(r)
 }
 
@@ -193,24 +193,24 @@ Creates one cluster in the specified project. Clusters contain a group of hosts 
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateClusterApiRequest
 */
-func (a *MultiCloudClustersApiService) CreateCluster(ctx context.Context, groupId string, clusterDescriptionV15 *ClusterDescriptionV15) CreateClusterApiRequest {
+func (a *MultiCloudClustersApiService) CreateCluster(ctx context.Context, groupId string, advancedClusterDescription *AdvancedClusterDescription) CreateClusterApiRequest {
 	return CreateClusterApiRequest{
-		ApiService:            a,
-		ctx:                   ctx,
-		groupId:               groupId,
-		clusterDescriptionV15: clusterDescriptionV15,
+		ApiService:                 a,
+		ctx:                        ctx,
+		groupId:                    groupId,
+		advancedClusterDescription: advancedClusterDescription,
 	}
 }
 
 // Execute executes the request
 //
-//	@return ClusterDescriptionV15
-func (a *MultiCloudClustersApiService) createClusterExecute(r CreateClusterApiRequest) (*ClusterDescriptionV15, *http.Response, error) {
+//	@return AdvancedClusterDescription
+func (a *MultiCloudClustersApiService) createClusterExecute(r CreateClusterApiRequest) (*AdvancedClusterDescription, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ClusterDescriptionV15
+		localVarReturnValue *AdvancedClusterDescription
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MultiCloudClustersApiService.CreateCluster")
@@ -230,8 +230,8 @@ func (a *MultiCloudClustersApiService) createClusterExecute(r CreateClusterApiRe
 	if strlen(r.groupId) > 24 {
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
-	if r.clusterDescriptionV15 == nil {
-		return localVarReturnValue, nil, reportError("clusterDescriptionV15 is required and must be specified")
+	if r.advancedClusterDescription == nil {
+		return localVarReturnValue, nil, reportError("advancedClusterDescription is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -252,7 +252,7 @@ func (a *MultiCloudClustersApiService) createClusterExecute(r CreateClusterApiRe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.clusterDescriptionV15
+	localVarPostBody = r.advancedClusterDescription
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -461,7 +461,7 @@ func (a *MultiCloudClustersApiService) GetClusterWithParams(ctx context.Context,
 	}
 }
 
-func (r GetClusterApiRequest) Execute() (*ClusterDescriptionV15, *http.Response, error) {
+func (r GetClusterApiRequest) Execute() (*AdvancedClusterDescription, *http.Response, error) {
 	return r.ApiService.getClusterExecute(r)
 }
 
@@ -486,13 +486,13 @@ func (a *MultiCloudClustersApiService) GetCluster(ctx context.Context, groupId s
 
 // Execute executes the request
 //
-//	@return ClusterDescriptionV15
-func (a *MultiCloudClustersApiService) getClusterExecute(r GetClusterApiRequest) (*ClusterDescriptionV15, *http.Response, error) {
+//	@return AdvancedClusterDescription
+func (a *MultiCloudClustersApiService) getClusterExecute(r GetClusterApiRequest) (*AdvancedClusterDescription, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ClusterDescriptionV15
+		localVarReturnValue *AdvancedClusterDescription
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MultiCloudClustersApiService.GetCluster")
@@ -627,7 +627,7 @@ func (r ListClustersApiRequest) PageNum(pageNum int) ListClustersApiRequest {
 	return r
 }
 
-func (r ListClustersApiRequest) Execute() (*PaginatedClusterDescriptionV15, *http.Response, error) {
+func (r ListClustersApiRequest) Execute() (*PaginatedAdvancedClusterDescription, *http.Response, error) {
 	return r.ApiService.listClustersExecute(r)
 }
 
@@ -650,13 +650,13 @@ func (a *MultiCloudClustersApiService) ListClusters(ctx context.Context, groupId
 
 // Execute executes the request
 //
-//	@return PaginatedClusterDescriptionV15
-func (a *MultiCloudClustersApiService) listClustersExecute(r ListClustersApiRequest) (*PaginatedClusterDescriptionV15, *http.Response, error) {
+//	@return PaginatedAdvancedClusterDescription
+func (a *MultiCloudClustersApiService) listClustersExecute(r ListClustersApiRequest) (*PaginatedAdvancedClusterDescription, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *PaginatedClusterDescriptionV15
+		localVarReturnValue *PaginatedAdvancedClusterDescription
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MultiCloudClustersApiService.ListClusters")
@@ -891,30 +891,30 @@ func (a *MultiCloudClustersApiService) testFailoverExecute(r TestFailoverApiRequ
 }
 
 type UpdateClusterApiRequest struct {
-	ctx                   context.Context
-	ApiService            MultiCloudClustersApi
-	groupId               string
-	clusterName           string
-	clusterDescriptionV15 *ClusterDescriptionV15
+	ctx                        context.Context
+	ApiService                 MultiCloudClustersApi
+	groupId                    string
+	clusterName                string
+	advancedClusterDescription *AdvancedClusterDescription
 }
 
 type UpdateClusterApiParams struct {
-	GroupId               string
-	ClusterName           string
-	ClusterDescriptionV15 *ClusterDescriptionV15
+	GroupId                    string
+	ClusterName                string
+	AdvancedClusterDescription *AdvancedClusterDescription
 }
 
 func (a *MultiCloudClustersApiService) UpdateClusterWithParams(ctx context.Context, args *UpdateClusterApiParams) UpdateClusterApiRequest {
 	return UpdateClusterApiRequest{
-		ApiService:            a,
-		ctx:                   ctx,
-		groupId:               args.GroupId,
-		clusterName:           args.ClusterName,
-		clusterDescriptionV15: args.ClusterDescriptionV15,
+		ApiService:                 a,
+		ctx:                        ctx,
+		groupId:                    args.GroupId,
+		clusterName:                args.ClusterName,
+		advancedClusterDescription: args.AdvancedClusterDescription,
 	}
 }
 
-func (r UpdateClusterApiRequest) Execute() (*ClusterDescriptionV15, *http.Response, error) {
+func (r UpdateClusterApiRequest) Execute() (*AdvancedClusterDescription, *http.Response, error) {
 	return r.ApiService.updateClusterExecute(r)
 }
 
@@ -928,25 +928,25 @@ Updates the details for one cluster in the specified project. Clusters contain a
 	@param clusterName Human-readable label that identifies the cluster.
 	@return UpdateClusterApiRequest
 */
-func (a *MultiCloudClustersApiService) UpdateCluster(ctx context.Context, groupId string, clusterName string, clusterDescriptionV15 *ClusterDescriptionV15) UpdateClusterApiRequest {
+func (a *MultiCloudClustersApiService) UpdateCluster(ctx context.Context, groupId string, clusterName string, advancedClusterDescription *AdvancedClusterDescription) UpdateClusterApiRequest {
 	return UpdateClusterApiRequest{
-		ApiService:            a,
-		ctx:                   ctx,
-		groupId:               groupId,
-		clusterName:           clusterName,
-		clusterDescriptionV15: clusterDescriptionV15,
+		ApiService:                 a,
+		ctx:                        ctx,
+		groupId:                    groupId,
+		clusterName:                clusterName,
+		advancedClusterDescription: advancedClusterDescription,
 	}
 }
 
 // Execute executes the request
 //
-//	@return ClusterDescriptionV15
-func (a *MultiCloudClustersApiService) updateClusterExecute(r UpdateClusterApiRequest) (*ClusterDescriptionV15, *http.Response, error) {
+//	@return AdvancedClusterDescription
+func (a *MultiCloudClustersApiService) updateClusterExecute(r UpdateClusterApiRequest) (*AdvancedClusterDescription, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ClusterDescriptionV15
+		localVarReturnValue *AdvancedClusterDescription
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MultiCloudClustersApiService.UpdateCluster")
@@ -973,8 +973,8 @@ func (a *MultiCloudClustersApiService) updateClusterExecute(r UpdateClusterApiRe
 	if strlen(r.clusterName) > 64 {
 		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
 	}
-	if r.clusterDescriptionV15 == nil {
-		return localVarReturnValue, nil, reportError("clusterDescriptionV15 is required and must be specified")
+	if r.advancedClusterDescription == nil {
+		return localVarReturnValue, nil, reportError("advancedClusterDescription is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -995,7 +995,7 @@ func (a *MultiCloudClustersApiService) updateClusterExecute(r UpdateClusterApiRe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.clusterDescriptionV15
+	localVarPostBody = r.advancedClusterDescription
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

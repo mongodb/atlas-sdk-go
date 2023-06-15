@@ -25,7 +25,7 @@ type MeasurementsIndexes struct {
 	// List that contains the Atlas Search index identifiers.
 	IndexIds []string `json:"indexIds,omitempty"`
 	// List that contains the Atlas Search index stats measurements.
-	IndexStatsMeasurements []Measurement `json:"indexStatsMeasurements,omitempty"`
+	IndexStatsMeasurements []MetricsMeasurement `json:"indexStatsMeasurements,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	Links []Link `json:"links,omitempty"`
 	// Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
@@ -244,9 +244,9 @@ func (o *MeasurementsIndexes) SetIndexIds(v []string) {
 }
 
 // GetIndexStatsMeasurements returns the IndexStatsMeasurements field value if set, zero value otherwise.
-func (o *MeasurementsIndexes) GetIndexStatsMeasurements() []Measurement {
+func (o *MeasurementsIndexes) GetIndexStatsMeasurements() []MetricsMeasurement {
 	if o == nil || IsNil(o.IndexStatsMeasurements) {
-		var ret []Measurement
+		var ret []MetricsMeasurement
 		return ret
 	}
 	return o.IndexStatsMeasurements
@@ -254,7 +254,7 @@ func (o *MeasurementsIndexes) GetIndexStatsMeasurements() []Measurement {
 
 // GetIndexStatsMeasurementsOk returns a tuple with the IndexStatsMeasurements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MeasurementsIndexes) GetIndexStatsMeasurementsOk() ([]Measurement, bool) {
+func (o *MeasurementsIndexes) GetIndexStatsMeasurementsOk() ([]MetricsMeasurement, bool) {
 	if o == nil || IsNil(o.IndexStatsMeasurements) {
 		return nil, false
 	}
@@ -270,8 +270,8 @@ func (o *MeasurementsIndexes) HasIndexStatsMeasurements() bool {
 	return false
 }
 
-// SetIndexStatsMeasurements gets a reference to the given []Measurement and assigns it to the IndexStatsMeasurements field.
-func (o *MeasurementsIndexes) SetIndexStatsMeasurements(v []Measurement) {
+// SetIndexStatsMeasurements gets a reference to the given []MetricsMeasurement and assigns it to the IndexStatsMeasurements field.
+func (o *MeasurementsIndexes) SetIndexStatsMeasurements(v []MetricsMeasurement) {
 	o.IndexStatsMeasurements = v
 }
 

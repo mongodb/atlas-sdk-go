@@ -188,7 +188,7 @@ type ClustersApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return UpgradeSharedClusterApiRequest
 	*/
-	UpgradeSharedCluster(ctx context.Context, groupId string, legacyClusterDescription *LegacyClusterDescription) UpgradeSharedClusterApiRequest
+	UpgradeSharedCluster(ctx context.Context, groupId string, legacyAtlasCluster *LegacyAtlasCluster) UpgradeSharedClusterApiRequest
 	/*
 		UpgradeSharedCluster Upgrade One Shared-tier Cluster
 
@@ -200,7 +200,7 @@ type ClustersApi interface {
 	UpgradeSharedClusterWithParams(ctx context.Context, args *UpgradeSharedClusterApiParams) UpgradeSharedClusterApiRequest
 
 	// Interface only available internally
-	upgradeSharedClusterExecute(r UpgradeSharedClusterApiRequest) (*LegacyClusterDescription, *http.Response, error)
+	upgradeSharedClusterExecute(r UpgradeSharedClusterApiRequest) (*LegacyAtlasCluster, *http.Response, error)
 
 	/*
 		UpgradeSharedClusterToServerless Upgrades One Shared-Tier Cluster to the Serverless Instance
@@ -1321,27 +1321,27 @@ func (a *ClustersApiService) updateClusterAdvancedConfigurationExecute(r UpdateC
 }
 
 type UpgradeSharedClusterApiRequest struct {
-	ctx                      context.Context
-	ApiService               ClustersApi
-	groupId                  string
-	legacyClusterDescription *LegacyClusterDescription
+	ctx                context.Context
+	ApiService         ClustersApi
+	groupId            string
+	legacyAtlasCluster *LegacyAtlasCluster
 }
 
 type UpgradeSharedClusterApiParams struct {
-	GroupId                  string
-	LegacyClusterDescription *LegacyClusterDescription
+	GroupId            string
+	LegacyAtlasCluster *LegacyAtlasCluster
 }
 
 func (a *ClustersApiService) UpgradeSharedClusterWithParams(ctx context.Context, args *UpgradeSharedClusterApiParams) UpgradeSharedClusterApiRequest {
 	return UpgradeSharedClusterApiRequest{
-		ApiService:               a,
-		ctx:                      ctx,
-		groupId:                  args.GroupId,
-		legacyClusterDescription: args.LegacyClusterDescription,
+		ApiService:         a,
+		ctx:                ctx,
+		groupId:            args.GroupId,
+		legacyAtlasCluster: args.LegacyAtlasCluster,
 	}
 }
 
-func (r UpgradeSharedClusterApiRequest) Execute() (*LegacyClusterDescription, *http.Response, error) {
+func (r UpgradeSharedClusterApiRequest) Execute() (*LegacyAtlasCluster, *http.Response, error) {
 	return r.ApiService.upgradeSharedClusterExecute(r)
 }
 
@@ -1354,24 +1354,24 @@ UpgradeSharedCluster Upgrade One Shared-tier Cluster
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return UpgradeSharedClusterApiRequest
 */
-func (a *ClustersApiService) UpgradeSharedCluster(ctx context.Context, groupId string, legacyClusterDescription *LegacyClusterDescription) UpgradeSharedClusterApiRequest {
+func (a *ClustersApiService) UpgradeSharedCluster(ctx context.Context, groupId string, legacyAtlasCluster *LegacyAtlasCluster) UpgradeSharedClusterApiRequest {
 	return UpgradeSharedClusterApiRequest{
-		ApiService:               a,
-		ctx:                      ctx,
-		groupId:                  groupId,
-		legacyClusterDescription: legacyClusterDescription,
+		ApiService:         a,
+		ctx:                ctx,
+		groupId:            groupId,
+		legacyAtlasCluster: legacyAtlasCluster,
 	}
 }
 
 // Execute executes the request
 //
-//	@return LegacyClusterDescription
-func (a *ClustersApiService) upgradeSharedClusterExecute(r UpgradeSharedClusterApiRequest) (*LegacyClusterDescription, *http.Response, error) {
+//	@return LegacyAtlasCluster
+func (a *ClustersApiService) upgradeSharedClusterExecute(r UpgradeSharedClusterApiRequest) (*LegacyAtlasCluster, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *LegacyClusterDescription
+		localVarReturnValue *LegacyAtlasCluster
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.UpgradeSharedCluster")
@@ -1391,8 +1391,8 @@ func (a *ClustersApiService) upgradeSharedClusterExecute(r UpgradeSharedClusterA
 	if strlen(r.groupId) > 24 {
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
-	if r.legacyClusterDescription == nil {
-		return localVarReturnValue, nil, reportError("legacyClusterDescription is required and must be specified")
+	if r.legacyAtlasCluster == nil {
+		return localVarReturnValue, nil, reportError("legacyAtlasCluster is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1413,7 +1413,7 @@ func (a *ClustersApiService) upgradeSharedClusterExecute(r UpgradeSharedClusterA
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.legacyClusterDescription
+	localVarPostBody = r.legacyAtlasCluster
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

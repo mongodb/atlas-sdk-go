@@ -63,7 +63,7 @@ type MonitoringAndLogsApi interface {
 	GetDatabaseWithParams(ctx context.Context, args *GetDatabaseApiParams) GetDatabaseApiRequest
 
 	// Interface only available internally
-	getDatabaseExecute(r GetDatabaseApiRequest) (*Database, *http.Response, error)
+	getDatabaseExecute(r GetDatabaseApiRequest) (*MesurementsDatabase, *http.Response, error)
 
 	/*
 		GetDatabaseMeasurements Return Measurements of One Database for One MongoDB Process
@@ -303,7 +303,7 @@ type MonitoringAndLogsApi interface {
 	ListDiskMeasurementsWithParams(ctx context.Context, args *ListDiskMeasurementsApiParams) ListDiskMeasurementsApiRequest
 
 	// Interface only available internally
-	listDiskMeasurementsExecute(r ListDiskMeasurementsApiRequest) (*DiskPartition, *http.Response, error)
+	listDiskMeasurementsExecute(r ListDiskMeasurementsApiRequest) (*MeasurementDiskPartition, *http.Response, error)
 
 	/*
 		ListDiskPartitions Return Available Disks for One MongoDB Process
@@ -377,7 +377,7 @@ type MonitoringAndLogsApi interface {
 	ListMetricTypesWithParams(ctx context.Context, args *ListMetricTypesApiParams) ListMetricTypesApiRequest
 
 	// Interface only available internally
-	listMetricTypesExecute(r ListMetricTypesApiRequest) (*FTSMetrics, *http.Response, error)
+	listMetricTypesExecute(r ListMetricTypesApiRequest) (*CloudSearchMetrics, *http.Response, error)
 }
 
 // MonitoringAndLogsApiService MonitoringAndLogsApi service
@@ -543,7 +543,7 @@ func (a *MonitoringAndLogsApiService) GetDatabaseWithParams(ctx context.Context,
 	}
 }
 
-func (r GetDatabaseApiRequest) Execute() (*Database, *http.Response, error) {
+func (r GetDatabaseApiRequest) Execute() (*MesurementsDatabase, *http.Response, error) {
 	return r.ApiService.getDatabaseExecute(r)
 }
 
@@ -570,13 +570,13 @@ func (a *MonitoringAndLogsApiService) GetDatabase(ctx context.Context, groupId s
 
 // Execute executes the request
 //
-//	@return Database
-func (a *MonitoringAndLogsApiService) getDatabaseExecute(r GetDatabaseApiRequest) (*Database, *http.Response, error) {
+//	@return MesurementsDatabase
+func (a *MonitoringAndLogsApiService) getDatabaseExecute(r GetDatabaseApiRequest) (*MesurementsDatabase, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Database
+		localVarReturnValue *MesurementsDatabase
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.GetDatabase")
@@ -2270,7 +2270,7 @@ func (a *MonitoringAndLogsApiService) ListDiskMeasurementsWithParams(ctx context
 	}
 }
 
-func (r ListDiskMeasurementsApiRequest) Execute() (*DiskPartition, *http.Response, error) {
+func (r ListDiskMeasurementsApiRequest) Execute() (*MeasurementDiskPartition, *http.Response, error) {
 	return r.ApiService.listDiskMeasurementsExecute(r)
 }
 
@@ -2303,13 +2303,13 @@ func (a *MonitoringAndLogsApiService) ListDiskMeasurements(ctx context.Context, 
 
 // Execute executes the request
 //
-//	@return DiskPartition
-func (a *MonitoringAndLogsApiService) listDiskMeasurementsExecute(r ListDiskMeasurementsApiRequest) (*DiskPartition, *http.Response, error) {
+//	@return MeasurementDiskPartition
+func (a *MonitoringAndLogsApiService) listDiskMeasurementsExecute(r ListDiskMeasurementsApiRequest) (*MeasurementDiskPartition, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *DiskPartition
+		localVarReturnValue *MeasurementDiskPartition
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.ListDiskMeasurements")
@@ -2817,7 +2817,7 @@ func (a *MonitoringAndLogsApiService) ListMetricTypesWithParams(ctx context.Cont
 	}
 }
 
-func (r ListMetricTypesApiRequest) Execute() (*FTSMetrics, *http.Response, error) {
+func (r ListMetricTypesApiRequest) Execute() (*CloudSearchMetrics, *http.Response, error) {
 	return r.ApiService.listMetricTypesExecute(r)
 }
 
@@ -2842,13 +2842,13 @@ func (a *MonitoringAndLogsApiService) ListMetricTypes(ctx context.Context, proce
 
 // Execute executes the request
 //
-//	@return FTSMetrics
-func (a *MonitoringAndLogsApiService) listMetricTypesExecute(r ListMetricTypesApiRequest) (*FTSMetrics, *http.Response, error) {
+//	@return CloudSearchMetrics
+func (a *MonitoringAndLogsApiService) listMetricTypesExecute(r ListMetricTypesApiRequest) (*CloudSearchMetrics, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *FTSMetrics
+		localVarReturnValue *CloudSearchMetrics
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.ListMetricTypes")

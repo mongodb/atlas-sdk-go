@@ -221,7 +221,7 @@ type ProjectsApi interface {
 	GetProjectLimitWithParams(ctx context.Context, args *GetProjectLimitApiParams) GetProjectLimitApiRequest
 
 	// Interface only available internally
-	getProjectLimitExecute(r GetProjectLimitApiRequest) (*Limit, *http.Response, error)
+	getProjectLimitExecute(r GetProjectLimitApiRequest) (*DataFederationLimit, *http.Response, error)
 
 	/*
 		GetProjectSettings Return One Project Settings
@@ -290,7 +290,7 @@ type ProjectsApi interface {
 	ListProjectLimitsWithParams(ctx context.Context, args *ListProjectLimitsApiParams) ListProjectLimitsApiRequest
 
 	// Interface only available internally
-	listProjectLimitsExecute(r ListProjectLimitsApiRequest) ([]Limit, *http.Response, error)
+	listProjectLimitsExecute(r ListProjectLimitsApiRequest) ([]DataFederationLimit, *http.Response, error)
 
 	/*
 		ListProjectUsers Return All Users in One Project
@@ -373,7 +373,7 @@ type ProjectsApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return SetProjectLimitApiRequest
 	*/
-	SetProjectLimit(ctx context.Context, limitName string, groupId string, limit *Limit) SetProjectLimitApiRequest
+	SetProjectLimit(ctx context.Context, limitName string, groupId string, dataFederationLimit *DataFederationLimit) SetProjectLimitApiRequest
 	/*
 		SetProjectLimit Set One Project Limit
 
@@ -385,7 +385,7 @@ type ProjectsApi interface {
 	SetProjectLimitWithParams(ctx context.Context, args *SetProjectLimitApiParams) SetProjectLimitApiRequest
 
 	// Interface only available internally
-	setProjectLimitExecute(r SetProjectLimitApiRequest) (*Limit, *http.Response, error)
+	setProjectLimitExecute(r SetProjectLimitApiRequest) (*DataFederationLimit, *http.Response, error)
 
 	/*
 		UpdateProject Update One Project Name
@@ -1593,7 +1593,7 @@ func (a *ProjectsApiService) GetProjectLimitWithParams(ctx context.Context, args
 	}
 }
 
-func (r GetProjectLimitApiRequest) Execute() (*Limit, *http.Response, error) {
+func (r GetProjectLimitApiRequest) Execute() (*DataFederationLimit, *http.Response, error) {
 	return r.ApiService.getProjectLimitExecute(r)
 }
 
@@ -1618,13 +1618,13 @@ func (a *ProjectsApiService) GetProjectLimit(ctx context.Context, limitName stri
 
 // Execute executes the request
 //
-//	@return Limit
-func (a *ProjectsApiService) getProjectLimitExecute(r GetProjectLimitApiRequest) (*Limit, *http.Response, error) {
+//	@return DataFederationLimit
+func (a *ProjectsApiService) getProjectLimitExecute(r GetProjectLimitApiRequest) (*DataFederationLimit, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Limit
+		localVarReturnValue *DataFederationLimit
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.GetProjectLimit")
@@ -1998,7 +1998,7 @@ func (a *ProjectsApiService) ListProjectLimitsWithParams(ctx context.Context, ar
 	}
 }
 
-func (r ListProjectLimitsApiRequest) Execute() ([]Limit, *http.Response, error) {
+func (r ListProjectLimitsApiRequest) Execute() ([]DataFederationLimit, *http.Response, error) {
 	return r.ApiService.listProjectLimitsExecute(r)
 }
 
@@ -2021,13 +2021,13 @@ func (a *ProjectsApiService) ListProjectLimits(ctx context.Context, groupId stri
 
 // Execute executes the request
 //
-//	@return []Limit
-func (a *ProjectsApiService) listProjectLimitsExecute(r ListProjectLimitsApiRequest) ([]Limit, *http.Response, error) {
+//	@return []DataFederationLimit
+func (a *ProjectsApiService) listProjectLimitsExecute(r ListProjectLimitsApiRequest) ([]DataFederationLimit, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []Limit
+		localVarReturnValue []DataFederationLimit
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.ListProjectLimits")
@@ -2617,30 +2617,30 @@ func (a *ProjectsApiService) removeProjectUserExecute(r RemoveProjectUserApiRequ
 }
 
 type SetProjectLimitApiRequest struct {
-	ctx        context.Context
-	ApiService ProjectsApi
-	limitName  string
-	groupId    string
-	limit      *Limit
+	ctx                 context.Context
+	ApiService          ProjectsApi
+	limitName           string
+	groupId             string
+	dataFederationLimit *DataFederationLimit
 }
 
 type SetProjectLimitApiParams struct {
-	LimitName string
-	GroupId   string
-	Limit     *Limit
+	LimitName           string
+	GroupId             string
+	DataFederationLimit *DataFederationLimit
 }
 
 func (a *ProjectsApiService) SetProjectLimitWithParams(ctx context.Context, args *SetProjectLimitApiParams) SetProjectLimitApiRequest {
 	return SetProjectLimitApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		limitName:  args.LimitName,
-		groupId:    args.GroupId,
-		limit:      args.Limit,
+		ApiService:          a,
+		ctx:                 ctx,
+		limitName:           args.LimitName,
+		groupId:             args.GroupId,
+		dataFederationLimit: args.DataFederationLimit,
 	}
 }
 
-func (r SetProjectLimitApiRequest) Execute() (*Limit, *http.Response, error) {
+func (r SetProjectLimitApiRequest) Execute() (*DataFederationLimit, *http.Response, error) {
 	return r.ApiService.setProjectLimitExecute(r)
 }
 
@@ -2656,25 +2656,25 @@ SetProjectLimit Set One Project Limit
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return SetProjectLimitApiRequest
 */
-func (a *ProjectsApiService) SetProjectLimit(ctx context.Context, limitName string, groupId string, limit *Limit) SetProjectLimitApiRequest {
+func (a *ProjectsApiService) SetProjectLimit(ctx context.Context, limitName string, groupId string, dataFederationLimit *DataFederationLimit) SetProjectLimitApiRequest {
 	return SetProjectLimitApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		limitName:  limitName,
-		groupId:    groupId,
-		limit:      limit,
+		ApiService:          a,
+		ctx:                 ctx,
+		limitName:           limitName,
+		groupId:             groupId,
+		dataFederationLimit: dataFederationLimit,
 	}
 }
 
 // Execute executes the request
 //
-//	@return Limit
-func (a *ProjectsApiService) setProjectLimitExecute(r SetProjectLimitApiRequest) (*Limit, *http.Response, error) {
+//	@return DataFederationLimit
+func (a *ProjectsApiService) setProjectLimitExecute(r SetProjectLimitApiRequest) (*DataFederationLimit, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Limit
+		localVarReturnValue *DataFederationLimit
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.SetProjectLimit")
@@ -2695,8 +2695,8 @@ func (a *ProjectsApiService) setProjectLimitExecute(r SetProjectLimitApiRequest)
 	if strlen(r.groupId) > 24 {
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
-	if r.limit == nil {
-		return localVarReturnValue, nil, reportError("limit is required and must be specified")
+	if r.dataFederationLimit == nil {
+		return localVarReturnValue, nil, reportError("dataFederationLimit is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2717,7 +2717,7 @@ func (a *ProjectsApiService) setProjectLimitExecute(r SetProjectLimitApiRequest)
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.limit
+	localVarPostBody = r.dataFederationLimit
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

@@ -60,7 +60,7 @@ type SharedTierSnapshotsApi interface {
 	GetSharedClusterBackupWithParams(ctx context.Context, args *GetSharedClusterBackupApiParams) GetSharedClusterBackupApiRequest
 
 	// Interface only available internally
-	getSharedClusterBackupExecute(r GetSharedClusterBackupApiRequest) (*TenantSnapshot, *http.Response, error)
+	getSharedClusterBackupExecute(r GetSharedClusterBackupApiRequest) (*BackupTenantSnapshot, *http.Response, error)
 
 	/*
 		ListSharedClusterBackups Return All Snapshots for One M2 or M5 Cluster
@@ -265,7 +265,7 @@ func (a *SharedTierSnapshotsApiService) GetSharedClusterBackupWithParams(ctx con
 	}
 }
 
-func (r GetSharedClusterBackupApiRequest) Execute() (*TenantSnapshot, *http.Response, error) {
+func (r GetSharedClusterBackupApiRequest) Execute() (*BackupTenantSnapshot, *http.Response, error) {
 	return r.ApiService.getSharedClusterBackupExecute(r)
 }
 
@@ -292,13 +292,13 @@ func (a *SharedTierSnapshotsApiService) GetSharedClusterBackup(ctx context.Conte
 
 // Execute executes the request
 //
-//	@return TenantSnapshot
-func (a *SharedTierSnapshotsApiService) getSharedClusterBackupExecute(r GetSharedClusterBackupApiRequest) (*TenantSnapshot, *http.Response, error) {
+//	@return BackupTenantSnapshot
+func (a *SharedTierSnapshotsApiService) getSharedClusterBackupExecute(r GetSharedClusterBackupApiRequest) (*BackupTenantSnapshot, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *TenantSnapshot
+		localVarReturnValue *BackupTenantSnapshot
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharedTierSnapshotsApiService.GetSharedClusterBackup")

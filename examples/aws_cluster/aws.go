@@ -83,7 +83,7 @@ func main() {
 	fmt.Println("Please wait up to 10 minutes for cluster to provision.")
 }
 
-func createDatabaseUserRequest(sdk *admin.APIClient, groupId string) *admin.DatabaseUser {
+func createDatabaseUserRequest(sdk *admin.APIClient, groupId string) *admin.CloudDatabaseUser {
 	username := "sdk-example"
 	databaseName := "admin"
 
@@ -100,11 +100,11 @@ func createDatabaseUserRequest(sdk *admin.APIClient, groupId string) *admin.Data
 		log.Fatal(err)
 	}
 
-	return &admin.DatabaseUser{
+	return &admin.CloudDatabaseUser{
 		Username:     username,
 		Password:     &password,
 		DatabaseName: databaseName,
-		Roles: []admin.Role{
+		Roles: []admin.DatabaseUserRole{
 			{
 				DatabaseName:   databaseName,
 				CollectionName: &collectionName,
@@ -114,7 +114,7 @@ func createDatabaseUserRequest(sdk *admin.APIClient, groupId string) *admin.Data
 	}
 }
 
-func createClusterRequest(projectId string) *admin.ClusterDescriptionV15 {
+func createClusterRequest(projectId string) *admin.AdvancedClusterDescription {
 	// Input arguments used for creation of the cluster
 	clusterName, _ := uniqueName("example-aws-cluster")
 
@@ -129,13 +129,13 @@ func createClusterRequest(projectId string) *admin.ClusterDescriptionV15 {
 	nodeCount := int(3)
 	instanceSize := "M10"
 
-	return &admin.ClusterDescriptionV15{
+	return &admin.AdvancedClusterDescription{
 		Name:        &clusterName,
 		ClusterType: &clusterType,
 		ReplicationSpecs: []admin.ReplicationSpec{
 			{
 				NumShards: &numShards,
-				RegionConfigs: []admin.RegionConfig{
+				RegionConfigs: []admin.CloudRegionConfig{
 					{
 						ProviderName: &providerName,
 						Priority:     &priority,

@@ -12,7 +12,7 @@ var _ MappedNullable = &DataLakeDatabaseCollection{}
 // DataLakeDatabaseCollection A collection and data sources that map to a “stores“ data store.
 type DataLakeDatabaseCollection struct {
 	// Array that contains the data stores that map to a collection for this data lake.
-	DataSources []DataLakeDatabaseDataSource `json:"dataSources,omitempty"`
+	DataSources []DataLakeDatabaseDataSourceSettings `json:"dataSources,omitempty"`
 	// Human-readable label that identifies the collection to which MongoDB Cloud maps the data in the data stores.
 	Name *string `json:"name,omitempty"`
 }
@@ -35,9 +35,9 @@ func NewDataLakeDatabaseCollectionWithDefaults() *DataLakeDatabaseCollection {
 }
 
 // GetDataSources returns the DataSources field value if set, zero value otherwise.
-func (o *DataLakeDatabaseCollection) GetDataSources() []DataLakeDatabaseDataSource {
+func (o *DataLakeDatabaseCollection) GetDataSources() []DataLakeDatabaseDataSourceSettings {
 	if o == nil || IsNil(o.DataSources) {
-		var ret []DataLakeDatabaseDataSource
+		var ret []DataLakeDatabaseDataSourceSettings
 		return ret
 	}
 	return o.DataSources
@@ -45,7 +45,7 @@ func (o *DataLakeDatabaseCollection) GetDataSources() []DataLakeDatabaseDataSour
 
 // GetDataSourcesOk returns a tuple with the DataSources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DataLakeDatabaseCollection) GetDataSourcesOk() ([]DataLakeDatabaseDataSource, bool) {
+func (o *DataLakeDatabaseCollection) GetDataSourcesOk() ([]DataLakeDatabaseDataSourceSettings, bool) {
 	if o == nil || IsNil(o.DataSources) {
 		return nil, false
 	}
@@ -61,8 +61,8 @@ func (o *DataLakeDatabaseCollection) HasDataSources() bool {
 	return false
 }
 
-// SetDataSources gets a reference to the given []DataLakeDatabaseDataSource and assigns it to the DataSources field.
-func (o *DataLakeDatabaseCollection) SetDataSources(v []DataLakeDatabaseDataSource) {
+// SetDataSources gets a reference to the given []DataLakeDatabaseDataSourceSettings and assigns it to the DataSources field.
+func (o *DataLakeDatabaseCollection) SetDataSources(v []DataLakeDatabaseDataSourceSettings) {
 	o.DataSources = v
 }
 

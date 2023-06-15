@@ -19,7 +19,7 @@ type MeasurementsNonIndex struct {
 	// Unique 24-hexadecimal digit string that identifies the project. The project contains MongoDB processes that you want to return. The MongoDB process can be either the `mongod` or `mongos`.
 	GroupId *string `json:"groupId,omitempty"`
 	// List that contains the Atlas Search hardware measurements.
-	HardwareMeasurements []Measurement `json:"hardwareMeasurements,omitempty"`
+	HardwareMeasurements []MetricsMeasurement `json:"hardwareMeasurements,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	Links []Link `json:"links,omitempty"`
 	// Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
@@ -27,7 +27,7 @@ type MeasurementsNonIndex struct {
 	// Date and time that specifies when to start retrieving measurements. If you set **start**, you must set **end**. You can't set this parameter and **period** in the same request. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	Start *time.Time `json:"start,omitempty"`
 	// List that contains the Atlas Search status measurements.
-	StatusMeasurements []Measurement `json:"statusMeasurements,omitempty"`
+	StatusMeasurements []MetricsMeasurement `json:"statusMeasurements,omitempty"`
 }
 
 // NewMeasurementsNonIndex instantiates a new MeasurementsNonIndex object
@@ -144,9 +144,9 @@ func (o *MeasurementsNonIndex) SetGroupId(v string) {
 }
 
 // GetHardwareMeasurements returns the HardwareMeasurements field value if set, zero value otherwise.
-func (o *MeasurementsNonIndex) GetHardwareMeasurements() []Measurement {
+func (o *MeasurementsNonIndex) GetHardwareMeasurements() []MetricsMeasurement {
 	if o == nil || IsNil(o.HardwareMeasurements) {
-		var ret []Measurement
+		var ret []MetricsMeasurement
 		return ret
 	}
 	return o.HardwareMeasurements
@@ -154,7 +154,7 @@ func (o *MeasurementsNonIndex) GetHardwareMeasurements() []Measurement {
 
 // GetHardwareMeasurementsOk returns a tuple with the HardwareMeasurements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MeasurementsNonIndex) GetHardwareMeasurementsOk() ([]Measurement, bool) {
+func (o *MeasurementsNonIndex) GetHardwareMeasurementsOk() ([]MetricsMeasurement, bool) {
 	if o == nil || IsNil(o.HardwareMeasurements) {
 		return nil, false
 	}
@@ -170,8 +170,8 @@ func (o *MeasurementsNonIndex) HasHardwareMeasurements() bool {
 	return false
 }
 
-// SetHardwareMeasurements gets a reference to the given []Measurement and assigns it to the HardwareMeasurements field.
-func (o *MeasurementsNonIndex) SetHardwareMeasurements(v []Measurement) {
+// SetHardwareMeasurements gets a reference to the given []MetricsMeasurement and assigns it to the HardwareMeasurements field.
+func (o *MeasurementsNonIndex) SetHardwareMeasurements(v []MetricsMeasurement) {
 	o.HardwareMeasurements = v
 }
 
@@ -272,9 +272,9 @@ func (o *MeasurementsNonIndex) SetStart(v time.Time) {
 }
 
 // GetStatusMeasurements returns the StatusMeasurements field value if set, zero value otherwise.
-func (o *MeasurementsNonIndex) GetStatusMeasurements() []Measurement {
+func (o *MeasurementsNonIndex) GetStatusMeasurements() []MetricsMeasurement {
 	if o == nil || IsNil(o.StatusMeasurements) {
-		var ret []Measurement
+		var ret []MetricsMeasurement
 		return ret
 	}
 	return o.StatusMeasurements
@@ -282,7 +282,7 @@ func (o *MeasurementsNonIndex) GetStatusMeasurements() []Measurement {
 
 // GetStatusMeasurementsOk returns a tuple with the StatusMeasurements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MeasurementsNonIndex) GetStatusMeasurementsOk() ([]Measurement, bool) {
+func (o *MeasurementsNonIndex) GetStatusMeasurementsOk() ([]MetricsMeasurement, bool) {
 	if o == nil || IsNil(o.StatusMeasurements) {
 		return nil, false
 	}
@@ -298,8 +298,8 @@ func (o *MeasurementsNonIndex) HasStatusMeasurements() bool {
 	return false
 }
 
-// SetStatusMeasurements gets a reference to the given []Measurement and assigns it to the StatusMeasurements field.
-func (o *MeasurementsNonIndex) SetStatusMeasurements(v []Measurement) {
+// SetStatusMeasurements gets a reference to the given []MetricsMeasurement and assigns it to the StatusMeasurements field.
+func (o *MeasurementsNonIndex) SetStatusMeasurements(v []MetricsMeasurement) {
 	o.StatusMeasurements = v
 }
 

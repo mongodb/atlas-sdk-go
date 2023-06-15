@@ -25,7 +25,7 @@ type ServerlessPrivateEndpointsApi interface {
 		@param instanceName Human-readable label that identifies the serverless instance for which the tenant endpoint will be created.
 		@return CreateServerlessPrivateEndpointApiRequest
 	*/
-	CreateServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, serverlessTenantEndpointCreate *ServerlessTenantEndpointCreate) CreateServerlessPrivateEndpointApiRequest
+	CreateServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, serverlessTenantCreateRequest *ServerlessTenantCreateRequest) CreateServerlessPrivateEndpointApiRequest
 	/*
 		CreateServerlessPrivateEndpoint Create One Private Endpoint for One Serverless Instance
 
@@ -143,26 +143,26 @@ type ServerlessPrivateEndpointsApi interface {
 type ServerlessPrivateEndpointsApiService service
 
 type CreateServerlessPrivateEndpointApiRequest struct {
-	ctx                            context.Context
-	ApiService                     ServerlessPrivateEndpointsApi
-	groupId                        string
-	instanceName                   string
-	serverlessTenantEndpointCreate *ServerlessTenantEndpointCreate
+	ctx                           context.Context
+	ApiService                    ServerlessPrivateEndpointsApi
+	groupId                       string
+	instanceName                  string
+	serverlessTenantCreateRequest *ServerlessTenantCreateRequest
 }
 
 type CreateServerlessPrivateEndpointApiParams struct {
-	GroupId                        string
-	InstanceName                   string
-	ServerlessTenantEndpointCreate *ServerlessTenantEndpointCreate
+	GroupId                       string
+	InstanceName                  string
+	ServerlessTenantCreateRequest *ServerlessTenantCreateRequest
 }
 
 func (a *ServerlessPrivateEndpointsApiService) CreateServerlessPrivateEndpointWithParams(ctx context.Context, args *CreateServerlessPrivateEndpointApiParams) CreateServerlessPrivateEndpointApiRequest {
 	return CreateServerlessPrivateEndpointApiRequest{
-		ApiService:                     a,
-		ctx:                            ctx,
-		groupId:                        args.GroupId,
-		instanceName:                   args.InstanceName,
-		serverlessTenantEndpointCreate: args.ServerlessTenantEndpointCreate,
+		ApiService:                    a,
+		ctx:                           ctx,
+		groupId:                       args.GroupId,
+		instanceName:                  args.InstanceName,
+		serverlessTenantCreateRequest: args.ServerlessTenantCreateRequest,
 	}
 }
 
@@ -182,13 +182,13 @@ CreateServerlessPrivateEndpoint Create One Private Endpoint for One Serverless I
 	@param instanceName Human-readable label that identifies the serverless instance for which the tenant endpoint will be created.
 	@return CreateServerlessPrivateEndpointApiRequest
 */
-func (a *ServerlessPrivateEndpointsApiService) CreateServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, serverlessTenantEndpointCreate *ServerlessTenantEndpointCreate) CreateServerlessPrivateEndpointApiRequest {
+func (a *ServerlessPrivateEndpointsApiService) CreateServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, serverlessTenantCreateRequest *ServerlessTenantCreateRequest) CreateServerlessPrivateEndpointApiRequest {
 	return CreateServerlessPrivateEndpointApiRequest{
-		ApiService:                     a,
-		ctx:                            ctx,
-		groupId:                        groupId,
-		instanceName:                   instanceName,
-		serverlessTenantEndpointCreate: serverlessTenantEndpointCreate,
+		ApiService:                    a,
+		ctx:                           ctx,
+		groupId:                       groupId,
+		instanceName:                  instanceName,
+		serverlessTenantCreateRequest: serverlessTenantCreateRequest,
 	}
 }
 
@@ -224,8 +224,8 @@ func (a *ServerlessPrivateEndpointsApiService) createServerlessPrivateEndpointEx
 	if strlen(r.instanceName) > 64 {
 		return localVarReturnValue, nil, reportError("instanceName must have less than 64 elements")
 	}
-	if r.serverlessTenantEndpointCreate == nil {
-		return localVarReturnValue, nil, reportError("serverlessTenantEndpointCreate is required and must be specified")
+	if r.serverlessTenantCreateRequest == nil {
+		return localVarReturnValue, nil, reportError("serverlessTenantCreateRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -246,7 +246,7 @@ func (a *ServerlessPrivateEndpointsApiService) createServerlessPrivateEndpointEx
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.serverlessTenantEndpointCreate
+	localVarPostBody = r.serverlessTenantCreateRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
