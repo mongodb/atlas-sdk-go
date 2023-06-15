@@ -322,7 +322,10 @@ func (c *APIClient) prepareRequest(
 						return nil, err
 					}
 				} else { // form value
-					w.WriteField(k, iv)
+					err = w.WriteField(k, iv)
+					if err != nil {
+						return nil, err
+					}
 				}
 			}
 		}
@@ -508,7 +511,7 @@ func (c *APIClient) decode(v interface{}, b []byte, contentType string) (err err
 		*s = string(b)
 		return nil
 	}
-	if f, ok := v.(*os.File); ok {
+	if _, ok := v.(*os.File); ok {
 		f, err = os.CreateTemp("", "HttpClientFile")
 		if err != nil {
 			return

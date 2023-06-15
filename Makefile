@@ -27,11 +27,11 @@ fmt:
 
 .PHONY: lint-fix
 lint-fix:
-	golangci-lint run --fix
+	./bin/golangci-lint run --fix
 
 .PHONY: lint
 lint:
-	golangci-lint run $(SOURCE_FILES)
+	./bin/golangci-lint run $(SOURCE_FILES)
 
 .PHONY: check
 check: test lint-fix
