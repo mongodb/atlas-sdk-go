@@ -33,14 +33,14 @@ func main() {
 		admin.UseDebug(false))
 	examples.HandleErr(err, nil)
 
-	current := new(admin.DatabaseUser)
+	current := new(admin.CloudDatabaseUser)
 	update(current)
 
 	params := &admin.UpdateDatabaseUserApiParams{
 		GroupId:      current.GroupId,
 		DatabaseName: current.DatabaseName,
 		Username:     current.Username,
-		DatabaseUser: current,
+		CloudDatabaseUser: current,
 	}
 	dbUser, response, err := sdk.DatabaseUsersApi.UpdateDatabaseUserWithParams(ctx, params).Execute()
 
@@ -49,13 +49,13 @@ func main() {
 }
 
 // Here we should provide input parameters for the dbUser update we wish to apply
-func update(current *admin.DatabaseUser) *admin.DatabaseUser {
+func update(current *admin.CloudDatabaseUser) *admin.CloudDatabaseUser {
 	current.GroupId = "groupId"
 	current.Username = "user"
 	current.Password = admin.PtrString("password")
 	current.Scopes = make([]admin.UserScope, 0)
-	current.Roles = make([]admin.Role, 0)
-	current.Roles = append(current.Roles, *admin.NewRole(AdminDB, "readWrite"))
+	current.Roles = make([]admin.DatabaseUserRole, 0)
+	current.Roles = append(current.Roles, *admin.NewDatabaseUserRole(AdminDB, "readWrite"))
 	current.DatabaseName = getAuthDB(current)
 	return current
 }
@@ -63,7 +63,7 @@ func update(current *admin.DatabaseUser) *admin.DatabaseUser {
 // GetAuthDB determines the authentication database based on the type of user.
 // LDAP, X509 and AWSIAM should all use $external.
 // SCRAM-SHA should use admin.
-func getAuthDB(user *admin.DatabaseUser) string {
+func getAuthDB(user *admin.CloudDatabaseUser) string {
 	// base documentation https://registry.terraform.io/providers/mongodb/mongodbatlas/latest/docs/resources/database_user
 	_, isX509 := adminX509Type[admin.GetOrDefault(user.X509Type, "")]
 	_, isIAM := awsIAMType[admin.GetOrDefault(user.AwsIAMType, "")]
