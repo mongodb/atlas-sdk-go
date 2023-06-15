@@ -15,9 +15,9 @@ func HandleErr(err error, resp *http.Response) {
 
 	if resp != nil {
 		fmt.Println(resp.Body)
-		// Printing generic message
-		fmt.Println(err.Error())
 	}
+	// Printing generic message
+	fmt.Println(err.Error())
 	apiErr, _ := admin.AsError(err)
 	log.Fatalf("Error when performing SDK request: %v", apiErr.GetDetail())
 }
