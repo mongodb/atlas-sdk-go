@@ -1,8 +1,10 @@
 package main
 
 import (
+	"crypto/rand"
 	"fmt"
 	"log"
+	"math/big"
 	"net"
 	"os"
 
@@ -10,7 +12,6 @@ import (
 
 	"go.mongodb.org/atlas-sdk/admin"
 	"go.mongodb.org/atlas-sdk/examples"
-	utils "go.mongodb.org/atlas-sdk/test/generators"
 )
 
 /*
@@ -29,7 +30,7 @@ func main() {
 	apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
 	apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 	url := os.Getenv("MONGODB_ATLAS_URL")
-	
+
 	sdk, err := admin.NewClient(
 		admin.UseDigestAuth(apiKey, apiSecret),
 		admin.UseBaseURL(url),
@@ -94,7 +95,7 @@ func createDatabaseUserRequest(sdk *admin.APIClient, groupId string) *admin.Data
 	}
 
 	collectionName := "sdk-test"
-	password, err := utils.RandomASCIIString(10)
+	password, err := randomASCIIString(10)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -115,7 +116,7 @@ func createDatabaseUserRequest(sdk *admin.APIClient, groupId string) *admin.Data
 
 func createClusterRequest(projectId string) *admin.ClusterDescriptionV15 {
 	// Input arguments used for creation of the cluster
-	clusterName, _ := utils.UniqueName("example-aws-cluster")
+	clusterName, _ := uniqueName("example-aws-cluster")
 
 	// Location
 	providerName := "AWS"
@@ -161,4 +162,42 @@ func getIpAddress() string {
 	localAddr := conn.LocalAddr().(*net.UDPAddr)
 
 	return localAddr.IP.String()
+}
+
+func randomASCIIString(length int) (string, error) {
+	const asciiMax = 127
+	result := ""
+	for {
+		if len(result) >= length {
+			return result, nil
+		}
+		num, err := rand.Int(rand.Reader, big.NewInt(int64(asciiMax)))
+		if err != nil {
+			return "", err
+		}
+		n := num.Int64()
+		// Make sure that the number/byte/letter is inside
+		// the range of printable ASCII characters (excluding space and DEL)
+		if n > 64 && n < asciiMax {
+			result += string(rune(n))
+		}
+	}
+}
+
+func uniqueName(prefix string) (string, error) {
+	const asciiMax = 122
+	const length = 5
+	for i := 0; i < length; i++ {
+		num, err := rand.Int(rand.Reader, big.NewInt(int64(asciiMax)))
+		if err != nil {
+			return "", err
+		}
+		n := num.Int64()
+		// Make sure that the number/byte/letter is inside
+		// the range of printable ASCII characters (excluding space and DEL)
+		if n > 97 && n < asciiMax {
+			prefix += string(rune(n))
+		}
+	}
+	return prefix, nil
 }

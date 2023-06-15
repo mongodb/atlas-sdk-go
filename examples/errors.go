@@ -7,6 +7,7 @@ import (
 
 	"go.mongodb.org/atlas-sdk/admin"
 )
+
 func HandleErr(err error, resp *http.Response) {
 	if err == nil {
 		return
@@ -20,4 +21,3 @@ func HandleErr(err error, resp *http.Response) {
 	apiErr, _ := admin.AsError(err)
 	log.Fatalf("Error when performing SDK request: %v", apiErr.GetDetail())
 }
- 
