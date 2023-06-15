@@ -47,6 +47,9 @@ func main() {
 	// -- 2. Get first Process
 	hosts, response, err := sdk.MonitoringAndLogsApi.ListAtlasProcesses(ctx, projectId).Execute()
 	examples.HandleErr(err, response)
+	if len(hosts.GetResults()) == 0 {
+		log.Fatal("your cluster should have at least single host. Are you running Atlas M0?")
+	}
 	host := hosts.GetResults()[0].GetHostname()
 	params := &admin.GetHostLogsApiParams{
 		GroupId:  projectId,
