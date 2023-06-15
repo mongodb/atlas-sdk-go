@@ -36,6 +36,12 @@ func main() {
 	current := new(admin.CloudDatabaseUser)
 	update(current)
 
+	_, response, err:= sdk.ProjectsApi.GetProject(ctx, current.GroupId).Execute()
+	if err != nil {
+		fmt.Println("Project missconfigured. Did you set the correct values in update() function?")
+		examples.HandleErr(err, response)
+	}
+
 	params := &admin.UpdateDatabaseUserApiParams{
 		GroupId:      current.GroupId,
 		DatabaseName: current.DatabaseName,
@@ -50,6 +56,7 @@ func main() {
 
 // Here we should provide input parameters for the dbUser update we wish to apply
 func update(current *admin.CloudDatabaseUser) *admin.CloudDatabaseUser {
+	// Note that this values require manual edits
 	current.GroupId = "groupId"
 	current.Username = "user"
 	current.Password = admin.PtrString("password")

@@ -47,6 +47,9 @@ func main() {
 	// -- 2. Get first Process
 	hosts, response, err := sdk.MonitoringAndLogsApi.ListAtlasProcesses(ctx, projectId).Execute()
 	examples.HandleErr(err, response)
+	if len(hosts.GetResults()) == 0 {
+		log.Fatal("MongoDB atlas hosts are missing. Please review your cluster details in Atlas CLI or UI")
+	}
 	host := hosts.GetResults()[0].GetHostname()
 	params := &admin.GetHostLogsApiParams{
 		GroupId:  projectId,
