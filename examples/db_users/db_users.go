@@ -30,11 +30,17 @@ func main() {
 	sdk, err := admin.NewClient(
 		admin.UseDigestAuth(apiKey, apiSecret),
 		admin.UseBaseURL(url),
-		admin.UseDebug(true))
+		admin.UseDebug(false))
 	examples.HandleErr(err, nil)
 
 	current := new(admin.CloudDatabaseUser)
 	update(current)
+
+	_, response, err:= sdk.ProjectsApi.GetProject(ctx, current.GroupId).Execute()
+	if err != nil {
+		fmt.Println("Project missconfigured. Did you set the correct values in update() function?")
+		examples.HandleErr(err, response)
+	}
 
 	params := &admin.UpdateDatabaseUserApiParams{
 		GroupId:      current.GroupId,
