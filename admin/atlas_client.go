@@ -13,11 +13,11 @@ import (
 )
 
 const (
-	// CloudURL is default base URL for the services.
+	// DefaultCloudURL is default base URL for the services.
 	DefaultCloudURL = "https://cloud.mongodb.com"
 	// Version the version of the current API client inherited from.
 	Version = core.Version
-	// Name of the v2 API client.
+	// ClientName of the v2 API client.
 	ClientName = "go-atlas-sdk-admin"
 )
 
@@ -59,7 +59,7 @@ func UseDigestAuth(apiKey, apiSecret string) ClientModifier {
 
 // Advanced modifiers.
 
-// UseHttpClient set custom http client implementation.
+// UseHTTPClient set custom http client implementation.
 func UseHTTPClient(client *http.Client) ClientModifier {
 	return func(c *Configuration) error {
 		c.HTTPClient = client
