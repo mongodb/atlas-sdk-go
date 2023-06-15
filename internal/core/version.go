@@ -15,5 +15,5 @@
 package core
 
 const (
-	Version = "0.12.0"
+	Version = "1.0.0-rc0"
 )
