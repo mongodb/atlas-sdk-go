@@ -213,15 +213,11 @@ type CreateLinkTokenApiRequest struct {
 	ApiService       CloudMigrationServiceApi
 	orgId            string
 	targetOrgRequest *TargetOrgRequest
-	envelope         *bool
-	pretty           *bool
 }
 
 type CreateLinkTokenApiParams struct {
 	OrgId            string
 	TargetOrgRequest *TargetOrgRequest
-	Envelope         *bool
-	Pretty           *bool
 }
 
 func (a *CloudMigrationServiceApiService) CreateLinkTokenWithParams(ctx context.Context, args *CreateLinkTokenApiParams) CreateLinkTokenApiRequest {
@@ -230,21 +226,7 @@ func (a *CloudMigrationServiceApiService) CreateLinkTokenWithParams(ctx context.
 		ctx:              ctx,
 		orgId:            args.OrgId,
 		targetOrgRequest: args.TargetOrgRequest,
-		envelope:         args.Envelope,
-		pretty:           args.Pretty,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r CreateLinkTokenApiRequest) Envelope(envelope bool) CreateLinkTokenApiRequest {
-	r.envelope = &envelope
-	return r
-}
-
-// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
-func (r CreateLinkTokenApiRequest) Pretty(pretty bool) CreateLinkTokenApiRequest {
-	r.pretty = &pretty
-	return r
 }
 
 func (r CreateLinkTokenApiRequest) Execute() (*TargetOrg, *http.Response, error) {
@@ -301,20 +283,6 @@ func (a *CloudMigrationServiceApiService) createLinkTokenExecute(r CreateLinkTok
 		return localVarReturnValue, nil, reportError("targetOrgRequest is required and must be specified")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
-	if r.pretty != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	} else {
-		var defaultValue bool = false
-		r.pretty = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
@@ -384,15 +352,11 @@ type CreatePushMigrationApiRequest struct {
 	ApiService           CloudMigrationServiceApi
 	groupId              string
 	liveMigrationRequest *LiveMigrationRequest
-	envelope             *bool
-	pretty               *bool
 }
 
 type CreatePushMigrationApiParams struct {
 	GroupId              string
 	LiveMigrationRequest *LiveMigrationRequest
-	Envelope             *bool
-	Pretty               *bool
 }
 
 func (a *CloudMigrationServiceApiService) CreatePushMigrationWithParams(ctx context.Context, args *CreatePushMigrationApiParams) CreatePushMigrationApiRequest {
@@ -401,21 +365,7 @@ func (a *CloudMigrationServiceApiService) CreatePushMigrationWithParams(ctx cont
 		ctx:                  ctx,
 		groupId:              args.GroupId,
 		liveMigrationRequest: args.LiveMigrationRequest,
-		envelope:             args.Envelope,
-		pretty:               args.Pretty,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r CreatePushMigrationApiRequest) Envelope(envelope bool) CreatePushMigrationApiRequest {
-	r.envelope = &envelope
-	return r
-}
-
-// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
-func (r CreatePushMigrationApiRequest) Pretty(pretty bool) CreatePushMigrationApiRequest {
-	r.pretty = &pretty
-	return r
 }
 
 func (r CreatePushMigrationApiRequest) Execute() (*LiveMigrationResponse, *http.Response, error) {
@@ -476,20 +426,6 @@ func (a *CloudMigrationServiceApiService) createPushMigrationExecute(r CreatePus
 		return localVarReturnValue, nil, reportError("liveMigrationRequest is required and must be specified")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
-	if r.pretty != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	} else {
-		var defaultValue bool = false
-		r.pretty = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
@@ -559,15 +495,11 @@ type CutoverMigrationApiRequest struct {
 	ApiService      CloudMigrationServiceApi
 	groupId         string
 	liveMigrationId string
-	envelope        *bool
-	pretty          *bool
 }
 
 type CutoverMigrationApiParams struct {
 	GroupId         string
 	LiveMigrationId string
-	Envelope        *bool
-	Pretty          *bool
 }
 
 func (a *CloudMigrationServiceApiService) CutoverMigrationWithParams(ctx context.Context, args *CutoverMigrationApiParams) CutoverMigrationApiRequest {
@@ -576,21 +508,7 @@ func (a *CloudMigrationServiceApiService) CutoverMigrationWithParams(ctx context
 		ctx:             ctx,
 		groupId:         args.GroupId,
 		liveMigrationId: args.LiveMigrationId,
-		envelope:        args.Envelope,
-		pretty:          args.Pretty,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r CutoverMigrationApiRequest) Envelope(envelope bool) CutoverMigrationApiRequest {
-	r.envelope = &envelope
-	return r
-}
-
-// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
-func (r CutoverMigrationApiRequest) Pretty(pretty bool) CutoverMigrationApiRequest {
-	r.pretty = &pretty
-	return r
 }
 
 func (r CutoverMigrationApiRequest) Execute() (*http.Response, error) {
@@ -649,20 +567,6 @@ func (a *CloudMigrationServiceApiService) cutoverMigrationExecute(r CutoverMigra
 		return nil, reportError("liveMigrationId must have less than 24 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
-	if r.pretty != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	} else {
-		var defaultValue bool = false
-		r.pretty = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -720,12 +624,10 @@ type DeleteLinkTokenApiRequest struct {
 	ctx        context.Context
 	ApiService CloudMigrationServiceApi
 	orgId      string
-	envelope   *bool
 }
 
 type DeleteLinkTokenApiParams struct {
-	OrgId    string
-	Envelope *bool
+	OrgId string
 }
 
 func (a *CloudMigrationServiceApiService) DeleteLinkTokenWithParams(ctx context.Context, args *DeleteLinkTokenApiParams) DeleteLinkTokenApiRequest {
@@ -733,14 +635,7 @@ func (a *CloudMigrationServiceApiService) DeleteLinkTokenWithParams(ctx context.
 		ApiService: a,
 		ctx:        ctx,
 		orgId:      args.OrgId,
-		envelope:   args.Envelope,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r DeleteLinkTokenApiRequest) Envelope(envelope bool) DeleteLinkTokenApiRequest {
-	r.envelope = &envelope
-	return r
 }
 
 func (r DeleteLinkTokenApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -793,13 +688,6 @@ func (a *CloudMigrationServiceApiService) deleteLinkTokenExecute(r DeleteLinkTok
 		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -867,15 +755,11 @@ type GetPushMigrationApiRequest struct {
 	ApiService      CloudMigrationServiceApi
 	groupId         string
 	liveMigrationId string
-	envelope        *bool
-	pretty          *bool
 }
 
 type GetPushMigrationApiParams struct {
 	GroupId         string
 	LiveMigrationId string
-	Envelope        *bool
-	Pretty          *bool
 }
 
 func (a *CloudMigrationServiceApiService) GetPushMigrationWithParams(ctx context.Context, args *GetPushMigrationApiParams) GetPushMigrationApiRequest {
@@ -884,21 +768,7 @@ func (a *CloudMigrationServiceApiService) GetPushMigrationWithParams(ctx context
 		ctx:             ctx,
 		groupId:         args.GroupId,
 		liveMigrationId: args.LiveMigrationId,
-		envelope:        args.Envelope,
-		pretty:          args.Pretty,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r GetPushMigrationApiRequest) Envelope(envelope bool) GetPushMigrationApiRequest {
-	r.envelope = &envelope
-	return r
-}
-
-// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
-func (r GetPushMigrationApiRequest) Pretty(pretty bool) GetPushMigrationApiRequest {
-	r.pretty = &pretty
-	return r
 }
 
 func (r GetPushMigrationApiRequest) Execute() (*LiveMigrationResponse, *http.Response, error) {
@@ -960,20 +830,6 @@ func (a *CloudMigrationServiceApiService) getPushMigrationExecute(r GetPushMigra
 		return localVarReturnValue, nil, reportError("liveMigrationId must have less than 24 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
-	if r.pretty != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	} else {
-		var defaultValue bool = false
-		r.pretty = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1041,13 +897,11 @@ type GetValidationStatusApiRequest struct {
 	ApiService   CloudMigrationServiceApi
 	groupId      string
 	validationId string
-	envelope     *bool
 }
 
 type GetValidationStatusApiParams struct {
 	GroupId      string
 	ValidationId string
-	Envelope     *bool
 }
 
 func (a *CloudMigrationServiceApiService) GetValidationStatusWithParams(ctx context.Context, args *GetValidationStatusApiParams) GetValidationStatusApiRequest {
@@ -1056,14 +910,7 @@ func (a *CloudMigrationServiceApiService) GetValidationStatusWithParams(ctx cont
 		ctx:          ctx,
 		groupId:      args.GroupId,
 		validationId: args.ValidationId,
-		envelope:     args.Envelope,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r GetValidationStatusApiRequest) Envelope(envelope bool) GetValidationStatusApiRequest {
-	r.envelope = &envelope
-	return r
 }
 
 func (r GetValidationStatusApiRequest) Execute() (*LiveImportValidation, *http.Response, error) {
@@ -1125,13 +972,6 @@ func (a *CloudMigrationServiceApiService) getValidationStatusExecute(r GetValida
 		return localVarReturnValue, nil, reportError("validationId must have less than 24 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1198,14 +1038,10 @@ type ListSourceProjectsApiRequest struct {
 	ctx        context.Context
 	ApiService CloudMigrationServiceApi
 	orgId      string
-	envelope   *bool
-	pretty     *bool
 }
 
 type ListSourceProjectsApiParams struct {
-	OrgId    string
-	Envelope *bool
-	Pretty   *bool
+	OrgId string
 }
 
 func (a *CloudMigrationServiceApiService) ListSourceProjectsWithParams(ctx context.Context, args *ListSourceProjectsApiParams) ListSourceProjectsApiRequest {
@@ -1213,21 +1049,7 @@ func (a *CloudMigrationServiceApiService) ListSourceProjectsWithParams(ctx conte
 		ApiService: a,
 		ctx:        ctx,
 		orgId:      args.OrgId,
-		envelope:   args.Envelope,
-		pretty:     args.Pretty,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r ListSourceProjectsApiRequest) Envelope(envelope bool) ListSourceProjectsApiRequest {
-	r.envelope = &envelope
-	return r
-}
-
-// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
-func (r ListSourceProjectsApiRequest) Pretty(pretty bool) ListSourceProjectsApiRequest {
-	r.pretty = &pretty
-	return r
 }
 
 func (r ListSourceProjectsApiRequest) Execute() ([]LiveImportAvailableProject, *http.Response, error) {
@@ -1280,20 +1102,6 @@ func (a *CloudMigrationServiceApiService) listSourceProjectsExecute(r ListSource
 		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
-	if r.pretty != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	} else {
-		var defaultValue bool = false
-		r.pretty = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1361,15 +1169,11 @@ type ValidateMigrationApiRequest struct {
 	ApiService           CloudMigrationServiceApi
 	groupId              string
 	liveMigrationRequest *LiveMigrationRequest
-	envelope             *bool
-	pretty               *bool
 }
 
 type ValidateMigrationApiParams struct {
 	GroupId              string
 	LiveMigrationRequest *LiveMigrationRequest
-	Envelope             *bool
-	Pretty               *bool
 }
 
 func (a *CloudMigrationServiceApiService) ValidateMigrationWithParams(ctx context.Context, args *ValidateMigrationApiParams) ValidateMigrationApiRequest {
@@ -1378,21 +1182,7 @@ func (a *CloudMigrationServiceApiService) ValidateMigrationWithParams(ctx contex
 		ctx:                  ctx,
 		groupId:              args.GroupId,
 		liveMigrationRequest: args.LiveMigrationRequest,
-		envelope:             args.Envelope,
-		pretty:               args.Pretty,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r ValidateMigrationApiRequest) Envelope(envelope bool) ValidateMigrationApiRequest {
-	r.envelope = &envelope
-	return r
-}
-
-// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
-func (r ValidateMigrationApiRequest) Pretty(pretty bool) ValidateMigrationApiRequest {
-	r.pretty = &pretty
-	return r
 }
 
 func (r ValidateMigrationApiRequest) Execute() (*LiveImportValidation, *http.Response, error) {
@@ -1449,20 +1239,6 @@ func (a *CloudMigrationServiceApiService) validateMigrationExecute(r ValidateMig
 		return localVarReturnValue, nil, reportError("liveMigrationRequest is required and must be specified")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
-	if r.pretty != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	} else {
-		var defaultValue bool = false
-		r.pretty = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 

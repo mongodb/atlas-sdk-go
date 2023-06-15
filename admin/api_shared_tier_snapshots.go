@@ -96,16 +96,12 @@ type DownloadSharedClusterBackupApiRequest struct {
 	clusterName   string
 	groupId       string
 	tenantRestore *TenantRestore
-	envelope      *bool
-	pretty        *bool
 }
 
 type DownloadSharedClusterBackupApiParams struct {
 	ClusterName   string
 	GroupId       string
 	TenantRestore *TenantRestore
-	Envelope      *bool
-	Pretty        *bool
 }
 
 func (a *SharedTierSnapshotsApiService) DownloadSharedClusterBackupWithParams(ctx context.Context, args *DownloadSharedClusterBackupApiParams) DownloadSharedClusterBackupApiRequest {
@@ -115,21 +111,7 @@ func (a *SharedTierSnapshotsApiService) DownloadSharedClusterBackupWithParams(ct
 		clusterName:   args.ClusterName,
 		groupId:       args.GroupId,
 		tenantRestore: args.TenantRestore,
-		envelope:      args.Envelope,
-		pretty:        args.Pretty,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r DownloadSharedClusterBackupApiRequest) Envelope(envelope bool) DownloadSharedClusterBackupApiRequest {
-	r.envelope = &envelope
-	return r
-}
-
-// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
-func (r DownloadSharedClusterBackupApiRequest) Pretty(pretty bool) DownloadSharedClusterBackupApiRequest {
-	r.pretty = &pretty
-	return r
 }
 
 func (r DownloadSharedClusterBackupApiRequest) Execute() (*TenantRestore, *http.Response, error) {
@@ -195,20 +177,6 @@ func (a *SharedTierSnapshotsApiService) downloadSharedClusterBackupExecute(r Dow
 		return localVarReturnValue, nil, reportError("tenantRestore is required and must be specified")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
-	if r.pretty != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	} else {
-		var defaultValue bool = false
-		r.pretty = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
@@ -279,16 +247,12 @@ type GetSharedClusterBackupApiRequest struct {
 	groupId     string
 	clusterName string
 	snapshotId  string
-	envelope    *bool
-	pretty      *bool
 }
 
 type GetSharedClusterBackupApiParams struct {
 	GroupId     string
 	ClusterName string
 	SnapshotId  string
-	Envelope    *bool
-	Pretty      *bool
 }
 
 func (a *SharedTierSnapshotsApiService) GetSharedClusterBackupWithParams(ctx context.Context, args *GetSharedClusterBackupApiParams) GetSharedClusterBackupApiRequest {
@@ -298,21 +262,7 @@ func (a *SharedTierSnapshotsApiService) GetSharedClusterBackupWithParams(ctx con
 		groupId:     args.GroupId,
 		clusterName: args.ClusterName,
 		snapshotId:  args.SnapshotId,
-		envelope:    args.Envelope,
-		pretty:      args.Pretty,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r GetSharedClusterBackupApiRequest) Envelope(envelope bool) GetSharedClusterBackupApiRequest {
-	r.envelope = &envelope
-	return r
-}
-
-// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
-func (r GetSharedClusterBackupApiRequest) Pretty(pretty bool) GetSharedClusterBackupApiRequest {
-	r.pretty = &pretty
-	return r
 }
 
 func (r GetSharedClusterBackupApiRequest) Execute() (*BackupTenantSnapshot, *http.Response, error) {
@@ -383,20 +333,6 @@ func (a *SharedTierSnapshotsApiService) getSharedClusterBackupExecute(r GetShare
 		return localVarReturnValue, nil, reportError("snapshotId must have less than 24 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
-	if r.pretty != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	} else {
-		var defaultValue bool = false
-		r.pretty = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -464,15 +400,11 @@ type ListSharedClusterBackupsApiRequest struct {
 	ApiService  SharedTierSnapshotsApi
 	groupId     string
 	clusterName string
-	envelope    *bool
-	pretty      *bool
 }
 
 type ListSharedClusterBackupsApiParams struct {
 	GroupId     string
 	ClusterName string
-	Envelope    *bool
-	Pretty      *bool
 }
 
 func (a *SharedTierSnapshotsApiService) ListSharedClusterBackupsWithParams(ctx context.Context, args *ListSharedClusterBackupsApiParams) ListSharedClusterBackupsApiRequest {
@@ -481,21 +413,7 @@ func (a *SharedTierSnapshotsApiService) ListSharedClusterBackupsWithParams(ctx c
 		ctx:         ctx,
 		groupId:     args.GroupId,
 		clusterName: args.ClusterName,
-		envelope:    args.Envelope,
-		pretty:      args.Pretty,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r ListSharedClusterBackupsApiRequest) Envelope(envelope bool) ListSharedClusterBackupsApiRequest {
-	r.envelope = &envelope
-	return r
-}
-
-// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
-func (r ListSharedClusterBackupsApiRequest) Pretty(pretty bool) ListSharedClusterBackupsApiRequest {
-	r.pretty = &pretty
-	return r
 }
 
 func (r ListSharedClusterBackupsApiRequest) Execute() (*PaginatedTenantSnapshot, *http.Response, error) {
@@ -557,20 +475,6 @@ func (a *SharedTierSnapshotsApiService) listSharedClusterBackupsExecute(r ListSh
 		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
-	if r.pretty != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	} else {
-		var defaultValue bool = false
-		r.pretty = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

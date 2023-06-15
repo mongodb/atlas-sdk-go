@@ -234,15 +234,11 @@ type GetClusterAdvancedConfigurationApiRequest struct {
 	ApiService  ClustersApi
 	groupId     string
 	clusterName string
-	envelope    *bool
-	pretty      *bool
 }
 
 type GetClusterAdvancedConfigurationApiParams struct {
 	GroupId     string
 	ClusterName string
-	Envelope    *bool
-	Pretty      *bool
 }
 
 func (a *ClustersApiService) GetClusterAdvancedConfigurationWithParams(ctx context.Context, args *GetClusterAdvancedConfigurationApiParams) GetClusterAdvancedConfigurationApiRequest {
@@ -251,21 +247,7 @@ func (a *ClustersApiService) GetClusterAdvancedConfigurationWithParams(ctx conte
 		ctx:         ctx,
 		groupId:     args.GroupId,
 		clusterName: args.ClusterName,
-		envelope:    args.Envelope,
-		pretty:      args.Pretty,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r GetClusterAdvancedConfigurationApiRequest) Envelope(envelope bool) GetClusterAdvancedConfigurationApiRequest {
-	r.envelope = &envelope
-	return r
-}
-
-// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
-func (r GetClusterAdvancedConfigurationApiRequest) Pretty(pretty bool) GetClusterAdvancedConfigurationApiRequest {
-	r.pretty = &pretty
-	return r
 }
 
 func (r GetClusterAdvancedConfigurationApiRequest) Execute() (*ClusterDescriptionProcessArgs, *http.Response, error) {
@@ -327,20 +309,6 @@ func (a *ClustersApiService) getClusterAdvancedConfigurationExecute(r GetCluster
 		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
-	if r.pretty != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	} else {
-		var defaultValue bool = false
-		r.pretty = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -408,15 +376,11 @@ type GetClusterStatusApiRequest struct {
 	ApiService  ClustersApi
 	groupId     string
 	clusterName string
-	envelope    *bool
-	pretty      *bool
 }
 
 type GetClusterStatusApiParams struct {
 	GroupId     string
 	ClusterName string
-	Envelope    *bool
-	Pretty      *bool
 }
 
 func (a *ClustersApiService) GetClusterStatusWithParams(ctx context.Context, args *GetClusterStatusApiParams) GetClusterStatusApiRequest {
@@ -425,21 +389,7 @@ func (a *ClustersApiService) GetClusterStatusWithParams(ctx context.Context, arg
 		ctx:         ctx,
 		groupId:     args.GroupId,
 		clusterName: args.ClusterName,
-		envelope:    args.Envelope,
-		pretty:      args.Pretty,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r GetClusterStatusApiRequest) Envelope(envelope bool) GetClusterStatusApiRequest {
-	r.envelope = &envelope
-	return r
-}
-
-// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
-func (r GetClusterStatusApiRequest) Pretty(pretty bool) GetClusterStatusApiRequest {
-	r.pretty = &pretty
-	return r
 }
 
 func (r GetClusterStatusApiRequest) Execute() (*ClusterStatus, *http.Response, error) {
@@ -501,20 +451,6 @@ func (a *ClustersApiService) getClusterStatusExecute(r GetClusterStatusApiReques
 		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
-	if r.pretty != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	} else {
-		var defaultValue bool = false
-		r.pretty = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -582,13 +518,11 @@ type GetSampleDatasetLoadStatusApiRequest struct {
 	ApiService      ClustersApi
 	groupId         string
 	sampleDatasetId string
-	envelope        *bool
 }
 
 type GetSampleDatasetLoadStatusApiParams struct {
 	GroupId         string
 	SampleDatasetId string
-	Envelope        *bool
 }
 
 func (a *ClustersApiService) GetSampleDatasetLoadStatusWithParams(ctx context.Context, args *GetSampleDatasetLoadStatusApiParams) GetSampleDatasetLoadStatusApiRequest {
@@ -597,14 +531,7 @@ func (a *ClustersApiService) GetSampleDatasetLoadStatusWithParams(ctx context.Co
 		ctx:             ctx,
 		groupId:         args.GroupId,
 		sampleDatasetId: args.SampleDatasetId,
-		envelope:        args.Envelope,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r GetSampleDatasetLoadStatusApiRequest) Envelope(envelope bool) GetSampleDatasetLoadStatusApiRequest {
-	r.envelope = &envelope
-	return r
 }
 
 func (r GetSampleDatasetLoadStatusApiRequest) Execute() (*SampleDatasetStatus, *http.Response, error) {
@@ -666,13 +593,6 @@ func (a *ClustersApiService) getSampleDatasetLoadStatusExecute(r GetSampleDatase
 		return localVarReturnValue, nil, reportError("sampleDatasetId must have less than 24 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -739,22 +659,18 @@ type ListCloudProviderRegionsApiRequest struct {
 	ctx          context.Context
 	ApiService   ClustersApi
 	groupId      string
-	envelope     *bool
 	includeCount *bool
 	itemsPerPage *int
 	pageNum      *int
-	pretty       *bool
 	providers    *[]string
 	tier         *string
 }
 
 type ListCloudProviderRegionsApiParams struct {
 	GroupId      string
-	Envelope     *bool
 	IncludeCount *bool
 	ItemsPerPage *int
 	PageNum      *int
-	Pretty       *bool
 	Providers    *[]string
 	Tier         *string
 }
@@ -764,20 +680,12 @@ func (a *ClustersApiService) ListCloudProviderRegionsWithParams(ctx context.Cont
 		ApiService:   a,
 		ctx:          ctx,
 		groupId:      args.GroupId,
-		envelope:     args.Envelope,
 		includeCount: args.IncludeCount,
 		itemsPerPage: args.ItemsPerPage,
 		pageNum:      args.PageNum,
-		pretty:       args.Pretty,
 		providers:    args.Providers,
 		tier:         args.Tier,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r ListCloudProviderRegionsApiRequest) Envelope(envelope bool) ListCloudProviderRegionsApiRequest {
-	r.envelope = &envelope
-	return r
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
@@ -795,12 +703,6 @@ func (r ListCloudProviderRegionsApiRequest) ItemsPerPage(itemsPerPage int) ListC
 // Number of the page that displays the current set of the total objects that the response returns.
 func (r ListCloudProviderRegionsApiRequest) PageNum(pageNum int) ListCloudProviderRegionsApiRequest {
 	r.pageNum = &pageNum
-	return r
-}
-
-// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
-func (r ListCloudProviderRegionsApiRequest) Pretty(pretty bool) ListCloudProviderRegionsApiRequest {
-	r.pretty = &pretty
 	return r
 }
 
@@ -866,13 +768,6 @@ func (a *ClustersApiService) listCloudProviderRegionsExecute(r ListCloudProvider
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
 	if r.includeCount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
 	} else {
@@ -893,13 +788,6 @@ func (a *ClustersApiService) listCloudProviderRegionsExecute(r ListCloudProvider
 		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
-	}
-	if r.pretty != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	} else {
-		var defaultValue bool = false
-		r.pretty = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
 	}
 	if r.providers != nil {
 		t := *r.providers
@@ -976,37 +864,25 @@ func (a *ClustersApiService) listCloudProviderRegionsExecute(r ListCloudProvider
 type ListClustersForAllProjectsApiRequest struct {
 	ctx          context.Context
 	ApiService   ClustersApi
-	envelope     *bool
 	includeCount *bool
 	itemsPerPage *int
 	pageNum      *int
-	pretty       *bool
 }
 
 type ListClustersForAllProjectsApiParams struct {
-	Envelope     *bool
 	IncludeCount *bool
 	ItemsPerPage *int
 	PageNum      *int
-	Pretty       *bool
 }
 
 func (a *ClustersApiService) ListClustersForAllProjectsWithParams(ctx context.Context, args *ListClustersForAllProjectsApiParams) ListClustersForAllProjectsApiRequest {
 	return ListClustersForAllProjectsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
-		envelope:     args.Envelope,
 		includeCount: args.IncludeCount,
 		itemsPerPage: args.ItemsPerPage,
 		pageNum:      args.PageNum,
-		pretty:       args.Pretty,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r ListClustersForAllProjectsApiRequest) Envelope(envelope bool) ListClustersForAllProjectsApiRequest {
-	r.envelope = &envelope
-	return r
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
@@ -1024,12 +900,6 @@ func (r ListClustersForAllProjectsApiRequest) ItemsPerPage(itemsPerPage int) Lis
 // Number of the page that displays the current set of the total objects that the response returns.
 func (r ListClustersForAllProjectsApiRequest) PageNum(pageNum int) ListClustersForAllProjectsApiRequest {
 	r.pageNum = &pageNum
-	return r
-}
-
-// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
-func (r ListClustersForAllProjectsApiRequest) Pretty(pretty bool) ListClustersForAllProjectsApiRequest {
-	r.pretty = &pretty
 	return r
 }
 
@@ -1074,13 +944,6 @@ func (a *ClustersApiService) listClustersForAllProjectsExecute(r ListClustersFor
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
 	if r.includeCount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
 	} else {
@@ -1101,13 +964,6 @@ func (a *ClustersApiService) listClustersForAllProjectsExecute(r ListClustersFor
 		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
-	}
-	if r.pretty != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	} else {
-		var defaultValue bool = false
-		r.pretty = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1176,13 +1032,11 @@ type LoadSampleDatasetApiRequest struct {
 	ApiService ClustersApi
 	groupId    string
 	name       string
-	envelope   *bool
 }
 
 type LoadSampleDatasetApiParams struct {
-	GroupId  string
-	Name     string
-	Envelope *bool
+	GroupId string
+	Name    string
 }
 
 func (a *ClustersApiService) LoadSampleDatasetWithParams(ctx context.Context, args *LoadSampleDatasetApiParams) LoadSampleDatasetApiRequest {
@@ -1191,14 +1045,7 @@ func (a *ClustersApiService) LoadSampleDatasetWithParams(ctx context.Context, ar
 		ctx:        ctx,
 		groupId:    args.GroupId,
 		name:       args.Name,
-		envelope:   args.Envelope,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r LoadSampleDatasetApiRequest) Envelope(envelope bool) LoadSampleDatasetApiRequest {
-	r.envelope = &envelope
-	return r
 }
 
 func (r LoadSampleDatasetApiRequest) Execute() (*SampleDatasetStatus, *http.Response, error) {
@@ -1260,13 +1107,6 @@ func (a *ClustersApiService) loadSampleDatasetExecute(r LoadSampleDatasetApiRequ
 		return localVarReturnValue, nil, reportError("name must have less than 64 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1335,16 +1175,12 @@ type UpdateClusterAdvancedConfigurationApiRequest struct {
 	groupId                       string
 	clusterName                   string
 	clusterDescriptionProcessArgs *ClusterDescriptionProcessArgs
-	envelope                      *bool
-	pretty                        *bool
 }
 
 type UpdateClusterAdvancedConfigurationApiParams struct {
 	GroupId                       string
 	ClusterName                   string
 	ClusterDescriptionProcessArgs *ClusterDescriptionProcessArgs
-	Envelope                      *bool
-	Pretty                        *bool
 }
 
 func (a *ClustersApiService) UpdateClusterAdvancedConfigurationWithParams(ctx context.Context, args *UpdateClusterAdvancedConfigurationApiParams) UpdateClusterAdvancedConfigurationApiRequest {
@@ -1354,21 +1190,7 @@ func (a *ClustersApiService) UpdateClusterAdvancedConfigurationWithParams(ctx co
 		groupId:                       args.GroupId,
 		clusterName:                   args.ClusterName,
 		clusterDescriptionProcessArgs: args.ClusterDescriptionProcessArgs,
-		envelope:                      args.Envelope,
-		pretty:                        args.Pretty,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r UpdateClusterAdvancedConfigurationApiRequest) Envelope(envelope bool) UpdateClusterAdvancedConfigurationApiRequest {
-	r.envelope = &envelope
-	return r
-}
-
-// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
-func (r UpdateClusterAdvancedConfigurationApiRequest) Pretty(pretty bool) UpdateClusterAdvancedConfigurationApiRequest {
-	r.pretty = &pretty
-	return r
 }
 
 func (r UpdateClusterAdvancedConfigurationApiRequest) Execute() (*ClusterDescriptionProcessArgs, *http.Response, error) {
@@ -1434,20 +1256,6 @@ func (a *ClustersApiService) updateClusterAdvancedConfigurationExecute(r UpdateC
 		return localVarReturnValue, nil, reportError("clusterDescriptionProcessArgs is required and must be specified")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
-	if r.pretty != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	} else {
-		var defaultValue bool = false
-		r.pretty = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
@@ -1517,15 +1325,11 @@ type UpgradeSharedClusterApiRequest struct {
 	ApiService         ClustersApi
 	groupId            string
 	legacyAtlasCluster *LegacyAtlasCluster
-	envelope           *bool
-	pretty             *bool
 }
 
 type UpgradeSharedClusterApiParams struct {
 	GroupId            string
 	LegacyAtlasCluster *LegacyAtlasCluster
-	Envelope           *bool
-	Pretty             *bool
 }
 
 func (a *ClustersApiService) UpgradeSharedClusterWithParams(ctx context.Context, args *UpgradeSharedClusterApiParams) UpgradeSharedClusterApiRequest {
@@ -1534,21 +1338,7 @@ func (a *ClustersApiService) UpgradeSharedClusterWithParams(ctx context.Context,
 		ctx:                ctx,
 		groupId:            args.GroupId,
 		legacyAtlasCluster: args.LegacyAtlasCluster,
-		envelope:           args.Envelope,
-		pretty:             args.Pretty,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r UpgradeSharedClusterApiRequest) Envelope(envelope bool) UpgradeSharedClusterApiRequest {
-	r.envelope = &envelope
-	return r
-}
-
-// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
-func (r UpgradeSharedClusterApiRequest) Pretty(pretty bool) UpgradeSharedClusterApiRequest {
-	r.pretty = &pretty
-	return r
 }
 
 func (r UpgradeSharedClusterApiRequest) Execute() (*LegacyAtlasCluster, *http.Response, error) {
@@ -1605,20 +1395,6 @@ func (a *ClustersApiService) upgradeSharedClusterExecute(r UpgradeSharedClusterA
 		return localVarReturnValue, nil, reportError("legacyAtlasCluster is required and must be specified")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
-	if r.pretty != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	} else {
-		var defaultValue bool = false
-		r.pretty = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
@@ -1688,15 +1464,11 @@ type UpgradeSharedClusterToServerlessApiRequest struct {
 	ApiService                    ClustersApi
 	groupId                       string
 	serverlessInstanceDescription *ServerlessInstanceDescription
-	envelope                      *bool
-	pretty                        *bool
 }
 
 type UpgradeSharedClusterToServerlessApiParams struct {
 	GroupId                       string
 	ServerlessInstanceDescription *ServerlessInstanceDescription
-	Envelope                      *bool
-	Pretty                        *bool
 }
 
 func (a *ClustersApiService) UpgradeSharedClusterToServerlessWithParams(ctx context.Context, args *UpgradeSharedClusterToServerlessApiParams) UpgradeSharedClusterToServerlessApiRequest {
@@ -1705,21 +1477,7 @@ func (a *ClustersApiService) UpgradeSharedClusterToServerlessWithParams(ctx cont
 		ctx:                           ctx,
 		groupId:                       args.GroupId,
 		serverlessInstanceDescription: args.ServerlessInstanceDescription,
-		envelope:                      args.Envelope,
-		pretty:                        args.Pretty,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r UpgradeSharedClusterToServerlessApiRequest) Envelope(envelope bool) UpgradeSharedClusterToServerlessApiRequest {
-	r.envelope = &envelope
-	return r
-}
-
-// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
-func (r UpgradeSharedClusterToServerlessApiRequest) Pretty(pretty bool) UpgradeSharedClusterToServerlessApiRequest {
-	r.pretty = &pretty
-	return r
 }
 
 func (r UpgradeSharedClusterToServerlessApiRequest) Execute() (*ServerlessInstanceDescription, *http.Response, error) {
@@ -1776,20 +1534,6 @@ func (a *ClustersApiService) upgradeSharedClusterToServerlessExecute(r UpgradeSh
 		return localVarReturnValue, nil, reportError("serverlessInstanceDescription is required and must be specified")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
-	if r.pretty != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	} else {
-		var defaultValue bool = false
-		r.pretty = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 

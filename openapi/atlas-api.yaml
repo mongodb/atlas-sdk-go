@@ -204,9 +204,6 @@ paths:
       description: This resource returns information about the MongoDB application
         along with API key meta data.
       operationId: getSystemStatus
-      parameters:
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
       responses:
         "200":
           content:
@@ -230,9 +227,6 @@ paths:
         when you create or update an Alert Configuration. You can successfully call
         this endpoint with any assigned role.
       operationId: listAlertConfigurationMatchersFieldNames
-      parameters:
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
       responses:
         "200":
           content:
@@ -261,11 +255,11 @@ paths:
         \ doesn't require the API Key to have an Access List."
       operationId: listClustersForAllProjects
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "200":
           content:
@@ -322,7 +316,7 @@ paths:
       operationId: listConnectedOrgConfigs
       parameters:
       - $ref: '#/components/parameters/federationSettingsId'
-      - $ref: '#/components/parameters/envelope'
+      
       responses:
         "200":
           content:
@@ -354,7 +348,7 @@ paths:
       operationId: removeConnectedOrgConfig
       parameters:
       - $ref: '#/components/parameters/federationSettingsId'
-      - $ref: '#/components/parameters/envelope'
+      
       - description: Unique 24-hexadecimal digit string that identifies the connected
           organization configuration to remove.
         in: path
@@ -395,7 +389,7 @@ paths:
       operationId: getConnectedOrgConfig
       parameters:
       - $ref: '#/components/parameters/federationSettingsId'
-      - $ref: '#/components/parameters/envelope'
+      
       - description: Unique 24-hexadecimal digit string that identifies the connected
           organization configuration to return.
         in: path
@@ -441,7 +435,7 @@ paths:
       operationId: updateConnectedOrgConfig
       parameters:
       - $ref: '#/components/parameters/federationSettingsId'
-      - $ref: '#/components/parameters/envelope'
+      
       - description: Unique 24-hexadecimal digit string that identifies the connected
           organization configuration to update.
         in: path
@@ -490,7 +484,7 @@ paths:
       operationId: listRoleMappings
       parameters:
       - $ref: '#/components/parameters/federationSettingsId'
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/orgId'
       responses:
         "200":
@@ -523,7 +517,7 @@ paths:
       operationId: createRoleMapping
       parameters:
       - $ref: '#/components/parameters/federationSettingsId'
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/orgId'
       requestBody:
         content:
@@ -573,7 +567,7 @@ paths:
           maxLength: 24
           minLength: 24
           pattern: "^([a-f0-9]{24})$"
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/orgId'
       responses:
         "204":
@@ -613,7 +607,7 @@ paths:
           maxLength: 24
           minLength: 24
           pattern: "^([a-f0-9]{24})$"
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/orgId'
       responses:
         "200":
@@ -655,7 +649,7 @@ paths:
           maxLength: 24
           minLength: 24
           pattern: "^([a-f0-9]{24})$"
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/orgId'
       requestBody:
         content:
@@ -694,7 +688,7 @@ paths:
       operationId: listIdentityProviders
       parameters:
       - $ref: '#/components/parameters/federationSettingsId'
-      - $ref: '#/components/parameters/envelope'
+      
       responses:
         "200":
           content:
@@ -728,7 +722,7 @@ paths:
       parameters:
       - $ref: '#/components/parameters/federationSettingsId'
       - $ref: '#/components/parameters/identityProviderId'
-      - $ref: '#/components/parameters/envelope'
+      
       responses:
         "200":
           content:
@@ -759,7 +753,7 @@ paths:
       parameters:
       - $ref: '#/components/parameters/federationSettingsId'
       - $ref: '#/components/parameters/identityProviderId'
-      - $ref: '#/components/parameters/envelope'
+      
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -828,11 +822,11 @@ paths:
         \ This resource doesn't require the API Key to have an Access List."
       operationId: listProjects
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "200":
           content:
@@ -858,8 +852,8 @@ paths:
         \ doesn't require the API Key to have an Access List."
       operationId: createProject
       parameters:
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       - description: "Unique 24-hexadecimal digit string that identifies the MongoDB\
           \ Cloud user to whom to grant the Project Owner role on the specified project.\
           \ If you set this parameter, it overrides the default value of the oldest\
@@ -913,8 +907,8 @@ paths:
         \ List."
       operationId: getProjectByName
       parameters:
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       - description: Human-readable label that identifies this project.
         in: path
         name: groupName
@@ -955,9 +949,9 @@ paths:
         \ Access List."
       operationId: deleteProject
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "204":
           content:
@@ -986,9 +980,9 @@ paths:
         \ List."
       operationId: getProject
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "200":
           content:
@@ -1015,9 +1009,9 @@ paths:
         \ List."
       operationId: updateProject
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -1066,12 +1060,12 @@ paths:
         url: https://docs.atlas.mongodb.com/security/ip-access-list/#std-label-access-list
       operationId: listProjectIpAccessLists
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "200":
           content:
@@ -1108,12 +1102,12 @@ paths:
         url: https://docs.atlas.mongodb.com/security/ip-access-list/#std-label-access-list
       operationId: createProjectIpAccessList
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -1162,9 +1156,9 @@ paths:
         url: https://docs.atlas.mongodb.com/security/ip-access-list/#std-label-access-list
       operationId: deleteProjectIpAccessList
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: |-
           Access list entry that you want to remove from the project's IP access list. This value can use one of the following: one AWS security group ID, one IP address, or one CIDR block of addresses. For CIDR blocks that use a subnet mask, replace the forward slash (`/`) with its URL-encoded value (`%2F`). When you remove an entry from the IP access list, existing connections from the removed address or addresses may remain open for a variable amount of time. The amount of time it takes MongoDB Cloud to close the connection depends upon several factors, including:
 
@@ -1219,9 +1213,9 @@ paths:
         url: https://docs.atlas.mongodb.com/security/ip-access-list/#std-label-access-list
       operationId: getProjectIpList
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: "Access list entry that you want to return from the project's\
           \ IP access list. This value can use one of the following: one AWS security\
           \ group ID, one IP address, or one CIDR block of addresses. For CIDR blocks\
@@ -1266,9 +1260,9 @@ paths:
         serving clusters from the specified project.
       operationId: getProjectIpAccessListStatus
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Network address or cloud provider security construct that identifies
           which project access list entry to be verified.
         in: path
@@ -1313,12 +1307,12 @@ paths:
          This resource remains under revision and may change.
       operationId: listAlertConfigurations
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "200":
           content:
@@ -1343,9 +1337,9 @@ paths:
          This resource remains under revision and may change.
       operationId: createAlertConfiguration
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -1380,9 +1374,9 @@ paths:
          This resource remains under revision and may change.
       operationId: deleteAlertConfiguration
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: "Unique 24-hexadecimal digit string that identifies the alert\
           \ configuration. Use the [/alertConfigs](#tag/Alert-Configurations/operation/listAlertConfigurations)\
           \ endpoint to retrieve all alert configurations to which the authenticated\
@@ -1420,9 +1414,9 @@ paths:
          This resource remains under revision and may change.
       operationId: getAlertConfiguration
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: "Unique 24-hexadecimal digit string that identifies the alert\
           \ configuration. Use the [/alertConfigs](#tag/Alert-Configurations/operation/listAlertConfigurations)\
           \ endpoint to retrieve all alert configurations to which the authenticated\
@@ -1464,9 +1458,9 @@ paths:
         This resource remains under revision and may change.
       operationId: toggleAlertConfiguration
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: "Unique 24-hexadecimal digit string that identifies the alert\
           \ configuration that triggered this alert. Use the [/alertConfigs](#tag/Alert-Configurations/operation/listAlertConfigurations)\
           \ endpoint to retrieve all alert configurations to which the authenticated\
@@ -1516,9 +1510,9 @@ paths:
          This resource remains under revision and may change.
       operationId: updateAlertConfiguration
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: "Unique 24-hexadecimal digit string that identifies the alert\
           \ configuration. Use the [/alertConfigs](#tag/Alert-Configurations/operation/listAlertConfigurations)\
           \ endpoint to retrieve all alert configurations to which the authenticated\
@@ -1568,12 +1562,12 @@ paths:
          This resource remains under revision and may change.
       operationId: listAlertsByAlertConfigurationId
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: "Unique 24-hexadecimal digit string that identifies the alert\
           \ configuration. Use the [/alertConfigs](#tag/Alert-Configurations/operation/listAlertConfigurations)\
           \ endpoint to retrieve all alert configurations to which the authenticated\
@@ -1614,12 +1608,12 @@ paths:
          This resource remains under revision and may change.
       operationId: listAlerts
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Status of the alerts to return. Omit to return all alerts in
           all statuses.
         in: query
@@ -1657,9 +1651,9 @@ paths:
          This resource remains under revision and may change.
       operationId: getAlert
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: "Unique 24-hexadecimal digit string that identifies the alert.\
           \ Use the [/alerts](#tag/Alerts/operation/listAlerts) endpoint to retrieve\
           \ all alerts to which the authenticated user has access."
@@ -1697,9 +1691,9 @@ paths:
          This resource remains under revision and may change.
       operationId: acknowledgeAlert
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: "Unique 24-hexadecimal digit string that identifies the alert.\
           \ Use the [/alerts](#tag/Alerts/operation/listAlerts) endpoint to retrieve\
           \ all alerts to which the authenticated user has access."
@@ -1747,9 +1741,9 @@ paths:
          This resource remains under revision and may change.
       operationId: listAlertConfigurationsByAlertId
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
@@ -1795,12 +1789,12 @@ paths:
         url: https://docs.atlas.mongodb.com/configure-api-access/#std-label-atlas-prog-api-key
       operationId: listProjectApiKeys
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "200":
           content:
@@ -1827,9 +1821,9 @@ paths:
         \ List."
       operationId: createProjectApiKey
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -1865,7 +1859,7 @@ paths:
         url: https://docs.atlas.mongodb.com/configure-api-access/#std-label-atlas-prog-api-key
       operationId: removeProjectApiKey
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - description: Unique 24-hexadecimal digit string that identifies this organization
           API key that you want to unassign from one project.
@@ -1877,7 +1871,7 @@ paths:
           maxLength: 24
           minLength: 24
           pattern: "^([a-f0-9]{24})$"
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "204":
           content:
@@ -1909,8 +1903,8 @@ paths:
       - $ref: '#/components/parameters/pageNum'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/includeCount'
-      - $ref: '#/components/parameters/pretty'
-      - $ref: '#/components/parameters/envelope'
+     
+      
       - description: Unique 24-hexadecimal digit string that identifies this organization
           API key that you want to unassign from one project.
         in: path
@@ -1956,7 +1950,7 @@ paths:
         \ This resource doesn't require the API Key to have an Access List."
       operationId: addProjectApiKey
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - description: Unique 24-hexadecimal digit string that identifies this organization
           API key that you want to assign to one project.
@@ -1968,7 +1962,7 @@ paths:
           maxLength: 24
           minLength: 24
           pattern: "^([a-f0-9]{24})$"
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -2005,9 +1999,9 @@ paths:
         \ clusters."
       operationId: getAuditingConfiguration
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "200":
           content:
@@ -2034,9 +2028,9 @@ paths:
         \ clusters."
       operationId: updateAuditingConfiguration
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -2071,9 +2065,9 @@ paths:
         \ List."
       operationId: getAWSCustomDNS
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "200":
           content:
@@ -2099,9 +2093,9 @@ paths:
         \ Key to have an Access List."
       operationId: toggleAWSCustomDNS
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -2135,12 +2129,12 @@ paths:
         \ Only role. This resource doesn't require the API Key to have an Access List."
       operationId: listExportBuckets
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "200":
           content:
@@ -2165,9 +2159,9 @@ paths:
         \ resource doesn't require the API Key to have an Access List."
       operationId: createExportBucket
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -2204,7 +2198,7 @@ paths:
         \ resource doesn't require the API Key to have an Access List."
       operationId: deleteExportBucket
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - description: Unique string that identifies the AWS S3 bucket to which you
           export your snapshots.
@@ -2243,7 +2237,7 @@ paths:
         \ Only role. This resource doesn't require the API Key to have an Access List."
       operationId: getExportBucket
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - description: Unique string that identifies the AWS S3 bucket to which you
           export your snapshots.
@@ -2282,9 +2276,9 @@ paths:
         \ List."
       operationId: getDataProtectionSettings
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "200":
           content:
@@ -2311,9 +2305,9 @@ paths:
         \ List."
       operationId: updateDataProtectionSettings
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -2349,9 +2343,9 @@ paths:
         \ require the API Key to have an Access List."
       operationId: listCloudProviderAccessRoles
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "200":
           content:
@@ -2379,9 +2373,9 @@ paths:
         url: https://www.mongodb.com/docs/atlas/security/set-up-unified-aws-access/#std-label-set-up-unified-aws-access
       operationId: createCloudProviderAccessRole
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -2414,9 +2408,9 @@ paths:
         \ List."
       operationId: deauthorizeCloudProviderAccessRole
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the cloud provider of the
           role to deauthorize.
         in: path
@@ -2460,9 +2454,9 @@ paths:
         \ role. This resource doesn't require the API Key to have an Access List."
       operationId: getCloudProviderAccessRole
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Unique 24-hexadecimal digit string that identifies the role.
         in: path
         name: roleId
@@ -2501,9 +2495,9 @@ paths:
         url: https://www.mongodb.com/docs/atlas/security/set-up-unified-aws-access/#std-label-set-up-unified-aws-access
       operationId: authorizeCloudProviderAccessRole
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Unique 24-hexadecimal digit string that identifies the role.
         in: path
         name: roleId
@@ -2552,12 +2546,12 @@ paths:
         \ available for serverless clusters. Deprecated versions: v2-{2023-01-01}"
       operationId: listClusters
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "200":
           content:
@@ -2585,9 +2579,9 @@ paths:
         \ v2-{2023-01-01}"
       operationId: createCluster
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-02-01+json:
@@ -2709,12 +2703,12 @@ paths:
         \ the API Key to have an Access List."
       operationId: listCloudProviderRegions
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: "Cloud providers whose regions to retrieve. When you specify\
           \ multiple providers, the response can return only tiers and regions that\
           \ support multi-cloud clusters."
@@ -2754,9 +2748,9 @@ paths:
         \ Each project supports up to 25 clusters."
       operationId: upgradeSharedCluster
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -2797,9 +2791,9 @@ paths:
         \ key to have an Access List."
       operationId: upgradeSharedClusterToServerless
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -2842,8 +2836,8 @@ paths:
         \ versions: v2-{2023-01-01}"
       operationId: deleteCluster
       parameters:
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       - $ref: '#/components/parameters/groupId'
       - description: Human-readable label that identifies the cluster.
         in: path
@@ -2890,8 +2884,8 @@ paths:
         \ clusters. Deprecated versions: v2-{2023-01-01}"
       operationId: getCluster
       parameters:
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       - $ref: '#/components/parameters/groupId'
       - description: Human-readable label that identifies this advanced cluster.
         in: path
@@ -2937,9 +2931,9 @@ paths:
         \ versions: v2-{2023-01-01}"
       operationId: updateCluster
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the cluster.
         in: path
         name: clusterName
@@ -2987,9 +2981,9 @@ paths:
         \ API Key to have an Access List."
       operationId: listBackupExportJobs
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
@@ -3026,7 +3020,7 @@ paths:
         \ the API Key to have an Access List."
       operationId: createBackupExportJob
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - description: Human-readable label that identifies the cluster.
         in: path
@@ -3075,7 +3069,7 @@ paths:
         \ Key to have an Access List."
       operationId: getBackupExportJob
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - description: Human-readable label that identifies the cluster.
         in: path
@@ -3117,12 +3111,12 @@ paths:
         \ the Project Owner role and an entry for the project access list."
       operationId: listBackupRestoreJobs
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the cluster with the restore
           jobs you want to return.
         in: path
@@ -3157,9 +3151,9 @@ paths:
          To use this resource, the requesting API Key must have the Project Owner role and an entry for the project access list.
       operationId: createBackupRestoreJob
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the cluster.
         in: path
         name: clusterName
@@ -3206,8 +3200,8 @@ paths:
         \ Owner role and an entry for the project access list."
       operationId: cancelBackupRestoreJob
       parameters:
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       - $ref: '#/components/parameters/groupId'
       - description: Human-readable label that identifies the cluster.
         in: path
@@ -3253,9 +3247,9 @@ paths:
         \ the Project Owner role and an entry for the project access list."
       operationId: getBackupRestoreJob
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the cluster with the restore
           jobs you want to return.
         in: path
@@ -3302,7 +3296,7 @@ paths:
         \ access list."
       operationId: deleteAllBackupSchedules
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - description: Human-readable label that identifies the cluster.
         in: path
@@ -3340,8 +3334,8 @@ paths:
         \ doesn't require the API Key to have an Access List."
       operationId: getBackupSchedule
       parameters:
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       - $ref: '#/components/parameters/groupId'
       - description: Human-readable label that identifies the cluster.
         in: path
@@ -3377,9 +3371,9 @@ paths:
         \ list."
       operationId: updateBackupSchedule
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the cluster.
         in: path
         name: clusterName
@@ -3425,12 +3419,12 @@ paths:
         \ Only role. This resource doesn't require the API Key to have an Access List."
       operationId: listReplicaSetBackups
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the cluster.
         in: path
         name: clusterName
@@ -3466,8 +3460,8 @@ paths:
          To use this resource, the requesting API Key must have the Project Owner role and an entry for the project access list.
       operationId: takeSnapshot
       parameters:
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       - $ref: '#/components/parameters/groupId'
       - description: Human-readable label that identifies the cluster.
         in: path
@@ -3511,9 +3505,9 @@ paths:
         \ Owner role and an entry for the project access list."
       operationId: deleteShardedClusterBackup
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the cluster.
         in: path
         name: clusterName
@@ -3557,9 +3551,9 @@ paths:
         \ List."
       operationId: getShardedClusterBackup
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the cluster.
         in: path
         name: clusterName
@@ -3606,9 +3600,9 @@ paths:
         \ List."
       operationId: listShardedClusterBackups
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the cluster.
         in: path
         name: clusterName
@@ -3644,9 +3638,9 @@ paths:
         \ list."
       operationId: deleteReplicaSetBackup
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the cluster.
         in: path
         name: clusterName
@@ -3691,9 +3685,9 @@ paths:
         \ doesn't require the API Key to have an Access List."
       operationId: getReplicaSetBackup
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the cluster.
         in: path
         name: clusterName
@@ -3738,9 +3732,9 @@ paths:
         to have an Access List.
       operationId: updateSnapshotRetention
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the cluster.
         in: path
         name: clusterName
@@ -3805,9 +3799,9 @@ paths:
           maxLength: 64
           minLength: 1
           pattern: "^[a-zA-Z0-9][a-zA-Z0-9-]*$"
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -3860,9 +3854,9 @@ paths:
           maxLength: 64
           minLength: 1
           pattern: "^[a-zA-Z0-9][a-zA-Z0-9-]*$"
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -3910,9 +3904,9 @@ paths:
           maxLength: 64
           minLength: 1
           pattern: "^[a-zA-Z0-9][a-zA-Z0-9-]*$"
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "200":
           content:
@@ -3948,9 +3942,9 @@ paths:
           maxLength: 64
           minLength: 1
           pattern: "^[a-zA-Z0-9][a-zA-Z0-9-]*$"
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Unique 24-hexadecimal digit string that identifies the restore
           job to return.
         in: path
@@ -3987,9 +3981,9 @@ paths:
         \ Only role. This resource doesn't require the API Key to have an Access List."
       operationId: listSharedClusterBackups
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the cluster.
         in: path
         name: clusterName
@@ -4025,9 +4019,9 @@ paths:
         \ Only role. This resource doesn't require the API Key to have an Access List."
       operationId: getSharedClusterBackup
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the cluster.
         in: path
         name: clusterName
@@ -4075,12 +4069,12 @@ paths:
         \ List."
       operationId: listLegacyBackupCheckpoints
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the cluster that contains
           the checkpoints that you want to return.
         in: path
@@ -4117,9 +4111,9 @@ paths:
         \ List."
       operationId: getLegacyBackupCheckpoint
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Unique 24-hexadecimal digit string that identifies the checkpoint.
         in: path
         name: checkpointId
@@ -4173,9 +4167,9 @@ paths:
         url: https://docs.atlas.mongodb.com/reference/atlas-search/index-definitions/
       operationId: createAtlasSearchIndex
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Name of the cluster that contains the collection on which to
           create an Atlas Search index.
         in: path
@@ -4224,9 +4218,9 @@ paths:
         url: https://docs.atlas.mongodb.com/reference/atlas-search/index-definitions/
       operationId: listAtlasSearchIndexes
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Name of the cluster that contains the collection with one or
           more Atlas Search indexes.
         in: path
@@ -4281,9 +4275,9 @@ paths:
         url: https://docs.atlas.mongodb.com/reference/atlas-search/index-definitions/
       operationId: deleteAtlasSearchIndex
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Name of the cluster that contains the database and collection
           with one or more Application Search indexes.
         in: path
@@ -4335,9 +4329,9 @@ paths:
         url: https://docs.atlas.mongodb.com/reference/atlas-search/index-definitions/
       operationId: getAtlasSearchIndex
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Name of the cluster that contains the collection with one or
           more Atlas Search indexes.
         in: path
@@ -4388,9 +4382,9 @@ paths:
         url: https://docs.atlas.mongodb.com/reference/atlas-search/index-definitions/
       operationId: updateAtlasSearchIndex
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Name of the cluster that contains the collection whose Atlas
           Search index to update.
         in: path
@@ -4451,8 +4445,8 @@ paths:
         url: https://www.mongodb.com/docs/atlas/global-clusters/
       operationId: getManagedNamespace
       parameters:
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       - $ref: '#/components/parameters/groupId'
       - description: Human-readable label that identifies this advanced cluster.
         in: path
@@ -4494,8 +4488,8 @@ paths:
         url: https://www.mongodb.com/docs/atlas/global-clusters/
       operationId: deleteAllCustomZoneMappings
       parameters:
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       - $ref: '#/components/parameters/groupId'
       - description: Human-readable label that identifies this advanced cluster.
         in: path
@@ -4535,8 +4529,8 @@ paths:
         url: https://www.mongodb.com/docs/atlas/global-clusters/
       operationId: createCustomZoneMapping
       parameters:
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       - $ref: '#/components/parameters/groupId'
       - description: Human-readable label that identifies this advanced cluster.
         in: path
@@ -4587,8 +4581,8 @@ paths:
         url: https://www.mongodb.com/docs/atlas/global-clusters/
       operationId: deleteManagedNamespace
       parameters:
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       - description: Human-readable label that identifies this advanced cluster.
         in: path
         name: clusterName
@@ -4641,8 +4635,8 @@ paths:
         url: https://www.mongodb.com/docs/atlas/global-clusters/
       operationId: createManagedNamespace
       parameters:
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       - $ref: '#/components/parameters/groupId'
       - description: Human-readable label that identifies this advanced cluster.
         in: path
@@ -4695,9 +4689,9 @@ paths:
         url: https://docs.mongodb.com/manual/tutorial/build-indexes-on-replica-sets/
       operationId: createRollingIndex
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the cluster on which MongoDB
           Cloud creates an index.
         in: path
@@ -4743,12 +4737,12 @@ paths:
         url: https://docs.atlas.mongodb.com/online-archive/manage-online-archive/#std-label-manage-online-archive
       operationId: listOnlineArchives
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the cluster that contains
           the collection for which you want to return the online archives.
         in: path
@@ -4786,9 +4780,9 @@ paths:
         url: https://docs.atlas.mongodb.com/online-archive/manage-online-archive/#std-label-manage-online-archive
       operationId: createOnlineArchive
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the cluster that contains
           the collection for which you want to create one online archive.
         in: path
@@ -4841,7 +4835,7 @@ paths:
       operationId: downloadOnlineArchiveQueryLogs
       parameters:
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/envelope'
+      
       - description: "Date and time that specifies the starting point for the range\
           \ of log messages to return. This resource expresses this value in the number\
           \ of seconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time)."
@@ -4919,8 +4913,8 @@ paths:
       operationId: deleteOnlineArchive
       parameters:
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       - description: Unique 24-hexadecimal digit string that identifies the online
           archive to delete.
         in: path
@@ -4970,9 +4964,9 @@ paths:
         url: https://docs.atlas.mongodb.com/online-archive/manage-online-archive/#std-label-manage-online-archive
       operationId: getOnlineArchive
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Unique 24-hexadecimal digit string that identifies the online
           archive to return.
         in: path
@@ -5024,9 +5018,9 @@ paths:
         url: https://docs.atlas.mongodb.com/online-archive/manage-online-archive/#std-label-manage-online-archive
       operationId: updateOnlineArchive
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Unique 24-hexadecimal digit string that identifies the online
           archive to update.
         in: path
@@ -5085,8 +5079,8 @@ paths:
         url: https://dochub.mongodb.org/core/test-regional-outage
       operationId: endOutageSimulation
       parameters:
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       - $ref: '#/components/parameters/groupId'
       - description: Human-readable label that identifies the cluster that is undergoing
           outage simulation.
@@ -5126,8 +5120,8 @@ paths:
         url: https://dochub.mongodb.org/core/test-regional-outage
       operationId: getOutageSimulation
       parameters:
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       - $ref: '#/components/parameters/groupId'
       - description: Human-readable label that identifies the cluster that is undergoing
           outage simulation.
@@ -5167,8 +5161,8 @@ paths:
         url: https://dochub.mongodb.org/core/test-regional-outage
       operationId: startOutageSimulation
       parameters:
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       - $ref: '#/components/parameters/groupId'
       - description: Human-readable label that identifies the cluster to undergo an
           outage simulation.
@@ -5221,9 +5215,9 @@ paths:
         url: https://www.mongodb.com/docs/atlas/global-clusters/
       operationId: getClusterAdvancedConfiguration
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the cluster.
         in: path
         name: clusterName
@@ -5266,9 +5260,9 @@ paths:
         url: https://www.mongodb.com/docs/atlas/global-clusters/
       operationId: updateClusterAdvancedConfiguration
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the cluster.
         in: path
         name: clusterName
@@ -5318,9 +5312,9 @@ paths:
         \ API Key to have an Access List. Deprecated versions: v2-{2023-01-01}"
       operationId: testFailover
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the cluster.
         in: path
         name: clusterName
@@ -5354,12 +5348,12 @@ paths:
          Effective 23 March 2020, all new clusters can use only Cloud Backups. When you upgrade to 4.2, your backup system upgrades to cloud backup if it is currently set to legacy backup. After this upgrade, all your existing legacy backup snapshots remain available. They expire over time in accordance with your retention policy. Your backup policy resets to the default schedule. If you had a custom backup policy in place with legacy backups, you must re-create it with the procedure outlined in the [Cloud Backup documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/scheduling/#std-label-cloud-provider-backup-schedule). If you use the `BATCH-ID` query parameter, you can retrieve all restore jobs in the specified batch. When creating a restore job for a sharded cluster, MongoDB Cloud creates a separate job for each shard, plus another for the config server. Each of those jobs are part of a batch. However, a batch can't include a restore job for a replica set.
       operationId: listLegacyBackupRestoreJobs
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: "Unique 24-hexadecimal digit string that identifies the batch\
           \ of restore jobs to return. Timestamp in ISO 8601 date and time format\
           \ in UTC when creating a restore job for a sharded cluster, Application\
@@ -5421,9 +5415,9 @@ paths:
         \ cluster prior to the restore."
       operationId: createLegacyBackupRestoreJob
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the cluster with the snapshot
           you want to return.
         in: path
@@ -5469,9 +5463,9 @@ paths:
          Effective 23 March 2020, all new clusters can use only Cloud Backups. When you upgrade to 4.2, your backup system upgrades to cloud backup if it is currently set to legacy backup. After this upgrade, all your existing legacy backup snapshots remain available. They expire over time in accordance with your retention policy. Your backup policy resets to the default schedule. If you had a custom backup policy in place with legacy backups, you must re-create it with the procedure outlined in the [Cloud Backup documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/scheduling/#std-label-cloud-provider-backup-schedule).
       operationId: getLegacyBackupRestoreJob
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the cluster with the snapshot
           you want to return.
         in: path
@@ -5520,9 +5514,9 @@ paths:
          Effective 23 March 2020, all new clusters can use only Cloud Backups. When you upgrade to 4.2, your backup system upgrades to cloud backup if it is currently set to legacy backup. After this upgrade, all your existing legacy backup snapshots remain available. They expire over time in accordance with your retention policy. Your backup policy resets to the default schedule. If you had a custom backup policy in place with legacy backups, you must re-create it with the procedure outlined in the [Cloud Backup documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/scheduling/#std-label-cloud-provider-backup-schedule).
       operationId: getLegacySnapshotSchedule
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the cluster with the snapshot
           you want to return.
         in: path
@@ -5558,8 +5552,8 @@ paths:
          Effective 23 March 2020, all new clusters can use only Cloud Backups. When you upgrade to 4.2, your backup system upgrades to cloud backup if it is currently set to legacy backup. After this upgrade, all your existing legacy backup snapshots remain available. They expire over time in accordance with your retention policy. Your backup policy resets to the default schedule. If you had a custom backup policy in place with legacy backups, you must re-create it with the procedure outlined in the [Cloud Backup documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/scheduling/#std-label-cloud-provider-backup-schedule).
       operationId: updateLegacySnapshotSchedule
       parameters:
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       - $ref: '#/components/parameters/groupId'
       - description: Human-readable label that identifies the cluster with the snapshot
           you want to return.
@@ -5611,12 +5605,12 @@ paths:
         \ re-create it with the procedure outlined in the [Cloud Backup documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/scheduling/#std-label-cloud-provider-backup-schedule)."
       operationId: listLegacySnapshots
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the cluster.
         in: path
         name: clusterName
@@ -5670,9 +5664,9 @@ paths:
         \ outlined in the [Cloud Backup documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/scheduling/#std-label-cloud-provider-backup-schedule)."
       operationId: deleteLegacySnapshot
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the cluster.
         in: path
         name: clusterName
@@ -5725,9 +5719,9 @@ paths:
         \ re-create it with the procedure outlined in the [Cloud Backup documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/scheduling/#std-label-cloud-provider-backup-schedule)."
       operationId: getLegacySnapshot
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the cluster.
         in: path
         name: clusterName
@@ -5778,9 +5772,9 @@ paths:
         \ re-create it with the procedure outlined in the [Cloud Backup documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/scheduling/#std-label-cloud-provider-backup-schedule)."
       operationId: updateLegacySnapshotRetention
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the cluster.
         in: path
         name: clusterName
@@ -5834,9 +5828,9 @@ paths:
         \ doesn't require the API Key to have an Access List."
       operationId: getClusterStatus
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the cluster.
         in: path
         name: clusterName
@@ -5878,7 +5872,7 @@ paths:
         \ API Key to have an Access List. Deprecated versions: v2-{2023-01-01}"
       operationId: getHostLogs
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - description: Human-readable label that identifies the host that stores the
           log files that you want to download.
@@ -5961,12 +5955,12 @@ paths:
         \ require the API Key to have an Access List."
       operationId: listPeeringContainerByCloudProvider
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Cloud service provider that serves the desired network peering
           containers.
         in: query
@@ -6008,9 +6002,9 @@ paths:
         \ the API Key to have an Access List."
       operationId: createPeeringContainer
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -6051,12 +6045,12 @@ paths:
         \ Only role. This resource doesn't require the API Key to have an Access List."
       operationId: listPeeringContainers
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "200":
           content:
@@ -6081,9 +6075,9 @@ paths:
         \ role. This resource doesn't require the API Key to have an Access List."
       operationId: deletePeeringContainer
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Unique 24-hexadecimal digit string that identifies the MongoDB
           Cloud network container that you want to remove.
         in: path
@@ -6125,9 +6119,9 @@ paths:
         \ Only role. This resource doesn't require the API Key to have an Access List."
       operationId: getPeeringContainer
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Unique 24-hexadecimal digit string that identifies the MongoDB
           Cloud network container that you want to remove.
         in: path
@@ -6163,9 +6157,9 @@ paths:
         \ the API Key to have an Access List."
       operationId: updatePeeringContainer
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Unique 24-hexadecimal digit string that identifies the MongoDB
           Cloud network container that you want to remove.
         in: path
@@ -6217,9 +6211,9 @@ paths:
         \ resource doesn't require the API Key to have an Access List."
       operationId: listCustomDatabaseRoles
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "200":
           content:
@@ -6245,9 +6239,9 @@ paths:
         \ resource doesn't require the API Key to have an Access List."
       operationId: createCustomDatabaseRole
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -6290,9 +6284,9 @@ paths:
         \ the API Key to have an Access List."
       operationId: deleteCustomDatabaseRole
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the role for the request.
           This name must be unique for this custom role in this project.
         in: path
@@ -6328,9 +6322,9 @@ paths:
         \ resource doesn't require the API Key to have an Access List."
       operationId: getCustomDatabaseRole
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the role for the request.
           This name must be unique for this custom role in this project.
         in: path
@@ -6364,9 +6358,9 @@ paths:
         \ resource doesn't require the API Key to have an Access List."
       operationId: updateCustomDatabaseRole
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the role for the request.
           This name must beunique for this custom role in this project.
         in: path
@@ -6415,8 +6409,8 @@ paths:
         \ API Key to have an Access List."
       operationId: listFederatedDatabases
       parameters:
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       - $ref: '#/components/parameters/groupId'
       - description: Type of Federated Database Instances to return.
         in: query
@@ -6453,8 +6447,8 @@ paths:
         \ to have an Access List."
       operationId: createFederatedDatabase
       parameters:
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       - $ref: '#/components/parameters/groupId'
       - description: Flag that indicates whether this request should check if the
           requesting IAM role can read from the S3 bucket. AWS checks if the role
@@ -6498,9 +6492,9 @@ paths:
         \ to have an Access List."
       operationId: deleteFederatedDatabase
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the federated database instance
           to remove.
         in: path
@@ -6532,7 +6526,7 @@ paths:
         \ doesn't require the API Key to have an Access List."
       operationId: getFederatedDatabase
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - description: Human-readable label that identifies the Federated Database to
           return.
@@ -6569,8 +6563,8 @@ paths:
         \ Key to have an Access List."
       operationId: updateFederatedDatabase
       parameters:
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       - $ref: '#/components/parameters/groupId'
       - description: Human-readable label that identifies the federated database instance
           to update.
@@ -6623,8 +6617,8 @@ paths:
         \ have an Access List."
       operationId: returnFederatedDatabaseQueryLimits
       parameters:
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       - $ref: '#/components/parameters/groupId'
       - description: Human-readable label that identifies the federated database instance
           for which you want to retrieve query limits.
@@ -6661,7 +6655,7 @@ paths:
         \ This resource doesn't require the API Key to have an Access List."
       operationId: deleteOneDataFederationInstanceQueryLimit
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - description: Human-readable label that identifies the federated database instance
           to which the query limit applies.
@@ -6713,8 +6707,8 @@ paths:
         \ the API Key to have an Access List."
       operationId: returnFederatedDatabaseQueryLimit
       parameters:
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       - $ref: '#/components/parameters/groupId'
       - description: Human-readable label that identifies the federated database instance
           to which the query limit applies.
@@ -6766,7 +6760,7 @@ paths:
         \ List."
       operationId: createOneDataFederationQueryLimit
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - description: Human-readable label that identifies the federated database instance
           to which the query limit applies.
@@ -6893,12 +6887,12 @@ paths:
         \ Only role. This resource doesn't require the API Key to have an Access List."
       operationId: listDatabaseUsers
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "200":
           content:
@@ -6925,9 +6919,9 @@ paths:
         \ to have an Access List."
       operationId: createDatabaseUser
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -7020,9 +7014,9 @@ paths:
         \ resource doesn't require the API Key to have an Access List."
       operationId: deleteDatabaseUser
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: "Human-readable label that identifies the database against which\
           \ the database user authenticates. Database users must provide both a username\
           \ and authentication database to log into MongoDB. If the user authenticates\
@@ -7081,9 +7075,9 @@ paths:
         \ Only role. This resource doesn't require the API Key to have an Access List."
       operationId: getDatabaseUser
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: "Human-readable label that identifies the database against which\
           \ the database user authenticates. Database users must provide both a username\
           \ and authentication database to log into MongoDB. If the user authenticates\
@@ -7141,9 +7135,9 @@ paths:
         \ to have an Access List."
       operationId: updateDatabaseUser
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: "Human-readable label that identifies the database against which\
           \ the database user authenticates. Database users must provide both a username\
           \ and authentication database to log into MongoDB. If the user authenticates\
@@ -7216,12 +7210,12 @@ paths:
         \ to have an Access List."
       operationId: listDatabaseUserCertificates
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that represents the MongoDB database user
           account whose certificates you want to return.
         in: path
@@ -7260,9 +7254,9 @@ paths:
         url: https://www.mongodb.com/docs/atlas/security-self-managed-x509/#std-label-self-managed-x509
       operationId: createDatabaseUserCertificate
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that represents the MongoDB database user
           account for whom to create a certificate.
         in: path
@@ -7313,9 +7307,9 @@ paths:
         url: https://docs.atlas.mongodb.com/access-tracking/
       operationId: listAccessLogsByClusterName
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Flag that indicates whether the response returns the successful
           authentication attempts only.
         in: query
@@ -7395,9 +7389,9 @@ paths:
         url: https://docs.atlas.mongodb.com/access-tracking/
       operationId: listAccessLogsByHostname
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Flag that indicates whether the response returns the successful
           authentication attempts only.
         in: query
@@ -7471,8 +7465,8 @@ paths:
         **LIMITED TO M10 OR GREATER:** MongoDB Cloud limits this feature to dedicated cluster tiers of M10 and greater.
       operationId: getEncryptionAtRest
       parameters:
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       - $ref: '#/components/parameters/groupId'
       responses:
         "200":
@@ -7499,8 +7493,8 @@ paths:
          After you configure at least one Encryption at Rest using a Customer Key Management provider for the MongoDB Cloud project, Project Owners can enable Encryption at Rest using Customer Key Management for each MongoDB Cloud cluster for which they require encryption. The Encryption at Rest using Customer Key Management provider doesn't have to match the cluster cloud service provider. MongoDB Cloud doesn't automatically rotate user-managed encryption keys. Defer to your preferred Encryption at Rest using Customer Key Management provider's documentation and guidance for best practices on key rotation. MongoDB Cloud automatically creates a 90-day key rotation alert when you configure Encryption at Rest using Customer Key Management using your Key Management in an MongoDB Cloud project. MongoDB Cloud encrypts all storage whether or not you use your own key management.
       operationId: updateEncryptionAtRest
       parameters:
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       - $ref: '#/components/parameters/groupId'
       requestBody:
         content:
@@ -7550,12 +7544,12 @@ paths:
          This resource remains under revision and may change.
       operationId: listProjectEvents
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the cluster.
         in: query
         name: clusterNames
@@ -7630,9 +7624,9 @@ paths:
          This resource remains under revision and may change.
       operationId: getProjectEvent
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: "Unique 24-hexadecimal digit string that identifies the event\
           \ that you want to return. Use the [/events](#tag/Events/operation/listProjectEvents)\
           \ endpoint to retrieve all events to which the authenticated user has access."
@@ -7680,7 +7674,7 @@ paths:
       parameters:
       - $ref: '#/components/parameters/processId'
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/envelope'
+      
       responses:
         "200":
           content:
@@ -7714,7 +7708,7 @@ paths:
       - $ref: '#/components/parameters/period'
       - $ref: '#/components/parameters/start'
       - $ref: '#/components/parameters/end'
-      - $ref: '#/components/parameters/envelope'
+      
       - description: List that contains the measurements that MongoDB Atlas reports
           for the associated data series.
         in: query
@@ -7776,7 +7770,7 @@ paths:
       - $ref: '#/components/parameters/period'
       - $ref: '#/components/parameters/start'
       - $ref: '#/components/parameters/end'
-      - $ref: '#/components/parameters/envelope'
+      
       - description: List that contains the measurements that MongoDB Atlas reports
           for the associated data series.
         in: query
@@ -7835,7 +7829,7 @@ paths:
       - $ref: '#/components/parameters/period'
       - $ref: '#/components/parameters/start'
       - $ref: '#/components/parameters/end'
-      - $ref: '#/components/parameters/envelope'
+      
       - description: "List that contains the metrics that you want MongoDB Atlas to\
           \ report for the associated data series. If you don't set this parameter,\
           \ this resource returns all hardware and status metrics for the associated\
@@ -7893,12 +7887,12 @@ paths:
         \ require the API Key to have an Access List."
       operationId: listThirdPartyIntegrations
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "200":
           content:
@@ -7951,9 +7945,9 @@ paths:
           - PROMETHEUS
           - MICROSOFT_TEAMS
           title: Integration Type
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "204":
           content:
@@ -7983,9 +7977,9 @@ paths:
         \ have an Access List."
       operationId: getThirdPartyIntegration
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the service which you want
           to integrate with MongoDB Cloud.
         in: path
@@ -8054,12 +8048,12 @@ paths:
           - PROMETHEUS
           - MICROSOFT_TEAMS
           title: Integration Type
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -8117,12 +8111,12 @@ paths:
           - PROMETHEUS
           - MICROSOFT_TEAMS
           title: Integration Type
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -8159,8 +8153,8 @@ paths:
       operationId: listProjectInvitations
       parameters:
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       - description: Email address of the user account invited to this project.
         in: query
         name: username
@@ -8195,8 +8189,8 @@ paths:
       operationId: updateProjectInvitation
       parameters:
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -8235,8 +8229,8 @@ paths:
       operationId: createProjectInvitation
       parameters:
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
-      - $ref: '#/components/parameters/envelope'
+     
+      
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -8271,7 +8265,7 @@ paths:
       operationId: deleteProjectInvitation
       parameters:
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/envelope'
+      
       - description: Unique 24-hexadecimal digit string that identifies the invitation.
         in: path
         name: invitationId
@@ -8306,8 +8300,8 @@ paths:
       operationId: getProjectInvitation
       parameters:
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       - description: Unique 24-hexadecimal digit string that identifies the invitation.
         in: path
         name: invitationId
@@ -8346,7 +8340,7 @@ paths:
       operationId: updateProjectInvitationById
       parameters:
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/envelope'
+      
       - description: Unique 24-hexadecimal digit string that identifies the invitation.
         in: path
         name: invitationId
@@ -8392,9 +8386,9 @@ paths:
         \ resource doesn't require the API Key to have an Access List."
       operationId: listProjectLimits
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "200":
           content:
@@ -8459,9 +8453,9 @@ paths:
           - dataFederation.bytesProcessed.daily
           - dataFederation.bytesProcessed.weekly
           - dataFederation.bytesProcessed.monthly
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "204":
           content:
@@ -8520,9 +8514,9 @@ paths:
           - dataFederation.bytesProcessed.daily
           - dataFederation.bytesProcessed.weekly
           - dataFederation.bytesProcessed.monthly
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "200":
           content:
@@ -8584,9 +8578,9 @@ paths:
           - dataFederation.bytesProcessed.daily
           - dataFederation.bytesProcessed.weekly
           - dataFederation.bytesProcessed.monthly
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -8628,8 +8622,8 @@ paths:
       operationId: createPushMigration
       parameters:
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -8669,8 +8663,8 @@ paths:
       operationId: validateMigration
       parameters:
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -8719,7 +8713,7 @@ paths:
           maxLength: 24
           minLength: 24
           pattern: "^([a-f0-9]{24})$"
-      - $ref: '#/components/parameters/envelope'
+      
       responses:
         "200":
           content:
@@ -8752,8 +8746,8 @@ paths:
       parameters:
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/liveMigrationId'
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       responses:
         "200":
           content:
@@ -8786,8 +8780,8 @@ paths:
       parameters:
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/liveMigrationId'
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       responses:
         "202":
           content:
@@ -8825,7 +8819,7 @@ paths:
         \ the API Key to have an Access List."
       operationId: resetMaintenanceWindow
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       responses:
         "204":
@@ -8857,9 +8851,9 @@ paths:
         \ List."
       operationId: getMaintenanceWindow
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "200":
           content:
@@ -8891,7 +8885,7 @@ paths:
         \ the API Key to have an Access List."
       operationId: updateMaintenanceWindow
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       requestBody:
         content:
@@ -8927,7 +8921,7 @@ paths:
         \ List."
       operationId: toggleMaintenanceAutoDefer
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       responses:
         "200":
@@ -8961,7 +8955,7 @@ paths:
         \ the API Key to have an Access List."
       operationId: deferMaintenanceWindow
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       responses:
         "200":
@@ -8994,9 +8988,9 @@ paths:
         \ resource doesn't require the API Key to have an Access List."
       operationId: disableSlowOperationThresholding
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "204":
           content:
@@ -9028,9 +9022,9 @@ paths:
         \ the API Key to have an Access List."
       operationId: enableSlowOperationThresholding
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "204":
           content:
@@ -9057,12 +9051,12 @@ paths:
         \ API Key to have an Access List."
       operationId: listPeeringConnections
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Cloud service provider to use for this VPC peering connection.
         in: query
         name: providerName
@@ -9104,9 +9098,9 @@ paths:
         url: https://docs.atlas.mongodb.com/reference/api/vpc-create-peering-connection/#prerequisites
       operationId: createPeeringConnection
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -9147,9 +9141,9 @@ paths:
         \ List."
       operationId: deletePeeringConnection
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Unique 24-hexadecimal digit string that identifies the network
           peering connection that you want to delete.
         in: path
@@ -9186,9 +9180,9 @@ paths:
         \ to have an Access List."
       operationId: getPeeringConnection
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Unique 24-hexadecimal digit string that identifies the network
           peering connection that you want to retrieve.
         in: path
@@ -9225,9 +9219,9 @@ paths:
         \ List."
       operationId: updatePeeringConnection
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Unique 24-hexadecimal digit string that identifies the network
           peering connection that you want to update.
         in: path
@@ -9274,7 +9268,7 @@ paths:
         \ requesting API Key must have the Project Read Only role."
       operationId: listPipelines
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       responses:
         "200":
@@ -9301,7 +9295,7 @@ paths:
       description: Creates one Data Lake Pipeline.
       operationId: createPipeline
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       requestBody:
         content:
@@ -9336,7 +9330,7 @@ paths:
       description: Removes one Data Lake Pipeline.
       operationId: deletePipeline
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - description: Human-readable label that identifies the Data Lake Pipeline.
         in: path
@@ -9372,9 +9366,9 @@ paths:
         \ Read Only role."
       operationId: getPipeline
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the Data Lake Pipeline.
         in: path
         name: pipelineName
@@ -9407,7 +9401,7 @@ paths:
       description: Updates one Data Lake Pipeline.
       operationId: updatePipeline
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - description: Human-readable label that identifies the Data Lake Pipeline.
         in: path
@@ -9455,9 +9449,9 @@ paths:
         \ Key must have the Project Read Only role."
       operationId: listPipelineSchedules
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the Data Lake Pipeline.
         in: path
         name: pipelineName
@@ -9495,12 +9489,12 @@ paths:
         \ must have the Project Read Only role."
       operationId: listPipelineSnapshots
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: "Date and time after which MongoDB Cloud created the snapshot.\
           \ If specified, MongoDB Cloud returns available backup snapshots created\
           \ after this time and date only. This parameter expresses its value in the\
@@ -9546,9 +9540,9 @@ paths:
         \ Read Only role."
       operationId: pausePipeline
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the Data Lake Pipeline.
         in: path
         name: pipelineName
@@ -9584,9 +9578,9 @@ paths:
         \ Read Only role."
       operationId: resumePipeline
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the Data Lake Pipeline.
         in: path
         name: pipelineName
@@ -9621,12 +9615,12 @@ paths:
         \ the requesting API Key must have the Project Read Only role."
       operationId: listPipelineRuns
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: "If specified, Atlas returns only Data Lake Pipeline runs initiated\
           \ before this time and date."
         in: query
@@ -9669,9 +9663,9 @@ paths:
         run.
       operationId: deletePipelineRunDataset
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the Data Lake Pipeline.
         in: path
         name: pipelineName
@@ -9717,9 +9711,9 @@ paths:
         \ Read Only role."
       operationId: getPipelineRun
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the Data Lake Pipeline.
         in: path
         name: pipelineName
@@ -9764,9 +9758,9 @@ paths:
       description: Triggers a Data Lake Pipeline ingestion of a specified snapshot.
       operationId: triggerSnapshotIngestion
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the Data Lake Pipeline.
         in: path
         name: pipelineName
@@ -9813,9 +9807,9 @@ paths:
         \ This resource doesn't require the API Key to have an Access List."
       operationId: createPrivateEndpointService
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -9850,9 +9844,9 @@ paths:
         \ require the API Key to have an Access List."
       operationId: getRegionalizedPrivateEndpointSetting
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "200":
           content:
@@ -9884,9 +9878,9 @@ paths:
         \ This resource doesn't require the API Key to have an Access List."
       operationId: toggleRegionalizedPrivateEndpointSetting
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -9922,7 +9916,7 @@ paths:
         List.
       operationId: listServerlessPrivateEndpoints
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - description: Human-readable label that identifies the serverless instance
           associated with the tenant endpoint.
@@ -9964,7 +9958,7 @@ paths:
         url: https://dochub.mongodb.org/core/serverless-private-endpoint
       operationId: createServerlessPrivateEndpoint
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - description: Human-readable label that identifies the serverless instance
           for which the tenant endpoint will be created.
@@ -10009,7 +10003,7 @@ paths:
         \ This resource doesn't require the API Key to have an Access List."
       operationId: deleteServerlessPrivateEndpoint
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - description: Human-readable label that identifies the serverless instance
           from which the tenant endpoint will be removed.
@@ -10056,7 +10050,7 @@ paths:
         doesn't require the API Key to have an Access List.
       operationId: getServerlessPrivateEndpoint
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - description: Human-readable label that identifies the serverless instance
           associated with the tenant endpoint.
@@ -10102,7 +10096,7 @@ paths:
         \ This resource doesn't require the API Key to have an Access List."
       operationId: updateServerlessPrivateEndpoint
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - description: Human-readable label that identifies the serverless instance
           associated with the tenant endpoint that will be updated.
@@ -10158,9 +10152,9 @@ paths:
         \ doesn't require the API Key to have an Access List."
       operationId: listPrivateEndpointServices
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Cloud service provider that manages this private endpoint service.
         in: path
         name: cloudProvider
@@ -10200,9 +10194,9 @@ paths:
         \ Access List."
       operationId: deletePrivateEndpointService
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Cloud service provider that manages this private endpoint service.
         in: path
         name: cloudProvider
@@ -10249,9 +10243,9 @@ paths:
         \ doesn't require the API Key to have an Access List."
       operationId: getPrivateEndpointService
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Cloud service provider that manages this private endpoint service.
         in: path
         name: cloudProvider
@@ -10303,9 +10297,9 @@ paths:
         \ up a private endpoint."
       operationId: createPrivateEndpoint
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Cloud service provider that manages this private endpoint.
         in: path
         name: cloudProvider
@@ -10368,9 +10362,9 @@ paths:
         \ require the API Key to have an Access List."
       operationId: deletePrivateEndpoint
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Cloud service provider that manages this private endpoint.
         in: path
         name: cloudProvider
@@ -10428,9 +10422,9 @@ paths:
         \ doesn't require the API Key to have an Access List."
       operationId: getPrivateEndpoint
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Cloud service provider that manages this private endpoint.
         in: path
         name: cloudProvider
@@ -10494,9 +10488,9 @@ paths:
         url: https://docs.atlas.mongodb.com/reference/faq/connection-changes/
       operationId: verifyConnectViaPeeringOnlyModeForOneProject
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "200":
           content:
@@ -10524,9 +10518,9 @@ paths:
         url: https://docs.atlas.mongodb.com/reference/faq/connection-changes/
       operationId: disablePeering
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -10561,12 +10555,12 @@ paths:
         \ roles. This resource doesn't require the API Key to have an Access List."
       operationId: listDataFederationPrivateEndpoints
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "200":
           content:
@@ -10612,9 +10606,9 @@ paths:
          To use this resource, the requesting API Key must have the Project Owner or Project Charts Admin roles. This resource doesn't require the API Key to have an Access List.
       operationId: createDataFederationPrivateEndpoint
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -10651,9 +10645,9 @@ paths:
         \ require the API Key to have an Access List."
       operationId: deleteDataFederationPrivateEndpoint
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Unique 22-character alphanumeric string that identifies the private
           endpoint to remove. Atlas Data Federation supports AWS private endpoints
           using the AWS PrivateLink feature.
@@ -10693,9 +10687,9 @@ paths:
         \ List."
       operationId: getDataFederationPrivateEndpoint
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Unique 22-character alphanumeric string that identifies the private
           endpoint to return. Atlas Data Federation supports AWS private endpoints
           using the AWS PrivateLink feature.
@@ -10737,12 +10731,12 @@ paths:
         \ doesn't require the API Key to have an Access List."
       operationId: listAtlasProcesses
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "200":
           content:
@@ -10768,9 +10762,9 @@ paths:
         \ List."
       operationId: getAtlasProcess
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: "Combination of hostname and Internet Assigned Numbers Authority\
           \ (IANA) port that serves the MongoDB process. The host must be the hostname,\
           \ fully qualified domain name (FQDN), or Internet Protocol address (IPv4\
@@ -10812,12 +10806,12 @@ paths:
         \ require the API Key to have an Access List."
       operationId: listDatabases
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: "Combination of hostname and Internet Assigned Numbers Authority\
           \ (IANA) port that serves the MongoDB process. The host must be the hostname,\
           \ fully qualified domain name (FQDN), or Internet Protocol address (IPv4\
@@ -10856,9 +10850,9 @@ paths:
         \ List."
       operationId: getDatabase
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the database that the specified
           MongoDB process serves.
         in: path
@@ -10910,9 +10904,9 @@ paths:
         \ List."
       operationId: getDatabaseMeasurements
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the database that the specified
           MongoDB process serves.
         in: path
@@ -10987,12 +10981,12 @@ paths:
         \ API Key to have an Access List."
       operationId: listDiskPartitions
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: "Combination of hostname and Internet Assigned Numbers Authority\
           \ (IANA) port that serves the MongoDB process. The host must be the hostname,\
           \ fully qualified domain name (FQDN), or Internet Protocol address (IPv4\
@@ -11037,7 +11031,7 @@ paths:
         \ the API Key to have an Access List."
       operationId: listDiskMeasurements
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - description: Human-readable label of the disk or partition to which the measurements
           apply.
         in: path
@@ -11089,9 +11083,9 @@ paths:
         To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
       operationId: getDiskMeasurements
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: "One or more types of measurement to request for this MongoDB\
           \ process. If omitted, the resource returns all measurements. To specify\
           \ multiple values for `m`, repeat the `m` parameter for each value. Specify\
@@ -11184,9 +11178,9 @@ paths:
         \ doesn't require the API Key to have an Access List."
       operationId: getHostMeasurements
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: "One or more types of measurement to request for this MongoDB\
           \ process. If omitted, the resource returns all measurements. To specify\
           \ multiple values for `m`, repeat the `m` parameter for each value. Specify\
@@ -11382,9 +11376,9 @@ paths:
         \ to have an Access List."
       operationId: listSlowQueryNamespaces
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: |-
           Length of time expressed during which the query finds suggested indexes among the managed namespaces in the cluster. This parameter expresses its value in milliseconds.
 
@@ -11446,9 +11440,9 @@ paths:
         \ an Access List."
       operationId: listSlowQueries
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: |-
           Length of time expressed during which the query finds suggested indexes among the managed namespaces in the cluster. This parameter expresses its value in milliseconds.
 
@@ -11528,12 +11522,12 @@ paths:
         \ the API Key to have an Access List."
       operationId: listSuggestedIndexes
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: |-
           Length of time expressed during which the query finds suggested indexes among the managed namespaces in the cluster. This parameter expresses its value in milliseconds.
 
@@ -11616,7 +11610,7 @@ paths:
         \ List."
       operationId: loadSampleDataset
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - description: Human-readable label that identifies the cluster into which you
           load the sample dataset.
@@ -11656,7 +11650,7 @@ paths:
         \ role. This resource doesn't require the API Key to have an Access List."
       operationId: getSampleDatasetLoadStatus
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - description: Unique 24-hexadecimal digit string that identifies the loaded
           sample dataset.
@@ -11693,12 +11687,12 @@ paths:
         \ List."
       operationId: listServerlessInstances
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "200":
           content:
@@ -11722,9 +11716,9 @@ paths:
         \ This resource doesn't require the API Key to have an Access List."
       operationId: createServerlessInstance
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -11760,12 +11754,12 @@ paths:
         \ the Project Owner role and an entry for the project access list."
       operationId: listServerlessBackupRestoreJobs
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the serverless instance.
         in: path
         name: clusterName
@@ -11800,9 +11794,9 @@ paths:
         \ Owner role and an entry for the project access list."
       operationId: createServerlessBackupRestoreJob
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the serverless instance
           whose snapshot you want to restore.
         in: path
@@ -11851,9 +11845,9 @@ paths:
         \ Owner role and an entry for the project access list."
       operationId: getServerlessBackupRestoreJob
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the serverless instance.
         in: path
         name: clusterName
@@ -11900,9 +11894,9 @@ paths:
         \ List."
       operationId: listServerlessBackups
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
@@ -11942,7 +11936,7 @@ paths:
         \ List."
       operationId: getServerlessBackup
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - description: Human-readable label that identifies the serverless instance.
         in: path
@@ -11992,8 +11986,8 @@ paths:
         \ List."
       operationId: deleteServerlessInstance
       parameters:
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       - $ref: '#/components/parameters/groupId'
       - description: Human-readable label that identifies the serverless instance.
         in: path
@@ -12032,8 +12026,8 @@ paths:
       operationId: getServerlessInstance
       parameters:
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       - description: Human-readable label that identifies the serverless instance.
         in: path
         name: name
@@ -12070,9 +12064,9 @@ paths:
         \ This resource doesn't require the API Key to have an Access List."
       operationId: updateServerlessInstance
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label that identifies the serverless instance.
         in: path
         name: name
@@ -12115,9 +12109,9 @@ paths:
         \ This resource does not require the API Key to have an Access List."
       operationId: getProjectSettings
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "200":
           content:
@@ -12147,9 +12141,9 @@ paths:
         \ Access List."
       operationId: updateProjectSettings
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -12187,9 +12181,9 @@ paths:
         \ doesn't require the API Key to have an Access List."
       operationId: listProjectTeams
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
@@ -12227,8 +12221,8 @@ paths:
         url: https://docs.atlas.mongodb.com/access/manage-teams-in-orgs/#std-label-manage-teams
       operationId: addAllTeamsToProject
       parameters:
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       - $ref: '#/components/parameters/groupId'
       requestBody:
         content:
@@ -12273,7 +12267,7 @@ paths:
         url: https://docs.atlas.mongodb.com/access/manage-teams-in-orgs/#std-label-manage-teams
       operationId: removeProjectTeam
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - description: Unique 24-hexadecimal digit string that identifies the team that
           you want to remove from the specified project.
@@ -12317,9 +12311,9 @@ paths:
         url: https://docs.atlas.mongodb.com/access/manage-teams-in-orgs/#std-label-manage-teams
       operationId: updateTeamRoles
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Unique 24-hexadecimal digit string that identifies the team for
           which you want to update roles.
         in: path
@@ -12367,9 +12361,9 @@ paths:
         \ role. This resource doesn't require the API Key to have an Access List."
       operationId: getLDAPConfiguration
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "200":
           content:
@@ -12394,9 +12388,9 @@ paths:
         Updating this configuration triggers a rolling restart of the database.
       operationId: saveLDAPConfiguration
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -12431,7 +12425,7 @@ paths:
          Updating this configuration triggers a rolling restart of the database. You must have the Project Owner role to use this endpoint. This resource doesn't require the API Key to have an Access List.
       operationId: disableCustomerManagedX509
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       responses:
         "202":
@@ -12459,9 +12453,9 @@ paths:
         \ List."
       operationId: deleteLDAPConfiguration
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "202":
           content:
@@ -12486,9 +12480,9 @@ paths:
         \ This resource doesn't require the API Key to have an Access List."
       operationId: verifyLDAPConfiguration
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -12524,9 +12518,9 @@ paths:
         \ Key to have an Access List."
       operationId: getLDAPConfigurationStatus
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Unique string that identifies the request to verify an <abbr
           title="Lightweight Directory Access Protocol">LDAP</abbr> configuration.
         in: path
@@ -12562,12 +12556,12 @@ paths:
         \ API Key to have an Access List."
       operationId: listProjectUsers
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: "Flag that indicates whether the returned list should include\
           \ users who belong to a team with a role in this project. You might not\
           \ have assigned the individual users a role in this project. If `\"flattenTeams\"\
@@ -12615,9 +12609,9 @@ paths:
         \ This resource doesn't require the API Key to have an Access List."
       operationId: removeProjectUser
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/groupId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: "Unique 24-hexadecimal string that identifies MongoDB Cloud user\
           \ you want to remove from the specified project. To return a application\
           \ user's ID using their application username, use the Get All application\
@@ -12656,11 +12650,11 @@ paths:
         \ doesn't require the API Key to have an Access List."
       operationId: listOrganizations
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label of the organization to use to filter the
           returned list. Performs a case-insensitive search for an organization that
           starts with the specified name.
@@ -12700,9 +12694,7 @@ paths:
         \ in the MongoDB Atlas documentation. This resource doesn't require the API\
         \ Key to have an API Access List."
       operationId: createOrganization
-      parameters:
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -12745,7 +12737,7 @@ paths:
          To use this resource, the requesting API Key must have the Organization Owner role. This resource doesn't require the API Key to have an Access List.
       operationId: deleteOrganization
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/orgId'
       responses:
         "204":
@@ -12779,9 +12771,9 @@ paths:
         \ List."
       operationId: getOrganization
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/orgId'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "200":
           content:
@@ -12811,9 +12803,9 @@ paths:
         \ the API Key to have an Access List."
       operationId: renameOrganization
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/orgId'
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -12857,12 +12849,12 @@ paths:
         url: https://docs.atlas.mongodb.com/configure-api-access/#std-label-atlas-prog-api-key
       operationId: listApiKeys
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/orgId'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "200":
           content:
@@ -12891,9 +12883,9 @@ paths:
         url: https://docs.atlas.mongodb.com/configure-api-access/#std-label-atlas-prog-api-key
       operationId: createApiKey
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/orgId'
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -12931,9 +12923,9 @@ paths:
         url: https://docs.atlas.mongodb.com/configure-api-access/#std-label-enable-api-access-list
       operationId: deleteApiKey
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/orgId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Unique 24-hexadecimal digit string that identifies this organization
           API key.
         in: path
@@ -12972,9 +12964,9 @@ paths:
         url: https://docs.atlas.mongodb.com/configure-api-access/#std-label-atlas-prog-api-key
       operationId: getApiKey
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/orgId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Unique 24-hexadecimal digit string that identifies this organization
           API key that  you want to update.
         in: path
@@ -13013,9 +13005,9 @@ paths:
         url: https://docs.atlas.mongodb.com/configure-api-access/#std-label-atlas-prog-api-key
       operationId: updateApiKey
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/orgId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Unique 24-hexadecimal digit string that identifies this organization
           API key you  want to update.
         in: path
@@ -13064,12 +13056,12 @@ paths:
         url: https://docs.atlas.mongodb.com/configure-api-access/#view-the-details-of-one-api-key-in-one-organization
       operationId: listApiKeyAccessListsEntries
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/orgId'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Unique 24-hexadecimal digit string that identifies this organization
           API key for which you want to return access list entries.
         in: path
@@ -13104,12 +13096,12 @@ paths:
         \ have the Read Write role and an entry for the project access list."
       operationId: createApiKeyAccessList
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/orgId'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Unique 24-hexadecimal digit string that identifies this organization
           API key for which you want to create a new access list entry.
         in: path
@@ -13164,9 +13156,9 @@ paths:
         url: https://docs.atlas.mongodb.com/configure-api-access/#std-label-enable-api-access-list
       operationId: deleteApiKeyAccessListEntry
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/orgId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Unique 24-hexadecimal digit string that identifies this organization
           API key for which you want to remove access list entries.
         in: path
@@ -13221,9 +13213,9 @@ paths:
         url: https://docs.atlas.mongodb.com/configure-api-access/#std-label-enable-api-access-list
       operationId: getApiKeyAccessList
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/orgId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: "One IP address or multiple IP addresses represented as one CIDR\
           \ block to limit  requests to API resources in the specified organization.\
           \ When adding a CIDR block with a subnet mask, such as  192.0.2.0/24, use\
@@ -13273,12 +13265,12 @@ paths:
          This resource remains under revision and may change.
       operationId: listOrganizationEvents
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/orgId'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: |-
           Category of incident recorded at this moment in time.
 
@@ -13341,9 +13333,9 @@ paths:
          This resource remains under revision and may change.
       operationId: getOrganizationEvent
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/orgId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: "Unique 24-hexadecimal digit string that identifies the event\
           \ that you want to return. Use the [/events](#tag/Events/operation/listOrganizationEvents)\
           \ endpoint to retrieve all events to which the authenticated user has access."
@@ -13390,9 +13382,9 @@ paths:
         \ the API Key to have an Access List."
       operationId: getFederationSettings
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/orgId'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "200":
           content:
@@ -13427,12 +13419,12 @@ paths:
         To use this resource, the requesting API Key must have the Organization Member role. This resource doesn't require the API Key to have an Access List.
       operationId: listOrganizationProjects
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/orgId'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Human-readable label of the project to use to filter the returned
           list. Performs a case-insensitive search for a project within the organization
           which is prefixed by the specified name.
@@ -13469,9 +13461,9 @@ paths:
         \ List."
       operationId: listOrganizationInvitations
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/orgId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: "Email address of the user account invited to this organization.\
           \ If you exclude this parameter, this resource returns all pending invitations."
         in: query
@@ -13510,9 +13502,9 @@ paths:
         \ List."
       operationId: updateOrganizationInvitation
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/orgId'
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -13550,9 +13542,9 @@ paths:
         \ to have an Access List."
       operationId: createOrganizationInvitation
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/orgId'
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -13590,9 +13582,9 @@ paths:
         \ List."
       operationId: deleteOrganizationInvitation
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/orgId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Unique 24-hexadecimal digit string that identifies the invitation.
         in: path
         name: invitationId
@@ -13627,7 +13619,7 @@ paths:
         \ to have an Access List."
       operationId: getOrganizationInvitation
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/orgId'
       - description: Unique 24-hexadecimal digit string that identifies the invitation.
         in: path
@@ -13668,9 +13660,9 @@ paths:
         \ This resource doesn't require the API Key to have an Access List."
       operationId: updateOrganizationInvitationById
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/orgId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Unique 24-hexadecimal digit string that identifies the invitation.
         in: path
         name: invitationId
@@ -13719,12 +13711,12 @@ paths:
         \ doesn't require the API Key to have an Access List."
       operationId: listInvoices
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/orgId'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "200":
           content:
@@ -13754,9 +13746,9 @@ paths:
         \ have an Access List."
       operationId: listPendingInvoices
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/orgId'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "200":
           content:
@@ -13787,9 +13779,9 @@ paths:
         \ doesn't require the API Key to have an Access List."
       operationId: getInvoice
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/orgId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Unique 24-hexadecimal digit string that identifies the invoice
           submitted to the specified organization. Charges typically post the next
           day.
@@ -13835,9 +13827,9 @@ paths:
         \ List."
       operationId: downloadInvoiceCSV
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/orgId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Unique 24-hexadecimal digit string that identifies the invoice
           submitted to the specified organization. Charges typically post the next
           day.
@@ -13870,8 +13862,8 @@ paths:
       operationId: listSourceProjects
       parameters:
       - $ref: '#/components/parameters/orgId'
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       responses:
         "200":
           content:
@@ -13903,7 +13895,7 @@ paths:
       operationId: deleteLinkToken
       parameters:
       - $ref: '#/components/parameters/orgId'
-      - $ref: '#/components/parameters/envelope'
+      
       responses:
         "204":
           content:
@@ -13932,8 +13924,8 @@ paths:
       operationId: createLinkToken
       parameters:
       - $ref: '#/components/parameters/orgId'
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -13967,9 +13959,9 @@ paths:
         \ role. This resource does not require the API Key to have an API access list."
       operationId: getOrganizationSettings
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/orgId'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "200":
           content:
@@ -13997,9 +13989,9 @@ paths:
         \ does not require the API Key to have an API access list."
       operationId: updateOrganizationSettings
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/orgId'
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -14040,12 +14032,12 @@ paths:
         url: https://docs.atlas.mongodb.com/access/manage-teams-in-orgs/#std-label-manage-teams
       operationId: listOrganizationTeams
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/pageNum'
       - $ref: '#/components/parameters/orgId'
-      - $ref: '#/components/parameters/pretty'
+     
       responses:
         "200":
           content:
@@ -14078,9 +14070,9 @@ paths:
         url: https://docs.atlas.mongodb.com/access/manage-teams-in-orgs/#std-label-manage-teams
       operationId: createTeam
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/orgId'
-      - $ref: '#/components/parameters/pretty'
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -14123,9 +14115,9 @@ paths:
         url: https://docs.atlas.mongodb.com/access/manage-teams-in-orgs/#std-label-manage-teams
       operationId: getTeamByName
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/orgId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Name of the team whose information you want to return.
         in: path
         name: teamName
@@ -14165,9 +14157,9 @@ paths:
         url: https://docs.atlas.mongodb.com/access/manage-teams-in-orgs/#std-label-manage-teams
       operationId: deleteTeam
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/orgId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Unique 24-hexadecimal digit string that identifies the team that
           you want to delete.
         in: path
@@ -14210,9 +14202,9 @@ paths:
         url: https://docs.atlas.mongodb.com/access/manage-teams-in-orgs/#std-label-manage-teams
       operationId: getTeamById
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/orgId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Unique 24-hexadecimal digit string that identifies the team whose
           information you want to return.
         in: path
@@ -14254,9 +14246,9 @@ paths:
         url: https://docs.atlas.mongodb.com/access/manage-teams-in-orgs/#std-label-manage-teams
       operationId: renameTeam
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/orgId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Unique 24-hexadecimal digit string that identifies the team that
           you want to rename.
         in: path
@@ -14310,11 +14302,11 @@ paths:
         url: https://docs.atlas.mongodb.com/access/manage-teams-in-orgs/#std-label-manage-teams
       operationId: listTeamUsers
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/orgId'
       - $ref: '#/components/parameters/pageNum'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Unique 24-hexadecimal digit string that identifies the team whose
           application users you want to return.
         in: path
@@ -14360,9 +14352,9 @@ paths:
         url: https://docs.atlas.mongodb.com/access/manage-teams-in-orgs/#std-label-manage-teams
       operationId: addTeamUser
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/orgId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Unique 24-hexadecimal character string that identifies the team
           to which you want to add MongoDB Cloud users.
         in: path
@@ -14418,9 +14410,9 @@ paths:
         url: https://docs.atlas.mongodb.com/access/manage-teams-in-orgs/#std-label-manage-teams
       operationId: removeTeamUser
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/orgId'
-      - $ref: '#/components/parameters/pretty'
+     
       - description: Unique 24-hexadecimal digit string that identifies the team from
           which you want to remove one database application user.
         in: path
@@ -14470,9 +14462,9 @@ paths:
         \ List."
       operationId: listOrganizationUsers
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/orgId'
-      - $ref: '#/components/parameters/pretty'
+     
       - $ref: '#/components/parameters/includeCount'
       - $ref: '#/components/parameters/itemsPerPage'
       - $ref: '#/components/parameters/pageNum'
@@ -14505,7 +14497,7 @@ paths:
         \ List."
       operationId: removeOrganizationUser
       parameters:
-      - $ref: '#/components/parameters/envelope'
+      
       - $ref: '#/components/parameters/orgId'
       - description: Unique 24-hexadecimal digit string that identifies the user to
           be deleted.
@@ -14549,9 +14541,8 @@ paths:
 
          To use this resource, the requesting API Key can have any role. This resource doesn't require the API Key to have an Access List.
       operationId: createUser
-      parameters:
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       requestBody:
         content:
           application/vnd.atlas.2023-01-01+json:
@@ -14588,8 +14579,8 @@ paths:
         \ doesn't require the API Key to have an Access List."
       operationId: getUserByUsername
       parameters:
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       - description: Email address that belongs to the MongoDB Cloud user account.
           You cannot modify this address after creating the user.
         in: path
@@ -14631,8 +14622,8 @@ paths:
         \ doesn't require the API Key to have an Access List."
       operationId: getUser
       parameters:
-      - $ref: '#/components/parameters/envelope'
-      - $ref: '#/components/parameters/pretty'
+      
+     
       - description: Unique 24-hexadecimal digit string that identifies this user.
         in: path
         name: userId

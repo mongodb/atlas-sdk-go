@@ -100,16 +100,12 @@ type CreateDatabaseUserCertificateApiRequest struct {
 	groupId    string
 	username   string
 	userCert   *UserCert
-	envelope   *bool
-	pretty     *bool
 }
 
 type CreateDatabaseUserCertificateApiParams struct {
 	GroupId  string
 	Username string
 	UserCert *UserCert
-	Envelope *bool
-	Pretty   *bool
 }
 
 func (a *X509AuthenticationApiService) CreateDatabaseUserCertificateWithParams(ctx context.Context, args *CreateDatabaseUserCertificateApiParams) CreateDatabaseUserCertificateApiRequest {
@@ -119,21 +115,7 @@ func (a *X509AuthenticationApiService) CreateDatabaseUserCertificateWithParams(c
 		groupId:    args.GroupId,
 		username:   args.Username,
 		userCert:   args.UserCert,
-		envelope:   args.Envelope,
-		pretty:     args.Pretty,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r CreateDatabaseUserCertificateApiRequest) Envelope(envelope bool) CreateDatabaseUserCertificateApiRequest {
-	r.envelope = &envelope
-	return r
-}
-
-// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
-func (r CreateDatabaseUserCertificateApiRequest) Pretty(pretty bool) CreateDatabaseUserCertificateApiRequest {
-	r.pretty = &pretty
-	return r
 }
 
 func (r CreateDatabaseUserCertificateApiRequest) Execute() (*http.Response, error) {
@@ -194,20 +176,6 @@ func (a *X509AuthenticationApiService) createDatabaseUserCertificateExecute(r Cr
 		return nil, reportError("userCert is required and must be specified")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
-	if r.pretty != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	} else {
-		var defaultValue bool = false
-		r.pretty = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
@@ -267,12 +235,10 @@ type DisableCustomerManagedX509ApiRequest struct {
 	ctx        context.Context
 	ApiService X509AuthenticationApi
 	groupId    string
-	envelope   *bool
 }
 
 type DisableCustomerManagedX509ApiParams struct {
-	GroupId  string
-	Envelope *bool
+	GroupId string
 }
 
 func (a *X509AuthenticationApiService) DisableCustomerManagedX509WithParams(ctx context.Context, args *DisableCustomerManagedX509ApiParams) DisableCustomerManagedX509ApiRequest {
@@ -280,14 +246,7 @@ func (a *X509AuthenticationApiService) DisableCustomerManagedX509WithParams(ctx 
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    args.GroupId,
-		envelope:   args.Envelope,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r DisableCustomerManagedX509ApiRequest) Envelope(envelope bool) DisableCustomerManagedX509ApiRequest {
-	r.envelope = &envelope
-	return r
 }
 
 func (r DisableCustomerManagedX509ApiRequest) Execute() (*UserSecurity, *http.Response, error) {
@@ -342,13 +301,6 @@ func (a *X509AuthenticationApiService) disableCustomerManagedX509Execute(r Disab
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -416,21 +368,17 @@ type ListDatabaseUserCertificatesApiRequest struct {
 	ApiService   X509AuthenticationApi
 	groupId      string
 	username     string
-	envelope     *bool
 	includeCount *bool
 	itemsPerPage *int
 	pageNum      *int
-	pretty       *bool
 }
 
 type ListDatabaseUserCertificatesApiParams struct {
 	GroupId      string
 	Username     string
-	Envelope     *bool
 	IncludeCount *bool
 	ItemsPerPage *int
 	PageNum      *int
-	Pretty       *bool
 }
 
 func (a *X509AuthenticationApiService) ListDatabaseUserCertificatesWithParams(ctx context.Context, args *ListDatabaseUserCertificatesApiParams) ListDatabaseUserCertificatesApiRequest {
@@ -439,18 +387,10 @@ func (a *X509AuthenticationApiService) ListDatabaseUserCertificatesWithParams(ct
 		ctx:          ctx,
 		groupId:      args.GroupId,
 		username:     args.Username,
-		envelope:     args.Envelope,
 		includeCount: args.IncludeCount,
 		itemsPerPage: args.ItemsPerPage,
 		pageNum:      args.PageNum,
-		pretty:       args.Pretty,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r ListDatabaseUserCertificatesApiRequest) Envelope(envelope bool) ListDatabaseUserCertificatesApiRequest {
-	r.envelope = &envelope
-	return r
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
@@ -468,12 +408,6 @@ func (r ListDatabaseUserCertificatesApiRequest) ItemsPerPage(itemsPerPage int) L
 // Number of the page that displays the current set of the total objects that the response returns.
 func (r ListDatabaseUserCertificatesApiRequest) PageNum(pageNum int) ListDatabaseUserCertificatesApiRequest {
 	r.pageNum = &pageNum
-	return r
-}
-
-// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
-func (r ListDatabaseUserCertificatesApiRequest) Pretty(pretty bool) ListDatabaseUserCertificatesApiRequest {
-	r.pretty = &pretty
 	return r
 }
 
@@ -530,13 +464,6 @@ func (a *X509AuthenticationApiService) listDatabaseUserCertificatesExecute(r Lis
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
 	if r.includeCount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
 	} else {
@@ -557,13 +484,6 @@ func (a *X509AuthenticationApiService) listDatabaseUserCertificatesExecute(r Lis
 		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
-	}
-	if r.pretty != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	} else {
-		var defaultValue bool = false
-		r.pretty = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

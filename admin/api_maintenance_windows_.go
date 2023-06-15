@@ -136,12 +136,10 @@ type DeferMaintenanceWindowApiRequest struct {
 	ctx        context.Context
 	ApiService MaintenanceWindowsApi
 	groupId    string
-	envelope   *bool
 }
 
 type DeferMaintenanceWindowApiParams struct {
-	GroupId  string
-	Envelope *bool
+	GroupId string
 }
 
 func (a *MaintenanceWindowsApiService) DeferMaintenanceWindowWithParams(ctx context.Context, args *DeferMaintenanceWindowApiParams) DeferMaintenanceWindowApiRequest {
@@ -149,14 +147,7 @@ func (a *MaintenanceWindowsApiService) DeferMaintenanceWindowWithParams(ctx cont
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    args.GroupId,
-		envelope:   args.Envelope,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r DeferMaintenanceWindowApiRequest) Envelope(envelope bool) DeferMaintenanceWindowApiRequest {
-	r.envelope = &envelope
-	return r
 }
 
 func (r DeferMaintenanceWindowApiRequest) Execute() (*http.Response, error) {
@@ -206,13 +197,6 @@ func (a *MaintenanceWindowsApiService) deferMaintenanceWindowExecute(r DeferMain
 		return nil, reportError("groupId must have less than 24 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -270,14 +254,10 @@ type GetMaintenanceWindowApiRequest struct {
 	ctx        context.Context
 	ApiService MaintenanceWindowsApi
 	groupId    string
-	envelope   *bool
-	pretty     *bool
 }
 
 type GetMaintenanceWindowApiParams struct {
-	GroupId  string
-	Envelope *bool
-	Pretty   *bool
+	GroupId string
 }
 
 func (a *MaintenanceWindowsApiService) GetMaintenanceWindowWithParams(ctx context.Context, args *GetMaintenanceWindowApiParams) GetMaintenanceWindowApiRequest {
@@ -285,21 +265,7 @@ func (a *MaintenanceWindowsApiService) GetMaintenanceWindowWithParams(ctx contex
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    args.GroupId,
-		envelope:   args.Envelope,
-		pretty:     args.Pretty,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r GetMaintenanceWindowApiRequest) Envelope(envelope bool) GetMaintenanceWindowApiRequest {
-	r.envelope = &envelope
-	return r
-}
-
-// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
-func (r GetMaintenanceWindowApiRequest) Pretty(pretty bool) GetMaintenanceWindowApiRequest {
-	r.pretty = &pretty
-	return r
 }
 
 func (r GetMaintenanceWindowApiRequest) Execute() (*GroupMaintenanceWindow, *http.Response, error) {
@@ -352,20 +318,6 @@ func (a *MaintenanceWindowsApiService) getMaintenanceWindowExecute(r GetMaintena
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
-	if r.pretty != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	} else {
-		var defaultValue bool = false
-		r.pretty = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -432,12 +384,10 @@ type ResetMaintenanceWindowApiRequest struct {
 	ctx        context.Context
 	ApiService MaintenanceWindowsApi
 	groupId    string
-	envelope   *bool
 }
 
 type ResetMaintenanceWindowApiParams struct {
-	GroupId  string
-	Envelope *bool
+	GroupId string
 }
 
 func (a *MaintenanceWindowsApiService) ResetMaintenanceWindowWithParams(ctx context.Context, args *ResetMaintenanceWindowApiParams) ResetMaintenanceWindowApiRequest {
@@ -445,14 +395,7 @@ func (a *MaintenanceWindowsApiService) ResetMaintenanceWindowWithParams(ctx cont
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    args.GroupId,
-		envelope:   args.Envelope,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r ResetMaintenanceWindowApiRequest) Envelope(envelope bool) ResetMaintenanceWindowApiRequest {
-	r.envelope = &envelope
-	return r
 }
 
 func (r ResetMaintenanceWindowApiRequest) Execute() (*http.Response, error) {
@@ -502,13 +445,6 @@ func (a *MaintenanceWindowsApiService) resetMaintenanceWindowExecute(r ResetMain
 		return nil, reportError("groupId must have less than 24 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -566,12 +502,10 @@ type ToggleMaintenanceAutoDeferApiRequest struct {
 	ctx        context.Context
 	ApiService MaintenanceWindowsApi
 	groupId    string
-	envelope   *bool
 }
 
 type ToggleMaintenanceAutoDeferApiParams struct {
-	GroupId  string
-	Envelope *bool
+	GroupId string
 }
 
 func (a *MaintenanceWindowsApiService) ToggleMaintenanceAutoDeferWithParams(ctx context.Context, args *ToggleMaintenanceAutoDeferApiParams) ToggleMaintenanceAutoDeferApiRequest {
@@ -579,14 +513,7 @@ func (a *MaintenanceWindowsApiService) ToggleMaintenanceAutoDeferWithParams(ctx 
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    args.GroupId,
-		envelope:   args.Envelope,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r ToggleMaintenanceAutoDeferApiRequest) Envelope(envelope bool) ToggleMaintenanceAutoDeferApiRequest {
-	r.envelope = &envelope
-	return r
 }
 
 func (r ToggleMaintenanceAutoDeferApiRequest) Execute() (*http.Response, error) {
@@ -636,13 +563,6 @@ func (a *MaintenanceWindowsApiService) toggleMaintenanceAutoDeferExecute(r Toggl
 		return nil, reportError("groupId must have less than 24 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -701,13 +621,11 @@ type UpdateMaintenanceWindowApiRequest struct {
 	ApiService             MaintenanceWindowsApi
 	groupId                string
 	groupMaintenanceWindow *GroupMaintenanceWindow
-	envelope               *bool
 }
 
 type UpdateMaintenanceWindowApiParams struct {
 	GroupId                string
 	GroupMaintenanceWindow *GroupMaintenanceWindow
-	Envelope               *bool
 }
 
 func (a *MaintenanceWindowsApiService) UpdateMaintenanceWindowWithParams(ctx context.Context, args *UpdateMaintenanceWindowApiParams) UpdateMaintenanceWindowApiRequest {
@@ -716,14 +634,7 @@ func (a *MaintenanceWindowsApiService) UpdateMaintenanceWindowWithParams(ctx con
 		ctx:                    ctx,
 		groupId:                args.GroupId,
 		groupMaintenanceWindow: args.GroupMaintenanceWindow,
-		envelope:               args.Envelope,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r UpdateMaintenanceWindowApiRequest) Envelope(envelope bool) UpdateMaintenanceWindowApiRequest {
-	r.envelope = &envelope
-	return r
 }
 
 func (r UpdateMaintenanceWindowApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -780,13 +691,6 @@ func (a *MaintenanceWindowsApiService) updateMaintenanceWindowExecute(r UpdateMa
 		return localVarReturnValue, nil, reportError("groupMaintenanceWindow is required and must be specified")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 

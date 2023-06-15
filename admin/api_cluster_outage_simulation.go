@@ -94,15 +94,11 @@ type EndOutageSimulationApiRequest struct {
 	ApiService  ClusterOutageSimulationApi
 	groupId     string
 	clusterName string
-	envelope    *bool
-	pretty      *bool
 }
 
 type EndOutageSimulationApiParams struct {
 	GroupId     string
 	ClusterName string
-	Envelope    *bool
-	Pretty      *bool
 }
 
 func (a *ClusterOutageSimulationApiService) EndOutageSimulationWithParams(ctx context.Context, args *EndOutageSimulationApiParams) EndOutageSimulationApiRequest {
@@ -111,21 +107,7 @@ func (a *ClusterOutageSimulationApiService) EndOutageSimulationWithParams(ctx co
 		ctx:         ctx,
 		groupId:     args.GroupId,
 		clusterName: args.ClusterName,
-		envelope:    args.Envelope,
-		pretty:      args.Pretty,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r EndOutageSimulationApiRequest) Envelope(envelope bool) EndOutageSimulationApiRequest {
-	r.envelope = &envelope
-	return r
-}
-
-// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
-func (r EndOutageSimulationApiRequest) Pretty(pretty bool) EndOutageSimulationApiRequest {
-	r.pretty = &pretty
-	return r
 }
 
 func (r EndOutageSimulationApiRequest) Execute() (*ClusterOutageSimulation, *http.Response, error) {
@@ -187,20 +169,6 @@ func (a *ClusterOutageSimulationApiService) endOutageSimulationExecute(r EndOuta
 		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
-	if r.pretty != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	} else {
-		var defaultValue bool = false
-		r.pretty = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -268,15 +236,11 @@ type GetOutageSimulationApiRequest struct {
 	ApiService  ClusterOutageSimulationApi
 	groupId     string
 	clusterName string
-	envelope    *bool
-	pretty      *bool
 }
 
 type GetOutageSimulationApiParams struct {
 	GroupId     string
 	ClusterName string
-	Envelope    *bool
-	Pretty      *bool
 }
 
 func (a *ClusterOutageSimulationApiService) GetOutageSimulationWithParams(ctx context.Context, args *GetOutageSimulationApiParams) GetOutageSimulationApiRequest {
@@ -285,21 +249,7 @@ func (a *ClusterOutageSimulationApiService) GetOutageSimulationWithParams(ctx co
 		ctx:         ctx,
 		groupId:     args.GroupId,
 		clusterName: args.ClusterName,
-		envelope:    args.Envelope,
-		pretty:      args.Pretty,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r GetOutageSimulationApiRequest) Envelope(envelope bool) GetOutageSimulationApiRequest {
-	r.envelope = &envelope
-	return r
-}
-
-// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
-func (r GetOutageSimulationApiRequest) Pretty(pretty bool) GetOutageSimulationApiRequest {
-	r.pretty = &pretty
-	return r
 }
 
 func (r GetOutageSimulationApiRequest) Execute() (*ClusterOutageSimulation, *http.Response, error) {
@@ -361,20 +311,6 @@ func (a *ClusterOutageSimulationApiService) getOutageSimulationExecute(r GetOuta
 		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
-	if r.pretty != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	} else {
-		var defaultValue bool = false
-		r.pretty = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -443,16 +379,12 @@ type StartOutageSimulationApiRequest struct {
 	groupId                 string
 	clusterName             string
 	clusterOutageSimulation *ClusterOutageSimulation
-	envelope                *bool
-	pretty                  *bool
 }
 
 type StartOutageSimulationApiParams struct {
 	GroupId                 string
 	ClusterName             string
 	ClusterOutageSimulation *ClusterOutageSimulation
-	Envelope                *bool
-	Pretty                  *bool
 }
 
 func (a *ClusterOutageSimulationApiService) StartOutageSimulationWithParams(ctx context.Context, args *StartOutageSimulationApiParams) StartOutageSimulationApiRequest {
@@ -462,21 +394,7 @@ func (a *ClusterOutageSimulationApiService) StartOutageSimulationWithParams(ctx 
 		groupId:                 args.GroupId,
 		clusterName:             args.ClusterName,
 		clusterOutageSimulation: args.ClusterOutageSimulation,
-		envelope:                args.Envelope,
-		pretty:                  args.Pretty,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r StartOutageSimulationApiRequest) Envelope(envelope bool) StartOutageSimulationApiRequest {
-	r.envelope = &envelope
-	return r
-}
-
-// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
-func (r StartOutageSimulationApiRequest) Pretty(pretty bool) StartOutageSimulationApiRequest {
-	r.pretty = &pretty
-	return r
 }
 
 func (r StartOutageSimulationApiRequest) Execute() (*ClusterOutageSimulation, *http.Response, error) {
@@ -542,20 +460,6 @@ func (a *ClusterOutageSimulationApiService) startOutageSimulationExecute(r Start
 		return localVarReturnValue, nil, reportError("clusterOutageSimulation is required and must be specified")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
-	if r.pretty != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	} else {
-		var defaultValue bool = false
-		r.pretty = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 

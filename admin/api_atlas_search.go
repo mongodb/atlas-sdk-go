@@ -148,16 +148,12 @@ type CreateAtlasSearchIndexApiRequest struct {
 	groupId            string
 	clusterName        string
 	clusterSearchIndex *ClusterSearchIndex
-	envelope           *bool
-	pretty             *bool
 }
 
 type CreateAtlasSearchIndexApiParams struct {
 	GroupId            string
 	ClusterName        string
 	ClusterSearchIndex *ClusterSearchIndex
-	Envelope           *bool
-	Pretty             *bool
 }
 
 func (a *AtlasSearchApiService) CreateAtlasSearchIndexWithParams(ctx context.Context, args *CreateAtlasSearchIndexApiParams) CreateAtlasSearchIndexApiRequest {
@@ -167,21 +163,7 @@ func (a *AtlasSearchApiService) CreateAtlasSearchIndexWithParams(ctx context.Con
 		groupId:            args.GroupId,
 		clusterName:        args.ClusterName,
 		clusterSearchIndex: args.ClusterSearchIndex,
-		envelope:           args.Envelope,
-		pretty:             args.Pretty,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r CreateAtlasSearchIndexApiRequest) Envelope(envelope bool) CreateAtlasSearchIndexApiRequest {
-	r.envelope = &envelope
-	return r
-}
-
-// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
-func (r CreateAtlasSearchIndexApiRequest) Pretty(pretty bool) CreateAtlasSearchIndexApiRequest {
-	r.pretty = &pretty
-	return r
 }
 
 func (r CreateAtlasSearchIndexApiRequest) Execute() (*ClusterSearchIndex, *http.Response, error) {
@@ -247,20 +229,6 @@ func (a *AtlasSearchApiService) createAtlasSearchIndexExecute(r CreateAtlasSearc
 		return localVarReturnValue, nil, reportError("clusterSearchIndex is required and must be specified")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
-	if r.pretty != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	} else {
-		var defaultValue bool = false
-		r.pretty = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
@@ -331,16 +299,12 @@ type DeleteAtlasSearchIndexApiRequest struct {
 	groupId     string
 	clusterName string
 	indexId     string
-	envelope    *bool
-	pretty      *bool
 }
 
 type DeleteAtlasSearchIndexApiParams struct {
 	GroupId     string
 	ClusterName string
 	IndexId     string
-	Envelope    *bool
-	Pretty      *bool
 }
 
 func (a *AtlasSearchApiService) DeleteAtlasSearchIndexWithParams(ctx context.Context, args *DeleteAtlasSearchIndexApiParams) DeleteAtlasSearchIndexApiRequest {
@@ -350,21 +314,7 @@ func (a *AtlasSearchApiService) DeleteAtlasSearchIndexWithParams(ctx context.Con
 		groupId:     args.GroupId,
 		clusterName: args.ClusterName,
 		indexId:     args.IndexId,
-		envelope:    args.Envelope,
-		pretty:      args.Pretty,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r DeleteAtlasSearchIndexApiRequest) Envelope(envelope bool) DeleteAtlasSearchIndexApiRequest {
-	r.envelope = &envelope
-	return r
-}
-
-// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
-func (r DeleteAtlasSearchIndexApiRequest) Pretty(pretty bool) DeleteAtlasSearchIndexApiRequest {
-	r.pretty = &pretty
-	return r
 }
 
 func (r DeleteAtlasSearchIndexApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -435,20 +385,6 @@ func (a *AtlasSearchApiService) deleteAtlasSearchIndexExecute(r DeleteAtlasSearc
 		return localVarReturnValue, nil, reportError("indexId must have less than 24 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
-	if r.pretty != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	} else {
-		var defaultValue bool = false
-		r.pretty = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -517,16 +453,12 @@ type GetAtlasSearchIndexApiRequest struct {
 	groupId     string
 	clusterName string
 	indexId     string
-	envelope    *bool
-	pretty      *bool
 }
 
 type GetAtlasSearchIndexApiParams struct {
 	GroupId     string
 	ClusterName string
 	IndexId     string
-	Envelope    *bool
-	Pretty      *bool
 }
 
 func (a *AtlasSearchApiService) GetAtlasSearchIndexWithParams(ctx context.Context, args *GetAtlasSearchIndexApiParams) GetAtlasSearchIndexApiRequest {
@@ -536,21 +468,7 @@ func (a *AtlasSearchApiService) GetAtlasSearchIndexWithParams(ctx context.Contex
 		groupId:     args.GroupId,
 		clusterName: args.ClusterName,
 		indexId:     args.IndexId,
-		envelope:    args.Envelope,
-		pretty:      args.Pretty,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r GetAtlasSearchIndexApiRequest) Envelope(envelope bool) GetAtlasSearchIndexApiRequest {
-	r.envelope = &envelope
-	return r
-}
-
-// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
-func (r GetAtlasSearchIndexApiRequest) Pretty(pretty bool) GetAtlasSearchIndexApiRequest {
-	r.pretty = &pretty
-	return r
 }
 
 func (r GetAtlasSearchIndexApiRequest) Execute() (*ClusterSearchIndex, *http.Response, error) {
@@ -621,20 +539,6 @@ func (a *AtlasSearchApiService) getAtlasSearchIndexExecute(r GetAtlasSearchIndex
 		return localVarReturnValue, nil, reportError("indexId must have less than 24 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
-	if r.pretty != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	} else {
-		var defaultValue bool = false
-		r.pretty = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -704,8 +608,6 @@ type ListAtlasSearchIndexesApiRequest struct {
 	clusterName    string
 	collectionName string
 	databaseName   string
-	envelope       *bool
-	pretty         *bool
 }
 
 type ListAtlasSearchIndexesApiParams struct {
@@ -713,8 +615,6 @@ type ListAtlasSearchIndexesApiParams struct {
 	ClusterName    string
 	CollectionName string
 	DatabaseName   string
-	Envelope       *bool
-	Pretty         *bool
 }
 
 func (a *AtlasSearchApiService) ListAtlasSearchIndexesWithParams(ctx context.Context, args *ListAtlasSearchIndexesApiParams) ListAtlasSearchIndexesApiRequest {
@@ -725,21 +625,7 @@ func (a *AtlasSearchApiService) ListAtlasSearchIndexesWithParams(ctx context.Con
 		clusterName:    args.ClusterName,
 		collectionName: args.CollectionName,
 		databaseName:   args.DatabaseName,
-		envelope:       args.Envelope,
-		pretty:         args.Pretty,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r ListAtlasSearchIndexesApiRequest) Envelope(envelope bool) ListAtlasSearchIndexesApiRequest {
-	r.envelope = &envelope
-	return r
-}
-
-// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
-func (r ListAtlasSearchIndexesApiRequest) Pretty(pretty bool) ListAtlasSearchIndexesApiRequest {
-	r.pretty = &pretty
-	return r
 }
 
 func (r ListAtlasSearchIndexesApiRequest) Execute() ([]ClusterSearchIndex, *http.Response, error) {
@@ -807,20 +693,6 @@ func (a *AtlasSearchApiService) listAtlasSearchIndexesExecute(r ListAtlasSearchI
 		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
-	if r.pretty != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	} else {
-		var defaultValue bool = false
-		r.pretty = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -890,8 +762,6 @@ type UpdateAtlasSearchIndexApiRequest struct {
 	clusterName        string
 	indexId            string
 	clusterSearchIndex *ClusterSearchIndex
-	envelope           *bool
-	pretty             *bool
 }
 
 type UpdateAtlasSearchIndexApiParams struct {
@@ -899,8 +769,6 @@ type UpdateAtlasSearchIndexApiParams struct {
 	ClusterName        string
 	IndexId            string
 	ClusterSearchIndex *ClusterSearchIndex
-	Envelope           *bool
-	Pretty             *bool
 }
 
 func (a *AtlasSearchApiService) UpdateAtlasSearchIndexWithParams(ctx context.Context, args *UpdateAtlasSearchIndexApiParams) UpdateAtlasSearchIndexApiRequest {
@@ -911,21 +779,7 @@ func (a *AtlasSearchApiService) UpdateAtlasSearchIndexWithParams(ctx context.Con
 		clusterName:        args.ClusterName,
 		indexId:            args.IndexId,
 		clusterSearchIndex: args.ClusterSearchIndex,
-		envelope:           args.Envelope,
-		pretty:             args.Pretty,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r UpdateAtlasSearchIndexApiRequest) Envelope(envelope bool) UpdateAtlasSearchIndexApiRequest {
-	r.envelope = &envelope
-	return r
-}
-
-// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
-func (r UpdateAtlasSearchIndexApiRequest) Pretty(pretty bool) UpdateAtlasSearchIndexApiRequest {
-	r.pretty = &pretty
-	return r
 }
 
 func (r UpdateAtlasSearchIndexApiRequest) Execute() (*ClusterSearchIndex, *http.Response, error) {
@@ -1000,20 +854,6 @@ func (a *AtlasSearchApiService) updateAtlasSearchIndexExecute(r UpdateAtlasSearc
 		return localVarReturnValue, nil, reportError("clusterSearchIndex is required and must be specified")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
-	if r.pretty != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	} else {
-		var defaultValue bool = false
-		r.pretty = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 

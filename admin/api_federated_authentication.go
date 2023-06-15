@@ -388,14 +388,12 @@ type CreateRoleMappingApiRequest struct {
 	federationSettingsId      string
 	orgId                     string
 	authFederationRoleMapping *AuthFederationRoleMapping
-	envelope                  *bool
 }
 
 type CreateRoleMappingApiParams struct {
 	FederationSettingsId      string
 	OrgId                     string
 	AuthFederationRoleMapping *AuthFederationRoleMapping
-	Envelope                  *bool
 }
 
 func (a *FederatedAuthenticationApiService) CreateRoleMappingWithParams(ctx context.Context, args *CreateRoleMappingApiParams) CreateRoleMappingApiRequest {
@@ -405,14 +403,7 @@ func (a *FederatedAuthenticationApiService) CreateRoleMappingWithParams(ctx cont
 		federationSettingsId:      args.FederationSettingsId,
 		orgId:                     args.OrgId,
 		authFederationRoleMapping: args.AuthFederationRoleMapping,
-		envelope:                  args.Envelope,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r CreateRoleMappingApiRequest) Envelope(envelope bool) CreateRoleMappingApiRequest {
-	r.envelope = &envelope
-	return r
 }
 
 func (r CreateRoleMappingApiRequest) Execute() (*AuthFederationRoleMapping, *http.Response, error) {
@@ -478,13 +469,6 @@ func (a *FederatedAuthenticationApiService) createRoleMappingExecute(r CreateRol
 		return localVarReturnValue, nil, reportError("authFederationRoleMapping is required and must be specified")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
@@ -673,14 +657,12 @@ type DeleteRoleMappingApiRequest struct {
 	federationSettingsId string
 	id                   string
 	orgId                string
-	envelope             *bool
 }
 
 type DeleteRoleMappingApiParams struct {
 	FederationSettingsId string
 	Id                   string
 	OrgId                string
-	Envelope             *bool
 }
 
 func (a *FederatedAuthenticationApiService) DeleteRoleMappingWithParams(ctx context.Context, args *DeleteRoleMappingApiParams) DeleteRoleMappingApiRequest {
@@ -690,14 +672,7 @@ func (a *FederatedAuthenticationApiService) DeleteRoleMappingWithParams(ctx cont
 		federationSettingsId: args.FederationSettingsId,
 		id:                   args.Id,
 		orgId:                args.OrgId,
-		envelope:             args.Envelope,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r DeleteRoleMappingApiRequest) Envelope(envelope bool) DeleteRoleMappingApiRequest {
-	r.envelope = &envelope
-	return r
 }
 
 func (r DeleteRoleMappingApiRequest) Execute() (*http.Response, error) {
@@ -765,13 +740,6 @@ func (a *FederatedAuthenticationApiService) deleteRoleMappingExecute(r DeleteRol
 		return nil, reportError("orgId must have less than 24 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -830,13 +798,11 @@ type GetConnectedOrgConfigApiRequest struct {
 	ApiService           FederatedAuthenticationApi
 	federationSettingsId string
 	orgId                string
-	envelope             *bool
 }
 
 type GetConnectedOrgConfigApiParams struct {
 	FederationSettingsId string
 	OrgId                string
-	Envelope             *bool
 }
 
 func (a *FederatedAuthenticationApiService) GetConnectedOrgConfigWithParams(ctx context.Context, args *GetConnectedOrgConfigApiParams) GetConnectedOrgConfigApiRequest {
@@ -845,14 +811,7 @@ func (a *FederatedAuthenticationApiService) GetConnectedOrgConfigWithParams(ctx 
 		ctx:                  ctx,
 		federationSettingsId: args.FederationSettingsId,
 		orgId:                args.OrgId,
-		envelope:             args.Envelope,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r GetConnectedOrgConfigApiRequest) Envelope(envelope bool) GetConnectedOrgConfigApiRequest {
-	r.envelope = &envelope
-	return r
 }
 
 func (r GetConnectedOrgConfigApiRequest) Execute() (*ConnectedOrgConfig, *http.Response, error) {
@@ -914,13 +873,6 @@ func (a *FederatedAuthenticationApiService) getConnectedOrgConfigExecute(r GetCo
 		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -987,14 +939,10 @@ type GetFederationSettingsApiRequest struct {
 	ctx        context.Context
 	ApiService FederatedAuthenticationApi
 	orgId      string
-	envelope   *bool
-	pretty     *bool
 }
 
 type GetFederationSettingsApiParams struct {
-	OrgId    string
-	Envelope *bool
-	Pretty   *bool
+	OrgId string
 }
 
 func (a *FederatedAuthenticationApiService) GetFederationSettingsWithParams(ctx context.Context, args *GetFederationSettingsApiParams) GetFederationSettingsApiRequest {
@@ -1002,21 +950,7 @@ func (a *FederatedAuthenticationApiService) GetFederationSettingsWithParams(ctx 
 		ApiService: a,
 		ctx:        ctx,
 		orgId:      args.OrgId,
-		envelope:   args.Envelope,
-		pretty:     args.Pretty,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r GetFederationSettingsApiRequest) Envelope(envelope bool) GetFederationSettingsApiRequest {
-	r.envelope = &envelope
-	return r
-}
-
-// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
-func (r GetFederationSettingsApiRequest) Pretty(pretty bool) GetFederationSettingsApiRequest {
-	r.pretty = &pretty
-	return r
 }
 
 func (r GetFederationSettingsApiRequest) Execute() (*OrgFederationSettings, *http.Response, error) {
@@ -1069,20 +1003,6 @@ func (a *FederatedAuthenticationApiService) getFederationSettingsExecute(r GetFe
 		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
-	if r.pretty != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	} else {
-		var defaultValue bool = false
-		r.pretty = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1150,13 +1070,11 @@ type GetIdentityProviderApiRequest struct {
 	ApiService           FederatedAuthenticationApi
 	federationSettingsId string
 	identityProviderId   string
-	envelope             *bool
 }
 
 type GetIdentityProviderApiParams struct {
 	FederationSettingsId string
 	IdentityProviderId   string
-	Envelope             *bool
 }
 
 func (a *FederatedAuthenticationApiService) GetIdentityProviderWithParams(ctx context.Context, args *GetIdentityProviderApiParams) GetIdentityProviderApiRequest {
@@ -1165,14 +1083,7 @@ func (a *FederatedAuthenticationApiService) GetIdentityProviderWithParams(ctx co
 		ctx:                  ctx,
 		federationSettingsId: args.FederationSettingsId,
 		identityProviderId:   args.IdentityProviderId,
-		envelope:             args.Envelope,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r GetIdentityProviderApiRequest) Envelope(envelope bool) GetIdentityProviderApiRequest {
-	r.envelope = &envelope
-	return r
 }
 
 func (r GetIdentityProviderApiRequest) Execute() (*FederationIdentityProvider, *http.Response, error) {
@@ -1234,13 +1145,6 @@ func (a *FederatedAuthenticationApiService) getIdentityProviderExecute(r GetIden
 		return localVarReturnValue, nil, reportError("identityProviderId must have less than 20 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1451,14 +1355,12 @@ type GetRoleMappingApiRequest struct {
 	federationSettingsId string
 	id                   string
 	orgId                string
-	envelope             *bool
 }
 
 type GetRoleMappingApiParams struct {
 	FederationSettingsId string
 	Id                   string
 	OrgId                string
-	Envelope             *bool
 }
 
 func (a *FederatedAuthenticationApiService) GetRoleMappingWithParams(ctx context.Context, args *GetRoleMappingApiParams) GetRoleMappingApiRequest {
@@ -1468,14 +1370,7 @@ func (a *FederatedAuthenticationApiService) GetRoleMappingWithParams(ctx context
 		federationSettingsId: args.FederationSettingsId,
 		id:                   args.Id,
 		orgId:                args.OrgId,
-		envelope:             args.Envelope,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r GetRoleMappingApiRequest) Envelope(envelope bool) GetRoleMappingApiRequest {
-	r.envelope = &envelope
-	return r
 }
 
 func (r GetRoleMappingApiRequest) Execute() (*AuthFederationRoleMapping, *http.Response, error) {
@@ -1546,13 +1441,6 @@ func (a *FederatedAuthenticationApiService) getRoleMappingExecute(r GetRoleMappi
 		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1619,12 +1507,10 @@ type ListConnectedOrgConfigsApiRequest struct {
 	ctx                  context.Context
 	ApiService           FederatedAuthenticationApi
 	federationSettingsId string
-	envelope             *bool
 }
 
 type ListConnectedOrgConfigsApiParams struct {
 	FederationSettingsId string
-	Envelope             *bool
 }
 
 func (a *FederatedAuthenticationApiService) ListConnectedOrgConfigsWithParams(ctx context.Context, args *ListConnectedOrgConfigsApiParams) ListConnectedOrgConfigsApiRequest {
@@ -1632,14 +1518,7 @@ func (a *FederatedAuthenticationApiService) ListConnectedOrgConfigsWithParams(ct
 		ApiService:           a,
 		ctx:                  ctx,
 		federationSettingsId: args.FederationSettingsId,
-		envelope:             args.Envelope,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r ListConnectedOrgConfigsApiRequest) Envelope(envelope bool) ListConnectedOrgConfigsApiRequest {
-	r.envelope = &envelope
-	return r
 }
 
 func (r ListConnectedOrgConfigsApiRequest) Execute() ([]ConnectedOrgConfig, *http.Response, error) {
@@ -1692,13 +1571,6 @@ func (a *FederatedAuthenticationApiService) listConnectedOrgConfigsExecute(r Lis
 		return localVarReturnValue, nil, reportError("federationSettingsId must have less than 24 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1765,12 +1637,10 @@ type ListIdentityProvidersApiRequest struct {
 	ctx                  context.Context
 	ApiService           FederatedAuthenticationApi
 	federationSettingsId string
-	envelope             *bool
 }
 
 type ListIdentityProvidersApiParams struct {
 	FederationSettingsId string
-	Envelope             *bool
 }
 
 func (a *FederatedAuthenticationApiService) ListIdentityProvidersWithParams(ctx context.Context, args *ListIdentityProvidersApiParams) ListIdentityProvidersApiRequest {
@@ -1778,14 +1648,7 @@ func (a *FederatedAuthenticationApiService) ListIdentityProvidersWithParams(ctx 
 		ApiService:           a,
 		ctx:                  ctx,
 		federationSettingsId: args.FederationSettingsId,
-		envelope:             args.Envelope,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r ListIdentityProvidersApiRequest) Envelope(envelope bool) ListIdentityProvidersApiRequest {
-	r.envelope = &envelope
-	return r
 }
 
 func (r ListIdentityProvidersApiRequest) Execute() ([]FederationIdentityProvider, *http.Response, error) {
@@ -1838,13 +1701,6 @@ func (a *FederatedAuthenticationApiService) listIdentityProvidersExecute(r ListI
 		return localVarReturnValue, nil, reportError("federationSettingsId must have less than 24 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1912,13 +1768,11 @@ type ListRoleMappingsApiRequest struct {
 	ApiService           FederatedAuthenticationApi
 	federationSettingsId string
 	orgId                string
-	envelope             *bool
 }
 
 type ListRoleMappingsApiParams struct {
 	FederationSettingsId string
 	OrgId                string
-	Envelope             *bool
 }
 
 func (a *FederatedAuthenticationApiService) ListRoleMappingsWithParams(ctx context.Context, args *ListRoleMappingsApiParams) ListRoleMappingsApiRequest {
@@ -1927,14 +1781,7 @@ func (a *FederatedAuthenticationApiService) ListRoleMappingsWithParams(ctx conte
 		ctx:                  ctx,
 		federationSettingsId: args.FederationSettingsId,
 		orgId:                args.OrgId,
-		envelope:             args.Envelope,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r ListRoleMappingsApiRequest) Envelope(envelope bool) ListRoleMappingsApiRequest {
-	r.envelope = &envelope
-	return r
 }
 
 func (r ListRoleMappingsApiRequest) Execute() ([]AuthFederationRoleMapping, *http.Response, error) {
@@ -1996,13 +1843,6 @@ func (a *FederatedAuthenticationApiService) listRoleMappingsExecute(r ListRoleMa
 		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -2070,13 +1910,11 @@ type RemoveConnectedOrgConfigApiRequest struct {
 	ApiService           FederatedAuthenticationApi
 	federationSettingsId string
 	orgId                string
-	envelope             *bool
 }
 
 type RemoveConnectedOrgConfigApiParams struct {
 	FederationSettingsId string
 	OrgId                string
-	Envelope             *bool
 }
 
 func (a *FederatedAuthenticationApiService) RemoveConnectedOrgConfigWithParams(ctx context.Context, args *RemoveConnectedOrgConfigApiParams) RemoveConnectedOrgConfigApiRequest {
@@ -2085,14 +1923,7 @@ func (a *FederatedAuthenticationApiService) RemoveConnectedOrgConfigWithParams(c
 		ctx:                  ctx,
 		federationSettingsId: args.FederationSettingsId,
 		orgId:                args.OrgId,
-		envelope:             args.Envelope,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r RemoveConnectedOrgConfigApiRequest) Envelope(envelope bool) RemoveConnectedOrgConfigApiRequest {
-	r.envelope = &envelope
-	return r
 }
 
 func (r RemoveConnectedOrgConfigApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
@@ -2154,13 +1985,6 @@ func (a *FederatedAuthenticationApiService) removeConnectedOrgConfigExecute(r Re
 		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -2229,14 +2053,12 @@ type UpdateConnectedOrgConfigApiRequest struct {
 	federationSettingsId string
 	orgId                string
 	connectedOrgConfig   *ConnectedOrgConfig
-	envelope             *bool
 }
 
 type UpdateConnectedOrgConfigApiParams struct {
 	FederationSettingsId string
 	OrgId                string
 	ConnectedOrgConfig   *ConnectedOrgConfig
-	Envelope             *bool
 }
 
 func (a *FederatedAuthenticationApiService) UpdateConnectedOrgConfigWithParams(ctx context.Context, args *UpdateConnectedOrgConfigApiParams) UpdateConnectedOrgConfigApiRequest {
@@ -2246,14 +2068,7 @@ func (a *FederatedAuthenticationApiService) UpdateConnectedOrgConfigWithParams(c
 		federationSettingsId: args.FederationSettingsId,
 		orgId:                args.OrgId,
 		connectedOrgConfig:   args.ConnectedOrgConfig,
-		envelope:             args.Envelope,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r UpdateConnectedOrgConfigApiRequest) Envelope(envelope bool) UpdateConnectedOrgConfigApiRequest {
-	r.envelope = &envelope
-	return r
 }
 
 func (r UpdateConnectedOrgConfigApiRequest) Execute() (*ConnectedOrgConfig, *http.Response, error) {
@@ -2325,13 +2140,6 @@ func (a *FederatedAuthenticationApiService) updateConnectedOrgConfigExecute(r Up
 		return localVarReturnValue, nil, reportError("connectedOrgConfig is required and must be specified")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
@@ -2402,14 +2210,12 @@ type UpdateIdentityProviderApiRequest struct {
 	federationSettingsId       string
 	identityProviderId         string
 	samlIdentityProviderUpdate *SamlIdentityProviderUpdate
-	envelope                   *bool
 }
 
 type UpdateIdentityProviderApiParams struct {
 	FederationSettingsId       string
 	IdentityProviderId         string
 	SamlIdentityProviderUpdate *SamlIdentityProviderUpdate
-	Envelope                   *bool
 }
 
 func (a *FederatedAuthenticationApiService) UpdateIdentityProviderWithParams(ctx context.Context, args *UpdateIdentityProviderApiParams) UpdateIdentityProviderApiRequest {
@@ -2419,14 +2225,7 @@ func (a *FederatedAuthenticationApiService) UpdateIdentityProviderWithParams(ctx
 		federationSettingsId:       args.FederationSettingsId,
 		identityProviderId:         args.IdentityProviderId,
 		samlIdentityProviderUpdate: args.SamlIdentityProviderUpdate,
-		envelope:                   args.Envelope,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r UpdateIdentityProviderApiRequest) Envelope(envelope bool) UpdateIdentityProviderApiRequest {
-	r.envelope = &envelope
-	return r
 }
 
 func (r UpdateIdentityProviderApiRequest) Execute() (*FederationIdentityProvider, *http.Response, error) {
@@ -2492,13 +2291,6 @@ func (a *FederatedAuthenticationApiService) updateIdentityProviderExecute(r Upda
 		return localVarReturnValue, nil, reportError("samlIdentityProviderUpdate is required and must be specified")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 
@@ -2570,7 +2362,6 @@ type UpdateRoleMappingApiRequest struct {
 	id                        string
 	orgId                     string
 	authFederationRoleMapping *AuthFederationRoleMapping
-	envelope                  *bool
 }
 
 type UpdateRoleMappingApiParams struct {
@@ -2578,7 +2369,6 @@ type UpdateRoleMappingApiParams struct {
 	Id                        string
 	OrgId                     string
 	AuthFederationRoleMapping *AuthFederationRoleMapping
-	Envelope                  *bool
 }
 
 func (a *FederatedAuthenticationApiService) UpdateRoleMappingWithParams(ctx context.Context, args *UpdateRoleMappingApiParams) UpdateRoleMappingApiRequest {
@@ -2589,14 +2379,7 @@ func (a *FederatedAuthenticationApiService) UpdateRoleMappingWithParams(ctx cont
 		id:                        args.Id,
 		orgId:                     args.OrgId,
 		authFederationRoleMapping: args.AuthFederationRoleMapping,
-		envelope:                  args.Envelope,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r UpdateRoleMappingApiRequest) Envelope(envelope bool) UpdateRoleMappingApiRequest {
-	r.envelope = &envelope
-	return r
 }
 
 func (r UpdateRoleMappingApiRequest) Execute() (*AuthFederationRoleMapping, *http.Response, error) {
@@ -2671,13 +2454,6 @@ func (a *FederatedAuthenticationApiService) updateRoleMappingExecute(r UpdateRol
 		return localVarReturnValue, nil, reportError("authFederationRoleMapping is required and must be specified")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
 

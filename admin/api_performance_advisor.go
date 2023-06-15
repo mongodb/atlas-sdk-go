@@ -140,14 +140,10 @@ type DisableSlowOperationThresholdingApiRequest struct {
 	ctx        context.Context
 	ApiService PerformanceAdvisorApi
 	groupId    string
-	envelope   *bool
-	pretty     *bool
 }
 
 type DisableSlowOperationThresholdingApiParams struct {
-	GroupId  string
-	Envelope *bool
-	Pretty   *bool
+	GroupId string
 }
 
 func (a *PerformanceAdvisorApiService) DisableSlowOperationThresholdingWithParams(ctx context.Context, args *DisableSlowOperationThresholdingApiParams) DisableSlowOperationThresholdingApiRequest {
@@ -155,21 +151,7 @@ func (a *PerformanceAdvisorApiService) DisableSlowOperationThresholdingWithParam
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    args.GroupId,
-		envelope:   args.Envelope,
-		pretty:     args.Pretty,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r DisableSlowOperationThresholdingApiRequest) Envelope(envelope bool) DisableSlowOperationThresholdingApiRequest {
-	r.envelope = &envelope
-	return r
-}
-
-// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
-func (r DisableSlowOperationThresholdingApiRequest) Pretty(pretty bool) DisableSlowOperationThresholdingApiRequest {
-	r.pretty = &pretty
-	return r
 }
 
 func (r DisableSlowOperationThresholdingApiRequest) Execute() (*http.Response, error) {
@@ -219,20 +201,6 @@ func (a *PerformanceAdvisorApiService) disableSlowOperationThresholdingExecute(r
 		return nil, reportError("groupId must have less than 24 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
-	if r.pretty != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	} else {
-		var defaultValue bool = false
-		r.pretty = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -290,14 +258,10 @@ type EnableSlowOperationThresholdingApiRequest struct {
 	ctx        context.Context
 	ApiService PerformanceAdvisorApi
 	groupId    string
-	envelope   *bool
-	pretty     *bool
 }
 
 type EnableSlowOperationThresholdingApiParams struct {
-	GroupId  string
-	Envelope *bool
-	Pretty   *bool
+	GroupId string
 }
 
 func (a *PerformanceAdvisorApiService) EnableSlowOperationThresholdingWithParams(ctx context.Context, args *EnableSlowOperationThresholdingApiParams) EnableSlowOperationThresholdingApiRequest {
@@ -305,21 +269,7 @@ func (a *PerformanceAdvisorApiService) EnableSlowOperationThresholdingWithParams
 		ApiService: a,
 		ctx:        ctx,
 		groupId:    args.GroupId,
-		envelope:   args.Envelope,
-		pretty:     args.Pretty,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r EnableSlowOperationThresholdingApiRequest) Envelope(envelope bool) EnableSlowOperationThresholdingApiRequest {
-	r.envelope = &envelope
-	return r
-}
-
-// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
-func (r EnableSlowOperationThresholdingApiRequest) Pretty(pretty bool) EnableSlowOperationThresholdingApiRequest {
-	r.pretty = &pretty
-	return r
 }
 
 func (r EnableSlowOperationThresholdingApiRequest) Execute() (*http.Response, error) {
@@ -369,20 +319,6 @@ func (a *PerformanceAdvisorApiService) enableSlowOperationThresholdingExecute(r 
 		return nil, reportError("groupId must have less than 24 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
-	if r.pretty != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	} else {
-		var defaultValue bool = false
-		r.pretty = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -441,8 +377,6 @@ type ListSlowQueriesApiRequest struct {
 	ApiService PerformanceAdvisorApi
 	groupId    string
 	processId  string
-	envelope   *bool
-	pretty     *bool
 	duration   *int64
 	namespaces *[]string
 	nLogs      *int64
@@ -452,8 +386,6 @@ type ListSlowQueriesApiRequest struct {
 type ListSlowQueriesApiParams struct {
 	GroupId    string
 	ProcessId  string
-	Envelope   *bool
-	Pretty     *bool
 	Duration   *int64
 	Namespaces *[]string
 	NLogs      *int64
@@ -466,25 +398,11 @@ func (a *PerformanceAdvisorApiService) ListSlowQueriesWithParams(ctx context.Con
 		ctx:        ctx,
 		groupId:    args.GroupId,
 		processId:  args.ProcessId,
-		envelope:   args.Envelope,
-		pretty:     args.Pretty,
 		duration:   args.Duration,
 		namespaces: args.Namespaces,
 		nLogs:      args.NLogs,
 		since:      args.Since,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r ListSlowQueriesApiRequest) Envelope(envelope bool) ListSlowQueriesApiRequest {
-	r.envelope = &envelope
-	return r
-}
-
-// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
-func (r ListSlowQueriesApiRequest) Pretty(pretty bool) ListSlowQueriesApiRequest {
-	r.pretty = &pretty
-	return r
 }
 
 // Length of time expressed during which the query finds suggested indexes among the managed namespaces in the cluster. This parameter expresses its value in milliseconds.  - If you don&#39;t specify the **since** parameter, the endpoint returns data covering the duration before the current time. - If you specify neither the **duration** nor **since** parameters, the endpoint returns data from the previous 24 hours.
@@ -564,20 +482,6 @@ func (a *PerformanceAdvisorApiService) listSlowQueriesExecute(r ListSlowQueriesA
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
-	if r.pretty != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	} else {
-		var defaultValue bool = false
-		r.pretty = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	}
 	if r.duration != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "duration", r.duration, "")
 	}
@@ -665,8 +569,6 @@ type ListSlowQueryNamespacesApiRequest struct {
 	ApiService PerformanceAdvisorApi
 	groupId    string
 	processId  string
-	envelope   *bool
-	pretty     *bool
 	duration   *int64
 	since      *int64
 }
@@ -674,8 +576,6 @@ type ListSlowQueryNamespacesApiRequest struct {
 type ListSlowQueryNamespacesApiParams struct {
 	GroupId   string
 	ProcessId string
-	Envelope  *bool
-	Pretty    *bool
 	Duration  *int64
 	Since     *int64
 }
@@ -686,23 +586,9 @@ func (a *PerformanceAdvisorApiService) ListSlowQueryNamespacesWithParams(ctx con
 		ctx:        ctx,
 		groupId:    args.GroupId,
 		processId:  args.ProcessId,
-		envelope:   args.Envelope,
-		pretty:     args.Pretty,
 		duration:   args.Duration,
 		since:      args.Since,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r ListSlowQueryNamespacesApiRequest) Envelope(envelope bool) ListSlowQueryNamespacesApiRequest {
-	r.envelope = &envelope
-	return r
-}
-
-// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
-func (r ListSlowQueryNamespacesApiRequest) Pretty(pretty bool) ListSlowQueryNamespacesApiRequest {
-	r.pretty = &pretty
-	return r
 }
 
 // Length of time expressed during which the query finds suggested indexes among the managed namespaces in the cluster. This parameter expresses its value in milliseconds.  - If you don&#39;t specify the **since** parameter, the endpoint returns data covering the duration before the current time. - If you specify neither the **duration** nor **since** parameters, the endpoint returns data from the previous 24 hours.
@@ -770,20 +656,6 @@ func (a *PerformanceAdvisorApiService) listSlowQueryNamespacesExecute(r ListSlow
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
-	if r.pretty != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	} else {
-		var defaultValue bool = false
-		r.pretty = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	}
 	if r.duration != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "duration", r.duration, "")
 	}
@@ -857,11 +729,9 @@ type ListSuggestedIndexesApiRequest struct {
 	ApiService   PerformanceAdvisorApi
 	groupId      string
 	processId    string
-	envelope     *bool
 	includeCount *bool
 	itemsPerPage *int
 	pageNum      *int
-	pretty       *bool
 	duration     *int64
 	namespaces   *[]string
 	nExamples    *int64
@@ -872,11 +742,9 @@ type ListSuggestedIndexesApiRequest struct {
 type ListSuggestedIndexesApiParams struct {
 	GroupId      string
 	ProcessId    string
-	Envelope     *bool
 	IncludeCount *bool
 	ItemsPerPage *int
 	PageNum      *int
-	Pretty       *bool
 	Duration     *int64
 	Namespaces   *[]string
 	NExamples    *int64
@@ -890,23 +758,15 @@ func (a *PerformanceAdvisorApiService) ListSuggestedIndexesWithParams(ctx contex
 		ctx:          ctx,
 		groupId:      args.GroupId,
 		processId:    args.ProcessId,
-		envelope:     args.Envelope,
 		includeCount: args.IncludeCount,
 		itemsPerPage: args.ItemsPerPage,
 		pageNum:      args.PageNum,
-		pretty:       args.Pretty,
 		duration:     args.Duration,
 		namespaces:   args.Namespaces,
 		nExamples:    args.NExamples,
 		nIndexes:     args.NIndexes,
 		since:        args.Since,
 	}
-}
-
-// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
-func (r ListSuggestedIndexesApiRequest) Envelope(envelope bool) ListSuggestedIndexesApiRequest {
-	r.envelope = &envelope
-	return r
 }
 
 // Flag that indicates whether the response returns the total number of items (**totalCount**) in the response.
@@ -924,12 +784,6 @@ func (r ListSuggestedIndexesApiRequest) ItemsPerPage(itemsPerPage int) ListSugge
 // Number of the page that displays the current set of the total objects that the response returns.
 func (r ListSuggestedIndexesApiRequest) PageNum(pageNum int) ListSuggestedIndexesApiRequest {
 	r.pageNum = &pageNum
-	return r
-}
-
-// Flag that indicates whether the response body should be in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/Prettyprint\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;prettyprint&lt;/a&gt; format.
-func (r ListSuggestedIndexesApiRequest) Pretty(pretty bool) ListSuggestedIndexesApiRequest {
-	r.pretty = &pretty
 	return r
 }
 
@@ -1016,13 +870,6 @@ func (a *PerformanceAdvisorApiService) listSuggestedIndexesExecute(r ListSuggest
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
 
-	if r.envelope != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	} else {
-		var defaultValue bool = false
-		r.envelope = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
-	}
 	if r.includeCount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
 	} else {
@@ -1043,13 +890,6 @@ func (a *PerformanceAdvisorApiService) listSuggestedIndexesExecute(r ListSuggest
 		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
-	}
-	if r.pretty != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
-	} else {
-		var defaultValue bool = false
-		r.pretty = &defaultValue
-		parameterAddToHeaderOrQuery(localVarQueryParams, "pretty", r.pretty, "")
 	}
 	if r.duration != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "duration", r.duration, "")
