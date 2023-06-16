@@ -97,7 +97,7 @@ function workaroundNestedTransformations(openapi) {
   let parentObject;
   try {
     parentObject = getObjectFromYamlPath(
-      ".components.schemas.RegionConfig",
+      ".components.schemas.ApiAtlasRegionConfig",
       openapi
     );
   } catch (e) {}
