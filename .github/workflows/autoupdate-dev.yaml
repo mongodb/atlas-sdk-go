@@ -44,8 +44,8 @@ jobs:
           draft: true
           branch: dev-latest
           body: |
-            Automatic update for MongoDB Atlas Go Client based on **release candidate* OpenAPI file.
-            ** DO NOT MERGE THIS PR TO THE MAIN BRANCH **
+            Automatic update for MongoDB Atlas Go Client based on *release candidate* OpenAPI file.
+            **DO NOT MERGE THIS PR TO THE MAIN BRANCH**
 
             > NOTE: This PR provides notifications for stability of the RC OpenAPI files
             > It is not intented to be merged!
