@@ -254,7 +254,7 @@ func (a *DatabaseUsersApiService) createDatabaseUserExecute(r CreateDatabaseUser
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -396,7 +396,7 @@ func (a *DatabaseUsersApiService) deleteDatabaseUserExecute(r DeleteDatabaseUser
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -538,7 +538,7 @@ func (a *DatabaseUsersApiService) getDatabaseUserExecute(r GetDatabaseUserApiReq
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -716,7 +716,7 @@ func (a *DatabaseUsersApiService) listDatabaseUsersExecute(r ListDatabaseUsersAp
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -867,7 +867,7 @@ func (a *DatabaseUsersApiService) updateDatabaseUserExecute(r UpdateDatabaseUser
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()

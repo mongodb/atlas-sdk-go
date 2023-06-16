@@ -6,41 +6,41 @@ import (
 	"encoding/json"
 )
 
-// checks if the CheckpointPart type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CheckpointPart{}
+// checks if the ApiCheckpointPart type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApiCheckpointPart{}
 
-// CheckpointPart Metadata contained in one document that describes the complete snapshot taken for this node.
-type CheckpointPart struct {
+// ApiCheckpointPart Metadata contained in one document that describes the complete snapshot taken for this node.
+type ApiCheckpointPart struct {
 	// Human-readable label that identifies the replica set to which this checkpoint applies.
 	ReplicaSetName *string `json:"replicaSetName,omitempty"`
 	// Human-readable label that identifies the shard to which this checkpoint applies.
 	ShardName *string `json:"shardName,omitempty"`
 	// Flag that indicates whether the token exists.
-	TokenDiscovered *bool          `json:"tokenDiscovered,omitempty"`
-	TokenTimestamp  *BSONTimestamp `json:"tokenTimestamp,omitempty"`
+	TokenDiscovered *bool             `json:"tokenDiscovered,omitempty"`
+	TokenTimestamp  *ApiBSONTimestamp `json:"tokenTimestamp,omitempty"`
 	// Human-readable label that identifies the type of host that the part represents.
 	TypeName *string `json:"typeName,omitempty"`
 }
 
-// NewCheckpointPart instantiates a new CheckpointPart object
+// NewApiCheckpointPart instantiates a new ApiCheckpointPart object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCheckpointPart() *CheckpointPart {
-	this := CheckpointPart{}
+func NewApiCheckpointPart() *ApiCheckpointPart {
+	this := ApiCheckpointPart{}
 	return &this
 }
 
-// NewCheckpointPartWithDefaults instantiates a new CheckpointPart object
+// NewApiCheckpointPartWithDefaults instantiates a new ApiCheckpointPart object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCheckpointPartWithDefaults() *CheckpointPart {
-	this := CheckpointPart{}
+func NewApiCheckpointPartWithDefaults() *ApiCheckpointPart {
+	this := ApiCheckpointPart{}
 	return &this
 }
 
 // GetReplicaSetName returns the ReplicaSetName field value if set, zero value otherwise.
-func (o *CheckpointPart) GetReplicaSetName() string {
+func (o *ApiCheckpointPart) GetReplicaSetName() string {
 	if o == nil || IsNil(o.ReplicaSetName) {
 		var ret string
 		return ret
@@ -50,7 +50,7 @@ func (o *CheckpointPart) GetReplicaSetName() string {
 
 // GetReplicaSetNameOk returns a tuple with the ReplicaSetName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CheckpointPart) GetReplicaSetNameOk() (*string, bool) {
+func (o *ApiCheckpointPart) GetReplicaSetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.ReplicaSetName) {
 		return nil, false
 	}
@@ -58,7 +58,7 @@ func (o *CheckpointPart) GetReplicaSetNameOk() (*string, bool) {
 }
 
 // HasReplicaSetName returns a boolean if a field has been set.
-func (o *CheckpointPart) HasReplicaSetName() bool {
+func (o *ApiCheckpointPart) HasReplicaSetName() bool {
 	if o != nil && !IsNil(o.ReplicaSetName) {
 		return true
 	}
@@ -67,12 +67,12 @@ func (o *CheckpointPart) HasReplicaSetName() bool {
 }
 
 // SetReplicaSetName gets a reference to the given string and assigns it to the ReplicaSetName field.
-func (o *CheckpointPart) SetReplicaSetName(v string) {
+func (o *ApiCheckpointPart) SetReplicaSetName(v string) {
 	o.ReplicaSetName = &v
 }
 
 // GetShardName returns the ShardName field value if set, zero value otherwise.
-func (o *CheckpointPart) GetShardName() string {
+func (o *ApiCheckpointPart) GetShardName() string {
 	if o == nil || IsNil(o.ShardName) {
 		var ret string
 		return ret
@@ -82,7 +82,7 @@ func (o *CheckpointPart) GetShardName() string {
 
 // GetShardNameOk returns a tuple with the ShardName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CheckpointPart) GetShardNameOk() (*string, bool) {
+func (o *ApiCheckpointPart) GetShardNameOk() (*string, bool) {
 	if o == nil || IsNil(o.ShardName) {
 		return nil, false
 	}
@@ -90,7 +90,7 @@ func (o *CheckpointPart) GetShardNameOk() (*string, bool) {
 }
 
 // HasShardName returns a boolean if a field has been set.
-func (o *CheckpointPart) HasShardName() bool {
+func (o *ApiCheckpointPart) HasShardName() bool {
 	if o != nil && !IsNil(o.ShardName) {
 		return true
 	}
@@ -99,12 +99,12 @@ func (o *CheckpointPart) HasShardName() bool {
 }
 
 // SetShardName gets a reference to the given string and assigns it to the ShardName field.
-func (o *CheckpointPart) SetShardName(v string) {
+func (o *ApiCheckpointPart) SetShardName(v string) {
 	o.ShardName = &v
 }
 
 // GetTokenDiscovered returns the TokenDiscovered field value if set, zero value otherwise.
-func (o *CheckpointPart) GetTokenDiscovered() bool {
+func (o *ApiCheckpointPart) GetTokenDiscovered() bool {
 	if o == nil || IsNil(o.TokenDiscovered) {
 		var ret bool
 		return ret
@@ -114,7 +114,7 @@ func (o *CheckpointPart) GetTokenDiscovered() bool {
 
 // GetTokenDiscoveredOk returns a tuple with the TokenDiscovered field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CheckpointPart) GetTokenDiscoveredOk() (*bool, bool) {
+func (o *ApiCheckpointPart) GetTokenDiscoveredOk() (*bool, bool) {
 	if o == nil || IsNil(o.TokenDiscovered) {
 		return nil, false
 	}
@@ -122,7 +122,7 @@ func (o *CheckpointPart) GetTokenDiscoveredOk() (*bool, bool) {
 }
 
 // HasTokenDiscovered returns a boolean if a field has been set.
-func (o *CheckpointPart) HasTokenDiscovered() bool {
+func (o *ApiCheckpointPart) HasTokenDiscovered() bool {
 	if o != nil && !IsNil(o.TokenDiscovered) {
 		return true
 	}
@@ -131,14 +131,14 @@ func (o *CheckpointPart) HasTokenDiscovered() bool {
 }
 
 // SetTokenDiscovered gets a reference to the given bool and assigns it to the TokenDiscovered field.
-func (o *CheckpointPart) SetTokenDiscovered(v bool) {
+func (o *ApiCheckpointPart) SetTokenDiscovered(v bool) {
 	o.TokenDiscovered = &v
 }
 
 // GetTokenTimestamp returns the TokenTimestamp field value if set, zero value otherwise.
-func (o *CheckpointPart) GetTokenTimestamp() BSONTimestamp {
+func (o *ApiCheckpointPart) GetTokenTimestamp() ApiBSONTimestamp {
 	if o == nil || IsNil(o.TokenTimestamp) {
-		var ret BSONTimestamp
+		var ret ApiBSONTimestamp
 		return ret
 	}
 	return *o.TokenTimestamp
@@ -146,7 +146,7 @@ func (o *CheckpointPart) GetTokenTimestamp() BSONTimestamp {
 
 // GetTokenTimestampOk returns a tuple with the TokenTimestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CheckpointPart) GetTokenTimestampOk() (*BSONTimestamp, bool) {
+func (o *ApiCheckpointPart) GetTokenTimestampOk() (*ApiBSONTimestamp, bool) {
 	if o == nil || IsNil(o.TokenTimestamp) {
 		return nil, false
 	}
@@ -154,7 +154,7 @@ func (o *CheckpointPart) GetTokenTimestampOk() (*BSONTimestamp, bool) {
 }
 
 // HasTokenTimestamp returns a boolean if a field has been set.
-func (o *CheckpointPart) HasTokenTimestamp() bool {
+func (o *ApiCheckpointPart) HasTokenTimestamp() bool {
 	if o != nil && !IsNil(o.TokenTimestamp) {
 		return true
 	}
@@ -162,13 +162,13 @@ func (o *CheckpointPart) HasTokenTimestamp() bool {
 	return false
 }
 
-// SetTokenTimestamp gets a reference to the given BSONTimestamp and assigns it to the TokenTimestamp field.
-func (o *CheckpointPart) SetTokenTimestamp(v BSONTimestamp) {
+// SetTokenTimestamp gets a reference to the given ApiBSONTimestamp and assigns it to the TokenTimestamp field.
+func (o *ApiCheckpointPart) SetTokenTimestamp(v ApiBSONTimestamp) {
 	o.TokenTimestamp = &v
 }
 
 // GetTypeName returns the TypeName field value if set, zero value otherwise.
-func (o *CheckpointPart) GetTypeName() string {
+func (o *ApiCheckpointPart) GetTypeName() string {
 	if o == nil || IsNil(o.TypeName) {
 		var ret string
 		return ret
@@ -178,7 +178,7 @@ func (o *CheckpointPart) GetTypeName() string {
 
 // GetTypeNameOk returns a tuple with the TypeName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CheckpointPart) GetTypeNameOk() (*string, bool) {
+func (o *ApiCheckpointPart) GetTypeNameOk() (*string, bool) {
 	if o == nil || IsNil(o.TypeName) {
 		return nil, false
 	}
@@ -186,7 +186,7 @@ func (o *CheckpointPart) GetTypeNameOk() (*string, bool) {
 }
 
 // HasTypeName returns a boolean if a field has been set.
-func (o *CheckpointPart) HasTypeName() bool {
+func (o *ApiCheckpointPart) HasTypeName() bool {
 	if o != nil && !IsNil(o.TypeName) {
 		return true
 	}
@@ -195,18 +195,18 @@ func (o *CheckpointPart) HasTypeName() bool {
 }
 
 // SetTypeName gets a reference to the given string and assigns it to the TypeName field.
-func (o *CheckpointPart) SetTypeName(v string) {
+func (o *ApiCheckpointPart) SetTypeName(v string) {
 	o.TypeName = &v
 }
 
-func (o CheckpointPart) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o ApiCheckpointPart) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o CheckpointPart) ToMap() (map[string]interface{}, error) {
+func (o ApiCheckpointPart) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.TokenTimestamp) {
 		toSerialize["tokenTimestamp"] = o.TokenTimestamp
@@ -214,38 +214,38 @@ func (o CheckpointPart) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableCheckpointPart struct {
-	value *CheckpointPart
+type NullableApiCheckpointPart struct {
+	value *ApiCheckpointPart
 	isSet bool
 }
 
-func (v NullableCheckpointPart) Get() *CheckpointPart {
+func (v NullableApiCheckpointPart) Get() *ApiCheckpointPart {
 	return v.value
 }
 
-func (v *NullableCheckpointPart) Set(val *CheckpointPart) {
+func (v *NullableApiCheckpointPart) Set(val *ApiCheckpointPart) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCheckpointPart) IsSet() bool {
+func (v NullableApiCheckpointPart) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCheckpointPart) Unset() {
+func (v *NullableApiCheckpointPart) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCheckpointPart(val *CheckpointPart) *NullableCheckpointPart {
-	return &NullableCheckpointPart{value: val, isSet: true}
+func NewNullableApiCheckpointPart(val *ApiCheckpointPart) *NullableApiCheckpointPart {
+	return &NullableApiCheckpointPart{value: val, isSet: true}
 }
 
-func (v NullableCheckpointPart) MarshalJSON() ([]byte, error) {
+func (v NullableApiCheckpointPart) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCheckpointPart) UnmarshalJSON(src []byte) error {
+func (v *NullableApiCheckpointPart) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

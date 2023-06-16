@@ -6,11 +6,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the Organization type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Organization{}
+// checks if the AtlasOrganization type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AtlasOrganization{}
 
-// Organization struct for Organization
-type Organization struct {
+// AtlasOrganization struct for AtlasOrganization
+type AtlasOrganization struct {
 	// Unique 24-hexadecimal digit string that identifies the organization.
 	Id *string `json:"id,omitempty"`
 	// Flag that indicates whether this organization has been deleted.
@@ -21,26 +21,26 @@ type Organization struct {
 	Name string `json:"name"`
 }
 
-// NewOrganization instantiates a new Organization object
+// NewAtlasOrganization instantiates a new AtlasOrganization object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrganization(name string) *Organization {
-	this := Organization{}
+func NewAtlasOrganization(name string) *AtlasOrganization {
+	this := AtlasOrganization{}
 	this.Name = name
 	return &this
 }
 
-// NewOrganizationWithDefaults instantiates a new Organization object
+// NewAtlasOrganizationWithDefaults instantiates a new AtlasOrganization object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewOrganizationWithDefaults() *Organization {
-	this := Organization{}
+func NewAtlasOrganizationWithDefaults() *AtlasOrganization {
+	this := AtlasOrganization{}
 	return &this
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *Organization) GetId() string {
+func (o *AtlasOrganization) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
@@ -50,7 +50,7 @@ func (o *Organization) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Organization) GetIdOk() (*string, bool) {
+func (o *AtlasOrganization) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -58,7 +58,7 @@ func (o *Organization) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *Organization) HasId() bool {
+func (o *AtlasOrganization) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -67,12 +67,12 @@ func (o *Organization) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *Organization) SetId(v string) {
+func (o *AtlasOrganization) SetId(v string) {
 	o.Id = &v
 }
 
 // GetIsDeleted returns the IsDeleted field value if set, zero value otherwise.
-func (o *Organization) GetIsDeleted() bool {
+func (o *AtlasOrganization) GetIsDeleted() bool {
 	if o == nil || IsNil(o.IsDeleted) {
 		var ret bool
 		return ret
@@ -82,7 +82,7 @@ func (o *Organization) GetIsDeleted() bool {
 
 // GetIsDeletedOk returns a tuple with the IsDeleted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Organization) GetIsDeletedOk() (*bool, bool) {
+func (o *AtlasOrganization) GetIsDeletedOk() (*bool, bool) {
 	if o == nil || IsNil(o.IsDeleted) {
 		return nil, false
 	}
@@ -90,7 +90,7 @@ func (o *Organization) GetIsDeletedOk() (*bool, bool) {
 }
 
 // HasIsDeleted returns a boolean if a field has been set.
-func (o *Organization) HasIsDeleted() bool {
+func (o *AtlasOrganization) HasIsDeleted() bool {
 	if o != nil && !IsNil(o.IsDeleted) {
 		return true
 	}
@@ -99,12 +99,12 @@ func (o *Organization) HasIsDeleted() bool {
 }
 
 // SetIsDeleted gets a reference to the given bool and assigns it to the IsDeleted field.
-func (o *Organization) SetIsDeleted(v bool) {
+func (o *AtlasOrganization) SetIsDeleted(v bool) {
 	o.IsDeleted = &v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *Organization) GetLinks() []Link {
+func (o *AtlasOrganization) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
 		return ret
@@ -114,7 +114,7 @@ func (o *Organization) GetLinks() []Link {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Organization) GetLinksOk() ([]Link, bool) {
+func (o *AtlasOrganization) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -122,7 +122,7 @@ func (o *Organization) GetLinksOk() ([]Link, bool) {
 }
 
 // HasLinks returns a boolean if a field has been set.
-func (o *Organization) HasLinks() bool {
+func (o *AtlasOrganization) HasLinks() bool {
 	if o != nil && !IsNil(o.Links) {
 		return true
 	}
@@ -131,12 +131,12 @@ func (o *Organization) HasLinks() bool {
 }
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
-func (o *Organization) SetLinks(v []Link) {
+func (o *AtlasOrganization) SetLinks(v []Link) {
 	o.Links = v
 }
 
 // GetName returns the Name field value
-func (o *Organization) GetName() string {
+func (o *AtlasOrganization) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -147,7 +147,7 @@ func (o *Organization) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *Organization) GetNameOk() (*string, bool) {
+func (o *AtlasOrganization) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -155,55 +155,55 @@ func (o *Organization) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *Organization) SetName(v string) {
+func (o *AtlasOrganization) SetName(v string) {
 	o.Name = v
 }
 
-func (o Organization) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o AtlasOrganization) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o Organization) ToMap() (map[string]interface{}, error) {
+func (o AtlasOrganization) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	return toSerialize, nil
 }
 
-type NullableOrganization struct {
-	value *Organization
+type NullableAtlasOrganization struct {
+	value *AtlasOrganization
 	isSet bool
 }
 
-func (v NullableOrganization) Get() *Organization {
+func (v NullableAtlasOrganization) Get() *AtlasOrganization {
 	return v.value
 }
 
-func (v *NullableOrganization) Set(val *Organization) {
+func (v *NullableAtlasOrganization) Set(val *AtlasOrganization) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableOrganization) IsSet() bool {
+func (v NullableAtlasOrganization) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableOrganization) Unset() {
+func (v *NullableAtlasOrganization) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableOrganization(val *Organization) *NullableOrganization {
-	return &NullableOrganization{value: val, isSet: true}
+func NewNullableAtlasOrganization(val *AtlasOrganization) *NullableAtlasOrganization {
+	return &NullableAtlasOrganization{value: val, isSet: true}
 }
 
-func (v NullableOrganization) MarshalJSON() ([]byte, error) {
+func (v NullableAtlasOrganization) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableOrganization) UnmarshalJSON(src []byte) error {
+func (v *NullableAtlasOrganization) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

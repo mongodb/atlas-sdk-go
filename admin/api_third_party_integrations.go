@@ -306,7 +306,7 @@ func (a *ThirdPartyIntegrationsApiService) createThirdPartyIntegrationExecute(r 
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -442,7 +442,7 @@ func (a *ThirdPartyIntegrationsApiService) deleteThirdPartyIntegrationExecute(r 
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -578,7 +578,7 @@ func (a *ThirdPartyIntegrationsApiService) getThirdPartyIntegrationExecute(r Get
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -756,7 +756,7 @@ func (a *ThirdPartyIntegrationsApiService) listThirdPartyIntegrationsExecute(r L
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -949,7 +949,7 @@ func (a *ThirdPartyIntegrationsApiService) updateThirdPartyIntegrationExecute(r 
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()

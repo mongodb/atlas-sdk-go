@@ -7,11 +7,11 @@ import (
 	"time"
 )
 
-// checks if the HostViewAtlas type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &HostViewAtlas{}
+// checks if the ApiHostViewAtlas type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApiHostViewAtlas{}
 
-// HostViewAtlas struct for HostViewAtlas
-type HostViewAtlas struct {
+// ApiHostViewAtlas struct for ApiHostViewAtlas
+type ApiHostViewAtlas struct {
 	// Date and time when MongoDB Cloud created this MongoDB process. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	Created *time.Time `json:"created,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project. The project contains MongoDB processes that you want to return. The MongoDB process can be either the `mongod` or `mongos`.
@@ -38,25 +38,25 @@ type HostViewAtlas struct {
 	Version *string `json:"version,omitempty"`
 }
 
-// NewHostViewAtlas instantiates a new HostViewAtlas object
+// NewApiHostViewAtlas instantiates a new ApiHostViewAtlas object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewHostViewAtlas() *HostViewAtlas {
-	this := HostViewAtlas{}
+func NewApiHostViewAtlas() *ApiHostViewAtlas {
+	this := ApiHostViewAtlas{}
 	return &this
 }
 
-// NewHostViewAtlasWithDefaults instantiates a new HostViewAtlas object
+// NewApiHostViewAtlasWithDefaults instantiates a new ApiHostViewAtlas object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewHostViewAtlasWithDefaults() *HostViewAtlas {
-	this := HostViewAtlas{}
+func NewApiHostViewAtlasWithDefaults() *ApiHostViewAtlas {
+	this := ApiHostViewAtlas{}
 	return &this
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *HostViewAtlas) GetCreated() time.Time {
+func (o *ApiHostViewAtlas) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
 		var ret time.Time
 		return ret
@@ -66,7 +66,7 @@ func (o *HostViewAtlas) GetCreated() time.Time {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HostViewAtlas) GetCreatedOk() (*time.Time, bool) {
+func (o *ApiHostViewAtlas) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -74,7 +74,7 @@ func (o *HostViewAtlas) GetCreatedOk() (*time.Time, bool) {
 }
 
 // HasCreated returns a boolean if a field has been set.
-func (o *HostViewAtlas) HasCreated() bool {
+func (o *ApiHostViewAtlas) HasCreated() bool {
 	if o != nil && !IsNil(o.Created) {
 		return true
 	}
@@ -83,12 +83,12 @@ func (o *HostViewAtlas) HasCreated() bool {
 }
 
 // SetCreated gets a reference to the given time.Time and assigns it to the Created field.
-func (o *HostViewAtlas) SetCreated(v time.Time) {
+func (o *ApiHostViewAtlas) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise.
-func (o *HostViewAtlas) GetGroupId() string {
+func (o *ApiHostViewAtlas) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
 		var ret string
 		return ret
@@ -98,7 +98,7 @@ func (o *HostViewAtlas) GetGroupId() string {
 
 // GetGroupIdOk returns a tuple with the GroupId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HostViewAtlas) GetGroupIdOk() (*string, bool) {
+func (o *ApiHostViewAtlas) GetGroupIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupId) {
 		return nil, false
 	}
@@ -106,7 +106,7 @@ func (o *HostViewAtlas) GetGroupIdOk() (*string, bool) {
 }
 
 // HasGroupId returns a boolean if a field has been set.
-func (o *HostViewAtlas) HasGroupId() bool {
+func (o *ApiHostViewAtlas) HasGroupId() bool {
 	if o != nil && !IsNil(o.GroupId) {
 		return true
 	}
@@ -115,12 +115,12 @@ func (o *HostViewAtlas) HasGroupId() bool {
 }
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
-func (o *HostViewAtlas) SetGroupId(v string) {
+func (o *ApiHostViewAtlas) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
 // GetHostname returns the Hostname field value if set, zero value otherwise.
-func (o *HostViewAtlas) GetHostname() string {
+func (o *ApiHostViewAtlas) GetHostname() string {
 	if o == nil || IsNil(o.Hostname) {
 		var ret string
 		return ret
@@ -130,7 +130,7 @@ func (o *HostViewAtlas) GetHostname() string {
 
 // GetHostnameOk returns a tuple with the Hostname field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HostViewAtlas) GetHostnameOk() (*string, bool) {
+func (o *ApiHostViewAtlas) GetHostnameOk() (*string, bool) {
 	if o == nil || IsNil(o.Hostname) {
 		return nil, false
 	}
@@ -138,7 +138,7 @@ func (o *HostViewAtlas) GetHostnameOk() (*string, bool) {
 }
 
 // HasHostname returns a boolean if a field has been set.
-func (o *HostViewAtlas) HasHostname() bool {
+func (o *ApiHostViewAtlas) HasHostname() bool {
 	if o != nil && !IsNil(o.Hostname) {
 		return true
 	}
@@ -147,12 +147,12 @@ func (o *HostViewAtlas) HasHostname() bool {
 }
 
 // SetHostname gets a reference to the given string and assigns it to the Hostname field.
-func (o *HostViewAtlas) SetHostname(v string) {
+func (o *ApiHostViewAtlas) SetHostname(v string) {
 	o.Hostname = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *HostViewAtlas) GetId() string {
+func (o *ApiHostViewAtlas) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
@@ -162,7 +162,7 @@ func (o *HostViewAtlas) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HostViewAtlas) GetIdOk() (*string, bool) {
+func (o *ApiHostViewAtlas) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -170,7 +170,7 @@ func (o *HostViewAtlas) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *HostViewAtlas) HasId() bool {
+func (o *ApiHostViewAtlas) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -179,12 +179,12 @@ func (o *HostViewAtlas) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *HostViewAtlas) SetId(v string) {
+func (o *ApiHostViewAtlas) SetId(v string) {
 	o.Id = &v
 }
 
 // GetLastPing returns the LastPing field value if set, zero value otherwise.
-func (o *HostViewAtlas) GetLastPing() time.Time {
+func (o *ApiHostViewAtlas) GetLastPing() time.Time {
 	if o == nil || IsNil(o.LastPing) {
 		var ret time.Time
 		return ret
@@ -194,7 +194,7 @@ func (o *HostViewAtlas) GetLastPing() time.Time {
 
 // GetLastPingOk returns a tuple with the LastPing field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HostViewAtlas) GetLastPingOk() (*time.Time, bool) {
+func (o *ApiHostViewAtlas) GetLastPingOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.LastPing) {
 		return nil, false
 	}
@@ -202,7 +202,7 @@ func (o *HostViewAtlas) GetLastPingOk() (*time.Time, bool) {
 }
 
 // HasLastPing returns a boolean if a field has been set.
-func (o *HostViewAtlas) HasLastPing() bool {
+func (o *ApiHostViewAtlas) HasLastPing() bool {
 	if o != nil && !IsNil(o.LastPing) {
 		return true
 	}
@@ -211,12 +211,12 @@ func (o *HostViewAtlas) HasLastPing() bool {
 }
 
 // SetLastPing gets a reference to the given time.Time and assigns it to the LastPing field.
-func (o *HostViewAtlas) SetLastPing(v time.Time) {
+func (o *ApiHostViewAtlas) SetLastPing(v time.Time) {
 	o.LastPing = &v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *HostViewAtlas) GetLinks() []LinkAtlas {
+func (o *ApiHostViewAtlas) GetLinks() []LinkAtlas {
 	if o == nil || IsNil(o.Links) {
 		var ret []LinkAtlas
 		return ret
@@ -226,7 +226,7 @@ func (o *HostViewAtlas) GetLinks() []LinkAtlas {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HostViewAtlas) GetLinksOk() ([]LinkAtlas, bool) {
+func (o *ApiHostViewAtlas) GetLinksOk() ([]LinkAtlas, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -234,7 +234,7 @@ func (o *HostViewAtlas) GetLinksOk() ([]LinkAtlas, bool) {
 }
 
 // HasLinks returns a boolean if a field has been set.
-func (o *HostViewAtlas) HasLinks() bool {
+func (o *ApiHostViewAtlas) HasLinks() bool {
 	if o != nil && !IsNil(o.Links) {
 		return true
 	}
@@ -243,12 +243,12 @@ func (o *HostViewAtlas) HasLinks() bool {
 }
 
 // SetLinks gets a reference to the given []LinkAtlas and assigns it to the Links field.
-func (o *HostViewAtlas) SetLinks(v []LinkAtlas) {
+func (o *ApiHostViewAtlas) SetLinks(v []LinkAtlas) {
 	o.Links = v
 }
 
 // GetPort returns the Port field value if set, zero value otherwise.
-func (o *HostViewAtlas) GetPort() int {
+func (o *ApiHostViewAtlas) GetPort() int {
 	if o == nil || IsNil(o.Port) {
 		var ret int
 		return ret
@@ -258,7 +258,7 @@ func (o *HostViewAtlas) GetPort() int {
 
 // GetPortOk returns a tuple with the Port field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HostViewAtlas) GetPortOk() (*int, bool) {
+func (o *ApiHostViewAtlas) GetPortOk() (*int, bool) {
 	if o == nil || IsNil(o.Port) {
 		return nil, false
 	}
@@ -266,7 +266,7 @@ func (o *HostViewAtlas) GetPortOk() (*int, bool) {
 }
 
 // HasPort returns a boolean if a field has been set.
-func (o *HostViewAtlas) HasPort() bool {
+func (o *ApiHostViewAtlas) HasPort() bool {
 	if o != nil && !IsNil(o.Port) {
 		return true
 	}
@@ -275,12 +275,12 @@ func (o *HostViewAtlas) HasPort() bool {
 }
 
 // SetPort gets a reference to the given int and assigns it to the Port field.
-func (o *HostViewAtlas) SetPort(v int) {
+func (o *ApiHostViewAtlas) SetPort(v int) {
 	o.Port = &v
 }
 
 // GetReplicaSetName returns the ReplicaSetName field value if set, zero value otherwise.
-func (o *HostViewAtlas) GetReplicaSetName() string {
+func (o *ApiHostViewAtlas) GetReplicaSetName() string {
 	if o == nil || IsNil(o.ReplicaSetName) {
 		var ret string
 		return ret
@@ -290,7 +290,7 @@ func (o *HostViewAtlas) GetReplicaSetName() string {
 
 // GetReplicaSetNameOk returns a tuple with the ReplicaSetName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HostViewAtlas) GetReplicaSetNameOk() (*string, bool) {
+func (o *ApiHostViewAtlas) GetReplicaSetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.ReplicaSetName) {
 		return nil, false
 	}
@@ -298,7 +298,7 @@ func (o *HostViewAtlas) GetReplicaSetNameOk() (*string, bool) {
 }
 
 // HasReplicaSetName returns a boolean if a field has been set.
-func (o *HostViewAtlas) HasReplicaSetName() bool {
+func (o *ApiHostViewAtlas) HasReplicaSetName() bool {
 	if o != nil && !IsNil(o.ReplicaSetName) {
 		return true
 	}
@@ -307,12 +307,12 @@ func (o *HostViewAtlas) HasReplicaSetName() bool {
 }
 
 // SetReplicaSetName gets a reference to the given string and assigns it to the ReplicaSetName field.
-func (o *HostViewAtlas) SetReplicaSetName(v string) {
+func (o *ApiHostViewAtlas) SetReplicaSetName(v string) {
 	o.ReplicaSetName = &v
 }
 
 // GetShardName returns the ShardName field value if set, zero value otherwise.
-func (o *HostViewAtlas) GetShardName() string {
+func (o *ApiHostViewAtlas) GetShardName() string {
 	if o == nil || IsNil(o.ShardName) {
 		var ret string
 		return ret
@@ -322,7 +322,7 @@ func (o *HostViewAtlas) GetShardName() string {
 
 // GetShardNameOk returns a tuple with the ShardName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HostViewAtlas) GetShardNameOk() (*string, bool) {
+func (o *ApiHostViewAtlas) GetShardNameOk() (*string, bool) {
 	if o == nil || IsNil(o.ShardName) {
 		return nil, false
 	}
@@ -330,7 +330,7 @@ func (o *HostViewAtlas) GetShardNameOk() (*string, bool) {
 }
 
 // HasShardName returns a boolean if a field has been set.
-func (o *HostViewAtlas) HasShardName() bool {
+func (o *ApiHostViewAtlas) HasShardName() bool {
 	if o != nil && !IsNil(o.ShardName) {
 		return true
 	}
@@ -339,12 +339,12 @@ func (o *HostViewAtlas) HasShardName() bool {
 }
 
 // SetShardName gets a reference to the given string and assigns it to the ShardName field.
-func (o *HostViewAtlas) SetShardName(v string) {
+func (o *ApiHostViewAtlas) SetShardName(v string) {
 	o.ShardName = &v
 }
 
 // GetTypeName returns the TypeName field value if set, zero value otherwise.
-func (o *HostViewAtlas) GetTypeName() string {
+func (o *ApiHostViewAtlas) GetTypeName() string {
 	if o == nil || IsNil(o.TypeName) {
 		var ret string
 		return ret
@@ -354,7 +354,7 @@ func (o *HostViewAtlas) GetTypeName() string {
 
 // GetTypeNameOk returns a tuple with the TypeName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HostViewAtlas) GetTypeNameOk() (*string, bool) {
+func (o *ApiHostViewAtlas) GetTypeNameOk() (*string, bool) {
 	if o == nil || IsNil(o.TypeName) {
 		return nil, false
 	}
@@ -362,7 +362,7 @@ func (o *HostViewAtlas) GetTypeNameOk() (*string, bool) {
 }
 
 // HasTypeName returns a boolean if a field has been set.
-func (o *HostViewAtlas) HasTypeName() bool {
+func (o *ApiHostViewAtlas) HasTypeName() bool {
 	if o != nil && !IsNil(o.TypeName) {
 		return true
 	}
@@ -371,12 +371,12 @@ func (o *HostViewAtlas) HasTypeName() bool {
 }
 
 // SetTypeName gets a reference to the given string and assigns it to the TypeName field.
-func (o *HostViewAtlas) SetTypeName(v string) {
+func (o *ApiHostViewAtlas) SetTypeName(v string) {
 	o.TypeName = &v
 }
 
 // GetUserAlias returns the UserAlias field value if set, zero value otherwise.
-func (o *HostViewAtlas) GetUserAlias() string {
+func (o *ApiHostViewAtlas) GetUserAlias() string {
 	if o == nil || IsNil(o.UserAlias) {
 		var ret string
 		return ret
@@ -386,7 +386,7 @@ func (o *HostViewAtlas) GetUserAlias() string {
 
 // GetUserAliasOk returns a tuple with the UserAlias field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HostViewAtlas) GetUserAliasOk() (*string, bool) {
+func (o *ApiHostViewAtlas) GetUserAliasOk() (*string, bool) {
 	if o == nil || IsNil(o.UserAlias) {
 		return nil, false
 	}
@@ -394,7 +394,7 @@ func (o *HostViewAtlas) GetUserAliasOk() (*string, bool) {
 }
 
 // HasUserAlias returns a boolean if a field has been set.
-func (o *HostViewAtlas) HasUserAlias() bool {
+func (o *ApiHostViewAtlas) HasUserAlias() bool {
 	if o != nil && !IsNil(o.UserAlias) {
 		return true
 	}
@@ -403,12 +403,12 @@ func (o *HostViewAtlas) HasUserAlias() bool {
 }
 
 // SetUserAlias gets a reference to the given string and assigns it to the UserAlias field.
-func (o *HostViewAtlas) SetUserAlias(v string) {
+func (o *ApiHostViewAtlas) SetUserAlias(v string) {
 	o.UserAlias = &v
 }
 
 // GetVersion returns the Version field value if set, zero value otherwise.
-func (o *HostViewAtlas) GetVersion() string {
+func (o *ApiHostViewAtlas) GetVersion() string {
 	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
@@ -418,7 +418,7 @@ func (o *HostViewAtlas) GetVersion() string {
 
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HostViewAtlas) GetVersionOk() (*string, bool) {
+func (o *ApiHostViewAtlas) GetVersionOk() (*string, bool) {
 	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
@@ -426,7 +426,7 @@ func (o *HostViewAtlas) GetVersionOk() (*string, bool) {
 }
 
 // HasVersion returns a boolean if a field has been set.
-func (o *HostViewAtlas) HasVersion() bool {
+func (o *ApiHostViewAtlas) HasVersion() bool {
 	if o != nil && !IsNil(o.Version) {
 		return true
 	}
@@ -435,54 +435,54 @@ func (o *HostViewAtlas) HasVersion() bool {
 }
 
 // SetVersion gets a reference to the given string and assigns it to the Version field.
-func (o *HostViewAtlas) SetVersion(v string) {
+func (o *ApiHostViewAtlas) SetVersion(v string) {
 	o.Version = &v
 }
 
-func (o HostViewAtlas) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o ApiHostViewAtlas) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o HostViewAtlas) ToMap() (map[string]interface{}, error) {
+func (o ApiHostViewAtlas) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }
 
-type NullableHostViewAtlas struct {
-	value *HostViewAtlas
+type NullableApiHostViewAtlas struct {
+	value *ApiHostViewAtlas
 	isSet bool
 }
 
-func (v NullableHostViewAtlas) Get() *HostViewAtlas {
+func (v NullableApiHostViewAtlas) Get() *ApiHostViewAtlas {
 	return v.value
 }
 
-func (v *NullableHostViewAtlas) Set(val *HostViewAtlas) {
+func (v *NullableApiHostViewAtlas) Set(val *ApiHostViewAtlas) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableHostViewAtlas) IsSet() bool {
+func (v NullableApiHostViewAtlas) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableHostViewAtlas) Unset() {
+func (v *NullableApiHostViewAtlas) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableHostViewAtlas(val *HostViewAtlas) *NullableHostViewAtlas {
-	return &NullableHostViewAtlas{value: val, isSet: true}
+func NewNullableApiHostViewAtlas(val *ApiHostViewAtlas) *NullableApiHostViewAtlas {
+	return &NullableApiHostViewAtlas{value: val, isSet: true}
 }
 
-func (v NullableHostViewAtlas) MarshalJSON() ([]byte, error) {
+func (v NullableApiHostViewAtlas) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableHostViewAtlas) UnmarshalJSON(src []byte) error {
+func (v *NullableApiHostViewAtlas) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -7,11 +7,11 @@ import (
 	"time"
 )
 
-// checks if the Checkpoint type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Checkpoint{}
+// checks if the ApiAtlasCheckpoint type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApiAtlasCheckpoint{}
 
-// Checkpoint struct for Checkpoint
-type Checkpoint struct {
+// ApiAtlasCheckpoint struct for ApiAtlasCheckpoint
+type ApiAtlasCheckpoint struct {
 	// Unique 24-hexadecimal digit string that identifies the cluster that contains the checkpoint.
 	ClusterId *string `json:"clusterId,omitempty"`
 	// Date and time when the checkpoint completed and the balancer restarted. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
@@ -23,7 +23,7 @@ type Checkpoint struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	Links []Link `json:"links,omitempty"`
 	// Metadata that describes the complete snapshot.  - For a replica set, this array contains a single document. - For a sharded cluster, this array contains one document for each shard plus one document for the config host.
-	Parts []CheckpointPart `json:"parts,omitempty"`
+	Parts []ApiCheckpointPart `json:"parts,omitempty"`
 	// Flag that indicates whether MongoDB Cloud can use the checkpoint for a restore.
 	Restorable *bool `json:"restorable,omitempty"`
 	// Date and time when the balancer stopped and began the checkpoint. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
@@ -32,25 +32,25 @@ type Checkpoint struct {
 	Timestamp *time.Time `json:"timestamp,omitempty"`
 }
 
-// NewCheckpoint instantiates a new Checkpoint object
+// NewApiAtlasCheckpoint instantiates a new ApiAtlasCheckpoint object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCheckpoint() *Checkpoint {
-	this := Checkpoint{}
+func NewApiAtlasCheckpoint() *ApiAtlasCheckpoint {
+	this := ApiAtlasCheckpoint{}
 	return &this
 }
 
-// NewCheckpointWithDefaults instantiates a new Checkpoint object
+// NewApiAtlasCheckpointWithDefaults instantiates a new ApiAtlasCheckpoint object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCheckpointWithDefaults() *Checkpoint {
-	this := Checkpoint{}
+func NewApiAtlasCheckpointWithDefaults() *ApiAtlasCheckpoint {
+	this := ApiAtlasCheckpoint{}
 	return &this
 }
 
 // GetClusterId returns the ClusterId field value if set, zero value otherwise.
-func (o *Checkpoint) GetClusterId() string {
+func (o *ApiAtlasCheckpoint) GetClusterId() string {
 	if o == nil || IsNil(o.ClusterId) {
 		var ret string
 		return ret
@@ -60,7 +60,7 @@ func (o *Checkpoint) GetClusterId() string {
 
 // GetClusterIdOk returns a tuple with the ClusterId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Checkpoint) GetClusterIdOk() (*string, bool) {
+func (o *ApiAtlasCheckpoint) GetClusterIdOk() (*string, bool) {
 	if o == nil || IsNil(o.ClusterId) {
 		return nil, false
 	}
@@ -68,7 +68,7 @@ func (o *Checkpoint) GetClusterIdOk() (*string, bool) {
 }
 
 // HasClusterId returns a boolean if a field has been set.
-func (o *Checkpoint) HasClusterId() bool {
+func (o *ApiAtlasCheckpoint) HasClusterId() bool {
 	if o != nil && !IsNil(o.ClusterId) {
 		return true
 	}
@@ -77,12 +77,12 @@ func (o *Checkpoint) HasClusterId() bool {
 }
 
 // SetClusterId gets a reference to the given string and assigns it to the ClusterId field.
-func (o *Checkpoint) SetClusterId(v string) {
+func (o *ApiAtlasCheckpoint) SetClusterId(v string) {
 	o.ClusterId = &v
 }
 
 // GetCompleted returns the Completed field value if set, zero value otherwise.
-func (o *Checkpoint) GetCompleted() time.Time {
+func (o *ApiAtlasCheckpoint) GetCompleted() time.Time {
 	if o == nil || IsNil(o.Completed) {
 		var ret time.Time
 		return ret
@@ -92,7 +92,7 @@ func (o *Checkpoint) GetCompleted() time.Time {
 
 // GetCompletedOk returns a tuple with the Completed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Checkpoint) GetCompletedOk() (*time.Time, bool) {
+func (o *ApiAtlasCheckpoint) GetCompletedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Completed) {
 		return nil, false
 	}
@@ -100,7 +100,7 @@ func (o *Checkpoint) GetCompletedOk() (*time.Time, bool) {
 }
 
 // HasCompleted returns a boolean if a field has been set.
-func (o *Checkpoint) HasCompleted() bool {
+func (o *ApiAtlasCheckpoint) HasCompleted() bool {
 	if o != nil && !IsNil(o.Completed) {
 		return true
 	}
@@ -109,12 +109,12 @@ func (o *Checkpoint) HasCompleted() bool {
 }
 
 // SetCompleted gets a reference to the given time.Time and assigns it to the Completed field.
-func (o *Checkpoint) SetCompleted(v time.Time) {
+func (o *ApiAtlasCheckpoint) SetCompleted(v time.Time) {
 	o.Completed = &v
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise.
-func (o *Checkpoint) GetGroupId() string {
+func (o *ApiAtlasCheckpoint) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
 		var ret string
 		return ret
@@ -124,7 +124,7 @@ func (o *Checkpoint) GetGroupId() string {
 
 // GetGroupIdOk returns a tuple with the GroupId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Checkpoint) GetGroupIdOk() (*string, bool) {
+func (o *ApiAtlasCheckpoint) GetGroupIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupId) {
 		return nil, false
 	}
@@ -132,7 +132,7 @@ func (o *Checkpoint) GetGroupIdOk() (*string, bool) {
 }
 
 // HasGroupId returns a boolean if a field has been set.
-func (o *Checkpoint) HasGroupId() bool {
+func (o *ApiAtlasCheckpoint) HasGroupId() bool {
 	if o != nil && !IsNil(o.GroupId) {
 		return true
 	}
@@ -141,12 +141,12 @@ func (o *Checkpoint) HasGroupId() bool {
 }
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
-func (o *Checkpoint) SetGroupId(v string) {
+func (o *ApiAtlasCheckpoint) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *Checkpoint) GetId() string {
+func (o *ApiAtlasCheckpoint) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
@@ -156,7 +156,7 @@ func (o *Checkpoint) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Checkpoint) GetIdOk() (*string, bool) {
+func (o *ApiAtlasCheckpoint) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -164,7 +164,7 @@ func (o *Checkpoint) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *Checkpoint) HasId() bool {
+func (o *ApiAtlasCheckpoint) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -173,12 +173,12 @@ func (o *Checkpoint) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *Checkpoint) SetId(v string) {
+func (o *ApiAtlasCheckpoint) SetId(v string) {
 	o.Id = &v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *Checkpoint) GetLinks() []Link {
+func (o *ApiAtlasCheckpoint) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
 		return ret
@@ -188,7 +188,7 @@ func (o *Checkpoint) GetLinks() []Link {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Checkpoint) GetLinksOk() ([]Link, bool) {
+func (o *ApiAtlasCheckpoint) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -196,7 +196,7 @@ func (o *Checkpoint) GetLinksOk() ([]Link, bool) {
 }
 
 // HasLinks returns a boolean if a field has been set.
-func (o *Checkpoint) HasLinks() bool {
+func (o *ApiAtlasCheckpoint) HasLinks() bool {
 	if o != nil && !IsNil(o.Links) {
 		return true
 	}
@@ -205,14 +205,14 @@ func (o *Checkpoint) HasLinks() bool {
 }
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
-func (o *Checkpoint) SetLinks(v []Link) {
+func (o *ApiAtlasCheckpoint) SetLinks(v []Link) {
 	o.Links = v
 }
 
 // GetParts returns the Parts field value if set, zero value otherwise.
-func (o *Checkpoint) GetParts() []CheckpointPart {
+func (o *ApiAtlasCheckpoint) GetParts() []ApiCheckpointPart {
 	if o == nil || IsNil(o.Parts) {
-		var ret []CheckpointPart
+		var ret []ApiCheckpointPart
 		return ret
 	}
 	return o.Parts
@@ -220,7 +220,7 @@ func (o *Checkpoint) GetParts() []CheckpointPart {
 
 // GetPartsOk returns a tuple with the Parts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Checkpoint) GetPartsOk() ([]CheckpointPart, bool) {
+func (o *ApiAtlasCheckpoint) GetPartsOk() ([]ApiCheckpointPart, bool) {
 	if o == nil || IsNil(o.Parts) {
 		return nil, false
 	}
@@ -228,7 +228,7 @@ func (o *Checkpoint) GetPartsOk() ([]CheckpointPart, bool) {
 }
 
 // HasParts returns a boolean if a field has been set.
-func (o *Checkpoint) HasParts() bool {
+func (o *ApiAtlasCheckpoint) HasParts() bool {
 	if o != nil && !IsNil(o.Parts) {
 		return true
 	}
@@ -236,13 +236,13 @@ func (o *Checkpoint) HasParts() bool {
 	return false
 }
 
-// SetParts gets a reference to the given []CheckpointPart and assigns it to the Parts field.
-func (o *Checkpoint) SetParts(v []CheckpointPart) {
+// SetParts gets a reference to the given []ApiCheckpointPart and assigns it to the Parts field.
+func (o *ApiAtlasCheckpoint) SetParts(v []ApiCheckpointPart) {
 	o.Parts = v
 }
 
 // GetRestorable returns the Restorable field value if set, zero value otherwise.
-func (o *Checkpoint) GetRestorable() bool {
+func (o *ApiAtlasCheckpoint) GetRestorable() bool {
 	if o == nil || IsNil(o.Restorable) {
 		var ret bool
 		return ret
@@ -252,7 +252,7 @@ func (o *Checkpoint) GetRestorable() bool {
 
 // GetRestorableOk returns a tuple with the Restorable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Checkpoint) GetRestorableOk() (*bool, bool) {
+func (o *ApiAtlasCheckpoint) GetRestorableOk() (*bool, bool) {
 	if o == nil || IsNil(o.Restorable) {
 		return nil, false
 	}
@@ -260,7 +260,7 @@ func (o *Checkpoint) GetRestorableOk() (*bool, bool) {
 }
 
 // HasRestorable returns a boolean if a field has been set.
-func (o *Checkpoint) HasRestorable() bool {
+func (o *ApiAtlasCheckpoint) HasRestorable() bool {
 	if o != nil && !IsNil(o.Restorable) {
 		return true
 	}
@@ -269,12 +269,12 @@ func (o *Checkpoint) HasRestorable() bool {
 }
 
 // SetRestorable gets a reference to the given bool and assigns it to the Restorable field.
-func (o *Checkpoint) SetRestorable(v bool) {
+func (o *ApiAtlasCheckpoint) SetRestorable(v bool) {
 	o.Restorable = &v
 }
 
 // GetStarted returns the Started field value if set, zero value otherwise.
-func (o *Checkpoint) GetStarted() time.Time {
+func (o *ApiAtlasCheckpoint) GetStarted() time.Time {
 	if o == nil || IsNil(o.Started) {
 		var ret time.Time
 		return ret
@@ -284,7 +284,7 @@ func (o *Checkpoint) GetStarted() time.Time {
 
 // GetStartedOk returns a tuple with the Started field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Checkpoint) GetStartedOk() (*time.Time, bool) {
+func (o *ApiAtlasCheckpoint) GetStartedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Started) {
 		return nil, false
 	}
@@ -292,7 +292,7 @@ func (o *Checkpoint) GetStartedOk() (*time.Time, bool) {
 }
 
 // HasStarted returns a boolean if a field has been set.
-func (o *Checkpoint) HasStarted() bool {
+func (o *ApiAtlasCheckpoint) HasStarted() bool {
 	if o != nil && !IsNil(o.Started) {
 		return true
 	}
@@ -301,12 +301,12 @@ func (o *Checkpoint) HasStarted() bool {
 }
 
 // SetStarted gets a reference to the given time.Time and assigns it to the Started field.
-func (o *Checkpoint) SetStarted(v time.Time) {
+func (o *ApiAtlasCheckpoint) SetStarted(v time.Time) {
 	o.Started = &v
 }
 
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise.
-func (o *Checkpoint) GetTimestamp() time.Time {
+func (o *ApiAtlasCheckpoint) GetTimestamp() time.Time {
 	if o == nil || IsNil(o.Timestamp) {
 		var ret time.Time
 		return ret
@@ -316,7 +316,7 @@ func (o *Checkpoint) GetTimestamp() time.Time {
 
 // GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Checkpoint) GetTimestampOk() (*time.Time, bool) {
+func (o *ApiAtlasCheckpoint) GetTimestampOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Timestamp) {
 		return nil, false
 	}
@@ -324,7 +324,7 @@ func (o *Checkpoint) GetTimestampOk() (*time.Time, bool) {
 }
 
 // HasTimestamp returns a boolean if a field has been set.
-func (o *Checkpoint) HasTimestamp() bool {
+func (o *ApiAtlasCheckpoint) HasTimestamp() bool {
 	if o != nil && !IsNil(o.Timestamp) {
 		return true
 	}
@@ -333,54 +333,54 @@ func (o *Checkpoint) HasTimestamp() bool {
 }
 
 // SetTimestamp gets a reference to the given time.Time and assigns it to the Timestamp field.
-func (o *Checkpoint) SetTimestamp(v time.Time) {
+func (o *ApiAtlasCheckpoint) SetTimestamp(v time.Time) {
 	o.Timestamp = &v
 }
 
-func (o Checkpoint) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o ApiAtlasCheckpoint) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o Checkpoint) ToMap() (map[string]interface{}, error) {
+func (o ApiAtlasCheckpoint) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }
 
-type NullableCheckpoint struct {
-	value *Checkpoint
+type NullableApiAtlasCheckpoint struct {
+	value *ApiAtlasCheckpoint
 	isSet bool
 }
 
-func (v NullableCheckpoint) Get() *Checkpoint {
+func (v NullableApiAtlasCheckpoint) Get() *ApiAtlasCheckpoint {
 	return v.value
 }
 
-func (v *NullableCheckpoint) Set(val *Checkpoint) {
+func (v *NullableApiAtlasCheckpoint) Set(val *ApiAtlasCheckpoint) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCheckpoint) IsSet() bool {
+func (v NullableApiAtlasCheckpoint) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCheckpoint) Unset() {
+func (v *NullableApiAtlasCheckpoint) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCheckpoint(val *Checkpoint) *NullableCheckpoint {
-	return &NullableCheckpoint{value: val, isSet: true}
+func NewNullableApiAtlasCheckpoint(val *ApiAtlasCheckpoint) *NullableApiAtlasCheckpoint {
+	return &NullableApiAtlasCheckpoint{value: val, isSet: true}
 }
 
-func (v NullableCheckpoint) MarshalJSON() ([]byte, error) {
+func (v NullableApiAtlasCheckpoint) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCheckpoint) UnmarshalJSON(src []byte) error {
+func (v *NullableApiAtlasCheckpoint) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

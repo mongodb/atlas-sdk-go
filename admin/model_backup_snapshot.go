@@ -15,8 +15,8 @@ type BackupSnapshot struct {
 	// Unique 24-hexadecimal digit string that identifies the cluster with the snapshots you want to return.
 	ClusterId *string `json:"clusterId,omitempty"`
 	// Flag that indicates whether the snapshot exists. This flag returns `false` while MongoDB Cloud creates the snapshot.
-	Complete *bool          `json:"complete,omitempty"`
-	Created  *BSONTimestamp `json:"created,omitempty"`
+	Complete *bool             `json:"complete,omitempty"`
+	Created  *ApiBSONTimestamp `json:"created,omitempty"`
 	// Flag that indicates whether someone can delete this snapshot. You can't set `\"doNotDelete\" : true` and set a timestamp for **expires** in the same request.
 	DoNotDelete *bool `json:"doNotDelete,omitempty"`
 	// Date and time when MongoDB Cloud deletes the snapshot. If `\"doNotDelete\" : true`, MongoDB Cloud removes any value set for this parameter.
@@ -26,8 +26,8 @@ type BackupSnapshot struct {
 	// Unique 24-hexadecimal digit string that identifies the snapshot.
 	Id *string `json:"id,omitempty"`
 	// Flag indicating if this is an incremental or a full snapshot.
-	Incremental               *bool          `json:"incremental,omitempty"`
-	LastOplogAppliedTimestamp *BSONTimestamp `json:"lastOplogAppliedTimestamp,omitempty"`
+	Incremental               *bool             `json:"incremental,omitempty"`
+	LastOplogAppliedTimestamp *ApiBSONTimestamp `json:"lastOplogAppliedTimestamp,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	Links []Link `json:"links,omitempty"`
 	// Metadata that describes the complete snapshot.  - For a replica set, this array contains a single document. - For a sharded cluster, this array contains one document for each shard plus one document for the config host.
@@ -116,9 +116,9 @@ func (o *BackupSnapshot) SetComplete(v bool) {
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise.
-func (o *BackupSnapshot) GetCreated() BSONTimestamp {
+func (o *BackupSnapshot) GetCreated() ApiBSONTimestamp {
 	if o == nil || IsNil(o.Created) {
-		var ret BSONTimestamp
+		var ret ApiBSONTimestamp
 		return ret
 	}
 	return *o.Created
@@ -126,7 +126,7 @@ func (o *BackupSnapshot) GetCreated() BSONTimestamp {
 
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BackupSnapshot) GetCreatedOk() (*BSONTimestamp, bool) {
+func (o *BackupSnapshot) GetCreatedOk() (*ApiBSONTimestamp, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
@@ -142,8 +142,8 @@ func (o *BackupSnapshot) HasCreated() bool {
 	return false
 }
 
-// SetCreated gets a reference to the given BSONTimestamp and assigns it to the Created field.
-func (o *BackupSnapshot) SetCreated(v BSONTimestamp) {
+// SetCreated gets a reference to the given ApiBSONTimestamp and assigns it to the Created field.
+func (o *BackupSnapshot) SetCreated(v ApiBSONTimestamp) {
 	o.Created = &v
 }
 
@@ -308,9 +308,9 @@ func (o *BackupSnapshot) SetIncremental(v bool) {
 }
 
 // GetLastOplogAppliedTimestamp returns the LastOplogAppliedTimestamp field value if set, zero value otherwise.
-func (o *BackupSnapshot) GetLastOplogAppliedTimestamp() BSONTimestamp {
+func (o *BackupSnapshot) GetLastOplogAppliedTimestamp() ApiBSONTimestamp {
 	if o == nil || IsNil(o.LastOplogAppliedTimestamp) {
-		var ret BSONTimestamp
+		var ret ApiBSONTimestamp
 		return ret
 	}
 	return *o.LastOplogAppliedTimestamp
@@ -318,7 +318,7 @@ func (o *BackupSnapshot) GetLastOplogAppliedTimestamp() BSONTimestamp {
 
 // GetLastOplogAppliedTimestampOk returns a tuple with the LastOplogAppliedTimestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BackupSnapshot) GetLastOplogAppliedTimestampOk() (*BSONTimestamp, bool) {
+func (o *BackupSnapshot) GetLastOplogAppliedTimestampOk() (*ApiBSONTimestamp, bool) {
 	if o == nil || IsNil(o.LastOplogAppliedTimestamp) {
 		return nil, false
 	}
@@ -334,8 +334,8 @@ func (o *BackupSnapshot) HasLastOplogAppliedTimestamp() bool {
 	return false
 }
 
-// SetLastOplogAppliedTimestamp gets a reference to the given BSONTimestamp and assigns it to the LastOplogAppliedTimestamp field.
-func (o *BackupSnapshot) SetLastOplogAppliedTimestamp(v BSONTimestamp) {
+// SetLastOplogAppliedTimestamp gets a reference to the given ApiBSONTimestamp and assigns it to the LastOplogAppliedTimestamp field.
+func (o *BackupSnapshot) SetLastOplogAppliedTimestamp(v ApiBSONTimestamp) {
 	o.LastOplogAppliedTimestamp = &v
 }
 

@@ -251,7 +251,7 @@ func (a *CustomDatabaseRolesApiService) createCustomDatabaseRoleExecute(r Create
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -384,7 +384,7 @@ func (a *CustomDatabaseRolesApiService) deleteCustomDatabaseRoleExecute(r Delete
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -511,7 +511,7 @@ func (a *CustomDatabaseRolesApiService) getCustomDatabaseRoleExecute(r GetCustom
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -641,7 +641,7 @@ func (a *CustomDatabaseRolesApiService) listCustomDatabaseRolesExecute(r ListCus
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -786,7 +786,7 @@ func (a *CustomDatabaseRolesApiService) updateCustomDatabaseRoleExecute(r Update
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()

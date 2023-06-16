@@ -242,7 +242,7 @@ func (a *LDAPConfigurationApiService) deleteLDAPConfigurationExecute(r DeleteLDA
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -372,7 +372,7 @@ func (a *LDAPConfigurationApiService) getLDAPConfigurationExecute(r GetLDAPConfi
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -514,7 +514,7 @@ func (a *LDAPConfigurationApiService) getLDAPConfigurationStatusExecute(r GetLDA
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -655,7 +655,7 @@ func (a *LDAPConfigurationApiService) saveLDAPConfigurationExecute(r SaveLDAPCon
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -794,7 +794,7 @@ func (a *LDAPConfigurationApiService) verifyLDAPConfigurationExecute(r VerifyLDA
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()

@@ -6,36 +6,36 @@ import (
 	"encoding/json"
 )
 
-// checks if the Policy type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Policy{}
+// checks if the ApiPolicy type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApiPolicy{}
 
-// Policy List that contains a document for each backup policy item in the desired backup policy.
-type Policy struct {
+// ApiPolicy List that contains a document for each backup policy item in the desired backup policy.
+type ApiPolicy struct {
 	// Unique 24-hexadecimal digit string that identifies this backup policy.
 	Id *string `json:"id,omitempty"`
 	// List that contains the specifications for one policy.
-	PolicyItems []PolicyItem `json:"policyItems,omitempty"`
+	PolicyItems []ApiPolicyItem `json:"policyItems,omitempty"`
 }
 
-// NewPolicy instantiates a new Policy object
+// NewApiPolicy instantiates a new ApiPolicy object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPolicy() *Policy {
-	this := Policy{}
+func NewApiPolicy() *ApiPolicy {
+	this := ApiPolicy{}
 	return &this
 }
 
-// NewPolicyWithDefaults instantiates a new Policy object
+// NewApiPolicyWithDefaults instantiates a new ApiPolicy object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewPolicyWithDefaults() *Policy {
-	this := Policy{}
+func NewApiPolicyWithDefaults() *ApiPolicy {
+	this := ApiPolicy{}
 	return &this
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *Policy) GetId() string {
+func (o *ApiPolicy) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
@@ -45,7 +45,7 @@ func (o *Policy) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Policy) GetIdOk() (*string, bool) {
+func (o *ApiPolicy) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -53,7 +53,7 @@ func (o *Policy) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *Policy) HasId() bool {
+func (o *ApiPolicy) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -62,14 +62,14 @@ func (o *Policy) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *Policy) SetId(v string) {
+func (o *ApiPolicy) SetId(v string) {
 	o.Id = &v
 }
 
 // GetPolicyItems returns the PolicyItems field value if set, zero value otherwise.
-func (o *Policy) GetPolicyItems() []PolicyItem {
+func (o *ApiPolicy) GetPolicyItems() []ApiPolicyItem {
 	if o == nil || IsNil(o.PolicyItems) {
-		var ret []PolicyItem
+		var ret []ApiPolicyItem
 		return ret
 	}
 	return o.PolicyItems
@@ -77,7 +77,7 @@ func (o *Policy) GetPolicyItems() []PolicyItem {
 
 // GetPolicyItemsOk returns a tuple with the PolicyItems field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Policy) GetPolicyItemsOk() ([]PolicyItem, bool) {
+func (o *ApiPolicy) GetPolicyItemsOk() ([]ApiPolicyItem, bool) {
 	if o == nil || IsNil(o.PolicyItems) {
 		return nil, false
 	}
@@ -85,7 +85,7 @@ func (o *Policy) GetPolicyItemsOk() ([]PolicyItem, bool) {
 }
 
 // HasPolicyItems returns a boolean if a field has been set.
-func (o *Policy) HasPolicyItems() bool {
+func (o *ApiPolicy) HasPolicyItems() bool {
 	if o != nil && !IsNil(o.PolicyItems) {
 		return true
 	}
@@ -93,19 +93,19 @@ func (o *Policy) HasPolicyItems() bool {
 	return false
 }
 
-// SetPolicyItems gets a reference to the given []PolicyItem and assigns it to the PolicyItems field.
-func (o *Policy) SetPolicyItems(v []PolicyItem) {
+// SetPolicyItems gets a reference to the given []ApiPolicyItem and assigns it to the PolicyItems field.
+func (o *ApiPolicy) SetPolicyItems(v []ApiPolicyItem) {
 	o.PolicyItems = v
 }
 
-func (o Policy) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o ApiPolicy) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o Policy) ToMap() (map[string]interface{}, error) {
+func (o ApiPolicy) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -116,38 +116,38 @@ func (o Policy) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullablePolicy struct {
-	value *Policy
+type NullableApiPolicy struct {
+	value *ApiPolicy
 	isSet bool
 }
 
-func (v NullablePolicy) Get() *Policy {
+func (v NullableApiPolicy) Get() *ApiPolicy {
 	return v.value
 }
 
-func (v *NullablePolicy) Set(val *Policy) {
+func (v *NullableApiPolicy) Set(val *ApiPolicy) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullablePolicy) IsSet() bool {
+func (v NullableApiPolicy) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullablePolicy) Unset() {
+func (v *NullableApiPolicy) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullablePolicy(val *Policy) *NullablePolicy {
-	return &NullablePolicy{value: val, isSet: true}
+func NewNullableApiPolicy(val *ApiPolicy) *NullableApiPolicy {
+	return &NullableApiPolicy{value: val, isSet: true}
 }
 
-func (v NullablePolicy) MarshalJSON() ([]byte, error) {
+func (v NullableApiPolicy) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullablePolicy) UnmarshalJSON(src []byte) error {
+func (v *NullableApiPolicy) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

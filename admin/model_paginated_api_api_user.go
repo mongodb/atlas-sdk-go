@@ -14,7 +14,7 @@ type PaginatedApiApiUser struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	Links []Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud providers when completing this request.
-	Results []KeyUser `json:"results,omitempty"`
+	Results []ApiKeyUser `json:"results,omitempty"`
 	// Number of documents returned in this response.
 	TotalCount *int `json:"totalCount,omitempty"`
 }
@@ -69,9 +69,9 @@ func (o *PaginatedApiApiUser) SetLinks(v []Link) {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *PaginatedApiApiUser) GetResults() []KeyUser {
+func (o *PaginatedApiApiUser) GetResults() []ApiKeyUser {
 	if o == nil || IsNil(o.Results) {
-		var ret []KeyUser
+		var ret []ApiKeyUser
 		return ret
 	}
 	return o.Results
@@ -79,7 +79,7 @@ func (o *PaginatedApiApiUser) GetResults() []KeyUser {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedApiApiUser) GetResultsOk() ([]KeyUser, bool) {
+func (o *PaginatedApiApiUser) GetResultsOk() ([]ApiKeyUser, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -95,8 +95,8 @@ func (o *PaginatedApiApiUser) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []KeyUser and assigns it to the Results field.
-func (o *PaginatedApiApiUser) SetResults(v []KeyUser) {
+// SetResults gets a reference to the given []ApiKeyUser and assigns it to the Results field.
+func (o *PaginatedApiApiUser) SetResults(v []ApiKeyUser) {
 	o.Results = v
 }
 

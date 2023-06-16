@@ -6,11 +6,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the Error type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Error{}
+// checks if the ApiError type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApiError{}
 
-// Error struct for Error
-type Error struct {
+// ApiError struct for ApiError
+type ApiError struct {
 	Detail *string `json:"detail,omitempty"`
 	// HTTP status code returned with this error.
 	Error *int `json:"error,omitempty"`
@@ -22,25 +22,25 @@ type Error struct {
 	Reason *string `json:"reason,omitempty"`
 }
 
-// NewError instantiates a new Error object
+// NewApiError instantiates a new ApiError object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewError() *Error {
-	this := Error{}
+func NewApiError() *ApiError {
+	this := ApiError{}
 	return &this
 }
 
-// NewErrorWithDefaults instantiates a new Error object
+// NewApiErrorWithDefaults instantiates a new ApiError object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewErrorWithDefaults() *Error {
-	this := Error{}
+func NewApiErrorWithDefaults() *ApiError {
+	this := ApiError{}
 	return &this
 }
 
 // GetDetail returns the Detail field value if set, zero value otherwise.
-func (o *Error) GetDetail() string {
+func (o *ApiError) GetDetail() string {
 	if o == nil || IsNil(o.Detail) {
 		var ret string
 		return ret
@@ -50,7 +50,7 @@ func (o *Error) GetDetail() string {
 
 // GetDetailOk returns a tuple with the Detail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Error) GetDetailOk() (*string, bool) {
+func (o *ApiError) GetDetailOk() (*string, bool) {
 	if o == nil || IsNil(o.Detail) {
 		return nil, false
 	}
@@ -58,7 +58,7 @@ func (o *Error) GetDetailOk() (*string, bool) {
 }
 
 // HasDetail returns a boolean if a field has been set.
-func (o *Error) HasDetail() bool {
+func (o *ApiError) HasDetail() bool {
 	if o != nil && !IsNil(o.Detail) {
 		return true
 	}
@@ -67,12 +67,12 @@ func (o *Error) HasDetail() bool {
 }
 
 // SetDetail gets a reference to the given string and assigns it to the Detail field.
-func (o *Error) SetDetail(v string) {
+func (o *ApiError) SetDetail(v string) {
 	o.Detail = &v
 }
 
 // GetError returns the Error field value if set, zero value otherwise.
-func (o *Error) GetError() int {
+func (o *ApiError) GetError() int {
 	if o == nil || IsNil(o.Error) {
 		var ret int
 		return ret
@@ -82,7 +82,7 @@ func (o *Error) GetError() int {
 
 // GetErrorOk returns a tuple with the Error field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Error) GetErrorOk() (*int, bool) {
+func (o *ApiError) GetErrorOk() (*int, bool) {
 	if o == nil || IsNil(o.Error) {
 		return nil, false
 	}
@@ -90,7 +90,7 @@ func (o *Error) GetErrorOk() (*int, bool) {
 }
 
 // HasError returns a boolean if a field has been set.
-func (o *Error) HasError() bool {
+func (o *ApiError) HasError() bool {
 	if o != nil && !IsNil(o.Error) {
 		return true
 	}
@@ -99,12 +99,12 @@ func (o *Error) HasError() bool {
 }
 
 // SetError gets a reference to the given int and assigns it to the Error field.
-func (o *Error) SetError(v int) {
+func (o *ApiError) SetError(v int) {
 	o.Error = &v
 }
 
 // GetErrorCode returns the ErrorCode field value if set, zero value otherwise.
-func (o *Error) GetErrorCode() string {
+func (o *ApiError) GetErrorCode() string {
 	if o == nil || IsNil(o.ErrorCode) {
 		var ret string
 		return ret
@@ -114,7 +114,7 @@ func (o *Error) GetErrorCode() string {
 
 // GetErrorCodeOk returns a tuple with the ErrorCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Error) GetErrorCodeOk() (*string, bool) {
+func (o *ApiError) GetErrorCodeOk() (*string, bool) {
 	if o == nil || IsNil(o.ErrorCode) {
 		return nil, false
 	}
@@ -122,7 +122,7 @@ func (o *Error) GetErrorCodeOk() (*string, bool) {
 }
 
 // HasErrorCode returns a boolean if a field has been set.
-func (o *Error) HasErrorCode() bool {
+func (o *ApiError) HasErrorCode() bool {
 	if o != nil && !IsNil(o.ErrorCode) {
 		return true
 	}
@@ -131,12 +131,12 @@ func (o *Error) HasErrorCode() bool {
 }
 
 // SetErrorCode gets a reference to the given string and assigns it to the ErrorCode field.
-func (o *Error) SetErrorCode(v string) {
+func (o *ApiError) SetErrorCode(v string) {
 	o.ErrorCode = &v
 }
 
 // GetParameters returns the Parameters field value if set, zero value otherwise.
-func (o *Error) GetParameters() []interface{} {
+func (o *ApiError) GetParameters() []interface{} {
 	if o == nil || IsNil(o.Parameters) {
 		var ret []interface{}
 		return ret
@@ -146,7 +146,7 @@ func (o *Error) GetParameters() []interface{} {
 
 // GetParametersOk returns a tuple with the Parameters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Error) GetParametersOk() ([]interface{}, bool) {
+func (o *ApiError) GetParametersOk() ([]interface{}, bool) {
 	if o == nil || IsNil(o.Parameters) {
 		return nil, false
 	}
@@ -154,7 +154,7 @@ func (o *Error) GetParametersOk() ([]interface{}, bool) {
 }
 
 // HasParameters returns a boolean if a field has been set.
-func (o *Error) HasParameters() bool {
+func (o *ApiError) HasParameters() bool {
 	if o != nil && !IsNil(o.Parameters) {
 		return true
 	}
@@ -163,12 +163,12 @@ func (o *Error) HasParameters() bool {
 }
 
 // SetParameters gets a reference to the given []interface{} and assigns it to the Parameters field.
-func (o *Error) SetParameters(v []interface{}) {
+func (o *ApiError) SetParameters(v []interface{}) {
 	o.Parameters = v
 }
 
 // GetReason returns the Reason field value if set, zero value otherwise.
-func (o *Error) GetReason() string {
+func (o *ApiError) GetReason() string {
 	if o == nil || IsNil(o.Reason) {
 		var ret string
 		return ret
@@ -178,7 +178,7 @@ func (o *Error) GetReason() string {
 
 // GetReasonOk returns a tuple with the Reason field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Error) GetReasonOk() (*string, bool) {
+func (o *ApiError) GetReasonOk() (*string, bool) {
 	if o == nil || IsNil(o.Reason) {
 		return nil, false
 	}
@@ -186,7 +186,7 @@ func (o *Error) GetReasonOk() (*string, bool) {
 }
 
 // HasReason returns a boolean if a field has been set.
-func (o *Error) HasReason() bool {
+func (o *ApiError) HasReason() bool {
 	if o != nil && !IsNil(o.Reason) {
 		return true
 	}
@@ -195,18 +195,18 @@ func (o *Error) HasReason() bool {
 }
 
 // SetReason gets a reference to the given string and assigns it to the Reason field.
-func (o *Error) SetReason(v string) {
+func (o *ApiError) SetReason(v string) {
 	o.Reason = &v
 }
 
-func (o Error) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o ApiError) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o Error) ToMap() (map[string]interface{}, error) {
+func (o ApiError) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Detail) {
 		toSerialize["detail"] = o.Detail
@@ -226,38 +226,38 @@ func (o Error) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableError struct {
-	value *Error
+type NullableApiError struct {
+	value *ApiError
 	isSet bool
 }
 
-func (v NullableError) Get() *Error {
+func (v NullableApiError) Get() *ApiError {
 	return v.value
 }
 
-func (v *NullableError) Set(val *Error) {
+func (v *NullableApiError) Set(val *ApiError) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableError) IsSet() bool {
+func (v NullableApiError) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableError) Unset() {
+func (v *NullableApiError) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableError(val *Error) *NullableError {
-	return &NullableError{value: val, isSet: true}
+func NewNullableApiError(val *ApiError) *NullableApiError {
+	return &NullableApiError{value: val, isSet: true}
 }
 
-func (v NullableError) MarshalJSON() ([]byte, error) {
+func (v NullableApiError) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableError) UnmarshalJSON(src []byte) error {
+func (v *NullableApiError) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

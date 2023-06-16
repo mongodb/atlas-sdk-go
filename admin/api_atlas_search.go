@@ -270,7 +270,7 @@ func (a *AtlasSearchApiService) createAtlasSearchIndexExecute(r CreateAtlasSearc
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -424,7 +424,7 @@ func (a *AtlasSearchApiService) deleteAtlasSearchIndexExecute(r DeleteAtlasSearc
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -578,7 +578,7 @@ func (a *AtlasSearchApiService) getAtlasSearchIndexExecute(r GetAtlasSearchIndex
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -732,7 +732,7 @@ func (a *AtlasSearchApiService) listAtlasSearchIndexesExecute(r ListAtlasSearchI
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -895,7 +895,7 @@ func (a *AtlasSearchApiService) updateAtlasSearchIndexExecute(r UpdateAtlasSearc
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()

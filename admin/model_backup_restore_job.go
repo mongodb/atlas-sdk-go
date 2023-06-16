@@ -44,8 +44,8 @@ type BackupRestoreJob struct {
 	// Unique 24-hexadecimal digit string that identifies the snapshot to restore. If you set **snapshotId**, you can't set **oplogInc**, **oplogTs**, **pointInTimeUTCMillis**, or **checkpointId**.
 	SnapshotId *string `json:"snapshotId,omitempty"`
 	// Human-readable label that identifies the status of the downloadable file at the time of the request.
-	StatusName *string        `json:"statusName,omitempty"`
-	Timestamp  *BSONTimestamp `json:"timestamp,omitempty"`
+	StatusName *string           `json:"statusName,omitempty"`
+	Timestamp  *ApiBSONTimestamp `json:"timestamp,omitempty"`
 }
 
 // NewBackupRestoreJob instantiates a new BackupRestoreJob object
@@ -603,9 +603,9 @@ func (o *BackupRestoreJob) SetStatusName(v string) {
 }
 
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise.
-func (o *BackupRestoreJob) GetTimestamp() BSONTimestamp {
+func (o *BackupRestoreJob) GetTimestamp() ApiBSONTimestamp {
 	if o == nil || IsNil(o.Timestamp) {
-		var ret BSONTimestamp
+		var ret ApiBSONTimestamp
 		return ret
 	}
 	return *o.Timestamp
@@ -613,7 +613,7 @@ func (o *BackupRestoreJob) GetTimestamp() BSONTimestamp {
 
 // GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BackupRestoreJob) GetTimestampOk() (*BSONTimestamp, bool) {
+func (o *BackupRestoreJob) GetTimestampOk() (*ApiBSONTimestamp, bool) {
 	if o == nil || IsNil(o.Timestamp) {
 		return nil, false
 	}
@@ -629,8 +629,8 @@ func (o *BackupRestoreJob) HasTimestamp() bool {
 	return false
 }
 
-// SetTimestamp gets a reference to the given BSONTimestamp and assigns it to the Timestamp field.
-func (o *BackupRestoreJob) SetTimestamp(v BSONTimestamp) {
+// SetTimestamp gets a reference to the given ApiBSONTimestamp and assigns it to the Timestamp field.
+func (o *BackupRestoreJob) SetTimestamp(v ApiBSONTimestamp) {
 	o.Timestamp = &v
 }
 

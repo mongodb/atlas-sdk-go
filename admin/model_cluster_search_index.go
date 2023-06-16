@@ -14,14 +14,14 @@ type ClusterSearchIndex struct {
 	// Specific pre-defined method chosen to convert database field text into searchable words. This conversion reduces the text of fields into the smallest units of text. These units are called a **term** or **token**. This process, known as tokenization, involves a variety of changes made to the text in fields:  - extracting words - removing punctuation - removing accents - changing to lowercase - removing common words - reducing words to their root form (stemming) - changing words to their base form (lemmatization)  MongoDB Cloud uses the selected process to build the Atlas Search index.
 	Analyzer *string `json:"analyzer,omitempty"`
 	// List of user-defined methods to convert database field text into searchable words.
-	Analyzers []FTSAnalyzers `json:"analyzers,omitempty"`
+	Analyzers []ApiAtlasFTSAnalyzers `json:"analyzers,omitempty"`
 	// Human-readable label that identifies the collection that contains one or more Atlas Search indexes.
 	CollectionName string `json:"collectionName"`
 	// Human-readable label that identifies the database that contains the collection with one or more Atlas Search indexes.
 	Database string `json:"database"`
 	// Unique 24-hexadecimal digit string that identifies this Atlas Search index.
-	IndexID  *string      `json:"indexID,omitempty"`
-	Mappings *FTSMappings `json:"mappings,omitempty"`
+	IndexID  *string              `json:"indexID,omitempty"`
+	Mappings *ApiAtlasFTSMappings `json:"mappings,omitempty"`
 	// Human-readable label that identifies this index. Within each namespace, names of all indexes in the namespace must be unique.
 	Name string `json:"name"`
 	// Method applied to identify words when searching this index.
@@ -93,9 +93,9 @@ func (o *ClusterSearchIndex) SetAnalyzer(v string) {
 }
 
 // GetAnalyzers returns the Analyzers field value if set, zero value otherwise.
-func (o *ClusterSearchIndex) GetAnalyzers() []FTSAnalyzers {
+func (o *ClusterSearchIndex) GetAnalyzers() []ApiAtlasFTSAnalyzers {
 	if o == nil || IsNil(o.Analyzers) {
-		var ret []FTSAnalyzers
+		var ret []ApiAtlasFTSAnalyzers
 		return ret
 	}
 	return o.Analyzers
@@ -103,7 +103,7 @@ func (o *ClusterSearchIndex) GetAnalyzers() []FTSAnalyzers {
 
 // GetAnalyzersOk returns a tuple with the Analyzers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterSearchIndex) GetAnalyzersOk() ([]FTSAnalyzers, bool) {
+func (o *ClusterSearchIndex) GetAnalyzersOk() ([]ApiAtlasFTSAnalyzers, bool) {
 	if o == nil || IsNil(o.Analyzers) {
 		return nil, false
 	}
@@ -119,8 +119,8 @@ func (o *ClusterSearchIndex) HasAnalyzers() bool {
 	return false
 }
 
-// SetAnalyzers gets a reference to the given []FTSAnalyzers and assigns it to the Analyzers field.
-func (o *ClusterSearchIndex) SetAnalyzers(v []FTSAnalyzers) {
+// SetAnalyzers gets a reference to the given []ApiAtlasFTSAnalyzers and assigns it to the Analyzers field.
+func (o *ClusterSearchIndex) SetAnalyzers(v []ApiAtlasFTSAnalyzers) {
 	o.Analyzers = v
 }
 
@@ -205,9 +205,9 @@ func (o *ClusterSearchIndex) SetIndexID(v string) {
 }
 
 // GetMappings returns the Mappings field value if set, zero value otherwise.
-func (o *ClusterSearchIndex) GetMappings() FTSMappings {
+func (o *ClusterSearchIndex) GetMappings() ApiAtlasFTSMappings {
 	if o == nil || IsNil(o.Mappings) {
-		var ret FTSMappings
+		var ret ApiAtlasFTSMappings
 		return ret
 	}
 	return *o.Mappings
@@ -215,7 +215,7 @@ func (o *ClusterSearchIndex) GetMappings() FTSMappings {
 
 // GetMappingsOk returns a tuple with the Mappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterSearchIndex) GetMappingsOk() (*FTSMappings, bool) {
+func (o *ClusterSearchIndex) GetMappingsOk() (*ApiAtlasFTSMappings, bool) {
 	if o == nil || IsNil(o.Mappings) {
 		return nil, false
 	}
@@ -231,8 +231,8 @@ func (o *ClusterSearchIndex) HasMappings() bool {
 	return false
 }
 
-// SetMappings gets a reference to the given FTSMappings and assigns it to the Mappings field.
-func (o *ClusterSearchIndex) SetMappings(v FTSMappings) {
+// SetMappings gets a reference to the given ApiAtlasFTSMappings and assigns it to the Mappings field.
+func (o *ClusterSearchIndex) SetMappings(v ApiAtlasFTSMappings) {
 	o.Mappings = &v
 }
 

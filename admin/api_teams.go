@@ -442,7 +442,7 @@ func (a *TeamsApiService) addAllTeamsToProjectExecute(r AddAllTeamsToProjectApiR
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -593,7 +593,7 @@ func (a *TeamsApiService) addTeamUserExecute(r AddTeamUserApiRequest) (*Paginate
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -732,7 +732,7 @@ func (a *TeamsApiService) createTeamExecute(r CreateTeamApiRequest) (*Team, *htt
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -874,7 +874,7 @@ func (a *TeamsApiService) deleteTeamExecute(r DeleteTeamApiRequest) (map[string]
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1016,7 +1016,7 @@ func (a *TeamsApiService) getTeamByIdExecute(r GetTeamByIdApiRequest) (*TeamResp
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1152,7 +1152,7 @@ func (a *TeamsApiService) getTeamByNameExecute(r GetTeamByNameApiRequest) (*Team
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1330,7 +1330,7 @@ func (a *TeamsApiService) listOrganizationTeamsExecute(r ListOrganizationTeamsAp
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1508,7 +1508,7 @@ func (a *TeamsApiService) listProjectTeamsExecute(r ListProjectTeamsApiRequest) 
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1682,7 +1682,7 @@ func (a *TeamsApiService) listTeamUsersExecute(r ListTeamUsersApiRequest) (*Pagi
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1821,7 +1821,7 @@ func (a *TeamsApiService) removeProjectTeamExecute(r RemoveProjectTeamApiRequest
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1963,7 +1963,7 @@ func (a *TeamsApiService) removeTeamUserExecute(r RemoveTeamUserApiRequest) (*ht
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -2105,7 +2105,7 @@ func (a *TeamsApiService) renameTeamExecute(r RenameTeamApiRequest) (*TeamRespon
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -2256,7 +2256,7 @@ func (a *TeamsApiService) updateTeamRolesExecute(r UpdateTeamRolesApiRequest) (*
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()

@@ -11,12 +11,12 @@ var _ MappedNullable = &CreateOrganizationResponse{}
 
 // CreateOrganizationResponse struct for CreateOrganizationResponse
 type CreateOrganizationResponse struct {
-	ApiKey *KeyUser `json:"apiKey,omitempty"`
+	ApiKey *ApiKeyUser `json:"apiKey,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the federation that you linked the newly created organization to.
 	FederationSettingsId *string `json:"federationSettingsId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud user that you assigned the Organization Owner role in the new organization.
-	OrgOwnerId   *string       `json:"orgOwnerId,omitempty"`
-	Organization *Organization `json:"organization,omitempty"`
+	OrgOwnerId   *string            `json:"orgOwnerId,omitempty"`
+	Organization *AtlasOrganization `json:"organization,omitempty"`
 }
 
 // NewCreateOrganizationResponse instantiates a new CreateOrganizationResponse object
@@ -37,9 +37,9 @@ func NewCreateOrganizationResponseWithDefaults() *CreateOrganizationResponse {
 }
 
 // GetApiKey returns the ApiKey field value if set, zero value otherwise.
-func (o *CreateOrganizationResponse) GetApiKey() KeyUser {
+func (o *CreateOrganizationResponse) GetApiKey() ApiKeyUser {
 	if o == nil || IsNil(o.ApiKey) {
-		var ret KeyUser
+		var ret ApiKeyUser
 		return ret
 	}
 	return *o.ApiKey
@@ -47,7 +47,7 @@ func (o *CreateOrganizationResponse) GetApiKey() KeyUser {
 
 // GetApiKeyOk returns a tuple with the ApiKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateOrganizationResponse) GetApiKeyOk() (*KeyUser, bool) {
+func (o *CreateOrganizationResponse) GetApiKeyOk() (*ApiKeyUser, bool) {
 	if o == nil || IsNil(o.ApiKey) {
 		return nil, false
 	}
@@ -63,8 +63,8 @@ func (o *CreateOrganizationResponse) HasApiKey() bool {
 	return false
 }
 
-// SetApiKey gets a reference to the given KeyUser and assigns it to the ApiKey field.
-func (o *CreateOrganizationResponse) SetApiKey(v KeyUser) {
+// SetApiKey gets a reference to the given ApiKeyUser and assigns it to the ApiKey field.
+func (o *CreateOrganizationResponse) SetApiKey(v ApiKeyUser) {
 	o.ApiKey = &v
 }
 
@@ -133,9 +133,9 @@ func (o *CreateOrganizationResponse) SetOrgOwnerId(v string) {
 }
 
 // GetOrganization returns the Organization field value if set, zero value otherwise.
-func (o *CreateOrganizationResponse) GetOrganization() Organization {
+func (o *CreateOrganizationResponse) GetOrganization() AtlasOrganization {
 	if o == nil || IsNil(o.Organization) {
-		var ret Organization
+		var ret AtlasOrganization
 		return ret
 	}
 	return *o.Organization
@@ -143,7 +143,7 @@ func (o *CreateOrganizationResponse) GetOrganization() Organization {
 
 // GetOrganizationOk returns a tuple with the Organization field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateOrganizationResponse) GetOrganizationOk() (*Organization, bool) {
+func (o *CreateOrganizationResponse) GetOrganizationOk() (*AtlasOrganization, bool) {
 	if o == nil || IsNil(o.Organization) {
 		return nil, false
 	}
@@ -159,8 +159,8 @@ func (o *CreateOrganizationResponse) HasOrganization() bool {
 	return false
 }
 
-// SetOrganization gets a reference to the given Organization and assigns it to the Organization field.
-func (o *CreateOrganizationResponse) SetOrganization(v Organization) {
+// SetOrganization gets a reference to the given AtlasOrganization and assigns it to the Organization field.
+func (o *CreateOrganizationResponse) SetOrganization(v AtlasOrganization) {
 	o.Organization = &v
 }
 

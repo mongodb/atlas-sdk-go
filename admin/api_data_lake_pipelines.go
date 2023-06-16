@@ -181,7 +181,7 @@ type DataLakePipelinesApi interface {
 	ListPipelineSchedulesWithParams(ctx context.Context, args *ListPipelineSchedulesApiParams) ListPipelineSchedulesApiRequest
 
 	// Interface only available internally
-	listPipelineSchedulesExecute(r ListPipelineSchedulesApiRequest) ([]PolicyItem, *http.Response, error)
+	listPipelineSchedulesExecute(r ListPipelineSchedulesApiRequest) ([]ApiPolicyItem, *http.Response, error)
 
 	/*
 		ListPipelineSnapshots Return Available Backup Snapshots for One Data Lake Pipeline
@@ -446,7 +446,7 @@ func (a *DataLakePipelinesApiService) createPipelineExecute(r CreatePipelineApiR
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -588,7 +588,7 @@ func (a *DataLakePipelinesApiService) deletePipelineExecute(r DeletePipelineApiR
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -742,7 +742,7 @@ func (a *DataLakePipelinesApiService) deletePipelineRunDatasetExecute(r DeletePi
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -884,7 +884,7 @@ func (a *DataLakePipelinesApiService) getPipelineExecute(r GetPipelineApiRequest
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1038,7 +1038,7 @@ func (a *DataLakePipelinesApiService) getPipelineRunExecute(r GetPipelineRunApiR
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1240,7 +1240,7 @@ func (a *DataLakePipelinesApiService) listPipelineRunsExecute(r ListPipelineRuns
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1284,7 +1284,7 @@ func (a *DataLakePipelinesApiService) ListPipelineSchedulesWithParams(ctx contex
 	}
 }
 
-func (r ListPipelineSchedulesApiRequest) Execute() ([]PolicyItem, *http.Response, error) {
+func (r ListPipelineSchedulesApiRequest) Execute() ([]ApiPolicyItem, *http.Response, error) {
 	return r.ApiService.listPipelineSchedulesExecute(r)
 }
 
@@ -1309,13 +1309,13 @@ func (a *DataLakePipelinesApiService) ListPipelineSchedules(ctx context.Context,
 
 // Execute executes the request
 //
-//	@return []PolicyItem
-func (a *DataLakePipelinesApiService) listPipelineSchedulesExecute(r ListPipelineSchedulesApiRequest) ([]PolicyItem, *http.Response, error) {
+//	@return []ApiPolicyItem
+func (a *DataLakePipelinesApiService) listPipelineSchedulesExecute(r ListPipelineSchedulesApiRequest) ([]ApiPolicyItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []PolicyItem
+		localVarReturnValue []ApiPolicyItem
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesApiService.ListPipelineSchedules")
@@ -1382,7 +1382,7 @@ func (a *DataLakePipelinesApiService) listPipelineSchedulesExecute(r ListPipelin
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1584,7 +1584,7 @@ func (a *DataLakePipelinesApiService) listPipelineSnapshotsExecute(r ListPipelin
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1714,7 +1714,7 @@ func (a *DataLakePipelinesApiService) listPipelinesExecute(r ListPipelinesApiReq
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1856,7 +1856,7 @@ func (a *DataLakePipelinesApiService) pausePipelineExecute(r PausePipelineApiReq
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1998,7 +1998,7 @@ func (a *DataLakePipelinesApiService) resumePipelineExecute(r ResumePipelineApiR
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -2149,7 +2149,7 @@ func (a *DataLakePipelinesApiService) triggerSnapshotIngestionExecute(r TriggerS
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -2300,7 +2300,7 @@ func (a *DataLakePipelinesApiService) updatePipelineExecute(r UpdatePipelineApiR
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()

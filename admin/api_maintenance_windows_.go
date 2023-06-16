@@ -236,7 +236,7 @@ func (a *MaintenanceWindowsApiService) deferMaintenanceWindowExecute(r DeferMain
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -357,7 +357,7 @@ func (a *MaintenanceWindowsApiService) getMaintenanceWindowExecute(r GetMaintena
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -484,7 +484,7 @@ func (a *MaintenanceWindowsApiService) resetMaintenanceWindowExecute(r ResetMain
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -602,7 +602,7 @@ func (a *MaintenanceWindowsApiService) toggleMaintenanceAutoDeferExecute(r Toggl
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -732,7 +732,7 @@ func (a *MaintenanceWindowsApiService) updateMaintenanceWindowExecute(r UpdateMa
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()

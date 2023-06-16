@@ -14,7 +14,7 @@ type PaginatedOrganization struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	Links []Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud providers when completing this request.
-	Results []Organization `json:"results,omitempty"`
+	Results []AtlasOrganization `json:"results,omitempty"`
 	// Number of documents returned in this response.
 	TotalCount *int `json:"totalCount,omitempty"`
 }
@@ -69,9 +69,9 @@ func (o *PaginatedOrganization) SetLinks(v []Link) {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *PaginatedOrganization) GetResults() []Organization {
+func (o *PaginatedOrganization) GetResults() []AtlasOrganization {
 	if o == nil || IsNil(o.Results) {
-		var ret []Organization
+		var ret []AtlasOrganization
 		return ret
 	}
 	return o.Results
@@ -79,7 +79,7 @@ func (o *PaginatedOrganization) GetResults() []Organization {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedOrganization) GetResultsOk() ([]Organization, bool) {
+func (o *PaginatedOrganization) GetResultsOk() ([]AtlasOrganization, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -95,8 +95,8 @@ func (o *PaginatedOrganization) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []Organization and assigns it to the Results field.
-func (o *PaginatedOrganization) SetResults(v []Organization) {
+// SetResults gets a reference to the given []AtlasOrganization and assigns it to the Results field.
+func (o *PaginatedOrganization) SetResults(v []AtlasOrganization) {
 	o.Results = v
 }
 

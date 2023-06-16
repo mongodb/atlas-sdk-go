@@ -6,11 +6,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the SnapshotSchedule type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SnapshotSchedule{}
+// checks if the ApiAtlasSnapshotSchedule type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApiAtlasSnapshotSchedule{}
 
-// SnapshotSchedule struct for SnapshotSchedule
-type SnapshotSchedule struct {
+// ApiAtlasSnapshotSchedule struct for ApiAtlasSnapshotSchedule
+type ApiAtlasSnapshotSchedule struct {
 	// Quantity of time expressed in minutes between successive cluster checkpoints. This parameter applies only to sharded clusters. This number determines the granularity of continuous cloud backups for sharded clusters.
 	ClusterCheckpointIntervalMin int `json:"clusterCheckpointIntervalMin"`
 	// Unique 24-hexadecimal digit string that identifies the cluster with the snapshot you want to return.
@@ -33,12 +33,12 @@ type SnapshotSchedule struct {
 	WeeklySnapshotRetentionWeeks int `json:"weeklySnapshotRetentionWeeks"`
 }
 
-// NewSnapshotSchedule instantiates a new SnapshotSchedule object
+// NewApiAtlasSnapshotSchedule instantiates a new ApiAtlasSnapshotSchedule object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSnapshotSchedule(clusterCheckpointIntervalMin int, clusterId string, dailySnapshotRetentionDays int, groupId string, monthlySnapshotRetentionMonths int, pointInTimeWindowHours int, snapshotIntervalHours int, snapshotRetentionDays int, weeklySnapshotRetentionWeeks int) *SnapshotSchedule {
-	this := SnapshotSchedule{}
+func NewApiAtlasSnapshotSchedule(clusterCheckpointIntervalMin int, clusterId string, dailySnapshotRetentionDays int, groupId string, monthlySnapshotRetentionMonths int, pointInTimeWindowHours int, snapshotIntervalHours int, snapshotRetentionDays int, weeklySnapshotRetentionWeeks int) *ApiAtlasSnapshotSchedule {
+	this := ApiAtlasSnapshotSchedule{}
 	this.ClusterCheckpointIntervalMin = clusterCheckpointIntervalMin
 	this.ClusterId = clusterId
 	this.DailySnapshotRetentionDays = dailySnapshotRetentionDays
@@ -51,16 +51,16 @@ func NewSnapshotSchedule(clusterCheckpointIntervalMin int, clusterId string, dai
 	return &this
 }
 
-// NewSnapshotScheduleWithDefaults instantiates a new SnapshotSchedule object
+// NewApiAtlasSnapshotScheduleWithDefaults instantiates a new ApiAtlasSnapshotSchedule object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSnapshotScheduleWithDefaults() *SnapshotSchedule {
-	this := SnapshotSchedule{}
+func NewApiAtlasSnapshotScheduleWithDefaults() *ApiAtlasSnapshotSchedule {
+	this := ApiAtlasSnapshotSchedule{}
 	return &this
 }
 
 // GetClusterCheckpointIntervalMin returns the ClusterCheckpointIntervalMin field value
-func (o *SnapshotSchedule) GetClusterCheckpointIntervalMin() int {
+func (o *ApiAtlasSnapshotSchedule) GetClusterCheckpointIntervalMin() int {
 	if o == nil {
 		var ret int
 		return ret
@@ -71,7 +71,7 @@ func (o *SnapshotSchedule) GetClusterCheckpointIntervalMin() int {
 
 // GetClusterCheckpointIntervalMinOk returns a tuple with the ClusterCheckpointIntervalMin field value
 // and a boolean to check if the value has been set.
-func (o *SnapshotSchedule) GetClusterCheckpointIntervalMinOk() (*int, bool) {
+func (o *ApiAtlasSnapshotSchedule) GetClusterCheckpointIntervalMinOk() (*int, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -79,12 +79,12 @@ func (o *SnapshotSchedule) GetClusterCheckpointIntervalMinOk() (*int, bool) {
 }
 
 // SetClusterCheckpointIntervalMin sets field value
-func (o *SnapshotSchedule) SetClusterCheckpointIntervalMin(v int) {
+func (o *ApiAtlasSnapshotSchedule) SetClusterCheckpointIntervalMin(v int) {
 	o.ClusterCheckpointIntervalMin = v
 }
 
 // GetClusterId returns the ClusterId field value
-func (o *SnapshotSchedule) GetClusterId() string {
+func (o *ApiAtlasSnapshotSchedule) GetClusterId() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -95,7 +95,7 @@ func (o *SnapshotSchedule) GetClusterId() string {
 
 // GetClusterIdOk returns a tuple with the ClusterId field value
 // and a boolean to check if the value has been set.
-func (o *SnapshotSchedule) GetClusterIdOk() (*string, bool) {
+func (o *ApiAtlasSnapshotSchedule) GetClusterIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -103,12 +103,12 @@ func (o *SnapshotSchedule) GetClusterIdOk() (*string, bool) {
 }
 
 // SetClusterId sets field value
-func (o *SnapshotSchedule) SetClusterId(v string) {
+func (o *ApiAtlasSnapshotSchedule) SetClusterId(v string) {
 	o.ClusterId = v
 }
 
 // GetDailySnapshotRetentionDays returns the DailySnapshotRetentionDays field value
-func (o *SnapshotSchedule) GetDailySnapshotRetentionDays() int {
+func (o *ApiAtlasSnapshotSchedule) GetDailySnapshotRetentionDays() int {
 	if o == nil {
 		var ret int
 		return ret
@@ -119,7 +119,7 @@ func (o *SnapshotSchedule) GetDailySnapshotRetentionDays() int {
 
 // GetDailySnapshotRetentionDaysOk returns a tuple with the DailySnapshotRetentionDays field value
 // and a boolean to check if the value has been set.
-func (o *SnapshotSchedule) GetDailySnapshotRetentionDaysOk() (*int, bool) {
+func (o *ApiAtlasSnapshotSchedule) GetDailySnapshotRetentionDaysOk() (*int, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -127,12 +127,12 @@ func (o *SnapshotSchedule) GetDailySnapshotRetentionDaysOk() (*int, bool) {
 }
 
 // SetDailySnapshotRetentionDays sets field value
-func (o *SnapshotSchedule) SetDailySnapshotRetentionDays(v int) {
+func (o *ApiAtlasSnapshotSchedule) SetDailySnapshotRetentionDays(v int) {
 	o.DailySnapshotRetentionDays = v
 }
 
 // GetGroupId returns the GroupId field value
-func (o *SnapshotSchedule) GetGroupId() string {
+func (o *ApiAtlasSnapshotSchedule) GetGroupId() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -143,7 +143,7 @@ func (o *SnapshotSchedule) GetGroupId() string {
 
 // GetGroupIdOk returns a tuple with the GroupId field value
 // and a boolean to check if the value has been set.
-func (o *SnapshotSchedule) GetGroupIdOk() (*string, bool) {
+func (o *ApiAtlasSnapshotSchedule) GetGroupIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -151,12 +151,12 @@ func (o *SnapshotSchedule) GetGroupIdOk() (*string, bool) {
 }
 
 // SetGroupId sets field value
-func (o *SnapshotSchedule) SetGroupId(v string) {
+func (o *ApiAtlasSnapshotSchedule) SetGroupId(v string) {
 	o.GroupId = v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *SnapshotSchedule) GetLinks() []Link {
+func (o *ApiAtlasSnapshotSchedule) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
 		return ret
@@ -166,7 +166,7 @@ func (o *SnapshotSchedule) GetLinks() []Link {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SnapshotSchedule) GetLinksOk() ([]Link, bool) {
+func (o *ApiAtlasSnapshotSchedule) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -174,7 +174,7 @@ func (o *SnapshotSchedule) GetLinksOk() ([]Link, bool) {
 }
 
 // HasLinks returns a boolean if a field has been set.
-func (o *SnapshotSchedule) HasLinks() bool {
+func (o *ApiAtlasSnapshotSchedule) HasLinks() bool {
 	if o != nil && !IsNil(o.Links) {
 		return true
 	}
@@ -183,12 +183,12 @@ func (o *SnapshotSchedule) HasLinks() bool {
 }
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
-func (o *SnapshotSchedule) SetLinks(v []Link) {
+func (o *ApiAtlasSnapshotSchedule) SetLinks(v []Link) {
 	o.Links = v
 }
 
 // GetMonthlySnapshotRetentionMonths returns the MonthlySnapshotRetentionMonths field value
-func (o *SnapshotSchedule) GetMonthlySnapshotRetentionMonths() int {
+func (o *ApiAtlasSnapshotSchedule) GetMonthlySnapshotRetentionMonths() int {
 	if o == nil {
 		var ret int
 		return ret
@@ -199,7 +199,7 @@ func (o *SnapshotSchedule) GetMonthlySnapshotRetentionMonths() int {
 
 // GetMonthlySnapshotRetentionMonthsOk returns a tuple with the MonthlySnapshotRetentionMonths field value
 // and a boolean to check if the value has been set.
-func (o *SnapshotSchedule) GetMonthlySnapshotRetentionMonthsOk() (*int, bool) {
+func (o *ApiAtlasSnapshotSchedule) GetMonthlySnapshotRetentionMonthsOk() (*int, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -207,12 +207,12 @@ func (o *SnapshotSchedule) GetMonthlySnapshotRetentionMonthsOk() (*int, bool) {
 }
 
 // SetMonthlySnapshotRetentionMonths sets field value
-func (o *SnapshotSchedule) SetMonthlySnapshotRetentionMonths(v int) {
+func (o *ApiAtlasSnapshotSchedule) SetMonthlySnapshotRetentionMonths(v int) {
 	o.MonthlySnapshotRetentionMonths = v
 }
 
 // GetPointInTimeWindowHours returns the PointInTimeWindowHours field value
-func (o *SnapshotSchedule) GetPointInTimeWindowHours() int {
+func (o *ApiAtlasSnapshotSchedule) GetPointInTimeWindowHours() int {
 	if o == nil {
 		var ret int
 		return ret
@@ -223,7 +223,7 @@ func (o *SnapshotSchedule) GetPointInTimeWindowHours() int {
 
 // GetPointInTimeWindowHoursOk returns a tuple with the PointInTimeWindowHours field value
 // and a boolean to check if the value has been set.
-func (o *SnapshotSchedule) GetPointInTimeWindowHoursOk() (*int, bool) {
+func (o *ApiAtlasSnapshotSchedule) GetPointInTimeWindowHoursOk() (*int, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -231,12 +231,12 @@ func (o *SnapshotSchedule) GetPointInTimeWindowHoursOk() (*int, bool) {
 }
 
 // SetPointInTimeWindowHours sets field value
-func (o *SnapshotSchedule) SetPointInTimeWindowHours(v int) {
+func (o *ApiAtlasSnapshotSchedule) SetPointInTimeWindowHours(v int) {
 	o.PointInTimeWindowHours = v
 }
 
 // GetSnapshotIntervalHours returns the SnapshotIntervalHours field value
-func (o *SnapshotSchedule) GetSnapshotIntervalHours() int {
+func (o *ApiAtlasSnapshotSchedule) GetSnapshotIntervalHours() int {
 	if o == nil {
 		var ret int
 		return ret
@@ -247,7 +247,7 @@ func (o *SnapshotSchedule) GetSnapshotIntervalHours() int {
 
 // GetSnapshotIntervalHoursOk returns a tuple with the SnapshotIntervalHours field value
 // and a boolean to check if the value has been set.
-func (o *SnapshotSchedule) GetSnapshotIntervalHoursOk() (*int, bool) {
+func (o *ApiAtlasSnapshotSchedule) GetSnapshotIntervalHoursOk() (*int, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -255,12 +255,12 @@ func (o *SnapshotSchedule) GetSnapshotIntervalHoursOk() (*int, bool) {
 }
 
 // SetSnapshotIntervalHours sets field value
-func (o *SnapshotSchedule) SetSnapshotIntervalHours(v int) {
+func (o *ApiAtlasSnapshotSchedule) SetSnapshotIntervalHours(v int) {
 	o.SnapshotIntervalHours = v
 }
 
 // GetSnapshotRetentionDays returns the SnapshotRetentionDays field value
-func (o *SnapshotSchedule) GetSnapshotRetentionDays() int {
+func (o *ApiAtlasSnapshotSchedule) GetSnapshotRetentionDays() int {
 	if o == nil {
 		var ret int
 		return ret
@@ -271,7 +271,7 @@ func (o *SnapshotSchedule) GetSnapshotRetentionDays() int {
 
 // GetSnapshotRetentionDaysOk returns a tuple with the SnapshotRetentionDays field value
 // and a boolean to check if the value has been set.
-func (o *SnapshotSchedule) GetSnapshotRetentionDaysOk() (*int, bool) {
+func (o *ApiAtlasSnapshotSchedule) GetSnapshotRetentionDaysOk() (*int, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -279,12 +279,12 @@ func (o *SnapshotSchedule) GetSnapshotRetentionDaysOk() (*int, bool) {
 }
 
 // SetSnapshotRetentionDays sets field value
-func (o *SnapshotSchedule) SetSnapshotRetentionDays(v int) {
+func (o *ApiAtlasSnapshotSchedule) SetSnapshotRetentionDays(v int) {
 	o.SnapshotRetentionDays = v
 }
 
 // GetWeeklySnapshotRetentionWeeks returns the WeeklySnapshotRetentionWeeks field value
-func (o *SnapshotSchedule) GetWeeklySnapshotRetentionWeeks() int {
+func (o *ApiAtlasSnapshotSchedule) GetWeeklySnapshotRetentionWeeks() int {
 	if o == nil {
 		var ret int
 		return ret
@@ -295,7 +295,7 @@ func (o *SnapshotSchedule) GetWeeklySnapshotRetentionWeeks() int {
 
 // GetWeeklySnapshotRetentionWeeksOk returns a tuple with the WeeklySnapshotRetentionWeeks field value
 // and a boolean to check if the value has been set.
-func (o *SnapshotSchedule) GetWeeklySnapshotRetentionWeeksOk() (*int, bool) {
+func (o *ApiAtlasSnapshotSchedule) GetWeeklySnapshotRetentionWeeksOk() (*int, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -303,18 +303,18 @@ func (o *SnapshotSchedule) GetWeeklySnapshotRetentionWeeksOk() (*int, bool) {
 }
 
 // SetWeeklySnapshotRetentionWeeks sets field value
-func (o *SnapshotSchedule) SetWeeklySnapshotRetentionWeeks(v int) {
+func (o *ApiAtlasSnapshotSchedule) SetWeeklySnapshotRetentionWeeks(v int) {
 	o.WeeklySnapshotRetentionWeeks = v
 }
 
-func (o SnapshotSchedule) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o ApiAtlasSnapshotSchedule) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o SnapshotSchedule) ToMap() (map[string]interface{}, error) {
+func (o ApiAtlasSnapshotSchedule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["clusterCheckpointIntervalMin"] = o.ClusterCheckpointIntervalMin
 	toSerialize["clusterId"] = o.ClusterId
@@ -327,38 +327,38 @@ func (o SnapshotSchedule) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableSnapshotSchedule struct {
-	value *SnapshotSchedule
+type NullableApiAtlasSnapshotSchedule struct {
+	value *ApiAtlasSnapshotSchedule
 	isSet bool
 }
 
-func (v NullableSnapshotSchedule) Get() *SnapshotSchedule {
+func (v NullableApiAtlasSnapshotSchedule) Get() *ApiAtlasSnapshotSchedule {
 	return v.value
 }
 
-func (v *NullableSnapshotSchedule) Set(val *SnapshotSchedule) {
+func (v *NullableApiAtlasSnapshotSchedule) Set(val *ApiAtlasSnapshotSchedule) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSnapshotSchedule) IsSet() bool {
+func (v NullableApiAtlasSnapshotSchedule) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSnapshotSchedule) Unset() {
+func (v *NullableApiAtlasSnapshotSchedule) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSnapshotSchedule(val *SnapshotSchedule) *NullableSnapshotSchedule {
-	return &NullableSnapshotSchedule{value: val, isSet: true}
+func NewNullableApiAtlasSnapshotSchedule(val *ApiAtlasSnapshotSchedule) *NullableApiAtlasSnapshotSchedule {
+	return &NullableApiAtlasSnapshotSchedule{value: val, isSet: true}
 }
 
-func (v NullableSnapshotSchedule) MarshalJSON() ([]byte, error) {
+func (v NullableApiAtlasSnapshotSchedule) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSnapshotSchedule) UnmarshalJSON(src []byte) error {
+func (v *NullableApiAtlasSnapshotSchedule) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

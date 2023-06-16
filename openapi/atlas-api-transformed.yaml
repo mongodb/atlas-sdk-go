@@ -1895,7 +1895,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/KeyUser"
+                $ref: "#/components/schemas/ApiKeyUser"
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -1982,7 +1982,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/KeyUser"
+                $ref: "#/components/schemas/ApiKeyUser"
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -2030,7 +2030,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/KeyUser"
+                $ref: "#/components/schemas/ApiKeyUser"
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -4140,7 +4140,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/Checkpoint"
+                $ref: "#/components/schemas/ApiAtlasCheckpoint"
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -5517,7 +5517,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/SnapshotSchedule"
+                $ref: "#/components/schemas/ApiAtlasSnapshotSchedule"
               x-xgen-version: 2023-01-01
           description: OK
         "404":
@@ -5555,7 +5555,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: "#/components/schemas/SnapshotSchedule"
+              $ref: "#/components/schemas/ApiAtlasSnapshotSchedule"
         description: Update the snapshot schedule for one cluster in the specified project.
         required: true
       responses:
@@ -5563,7 +5563,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/SnapshotSchedule"
+                $ref: "#/components/schemas/ApiAtlasSnapshotSchedule"
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -9352,7 +9352,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/PolicyItem"
+                  $ref: "#/components/schemas/ApiPolicyItem"
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -10605,7 +10605,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/HostView_Atlas"
+                $ref: "#/components/schemas/ApiHostView_Atlas"
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -10769,7 +10769,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/MeasurementsGeneralView_Atlas"
+                $ref: "#/components/schemas/ApiMeasurementsGeneralView_Atlas"
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -10945,7 +10945,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/MeasurementsGeneralView_Atlas"
+                $ref: "#/components/schemas/ApiMeasurementsGeneralView_Atlas"
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -11016,7 +11016,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/MeasurementsGeneralView_Atlas"
+                $ref: "#/components/schemas/ApiMeasurementsGeneralView_Atlas"
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -12427,7 +12427,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/Organization"
+                $ref: "#/components/schemas/AtlasOrganization"
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -12456,7 +12456,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: "#/components/schemas/Organization"
+              $ref: "#/components/schemas/AtlasOrganization"
         description: Details to update on the specified organization.
         required: true
       responses:
@@ -12464,7 +12464,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/Organization"
+                $ref: "#/components/schemas/AtlasOrganization"
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -12542,7 +12542,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/KeyUser"
+                $ref: "#/components/schemas/ApiKeyUser"
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -12621,7 +12621,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/KeyUser"
+                $ref: "#/components/schemas/ApiKeyUser"
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -12668,7 +12668,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/KeyUser"
+                $ref: "#/components/schemas/ApiKeyUser"
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -14474,7 +14474,7 @@ components:
               - AWS
             reason: Bad Request
           schema:
-            $ref: "#/components/schemas/Error"
+            $ref: "#/components/schemas/ApiError"
       description: Bad Request
     conflict:
       content:
@@ -14489,7 +14489,7 @@ components:
               - 60c4fd418ebe251047c50554
             reason: Conflict
           schema:
-            $ref: "#/components/schemas/Error"
+            $ref: "#/components/schemas/ApiError"
       description: Conflict
     forbidden:
       content:
@@ -14503,7 +14503,7 @@ components:
               - EXAMPLE
             reason: Forbidden
           schema:
-            $ref: "#/components/schemas/Error"
+            $ref: "#/components/schemas/ApiError"
       description: Forbidden
     gone:
       content:
@@ -14517,7 +14517,7 @@ components:
               - EXAMPLE
             reason: Gone
           schema:
-            $ref: "#/components/schemas/Error"
+            $ref: "#/components/schemas/ApiError"
       description: Gone
     internalServerError:
       content:
@@ -14531,7 +14531,7 @@ components:
               - EXAMPLE
             reason: Internal Server Error
           schema:
-            $ref: "#/components/schemas/Error"
+            $ref: "#/components/schemas/ApiError"
       description: Internal Server Error
     methodNotAllowed:
       content:
@@ -14545,13 +14545,10 @@ components:
               - EXAMPLE
             reason: Method Not Allowed
           schema:
-            $ref: "#/components/schemas/Error"
+            $ref: "#/components/schemas/ApiError"
       description: Method Not Allowed
     noBody:
-      content:
-        application/vnd.atlas.2023-01-01+json:
-          example: ""
-      description: This endpoint does not return a response body
+      description: This endpoint does not return a response body.
     notFound:
       content:
         application/json:
@@ -14564,7 +14561,7 @@ components:
               - AWS
             reason: Not Found
           schema:
-            $ref: "#/components/schemas/Error"
+            $ref: "#/components/schemas/ApiError"
       description: Not Found
     paymentRequired:
       content:
@@ -14578,7 +14575,7 @@ components:
               - EXAMPLE
             reason: Payment Required
           schema:
-            $ref: "#/components/schemas/Error"
+            $ref: "#/components/schemas/ApiError"
       description: Payment Required
     unauthorized:
       content:
@@ -14592,7 +14589,7 @@ components:
               - EXAMPLE
             reason: Unauthorized
           schema:
-            $ref: "#/components/schemas/Error"
+            $ref: "#/components/schemas/ApiError"
       description: Unauthorized
   schemas:
     AWSCloudProviderContainer:
@@ -15623,6 +15620,350 @@ components:
           description: Flag that indicates whether to enable or disable the specified
             alert configuration in the specified project.
       title: Toggle Request
+    ApiError:
+      type: object
+      properties:
+        detail:
+          type: string
+        error:
+          type: integer
+          format: int32
+          description: HTTP status code returned with this error.
+          maximum: 599
+          minimum: 200
+        errorCode:
+          type: string
+          description: Application error code returned with this error.
+          example: TOO_MANY_GROUP_NOTIFICATIONS
+        parameters:
+          type: array
+          description: Parameter uses to give more information about the error.
+          items: {}
+        reason:
+          type: string
+          description: Application error message returned with this error.
+          example: At most one group notification can be specified for an alert
+            configuration.
+    ApiHostView_Atlas:
+      type: object
+      properties:
+        created:
+          type: string
+          format: date-time
+          description: Date and time when MongoDB Cloud created this MongoDB process. This
+            parameter expresses its value in the ISO 8601 timestamp format in
+            UTC.
+          readOnly: true
+        groupId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the project. The
+            project contains MongoDB processes that you want to return. The
+            MongoDB process can be either the `mongod` or `mongos`.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        hostname:
+          type: string
+          description: Hostname, fully qualified domain name (FQDN), or Internet Protocol
+            address (IPv4 or IPv6) of the host that runs the MongoDB process
+            (`mongod` or `mongos`).
+          pattern: ^([0-9]{1,3}\.){3}[0-9]{1,3}|([0-9a-f]{1,4}\:){7}([0-9a-f]{1,4})|(([a-z0-9]+\.){1,10}[a-z]+)?$
+          readOnly: true
+        id:
+          type: string
+          description: Combination of hostname and Internet Assigned Numbers Authority
+            (IANA) port that serves the MongoDB process. The host must be the
+            hostname, fully qualified domain name (FQDN), or Internet Protocol
+            address (IPv4 or IPv6) of the host that runs the MongoDB process
+            (`mongod` or `mongos`). The port must be the IANA port on which the
+            MongoDB process listens for requests.
+          pattern: ^([0-9]{1,3}\.){3}[0-9]{1,3}|([0-9a-f]{1,4}\:){7}([0-9a-f]{1,4})|(([a-z0-9]+\.){1,10}[a-z]+)?(\:[0-9]{4,5})$
+          readOnly: true
+        lastPing:
+          type: string
+          format: date-time
+          description: Date and time when MongoDB Cloud received the last ping for this
+            MongoDB process. This parameter expresses its value in the ISO 8601
+            timestamp format in UTC.
+          readOnly: true
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link_Atlas"
+          readOnly: true
+        port:
+          type: integer
+          format: int32
+          description: Internet Assigned Numbers Authority (IANA) port on which the
+            MongoDB process listens for requests.
+          readOnly: true
+        replicaSetName:
+          type: string
+          description: Human-readable label that identifies the replica set that contains
+            this process. This resource returns this parameter if this process
+            belongs to a replica set.
+          readOnly: true
+        shardName:
+          type: string
+          description: Human-readable label that identifies the shard that contains this
+            process. This resource returns this value only if this process
+            belongs to a sharded cluster.
+          readOnly: true
+        typeName:
+          type: string
+          description: Type of MongoDB process that MongoDB Cloud tracks. MongoDB Cloud
+            returns new processes as **NO_DATA** until MongoDB Cloud completes
+            deploying the process.
+          readOnly: true
+        userAlias:
+          type: string
+          description: Human-readable label that identifies the cluster node. MongoDB
+            Cloud sets this hostname usually to the standard hostname for the
+            cluster node. It appears in the connection string for a cluster
+            instead of the value of the hostname parameter.
+          readOnly: true
+        version:
+          type: string
+          description: Version of MongoDB that this process runs.
+          pattern: ([\d]+\.[\d]+\.[\d]+)
+          readOnly: true
+    ApiKey:
+      type: object
+      description: Details contained in one API key.
+      nullable: true
+      properties:
+        accessList:
+          type: array
+          description: List of network addresses granted access to this API using this API
+            key.
+          items:
+            $ref: "#/components/schemas/AccessListItem"
+          readOnly: true
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies this
+            organization API key.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        publicKey:
+          type: string
+          description: Public API key value set for the specified organization API key.
+          maxLength: 8
+          minLength: 8
+          readOnly: true
+        roles:
+          type: array
+          description: List that contains roles that the API key needs to have. All roles
+            you provide must be valid for the specified project or organization.
+            Each request must include a minimum of one valid role. The resource
+            returns all project and organization roles assigned to the Cloud
+            user.
+          items:
+            $ref: "#/components/schemas/CloudRoleAssignment"
+          readOnly: true
+      readOnly: true
+      required:
+        - id
+        - publicKey
+    ApiKeyUser:
+      type: object
+      properties:
+        desc:
+          type: string
+          description: Purpose or explanation provided when someone created this
+            organization API key.
+          maxLength: 250
+          minLength: 1
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies this
+            organization API key assigned to this project.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        privateKey:
+          type: string
+          description: Redacted private key returned for this organization API key. This
+            key displays unredacted when first created.
+          example: 55c3bbb6-b4bb-0be1-e66d20841f3e
+          readOnly: true
+        publicKey:
+          type: string
+          description: Public API key value set for the specified organization API key.
+          example: zmmrboas
+          maxLength: 8
+          minLength: 8
+          readOnly: true
+        roles:
+          type: array
+          description: List that contains the roles that the API key needs to have. All
+            roles you provide must be valid for the specified project or
+            organization. Each request must include a minimum of one valid role.
+            The resource returns all project and organization roles assigned to
+            the API key.
+          items:
+            $ref: "#/components/schemas/CloudRoleAssignment"
+    ApiMeasurementsGeneralView_Atlas:
+      type: object
+      properties:
+        databaseName:
+          type: string
+          description: Human-readable label that identifies the database that the
+            specified MongoDB process serves.
+          readOnly: true
+        end:
+          type: string
+          format: date-time
+          description: Date and time that specifies when to stop retrieving measurements.
+            If you set **end**, you must set **start**. You can't set this
+            parameter and **period** in the same request. This parameter
+            expresses its value in the ISO 8601 timestamp format in UTC.
+          readOnly: true
+        granularity:
+          type: string
+          description: Duration that specifies the interval between measurement data
+            points. The parameter expresses its value in ISO 8601 timestamp
+            format in UTC. If you set this parameter, you must set either
+            **period** or **start** and **end**.
+          readOnly: true
+        groupId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the project. The
+            project contains MongoDB processes that you want to return. The
+            MongoDB process can be either the `mongod` or `mongos`.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        hostId:
+          type: string
+          description: Combination of hostname and Internet Assigned Numbers Authority
+            (IANA) port that serves the MongoDB process. The host must be the
+            hostname, fully qualified domain name (FQDN), or Internet Protocol
+            address (IPv4 or IPv6) of the host that runs the MongoDB process
+            (`mongod` or `mongos`). The port must be the IANA port on which the
+            MongoDB process listens for requests.
+          example: mongodb.example.com:27017
+          pattern: ^([0-9]{1,3}\.){3}[0-9]{1,3}|([0-9a-f]{1,4}\:){7}([0-9a-f]{1,4})|(([a-z0-9]+\.){1,10}[a-z]+)?(\:[0-9]{4,5})$
+          readOnly: true
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link_Atlas"
+          readOnly: true
+        measurements:
+          type: array
+          description: List that contains measurements and their data points.
+          items:
+            $ref: "#/components/schemas/MetricsMeasurement_Atlas"
+          readOnly: true
+        partitionName:
+          type: string
+          description: Human-readable label of the disk or partition to which the
+            measurements apply.
+          readOnly: true
+        processId:
+          type: string
+          description: Combination of hostname and Internet Assigned Numbers Authority
+            (IANA) port that serves the MongoDB process. The host must be the
+            hostname, fully qualified domain name (FQDN), or Internet Protocol
+            address (IPv4 or IPv6) of the host that runs the MongoDB process
+            (`mongod` or `mongos`). The port must be the IANA port on which the
+            MongoDB process listens for requests.
+          example: mongodb.example.com:27017
+          pattern: ^([0-9]{1,3}\.){3}[0-9]{1,3}|([0-9a-f]{1,4}\:){7}([0-9a-f]{1,4})|(([a-z0-9]+\.){1,10}[a-z]+)?(\:[0-9]{4,5})$
+          readOnly: true
+        start:
+          type: string
+          format: date-time
+          description: Date and time that specifies when to start retrieving measurements.
+            If you set **start**, you must set **end**. You can't set this
+            parameter and **period** in the same request. This parameter
+            expresses its value in the ISO 8601 timestamp format in UTC.
+          readOnly: true
+    AtlasClusterOutageSimulationOutageFilter:
+      type: object
+      properties:
+        cloudProvider:
+          type: string
+          description: The cloud provider of the region that undergoes the outage
+            simulation.
+        regionName:
+          type: string
+          description: The name of the region to undergo an outage simulation.
+        type:
+          type: string
+          description: |-
+            The type of cluster outage to simulate.
+
+            | Type       | Description |
+            |------------|-------------|
+            | `REGION`   | Simulates a cluster outage for a region.|
+    AtlasOrganization:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the organization.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        isDeleted:
+          type: boolean
+          description: Flag that indicates whether this organization has been deleted.
+          readOnly: true
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        name:
+          type: string
+          description: Human-readable label that identifies the organization.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[\p{L}\p{N}\-_.(),:&@+']{1,64}$
+      required:
+        - name
     AuditLog:
       type: object
       properties:
@@ -16337,7 +16678,7 @@ components:
             file at the time of the request.
           readOnly: true
         timestamp:
-          $ref: "#/components/schemas/BSONTimestamp"
+          $ref: "#/components/schemas/ApiBSONTimestamp"
       required:
         - delivery
     BackupRestoreJobDelivery:
@@ -16481,7 +16822,7 @@ components:
             `false` while MongoDB Cloud creates the snapshot.
           readOnly: true
         created:
-          $ref: "#/components/schemas/BSONTimestamp"
+          $ref: "#/components/schemas/ApiBSONTimestamp"
         doNotDelete:
           type: boolean
           description: "Flag that indicates whether someone can delete this snapshot. You
@@ -16515,7 +16856,7 @@ components:
           description: Flag indicating if this is an incremental or a full snapshot.
           readOnly: true
         lastOplogAppliedTimestamp:
-          $ref: "#/components/schemas/BSONTimestamp"
+          $ref: "#/components/schemas/ApiBSONTimestamp"
         links:
           type: array
           description: List of one or more Uniform Resource Locators (URLs) that point to
@@ -17376,7 +17717,7 @@ components:
         role.
       properties:
         featureId:
-          $ref: "#/components/schemas/CloudProviderAccessFeatureUsageFeatureId"
+          $ref: "#/components/schemas/ApiAtlasCloudProviderAccessFeatureUsageFeatureId"
         featureType:
           type: string
           description: Human-readable label that describes one MongoDB Cloud feature
@@ -18222,7 +18563,7 @@ components:
           type: array
           description: List of settings that specify the type of cluster outage simulation.
           items:
-            $ref: "#/components/schemas/ClusterOutageSimulationOutageFilter"
+            $ref: "#/components/schemas/AtlasClusterOutageSimulationOutageFilter"
           minItems: 1
         startRequestDate:
           type: string
@@ -18309,7 +18650,7 @@ components:
             description: Custom Atlas Search Analyzers
             url: https://docs.atlas.mongodb.com/atlas-search/analyzers/custom/
           items:
-            $ref: "#/components/schemas/FTSAnalyzers"
+            $ref: "#/components/schemas/ApiAtlasFTSAnalyzers"
         collectionName:
           type: string
           description: Human-readable label that identifies the collection that contains
@@ -18328,7 +18669,7 @@ components:
           pattern: ^([a-f0-9]{24})$
           readOnly: true
         mappings:
-          $ref: "#/components/schemas/FTSMappings"
+          $ref: "#/components/schemas/ApiAtlasFTSMappings"
         name:
           type: string
           description: Human-readable label that identifies this index. Within each
@@ -18762,7 +19103,7 @@ components:
       type: object
       properties:
         apiKey:
-          $ref: "#/components/schemas/KeyUser"
+          $ref: "#/components/schemas/ApiKeyUser"
         federationSettingsId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the federation
@@ -18783,7 +19124,7 @@ components:
           pattern: ^([a-f0-9]{24})$
           readOnly: true
         organization:
-          $ref: "#/components/schemas/Organization"
+          $ref: "#/components/schemas/AtlasOrganization"
     CreateProjectKey:
       type: object
       properties:
@@ -19109,7 +19450,7 @@ components:
           type: string
           description: Name of the cloud service that hosts the data lake's data stores.
         region:
-          $ref: "#/components/schemas/DataLakeRegion"
+          $ref: "#/components/schemas/ApiAtlasDataLakeRegion"
       required:
         - cloudProvider
         - region
@@ -19495,7 +19836,7 @@ components:
             description: Encryption at Rest using Customer Key Management
             url: https://www.mongodb.com/docs/atlas/security-kms-encryption/
         onDemandPolicyItem:
-          $ref: "#/components/schemas/PolicyItem"
+          $ref: "#/components/schemas/ApiPolicyItem"
         pitEnabled:
           type: boolean
           default: false
@@ -19526,7 +19867,7 @@ components:
           type: array
           description: List that contains the specifications for one scheduled policy.
           items:
-            $ref: "#/components/schemas/PolicyItem"
+            $ref: "#/components/schemas/ApiPolicyItem"
         state:
           type: string
           description: Label that indicates the state of the Backup Compliance Policy
@@ -20343,7 +20684,7 @@ components:
               files for manual download.
           readOnly: true
         desiredTimestamp:
-          $ref: "#/components/schemas/BSONTimestamp"
+          $ref: "#/components/schemas/ApiBSONTimestamp"
         expired:
           type: boolean
           description: Flag that indicates whether the restore job expired.
@@ -20506,7 +20847,7 @@ components:
           type: array
           description: Rules set for this backup schedule.
           items:
-            $ref: "#/components/schemas/Policy"
+            $ref: "#/components/schemas/ApiPolicy"
           maxItems: 1
         referenceHourOfDay:
           type: integer
@@ -23875,7 +24216,7 @@ components:
           description: List of returned documents that MongoDB Cloud providers when
             completing this request.
           items:
-            $ref: "#/components/schemas/HostView_Atlas"
+            $ref: "#/components/schemas/ApiHostView_Atlas"
           readOnly: true
         totalCount:
           type: integer
@@ -24706,7 +25047,7 @@ components:
               files for manual download.
           readOnly: true
         desiredTimestamp:
-          $ref: "#/components/schemas/BSONTimestamp"
+          $ref: "#/components/schemas/ApiBSONTimestamp"
         expired:
           type: boolean
           description: Flag that indicates whether the restore job expired.
@@ -25329,7 +25670,7 @@ components:
       type: object
       properties:
         apiKey:
-          $ref: "#/components/schemas/Key"
+          $ref: "#/components/schemas/ApiKey"
         appName:
           type: string
           description: Human-readable label that identifies the service from which you
@@ -26308,350 +26649,6 @@ components:
       required:
         - type
       title: trim
-    Error:
-      type: object
-      properties:
-        detail:
-          type: string
-        error:
-          type: integer
-          format: int32
-          description: HTTP status code returned with this error.
-          maximum: 599
-          minimum: 200
-        errorCode:
-          type: string
-          description: Application error code returned with this error.
-          example: TOO_MANY_GROUP_NOTIFICATIONS
-        parameters:
-          type: array
-          description: Parameter uses to give more information about the error.
-          items: {}
-        reason:
-          type: string
-          description: Application error message returned with this error.
-          example: At most one group notification can be specified for an alert
-            configuration.
-    HostView_Atlas:
-      type: object
-      properties:
-        created:
-          type: string
-          format: date-time
-          description: Date and time when MongoDB Cloud created this MongoDB process. This
-            parameter expresses its value in the ISO 8601 timestamp format in
-            UTC.
-          readOnly: true
-        groupId:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies the project. The
-            project contains MongoDB processes that you want to return. The
-            MongoDB process can be either the `mongod` or `mongos`.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-          readOnly: true
-        hostname:
-          type: string
-          description: Hostname, fully qualified domain name (FQDN), or Internet Protocol
-            address (IPv4 or IPv6) of the host that runs the MongoDB process
-            (`mongod` or `mongos`).
-          pattern: ^([0-9]{1,3}\.){3}[0-9]{1,3}|([0-9a-f]{1,4}\:){7}([0-9a-f]{1,4})|(([a-z0-9]+\.){1,10}[a-z]+)?$
-          readOnly: true
-        id:
-          type: string
-          description: Combination of hostname and Internet Assigned Numbers Authority
-            (IANA) port that serves the MongoDB process. The host must be the
-            hostname, fully qualified domain name (FQDN), or Internet Protocol
-            address (IPv4 or IPv6) of the host that runs the MongoDB process
-            (`mongod` or `mongos`). The port must be the IANA port on which the
-            MongoDB process listens for requests.
-          pattern: ^([0-9]{1,3}\.){3}[0-9]{1,3}|([0-9a-f]{1,4}\:){7}([0-9a-f]{1,4})|(([a-z0-9]+\.){1,10}[a-z]+)?(\:[0-9]{4,5})$
-          readOnly: true
-        lastPing:
-          type: string
-          format: date-time
-          description: Date and time when MongoDB Cloud received the last ping for this
-            MongoDB process. This parameter expresses its value in the ISO 8601
-            timestamp format in UTC.
-          readOnly: true
-        links:
-          type: array
-          description: List of one or more Uniform Resource Locators (URLs) that point to
-            API sub-resources, related API resources, or both. RFC 5988 outlines
-            these relationships.
-          externalDocs:
-            description: Web Linking Specification (RFC 5988)
-            url: https://datatracker.ietf.org/doc/html/rfc5988
-          items:
-            $ref: "#/components/schemas/Link_Atlas"
-          readOnly: true
-        port:
-          type: integer
-          format: int32
-          description: Internet Assigned Numbers Authority (IANA) port on which the
-            MongoDB process listens for requests.
-          readOnly: true
-        replicaSetName:
-          type: string
-          description: Human-readable label that identifies the replica set that contains
-            this process. This resource returns this parameter if this process
-            belongs to a replica set.
-          readOnly: true
-        shardName:
-          type: string
-          description: Human-readable label that identifies the shard that contains this
-            process. This resource returns this value only if this process
-            belongs to a sharded cluster.
-          readOnly: true
-        typeName:
-          type: string
-          description: Type of MongoDB process that MongoDB Cloud tracks. MongoDB Cloud
-            returns new processes as **NO_DATA** until MongoDB Cloud completes
-            deploying the process.
-          readOnly: true
-        userAlias:
-          type: string
-          description: Human-readable label that identifies the cluster node. MongoDB
-            Cloud sets this hostname usually to the standard hostname for the
-            cluster node. It appears in the connection string for a cluster
-            instead of the value of the hostname parameter.
-          readOnly: true
-        version:
-          type: string
-          description: Version of MongoDB that this process runs.
-          pattern: ([\d]+\.[\d]+\.[\d]+)
-          readOnly: true
-    Key:
-      type: object
-      description: Details contained in one API key.
-      nullable: true
-      properties:
-        accessList:
-          type: array
-          description: List of network addresses granted access to this API using this API
-            key.
-          items:
-            $ref: "#/components/schemas/AccessListItem"
-          readOnly: true
-        id:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies this
-            organization API key.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-          readOnly: true
-        publicKey:
-          type: string
-          description: Public API key value set for the specified organization API key.
-          maxLength: 8
-          minLength: 8
-          readOnly: true
-        roles:
-          type: array
-          description: List that contains roles that the API key needs to have. All roles
-            you provide must be valid for the specified project or organization.
-            Each request must include a minimum of one valid role. The resource
-            returns all project and organization roles assigned to the Cloud
-            user.
-          items:
-            $ref: "#/components/schemas/CloudRoleAssignment"
-          readOnly: true
-      readOnly: true
-      required:
-        - id
-        - publicKey
-    KeyUser:
-      type: object
-      properties:
-        desc:
-          type: string
-          description: Purpose or explanation provided when someone created this
-            organization API key.
-          maxLength: 250
-          minLength: 1
-        id:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies this
-            organization API key assigned to this project.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-          readOnly: true
-        links:
-          type: array
-          description: List of one or more Uniform Resource Locators (URLs) that point to
-            API sub-resources, related API resources, or both. RFC 5988 outlines
-            these relationships.
-          externalDocs:
-            description: Web Linking Specification (RFC 5988)
-            url: https://datatracker.ietf.org/doc/html/rfc5988
-          items:
-            $ref: "#/components/schemas/Link"
-          readOnly: true
-        privateKey:
-          type: string
-          description: Redacted private key returned for this organization API key. This
-            key displays unredacted when first created.
-          example: 55c3bbb6-b4bb-0be1-e66d20841f3e
-          readOnly: true
-        publicKey:
-          type: string
-          description: Public API key value set for the specified organization API key.
-          example: zmmrboas
-          maxLength: 8
-          minLength: 8
-          readOnly: true
-        roles:
-          type: array
-          description: List that contains the roles that the API key needs to have. All
-            roles you provide must be valid for the specified project or
-            organization. Each request must include a minimum of one valid role.
-            The resource returns all project and organization roles assigned to
-            the API key.
-          items:
-            $ref: "#/components/schemas/CloudRoleAssignment"
-    MeasurementsGeneralView_Atlas:
-      type: object
-      properties:
-        databaseName:
-          type: string
-          description: Human-readable label that identifies the database that the
-            specified MongoDB process serves.
-          readOnly: true
-        end:
-          type: string
-          format: date-time
-          description: Date and time that specifies when to stop retrieving measurements.
-            If you set **end**, you must set **start**. You can't set this
-            parameter and **period** in the same request. This parameter
-            expresses its value in the ISO 8601 timestamp format in UTC.
-          readOnly: true
-        granularity:
-          type: string
-          description: Duration that specifies the interval between measurement data
-            points. The parameter expresses its value in ISO 8601 timestamp
-            format in UTC. If you set this parameter, you must set either
-            **period** or **start** and **end**.
-          readOnly: true
-        groupId:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies the project. The
-            project contains MongoDB processes that you want to return. The
-            MongoDB process can be either the `mongod` or `mongos`.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-          readOnly: true
-        hostId:
-          type: string
-          description: Combination of hostname and Internet Assigned Numbers Authority
-            (IANA) port that serves the MongoDB process. The host must be the
-            hostname, fully qualified domain name (FQDN), or Internet Protocol
-            address (IPv4 or IPv6) of the host that runs the MongoDB process
-            (`mongod` or `mongos`). The port must be the IANA port on which the
-            MongoDB process listens for requests.
-          example: mongodb.example.com:27017
-          pattern: ^([0-9]{1,3}\.){3}[0-9]{1,3}|([0-9a-f]{1,4}\:){7}([0-9a-f]{1,4})|(([a-z0-9]+\.){1,10}[a-z]+)?(\:[0-9]{4,5})$
-          readOnly: true
-        links:
-          type: array
-          description: List of one or more Uniform Resource Locators (URLs) that point to
-            API sub-resources, related API resources, or both. RFC 5988 outlines
-            these relationships.
-          externalDocs:
-            description: Web Linking Specification (RFC 5988)
-            url: https://datatracker.ietf.org/doc/html/rfc5988
-          items:
-            $ref: "#/components/schemas/Link_Atlas"
-          readOnly: true
-        measurements:
-          type: array
-          description: List that contains measurements and their data points.
-          items:
-            $ref: "#/components/schemas/MetricsMeasurement_Atlas"
-          readOnly: true
-        partitionName:
-          type: string
-          description: Human-readable label of the disk or partition to which the
-            measurements apply.
-          readOnly: true
-        processId:
-          type: string
-          description: Combination of hostname and Internet Assigned Numbers Authority
-            (IANA) port that serves the MongoDB process. The host must be the
-            hostname, fully qualified domain name (FQDN), or Internet Protocol
-            address (IPv4 or IPv6) of the host that runs the MongoDB process
-            (`mongod` or `mongos`). The port must be the IANA port on which the
-            MongoDB process listens for requests.
-          example: mongodb.example.com:27017
-          pattern: ^([0-9]{1,3}\.){3}[0-9]{1,3}|([0-9a-f]{1,4}\:){7}([0-9a-f]{1,4})|(([a-z0-9]+\.){1,10}[a-z]+)?(\:[0-9]{4,5})$
-          readOnly: true
-        start:
-          type: string
-          format: date-time
-          description: Date and time that specifies when to start retrieving measurements.
-            If you set **start**, you must set **end**. You can't set this
-            parameter and **period** in the same request. This parameter
-            expresses its value in the ISO 8601 timestamp format in UTC.
-          readOnly: true
-    ClusterOutageSimulationOutageFilter:
-      type: object
-      properties:
-        cloudProvider:
-          type: string
-          description: The cloud provider of the region that undergoes the outage
-            simulation.
-        regionName:
-          type: string
-          description: The name of the region to undergo an outage simulation.
-        type:
-          type: string
-          description: |-
-            The type of cluster outage to simulate.
-
-            | Type       | Description |
-            |------------|-------------|
-            | `REGION`   | Simulates a cluster outage for a region.|
-    Organization:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies the organization.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-          readOnly: true
-        isDeleted:
-          type: boolean
-          description: Flag that indicates whether this organization has been deleted.
-          readOnly: true
-        links:
-          type: array
-          description: List of one or more Uniform Resource Locators (URLs) that point to
-            API sub-resources, related API resources, or both. RFC 5988 outlines
-            these relationships.
-          externalDocs:
-            description: Web Linking Specification (RFC 5988)
-            url: https://datatracker.ietf.org/doc/html/rfc5988
-          items:
-            $ref: "#/components/schemas/Link"
-          readOnly: true
-        name:
-          type: string
-          description: Human-readable label that identifies the organization.
-          maxLength: 64
-          minLength: 1
-          pattern: ^[\p{L}\p{N}\-_.(),:&@+']{1,64}$
-      required:
-        - name
     AWSCustomDNSEnabled:
       type: object
       properties:
@@ -26684,6 +26681,288 @@ components:
           readOnly: true
       required:
         - ipAddress
+    ApiAtlasCheckpoint:
+      type: object
+      properties:
+        clusterId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the cluster that
+            contains the checkpoint.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        completed:
+          type: string
+          format: date-time
+          description: Date and time when the checkpoint completed and the balancer
+            restarted. This parameter expresses its value in the ISO 8601
+            timestamp format in UTC.
+          readOnly: true
+        groupId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the project that
+            owns the checkpoints.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies checkpoint.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        parts:
+          type: array
+          description: >-
+            Metadata that describes the complete snapshot.
+
+
+            - For a replica set, this array contains a single document.
+
+            - For a sharded cluster, this array contains one document for each shard plus one document for the config host.
+          items:
+            $ref: "#/components/schemas/ApiCheckpointPart"
+          readOnly: true
+        restorable:
+          type: boolean
+          description: Flag that indicates whether MongoDB Cloud can use the checkpoint
+            for a restore.
+          readOnly: true
+        started:
+          type: string
+          format: date-time
+          description: Date and time when the balancer stopped and began the checkpoint.
+            This parameter expresses its value in the ISO 8601 timestamp format
+            in UTC.
+          readOnly: true
+        timestamp:
+          type: string
+          format: date-time
+          description: Date and time to which the checkpoint restores. This parameter
+            expresses its value in the ISO 8601 timestamp format in UTC.
+          readOnly: true
+    ApiAtlasCloudProviderAccessFeatureUsageFeatureId:
+      type: object
+      description: Object that contains the identifying characteristics of the Amazon
+        Web Services (AWS) Key Management Service (KMS). This field always
+        returns a null value.
+      nullable: true
+    ApiAtlasDataLakeRegion:
+      type: string
+      description: Atlas Data Lake Regions.
+    ApiAtlasSnapshotSchedule:
+      type: object
+      properties:
+        clusterCheckpointIntervalMin:
+          type: integer
+          format: int32
+          description: Quantity of time expressed in minutes between successive cluster
+            checkpoints. This parameter applies only to sharded clusters. This
+            number determines the granularity of continuous cloud backups for
+            sharded clusters.
+        clusterId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the cluster with
+            the snapshot you want to return.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+        dailySnapshotRetentionDays:
+          type: integer
+          format: int32
+          description: Quantity of time to keep daily snapshots. MongoDB Cloud expresses
+            this value in days. Set this value to `0` to disable daily snapshot
+            retention.
+        groupId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the project that
+            contains the cluster.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        monthlySnapshotRetentionMonths:
+          type: integer
+          format: int32
+          description: Number of months that MongoDB Cloud must keep monthly snapshots.
+            Set this value to `0` to disable monthly snapshot retention.
+        pointInTimeWindowHours:
+          type: integer
+          format: int32
+          description: Number of hours before the current time from which MongoDB Cloud
+            can create a Continuous Cloud Backup snapshot.
+        snapshotIntervalHours:
+          type: integer
+          format: int32
+          description: Number of hours that must elapse before taking another snapshot.
+        snapshotRetentionDays:
+          type: integer
+          format: int32
+          description: Number of days that MongoDB Cloud must keep recent snapshots.
+        weeklySnapshotRetentionWeeks:
+          type: integer
+          format: int32
+          description: Number of weeks that MongoDB Cloud must keep weekly snapshots. Set
+            this value to `0` to disable weekly snapshot retention.
+      required:
+        - clusterCheckpointIntervalMin
+        - clusterId
+        - dailySnapshotRetentionDays
+        - groupId
+        - monthlySnapshotRetentionMonths
+        - pointInTimeWindowHours
+        - snapshotIntervalHours
+        - snapshotRetentionDays
+        - weeklySnapshotRetentionWeeks
+    ApiBSONTimestamp:
+      type: object
+      description: BSON timestamp that indicates when the checkpoint token entry in
+        the oplog occurred.
+      properties:
+        date:
+          type: string
+          format: date-time
+          description: Date and time when the oplog recorded this database operation. This
+            parameter expresses its value in the ISO 8601 timestamp format in
+            UTC.
+          readOnly: true
+        increment:
+          type: integer
+          format: int32
+          description: Order of the database operation that the oplog recorded at specific
+            date and time.
+          example: 1199145600
+          minimum: 1199145600
+          readOnly: true
+      readOnly: true
+      title: BSON Timestamp
+    ApiCheckpointPart:
+      type: object
+      description: Metadata contained in one document that describes the complete
+        snapshot taken for this node.
+      properties:
+        replicaSetName:
+          type: string
+          description: Human-readable label that identifies the replica set to which this
+            checkpoint applies.
+          readOnly: true
+        shardName:
+          type: string
+          description: Human-readable label that identifies the shard to which this
+            checkpoint applies.
+          readOnly: true
+        tokenDiscovered:
+          type: boolean
+          description: Flag that indicates whether the token exists.
+          readOnly: true
+        tokenTimestamp:
+          $ref: "#/components/schemas/ApiBSONTimestamp"
+        typeName:
+          type: string
+          description: Human-readable label that identifies the type of host that the part
+            represents.
+          readOnly: true
+      readOnly: true
+    ApiPolicyItem:
+      type: object
+      description: Specifications for one policy.
+      properties:
+        frequencyInterval:
+          type: integer
+          format: int32
+          description: >-
+            Number that indicates the frequency interval for a set of
+            snapshots. A value of `1` specifies the first instance of the
+            corresponding `frequencyType`.
+
+
+            - In a monthly policy item, `1` indicates that the monthly snapshot occurs on the first day of the month and `40` indicates the last day of the month.
+
+
+            - In a weekly policy item, `1` indicates that the weekly snapshot occurs on Monday and `7` indicates Sunday.
+
+
+            - In an hourly policy item, you can set the frequency interval to `1`, `2`, `4`, `6`, `8`, or `12`. For hourly policy items for NVMe clusters, MongoDB Cloud accepts only `12` as the frequency interval value.
+
+             MongoDB Cloud ignores this setting for non-hourly policy items in Backup Compliance Policy settings.
+        frequencyType:
+          type: string
+          description: Human-readable label that identifies the frequency type associated
+            with the backup policy.
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies this backup
+            policy item.
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        retentionUnit:
+          type: string
+          description: Unit of time in which MongoDB Cloud measures snapshot retention.
+        retentionValue:
+          type: integer
+          format: int32
+          description: >-
+            Duration in days, weeks, or months that MongoDB Cloud retains the
+            snapshot. For less frequent policy items, MongoDB Cloud requires
+            that you specify a value greater than or equal to the value
+            specified for more frequent policy items.
+
+
+            For example: If the hourly policy item specifies a retention of two days, you must specify two days or greater for the retention of the weekly policy item.
+      required:
+        - frequencyInterval
+        - frequencyType
+        - retentionUnit
+        - retentionValue
+    ApiPolicy:
+      type: object
+      description: List that contains a document for each backup policy item in the
+        desired backup policy.
+      properties:
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies this backup
+            policy.
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+        policyItems:
+          type: array
+          description: List that contains the specifications for one policy.
+          items:
+            $ref: "#/components/schemas/ApiPolicyItem"
     AutoExportPolicy:
       type: object
       description: Policy for automatically exporting cloud backup snapshots.
@@ -27082,7 +27361,7 @@ components:
           description: List of returned documents that MongoDB Cloud providers when
             completing this request.
           items:
-            $ref: "#/components/schemas/KeyUser"
+            $ref: "#/components/schemas/ApiKeyUser"
           readOnly: true
         totalCount:
           type: integer
@@ -27136,7 +27415,7 @@ components:
           description: List of returned documents that MongoDB Cloud providers when
             completing this request.
           items:
-            $ref: "#/components/schemas/Checkpoint"
+            $ref: "#/components/schemas/ApiAtlasCheckpoint"
           readOnly: true
         totalCount:
           type: integer
@@ -27764,7 +28043,7 @@ components:
           description: List of returned documents that MongoDB Cloud providers when
             completing this request.
           items:
-            $ref: "#/components/schemas/Organization"
+            $ref: "#/components/schemas/AtlasOrganization"
           readOnly: true
         totalCount:
           type: integer
@@ -28223,289 +28502,7 @@ components:
           type: string
       required:
         - type
-    BSONTimestamp:
-      type: object
-      description: BSON timestamp that indicates when the checkpoint token entry in
-        the oplog occurred.
-      properties:
-        date:
-          type: string
-          format: date-time
-          description: Date and time when the oplog recorded this database operation. This
-            parameter expresses its value in the ISO 8601 timestamp format in
-            UTC.
-          readOnly: true
-        increment:
-          type: integer
-          format: int32
-          description: Order of the database operation that the oplog recorded at specific
-            date and time.
-          example: 1199145600
-          minimum: 1199145600
-          readOnly: true
-      readOnly: true
-      title: BSON Timestamp
-    CheckpointPart:
-      type: object
-      description: Metadata contained in one document that describes the complete
-        snapshot taken for this node.
-      properties:
-        replicaSetName:
-          type: string
-          description: Human-readable label that identifies the replica set to which this
-            checkpoint applies.
-          readOnly: true
-        shardName:
-          type: string
-          description: Human-readable label that identifies the shard to which this
-            checkpoint applies.
-          readOnly: true
-        tokenDiscovered:
-          type: boolean
-          description: Flag that indicates whether the token exists.
-          readOnly: true
-        tokenTimestamp:
-          $ref: "#/components/schemas/BSONTimestamp"
-        typeName:
-          type: string
-          description: Human-readable label that identifies the type of host that the part
-            represents.
-          readOnly: true
-      readOnly: true
-    PolicyItem:
-      type: object
-      description: Specifications for one policy.
-      properties:
-        frequencyInterval:
-          type: integer
-          format: int32
-          description: >-
-            Number that indicates the frequency interval for a set of
-            snapshots. A value of `1` specifies the first instance of the
-            corresponding `frequencyType`.
-
-
-            - In a monthly policy item, `1` indicates that the monthly snapshot occurs on the first day of the month and `40` indicates the last day of the month.
-
-
-            - In a weekly policy item, `1` indicates that the weekly snapshot occurs on Monday and `7` indicates Sunday.
-
-
-            - In an hourly policy item, you can set the frequency interval to `1`, `2`, `4`, `6`, `8`, or `12`. For hourly policy items for NVMe clusters, MongoDB Cloud accepts only `12` as the frequency interval value.
-
-             MongoDB Cloud ignores this setting for non-hourly policy items in Backup Compliance Policy settings.
-        frequencyType:
-          type: string
-          description: Human-readable label that identifies the frequency type associated
-            with the backup policy.
-        id:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies this backup
-            policy item.
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-          readOnly: true
-        retentionUnit:
-          type: string
-          description: Unit of time in which MongoDB Cloud measures snapshot retention.
-        retentionValue:
-          type: integer
-          format: int32
-          description: >-
-            Duration in days, weeks, or months that MongoDB Cloud retains the
-            snapshot. For less frequent policy items, MongoDB Cloud requires
-            that you specify a value greater than or equal to the value
-            specified for more frequent policy items.
-
-
-            For example: If the hourly policy item specifies a retention of two days, you must specify two days or greater for the retention of the weekly policy item.
-      required:
-        - frequencyInterval
-        - frequencyType
-        - retentionUnit
-        - retentionValue
-    Policy:
-      type: object
-      description: List that contains a document for each backup policy item in the
-        desired backup policy.
-      properties:
-        id:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies this backup
-            policy.
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-        policyItems:
-          type: array
-          description: List that contains the specifications for one policy.
-          items:
-            $ref: "#/components/schemas/PolicyItem"
-    Checkpoint:
-      type: object
-      properties:
-        clusterId:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies the cluster that
-            contains the checkpoint.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-          readOnly: true
-        completed:
-          type: string
-          format: date-time
-          description: Date and time when the checkpoint completed and the balancer
-            restarted. This parameter expresses its value in the ISO 8601
-            timestamp format in UTC.
-          readOnly: true
-        groupId:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies the project that
-            owns the checkpoints.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-          readOnly: true
-        id:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies checkpoint.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-          readOnly: true
-        links:
-          type: array
-          description: List of one or more Uniform Resource Locators (URLs) that point to
-            API sub-resources, related API resources, or both. RFC 5988 outlines
-            these relationships.
-          externalDocs:
-            description: Web Linking Specification (RFC 5988)
-            url: https://datatracker.ietf.org/doc/html/rfc5988
-          items:
-            $ref: "#/components/schemas/Link"
-          readOnly: true
-        parts:
-          type: array
-          description: >-
-            Metadata that describes the complete snapshot.
-
-
-            - For a replica set, this array contains a single document.
-
-            - For a sharded cluster, this array contains one document for each shard plus one document for the config host.
-          items:
-            $ref: "#/components/schemas/CheckpointPart"
-          readOnly: true
-        restorable:
-          type: boolean
-          description: Flag that indicates whether MongoDB Cloud can use the checkpoint
-            for a restore.
-          readOnly: true
-        started:
-          type: string
-          format: date-time
-          description: Date and time when the balancer stopped and began the checkpoint.
-            This parameter expresses its value in the ISO 8601 timestamp format
-            in UTC.
-          readOnly: true
-        timestamp:
-          type: string
-          format: date-time
-          description: Date and time to which the checkpoint restores. This parameter
-            expresses its value in the ISO 8601 timestamp format in UTC.
-          readOnly: true
-    CloudProviderAccessFeatureUsageFeatureId:
-      type: object
-      description: Object that contains the identifying characteristics of the Amazon
-        Web Services (AWS) Key Management Service (KMS). This field always
-        returns a null value.
-      nullable: true
-    DataLakeRegion:
-      type: string
-      description: Atlas Data Lake Regions.
-    SnapshotSchedule:
-      type: object
-      properties:
-        clusterCheckpointIntervalMin:
-          type: integer
-          format: int32
-          description: Quantity of time expressed in minutes between successive cluster
-            checkpoints. This parameter applies only to sharded clusters. This
-            number determines the granularity of continuous cloud backups for
-            sharded clusters.
-        clusterId:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies the cluster with
-            the snapshot you want to return.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-        dailySnapshotRetentionDays:
-          type: integer
-          format: int32
-          description: Quantity of time to keep daily snapshots. MongoDB Cloud expresses
-            this value in days. Set this value to `0` to disable daily snapshot
-            retention.
-        groupId:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies the project that
-            contains the cluster.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-          readOnly: true
-        links:
-          type: array
-          description: List of one or more Uniform Resource Locators (URLs) that point to
-            API sub-resources, related API resources, or both. RFC 5988 outlines
-            these relationships.
-          externalDocs:
-            description: Web Linking Specification (RFC 5988)
-            url: https://datatracker.ietf.org/doc/html/rfc5988
-          items:
-            $ref: "#/components/schemas/Link"
-          readOnly: true
-        monthlySnapshotRetentionMonths:
-          type: integer
-          format: int32
-          description: Number of months that MongoDB Cloud must keep monthly snapshots.
-            Set this value to `0` to disable monthly snapshot retention.
-        pointInTimeWindowHours:
-          type: integer
-          format: int32
-          description: Number of hours before the current time from which MongoDB Cloud
-            can create a Continuous Cloud Backup snapshot.
-        snapshotIntervalHours:
-          type: integer
-          format: int32
-          description: Number of hours that must elapse before taking another snapshot.
-        snapshotRetentionDays:
-          type: integer
-          format: int32
-          description: Number of days that MongoDB Cloud must keep recent snapshots.
-        weeklySnapshotRetentionWeeks:
-          type: integer
-          format: int32
-          description: Number of weeks that MongoDB Cloud must keep weekly snapshots. Set
-            this value to `0` to disable weekly snapshot retention.
-      required:
-        - clusterCheckpointIntervalMin
-        - clusterId
-        - dailySnapshotRetentionDays
-        - groupId
-        - monthlySnapshotRetentionMonths
-        - pointInTimeWindowHours
-        - snapshotIntervalHours
-        - snapshotRetentionDays
-        - weeklySnapshotRetentionWeeks
-    FTSAnalyzers:
+    ApiAtlasFTSAnalyzers:
       type: object
       description: Settings that describe one Atlas Search custom analyzer.
       properties:
@@ -28608,7 +28605,7 @@ components:
         - name
         - tokenizer
       title: analyzers
-    FTSMappings:
+    ApiAtlasFTSMappings:
       type: object
       description: Index specifications for the collection's fields.
       properties:

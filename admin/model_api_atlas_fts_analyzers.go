@@ -6,43 +6,43 @@ import (
 	"encoding/json"
 )
 
-// checks if the FTSAnalyzers type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &FTSAnalyzers{}
+// checks if the ApiAtlasFTSAnalyzers type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApiAtlasFTSAnalyzers{}
 
-// FTSAnalyzers Settings that describe one Atlas Search custom analyzer.
-type FTSAnalyzers struct {
+// ApiAtlasFTSAnalyzers Settings that describe one Atlas Search custom analyzer.
+type ApiAtlasFTSAnalyzers struct {
 	// Filters that examine text one character at a time and perform filtering operations.
-	CharFilters []FTSAnalyzersCharFiltersInner `json:"charFilters,omitempty"`
+	CharFilters []ApiAtlasFTSAnalyzersCharFiltersInner `json:"charFilters,omitempty"`
 	// Human-readable name that identifies the custom analyzer. Names must be unique within an index, and must not start with any of the following strings: - `lucene.` - `builtin.` - `mongodb.`
 	Name string `json:"name"`
 	// Filter that performs operations such as:  - Stemming, which reduces related words, such as \"talking\", \"talked\", and \"talks\" to their root word \"talk\".  - Redaction, the removal of sensitive information from public documents.
-	TokenFilters []FTSAnalyzersTokenFiltersInner `json:"tokenFilters,omitempty"`
-	Tokenizer    FTSAnalyzersTokenizer           `json:"tokenizer"`
+	TokenFilters []ApiAtlasFTSAnalyzersTokenFiltersInner `json:"tokenFilters,omitempty"`
+	Tokenizer    ApiAtlasFTSAnalyzersTokenizer           `json:"tokenizer"`
 }
 
-// NewFTSAnalyzers instantiates a new FTSAnalyzers object
+// NewApiAtlasFTSAnalyzers instantiates a new ApiAtlasFTSAnalyzers object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFTSAnalyzers(name string, tokenizer FTSAnalyzersTokenizer) *FTSAnalyzers {
-	this := FTSAnalyzers{}
+func NewApiAtlasFTSAnalyzers(name string, tokenizer ApiAtlasFTSAnalyzersTokenizer) *ApiAtlasFTSAnalyzers {
+	this := ApiAtlasFTSAnalyzers{}
 	this.Name = name
 	this.Tokenizer = tokenizer
 	return &this
 }
 
-// NewFTSAnalyzersWithDefaults instantiates a new FTSAnalyzers object
+// NewApiAtlasFTSAnalyzersWithDefaults instantiates a new ApiAtlasFTSAnalyzers object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewFTSAnalyzersWithDefaults() *FTSAnalyzers {
-	this := FTSAnalyzers{}
+func NewApiAtlasFTSAnalyzersWithDefaults() *ApiAtlasFTSAnalyzers {
+	this := ApiAtlasFTSAnalyzers{}
 	return &this
 }
 
 // GetCharFilters returns the CharFilters field value if set, zero value otherwise.
-func (o *FTSAnalyzers) GetCharFilters() []FTSAnalyzersCharFiltersInner {
+func (o *ApiAtlasFTSAnalyzers) GetCharFilters() []ApiAtlasFTSAnalyzersCharFiltersInner {
 	if o == nil || IsNil(o.CharFilters) {
-		var ret []FTSAnalyzersCharFiltersInner
+		var ret []ApiAtlasFTSAnalyzersCharFiltersInner
 		return ret
 	}
 	return o.CharFilters
@@ -50,7 +50,7 @@ func (o *FTSAnalyzers) GetCharFilters() []FTSAnalyzersCharFiltersInner {
 
 // GetCharFiltersOk returns a tuple with the CharFilters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FTSAnalyzers) GetCharFiltersOk() ([]FTSAnalyzersCharFiltersInner, bool) {
+func (o *ApiAtlasFTSAnalyzers) GetCharFiltersOk() ([]ApiAtlasFTSAnalyzersCharFiltersInner, bool) {
 	if o == nil || IsNil(o.CharFilters) {
 		return nil, false
 	}
@@ -58,7 +58,7 @@ func (o *FTSAnalyzers) GetCharFiltersOk() ([]FTSAnalyzersCharFiltersInner, bool)
 }
 
 // HasCharFilters returns a boolean if a field has been set.
-func (o *FTSAnalyzers) HasCharFilters() bool {
+func (o *ApiAtlasFTSAnalyzers) HasCharFilters() bool {
 	if o != nil && !IsNil(o.CharFilters) {
 		return true
 	}
@@ -66,13 +66,13 @@ func (o *FTSAnalyzers) HasCharFilters() bool {
 	return false
 }
 
-// SetCharFilters gets a reference to the given []FTSAnalyzersCharFiltersInner and assigns it to the CharFilters field.
-func (o *FTSAnalyzers) SetCharFilters(v []FTSAnalyzersCharFiltersInner) {
+// SetCharFilters gets a reference to the given []ApiAtlasFTSAnalyzersCharFiltersInner and assigns it to the CharFilters field.
+func (o *ApiAtlasFTSAnalyzers) SetCharFilters(v []ApiAtlasFTSAnalyzersCharFiltersInner) {
 	o.CharFilters = v
 }
 
 // GetName returns the Name field value
-func (o *FTSAnalyzers) GetName() string {
+func (o *ApiAtlasFTSAnalyzers) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -83,7 +83,7 @@ func (o *FTSAnalyzers) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *FTSAnalyzers) GetNameOk() (*string, bool) {
+func (o *ApiAtlasFTSAnalyzers) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -91,14 +91,14 @@ func (o *FTSAnalyzers) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *FTSAnalyzers) SetName(v string) {
+func (o *ApiAtlasFTSAnalyzers) SetName(v string) {
 	o.Name = v
 }
 
 // GetTokenFilters returns the TokenFilters field value if set, zero value otherwise.
-func (o *FTSAnalyzers) GetTokenFilters() []FTSAnalyzersTokenFiltersInner {
+func (o *ApiAtlasFTSAnalyzers) GetTokenFilters() []ApiAtlasFTSAnalyzersTokenFiltersInner {
 	if o == nil || IsNil(o.TokenFilters) {
-		var ret []FTSAnalyzersTokenFiltersInner
+		var ret []ApiAtlasFTSAnalyzersTokenFiltersInner
 		return ret
 	}
 	return o.TokenFilters
@@ -106,7 +106,7 @@ func (o *FTSAnalyzers) GetTokenFilters() []FTSAnalyzersTokenFiltersInner {
 
 // GetTokenFiltersOk returns a tuple with the TokenFilters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FTSAnalyzers) GetTokenFiltersOk() ([]FTSAnalyzersTokenFiltersInner, bool) {
+func (o *ApiAtlasFTSAnalyzers) GetTokenFiltersOk() ([]ApiAtlasFTSAnalyzersTokenFiltersInner, bool) {
 	if o == nil || IsNil(o.TokenFilters) {
 		return nil, false
 	}
@@ -114,7 +114,7 @@ func (o *FTSAnalyzers) GetTokenFiltersOk() ([]FTSAnalyzersTokenFiltersInner, boo
 }
 
 // HasTokenFilters returns a boolean if a field has been set.
-func (o *FTSAnalyzers) HasTokenFilters() bool {
+func (o *ApiAtlasFTSAnalyzers) HasTokenFilters() bool {
 	if o != nil && !IsNil(o.TokenFilters) {
 		return true
 	}
@@ -122,15 +122,15 @@ func (o *FTSAnalyzers) HasTokenFilters() bool {
 	return false
 }
 
-// SetTokenFilters gets a reference to the given []FTSAnalyzersTokenFiltersInner and assigns it to the TokenFilters field.
-func (o *FTSAnalyzers) SetTokenFilters(v []FTSAnalyzersTokenFiltersInner) {
+// SetTokenFilters gets a reference to the given []ApiAtlasFTSAnalyzersTokenFiltersInner and assigns it to the TokenFilters field.
+func (o *ApiAtlasFTSAnalyzers) SetTokenFilters(v []ApiAtlasFTSAnalyzersTokenFiltersInner) {
 	o.TokenFilters = v
 }
 
 // GetTokenizer returns the Tokenizer field value
-func (o *FTSAnalyzers) GetTokenizer() FTSAnalyzersTokenizer {
+func (o *ApiAtlasFTSAnalyzers) GetTokenizer() ApiAtlasFTSAnalyzersTokenizer {
 	if o == nil {
-		var ret FTSAnalyzersTokenizer
+		var ret ApiAtlasFTSAnalyzersTokenizer
 		return ret
 	}
 
@@ -139,7 +139,7 @@ func (o *FTSAnalyzers) GetTokenizer() FTSAnalyzersTokenizer {
 
 // GetTokenizerOk returns a tuple with the Tokenizer field value
 // and a boolean to check if the value has been set.
-func (o *FTSAnalyzers) GetTokenizerOk() (*FTSAnalyzersTokenizer, bool) {
+func (o *ApiAtlasFTSAnalyzers) GetTokenizerOk() (*ApiAtlasFTSAnalyzersTokenizer, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -147,18 +147,18 @@ func (o *FTSAnalyzers) GetTokenizerOk() (*FTSAnalyzersTokenizer, bool) {
 }
 
 // SetTokenizer sets field value
-func (o *FTSAnalyzers) SetTokenizer(v FTSAnalyzersTokenizer) {
+func (o *ApiAtlasFTSAnalyzers) SetTokenizer(v ApiAtlasFTSAnalyzersTokenizer) {
 	o.Tokenizer = v
 }
 
-func (o FTSAnalyzers) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o ApiAtlasFTSAnalyzers) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o FTSAnalyzers) ToMap() (map[string]interface{}, error) {
+func (o ApiAtlasFTSAnalyzers) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.CharFilters) {
 		toSerialize["charFilters"] = o.CharFilters
@@ -171,38 +171,38 @@ func (o FTSAnalyzers) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableFTSAnalyzers struct {
-	value *FTSAnalyzers
+type NullableApiAtlasFTSAnalyzers struct {
+	value *ApiAtlasFTSAnalyzers
 	isSet bool
 }
 
-func (v NullableFTSAnalyzers) Get() *FTSAnalyzers {
+func (v NullableApiAtlasFTSAnalyzers) Get() *ApiAtlasFTSAnalyzers {
 	return v.value
 }
 
-func (v *NullableFTSAnalyzers) Set(val *FTSAnalyzers) {
+func (v *NullableApiAtlasFTSAnalyzers) Set(val *ApiAtlasFTSAnalyzers) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableFTSAnalyzers) IsSet() bool {
+func (v NullableApiAtlasFTSAnalyzers) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableFTSAnalyzers) Unset() {
+func (v *NullableApiAtlasFTSAnalyzers) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableFTSAnalyzers(val *FTSAnalyzers) *NullableFTSAnalyzers {
-	return &NullableFTSAnalyzers{value: val, isSet: true}
+func NewNullableApiAtlasFTSAnalyzers(val *ApiAtlasFTSAnalyzers) *NullableApiAtlasFTSAnalyzers {
+	return &NullableApiAtlasFTSAnalyzers{value: val, isSet: true}
 }
 
-func (v NullableFTSAnalyzers) MarshalJSON() ([]byte, error) {
+func (v NullableApiAtlasFTSAnalyzers) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableFTSAnalyzers) UnmarshalJSON(src []byte) error {
+func (v *NullableApiAtlasFTSAnalyzers) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -6,11 +6,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the FTSAnalyzersTokenizer type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &FTSAnalyzersTokenizer{}
+// checks if the ApiAtlasFTSAnalyzersTokenizer type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApiAtlasFTSAnalyzersTokenizer{}
 
-// FTSAnalyzersTokenizer Tokenizer that you want to use to create tokens. Tokens determine how Atlas Search splits up text into discrete chunks for indexing.
-type FTSAnalyzersTokenizer struct {
+// ApiAtlasFTSAnalyzersTokenizer Tokenizer that you want to use to create tokens. Tokens determine how Atlas Search splits up text into discrete chunks for indexing.
+type ApiAtlasFTSAnalyzersTokenizer struct {
 	// Characters to include in the longest token that Atlas Search creates.
 	MaxGram *int `json:"maxGram,omitempty"`
 	// Characters to include in the shortest token that Atlas Search creates.
@@ -25,29 +25,29 @@ type FTSAnalyzersTokenizer struct {
 	MaxTokenLength *int `json:"maxTokenLength,omitempty"`
 }
 
-// NewFTSAnalyzersTokenizer instantiates a new FTSAnalyzersTokenizer object
+// NewApiAtlasFTSAnalyzersTokenizer instantiates a new ApiAtlasFTSAnalyzersTokenizer object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFTSAnalyzersTokenizer() *FTSAnalyzersTokenizer {
-	this := FTSAnalyzersTokenizer{}
+func NewApiAtlasFTSAnalyzersTokenizer() *ApiAtlasFTSAnalyzersTokenizer {
+	this := ApiAtlasFTSAnalyzersTokenizer{}
 	var maxTokenLength int = 255
 	this.MaxTokenLength = &maxTokenLength
 	return &this
 }
 
-// NewFTSAnalyzersTokenizerWithDefaults instantiates a new FTSAnalyzersTokenizer object
+// NewApiAtlasFTSAnalyzersTokenizerWithDefaults instantiates a new ApiAtlasFTSAnalyzersTokenizer object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewFTSAnalyzersTokenizerWithDefaults() *FTSAnalyzersTokenizer {
-	this := FTSAnalyzersTokenizer{}
+func NewApiAtlasFTSAnalyzersTokenizerWithDefaults() *ApiAtlasFTSAnalyzersTokenizer {
+	this := ApiAtlasFTSAnalyzersTokenizer{}
 	var maxTokenLength int = 255
 	this.MaxTokenLength = &maxTokenLength
 	return &this
 }
 
 // GetMaxGram returns the MaxGram field value if set, zero value otherwise.
-func (o *FTSAnalyzersTokenizer) GetMaxGram() int {
+func (o *ApiAtlasFTSAnalyzersTokenizer) GetMaxGram() int {
 	if o == nil || IsNil(o.MaxGram) {
 		var ret int
 		return ret
@@ -57,7 +57,7 @@ func (o *FTSAnalyzersTokenizer) GetMaxGram() int {
 
 // GetMaxGramOk returns a tuple with the MaxGram field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FTSAnalyzersTokenizer) GetMaxGramOk() (*int, bool) {
+func (o *ApiAtlasFTSAnalyzersTokenizer) GetMaxGramOk() (*int, bool) {
 	if o == nil || IsNil(o.MaxGram) {
 		return nil, false
 	}
@@ -65,7 +65,7 @@ func (o *FTSAnalyzersTokenizer) GetMaxGramOk() (*int, bool) {
 }
 
 // HasMaxGram returns a boolean if a field has been set.
-func (o *FTSAnalyzersTokenizer) HasMaxGram() bool {
+func (o *ApiAtlasFTSAnalyzersTokenizer) HasMaxGram() bool {
 	if o != nil && !IsNil(o.MaxGram) {
 		return true
 	}
@@ -74,12 +74,12 @@ func (o *FTSAnalyzersTokenizer) HasMaxGram() bool {
 }
 
 // SetMaxGram gets a reference to the given int and assigns it to the MaxGram field.
-func (o *FTSAnalyzersTokenizer) SetMaxGram(v int) {
+func (o *ApiAtlasFTSAnalyzersTokenizer) SetMaxGram(v int) {
 	o.MaxGram = &v
 }
 
 // GetMinGram returns the MinGram field value if set, zero value otherwise.
-func (o *FTSAnalyzersTokenizer) GetMinGram() int {
+func (o *ApiAtlasFTSAnalyzersTokenizer) GetMinGram() int {
 	if o == nil || IsNil(o.MinGram) {
 		var ret int
 		return ret
@@ -89,7 +89,7 @@ func (o *FTSAnalyzersTokenizer) GetMinGram() int {
 
 // GetMinGramOk returns a tuple with the MinGram field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FTSAnalyzersTokenizer) GetMinGramOk() (*int, bool) {
+func (o *ApiAtlasFTSAnalyzersTokenizer) GetMinGramOk() (*int, bool) {
 	if o == nil || IsNil(o.MinGram) {
 		return nil, false
 	}
@@ -97,7 +97,7 @@ func (o *FTSAnalyzersTokenizer) GetMinGramOk() (*int, bool) {
 }
 
 // HasMinGram returns a boolean if a field has been set.
-func (o *FTSAnalyzersTokenizer) HasMinGram() bool {
+func (o *ApiAtlasFTSAnalyzersTokenizer) HasMinGram() bool {
 	if o != nil && !IsNil(o.MinGram) {
 		return true
 	}
@@ -106,12 +106,12 @@ func (o *FTSAnalyzersTokenizer) HasMinGram() bool {
 }
 
 // SetMinGram gets a reference to the given int and assigns it to the MinGram field.
-func (o *FTSAnalyzersTokenizer) SetMinGram(v int) {
+func (o *ApiAtlasFTSAnalyzersTokenizer) SetMinGram(v int) {
 	o.MinGram = &v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
-func (o *FTSAnalyzersTokenizer) GetType() string {
+func (o *ApiAtlasFTSAnalyzersTokenizer) GetType() string {
 	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
@@ -121,7 +121,7 @@ func (o *FTSAnalyzersTokenizer) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FTSAnalyzersTokenizer) GetTypeOk() (*string, bool) {
+func (o *ApiAtlasFTSAnalyzersTokenizer) GetTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -129,7 +129,7 @@ func (o *FTSAnalyzersTokenizer) GetTypeOk() (*string, bool) {
 }
 
 // HasType returns a boolean if a field has been set.
-func (o *FTSAnalyzersTokenizer) HasType() bool {
+func (o *ApiAtlasFTSAnalyzersTokenizer) HasType() bool {
 	if o != nil && !IsNil(o.Type) {
 		return true
 	}
@@ -138,12 +138,12 @@ func (o *FTSAnalyzersTokenizer) HasType() bool {
 }
 
 // SetType gets a reference to the given string and assigns it to the Type field.
-func (o *FTSAnalyzersTokenizer) SetType(v string) {
+func (o *ApiAtlasFTSAnalyzersTokenizer) SetType(v string) {
 	o.Type = &v
 }
 
 // GetGroup returns the Group field value if set, zero value otherwise.
-func (o *FTSAnalyzersTokenizer) GetGroup() int {
+func (o *ApiAtlasFTSAnalyzersTokenizer) GetGroup() int {
 	if o == nil || IsNil(o.Group) {
 		var ret int
 		return ret
@@ -153,7 +153,7 @@ func (o *FTSAnalyzersTokenizer) GetGroup() int {
 
 // GetGroupOk returns a tuple with the Group field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FTSAnalyzersTokenizer) GetGroupOk() (*int, bool) {
+func (o *ApiAtlasFTSAnalyzersTokenizer) GetGroupOk() (*int, bool) {
 	if o == nil || IsNil(o.Group) {
 		return nil, false
 	}
@@ -161,7 +161,7 @@ func (o *FTSAnalyzersTokenizer) GetGroupOk() (*int, bool) {
 }
 
 // HasGroup returns a boolean if a field has been set.
-func (o *FTSAnalyzersTokenizer) HasGroup() bool {
+func (o *ApiAtlasFTSAnalyzersTokenizer) HasGroup() bool {
 	if o != nil && !IsNil(o.Group) {
 		return true
 	}
@@ -170,12 +170,12 @@ func (o *FTSAnalyzersTokenizer) HasGroup() bool {
 }
 
 // SetGroup gets a reference to the given int and assigns it to the Group field.
-func (o *FTSAnalyzersTokenizer) SetGroup(v int) {
+func (o *ApiAtlasFTSAnalyzersTokenizer) SetGroup(v int) {
 	o.Group = &v
 }
 
 // GetPattern returns the Pattern field value if set, zero value otherwise.
-func (o *FTSAnalyzersTokenizer) GetPattern() string {
+func (o *ApiAtlasFTSAnalyzersTokenizer) GetPattern() string {
 	if o == nil || IsNil(o.Pattern) {
 		var ret string
 		return ret
@@ -185,7 +185,7 @@ func (o *FTSAnalyzersTokenizer) GetPattern() string {
 
 // GetPatternOk returns a tuple with the Pattern field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FTSAnalyzersTokenizer) GetPatternOk() (*string, bool) {
+func (o *ApiAtlasFTSAnalyzersTokenizer) GetPatternOk() (*string, bool) {
 	if o == nil || IsNil(o.Pattern) {
 		return nil, false
 	}
@@ -193,7 +193,7 @@ func (o *FTSAnalyzersTokenizer) GetPatternOk() (*string, bool) {
 }
 
 // HasPattern returns a boolean if a field has been set.
-func (o *FTSAnalyzersTokenizer) HasPattern() bool {
+func (o *ApiAtlasFTSAnalyzersTokenizer) HasPattern() bool {
 	if o != nil && !IsNil(o.Pattern) {
 		return true
 	}
@@ -202,12 +202,12 @@ func (o *FTSAnalyzersTokenizer) HasPattern() bool {
 }
 
 // SetPattern gets a reference to the given string and assigns it to the Pattern field.
-func (o *FTSAnalyzersTokenizer) SetPattern(v string) {
+func (o *ApiAtlasFTSAnalyzersTokenizer) SetPattern(v string) {
 	o.Pattern = &v
 }
 
 // GetMaxTokenLength returns the MaxTokenLength field value if set, zero value otherwise.
-func (o *FTSAnalyzersTokenizer) GetMaxTokenLength() int {
+func (o *ApiAtlasFTSAnalyzersTokenizer) GetMaxTokenLength() int {
 	if o == nil || IsNil(o.MaxTokenLength) {
 		var ret int
 		return ret
@@ -217,7 +217,7 @@ func (o *FTSAnalyzersTokenizer) GetMaxTokenLength() int {
 
 // GetMaxTokenLengthOk returns a tuple with the MaxTokenLength field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FTSAnalyzersTokenizer) GetMaxTokenLengthOk() (*int, bool) {
+func (o *ApiAtlasFTSAnalyzersTokenizer) GetMaxTokenLengthOk() (*int, bool) {
 	if o == nil || IsNil(o.MaxTokenLength) {
 		return nil, false
 	}
@@ -225,7 +225,7 @@ func (o *FTSAnalyzersTokenizer) GetMaxTokenLengthOk() (*int, bool) {
 }
 
 // HasMaxTokenLength returns a boolean if a field has been set.
-func (o *FTSAnalyzersTokenizer) HasMaxTokenLength() bool {
+func (o *ApiAtlasFTSAnalyzersTokenizer) HasMaxTokenLength() bool {
 	if o != nil && !IsNil(o.MaxTokenLength) {
 		return true
 	}
@@ -234,18 +234,18 @@ func (o *FTSAnalyzersTokenizer) HasMaxTokenLength() bool {
 }
 
 // SetMaxTokenLength gets a reference to the given int and assigns it to the MaxTokenLength field.
-func (o *FTSAnalyzersTokenizer) SetMaxTokenLength(v int) {
+func (o *ApiAtlasFTSAnalyzersTokenizer) SetMaxTokenLength(v int) {
 	o.MaxTokenLength = &v
 }
 
-func (o FTSAnalyzersTokenizer) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o ApiAtlasFTSAnalyzersTokenizer) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o FTSAnalyzersTokenizer) ToMap() (map[string]interface{}, error) {
+func (o ApiAtlasFTSAnalyzersTokenizer) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.MaxGram) {
 		toSerialize["maxGram"] = o.MaxGram
@@ -268,38 +268,38 @@ func (o FTSAnalyzersTokenizer) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableFTSAnalyzersTokenizer struct {
-	value *FTSAnalyzersTokenizer
+type NullableApiAtlasFTSAnalyzersTokenizer struct {
+	value *ApiAtlasFTSAnalyzersTokenizer
 	isSet bool
 }
 
-func (v NullableFTSAnalyzersTokenizer) Get() *FTSAnalyzersTokenizer {
+func (v NullableApiAtlasFTSAnalyzersTokenizer) Get() *ApiAtlasFTSAnalyzersTokenizer {
 	return v.value
 }
 
-func (v *NullableFTSAnalyzersTokenizer) Set(val *FTSAnalyzersTokenizer) {
+func (v *NullableApiAtlasFTSAnalyzersTokenizer) Set(val *ApiAtlasFTSAnalyzersTokenizer) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableFTSAnalyzersTokenizer) IsSet() bool {
+func (v NullableApiAtlasFTSAnalyzersTokenizer) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableFTSAnalyzersTokenizer) Unset() {
+func (v *NullableApiAtlasFTSAnalyzersTokenizer) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableFTSAnalyzersTokenizer(val *FTSAnalyzersTokenizer) *NullableFTSAnalyzersTokenizer {
-	return &NullableFTSAnalyzersTokenizer{value: val, isSet: true}
+func NewNullableApiAtlasFTSAnalyzersTokenizer(val *ApiAtlasFTSAnalyzersTokenizer) *NullableApiAtlasFTSAnalyzersTokenizer {
+	return &NullableApiAtlasFTSAnalyzersTokenizer{value: val, isSet: true}
 }
 
-func (v NullableFTSAnalyzersTokenizer) MarshalJSON() ([]byte, error) {
+func (v NullableApiAtlasFTSAnalyzersTokenizer) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableFTSAnalyzersTokenizer) UnmarshalJSON(src []byte) error {
+func (v *NullableApiAtlasFTSAnalyzersTokenizer) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

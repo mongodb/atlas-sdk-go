@@ -7,8 +7,8 @@ import (
 	"fmt"
 )
 
-// FTSAnalyzersTokenFiltersInner struct for FTSAnalyzersTokenFiltersInner
-type FTSAnalyzersTokenFiltersInner struct {
+// ApiAtlasFTSAnalyzersTokenFiltersInner struct for ApiAtlasFTSAnalyzersTokenFiltersInner
+type ApiAtlasFTSAnalyzersTokenFiltersInner struct {
 	TokenFilterasciiFolding          *TokenFilterasciiFolding
 	TokenFilterdaitchMokotoffSoundex *TokenFilterdaitchMokotoffSoundex
 	TokenFilteredgeGram              *TokenFilteredgeGram
@@ -26,7 +26,7 @@ type FTSAnalyzersTokenFiltersInner struct {
 }
 
 // Unmarshal JSON data into any of the pointers in the struct
-func (dst *FTSAnalyzersTokenFiltersInner) UnmarshalJSON(data []byte) error {
+func (dst *ApiAtlasFTSAnalyzersTokenFiltersInner) UnmarshalJSON(data []byte) error {
 	var err error
 	// try to unmarshal JSON data into TokenFilterasciiFolding
 	err = json.Unmarshal(data, &dst.TokenFilterasciiFolding)
@@ -210,11 +210,11 @@ func (dst *FTSAnalyzersTokenFiltersInner) UnmarshalJSON(data []byte) error {
 		dst.TokenFiltertrim = nil
 	}
 
-	return fmt.Errorf("data failed to match schemas in anyOf(FTSAnalyzersTokenFiltersInner)")
+	return fmt.Errorf("data failed to match schemas in anyOf(ApiAtlasFTSAnalyzersTokenFiltersInner)")
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
-func (src *FTSAnalyzersTokenFiltersInner) MarshalJSON() ([]byte, error) {
+func (src *ApiAtlasFTSAnalyzersTokenFiltersInner) MarshalJSON() ([]byte, error) {
 	if src.TokenFilterasciiFolding != nil {
 		return json.Marshal(&src.TokenFilterasciiFolding)
 	}
@@ -274,38 +274,38 @@ func (src *FTSAnalyzersTokenFiltersInner) MarshalJSON() ([]byte, error) {
 	return nil, nil // no data in anyOf schemas
 }
 
-type NullableFTSAnalyzersTokenFiltersInner struct {
-	value *FTSAnalyzersTokenFiltersInner
+type NullableApiAtlasFTSAnalyzersTokenFiltersInner struct {
+	value *ApiAtlasFTSAnalyzersTokenFiltersInner
 	isSet bool
 }
 
-func (v NullableFTSAnalyzersTokenFiltersInner) Get() *FTSAnalyzersTokenFiltersInner {
+func (v NullableApiAtlasFTSAnalyzersTokenFiltersInner) Get() *ApiAtlasFTSAnalyzersTokenFiltersInner {
 	return v.value
 }
 
-func (v *NullableFTSAnalyzersTokenFiltersInner) Set(val *FTSAnalyzersTokenFiltersInner) {
+func (v *NullableApiAtlasFTSAnalyzersTokenFiltersInner) Set(val *ApiAtlasFTSAnalyzersTokenFiltersInner) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableFTSAnalyzersTokenFiltersInner) IsSet() bool {
+func (v NullableApiAtlasFTSAnalyzersTokenFiltersInner) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableFTSAnalyzersTokenFiltersInner) Unset() {
+func (v *NullableApiAtlasFTSAnalyzersTokenFiltersInner) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableFTSAnalyzersTokenFiltersInner(val *FTSAnalyzersTokenFiltersInner) *NullableFTSAnalyzersTokenFiltersInner {
-	return &NullableFTSAnalyzersTokenFiltersInner{value: val, isSet: true}
+func NewNullableApiAtlasFTSAnalyzersTokenFiltersInner(val *ApiAtlasFTSAnalyzersTokenFiltersInner) *NullableApiAtlasFTSAnalyzersTokenFiltersInner {
+	return &NullableApiAtlasFTSAnalyzersTokenFiltersInner{value: val, isSet: true}
 }
 
-func (v NullableFTSAnalyzersTokenFiltersInner) MarshalJSON() ([]byte, error) {
+func (v NullableApiAtlasFTSAnalyzersTokenFiltersInner) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableFTSAnalyzersTokenFiltersInner) UnmarshalJSON(src []byte) error {
+func (v *NullableApiAtlasFTSAnalyzersTokenFiltersInner) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

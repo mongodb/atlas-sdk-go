@@ -6,11 +6,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the Key type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Key{}
+// checks if the ApiKey type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApiKey{}
 
-// Key Details contained in one API key.
-type Key struct {
+// ApiKey Details contained in one API key.
+type ApiKey struct {
 	// List of network addresses granted access to this API using this API key.
 	AccessList []AccessListItem `json:"accessList,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies this organization API key.
@@ -21,27 +21,27 @@ type Key struct {
 	Roles []CloudRoleAssignment `json:"roles,omitempty"`
 }
 
-// NewKey instantiates a new Key object
+// NewApiKey instantiates a new ApiKey object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKey(id string, publicKey string) *Key {
-	this := Key{}
+func NewApiKey(id string, publicKey string) *ApiKey {
+	this := ApiKey{}
 	this.Id = id
 	this.PublicKey = publicKey
 	return &this
 }
 
-// NewKeyWithDefaults instantiates a new Key object
+// NewApiKeyWithDefaults instantiates a new ApiKey object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewKeyWithDefaults() *Key {
-	this := Key{}
+func NewApiKeyWithDefaults() *ApiKey {
+	this := ApiKey{}
 	return &this
 }
 
 // GetAccessList returns the AccessList field value if set, zero value otherwise.
-func (o *Key) GetAccessList() []AccessListItem {
+func (o *ApiKey) GetAccessList() []AccessListItem {
 	if o == nil || IsNil(o.AccessList) {
 		var ret []AccessListItem
 		return ret
@@ -51,7 +51,7 @@ func (o *Key) GetAccessList() []AccessListItem {
 
 // GetAccessListOk returns a tuple with the AccessList field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Key) GetAccessListOk() ([]AccessListItem, bool) {
+func (o *ApiKey) GetAccessListOk() ([]AccessListItem, bool) {
 	if o == nil || IsNil(o.AccessList) {
 		return nil, false
 	}
@@ -59,7 +59,7 @@ func (o *Key) GetAccessListOk() ([]AccessListItem, bool) {
 }
 
 // HasAccessList returns a boolean if a field has been set.
-func (o *Key) HasAccessList() bool {
+func (o *ApiKey) HasAccessList() bool {
 	if o != nil && !IsNil(o.AccessList) {
 		return true
 	}
@@ -68,12 +68,12 @@ func (o *Key) HasAccessList() bool {
 }
 
 // SetAccessList gets a reference to the given []AccessListItem and assigns it to the AccessList field.
-func (o *Key) SetAccessList(v []AccessListItem) {
+func (o *ApiKey) SetAccessList(v []AccessListItem) {
 	o.AccessList = v
 }
 
 // GetId returns the Id field value
-func (o *Key) GetId() string {
+func (o *ApiKey) GetId() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -84,7 +84,7 @@ func (o *Key) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *Key) GetIdOk() (*string, bool) {
+func (o *ApiKey) GetIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -92,12 +92,12 @@ func (o *Key) GetIdOk() (*string, bool) {
 }
 
 // SetId sets field value
-func (o *Key) SetId(v string) {
+func (o *ApiKey) SetId(v string) {
 	o.Id = v
 }
 
 // GetPublicKey returns the PublicKey field value
-func (o *Key) GetPublicKey() string {
+func (o *ApiKey) GetPublicKey() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -108,7 +108,7 @@ func (o *Key) GetPublicKey() string {
 
 // GetPublicKeyOk returns a tuple with the PublicKey field value
 // and a boolean to check if the value has been set.
-func (o *Key) GetPublicKeyOk() (*string, bool) {
+func (o *ApiKey) GetPublicKeyOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -116,12 +116,12 @@ func (o *Key) GetPublicKeyOk() (*string, bool) {
 }
 
 // SetPublicKey sets field value
-func (o *Key) SetPublicKey(v string) {
+func (o *ApiKey) SetPublicKey(v string) {
 	o.PublicKey = v
 }
 
 // GetRoles returns the Roles field value if set, zero value otherwise.
-func (o *Key) GetRoles() []CloudRoleAssignment {
+func (o *ApiKey) GetRoles() []CloudRoleAssignment {
 	if o == nil || IsNil(o.Roles) {
 		var ret []CloudRoleAssignment
 		return ret
@@ -131,7 +131,7 @@ func (o *Key) GetRoles() []CloudRoleAssignment {
 
 // GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Key) GetRolesOk() ([]CloudRoleAssignment, bool) {
+func (o *ApiKey) GetRolesOk() ([]CloudRoleAssignment, bool) {
 	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
@@ -139,7 +139,7 @@ func (o *Key) GetRolesOk() ([]CloudRoleAssignment, bool) {
 }
 
 // HasRoles returns a boolean if a field has been set.
-func (o *Key) HasRoles() bool {
+func (o *ApiKey) HasRoles() bool {
 	if o != nil && !IsNil(o.Roles) {
 		return true
 	}
@@ -148,54 +148,54 @@ func (o *Key) HasRoles() bool {
 }
 
 // SetRoles gets a reference to the given []CloudRoleAssignment and assigns it to the Roles field.
-func (o *Key) SetRoles(v []CloudRoleAssignment) {
+func (o *ApiKey) SetRoles(v []CloudRoleAssignment) {
 	o.Roles = v
 }
 
-func (o Key) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o ApiKey) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o Key) ToMap() (map[string]interface{}, error) {
+func (o ApiKey) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
 }
 
-type NullableKey struct {
-	value *Key
+type NullableApiKey struct {
+	value *ApiKey
 	isSet bool
 }
 
-func (v NullableKey) Get() *Key {
+func (v NullableApiKey) Get() *ApiKey {
 	return v.value
 }
 
-func (v *NullableKey) Set(val *Key) {
+func (v *NullableApiKey) Set(val *ApiKey) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableKey) IsSet() bool {
+func (v NullableApiKey) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableKey) Unset() {
+func (v *NullableApiKey) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableKey(val *Key) *NullableKey {
-	return &NullableKey{value: val, isSet: true}
+func NewNullableApiKey(val *ApiKey) *NullableApiKey {
+	return &NullableApiKey{value: val, isSet: true}
 }
 
-func (v NullableKey) MarshalJSON() ([]byte, error) {
+func (v NullableApiKey) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableKey) UnmarshalJSON(src []byte) error {
+func (v *NullableApiKey) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
