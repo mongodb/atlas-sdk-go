@@ -34,6 +34,8 @@ module.exports = function runTransformations(openapi) {
 
     ".components.schemas.ApiAtlasFTSAnalyzersViewManual.properties.charFilters.items",
     ".components.schemas.ApiAtlasFTSAnalyzersViewManual.properties.tokenizer",
+    ".components.schemas.FTSAnalyzersViewManual.properties.charFilters.items",
+    ".components.schemas.FTSAnalyzersViewManual.properties.tokenizer",
   ]);
 
   openapi = applyAddExperimentalTag(openapi, stableOperationIds);
@@ -41,19 +43,6 @@ module.exports = function runTransformations(openapi) {
   openapi = applyOneOfTransformations(openapi);
   openapi = applyAllOfTransformations(openapi);
 
-  // To be removed after CLOUDP-170462 is available upstream
-  openapi = applyModelNameTransformations(
-    openapi,
-    "Api",
-    "",
-    ignoredModelNames
-  );
-  openapi = applyModelNameTransformations(
-    openapi,
-    "Atlas",
-    "",
-    ignoredModelNames
-  );
   openapi = applyModelNameTransformations(
     openapi,
     "",
@@ -67,20 +56,19 @@ module.exports = function runTransformations(openapi) {
     ignoredModelNames
   );
 
-  // Temp workaround for
-  // https://jira.mongodb.org/browse/CLOUDP-166120
-  openapi.components.responses.noBody = {
-    content: {
-      "application/vnd.atlas.2023-01-01+json": {
-        example: "",
-      },
-    },
-    description: "This endpoint does not return a response body",
-  };
+  if (openapi.components.schemas.ApiError) {
+    openapi.components.schemas.ApiError.properties.parameters.items = {};
+  }
 
-  // Temp workaround for CLOUDP-168427
-  if (openapi.components.schemas.Error) {
-    openapi.components.schemas.Error.properties.parameters.items = {};
+  if (
+    openapi.components.schemas.ApiAtlastokenFiltersViewManual?.tokenFilters
+      .items
+  ) {
+    openapi.components.schemas.ApiAtlastokenFiltersViewManual.tokenFilters.items =
+      {};
+  }
+  if (openapi.components.schemas.TokenFiltersViewManual?.tokenFilters.items) {
+    openapi.components.schemas.TokenFiltersViewManual.tokenFilters.items = {};
   }
 
   applyRemoveEnumsTransformations(openapi);
@@ -88,6 +76,7 @@ module.exports = function runTransformations(openapi) {
 
   // Required for RegionConfig
   workaroundNestedTransformations(openapi);
+  // Required for StreamsTenant
   workaroundReadOnly(openapi);
 
   let hasSchemaChanges = true;
