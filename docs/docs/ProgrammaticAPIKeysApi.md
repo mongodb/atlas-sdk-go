@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 ## AddProjectApiKey
 
-> KeyUser AddProjectApiKey(ctx, groupId, apiUserId, userRoleAssignment []UserRoleAssignment).Execute()
+> ApiKeyUser AddProjectApiKey(ctx, groupId, apiUserId, userRoleAssignment []UserRoleAssignment).Execute()
 
 Assign One Organization API Key to One Project
 
@@ -62,7 +62,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `AddProjectApiKey`: KeyUser
+    // response from `AddProjectApiKey`: ApiKeyUser
     fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.AddProjectApiKey`: %v\n", resp)
 }
 ```
@@ -89,7 +89,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**KeyUser**](KeyUser.md)
+[**ApiKeyUser**](ApiKeyUser.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -106,7 +106,7 @@ Name | Type | Description  | Notes
 
 ## CreateApiKey
 
-> KeyUser CreateApiKey(ctx, orgId, createOrganizationKey CreateOrganizationKey).Execute()
+> ApiKeyUser CreateApiKey(ctx, orgId, createOrganizationKey CreateOrganizationKey).Execute()
 
 Create One Organization API Key
 
@@ -139,7 +139,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `CreateApiKey`: KeyUser
+    // response from `CreateApiKey`: ApiKeyUser
     fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.CreateApiKey`: %v\n", resp)
 }
 ```
@@ -164,7 +164,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**KeyUser**](KeyUser.md)
+[**ApiKeyUser**](ApiKeyUser.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ## CreateProjectApiKey
 
-> KeyUser CreateProjectApiKey(ctx, groupId, createProjectKey CreateProjectKey).Execute()
+> ApiKeyUser CreateProjectApiKey(ctx, groupId, createProjectKey CreateProjectKey).Execute()
 
 Create and Assign One Organization API Key to One Project
 
@@ -298,7 +298,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `CreateProjectApiKey`: KeyUser
+    // response from `CreateProjectApiKey`: ApiKeyUser
     fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.CreateProjectApiKey`: %v\n", resp)
 }
 ```
@@ -323,7 +323,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**KeyUser**](KeyUser.md)
+[**ApiKeyUser**](ApiKeyUser.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -495,7 +495,7 @@ Name | Type | Description  | Notes
 
 ## GetApiKey
 
-> KeyUser GetApiKey(ctx, orgId, apiUserId).Execute()
+> ApiKeyUser GetApiKey(ctx, orgId, apiUserId).Execute()
 
 Return One Organization API Key
 
@@ -528,7 +528,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetApiKey`: KeyUser
+    // response from `GetApiKey`: ApiKeyUser
     fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.GetApiKey`: %v\n", resp)
 }
 ```
@@ -554,7 +554,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**KeyUser**](KeyUser.md)
+[**ApiKeyUser**](ApiKeyUser.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -971,7 +971,7 @@ Name | Type | Description  | Notes
 
 ## UpdateApiKey
 
-> KeyUser UpdateApiKey(ctx, orgId, apiUserId, createOrganizationKey CreateOrganizationKey).Execute()
+> ApiKeyUser UpdateApiKey(ctx, orgId, apiUserId, createOrganizationKey CreateOrganizationKey).Execute()
 
 Update One Organization API Key
 
@@ -1005,7 +1005,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `UpdateApiKey`: KeyUser
+    // response from `UpdateApiKey`: ApiKeyUser
     fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.UpdateApiKey`: %v\n", resp)
 }
 ```
@@ -1032,7 +1032,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**KeyUser**](KeyUser.md)
+[**ApiKeyUser**](ApiKeyUser.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -1049,7 +1049,7 @@ Name | Type | Description  | Notes
 
 ## UpdateApiKeyRoles
 
-> KeyUser UpdateApiKeyRoles(ctx, groupId, apiUserId, createProjectKey CreateProjectKey).PageNum(pageNum).ItemsPerPage(itemsPerPage).IncludeCount(includeCount).Execute()
+> ApiKeyUser UpdateApiKeyRoles(ctx, groupId, apiUserId, createProjectKey CreateProjectKey).PageNum(pageNum).ItemsPerPage(itemsPerPage).IncludeCount(includeCount).Execute()
 
 Update Roles of One Organization API Key to One Project
 
@@ -1086,7 +1086,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `UpdateApiKeyRoles`: KeyUser
+    // response from `UpdateApiKeyRoles`: ApiKeyUser
     fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.UpdateApiKeyRoles`: %v\n", resp)
 }
 ```
@@ -1116,7 +1116,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**KeyUser**](KeyUser.md)
+[**ApiKeyUser**](ApiKeyUser.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

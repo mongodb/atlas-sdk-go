@@ -1,4 +1,4 @@
-# MeasurementsGeneralViewAtlas
+# ApiMeasurementsGeneralViewAtlas
 
 ## Properties
 
@@ -17,270 +17,270 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewMeasurementsGeneralViewAtlas
+### NewApiMeasurementsGeneralViewAtlas
 
-`func NewMeasurementsGeneralViewAtlas() *MeasurementsGeneralViewAtlas`
+`func NewApiMeasurementsGeneralViewAtlas() *ApiMeasurementsGeneralViewAtlas`
 
-NewMeasurementsGeneralViewAtlas instantiates a new MeasurementsGeneralViewAtlas object
+NewApiMeasurementsGeneralViewAtlas instantiates a new ApiMeasurementsGeneralViewAtlas object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewMeasurementsGeneralViewAtlasWithDefaults
+### NewApiMeasurementsGeneralViewAtlasWithDefaults
 
-`func NewMeasurementsGeneralViewAtlasWithDefaults() *MeasurementsGeneralViewAtlas`
+`func NewApiMeasurementsGeneralViewAtlasWithDefaults() *ApiMeasurementsGeneralViewAtlas`
 
-NewMeasurementsGeneralViewAtlasWithDefaults instantiates a new MeasurementsGeneralViewAtlas object
+NewApiMeasurementsGeneralViewAtlasWithDefaults instantiates a new ApiMeasurementsGeneralViewAtlas object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetDatabaseName
 
-`func (o *MeasurementsGeneralViewAtlas) GetDatabaseName() string`
+`func (o *ApiMeasurementsGeneralViewAtlas) GetDatabaseName() string`
 
 GetDatabaseName returns the DatabaseName field if non-nil, zero value otherwise.
 
 ### GetDatabaseNameOk
 
-`func (o *MeasurementsGeneralViewAtlas) GetDatabaseNameOk() (*string, bool)`
+`func (o *ApiMeasurementsGeneralViewAtlas) GetDatabaseNameOk() (*string, bool)`
 
 GetDatabaseNameOk returns a tuple with the DatabaseName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDatabaseName
 
-`func (o *MeasurementsGeneralViewAtlas) SetDatabaseName(v string)`
+`func (o *ApiMeasurementsGeneralViewAtlas) SetDatabaseName(v string)`
 
 SetDatabaseName sets DatabaseName field to given value.
 
 ### HasDatabaseName
 
-`func (o *MeasurementsGeneralViewAtlas) HasDatabaseName() bool`
+`func (o *ApiMeasurementsGeneralViewAtlas) HasDatabaseName() bool`
 
 HasDatabaseName returns a boolean if a field has been set.
 
 ### GetEnd
 
-`func (o *MeasurementsGeneralViewAtlas) GetEnd() time.Time`
+`func (o *ApiMeasurementsGeneralViewAtlas) GetEnd() time.Time`
 
 GetEnd returns the End field if non-nil, zero value otherwise.
 
 ### GetEndOk
 
-`func (o *MeasurementsGeneralViewAtlas) GetEndOk() (*time.Time, bool)`
+`func (o *ApiMeasurementsGeneralViewAtlas) GetEndOk() (*time.Time, bool)`
 
 GetEndOk returns a tuple with the End field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnd
 
-`func (o *MeasurementsGeneralViewAtlas) SetEnd(v time.Time)`
+`func (o *ApiMeasurementsGeneralViewAtlas) SetEnd(v time.Time)`
 
 SetEnd sets End field to given value.
 
 ### HasEnd
 
-`func (o *MeasurementsGeneralViewAtlas) HasEnd() bool`
+`func (o *ApiMeasurementsGeneralViewAtlas) HasEnd() bool`
 
 HasEnd returns a boolean if a field has been set.
 
 ### GetGranularity
 
-`func (o *MeasurementsGeneralViewAtlas) GetGranularity() string`
+`func (o *ApiMeasurementsGeneralViewAtlas) GetGranularity() string`
 
 GetGranularity returns the Granularity field if non-nil, zero value otherwise.
 
 ### GetGranularityOk
 
-`func (o *MeasurementsGeneralViewAtlas) GetGranularityOk() (*string, bool)`
+`func (o *ApiMeasurementsGeneralViewAtlas) GetGranularityOk() (*string, bool)`
 
 GetGranularityOk returns a tuple with the Granularity field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGranularity
 
-`func (o *MeasurementsGeneralViewAtlas) SetGranularity(v string)`
+`func (o *ApiMeasurementsGeneralViewAtlas) SetGranularity(v string)`
 
 SetGranularity sets Granularity field to given value.
 
 ### HasGranularity
 
-`func (o *MeasurementsGeneralViewAtlas) HasGranularity() bool`
+`func (o *ApiMeasurementsGeneralViewAtlas) HasGranularity() bool`
 
 HasGranularity returns a boolean if a field has been set.
 
 ### GetGroupId
 
-`func (o *MeasurementsGeneralViewAtlas) GetGroupId() string`
+`func (o *ApiMeasurementsGeneralViewAtlas) GetGroupId() string`
 
 GetGroupId returns the GroupId field if non-nil, zero value otherwise.
 
 ### GetGroupIdOk
 
-`func (o *MeasurementsGeneralViewAtlas) GetGroupIdOk() (*string, bool)`
+`func (o *ApiMeasurementsGeneralViewAtlas) GetGroupIdOk() (*string, bool)`
 
 GetGroupIdOk returns a tuple with the GroupId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGroupId
 
-`func (o *MeasurementsGeneralViewAtlas) SetGroupId(v string)`
+`func (o *ApiMeasurementsGeneralViewAtlas) SetGroupId(v string)`
 
 SetGroupId sets GroupId field to given value.
 
 ### HasGroupId
 
-`func (o *MeasurementsGeneralViewAtlas) HasGroupId() bool`
+`func (o *ApiMeasurementsGeneralViewAtlas) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
 
 ### GetHostId
 
-`func (o *MeasurementsGeneralViewAtlas) GetHostId() string`
+`func (o *ApiMeasurementsGeneralViewAtlas) GetHostId() string`
 
 GetHostId returns the HostId field if non-nil, zero value otherwise.
 
 ### GetHostIdOk
 
-`func (o *MeasurementsGeneralViewAtlas) GetHostIdOk() (*string, bool)`
+`func (o *ApiMeasurementsGeneralViewAtlas) GetHostIdOk() (*string, bool)`
 
 GetHostIdOk returns a tuple with the HostId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHostId
 
-`func (o *MeasurementsGeneralViewAtlas) SetHostId(v string)`
+`func (o *ApiMeasurementsGeneralViewAtlas) SetHostId(v string)`
 
 SetHostId sets HostId field to given value.
 
 ### HasHostId
 
-`func (o *MeasurementsGeneralViewAtlas) HasHostId() bool`
+`func (o *ApiMeasurementsGeneralViewAtlas) HasHostId() bool`
 
 HasHostId returns a boolean if a field has been set.
 
 ### GetLinks
 
-`func (o *MeasurementsGeneralViewAtlas) GetLinks() []LinkAtlas`
+`func (o *ApiMeasurementsGeneralViewAtlas) GetLinks() []LinkAtlas`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *MeasurementsGeneralViewAtlas) GetLinksOk() (*[]LinkAtlas, bool)`
+`func (o *ApiMeasurementsGeneralViewAtlas) GetLinksOk() (*[]LinkAtlas, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *MeasurementsGeneralViewAtlas) SetLinks(v []LinkAtlas)`
+`func (o *ApiMeasurementsGeneralViewAtlas) SetLinks(v []LinkAtlas)`
 
 SetLinks sets Links field to given value.
 
 ### HasLinks
 
-`func (o *MeasurementsGeneralViewAtlas) HasLinks() bool`
+`func (o *ApiMeasurementsGeneralViewAtlas) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
 
 ### GetMeasurements
 
-`func (o *MeasurementsGeneralViewAtlas) GetMeasurements() []MetricsMeasurementAtlas`
+`func (o *ApiMeasurementsGeneralViewAtlas) GetMeasurements() []MetricsMeasurementAtlas`
 
 GetMeasurements returns the Measurements field if non-nil, zero value otherwise.
 
 ### GetMeasurementsOk
 
-`func (o *MeasurementsGeneralViewAtlas) GetMeasurementsOk() (*[]MetricsMeasurementAtlas, bool)`
+`func (o *ApiMeasurementsGeneralViewAtlas) GetMeasurementsOk() (*[]MetricsMeasurementAtlas, bool)`
 
 GetMeasurementsOk returns a tuple with the Measurements field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMeasurements
 
-`func (o *MeasurementsGeneralViewAtlas) SetMeasurements(v []MetricsMeasurementAtlas)`
+`func (o *ApiMeasurementsGeneralViewAtlas) SetMeasurements(v []MetricsMeasurementAtlas)`
 
 SetMeasurements sets Measurements field to given value.
 
 ### HasMeasurements
 
-`func (o *MeasurementsGeneralViewAtlas) HasMeasurements() bool`
+`func (o *ApiMeasurementsGeneralViewAtlas) HasMeasurements() bool`
 
 HasMeasurements returns a boolean if a field has been set.
 
 ### GetPartitionName
 
-`func (o *MeasurementsGeneralViewAtlas) GetPartitionName() string`
+`func (o *ApiMeasurementsGeneralViewAtlas) GetPartitionName() string`
 
 GetPartitionName returns the PartitionName field if non-nil, zero value otherwise.
 
 ### GetPartitionNameOk
 
-`func (o *MeasurementsGeneralViewAtlas) GetPartitionNameOk() (*string, bool)`
+`func (o *ApiMeasurementsGeneralViewAtlas) GetPartitionNameOk() (*string, bool)`
 
 GetPartitionNameOk returns a tuple with the PartitionName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPartitionName
 
-`func (o *MeasurementsGeneralViewAtlas) SetPartitionName(v string)`
+`func (o *ApiMeasurementsGeneralViewAtlas) SetPartitionName(v string)`
 
 SetPartitionName sets PartitionName field to given value.
 
 ### HasPartitionName
 
-`func (o *MeasurementsGeneralViewAtlas) HasPartitionName() bool`
+`func (o *ApiMeasurementsGeneralViewAtlas) HasPartitionName() bool`
 
 HasPartitionName returns a boolean if a field has been set.
 
 ### GetProcessId
 
-`func (o *MeasurementsGeneralViewAtlas) GetProcessId() string`
+`func (o *ApiMeasurementsGeneralViewAtlas) GetProcessId() string`
 
 GetProcessId returns the ProcessId field if non-nil, zero value otherwise.
 
 ### GetProcessIdOk
 
-`func (o *MeasurementsGeneralViewAtlas) GetProcessIdOk() (*string, bool)`
+`func (o *ApiMeasurementsGeneralViewAtlas) GetProcessIdOk() (*string, bool)`
 
 GetProcessIdOk returns a tuple with the ProcessId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProcessId
 
-`func (o *MeasurementsGeneralViewAtlas) SetProcessId(v string)`
+`func (o *ApiMeasurementsGeneralViewAtlas) SetProcessId(v string)`
 
 SetProcessId sets ProcessId field to given value.
 
 ### HasProcessId
 
-`func (o *MeasurementsGeneralViewAtlas) HasProcessId() bool`
+`func (o *ApiMeasurementsGeneralViewAtlas) HasProcessId() bool`
 
 HasProcessId returns a boolean if a field has been set.
 
 ### GetStart
 
-`func (o *MeasurementsGeneralViewAtlas) GetStart() time.Time`
+`func (o *ApiMeasurementsGeneralViewAtlas) GetStart() time.Time`
 
 GetStart returns the Start field if non-nil, zero value otherwise.
 
 ### GetStartOk
 
-`func (o *MeasurementsGeneralViewAtlas) GetStartOk() (*time.Time, bool)`
+`func (o *ApiMeasurementsGeneralViewAtlas) GetStartOk() (*time.Time, bool)`
 
 GetStartOk returns a tuple with the Start field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStart
 
-`func (o *MeasurementsGeneralViewAtlas) SetStart(v time.Time)`
+`func (o *ApiMeasurementsGeneralViewAtlas) SetStart(v time.Time)`
 
 SetStart sets Start field to given value.
 
 ### HasStart
 
-`func (o *MeasurementsGeneralViewAtlas) HasStart() bool`
+`func (o *ApiMeasurementsGeneralViewAtlas) HasStart() bool`
 
 HasStart returns a boolean if a field has been set.
 

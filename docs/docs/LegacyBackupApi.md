@@ -103,7 +103,7 @@ Name | Type | Description  | Notes
 
 ## GetLegacyBackupCheckpoint
 
-> Checkpoint GetLegacyBackupCheckpoint(ctx, groupId, checkpointId, clusterName).Execute()
+> ApiAtlasCheckpoint GetLegacyBackupCheckpoint(ctx, groupId, checkpointId, clusterName).Execute()
 
 Return One Legacy Backup Checkpoint
 
@@ -142,7 +142,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetLegacyBackupCheckpoint`: Checkpoint
+    // response from `GetLegacyBackupCheckpoint`: ApiAtlasCheckpoint
     fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.GetLegacyBackupCheckpoint`: %v\n", resp)
 }
 ```
@@ -170,7 +170,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Checkpoint**](Checkpoint.md)
+[**ApiAtlasCheckpoint**](ApiAtlasCheckpoint.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -355,7 +355,7 @@ Name | Type | Description  | Notes
 
 ## GetLegacySnapshotSchedule
 
-> SnapshotSchedule GetLegacySnapshotSchedule(ctx, groupId, clusterName).Execute()
+> ApiAtlasSnapshotSchedule GetLegacySnapshotSchedule(ctx, groupId, clusterName).Execute()
 
 Return One Snapshot Schedule
 
@@ -393,7 +393,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetLegacySnapshotSchedule`: SnapshotSchedule
+    // response from `GetLegacySnapshotSchedule`: ApiAtlasSnapshotSchedule
     fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.GetLegacySnapshotSchedule`: %v\n", resp)
 }
 ```
@@ -419,7 +419,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SnapshotSchedule**](SnapshotSchedule.md)
+[**ApiAtlasSnapshotSchedule**](ApiAtlasSnapshotSchedule.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -787,7 +787,7 @@ Name | Type | Description  | Notes
 
 ## UpdateLegacySnapshotSchedule
 
-> SnapshotSchedule UpdateLegacySnapshotSchedule(ctx, groupId, clusterName, snapshotSchedule SnapshotSchedule).Execute()
+> ApiAtlasSnapshotSchedule UpdateLegacySnapshotSchedule(ctx, groupId, clusterName, apiAtlasSnapshotSchedule ApiAtlasSnapshotSchedule).Execute()
 
 Update Snapshot Schedule for One Cluster
 
@@ -818,15 +818,15 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    snapshotSchedule := *openapiclient.NewSnapshotSchedule(int(123), "32b6e34b3d91647abb20e7b8", int(123), "32b6e34b3d91647abb20e7b8", int(123), int(123), int(123), int(123), int(123)) // SnapshotSchedule | 
+    apiAtlasSnapshotSchedule := *openapiclient.NewApiAtlasSnapshotSchedule(int(123), "32b6e34b3d91647abb20e7b8", int(123), "32b6e34b3d91647abb20e7b8", int(123), int(123), int(123), int(123), int(123)) // ApiAtlasSnapshotSchedule | 
 
-    resp, r, err := sdk.LegacyBackupApi.UpdateLegacySnapshotSchedule(context.Background(), groupId, clusterName, &snapshotSchedule).Execute()
+    resp, r, err := sdk.LegacyBackupApi.UpdateLegacySnapshotSchedule(context.Background(), groupId, clusterName, &apiAtlasSnapshotSchedule).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupApi.UpdateLegacySnapshotSchedule``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `UpdateLegacySnapshotSchedule`: SnapshotSchedule
+    // response from `UpdateLegacySnapshotSchedule`: ApiAtlasSnapshotSchedule
     fmt.Fprintf(os.Stdout, "Response from `LegacyBackupApi.UpdateLegacySnapshotSchedule`: %v\n", resp)
 }
 ```
@@ -849,11 +849,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **snapshotSchedule** | [**SnapshotSchedule**](SnapshotSchedule.md) | Update the snapshot schedule for one cluster in the specified project. | 
+ **apiAtlasSnapshotSchedule** | [**ApiAtlasSnapshotSchedule**](ApiAtlasSnapshotSchedule.md) | Update the snapshot schedule for one cluster in the specified project. | 
 
 ### Return type
 
-[**SnapshotSchedule**](SnapshotSchedule.md)
+[**ApiAtlasSnapshotSchedule**](ApiAtlasSnapshotSchedule.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

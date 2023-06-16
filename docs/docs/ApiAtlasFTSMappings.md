@@ -1,4 +1,4 @@
-# FTSMappings
+# ApiAtlasFTSMappings
 
 ## Properties
 
@@ -9,70 +9,70 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewFTSMappings
+### NewApiAtlasFTSMappings
 
-`func NewFTSMappings() *FTSMappings`
+`func NewApiAtlasFTSMappings() *ApiAtlasFTSMappings`
 
-NewFTSMappings instantiates a new FTSMappings object
+NewApiAtlasFTSMappings instantiates a new ApiAtlasFTSMappings object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewFTSMappingsWithDefaults
+### NewApiAtlasFTSMappingsWithDefaults
 
-`func NewFTSMappingsWithDefaults() *FTSMappings`
+`func NewApiAtlasFTSMappingsWithDefaults() *ApiAtlasFTSMappings`
 
-NewFTSMappingsWithDefaults instantiates a new FTSMappings object
+NewApiAtlasFTSMappingsWithDefaults instantiates a new ApiAtlasFTSMappings object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetDynamic
 
-`func (o *FTSMappings) GetDynamic() bool`
+`func (o *ApiAtlasFTSMappings) GetDynamic() bool`
 
 GetDynamic returns the Dynamic field if non-nil, zero value otherwise.
 
 ### GetDynamicOk
 
-`func (o *FTSMappings) GetDynamicOk() (*bool, bool)`
+`func (o *ApiAtlasFTSMappings) GetDynamicOk() (*bool, bool)`
 
 GetDynamicOk returns a tuple with the Dynamic field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDynamic
 
-`func (o *FTSMappings) SetDynamic(v bool)`
+`func (o *ApiAtlasFTSMappings) SetDynamic(v bool)`
 
 SetDynamic sets Dynamic field to given value.
 
 ### HasDynamic
 
-`func (o *FTSMappings) HasDynamic() bool`
+`func (o *ApiAtlasFTSMappings) HasDynamic() bool`
 
 HasDynamic returns a boolean if a field has been set.
 
 ### GetFields
 
-`func (o *FTSMappings) GetFields() map[string]interface{}`
+`func (o *ApiAtlasFTSMappings) GetFields() map[string]interface{}`
 
 GetFields returns the Fields field if non-nil, zero value otherwise.
 
 ### GetFieldsOk
 
-`func (o *FTSMappings) GetFieldsOk() (*map[string]interface{}, bool)`
+`func (o *ApiAtlasFTSMappings) GetFieldsOk() (*map[string]interface{}, bool)`
 
 GetFieldsOk returns a tuple with the Fields field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFields
 
-`func (o *FTSMappings) SetFields(v map[string]interface{})`
+`func (o *ApiAtlasFTSMappings) SetFields(v map[string]interface{})`
 
 SetFields sets Fields field to given value.
 
 ### HasFields
 
-`func (o *FTSMappings) HasFields() bool`
+`func (o *ApiAtlasFTSMappings) HasFields() bool`
 
 HasFields returns a boolean if a field has been set.
 

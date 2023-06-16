@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClusterId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the cluster with the snapshots you want to return. | [optional] [readonly] 
 **Complete** | Pointer to **bool** | Flag that indicates whether the snapshot exists. This flag returns &#x60;false&#x60; while MongoDB Cloud creates the snapshot. | [optional] [readonly] 
-**Created** | Pointer to [**BSONTimestamp**](BSONTimestamp.md) |  | [optional] 
+**Created** | Pointer to [**ApiBSONTimestamp**](ApiBSONTimestamp.md) |  | [optional] 
 **DoNotDelete** | Pointer to **bool** | Flag that indicates whether someone can delete this snapshot. You can&#39;t set &#x60;\&quot;doNotDelete\&quot; : true&#x60; and set a timestamp for **expires** in the same request. | [optional] 
 **Expires** | Pointer to **time.Time** | Date and time when MongoDB Cloud deletes the snapshot. If &#x60;\&quot;doNotDelete\&quot; : true&#x60;, MongoDB Cloud removes any value set for this parameter. | [optional] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the project that owns the snapshots. | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the snapshot. | [optional] [readonly] 
 **Incremental** | Pointer to **bool** | Flag indicating if this is an incremental or a full snapshot. | [optional] [readonly] 
-**LastOplogAppliedTimestamp** | Pointer to [**BSONTimestamp**](BSONTimestamp.md) |  | [optional] 
+**LastOplogAppliedTimestamp** | Pointer to [**ApiBSONTimestamp**](ApiBSONTimestamp.md) |  | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Parts** | Pointer to [**[]BackupSnapshotPart**](BackupSnapshotPart.md) | Metadata that describes the complete snapshot.  - For a replica set, this array contains a single document. - For a sharded cluster, this array contains one document for each shard plus one document for the config host. | [optional] [readonly] 
 
@@ -87,20 +87,20 @@ HasComplete returns a boolean if a field has been set.
 
 ### GetCreated
 
-`func (o *BackupSnapshot) GetCreated() BSONTimestamp`
+`func (o *BackupSnapshot) GetCreated() ApiBSONTimestamp`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *BackupSnapshot) GetCreatedOk() (*BSONTimestamp, bool)`
+`func (o *BackupSnapshot) GetCreatedOk() (*ApiBSONTimestamp, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *BackupSnapshot) SetCreated(v BSONTimestamp)`
+`func (o *BackupSnapshot) SetCreated(v ApiBSONTimestamp)`
 
 SetCreated sets Created field to given value.
 
@@ -237,20 +237,20 @@ HasIncremental returns a boolean if a field has been set.
 
 ### GetLastOplogAppliedTimestamp
 
-`func (o *BackupSnapshot) GetLastOplogAppliedTimestamp() BSONTimestamp`
+`func (o *BackupSnapshot) GetLastOplogAppliedTimestamp() ApiBSONTimestamp`
 
 GetLastOplogAppliedTimestamp returns the LastOplogAppliedTimestamp field if non-nil, zero value otherwise.
 
 ### GetLastOplogAppliedTimestampOk
 
-`func (o *BackupSnapshot) GetLastOplogAppliedTimestampOk() (*BSONTimestamp, bool)`
+`func (o *BackupSnapshot) GetLastOplogAppliedTimestampOk() (*ApiBSONTimestamp, bool)`
 
 GetLastOplogAppliedTimestampOk returns a tuple with the LastOplogAppliedTimestamp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLastOplogAppliedTimestamp
 
-`func (o *BackupSnapshot) SetLastOplogAppliedTimestamp(v BSONTimestamp)`
+`func (o *BackupSnapshot) SetLastOplogAppliedTimestamp(v ApiBSONTimestamp)`
 
 SetLastOplogAppliedTimestamp sets LastOplogAppliedTimestamp field to given value.
 

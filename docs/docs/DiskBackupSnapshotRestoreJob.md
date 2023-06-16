@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Components** | Pointer to [**[]DiskBackupBaseRestoreMember**](DiskBackupBaseRestoreMember.md) | Information on the restore job for each replica set in the sharded cluster. | [optional] [readonly] 
 **DeliveryType** | **string** | Human-readable label that categorizes the restore job to create. | 
 **DeliveryUrl** | Pointer to **[]string** | One or more Uniform Resource Locators (URLs) that point to the compressed snapshot files for manual download. MongoDB Cloud returns this parameter when &#x60;\&quot;deliveryType\&quot; : \&quot;download\&quot;&#x60;. | [optional] [readonly] 
-**DesiredTimestamp** | Pointer to [**BSONTimestamp**](BSONTimestamp.md) |  | [optional] 
+**DesiredTimestamp** | Pointer to [**ApiBSONTimestamp**](ApiBSONTimestamp.md) |  | [optional] 
 **Expired** | Pointer to **bool** | Flag that indicates whether the restore job expired. | [optional] [readonly] 
 **ExpiresAt** | Pointer to **time.Time** | Date and time when the restore job expires. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **Failed** | Pointer to **bool** | Flag that indicates whether the restore job failed. | [optional] [readonly] 
@@ -139,20 +139,20 @@ HasDeliveryUrl returns a boolean if a field has been set.
 
 ### GetDesiredTimestamp
 
-`func (o *DiskBackupSnapshotRestoreJob) GetDesiredTimestamp() BSONTimestamp`
+`func (o *DiskBackupSnapshotRestoreJob) GetDesiredTimestamp() ApiBSONTimestamp`
 
 GetDesiredTimestamp returns the DesiredTimestamp field if non-nil, zero value otherwise.
 
 ### GetDesiredTimestampOk
 
-`func (o *DiskBackupSnapshotRestoreJob) GetDesiredTimestampOk() (*BSONTimestamp, bool)`
+`func (o *DiskBackupSnapshotRestoreJob) GetDesiredTimestampOk() (*ApiBSONTimestamp, bool)`
 
 GetDesiredTimestampOk returns a tuple with the DesiredTimestamp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDesiredTimestamp
 
-`func (o *DiskBackupSnapshotRestoreJob) SetDesiredTimestamp(v BSONTimestamp)`
+`func (o *DiskBackupSnapshotRestoreJob) SetDesiredTimestamp(v ApiBSONTimestamp)`
 
 SetDesiredTimestamp sets DesiredTimestamp field to given value.
 

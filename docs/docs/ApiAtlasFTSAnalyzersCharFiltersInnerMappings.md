@@ -1,4 +1,4 @@
-# FTSAnalyzersCharFiltersInnerMappings
+# ApiAtlasFTSAnalyzersCharFiltersInnerMappings
 
 ## Properties
 
@@ -8,45 +8,45 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewFTSAnalyzersCharFiltersInnerMappings
+### NewApiAtlasFTSAnalyzersCharFiltersInnerMappings
 
-`func NewFTSAnalyzersCharFiltersInnerMappings() *FTSAnalyzersCharFiltersInnerMappings`
+`func NewApiAtlasFTSAnalyzersCharFiltersInnerMappings() *ApiAtlasFTSAnalyzersCharFiltersInnerMappings`
 
-NewFTSAnalyzersCharFiltersInnerMappings instantiates a new FTSAnalyzersCharFiltersInnerMappings object
+NewApiAtlasFTSAnalyzersCharFiltersInnerMappings instantiates a new ApiAtlasFTSAnalyzersCharFiltersInnerMappings object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewFTSAnalyzersCharFiltersInnerMappingsWithDefaults
+### NewApiAtlasFTSAnalyzersCharFiltersInnerMappingsWithDefaults
 
-`func NewFTSAnalyzersCharFiltersInnerMappingsWithDefaults() *FTSAnalyzersCharFiltersInnerMappings`
+`func NewApiAtlasFTSAnalyzersCharFiltersInnerMappingsWithDefaults() *ApiAtlasFTSAnalyzersCharFiltersInnerMappings`
 
-NewFTSAnalyzersCharFiltersInnerMappingsWithDefaults instantiates a new FTSAnalyzersCharFiltersInnerMappings object
+NewApiAtlasFTSAnalyzersCharFiltersInnerMappingsWithDefaults instantiates a new ApiAtlasFTSAnalyzersCharFiltersInnerMappings object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetAdditionalPropertiesField
 
-`func (o *FTSAnalyzersCharFiltersInnerMappings) GetAdditionalPropertiesField() string`
+`func (o *ApiAtlasFTSAnalyzersCharFiltersInnerMappings) GetAdditionalPropertiesField() string`
 
 GetAdditionalPropertiesField returns the AdditionalPropertiesField field if non-nil, zero value otherwise.
 
 ### GetAdditionalPropertiesFieldOk
 
-`func (o *FTSAnalyzersCharFiltersInnerMappings) GetAdditionalPropertiesFieldOk() (*string, bool)`
+`func (o *ApiAtlasFTSAnalyzersCharFiltersInnerMappings) GetAdditionalPropertiesFieldOk() (*string, bool)`
 
 GetAdditionalPropertiesFieldOk returns a tuple with the AdditionalPropertiesField field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAdditionalPropertiesField
 
-`func (o *FTSAnalyzersCharFiltersInnerMappings) SetAdditionalPropertiesField(v string)`
+`func (o *ApiAtlasFTSAnalyzersCharFiltersInnerMappings) SetAdditionalPropertiesField(v string)`
 
 SetAdditionalPropertiesField sets AdditionalPropertiesField field to given value.
 
 ### HasAdditionalPropertiesField
 
-`func (o *FTSAnalyzersCharFiltersInnerMappings) HasAdditionalPropertiesField() bool`
+`func (o *ApiAtlasFTSAnalyzersCharFiltersInnerMappings) HasAdditionalPropertiesField() bool`
 
 HasAdditionalPropertiesField returns a boolean if a field has been set.
 

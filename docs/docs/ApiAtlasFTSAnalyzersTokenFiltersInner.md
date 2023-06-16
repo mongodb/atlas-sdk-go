@@ -1,4 +1,4 @@
-# FTSAnalyzersTokenFiltersInner
+# ApiAtlasFTSAnalyzersTokenFiltersInner
 
 ## Properties
 
@@ -23,369 +23,369 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewFTSAnalyzersTokenFiltersInner
+### NewApiAtlasFTSAnalyzersTokenFiltersInner
 
-`func NewFTSAnalyzersTokenFiltersInner(type_ string, maxGram int, minGram int, matches string, pattern string, replacement string, maxShingleSize int, minShingleSize int, stemmerName string, tokens []string, ) *FTSAnalyzersTokenFiltersInner`
+`func NewApiAtlasFTSAnalyzersTokenFiltersInner(type_ string, maxGram int, minGram int, matches string, pattern string, replacement string, maxShingleSize int, minShingleSize int, stemmerName string, tokens []string, ) *ApiAtlasFTSAnalyzersTokenFiltersInner`
 
-NewFTSAnalyzersTokenFiltersInner instantiates a new FTSAnalyzersTokenFiltersInner object
+NewApiAtlasFTSAnalyzersTokenFiltersInner instantiates a new ApiAtlasFTSAnalyzersTokenFiltersInner object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewFTSAnalyzersTokenFiltersInnerWithDefaults
+### NewApiAtlasFTSAnalyzersTokenFiltersInnerWithDefaults
 
-`func NewFTSAnalyzersTokenFiltersInnerWithDefaults() *FTSAnalyzersTokenFiltersInner`
+`func NewApiAtlasFTSAnalyzersTokenFiltersInnerWithDefaults() *ApiAtlasFTSAnalyzersTokenFiltersInner`
 
-NewFTSAnalyzersTokenFiltersInnerWithDefaults instantiates a new FTSAnalyzersTokenFiltersInner object
+NewApiAtlasFTSAnalyzersTokenFiltersInnerWithDefaults instantiates a new ApiAtlasFTSAnalyzersTokenFiltersInner object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetOriginalTokens
 
-`func (o *FTSAnalyzersTokenFiltersInner) GetOriginalTokens() string`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) GetOriginalTokens() string`
 
 GetOriginalTokens returns the OriginalTokens field if non-nil, zero value otherwise.
 
 ### GetOriginalTokensOk
 
-`func (o *FTSAnalyzersTokenFiltersInner) GetOriginalTokensOk() (*string, bool)`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) GetOriginalTokensOk() (*string, bool)`
 
 GetOriginalTokensOk returns a tuple with the OriginalTokens field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOriginalTokens
 
-`func (o *FTSAnalyzersTokenFiltersInner) SetOriginalTokens(v string)`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) SetOriginalTokens(v string)`
 
 SetOriginalTokens sets OriginalTokens field to given value.
 
 ### HasOriginalTokens
 
-`func (o *FTSAnalyzersTokenFiltersInner) HasOriginalTokens() bool`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) HasOriginalTokens() bool`
 
 HasOriginalTokens returns a boolean if a field has been set.
 
 ### GetType
 
-`func (o *FTSAnalyzersTokenFiltersInner) GetType() string`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) GetType() string`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *FTSAnalyzersTokenFiltersInner) GetTypeOk() (*string, bool)`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) GetTypeOk() (*string, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *FTSAnalyzersTokenFiltersInner) SetType(v string)`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) SetType(v string)`
 
 SetType sets Type field to given value.
 
 
 ### GetMaxGram
 
-`func (o *FTSAnalyzersTokenFiltersInner) GetMaxGram() int`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) GetMaxGram() int`
 
 GetMaxGram returns the MaxGram field if non-nil, zero value otherwise.
 
 ### GetMaxGramOk
 
-`func (o *FTSAnalyzersTokenFiltersInner) GetMaxGramOk() (*int, bool)`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) GetMaxGramOk() (*int, bool)`
 
 GetMaxGramOk returns a tuple with the MaxGram field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMaxGram
 
-`func (o *FTSAnalyzersTokenFiltersInner) SetMaxGram(v int)`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) SetMaxGram(v int)`
 
 SetMaxGram sets MaxGram field to given value.
 
 
 ### GetMinGram
 
-`func (o *FTSAnalyzersTokenFiltersInner) GetMinGram() int`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) GetMinGram() int`
 
 GetMinGram returns the MinGram field if non-nil, zero value otherwise.
 
 ### GetMinGramOk
 
-`func (o *FTSAnalyzersTokenFiltersInner) GetMinGramOk() (*int, bool)`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) GetMinGramOk() (*int, bool)`
 
 GetMinGramOk returns a tuple with the MinGram field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMinGram
 
-`func (o *FTSAnalyzersTokenFiltersInner) SetMinGram(v int)`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) SetMinGram(v int)`
 
 SetMinGram sets MinGram field to given value.
 
 
 ### GetTermNotInBounds
 
-`func (o *FTSAnalyzersTokenFiltersInner) GetTermNotInBounds() string`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) GetTermNotInBounds() string`
 
 GetTermNotInBounds returns the TermNotInBounds field if non-nil, zero value otherwise.
 
 ### GetTermNotInBoundsOk
 
-`func (o *FTSAnalyzersTokenFiltersInner) GetTermNotInBoundsOk() (*string, bool)`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) GetTermNotInBoundsOk() (*string, bool)`
 
 GetTermNotInBoundsOk returns a tuple with the TermNotInBounds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTermNotInBounds
 
-`func (o *FTSAnalyzersTokenFiltersInner) SetTermNotInBounds(v string)`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) SetTermNotInBounds(v string)`
 
 SetTermNotInBounds sets TermNotInBounds field to given value.
 
 ### HasTermNotInBounds
 
-`func (o *FTSAnalyzersTokenFiltersInner) HasTermNotInBounds() bool`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) HasTermNotInBounds() bool`
 
 HasTermNotInBounds returns a boolean if a field has been set.
 
 ### GetNormalizationForm
 
-`func (o *FTSAnalyzersTokenFiltersInner) GetNormalizationForm() string`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) GetNormalizationForm() string`
 
 GetNormalizationForm returns the NormalizationForm field if non-nil, zero value otherwise.
 
 ### GetNormalizationFormOk
 
-`func (o *FTSAnalyzersTokenFiltersInner) GetNormalizationFormOk() (*string, bool)`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) GetNormalizationFormOk() (*string, bool)`
 
 GetNormalizationFormOk returns a tuple with the NormalizationForm field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNormalizationForm
 
-`func (o *FTSAnalyzersTokenFiltersInner) SetNormalizationForm(v string)`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) SetNormalizationForm(v string)`
 
 SetNormalizationForm sets NormalizationForm field to given value.
 
 ### HasNormalizationForm
 
-`func (o *FTSAnalyzersTokenFiltersInner) HasNormalizationForm() bool`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) HasNormalizationForm() bool`
 
 HasNormalizationForm returns a boolean if a field has been set.
 
 ### GetMax
 
-`func (o *FTSAnalyzersTokenFiltersInner) GetMax() int`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) GetMax() int`
 
 GetMax returns the Max field if non-nil, zero value otherwise.
 
 ### GetMaxOk
 
-`func (o *FTSAnalyzersTokenFiltersInner) GetMaxOk() (*int, bool)`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) GetMaxOk() (*int, bool)`
 
 GetMaxOk returns a tuple with the Max field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMax
 
-`func (o *FTSAnalyzersTokenFiltersInner) SetMax(v int)`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) SetMax(v int)`
 
 SetMax sets Max field to given value.
 
 ### HasMax
 
-`func (o *FTSAnalyzersTokenFiltersInner) HasMax() bool`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) HasMax() bool`
 
 HasMax returns a boolean if a field has been set.
 
 ### GetMin
 
-`func (o *FTSAnalyzersTokenFiltersInner) GetMin() int`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) GetMin() int`
 
 GetMin returns the Min field if non-nil, zero value otherwise.
 
 ### GetMinOk
 
-`func (o *FTSAnalyzersTokenFiltersInner) GetMinOk() (*int, bool)`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) GetMinOk() (*int, bool)`
 
 GetMinOk returns a tuple with the Min field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMin
 
-`func (o *FTSAnalyzersTokenFiltersInner) SetMin(v int)`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) SetMin(v int)`
 
 SetMin sets Min field to given value.
 
 ### HasMin
 
-`func (o *FTSAnalyzersTokenFiltersInner) HasMin() bool`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) HasMin() bool`
 
 HasMin returns a boolean if a field has been set.
 
 ### GetMatches
 
-`func (o *FTSAnalyzersTokenFiltersInner) GetMatches() string`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) GetMatches() string`
 
 GetMatches returns the Matches field if non-nil, zero value otherwise.
 
 ### GetMatchesOk
 
-`func (o *FTSAnalyzersTokenFiltersInner) GetMatchesOk() (*string, bool)`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) GetMatchesOk() (*string, bool)`
 
 GetMatchesOk returns a tuple with the Matches field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMatches
 
-`func (o *FTSAnalyzersTokenFiltersInner) SetMatches(v string)`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) SetMatches(v string)`
 
 SetMatches sets Matches field to given value.
 
 
 ### GetPattern
 
-`func (o *FTSAnalyzersTokenFiltersInner) GetPattern() string`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) GetPattern() string`
 
 GetPattern returns the Pattern field if non-nil, zero value otherwise.
 
 ### GetPatternOk
 
-`func (o *FTSAnalyzersTokenFiltersInner) GetPatternOk() (*string, bool)`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) GetPatternOk() (*string, bool)`
 
 GetPatternOk returns a tuple with the Pattern field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPattern
 
-`func (o *FTSAnalyzersTokenFiltersInner) SetPattern(v string)`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) SetPattern(v string)`
 
 SetPattern sets Pattern field to given value.
 
 
 ### GetReplacement
 
-`func (o *FTSAnalyzersTokenFiltersInner) GetReplacement() string`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) GetReplacement() string`
 
 GetReplacement returns the Replacement field if non-nil, zero value otherwise.
 
 ### GetReplacementOk
 
-`func (o *FTSAnalyzersTokenFiltersInner) GetReplacementOk() (*string, bool)`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) GetReplacementOk() (*string, bool)`
 
 GetReplacementOk returns a tuple with the Replacement field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReplacement
 
-`func (o *FTSAnalyzersTokenFiltersInner) SetReplacement(v string)`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) SetReplacement(v string)`
 
 SetReplacement sets Replacement field to given value.
 
 
 ### GetMaxShingleSize
 
-`func (o *FTSAnalyzersTokenFiltersInner) GetMaxShingleSize() int`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) GetMaxShingleSize() int`
 
 GetMaxShingleSize returns the MaxShingleSize field if non-nil, zero value otherwise.
 
 ### GetMaxShingleSizeOk
 
-`func (o *FTSAnalyzersTokenFiltersInner) GetMaxShingleSizeOk() (*int, bool)`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) GetMaxShingleSizeOk() (*int, bool)`
 
 GetMaxShingleSizeOk returns a tuple with the MaxShingleSize field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMaxShingleSize
 
-`func (o *FTSAnalyzersTokenFiltersInner) SetMaxShingleSize(v int)`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) SetMaxShingleSize(v int)`
 
 SetMaxShingleSize sets MaxShingleSize field to given value.
 
 
 ### GetMinShingleSize
 
-`func (o *FTSAnalyzersTokenFiltersInner) GetMinShingleSize() int`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) GetMinShingleSize() int`
 
 GetMinShingleSize returns the MinShingleSize field if non-nil, zero value otherwise.
 
 ### GetMinShingleSizeOk
 
-`func (o *FTSAnalyzersTokenFiltersInner) GetMinShingleSizeOk() (*int, bool)`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) GetMinShingleSizeOk() (*int, bool)`
 
 GetMinShingleSizeOk returns a tuple with the MinShingleSize field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMinShingleSize
 
-`func (o *FTSAnalyzersTokenFiltersInner) SetMinShingleSize(v int)`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) SetMinShingleSize(v int)`
 
 SetMinShingleSize sets MinShingleSize field to given value.
 
 
 ### GetStemmerName
 
-`func (o *FTSAnalyzersTokenFiltersInner) GetStemmerName() string`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) GetStemmerName() string`
 
 GetStemmerName returns the StemmerName field if non-nil, zero value otherwise.
 
 ### GetStemmerNameOk
 
-`func (o *FTSAnalyzersTokenFiltersInner) GetStemmerNameOk() (*string, bool)`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) GetStemmerNameOk() (*string, bool)`
 
 GetStemmerNameOk returns a tuple with the StemmerName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStemmerName
 
-`func (o *FTSAnalyzersTokenFiltersInner) SetStemmerName(v string)`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) SetStemmerName(v string)`
 
 SetStemmerName sets StemmerName field to given value.
 
 
 ### GetIgnoreCase
 
-`func (o *FTSAnalyzersTokenFiltersInner) GetIgnoreCase() bool`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) GetIgnoreCase() bool`
 
 GetIgnoreCase returns the IgnoreCase field if non-nil, zero value otherwise.
 
 ### GetIgnoreCaseOk
 
-`func (o *FTSAnalyzersTokenFiltersInner) GetIgnoreCaseOk() (*bool, bool)`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) GetIgnoreCaseOk() (*bool, bool)`
 
 GetIgnoreCaseOk returns a tuple with the IgnoreCase field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIgnoreCase
 
-`func (o *FTSAnalyzersTokenFiltersInner) SetIgnoreCase(v bool)`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) SetIgnoreCase(v bool)`
 
 SetIgnoreCase sets IgnoreCase field to given value.
 
 ### HasIgnoreCase
 
-`func (o *FTSAnalyzersTokenFiltersInner) HasIgnoreCase() bool`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) HasIgnoreCase() bool`
 
 HasIgnoreCase returns a boolean if a field has been set.
 
 ### GetTokens
 
-`func (o *FTSAnalyzersTokenFiltersInner) GetTokens() []string`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) GetTokens() []string`
 
 GetTokens returns the Tokens field if non-nil, zero value otherwise.
 
 ### GetTokensOk
 
-`func (o *FTSAnalyzersTokenFiltersInner) GetTokensOk() (*[]string, bool)`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) GetTokensOk() (*[]string, bool)`
 
 GetTokensOk returns a tuple with the Tokens field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTokens
 
-`func (o *FTSAnalyzersTokenFiltersInner) SetTokens(v []string)`
+`func (o *ApiAtlasFTSAnalyzersTokenFiltersInner) SetTokens(v []string)`
 
 SetTokens sets Tokens field to given value.
 

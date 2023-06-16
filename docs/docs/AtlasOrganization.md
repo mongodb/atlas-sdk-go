@@ -1,4 +1,4 @@
-# Organization
+# AtlasOrganization
 
 ## Properties
 
@@ -11,114 +11,114 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewOrganization
+### NewAtlasOrganization
 
-`func NewOrganization(name string, ) *Organization`
+`func NewAtlasOrganization(name string, ) *AtlasOrganization`
 
-NewOrganization instantiates a new Organization object
+NewAtlasOrganization instantiates a new AtlasOrganization object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewOrganizationWithDefaults
+### NewAtlasOrganizationWithDefaults
 
-`func NewOrganizationWithDefaults() *Organization`
+`func NewAtlasOrganizationWithDefaults() *AtlasOrganization`
 
-NewOrganizationWithDefaults instantiates a new Organization object
+NewAtlasOrganizationWithDefaults instantiates a new AtlasOrganization object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *Organization) GetId() string`
+`func (o *AtlasOrganization) GetId() string`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *Organization) GetIdOk() (*string, bool)`
+`func (o *AtlasOrganization) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *Organization) SetId(v string)`
+`func (o *AtlasOrganization) SetId(v string)`
 
 SetId sets Id field to given value.
 
 ### HasId
 
-`func (o *Organization) HasId() bool`
+`func (o *AtlasOrganization) HasId() bool`
 
 HasId returns a boolean if a field has been set.
 
 ### GetIsDeleted
 
-`func (o *Organization) GetIsDeleted() bool`
+`func (o *AtlasOrganization) GetIsDeleted() bool`
 
 GetIsDeleted returns the IsDeleted field if non-nil, zero value otherwise.
 
 ### GetIsDeletedOk
 
-`func (o *Organization) GetIsDeletedOk() (*bool, bool)`
+`func (o *AtlasOrganization) GetIsDeletedOk() (*bool, bool)`
 
 GetIsDeletedOk returns a tuple with the IsDeleted field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIsDeleted
 
-`func (o *Organization) SetIsDeleted(v bool)`
+`func (o *AtlasOrganization) SetIsDeleted(v bool)`
 
 SetIsDeleted sets IsDeleted field to given value.
 
 ### HasIsDeleted
 
-`func (o *Organization) HasIsDeleted() bool`
+`func (o *AtlasOrganization) HasIsDeleted() bool`
 
 HasIsDeleted returns a boolean if a field has been set.
 
 ### GetLinks
 
-`func (o *Organization) GetLinks() []Link`
+`func (o *AtlasOrganization) GetLinks() []Link`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *Organization) GetLinksOk() (*[]Link, bool)`
+`func (o *AtlasOrganization) GetLinksOk() (*[]Link, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *Organization) SetLinks(v []Link)`
+`func (o *AtlasOrganization) SetLinks(v []Link)`
 
 SetLinks sets Links field to given value.
 
 ### HasLinks
 
-`func (o *Organization) HasLinks() bool`
+`func (o *AtlasOrganization) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
 
 ### GetName
 
-`func (o *Organization) GetName() string`
+`func (o *AtlasOrganization) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *Organization) GetNameOk() (*string, bool)`
+`func (o *AtlasOrganization) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *Organization) SetName(v string)`
+`func (o *AtlasOrganization) SetName(v string)`
 
 SetName sets Name field to given value.
 

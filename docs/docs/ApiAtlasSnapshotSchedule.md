@@ -1,4 +1,4 @@
-# SnapshotSchedule
+# ApiAtlasSnapshotSchedule
 
 ## Properties
 
@@ -17,224 +17,224 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewSnapshotSchedule
+### NewApiAtlasSnapshotSchedule
 
-`func NewSnapshotSchedule(clusterCheckpointIntervalMin int, clusterId string, dailySnapshotRetentionDays int, groupId string, monthlySnapshotRetentionMonths int, pointInTimeWindowHours int, snapshotIntervalHours int, snapshotRetentionDays int, weeklySnapshotRetentionWeeks int, ) *SnapshotSchedule`
+`func NewApiAtlasSnapshotSchedule(clusterCheckpointIntervalMin int, clusterId string, dailySnapshotRetentionDays int, groupId string, monthlySnapshotRetentionMonths int, pointInTimeWindowHours int, snapshotIntervalHours int, snapshotRetentionDays int, weeklySnapshotRetentionWeeks int, ) *ApiAtlasSnapshotSchedule`
 
-NewSnapshotSchedule instantiates a new SnapshotSchedule object
+NewApiAtlasSnapshotSchedule instantiates a new ApiAtlasSnapshotSchedule object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewSnapshotScheduleWithDefaults
+### NewApiAtlasSnapshotScheduleWithDefaults
 
-`func NewSnapshotScheduleWithDefaults() *SnapshotSchedule`
+`func NewApiAtlasSnapshotScheduleWithDefaults() *ApiAtlasSnapshotSchedule`
 
-NewSnapshotScheduleWithDefaults instantiates a new SnapshotSchedule object
+NewApiAtlasSnapshotScheduleWithDefaults instantiates a new ApiAtlasSnapshotSchedule object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetClusterCheckpointIntervalMin
 
-`func (o *SnapshotSchedule) GetClusterCheckpointIntervalMin() int`
+`func (o *ApiAtlasSnapshotSchedule) GetClusterCheckpointIntervalMin() int`
 
 GetClusterCheckpointIntervalMin returns the ClusterCheckpointIntervalMin field if non-nil, zero value otherwise.
 
 ### GetClusterCheckpointIntervalMinOk
 
-`func (o *SnapshotSchedule) GetClusterCheckpointIntervalMinOk() (*int, bool)`
+`func (o *ApiAtlasSnapshotSchedule) GetClusterCheckpointIntervalMinOk() (*int, bool)`
 
 GetClusterCheckpointIntervalMinOk returns a tuple with the ClusterCheckpointIntervalMin field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetClusterCheckpointIntervalMin
 
-`func (o *SnapshotSchedule) SetClusterCheckpointIntervalMin(v int)`
+`func (o *ApiAtlasSnapshotSchedule) SetClusterCheckpointIntervalMin(v int)`
 
 SetClusterCheckpointIntervalMin sets ClusterCheckpointIntervalMin field to given value.
 
 
 ### GetClusterId
 
-`func (o *SnapshotSchedule) GetClusterId() string`
+`func (o *ApiAtlasSnapshotSchedule) GetClusterId() string`
 
 GetClusterId returns the ClusterId field if non-nil, zero value otherwise.
 
 ### GetClusterIdOk
 
-`func (o *SnapshotSchedule) GetClusterIdOk() (*string, bool)`
+`func (o *ApiAtlasSnapshotSchedule) GetClusterIdOk() (*string, bool)`
 
 GetClusterIdOk returns a tuple with the ClusterId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetClusterId
 
-`func (o *SnapshotSchedule) SetClusterId(v string)`
+`func (o *ApiAtlasSnapshotSchedule) SetClusterId(v string)`
 
 SetClusterId sets ClusterId field to given value.
 
 
 ### GetDailySnapshotRetentionDays
 
-`func (o *SnapshotSchedule) GetDailySnapshotRetentionDays() int`
+`func (o *ApiAtlasSnapshotSchedule) GetDailySnapshotRetentionDays() int`
 
 GetDailySnapshotRetentionDays returns the DailySnapshotRetentionDays field if non-nil, zero value otherwise.
 
 ### GetDailySnapshotRetentionDaysOk
 
-`func (o *SnapshotSchedule) GetDailySnapshotRetentionDaysOk() (*int, bool)`
+`func (o *ApiAtlasSnapshotSchedule) GetDailySnapshotRetentionDaysOk() (*int, bool)`
 
 GetDailySnapshotRetentionDaysOk returns a tuple with the DailySnapshotRetentionDays field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDailySnapshotRetentionDays
 
-`func (o *SnapshotSchedule) SetDailySnapshotRetentionDays(v int)`
+`func (o *ApiAtlasSnapshotSchedule) SetDailySnapshotRetentionDays(v int)`
 
 SetDailySnapshotRetentionDays sets DailySnapshotRetentionDays field to given value.
 
 
 ### GetGroupId
 
-`func (o *SnapshotSchedule) GetGroupId() string`
+`func (o *ApiAtlasSnapshotSchedule) GetGroupId() string`
 
 GetGroupId returns the GroupId field if non-nil, zero value otherwise.
 
 ### GetGroupIdOk
 
-`func (o *SnapshotSchedule) GetGroupIdOk() (*string, bool)`
+`func (o *ApiAtlasSnapshotSchedule) GetGroupIdOk() (*string, bool)`
 
 GetGroupIdOk returns a tuple with the GroupId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGroupId
 
-`func (o *SnapshotSchedule) SetGroupId(v string)`
+`func (o *ApiAtlasSnapshotSchedule) SetGroupId(v string)`
 
 SetGroupId sets GroupId field to given value.
 
 
 ### GetLinks
 
-`func (o *SnapshotSchedule) GetLinks() []Link`
+`func (o *ApiAtlasSnapshotSchedule) GetLinks() []Link`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *SnapshotSchedule) GetLinksOk() (*[]Link, bool)`
+`func (o *ApiAtlasSnapshotSchedule) GetLinksOk() (*[]Link, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *SnapshotSchedule) SetLinks(v []Link)`
+`func (o *ApiAtlasSnapshotSchedule) SetLinks(v []Link)`
 
 SetLinks sets Links field to given value.
 
 ### HasLinks
 
-`func (o *SnapshotSchedule) HasLinks() bool`
+`func (o *ApiAtlasSnapshotSchedule) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
 
 ### GetMonthlySnapshotRetentionMonths
 
-`func (o *SnapshotSchedule) GetMonthlySnapshotRetentionMonths() int`
+`func (o *ApiAtlasSnapshotSchedule) GetMonthlySnapshotRetentionMonths() int`
 
 GetMonthlySnapshotRetentionMonths returns the MonthlySnapshotRetentionMonths field if non-nil, zero value otherwise.
 
 ### GetMonthlySnapshotRetentionMonthsOk
 
-`func (o *SnapshotSchedule) GetMonthlySnapshotRetentionMonthsOk() (*int, bool)`
+`func (o *ApiAtlasSnapshotSchedule) GetMonthlySnapshotRetentionMonthsOk() (*int, bool)`
 
 GetMonthlySnapshotRetentionMonthsOk returns a tuple with the MonthlySnapshotRetentionMonths field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMonthlySnapshotRetentionMonths
 
-`func (o *SnapshotSchedule) SetMonthlySnapshotRetentionMonths(v int)`
+`func (o *ApiAtlasSnapshotSchedule) SetMonthlySnapshotRetentionMonths(v int)`
 
 SetMonthlySnapshotRetentionMonths sets MonthlySnapshotRetentionMonths field to given value.
 
 
 ### GetPointInTimeWindowHours
 
-`func (o *SnapshotSchedule) GetPointInTimeWindowHours() int`
+`func (o *ApiAtlasSnapshotSchedule) GetPointInTimeWindowHours() int`
 
 GetPointInTimeWindowHours returns the PointInTimeWindowHours field if non-nil, zero value otherwise.
 
 ### GetPointInTimeWindowHoursOk
 
-`func (o *SnapshotSchedule) GetPointInTimeWindowHoursOk() (*int, bool)`
+`func (o *ApiAtlasSnapshotSchedule) GetPointInTimeWindowHoursOk() (*int, bool)`
 
 GetPointInTimeWindowHoursOk returns a tuple with the PointInTimeWindowHours field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPointInTimeWindowHours
 
-`func (o *SnapshotSchedule) SetPointInTimeWindowHours(v int)`
+`func (o *ApiAtlasSnapshotSchedule) SetPointInTimeWindowHours(v int)`
 
 SetPointInTimeWindowHours sets PointInTimeWindowHours field to given value.
 
 
 ### GetSnapshotIntervalHours
 
-`func (o *SnapshotSchedule) GetSnapshotIntervalHours() int`
+`func (o *ApiAtlasSnapshotSchedule) GetSnapshotIntervalHours() int`
 
 GetSnapshotIntervalHours returns the SnapshotIntervalHours field if non-nil, zero value otherwise.
 
 ### GetSnapshotIntervalHoursOk
 
-`func (o *SnapshotSchedule) GetSnapshotIntervalHoursOk() (*int, bool)`
+`func (o *ApiAtlasSnapshotSchedule) GetSnapshotIntervalHoursOk() (*int, bool)`
 
 GetSnapshotIntervalHoursOk returns a tuple with the SnapshotIntervalHours field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSnapshotIntervalHours
 
-`func (o *SnapshotSchedule) SetSnapshotIntervalHours(v int)`
+`func (o *ApiAtlasSnapshotSchedule) SetSnapshotIntervalHours(v int)`
 
 SetSnapshotIntervalHours sets SnapshotIntervalHours field to given value.
 
 
 ### GetSnapshotRetentionDays
 
-`func (o *SnapshotSchedule) GetSnapshotRetentionDays() int`
+`func (o *ApiAtlasSnapshotSchedule) GetSnapshotRetentionDays() int`
 
 GetSnapshotRetentionDays returns the SnapshotRetentionDays field if non-nil, zero value otherwise.
 
 ### GetSnapshotRetentionDaysOk
 
-`func (o *SnapshotSchedule) GetSnapshotRetentionDaysOk() (*int, bool)`
+`func (o *ApiAtlasSnapshotSchedule) GetSnapshotRetentionDaysOk() (*int, bool)`
 
 GetSnapshotRetentionDaysOk returns a tuple with the SnapshotRetentionDays field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSnapshotRetentionDays
 
-`func (o *SnapshotSchedule) SetSnapshotRetentionDays(v int)`
+`func (o *ApiAtlasSnapshotSchedule) SetSnapshotRetentionDays(v int)`
 
 SetSnapshotRetentionDays sets SnapshotRetentionDays field to given value.
 
 
 ### GetWeeklySnapshotRetentionWeeks
 
-`func (o *SnapshotSchedule) GetWeeklySnapshotRetentionWeeks() int`
+`func (o *ApiAtlasSnapshotSchedule) GetWeeklySnapshotRetentionWeeks() int`
 
 GetWeeklySnapshotRetentionWeeks returns the WeeklySnapshotRetentionWeeks field if non-nil, zero value otherwise.
 
 ### GetWeeklySnapshotRetentionWeeksOk
 
-`func (o *SnapshotSchedule) GetWeeklySnapshotRetentionWeeksOk() (*int, bool)`
+`func (o *ApiAtlasSnapshotSchedule) GetWeeklySnapshotRetentionWeeksOk() (*int, bool)`
 
 GetWeeklySnapshotRetentionWeeksOk returns a tuple with the WeeklySnapshotRetentionWeeks field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetWeeklySnapshotRetentionWeeks
 
-`func (o *SnapshotSchedule) SetWeeklySnapshotRetentionWeeks(v int)`
+`func (o *ApiAtlasSnapshotSchedule) SetWeeklySnapshotRetentionWeeks(v int)`
 
 SetWeeklySnapshotRetentionWeeks sets WeeklySnapshotRetentionWeeks field to given value.
 

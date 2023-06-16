@@ -1,78 +1,78 @@
-# Policy
+# ApiPolicy
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies this backup policy. | [optional] 
-**PolicyItems** | Pointer to [**[]PolicyItem**](PolicyItem.md) | List that contains the specifications for one policy. | [optional] 
+**PolicyItems** | Pointer to [**[]ApiPolicyItem**](ApiPolicyItem.md) | List that contains the specifications for one policy. | [optional] 
 
 ## Methods
 
-### NewPolicy
+### NewApiPolicy
 
-`func NewPolicy() *Policy`
+`func NewApiPolicy() *ApiPolicy`
 
-NewPolicy instantiates a new Policy object
+NewApiPolicy instantiates a new ApiPolicy object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewPolicyWithDefaults
+### NewApiPolicyWithDefaults
 
-`func NewPolicyWithDefaults() *Policy`
+`func NewApiPolicyWithDefaults() *ApiPolicy`
 
-NewPolicyWithDefaults instantiates a new Policy object
+NewApiPolicyWithDefaults instantiates a new ApiPolicy object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *Policy) GetId() string`
+`func (o *ApiPolicy) GetId() string`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *Policy) GetIdOk() (*string, bool)`
+`func (o *ApiPolicy) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *Policy) SetId(v string)`
+`func (o *ApiPolicy) SetId(v string)`
 
 SetId sets Id field to given value.
 
 ### HasId
 
-`func (o *Policy) HasId() bool`
+`func (o *ApiPolicy) HasId() bool`
 
 HasId returns a boolean if a field has been set.
 
 ### GetPolicyItems
 
-`func (o *Policy) GetPolicyItems() []PolicyItem`
+`func (o *ApiPolicy) GetPolicyItems() []ApiPolicyItem`
 
 GetPolicyItems returns the PolicyItems field if non-nil, zero value otherwise.
 
 ### GetPolicyItemsOk
 
-`func (o *Policy) GetPolicyItemsOk() (*[]PolicyItem, bool)`
+`func (o *ApiPolicy) GetPolicyItemsOk() (*[]ApiPolicyItem, bool)`
 
 GetPolicyItemsOk returns a tuple with the PolicyItems field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPolicyItems
 
-`func (o *Policy) SetPolicyItems(v []PolicyItem)`
+`func (o *ApiPolicy) SetPolicyItems(v []ApiPolicyItem)`
 
 SetPolicyItems sets PolicyItems field to given value.
 
 ### HasPolicyItems
 
-`func (o *Policy) HasPolicyItems() bool`
+`func (o *ApiPolicy) HasPolicyItems() bool`
 
 HasPolicyItems returns a boolean if a field has been set.
 

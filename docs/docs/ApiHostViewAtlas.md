@@ -1,4 +1,4 @@
-# HostViewAtlas
+# ApiHostViewAtlas
 
 ## Properties
 
@@ -19,320 +19,320 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewHostViewAtlas
+### NewApiHostViewAtlas
 
-`func NewHostViewAtlas() *HostViewAtlas`
+`func NewApiHostViewAtlas() *ApiHostViewAtlas`
 
-NewHostViewAtlas instantiates a new HostViewAtlas object
+NewApiHostViewAtlas instantiates a new ApiHostViewAtlas object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewHostViewAtlasWithDefaults
+### NewApiHostViewAtlasWithDefaults
 
-`func NewHostViewAtlasWithDefaults() *HostViewAtlas`
+`func NewApiHostViewAtlasWithDefaults() *ApiHostViewAtlas`
 
-NewHostViewAtlasWithDefaults instantiates a new HostViewAtlas object
+NewApiHostViewAtlasWithDefaults instantiates a new ApiHostViewAtlas object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetCreated
 
-`func (o *HostViewAtlas) GetCreated() time.Time`
+`func (o *ApiHostViewAtlas) GetCreated() time.Time`
 
 GetCreated returns the Created field if non-nil, zero value otherwise.
 
 ### GetCreatedOk
 
-`func (o *HostViewAtlas) GetCreatedOk() (*time.Time, bool)`
+`func (o *ApiHostViewAtlas) GetCreatedOk() (*time.Time, bool)`
 
 GetCreatedOk returns a tuple with the Created field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreated
 
-`func (o *HostViewAtlas) SetCreated(v time.Time)`
+`func (o *ApiHostViewAtlas) SetCreated(v time.Time)`
 
 SetCreated sets Created field to given value.
 
 ### HasCreated
 
-`func (o *HostViewAtlas) HasCreated() bool`
+`func (o *ApiHostViewAtlas) HasCreated() bool`
 
 HasCreated returns a boolean if a field has been set.
 
 ### GetGroupId
 
-`func (o *HostViewAtlas) GetGroupId() string`
+`func (o *ApiHostViewAtlas) GetGroupId() string`
 
 GetGroupId returns the GroupId field if non-nil, zero value otherwise.
 
 ### GetGroupIdOk
 
-`func (o *HostViewAtlas) GetGroupIdOk() (*string, bool)`
+`func (o *ApiHostViewAtlas) GetGroupIdOk() (*string, bool)`
 
 GetGroupIdOk returns a tuple with the GroupId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGroupId
 
-`func (o *HostViewAtlas) SetGroupId(v string)`
+`func (o *ApiHostViewAtlas) SetGroupId(v string)`
 
 SetGroupId sets GroupId field to given value.
 
 ### HasGroupId
 
-`func (o *HostViewAtlas) HasGroupId() bool`
+`func (o *ApiHostViewAtlas) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
 
 ### GetHostname
 
-`func (o *HostViewAtlas) GetHostname() string`
+`func (o *ApiHostViewAtlas) GetHostname() string`
 
 GetHostname returns the Hostname field if non-nil, zero value otherwise.
 
 ### GetHostnameOk
 
-`func (o *HostViewAtlas) GetHostnameOk() (*string, bool)`
+`func (o *ApiHostViewAtlas) GetHostnameOk() (*string, bool)`
 
 GetHostnameOk returns a tuple with the Hostname field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetHostname
 
-`func (o *HostViewAtlas) SetHostname(v string)`
+`func (o *ApiHostViewAtlas) SetHostname(v string)`
 
 SetHostname sets Hostname field to given value.
 
 ### HasHostname
 
-`func (o *HostViewAtlas) HasHostname() bool`
+`func (o *ApiHostViewAtlas) HasHostname() bool`
 
 HasHostname returns a boolean if a field has been set.
 
 ### GetId
 
-`func (o *HostViewAtlas) GetId() string`
+`func (o *ApiHostViewAtlas) GetId() string`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *HostViewAtlas) GetIdOk() (*string, bool)`
+`func (o *ApiHostViewAtlas) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *HostViewAtlas) SetId(v string)`
+`func (o *ApiHostViewAtlas) SetId(v string)`
 
 SetId sets Id field to given value.
 
 ### HasId
 
-`func (o *HostViewAtlas) HasId() bool`
+`func (o *ApiHostViewAtlas) HasId() bool`
 
 HasId returns a boolean if a field has been set.
 
 ### GetLastPing
 
-`func (o *HostViewAtlas) GetLastPing() time.Time`
+`func (o *ApiHostViewAtlas) GetLastPing() time.Time`
 
 GetLastPing returns the LastPing field if non-nil, zero value otherwise.
 
 ### GetLastPingOk
 
-`func (o *HostViewAtlas) GetLastPingOk() (*time.Time, bool)`
+`func (o *ApiHostViewAtlas) GetLastPingOk() (*time.Time, bool)`
 
 GetLastPingOk returns a tuple with the LastPing field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLastPing
 
-`func (o *HostViewAtlas) SetLastPing(v time.Time)`
+`func (o *ApiHostViewAtlas) SetLastPing(v time.Time)`
 
 SetLastPing sets LastPing field to given value.
 
 ### HasLastPing
 
-`func (o *HostViewAtlas) HasLastPing() bool`
+`func (o *ApiHostViewAtlas) HasLastPing() bool`
 
 HasLastPing returns a boolean if a field has been set.
 
 ### GetLinks
 
-`func (o *HostViewAtlas) GetLinks() []LinkAtlas`
+`func (o *ApiHostViewAtlas) GetLinks() []LinkAtlas`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *HostViewAtlas) GetLinksOk() (*[]LinkAtlas, bool)`
+`func (o *ApiHostViewAtlas) GetLinksOk() (*[]LinkAtlas, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *HostViewAtlas) SetLinks(v []LinkAtlas)`
+`func (o *ApiHostViewAtlas) SetLinks(v []LinkAtlas)`
 
 SetLinks sets Links field to given value.
 
 ### HasLinks
 
-`func (o *HostViewAtlas) HasLinks() bool`
+`func (o *ApiHostViewAtlas) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
 
 ### GetPort
 
-`func (o *HostViewAtlas) GetPort() int`
+`func (o *ApiHostViewAtlas) GetPort() int`
 
 GetPort returns the Port field if non-nil, zero value otherwise.
 
 ### GetPortOk
 
-`func (o *HostViewAtlas) GetPortOk() (*int, bool)`
+`func (o *ApiHostViewAtlas) GetPortOk() (*int, bool)`
 
 GetPortOk returns a tuple with the Port field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPort
 
-`func (o *HostViewAtlas) SetPort(v int)`
+`func (o *ApiHostViewAtlas) SetPort(v int)`
 
 SetPort sets Port field to given value.
 
 ### HasPort
 
-`func (o *HostViewAtlas) HasPort() bool`
+`func (o *ApiHostViewAtlas) HasPort() bool`
 
 HasPort returns a boolean if a field has been set.
 
 ### GetReplicaSetName
 
-`func (o *HostViewAtlas) GetReplicaSetName() string`
+`func (o *ApiHostViewAtlas) GetReplicaSetName() string`
 
 GetReplicaSetName returns the ReplicaSetName field if non-nil, zero value otherwise.
 
 ### GetReplicaSetNameOk
 
-`func (o *HostViewAtlas) GetReplicaSetNameOk() (*string, bool)`
+`func (o *ApiHostViewAtlas) GetReplicaSetNameOk() (*string, bool)`
 
 GetReplicaSetNameOk returns a tuple with the ReplicaSetName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReplicaSetName
 
-`func (o *HostViewAtlas) SetReplicaSetName(v string)`
+`func (o *ApiHostViewAtlas) SetReplicaSetName(v string)`
 
 SetReplicaSetName sets ReplicaSetName field to given value.
 
 ### HasReplicaSetName
 
-`func (o *HostViewAtlas) HasReplicaSetName() bool`
+`func (o *ApiHostViewAtlas) HasReplicaSetName() bool`
 
 HasReplicaSetName returns a boolean if a field has been set.
 
 ### GetShardName
 
-`func (o *HostViewAtlas) GetShardName() string`
+`func (o *ApiHostViewAtlas) GetShardName() string`
 
 GetShardName returns the ShardName field if non-nil, zero value otherwise.
 
 ### GetShardNameOk
 
-`func (o *HostViewAtlas) GetShardNameOk() (*string, bool)`
+`func (o *ApiHostViewAtlas) GetShardNameOk() (*string, bool)`
 
 GetShardNameOk returns a tuple with the ShardName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetShardName
 
-`func (o *HostViewAtlas) SetShardName(v string)`
+`func (o *ApiHostViewAtlas) SetShardName(v string)`
 
 SetShardName sets ShardName field to given value.
 
 ### HasShardName
 
-`func (o *HostViewAtlas) HasShardName() bool`
+`func (o *ApiHostViewAtlas) HasShardName() bool`
 
 HasShardName returns a boolean if a field has been set.
 
 ### GetTypeName
 
-`func (o *HostViewAtlas) GetTypeName() string`
+`func (o *ApiHostViewAtlas) GetTypeName() string`
 
 GetTypeName returns the TypeName field if non-nil, zero value otherwise.
 
 ### GetTypeNameOk
 
-`func (o *HostViewAtlas) GetTypeNameOk() (*string, bool)`
+`func (o *ApiHostViewAtlas) GetTypeNameOk() (*string, bool)`
 
 GetTypeNameOk returns a tuple with the TypeName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTypeName
 
-`func (o *HostViewAtlas) SetTypeName(v string)`
+`func (o *ApiHostViewAtlas) SetTypeName(v string)`
 
 SetTypeName sets TypeName field to given value.
 
 ### HasTypeName
 
-`func (o *HostViewAtlas) HasTypeName() bool`
+`func (o *ApiHostViewAtlas) HasTypeName() bool`
 
 HasTypeName returns a boolean if a field has been set.
 
 ### GetUserAlias
 
-`func (o *HostViewAtlas) GetUserAlias() string`
+`func (o *ApiHostViewAtlas) GetUserAlias() string`
 
 GetUserAlias returns the UserAlias field if non-nil, zero value otherwise.
 
 ### GetUserAliasOk
 
-`func (o *HostViewAtlas) GetUserAliasOk() (*string, bool)`
+`func (o *ApiHostViewAtlas) GetUserAliasOk() (*string, bool)`
 
 GetUserAliasOk returns a tuple with the UserAlias field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUserAlias
 
-`func (o *HostViewAtlas) SetUserAlias(v string)`
+`func (o *ApiHostViewAtlas) SetUserAlias(v string)`
 
 SetUserAlias sets UserAlias field to given value.
 
 ### HasUserAlias
 
-`func (o *HostViewAtlas) HasUserAlias() bool`
+`func (o *ApiHostViewAtlas) HasUserAlias() bool`
 
 HasUserAlias returns a boolean if a field has been set.
 
 ### GetVersion
 
-`func (o *HostViewAtlas) GetVersion() string`
+`func (o *ApiHostViewAtlas) GetVersion() string`
 
 GetVersion returns the Version field if non-nil, zero value otherwise.
 
 ### GetVersionOk
 
-`func (o *HostViewAtlas) GetVersionOk() (*string, bool)`
+`func (o *ApiHostViewAtlas) GetVersionOk() (*string, bool)`
 
 GetVersionOk returns a tuple with the Version field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVersion
 
-`func (o *HostViewAtlas) SetVersion(v string)`
+`func (o *ApiHostViewAtlas) SetVersion(v string)`
 
 SetVersion sets Version field to given value.
 
 ### HasVersion
 
-`func (o *HostViewAtlas) HasVersion() bool`
+`func (o *ApiHostViewAtlas) HasVersion() bool`
 
 HasVersion returns a boolean if a field has been set.
 

@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 ## GetAtlasProcess
 
-> HostViewAtlas GetAtlasProcess(ctx, groupId, processId).Execute()
+> ApiHostViewAtlas GetAtlasProcess(ctx, groupId, processId).Execute()
 
 Return One MongoDB Process by ID
 
@@ -56,7 +56,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetAtlasProcess`: HostViewAtlas
+    // response from `GetAtlasProcess`: ApiHostViewAtlas
     fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.GetAtlasProcess`: %v\n", resp)
 }
 ```
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**HostViewAtlas**](HostViewAtlas.md)
+[**ApiHostViewAtlas**](ApiHostViewAtlas.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -183,7 +183,7 @@ Name | Type | Description  | Notes
 
 ## GetDatabaseMeasurements
 
-> MeasurementsGeneralViewAtlas GetDatabaseMeasurements(ctx, groupId, databaseName, processId).Granularity(granularity).M(m).Period(period).Start(start).End(end).Execute()
+> ApiMeasurementsGeneralViewAtlas GetDatabaseMeasurements(ctx, groupId, databaseName, processId).Granularity(granularity).M(m).Period(period).Start(start).End(end).Execute()
 
 Return Measurements of One Database for One MongoDB Process
 
@@ -222,7 +222,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetDatabaseMeasurements`: MeasurementsGeneralViewAtlas
+    // response from `GetDatabaseMeasurements`: ApiMeasurementsGeneralViewAtlas
     fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.GetDatabaseMeasurements`: %v\n", resp)
 }
 ```
@@ -255,7 +255,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MeasurementsGeneralViewAtlas**](MeasurementsGeneralViewAtlas.md)
+[**ApiMeasurementsGeneralViewAtlas**](ApiMeasurementsGeneralViewAtlas.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -272,7 +272,7 @@ Name | Type | Description  | Notes
 
 ## GetDiskMeasurements
 
-> MeasurementsGeneralViewAtlas GetDiskMeasurements(ctx, groupId, partitionName, processId).Granularity(granularity).M(m).Period(period).Start(start).End(end).Execute()
+> ApiMeasurementsGeneralViewAtlas GetDiskMeasurements(ctx, groupId, partitionName, processId).Granularity(granularity).M(m).Period(period).Start(start).End(end).Execute()
 
 Return Measurements of One Disk for One MongoDB Process
 
@@ -311,7 +311,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetDiskMeasurements`: MeasurementsGeneralViewAtlas
+    // response from `GetDiskMeasurements`: ApiMeasurementsGeneralViewAtlas
     fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.GetDiskMeasurements`: %v\n", resp)
 }
 ```
@@ -344,7 +344,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MeasurementsGeneralViewAtlas**](MeasurementsGeneralViewAtlas.md)
+[**ApiMeasurementsGeneralViewAtlas**](ApiMeasurementsGeneralViewAtlas.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -444,7 +444,7 @@ Name | Type | Description  | Notes
 
 ## GetHostMeasurements
 
-> MeasurementsGeneralViewAtlas GetHostMeasurements(ctx, groupId, processId).Granularity(granularity).M(m).Period(period).Start(start).End(end).Execute()
+> ApiMeasurementsGeneralViewAtlas GetHostMeasurements(ctx, groupId, processId).Granularity(granularity).M(m).Period(period).Start(start).End(end).Execute()
 
 Return Measurements for One MongoDB Process
 
@@ -482,7 +482,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetHostMeasurements`: MeasurementsGeneralViewAtlas
+    // response from `GetHostMeasurements`: ApiMeasurementsGeneralViewAtlas
     fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.GetHostMeasurements`: %v\n", resp)
 }
 ```
@@ -513,7 +513,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MeasurementsGeneralViewAtlas**](MeasurementsGeneralViewAtlas.md)
+[**ApiMeasurementsGeneralViewAtlas**](ApiMeasurementsGeneralViewAtlas.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

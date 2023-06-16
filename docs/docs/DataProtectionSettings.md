@@ -7,11 +7,11 @@ Name | Type | Description | Notes
 **AuthorizedEmail** | Pointer to **string** | Email address of the user who authorized to updated the Backup Compliance Policy  settings. | [optional] 
 **CopyProtectionEnabled** | Pointer to **bool** | Flag that indicates whether to enable additional backup copies for the cluster. If unspecified, this value defaults to false. | [optional] [default to false]
 **EncryptionAtRestEnabled** | Pointer to **bool** | Flag that indicates whether Encryption at Rest using Customer Key  Management is required for all clusters with a Backup Compliance Policy. If unspecified, this value defaults to false. | [optional] [default to false]
-**OnDemandPolicyItem** | Pointer to [**PolicyItem**](PolicyItem.md) |  | [optional] 
+**OnDemandPolicyItem** | Pointer to [**ApiPolicyItem**](ApiPolicyItem.md) |  | [optional] 
 **PitEnabled** | Pointer to **bool** | Flag that indicates whether the cluster uses Continuous Cloud Backups with a Backup Compliance Policy. If unspecified, this value defaults to false. | [optional] [default to false]
 **ProjectId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the project for the Backup Compliance Policy. | [optional] 
 **RestoreWindowDays** | Pointer to **int** | Number of previous days that you can restore back to with Continuous Cloud Backup with a Backup Compliance Policy. You must specify a positive, non-zero integer, and the maximum retention window can&#39;t exceed the hourly retention time. This parameter applies only to Continuous Cloud Backups with a Backup Compliance Policy. | [optional] 
-**ScheduledPolicyItems** | Pointer to [**[]PolicyItem**](PolicyItem.md) | List that contains the specifications for one scheduled policy. | [optional] 
+**ScheduledPolicyItems** | Pointer to [**[]ApiPolicyItem**](ApiPolicyItem.md) | List that contains the specifications for one scheduled policy. | [optional] 
 **State** | Pointer to **string** | Label that indicates the state of the Backup Compliance Policy settings. MongoDB Cloud ignores this setting when you enable or update the Backup Compliance Policy settings. | [optional] [readonly] 
 **UpdatedDate** | Pointer to **time.Time** | ISO 8601 timestamp format in UTC that indicates when the user updated the Data Protection Policy settings. MongoDB Cloud ignores this setting when you enable or update the Backup Compliance Policy settings. | [optional] [readonly] 
 **UpdatedUser** | Pointer to **string** | Email address that identifies the user who updated the Backup Compliance Policy settings. MongoDB Cloud ignores this email setting when you enable or update the Backup Compliance Policy settings. | [optional] [readonly] 
@@ -112,20 +112,20 @@ HasEncryptionAtRestEnabled returns a boolean if a field has been set.
 
 ### GetOnDemandPolicyItem
 
-`func (o *DataProtectionSettings) GetOnDemandPolicyItem() PolicyItem`
+`func (o *DataProtectionSettings) GetOnDemandPolicyItem() ApiPolicyItem`
 
 GetOnDemandPolicyItem returns the OnDemandPolicyItem field if non-nil, zero value otherwise.
 
 ### GetOnDemandPolicyItemOk
 
-`func (o *DataProtectionSettings) GetOnDemandPolicyItemOk() (*PolicyItem, bool)`
+`func (o *DataProtectionSettings) GetOnDemandPolicyItemOk() (*ApiPolicyItem, bool)`
 
 GetOnDemandPolicyItemOk returns a tuple with the OnDemandPolicyItem field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOnDemandPolicyItem
 
-`func (o *DataProtectionSettings) SetOnDemandPolicyItem(v PolicyItem)`
+`func (o *DataProtectionSettings) SetOnDemandPolicyItem(v ApiPolicyItem)`
 
 SetOnDemandPolicyItem sets OnDemandPolicyItem field to given value.
 
@@ -212,20 +212,20 @@ HasRestoreWindowDays returns a boolean if a field has been set.
 
 ### GetScheduledPolicyItems
 
-`func (o *DataProtectionSettings) GetScheduledPolicyItems() []PolicyItem`
+`func (o *DataProtectionSettings) GetScheduledPolicyItems() []ApiPolicyItem`
 
 GetScheduledPolicyItems returns the ScheduledPolicyItems field if non-nil, zero value otherwise.
 
 ### GetScheduledPolicyItemsOk
 
-`func (o *DataProtectionSettings) GetScheduledPolicyItemsOk() (*[]PolicyItem, bool)`
+`func (o *DataProtectionSettings) GetScheduledPolicyItemsOk() (*[]ApiPolicyItem, bool)`
 
 GetScheduledPolicyItemsOk returns a tuple with the ScheduledPolicyItems field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetScheduledPolicyItems
 
-`func (o *DataProtectionSettings) SetScheduledPolicyItems(v []PolicyItem)`
+`func (o *DataProtectionSettings) SetScheduledPolicyItems(v []ApiPolicyItem)`
 
 SetScheduledPolicyItems sets ScheduledPolicyItems field to given value.
 

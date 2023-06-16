@@ -1,4 +1,4 @@
-# BSONTimestamp
+# ApiBSONTimestamp
 
 ## Properties
 
@@ -9,70 +9,70 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewBSONTimestamp
+### NewApiBSONTimestamp
 
-`func NewBSONTimestamp() *BSONTimestamp`
+`func NewApiBSONTimestamp() *ApiBSONTimestamp`
 
-NewBSONTimestamp instantiates a new BSONTimestamp object
+NewApiBSONTimestamp instantiates a new ApiBSONTimestamp object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewBSONTimestampWithDefaults
+### NewApiBSONTimestampWithDefaults
 
-`func NewBSONTimestampWithDefaults() *BSONTimestamp`
+`func NewApiBSONTimestampWithDefaults() *ApiBSONTimestamp`
 
-NewBSONTimestampWithDefaults instantiates a new BSONTimestamp object
+NewApiBSONTimestampWithDefaults instantiates a new ApiBSONTimestamp object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetDate
 
-`func (o *BSONTimestamp) GetDate() time.Time`
+`func (o *ApiBSONTimestamp) GetDate() time.Time`
 
 GetDate returns the Date field if non-nil, zero value otherwise.
 
 ### GetDateOk
 
-`func (o *BSONTimestamp) GetDateOk() (*time.Time, bool)`
+`func (o *ApiBSONTimestamp) GetDateOk() (*time.Time, bool)`
 
 GetDateOk returns a tuple with the Date field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDate
 
-`func (o *BSONTimestamp) SetDate(v time.Time)`
+`func (o *ApiBSONTimestamp) SetDate(v time.Time)`
 
 SetDate sets Date field to given value.
 
 ### HasDate
 
-`func (o *BSONTimestamp) HasDate() bool`
+`func (o *ApiBSONTimestamp) HasDate() bool`
 
 HasDate returns a boolean if a field has been set.
 
 ### GetIncrement
 
-`func (o *BSONTimestamp) GetIncrement() int`
+`func (o *ApiBSONTimestamp) GetIncrement() int`
 
 GetIncrement returns the Increment field if non-nil, zero value otherwise.
 
 ### GetIncrementOk
 
-`func (o *BSONTimestamp) GetIncrementOk() (*int, bool)`
+`func (o *ApiBSONTimestamp) GetIncrementOk() (*int, bool)`
 
 GetIncrementOk returns a tuple with the Increment field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIncrement
 
-`func (o *BSONTimestamp) SetIncrement(v int)`
+`func (o *ApiBSONTimestamp) SetIncrement(v int)`
 
 SetIncrement sets Increment field to given value.
 
 ### HasIncrement
 
-`func (o *BSONTimestamp) HasIncrement() bool`
+`func (o *ApiBSONTimestamp) HasIncrement() bool`
 
 HasIncrement returns a boolean if a field has been set.
 

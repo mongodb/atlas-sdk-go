@@ -1,4 +1,4 @@
-# Key
+# ApiKey
 
 ## Properties
 
@@ -11,110 +11,110 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewKey
+### NewApiKey
 
-`func NewKey(id string, publicKey string, ) *Key`
+`func NewApiKey(id string, publicKey string, ) *ApiKey`
 
-NewKey instantiates a new Key object
+NewApiKey instantiates a new ApiKey object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewKeyWithDefaults
+### NewApiKeyWithDefaults
 
-`func NewKeyWithDefaults() *Key`
+`func NewApiKeyWithDefaults() *ApiKey`
 
-NewKeyWithDefaults instantiates a new Key object
+NewApiKeyWithDefaults instantiates a new ApiKey object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetAccessList
 
-`func (o *Key) GetAccessList() []AccessListItem`
+`func (o *ApiKey) GetAccessList() []AccessListItem`
 
 GetAccessList returns the AccessList field if non-nil, zero value otherwise.
 
 ### GetAccessListOk
 
-`func (o *Key) GetAccessListOk() (*[]AccessListItem, bool)`
+`func (o *ApiKey) GetAccessListOk() (*[]AccessListItem, bool)`
 
 GetAccessListOk returns a tuple with the AccessList field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccessList
 
-`func (o *Key) SetAccessList(v []AccessListItem)`
+`func (o *ApiKey) SetAccessList(v []AccessListItem)`
 
 SetAccessList sets AccessList field to given value.
 
 ### HasAccessList
 
-`func (o *Key) HasAccessList() bool`
+`func (o *ApiKey) HasAccessList() bool`
 
 HasAccessList returns a boolean if a field has been set.
 
 ### GetId
 
-`func (o *Key) GetId() string`
+`func (o *ApiKey) GetId() string`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *Key) GetIdOk() (*string, bool)`
+`func (o *ApiKey) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *Key) SetId(v string)`
+`func (o *ApiKey) SetId(v string)`
 
 SetId sets Id field to given value.
 
 
 ### GetPublicKey
 
-`func (o *Key) GetPublicKey() string`
+`func (o *ApiKey) GetPublicKey() string`
 
 GetPublicKey returns the PublicKey field if non-nil, zero value otherwise.
 
 ### GetPublicKeyOk
 
-`func (o *Key) GetPublicKeyOk() (*string, bool)`
+`func (o *ApiKey) GetPublicKeyOk() (*string, bool)`
 
 GetPublicKeyOk returns a tuple with the PublicKey field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPublicKey
 
-`func (o *Key) SetPublicKey(v string)`
+`func (o *ApiKey) SetPublicKey(v string)`
 
 SetPublicKey sets PublicKey field to given value.
 
 
 ### GetRoles
 
-`func (o *Key) GetRoles() []CloudRoleAssignment`
+`func (o *ApiKey) GetRoles() []CloudRoleAssignment`
 
 GetRoles returns the Roles field if non-nil, zero value otherwise.
 
 ### GetRolesOk
 
-`func (o *Key) GetRolesOk() (*[]CloudRoleAssignment, bool)`
+`func (o *ApiKey) GetRolesOk() (*[]CloudRoleAssignment, bool)`
 
 GetRolesOk returns a tuple with the Roles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRoles
 
-`func (o *Key) SetRoles(v []CloudRoleAssignment)`
+`func (o *ApiKey) SetRoles(v []CloudRoleAssignment)`
 
 SetRoles sets Roles field to given value.
 
 ### HasRoles
 
-`func (o *Key) HasRoles() bool`
+`func (o *ApiKey) HasRoles() bool`
 
 HasRoles returns a boolean if a field has been set.
 

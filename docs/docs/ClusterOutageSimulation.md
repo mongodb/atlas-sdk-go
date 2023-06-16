@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **ClusterName** | Pointer to **string** | Human-readable label that identifies the cluster that undergoes outage simulation. | [optional] [readonly] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the project that contains the cluster to undergo outage simulation. | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the outage simulation. | [optional] [readonly] 
-**OutageFilters** | Pointer to [**[]ClusterOutageSimulationOutageFilter**](ClusterOutageSimulationOutageFilter.md) | List of settings that specify the type of cluster outage simulation. | [optional] 
+**OutageFilters** | Pointer to [**[]AtlasClusterOutageSimulationOutageFilter**](AtlasClusterOutageSimulationOutageFilter.md) | List of settings that specify the type of cluster outage simulation. | [optional] 
 **StartRequestDate** | Pointer to **time.Time** | Date and time when MongoDB Cloud started the regional outage simulation. | [optional] [readonly] 
 **State** | Pointer to **string** | Phase of the outage simulation.  | State       | Indication | |-------------|------------| | &#x60;START_REQUESTED&#x60;    | User has requested cluster outage simulation.| | &#x60;STARTING&#x60;           | MongoDB Cloud is starting cluster outage simulation.| | &#x60;SIMULATING&#x60;         | MongoDB Cloud is simulating cluster outage.| | &#x60;RECOVERY_REQUESTED&#x60; | User has requested recovery from the simulated outage.| | &#x60;RECOVERING&#x60;         | MongoDB Cloud is recovering the cluster from the simulated outage.| | &#x60;COMPLETE&#x60;           | MongoDB Cloud has completed the cluster outage simulation.| | [optional] [readonly] 
 
@@ -107,20 +107,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetOutageFilters
 
-`func (o *ClusterOutageSimulation) GetOutageFilters() []ClusterOutageSimulationOutageFilter`
+`func (o *ClusterOutageSimulation) GetOutageFilters() []AtlasClusterOutageSimulationOutageFilter`
 
 GetOutageFilters returns the OutageFilters field if non-nil, zero value otherwise.
 
 ### GetOutageFiltersOk
 
-`func (o *ClusterOutageSimulation) GetOutageFiltersOk() (*[]ClusterOutageSimulationOutageFilter, bool)`
+`func (o *ClusterOutageSimulation) GetOutageFiltersOk() (*[]AtlasClusterOutageSimulationOutageFilter, bool)`
 
 GetOutageFiltersOk returns a tuple with the OutageFilters field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOutageFilters
 
-`func (o *ClusterOutageSimulation) SetOutageFilters(v []ClusterOutageSimulationOutageFilter)`
+`func (o *ClusterOutageSimulation) SetOutageFilters(v []AtlasClusterOutageSimulationOutageFilter)`
 
 SetOutageFilters sets OutageFilters field to given value.
 
