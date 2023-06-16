@@ -34,8 +34,6 @@ module.exports = function runTransformations(openapi) {
 
     ".components.schemas.ApiAtlasFTSAnalyzersViewManual.properties.charFilters.items",
     ".components.schemas.ApiAtlasFTSAnalyzersViewManual.properties.tokenizer",
-    ".components.schemas.FTSAnalyzersViewManual.properties.charFilters.items",
-    ".components.schemas.FTSAnalyzersViewManual.properties.tokenizer",
   ]);
 
   openapi = applyAddExperimentalTag(openapi, stableOperationIds);
@@ -60,15 +58,11 @@ module.exports = function runTransformations(openapi) {
     openapi.components.schemas.ApiError.properties.parameters.items = {};
   }
 
-  if (
-    openapi.components.schemas.ApiAtlastokenFiltersViewManual?.tokenFilters
-      .items
-  ) {
-    openapi.components.schemas.ApiAtlastokenFiltersViewManual.tokenFilters.items =
-      {};
-  }
-  if (openapi.components.schemas.TokenFiltersViewManual?.tokenFilters.items) {
-    openapi.components.schemas.TokenFiltersViewManual.tokenFilters.items = {};
+  if (openapi.components.schemas.ApiAtlastokenFilters) {
+    filtersObj = openapi.components.schemas.ApiAtlastokenFilters;
+    if (filtersObj.tokenFilters) {
+      filtersObj.tokenFilters.items = {};
+    }
   }
 
   applyRemoveEnumsTransformations(openapi);
