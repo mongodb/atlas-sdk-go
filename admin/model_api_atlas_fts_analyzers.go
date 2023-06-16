@@ -12,12 +12,12 @@ var _ MappedNullable = &ApiAtlasFTSAnalyzers{}
 // ApiAtlasFTSAnalyzers Settings that describe one Atlas Search custom analyzer.
 type ApiAtlasFTSAnalyzers struct {
 	// Filters that examine text one character at a time and perform filtering operations.
-	CharFilters []ApiAtlasFTSAnalyzersCharFiltersInner `json:"charFilters,omitempty"`
+	CharFilters []interface{} `json:"charFilters,omitempty"`
 	// Human-readable name that identifies the custom analyzer. Names must be unique within an index, and must not start with any of the following strings: - `lucene.` - `builtin.` - `mongodb.`
 	Name string `json:"name"`
 	// Filter that performs operations such as:  - Stemming, which reduces related words, such as \"talking\", \"talked\", and \"talks\" to their root word \"talk\".  - Redaction, the removal of sensitive information from public documents.
-	TokenFilters []ApiAtlasFTSAnalyzersTokenFiltersInner `json:"tokenFilters,omitempty"`
-	Tokenizer    ApiAtlasFTSAnalyzersTokenizer           `json:"tokenizer"`
+	TokenFilters []interface{}                 `json:"tokenFilters,omitempty"`
+	Tokenizer    ApiAtlasFTSAnalyzersTokenizer `json:"tokenizer"`
 }
 
 // NewApiAtlasFTSAnalyzers instantiates a new ApiAtlasFTSAnalyzers object
@@ -40,9 +40,9 @@ func NewApiAtlasFTSAnalyzersWithDefaults() *ApiAtlasFTSAnalyzers {
 }
 
 // GetCharFilters returns the CharFilters field value if set, zero value otherwise.
-func (o *ApiAtlasFTSAnalyzers) GetCharFilters() []ApiAtlasFTSAnalyzersCharFiltersInner {
+func (o *ApiAtlasFTSAnalyzers) GetCharFilters() []interface{} {
 	if o == nil || IsNil(o.CharFilters) {
-		var ret []ApiAtlasFTSAnalyzersCharFiltersInner
+		var ret []interface{}
 		return ret
 	}
 	return o.CharFilters
@@ -50,7 +50,7 @@ func (o *ApiAtlasFTSAnalyzers) GetCharFilters() []ApiAtlasFTSAnalyzersCharFilter
 
 // GetCharFiltersOk returns a tuple with the CharFilters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiAtlasFTSAnalyzers) GetCharFiltersOk() ([]ApiAtlasFTSAnalyzersCharFiltersInner, bool) {
+func (o *ApiAtlasFTSAnalyzers) GetCharFiltersOk() ([]interface{}, bool) {
 	if o == nil || IsNil(o.CharFilters) {
 		return nil, false
 	}
@@ -66,8 +66,8 @@ func (o *ApiAtlasFTSAnalyzers) HasCharFilters() bool {
 	return false
 }
 
-// SetCharFilters gets a reference to the given []ApiAtlasFTSAnalyzersCharFiltersInner and assigns it to the CharFilters field.
-func (o *ApiAtlasFTSAnalyzers) SetCharFilters(v []ApiAtlasFTSAnalyzersCharFiltersInner) {
+// SetCharFilters gets a reference to the given []interface{} and assigns it to the CharFilters field.
+func (o *ApiAtlasFTSAnalyzers) SetCharFilters(v []interface{}) {
 	o.CharFilters = v
 }
 
@@ -96,9 +96,9 @@ func (o *ApiAtlasFTSAnalyzers) SetName(v string) {
 }
 
 // GetTokenFilters returns the TokenFilters field value if set, zero value otherwise.
-func (o *ApiAtlasFTSAnalyzers) GetTokenFilters() []ApiAtlasFTSAnalyzersTokenFiltersInner {
+func (o *ApiAtlasFTSAnalyzers) GetTokenFilters() []interface{} {
 	if o == nil || IsNil(o.TokenFilters) {
-		var ret []ApiAtlasFTSAnalyzersTokenFiltersInner
+		var ret []interface{}
 		return ret
 	}
 	return o.TokenFilters
@@ -106,7 +106,7 @@ func (o *ApiAtlasFTSAnalyzers) GetTokenFilters() []ApiAtlasFTSAnalyzersTokenFilt
 
 // GetTokenFiltersOk returns a tuple with the TokenFilters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiAtlasFTSAnalyzers) GetTokenFiltersOk() ([]ApiAtlasFTSAnalyzersTokenFiltersInner, bool) {
+func (o *ApiAtlasFTSAnalyzers) GetTokenFiltersOk() ([]interface{}, bool) {
 	if o == nil || IsNil(o.TokenFilters) {
 		return nil, false
 	}
@@ -122,8 +122,8 @@ func (o *ApiAtlasFTSAnalyzers) HasTokenFilters() bool {
 	return false
 }
 
-// SetTokenFilters gets a reference to the given []ApiAtlasFTSAnalyzersTokenFiltersInner and assigns it to the TokenFilters field.
-func (o *ApiAtlasFTSAnalyzers) SetTokenFilters(v []ApiAtlasFTSAnalyzersTokenFiltersInner) {
+// SetTokenFilters gets a reference to the given []interface{} and assigns it to the TokenFilters field.
+func (o *ApiAtlasFTSAnalyzers) SetTokenFilters(v []interface{}) {
 	o.TokenFilters = v
 }
 

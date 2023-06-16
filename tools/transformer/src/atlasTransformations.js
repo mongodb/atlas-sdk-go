@@ -58,10 +58,13 @@ module.exports = function runTransformations(openapi) {
     openapi.components.schemas.ApiError.properties.parameters.items = {};
   }
 
-  if (openapi.components.schemas.ApiAtlastokenFilters) {
-    filtersObj = openapi.components.schemas.ApiAtlastokenFilters;
-    if (filtersObj.tokenFilters) {
-      filtersObj.tokenFilters.items = {};
+  if (openapi.components.schemas.ApiAtlasFTSAnalyzers) {
+    filtersObj = openapi.components.schemas.ApiAtlasFTSAnalyzers;
+    if (filtersObj.properties.tokenFilters) {
+      filtersObj.properties.tokenFilters.items = {};
+    }
+    if (filtersObj.properties.charFilters) {
+      filtersObj.properties.charFilters.items = {};
     }
   }
 
