@@ -750,12 +750,12 @@ func (e GenericOpenAPIError) Model() Error {
 	return e.model
 }
 
-// Sets model instance: Should be only used for testing
+// SetModel sets model instance: Should be only used for testing
 func (e GenericOpenAPIError) SetModel(errorModel Error) {
 	e.model = errorModel
 }
 
-// Sets error string: Should be only used for testing
+// SetError sets error string: Should be only used for testing
 func (e GenericOpenAPIError) SetError(errorString string) {
 	e.error = errorString
 }
