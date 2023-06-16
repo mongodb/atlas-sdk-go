@@ -108,8 +108,6 @@ function workaroundNestedTransformations(openapi) {
   } catch (e) {}
   if (parentObject) {
     transformOneOfProperties(parentObject, openapi);
-  } else {
-    throw new Error("RegionConfig cannot be renamed");
   }
 }
 
