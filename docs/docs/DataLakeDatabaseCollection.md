@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DataSources** | Pointer to [**[]DataLakeDatabaseDataSourceSettings**](DataLakeDatabaseDataSourceSettings.md) | Array that contains the data stores that map to a collection for this data lake. | [optional] 
+**DataSources** | Pointer to [**[]DataLakeDatabaseDataSource**](DataLakeDatabaseDataSource.md) | Array that contains the data stores that map to a collection for this data lake. | [optional] 
 **Name** | Pointer to **string** | Human-readable label that identifies the collection to which MongoDB Cloud maps the data in the data stores. | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetDataSources
 
-`func (o *DataLakeDatabaseCollection) GetDataSources() []DataLakeDatabaseDataSourceSettings`
+`func (o *DataLakeDatabaseCollection) GetDataSources() []DataLakeDatabaseDataSource`
 
 GetDataSources returns the DataSources field if non-nil, zero value otherwise.
 
 ### GetDataSourcesOk
 
-`func (o *DataLakeDatabaseCollection) GetDataSourcesOk() (*[]DataLakeDatabaseDataSourceSettings, bool)`
+`func (o *DataLakeDatabaseCollection) GetDataSourcesOk() (*[]DataLakeDatabaseDataSource, bool)`
 
 GetDataSourcesOk returns a tuple with the DataSources field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDataSources
 
-`func (o *DataLakeDatabaseCollection) SetDataSources(v []DataLakeDatabaseDataSourceSettings)`
+`func (o *DataLakeDatabaseCollection) SetDataSources(v []DataLakeDatabaseDataSource)`
 
 SetDataSources sets DataSources field to given value.
 

@@ -24,7 +24,7 @@ type AlertConfigurationsApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return CreateAlertConfigurationApiRequest
 	*/
-	CreateAlertConfiguration(ctx context.Context, groupId string, groupAlertsConfig *GroupAlertsConfig) CreateAlertConfigurationApiRequest
+	CreateAlertConfiguration(ctx context.Context, groupId string, alertConfigViewForNdsGroup *AlertConfigViewForNdsGroup) CreateAlertConfigurationApiRequest
 	/*
 		CreateAlertConfiguration Create One Alert Configuration in One Project
 
@@ -36,7 +36,7 @@ type AlertConfigurationsApi interface {
 	CreateAlertConfigurationWithParams(ctx context.Context, args *CreateAlertConfigurationApiParams) CreateAlertConfigurationApiRequest
 
 	// Interface only available internally
-	createAlertConfigurationExecute(r CreateAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error)
+	createAlertConfigurationExecute(r CreateAlertConfigurationApiRequest) (*AlertConfigViewForNdsGroup, *http.Response, error)
 
 	/*
 		DeleteAlertConfiguration Remove One Alert Configuration from One Project
@@ -88,7 +88,7 @@ type AlertConfigurationsApi interface {
 	GetAlertConfigurationWithParams(ctx context.Context, args *GetAlertConfigurationApiParams) GetAlertConfigurationApiRequest
 
 	// Interface only available internally
-	getAlertConfigurationExecute(r GetAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error)
+	getAlertConfigurationExecute(r GetAlertConfigurationApiRequest) (*AlertConfigViewForNdsGroup, *http.Response, error)
 
 	/*
 		ListAlertConfigurationMatchersFieldNames Get All Alert Configuration Matchers Field Names
@@ -177,7 +177,7 @@ type AlertConfigurationsApi interface {
 		@param alertConfigId Unique 24-hexadecimal digit string that identifies the alert configuration that triggered this alert. Use the [/alertConfigs](#tag/Alert-Configurations/operation/listAlertConfigurations) endpoint to retrieve all alert configurations to which the authenticated user has access.
 		@return ToggleAlertConfigurationApiRequest
 	*/
-	ToggleAlertConfiguration(ctx context.Context, groupId string, alertConfigId string, alertsToggle *AlertsToggle) ToggleAlertConfigurationApiRequest
+	ToggleAlertConfiguration(ctx context.Context, groupId string, alertConfigId string, toggle *Toggle) ToggleAlertConfigurationApiRequest
 	/*
 		ToggleAlertConfiguration Toggle One State of One Alert Configuration in One Project
 
@@ -189,7 +189,7 @@ type AlertConfigurationsApi interface {
 	ToggleAlertConfigurationWithParams(ctx context.Context, args *ToggleAlertConfigurationApiParams) ToggleAlertConfigurationApiRequest
 
 	// Interface only available internally
-	toggleAlertConfigurationExecute(r ToggleAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error)
+	toggleAlertConfigurationExecute(r ToggleAlertConfigurationApiRequest) (*AlertConfigViewForNdsGroup, *http.Response, error)
 
 	/*
 		UpdateAlertConfiguration Update One Alert Configuration for One Project
@@ -205,7 +205,7 @@ type AlertConfigurationsApi interface {
 		@param alertConfigId Unique 24-hexadecimal digit string that identifies the alert configuration. Use the [/alertConfigs](#tag/Alert-Configurations/operation/listAlertConfigurations) endpoint to retrieve all alert configurations to which the authenticated user has access.
 		@return UpdateAlertConfigurationApiRequest
 	*/
-	UpdateAlertConfiguration(ctx context.Context, groupId string, alertConfigId string, groupAlertsConfig *GroupAlertsConfig) UpdateAlertConfigurationApiRequest
+	UpdateAlertConfiguration(ctx context.Context, groupId string, alertConfigId string, alertConfigViewForNdsGroup *AlertConfigViewForNdsGroup) UpdateAlertConfigurationApiRequest
 	/*
 		UpdateAlertConfiguration Update One Alert Configuration for One Project
 
@@ -217,34 +217,34 @@ type AlertConfigurationsApi interface {
 	UpdateAlertConfigurationWithParams(ctx context.Context, args *UpdateAlertConfigurationApiParams) UpdateAlertConfigurationApiRequest
 
 	// Interface only available internally
-	updateAlertConfigurationExecute(r UpdateAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error)
+	updateAlertConfigurationExecute(r UpdateAlertConfigurationApiRequest) (*AlertConfigViewForNdsGroup, *http.Response, error)
 }
 
 // AlertConfigurationsApiService AlertConfigurationsApi service
 type AlertConfigurationsApiService service
 
 type CreateAlertConfigurationApiRequest struct {
-	ctx               context.Context
-	ApiService        AlertConfigurationsApi
-	groupId           string
-	groupAlertsConfig *GroupAlertsConfig
+	ctx                        context.Context
+	ApiService                 AlertConfigurationsApi
+	groupId                    string
+	alertConfigViewForNdsGroup *AlertConfigViewForNdsGroup
 }
 
 type CreateAlertConfigurationApiParams struct {
-	GroupId           string
-	GroupAlertsConfig *GroupAlertsConfig
+	GroupId                    string
+	AlertConfigViewForNdsGroup *AlertConfigViewForNdsGroup
 }
 
 func (a *AlertConfigurationsApiService) CreateAlertConfigurationWithParams(ctx context.Context, args *CreateAlertConfigurationApiParams) CreateAlertConfigurationApiRequest {
 	return CreateAlertConfigurationApiRequest{
-		ApiService:        a,
-		ctx:               ctx,
-		groupId:           args.GroupId,
-		groupAlertsConfig: args.GroupAlertsConfig,
+		ApiService:                 a,
+		ctx:                        ctx,
+		groupId:                    args.GroupId,
+		alertConfigViewForNdsGroup: args.AlertConfigViewForNdsGroup,
 	}
 }
 
-func (r CreateAlertConfigurationApiRequest) Execute() (*GroupAlertsConfig, *http.Response, error) {
+func (r CreateAlertConfigurationApiRequest) Execute() (*AlertConfigViewForNdsGroup, *http.Response, error) {
 	return r.ApiService.createAlertConfigurationExecute(r)
 }
 
@@ -259,24 +259,24 @@ Creates one alert configuration for the specified project. Alert configurations 
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateAlertConfigurationApiRequest
 */
-func (a *AlertConfigurationsApiService) CreateAlertConfiguration(ctx context.Context, groupId string, groupAlertsConfig *GroupAlertsConfig) CreateAlertConfigurationApiRequest {
+func (a *AlertConfigurationsApiService) CreateAlertConfiguration(ctx context.Context, groupId string, alertConfigViewForNdsGroup *AlertConfigViewForNdsGroup) CreateAlertConfigurationApiRequest {
 	return CreateAlertConfigurationApiRequest{
-		ApiService:        a,
-		ctx:               ctx,
-		groupId:           groupId,
-		groupAlertsConfig: groupAlertsConfig,
+		ApiService:                 a,
+		ctx:                        ctx,
+		groupId:                    groupId,
+		alertConfigViewForNdsGroup: alertConfigViewForNdsGroup,
 	}
 }
 
 // Execute executes the request
 //
-//	@return GroupAlertsConfig
-func (a *AlertConfigurationsApiService) createAlertConfigurationExecute(r CreateAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error) {
+//	@return AlertConfigViewForNdsGroup
+func (a *AlertConfigurationsApiService) createAlertConfigurationExecute(r CreateAlertConfigurationApiRequest) (*AlertConfigViewForNdsGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *GroupAlertsConfig
+		localVarReturnValue *AlertConfigViewForNdsGroup
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertConfigurationsApiService.CreateAlertConfiguration")
@@ -296,8 +296,8 @@ func (a *AlertConfigurationsApiService) createAlertConfigurationExecute(r Create
 	if strlen(r.groupId) > 24 {
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
-	if r.groupAlertsConfig == nil {
-		return localVarReturnValue, nil, reportError("groupAlertsConfig is required and must be specified")
+	if r.alertConfigViewForNdsGroup == nil {
+		return localVarReturnValue, nil, reportError("alertConfigViewForNdsGroup is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -318,7 +318,7 @@ func (a *AlertConfigurationsApiService) createAlertConfigurationExecute(r Create
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.groupAlertsConfig
+	localVarPostBody = r.alertConfigViewForNdsGroup
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -517,7 +517,7 @@ func (a *AlertConfigurationsApiService) GetAlertConfigurationWithParams(ctx cont
 	}
 }
 
-func (r GetAlertConfigurationApiRequest) Execute() (*GroupAlertsConfig, *http.Response, error) {
+func (r GetAlertConfigurationApiRequest) Execute() (*AlertConfigViewForNdsGroup, *http.Response, error) {
 	return r.ApiService.getAlertConfigurationExecute(r)
 }
 
@@ -544,13 +544,13 @@ func (a *AlertConfigurationsApiService) GetAlertConfiguration(ctx context.Contex
 
 // Execute executes the request
 //
-//	@return GroupAlertsConfig
-func (a *AlertConfigurationsApiService) getAlertConfigurationExecute(r GetAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error) {
+//	@return AlertConfigViewForNdsGroup
+func (a *AlertConfigurationsApiService) getAlertConfigurationExecute(r GetAlertConfigurationApiRequest) (*AlertConfigViewForNdsGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *GroupAlertsConfig
+		localVarReturnValue *AlertConfigViewForNdsGroup
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertConfigurationsApiService.GetAlertConfiguration")
@@ -1135,13 +1135,13 @@ type ToggleAlertConfigurationApiRequest struct {
 	ApiService    AlertConfigurationsApi
 	groupId       string
 	alertConfigId string
-	alertsToggle  *AlertsToggle
+	toggle        *Toggle
 }
 
 type ToggleAlertConfigurationApiParams struct {
 	GroupId       string
 	AlertConfigId string
-	AlertsToggle  *AlertsToggle
+	Toggle        *Toggle
 }
 
 func (a *AlertConfigurationsApiService) ToggleAlertConfigurationWithParams(ctx context.Context, args *ToggleAlertConfigurationApiParams) ToggleAlertConfigurationApiRequest {
@@ -1150,11 +1150,11 @@ func (a *AlertConfigurationsApiService) ToggleAlertConfigurationWithParams(ctx c
 		ctx:           ctx,
 		groupId:       args.GroupId,
 		alertConfigId: args.AlertConfigId,
-		alertsToggle:  args.AlertsToggle,
+		toggle:        args.Toggle,
 	}
 }
 
-func (r ToggleAlertConfigurationApiRequest) Execute() (*GroupAlertsConfig, *http.Response, error) {
+func (r ToggleAlertConfigurationApiRequest) Execute() (*AlertConfigViewForNdsGroup, *http.Response, error) {
 	return r.ApiService.toggleAlertConfigurationExecute(r)
 }
 
@@ -1172,25 +1172,25 @@ This resource remains under revision and may change.
 	@param alertConfigId Unique 24-hexadecimal digit string that identifies the alert configuration that triggered this alert. Use the [/alertConfigs](#tag/Alert-Configurations/operation/listAlertConfigurations) endpoint to retrieve all alert configurations to which the authenticated user has access.
 	@return ToggleAlertConfigurationApiRequest
 */
-func (a *AlertConfigurationsApiService) ToggleAlertConfiguration(ctx context.Context, groupId string, alertConfigId string, alertsToggle *AlertsToggle) ToggleAlertConfigurationApiRequest {
+func (a *AlertConfigurationsApiService) ToggleAlertConfiguration(ctx context.Context, groupId string, alertConfigId string, toggle *Toggle) ToggleAlertConfigurationApiRequest {
 	return ToggleAlertConfigurationApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
 		groupId:       groupId,
 		alertConfigId: alertConfigId,
-		alertsToggle:  alertsToggle,
+		toggle:        toggle,
 	}
 }
 
 // Execute executes the request
 //
-//	@return GroupAlertsConfig
-func (a *AlertConfigurationsApiService) toggleAlertConfigurationExecute(r ToggleAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error) {
+//	@return AlertConfigViewForNdsGroup
+func (a *AlertConfigurationsApiService) toggleAlertConfigurationExecute(r ToggleAlertConfigurationApiRequest) (*AlertConfigViewForNdsGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *GroupAlertsConfig
+		localVarReturnValue *AlertConfigViewForNdsGroup
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertConfigurationsApiService.ToggleAlertConfiguration")
@@ -1217,8 +1217,8 @@ func (a *AlertConfigurationsApiService) toggleAlertConfigurationExecute(r Toggle
 	if strlen(r.alertConfigId) > 24 {
 		return localVarReturnValue, nil, reportError("alertConfigId must have less than 24 elements")
 	}
-	if r.alertsToggle == nil {
-		return localVarReturnValue, nil, reportError("alertsToggle is required and must be specified")
+	if r.toggle == nil {
+		return localVarReturnValue, nil, reportError("toggle is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1239,7 +1239,7 @@ func (a *AlertConfigurationsApiService) toggleAlertConfigurationExecute(r Toggle
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.alertsToggle
+	localVarPostBody = r.toggle
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1286,30 +1286,30 @@ func (a *AlertConfigurationsApiService) toggleAlertConfigurationExecute(r Toggle
 }
 
 type UpdateAlertConfigurationApiRequest struct {
-	ctx               context.Context
-	ApiService        AlertConfigurationsApi
-	groupId           string
-	alertConfigId     string
-	groupAlertsConfig *GroupAlertsConfig
+	ctx                        context.Context
+	ApiService                 AlertConfigurationsApi
+	groupId                    string
+	alertConfigId              string
+	alertConfigViewForNdsGroup *AlertConfigViewForNdsGroup
 }
 
 type UpdateAlertConfigurationApiParams struct {
-	GroupId           string
-	AlertConfigId     string
-	GroupAlertsConfig *GroupAlertsConfig
+	GroupId                    string
+	AlertConfigId              string
+	AlertConfigViewForNdsGroup *AlertConfigViewForNdsGroup
 }
 
 func (a *AlertConfigurationsApiService) UpdateAlertConfigurationWithParams(ctx context.Context, args *UpdateAlertConfigurationApiParams) UpdateAlertConfigurationApiRequest {
 	return UpdateAlertConfigurationApiRequest{
-		ApiService:        a,
-		ctx:               ctx,
-		groupId:           args.GroupId,
-		alertConfigId:     args.AlertConfigId,
-		groupAlertsConfig: args.GroupAlertsConfig,
+		ApiService:                 a,
+		ctx:                        ctx,
+		groupId:                    args.GroupId,
+		alertConfigId:              args.AlertConfigId,
+		alertConfigViewForNdsGroup: args.AlertConfigViewForNdsGroup,
 	}
 }
 
-func (r UpdateAlertConfigurationApiRequest) Execute() (*GroupAlertsConfig, *http.Response, error) {
+func (r UpdateAlertConfigurationApiRequest) Execute() (*AlertConfigViewForNdsGroup, *http.Response, error) {
 	return r.ApiService.updateAlertConfigurationExecute(r)
 }
 
@@ -1327,25 +1327,25 @@ Updates one alert configuration in the specified project. Alert configurations d
 	@param alertConfigId Unique 24-hexadecimal digit string that identifies the alert configuration. Use the [/alertConfigs](#tag/Alert-Configurations/operation/listAlertConfigurations) endpoint to retrieve all alert configurations to which the authenticated user has access.
 	@return UpdateAlertConfigurationApiRequest
 */
-func (a *AlertConfigurationsApiService) UpdateAlertConfiguration(ctx context.Context, groupId string, alertConfigId string, groupAlertsConfig *GroupAlertsConfig) UpdateAlertConfigurationApiRequest {
+func (a *AlertConfigurationsApiService) UpdateAlertConfiguration(ctx context.Context, groupId string, alertConfigId string, alertConfigViewForNdsGroup *AlertConfigViewForNdsGroup) UpdateAlertConfigurationApiRequest {
 	return UpdateAlertConfigurationApiRequest{
-		ApiService:        a,
-		ctx:               ctx,
-		groupId:           groupId,
-		alertConfigId:     alertConfigId,
-		groupAlertsConfig: groupAlertsConfig,
+		ApiService:                 a,
+		ctx:                        ctx,
+		groupId:                    groupId,
+		alertConfigId:              alertConfigId,
+		alertConfigViewForNdsGroup: alertConfigViewForNdsGroup,
 	}
 }
 
 // Execute executes the request
 //
-//	@return GroupAlertsConfig
-func (a *AlertConfigurationsApiService) updateAlertConfigurationExecute(r UpdateAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error) {
+//	@return AlertConfigViewForNdsGroup
+func (a *AlertConfigurationsApiService) updateAlertConfigurationExecute(r UpdateAlertConfigurationApiRequest) (*AlertConfigViewForNdsGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *GroupAlertsConfig
+		localVarReturnValue *AlertConfigViewForNdsGroup
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertConfigurationsApiService.UpdateAlertConfiguration")
@@ -1372,8 +1372,8 @@ func (a *AlertConfigurationsApiService) updateAlertConfigurationExecute(r Update
 	if strlen(r.alertConfigId) > 24 {
 		return localVarReturnValue, nil, reportError("alertConfigId must have less than 24 elements")
 	}
-	if r.groupAlertsConfig == nil {
-		return localVarReturnValue, nil, reportError("groupAlertsConfig is required and must be specified")
+	if r.alertConfigViewForNdsGroup == nil {
+		return localVarReturnValue, nil, reportError("alertConfigViewForNdsGroup is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1394,7 +1394,7 @@ func (a *AlertConfigurationsApiService) updateAlertConfigurationExecute(r Update
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.groupAlertsConfig
+	localVarPostBody = r.alertConfigViewForNdsGroup
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

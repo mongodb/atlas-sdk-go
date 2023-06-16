@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **MetadataProvider** | Pointer to **string** | Target cloud provider for this Data Lake Pipeline. | [optional] 
 **MetadataRegion** | Pointer to **string** | Target cloud provider region for this Data Lake Pipeline. | [optional] 
-**PartitionFields** | Pointer to [**[]PipelinesPartitionField**](PipelinesPartitionField.md) | Ordered fields used to physically organize data in the destination. | [optional] 
+**PartitionFields** | Pointer to [**[]PartitionField**](PartitionField.md) | Ordered fields used to physically organize data in the destination. | [optional] 
 **Type** | Pointer to **string** | Type of ingestion destination of this Data Lake Pipeline. | [optional] [readonly] 
 
 ## Methods
@@ -80,20 +80,20 @@ HasMetadataRegion returns a boolean if a field has been set.
 
 ### GetPartitionFields
 
-`func (o *DLSIngestionSink) GetPartitionFields() []PipelinesPartitionField`
+`func (o *DLSIngestionSink) GetPartitionFields() []PartitionField`
 
 GetPartitionFields returns the PartitionFields field if non-nil, zero value otherwise.
 
 ### GetPartitionFieldsOk
 
-`func (o *DLSIngestionSink) GetPartitionFieldsOk() (*[]PipelinesPartitionField, bool)`
+`func (o *DLSIngestionSink) GetPartitionFieldsOk() (*[]PartitionField, bool)`
 
 GetPartitionFieldsOk returns a tuple with the PartitionFields field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPartitionFields
 
-`func (o *DLSIngestionSink) SetPartitionFields(v []PipelinesPartitionField)`
+`func (o *DLSIngestionSink) SetPartitionFields(v []PartitionField)`
 
 SetPartitionFields sets PartitionFields field to given value.
 

@@ -12,9 +12,9 @@ var _ MappedNullable = &DataLakeStorage{}
 // DataLakeStorage Configuration information for each data store and its mapping to MongoDB Cloud databases.
 type DataLakeStorage struct {
 	// Array that contains the queryable databases and collections for this data lake.
-	Databases []DataLakeDatabaseInstance `json:"databases,omitempty"`
+	Databases []DataLakeDatabase `json:"databases,omitempty"`
 	// Array that contains the data stores for the data lake.
-	Stores []DataLakeStoreSettings `json:"stores,omitempty"`
+	Stores []DataLakeStore `json:"stores,omitempty"`
 }
 
 // NewDataLakeStorage instantiates a new DataLakeStorage object
@@ -35,9 +35,9 @@ func NewDataLakeStorageWithDefaults() *DataLakeStorage {
 }
 
 // GetDatabases returns the Databases field value if set, zero value otherwise.
-func (o *DataLakeStorage) GetDatabases() []DataLakeDatabaseInstance {
+func (o *DataLakeStorage) GetDatabases() []DataLakeDatabase {
 	if o == nil || IsNil(o.Databases) {
-		var ret []DataLakeDatabaseInstance
+		var ret []DataLakeDatabase
 		return ret
 	}
 	return o.Databases
@@ -45,7 +45,7 @@ func (o *DataLakeStorage) GetDatabases() []DataLakeDatabaseInstance {
 
 // GetDatabasesOk returns a tuple with the Databases field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DataLakeStorage) GetDatabasesOk() ([]DataLakeDatabaseInstance, bool) {
+func (o *DataLakeStorage) GetDatabasesOk() ([]DataLakeDatabase, bool) {
 	if o == nil || IsNil(o.Databases) {
 		return nil, false
 	}
@@ -61,15 +61,15 @@ func (o *DataLakeStorage) HasDatabases() bool {
 	return false
 }
 
-// SetDatabases gets a reference to the given []DataLakeDatabaseInstance and assigns it to the Databases field.
-func (o *DataLakeStorage) SetDatabases(v []DataLakeDatabaseInstance) {
+// SetDatabases gets a reference to the given []DataLakeDatabase and assigns it to the Databases field.
+func (o *DataLakeStorage) SetDatabases(v []DataLakeDatabase) {
 	o.Databases = v
 }
 
 // GetStores returns the Stores field value if set, zero value otherwise.
-func (o *DataLakeStorage) GetStores() []DataLakeStoreSettings {
+func (o *DataLakeStorage) GetStores() []DataLakeStore {
 	if o == nil || IsNil(o.Stores) {
-		var ret []DataLakeStoreSettings
+		var ret []DataLakeStore
 		return ret
 	}
 	return o.Stores
@@ -77,7 +77,7 @@ func (o *DataLakeStorage) GetStores() []DataLakeStoreSettings {
 
 // GetStoresOk returns a tuple with the Stores field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DataLakeStorage) GetStoresOk() ([]DataLakeStoreSettings, bool) {
+func (o *DataLakeStorage) GetStoresOk() ([]DataLakeStore, bool) {
 	if o == nil || IsNil(o.Stores) {
 		return nil, false
 	}
@@ -93,8 +93,8 @@ func (o *DataLakeStorage) HasStores() bool {
 	return false
 }
 
-// SetStores gets a reference to the given []DataLakeStoreSettings and assigns it to the Stores field.
-func (o *DataLakeStorage) SetStores(v []DataLakeStoreSettings) {
+// SetStores gets a reference to the given []DataLakeStore and assigns it to the Stores field.
+func (o *DataLakeStorage) SetStores(v []DataLakeStore) {
 	o.Stores = v
 }
 

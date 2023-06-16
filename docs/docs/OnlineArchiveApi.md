@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## CreateOnlineArchive
 
-> BackupOnlineArchive CreateOnlineArchive(ctx, groupId, clusterName, backupOnlineArchive BackupOnlineArchive).Execute()
+> OnlineArchive CreateOnlineArchive(ctx, groupId, clusterName, onlineArchive OnlineArchive).Execute()
 
 Create One Online Archive
 
@@ -41,15 +41,15 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    backupOnlineArchive := *openapiclient.NewBackupOnlineArchive() // BackupOnlineArchive | 
+    onlineArchive := *openapiclient.NewOnlineArchive() // OnlineArchive | 
 
-    resp, r, err := sdk.OnlineArchiveApi.CreateOnlineArchive(context.Background(), groupId, clusterName, &backupOnlineArchive).Execute()
+    resp, r, err := sdk.OnlineArchiveApi.CreateOnlineArchive(context.Background(), groupId, clusterName, &onlineArchive).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OnlineArchiveApi.CreateOnlineArchive``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `CreateOnlineArchive`: BackupOnlineArchive
+    // response from `CreateOnlineArchive`: OnlineArchive
     fmt.Fprintf(os.Stdout, "Response from `OnlineArchiveApi.CreateOnlineArchive`: %v\n", resp)
 }
 ```
@@ -72,11 +72,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **backupOnlineArchive** | [**BackupOnlineArchive**](BackupOnlineArchive.md) | Creates one online archive. | 
+ **onlineArchive** | [**OnlineArchive**](OnlineArchive.md) | Creates one online archive. | 
 
 ### Return type
 
-[**BackupOnlineArchive**](BackupOnlineArchive.md)
+[**OnlineArchive**](OnlineArchive.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -259,7 +259,7 @@ Name | Type | Description  | Notes
 
 ## GetOnlineArchive
 
-> BackupOnlineArchive GetOnlineArchive(ctx, groupId, archiveId, clusterName).Execute()
+> OnlineArchive GetOnlineArchive(ctx, groupId, archiveId, clusterName).Execute()
 
 Return One Online Archive
 
@@ -293,7 +293,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetOnlineArchive`: BackupOnlineArchive
+    // response from `GetOnlineArchive`: OnlineArchive
     fmt.Fprintf(os.Stdout, "Response from `OnlineArchiveApi.GetOnlineArchive`: %v\n", resp)
 }
 ```
@@ -321,7 +321,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BackupOnlineArchive**](BackupOnlineArchive.md)
+[**OnlineArchive**](OnlineArchive.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -420,7 +420,7 @@ Name | Type | Description  | Notes
 
 ## UpdateOnlineArchive
 
-> BackupOnlineArchive UpdateOnlineArchive(ctx, groupId, archiveId, clusterName, backupOnlineArchive BackupOnlineArchive).Execute()
+> OnlineArchive UpdateOnlineArchive(ctx, groupId, archiveId, clusterName, onlineArchive OnlineArchive).Execute()
 
 Update One Online Archive
 
@@ -447,15 +447,15 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     archiveId := "archiveId_example" // string | 
     clusterName := "clusterName_example" // string | 
-    backupOnlineArchive := *openapiclient.NewBackupOnlineArchive() // BackupOnlineArchive | 
+    onlineArchive := *openapiclient.NewOnlineArchive() // OnlineArchive | 
 
-    resp, r, err := sdk.OnlineArchiveApi.UpdateOnlineArchive(context.Background(), groupId, archiveId, clusterName, &backupOnlineArchive).Execute()
+    resp, r, err := sdk.OnlineArchiveApi.UpdateOnlineArchive(context.Background(), groupId, archiveId, clusterName, &onlineArchive).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OnlineArchiveApi.UpdateOnlineArchive``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `UpdateOnlineArchive`: BackupOnlineArchive
+    // response from `UpdateOnlineArchive`: OnlineArchive
     fmt.Fprintf(os.Stdout, "Response from `OnlineArchiveApi.UpdateOnlineArchive`: %v\n", resp)
 }
 ```
@@ -480,11 +480,11 @@ Name | Type | Description  | Notes
 
 
 
- **backupOnlineArchive** | [**BackupOnlineArchive**](BackupOnlineArchive.md) | Updates, pauses, or resumes one online archive. | 
+ **onlineArchive** | [**OnlineArchive**](OnlineArchive.md) | Updates, pauses, or resumes one online archive. | 
 
 ### Return type
 
-[**BackupOnlineArchive**](BackupOnlineArchive.md)
+[**OnlineArchive**](OnlineArchive.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

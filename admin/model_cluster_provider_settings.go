@@ -9,37 +9,37 @@ import (
 
 // ClusterProviderSettings - Group of cloud provider settings that configure the provisioned MongoDB hosts.
 type ClusterProviderSettings struct {
-	AWSCloudProviderSettings    *AWSCloudProviderSettings
-	AzureCloudProviderSettings  *AzureCloudProviderSettings
-	CloudGCPProviderSettings    *CloudGCPProviderSettings
-	ClusterFreeProviderSettings *ClusterFreeProviderSettings
+	AWSProviderSettings   *AWSProviderSettings
+	AzureProviderSettings *AzureProviderSettings
+	FreeProviderSettings  *FreeProviderSettings
+	GCPProviderSettings   *GCPProviderSettings
 }
 
-// AWSCloudProviderSettingsAsClusterProviderSettings is a convenience function that returns AWSCloudProviderSettings wrapped in ClusterProviderSettings
-func AWSCloudProviderSettingsAsClusterProviderSettings(v *AWSCloudProviderSettings) ClusterProviderSettings {
+// AWSProviderSettingsAsClusterProviderSettings is a convenience function that returns AWSProviderSettings wrapped in ClusterProviderSettings
+func AWSProviderSettingsAsClusterProviderSettings(v *AWSProviderSettings) ClusterProviderSettings {
 	return ClusterProviderSettings{
-		AWSCloudProviderSettings: v,
+		AWSProviderSettings: v,
 	}
 }
 
-// AzureCloudProviderSettingsAsClusterProviderSettings is a convenience function that returns AzureCloudProviderSettings wrapped in ClusterProviderSettings
-func AzureCloudProviderSettingsAsClusterProviderSettings(v *AzureCloudProviderSettings) ClusterProviderSettings {
+// AzureProviderSettingsAsClusterProviderSettings is a convenience function that returns AzureProviderSettings wrapped in ClusterProviderSettings
+func AzureProviderSettingsAsClusterProviderSettings(v *AzureProviderSettings) ClusterProviderSettings {
 	return ClusterProviderSettings{
-		AzureCloudProviderSettings: v,
+		AzureProviderSettings: v,
 	}
 }
 
-// CloudGCPProviderSettingsAsClusterProviderSettings is a convenience function that returns CloudGCPProviderSettings wrapped in ClusterProviderSettings
-func CloudGCPProviderSettingsAsClusterProviderSettings(v *CloudGCPProviderSettings) ClusterProviderSettings {
+// FreeProviderSettingsAsClusterProviderSettings is a convenience function that returns FreeProviderSettings wrapped in ClusterProviderSettings
+func FreeProviderSettingsAsClusterProviderSettings(v *FreeProviderSettings) ClusterProviderSettings {
 	return ClusterProviderSettings{
-		CloudGCPProviderSettings: v,
+		FreeProviderSettings: v,
 	}
 }
 
-// ClusterFreeProviderSettingsAsClusterProviderSettings is a convenience function that returns ClusterFreeProviderSettings wrapped in ClusterProviderSettings
-func ClusterFreeProviderSettingsAsClusterProviderSettings(v *ClusterFreeProviderSettings) ClusterProviderSettings {
+// GCPProviderSettingsAsClusterProviderSettings is a convenience function that returns GCPProviderSettings wrapped in ClusterProviderSettings
+func GCPProviderSettingsAsClusterProviderSettings(v *GCPProviderSettings) ClusterProviderSettings {
 	return ClusterProviderSettings{
-		ClusterFreeProviderSettings: v,
+		GCPProviderSettings: v,
 	}
 }
 
@@ -55,97 +55,97 @@ func (dst *ClusterProviderSettings) UnmarshalJSON(data []byte) error {
 
 	// check if the discriminator value is 'AWS'
 	if jsonDict["providerName"] == "AWS" {
-		// try to unmarshal JSON data into AWSCloudProviderSettings
-		err = json.Unmarshal(data, &dst.AWSCloudProviderSettings)
+		// try to unmarshal JSON data into AWSProviderSettings
+		err = json.Unmarshal(data, &dst.AWSProviderSettings)
 		if err == nil {
-			return nil // data stored in dst.AWSCloudProviderSettings, return on the first match
+			return nil // data stored in dst.AWSProviderSettings, return on the first match
 		} else {
-			dst.AWSCloudProviderSettings = nil
-			return fmt.Errorf("failed to unmarshal ClusterProviderSettings as AWSCloudProviderSettings: %s", err.Error())
+			dst.AWSProviderSettings = nil
+			return fmt.Errorf("failed to unmarshal ClusterProviderSettings as AWSProviderSettings: %s", err.Error())
 		}
 	}
 
-	// check if the discriminator value is 'AWSCloudProviderSettings'
-	if jsonDict["providerName"] == "AWSCloudProviderSettings" {
-		// try to unmarshal JSON data into AWSCloudProviderSettings
-		err = json.Unmarshal(data, &dst.AWSCloudProviderSettings)
+	// check if the discriminator value is 'AWSProviderSettings'
+	if jsonDict["providerName"] == "AWSProviderSettings" {
+		// try to unmarshal JSON data into AWSProviderSettings
+		err = json.Unmarshal(data, &dst.AWSProviderSettings)
 		if err == nil {
-			return nil // data stored in dst.AWSCloudProviderSettings, return on the first match
+			return nil // data stored in dst.AWSProviderSettings, return on the first match
 		} else {
-			dst.AWSCloudProviderSettings = nil
-			return fmt.Errorf("failed to unmarshal ClusterProviderSettings as AWSCloudProviderSettings: %s", err.Error())
+			dst.AWSProviderSettings = nil
+			return fmt.Errorf("failed to unmarshal ClusterProviderSettings as AWSProviderSettings: %s", err.Error())
 		}
 	}
 
 	// check if the discriminator value is 'AZURE'
 	if jsonDict["providerName"] == "AZURE" {
-		// try to unmarshal JSON data into AzureCloudProviderSettings
-		err = json.Unmarshal(data, &dst.AzureCloudProviderSettings)
+		// try to unmarshal JSON data into AzureProviderSettings
+		err = json.Unmarshal(data, &dst.AzureProviderSettings)
 		if err == nil {
-			return nil // data stored in dst.AzureCloudProviderSettings, return on the first match
+			return nil // data stored in dst.AzureProviderSettings, return on the first match
 		} else {
-			dst.AzureCloudProviderSettings = nil
-			return fmt.Errorf("failed to unmarshal ClusterProviderSettings as AzureCloudProviderSettings: %s", err.Error())
+			dst.AzureProviderSettings = nil
+			return fmt.Errorf("failed to unmarshal ClusterProviderSettings as AzureProviderSettings: %s", err.Error())
 		}
 	}
 
-	// check if the discriminator value is 'AzureCloudProviderSettings'
-	if jsonDict["providerName"] == "AzureCloudProviderSettings" {
-		// try to unmarshal JSON data into AzureCloudProviderSettings
-		err = json.Unmarshal(data, &dst.AzureCloudProviderSettings)
+	// check if the discriminator value is 'AzureProviderSettings'
+	if jsonDict["providerName"] == "AzureProviderSettings" {
+		// try to unmarshal JSON data into AzureProviderSettings
+		err = json.Unmarshal(data, &dst.AzureProviderSettings)
 		if err == nil {
-			return nil // data stored in dst.AzureCloudProviderSettings, return on the first match
+			return nil // data stored in dst.AzureProviderSettings, return on the first match
 		} else {
-			dst.AzureCloudProviderSettings = nil
-			return fmt.Errorf("failed to unmarshal ClusterProviderSettings as AzureCloudProviderSettings: %s", err.Error())
+			dst.AzureProviderSettings = nil
+			return fmt.Errorf("failed to unmarshal ClusterProviderSettings as AzureProviderSettings: %s", err.Error())
 		}
 	}
 
-	// check if the discriminator value is 'CloudGCPProviderSettings'
-	if jsonDict["providerName"] == "CloudGCPProviderSettings" {
-		// try to unmarshal JSON data into CloudGCPProviderSettings
-		err = json.Unmarshal(data, &dst.CloudGCPProviderSettings)
+	// check if the discriminator value is 'FreeProviderSettings'
+	if jsonDict["providerName"] == "FreeProviderSettings" {
+		// try to unmarshal JSON data into FreeProviderSettings
+		err = json.Unmarshal(data, &dst.FreeProviderSettings)
 		if err == nil {
-			return nil // data stored in dst.CloudGCPProviderSettings, return on the first match
+			return nil // data stored in dst.FreeProviderSettings, return on the first match
 		} else {
-			dst.CloudGCPProviderSettings = nil
-			return fmt.Errorf("failed to unmarshal ClusterProviderSettings as CloudGCPProviderSettings: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'ClusterFreeProviderSettings'
-	if jsonDict["providerName"] == "ClusterFreeProviderSettings" {
-		// try to unmarshal JSON data into ClusterFreeProviderSettings
-		err = json.Unmarshal(data, &dst.ClusterFreeProviderSettings)
-		if err == nil {
-			return nil // data stored in dst.ClusterFreeProviderSettings, return on the first match
-		} else {
-			dst.ClusterFreeProviderSettings = nil
-			return fmt.Errorf("failed to unmarshal ClusterProviderSettings as ClusterFreeProviderSettings: %s", err.Error())
+			dst.FreeProviderSettings = nil
+			return fmt.Errorf("failed to unmarshal ClusterProviderSettings as FreeProviderSettings: %s", err.Error())
 		}
 	}
 
 	// check if the discriminator value is 'GCP'
 	if jsonDict["providerName"] == "GCP" {
-		// try to unmarshal JSON data into CloudGCPProviderSettings
-		err = json.Unmarshal(data, &dst.CloudGCPProviderSettings)
+		// try to unmarshal JSON data into GCPProviderSettings
+		err = json.Unmarshal(data, &dst.GCPProviderSettings)
 		if err == nil {
-			return nil // data stored in dst.CloudGCPProviderSettings, return on the first match
+			return nil // data stored in dst.GCPProviderSettings, return on the first match
 		} else {
-			dst.CloudGCPProviderSettings = nil
-			return fmt.Errorf("failed to unmarshal ClusterProviderSettings as CloudGCPProviderSettings: %s", err.Error())
+			dst.GCPProviderSettings = nil
+			return fmt.Errorf("failed to unmarshal ClusterProviderSettings as GCPProviderSettings: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'GCPProviderSettings'
+	if jsonDict["providerName"] == "GCPProviderSettings" {
+		// try to unmarshal JSON data into GCPProviderSettings
+		err = json.Unmarshal(data, &dst.GCPProviderSettings)
+		if err == nil {
+			return nil // data stored in dst.GCPProviderSettings, return on the first match
+		} else {
+			dst.GCPProviderSettings = nil
+			return fmt.Errorf("failed to unmarshal ClusterProviderSettings as GCPProviderSettings: %s", err.Error())
 		}
 	}
 
 	// check if the discriminator value is 'TENANT'
 	if jsonDict["providerName"] == "TENANT" {
-		// try to unmarshal JSON data into ClusterFreeProviderSettings
-		err = json.Unmarshal(data, &dst.ClusterFreeProviderSettings)
+		// try to unmarshal JSON data into FreeProviderSettings
+		err = json.Unmarshal(data, &dst.FreeProviderSettings)
 		if err == nil {
-			return nil // data stored in dst.ClusterFreeProviderSettings, return on the first match
+			return nil // data stored in dst.FreeProviderSettings, return on the first match
 		} else {
-			dst.ClusterFreeProviderSettings = nil
-			return fmt.Errorf("failed to unmarshal ClusterProviderSettings as ClusterFreeProviderSettings: %s", err.Error())
+			dst.FreeProviderSettings = nil
+			return fmt.Errorf("failed to unmarshal ClusterProviderSettings as FreeProviderSettings: %s", err.Error())
 		}
 	}
 
@@ -154,20 +154,20 @@ func (dst *ClusterProviderSettings) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src ClusterProviderSettings) MarshalJSON() ([]byte, error) {
-	if src.AWSCloudProviderSettings != nil {
-		return json.Marshal(&src.AWSCloudProviderSettings)
+	if src.AWSProviderSettings != nil {
+		return json.Marshal(&src.AWSProviderSettings)
 	}
 
-	if src.AzureCloudProviderSettings != nil {
-		return json.Marshal(&src.AzureCloudProviderSettings)
+	if src.AzureProviderSettings != nil {
+		return json.Marshal(&src.AzureProviderSettings)
 	}
 
-	if src.CloudGCPProviderSettings != nil {
-		return json.Marshal(&src.CloudGCPProviderSettings)
+	if src.FreeProviderSettings != nil {
+		return json.Marshal(&src.FreeProviderSettings)
 	}
 
-	if src.ClusterFreeProviderSettings != nil {
-		return json.Marshal(&src.ClusterFreeProviderSettings)
+	if src.GCPProviderSettings != nil {
+		return json.Marshal(&src.GCPProviderSettings)
 	}
 
 	return nil, nil // no data in oneOf schemas
@@ -178,20 +178,20 @@ func (obj *ClusterProviderSettings) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
-	if obj.AWSCloudProviderSettings != nil {
-		return obj.AWSCloudProviderSettings
+	if obj.AWSProviderSettings != nil {
+		return obj.AWSProviderSettings
 	}
 
-	if obj.AzureCloudProviderSettings != nil {
-		return obj.AzureCloudProviderSettings
+	if obj.AzureProviderSettings != nil {
+		return obj.AzureProviderSettings
 	}
 
-	if obj.CloudGCPProviderSettings != nil {
-		return obj.CloudGCPProviderSettings
+	if obj.FreeProviderSettings != nil {
+		return obj.FreeProviderSettings
 	}
 
-	if obj.ClusterFreeProviderSettings != nil {
-		return obj.ClusterFreeProviderSettings
+	if obj.GCPProviderSettings != nil {
+		return obj.GCPProviderSettings
 	}
 
 	// all schemas are nil

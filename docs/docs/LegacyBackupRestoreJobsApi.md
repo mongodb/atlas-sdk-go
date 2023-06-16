@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## CreateLegacyBackupRestoreJob
 
-> PaginatedRestoreJob CreateLegacyBackupRestoreJob(ctx, groupId, clusterName, backupRestoreJob BackupRestoreJob).Execute()
+> PaginatedRestoreJob CreateLegacyBackupRestoreJob(ctx, groupId, clusterName, restoreJob RestoreJob).Execute()
 
 Create One Legacy Backup Restore Job
 
@@ -41,9 +41,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    backupRestoreJob := *openapiclient.NewBackupRestoreJob(*openapiclient.NewBackupRestoreJobDelivery("MethodName_example")) // BackupRestoreJob | 
+    restoreJob := *openapiclient.NewRestoreJob(*openapiclient.NewRestoreJobDelivery("MethodName_example")) // RestoreJob | 
 
-    resp, r, err := sdk.LegacyBackupRestoreJobsApi.CreateLegacyBackupRestoreJob(context.Background(), groupId, clusterName, &backupRestoreJob).Execute()
+    resp, r, err := sdk.LegacyBackupRestoreJobsApi.CreateLegacyBackupRestoreJob(context.Background(), groupId, clusterName, &restoreJob).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LegacyBackupRestoreJobsApi.CreateLegacyBackupRestoreJob``: %v\n", err)
         apiError := admin.AsError(err)
@@ -72,7 +72,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **backupRestoreJob** | [**BackupRestoreJob**](BackupRestoreJob.md) | Legacy backup to restore to one cluster in the specified project. | 
+ **restoreJob** | [**RestoreJob**](RestoreJob.md) | Legacy backup to restore to one cluster in the specified project. | 
 
 ### Return type
 

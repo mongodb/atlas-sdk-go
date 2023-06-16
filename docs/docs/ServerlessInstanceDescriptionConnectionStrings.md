@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PrivateEndpoint** | Pointer to [**[]ServerlessConnectionStringsPrivateEndpointList**](ServerlessConnectionStringsPrivateEndpointList.md) | List of private endpoint-aware connection strings that you can use to connect to this serverless instance through a private endpoint. This parameter returns only if you created a private endpoint for this serverless instance and it is AVAILABLE. | [optional] [readonly] 
+**PrivateEndpoint** | Pointer to [**[]ServerlessInstanceDescriptionConnectionStringsPrivateEndpoint**](ServerlessInstanceDescriptionConnectionStringsPrivateEndpoint.md) | List of private endpoint-aware connection strings that you can use to connect to this serverless instance through a private endpoint. This parameter returns only if you created a private endpoint for this serverless instance and it is AVAILABLE. | [optional] [readonly] 
 **StandardSrv** | Pointer to **string** | Public connection string that you can use to connect to this serverless instance. This connection string uses the &#x60;mongodb+srv://&#x60; protocol. | [optional] [readonly] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetPrivateEndpoint
 
-`func (o *ServerlessInstanceDescriptionConnectionStrings) GetPrivateEndpoint() []ServerlessConnectionStringsPrivateEndpointList`
+`func (o *ServerlessInstanceDescriptionConnectionStrings) GetPrivateEndpoint() []ServerlessInstanceDescriptionConnectionStringsPrivateEndpoint`
 
 GetPrivateEndpoint returns the PrivateEndpoint field if non-nil, zero value otherwise.
 
 ### GetPrivateEndpointOk
 
-`func (o *ServerlessInstanceDescriptionConnectionStrings) GetPrivateEndpointOk() (*[]ServerlessConnectionStringsPrivateEndpointList, bool)`
+`func (o *ServerlessInstanceDescriptionConnectionStrings) GetPrivateEndpointOk() (*[]ServerlessInstanceDescriptionConnectionStringsPrivateEndpoint, bool)`
 
 GetPrivateEndpointOk returns a tuple with the PrivateEndpoint field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPrivateEndpoint
 
-`func (o *ServerlessInstanceDescriptionConnectionStrings) SetPrivateEndpoint(v []ServerlessConnectionStringsPrivateEndpointList)`
+`func (o *ServerlessInstanceDescriptionConnectionStrings) SetPrivateEndpoint(v []ServerlessInstanceDescriptionConnectionStringsPrivateEndpoint)`
 
 SetPrivateEndpoint sets PrivateEndpoint field to given value.
 

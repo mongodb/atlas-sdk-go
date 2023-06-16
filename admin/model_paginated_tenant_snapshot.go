@@ -14,7 +14,7 @@ type PaginatedTenantSnapshot struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	Links []Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud providers when completing this request.
-	Results []BackupTenantSnapshot `json:"results,omitempty"`
+	Results []TenantSnapshot `json:"results,omitempty"`
 	// Number of documents returned in this response.
 	TotalCount *int `json:"totalCount,omitempty"`
 }
@@ -69,9 +69,9 @@ func (o *PaginatedTenantSnapshot) SetLinks(v []Link) {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *PaginatedTenantSnapshot) GetResults() []BackupTenantSnapshot {
+func (o *PaginatedTenantSnapshot) GetResults() []TenantSnapshot {
 	if o == nil || IsNil(o.Results) {
-		var ret []BackupTenantSnapshot
+		var ret []TenantSnapshot
 		return ret
 	}
 	return o.Results
@@ -79,7 +79,7 @@ func (o *PaginatedTenantSnapshot) GetResults() []BackupTenantSnapshot {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedTenantSnapshot) GetResultsOk() ([]BackupTenantSnapshot, bool) {
+func (o *PaginatedTenantSnapshot) GetResultsOk() ([]TenantSnapshot, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -95,8 +95,8 @@ func (o *PaginatedTenantSnapshot) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []BackupTenantSnapshot and assigns it to the Results field.
-func (o *PaginatedTenantSnapshot) SetResults(v []BackupTenantSnapshot) {
+// SetResults gets a reference to the given []TenantSnapshot and assigns it to the Results field.
+func (o *PaginatedTenantSnapshot) SetResults(v []TenantSnapshot) {
 	o.Results = v
 }
 

@@ -156,7 +156,7 @@ type CloudMigrationServiceApi interface {
 	GetValidationStatusWithParams(ctx context.Context, args *GetValidationStatusApiParams) GetValidationStatusApiRequest
 
 	// Interface only available internally
-	getValidationStatusExecute(r GetValidationStatusApiRequest) (*LiveImportValidation, *http.Response, error)
+	getValidationStatusExecute(r GetValidationStatusApiRequest) (*Validation, *http.Response, error)
 
 	/*
 		ListSourceProjects Return All Projects Available for Migration
@@ -179,7 +179,7 @@ type CloudMigrationServiceApi interface {
 	ListSourceProjectsWithParams(ctx context.Context, args *ListSourceProjectsApiParams) ListSourceProjectsApiRequest
 
 	// Interface only available internally
-	listSourceProjectsExecute(r ListSourceProjectsApiRequest) ([]LiveImportAvailableProject, *http.Response, error)
+	listSourceProjectsExecute(r ListSourceProjectsApiRequest) ([]AvailableProject, *http.Response, error)
 
 	/*
 		ValidateMigration Validate One Migration Request
@@ -202,7 +202,7 @@ type CloudMigrationServiceApi interface {
 	ValidateMigrationWithParams(ctx context.Context, args *ValidateMigrationApiParams) ValidateMigrationApiRequest
 
 	// Interface only available internally
-	validateMigrationExecute(r ValidateMigrationApiRequest) (*LiveImportValidation, *http.Response, error)
+	validateMigrationExecute(r ValidateMigrationApiRequest) (*Validation, *http.Response, error)
 }
 
 // CloudMigrationServiceApiService CloudMigrationServiceApi service
@@ -913,7 +913,7 @@ func (a *CloudMigrationServiceApiService) GetValidationStatusWithParams(ctx cont
 	}
 }
 
-func (r GetValidationStatusApiRequest) Execute() (*LiveImportValidation, *http.Response, error) {
+func (r GetValidationStatusApiRequest) Execute() (*Validation, *http.Response, error) {
 	return r.ApiService.getValidationStatusExecute(r)
 }
 
@@ -938,13 +938,13 @@ func (a *CloudMigrationServiceApiService) GetValidationStatus(ctx context.Contex
 
 // Execute executes the request
 //
-//	@return LiveImportValidation
-func (a *CloudMigrationServiceApiService) getValidationStatusExecute(r GetValidationStatusApiRequest) (*LiveImportValidation, *http.Response, error) {
+//	@return Validation
+func (a *CloudMigrationServiceApiService) getValidationStatusExecute(r GetValidationStatusApiRequest) (*Validation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *LiveImportValidation
+		localVarReturnValue *Validation
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudMigrationServiceApiService.GetValidationStatus")
@@ -1052,7 +1052,7 @@ func (a *CloudMigrationServiceApiService) ListSourceProjectsWithParams(ctx conte
 	}
 }
 
-func (r ListSourceProjectsApiRequest) Execute() ([]LiveImportAvailableProject, *http.Response, error) {
+func (r ListSourceProjectsApiRequest) Execute() ([]AvailableProject, *http.Response, error) {
 	return r.ApiService.listSourceProjectsExecute(r)
 }
 
@@ -1075,13 +1075,13 @@ func (a *CloudMigrationServiceApiService) ListSourceProjects(ctx context.Context
 
 // Execute executes the request
 //
-//	@return []LiveImportAvailableProject
-func (a *CloudMigrationServiceApiService) listSourceProjectsExecute(r ListSourceProjectsApiRequest) ([]LiveImportAvailableProject, *http.Response, error) {
+//	@return []AvailableProject
+func (a *CloudMigrationServiceApiService) listSourceProjectsExecute(r ListSourceProjectsApiRequest) ([]AvailableProject, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []LiveImportAvailableProject
+		localVarReturnValue []AvailableProject
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudMigrationServiceApiService.ListSourceProjects")
@@ -1185,7 +1185,7 @@ func (a *CloudMigrationServiceApiService) ValidateMigrationWithParams(ctx contex
 	}
 }
 
-func (r ValidateMigrationApiRequest) Execute() (*LiveImportValidation, *http.Response, error) {
+func (r ValidateMigrationApiRequest) Execute() (*Validation, *http.Response, error) {
 	return r.ApiService.validateMigrationExecute(r)
 }
 
@@ -1209,13 +1209,13 @@ func (a *CloudMigrationServiceApiService) ValidateMigration(ctx context.Context,
 
 // Execute executes the request
 //
-//	@return LiveImportValidation
-func (a *CloudMigrationServiceApiService) validateMigrationExecute(r ValidateMigrationApiRequest) (*LiveImportValidation, *http.Response, error) {
+//	@return Validation
+func (a *CloudMigrationServiceApiService) validateMigrationExecute(r ValidateMigrationApiRequest) (*Validation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *LiveImportValidation
+		localVarReturnValue *Validation
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudMigrationServiceApiService.ValidateMigration")

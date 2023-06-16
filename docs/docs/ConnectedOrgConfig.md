@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **IdentityProviderId** | **string** | Unique 20-hexadecimal digit string that identifies the identity provider that this connected org config is associated with. | 
 **OrgId** | **string** | Unique 24-hexadecimal digit string that identifies the connected organization configuration. | [readonly] 
 **PostAuthRoleGrants** | Pointer to **[]string** | Atlas roles that are granted to a user in this organization after authenticating. | [optional] 
-**RoleMappings** | Pointer to [**[]AuthFederationRoleMapping**](AuthFederationRoleMapping.md) | Role mappings that are configured in this organization. | [optional] 
+**RoleMappings** | Pointer to [**[]RoleMapping**](RoleMapping.md) | Role mappings that are configured in this organization. | [optional] 
 **UserConflicts** | Pointer to [**[]FederatedUser**](FederatedUser.md) | List that contains the users who have an email address that doesn&#39;t match any domain on the allowed list. | [optional] 
 
 ## Methods
@@ -169,20 +169,20 @@ HasPostAuthRoleGrants returns a boolean if a field has been set.
 
 ### GetRoleMappings
 
-`func (o *ConnectedOrgConfig) GetRoleMappings() []AuthFederationRoleMapping`
+`func (o *ConnectedOrgConfig) GetRoleMappings() []RoleMapping`
 
 GetRoleMappings returns the RoleMappings field if non-nil, zero value otherwise.
 
 ### GetRoleMappingsOk
 
-`func (o *ConnectedOrgConfig) GetRoleMappingsOk() (*[]AuthFederationRoleMapping, bool)`
+`func (o *ConnectedOrgConfig) GetRoleMappingsOk() (*[]RoleMapping, bool)`
 
 GetRoleMappingsOk returns a tuple with the RoleMappings field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRoleMappings
 
-`func (o *ConnectedOrgConfig) SetRoleMappings(v []AuthFederationRoleMapping)`
+`func (o *ConnectedOrgConfig) SetRoleMappings(v []RoleMapping)`
 
 SetRoleMappings sets RoleMappings field to given value.
 

@@ -25,7 +25,7 @@ type LegacyBackupRestoreJobsApi interface {
 
 		Deprecated: this method has been deprecated. Please check the latest resource version for LegacyBackupRestoreJobsApi
 	*/
-	CreateLegacyBackupRestoreJob(ctx context.Context, groupId string, clusterName string, backupRestoreJob *BackupRestoreJob) CreateLegacyBackupRestoreJobApiRequest
+	CreateLegacyBackupRestoreJob(ctx context.Context, groupId string, clusterName string, restoreJob *RestoreJob) CreateLegacyBackupRestoreJobApiRequest
 	/*
 		CreateLegacyBackupRestoreJob Create One Legacy Backup Restore Job
 
@@ -46,26 +46,26 @@ type LegacyBackupRestoreJobsApi interface {
 type LegacyBackupRestoreJobsApiService service
 
 type CreateLegacyBackupRestoreJobApiRequest struct {
-	ctx              context.Context
-	ApiService       LegacyBackupRestoreJobsApi
-	groupId          string
-	clusterName      string
-	backupRestoreJob *BackupRestoreJob
+	ctx         context.Context
+	ApiService  LegacyBackupRestoreJobsApi
+	groupId     string
+	clusterName string
+	restoreJob  *RestoreJob
 }
 
 type CreateLegacyBackupRestoreJobApiParams struct {
-	GroupId          string
-	ClusterName      string
-	BackupRestoreJob *BackupRestoreJob
+	GroupId     string
+	ClusterName string
+	RestoreJob  *RestoreJob
 }
 
 func (a *LegacyBackupRestoreJobsApiService) CreateLegacyBackupRestoreJobWithParams(ctx context.Context, args *CreateLegacyBackupRestoreJobApiParams) CreateLegacyBackupRestoreJobApiRequest {
 	return CreateLegacyBackupRestoreJobApiRequest{
-		ApiService:       a,
-		ctx:              ctx,
-		groupId:          args.GroupId,
-		clusterName:      args.ClusterName,
-		backupRestoreJob: args.BackupRestoreJob,
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     args.GroupId,
+		clusterName: args.ClusterName,
+		restoreJob:  args.RestoreJob,
 	}
 }
 
@@ -85,13 +85,13 @@ CreateLegacyBackupRestoreJob Create One Legacy Backup Restore Job
 
 Deprecated
 */
-func (a *LegacyBackupRestoreJobsApiService) CreateLegacyBackupRestoreJob(ctx context.Context, groupId string, clusterName string, backupRestoreJob *BackupRestoreJob) CreateLegacyBackupRestoreJobApiRequest {
+func (a *LegacyBackupRestoreJobsApiService) CreateLegacyBackupRestoreJob(ctx context.Context, groupId string, clusterName string, restoreJob *RestoreJob) CreateLegacyBackupRestoreJobApiRequest {
 	return CreateLegacyBackupRestoreJobApiRequest{
-		ApiService:       a,
-		ctx:              ctx,
-		groupId:          groupId,
-		clusterName:      clusterName,
-		backupRestoreJob: backupRestoreJob,
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     groupId,
+		clusterName: clusterName,
+		restoreJob:  restoreJob,
 	}
 }
 
@@ -132,8 +132,8 @@ func (a *LegacyBackupRestoreJobsApiService) createLegacyBackupRestoreJobExecute(
 	if strlen(r.clusterName) > 64 {
 		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
 	}
-	if r.backupRestoreJob == nil {
-		return localVarReturnValue, nil, reportError("backupRestoreJob is required and must be specified")
+	if r.restoreJob == nil {
+		return localVarReturnValue, nil, reportError("restoreJob is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -154,7 +154,7 @@ func (a *LegacyBackupRestoreJobsApiService) createLegacyBackupRestoreJobExecute(
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.backupRestoreJob
+	localVarPostBody = r.restoreJob
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

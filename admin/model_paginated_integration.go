@@ -14,7 +14,7 @@ type PaginatedIntegration struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	Links []Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud providers when completing this request.
-	Results []ThridPartyIntegration `json:"results,omitempty"`
+	Results []Integration `json:"results,omitempty"`
 	// Number of documents returned in this response if **includeCount** query param is true.
 	TotalCount *int `json:"totalCount,omitempty"`
 }
@@ -69,9 +69,9 @@ func (o *PaginatedIntegration) SetLinks(v []Link) {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *PaginatedIntegration) GetResults() []ThridPartyIntegration {
+func (o *PaginatedIntegration) GetResults() []Integration {
 	if o == nil || IsNil(o.Results) {
-		var ret []ThridPartyIntegration
+		var ret []Integration
 		return ret
 	}
 	return o.Results
@@ -79,7 +79,7 @@ func (o *PaginatedIntegration) GetResults() []ThridPartyIntegration {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedIntegration) GetResultsOk() ([]ThridPartyIntegration, bool) {
+func (o *PaginatedIntegration) GetResultsOk() ([]Integration, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -95,8 +95,8 @@ func (o *PaginatedIntegration) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []ThridPartyIntegration and assigns it to the Results field.
-func (o *PaginatedIntegration) SetResults(v []ThridPartyIntegration) {
+// SetResults gets a reference to the given []Integration and assigns it to the Results field.
+func (o *PaginatedIntegration) SetResults(v []Integration) {
 	o.Results = v
 }
 

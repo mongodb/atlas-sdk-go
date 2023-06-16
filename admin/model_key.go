@@ -18,7 +18,7 @@ type Key struct {
 	// Public API key value set for the specified organization API key.
 	PublicKey string `json:"publicKey"`
 	// List that contains roles that the API key needs to have. All roles you provide must be valid for the specified project or organization. Each request must include a minimum of one valid role. The resource returns all project and organization roles assigned to the Cloud user.
-	Roles []CloudRoleAssignment `json:"roles,omitempty"`
+	Roles []RoleAssignment `json:"roles,omitempty"`
 }
 
 // NewKey instantiates a new Key object
@@ -121,9 +121,9 @@ func (o *Key) SetPublicKey(v string) {
 }
 
 // GetRoles returns the Roles field value if set, zero value otherwise.
-func (o *Key) GetRoles() []CloudRoleAssignment {
+func (o *Key) GetRoles() []RoleAssignment {
 	if o == nil || IsNil(o.Roles) {
-		var ret []CloudRoleAssignment
+		var ret []RoleAssignment
 		return ret
 	}
 	return o.Roles
@@ -131,7 +131,7 @@ func (o *Key) GetRoles() []CloudRoleAssignment {
 
 // GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Key) GetRolesOk() ([]CloudRoleAssignment, bool) {
+func (o *Key) GetRolesOk() ([]RoleAssignment, bool) {
 	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
@@ -147,8 +147,8 @@ func (o *Key) HasRoles() bool {
 	return false
 }
 
-// SetRoles gets a reference to the given []CloudRoleAssignment and assigns it to the Roles field.
-func (o *Key) SetRoles(v []CloudRoleAssignment) {
+// SetRoles gets a reference to the given []RoleAssignment and assigns it to the Roles field.
+func (o *Key) SetRoles(v []RoleAssignment) {
 	o.Roles = v
 }
 

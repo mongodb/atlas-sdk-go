@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | Human-readable label that identifies the serverless instance. | 
 **ProviderSettings** | [**ServerlessProviderSettings**](ServerlessProviderSettings.md) |  | 
-**ServerlessBackupOptions** | Pointer to [**ClusterServerlessBackupOptions**](ClusterServerlessBackupOptions.md) |  | [optional] 
+**ServerlessBackupOptions** | Pointer to [**ServerlessBackupOptions**](ServerlessBackupOptions.md) |  | [optional] 
 **StateName** | Pointer to **string** | Human-readable label that indicates the current operating condition of the serverless instance. | [optional] [readonly] 
-**Tags** | Pointer to [**[]ResourceTag**](ResourceTag.md) | List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the serverless instance. | [optional] 
+**Tags** | Pointer to [**[]Tag**](Tag.md) | List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the serverless instance. | [optional] 
 **TerminationProtectionEnabled** | Pointer to **bool** | Flag that indicates whether termination protection is enabled on the serverless instance. If set to &#x60;true&#x60;, MongoDB Cloud won&#39;t delete the serverless instance. If set to &#x60;false&#x60;, MongoDB Cloud will delete the serverless instance. | [optional] [default to false]
 
 ## Methods
@@ -72,20 +72,20 @@ SetProviderSettings sets ProviderSettings field to given value.
 
 ### GetServerlessBackupOptions
 
-`func (o *ServerlessInstanceDescriptionCreate) GetServerlessBackupOptions() ClusterServerlessBackupOptions`
+`func (o *ServerlessInstanceDescriptionCreate) GetServerlessBackupOptions() ServerlessBackupOptions`
 
 GetServerlessBackupOptions returns the ServerlessBackupOptions field if non-nil, zero value otherwise.
 
 ### GetServerlessBackupOptionsOk
 
-`func (o *ServerlessInstanceDescriptionCreate) GetServerlessBackupOptionsOk() (*ClusterServerlessBackupOptions, bool)`
+`func (o *ServerlessInstanceDescriptionCreate) GetServerlessBackupOptionsOk() (*ServerlessBackupOptions, bool)`
 
 GetServerlessBackupOptionsOk returns a tuple with the ServerlessBackupOptions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetServerlessBackupOptions
 
-`func (o *ServerlessInstanceDescriptionCreate) SetServerlessBackupOptions(v ClusterServerlessBackupOptions)`
+`func (o *ServerlessInstanceDescriptionCreate) SetServerlessBackupOptions(v ServerlessBackupOptions)`
 
 SetServerlessBackupOptions sets ServerlessBackupOptions field to given value.
 
@@ -122,20 +122,20 @@ HasStateName returns a boolean if a field has been set.
 
 ### GetTags
 
-`func (o *ServerlessInstanceDescriptionCreate) GetTags() []ResourceTag`
+`func (o *ServerlessInstanceDescriptionCreate) GetTags() []Tag`
 
 GetTags returns the Tags field if non-nil, zero value otherwise.
 
 ### GetTagsOk
 
-`func (o *ServerlessInstanceDescriptionCreate) GetTagsOk() (*[]ResourceTag, bool)`
+`func (o *ServerlessInstanceDescriptionCreate) GetTagsOk() (*[]Tag, bool)`
 
 GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTags
 
-`func (o *ServerlessInstanceDescriptionCreate) SetTags(v []ResourceTag)`
+`func (o *ServerlessInstanceDescriptionCreate) SetTags(v []Tag)`
 
 SetTags sets Tags field to given value.
 

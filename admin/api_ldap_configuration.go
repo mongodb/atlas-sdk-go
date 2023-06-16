@@ -81,7 +81,7 @@ type LDAPConfigurationApi interface {
 	GetLDAPConfigurationStatusWithParams(ctx context.Context, args *GetLDAPConfigurationStatusApiParams) GetLDAPConfigurationStatusApiRequest
 
 	// Interface only available internally
-	getLDAPConfigurationStatusExecute(r GetLDAPConfigurationStatusApiRequest) (*LDAPVerifyConnectivityJobRequest, *http.Response, error)
+	getLDAPConfigurationStatusExecute(r GetLDAPConfigurationStatusApiRequest) (*NDSLDAPVerifyConnectivityJobRequest, *http.Response, error)
 
 	/*
 		SaveLDAPConfiguration Edit the LDAP or X.509 Configuration
@@ -117,7 +117,7 @@ type LDAPConfigurationApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return VerifyLDAPConfigurationApiRequest
 	*/
-	VerifyLDAPConfiguration(ctx context.Context, groupId string, lDAPVerifyConnectivityJobRequestParams *LDAPVerifyConnectivityJobRequestParams) VerifyLDAPConfigurationApiRequest
+	VerifyLDAPConfiguration(ctx context.Context, groupId string, nDSLDAPVerifyConnectivityJobRequestParams *NDSLDAPVerifyConnectivityJobRequestParams) VerifyLDAPConfigurationApiRequest
 	/*
 		VerifyLDAPConfiguration Verify the LDAP Configuration in One Project
 
@@ -129,7 +129,7 @@ type LDAPConfigurationApi interface {
 	VerifyLDAPConfigurationWithParams(ctx context.Context, args *VerifyLDAPConfigurationApiParams) VerifyLDAPConfigurationApiRequest
 
 	// Interface only available internally
-	verifyLDAPConfigurationExecute(r VerifyLDAPConfigurationApiRequest) (*LDAPVerifyConnectivityJobRequest, *http.Response, error)
+	verifyLDAPConfigurationExecute(r VerifyLDAPConfigurationApiRequest) (*NDSLDAPVerifyConnectivityJobRequest, *http.Response, error)
 }
 
 // LDAPConfigurationApiService LDAPConfigurationApi service
@@ -416,7 +416,7 @@ func (a *LDAPConfigurationApiService) GetLDAPConfigurationStatusWithParams(ctx c
 	}
 }
 
-func (r GetLDAPConfigurationStatusApiRequest) Execute() (*LDAPVerifyConnectivityJobRequest, *http.Response, error) {
+func (r GetLDAPConfigurationStatusApiRequest) Execute() (*NDSLDAPVerifyConnectivityJobRequest, *http.Response, error) {
 	return r.ApiService.getLDAPConfigurationStatusExecute(r)
 }
 
@@ -441,13 +441,13 @@ func (a *LDAPConfigurationApiService) GetLDAPConfigurationStatus(ctx context.Con
 
 // Execute executes the request
 //
-//	@return LDAPVerifyConnectivityJobRequest
-func (a *LDAPConfigurationApiService) getLDAPConfigurationStatusExecute(r GetLDAPConfigurationStatusApiRequest) (*LDAPVerifyConnectivityJobRequest, *http.Response, error) {
+//	@return NDSLDAPVerifyConnectivityJobRequest
+func (a *LDAPConfigurationApiService) getLDAPConfigurationStatusExecute(r GetLDAPConfigurationStatusApiRequest) (*NDSLDAPVerifyConnectivityJobRequest, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *LDAPVerifyConnectivityJobRequest
+		localVarReturnValue *NDSLDAPVerifyConnectivityJobRequest
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LDAPConfigurationApiService.GetLDAPConfigurationStatus")
@@ -679,27 +679,27 @@ func (a *LDAPConfigurationApiService) saveLDAPConfigurationExecute(r SaveLDAPCon
 }
 
 type VerifyLDAPConfigurationApiRequest struct {
-	ctx                                    context.Context
-	ApiService                             LDAPConfigurationApi
-	groupId                                string
-	lDAPVerifyConnectivityJobRequestParams *LDAPVerifyConnectivityJobRequestParams
+	ctx                                       context.Context
+	ApiService                                LDAPConfigurationApi
+	groupId                                   string
+	nDSLDAPVerifyConnectivityJobRequestParams *NDSLDAPVerifyConnectivityJobRequestParams
 }
 
 type VerifyLDAPConfigurationApiParams struct {
-	GroupId                                string
-	LDAPVerifyConnectivityJobRequestParams *LDAPVerifyConnectivityJobRequestParams
+	GroupId                                   string
+	NDSLDAPVerifyConnectivityJobRequestParams *NDSLDAPVerifyConnectivityJobRequestParams
 }
 
 func (a *LDAPConfigurationApiService) VerifyLDAPConfigurationWithParams(ctx context.Context, args *VerifyLDAPConfigurationApiParams) VerifyLDAPConfigurationApiRequest {
 	return VerifyLDAPConfigurationApiRequest{
-		ApiService:                             a,
-		ctx:                                    ctx,
-		groupId:                                args.GroupId,
-		lDAPVerifyConnectivityJobRequestParams: args.LDAPVerifyConnectivityJobRequestParams,
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    args.GroupId,
+		nDSLDAPVerifyConnectivityJobRequestParams: args.NDSLDAPVerifyConnectivityJobRequestParams,
 	}
 }
 
-func (r VerifyLDAPConfigurationApiRequest) Execute() (*LDAPVerifyConnectivityJobRequest, *http.Response, error) {
+func (r VerifyLDAPConfigurationApiRequest) Execute() (*NDSLDAPVerifyConnectivityJobRequest, *http.Response, error) {
 	return r.ApiService.verifyLDAPConfigurationExecute(r)
 }
 
@@ -712,24 +712,24 @@ VerifyLDAPConfiguration Verify the LDAP Configuration in One Project
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return VerifyLDAPConfigurationApiRequest
 */
-func (a *LDAPConfigurationApiService) VerifyLDAPConfiguration(ctx context.Context, groupId string, lDAPVerifyConnectivityJobRequestParams *LDAPVerifyConnectivityJobRequestParams) VerifyLDAPConfigurationApiRequest {
+func (a *LDAPConfigurationApiService) VerifyLDAPConfiguration(ctx context.Context, groupId string, nDSLDAPVerifyConnectivityJobRequestParams *NDSLDAPVerifyConnectivityJobRequestParams) VerifyLDAPConfigurationApiRequest {
 	return VerifyLDAPConfigurationApiRequest{
-		ApiService:                             a,
-		ctx:                                    ctx,
-		groupId:                                groupId,
-		lDAPVerifyConnectivityJobRequestParams: lDAPVerifyConnectivityJobRequestParams,
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    groupId,
+		nDSLDAPVerifyConnectivityJobRequestParams: nDSLDAPVerifyConnectivityJobRequestParams,
 	}
 }
 
 // Execute executes the request
 //
-//	@return LDAPVerifyConnectivityJobRequest
-func (a *LDAPConfigurationApiService) verifyLDAPConfigurationExecute(r VerifyLDAPConfigurationApiRequest) (*LDAPVerifyConnectivityJobRequest, *http.Response, error) {
+//	@return NDSLDAPVerifyConnectivityJobRequest
+func (a *LDAPConfigurationApiService) verifyLDAPConfigurationExecute(r VerifyLDAPConfigurationApiRequest) (*NDSLDAPVerifyConnectivityJobRequest, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *LDAPVerifyConnectivityJobRequest
+		localVarReturnValue *NDSLDAPVerifyConnectivityJobRequest
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LDAPConfigurationApiService.VerifyLDAPConfiguration")
@@ -749,8 +749,8 @@ func (a *LDAPConfigurationApiService) verifyLDAPConfigurationExecute(r VerifyLDA
 	if strlen(r.groupId) > 24 {
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
-	if r.lDAPVerifyConnectivityJobRequestParams == nil {
-		return localVarReturnValue, nil, reportError("lDAPVerifyConnectivityJobRequestParams is required and must be specified")
+	if r.nDSLDAPVerifyConnectivityJobRequestParams == nil {
+		return localVarReturnValue, nil, reportError("nDSLDAPVerifyConnectivityJobRequestParams is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -771,7 +771,7 @@ func (a *LDAPConfigurationApiService) verifyLDAPConfigurationExecute(r VerifyLDA
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.lDAPVerifyConnectivityJobRequestParams
+	localVarPostBody = r.nDSLDAPVerifyConnectivityJobRequestParams
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

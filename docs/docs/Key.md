@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **AccessList** | Pointer to [**[]AccessListItem**](AccessListItem.md) | List of network addresses granted access to this API using this API key. | [optional] [readonly] 
 **Id** | **string** | Unique 24-hexadecimal digit string that identifies this organization API key. | [readonly] 
 **PublicKey** | **string** | Public API key value set for the specified organization API key. | [readonly] 
-**Roles** | Pointer to [**[]CloudRoleAssignment**](CloudRoleAssignment.md) | List that contains roles that the API key needs to have. All roles you provide must be valid for the specified project or organization. Each request must include a minimum of one valid role. The resource returns all project and organization roles assigned to the Cloud user. | [optional] [readonly] 
+**Roles** | Pointer to [**[]RoleAssignment**](RoleAssignment.md) | List that contains roles that the API key needs to have. All roles you provide must be valid for the specified project or organization. Each request must include a minimum of one valid role. The resource returns all project and organization roles assigned to the Cloud user. | [optional] [readonly] 
 
 ## Methods
 
@@ -95,20 +95,20 @@ SetPublicKey sets PublicKey field to given value.
 
 ### GetRoles
 
-`func (o *Key) GetRoles() []CloudRoleAssignment`
+`func (o *Key) GetRoles() []RoleAssignment`
 
 GetRoles returns the Roles field if non-nil, zero value otherwise.
 
 ### GetRolesOk
 
-`func (o *Key) GetRolesOk() (*[]CloudRoleAssignment, bool)`
+`func (o *Key) GetRolesOk() (*[]RoleAssignment, bool)`
 
 GetRolesOk returns a tuple with the Roles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRoles
 
-`func (o *Key) SetRoles(v []CloudRoleAssignment)`
+`func (o *Key) SetRoles(v []RoleAssignment)`
 
 SetRoles sets Roles field to given value.
 

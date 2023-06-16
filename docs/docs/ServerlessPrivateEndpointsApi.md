@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateServerlessPrivateEndpoint
 
-> ServerlessTenantEndpoint CreateServerlessPrivateEndpoint(ctx, groupId, instanceName, serverlessTenantCreateRequest ServerlessTenantCreateRequest).Execute()
+> ServerlessTenantEndpoint CreateServerlessPrivateEndpoint(ctx, groupId, instanceName, serverlessTenantEndpointCreate ServerlessTenantEndpointCreate).Execute()
 
 Create One Private Endpoint for One Serverless Instance
 
@@ -45,9 +45,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     instanceName := "instanceName_example" // string | 
-    serverlessTenantCreateRequest := *openapiclient.NewServerlessTenantCreateRequest() // ServerlessTenantCreateRequest | 
+    serverlessTenantEndpointCreate := *openapiclient.NewServerlessTenantEndpointCreate() // ServerlessTenantEndpointCreate | 
 
-    resp, r, err := sdk.ServerlessPrivateEndpointsApi.CreateServerlessPrivateEndpoint(context.Background(), groupId, instanceName, &serverlessTenantCreateRequest).Execute()
+    resp, r, err := sdk.ServerlessPrivateEndpointsApi.CreateServerlessPrivateEndpoint(context.Background(), groupId, instanceName, &serverlessTenantEndpointCreate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServerlessPrivateEndpointsApi.CreateServerlessPrivateEndpoint``: %v\n", err)
         apiError := admin.AsError(err)
@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **serverlessTenantCreateRequest** | [**ServerlessTenantCreateRequest**](ServerlessTenantCreateRequest.md) | Information about the Private Endpoint to create for the Serverless Instance. | 
+ **serverlessTenantEndpointCreate** | [**ServerlessTenantEndpointCreate**](ServerlessTenantEndpointCreate.md) | Information about the Private Endpoint to create for the Serverless Instance. | 
 
 ### Return type
 

@@ -35,7 +35,7 @@ type ProgrammaticAPIKeysApi interface {
 	AddProjectApiKeyWithParams(ctx context.Context, args *AddProjectApiKeyApiParams) AddProjectApiKeyApiRequest
 
 	// Interface only available internally
-	addProjectApiKeyExecute(r AddProjectApiKeyApiRequest) (*KeyUser, *http.Response, error)
+	addProjectApiKeyExecute(r AddProjectApiKeyApiRequest) (*ApiUser, *http.Response, error)
 
 	/*
 		CreateApiKey Create One Organization API Key
@@ -46,7 +46,7 @@ type ProgrammaticAPIKeysApi interface {
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@return CreateApiKeyApiRequest
 	*/
-	CreateApiKey(ctx context.Context, orgId string, createOrganizationKey *CreateOrganizationKey) CreateApiKeyApiRequest
+	CreateApiKey(ctx context.Context, orgId string, createOrganizationApiKey *CreateOrganizationApiKey) CreateApiKeyApiRequest
 	/*
 		CreateApiKey Create One Organization API Key
 
@@ -58,7 +58,7 @@ type ProgrammaticAPIKeysApi interface {
 	CreateApiKeyWithParams(ctx context.Context, args *CreateApiKeyApiParams) CreateApiKeyApiRequest
 
 	// Interface only available internally
-	createApiKeyExecute(r CreateApiKeyApiRequest) (*KeyUser, *http.Response, error)
+	createApiKeyExecute(r CreateApiKeyApiRequest) (*ApiUser, *http.Response, error)
 
 	/*
 		CreateApiKeyAccessList Create Access List Entries for One Organization API Key
@@ -93,7 +93,7 @@ type ProgrammaticAPIKeysApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return CreateProjectApiKeyApiRequest
 	*/
-	CreateProjectApiKey(ctx context.Context, groupId string, createProjectKey *CreateProjectKey) CreateProjectApiKeyApiRequest
+	CreateProjectApiKey(ctx context.Context, groupId string, createProjectApiKey *CreateProjectApiKey) CreateProjectApiKeyApiRequest
 	/*
 		CreateProjectApiKey Create and Assign One Organization API Key to One Project
 
@@ -105,7 +105,7 @@ type ProgrammaticAPIKeysApi interface {
 	CreateProjectApiKeyWithParams(ctx context.Context, args *CreateProjectApiKeyApiParams) CreateProjectApiKeyApiRequest
 
 	// Interface only available internally
-	createProjectApiKeyExecute(r CreateProjectApiKeyApiRequest) (*KeyUser, *http.Response, error)
+	createProjectApiKeyExecute(r CreateProjectApiKeyApiRequest) (*ApiUser, *http.Response, error)
 
 	/*
 		DeleteApiKey Remove One Organization API Key
@@ -178,7 +178,7 @@ type ProgrammaticAPIKeysApi interface {
 	GetApiKeyWithParams(ctx context.Context, args *GetApiKeyApiParams) GetApiKeyApiRequest
 
 	// Interface only available internally
-	getApiKeyExecute(r GetApiKeyApiRequest) (*KeyUser, *http.Response, error)
+	getApiKeyExecute(r GetApiKeyApiRequest) (*ApiUser, *http.Response, error)
 
 	/*
 		GetApiKeyAccessList Return One Access List Entry for One Organization API Key
@@ -309,7 +309,7 @@ type ProgrammaticAPIKeysApi interface {
 		@param apiUserId Unique 24-hexadecimal digit string that identifies this organization API key you  want to update.
 		@return UpdateApiKeyApiRequest
 	*/
-	UpdateApiKey(ctx context.Context, orgId string, apiUserId string, createOrganizationKey *CreateOrganizationKey) UpdateApiKeyApiRequest
+	UpdateApiKey(ctx context.Context, orgId string, apiUserId string, createOrganizationApiKey *CreateOrganizationApiKey) UpdateApiKeyApiRequest
 	/*
 		UpdateApiKey Update One Organization API Key
 
@@ -321,7 +321,7 @@ type ProgrammaticAPIKeysApi interface {
 	UpdateApiKeyWithParams(ctx context.Context, args *UpdateApiKeyApiParams) UpdateApiKeyApiRequest
 
 	// Interface only available internally
-	updateApiKeyExecute(r UpdateApiKeyApiRequest) (*KeyUser, *http.Response, error)
+	updateApiKeyExecute(r UpdateApiKeyApiRequest) (*ApiUser, *http.Response, error)
 
 	/*
 		UpdateApiKeyRoles Update Roles of One Organization API Key to One Project
@@ -333,7 +333,7 @@ type ProgrammaticAPIKeysApi interface {
 		@param apiUserId Unique 24-hexadecimal digit string that identifies this organization API key that you want to unassign from one project.
 		@return UpdateApiKeyRolesApiRequest
 	*/
-	UpdateApiKeyRoles(ctx context.Context, groupId string, apiUserId string, createProjectKey *CreateProjectKey) UpdateApiKeyRolesApiRequest
+	UpdateApiKeyRoles(ctx context.Context, groupId string, apiUserId string, createProjectApiKey *CreateProjectApiKey) UpdateApiKeyRolesApiRequest
 	/*
 		UpdateApiKeyRoles Update Roles of One Organization API Key to One Project
 
@@ -345,7 +345,7 @@ type ProgrammaticAPIKeysApi interface {
 	UpdateApiKeyRolesWithParams(ctx context.Context, args *UpdateApiKeyRolesApiParams) UpdateApiKeyRolesApiRequest
 
 	// Interface only available internally
-	updateApiKeyRolesExecute(r UpdateApiKeyRolesApiRequest) (*KeyUser, *http.Response, error)
+	updateApiKeyRolesExecute(r UpdateApiKeyRolesApiRequest) (*ApiUser, *http.Response, error)
 }
 
 // ProgrammaticAPIKeysApiService ProgrammaticAPIKeysApi service
@@ -375,7 +375,7 @@ func (a *ProgrammaticAPIKeysApiService) AddProjectApiKeyWithParams(ctx context.C
 	}
 }
 
-func (r AddProjectApiKeyApiRequest) Execute() (*KeyUser, *http.Response, error) {
+func (r AddProjectApiKeyApiRequest) Execute() (*ApiUser, *http.Response, error) {
 	return r.ApiService.addProjectApiKeyExecute(r)
 }
 
@@ -401,13 +401,13 @@ func (a *ProgrammaticAPIKeysApiService) AddProjectApiKey(ctx context.Context, gr
 
 // Execute executes the request
 //
-//	@return KeyUser
-func (a *ProgrammaticAPIKeysApiService) addProjectApiKeyExecute(r AddProjectApiKeyApiRequest) (*KeyUser, *http.Response, error) {
+//	@return ApiUser
+func (a *ProgrammaticAPIKeysApiService) addProjectApiKeyExecute(r AddProjectApiKeyApiRequest) (*ApiUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *KeyUser
+		localVarReturnValue *ApiUser
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysApiService.AddProjectApiKey")
@@ -503,27 +503,27 @@ func (a *ProgrammaticAPIKeysApiService) addProjectApiKeyExecute(r AddProjectApiK
 }
 
 type CreateApiKeyApiRequest struct {
-	ctx                   context.Context
-	ApiService            ProgrammaticAPIKeysApi
-	orgId                 string
-	createOrganizationKey *CreateOrganizationKey
+	ctx                      context.Context
+	ApiService               ProgrammaticAPIKeysApi
+	orgId                    string
+	createOrganizationApiKey *CreateOrganizationApiKey
 }
 
 type CreateApiKeyApiParams struct {
-	OrgId                 string
-	CreateOrganizationKey *CreateOrganizationKey
+	OrgId                    string
+	CreateOrganizationApiKey *CreateOrganizationApiKey
 }
 
 func (a *ProgrammaticAPIKeysApiService) CreateApiKeyWithParams(ctx context.Context, args *CreateApiKeyApiParams) CreateApiKeyApiRequest {
 	return CreateApiKeyApiRequest{
-		ApiService:            a,
-		ctx:                   ctx,
-		orgId:                 args.OrgId,
-		createOrganizationKey: args.CreateOrganizationKey,
+		ApiService:               a,
+		ctx:                      ctx,
+		orgId:                    args.OrgId,
+		createOrganizationApiKey: args.CreateOrganizationApiKey,
 	}
 }
 
-func (r CreateApiKeyApiRequest) Execute() (*KeyUser, *http.Response, error) {
+func (r CreateApiKeyApiRequest) Execute() (*ApiUser, *http.Response, error) {
 	return r.ApiService.createApiKeyExecute(r)
 }
 
@@ -536,24 +536,24 @@ Creates one API key for the specified organization. An organization API key gran
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return CreateApiKeyApiRequest
 */
-func (a *ProgrammaticAPIKeysApiService) CreateApiKey(ctx context.Context, orgId string, createOrganizationKey *CreateOrganizationKey) CreateApiKeyApiRequest {
+func (a *ProgrammaticAPIKeysApiService) CreateApiKey(ctx context.Context, orgId string, createOrganizationApiKey *CreateOrganizationApiKey) CreateApiKeyApiRequest {
 	return CreateApiKeyApiRequest{
-		ApiService:            a,
-		ctx:                   ctx,
-		orgId:                 orgId,
-		createOrganizationKey: createOrganizationKey,
+		ApiService:               a,
+		ctx:                      ctx,
+		orgId:                    orgId,
+		createOrganizationApiKey: createOrganizationApiKey,
 	}
 }
 
 // Execute executes the request
 //
-//	@return KeyUser
-func (a *ProgrammaticAPIKeysApiService) createApiKeyExecute(r CreateApiKeyApiRequest) (*KeyUser, *http.Response, error) {
+//	@return ApiUser
+func (a *ProgrammaticAPIKeysApiService) createApiKeyExecute(r CreateApiKeyApiRequest) (*ApiUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *KeyUser
+		localVarReturnValue *ApiUser
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysApiService.CreateApiKey")
@@ -573,8 +573,8 @@ func (a *ProgrammaticAPIKeysApiService) createApiKeyExecute(r CreateApiKeyApiReq
 	if strlen(r.orgId) > 24 {
 		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
 	}
-	if r.createOrganizationKey == nil {
-		return localVarReturnValue, nil, reportError("createOrganizationKey is required and must be specified")
+	if r.createOrganizationApiKey == nil {
+		return localVarReturnValue, nil, reportError("createOrganizationApiKey is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -595,7 +595,7 @@ func (a *ProgrammaticAPIKeysApiService) createApiKeyExecute(r CreateApiKeyApiReq
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.createOrganizationKey
+	localVarPostBody = r.createOrganizationApiKey
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -841,27 +841,27 @@ func (a *ProgrammaticAPIKeysApiService) createApiKeyAccessListExecute(r CreateAp
 }
 
 type CreateProjectApiKeyApiRequest struct {
-	ctx              context.Context
-	ApiService       ProgrammaticAPIKeysApi
-	groupId          string
-	createProjectKey *CreateProjectKey
+	ctx                 context.Context
+	ApiService          ProgrammaticAPIKeysApi
+	groupId             string
+	createProjectApiKey *CreateProjectApiKey
 }
 
 type CreateProjectApiKeyApiParams struct {
-	GroupId          string
-	CreateProjectKey *CreateProjectKey
+	GroupId             string
+	CreateProjectApiKey *CreateProjectApiKey
 }
 
 func (a *ProgrammaticAPIKeysApiService) CreateProjectApiKeyWithParams(ctx context.Context, args *CreateProjectApiKeyApiParams) CreateProjectApiKeyApiRequest {
 	return CreateProjectApiKeyApiRequest{
-		ApiService:       a,
-		ctx:              ctx,
-		groupId:          args.GroupId,
-		createProjectKey: args.CreateProjectKey,
+		ApiService:          a,
+		ctx:                 ctx,
+		groupId:             args.GroupId,
+		createProjectApiKey: args.CreateProjectApiKey,
 	}
 }
 
-func (r CreateProjectApiKeyApiRequest) Execute() (*KeyUser, *http.Response, error) {
+func (r CreateProjectApiKeyApiRequest) Execute() (*ApiUser, *http.Response, error) {
 	return r.ApiService.createProjectApiKeyExecute(r)
 }
 
@@ -874,24 +874,24 @@ Creates and assigns the specified organization API key to the specified project.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateProjectApiKeyApiRequest
 */
-func (a *ProgrammaticAPIKeysApiService) CreateProjectApiKey(ctx context.Context, groupId string, createProjectKey *CreateProjectKey) CreateProjectApiKeyApiRequest {
+func (a *ProgrammaticAPIKeysApiService) CreateProjectApiKey(ctx context.Context, groupId string, createProjectApiKey *CreateProjectApiKey) CreateProjectApiKeyApiRequest {
 	return CreateProjectApiKeyApiRequest{
-		ApiService:       a,
-		ctx:              ctx,
-		groupId:          groupId,
-		createProjectKey: createProjectKey,
+		ApiService:          a,
+		ctx:                 ctx,
+		groupId:             groupId,
+		createProjectApiKey: createProjectApiKey,
 	}
 }
 
 // Execute executes the request
 //
-//	@return KeyUser
-func (a *ProgrammaticAPIKeysApiService) createProjectApiKeyExecute(r CreateProjectApiKeyApiRequest) (*KeyUser, *http.Response, error) {
+//	@return ApiUser
+func (a *ProgrammaticAPIKeysApiService) createProjectApiKeyExecute(r CreateProjectApiKeyApiRequest) (*ApiUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *KeyUser
+		localVarReturnValue *ApiUser
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysApiService.CreateProjectApiKey")
@@ -911,8 +911,8 @@ func (a *ProgrammaticAPIKeysApiService) createProjectApiKeyExecute(r CreateProje
 	if strlen(r.groupId) > 24 {
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
-	if r.createProjectKey == nil {
-		return localVarReturnValue, nil, reportError("createProjectKey is required and must be specified")
+	if r.createProjectApiKey == nil {
+		return localVarReturnValue, nil, reportError("createProjectApiKey is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -933,7 +933,7 @@ func (a *ProgrammaticAPIKeysApiService) createProjectApiKeyExecute(r CreateProje
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.createProjectKey
+	localVarPostBody = r.createProjectApiKey
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1290,7 +1290,7 @@ func (a *ProgrammaticAPIKeysApiService) GetApiKeyWithParams(ctx context.Context,
 	}
 }
 
-func (r GetApiKeyApiRequest) Execute() (*KeyUser, *http.Response, error) {
+func (r GetApiKeyApiRequest) Execute() (*ApiUser, *http.Response, error) {
 	return r.ApiService.getApiKeyExecute(r)
 }
 
@@ -1315,13 +1315,13 @@ func (a *ProgrammaticAPIKeysApiService) GetApiKey(ctx context.Context, orgId str
 
 // Execute executes the request
 //
-//	@return KeyUser
-func (a *ProgrammaticAPIKeysApiService) getApiKeyExecute(r GetApiKeyApiRequest) (*KeyUser, *http.Response, error) {
+//	@return ApiUser
+func (a *ProgrammaticAPIKeysApiService) getApiKeyExecute(r GetApiKeyApiRequest) (*ApiUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *KeyUser
+		localVarReturnValue *ApiUser
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysApiService.GetApiKey")
@@ -2248,30 +2248,30 @@ func (a *ProgrammaticAPIKeysApiService) removeProjectApiKeyExecute(r RemoveProje
 }
 
 type UpdateApiKeyApiRequest struct {
-	ctx                   context.Context
-	ApiService            ProgrammaticAPIKeysApi
-	orgId                 string
-	apiUserId             string
-	createOrganizationKey *CreateOrganizationKey
+	ctx                      context.Context
+	ApiService               ProgrammaticAPIKeysApi
+	orgId                    string
+	apiUserId                string
+	createOrganizationApiKey *CreateOrganizationApiKey
 }
 
 type UpdateApiKeyApiParams struct {
-	OrgId                 string
-	ApiUserId             string
-	CreateOrganizationKey *CreateOrganizationKey
+	OrgId                    string
+	ApiUserId                string
+	CreateOrganizationApiKey *CreateOrganizationApiKey
 }
 
 func (a *ProgrammaticAPIKeysApiService) UpdateApiKeyWithParams(ctx context.Context, args *UpdateApiKeyApiParams) UpdateApiKeyApiRequest {
 	return UpdateApiKeyApiRequest{
-		ApiService:            a,
-		ctx:                   ctx,
-		orgId:                 args.OrgId,
-		apiUserId:             args.ApiUserId,
-		createOrganizationKey: args.CreateOrganizationKey,
+		ApiService:               a,
+		ctx:                      ctx,
+		orgId:                    args.OrgId,
+		apiUserId:                args.ApiUserId,
+		createOrganizationApiKey: args.CreateOrganizationApiKey,
 	}
 }
 
-func (r UpdateApiKeyApiRequest) Execute() (*KeyUser, *http.Response, error) {
+func (r UpdateApiKeyApiRequest) Execute() (*ApiUser, *http.Response, error) {
 	return r.ApiService.updateApiKeyExecute(r)
 }
 
@@ -2285,25 +2285,25 @@ Updates one organization API key in the specified organization. The organization
 	@param apiUserId Unique 24-hexadecimal digit string that identifies this organization API key you  want to update.
 	@return UpdateApiKeyApiRequest
 */
-func (a *ProgrammaticAPIKeysApiService) UpdateApiKey(ctx context.Context, orgId string, apiUserId string, createOrganizationKey *CreateOrganizationKey) UpdateApiKeyApiRequest {
+func (a *ProgrammaticAPIKeysApiService) UpdateApiKey(ctx context.Context, orgId string, apiUserId string, createOrganizationApiKey *CreateOrganizationApiKey) UpdateApiKeyApiRequest {
 	return UpdateApiKeyApiRequest{
-		ApiService:            a,
-		ctx:                   ctx,
-		orgId:                 orgId,
-		apiUserId:             apiUserId,
-		createOrganizationKey: createOrganizationKey,
+		ApiService:               a,
+		ctx:                      ctx,
+		orgId:                    orgId,
+		apiUserId:                apiUserId,
+		createOrganizationApiKey: createOrganizationApiKey,
 	}
 }
 
 // Execute executes the request
 //
-//	@return KeyUser
-func (a *ProgrammaticAPIKeysApiService) updateApiKeyExecute(r UpdateApiKeyApiRequest) (*KeyUser, *http.Response, error) {
+//	@return ApiUser
+func (a *ProgrammaticAPIKeysApiService) updateApiKeyExecute(r UpdateApiKeyApiRequest) (*ApiUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *KeyUser
+		localVarReturnValue *ApiUser
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysApiService.UpdateApiKey")
@@ -2330,8 +2330,8 @@ func (a *ProgrammaticAPIKeysApiService) updateApiKeyExecute(r UpdateApiKeyApiReq
 	if strlen(r.apiUserId) > 24 {
 		return localVarReturnValue, nil, reportError("apiUserId must have less than 24 elements")
 	}
-	if r.createOrganizationKey == nil {
-		return localVarReturnValue, nil, reportError("createOrganizationKey is required and must be specified")
+	if r.createOrganizationApiKey == nil {
+		return localVarReturnValue, nil, reportError("createOrganizationApiKey is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2352,7 +2352,7 @@ func (a *ProgrammaticAPIKeysApiService) updateApiKeyExecute(r UpdateApiKeyApiReq
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.createOrganizationKey
+	localVarPostBody = r.createOrganizationApiKey
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2399,35 +2399,35 @@ func (a *ProgrammaticAPIKeysApiService) updateApiKeyExecute(r UpdateApiKeyApiReq
 }
 
 type UpdateApiKeyRolesApiRequest struct {
-	ctx              context.Context
-	ApiService       ProgrammaticAPIKeysApi
-	groupId          string
-	apiUserId        string
-	createProjectKey *CreateProjectKey
-	pageNum          *int
-	itemsPerPage     *int
-	includeCount     *bool
+	ctx                 context.Context
+	ApiService          ProgrammaticAPIKeysApi
+	groupId             string
+	apiUserId           string
+	createProjectApiKey *CreateProjectApiKey
+	pageNum             *int
+	itemsPerPage        *int
+	includeCount        *bool
 }
 
 type UpdateApiKeyRolesApiParams struct {
-	GroupId          string
-	ApiUserId        string
-	CreateProjectKey *CreateProjectKey
-	PageNum          *int
-	ItemsPerPage     *int
-	IncludeCount     *bool
+	GroupId             string
+	ApiUserId           string
+	CreateProjectApiKey *CreateProjectApiKey
+	PageNum             *int
+	ItemsPerPage        *int
+	IncludeCount        *bool
 }
 
 func (a *ProgrammaticAPIKeysApiService) UpdateApiKeyRolesWithParams(ctx context.Context, args *UpdateApiKeyRolesApiParams) UpdateApiKeyRolesApiRequest {
 	return UpdateApiKeyRolesApiRequest{
-		ApiService:       a,
-		ctx:              ctx,
-		groupId:          args.GroupId,
-		apiUserId:        args.ApiUserId,
-		createProjectKey: args.CreateProjectKey,
-		pageNum:          args.PageNum,
-		itemsPerPage:     args.ItemsPerPage,
-		includeCount:     args.IncludeCount,
+		ApiService:          a,
+		ctx:                 ctx,
+		groupId:             args.GroupId,
+		apiUserId:           args.ApiUserId,
+		createProjectApiKey: args.CreateProjectApiKey,
+		pageNum:             args.PageNum,
+		itemsPerPage:        args.ItemsPerPage,
+		includeCount:        args.IncludeCount,
 	}
 }
 
@@ -2449,7 +2449,7 @@ func (r UpdateApiKeyRolesApiRequest) IncludeCount(includeCount bool) UpdateApiKe
 	return r
 }
 
-func (r UpdateApiKeyRolesApiRequest) Execute() (*KeyUser, *http.Response, error) {
+func (r UpdateApiKeyRolesApiRequest) Execute() (*ApiUser, *http.Response, error) {
 	return r.ApiService.updateApiKeyRolesExecute(r)
 }
 
@@ -2463,25 +2463,25 @@ Updates the roles of the organization API key that you specify for the project t
 	@param apiUserId Unique 24-hexadecimal digit string that identifies this organization API key that you want to unassign from one project.
 	@return UpdateApiKeyRolesApiRequest
 */
-func (a *ProgrammaticAPIKeysApiService) UpdateApiKeyRoles(ctx context.Context, groupId string, apiUserId string, createProjectKey *CreateProjectKey) UpdateApiKeyRolesApiRequest {
+func (a *ProgrammaticAPIKeysApiService) UpdateApiKeyRoles(ctx context.Context, groupId string, apiUserId string, createProjectApiKey *CreateProjectApiKey) UpdateApiKeyRolesApiRequest {
 	return UpdateApiKeyRolesApiRequest{
-		ApiService:       a,
-		ctx:              ctx,
-		groupId:          groupId,
-		apiUserId:        apiUserId,
-		createProjectKey: createProjectKey,
+		ApiService:          a,
+		ctx:                 ctx,
+		groupId:             groupId,
+		apiUserId:           apiUserId,
+		createProjectApiKey: createProjectApiKey,
 	}
 }
 
 // Execute executes the request
 //
-//	@return KeyUser
-func (a *ProgrammaticAPIKeysApiService) updateApiKeyRolesExecute(r UpdateApiKeyRolesApiRequest) (*KeyUser, *http.Response, error) {
+//	@return ApiUser
+func (a *ProgrammaticAPIKeysApiService) updateApiKeyRolesExecute(r UpdateApiKeyRolesApiRequest) (*ApiUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *KeyUser
+		localVarReturnValue *ApiUser
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysApiService.UpdateApiKeyRoles")
@@ -2508,8 +2508,8 @@ func (a *ProgrammaticAPIKeysApiService) updateApiKeyRolesExecute(r UpdateApiKeyR
 	if strlen(r.apiUserId) > 24 {
 		return localVarReturnValue, nil, reportError("apiUserId must have less than 24 elements")
 	}
-	if r.createProjectKey == nil {
-		return localVarReturnValue, nil, reportError("createProjectKey is required and must be specified")
+	if r.createProjectApiKey == nil {
+		return localVarReturnValue, nil, reportError("createProjectApiKey is required and must be specified")
 	}
 
 	if r.pageNum != nil {
@@ -2551,7 +2551,7 @@ func (a *ProgrammaticAPIKeysApiService) updateApiKeyRolesExecute(r UpdateApiKeyR
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.createProjectKey
+	localVarPostBody = r.createProjectApiKey
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

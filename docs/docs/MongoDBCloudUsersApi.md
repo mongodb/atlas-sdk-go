@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## CreateUser
 
-> CloudUser CreateUser(ctx, cloudUser CloudUser).Execute()
+> AppUser CreateUser(ctx, appUser AppUser).Execute()
 
 Create One MongoDB Cloud User
 
@@ -36,15 +36,15 @@ func main() {
 
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
-    cloudUser := *openapiclient.NewCloudUser("Country_example", "EmailAddress_example", "FirstName_example", "LastName_example", "MobileNumber_example", "Password_example", "Username_example") // CloudUser | 
+    appUser := *openapiclient.NewAppUser("Country_example", "EmailAddress_example", "FirstName_example", "LastName_example", "MobileNumber_example", "Password_example", "Username_example") // AppUser | 
 
-    resp, r, err := sdk.MongoDBCloudUsersApi.CreateUser(context.Background(), &cloudUser).Execute()
+    resp, r, err := sdk.MongoDBCloudUsersApi.CreateUser(context.Background(), &appUser).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MongoDBCloudUsersApi.CreateUser``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `CreateUser`: CloudUser
+    // response from `CreateUser`: AppUser
     fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersApi.CreateUser`: %v\n", resp)
 }
 ```
@@ -60,11 +60,11 @@ Other parameters are passed through a pointer to a apiCreateUserRequest struct v
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cloudUser** | [**CloudUser**](CloudUser.md) | MongoDB Cloud user account to create. | 
+ **appUser** | [**AppUser**](AppUser.md) | MongoDB Cloud user account to create. | 
 
 ### Return type
 
-[**CloudUser**](CloudUser.md)
+[**AppUser**](AppUser.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 ## GetUser
 
-> CloudUser GetUser(ctx, userId).Execute()
+> AppUser GetUser(ctx, userId).Execute()
 
 Return One MongoDB Cloud User using Its ID
 
@@ -113,7 +113,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetUser`: CloudUser
+    // response from `GetUser`: AppUser
     fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersApi.GetUser`: %v\n", resp)
 }
 ```
@@ -137,7 +137,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CloudUser**](CloudUser.md)
+[**AppUser**](AppUser.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 ## GetUserByUsername
 
-> CloudUser GetUserByUsername(ctx, userName).Execute()
+> AppUser GetUserByUsername(ctx, userName).Execute()
 
 Return One MongoDB Cloud User using Their Username
 
@@ -186,7 +186,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetUserByUsername`: CloudUser
+    // response from `GetUserByUsername`: AppUser
     fmt.Fprintf(os.Stdout, "Response from `MongoDBCloudUsersApi.GetUserByUsername`: %v\n", resp)
 }
 ```
@@ -210,7 +210,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CloudUser**](CloudUser.md)
+[**AppUser**](AppUser.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

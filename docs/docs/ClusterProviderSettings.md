@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AutoScaling** | Pointer to [**ClusterFreeAutoScaling**](ClusterFreeAutoScaling.md) |  | [optional] 
+**AutoScaling** | Pointer to [**FreeAutoScaling**](FreeAutoScaling.md) |  | [optional] 
 **DiskIOPS** | Pointer to **int** | Maximum Disk Input/Output Operations per Second (IOPS) that the database host can perform. | [optional] 
 **EncryptEBSVolume** | Pointer to **bool** | Flag that indicates whether the Amazon Elastic Block Store (EBS) encryption feature encrypts the host&#39;s root volume for both data at rest within the volume and for data moving between the volume and the cluster. Clusters always have this setting enabled. | [optional] [default to true]
 **InstanceSizeName** | Pointer to **string** | Cluster tier, with a default storage and memory capacity, that applies to all the data-bearing hosts in your cluster. You must set **providerSettings.providerName** to &#x60;TENANT&#x60; and specify the cloud service provider in **providerSettings.backingProviderName**. | [optional] 
@@ -35,20 +35,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAutoScaling
 
-`func (o *ClusterProviderSettings) GetAutoScaling() ClusterFreeAutoScaling`
+`func (o *ClusterProviderSettings) GetAutoScaling() FreeAutoScaling`
 
 GetAutoScaling returns the AutoScaling field if non-nil, zero value otherwise.
 
 ### GetAutoScalingOk
 
-`func (o *ClusterProviderSettings) GetAutoScalingOk() (*ClusterFreeAutoScaling, bool)`
+`func (o *ClusterProviderSettings) GetAutoScalingOk() (*FreeAutoScaling, bool)`
 
 GetAutoScalingOk returns a tuple with the AutoScaling field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAutoScaling
 
-`func (o *ClusterProviderSettings) SetAutoScaling(v ClusterFreeAutoScaling)`
+`func (o *ClusterProviderSettings) SetAutoScaling(v FreeAutoScaling)`
 
 SetAutoScaling sets AutoScaling field to given value.
 

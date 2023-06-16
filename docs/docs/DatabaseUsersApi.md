@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateDatabaseUser
 
-> CloudDatabaseUser CreateDatabaseUser(ctx, groupId, cloudDatabaseUser CloudDatabaseUser).Execute()
+> DatabaseUser CreateDatabaseUser(ctx, groupId, databaseUser DatabaseUser).Execute()
 
 Create One Database User in One Project
 
@@ -39,15 +39,15 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    cloudDatabaseUser := *openapiclient.NewCloudDatabaseUser("DatabaseName_example", "32b6e34b3d91647abb20e7b8", "Username_example") // CloudDatabaseUser | 
+    databaseUser := *openapiclient.NewDatabaseUser("DatabaseName_example", "32b6e34b3d91647abb20e7b8", "Username_example") // DatabaseUser | 
 
-    resp, r, err := sdk.DatabaseUsersApi.CreateDatabaseUser(context.Background(), groupId, &cloudDatabaseUser).Execute()
+    resp, r, err := sdk.DatabaseUsersApi.CreateDatabaseUser(context.Background(), groupId, &databaseUser).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseUsersApi.CreateDatabaseUser``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `CreateDatabaseUser`: CloudDatabaseUser
+    // response from `CreateDatabaseUser`: DatabaseUser
     fmt.Fprintf(os.Stdout, "Response from `DatabaseUsersApi.CreateDatabaseUser`: %v\n", resp)
 }
 ```
@@ -68,11 +68,11 @@ Other parameters are passed through a pointer to a apiCreateDatabaseUserRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **cloudDatabaseUser** | [**CloudDatabaseUser**](CloudDatabaseUser.md) | Creates one database user in the specified project. | 
+ **databaseUser** | [**DatabaseUser**](DatabaseUser.md) | Creates one database user in the specified project. | 
 
 ### Return type
 
-[**CloudDatabaseUser**](CloudDatabaseUser.md)
+[**DatabaseUser**](DatabaseUser.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -168,7 +168,7 @@ Name | Type | Description  | Notes
 
 ## GetDatabaseUser
 
-> CloudDatabaseUser GetDatabaseUser(ctx, groupId, databaseName, username).Execute()
+> DatabaseUser GetDatabaseUser(ctx, groupId, databaseName, username).Execute()
 
 Return One Database User from One Project
 
@@ -202,7 +202,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetDatabaseUser`: CloudDatabaseUser
+    // response from `GetDatabaseUser`: DatabaseUser
     fmt.Fprintf(os.Stdout, "Response from `DatabaseUsersApi.GetDatabaseUser`: %v\n", resp)
 }
 ```
@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CloudDatabaseUser**](CloudDatabaseUser.md)
+[**DatabaseUser**](DatabaseUser.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -326,7 +326,7 @@ Name | Type | Description  | Notes
 
 ## UpdateDatabaseUser
 
-> CloudDatabaseUser UpdateDatabaseUser(ctx, groupId, databaseName, username, cloudDatabaseUser CloudDatabaseUser).Execute()
+> DatabaseUser UpdateDatabaseUser(ctx, groupId, databaseName, username, databaseUser DatabaseUser).Execute()
 
 Update One Database User in One Project
 
@@ -353,15 +353,15 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     databaseName := "databaseName_example" // string | 
     username := "SCRAM-SHA: dylan or AWS IAM: arn:aws:iam::123456789012:user/sales/enterprise/DylanBloggs or x.509/LDAP: CN=Dylan Bloggs,OU=Enterprise,OU=Sales,DC=Example,DC=COM or OIDC: IdPIdentifier/IdPGroupName" // string | 
-    cloudDatabaseUser := *openapiclient.NewCloudDatabaseUser("DatabaseName_example", "32b6e34b3d91647abb20e7b8", "Username_example") // CloudDatabaseUser | 
+    databaseUser := *openapiclient.NewDatabaseUser("DatabaseName_example", "32b6e34b3d91647abb20e7b8", "Username_example") // DatabaseUser | 
 
-    resp, r, err := sdk.DatabaseUsersApi.UpdateDatabaseUser(context.Background(), groupId, databaseName, username, &cloudDatabaseUser).Execute()
+    resp, r, err := sdk.DatabaseUsersApi.UpdateDatabaseUser(context.Background(), groupId, databaseName, username, &databaseUser).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseUsersApi.UpdateDatabaseUser``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `UpdateDatabaseUser`: CloudDatabaseUser
+    // response from `UpdateDatabaseUser`: DatabaseUser
     fmt.Fprintf(os.Stdout, "Response from `DatabaseUsersApi.UpdateDatabaseUser`: %v\n", resp)
 }
 ```
@@ -386,11 +386,11 @@ Name | Type | Description  | Notes
 
 
 
- **cloudDatabaseUser** | [**CloudDatabaseUser**](CloudDatabaseUser.md) | Updates one database user that belongs to the specified project. | 
+ **databaseUser** | [**DatabaseUser**](DatabaseUser.md) | Updates one database user that belongs to the specified project. | 
 
 ### Return type
 
-[**CloudDatabaseUser**](CloudDatabaseUser.md)
+[**DatabaseUser**](DatabaseUser.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

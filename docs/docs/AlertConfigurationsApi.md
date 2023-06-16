@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## CreateAlertConfiguration
 
-> GroupAlertsConfig CreateAlertConfiguration(ctx, groupId, groupAlertsConfig GroupAlertsConfig).Execute()
+> AlertConfigViewForNdsGroup CreateAlertConfiguration(ctx, groupId, alertConfigViewForNdsGroup AlertConfigViewForNdsGroup).Execute()
 
 Create One Alert Configuration in One Project
 
@@ -42,15 +42,15 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    groupAlertsConfig := *openapiclient.NewGroupAlertsConfig() // GroupAlertsConfig | 
+    alertConfigViewForNdsGroup := *openapiclient.NewAlertConfigViewForNdsGroup() // AlertConfigViewForNdsGroup | 
 
-    resp, r, err := sdk.AlertConfigurationsApi.CreateAlertConfiguration(context.Background(), groupId, &groupAlertsConfig).Execute()
+    resp, r, err := sdk.AlertConfigurationsApi.CreateAlertConfiguration(context.Background(), groupId, &alertConfigViewForNdsGroup).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AlertConfigurationsApi.CreateAlertConfiguration``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `CreateAlertConfiguration`: GroupAlertsConfig
+    // response from `CreateAlertConfiguration`: AlertConfigViewForNdsGroup
     fmt.Fprintf(os.Stdout, "Response from `AlertConfigurationsApi.CreateAlertConfiguration`: %v\n", resp)
 }
 ```
@@ -71,11 +71,11 @@ Other parameters are passed through a pointer to a apiCreateAlertConfigurationRe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **groupAlertsConfig** | [**GroupAlertsConfig**](GroupAlertsConfig.md) | Creates one alert configuration for the specified project. | 
+ **alertConfigViewForNdsGroup** | [**AlertConfigViewForNdsGroup**](AlertConfigViewForNdsGroup.md) | Creates one alert configuration for the specified project. | 
 
 ### Return type
 
-[**GroupAlertsConfig**](GroupAlertsConfig.md)
+[**AlertConfigViewForNdsGroup**](AlertConfigViewForNdsGroup.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -166,7 +166,7 @@ Name | Type | Description  | Notes
 
 ## GetAlertConfiguration
 
-> GroupAlertsConfig GetAlertConfiguration(ctx, groupId, alertConfigId).Execute()
+> AlertConfigViewForNdsGroup GetAlertConfiguration(ctx, groupId, alertConfigId).Execute()
 
 Return One Alert Configuration from One Project
 
@@ -204,7 +204,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetAlertConfiguration`: GroupAlertsConfig
+    // response from `GetAlertConfiguration`: AlertConfigViewForNdsGroup
     fmt.Fprintf(os.Stdout, "Response from `AlertConfigurationsApi.GetAlertConfiguration`: %v\n", resp)
 }
 ```
@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GroupAlertsConfig**](GroupAlertsConfig.md)
+[**AlertConfigViewForNdsGroup**](AlertConfigViewForNdsGroup.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -477,7 +477,7 @@ Name | Type | Description  | Notes
 
 ## ToggleAlertConfiguration
 
-> GroupAlertsConfig ToggleAlertConfiguration(ctx, groupId, alertConfigId, alertsToggle AlertsToggle).Execute()
+> AlertConfigViewForNdsGroup ToggleAlertConfiguration(ctx, groupId, alertConfigId, toggle Toggle).Execute()
 
 Toggle One State of One Alert Configuration in One Project
 
@@ -503,15 +503,15 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     alertConfigId := "32b6e34b3d91647abb20e7b8" // string | 
-    alertsToggle := *openapiclient.NewAlertsToggle() // AlertsToggle | 
+    toggle := *openapiclient.NewToggle() // Toggle | 
 
-    resp, r, err := sdk.AlertConfigurationsApi.ToggleAlertConfiguration(context.Background(), groupId, alertConfigId, &alertsToggle).Execute()
+    resp, r, err := sdk.AlertConfigurationsApi.ToggleAlertConfiguration(context.Background(), groupId, alertConfigId, &toggle).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AlertConfigurationsApi.ToggleAlertConfiguration``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `ToggleAlertConfiguration`: GroupAlertsConfig
+    // response from `ToggleAlertConfiguration`: AlertConfigViewForNdsGroup
     fmt.Fprintf(os.Stdout, "Response from `AlertConfigurationsApi.ToggleAlertConfiguration`: %v\n", resp)
 }
 ```
@@ -534,11 +534,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **alertsToggle** | [**AlertsToggle**](AlertsToggle.md) | Enables or disables the specified alert configuration in the specified project. | 
+ **toggle** | [**Toggle**](Toggle.md) | Enables or disables the specified alert configuration in the specified project. | 
 
 ### Return type
 
-[**GroupAlertsConfig**](GroupAlertsConfig.md)
+[**AlertConfigViewForNdsGroup**](AlertConfigViewForNdsGroup.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -555,7 +555,7 @@ Name | Type | Description  | Notes
 
 ## UpdateAlertConfiguration
 
-> GroupAlertsConfig UpdateAlertConfiguration(ctx, groupId, alertConfigId, groupAlertsConfig GroupAlertsConfig).Execute()
+> AlertConfigViewForNdsGroup UpdateAlertConfiguration(ctx, groupId, alertConfigId, alertConfigViewForNdsGroup AlertConfigViewForNdsGroup).Execute()
 
 Update One Alert Configuration for One Project
 
@@ -581,15 +581,15 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     alertConfigId := "32b6e34b3d91647abb20e7b8" // string | 
-    groupAlertsConfig := *openapiclient.NewGroupAlertsConfig() // GroupAlertsConfig | 
+    alertConfigViewForNdsGroup := *openapiclient.NewAlertConfigViewForNdsGroup() // AlertConfigViewForNdsGroup | 
 
-    resp, r, err := sdk.AlertConfigurationsApi.UpdateAlertConfiguration(context.Background(), groupId, alertConfigId, &groupAlertsConfig).Execute()
+    resp, r, err := sdk.AlertConfigurationsApi.UpdateAlertConfiguration(context.Background(), groupId, alertConfigId, &alertConfigViewForNdsGroup).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AlertConfigurationsApi.UpdateAlertConfiguration``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `UpdateAlertConfiguration`: GroupAlertsConfig
+    // response from `UpdateAlertConfiguration`: AlertConfigViewForNdsGroup
     fmt.Fprintf(os.Stdout, "Response from `AlertConfigurationsApi.UpdateAlertConfiguration`: %v\n", resp)
 }
 ```
@@ -612,11 +612,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **groupAlertsConfig** | [**GroupAlertsConfig**](GroupAlertsConfig.md) | Updates one alert configuration in the specified project. | 
+ **alertConfigViewForNdsGroup** | [**AlertConfigViewForNdsGroup**](AlertConfigViewForNdsGroup.md) | Updates one alert configuration in the specified project. | 
 
 ### Return type
 
-[**GroupAlertsConfig**](GroupAlertsConfig.md)
+[**AlertConfigViewForNdsGroup**](AlertConfigViewForNdsGroup.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

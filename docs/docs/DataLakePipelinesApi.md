@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 ## CreatePipeline
 
-> DataLakeIngestionPipeline CreatePipeline(ctx, groupId, dataLakeIngestionPipeline DataLakeIngestionPipeline).Execute()
+> IngestionPipeline CreatePipeline(ctx, groupId, ingestionPipeline IngestionPipeline).Execute()
 
 Create One Data Lake Pipeline
 
@@ -47,15 +47,15 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    dataLakeIngestionPipeline := *openapiclient.NewDataLakeIngestionPipeline() // DataLakeIngestionPipeline | 
+    ingestionPipeline := *openapiclient.NewIngestionPipeline() // IngestionPipeline | 
 
-    resp, r, err := sdk.DataLakePipelinesApi.CreatePipeline(context.Background(), groupId, &dataLakeIngestionPipeline).Execute()
+    resp, r, err := sdk.DataLakePipelinesApi.CreatePipeline(context.Background(), groupId, &ingestionPipeline).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.CreatePipeline``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `CreatePipeline`: DataLakeIngestionPipeline
+    // response from `CreatePipeline`: IngestionPipeline
     fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.CreatePipeline`: %v\n", resp)
 }
 ```
@@ -76,11 +76,11 @@ Other parameters are passed through a pointer to a apiCreatePipelineRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **dataLakeIngestionPipeline** | [**DataLakeIngestionPipeline**](DataLakeIngestionPipeline.md) | Creates one Data Lake Pipeline. | 
+ **ingestionPipeline** | [**IngestionPipeline**](IngestionPipeline.md) | Creates one Data Lake Pipeline. | 
 
 ### Return type
 
-[**DataLakeIngestionPipeline**](DataLakeIngestionPipeline.md)
+[**IngestionPipeline**](IngestionPipeline.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -252,7 +252,7 @@ Name | Type | Description  | Notes
 
 ## GetPipeline
 
-> DataLakeIngestionPipeline GetPipeline(ctx, groupId, pipelineName).Execute()
+> IngestionPipeline GetPipeline(ctx, groupId, pipelineName).Execute()
 
 Return One Data Lake Pipeline
 
@@ -285,7 +285,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetPipeline`: DataLakeIngestionPipeline
+    // response from `GetPipeline`: IngestionPipeline
     fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.GetPipeline`: %v\n", resp)
 }
 ```
@@ -311,7 +311,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DataLakeIngestionPipeline**](DataLakeIngestionPipeline.md)
+[**IngestionPipeline**](IngestionPipeline.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -651,7 +651,7 @@ Name | Type | Description  | Notes
 
 ## ListPipelines
 
-> []DataLakeIngestionPipeline ListPipelines(ctx, groupId).Execute()
+> []IngestionPipeline ListPipelines(ctx, groupId).Execute()
 
 Return All Data Lake Pipelines from One Project
 
@@ -683,7 +683,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `ListPipelines`: []DataLakeIngestionPipeline
+    // response from `ListPipelines`: []IngestionPipeline
     fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.ListPipelines`: %v\n", resp)
 }
 ```
@@ -707,7 +707,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]DataLakeIngestionPipeline**](DataLakeIngestionPipeline.md)
+[**[]IngestionPipeline**](IngestionPipeline.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -724,7 +724,7 @@ Name | Type | Description  | Notes
 
 ## PausePipeline
 
-> DataLakeIngestionPipeline PausePipeline(ctx, groupId, pipelineName).Execute()
+> IngestionPipeline PausePipeline(ctx, groupId, pipelineName).Execute()
 
 Pause One Data Lake Pipeline
 
@@ -757,7 +757,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `PausePipeline`: DataLakeIngestionPipeline
+    // response from `PausePipeline`: IngestionPipeline
     fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.PausePipeline`: %v\n", resp)
 }
 ```
@@ -783,7 +783,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DataLakeIngestionPipeline**](DataLakeIngestionPipeline.md)
+[**IngestionPipeline**](IngestionPipeline.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -800,7 +800,7 @@ Name | Type | Description  | Notes
 
 ## ResumePipeline
 
-> DataLakeIngestionPipeline ResumePipeline(ctx, groupId, pipelineName).Execute()
+> IngestionPipeline ResumePipeline(ctx, groupId, pipelineName).Execute()
 
 Resume One Data Lake Pipeline
 
@@ -833,7 +833,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `ResumePipeline`: DataLakeIngestionPipeline
+    // response from `ResumePipeline`: IngestionPipeline
     fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.ResumePipeline`: %v\n", resp)
 }
 ```
@@ -859,7 +859,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DataLakeIngestionPipeline**](DataLakeIngestionPipeline.md)
+[**IngestionPipeline**](IngestionPipeline.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -876,7 +876,7 @@ Name | Type | Description  | Notes
 
 ## TriggerSnapshotIngestion
 
-> IngestionPipelineRun TriggerSnapshotIngestion(ctx, groupId, pipelineName, triggerIngestionPipelineRequest TriggerIngestionPipelineRequest).Execute()
+> IngestionPipelineRun TriggerSnapshotIngestion(ctx, groupId, pipelineName, triggerIngestionRequest TriggerIngestionRequest).Execute()
 
 Trigger on demand snapshot ingestion
 
@@ -902,9 +902,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     pipelineName := "pipelineName_example" // string | 
-    triggerIngestionPipelineRequest := *openapiclient.NewTriggerIngestionPipelineRequest("32b6e34b3d91647abb20e7b8") // TriggerIngestionPipelineRequest | 
+    triggerIngestionRequest := *openapiclient.NewTriggerIngestionRequest("32b6e34b3d91647abb20e7b8") // TriggerIngestionRequest | 
 
-    resp, r, err := sdk.DataLakePipelinesApi.TriggerSnapshotIngestion(context.Background(), groupId, pipelineName, &triggerIngestionPipelineRequest).Execute()
+    resp, r, err := sdk.DataLakePipelinesApi.TriggerSnapshotIngestion(context.Background(), groupId, pipelineName, &triggerIngestionRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.TriggerSnapshotIngestion``: %v\n", err)
         apiError := admin.AsError(err)
@@ -933,7 +933,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **triggerIngestionPipelineRequest** | [**TriggerIngestionPipelineRequest**](TriggerIngestionPipelineRequest.md) | Triggers a single ingestion run of a snapshot. | 
+ **triggerIngestionRequest** | [**TriggerIngestionRequest**](TriggerIngestionRequest.md) | Triggers a single ingestion run of a snapshot. | 
 
 ### Return type
 
@@ -954,7 +954,7 @@ Name | Type | Description  | Notes
 
 ## UpdatePipeline
 
-> DataLakeIngestionPipeline UpdatePipeline(ctx, groupId, pipelineName, dataLakeIngestionPipeline DataLakeIngestionPipeline).Execute()
+> IngestionPipeline UpdatePipeline(ctx, groupId, pipelineName, ingestionPipeline IngestionPipeline).Execute()
 
 Update One Data Lake Pipeline
 
@@ -980,15 +980,15 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     pipelineName := "pipelineName_example" // string | 
-    dataLakeIngestionPipeline := *openapiclient.NewDataLakeIngestionPipeline() // DataLakeIngestionPipeline | 
+    ingestionPipeline := *openapiclient.NewIngestionPipeline() // IngestionPipeline | 
 
-    resp, r, err := sdk.DataLakePipelinesApi.UpdatePipeline(context.Background(), groupId, pipelineName, &dataLakeIngestionPipeline).Execute()
+    resp, r, err := sdk.DataLakePipelinesApi.UpdatePipeline(context.Background(), groupId, pipelineName, &ingestionPipeline).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DataLakePipelinesApi.UpdatePipeline``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `UpdatePipeline`: DataLakeIngestionPipeline
+    // response from `UpdatePipeline`: IngestionPipeline
     fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.UpdatePipeline`: %v\n", resp)
 }
 ```
@@ -1011,11 +1011,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **dataLakeIngestionPipeline** | [**DataLakeIngestionPipeline**](DataLakeIngestionPipeline.md) | Updates one Data Lake Pipeline. | 
+ **ingestionPipeline** | [**IngestionPipeline**](IngestionPipeline.md) | Updates one Data Lake Pipeline. | 
 
 ### Return type
 
-[**DataLakeIngestionPipeline**](DataLakeIngestionPipeline.md)
+[**IngestionPipeline**](IngestionPipeline.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

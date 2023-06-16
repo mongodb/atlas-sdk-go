@@ -11,9 +11,9 @@ var _ MappedNullable = &ServerlessInstanceDescriptionUpdate{}
 
 // ServerlessInstanceDescriptionUpdate Settings that you can update when you request a serverless cluster update.
 type ServerlessInstanceDescriptionUpdate struct {
-	ServerlessBackupOptions *ClusterServerlessBackupOptions `json:"serverlessBackupOptions,omitempty"`
+	ServerlessBackupOptions *ServerlessBackupOptions `json:"serverlessBackupOptions,omitempty"`
 	// List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the serverless instance.
-	Tags []ResourceTag `json:"tags,omitempty"`
+	Tags []Tag `json:"tags,omitempty"`
 	// Flag that indicates whether termination protection is enabled on the serverless instance. If set to `true`, MongoDB Cloud won't delete the serverless instance. If set to `false`, MongoDB Cloud will delete the serverless instance.
 	TerminationProtectionEnabled *bool `json:"terminationProtectionEnabled,omitempty"`
 }
@@ -40,9 +40,9 @@ func NewServerlessInstanceDescriptionUpdateWithDefaults() *ServerlessInstanceDes
 }
 
 // GetServerlessBackupOptions returns the ServerlessBackupOptions field value if set, zero value otherwise.
-func (o *ServerlessInstanceDescriptionUpdate) GetServerlessBackupOptions() ClusterServerlessBackupOptions {
+func (o *ServerlessInstanceDescriptionUpdate) GetServerlessBackupOptions() ServerlessBackupOptions {
 	if o == nil || IsNil(o.ServerlessBackupOptions) {
-		var ret ClusterServerlessBackupOptions
+		var ret ServerlessBackupOptions
 		return ret
 	}
 	return *o.ServerlessBackupOptions
@@ -50,7 +50,7 @@ func (o *ServerlessInstanceDescriptionUpdate) GetServerlessBackupOptions() Clust
 
 // GetServerlessBackupOptionsOk returns a tuple with the ServerlessBackupOptions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServerlessInstanceDescriptionUpdate) GetServerlessBackupOptionsOk() (*ClusterServerlessBackupOptions, bool) {
+func (o *ServerlessInstanceDescriptionUpdate) GetServerlessBackupOptionsOk() (*ServerlessBackupOptions, bool) {
 	if o == nil || IsNil(o.ServerlessBackupOptions) {
 		return nil, false
 	}
@@ -66,15 +66,15 @@ func (o *ServerlessInstanceDescriptionUpdate) HasServerlessBackupOptions() bool 
 	return false
 }
 
-// SetServerlessBackupOptions gets a reference to the given ClusterServerlessBackupOptions and assigns it to the ServerlessBackupOptions field.
-func (o *ServerlessInstanceDescriptionUpdate) SetServerlessBackupOptions(v ClusterServerlessBackupOptions) {
+// SetServerlessBackupOptions gets a reference to the given ServerlessBackupOptions and assigns it to the ServerlessBackupOptions field.
+func (o *ServerlessInstanceDescriptionUpdate) SetServerlessBackupOptions(v ServerlessBackupOptions) {
 	o.ServerlessBackupOptions = &v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
-func (o *ServerlessInstanceDescriptionUpdate) GetTags() []ResourceTag {
+func (o *ServerlessInstanceDescriptionUpdate) GetTags() []Tag {
 	if o == nil || IsNil(o.Tags) {
-		var ret []ResourceTag
+		var ret []Tag
 		return ret
 	}
 	return o.Tags
@@ -82,7 +82,7 @@ func (o *ServerlessInstanceDescriptionUpdate) GetTags() []ResourceTag {
 
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServerlessInstanceDescriptionUpdate) GetTagsOk() ([]ResourceTag, bool) {
+func (o *ServerlessInstanceDescriptionUpdate) GetTagsOk() ([]Tag, bool) {
 	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
@@ -98,8 +98,8 @@ func (o *ServerlessInstanceDescriptionUpdate) HasTags() bool {
 	return false
 }
 
-// SetTags gets a reference to the given []ResourceTag and assigns it to the Tags field.
-func (o *ServerlessInstanceDescriptionUpdate) SetTags(v []ResourceTag) {
+// SetTags gets a reference to the given []Tag and assigns it to the Tags field.
+func (o *ServerlessInstanceDescriptionUpdate) SetTags(v []Tag) {
 	o.Tags = v
 }
 

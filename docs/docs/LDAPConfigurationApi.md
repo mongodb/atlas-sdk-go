@@ -170,7 +170,7 @@ Name | Type | Description  | Notes
 
 ## GetLDAPConfigurationStatus
 
-> LDAPVerifyConnectivityJobRequest GetLDAPConfigurationStatus(ctx, groupId, requestId).Execute()
+> NDSLDAPVerifyConnectivityJobRequest GetLDAPConfigurationStatus(ctx, groupId, requestId).Execute()
 
 Return the Status of One Verify LDAP Configuration Request
 
@@ -208,7 +208,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetLDAPConfigurationStatus`: LDAPVerifyConnectivityJobRequest
+    // response from `GetLDAPConfigurationStatus`: NDSLDAPVerifyConnectivityJobRequest
     fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.GetLDAPConfigurationStatus`: %v\n", resp)
 }
 ```
@@ -234,7 +234,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**LDAPVerifyConnectivityJobRequest**](LDAPVerifyConnectivityJobRequest.md)
+[**NDSLDAPVerifyConnectivityJobRequest**](NDSLDAPVerifyConnectivityJobRequest.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -331,7 +331,7 @@ Name | Type | Description  | Notes
 
 ## VerifyLDAPConfiguration
 
-> LDAPVerifyConnectivityJobRequest VerifyLDAPConfiguration(ctx, groupId, lDAPVerifyConnectivityJobRequestParams LDAPVerifyConnectivityJobRequestParams).Execute()
+> NDSLDAPVerifyConnectivityJobRequest VerifyLDAPConfiguration(ctx, groupId, nDSLDAPVerifyConnectivityJobRequestParams NDSLDAPVerifyConnectivityJobRequestParams).Execute()
 
 Verify the LDAP Configuration in One Project
 
@@ -361,15 +361,15 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    lDAPVerifyConnectivityJobRequestParams := *openapiclient.NewLDAPVerifyConnectivityJobRequestParams("BindPassword_example", "CN=BindUser,CN=Users,DC=myldapserver,DC=mycompany,DC=com", "Hostname_example", int(123)) // LDAPVerifyConnectivityJobRequestParams | 
+    nDSLDAPVerifyConnectivityJobRequestParams := *openapiclient.NewNDSLDAPVerifyConnectivityJobRequestParams("BindPassword_example", "CN=BindUser,CN=Users,DC=myldapserver,DC=mycompany,DC=com", "Hostname_example", int(123)) // NDSLDAPVerifyConnectivityJobRequestParams | 
 
-    resp, r, err := sdk.LDAPConfigurationApi.VerifyLDAPConfiguration(context.Background(), groupId, &lDAPVerifyConnectivityJobRequestParams).Execute()
+    resp, r, err := sdk.LDAPConfigurationApi.VerifyLDAPConfiguration(context.Background(), groupId, &nDSLDAPVerifyConnectivityJobRequestParams).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `LDAPConfigurationApi.VerifyLDAPConfiguration``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `VerifyLDAPConfiguration`: LDAPVerifyConnectivityJobRequest
+    // response from `VerifyLDAPConfiguration`: NDSLDAPVerifyConnectivityJobRequest
     fmt.Fprintf(os.Stdout, "Response from `LDAPConfigurationApi.VerifyLDAPConfiguration`: %v\n", resp)
 }
 ```
@@ -390,11 +390,11 @@ Other parameters are passed through a pointer to a apiVerifyLDAPConfigurationReq
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **lDAPVerifyConnectivityJobRequestParams** | [**LDAPVerifyConnectivityJobRequestParams**](LDAPVerifyConnectivityJobRequestParams.md) | The LDAP configuration for the specified project that you want to verify. | 
+ **nDSLDAPVerifyConnectivityJobRequestParams** | [**NDSLDAPVerifyConnectivityJobRequestParams**](NDSLDAPVerifyConnectivityJobRequestParams.md) | The LDAP configuration for the specified project that you want to verify. | 
 
 ### Return type
 
-[**LDAPVerifyConnectivityJobRequest**](LDAPVerifyConnectivityJobRequest.md)
+[**NDSLDAPVerifyConnectivityJobRequest**](NDSLDAPVerifyConnectivityJobRequest.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

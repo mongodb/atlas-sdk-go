@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 
 ## GetDatabase
 
-> MesurementsDatabase GetDatabase(ctx, groupId, databaseName, processId).Execute()
+> Database GetDatabase(ctx, groupId, databaseName, processId).Execute()
 
 Return One Database for a MongoDB Process
 
@@ -138,7 +138,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetDatabase`: MesurementsDatabase
+    // response from `GetDatabase`: Database
     fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.GetDatabase`: %v\n", resp)
 }
 ```
@@ -166,7 +166,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MesurementsDatabase**](MesurementsDatabase.md)
+[**Database**](Database.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -882,7 +882,7 @@ Name | Type | Description  | Notes
 
 ## ListDiskMeasurements
 
-> MeasurementDiskPartition ListDiskMeasurements(ctx, partitionName, groupId, processId).Execute()
+> DiskPartition ListDiskMeasurements(ctx, partitionName, groupId, processId).Execute()
 
 Return Measurements of One Disk
 
@@ -921,7 +921,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `ListDiskMeasurements`: MeasurementDiskPartition
+    // response from `ListDiskMeasurements`: DiskPartition
     fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.ListDiskMeasurements`: %v\n", resp)
 }
 ```
@@ -949,7 +949,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MeasurementDiskPartition**](MeasurementDiskPartition.md)
+[**DiskPartition**](DiskPartition.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -1145,7 +1145,7 @@ Name | Type | Description  | Notes
 
 ## ListMetricTypes
 
-> CloudSearchMetrics ListMetricTypes(ctx, processId, groupId).Execute()
+> FTSMetrics ListMetricTypes(ctx, processId, groupId).Execute()
 
 Return All Atlas Search Metric Types for One Process
 
@@ -1183,7 +1183,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `ListMetricTypes`: CloudSearchMetrics
+    // response from `ListMetricTypes`: FTSMetrics
     fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.ListMetricTypes`: %v\n", resp)
 }
 ```
@@ -1209,7 +1209,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CloudSearchMetrics**](CloudSearchMetrics.md)
+[**FTSMetrics**](FTSMetrics.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

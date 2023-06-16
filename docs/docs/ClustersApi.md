@@ -566,7 +566,7 @@ Name | Type | Description  | Notes
 
 ## UpgradeSharedCluster
 
-> LegacyAtlasCluster UpgradeSharedCluster(ctx, groupId, legacyAtlasCluster LegacyAtlasCluster).Execute()
+> LegacyClusterDescription UpgradeSharedCluster(ctx, groupId, legacyClusterDescription LegacyClusterDescription).Execute()
 
 Upgrade One Shared-tier Cluster
 
@@ -596,15 +596,15 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    legacyAtlasCluster := *openapiclient.NewLegacyAtlasCluster() // LegacyAtlasCluster | 
+    legacyClusterDescription := *openapiclient.NewLegacyClusterDescription() // LegacyClusterDescription | 
 
-    resp, r, err := sdk.ClustersApi.UpgradeSharedCluster(context.Background(), groupId, &legacyAtlasCluster).Execute()
+    resp, r, err := sdk.ClustersApi.UpgradeSharedCluster(context.Background(), groupId, &legacyClusterDescription).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.UpgradeSharedCluster``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `UpgradeSharedCluster`: LegacyAtlasCluster
+    // response from `UpgradeSharedCluster`: LegacyClusterDescription
     fmt.Fprintf(os.Stdout, "Response from `ClustersApi.UpgradeSharedCluster`: %v\n", resp)
 }
 ```
@@ -625,11 +625,11 @@ Other parameters are passed through a pointer to a apiUpgradeSharedClusterReques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **legacyAtlasCluster** | [**LegacyAtlasCluster**](LegacyAtlasCluster.md) | Details of the shared-tier cluster upgrade in the specified project. | 
+ **legacyClusterDescription** | [**LegacyClusterDescription**](LegacyClusterDescription.md) | Details of the shared-tier cluster upgrade in the specified project. | 
 
 ### Return type
 
-[**LegacyAtlasCluster**](LegacyAtlasCluster.md)
+[**LegacyClusterDescription**](LegacyClusterDescription.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

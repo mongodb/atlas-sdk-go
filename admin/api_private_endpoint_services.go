@@ -36,7 +36,7 @@ type PrivateEndpointServicesApi interface {
 	CreatePrivateEndpointWithParams(ctx context.Context, args *CreatePrivateEndpointApiParams) CreatePrivateEndpointApiRequest
 
 	// Interface only available internally
-	createPrivateEndpointExecute(r CreatePrivateEndpointApiRequest) (*PrivateLinkEndpoint, *http.Response, error)
+	createPrivateEndpointExecute(r CreatePrivateEndpointApiRequest) (*Endpoint, *http.Response, error)
 
 	/*
 		CreatePrivateEndpointService Create One Private Endpoint Service for One Provider
@@ -47,7 +47,7 @@ type PrivateEndpointServicesApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return CreatePrivateEndpointServiceApiRequest
 	*/
-	CreatePrivateEndpointService(ctx context.Context, groupId string, cloudProviderEndpointServiceRequest *CloudProviderEndpointServiceRequest) CreatePrivateEndpointServiceApiRequest
+	CreatePrivateEndpointService(ctx context.Context, groupId string, createEndpointServiceRequest *CreateEndpointServiceRequest) CreatePrivateEndpointServiceApiRequest
 	/*
 		CreatePrivateEndpointService Create One Private Endpoint Service for One Provider
 
@@ -136,7 +136,7 @@ type PrivateEndpointServicesApi interface {
 	GetPrivateEndpointWithParams(ctx context.Context, args *GetPrivateEndpointApiParams) GetPrivateEndpointApiRequest
 
 	// Interface only available internally
-	getPrivateEndpointExecute(r GetPrivateEndpointApiRequest) (*PrivateLinkEndpoint, *http.Response, error)
+	getPrivateEndpointExecute(r GetPrivateEndpointApiRequest) (*Endpoint, *http.Response, error)
 
 	/*
 		GetPrivateEndpointService Return One Private Endpoint Service for One Provider
@@ -264,7 +264,7 @@ func (a *PrivateEndpointServicesApiService) CreatePrivateEndpointWithParams(ctx 
 	}
 }
 
-func (r CreatePrivateEndpointApiRequest) Execute() (*PrivateLinkEndpoint, *http.Response, error) {
+func (r CreatePrivateEndpointApiRequest) Execute() (*Endpoint, *http.Response, error) {
 	return r.ApiService.createPrivateEndpointExecute(r)
 }
 
@@ -292,13 +292,13 @@ func (a *PrivateEndpointServicesApiService) CreatePrivateEndpoint(ctx context.Co
 
 // Execute executes the request
 //
-//	@return PrivateLinkEndpoint
-func (a *PrivateEndpointServicesApiService) createPrivateEndpointExecute(r CreatePrivateEndpointApiRequest) (*PrivateLinkEndpoint, *http.Response, error) {
+//	@return Endpoint
+func (a *PrivateEndpointServicesApiService) createPrivateEndpointExecute(r CreatePrivateEndpointApiRequest) (*Endpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *PrivateLinkEndpoint
+		localVarReturnValue *Endpoint
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivateEndpointServicesApiService.CreatePrivateEndpoint")
@@ -395,23 +395,23 @@ func (a *PrivateEndpointServicesApiService) createPrivateEndpointExecute(r Creat
 }
 
 type CreatePrivateEndpointServiceApiRequest struct {
-	ctx                                 context.Context
-	ApiService                          PrivateEndpointServicesApi
-	groupId                             string
-	cloudProviderEndpointServiceRequest *CloudProviderEndpointServiceRequest
+	ctx                          context.Context
+	ApiService                   PrivateEndpointServicesApi
+	groupId                      string
+	createEndpointServiceRequest *CreateEndpointServiceRequest
 }
 
 type CreatePrivateEndpointServiceApiParams struct {
-	GroupId                             string
-	CloudProviderEndpointServiceRequest *CloudProviderEndpointServiceRequest
+	GroupId                      string
+	CreateEndpointServiceRequest *CreateEndpointServiceRequest
 }
 
 func (a *PrivateEndpointServicesApiService) CreatePrivateEndpointServiceWithParams(ctx context.Context, args *CreatePrivateEndpointServiceApiParams) CreatePrivateEndpointServiceApiRequest {
 	return CreatePrivateEndpointServiceApiRequest{
-		ApiService:                          a,
-		ctx:                                 ctx,
-		groupId:                             args.GroupId,
-		cloudProviderEndpointServiceRequest: args.CloudProviderEndpointServiceRequest,
+		ApiService:                   a,
+		ctx:                          ctx,
+		groupId:                      args.GroupId,
+		createEndpointServiceRequest: args.CreateEndpointServiceRequest,
 	}
 }
 
@@ -428,12 +428,12 @@ Creates one private endpoint service for the specified cloud service provider. T
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreatePrivateEndpointServiceApiRequest
 */
-func (a *PrivateEndpointServicesApiService) CreatePrivateEndpointService(ctx context.Context, groupId string, cloudProviderEndpointServiceRequest *CloudProviderEndpointServiceRequest) CreatePrivateEndpointServiceApiRequest {
+func (a *PrivateEndpointServicesApiService) CreatePrivateEndpointService(ctx context.Context, groupId string, createEndpointServiceRequest *CreateEndpointServiceRequest) CreatePrivateEndpointServiceApiRequest {
 	return CreatePrivateEndpointServiceApiRequest{
-		ApiService:                          a,
-		ctx:                                 ctx,
-		groupId:                             groupId,
-		cloudProviderEndpointServiceRequest: cloudProviderEndpointServiceRequest,
+		ApiService:                   a,
+		ctx:                          ctx,
+		groupId:                      groupId,
+		createEndpointServiceRequest: createEndpointServiceRequest,
 	}
 }
 
@@ -465,8 +465,8 @@ func (a *PrivateEndpointServicesApiService) createPrivateEndpointServiceExecute(
 	if strlen(r.groupId) > 24 {
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
-	if r.cloudProviderEndpointServiceRequest == nil {
-		return localVarReturnValue, nil, reportError("cloudProviderEndpointServiceRequest is required and must be specified")
+	if r.createEndpointServiceRequest == nil {
+		return localVarReturnValue, nil, reportError("createEndpointServiceRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -487,7 +487,7 @@ func (a *PrivateEndpointServicesApiService) createPrivateEndpointServiceExecute(
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.cloudProviderEndpointServiceRequest
+	localVarPostBody = r.createEndpointServiceRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -862,7 +862,7 @@ func (a *PrivateEndpointServicesApiService) GetPrivateEndpointWithParams(ctx con
 	}
 }
 
-func (r GetPrivateEndpointApiRequest) Execute() (*PrivateLinkEndpoint, *http.Response, error) {
+func (r GetPrivateEndpointApiRequest) Execute() (*Endpoint, *http.Response, error) {
 	return r.ApiService.getPrivateEndpointExecute(r)
 }
 
@@ -891,13 +891,13 @@ func (a *PrivateEndpointServicesApiService) GetPrivateEndpoint(ctx context.Conte
 
 // Execute executes the request
 //
-//	@return PrivateLinkEndpoint
-func (a *PrivateEndpointServicesApiService) getPrivateEndpointExecute(r GetPrivateEndpointApiRequest) (*PrivateLinkEndpoint, *http.Response, error) {
+//	@return Endpoint
+func (a *PrivateEndpointServicesApiService) getPrivateEndpointExecute(r GetPrivateEndpointApiRequest) (*Endpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *PrivateLinkEndpoint
+		localVarReturnValue *Endpoint
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrivateEndpointServicesApiService.GetPrivateEndpoint")

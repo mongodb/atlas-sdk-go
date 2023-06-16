@@ -109,7 +109,7 @@ type CloudProviderAccessApi interface {
 	GetCloudProviderAccessRoleWithParams(ctx context.Context, args *GetCloudProviderAccessRoleApiParams) GetCloudProviderAccessRoleApiRequest
 
 	// Interface only available internally
-	getCloudProviderAccessRoleExecute(r GetCloudProviderAccessRoleApiRequest) (*CloudProviderAccessRoles, *http.Response, error)
+	getCloudProviderAccessRoleExecute(r GetCloudProviderAccessRoleApiRequest) (*CloudProviderAccess, *http.Response, error)
 
 	/*
 		ListCloudProviderAccessRoles Return All Cloud Provider Access Roles
@@ -132,7 +132,7 @@ type CloudProviderAccessApi interface {
 	ListCloudProviderAccessRolesWithParams(ctx context.Context, args *ListCloudProviderAccessRolesApiParams) ListCloudProviderAccessRolesApiRequest
 
 	// Interface only available internally
-	listCloudProviderAccessRolesExecute(r ListCloudProviderAccessRolesApiRequest) (*CloudProviderAccessRoles, *http.Response, error)
+	listCloudProviderAccessRolesExecute(r ListCloudProviderAccessRolesApiRequest) (*CloudProviderAccess, *http.Response, error)
 }
 
 // CloudProviderAccessApiService CloudProviderAccessApi service
@@ -587,7 +587,7 @@ func (a *CloudProviderAccessApiService) GetCloudProviderAccessRoleWithParams(ctx
 	}
 }
 
-func (r GetCloudProviderAccessRoleApiRequest) Execute() (*CloudProviderAccessRoles, *http.Response, error) {
+func (r GetCloudProviderAccessRoleApiRequest) Execute() (*CloudProviderAccess, *http.Response, error) {
 	return r.ApiService.getCloudProviderAccessRoleExecute(r)
 }
 
@@ -612,13 +612,13 @@ func (a *CloudProviderAccessApiService) GetCloudProviderAccessRole(ctx context.C
 
 // Execute executes the request
 //
-//	@return CloudProviderAccessRoles
-func (a *CloudProviderAccessApiService) getCloudProviderAccessRoleExecute(r GetCloudProviderAccessRoleApiRequest) (*CloudProviderAccessRoles, *http.Response, error) {
+//	@return CloudProviderAccess
+func (a *CloudProviderAccessApiService) getCloudProviderAccessRoleExecute(r GetCloudProviderAccessRoleApiRequest) (*CloudProviderAccess, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *CloudProviderAccessRoles
+		localVarReturnValue *CloudProviderAccess
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAccessApiService.GetCloudProviderAccessRole")
@@ -726,7 +726,7 @@ func (a *CloudProviderAccessApiService) ListCloudProviderAccessRolesWithParams(c
 	}
 }
 
-func (r ListCloudProviderAccessRolesApiRequest) Execute() (*CloudProviderAccessRoles, *http.Response, error) {
+func (r ListCloudProviderAccessRolesApiRequest) Execute() (*CloudProviderAccess, *http.Response, error) {
 	return r.ApiService.listCloudProviderAccessRolesExecute(r)
 }
 
@@ -749,13 +749,13 @@ func (a *CloudProviderAccessApiService) ListCloudProviderAccessRoles(ctx context
 
 // Execute executes the request
 //
-//	@return CloudProviderAccessRoles
-func (a *CloudProviderAccessApiService) listCloudProviderAccessRolesExecute(r ListCloudProviderAccessRolesApiRequest) (*CloudProviderAccessRoles, *http.Response, error) {
+//	@return CloudProviderAccess
+func (a *CloudProviderAccessApiService) listCloudProviderAccessRolesExecute(r ListCloudProviderAccessRolesApiRequest) (*CloudProviderAccess, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *CloudProviderAccessRoles
+		localVarReturnValue *CloudProviderAccess
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAccessApiService.ListCloudProviderAccessRoles")

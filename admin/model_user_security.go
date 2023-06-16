@@ -11,8 +11,8 @@ var _ MappedNullable = &UserSecurity{}
 
 // UserSecurity struct for UserSecurity
 type UserSecurity struct {
-	CustomerX509 *DBUserTLSX509Settings `json:"customerX509,omitempty"`
-	Ldap         *LDAPSecuritySettings  `json:"ldap,omitempty"`
+	CustomerX509 *CustomerX509 `json:"customerX509,omitempty"`
+	Ldap         *NDSLDAP      `json:"ldap,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	Links []Link `json:"links,omitempty"`
 }
@@ -35,9 +35,9 @@ func NewUserSecurityWithDefaults() *UserSecurity {
 }
 
 // GetCustomerX509 returns the CustomerX509 field value if set, zero value otherwise.
-func (o *UserSecurity) GetCustomerX509() DBUserTLSX509Settings {
+func (o *UserSecurity) GetCustomerX509() CustomerX509 {
 	if o == nil || IsNil(o.CustomerX509) {
-		var ret DBUserTLSX509Settings
+		var ret CustomerX509
 		return ret
 	}
 	return *o.CustomerX509
@@ -45,7 +45,7 @@ func (o *UserSecurity) GetCustomerX509() DBUserTLSX509Settings {
 
 // GetCustomerX509Ok returns a tuple with the CustomerX509 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserSecurity) GetCustomerX509Ok() (*DBUserTLSX509Settings, bool) {
+func (o *UserSecurity) GetCustomerX509Ok() (*CustomerX509, bool) {
 	if o == nil || IsNil(o.CustomerX509) {
 		return nil, false
 	}
@@ -61,15 +61,15 @@ func (o *UserSecurity) HasCustomerX509() bool {
 	return false
 }
 
-// SetCustomerX509 gets a reference to the given DBUserTLSX509Settings and assigns it to the CustomerX509 field.
-func (o *UserSecurity) SetCustomerX509(v DBUserTLSX509Settings) {
+// SetCustomerX509 gets a reference to the given CustomerX509 and assigns it to the CustomerX509 field.
+func (o *UserSecurity) SetCustomerX509(v CustomerX509) {
 	o.CustomerX509 = &v
 }
 
 // GetLdap returns the Ldap field value if set, zero value otherwise.
-func (o *UserSecurity) GetLdap() LDAPSecuritySettings {
+func (o *UserSecurity) GetLdap() NDSLDAP {
 	if o == nil || IsNil(o.Ldap) {
-		var ret LDAPSecuritySettings
+		var ret NDSLDAP
 		return ret
 	}
 	return *o.Ldap
@@ -77,7 +77,7 @@ func (o *UserSecurity) GetLdap() LDAPSecuritySettings {
 
 // GetLdapOk returns a tuple with the Ldap field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserSecurity) GetLdapOk() (*LDAPSecuritySettings, bool) {
+func (o *UserSecurity) GetLdapOk() (*NDSLDAP, bool) {
 	if o == nil || IsNil(o.Ldap) {
 		return nil, false
 	}
@@ -93,8 +93,8 @@ func (o *UserSecurity) HasLdap() bool {
 	return false
 }
 
-// SetLdap gets a reference to the given LDAPSecuritySettings and assigns it to the Ldap field.
-func (o *UserSecurity) SetLdap(v LDAPSecuritySettings) {
+// SetLdap gets a reference to the given NDSLDAP and assigns it to the Ldap field.
+func (o *UserSecurity) SetLdap(v NDSLDAP) {
 	o.Ldap = &v
 }
 

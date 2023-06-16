@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateCustomDatabaseRole
 
-> UserCustomDBRole CreateCustomDatabaseRole(ctx, groupId, userCustomDBRole UserCustomDBRole).Execute()
+> CustomDBRole CreateCustomDatabaseRole(ctx, groupId, customDBRole CustomDBRole).Execute()
 
 Create One Custom Role
 
@@ -39,15 +39,15 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    userCustomDBRole := *openapiclient.NewUserCustomDBRole("RoleName_example") // UserCustomDBRole | 
+    customDBRole := *openapiclient.NewCustomDBRole("RoleName_example") // CustomDBRole | 
 
-    resp, r, err := sdk.CustomDatabaseRolesApi.CreateCustomDatabaseRole(context.Background(), groupId, &userCustomDBRole).Execute()
+    resp, r, err := sdk.CustomDatabaseRolesApi.CreateCustomDatabaseRole(context.Background(), groupId, &customDBRole).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CustomDatabaseRolesApi.CreateCustomDatabaseRole``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `CreateCustomDatabaseRole`: UserCustomDBRole
+    // response from `CreateCustomDatabaseRole`: CustomDBRole
     fmt.Fprintf(os.Stdout, "Response from `CustomDatabaseRolesApi.CreateCustomDatabaseRole`: %v\n", resp)
 }
 ```
@@ -68,11 +68,11 @@ Other parameters are passed through a pointer to a apiCreateCustomDatabaseRoleRe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **userCustomDBRole** | [**UserCustomDBRole**](UserCustomDBRole.md) | Creates one custom role in the specified project. | 
+ **customDBRole** | [**CustomDBRole**](CustomDBRole.md) | Creates one custom role in the specified project. | 
 
 ### Return type
 
-[**UserCustomDBRole**](UserCustomDBRole.md)
+[**CustomDBRole**](CustomDBRole.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -163,7 +163,7 @@ Name | Type | Description  | Notes
 
 ## GetCustomDatabaseRole
 
-> UserCustomDBRole GetCustomDatabaseRole(ctx, groupId, roleName).Execute()
+> CustomDBRole GetCustomDatabaseRole(ctx, groupId, roleName).Execute()
 
 Return One Custom Role in One Project
 
@@ -196,7 +196,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetCustomDatabaseRole`: UserCustomDBRole
+    // response from `GetCustomDatabaseRole`: CustomDBRole
     fmt.Fprintf(os.Stdout, "Response from `CustomDatabaseRolesApi.GetCustomDatabaseRole`: %v\n", resp)
 }
 ```
@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserCustomDBRole**](UserCustomDBRole.md)
+[**CustomDBRole**](CustomDBRole.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
 
 ## ListCustomDatabaseRoles
 
-> []UserCustomDBRole ListCustomDatabaseRoles(ctx, groupId).Execute()
+> []CustomDBRole ListCustomDatabaseRoles(ctx, groupId).Execute()
 
 Return All Custom Roles in One Project
 
@@ -271,7 +271,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `ListCustomDatabaseRoles`: []UserCustomDBRole
+    // response from `ListCustomDatabaseRoles`: []CustomDBRole
     fmt.Fprintf(os.Stdout, "Response from `CustomDatabaseRolesApi.ListCustomDatabaseRoles`: %v\n", resp)
 }
 ```
@@ -295,7 +295,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]UserCustomDBRole**](UserCustomDBRole.md)
+[**[]CustomDBRole**](CustomDBRole.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -312,7 +312,7 @@ Name | Type | Description  | Notes
 
 ## UpdateCustomDatabaseRole
 
-> UserCustomDBRole UpdateCustomDatabaseRole(ctx, groupId, roleName, updateCustomDBRole UpdateCustomDBRole).Execute()
+> CustomDBRole UpdateCustomDatabaseRole(ctx, groupId, roleName, updateCustomDBRole UpdateCustomDBRole).Execute()
 
 Update One Custom Role in One Project
 
@@ -346,7 +346,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `UpdateCustomDatabaseRole`: UserCustomDBRole
+    // response from `UpdateCustomDatabaseRole`: CustomDBRole
     fmt.Fprintf(os.Stdout, "Response from `CustomDatabaseRolesApi.UpdateCustomDatabaseRole`: %v\n", resp)
 }
 ```
@@ -373,7 +373,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UserCustomDBRole**](UserCustomDBRole.md)
+[**CustomDBRole**](CustomDBRole.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 
 ## GetSharedClusterBackup
 
-> BackupTenantSnapshot GetSharedClusterBackup(ctx, groupId, clusterName, snapshotId).Execute()
+> TenantSnapshot GetSharedClusterBackup(ctx, groupId, clusterName, snapshotId).Execute()
 
 Return One Snapshot for One M2 or M5 Cluster
 
@@ -134,7 +134,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetSharedClusterBackup`: BackupTenantSnapshot
+    // response from `GetSharedClusterBackup`: TenantSnapshot
     fmt.Fprintf(os.Stdout, "Response from `SharedTierSnapshotsApi.GetSharedClusterBackup`: %v\n", resp)
 }
 ```
@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BackupTenantSnapshot**](BackupTenantSnapshot.md)
+[**TenantSnapshot**](TenantSnapshot.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

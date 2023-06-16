@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Actions** | Pointer to [**[]DatabasePrivilegeAction**](DatabasePrivilegeAction.md) | List of the individual privilege actions that the role grants. | [optional] 
-**InheritedRoles** | Pointer to [**[]DatabaseInheritedRole**](DatabaseInheritedRole.md) | List of the built-in roles that this custom role inherits. | [optional] 
+**Actions** | Pointer to [**[]DBAction**](DBAction.md) | List of the individual privilege actions that the role grants. | [optional] 
+**InheritedRoles** | Pointer to [**[]InheritedRole**](InheritedRole.md) | List of the built-in roles that this custom role inherits. | [optional] 
 
 ## Methods
 
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetActions
 
-`func (o *UpdateCustomDBRole) GetActions() []DatabasePrivilegeAction`
+`func (o *UpdateCustomDBRole) GetActions() []DBAction`
 
 GetActions returns the Actions field if non-nil, zero value otherwise.
 
 ### GetActionsOk
 
-`func (o *UpdateCustomDBRole) GetActionsOk() (*[]DatabasePrivilegeAction, bool)`
+`func (o *UpdateCustomDBRole) GetActionsOk() (*[]DBAction, bool)`
 
 GetActionsOk returns a tuple with the Actions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetActions
 
-`func (o *UpdateCustomDBRole) SetActions(v []DatabasePrivilegeAction)`
+`func (o *UpdateCustomDBRole) SetActions(v []DBAction)`
 
 SetActions sets Actions field to given value.
 
@@ -53,20 +53,20 @@ HasActions returns a boolean if a field has been set.
 
 ### GetInheritedRoles
 
-`func (o *UpdateCustomDBRole) GetInheritedRoles() []DatabaseInheritedRole`
+`func (o *UpdateCustomDBRole) GetInheritedRoles() []InheritedRole`
 
 GetInheritedRoles returns the InheritedRoles field if non-nil, zero value otherwise.
 
 ### GetInheritedRolesOk
 
-`func (o *UpdateCustomDBRole) GetInheritedRolesOk() (*[]DatabaseInheritedRole, bool)`
+`func (o *UpdateCustomDBRole) GetInheritedRolesOk() (*[]InheritedRole, bool)`
 
 GetInheritedRolesOk returns a tuple with the InheritedRoles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInheritedRoles
 
-`func (o *UpdateCustomDBRole) SetInheritedRoles(v []DatabaseInheritedRole)`
+`func (o *UpdateCustomDBRole) SetInheritedRoles(v []InheritedRole)`
 
 SetInheritedRoles sets InheritedRoles field to given value.
 

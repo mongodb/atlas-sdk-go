@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateAtlasSearchIndex
 
-> ClusterSearchIndex CreateAtlasSearchIndex(ctx, groupId, clusterName, clusterSearchIndex ClusterSearchIndex).Execute()
+> FTSIndex CreateAtlasSearchIndex(ctx, groupId, clusterName, fTSIndex FTSIndex).Execute()
 
 Create One Atlas Search Index
 
@@ -40,15 +40,15 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    clusterSearchIndex := *openapiclient.NewClusterSearchIndex("CollectionName_example", "Database_example", "Name_example") // ClusterSearchIndex | 
+    fTSIndex := *openapiclient.NewFTSIndex("CollectionName_example", "Database_example", "Name_example") // FTSIndex | 
 
-    resp, r, err := sdk.AtlasSearchApi.CreateAtlasSearchIndex(context.Background(), groupId, clusterName, &clusterSearchIndex).Execute()
+    resp, r, err := sdk.AtlasSearchApi.CreateAtlasSearchIndex(context.Background(), groupId, clusterName, &fTSIndex).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.CreateAtlasSearchIndex``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `CreateAtlasSearchIndex`: ClusterSearchIndex
+    // response from `CreateAtlasSearchIndex`: FTSIndex
     fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.CreateAtlasSearchIndex`: %v\n", resp)
 }
 ```
@@ -71,11 +71,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **clusterSearchIndex** | [**ClusterSearchIndex**](ClusterSearchIndex.md) | Creates one Atlas Search index on the specified collection. | 
+ **fTSIndex** | [**FTSIndex**](FTSIndex.md) | Creates one Atlas Search index on the specified collection. | 
 
 ### Return type
 
-[**ClusterSearchIndex**](ClusterSearchIndex.md)
+[**FTSIndex**](FTSIndex.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -171,7 +171,7 @@ Name | Type | Description  | Notes
 
 ## GetAtlasSearchIndex
 
-> ClusterSearchIndex GetAtlasSearchIndex(ctx, groupId, clusterName, indexId).Execute()
+> FTSIndex GetAtlasSearchIndex(ctx, groupId, clusterName, indexId).Execute()
 
 Return One Atlas Search Index
 
@@ -205,7 +205,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetAtlasSearchIndex`: ClusterSearchIndex
+    // response from `GetAtlasSearchIndex`: FTSIndex
     fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.GetAtlasSearchIndex`: %v\n", resp)
 }
 ```
@@ -233,7 +233,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ClusterSearchIndex**](ClusterSearchIndex.md)
+[**FTSIndex**](FTSIndex.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -250,7 +250,7 @@ Name | Type | Description  | Notes
 
 ## ListAtlasSearchIndexes
 
-> []ClusterSearchIndex ListAtlasSearchIndexes(ctx, groupId, clusterName, collectionName, databaseName).Execute()
+> []FTSIndex ListAtlasSearchIndexes(ctx, groupId, clusterName, collectionName, databaseName).Execute()
 
 Return All Atlas Search Indexes for One Collection
 
@@ -285,7 +285,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `ListAtlasSearchIndexes`: []ClusterSearchIndex
+    // response from `ListAtlasSearchIndexes`: []FTSIndex
     fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.ListAtlasSearchIndexes`: %v\n", resp)
 }
 ```
@@ -315,7 +315,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]ClusterSearchIndex**](ClusterSearchIndex.md)
+[**[]FTSIndex**](FTSIndex.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -332,7 +332,7 @@ Name | Type | Description  | Notes
 
 ## UpdateAtlasSearchIndex
 
-> ClusterSearchIndex UpdateAtlasSearchIndex(ctx, groupId, clusterName, indexId, clusterSearchIndex ClusterSearchIndex).Execute()
+> FTSIndex UpdateAtlasSearchIndex(ctx, groupId, clusterName, indexId, fTSIndex FTSIndex).Execute()
 
 Update One Atlas Search Index
 
@@ -359,15 +359,15 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
     indexId := "indexId_example" // string | 
-    clusterSearchIndex := *openapiclient.NewClusterSearchIndex("CollectionName_example", "Database_example", "Name_example") // ClusterSearchIndex | 
+    fTSIndex := *openapiclient.NewFTSIndex("CollectionName_example", "Database_example", "Name_example") // FTSIndex | 
 
-    resp, r, err := sdk.AtlasSearchApi.UpdateAtlasSearchIndex(context.Background(), groupId, clusterName, indexId, &clusterSearchIndex).Execute()
+    resp, r, err := sdk.AtlasSearchApi.UpdateAtlasSearchIndex(context.Background(), groupId, clusterName, indexId, &fTSIndex).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `AtlasSearchApi.UpdateAtlasSearchIndex``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `UpdateAtlasSearchIndex`: ClusterSearchIndex
+    // response from `UpdateAtlasSearchIndex`: FTSIndex
     fmt.Fprintf(os.Stdout, "Response from `AtlasSearchApi.UpdateAtlasSearchIndex`: %v\n", resp)
 }
 ```
@@ -392,11 +392,11 @@ Name | Type | Description  | Notes
 
 
 
- **clusterSearchIndex** | [**ClusterSearchIndex**](ClusterSearchIndex.md) | Details to update on the Atlas Search index. | 
+ **fTSIndex** | [**FTSIndex**](FTSIndex.md) | Details to update on the Atlas Search index. | 
 
 ### Return type
 
-[**ClusterSearchIndex**](ClusterSearchIndex.md)
+[**FTSIndex**](FTSIndex.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

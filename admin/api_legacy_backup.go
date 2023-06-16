@@ -100,7 +100,7 @@ type LegacyBackupApi interface {
 	GetLegacyBackupRestoreJobWithParams(ctx context.Context, args *GetLegacyBackupRestoreJobApiParams) GetLegacyBackupRestoreJobApiRequest
 
 	// Interface only available internally
-	getLegacyBackupRestoreJobExecute(r GetLegacyBackupRestoreJobApiRequest) (*BackupRestoreJob, *http.Response, error)
+	getLegacyBackupRestoreJobExecute(r GetLegacyBackupRestoreJobApiRequest) (*RestoreJob, *http.Response, error)
 
 	/*
 		GetLegacySnapshot Return One Legacy Backup Snapshot
@@ -129,7 +129,7 @@ type LegacyBackupApi interface {
 	GetLegacySnapshotWithParams(ctx context.Context, args *GetLegacySnapshotApiParams) GetLegacySnapshotApiRequest
 
 	// Interface only available internally
-	getLegacySnapshotExecute(r GetLegacySnapshotApiRequest) (*BackupSnapshot, *http.Response, error)
+	getLegacySnapshotExecute(r GetLegacySnapshotApiRequest) (*Snapshot, *http.Response, error)
 
 	/*
 		GetLegacySnapshotSchedule Return One Snapshot Schedule
@@ -260,7 +260,7 @@ type LegacyBackupApi interface {
 
 		Deprecated: this method has been deprecated. Please check the latest resource version for LegacyBackupApi
 	*/
-	UpdateLegacySnapshotRetention(ctx context.Context, groupId string, clusterName string, snapshotId string, backupSnapshot *BackupSnapshot) UpdateLegacySnapshotRetentionApiRequest
+	UpdateLegacySnapshotRetention(ctx context.Context, groupId string, clusterName string, snapshotId string, snapshot *Snapshot) UpdateLegacySnapshotRetentionApiRequest
 	/*
 		UpdateLegacySnapshotRetention Change One Legacy Backup Snapshot Expiration
 
@@ -274,7 +274,7 @@ type LegacyBackupApi interface {
 	UpdateLegacySnapshotRetentionWithParams(ctx context.Context, args *UpdateLegacySnapshotRetentionApiParams) UpdateLegacySnapshotRetentionApiRequest
 
 	// Interface only available internally
-	updateLegacySnapshotRetentionExecute(r UpdateLegacySnapshotRetentionApiRequest) (*BackupSnapshot, *http.Response, error)
+	updateLegacySnapshotRetentionExecute(r UpdateLegacySnapshotRetentionApiRequest) (*Snapshot, *http.Response, error)
 
 	/*
 		UpdateLegacySnapshotSchedule Update Snapshot Schedule for One Cluster
@@ -650,7 +650,7 @@ func (a *LegacyBackupApiService) GetLegacyBackupRestoreJobWithParams(ctx context
 	}
 }
 
-func (r GetLegacyBackupRestoreJobApiRequest) Execute() (*BackupRestoreJob, *http.Response, error) {
+func (r GetLegacyBackupRestoreJobApiRequest) Execute() (*RestoreJob, *http.Response, error) {
 	return r.ApiService.getLegacyBackupRestoreJobExecute(r)
 }
 
@@ -681,15 +681,15 @@ func (a *LegacyBackupApiService) GetLegacyBackupRestoreJob(ctx context.Context, 
 
 // Execute executes the request
 //
-//	@return BackupRestoreJob
+//	@return RestoreJob
 //
 // Deprecated
-func (a *LegacyBackupApiService) getLegacyBackupRestoreJobExecute(r GetLegacyBackupRestoreJobApiRequest) (*BackupRestoreJob, *http.Response, error) {
+func (a *LegacyBackupApiService) getLegacyBackupRestoreJobExecute(r GetLegacyBackupRestoreJobApiRequest) (*RestoreJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *BackupRestoreJob
+		localVarReturnValue *RestoreJob
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LegacyBackupApiService.GetLegacyBackupRestoreJob")
@@ -810,7 +810,7 @@ func (a *LegacyBackupApiService) GetLegacySnapshotWithParams(ctx context.Context
 	}
 }
 
-func (r GetLegacySnapshotApiRequest) Execute() (*BackupSnapshot, *http.Response, error) {
+func (r GetLegacySnapshotApiRequest) Execute() (*Snapshot, *http.Response, error) {
 	return r.ApiService.getLegacySnapshotExecute(r)
 }
 
@@ -839,15 +839,15 @@ func (a *LegacyBackupApiService) GetLegacySnapshot(ctx context.Context, groupId 
 
 // Execute executes the request
 //
-//	@return BackupSnapshot
+//	@return Snapshot
 //
 // Deprecated
-func (a *LegacyBackupApiService) getLegacySnapshotExecute(r GetLegacySnapshotApiRequest) (*BackupSnapshot, *http.Response, error) {
+func (a *LegacyBackupApiService) getLegacySnapshotExecute(r GetLegacySnapshotApiRequest) (*Snapshot, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *BackupSnapshot
+		localVarReturnValue *Snapshot
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LegacyBackupApiService.GetLegacySnapshot")
@@ -1705,33 +1705,33 @@ func (a *LegacyBackupApiService) listLegacySnapshotsExecute(r ListLegacySnapshot
 }
 
 type UpdateLegacySnapshotRetentionApiRequest struct {
-	ctx            context.Context
-	ApiService     LegacyBackupApi
-	groupId        string
-	clusterName    string
-	snapshotId     string
-	backupSnapshot *BackupSnapshot
+	ctx         context.Context
+	ApiService  LegacyBackupApi
+	groupId     string
+	clusterName string
+	snapshotId  string
+	snapshot    *Snapshot
 }
 
 type UpdateLegacySnapshotRetentionApiParams struct {
-	GroupId        string
-	ClusterName    string
-	SnapshotId     string
-	BackupSnapshot *BackupSnapshot
+	GroupId     string
+	ClusterName string
+	SnapshotId  string
+	Snapshot    *Snapshot
 }
 
 func (a *LegacyBackupApiService) UpdateLegacySnapshotRetentionWithParams(ctx context.Context, args *UpdateLegacySnapshotRetentionApiParams) UpdateLegacySnapshotRetentionApiRequest {
 	return UpdateLegacySnapshotRetentionApiRequest{
-		ApiService:     a,
-		ctx:            ctx,
-		groupId:        args.GroupId,
-		clusterName:    args.ClusterName,
-		snapshotId:     args.SnapshotId,
-		backupSnapshot: args.BackupSnapshot,
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     args.GroupId,
+		clusterName: args.ClusterName,
+		snapshotId:  args.SnapshotId,
+		snapshot:    args.Snapshot,
 	}
 }
 
-func (r UpdateLegacySnapshotRetentionApiRequest) Execute() (*BackupSnapshot, *http.Response, error) {
+func (r UpdateLegacySnapshotRetentionApiRequest) Execute() (*Snapshot, *http.Response, error) {
 	return r.ApiService.updateLegacySnapshotRetentionExecute(r)
 }
 
@@ -1748,28 +1748,28 @@ UpdateLegacySnapshotRetention Change One Legacy Backup Snapshot Expiration
 
 Deprecated
 */
-func (a *LegacyBackupApiService) UpdateLegacySnapshotRetention(ctx context.Context, groupId string, clusterName string, snapshotId string, backupSnapshot *BackupSnapshot) UpdateLegacySnapshotRetentionApiRequest {
+func (a *LegacyBackupApiService) UpdateLegacySnapshotRetention(ctx context.Context, groupId string, clusterName string, snapshotId string, snapshot *Snapshot) UpdateLegacySnapshotRetentionApiRequest {
 	return UpdateLegacySnapshotRetentionApiRequest{
-		ApiService:     a,
-		ctx:            ctx,
-		groupId:        groupId,
-		clusterName:    clusterName,
-		snapshotId:     snapshotId,
-		backupSnapshot: backupSnapshot,
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     groupId,
+		clusterName: clusterName,
+		snapshotId:  snapshotId,
+		snapshot:    snapshot,
 	}
 }
 
 // Execute executes the request
 //
-//	@return BackupSnapshot
+//	@return Snapshot
 //
 // Deprecated
-func (a *LegacyBackupApiService) updateLegacySnapshotRetentionExecute(r UpdateLegacySnapshotRetentionApiRequest) (*BackupSnapshot, *http.Response, error) {
+func (a *LegacyBackupApiService) updateLegacySnapshotRetentionExecute(r UpdateLegacySnapshotRetentionApiRequest) (*Snapshot, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *BackupSnapshot
+		localVarReturnValue *Snapshot
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LegacyBackupApiService.UpdateLegacySnapshotRetention")
@@ -1803,8 +1803,8 @@ func (a *LegacyBackupApiService) updateLegacySnapshotRetentionExecute(r UpdateLe
 	if strlen(r.snapshotId) > 24 {
 		return localVarReturnValue, nil, reportError("snapshotId must have less than 24 elements")
 	}
-	if r.backupSnapshot == nil {
-		return localVarReturnValue, nil, reportError("backupSnapshot is required and must be specified")
+	if r.snapshot == nil {
+		return localVarReturnValue, nil, reportError("snapshot is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1825,7 +1825,7 @@ func (a *LegacyBackupApiService) updateLegacySnapshotRetentionExecute(r UpdateLe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.backupSnapshot
+	localVarPostBody = r.snapshot
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
