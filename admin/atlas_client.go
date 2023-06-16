@@ -98,7 +98,7 @@ func UseUserAgent(userAgent string) ClientModifier {
 }
 
 // AsError checks if API returned known error type.
-func AsError(err error) (*Error, bool) {
+func AsError(err error) (*ApiError, bool) {
 	var openapiError *GenericOpenAPIError
 	if ok := errors.As(err, &openapiError); !ok {
 		return nil, false

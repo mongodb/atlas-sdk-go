@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ApiKey** | Pointer to [**KeyUser**](KeyUser.md) |  | [optional] 
+**ApiKey** | Pointer to [**ApiKeyUser**](ApiKeyUser.md) |  | [optional] 
 **FederationSettingsId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the federation that you linked the newly created organization to. | [optional] [readonly] 
 **OrgOwnerId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the MongoDB Cloud user that you assigned the Organization Owner role in the new organization. | [optional] [readonly] 
-**Organization** | Pointer to [**Organization**](Organization.md) |  | [optional] 
+**Organization** | Pointer to [**AtlasOrganization**](AtlasOrganization.md) |  | [optional] 
 
 ## Methods
 
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetApiKey
 
-`func (o *CreateOrganizationResponse) GetApiKey() KeyUser`
+`func (o *CreateOrganizationResponse) GetApiKey() ApiKeyUser`
 
 GetApiKey returns the ApiKey field if non-nil, zero value otherwise.
 
 ### GetApiKeyOk
 
-`func (o *CreateOrganizationResponse) GetApiKeyOk() (*KeyUser, bool)`
+`func (o *CreateOrganizationResponse) GetApiKeyOk() (*ApiKeyUser, bool)`
 
 GetApiKeyOk returns a tuple with the ApiKey field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApiKey
 
-`func (o *CreateOrganizationResponse) SetApiKey(v KeyUser)`
+`func (o *CreateOrganizationResponse) SetApiKey(v ApiKeyUser)`
 
 SetApiKey sets ApiKey field to given value.
 
@@ -105,20 +105,20 @@ HasOrgOwnerId returns a boolean if a field has been set.
 
 ### GetOrganization
 
-`func (o *CreateOrganizationResponse) GetOrganization() Organization`
+`func (o *CreateOrganizationResponse) GetOrganization() AtlasOrganization`
 
 GetOrganization returns the Organization field if non-nil, zero value otherwise.
 
 ### GetOrganizationOk
 
-`func (o *CreateOrganizationResponse) GetOrganizationOk() (*Organization, bool)`
+`func (o *CreateOrganizationResponse) GetOrganizationOk() (*AtlasOrganization, bool)`
 
 GetOrganizationOk returns a tuple with the Organization field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOrganization
 
-`func (o *CreateOrganizationResponse) SetOrganization(v Organization)`
+`func (o *CreateOrganizationResponse) SetOrganization(v AtlasOrganization)`
 
 SetOrganization sets Organization field to given value.
 

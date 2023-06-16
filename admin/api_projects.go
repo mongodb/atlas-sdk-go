@@ -600,7 +600,7 @@ func (a *ProjectsApiService) createProjectExecute(r CreateProjectApiRequest) (*G
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -739,7 +739,7 @@ func (a *ProjectsApiService) createProjectInvitationExecute(r CreateProjectInvit
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -869,7 +869,7 @@ func (a *ProjectsApiService) deleteProjectExecute(r DeleteProjectApiRequest) (ma
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1011,7 +1011,7 @@ func (a *ProjectsApiService) deleteProjectInvitationExecute(r DeleteProjectInvit
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1147,7 +1147,7 @@ func (a *ProjectsApiService) deleteProjectLimitExecute(r DeleteProjectLimitApiRe
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1277,7 +1277,7 @@ func (a *ProjectsApiService) getProjectExecute(r GetProjectApiRequest) (*Group, 
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1407,7 +1407,7 @@ func (a *ProjectsApiService) getProjectByNameExecute(r GetProjectByNameApiReques
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1549,7 +1549,7 @@ func (a *ProjectsApiService) getProjectInvitationExecute(r GetProjectInvitationA
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1685,7 +1685,7 @@ func (a *ProjectsApiService) getProjectLimitExecute(r GetProjectLimitApiRequest)
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1815,7 +1815,7 @@ func (a *ProjectsApiService) getProjectSettingsExecute(r GetProjectSettingsApiRe
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1957,7 +1957,7 @@ func (a *ProjectsApiService) listProjectInvitationsExecute(r ListProjectInvitati
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -2087,7 +2087,7 @@ func (a *ProjectsApiService) listProjectLimitsExecute(r ListProjectLimitsApiRequ
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -2297,7 +2297,7 @@ func (a *ProjectsApiService) listProjectUsersExecute(r ListProjectUsersApiReques
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -2463,7 +2463,7 @@ func (a *ProjectsApiService) listProjectsExecute(r ListProjectsApiRequest) (*Pag
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -2602,7 +2602,7 @@ func (a *ProjectsApiService) removeProjectUserExecute(r RemoveProjectUserApiRequ
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -2740,7 +2740,7 @@ func (a *ProjectsApiService) setProjectLimitExecute(r SetProjectLimitApiRequest)
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -2879,7 +2879,7 @@ func (a *ProjectsApiService) updateProjectExecute(r UpdateProjectApiRequest) (*G
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -3018,7 +3018,7 @@ func (a *ProjectsApiService) updateProjectInvitationExecute(r UpdateProjectInvit
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -3169,7 +3169,7 @@ func (a *ProjectsApiService) updateProjectInvitationByIdExecute(r UpdateProjectI
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -3308,7 +3308,7 @@ func (a *ProjectsApiService) updateProjectSettingsExecute(r UpdateProjectSetting
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()

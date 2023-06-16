@@ -38,7 +38,7 @@ type MonitoringAndLogsApi interface {
 	GetAtlasProcessWithParams(ctx context.Context, args *GetAtlasProcessApiParams) GetAtlasProcessApiRequest
 
 	// Interface only available internally
-	getAtlasProcessExecute(r GetAtlasProcessApiRequest) (*HostViewAtlas, *http.Response, error)
+	getAtlasProcessExecute(r GetAtlasProcessApiRequest) (*ApiHostViewAtlas, *http.Response, error)
 
 	/*
 		GetDatabase Return One Database for a MongoDB Process
@@ -88,7 +88,7 @@ type MonitoringAndLogsApi interface {
 	GetDatabaseMeasurementsWithParams(ctx context.Context, args *GetDatabaseMeasurementsApiParams) GetDatabaseMeasurementsApiRequest
 
 	// Interface only available internally
-	getDatabaseMeasurementsExecute(r GetDatabaseMeasurementsApiRequest) (*MeasurementsGeneralViewAtlas, *http.Response, error)
+	getDatabaseMeasurementsExecute(r GetDatabaseMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error)
 
 	/*
 		GetDiskMeasurements Return Measurements of One Disk for One MongoDB Process
@@ -119,7 +119,7 @@ type MonitoringAndLogsApi interface {
 	GetDiskMeasurementsWithParams(ctx context.Context, args *GetDiskMeasurementsApiParams) GetDiskMeasurementsApiRequest
 
 	// Interface only available internally
-	getDiskMeasurementsExecute(r GetDiskMeasurementsApiRequest) (*MeasurementsGeneralViewAtlas, *http.Response, error)
+	getDiskMeasurementsExecute(r GetDiskMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error)
 
 	/*
 		GetHostLogs Download Logs for One Cluster Host in One Project
@@ -174,7 +174,7 @@ type MonitoringAndLogsApi interface {
 	GetHostMeasurementsWithParams(ctx context.Context, args *GetHostMeasurementsApiParams) GetHostMeasurementsApiRequest
 
 	// Interface only available internally
-	getHostMeasurementsExecute(r GetHostMeasurementsApiRequest) (*MeasurementsGeneralViewAtlas, *http.Response, error)
+	getHostMeasurementsExecute(r GetHostMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error)
 
 	/*
 		GetIndexMetrics Return Atlas Search Metrics for One Index in One Specified Namespace
@@ -404,7 +404,7 @@ func (a *MonitoringAndLogsApiService) GetAtlasProcessWithParams(ctx context.Cont
 	}
 }
 
-func (r GetAtlasProcessApiRequest) Execute() (*HostViewAtlas, *http.Response, error) {
+func (r GetAtlasProcessApiRequest) Execute() (*ApiHostViewAtlas, *http.Response, error) {
 	return r.ApiService.getAtlasProcessExecute(r)
 }
 
@@ -429,13 +429,13 @@ func (a *MonitoringAndLogsApiService) GetAtlasProcess(ctx context.Context, group
 
 // Execute executes the request
 //
-//	@return HostViewAtlas
-func (a *MonitoringAndLogsApiService) getAtlasProcessExecute(r GetAtlasProcessApiRequest) (*HostViewAtlas, *http.Response, error) {
+//	@return ApiHostViewAtlas
+func (a *MonitoringAndLogsApiService) getAtlasProcessExecute(r GetAtlasProcessApiRequest) (*ApiHostViewAtlas, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *HostViewAtlas
+		localVarReturnValue *ApiHostViewAtlas
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.GetAtlasProcess")
@@ -496,7 +496,7 @@ func (a *MonitoringAndLogsApiService) getAtlasProcessExecute(r GetAtlasProcessAp
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -638,7 +638,7 @@ func (a *MonitoringAndLogsApiService) getDatabaseExecute(r GetDatabaseApiRequest
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -730,7 +730,7 @@ func (r GetDatabaseMeasurementsApiRequest) End(end time.Time) GetDatabaseMeasure
 	return r
 }
 
-func (r GetDatabaseMeasurementsApiRequest) Execute() (*MeasurementsGeneralViewAtlas, *http.Response, error) {
+func (r GetDatabaseMeasurementsApiRequest) Execute() (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
 	return r.ApiService.getDatabaseMeasurementsExecute(r)
 }
 
@@ -757,13 +757,13 @@ func (a *MonitoringAndLogsApiService) GetDatabaseMeasurements(ctx context.Contex
 
 // Execute executes the request
 //
-//	@return MeasurementsGeneralViewAtlas
-func (a *MonitoringAndLogsApiService) getDatabaseMeasurementsExecute(r GetDatabaseMeasurementsApiRequest) (*MeasurementsGeneralViewAtlas, *http.Response, error) {
+//	@return ApiMeasurementsGeneralViewAtlas
+func (a *MonitoringAndLogsApiService) getDatabaseMeasurementsExecute(r GetDatabaseMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *MeasurementsGeneralViewAtlas
+		localVarReturnValue *ApiMeasurementsGeneralViewAtlas
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.GetDatabaseMeasurements")
@@ -845,7 +845,7 @@ func (a *MonitoringAndLogsApiService) getDatabaseMeasurementsExecute(r GetDataba
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -937,7 +937,7 @@ func (r GetDiskMeasurementsApiRequest) End(end time.Time) GetDiskMeasurementsApi
 	return r
 }
 
-func (r GetDiskMeasurementsApiRequest) Execute() (*MeasurementsGeneralViewAtlas, *http.Response, error) {
+func (r GetDiskMeasurementsApiRequest) Execute() (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
 	return r.ApiService.getDiskMeasurementsExecute(r)
 }
 
@@ -970,13 +970,13 @@ func (a *MonitoringAndLogsApiService) GetDiskMeasurements(ctx context.Context, g
 
 // Execute executes the request
 //
-//	@return MeasurementsGeneralViewAtlas
-func (a *MonitoringAndLogsApiService) getDiskMeasurementsExecute(r GetDiskMeasurementsApiRequest) (*MeasurementsGeneralViewAtlas, *http.Response, error) {
+//	@return ApiMeasurementsGeneralViewAtlas
+func (a *MonitoringAndLogsApiService) getDiskMeasurementsExecute(r GetDiskMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *MeasurementsGeneralViewAtlas
+		localVarReturnValue *ApiMeasurementsGeneralViewAtlas
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.GetDiskMeasurements")
@@ -1058,7 +1058,7 @@ func (a *MonitoringAndLogsApiService) getDiskMeasurementsExecute(r GetDiskMeasur
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1224,7 +1224,7 @@ func (a *MonitoringAndLogsApiService) getHostLogsExecute(r GetHostLogsApiRequest
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1313,7 +1313,7 @@ func (r GetHostMeasurementsApiRequest) End(end time.Time) GetHostMeasurementsApi
 	return r
 }
 
-func (r GetHostMeasurementsApiRequest) Execute() (*MeasurementsGeneralViewAtlas, *http.Response, error) {
+func (r GetHostMeasurementsApiRequest) Execute() (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
 	return r.ApiService.getHostMeasurementsExecute(r)
 }
 
@@ -1344,13 +1344,13 @@ func (a *MonitoringAndLogsApiService) GetHostMeasurements(ctx context.Context, g
 
 // Execute executes the request
 //
-//	@return MeasurementsGeneralViewAtlas
-func (a *MonitoringAndLogsApiService) getHostMeasurementsExecute(r GetHostMeasurementsApiRequest) (*MeasurementsGeneralViewAtlas, *http.Response, error) {
+//	@return ApiMeasurementsGeneralViewAtlas
+func (a *MonitoringAndLogsApiService) getHostMeasurementsExecute(r GetHostMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *MeasurementsGeneralViewAtlas
+		localVarReturnValue *ApiMeasurementsGeneralViewAtlas
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.GetHostMeasurements")
@@ -1431,7 +1431,7 @@ func (a *MonitoringAndLogsApiService) getHostMeasurementsExecute(r GetHostMeasur
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1655,7 +1655,7 @@ func (a *MonitoringAndLogsApiService) getIndexMetricsExecute(r GetIndexMetricsAp
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1861,7 +1861,7 @@ func (a *MonitoringAndLogsApiService) getMeasurementsExecute(r GetMeasurementsAp
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -2039,7 +2039,7 @@ func (a *MonitoringAndLogsApiService) listAtlasProcessesExecute(r ListAtlasProce
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -2223,7 +2223,7 @@ func (a *MonitoringAndLogsApiService) listDatabasesExecute(r ListDatabasesApiReq
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -2371,7 +2371,7 @@ func (a *MonitoringAndLogsApiService) listDiskMeasurementsExecute(r ListDiskMeas
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -2555,7 +2555,7 @@ func (a *MonitoringAndLogsApiService) listDiskPartitionsExecute(r ListDiskPartit
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -2773,7 +2773,7 @@ func (a *MonitoringAndLogsApiService) listIndexMetricsExecute(r ListIndexMetrics
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -2909,7 +2909,7 @@ func (a *MonitoringAndLogsApiService) listMetricTypesExecute(r ListMetricTypesAp
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()

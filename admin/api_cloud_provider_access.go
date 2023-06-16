@@ -266,7 +266,7 @@ func (a *CloudProviderAccessApiService) authorizeCloudProviderAccessRoleExecute(
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -407,7 +407,7 @@ func (a *CloudProviderAccessApiService) createCloudProviderAccessRoleExecute(r C
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -552,7 +552,7 @@ func (a *CloudProviderAccessApiService) deauthorizeCloudProviderAccessRoleExecut
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -685,7 +685,7 @@ func (a *CloudProviderAccessApiService) getCloudProviderAccessRoleExecute(r GetC
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -815,7 +815,7 @@ func (a *CloudProviderAccessApiService) listCloudProviderAccessRolesExecute(r Li
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()

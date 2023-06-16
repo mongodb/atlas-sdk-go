@@ -69,7 +69,7 @@ type LegacyBackupApi interface {
 	GetLegacyBackupCheckpointWithParams(ctx context.Context, args *GetLegacyBackupCheckpointApiParams) GetLegacyBackupCheckpointApiRequest
 
 	// Interface only available internally
-	getLegacyBackupCheckpointExecute(r GetLegacyBackupCheckpointApiRequest) (*Checkpoint, *http.Response, error)
+	getLegacyBackupCheckpointExecute(r GetLegacyBackupCheckpointApiRequest) (*ApiAtlasCheckpoint, *http.Response, error)
 
 	/*
 		GetLegacyBackupRestoreJob Return One Legacy Backup Restore Job
@@ -159,7 +159,7 @@ type LegacyBackupApi interface {
 	GetLegacySnapshotScheduleWithParams(ctx context.Context, args *GetLegacySnapshotScheduleApiParams) GetLegacySnapshotScheduleApiRequest
 
 	// Interface only available internally
-	getLegacySnapshotScheduleExecute(r GetLegacySnapshotScheduleApiRequest) (*SnapshotSchedule, *http.Response, error)
+	getLegacySnapshotScheduleExecute(r GetLegacySnapshotScheduleApiRequest) (*ApiAtlasSnapshotSchedule, *http.Response, error)
 
 	/*
 		ListLegacyBackupCheckpoints Return All Legacy Backup Checkpoints
@@ -290,7 +290,7 @@ type LegacyBackupApi interface {
 
 		Deprecated: this method has been deprecated. Please check the latest resource version for LegacyBackupApi
 	*/
-	UpdateLegacySnapshotSchedule(ctx context.Context, groupId string, clusterName string, snapshotSchedule *SnapshotSchedule) UpdateLegacySnapshotScheduleApiRequest
+	UpdateLegacySnapshotSchedule(ctx context.Context, groupId string, clusterName string, apiAtlasSnapshotSchedule *ApiAtlasSnapshotSchedule) UpdateLegacySnapshotScheduleApiRequest
 	/*
 		UpdateLegacySnapshotSchedule Update Snapshot Schedule for One Cluster
 
@@ -304,7 +304,7 @@ type LegacyBackupApi interface {
 	UpdateLegacySnapshotScheduleWithParams(ctx context.Context, args *UpdateLegacySnapshotScheduleApiParams) UpdateLegacySnapshotScheduleApiRequest
 
 	// Interface only available internally
-	updateLegacySnapshotScheduleExecute(r UpdateLegacySnapshotScheduleApiRequest) (*SnapshotSchedule, *http.Response, error)
+	updateLegacySnapshotScheduleExecute(r UpdateLegacySnapshotScheduleApiRequest) (*ApiAtlasSnapshotSchedule, *http.Response, error)
 }
 
 // LegacyBackupApiService LegacyBackupApi service
@@ -445,7 +445,7 @@ func (a *LegacyBackupApiService) deleteLegacySnapshotExecute(r DeleteLegacySnaps
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -492,7 +492,7 @@ func (a *LegacyBackupApiService) GetLegacyBackupCheckpointWithParams(ctx context
 	}
 }
 
-func (r GetLegacyBackupCheckpointApiRequest) Execute() (*Checkpoint, *http.Response, error) {
+func (r GetLegacyBackupCheckpointApiRequest) Execute() (*ApiAtlasCheckpoint, *http.Response, error) {
 	return r.ApiService.getLegacyBackupCheckpointExecute(r)
 }
 
@@ -521,15 +521,15 @@ func (a *LegacyBackupApiService) GetLegacyBackupCheckpoint(ctx context.Context, 
 
 // Execute executes the request
 //
-//	@return Checkpoint
+//	@return ApiAtlasCheckpoint
 //
 // Deprecated
-func (a *LegacyBackupApiService) getLegacyBackupCheckpointExecute(r GetLegacyBackupCheckpointApiRequest) (*Checkpoint, *http.Response, error) {
+func (a *LegacyBackupApiService) getLegacyBackupCheckpointExecute(r GetLegacyBackupCheckpointApiRequest) (*ApiAtlasCheckpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Checkpoint
+		localVarReturnValue *ApiAtlasCheckpoint
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LegacyBackupApiService.GetLegacyBackupCheckpoint")
@@ -603,7 +603,7 @@ func (a *LegacyBackupApiService) getLegacyBackupCheckpointExecute(r GetLegacyBac
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -763,7 +763,7 @@ func (a *LegacyBackupApiService) getLegacyBackupRestoreJobExecute(r GetLegacyBac
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -921,7 +921,7 @@ func (a *LegacyBackupApiService) getLegacySnapshotExecute(r GetLegacySnapshotApi
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -965,7 +965,7 @@ func (a *LegacyBackupApiService) GetLegacySnapshotScheduleWithParams(ctx context
 	}
 }
 
-func (r GetLegacySnapshotScheduleApiRequest) Execute() (*SnapshotSchedule, *http.Response, error) {
+func (r GetLegacySnapshotScheduleApiRequest) Execute() (*ApiAtlasSnapshotSchedule, *http.Response, error) {
 	return r.ApiService.getLegacySnapshotScheduleExecute(r)
 }
 
@@ -994,15 +994,15 @@ func (a *LegacyBackupApiService) GetLegacySnapshotSchedule(ctx context.Context, 
 
 // Execute executes the request
 //
-//	@return SnapshotSchedule
+//	@return ApiAtlasSnapshotSchedule
 //
 // Deprecated
-func (a *LegacyBackupApiService) getLegacySnapshotScheduleExecute(r GetLegacySnapshotScheduleApiRequest) (*SnapshotSchedule, *http.Response, error) {
+func (a *LegacyBackupApiService) getLegacySnapshotScheduleExecute(r GetLegacySnapshotScheduleApiRequest) (*ApiAtlasSnapshotSchedule, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *SnapshotSchedule
+		localVarReturnValue *ApiAtlasSnapshotSchedule
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LegacyBackupApiService.GetLegacySnapshotSchedule")
@@ -1069,7 +1069,7 @@ func (a *LegacyBackupApiService) getLegacySnapshotScheduleExecute(r GetLegacySna
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1263,7 +1263,7 @@ func (a *LegacyBackupApiService) listLegacyBackupCheckpointsExecute(r ListLegacy
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1471,7 +1471,7 @@ func (a *LegacyBackupApiService) listLegacyBackupRestoreJobsExecute(r ListLegacy
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1681,7 +1681,7 @@ func (a *LegacyBackupApiService) listLegacySnapshotsExecute(r ListLegacySnapshot
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1848,7 +1848,7 @@ func (a *LegacyBackupApiService) updateLegacySnapshotRetentionExecute(r UpdateLe
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1872,30 +1872,30 @@ func (a *LegacyBackupApiService) updateLegacySnapshotRetentionExecute(r UpdateLe
 }
 
 type UpdateLegacySnapshotScheduleApiRequest struct {
-	ctx              context.Context
-	ApiService       LegacyBackupApi
-	groupId          string
-	clusterName      string
-	snapshotSchedule *SnapshotSchedule
+	ctx                      context.Context
+	ApiService               LegacyBackupApi
+	groupId                  string
+	clusterName              string
+	apiAtlasSnapshotSchedule *ApiAtlasSnapshotSchedule
 }
 
 type UpdateLegacySnapshotScheduleApiParams struct {
-	GroupId          string
-	ClusterName      string
-	SnapshotSchedule *SnapshotSchedule
+	GroupId                  string
+	ClusterName              string
+	ApiAtlasSnapshotSchedule *ApiAtlasSnapshotSchedule
 }
 
 func (a *LegacyBackupApiService) UpdateLegacySnapshotScheduleWithParams(ctx context.Context, args *UpdateLegacySnapshotScheduleApiParams) UpdateLegacySnapshotScheduleApiRequest {
 	return UpdateLegacySnapshotScheduleApiRequest{
-		ApiService:       a,
-		ctx:              ctx,
-		groupId:          args.GroupId,
-		clusterName:      args.ClusterName,
-		snapshotSchedule: args.SnapshotSchedule,
+		ApiService:               a,
+		ctx:                      ctx,
+		groupId:                  args.GroupId,
+		clusterName:              args.ClusterName,
+		apiAtlasSnapshotSchedule: args.ApiAtlasSnapshotSchedule,
 	}
 }
 
-func (r UpdateLegacySnapshotScheduleApiRequest) Execute() (*SnapshotSchedule, *http.Response, error) {
+func (r UpdateLegacySnapshotScheduleApiRequest) Execute() (*ApiAtlasSnapshotSchedule, *http.Response, error) {
 	return r.ApiService.updateLegacySnapshotScheduleExecute(r)
 }
 
@@ -1913,27 +1913,27 @@ UpdateLegacySnapshotSchedule Update Snapshot Schedule for One Cluster
 
 Deprecated
 */
-func (a *LegacyBackupApiService) UpdateLegacySnapshotSchedule(ctx context.Context, groupId string, clusterName string, snapshotSchedule *SnapshotSchedule) UpdateLegacySnapshotScheduleApiRequest {
+func (a *LegacyBackupApiService) UpdateLegacySnapshotSchedule(ctx context.Context, groupId string, clusterName string, apiAtlasSnapshotSchedule *ApiAtlasSnapshotSchedule) UpdateLegacySnapshotScheduleApiRequest {
 	return UpdateLegacySnapshotScheduleApiRequest{
-		ApiService:       a,
-		ctx:              ctx,
-		groupId:          groupId,
-		clusterName:      clusterName,
-		snapshotSchedule: snapshotSchedule,
+		ApiService:               a,
+		ctx:                      ctx,
+		groupId:                  groupId,
+		clusterName:              clusterName,
+		apiAtlasSnapshotSchedule: apiAtlasSnapshotSchedule,
 	}
 }
 
 // Execute executes the request
 //
-//	@return SnapshotSchedule
+//	@return ApiAtlasSnapshotSchedule
 //
 // Deprecated
-func (a *LegacyBackupApiService) updateLegacySnapshotScheduleExecute(r UpdateLegacySnapshotScheduleApiRequest) (*SnapshotSchedule, *http.Response, error) {
+func (a *LegacyBackupApiService) updateLegacySnapshotScheduleExecute(r UpdateLegacySnapshotScheduleApiRequest) (*ApiAtlasSnapshotSchedule, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *SnapshotSchedule
+		localVarReturnValue *ApiAtlasSnapshotSchedule
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LegacyBackupApiService.UpdateLegacySnapshotSchedule")
@@ -1960,8 +1960,8 @@ func (a *LegacyBackupApiService) updateLegacySnapshotScheduleExecute(r UpdateLeg
 	if strlen(r.clusterName) > 64 {
 		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
 	}
-	if r.snapshotSchedule == nil {
-		return localVarReturnValue, nil, reportError("snapshotSchedule is required and must be specified")
+	if r.apiAtlasSnapshotSchedule == nil {
+		return localVarReturnValue, nil, reportError("apiAtlasSnapshotSchedule is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1982,7 +1982,7 @@ func (a *LegacyBackupApiService) updateLegacySnapshotScheduleExecute(r UpdateLeg
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.snapshotSchedule
+	localVarPostBody = r.apiAtlasSnapshotSchedule
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2005,7 +2005,7 @@ func (a *LegacyBackupApiService) updateLegacySnapshotScheduleExecute(r UpdateLeg
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()

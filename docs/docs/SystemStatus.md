@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ApiKey** | [**NullableKey**](Key.md) |  | 
+**ApiKey** | [**NullableApiKey**](ApiKey.md) |  | 
 **AppName** | **string** | Human-readable label that identifies the service from which you requested this response. | [readonly] 
 **Build** | **string** | Unique 40-hexadecimal digit hash that identifies the latest git commit merged for this application. | [readonly] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewSystemStatus
 
-`func NewSystemStatus(apiKey NullableKey, appName string, build string, throttling bool, ) *SystemStatus`
+`func NewSystemStatus(apiKey NullableApiKey, appName string, build string, throttling bool, ) *SystemStatus`
 
 NewSystemStatus instantiates a new SystemStatus object
 This constructor will assign default values to properties that have it defined,
@@ -31,20 +31,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetApiKey
 
-`func (o *SystemStatus) GetApiKey() Key`
+`func (o *SystemStatus) GetApiKey() ApiKey`
 
 GetApiKey returns the ApiKey field if non-nil, zero value otherwise.
 
 ### GetApiKeyOk
 
-`func (o *SystemStatus) GetApiKeyOk() (*Key, bool)`
+`func (o *SystemStatus) GetApiKeyOk() (*ApiKey, bool)`
 
 GetApiKeyOk returns a tuple with the ApiKey field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApiKey
 
-`func (o *SystemStatus) SetApiKey(v Key)`
+`func (o *SystemStatus) SetApiKey(v ApiKey)`
 
 SetApiKey sets ApiKey field to given value.
 

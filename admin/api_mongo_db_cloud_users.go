@@ -197,7 +197,7 @@ func (a *MongoDBCloudUsersApiService) createUserExecute(r CreateUserApiRequest) 
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -327,7 +327,7 @@ func (a *MongoDBCloudUsersApiService) getUserExecute(r GetUserApiRequest) (*Clou
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -451,7 +451,7 @@ func (a *MongoDBCloudUsersApiService) getUserByUsernameExecute(r GetUserByUserna
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()

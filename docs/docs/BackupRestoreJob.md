@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **PointInTimeUTCMillis** | Pointer to **int64** | Timestamp from which you want to restore this snapshot. This parameter expresses its value in the number of milliseconds elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time). This timestamp must fall within the last 24 hours of the current time. This parameter applies when &#x60;\&quot;delivery.methodName\&quot; : \&quot;AUTOMATED_RESTORE\&quot;&#x60;.  - If you provide this parameter, this endpoint restores all data up to this point in time to the database you specified in the **delivery** object. - If you set **pointInTimeUTCMillis**, you can&#39;t set **oplogInc**, **oplogTs**, **snapshotId**, or **checkpointId**. | [optional] 
 **SnapshotId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the snapshot to restore. If you set **snapshotId**, you can&#39;t set **oplogInc**, **oplogTs**, **pointInTimeUTCMillis**, or **checkpointId**. | [optional] 
 **StatusName** | Pointer to **string** | Human-readable label that identifies the status of the downloadable file at the time of the request. | [optional] [readonly] 
-**Timestamp** | Pointer to [**BSONTimestamp**](BSONTimestamp.md) |  | [optional] 
+**Timestamp** | Pointer to [**ApiBSONTimestamp**](ApiBSONTimestamp.md) |  | [optional] 
 
 ## Methods
 
@@ -464,20 +464,20 @@ HasStatusName returns a boolean if a field has been set.
 
 ### GetTimestamp
 
-`func (o *BackupRestoreJob) GetTimestamp() BSONTimestamp`
+`func (o *BackupRestoreJob) GetTimestamp() ApiBSONTimestamp`
 
 GetTimestamp returns the Timestamp field if non-nil, zero value otherwise.
 
 ### GetTimestampOk
 
-`func (o *BackupRestoreJob) GetTimestampOk() (*BSONTimestamp, bool)`
+`func (o *BackupRestoreJob) GetTimestampOk() (*ApiBSONTimestamp, bool)`
 
 GetTimestampOk returns a tuple with the Timestamp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimestamp
 
-`func (o *BackupRestoreJob) SetTimestamp(v BSONTimestamp)`
+`func (o *BackupRestoreJob) SetTimestamp(v ApiBSONTimestamp)`
 
 SetTimestamp sets Timestamp field to given value.
 

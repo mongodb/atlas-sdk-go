@@ -5,11 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Analyzer** | Pointer to **string** | Specific pre-defined method chosen to convert database field text into searchable words. This conversion reduces the text of fields into the smallest units of text. These units are called a **term** or **token**. This process, known as tokenization, involves a variety of changes made to the text in fields:  - extracting words - removing punctuation - removing accents - changing to lowercase - removing common words - reducing words to their root form (stemming) - changing words to their base form (lemmatization)  MongoDB Cloud uses the selected process to build the Atlas Search index. | [optional] [default to "lucene.standard"]
-**Analyzers** | Pointer to [**[]FTSAnalyzers**](FTSAnalyzers.md) | List of user-defined methods to convert database field text into searchable words. | [optional] 
+**Analyzers** | Pointer to [**[]ApiAtlasFTSAnalyzers**](ApiAtlasFTSAnalyzers.md) | List of user-defined methods to convert database field text into searchable words. | [optional] 
 **CollectionName** | **string** | Human-readable label that identifies the collection that contains one or more Atlas Search indexes. | 
 **Database** | **string** | Human-readable label that identifies the database that contains the collection with one or more Atlas Search indexes. | 
 **IndexID** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies this Atlas Search index. | [optional] [readonly] 
-**Mappings** | Pointer to [**FTSMappings**](FTSMappings.md) |  | [optional] 
+**Mappings** | Pointer to [**ApiAtlasFTSMappings**](ApiAtlasFTSMappings.md) |  | [optional] 
 **Name** | **string** | Human-readable label that identifies this index. Within each namespace, names of all indexes in the namespace must be unique. | 
 **SearchAnalyzer** | Pointer to **string** | Method applied to identify words when searching this index. | [optional] [default to "lucene.standard"]
 **Status** | Pointer to **string** | Condition of the search index when you made this request.  | Status | Index Condition |  |---|---|  | IN_PROGRESS | Atlas is building or re-building the index after an edit. |  | STEADY | You can use this search index. |  | FAILED | Atlas could not build the index. |  | MIGRATING | Atlas is upgrading the underlying cluster tier and migrating indexes. |  | PAUSED | The cluster is paused. |  | [optional] [readonly] 
@@ -61,20 +61,20 @@ HasAnalyzer returns a boolean if a field has been set.
 
 ### GetAnalyzers
 
-`func (o *ClusterSearchIndex) GetAnalyzers() []FTSAnalyzers`
+`func (o *ClusterSearchIndex) GetAnalyzers() []ApiAtlasFTSAnalyzers`
 
 GetAnalyzers returns the Analyzers field if non-nil, zero value otherwise.
 
 ### GetAnalyzersOk
 
-`func (o *ClusterSearchIndex) GetAnalyzersOk() (*[]FTSAnalyzers, bool)`
+`func (o *ClusterSearchIndex) GetAnalyzersOk() (*[]ApiAtlasFTSAnalyzers, bool)`
 
 GetAnalyzersOk returns a tuple with the Analyzers field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAnalyzers
 
-`func (o *ClusterSearchIndex) SetAnalyzers(v []FTSAnalyzers)`
+`func (o *ClusterSearchIndex) SetAnalyzers(v []ApiAtlasFTSAnalyzers)`
 
 SetAnalyzers sets Analyzers field to given value.
 
@@ -151,20 +151,20 @@ HasIndexID returns a boolean if a field has been set.
 
 ### GetMappings
 
-`func (o *ClusterSearchIndex) GetMappings() FTSMappings`
+`func (o *ClusterSearchIndex) GetMappings() ApiAtlasFTSMappings`
 
 GetMappings returns the Mappings field if non-nil, zero value otherwise.
 
 ### GetMappingsOk
 
-`func (o *ClusterSearchIndex) GetMappingsOk() (*FTSMappings, bool)`
+`func (o *ClusterSearchIndex) GetMappingsOk() (*ApiAtlasFTSMappings, bool)`
 
 GetMappingsOk returns a tuple with the Mappings field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMappings
 
-`func (o *ClusterSearchIndex) SetMappings(v FTSMappings)`
+`func (o *ClusterSearchIndex) SetMappings(v ApiAtlasFTSMappings)`
 
 SetMappings sets Mappings field to given value.
 

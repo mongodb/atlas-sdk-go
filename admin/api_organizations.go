@@ -130,7 +130,7 @@ type OrganizationsApi interface {
 	GetOrganizationWithParams(ctx context.Context, args *GetOrganizationApiParams) GetOrganizationApiRequest
 
 	// Interface only available internally
-	getOrganizationExecute(r GetOrganizationApiRequest) (*Organization, *http.Response, error)
+	getOrganizationExecute(r GetOrganizationApiRequest) (*AtlasOrganization, *http.Response, error)
 
 	/*
 		GetOrganizationInvitation Return One Organization Invitation
@@ -310,7 +310,7 @@ type OrganizationsApi interface {
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 		@return RenameOrganizationApiRequest
 	*/
-	RenameOrganization(ctx context.Context, orgId string, organization *Organization) RenameOrganizationApiRequest
+	RenameOrganization(ctx context.Context, orgId string, atlasOrganization *AtlasOrganization) RenameOrganizationApiRequest
 	/*
 		RenameOrganization Rename One Organization
 
@@ -322,7 +322,7 @@ type OrganizationsApi interface {
 	RenameOrganizationWithParams(ctx context.Context, args *RenameOrganizationApiParams) RenameOrganizationApiRequest
 
 	// Interface only available internally
-	renameOrganizationExecute(r RenameOrganizationApiRequest) (*Organization, *http.Response, error)
+	renameOrganizationExecute(r RenameOrganizationApiRequest) (*AtlasOrganization, *http.Response, error)
 
 	/*
 		UpdateOrganizationInvitation Update One Organization Invitation
@@ -502,7 +502,7 @@ func (a *OrganizationsApiService) createOrganizationExecute(r CreateOrganization
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -641,7 +641,7 @@ func (a *OrganizationsApiService) createOrganizationInvitationExecute(r CreateOr
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -776,7 +776,7 @@ func (a *OrganizationsApiService) deleteOrganizationExecute(r DeleteOrganization
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -912,7 +912,7 @@ func (a *OrganizationsApiService) deleteOrganizationInvitationExecute(r DeleteOr
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -953,7 +953,7 @@ func (a *OrganizationsApiService) GetOrganizationWithParams(ctx context.Context,
 	}
 }
 
-func (r GetOrganizationApiRequest) Execute() (*Organization, *http.Response, error) {
+func (r GetOrganizationApiRequest) Execute() (*AtlasOrganization, *http.Response, error) {
 	return r.ApiService.getOrganizationExecute(r)
 }
 
@@ -976,13 +976,13 @@ func (a *OrganizationsApiService) GetOrganization(ctx context.Context, orgId str
 
 // Execute executes the request
 //
-//	@return Organization
-func (a *OrganizationsApiService) getOrganizationExecute(r GetOrganizationApiRequest) (*Organization, *http.Response, error) {
+//	@return AtlasOrganization
+func (a *OrganizationsApiService) getOrganizationExecute(r GetOrganizationApiRequest) (*AtlasOrganization, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Organization
+		localVarReturnValue *AtlasOrganization
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.GetOrganization")
@@ -1042,7 +1042,7 @@ func (a *OrganizationsApiService) getOrganizationExecute(r GetOrganizationApiReq
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1184,7 +1184,7 @@ func (a *OrganizationsApiService) getOrganizationInvitationExecute(r GetOrganiza
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1314,7 +1314,7 @@ func (a *OrganizationsApiService) getOrganizationSettingsExecute(r GetOrganizati
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1456,7 +1456,7 @@ func (a *OrganizationsApiService) listOrganizationInvitationsExecute(r ListOrgan
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1653,7 +1653,7 @@ func (a *OrganizationsApiService) listOrganizationProjectsExecute(r ListOrganiza
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1831,7 +1831,7 @@ func (a *OrganizationsApiService) listOrganizationUsersExecute(r ListOrganizatio
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -2009,7 +2009,7 @@ func (a *OrganizationsApiService) listOrganizationsExecute(r ListOrganizationsAp
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -2151,7 +2151,7 @@ func (a *OrganizationsApiService) removeOrganizationUserExecute(r RemoveOrganiza
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -2175,27 +2175,27 @@ func (a *OrganizationsApiService) removeOrganizationUserExecute(r RemoveOrganiza
 }
 
 type RenameOrganizationApiRequest struct {
-	ctx          context.Context
-	ApiService   OrganizationsApi
-	orgId        string
-	organization *Organization
+	ctx               context.Context
+	ApiService        OrganizationsApi
+	orgId             string
+	atlasOrganization *AtlasOrganization
 }
 
 type RenameOrganizationApiParams struct {
-	OrgId        string
-	Organization *Organization
+	OrgId             string
+	AtlasOrganization *AtlasOrganization
 }
 
 func (a *OrganizationsApiService) RenameOrganizationWithParams(ctx context.Context, args *RenameOrganizationApiParams) RenameOrganizationApiRequest {
 	return RenameOrganizationApiRequest{
-		ApiService:   a,
-		ctx:          ctx,
-		orgId:        args.OrgId,
-		organization: args.Organization,
+		ApiService:        a,
+		ctx:               ctx,
+		orgId:             args.OrgId,
+		atlasOrganization: args.AtlasOrganization,
 	}
 }
 
-func (r RenameOrganizationApiRequest) Execute() (*Organization, *http.Response, error) {
+func (r RenameOrganizationApiRequest) Execute() (*AtlasOrganization, *http.Response, error) {
 	return r.ApiService.renameOrganizationExecute(r)
 }
 
@@ -2208,24 +2208,24 @@ RenameOrganization Rename One Organization
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return RenameOrganizationApiRequest
 */
-func (a *OrganizationsApiService) RenameOrganization(ctx context.Context, orgId string, organization *Organization) RenameOrganizationApiRequest {
+func (a *OrganizationsApiService) RenameOrganization(ctx context.Context, orgId string, atlasOrganization *AtlasOrganization) RenameOrganizationApiRequest {
 	return RenameOrganizationApiRequest{
-		ApiService:   a,
-		ctx:          ctx,
-		orgId:        orgId,
-		organization: organization,
+		ApiService:        a,
+		ctx:               ctx,
+		orgId:             orgId,
+		atlasOrganization: atlasOrganization,
 	}
 }
 
 // Execute executes the request
 //
-//	@return Organization
-func (a *OrganizationsApiService) renameOrganizationExecute(r RenameOrganizationApiRequest) (*Organization, *http.Response, error) {
+//	@return AtlasOrganization
+func (a *OrganizationsApiService) renameOrganizationExecute(r RenameOrganizationApiRequest) (*AtlasOrganization, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Organization
+		localVarReturnValue *AtlasOrganization
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.RenameOrganization")
@@ -2245,8 +2245,8 @@ func (a *OrganizationsApiService) renameOrganizationExecute(r RenameOrganization
 	if strlen(r.orgId) > 24 {
 		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
 	}
-	if r.organization == nil {
-		return localVarReturnValue, nil, reportError("organization is required and must be specified")
+	if r.atlasOrganization == nil {
+		return localVarReturnValue, nil, reportError("atlasOrganization is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2267,7 +2267,7 @@ func (a *OrganizationsApiService) renameOrganizationExecute(r RenameOrganization
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.organization
+	localVarPostBody = r.atlasOrganization
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2290,7 +2290,7 @@ func (a *OrganizationsApiService) renameOrganizationExecute(r RenameOrganization
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -2429,7 +2429,7 @@ func (a *OrganizationsApiService) updateOrganizationInvitationExecute(r UpdateOr
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -2580,7 +2580,7 @@ func (a *OrganizationsApiService) updateOrganizationInvitationByIdExecute(r Upda
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -2719,7 +2719,7 @@ func (a *OrganizationsApiService) updateOrganizationSettingsExecute(r UpdateOrga
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()

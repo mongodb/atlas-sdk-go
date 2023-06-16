@@ -318,7 +318,7 @@ Name | Type | Description  | Notes
 
 ## GetOrganization
 
-> Organization GetOrganization(ctx, orgId).Execute()
+> AtlasOrganization GetOrganization(ctx, orgId).Execute()
 
 Return One Organization
 
@@ -350,7 +350,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetOrganization`: Organization
+    // response from `GetOrganization`: AtlasOrganization
     fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.GetOrganization`: %v\n", resp)
 }
 ```
@@ -374,7 +374,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Organization**](Organization.md)
+[**AtlasOrganization**](AtlasOrganization.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -936,7 +936,7 @@ Name | Type | Description  | Notes
 
 ## RenameOrganization
 
-> Organization RenameOrganization(ctx, orgId, organization Organization).Execute()
+> AtlasOrganization RenameOrganization(ctx, orgId, atlasOrganization AtlasOrganization).Execute()
 
 Rename One Organization
 
@@ -966,15 +966,15 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     orgId := "4888442a3354817a7320eb61" // string | 
-    organization := *openapiclient.NewOrganization("Name_example") // Organization | 
+    atlasOrganization := *openapiclient.NewAtlasOrganization("Name_example") // AtlasOrganization | 
 
-    resp, r, err := sdk.OrganizationsApi.RenameOrganization(context.Background(), orgId, &organization).Execute()
+    resp, r, err := sdk.OrganizationsApi.RenameOrganization(context.Background(), orgId, &atlasOrganization).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.RenameOrganization``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `RenameOrganization`: Organization
+    // response from `RenameOrganization`: AtlasOrganization
     fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.RenameOrganization`: %v\n", resp)
 }
 ```
@@ -995,11 +995,11 @@ Other parameters are passed through a pointer to a apiRenameOrganizationRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **organization** | [**Organization**](Organization.md) | Details to update on the specified organization. | 
+ **atlasOrganization** | [**AtlasOrganization**](AtlasOrganization.md) | Details to update on the specified organization. | 
 
 ### Return type
 
-[**Organization**](Organization.md)
+[**AtlasOrganization**](AtlasOrganization.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

@@ -14,7 +14,7 @@ type PaginatedHostViewAtlas struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	Links []LinkAtlas `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud providers when completing this request.
-	Results []HostViewAtlas `json:"results,omitempty"`
+	Results []ApiHostViewAtlas `json:"results,omitempty"`
 	// Number of documents returned in this response.
 	TotalCount *int `json:"totalCount,omitempty"`
 }
@@ -69,9 +69,9 @@ func (o *PaginatedHostViewAtlas) SetLinks(v []LinkAtlas) {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *PaginatedHostViewAtlas) GetResults() []HostViewAtlas {
+func (o *PaginatedHostViewAtlas) GetResults() []ApiHostViewAtlas {
 	if o == nil || IsNil(o.Results) {
-		var ret []HostViewAtlas
+		var ret []ApiHostViewAtlas
 		return ret
 	}
 	return o.Results
@@ -79,7 +79,7 @@ func (o *PaginatedHostViewAtlas) GetResults() []HostViewAtlas {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedHostViewAtlas) GetResultsOk() ([]HostViewAtlas, bool) {
+func (o *PaginatedHostViewAtlas) GetResultsOk() ([]ApiHostViewAtlas, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -95,8 +95,8 @@ func (o *PaginatedHostViewAtlas) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []HostViewAtlas and assigns it to the Results field.
-func (o *PaginatedHostViewAtlas) SetResults(v []HostViewAtlas) {
+// SetResults gets a reference to the given []ApiHostViewAtlas and assigns it to the Results field.
+func (o *PaginatedHostViewAtlas) SetResults(v []ApiHostViewAtlas) {
 	o.Results = v
 }
 

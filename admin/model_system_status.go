@@ -11,7 +11,7 @@ var _ MappedNullable = &SystemStatus{}
 
 // SystemStatus struct for SystemStatus
 type SystemStatus struct {
-	ApiKey NullableKey `json:"apiKey"`
+	ApiKey NullableApiKey `json:"apiKey"`
 	// Human-readable label that identifies the service from which you requested this response.
 	AppName string `json:"appName"`
 	// Unique 40-hexadecimal digit hash that identifies the latest git commit merged for this application.
@@ -26,7 +26,7 @@ type SystemStatus struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSystemStatus(apiKey NullableKey, appName string, build string, throttling bool) *SystemStatus {
+func NewSystemStatus(apiKey NullableApiKey, appName string, build string, throttling bool) *SystemStatus {
 	this := SystemStatus{}
 	this.ApiKey = apiKey
 	this.AppName = appName
@@ -44,10 +44,10 @@ func NewSystemStatusWithDefaults() *SystemStatus {
 }
 
 // GetApiKey returns the ApiKey field value
-// If the value is explicit nil, the zero value for Key will be returned
-func (o *SystemStatus) GetApiKey() Key {
+// If the value is explicit nil, the zero value for ApiKey will be returned
+func (o *SystemStatus) GetApiKey() ApiKey {
 	if o == nil || o.ApiKey.Get() == nil {
-		var ret Key
+		var ret ApiKey
 		return ret
 	}
 
@@ -57,7 +57,7 @@ func (o *SystemStatus) GetApiKey() Key {
 // GetApiKeyOk returns a tuple with the ApiKey field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SystemStatus) GetApiKeyOk() (*Key, bool) {
+func (o *SystemStatus) GetApiKeyOk() (*ApiKey, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -65,7 +65,7 @@ func (o *SystemStatus) GetApiKeyOk() (*Key, bool) {
 }
 
 // SetApiKey sets field value
-func (o *SystemStatus) SetApiKey(v Key) {
+func (o *SystemStatus) SetApiKey(v ApiKey) {
 	o.ApiKey.Set(&v)
 }
 

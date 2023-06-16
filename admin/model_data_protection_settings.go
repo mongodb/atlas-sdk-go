@@ -17,8 +17,8 @@ type DataProtectionSettings struct {
 	// Flag that indicates whether to enable additional backup copies for the cluster. If unspecified, this value defaults to false.
 	CopyProtectionEnabled *bool `json:"copyProtectionEnabled,omitempty"`
 	// Flag that indicates whether Encryption at Rest using Customer Key  Management is required for all clusters with a Backup Compliance Policy. If unspecified, this value defaults to false.
-	EncryptionAtRestEnabled *bool       `json:"encryptionAtRestEnabled,omitempty"`
-	OnDemandPolicyItem      *PolicyItem `json:"onDemandPolicyItem,omitempty"`
+	EncryptionAtRestEnabled *bool          `json:"encryptionAtRestEnabled,omitempty"`
+	OnDemandPolicyItem      *ApiPolicyItem `json:"onDemandPolicyItem,omitempty"`
 	// Flag that indicates whether the cluster uses Continuous Cloud Backups with a Backup Compliance Policy. If unspecified, this value defaults to false.
 	PitEnabled *bool `json:"pitEnabled,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project for the Backup Compliance Policy.
@@ -26,7 +26,7 @@ type DataProtectionSettings struct {
 	// Number of previous days that you can restore back to with Continuous Cloud Backup with a Backup Compliance Policy. You must specify a positive, non-zero integer, and the maximum retention window can't exceed the hourly retention time. This parameter applies only to Continuous Cloud Backups with a Backup Compliance Policy.
 	RestoreWindowDays *int `json:"restoreWindowDays,omitempty"`
 	// List that contains the specifications for one scheduled policy.
-	ScheduledPolicyItems []PolicyItem `json:"scheduledPolicyItems,omitempty"`
+	ScheduledPolicyItems []ApiPolicyItem `json:"scheduledPolicyItems,omitempty"`
 	// Label that indicates the state of the Backup Compliance Policy settings. MongoDB Cloud ignores this setting when you enable or update the Backup Compliance Policy settings.
 	State *string `json:"state,omitempty"`
 	// ISO 8601 timestamp format in UTC that indicates when the user updated the Data Protection Policy settings. MongoDB Cloud ignores this setting when you enable or update the Backup Compliance Policy settings.
@@ -161,9 +161,9 @@ func (o *DataProtectionSettings) SetEncryptionAtRestEnabled(v bool) {
 }
 
 // GetOnDemandPolicyItem returns the OnDemandPolicyItem field value if set, zero value otherwise.
-func (o *DataProtectionSettings) GetOnDemandPolicyItem() PolicyItem {
+func (o *DataProtectionSettings) GetOnDemandPolicyItem() ApiPolicyItem {
 	if o == nil || IsNil(o.OnDemandPolicyItem) {
-		var ret PolicyItem
+		var ret ApiPolicyItem
 		return ret
 	}
 	return *o.OnDemandPolicyItem
@@ -171,7 +171,7 @@ func (o *DataProtectionSettings) GetOnDemandPolicyItem() PolicyItem {
 
 // GetOnDemandPolicyItemOk returns a tuple with the OnDemandPolicyItem field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DataProtectionSettings) GetOnDemandPolicyItemOk() (*PolicyItem, bool) {
+func (o *DataProtectionSettings) GetOnDemandPolicyItemOk() (*ApiPolicyItem, bool) {
 	if o == nil || IsNil(o.OnDemandPolicyItem) {
 		return nil, false
 	}
@@ -187,8 +187,8 @@ func (o *DataProtectionSettings) HasOnDemandPolicyItem() bool {
 	return false
 }
 
-// SetOnDemandPolicyItem gets a reference to the given PolicyItem and assigns it to the OnDemandPolicyItem field.
-func (o *DataProtectionSettings) SetOnDemandPolicyItem(v PolicyItem) {
+// SetOnDemandPolicyItem gets a reference to the given ApiPolicyItem and assigns it to the OnDemandPolicyItem field.
+func (o *DataProtectionSettings) SetOnDemandPolicyItem(v ApiPolicyItem) {
 	o.OnDemandPolicyItem = &v
 }
 
@@ -289,9 +289,9 @@ func (o *DataProtectionSettings) SetRestoreWindowDays(v int) {
 }
 
 // GetScheduledPolicyItems returns the ScheduledPolicyItems field value if set, zero value otherwise.
-func (o *DataProtectionSettings) GetScheduledPolicyItems() []PolicyItem {
+func (o *DataProtectionSettings) GetScheduledPolicyItems() []ApiPolicyItem {
 	if o == nil || IsNil(o.ScheduledPolicyItems) {
-		var ret []PolicyItem
+		var ret []ApiPolicyItem
 		return ret
 	}
 	return o.ScheduledPolicyItems
@@ -299,7 +299,7 @@ func (o *DataProtectionSettings) GetScheduledPolicyItems() []PolicyItem {
 
 // GetScheduledPolicyItemsOk returns a tuple with the ScheduledPolicyItems field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DataProtectionSettings) GetScheduledPolicyItemsOk() ([]PolicyItem, bool) {
+func (o *DataProtectionSettings) GetScheduledPolicyItemsOk() ([]ApiPolicyItem, bool) {
 	if o == nil || IsNil(o.ScheduledPolicyItems) {
 		return nil, false
 	}
@@ -315,8 +315,8 @@ func (o *DataProtectionSettings) HasScheduledPolicyItems() bool {
 	return false
 }
 
-// SetScheduledPolicyItems gets a reference to the given []PolicyItem and assigns it to the ScheduledPolicyItems field.
-func (o *DataProtectionSettings) SetScheduledPolicyItems(v []PolicyItem) {
+// SetScheduledPolicyItems gets a reference to the given []ApiPolicyItem and assigns it to the ScheduledPolicyItems field.
+func (o *DataProtectionSettings) SetScheduledPolicyItems(v []ApiPolicyItem) {
 	o.ScheduledPolicyItems = v
 }
 

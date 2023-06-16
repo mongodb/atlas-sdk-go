@@ -293,7 +293,7 @@ func (a *OnlineArchiveApiService) createOnlineArchiveExecute(r CreateOnlineArchi
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -447,7 +447,7 @@ func (a *OnlineArchiveApiService) deleteOnlineArchiveExecute(r DeleteOnlineArchi
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -629,7 +629,7 @@ func (a *OnlineArchiveApiService) downloadOnlineArchiveQueryLogsExecute(r Downlo
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -783,7 +783,7 @@ func (a *OnlineArchiveApiService) getOnlineArchiveExecute(r GetOnlineArchiveApiR
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -973,7 +973,7 @@ func (a *OnlineArchiveApiService) listOnlineArchivesExecute(r ListOnlineArchives
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()
@@ -1136,7 +1136,7 @@ func (a *OnlineArchiveApiService) updateOnlineArchiveExecute(r UpdateOnlineArchi
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		var v Error
+		var v ApiError
 		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			newErr.error = err.Error()

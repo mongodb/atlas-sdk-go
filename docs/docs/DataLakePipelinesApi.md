@@ -491,7 +491,7 @@ Name | Type | Description  | Notes
 
 ## ListPipelineSchedules
 
-> []PolicyItem ListPipelineSchedules(ctx, groupId, pipelineName).Execute()
+> []ApiPolicyItem ListPipelineSchedules(ctx, groupId, pipelineName).Execute()
 
 Return Available Ingestion Schedules for One Data Lake Pipeline
 
@@ -524,7 +524,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `ListPipelineSchedules`: []PolicyItem
+    // response from `ListPipelineSchedules`: []ApiPolicyItem
     fmt.Fprintf(os.Stdout, "Response from `DataLakePipelinesApi.ListPipelineSchedules`: %v\n", resp)
 }
 ```
@@ -550,7 +550,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]PolicyItem**](PolicyItem.md)
+[**[]ApiPolicyItem**](ApiPolicyItem.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
