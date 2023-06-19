@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 ## AddProjectApiKey
 
-> ApiKeyUser AddProjectApiKey(ctx, groupId, apiUserId, userRoleAssignment []UserRoleAssignment).Execute()
+> ApiKeyUserDetails AddProjectApiKey(ctx, groupId, apiUserId, userAccessRoleAssignment []UserAccessRoleAssignment).Execute()
 
 Assign One Organization API Key to One Project
 
@@ -54,15 +54,15 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     apiUserId := "apiUserId_example" // string | 
-    userRoleAssignment := []openapiclient.UserRoleAssignment{*openapiclient.NewUserRoleAssignment()} // []UserRoleAssignment | 
+    userAccessRoleAssignment := []openapiclient.UserAccessRoleAssignment{*openapiclient.NewUserAccessRoleAssignment()} // []UserAccessRoleAssignment | 
 
-    resp, r, err := sdk.ProgrammaticAPIKeysApi.AddProjectApiKey(context.Background(), groupId, apiUserId, &userRoleAssignment).Execute()
+    resp, r, err := sdk.ProgrammaticAPIKeysApi.AddProjectApiKey(context.Background(), groupId, apiUserId, &userAccessRoleAssignment).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.AddProjectApiKey``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `AddProjectApiKey`: ApiKeyUser
+    // response from `AddProjectApiKey`: ApiKeyUserDetails
     fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.AddProjectApiKey`: %v\n", resp)
 }
 ```
@@ -85,11 +85,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **userRoleAssignment** | [**[]UserRoleAssignment**](UserRoleAssignment.md) | Organization API key to be assigned to the specified project. | 
+ **userAccessRoleAssignment** | [**[]UserAccessRoleAssignment**](UserAccessRoleAssignment.md) | Organization API key to be assigned to the specified project. | 
 
 ### Return type
 
-[**ApiKeyUser**](ApiKeyUser.md)
+[**ApiKeyUserDetails**](ApiKeyUserDetails.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -106,7 +106,7 @@ Name | Type | Description  | Notes
 
 ## CreateApiKey
 
-> ApiKeyUser CreateApiKey(ctx, orgId, createOrganizationKey CreateOrganizationKey).Execute()
+> ApiKeyUserDetails CreateApiKey(ctx, orgId, createAtlasOrganizationApiKey CreateAtlasOrganizationApiKey).Execute()
 
 Create One Organization API Key
 
@@ -131,15 +131,15 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     orgId := "4888442a3354817a7320eb61" // string | 
-    createOrganizationKey := *openapiclient.NewCreateOrganizationKey() // CreateOrganizationKey | 
+    createAtlasOrganizationApiKey := *openapiclient.NewCreateAtlasOrganizationApiKey() // CreateAtlasOrganizationApiKey | 
 
-    resp, r, err := sdk.ProgrammaticAPIKeysApi.CreateApiKey(context.Background(), orgId, &createOrganizationKey).Execute()
+    resp, r, err := sdk.ProgrammaticAPIKeysApi.CreateApiKey(context.Background(), orgId, &createAtlasOrganizationApiKey).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.CreateApiKey``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `CreateApiKey`: ApiKeyUser
+    // response from `CreateApiKey`: ApiKeyUserDetails
     fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.CreateApiKey`: %v\n", resp)
 }
 ```
@@ -160,11 +160,11 @@ Other parameters are passed through a pointer to a apiCreateApiKeyRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **createOrganizationKey** | [**CreateOrganizationKey**](CreateOrganizationKey.md) | Organization API Key to be created. This request requires both body parameters. | 
+ **createAtlasOrganizationApiKey** | [**CreateAtlasOrganizationApiKey**](CreateAtlasOrganizationApiKey.md) | Organization API Key to be created. This request requires both body parameters. | 
 
 ### Return type
 
-[**ApiKeyUser**](ApiKeyUser.md)
+[**ApiKeyUserDetails**](ApiKeyUserDetails.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ## CreateProjectApiKey
 
-> ApiKeyUser CreateProjectApiKey(ctx, groupId, createProjectKey CreateProjectKey).Execute()
+> ApiKeyUserDetails CreateProjectApiKey(ctx, groupId, createAtlasProjectApiKey CreateAtlasProjectApiKey).Execute()
 
 Create and Assign One Organization API Key to One Project
 
@@ -290,15 +290,15 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    createProjectKey := *openapiclient.NewCreateProjectKey() // CreateProjectKey | 
+    createAtlasProjectApiKey := *openapiclient.NewCreateAtlasProjectApiKey() // CreateAtlasProjectApiKey | 
 
-    resp, r, err := sdk.ProgrammaticAPIKeysApi.CreateProjectApiKey(context.Background(), groupId, &createProjectKey).Execute()
+    resp, r, err := sdk.ProgrammaticAPIKeysApi.CreateProjectApiKey(context.Background(), groupId, &createAtlasProjectApiKey).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.CreateProjectApiKey``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `CreateProjectApiKey`: ApiKeyUser
+    // response from `CreateProjectApiKey`: ApiKeyUserDetails
     fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.CreateProjectApiKey`: %v\n", resp)
 }
 ```
@@ -319,11 +319,11 @@ Other parameters are passed through a pointer to a apiCreateProjectApiKeyRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **createProjectKey** | [**CreateProjectKey**](CreateProjectKey.md) | Organization API key to be created and assigned to the specified project. This request requires both body parameters. | 
+ **createAtlasProjectApiKey** | [**CreateAtlasProjectApiKey**](CreateAtlasProjectApiKey.md) | Organization API key to be created and assigned to the specified project. This request requires both body parameters. | 
 
 ### Return type
 
-[**ApiKeyUser**](ApiKeyUser.md)
+[**ApiKeyUserDetails**](ApiKeyUserDetails.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -495,7 +495,7 @@ Name | Type | Description  | Notes
 
 ## GetApiKey
 
-> ApiKeyUser GetApiKey(ctx, orgId, apiUserId).Execute()
+> ApiKeyUserDetails GetApiKey(ctx, orgId, apiUserId).Execute()
 
 Return One Organization API Key
 
@@ -528,7 +528,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetApiKey`: ApiKeyUser
+    // response from `GetApiKey`: ApiKeyUserDetails
     fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.GetApiKey`: %v\n", resp)
 }
 ```
@@ -554,7 +554,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiKeyUser**](ApiKeyUser.md)
+[**ApiKeyUserDetails**](ApiKeyUserDetails.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -971,7 +971,7 @@ Name | Type | Description  | Notes
 
 ## UpdateApiKey
 
-> ApiKeyUser UpdateApiKey(ctx, orgId, apiUserId, createOrganizationKey CreateOrganizationKey).Execute()
+> ApiKeyUserDetails UpdateApiKey(ctx, orgId, apiUserId, createAtlasOrganizationApiKey CreateAtlasOrganizationApiKey).Execute()
 
 Update One Organization API Key
 
@@ -997,15 +997,15 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
     apiUserId := "apiUserId_example" // string | 
-    createOrganizationKey := *openapiclient.NewCreateOrganizationKey() // CreateOrganizationKey | 
+    createAtlasOrganizationApiKey := *openapiclient.NewCreateAtlasOrganizationApiKey() // CreateAtlasOrganizationApiKey | 
 
-    resp, r, err := sdk.ProgrammaticAPIKeysApi.UpdateApiKey(context.Background(), orgId, apiUserId, &createOrganizationKey).Execute()
+    resp, r, err := sdk.ProgrammaticAPIKeysApi.UpdateApiKey(context.Background(), orgId, apiUserId, &createAtlasOrganizationApiKey).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.UpdateApiKey``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `UpdateApiKey`: ApiKeyUser
+    // response from `UpdateApiKey`: ApiKeyUserDetails
     fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.UpdateApiKey`: %v\n", resp)
 }
 ```
@@ -1028,11 +1028,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **createOrganizationKey** | [**CreateOrganizationKey**](CreateOrganizationKey.md) | Organization API key to be updated. This request requires a minimum of one of the two body parameters. | 
+ **createAtlasOrganizationApiKey** | [**CreateAtlasOrganizationApiKey**](CreateAtlasOrganizationApiKey.md) | Organization API key to be updated. This request requires a minimum of one of the two body parameters. | 
 
 ### Return type
 
-[**ApiKeyUser**](ApiKeyUser.md)
+[**ApiKeyUserDetails**](ApiKeyUserDetails.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -1049,7 +1049,7 @@ Name | Type | Description  | Notes
 
 ## UpdateApiKeyRoles
 
-> ApiKeyUser UpdateApiKeyRoles(ctx, groupId, apiUserId, createProjectKey CreateProjectKey).PageNum(pageNum).ItemsPerPage(itemsPerPage).IncludeCount(includeCount).Execute()
+> ApiKeyUserDetails UpdateApiKeyRoles(ctx, groupId, apiUserId, createAtlasProjectApiKey CreateAtlasProjectApiKey).PageNum(pageNum).ItemsPerPage(itemsPerPage).IncludeCount(includeCount).Execute()
 
 Update Roles of One Organization API Key to One Project
 
@@ -1075,18 +1075,18 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     apiUserId := "apiUserId_example" // string | 
-    createProjectKey := *openapiclient.NewCreateProjectKey() // CreateProjectKey | 
+    createAtlasProjectApiKey := *openapiclient.NewCreateAtlasProjectApiKey() // CreateAtlasProjectApiKey | 
     pageNum := int(1) // int |  (optional) (default to 1)
     itemsPerPage := int(100) // int |  (optional) (default to 100)
     includeCount := true // bool |  (optional) (default to true)
 
-    resp, r, err := sdk.ProgrammaticAPIKeysApi.UpdateApiKeyRoles(context.Background(), groupId, apiUserId, &createProjectKey).PageNum(pageNum).ItemsPerPage(itemsPerPage).IncludeCount(includeCount).Execute()
+    resp, r, err := sdk.ProgrammaticAPIKeysApi.UpdateApiKeyRoles(context.Background(), groupId, apiUserId, &createAtlasProjectApiKey).PageNum(pageNum).ItemsPerPage(itemsPerPage).IncludeCount(includeCount).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.UpdateApiKeyRoles``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `UpdateApiKeyRoles`: ApiKeyUser
+    // response from `UpdateApiKeyRoles`: ApiKeyUserDetails
     fmt.Fprintf(os.Stdout, "Response from `ProgrammaticAPIKeysApi.UpdateApiKeyRoles`: %v\n", resp)
 }
 ```
@@ -1109,14 +1109,14 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **createProjectKey** | [**CreateProjectKey**](CreateProjectKey.md) | Organization API Key to be updated. This request requires a minimum of one of the two body parameters. | 
+ **createAtlasProjectApiKey** | [**CreateAtlasProjectApiKey**](CreateAtlasProjectApiKey.md) | Organization API Key to be updated. This request requires a minimum of one of the two body parameters. | 
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
  **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (**totalCount**) in the response. | [default to true]
 
 ### Return type
 
-[**ApiKeyUser**](ApiKeyUser.md)
+[**ApiKeyUserDetails**](ApiKeyUserDetails.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

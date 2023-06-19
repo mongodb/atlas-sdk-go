@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **Export** | Pointer to [**AutoExportPolicy**](AutoExportPolicy.md) |  | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **NextSnapshot** | Pointer to **time.Time** | Date and time when MongoDB Cloud takes the next snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
-**Policies** | Pointer to [**[]ApiPolicy**](ApiPolicy.md) | Rules set for this backup schedule. | [optional] 
+**Policies** | Pointer to [**[]AdvancedDiskBackupSnapshotSchedulePolicy**](AdvancedDiskBackupSnapshotSchedulePolicy.md) | Rules set for this backup schedule. | [optional] 
 **ReferenceHourOfDay** | Pointer to **int** | Hour of day in Coordinated Universal Time (UTC) that represents when MongoDB Cloud takes the snapshot. | [optional] 
 **ReferenceMinuteOfHour** | Pointer to **int** | Minute of the **referenceHourOfDay** that represents when MongoDB Cloud takes the snapshot. | [optional] 
 **RestoreWindowDays** | Pointer to **int** | Number of previous days that you can restore back to with Continuous Cloud Backup accuracy. You must specify a positive, non-zero integer. This parameter applies to continuous cloud backups only. | [optional] 
@@ -240,20 +240,20 @@ HasNextSnapshot returns a boolean if a field has been set.
 
 ### GetPolicies
 
-`func (o *DiskBackupSnapshotSchedule) GetPolicies() []ApiPolicy`
+`func (o *DiskBackupSnapshotSchedule) GetPolicies() []AdvancedDiskBackupSnapshotSchedulePolicy`
 
 GetPolicies returns the Policies field if non-nil, zero value otherwise.
 
 ### GetPoliciesOk
 
-`func (o *DiskBackupSnapshotSchedule) GetPoliciesOk() (*[]ApiPolicy, bool)`
+`func (o *DiskBackupSnapshotSchedule) GetPoliciesOk() (*[]AdvancedDiskBackupSnapshotSchedulePolicy, bool)`
 
 GetPoliciesOk returns a tuple with the Policies field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPolicies
 
-`func (o *DiskBackupSnapshotSchedule) SetPolicies(v []ApiPolicy)`
+`func (o *DiskBackupSnapshotSchedule) SetPolicies(v []AdvancedDiskBackupSnapshotSchedulePolicy)`
 
 SetPolicies sets Policies field to given value.
 

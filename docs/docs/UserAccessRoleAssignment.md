@@ -1,4 +1,4 @@
-# UserRoleAssignment
+# UserAccessRoleAssignment
 
 ## Properties
 
@@ -9,70 +9,70 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewUserRoleAssignment
+### NewUserAccessRoleAssignment
 
-`func NewUserRoleAssignment() *UserRoleAssignment`
+`func NewUserAccessRoleAssignment() *UserAccessRoleAssignment`
 
-NewUserRoleAssignment instantiates a new UserRoleAssignment object
+NewUserAccessRoleAssignment instantiates a new UserAccessRoleAssignment object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewUserRoleAssignmentWithDefaults
+### NewUserAccessRoleAssignmentWithDefaults
 
-`func NewUserRoleAssignmentWithDefaults() *UserRoleAssignment`
+`func NewUserAccessRoleAssignmentWithDefaults() *UserAccessRoleAssignment`
 
-NewUserRoleAssignmentWithDefaults instantiates a new UserRoleAssignment object
+NewUserAccessRoleAssignmentWithDefaults instantiates a new UserAccessRoleAssignment object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetApiUserId
 
-`func (o *UserRoleAssignment) GetApiUserId() string`
+`func (o *UserAccessRoleAssignment) GetApiUserId() string`
 
 GetApiUserId returns the ApiUserId field if non-nil, zero value otherwise.
 
 ### GetApiUserIdOk
 
-`func (o *UserRoleAssignment) GetApiUserIdOk() (*string, bool)`
+`func (o *UserAccessRoleAssignment) GetApiUserIdOk() (*string, bool)`
 
 GetApiUserIdOk returns a tuple with the ApiUserId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApiUserId
 
-`func (o *UserRoleAssignment) SetApiUserId(v string)`
+`func (o *UserAccessRoleAssignment) SetApiUserId(v string)`
 
 SetApiUserId sets ApiUserId field to given value.
 
 ### HasApiUserId
 
-`func (o *UserRoleAssignment) HasApiUserId() bool`
+`func (o *UserAccessRoleAssignment) HasApiUserId() bool`
 
 HasApiUserId returns a boolean if a field has been set.
 
 ### GetRoles
 
-`func (o *UserRoleAssignment) GetRoles() []string`
+`func (o *UserAccessRoleAssignment) GetRoles() []string`
 
 GetRoles returns the Roles field if non-nil, zero value otherwise.
 
 ### GetRolesOk
 
-`func (o *UserRoleAssignment) GetRolesOk() (*[]string, bool)`
+`func (o *UserAccessRoleAssignment) GetRolesOk() (*[]string, bool)`
 
 GetRolesOk returns a tuple with the Roles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRoles
 
-`func (o *UserRoleAssignment) SetRoles(v []string)`
+`func (o *UserAccessRoleAssignment) SetRoles(v []string)`
 
 SetRoles sets Roles field to given value.
 
 ### HasRoles
 
-`func (o *UserRoleAssignment) HasRoles() bool`
+`func (o *UserAccessRoleAssignment) HasRoles() bool`
 
 HasRoles returns a boolean if a field has been set.
 

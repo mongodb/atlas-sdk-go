@@ -1,4 +1,4 @@
-# AzurePeerNetwork
+# AzureNetworkPeeringConnectionSettings
 
 ## Properties
 
@@ -16,219 +16,219 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewAzurePeerNetwork
+### NewAzureNetworkPeeringConnectionSettings
 
-`func NewAzurePeerNetwork(azureDirectoryId string, azureSubscriptionId string, containerId string, resourceGroupName string, vnetName string, ) *AzurePeerNetwork`
+`func NewAzureNetworkPeeringConnectionSettings(azureDirectoryId string, azureSubscriptionId string, containerId string, resourceGroupName string, vnetName string, ) *AzureNetworkPeeringConnectionSettings`
 
-NewAzurePeerNetwork instantiates a new AzurePeerNetwork object
+NewAzureNetworkPeeringConnectionSettings instantiates a new AzureNetworkPeeringConnectionSettings object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewAzurePeerNetworkWithDefaults
+### NewAzureNetworkPeeringConnectionSettingsWithDefaults
 
-`func NewAzurePeerNetworkWithDefaults() *AzurePeerNetwork`
+`func NewAzureNetworkPeeringConnectionSettingsWithDefaults() *AzureNetworkPeeringConnectionSettings`
 
-NewAzurePeerNetworkWithDefaults instantiates a new AzurePeerNetwork object
+NewAzureNetworkPeeringConnectionSettingsWithDefaults instantiates a new AzureNetworkPeeringConnectionSettings object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetAzureDirectoryId
 
-`func (o *AzurePeerNetwork) GetAzureDirectoryId() string`
+`func (o *AzureNetworkPeeringConnectionSettings) GetAzureDirectoryId() string`
 
 GetAzureDirectoryId returns the AzureDirectoryId field if non-nil, zero value otherwise.
 
 ### GetAzureDirectoryIdOk
 
-`func (o *AzurePeerNetwork) GetAzureDirectoryIdOk() (*string, bool)`
+`func (o *AzureNetworkPeeringConnectionSettings) GetAzureDirectoryIdOk() (*string, bool)`
 
 GetAzureDirectoryIdOk returns a tuple with the AzureDirectoryId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAzureDirectoryId
 
-`func (o *AzurePeerNetwork) SetAzureDirectoryId(v string)`
+`func (o *AzureNetworkPeeringConnectionSettings) SetAzureDirectoryId(v string)`
 
 SetAzureDirectoryId sets AzureDirectoryId field to given value.
 
 
 ### GetAzureSubscriptionId
 
-`func (o *AzurePeerNetwork) GetAzureSubscriptionId() string`
+`func (o *AzureNetworkPeeringConnectionSettings) GetAzureSubscriptionId() string`
 
 GetAzureSubscriptionId returns the AzureSubscriptionId field if non-nil, zero value otherwise.
 
 ### GetAzureSubscriptionIdOk
 
-`func (o *AzurePeerNetwork) GetAzureSubscriptionIdOk() (*string, bool)`
+`func (o *AzureNetworkPeeringConnectionSettings) GetAzureSubscriptionIdOk() (*string, bool)`
 
 GetAzureSubscriptionIdOk returns a tuple with the AzureSubscriptionId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAzureSubscriptionId
 
-`func (o *AzurePeerNetwork) SetAzureSubscriptionId(v string)`
+`func (o *AzureNetworkPeeringConnectionSettings) SetAzureSubscriptionId(v string)`
 
 SetAzureSubscriptionId sets AzureSubscriptionId field to given value.
 
 
 ### GetContainerId
 
-`func (o *AzurePeerNetwork) GetContainerId() string`
+`func (o *AzureNetworkPeeringConnectionSettings) GetContainerId() string`
 
 GetContainerId returns the ContainerId field if non-nil, zero value otherwise.
 
 ### GetContainerIdOk
 
-`func (o *AzurePeerNetwork) GetContainerIdOk() (*string, bool)`
+`func (o *AzureNetworkPeeringConnectionSettings) GetContainerIdOk() (*string, bool)`
 
 GetContainerIdOk returns a tuple with the ContainerId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetContainerId
 
-`func (o *AzurePeerNetwork) SetContainerId(v string)`
+`func (o *AzureNetworkPeeringConnectionSettings) SetContainerId(v string)`
 
 SetContainerId sets ContainerId field to given value.
 
 
 ### GetErrorState
 
-`func (o *AzurePeerNetwork) GetErrorState() string`
+`func (o *AzureNetworkPeeringConnectionSettings) GetErrorState() string`
 
 GetErrorState returns the ErrorState field if non-nil, zero value otherwise.
 
 ### GetErrorStateOk
 
-`func (o *AzurePeerNetwork) GetErrorStateOk() (*string, bool)`
+`func (o *AzureNetworkPeeringConnectionSettings) GetErrorStateOk() (*string, bool)`
 
 GetErrorStateOk returns a tuple with the ErrorState field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetErrorState
 
-`func (o *AzurePeerNetwork) SetErrorState(v string)`
+`func (o *AzureNetworkPeeringConnectionSettings) SetErrorState(v string)`
 
 SetErrorState sets ErrorState field to given value.
 
 ### HasErrorState
 
-`func (o *AzurePeerNetwork) HasErrorState() bool`
+`func (o *AzureNetworkPeeringConnectionSettings) HasErrorState() bool`
 
 HasErrorState returns a boolean if a field has been set.
 
 ### GetId
 
-`func (o *AzurePeerNetwork) GetId() string`
+`func (o *AzureNetworkPeeringConnectionSettings) GetId() string`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *AzurePeerNetwork) GetIdOk() (*string, bool)`
+`func (o *AzureNetworkPeeringConnectionSettings) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *AzurePeerNetwork) SetId(v string)`
+`func (o *AzureNetworkPeeringConnectionSettings) SetId(v string)`
 
 SetId sets Id field to given value.
 
 ### HasId
 
-`func (o *AzurePeerNetwork) HasId() bool`
+`func (o *AzureNetworkPeeringConnectionSettings) HasId() bool`
 
 HasId returns a boolean if a field has been set.
 
 ### GetProviderName
 
-`func (o *AzurePeerNetwork) GetProviderName() string`
+`func (o *AzureNetworkPeeringConnectionSettings) GetProviderName() string`
 
 GetProviderName returns the ProviderName field if non-nil, zero value otherwise.
 
 ### GetProviderNameOk
 
-`func (o *AzurePeerNetwork) GetProviderNameOk() (*string, bool)`
+`func (o *AzureNetworkPeeringConnectionSettings) GetProviderNameOk() (*string, bool)`
 
 GetProviderNameOk returns a tuple with the ProviderName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProviderName
 
-`func (o *AzurePeerNetwork) SetProviderName(v string)`
+`func (o *AzureNetworkPeeringConnectionSettings) SetProviderName(v string)`
 
 SetProviderName sets ProviderName field to given value.
 
 ### HasProviderName
 
-`func (o *AzurePeerNetwork) HasProviderName() bool`
+`func (o *AzureNetworkPeeringConnectionSettings) HasProviderName() bool`
 
 HasProviderName returns a boolean if a field has been set.
 
 ### GetResourceGroupName
 
-`func (o *AzurePeerNetwork) GetResourceGroupName() string`
+`func (o *AzureNetworkPeeringConnectionSettings) GetResourceGroupName() string`
 
 GetResourceGroupName returns the ResourceGroupName field if non-nil, zero value otherwise.
 
 ### GetResourceGroupNameOk
 
-`func (o *AzurePeerNetwork) GetResourceGroupNameOk() (*string, bool)`
+`func (o *AzureNetworkPeeringConnectionSettings) GetResourceGroupNameOk() (*string, bool)`
 
 GetResourceGroupNameOk returns a tuple with the ResourceGroupName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResourceGroupName
 
-`func (o *AzurePeerNetwork) SetResourceGroupName(v string)`
+`func (o *AzureNetworkPeeringConnectionSettings) SetResourceGroupName(v string)`
 
 SetResourceGroupName sets ResourceGroupName field to given value.
 
 
 ### GetStatus
 
-`func (o *AzurePeerNetwork) GetStatus() string`
+`func (o *AzureNetworkPeeringConnectionSettings) GetStatus() string`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *AzurePeerNetwork) GetStatusOk() (*string, bool)`
+`func (o *AzureNetworkPeeringConnectionSettings) GetStatusOk() (*string, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *AzurePeerNetwork) SetStatus(v string)`
+`func (o *AzureNetworkPeeringConnectionSettings) SetStatus(v string)`
 
 SetStatus sets Status field to given value.
 
 ### HasStatus
 
-`func (o *AzurePeerNetwork) HasStatus() bool`
+`func (o *AzureNetworkPeeringConnectionSettings) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
 
 ### GetVnetName
 
-`func (o *AzurePeerNetwork) GetVnetName() string`
+`func (o *AzureNetworkPeeringConnectionSettings) GetVnetName() string`
 
 GetVnetName returns the VnetName field if non-nil, zero value otherwise.
 
 ### GetVnetNameOk
 
-`func (o *AzurePeerNetwork) GetVnetNameOk() (*string, bool)`
+`func (o *AzureNetworkPeeringConnectionSettings) GetVnetNameOk() (*string, bool)`
 
 GetVnetNameOk returns a tuple with the VnetName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVnetName
 
-`func (o *AzurePeerNetwork) SetVnetName(v string)`
+`func (o *AzureNetworkPeeringConnectionSettings) SetVnetName(v string)`
 
 SetVnetName sets VnetName field to given value.
 

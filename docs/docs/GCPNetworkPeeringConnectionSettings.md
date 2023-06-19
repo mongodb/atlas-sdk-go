@@ -1,4 +1,4 @@
-# GCPPeerVpc
+# GCPNetworkPeeringConnectionSettings
 
 ## Properties
 
@@ -14,180 +14,180 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewGCPPeerVpc
+### NewGCPNetworkPeeringConnectionSettings
 
-`func NewGCPPeerVpc(containerId string, gcpProjectId string, networkName string, ) *GCPPeerVpc`
+`func NewGCPNetworkPeeringConnectionSettings(containerId string, gcpProjectId string, networkName string, ) *GCPNetworkPeeringConnectionSettings`
 
-NewGCPPeerVpc instantiates a new GCPPeerVpc object
+NewGCPNetworkPeeringConnectionSettings instantiates a new GCPNetworkPeeringConnectionSettings object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewGCPPeerVpcWithDefaults
+### NewGCPNetworkPeeringConnectionSettingsWithDefaults
 
-`func NewGCPPeerVpcWithDefaults() *GCPPeerVpc`
+`func NewGCPNetworkPeeringConnectionSettingsWithDefaults() *GCPNetworkPeeringConnectionSettings`
 
-NewGCPPeerVpcWithDefaults instantiates a new GCPPeerVpc object
+NewGCPNetworkPeeringConnectionSettingsWithDefaults instantiates a new GCPNetworkPeeringConnectionSettings object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetContainerId
 
-`func (o *GCPPeerVpc) GetContainerId() string`
+`func (o *GCPNetworkPeeringConnectionSettings) GetContainerId() string`
 
 GetContainerId returns the ContainerId field if non-nil, zero value otherwise.
 
 ### GetContainerIdOk
 
-`func (o *GCPPeerVpc) GetContainerIdOk() (*string, bool)`
+`func (o *GCPNetworkPeeringConnectionSettings) GetContainerIdOk() (*string, bool)`
 
 GetContainerIdOk returns a tuple with the ContainerId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetContainerId
 
-`func (o *GCPPeerVpc) SetContainerId(v string)`
+`func (o *GCPNetworkPeeringConnectionSettings) SetContainerId(v string)`
 
 SetContainerId sets ContainerId field to given value.
 
 
 ### GetErrorMessage
 
-`func (o *GCPPeerVpc) GetErrorMessage() string`
+`func (o *GCPNetworkPeeringConnectionSettings) GetErrorMessage() string`
 
 GetErrorMessage returns the ErrorMessage field if non-nil, zero value otherwise.
 
 ### GetErrorMessageOk
 
-`func (o *GCPPeerVpc) GetErrorMessageOk() (*string, bool)`
+`func (o *GCPNetworkPeeringConnectionSettings) GetErrorMessageOk() (*string, bool)`
 
 GetErrorMessageOk returns a tuple with the ErrorMessage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetErrorMessage
 
-`func (o *GCPPeerVpc) SetErrorMessage(v string)`
+`func (o *GCPNetworkPeeringConnectionSettings) SetErrorMessage(v string)`
 
 SetErrorMessage sets ErrorMessage field to given value.
 
 ### HasErrorMessage
 
-`func (o *GCPPeerVpc) HasErrorMessage() bool`
+`func (o *GCPNetworkPeeringConnectionSettings) HasErrorMessage() bool`
 
 HasErrorMessage returns a boolean if a field has been set.
 
 ### GetGcpProjectId
 
-`func (o *GCPPeerVpc) GetGcpProjectId() string`
+`func (o *GCPNetworkPeeringConnectionSettings) GetGcpProjectId() string`
 
 GetGcpProjectId returns the GcpProjectId field if non-nil, zero value otherwise.
 
 ### GetGcpProjectIdOk
 
-`func (o *GCPPeerVpc) GetGcpProjectIdOk() (*string, bool)`
+`func (o *GCPNetworkPeeringConnectionSettings) GetGcpProjectIdOk() (*string, bool)`
 
 GetGcpProjectIdOk returns a tuple with the GcpProjectId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGcpProjectId
 
-`func (o *GCPPeerVpc) SetGcpProjectId(v string)`
+`func (o *GCPNetworkPeeringConnectionSettings) SetGcpProjectId(v string)`
 
 SetGcpProjectId sets GcpProjectId field to given value.
 
 
 ### GetId
 
-`func (o *GCPPeerVpc) GetId() string`
+`func (o *GCPNetworkPeeringConnectionSettings) GetId() string`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *GCPPeerVpc) GetIdOk() (*string, bool)`
+`func (o *GCPNetworkPeeringConnectionSettings) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *GCPPeerVpc) SetId(v string)`
+`func (o *GCPNetworkPeeringConnectionSettings) SetId(v string)`
 
 SetId sets Id field to given value.
 
 ### HasId
 
-`func (o *GCPPeerVpc) HasId() bool`
+`func (o *GCPNetworkPeeringConnectionSettings) HasId() bool`
 
 HasId returns a boolean if a field has been set.
 
 ### GetNetworkName
 
-`func (o *GCPPeerVpc) GetNetworkName() string`
+`func (o *GCPNetworkPeeringConnectionSettings) GetNetworkName() string`
 
 GetNetworkName returns the NetworkName field if non-nil, zero value otherwise.
 
 ### GetNetworkNameOk
 
-`func (o *GCPPeerVpc) GetNetworkNameOk() (*string, bool)`
+`func (o *GCPNetworkPeeringConnectionSettings) GetNetworkNameOk() (*string, bool)`
 
 GetNetworkNameOk returns a tuple with the NetworkName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNetworkName
 
-`func (o *GCPPeerVpc) SetNetworkName(v string)`
+`func (o *GCPNetworkPeeringConnectionSettings) SetNetworkName(v string)`
 
 SetNetworkName sets NetworkName field to given value.
 
 
 ### GetProviderName
 
-`func (o *GCPPeerVpc) GetProviderName() string`
+`func (o *GCPNetworkPeeringConnectionSettings) GetProviderName() string`
 
 GetProviderName returns the ProviderName field if non-nil, zero value otherwise.
 
 ### GetProviderNameOk
 
-`func (o *GCPPeerVpc) GetProviderNameOk() (*string, bool)`
+`func (o *GCPNetworkPeeringConnectionSettings) GetProviderNameOk() (*string, bool)`
 
 GetProviderNameOk returns a tuple with the ProviderName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProviderName
 
-`func (o *GCPPeerVpc) SetProviderName(v string)`
+`func (o *GCPNetworkPeeringConnectionSettings) SetProviderName(v string)`
 
 SetProviderName sets ProviderName field to given value.
 
 ### HasProviderName
 
-`func (o *GCPPeerVpc) HasProviderName() bool`
+`func (o *GCPNetworkPeeringConnectionSettings) HasProviderName() bool`
 
 HasProviderName returns a boolean if a field has been set.
 
 ### GetStatus
 
-`func (o *GCPPeerVpc) GetStatus() string`
+`func (o *GCPNetworkPeeringConnectionSettings) GetStatus() string`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *GCPPeerVpc) GetStatusOk() (*string, bool)`
+`func (o *GCPNetworkPeeringConnectionSettings) GetStatusOk() (*string, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *GCPPeerVpc) SetStatus(v string)`
+`func (o *GCPNetworkPeeringConnectionSettings) SetStatus(v string)`
 
 SetStatus sets Status field to given value.
 
 ### HasStatus
 
-`func (o *GCPPeerVpc) HasStatus() bool`
+`func (o *GCPNetworkPeeringConnectionSettings) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
 

@@ -1886,7 +1886,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: "#/components/schemas/CreateProjectKey"
+              $ref: "#/components/schemas/CreateAtlasProjectApiKey"
         description: Organization API key to be created and assigned to the specified
           project. This request requires both body parameters.
         required: true
@@ -1895,7 +1895,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/ApiKeyUser"
+                $ref: "#/components/schemas/ApiKeyUserDetails"
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -1973,7 +1973,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: "#/components/schemas/CreateProjectKey"
+              $ref: "#/components/schemas/CreateAtlasProjectApiKey"
         description: Organization API Key to be updated. This request requires a minimum
           of one of the two body parameters.
         required: true
@@ -1982,7 +1982,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/ApiKeyUser"
+                $ref: "#/components/schemas/ApiKeyUserDetails"
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -2022,7 +2022,7 @@ paths:
             schema:
               type: array
               items:
-                $ref: "#/components/schemas/UserRoleAssignment"
+                $ref: "#/components/schemas/UserAccessRoleAssignment"
         description: Organization API key to be assigned to the specified project.
         required: true
       responses:
@@ -2030,7 +2030,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/ApiKeyUser"
+                $ref: "#/components/schemas/ApiKeyUserDetails"
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -4699,7 +4699,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: "#/components/schemas/RollingIndexRequest"
+              $ref: "#/components/schemas/DatabaseRollingIndexRequest"
         description: Rolling index to create on the specified cluster.
         required: true
       responses:
@@ -9002,7 +9002,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: "#/components/schemas/NetworkContainerPeer"
+              $ref: "#/components/schemas/BaseNetworkPeeringConnectionSettings"
         description: Create one network peering connection.
         required: true
       responses:
@@ -9010,7 +9010,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/NetworkContainerPeer"
+                $ref: "#/components/schemas/BaseNetworkPeeringConnectionSettings"
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -9091,7 +9091,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/NetworkContainerPeer"
+                $ref: "#/components/schemas/BaseNetworkPeeringConnectionSettings"
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -9127,7 +9127,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: "#/components/schemas/NetworkContainerPeer"
+              $ref: "#/components/schemas/BaseNetworkPeeringConnectionSettings"
         description: Modify one network peering connection.
         required: true
       responses:
@@ -9135,7 +9135,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/NetworkContainerPeer"
+                $ref: "#/components/schemas/BaseNetworkPeeringConnectionSettings"
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -9352,7 +9352,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/ApiPolicyItem"
+                  $ref: "#/components/schemas/DiskBackupApiPolicyItem"
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -12533,7 +12533,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: "#/components/schemas/CreateOrganizationKey"
+              $ref: "#/components/schemas/CreateAtlasOrganizationApiKey"
         description: Organization API Key to be created. This request requires both body
           parameters.
         required: true
@@ -12542,7 +12542,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/ApiKeyUser"
+                $ref: "#/components/schemas/ApiKeyUserDetails"
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -12621,7 +12621,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/ApiKeyUser"
+                $ref: "#/components/schemas/ApiKeyUserDetails"
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -12659,7 +12659,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: "#/components/schemas/CreateOrganizationKey"
+              $ref: "#/components/schemas/CreateAtlasOrganizationApiKey"
         description: Organization API key to be updated. This request requires a minimum
           of one of the two body parameters.
         required: true
@@ -12668,7 +12668,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/ApiKeyUser"
+                $ref: "#/components/schemas/ApiKeyUserDetails"
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -14158,7 +14158,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: "#/components/schemas/CloudUser"
+              $ref: "#/components/schemas/CloudAppUser"
         description: MongoDB Cloud user account to create.
         required: true
       responses:
@@ -14166,7 +14166,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/CloudUser"
+                $ref: "#/components/schemas/CloudAppUser"
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -14204,7 +14204,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/CloudUser"
+                $ref: "#/components/schemas/CloudAppUser"
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -14246,7 +14246,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/CloudUser"
+                $ref: "#/components/schemas/CloudAppUser"
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -14823,80 +14823,6 @@ components:
             Management Service (KMS) encryption key can encrypt and decrypt
             data.
           readOnly: true
-    AWSPeerVpc:
-      type: object
-      description: Group of Network Peering connection settings.
-      properties:
-        accepterRegionName:
-          type: string
-          description: Amazon Web Services (AWS) region where the Virtual Peering
-            Connection (VPC) that you peered with the MongoDB Cloud VPC resides.
-            The resource returns `null` if your VPC and the MongoDB Cloud VPC
-            reside in the same region.
-        awsAccountId:
-          type: string
-          description: Unique twelve-digit string that identifies the Amazon Web Services
-            (AWS) account that owns the VPC that you peered with the MongoDB
-            Cloud VPC.
-          maxLength: 12
-          minLength: 12
-          pattern: ^[0-9]{12}$
-        connectionId:
-          type: string
-          description: Unique string that identifies the peering connection on AWS.
-          readOnly: true
-        containerId:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies the MongoDB
-            Cloud network container that contains the specified network peering
-            connection.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-        errorStateName:
-          type: string
-          description: Type of error that can be returned when requesting an Amazon Web
-            Services (AWS) peering connection. The resource returns `null` if
-            the request succeeded.
-          readOnly: true
-        id:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies the network
-            peering connection.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-          readOnly: true
-        providerName:
-          type: string
-          description: Cloud service provider that serves the requested network peering
-            connection.
-        routeTableCidrBlock:
-          type: string
-          description: Internet Protocol (IP) addresses expressed in Classless
-            Inter-Domain Routing (CIDR) notation of the VPC's subnet that you
-            want to peer with the MongoDB Cloud VPC.
-          pattern: ^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)(\.(?!$)|$)){4}|([0-9a-f]{1,4}\:){7}[0-9a-f]{1,4}$
-        statusName:
-          type: string
-          description: State of the network peering connection at the time you made the
-            request.
-          readOnly: true
-        vpcId:
-          type: string
-          description: Unique string that identifies the VPC on Amazon Web Services (AWS)
-            that you want to peer with the MongoDB Cloud VPC.
-          minLength: 5
-          pattern: ^vpc-[0-9a-f]{17}$
-      required:
-        - accepterRegionName
-        - awsAccountId
-        - containerId
-        - routeTableCidrBlock
-        - vpcId
-      title: AWS
     AddUserToTeam:
       type: object
       properties:
@@ -15087,9 +15013,9 @@ components:
 
             - Set to `false` to disable instance size automatic scaling.
         maxInstanceSize:
-          $ref: "#/components/schemas/CloudProviderInstanceSize"
+          $ref: "#/components/schemas/BaseCloudProviderInstanceSize"
         minInstanceSize:
-          $ref: "#/components/schemas/CloudProviderInstanceSize"
+          $ref: "#/components/schemas/BaseCloudProviderInstanceSize"
         scaleDownEnabled:
           type: boolean
           description: 'Flag that indicates whether the instance size may scale down.
@@ -15098,6 +15024,23 @@ components:
             : true`. If you enable this option, specify a value for
             **replicationSpecs[n].regionConfigs[m].autoScaling.compute.minInstanceSize**.'
       title: Automatic Compute Scaling Settings
+    AdvancedDiskBackupSnapshotSchedulePolicy:
+      type: object
+      description: List that contains a document for each backup policy item in the
+        desired backup policy.
+      properties:
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies this backup
+            policy.
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+        policyItems:
+          type: array
+          description: List that contains the specifications for one policy.
+          items:
+            $ref: "#/components/schemas/DiskBackupApiPolicyItem"
     AlertViewForNdsGroup:
       type: object
       x-xgen-go-transform: merge-oneOf
@@ -15770,13 +15713,13 @@ components:
             returns all project and organization roles assigned to the Cloud
             user.
           items:
-            $ref: "#/components/schemas/CloudRoleAssignment"
+            $ref: "#/components/schemas/CloudAccessRoleAssignment"
           readOnly: true
       readOnly: true
       required:
         - id
         - publicKey
-    ApiKeyUser:
+    ApiKeyUserDetails:
       type: object
       properties:
         desc:
@@ -15826,7 +15769,7 @@ components:
             The resource returns all project and organization roles assigned to
             the API key.
           items:
-            $ref: "#/components/schemas/CloudRoleAssignment"
+            $ref: "#/components/schemas/CloudAccessRoleAssignment"
     ApiMeasurementsGeneralView_Atlas:
       type: object
       properties:
@@ -16026,6 +15969,21 @@ components:
       required:
         - externalGroupName
       title: Federated Authentication Role Mapping
+    AvailableCloudProviderRegion:
+      type: object
+      description: List of regions that this cloud provider supports for this instance size.
+      properties:
+        default:
+          type: boolean
+          description: Flag that indicates whether the cloud provider sets this region as
+            its default. AWS defaults to US_EAST_1, GCP defaults to CENTRAL_US,
+            and AZURE defaults to US_WEST_2.
+          readOnly: true
+        name:
+          type: string
+          description: Human-readable label that identifies the supported region.
+          readOnly: true
+      readOnly: true
     AvailableClustersDeployment:
       type: object
       description: Deployments that can be migrated to MongoDB Atlas.
@@ -16103,6 +16061,80 @@ components:
         - sharded
         - tlsEnabled
       title: Available Clusters
+    AwsNetworkPeeringConnectionSettings:
+      type: object
+      description: Group of Network Peering connection settings.
+      properties:
+        accepterRegionName:
+          type: string
+          description: Amazon Web Services (AWS) region where the Virtual Peering
+            Connection (VPC) that you peered with the MongoDB Cloud VPC resides.
+            The resource returns `null` if your VPC and the MongoDB Cloud VPC
+            reside in the same region.
+        awsAccountId:
+          type: string
+          description: Unique twelve-digit string that identifies the Amazon Web Services
+            (AWS) account that owns the VPC that you peered with the MongoDB
+            Cloud VPC.
+          maxLength: 12
+          minLength: 12
+          pattern: ^[0-9]{12}$
+        connectionId:
+          type: string
+          description: Unique string that identifies the peering connection on AWS.
+          readOnly: true
+        containerId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the MongoDB
+            Cloud network container that contains the specified network peering
+            connection.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+        errorStateName:
+          type: string
+          description: Type of error that can be returned when requesting an Amazon Web
+            Services (AWS) peering connection. The resource returns `null` if
+            the request succeeded.
+          readOnly: true
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the network
+            peering connection.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        providerName:
+          type: string
+          description: Cloud service provider that serves the requested network peering
+            connection.
+        routeTableCidrBlock:
+          type: string
+          description: Internet Protocol (IP) addresses expressed in Classless
+            Inter-Domain Routing (CIDR) notation of the VPC's subnet that you
+            want to peer with the MongoDB Cloud VPC.
+          pattern: ^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)(\.(?!$)|$)){4}|([0-9a-f]{1,4}\:){7}[0-9a-f]{1,4}$
+        statusName:
+          type: string
+          description: State of the network peering connection at the time you made the
+            request.
+          readOnly: true
+        vpcId:
+          type: string
+          description: Unique string that identifies the VPC on Amazon Web Services (AWS)
+            that you want to peer with the MongoDB Cloud VPC.
+          minLength: 5
+          pattern: ^vpc-[0-9a-f]{17}$
+      required:
+        - accepterRegionName
+        - awsAccountId
+        - containerId
+        - routeTableCidrBlock
+        - vpcId
+      title: AWS
     AzureCloudProviderContainer:
       type: object
       description: Collection of settings that configures the network container for a
@@ -16281,7 +16313,7 @@ components:
           description: Flag that indicates whether the Azure encryption key can encrypt
             and decrypt data.
           readOnly: true
-    AzurePeerNetwork:
+    AzureNetworkPeeringConnectionSettings:
       type: object
       description: Group of Network Peering connection settings.
       properties:
@@ -17032,6 +17064,24 @@ components:
           description: Phase of the workflow for this snapshot at the time this resource
             made this request.
           readOnly: true
+    BaseCloudProviderInstanceSize:
+      type: string
+      description: 'Minimum instance size to which your cluster can automatically
+        scale. MongoDB Cloud requires this parameter if
+        `"replicationSpecs[n].regionConfigs[m].autoScaling.compute.scaleDownEnabled"
+        : true`.'
+    BaseNetworkPeeringConnectionSettings:
+      type: object
+      discriminator:
+        mapping:
+          AWS: "#/components/schemas/AwsNetworkPeeringConnectionSettings"
+          AZURE: "#/components/schemas/AzureNetworkPeeringConnectionSettings"
+          GCP: "#/components/schemas/GCPNetworkPeeringConnectionSettings"
+        propertyName: providerName
+      oneOf:
+        - $ref: "#/components/schemas/AwsNetworkPeeringConnectionSettings"
+        - $ref: "#/components/schemas/AzureNetworkPeeringConnectionSettings"
+        - $ref: "#/components/schemas/GCPNetworkPeeringConnectionSettings"
     BiConnector:
       type: object
       description: Settings needed to configure the MongoDB Connector for Business
@@ -17340,6 +17390,168 @@ components:
             organization.
           readOnly: true
       title: Refund
+    CloudAccessRoleAssignment:
+      type: object
+      description: MongoDB Cloud user's roles and the corresponding organization or
+        project to which that role applies. Each role can apply to one
+        organization or one project but not both.
+      properties:
+        groupId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the project to
+            which this role belongs. You can set a value for this parameter or
+            **orgId** but not both in the same request.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+        orgId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the organization
+            to which this role belongs. You can set a value for this parameter
+            or **groupId** but not both in the same request.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+        roleName:
+          type: string
+          description: >+
+            Human-readable label that identifies the collection of privileges
+            that MongoDB Cloud grants a specific API key, MongoDB Cloud user, or
+            MongoDB Cloud team. These roles include organization- and
+            project-level roles.
+
+
+            Organization Roles
+
+
+            * ORG_OWNER
+
+            * ORG_MEMBER
+
+            * ORG_GROUP_CREATOR
+
+            * ORG_BILLING_ADMIN
+
+            * ORG_READ_ONLY
+
+
+            Project Roles
+
+
+            * GROUP_CLUSTER_MANAGER
+
+            * GROUP_DATA_ACCESS_ADMIN
+
+            * GROUP_DATA_ACCESS_READ_ONLY
+
+            * GROUP_DATA_ACCESS_READ_WRITE
+
+            * GROUP_OWNER
+
+            * GROUP_READ_ONLY
+
+            * GROUP_SEARCH_INDEX_EDITOR
+
+      title: Role Assignment
+    CloudAppUser:
+      type: object
+      properties:
+        country:
+          type: string
+          description: Two alphabet characters that identifies MongoDB Cloud user's
+            geographic location. This parameter uses the ISO 3166-1a2 code
+            format.
+          pattern: ^([A-Z]{2})$
+        createdAt:
+          type: string
+          format: date-time
+          description: Date and time when the current account is created. This value is in
+            the ISO 8601 timestamp format in UTC.
+          readOnly: true
+        emailAddress:
+          type: string
+          format: email
+          description: Email address that belongs to the MongoDB Cloud user.
+        firstName:
+          type: string
+          description: First or given name that belongs to the MongoDB Cloud user.
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the MongoDB
+            Cloud user.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        lastAuth:
+          type: string
+          format: date-time
+          description: Date and time when the current account last authenticated. This
+            value is in the ISO 8601 timestamp format in UTC.
+          readOnly: true
+        lastName:
+          type: string
+          description: Last name, family name, or surname that belongs to the MongoDB
+            Cloud user.
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        mobileNumber:
+          type: string
+          description: Mobile phone number that belongs to the MongoDB Cloud user.
+          pattern: (?:(?:\\+?1\\s*(?:[.-]\\s*)?)?(?:(\\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\\s*)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\\s*(?:[.-]\\s*)?)([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\\s*(?:[.-]\\s*)?([0-9]{4})$
+        password:
+          type: string
+          description: Password applied with the username to log in to MongoDB Cloud.
+            MongoDB Cloud does not return this parameter except in response to
+            creating a new MongoDB Cloud user. Only the MongoDB Cloud user can
+            update their password after it has been set from the MongoDB Cloud
+            console.
+          minLength: 8
+        roles:
+          type: array
+          description: List of objects that display the MongoDB Cloud user's roles and the
+            corresponding organization or project to which that role applies. A
+            role can apply to one organization or one project but not both.
+          items:
+            $ref: "#/components/schemas/CloudAccessRoleAssignment"
+        teamIds:
+          type: array
+          description: List of unique 24-hexadecimal digit strings that identifies the
+            teams to which this MongoDB Cloud user belongs.
+          items:
+            type: string
+            description: Unique 24-hexadecimal digit string that identifies the team to
+              which this MongoDB Cloud user belongs.
+            example: 32b6e34b3d91647abb20e7b8
+            maxLength: 24
+            minLength: 24
+            pattern: ^([a-f0-9]{24})$
+          readOnly: true
+          uniqueItems: true
+        username:
+          type: string
+          format: email
+          description: Email address that represents the username of the MongoDB Cloud user.
+      required:
+        - country
+        - emailAddress
+        - firstName
+        - lastName
+        - mobileNumber
+        - password
+        - username
     CloudCluster:
       type: object
       description: Settings that describe the clusters in each project that the API
@@ -17862,12 +18074,6 @@ components:
       properties:
         compute:
           $ref: "#/components/schemas/GCPComputeAutoScaling"
-    CloudProviderInstanceSize:
-      type: string
-      description: 'Minimum instance size to which your cluster can automatically
-        scale. MongoDB Cloud requires this parameter if
-        `"replicationSpecs[n].regionConfigs[m].autoScaling.compute.scaleDownEnabled"
-        : true`.'
     CloudProviderRegions:
       type: object
       properties:
@@ -17875,7 +18081,7 @@ components:
           type: array
           description: List of instances sizes that this cloud provider supports.
           items:
-            $ref: "#/components/schemas/CloudProviderInstanceSize"
+            $ref: "#/components/schemas/ClusterCloudProviderInstanceSize"
           readOnly: true
         provider:
           type: string
@@ -17935,71 +18141,6 @@ components:
             multi-tenant cluster. The resource returns this parameter when
             **providerSettings.providerName** is `TENANT` and
             **providerSetting.instanceSizeName** is `M2` or `M5`.
-    CloudRoleAssignment:
-      type: object
-      description: MongoDB Cloud user's roles and the corresponding organization or
-        project to which that role applies. Each role can apply to one
-        organization or one project but not both.
-      properties:
-        groupId:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies the project to
-            which this role belongs. You can set a value for this parameter or
-            **orgId** but not both in the same request.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-        orgId:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies the organization
-            to which this role belongs. You can set a value for this parameter
-            or **groupId** but not both in the same request.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-        roleName:
-          type: string
-          description: >+
-            Human-readable label that identifies the collection of privileges
-            that MongoDB Cloud grants a specific API key, MongoDB Cloud user, or
-            MongoDB Cloud team. These roles include organization- and
-            project-level roles.
-
-
-            Organization Roles
-
-
-            * ORG_OWNER
-
-            * ORG_MEMBER
-
-            * ORG_GROUP_CREATOR
-
-            * ORG_BILLING_ADMIN
-
-            * ORG_READ_ONLY
-
-
-            Project Roles
-
-
-            * GROUP_CLUSTER_MANAGER
-
-            * GROUP_DATA_ACCESS_ADMIN
-
-            * GROUP_DATA_ACCESS_READ_ONLY
-
-            * GROUP_DATA_ACCESS_READ_WRITE
-
-            * GROUP_OWNER
-
-            * GROUP_READ_ONLY
-
-            * GROUP_SEARCH_INDEX_EDITOR
-
-      title: Role Assignment
     CloudSearchMetrics:
       type: object
       properties:
@@ -18054,103 +18195,6 @@ components:
       required:
         - groupId
         - processId
-    CloudUser:
-      type: object
-      properties:
-        country:
-          type: string
-          description: Two alphabet characters that identifies MongoDB Cloud user's
-            geographic location. This parameter uses the ISO 3166-1a2 code
-            format.
-          pattern: ^([A-Z]{2})$
-        createdAt:
-          type: string
-          format: date-time
-          description: Date and time when the current account is created. This value is in
-            the ISO 8601 timestamp format in UTC.
-          readOnly: true
-        emailAddress:
-          type: string
-          format: email
-          description: Email address that belongs to the MongoDB Cloud user.
-        firstName:
-          type: string
-          description: First or given name that belongs to the MongoDB Cloud user.
-        id:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies the MongoDB
-            Cloud user.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-          readOnly: true
-        lastAuth:
-          type: string
-          format: date-time
-          description: Date and time when the current account last authenticated. This
-            value is in the ISO 8601 timestamp format in UTC.
-          readOnly: true
-        lastName:
-          type: string
-          description: Last name, family name, or surname that belongs to the MongoDB
-            Cloud user.
-        links:
-          type: array
-          description: List of one or more Uniform Resource Locators (URLs) that point to
-            API sub-resources, related API resources, or both. RFC 5988 outlines
-            these relationships.
-          externalDocs:
-            description: Web Linking Specification (RFC 5988)
-            url: https://datatracker.ietf.org/doc/html/rfc5988
-          items:
-            $ref: "#/components/schemas/Link"
-          readOnly: true
-        mobileNumber:
-          type: string
-          description: Mobile phone number that belongs to the MongoDB Cloud user.
-          pattern: (?:(?:\\+?1\\s*(?:[.-]\\s*)?)?(?:(\\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\\s*)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\\s*(?:[.-]\\s*)?)([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\\s*(?:[.-]\\s*)?([0-9]{4})$
-        password:
-          type: string
-          description: Password applied with the username to log in to MongoDB Cloud.
-            MongoDB Cloud does not return this parameter except in response to
-            creating a new MongoDB Cloud user. Only the MongoDB Cloud user can
-            update their password after it has been set from the MongoDB Cloud
-            console.
-          minLength: 8
-        roles:
-          type: array
-          description: List of objects that display the MongoDB Cloud user's roles and the
-            corresponding organization or project to which that role applies. A
-            role can apply to one organization or one project but not both.
-          items:
-            $ref: "#/components/schemas/CloudRoleAssignment"
-        teamIds:
-          type: array
-          description: List of unique 24-hexadecimal digit strings that identifies the
-            teams to which this MongoDB Cloud user belongs.
-          items:
-            type: string
-            description: Unique 24-hexadecimal digit string that identifies the team to
-              which this MongoDB Cloud user belongs.
-            example: 32b6e34b3d91647abb20e7b8
-            maxLength: 24
-            minLength: 24
-            pattern: ^([a-f0-9]{24})$
-          readOnly: true
-          uniqueItems: true
-        username:
-          type: string
-          format: email
-          description: Email address that represents the username of the MongoDB Cloud user.
-      required:
-        - country
-        - emailAddress
-        - firstName
-        - lastName
-        - mobileNumber
-        - password
-        - username
     ClusterAutoScalingSettings:
       type: object
       description: Range of instance sizes to which your cluster can scale.
@@ -18165,6 +18209,23 @@ components:
           description: Flag that indicates whether someone enabled disk auto-scaling for
             this cluster.
       title: Automatic Cluster Scaling Settings
+    ClusterCloudProviderInstanceSize:
+      type: object
+      description: List of instances sizes that this cloud provider supports.
+      properties:
+        availableRegions:
+          type: array
+          description: List of regions that this cloud provider supports for this instance
+            size.
+          items:
+            $ref: "#/components/schemas/AvailableCloudProviderRegion"
+          readOnly: true
+        name:
+          type: string
+          description: Human-readable label that identifies the instance size or cluster
+            tier.
+          readOnly: true
+      readOnly: true
     ClusterComputeAutoScaling:
       type: object
       description: Collection of settings that configures how a cluster might scale
@@ -18972,6 +19033,38 @@ components:
           example: vpce-3bf78b0ddee411ba1
           pattern: ^vpce-[0-9a-f]{17}$
           writeOnly: true
+    CreateAtlasOrganizationApiKey:
+      type: object
+      properties:
+        desc:
+          type: string
+          description: Purpose or explanation provided when someone created this
+            organization API key.
+          maxLength: 250
+          minLength: 1
+        roles:
+          type: array
+          description: List of roles to grant this API key. If you provide this list,
+            provide a minimum of one role and ensure each role applies to this
+            organization.
+          items:
+            type: string
+    CreateAtlasProjectApiKey:
+      type: object
+      properties:
+        desc:
+          type: string
+          description: Purpose or explanation provided when someone created this project
+            API key.
+          maxLength: 250
+          minLength: 1
+        roles:
+          type: array
+          description: List of roles to grant this API key. If you provide this list,
+            provide a minimum of one role and ensure each role applies to this
+            project.
+          items:
+            type: string
     CreateAzureEndpointRequest:
       type: object
       description: Group of Private Endpoint settings.
@@ -19046,27 +19139,11 @@ components:
           pattern: ^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)(\.(?!$)|$)){4}|([0-9a-f]{1,4}\:){7}[0-9a-f]{1,4}$
           writeOnly: true
       title: GCP Forwarding Rules
-    CreateOrganizationKey:
-      type: object
-      properties:
-        desc:
-          type: string
-          description: Purpose or explanation provided when someone created this
-            organization API key.
-          maxLength: 250
-          minLength: 1
-        roles:
-          type: array
-          description: List of roles to grant this API key. If you provide this list,
-            provide a minimum of one role and ensure each role applies to this
-            organization.
-          items:
-            type: string
     CreateOrganizationRequest:
       type: object
       properties:
         apiKey:
-          $ref: "#/components/schemas/CreateOrganizationKey"
+          $ref: "#/components/schemas/CreateAtlasOrganizationApiKey"
         federationSettingsId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the federation
@@ -19103,7 +19180,7 @@ components:
       type: object
       properties:
         apiKey:
-          $ref: "#/components/schemas/ApiKeyUser"
+          $ref: "#/components/schemas/ApiKeyUserDetails"
         federationSettingsId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the federation
@@ -19125,22 +19202,6 @@ components:
           readOnly: true
         organization:
           $ref: "#/components/schemas/AtlasOrganization"
-    CreateProjectKey:
-      type: object
-      properties:
-        desc:
-          type: string
-          description: Purpose or explanation provided when someone created this project
-            API key.
-          maxLength: 250
-          minLength: 1
-        roles:
-          type: array
-          description: List of roles to grant this API key. If you provide this list,
-            provide a minimum of one role and ensure each role applies to this
-            project.
-          items:
-            type: string
     DBUserTLSX509Settings:
       type: object
       description: Settings to configure TLS Certificates for database users.
@@ -19180,7 +19241,7 @@ components:
           type: array
           description: Ordered fields used to physically organize data in the destination.
           items:
-            $ref: "#/components/schemas/PipelinesPartitionField"
+            $ref: "#/components/schemas/DataLakePipelinesPartitionField"
         type:
           type: string
           description: Type of ingestion destination of this Data Lake Pipeline.
@@ -19669,6 +19730,27 @@ components:
             instance or an `M10` or higher cluster.
         provider:
           type: string
+    DataLakePipelinesPartitionField:
+      type: object
+      description: Partition Field in the Data Lake Storage provider for a Data Lake
+        Pipeline.
+      properties:
+        fieldName:
+          type: string
+          description: Human-readable label that identifies the field name used to
+            partition data.
+          maxLength: 700
+        order:
+          type: integer
+          format: int32
+          default: 0
+          description: Sequence in which MongoDB Cloud slices the collection data to
+            create partitions. The resource expresses this sequence starting
+            with zero.
+      required:
+        - fieldName
+        - order
+      title: Partition Field
     DataLakeS3StoreSettings:
       type: object
       properties:
@@ -19836,7 +19918,7 @@ components:
             description: Encryption at Rest using Customer Key Management
             url: https://www.mongodb.com/docs/atlas/security-kms-encryption/
         onDemandPolicyItem:
-          $ref: "#/components/schemas/ApiPolicyItem"
+          $ref: "#/components/schemas/DiskBackupApiPolicyItem"
         pitEnabled:
           type: boolean
           default: false
@@ -19867,7 +19949,7 @@ components:
           type: array
           description: List that contains the specifications for one scheduled policy.
           items:
-            $ref: "#/components/schemas/ApiPolicyItem"
+            $ref: "#/components/schemas/DiskBackupApiPolicyItem"
         state:
           type: string
           description: Label that indicates the state of the Backup Compliance Policy
@@ -19959,6 +20041,55 @@ components:
       required:
         - action
       title: Database Privilege Action
+    DatabaseRollingIndexRequest:
+      type: object
+      properties:
+        collation:
+          $ref: "#/components/schemas/Collation"
+        collection:
+          type: string
+          description: Human-readable label of the collection for which MongoDB Cloud
+            creates an index.
+          writeOnly: true
+        db:
+          type: string
+          description: Human-readable label of the database that holds the collection on
+            which MongoDB Cloud creates an index.
+          writeOnly: true
+        keys:
+          type: array
+          description: List that contains one or more objects that describe the parameters
+            that you want to index.
+          items:
+            type: object
+            additionalProperties:
+              type: string
+              description: Key-value pair that sets the parameter to index as the key and the
+                type of index as its value. To create a [multikey
+                index](https://docs.mongodb.com/manual/core/index-multikey/),
+                list each parameter in its own object within this array.
+              externalDocs:
+                description: Index Types
+                url: https://docs.mongodb.com/manual/indexes/#index-types
+              maxProperties: 1
+              minProperties: 1
+              writeOnly: true
+            description: Key-value pair that sets the parameter to index as the key and the
+              type of index as its value. To create a [multikey
+              index](https://docs.mongodb.com/manual/core/index-multikey/), list
+              each parameter in its own object within this array.
+            externalDocs:
+              description: Index Types
+              url: https://docs.mongodb.com/manual/indexes/#index-types
+            maxProperties: 1
+            minProperties: 1
+            writeOnly: true
+          writeOnly: true
+        options:
+          $ref: "#/components/schemas/IndexOptions"
+      required:
+        - collection
+        - db
     DatabaseUserRole:
       type: object
       description: Range of resources available to this database user.
@@ -20158,6 +20289,59 @@ components:
         - clusterName
         - groupId
         - hostnameSchemaType
+    DiskBackupApiPolicyItem:
+      type: object
+      description: Specifications for one policy.
+      properties:
+        frequencyInterval:
+          type: integer
+          format: int32
+          description: >-
+            Number that indicates the frequency interval for a set of
+            snapshots. A value of `1` specifies the first instance of the
+            corresponding `frequencyType`.
+
+
+            - In a monthly policy item, `1` indicates that the monthly snapshot occurs on the first day of the month and `40` indicates the last day of the month.
+
+
+            - In a weekly policy item, `1` indicates that the weekly snapshot occurs on Monday and `7` indicates Sunday.
+
+
+            - In an hourly policy item, you can set the frequency interval to `1`, `2`, `4`, `6`, `8`, or `12`. For hourly policy items for NVMe clusters, MongoDB Cloud accepts only `12` as the frequency interval value.
+
+             MongoDB Cloud ignores this setting for non-hourly policy items in Backup Compliance Policy settings.
+        frequencyType:
+          type: string
+          description: Human-readable label that identifies the frequency type associated
+            with the backup policy.
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies this backup
+            policy item.
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        retentionUnit:
+          type: string
+          description: Unit of time in which MongoDB Cloud measures snapshot retention.
+        retentionValue:
+          type: integer
+          format: int32
+          description: >-
+            Duration in days, weeks, or months that MongoDB Cloud retains the
+            snapshot. For less frequent policy items, MongoDB Cloud requires
+            that you specify a value greater than or equal to the value
+            specified for more frequent policy items.
+
+
+            For example: If the hourly policy item specifies a retention of two days, you must specify two days or greater for the retention of the weekly policy item.
+      required:
+        - frequencyInterval
+        - frequencyType
+        - retentionUnit
+        - retentionValue
     DiskBackupBaseRestoreMember:
       type: object
       properties:
@@ -20847,7 +21031,7 @@ components:
           type: array
           description: Rules set for this backup schedule.
           items:
-            $ref: "#/components/schemas/ApiPolicy"
+            $ref: "#/components/schemas/AdvancedDiskBackupSnapshotSchedulePolicy"
           maxItems: 1
         referenceHourOfDay:
           type: integer
@@ -21663,7 +21847,7 @@ components:
           description: State of the MongoDB Cloud endpoint group when MongoDB Cloud
             received this request.
           readOnly: true
-    GCPPeerVpc:
+    GCPNetworkPeeringConnectionSettings:
       type: object
       description: Group of Network Peering connection settings.
       properties:
@@ -23701,18 +23885,6 @@ components:
             $ref: "#/components/schemas/NamespaceObj"
           readOnly: true
           uniqueItems: true
-    NetworkContainerPeer:
-      type: object
-      discriminator:
-        mapping:
-          AWS: "#/components/schemas/AWSPeerVpc"
-          AZURE: "#/components/schemas/AzurePeerNetwork"
-          GCP: "#/components/schemas/GCPPeerVpc"
-        propertyName: providerName
-      oneOf:
-        - $ref: "#/components/schemas/AWSPeerVpc"
-        - $ref: "#/components/schemas/AzurePeerNetwork"
-        - $ref: "#/components/schemas/GCPPeerVpc"
     NetworkPermissionEntry:
       type: object
       properties:
@@ -24458,27 +24630,6 @@ components:
           readOnly: true
       readOnly: true
       title: Data Lake Pipeline Run Statistics
-    PipelinesPartitionField:
-      type: object
-      description: Partition Field in the Data Lake Storage provider for a Data Lake
-        Pipeline.
-      properties:
-        fieldName:
-          type: string
-          description: Human-readable label that identifies the field name used to
-            partition data.
-          maxLength: 700
-        order:
-          type: integer
-          format: int32
-          default: 0
-          description: Sequence in which MongoDB Cloud slices the collection data to
-            create partitions. The resource expresses this sequence starting
-            with zero.
-      required:
-        - fieldName
-        - order
-      title: Partition Field
     PrivateGCPEndpointGroup:
       type: object
       description: Group of Private Endpoint settings.
@@ -24820,55 +24971,6 @@ components:
 
             * GROUP_SEARCH_INDEX_EDITOR
 
-    RollingIndexRequest:
-      type: object
-      properties:
-        collation:
-          $ref: "#/components/schemas/Collation"
-        collection:
-          type: string
-          description: Human-readable label of the collection for which MongoDB Cloud
-            creates an index.
-          writeOnly: true
-        db:
-          type: string
-          description: Human-readable label of the database that holds the collection on
-            which MongoDB Cloud creates an index.
-          writeOnly: true
-        keys:
-          type: array
-          description: List that contains one or more objects that describe the parameters
-            that you want to index.
-          items:
-            type: object
-            additionalProperties:
-              type: string
-              description: Key-value pair that sets the parameter to index as the key and the
-                type of index as its value. To create a [multikey
-                index](https://docs.mongodb.com/manual/core/index-multikey/),
-                list each parameter in its own object within this array.
-              externalDocs:
-                description: Index Types
-                url: https://docs.mongodb.com/manual/indexes/#index-types
-              maxProperties: 1
-              minProperties: 1
-              writeOnly: true
-            description: Key-value pair that sets the parameter to index as the key and the
-              type of index as its value. To create a [multikey
-              index](https://docs.mongodb.com/manual/core/index-multikey/), list
-              each parameter in its own object within this array.
-            externalDocs:
-              description: Index Types
-              url: https://docs.mongodb.com/manual/indexes/#index-types
-            maxProperties: 1
-            minProperties: 1
-            writeOnly: true
-          writeOnly: true
-        options:
-          $ref: "#/components/schemas/IndexOptions"
-      required:
-        - collection
-        - db
     SamlIdentityProviderUpdate:
       type: object
       properties:
@@ -26046,6 +26148,24 @@ components:
           items:
             $ref: "#/components/schemas/Link"
           readOnly: true
+    UserAccessRoleAssignment:
+      type: object
+      properties:
+        apiUserId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the organization
+            API key.
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        roles:
+          type: array
+          description: List of roles to grant this API key. If you provide this list,
+            provide a minimum of one role and ensure each role applies to this
+            project.
+          items:
+            type: string
     UserCert:
       type: object
       properties:
@@ -26128,24 +26248,6 @@ components:
       description: Unique identifier of event type.
       example: JOINED_ORG
       title: User Event Types
-    UserRoleAssignment:
-      type: object
-      properties:
-        apiUserId:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies the organization
-            API key.
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-          readOnly: true
-        roles:
-          type: array
-          description: List of roles to grant this API key. If you provide this list,
-            provide a minimum of one role and ensure each role applies to this
-            project.
-          items:
-            type: string
     UserScope:
       type: object
       description: Range of resources available to this database user.
@@ -26608,76 +26710,6 @@ components:
             represents.
           readOnly: true
       readOnly: true
-    ApiPolicyItem:
-      type: object
-      description: Specifications for one policy.
-      properties:
-        frequencyInterval:
-          type: integer
-          format: int32
-          description: >-
-            Number that indicates the frequency interval for a set of
-            snapshots. A value of `1` specifies the first instance of the
-            corresponding `frequencyType`.
-
-
-            - In a monthly policy item, `1` indicates that the monthly snapshot occurs on the first day of the month and `40` indicates the last day of the month.
-
-
-            - In a weekly policy item, `1` indicates that the weekly snapshot occurs on Monday and `7` indicates Sunday.
-
-
-            - In an hourly policy item, you can set the frequency interval to `1`, `2`, `4`, `6`, `8`, or `12`. For hourly policy items for NVMe clusters, MongoDB Cloud accepts only `12` as the frequency interval value.
-
-             MongoDB Cloud ignores this setting for non-hourly policy items in Backup Compliance Policy settings.
-        frequencyType:
-          type: string
-          description: Human-readable label that identifies the frequency type associated
-            with the backup policy.
-        id:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies this backup
-            policy item.
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-          readOnly: true
-        retentionUnit:
-          type: string
-          description: Unit of time in which MongoDB Cloud measures snapshot retention.
-        retentionValue:
-          type: integer
-          format: int32
-          description: >-
-            Duration in days, weeks, or months that MongoDB Cloud retains the
-            snapshot. For less frequent policy items, MongoDB Cloud requires
-            that you specify a value greater than or equal to the value
-            specified for more frequent policy items.
-
-
-            For example: If the hourly policy item specifies a retention of two days, you must specify two days or greater for the retention of the weekly policy item.
-      required:
-        - frequencyInterval
-        - frequencyType
-        - retentionUnit
-        - retentionValue
-    ApiPolicy:
-      type: object
-      description: List that contains a document for each backup policy item in the
-        desired backup policy.
-      properties:
-        id:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies this backup
-            policy.
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-        policyItems:
-          type: array
-          description: List that contains the specifications for one policy.
-          items:
-            $ref: "#/components/schemas/ApiPolicyItem"
     AutoExportPolicy:
       type: object
       description: Policy for automatically exporting cloud backup snapshots.
@@ -27076,7 +27108,7 @@ components:
           description: List of returned documents that MongoDB Cloud providers when
             completing this request.
           items:
-            $ref: "#/components/schemas/ApiKeyUser"
+            $ref: "#/components/schemas/ApiKeyUserDetails"
           readOnly: true
         totalCount:
           type: integer
@@ -27103,7 +27135,7 @@ components:
           description: List of returned documents that MongoDB Cloud providers when
             completing this request.
           items:
-            $ref: "#/components/schemas/CloudUser"
+            $ref: "#/components/schemas/CloudAppUser"
           readOnly: true
         totalCount:
           type: integer
@@ -27348,7 +27380,7 @@ components:
           description: List of returned documents that MongoDB Cloud providers when
             completing this request.
           items:
-            $ref: "#/components/schemas/CloudUser"
+            $ref: "#/components/schemas/CloudAppUser"
           readOnly: true
         totalCount:
           type: integer
@@ -27567,7 +27599,7 @@ components:
           description: List of returned documents that MongoDB Cloud providers when
             completing this request.
           items:
-            $ref: "#/components/schemas/NetworkContainerPeer"
+            $ref: "#/components/schemas/BaseNetworkPeeringConnectionSettings"
           readOnly: true
         totalCount:
           type: integer

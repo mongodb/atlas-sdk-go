@@ -1,4 +1,4 @@
-# ApiPolicyItem
+# DiskBackupApiPolicyItem
 
 ## Properties
 
@@ -12,124 +12,124 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewApiPolicyItem
+### NewDiskBackupApiPolicyItem
 
-`func NewApiPolicyItem(frequencyInterval int, frequencyType string, retentionUnit string, retentionValue int, ) *ApiPolicyItem`
+`func NewDiskBackupApiPolicyItem(frequencyInterval int, frequencyType string, retentionUnit string, retentionValue int, ) *DiskBackupApiPolicyItem`
 
-NewApiPolicyItem instantiates a new ApiPolicyItem object
+NewDiskBackupApiPolicyItem instantiates a new DiskBackupApiPolicyItem object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewApiPolicyItemWithDefaults
+### NewDiskBackupApiPolicyItemWithDefaults
 
-`func NewApiPolicyItemWithDefaults() *ApiPolicyItem`
+`func NewDiskBackupApiPolicyItemWithDefaults() *DiskBackupApiPolicyItem`
 
-NewApiPolicyItemWithDefaults instantiates a new ApiPolicyItem object
+NewDiskBackupApiPolicyItemWithDefaults instantiates a new DiskBackupApiPolicyItem object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetFrequencyInterval
 
-`func (o *ApiPolicyItem) GetFrequencyInterval() int`
+`func (o *DiskBackupApiPolicyItem) GetFrequencyInterval() int`
 
 GetFrequencyInterval returns the FrequencyInterval field if non-nil, zero value otherwise.
 
 ### GetFrequencyIntervalOk
 
-`func (o *ApiPolicyItem) GetFrequencyIntervalOk() (*int, bool)`
+`func (o *DiskBackupApiPolicyItem) GetFrequencyIntervalOk() (*int, bool)`
 
 GetFrequencyIntervalOk returns a tuple with the FrequencyInterval field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFrequencyInterval
 
-`func (o *ApiPolicyItem) SetFrequencyInterval(v int)`
+`func (o *DiskBackupApiPolicyItem) SetFrequencyInterval(v int)`
 
 SetFrequencyInterval sets FrequencyInterval field to given value.
 
 
 ### GetFrequencyType
 
-`func (o *ApiPolicyItem) GetFrequencyType() string`
+`func (o *DiskBackupApiPolicyItem) GetFrequencyType() string`
 
 GetFrequencyType returns the FrequencyType field if non-nil, zero value otherwise.
 
 ### GetFrequencyTypeOk
 
-`func (o *ApiPolicyItem) GetFrequencyTypeOk() (*string, bool)`
+`func (o *DiskBackupApiPolicyItem) GetFrequencyTypeOk() (*string, bool)`
 
 GetFrequencyTypeOk returns a tuple with the FrequencyType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFrequencyType
 
-`func (o *ApiPolicyItem) SetFrequencyType(v string)`
+`func (o *DiskBackupApiPolicyItem) SetFrequencyType(v string)`
 
 SetFrequencyType sets FrequencyType field to given value.
 
 
 ### GetId
 
-`func (o *ApiPolicyItem) GetId() string`
+`func (o *DiskBackupApiPolicyItem) GetId() string`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *ApiPolicyItem) GetIdOk() (*string, bool)`
+`func (o *DiskBackupApiPolicyItem) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *ApiPolicyItem) SetId(v string)`
+`func (o *DiskBackupApiPolicyItem) SetId(v string)`
 
 SetId sets Id field to given value.
 
 ### HasId
 
-`func (o *ApiPolicyItem) HasId() bool`
+`func (o *DiskBackupApiPolicyItem) HasId() bool`
 
 HasId returns a boolean if a field has been set.
 
 ### GetRetentionUnit
 
-`func (o *ApiPolicyItem) GetRetentionUnit() string`
+`func (o *DiskBackupApiPolicyItem) GetRetentionUnit() string`
 
 GetRetentionUnit returns the RetentionUnit field if non-nil, zero value otherwise.
 
 ### GetRetentionUnitOk
 
-`func (o *ApiPolicyItem) GetRetentionUnitOk() (*string, bool)`
+`func (o *DiskBackupApiPolicyItem) GetRetentionUnitOk() (*string, bool)`
 
 GetRetentionUnitOk returns a tuple with the RetentionUnit field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRetentionUnit
 
-`func (o *ApiPolicyItem) SetRetentionUnit(v string)`
+`func (o *DiskBackupApiPolicyItem) SetRetentionUnit(v string)`
 
 SetRetentionUnit sets RetentionUnit field to given value.
 
 
 ### GetRetentionValue
 
-`func (o *ApiPolicyItem) GetRetentionValue() int`
+`func (o *DiskBackupApiPolicyItem) GetRetentionValue() int`
 
 GetRetentionValue returns the RetentionValue field if non-nil, zero value otherwise.
 
 ### GetRetentionValueOk
 
-`func (o *ApiPolicyItem) GetRetentionValueOk() (*int, bool)`
+`func (o *DiskBackupApiPolicyItem) GetRetentionValueOk() (*int, bool)`
 
 GetRetentionValueOk returns a tuple with the RetentionValue field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRetentionValue
 
-`func (o *ApiPolicyItem) SetRetentionValue(v int)`
+`func (o *DiskBackupApiPolicyItem) SetRetentionValue(v int)`
 
 SetRetentionValue sets RetentionValue field to given value.
 

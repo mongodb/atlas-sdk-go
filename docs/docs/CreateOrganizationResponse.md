@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ApiKey** | Pointer to [**ApiKeyUser**](ApiKeyUser.md) |  | [optional] 
+**ApiKey** | Pointer to [**ApiKeyUserDetails**](ApiKeyUserDetails.md) |  | [optional] 
 **FederationSettingsId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the federation that you linked the newly created organization to. | [optional] [readonly] 
 **OrgOwnerId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the MongoDB Cloud user that you assigned the Organization Owner role in the new organization. | [optional] [readonly] 
 **Organization** | Pointer to [**AtlasOrganization**](AtlasOrganization.md) |  | [optional] 
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetApiKey
 
-`func (o *CreateOrganizationResponse) GetApiKey() ApiKeyUser`
+`func (o *CreateOrganizationResponse) GetApiKey() ApiKeyUserDetails`
 
 GetApiKey returns the ApiKey field if non-nil, zero value otherwise.
 
 ### GetApiKeyOk
 
-`func (o *CreateOrganizationResponse) GetApiKeyOk() (*ApiKeyUser, bool)`
+`func (o *CreateOrganizationResponse) GetApiKeyOk() (*ApiKeyUserDetails, bool)`
 
 GetApiKeyOk returns a tuple with the ApiKey field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApiKey
 
-`func (o *CreateOrganizationResponse) SetApiKey(v ApiKeyUser)`
+`func (o *CreateOrganizationResponse) SetApiKey(v ApiKeyUserDetails)`
 
 SetApiKey sets ApiKey field to given value.
 
