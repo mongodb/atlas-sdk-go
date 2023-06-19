@@ -28,7 +28,7 @@ type DiskBackupSnapshotSchedule struct {
 	// Date and time when MongoDB Cloud takes the next snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	NextSnapshot *time.Time `json:"nextSnapshot,omitempty"`
 	// Rules set for this backup schedule.
-	Policies []ApiPolicy `json:"policies,omitempty"`
+	Policies []AdvancedDiskBackupSnapshotSchedulePolicy `json:"policies,omitempty"`
 	// Hour of day in Coordinated Universal Time (UTC) that represents when MongoDB Cloud takes the snapshot.
 	ReferenceHourOfDay *int `json:"referenceHourOfDay,omitempty"`
 	// Minute of the **referenceHourOfDay** that represents when MongoDB Cloud takes the snapshot.
@@ -315,9 +315,9 @@ func (o *DiskBackupSnapshotSchedule) SetNextSnapshot(v time.Time) {
 }
 
 // GetPolicies returns the Policies field value if set, zero value otherwise.
-func (o *DiskBackupSnapshotSchedule) GetPolicies() []ApiPolicy {
+func (o *DiskBackupSnapshotSchedule) GetPolicies() []AdvancedDiskBackupSnapshotSchedulePolicy {
 	if o == nil || IsNil(o.Policies) {
-		var ret []ApiPolicy
+		var ret []AdvancedDiskBackupSnapshotSchedulePolicy
 		return ret
 	}
 	return o.Policies
@@ -325,7 +325,7 @@ func (o *DiskBackupSnapshotSchedule) GetPolicies() []ApiPolicy {
 
 // GetPoliciesOk returns a tuple with the Policies field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupSnapshotSchedule) GetPoliciesOk() ([]ApiPolicy, bool) {
+func (o *DiskBackupSnapshotSchedule) GetPoliciesOk() ([]AdvancedDiskBackupSnapshotSchedulePolicy, bool) {
 	if o == nil || IsNil(o.Policies) {
 		return nil, false
 	}
@@ -341,8 +341,8 @@ func (o *DiskBackupSnapshotSchedule) HasPolicies() bool {
 	return false
 }
 
-// SetPolicies gets a reference to the given []ApiPolicy and assigns it to the Policies field.
-func (o *DiskBackupSnapshotSchedule) SetPolicies(v []ApiPolicy) {
+// SetPolicies gets a reference to the given []AdvancedDiskBackupSnapshotSchedulePolicy and assigns it to the Policies field.
+func (o *DiskBackupSnapshotSchedule) SetPolicies(v []AdvancedDiskBackupSnapshotSchedulePolicy) {
 	o.Policies = v
 }
 

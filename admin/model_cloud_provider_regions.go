@@ -12,7 +12,7 @@ var _ MappedNullable = &CloudProviderRegions{}
 // CloudProviderRegions struct for CloudProviderRegions
 type CloudProviderRegions struct {
 	// List of instances sizes that this cloud provider supports.
-	InstanceSizes []string `json:"instanceSizes,omitempty"`
+	InstanceSizes []ClusterCloudProviderInstanceSize `json:"instanceSizes,omitempty"`
 	// Human-readable label that identifies the Cloud provider.
 	Provider *string `json:"provider,omitempty"`
 }
@@ -35,9 +35,9 @@ func NewCloudProviderRegionsWithDefaults() *CloudProviderRegions {
 }
 
 // GetInstanceSizes returns the InstanceSizes field value if set, zero value otherwise.
-func (o *CloudProviderRegions) GetInstanceSizes() []string {
+func (o *CloudProviderRegions) GetInstanceSizes() []ClusterCloudProviderInstanceSize {
 	if o == nil || IsNil(o.InstanceSizes) {
-		var ret []string
+		var ret []ClusterCloudProviderInstanceSize
 		return ret
 	}
 	return o.InstanceSizes
@@ -45,7 +45,7 @@ func (o *CloudProviderRegions) GetInstanceSizes() []string {
 
 // GetInstanceSizesOk returns a tuple with the InstanceSizes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudProviderRegions) GetInstanceSizesOk() ([]string, bool) {
+func (o *CloudProviderRegions) GetInstanceSizesOk() ([]ClusterCloudProviderInstanceSize, bool) {
 	if o == nil || IsNil(o.InstanceSizes) {
 		return nil, false
 	}
@@ -61,8 +61,8 @@ func (o *CloudProviderRegions) HasInstanceSizes() bool {
 	return false
 }
 
-// SetInstanceSizes gets a reference to the given []string and assigns it to the InstanceSizes field.
-func (o *CloudProviderRegions) SetInstanceSizes(v []string) {
+// SetInstanceSizes gets a reference to the given []ClusterCloudProviderInstanceSize and assigns it to the InstanceSizes field.
+func (o *CloudProviderRegions) SetInstanceSizes(v []ClusterCloudProviderInstanceSize) {
 	o.InstanceSizes = v
 }
 

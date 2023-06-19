@@ -7,11 +7,11 @@ import (
 	"time"
 )
 
-// checks if the CloudUser type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CloudUser{}
+// checks if the CloudAppUser type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CloudAppUser{}
 
-// CloudUser struct for CloudUser
-type CloudUser struct {
+// CloudAppUser struct for CloudAppUser
+type CloudAppUser struct {
 	// Two alphabet characters that identifies MongoDB Cloud user's geographic location. This parameter uses the ISO 3166-1a2 code format.
 	Country string `json:"country"`
 	// Date and time when the current account is created. This value is in the ISO 8601 timestamp format in UTC.
@@ -33,19 +33,19 @@ type CloudUser struct {
 	// Password applied with the username to log in to MongoDB Cloud. MongoDB Cloud does not return this parameter except in response to creating a new MongoDB Cloud user. Only the MongoDB Cloud user can update their password after it has been set from the MongoDB Cloud console.
 	Password string `json:"password"`
 	// List of objects that display the MongoDB Cloud user's roles and the corresponding organization or project to which that role applies. A role can apply to one organization or one project but not both.
-	Roles []CloudRoleAssignment `json:"roles,omitempty"`
+	Roles []CloudAccessRoleAssignment `json:"roles,omitempty"`
 	// List of unique 24-hexadecimal digit strings that identifies the teams to which this MongoDB Cloud user belongs.
 	TeamIds []string `json:"teamIds,omitempty"`
 	// Email address that represents the username of the MongoDB Cloud user.
 	Username string `json:"username"`
 }
 
-// NewCloudUser instantiates a new CloudUser object
+// NewCloudAppUser instantiates a new CloudAppUser object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCloudUser(country string, emailAddress string, firstName string, lastName string, mobileNumber string, password string, username string) *CloudUser {
-	this := CloudUser{}
+func NewCloudAppUser(country string, emailAddress string, firstName string, lastName string, mobileNumber string, password string, username string) *CloudAppUser {
+	this := CloudAppUser{}
 	this.Country = country
 	this.EmailAddress = emailAddress
 	this.FirstName = firstName
@@ -56,16 +56,16 @@ func NewCloudUser(country string, emailAddress string, firstName string, lastNam
 	return &this
 }
 
-// NewCloudUserWithDefaults instantiates a new CloudUser object
+// NewCloudAppUserWithDefaults instantiates a new CloudAppUser object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCloudUserWithDefaults() *CloudUser {
-	this := CloudUser{}
+func NewCloudAppUserWithDefaults() *CloudAppUser {
+	this := CloudAppUser{}
 	return &this
 }
 
 // GetCountry returns the Country field value
-func (o *CloudUser) GetCountry() string {
+func (o *CloudAppUser) GetCountry() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -76,7 +76,7 @@ func (o *CloudUser) GetCountry() string {
 
 // GetCountryOk returns a tuple with the Country field value
 // and a boolean to check if the value has been set.
-func (o *CloudUser) GetCountryOk() (*string, bool) {
+func (o *CloudAppUser) GetCountryOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -84,12 +84,12 @@ func (o *CloudUser) GetCountryOk() (*string, bool) {
 }
 
 // SetCountry sets field value
-func (o *CloudUser) SetCountry(v string) {
+func (o *CloudAppUser) SetCountry(v string) {
 	o.Country = v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
-func (o *CloudUser) GetCreatedAt() time.Time {
+func (o *CloudAppUser) GetCreatedAt() time.Time {
 	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
@@ -99,7 +99,7 @@ func (o *CloudUser) GetCreatedAt() time.Time {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudUser) GetCreatedAtOk() (*time.Time, bool) {
+func (o *CloudAppUser) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
@@ -107,7 +107,7 @@ func (o *CloudUser) GetCreatedAtOk() (*time.Time, bool) {
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
-func (o *CloudUser) HasCreatedAt() bool {
+func (o *CloudAppUser) HasCreatedAt() bool {
 	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
@@ -116,12 +116,12 @@ func (o *CloudUser) HasCreatedAt() bool {
 }
 
 // SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
-func (o *CloudUser) SetCreatedAt(v time.Time) {
+func (o *CloudAppUser) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
 // GetEmailAddress returns the EmailAddress field value
-func (o *CloudUser) GetEmailAddress() string {
+func (o *CloudAppUser) GetEmailAddress() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -132,7 +132,7 @@ func (o *CloudUser) GetEmailAddress() string {
 
 // GetEmailAddressOk returns a tuple with the EmailAddress field value
 // and a boolean to check if the value has been set.
-func (o *CloudUser) GetEmailAddressOk() (*string, bool) {
+func (o *CloudAppUser) GetEmailAddressOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -140,12 +140,12 @@ func (o *CloudUser) GetEmailAddressOk() (*string, bool) {
 }
 
 // SetEmailAddress sets field value
-func (o *CloudUser) SetEmailAddress(v string) {
+func (o *CloudAppUser) SetEmailAddress(v string) {
 	o.EmailAddress = v
 }
 
 // GetFirstName returns the FirstName field value
-func (o *CloudUser) GetFirstName() string {
+func (o *CloudAppUser) GetFirstName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -156,7 +156,7 @@ func (o *CloudUser) GetFirstName() string {
 
 // GetFirstNameOk returns a tuple with the FirstName field value
 // and a boolean to check if the value has been set.
-func (o *CloudUser) GetFirstNameOk() (*string, bool) {
+func (o *CloudAppUser) GetFirstNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -164,12 +164,12 @@ func (o *CloudUser) GetFirstNameOk() (*string, bool) {
 }
 
 // SetFirstName sets field value
-func (o *CloudUser) SetFirstName(v string) {
+func (o *CloudAppUser) SetFirstName(v string) {
 	o.FirstName = v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *CloudUser) GetId() string {
+func (o *CloudAppUser) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
@@ -179,7 +179,7 @@ func (o *CloudUser) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudUser) GetIdOk() (*string, bool) {
+func (o *CloudAppUser) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -187,7 +187,7 @@ func (o *CloudUser) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *CloudUser) HasId() bool {
+func (o *CloudAppUser) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -196,12 +196,12 @@ func (o *CloudUser) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *CloudUser) SetId(v string) {
+func (o *CloudAppUser) SetId(v string) {
 	o.Id = &v
 }
 
 // GetLastAuth returns the LastAuth field value if set, zero value otherwise.
-func (o *CloudUser) GetLastAuth() time.Time {
+func (o *CloudAppUser) GetLastAuth() time.Time {
 	if o == nil || IsNil(o.LastAuth) {
 		var ret time.Time
 		return ret
@@ -211,7 +211,7 @@ func (o *CloudUser) GetLastAuth() time.Time {
 
 // GetLastAuthOk returns a tuple with the LastAuth field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudUser) GetLastAuthOk() (*time.Time, bool) {
+func (o *CloudAppUser) GetLastAuthOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.LastAuth) {
 		return nil, false
 	}
@@ -219,7 +219,7 @@ func (o *CloudUser) GetLastAuthOk() (*time.Time, bool) {
 }
 
 // HasLastAuth returns a boolean if a field has been set.
-func (o *CloudUser) HasLastAuth() bool {
+func (o *CloudAppUser) HasLastAuth() bool {
 	if o != nil && !IsNil(o.LastAuth) {
 		return true
 	}
@@ -228,12 +228,12 @@ func (o *CloudUser) HasLastAuth() bool {
 }
 
 // SetLastAuth gets a reference to the given time.Time and assigns it to the LastAuth field.
-func (o *CloudUser) SetLastAuth(v time.Time) {
+func (o *CloudAppUser) SetLastAuth(v time.Time) {
 	o.LastAuth = &v
 }
 
 // GetLastName returns the LastName field value
-func (o *CloudUser) GetLastName() string {
+func (o *CloudAppUser) GetLastName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -244,7 +244,7 @@ func (o *CloudUser) GetLastName() string {
 
 // GetLastNameOk returns a tuple with the LastName field value
 // and a boolean to check if the value has been set.
-func (o *CloudUser) GetLastNameOk() (*string, bool) {
+func (o *CloudAppUser) GetLastNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -252,12 +252,12 @@ func (o *CloudUser) GetLastNameOk() (*string, bool) {
 }
 
 // SetLastName sets field value
-func (o *CloudUser) SetLastName(v string) {
+func (o *CloudAppUser) SetLastName(v string) {
 	o.LastName = v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *CloudUser) GetLinks() []Link {
+func (o *CloudAppUser) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
 		return ret
@@ -267,7 +267,7 @@ func (o *CloudUser) GetLinks() []Link {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudUser) GetLinksOk() ([]Link, bool) {
+func (o *CloudAppUser) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -275,7 +275,7 @@ func (o *CloudUser) GetLinksOk() ([]Link, bool) {
 }
 
 // HasLinks returns a boolean if a field has been set.
-func (o *CloudUser) HasLinks() bool {
+func (o *CloudAppUser) HasLinks() bool {
 	if o != nil && !IsNil(o.Links) {
 		return true
 	}
@@ -284,12 +284,12 @@ func (o *CloudUser) HasLinks() bool {
 }
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
-func (o *CloudUser) SetLinks(v []Link) {
+func (o *CloudAppUser) SetLinks(v []Link) {
 	o.Links = v
 }
 
 // GetMobileNumber returns the MobileNumber field value
-func (o *CloudUser) GetMobileNumber() string {
+func (o *CloudAppUser) GetMobileNumber() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -300,7 +300,7 @@ func (o *CloudUser) GetMobileNumber() string {
 
 // GetMobileNumberOk returns a tuple with the MobileNumber field value
 // and a boolean to check if the value has been set.
-func (o *CloudUser) GetMobileNumberOk() (*string, bool) {
+func (o *CloudAppUser) GetMobileNumberOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -308,12 +308,12 @@ func (o *CloudUser) GetMobileNumberOk() (*string, bool) {
 }
 
 // SetMobileNumber sets field value
-func (o *CloudUser) SetMobileNumber(v string) {
+func (o *CloudAppUser) SetMobileNumber(v string) {
 	o.MobileNumber = v
 }
 
 // GetPassword returns the Password field value
-func (o *CloudUser) GetPassword() string {
+func (o *CloudAppUser) GetPassword() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -324,7 +324,7 @@ func (o *CloudUser) GetPassword() string {
 
 // GetPasswordOk returns a tuple with the Password field value
 // and a boolean to check if the value has been set.
-func (o *CloudUser) GetPasswordOk() (*string, bool) {
+func (o *CloudAppUser) GetPasswordOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -332,14 +332,14 @@ func (o *CloudUser) GetPasswordOk() (*string, bool) {
 }
 
 // SetPassword sets field value
-func (o *CloudUser) SetPassword(v string) {
+func (o *CloudAppUser) SetPassword(v string) {
 	o.Password = v
 }
 
 // GetRoles returns the Roles field value if set, zero value otherwise.
-func (o *CloudUser) GetRoles() []CloudRoleAssignment {
+func (o *CloudAppUser) GetRoles() []CloudAccessRoleAssignment {
 	if o == nil || IsNil(o.Roles) {
-		var ret []CloudRoleAssignment
+		var ret []CloudAccessRoleAssignment
 		return ret
 	}
 	return o.Roles
@@ -347,7 +347,7 @@ func (o *CloudUser) GetRoles() []CloudRoleAssignment {
 
 // GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudUser) GetRolesOk() ([]CloudRoleAssignment, bool) {
+func (o *CloudAppUser) GetRolesOk() ([]CloudAccessRoleAssignment, bool) {
 	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
@@ -355,7 +355,7 @@ func (o *CloudUser) GetRolesOk() ([]CloudRoleAssignment, bool) {
 }
 
 // HasRoles returns a boolean if a field has been set.
-func (o *CloudUser) HasRoles() bool {
+func (o *CloudAppUser) HasRoles() bool {
 	if o != nil && !IsNil(o.Roles) {
 		return true
 	}
@@ -363,13 +363,13 @@ func (o *CloudUser) HasRoles() bool {
 	return false
 }
 
-// SetRoles gets a reference to the given []CloudRoleAssignment and assigns it to the Roles field.
-func (o *CloudUser) SetRoles(v []CloudRoleAssignment) {
+// SetRoles gets a reference to the given []CloudAccessRoleAssignment and assigns it to the Roles field.
+func (o *CloudAppUser) SetRoles(v []CloudAccessRoleAssignment) {
 	o.Roles = v
 }
 
 // GetTeamIds returns the TeamIds field value if set, zero value otherwise.
-func (o *CloudUser) GetTeamIds() []string {
+func (o *CloudAppUser) GetTeamIds() []string {
 	if o == nil || IsNil(o.TeamIds) {
 		var ret []string
 		return ret
@@ -379,7 +379,7 @@ func (o *CloudUser) GetTeamIds() []string {
 
 // GetTeamIdsOk returns a tuple with the TeamIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudUser) GetTeamIdsOk() ([]string, bool) {
+func (o *CloudAppUser) GetTeamIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.TeamIds) {
 		return nil, false
 	}
@@ -387,7 +387,7 @@ func (o *CloudUser) GetTeamIdsOk() ([]string, bool) {
 }
 
 // HasTeamIds returns a boolean if a field has been set.
-func (o *CloudUser) HasTeamIds() bool {
+func (o *CloudAppUser) HasTeamIds() bool {
 	if o != nil && !IsNil(o.TeamIds) {
 		return true
 	}
@@ -396,12 +396,12 @@ func (o *CloudUser) HasTeamIds() bool {
 }
 
 // SetTeamIds gets a reference to the given []string and assigns it to the TeamIds field.
-func (o *CloudUser) SetTeamIds(v []string) {
+func (o *CloudAppUser) SetTeamIds(v []string) {
 	o.TeamIds = v
 }
 
 // GetUsername returns the Username field value
-func (o *CloudUser) GetUsername() string {
+func (o *CloudAppUser) GetUsername() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -412,7 +412,7 @@ func (o *CloudUser) GetUsername() string {
 
 // GetUsernameOk returns a tuple with the Username field value
 // and a boolean to check if the value has been set.
-func (o *CloudUser) GetUsernameOk() (*string, bool) {
+func (o *CloudAppUser) GetUsernameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -420,18 +420,18 @@ func (o *CloudUser) GetUsernameOk() (*string, bool) {
 }
 
 // SetUsername sets field value
-func (o *CloudUser) SetUsername(v string) {
+func (o *CloudAppUser) SetUsername(v string) {
 	o.Username = v
 }
 
-func (o CloudUser) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o CloudAppUser) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o CloudUser) ToMap() (map[string]interface{}, error) {
+func (o CloudAppUser) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["country"] = o.Country
 	toSerialize["emailAddress"] = o.EmailAddress
@@ -446,38 +446,38 @@ func (o CloudUser) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableCloudUser struct {
-	value *CloudUser
+type NullableCloudAppUser struct {
+	value *CloudAppUser
 	isSet bool
 }
 
-func (v NullableCloudUser) Get() *CloudUser {
+func (v NullableCloudAppUser) Get() *CloudAppUser {
 	return v.value
 }
 
-func (v *NullableCloudUser) Set(val *CloudUser) {
+func (v *NullableCloudAppUser) Set(val *CloudAppUser) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCloudUser) IsSet() bool {
+func (v NullableCloudAppUser) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCloudUser) Unset() {
+func (v *NullableCloudAppUser) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCloudUser(val *CloudUser) *NullableCloudUser {
-	return &NullableCloudUser{value: val, isSet: true}
+func NewNullableCloudAppUser(val *CloudAppUser) *NullableCloudAppUser {
+	return &NullableCloudAppUser{value: val, isSet: true}
 }
 
-func (v NullableCloudUser) MarshalJSON() ([]byte, error) {
+func (v NullableCloudAppUser) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCloudUser) UnmarshalJSON(src []byte) error {
+func (v *NullableCloudAppUser) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

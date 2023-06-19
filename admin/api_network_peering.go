@@ -22,7 +22,7 @@ type NetworkPeeringApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return CreatePeeringConnectionApiRequest
 	*/
-	CreatePeeringConnection(ctx context.Context, groupId string, networkContainerPeer *NetworkContainerPeer) CreatePeeringConnectionApiRequest
+	CreatePeeringConnection(ctx context.Context, groupId string, baseNetworkPeeringConnectionSettings *BaseNetworkPeeringConnectionSettings) CreatePeeringConnectionApiRequest
 	/*
 		CreatePeeringConnection Create One New Network Peering Connection
 
@@ -34,7 +34,7 @@ type NetworkPeeringApi interface {
 	CreatePeeringConnectionWithParams(ctx context.Context, args *CreatePeeringConnectionApiParams) CreatePeeringConnectionApiRequest
 
 	// Interface only available internally
-	createPeeringConnectionExecute(r CreatePeeringConnectionApiRequest) (*NetworkContainerPeer, *http.Response, error)
+	createPeeringConnectionExecute(r CreatePeeringConnectionApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error)
 
 	/*
 		CreatePeeringContainer Create One New Network Peering Container
@@ -156,7 +156,7 @@ type NetworkPeeringApi interface {
 	GetPeeringConnectionWithParams(ctx context.Context, args *GetPeeringConnectionApiParams) GetPeeringConnectionApiRequest
 
 	// Interface only available internally
-	getPeeringConnectionExecute(r GetPeeringConnectionApiRequest) (*NetworkContainerPeer, *http.Response, error)
+	getPeeringConnectionExecute(r GetPeeringConnectionApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error)
 
 	/*
 		GetPeeringContainer Return One Network Peering Container
@@ -261,7 +261,7 @@ type NetworkPeeringApi interface {
 		@param peerId Unique 24-hexadecimal digit string that identifies the network peering connection that you want to update.
 		@return UpdatePeeringConnectionApiRequest
 	*/
-	UpdatePeeringConnection(ctx context.Context, groupId string, peerId string, networkContainerPeer *NetworkContainerPeer) UpdatePeeringConnectionApiRequest
+	UpdatePeeringConnection(ctx context.Context, groupId string, peerId string, baseNetworkPeeringConnectionSettings *BaseNetworkPeeringConnectionSettings) UpdatePeeringConnectionApiRequest
 	/*
 		UpdatePeeringConnection Update One New Network Peering Connection
 
@@ -273,7 +273,7 @@ type NetworkPeeringApi interface {
 	UpdatePeeringConnectionWithParams(ctx context.Context, args *UpdatePeeringConnectionApiParams) UpdatePeeringConnectionApiRequest
 
 	// Interface only available internally
-	updatePeeringConnectionExecute(r UpdatePeeringConnectionApiRequest) (*NetworkContainerPeer, *http.Response, error)
+	updatePeeringConnectionExecute(r UpdatePeeringConnectionApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error)
 
 	/*
 		UpdatePeeringContainer Update One Network Peering Container
@@ -331,27 +331,27 @@ type NetworkPeeringApi interface {
 type NetworkPeeringApiService service
 
 type CreatePeeringConnectionApiRequest struct {
-	ctx                  context.Context
-	ApiService           NetworkPeeringApi
-	groupId              string
-	networkContainerPeer *NetworkContainerPeer
+	ctx                                  context.Context
+	ApiService                           NetworkPeeringApi
+	groupId                              string
+	baseNetworkPeeringConnectionSettings *BaseNetworkPeeringConnectionSettings
 }
 
 type CreatePeeringConnectionApiParams struct {
-	GroupId              string
-	NetworkContainerPeer *NetworkContainerPeer
+	GroupId                              string
+	BaseNetworkPeeringConnectionSettings *BaseNetworkPeeringConnectionSettings
 }
 
 func (a *NetworkPeeringApiService) CreatePeeringConnectionWithParams(ctx context.Context, args *CreatePeeringConnectionApiParams) CreatePeeringConnectionApiRequest {
 	return CreatePeeringConnectionApiRequest{
-		ApiService:           a,
-		ctx:                  ctx,
-		groupId:              args.GroupId,
-		networkContainerPeer: args.NetworkContainerPeer,
+		ApiService:                           a,
+		ctx:                                  ctx,
+		groupId:                              args.GroupId,
+		baseNetworkPeeringConnectionSettings: args.BaseNetworkPeeringConnectionSettings,
 	}
 }
 
-func (r CreatePeeringConnectionApiRequest) Execute() (*NetworkContainerPeer, *http.Response, error) {
+func (r CreatePeeringConnectionApiRequest) Execute() (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
 	return r.ApiService.createPeeringConnectionExecute(r)
 }
 
@@ -364,24 +364,24 @@ Creates one new network peering connection in the specified project. Network pee
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreatePeeringConnectionApiRequest
 */
-func (a *NetworkPeeringApiService) CreatePeeringConnection(ctx context.Context, groupId string, networkContainerPeer *NetworkContainerPeer) CreatePeeringConnectionApiRequest {
+func (a *NetworkPeeringApiService) CreatePeeringConnection(ctx context.Context, groupId string, baseNetworkPeeringConnectionSettings *BaseNetworkPeeringConnectionSettings) CreatePeeringConnectionApiRequest {
 	return CreatePeeringConnectionApiRequest{
-		ApiService:           a,
-		ctx:                  ctx,
-		groupId:              groupId,
-		networkContainerPeer: networkContainerPeer,
+		ApiService:                           a,
+		ctx:                                  ctx,
+		groupId:                              groupId,
+		baseNetworkPeeringConnectionSettings: baseNetworkPeeringConnectionSettings,
 	}
 }
 
 // Execute executes the request
 //
-//	@return NetworkContainerPeer
-func (a *NetworkPeeringApiService) createPeeringConnectionExecute(r CreatePeeringConnectionApiRequest) (*NetworkContainerPeer, *http.Response, error) {
+//	@return BaseNetworkPeeringConnectionSettings
+func (a *NetworkPeeringApiService) createPeeringConnectionExecute(r CreatePeeringConnectionApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *NetworkContainerPeer
+		localVarReturnValue *BaseNetworkPeeringConnectionSettings
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.CreatePeeringConnection")
@@ -401,8 +401,8 @@ func (a *NetworkPeeringApiService) createPeeringConnectionExecute(r CreatePeerin
 	if strlen(r.groupId) > 24 {
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
-	if r.networkContainerPeer == nil {
-		return localVarReturnValue, nil, reportError("networkContainerPeer is required and must be specified")
+	if r.baseNetworkPeeringConnectionSettings == nil {
+		return localVarReturnValue, nil, reportError("baseNetworkPeeringConnectionSettings is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -423,7 +423,7 @@ func (a *NetworkPeeringApiService) createPeeringConnectionExecute(r CreatePeerin
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.networkContainerPeer
+	localVarPostBody = r.baseNetworkPeeringConnectionSettings
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1056,7 +1056,7 @@ func (a *NetworkPeeringApiService) GetPeeringConnectionWithParams(ctx context.Co
 	}
 }
 
-func (r GetPeeringConnectionApiRequest) Execute() (*NetworkContainerPeer, *http.Response, error) {
+func (r GetPeeringConnectionApiRequest) Execute() (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
 	return r.ApiService.getPeeringConnectionExecute(r)
 }
 
@@ -1081,13 +1081,13 @@ func (a *NetworkPeeringApiService) GetPeeringConnection(ctx context.Context, gro
 
 // Execute executes the request
 //
-//	@return NetworkContainerPeer
-func (a *NetworkPeeringApiService) getPeeringConnectionExecute(r GetPeeringConnectionApiRequest) (*NetworkContainerPeer, *http.Response, error) {
+//	@return BaseNetworkPeeringConnectionSettings
+func (a *NetworkPeeringApiService) getPeeringConnectionExecute(r GetPeeringConnectionApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *NetworkContainerPeer
+		localVarReturnValue *BaseNetworkPeeringConnectionSettings
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.GetPeeringConnection")
@@ -1883,30 +1883,30 @@ func (a *NetworkPeeringApiService) listPeeringContainersExecute(r ListPeeringCon
 }
 
 type UpdatePeeringConnectionApiRequest struct {
-	ctx                  context.Context
-	ApiService           NetworkPeeringApi
-	groupId              string
-	peerId               string
-	networkContainerPeer *NetworkContainerPeer
+	ctx                                  context.Context
+	ApiService                           NetworkPeeringApi
+	groupId                              string
+	peerId                               string
+	baseNetworkPeeringConnectionSettings *BaseNetworkPeeringConnectionSettings
 }
 
 type UpdatePeeringConnectionApiParams struct {
-	GroupId              string
-	PeerId               string
-	NetworkContainerPeer *NetworkContainerPeer
+	GroupId                              string
+	PeerId                               string
+	BaseNetworkPeeringConnectionSettings *BaseNetworkPeeringConnectionSettings
 }
 
 func (a *NetworkPeeringApiService) UpdatePeeringConnectionWithParams(ctx context.Context, args *UpdatePeeringConnectionApiParams) UpdatePeeringConnectionApiRequest {
 	return UpdatePeeringConnectionApiRequest{
-		ApiService:           a,
-		ctx:                  ctx,
-		groupId:              args.GroupId,
-		peerId:               args.PeerId,
-		networkContainerPeer: args.NetworkContainerPeer,
+		ApiService:                           a,
+		ctx:                                  ctx,
+		groupId:                              args.GroupId,
+		peerId:                               args.PeerId,
+		baseNetworkPeeringConnectionSettings: args.BaseNetworkPeeringConnectionSettings,
 	}
 }
 
-func (r UpdatePeeringConnectionApiRequest) Execute() (*NetworkContainerPeer, *http.Response, error) {
+func (r UpdatePeeringConnectionApiRequest) Execute() (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
 	return r.ApiService.updatePeeringConnectionExecute(r)
 }
 
@@ -1920,25 +1920,25 @@ UpdatePeeringConnection Update One New Network Peering Connection
 	@param peerId Unique 24-hexadecimal digit string that identifies the network peering connection that you want to update.
 	@return UpdatePeeringConnectionApiRequest
 */
-func (a *NetworkPeeringApiService) UpdatePeeringConnection(ctx context.Context, groupId string, peerId string, networkContainerPeer *NetworkContainerPeer) UpdatePeeringConnectionApiRequest {
+func (a *NetworkPeeringApiService) UpdatePeeringConnection(ctx context.Context, groupId string, peerId string, baseNetworkPeeringConnectionSettings *BaseNetworkPeeringConnectionSettings) UpdatePeeringConnectionApiRequest {
 	return UpdatePeeringConnectionApiRequest{
-		ApiService:           a,
-		ctx:                  ctx,
-		groupId:              groupId,
-		peerId:               peerId,
-		networkContainerPeer: networkContainerPeer,
+		ApiService:                           a,
+		ctx:                                  ctx,
+		groupId:                              groupId,
+		peerId:                               peerId,
+		baseNetworkPeeringConnectionSettings: baseNetworkPeeringConnectionSettings,
 	}
 }
 
 // Execute executes the request
 //
-//	@return NetworkContainerPeer
-func (a *NetworkPeeringApiService) updatePeeringConnectionExecute(r UpdatePeeringConnectionApiRequest) (*NetworkContainerPeer, *http.Response, error) {
+//	@return BaseNetworkPeeringConnectionSettings
+func (a *NetworkPeeringApiService) updatePeeringConnectionExecute(r UpdatePeeringConnectionApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *NetworkContainerPeer
+		localVarReturnValue *BaseNetworkPeeringConnectionSettings
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.UpdatePeeringConnection")
@@ -1965,8 +1965,8 @@ func (a *NetworkPeeringApiService) updatePeeringConnectionExecute(r UpdatePeerin
 	if strlen(r.peerId) > 24 {
 		return localVarReturnValue, nil, reportError("peerId must have less than 24 elements")
 	}
-	if r.networkContainerPeer == nil {
-		return localVarReturnValue, nil, reportError("networkContainerPeer is required and must be specified")
+	if r.baseNetworkPeeringConnectionSettings == nil {
+		return localVarReturnValue, nil, reportError("baseNetworkPeeringConnectionSettings is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1987,7 +1987,7 @@ func (a *NetworkPeeringApiService) updatePeeringConnectionExecute(r UpdatePeerin
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.networkContainerPeer
+	localVarPostBody = r.baseNetworkPeeringConnectionSettings
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

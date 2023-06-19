@@ -23,7 +23,7 @@ type RollingIndexApi interface {
 		@param clusterName Human-readable label that identifies the cluster on which MongoDB Cloud creates an index.
 		@return CreateRollingIndexApiRequest
 	*/
-	CreateRollingIndex(ctx context.Context, groupId string, clusterName string, rollingIndexRequest *RollingIndexRequest) CreateRollingIndexApiRequest
+	CreateRollingIndex(ctx context.Context, groupId string, clusterName string, databaseRollingIndexRequest *DatabaseRollingIndexRequest) CreateRollingIndexApiRequest
 	/*
 		CreateRollingIndex Create One Rolling Index
 
@@ -42,26 +42,26 @@ type RollingIndexApi interface {
 type RollingIndexApiService service
 
 type CreateRollingIndexApiRequest struct {
-	ctx                 context.Context
-	ApiService          RollingIndexApi
-	groupId             string
-	clusterName         string
-	rollingIndexRequest *RollingIndexRequest
+	ctx                         context.Context
+	ApiService                  RollingIndexApi
+	groupId                     string
+	clusterName                 string
+	databaseRollingIndexRequest *DatabaseRollingIndexRequest
 }
 
 type CreateRollingIndexApiParams struct {
-	GroupId             string
-	ClusterName         string
-	RollingIndexRequest *RollingIndexRequest
+	GroupId                     string
+	ClusterName                 string
+	DatabaseRollingIndexRequest *DatabaseRollingIndexRequest
 }
 
 func (a *RollingIndexApiService) CreateRollingIndexWithParams(ctx context.Context, args *CreateRollingIndexApiParams) CreateRollingIndexApiRequest {
 	return CreateRollingIndexApiRequest{
-		ApiService:          a,
-		ctx:                 ctx,
-		groupId:             args.GroupId,
-		clusterName:         args.ClusterName,
-		rollingIndexRequest: args.RollingIndexRequest,
+		ApiService:                  a,
+		ctx:                         ctx,
+		groupId:                     args.GroupId,
+		clusterName:                 args.ClusterName,
+		databaseRollingIndexRequest: args.DatabaseRollingIndexRequest,
 	}
 }
 
@@ -79,13 +79,13 @@ Creates an index on the cluster identified by its name in a rolling manner. Crea
 	@param clusterName Human-readable label that identifies the cluster on which MongoDB Cloud creates an index.
 	@return CreateRollingIndexApiRequest
 */
-func (a *RollingIndexApiService) CreateRollingIndex(ctx context.Context, groupId string, clusterName string, rollingIndexRequest *RollingIndexRequest) CreateRollingIndexApiRequest {
+func (a *RollingIndexApiService) CreateRollingIndex(ctx context.Context, groupId string, clusterName string, databaseRollingIndexRequest *DatabaseRollingIndexRequest) CreateRollingIndexApiRequest {
 	return CreateRollingIndexApiRequest{
-		ApiService:          a,
-		ctx:                 ctx,
-		groupId:             groupId,
-		clusterName:         clusterName,
-		rollingIndexRequest: rollingIndexRequest,
+		ApiService:                  a,
+		ctx:                         ctx,
+		groupId:                     groupId,
+		clusterName:                 clusterName,
+		databaseRollingIndexRequest: databaseRollingIndexRequest,
 	}
 }
 
@@ -121,8 +121,8 @@ func (a *RollingIndexApiService) createRollingIndexExecute(r CreateRollingIndexA
 	if strlen(r.clusterName) > 64 {
 		return nil, reportError("clusterName must have less than 64 elements")
 	}
-	if r.rollingIndexRequest == nil {
-		return nil, reportError("rollingIndexRequest is required and must be specified")
+	if r.databaseRollingIndexRequest == nil {
+		return nil, reportError("databaseRollingIndexRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -143,7 +143,7 @@ func (a *RollingIndexApiService) createRollingIndexExecute(r CreateRollingIndexA
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.rollingIndexRequest
+	localVarPostBody = r.databaseRollingIndexRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return nil, err

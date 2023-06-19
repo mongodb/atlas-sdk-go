@@ -6,11 +6,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the ApiKeyUser type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ApiKeyUser{}
+// checks if the ApiKeyUserDetails type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ApiKeyUserDetails{}
 
-// ApiKeyUser struct for ApiKeyUser
-type ApiKeyUser struct {
+// ApiKeyUserDetails struct for ApiKeyUserDetails
+type ApiKeyUserDetails struct {
 	// Purpose or explanation provided when someone created this organization API key.
 	Desc *string `json:"desc,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies this organization API key assigned to this project.
@@ -22,28 +22,28 @@ type ApiKeyUser struct {
 	// Public API key value set for the specified organization API key.
 	PublicKey *string `json:"publicKey,omitempty"`
 	// List that contains the roles that the API key needs to have. All roles you provide must be valid for the specified project or organization. Each request must include a minimum of one valid role. The resource returns all project and organization roles assigned to the API key.
-	Roles []CloudRoleAssignment `json:"roles,omitempty"`
+	Roles []CloudAccessRoleAssignment `json:"roles,omitempty"`
 }
 
-// NewApiKeyUser instantiates a new ApiKeyUser object
+// NewApiKeyUserDetails instantiates a new ApiKeyUserDetails object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApiKeyUser() *ApiKeyUser {
-	this := ApiKeyUser{}
+func NewApiKeyUserDetails() *ApiKeyUserDetails {
+	this := ApiKeyUserDetails{}
 	return &this
 }
 
-// NewApiKeyUserWithDefaults instantiates a new ApiKeyUser object
+// NewApiKeyUserDetailsWithDefaults instantiates a new ApiKeyUserDetails object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewApiKeyUserWithDefaults() *ApiKeyUser {
-	this := ApiKeyUser{}
+func NewApiKeyUserDetailsWithDefaults() *ApiKeyUserDetails {
+	this := ApiKeyUserDetails{}
 	return &this
 }
 
 // GetDesc returns the Desc field value if set, zero value otherwise.
-func (o *ApiKeyUser) GetDesc() string {
+func (o *ApiKeyUserDetails) GetDesc() string {
 	if o == nil || IsNil(o.Desc) {
 		var ret string
 		return ret
@@ -53,7 +53,7 @@ func (o *ApiKeyUser) GetDesc() string {
 
 // GetDescOk returns a tuple with the Desc field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiKeyUser) GetDescOk() (*string, bool) {
+func (o *ApiKeyUserDetails) GetDescOk() (*string, bool) {
 	if o == nil || IsNil(o.Desc) {
 		return nil, false
 	}
@@ -61,7 +61,7 @@ func (o *ApiKeyUser) GetDescOk() (*string, bool) {
 }
 
 // HasDesc returns a boolean if a field has been set.
-func (o *ApiKeyUser) HasDesc() bool {
+func (o *ApiKeyUserDetails) HasDesc() bool {
 	if o != nil && !IsNil(o.Desc) {
 		return true
 	}
@@ -70,12 +70,12 @@ func (o *ApiKeyUser) HasDesc() bool {
 }
 
 // SetDesc gets a reference to the given string and assigns it to the Desc field.
-func (o *ApiKeyUser) SetDesc(v string) {
+func (o *ApiKeyUserDetails) SetDesc(v string) {
 	o.Desc = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *ApiKeyUser) GetId() string {
+func (o *ApiKeyUserDetails) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
@@ -85,7 +85,7 @@ func (o *ApiKeyUser) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiKeyUser) GetIdOk() (*string, bool) {
+func (o *ApiKeyUserDetails) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -93,7 +93,7 @@ func (o *ApiKeyUser) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *ApiKeyUser) HasId() bool {
+func (o *ApiKeyUserDetails) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -102,12 +102,12 @@ func (o *ApiKeyUser) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *ApiKeyUser) SetId(v string) {
+func (o *ApiKeyUserDetails) SetId(v string) {
 	o.Id = &v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise.
-func (o *ApiKeyUser) GetLinks() []Link {
+func (o *ApiKeyUserDetails) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
 		return ret
@@ -117,7 +117,7 @@ func (o *ApiKeyUser) GetLinks() []Link {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiKeyUser) GetLinksOk() ([]Link, bool) {
+func (o *ApiKeyUserDetails) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -125,7 +125,7 @@ func (o *ApiKeyUser) GetLinksOk() ([]Link, bool) {
 }
 
 // HasLinks returns a boolean if a field has been set.
-func (o *ApiKeyUser) HasLinks() bool {
+func (o *ApiKeyUserDetails) HasLinks() bool {
 	if o != nil && !IsNil(o.Links) {
 		return true
 	}
@@ -134,12 +134,12 @@ func (o *ApiKeyUser) HasLinks() bool {
 }
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
-func (o *ApiKeyUser) SetLinks(v []Link) {
+func (o *ApiKeyUserDetails) SetLinks(v []Link) {
 	o.Links = v
 }
 
 // GetPrivateKey returns the PrivateKey field value if set, zero value otherwise.
-func (o *ApiKeyUser) GetPrivateKey() string {
+func (o *ApiKeyUserDetails) GetPrivateKey() string {
 	if o == nil || IsNil(o.PrivateKey) {
 		var ret string
 		return ret
@@ -149,7 +149,7 @@ func (o *ApiKeyUser) GetPrivateKey() string {
 
 // GetPrivateKeyOk returns a tuple with the PrivateKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiKeyUser) GetPrivateKeyOk() (*string, bool) {
+func (o *ApiKeyUserDetails) GetPrivateKeyOk() (*string, bool) {
 	if o == nil || IsNil(o.PrivateKey) {
 		return nil, false
 	}
@@ -157,7 +157,7 @@ func (o *ApiKeyUser) GetPrivateKeyOk() (*string, bool) {
 }
 
 // HasPrivateKey returns a boolean if a field has been set.
-func (o *ApiKeyUser) HasPrivateKey() bool {
+func (o *ApiKeyUserDetails) HasPrivateKey() bool {
 	if o != nil && !IsNil(o.PrivateKey) {
 		return true
 	}
@@ -166,12 +166,12 @@ func (o *ApiKeyUser) HasPrivateKey() bool {
 }
 
 // SetPrivateKey gets a reference to the given string and assigns it to the PrivateKey field.
-func (o *ApiKeyUser) SetPrivateKey(v string) {
+func (o *ApiKeyUserDetails) SetPrivateKey(v string) {
 	o.PrivateKey = &v
 }
 
 // GetPublicKey returns the PublicKey field value if set, zero value otherwise.
-func (o *ApiKeyUser) GetPublicKey() string {
+func (o *ApiKeyUserDetails) GetPublicKey() string {
 	if o == nil || IsNil(o.PublicKey) {
 		var ret string
 		return ret
@@ -181,7 +181,7 @@ func (o *ApiKeyUser) GetPublicKey() string {
 
 // GetPublicKeyOk returns a tuple with the PublicKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiKeyUser) GetPublicKeyOk() (*string, bool) {
+func (o *ApiKeyUserDetails) GetPublicKeyOk() (*string, bool) {
 	if o == nil || IsNil(o.PublicKey) {
 		return nil, false
 	}
@@ -189,7 +189,7 @@ func (o *ApiKeyUser) GetPublicKeyOk() (*string, bool) {
 }
 
 // HasPublicKey returns a boolean if a field has been set.
-func (o *ApiKeyUser) HasPublicKey() bool {
+func (o *ApiKeyUserDetails) HasPublicKey() bool {
 	if o != nil && !IsNil(o.PublicKey) {
 		return true
 	}
@@ -198,14 +198,14 @@ func (o *ApiKeyUser) HasPublicKey() bool {
 }
 
 // SetPublicKey gets a reference to the given string and assigns it to the PublicKey field.
-func (o *ApiKeyUser) SetPublicKey(v string) {
+func (o *ApiKeyUserDetails) SetPublicKey(v string) {
 	o.PublicKey = &v
 }
 
 // GetRoles returns the Roles field value if set, zero value otherwise.
-func (o *ApiKeyUser) GetRoles() []CloudRoleAssignment {
+func (o *ApiKeyUserDetails) GetRoles() []CloudAccessRoleAssignment {
 	if o == nil || IsNil(o.Roles) {
-		var ret []CloudRoleAssignment
+		var ret []CloudAccessRoleAssignment
 		return ret
 	}
 	return o.Roles
@@ -213,7 +213,7 @@ func (o *ApiKeyUser) GetRoles() []CloudRoleAssignment {
 
 // GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiKeyUser) GetRolesOk() ([]CloudRoleAssignment, bool) {
+func (o *ApiKeyUserDetails) GetRolesOk() ([]CloudAccessRoleAssignment, bool) {
 	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
@@ -221,7 +221,7 @@ func (o *ApiKeyUser) GetRolesOk() ([]CloudRoleAssignment, bool) {
 }
 
 // HasRoles returns a boolean if a field has been set.
-func (o *ApiKeyUser) HasRoles() bool {
+func (o *ApiKeyUserDetails) HasRoles() bool {
 	if o != nil && !IsNil(o.Roles) {
 		return true
 	}
@@ -229,19 +229,19 @@ func (o *ApiKeyUser) HasRoles() bool {
 	return false
 }
 
-// SetRoles gets a reference to the given []CloudRoleAssignment and assigns it to the Roles field.
-func (o *ApiKeyUser) SetRoles(v []CloudRoleAssignment) {
+// SetRoles gets a reference to the given []CloudAccessRoleAssignment and assigns it to the Roles field.
+func (o *ApiKeyUserDetails) SetRoles(v []CloudAccessRoleAssignment) {
 	o.Roles = v
 }
 
-func (o ApiKeyUser) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o ApiKeyUserDetails) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ApiKeyUser) ToMap() (map[string]interface{}, error) {
+func (o ApiKeyUserDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Desc) {
 		toSerialize["desc"] = o.Desc
@@ -252,38 +252,38 @@ func (o ApiKeyUser) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableApiKeyUser struct {
-	value *ApiKeyUser
+type NullableApiKeyUserDetails struct {
+	value *ApiKeyUserDetails
 	isSet bool
 }
 
-func (v NullableApiKeyUser) Get() *ApiKeyUser {
+func (v NullableApiKeyUserDetails) Get() *ApiKeyUserDetails {
 	return v.value
 }
 
-func (v *NullableApiKeyUser) Set(val *ApiKeyUser) {
+func (v *NullableApiKeyUserDetails) Set(val *ApiKeyUserDetails) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableApiKeyUser) IsSet() bool {
+func (v NullableApiKeyUserDetails) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableApiKeyUser) Unset() {
+func (v *NullableApiKeyUserDetails) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableApiKeyUser(val *ApiKeyUser) *NullableApiKeyUser {
-	return &NullableApiKeyUser{value: val, isSet: true}
+func NewNullableApiKeyUserDetails(val *ApiKeyUserDetails) *NullableApiKeyUserDetails {
+	return &NullableApiKeyUserDetails{value: val, isSet: true}
 }
 
-func (v NullableApiKeyUser) MarshalJSON() ([]byte, error) {
+func (v NullableApiKeyUserDetails) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableApiKeyUser) UnmarshalJSON(src []byte) error {
+func (v *NullableApiKeyUserDetails) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

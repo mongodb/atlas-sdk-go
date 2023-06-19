@@ -6,11 +6,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the AWSPeerVpc type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AWSPeerVpc{}
+// checks if the AwsNetworkPeeringConnectionSettings type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AwsNetworkPeeringConnectionSettings{}
 
-// AWSPeerVpc Group of Network Peering connection settings.
-type AWSPeerVpc struct {
+// AwsNetworkPeeringConnectionSettings Group of Network Peering connection settings.
+type AwsNetworkPeeringConnectionSettings struct {
 	// Amazon Web Services (AWS) region where the Virtual Peering Connection (VPC) that you peered with the MongoDB Cloud VPC resides. The resource returns `null` if your VPC and the MongoDB Cloud VPC reside in the same region.
 	AccepterRegionName string `json:"accepterRegionName"`
 	// Unique twelve-digit string that identifies the Amazon Web Services (AWS) account that owns the VPC that you peered with the MongoDB Cloud VPC.
@@ -33,12 +33,12 @@ type AWSPeerVpc struct {
 	VpcId string `json:"vpcId"`
 }
 
-// NewAWSPeerVpc instantiates a new AWSPeerVpc object
+// NewAwsNetworkPeeringConnectionSettings instantiates a new AwsNetworkPeeringConnectionSettings object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAWSPeerVpc(accepterRegionName string, awsAccountId string, containerId string, routeTableCidrBlock string, vpcId string) *AWSPeerVpc {
-	this := AWSPeerVpc{}
+func NewAwsNetworkPeeringConnectionSettings(accepterRegionName string, awsAccountId string, containerId string, routeTableCidrBlock string, vpcId string) *AwsNetworkPeeringConnectionSettings {
+	this := AwsNetworkPeeringConnectionSettings{}
 	this.AccepterRegionName = accepterRegionName
 	this.AwsAccountId = awsAccountId
 	this.ContainerId = containerId
@@ -47,16 +47,16 @@ func NewAWSPeerVpc(accepterRegionName string, awsAccountId string, containerId s
 	return &this
 }
 
-// NewAWSPeerVpcWithDefaults instantiates a new AWSPeerVpc object
+// NewAwsNetworkPeeringConnectionSettingsWithDefaults instantiates a new AwsNetworkPeeringConnectionSettings object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewAWSPeerVpcWithDefaults() *AWSPeerVpc {
-	this := AWSPeerVpc{}
+func NewAwsNetworkPeeringConnectionSettingsWithDefaults() *AwsNetworkPeeringConnectionSettings {
+	this := AwsNetworkPeeringConnectionSettings{}
 	return &this
 }
 
 // GetAccepterRegionName returns the AccepterRegionName field value
-func (o *AWSPeerVpc) GetAccepterRegionName() string {
+func (o *AwsNetworkPeeringConnectionSettings) GetAccepterRegionName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -67,7 +67,7 @@ func (o *AWSPeerVpc) GetAccepterRegionName() string {
 
 // GetAccepterRegionNameOk returns a tuple with the AccepterRegionName field value
 // and a boolean to check if the value has been set.
-func (o *AWSPeerVpc) GetAccepterRegionNameOk() (*string, bool) {
+func (o *AwsNetworkPeeringConnectionSettings) GetAccepterRegionNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -75,12 +75,12 @@ func (o *AWSPeerVpc) GetAccepterRegionNameOk() (*string, bool) {
 }
 
 // SetAccepterRegionName sets field value
-func (o *AWSPeerVpc) SetAccepterRegionName(v string) {
+func (o *AwsNetworkPeeringConnectionSettings) SetAccepterRegionName(v string) {
 	o.AccepterRegionName = v
 }
 
 // GetAwsAccountId returns the AwsAccountId field value
-func (o *AWSPeerVpc) GetAwsAccountId() string {
+func (o *AwsNetworkPeeringConnectionSettings) GetAwsAccountId() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -91,7 +91,7 @@ func (o *AWSPeerVpc) GetAwsAccountId() string {
 
 // GetAwsAccountIdOk returns a tuple with the AwsAccountId field value
 // and a boolean to check if the value has been set.
-func (o *AWSPeerVpc) GetAwsAccountIdOk() (*string, bool) {
+func (o *AwsNetworkPeeringConnectionSettings) GetAwsAccountIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -99,12 +99,12 @@ func (o *AWSPeerVpc) GetAwsAccountIdOk() (*string, bool) {
 }
 
 // SetAwsAccountId sets field value
-func (o *AWSPeerVpc) SetAwsAccountId(v string) {
+func (o *AwsNetworkPeeringConnectionSettings) SetAwsAccountId(v string) {
 	o.AwsAccountId = v
 }
 
 // GetConnectionId returns the ConnectionId field value if set, zero value otherwise.
-func (o *AWSPeerVpc) GetConnectionId() string {
+func (o *AwsNetworkPeeringConnectionSettings) GetConnectionId() string {
 	if o == nil || IsNil(o.ConnectionId) {
 		var ret string
 		return ret
@@ -114,7 +114,7 @@ func (o *AWSPeerVpc) GetConnectionId() string {
 
 // GetConnectionIdOk returns a tuple with the ConnectionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AWSPeerVpc) GetConnectionIdOk() (*string, bool) {
+func (o *AwsNetworkPeeringConnectionSettings) GetConnectionIdOk() (*string, bool) {
 	if o == nil || IsNil(o.ConnectionId) {
 		return nil, false
 	}
@@ -122,7 +122,7 @@ func (o *AWSPeerVpc) GetConnectionIdOk() (*string, bool) {
 }
 
 // HasConnectionId returns a boolean if a field has been set.
-func (o *AWSPeerVpc) HasConnectionId() bool {
+func (o *AwsNetworkPeeringConnectionSettings) HasConnectionId() bool {
 	if o != nil && !IsNil(o.ConnectionId) {
 		return true
 	}
@@ -131,12 +131,12 @@ func (o *AWSPeerVpc) HasConnectionId() bool {
 }
 
 // SetConnectionId gets a reference to the given string and assigns it to the ConnectionId field.
-func (o *AWSPeerVpc) SetConnectionId(v string) {
+func (o *AwsNetworkPeeringConnectionSettings) SetConnectionId(v string) {
 	o.ConnectionId = &v
 }
 
 // GetContainerId returns the ContainerId field value
-func (o *AWSPeerVpc) GetContainerId() string {
+func (o *AwsNetworkPeeringConnectionSettings) GetContainerId() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -147,7 +147,7 @@ func (o *AWSPeerVpc) GetContainerId() string {
 
 // GetContainerIdOk returns a tuple with the ContainerId field value
 // and a boolean to check if the value has been set.
-func (o *AWSPeerVpc) GetContainerIdOk() (*string, bool) {
+func (o *AwsNetworkPeeringConnectionSettings) GetContainerIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -155,12 +155,12 @@ func (o *AWSPeerVpc) GetContainerIdOk() (*string, bool) {
 }
 
 // SetContainerId sets field value
-func (o *AWSPeerVpc) SetContainerId(v string) {
+func (o *AwsNetworkPeeringConnectionSettings) SetContainerId(v string) {
 	o.ContainerId = v
 }
 
 // GetErrorStateName returns the ErrorStateName field value if set, zero value otherwise.
-func (o *AWSPeerVpc) GetErrorStateName() string {
+func (o *AwsNetworkPeeringConnectionSettings) GetErrorStateName() string {
 	if o == nil || IsNil(o.ErrorStateName) {
 		var ret string
 		return ret
@@ -170,7 +170,7 @@ func (o *AWSPeerVpc) GetErrorStateName() string {
 
 // GetErrorStateNameOk returns a tuple with the ErrorStateName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AWSPeerVpc) GetErrorStateNameOk() (*string, bool) {
+func (o *AwsNetworkPeeringConnectionSettings) GetErrorStateNameOk() (*string, bool) {
 	if o == nil || IsNil(o.ErrorStateName) {
 		return nil, false
 	}
@@ -178,7 +178,7 @@ func (o *AWSPeerVpc) GetErrorStateNameOk() (*string, bool) {
 }
 
 // HasErrorStateName returns a boolean if a field has been set.
-func (o *AWSPeerVpc) HasErrorStateName() bool {
+func (o *AwsNetworkPeeringConnectionSettings) HasErrorStateName() bool {
 	if o != nil && !IsNil(o.ErrorStateName) {
 		return true
 	}
@@ -187,12 +187,12 @@ func (o *AWSPeerVpc) HasErrorStateName() bool {
 }
 
 // SetErrorStateName gets a reference to the given string and assigns it to the ErrorStateName field.
-func (o *AWSPeerVpc) SetErrorStateName(v string) {
+func (o *AwsNetworkPeeringConnectionSettings) SetErrorStateName(v string) {
 	o.ErrorStateName = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *AWSPeerVpc) GetId() string {
+func (o *AwsNetworkPeeringConnectionSettings) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
@@ -202,7 +202,7 @@ func (o *AWSPeerVpc) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AWSPeerVpc) GetIdOk() (*string, bool) {
+func (o *AwsNetworkPeeringConnectionSettings) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -210,7 +210,7 @@ func (o *AWSPeerVpc) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *AWSPeerVpc) HasId() bool {
+func (o *AwsNetworkPeeringConnectionSettings) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -219,12 +219,12 @@ func (o *AWSPeerVpc) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *AWSPeerVpc) SetId(v string) {
+func (o *AwsNetworkPeeringConnectionSettings) SetId(v string) {
 	o.Id = &v
 }
 
 // GetProviderName returns the ProviderName field value if set, zero value otherwise.
-func (o *AWSPeerVpc) GetProviderName() string {
+func (o *AwsNetworkPeeringConnectionSettings) GetProviderName() string {
 	if o == nil || IsNil(o.ProviderName) {
 		var ret string
 		return ret
@@ -234,7 +234,7 @@ func (o *AWSPeerVpc) GetProviderName() string {
 
 // GetProviderNameOk returns a tuple with the ProviderName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AWSPeerVpc) GetProviderNameOk() (*string, bool) {
+func (o *AwsNetworkPeeringConnectionSettings) GetProviderNameOk() (*string, bool) {
 	if o == nil || IsNil(o.ProviderName) {
 		return nil, false
 	}
@@ -242,7 +242,7 @@ func (o *AWSPeerVpc) GetProviderNameOk() (*string, bool) {
 }
 
 // HasProviderName returns a boolean if a field has been set.
-func (o *AWSPeerVpc) HasProviderName() bool {
+func (o *AwsNetworkPeeringConnectionSettings) HasProviderName() bool {
 	if o != nil && !IsNil(o.ProviderName) {
 		return true
 	}
@@ -251,12 +251,12 @@ func (o *AWSPeerVpc) HasProviderName() bool {
 }
 
 // SetProviderName gets a reference to the given string and assigns it to the ProviderName field.
-func (o *AWSPeerVpc) SetProviderName(v string) {
+func (o *AwsNetworkPeeringConnectionSettings) SetProviderName(v string) {
 	o.ProviderName = &v
 }
 
 // GetRouteTableCidrBlock returns the RouteTableCidrBlock field value
-func (o *AWSPeerVpc) GetRouteTableCidrBlock() string {
+func (o *AwsNetworkPeeringConnectionSettings) GetRouteTableCidrBlock() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -267,7 +267,7 @@ func (o *AWSPeerVpc) GetRouteTableCidrBlock() string {
 
 // GetRouteTableCidrBlockOk returns a tuple with the RouteTableCidrBlock field value
 // and a boolean to check if the value has been set.
-func (o *AWSPeerVpc) GetRouteTableCidrBlockOk() (*string, bool) {
+func (o *AwsNetworkPeeringConnectionSettings) GetRouteTableCidrBlockOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -275,12 +275,12 @@ func (o *AWSPeerVpc) GetRouteTableCidrBlockOk() (*string, bool) {
 }
 
 // SetRouteTableCidrBlock sets field value
-func (o *AWSPeerVpc) SetRouteTableCidrBlock(v string) {
+func (o *AwsNetworkPeeringConnectionSettings) SetRouteTableCidrBlock(v string) {
 	o.RouteTableCidrBlock = v
 }
 
 // GetStatusName returns the StatusName field value if set, zero value otherwise.
-func (o *AWSPeerVpc) GetStatusName() string {
+func (o *AwsNetworkPeeringConnectionSettings) GetStatusName() string {
 	if o == nil || IsNil(o.StatusName) {
 		var ret string
 		return ret
@@ -290,7 +290,7 @@ func (o *AWSPeerVpc) GetStatusName() string {
 
 // GetStatusNameOk returns a tuple with the StatusName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AWSPeerVpc) GetStatusNameOk() (*string, bool) {
+func (o *AwsNetworkPeeringConnectionSettings) GetStatusNameOk() (*string, bool) {
 	if o == nil || IsNil(o.StatusName) {
 		return nil, false
 	}
@@ -298,7 +298,7 @@ func (o *AWSPeerVpc) GetStatusNameOk() (*string, bool) {
 }
 
 // HasStatusName returns a boolean if a field has been set.
-func (o *AWSPeerVpc) HasStatusName() bool {
+func (o *AwsNetworkPeeringConnectionSettings) HasStatusName() bool {
 	if o != nil && !IsNil(o.StatusName) {
 		return true
 	}
@@ -307,12 +307,12 @@ func (o *AWSPeerVpc) HasStatusName() bool {
 }
 
 // SetStatusName gets a reference to the given string and assigns it to the StatusName field.
-func (o *AWSPeerVpc) SetStatusName(v string) {
+func (o *AwsNetworkPeeringConnectionSettings) SetStatusName(v string) {
 	o.StatusName = &v
 }
 
 // GetVpcId returns the VpcId field value
-func (o *AWSPeerVpc) GetVpcId() string {
+func (o *AwsNetworkPeeringConnectionSettings) GetVpcId() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -323,7 +323,7 @@ func (o *AWSPeerVpc) GetVpcId() string {
 
 // GetVpcIdOk returns a tuple with the VpcId field value
 // and a boolean to check if the value has been set.
-func (o *AWSPeerVpc) GetVpcIdOk() (*string, bool) {
+func (o *AwsNetworkPeeringConnectionSettings) GetVpcIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -331,18 +331,18 @@ func (o *AWSPeerVpc) GetVpcIdOk() (*string, bool) {
 }
 
 // SetVpcId sets field value
-func (o *AWSPeerVpc) SetVpcId(v string) {
+func (o *AwsNetworkPeeringConnectionSettings) SetVpcId(v string) {
 	o.VpcId = v
 }
 
-func (o AWSPeerVpc) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o AwsNetworkPeeringConnectionSettings) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o AWSPeerVpc) ToMap() (map[string]interface{}, error) {
+func (o AwsNetworkPeeringConnectionSettings) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["accepterRegionName"] = o.AccepterRegionName
 	toSerialize["awsAccountId"] = o.AwsAccountId
@@ -355,38 +355,38 @@ func (o AWSPeerVpc) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableAWSPeerVpc struct {
-	value *AWSPeerVpc
+type NullableAwsNetworkPeeringConnectionSettings struct {
+	value *AwsNetworkPeeringConnectionSettings
 	isSet bool
 }
 
-func (v NullableAWSPeerVpc) Get() *AWSPeerVpc {
+func (v NullableAwsNetworkPeeringConnectionSettings) Get() *AwsNetworkPeeringConnectionSettings {
 	return v.value
 }
 
-func (v *NullableAWSPeerVpc) Set(val *AWSPeerVpc) {
+func (v *NullableAwsNetworkPeeringConnectionSettings) Set(val *AwsNetworkPeeringConnectionSettings) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableAWSPeerVpc) IsSet() bool {
+func (v NullableAwsNetworkPeeringConnectionSettings) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableAWSPeerVpc) Unset() {
+func (v *NullableAwsNetworkPeeringConnectionSettings) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableAWSPeerVpc(val *AWSPeerVpc) *NullableAWSPeerVpc {
-	return &NullableAWSPeerVpc{value: val, isSet: true}
+func NewNullableAwsNetworkPeeringConnectionSettings(val *AwsNetworkPeeringConnectionSettings) *NullableAwsNetworkPeeringConnectionSettings {
+	return &NullableAwsNetworkPeeringConnectionSettings{value: val, isSet: true}
 }
 
-func (v NullableAWSPeerVpc) MarshalJSON() ([]byte, error) {
+func (v NullableAwsNetworkPeeringConnectionSettings) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableAWSPeerVpc) UnmarshalJSON(src []byte) error {
+func (v *NullableAwsNetworkPeeringConnectionSettings) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

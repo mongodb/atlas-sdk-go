@@ -6,36 +6,36 @@ import (
 	"encoding/json"
 )
 
-// checks if the CreateOrganizationKey type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CreateOrganizationKey{}
+// checks if the CreateAtlasProjectApiKey type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CreateAtlasProjectApiKey{}
 
-// CreateOrganizationKey struct for CreateOrganizationKey
-type CreateOrganizationKey struct {
-	// Purpose or explanation provided when someone created this organization API key.
+// CreateAtlasProjectApiKey struct for CreateAtlasProjectApiKey
+type CreateAtlasProjectApiKey struct {
+	// Purpose or explanation provided when someone created this project API key.
 	Desc *string `json:"desc,omitempty"`
-	// List of roles to grant this API key. If you provide this list, provide a minimum of one role and ensure each role applies to this organization.
+	// List of roles to grant this API key. If you provide this list, provide a minimum of one role and ensure each role applies to this project.
 	Roles []string `json:"roles,omitempty"`
 }
 
-// NewCreateOrganizationKey instantiates a new CreateOrganizationKey object
+// NewCreateAtlasProjectApiKey instantiates a new CreateAtlasProjectApiKey object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateOrganizationKey() *CreateOrganizationKey {
-	this := CreateOrganizationKey{}
+func NewCreateAtlasProjectApiKey() *CreateAtlasProjectApiKey {
+	this := CreateAtlasProjectApiKey{}
 	return &this
 }
 
-// NewCreateOrganizationKeyWithDefaults instantiates a new CreateOrganizationKey object
+// NewCreateAtlasProjectApiKeyWithDefaults instantiates a new CreateAtlasProjectApiKey object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCreateOrganizationKeyWithDefaults() *CreateOrganizationKey {
-	this := CreateOrganizationKey{}
+func NewCreateAtlasProjectApiKeyWithDefaults() *CreateAtlasProjectApiKey {
+	this := CreateAtlasProjectApiKey{}
 	return &this
 }
 
 // GetDesc returns the Desc field value if set, zero value otherwise.
-func (o *CreateOrganizationKey) GetDesc() string {
+func (o *CreateAtlasProjectApiKey) GetDesc() string {
 	if o == nil || IsNil(o.Desc) {
 		var ret string
 		return ret
@@ -45,7 +45,7 @@ func (o *CreateOrganizationKey) GetDesc() string {
 
 // GetDescOk returns a tuple with the Desc field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateOrganizationKey) GetDescOk() (*string, bool) {
+func (o *CreateAtlasProjectApiKey) GetDescOk() (*string, bool) {
 	if o == nil || IsNil(o.Desc) {
 		return nil, false
 	}
@@ -53,7 +53,7 @@ func (o *CreateOrganizationKey) GetDescOk() (*string, bool) {
 }
 
 // HasDesc returns a boolean if a field has been set.
-func (o *CreateOrganizationKey) HasDesc() bool {
+func (o *CreateAtlasProjectApiKey) HasDesc() bool {
 	if o != nil && !IsNil(o.Desc) {
 		return true
 	}
@@ -62,12 +62,12 @@ func (o *CreateOrganizationKey) HasDesc() bool {
 }
 
 // SetDesc gets a reference to the given string and assigns it to the Desc field.
-func (o *CreateOrganizationKey) SetDesc(v string) {
+func (o *CreateAtlasProjectApiKey) SetDesc(v string) {
 	o.Desc = &v
 }
 
 // GetRoles returns the Roles field value if set, zero value otherwise.
-func (o *CreateOrganizationKey) GetRoles() []string {
+func (o *CreateAtlasProjectApiKey) GetRoles() []string {
 	if o == nil || IsNil(o.Roles) {
 		var ret []string
 		return ret
@@ -77,7 +77,7 @@ func (o *CreateOrganizationKey) GetRoles() []string {
 
 // GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateOrganizationKey) GetRolesOk() ([]string, bool) {
+func (o *CreateAtlasProjectApiKey) GetRolesOk() ([]string, bool) {
 	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
@@ -85,7 +85,7 @@ func (o *CreateOrganizationKey) GetRolesOk() ([]string, bool) {
 }
 
 // HasRoles returns a boolean if a field has been set.
-func (o *CreateOrganizationKey) HasRoles() bool {
+func (o *CreateAtlasProjectApiKey) HasRoles() bool {
 	if o != nil && !IsNil(o.Roles) {
 		return true
 	}
@@ -94,18 +94,18 @@ func (o *CreateOrganizationKey) HasRoles() bool {
 }
 
 // SetRoles gets a reference to the given []string and assigns it to the Roles field.
-func (o *CreateOrganizationKey) SetRoles(v []string) {
+func (o *CreateAtlasProjectApiKey) SetRoles(v []string) {
 	o.Roles = v
 }
 
-func (o CreateOrganizationKey) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o CreateAtlasProjectApiKey) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o CreateOrganizationKey) ToMap() (map[string]interface{}, error) {
+func (o CreateAtlasProjectApiKey) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Desc) {
 		toSerialize["desc"] = o.Desc
@@ -116,38 +116,38 @@ func (o CreateOrganizationKey) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableCreateOrganizationKey struct {
-	value *CreateOrganizationKey
+type NullableCreateAtlasProjectApiKey struct {
+	value *CreateAtlasProjectApiKey
 	isSet bool
 }
 
-func (v NullableCreateOrganizationKey) Get() *CreateOrganizationKey {
+func (v NullableCreateAtlasProjectApiKey) Get() *CreateAtlasProjectApiKey {
 	return v.value
 }
 
-func (v *NullableCreateOrganizationKey) Set(val *CreateOrganizationKey) {
+func (v *NullableCreateAtlasProjectApiKey) Set(val *CreateAtlasProjectApiKey) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCreateOrganizationKey) IsSet() bool {
+func (v NullableCreateAtlasProjectApiKey) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCreateOrganizationKey) Unset() {
+func (v *NullableCreateAtlasProjectApiKey) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCreateOrganizationKey(val *CreateOrganizationKey) *NullableCreateOrganizationKey {
-	return &NullableCreateOrganizationKey{value: val, isSet: true}
+func NewNullableCreateAtlasProjectApiKey(val *CreateAtlasProjectApiKey) *NullableCreateAtlasProjectApiKey {
+	return &NullableCreateAtlasProjectApiKey{value: val, isSet: true}
 }
 
-func (v NullableCreateOrganizationKey) MarshalJSON() ([]byte, error) {
+func (v NullableCreateAtlasProjectApiKey) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCreateOrganizationKey) UnmarshalJSON(src []byte) error {
+func (v *NullableCreateAtlasProjectApiKey) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -6,11 +6,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the AzurePeerNetwork type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AzurePeerNetwork{}
+// checks if the AzureNetworkPeeringConnectionSettings type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AzureNetworkPeeringConnectionSettings{}
 
-// AzurePeerNetwork Group of Network Peering connection settings.
-type AzurePeerNetwork struct {
+// AzureNetworkPeeringConnectionSettings Group of Network Peering connection settings.
+type AzureNetworkPeeringConnectionSettings struct {
 	// Unique string that identifies the Azure AD directory in which the VNet peered with the MongoDB Cloud VNet resides.
 	AzureDirectoryId string `json:"azureDirectoryId"`
 	// Unique string that identifies the Azure subscription in which the VNet you peered with the MongoDB Cloud VNet resides.
@@ -31,12 +31,12 @@ type AzurePeerNetwork struct {
 	VnetName string `json:"vnetName"`
 }
 
-// NewAzurePeerNetwork instantiates a new AzurePeerNetwork object
+// NewAzureNetworkPeeringConnectionSettings instantiates a new AzureNetworkPeeringConnectionSettings object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAzurePeerNetwork(azureDirectoryId string, azureSubscriptionId string, containerId string, resourceGroupName string, vnetName string) *AzurePeerNetwork {
-	this := AzurePeerNetwork{}
+func NewAzureNetworkPeeringConnectionSettings(azureDirectoryId string, azureSubscriptionId string, containerId string, resourceGroupName string, vnetName string) *AzureNetworkPeeringConnectionSettings {
+	this := AzureNetworkPeeringConnectionSettings{}
 	this.AzureDirectoryId = azureDirectoryId
 	this.AzureSubscriptionId = azureSubscriptionId
 	this.ContainerId = containerId
@@ -45,16 +45,16 @@ func NewAzurePeerNetwork(azureDirectoryId string, azureSubscriptionId string, co
 	return &this
 }
 
-// NewAzurePeerNetworkWithDefaults instantiates a new AzurePeerNetwork object
+// NewAzureNetworkPeeringConnectionSettingsWithDefaults instantiates a new AzureNetworkPeeringConnectionSettings object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewAzurePeerNetworkWithDefaults() *AzurePeerNetwork {
-	this := AzurePeerNetwork{}
+func NewAzureNetworkPeeringConnectionSettingsWithDefaults() *AzureNetworkPeeringConnectionSettings {
+	this := AzureNetworkPeeringConnectionSettings{}
 	return &this
 }
 
 // GetAzureDirectoryId returns the AzureDirectoryId field value
-func (o *AzurePeerNetwork) GetAzureDirectoryId() string {
+func (o *AzureNetworkPeeringConnectionSettings) GetAzureDirectoryId() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -65,7 +65,7 @@ func (o *AzurePeerNetwork) GetAzureDirectoryId() string {
 
 // GetAzureDirectoryIdOk returns a tuple with the AzureDirectoryId field value
 // and a boolean to check if the value has been set.
-func (o *AzurePeerNetwork) GetAzureDirectoryIdOk() (*string, bool) {
+func (o *AzureNetworkPeeringConnectionSettings) GetAzureDirectoryIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -73,12 +73,12 @@ func (o *AzurePeerNetwork) GetAzureDirectoryIdOk() (*string, bool) {
 }
 
 // SetAzureDirectoryId sets field value
-func (o *AzurePeerNetwork) SetAzureDirectoryId(v string) {
+func (o *AzureNetworkPeeringConnectionSettings) SetAzureDirectoryId(v string) {
 	o.AzureDirectoryId = v
 }
 
 // GetAzureSubscriptionId returns the AzureSubscriptionId field value
-func (o *AzurePeerNetwork) GetAzureSubscriptionId() string {
+func (o *AzureNetworkPeeringConnectionSettings) GetAzureSubscriptionId() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -89,7 +89,7 @@ func (o *AzurePeerNetwork) GetAzureSubscriptionId() string {
 
 // GetAzureSubscriptionIdOk returns a tuple with the AzureSubscriptionId field value
 // and a boolean to check if the value has been set.
-func (o *AzurePeerNetwork) GetAzureSubscriptionIdOk() (*string, bool) {
+func (o *AzureNetworkPeeringConnectionSettings) GetAzureSubscriptionIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -97,12 +97,12 @@ func (o *AzurePeerNetwork) GetAzureSubscriptionIdOk() (*string, bool) {
 }
 
 // SetAzureSubscriptionId sets field value
-func (o *AzurePeerNetwork) SetAzureSubscriptionId(v string) {
+func (o *AzureNetworkPeeringConnectionSettings) SetAzureSubscriptionId(v string) {
 	o.AzureSubscriptionId = v
 }
 
 // GetContainerId returns the ContainerId field value
-func (o *AzurePeerNetwork) GetContainerId() string {
+func (o *AzureNetworkPeeringConnectionSettings) GetContainerId() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -113,7 +113,7 @@ func (o *AzurePeerNetwork) GetContainerId() string {
 
 // GetContainerIdOk returns a tuple with the ContainerId field value
 // and a boolean to check if the value has been set.
-func (o *AzurePeerNetwork) GetContainerIdOk() (*string, bool) {
+func (o *AzureNetworkPeeringConnectionSettings) GetContainerIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -121,12 +121,12 @@ func (o *AzurePeerNetwork) GetContainerIdOk() (*string, bool) {
 }
 
 // SetContainerId sets field value
-func (o *AzurePeerNetwork) SetContainerId(v string) {
+func (o *AzureNetworkPeeringConnectionSettings) SetContainerId(v string) {
 	o.ContainerId = v
 }
 
 // GetErrorState returns the ErrorState field value if set, zero value otherwise.
-func (o *AzurePeerNetwork) GetErrorState() string {
+func (o *AzureNetworkPeeringConnectionSettings) GetErrorState() string {
 	if o == nil || IsNil(o.ErrorState) {
 		var ret string
 		return ret
@@ -136,7 +136,7 @@ func (o *AzurePeerNetwork) GetErrorState() string {
 
 // GetErrorStateOk returns a tuple with the ErrorState field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AzurePeerNetwork) GetErrorStateOk() (*string, bool) {
+func (o *AzureNetworkPeeringConnectionSettings) GetErrorStateOk() (*string, bool) {
 	if o == nil || IsNil(o.ErrorState) {
 		return nil, false
 	}
@@ -144,7 +144,7 @@ func (o *AzurePeerNetwork) GetErrorStateOk() (*string, bool) {
 }
 
 // HasErrorState returns a boolean if a field has been set.
-func (o *AzurePeerNetwork) HasErrorState() bool {
+func (o *AzureNetworkPeeringConnectionSettings) HasErrorState() bool {
 	if o != nil && !IsNil(o.ErrorState) {
 		return true
 	}
@@ -153,12 +153,12 @@ func (o *AzurePeerNetwork) HasErrorState() bool {
 }
 
 // SetErrorState gets a reference to the given string and assigns it to the ErrorState field.
-func (o *AzurePeerNetwork) SetErrorState(v string) {
+func (o *AzureNetworkPeeringConnectionSettings) SetErrorState(v string) {
 	o.ErrorState = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *AzurePeerNetwork) GetId() string {
+func (o *AzureNetworkPeeringConnectionSettings) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
@@ -168,7 +168,7 @@ func (o *AzurePeerNetwork) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AzurePeerNetwork) GetIdOk() (*string, bool) {
+func (o *AzureNetworkPeeringConnectionSettings) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -176,7 +176,7 @@ func (o *AzurePeerNetwork) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *AzurePeerNetwork) HasId() bool {
+func (o *AzureNetworkPeeringConnectionSettings) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -185,12 +185,12 @@ func (o *AzurePeerNetwork) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *AzurePeerNetwork) SetId(v string) {
+func (o *AzureNetworkPeeringConnectionSettings) SetId(v string) {
 	o.Id = &v
 }
 
 // GetProviderName returns the ProviderName field value if set, zero value otherwise.
-func (o *AzurePeerNetwork) GetProviderName() string {
+func (o *AzureNetworkPeeringConnectionSettings) GetProviderName() string {
 	if o == nil || IsNil(o.ProviderName) {
 		var ret string
 		return ret
@@ -200,7 +200,7 @@ func (o *AzurePeerNetwork) GetProviderName() string {
 
 // GetProviderNameOk returns a tuple with the ProviderName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AzurePeerNetwork) GetProviderNameOk() (*string, bool) {
+func (o *AzureNetworkPeeringConnectionSettings) GetProviderNameOk() (*string, bool) {
 	if o == nil || IsNil(o.ProviderName) {
 		return nil, false
 	}
@@ -208,7 +208,7 @@ func (o *AzurePeerNetwork) GetProviderNameOk() (*string, bool) {
 }
 
 // HasProviderName returns a boolean if a field has been set.
-func (o *AzurePeerNetwork) HasProviderName() bool {
+func (o *AzureNetworkPeeringConnectionSettings) HasProviderName() bool {
 	if o != nil && !IsNil(o.ProviderName) {
 		return true
 	}
@@ -217,12 +217,12 @@ func (o *AzurePeerNetwork) HasProviderName() bool {
 }
 
 // SetProviderName gets a reference to the given string and assigns it to the ProviderName field.
-func (o *AzurePeerNetwork) SetProviderName(v string) {
+func (o *AzureNetworkPeeringConnectionSettings) SetProviderName(v string) {
 	o.ProviderName = &v
 }
 
 // GetResourceGroupName returns the ResourceGroupName field value
-func (o *AzurePeerNetwork) GetResourceGroupName() string {
+func (o *AzureNetworkPeeringConnectionSettings) GetResourceGroupName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -233,7 +233,7 @@ func (o *AzurePeerNetwork) GetResourceGroupName() string {
 
 // GetResourceGroupNameOk returns a tuple with the ResourceGroupName field value
 // and a boolean to check if the value has been set.
-func (o *AzurePeerNetwork) GetResourceGroupNameOk() (*string, bool) {
+func (o *AzureNetworkPeeringConnectionSettings) GetResourceGroupNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -241,12 +241,12 @@ func (o *AzurePeerNetwork) GetResourceGroupNameOk() (*string, bool) {
 }
 
 // SetResourceGroupName sets field value
-func (o *AzurePeerNetwork) SetResourceGroupName(v string) {
+func (o *AzureNetworkPeeringConnectionSettings) SetResourceGroupName(v string) {
 	o.ResourceGroupName = v
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *AzurePeerNetwork) GetStatus() string {
+func (o *AzureNetworkPeeringConnectionSettings) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
@@ -256,7 +256,7 @@ func (o *AzurePeerNetwork) GetStatus() string {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AzurePeerNetwork) GetStatusOk() (*string, bool) {
+func (o *AzureNetworkPeeringConnectionSettings) GetStatusOk() (*string, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
@@ -264,7 +264,7 @@ func (o *AzurePeerNetwork) GetStatusOk() (*string, bool) {
 }
 
 // HasStatus returns a boolean if a field has been set.
-func (o *AzurePeerNetwork) HasStatus() bool {
+func (o *AzureNetworkPeeringConnectionSettings) HasStatus() bool {
 	if o != nil && !IsNil(o.Status) {
 		return true
 	}
@@ -273,12 +273,12 @@ func (o *AzurePeerNetwork) HasStatus() bool {
 }
 
 // SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *AzurePeerNetwork) SetStatus(v string) {
+func (o *AzureNetworkPeeringConnectionSettings) SetStatus(v string) {
 	o.Status = &v
 }
 
 // GetVnetName returns the VnetName field value
-func (o *AzurePeerNetwork) GetVnetName() string {
+func (o *AzureNetworkPeeringConnectionSettings) GetVnetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -289,7 +289,7 @@ func (o *AzurePeerNetwork) GetVnetName() string {
 
 // GetVnetNameOk returns a tuple with the VnetName field value
 // and a boolean to check if the value has been set.
-func (o *AzurePeerNetwork) GetVnetNameOk() (*string, bool) {
+func (o *AzureNetworkPeeringConnectionSettings) GetVnetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -297,18 +297,18 @@ func (o *AzurePeerNetwork) GetVnetNameOk() (*string, bool) {
 }
 
 // SetVnetName sets field value
-func (o *AzurePeerNetwork) SetVnetName(v string) {
+func (o *AzureNetworkPeeringConnectionSettings) SetVnetName(v string) {
 	o.VnetName = v
 }
 
-func (o AzurePeerNetwork) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o AzureNetworkPeeringConnectionSettings) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o AzurePeerNetwork) ToMap() (map[string]interface{}, error) {
+func (o AzureNetworkPeeringConnectionSettings) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["azureDirectoryId"] = o.AzureDirectoryId
 	toSerialize["azureSubscriptionId"] = o.AzureSubscriptionId
@@ -321,38 +321,38 @@ func (o AzurePeerNetwork) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableAzurePeerNetwork struct {
-	value *AzurePeerNetwork
+type NullableAzureNetworkPeeringConnectionSettings struct {
+	value *AzureNetworkPeeringConnectionSettings
 	isSet bool
 }
 
-func (v NullableAzurePeerNetwork) Get() *AzurePeerNetwork {
+func (v NullableAzureNetworkPeeringConnectionSettings) Get() *AzureNetworkPeeringConnectionSettings {
 	return v.value
 }
 
-func (v *NullableAzurePeerNetwork) Set(val *AzurePeerNetwork) {
+func (v *NullableAzureNetworkPeeringConnectionSettings) Set(val *AzureNetworkPeeringConnectionSettings) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableAzurePeerNetwork) IsSet() bool {
+func (v NullableAzureNetworkPeeringConnectionSettings) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableAzurePeerNetwork) Unset() {
+func (v *NullableAzureNetworkPeeringConnectionSettings) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableAzurePeerNetwork(val *AzurePeerNetwork) *NullableAzurePeerNetwork {
-	return &NullableAzurePeerNetwork{value: val, isSet: true}
+func NewNullableAzureNetworkPeeringConnectionSettings(val *AzureNetworkPeeringConnectionSettings) *NullableAzureNetworkPeeringConnectionSettings {
+	return &NullableAzureNetworkPeeringConnectionSettings{value: val, isSet: true}
 }
 
-func (v NullableAzurePeerNetwork) MarshalJSON() ([]byte, error) {
+func (v NullableAzureNetworkPeeringConnectionSettings) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableAzurePeerNetwork) UnmarshalJSON(src []byte) error {
+func (v *NullableAzureNetworkPeeringConnectionSettings) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
