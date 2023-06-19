@@ -97,7 +97,7 @@ function workaroundNestedTransformations(openapi) {
   let parentObject;
   try {
     parentObject = getObjectFromYamlPath(
-      ".components.schemas.RegionConfig",
+      ".components.schemas.ApiAtlasRegionConfig",
       openapi
     );
   } catch (e) {}
@@ -108,8 +108,6 @@ function workaroundNestedTransformations(openapi) {
   } catch (e) {}
   if (parentObject) {
     transformOneOfProperties(parentObject, openapi);
-  } else {
-    throw new Error("RegionConfig cannot be renamed");
   }
 }
 
