@@ -11,7 +11,7 @@ var _ MappedNullable = &CreateOrganizationRequest{}
 
 // CreateOrganizationRequest struct for CreateOrganizationRequest
 type CreateOrganizationRequest struct {
-	ApiKey *CreateOrganizationKey `json:"apiKey,omitempty"`
+	ApiKey *CreateAtlasOrganizationApiKey `json:"apiKey,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the federation to link the newly created organization to. If specified, the proposed Organization Owner of the new organization must have the Organization Owner role in an organization associated with the federation.
 	FederationSettingsId *string `json:"federationSettingsId,omitempty"`
 	// Human-readable label that identifies the organization.
@@ -39,9 +39,9 @@ func NewCreateOrganizationRequestWithDefaults() *CreateOrganizationRequest {
 }
 
 // GetApiKey returns the ApiKey field value if set, zero value otherwise.
-func (o *CreateOrganizationRequest) GetApiKey() CreateOrganizationKey {
+func (o *CreateOrganizationRequest) GetApiKey() CreateAtlasOrganizationApiKey {
 	if o == nil || IsNil(o.ApiKey) {
-		var ret CreateOrganizationKey
+		var ret CreateAtlasOrganizationApiKey
 		return ret
 	}
 	return *o.ApiKey
@@ -49,7 +49,7 @@ func (o *CreateOrganizationRequest) GetApiKey() CreateOrganizationKey {
 
 // GetApiKeyOk returns a tuple with the ApiKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateOrganizationRequest) GetApiKeyOk() (*CreateOrganizationKey, bool) {
+func (o *CreateOrganizationRequest) GetApiKeyOk() (*CreateAtlasOrganizationApiKey, bool) {
 	if o == nil || IsNil(o.ApiKey) {
 		return nil, false
 	}
@@ -65,8 +65,8 @@ func (o *CreateOrganizationRequest) HasApiKey() bool {
 	return false
 }
 
-// SetApiKey gets a reference to the given CreateOrganizationKey and assigns it to the ApiKey field.
-func (o *CreateOrganizationRequest) SetApiKey(v CreateOrganizationKey) {
+// SetApiKey gets a reference to the given CreateAtlasOrganizationApiKey and assigns it to the ApiKey field.
+func (o *CreateOrganizationRequest) SetApiKey(v CreateAtlasOrganizationApiKey) {
 	o.ApiKey = &v
 }
 

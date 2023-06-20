@@ -1,4 +1,4 @@
-# CloudRoleAssignment
+# CloudAccessRoleAssignment
 
 ## Properties
 
@@ -10,95 +10,95 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewCloudRoleAssignment
+### NewCloudAccessRoleAssignment
 
-`func NewCloudRoleAssignment() *CloudRoleAssignment`
+`func NewCloudAccessRoleAssignment() *CloudAccessRoleAssignment`
 
-NewCloudRoleAssignment instantiates a new CloudRoleAssignment object
+NewCloudAccessRoleAssignment instantiates a new CloudAccessRoleAssignment object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewCloudRoleAssignmentWithDefaults
+### NewCloudAccessRoleAssignmentWithDefaults
 
-`func NewCloudRoleAssignmentWithDefaults() *CloudRoleAssignment`
+`func NewCloudAccessRoleAssignmentWithDefaults() *CloudAccessRoleAssignment`
 
-NewCloudRoleAssignmentWithDefaults instantiates a new CloudRoleAssignment object
+NewCloudAccessRoleAssignmentWithDefaults instantiates a new CloudAccessRoleAssignment object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetGroupId
 
-`func (o *CloudRoleAssignment) GetGroupId() string`
+`func (o *CloudAccessRoleAssignment) GetGroupId() string`
 
 GetGroupId returns the GroupId field if non-nil, zero value otherwise.
 
 ### GetGroupIdOk
 
-`func (o *CloudRoleAssignment) GetGroupIdOk() (*string, bool)`
+`func (o *CloudAccessRoleAssignment) GetGroupIdOk() (*string, bool)`
 
 GetGroupIdOk returns a tuple with the GroupId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGroupId
 
-`func (o *CloudRoleAssignment) SetGroupId(v string)`
+`func (o *CloudAccessRoleAssignment) SetGroupId(v string)`
 
 SetGroupId sets GroupId field to given value.
 
 ### HasGroupId
 
-`func (o *CloudRoleAssignment) HasGroupId() bool`
+`func (o *CloudAccessRoleAssignment) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
 
 ### GetOrgId
 
-`func (o *CloudRoleAssignment) GetOrgId() string`
+`func (o *CloudAccessRoleAssignment) GetOrgId() string`
 
 GetOrgId returns the OrgId field if non-nil, zero value otherwise.
 
 ### GetOrgIdOk
 
-`func (o *CloudRoleAssignment) GetOrgIdOk() (*string, bool)`
+`func (o *CloudAccessRoleAssignment) GetOrgIdOk() (*string, bool)`
 
 GetOrgIdOk returns a tuple with the OrgId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOrgId
 
-`func (o *CloudRoleAssignment) SetOrgId(v string)`
+`func (o *CloudAccessRoleAssignment) SetOrgId(v string)`
 
 SetOrgId sets OrgId field to given value.
 
 ### HasOrgId
 
-`func (o *CloudRoleAssignment) HasOrgId() bool`
+`func (o *CloudAccessRoleAssignment) HasOrgId() bool`
 
 HasOrgId returns a boolean if a field has been set.
 
 ### GetRoleName
 
-`func (o *CloudRoleAssignment) GetRoleName() string`
+`func (o *CloudAccessRoleAssignment) GetRoleName() string`
 
 GetRoleName returns the RoleName field if non-nil, zero value otherwise.
 
 ### GetRoleNameOk
 
-`func (o *CloudRoleAssignment) GetRoleNameOk() (*string, bool)`
+`func (o *CloudAccessRoleAssignment) GetRoleNameOk() (*string, bool)`
 
 GetRoleNameOk returns a tuple with the RoleName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRoleName
 
-`func (o *CloudRoleAssignment) SetRoleName(v string)`
+`func (o *CloudAccessRoleAssignment) SetRoleName(v string)`
 
 SetRoleName sets RoleName field to given value.
 
 ### HasRoleName
 
-`func (o *CloudRoleAssignment) HasRoleName() bool`
+`func (o *CloudAccessRoleAssignment) HasRoleName() bool`
 
 HasRoleName returns a boolean if a field has been set.
 

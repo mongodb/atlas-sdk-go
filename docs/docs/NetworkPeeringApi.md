@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 ## CreatePeeringConnection
 
-> NetworkContainerPeer CreatePeeringConnection(ctx, groupId, networkContainerPeer NetworkContainerPeer).Execute()
+> BaseNetworkPeeringConnectionSettings CreatePeeringConnection(ctx, groupId, baseNetworkPeeringConnectionSettings BaseNetworkPeeringConnectionSettings).Execute()
 
 Create One New Network Peering Connection
 
@@ -47,15 +47,15 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    networkContainerPeer := openapiclient.NetworkContainerPeer{AWSPeerVpc: openapiclient.NewAWSPeerVpc("AccepterRegionName_example", "AwsAccountId_example", "32b6e34b3d91647abb20e7b8", "RouteTableCidrBlock_example", "VpcId_example")} // NetworkContainerPeer | 
+    baseNetworkPeeringConnectionSettings := openapiclient.BaseNetworkPeeringConnectionSettings{AwsNetworkPeeringConnectionSettings: openapiclient.NewAwsNetworkPeeringConnectionSettings("AccepterRegionName_example", "AwsAccountId_example", "32b6e34b3d91647abb20e7b8", "RouteTableCidrBlock_example", "VpcId_example")} // BaseNetworkPeeringConnectionSettings | 
 
-    resp, r, err := sdk.NetworkPeeringApi.CreatePeeringConnection(context.Background(), groupId, &networkContainerPeer).Execute()
+    resp, r, err := sdk.NetworkPeeringApi.CreatePeeringConnection(context.Background(), groupId, &baseNetworkPeeringConnectionSettings).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.CreatePeeringConnection``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `CreatePeeringConnection`: NetworkContainerPeer
+    // response from `CreatePeeringConnection`: BaseNetworkPeeringConnectionSettings
     fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.CreatePeeringConnection`: %v\n", resp)
 }
 ```
@@ -76,11 +76,11 @@ Other parameters are passed through a pointer to a apiCreatePeeringConnectionReq
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **networkContainerPeer** | [**NetworkContainerPeer**](NetworkContainerPeer.md) | Create one network peering connection. | 
+ **baseNetworkPeeringConnectionSettings** | [**BaseNetworkPeeringConnectionSettings**](BaseNetworkPeeringConnectionSettings.md) | Create one network peering connection. | 
 
 ### Return type
 
-[**NetworkContainerPeer**](NetworkContainerPeer.md)
+[**BaseNetworkPeeringConnectionSettings**](BaseNetworkPeeringConnectionSettings.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -404,7 +404,7 @@ Name | Type | Description  | Notes
 
 ## GetPeeringConnection
 
-> NetworkContainerPeer GetPeeringConnection(ctx, groupId, peerId).Execute()
+> BaseNetworkPeeringConnectionSettings GetPeeringConnection(ctx, groupId, peerId).Execute()
 
 Return One Network Peering Connection in One Project
 
@@ -437,7 +437,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetPeeringConnection`: NetworkContainerPeer
+    // response from `GetPeeringConnection`: BaseNetworkPeeringConnectionSettings
     fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.GetPeeringConnection`: %v\n", resp)
 }
 ```
@@ -463,7 +463,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**NetworkContainerPeer**](NetworkContainerPeer.md)
+[**BaseNetworkPeeringConnectionSettings**](BaseNetworkPeeringConnectionSettings.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -797,7 +797,7 @@ Name | Type | Description  | Notes
 
 ## UpdatePeeringConnection
 
-> NetworkContainerPeer UpdatePeeringConnection(ctx, groupId, peerId, networkContainerPeer NetworkContainerPeer).Execute()
+> BaseNetworkPeeringConnectionSettings UpdatePeeringConnection(ctx, groupId, peerId, baseNetworkPeeringConnectionSettings BaseNetworkPeeringConnectionSettings).Execute()
 
 Update One New Network Peering Connection
 
@@ -828,15 +828,15 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     peerId := "peerId_example" // string | 
-    networkContainerPeer := openapiclient.NetworkContainerPeer{AWSPeerVpc: openapiclient.NewAWSPeerVpc("AccepterRegionName_example", "AwsAccountId_example", "32b6e34b3d91647abb20e7b8", "RouteTableCidrBlock_example", "VpcId_example")} // NetworkContainerPeer | 
+    baseNetworkPeeringConnectionSettings := openapiclient.BaseNetworkPeeringConnectionSettings{AwsNetworkPeeringConnectionSettings: openapiclient.NewAwsNetworkPeeringConnectionSettings("AccepterRegionName_example", "AwsAccountId_example", "32b6e34b3d91647abb20e7b8", "RouteTableCidrBlock_example", "VpcId_example")} // BaseNetworkPeeringConnectionSettings | 
 
-    resp, r, err := sdk.NetworkPeeringApi.UpdatePeeringConnection(context.Background(), groupId, peerId, &networkContainerPeer).Execute()
+    resp, r, err := sdk.NetworkPeeringApi.UpdatePeeringConnection(context.Background(), groupId, peerId, &baseNetworkPeeringConnectionSettings).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `NetworkPeeringApi.UpdatePeeringConnection``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `UpdatePeeringConnection`: NetworkContainerPeer
+    // response from `UpdatePeeringConnection`: BaseNetworkPeeringConnectionSettings
     fmt.Fprintf(os.Stdout, "Response from `NetworkPeeringApi.UpdatePeeringConnection`: %v\n", resp)
 }
 ```
@@ -859,11 +859,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **networkContainerPeer** | [**NetworkContainerPeer**](NetworkContainerPeer.md) | Modify one network peering connection. | 
+ **baseNetworkPeeringConnectionSettings** | [**BaseNetworkPeeringConnectionSettings**](BaseNetworkPeeringConnectionSettings.md) | Modify one network peering connection. | 
 
 ### Return type
 
-[**NetworkContainerPeer**](NetworkContainerPeer.md)
+[**BaseNetworkPeeringConnectionSettings**](BaseNetworkPeeringConnectionSettings.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

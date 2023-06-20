@@ -1,4 +1,4 @@
-# CreateProjectKey
+# CreateAtlasProjectApiKey
 
 ## Properties
 
@@ -9,70 +9,70 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewCreateProjectKey
+### NewCreateAtlasProjectApiKey
 
-`func NewCreateProjectKey() *CreateProjectKey`
+`func NewCreateAtlasProjectApiKey() *CreateAtlasProjectApiKey`
 
-NewCreateProjectKey instantiates a new CreateProjectKey object
+NewCreateAtlasProjectApiKey instantiates a new CreateAtlasProjectApiKey object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewCreateProjectKeyWithDefaults
+### NewCreateAtlasProjectApiKeyWithDefaults
 
-`func NewCreateProjectKeyWithDefaults() *CreateProjectKey`
+`func NewCreateAtlasProjectApiKeyWithDefaults() *CreateAtlasProjectApiKey`
 
-NewCreateProjectKeyWithDefaults instantiates a new CreateProjectKey object
+NewCreateAtlasProjectApiKeyWithDefaults instantiates a new CreateAtlasProjectApiKey object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetDesc
 
-`func (o *CreateProjectKey) GetDesc() string`
+`func (o *CreateAtlasProjectApiKey) GetDesc() string`
 
 GetDesc returns the Desc field if non-nil, zero value otherwise.
 
 ### GetDescOk
 
-`func (o *CreateProjectKey) GetDescOk() (*string, bool)`
+`func (o *CreateAtlasProjectApiKey) GetDescOk() (*string, bool)`
 
 GetDescOk returns a tuple with the Desc field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDesc
 
-`func (o *CreateProjectKey) SetDesc(v string)`
+`func (o *CreateAtlasProjectApiKey) SetDesc(v string)`
 
 SetDesc sets Desc field to given value.
 
 ### HasDesc
 
-`func (o *CreateProjectKey) HasDesc() bool`
+`func (o *CreateAtlasProjectApiKey) HasDesc() bool`
 
 HasDesc returns a boolean if a field has been set.
 
 ### GetRoles
 
-`func (o *CreateProjectKey) GetRoles() []string`
+`func (o *CreateAtlasProjectApiKey) GetRoles() []string`
 
 GetRoles returns the Roles field if non-nil, zero value otherwise.
 
 ### GetRolesOk
 
-`func (o *CreateProjectKey) GetRolesOk() (*[]string, bool)`
+`func (o *CreateAtlasProjectApiKey) GetRolesOk() (*[]string, bool)`
 
 GetRolesOk returns a tuple with the Roles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRoles
 
-`func (o *CreateProjectKey) SetRoles(v []string)`
+`func (o *CreateAtlasProjectApiKey) SetRoles(v []string)`
 
 SetRoles sets Roles field to given value.
 
 ### HasRoles
 
-`func (o *CreateProjectKey) HasRoles() bool`
+`func (o *CreateAtlasProjectApiKey) HasRoles() bool`
 
 HasRoles returns a boolean if a field has been set.
 

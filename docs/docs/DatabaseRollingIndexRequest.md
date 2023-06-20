@@ -1,4 +1,4 @@
-# RollingIndexRequest
+# DatabaseRollingIndexRequest
 
 ## Properties
 
@@ -12,135 +12,135 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewRollingIndexRequest
+### NewDatabaseRollingIndexRequest
 
-`func NewRollingIndexRequest(collection string, db string, ) *RollingIndexRequest`
+`func NewDatabaseRollingIndexRequest(collection string, db string, ) *DatabaseRollingIndexRequest`
 
-NewRollingIndexRequest instantiates a new RollingIndexRequest object
+NewDatabaseRollingIndexRequest instantiates a new DatabaseRollingIndexRequest object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewRollingIndexRequestWithDefaults
+### NewDatabaseRollingIndexRequestWithDefaults
 
-`func NewRollingIndexRequestWithDefaults() *RollingIndexRequest`
+`func NewDatabaseRollingIndexRequestWithDefaults() *DatabaseRollingIndexRequest`
 
-NewRollingIndexRequestWithDefaults instantiates a new RollingIndexRequest object
+NewDatabaseRollingIndexRequestWithDefaults instantiates a new DatabaseRollingIndexRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetCollation
 
-`func (o *RollingIndexRequest) GetCollation() Collation`
+`func (o *DatabaseRollingIndexRequest) GetCollation() Collation`
 
 GetCollation returns the Collation field if non-nil, zero value otherwise.
 
 ### GetCollationOk
 
-`func (o *RollingIndexRequest) GetCollationOk() (*Collation, bool)`
+`func (o *DatabaseRollingIndexRequest) GetCollationOk() (*Collation, bool)`
 
 GetCollationOk returns a tuple with the Collation field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCollation
 
-`func (o *RollingIndexRequest) SetCollation(v Collation)`
+`func (o *DatabaseRollingIndexRequest) SetCollation(v Collation)`
 
 SetCollation sets Collation field to given value.
 
 ### HasCollation
 
-`func (o *RollingIndexRequest) HasCollation() bool`
+`func (o *DatabaseRollingIndexRequest) HasCollation() bool`
 
 HasCollation returns a boolean if a field has been set.
 
 ### GetCollection
 
-`func (o *RollingIndexRequest) GetCollection() string`
+`func (o *DatabaseRollingIndexRequest) GetCollection() string`
 
 GetCollection returns the Collection field if non-nil, zero value otherwise.
 
 ### GetCollectionOk
 
-`func (o *RollingIndexRequest) GetCollectionOk() (*string, bool)`
+`func (o *DatabaseRollingIndexRequest) GetCollectionOk() (*string, bool)`
 
 GetCollectionOk returns a tuple with the Collection field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCollection
 
-`func (o *RollingIndexRequest) SetCollection(v string)`
+`func (o *DatabaseRollingIndexRequest) SetCollection(v string)`
 
 SetCollection sets Collection field to given value.
 
 
 ### GetDb
 
-`func (o *RollingIndexRequest) GetDb() string`
+`func (o *DatabaseRollingIndexRequest) GetDb() string`
 
 GetDb returns the Db field if non-nil, zero value otherwise.
 
 ### GetDbOk
 
-`func (o *RollingIndexRequest) GetDbOk() (*string, bool)`
+`func (o *DatabaseRollingIndexRequest) GetDbOk() (*string, bool)`
 
 GetDbOk returns a tuple with the Db field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDb
 
-`func (o *RollingIndexRequest) SetDb(v string)`
+`func (o *DatabaseRollingIndexRequest) SetDb(v string)`
 
 SetDb sets Db field to given value.
 
 
 ### GetKeys
 
-`func (o *RollingIndexRequest) GetKeys() []map[string]string`
+`func (o *DatabaseRollingIndexRequest) GetKeys() []map[string]string`
 
 GetKeys returns the Keys field if non-nil, zero value otherwise.
 
 ### GetKeysOk
 
-`func (o *RollingIndexRequest) GetKeysOk() (*[]map[string]string, bool)`
+`func (o *DatabaseRollingIndexRequest) GetKeysOk() (*[]map[string]string, bool)`
 
 GetKeysOk returns a tuple with the Keys field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetKeys
 
-`func (o *RollingIndexRequest) SetKeys(v []map[string]string)`
+`func (o *DatabaseRollingIndexRequest) SetKeys(v []map[string]string)`
 
 SetKeys sets Keys field to given value.
 
 ### HasKeys
 
-`func (o *RollingIndexRequest) HasKeys() bool`
+`func (o *DatabaseRollingIndexRequest) HasKeys() bool`
 
 HasKeys returns a boolean if a field has been set.
 
 ### GetOptions
 
-`func (o *RollingIndexRequest) GetOptions() IndexOptions`
+`func (o *DatabaseRollingIndexRequest) GetOptions() IndexOptions`
 
 GetOptions returns the Options field if non-nil, zero value otherwise.
 
 ### GetOptionsOk
 
-`func (o *RollingIndexRequest) GetOptionsOk() (*IndexOptions, bool)`
+`func (o *DatabaseRollingIndexRequest) GetOptionsOk() (*IndexOptions, bool)`
 
 GetOptionsOk returns a tuple with the Options field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOptions
 
-`func (o *RollingIndexRequest) SetOptions(v IndexOptions)`
+`func (o *DatabaseRollingIndexRequest) SetOptions(v IndexOptions)`
 
 SetOptions sets Options field to given value.
 
 ### HasOptions
 
-`func (o *RollingIndexRequest) HasOptions() bool`
+`func (o *DatabaseRollingIndexRequest) HasOptions() bool`
 
 HasOptions returns a boolean if a field has been set.
 

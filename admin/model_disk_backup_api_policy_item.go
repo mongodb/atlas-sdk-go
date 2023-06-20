@@ -6,11 +6,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the ApiPolicyItem type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ApiPolicyItem{}
+// checks if the DiskBackupApiPolicyItem type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DiskBackupApiPolicyItem{}
 
-// ApiPolicyItem Specifications for one policy.
-type ApiPolicyItem struct {
+// DiskBackupApiPolicyItem Specifications for one policy.
+type DiskBackupApiPolicyItem struct {
 	// Number that indicates the frequency interval for a set of snapshots. A value of `1` specifies the first instance of the corresponding `frequencyType`.  - In a monthly policy item, `1` indicates that the monthly snapshot occurs on the first day of the month and `40` indicates the last day of the month.  - In a weekly policy item, `1` indicates that the weekly snapshot occurs on Monday and `7` indicates Sunday.  - In an hourly policy item, you can set the frequency interval to `1`, `2`, `4`, `6`, `8`, or `12`. For hourly policy items for NVMe clusters, MongoDB Cloud accepts only `12` as the frequency interval value.   MongoDB Cloud ignores this setting for non-hourly policy items in Backup Compliance Policy settings.
 	FrequencyInterval int `json:"frequencyInterval"`
 	// Human-readable label that identifies the frequency type associated with the backup policy.
@@ -23,12 +23,12 @@ type ApiPolicyItem struct {
 	RetentionValue int `json:"retentionValue"`
 }
 
-// NewApiPolicyItem instantiates a new ApiPolicyItem object
+// NewDiskBackupApiPolicyItem instantiates a new DiskBackupApiPolicyItem object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApiPolicyItem(frequencyInterval int, frequencyType string, retentionUnit string, retentionValue int) *ApiPolicyItem {
-	this := ApiPolicyItem{}
+func NewDiskBackupApiPolicyItem(frequencyInterval int, frequencyType string, retentionUnit string, retentionValue int) *DiskBackupApiPolicyItem {
+	this := DiskBackupApiPolicyItem{}
 	this.FrequencyInterval = frequencyInterval
 	this.FrequencyType = frequencyType
 	this.RetentionUnit = retentionUnit
@@ -36,16 +36,16 @@ func NewApiPolicyItem(frequencyInterval int, frequencyType string, retentionUnit
 	return &this
 }
 
-// NewApiPolicyItemWithDefaults instantiates a new ApiPolicyItem object
+// NewDiskBackupApiPolicyItemWithDefaults instantiates a new DiskBackupApiPolicyItem object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewApiPolicyItemWithDefaults() *ApiPolicyItem {
-	this := ApiPolicyItem{}
+func NewDiskBackupApiPolicyItemWithDefaults() *DiskBackupApiPolicyItem {
+	this := DiskBackupApiPolicyItem{}
 	return &this
 }
 
 // GetFrequencyInterval returns the FrequencyInterval field value
-func (o *ApiPolicyItem) GetFrequencyInterval() int {
+func (o *DiskBackupApiPolicyItem) GetFrequencyInterval() int {
 	if o == nil {
 		var ret int
 		return ret
@@ -56,7 +56,7 @@ func (o *ApiPolicyItem) GetFrequencyInterval() int {
 
 // GetFrequencyIntervalOk returns a tuple with the FrequencyInterval field value
 // and a boolean to check if the value has been set.
-func (o *ApiPolicyItem) GetFrequencyIntervalOk() (*int, bool) {
+func (o *DiskBackupApiPolicyItem) GetFrequencyIntervalOk() (*int, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -64,12 +64,12 @@ func (o *ApiPolicyItem) GetFrequencyIntervalOk() (*int, bool) {
 }
 
 // SetFrequencyInterval sets field value
-func (o *ApiPolicyItem) SetFrequencyInterval(v int) {
+func (o *DiskBackupApiPolicyItem) SetFrequencyInterval(v int) {
 	o.FrequencyInterval = v
 }
 
 // GetFrequencyType returns the FrequencyType field value
-func (o *ApiPolicyItem) GetFrequencyType() string {
+func (o *DiskBackupApiPolicyItem) GetFrequencyType() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -80,7 +80,7 @@ func (o *ApiPolicyItem) GetFrequencyType() string {
 
 // GetFrequencyTypeOk returns a tuple with the FrequencyType field value
 // and a boolean to check if the value has been set.
-func (o *ApiPolicyItem) GetFrequencyTypeOk() (*string, bool) {
+func (o *DiskBackupApiPolicyItem) GetFrequencyTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -88,12 +88,12 @@ func (o *ApiPolicyItem) GetFrequencyTypeOk() (*string, bool) {
 }
 
 // SetFrequencyType sets field value
-func (o *ApiPolicyItem) SetFrequencyType(v string) {
+func (o *DiskBackupApiPolicyItem) SetFrequencyType(v string) {
 	o.FrequencyType = v
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *ApiPolicyItem) GetId() string {
+func (o *DiskBackupApiPolicyItem) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
@@ -103,7 +103,7 @@ func (o *ApiPolicyItem) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiPolicyItem) GetIdOk() (*string, bool) {
+func (o *DiskBackupApiPolicyItem) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -111,7 +111,7 @@ func (o *ApiPolicyItem) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *ApiPolicyItem) HasId() bool {
+func (o *DiskBackupApiPolicyItem) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -120,12 +120,12 @@ func (o *ApiPolicyItem) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *ApiPolicyItem) SetId(v string) {
+func (o *DiskBackupApiPolicyItem) SetId(v string) {
 	o.Id = &v
 }
 
 // GetRetentionUnit returns the RetentionUnit field value
-func (o *ApiPolicyItem) GetRetentionUnit() string {
+func (o *DiskBackupApiPolicyItem) GetRetentionUnit() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -136,7 +136,7 @@ func (o *ApiPolicyItem) GetRetentionUnit() string {
 
 // GetRetentionUnitOk returns a tuple with the RetentionUnit field value
 // and a boolean to check if the value has been set.
-func (o *ApiPolicyItem) GetRetentionUnitOk() (*string, bool) {
+func (o *DiskBackupApiPolicyItem) GetRetentionUnitOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -144,12 +144,12 @@ func (o *ApiPolicyItem) GetRetentionUnitOk() (*string, bool) {
 }
 
 // SetRetentionUnit sets field value
-func (o *ApiPolicyItem) SetRetentionUnit(v string) {
+func (o *DiskBackupApiPolicyItem) SetRetentionUnit(v string) {
 	o.RetentionUnit = v
 }
 
 // GetRetentionValue returns the RetentionValue field value
-func (o *ApiPolicyItem) GetRetentionValue() int {
+func (o *DiskBackupApiPolicyItem) GetRetentionValue() int {
 	if o == nil {
 		var ret int
 		return ret
@@ -160,7 +160,7 @@ func (o *ApiPolicyItem) GetRetentionValue() int {
 
 // GetRetentionValueOk returns a tuple with the RetentionValue field value
 // and a boolean to check if the value has been set.
-func (o *ApiPolicyItem) GetRetentionValueOk() (*int, bool) {
+func (o *DiskBackupApiPolicyItem) GetRetentionValueOk() (*int, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -168,18 +168,18 @@ func (o *ApiPolicyItem) GetRetentionValueOk() (*int, bool) {
 }
 
 // SetRetentionValue sets field value
-func (o *ApiPolicyItem) SetRetentionValue(v int) {
+func (o *DiskBackupApiPolicyItem) SetRetentionValue(v int) {
 	o.RetentionValue = v
 }
 
-func (o ApiPolicyItem) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o DiskBackupApiPolicyItem) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ApiPolicyItem) ToMap() (map[string]interface{}, error) {
+func (o DiskBackupApiPolicyItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["frequencyInterval"] = o.FrequencyInterval
 	toSerialize["frequencyType"] = o.FrequencyType
@@ -188,38 +188,38 @@ func (o ApiPolicyItem) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableApiPolicyItem struct {
-	value *ApiPolicyItem
+type NullableDiskBackupApiPolicyItem struct {
+	value *DiskBackupApiPolicyItem
 	isSet bool
 }
 
-func (v NullableApiPolicyItem) Get() *ApiPolicyItem {
+func (v NullableDiskBackupApiPolicyItem) Get() *DiskBackupApiPolicyItem {
 	return v.value
 }
 
-func (v *NullableApiPolicyItem) Set(val *ApiPolicyItem) {
+func (v *NullableDiskBackupApiPolicyItem) Set(val *DiskBackupApiPolicyItem) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableApiPolicyItem) IsSet() bool {
+func (v NullableDiskBackupApiPolicyItem) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableApiPolicyItem) Unset() {
+func (v *NullableDiskBackupApiPolicyItem) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableApiPolicyItem(val *ApiPolicyItem) *NullableApiPolicyItem {
-	return &NullableApiPolicyItem{value: val, isSet: true}
+func NewNullableDiskBackupApiPolicyItem(val *DiskBackupApiPolicyItem) *NullableDiskBackupApiPolicyItem {
+	return &NullableDiskBackupApiPolicyItem{value: val, isSet: true}
 }
 
-func (v NullableApiPolicyItem) MarshalJSON() ([]byte, error) {
+func (v NullableDiskBackupApiPolicyItem) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableApiPolicyItem) UnmarshalJSON(src []byte) error {
+func (v *NullableDiskBackupApiPolicyItem) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

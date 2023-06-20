@@ -1,4 +1,4 @@
-# ApiKeyUser
+# ApiKeyUserDetails
 
 ## Properties
 
@@ -9,174 +9,174 @@ Name | Type | Description | Notes
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **PrivateKey** | Pointer to **string** | Redacted private key returned for this organization API key. This key displays unredacted when first created. | [optional] [readonly] 
 **PublicKey** | Pointer to **string** | Public API key value set for the specified organization API key. | [optional] [readonly] 
-**Roles** | Pointer to [**[]CloudRoleAssignment**](CloudRoleAssignment.md) | List that contains the roles that the API key needs to have. All roles you provide must be valid for the specified project or organization. Each request must include a minimum of one valid role. The resource returns all project and organization roles assigned to the API key. | [optional] 
+**Roles** | Pointer to [**[]CloudAccessRoleAssignment**](CloudAccessRoleAssignment.md) | List that contains the roles that the API key needs to have. All roles you provide must be valid for the specified project or organization. Each request must include a minimum of one valid role. The resource returns all project and organization roles assigned to the API key. | [optional] 
 
 ## Methods
 
-### NewApiKeyUser
+### NewApiKeyUserDetails
 
-`func NewApiKeyUser() *ApiKeyUser`
+`func NewApiKeyUserDetails() *ApiKeyUserDetails`
 
-NewApiKeyUser instantiates a new ApiKeyUser object
+NewApiKeyUserDetails instantiates a new ApiKeyUserDetails object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewApiKeyUserWithDefaults
+### NewApiKeyUserDetailsWithDefaults
 
-`func NewApiKeyUserWithDefaults() *ApiKeyUser`
+`func NewApiKeyUserDetailsWithDefaults() *ApiKeyUserDetails`
 
-NewApiKeyUserWithDefaults instantiates a new ApiKeyUser object
+NewApiKeyUserDetailsWithDefaults instantiates a new ApiKeyUserDetails object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetDesc
 
-`func (o *ApiKeyUser) GetDesc() string`
+`func (o *ApiKeyUserDetails) GetDesc() string`
 
 GetDesc returns the Desc field if non-nil, zero value otherwise.
 
 ### GetDescOk
 
-`func (o *ApiKeyUser) GetDescOk() (*string, bool)`
+`func (o *ApiKeyUserDetails) GetDescOk() (*string, bool)`
 
 GetDescOk returns a tuple with the Desc field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDesc
 
-`func (o *ApiKeyUser) SetDesc(v string)`
+`func (o *ApiKeyUserDetails) SetDesc(v string)`
 
 SetDesc sets Desc field to given value.
 
 ### HasDesc
 
-`func (o *ApiKeyUser) HasDesc() bool`
+`func (o *ApiKeyUserDetails) HasDesc() bool`
 
 HasDesc returns a boolean if a field has been set.
 
 ### GetId
 
-`func (o *ApiKeyUser) GetId() string`
+`func (o *ApiKeyUserDetails) GetId() string`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *ApiKeyUser) GetIdOk() (*string, bool)`
+`func (o *ApiKeyUserDetails) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *ApiKeyUser) SetId(v string)`
+`func (o *ApiKeyUserDetails) SetId(v string)`
 
 SetId sets Id field to given value.
 
 ### HasId
 
-`func (o *ApiKeyUser) HasId() bool`
+`func (o *ApiKeyUserDetails) HasId() bool`
 
 HasId returns a boolean if a field has been set.
 
 ### GetLinks
 
-`func (o *ApiKeyUser) GetLinks() []Link`
+`func (o *ApiKeyUserDetails) GetLinks() []Link`
 
 GetLinks returns the Links field if non-nil, zero value otherwise.
 
 ### GetLinksOk
 
-`func (o *ApiKeyUser) GetLinksOk() (*[]Link, bool)`
+`func (o *ApiKeyUserDetails) GetLinksOk() (*[]Link, bool)`
 
 GetLinksOk returns a tuple with the Links field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLinks
 
-`func (o *ApiKeyUser) SetLinks(v []Link)`
+`func (o *ApiKeyUserDetails) SetLinks(v []Link)`
 
 SetLinks sets Links field to given value.
 
 ### HasLinks
 
-`func (o *ApiKeyUser) HasLinks() bool`
+`func (o *ApiKeyUserDetails) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
 
 ### GetPrivateKey
 
-`func (o *ApiKeyUser) GetPrivateKey() string`
+`func (o *ApiKeyUserDetails) GetPrivateKey() string`
 
 GetPrivateKey returns the PrivateKey field if non-nil, zero value otherwise.
 
 ### GetPrivateKeyOk
 
-`func (o *ApiKeyUser) GetPrivateKeyOk() (*string, bool)`
+`func (o *ApiKeyUserDetails) GetPrivateKeyOk() (*string, bool)`
 
 GetPrivateKeyOk returns a tuple with the PrivateKey field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPrivateKey
 
-`func (o *ApiKeyUser) SetPrivateKey(v string)`
+`func (o *ApiKeyUserDetails) SetPrivateKey(v string)`
 
 SetPrivateKey sets PrivateKey field to given value.
 
 ### HasPrivateKey
 
-`func (o *ApiKeyUser) HasPrivateKey() bool`
+`func (o *ApiKeyUserDetails) HasPrivateKey() bool`
 
 HasPrivateKey returns a boolean if a field has been set.
 
 ### GetPublicKey
 
-`func (o *ApiKeyUser) GetPublicKey() string`
+`func (o *ApiKeyUserDetails) GetPublicKey() string`
 
 GetPublicKey returns the PublicKey field if non-nil, zero value otherwise.
 
 ### GetPublicKeyOk
 
-`func (o *ApiKeyUser) GetPublicKeyOk() (*string, bool)`
+`func (o *ApiKeyUserDetails) GetPublicKeyOk() (*string, bool)`
 
 GetPublicKeyOk returns a tuple with the PublicKey field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPublicKey
 
-`func (o *ApiKeyUser) SetPublicKey(v string)`
+`func (o *ApiKeyUserDetails) SetPublicKey(v string)`
 
 SetPublicKey sets PublicKey field to given value.
 
 ### HasPublicKey
 
-`func (o *ApiKeyUser) HasPublicKey() bool`
+`func (o *ApiKeyUserDetails) HasPublicKey() bool`
 
 HasPublicKey returns a boolean if a field has been set.
 
 ### GetRoles
 
-`func (o *ApiKeyUser) GetRoles() []CloudRoleAssignment`
+`func (o *ApiKeyUserDetails) GetRoles() []CloudAccessRoleAssignment`
 
 GetRoles returns the Roles field if non-nil, zero value otherwise.
 
 ### GetRolesOk
 
-`func (o *ApiKeyUser) GetRolesOk() (*[]CloudRoleAssignment, bool)`
+`func (o *ApiKeyUserDetails) GetRolesOk() (*[]CloudAccessRoleAssignment, bool)`
 
 GetRolesOk returns a tuple with the Roles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRoles
 
-`func (o *ApiKeyUser) SetRoles(v []CloudRoleAssignment)`
+`func (o *ApiKeyUserDetails) SetRoles(v []CloudAccessRoleAssignment)`
 
 SetRoles sets Roles field to given value.
 
 ### HasRoles
 
-`func (o *ApiKeyUser) HasRoles() bool`
+`func (o *ApiKeyUserDetails) HasRoles() bool`
 
 HasRoles returns a boolean if a field has been set.
 

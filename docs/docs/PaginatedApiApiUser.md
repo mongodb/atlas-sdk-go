@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
-**Results** | Pointer to [**[]ApiKeyUser**](ApiKeyUser.md) | List of returned documents that MongoDB Cloud providers when completing this request. | [optional] [readonly] 
+**Results** | Pointer to [**[]ApiKeyUserDetails**](ApiKeyUserDetails.md) | List of returned documents that MongoDB Cloud providers when completing this request. | [optional] [readonly] 
 **TotalCount** | Pointer to **int** | Number of documents returned in this response. | [optional] [readonly] 
 
 ## Methods
@@ -54,20 +54,20 @@ HasLinks returns a boolean if a field has been set.
 
 ### GetResults
 
-`func (o *PaginatedApiApiUser) GetResults() []ApiKeyUser`
+`func (o *PaginatedApiApiUser) GetResults() []ApiKeyUserDetails`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *PaginatedApiApiUser) GetResultsOk() (*[]ApiKeyUser, bool)`
+`func (o *PaginatedApiApiUser) GetResultsOk() (*[]ApiKeyUserDetails, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *PaginatedApiApiUser) SetResults(v []ApiKeyUser)`
+`func (o *PaginatedApiApiUser) SetResults(v []ApiKeyUserDetails)`
 
 SetResults sets Results field to given value.
 

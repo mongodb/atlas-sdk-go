@@ -181,7 +181,7 @@ type DataLakePipelinesApi interface {
 	ListPipelineSchedulesWithParams(ctx context.Context, args *ListPipelineSchedulesApiParams) ListPipelineSchedulesApiRequest
 
 	// Interface only available internally
-	listPipelineSchedulesExecute(r ListPipelineSchedulesApiRequest) ([]ApiPolicyItem, *http.Response, error)
+	listPipelineSchedulesExecute(r ListPipelineSchedulesApiRequest) ([]DiskBackupApiPolicyItem, *http.Response, error)
 
 	/*
 		ListPipelineSnapshots Return Available Backup Snapshots for One Data Lake Pipeline
@@ -1284,7 +1284,7 @@ func (a *DataLakePipelinesApiService) ListPipelineSchedulesWithParams(ctx contex
 	}
 }
 
-func (r ListPipelineSchedulesApiRequest) Execute() ([]ApiPolicyItem, *http.Response, error) {
+func (r ListPipelineSchedulesApiRequest) Execute() ([]DiskBackupApiPolicyItem, *http.Response, error) {
 	return r.ApiService.listPipelineSchedulesExecute(r)
 }
 
@@ -1309,13 +1309,13 @@ func (a *DataLakePipelinesApiService) ListPipelineSchedules(ctx context.Context,
 
 // Execute executes the request
 //
-//	@return []ApiPolicyItem
-func (a *DataLakePipelinesApiService) listPipelineSchedulesExecute(r ListPipelineSchedulesApiRequest) ([]ApiPolicyItem, *http.Response, error) {
+//	@return []DiskBackupApiPolicyItem
+func (a *DataLakePipelinesApiService) listPipelineSchedulesExecute(r ListPipelineSchedulesApiRequest) ([]DiskBackupApiPolicyItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []ApiPolicyItem
+		localVarReturnValue []DiskBackupApiPolicyItem
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesApiService.ListPipelineSchedules")

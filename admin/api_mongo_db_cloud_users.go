@@ -25,7 +25,7 @@ type MongoDBCloudUsersApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@return CreateUserApiRequest
 	*/
-	CreateUser(ctx context.Context, cloudUser *CloudUser) CreateUserApiRequest
+	CreateUser(ctx context.Context, cloudAppUser *CloudAppUser) CreateUserApiRequest
 	/*
 		CreateUser Create One MongoDB Cloud User
 
@@ -37,7 +37,7 @@ type MongoDBCloudUsersApi interface {
 	CreateUserWithParams(ctx context.Context, args *CreateUserApiParams) CreateUserApiRequest
 
 	// Interface only available internally
-	createUserExecute(r CreateUserApiRequest) (*CloudUser, *http.Response, error)
+	createUserExecute(r CreateUserApiRequest) (*CloudAppUser, *http.Response, error)
 
 	/*
 		GetUser Return One MongoDB Cloud User using Its ID
@@ -60,7 +60,7 @@ type MongoDBCloudUsersApi interface {
 	GetUserWithParams(ctx context.Context, args *GetUserApiParams) GetUserApiRequest
 
 	// Interface only available internally
-	getUserExecute(r GetUserApiRequest) (*CloudUser, *http.Response, error)
+	getUserExecute(r GetUserApiRequest) (*CloudAppUser, *http.Response, error)
 
 	/*
 		GetUserByUsername Return One MongoDB Cloud User using Their Username
@@ -83,31 +83,31 @@ type MongoDBCloudUsersApi interface {
 	GetUserByUsernameWithParams(ctx context.Context, args *GetUserByUsernameApiParams) GetUserByUsernameApiRequest
 
 	// Interface only available internally
-	getUserByUsernameExecute(r GetUserByUsernameApiRequest) (*CloudUser, *http.Response, error)
+	getUserByUsernameExecute(r GetUserByUsernameApiRequest) (*CloudAppUser, *http.Response, error)
 }
 
 // MongoDBCloudUsersApiService MongoDBCloudUsersApi service
 type MongoDBCloudUsersApiService service
 
 type CreateUserApiRequest struct {
-	ctx        context.Context
-	ApiService MongoDBCloudUsersApi
-	cloudUser  *CloudUser
+	ctx          context.Context
+	ApiService   MongoDBCloudUsersApi
+	cloudAppUser *CloudAppUser
 }
 
 type CreateUserApiParams struct {
-	CloudUser *CloudUser
+	CloudAppUser *CloudAppUser
 }
 
 func (a *MongoDBCloudUsersApiService) CreateUserWithParams(ctx context.Context, args *CreateUserApiParams) CreateUserApiRequest {
 	return CreateUserApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		cloudUser:  args.CloudUser,
+		ApiService:   a,
+		ctx:          ctx,
+		cloudAppUser: args.CloudAppUser,
 	}
 }
 
-func (r CreateUserApiRequest) Execute() (*CloudUser, *http.Response, error) {
+func (r CreateUserApiRequest) Execute() (*CloudAppUser, *http.Response, error) {
 	return r.ApiService.createUserExecute(r)
 }
 
@@ -123,23 +123,23 @@ Creates one MongoDB Cloud user account. A MongoDB Cloud user account grants acce
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return CreateUserApiRequest
 */
-func (a *MongoDBCloudUsersApiService) CreateUser(ctx context.Context, cloudUser *CloudUser) CreateUserApiRequest {
+func (a *MongoDBCloudUsersApiService) CreateUser(ctx context.Context, cloudAppUser *CloudAppUser) CreateUserApiRequest {
 	return CreateUserApiRequest{
-		ApiService: a,
-		ctx:        ctx,
-		cloudUser:  cloudUser,
+		ApiService:   a,
+		ctx:          ctx,
+		cloudAppUser: cloudAppUser,
 	}
 }
 
 // Execute executes the request
 //
-//	@return CloudUser
-func (a *MongoDBCloudUsersApiService) createUserExecute(r CreateUserApiRequest) (*CloudUser, *http.Response, error) {
+//	@return CloudAppUser
+func (a *MongoDBCloudUsersApiService) createUserExecute(r CreateUserApiRequest) (*CloudAppUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *CloudUser
+		localVarReturnValue *CloudAppUser
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.CreateUser")
@@ -152,8 +152,8 @@ func (a *MongoDBCloudUsersApiService) createUserExecute(r CreateUserApiRequest) 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.cloudUser == nil {
-		return localVarReturnValue, nil, reportError("cloudUser is required and must be specified")
+	if r.cloudAppUser == nil {
+		return localVarReturnValue, nil, reportError("cloudAppUser is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -174,7 +174,7 @@ func (a *MongoDBCloudUsersApiService) createUserExecute(r CreateUserApiRequest) 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.cloudUser
+	localVarPostBody = r.cloudAppUser
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -238,7 +238,7 @@ func (a *MongoDBCloudUsersApiService) GetUserWithParams(ctx context.Context, arg
 	}
 }
 
-func (r GetUserApiRequest) Execute() (*CloudUser, *http.Response, error) {
+func (r GetUserApiRequest) Execute() (*CloudAppUser, *http.Response, error) {
 	return r.ApiService.getUserExecute(r)
 }
 
@@ -261,13 +261,13 @@ func (a *MongoDBCloudUsersApiService) GetUser(ctx context.Context, userId string
 
 // Execute executes the request
 //
-//	@return CloudUser
-func (a *MongoDBCloudUsersApiService) getUserExecute(r GetUserApiRequest) (*CloudUser, *http.Response, error) {
+//	@return CloudAppUser
+func (a *MongoDBCloudUsersApiService) getUserExecute(r GetUserApiRequest) (*CloudAppUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *CloudUser
+		localVarReturnValue *CloudAppUser
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.GetUser")
@@ -368,7 +368,7 @@ func (a *MongoDBCloudUsersApiService) GetUserByUsernameWithParams(ctx context.Co
 	}
 }
 
-func (r GetUserByUsernameApiRequest) Execute() (*CloudUser, *http.Response, error) {
+func (r GetUserByUsernameApiRequest) Execute() (*CloudAppUser, *http.Response, error) {
 	return r.ApiService.getUserByUsernameExecute(r)
 }
 
@@ -391,13 +391,13 @@ func (a *MongoDBCloudUsersApiService) GetUserByUsername(ctx context.Context, use
 
 // Execute executes the request
 //
-//	@return CloudUser
-func (a *MongoDBCloudUsersApiService) getUserByUsernameExecute(r GetUserByUsernameApiRequest) (*CloudUser, *http.Response, error) {
+//	@return CloudAppUser
+func (a *MongoDBCloudUsersApiService) getUserByUsernameExecute(r GetUserByUsernameApiRequest) (*CloudAppUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *CloudUser
+		localVarReturnValue *CloudAppUser
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MongoDBCloudUsersApiService.GetUserByUsername")

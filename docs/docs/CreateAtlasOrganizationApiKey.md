@@ -1,4 +1,4 @@
-# CreateOrganizationKey
+# CreateAtlasOrganizationApiKey
 
 ## Properties
 
@@ -9,70 +9,70 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewCreateOrganizationKey
+### NewCreateAtlasOrganizationApiKey
 
-`func NewCreateOrganizationKey() *CreateOrganizationKey`
+`func NewCreateAtlasOrganizationApiKey() *CreateAtlasOrganizationApiKey`
 
-NewCreateOrganizationKey instantiates a new CreateOrganizationKey object
+NewCreateAtlasOrganizationApiKey instantiates a new CreateAtlasOrganizationApiKey object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewCreateOrganizationKeyWithDefaults
+### NewCreateAtlasOrganizationApiKeyWithDefaults
 
-`func NewCreateOrganizationKeyWithDefaults() *CreateOrganizationKey`
+`func NewCreateAtlasOrganizationApiKeyWithDefaults() *CreateAtlasOrganizationApiKey`
 
-NewCreateOrganizationKeyWithDefaults instantiates a new CreateOrganizationKey object
+NewCreateAtlasOrganizationApiKeyWithDefaults instantiates a new CreateAtlasOrganizationApiKey object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetDesc
 
-`func (o *CreateOrganizationKey) GetDesc() string`
+`func (o *CreateAtlasOrganizationApiKey) GetDesc() string`
 
 GetDesc returns the Desc field if non-nil, zero value otherwise.
 
 ### GetDescOk
 
-`func (o *CreateOrganizationKey) GetDescOk() (*string, bool)`
+`func (o *CreateAtlasOrganizationApiKey) GetDescOk() (*string, bool)`
 
 GetDescOk returns a tuple with the Desc field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDesc
 
-`func (o *CreateOrganizationKey) SetDesc(v string)`
+`func (o *CreateAtlasOrganizationApiKey) SetDesc(v string)`
 
 SetDesc sets Desc field to given value.
 
 ### HasDesc
 
-`func (o *CreateOrganizationKey) HasDesc() bool`
+`func (o *CreateAtlasOrganizationApiKey) HasDesc() bool`
 
 HasDesc returns a boolean if a field has been set.
 
 ### GetRoles
 
-`func (o *CreateOrganizationKey) GetRoles() []string`
+`func (o *CreateAtlasOrganizationApiKey) GetRoles() []string`
 
 GetRoles returns the Roles field if non-nil, zero value otherwise.
 
 ### GetRolesOk
 
-`func (o *CreateOrganizationKey) GetRolesOk() (*[]string, bool)`
+`func (o *CreateAtlasOrganizationApiKey) GetRolesOk() (*[]string, bool)`
 
 GetRolesOk returns a tuple with the Roles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRoles
 
-`func (o *CreateOrganizationKey) SetRoles(v []string)`
+`func (o *CreateAtlasOrganizationApiKey) SetRoles(v []string)`
 
 SetRoles sets Roles field to given value.
 
 ### HasRoles
 
-`func (o *CreateOrganizationKey) HasRoles() bool`
+`func (o *CreateAtlasOrganizationApiKey) HasRoles() bool`
 
 HasRoles returns a boolean if a field has been set.
 
