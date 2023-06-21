@@ -19889,12 +19889,6 @@ components:
           readOnly: true
         storage:
           $ref: "#/components/schemas/DataLakeStorage"
-    DataMetricUnits:
-      type: string
-      description: Element used to express the quantity. This can be an element of
-        time, storage capacity, and the like.
-      example: BYTES
-      title: Data Metric Units
     DataProtectionSettings:
       type: object
       properties:
@@ -24766,12 +24760,6 @@ components:
         - serviceDiscovery
         - username
       title: PROMETHEUS
-    RawMetricUnits:
-      type: string
-      default: RAW
-      description: Element used to express the quantity. This can be an element of
-        time, storage capacity, and the like.
-      title: Raw Metric Units
     RegionSpec:
       type: object
       description: Physical location where MongoDB Cloud provisions cluster nodes.
@@ -25537,32 +25525,24 @@ components:
       description: Threshold for the metric that, when exceeded, triggers an alert.
         The metric threshold pertains to event types which reflects changes of
         measurements and metrics about the serverless database.
-      discriminator:
-        mapping:
-          SERVERLESS_AVG_COMMAND_EXECUTION_TIME: "#/components/schemas/TimeMetricThreshold"
-          SERVERLESS_AVG_READ_EXECUTION_TIME: "#/components/schemas/TimeMetricThreshold"
-          SERVERLESS_AVG_WRITE_EXECUTION_TIME: "#/components/schemas/TimeMetricThreshold"
-          SERVERLESS_CONNECTIONS: "#/components/schemas/RawMetricThreshold"
-          SERVERLESS_CONNECTIONS_PERCENT: "#/components/schemas/RawMetricThreshold"
-          SERVERLESS_DATA_SIZE_TOTAL: "#/components/schemas/DataMetricThreshold"
-          SERVERLESS_NETWORK_BYTES_IN: "#/components/schemas/DataMetricThreshold"
-          SERVERLESS_NETWORK_BYTES_OUT: "#/components/schemas/DataMetricThreshold"
-          SERVERLESS_NETWORK_NUM_REQUESTS: "#/components/schemas/RawMetricThreshold"
-          SERVERLESS_OPCOUNTER_CMD: "#/components/schemas/RawMetricThreshold"
-          SERVERLESS_OPCOUNTER_DELETE: "#/components/schemas/RawMetricThreshold"
-          SERVERLESS_OPCOUNTER_GETMORE: "#/components/schemas/RawMetricThreshold"
-          SERVERLESS_OPCOUNTER_INSERT: "#/components/schemas/RawMetricThreshold"
-          SERVERLESS_OPCOUNTER_QUERY: "#/components/schemas/RawMetricThreshold"
-          SERVERLESS_OPCOUNTER_UPDATE: "#/components/schemas/RawMetricThreshold"
-          SERVERLESS_TOTAL_READ_UNITS: "#/components/schemas/RPUMetricThreshold"
-          SERVERLESS_TOTAL_WRITE_UNITS: "#/components/schemas/RPUMetricThreshold"
-        propertyName: metricName
+      properties:
+        metricName:
+          type: string
+          description: Human-readable label that identifies the metric against which
+            MongoDB Cloud checks the configured **metricThreshold.threshold**.
+        mode:
+          type: string
+          description: MongoDB Cloud computes the current metric value as an average.
+        operator:
+          $ref: "#/components/schemas/Operator"
+        threshold:
+          type: number
+          format: double
+          description: Value of metric that, when exceeded, triggers an alert.
+        units:
+          $ref: "#/components/schemas/ServerlessMetricUnits"
       title: Serverless Metric Threshold
-      oneOf:
-        - $ref: "#/components/schemas/TimeMetricThreshold"
-        - $ref: "#/components/schemas/RawMetricThreshold"
-        - $ref: "#/components/schemas/DataMetricThreshold"
-        - $ref: "#/components/schemas/RPUMetricThreshold"
+      x-xgen-go-transform: merge-oneOf
     ServerlessMetricUnits:
       type: string
       description: Element used to express the quantity. This can be an element of
@@ -26048,12 +26028,6 @@ components:
         - $ref: "#/components/schemas/Slack"
         - $ref: "#/components/schemas/VictorOps"
         - $ref: "#/components/schemas/Webhook"
-    TimeMetricUnits:
-      type: string
-      default: HOURS
-      description: Element used to express the quantity. This can be an element of
-        time, storage capacity, and the like.
-      title: Time Metric Units
     TriggerIngestionPipelineRequest:
       type: object
       properties:
@@ -26804,24 +26778,6 @@ components:
           type: string
       required:
         - type
-    DataMetricThreshold:
-      type: object
-      properties:
-        metricName:
-          type: string
-          description: Human-readable label that identifies the metric against which
-            MongoDB Cloud checks the configured **metricThreshold.threshold**.
-        mode:
-          type: string
-          description: MongoDB Cloud computes the current metric value as an average.
-        operator:
-          $ref: "#/components/schemas/Operator"
-        threshold:
-          type: number
-          format: double
-          description: Value of metric that, when exceeded, triggers an alert.
-        units:
-          $ref: "#/components/schemas/DataMetricUnits"
     DateCriteria:
       type: object
       description: "**DATE criteria.type**."
@@ -28148,65 +28104,11 @@ components:
             - Set this value to `false` to disable regionalized private endpoints.
       required:
         - enabled
-    RPUMetricThreshold:
-      type: object
-      properties:
-        metricName:
-          type: string
-          description: Human-readable label that identifies the metric against which
-            MongoDB Cloud checks the configured **metricThreshold.threshold**.
-        mode:
-          type: string
-          description: MongoDB Cloud computes the current metric value as an average.
-        operator:
-          $ref: "#/components/schemas/Operator"
-        threshold:
-          type: number
-          format: double
-          description: Value of metric that, when exceeded, triggers an alert.
-        units:
-          $ref: "#/components/schemas/ServerlessMetricUnits"
-    RawMetricThreshold:
-      type: object
-      properties:
-        metricName:
-          type: string
-          description: Human-readable label that identifies the metric against which
-            MongoDB Cloud checks the configured **metricThreshold.threshold**.
-        mode:
-          type: string
-          description: MongoDB Cloud computes the current metric value as an average.
-        operator:
-          $ref: "#/components/schemas/Operator"
-        threshold:
-          type: number
-          format: double
-          description: Value of metric that, when exceeded, triggers an alert.
-        units:
-          $ref: "#/components/schemas/RawMetricUnits"
     ResourceEventType:
       type: string
       description: Unique identifier of event type.
       example: TAGS_MODIFIED
       title: Resource Event Types
-    TimeMetricThreshold:
-      type: object
-      properties:
-        metricName:
-          type: string
-          description: Human-readable label that identifies the metric against which
-            MongoDB Cloud checks the configured **metricThreshold.threshold**.
-        mode:
-          type: string
-          description: MongoDB Cloud computes the current metric value as an average.
-        operator:
-          $ref: "#/components/schemas/Operator"
-        threshold:
-          type: number
-          format: double
-          description: Value of metric that, when exceeded, triggers an alert.
-        units:
-          $ref: "#/components/schemas/TimeMetricUnits"
     WeeklySchedule:
       type: object
       properties:

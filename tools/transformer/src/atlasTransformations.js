@@ -27,6 +27,8 @@ module.exports = function runTransformations(openapi) {
     ".components.schemas.ApiAtlasServerlessTenantEndpointView",
     ".components.schemas.ApiAtlasEndpointServiceView",
 
+    ".components.schemas.ServerlessMetricThreshold",
+  
     // Renamed objects
     ".components.schemas.AlertNotificationViewGroup",
     ".components.schemas.ServerlessTenantEndpoint",
