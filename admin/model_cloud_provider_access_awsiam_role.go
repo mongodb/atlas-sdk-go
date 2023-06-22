@@ -28,6 +28,16 @@ type CloudProviderAccessAWSIAMRole struct {
 	RoleId *string `json:"roleId,omitempty"`
 	// Human-readable label that identifies the cloud provider of the role.
 	ProviderName string `json:"providerName"`
+	// Unique 24-hexadecimal digit string that identifies the Azure Service Principal in Atlas.
+	Id *string `json:"_id,omitempty"`
+	// Azure Active Directory Application ID of Atlas.
+	AtlasAzureAppId *string `json:"atlasAzureAppId,omitempty"`
+	// Date and time when this Azure Service Principal was last updated. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+	LastUpdatedDate *time.Time `json:"lastUpdatedDate,omitempty"`
+	// UUID string that identifies the Azure Service Principal.
+	ServicePrincipalId *string `json:"servicePrincipalId,omitempty"`
+	// UUID String that identifies the Azure Active Directory Tenant ID.
+	TenantId *string `json:"tenantId,omitempty"`
 }
 
 // NewCloudProviderAccessAWSIAMRole instantiates a new CloudProviderAccessAWSIAMRole object
@@ -296,6 +306,166 @@ func (o *CloudProviderAccessAWSIAMRole) SetProviderName(v string) {
 	o.ProviderName = v
 }
 
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *CloudProviderAccessAWSIAMRole) GetId() string {
+	if o == nil || IsNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudProviderAccessAWSIAMRole) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *CloudProviderAccessAWSIAMRole) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *CloudProviderAccessAWSIAMRole) SetId(v string) {
+	o.Id = &v
+}
+
+// GetAtlasAzureAppId returns the AtlasAzureAppId field value if set, zero value otherwise.
+func (o *CloudProviderAccessAWSIAMRole) GetAtlasAzureAppId() string {
+	if o == nil || IsNil(o.AtlasAzureAppId) {
+		var ret string
+		return ret
+	}
+	return *o.AtlasAzureAppId
+}
+
+// GetAtlasAzureAppIdOk returns a tuple with the AtlasAzureAppId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudProviderAccessAWSIAMRole) GetAtlasAzureAppIdOk() (*string, bool) {
+	if o == nil || IsNil(o.AtlasAzureAppId) {
+		return nil, false
+	}
+	return o.AtlasAzureAppId, true
+}
+
+// HasAtlasAzureAppId returns a boolean if a field has been set.
+func (o *CloudProviderAccessAWSIAMRole) HasAtlasAzureAppId() bool {
+	if o != nil && !IsNil(o.AtlasAzureAppId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAtlasAzureAppId gets a reference to the given string and assigns it to the AtlasAzureAppId field.
+func (o *CloudProviderAccessAWSIAMRole) SetAtlasAzureAppId(v string) {
+	o.AtlasAzureAppId = &v
+}
+
+// GetLastUpdatedDate returns the LastUpdatedDate field value if set, zero value otherwise.
+func (o *CloudProviderAccessAWSIAMRole) GetLastUpdatedDate() time.Time {
+	if o == nil || IsNil(o.LastUpdatedDate) {
+		var ret time.Time
+		return ret
+	}
+	return *o.LastUpdatedDate
+}
+
+// GetLastUpdatedDateOk returns a tuple with the LastUpdatedDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudProviderAccessAWSIAMRole) GetLastUpdatedDateOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.LastUpdatedDate) {
+		return nil, false
+	}
+	return o.LastUpdatedDate, true
+}
+
+// HasLastUpdatedDate returns a boolean if a field has been set.
+func (o *CloudProviderAccessAWSIAMRole) HasLastUpdatedDate() bool {
+	if o != nil && !IsNil(o.LastUpdatedDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetLastUpdatedDate gets a reference to the given time.Time and assigns it to the LastUpdatedDate field.
+func (o *CloudProviderAccessAWSIAMRole) SetLastUpdatedDate(v time.Time) {
+	o.LastUpdatedDate = &v
+}
+
+// GetServicePrincipalId returns the ServicePrincipalId field value if set, zero value otherwise.
+func (o *CloudProviderAccessAWSIAMRole) GetServicePrincipalId() string {
+	if o == nil || IsNil(o.ServicePrincipalId) {
+		var ret string
+		return ret
+	}
+	return *o.ServicePrincipalId
+}
+
+// GetServicePrincipalIdOk returns a tuple with the ServicePrincipalId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudProviderAccessAWSIAMRole) GetServicePrincipalIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ServicePrincipalId) {
+		return nil, false
+	}
+	return o.ServicePrincipalId, true
+}
+
+// HasServicePrincipalId returns a boolean if a field has been set.
+func (o *CloudProviderAccessAWSIAMRole) HasServicePrincipalId() bool {
+	if o != nil && !IsNil(o.ServicePrincipalId) {
+		return true
+	}
+
+	return false
+}
+
+// SetServicePrincipalId gets a reference to the given string and assigns it to the ServicePrincipalId field.
+func (o *CloudProviderAccessAWSIAMRole) SetServicePrincipalId(v string) {
+	o.ServicePrincipalId = &v
+}
+
+// GetTenantId returns the TenantId field value if set, zero value otherwise.
+func (o *CloudProviderAccessAWSIAMRole) GetTenantId() string {
+	if o == nil || IsNil(o.TenantId) {
+		var ret string
+		return ret
+	}
+	return *o.TenantId
+}
+
+// GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloudProviderAccessAWSIAMRole) GetTenantIdOk() (*string, bool) {
+	if o == nil || IsNil(o.TenantId) {
+		return nil, false
+	}
+	return o.TenantId, true
+}
+
+// HasTenantId returns a boolean if a field has been set.
+func (o *CloudProviderAccessAWSIAMRole) HasTenantId() bool {
+	if o != nil && !IsNil(o.TenantId) {
+		return true
+	}
+
+	return false
+}
+
+// SetTenantId gets a reference to the given string and assigns it to the TenantId field.
+func (o *CloudProviderAccessAWSIAMRole) SetTenantId(v string) {
+	o.TenantId = &v
+}
+
 func (o CloudProviderAccessAWSIAMRole) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -309,6 +479,15 @@ func (o CloudProviderAccessAWSIAMRole) ToMap() (map[string]interface{}, error) {
 		toSerialize["iamAssumedRoleArn"] = o.IamAssumedRoleArn
 	}
 	toSerialize["providerName"] = o.ProviderName
+	if !IsNil(o.AtlasAzureAppId) {
+		toSerialize["atlasAzureAppId"] = o.AtlasAzureAppId
+	}
+	if !IsNil(o.ServicePrincipalId) {
+		toSerialize["servicePrincipalId"] = o.ServicePrincipalId
+	}
+	if !IsNil(o.TenantId) {
+		toSerialize["tenantId"] = o.TenantId
+	}
 	return toSerialize, nil
 }
 

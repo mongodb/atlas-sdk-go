@@ -4,198 +4,372 @@ package admin
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
-// ClusterProviderSettings - Group of cloud provider settings that configure the provisioned MongoDB hosts.
+// checks if the ClusterProviderSettings type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClusterProviderSettings{}
+
+// ClusterProviderSettings Group of cloud provider settings that configure the provisioned MongoDB hosts.
 type ClusterProviderSettings struct {
-	AWSCloudProviderSettings    *AWSCloudProviderSettings
-	AzureCloudProviderSettings  *AzureCloudProviderSettings
-	CloudGCPProviderSettings    *CloudGCPProviderSettings
-	ClusterFreeProviderSettings *ClusterFreeProviderSettings
+	ProviderName string                  `json:"providerName"`
+	AutoScaling  *ClusterFreeAutoScaling `json:"autoScaling,omitempty"`
+	// Maximum Disk Input/Output Operations per Second (IOPS) that the database host can perform.
+	DiskIOPS *int `json:"diskIOPS,omitempty"`
+	// Flag that indicates whether the Amazon Elastic Block Store (EBS) encryption feature encrypts the host's root volume for both data at rest within the volume and for data moving between the volume and the cluster. Clusters always have this setting enabled.
+	// Deprecated
+	EncryptEBSVolume *bool `json:"encryptEBSVolume,omitempty"`
+	// Cluster tier, with a default storage and memory capacity, that applies to all the data-bearing hosts in your cluster. You must set **providerSettings.providerName** to `TENANT` and specify the cloud service provider in **providerSettings.backingProviderName**.
+	InstanceSizeName *string `json:"instanceSizeName,omitempty"`
+	// Human-readable label that identifies the geographic location of your MongoDB cluster. The region you choose can affect network latency for clients accessing your databases. For a complete list of region names, see [AWS](https://docs.atlas.mongodb.com/reference/amazon-aws/#std-label-amazon-aws), [GCP](https://docs.atlas.mongodb.com/reference/google-gcp/), and [Azure](https://docs.atlas.mongodb.com/reference/microsoft-azure/). For multi-region clusters, see **replicationSpec.{region}**.
+	RegionName *string `json:"regionName,omitempty"`
+	// Disk Input/Output Operations per Second (IOPS) setting for Amazon Web Services (AWS) storage that you configure only for abbr title=\"Amazon Web Services\">AWS</abbr>. Specify whether Disk Input/Output Operations per Second (IOPS) must not exceed the default Input/Output Operations per Second (IOPS) rate for the selected volume size (`STANDARD`), or must fall within the allowable Input/Output Operations per Second (IOPS) range for the selected volume size (`PROVISIONED`).
+	VolumeType *string `json:"volumeType,omitempty"`
+	// Disk type that corresponds to the host's root volume for Azure instances. If omitted, the default disk type for the selected **providerSettings.instanceSizeName** applies.
+	DiskTypeName *string `json:"diskTypeName,omitempty"`
+	// Cloud service provider on which MongoDB Cloud provisioned the multi-tenant host. The resource returns this parameter when **providerSettings.providerName** is `TENANT` and **providerSetting.instanceSizeName** is `M2` or `M5`.
+	BackingProviderName *string `json:"backingProviderName,omitempty"`
 }
 
-// AWSCloudProviderSettingsAsClusterProviderSettings is a convenience function that returns AWSCloudProviderSettings wrapped in ClusterProviderSettings
-func AWSCloudProviderSettingsAsClusterProviderSettings(v *AWSCloudProviderSettings) ClusterProviderSettings {
-	return ClusterProviderSettings{
-		AWSCloudProviderSettings: v,
+// NewClusterProviderSettings instantiates a new ClusterProviderSettings object
+// This constructor will assign default values to properties that have it defined,
+// and makes sure properties required by API are set, but the set of arguments
+// will change when the set of required properties is changed
+func NewClusterProviderSettings(providerName string) *ClusterProviderSettings {
+	this := ClusterProviderSettings{}
+	this.ProviderName = providerName
+	var encryptEBSVolume bool = true
+	this.EncryptEBSVolume = &encryptEBSVolume
+	return &this
+}
+
+// NewClusterProviderSettingsWithDefaults instantiates a new ClusterProviderSettings object
+// This constructor will only assign default values to properties that have it defined,
+// but it doesn't guarantee that properties required by API are set
+func NewClusterProviderSettingsWithDefaults() *ClusterProviderSettings {
+	this := ClusterProviderSettings{}
+	var encryptEBSVolume bool = true
+	this.EncryptEBSVolume = &encryptEBSVolume
+	return &this
+}
+
+// GetProviderName returns the ProviderName field value
+func (o *ClusterProviderSettings) GetProviderName() string {
+	if o == nil {
+		var ret string
+		return ret
 	}
+
+	return o.ProviderName
 }
 
-// AzureCloudProviderSettingsAsClusterProviderSettings is a convenience function that returns AzureCloudProviderSettings wrapped in ClusterProviderSettings
-func AzureCloudProviderSettingsAsClusterProviderSettings(v *AzureCloudProviderSettings) ClusterProviderSettings {
-	return ClusterProviderSettings{
-		AzureCloudProviderSettings: v,
+// GetProviderNameOk returns a tuple with the ProviderName field value
+// and a boolean to check if the value has been set.
+func (o *ClusterProviderSettings) GetProviderNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
 	}
+	return &o.ProviderName, true
 }
 
-// CloudGCPProviderSettingsAsClusterProviderSettings is a convenience function that returns CloudGCPProviderSettings wrapped in ClusterProviderSettings
-func CloudGCPProviderSettingsAsClusterProviderSettings(v *CloudGCPProviderSettings) ClusterProviderSettings {
-	return ClusterProviderSettings{
-		CloudGCPProviderSettings: v,
+// SetProviderName sets field value
+func (o *ClusterProviderSettings) SetProviderName(v string) {
+	o.ProviderName = v
+}
+
+// GetAutoScaling returns the AutoScaling field value if set, zero value otherwise.
+func (o *ClusterProviderSettings) GetAutoScaling() ClusterFreeAutoScaling {
+	if o == nil || IsNil(o.AutoScaling) {
+		var ret ClusterFreeAutoScaling
+		return ret
 	}
+	return *o.AutoScaling
 }
 
-// ClusterFreeProviderSettingsAsClusterProviderSettings is a convenience function that returns ClusterFreeProviderSettings wrapped in ClusterProviderSettings
-func ClusterFreeProviderSettingsAsClusterProviderSettings(v *ClusterFreeProviderSettings) ClusterProviderSettings {
-	return ClusterProviderSettings{
-		ClusterFreeProviderSettings: v,
+// GetAutoScalingOk returns a tuple with the AutoScaling field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterProviderSettings) GetAutoScalingOk() (*ClusterFreeAutoScaling, bool) {
+	if o == nil || IsNil(o.AutoScaling) {
+		return nil, false
 	}
+	return o.AutoScaling, true
 }
 
-// Unmarshal JSON data into one of the pointers in the struct
-func (dst *ClusterProviderSettings) UnmarshalJSON(data []byte) error {
-	var err error
-	// use discriminator value to speed up the lookup
-	var jsonDict map[string]interface{}
-	err = newStrictDecoder(data).Decode(&jsonDict)
+// HasAutoScaling returns a boolean if a field has been set.
+func (o *ClusterProviderSettings) HasAutoScaling() bool {
+	if o != nil && !IsNil(o.AutoScaling) {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoScaling gets a reference to the given ClusterFreeAutoScaling and assigns it to the AutoScaling field.
+func (o *ClusterProviderSettings) SetAutoScaling(v ClusterFreeAutoScaling) {
+	o.AutoScaling = &v
+}
+
+// GetDiskIOPS returns the DiskIOPS field value if set, zero value otherwise.
+func (o *ClusterProviderSettings) GetDiskIOPS() int {
+	if o == nil || IsNil(o.DiskIOPS) {
+		var ret int
+		return ret
+	}
+	return *o.DiskIOPS
+}
+
+// GetDiskIOPSOk returns a tuple with the DiskIOPS field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterProviderSettings) GetDiskIOPSOk() (*int, bool) {
+	if o == nil || IsNil(o.DiskIOPS) {
+		return nil, false
+	}
+	return o.DiskIOPS, true
+}
+
+// HasDiskIOPS returns a boolean if a field has been set.
+func (o *ClusterProviderSettings) HasDiskIOPS() bool {
+	if o != nil && !IsNil(o.DiskIOPS) {
+		return true
+	}
+
+	return false
+}
+
+// SetDiskIOPS gets a reference to the given int and assigns it to the DiskIOPS field.
+func (o *ClusterProviderSettings) SetDiskIOPS(v int) {
+	o.DiskIOPS = &v
+}
+
+// GetEncryptEBSVolume returns the EncryptEBSVolume field value if set, zero value otherwise.
+// Deprecated
+func (o *ClusterProviderSettings) GetEncryptEBSVolume() bool {
+	if o == nil || IsNil(o.EncryptEBSVolume) {
+		var ret bool
+		return ret
+	}
+	return *o.EncryptEBSVolume
+}
+
+// GetEncryptEBSVolumeOk returns a tuple with the EncryptEBSVolume field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// Deprecated
+func (o *ClusterProviderSettings) GetEncryptEBSVolumeOk() (*bool, bool) {
+	if o == nil || IsNil(o.EncryptEBSVolume) {
+		return nil, false
+	}
+	return o.EncryptEBSVolume, true
+}
+
+// HasEncryptEBSVolume returns a boolean if a field has been set.
+func (o *ClusterProviderSettings) HasEncryptEBSVolume() bool {
+	if o != nil && !IsNil(o.EncryptEBSVolume) {
+		return true
+	}
+
+	return false
+}
+
+// SetEncryptEBSVolume gets a reference to the given bool and assigns it to the EncryptEBSVolume field.
+// Deprecated
+func (o *ClusterProviderSettings) SetEncryptEBSVolume(v bool) {
+	o.EncryptEBSVolume = &v
+}
+
+// GetInstanceSizeName returns the InstanceSizeName field value if set, zero value otherwise.
+func (o *ClusterProviderSettings) GetInstanceSizeName() string {
+	if o == nil || IsNil(o.InstanceSizeName) {
+		var ret string
+		return ret
+	}
+	return *o.InstanceSizeName
+}
+
+// GetInstanceSizeNameOk returns a tuple with the InstanceSizeName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterProviderSettings) GetInstanceSizeNameOk() (*string, bool) {
+	if o == nil || IsNil(o.InstanceSizeName) {
+		return nil, false
+	}
+	return o.InstanceSizeName, true
+}
+
+// HasInstanceSizeName returns a boolean if a field has been set.
+func (o *ClusterProviderSettings) HasInstanceSizeName() bool {
+	if o != nil && !IsNil(o.InstanceSizeName) {
+		return true
+	}
+
+	return false
+}
+
+// SetInstanceSizeName gets a reference to the given string and assigns it to the InstanceSizeName field.
+func (o *ClusterProviderSettings) SetInstanceSizeName(v string) {
+	o.InstanceSizeName = &v
+}
+
+// GetRegionName returns the RegionName field value if set, zero value otherwise.
+func (o *ClusterProviderSettings) GetRegionName() string {
+	if o == nil || IsNil(o.RegionName) {
+		var ret string
+		return ret
+	}
+	return *o.RegionName
+}
+
+// GetRegionNameOk returns a tuple with the RegionName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterProviderSettings) GetRegionNameOk() (*string, bool) {
+	if o == nil || IsNil(o.RegionName) {
+		return nil, false
+	}
+	return o.RegionName, true
+}
+
+// HasRegionName returns a boolean if a field has been set.
+func (o *ClusterProviderSettings) HasRegionName() bool {
+	if o != nil && !IsNil(o.RegionName) {
+		return true
+	}
+
+	return false
+}
+
+// SetRegionName gets a reference to the given string and assigns it to the RegionName field.
+func (o *ClusterProviderSettings) SetRegionName(v string) {
+	o.RegionName = &v
+}
+
+// GetVolumeType returns the VolumeType field value if set, zero value otherwise.
+func (o *ClusterProviderSettings) GetVolumeType() string {
+	if o == nil || IsNil(o.VolumeType) {
+		var ret string
+		return ret
+	}
+	return *o.VolumeType
+}
+
+// GetVolumeTypeOk returns a tuple with the VolumeType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterProviderSettings) GetVolumeTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.VolumeType) {
+		return nil, false
+	}
+	return o.VolumeType, true
+}
+
+// HasVolumeType returns a boolean if a field has been set.
+func (o *ClusterProviderSettings) HasVolumeType() bool {
+	if o != nil && !IsNil(o.VolumeType) {
+		return true
+	}
+
+	return false
+}
+
+// SetVolumeType gets a reference to the given string and assigns it to the VolumeType field.
+func (o *ClusterProviderSettings) SetVolumeType(v string) {
+	o.VolumeType = &v
+}
+
+// GetDiskTypeName returns the DiskTypeName field value if set, zero value otherwise.
+func (o *ClusterProviderSettings) GetDiskTypeName() string {
+	if o == nil || IsNil(o.DiskTypeName) {
+		var ret string
+		return ret
+	}
+	return *o.DiskTypeName
+}
+
+// GetDiskTypeNameOk returns a tuple with the DiskTypeName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterProviderSettings) GetDiskTypeNameOk() (*string, bool) {
+	if o == nil || IsNil(o.DiskTypeName) {
+		return nil, false
+	}
+	return o.DiskTypeName, true
+}
+
+// HasDiskTypeName returns a boolean if a field has been set.
+func (o *ClusterProviderSettings) HasDiskTypeName() bool {
+	if o != nil && !IsNil(o.DiskTypeName) {
+		return true
+	}
+
+	return false
+}
+
+// SetDiskTypeName gets a reference to the given string and assigns it to the DiskTypeName field.
+func (o *ClusterProviderSettings) SetDiskTypeName(v string) {
+	o.DiskTypeName = &v
+}
+
+// GetBackingProviderName returns the BackingProviderName field value if set, zero value otherwise.
+func (o *ClusterProviderSettings) GetBackingProviderName() string {
+	if o == nil || IsNil(o.BackingProviderName) {
+		var ret string
+		return ret
+	}
+	return *o.BackingProviderName
+}
+
+// GetBackingProviderNameOk returns a tuple with the BackingProviderName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterProviderSettings) GetBackingProviderNameOk() (*string, bool) {
+	if o == nil || IsNil(o.BackingProviderName) {
+		return nil, false
+	}
+	return o.BackingProviderName, true
+}
+
+// HasBackingProviderName returns a boolean if a field has been set.
+func (o *ClusterProviderSettings) HasBackingProviderName() bool {
+	if o != nil && !IsNil(o.BackingProviderName) {
+		return true
+	}
+
+	return false
+}
+
+// SetBackingProviderName gets a reference to the given string and assigns it to the BackingProviderName field.
+func (o *ClusterProviderSettings) SetBackingProviderName(v string) {
+	o.BackingProviderName = &v
+}
+
+func (o ClusterProviderSettings) MarshalJSONWithoutReadOnly() ([]byte, error) {
+	toSerialize, err := o.ToMap()
 	if err != nil {
-		return fmt.Errorf("failed to unmarshal JSON into map for the discriminator lookup")
+		return []byte{}, err
 	}
-
-	// check if the discriminator value is 'AWS'
-	if jsonDict["providerName"] == "AWS" {
-		// try to unmarshal JSON data into AWSCloudProviderSettings
-		err = json.Unmarshal(data, &dst.AWSCloudProviderSettings)
-		if err == nil {
-			return nil // data stored in dst.AWSCloudProviderSettings, return on the first match
-		} else {
-			dst.AWSCloudProviderSettings = nil
-			return fmt.Errorf("failed to unmarshal ClusterProviderSettings as AWSCloudProviderSettings: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'AWSCloudProviderSettings'
-	if jsonDict["providerName"] == "AWSCloudProviderSettings" {
-		// try to unmarshal JSON data into AWSCloudProviderSettings
-		err = json.Unmarshal(data, &dst.AWSCloudProviderSettings)
-		if err == nil {
-			return nil // data stored in dst.AWSCloudProviderSettings, return on the first match
-		} else {
-			dst.AWSCloudProviderSettings = nil
-			return fmt.Errorf("failed to unmarshal ClusterProviderSettings as AWSCloudProviderSettings: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'AZURE'
-	if jsonDict["providerName"] == "AZURE" {
-		// try to unmarshal JSON data into AzureCloudProviderSettings
-		err = json.Unmarshal(data, &dst.AzureCloudProviderSettings)
-		if err == nil {
-			return nil // data stored in dst.AzureCloudProviderSettings, return on the first match
-		} else {
-			dst.AzureCloudProviderSettings = nil
-			return fmt.Errorf("failed to unmarshal ClusterProviderSettings as AzureCloudProviderSettings: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'AzureCloudProviderSettings'
-	if jsonDict["providerName"] == "AzureCloudProviderSettings" {
-		// try to unmarshal JSON data into AzureCloudProviderSettings
-		err = json.Unmarshal(data, &dst.AzureCloudProviderSettings)
-		if err == nil {
-			return nil // data stored in dst.AzureCloudProviderSettings, return on the first match
-		} else {
-			dst.AzureCloudProviderSettings = nil
-			return fmt.Errorf("failed to unmarshal ClusterProviderSettings as AzureCloudProviderSettings: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'CloudGCPProviderSettings'
-	if jsonDict["providerName"] == "CloudGCPProviderSettings" {
-		// try to unmarshal JSON data into CloudGCPProviderSettings
-		err = json.Unmarshal(data, &dst.CloudGCPProviderSettings)
-		if err == nil {
-			return nil // data stored in dst.CloudGCPProviderSettings, return on the first match
-		} else {
-			dst.CloudGCPProviderSettings = nil
-			return fmt.Errorf("failed to unmarshal ClusterProviderSettings as CloudGCPProviderSettings: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'ClusterFreeProviderSettings'
-	if jsonDict["providerName"] == "ClusterFreeProviderSettings" {
-		// try to unmarshal JSON data into ClusterFreeProviderSettings
-		err = json.Unmarshal(data, &dst.ClusterFreeProviderSettings)
-		if err == nil {
-			return nil // data stored in dst.ClusterFreeProviderSettings, return on the first match
-		} else {
-			dst.ClusterFreeProviderSettings = nil
-			return fmt.Errorf("failed to unmarshal ClusterProviderSettings as ClusterFreeProviderSettings: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'GCP'
-	if jsonDict["providerName"] == "GCP" {
-		// try to unmarshal JSON data into CloudGCPProviderSettings
-		err = json.Unmarshal(data, &dst.CloudGCPProviderSettings)
-		if err == nil {
-			return nil // data stored in dst.CloudGCPProviderSettings, return on the first match
-		} else {
-			dst.CloudGCPProviderSettings = nil
-			return fmt.Errorf("failed to unmarshal ClusterProviderSettings as CloudGCPProviderSettings: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'TENANT'
-	if jsonDict["providerName"] == "TENANT" {
-		// try to unmarshal JSON data into ClusterFreeProviderSettings
-		err = json.Unmarshal(data, &dst.ClusterFreeProviderSettings)
-		if err == nil {
-			return nil // data stored in dst.ClusterFreeProviderSettings, return on the first match
-		} else {
-			dst.ClusterFreeProviderSettings = nil
-			return fmt.Errorf("failed to unmarshal ClusterProviderSettings as ClusterFreeProviderSettings: %s", err.Error())
-		}
-	}
-
-	return nil
+	return json.Marshal(toSerialize)
 }
-
-// Marshal data from the first non-nil pointers in the struct to JSON
-func (src ClusterProviderSettings) MarshalJSON() ([]byte, error) {
-	if src.AWSCloudProviderSettings != nil {
-		return json.Marshal(&src.AWSCloudProviderSettings)
+func (o ClusterProviderSettings) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["providerName"] = o.ProviderName
+	if !IsNil(o.AutoScaling) {
+		toSerialize["autoScaling"] = o.AutoScaling
 	}
-
-	if src.AzureCloudProviderSettings != nil {
-		return json.Marshal(&src.AzureCloudProviderSettings)
+	if !IsNil(o.DiskIOPS) {
+		toSerialize["diskIOPS"] = o.DiskIOPS
 	}
-
-	if src.CloudGCPProviderSettings != nil {
-		return json.Marshal(&src.CloudGCPProviderSettings)
+	if !IsNil(o.EncryptEBSVolume) {
+		toSerialize["encryptEBSVolume"] = o.EncryptEBSVolume
 	}
-
-	if src.ClusterFreeProviderSettings != nil {
-		return json.Marshal(&src.ClusterFreeProviderSettings)
+	if !IsNil(o.InstanceSizeName) {
+		toSerialize["instanceSizeName"] = o.InstanceSizeName
 	}
-
-	return nil, nil // no data in oneOf schemas
-}
-
-// Get the actual instance
-func (obj *ClusterProviderSettings) GetActualInstance() interface{} {
-	if obj == nil {
-		return nil
+	if !IsNil(o.RegionName) {
+		toSerialize["regionName"] = o.RegionName
 	}
-	if obj.AWSCloudProviderSettings != nil {
-		return obj.AWSCloudProviderSettings
+	if !IsNil(o.VolumeType) {
+		toSerialize["volumeType"] = o.VolumeType
 	}
-
-	if obj.AzureCloudProviderSettings != nil {
-		return obj.AzureCloudProviderSettings
+	if !IsNil(o.DiskTypeName) {
+		toSerialize["diskTypeName"] = o.DiskTypeName
 	}
-
-	if obj.CloudGCPProviderSettings != nil {
-		return obj.CloudGCPProviderSettings
+	if !IsNil(o.BackingProviderName) {
+		toSerialize["backingProviderName"] = o.BackingProviderName
 	}
-
-	if obj.ClusterFreeProviderSettings != nil {
-		return obj.ClusterFreeProviderSettings
-	}
-
-	// all schemas are nil
-	return nil
+	return toSerialize, nil
 }
 
 type NullableClusterProviderSettings struct {

@@ -4,214 +4,271 @@ package admin
 
 import (
 	"encoding/json"
-	"fmt"
+	"time"
 )
 
-// DataFederationLimit - Details of user managed limits.
+// checks if the DataFederationLimit type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DataFederationLimit{}
+
+// DataFederationLimit Details of user managed limits.
 type DataFederationLimit struct {
-	DataFederationQueryLimit *DataFederationQueryLimit
-	DefaultLimit             *DefaultLimit
+	// Amount that indicates the current usage of the limit.
+	CurrentUsage *int64 `json:"currentUsage,omitempty"`
+	// Default value of the limit.
+	DefaultLimit *int64 `json:"defaultLimit,omitempty"`
+	// Maximum value of the limit.
+	MaximumLimit *int64 `json:"maximumLimit,omitempty"`
+	// Human-readable label that identifies the user-managed limit to modify.
+	Name string `json:"name"`
+	// Amount to set the limit to.
+	Value int64 `json:"value"`
+	// Only used for Data Federation limits. Timestamp that indicates when this usage limit was last modified. This field uses the ISO 8601 timestamp format in UTC.
+	LastModifiedDate *time.Time `json:"lastModifiedDate,omitempty"`
+	// Only used for Data Federation limits. Action to take when the usage limit is exceeded. If limit span is set to QUERY, this is ignored because MongoDB Cloud stops the query when it exceeds the usage limit.
+	OverrunPolicy *string `json:"overrunPolicy,omitempty"`
 }
 
-// DataFederationQueryLimitAsDataFederationLimit is a convenience function that returns DataFederationQueryLimit wrapped in DataFederationLimit
-func DataFederationQueryLimitAsDataFederationLimit(v *DataFederationQueryLimit) DataFederationLimit {
-	return DataFederationLimit{
-		DataFederationQueryLimit: v,
+// NewDataFederationLimit instantiates a new DataFederationLimit object
+// This constructor will assign default values to properties that have it defined,
+// and makes sure properties required by API are set, but the set of arguments
+// will change when the set of required properties is changed
+func NewDataFederationLimit(name string, value int64) *DataFederationLimit {
+	this := DataFederationLimit{}
+	this.Name = name
+	this.Value = value
+	return &this
+}
+
+// NewDataFederationLimitWithDefaults instantiates a new DataFederationLimit object
+// This constructor will only assign default values to properties that have it defined,
+// but it doesn't guarantee that properties required by API are set
+func NewDataFederationLimitWithDefaults() *DataFederationLimit {
+	this := DataFederationLimit{}
+	return &this
+}
+
+// GetCurrentUsage returns the CurrentUsage field value if set, zero value otherwise.
+func (o *DataFederationLimit) GetCurrentUsage() int64 {
+	if o == nil || IsNil(o.CurrentUsage) {
+		var ret int64
+		return ret
 	}
+	return *o.CurrentUsage
 }
 
-// DefaultLimitAsDataFederationLimit is a convenience function that returns DefaultLimit wrapped in DataFederationLimit
-func DefaultLimitAsDataFederationLimit(v *DefaultLimit) DataFederationLimit {
-	return DataFederationLimit{
-		DefaultLimit: v,
+// GetCurrentUsageOk returns a tuple with the CurrentUsage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DataFederationLimit) GetCurrentUsageOk() (*int64, bool) {
+	if o == nil || IsNil(o.CurrentUsage) {
+		return nil, false
 	}
+	return o.CurrentUsage, true
 }
 
-// Unmarshal JSON data into one of the pointers in the struct
-func (dst *DataFederationLimit) UnmarshalJSON(data []byte) error {
-	var err error
-	// use discriminator value to speed up the lookup
-	var jsonDict map[string]interface{}
-	err = newStrictDecoder(data).Decode(&jsonDict)
+// HasCurrentUsage returns a boolean if a field has been set.
+func (o *DataFederationLimit) HasCurrentUsage() bool {
+	if o != nil && !IsNil(o.CurrentUsage) {
+		return true
+	}
+
+	return false
+}
+
+// SetCurrentUsage gets a reference to the given int64 and assigns it to the CurrentUsage field.
+func (o *DataFederationLimit) SetCurrentUsage(v int64) {
+	o.CurrentUsage = &v
+}
+
+// GetDefaultLimit returns the DefaultLimit field value if set, zero value otherwise.
+func (o *DataFederationLimit) GetDefaultLimit() int64 {
+	if o == nil || IsNil(o.DefaultLimit) {
+		var ret int64
+		return ret
+	}
+	return *o.DefaultLimit
+}
+
+// GetDefaultLimitOk returns a tuple with the DefaultLimit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DataFederationLimit) GetDefaultLimitOk() (*int64, bool) {
+	if o == nil || IsNil(o.DefaultLimit) {
+		return nil, false
+	}
+	return o.DefaultLimit, true
+}
+
+// HasDefaultLimit returns a boolean if a field has been set.
+func (o *DataFederationLimit) HasDefaultLimit() bool {
+	if o != nil && !IsNil(o.DefaultLimit) {
+		return true
+	}
+
+	return false
+}
+
+// SetDefaultLimit gets a reference to the given int64 and assigns it to the DefaultLimit field.
+func (o *DataFederationLimit) SetDefaultLimit(v int64) {
+	o.DefaultLimit = &v
+}
+
+// GetMaximumLimit returns the MaximumLimit field value if set, zero value otherwise.
+func (o *DataFederationLimit) GetMaximumLimit() int64 {
+	if o == nil || IsNil(o.MaximumLimit) {
+		var ret int64
+		return ret
+	}
+	return *o.MaximumLimit
+}
+
+// GetMaximumLimitOk returns a tuple with the MaximumLimit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DataFederationLimit) GetMaximumLimitOk() (*int64, bool) {
+	if o == nil || IsNil(o.MaximumLimit) {
+		return nil, false
+	}
+	return o.MaximumLimit, true
+}
+
+// HasMaximumLimit returns a boolean if a field has been set.
+func (o *DataFederationLimit) HasMaximumLimit() bool {
+	if o != nil && !IsNil(o.MaximumLimit) {
+		return true
+	}
+
+	return false
+}
+
+// SetMaximumLimit gets a reference to the given int64 and assigns it to the MaximumLimit field.
+func (o *DataFederationLimit) SetMaximumLimit(v int64) {
+	o.MaximumLimit = &v
+}
+
+// GetName returns the Name field value
+func (o *DataFederationLimit) GetName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value
+// and a boolean to check if the value has been set.
+func (o *DataFederationLimit) GetNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Name, true
+}
+
+// SetName sets field value
+func (o *DataFederationLimit) SetName(v string) {
+	o.Name = v
+}
+
+// GetValue returns the Value field value
+func (o *DataFederationLimit) GetValue() int64 {
+	if o == nil {
+		var ret int64
+		return ret
+	}
+
+	return o.Value
+}
+
+// GetValueOk returns a tuple with the Value field value
+// and a boolean to check if the value has been set.
+func (o *DataFederationLimit) GetValueOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Value, true
+}
+
+// SetValue sets field value
+func (o *DataFederationLimit) SetValue(v int64) {
+	o.Value = v
+}
+
+// GetLastModifiedDate returns the LastModifiedDate field value if set, zero value otherwise.
+func (o *DataFederationLimit) GetLastModifiedDate() time.Time {
+	if o == nil || IsNil(o.LastModifiedDate) {
+		var ret time.Time
+		return ret
+	}
+	return *o.LastModifiedDate
+}
+
+// GetLastModifiedDateOk returns a tuple with the LastModifiedDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DataFederationLimit) GetLastModifiedDateOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.LastModifiedDate) {
+		return nil, false
+	}
+	return o.LastModifiedDate, true
+}
+
+// HasLastModifiedDate returns a boolean if a field has been set.
+func (o *DataFederationLimit) HasLastModifiedDate() bool {
+	if o != nil && !IsNil(o.LastModifiedDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetLastModifiedDate gets a reference to the given time.Time and assigns it to the LastModifiedDate field.
+func (o *DataFederationLimit) SetLastModifiedDate(v time.Time) {
+	o.LastModifiedDate = &v
+}
+
+// GetOverrunPolicy returns the OverrunPolicy field value if set, zero value otherwise.
+func (o *DataFederationLimit) GetOverrunPolicy() string {
+	if o == nil || IsNil(o.OverrunPolicy) {
+		var ret string
+		return ret
+	}
+	return *o.OverrunPolicy
+}
+
+// GetOverrunPolicyOk returns a tuple with the OverrunPolicy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DataFederationLimit) GetOverrunPolicyOk() (*string, bool) {
+	if o == nil || IsNil(o.OverrunPolicy) {
+		return nil, false
+	}
+	return o.OverrunPolicy, true
+}
+
+// HasOverrunPolicy returns a boolean if a field has been set.
+func (o *DataFederationLimit) HasOverrunPolicy() bool {
+	if o != nil && !IsNil(o.OverrunPolicy) {
+		return true
+	}
+
+	return false
+}
+
+// SetOverrunPolicy gets a reference to the given string and assigns it to the OverrunPolicy field.
+func (o *DataFederationLimit) SetOverrunPolicy(v string) {
+	o.OverrunPolicy = &v
+}
+
+func (o DataFederationLimit) MarshalJSONWithoutReadOnly() ([]byte, error) {
+	toSerialize, err := o.ToMap()
 	if err != nil {
-		return fmt.Errorf("failed to unmarshal JSON into map for the discriminator lookup")
+		return []byte{}, err
 	}
-
-	// check if the discriminator value is 'DataFederationQueryLimit'
-	if jsonDict["name"] == "DataFederationQueryLimit" {
-		// try to unmarshal JSON data into DataFederationQueryLimit
-		err = json.Unmarshal(data, &dst.DataFederationQueryLimit)
-		if err == nil {
-			return nil // data stored in dst.DataFederationQueryLimit, return on the first match
-		} else {
-			dst.DataFederationQueryLimit = nil
-			return fmt.Errorf("failed to unmarshal DataFederationLimit as DataFederationQueryLimit: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'DefaultLimit'
-	if jsonDict["name"] == "DefaultLimit" {
-		// try to unmarshal JSON data into DefaultLimit
-		err = json.Unmarshal(data, &dst.DefaultLimit)
-		if err == nil {
-			return nil // data stored in dst.DefaultLimit, return on the first match
-		} else {
-			dst.DefaultLimit = nil
-			return fmt.Errorf("failed to unmarshal DataFederationLimit as DefaultLimit: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'atlas.project.deployment.clusters'
-	if jsonDict["name"] == "atlas.project.deployment.clusters" {
-		// try to unmarshal JSON data into DefaultLimit
-		err = json.Unmarshal(data, &dst.DefaultLimit)
-		if err == nil {
-			return nil // data stored in dst.DefaultLimit, return on the first match
-		} else {
-			dst.DefaultLimit = nil
-			return fmt.Errorf("failed to unmarshal DataFederationLimit as DefaultLimit: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'atlas.project.deployment.nodesPerPrivateLinkRegion'
-	if jsonDict["name"] == "atlas.project.deployment.nodesPerPrivateLinkRegion" {
-		// try to unmarshal JSON data into DefaultLimit
-		err = json.Unmarshal(data, &dst.DefaultLimit)
-		if err == nil {
-			return nil // data stored in dst.DefaultLimit, return on the first match
-		} else {
-			dst.DefaultLimit = nil
-			return fmt.Errorf("failed to unmarshal DataFederationLimit as DefaultLimit: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'atlas.project.security.databaseAccess.customRoles'
-	if jsonDict["name"] == "atlas.project.security.databaseAccess.customRoles" {
-		// try to unmarshal JSON data into DefaultLimit
-		err = json.Unmarshal(data, &dst.DefaultLimit)
-		if err == nil {
-			return nil // data stored in dst.DefaultLimit, return on the first match
-		} else {
-			dst.DefaultLimit = nil
-			return fmt.Errorf("failed to unmarshal DataFederationLimit as DefaultLimit: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'atlas.project.security.databaseAccess.users'
-	if jsonDict["name"] == "atlas.project.security.databaseAccess.users" {
-		// try to unmarshal JSON data into DefaultLimit
-		err = json.Unmarshal(data, &dst.DefaultLimit)
-		if err == nil {
-			return nil // data stored in dst.DefaultLimit, return on the first match
-		} else {
-			dst.DefaultLimit = nil
-			return fmt.Errorf("failed to unmarshal DataFederationLimit as DefaultLimit: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'atlas.project.security.networkAccess.crossRegionEntries'
-	if jsonDict["name"] == "atlas.project.security.networkAccess.crossRegionEntries" {
-		// try to unmarshal JSON data into DefaultLimit
-		err = json.Unmarshal(data, &dst.DefaultLimit)
-		if err == nil {
-			return nil // data stored in dst.DefaultLimit, return on the first match
-		} else {
-			dst.DefaultLimit = nil
-			return fmt.Errorf("failed to unmarshal DataFederationLimit as DefaultLimit: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'atlas.project.security.networkAccess.entries'
-	if jsonDict["name"] == "atlas.project.security.networkAccess.entries" {
-		// try to unmarshal JSON data into DefaultLimit
-		err = json.Unmarshal(data, &dst.DefaultLimit)
-		if err == nil {
-			return nil // data stored in dst.DefaultLimit, return on the first match
-		} else {
-			dst.DefaultLimit = nil
-			return fmt.Errorf("failed to unmarshal DataFederationLimit as DefaultLimit: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'dataFederation.bytesProcessed.daily'
-	if jsonDict["name"] == "dataFederation.bytesProcessed.daily" {
-		// try to unmarshal JSON data into DataFederationQueryLimit
-		err = json.Unmarshal(data, &dst.DataFederationQueryLimit)
-		if err == nil {
-			return nil // data stored in dst.DataFederationQueryLimit, return on the first match
-		} else {
-			dst.DataFederationQueryLimit = nil
-			return fmt.Errorf("failed to unmarshal DataFederationLimit as DataFederationQueryLimit: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'dataFederation.bytesProcessed.monthly'
-	if jsonDict["name"] == "dataFederation.bytesProcessed.monthly" {
-		// try to unmarshal JSON data into DataFederationQueryLimit
-		err = json.Unmarshal(data, &dst.DataFederationQueryLimit)
-		if err == nil {
-			return nil // data stored in dst.DataFederationQueryLimit, return on the first match
-		} else {
-			dst.DataFederationQueryLimit = nil
-			return fmt.Errorf("failed to unmarshal DataFederationLimit as DataFederationQueryLimit: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'dataFederation.bytesProcessed.query'
-	if jsonDict["name"] == "dataFederation.bytesProcessed.query" {
-		// try to unmarshal JSON data into DataFederationQueryLimit
-		err = json.Unmarshal(data, &dst.DataFederationQueryLimit)
-		if err == nil {
-			return nil // data stored in dst.DataFederationQueryLimit, return on the first match
-		} else {
-			dst.DataFederationQueryLimit = nil
-			return fmt.Errorf("failed to unmarshal DataFederationLimit as DataFederationQueryLimit: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'dataFederation.bytesProcessed.weekly'
-	if jsonDict["name"] == "dataFederation.bytesProcessed.weekly" {
-		// try to unmarshal JSON data into DataFederationQueryLimit
-		err = json.Unmarshal(data, &dst.DataFederationQueryLimit)
-		if err == nil {
-			return nil // data stored in dst.DataFederationQueryLimit, return on the first match
-		} else {
-			dst.DataFederationQueryLimit = nil
-			return fmt.Errorf("failed to unmarshal DataFederationLimit as DataFederationQueryLimit: %s", err.Error())
-		}
-	}
-
-	return nil
+	return json.Marshal(toSerialize)
 }
-
-// Marshal data from the first non-nil pointers in the struct to JSON
-func (src DataFederationLimit) MarshalJSON() ([]byte, error) {
-	if src.DataFederationQueryLimit != nil {
-		return json.Marshal(&src.DataFederationQueryLimit)
+func (o DataFederationLimit) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["value"] = o.Value
+	if !IsNil(o.OverrunPolicy) {
+		toSerialize["overrunPolicy"] = o.OverrunPolicy
 	}
-
-	if src.DefaultLimit != nil {
-		return json.Marshal(&src.DefaultLimit)
-	}
-
-	return nil, nil // no data in oneOf schemas
-}
-
-// Get the actual instance
-func (obj *DataFederationLimit) GetActualInstance() interface{} {
-	if obj == nil {
-		return nil
-	}
-	if obj.DataFederationQueryLimit != nil {
-		return obj.DataFederationQueryLimit
-	}
-
-	if obj.DefaultLimit != nil {
-		return obj.DefaultLimit
-	}
-
-	// all schemas are nil
-	return nil
+	return toSerialize, nil
 }
 
 type NullableDataFederationLimit struct {

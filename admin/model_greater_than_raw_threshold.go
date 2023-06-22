@@ -6,11 +6,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the AlertsThresholdInteger type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AlertsThresholdInteger{}
+// checks if the GreaterThanRawThreshold type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &GreaterThanRawThreshold{}
 
-// AlertsThresholdInteger A Limit that triggers an alert when  exceeded. The resource returns this parameter when **eventTypeName** has not been set to `OUTSIDE_METRIC_THRESHOLD`.
-type AlertsThresholdInteger struct {
+// GreaterThanRawThreshold A Limit that triggers an alert when greater than a number.
+type GreaterThanRawThreshold struct {
 	// Comparison operator to apply when checking the current metric value.
 	Operator *string `json:"operator,omitempty"`
 	// Value of metric that, when exceeded, triggers an alert.
@@ -19,25 +19,29 @@ type AlertsThresholdInteger struct {
 	Units *string `json:"units,omitempty"`
 }
 
-// NewAlertsThresholdInteger instantiates a new AlertsThresholdInteger object
+// NewGreaterThanRawThreshold instantiates a new GreaterThanRawThreshold object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAlertsThresholdInteger() *AlertsThresholdInteger {
-	this := AlertsThresholdInteger{}
+func NewGreaterThanRawThreshold() *GreaterThanRawThreshold {
+	this := GreaterThanRawThreshold{}
+	var units string = "RAW"
+	this.Units = &units
 	return &this
 }
 
-// NewAlertsThresholdIntegerWithDefaults instantiates a new AlertsThresholdInteger object
+// NewGreaterThanRawThresholdWithDefaults instantiates a new GreaterThanRawThreshold object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewAlertsThresholdIntegerWithDefaults() *AlertsThresholdInteger {
-	this := AlertsThresholdInteger{}
+func NewGreaterThanRawThresholdWithDefaults() *GreaterThanRawThreshold {
+	this := GreaterThanRawThreshold{}
+	var units string = "RAW"
+	this.Units = &units
 	return &this
 }
 
 // GetOperator returns the Operator field value if set, zero value otherwise.
-func (o *AlertsThresholdInteger) GetOperator() string {
+func (o *GreaterThanRawThreshold) GetOperator() string {
 	if o == nil || IsNil(o.Operator) {
 		var ret string
 		return ret
@@ -47,7 +51,7 @@ func (o *AlertsThresholdInteger) GetOperator() string {
 
 // GetOperatorOk returns a tuple with the Operator field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AlertsThresholdInteger) GetOperatorOk() (*string, bool) {
+func (o *GreaterThanRawThreshold) GetOperatorOk() (*string, bool) {
 	if o == nil || IsNil(o.Operator) {
 		return nil, false
 	}
@@ -55,7 +59,7 @@ func (o *AlertsThresholdInteger) GetOperatorOk() (*string, bool) {
 }
 
 // HasOperator returns a boolean if a field has been set.
-func (o *AlertsThresholdInteger) HasOperator() bool {
+func (o *GreaterThanRawThreshold) HasOperator() bool {
 	if o != nil && !IsNil(o.Operator) {
 		return true
 	}
@@ -64,12 +68,12 @@ func (o *AlertsThresholdInteger) HasOperator() bool {
 }
 
 // SetOperator gets a reference to the given string and assigns it to the Operator field.
-func (o *AlertsThresholdInteger) SetOperator(v string) {
+func (o *GreaterThanRawThreshold) SetOperator(v string) {
 	o.Operator = &v
 }
 
 // GetThreshold returns the Threshold field value if set, zero value otherwise.
-func (o *AlertsThresholdInteger) GetThreshold() int {
+func (o *GreaterThanRawThreshold) GetThreshold() int {
 	if o == nil || IsNil(o.Threshold) {
 		var ret int
 		return ret
@@ -79,7 +83,7 @@ func (o *AlertsThresholdInteger) GetThreshold() int {
 
 // GetThresholdOk returns a tuple with the Threshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AlertsThresholdInteger) GetThresholdOk() (*int, bool) {
+func (o *GreaterThanRawThreshold) GetThresholdOk() (*int, bool) {
 	if o == nil || IsNil(o.Threshold) {
 		return nil, false
 	}
@@ -87,7 +91,7 @@ func (o *AlertsThresholdInteger) GetThresholdOk() (*int, bool) {
 }
 
 // HasThreshold returns a boolean if a field has been set.
-func (o *AlertsThresholdInteger) HasThreshold() bool {
+func (o *GreaterThanRawThreshold) HasThreshold() bool {
 	if o != nil && !IsNil(o.Threshold) {
 		return true
 	}
@@ -96,12 +100,12 @@ func (o *AlertsThresholdInteger) HasThreshold() bool {
 }
 
 // SetThreshold gets a reference to the given int and assigns it to the Threshold field.
-func (o *AlertsThresholdInteger) SetThreshold(v int) {
+func (o *GreaterThanRawThreshold) SetThreshold(v int) {
 	o.Threshold = &v
 }
 
 // GetUnits returns the Units field value if set, zero value otherwise.
-func (o *AlertsThresholdInteger) GetUnits() string {
+func (o *GreaterThanRawThreshold) GetUnits() string {
 	if o == nil || IsNil(o.Units) {
 		var ret string
 		return ret
@@ -111,7 +115,7 @@ func (o *AlertsThresholdInteger) GetUnits() string {
 
 // GetUnitsOk returns a tuple with the Units field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AlertsThresholdInteger) GetUnitsOk() (*string, bool) {
+func (o *GreaterThanRawThreshold) GetUnitsOk() (*string, bool) {
 	if o == nil || IsNil(o.Units) {
 		return nil, false
 	}
@@ -119,7 +123,7 @@ func (o *AlertsThresholdInteger) GetUnitsOk() (*string, bool) {
 }
 
 // HasUnits returns a boolean if a field has been set.
-func (o *AlertsThresholdInteger) HasUnits() bool {
+func (o *GreaterThanRawThreshold) HasUnits() bool {
 	if o != nil && !IsNil(o.Units) {
 		return true
 	}
@@ -128,18 +132,18 @@ func (o *AlertsThresholdInteger) HasUnits() bool {
 }
 
 // SetUnits gets a reference to the given string and assigns it to the Units field.
-func (o *AlertsThresholdInteger) SetUnits(v string) {
+func (o *GreaterThanRawThreshold) SetUnits(v string) {
 	o.Units = &v
 }
 
-func (o AlertsThresholdInteger) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o GreaterThanRawThreshold) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o AlertsThresholdInteger) ToMap() (map[string]interface{}, error) {
+func (o GreaterThanRawThreshold) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Operator) {
 		toSerialize["operator"] = o.Operator
@@ -153,38 +157,38 @@ func (o AlertsThresholdInteger) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableAlertsThresholdInteger struct {
-	value *AlertsThresholdInteger
+type NullableGreaterThanRawThreshold struct {
+	value *GreaterThanRawThreshold
 	isSet bool
 }
 
-func (v NullableAlertsThresholdInteger) Get() *AlertsThresholdInteger {
+func (v NullableGreaterThanRawThreshold) Get() *GreaterThanRawThreshold {
 	return v.value
 }
 
-func (v *NullableAlertsThresholdInteger) Set(val *AlertsThresholdInteger) {
+func (v *NullableGreaterThanRawThreshold) Set(val *GreaterThanRawThreshold) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableAlertsThresholdInteger) IsSet() bool {
+func (v NullableGreaterThanRawThreshold) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableAlertsThresholdInteger) Unset() {
+func (v *NullableGreaterThanRawThreshold) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableAlertsThresholdInteger(val *AlertsThresholdInteger) *NullableAlertsThresholdInteger {
-	return &NullableAlertsThresholdInteger{value: val, isSet: true}
+func NewNullableGreaterThanRawThreshold(val *GreaterThanRawThreshold) *NullableGreaterThanRawThreshold {
+	return &NullableGreaterThanRawThreshold{value: val, isSet: true}
 }
 
-func (v NullableAlertsThresholdInteger) MarshalJSON() ([]byte, error) {
+func (v NullableGreaterThanRawThreshold) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableAlertsThresholdInteger) UnmarshalJSON(src []byte) error {
+func (v *NullableGreaterThanRawThreshold) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -4,78 +4,187 @@ package admin
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
-// IngestionSink - Ingestion destination of a Data Lake Pipeline.
+// checks if the IngestionSink type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &IngestionSink{}
+
+// IngestionSink Ingestion destination of a Data Lake Pipeline.
 type IngestionSink struct {
-	DLSIngestionSink *DLSIngestionSink
+	// Type of ingestion destination of this Data Lake Pipeline.
+	Type *string `json:"type,omitempty"`
+	// Target cloud provider for this Data Lake Pipeline.
+	MetadataProvider *string `json:"metadataProvider,omitempty"`
+	// Target cloud provider region for this Data Lake Pipeline.
+	MetadataRegion *string `json:"metadataRegion,omitempty"`
+	// Ordered fields used to physically organize data in the destination.
+	PartitionFields []DataLakePipelinesPartitionField `json:"partitionFields,omitempty"`
 }
 
-// DLSIngestionSinkAsIngestionSink is a convenience function that returns DLSIngestionSink wrapped in IngestionSink
-func DLSIngestionSinkAsIngestionSink(v *DLSIngestionSink) IngestionSink {
-	return IngestionSink{
-		DLSIngestionSink: v,
+// NewIngestionSink instantiates a new IngestionSink object
+// This constructor will assign default values to properties that have it defined,
+// and makes sure properties required by API are set, but the set of arguments
+// will change when the set of required properties is changed
+func NewIngestionSink() *IngestionSink {
+	this := IngestionSink{}
+	return &this
+}
+
+// NewIngestionSinkWithDefaults instantiates a new IngestionSink object
+// This constructor will only assign default values to properties that have it defined,
+// but it doesn't guarantee that properties required by API are set
+func NewIngestionSinkWithDefaults() *IngestionSink {
+	this := IngestionSink{}
+	return &this
+}
+
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *IngestionSink) GetType() string {
+	if o == nil || IsNil(o.Type) {
+		var ret string
+		return ret
 	}
+	return *o.Type
 }
 
-// Unmarshal JSON data into one of the pointers in the struct
-func (dst *IngestionSink) UnmarshalJSON(data []byte) error {
-	var err error
-	// use discriminator value to speed up the lookup
-	var jsonDict map[string]interface{}
-	err = newStrictDecoder(data).Decode(&jsonDict)
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IngestionSink) GetTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *IngestionSink) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *IngestionSink) SetType(v string) {
+	o.Type = &v
+}
+
+// GetMetadataProvider returns the MetadataProvider field value if set, zero value otherwise.
+func (o *IngestionSink) GetMetadataProvider() string {
+	if o == nil || IsNil(o.MetadataProvider) {
+		var ret string
+		return ret
+	}
+	return *o.MetadataProvider
+}
+
+// GetMetadataProviderOk returns a tuple with the MetadataProvider field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IngestionSink) GetMetadataProviderOk() (*string, bool) {
+	if o == nil || IsNil(o.MetadataProvider) {
+		return nil, false
+	}
+	return o.MetadataProvider, true
+}
+
+// HasMetadataProvider returns a boolean if a field has been set.
+func (o *IngestionSink) HasMetadataProvider() bool {
+	if o != nil && !IsNil(o.MetadataProvider) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadataProvider gets a reference to the given string and assigns it to the MetadataProvider field.
+func (o *IngestionSink) SetMetadataProvider(v string) {
+	o.MetadataProvider = &v
+}
+
+// GetMetadataRegion returns the MetadataRegion field value if set, zero value otherwise.
+func (o *IngestionSink) GetMetadataRegion() string {
+	if o == nil || IsNil(o.MetadataRegion) {
+		var ret string
+		return ret
+	}
+	return *o.MetadataRegion
+}
+
+// GetMetadataRegionOk returns a tuple with the MetadataRegion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IngestionSink) GetMetadataRegionOk() (*string, bool) {
+	if o == nil || IsNil(o.MetadataRegion) {
+		return nil, false
+	}
+	return o.MetadataRegion, true
+}
+
+// HasMetadataRegion returns a boolean if a field has been set.
+func (o *IngestionSink) HasMetadataRegion() bool {
+	if o != nil && !IsNil(o.MetadataRegion) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadataRegion gets a reference to the given string and assigns it to the MetadataRegion field.
+func (o *IngestionSink) SetMetadataRegion(v string) {
+	o.MetadataRegion = &v
+}
+
+// GetPartitionFields returns the PartitionFields field value if set, zero value otherwise.
+func (o *IngestionSink) GetPartitionFields() []DataLakePipelinesPartitionField {
+	if o == nil || IsNil(o.PartitionFields) {
+		var ret []DataLakePipelinesPartitionField
+		return ret
+	}
+	return o.PartitionFields
+}
+
+// GetPartitionFieldsOk returns a tuple with the PartitionFields field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IngestionSink) GetPartitionFieldsOk() ([]DataLakePipelinesPartitionField, bool) {
+	if o == nil || IsNil(o.PartitionFields) {
+		return nil, false
+	}
+	return o.PartitionFields, true
+}
+
+// HasPartitionFields returns a boolean if a field has been set.
+func (o *IngestionSink) HasPartitionFields() bool {
+	if o != nil && !IsNil(o.PartitionFields) {
+		return true
+	}
+
+	return false
+}
+
+// SetPartitionFields gets a reference to the given []DataLakePipelinesPartitionField and assigns it to the PartitionFields field.
+func (o *IngestionSink) SetPartitionFields(v []DataLakePipelinesPartitionField) {
+	o.PartitionFields = v
+}
+
+func (o IngestionSink) MarshalJSONWithoutReadOnly() ([]byte, error) {
+	toSerialize, err := o.ToMap()
 	if err != nil {
-		return fmt.Errorf("failed to unmarshal JSON into map for the discriminator lookup")
+		return []byte{}, err
 	}
-
-	// check if the discriminator value is 'DLS'
-	if jsonDict["type"] == "DLS" {
-		// try to unmarshal JSON data into DLSIngestionSink
-		err = json.Unmarshal(data, &dst.DLSIngestionSink)
-		if err == nil {
-			return nil // data stored in dst.DLSIngestionSink, return on the first match
-		} else {
-			dst.DLSIngestionSink = nil
-			return fmt.Errorf("failed to unmarshal IngestionSink as DLSIngestionSink: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'DLSIngestionSink'
-	if jsonDict["type"] == "DLSIngestionSink" {
-		// try to unmarshal JSON data into DLSIngestionSink
-		err = json.Unmarshal(data, &dst.DLSIngestionSink)
-		if err == nil {
-			return nil // data stored in dst.DLSIngestionSink, return on the first match
-		} else {
-			dst.DLSIngestionSink = nil
-			return fmt.Errorf("failed to unmarshal IngestionSink as DLSIngestionSink: %s", err.Error())
-		}
-	}
-
-	return nil
+	return json.Marshal(toSerialize)
 }
-
-// Marshal data from the first non-nil pointers in the struct to JSON
-func (src IngestionSink) MarshalJSON() ([]byte, error) {
-	if src.DLSIngestionSink != nil {
-		return json.Marshal(&src.DLSIngestionSink)
+func (o IngestionSink) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.MetadataProvider) {
+		toSerialize["metadataProvider"] = o.MetadataProvider
 	}
-
-	return nil, nil // no data in oneOf schemas
-}
-
-// Get the actual instance
-func (obj *IngestionSink) GetActualInstance() interface{} {
-	if obj == nil {
-		return nil
+	if !IsNil(o.MetadataRegion) {
+		toSerialize["metadataRegion"] = o.MetadataRegion
 	}
-	if obj.DLSIngestionSink != nil {
-		return obj.DLSIngestionSink
+	if !IsNil(o.PartitionFields) {
+		toSerialize["partitionFields"] = o.PartitionFields
 	}
-
-	// all schemas are nil
-	return nil
+	return toSerialize, nil
 }
 
 type NullableIngestionSink struct {

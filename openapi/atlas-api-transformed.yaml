@@ -19681,6 +19681,40 @@ components:
         - databaseName
         - roleName
       title: Database User Role
+    Datadog:
+      type: object
+      description: Details to integrate one Datadog account with one MongoDB Cloud project.
+      properties:
+        apiKey:
+          type: string
+          description: >-
+            Key that allows MongoDB Cloud to access your Datadog account.
+
+
+            **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
+
+
+            * View or edit the alert through the Atlas UI.
+
+
+            * Query the alert for the notification through the Atlas Administration API.
+          example: "****************************a23c"
+        region:
+          type: string
+          description: >-
+            Two-letter code that indicates which regional URL MongoDB uses to
+            access the Datadog API.
+
+
+            To learn more about Datadog's regions, see <a href="https://docs.datadoghq.com/getting_started/site/" target="_blank" rel="noopener noreferrer">Datadog Sites</a>.
+        type:
+          type: string
+          description: Human-readable label that identifies the service to which you want
+            to integrate with MongoDB Cloud. The value must match the
+            third-party service integration type.
+      required:
+        - apiKey
+      title: DATADOG
     DedicatedHardwareSpec:
       type: object
       description: Hardware specifications for read-only nodes in the region.
@@ -23280,6 +23314,28 @@ components:
           description: Element used to quantify the measurement. The resource returns
             units of throughput, storage, and time.
           readOnly: true
+    MicrosoftTeams:
+      type: object
+      description: Details to integrate one Microsoft Teams account with one MongoDB
+        Cloud project.
+      properties:
+        microsoftTeamsWebhookUrl:
+          type: string
+          description: >-
+            Endpoint web address of the Microsoft Teams webhook to which
+            MongoDB Cloud sends notifications.
+
+
+            **NOTE**: When you view or edit the alert for a Microsoft Teams notification, the URL appears partially redacted.
+          example: https://webhook.com/****
+        type:
+          type: string
+          description: Human-readable label that identifies the service to which you want
+            to integrate with MongoDB Cloud. The value must match the
+            third-party service integration type.
+      required:
+        - microsoftTeamsWebhookUrl
+      title: MICROSOFT_TEAMS
     MongoDBAccessLogs:
       type: object
       description: Authentication attempt, one per object, made against the cluster.
@@ -23454,6 +23510,59 @@ components:
           readOnly: true
       required:
         - STATUS
+    NewRelic:
+      type: object
+      description: >-
+        Details to integrate one New Relic account with one MongoDB Cloud
+        project.
+
+
+        ***IMPORTANT**: Effective Wednesday, June 16th, 2021, New Relic no longer supports the plugin-based integration with MongoDB. We do not recommend that you sign up for the plugin-based integration.
+
+
+        To learn more, see the <a href="https://discuss.newrelic.com/t/new-relic-plugin-eol-wednesday-june-16th-2021/127267" target="_blank">New Relic Plugin EOL Statement</a>. Consider configuring an alternative monitoring integration before June 16th to maintain visibility into your MongoDB deployments.
+      properties:
+        accountId:
+          type: string
+          description: Unique 40-hexadecimal digit string that identifies your New Relic
+            account.
+          example: bcc3c81b344a6030a3935c2527e2216535af7718
+          maxLength: 40
+          minLength: 40
+          pattern: ^([0-9a-f]){40}$
+        licenseKey:
+          type: string
+          description: >-
+            Unique 40-hexadecimal digit string that identifies your New Relic
+            license.
+
+
+            **IMPORTANT**: Effective Wednesday, June 16th, 2021, New Relic no longer supports the plugin-based integration with MongoDB. We do not recommend that you sign up for the plugin-based integration.
+
+            To learn more, see the <a href="https://discuss.newrelic.com/t/new-relic-plugin-eol-wednesday-june-16th-2021/127267" target="_blank">New Relic Plugin EOL Statement</a> Consider configuring an alternative monitoring integration before June 16th to maintain visibility into your MongoDB deployments.
+          example: bc3768f44193c282b2688ab39e00f8e4fc8d75ea
+          maxLength: 40
+          minLength: 40
+          pattern: ^([0-9a-f]){40}$
+        readToken:
+          type: string
+          description: Query key used to access your New Relic account.
+          example: 193c96aee4a3ac640b98634562e2631f17ae0a69
+        type:
+          type: string
+          description: Human-readable label that identifies the service to which you want
+            to integrate with MongoDB Cloud. The value must match the
+            third-party service integration type.
+        writeToken:
+          type: string
+          description: Insert key associated with your New Relic account.
+          example: a67b10e5cd7f8fb6a34b501136c409f373edc218
+      required:
+        - accountId
+        - licenseKey
+        - readToken
+        - writeToken
+      title: NEW_RELIC
     NumberMetricUnits:
       type: string
       description: Element used to express the quantity. This can be an element of
@@ -23513,6 +23622,37 @@ components:
     Operator:
       type: string
       description: Comparison operator to apply when checking the current metric value.
+    OpsGenie:
+      type: object
+      description: Details to integrate one Opsgenie account with one MongoDB Cloud project.
+      properties:
+        apiKey:
+          type: string
+          description: >-
+            Key that allows MongoDB Cloud to access your Opsgenie account.
+
+
+            **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
+
+
+            * View or edit the alert through the Atlas UI.
+
+
+            * Query the alert for the notification through the Atlas Administration API.
+          example: "********************************a111"
+        region:
+          type: string
+          default: US
+          description: Two-letter code that indicates which regional URL MongoDB uses to
+            access the Opsgenie API.
+        type:
+          type: string
+          description: Human-readable label that identifies the service to which you want
+            to integrate with MongoDB Cloud. The value must match the
+            third-party service integration type.
+      required:
+        - apiKey
+      title: OPS_GENIE
     OrgFederationSettings:
       type: object
       description: Details that define how to connect one MongoDB Cloud organization
@@ -23750,6 +23890,37 @@ components:
             the Atlas deployment to resolve support issues. To learn more, see:
             https://www.mongodb.com/docs/atlas/security-restrict-support-access\
             /."
+    PagerDuty:
+      type: object
+      description: Details to integrate one PagerDuty account with one MongoDB Cloud
+        project.
+      properties:
+        region:
+          type: string
+          description: PagerDuty region that indicates the API Uniform Resource Locator
+            (URL) to use.
+        serviceKey:
+          type: string
+          description: >-
+            Service key associated with your PagerDuty account.
+
+
+            **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
+
+
+            * View or edit the alert through the Atlas UI.
+
+
+            * Query the alert for the notification through the Atlas Administration API.
+          example: "****************************7890"
+        type:
+          type: string
+          description: Human-readable label that identifies the service to which you want
+            to integrate with MongoDB Cloud. The value must match the
+            third-party service integration type.
+      required:
+        - serviceKey
+      title: PAGER_DUTY
     PaginatedHostView_Atlas:
       type: object
       properties:
@@ -24081,6 +24252,56 @@ components:
             with this private endpoint.
       required:
         - endpointId
+    Prometheus:
+      type: object
+      description: Details to integrate one Prometheus account with one MongoDB Cloud
+        project.
+      properties:
+        enabled:
+          type: boolean
+          description: Flag that indicates whether someone has activated the Prometheus
+            integration.
+        listenAddress:
+          type: string
+          default: :9216
+          description: Combination of IPv4 address and Internet Assigned Numbers Authority
+            (IANA) port or the IANA port alone to which Prometheus binds to
+            ingest MongoDB metrics.
+        password:
+          type: string
+          writeOnly: true
+        rateLimitInterval:
+          type: integer
+          format: int32
+          writeOnly: true
+        scheme:
+          type: string
+          description: Security Scheme to apply to HyperText Transfer Protocol (HTTP)
+            traffic between Prometheus and MongoDB Cloud.
+        serviceDiscovery:
+          type: string
+          description: Desired method to discover the Prometheus service.
+        tlsPemPath:
+          type: string
+          description: Root-relative path to the Transport Layer Security (TLS) Privacy
+            Enhanced Mail (PEM) key and certificate file on the host.
+          example: /path/to/file
+        type:
+          type: string
+          description: Human-readable label that identifies the service to which you want
+            to integrate with MongoDB Cloud. The value must match the
+            third-party service integration type.
+        username:
+          type: string
+          description: Human-readable label that identifies your Prometheus incoming
+            webhook.
+          example: prom_user_618d48e05277a606ed2496fe
+      required:
+        - enabled
+        - scheme
+        - serviceDiscovery
+        - username
+      title: PROMETHEUS
     RawMetricUnits:
       type: string
       default: RAW
@@ -24945,6 +25166,50 @@ components:
           writeOnly: true
       required:
         - providerName
+    Slack:
+      type: object
+      description: Details to integrate one Slack account with one MongoDB Cloud project.
+      properties:
+        apiToken:
+          type: string
+          description: >-
+            Key that allows MongoDB Cloud to access your Slack account.
+
+
+            **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
+
+
+            * View or edit the alert through the Atlas UI.
+
+
+            * Query the alert for the notification through the Atlas Administration API.
+
+
+            **IMPORTANT**: Slack integrations now use the OAuth2 verification method and must  be initially configured, or updated from a legacy integration, through the Atlas  third-party service integrations page. Legacy tokens will soon no longer be  supported.
+          example: "*********************************************************************\
+            *abcd"
+        channelName:
+          type: string
+          description: Name of the Slack channel to which MongoDB Cloud sends alert
+            notifications.
+          example: alerts
+          maxLength: 80
+          minLength: 1
+          nullable: true
+        teamName:
+          type: string
+          description: Human-readable label that identifies your Slack team. Set this
+            parameter when you configure a legacy Slack integration.
+          example: MongoDB
+        type:
+          type: string
+          description: Human-readable label that identifies the service to which you want
+            to integrate with MongoDB Cloud. The value must match the
+            third-party service integration type.
+      required:
+        - apiToken
+        - channelName
+      title: SLACK
     Source:
       type: object
       description: Document that describes the source of the migration.
@@ -25254,170 +25519,29 @@ components:
     ThridPartyIntegration:
       type: object
       description: Collection of settings that describe third-party integrations.
-      properties:
-        type:
-          type: string
-          description: Human-readable label that identifies the service to which you want
-            to integrate with MongoDB Cloud. The value must match the
-            third-party service integration type.
-        apiKey:
-          type: string
-          description: >-
-            Key that allows MongoDB Cloud to access your VictorOps account.
-
-
-            **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
-
-
-            * View or edit the alert through the Atlas UI.
-
-
-            * Query the alert for the notification through the Atlas Administration API.
-          example: "********************************9abc"
-        region:
-          type: string
-          description: PagerDuty region that indicates the API Uniform Resource Locator
-            (URL) to use.
-        microsoftTeamsWebhookUrl:
-          type: string
-          description: >-
-            Endpoint web address of the Microsoft Teams webhook to which
-            MongoDB Cloud sends notifications.
-
-
-            **NOTE**: When you view or edit the alert for a Microsoft Teams notification, the URL appears partially redacted.
-          example: https://webhook.com/****
-        accountId:
-          type: string
-          description: Unique 40-hexadecimal digit string that identifies your New Relic
-            account.
-          example: bcc3c81b344a6030a3935c2527e2216535af7718
-          maxLength: 40
-          minLength: 40
-          pattern: ^([0-9a-f]){40}$
-        licenseKey:
-          type: string
-          description: >-
-            Unique 40-hexadecimal digit string that identifies your New Relic
-            license.
-
-
-            **IMPORTANT**: Effective Wednesday, June 16th, 2021, New Relic no longer supports the plugin-based integration with MongoDB. We do not recommend that you sign up for the plugin-based integration.
-
-            To learn more, see the <a href="https://discuss.newrelic.com/t/new-relic-plugin-eol-wednesday-june-16th-2021/127267" target="_blank">New Relic Plugin EOL Statement</a> Consider configuring an alternative monitoring integration before June 16th to maintain visibility into your MongoDB deployments.
-          example: bc3768f44193c282b2688ab39e00f8e4fc8d75ea
-          maxLength: 40
-          minLength: 40
-          pattern: ^([0-9a-f]){40}$
-        readToken:
-          type: string
-          description: Query key used to access your New Relic account.
-          example: 193c96aee4a3ac640b98634562e2631f17ae0a69
-        writeToken:
-          type: string
-          description: Insert key associated with your New Relic account.
-          example: a67b10e5cd7f8fb6a34b501136c409f373edc218
-        serviceKey:
-          type: string
-          description: >-
-            Service key associated with your PagerDuty account.
-
-
-            **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
-
-
-            * View or edit the alert through the Atlas UI.
-
-
-            * Query the alert for the notification through the Atlas Administration API.
-          example: "****************************7890"
-        enabled:
-          type: boolean
-          description: Flag that indicates whether someone has activated the Prometheus
-            integration.
-        listenAddress:
-          type: string
-          default: :9216
-          description: Combination of IPv4 address and Internet Assigned Numbers Authority
-            (IANA) port or the IANA port alone to which Prometheus binds to
-            ingest MongoDB metrics.
-        password:
-          type: string
-          writeOnly: true
-        rateLimitInterval:
-          type: integer
-          format: int32
-          writeOnly: true
-        scheme:
-          type: string
-          description: Security Scheme to apply to HyperText Transfer Protocol (HTTP)
-            traffic between Prometheus and MongoDB Cloud.
-        serviceDiscovery:
-          type: string
-          description: Desired method to discover the Prometheus service.
-        tlsPemPath:
-          type: string
-          description: Root-relative path to the Transport Layer Security (TLS) Privacy
-            Enhanced Mail (PEM) key and certificate file on the host.
-          example: /path/to/file
-        username:
-          type: string
-          description: Human-readable label that identifies your Prometheus incoming
-            webhook.
-          example: prom_user_618d48e05277a606ed2496fe
-        apiToken:
-          type: string
-          description: >-
-            Key that allows MongoDB Cloud to access your Slack account.
-
-
-            **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
-
-
-            * View or edit the alert through the Atlas UI.
-
-
-            * Query the alert for the notification through the Atlas Administration API.
-
-
-            **IMPORTANT**: Slack integrations now use the OAuth2 verification method and must  be initially configured, or updated from a legacy integration, through the Atlas  third-party service integrations page. Legacy tokens will soon no longer be  supported.
-          example: "*********************************************************************\
-            *abcd"
-        channelName:
-          type: string
-          description: Name of the Slack channel to which MongoDB Cloud sends alert
-            notifications.
-          example: alerts
-          maxLength: 80
-          minLength: 1
-          nullable: true
-        teamName:
-          type: string
-          description: Human-readable label that identifies your Slack team. Set this
-            parameter when you configure a legacy Slack integration.
-          example: MongoDB
-        routingKey:
-          type: string
-          description: Routing key associated with your Splunk On-Call account.
-          example: test routing
-        secret:
-          type: string
-          description: >-
-            An optional field returned if your webhook is configured with a
-            secret.
-
-
-            **NOTE**: When you view or edit the alert for a webhook notification, the secret appears completely redacted.
-          example: "******"
-        url:
-          type: string
-          description: >-
-            Endpoint web address to which MongoDB Cloud sends notifications.
-
-
-            **NOTE**: When you view or edit the alert for a webhook notification, the URL appears partially redacted.
-          example: https://webhook.com/****
+      discriminator:
+        mapping:
+          DATADOG: "#/components/schemas/Datadog"
+          MICROSOFT_TEAMS: "#/components/schemas/MicrosoftTeams"
+          NEW_RELIC: "#/components/schemas/NewRelic"
+          OPS_GENIE: "#/components/schemas/OpsGenie"
+          PAGER_DUTY: "#/components/schemas/PagerDuty"
+          PROMETHEUS: "#/components/schemas/Prometheus"
+          SLACK: "#/components/schemas/Slack"
+          VICTOR_OPS: "#/components/schemas/VictorOps"
+          WEBHOOK: "#/components/schemas/Webhook"
+        propertyName: type
       title: Third-Party Integration
+      oneOf:
+        - $ref: "#/components/schemas/Datadog"
+        - $ref: "#/components/schemas/MicrosoftTeams"
+        - $ref: "#/components/schemas/NewRelic"
+        - $ref: "#/components/schemas/OpsGenie"
+        - $ref: "#/components/schemas/PagerDuty"
+        - $ref: "#/components/schemas/Prometheus"
+        - $ref: "#/components/schemas/Slack"
+        - $ref: "#/components/schemas/VictorOps"
+        - $ref: "#/components/schemas/Webhook"
     TriggerIngestionPipelineRequest:
       type: object
       properties:
@@ -25679,6 +25803,66 @@ components:
       required:
         - match
       title: User to Distinguished Name Mapping
+    VictorOps:
+      type: object
+      description: Details to integrate one Splunk On-Call account with one MongoDB
+        Cloud project.
+      properties:
+        apiKey:
+          type: string
+          description: >-
+            Key that allows MongoDB Cloud to access your VictorOps account.
+
+
+            **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
+
+
+            * View or edit the alert through the Atlas UI.
+
+
+            * Query the alert for the notification through the Atlas Administration API.
+          example: "********************************9abc"
+        routingKey:
+          type: string
+          description: Routing key associated with your Splunk On-Call account.
+          example: test routing
+        type:
+          type: string
+          description: Human-readable label that identifies the service to which you want
+            to integrate with MongoDB Cloud. The value must match the
+            third-party service integration type.
+      required:
+        - apiKey
+      title: VICTOR_OPS
+    Webhook:
+      type: object
+      description: Details to integrate one webhook with one MongoDB Cloud project.
+      properties:
+        secret:
+          type: string
+          description: >-
+            An optional field returned if your webhook is configured with a
+            secret.
+
+
+            **NOTE**: When you view or edit the alert for a webhook notification, the secret appears completely redacted.
+          example: "******"
+        type:
+          type: string
+          description: Human-readable label that identifies the service to which you want
+            to integrate with MongoDB Cloud. The value must match the
+            third-party service integration type.
+        url:
+          type: string
+          description: >-
+            Endpoint web address to which MongoDB Cloud sends notifications.
+
+
+            **NOTE**: When you view or edit the alert for a webhook notification, the URL appears partially redacted.
+          example: https://webhook.com/****
+      required:
+        - url
+      title: WEBHOOK
     X509Certificate:
       type: object
       properties:
@@ -27343,29 +27527,7 @@ components:
           type: array
           description: Filters that examine text one character at a time and perform
             filtering operations.
-          items:
-            type: object
-            properties:
-              ignoredTags:
-                type: array
-                description: The HTML tags that you want to exclude from filtering.
-                items:
-                  type: string
-              type:
-                type: string
-                description: Human-readable label that identifies this character filter type.
-              mappings:
-                type: object
-                description: >-
-                  Comma-separated list of mappings. A mapping indicates that one
-                  character or group of characters should be substituted for
-                  another, using the following format:
-
-
-                  `<original> : <replacement>`
-                properties:
-                  additionalProperties:
-                    type: string
+          items: {}
         name:
           type: string
           description: >-
@@ -27388,82 +27550,7 @@ components:
 
 
             - Redaction, the removal of sensitive information from public documents.
-          items:
-            properties:
-              originalTokens:
-                type: string
-                default: include
-                description: >-
-                  Value that indicates whether to include or omit the original tokens
-                  in the output of the token filter.
-
-
-                  Choose `include` if you want to support queries on both the original tokens as well as the converted forms.
-
-                   Choose `omit` if you want to query only on the converted forms of the original tokens.
-              type:
-                type: string
-                description: Human-readable label that identifies this token filter type.
-              maxGram:
-                type: integer
-                description: Value that specifies the maximum length of generated n-grams. This
-                  value must be greater than or equal to **minGram**.
-              minGram:
-                type: integer
-                description: Value that specifies the minimum length of generated n-grams. This
-                  value must be less than or equal to **maxGram**.
-              termNotInBounds:
-                type: string
-                default: omit
-                description: Value that indicates whether to index tokens shorter than
-                  **minGram** or longer than **maxGram**.
-              normalizationForm:
-                type: string
-                default: nfc
-                description: Normalization form to apply.
-              max:
-                type: integer
-                default: 255
-                description: Number that specifies the maximum length of a token. Value must be
-                  greater than or equal to **min**.
-              min:
-                type: integer
-                default: 0
-                description: Number that specifies the minimum length of a token. This value
-                  must be less than or equal to **max**.
-              matches:
-                type: string
-                description: Value that indicates whether to replace only the first matching
-                  pattern or all matching patterns.
-              pattern:
-                type: string
-                description: Regular expression pattern to apply to each token.
-              replacement:
-                type: string
-                description: Replacement string to substitute wherever a matching pattern
-                  occurs.
-              maxShingleSize:
-                type: integer
-                description: Value that specifies the maximum number of tokens per shingle. This
-                  value must be greater than or equal to **minShingleSize**.
-              minShingleSize:
-                type: integer
-                description: Value that specifies the minimum number of tokens per shingle. This
-                  value must be less than or equal to **maxShingleSize**.
-              stemmerName:
-                type: string
-                description: Snowball-generated stemmer to use.
-              ignoreCase:
-                type: boolean
-                default: true
-                description: Flag that indicates whether to ignore the case of stop words when
-                  filtering the tokens to remove.
-              tokens:
-                type: array
-                description: The stop words that correspond to the tokens to remove. Value must
-                  be one or more stop words.
-                items:
-                  type: string
+          items: {}
         tokenizer:
           type: object
           description: Tokenizer that you want to use to create tokens. Tokens determine
