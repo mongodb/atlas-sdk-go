@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ProviderName** | **string** |  | 
 **AutoScaling** | Pointer to [**ClusterFreeAutoScaling**](ClusterFreeAutoScaling.md) |  | [optional] 
 **DiskIOPS** | Pointer to **int** | Maximum Disk Input/Output Operations per Second (IOPS) that the database host can perform. | [optional] 
 **EncryptEBSVolume** | Pointer to **bool** | Flag that indicates whether the Amazon Elastic Block Store (EBS) encryption feature encrypts the host&#39;s root volume for both data at rest within the volume and for data moving between the volume and the cluster. Clusters always have this setting enabled. | [optional] [default to true]
 **InstanceSizeName** | Pointer to **string** | Cluster tier, with a default storage and memory capacity, that applies to all the data-bearing hosts in your cluster. You must set **providerSettings.providerName** to &#x60;TENANT&#x60; and specify the cloud service provider in **providerSettings.backingProviderName**. | [optional] 
 **RegionName** | Pointer to **string** | Human-readable label that identifies the geographic location of your MongoDB cluster. The region you choose can affect network latency for clients accessing your databases. For a complete list of region names, see [AWS](https://docs.atlas.mongodb.com/reference/amazon-aws/#std-label-amazon-aws), [GCP](https://docs.atlas.mongodb.com/reference/google-gcp/), and [Azure](https://docs.atlas.mongodb.com/reference/microsoft-azure/). For multi-region clusters, see **replicationSpec.{region}**. | [optional] 
 **VolumeType** | Pointer to **string** | Disk Input/Output Operations per Second (IOPS) setting for Amazon Web Services (AWS) storage that you configure only for abbr title&#x3D;\&quot;Amazon Web Services\&quot;&gt;AWS&lt;/abbr&gt;. Specify whether Disk Input/Output Operations per Second (IOPS) must not exceed the default Input/Output Operations per Second (IOPS) rate for the selected volume size (&#x60;STANDARD&#x60;), or must fall within the allowable Input/Output Operations per Second (IOPS) range for the selected volume size (&#x60;PROVISIONED&#x60;). | [optional] 
-**ProviderName** | **string** |  | 
 **DiskTypeName** | Pointer to **string** | Disk type that corresponds to the host&#39;s root volume for Azure instances. If omitted, the default disk type for the selected **providerSettings.instanceSizeName** applies. | [optional] 
 **BackingProviderName** | Pointer to **string** | Cloud service provider on which MongoDB Cloud provisioned the multi-tenant host. The resource returns this parameter when **providerSettings.providerName** is &#x60;TENANT&#x60; and **providerSetting.instanceSizeName** is &#x60;M2&#x60; or &#x60;M5&#x60;. | [optional] 
 
@@ -32,6 +32,26 @@ will change when the set of required properties is changed
 NewClusterProviderSettingsWithDefaults instantiates a new ClusterProviderSettings object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetProviderName
+
+`func (o *ClusterProviderSettings) GetProviderName() string`
+
+GetProviderName returns the ProviderName field if non-nil, zero value otherwise.
+
+### GetProviderNameOk
+
+`func (o *ClusterProviderSettings) GetProviderNameOk() (*string, bool)`
+
+GetProviderNameOk returns a tuple with the ProviderName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProviderName
+
+`func (o *ClusterProviderSettings) SetProviderName(v string)`
+
+SetProviderName sets ProviderName field to given value.
+
 
 ### GetAutoScaling
 
@@ -182,26 +202,6 @@ SetVolumeType sets VolumeType field to given value.
 `func (o *ClusterProviderSettings) HasVolumeType() bool`
 
 HasVolumeType returns a boolean if a field has been set.
-
-### GetProviderName
-
-`func (o *ClusterProviderSettings) GetProviderName() string`
-
-GetProviderName returns the ProviderName field if non-nil, zero value otherwise.
-
-### GetProviderNameOk
-
-`func (o *ClusterProviderSettings) GetProviderNameOk() (*string, bool)`
-
-GetProviderNameOk returns a tuple with the ProviderName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProviderName
-
-`func (o *ClusterProviderSettings) SetProviderName(v string)`
-
-SetProviderName sets ProviderName field to given value.
-
 
 ### GetDiskTypeName
 

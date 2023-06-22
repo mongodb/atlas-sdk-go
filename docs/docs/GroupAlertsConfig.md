@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **Notifications** | Pointer to [**[]AlertsNotificationRootForGroup**](AlertsNotificationRootForGroup.md) | List that contains the targets that MongoDB Cloud sends notifications. | [optional] 
 **Updated** | Pointer to **time.Time** | Date and time when someone last updated this alert configuration. This parameter expresses its value in the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_8601\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;ISO 8601&lt;/a&gt; timestamp format in UTC. | [optional] [readonly] 
 **MetricThreshold** | Pointer to [**ServerlessMetricThreshold**](ServerlessMetricThreshold.md) |  | [optional] 
-**Threshold** | Pointer to [**AlertsThresholdInteger**](AlertsThresholdInteger.md) |  | [optional] 
+**Threshold** | Pointer to [**GreaterThanRawThreshold**](GreaterThanRawThreshold.md) |  | [optional] 
 
 ## Methods
 
@@ -287,20 +287,20 @@ HasMetricThreshold returns a boolean if a field has been set.
 
 ### GetThreshold
 
-`func (o *GroupAlertsConfig) GetThreshold() AlertsThresholdInteger`
+`func (o *GroupAlertsConfig) GetThreshold() GreaterThanRawThreshold`
 
 GetThreshold returns the Threshold field if non-nil, zero value otherwise.
 
 ### GetThresholdOk
 
-`func (o *GroupAlertsConfig) GetThresholdOk() (*AlertsThresholdInteger, bool)`
+`func (o *GroupAlertsConfig) GetThresholdOk() (*GreaterThanRawThreshold, bool)`
 
 GetThresholdOk returns a tuple with the Threshold field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetThreshold
 
-`func (o *GroupAlertsConfig) SetThreshold(v AlertsThresholdInteger)`
+`func (o *GroupAlertsConfig) SetThreshold(v GreaterThanRawThreshold)`
 
 SetThreshold sets Threshold field to given value.
 

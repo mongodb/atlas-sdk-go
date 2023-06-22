@@ -12,6 +12,11 @@ Name | Type | Description | Notes
 **IamAssumedRoleArn** | Pointer to **string** | Amazon Resource Name (ARN) that identifies the Amazon Web Services (AWS) Identity and Access Management (IAM) role that MongoDB Cloud assumes when it accesses resources in your AWS account. | [optional] 
 **RoleId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the role. | [optional] [readonly] 
 **ProviderName** | **string** | Human-readable label that identifies the cloud provider of the role. | 
+**Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the Azure Service Principal in Atlas. | [optional] [readonly] 
+**AtlasAzureAppId** | Pointer to **string** | Azure Active Directory Application ID of Atlas. | [optional] 
+**LastUpdatedDate** | Pointer to **time.Time** | Date and time when this Azure Service Principal was last updated. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
+**ServicePrincipalId** | Pointer to **string** | UUID string that identifies the Azure Service Principal. | [optional] 
+**TenantId** | Pointer to **string** | UUID String that identifies the Azure Active Directory Tenant ID. | [optional] 
 
 ## Methods
 
@@ -226,6 +231,131 @@ and a boolean to check if the value has been set.
 
 SetProviderName sets ProviderName field to given value.
 
+
+### GetId
+
+`func (o *CloudProviderAccessAWSIAMRole) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *CloudProviderAccessAWSIAMRole) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *CloudProviderAccessAWSIAMRole) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *CloudProviderAccessAWSIAMRole) HasId() bool`
+
+HasId returns a boolean if a field has been set.
+
+### GetAtlasAzureAppId
+
+`func (o *CloudProviderAccessAWSIAMRole) GetAtlasAzureAppId() string`
+
+GetAtlasAzureAppId returns the AtlasAzureAppId field if non-nil, zero value otherwise.
+
+### GetAtlasAzureAppIdOk
+
+`func (o *CloudProviderAccessAWSIAMRole) GetAtlasAzureAppIdOk() (*string, bool)`
+
+GetAtlasAzureAppIdOk returns a tuple with the AtlasAzureAppId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAtlasAzureAppId
+
+`func (o *CloudProviderAccessAWSIAMRole) SetAtlasAzureAppId(v string)`
+
+SetAtlasAzureAppId sets AtlasAzureAppId field to given value.
+
+### HasAtlasAzureAppId
+
+`func (o *CloudProviderAccessAWSIAMRole) HasAtlasAzureAppId() bool`
+
+HasAtlasAzureAppId returns a boolean if a field has been set.
+
+### GetLastUpdatedDate
+
+`func (o *CloudProviderAccessAWSIAMRole) GetLastUpdatedDate() time.Time`
+
+GetLastUpdatedDate returns the LastUpdatedDate field if non-nil, zero value otherwise.
+
+### GetLastUpdatedDateOk
+
+`func (o *CloudProviderAccessAWSIAMRole) GetLastUpdatedDateOk() (*time.Time, bool)`
+
+GetLastUpdatedDateOk returns a tuple with the LastUpdatedDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastUpdatedDate
+
+`func (o *CloudProviderAccessAWSIAMRole) SetLastUpdatedDate(v time.Time)`
+
+SetLastUpdatedDate sets LastUpdatedDate field to given value.
+
+### HasLastUpdatedDate
+
+`func (o *CloudProviderAccessAWSIAMRole) HasLastUpdatedDate() bool`
+
+HasLastUpdatedDate returns a boolean if a field has been set.
+
+### GetServicePrincipalId
+
+`func (o *CloudProviderAccessAWSIAMRole) GetServicePrincipalId() string`
+
+GetServicePrincipalId returns the ServicePrincipalId field if non-nil, zero value otherwise.
+
+### GetServicePrincipalIdOk
+
+`func (o *CloudProviderAccessAWSIAMRole) GetServicePrincipalIdOk() (*string, bool)`
+
+GetServicePrincipalIdOk returns a tuple with the ServicePrincipalId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServicePrincipalId
+
+`func (o *CloudProviderAccessAWSIAMRole) SetServicePrincipalId(v string)`
+
+SetServicePrincipalId sets ServicePrincipalId field to given value.
+
+### HasServicePrincipalId
+
+`func (o *CloudProviderAccessAWSIAMRole) HasServicePrincipalId() bool`
+
+HasServicePrincipalId returns a boolean if a field has been set.
+
+### GetTenantId
+
+`func (o *CloudProviderAccessAWSIAMRole) GetTenantId() string`
+
+GetTenantId returns the TenantId field if non-nil, zero value otherwise.
+
+### GetTenantIdOk
+
+`func (o *CloudProviderAccessAWSIAMRole) GetTenantIdOk() (*string, bool)`
+
+GetTenantIdOk returns a tuple with the TenantId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTenantId
+
+`func (o *CloudProviderAccessAWSIAMRole) SetTenantId(v string)`
+
+SetTenantId sets TenantId field to given value.
+
+### HasTenantId
+
+`func (o *CloudProviderAccessAWSIAMRole) HasTenantId() bool`
+
+HasTenantId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

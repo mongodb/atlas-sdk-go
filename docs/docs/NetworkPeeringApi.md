@@ -47,7 +47,7 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    baseNetworkPeeringConnectionSettings := openapiclient.BaseNetworkPeeringConnectionSettings{AwsNetworkPeeringConnectionSettings: openapiclient.NewAwsNetworkPeeringConnectionSettings("AccepterRegionName_example", "AwsAccountId_example", "32b6e34b3d91647abb20e7b8", "RouteTableCidrBlock_example", "VpcId_example")} // BaseNetworkPeeringConnectionSettings | 
+    baseNetworkPeeringConnectionSettings := *openapiclient.NewBaseNetworkPeeringConnectionSettings("32b6e34b3d91647abb20e7b8") // BaseNetworkPeeringConnectionSettings | 
 
     resp, r, err := sdk.NetworkPeeringApi.CreatePeeringConnection(context.Background(), groupId, &baseNetworkPeeringConnectionSettings).Execute()
     if err != nil {
@@ -122,7 +122,7 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    cloudProviderContainer := openapiclient.CloudProviderContainer{AWSCloudProviderContainer: openapiclient.NewAWSCloudProviderContainer("RegionName_example")} // CloudProviderContainer | 
+    cloudProviderContainer := *openapiclient.NewCloudProviderContainer() // CloudProviderContainer | 
 
     resp, r, err := sdk.NetworkPeeringApi.CreatePeeringContainer(context.Background(), groupId, &cloudProviderContainer).Execute()
     if err != nil {
@@ -828,7 +828,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     peerId := "peerId_example" // string | 
-    baseNetworkPeeringConnectionSettings := openapiclient.BaseNetworkPeeringConnectionSettings{AwsNetworkPeeringConnectionSettings: openapiclient.NewAwsNetworkPeeringConnectionSettings("AccepterRegionName_example", "AwsAccountId_example", "32b6e34b3d91647abb20e7b8", "RouteTableCidrBlock_example", "VpcId_example")} // BaseNetworkPeeringConnectionSettings | 
+    baseNetworkPeeringConnectionSettings := *openapiclient.NewBaseNetworkPeeringConnectionSettings("32b6e34b3d91647abb20e7b8") // BaseNetworkPeeringConnectionSettings | 
 
     resp, r, err := sdk.NetworkPeeringApi.UpdatePeeringConnection(context.Background(), groupId, peerId, &baseNetworkPeeringConnectionSettings).Execute()
     if err != nil {
@@ -911,7 +911,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     containerId := "32b6e34b3d91647abb20e7b8" // string | 
-    cloudProviderContainer := openapiclient.CloudProviderContainer{AWSCloudProviderContainer: openapiclient.NewAWSCloudProviderContainer("RegionName_example")} // CloudProviderContainer | 
+    cloudProviderContainer := *openapiclient.NewCloudProviderContainer() // CloudProviderContainer | 
 
     resp, r, err := sdk.NetworkPeeringApi.UpdatePeeringContainer(context.Background(), groupId, containerId, &cloudProviderContainer).Execute()
     if err != nil {

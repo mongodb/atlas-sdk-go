@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CloudProviderEndpointId** | Pointer to **string** | Unique string that identifies the Azure private endpoint&#39;s network interface for this private endpoint service. | [optional] 
 **Comment** | Pointer to **string** | Human-readable comment associated with the private endpoint. | [optional] 
 **ProviderName** | **string** |  | 
+**CloudProviderEndpointId** | Pointer to **string** | Unique string that identifies the Azure private endpoint&#39;s network interface for this private endpoint service. | [optional] 
 **PrivateEndpointIpAddress** | Pointer to **string** | IPv4 address of the private endpoint in your Azure VNet that someone added to this private endpoint service. | [optional] 
 
 ## Methods
@@ -27,31 +27,6 @@ will change when the set of required properties is changed
 NewServerlessTenantEndpointUpdateWithDefaults instantiates a new ServerlessTenantEndpointUpdate object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetCloudProviderEndpointId
-
-`func (o *ServerlessTenantEndpointUpdate) GetCloudProviderEndpointId() string`
-
-GetCloudProviderEndpointId returns the CloudProviderEndpointId field if non-nil, zero value otherwise.
-
-### GetCloudProviderEndpointIdOk
-
-`func (o *ServerlessTenantEndpointUpdate) GetCloudProviderEndpointIdOk() (*string, bool)`
-
-GetCloudProviderEndpointIdOk returns a tuple with the CloudProviderEndpointId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCloudProviderEndpointId
-
-`func (o *ServerlessTenantEndpointUpdate) SetCloudProviderEndpointId(v string)`
-
-SetCloudProviderEndpointId sets CloudProviderEndpointId field to given value.
-
-### HasCloudProviderEndpointId
-
-`func (o *ServerlessTenantEndpointUpdate) HasCloudProviderEndpointId() bool`
-
-HasCloudProviderEndpointId returns a boolean if a field has been set.
 
 ### GetComment
 
@@ -97,6 +72,31 @@ and a boolean to check if the value has been set.
 
 SetProviderName sets ProviderName field to given value.
 
+
+### GetCloudProviderEndpointId
+
+`func (o *ServerlessTenantEndpointUpdate) GetCloudProviderEndpointId() string`
+
+GetCloudProviderEndpointId returns the CloudProviderEndpointId field if non-nil, zero value otherwise.
+
+### GetCloudProviderEndpointIdOk
+
+`func (o *ServerlessTenantEndpointUpdate) GetCloudProviderEndpointIdOk() (*string, bool)`
+
+GetCloudProviderEndpointIdOk returns a tuple with the CloudProviderEndpointId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCloudProviderEndpointId
+
+`func (o *ServerlessTenantEndpointUpdate) SetCloudProviderEndpointId(v string)`
+
+SetCloudProviderEndpointId sets CloudProviderEndpointId field to given value.
+
+### HasCloudProviderEndpointId
+
+`func (o *ServerlessTenantEndpointUpdate) HasCloudProviderEndpointId() bool`
+
+HasCloudProviderEndpointId returns a boolean if a field has been set.
 
 ### GetPrivateEndpointIpAddress
 

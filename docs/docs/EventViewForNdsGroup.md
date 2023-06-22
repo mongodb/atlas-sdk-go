@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **OpType** | Pointer to **string** | Action that the database attempted to execute when the event triggered. The response returns this parameter when &#x60;eventTypeName\&quot; : \&quot;DATA_EXPLORER\&quot;&#x60;. | [optional] [readonly] 
 **Port** | Pointer to **int** | IANA port on which the MongoDB process listens for requests. | [optional] [readonly] 
 **ReplicaSetName** | Pointer to **string** | Human-readable label of the replica set associated with the event. | [optional] [readonly] 
-**CurrentValue** | Pointer to [**HostMetricValue**](HostMetricValue.md) |  | [optional] 
+**CurrentValue** | Pointer to [**NumberMetricValue**](NumberMetricValue.md) |  | [optional] 
 **MetricName** | Pointer to **string** | Human-readable label of the metric associated with the **alertId**. This field may change type of **currentValue** field. | [optional] [readonly] 
 **WhitelistEntry** | Pointer to **string** | Entry in the list of source host addresses that the API key accepts and this event targets. | [optional] [readonly] 
 **EndpointId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the endpoint associated with this event. | [optional] [readonly] 
@@ -633,20 +633,20 @@ HasReplicaSetName returns a boolean if a field has been set.
 
 ### GetCurrentValue
 
-`func (o *EventViewForNdsGroup) GetCurrentValue() HostMetricValue`
+`func (o *EventViewForNdsGroup) GetCurrentValue() NumberMetricValue`
 
 GetCurrentValue returns the CurrentValue field if non-nil, zero value otherwise.
 
 ### GetCurrentValueOk
 
-`func (o *EventViewForNdsGroup) GetCurrentValueOk() (*HostMetricValue, bool)`
+`func (o *EventViewForNdsGroup) GetCurrentValueOk() (*NumberMetricValue, bool)`
 
 GetCurrentValueOk returns a tuple with the CurrentValue field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCurrentValue
 
-`func (o *EventViewForNdsGroup) SetCurrentValue(v HostMetricValue)`
+`func (o *EventViewForNdsGroup) SetCurrentValue(v NumberMetricValue)`
 
 SetCurrentValue sets CurrentValue field to given value.
 

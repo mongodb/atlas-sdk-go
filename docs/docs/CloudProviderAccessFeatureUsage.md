@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**FeatureId** | Pointer to [**CloudProviderAccessFeatureUsageExportSnapshotFeatureId**](CloudProviderAccessFeatureUsageExportSnapshotFeatureId.md) |  | [optional] 
 **FeatureType** | Pointer to **string** | Human-readable label that describes one MongoDB Cloud feature linked to this Amazon Web Services (AWS) Identity and Access Management (IAM) role. | [optional] [readonly] 
+**FeatureId** | Pointer to [**CloudProviderAccessFeatureUsageExportSnapshotFeatureId**](CloudProviderAccessFeatureUsageExportSnapshotFeatureId.md) |  | [optional] 
 
 ## Methods
 
@@ -25,31 +25,6 @@ will change when the set of required properties is changed
 NewCloudProviderAccessFeatureUsageWithDefaults instantiates a new CloudProviderAccessFeatureUsage object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetFeatureId
-
-`func (o *CloudProviderAccessFeatureUsage) GetFeatureId() CloudProviderAccessFeatureUsageExportSnapshotFeatureId`
-
-GetFeatureId returns the FeatureId field if non-nil, zero value otherwise.
-
-### GetFeatureIdOk
-
-`func (o *CloudProviderAccessFeatureUsage) GetFeatureIdOk() (*CloudProviderAccessFeatureUsageExportSnapshotFeatureId, bool)`
-
-GetFeatureIdOk returns a tuple with the FeatureId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFeatureId
-
-`func (o *CloudProviderAccessFeatureUsage) SetFeatureId(v CloudProviderAccessFeatureUsageExportSnapshotFeatureId)`
-
-SetFeatureId sets FeatureId field to given value.
-
-### HasFeatureId
-
-`func (o *CloudProviderAccessFeatureUsage) HasFeatureId() bool`
-
-HasFeatureId returns a boolean if a field has been set.
 
 ### GetFeatureType
 
@@ -75,6 +50,31 @@ SetFeatureType sets FeatureType field to given value.
 `func (o *CloudProviderAccessFeatureUsage) HasFeatureType() bool`
 
 HasFeatureType returns a boolean if a field has been set.
+
+### GetFeatureId
+
+`func (o *CloudProviderAccessFeatureUsage) GetFeatureId() CloudProviderAccessFeatureUsageExportSnapshotFeatureId`
+
+GetFeatureId returns the FeatureId field if non-nil, zero value otherwise.
+
+### GetFeatureIdOk
+
+`func (o *CloudProviderAccessFeatureUsage) GetFeatureIdOk() (*CloudProviderAccessFeatureUsageExportSnapshotFeatureId, bool)`
+
+GetFeatureIdOk returns a tuple with the FeatureId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFeatureId
+
+`func (o *CloudProviderAccessFeatureUsage) SetFeatureId(v CloudProviderAccessFeatureUsageExportSnapshotFeatureId)`
+
+SetFeatureId sets FeatureId field to given value.
+
+### HasFeatureId
+
+`func (o *CloudProviderAccessFeatureUsage) HasFeatureId() bool`
+
+HasFeatureId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

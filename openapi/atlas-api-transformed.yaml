@@ -25770,291 +25770,6 @@ components:
         severity:
           type: string
       readOnly: true
-    tokenFilterasciiFolding:
-      type: object
-      description: Filter that converts alphabetic, numeric, and symbolic unicode
-        characters that are not in the Basic Latin Unicode block to their ASCII
-        equivalents, if available.
-      externalDocs:
-        description: Basic Latin Unicode block
-        url: https://en.wikipedia.org/wiki/Basic_Latin_(Unicode_block)
-      properties:
-        originalTokens:
-          type: string
-          default: omit
-          description: >-
-            Value that indicates whether to include or omit the original tokens
-            in the output of the token filter.
-
-
-            Choose `include` if you want to support queries on both the original tokens as well as the converted forms.
-
-             Choose `omit` if you want to query only on the converted forms of the original tokens.
-        type:
-          type: string
-          description: Human-readable label that identifies this token filter type.
-      required:
-        - type
-      title: asciiFolding
-    tokenFilterdaitchMokotoffSoundex:
-      type: object
-      description: >-
-        Filter that creates tokens for words that sound the same based on
-        the Daitch-Mokotoff Soundex phonetic algorithm. This filter can generate
-        multiple encodings for each input, where each encoded token is a 6 digit
-        number.
-
-
-        **NOTE**: Don't use the **daitchMokotoffSoundex** token filter in:
-
-
-        -Synonym or autocomplete mapping definitions
-
-        - Operators where **fuzzy** is enabled. Atlas Search supports the **fuzzy** option only for the **autocomplete**, **term**, and **text** operators.
-      externalDocs:
-        description: Daitch-Mokotoff Soundex phonetic algorithm
-        url: https://en.wikipedia.org/wiki/Daitch%E2%80%93Mokotoff_Soundex
-      properties:
-        originalTokens:
-          type: string
-          default: include
-          description: >-
-            Value that indicates whether to include or omit the original tokens
-            in the output of the token filter.
-
-
-            Choose `include` if you want to support queries on both the original tokens as well as the converted forms.
-
-             Choose `omit` if you want to query only on the converted forms of the original tokens.
-        type:
-          type: string
-          description: Human-readable label that identifies this token filter type.
-      required:
-        - type
-      title: daitchMokotoffSoundex
-    tokenFilteredgeGram:
-      type: object
-      description: Filter that tokenizes input from the left side, or "edge", of a
-        text input into n-grams of configured sizes. You can't use this token
-        filter in synonym or autocomplete mapping definitions.
-      properties:
-        maxGram:
-          type: integer
-          description: Value that specifies the maximum length of generated n-grams. This
-            value must be greater than or equal to **minGram**.
-        minGram:
-          type: integer
-          description: Value that specifies the minimum length of generated n-grams. This
-            value must be less than or equal to **maxGram**.
-        termNotInBounds:
-          type: string
-          default: omit
-          description: Value that indicates whether to index tokens shorter than
-            **minGram** or longer than **maxGram**.
-        type:
-          type: string
-          description: Human-readable label that identifies this token filter type.
-      required:
-        - maxGram
-        - minGram
-        - type
-      title: edgeGram
-    tokenFiltericuFolding:
-      type: object
-      description: "Filter that applies character folding from Unicode Technical
-        Report #30."
-      externalDocs:
-        description: "Unicode Technical Report #30"
-        url: http://www.unicode.org/reports/tr30/tr30-4.html
-      properties:
-        type:
-          type: string
-          description: Human-readable label that identifies this token filter type.
-      required:
-        - type
-      title: icuFolding
-    tokenFiltericuNormalizer:
-      type: object
-      description: Filter that normalizes tokens using a standard Unicode
-        Normalization Mode.
-      externalDocs:
-        description: Unicode Normalization Mode
-        url: https://unicode.org/reports/tr15/
-      properties:
-        normalizationForm:
-          type: string
-          default: nfc
-          description: Normalization form to apply.
-        type:
-          type: string
-          description: Human-readable label that identifies this token filter type.
-      required:
-        - type
-      title: icuNormalizer
-    tokenFilterlength:
-      type: object
-      description: Filter that removes tokens that are too short or too long.
-      properties:
-        max:
-          type: integer
-          default: 255
-          description: Number that specifies the maximum length of a token. Value must be
-            greater than or equal to **min**.
-        min:
-          type: integer
-          default: 0
-          description: Number that specifies the minimum length of a token. This value
-            must be less than or equal to **max**.
-        type:
-          type: string
-          description: Human-readable label that identifies this token filter type.
-      required:
-        - type
-      title: length
-    tokenFilterlowercase:
-      type: object
-      description: Filter that normalizes token text to lowercase.
-      properties:
-        type:
-          type: string
-          description: Human-readable label that identifies this token filter type.
-      required:
-        - type
-      title: lowercase
-    tokenFilternGram:
-      type: object
-      description: Filter that tokenizes input into n-grams of configured sizes. You
-        can't use this token filter in synonym or autocomplete mapping
-        definitions.
-      properties:
-        maxGram:
-          type: integer
-          description: Value that specifies the maximum length of generated n-grams. This
-            value must be greater than or equal to **minGram**.
-        minGram:
-          type: integer
-          description: Value that specifies the minimum length of generated n-grams. This
-            value must be less than or equal to **maxGram**.
-        termNotInBounds:
-          type: string
-          default: omit
-          description: Value that indicates whether to index tokens shorter than
-            **minGram** or longer than **maxGram**.
-        type:
-          type: string
-          description: Human-readable label that identifies this token filter type.
-      required:
-        - maxGram
-        - minGram
-        - type
-      title: nGram
-    tokenFilterregex:
-      type: object
-      description: Filter that applies a regular expression to each token, replacing
-        matches with a specified string.
-      properties:
-        matches:
-          type: string
-          description: Value that indicates whether to replace only the first matching
-            pattern or all matching patterns.
-        pattern:
-          type: string
-          description: Regular expression pattern to apply to each token.
-        replacement:
-          type: string
-          description: Replacement string to substitute wherever a matching pattern occurs.
-        type:
-          type: string
-          description: Human-readable label that identifies this token filter type.
-      required:
-        - matches
-        - pattern
-        - replacement
-        - type
-      title: regex
-    tokenFilterreverse:
-      type: object
-      description: Filter that reverses each string token.
-      properties:
-        type:
-          type: string
-          description: Human-readable label that identifies this token filter type.
-      required:
-        - type
-      title: reverse
-    tokenFiltershingle:
-      type: object
-      description: Filter that constructs shingles (token n-grams) from a series of
-        tokens. You can't use this token filter in synonym or autocomplete
-        mapping definitions.
-      properties:
-        maxShingleSize:
-          type: integer
-          description: Value that specifies the maximum number of tokens per shingle. This
-            value must be greater than or equal to **minShingleSize**.
-        minShingleSize:
-          type: integer
-          description: Value that specifies the minimum number of tokens per shingle. This
-            value must be less than or equal to **maxShingleSize**.
-        type:
-          type: string
-          description: Human-readable label that identifies this token filter type.
-      required:
-        - maxShingleSize
-        - minShingleSize
-        - type
-      title: shingle
-    tokenFiltersnowballStemming:
-      type: object
-      description: Filter that stems tokens using a Snowball-generated stemmer.
-      externalDocs:
-        description: Snowball-generated stemmer
-        url: https://snowballstem.org/
-      properties:
-        stemmerName:
-          type: string
-          description: Snowball-generated stemmer to use.
-        type:
-          type: string
-          description: Human-readable label that identifies this token filter type.
-      required:
-        - stemmerName
-        - type
-      title: snowballStemming
-    tokenFilterstopword:
-      type: object
-      description: Filter that removes tokens that correspond to the specified stop
-        words. This token filter doesn't analyze the stop words that you
-        specify.
-      properties:
-        ignoreCase:
-          type: boolean
-          default: true
-          description: Flag that indicates whether to ignore the case of stop words when
-            filtering the tokens to remove.
-        tokens:
-          type: array
-          description: The stop words that correspond to the tokens to remove. Value must
-            be one or more stop words.
-          items:
-            type: string
-        type:
-          type: string
-          description: Human-readable label that identifies this token filter type.
-      required:
-        - tokens
-        - type
-      title: stopword
-    tokenFiltertrim:
-      type: object
-      description: Filter that trims leading and trailing whitespace from tokens.
-      properties:
-        type:
-          type: string
-          description: Human-readable label that identifies this token filter type.
-      required:
-        - type
-      title: trim
     AWSCustomDNSEnabled:
       type: object
       properties:
@@ -27674,21 +27389,81 @@ components:
 
             - Redaction, the removal of sensitive information from public documents.
           items:
-            anyOf:
-              - $ref: "#/components/schemas/tokenFilterasciiFolding"
-              - $ref: "#/components/schemas/tokenFilterdaitchMokotoffSoundex"
-              - $ref: "#/components/schemas/tokenFilteredgeGram"
-              - $ref: "#/components/schemas/tokenFiltericuFolding"
-              - $ref: "#/components/schemas/tokenFiltericuNormalizer"
-              - $ref: "#/components/schemas/tokenFilterlength"
-              - $ref: "#/components/schemas/tokenFilterlowercase"
-              - $ref: "#/components/schemas/tokenFilternGram"
-              - $ref: "#/components/schemas/tokenFilterregex"
-              - $ref: "#/components/schemas/tokenFilterreverse"
-              - $ref: "#/components/schemas/tokenFiltershingle"
-              - $ref: "#/components/schemas/tokenFiltersnowballStemming"
-              - $ref: "#/components/schemas/tokenFilterstopword"
-              - $ref: "#/components/schemas/tokenFiltertrim"
+            properties:
+              originalTokens:
+                type: string
+                default: include
+                description: >-
+                  Value that indicates whether to include or omit the original tokens
+                  in the output of the token filter.
+
+
+                  Choose `include` if you want to support queries on both the original tokens as well as the converted forms.
+
+                   Choose `omit` if you want to query only on the converted forms of the original tokens.
+              type:
+                type: string
+                description: Human-readable label that identifies this token filter type.
+              maxGram:
+                type: integer
+                description: Value that specifies the maximum length of generated n-grams. This
+                  value must be greater than or equal to **minGram**.
+              minGram:
+                type: integer
+                description: Value that specifies the minimum length of generated n-grams. This
+                  value must be less than or equal to **maxGram**.
+              termNotInBounds:
+                type: string
+                default: omit
+                description: Value that indicates whether to index tokens shorter than
+                  **minGram** or longer than **maxGram**.
+              normalizationForm:
+                type: string
+                default: nfc
+                description: Normalization form to apply.
+              max:
+                type: integer
+                default: 255
+                description: Number that specifies the maximum length of a token. Value must be
+                  greater than or equal to **min**.
+              min:
+                type: integer
+                default: 0
+                description: Number that specifies the minimum length of a token. This value
+                  must be less than or equal to **max**.
+              matches:
+                type: string
+                description: Value that indicates whether to replace only the first matching
+                  pattern or all matching patterns.
+              pattern:
+                type: string
+                description: Regular expression pattern to apply to each token.
+              replacement:
+                type: string
+                description: Replacement string to substitute wherever a matching pattern
+                  occurs.
+              maxShingleSize:
+                type: integer
+                description: Value that specifies the maximum number of tokens per shingle. This
+                  value must be greater than or equal to **minShingleSize**.
+              minShingleSize:
+                type: integer
+                description: Value that specifies the minimum number of tokens per shingle. This
+                  value must be less than or equal to **maxShingleSize**.
+              stemmerName:
+                type: string
+                description: Snowball-generated stemmer to use.
+              ignoreCase:
+                type: boolean
+                default: true
+                description: Flag that indicates whether to ignore the case of stop words when
+                  filtering the tokens to remove.
+              tokens:
+                type: array
+                description: The stop words that correspond to the tokens to remove. Value must
+                  be one or more stop words.
+                items:
+                  type: string
         tokenizer:
           type: object
           description: Tokenizer that you want to use to create tokens. Tokens determine

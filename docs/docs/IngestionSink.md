@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Type** | Pointer to **string** | Type of ingestion destination of this Data Lake Pipeline. | [optional] [readonly] 
 **MetadataProvider** | Pointer to **string** | Target cloud provider for this Data Lake Pipeline. | [optional] 
 **MetadataRegion** | Pointer to **string** | Target cloud provider region for this Data Lake Pipeline. | [optional] 
 **PartitionFields** | Pointer to [**[]DataLakePipelinesPartitionField**](DataLakePipelinesPartitionField.md) | Ordered fields used to physically organize data in the destination. | [optional] 
-**Type** | Pointer to **string** | Type of ingestion destination of this Data Lake Pipeline. | [optional] [readonly] 
 
 ## Methods
 
@@ -27,6 +27,31 @@ will change when the set of required properties is changed
 NewIngestionSinkWithDefaults instantiates a new IngestionSink object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetType
+
+`func (o *IngestionSink) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *IngestionSink) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *IngestionSink) SetType(v string)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *IngestionSink) HasType() bool`
+
+HasType returns a boolean if a field has been set.
 
 ### GetMetadataProvider
 
@@ -102,31 +127,6 @@ SetPartitionFields sets PartitionFields field to given value.
 `func (o *IngestionSink) HasPartitionFields() bool`
 
 HasPartitionFields returns a boolean if a field has been set.
-
-### GetType
-
-`func (o *IngestionSink) GetType() string`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *IngestionSink) GetTypeOk() (*string, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *IngestionSink) SetType(v string)`
-
-SetType sets Type field to given value.
-
-### HasType
-
-`func (o *IngestionSink) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
