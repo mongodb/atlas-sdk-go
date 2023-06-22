@@ -38,7 +38,7 @@ function applyRemoveEnumsTransformations(api) {
 
   // Start removing enum fields from the OpenAPI object
   removeEnums(api);
-  return api
+  return api;
 }
 
 module.exports = {

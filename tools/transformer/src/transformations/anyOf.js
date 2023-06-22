@@ -20,8 +20,9 @@ function applyAnyOfTransformations(api) {
 
   transformationPaths = anyOfTransformations.map((e) => e.path);
 
-  console.error(
-    "# AnyOf transformations: " + JSON.stringify(transformationPaths, undefined, 2)
+  console.info(
+    "# AnyOf transformations: " +
+      JSON.stringify(transformationPaths, undefined, 2)
   );
 
   for (let { path } of anyOfTransformations) {

@@ -1,5 +1,3 @@
 {
-  "ignoreModels": [
-    ".components.schemas.ThridPartyIntegration"
-  ]
+  "ignoreModels": [".components.schemas.ThridPartyIntegration"]
 }

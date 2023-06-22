@@ -21,8 +21,9 @@ function applyOneOfTransformations(api) {
   }).filter((e) => !ignoreModels.includes(e.path));
 
   transformationPaths = oneOfTransformations.map((e) => e.path);
-  console.error(
-    "# OneOf transformations: " + JSON.stringify(transformationPaths, undefined, 2)
+  console.info(
+    "# OneOf transformations: " +
+      JSON.stringify(transformationPaths, undefined, 2)
   );
 
   for (let { path } of oneOfTransformations) {
