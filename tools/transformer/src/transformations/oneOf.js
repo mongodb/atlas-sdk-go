@@ -135,11 +135,6 @@ function canApplyOneOfTransformation(obj, api) {
     return true;
   }
   return false;
-
-  // const children = obj.oneOf.map((childRef) =>
-  //   getObjectFromReference(childRef, api)
-  // );
-  // const isEnum = children.reduce((isEnum, child) => isEnum && child.enum, true);
 }
 
 module.exports = {
