@@ -1,13 +1,3 @@
 {
-  "ignoreModels": [
-    "ApiInstanceSizeView",
-    "ApiRoleAssignmentView",
-    "ApiAtlasPartitionFieldView",
-    "PemFileInfoView",
-    "X509CertificateView",
-    "ApiUserEventTypeViewForNdsGroup",
-    "ApiUserEventTypeViewForOrg",
-    "ApiUserEventViewForNdsGroup",
-    "ApiUserEventViewForOrg"
-  ]
+  "ignoreModels": []
 }

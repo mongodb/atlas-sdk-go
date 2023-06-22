@@ -7,40 +7,40 @@ const {
 const { detectDuplicates } = require("../engine/transformers");
 
 /**
- * Transforms provided API JSON file using oneOf transformation
+ * Transforms provided API JSON file using anyOf transformation
  *
  * @param {*} api OpenAPI JSON File
- * @param {*} oneOfTransformations array of transformations to apply
+ * @param {*} anyOfTransformations array of transformations to apply
  * @returns OpenAPI JSON File
  */
-function applyOneOfTransformations(api) {
-  const oneOfTransformations = getAllObjects(api, (obj) => {
-    return canApplyOneOfTransformation(obj, api);
+function applyAnyOfTransformations(api) {
+  const anyOfTransformations = getAllObjects(api, (obj) => {
+    return canApplyAnyOfTransformation(obj, api);
   });
 
-  transformationPaths = oneOfTransformations.map((e) => e.path);
+  transformationPaths = anyOfTransformations.map((e) => e.path);
 
   console.error(
-    "# OneOf transformations: " + JSON.stringify(transformationPaths, undefined, 2)
+    "# AnyOf transformations: " + JSON.stringify(transformationPaths, undefined, 2)
   );
 
-  for (let { path } of oneOfTransformations) {
-    transformOneOf(path, api);
+  for (let { path } of anyOfTransformations) {
+    transformAnyOf(path, api);
   }
   return api;
 }
 
 // Moves all the properties/enum values of the children into the parent
-function transformOneOf(objectPath, api) {
+function transformAnyOf(objectPath, api) {
   const parentObject = getObjectFromYamlPath(objectPath, api);
   const parentName = getNameFromYamlPath(objectPath);
 
-  if (!parentObject.oneOf) {
-    throw new Error(`Invalid object for OneOf Transformation: ${parentName}`);
+  if (!parentObject.anyOf) {
+    throw new Error(`Invalid object for AnyOf Transformation: ${parentName}`);
   }
 
   // Expand references
-  const childObjects = parentObject.oneOf.map((childRef) =>
+  const childObjects = parentObject.anyOf.map((childRef) =>
     getObjectFromReference(childRef, api)
   );
   const isEnum = childObjects.reduce(
@@ -49,15 +49,15 @@ function transformOneOf(objectPath, api) {
   );
 
   if (isEnum) {
-    transformOneOfEnum(parentObject, api);
+    transformAnyOfEnum(parentObject, api);
   } else {
-    transformOneOfProperties(parentObject, api);
+    transformAnyOfProperties(parentObject, api);
   }
 }
 
 // Moves all the enum values of the children into the parent
-function transformOneOfEnum(parentObject, api) {
-  const childObjects = parentObject.oneOf.map((childRef) =>
+function transformAnyOfEnum(parentObject, api) {
+  const childObjects = parentObject.anyOf.map((childRef) =>
     getObjectFromReference(childRef, api)
   );
 
@@ -77,12 +77,12 @@ function transformOneOfEnum(parentObject, api) {
 
   // Remove invalid fields
   delete parentObject.discriminator;
-  delete parentObject.oneOf;
+  delete parentObject.anyOf;
 }
 
 // Moves all the propertis of the children into the parent
-function transformOneOfProperties(parentObject, api) {
-  const childObjects = parentObject.oneOf.map((childRef) =>
+function transformAnyOfProperties(parentObject, api) {
+  const childObjects = parentObject.anyOf.map((childRef) =>
     getObjectFromReference(childRef, api)
   );
 
@@ -125,23 +125,16 @@ function transformOneOfProperties(parentObject, api) {
 
   // Remove invalid fields
   delete parentObject.discriminator;
-  delete parentObject.oneOf;
+  delete parentObject.anyOf;
 }
 
-function canApplyOneOfTransformation(obj, api) {
-  if (obj.oneOf) {
+function canApplyAnyOfTransformation(obj, api) {
+  if (obj.anyOf) {
     return true;
   }
   return false;
-
-  // const children = obj.oneOf.map((childRef) =>
-  //   getObjectFromReference(childRef, api)
-  // );
-  // const isEnum = children.reduce((isEnum, child) => isEnum && child.enum, true);
 }
 
 module.exports = {
-  applyOneOfTransformations,
-  transformOneOf,
-  transformOneOfProperties,
+  applyAnyOfTransformations,
 };
