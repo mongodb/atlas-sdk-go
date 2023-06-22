@@ -39,6 +39,16 @@ module.exports = function runTransformations(openapi) {
     ignoredModelNames
   );
 
+  if (openapi.components.schemas.ApiAtlasFTSAnalyzers) {
+    filtersObj = openapi.components.schemas.ApiAtlasFTSAnalyzers;
+    if (filtersObj.properties.tokenFilters) {
+      filtersObj.properties.tokenFilters.items = {};
+    }
+    if (filtersObj.properties.charFilters) {
+      filtersObj.properties.charFilters.items = {};
+    }
+  }
+
   let hasSchemaChanges = true;
   // Remove referencing objects that become unused
   while (hasSchemaChanges) {

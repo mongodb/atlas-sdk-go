@@ -1,9 +1,11 @@
+const ignoreModel = require("../engine/ignoreModel");
 const {
   getObjectFromReference,
   getNameFromYamlPath,
   getObjectFromYamlPath,
   getAllObjects,
 } = require("../engine/readers");
+const { ignoreModels } = require("../oneOf.ignore.json");
 const { detectDuplicates } = require("../engine/transformers");
 
 /**
@@ -16,10 +18,9 @@ const { detectDuplicates } = require("../engine/transformers");
 function applyOneOfTransformations(api) {
   const oneOfTransformations = getAllObjects(api, (obj) => {
     return canApplyOneOfTransformation(obj, api);
-  });
+  }).filter((e) => !ignoreModels.includes(e.path));
 
   transformationPaths = oneOfTransformations.map((e) => e.path);
-
   console.error(
     "# OneOf transformations: " + JSON.stringify(transformationPaths, undefined, 2)
   );

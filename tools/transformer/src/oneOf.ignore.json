@@ -1,3 +1,5 @@
 {
-  "ignoreModels": ["ThridPartyIntegration", "ClusterProviderSettings"]
+  "ignoreModels": [
+    ".components.schemas.ThridPartyIntegration"
+  ]
 }
