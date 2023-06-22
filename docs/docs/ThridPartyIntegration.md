@@ -4,35 +4,35 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | Pointer to **string** | Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type. | [optional] 
-**ApiKey** | Pointer to **string** | Key that allows MongoDB Cloud to access your VictorOps account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API. | [optional] 
+**ApiKey** | **string** | Key that allows MongoDB Cloud to access your VictorOps account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API. | 
 **Region** | Pointer to **string** | PagerDuty region that indicates the API Uniform Resource Locator (URL) to use. | [optional] 
-**MicrosoftTeamsWebhookUrl** | Pointer to **string** | Endpoint web address of the Microsoft Teams webhook to which MongoDB Cloud sends notifications.  **NOTE**: When you view or edit the alert for a Microsoft Teams notification, the URL appears partially redacted. | [optional] 
-**AccountId** | Pointer to **string** | Unique 40-hexadecimal digit string that identifies your New Relic account. | [optional] 
-**LicenseKey** | Pointer to **string** | Unique 40-hexadecimal digit string that identifies your New Relic license.  **IMPORTANT**: Effective Wednesday, June 16th, 2021, New Relic no longer supports the plugin-based integration with MongoDB. We do not recommend that you sign up for the plugin-based integration. To learn more, see the &lt;a href&#x3D;\&quot;https://discuss.newrelic.com/t/new-relic-plugin-eol-wednesday-june-16th-2021/127267\&quot; target&#x3D;\&quot;_blank\&quot;&gt;New Relic Plugin EOL Statement&lt;/a&gt; Consider configuring an alternative monitoring integration before June 16th to maintain visibility into your MongoDB deployments. | [optional] 
-**ReadToken** | Pointer to **string** | Query key used to access your New Relic account. | [optional] 
-**WriteToken** | Pointer to **string** | Insert key associated with your New Relic account. | [optional] 
-**ServiceKey** | Pointer to **string** | Service key associated with your PagerDuty account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API. | [optional] 
-**Enabled** | Pointer to **bool** | Flag that indicates whether someone has activated the Prometheus integration. | [optional] 
+**Type** | Pointer to **string** | Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type. | [optional] 
+**MicrosoftTeamsWebhookUrl** | **string** | Endpoint web address of the Microsoft Teams webhook to which MongoDB Cloud sends notifications.  **NOTE**: When you view or edit the alert for a Microsoft Teams notification, the URL appears partially redacted. | 
+**AccountId** | **string** | Unique 40-hexadecimal digit string that identifies your New Relic account. | 
+**LicenseKey** | **string** | Unique 40-hexadecimal digit string that identifies your New Relic license.  **IMPORTANT**: Effective Wednesday, June 16th, 2021, New Relic no longer supports the plugin-based integration with MongoDB. We do not recommend that you sign up for the plugin-based integration. To learn more, see the &lt;a href&#x3D;\&quot;https://discuss.newrelic.com/t/new-relic-plugin-eol-wednesday-june-16th-2021/127267\&quot; target&#x3D;\&quot;_blank\&quot;&gt;New Relic Plugin EOL Statement&lt;/a&gt; Consider configuring an alternative monitoring integration before June 16th to maintain visibility into your MongoDB deployments. | 
+**ReadToken** | **string** | Query key used to access your New Relic account. | 
+**WriteToken** | **string** | Insert key associated with your New Relic account. | 
+**ServiceKey** | **string** | Service key associated with your PagerDuty account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API. | 
+**Enabled** | **bool** | Flag that indicates whether someone has activated the Prometheus integration. | 
 **ListenAddress** | Pointer to **string** | Combination of IPv4 address and Internet Assigned Numbers Authority (IANA) port or the IANA port alone to which Prometheus binds to ingest MongoDB metrics. | [optional] [default to ":9216"]
 **Password** | Pointer to **string** |  | [optional] 
 **RateLimitInterval** | Pointer to **int** |  | [optional] 
-**Scheme** | Pointer to **string** | Security Scheme to apply to HyperText Transfer Protocol (HTTP) traffic between Prometheus and MongoDB Cloud. | [optional] 
-**ServiceDiscovery** | Pointer to **string** | Desired method to discover the Prometheus service. | [optional] 
+**Scheme** | **string** | Security Scheme to apply to HyperText Transfer Protocol (HTTP) traffic between Prometheus and MongoDB Cloud. | 
+**ServiceDiscovery** | **string** | Desired method to discover the Prometheus service. | 
 **TlsPemPath** | Pointer to **string** | Root-relative path to the Transport Layer Security (TLS) Privacy Enhanced Mail (PEM) key and certificate file on the host. | [optional] 
-**Username** | Pointer to **string** | Human-readable label that identifies your Prometheus incoming webhook. | [optional] 
-**ApiToken** | Pointer to **string** | Key that allows MongoDB Cloud to access your Slack account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.  **IMPORTANT**: Slack integrations now use the OAuth2 verification method and must  be initially configured, or updated from a legacy integration, through the Atlas  third-party service integrations page. Legacy tokens will soon no longer be  supported. | [optional] 
-**ChannelName** | Pointer to **NullableString** | Name of the Slack channel to which MongoDB Cloud sends alert notifications. | [optional] 
+**Username** | **string** | Human-readable label that identifies your Prometheus incoming webhook. | 
+**ApiToken** | **string** | Key that allows MongoDB Cloud to access your Slack account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.  **IMPORTANT**: Slack integrations now use the OAuth2 verification method and must  be initially configured, or updated from a legacy integration, through the Atlas  third-party service integrations page. Legacy tokens will soon no longer be  supported. | 
+**ChannelName** | **NullableString** | Name of the Slack channel to which MongoDB Cloud sends alert notifications. | 
 **TeamName** | Pointer to **string** | Human-readable label that identifies your Slack team. Set this parameter when you configure a legacy Slack integration. | [optional] 
 **RoutingKey** | Pointer to **string** | Routing key associated with your Splunk On-Call account. | [optional] 
 **Secret** | Pointer to **string** | An optional field returned if your webhook is configured with a secret.  **NOTE**: When you view or edit the alert for a webhook notification, the secret appears completely redacted. | [optional] 
-**Url** | Pointer to **string** | Endpoint web address to which MongoDB Cloud sends notifications.  **NOTE**: When you view or edit the alert for a webhook notification, the URL appears partially redacted. | [optional] 
+**Url** | **string** | Endpoint web address to which MongoDB Cloud sends notifications.  **NOTE**: When you view or edit the alert for a webhook notification, the URL appears partially redacted. | 
 
 ## Methods
 
 ### NewThridPartyIntegration
 
-`func NewThridPartyIntegration() *ThridPartyIntegration`
+`func NewThridPartyIntegration(apiKey string, microsoftTeamsWebhookUrl string, accountId string, licenseKey string, readToken string, writeToken string, serviceKey string, enabled bool, scheme string, serviceDiscovery string, username string, apiToken string, channelName NullableString, url string, ) *ThridPartyIntegration`
 
 NewThridPartyIntegration instantiates a new ThridPartyIntegration object
 This constructor will assign default values to properties that have it defined,
@@ -46,31 +46,6 @@ will change when the set of required properties is changed
 NewThridPartyIntegrationWithDefaults instantiates a new ThridPartyIntegration object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetType
-
-`func (o *ThridPartyIntegration) GetType() string`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *ThridPartyIntegration) GetTypeOk() (*string, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *ThridPartyIntegration) SetType(v string)`
-
-SetType sets Type field to given value.
-
-### HasType
-
-`func (o *ThridPartyIntegration) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 ### GetApiKey
 
@@ -91,11 +66,6 @@ and a boolean to check if the value has been set.
 
 SetApiKey sets ApiKey field to given value.
 
-### HasApiKey
-
-`func (o *ThridPartyIntegration) HasApiKey() bool`
-
-HasApiKey returns a boolean if a field has been set.
 
 ### GetRegion
 
@@ -122,6 +92,31 @@ SetRegion sets Region field to given value.
 
 HasRegion returns a boolean if a field has been set.
 
+### GetType
+
+`func (o *ThridPartyIntegration) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *ThridPartyIntegration) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *ThridPartyIntegration) SetType(v string)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *ThridPartyIntegration) HasType() bool`
+
+HasType returns a boolean if a field has been set.
+
 ### GetMicrosoftTeamsWebhookUrl
 
 `func (o *ThridPartyIntegration) GetMicrosoftTeamsWebhookUrl() string`
@@ -141,11 +136,6 @@ and a boolean to check if the value has been set.
 
 SetMicrosoftTeamsWebhookUrl sets MicrosoftTeamsWebhookUrl field to given value.
 
-### HasMicrosoftTeamsWebhookUrl
-
-`func (o *ThridPartyIntegration) HasMicrosoftTeamsWebhookUrl() bool`
-
-HasMicrosoftTeamsWebhookUrl returns a boolean if a field has been set.
 
 ### GetAccountId
 
@@ -166,11 +156,6 @@ and a boolean to check if the value has been set.
 
 SetAccountId sets AccountId field to given value.
 
-### HasAccountId
-
-`func (o *ThridPartyIntegration) HasAccountId() bool`
-
-HasAccountId returns a boolean if a field has been set.
 
 ### GetLicenseKey
 
@@ -191,11 +176,6 @@ and a boolean to check if the value has been set.
 
 SetLicenseKey sets LicenseKey field to given value.
 
-### HasLicenseKey
-
-`func (o *ThridPartyIntegration) HasLicenseKey() bool`
-
-HasLicenseKey returns a boolean if a field has been set.
 
 ### GetReadToken
 
@@ -216,11 +196,6 @@ and a boolean to check if the value has been set.
 
 SetReadToken sets ReadToken field to given value.
 
-### HasReadToken
-
-`func (o *ThridPartyIntegration) HasReadToken() bool`
-
-HasReadToken returns a boolean if a field has been set.
 
 ### GetWriteToken
 
@@ -241,11 +216,6 @@ and a boolean to check if the value has been set.
 
 SetWriteToken sets WriteToken field to given value.
 
-### HasWriteToken
-
-`func (o *ThridPartyIntegration) HasWriteToken() bool`
-
-HasWriteToken returns a boolean if a field has been set.
 
 ### GetServiceKey
 
@@ -266,11 +236,6 @@ and a boolean to check if the value has been set.
 
 SetServiceKey sets ServiceKey field to given value.
 
-### HasServiceKey
-
-`func (o *ThridPartyIntegration) HasServiceKey() bool`
-
-HasServiceKey returns a boolean if a field has been set.
 
 ### GetEnabled
 
@@ -291,11 +256,6 @@ and a boolean to check if the value has been set.
 
 SetEnabled sets Enabled field to given value.
 
-### HasEnabled
-
-`func (o *ThridPartyIntegration) HasEnabled() bool`
-
-HasEnabled returns a boolean if a field has been set.
 
 ### GetListenAddress
 
@@ -391,11 +351,6 @@ and a boolean to check if the value has been set.
 
 SetScheme sets Scheme field to given value.
 
-### HasScheme
-
-`func (o *ThridPartyIntegration) HasScheme() bool`
-
-HasScheme returns a boolean if a field has been set.
 
 ### GetServiceDiscovery
 
@@ -416,11 +371,6 @@ and a boolean to check if the value has been set.
 
 SetServiceDiscovery sets ServiceDiscovery field to given value.
 
-### HasServiceDiscovery
-
-`func (o *ThridPartyIntegration) HasServiceDiscovery() bool`
-
-HasServiceDiscovery returns a boolean if a field has been set.
 
 ### GetTlsPemPath
 
@@ -466,11 +416,6 @@ and a boolean to check if the value has been set.
 
 SetUsername sets Username field to given value.
 
-### HasUsername
-
-`func (o *ThridPartyIntegration) HasUsername() bool`
-
-HasUsername returns a boolean if a field has been set.
 
 ### GetApiToken
 
@@ -491,11 +436,6 @@ and a boolean to check if the value has been set.
 
 SetApiToken sets ApiToken field to given value.
 
-### HasApiToken
-
-`func (o *ThridPartyIntegration) HasApiToken() bool`
-
-HasApiToken returns a boolean if a field has been set.
 
 ### GetChannelName
 
@@ -516,11 +456,6 @@ and a boolean to check if the value has been set.
 
 SetChannelName sets ChannelName field to given value.
 
-### HasChannelName
-
-`func (o *ThridPartyIntegration) HasChannelName() bool`
-
-HasChannelName returns a boolean if a field has been set.
 
 ### SetChannelNameNil
 
@@ -626,11 +561,6 @@ and a boolean to check if the value has been set.
 
 SetUrl sets Url field to given value.
 
-### HasUrl
-
-`func (o *ThridPartyIntegration) HasUrl() bool`
-
-HasUrl returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

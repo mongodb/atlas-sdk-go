@@ -40,7 +40,7 @@ func main() {
 
     integrationType := "integrationType_example" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    thridPartyIntegration := *openapiclient.NewThridPartyIntegration() // ThridPartyIntegration | 
+    thridPartyIntegration := openapiclient.ThridPartyIntegration{Datadog: openapiclient.NewDatadog("****************************a23c")} // ThridPartyIntegration | 
     includeCount := true // bool |  (optional) (default to true)
     itemsPerPage := int(100) // int |  (optional) (default to 100)
     pageNum := int(1) // int |  (optional) (default to 1)
@@ -360,7 +360,7 @@ func main() {
 
     integrationType := "integrationType_example" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    thridPartyIntegration := *openapiclient.NewThridPartyIntegration() // ThridPartyIntegration | 
+    thridPartyIntegration := openapiclient.ThridPartyIntegration{Datadog: openapiclient.NewDatadog("****************************a23c")} // ThridPartyIntegration | 
     includeCount := true // bool |  (optional) (default to true)
     itemsPerPage := int(100) // int |  (optional) (default to 100)
     pageNum := int(1) // int |  (optional) (default to 1)
