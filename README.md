@@ -11,7 +11,7 @@ Note that `atlas-sdk-go` only supports the two most recent major versions of Go.
 ### Adding Dependency
 
 ```
-go install go.mongodb.org/atlas-sdk
+go install go.mongodb.org/atlas-sdk@v0.16.0
 ```
 
 ### Using in the code
