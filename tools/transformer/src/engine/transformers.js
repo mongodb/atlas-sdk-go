@@ -23,12 +23,12 @@ function detectDuplicates(objArray) {
         if (allKeys[key]) {
           const parentType = allKeys[key].type;
           const childType = obj[key].type;
-          const typeMissmatch = parentType ? parentType !== childType : false;
+          const typeMismatch = parentType ? parentType !== childType : false;
           duplicates.push({
             key,
             childType: obj[key].type,
             parentType: allKeys[key].type,
-            typeMissmatch,
+            typeMismatch,
           });
         } else {
           allKeys[key] = obj[key].type;
