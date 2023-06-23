@@ -127,7 +127,7 @@ Documentation can be regenerated using `make gen-docs`
 
 ### Changes in manual documentation
 
-We recomend to create separate PR containing only documentation files each time manual documentation is changed.
+We recommend to create separate PR containing only documentation files each time manual documentation is changed.
 Documentation team will be assigned as reviewer automatically and will help with review of the PR.
 
 
