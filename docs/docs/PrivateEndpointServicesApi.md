@@ -50,7 +50,7 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     cloudProvider := "cloudProvider_example" // string |  (default to "AWS")
     endpointServiceId := "endpointServiceId_example" // string | 
-    createEndpointRequest := openapiclient.CreateEndpointRequest{CreateAWSEndpointRequest: openapiclient.NewCreateAWSEndpointRequest("vpce-3bf78b0ddee411ba1")} // CreateEndpointRequest | 
+    createEndpointRequest := *openapiclient.NewCreateEndpointRequest() // CreateEndpointRequest | 
 
     resp, r, err := sdk.PrivateEndpointServicesApi.CreatePrivateEndpoint(context.Background(), groupId, cloudProvider, endpointServiceId, &createEndpointRequest).Execute()
     if err != nil {

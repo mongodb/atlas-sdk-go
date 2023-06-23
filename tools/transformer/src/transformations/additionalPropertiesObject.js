@@ -42,6 +42,7 @@ function applyRemoveObjectAdditonalProperties(api) {
 
   // Start removing enum fields from the OpenAPI object
   removeObjectAdditonalProperties(api);
+  return api;
 }
 
 module.exports = {

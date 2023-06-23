@@ -56,8 +56,8 @@ type EventViewForNdsGroup struct {
 	// IANA port on which the MongoDB process listens for requests.
 	Port *int `json:"port,omitempty"`
 	// Human-readable label of the replica set associated with the event.
-	ReplicaSetName *string          `json:"replicaSetName,omitempty"`
-	CurrentValue   *HostMetricValue `json:"currentValue,omitempty"`
+	ReplicaSetName *string            `json:"replicaSetName,omitempty"`
+	CurrentValue   *NumberMetricValue `json:"currentValue,omitempty"`
 	// Human-readable label of the metric associated with the **alertId**. This field may change type of **currentValue** field.
 	MetricName *string `json:"metricName,omitempty"`
 	// Entry in the list of source host addresses that the API key accepts and this event targets.
@@ -830,9 +830,9 @@ func (o *EventViewForNdsGroup) SetReplicaSetName(v string) {
 }
 
 // GetCurrentValue returns the CurrentValue field value if set, zero value otherwise.
-func (o *EventViewForNdsGroup) GetCurrentValue() HostMetricValue {
+func (o *EventViewForNdsGroup) GetCurrentValue() NumberMetricValue {
 	if o == nil || IsNil(o.CurrentValue) {
-		var ret HostMetricValue
+		var ret NumberMetricValue
 		return ret
 	}
 	return *o.CurrentValue
@@ -840,7 +840,7 @@ func (o *EventViewForNdsGroup) GetCurrentValue() HostMetricValue {
 
 // GetCurrentValueOk returns a tuple with the CurrentValue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EventViewForNdsGroup) GetCurrentValueOk() (*HostMetricValue, bool) {
+func (o *EventViewForNdsGroup) GetCurrentValueOk() (*NumberMetricValue, bool) {
 	if o == nil || IsNil(o.CurrentValue) {
 		return nil, false
 	}
@@ -856,8 +856,8 @@ func (o *EventViewForNdsGroup) HasCurrentValue() bool {
 	return false
 }
 
-// SetCurrentValue gets a reference to the given HostMetricValue and assigns it to the CurrentValue field.
-func (o *EventViewForNdsGroup) SetCurrentValue(v HostMetricValue) {
+// SetCurrentValue gets a reference to the given NumberMetricValue and assigns it to the CurrentValue field.
+func (o *EventViewForNdsGroup) SetCurrentValue(v NumberMetricValue) {
 	o.CurrentValue = &v
 }
 

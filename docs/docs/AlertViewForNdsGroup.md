@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **ClusterName** | Pointer to **string** | Human-readable label that identifies the cluster to which this alert applies. This resource returns this parameter for alerts of events impacting backups, replica sets, or sharded clusters. | [optional] [readonly] 
 **HostnameAndPort** | Pointer to **string** | Hostname and port of the host to which this alert applies. The resource returns this parameter for alerts of events impacting hosts or replica sets. | [optional] [readonly] 
 **ReplicaSetName** | Pointer to **string** | Name of the replica set to which this alert applies. The response returns this parameter for alerts of events impacting backups, hosts, or replica sets. | [optional] [readonly] 
-**CurrentValue** | Pointer to [**HostMetricValue**](HostMetricValue.md) |  | [optional] 
+**CurrentValue** | Pointer to [**NumberMetricValue**](NumberMetricValue.md) |  | [optional] 
 **MetricName** | Pointer to **string** | Name of the metric against which Atlas checks the configured &#x60;metricThreshold.threshold&#x60;.  To learn more about the available metrics, see &lt;a href&#x3D;\&quot;https://www.mongodb.com/docs/atlas/reference/alert-host-metrics/#std-label-measurement-types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Host Metrics&lt;/a&gt;.  **NOTE**: If you set eventTypeName to OUTSIDE_SERVERLESS_METRIC_THRESHOLD, you can specify only metrics available for serverless. To learn more, see &lt;a href&#x3D;\&quot;https://dochub.mongodb.org/core/alert-config-serverless-measurements\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Serverless Measurements&lt;/a&gt;. | [optional] [readonly] 
 **NonRunningHostIds** | Pointer to **[]string** |  | [optional] [readonly] 
 **ParentClusterId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the parent cluster to which this alert applies. The parent cluster contains the sharded nodes. MongoDB Cloud returns this parameter only for alerts of events impacting sharded clusters. | [optional] [readonly] 
@@ -472,20 +472,20 @@ HasReplicaSetName returns a boolean if a field has been set.
 
 ### GetCurrentValue
 
-`func (o *AlertViewForNdsGroup) GetCurrentValue() HostMetricValue`
+`func (o *AlertViewForNdsGroup) GetCurrentValue() NumberMetricValue`
 
 GetCurrentValue returns the CurrentValue field if non-nil, zero value otherwise.
 
 ### GetCurrentValueOk
 
-`func (o *AlertViewForNdsGroup) GetCurrentValueOk() (*HostMetricValue, bool)`
+`func (o *AlertViewForNdsGroup) GetCurrentValueOk() (*NumberMetricValue, bool)`
 
 GetCurrentValueOk returns a tuple with the CurrentValue field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCurrentValue
 
-`func (o *AlertViewForNdsGroup) SetCurrentValue(v HostMetricValue)`
+`func (o *AlertViewForNdsGroup) SetCurrentValue(v NumberMetricValue)`
 
 SetCurrentValue sets CurrentValue field to given value.
 

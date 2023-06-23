@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Unique string that identifies the private endpoint&#39;s network interface that someone added to this private endpoint service. | 
-**PrivateEndpointIPAddress** | **string** | IPv4 address of the private endpoint in your Azure VNet that someone added to this private endpoint service. | 
-**EndpointGroupName** | **string** | Human-readable label that identifies a set of endpoints. | 
+**Id** | Pointer to **string** | Unique string that identifies the private endpoint&#39;s network interface that someone added to this private endpoint service. | [optional] 
+**PrivateEndpointIPAddress** | Pointer to **string** | IPv4 address of the private endpoint in your Azure VNet that someone added to this private endpoint service. | [optional] 
+**EndpointGroupName** | Pointer to **string** | Human-readable label that identifies a set of endpoints. | [optional] 
 **Endpoints** | Pointer to [**[]CreateGCPForwardingRuleRequest**](CreateGCPForwardingRuleRequest.md) | List of individual private endpoints that comprise this endpoint group. | [optional] 
-**GcpProjectId** | **string** | Unique string that identifies the Google Cloud project in which you created the endpoints. | 
+**GcpProjectId** | Pointer to **string** | Unique string that identifies the Google Cloud project in which you created the endpoints. | [optional] 
 
 ## Methods
 
 ### NewCreateEndpointRequest
 
-`func NewCreateEndpointRequest(id string, privateEndpointIPAddress string, endpointGroupName string, gcpProjectId string, ) *CreateEndpointRequest`
+`func NewCreateEndpointRequest() *CreateEndpointRequest`
 
 NewCreateEndpointRequest instantiates a new CreateEndpointRequest object
 This constructor will assign default values to properties that have it defined,
@@ -48,6 +48,11 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
+### HasId
+
+`func (o *CreateEndpointRequest) HasId() bool`
+
+HasId returns a boolean if a field has been set.
 
 ### GetPrivateEndpointIPAddress
 
@@ -68,6 +73,11 @@ and a boolean to check if the value has been set.
 
 SetPrivateEndpointIPAddress sets PrivateEndpointIPAddress field to given value.
 
+### HasPrivateEndpointIPAddress
+
+`func (o *CreateEndpointRequest) HasPrivateEndpointIPAddress() bool`
+
+HasPrivateEndpointIPAddress returns a boolean if a field has been set.
 
 ### GetEndpointGroupName
 
@@ -88,6 +98,11 @@ and a boolean to check if the value has been set.
 
 SetEndpointGroupName sets EndpointGroupName field to given value.
 
+### HasEndpointGroupName
+
+`func (o *CreateEndpointRequest) HasEndpointGroupName() bool`
+
+HasEndpointGroupName returns a boolean if a field has been set.
 
 ### GetEndpoints
 
@@ -133,6 +148,11 @@ and a boolean to check if the value has been set.
 
 SetGcpProjectId sets GcpProjectId field to given value.
 
+### HasGcpProjectId
+
+`func (o *CreateEndpointRequest) HasGcpProjectId() bool`
+
+HasGcpProjectId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

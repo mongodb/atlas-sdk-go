@@ -31,7 +31,7 @@ type GroupAlertsConfig struct {
 	// Date and time when someone last updated this alert configuration. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC.
 	Updated         *time.Time                 `json:"updated,omitempty"`
 	MetricThreshold *ServerlessMetricThreshold `json:"metricThreshold,omitempty"`
-	Threshold       *AlertsThresholdInteger    `json:"threshold,omitempty"`
+	Threshold       *GreaterThanRawThreshold   `json:"threshold,omitempty"`
 }
 
 // NewGroupAlertsConfig instantiates a new GroupAlertsConfig object
@@ -376,9 +376,9 @@ func (o *GroupAlertsConfig) SetMetricThreshold(v ServerlessMetricThreshold) {
 }
 
 // GetThreshold returns the Threshold field value if set, zero value otherwise.
-func (o *GroupAlertsConfig) GetThreshold() AlertsThresholdInteger {
+func (o *GroupAlertsConfig) GetThreshold() GreaterThanRawThreshold {
 	if o == nil || IsNil(o.Threshold) {
-		var ret AlertsThresholdInteger
+		var ret GreaterThanRawThreshold
 		return ret
 	}
 	return *o.Threshold
@@ -386,7 +386,7 @@ func (o *GroupAlertsConfig) GetThreshold() AlertsThresholdInteger {
 
 // GetThresholdOk returns a tuple with the Threshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupAlertsConfig) GetThresholdOk() (*AlertsThresholdInteger, bool) {
+func (o *GroupAlertsConfig) GetThresholdOk() (*GreaterThanRawThreshold, bool) {
 	if o == nil || IsNil(o.Threshold) {
 		return nil, false
 	}
@@ -402,8 +402,8 @@ func (o *GroupAlertsConfig) HasThreshold() bool {
 	return false
 }
 
-// SetThreshold gets a reference to the given AlertsThresholdInteger and assigns it to the Threshold field.
-func (o *GroupAlertsConfig) SetThreshold(v AlertsThresholdInteger) {
+// SetThreshold gets a reference to the given GreaterThanRawThreshold and assigns it to the Threshold field.
+func (o *GroupAlertsConfig) SetThreshold(v GreaterThanRawThreshold) {
 	o.Threshold = &v
 }
 

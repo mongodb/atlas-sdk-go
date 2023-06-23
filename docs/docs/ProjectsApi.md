@@ -1195,7 +1195,7 @@ func main() {
 
     limitName := "limitName_example" // string | 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    dataFederationLimit := openapiclient.DataFederationLimit{DataFederationQueryLimit: openapiclient.NewDataFederationQueryLimit("Name_example", int64(123))} // DataFederationLimit | 
+    dataFederationLimit := *openapiclient.NewDataFederationLimit("Name_example", int64(123)) // DataFederationLimit | 
 
     resp, r, err := sdk.ProjectsApi.SetProjectLimit(context.Background(), limitName, groupId, &dataFederationLimit).Execute()
     if err != nil {

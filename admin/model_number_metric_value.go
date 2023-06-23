@@ -6,35 +6,36 @@ import (
 	"encoding/json"
 )
 
-// checks if the HostMetricValue type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &HostMetricValue{}
+// checks if the NumberMetricValue type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &NumberMetricValue{}
 
-// HostMetricValue Value of the metric that triggered the alert. The resource returns this parameter for alerts of events impacting hosts.
-type HostMetricValue struct {
+// NumberMetricValue Measurement of the **metricName** recorded at the time of the event.
+type NumberMetricValue struct {
 	// Amount of the **metricName** recorded at the time of the event. This value triggered the alert.
 	Number *float64 `json:"number,omitempty"`
-	Units  *string  `json:"units,omitempty"`
+	// Element used to express the quantity. This can be an element of time, storage capacity, and the like.
+	Units *string `json:"units,omitempty"`
 }
 
-// NewHostMetricValue instantiates a new HostMetricValue object
+// NewNumberMetricValue instantiates a new NumberMetricValue object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewHostMetricValue() *HostMetricValue {
-	this := HostMetricValue{}
+func NewNumberMetricValue() *NumberMetricValue {
+	this := NumberMetricValue{}
 	return &this
 }
 
-// NewHostMetricValueWithDefaults instantiates a new HostMetricValue object
+// NewNumberMetricValueWithDefaults instantiates a new NumberMetricValue object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewHostMetricValueWithDefaults() *HostMetricValue {
-	this := HostMetricValue{}
+func NewNumberMetricValueWithDefaults() *NumberMetricValue {
+	this := NumberMetricValue{}
 	return &this
 }
 
 // GetNumber returns the Number field value if set, zero value otherwise.
-func (o *HostMetricValue) GetNumber() float64 {
+func (o *NumberMetricValue) GetNumber() float64 {
 	if o == nil || IsNil(o.Number) {
 		var ret float64
 		return ret
@@ -44,7 +45,7 @@ func (o *HostMetricValue) GetNumber() float64 {
 
 // GetNumberOk returns a tuple with the Number field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HostMetricValue) GetNumberOk() (*float64, bool) {
+func (o *NumberMetricValue) GetNumberOk() (*float64, bool) {
 	if o == nil || IsNil(o.Number) {
 		return nil, false
 	}
@@ -52,7 +53,7 @@ func (o *HostMetricValue) GetNumberOk() (*float64, bool) {
 }
 
 // HasNumber returns a boolean if a field has been set.
-func (o *HostMetricValue) HasNumber() bool {
+func (o *NumberMetricValue) HasNumber() bool {
 	if o != nil && !IsNil(o.Number) {
 		return true
 	}
@@ -61,12 +62,12 @@ func (o *HostMetricValue) HasNumber() bool {
 }
 
 // SetNumber gets a reference to the given float64 and assigns it to the Number field.
-func (o *HostMetricValue) SetNumber(v float64) {
+func (o *NumberMetricValue) SetNumber(v float64) {
 	o.Number = &v
 }
 
 // GetUnits returns the Units field value if set, zero value otherwise.
-func (o *HostMetricValue) GetUnits() string {
+func (o *NumberMetricValue) GetUnits() string {
 	if o == nil || IsNil(o.Units) {
 		var ret string
 		return ret
@@ -76,7 +77,7 @@ func (o *HostMetricValue) GetUnits() string {
 
 // GetUnitsOk returns a tuple with the Units field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HostMetricValue) GetUnitsOk() (*string, bool) {
+func (o *NumberMetricValue) GetUnitsOk() (*string, bool) {
 	if o == nil || IsNil(o.Units) {
 		return nil, false
 	}
@@ -84,7 +85,7 @@ func (o *HostMetricValue) GetUnitsOk() (*string, bool) {
 }
 
 // HasUnits returns a boolean if a field has been set.
-func (o *HostMetricValue) HasUnits() bool {
+func (o *NumberMetricValue) HasUnits() bool {
 	if o != nil && !IsNil(o.Units) {
 		return true
 	}
@@ -93,18 +94,18 @@ func (o *HostMetricValue) HasUnits() bool {
 }
 
 // SetUnits gets a reference to the given string and assigns it to the Units field.
-func (o *HostMetricValue) SetUnits(v string) {
+func (o *NumberMetricValue) SetUnits(v string) {
 	o.Units = &v
 }
 
-func (o HostMetricValue) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o NumberMetricValue) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o HostMetricValue) ToMap() (map[string]interface{}, error) {
+func (o NumberMetricValue) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Units) {
 		toSerialize["units"] = o.Units
@@ -112,38 +113,38 @@ func (o HostMetricValue) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableHostMetricValue struct {
-	value *HostMetricValue
+type NullableNumberMetricValue struct {
+	value *NumberMetricValue
 	isSet bool
 }
 
-func (v NullableHostMetricValue) Get() *HostMetricValue {
+func (v NullableNumberMetricValue) Get() *NumberMetricValue {
 	return v.value
 }
 
-func (v *NullableHostMetricValue) Set(val *HostMetricValue) {
+func (v *NullableNumberMetricValue) Set(val *NumberMetricValue) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableHostMetricValue) IsSet() bool {
+func (v NullableNumberMetricValue) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableHostMetricValue) Unset() {
+func (v *NullableNumberMetricValue) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableHostMetricValue(val *HostMetricValue) *NullableHostMetricValue {
-	return &NullableHostMetricValue{value: val, isSet: true}
+func NewNullableNumberMetricValue(val *NumberMetricValue) *NullableNumberMetricValue {
+	return &NullableNumberMetricValue{value: val, isSet: true}
 }
 
-func (v NullableHostMetricValue) MarshalJSON() ([]byte, error) {
+func (v NullableNumberMetricValue) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableHostMetricValue) UnmarshalJSON(src []byte) error {
+func (v *NullableNumberMetricValue) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

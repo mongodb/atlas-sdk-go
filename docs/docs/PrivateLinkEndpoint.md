@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CloudProvider** | **string** | Cloud service provider that serves the requested endpoint. | [readonly] 
-**ConnectionStatus** | Pointer to **string** | State of the Amazon Web Service PrivateLink connection when MongoDB Cloud received this request. | [optional] [readonly] 
 **DeleteRequested** | Pointer to **bool** | Flag that indicates whether MongoDB Cloud received a request to remove the specified private endpoint from the private endpoint service. | [optional] [readonly] 
 **ErrorMessage** | Pointer to **string** | Error message returned when requesting private connection resource. The resource returns &#x60;null&#x60; if the request succeeded. | [optional] [readonly] 
+**ConnectionStatus** | Pointer to **string** | State of the Amazon Web Service PrivateLink connection when MongoDB Cloud received this request. | [optional] [readonly] 
 **InterfaceEndpointId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the interface endpoint. | [optional] [readonly] 
 **EndpointGroupName** | Pointer to **string** | Human-readable label that identifies a set of endpoints. | [optional] [readonly] 
 **Endpoints** | Pointer to [**[]GCPConsumerForwardingRule**](GCPConsumerForwardingRule.md) | List of individual private endpoints that comprise this endpoint group. | [optional] [readonly] 
@@ -54,31 +54,6 @@ and a boolean to check if the value has been set.
 
 SetCloudProvider sets CloudProvider field to given value.
 
-
-### GetConnectionStatus
-
-`func (o *PrivateLinkEndpoint) GetConnectionStatus() string`
-
-GetConnectionStatus returns the ConnectionStatus field if non-nil, zero value otherwise.
-
-### GetConnectionStatusOk
-
-`func (o *PrivateLinkEndpoint) GetConnectionStatusOk() (*string, bool)`
-
-GetConnectionStatusOk returns a tuple with the ConnectionStatus field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetConnectionStatus
-
-`func (o *PrivateLinkEndpoint) SetConnectionStatus(v string)`
-
-SetConnectionStatus sets ConnectionStatus field to given value.
-
-### HasConnectionStatus
-
-`func (o *PrivateLinkEndpoint) HasConnectionStatus() bool`
-
-HasConnectionStatus returns a boolean if a field has been set.
 
 ### GetDeleteRequested
 
@@ -129,6 +104,31 @@ SetErrorMessage sets ErrorMessage field to given value.
 `func (o *PrivateLinkEndpoint) HasErrorMessage() bool`
 
 HasErrorMessage returns a boolean if a field has been set.
+
+### GetConnectionStatus
+
+`func (o *PrivateLinkEndpoint) GetConnectionStatus() string`
+
+GetConnectionStatus returns the ConnectionStatus field if non-nil, zero value otherwise.
+
+### GetConnectionStatusOk
+
+`func (o *PrivateLinkEndpoint) GetConnectionStatusOk() (*string, bool)`
+
+GetConnectionStatusOk returns a tuple with the ConnectionStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConnectionStatus
+
+`func (o *PrivateLinkEndpoint) SetConnectionStatus(v string)`
+
+SetConnectionStatus sets ConnectionStatus field to given value.
+
+### HasConnectionStatus
+
+`func (o *PrivateLinkEndpoint) HasConnectionStatus() bool`
+
+HasConnectionStatus returns a boolean if a field has been set.
 
 ### GetInterfaceEndpointId
 

@@ -12,6 +12,7 @@ const {
   applyRemoveObjectAdditonalProperties,
 } = require("./additionalPropertiesObject");
 const { applyAddExperimentalTag } = require("./tagExperimental");
+const { applyAnyOfTransformations } = require("./anyOf");
 
 module.exports = {
   applyModelNameTransformations,
@@ -25,4 +26,5 @@ module.exports = {
   applyRemoveEnumsTransformations,
   applyRemoveObjectAdditonalProperties,
   applyAddExperimentalTag,
+  applyAnyOfTransformations,
 };

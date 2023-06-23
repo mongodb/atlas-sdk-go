@@ -4,198 +4,291 @@ package admin
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
-// OnlineArchiveSchedule - Regular frequency and duration when archiving process occurs.
+// checks if the OnlineArchiveSchedule type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OnlineArchiveSchedule{}
+
+// OnlineArchiveSchedule Regular frequency and duration when archiving process occurs.
 type OnlineArchiveSchedule struct {
-	DailySchedule   *DailySchedule
-	DefaultSchedule *DefaultSchedule
-	MonthlySchedule *MonthlySchedule
-	WeeklySchedule  *WeeklySchedule
+	Type string `json:"type"`
+	// Hour of the day when the scheduled window to run one online archive ends.
+	EndHour *int `json:"endHour,omitempty"`
+	// Minute of the hour when the scheduled window to run one online archive ends.
+	EndMinute *int `json:"endMinute,omitempty"`
+	// Hour of the day when the when the scheduled window to run one online archive starts.
+	StartHour *int `json:"startHour,omitempty"`
+	// Minute of the hour when the scheduled window to run one online archive starts.
+	StartMinute *int `json:"startMinute,omitempty"`
+	// Day of the week when the scheduled archive starts. The week starts with Monday (`1`) and ends with Sunday (`7`).
+	DayOfWeek *int `json:"dayOfWeek,omitempty"`
+	// Day of the month when the scheduled archive starts.
+	DayOfMonth *int `json:"dayOfMonth,omitempty"`
 }
 
-// DailyScheduleAsOnlineArchiveSchedule is a convenience function that returns DailySchedule wrapped in OnlineArchiveSchedule
-func DailyScheduleAsOnlineArchiveSchedule(v *DailySchedule) OnlineArchiveSchedule {
-	return OnlineArchiveSchedule{
-		DailySchedule: v,
+// NewOnlineArchiveSchedule instantiates a new OnlineArchiveSchedule object
+// This constructor will assign default values to properties that have it defined,
+// and makes sure properties required by API are set, but the set of arguments
+// will change when the set of required properties is changed
+func NewOnlineArchiveSchedule(type_ string) *OnlineArchiveSchedule {
+	this := OnlineArchiveSchedule{}
+	this.Type = type_
+	return &this
+}
+
+// NewOnlineArchiveScheduleWithDefaults instantiates a new OnlineArchiveSchedule object
+// This constructor will only assign default values to properties that have it defined,
+// but it doesn't guarantee that properties required by API are set
+func NewOnlineArchiveScheduleWithDefaults() *OnlineArchiveSchedule {
+	this := OnlineArchiveSchedule{}
+	return &this
+}
+
+// GetType returns the Type field value
+func (o *OnlineArchiveSchedule) GetType() string {
+	if o == nil {
+		var ret string
+		return ret
 	}
+
+	return o.Type
 }
 
-// DefaultScheduleAsOnlineArchiveSchedule is a convenience function that returns DefaultSchedule wrapped in OnlineArchiveSchedule
-func DefaultScheduleAsOnlineArchiveSchedule(v *DefaultSchedule) OnlineArchiveSchedule {
-	return OnlineArchiveSchedule{
-		DefaultSchedule: v,
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *OnlineArchiveSchedule) GetTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
 	}
+	return &o.Type, true
 }
 
-// MonthlyScheduleAsOnlineArchiveSchedule is a convenience function that returns MonthlySchedule wrapped in OnlineArchiveSchedule
-func MonthlyScheduleAsOnlineArchiveSchedule(v *MonthlySchedule) OnlineArchiveSchedule {
-	return OnlineArchiveSchedule{
-		MonthlySchedule: v,
+// SetType sets field value
+func (o *OnlineArchiveSchedule) SetType(v string) {
+	o.Type = v
+}
+
+// GetEndHour returns the EndHour field value if set, zero value otherwise.
+func (o *OnlineArchiveSchedule) GetEndHour() int {
+	if o == nil || IsNil(o.EndHour) {
+		var ret int
+		return ret
 	}
+	return *o.EndHour
 }
 
-// WeeklyScheduleAsOnlineArchiveSchedule is a convenience function that returns WeeklySchedule wrapped in OnlineArchiveSchedule
-func WeeklyScheduleAsOnlineArchiveSchedule(v *WeeklySchedule) OnlineArchiveSchedule {
-	return OnlineArchiveSchedule{
-		WeeklySchedule: v,
+// GetEndHourOk returns a tuple with the EndHour field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OnlineArchiveSchedule) GetEndHourOk() (*int, bool) {
+	if o == nil || IsNil(o.EndHour) {
+		return nil, false
 	}
+	return o.EndHour, true
 }
 
-// Unmarshal JSON data into one of the pointers in the struct
-func (dst *OnlineArchiveSchedule) UnmarshalJSON(data []byte) error {
-	var err error
-	// use discriminator value to speed up the lookup
-	var jsonDict map[string]interface{}
-	err = newStrictDecoder(data).Decode(&jsonDict)
+// HasEndHour returns a boolean if a field has been set.
+func (o *OnlineArchiveSchedule) HasEndHour() bool {
+	if o != nil && !IsNil(o.EndHour) {
+		return true
+	}
+
+	return false
+}
+
+// SetEndHour gets a reference to the given int and assigns it to the EndHour field.
+func (o *OnlineArchiveSchedule) SetEndHour(v int) {
+	o.EndHour = &v
+}
+
+// GetEndMinute returns the EndMinute field value if set, zero value otherwise.
+func (o *OnlineArchiveSchedule) GetEndMinute() int {
+	if o == nil || IsNil(o.EndMinute) {
+		var ret int
+		return ret
+	}
+	return *o.EndMinute
+}
+
+// GetEndMinuteOk returns a tuple with the EndMinute field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OnlineArchiveSchedule) GetEndMinuteOk() (*int, bool) {
+	if o == nil || IsNil(o.EndMinute) {
+		return nil, false
+	}
+	return o.EndMinute, true
+}
+
+// HasEndMinute returns a boolean if a field has been set.
+func (o *OnlineArchiveSchedule) HasEndMinute() bool {
+	if o != nil && !IsNil(o.EndMinute) {
+		return true
+	}
+
+	return false
+}
+
+// SetEndMinute gets a reference to the given int and assigns it to the EndMinute field.
+func (o *OnlineArchiveSchedule) SetEndMinute(v int) {
+	o.EndMinute = &v
+}
+
+// GetStartHour returns the StartHour field value if set, zero value otherwise.
+func (o *OnlineArchiveSchedule) GetStartHour() int {
+	if o == nil || IsNil(o.StartHour) {
+		var ret int
+		return ret
+	}
+	return *o.StartHour
+}
+
+// GetStartHourOk returns a tuple with the StartHour field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OnlineArchiveSchedule) GetStartHourOk() (*int, bool) {
+	if o == nil || IsNil(o.StartHour) {
+		return nil, false
+	}
+	return o.StartHour, true
+}
+
+// HasStartHour returns a boolean if a field has been set.
+func (o *OnlineArchiveSchedule) HasStartHour() bool {
+	if o != nil && !IsNil(o.StartHour) {
+		return true
+	}
+
+	return false
+}
+
+// SetStartHour gets a reference to the given int and assigns it to the StartHour field.
+func (o *OnlineArchiveSchedule) SetStartHour(v int) {
+	o.StartHour = &v
+}
+
+// GetStartMinute returns the StartMinute field value if set, zero value otherwise.
+func (o *OnlineArchiveSchedule) GetStartMinute() int {
+	if o == nil || IsNil(o.StartMinute) {
+		var ret int
+		return ret
+	}
+	return *o.StartMinute
+}
+
+// GetStartMinuteOk returns a tuple with the StartMinute field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OnlineArchiveSchedule) GetStartMinuteOk() (*int, bool) {
+	if o == nil || IsNil(o.StartMinute) {
+		return nil, false
+	}
+	return o.StartMinute, true
+}
+
+// HasStartMinute returns a boolean if a field has been set.
+func (o *OnlineArchiveSchedule) HasStartMinute() bool {
+	if o != nil && !IsNil(o.StartMinute) {
+		return true
+	}
+
+	return false
+}
+
+// SetStartMinute gets a reference to the given int and assigns it to the StartMinute field.
+func (o *OnlineArchiveSchedule) SetStartMinute(v int) {
+	o.StartMinute = &v
+}
+
+// GetDayOfWeek returns the DayOfWeek field value if set, zero value otherwise.
+func (o *OnlineArchiveSchedule) GetDayOfWeek() int {
+	if o == nil || IsNil(o.DayOfWeek) {
+		var ret int
+		return ret
+	}
+	return *o.DayOfWeek
+}
+
+// GetDayOfWeekOk returns a tuple with the DayOfWeek field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OnlineArchiveSchedule) GetDayOfWeekOk() (*int, bool) {
+	if o == nil || IsNil(o.DayOfWeek) {
+		return nil, false
+	}
+	return o.DayOfWeek, true
+}
+
+// HasDayOfWeek returns a boolean if a field has been set.
+func (o *OnlineArchiveSchedule) HasDayOfWeek() bool {
+	if o != nil && !IsNil(o.DayOfWeek) {
+		return true
+	}
+
+	return false
+}
+
+// SetDayOfWeek gets a reference to the given int and assigns it to the DayOfWeek field.
+func (o *OnlineArchiveSchedule) SetDayOfWeek(v int) {
+	o.DayOfWeek = &v
+}
+
+// GetDayOfMonth returns the DayOfMonth field value if set, zero value otherwise.
+func (o *OnlineArchiveSchedule) GetDayOfMonth() int {
+	if o == nil || IsNil(o.DayOfMonth) {
+		var ret int
+		return ret
+	}
+	return *o.DayOfMonth
+}
+
+// GetDayOfMonthOk returns a tuple with the DayOfMonth field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OnlineArchiveSchedule) GetDayOfMonthOk() (*int, bool) {
+	if o == nil || IsNil(o.DayOfMonth) {
+		return nil, false
+	}
+	return o.DayOfMonth, true
+}
+
+// HasDayOfMonth returns a boolean if a field has been set.
+func (o *OnlineArchiveSchedule) HasDayOfMonth() bool {
+	if o != nil && !IsNil(o.DayOfMonth) {
+		return true
+	}
+
+	return false
+}
+
+// SetDayOfMonth gets a reference to the given int and assigns it to the DayOfMonth field.
+func (o *OnlineArchiveSchedule) SetDayOfMonth(v int) {
+	o.DayOfMonth = &v
+}
+
+func (o OnlineArchiveSchedule) MarshalJSONWithoutReadOnly() ([]byte, error) {
+	toSerialize, err := o.ToMap()
 	if err != nil {
-		return fmt.Errorf("failed to unmarshal JSON into map for the discriminator lookup")
+		return []byte{}, err
 	}
-
-	// check if the discriminator value is 'DAILY'
-	if jsonDict["type"] == "DAILY" {
-		// try to unmarshal JSON data into DailySchedule
-		err = json.Unmarshal(data, &dst.DailySchedule)
-		if err == nil {
-			return nil // data stored in dst.DailySchedule, return on the first match
-		} else {
-			dst.DailySchedule = nil
-			return fmt.Errorf("failed to unmarshal OnlineArchiveSchedule as DailySchedule: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'DEFAULT'
-	if jsonDict["type"] == "DEFAULT" {
-		// try to unmarshal JSON data into DefaultSchedule
-		err = json.Unmarshal(data, &dst.DefaultSchedule)
-		if err == nil {
-			return nil // data stored in dst.DefaultSchedule, return on the first match
-		} else {
-			dst.DefaultSchedule = nil
-			return fmt.Errorf("failed to unmarshal OnlineArchiveSchedule as DefaultSchedule: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'DailySchedule'
-	if jsonDict["type"] == "DailySchedule" {
-		// try to unmarshal JSON data into DailySchedule
-		err = json.Unmarshal(data, &dst.DailySchedule)
-		if err == nil {
-			return nil // data stored in dst.DailySchedule, return on the first match
-		} else {
-			dst.DailySchedule = nil
-			return fmt.Errorf("failed to unmarshal OnlineArchiveSchedule as DailySchedule: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'DefaultSchedule'
-	if jsonDict["type"] == "DefaultSchedule" {
-		// try to unmarshal JSON data into DefaultSchedule
-		err = json.Unmarshal(data, &dst.DefaultSchedule)
-		if err == nil {
-			return nil // data stored in dst.DefaultSchedule, return on the first match
-		} else {
-			dst.DefaultSchedule = nil
-			return fmt.Errorf("failed to unmarshal OnlineArchiveSchedule as DefaultSchedule: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'MONTHLY'
-	if jsonDict["type"] == "MONTHLY" {
-		// try to unmarshal JSON data into MonthlySchedule
-		err = json.Unmarshal(data, &dst.MonthlySchedule)
-		if err == nil {
-			return nil // data stored in dst.MonthlySchedule, return on the first match
-		} else {
-			dst.MonthlySchedule = nil
-			return fmt.Errorf("failed to unmarshal OnlineArchiveSchedule as MonthlySchedule: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'MonthlySchedule'
-	if jsonDict["type"] == "MonthlySchedule" {
-		// try to unmarshal JSON data into MonthlySchedule
-		err = json.Unmarshal(data, &dst.MonthlySchedule)
-		if err == nil {
-			return nil // data stored in dst.MonthlySchedule, return on the first match
-		} else {
-			dst.MonthlySchedule = nil
-			return fmt.Errorf("failed to unmarshal OnlineArchiveSchedule as MonthlySchedule: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'WEEKLY'
-	if jsonDict["type"] == "WEEKLY" {
-		// try to unmarshal JSON data into WeeklySchedule
-		err = json.Unmarshal(data, &dst.WeeklySchedule)
-		if err == nil {
-			return nil // data stored in dst.WeeklySchedule, return on the first match
-		} else {
-			dst.WeeklySchedule = nil
-			return fmt.Errorf("failed to unmarshal OnlineArchiveSchedule as WeeklySchedule: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'WeeklySchedule'
-	if jsonDict["type"] == "WeeklySchedule" {
-		// try to unmarshal JSON data into WeeklySchedule
-		err = json.Unmarshal(data, &dst.WeeklySchedule)
-		if err == nil {
-			return nil // data stored in dst.WeeklySchedule, return on the first match
-		} else {
-			dst.WeeklySchedule = nil
-			return fmt.Errorf("failed to unmarshal OnlineArchiveSchedule as WeeklySchedule: %s", err.Error())
-		}
-	}
-
-	return nil
+	return json.Marshal(toSerialize)
 }
-
-// Marshal data from the first non-nil pointers in the struct to JSON
-func (src OnlineArchiveSchedule) MarshalJSON() ([]byte, error) {
-	if src.DailySchedule != nil {
-		return json.Marshal(&src.DailySchedule)
+func (o OnlineArchiveSchedule) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["type"] = o.Type
+	if !IsNil(o.EndHour) {
+		toSerialize["endHour"] = o.EndHour
 	}
-
-	if src.DefaultSchedule != nil {
-		return json.Marshal(&src.DefaultSchedule)
+	if !IsNil(o.EndMinute) {
+		toSerialize["endMinute"] = o.EndMinute
 	}
-
-	if src.MonthlySchedule != nil {
-		return json.Marshal(&src.MonthlySchedule)
+	if !IsNil(o.StartHour) {
+		toSerialize["startHour"] = o.StartHour
 	}
-
-	if src.WeeklySchedule != nil {
-		return json.Marshal(&src.WeeklySchedule)
+	if !IsNil(o.StartMinute) {
+		toSerialize["startMinute"] = o.StartMinute
 	}
-
-	return nil, nil // no data in oneOf schemas
-}
-
-// Get the actual instance
-func (obj *OnlineArchiveSchedule) GetActualInstance() interface{} {
-	if obj == nil {
-		return nil
+	if !IsNil(o.DayOfWeek) {
+		toSerialize["dayOfWeek"] = o.DayOfWeek
 	}
-	if obj.DailySchedule != nil {
-		return obj.DailySchedule
+	if !IsNil(o.DayOfMonth) {
+		toSerialize["dayOfMonth"] = o.DayOfMonth
 	}
-
-	if obj.DefaultSchedule != nil {
-		return obj.DefaultSchedule
-	}
-
-	if obj.MonthlySchedule != nil {
-		return obj.MonthlySchedule
-	}
-
-	if obj.WeeklySchedule != nil {
-		return obj.WeeklySchedule
-	}
-
-	// all schemas are nil
-	return nil
+	return toSerialize, nil
 }
 
 type NullableOnlineArchiveSchedule struct {

@@ -4,8 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CloudProvider** | Pointer to **string** | Human-readable label that identifies the cloud provider that stores this snapshot. The resource returns this parameter when &#x60;\&quot;type\&quot;: \&quot;replicaSet\&quot;&#x60;. | [optional] [readonly] 
-**CopyRegions** | Pointer to **[]string** | List that identifies the regions to which MongoDB Cloud copies the snapshot. | [optional] [readonly] 
 **CreatedAt** | Pointer to **time.Time** | Date and time when MongoDB Cloud took the snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **Description** | Pointer to **string** | Human-readable phrase or sentence that explains the purpose of the snapshot. The resource returns this parameter when &#x60;\&quot;status\&quot;: \&quot;onDemand\&quot;&#x60;. | [optional] [readonly] 
 **ExpiresAt** | Pointer to **time.Time** | Date and time when MongoDB Cloud deletes the snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
@@ -15,11 +13,13 @@ Name | Type | Description | Notes
 **MasterKeyUUID** | Pointer to **string** | Unique string that identifies the Amazon Web Services (AWS) Key Management Service (KMS) Customer Master Key (CMK) used to encrypt the snapshot. The resource returns this value when &#x60;\&quot;encryptionEnabled\&quot; : true&#x60;. | [optional] [readonly] 
 **MongodVersion** | Pointer to **string** | Version of the MongoDB host that this snapshot backs up. | [optional] [readonly] 
 **PolicyItems** | Pointer to **[]string** | List that contains unique identifiers for the policy items. | [optional] [readonly] 
-**ReplicaSetName** | Pointer to **string** | Human-readable label that identifies the replica set from which MongoDB Cloud took this snapshot. The resource returns this parameter when &#x60;\&quot;type\&quot;: \&quot;replicaSet\&quot;&#x60;. | [optional] [readonly] 
 **SnapshotType** | Pointer to **string** | Human-readable label that identifies when this snapshot triggers. | [optional] [readonly] 
 **Status** | Pointer to **string** | Human-readable label that indicates the stage of the backup process for this snapshot. | [optional] [readonly] 
 **StorageSizeBytes** | Pointer to **int64** | Number of bytes taken to store the backup snapshot. | [optional] [readonly] 
 **Type** | Pointer to **string** | Human-readable label that categorizes the cluster as a replica set or sharded cluster. | [optional] [readonly] 
+**CloudProvider** | Pointer to **string** | Human-readable label that identifies the cloud provider that stores this snapshot. The resource returns this parameter when &#x60;\&quot;type\&quot;: \&quot;replicaSet\&quot;&#x60;. | [optional] [readonly] 
+**CopyRegions** | Pointer to **[]string** | List that identifies the regions to which MongoDB Cloud copies the snapshot. | [optional] [readonly] 
+**ReplicaSetName** | Pointer to **string** | Human-readable label that identifies the replica set from which MongoDB Cloud took this snapshot. The resource returns this parameter when &#x60;\&quot;type\&quot;: \&quot;replicaSet\&quot;&#x60;. | [optional] [readonly] 
 **Members** | Pointer to [**[]DiskBackupShardedClusterSnapshotMember**](DiskBackupShardedClusterSnapshotMember.md) | List that includes the snapshots and the cloud provider that stores the snapshots. The resource returns this parameter when &#x60;\&quot;type\&quot; : \&quot;SHARDED_CLUSTER\&quot;&#x60;. | [optional] [readonly] 
 **SnapshotIds** | Pointer to **[]string** | List that contains the unique identifiers of the snapshots created for the shards and config host for a sharded cluster. The resource returns this parameter when &#x60;\&quot;type\&quot;: \&quot;SHARDED_CLUSTER\&quot;&#x60;. These identifiers should match the ones specified in the **members[n].id** parameters. This allows you to map a snapshot to its shard or config host name. | [optional] [readonly] 
 
@@ -41,56 +41,6 @@ will change when the set of required properties is changed
 NewDiskBackupSnapshotWithDefaults instantiates a new DiskBackupSnapshot object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetCloudProvider
-
-`func (o *DiskBackupSnapshot) GetCloudProvider() string`
-
-GetCloudProvider returns the CloudProvider field if non-nil, zero value otherwise.
-
-### GetCloudProviderOk
-
-`func (o *DiskBackupSnapshot) GetCloudProviderOk() (*string, bool)`
-
-GetCloudProviderOk returns a tuple with the CloudProvider field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCloudProvider
-
-`func (o *DiskBackupSnapshot) SetCloudProvider(v string)`
-
-SetCloudProvider sets CloudProvider field to given value.
-
-### HasCloudProvider
-
-`func (o *DiskBackupSnapshot) HasCloudProvider() bool`
-
-HasCloudProvider returns a boolean if a field has been set.
-
-### GetCopyRegions
-
-`func (o *DiskBackupSnapshot) GetCopyRegions() []string`
-
-GetCopyRegions returns the CopyRegions field if non-nil, zero value otherwise.
-
-### GetCopyRegionsOk
-
-`func (o *DiskBackupSnapshot) GetCopyRegionsOk() (*[]string, bool)`
-
-GetCopyRegionsOk returns a tuple with the CopyRegions field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCopyRegions
-
-`func (o *DiskBackupSnapshot) SetCopyRegions(v []string)`
-
-SetCopyRegions sets CopyRegions field to given value.
-
-### HasCopyRegions
-
-`func (o *DiskBackupSnapshot) HasCopyRegions() bool`
-
-HasCopyRegions returns a boolean if a field has been set.
 
 ### GetCreatedAt
 
@@ -317,31 +267,6 @@ SetPolicyItems sets PolicyItems field to given value.
 
 HasPolicyItems returns a boolean if a field has been set.
 
-### GetReplicaSetName
-
-`func (o *DiskBackupSnapshot) GetReplicaSetName() string`
-
-GetReplicaSetName returns the ReplicaSetName field if non-nil, zero value otherwise.
-
-### GetReplicaSetNameOk
-
-`func (o *DiskBackupSnapshot) GetReplicaSetNameOk() (*string, bool)`
-
-GetReplicaSetNameOk returns a tuple with the ReplicaSetName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetReplicaSetName
-
-`func (o *DiskBackupSnapshot) SetReplicaSetName(v string)`
-
-SetReplicaSetName sets ReplicaSetName field to given value.
-
-### HasReplicaSetName
-
-`func (o *DiskBackupSnapshot) HasReplicaSetName() bool`
-
-HasReplicaSetName returns a boolean if a field has been set.
-
 ### GetSnapshotType
 
 `func (o *DiskBackupSnapshot) GetSnapshotType() string`
@@ -441,6 +366,81 @@ SetType sets Type field to given value.
 `func (o *DiskBackupSnapshot) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### GetCloudProvider
+
+`func (o *DiskBackupSnapshot) GetCloudProvider() string`
+
+GetCloudProvider returns the CloudProvider field if non-nil, zero value otherwise.
+
+### GetCloudProviderOk
+
+`func (o *DiskBackupSnapshot) GetCloudProviderOk() (*string, bool)`
+
+GetCloudProviderOk returns a tuple with the CloudProvider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCloudProvider
+
+`func (o *DiskBackupSnapshot) SetCloudProvider(v string)`
+
+SetCloudProvider sets CloudProvider field to given value.
+
+### HasCloudProvider
+
+`func (o *DiskBackupSnapshot) HasCloudProvider() bool`
+
+HasCloudProvider returns a boolean if a field has been set.
+
+### GetCopyRegions
+
+`func (o *DiskBackupSnapshot) GetCopyRegions() []string`
+
+GetCopyRegions returns the CopyRegions field if non-nil, zero value otherwise.
+
+### GetCopyRegionsOk
+
+`func (o *DiskBackupSnapshot) GetCopyRegionsOk() (*[]string, bool)`
+
+GetCopyRegionsOk returns a tuple with the CopyRegions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCopyRegions
+
+`func (o *DiskBackupSnapshot) SetCopyRegions(v []string)`
+
+SetCopyRegions sets CopyRegions field to given value.
+
+### HasCopyRegions
+
+`func (o *DiskBackupSnapshot) HasCopyRegions() bool`
+
+HasCopyRegions returns a boolean if a field has been set.
+
+### GetReplicaSetName
+
+`func (o *DiskBackupSnapshot) GetReplicaSetName() string`
+
+GetReplicaSetName returns the ReplicaSetName field if non-nil, zero value otherwise.
+
+### GetReplicaSetNameOk
+
+`func (o *DiskBackupSnapshot) GetReplicaSetNameOk() (*string, bool)`
+
+GetReplicaSetNameOk returns a tuple with the ReplicaSetName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReplicaSetName
+
+`func (o *DiskBackupSnapshot) SetReplicaSetName(v string)`
+
+SetReplicaSetName sets ReplicaSetName field to given value.
+
+### HasReplicaSetName
+
+`func (o *DiskBackupSnapshot) HasReplicaSetName() bool`
+
+HasReplicaSetName returns a boolean if a field has been set.
 
 ### GetMembers
 

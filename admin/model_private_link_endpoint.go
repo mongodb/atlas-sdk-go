@@ -4,158 +4,412 @@ package admin
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
-// PrivateLinkEndpoint - struct for PrivateLinkEndpoint
+// checks if the PrivateLinkEndpoint type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PrivateLinkEndpoint{}
+
+// PrivateLinkEndpoint struct for PrivateLinkEndpoint
 type PrivateLinkEndpoint struct {
-	AWSInterfaceEndpoint    *AWSInterfaceEndpoint
-	AzurePrivateEndpoint    *AzurePrivateEndpoint
-	PrivateGCPEndpointGroup *PrivateGCPEndpointGroup
+	// Cloud service provider that serves the requested endpoint.
+	CloudProvider string `json:"cloudProvider"`
+	// Flag that indicates whether MongoDB Cloud received a request to remove the specified private endpoint from the private endpoint service.
+	DeleteRequested *bool `json:"deleteRequested,omitempty"`
+	// Error message returned when requesting private connection resource. The resource returns `null` if the request succeeded.
+	ErrorMessage *string `json:"errorMessage,omitempty"`
+	// State of the Amazon Web Service PrivateLink connection when MongoDB Cloud received this request.
+	ConnectionStatus *string `json:"connectionStatus,omitempty"`
+	// Unique 24-hexadecimal digit string that identifies the interface endpoint.
+	InterfaceEndpointId *string `json:"interfaceEndpointId,omitempty"`
+	// Human-readable label that identifies a set of endpoints.
+	EndpointGroupName *string `json:"endpointGroupName,omitempty"`
+	// List of individual private endpoints that comprise this endpoint group.
+	Endpoints []GCPConsumerForwardingRule `json:"endpoints,omitempty"`
+	// State of the Azure Private Link Service connection when MongoDB Cloud received this request.
+	Status *string `json:"status,omitempty"`
+	// Human-readable label that MongoDB Cloud generates that identifies the private endpoint connection.
+	PrivateEndpointConnectionName *string `json:"privateEndpointConnectionName,omitempty"`
+	// IPv4 address of the private endpoint in your Azure VNet that someone added to this private endpoint service.
+	PrivateEndpointIPAddress *string `json:"privateEndpointIPAddress,omitempty"`
+	// Unique string that identifies the Azure private endpoint's network interface that someone added to this private endpoint service.
+	PrivateEndpointResourceId *string `json:"privateEndpointResourceId,omitempty"`
 }
 
-// AWSInterfaceEndpointAsPrivateLinkEndpoint is a convenience function that returns AWSInterfaceEndpoint wrapped in PrivateLinkEndpoint
-func AWSInterfaceEndpointAsPrivateLinkEndpoint(v *AWSInterfaceEndpoint) PrivateLinkEndpoint {
-	return PrivateLinkEndpoint{
-		AWSInterfaceEndpoint: v,
+// NewPrivateLinkEndpoint instantiates a new PrivateLinkEndpoint object
+// This constructor will assign default values to properties that have it defined,
+// and makes sure properties required by API are set, but the set of arguments
+// will change when the set of required properties is changed
+func NewPrivateLinkEndpoint(cloudProvider string) *PrivateLinkEndpoint {
+	this := PrivateLinkEndpoint{}
+	this.CloudProvider = cloudProvider
+	return &this
+}
+
+// NewPrivateLinkEndpointWithDefaults instantiates a new PrivateLinkEndpoint object
+// This constructor will only assign default values to properties that have it defined,
+// but it doesn't guarantee that properties required by API are set
+func NewPrivateLinkEndpointWithDefaults() *PrivateLinkEndpoint {
+	this := PrivateLinkEndpoint{}
+	return &this
+}
+
+// GetCloudProvider returns the CloudProvider field value
+func (o *PrivateLinkEndpoint) GetCloudProvider() string {
+	if o == nil {
+		var ret string
+		return ret
 	}
+
+	return o.CloudProvider
 }
 
-// AzurePrivateEndpointAsPrivateLinkEndpoint is a convenience function that returns AzurePrivateEndpoint wrapped in PrivateLinkEndpoint
-func AzurePrivateEndpointAsPrivateLinkEndpoint(v *AzurePrivateEndpoint) PrivateLinkEndpoint {
-	return PrivateLinkEndpoint{
-		AzurePrivateEndpoint: v,
+// GetCloudProviderOk returns a tuple with the CloudProvider field value
+// and a boolean to check if the value has been set.
+func (o *PrivateLinkEndpoint) GetCloudProviderOk() (*string, bool) {
+	if o == nil {
+		return nil, false
 	}
+	return &o.CloudProvider, true
 }
 
-// PrivateGCPEndpointGroupAsPrivateLinkEndpoint is a convenience function that returns PrivateGCPEndpointGroup wrapped in PrivateLinkEndpoint
-func PrivateGCPEndpointGroupAsPrivateLinkEndpoint(v *PrivateGCPEndpointGroup) PrivateLinkEndpoint {
-	return PrivateLinkEndpoint{
-		PrivateGCPEndpointGroup: v,
+// SetCloudProvider sets field value
+func (o *PrivateLinkEndpoint) SetCloudProvider(v string) {
+	o.CloudProvider = v
+}
+
+// GetDeleteRequested returns the DeleteRequested field value if set, zero value otherwise.
+func (o *PrivateLinkEndpoint) GetDeleteRequested() bool {
+	if o == nil || IsNil(o.DeleteRequested) {
+		var ret bool
+		return ret
 	}
+	return *o.DeleteRequested
 }
 
-// Unmarshal JSON data into one of the pointers in the struct
-func (dst *PrivateLinkEndpoint) UnmarshalJSON(data []byte) error {
-	var err error
-	// use discriminator value to speed up the lookup
-	var jsonDict map[string]interface{}
-	err = newStrictDecoder(data).Decode(&jsonDict)
+// GetDeleteRequestedOk returns a tuple with the DeleteRequested field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PrivateLinkEndpoint) GetDeleteRequestedOk() (*bool, bool) {
+	if o == nil || IsNil(o.DeleteRequested) {
+		return nil, false
+	}
+	return o.DeleteRequested, true
+}
+
+// HasDeleteRequested returns a boolean if a field has been set.
+func (o *PrivateLinkEndpoint) HasDeleteRequested() bool {
+	if o != nil && !IsNil(o.DeleteRequested) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteRequested gets a reference to the given bool and assigns it to the DeleteRequested field.
+func (o *PrivateLinkEndpoint) SetDeleteRequested(v bool) {
+	o.DeleteRequested = &v
+}
+
+// GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise.
+func (o *PrivateLinkEndpoint) GetErrorMessage() string {
+	if o == nil || IsNil(o.ErrorMessage) {
+		var ret string
+		return ret
+	}
+	return *o.ErrorMessage
+}
+
+// GetErrorMessageOk returns a tuple with the ErrorMessage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PrivateLinkEndpoint) GetErrorMessageOk() (*string, bool) {
+	if o == nil || IsNil(o.ErrorMessage) {
+		return nil, false
+	}
+	return o.ErrorMessage, true
+}
+
+// HasErrorMessage returns a boolean if a field has been set.
+func (o *PrivateLinkEndpoint) HasErrorMessage() bool {
+	if o != nil && !IsNil(o.ErrorMessage) {
+		return true
+	}
+
+	return false
+}
+
+// SetErrorMessage gets a reference to the given string and assigns it to the ErrorMessage field.
+func (o *PrivateLinkEndpoint) SetErrorMessage(v string) {
+	o.ErrorMessage = &v
+}
+
+// GetConnectionStatus returns the ConnectionStatus field value if set, zero value otherwise.
+func (o *PrivateLinkEndpoint) GetConnectionStatus() string {
+	if o == nil || IsNil(o.ConnectionStatus) {
+		var ret string
+		return ret
+	}
+	return *o.ConnectionStatus
+}
+
+// GetConnectionStatusOk returns a tuple with the ConnectionStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PrivateLinkEndpoint) GetConnectionStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.ConnectionStatus) {
+		return nil, false
+	}
+	return o.ConnectionStatus, true
+}
+
+// HasConnectionStatus returns a boolean if a field has been set.
+func (o *PrivateLinkEndpoint) HasConnectionStatus() bool {
+	if o != nil && !IsNil(o.ConnectionStatus) {
+		return true
+	}
+
+	return false
+}
+
+// SetConnectionStatus gets a reference to the given string and assigns it to the ConnectionStatus field.
+func (o *PrivateLinkEndpoint) SetConnectionStatus(v string) {
+	o.ConnectionStatus = &v
+}
+
+// GetInterfaceEndpointId returns the InterfaceEndpointId field value if set, zero value otherwise.
+func (o *PrivateLinkEndpoint) GetInterfaceEndpointId() string {
+	if o == nil || IsNil(o.InterfaceEndpointId) {
+		var ret string
+		return ret
+	}
+	return *o.InterfaceEndpointId
+}
+
+// GetInterfaceEndpointIdOk returns a tuple with the InterfaceEndpointId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PrivateLinkEndpoint) GetInterfaceEndpointIdOk() (*string, bool) {
+	if o == nil || IsNil(o.InterfaceEndpointId) {
+		return nil, false
+	}
+	return o.InterfaceEndpointId, true
+}
+
+// HasInterfaceEndpointId returns a boolean if a field has been set.
+func (o *PrivateLinkEndpoint) HasInterfaceEndpointId() bool {
+	if o != nil && !IsNil(o.InterfaceEndpointId) {
+		return true
+	}
+
+	return false
+}
+
+// SetInterfaceEndpointId gets a reference to the given string and assigns it to the InterfaceEndpointId field.
+func (o *PrivateLinkEndpoint) SetInterfaceEndpointId(v string) {
+	o.InterfaceEndpointId = &v
+}
+
+// GetEndpointGroupName returns the EndpointGroupName field value if set, zero value otherwise.
+func (o *PrivateLinkEndpoint) GetEndpointGroupName() string {
+	if o == nil || IsNil(o.EndpointGroupName) {
+		var ret string
+		return ret
+	}
+	return *o.EndpointGroupName
+}
+
+// GetEndpointGroupNameOk returns a tuple with the EndpointGroupName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PrivateLinkEndpoint) GetEndpointGroupNameOk() (*string, bool) {
+	if o == nil || IsNil(o.EndpointGroupName) {
+		return nil, false
+	}
+	return o.EndpointGroupName, true
+}
+
+// HasEndpointGroupName returns a boolean if a field has been set.
+func (o *PrivateLinkEndpoint) HasEndpointGroupName() bool {
+	if o != nil && !IsNil(o.EndpointGroupName) {
+		return true
+	}
+
+	return false
+}
+
+// SetEndpointGroupName gets a reference to the given string and assigns it to the EndpointGroupName field.
+func (o *PrivateLinkEndpoint) SetEndpointGroupName(v string) {
+	o.EndpointGroupName = &v
+}
+
+// GetEndpoints returns the Endpoints field value if set, zero value otherwise.
+func (o *PrivateLinkEndpoint) GetEndpoints() []GCPConsumerForwardingRule {
+	if o == nil || IsNil(o.Endpoints) {
+		var ret []GCPConsumerForwardingRule
+		return ret
+	}
+	return o.Endpoints
+}
+
+// GetEndpointsOk returns a tuple with the Endpoints field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PrivateLinkEndpoint) GetEndpointsOk() ([]GCPConsumerForwardingRule, bool) {
+	if o == nil || IsNil(o.Endpoints) {
+		return nil, false
+	}
+	return o.Endpoints, true
+}
+
+// HasEndpoints returns a boolean if a field has been set.
+func (o *PrivateLinkEndpoint) HasEndpoints() bool {
+	if o != nil && !IsNil(o.Endpoints) {
+		return true
+	}
+
+	return false
+}
+
+// SetEndpoints gets a reference to the given []GCPConsumerForwardingRule and assigns it to the Endpoints field.
+func (o *PrivateLinkEndpoint) SetEndpoints(v []GCPConsumerForwardingRule) {
+	o.Endpoints = v
+}
+
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *PrivateLinkEndpoint) GetStatus() string {
+	if o == nil || IsNil(o.Status) {
+		var ret string
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PrivateLinkEndpoint) GetStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.Status) {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *PrivateLinkEndpoint) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given string and assigns it to the Status field.
+func (o *PrivateLinkEndpoint) SetStatus(v string) {
+	o.Status = &v
+}
+
+// GetPrivateEndpointConnectionName returns the PrivateEndpointConnectionName field value if set, zero value otherwise.
+func (o *PrivateLinkEndpoint) GetPrivateEndpointConnectionName() string {
+	if o == nil || IsNil(o.PrivateEndpointConnectionName) {
+		var ret string
+		return ret
+	}
+	return *o.PrivateEndpointConnectionName
+}
+
+// GetPrivateEndpointConnectionNameOk returns a tuple with the PrivateEndpointConnectionName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PrivateLinkEndpoint) GetPrivateEndpointConnectionNameOk() (*string, bool) {
+	if o == nil || IsNil(o.PrivateEndpointConnectionName) {
+		return nil, false
+	}
+	return o.PrivateEndpointConnectionName, true
+}
+
+// HasPrivateEndpointConnectionName returns a boolean if a field has been set.
+func (o *PrivateLinkEndpoint) HasPrivateEndpointConnectionName() bool {
+	if o != nil && !IsNil(o.PrivateEndpointConnectionName) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivateEndpointConnectionName gets a reference to the given string and assigns it to the PrivateEndpointConnectionName field.
+func (o *PrivateLinkEndpoint) SetPrivateEndpointConnectionName(v string) {
+	o.PrivateEndpointConnectionName = &v
+}
+
+// GetPrivateEndpointIPAddress returns the PrivateEndpointIPAddress field value if set, zero value otherwise.
+func (o *PrivateLinkEndpoint) GetPrivateEndpointIPAddress() string {
+	if o == nil || IsNil(o.PrivateEndpointIPAddress) {
+		var ret string
+		return ret
+	}
+	return *o.PrivateEndpointIPAddress
+}
+
+// GetPrivateEndpointIPAddressOk returns a tuple with the PrivateEndpointIPAddress field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PrivateLinkEndpoint) GetPrivateEndpointIPAddressOk() (*string, bool) {
+	if o == nil || IsNil(o.PrivateEndpointIPAddress) {
+		return nil, false
+	}
+	return o.PrivateEndpointIPAddress, true
+}
+
+// HasPrivateEndpointIPAddress returns a boolean if a field has been set.
+func (o *PrivateLinkEndpoint) HasPrivateEndpointIPAddress() bool {
+	if o != nil && !IsNil(o.PrivateEndpointIPAddress) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivateEndpointIPAddress gets a reference to the given string and assigns it to the PrivateEndpointIPAddress field.
+func (o *PrivateLinkEndpoint) SetPrivateEndpointIPAddress(v string) {
+	o.PrivateEndpointIPAddress = &v
+}
+
+// GetPrivateEndpointResourceId returns the PrivateEndpointResourceId field value if set, zero value otherwise.
+func (o *PrivateLinkEndpoint) GetPrivateEndpointResourceId() string {
+	if o == nil || IsNil(o.PrivateEndpointResourceId) {
+		var ret string
+		return ret
+	}
+	return *o.PrivateEndpointResourceId
+}
+
+// GetPrivateEndpointResourceIdOk returns a tuple with the PrivateEndpointResourceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PrivateLinkEndpoint) GetPrivateEndpointResourceIdOk() (*string, bool) {
+	if o == nil || IsNil(o.PrivateEndpointResourceId) {
+		return nil, false
+	}
+	return o.PrivateEndpointResourceId, true
+}
+
+// HasPrivateEndpointResourceId returns a boolean if a field has been set.
+func (o *PrivateLinkEndpoint) HasPrivateEndpointResourceId() bool {
+	if o != nil && !IsNil(o.PrivateEndpointResourceId) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivateEndpointResourceId gets a reference to the given string and assigns it to the PrivateEndpointResourceId field.
+func (o *PrivateLinkEndpoint) SetPrivateEndpointResourceId(v string) {
+	o.PrivateEndpointResourceId = &v
+}
+
+func (o PrivateLinkEndpoint) MarshalJSONWithoutReadOnly() ([]byte, error) {
+	toSerialize, err := o.ToMap()
 	if err != nil {
-		return fmt.Errorf("failed to unmarshal JSON into map for the discriminator lookup")
+		return []byte{}, err
 	}
-
-	// check if the discriminator value is 'AWS'
-	if jsonDict["cloudProvider"] == "AWS" {
-		// try to unmarshal JSON data into AWSInterfaceEndpoint
-		err = json.Unmarshal(data, &dst.AWSInterfaceEndpoint)
-		if err == nil {
-			return nil // data stored in dst.AWSInterfaceEndpoint, return on the first match
-		} else {
-			dst.AWSInterfaceEndpoint = nil
-			return fmt.Errorf("failed to unmarshal PrivateLinkEndpoint as AWSInterfaceEndpoint: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'AWSInterfaceEndpoint'
-	if jsonDict["cloudProvider"] == "AWSInterfaceEndpoint" {
-		// try to unmarshal JSON data into AWSInterfaceEndpoint
-		err = json.Unmarshal(data, &dst.AWSInterfaceEndpoint)
-		if err == nil {
-			return nil // data stored in dst.AWSInterfaceEndpoint, return on the first match
-		} else {
-			dst.AWSInterfaceEndpoint = nil
-			return fmt.Errorf("failed to unmarshal PrivateLinkEndpoint as AWSInterfaceEndpoint: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'AZURE'
-	if jsonDict["cloudProvider"] == "AZURE" {
-		// try to unmarshal JSON data into PrivateGCPEndpointGroup
-		err = json.Unmarshal(data, &dst.PrivateGCPEndpointGroup)
-		if err == nil {
-			return nil // data stored in dst.PrivateGCPEndpointGroup, return on the first match
-		} else {
-			dst.PrivateGCPEndpointGroup = nil
-			return fmt.Errorf("failed to unmarshal PrivateLinkEndpoint as PrivateGCPEndpointGroup: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'AzurePrivateEndpoint'
-	if jsonDict["cloudProvider"] == "AzurePrivateEndpoint" {
-		// try to unmarshal JSON data into AzurePrivateEndpoint
-		err = json.Unmarshal(data, &dst.AzurePrivateEndpoint)
-		if err == nil {
-			return nil // data stored in dst.AzurePrivateEndpoint, return on the first match
-		} else {
-			dst.AzurePrivateEndpoint = nil
-			return fmt.Errorf("failed to unmarshal PrivateLinkEndpoint as AzurePrivateEndpoint: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'GCP'
-	if jsonDict["cloudProvider"] == "GCP" {
-		// try to unmarshal JSON data into AzurePrivateEndpoint
-		err = json.Unmarshal(data, &dst.AzurePrivateEndpoint)
-		if err == nil {
-			return nil // data stored in dst.AzurePrivateEndpoint, return on the first match
-		} else {
-			dst.AzurePrivateEndpoint = nil
-			return fmt.Errorf("failed to unmarshal PrivateLinkEndpoint as AzurePrivateEndpoint: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'PrivateGCPEndpointGroup'
-	if jsonDict["cloudProvider"] == "PrivateGCPEndpointGroup" {
-		// try to unmarshal JSON data into PrivateGCPEndpointGroup
-		err = json.Unmarshal(data, &dst.PrivateGCPEndpointGroup)
-		if err == nil {
-			return nil // data stored in dst.PrivateGCPEndpointGroup, return on the first match
-		} else {
-			dst.PrivateGCPEndpointGroup = nil
-			return fmt.Errorf("failed to unmarshal PrivateLinkEndpoint as PrivateGCPEndpointGroup: %s", err.Error())
-		}
-	}
-
-	return nil
+	return json.Marshal(toSerialize)
 }
-
-// Marshal data from the first non-nil pointers in the struct to JSON
-func (src PrivateLinkEndpoint) MarshalJSON() ([]byte, error) {
-	if src.AWSInterfaceEndpoint != nil {
-		return json.Marshal(&src.AWSInterfaceEndpoint)
+func (o PrivateLinkEndpoint) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.PrivateEndpointIPAddress) {
+		toSerialize["privateEndpointIPAddress"] = o.PrivateEndpointIPAddress
 	}
-
-	if src.AzurePrivateEndpoint != nil {
-		return json.Marshal(&src.AzurePrivateEndpoint)
-	}
-
-	if src.PrivateGCPEndpointGroup != nil {
-		return json.Marshal(&src.PrivateGCPEndpointGroup)
-	}
-
-	return nil, nil // no data in oneOf schemas
-}
-
-// Get the actual instance
-func (obj *PrivateLinkEndpoint) GetActualInstance() interface{} {
-	if obj == nil {
-		return nil
-	}
-	if obj.AWSInterfaceEndpoint != nil {
-		return obj.AWSInterfaceEndpoint
-	}
-
-	if obj.AzurePrivateEndpoint != nil {
-		return obj.AzurePrivateEndpoint
-	}
-
-	if obj.PrivateGCPEndpointGroup != nil {
-		return obj.PrivateGCPEndpointGroup
-	}
-
-	// all schemas are nil
-	return nil
+	return toSerialize, nil
 }
 
 type NullablePrivateLinkEndpoint struct {
