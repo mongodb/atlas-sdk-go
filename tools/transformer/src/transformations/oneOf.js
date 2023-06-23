@@ -115,10 +115,16 @@ function transformOneOfProperties(parentObject, api) {
     ]);
     if (duplicates.length > 0) {
       const duplicatesSource = childObject.title || "";
-      const missmatches = duplicates.filter((e)=> e.typeMissmatch);
+      const missmatches = duplicates.filter((e) => e.typeMissmatch);
       if (missmatches.length > 0) {
-        throw new Error(`${duplicatesSource} missmatch type detected: ${JSON.stringify(missmatches, undefined, 2)}`);
-      }else{
+        throw new Error(
+          `${duplicatesSource} missmatch type detected: ${JSON.stringify(
+            missmatches,
+            undefined,
+            2
+          )}`
+        );
+      } else {
         console.info(
           `## ${duplicatesSource} - Detected properties that would be overriden: ${JSON.stringify(
             duplicates
