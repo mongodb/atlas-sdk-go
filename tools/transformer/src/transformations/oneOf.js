@@ -109,15 +109,22 @@ function transformOneOfProperties(parentObject, api) {
     }
     const childProperties = JSON.parse(JSON.stringify(childObject.properties));
     console.debug(`${childObject.title}: moving child properties into parent`);
-    const duplicates = detectDuplicates([
+    const { duplicates } = detectDuplicates([
       parentObject.properties,
       childProperties,
     ]);
     if (duplicates.length > 0) {
       const duplicatesSource = childObject.title || "";
-      console.info(
-        `## ${duplicatesSource} - Detected properties that would be overriden: ${duplicates}\n`
-      );
+      const missmatches = duplicates.filter((e)=> e.typeMissmatch);
+      if (missmatches.length > 0) {
+        throw new Error(`${duplicatesSource} missmatch type detected: ${JSON.stringify(missmatches, undefined, 2)}`);
+      }else{
+        console.info(
+          `## ${duplicatesSource} - Detected properties that would be overriden: ${JSON.stringify(
+            duplicates
+          )}\n`
+        );
+      }
     }
     parentObject.properties = {
       ...parentObject.properties,

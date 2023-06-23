@@ -15,20 +15,28 @@ function filterObjectProperties(object, filter = (_k, _v) => true) {
 }
 
 function detectDuplicates(objArray) {
-  const allKeys = new Set();
+  const allKeys = {};
   const duplicates = [];
   for (const obj of objArray) {
     if (obj) {
       for (const key of Object.keys(obj)) {
-        if (allKeys.has(key)) {
-          duplicates.push(key);
+        if (allKeys[key]) {
+          const parentType = allKeys[key].type;
+          const childType = obj[key].type;
+          const typeMissmatch = parentType? parentType!== childType: false;
+          duplicates.push({
+            key,
+            childType: obj[key].type,
+            parentType: allKeys[key].type,
+            typeMissmatch,
+          });
         } else {
-          allKeys.add(key);
+          allKeys[key] = obj[key].type;
         }
       }
     }
   }
-  return duplicates;
+  return { duplicates };
 }
 
 function expandReference(obj, apiObject) {
