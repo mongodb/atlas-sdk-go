@@ -91,7 +91,7 @@ A patch version increment indicates fixes and improvements in the SDK that do no
 
 Let's break down the example version `v20230201001.0.0` to understand its components:
 
-- Major version: `v20230201012.0.0`
+- Major version: `v20230201001.0.0`
   - `v`: Indicates the start of the version number.
   - `20230201`: The date of the Versioned API version that this SDK is using, in the format of `YYYYMMDD`.
   - `001` starts from 001 and is incremented by 1 for every non-backward-compatible iteration targeting the specific API resource version.
