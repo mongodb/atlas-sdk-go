@@ -60,7 +60,6 @@ If you belive a method should be marked as stable, feel free to raise a PR appen
 
 To learn more about using the SDK, see the [basic example](https://github.com/mongodb/atlas-sdk-go/blob/main/examples/basic/basic.go).
 
-
 ## Release Strategy (Semantic Versioning)
 
 Atlas Go SDK is following the Semantic Versioning (SemVer) specification. The versioning scheme used for this SDK is as follows: `vYYYYMMDDXXX.Y.Z`, where:
