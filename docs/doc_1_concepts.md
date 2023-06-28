@@ -65,14 +65,14 @@ To learn more about using the SDK, see the [basic example](https://github.com/mo
 Atlas Go SDK is following the Semantic Versioning (SemVer) specification. The versioning scheme used for this SDK is as follows: `vYYYYMMDDXXX.Y.Z`, where:
 
 - `YYYYMMDDXXX` represents the major version number and includes the date of the [Versioned API Resource Version](https://www.mongodb.com/docs/atlas/api/versioned-api-overview/) used in the SDK followed by three digits for other possible breaking changes.
-- `Y` represents the minor version number, indicating iterations of the same Versioned API Resource.
+- `Y` represents the minor version number, indicating non-breaking iterations of the same Versioned API Resource.
 - `Z` represents the patch version number, indicating non-user-affecting fixes in the SDK.
 
 ### Versioning Rules
 
 #### Major Version (vYYYYMMDDXXX.0.0)
 
-A major version increment signifies significant changes and possible breaking changes in the SDK. The rules for major version increments are as follows:
+A major version increment signifies breaking changes in the SDK. The rules for major version increments are as follows:
 
 1. When the Versioned API version is introduced SDK undergoes breaking changes, the major version must be incremented.
 For example `vYYYYMMDD` will become `v20300101`
