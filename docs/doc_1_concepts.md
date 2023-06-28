@@ -64,9 +64,9 @@ To learn more about using the SDK, see the [basic example](https://github.com/mo
 
 The Atlas Go SDK follows the Semantic Versioning (SemVer) specification. The versioning scheme used for this SDK is as follows: `vYYYYMMDDXXX.Y.Z`, where:
 
-- `YYYYMMDDXXX` represents the major version number and includes the date of the [Versioned API Resource Version](https://www.mongodb.com/docs/atlas/api/versioned-api-overview/) used in the SDK followed by three digits for other possible breaking changes.
+- `YYYYMMDDXXX` represents the major version number. It includes the date of the [Versioned API Resource Version](https://www.mongodb.com/docs/atlas/api/versioned-api-overview/) that the SDK uses followed by three digits for other possible breaking changes.
 - `Y` represents the minor version number, indicating non-breaking iterations of the same Versioned API Resource.
-- `Z` represents the patch version number, indicating non-user-affecting fixes in the SDK.
+- `Z` represents the patch version number, indicating fixes in the SDK that do not affect users.
 
 ### Versioning Rules
 
@@ -74,29 +74,26 @@ The Atlas Go SDK follows the Semantic Versioning (SemVer) specification. The ver
 
 A major version increment signifies breaking changes in the SDK. The rules for major version increments are as follows:
 
-1. When MongoDB introduces a new version of the Versioned API or the SDK undergoes breaking changes, increment the major version. For example, `vYYYYMMDD` will become `v20300101`.
-2. If there are other significant breaking changes in the SDK that are unrelated to the Versioned API, increment the last three digits of the major version.
-3. The major version must include the date of the Versioned API and three digits for other possible breaking changes.
+1. The major version must include the date of the Versioned API and three digits for other possible breaking changes.
+2. When a new Versioned API version is introduced, the SDK undergoes breaking changes and the version identifier is incremented. For example, `vYYYYMMDD` will become `v20300101` if a major version was released one year later.
+3. If there are other significant breaking changes in the SDK that are unrelated to the Versioned API, increment the last three digits of the major version.
+
 
 #### Minor Version (vYYYYMMDDXXX.Y.0)
 
-A minor version increment represents iterations of the Atlas Go SDK based on the same version of the Versioned API. When MongoDB adds new features or enhancements to the SDK that are backward-compatible with the previous minor version, increment the minor version.
+A minor version increment represents the Atlas Go SDK release based on iterations of the targeted Versioned API. When MongoDB adds new features or enhancements to the SDK that are backward-compatible with the previous minor version, increment the minor version.
 
 #### Patch Version (vYYYYMMDDXXX.Y.Z)
 
-A patch version increment indicates non-user-affecting fixes and improvements in the SDK. 
+A patch version increment indicates fixes and improvements in the SDK that do not affect users.
 
 ## Example Version: v20230201001.0.0
 
 Let's break down the example version `v20230201001.0.0` to understand its components:
 
-- Major version: `v20230201001.0.0`
+- Major version: `v20230201012.0.0`
   - `v`: Indicates the start of the version number.
-  - `20230201001`: The date of the Versioned API version that this SDK is using, in the format of `YYYYMMDD`.
-  - `0`: Reserved for future
-  - `0`: Reserved for future
-  - `1`: Breaking change within that resource version
+  - `20230201`: The date of the Versioned API version that this SDK is using, in the format of `YYYYMMDD`.
+  - `001` starts from 001 and is incremented by 1 for every non-backward-compatible iteration targeting the specific API resource version.
 
-In summary, the example version `v20230201001.0.0` represents the initial release of the Golang SDK library for the Versioned API dated February 1, 2023, with a breaking change in the resource version.
-
-
+The version `v20230201001.0.0` represents the initial release of the Golang SDK library for the Versioned API dated February 1, 2023, with no other breaking changes, iterations, or fixes.
