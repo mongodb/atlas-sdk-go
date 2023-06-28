@@ -151,12 +151,19 @@ func (o *{{classname}}) Get{{name}}Ok() ({{^isArray}}{{^isFreeFormObject}}*{{/is
 // Deprecated
 {{/deprecated}}
 func (o *{{classname}}) Set{{name}}(v {{vendorExtensions.x-go-base-type}}) {
+{{#isString}}
+{{/isString}}
 {{#isNullable}}
 {{#vendorExtensions.x-golang-is-container}}
 	o.{{name}} = v
 {{/vendorExtensions.x-golang-is-container}}
 {{^vendorExtensions.x-golang-is-container}}
-	o.{{name}}.Set(&v)
+	{{#isString}}if v == "" { 
+		o.{{name}}.Set(nil) 
+	}  else {
+		o.{{name}}.Set(&v)
+	}{{/isString}}
+	{{^isString}}o.{{name}}.Set(&v){{/isString}}
 {{/vendorExtensions.x-golang-is-container}}
 {{/isNullable}}
 {{^isNullable}}
