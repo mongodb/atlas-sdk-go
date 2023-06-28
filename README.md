@@ -24,13 +24,28 @@ Construct a new Atlas SDK client, then use the various services on the client to
 access different parts of the Atlas API. For example:
 
 ```go
-import "go.mongodb.org/atlas-sdk/admin"
+ctx := context.Background()
 
 apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
 apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
 
-sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+if err != nil {
+    log.Fatalf("Error when instantiating new client: %v", err)
+}
 projects, response, err := sdk.ProjectsApi.ListProjects(ctx).Execute()
+if err != nil {
+    log.Fatalf("Could not fetch projects: %v", err)
+}
+fmt.Printf("Response status: %v\n", response.Status)
+fmt.Printf("Projects: %+v\n", projects)
+```
+
+Run with
+```terminal
+MONGODB_ATLAS_PUBLIC_KEY=<public_key> \
+MONGODB_ATLAS_PRIVATE_KEY=<private_key> \
+go run <go_project_name>
 ```
 
 For documentation about obtaining apiKey and apiSecret go to
