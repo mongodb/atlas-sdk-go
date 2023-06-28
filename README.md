@@ -24,8 +24,6 @@ Construct a new Atlas SDK client, then use the various services on the client to
 access different parts of the Atlas API. For example:
 
 ```go
-import "go.mongodb.org/atlas-sdk/admin"
-
 ctx := context.Background()
 
 apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
