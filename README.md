@@ -10,15 +10,11 @@ Note that `atlas-sdk-go` only supports the two most recent major versions of Go.
 
 ### Adding Dependency
 
-```
+```terminal
 go install go.mongodb.org/atlas-sdk@v0.16.0
 ```
 
 ### Using in the code
-
-```go
-import "go.mongodb.org/atlas-sdk/admin"
-```
 
 Construct a new Atlas SDK client, then use the various services on the client to
 access different parts of the Atlas API. For example:
@@ -26,11 +22,22 @@ access different parts of the Atlas API. For example:
 ```go
 import "go.mongodb.org/atlas-sdk/admin"
 
-apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+func example() {
+	ctx := context.Background()
 
-sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-projects, response, err := sdk.ProjectsApi.ListProjects(ctx).Execute()
+	apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+	apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+	sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+	if err != nil {
+		log.Fatalf("Error when instantiating new client: %v", err)
+	}
+	projects, response, err := sdk.ProjectsApi.ListProjects(ctx).Execute()
+	if err != nil {
+		log.Fatalf("Could not fetch projects: %v", err)
+	}
+	fmt.Printf("Response status: %v\n", response.Status)
+}
 ```
 
 For documentation about obtaining apiKey and apiSecret go to
