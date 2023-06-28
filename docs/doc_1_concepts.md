@@ -62,7 +62,7 @@ To learn more about using the SDK, see the [basic example](https://github.com/mo
 
 ## Release Strategy (Semantic Versioning)
 
-Atlas Go SDK is following the Semantic Versioning (SemVer) specification. The versioning scheme used for this SDK is as follows: `vYYYYMMDDXXX.Y.Z`, where:
+The Atlas Go SDK follows the Semantic Versioning (SemVer) specification. The versioning scheme used for this SDK is as follows: `vYYYYMMDDXXX.Y.Z`, where:
 
 - `YYYYMMDDXXX` represents the major version number and includes the date of the [Versioned API Resource Version](https://www.mongodb.com/docs/atlas/api/versioned-api-overview/) used in the SDK followed by three digits for other possible breaking changes.
 - `Y` represents the minor version number, indicating non-breaking iterations of the same Versioned API Resource.
@@ -74,16 +74,13 @@ Atlas Go SDK is following the Semantic Versioning (SemVer) specification. The ve
 
 A major version increment signifies breaking changes in the SDK. The rules for major version increments are as follows:
 
-1. When the Versioned API version is introduced SDK undergoes breaking changes, the major version must be incremented.
-For example `vYYYYMMDD` will become `v20300101`
-2. If there are other significant breaking changes in the SDK, not related to the Versioned API, the major version must also be incremented in the last 3 digits.
+1. When MongoDB introduces a new version of the Versioned API or the SDK undergoes breaking changes, increment the major version. For example, `vYYYYMMDD` will become `v20300101`.
+2. If there are other significant breaking changes in the SDK that are unrelated to the Versioned API, increment the last three digits of the major version.
 3. The major version must include the date of the Versioned API and three digits for other possible breaking changes.
 
 #### Minor Version (vYYYYMMDDXXX.Y.0)
 
-A minor version increment represents iterations of the same Versioned API. The rules for minor version increments are as follows:
-
-1. When new features or enhancements are added to the SDK that are backward-compatible with the previous minor version, the minor version must be incremented.
+A minor version increment represents iterations of the Atlas Go SDK based on the same version of the Versioned API. When MongoDB adds new features or enhancements to the SDK that are backward-compatible with the previous minor version, increment the minor version.
 
 #### Patch Version (vYYYYMMDDXXX.Y.Z)
 
@@ -95,11 +92,11 @@ Let's break down the example version `v20230201001.0.0` to understand its compon
 
 - Major version: `v20230201001.0.0`
   - `v`: Indicates the start of the version number.
-  - `20230201001`: The date of the Versioned API that this SDK is using, in the format of `YYYYMMDD`.
+  - `20230201001`: The date of the Versioned API version that this SDK is using, in the format of `YYYYMMDD`.
   - `0`: Reserved for future
   - `0`: Reserved for future
-  - `0`: Breaking change within that resource version
+  - `1`: Breaking change within that resource version
 
-In summary, the example version `v20230201001.0.0` represents the initial release of the Golang SDK library for the Versioned API dated February 1, 2023, with no other breaking changes, iterations, or fixes.
+In summary, the example version `v20230201001.0.0` represents the initial release of the Golang SDK library for the Versioned API dated February 1, 2023, with a breaking change in the resource version.
 
 
