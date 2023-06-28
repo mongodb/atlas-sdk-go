@@ -69,9 +69,9 @@ Atlas Go SDK is following the Semantic Versioning (SemVer) specification. The ve
 - `Y` represents the minor version number, indicating iterations of the same Versioned API Resource.
 - `Z` represents the patch version number, indicating non-user-affecting fixes in the SDK.
 
-## Versioning Rules
+### Versioning Rules
 
-### Major Version (vYYYYMMDDXXX.0.0)
+#### Major Version (vYYYYMMDDXXX.0.0)
 
 A major version increment signifies significant changes and possible breaking changes in the SDK. The rules for major version increments are as follows:
 
@@ -80,17 +80,17 @@ For example `vYYYYMMDD` will become `v20300101`
 2. If there are other significant breaking changes in the SDK, not related to the Versioned API, the major version must also be incremented in the last 3 digits.
 3. The major version must include the date of the Versioned API and three digits for other possible breaking changes.
 
-### Minor Version (vYYYYMMDDXXX.Y.0)
+#### Minor Version (vYYYYMMDDXXX.Y.0)
 
 A minor version increment represents iterations of the same Versioned API. The rules for minor version increments are as follows:
 
 1. When new features or enhancements are added to the SDK that are backward-compatible with the previous minor version, the minor version must be incremented.
 
-### Patch Version (vYYYYMMDDXXX.Y.Z)
+#### Patch Version (vYYYYMMDDXXX.Y.Z)
 
 A patch version increment indicates non-user-affecting fixes and improvements in the SDK. 
 
-## Example Version: v20230201001.0.0
+### Example Version: v20230201001.0.0
 
 Let's break down the example version `v20230201001.0.0` to understand its components:
 
