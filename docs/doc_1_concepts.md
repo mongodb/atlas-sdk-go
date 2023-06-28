@@ -75,7 +75,7 @@ The Atlas Go SDK follows the Semantic Versioning (SemVer) specification. The ver
 A major version increment signifies breaking changes in the SDK. The rules for major version increments are as follows:
 
 1. The major version must include the date of the Versioned API and three digits for other possible breaking changes.
-2. When a new Versioned API version is introduced, the SDK undergoes breaking changes and the version identifier is incremented. For example, `vYYYYMMDD` will become `v20300101` if a major version was released one year later.
+2. When a new Versioned API Resource Version is introduced, the SDK undergoes breaking changes and the version identifier is incremented. For example, `vYYYYMMDD` will become `v20300101` if a major version was released one year later.
 3. If there are other significant breaking changes in the SDK that are unrelated to the Versioned API, increment the last three digits of the major version.
 
 
