@@ -56,7 +56,7 @@ openapi-pipeline:
 	echo "Running client generation"
 	$(MAKE) -C tools generate_client
 	echo "Validating generated SDK"
-	go test go.mongodb.org/atlas-sdk/test
+	go test ./test
 
 .PHONY: gen-docs
 gen-docs:
