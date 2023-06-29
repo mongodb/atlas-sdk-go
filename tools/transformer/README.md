@@ -2,31 +2,31 @@
 
 ## Why transforming OpenAPI
 
-OpenAPI file returned by major cloud providers is pretty generic to suit needs of various tools and projects.
-When generating SDK we want to typically finetune experience to:
+OpenAPI file returned by major cloud providers is pretty generic to suit the needs of various tools and projects.
+When generating SDK we want to typically finetune the experience to:
 
-- Avoid unecesary breaking changes
+- Avoid unnecessary breaking changes
 - Flatten structure when overly complex (oneOf, allOf)
 - Simplify models - names etc.
 
-Transformation engine enables us to perform that actions by processing OpenAPI file for each generated client.
-Additionally framework enables us to extend it by additional rules per usage to finetune experinece as we wish.
+The transformation engine enables us to perform that actions by processing OpenAPI file for each generated client.
+Additionally, framework enables us to extend it by additional rules per usage to finetune the experience as we wish.
 
 ## When to add transformation
 
-Transformations should be generic - they should be reusable across OpenAPI files and be generally unopiniated way of
+Transformations should be generic - they should be reusable across OpenAPI files and be generally an unopinionated way of
 handling OpenAPI file. That means that they would improve any public OpenAPI for.
 Parameters for transformations (actuall scripts) can be more finetuned to current OpenAPI file.
 
 ## Usage
 
-1. Run transformation engine
+1. Run the transformation engine
 
 ```
 OPENAPI_FILE=openapi.yaml node ./transform.js
 ```
 
-> NOTE: provided file will be overwritten
+> NOTE: the provided file will be overwritten
 > NOTE: engine supports yaml openapi files
 
 ## Reviewing and changing parameters for transformations
@@ -41,8 +41,7 @@ that are applied to atlas.
 1. oneOf transformation
    Applied to all objects that meet either of the following criteria:
 
-> Have extension "x-xgen-go-transform": "oneOfMerge"
-> Have "oneOf" field and all the objects referenced are enums
+ - Have "oneOf" field
 
 For parent model containing multiple children:
 
@@ -53,8 +52,8 @@ For parent model containing multiple children:
 
 Applied to all objects that meet the following criteria:
 
-> Have "properties" filed
-> Have "oneOf" field
+> Have a "properties" field
+> Have the "oneOf" field
 
 For parent model containing multiple children:
 
@@ -65,10 +64,10 @@ For parent model containing multiple children:
 
 Applied to all objects that meet the following criteria:
 
-> Have "discriminator" field
+> Have a "discriminator" field
 > Missing "oneOf" field
 
-For parent model containing discriminator
+For the parent model containing discriminator
 
 - Fails if discriminator is missing mapping field (invalid case)
 - Uses discriminator mapping in order to add oneOf field
