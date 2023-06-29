@@ -41,7 +41,7 @@ that are applied to atlas.
 1. oneOf transformation
    Applied to all objects that meet either of the following criteria:
 
- - Have "oneOf" field
+- Have "oneOf" field
 
 For parent model containing multiple children:
 
