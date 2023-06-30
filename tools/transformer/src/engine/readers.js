@@ -119,7 +119,7 @@ function getNameFromYamlPath(path) {
 
 function getObjectFromYamlPath(path, obj) {
   errMessage = `Your schema contain inline openapi objects. 
-  This usually happens when schema contains oneOf or anyOf statements directly in the path.`;
+  This usually happens when schema contains oneOf or anyOf statements directly in the response or request body.`;
   const propertiesStack = path.split(".").reverse();
   let currObj = obj;
 
@@ -137,7 +137,7 @@ function getObjectFromYamlPath(path, obj) {
     } else if (property in currObj) {
       currObj = currObj[property];
     } else {
-      throw new Error(`Invalid path: ${path}. ${errMessage}`);
+      throw new Error(`Invalid OpenAPI at "${path}". ${errMessage}`);
     }
   }
 
