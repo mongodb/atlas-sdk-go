@@ -27,6 +27,10 @@ function applyRemoveEnumsTransformations(api) {
         delete obj.enum;
       }
 
+      if (obj.hasOwnProperty("nullable")) {
+        delete obj.nullable;
+      }
+
       // Traverse nested properties
       for (const prop in obj) {
         if (obj.hasOwnProperty(prop)) {
