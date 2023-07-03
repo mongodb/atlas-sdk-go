@@ -11,13 +11,13 @@ type LiveImportValidation struct {
 	// Unique 24-hexadecimal digit string that identifies the validation.
 	Id *string `json:"_id,omitempty"`
 	// Reason why the validation job failed.
-	ErrorMessage *NullableString `json:"errorMessage,omitempty"`
+	ErrorMessage *string `json:"errorMessage,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project to validate.
 	GroupId *string `json:"groupId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the source project.
 	SourceGroupId *string `json:"sourceGroupId,omitempty"`
 	// State of the specified validation job returned at the time of the request.
-	Status *NullableString `json:"status,omitempty"`
+	Status *string `json:"status,omitempty"`
 }
 
 // NewLiveImportValidation instantiates a new LiveImportValidation object
@@ -98,7 +98,7 @@ func (o *LiveImportValidation) HasErrorMessage() bool {
 	return false
 }
 
-// SetErrorMessage gets a reference to the given NullableString and assigns it to the ErrorMessage field.
+// SetErrorMessage gets a reference to the given string and assigns it to the ErrorMessage field.
 func (o *LiveImportValidation) SetErrorMessage(v string) {
 	o.ErrorMessage = &v
 }
@@ -197,7 +197,7 @@ func (o *LiveImportValidation) HasStatus() bool {
 	return false
 }
 
-// SetStatus gets a reference to the given NullableString and assigns it to the Status field.
+// SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *LiveImportValidation) SetStatus(v string) {
 	o.Status = &v
 }

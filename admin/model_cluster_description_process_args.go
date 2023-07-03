@@ -21,9 +21,9 @@ type ClusterDescriptionProcessArgs struct {
 	// Flag that indicates whether the cluster disables executing any query that requires a collection scan to return results.
 	NoTableScan *bool `json:"noTableScan,omitempty"`
 	// Minimum retention window for cluster's oplog expressed in hours. A value of null indicates that the cluster uses the default minimum oplog window that MongoDB Cloud calculates.
-	OplogMinRetentionHours *NullableFloat64 `json:"oplogMinRetentionHours,omitempty"`
+	OplogMinRetentionHours *float64 `json:"oplogMinRetentionHours,omitempty"`
 	// Storage limit of cluster's oplog expressed in megabytes. A value of null indicates that the cluster uses the default oplog size that MongoDB Cloud calculates.
-	OplogSizeMB *NullableInt `json:"oplogSizeMB,omitempty"`
+	OplogSizeMB *int `json:"oplogSizeMB,omitempty"`
 	// Interval in seconds at which the mongosqld process re-samples data to create its relational schema.
 	SampleRefreshIntervalBIConnector *int `json:"sampleRefreshIntervalBIConnector,omitempty"`
 	// Number of documents per database to sample when gathering schema information.
@@ -301,7 +301,7 @@ func (o *ClusterDescriptionProcessArgs) HasOplogMinRetentionHours() bool {
 	return false
 }
 
-// SetOplogMinRetentionHours gets a reference to the given NullableFloat64 and assigns it to the OplogMinRetentionHours field.
+// SetOplogMinRetentionHours gets a reference to the given float64 and assigns it to the OplogMinRetentionHours field.
 func (o *ClusterDescriptionProcessArgs) SetOplogMinRetentionHours(v float64) {
 	o.OplogMinRetentionHours = &v
 }
@@ -334,7 +334,7 @@ func (o *ClusterDescriptionProcessArgs) HasOplogSizeMB() bool {
 	return false
 }
 
-// SetOplogSizeMB gets a reference to the given NullableInt and assigns it to the OplogSizeMB field.
+// SetOplogSizeMB gets a reference to the given int and assigns it to the OplogSizeMB field.
 func (o *ClusterDescriptionProcessArgs) SetOplogSizeMB(v int) {
 	o.OplogSizeMB = &v
 }

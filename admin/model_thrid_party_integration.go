@@ -43,7 +43,7 @@ type ThridPartyIntegration struct {
 	// Key that allows MongoDB Cloud to access your Slack account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.  **IMPORTANT**: Slack integrations now use the OAuth2 verification method and must  be initially configured, or updated from a legacy integration, through the Atlas  third-party service integrations page. Legacy tokens will soon no longer be  supported.
 	ApiToken *string `json:"apiToken,omitempty"`
 	// Name of the Slack channel to which MongoDB Cloud sends alert notifications.
-	ChannelName *NullableString `json:"channelName,omitempty"`
+	ChannelName *string `json:"channelName,omitempty"`
 	// Human-readable label that identifies your Slack team. Set this parameter when you configure a legacy Slack integration.
 	TeamName *string `json:"teamName,omitempty"`
 	// Routing key associated with your Splunk On-Call account.
@@ -697,7 +697,7 @@ func (o *ThridPartyIntegration) HasChannelName() bool {
 	return false
 }
 
-// SetChannelName gets a reference to the given NullableString and assigns it to the ChannelName field.
+// SetChannelName gets a reference to the given string and assigns it to the ChannelName field.
 func (o *ThridPartyIntegration) SetChannelName(v string) {
 	o.ChannelName = &v
 }

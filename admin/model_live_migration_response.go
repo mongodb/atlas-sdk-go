@@ -11,7 +11,7 @@ type LiveMigrationResponse struct {
 	// Unique 24-hexadecimal digit string that identifies the migration job.
 	Id *string `json:"_id,omitempty"`
 	// Replication lag between the source and destination clusters. Atlas returns this setting only during an active migration, before the cutover phase.
-	LagTimeSeconds *NullableInt64 `json:"lagTimeSeconds,omitempty"`
+	LagTimeSeconds *int64 `json:"lagTimeSeconds,omitempty"`
 	// List of hosts running MongoDB Agents. These Agents can transfer your MongoDB data between one source and one target cluster.
 	MigrationHosts []string `json:"migrationHosts,omitempty"`
 	// Flag that indicates the migrated cluster can be cut over to MongoDB Atlas.
@@ -98,7 +98,7 @@ func (o *LiveMigrationResponse) HasLagTimeSeconds() bool {
 	return false
 }
 
-// SetLagTimeSeconds gets a reference to the given NullableInt64 and assigns it to the LagTimeSeconds field.
+// SetLagTimeSeconds gets a reference to the given int64 and assigns it to the LagTimeSeconds field.
 func (o *LiveMigrationResponse) SetLagTimeSeconds(v int64) {
 	o.LagTimeSeconds = &v
 }

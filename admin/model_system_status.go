@@ -8,7 +8,7 @@ import (
 
 // SystemStatus struct for SystemStatus
 type SystemStatus struct {
-	ApiKey NullableApiKey `json:"apiKey"`
+	ApiKey ApiKey `json:"apiKey"`
 	// Human-readable label that identifies the service from which you requested this response.
 	AppName string `json:"appName"`
 	// Unique 40-hexadecimal digit hash that identifies the latest git commit merged for this application.
@@ -23,7 +23,7 @@ type SystemStatus struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSystemStatus(apiKey NullableApiKey, appName string, build string, throttling bool) *SystemStatus {
+func NewSystemStatus(apiKey ApiKey, appName string, build string, throttling bool) *SystemStatus {
 	this := SystemStatus{}
 	this.ApiKey = apiKey
 	this.AppName = appName
