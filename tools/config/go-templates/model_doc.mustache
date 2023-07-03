@@ -60,19 +60,6 @@ Set{{name}} sets {{name}} field to given value.
 
 Has{{name}} returns a boolean if a field has been set.
 {{/required}}
-
-{{#isNullable}}
-### Set{{name}}Nil
-
-`func (o *{{classname}}) Set{{name}}Nil(b bool)`
-
- Set{{name}}Nil sets the value for {{name}} to be an explicit nil
-
-### Unset{{name}}
-`func (o *{{classname}}) Unset{{name}}()`
-
-Unset{{name}} ensures that no value is present for {{name}}, not even an explicit nil
-{{/isNullable}}
 {{/vars}}
 {{#vendorExtensions.x-implements}}
 
