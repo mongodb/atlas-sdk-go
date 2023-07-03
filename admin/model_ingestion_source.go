@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the IngestionSource type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &IngestionSource{}
-
 // IngestionSource Ingestion Source of a Data Lake Pipeline.
 type IngestionSource struct {
 	// Type of ingestion source of this Data Lake Pipeline.
@@ -42,7 +39,7 @@ func NewIngestionSourceWithDefaults() *IngestionSource {
 	return &this
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value if set, zero value otherwise
 func (o *IngestionSource) GetType() string {
 	if o == nil || IsNil(o.Type) {
 		var ret string
@@ -57,6 +54,7 @@ func (o *IngestionSource) GetTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
+
 	return o.Type, true
 }
 
@@ -74,7 +72,7 @@ func (o *IngestionSource) SetType(v string) {
 	o.Type = &v
 }
 
-// GetClusterName returns the ClusterName field value if set, zero value otherwise.
+// GetClusterName returns the ClusterName field value if set, zero value otherwise
 func (o *IngestionSource) GetClusterName() string {
 	if o == nil || IsNil(o.ClusterName) {
 		var ret string
@@ -89,6 +87,7 @@ func (o *IngestionSource) GetClusterNameOk() (*string, bool) {
 	if o == nil || IsNil(o.ClusterName) {
 		return nil, false
 	}
+
 	return o.ClusterName, true
 }
 
@@ -106,7 +105,7 @@ func (o *IngestionSource) SetClusterName(v string) {
 	o.ClusterName = &v
 }
 
-// GetCollectionName returns the CollectionName field value if set, zero value otherwise.
+// GetCollectionName returns the CollectionName field value if set, zero value otherwise
 func (o *IngestionSource) GetCollectionName() string {
 	if o == nil || IsNil(o.CollectionName) {
 		var ret string
@@ -121,6 +120,7 @@ func (o *IngestionSource) GetCollectionNameOk() (*string, bool) {
 	if o == nil || IsNil(o.CollectionName) {
 		return nil, false
 	}
+
 	return o.CollectionName, true
 }
 
@@ -138,7 +138,7 @@ func (o *IngestionSource) SetCollectionName(v string) {
 	o.CollectionName = &v
 }
 
-// GetDatabaseName returns the DatabaseName field value if set, zero value otherwise.
+// GetDatabaseName returns the DatabaseName field value if set, zero value otherwise
 func (o *IngestionSource) GetDatabaseName() string {
 	if o == nil || IsNil(o.DatabaseName) {
 		var ret string
@@ -153,6 +153,7 @@ func (o *IngestionSource) GetDatabaseNameOk() (*string, bool) {
 	if o == nil || IsNil(o.DatabaseName) {
 		return nil, false
 	}
+
 	return o.DatabaseName, true
 }
 
@@ -170,7 +171,7 @@ func (o *IngestionSource) SetDatabaseName(v string) {
 	o.DatabaseName = &v
 }
 
-// GetGroupId returns the GroupId field value if set, zero value otherwise.
+// GetGroupId returns the GroupId field value if set, zero value otherwise
 func (o *IngestionSource) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
 		var ret string
@@ -185,6 +186,7 @@ func (o *IngestionSource) GetGroupIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupId) {
 		return nil, false
 	}
+
 	return o.GroupId, true
 }
 
@@ -202,7 +204,7 @@ func (o *IngestionSource) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
-// GetPolicyItemId returns the PolicyItemId field value if set, zero value otherwise.
+// GetPolicyItemId returns the PolicyItemId field value if set, zero value otherwise
 func (o *IngestionSource) GetPolicyItemId() string {
 	if o == nil || IsNil(o.PolicyItemId) {
 		var ret string
@@ -217,6 +219,7 @@ func (o *IngestionSource) GetPolicyItemIdOk() (*string, bool) {
 	if o == nil || IsNil(o.PolicyItemId) {
 		return nil, false
 	}
+
 	return o.PolicyItemId, true
 }
 
@@ -259,40 +262,4 @@ func (o IngestionSource) ToMap() (map[string]interface{}, error) {
 		toSerialize["policyItemId"] = o.PolicyItemId
 	}
 	return toSerialize, nil
-}
-
-type NullableIngestionSource struct {
-	value *IngestionSource
-	isSet bool
-}
-
-func (v NullableIngestionSource) Get() *IngestionSource {
-	return v.value
-}
-
-func (v *NullableIngestionSource) Set(val *IngestionSource) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableIngestionSource) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableIngestionSource) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableIngestionSource(val *IngestionSource) *NullableIngestionSource {
-	return &NullableIngestionSource{value: val, isSet: true}
-}
-
-func (v NullableIngestionSource) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableIngestionSource) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

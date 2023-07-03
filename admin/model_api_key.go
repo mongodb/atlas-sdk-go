@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ApiKey type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ApiKey{}
-
 // ApiKey Details contained in one API key.
 type ApiKey struct {
 	// List of network addresses granted access to this API using this API key.
@@ -40,7 +37,7 @@ func NewApiKeyWithDefaults() *ApiKey {
 	return &this
 }
 
-// GetAccessList returns the AccessList field value if set, zero value otherwise.
+// GetAccessList returns the AccessList field value if set, zero value otherwise
 func (o *ApiKey) GetAccessList() []AccessListItem {
 	if o == nil || IsNil(o.AccessList) {
 		var ret []AccessListItem
@@ -55,6 +52,7 @@ func (o *ApiKey) GetAccessListOk() ([]AccessListItem, bool) {
 	if o == nil || IsNil(o.AccessList) {
 		return nil, false
 	}
+
 	return o.AccessList, true
 }
 
@@ -120,7 +118,7 @@ func (o *ApiKey) SetPublicKey(v string) {
 	o.PublicKey = v
 }
 
-// GetRoles returns the Roles field value if set, zero value otherwise.
+// GetRoles returns the Roles field value if set, zero value otherwise
 func (o *ApiKey) GetRoles() []CloudAccessRoleAssignment {
 	if o == nil || IsNil(o.Roles) {
 		var ret []CloudAccessRoleAssignment
@@ -135,6 +133,7 @@ func (o *ApiKey) GetRolesOk() ([]CloudAccessRoleAssignment, bool) {
 	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
+
 	return o.Roles, true
 }
 
@@ -162,40 +161,4 @@ func (o ApiKey) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o ApiKey) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableApiKey struct {
-	value *ApiKey
-	isSet bool
-}
-
-func (v NullableApiKey) Get() *ApiKey {
-	return v.value
-}
-
-func (v *NullableApiKey) Set(val *ApiKey) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableApiKey) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableApiKey) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableApiKey(val *ApiKey) *NullableApiKey {
-	return &NullableApiKey{value: val, isSet: true}
-}
-
-func (v NullableApiKey) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableApiKey) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

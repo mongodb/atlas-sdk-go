@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PaginatedDatabase type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PaginatedDatabase{}
-
 // PaginatedDatabase struct for PaginatedDatabase
 type PaginatedDatabase struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -36,7 +33,7 @@ func NewPaginatedDatabaseWithDefaults() *PaginatedDatabase {
 	return &this
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *PaginatedDatabase) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -51,6 +48,7 @@ func (o *PaginatedDatabase) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -68,7 +66,7 @@ func (o *PaginatedDatabase) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetResults returns the Results field value if set, zero value otherwise.
+// GetResults returns the Results field value if set, zero value otherwise
 func (o *PaginatedDatabase) GetResults() []MesurementsDatabase {
 	if o == nil || IsNil(o.Results) {
 		var ret []MesurementsDatabase
@@ -83,6 +81,7 @@ func (o *PaginatedDatabase) GetResultsOk() ([]MesurementsDatabase, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
+
 	return o.Results, true
 }
 
@@ -100,7 +99,7 @@ func (o *PaginatedDatabase) SetResults(v []MesurementsDatabase) {
 	o.Results = v
 }
 
-// GetTotalCount returns the TotalCount field value if set, zero value otherwise.
+// GetTotalCount returns the TotalCount field value if set, zero value otherwise
 func (o *PaginatedDatabase) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int
@@ -115,6 +114,7 @@ func (o *PaginatedDatabase) GetTotalCountOk() (*int, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
+
 	return o.TotalCount, true
 }
 
@@ -142,40 +142,4 @@ func (o PaginatedDatabase) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o PaginatedDatabase) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullablePaginatedDatabase struct {
-	value *PaginatedDatabase
-	isSet bool
-}
-
-func (v NullablePaginatedDatabase) Get() *PaginatedDatabase {
-	return v.value
-}
-
-func (v *NullablePaginatedDatabase) Set(val *PaginatedDatabase) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullablePaginatedDatabase) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullablePaginatedDatabase) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullablePaginatedDatabase(val *PaginatedDatabase) *NullablePaginatedDatabase {
-	return &NullablePaginatedDatabase{value: val, isSet: true}
-}
-
-func (v NullablePaginatedDatabase) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullablePaginatedDatabase) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

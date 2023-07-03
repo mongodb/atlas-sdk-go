@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the InvoiceLineItem type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &InvoiceLineItem{}
-
 // InvoiceLineItem One service included in this invoice.
 type InvoiceLineItem struct {
 	// Human-readable label that identifies the cluster that incurred the charge.
@@ -65,7 +62,7 @@ func NewInvoiceLineItemWithDefaults() *InvoiceLineItem {
 	return &this
 }
 
-// GetClusterName returns the ClusterName field value if set, zero value otherwise.
+// GetClusterName returns the ClusterName field value if set, zero value otherwise
 func (o *InvoiceLineItem) GetClusterName() string {
 	if o == nil || IsNil(o.ClusterName) {
 		var ret string
@@ -80,6 +77,7 @@ func (o *InvoiceLineItem) GetClusterNameOk() (*string, bool) {
 	if o == nil || IsNil(o.ClusterName) {
 		return nil, false
 	}
+
 	return o.ClusterName, true
 }
 
@@ -97,7 +95,7 @@ func (o *InvoiceLineItem) SetClusterName(v string) {
 	o.ClusterName = &v
 }
 
-// GetCreated returns the Created field value if set, zero value otherwise.
+// GetCreated returns the Created field value if set, zero value otherwise
 func (o *InvoiceLineItem) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
 		var ret time.Time
@@ -112,6 +110,7 @@ func (o *InvoiceLineItem) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
+
 	return o.Created, true
 }
 
@@ -129,7 +128,7 @@ func (o *InvoiceLineItem) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
-// GetDiscountCents returns the DiscountCents field value if set, zero value otherwise.
+// GetDiscountCents returns the DiscountCents field value if set, zero value otherwise
 func (o *InvoiceLineItem) GetDiscountCents() int64 {
 	if o == nil || IsNil(o.DiscountCents) {
 		var ret int64
@@ -144,6 +143,7 @@ func (o *InvoiceLineItem) GetDiscountCentsOk() (*int64, bool) {
 	if o == nil || IsNil(o.DiscountCents) {
 		return nil, false
 	}
+
 	return o.DiscountCents, true
 }
 
@@ -161,7 +161,7 @@ func (o *InvoiceLineItem) SetDiscountCents(v int64) {
 	o.DiscountCents = &v
 }
 
-// GetEndDate returns the EndDate field value if set, zero value otherwise.
+// GetEndDate returns the EndDate field value if set, zero value otherwise
 func (o *InvoiceLineItem) GetEndDate() time.Time {
 	if o == nil || IsNil(o.EndDate) {
 		var ret time.Time
@@ -176,6 +176,7 @@ func (o *InvoiceLineItem) GetEndDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.EndDate) {
 		return nil, false
 	}
+
 	return o.EndDate, true
 }
 
@@ -193,7 +194,7 @@ func (o *InvoiceLineItem) SetEndDate(v time.Time) {
 	o.EndDate = &v
 }
 
-// GetGroupId returns the GroupId field value if set, zero value otherwise.
+// GetGroupId returns the GroupId field value if set, zero value otherwise
 func (o *InvoiceLineItem) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
 		var ret string
@@ -208,6 +209,7 @@ func (o *InvoiceLineItem) GetGroupIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupId) {
 		return nil, false
 	}
+
 	return o.GroupId, true
 }
 
@@ -225,7 +227,7 @@ func (o *InvoiceLineItem) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
-// GetGroupName returns the GroupName field value if set, zero value otherwise.
+// GetGroupName returns the GroupName field value if set, zero value otherwise
 func (o *InvoiceLineItem) GetGroupName() string {
 	if o == nil || IsNil(o.GroupName) {
 		var ret string
@@ -240,6 +242,7 @@ func (o *InvoiceLineItem) GetGroupNameOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupName) {
 		return nil, false
 	}
+
 	return o.GroupName, true
 }
 
@@ -257,7 +260,7 @@ func (o *InvoiceLineItem) SetGroupName(v string) {
 	o.GroupName = &v
 }
 
-// GetNote returns the Note field value if set, zero value otherwise.
+// GetNote returns the Note field value if set, zero value otherwise
 func (o *InvoiceLineItem) GetNote() string {
 	if o == nil || IsNil(o.Note) {
 		var ret string
@@ -272,6 +275,7 @@ func (o *InvoiceLineItem) GetNoteOk() (*string, bool) {
 	if o == nil || IsNil(o.Note) {
 		return nil, false
 	}
+
 	return o.Note, true
 }
 
@@ -289,7 +293,7 @@ func (o *InvoiceLineItem) SetNote(v string) {
 	o.Note = &v
 }
 
-// GetPercentDiscount returns the PercentDiscount field value if set, zero value otherwise.
+// GetPercentDiscount returns the PercentDiscount field value if set, zero value otherwise
 func (o *InvoiceLineItem) GetPercentDiscount() float32 {
 	if o == nil || IsNil(o.PercentDiscount) {
 		var ret float32
@@ -304,6 +308,7 @@ func (o *InvoiceLineItem) GetPercentDiscountOk() (*float32, bool) {
 	if o == nil || IsNil(o.PercentDiscount) {
 		return nil, false
 	}
+
 	return o.PercentDiscount, true
 }
 
@@ -321,7 +326,7 @@ func (o *InvoiceLineItem) SetPercentDiscount(v float32) {
 	o.PercentDiscount = &v
 }
 
-// GetQuantity returns the Quantity field value if set, zero value otherwise.
+// GetQuantity returns the Quantity field value if set, zero value otherwise
 func (o *InvoiceLineItem) GetQuantity() float64 {
 	if o == nil || IsNil(o.Quantity) {
 		var ret float64
@@ -336,6 +341,7 @@ func (o *InvoiceLineItem) GetQuantityOk() (*float64, bool) {
 	if o == nil || IsNil(o.Quantity) {
 		return nil, false
 	}
+
 	return o.Quantity, true
 }
 
@@ -353,7 +359,7 @@ func (o *InvoiceLineItem) SetQuantity(v float64) {
 	o.Quantity = &v
 }
 
-// GetSku returns the Sku field value if set, zero value otherwise.
+// GetSku returns the Sku field value if set, zero value otherwise
 func (o *InvoiceLineItem) GetSku() string {
 	if o == nil || IsNil(o.Sku) {
 		var ret string
@@ -368,6 +374,7 @@ func (o *InvoiceLineItem) GetSkuOk() (*string, bool) {
 	if o == nil || IsNil(o.Sku) {
 		return nil, false
 	}
+
 	return o.Sku, true
 }
 
@@ -385,7 +392,7 @@ func (o *InvoiceLineItem) SetSku(v string) {
 	o.Sku = &v
 }
 
-// GetStartDate returns the StartDate field value if set, zero value otherwise.
+// GetStartDate returns the StartDate field value if set, zero value otherwise
 func (o *InvoiceLineItem) GetStartDate() time.Time {
 	if o == nil || IsNil(o.StartDate) {
 		var ret time.Time
@@ -400,6 +407,7 @@ func (o *InvoiceLineItem) GetStartDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.StartDate) {
 		return nil, false
 	}
+
 	return o.StartDate, true
 }
 
@@ -417,7 +425,7 @@ func (o *InvoiceLineItem) SetStartDate(v time.Time) {
 	o.StartDate = &v
 }
 
-// GetStitchAppName returns the StitchAppName field value if set, zero value otherwise.
+// GetStitchAppName returns the StitchAppName field value if set, zero value otherwise
 func (o *InvoiceLineItem) GetStitchAppName() string {
 	if o == nil || IsNil(o.StitchAppName) {
 		var ret string
@@ -432,6 +440,7 @@ func (o *InvoiceLineItem) GetStitchAppNameOk() (*string, bool) {
 	if o == nil || IsNil(o.StitchAppName) {
 		return nil, false
 	}
+
 	return o.StitchAppName, true
 }
 
@@ -449,7 +458,7 @@ func (o *InvoiceLineItem) SetStitchAppName(v string) {
 	o.StitchAppName = &v
 }
 
-// GetTierLowerBound returns the TierLowerBound field value if set, zero value otherwise.
+// GetTierLowerBound returns the TierLowerBound field value if set, zero value otherwise
 func (o *InvoiceLineItem) GetTierLowerBound() float64 {
 	if o == nil || IsNil(o.TierLowerBound) {
 		var ret float64
@@ -464,6 +473,7 @@ func (o *InvoiceLineItem) GetTierLowerBoundOk() (*float64, bool) {
 	if o == nil || IsNil(o.TierLowerBound) {
 		return nil, false
 	}
+
 	return o.TierLowerBound, true
 }
 
@@ -481,7 +491,7 @@ func (o *InvoiceLineItem) SetTierLowerBound(v float64) {
 	o.TierLowerBound = &v
 }
 
-// GetTierUpperBound returns the TierUpperBound field value if set, zero value otherwise.
+// GetTierUpperBound returns the TierUpperBound field value if set, zero value otherwise
 func (o *InvoiceLineItem) GetTierUpperBound() float64 {
 	if o == nil || IsNil(o.TierUpperBound) {
 		var ret float64
@@ -496,6 +506,7 @@ func (o *InvoiceLineItem) GetTierUpperBoundOk() (*float64, bool) {
 	if o == nil || IsNil(o.TierUpperBound) {
 		return nil, false
 	}
+
 	return o.TierUpperBound, true
 }
 
@@ -513,7 +524,7 @@ func (o *InvoiceLineItem) SetTierUpperBound(v float64) {
 	o.TierUpperBound = &v
 }
 
-// GetTotalPriceCents returns the TotalPriceCents field value if set, zero value otherwise.
+// GetTotalPriceCents returns the TotalPriceCents field value if set, zero value otherwise
 func (o *InvoiceLineItem) GetTotalPriceCents() int64 {
 	if o == nil || IsNil(o.TotalPriceCents) {
 		var ret int64
@@ -528,6 +539,7 @@ func (o *InvoiceLineItem) GetTotalPriceCentsOk() (*int64, bool) {
 	if o == nil || IsNil(o.TotalPriceCents) {
 		return nil, false
 	}
+
 	return o.TotalPriceCents, true
 }
 
@@ -545,7 +557,7 @@ func (o *InvoiceLineItem) SetTotalPriceCents(v int64) {
 	o.TotalPriceCents = &v
 }
 
-// GetUnit returns the Unit field value if set, zero value otherwise.
+// GetUnit returns the Unit field value if set, zero value otherwise
 func (o *InvoiceLineItem) GetUnit() string {
 	if o == nil || IsNil(o.Unit) {
 		var ret string
@@ -560,6 +572,7 @@ func (o *InvoiceLineItem) GetUnitOk() (*string, bool) {
 	if o == nil || IsNil(o.Unit) {
 		return nil, false
 	}
+
 	return o.Unit, true
 }
 
@@ -577,7 +590,7 @@ func (o *InvoiceLineItem) SetUnit(v string) {
 	o.Unit = &v
 }
 
-// GetUnitPriceDollars returns the UnitPriceDollars field value if set, zero value otherwise.
+// GetUnitPriceDollars returns the UnitPriceDollars field value if set, zero value otherwise
 func (o *InvoiceLineItem) GetUnitPriceDollars() float64 {
 	if o == nil || IsNil(o.UnitPriceDollars) {
 		var ret float64
@@ -592,6 +605,7 @@ func (o *InvoiceLineItem) GetUnitPriceDollarsOk() (*float64, bool) {
 	if o == nil || IsNil(o.UnitPriceDollars) {
 		return nil, false
 	}
+
 	return o.UnitPriceDollars, true
 }
 
@@ -622,40 +636,4 @@ func (o InvoiceLineItem) ToMap() (map[string]interface{}, error) {
 		toSerialize["groupName"] = o.GroupName
 	}
 	return toSerialize, nil
-}
-
-type NullableInvoiceLineItem struct {
-	value *InvoiceLineItem
-	isSet bool
-}
-
-func (v NullableInvoiceLineItem) Get() *InvoiceLineItem {
-	return v.value
-}
-
-func (v *NullableInvoiceLineItem) Set(val *InvoiceLineItem) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableInvoiceLineItem) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableInvoiceLineItem) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableInvoiceLineItem(val *InvoiceLineItem) *NullableInvoiceLineItem {
-	return &NullableInvoiceLineItem{value: val, isSet: true}
-}
-
-func (v NullableInvoiceLineItem) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableInvoiceLineItem) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

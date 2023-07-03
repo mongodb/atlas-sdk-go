@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the DataLakeApiBase type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DataLakeApiBase{}
-
 // DataLakeApiBase An aggregation pipeline that applies to the collection.
 type DataLakeApiBase struct {
 	// Human-readable label that identifies the view, which corresponds to an aggregation pipeline on a collection.
@@ -36,7 +33,7 @@ func NewDataLakeApiBaseWithDefaults() *DataLakeApiBase {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise
 func (o *DataLakeApiBase) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
@@ -51,6 +48,7 @@ func (o *DataLakeApiBase) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
+
 	return o.Name, true
 }
 
@@ -68,7 +66,7 @@ func (o *DataLakeApiBase) SetName(v string) {
 	o.Name = &v
 }
 
-// GetPipeline returns the Pipeline field value if set, zero value otherwise.
+// GetPipeline returns the Pipeline field value if set, zero value otherwise
 func (o *DataLakeApiBase) GetPipeline() string {
 	if o == nil || IsNil(o.Pipeline) {
 		var ret string
@@ -83,6 +81,7 @@ func (o *DataLakeApiBase) GetPipelineOk() (*string, bool) {
 	if o == nil || IsNil(o.Pipeline) {
 		return nil, false
 	}
+
 	return o.Pipeline, true
 }
 
@@ -100,7 +99,7 @@ func (o *DataLakeApiBase) SetPipeline(v string) {
 	o.Pipeline = &v
 }
 
-// GetSource returns the Source field value if set, zero value otherwise.
+// GetSource returns the Source field value if set, zero value otherwise
 func (o *DataLakeApiBase) GetSource() string {
 	if o == nil || IsNil(o.Source) {
 		var ret string
@@ -115,6 +114,7 @@ func (o *DataLakeApiBase) GetSourceOk() (*string, bool) {
 	if o == nil || IsNil(o.Source) {
 		return nil, false
 	}
+
 	return o.Source, true
 }
 
@@ -151,40 +151,4 @@ func (o DataLakeApiBase) ToMap() (map[string]interface{}, error) {
 		toSerialize["source"] = o.Source
 	}
 	return toSerialize, nil
-}
-
-type NullableDataLakeApiBase struct {
-	value *DataLakeApiBase
-	isSet bool
-}
-
-func (v NullableDataLakeApiBase) Get() *DataLakeApiBase {
-	return v.value
-}
-
-func (v *NullableDataLakeApiBase) Set(val *DataLakeApiBase) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableDataLakeApiBase) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableDataLakeApiBase) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableDataLakeApiBase(val *DataLakeApiBase) *NullableDataLakeApiBase {
-	return &NullableDataLakeApiBase{value: val, isSet: true}
-}
-
-func (v NullableDataLakeApiBase) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableDataLakeApiBase) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

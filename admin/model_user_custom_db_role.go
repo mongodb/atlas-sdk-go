@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the UserCustomDBRole type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &UserCustomDBRole{}
-
 // UserCustomDBRole struct for UserCustomDBRole
 type UserCustomDBRole struct {
 	// List of the individual privilege actions that the role grants.
@@ -37,7 +34,7 @@ func NewUserCustomDBRoleWithDefaults() *UserCustomDBRole {
 	return &this
 }
 
-// GetActions returns the Actions field value if set, zero value otherwise.
+// GetActions returns the Actions field value if set, zero value otherwise
 func (o *UserCustomDBRole) GetActions() []DatabasePrivilegeAction {
 	if o == nil || IsNil(o.Actions) {
 		var ret []DatabasePrivilegeAction
@@ -52,6 +49,7 @@ func (o *UserCustomDBRole) GetActionsOk() ([]DatabasePrivilegeAction, bool) {
 	if o == nil || IsNil(o.Actions) {
 		return nil, false
 	}
+
 	return o.Actions, true
 }
 
@@ -69,7 +67,7 @@ func (o *UserCustomDBRole) SetActions(v []DatabasePrivilegeAction) {
 	o.Actions = v
 }
 
-// GetInheritedRoles returns the InheritedRoles field value if set, zero value otherwise.
+// GetInheritedRoles returns the InheritedRoles field value if set, zero value otherwise
 func (o *UserCustomDBRole) GetInheritedRoles() []DatabaseInheritedRole {
 	if o == nil || IsNil(o.InheritedRoles) {
 		var ret []DatabaseInheritedRole
@@ -84,6 +82,7 @@ func (o *UserCustomDBRole) GetInheritedRolesOk() ([]DatabaseInheritedRole, bool)
 	if o == nil || IsNil(o.InheritedRoles) {
 		return nil, false
 	}
+
 	return o.InheritedRoles, true
 }
 
@@ -142,40 +141,4 @@ func (o UserCustomDBRole) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["roleName"] = o.RoleName
 	return toSerialize, nil
-}
-
-type NullableUserCustomDBRole struct {
-	value *UserCustomDBRole
-	isSet bool
-}
-
-func (v NullableUserCustomDBRole) Get() *UserCustomDBRole {
-	return v.value
-}
-
-func (v *NullableUserCustomDBRole) Set(val *UserCustomDBRole) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableUserCustomDBRole) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableUserCustomDBRole) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableUserCustomDBRole(val *UserCustomDBRole) *NullableUserCustomDBRole {
-	return &NullableUserCustomDBRole{value: val, isSet: true}
-}
-
-func (v NullableUserCustomDBRole) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableUserCustomDBRole) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

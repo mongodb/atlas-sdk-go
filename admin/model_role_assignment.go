@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the RoleAssignment type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &RoleAssignment{}
-
 // RoleAssignment struct for RoleAssignment
 type RoleAssignment struct {
 	// Unique 24-hexadecimal digit string that identifies the project to which this role belongs. You can set a value for this parameter or **orgId** but not both in the same request.
@@ -36,7 +33,7 @@ func NewRoleAssignmentWithDefaults() *RoleAssignment {
 	return &this
 }
 
-// GetGroupId returns the GroupId field value if set, zero value otherwise.
+// GetGroupId returns the GroupId field value if set, zero value otherwise
 func (o *RoleAssignment) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
 		var ret string
@@ -51,6 +48,7 @@ func (o *RoleAssignment) GetGroupIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupId) {
 		return nil, false
 	}
+
 	return o.GroupId, true
 }
 
@@ -68,7 +66,7 @@ func (o *RoleAssignment) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
-// GetOrgId returns the OrgId field value if set, zero value otherwise.
+// GetOrgId returns the OrgId field value if set, zero value otherwise
 func (o *RoleAssignment) GetOrgId() string {
 	if o == nil || IsNil(o.OrgId) {
 		var ret string
@@ -83,6 +81,7 @@ func (o *RoleAssignment) GetOrgIdOk() (*string, bool) {
 	if o == nil || IsNil(o.OrgId) {
 		return nil, false
 	}
+
 	return o.OrgId, true
 }
 
@@ -100,7 +99,7 @@ func (o *RoleAssignment) SetOrgId(v string) {
 	o.OrgId = &v
 }
 
-// GetRole returns the Role field value if set, zero value otherwise.
+// GetRole returns the Role field value if set, zero value otherwise
 func (o *RoleAssignment) GetRole() string {
 	if o == nil || IsNil(o.Role) {
 		var ret string
@@ -115,6 +114,7 @@ func (o *RoleAssignment) GetRoleOk() (*string, bool) {
 	if o == nil || IsNil(o.Role) {
 		return nil, false
 	}
+
 	return o.Role, true
 }
 
@@ -151,40 +151,4 @@ func (o RoleAssignment) ToMap() (map[string]interface{}, error) {
 		toSerialize["role"] = o.Role
 	}
 	return toSerialize, nil
-}
-
-type NullableRoleAssignment struct {
-	value *RoleAssignment
-	isSet bool
-}
-
-func (v NullableRoleAssignment) Get() *RoleAssignment {
-	return v.value
-}
-
-func (v *NullableRoleAssignment) Set(val *RoleAssignment) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableRoleAssignment) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableRoleAssignment) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableRoleAssignment(val *RoleAssignment) *NullableRoleAssignment {
-	return &NullableRoleAssignment{value: val, isSet: true}
-}
-
-func (v NullableRoleAssignment) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableRoleAssignment) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

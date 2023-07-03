@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PaginatedUserCert type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PaginatedUserCert{}
-
 // PaginatedUserCert struct for PaginatedUserCert
 type PaginatedUserCert struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -36,7 +33,7 @@ func NewPaginatedUserCertWithDefaults() *PaginatedUserCert {
 	return &this
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *PaginatedUserCert) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -51,6 +48,7 @@ func (o *PaginatedUserCert) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -68,7 +66,7 @@ func (o *PaginatedUserCert) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetResults returns the Results field value if set, zero value otherwise.
+// GetResults returns the Results field value if set, zero value otherwise
 func (o *PaginatedUserCert) GetResults() []UserCert {
 	if o == nil || IsNil(o.Results) {
 		var ret []UserCert
@@ -83,6 +81,7 @@ func (o *PaginatedUserCert) GetResultsOk() ([]UserCert, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
+
 	return o.Results, true
 }
 
@@ -100,7 +99,7 @@ func (o *PaginatedUserCert) SetResults(v []UserCert) {
 	o.Results = v
 }
 
-// GetTotalCount returns the TotalCount field value if set, zero value otherwise.
+// GetTotalCount returns the TotalCount field value if set, zero value otherwise
 func (o *PaginatedUserCert) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int
@@ -115,6 +114,7 @@ func (o *PaginatedUserCert) GetTotalCountOk() (*int, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
+
 	return o.TotalCount, true
 }
 
@@ -142,40 +142,4 @@ func (o PaginatedUserCert) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o PaginatedUserCert) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullablePaginatedUserCert struct {
-	value *PaginatedUserCert
-	isSet bool
-}
-
-func (v NullablePaginatedUserCert) Get() *PaginatedUserCert {
-	return v.value
-}
-
-func (v *NullablePaginatedUserCert) Set(val *PaginatedUserCert) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullablePaginatedUserCert) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullablePaginatedUserCert) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullablePaginatedUserCert(val *PaginatedUserCert) *NullablePaginatedUserCert {
-	return &NullablePaginatedUserCert{value: val, isSet: true}
-}
-
-func (v NullablePaginatedUserCert) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullablePaginatedUserCert) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

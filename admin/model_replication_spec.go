@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ReplicationSpec type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ReplicationSpec{}
-
 // ReplicationSpec Details that explain how MongoDB Cloud replicates data on the specified MongoDB database.
 type ReplicationSpec struct {
 	// Unique 24-hexadecimal digit string that identifies the replication object for a zone in a Multi-Cloud Cluster. If you include existing zones in the request, you must specify this parameter. If you add a new zone to an existing Multi-Cloud Cluster, you may specify this parameter. The request deletes any existing zones in the Multi-Cloud Cluster that you exclude from the request.
@@ -38,7 +35,7 @@ func NewReplicationSpecWithDefaults() *ReplicationSpec {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *ReplicationSpec) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -53,6 +50,7 @@ func (o *ReplicationSpec) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -70,7 +68,7 @@ func (o *ReplicationSpec) SetId(v string) {
 	o.Id = &v
 }
 
-// GetNumShards returns the NumShards field value if set, zero value otherwise.
+// GetNumShards returns the NumShards field value if set, zero value otherwise
 func (o *ReplicationSpec) GetNumShards() int {
 	if o == nil || IsNil(o.NumShards) {
 		var ret int
@@ -85,6 +83,7 @@ func (o *ReplicationSpec) GetNumShardsOk() (*int, bool) {
 	if o == nil || IsNil(o.NumShards) {
 		return nil, false
 	}
+
 	return o.NumShards, true
 }
 
@@ -102,7 +101,7 @@ func (o *ReplicationSpec) SetNumShards(v int) {
 	o.NumShards = &v
 }
 
-// GetRegionConfigs returns the RegionConfigs field value if set, zero value otherwise.
+// GetRegionConfigs returns the RegionConfigs field value if set, zero value otherwise
 func (o *ReplicationSpec) GetRegionConfigs() []CloudRegionConfig {
 	if o == nil || IsNil(o.RegionConfigs) {
 		var ret []CloudRegionConfig
@@ -117,6 +116,7 @@ func (o *ReplicationSpec) GetRegionConfigsOk() ([]CloudRegionConfig, bool) {
 	if o == nil || IsNil(o.RegionConfigs) {
 		return nil, false
 	}
+
 	return o.RegionConfigs, true
 }
 
@@ -134,7 +134,7 @@ func (o *ReplicationSpec) SetRegionConfigs(v []CloudRegionConfig) {
 	o.RegionConfigs = v
 }
 
-// GetZoneName returns the ZoneName field value if set, zero value otherwise.
+// GetZoneName returns the ZoneName field value if set, zero value otherwise
 func (o *ReplicationSpec) GetZoneName() string {
 	if o == nil || IsNil(o.ZoneName) {
 		var ret string
@@ -149,6 +149,7 @@ func (o *ReplicationSpec) GetZoneNameOk() (*string, bool) {
 	if o == nil || IsNil(o.ZoneName) {
 		return nil, false
 	}
+
 	return o.ZoneName, true
 }
 
@@ -185,40 +186,4 @@ func (o ReplicationSpec) ToMap() (map[string]interface{}, error) {
 		toSerialize["zoneName"] = o.ZoneName
 	}
 	return toSerialize, nil
-}
-
-type NullableReplicationSpec struct {
-	value *ReplicationSpec
-	isSet bool
-}
-
-func (v NullableReplicationSpec) Get() *ReplicationSpec {
-	return v.value
-}
-
-func (v *NullableReplicationSpec) Set(val *ReplicationSpec) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableReplicationSpec) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableReplicationSpec) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableReplicationSpec(val *ReplicationSpec) *NullableReplicationSpec {
-	return &NullableReplicationSpec{value: val, isSet: true}
-}
-
-func (v NullableReplicationSpec) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableReplicationSpec) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

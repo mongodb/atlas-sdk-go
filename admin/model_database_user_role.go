@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the DatabaseUserRole type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DatabaseUserRole{}
-
 // DatabaseUserRole Range of resources available to this database user.
 type DatabaseUserRole struct {
 	// Collection on which this role applies.
@@ -38,7 +35,7 @@ func NewDatabaseUserRoleWithDefaults() *DatabaseUserRole {
 	return &this
 }
 
-// GetCollectionName returns the CollectionName field value if set, zero value otherwise.
+// GetCollectionName returns the CollectionName field value if set, zero value otherwise
 func (o *DatabaseUserRole) GetCollectionName() string {
 	if o == nil || IsNil(o.CollectionName) {
 		var ret string
@@ -53,6 +50,7 @@ func (o *DatabaseUserRole) GetCollectionNameOk() (*string, bool) {
 	if o == nil || IsNil(o.CollectionName) {
 		return nil, false
 	}
+
 	return o.CollectionName, true
 }
 
@@ -133,40 +131,4 @@ func (o DatabaseUserRole) ToMap() (map[string]interface{}, error) {
 	toSerialize["databaseName"] = o.DatabaseName
 	toSerialize["roleName"] = o.RoleName
 	return toSerialize, nil
-}
-
-type NullableDatabaseUserRole struct {
-	value *DatabaseUserRole
-	isSet bool
-}
-
-func (v NullableDatabaseUserRole) Get() *DatabaseUserRole {
-	return v.value
-}
-
-func (v *NullableDatabaseUserRole) Set(val *DatabaseUserRole) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableDatabaseUserRole) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableDatabaseUserRole) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableDatabaseUserRole(val *DatabaseUserRole) *NullableDatabaseUserRole {
-	return &NullableDatabaseUserRole{value: val, isSet: true}
-}
-
-func (v NullableDatabaseUserRole) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableDatabaseUserRole) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the ServerlessBackupSnapshot type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ServerlessBackupSnapshot{}
-
 // ServerlessBackupSnapshot struct for ServerlessBackupSnapshot
 type ServerlessBackupSnapshot struct {
 	// Date and time when MongoDB Cloud took the snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
@@ -51,7 +48,7 @@ func NewServerlessBackupSnapshotWithDefaults() *ServerlessBackupSnapshot {
 	return &this
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise
 func (o *ServerlessBackupSnapshot) GetCreatedAt() time.Time {
 	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
@@ -66,6 +63,7 @@ func (o *ServerlessBackupSnapshot) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
+
 	return o.CreatedAt, true
 }
 
@@ -83,7 +81,7 @@ func (o *ServerlessBackupSnapshot) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
-// GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise.
+// GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise
 func (o *ServerlessBackupSnapshot) GetExpiresAt() time.Time {
 	if o == nil || IsNil(o.ExpiresAt) {
 		var ret time.Time
@@ -98,6 +96,7 @@ func (o *ServerlessBackupSnapshot) GetExpiresAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.ExpiresAt) {
 		return nil, false
 	}
+
 	return o.ExpiresAt, true
 }
 
@@ -115,7 +114,7 @@ func (o *ServerlessBackupSnapshot) SetExpiresAt(v time.Time) {
 	o.ExpiresAt = &v
 }
 
-// GetFrequencyType returns the FrequencyType field value if set, zero value otherwise.
+// GetFrequencyType returns the FrequencyType field value if set, zero value otherwise
 func (o *ServerlessBackupSnapshot) GetFrequencyType() string {
 	if o == nil || IsNil(o.FrequencyType) {
 		var ret string
@@ -130,6 +129,7 @@ func (o *ServerlessBackupSnapshot) GetFrequencyTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.FrequencyType) {
 		return nil, false
 	}
+
 	return o.FrequencyType, true
 }
 
@@ -147,7 +147,7 @@ func (o *ServerlessBackupSnapshot) SetFrequencyType(v string) {
 	o.FrequencyType = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *ServerlessBackupSnapshot) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -162,6 +162,7 @@ func (o *ServerlessBackupSnapshot) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -179,7 +180,7 @@ func (o *ServerlessBackupSnapshot) SetId(v string) {
 	o.Id = &v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *ServerlessBackupSnapshot) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -194,6 +195,7 @@ func (o *ServerlessBackupSnapshot) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -211,7 +213,7 @@ func (o *ServerlessBackupSnapshot) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetMongodVersion returns the MongodVersion field value if set, zero value otherwise.
+// GetMongodVersion returns the MongodVersion field value if set, zero value otherwise
 func (o *ServerlessBackupSnapshot) GetMongodVersion() string {
 	if o == nil || IsNil(o.MongodVersion) {
 		var ret string
@@ -226,6 +228,7 @@ func (o *ServerlessBackupSnapshot) GetMongodVersionOk() (*string, bool) {
 	if o == nil || IsNil(o.MongodVersion) {
 		return nil, false
 	}
+
 	return o.MongodVersion, true
 }
 
@@ -243,7 +246,7 @@ func (o *ServerlessBackupSnapshot) SetMongodVersion(v string) {
 	o.MongodVersion = &v
 }
 
-// GetServerlessInstanceName returns the ServerlessInstanceName field value if set, zero value otherwise.
+// GetServerlessInstanceName returns the ServerlessInstanceName field value if set, zero value otherwise
 func (o *ServerlessBackupSnapshot) GetServerlessInstanceName() string {
 	if o == nil || IsNil(o.ServerlessInstanceName) {
 		var ret string
@@ -258,6 +261,7 @@ func (o *ServerlessBackupSnapshot) GetServerlessInstanceNameOk() (*string, bool)
 	if o == nil || IsNil(o.ServerlessInstanceName) {
 		return nil, false
 	}
+
 	return o.ServerlessInstanceName, true
 }
 
@@ -275,7 +279,7 @@ func (o *ServerlessBackupSnapshot) SetServerlessInstanceName(v string) {
 	o.ServerlessInstanceName = &v
 }
 
-// GetSnapshotType returns the SnapshotType field value if set, zero value otherwise.
+// GetSnapshotType returns the SnapshotType field value if set, zero value otherwise
 func (o *ServerlessBackupSnapshot) GetSnapshotType() string {
 	if o == nil || IsNil(o.SnapshotType) {
 		var ret string
@@ -290,6 +294,7 @@ func (o *ServerlessBackupSnapshot) GetSnapshotTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.SnapshotType) {
 		return nil, false
 	}
+
 	return o.SnapshotType, true
 }
 
@@ -307,7 +312,7 @@ func (o *ServerlessBackupSnapshot) SetSnapshotType(v string) {
 	o.SnapshotType = &v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// GetStatus returns the Status field value if set, zero value otherwise
 func (o *ServerlessBackupSnapshot) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
 		var ret string
@@ -322,6 +327,7 @@ func (o *ServerlessBackupSnapshot) GetStatusOk() (*string, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
+
 	return o.Status, true
 }
 
@@ -339,7 +345,7 @@ func (o *ServerlessBackupSnapshot) SetStatus(v string) {
 	o.Status = &v
 }
 
-// GetStorageSizeBytes returns the StorageSizeBytes field value if set, zero value otherwise.
+// GetStorageSizeBytes returns the StorageSizeBytes field value if set, zero value otherwise
 func (o *ServerlessBackupSnapshot) GetStorageSizeBytes() int64 {
 	if o == nil || IsNil(o.StorageSizeBytes) {
 		var ret int64
@@ -354,6 +360,7 @@ func (o *ServerlessBackupSnapshot) GetStorageSizeBytesOk() (*int64, bool) {
 	if o == nil || IsNil(o.StorageSizeBytes) {
 		return nil, false
 	}
+
 	return o.StorageSizeBytes, true
 }
 
@@ -381,40 +388,4 @@ func (o ServerlessBackupSnapshot) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o ServerlessBackupSnapshot) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableServerlessBackupSnapshot struct {
-	value *ServerlessBackupSnapshot
-	isSet bool
-}
-
-func (v NullableServerlessBackupSnapshot) Get() *ServerlessBackupSnapshot {
-	return v.value
-}
-
-func (v *NullableServerlessBackupSnapshot) Set(val *ServerlessBackupSnapshot) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableServerlessBackupSnapshot) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableServerlessBackupSnapshot) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableServerlessBackupSnapshot(val *ServerlessBackupSnapshot) *NullableServerlessBackupSnapshot {
-	return &NullableServerlessBackupSnapshot{value: val, isSet: true}
-}
-
-func (v NullableServerlessBackupSnapshot) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableServerlessBackupSnapshot) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

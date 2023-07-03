@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the CloudProviderAccessFeatureUsageExportSnapshotFeatureId type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CloudProviderAccessFeatureUsageExportSnapshotFeatureId{}
-
 // CloudProviderAccessFeatureUsageExportSnapshotFeatureId Identifying characteristics about the Amazon Web Services (AWS) Simple Storage Service (S3) export bucket linked to this AWS Identity and Access Management (IAM) role.
 type CloudProviderAccessFeatureUsageExportSnapshotFeatureId struct {
 	// Unique 24-hexadecimal digit string that identifies the AWS S3 bucket to which you export your snapshots.
@@ -34,7 +31,7 @@ func NewCloudProviderAccessFeatureUsageExportSnapshotFeatureIdWithDefaults() *Cl
 	return &this
 }
 
-// GetExportBucketId returns the ExportBucketId field value if set, zero value otherwise.
+// GetExportBucketId returns the ExportBucketId field value if set, zero value otherwise
 func (o *CloudProviderAccessFeatureUsageExportSnapshotFeatureId) GetExportBucketId() string {
 	if o == nil || IsNil(o.ExportBucketId) {
 		var ret string
@@ -49,6 +46,7 @@ func (o *CloudProviderAccessFeatureUsageExportSnapshotFeatureId) GetExportBucket
 	if o == nil || IsNil(o.ExportBucketId) {
 		return nil, false
 	}
+
 	return o.ExportBucketId, true
 }
 
@@ -66,7 +64,7 @@ func (o *CloudProviderAccessFeatureUsageExportSnapshotFeatureId) SetExportBucket
 	o.ExportBucketId = &v
 }
 
-// GetGroupId returns the GroupId field value if set, zero value otherwise.
+// GetGroupId returns the GroupId field value if set, zero value otherwise
 func (o *CloudProviderAccessFeatureUsageExportSnapshotFeatureId) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
 		var ret string
@@ -81,6 +79,7 @@ func (o *CloudProviderAccessFeatureUsageExportSnapshotFeatureId) GetGroupIdOk() 
 	if o == nil || IsNil(o.GroupId) {
 		return nil, false
 	}
+
 	return o.GroupId, true
 }
 
@@ -108,40 +107,4 @@ func (o CloudProviderAccessFeatureUsageExportSnapshotFeatureId) MarshalJSONWitho
 func (o CloudProviderAccessFeatureUsageExportSnapshotFeatureId) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableCloudProviderAccessFeatureUsageExportSnapshotFeatureId struct {
-	value *CloudProviderAccessFeatureUsageExportSnapshotFeatureId
-	isSet bool
-}
-
-func (v NullableCloudProviderAccessFeatureUsageExportSnapshotFeatureId) Get() *CloudProviderAccessFeatureUsageExportSnapshotFeatureId {
-	return v.value
-}
-
-func (v *NullableCloudProviderAccessFeatureUsageExportSnapshotFeatureId) Set(val *CloudProviderAccessFeatureUsageExportSnapshotFeatureId) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableCloudProviderAccessFeatureUsageExportSnapshotFeatureId) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableCloudProviderAccessFeatureUsageExportSnapshotFeatureId) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableCloudProviderAccessFeatureUsageExportSnapshotFeatureId(val *CloudProviderAccessFeatureUsageExportSnapshotFeatureId) *NullableCloudProviderAccessFeatureUsageExportSnapshotFeatureId {
-	return &NullableCloudProviderAccessFeatureUsageExportSnapshotFeatureId{value: val, isSet: true}
-}
-
-func (v NullableCloudProviderAccessFeatureUsageExportSnapshotFeatureId) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableCloudProviderAccessFeatureUsageExportSnapshotFeatureId) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

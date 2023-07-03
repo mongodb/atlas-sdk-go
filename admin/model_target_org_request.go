@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the TargetOrgRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &TargetOrgRequest{}
-
 // TargetOrgRequest struct for TargetOrgRequest
 type TargetOrgRequest struct {
 	// IP address access list entries associated with the API key.
@@ -32,7 +29,7 @@ func NewTargetOrgRequestWithDefaults() *TargetOrgRequest {
 	return &this
 }
 
-// GetAccessListIps returns the AccessListIps field value if set, zero value otherwise.
+// GetAccessListIps returns the AccessListIps field value if set, zero value otherwise
 func (o *TargetOrgRequest) GetAccessListIps() []string {
 	if o == nil || IsNil(o.AccessListIps) {
 		var ret []string
@@ -47,6 +44,7 @@ func (o *TargetOrgRequest) GetAccessListIpsOk() ([]string, bool) {
 	if o == nil || IsNil(o.AccessListIps) {
 		return nil, false
 	}
+
 	return o.AccessListIps, true
 }
 
@@ -77,40 +75,4 @@ func (o TargetOrgRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["accessListIps"] = o.AccessListIps
 	}
 	return toSerialize, nil
-}
-
-type NullableTargetOrgRequest struct {
-	value *TargetOrgRequest
-	isSet bool
-}
-
-func (v NullableTargetOrgRequest) Get() *TargetOrgRequest {
-	return v.value
-}
-
-func (v *NullableTargetOrgRequest) Set(val *TargetOrgRequest) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableTargetOrgRequest) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableTargetOrgRequest) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableTargetOrgRequest(val *TargetOrgRequest) *NullableTargetOrgRequest {
-	return &NullableTargetOrgRequest{value: val, isSet: true}
-}
-
-func (v NullableTargetOrgRequest) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableTargetOrgRequest) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

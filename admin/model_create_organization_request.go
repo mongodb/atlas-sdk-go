@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the CreateOrganizationRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CreateOrganizationRequest{}
-
 // CreateOrganizationRequest struct for CreateOrganizationRequest
 type CreateOrganizationRequest struct {
 	ApiKey *CreateAtlasOrganizationApiKey `json:"apiKey,omitempty"`
@@ -38,7 +35,7 @@ func NewCreateOrganizationRequestWithDefaults() *CreateOrganizationRequest {
 	return &this
 }
 
-// GetApiKey returns the ApiKey field value if set, zero value otherwise.
+// GetApiKey returns the ApiKey field value if set, zero value otherwise
 func (o *CreateOrganizationRequest) GetApiKey() CreateAtlasOrganizationApiKey {
 	if o == nil || IsNil(o.ApiKey) {
 		var ret CreateAtlasOrganizationApiKey
@@ -53,6 +50,7 @@ func (o *CreateOrganizationRequest) GetApiKeyOk() (*CreateAtlasOrganizationApiKe
 	if o == nil || IsNil(o.ApiKey) {
 		return nil, false
 	}
+
 	return o.ApiKey, true
 }
 
@@ -70,7 +68,7 @@ func (o *CreateOrganizationRequest) SetApiKey(v CreateAtlasOrganizationApiKey) {
 	o.ApiKey = &v
 }
 
-// GetFederationSettingsId returns the FederationSettingsId field value if set, zero value otherwise.
+// GetFederationSettingsId returns the FederationSettingsId field value if set, zero value otherwise
 func (o *CreateOrganizationRequest) GetFederationSettingsId() string {
 	if o == nil || IsNil(o.FederationSettingsId) {
 		var ret string
@@ -85,6 +83,7 @@ func (o *CreateOrganizationRequest) GetFederationSettingsIdOk() (*string, bool) 
 	if o == nil || IsNil(o.FederationSettingsId) {
 		return nil, false
 	}
+
 	return o.FederationSettingsId, true
 }
 
@@ -126,7 +125,7 @@ func (o *CreateOrganizationRequest) SetName(v string) {
 	o.Name = v
 }
 
-// GetOrgOwnerId returns the OrgOwnerId field value if set, zero value otherwise.
+// GetOrgOwnerId returns the OrgOwnerId field value if set, zero value otherwise
 func (o *CreateOrganizationRequest) GetOrgOwnerId() string {
 	if o == nil || IsNil(o.OrgOwnerId) {
 		var ret string
@@ -141,6 +140,7 @@ func (o *CreateOrganizationRequest) GetOrgOwnerIdOk() (*string, bool) {
 	if o == nil || IsNil(o.OrgOwnerId) {
 		return nil, false
 	}
+
 	return o.OrgOwnerId, true
 }
 
@@ -178,40 +178,4 @@ func (o CreateOrganizationRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["orgOwnerId"] = o.OrgOwnerId
 	}
 	return toSerialize, nil
-}
-
-type NullableCreateOrganizationRequest struct {
-	value *CreateOrganizationRequest
-	isSet bool
-}
-
-func (v NullableCreateOrganizationRequest) Get() *CreateOrganizationRequest {
-	return v.value
-}
-
-func (v *NullableCreateOrganizationRequest) Set(val *CreateOrganizationRequest) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableCreateOrganizationRequest) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableCreateOrganizationRequest) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableCreateOrganizationRequest(val *CreateOrganizationRequest) *NullableCreateOrganizationRequest {
-	return &NullableCreateOrganizationRequest{value: val, isSet: true}
-}
-
-func (v NullableCreateOrganizationRequest) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableCreateOrganizationRequest) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the BaseNetworkPeeringConnectionSettings type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &BaseNetworkPeeringConnectionSettings{}
-
 // BaseNetworkPeeringConnectionSettings struct for BaseNetworkPeeringConnectionSettings
 type BaseNetworkPeeringConnectionSettings struct {
 	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container that contains the specified network peering connection.
@@ -93,7 +90,7 @@ func (o *BaseNetworkPeeringConnectionSettings) SetContainerId(v string) {
 	o.ContainerId = v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *BaseNetworkPeeringConnectionSettings) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -108,6 +105,7 @@ func (o *BaseNetworkPeeringConnectionSettings) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -125,7 +123,7 @@ func (o *BaseNetworkPeeringConnectionSettings) SetId(v string) {
 	o.Id = &v
 }
 
-// GetProviderName returns the ProviderName field value if set, zero value otherwise.
+// GetProviderName returns the ProviderName field value if set, zero value otherwise
 func (o *BaseNetworkPeeringConnectionSettings) GetProviderName() string {
 	if o == nil || IsNil(o.ProviderName) {
 		var ret string
@@ -140,6 +138,7 @@ func (o *BaseNetworkPeeringConnectionSettings) GetProviderNameOk() (*string, boo
 	if o == nil || IsNil(o.ProviderName) {
 		return nil, false
 	}
+
 	return o.ProviderName, true
 }
 
@@ -157,7 +156,7 @@ func (o *BaseNetworkPeeringConnectionSettings) SetProviderName(v string) {
 	o.ProviderName = &v
 }
 
-// GetAccepterRegionName returns the AccepterRegionName field value if set, zero value otherwise.
+// GetAccepterRegionName returns the AccepterRegionName field value if set, zero value otherwise
 func (o *BaseNetworkPeeringConnectionSettings) GetAccepterRegionName() string {
 	if o == nil || IsNil(o.AccepterRegionName) {
 		var ret string
@@ -172,6 +171,7 @@ func (o *BaseNetworkPeeringConnectionSettings) GetAccepterRegionNameOk() (*strin
 	if o == nil || IsNil(o.AccepterRegionName) {
 		return nil, false
 	}
+
 	return o.AccepterRegionName, true
 }
 
@@ -189,7 +189,7 @@ func (o *BaseNetworkPeeringConnectionSettings) SetAccepterRegionName(v string) {
 	o.AccepterRegionName = &v
 }
 
-// GetAwsAccountId returns the AwsAccountId field value if set, zero value otherwise.
+// GetAwsAccountId returns the AwsAccountId field value if set, zero value otherwise
 func (o *BaseNetworkPeeringConnectionSettings) GetAwsAccountId() string {
 	if o == nil || IsNil(o.AwsAccountId) {
 		var ret string
@@ -204,6 +204,7 @@ func (o *BaseNetworkPeeringConnectionSettings) GetAwsAccountIdOk() (*string, boo
 	if o == nil || IsNil(o.AwsAccountId) {
 		return nil, false
 	}
+
 	return o.AwsAccountId, true
 }
 
@@ -221,7 +222,7 @@ func (o *BaseNetworkPeeringConnectionSettings) SetAwsAccountId(v string) {
 	o.AwsAccountId = &v
 }
 
-// GetConnectionId returns the ConnectionId field value if set, zero value otherwise.
+// GetConnectionId returns the ConnectionId field value if set, zero value otherwise
 func (o *BaseNetworkPeeringConnectionSettings) GetConnectionId() string {
 	if o == nil || IsNil(o.ConnectionId) {
 		var ret string
@@ -236,6 +237,7 @@ func (o *BaseNetworkPeeringConnectionSettings) GetConnectionIdOk() (*string, boo
 	if o == nil || IsNil(o.ConnectionId) {
 		return nil, false
 	}
+
 	return o.ConnectionId, true
 }
 
@@ -253,7 +255,7 @@ func (o *BaseNetworkPeeringConnectionSettings) SetConnectionId(v string) {
 	o.ConnectionId = &v
 }
 
-// GetErrorStateName returns the ErrorStateName field value if set, zero value otherwise.
+// GetErrorStateName returns the ErrorStateName field value if set, zero value otherwise
 func (o *BaseNetworkPeeringConnectionSettings) GetErrorStateName() string {
 	if o == nil || IsNil(o.ErrorStateName) {
 		var ret string
@@ -268,6 +270,7 @@ func (o *BaseNetworkPeeringConnectionSettings) GetErrorStateNameOk() (*string, b
 	if o == nil || IsNil(o.ErrorStateName) {
 		return nil, false
 	}
+
 	return o.ErrorStateName, true
 }
 
@@ -285,7 +288,7 @@ func (o *BaseNetworkPeeringConnectionSettings) SetErrorStateName(v string) {
 	o.ErrorStateName = &v
 }
 
-// GetRouteTableCidrBlock returns the RouteTableCidrBlock field value if set, zero value otherwise.
+// GetRouteTableCidrBlock returns the RouteTableCidrBlock field value if set, zero value otherwise
 func (o *BaseNetworkPeeringConnectionSettings) GetRouteTableCidrBlock() string {
 	if o == nil || IsNil(o.RouteTableCidrBlock) {
 		var ret string
@@ -300,6 +303,7 @@ func (o *BaseNetworkPeeringConnectionSettings) GetRouteTableCidrBlockOk() (*stri
 	if o == nil || IsNil(o.RouteTableCidrBlock) {
 		return nil, false
 	}
+
 	return o.RouteTableCidrBlock, true
 }
 
@@ -317,7 +321,7 @@ func (o *BaseNetworkPeeringConnectionSettings) SetRouteTableCidrBlock(v string) 
 	o.RouteTableCidrBlock = &v
 }
 
-// GetStatusName returns the StatusName field value if set, zero value otherwise.
+// GetStatusName returns the StatusName field value if set, zero value otherwise
 func (o *BaseNetworkPeeringConnectionSettings) GetStatusName() string {
 	if o == nil || IsNil(o.StatusName) {
 		var ret string
@@ -332,6 +336,7 @@ func (o *BaseNetworkPeeringConnectionSettings) GetStatusNameOk() (*string, bool)
 	if o == nil || IsNil(o.StatusName) {
 		return nil, false
 	}
+
 	return o.StatusName, true
 }
 
@@ -349,7 +354,7 @@ func (o *BaseNetworkPeeringConnectionSettings) SetStatusName(v string) {
 	o.StatusName = &v
 }
 
-// GetVpcId returns the VpcId field value if set, zero value otherwise.
+// GetVpcId returns the VpcId field value if set, zero value otherwise
 func (o *BaseNetworkPeeringConnectionSettings) GetVpcId() string {
 	if o == nil || IsNil(o.VpcId) {
 		var ret string
@@ -364,6 +369,7 @@ func (o *BaseNetworkPeeringConnectionSettings) GetVpcIdOk() (*string, bool) {
 	if o == nil || IsNil(o.VpcId) {
 		return nil, false
 	}
+
 	return o.VpcId, true
 }
 
@@ -381,7 +387,7 @@ func (o *BaseNetworkPeeringConnectionSettings) SetVpcId(v string) {
 	o.VpcId = &v
 }
 
-// GetAzureDirectoryId returns the AzureDirectoryId field value if set, zero value otherwise.
+// GetAzureDirectoryId returns the AzureDirectoryId field value if set, zero value otherwise
 func (o *BaseNetworkPeeringConnectionSettings) GetAzureDirectoryId() string {
 	if o == nil || IsNil(o.AzureDirectoryId) {
 		var ret string
@@ -396,6 +402,7 @@ func (o *BaseNetworkPeeringConnectionSettings) GetAzureDirectoryIdOk() (*string,
 	if o == nil || IsNil(o.AzureDirectoryId) {
 		return nil, false
 	}
+
 	return o.AzureDirectoryId, true
 }
 
@@ -413,7 +420,7 @@ func (o *BaseNetworkPeeringConnectionSettings) SetAzureDirectoryId(v string) {
 	o.AzureDirectoryId = &v
 }
 
-// GetAzureSubscriptionId returns the AzureSubscriptionId field value if set, zero value otherwise.
+// GetAzureSubscriptionId returns the AzureSubscriptionId field value if set, zero value otherwise
 func (o *BaseNetworkPeeringConnectionSettings) GetAzureSubscriptionId() string {
 	if o == nil || IsNil(o.AzureSubscriptionId) {
 		var ret string
@@ -428,6 +435,7 @@ func (o *BaseNetworkPeeringConnectionSettings) GetAzureSubscriptionIdOk() (*stri
 	if o == nil || IsNil(o.AzureSubscriptionId) {
 		return nil, false
 	}
+
 	return o.AzureSubscriptionId, true
 }
 
@@ -445,7 +453,7 @@ func (o *BaseNetworkPeeringConnectionSettings) SetAzureSubscriptionId(v string) 
 	o.AzureSubscriptionId = &v
 }
 
-// GetErrorState returns the ErrorState field value if set, zero value otherwise.
+// GetErrorState returns the ErrorState field value if set, zero value otherwise
 func (o *BaseNetworkPeeringConnectionSettings) GetErrorState() string {
 	if o == nil || IsNil(o.ErrorState) {
 		var ret string
@@ -460,6 +468,7 @@ func (o *BaseNetworkPeeringConnectionSettings) GetErrorStateOk() (*string, bool)
 	if o == nil || IsNil(o.ErrorState) {
 		return nil, false
 	}
+
 	return o.ErrorState, true
 }
 
@@ -477,7 +486,7 @@ func (o *BaseNetworkPeeringConnectionSettings) SetErrorState(v string) {
 	o.ErrorState = &v
 }
 
-// GetResourceGroupName returns the ResourceGroupName field value if set, zero value otherwise.
+// GetResourceGroupName returns the ResourceGroupName field value if set, zero value otherwise
 func (o *BaseNetworkPeeringConnectionSettings) GetResourceGroupName() string {
 	if o == nil || IsNil(o.ResourceGroupName) {
 		var ret string
@@ -492,6 +501,7 @@ func (o *BaseNetworkPeeringConnectionSettings) GetResourceGroupNameOk() (*string
 	if o == nil || IsNil(o.ResourceGroupName) {
 		return nil, false
 	}
+
 	return o.ResourceGroupName, true
 }
 
@@ -509,7 +519,7 @@ func (o *BaseNetworkPeeringConnectionSettings) SetResourceGroupName(v string) {
 	o.ResourceGroupName = &v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// GetStatus returns the Status field value if set, zero value otherwise
 func (o *BaseNetworkPeeringConnectionSettings) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
 		var ret string
@@ -524,6 +534,7 @@ func (o *BaseNetworkPeeringConnectionSettings) GetStatusOk() (*string, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
+
 	return o.Status, true
 }
 
@@ -541,7 +552,7 @@ func (o *BaseNetworkPeeringConnectionSettings) SetStatus(v string) {
 	o.Status = &v
 }
 
-// GetVnetName returns the VnetName field value if set, zero value otherwise.
+// GetVnetName returns the VnetName field value if set, zero value otherwise
 func (o *BaseNetworkPeeringConnectionSettings) GetVnetName() string {
 	if o == nil || IsNil(o.VnetName) {
 		var ret string
@@ -556,6 +567,7 @@ func (o *BaseNetworkPeeringConnectionSettings) GetVnetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.VnetName) {
 		return nil, false
 	}
+
 	return o.VnetName, true
 }
 
@@ -573,7 +585,7 @@ func (o *BaseNetworkPeeringConnectionSettings) SetVnetName(v string) {
 	o.VnetName = &v
 }
 
-// GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise.
+// GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise
 func (o *BaseNetworkPeeringConnectionSettings) GetErrorMessage() string {
 	if o == nil || IsNil(o.ErrorMessage) {
 		var ret string
@@ -588,6 +600,7 @@ func (o *BaseNetworkPeeringConnectionSettings) GetErrorMessageOk() (*string, boo
 	if o == nil || IsNil(o.ErrorMessage) {
 		return nil, false
 	}
+
 	return o.ErrorMessage, true
 }
 
@@ -605,7 +618,7 @@ func (o *BaseNetworkPeeringConnectionSettings) SetErrorMessage(v string) {
 	o.ErrorMessage = &v
 }
 
-// GetGcpProjectId returns the GcpProjectId field value if set, zero value otherwise.
+// GetGcpProjectId returns the GcpProjectId field value if set, zero value otherwise
 func (o *BaseNetworkPeeringConnectionSettings) GetGcpProjectId() string {
 	if o == nil || IsNil(o.GcpProjectId) {
 		var ret string
@@ -620,6 +633,7 @@ func (o *BaseNetworkPeeringConnectionSettings) GetGcpProjectIdOk() (*string, boo
 	if o == nil || IsNil(o.GcpProjectId) {
 		return nil, false
 	}
+
 	return o.GcpProjectId, true
 }
 
@@ -637,7 +651,7 @@ func (o *BaseNetworkPeeringConnectionSettings) SetGcpProjectId(v string) {
 	o.GcpProjectId = &v
 }
 
-// GetNetworkName returns the NetworkName field value if set, zero value otherwise.
+// GetNetworkName returns the NetworkName field value if set, zero value otherwise
 func (o *BaseNetworkPeeringConnectionSettings) GetNetworkName() string {
 	if o == nil || IsNil(o.NetworkName) {
 		var ret string
@@ -652,6 +666,7 @@ func (o *BaseNetworkPeeringConnectionSettings) GetNetworkNameOk() (*string, bool
 	if o == nil || IsNil(o.NetworkName) {
 		return nil, false
 	}
+
 	return o.NetworkName, true
 }
 
@@ -713,40 +728,4 @@ func (o BaseNetworkPeeringConnectionSettings) ToMap() (map[string]interface{}, e
 		toSerialize["networkName"] = o.NetworkName
 	}
 	return toSerialize, nil
-}
-
-type NullableBaseNetworkPeeringConnectionSettings struct {
-	value *BaseNetworkPeeringConnectionSettings
-	isSet bool
-}
-
-func (v NullableBaseNetworkPeeringConnectionSettings) Get() *BaseNetworkPeeringConnectionSettings {
-	return v.value
-}
-
-func (v *NullableBaseNetworkPeeringConnectionSettings) Set(val *BaseNetworkPeeringConnectionSettings) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableBaseNetworkPeeringConnectionSettings) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableBaseNetworkPeeringConnectionSettings) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableBaseNetworkPeeringConnectionSettings(val *BaseNetworkPeeringConnectionSettings) *NullableBaseNetworkPeeringConnectionSettings {
-	return &NullableBaseNetworkPeeringConnectionSettings{value: val, isSet: true}
-}
-
-func (v NullableBaseNetworkPeeringConnectionSettings) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableBaseNetworkPeeringConnectionSettings) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

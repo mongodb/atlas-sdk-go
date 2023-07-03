@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the AWSCustomDNSEnabled type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AWSCustomDNSEnabled{}
-
 // AWSCustomDNSEnabled struct for AWSCustomDNSEnabled
 type AWSCustomDNSEnabled struct {
 	// Flag that indicates whether the project's clusters deployed to Amazon Web Services (AWS) use a custom Domain Name System (DNS). When `\"enabled\": true`, connect to your cluster using Private IP for Peering connection strings.
@@ -68,40 +65,4 @@ func (o AWSCustomDNSEnabled) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["enabled"] = o.Enabled
 	return toSerialize, nil
-}
-
-type NullableAWSCustomDNSEnabled struct {
-	value *AWSCustomDNSEnabled
-	isSet bool
-}
-
-func (v NullableAWSCustomDNSEnabled) Get() *AWSCustomDNSEnabled {
-	return v.value
-}
-
-func (v *NullableAWSCustomDNSEnabled) Set(val *AWSCustomDNSEnabled) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableAWSCustomDNSEnabled) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableAWSCustomDNSEnabled) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableAWSCustomDNSEnabled(val *AWSCustomDNSEnabled) *NullableAWSCustomDNSEnabled {
-	return &NullableAWSCustomDNSEnabled{value: val, isSet: true}
-}
-
-func (v NullableAWSCustomDNSEnabled) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableAWSCustomDNSEnabled) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

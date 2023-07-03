@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PrivateLinkEndpoint type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PrivateLinkEndpoint{}
-
 // PrivateLinkEndpoint struct for PrivateLinkEndpoint
 type PrivateLinkEndpoint struct {
 	// Cloud service provider that serves the requested endpoint.
@@ -77,7 +74,7 @@ func (o *PrivateLinkEndpoint) SetCloudProvider(v string) {
 	o.CloudProvider = v
 }
 
-// GetDeleteRequested returns the DeleteRequested field value if set, zero value otherwise.
+// GetDeleteRequested returns the DeleteRequested field value if set, zero value otherwise
 func (o *PrivateLinkEndpoint) GetDeleteRequested() bool {
 	if o == nil || IsNil(o.DeleteRequested) {
 		var ret bool
@@ -92,6 +89,7 @@ func (o *PrivateLinkEndpoint) GetDeleteRequestedOk() (*bool, bool) {
 	if o == nil || IsNil(o.DeleteRequested) {
 		return nil, false
 	}
+
 	return o.DeleteRequested, true
 }
 
@@ -109,7 +107,7 @@ func (o *PrivateLinkEndpoint) SetDeleteRequested(v bool) {
 	o.DeleteRequested = &v
 }
 
-// GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise.
+// GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise
 func (o *PrivateLinkEndpoint) GetErrorMessage() string {
 	if o == nil || IsNil(o.ErrorMessage) {
 		var ret string
@@ -124,6 +122,7 @@ func (o *PrivateLinkEndpoint) GetErrorMessageOk() (*string, bool) {
 	if o == nil || IsNil(o.ErrorMessage) {
 		return nil, false
 	}
+
 	return o.ErrorMessage, true
 }
 
@@ -141,7 +140,7 @@ func (o *PrivateLinkEndpoint) SetErrorMessage(v string) {
 	o.ErrorMessage = &v
 }
 
-// GetConnectionStatus returns the ConnectionStatus field value if set, zero value otherwise.
+// GetConnectionStatus returns the ConnectionStatus field value if set, zero value otherwise
 func (o *PrivateLinkEndpoint) GetConnectionStatus() string {
 	if o == nil || IsNil(o.ConnectionStatus) {
 		var ret string
@@ -156,6 +155,7 @@ func (o *PrivateLinkEndpoint) GetConnectionStatusOk() (*string, bool) {
 	if o == nil || IsNil(o.ConnectionStatus) {
 		return nil, false
 	}
+
 	return o.ConnectionStatus, true
 }
 
@@ -173,7 +173,7 @@ func (o *PrivateLinkEndpoint) SetConnectionStatus(v string) {
 	o.ConnectionStatus = &v
 }
 
-// GetInterfaceEndpointId returns the InterfaceEndpointId field value if set, zero value otherwise.
+// GetInterfaceEndpointId returns the InterfaceEndpointId field value if set, zero value otherwise
 func (o *PrivateLinkEndpoint) GetInterfaceEndpointId() string {
 	if o == nil || IsNil(o.InterfaceEndpointId) {
 		var ret string
@@ -188,6 +188,7 @@ func (o *PrivateLinkEndpoint) GetInterfaceEndpointIdOk() (*string, bool) {
 	if o == nil || IsNil(o.InterfaceEndpointId) {
 		return nil, false
 	}
+
 	return o.InterfaceEndpointId, true
 }
 
@@ -205,7 +206,7 @@ func (o *PrivateLinkEndpoint) SetInterfaceEndpointId(v string) {
 	o.InterfaceEndpointId = &v
 }
 
-// GetEndpointGroupName returns the EndpointGroupName field value if set, zero value otherwise.
+// GetEndpointGroupName returns the EndpointGroupName field value if set, zero value otherwise
 func (o *PrivateLinkEndpoint) GetEndpointGroupName() string {
 	if o == nil || IsNil(o.EndpointGroupName) {
 		var ret string
@@ -220,6 +221,7 @@ func (o *PrivateLinkEndpoint) GetEndpointGroupNameOk() (*string, bool) {
 	if o == nil || IsNil(o.EndpointGroupName) {
 		return nil, false
 	}
+
 	return o.EndpointGroupName, true
 }
 
@@ -237,7 +239,7 @@ func (o *PrivateLinkEndpoint) SetEndpointGroupName(v string) {
 	o.EndpointGroupName = &v
 }
 
-// GetEndpoints returns the Endpoints field value if set, zero value otherwise.
+// GetEndpoints returns the Endpoints field value if set, zero value otherwise
 func (o *PrivateLinkEndpoint) GetEndpoints() []GCPConsumerForwardingRule {
 	if o == nil || IsNil(o.Endpoints) {
 		var ret []GCPConsumerForwardingRule
@@ -252,6 +254,7 @@ func (o *PrivateLinkEndpoint) GetEndpointsOk() ([]GCPConsumerForwardingRule, boo
 	if o == nil || IsNil(o.Endpoints) {
 		return nil, false
 	}
+
 	return o.Endpoints, true
 }
 
@@ -269,7 +272,7 @@ func (o *PrivateLinkEndpoint) SetEndpoints(v []GCPConsumerForwardingRule) {
 	o.Endpoints = v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// GetStatus returns the Status field value if set, zero value otherwise
 func (o *PrivateLinkEndpoint) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
 		var ret string
@@ -284,6 +287,7 @@ func (o *PrivateLinkEndpoint) GetStatusOk() (*string, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
+
 	return o.Status, true
 }
 
@@ -301,7 +305,7 @@ func (o *PrivateLinkEndpoint) SetStatus(v string) {
 	o.Status = &v
 }
 
-// GetPrivateEndpointConnectionName returns the PrivateEndpointConnectionName field value if set, zero value otherwise.
+// GetPrivateEndpointConnectionName returns the PrivateEndpointConnectionName field value if set, zero value otherwise
 func (o *PrivateLinkEndpoint) GetPrivateEndpointConnectionName() string {
 	if o == nil || IsNil(o.PrivateEndpointConnectionName) {
 		var ret string
@@ -316,6 +320,7 @@ func (o *PrivateLinkEndpoint) GetPrivateEndpointConnectionNameOk() (*string, boo
 	if o == nil || IsNil(o.PrivateEndpointConnectionName) {
 		return nil, false
 	}
+
 	return o.PrivateEndpointConnectionName, true
 }
 
@@ -333,7 +338,7 @@ func (o *PrivateLinkEndpoint) SetPrivateEndpointConnectionName(v string) {
 	o.PrivateEndpointConnectionName = &v
 }
 
-// GetPrivateEndpointIPAddress returns the PrivateEndpointIPAddress field value if set, zero value otherwise.
+// GetPrivateEndpointIPAddress returns the PrivateEndpointIPAddress field value if set, zero value otherwise
 func (o *PrivateLinkEndpoint) GetPrivateEndpointIPAddress() string {
 	if o == nil || IsNil(o.PrivateEndpointIPAddress) {
 		var ret string
@@ -348,6 +353,7 @@ func (o *PrivateLinkEndpoint) GetPrivateEndpointIPAddressOk() (*string, bool) {
 	if o == nil || IsNil(o.PrivateEndpointIPAddress) {
 		return nil, false
 	}
+
 	return o.PrivateEndpointIPAddress, true
 }
 
@@ -365,7 +371,7 @@ func (o *PrivateLinkEndpoint) SetPrivateEndpointIPAddress(v string) {
 	o.PrivateEndpointIPAddress = &v
 }
 
-// GetPrivateEndpointResourceId returns the PrivateEndpointResourceId field value if set, zero value otherwise.
+// GetPrivateEndpointResourceId returns the PrivateEndpointResourceId field value if set, zero value otherwise
 func (o *PrivateLinkEndpoint) GetPrivateEndpointResourceId() string {
 	if o == nil || IsNil(o.PrivateEndpointResourceId) {
 		var ret string
@@ -380,6 +386,7 @@ func (o *PrivateLinkEndpoint) GetPrivateEndpointResourceIdOk() (*string, bool) {
 	if o == nil || IsNil(o.PrivateEndpointResourceId) {
 		return nil, false
 	}
+
 	return o.PrivateEndpointResourceId, true
 }
 
@@ -410,40 +417,4 @@ func (o PrivateLinkEndpoint) ToMap() (map[string]interface{}, error) {
 		toSerialize["privateEndpointIPAddress"] = o.PrivateEndpointIPAddress
 	}
 	return toSerialize, nil
-}
-
-type NullablePrivateLinkEndpoint struct {
-	value *PrivateLinkEndpoint
-	isSet bool
-}
-
-func (v NullablePrivateLinkEndpoint) Get() *PrivateLinkEndpoint {
-	return v.value
-}
-
-func (v *NullablePrivateLinkEndpoint) Set(val *PrivateLinkEndpoint) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullablePrivateLinkEndpoint) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullablePrivateLinkEndpoint) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullablePrivateLinkEndpoint(val *PrivateLinkEndpoint) *NullablePrivateLinkEndpoint {
-	return &NullablePrivateLinkEndpoint{value: val, isSet: true}
-}
-
-func (v NullablePrivateLinkEndpoint) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullablePrivateLinkEndpoint) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

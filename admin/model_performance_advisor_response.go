@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PerformanceAdvisorResponse type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PerformanceAdvisorResponse{}
-
 // PerformanceAdvisorResponse struct for PerformanceAdvisorResponse
 type PerformanceAdvisorResponse struct {
 	// List of query predicates, sorts, and projections that the Performance Advisor suggests.
@@ -34,7 +31,7 @@ func NewPerformanceAdvisorResponseWithDefaults() *PerformanceAdvisorResponse {
 	return &this
 }
 
-// GetShapes returns the Shapes field value if set, zero value otherwise.
+// GetShapes returns the Shapes field value if set, zero value otherwise
 func (o *PerformanceAdvisorResponse) GetShapes() []PerformanceAdvisorShape {
 	if o == nil || IsNil(o.Shapes) {
 		var ret []PerformanceAdvisorShape
@@ -49,6 +46,7 @@ func (o *PerformanceAdvisorResponse) GetShapesOk() ([]PerformanceAdvisorShape, b
 	if o == nil || IsNil(o.Shapes) {
 		return nil, false
 	}
+
 	return o.Shapes, true
 }
 
@@ -66,7 +64,7 @@ func (o *PerformanceAdvisorResponse) SetShapes(v []PerformanceAdvisorShape) {
 	o.Shapes = v
 }
 
-// GetSuggestedIndexes returns the SuggestedIndexes field value if set, zero value otherwise.
+// GetSuggestedIndexes returns the SuggestedIndexes field value if set, zero value otherwise
 func (o *PerformanceAdvisorResponse) GetSuggestedIndexes() []PerformanceAdvisorIndex {
 	if o == nil || IsNil(o.SuggestedIndexes) {
 		var ret []PerformanceAdvisorIndex
@@ -81,6 +79,7 @@ func (o *PerformanceAdvisorResponse) GetSuggestedIndexesOk() ([]PerformanceAdvis
 	if o == nil || IsNil(o.SuggestedIndexes) {
 		return nil, false
 	}
+
 	return o.SuggestedIndexes, true
 }
 
@@ -108,40 +107,4 @@ func (o PerformanceAdvisorResponse) MarshalJSONWithoutReadOnly() ([]byte, error)
 func (o PerformanceAdvisorResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullablePerformanceAdvisorResponse struct {
-	value *PerformanceAdvisorResponse
-	isSet bool
-}
-
-func (v NullablePerformanceAdvisorResponse) Get() *PerformanceAdvisorResponse {
-	return v.value
-}
-
-func (v *NullablePerformanceAdvisorResponse) Set(val *PerformanceAdvisorResponse) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullablePerformanceAdvisorResponse) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullablePerformanceAdvisorResponse) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullablePerformanceAdvisorResponse(val *PerformanceAdvisorResponse) *NullablePerformanceAdvisorResponse {
-	return &NullablePerformanceAdvisorResponse{value: val, isSet: true}
-}
-
-func (v NullablePerformanceAdvisorResponse) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullablePerformanceAdvisorResponse) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

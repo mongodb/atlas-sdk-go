@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the DiskBackupSnapshotSchedule type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DiskBackupSnapshotSchedule{}
-
 // DiskBackupSnapshotSchedule struct for DiskBackupSnapshotSchedule
 type DiskBackupSnapshotSchedule struct {
 	// Flag that indicates whether MongoDB Cloud automatically exports cloud backup snapshots to the AWS bucket.
@@ -58,7 +55,7 @@ func NewDiskBackupSnapshotScheduleWithDefaults() *DiskBackupSnapshotSchedule {
 	return &this
 }
 
-// GetAutoExportEnabled returns the AutoExportEnabled field value if set, zero value otherwise.
+// GetAutoExportEnabled returns the AutoExportEnabled field value if set, zero value otherwise
 func (o *DiskBackupSnapshotSchedule) GetAutoExportEnabled() bool {
 	if o == nil || IsNil(o.AutoExportEnabled) {
 		var ret bool
@@ -73,6 +70,7 @@ func (o *DiskBackupSnapshotSchedule) GetAutoExportEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.AutoExportEnabled) {
 		return nil, false
 	}
+
 	return o.AutoExportEnabled, true
 }
 
@@ -90,7 +88,7 @@ func (o *DiskBackupSnapshotSchedule) SetAutoExportEnabled(v bool) {
 	o.AutoExportEnabled = &v
 }
 
-// GetClusterId returns the ClusterId field value if set, zero value otherwise.
+// GetClusterId returns the ClusterId field value if set, zero value otherwise
 func (o *DiskBackupSnapshotSchedule) GetClusterId() string {
 	if o == nil || IsNil(o.ClusterId) {
 		var ret string
@@ -105,6 +103,7 @@ func (o *DiskBackupSnapshotSchedule) GetClusterIdOk() (*string, bool) {
 	if o == nil || IsNil(o.ClusterId) {
 		return nil, false
 	}
+
 	return o.ClusterId, true
 }
 
@@ -122,7 +121,7 @@ func (o *DiskBackupSnapshotSchedule) SetClusterId(v string) {
 	o.ClusterId = &v
 }
 
-// GetClusterName returns the ClusterName field value if set, zero value otherwise.
+// GetClusterName returns the ClusterName field value if set, zero value otherwise
 func (o *DiskBackupSnapshotSchedule) GetClusterName() string {
 	if o == nil || IsNil(o.ClusterName) {
 		var ret string
@@ -137,6 +136,7 @@ func (o *DiskBackupSnapshotSchedule) GetClusterNameOk() (*string, bool) {
 	if o == nil || IsNil(o.ClusterName) {
 		return nil, false
 	}
+
 	return o.ClusterName, true
 }
 
@@ -154,7 +154,7 @@ func (o *DiskBackupSnapshotSchedule) SetClusterName(v string) {
 	o.ClusterName = &v
 }
 
-// GetCopySettings returns the CopySettings field value if set, zero value otherwise.
+// GetCopySettings returns the CopySettings field value if set, zero value otherwise
 func (o *DiskBackupSnapshotSchedule) GetCopySettings() []DiskBackupCopySetting {
 	if o == nil || IsNil(o.CopySettings) {
 		var ret []DiskBackupCopySetting
@@ -169,6 +169,7 @@ func (o *DiskBackupSnapshotSchedule) GetCopySettingsOk() ([]DiskBackupCopySettin
 	if o == nil || IsNil(o.CopySettings) {
 		return nil, false
 	}
+
 	return o.CopySettings, true
 }
 
@@ -186,7 +187,7 @@ func (o *DiskBackupSnapshotSchedule) SetCopySettings(v []DiskBackupCopySetting) 
 	o.CopySettings = v
 }
 
-// GetDeleteCopiedBackups returns the DeleteCopiedBackups field value if set, zero value otherwise.
+// GetDeleteCopiedBackups returns the DeleteCopiedBackups field value if set, zero value otherwise
 func (o *DiskBackupSnapshotSchedule) GetDeleteCopiedBackups() []DeleteCopiedBackups {
 	if o == nil || IsNil(o.DeleteCopiedBackups) {
 		var ret []DeleteCopiedBackups
@@ -201,6 +202,7 @@ func (o *DiskBackupSnapshotSchedule) GetDeleteCopiedBackupsOk() ([]DeleteCopiedB
 	if o == nil || IsNil(o.DeleteCopiedBackups) {
 		return nil, false
 	}
+
 	return o.DeleteCopiedBackups, true
 }
 
@@ -218,7 +220,7 @@ func (o *DiskBackupSnapshotSchedule) SetDeleteCopiedBackups(v []DeleteCopiedBack
 	o.DeleteCopiedBackups = v
 }
 
-// GetExport returns the Export field value if set, zero value otherwise.
+// GetExport returns the Export field value if set, zero value otherwise
 func (o *DiskBackupSnapshotSchedule) GetExport() AutoExportPolicy {
 	if o == nil || IsNil(o.Export) {
 		var ret AutoExportPolicy
@@ -233,6 +235,7 @@ func (o *DiskBackupSnapshotSchedule) GetExportOk() (*AutoExportPolicy, bool) {
 	if o == nil || IsNil(o.Export) {
 		return nil, false
 	}
+
 	return o.Export, true
 }
 
@@ -250,7 +253,7 @@ func (o *DiskBackupSnapshotSchedule) SetExport(v AutoExportPolicy) {
 	o.Export = &v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *DiskBackupSnapshotSchedule) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -265,6 +268,7 @@ func (o *DiskBackupSnapshotSchedule) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -282,7 +286,7 @@ func (o *DiskBackupSnapshotSchedule) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetNextSnapshot returns the NextSnapshot field value if set, zero value otherwise.
+// GetNextSnapshot returns the NextSnapshot field value if set, zero value otherwise
 func (o *DiskBackupSnapshotSchedule) GetNextSnapshot() time.Time {
 	if o == nil || IsNil(o.NextSnapshot) {
 		var ret time.Time
@@ -297,6 +301,7 @@ func (o *DiskBackupSnapshotSchedule) GetNextSnapshotOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.NextSnapshot) {
 		return nil, false
 	}
+
 	return o.NextSnapshot, true
 }
 
@@ -314,7 +319,7 @@ func (o *DiskBackupSnapshotSchedule) SetNextSnapshot(v time.Time) {
 	o.NextSnapshot = &v
 }
 
-// GetPolicies returns the Policies field value if set, zero value otherwise.
+// GetPolicies returns the Policies field value if set, zero value otherwise
 func (o *DiskBackupSnapshotSchedule) GetPolicies() []AdvancedDiskBackupSnapshotSchedulePolicy {
 	if o == nil || IsNil(o.Policies) {
 		var ret []AdvancedDiskBackupSnapshotSchedulePolicy
@@ -329,6 +334,7 @@ func (o *DiskBackupSnapshotSchedule) GetPoliciesOk() ([]AdvancedDiskBackupSnapsh
 	if o == nil || IsNil(o.Policies) {
 		return nil, false
 	}
+
 	return o.Policies, true
 }
 
@@ -346,7 +352,7 @@ func (o *DiskBackupSnapshotSchedule) SetPolicies(v []AdvancedDiskBackupSnapshotS
 	o.Policies = v
 }
 
-// GetReferenceHourOfDay returns the ReferenceHourOfDay field value if set, zero value otherwise.
+// GetReferenceHourOfDay returns the ReferenceHourOfDay field value if set, zero value otherwise
 func (o *DiskBackupSnapshotSchedule) GetReferenceHourOfDay() int {
 	if o == nil || IsNil(o.ReferenceHourOfDay) {
 		var ret int
@@ -361,6 +367,7 @@ func (o *DiskBackupSnapshotSchedule) GetReferenceHourOfDayOk() (*int, bool) {
 	if o == nil || IsNil(o.ReferenceHourOfDay) {
 		return nil, false
 	}
+
 	return o.ReferenceHourOfDay, true
 }
 
@@ -378,7 +385,7 @@ func (o *DiskBackupSnapshotSchedule) SetReferenceHourOfDay(v int) {
 	o.ReferenceHourOfDay = &v
 }
 
-// GetReferenceMinuteOfHour returns the ReferenceMinuteOfHour field value if set, zero value otherwise.
+// GetReferenceMinuteOfHour returns the ReferenceMinuteOfHour field value if set, zero value otherwise
 func (o *DiskBackupSnapshotSchedule) GetReferenceMinuteOfHour() int {
 	if o == nil || IsNil(o.ReferenceMinuteOfHour) {
 		var ret int
@@ -393,6 +400,7 @@ func (o *DiskBackupSnapshotSchedule) GetReferenceMinuteOfHourOk() (*int, bool) {
 	if o == nil || IsNil(o.ReferenceMinuteOfHour) {
 		return nil, false
 	}
+
 	return o.ReferenceMinuteOfHour, true
 }
 
@@ -410,7 +418,7 @@ func (o *DiskBackupSnapshotSchedule) SetReferenceMinuteOfHour(v int) {
 	o.ReferenceMinuteOfHour = &v
 }
 
-// GetRestoreWindowDays returns the RestoreWindowDays field value if set, zero value otherwise.
+// GetRestoreWindowDays returns the RestoreWindowDays field value if set, zero value otherwise
 func (o *DiskBackupSnapshotSchedule) GetRestoreWindowDays() int {
 	if o == nil || IsNil(o.RestoreWindowDays) {
 		var ret int
@@ -425,6 +433,7 @@ func (o *DiskBackupSnapshotSchedule) GetRestoreWindowDaysOk() (*int, bool) {
 	if o == nil || IsNil(o.RestoreWindowDays) {
 		return nil, false
 	}
+
 	return o.RestoreWindowDays, true
 }
 
@@ -442,7 +451,7 @@ func (o *DiskBackupSnapshotSchedule) SetRestoreWindowDays(v int) {
 	o.RestoreWindowDays = &v
 }
 
-// GetUpdateSnapshots returns the UpdateSnapshots field value if set, zero value otherwise.
+// GetUpdateSnapshots returns the UpdateSnapshots field value if set, zero value otherwise
 func (o *DiskBackupSnapshotSchedule) GetUpdateSnapshots() bool {
 	if o == nil || IsNil(o.UpdateSnapshots) {
 		var ret bool
@@ -457,6 +466,7 @@ func (o *DiskBackupSnapshotSchedule) GetUpdateSnapshotsOk() (*bool, bool) {
 	if o == nil || IsNil(o.UpdateSnapshots) {
 		return nil, false
 	}
+
 	return o.UpdateSnapshots, true
 }
 
@@ -474,7 +484,7 @@ func (o *DiskBackupSnapshotSchedule) SetUpdateSnapshots(v bool) {
 	o.UpdateSnapshots = &v
 }
 
-// GetUseOrgAndGroupNamesInExportPrefix returns the UseOrgAndGroupNamesInExportPrefix field value if set, zero value otherwise.
+// GetUseOrgAndGroupNamesInExportPrefix returns the UseOrgAndGroupNamesInExportPrefix field value if set, zero value otherwise
 func (o *DiskBackupSnapshotSchedule) GetUseOrgAndGroupNamesInExportPrefix() bool {
 	if o == nil || IsNil(o.UseOrgAndGroupNamesInExportPrefix) {
 		var ret bool
@@ -489,6 +499,7 @@ func (o *DiskBackupSnapshotSchedule) GetUseOrgAndGroupNamesInExportPrefixOk() (*
 	if o == nil || IsNil(o.UseOrgAndGroupNamesInExportPrefix) {
 		return nil, false
 	}
+
 	return o.UseOrgAndGroupNamesInExportPrefix, true
 }
 
@@ -546,40 +557,4 @@ func (o DiskBackupSnapshotSchedule) ToMap() (map[string]interface{}, error) {
 		toSerialize["useOrgAndGroupNamesInExportPrefix"] = o.UseOrgAndGroupNamesInExportPrefix
 	}
 	return toSerialize, nil
-}
-
-type NullableDiskBackupSnapshotSchedule struct {
-	value *DiskBackupSnapshotSchedule
-	isSet bool
-}
-
-func (v NullableDiskBackupSnapshotSchedule) Get() *DiskBackupSnapshotSchedule {
-	return v.value
-}
-
-func (v *NullableDiskBackupSnapshotSchedule) Set(val *DiskBackupSnapshotSchedule) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableDiskBackupSnapshotSchedule) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableDiskBackupSnapshotSchedule) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableDiskBackupSnapshotSchedule(val *DiskBackupSnapshotSchedule) *NullableDiskBackupSnapshotSchedule {
-	return &NullableDiskBackupSnapshotSchedule{value: val, isSet: true}
-}
-
-func (v NullableDiskBackupSnapshotSchedule) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableDiskBackupSnapshotSchedule) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

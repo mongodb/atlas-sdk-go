@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the FieldTransformation type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &FieldTransformation{}
-
 // FieldTransformation Field Transformations during ingestion of a Data Lake Pipeline.
 type FieldTransformation struct {
 	// Key in the document.
@@ -34,7 +31,7 @@ func NewFieldTransformationWithDefaults() *FieldTransformation {
 	return &this
 }
 
-// GetField returns the Field field value if set, zero value otherwise.
+// GetField returns the Field field value if set, zero value otherwise
 func (o *FieldTransformation) GetField() string {
 	if o == nil || IsNil(o.Field) {
 		var ret string
@@ -49,6 +46,7 @@ func (o *FieldTransformation) GetFieldOk() (*string, bool) {
 	if o == nil || IsNil(o.Field) {
 		return nil, false
 	}
+
 	return o.Field, true
 }
 
@@ -66,7 +64,7 @@ func (o *FieldTransformation) SetField(v string) {
 	o.Field = &v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value if set, zero value otherwise
 func (o *FieldTransformation) GetType() string {
 	if o == nil || IsNil(o.Type) {
 		var ret string
@@ -81,6 +79,7 @@ func (o *FieldTransformation) GetTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
+
 	return o.Type, true
 }
 
@@ -114,40 +113,4 @@ func (o FieldTransformation) ToMap() (map[string]interface{}, error) {
 		toSerialize["type"] = o.Type
 	}
 	return toSerialize, nil
-}
-
-type NullableFieldTransformation struct {
-	value *FieldTransformation
-	isSet bool
-}
-
-func (v NullableFieldTransformation) Get() *FieldTransformation {
-	return v.value
-}
-
-func (v *NullableFieldTransformation) Set(val *FieldTransformation) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableFieldTransformation) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableFieldTransformation) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableFieldTransformation(val *FieldTransformation) *NullableFieldTransformation {
-	return &NullableFieldTransformation{value: val, isSet: true}
-}
-
-func (v NullableFieldTransformation) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableFieldTransformation) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

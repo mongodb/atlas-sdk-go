@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the DiskBackupBaseRestoreMember type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DiskBackupBaseRestoreMember{}
-
 // DiskBackupBaseRestoreMember struct for DiskBackupBaseRestoreMember
 type DiskBackupBaseRestoreMember struct {
 	// Human-readable label that identifies the replica set on the sharded cluster.
@@ -32,7 +29,7 @@ func NewDiskBackupBaseRestoreMemberWithDefaults() *DiskBackupBaseRestoreMember {
 	return &this
 }
 
-// GetReplicaSetName returns the ReplicaSetName field value if set, zero value otherwise.
+// GetReplicaSetName returns the ReplicaSetName field value if set, zero value otherwise
 func (o *DiskBackupBaseRestoreMember) GetReplicaSetName() string {
 	if o == nil || IsNil(o.ReplicaSetName) {
 		var ret string
@@ -47,6 +44,7 @@ func (o *DiskBackupBaseRestoreMember) GetReplicaSetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.ReplicaSetName) {
 		return nil, false
 	}
+
 	return o.ReplicaSetName, true
 }
 
@@ -74,40 +72,4 @@ func (o DiskBackupBaseRestoreMember) MarshalJSONWithoutReadOnly() ([]byte, error
 func (o DiskBackupBaseRestoreMember) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableDiskBackupBaseRestoreMember struct {
-	value *DiskBackupBaseRestoreMember
-	isSet bool
-}
-
-func (v NullableDiskBackupBaseRestoreMember) Get() *DiskBackupBaseRestoreMember {
-	return v.value
-}
-
-func (v *NullableDiskBackupBaseRestoreMember) Set(val *DiskBackupBaseRestoreMember) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableDiskBackupBaseRestoreMember) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableDiskBackupBaseRestoreMember) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableDiskBackupBaseRestoreMember(val *DiskBackupBaseRestoreMember) *NullableDiskBackupBaseRestoreMember {
-	return &NullableDiskBackupBaseRestoreMember{value: val, isSet: true}
-}
-
-func (v NullableDiskBackupBaseRestoreMember) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableDiskBackupBaseRestoreMember) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

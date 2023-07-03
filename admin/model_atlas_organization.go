@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the AtlasOrganization type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AtlasOrganization{}
-
 // AtlasOrganization struct for AtlasOrganization
 type AtlasOrganization struct {
 	// Unique 24-hexadecimal digit string that identifies the organization.
@@ -39,7 +36,7 @@ func NewAtlasOrganizationWithDefaults() *AtlasOrganization {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *AtlasOrganization) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -54,6 +51,7 @@ func (o *AtlasOrganization) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -71,7 +69,7 @@ func (o *AtlasOrganization) SetId(v string) {
 	o.Id = &v
 }
 
-// GetIsDeleted returns the IsDeleted field value if set, zero value otherwise.
+// GetIsDeleted returns the IsDeleted field value if set, zero value otherwise
 func (o *AtlasOrganization) GetIsDeleted() bool {
 	if o == nil || IsNil(o.IsDeleted) {
 		var ret bool
@@ -86,6 +84,7 @@ func (o *AtlasOrganization) GetIsDeletedOk() (*bool, bool) {
 	if o == nil || IsNil(o.IsDeleted) {
 		return nil, false
 	}
+
 	return o.IsDeleted, true
 }
 
@@ -103,7 +102,7 @@ func (o *AtlasOrganization) SetIsDeleted(v bool) {
 	o.IsDeleted = &v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *AtlasOrganization) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -118,6 +117,7 @@ func (o *AtlasOrganization) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -170,40 +170,4 @@ func (o AtlasOrganization) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	return toSerialize, nil
-}
-
-type NullableAtlasOrganization struct {
-	value *AtlasOrganization
-	isSet bool
-}
-
-func (v NullableAtlasOrganization) Get() *AtlasOrganization {
-	return v.value
-}
-
-func (v *NullableAtlasOrganization) Set(val *AtlasOrganization) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableAtlasOrganization) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableAtlasOrganization) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableAtlasOrganization(val *AtlasOrganization) *NullableAtlasOrganization {
-	return &NullableAtlasOrganization{value: val, isSet: true}
-}
-
-func (v NullableAtlasOrganization) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableAtlasOrganization) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the GroupInvitation type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &GroupInvitation{}
-
 // GroupInvitation struct for GroupInvitation
 type GroupInvitation struct {
 	// Date and time when MongoDB Cloud sent the invitation. This parameter expresses its value in ISO 8601 format in UTC.
@@ -49,7 +46,7 @@ func NewGroupInvitationWithDefaults() *GroupInvitation {
 	return &this
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise
 func (o *GroupInvitation) GetCreatedAt() time.Time {
 	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
@@ -64,6 +61,7 @@ func (o *GroupInvitation) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
+
 	return o.CreatedAt, true
 }
 
@@ -81,7 +79,7 @@ func (o *GroupInvitation) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
-// GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise.
+// GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise
 func (o *GroupInvitation) GetExpiresAt() time.Time {
 	if o == nil || IsNil(o.ExpiresAt) {
 		var ret time.Time
@@ -96,6 +94,7 @@ func (o *GroupInvitation) GetExpiresAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.ExpiresAt) {
 		return nil, false
 	}
+
 	return o.ExpiresAt, true
 }
 
@@ -113,7 +112,7 @@ func (o *GroupInvitation) SetExpiresAt(v time.Time) {
 	o.ExpiresAt = &v
 }
 
-// GetGroupId returns the GroupId field value if set, zero value otherwise.
+// GetGroupId returns the GroupId field value if set, zero value otherwise
 func (o *GroupInvitation) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
 		var ret string
@@ -128,6 +127,7 @@ func (o *GroupInvitation) GetGroupIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupId) {
 		return nil, false
 	}
+
 	return o.GroupId, true
 }
 
@@ -145,7 +145,7 @@ func (o *GroupInvitation) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
-// GetGroupName returns the GroupName field value if set, zero value otherwise.
+// GetGroupName returns the GroupName field value if set, zero value otherwise
 func (o *GroupInvitation) GetGroupName() string {
 	if o == nil || IsNil(o.GroupName) {
 		var ret string
@@ -160,6 +160,7 @@ func (o *GroupInvitation) GetGroupNameOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupName) {
 		return nil, false
 	}
+
 	return o.GroupName, true
 }
 
@@ -177,7 +178,7 @@ func (o *GroupInvitation) SetGroupName(v string) {
 	o.GroupName = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *GroupInvitation) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -192,6 +193,7 @@ func (o *GroupInvitation) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -209,7 +211,7 @@ func (o *GroupInvitation) SetId(v string) {
 	o.Id = &v
 }
 
-// GetInviterUsername returns the InviterUsername field value if set, zero value otherwise.
+// GetInviterUsername returns the InviterUsername field value if set, zero value otherwise
 func (o *GroupInvitation) GetInviterUsername() string {
 	if o == nil || IsNil(o.InviterUsername) {
 		var ret string
@@ -224,6 +226,7 @@ func (o *GroupInvitation) GetInviterUsernameOk() (*string, bool) {
 	if o == nil || IsNil(o.InviterUsername) {
 		return nil, false
 	}
+
 	return o.InviterUsername, true
 }
 
@@ -241,7 +244,7 @@ func (o *GroupInvitation) SetInviterUsername(v string) {
 	o.InviterUsername = &v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *GroupInvitation) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -256,6 +259,7 @@ func (o *GroupInvitation) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -273,7 +277,7 @@ func (o *GroupInvitation) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetRoles returns the Roles field value if set, zero value otherwise.
+// GetRoles returns the Roles field value if set, zero value otherwise
 func (o *GroupInvitation) GetRoles() []string {
 	if o == nil || IsNil(o.Roles) {
 		var ret []string
@@ -288,6 +292,7 @@ func (o *GroupInvitation) GetRolesOk() ([]string, bool) {
 	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
+
 	return o.Roles, true
 }
 
@@ -305,7 +310,7 @@ func (o *GroupInvitation) SetRoles(v []string) {
 	o.Roles = v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
+// GetUsername returns the Username field value if set, zero value otherwise
 func (o *GroupInvitation) GetUsername() string {
 	if o == nil || IsNil(o.Username) {
 		var ret string
@@ -320,6 +325,7 @@ func (o *GroupInvitation) GetUsernameOk() (*string, bool) {
 	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
+
 	return o.Username, true
 }
 
@@ -350,40 +356,4 @@ func (o GroupInvitation) ToMap() (map[string]interface{}, error) {
 		toSerialize["roles"] = o.Roles
 	}
 	return toSerialize, nil
-}
-
-type NullableGroupInvitation struct {
-	value *GroupInvitation
-	isSet bool
-}
-
-func (v NullableGroupInvitation) Get() *GroupInvitation {
-	return v.value
-}
-
-func (v *NullableGroupInvitation) Set(val *GroupInvitation) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableGroupInvitation) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableGroupInvitation) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableGroupInvitation(val *GroupInvitation) *NullableGroupInvitation {
-	return &NullableGroupInvitation{value: val, isSet: true}
-}
-
-func (v NullableGroupInvitation) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableGroupInvitation) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

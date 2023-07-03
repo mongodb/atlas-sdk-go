@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PaginatedOrganization type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PaginatedOrganization{}
-
 // PaginatedOrganization struct for PaginatedOrganization
 type PaginatedOrganization struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -36,7 +33,7 @@ func NewPaginatedOrganizationWithDefaults() *PaginatedOrganization {
 	return &this
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *PaginatedOrganization) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -51,6 +48,7 @@ func (o *PaginatedOrganization) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -68,7 +66,7 @@ func (o *PaginatedOrganization) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetResults returns the Results field value if set, zero value otherwise.
+// GetResults returns the Results field value if set, zero value otherwise
 func (o *PaginatedOrganization) GetResults() []AtlasOrganization {
 	if o == nil || IsNil(o.Results) {
 		var ret []AtlasOrganization
@@ -83,6 +81,7 @@ func (o *PaginatedOrganization) GetResultsOk() ([]AtlasOrganization, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
+
 	return o.Results, true
 }
 
@@ -100,7 +99,7 @@ func (o *PaginatedOrganization) SetResults(v []AtlasOrganization) {
 	o.Results = v
 }
 
-// GetTotalCount returns the TotalCount field value if set, zero value otherwise.
+// GetTotalCount returns the TotalCount field value if set, zero value otherwise
 func (o *PaginatedOrganization) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int
@@ -115,6 +114,7 @@ func (o *PaginatedOrganization) GetTotalCountOk() (*int, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
+
 	return o.TotalCount, true
 }
 
@@ -142,40 +142,4 @@ func (o PaginatedOrganization) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o PaginatedOrganization) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullablePaginatedOrganization struct {
-	value *PaginatedOrganization
-	isSet bool
-}
-
-func (v NullablePaginatedOrganization) Get() *PaginatedOrganization {
-	return v.value
-}
-
-func (v *NullablePaginatedOrganization) Set(val *PaginatedOrganization) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullablePaginatedOrganization) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullablePaginatedOrganization) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullablePaginatedOrganization(val *PaginatedOrganization) *NullablePaginatedOrganization {
-	return &NullablePaginatedOrganization{value: val, isSet: true}
-}
-
-func (v NullablePaginatedOrganization) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullablePaginatedOrganization) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

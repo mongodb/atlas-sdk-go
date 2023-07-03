@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the BackupTenantSnapshot type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &BackupTenantSnapshot{}
-
 // BackupTenantSnapshot struct for BackupTenantSnapshot
 type BackupTenantSnapshot struct {
 	// Date and time when the download link no longer works. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
@@ -47,7 +44,7 @@ func NewBackupTenantSnapshotWithDefaults() *BackupTenantSnapshot {
 	return &this
 }
 
-// GetExpiration returns the Expiration field value if set, zero value otherwise.
+// GetExpiration returns the Expiration field value if set, zero value otherwise
 func (o *BackupTenantSnapshot) GetExpiration() time.Time {
 	if o == nil || IsNil(o.Expiration) {
 		var ret time.Time
@@ -62,6 +59,7 @@ func (o *BackupTenantSnapshot) GetExpirationOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Expiration) {
 		return nil, false
 	}
+
 	return o.Expiration, true
 }
 
@@ -79,7 +77,7 @@ func (o *BackupTenantSnapshot) SetExpiration(v time.Time) {
 	o.Expiration = &v
 }
 
-// GetFinishTime returns the FinishTime field value if set, zero value otherwise.
+// GetFinishTime returns the FinishTime field value if set, zero value otherwise
 func (o *BackupTenantSnapshot) GetFinishTime() time.Time {
 	if o == nil || IsNil(o.FinishTime) {
 		var ret time.Time
@@ -94,6 +92,7 @@ func (o *BackupTenantSnapshot) GetFinishTimeOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.FinishTime) {
 		return nil, false
 	}
+
 	return o.FinishTime, true
 }
 
@@ -111,7 +110,7 @@ func (o *BackupTenantSnapshot) SetFinishTime(v time.Time) {
 	o.FinishTime = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *BackupTenantSnapshot) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -126,6 +125,7 @@ func (o *BackupTenantSnapshot) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -143,7 +143,7 @@ func (o *BackupTenantSnapshot) SetId(v string) {
 	o.Id = &v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *BackupTenantSnapshot) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -158,6 +158,7 @@ func (o *BackupTenantSnapshot) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -175,7 +176,7 @@ func (o *BackupTenantSnapshot) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetMongoDBVersion returns the MongoDBVersion field value if set, zero value otherwise.
+// GetMongoDBVersion returns the MongoDBVersion field value if set, zero value otherwise
 func (o *BackupTenantSnapshot) GetMongoDBVersion() string {
 	if o == nil || IsNil(o.MongoDBVersion) {
 		var ret string
@@ -190,6 +191,7 @@ func (o *BackupTenantSnapshot) GetMongoDBVersionOk() (*string, bool) {
 	if o == nil || IsNil(o.MongoDBVersion) {
 		return nil, false
 	}
+
 	return o.MongoDBVersion, true
 }
 
@@ -207,7 +209,7 @@ func (o *BackupTenantSnapshot) SetMongoDBVersion(v string) {
 	o.MongoDBVersion = &v
 }
 
-// GetScheduledTime returns the ScheduledTime field value if set, zero value otherwise.
+// GetScheduledTime returns the ScheduledTime field value if set, zero value otherwise
 func (o *BackupTenantSnapshot) GetScheduledTime() time.Time {
 	if o == nil || IsNil(o.ScheduledTime) {
 		var ret time.Time
@@ -222,6 +224,7 @@ func (o *BackupTenantSnapshot) GetScheduledTimeOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.ScheduledTime) {
 		return nil, false
 	}
+
 	return o.ScheduledTime, true
 }
 
@@ -239,7 +242,7 @@ func (o *BackupTenantSnapshot) SetScheduledTime(v time.Time) {
 	o.ScheduledTime = &v
 }
 
-// GetStartTime returns the StartTime field value if set, zero value otherwise.
+// GetStartTime returns the StartTime field value if set, zero value otherwise
 func (o *BackupTenantSnapshot) GetStartTime() time.Time {
 	if o == nil || IsNil(o.StartTime) {
 		var ret time.Time
@@ -254,6 +257,7 @@ func (o *BackupTenantSnapshot) GetStartTimeOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.StartTime) {
 		return nil, false
 	}
+
 	return o.StartTime, true
 }
 
@@ -271,7 +275,7 @@ func (o *BackupTenantSnapshot) SetStartTime(v time.Time) {
 	o.StartTime = &v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// GetStatus returns the Status field value if set, zero value otherwise
 func (o *BackupTenantSnapshot) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
 		var ret string
@@ -286,6 +290,7 @@ func (o *BackupTenantSnapshot) GetStatusOk() (*string, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
+
 	return o.Status, true
 }
 
@@ -313,40 +318,4 @@ func (o BackupTenantSnapshot) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o BackupTenantSnapshot) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableBackupTenantSnapshot struct {
-	value *BackupTenantSnapshot
-	isSet bool
-}
-
-func (v NullableBackupTenantSnapshot) Get() *BackupTenantSnapshot {
-	return v.value
-}
-
-func (v *NullableBackupTenantSnapshot) Set(val *BackupTenantSnapshot) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableBackupTenantSnapshot) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableBackupTenantSnapshot) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableBackupTenantSnapshot(val *BackupTenantSnapshot) *NullableBackupTenantSnapshot {
-	return &NullableBackupTenantSnapshot{value: val, isSet: true}
-}
-
-func (v NullableBackupTenantSnapshot) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableBackupTenantSnapshot) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

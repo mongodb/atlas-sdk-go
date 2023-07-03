@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the LegacyAtlasCluster type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &LegacyAtlasCluster{}
-
 // LegacyAtlasCluster Group of settings that configure a MongoDB cluster.
 type LegacyAtlasCluster struct {
 	AutoScaling *ClusterAutoScalingSettings `json:"autoScaling,omitempty"`
@@ -116,7 +113,7 @@ func NewLegacyAtlasClusterWithDefaults() *LegacyAtlasCluster {
 	return &this
 }
 
-// GetAutoScaling returns the AutoScaling field value if set, zero value otherwise.
+// GetAutoScaling returns the AutoScaling field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetAutoScaling() ClusterAutoScalingSettings {
 	if o == nil || IsNil(o.AutoScaling) {
 		var ret ClusterAutoScalingSettings
@@ -131,6 +128,7 @@ func (o *LegacyAtlasCluster) GetAutoScalingOk() (*ClusterAutoScalingSettings, bo
 	if o == nil || IsNil(o.AutoScaling) {
 		return nil, false
 	}
+
 	return o.AutoScaling, true
 }
 
@@ -148,7 +146,7 @@ func (o *LegacyAtlasCluster) SetAutoScaling(v ClusterAutoScalingSettings) {
 	o.AutoScaling = &v
 }
 
-// GetBackupEnabled returns the BackupEnabled field value if set, zero value otherwise.
+// GetBackupEnabled returns the BackupEnabled field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetBackupEnabled() bool {
 	if o == nil || IsNil(o.BackupEnabled) {
 		var ret bool
@@ -163,6 +161,7 @@ func (o *LegacyAtlasCluster) GetBackupEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.BackupEnabled) {
 		return nil, false
 	}
+
 	return o.BackupEnabled, true
 }
 
@@ -180,7 +179,7 @@ func (o *LegacyAtlasCluster) SetBackupEnabled(v bool) {
 	o.BackupEnabled = &v
 }
 
-// GetBiConnector returns the BiConnector field value if set, zero value otherwise.
+// GetBiConnector returns the BiConnector field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetBiConnector() BiConnector {
 	if o == nil || IsNil(o.BiConnector) {
 		var ret BiConnector
@@ -195,6 +194,7 @@ func (o *LegacyAtlasCluster) GetBiConnectorOk() (*BiConnector, bool) {
 	if o == nil || IsNil(o.BiConnector) {
 		return nil, false
 	}
+
 	return o.BiConnector, true
 }
 
@@ -212,7 +212,7 @@ func (o *LegacyAtlasCluster) SetBiConnector(v BiConnector) {
 	o.BiConnector = &v
 }
 
-// GetClusterType returns the ClusterType field value if set, zero value otherwise.
+// GetClusterType returns the ClusterType field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetClusterType() string {
 	if o == nil || IsNil(o.ClusterType) {
 		var ret string
@@ -227,6 +227,7 @@ func (o *LegacyAtlasCluster) GetClusterTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.ClusterType) {
 		return nil, false
 	}
+
 	return o.ClusterType, true
 }
 
@@ -244,7 +245,7 @@ func (o *LegacyAtlasCluster) SetClusterType(v string) {
 	o.ClusterType = &v
 }
 
-// GetConnectionStrings returns the ConnectionStrings field value if set, zero value otherwise.
+// GetConnectionStrings returns the ConnectionStrings field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetConnectionStrings() ClusterConnectionStrings {
 	if o == nil || IsNil(o.ConnectionStrings) {
 		var ret ClusterConnectionStrings
@@ -259,6 +260,7 @@ func (o *LegacyAtlasCluster) GetConnectionStringsOk() (*ClusterConnectionStrings
 	if o == nil || IsNil(o.ConnectionStrings) {
 		return nil, false
 	}
+
 	return o.ConnectionStrings, true
 }
 
@@ -276,7 +278,7 @@ func (o *LegacyAtlasCluster) SetConnectionStrings(v ClusterConnectionStrings) {
 	o.ConnectionStrings = &v
 }
 
-// GetCreateDate returns the CreateDate field value if set, zero value otherwise.
+// GetCreateDate returns the CreateDate field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetCreateDate() time.Time {
 	if o == nil || IsNil(o.CreateDate) {
 		var ret time.Time
@@ -291,6 +293,7 @@ func (o *LegacyAtlasCluster) GetCreateDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CreateDate) {
 		return nil, false
 	}
+
 	return o.CreateDate, true
 }
 
@@ -308,7 +311,7 @@ func (o *LegacyAtlasCluster) SetCreateDate(v time.Time) {
 	o.CreateDate = &v
 }
 
-// GetDiskSizeGB returns the DiskSizeGB field value if set, zero value otherwise.
+// GetDiskSizeGB returns the DiskSizeGB field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetDiskSizeGB() float64 {
 	if o == nil || IsNil(o.DiskSizeGB) {
 		var ret float64
@@ -323,6 +326,7 @@ func (o *LegacyAtlasCluster) GetDiskSizeGBOk() (*float64, bool) {
 	if o == nil || IsNil(o.DiskSizeGB) {
 		return nil, false
 	}
+
 	return o.DiskSizeGB, true
 }
 
@@ -340,7 +344,7 @@ func (o *LegacyAtlasCluster) SetDiskSizeGB(v float64) {
 	o.DiskSizeGB = &v
 }
 
-// GetEncryptionAtRestProvider returns the EncryptionAtRestProvider field value if set, zero value otherwise.
+// GetEncryptionAtRestProvider returns the EncryptionAtRestProvider field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetEncryptionAtRestProvider() string {
 	if o == nil || IsNil(o.EncryptionAtRestProvider) {
 		var ret string
@@ -355,6 +359,7 @@ func (o *LegacyAtlasCluster) GetEncryptionAtRestProviderOk() (*string, bool) {
 	if o == nil || IsNil(o.EncryptionAtRestProvider) {
 		return nil, false
 	}
+
 	return o.EncryptionAtRestProvider, true
 }
 
@@ -372,7 +377,7 @@ func (o *LegacyAtlasCluster) SetEncryptionAtRestProvider(v string) {
 	o.EncryptionAtRestProvider = &v
 }
 
-// GetGroupId returns the GroupId field value if set, zero value otherwise.
+// GetGroupId returns the GroupId field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
 		var ret string
@@ -387,6 +392,7 @@ func (o *LegacyAtlasCluster) GetGroupIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupId) {
 		return nil, false
 	}
+
 	return o.GroupId, true
 }
 
@@ -404,7 +410,7 @@ func (o *LegacyAtlasCluster) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -419,6 +425,7 @@ func (o *LegacyAtlasCluster) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -436,7 +443,7 @@ func (o *LegacyAtlasCluster) SetId(v string) {
 	o.Id = &v
 }
 
-// GetLabels returns the Labels field value if set, zero value otherwise.
+// GetLabels returns the Labels field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetLabels() []ComponentLabel {
 	if o == nil || IsNil(o.Labels) {
 		var ret []ComponentLabel
@@ -451,6 +458,7 @@ func (o *LegacyAtlasCluster) GetLabelsOk() ([]ComponentLabel, bool) {
 	if o == nil || IsNil(o.Labels) {
 		return nil, false
 	}
+
 	return o.Labels, true
 }
 
@@ -468,7 +476,7 @@ func (o *LegacyAtlasCluster) SetLabels(v []ComponentLabel) {
 	o.Labels = v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -483,6 +491,7 @@ func (o *LegacyAtlasCluster) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -500,7 +509,7 @@ func (o *LegacyAtlasCluster) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetMongoDBMajorVersion returns the MongoDBMajorVersion field value if set, zero value otherwise.
+// GetMongoDBMajorVersion returns the MongoDBMajorVersion field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetMongoDBMajorVersion() string {
 	if o == nil || IsNil(o.MongoDBMajorVersion) {
 		var ret string
@@ -515,6 +524,7 @@ func (o *LegacyAtlasCluster) GetMongoDBMajorVersionOk() (*string, bool) {
 	if o == nil || IsNil(o.MongoDBMajorVersion) {
 		return nil, false
 	}
+
 	return o.MongoDBMajorVersion, true
 }
 
@@ -532,7 +542,7 @@ func (o *LegacyAtlasCluster) SetMongoDBMajorVersion(v string) {
 	o.MongoDBMajorVersion = &v
 }
 
-// GetMongoDBVersion returns the MongoDBVersion field value if set, zero value otherwise.
+// GetMongoDBVersion returns the MongoDBVersion field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetMongoDBVersion() string {
 	if o == nil || IsNil(o.MongoDBVersion) {
 		var ret string
@@ -547,6 +557,7 @@ func (o *LegacyAtlasCluster) GetMongoDBVersionOk() (*string, bool) {
 	if o == nil || IsNil(o.MongoDBVersion) {
 		return nil, false
 	}
+
 	return o.MongoDBVersion, true
 }
 
@@ -564,7 +575,7 @@ func (o *LegacyAtlasCluster) SetMongoDBVersion(v string) {
 	o.MongoDBVersion = &v
 }
 
-// GetMongoURI returns the MongoURI field value if set, zero value otherwise.
+// GetMongoURI returns the MongoURI field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetMongoURI() string {
 	if o == nil || IsNil(o.MongoURI) {
 		var ret string
@@ -579,6 +590,7 @@ func (o *LegacyAtlasCluster) GetMongoURIOk() (*string, bool) {
 	if o == nil || IsNil(o.MongoURI) {
 		return nil, false
 	}
+
 	return o.MongoURI, true
 }
 
@@ -596,7 +608,7 @@ func (o *LegacyAtlasCluster) SetMongoURI(v string) {
 	o.MongoURI = &v
 }
 
-// GetMongoURIUpdated returns the MongoURIUpdated field value if set, zero value otherwise.
+// GetMongoURIUpdated returns the MongoURIUpdated field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetMongoURIUpdated() time.Time {
 	if o == nil || IsNil(o.MongoURIUpdated) {
 		var ret time.Time
@@ -611,6 +623,7 @@ func (o *LegacyAtlasCluster) GetMongoURIUpdatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.MongoURIUpdated) {
 		return nil, false
 	}
+
 	return o.MongoURIUpdated, true
 }
 
@@ -628,7 +641,7 @@ func (o *LegacyAtlasCluster) SetMongoURIUpdated(v time.Time) {
 	o.MongoURIUpdated = &v
 }
 
-// GetMongoURIWithOptions returns the MongoURIWithOptions field value if set, zero value otherwise.
+// GetMongoURIWithOptions returns the MongoURIWithOptions field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetMongoURIWithOptions() string {
 	if o == nil || IsNil(o.MongoURIWithOptions) {
 		var ret string
@@ -643,6 +656,7 @@ func (o *LegacyAtlasCluster) GetMongoURIWithOptionsOk() (*string, bool) {
 	if o == nil || IsNil(o.MongoURIWithOptions) {
 		return nil, false
 	}
+
 	return o.MongoURIWithOptions, true
 }
 
@@ -660,7 +674,7 @@ func (o *LegacyAtlasCluster) SetMongoURIWithOptions(v string) {
 	o.MongoURIWithOptions = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
@@ -675,6 +689,7 @@ func (o *LegacyAtlasCluster) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
+
 	return o.Name, true
 }
 
@@ -692,7 +707,7 @@ func (o *LegacyAtlasCluster) SetName(v string) {
 	o.Name = &v
 }
 
-// GetNumShards returns the NumShards field value if set, zero value otherwise.
+// GetNumShards returns the NumShards field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetNumShards() int {
 	if o == nil || IsNil(o.NumShards) {
 		var ret int
@@ -707,6 +722,7 @@ func (o *LegacyAtlasCluster) GetNumShardsOk() (*int, bool) {
 	if o == nil || IsNil(o.NumShards) {
 		return nil, false
 	}
+
 	return o.NumShards, true
 }
 
@@ -724,7 +740,7 @@ func (o *LegacyAtlasCluster) SetNumShards(v int) {
 	o.NumShards = &v
 }
 
-// GetPaused returns the Paused field value if set, zero value otherwise.
+// GetPaused returns the Paused field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetPaused() bool {
 	if o == nil || IsNil(o.Paused) {
 		var ret bool
@@ -739,6 +755,7 @@ func (o *LegacyAtlasCluster) GetPausedOk() (*bool, bool) {
 	if o == nil || IsNil(o.Paused) {
 		return nil, false
 	}
+
 	return o.Paused, true
 }
 
@@ -756,7 +773,7 @@ func (o *LegacyAtlasCluster) SetPaused(v bool) {
 	o.Paused = &v
 }
 
-// GetPitEnabled returns the PitEnabled field value if set, zero value otherwise.
+// GetPitEnabled returns the PitEnabled field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetPitEnabled() bool {
 	if o == nil || IsNil(o.PitEnabled) {
 		var ret bool
@@ -771,6 +788,7 @@ func (o *LegacyAtlasCluster) GetPitEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.PitEnabled) {
 		return nil, false
 	}
+
 	return o.PitEnabled, true
 }
 
@@ -788,7 +806,7 @@ func (o *LegacyAtlasCluster) SetPitEnabled(v bool) {
 	o.PitEnabled = &v
 }
 
-// GetProviderBackupEnabled returns the ProviderBackupEnabled field value if set, zero value otherwise.
+// GetProviderBackupEnabled returns the ProviderBackupEnabled field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetProviderBackupEnabled() bool {
 	if o == nil || IsNil(o.ProviderBackupEnabled) {
 		var ret bool
@@ -803,6 +821,7 @@ func (o *LegacyAtlasCluster) GetProviderBackupEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.ProviderBackupEnabled) {
 		return nil, false
 	}
+
 	return o.ProviderBackupEnabled, true
 }
 
@@ -820,7 +839,7 @@ func (o *LegacyAtlasCluster) SetProviderBackupEnabled(v bool) {
 	o.ProviderBackupEnabled = &v
 }
 
-// GetProviderSettings returns the ProviderSettings field value if set, zero value otherwise.
+// GetProviderSettings returns the ProviderSettings field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetProviderSettings() ClusterProviderSettings {
 	if o == nil || IsNil(o.ProviderSettings) {
 		var ret ClusterProviderSettings
@@ -835,6 +854,7 @@ func (o *LegacyAtlasCluster) GetProviderSettingsOk() (*ClusterProviderSettings, 
 	if o == nil || IsNil(o.ProviderSettings) {
 		return nil, false
 	}
+
 	return o.ProviderSettings, true
 }
 
@@ -852,7 +872,7 @@ func (o *LegacyAtlasCluster) SetProviderSettings(v ClusterProviderSettings) {
 	o.ProviderSettings = &v
 }
 
-// GetReplicationFactor returns the ReplicationFactor field value if set, zero value otherwise.
+// GetReplicationFactor returns the ReplicationFactor field value if set, zero value otherwise
 // Deprecated
 func (o *LegacyAtlasCluster) GetReplicationFactor() int {
 	if o == nil || IsNil(o.ReplicationFactor) {
@@ -869,6 +889,7 @@ func (o *LegacyAtlasCluster) GetReplicationFactorOk() (*int, bool) {
 	if o == nil || IsNil(o.ReplicationFactor) {
 		return nil, false
 	}
+
 	return o.ReplicationFactor, true
 }
 
@@ -887,7 +908,7 @@ func (o *LegacyAtlasCluster) SetReplicationFactor(v int) {
 	o.ReplicationFactor = &v
 }
 
-// GetReplicationSpec returns the ReplicationSpec field value if set, zero value otherwise.
+// GetReplicationSpec returns the ReplicationSpec field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetReplicationSpec() map[string]RegionSpec {
 	if o == nil || IsNil(o.ReplicationSpec) {
 		var ret map[string]RegionSpec
@@ -902,6 +923,7 @@ func (o *LegacyAtlasCluster) GetReplicationSpecOk() (*map[string]RegionSpec, boo
 	if o == nil || IsNil(o.ReplicationSpec) {
 		return nil, false
 	}
+
 	return o.ReplicationSpec, true
 }
 
@@ -919,7 +941,7 @@ func (o *LegacyAtlasCluster) SetReplicationSpec(v map[string]RegionSpec) {
 	o.ReplicationSpec = &v
 }
 
-// GetReplicationSpecs returns the ReplicationSpecs field value if set, zero value otherwise.
+// GetReplicationSpecs returns the ReplicationSpecs field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetReplicationSpecs() []LegacyReplicationSpec {
 	if o == nil || IsNil(o.ReplicationSpecs) {
 		var ret []LegacyReplicationSpec
@@ -934,6 +956,7 @@ func (o *LegacyAtlasCluster) GetReplicationSpecsOk() ([]LegacyReplicationSpec, b
 	if o == nil || IsNil(o.ReplicationSpecs) {
 		return nil, false
 	}
+
 	return o.ReplicationSpecs, true
 }
 
@@ -951,7 +974,7 @@ func (o *LegacyAtlasCluster) SetReplicationSpecs(v []LegacyReplicationSpec) {
 	o.ReplicationSpecs = v
 }
 
-// GetRootCertType returns the RootCertType field value if set, zero value otherwise.
+// GetRootCertType returns the RootCertType field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetRootCertType() string {
 	if o == nil || IsNil(o.RootCertType) {
 		var ret string
@@ -966,6 +989,7 @@ func (o *LegacyAtlasCluster) GetRootCertTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.RootCertType) {
 		return nil, false
 	}
+
 	return o.RootCertType, true
 }
 
@@ -983,7 +1007,7 @@ func (o *LegacyAtlasCluster) SetRootCertType(v string) {
 	o.RootCertType = &v
 }
 
-// GetSrvAddress returns the SrvAddress field value if set, zero value otherwise.
+// GetSrvAddress returns the SrvAddress field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetSrvAddress() string {
 	if o == nil || IsNil(o.SrvAddress) {
 		var ret string
@@ -998,6 +1022,7 @@ func (o *LegacyAtlasCluster) GetSrvAddressOk() (*string, bool) {
 	if o == nil || IsNil(o.SrvAddress) {
 		return nil, false
 	}
+
 	return o.SrvAddress, true
 }
 
@@ -1015,7 +1040,7 @@ func (o *LegacyAtlasCluster) SetSrvAddress(v string) {
 	o.SrvAddress = &v
 }
 
-// GetStateName returns the StateName field value if set, zero value otherwise.
+// GetStateName returns the StateName field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetStateName() string {
 	if o == nil || IsNil(o.StateName) {
 		var ret string
@@ -1030,6 +1055,7 @@ func (o *LegacyAtlasCluster) GetStateNameOk() (*string, bool) {
 	if o == nil || IsNil(o.StateName) {
 		return nil, false
 	}
+
 	return o.StateName, true
 }
 
@@ -1047,7 +1073,7 @@ func (o *LegacyAtlasCluster) SetStateName(v string) {
 	o.StateName = &v
 }
 
-// GetTags returns the Tags field value if set, zero value otherwise.
+// GetTags returns the Tags field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetTags() []ResourceTag {
 	if o == nil || IsNil(o.Tags) {
 		var ret []ResourceTag
@@ -1062,6 +1088,7 @@ func (o *LegacyAtlasCluster) GetTagsOk() ([]ResourceTag, bool) {
 	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
+
 	return o.Tags, true
 }
 
@@ -1079,7 +1106,7 @@ func (o *LegacyAtlasCluster) SetTags(v []ResourceTag) {
 	o.Tags = v
 }
 
-// GetTerminationProtectionEnabled returns the TerminationProtectionEnabled field value if set, zero value otherwise.
+// GetTerminationProtectionEnabled returns the TerminationProtectionEnabled field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetTerminationProtectionEnabled() bool {
 	if o == nil || IsNil(o.TerminationProtectionEnabled) {
 		var ret bool
@@ -1094,6 +1121,7 @@ func (o *LegacyAtlasCluster) GetTerminationProtectionEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.TerminationProtectionEnabled) {
 		return nil, false
 	}
+
 	return o.TerminationProtectionEnabled, true
 }
 
@@ -1111,7 +1139,7 @@ func (o *LegacyAtlasCluster) SetTerminationProtectionEnabled(v bool) {
 	o.TerminationProtectionEnabled = &v
 }
 
-// GetVersionReleaseSystem returns the VersionReleaseSystem field value if set, zero value otherwise.
+// GetVersionReleaseSystem returns the VersionReleaseSystem field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetVersionReleaseSystem() string {
 	if o == nil || IsNil(o.VersionReleaseSystem) {
 		var ret string
@@ -1126,6 +1154,7 @@ func (o *LegacyAtlasCluster) GetVersionReleaseSystemOk() (*string, bool) {
 	if o == nil || IsNil(o.VersionReleaseSystem) {
 		return nil, false
 	}
+
 	return o.VersionReleaseSystem, true
 }
 
@@ -1222,40 +1251,4 @@ func (o LegacyAtlasCluster) ToMap() (map[string]interface{}, error) {
 		toSerialize["versionReleaseSystem"] = o.VersionReleaseSystem
 	}
 	return toSerialize, nil
-}
-
-type NullableLegacyAtlasCluster struct {
-	value *LegacyAtlasCluster
-	isSet bool
-}
-
-func (v NullableLegacyAtlasCluster) Get() *LegacyAtlasCluster {
-	return v.value
-}
-
-func (v *NullableLegacyAtlasCluster) Set(val *LegacyAtlasCluster) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableLegacyAtlasCluster) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableLegacyAtlasCluster) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableLegacyAtlasCluster(val *LegacyAtlasCluster) *NullableLegacyAtlasCluster {
-	return &NullableLegacyAtlasCluster{value: val, isSet: true}
-}
-
-func (v NullableLegacyAtlasCluster) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableLegacyAtlasCluster) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

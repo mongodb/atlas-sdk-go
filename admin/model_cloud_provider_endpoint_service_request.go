@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the CloudProviderEndpointServiceRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CloudProviderEndpointServiceRequest{}
-
 // CloudProviderEndpointServiceRequest struct for CloudProviderEndpointServiceRequest
 type CloudProviderEndpointServiceRequest struct {
 	// Human-readable label that identifies the cloud service provider for which you want to create the private endpoint service.
@@ -96,40 +93,4 @@ func (o CloudProviderEndpointServiceRequest) ToMap() (map[string]interface{}, er
 	toSerialize["providerName"] = o.ProviderName
 	toSerialize["region"] = o.Region
 	return toSerialize, nil
-}
-
-type NullableCloudProviderEndpointServiceRequest struct {
-	value *CloudProviderEndpointServiceRequest
-	isSet bool
-}
-
-func (v NullableCloudProviderEndpointServiceRequest) Get() *CloudProviderEndpointServiceRequest {
-	return v.value
-}
-
-func (v *NullableCloudProviderEndpointServiceRequest) Set(val *CloudProviderEndpointServiceRequest) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableCloudProviderEndpointServiceRequest) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableCloudProviderEndpointServiceRequest) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableCloudProviderEndpointServiceRequest(val *CloudProviderEndpointServiceRequest) *NullableCloudProviderEndpointServiceRequest {
-	return &NullableCloudProviderEndpointServiceRequest{value: val, isSet: true}
-}
-
-func (v NullableCloudProviderEndpointServiceRequest) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableCloudProviderEndpointServiceRequest) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

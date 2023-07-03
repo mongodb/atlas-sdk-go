@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ServerlessInstanceDescriptionCreate type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ServerlessInstanceDescriptionCreate{}
-
 // ServerlessInstanceDescriptionCreate Settings that you can specify when you create a serverless instance.
 type ServerlessInstanceDescriptionCreate struct {
 	// Human-readable label that identifies the serverless instance.
@@ -94,7 +91,7 @@ func (o *ServerlessInstanceDescriptionCreate) SetProviderSettings(v ServerlessPr
 	o.ProviderSettings = v
 }
 
-// GetServerlessBackupOptions returns the ServerlessBackupOptions field value if set, zero value otherwise.
+// GetServerlessBackupOptions returns the ServerlessBackupOptions field value if set, zero value otherwise
 func (o *ServerlessInstanceDescriptionCreate) GetServerlessBackupOptions() ClusterServerlessBackupOptions {
 	if o == nil || IsNil(o.ServerlessBackupOptions) {
 		var ret ClusterServerlessBackupOptions
@@ -109,6 +106,7 @@ func (o *ServerlessInstanceDescriptionCreate) GetServerlessBackupOptionsOk() (*C
 	if o == nil || IsNil(o.ServerlessBackupOptions) {
 		return nil, false
 	}
+
 	return o.ServerlessBackupOptions, true
 }
 
@@ -126,7 +124,7 @@ func (o *ServerlessInstanceDescriptionCreate) SetServerlessBackupOptions(v Clust
 	o.ServerlessBackupOptions = &v
 }
 
-// GetStateName returns the StateName field value if set, zero value otherwise.
+// GetStateName returns the StateName field value if set, zero value otherwise
 func (o *ServerlessInstanceDescriptionCreate) GetStateName() string {
 	if o == nil || IsNil(o.StateName) {
 		var ret string
@@ -141,6 +139,7 @@ func (o *ServerlessInstanceDescriptionCreate) GetStateNameOk() (*string, bool) {
 	if o == nil || IsNil(o.StateName) {
 		return nil, false
 	}
+
 	return o.StateName, true
 }
 
@@ -158,7 +157,7 @@ func (o *ServerlessInstanceDescriptionCreate) SetStateName(v string) {
 	o.StateName = &v
 }
 
-// GetTags returns the Tags field value if set, zero value otherwise.
+// GetTags returns the Tags field value if set, zero value otherwise
 func (o *ServerlessInstanceDescriptionCreate) GetTags() []ResourceTag {
 	if o == nil || IsNil(o.Tags) {
 		var ret []ResourceTag
@@ -173,6 +172,7 @@ func (o *ServerlessInstanceDescriptionCreate) GetTagsOk() ([]ResourceTag, bool) 
 	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
+
 	return o.Tags, true
 }
 
@@ -190,7 +190,7 @@ func (o *ServerlessInstanceDescriptionCreate) SetTags(v []ResourceTag) {
 	o.Tags = v
 }
 
-// GetTerminationProtectionEnabled returns the TerminationProtectionEnabled field value if set, zero value otherwise.
+// GetTerminationProtectionEnabled returns the TerminationProtectionEnabled field value if set, zero value otherwise
 func (o *ServerlessInstanceDescriptionCreate) GetTerminationProtectionEnabled() bool {
 	if o == nil || IsNil(o.TerminationProtectionEnabled) {
 		var ret bool
@@ -205,6 +205,7 @@ func (o *ServerlessInstanceDescriptionCreate) GetTerminationProtectionEnabledOk(
 	if o == nil || IsNil(o.TerminationProtectionEnabled) {
 		return nil, false
 	}
+
 	return o.TerminationProtectionEnabled, true
 }
 
@@ -243,40 +244,4 @@ func (o ServerlessInstanceDescriptionCreate) ToMap() (map[string]interface{}, er
 		toSerialize["terminationProtectionEnabled"] = o.TerminationProtectionEnabled
 	}
 	return toSerialize, nil
-}
-
-type NullableServerlessInstanceDescriptionCreate struct {
-	value *ServerlessInstanceDescriptionCreate
-	isSet bool
-}
-
-func (v NullableServerlessInstanceDescriptionCreate) Get() *ServerlessInstanceDescriptionCreate {
-	return v.value
-}
-
-func (v *NullableServerlessInstanceDescriptionCreate) Set(val *ServerlessInstanceDescriptionCreate) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableServerlessInstanceDescriptionCreate) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableServerlessInstanceDescriptionCreate) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableServerlessInstanceDescriptionCreate(val *ServerlessInstanceDescriptionCreate) *NullableServerlessInstanceDescriptionCreate {
-	return &NullableServerlessInstanceDescriptionCreate{value: val, isSet: true}
-}
-
-func (v NullableServerlessInstanceDescriptionCreate) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableServerlessInstanceDescriptionCreate) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PaginatedContainerPeer type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PaginatedContainerPeer{}
-
 // PaginatedContainerPeer Group of Network Peering connection settings.
 type PaginatedContainerPeer struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -36,7 +33,7 @@ func NewPaginatedContainerPeerWithDefaults() *PaginatedContainerPeer {
 	return &this
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *PaginatedContainerPeer) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -51,6 +48,7 @@ func (o *PaginatedContainerPeer) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -68,7 +66,7 @@ func (o *PaginatedContainerPeer) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetResults returns the Results field value if set, zero value otherwise.
+// GetResults returns the Results field value if set, zero value otherwise
 func (o *PaginatedContainerPeer) GetResults() []BaseNetworkPeeringConnectionSettings {
 	if o == nil || IsNil(o.Results) {
 		var ret []BaseNetworkPeeringConnectionSettings
@@ -83,6 +81,7 @@ func (o *PaginatedContainerPeer) GetResultsOk() ([]BaseNetworkPeeringConnectionS
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
+
 	return o.Results, true
 }
 
@@ -100,7 +99,7 @@ func (o *PaginatedContainerPeer) SetResults(v []BaseNetworkPeeringConnectionSett
 	o.Results = v
 }
 
-// GetTotalCount returns the TotalCount field value if set, zero value otherwise.
+// GetTotalCount returns the TotalCount field value if set, zero value otherwise
 func (o *PaginatedContainerPeer) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int
@@ -115,6 +114,7 @@ func (o *PaginatedContainerPeer) GetTotalCountOk() (*int, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
+
 	return o.TotalCount, true
 }
 
@@ -142,40 +142,4 @@ func (o PaginatedContainerPeer) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o PaginatedContainerPeer) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullablePaginatedContainerPeer struct {
-	value *PaginatedContainerPeer
-	isSet bool
-}
-
-func (v NullablePaginatedContainerPeer) Get() *PaginatedContainerPeer {
-	return v.value
-}
-
-func (v *NullablePaginatedContainerPeer) Set(val *PaginatedContainerPeer) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullablePaginatedContainerPeer) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullablePaginatedContainerPeer) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullablePaginatedContainerPeer(val *PaginatedContainerPeer) *NullablePaginatedContainerPeer {
-	return &NullablePaginatedContainerPeer{value: val, isSet: true}
-}
-
-func (v NullablePaginatedContainerPeer) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullablePaginatedContainerPeer) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

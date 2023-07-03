@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the DatabaseInheritedRole type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DatabaseInheritedRole{}
-
 // DatabaseInheritedRole Role inherited from another context for this database user.
 type DatabaseInheritedRole struct {
 	// Human-readable label that identifies the database on which someone grants the action to one MongoDB user.
@@ -96,40 +93,4 @@ func (o DatabaseInheritedRole) ToMap() (map[string]interface{}, error) {
 	toSerialize["db"] = o.Db
 	toSerialize["role"] = o.Role
 	return toSerialize, nil
-}
-
-type NullableDatabaseInheritedRole struct {
-	value *DatabaseInheritedRole
-	isSet bool
-}
-
-func (v NullableDatabaseInheritedRole) Get() *DatabaseInheritedRole {
-	return v.value
-}
-
-func (v *NullableDatabaseInheritedRole) Set(val *DatabaseInheritedRole) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableDatabaseInheritedRole) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableDatabaseInheritedRole) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableDatabaseInheritedRole(val *DatabaseInheritedRole) *NullableDatabaseInheritedRole {
-	return &NullableDatabaseInheritedRole{value: val, isSet: true}
-}
-
-func (v NullableDatabaseInheritedRole) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableDatabaseInheritedRole) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

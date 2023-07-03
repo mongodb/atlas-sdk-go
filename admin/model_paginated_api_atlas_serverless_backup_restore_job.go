@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PaginatedApiAtlasServerlessBackupRestoreJob type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PaginatedApiAtlasServerlessBackupRestoreJob{}
-
 // PaginatedApiAtlasServerlessBackupRestoreJob struct for PaginatedApiAtlasServerlessBackupRestoreJob
 type PaginatedApiAtlasServerlessBackupRestoreJob struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -36,7 +33,7 @@ func NewPaginatedApiAtlasServerlessBackupRestoreJobWithDefaults() *PaginatedApiA
 	return &this
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *PaginatedApiAtlasServerlessBackupRestoreJob) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -51,6 +48,7 @@ func (o *PaginatedApiAtlasServerlessBackupRestoreJob) GetLinksOk() ([]Link, bool
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -68,7 +66,7 @@ func (o *PaginatedApiAtlasServerlessBackupRestoreJob) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetResults returns the Results field value if set, zero value otherwise.
+// GetResults returns the Results field value if set, zero value otherwise
 func (o *PaginatedApiAtlasServerlessBackupRestoreJob) GetResults() []ServerlessBackupRestoreJob {
 	if o == nil || IsNil(o.Results) {
 		var ret []ServerlessBackupRestoreJob
@@ -83,6 +81,7 @@ func (o *PaginatedApiAtlasServerlessBackupRestoreJob) GetResultsOk() ([]Serverle
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
+
 	return o.Results, true
 }
 
@@ -100,7 +99,7 @@ func (o *PaginatedApiAtlasServerlessBackupRestoreJob) SetResults(v []ServerlessB
 	o.Results = v
 }
 
-// GetTotalCount returns the TotalCount field value if set, zero value otherwise.
+// GetTotalCount returns the TotalCount field value if set, zero value otherwise
 func (o *PaginatedApiAtlasServerlessBackupRestoreJob) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int
@@ -115,6 +114,7 @@ func (o *PaginatedApiAtlasServerlessBackupRestoreJob) GetTotalCountOk() (*int, b
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
+
 	return o.TotalCount, true
 }
 
@@ -142,40 +142,4 @@ func (o PaginatedApiAtlasServerlessBackupRestoreJob) MarshalJSONWithoutReadOnly(
 func (o PaginatedApiAtlasServerlessBackupRestoreJob) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullablePaginatedApiAtlasServerlessBackupRestoreJob struct {
-	value *PaginatedApiAtlasServerlessBackupRestoreJob
-	isSet bool
-}
-
-func (v NullablePaginatedApiAtlasServerlessBackupRestoreJob) Get() *PaginatedApiAtlasServerlessBackupRestoreJob {
-	return v.value
-}
-
-func (v *NullablePaginatedApiAtlasServerlessBackupRestoreJob) Set(val *PaginatedApiAtlasServerlessBackupRestoreJob) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullablePaginatedApiAtlasServerlessBackupRestoreJob) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullablePaginatedApiAtlasServerlessBackupRestoreJob) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullablePaginatedApiAtlasServerlessBackupRestoreJob(val *PaginatedApiAtlasServerlessBackupRestoreJob) *NullablePaginatedApiAtlasServerlessBackupRestoreJob {
-	return &NullablePaginatedApiAtlasServerlessBackupRestoreJob{value: val, isSet: true}
-}
-
-func (v NullablePaginatedApiAtlasServerlessBackupRestoreJob) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullablePaginatedApiAtlasServerlessBackupRestoreJob) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

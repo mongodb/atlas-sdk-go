@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the DiskBackupCopySetting type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DiskBackupCopySetting{}
-
 // DiskBackupCopySetting Copy setting item in the desired backup policy.
 type DiskBackupCopySetting struct {
 	// Human-readable label that identifies the cloud provider that stores the snapshot copy.
@@ -40,7 +37,7 @@ func NewDiskBackupCopySettingWithDefaults() *DiskBackupCopySetting {
 	return &this
 }
 
-// GetCloudProvider returns the CloudProvider field value if set, zero value otherwise.
+// GetCloudProvider returns the CloudProvider field value if set, zero value otherwise
 func (o *DiskBackupCopySetting) GetCloudProvider() string {
 	if o == nil || IsNil(o.CloudProvider) {
 		var ret string
@@ -55,6 +52,7 @@ func (o *DiskBackupCopySetting) GetCloudProviderOk() (*string, bool) {
 	if o == nil || IsNil(o.CloudProvider) {
 		return nil, false
 	}
+
 	return o.CloudProvider, true
 }
 
@@ -72,7 +70,7 @@ func (o *DiskBackupCopySetting) SetCloudProvider(v string) {
 	o.CloudProvider = &v
 }
 
-// GetFrequencies returns the Frequencies field value if set, zero value otherwise.
+// GetFrequencies returns the Frequencies field value if set, zero value otherwise
 func (o *DiskBackupCopySetting) GetFrequencies() []string {
 	if o == nil || IsNil(o.Frequencies) {
 		var ret []string
@@ -87,6 +85,7 @@ func (o *DiskBackupCopySetting) GetFrequenciesOk() ([]string, bool) {
 	if o == nil || IsNil(o.Frequencies) {
 		return nil, false
 	}
+
 	return o.Frequencies, true
 }
 
@@ -104,7 +103,7 @@ func (o *DiskBackupCopySetting) SetFrequencies(v []string) {
 	o.Frequencies = v
 }
 
-// GetRegionName returns the RegionName field value if set, zero value otherwise.
+// GetRegionName returns the RegionName field value if set, zero value otherwise
 func (o *DiskBackupCopySetting) GetRegionName() string {
 	if o == nil || IsNil(o.RegionName) {
 		var ret string
@@ -119,6 +118,7 @@ func (o *DiskBackupCopySetting) GetRegionNameOk() (*string, bool) {
 	if o == nil || IsNil(o.RegionName) {
 		return nil, false
 	}
+
 	return o.RegionName, true
 }
 
@@ -136,7 +136,7 @@ func (o *DiskBackupCopySetting) SetRegionName(v string) {
 	o.RegionName = &v
 }
 
-// GetReplicationSpecId returns the ReplicationSpecId field value if set, zero value otherwise.
+// GetReplicationSpecId returns the ReplicationSpecId field value if set, zero value otherwise
 func (o *DiskBackupCopySetting) GetReplicationSpecId() string {
 	if o == nil || IsNil(o.ReplicationSpecId) {
 		var ret string
@@ -151,6 +151,7 @@ func (o *DiskBackupCopySetting) GetReplicationSpecIdOk() (*string, bool) {
 	if o == nil || IsNil(o.ReplicationSpecId) {
 		return nil, false
 	}
+
 	return o.ReplicationSpecId, true
 }
 
@@ -168,7 +169,7 @@ func (o *DiskBackupCopySetting) SetReplicationSpecId(v string) {
 	o.ReplicationSpecId = &v
 }
 
-// GetShouldCopyOplogs returns the ShouldCopyOplogs field value if set, zero value otherwise.
+// GetShouldCopyOplogs returns the ShouldCopyOplogs field value if set, zero value otherwise
 func (o *DiskBackupCopySetting) GetShouldCopyOplogs() bool {
 	if o == nil || IsNil(o.ShouldCopyOplogs) {
 		var ret bool
@@ -183,6 +184,7 @@ func (o *DiskBackupCopySetting) GetShouldCopyOplogsOk() (*bool, bool) {
 	if o == nil || IsNil(o.ShouldCopyOplogs) {
 		return nil, false
 	}
+
 	return o.ShouldCopyOplogs, true
 }
 
@@ -225,40 +227,4 @@ func (o DiskBackupCopySetting) ToMap() (map[string]interface{}, error) {
 		toSerialize["shouldCopyOplogs"] = o.ShouldCopyOplogs
 	}
 	return toSerialize, nil
-}
-
-type NullableDiskBackupCopySetting struct {
-	value *DiskBackupCopySetting
-	isSet bool
-}
-
-func (v NullableDiskBackupCopySetting) Get() *DiskBackupCopySetting {
-	return v.value
-}
-
-func (v *NullableDiskBackupCopySetting) Set(val *DiskBackupCopySetting) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableDiskBackupCopySetting) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableDiskBackupCopySetting) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableDiskBackupCopySetting(val *DiskBackupCopySetting) *NullableDiskBackupCopySetting {
-	return &NullableDiskBackupCopySetting{value: val, isSet: true}
-}
-
-func (v NullableDiskBackupCopySetting) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableDiskBackupCopySetting) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

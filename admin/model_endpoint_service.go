@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the EndpointService type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &EndpointService{}
-
 // EndpointService struct for EndpointService
 type EndpointService struct {
 	// Cloud service provider that serves the requested endpoint service.
@@ -79,7 +76,7 @@ func (o *EndpointService) SetCloudProvider(v string) {
 	o.CloudProvider = v
 }
 
-// GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise.
+// GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise
 func (o *EndpointService) GetErrorMessage() string {
 	if o == nil || IsNil(o.ErrorMessage) {
 		var ret string
@@ -94,6 +91,7 @@ func (o *EndpointService) GetErrorMessageOk() (*string, bool) {
 	if o == nil || IsNil(o.ErrorMessage) {
 		return nil, false
 	}
+
 	return o.ErrorMessage, true
 }
 
@@ -111,7 +109,7 @@ func (o *EndpointService) SetErrorMessage(v string) {
 	o.ErrorMessage = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *EndpointService) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -126,6 +124,7 @@ func (o *EndpointService) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -143,7 +142,7 @@ func (o *EndpointService) SetId(v string) {
 	o.Id = &v
 }
 
-// GetRegionName returns the RegionName field value if set, zero value otherwise.
+// GetRegionName returns the RegionName field value if set, zero value otherwise
 func (o *EndpointService) GetRegionName() string {
 	if o == nil || IsNil(o.RegionName) {
 		var ret string
@@ -158,6 +157,7 @@ func (o *EndpointService) GetRegionNameOk() (*string, bool) {
 	if o == nil || IsNil(o.RegionName) {
 		return nil, false
 	}
+
 	return o.RegionName, true
 }
 
@@ -175,7 +175,7 @@ func (o *EndpointService) SetRegionName(v string) {
 	o.RegionName = &v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// GetStatus returns the Status field value if set, zero value otherwise
 func (o *EndpointService) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
 		var ret string
@@ -190,6 +190,7 @@ func (o *EndpointService) GetStatusOk() (*string, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
+
 	return o.Status, true
 }
 
@@ -207,7 +208,7 @@ func (o *EndpointService) SetStatus(v string) {
 	o.Status = &v
 }
 
-// GetEndpointServiceName returns the EndpointServiceName field value if set, zero value otherwise.
+// GetEndpointServiceName returns the EndpointServiceName field value if set, zero value otherwise
 func (o *EndpointService) GetEndpointServiceName() string {
 	if o == nil || IsNil(o.EndpointServiceName) {
 		var ret string
@@ -222,6 +223,7 @@ func (o *EndpointService) GetEndpointServiceNameOk() (*string, bool) {
 	if o == nil || IsNil(o.EndpointServiceName) {
 		return nil, false
 	}
+
 	return o.EndpointServiceName, true
 }
 
@@ -239,7 +241,7 @@ func (o *EndpointService) SetEndpointServiceName(v string) {
 	o.EndpointServiceName = &v
 }
 
-// GetInterfaceEndpoints returns the InterfaceEndpoints field value if set, zero value otherwise.
+// GetInterfaceEndpoints returns the InterfaceEndpoints field value if set, zero value otherwise
 func (o *EndpointService) GetInterfaceEndpoints() []string {
 	if o == nil || IsNil(o.InterfaceEndpoints) {
 		var ret []string
@@ -254,6 +256,7 @@ func (o *EndpointService) GetInterfaceEndpointsOk() ([]string, bool) {
 	if o == nil || IsNil(o.InterfaceEndpoints) {
 		return nil, false
 	}
+
 	return o.InterfaceEndpoints, true
 }
 
@@ -271,7 +274,7 @@ func (o *EndpointService) SetInterfaceEndpoints(v []string) {
 	o.InterfaceEndpoints = v
 }
 
-// GetPrivateEndpoints returns the PrivateEndpoints field value if set, zero value otherwise.
+// GetPrivateEndpoints returns the PrivateEndpoints field value if set, zero value otherwise
 func (o *EndpointService) GetPrivateEndpoints() []string {
 	if o == nil || IsNil(o.PrivateEndpoints) {
 		var ret []string
@@ -286,6 +289,7 @@ func (o *EndpointService) GetPrivateEndpointsOk() ([]string, bool) {
 	if o == nil || IsNil(o.PrivateEndpoints) {
 		return nil, false
 	}
+
 	return o.PrivateEndpoints, true
 }
 
@@ -303,7 +307,7 @@ func (o *EndpointService) SetPrivateEndpoints(v []string) {
 	o.PrivateEndpoints = v
 }
 
-// GetPrivateLinkServiceName returns the PrivateLinkServiceName field value if set, zero value otherwise.
+// GetPrivateLinkServiceName returns the PrivateLinkServiceName field value if set, zero value otherwise
 func (o *EndpointService) GetPrivateLinkServiceName() string {
 	if o == nil || IsNil(o.PrivateLinkServiceName) {
 		var ret string
@@ -318,6 +322,7 @@ func (o *EndpointService) GetPrivateLinkServiceNameOk() (*string, bool) {
 	if o == nil || IsNil(o.PrivateLinkServiceName) {
 		return nil, false
 	}
+
 	return o.PrivateLinkServiceName, true
 }
 
@@ -335,7 +340,7 @@ func (o *EndpointService) SetPrivateLinkServiceName(v string) {
 	o.PrivateLinkServiceName = &v
 }
 
-// GetPrivateLinkServiceResourceId returns the PrivateLinkServiceResourceId field value if set, zero value otherwise.
+// GetPrivateLinkServiceResourceId returns the PrivateLinkServiceResourceId field value if set, zero value otherwise
 func (o *EndpointService) GetPrivateLinkServiceResourceId() string {
 	if o == nil || IsNil(o.PrivateLinkServiceResourceId) {
 		var ret string
@@ -350,6 +355,7 @@ func (o *EndpointService) GetPrivateLinkServiceResourceIdOk() (*string, bool) {
 	if o == nil || IsNil(o.PrivateLinkServiceResourceId) {
 		return nil, false
 	}
+
 	return o.PrivateLinkServiceResourceId, true
 }
 
@@ -367,7 +373,7 @@ func (o *EndpointService) SetPrivateLinkServiceResourceId(v string) {
 	o.PrivateLinkServiceResourceId = &v
 }
 
-// GetEndpointGroupNames returns the EndpointGroupNames field value if set, zero value otherwise.
+// GetEndpointGroupNames returns the EndpointGroupNames field value if set, zero value otherwise
 func (o *EndpointService) GetEndpointGroupNames() []string {
 	if o == nil || IsNil(o.EndpointGroupNames) {
 		var ret []string
@@ -382,6 +388,7 @@ func (o *EndpointService) GetEndpointGroupNamesOk() ([]string, bool) {
 	if o == nil || IsNil(o.EndpointGroupNames) {
 		return nil, false
 	}
+
 	return o.EndpointGroupNames, true
 }
 
@@ -399,7 +406,7 @@ func (o *EndpointService) SetEndpointGroupNames(v []string) {
 	o.EndpointGroupNames = v
 }
 
-// GetServiceAttachmentNames returns the ServiceAttachmentNames field value if set, zero value otherwise.
+// GetServiceAttachmentNames returns the ServiceAttachmentNames field value if set, zero value otherwise
 func (o *EndpointService) GetServiceAttachmentNames() []string {
 	if o == nil || IsNil(o.ServiceAttachmentNames) {
 		var ret []string
@@ -414,6 +421,7 @@ func (o *EndpointService) GetServiceAttachmentNamesOk() ([]string, bool) {
 	if o == nil || IsNil(o.ServiceAttachmentNames) {
 		return nil, false
 	}
+
 	return o.ServiceAttachmentNames, true
 }
 
@@ -447,40 +455,4 @@ func (o EndpointService) ToMap() (map[string]interface{}, error) {
 		toSerialize["serviceAttachmentNames"] = o.ServiceAttachmentNames
 	}
 	return toSerialize, nil
-}
-
-type NullableEndpointService struct {
-	value *EndpointService
-	isSet bool
-}
-
-func (v NullableEndpointService) Get() *EndpointService {
-	return v.value
-}
-
-func (v *NullableEndpointService) Set(val *EndpointService) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableEndpointService) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableEndpointService) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableEndpointService(val *EndpointService) *NullableEndpointService {
-	return &NullableEndpointService{value: val, isSet: true}
-}
-
-func (v NullableEndpointService) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableEndpointService) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

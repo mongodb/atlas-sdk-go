@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the ApiMeasurementsGeneralViewAtlas type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ApiMeasurementsGeneralViewAtlas{}
-
 // ApiMeasurementsGeneralViewAtlas struct for ApiMeasurementsGeneralViewAtlas
 type ApiMeasurementsGeneralViewAtlas struct {
 	// Human-readable label that identifies the database that the specified MongoDB process serves.
@@ -51,7 +48,7 @@ func NewApiMeasurementsGeneralViewAtlasWithDefaults() *ApiMeasurementsGeneralVie
 	return &this
 }
 
-// GetDatabaseName returns the DatabaseName field value if set, zero value otherwise.
+// GetDatabaseName returns the DatabaseName field value if set, zero value otherwise
 func (o *ApiMeasurementsGeneralViewAtlas) GetDatabaseName() string {
 	if o == nil || IsNil(o.DatabaseName) {
 		var ret string
@@ -66,6 +63,7 @@ func (o *ApiMeasurementsGeneralViewAtlas) GetDatabaseNameOk() (*string, bool) {
 	if o == nil || IsNil(o.DatabaseName) {
 		return nil, false
 	}
+
 	return o.DatabaseName, true
 }
 
@@ -83,7 +81,7 @@ func (o *ApiMeasurementsGeneralViewAtlas) SetDatabaseName(v string) {
 	o.DatabaseName = &v
 }
 
-// GetEnd returns the End field value if set, zero value otherwise.
+// GetEnd returns the End field value if set, zero value otherwise
 func (o *ApiMeasurementsGeneralViewAtlas) GetEnd() time.Time {
 	if o == nil || IsNil(o.End) {
 		var ret time.Time
@@ -98,6 +96,7 @@ func (o *ApiMeasurementsGeneralViewAtlas) GetEndOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.End) {
 		return nil, false
 	}
+
 	return o.End, true
 }
 
@@ -115,7 +114,7 @@ func (o *ApiMeasurementsGeneralViewAtlas) SetEnd(v time.Time) {
 	o.End = &v
 }
 
-// GetGranularity returns the Granularity field value if set, zero value otherwise.
+// GetGranularity returns the Granularity field value if set, zero value otherwise
 func (o *ApiMeasurementsGeneralViewAtlas) GetGranularity() string {
 	if o == nil || IsNil(o.Granularity) {
 		var ret string
@@ -130,6 +129,7 @@ func (o *ApiMeasurementsGeneralViewAtlas) GetGranularityOk() (*string, bool) {
 	if o == nil || IsNil(o.Granularity) {
 		return nil, false
 	}
+
 	return o.Granularity, true
 }
 
@@ -147,7 +147,7 @@ func (o *ApiMeasurementsGeneralViewAtlas) SetGranularity(v string) {
 	o.Granularity = &v
 }
 
-// GetGroupId returns the GroupId field value if set, zero value otherwise.
+// GetGroupId returns the GroupId field value if set, zero value otherwise
 func (o *ApiMeasurementsGeneralViewAtlas) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
 		var ret string
@@ -162,6 +162,7 @@ func (o *ApiMeasurementsGeneralViewAtlas) GetGroupIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupId) {
 		return nil, false
 	}
+
 	return o.GroupId, true
 }
 
@@ -179,7 +180,7 @@ func (o *ApiMeasurementsGeneralViewAtlas) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
-// GetHostId returns the HostId field value if set, zero value otherwise.
+// GetHostId returns the HostId field value if set, zero value otherwise
 func (o *ApiMeasurementsGeneralViewAtlas) GetHostId() string {
 	if o == nil || IsNil(o.HostId) {
 		var ret string
@@ -194,6 +195,7 @@ func (o *ApiMeasurementsGeneralViewAtlas) GetHostIdOk() (*string, bool) {
 	if o == nil || IsNil(o.HostId) {
 		return nil, false
 	}
+
 	return o.HostId, true
 }
 
@@ -211,7 +213,7 @@ func (o *ApiMeasurementsGeneralViewAtlas) SetHostId(v string) {
 	o.HostId = &v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *ApiMeasurementsGeneralViewAtlas) GetLinks() []LinkAtlas {
 	if o == nil || IsNil(o.Links) {
 		var ret []LinkAtlas
@@ -226,6 +228,7 @@ func (o *ApiMeasurementsGeneralViewAtlas) GetLinksOk() ([]LinkAtlas, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -243,7 +246,7 @@ func (o *ApiMeasurementsGeneralViewAtlas) SetLinks(v []LinkAtlas) {
 	o.Links = v
 }
 
-// GetMeasurements returns the Measurements field value if set, zero value otherwise.
+// GetMeasurements returns the Measurements field value if set, zero value otherwise
 func (o *ApiMeasurementsGeneralViewAtlas) GetMeasurements() []MetricsMeasurementAtlas {
 	if o == nil || IsNil(o.Measurements) {
 		var ret []MetricsMeasurementAtlas
@@ -258,6 +261,7 @@ func (o *ApiMeasurementsGeneralViewAtlas) GetMeasurementsOk() ([]MetricsMeasurem
 	if o == nil || IsNil(o.Measurements) {
 		return nil, false
 	}
+
 	return o.Measurements, true
 }
 
@@ -275,7 +279,7 @@ func (o *ApiMeasurementsGeneralViewAtlas) SetMeasurements(v []MetricsMeasurement
 	o.Measurements = v
 }
 
-// GetPartitionName returns the PartitionName field value if set, zero value otherwise.
+// GetPartitionName returns the PartitionName field value if set, zero value otherwise
 func (o *ApiMeasurementsGeneralViewAtlas) GetPartitionName() string {
 	if o == nil || IsNil(o.PartitionName) {
 		var ret string
@@ -290,6 +294,7 @@ func (o *ApiMeasurementsGeneralViewAtlas) GetPartitionNameOk() (*string, bool) {
 	if o == nil || IsNil(o.PartitionName) {
 		return nil, false
 	}
+
 	return o.PartitionName, true
 }
 
@@ -307,7 +312,7 @@ func (o *ApiMeasurementsGeneralViewAtlas) SetPartitionName(v string) {
 	o.PartitionName = &v
 }
 
-// GetProcessId returns the ProcessId field value if set, zero value otherwise.
+// GetProcessId returns the ProcessId field value if set, zero value otherwise
 func (o *ApiMeasurementsGeneralViewAtlas) GetProcessId() string {
 	if o == nil || IsNil(o.ProcessId) {
 		var ret string
@@ -322,6 +327,7 @@ func (o *ApiMeasurementsGeneralViewAtlas) GetProcessIdOk() (*string, bool) {
 	if o == nil || IsNil(o.ProcessId) {
 		return nil, false
 	}
+
 	return o.ProcessId, true
 }
 
@@ -339,7 +345,7 @@ func (o *ApiMeasurementsGeneralViewAtlas) SetProcessId(v string) {
 	o.ProcessId = &v
 }
 
-// GetStart returns the Start field value if set, zero value otherwise.
+// GetStart returns the Start field value if set, zero value otherwise
 func (o *ApiMeasurementsGeneralViewAtlas) GetStart() time.Time {
 	if o == nil || IsNil(o.Start) {
 		var ret time.Time
@@ -354,6 +360,7 @@ func (o *ApiMeasurementsGeneralViewAtlas) GetStartOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Start) {
 		return nil, false
 	}
+
 	return o.Start, true
 }
 
@@ -381,40 +388,4 @@ func (o ApiMeasurementsGeneralViewAtlas) MarshalJSONWithoutReadOnly() ([]byte, e
 func (o ApiMeasurementsGeneralViewAtlas) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableApiMeasurementsGeneralViewAtlas struct {
-	value *ApiMeasurementsGeneralViewAtlas
-	isSet bool
-}
-
-func (v NullableApiMeasurementsGeneralViewAtlas) Get() *ApiMeasurementsGeneralViewAtlas {
-	return v.value
-}
-
-func (v *NullableApiMeasurementsGeneralViewAtlas) Set(val *ApiMeasurementsGeneralViewAtlas) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableApiMeasurementsGeneralViewAtlas) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableApiMeasurementsGeneralViewAtlas) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableApiMeasurementsGeneralViewAtlas(val *ApiMeasurementsGeneralViewAtlas) *NullableApiMeasurementsGeneralViewAtlas {
-	return &NullableApiMeasurementsGeneralViewAtlas{value: val, isSet: true}
-}
-
-func (v NullableApiMeasurementsGeneralViewAtlas) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableApiMeasurementsGeneralViewAtlas) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

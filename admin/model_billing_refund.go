@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the BillingRefund type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &BillingRefund{}
-
 // BillingRefund One payment that MongoDB returned to the organization for this invoice.
 type BillingRefund struct {
 	// Sum of the funds returned to the specified organization expressed in cents (100th of US Dollar).
@@ -39,7 +36,7 @@ func NewBillingRefundWithDefaults() *BillingRefund {
 	return &this
 }
 
-// GetAmountCents returns the AmountCents field value if set, zero value otherwise.
+// GetAmountCents returns the AmountCents field value if set, zero value otherwise
 func (o *BillingRefund) GetAmountCents() int64 {
 	if o == nil || IsNil(o.AmountCents) {
 		var ret int64
@@ -54,6 +51,7 @@ func (o *BillingRefund) GetAmountCentsOk() (*int64, bool) {
 	if o == nil || IsNil(o.AmountCents) {
 		return nil, false
 	}
+
 	return o.AmountCents, true
 }
 
@@ -71,7 +69,7 @@ func (o *BillingRefund) SetAmountCents(v int64) {
 	o.AmountCents = &v
 }
 
-// GetCreated returns the Created field value if set, zero value otherwise.
+// GetCreated returns the Created field value if set, zero value otherwise
 func (o *BillingRefund) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
 		var ret time.Time
@@ -86,6 +84,7 @@ func (o *BillingRefund) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
+
 	return o.Created, true
 }
 
@@ -103,7 +102,7 @@ func (o *BillingRefund) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
-// GetPaymentId returns the PaymentId field value if set, zero value otherwise.
+// GetPaymentId returns the PaymentId field value if set, zero value otherwise
 func (o *BillingRefund) GetPaymentId() string {
 	if o == nil || IsNil(o.PaymentId) {
 		var ret string
@@ -118,6 +117,7 @@ func (o *BillingRefund) GetPaymentIdOk() (*string, bool) {
 	if o == nil || IsNil(o.PaymentId) {
 		return nil, false
 	}
+
 	return o.PaymentId, true
 }
 
@@ -135,7 +135,7 @@ func (o *BillingRefund) SetPaymentId(v string) {
 	o.PaymentId = &v
 }
 
-// GetReason returns the Reason field value if set, zero value otherwise.
+// GetReason returns the Reason field value if set, zero value otherwise
 func (o *BillingRefund) GetReason() string {
 	if o == nil || IsNil(o.Reason) {
 		var ret string
@@ -150,6 +150,7 @@ func (o *BillingRefund) GetReasonOk() (*string, bool) {
 	if o == nil || IsNil(o.Reason) {
 		return nil, false
 	}
+
 	return o.Reason, true
 }
 
@@ -177,40 +178,4 @@ func (o BillingRefund) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o BillingRefund) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableBillingRefund struct {
-	value *BillingRefund
-	isSet bool
-}
-
-func (v NullableBillingRefund) Get() *BillingRefund {
-	return v.value
-}
-
-func (v *NullableBillingRefund) Set(val *BillingRefund) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableBillingRefund) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableBillingRefund) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableBillingRefund(val *BillingRefund) *NullableBillingRefund {
-	return &NullableBillingRefund{value: val, isSet: true}
-}
-
-func (v NullableBillingRefund) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableBillingRefund) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

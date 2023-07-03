@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the Destination type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Destination{}
-
 // Destination Document that describes the destination of the migration.
 type Destination struct {
 	// Label that identifies the destination cluster.
@@ -115,7 +112,7 @@ func (o *Destination) SetHostnameSchemaType(v string) {
 	o.HostnameSchemaType = v
 }
 
-// GetPrivateLinkId returns the PrivateLinkId field value if set, zero value otherwise.
+// GetPrivateLinkId returns the PrivateLinkId field value if set, zero value otherwise
 func (o *Destination) GetPrivateLinkId() string {
 	if o == nil || IsNil(o.PrivateLinkId) {
 		var ret string
@@ -130,6 +127,7 @@ func (o *Destination) GetPrivateLinkIdOk() (*string, bool) {
 	if o == nil || IsNil(o.PrivateLinkId) {
 		return nil, false
 	}
+
 	return o.PrivateLinkId, true
 }
 
@@ -163,40 +161,4 @@ func (o Destination) ToMap() (map[string]interface{}, error) {
 		toSerialize["privateLinkId"] = o.PrivateLinkId
 	}
 	return toSerialize, nil
-}
-
-type NullableDestination struct {
-	value *Destination
-	isSet bool
-}
-
-func (v NullableDestination) Get() *Destination {
-	return v.value
-}
-
-func (v *NullableDestination) Set(val *Destination) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableDestination) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableDestination) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableDestination(val *Destination) *NullableDestination {
-	return &NullableDestination{value: val, isSet: true}
-}
-
-func (v NullableDestination) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableDestination) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the CloudSearchMetrics type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CloudSearchMetrics{}
-
 // CloudSearchMetrics struct for CloudSearchMetrics
 type CloudSearchMetrics struct {
 	// Unique 24-hexadecimal digit string that identifies the project.
@@ -68,7 +65,7 @@ func (o *CloudSearchMetrics) SetGroupId(v string) {
 	o.GroupId = v
 }
 
-// GetHardwareMetrics returns the HardwareMetrics field value if set, zero value otherwise.
+// GetHardwareMetrics returns the HardwareMetrics field value if set, zero value otherwise
 func (o *CloudSearchMetrics) GetHardwareMetrics() []FTSMetric {
 	if o == nil || IsNil(o.HardwareMetrics) {
 		var ret []FTSMetric
@@ -83,6 +80,7 @@ func (o *CloudSearchMetrics) GetHardwareMetricsOk() ([]FTSMetric, bool) {
 	if o == nil || IsNil(o.HardwareMetrics) {
 		return nil, false
 	}
+
 	return o.HardwareMetrics, true
 }
 
@@ -100,7 +98,7 @@ func (o *CloudSearchMetrics) SetHardwareMetrics(v []FTSMetric) {
 	o.HardwareMetrics = v
 }
 
-// GetIndexMetrics returns the IndexMetrics field value if set, zero value otherwise.
+// GetIndexMetrics returns the IndexMetrics field value if set, zero value otherwise
 func (o *CloudSearchMetrics) GetIndexMetrics() []FTSMetric {
 	if o == nil || IsNil(o.IndexMetrics) {
 		var ret []FTSMetric
@@ -115,6 +113,7 @@ func (o *CloudSearchMetrics) GetIndexMetricsOk() ([]FTSMetric, bool) {
 	if o == nil || IsNil(o.IndexMetrics) {
 		return nil, false
 	}
+
 	return o.IndexMetrics, true
 }
 
@@ -132,7 +131,7 @@ func (o *CloudSearchMetrics) SetIndexMetrics(v []FTSMetric) {
 	o.IndexMetrics = v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *CloudSearchMetrics) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -147,6 +146,7 @@ func (o *CloudSearchMetrics) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -188,7 +188,7 @@ func (o *CloudSearchMetrics) SetProcessId(v string) {
 	o.ProcessId = v
 }
 
-// GetStatusMetrics returns the StatusMetrics field value if set, zero value otherwise.
+// GetStatusMetrics returns the StatusMetrics field value if set, zero value otherwise
 func (o *CloudSearchMetrics) GetStatusMetrics() []FTSMetric {
 	if o == nil || IsNil(o.StatusMetrics) {
 		var ret []FTSMetric
@@ -203,6 +203,7 @@ func (o *CloudSearchMetrics) GetStatusMetricsOk() ([]FTSMetric, bool) {
 	if o == nil || IsNil(o.StatusMetrics) {
 		return nil, false
 	}
+
 	return o.StatusMetrics, true
 }
 
@@ -230,40 +231,4 @@ func (o CloudSearchMetrics) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o CloudSearchMetrics) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableCloudSearchMetrics struct {
-	value *CloudSearchMetrics
-	isSet bool
-}
-
-func (v NullableCloudSearchMetrics) Get() *CloudSearchMetrics {
-	return v.value
-}
-
-func (v *NullableCloudSearchMetrics) Set(val *CloudSearchMetrics) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableCloudSearchMetrics) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableCloudSearchMetrics) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableCloudSearchMetrics(val *CloudSearchMetrics) *NullableCloudSearchMetrics {
-	return &NullableCloudSearchMetrics{value: val, isSet: true}
-}
-
-func (v NullableCloudSearchMetrics) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableCloudSearchMetrics) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

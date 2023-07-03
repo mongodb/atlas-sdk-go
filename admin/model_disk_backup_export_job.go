@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the DiskBackupExportJob type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DiskBackupExportJob{}
-
 // DiskBackupExportJob struct for DiskBackupExportJob
 type DiskBackupExportJob struct {
 	// Information on the export job for each replica set in the sharded cluster.
@@ -55,7 +52,7 @@ func NewDiskBackupExportJobWithDefaults() *DiskBackupExportJob {
 	return &this
 }
 
-// GetComponents returns the Components field value if set, zero value otherwise.
+// GetComponents returns the Components field value if set, zero value otherwise
 func (o *DiskBackupExportJob) GetComponents() []DiskBackupBaseRestoreMember {
 	if o == nil || IsNil(o.Components) {
 		var ret []DiskBackupBaseRestoreMember
@@ -70,6 +67,7 @@ func (o *DiskBackupExportJob) GetComponentsOk() ([]DiskBackupBaseRestoreMember, 
 	if o == nil || IsNil(o.Components) {
 		return nil, false
 	}
+
 	return o.Components, true
 }
 
@@ -87,7 +85,7 @@ func (o *DiskBackupExportJob) SetComponents(v []DiskBackupBaseRestoreMember) {
 	o.Components = v
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise
 func (o *DiskBackupExportJob) GetCreatedAt() time.Time {
 	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
@@ -102,6 +100,7 @@ func (o *DiskBackupExportJob) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
+
 	return o.CreatedAt, true
 }
 
@@ -119,7 +118,7 @@ func (o *DiskBackupExportJob) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
-// GetCustomData returns the CustomData field value if set, zero value otherwise.
+// GetCustomData returns the CustomData field value if set, zero value otherwise
 func (o *DiskBackupExportJob) GetCustomData() []BackupLabel {
 	if o == nil || IsNil(o.CustomData) {
 		var ret []BackupLabel
@@ -134,6 +133,7 @@ func (o *DiskBackupExportJob) GetCustomDataOk() ([]BackupLabel, bool) {
 	if o == nil || IsNil(o.CustomData) {
 		return nil, false
 	}
+
 	return o.CustomData, true
 }
 
@@ -151,7 +151,7 @@ func (o *DiskBackupExportJob) SetCustomData(v []BackupLabel) {
 	o.CustomData = v
 }
 
-// GetDeliveryUrl returns the DeliveryUrl field value if set, zero value otherwise.
+// GetDeliveryUrl returns the DeliveryUrl field value if set, zero value otherwise
 func (o *DiskBackupExportJob) GetDeliveryUrl() []string {
 	if o == nil || IsNil(o.DeliveryUrl) {
 		var ret []string
@@ -166,6 +166,7 @@ func (o *DiskBackupExportJob) GetDeliveryUrlOk() ([]string, bool) {
 	if o == nil || IsNil(o.DeliveryUrl) {
 		return nil, false
 	}
+
 	return o.DeliveryUrl, true
 }
 
@@ -207,7 +208,7 @@ func (o *DiskBackupExportJob) SetExportBucketId(v string) {
 	o.ExportBucketId = v
 }
 
-// GetExportStatus returns the ExportStatus field value if set, zero value otherwise.
+// GetExportStatus returns the ExportStatus field value if set, zero value otherwise
 func (o *DiskBackupExportJob) GetExportStatus() ExportStatus {
 	if o == nil || IsNil(o.ExportStatus) {
 		var ret ExportStatus
@@ -222,6 +223,7 @@ func (o *DiskBackupExportJob) GetExportStatusOk() (*ExportStatus, bool) {
 	if o == nil || IsNil(o.ExportStatus) {
 		return nil, false
 	}
+
 	return o.ExportStatus, true
 }
 
@@ -239,7 +241,7 @@ func (o *DiskBackupExportJob) SetExportStatus(v ExportStatus) {
 	o.ExportStatus = &v
 }
 
-// GetFinishedAt returns the FinishedAt field value if set, zero value otherwise.
+// GetFinishedAt returns the FinishedAt field value if set, zero value otherwise
 func (o *DiskBackupExportJob) GetFinishedAt() time.Time {
 	if o == nil || IsNil(o.FinishedAt) {
 		var ret time.Time
@@ -254,6 +256,7 @@ func (o *DiskBackupExportJob) GetFinishedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.FinishedAt) {
 		return nil, false
 	}
+
 	return o.FinishedAt, true
 }
 
@@ -271,7 +274,7 @@ func (o *DiskBackupExportJob) SetFinishedAt(v time.Time) {
 	o.FinishedAt = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *DiskBackupExportJob) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -286,6 +289,7 @@ func (o *DiskBackupExportJob) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -303,7 +307,7 @@ func (o *DiskBackupExportJob) SetId(v string) {
 	o.Id = &v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *DiskBackupExportJob) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -318,6 +322,7 @@ func (o *DiskBackupExportJob) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -335,7 +340,7 @@ func (o *DiskBackupExportJob) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetPrefix returns the Prefix field value if set, zero value otherwise.
+// GetPrefix returns the Prefix field value if set, zero value otherwise
 func (o *DiskBackupExportJob) GetPrefix() string {
 	if o == nil || IsNil(o.Prefix) {
 		var ret string
@@ -350,6 +355,7 @@ func (o *DiskBackupExportJob) GetPrefixOk() (*string, bool) {
 	if o == nil || IsNil(o.Prefix) {
 		return nil, false
 	}
+
 	return o.Prefix, true
 }
 
@@ -367,7 +373,7 @@ func (o *DiskBackupExportJob) SetPrefix(v string) {
 	o.Prefix = &v
 }
 
-// GetSnapshotId returns the SnapshotId field value if set, zero value otherwise.
+// GetSnapshotId returns the SnapshotId field value if set, zero value otherwise
 func (o *DiskBackupExportJob) GetSnapshotId() string {
 	if o == nil || IsNil(o.SnapshotId) {
 		var ret string
@@ -382,6 +388,7 @@ func (o *DiskBackupExportJob) GetSnapshotIdOk() (*string, bool) {
 	if o == nil || IsNil(o.SnapshotId) {
 		return nil, false
 	}
+
 	return o.SnapshotId, true
 }
 
@@ -399,7 +406,7 @@ func (o *DiskBackupExportJob) SetSnapshotId(v string) {
 	o.SnapshotId = &v
 }
 
-// GetState returns the State field value if set, zero value otherwise.
+// GetState returns the State field value if set, zero value otherwise
 func (o *DiskBackupExportJob) GetState() string {
 	if o == nil || IsNil(o.State) {
 		var ret string
@@ -414,6 +421,7 @@ func (o *DiskBackupExportJob) GetStateOk() (*string, bool) {
 	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
+
 	return o.State, true
 }
 
@@ -450,40 +458,4 @@ func (o DiskBackupExportJob) ToMap() (map[string]interface{}, error) {
 		toSerialize["snapshotId"] = o.SnapshotId
 	}
 	return toSerialize, nil
-}
-
-type NullableDiskBackupExportJob struct {
-	value *DiskBackupExportJob
-	isSet bool
-}
-
-func (v NullableDiskBackupExportJob) Get() *DiskBackupExportJob {
-	return v.value
-}
-
-func (v *NullableDiskBackupExportJob) Set(val *DiskBackupExportJob) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableDiskBackupExportJob) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableDiskBackupExportJob) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableDiskBackupExportJob(val *DiskBackupExportJob) *NullableDiskBackupExportJob {
-	return &NullableDiskBackupExportJob{value: val, isSet: true}
-}
-
-func (v NullableDiskBackupExportJob) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableDiskBackupExportJob) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

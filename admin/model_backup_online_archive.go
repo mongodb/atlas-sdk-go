@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the BackupOnlineArchive type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &BackupOnlineArchive{}
-
 // BackupOnlineArchive struct for BackupOnlineArchive
 type BackupOnlineArchive struct {
 	// Unique 24-hexadecimal digit string that identifies the online archive.
@@ -54,7 +51,7 @@ func NewBackupOnlineArchiveWithDefaults() *BackupOnlineArchive {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *BackupOnlineArchive) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -69,6 +66,7 @@ func (o *BackupOnlineArchive) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -86,7 +84,7 @@ func (o *BackupOnlineArchive) SetId(v string) {
 	o.Id = &v
 }
 
-// GetClusterName returns the ClusterName field value if set, zero value otherwise.
+// GetClusterName returns the ClusterName field value if set, zero value otherwise
 func (o *BackupOnlineArchive) GetClusterName() string {
 	if o == nil || IsNil(o.ClusterName) {
 		var ret string
@@ -101,6 +99,7 @@ func (o *BackupOnlineArchive) GetClusterNameOk() (*string, bool) {
 	if o == nil || IsNil(o.ClusterName) {
 		return nil, false
 	}
+
 	return o.ClusterName, true
 }
 
@@ -118,7 +117,7 @@ func (o *BackupOnlineArchive) SetClusterName(v string) {
 	o.ClusterName = &v
 }
 
-// GetCollName returns the CollName field value if set, zero value otherwise.
+// GetCollName returns the CollName field value if set, zero value otherwise
 func (o *BackupOnlineArchive) GetCollName() string {
 	if o == nil || IsNil(o.CollName) {
 		var ret string
@@ -133,6 +132,7 @@ func (o *BackupOnlineArchive) GetCollNameOk() (*string, bool) {
 	if o == nil || IsNil(o.CollName) {
 		return nil, false
 	}
+
 	return o.CollName, true
 }
 
@@ -150,7 +150,7 @@ func (o *BackupOnlineArchive) SetCollName(v string) {
 	o.CollName = &v
 }
 
-// GetCollectionType returns the CollectionType field value if set, zero value otherwise.
+// GetCollectionType returns the CollectionType field value if set, zero value otherwise
 func (o *BackupOnlineArchive) GetCollectionType() string {
 	if o == nil || IsNil(o.CollectionType) {
 		var ret string
@@ -165,6 +165,7 @@ func (o *BackupOnlineArchive) GetCollectionTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.CollectionType) {
 		return nil, false
 	}
+
 	return o.CollectionType, true
 }
 
@@ -182,7 +183,7 @@ func (o *BackupOnlineArchive) SetCollectionType(v string) {
 	o.CollectionType = &v
 }
 
-// GetCriteria returns the Criteria field value if set, zero value otherwise.
+// GetCriteria returns the Criteria field value if set, zero value otherwise
 func (o *BackupOnlineArchive) GetCriteria() Criteria {
 	if o == nil || IsNil(o.Criteria) {
 		var ret Criteria
@@ -197,6 +198,7 @@ func (o *BackupOnlineArchive) GetCriteriaOk() (*Criteria, bool) {
 	if o == nil || IsNil(o.Criteria) {
 		return nil, false
 	}
+
 	return o.Criteria, true
 }
 
@@ -214,7 +216,7 @@ func (o *BackupOnlineArchive) SetCriteria(v Criteria) {
 	o.Criteria = &v
 }
 
-// GetDbName returns the DbName field value if set, zero value otherwise.
+// GetDbName returns the DbName field value if set, zero value otherwise
 func (o *BackupOnlineArchive) GetDbName() string {
 	if o == nil || IsNil(o.DbName) {
 		var ret string
@@ -229,6 +231,7 @@ func (o *BackupOnlineArchive) GetDbNameOk() (*string, bool) {
 	if o == nil || IsNil(o.DbName) {
 		return nil, false
 	}
+
 	return o.DbName, true
 }
 
@@ -246,7 +249,7 @@ func (o *BackupOnlineArchive) SetDbName(v string) {
 	o.DbName = &v
 }
 
-// GetGroupId returns the GroupId field value if set, zero value otherwise.
+// GetGroupId returns the GroupId field value if set, zero value otherwise
 func (o *BackupOnlineArchive) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
 		var ret string
@@ -261,6 +264,7 @@ func (o *BackupOnlineArchive) GetGroupIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupId) {
 		return nil, false
 	}
+
 	return o.GroupId, true
 }
 
@@ -278,7 +282,7 @@ func (o *BackupOnlineArchive) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
-// GetPartitionFields returns the PartitionFields field value if set, zero value otherwise.
+// GetPartitionFields returns the PartitionFields field value if set, zero value otherwise
 func (o *BackupOnlineArchive) GetPartitionFields() []PartitionField {
 	if o == nil || IsNil(o.PartitionFields) {
 		var ret []PartitionField
@@ -293,6 +297,7 @@ func (o *BackupOnlineArchive) GetPartitionFieldsOk() ([]PartitionField, bool) {
 	if o == nil || IsNil(o.PartitionFields) {
 		return nil, false
 	}
+
 	return o.PartitionFields, true
 }
 
@@ -310,7 +315,7 @@ func (o *BackupOnlineArchive) SetPartitionFields(v []PartitionField) {
 	o.PartitionFields = v
 }
 
-// GetPaused returns the Paused field value if set, zero value otherwise.
+// GetPaused returns the Paused field value if set, zero value otherwise
 func (o *BackupOnlineArchive) GetPaused() bool {
 	if o == nil || IsNil(o.Paused) {
 		var ret bool
@@ -325,6 +330,7 @@ func (o *BackupOnlineArchive) GetPausedOk() (*bool, bool) {
 	if o == nil || IsNil(o.Paused) {
 		return nil, false
 	}
+
 	return o.Paused, true
 }
 
@@ -342,7 +348,7 @@ func (o *BackupOnlineArchive) SetPaused(v bool) {
 	o.Paused = &v
 }
 
-// GetSchedule returns the Schedule field value if set, zero value otherwise.
+// GetSchedule returns the Schedule field value if set, zero value otherwise
 func (o *BackupOnlineArchive) GetSchedule() OnlineArchiveSchedule {
 	if o == nil || IsNil(o.Schedule) {
 		var ret OnlineArchiveSchedule
@@ -357,6 +363,7 @@ func (o *BackupOnlineArchive) GetScheduleOk() (*OnlineArchiveSchedule, bool) {
 	if o == nil || IsNil(o.Schedule) {
 		return nil, false
 	}
+
 	return o.Schedule, true
 }
 
@@ -374,7 +381,7 @@ func (o *BackupOnlineArchive) SetSchedule(v OnlineArchiveSchedule) {
 	o.Schedule = &v
 }
 
-// GetState returns the State field value if set, zero value otherwise.
+// GetState returns the State field value if set, zero value otherwise
 func (o *BackupOnlineArchive) GetState() string {
 	if o == nil || IsNil(o.State) {
 		var ret string
@@ -389,6 +396,7 @@ func (o *BackupOnlineArchive) GetStateOk() (*string, bool) {
 	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
+
 	return o.State, true
 }
 
@@ -437,40 +445,4 @@ func (o BackupOnlineArchive) ToMap() (map[string]interface{}, error) {
 		toSerialize["schedule"] = o.Schedule
 	}
 	return toSerialize, nil
-}
-
-type NullableBackupOnlineArchive struct {
-	value *BackupOnlineArchive
-	isSet bool
-}
-
-func (v NullableBackupOnlineArchive) Get() *BackupOnlineArchive {
-	return v.value
-}
-
-func (v *NullableBackupOnlineArchive) Set(val *BackupOnlineArchive) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableBackupOnlineArchive) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableBackupOnlineArchive) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableBackupOnlineArchive(val *BackupOnlineArchive) *NullableBackupOnlineArchive {
-	return &NullableBackupOnlineArchive{value: val, isSet: true}
-}
-
-func (v NullableBackupOnlineArchive) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableBackupOnlineArchive) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

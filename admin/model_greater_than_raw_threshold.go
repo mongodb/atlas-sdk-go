@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the GreaterThanRawThreshold type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &GreaterThanRawThreshold{}
-
 // GreaterThanRawThreshold A Limit that triggers an alert when greater than a number.
 type GreaterThanRawThreshold struct {
 	// Comparison operator to apply when checking the current metric value.
@@ -40,7 +37,7 @@ func NewGreaterThanRawThresholdWithDefaults() *GreaterThanRawThreshold {
 	return &this
 }
 
-// GetOperator returns the Operator field value if set, zero value otherwise.
+// GetOperator returns the Operator field value if set, zero value otherwise
 func (o *GreaterThanRawThreshold) GetOperator() string {
 	if o == nil || IsNil(o.Operator) {
 		var ret string
@@ -55,6 +52,7 @@ func (o *GreaterThanRawThreshold) GetOperatorOk() (*string, bool) {
 	if o == nil || IsNil(o.Operator) {
 		return nil, false
 	}
+
 	return o.Operator, true
 }
 
@@ -72,7 +70,7 @@ func (o *GreaterThanRawThreshold) SetOperator(v string) {
 	o.Operator = &v
 }
 
-// GetThreshold returns the Threshold field value if set, zero value otherwise.
+// GetThreshold returns the Threshold field value if set, zero value otherwise
 func (o *GreaterThanRawThreshold) GetThreshold() int {
 	if o == nil || IsNil(o.Threshold) {
 		var ret int
@@ -87,6 +85,7 @@ func (o *GreaterThanRawThreshold) GetThresholdOk() (*int, bool) {
 	if o == nil || IsNil(o.Threshold) {
 		return nil, false
 	}
+
 	return o.Threshold, true
 }
 
@@ -104,7 +103,7 @@ func (o *GreaterThanRawThreshold) SetThreshold(v int) {
 	o.Threshold = &v
 }
 
-// GetUnits returns the Units field value if set, zero value otherwise.
+// GetUnits returns the Units field value if set, zero value otherwise
 func (o *GreaterThanRawThreshold) GetUnits() string {
 	if o == nil || IsNil(o.Units) {
 		var ret string
@@ -119,6 +118,7 @@ func (o *GreaterThanRawThreshold) GetUnitsOk() (*string, bool) {
 	if o == nil || IsNil(o.Units) {
 		return nil, false
 	}
+
 	return o.Units, true
 }
 
@@ -155,40 +155,4 @@ func (o GreaterThanRawThreshold) ToMap() (map[string]interface{}, error) {
 		toSerialize["units"] = o.Units
 	}
 	return toSerialize, nil
-}
-
-type NullableGreaterThanRawThreshold struct {
-	value *GreaterThanRawThreshold
-	isSet bool
-}
-
-func (v NullableGreaterThanRawThreshold) Get() *GreaterThanRawThreshold {
-	return v.value
-}
-
-func (v *NullableGreaterThanRawThreshold) Set(val *GreaterThanRawThreshold) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableGreaterThanRawThreshold) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableGreaterThanRawThreshold) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableGreaterThanRawThreshold(val *GreaterThanRawThreshold) *NullableGreaterThanRawThreshold {
-	return &NullableGreaterThanRawThreshold{value: val, isSet: true}
-}
-
-func (v NullableGreaterThanRawThreshold) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableGreaterThanRawThreshold) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ClusterStatus type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ClusterStatus{}
-
 // ClusterStatus struct for ClusterStatus
 type ClusterStatus struct {
 	// State of cluster at the time of this request. Atlas returns **Applied** if it completed adding a user to, or removing a user from, your cluster. Atlas returns **Pending** if it's still making the requested user changes. When status is **Pending**, new users can't log in.
@@ -34,7 +31,7 @@ func NewClusterStatusWithDefaults() *ClusterStatus {
 	return &this
 }
 
-// GetChangeStatus returns the ChangeStatus field value if set, zero value otherwise.
+// GetChangeStatus returns the ChangeStatus field value if set, zero value otherwise
 func (o *ClusterStatus) GetChangeStatus() string {
 	if o == nil || IsNil(o.ChangeStatus) {
 		var ret string
@@ -49,6 +46,7 @@ func (o *ClusterStatus) GetChangeStatusOk() (*string, bool) {
 	if o == nil || IsNil(o.ChangeStatus) {
 		return nil, false
 	}
+
 	return o.ChangeStatus, true
 }
 
@@ -66,7 +64,7 @@ func (o *ClusterStatus) SetChangeStatus(v string) {
 	o.ChangeStatus = &v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *ClusterStatus) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -81,6 +79,7 @@ func (o *ClusterStatus) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -111,40 +110,4 @@ func (o ClusterStatus) ToMap() (map[string]interface{}, error) {
 		toSerialize["changeStatus"] = o.ChangeStatus
 	}
 	return toSerialize, nil
-}
-
-type NullableClusterStatus struct {
-	value *ClusterStatus
-	isSet bool
-}
-
-func (v NullableClusterStatus) Get() *ClusterStatus {
-	return v.value
-}
-
-func (v *NullableClusterStatus) Set(val *ClusterStatus) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableClusterStatus) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableClusterStatus) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableClusterStatus(val *ClusterStatus) *NullableClusterStatus {
-	return &NullableClusterStatus{value: val, isSet: true}
-}
-
-func (v NullableClusterStatus) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableClusterStatus) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

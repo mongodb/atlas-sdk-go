@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PaginatedCloudBackupReplicaSet type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PaginatedCloudBackupReplicaSet{}
-
 // PaginatedCloudBackupReplicaSet struct for PaginatedCloudBackupReplicaSet
 type PaginatedCloudBackupReplicaSet struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -36,7 +33,7 @@ func NewPaginatedCloudBackupReplicaSetWithDefaults() *PaginatedCloudBackupReplic
 	return &this
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *PaginatedCloudBackupReplicaSet) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -51,6 +48,7 @@ func (o *PaginatedCloudBackupReplicaSet) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -68,7 +66,7 @@ func (o *PaginatedCloudBackupReplicaSet) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetResults returns the Results field value if set, zero value otherwise.
+// GetResults returns the Results field value if set, zero value otherwise
 func (o *PaginatedCloudBackupReplicaSet) GetResults() []DiskBackupReplicaSet {
 	if o == nil || IsNil(o.Results) {
 		var ret []DiskBackupReplicaSet
@@ -83,6 +81,7 @@ func (o *PaginatedCloudBackupReplicaSet) GetResultsOk() ([]DiskBackupReplicaSet,
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
+
 	return o.Results, true
 }
 
@@ -100,7 +99,7 @@ func (o *PaginatedCloudBackupReplicaSet) SetResults(v []DiskBackupReplicaSet) {
 	o.Results = v
 }
 
-// GetTotalCount returns the TotalCount field value if set, zero value otherwise.
+// GetTotalCount returns the TotalCount field value if set, zero value otherwise
 func (o *PaginatedCloudBackupReplicaSet) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int
@@ -115,6 +114,7 @@ func (o *PaginatedCloudBackupReplicaSet) GetTotalCountOk() (*int, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
+
 	return o.TotalCount, true
 }
 
@@ -142,40 +142,4 @@ func (o PaginatedCloudBackupReplicaSet) MarshalJSONWithoutReadOnly() ([]byte, er
 func (o PaginatedCloudBackupReplicaSet) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullablePaginatedCloudBackupReplicaSet struct {
-	value *PaginatedCloudBackupReplicaSet
-	isSet bool
-}
-
-func (v NullablePaginatedCloudBackupReplicaSet) Get() *PaginatedCloudBackupReplicaSet {
-	return v.value
-}
-
-func (v *NullablePaginatedCloudBackupReplicaSet) Set(val *PaginatedCloudBackupReplicaSet) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullablePaginatedCloudBackupReplicaSet) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullablePaginatedCloudBackupReplicaSet) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullablePaginatedCloudBackupReplicaSet(val *PaginatedCloudBackupReplicaSet) *NullablePaginatedCloudBackupReplicaSet {
-	return &NullablePaginatedCloudBackupReplicaSet{value: val, isSet: true}
-}
-
-func (v NullablePaginatedCloudBackupReplicaSet) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullablePaginatedCloudBackupReplicaSet) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the SystemStatus type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SystemStatus{}
-
 // SystemStatus struct for SystemStatus
 type SystemStatus struct {
 	ApiKey NullableApiKey `json:"apiKey"`
@@ -44,29 +41,27 @@ func NewSystemStatusWithDefaults() *SystemStatus {
 }
 
 // GetApiKey returns the ApiKey field value
-// If the value is explicit nil, the zero value for ApiKey will be returned
 func (o *SystemStatus) GetApiKey() ApiKey {
-	if o == nil || o.ApiKey.Get() == nil {
+	if o == nil {
 		var ret ApiKey
 		return ret
 	}
 
-	return *o.ApiKey.Get()
+	return o.ApiKey
 }
 
 // GetApiKeyOk returns a tuple with the ApiKey field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SystemStatus) GetApiKeyOk() (*ApiKey, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ApiKey.Get(), o.ApiKey.IsSet()
+	return &o.ApiKey, true
 }
 
 // SetApiKey sets field value
 func (o *SystemStatus) SetApiKey(v ApiKey) {
-	o.ApiKey.Set(&v)
+	o.ApiKey = v
 }
 
 // GetAppName returns the AppName field value
@@ -117,7 +112,7 @@ func (o *SystemStatus) SetBuild(v string) {
 	o.Build = v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *SystemStatus) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -132,6 +127,7 @@ func (o *SystemStatus) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -182,42 +178,6 @@ func (o SystemStatus) MarshalJSONWithoutReadOnly() ([]byte, error) {
 }
 func (o SystemStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["apiKey"] = o.ApiKey.Get()
+	toSerialize["apiKey"] = o.ApiKey
 	return toSerialize, nil
-}
-
-type NullableSystemStatus struct {
-	value *SystemStatus
-	isSet bool
-}
-
-func (v NullableSystemStatus) Get() *SystemStatus {
-	return v.value
-}
-
-func (v *NullableSystemStatus) Set(val *SystemStatus) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableSystemStatus) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableSystemStatus) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableSystemStatus(val *SystemStatus) *NullableSystemStatus {
-	return &NullableSystemStatus{value: val, isSet: true}
-}
-
-func (v NullableSystemStatus) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableSystemStatus) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

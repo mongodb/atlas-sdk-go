@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the DataLakeDatabaseDataSourceSettings type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DataLakeDatabaseDataSourceSettings{}
-
 // DataLakeDatabaseDataSourceSettings Data store that maps to a collection for this data lake.
 type DataLakeDatabaseDataSourceSettings struct {
 	// Flag that validates the scheme in the specified URLs. If `true`, allows insecure `HTTP` scheme, doesn't verify the server's certificate chain and hostname, and accepts any certificate with any hostname presented by the server. If `false`, allows secure `HTTPS` scheme only.
@@ -54,7 +51,7 @@ func NewDataLakeDatabaseDataSourceSettingsWithDefaults() *DataLakeDatabaseDataSo
 	return &this
 }
 
-// GetAllowInsecure returns the AllowInsecure field value if set, zero value otherwise.
+// GetAllowInsecure returns the AllowInsecure field value if set, zero value otherwise
 func (o *DataLakeDatabaseDataSourceSettings) GetAllowInsecure() bool {
 	if o == nil || IsNil(o.AllowInsecure) {
 		var ret bool
@@ -69,6 +66,7 @@ func (o *DataLakeDatabaseDataSourceSettings) GetAllowInsecureOk() (*bool, bool) 
 	if o == nil || IsNil(o.AllowInsecure) {
 		return nil, false
 	}
+
 	return o.AllowInsecure, true
 }
 
@@ -86,7 +84,7 @@ func (o *DataLakeDatabaseDataSourceSettings) SetAllowInsecure(v bool) {
 	o.AllowInsecure = &v
 }
 
-// GetCollection returns the Collection field value if set, zero value otherwise.
+// GetCollection returns the Collection field value if set, zero value otherwise
 func (o *DataLakeDatabaseDataSourceSettings) GetCollection() string {
 	if o == nil || IsNil(o.Collection) {
 		var ret string
@@ -101,6 +99,7 @@ func (o *DataLakeDatabaseDataSourceSettings) GetCollectionOk() (*string, bool) {
 	if o == nil || IsNil(o.Collection) {
 		return nil, false
 	}
+
 	return o.Collection, true
 }
 
@@ -118,7 +117,7 @@ func (o *DataLakeDatabaseDataSourceSettings) SetCollection(v string) {
 	o.Collection = &v
 }
 
-// GetCollectionRegex returns the CollectionRegex field value if set, zero value otherwise.
+// GetCollectionRegex returns the CollectionRegex field value if set, zero value otherwise
 func (o *DataLakeDatabaseDataSourceSettings) GetCollectionRegex() string {
 	if o == nil || IsNil(o.CollectionRegex) {
 		var ret string
@@ -133,6 +132,7 @@ func (o *DataLakeDatabaseDataSourceSettings) GetCollectionRegexOk() (*string, bo
 	if o == nil || IsNil(o.CollectionRegex) {
 		return nil, false
 	}
+
 	return o.CollectionRegex, true
 }
 
@@ -150,7 +150,7 @@ func (o *DataLakeDatabaseDataSourceSettings) SetCollectionRegex(v string) {
 	o.CollectionRegex = &v
 }
 
-// GetDatabase returns the Database field value if set, zero value otherwise.
+// GetDatabase returns the Database field value if set, zero value otherwise
 func (o *DataLakeDatabaseDataSourceSettings) GetDatabase() string {
 	if o == nil || IsNil(o.Database) {
 		var ret string
@@ -165,6 +165,7 @@ func (o *DataLakeDatabaseDataSourceSettings) GetDatabaseOk() (*string, bool) {
 	if o == nil || IsNil(o.Database) {
 		return nil, false
 	}
+
 	return o.Database, true
 }
 
@@ -182,7 +183,7 @@ func (o *DataLakeDatabaseDataSourceSettings) SetDatabase(v string) {
 	o.Database = &v
 }
 
-// GetDatabaseRegex returns the DatabaseRegex field value if set, zero value otherwise.
+// GetDatabaseRegex returns the DatabaseRegex field value if set, zero value otherwise
 func (o *DataLakeDatabaseDataSourceSettings) GetDatabaseRegex() string {
 	if o == nil || IsNil(o.DatabaseRegex) {
 		var ret string
@@ -197,6 +198,7 @@ func (o *DataLakeDatabaseDataSourceSettings) GetDatabaseRegexOk() (*string, bool
 	if o == nil || IsNil(o.DatabaseRegex) {
 		return nil, false
 	}
+
 	return o.DatabaseRegex, true
 }
 
@@ -214,7 +216,7 @@ func (o *DataLakeDatabaseDataSourceSettings) SetDatabaseRegex(v string) {
 	o.DatabaseRegex = &v
 }
 
-// GetDefaultFormat returns the DefaultFormat field value if set, zero value otherwise.
+// GetDefaultFormat returns the DefaultFormat field value if set, zero value otherwise
 func (o *DataLakeDatabaseDataSourceSettings) GetDefaultFormat() string {
 	if o == nil || IsNil(o.DefaultFormat) {
 		var ret string
@@ -229,6 +231,7 @@ func (o *DataLakeDatabaseDataSourceSettings) GetDefaultFormatOk() (*string, bool
 	if o == nil || IsNil(o.DefaultFormat) {
 		return nil, false
 	}
+
 	return o.DefaultFormat, true
 }
 
@@ -246,7 +249,7 @@ func (o *DataLakeDatabaseDataSourceSettings) SetDefaultFormat(v string) {
 	o.DefaultFormat = &v
 }
 
-// GetPath returns the Path field value if set, zero value otherwise.
+// GetPath returns the Path field value if set, zero value otherwise
 func (o *DataLakeDatabaseDataSourceSettings) GetPath() string {
 	if o == nil || IsNil(o.Path) {
 		var ret string
@@ -261,6 +264,7 @@ func (o *DataLakeDatabaseDataSourceSettings) GetPathOk() (*string, bool) {
 	if o == nil || IsNil(o.Path) {
 		return nil, false
 	}
+
 	return o.Path, true
 }
 
@@ -278,7 +282,7 @@ func (o *DataLakeDatabaseDataSourceSettings) SetPath(v string) {
 	o.Path = &v
 }
 
-// GetProvenanceFieldName returns the ProvenanceFieldName field value if set, zero value otherwise.
+// GetProvenanceFieldName returns the ProvenanceFieldName field value if set, zero value otherwise
 func (o *DataLakeDatabaseDataSourceSettings) GetProvenanceFieldName() string {
 	if o == nil || IsNil(o.ProvenanceFieldName) {
 		var ret string
@@ -293,6 +297,7 @@ func (o *DataLakeDatabaseDataSourceSettings) GetProvenanceFieldNameOk() (*string
 	if o == nil || IsNil(o.ProvenanceFieldName) {
 		return nil, false
 	}
+
 	return o.ProvenanceFieldName, true
 }
 
@@ -310,7 +315,7 @@ func (o *DataLakeDatabaseDataSourceSettings) SetProvenanceFieldName(v string) {
 	o.ProvenanceFieldName = &v
 }
 
-// GetStoreName returns the StoreName field value if set, zero value otherwise.
+// GetStoreName returns the StoreName field value if set, zero value otherwise
 func (o *DataLakeDatabaseDataSourceSettings) GetStoreName() string {
 	if o == nil || IsNil(o.StoreName) {
 		var ret string
@@ -325,6 +330,7 @@ func (o *DataLakeDatabaseDataSourceSettings) GetStoreNameOk() (*string, bool) {
 	if o == nil || IsNil(o.StoreName) {
 		return nil, false
 	}
+
 	return o.StoreName, true
 }
 
@@ -342,7 +348,7 @@ func (o *DataLakeDatabaseDataSourceSettings) SetStoreName(v string) {
 	o.StoreName = &v
 }
 
-// GetUrls returns the Urls field value if set, zero value otherwise.
+// GetUrls returns the Urls field value if set, zero value otherwise
 func (o *DataLakeDatabaseDataSourceSettings) GetUrls() []string {
 	if o == nil || IsNil(o.Urls) {
 		var ret []string
@@ -357,6 +363,7 @@ func (o *DataLakeDatabaseDataSourceSettings) GetUrlsOk() ([]string, bool) {
 	if o == nil || IsNil(o.Urls) {
 		return nil, false
 	}
+
 	return o.Urls, true
 }
 
@@ -414,40 +421,4 @@ func (o DataLakeDatabaseDataSourceSettings) ToMap() (map[string]interface{}, err
 		toSerialize["urls"] = o.Urls
 	}
 	return toSerialize, nil
-}
-
-type NullableDataLakeDatabaseDataSourceSettings struct {
-	value *DataLakeDatabaseDataSourceSettings
-	isSet bool
-}
-
-func (v NullableDataLakeDatabaseDataSourceSettings) Get() *DataLakeDatabaseDataSourceSettings {
-	return v.value
-}
-
-func (v *NullableDataLakeDatabaseDataSourceSettings) Set(val *DataLakeDatabaseDataSourceSettings) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableDataLakeDatabaseDataSourceSettings) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableDataLakeDatabaseDataSourceSettings) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableDataLakeDatabaseDataSourceSettings(val *DataLakeDatabaseDataSourceSettings) *NullableDataLakeDatabaseDataSourceSettings {
-	return &NullableDataLakeDatabaseDataSourceSettings{value: val, isSet: true}
-}
-
-func (v NullableDataLakeDatabaseDataSourceSettings) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableDataLakeDatabaseDataSourceSettings) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

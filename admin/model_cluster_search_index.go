@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ClusterSearchIndex type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ClusterSearchIndex{}
-
 // ClusterSearchIndex struct for ClusterSearchIndex
 type ClusterSearchIndex struct {
 	// Specific pre-defined method chosen to convert database field text into searchable words. This conversion reduces the text of fields into the smallest units of text. These units are called a **term** or **token**. This process, known as tokenization, involves a variety of changes made to the text in fields:  - extracting words - removing punctuation - removing accents - changing to lowercase - removing common words - reducing words to their root form (stemming) - changing words to their base form (lemmatization)  MongoDB Cloud uses the selected process to build the Atlas Search index.
@@ -60,7 +57,7 @@ func NewClusterSearchIndexWithDefaults() *ClusterSearchIndex {
 	return &this
 }
 
-// GetAnalyzer returns the Analyzer field value if set, zero value otherwise.
+// GetAnalyzer returns the Analyzer field value if set, zero value otherwise
 func (o *ClusterSearchIndex) GetAnalyzer() string {
 	if o == nil || IsNil(o.Analyzer) {
 		var ret string
@@ -75,6 +72,7 @@ func (o *ClusterSearchIndex) GetAnalyzerOk() (*string, bool) {
 	if o == nil || IsNil(o.Analyzer) {
 		return nil, false
 	}
+
 	return o.Analyzer, true
 }
 
@@ -92,7 +90,7 @@ func (o *ClusterSearchIndex) SetAnalyzer(v string) {
 	o.Analyzer = &v
 }
 
-// GetAnalyzers returns the Analyzers field value if set, zero value otherwise.
+// GetAnalyzers returns the Analyzers field value if set, zero value otherwise
 func (o *ClusterSearchIndex) GetAnalyzers() []ApiAtlasFTSAnalyzers {
 	if o == nil || IsNil(o.Analyzers) {
 		var ret []ApiAtlasFTSAnalyzers
@@ -107,6 +105,7 @@ func (o *ClusterSearchIndex) GetAnalyzersOk() ([]ApiAtlasFTSAnalyzers, bool) {
 	if o == nil || IsNil(o.Analyzers) {
 		return nil, false
 	}
+
 	return o.Analyzers, true
 }
 
@@ -172,7 +171,7 @@ func (o *ClusterSearchIndex) SetDatabase(v string) {
 	o.Database = v
 }
 
-// GetIndexID returns the IndexID field value if set, zero value otherwise.
+// GetIndexID returns the IndexID field value if set, zero value otherwise
 func (o *ClusterSearchIndex) GetIndexID() string {
 	if o == nil || IsNil(o.IndexID) {
 		var ret string
@@ -187,6 +186,7 @@ func (o *ClusterSearchIndex) GetIndexIDOk() (*string, bool) {
 	if o == nil || IsNil(o.IndexID) {
 		return nil, false
 	}
+
 	return o.IndexID, true
 }
 
@@ -204,7 +204,7 @@ func (o *ClusterSearchIndex) SetIndexID(v string) {
 	o.IndexID = &v
 }
 
-// GetMappings returns the Mappings field value if set, zero value otherwise.
+// GetMappings returns the Mappings field value if set, zero value otherwise
 func (o *ClusterSearchIndex) GetMappings() ApiAtlasFTSMappings {
 	if o == nil || IsNil(o.Mappings) {
 		var ret ApiAtlasFTSMappings
@@ -219,6 +219,7 @@ func (o *ClusterSearchIndex) GetMappingsOk() (*ApiAtlasFTSMappings, bool) {
 	if o == nil || IsNil(o.Mappings) {
 		return nil, false
 	}
+
 	return o.Mappings, true
 }
 
@@ -260,7 +261,7 @@ func (o *ClusterSearchIndex) SetName(v string) {
 	o.Name = v
 }
 
-// GetSearchAnalyzer returns the SearchAnalyzer field value if set, zero value otherwise.
+// GetSearchAnalyzer returns the SearchAnalyzer field value if set, zero value otherwise
 func (o *ClusterSearchIndex) GetSearchAnalyzer() string {
 	if o == nil || IsNil(o.SearchAnalyzer) {
 		var ret string
@@ -275,6 +276,7 @@ func (o *ClusterSearchIndex) GetSearchAnalyzerOk() (*string, bool) {
 	if o == nil || IsNil(o.SearchAnalyzer) {
 		return nil, false
 	}
+
 	return o.SearchAnalyzer, true
 }
 
@@ -292,7 +294,7 @@ func (o *ClusterSearchIndex) SetSearchAnalyzer(v string) {
 	o.SearchAnalyzer = &v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// GetStatus returns the Status field value if set, zero value otherwise
 func (o *ClusterSearchIndex) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
 		var ret string
@@ -307,6 +309,7 @@ func (o *ClusterSearchIndex) GetStatusOk() (*string, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
+
 	return o.Status, true
 }
 
@@ -324,7 +327,7 @@ func (o *ClusterSearchIndex) SetStatus(v string) {
 	o.Status = &v
 }
 
-// GetSynonyms returns the Synonyms field value if set, zero value otherwise.
+// GetSynonyms returns the Synonyms field value if set, zero value otherwise
 func (o *ClusterSearchIndex) GetSynonyms() []SearchSynonymMappingDefinition {
 	if o == nil || IsNil(o.Synonyms) {
 		var ret []SearchSynonymMappingDefinition
@@ -339,6 +342,7 @@ func (o *ClusterSearchIndex) GetSynonymsOk() ([]SearchSynonymMappingDefinition, 
 	if o == nil || IsNil(o.Synonyms) {
 		return nil, false
 	}
+
 	return o.Synonyms, true
 }
 
@@ -384,40 +388,4 @@ func (o ClusterSearchIndex) ToMap() (map[string]interface{}, error) {
 		toSerialize["synonyms"] = o.Synonyms
 	}
 	return toSerialize, nil
-}
-
-type NullableClusterSearchIndex struct {
-	value *ClusterSearchIndex
-	isSet bool
-}
-
-func (v NullableClusterSearchIndex) Get() *ClusterSearchIndex {
-	return v.value
-}
-
-func (v *NullableClusterSearchIndex) Set(val *ClusterSearchIndex) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableClusterSearchIndex) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableClusterSearchIndex) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableClusterSearchIndex(val *ClusterSearchIndex) *NullableClusterSearchIndex {
-	return &NullableClusterSearchIndex{value: val, isSet: true}
-}
-
-func (v NullableClusterSearchIndex) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableClusterSearchIndex) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PaginatedRestoreJob type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PaginatedRestoreJob{}
-
 // PaginatedRestoreJob struct for PaginatedRestoreJob
 type PaginatedRestoreJob struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -36,7 +33,7 @@ func NewPaginatedRestoreJobWithDefaults() *PaginatedRestoreJob {
 	return &this
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *PaginatedRestoreJob) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -51,6 +48,7 @@ func (o *PaginatedRestoreJob) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -68,7 +66,7 @@ func (o *PaginatedRestoreJob) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetResults returns the Results field value if set, zero value otherwise.
+// GetResults returns the Results field value if set, zero value otherwise
 func (o *PaginatedRestoreJob) GetResults() []BackupRestoreJob {
 	if o == nil || IsNil(o.Results) {
 		var ret []BackupRestoreJob
@@ -83,6 +81,7 @@ func (o *PaginatedRestoreJob) GetResultsOk() ([]BackupRestoreJob, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
+
 	return o.Results, true
 }
 
@@ -100,7 +99,7 @@ func (o *PaginatedRestoreJob) SetResults(v []BackupRestoreJob) {
 	o.Results = v
 }
 
-// GetTotalCount returns the TotalCount field value if set, zero value otherwise.
+// GetTotalCount returns the TotalCount field value if set, zero value otherwise
 func (o *PaginatedRestoreJob) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int
@@ -115,6 +114,7 @@ func (o *PaginatedRestoreJob) GetTotalCountOk() (*int, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
+
 	return o.TotalCount, true
 }
 
@@ -142,40 +142,4 @@ func (o PaginatedRestoreJob) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o PaginatedRestoreJob) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullablePaginatedRestoreJob struct {
-	value *PaginatedRestoreJob
-	isSet bool
-}
-
-func (v NullablePaginatedRestoreJob) Get() *PaginatedRestoreJob {
-	return v.value
-}
-
-func (v *NullablePaginatedRestoreJob) Set(val *PaginatedRestoreJob) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullablePaginatedRestoreJob) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullablePaginatedRestoreJob) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullablePaginatedRestoreJob(val *PaginatedRestoreJob) *NullablePaginatedRestoreJob {
-	return &NullablePaginatedRestoreJob{value: val, isSet: true}
-}
-
-func (v NullablePaginatedRestoreJob) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullablePaginatedRestoreJob) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

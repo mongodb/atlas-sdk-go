@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the SearchSynonymMappingDefinition type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SearchSynonymMappingDefinition{}
-
 // SearchSynonymMappingDefinition Synonyms used for this full text index.
 type SearchSynonymMappingDefinition struct {
 	// Specific pre-defined method chosen to apply to the synonyms to be searched.
@@ -125,40 +122,4 @@ func (o SearchSynonymMappingDefinition) ToMap() (map[string]interface{}, error) 
 	toSerialize["name"] = o.Name
 	toSerialize["source"] = o.Source
 	return toSerialize, nil
-}
-
-type NullableSearchSynonymMappingDefinition struct {
-	value *SearchSynonymMappingDefinition
-	isSet bool
-}
-
-func (v NullableSearchSynonymMappingDefinition) Get() *SearchSynonymMappingDefinition {
-	return v.value
-}
-
-func (v *NullableSearchSynonymMappingDefinition) Set(val *SearchSynonymMappingDefinition) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableSearchSynonymMappingDefinition) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableSearchSynonymMappingDefinition) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableSearchSynonymMappingDefinition(val *SearchSynonymMappingDefinition) *NullableSearchSynonymMappingDefinition {
-	return &NullableSearchSynonymMappingDefinition{value: val, isSet: true}
-}
-
-func (v NullableSearchSynonymMappingDefinition) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableSearchSynonymMappingDefinition) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

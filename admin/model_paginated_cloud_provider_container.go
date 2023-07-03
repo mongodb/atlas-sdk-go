@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PaginatedCloudProviderContainer type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PaginatedCloudProviderContainer{}
-
 // PaginatedCloudProviderContainer List of Network Peering Containers that Amazon Web Services serves.
 type PaginatedCloudProviderContainer struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -36,7 +33,7 @@ func NewPaginatedCloudProviderContainerWithDefaults() *PaginatedCloudProviderCon
 	return &this
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *PaginatedCloudProviderContainer) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -51,6 +48,7 @@ func (o *PaginatedCloudProviderContainer) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -68,7 +66,7 @@ func (o *PaginatedCloudProviderContainer) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetResults returns the Results field value if set, zero value otherwise.
+// GetResults returns the Results field value if set, zero value otherwise
 func (o *PaginatedCloudProviderContainer) GetResults() []CloudProviderContainer {
 	if o == nil || IsNil(o.Results) {
 		var ret []CloudProviderContainer
@@ -83,6 +81,7 @@ func (o *PaginatedCloudProviderContainer) GetResultsOk() ([]CloudProviderContain
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
+
 	return o.Results, true
 }
 
@@ -100,7 +99,7 @@ func (o *PaginatedCloudProviderContainer) SetResults(v []CloudProviderContainer)
 	o.Results = v
 }
 
-// GetTotalCount returns the TotalCount field value if set, zero value otherwise.
+// GetTotalCount returns the TotalCount field value if set, zero value otherwise
 func (o *PaginatedCloudProviderContainer) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int
@@ -115,6 +114,7 @@ func (o *PaginatedCloudProviderContainer) GetTotalCountOk() (*int, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
+
 	return o.TotalCount, true
 }
 
@@ -142,40 +142,4 @@ func (o PaginatedCloudProviderContainer) MarshalJSONWithoutReadOnly() ([]byte, e
 func (o PaginatedCloudProviderContainer) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullablePaginatedCloudProviderContainer struct {
-	value *PaginatedCloudProviderContainer
-	isSet bool
-}
-
-func (v NullablePaginatedCloudProviderContainer) Get() *PaginatedCloudProviderContainer {
-	return v.value
-}
-
-func (v *NullablePaginatedCloudProviderContainer) Set(val *PaginatedCloudProviderContainer) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullablePaginatedCloudProviderContainer) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullablePaginatedCloudProviderContainer) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullablePaginatedCloudProviderContainer(val *PaginatedCloudProviderContainer) *NullablePaginatedCloudProviderContainer {
-	return &NullablePaginatedCloudProviderContainer{value: val, isSet: true}
-}
-
-func (v NullablePaginatedCloudProviderContainer) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullablePaginatedCloudProviderContainer) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

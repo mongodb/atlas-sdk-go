@@ -244,7 +244,7 @@ func parameterValueToString(obj interface{}, key string) string {
 	if reflect.TypeOf(obj).Kind() != reflect.Ptr {
 		return fmt.Sprintf("%v", obj)
 	}
-	var param, ok = obj.(MappedNullable)
+	var param, ok = obj.(modelWithMap)
 	if !ok {
 		return ""
 	}
@@ -268,7 +268,7 @@ func parameterAddToHeaderOrQuery(headerOrQueryParams interface{}, keyPrefix stri
 			value = "invalid"
 
 		case reflect.Struct:
-			if t, ok := obj.(MappedNullable); ok {
+			if t, ok := obj.(modelWithMap); ok {
 				dataMap, err := t.ToMap()
 				if err != nil {
 					return

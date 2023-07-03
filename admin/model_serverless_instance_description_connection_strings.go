@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ServerlessInstanceDescriptionConnectionStrings type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ServerlessInstanceDescriptionConnectionStrings{}
-
 // ServerlessInstanceDescriptionConnectionStrings Collection of Uniform Resource Locators that point to the MongoDB database.
 type ServerlessInstanceDescriptionConnectionStrings struct {
 	// List of private endpoint-aware connection strings that you can use to connect to this serverless instance through a private endpoint. This parameter returns only if you created a private endpoint for this serverless instance and it is AVAILABLE.
@@ -34,7 +31,7 @@ func NewServerlessInstanceDescriptionConnectionStringsWithDefaults() *Serverless
 	return &this
 }
 
-// GetPrivateEndpoint returns the PrivateEndpoint field value if set, zero value otherwise.
+// GetPrivateEndpoint returns the PrivateEndpoint field value if set, zero value otherwise
 func (o *ServerlessInstanceDescriptionConnectionStrings) GetPrivateEndpoint() []ServerlessConnectionStringsPrivateEndpointList {
 	if o == nil || IsNil(o.PrivateEndpoint) {
 		var ret []ServerlessConnectionStringsPrivateEndpointList
@@ -49,6 +46,7 @@ func (o *ServerlessInstanceDescriptionConnectionStrings) GetPrivateEndpointOk() 
 	if o == nil || IsNil(o.PrivateEndpoint) {
 		return nil, false
 	}
+
 	return o.PrivateEndpoint, true
 }
 
@@ -66,7 +64,7 @@ func (o *ServerlessInstanceDescriptionConnectionStrings) SetPrivateEndpoint(v []
 	o.PrivateEndpoint = v
 }
 
-// GetStandardSrv returns the StandardSrv field value if set, zero value otherwise.
+// GetStandardSrv returns the StandardSrv field value if set, zero value otherwise
 func (o *ServerlessInstanceDescriptionConnectionStrings) GetStandardSrv() string {
 	if o == nil || IsNil(o.StandardSrv) {
 		var ret string
@@ -81,6 +79,7 @@ func (o *ServerlessInstanceDescriptionConnectionStrings) GetStandardSrvOk() (*st
 	if o == nil || IsNil(o.StandardSrv) {
 		return nil, false
 	}
+
 	return o.StandardSrv, true
 }
 
@@ -108,40 +107,4 @@ func (o ServerlessInstanceDescriptionConnectionStrings) MarshalJSONWithoutReadOn
 func (o ServerlessInstanceDescriptionConnectionStrings) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableServerlessInstanceDescriptionConnectionStrings struct {
-	value *ServerlessInstanceDescriptionConnectionStrings
-	isSet bool
-}
-
-func (v NullableServerlessInstanceDescriptionConnectionStrings) Get() *ServerlessInstanceDescriptionConnectionStrings {
-	return v.value
-}
-
-func (v *NullableServerlessInstanceDescriptionConnectionStrings) Set(val *ServerlessInstanceDescriptionConnectionStrings) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableServerlessInstanceDescriptionConnectionStrings) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableServerlessInstanceDescriptionConnectionStrings) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableServerlessInstanceDescriptionConnectionStrings(val *ServerlessInstanceDescriptionConnectionStrings) *NullableServerlessInstanceDescriptionConnectionStrings {
-	return &NullableServerlessInstanceDescriptionConnectionStrings{value: val, isSet: true}
-}
-
-func (v NullableServerlessInstanceDescriptionConnectionStrings) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableServerlessInstanceDescriptionConnectionStrings) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

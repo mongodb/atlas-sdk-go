@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ClusterComputeAutoScaling type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ClusterComputeAutoScaling{}
-
 // ClusterComputeAutoScaling Collection of settings that configures how a cluster might scale its cluster tier and whether the cluster can scale down. Cluster tier auto-scaling is unavailable for clusters using Low CPU or NVME storage classes.
 type ClusterComputeAutoScaling struct {
 	// Flag that indicates whether cluster tier auto-scaling is enabled. Set to `true` to enable cluster tier auto-scaling. If enabled, you must specify a value for **providerSettings.autoScaling.compute.maxInstanceSize** also. Set to `false` to disable cluster tier auto-scaling.
@@ -34,7 +31,7 @@ func NewClusterComputeAutoScalingWithDefaults() *ClusterComputeAutoScaling {
 	return &this
 }
 
-// GetEnabled returns the Enabled field value if set, zero value otherwise.
+// GetEnabled returns the Enabled field value if set, zero value otherwise
 func (o *ClusterComputeAutoScaling) GetEnabled() bool {
 	if o == nil || IsNil(o.Enabled) {
 		var ret bool
@@ -49,6 +46,7 @@ func (o *ClusterComputeAutoScaling) GetEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
+
 	return o.Enabled, true
 }
 
@@ -66,7 +64,7 @@ func (o *ClusterComputeAutoScaling) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
-// GetScaleDownEnabled returns the ScaleDownEnabled field value if set, zero value otherwise.
+// GetScaleDownEnabled returns the ScaleDownEnabled field value if set, zero value otherwise
 func (o *ClusterComputeAutoScaling) GetScaleDownEnabled() bool {
 	if o == nil || IsNil(o.ScaleDownEnabled) {
 		var ret bool
@@ -81,6 +79,7 @@ func (o *ClusterComputeAutoScaling) GetScaleDownEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.ScaleDownEnabled) {
 		return nil, false
 	}
+
 	return o.ScaleDownEnabled, true
 }
 
@@ -114,40 +113,4 @@ func (o ClusterComputeAutoScaling) ToMap() (map[string]interface{}, error) {
 		toSerialize["scaleDownEnabled"] = o.ScaleDownEnabled
 	}
 	return toSerialize, nil
-}
-
-type NullableClusterComputeAutoScaling struct {
-	value *ClusterComputeAutoScaling
-	isSet bool
-}
-
-func (v NullableClusterComputeAutoScaling) Get() *ClusterComputeAutoScaling {
-	return v.value
-}
-
-func (v *NullableClusterComputeAutoScaling) Set(val *ClusterComputeAutoScaling) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableClusterComputeAutoScaling) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableClusterComputeAutoScaling) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableClusterComputeAutoScaling(val *ClusterComputeAutoScaling) *NullableClusterComputeAutoScaling {
-	return &NullableClusterComputeAutoScaling{value: val, isSet: true}
-}
-
-func (v NullableClusterComputeAutoScaling) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableClusterComputeAutoScaling) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

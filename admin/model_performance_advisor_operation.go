@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PerformanceAdvisorOperation type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PerformanceAdvisorOperation{}
-
 // PerformanceAdvisorOperation struct for PerformanceAdvisorOperation
 type PerformanceAdvisorOperation struct {
 	// List that contains the search criteria that the query uses. To use the values in key-value pairs in these predicates requires **Project Data Access Read Only** permissions or greater. Otherwise, MongoDB Cloud redacts these values.
@@ -33,7 +30,7 @@ func NewPerformanceAdvisorOperationWithDefaults() *PerformanceAdvisorOperation {
 	return &this
 }
 
-// GetPredicates returns the Predicates field value if set, zero value otherwise.
+// GetPredicates returns the Predicates field value if set, zero value otherwise
 func (o *PerformanceAdvisorOperation) GetPredicates() []map[string]interface{} {
 	if o == nil || IsNil(o.Predicates) {
 		var ret []map[string]interface{}
@@ -48,6 +45,7 @@ func (o *PerformanceAdvisorOperation) GetPredicatesOk() ([]map[string]interface{
 	if o == nil || IsNil(o.Predicates) {
 		return nil, false
 	}
+
 	return o.Predicates, true
 }
 
@@ -65,7 +63,7 @@ func (o *PerformanceAdvisorOperation) SetPredicates(v []map[string]interface{}) 
 	o.Predicates = v
 }
 
-// GetStats returns the Stats field value if set, zero value otherwise.
+// GetStats returns the Stats field value if set, zero value otherwise
 func (o *PerformanceAdvisorOperation) GetStats() PerformanceAdvisorOpStats {
 	if o == nil || IsNil(o.Stats) {
 		var ret PerformanceAdvisorOpStats
@@ -80,6 +78,7 @@ func (o *PerformanceAdvisorOperation) GetStatsOk() (*PerformanceAdvisorOpStats, 
 	if o == nil || IsNil(o.Stats) {
 		return nil, false
 	}
+
 	return o.Stats, true
 }
 
@@ -110,40 +109,4 @@ func (o PerformanceAdvisorOperation) ToMap() (map[string]interface{}, error) {
 		toSerialize["stats"] = o.Stats
 	}
 	return toSerialize, nil
-}
-
-type NullablePerformanceAdvisorOperation struct {
-	value *PerformanceAdvisorOperation
-	isSet bool
-}
-
-func (v NullablePerformanceAdvisorOperation) Get() *PerformanceAdvisorOperation {
-	return v.value
-}
-
-func (v *NullablePerformanceAdvisorOperation) Set(val *PerformanceAdvisorOperation) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullablePerformanceAdvisorOperation) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullablePerformanceAdvisorOperation) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullablePerformanceAdvisorOperation(val *PerformanceAdvisorOperation) *NullablePerformanceAdvisorOperation {
-	return &NullablePerformanceAdvisorOperation{value: val, isSet: true}
-}
-
-func (v NullablePerformanceAdvisorOperation) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullablePerformanceAdvisorOperation) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

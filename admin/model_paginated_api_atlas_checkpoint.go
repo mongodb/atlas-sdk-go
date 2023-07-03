@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PaginatedApiAtlasCheckpoint type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PaginatedApiAtlasCheckpoint{}
-
 // PaginatedApiAtlasCheckpoint struct for PaginatedApiAtlasCheckpoint
 type PaginatedApiAtlasCheckpoint struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -36,7 +33,7 @@ func NewPaginatedApiAtlasCheckpointWithDefaults() *PaginatedApiAtlasCheckpoint {
 	return &this
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *PaginatedApiAtlasCheckpoint) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -51,6 +48,7 @@ func (o *PaginatedApiAtlasCheckpoint) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -68,7 +66,7 @@ func (o *PaginatedApiAtlasCheckpoint) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetResults returns the Results field value if set, zero value otherwise.
+// GetResults returns the Results field value if set, zero value otherwise
 func (o *PaginatedApiAtlasCheckpoint) GetResults() []ApiAtlasCheckpoint {
 	if o == nil || IsNil(o.Results) {
 		var ret []ApiAtlasCheckpoint
@@ -83,6 +81,7 @@ func (o *PaginatedApiAtlasCheckpoint) GetResultsOk() ([]ApiAtlasCheckpoint, bool
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
+
 	return o.Results, true
 }
 
@@ -100,7 +99,7 @@ func (o *PaginatedApiAtlasCheckpoint) SetResults(v []ApiAtlasCheckpoint) {
 	o.Results = v
 }
 
-// GetTotalCount returns the TotalCount field value if set, zero value otherwise.
+// GetTotalCount returns the TotalCount field value if set, zero value otherwise
 func (o *PaginatedApiAtlasCheckpoint) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int
@@ -115,6 +114,7 @@ func (o *PaginatedApiAtlasCheckpoint) GetTotalCountOk() (*int, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
+
 	return o.TotalCount, true
 }
 
@@ -142,40 +142,4 @@ func (o PaginatedApiAtlasCheckpoint) MarshalJSONWithoutReadOnly() ([]byte, error
 func (o PaginatedApiAtlasCheckpoint) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullablePaginatedApiAtlasCheckpoint struct {
-	value *PaginatedApiAtlasCheckpoint
-	isSet bool
-}
-
-func (v NullablePaginatedApiAtlasCheckpoint) Get() *PaginatedApiAtlasCheckpoint {
-	return v.value
-}
-
-func (v *NullablePaginatedApiAtlasCheckpoint) Set(val *PaginatedApiAtlasCheckpoint) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullablePaginatedApiAtlasCheckpoint) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullablePaginatedApiAtlasCheckpoint) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullablePaginatedApiAtlasCheckpoint(val *PaginatedApiAtlasCheckpoint) *NullablePaginatedApiAtlasCheckpoint {
-	return &NullablePaginatedApiAtlasCheckpoint{value: val, isSet: true}
-}
-
-func (v NullablePaginatedApiAtlasCheckpoint) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullablePaginatedApiAtlasCheckpoint) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

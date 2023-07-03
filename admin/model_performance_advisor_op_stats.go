@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PerformanceAdvisorOpStats type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PerformanceAdvisorOpStats{}
-
 // PerformanceAdvisorOpStats Details that this resource returned about the specified query.
 type PerformanceAdvisorOpStats struct {
 	// Length of time expressed during which the query finds suggested indexes among the managed namespaces in the cluster. This parameter expresses its value in milliseconds. This parameter relates to the **duration** query parameter.
@@ -38,7 +35,7 @@ func NewPerformanceAdvisorOpStatsWithDefaults() *PerformanceAdvisorOpStats {
 	return &this
 }
 
-// GetMs returns the Ms field value if set, zero value otherwise.
+// GetMs returns the Ms field value if set, zero value otherwise
 func (o *PerformanceAdvisorOpStats) GetMs() int64 {
 	if o == nil || IsNil(o.Ms) {
 		var ret int64
@@ -53,6 +50,7 @@ func (o *PerformanceAdvisorOpStats) GetMsOk() (*int64, bool) {
 	if o == nil || IsNil(o.Ms) {
 		return nil, false
 	}
+
 	return o.Ms, true
 }
 
@@ -70,7 +68,7 @@ func (o *PerformanceAdvisorOpStats) SetMs(v int64) {
 	o.Ms = &v
 }
 
-// GetNReturned returns the NReturned field value if set, zero value otherwise.
+// GetNReturned returns the NReturned field value if set, zero value otherwise
 func (o *PerformanceAdvisorOpStats) GetNReturned() int64 {
 	if o == nil || IsNil(o.NReturned) {
 		var ret int64
@@ -85,6 +83,7 @@ func (o *PerformanceAdvisorOpStats) GetNReturnedOk() (*int64, bool) {
 	if o == nil || IsNil(o.NReturned) {
 		return nil, false
 	}
+
 	return o.NReturned, true
 }
 
@@ -102,7 +101,7 @@ func (o *PerformanceAdvisorOpStats) SetNReturned(v int64) {
 	o.NReturned = &v
 }
 
-// GetNScanned returns the NScanned field value if set, zero value otherwise.
+// GetNScanned returns the NScanned field value if set, zero value otherwise
 func (o *PerformanceAdvisorOpStats) GetNScanned() int64 {
 	if o == nil || IsNil(o.NScanned) {
 		var ret int64
@@ -117,6 +116,7 @@ func (o *PerformanceAdvisorOpStats) GetNScannedOk() (*int64, bool) {
 	if o == nil || IsNil(o.NScanned) {
 		return nil, false
 	}
+
 	return o.NScanned, true
 }
 
@@ -134,7 +134,7 @@ func (o *PerformanceAdvisorOpStats) SetNScanned(v int64) {
 	o.NScanned = &v
 }
 
-// GetTs returns the Ts field value if set, zero value otherwise.
+// GetTs returns the Ts field value if set, zero value otherwise
 func (o *PerformanceAdvisorOpStats) GetTs() int64 {
 	if o == nil || IsNil(o.Ts) {
 		var ret int64
@@ -149,6 +149,7 @@ func (o *PerformanceAdvisorOpStats) GetTsOk() (*int64, bool) {
 	if o == nil || IsNil(o.Ts) {
 		return nil, false
 	}
+
 	return o.Ts, true
 }
 
@@ -176,40 +177,4 @@ func (o PerformanceAdvisorOpStats) MarshalJSONWithoutReadOnly() ([]byte, error) 
 func (o PerformanceAdvisorOpStats) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullablePerformanceAdvisorOpStats struct {
-	value *PerformanceAdvisorOpStats
-	isSet bool
-}
-
-func (v NullablePerformanceAdvisorOpStats) Get() *PerformanceAdvisorOpStats {
-	return v.value
-}
-
-func (v *NullablePerformanceAdvisorOpStats) Set(val *PerformanceAdvisorOpStats) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullablePerformanceAdvisorOpStats) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullablePerformanceAdvisorOpStats) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullablePerformanceAdvisorOpStats(val *PerformanceAdvisorOpStats) *NullablePerformanceAdvisorOpStats {
-	return &NullablePerformanceAdvisorOpStats{value: val, isSet: true}
-}
-
-func (v NullablePerformanceAdvisorOpStats) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullablePerformanceAdvisorOpStats) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

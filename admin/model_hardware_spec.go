@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the HardwareSpec type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &HardwareSpec{}
-
 // HardwareSpec Hardware specifications for all electable nodes deployed in the region. Electable nodes can become the primary and can enable local reads. If you don't specify this option, MongoDB Cloud deploys no electable nodes to the region.
 type HardwareSpec struct {
 	// Target throughput desired for storage attached to your AWS-provisioned cluster. Change this parameter only if you:  - set `\"replicationSpecs[n].regionConfigs[m].providerName\" : \"AWS\"`. - set `\"replicationSpecs[n].regionConfigs[m].electableSpecs.instanceSize\" : \"M30\"` or greater not including `Mxx_NVME` tiers.  The maximum input/output operations per second (IOPS) depend on the selected **.instanceSize** and **.diskSizeGB**. This parameter defaults to the cluster tier's standard IOPS value. Changing this value impacts cluster cost. MongoDB Cloud enforces minimum ratios of storage capacity to system memory for given cluster tiers. This keeps cluster performance consistent with large datasets.  - Instance sizes `M10` to `M40` have a ratio of disk capacity to system memory of 60:1. - Instance sizes greater than `M40` have a ratio of 120:1.
@@ -42,7 +39,7 @@ func NewHardwareSpecWithDefaults() *HardwareSpec {
 	return &this
 }
 
-// GetDiskIOPS returns the DiskIOPS field value if set, zero value otherwise.
+// GetDiskIOPS returns the DiskIOPS field value if set, zero value otherwise
 func (o *HardwareSpec) GetDiskIOPS() int {
 	if o == nil || IsNil(o.DiskIOPS) {
 		var ret int
@@ -57,6 +54,7 @@ func (o *HardwareSpec) GetDiskIOPSOk() (*int, bool) {
 	if o == nil || IsNil(o.DiskIOPS) {
 		return nil, false
 	}
+
 	return o.DiskIOPS, true
 }
 
@@ -74,7 +72,7 @@ func (o *HardwareSpec) SetDiskIOPS(v int) {
 	o.DiskIOPS = &v
 }
 
-// GetEbsVolumeType returns the EbsVolumeType field value if set, zero value otherwise.
+// GetEbsVolumeType returns the EbsVolumeType field value if set, zero value otherwise
 func (o *HardwareSpec) GetEbsVolumeType() string {
 	if o == nil || IsNil(o.EbsVolumeType) {
 		var ret string
@@ -89,6 +87,7 @@ func (o *HardwareSpec) GetEbsVolumeTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.EbsVolumeType) {
 		return nil, false
 	}
+
 	return o.EbsVolumeType, true
 }
 
@@ -106,7 +105,7 @@ func (o *HardwareSpec) SetEbsVolumeType(v string) {
 	o.EbsVolumeType = &v
 }
 
-// GetInstanceSize returns the InstanceSize field value if set, zero value otherwise.
+// GetInstanceSize returns the InstanceSize field value if set, zero value otherwise
 func (o *HardwareSpec) GetInstanceSize() string {
 	if o == nil || IsNil(o.InstanceSize) {
 		var ret string
@@ -121,6 +120,7 @@ func (o *HardwareSpec) GetInstanceSizeOk() (*string, bool) {
 	if o == nil || IsNil(o.InstanceSize) {
 		return nil, false
 	}
+
 	return o.InstanceSize, true
 }
 
@@ -138,7 +138,7 @@ func (o *HardwareSpec) SetInstanceSize(v string) {
 	o.InstanceSize = &v
 }
 
-// GetNodeCount returns the NodeCount field value if set, zero value otherwise.
+// GetNodeCount returns the NodeCount field value if set, zero value otherwise
 func (o *HardwareSpec) GetNodeCount() int {
 	if o == nil || IsNil(o.NodeCount) {
 		var ret int
@@ -153,6 +153,7 @@ func (o *HardwareSpec) GetNodeCountOk() (*int, bool) {
 	if o == nil || IsNil(o.NodeCount) {
 		return nil, false
 	}
+
 	return o.NodeCount, true
 }
 
@@ -192,40 +193,4 @@ func (o HardwareSpec) ToMap() (map[string]interface{}, error) {
 		toSerialize["nodeCount"] = o.NodeCount
 	}
 	return toSerialize, nil
-}
-
-type NullableHardwareSpec struct {
-	value *HardwareSpec
-	isSet bool
-}
-
-func (v NullableHardwareSpec) Get() *HardwareSpec {
-	return v.value
-}
-
-func (v *NullableHardwareSpec) Set(val *HardwareSpec) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableHardwareSpec) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableHardwareSpec) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableHardwareSpec(val *HardwareSpec) *NullableHardwareSpec {
-	return &NullableHardwareSpec{value: val, isSet: true}
-}
-
-func (v NullableHardwareSpec) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableHardwareSpec) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

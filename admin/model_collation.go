@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the Collation type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Collation{}
-
 // Collation One or more settings that specify language-specific rules to compare strings within this index.
 type Collation struct {
 	// Method to handle whitespace and punctuation as base characters for purposes of comparison.  | Value | Evaluate Whitespace and Punctuation as Base Characters | |---|---| | `\"non-ignorable\"` | Yes | | `\"shifted\"` | No. MongoDB Cloud distinguishes these characters when `\"strength\" > 3`. |
@@ -77,7 +74,7 @@ func NewCollationWithDefaults() *Collation {
 	return &this
 }
 
-// GetAlternate returns the Alternate field value if set, zero value otherwise.
+// GetAlternate returns the Alternate field value if set, zero value otherwise
 func (o *Collation) GetAlternate() string {
 	if o == nil || IsNil(o.Alternate) {
 		var ret string
@@ -92,6 +89,7 @@ func (o *Collation) GetAlternateOk() (*string, bool) {
 	if o == nil || IsNil(o.Alternate) {
 		return nil, false
 	}
+
 	return o.Alternate, true
 }
 
@@ -109,7 +107,7 @@ func (o *Collation) SetAlternate(v string) {
 	o.Alternate = &v
 }
 
-// GetBackwards returns the Backwards field value if set, zero value otherwise.
+// GetBackwards returns the Backwards field value if set, zero value otherwise
 func (o *Collation) GetBackwards() bool {
 	if o == nil || IsNil(o.Backwards) {
 		var ret bool
@@ -124,6 +122,7 @@ func (o *Collation) GetBackwardsOk() (*bool, bool) {
 	if o == nil || IsNil(o.Backwards) {
 		return nil, false
 	}
+
 	return o.Backwards, true
 }
 
@@ -141,7 +140,7 @@ func (o *Collation) SetBackwards(v bool) {
 	o.Backwards = &v
 }
 
-// GetCaseFirst returns the CaseFirst field value if set, zero value otherwise.
+// GetCaseFirst returns the CaseFirst field value if set, zero value otherwise
 func (o *Collation) GetCaseFirst() string {
 	if o == nil || IsNil(o.CaseFirst) {
 		var ret string
@@ -156,6 +155,7 @@ func (o *Collation) GetCaseFirstOk() (*string, bool) {
 	if o == nil || IsNil(o.CaseFirst) {
 		return nil, false
 	}
+
 	return o.CaseFirst, true
 }
 
@@ -173,7 +173,7 @@ func (o *Collation) SetCaseFirst(v string) {
 	o.CaseFirst = &v
 }
 
-// GetCaseLevel returns the CaseLevel field value if set, zero value otherwise.
+// GetCaseLevel returns the CaseLevel field value if set, zero value otherwise
 func (o *Collation) GetCaseLevel() bool {
 	if o == nil || IsNil(o.CaseLevel) {
 		var ret bool
@@ -188,6 +188,7 @@ func (o *Collation) GetCaseLevelOk() (*bool, bool) {
 	if o == nil || IsNil(o.CaseLevel) {
 		return nil, false
 	}
+
 	return o.CaseLevel, true
 }
 
@@ -229,7 +230,7 @@ func (o *Collation) SetLocale(v string) {
 	o.Locale = v
 }
 
-// GetMaxVariable returns the MaxVariable field value if set, zero value otherwise.
+// GetMaxVariable returns the MaxVariable field value if set, zero value otherwise
 func (o *Collation) GetMaxVariable() string {
 	if o == nil || IsNil(o.MaxVariable) {
 		var ret string
@@ -244,6 +245,7 @@ func (o *Collation) GetMaxVariableOk() (*string, bool) {
 	if o == nil || IsNil(o.MaxVariable) {
 		return nil, false
 	}
+
 	return o.MaxVariable, true
 }
 
@@ -261,7 +263,7 @@ func (o *Collation) SetMaxVariable(v string) {
 	o.MaxVariable = &v
 }
 
-// GetNormalization returns the Normalization field value if set, zero value otherwise.
+// GetNormalization returns the Normalization field value if set, zero value otherwise
 func (o *Collation) GetNormalization() bool {
 	if o == nil || IsNil(o.Normalization) {
 		var ret bool
@@ -276,6 +278,7 @@ func (o *Collation) GetNormalizationOk() (*bool, bool) {
 	if o == nil || IsNil(o.Normalization) {
 		return nil, false
 	}
+
 	return o.Normalization, true
 }
 
@@ -293,7 +296,7 @@ func (o *Collation) SetNormalization(v bool) {
 	o.Normalization = &v
 }
 
-// GetNumericOrdering returns the NumericOrdering field value if set, zero value otherwise.
+// GetNumericOrdering returns the NumericOrdering field value if set, zero value otherwise
 func (o *Collation) GetNumericOrdering() bool {
 	if o == nil || IsNil(o.NumericOrdering) {
 		var ret bool
@@ -308,6 +311,7 @@ func (o *Collation) GetNumericOrderingOk() (*bool, bool) {
 	if o == nil || IsNil(o.NumericOrdering) {
 		return nil, false
 	}
+
 	return o.NumericOrdering, true
 }
 
@@ -325,7 +329,7 @@ func (o *Collation) SetNumericOrdering(v bool) {
 	o.NumericOrdering = &v
 }
 
-// GetStrength returns the Strength field value if set, zero value otherwise.
+// GetStrength returns the Strength field value if set, zero value otherwise
 func (o *Collation) GetStrength() int {
 	if o == nil || IsNil(o.Strength) {
 		var ret int
@@ -340,6 +344,7 @@ func (o *Collation) GetStrengthOk() (*int, bool) {
 	if o == nil || IsNil(o.Strength) {
 		return nil, false
 	}
+
 	return o.Strength, true
 }
 
@@ -392,40 +397,4 @@ func (o Collation) ToMap() (map[string]interface{}, error) {
 		toSerialize["strength"] = o.Strength
 	}
 	return toSerialize, nil
-}
-
-type NullableCollation struct {
-	value *Collation
-	isSet bool
-}
-
-func (v NullableCollation) Get() *Collation {
-	return v.value
-}
-
-func (v *NullableCollation) Set(val *Collation) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableCollation) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableCollation) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableCollation(val *Collation) *NullableCollation {
-	return &NullableCollation{value: val, isSet: true}
-}
-
-func (v NullableCollation) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableCollation) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

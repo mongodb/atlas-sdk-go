@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the CreateAtlasProjectApiKey type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CreateAtlasProjectApiKey{}
-
 // CreateAtlasProjectApiKey struct for CreateAtlasProjectApiKey
 type CreateAtlasProjectApiKey struct {
 	// Purpose or explanation provided when someone created this project API key.
@@ -34,7 +31,7 @@ func NewCreateAtlasProjectApiKeyWithDefaults() *CreateAtlasProjectApiKey {
 	return &this
 }
 
-// GetDesc returns the Desc field value if set, zero value otherwise.
+// GetDesc returns the Desc field value if set, zero value otherwise
 func (o *CreateAtlasProjectApiKey) GetDesc() string {
 	if o == nil || IsNil(o.Desc) {
 		var ret string
@@ -49,6 +46,7 @@ func (o *CreateAtlasProjectApiKey) GetDescOk() (*string, bool) {
 	if o == nil || IsNil(o.Desc) {
 		return nil, false
 	}
+
 	return o.Desc, true
 }
 
@@ -66,7 +64,7 @@ func (o *CreateAtlasProjectApiKey) SetDesc(v string) {
 	o.Desc = &v
 }
 
-// GetRoles returns the Roles field value if set, zero value otherwise.
+// GetRoles returns the Roles field value if set, zero value otherwise
 func (o *CreateAtlasProjectApiKey) GetRoles() []string {
 	if o == nil || IsNil(o.Roles) {
 		var ret []string
@@ -81,6 +79,7 @@ func (o *CreateAtlasProjectApiKey) GetRolesOk() ([]string, bool) {
 	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
+
 	return o.Roles, true
 }
 
@@ -114,40 +113,4 @@ func (o CreateAtlasProjectApiKey) ToMap() (map[string]interface{}, error) {
 		toSerialize["roles"] = o.Roles
 	}
 	return toSerialize, nil
-}
-
-type NullableCreateAtlasProjectApiKey struct {
-	value *CreateAtlasProjectApiKey
-	isSet bool
-}
-
-func (v NullableCreateAtlasProjectApiKey) Get() *CreateAtlasProjectApiKey {
-	return v.value
-}
-
-func (v *NullableCreateAtlasProjectApiKey) Set(val *CreateAtlasProjectApiKey) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableCreateAtlasProjectApiKey) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableCreateAtlasProjectApiKey) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableCreateAtlasProjectApiKey(val *CreateAtlasProjectApiKey) *NullableCreateAtlasProjectApiKey {
-	return &NullableCreateAtlasProjectApiKey{value: val, isSet: true}
-}
-
-func (v NullableCreateAtlasProjectApiKey) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableCreateAtlasProjectApiKey) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

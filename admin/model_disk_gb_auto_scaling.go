@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the DiskGBAutoScaling type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DiskGBAutoScaling{}
-
 // DiskGBAutoScaling Setting that enables disk auto-scaling.
 type DiskGBAutoScaling struct {
 	// Flag that indicates whether this cluster enables disk auto-scaling. The maximum memory allowed for the selected cluster tier and the oplog size can limit storage auto-scaling.
@@ -32,7 +29,7 @@ func NewDiskGBAutoScalingWithDefaults() *DiskGBAutoScaling {
 	return &this
 }
 
-// GetEnabled returns the Enabled field value if set, zero value otherwise.
+// GetEnabled returns the Enabled field value if set, zero value otherwise
 func (o *DiskGBAutoScaling) GetEnabled() bool {
 	if o == nil || IsNil(o.Enabled) {
 		var ret bool
@@ -47,6 +44,7 @@ func (o *DiskGBAutoScaling) GetEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
+
 	return o.Enabled, true
 }
 
@@ -77,40 +75,4 @@ func (o DiskGBAutoScaling) ToMap() (map[string]interface{}, error) {
 		toSerialize["enabled"] = o.Enabled
 	}
 	return toSerialize, nil
-}
-
-type NullableDiskGBAutoScaling struct {
-	value *DiskGBAutoScaling
-	isSet bool
-}
-
-func (v NullableDiskGBAutoScaling) Get() *DiskGBAutoScaling {
-	return v.value
-}
-
-func (v *NullableDiskGBAutoScaling) Set(val *DiskGBAutoScaling) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableDiskGBAutoScaling) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableDiskGBAutoScaling) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableDiskGBAutoScaling(val *DiskGBAutoScaling) *NullableDiskGBAutoScaling {
-	return &NullableDiskGBAutoScaling{value: val, isSet: true}
-}
-
-func (v NullableDiskGBAutoScaling) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableDiskGBAutoScaling) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ConnectedOrgConfig type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ConnectedOrgConfig{}
-
 // ConnectedOrgConfig struct for ConnectedOrgConfig
 type ConnectedOrgConfig struct {
 	// The collection of unique ids of the identity providers for org's data access.
@@ -49,7 +46,7 @@ func NewConnectedOrgConfigWithDefaults() *ConnectedOrgConfig {
 	return &this
 }
 
-// GetDataAccessIdentityProviderIds returns the DataAccessIdentityProviderIds field value if set, zero value otherwise.
+// GetDataAccessIdentityProviderIds returns the DataAccessIdentityProviderIds field value if set, zero value otherwise
 func (o *ConnectedOrgConfig) GetDataAccessIdentityProviderIds() []string {
 	if o == nil || IsNil(o.DataAccessIdentityProviderIds) {
 		var ret []string
@@ -64,6 +61,7 @@ func (o *ConnectedOrgConfig) GetDataAccessIdentityProviderIdsOk() ([]string, boo
 	if o == nil || IsNil(o.DataAccessIdentityProviderIds) {
 		return nil, false
 	}
+
 	return o.DataAccessIdentityProviderIds, true
 }
 
@@ -81,7 +79,7 @@ func (o *ConnectedOrgConfig) SetDataAccessIdentityProviderIds(v []string) {
 	o.DataAccessIdentityProviderIds = v
 }
 
-// GetDomainAllowList returns the DomainAllowList field value if set, zero value otherwise.
+// GetDomainAllowList returns the DomainAllowList field value if set, zero value otherwise
 func (o *ConnectedOrgConfig) GetDomainAllowList() []string {
 	if o == nil || IsNil(o.DomainAllowList) {
 		var ret []string
@@ -96,6 +94,7 @@ func (o *ConnectedOrgConfig) GetDomainAllowListOk() ([]string, bool) {
 	if o == nil || IsNil(o.DomainAllowList) {
 		return nil, false
 	}
+
 	return o.DomainAllowList, true
 }
 
@@ -185,7 +184,7 @@ func (o *ConnectedOrgConfig) SetOrgId(v string) {
 	o.OrgId = v
 }
 
-// GetPostAuthRoleGrants returns the PostAuthRoleGrants field value if set, zero value otherwise.
+// GetPostAuthRoleGrants returns the PostAuthRoleGrants field value if set, zero value otherwise
 func (o *ConnectedOrgConfig) GetPostAuthRoleGrants() []string {
 	if o == nil || IsNil(o.PostAuthRoleGrants) {
 		var ret []string
@@ -200,6 +199,7 @@ func (o *ConnectedOrgConfig) GetPostAuthRoleGrantsOk() ([]string, bool) {
 	if o == nil || IsNil(o.PostAuthRoleGrants) {
 		return nil, false
 	}
+
 	return o.PostAuthRoleGrants, true
 }
 
@@ -217,7 +217,7 @@ func (o *ConnectedOrgConfig) SetPostAuthRoleGrants(v []string) {
 	o.PostAuthRoleGrants = v
 }
 
-// GetRoleMappings returns the RoleMappings field value if set, zero value otherwise.
+// GetRoleMappings returns the RoleMappings field value if set, zero value otherwise
 func (o *ConnectedOrgConfig) GetRoleMappings() []AuthFederationRoleMapping {
 	if o == nil || IsNil(o.RoleMappings) {
 		var ret []AuthFederationRoleMapping
@@ -232,6 +232,7 @@ func (o *ConnectedOrgConfig) GetRoleMappingsOk() ([]AuthFederationRoleMapping, b
 	if o == nil || IsNil(o.RoleMappings) {
 		return nil, false
 	}
+
 	return o.RoleMappings, true
 }
 
@@ -249,7 +250,7 @@ func (o *ConnectedOrgConfig) SetRoleMappings(v []AuthFederationRoleMapping) {
 	o.RoleMappings = v
 }
 
-// GetUserConflicts returns the UserConflicts field value if set, zero value otherwise.
+// GetUserConflicts returns the UserConflicts field value if set, zero value otherwise
 func (o *ConnectedOrgConfig) GetUserConflicts() []FederatedUser {
 	if o == nil || IsNil(o.UserConflicts) {
 		var ret []FederatedUser
@@ -264,6 +265,7 @@ func (o *ConnectedOrgConfig) GetUserConflictsOk() ([]FederatedUser, bool) {
 	if o == nil || IsNil(o.UserConflicts) {
 		return nil, false
 	}
+
 	return o.UserConflicts, true
 }
 
@@ -308,40 +310,4 @@ func (o ConnectedOrgConfig) ToMap() (map[string]interface{}, error) {
 		toSerialize["userConflicts"] = o.UserConflicts
 	}
 	return toSerialize, nil
-}
-
-type NullableConnectedOrgConfig struct {
-	value *ConnectedOrgConfig
-	isSet bool
-}
-
-func (v NullableConnectedOrgConfig) Get() *ConnectedOrgConfig {
-	return v.value
-}
-
-func (v *NullableConnectedOrgConfig) Set(val *ConnectedOrgConfig) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableConnectedOrgConfig) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableConnectedOrgConfig) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableConnectedOrgConfig(val *ConnectedOrgConfig) *NullableConnectedOrgConfig {
-	return &NullableConnectedOrgConfig{value: val, isSet: true}
-}
-
-func (v NullableConnectedOrgConfig) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableConnectedOrgConfig) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

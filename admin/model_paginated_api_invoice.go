@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PaginatedApiInvoice type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PaginatedApiInvoice{}
-
 // PaginatedApiInvoice struct for PaginatedApiInvoice
 type PaginatedApiInvoice struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -36,7 +33,7 @@ func NewPaginatedApiInvoiceWithDefaults() *PaginatedApiInvoice {
 	return &this
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *PaginatedApiInvoice) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -51,6 +48,7 @@ func (o *PaginatedApiInvoice) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -68,7 +66,7 @@ func (o *PaginatedApiInvoice) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetResults returns the Results field value if set, zero value otherwise.
+// GetResults returns the Results field value if set, zero value otherwise
 func (o *PaginatedApiInvoice) GetResults() []BillingInvoice {
 	if o == nil || IsNil(o.Results) {
 		var ret []BillingInvoice
@@ -83,6 +81,7 @@ func (o *PaginatedApiInvoice) GetResultsOk() ([]BillingInvoice, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
+
 	return o.Results, true
 }
 
@@ -100,7 +99,7 @@ func (o *PaginatedApiInvoice) SetResults(v []BillingInvoice) {
 	o.Results = v
 }
 
-// GetTotalCount returns the TotalCount field value if set, zero value otherwise.
+// GetTotalCount returns the TotalCount field value if set, zero value otherwise
 func (o *PaginatedApiInvoice) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int
@@ -115,6 +114,7 @@ func (o *PaginatedApiInvoice) GetTotalCountOk() (*int, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
+
 	return o.TotalCount, true
 }
 
@@ -142,40 +142,4 @@ func (o PaginatedApiInvoice) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o PaginatedApiInvoice) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullablePaginatedApiInvoice struct {
-	value *PaginatedApiInvoice
-	isSet bool
-}
-
-func (v NullablePaginatedApiInvoice) Get() *PaginatedApiInvoice {
-	return v.value
-}
-
-func (v *NullablePaginatedApiInvoice) Set(val *PaginatedApiInvoice) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullablePaginatedApiInvoice) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullablePaginatedApiInvoice) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullablePaginatedApiInvoice(val *PaginatedApiInvoice) *NullablePaginatedApiInvoice {
-	return &NullablePaginatedApiInvoice{value: val, isSet: true}
-}
-
-func (v NullablePaginatedApiInvoice) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullablePaginatedApiInvoice) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

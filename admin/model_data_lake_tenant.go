@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the DataLakeTenant type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DataLakeTenant{}
-
 // DataLakeTenant struct for DataLakeTenant
 type DataLakeTenant struct {
 	CloudProviderConfig *DataLakeCloudProviderConfig `json:"cloudProviderConfig,omitempty"`
@@ -41,7 +38,7 @@ func NewDataLakeTenantWithDefaults() *DataLakeTenant {
 	return &this
 }
 
-// GetCloudProviderConfig returns the CloudProviderConfig field value if set, zero value otherwise.
+// GetCloudProviderConfig returns the CloudProviderConfig field value if set, zero value otherwise
 func (o *DataLakeTenant) GetCloudProviderConfig() DataLakeCloudProviderConfig {
 	if o == nil || IsNil(o.CloudProviderConfig) {
 		var ret DataLakeCloudProviderConfig
@@ -56,6 +53,7 @@ func (o *DataLakeTenant) GetCloudProviderConfigOk() (*DataLakeCloudProviderConfi
 	if o == nil || IsNil(o.CloudProviderConfig) {
 		return nil, false
 	}
+
 	return o.CloudProviderConfig, true
 }
 
@@ -73,7 +71,7 @@ func (o *DataLakeTenant) SetCloudProviderConfig(v DataLakeCloudProviderConfig) {
 	o.CloudProviderConfig = &v
 }
 
-// GetDataProcessRegion returns the DataProcessRegion field value if set, zero value otherwise.
+// GetDataProcessRegion returns the DataProcessRegion field value if set, zero value otherwise
 func (o *DataLakeTenant) GetDataProcessRegion() DataLakeDataProcessRegion {
 	if o == nil || IsNil(o.DataProcessRegion) {
 		var ret DataLakeDataProcessRegion
@@ -88,6 +86,7 @@ func (o *DataLakeTenant) GetDataProcessRegionOk() (*DataLakeDataProcessRegion, b
 	if o == nil || IsNil(o.DataProcessRegion) {
 		return nil, false
 	}
+
 	return o.DataProcessRegion, true
 }
 
@@ -105,7 +104,7 @@ func (o *DataLakeTenant) SetDataProcessRegion(v DataLakeDataProcessRegion) {
 	o.DataProcessRegion = &v
 }
 
-// GetGroupId returns the GroupId field value if set, zero value otherwise.
+// GetGroupId returns the GroupId field value if set, zero value otherwise
 func (o *DataLakeTenant) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
 		var ret string
@@ -120,6 +119,7 @@ func (o *DataLakeTenant) GetGroupIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupId) {
 		return nil, false
 	}
+
 	return o.GroupId, true
 }
 
@@ -137,7 +137,7 @@ func (o *DataLakeTenant) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
-// GetHostnames returns the Hostnames field value if set, zero value otherwise.
+// GetHostnames returns the Hostnames field value if set, zero value otherwise
 func (o *DataLakeTenant) GetHostnames() []string {
 	if o == nil || IsNil(o.Hostnames) {
 		var ret []string
@@ -152,6 +152,7 @@ func (o *DataLakeTenant) GetHostnamesOk() ([]string, bool) {
 	if o == nil || IsNil(o.Hostnames) {
 		return nil, false
 	}
+
 	return o.Hostnames, true
 }
 
@@ -169,7 +170,7 @@ func (o *DataLakeTenant) SetHostnames(v []string) {
 	o.Hostnames = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise
 func (o *DataLakeTenant) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
@@ -184,6 +185,7 @@ func (o *DataLakeTenant) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
+
 	return o.Name, true
 }
 
@@ -201,7 +203,7 @@ func (o *DataLakeTenant) SetName(v string) {
 	o.Name = &v
 }
 
-// GetState returns the State field value if set, zero value otherwise.
+// GetState returns the State field value if set, zero value otherwise
 func (o *DataLakeTenant) GetState() string {
 	if o == nil || IsNil(o.State) {
 		var ret string
@@ -216,6 +218,7 @@ func (o *DataLakeTenant) GetStateOk() (*string, bool) {
 	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
+
 	return o.State, true
 }
 
@@ -233,7 +236,7 @@ func (o *DataLakeTenant) SetState(v string) {
 	o.State = &v
 }
 
-// GetStorage returns the Storage field value if set, zero value otherwise.
+// GetStorage returns the Storage field value if set, zero value otherwise
 func (o *DataLakeTenant) GetStorage() DataLakeStorage {
 	if o == nil || IsNil(o.Storage) {
 		var ret DataLakeStorage
@@ -248,6 +251,7 @@ func (o *DataLakeTenant) GetStorageOk() (*DataLakeStorage, bool) {
 	if o == nil || IsNil(o.Storage) {
 		return nil, false
 	}
+
 	return o.Storage, true
 }
 
@@ -287,40 +291,4 @@ func (o DataLakeTenant) ToMap() (map[string]interface{}, error) {
 		toSerialize["storage"] = o.Storage
 	}
 	return toSerialize, nil
-}
-
-type NullableDataLakeTenant struct {
-	value *DataLakeTenant
-	isSet bool
-}
-
-func (v NullableDataLakeTenant) Get() *DataLakeTenant {
-	return v.value
-}
-
-func (v *NullableDataLakeTenant) Set(val *DataLakeTenant) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableDataLakeTenant) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableDataLakeTenant) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableDataLakeTenant(val *DataLakeTenant) *NullableDataLakeTenant {
-	return &NullableDataLakeTenant{value: val, isSet: true}
-}
-
-func (v NullableDataLakeTenant) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableDataLakeTenant) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

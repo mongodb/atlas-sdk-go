@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the CloudAccessRoleAssignment type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CloudAccessRoleAssignment{}
-
 // CloudAccessRoleAssignment MongoDB Cloud user's roles and the corresponding organization or project to which that role applies. Each role can apply to one organization or one project but not both.
 type CloudAccessRoleAssignment struct {
 	// Unique 24-hexadecimal digit string that identifies the project to which this role belongs. You can set a value for this parameter or **orgId** but not both in the same request.
@@ -36,7 +33,7 @@ func NewCloudAccessRoleAssignmentWithDefaults() *CloudAccessRoleAssignment {
 	return &this
 }
 
-// GetGroupId returns the GroupId field value if set, zero value otherwise.
+// GetGroupId returns the GroupId field value if set, zero value otherwise
 func (o *CloudAccessRoleAssignment) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
 		var ret string
@@ -51,6 +48,7 @@ func (o *CloudAccessRoleAssignment) GetGroupIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupId) {
 		return nil, false
 	}
+
 	return o.GroupId, true
 }
 
@@ -68,7 +66,7 @@ func (o *CloudAccessRoleAssignment) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
-// GetOrgId returns the OrgId field value if set, zero value otherwise.
+// GetOrgId returns the OrgId field value if set, zero value otherwise
 func (o *CloudAccessRoleAssignment) GetOrgId() string {
 	if o == nil || IsNil(o.OrgId) {
 		var ret string
@@ -83,6 +81,7 @@ func (o *CloudAccessRoleAssignment) GetOrgIdOk() (*string, bool) {
 	if o == nil || IsNil(o.OrgId) {
 		return nil, false
 	}
+
 	return o.OrgId, true
 }
 
@@ -100,7 +99,7 @@ func (o *CloudAccessRoleAssignment) SetOrgId(v string) {
 	o.OrgId = &v
 }
 
-// GetRoleName returns the RoleName field value if set, zero value otherwise.
+// GetRoleName returns the RoleName field value if set, zero value otherwise
 func (o *CloudAccessRoleAssignment) GetRoleName() string {
 	if o == nil || IsNil(o.RoleName) {
 		var ret string
@@ -115,6 +114,7 @@ func (o *CloudAccessRoleAssignment) GetRoleNameOk() (*string, bool) {
 	if o == nil || IsNil(o.RoleName) {
 		return nil, false
 	}
+
 	return o.RoleName, true
 }
 
@@ -151,40 +151,4 @@ func (o CloudAccessRoleAssignment) ToMap() (map[string]interface{}, error) {
 		toSerialize["roleName"] = o.RoleName
 	}
 	return toSerialize, nil
-}
-
-type NullableCloudAccessRoleAssignment struct {
-	value *CloudAccessRoleAssignment
-	isSet bool
-}
-
-func (v NullableCloudAccessRoleAssignment) Get() *CloudAccessRoleAssignment {
-	return v.value
-}
-
-func (v *NullableCloudAccessRoleAssignment) Set(val *CloudAccessRoleAssignment) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableCloudAccessRoleAssignment) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableCloudAccessRoleAssignment) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableCloudAccessRoleAssignment(val *CloudAccessRoleAssignment) *NullableCloudAccessRoleAssignment {
-	return &NullableCloudAccessRoleAssignment{value: val, isSet: true}
-}
-
-func (v NullableCloudAccessRoleAssignment) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableCloudAccessRoleAssignment) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

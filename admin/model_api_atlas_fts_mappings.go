@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ApiAtlasFTSMappings type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ApiAtlasFTSMappings{}
-
 // ApiAtlasFTSMappings Index specifications for the collection's fields.
 type ApiAtlasFTSMappings struct {
 	// Flag that indicates whether the index uses dynamic or static mappings. Required if **mappings.fields** is omitted.
@@ -38,7 +35,7 @@ func NewApiAtlasFTSMappingsWithDefaults() *ApiAtlasFTSMappings {
 	return &this
 }
 
-// GetDynamic returns the Dynamic field value if set, zero value otherwise.
+// GetDynamic returns the Dynamic field value if set, zero value otherwise
 func (o *ApiAtlasFTSMappings) GetDynamic() bool {
 	if o == nil || IsNil(o.Dynamic) {
 		var ret bool
@@ -53,6 +50,7 @@ func (o *ApiAtlasFTSMappings) GetDynamicOk() (*bool, bool) {
 	if o == nil || IsNil(o.Dynamic) {
 		return nil, false
 	}
+
 	return o.Dynamic, true
 }
 
@@ -70,7 +68,7 @@ func (o *ApiAtlasFTSMappings) SetDynamic(v bool) {
 	o.Dynamic = &v
 }
 
-// GetFields returns the Fields field value if set, zero value otherwise.
+// GetFields returns the Fields field value if set, zero value otherwise
 func (o *ApiAtlasFTSMappings) GetFields() map[string]interface{} {
 	if o == nil || IsNil(o.Fields) {
 		var ret map[string]interface{}
@@ -85,6 +83,7 @@ func (o *ApiAtlasFTSMappings) GetFieldsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Fields) {
 		return map[string]interface{}{}, false
 	}
+
 	return o.Fields, true
 }
 
@@ -118,40 +117,4 @@ func (o ApiAtlasFTSMappings) ToMap() (map[string]interface{}, error) {
 		toSerialize["fields"] = o.Fields
 	}
 	return toSerialize, nil
-}
-
-type NullableApiAtlasFTSMappings struct {
-	value *ApiAtlasFTSMappings
-	isSet bool
-}
-
-func (v NullableApiAtlasFTSMappings) Get() *ApiAtlasFTSMappings {
-	return v.value
-}
-
-func (v *NullableApiAtlasFTSMappings) Set(val *ApiAtlasFTSMappings) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableApiAtlasFTSMappings) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableApiAtlasFTSMappings) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableApiAtlasFTSMappings(val *ApiAtlasFTSMappings) *NullableApiAtlasFTSMappings {
-	return &NullableApiAtlasFTSMappings{value: val, isSet: true}
-}
-
-func (v NullableApiAtlasFTSMappings) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableApiAtlasFTSMappings) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

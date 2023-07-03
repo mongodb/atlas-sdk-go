@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the GroupInvitationUpdateRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &GroupInvitationUpdateRequest{}
-
 // GroupInvitationUpdateRequest struct for GroupInvitationUpdateRequest
 type GroupInvitationUpdateRequest struct {
 	// One or more organization or project level roles to assign to the MongoDB Cloud user.
@@ -32,7 +29,7 @@ func NewGroupInvitationUpdateRequestWithDefaults() *GroupInvitationUpdateRequest
 	return &this
 }
 
-// GetRoles returns the Roles field value if set, zero value otherwise.
+// GetRoles returns the Roles field value if set, zero value otherwise
 func (o *GroupInvitationUpdateRequest) GetRoles() []string {
 	if o == nil || IsNil(o.Roles) {
 		var ret []string
@@ -47,6 +44,7 @@ func (o *GroupInvitationUpdateRequest) GetRolesOk() ([]string, bool) {
 	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
+
 	return o.Roles, true
 }
 
@@ -77,40 +75,4 @@ func (o GroupInvitationUpdateRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["roles"] = o.Roles
 	}
 	return toSerialize, nil
-}
-
-type NullableGroupInvitationUpdateRequest struct {
-	value *GroupInvitationUpdateRequest
-	isSet bool
-}
-
-func (v NullableGroupInvitationUpdateRequest) Get() *GroupInvitationUpdateRequest {
-	return v.value
-}
-
-func (v *NullableGroupInvitationUpdateRequest) Set(val *GroupInvitationUpdateRequest) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableGroupInvitationUpdateRequest) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableGroupInvitationUpdateRequest) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableGroupInvitationUpdateRequest(val *GroupInvitationUpdateRequest) *NullableGroupInvitationUpdateRequest {
-	return &NullableGroupInvitationUpdateRequest{value: val, isSet: true}
-}
-
-func (v NullableGroupInvitationUpdateRequest) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableGroupInvitationUpdateRequest) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ExportStatus type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ExportStatus{}
-
 // ExportStatus State of the export job for the collections on the replica set only.
 type ExportStatus struct {
 	// Number of collections on the replica set that MongoDB Cloud exported.
@@ -34,7 +31,7 @@ func NewExportStatusWithDefaults() *ExportStatus {
 	return &this
 }
 
-// GetExportedCollections returns the ExportedCollections field value if set, zero value otherwise.
+// GetExportedCollections returns the ExportedCollections field value if set, zero value otherwise
 func (o *ExportStatus) GetExportedCollections() int {
 	if o == nil || IsNil(o.ExportedCollections) {
 		var ret int
@@ -49,6 +46,7 @@ func (o *ExportStatus) GetExportedCollectionsOk() (*int, bool) {
 	if o == nil || IsNil(o.ExportedCollections) {
 		return nil, false
 	}
+
 	return o.ExportedCollections, true
 }
 
@@ -66,7 +64,7 @@ func (o *ExportStatus) SetExportedCollections(v int) {
 	o.ExportedCollections = &v
 }
 
-// GetTotalCollections returns the TotalCollections field value if set, zero value otherwise.
+// GetTotalCollections returns the TotalCollections field value if set, zero value otherwise
 func (o *ExportStatus) GetTotalCollections() int {
 	if o == nil || IsNil(o.TotalCollections) {
 		var ret int
@@ -81,6 +79,7 @@ func (o *ExportStatus) GetTotalCollectionsOk() (*int, bool) {
 	if o == nil || IsNil(o.TotalCollections) {
 		return nil, false
 	}
+
 	return o.TotalCollections, true
 }
 
@@ -108,40 +107,4 @@ func (o ExportStatus) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o ExportStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableExportStatus struct {
-	value *ExportStatus
-	isSet bool
-}
-
-func (v NullableExportStatus) Get() *ExportStatus {
-	return v.value
-}
-
-func (v *NullableExportStatus) Set(val *ExportStatus) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableExportStatus) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableExportStatus) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableExportStatus(val *ExportStatus) *NullableExportStatus {
-	return &NullableExportStatus{value: val, isSet: true}
-}
-
-func (v NullableExportStatus) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableExportStatus) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

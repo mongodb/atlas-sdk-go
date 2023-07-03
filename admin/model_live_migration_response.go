@@ -6,15 +6,12 @@ import (
 	"encoding/json"
 )
 
-// checks if the LiveMigrationResponse type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &LiveMigrationResponse{}
-
 // LiveMigrationResponse struct for LiveMigrationResponse
 type LiveMigrationResponse struct {
 	// Unique 24-hexadecimal digit string that identifies the migration job.
 	Id *string `json:"_id,omitempty"`
 	// Replication lag between the source and destination clusters. Atlas returns this setting only during an active migration, before the cutover phase.
-	LagTimeSeconds NullableInt64 `json:"lagTimeSeconds,omitempty"`
+	LagTimeSeconds *NullableInt64 `json:"lagTimeSeconds,omitempty"`
 	// List of hosts running MongoDB Agents. These Agents can transfer your MongoDB data between one source and one target cluster.
 	MigrationHosts []string `json:"migrationHosts,omitempty"`
 	// Flag that indicates the migrated cluster can be cut over to MongoDB Atlas.
@@ -40,7 +37,7 @@ func NewLiveMigrationResponseWithDefaults() *LiveMigrationResponse {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *LiveMigrationResponse) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -55,6 +52,7 @@ func (o *LiveMigrationResponse) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -72,28 +70,28 @@ func (o *LiveMigrationResponse) SetId(v string) {
 	o.Id = &v
 }
 
-// GetLagTimeSeconds returns the LagTimeSeconds field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLagTimeSeconds returns the LagTimeSeconds field value if set, zero value otherwise
 func (o *LiveMigrationResponse) GetLagTimeSeconds() int64 {
-	if o == nil || IsNil(o.LagTimeSeconds.Get()) {
+	if o == nil || IsNil(o.LagTimeSeconds) {
 		var ret int64
 		return ret
 	}
-	return *o.LagTimeSeconds.Get()
+	return *o.LagTimeSeconds
 }
 
 // GetLagTimeSecondsOk returns a tuple with the LagTimeSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *LiveMigrationResponse) GetLagTimeSecondsOk() (*int64, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LagTimeSeconds) {
 		return nil, false
 	}
-	return o.LagTimeSeconds.Get(), o.LagTimeSeconds.IsSet()
+
+	return o.LagTimeSeconds, true
 }
 
 // HasLagTimeSeconds returns a boolean if a field has been set.
 func (o *LiveMigrationResponse) HasLagTimeSeconds() bool {
-	if o != nil && o.LagTimeSeconds.IsSet() {
+	if o != nil && !IsNil(o.LagTimeSeconds) {
 		return true
 	}
 
@@ -102,20 +100,10 @@ func (o *LiveMigrationResponse) HasLagTimeSeconds() bool {
 
 // SetLagTimeSeconds gets a reference to the given NullableInt64 and assigns it to the LagTimeSeconds field.
 func (o *LiveMigrationResponse) SetLagTimeSeconds(v int64) {
-	o.LagTimeSeconds.Set(&v)
+	o.LagTimeSeconds = &v
 }
 
-// SetLagTimeSecondsNil sets the value for LagTimeSeconds to be an explicit nil
-func (o *LiveMigrationResponse) SetLagTimeSecondsNil() {
-	o.LagTimeSeconds.Set(nil)
-}
-
-// UnsetLagTimeSeconds ensures that no value is present for LagTimeSeconds, not even an explicit nil
-func (o *LiveMigrationResponse) UnsetLagTimeSeconds() {
-	o.LagTimeSeconds.Unset()
-}
-
-// GetMigrationHosts returns the MigrationHosts field value if set, zero value otherwise.
+// GetMigrationHosts returns the MigrationHosts field value if set, zero value otherwise
 func (o *LiveMigrationResponse) GetMigrationHosts() []string {
 	if o == nil || IsNil(o.MigrationHosts) {
 		var ret []string
@@ -130,6 +118,7 @@ func (o *LiveMigrationResponse) GetMigrationHostsOk() ([]string, bool) {
 	if o == nil || IsNil(o.MigrationHosts) {
 		return nil, false
 	}
+
 	return o.MigrationHosts, true
 }
 
@@ -147,7 +136,7 @@ func (o *LiveMigrationResponse) SetMigrationHosts(v []string) {
 	o.MigrationHosts = v
 }
 
-// GetReadyForCutover returns the ReadyForCutover field value if set, zero value otherwise.
+// GetReadyForCutover returns the ReadyForCutover field value if set, zero value otherwise
 func (o *LiveMigrationResponse) GetReadyForCutover() bool {
 	if o == nil || IsNil(o.ReadyForCutover) {
 		var ret bool
@@ -162,6 +151,7 @@ func (o *LiveMigrationResponse) GetReadyForCutoverOk() (*bool, bool) {
 	if o == nil || IsNil(o.ReadyForCutover) {
 		return nil, false
 	}
+
 	return o.ReadyForCutover, true
 }
 
@@ -179,7 +169,7 @@ func (o *LiveMigrationResponse) SetReadyForCutover(v bool) {
 	o.ReadyForCutover = &v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// GetStatus returns the Status field value if set, zero value otherwise
 func (o *LiveMigrationResponse) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
 		var ret string
@@ -194,6 +184,7 @@ func (o *LiveMigrationResponse) GetStatusOk() (*string, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
+
 	return o.Status, true
 }
 
@@ -220,44 +211,5 @@ func (o LiveMigrationResponse) MarshalJSONWithoutReadOnly() ([]byte, error) {
 }
 func (o LiveMigrationResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.LagTimeSeconds.IsSet() {
-		toSerialize["lagTimeSeconds"] = o.LagTimeSeconds.Get()
-	}
 	return toSerialize, nil
-}
-
-type NullableLiveMigrationResponse struct {
-	value *LiveMigrationResponse
-	isSet bool
-}
-
-func (v NullableLiveMigrationResponse) Get() *LiveMigrationResponse {
-	return v.value
-}
-
-func (v *NullableLiveMigrationResponse) Set(val *LiveMigrationResponse) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableLiveMigrationResponse) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableLiveMigrationResponse) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableLiveMigrationResponse(val *LiveMigrationResponse) *NullableLiveMigrationResponse {
-	return &NullableLiveMigrationResponse{value: val, isSet: true}
-}
-
-func (v NullableLiveMigrationResponse) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableLiveMigrationResponse) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

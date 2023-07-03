@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the Group type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Group{}
-
 // Group struct for Group
 type Group struct {
 	// Quantity of MongoDB Cloud clusters deployed in this project.
@@ -103,7 +100,7 @@ func (o *Group) SetCreated(v time.Time) {
 	o.Created = v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *Group) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -118,6 +115,7 @@ func (o *Group) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -135,7 +133,7 @@ func (o *Group) SetId(v string) {
 	o.Id = &v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *Group) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -150,6 +148,7 @@ func (o *Group) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -215,7 +214,7 @@ func (o *Group) SetOrgId(v string) {
 	o.OrgId = v
 }
 
-// GetRegionUsageRestrictions returns the RegionUsageRestrictions field value if set, zero value otherwise.
+// GetRegionUsageRestrictions returns the RegionUsageRestrictions field value if set, zero value otherwise
 func (o *Group) GetRegionUsageRestrictions() string {
 	if o == nil || IsNil(o.RegionUsageRestrictions) {
 		var ret string
@@ -230,6 +229,7 @@ func (o *Group) GetRegionUsageRestrictionsOk() (*string, bool) {
 	if o == nil || IsNil(o.RegionUsageRestrictions) {
 		return nil, false
 	}
+
 	return o.RegionUsageRestrictions, true
 }
 
@@ -247,7 +247,7 @@ func (o *Group) SetRegionUsageRestrictions(v string) {
 	o.RegionUsageRestrictions = &v
 }
 
-// GetWithDefaultAlertsSettings returns the WithDefaultAlertsSettings field value if set, zero value otherwise.
+// GetWithDefaultAlertsSettings returns the WithDefaultAlertsSettings field value if set, zero value otherwise
 func (o *Group) GetWithDefaultAlertsSettings() bool {
 	if o == nil || IsNil(o.WithDefaultAlertsSettings) {
 		var ret bool
@@ -262,6 +262,7 @@ func (o *Group) GetWithDefaultAlertsSettingsOk() (*bool, bool) {
 	if o == nil || IsNil(o.WithDefaultAlertsSettings) {
 		return nil, false
 	}
+
 	return o.WithDefaultAlertsSettings, true
 }
 
@@ -297,40 +298,4 @@ func (o Group) ToMap() (map[string]interface{}, error) {
 		toSerialize["withDefaultAlertsSettings"] = o.WithDefaultAlertsSettings
 	}
 	return toSerialize, nil
-}
-
-type NullableGroup struct {
-	value *Group
-	isSet bool
-}
-
-func (v NullableGroup) Get() *Group {
-	return v.value
-}
-
-func (v *NullableGroup) Set(val *Group) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableGroup) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableGroup) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableGroup(val *Group) *NullableGroup {
-	return &NullableGroup{value: val, isSet: true}
-}
-
-func (v NullableGroup) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableGroup) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

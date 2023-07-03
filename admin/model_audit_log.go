@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the AuditLog type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AuditLog{}
-
 // AuditLog struct for AuditLog
 type AuditLog struct {
 	// Flag that indicates whether someone set auditing to track successful authentications. This only applies to the `\"atype\" : \"authCheck\"` audit filter. Setting this parameter to `true` degrades cluster performance.
@@ -93,7 +90,7 @@ func (o *AuditLog) SetAuditFilter(v string) {
 	o.AuditFilter = v
 }
 
-// GetConfigurationType returns the ConfigurationType field value if set, zero value otherwise.
+// GetConfigurationType returns the ConfigurationType field value if set, zero value otherwise
 func (o *AuditLog) GetConfigurationType() string {
 	if o == nil || IsNil(o.ConfigurationType) {
 		var ret string
@@ -108,6 +105,7 @@ func (o *AuditLog) GetConfigurationTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.ConfigurationType) {
 		return nil, false
 	}
+
 	return o.ConfigurationType, true
 }
 
@@ -162,40 +160,4 @@ func (o AuditLog) ToMap() (map[string]interface{}, error) {
 	toSerialize["auditFilter"] = o.AuditFilter
 	toSerialize["enabled"] = o.Enabled
 	return toSerialize, nil
-}
-
-type NullableAuditLog struct {
-	value *AuditLog
-	isSet bool
-}
-
-func (v NullableAuditLog) Get() *AuditLog {
-	return v.value
-}
-
-func (v *NullableAuditLog) Set(val *AuditLog) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableAuditLog) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableAuditLog) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableAuditLog(val *AuditLog) *NullableAuditLog {
-	return &NullableAuditLog{value: val, isSet: true}
-}
-
-func (v NullableAuditLog) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableAuditLog) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

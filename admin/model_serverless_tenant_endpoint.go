@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ServerlessTenantEndpoint type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ServerlessTenantEndpoint{}
-
 // ServerlessTenantEndpoint struct for ServerlessTenantEndpoint
 type ServerlessTenantEndpoint struct {
 	// Unique 24-hexadecimal digit string that identifies the private endpoint.
@@ -48,7 +45,7 @@ func NewServerlessTenantEndpointWithDefaults() *ServerlessTenantEndpoint {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *ServerlessTenantEndpoint) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -63,6 +60,7 @@ func (o *ServerlessTenantEndpoint) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -80,7 +78,7 @@ func (o *ServerlessTenantEndpoint) SetId(v string) {
 	o.Id = &v
 }
 
-// GetCloudProviderEndpointId returns the CloudProviderEndpointId field value if set, zero value otherwise.
+// GetCloudProviderEndpointId returns the CloudProviderEndpointId field value if set, zero value otherwise
 func (o *ServerlessTenantEndpoint) GetCloudProviderEndpointId() string {
 	if o == nil || IsNil(o.CloudProviderEndpointId) {
 		var ret string
@@ -95,6 +93,7 @@ func (o *ServerlessTenantEndpoint) GetCloudProviderEndpointIdOk() (*string, bool
 	if o == nil || IsNil(o.CloudProviderEndpointId) {
 		return nil, false
 	}
+
 	return o.CloudProviderEndpointId, true
 }
 
@@ -112,7 +111,7 @@ func (o *ServerlessTenantEndpoint) SetCloudProviderEndpointId(v string) {
 	o.CloudProviderEndpointId = &v
 }
 
-// GetComment returns the Comment field value if set, zero value otherwise.
+// GetComment returns the Comment field value if set, zero value otherwise
 func (o *ServerlessTenantEndpoint) GetComment() string {
 	if o == nil || IsNil(o.Comment) {
 		var ret string
@@ -127,6 +126,7 @@ func (o *ServerlessTenantEndpoint) GetCommentOk() (*string, bool) {
 	if o == nil || IsNil(o.Comment) {
 		return nil, false
 	}
+
 	return o.Comment, true
 }
 
@@ -144,7 +144,7 @@ func (o *ServerlessTenantEndpoint) SetComment(v string) {
 	o.Comment = &v
 }
 
-// GetEndpointServiceName returns the EndpointServiceName field value if set, zero value otherwise.
+// GetEndpointServiceName returns the EndpointServiceName field value if set, zero value otherwise
 func (o *ServerlessTenantEndpoint) GetEndpointServiceName() string {
 	if o == nil || IsNil(o.EndpointServiceName) {
 		var ret string
@@ -159,6 +159,7 @@ func (o *ServerlessTenantEndpoint) GetEndpointServiceNameOk() (*string, bool) {
 	if o == nil || IsNil(o.EndpointServiceName) {
 		return nil, false
 	}
+
 	return o.EndpointServiceName, true
 }
 
@@ -176,7 +177,7 @@ func (o *ServerlessTenantEndpoint) SetEndpointServiceName(v string) {
 	o.EndpointServiceName = &v
 }
 
-// GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise.
+// GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise
 func (o *ServerlessTenantEndpoint) GetErrorMessage() string {
 	if o == nil || IsNil(o.ErrorMessage) {
 		var ret string
@@ -191,6 +192,7 @@ func (o *ServerlessTenantEndpoint) GetErrorMessageOk() (*string, bool) {
 	if o == nil || IsNil(o.ErrorMessage) {
 		return nil, false
 	}
+
 	return o.ErrorMessage, true
 }
 
@@ -208,7 +210,7 @@ func (o *ServerlessTenantEndpoint) SetErrorMessage(v string) {
 	o.ErrorMessage = &v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// GetStatus returns the Status field value if set, zero value otherwise
 func (o *ServerlessTenantEndpoint) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
 		var ret string
@@ -223,6 +225,7 @@ func (o *ServerlessTenantEndpoint) GetStatusOk() (*string, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
+
 	return o.Status, true
 }
 
@@ -240,7 +243,7 @@ func (o *ServerlessTenantEndpoint) SetStatus(v string) {
 	o.Status = &v
 }
 
-// GetProviderName returns the ProviderName field value if set, zero value otherwise.
+// GetProviderName returns the ProviderName field value if set, zero value otherwise
 func (o *ServerlessTenantEndpoint) GetProviderName() string {
 	if o == nil || IsNil(o.ProviderName) {
 		var ret string
@@ -255,6 +258,7 @@ func (o *ServerlessTenantEndpoint) GetProviderNameOk() (*string, bool) {
 	if o == nil || IsNil(o.ProviderName) {
 		return nil, false
 	}
+
 	return o.ProviderName, true
 }
 
@@ -272,7 +276,7 @@ func (o *ServerlessTenantEndpoint) SetProviderName(v string) {
 	o.ProviderName = &v
 }
 
-// GetPrivateEndpointIpAddress returns the PrivateEndpointIpAddress field value if set, zero value otherwise.
+// GetPrivateEndpointIpAddress returns the PrivateEndpointIpAddress field value if set, zero value otherwise
 func (o *ServerlessTenantEndpoint) GetPrivateEndpointIpAddress() string {
 	if o == nil || IsNil(o.PrivateEndpointIpAddress) {
 		var ret string
@@ -287,6 +291,7 @@ func (o *ServerlessTenantEndpoint) GetPrivateEndpointIpAddressOk() (*string, boo
 	if o == nil || IsNil(o.PrivateEndpointIpAddress) {
 		return nil, false
 	}
+
 	return o.PrivateEndpointIpAddress, true
 }
 
@@ -304,7 +309,7 @@ func (o *ServerlessTenantEndpoint) SetPrivateEndpointIpAddress(v string) {
 	o.PrivateEndpointIpAddress = &v
 }
 
-// GetPrivateLinkServiceResourceId returns the PrivateLinkServiceResourceId field value if set, zero value otherwise.
+// GetPrivateLinkServiceResourceId returns the PrivateLinkServiceResourceId field value if set, zero value otherwise
 func (o *ServerlessTenantEndpoint) GetPrivateLinkServiceResourceId() string {
 	if o == nil || IsNil(o.PrivateLinkServiceResourceId) {
 		var ret string
@@ -319,6 +324,7 @@ func (o *ServerlessTenantEndpoint) GetPrivateLinkServiceResourceIdOk() (*string,
 	if o == nil || IsNil(o.PrivateLinkServiceResourceId) {
 		return nil, false
 	}
+
 	return o.PrivateLinkServiceResourceId, true
 }
 
@@ -346,40 +352,4 @@ func (o ServerlessTenantEndpoint) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o ServerlessTenantEndpoint) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableServerlessTenantEndpoint struct {
-	value *ServerlessTenantEndpoint
-	isSet bool
-}
-
-func (v NullableServerlessTenantEndpoint) Get() *ServerlessTenantEndpoint {
-	return v.value
-}
-
-func (v *NullableServerlessTenantEndpoint) Set(val *ServerlessTenantEndpoint) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableServerlessTenantEndpoint) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableServerlessTenantEndpoint) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableServerlessTenantEndpoint(val *ServerlessTenantEndpoint) *NullableServerlessTenantEndpoint {
-	return &NullableServerlessTenantEndpoint{value: val, isSet: true}
-}
-
-func (v NullableServerlessTenantEndpoint) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableServerlessTenantEndpoint) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

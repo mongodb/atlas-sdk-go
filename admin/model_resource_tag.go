@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ResourceTag type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ResourceTag{}
-
 // ResourceTag Key-value pair that tags and categorizes a MongoDB Cloud organization, project, or cluster. For example, `environment : production`.
 type ResourceTag struct {
 	// Constant that defines the set of the tag. For example, `environment` in the `environment : production` tag.
@@ -34,7 +31,7 @@ func NewResourceTagWithDefaults() *ResourceTag {
 	return &this
 }
 
-// GetKey returns the Key field value if set, zero value otherwise.
+// GetKey returns the Key field value if set, zero value otherwise
 func (o *ResourceTag) GetKey() string {
 	if o == nil || IsNil(o.Key) {
 		var ret string
@@ -49,6 +46,7 @@ func (o *ResourceTag) GetKeyOk() (*string, bool) {
 	if o == nil || IsNil(o.Key) {
 		return nil, false
 	}
+
 	return o.Key, true
 }
 
@@ -66,7 +64,7 @@ func (o *ResourceTag) SetKey(v string) {
 	o.Key = &v
 }
 
-// GetValue returns the Value field value if set, zero value otherwise.
+// GetValue returns the Value field value if set, zero value otherwise
 func (o *ResourceTag) GetValue() string {
 	if o == nil || IsNil(o.Value) {
 		var ret string
@@ -81,6 +79,7 @@ func (o *ResourceTag) GetValueOk() (*string, bool) {
 	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
+
 	return o.Value, true
 }
 
@@ -114,40 +113,4 @@ func (o ResourceTag) ToMap() (map[string]interface{}, error) {
 		toSerialize["value"] = o.Value
 	}
 	return toSerialize, nil
-}
-
-type NullableResourceTag struct {
-	value *ResourceTag
-	isSet bool
-}
-
-func (v NullableResourceTag) Get() *ResourceTag {
-	return v.value
-}
-
-func (v *NullableResourceTag) Set(val *ResourceTag) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableResourceTag) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableResourceTag) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableResourceTag(val *ResourceTag) *NullableResourceTag {
-	return &NullableResourceTag{value: val, isSet: true}
-}
-
-func (v NullableResourceTag) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableResourceTag) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the Criteria type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Criteria{}
-
 // Criteria Rules by which MongoDB MongoDB Cloud archives data.  Use the **criteria.type** field to choose how MongoDB Cloud selects data to archive. Choose data using the age of the data or a MongoDB query. **\"criteria.type\": \"DATE\"** selects documents to archive based on a date. **\"criteria.type\": \"CUSTOM\"** selects documents to archive based on a custom JSON query. MongoDB Cloud doesn't support **\"criteria.type\": \"CUSTOM\"** when **\"collectionType\": \"TIMESERIES\"**.
 type Criteria struct {
 	// Means by which MongoDB Cloud selects data to archive. Data can be chosen using the age of the data or a MongoDB query. **DATE** selects documents to archive based on a date. **CUSTOM** selects documents to archive based on a custom JSON query. MongoDB Cloud doesn't support **CUSTOM** when `\"collectionType\": \"TIMESERIES\"`.
@@ -44,7 +41,7 @@ func NewCriteriaWithDefaults() *Criteria {
 	return &this
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value if set, zero value otherwise
 func (o *Criteria) GetType() string {
 	if o == nil || IsNil(o.Type) {
 		var ret string
@@ -59,6 +56,7 @@ func (o *Criteria) GetTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
+
 	return o.Type, true
 }
 
@@ -76,7 +74,7 @@ func (o *Criteria) SetType(v string) {
 	o.Type = &v
 }
 
-// GetQuery returns the Query field value if set, zero value otherwise.
+// GetQuery returns the Query field value if set, zero value otherwise
 func (o *Criteria) GetQuery() string {
 	if o == nil || IsNil(o.Query) {
 		var ret string
@@ -91,6 +89,7 @@ func (o *Criteria) GetQueryOk() (*string, bool) {
 	if o == nil || IsNil(o.Query) {
 		return nil, false
 	}
+
 	return o.Query, true
 }
 
@@ -108,7 +107,7 @@ func (o *Criteria) SetQuery(v string) {
 	o.Query = &v
 }
 
-// GetDateField returns the DateField field value if set, zero value otherwise.
+// GetDateField returns the DateField field value if set, zero value otherwise
 func (o *Criteria) GetDateField() string {
 	if o == nil || IsNil(o.DateField) {
 		var ret string
@@ -123,6 +122,7 @@ func (o *Criteria) GetDateFieldOk() (*string, bool) {
 	if o == nil || IsNil(o.DateField) {
 		return nil, false
 	}
+
 	return o.DateField, true
 }
 
@@ -140,7 +140,7 @@ func (o *Criteria) SetDateField(v string) {
 	o.DateField = &v
 }
 
-// GetDateFormat returns the DateFormat field value if set, zero value otherwise.
+// GetDateFormat returns the DateFormat field value if set, zero value otherwise
 func (o *Criteria) GetDateFormat() string {
 	if o == nil || IsNil(o.DateFormat) {
 		var ret string
@@ -155,6 +155,7 @@ func (o *Criteria) GetDateFormatOk() (*string, bool) {
 	if o == nil || IsNil(o.DateFormat) {
 		return nil, false
 	}
+
 	return o.DateFormat, true
 }
 
@@ -172,7 +173,7 @@ func (o *Criteria) SetDateFormat(v string) {
 	o.DateFormat = &v
 }
 
-// GetExpireAfterDays returns the ExpireAfterDays field value if set, zero value otherwise.
+// GetExpireAfterDays returns the ExpireAfterDays field value if set, zero value otherwise
 func (o *Criteria) GetExpireAfterDays() int {
 	if o == nil || IsNil(o.ExpireAfterDays) {
 		var ret int
@@ -187,6 +188,7 @@ func (o *Criteria) GetExpireAfterDaysOk() (*int, bool) {
 	if o == nil || IsNil(o.ExpireAfterDays) {
 		return nil, false
 	}
+
 	return o.ExpireAfterDays, true
 }
 
@@ -229,40 +231,4 @@ func (o Criteria) ToMap() (map[string]interface{}, error) {
 		toSerialize["expireAfterDays"] = o.ExpireAfterDays
 	}
 	return toSerialize, nil
-}
-
-type NullableCriteria struct {
-	value *Criteria
-	isSet bool
-}
-
-func (v NullableCriteria) Get() *Criteria {
-	return v.value
-}
-
-func (v *NullableCriteria) Set(val *Criteria) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableCriteria) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableCriteria) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableCriteria(val *Criteria) *NullableCriteria {
-	return &NullableCriteria{value: val, isSet: true}
-}
-
-func (v NullableCriteria) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableCriteria) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the FederationIdentityProvider type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &FederationIdentityProvider{}
-
 // FederationIdentityProvider struct for FederationIdentityProvider
 type FederationIdentityProvider struct {
 	// URL that points to where to send the SAML response.
@@ -56,7 +53,7 @@ func NewFederationIdentityProviderWithDefaults() *FederationIdentityProvider {
 	return &this
 }
 
-// GetAcsUrl returns the AcsUrl field value if set, zero value otherwise.
+// GetAcsUrl returns the AcsUrl field value if set, zero value otherwise
 func (o *FederationIdentityProvider) GetAcsUrl() string {
 	if o == nil || IsNil(o.AcsUrl) {
 		var ret string
@@ -71,6 +68,7 @@ func (o *FederationIdentityProvider) GetAcsUrlOk() (*string, bool) {
 	if o == nil || IsNil(o.AcsUrl) {
 		return nil, false
 	}
+
 	return o.AcsUrl, true
 }
 
@@ -88,7 +86,7 @@ func (o *FederationIdentityProvider) SetAcsUrl(v string) {
 	o.AcsUrl = &v
 }
 
-// GetAssociatedDomains returns the AssociatedDomains field value if set, zero value otherwise.
+// GetAssociatedDomains returns the AssociatedDomains field value if set, zero value otherwise
 func (o *FederationIdentityProvider) GetAssociatedDomains() []string {
 	if o == nil || IsNil(o.AssociatedDomains) {
 		var ret []string
@@ -103,6 +101,7 @@ func (o *FederationIdentityProvider) GetAssociatedDomainsOk() ([]string, bool) {
 	if o == nil || IsNil(o.AssociatedDomains) {
 		return nil, false
 	}
+
 	return o.AssociatedDomains, true
 }
 
@@ -120,7 +119,7 @@ func (o *FederationIdentityProvider) SetAssociatedDomains(v []string) {
 	o.AssociatedDomains = v
 }
 
-// GetAssociatedOrgs returns the AssociatedOrgs field value if set, zero value otherwise.
+// GetAssociatedOrgs returns the AssociatedOrgs field value if set, zero value otherwise
 func (o *FederationIdentityProvider) GetAssociatedOrgs() []ConnectedOrgConfig {
 	if o == nil || IsNil(o.AssociatedOrgs) {
 		var ret []ConnectedOrgConfig
@@ -135,6 +134,7 @@ func (o *FederationIdentityProvider) GetAssociatedOrgsOk() ([]ConnectedOrgConfig
 	if o == nil || IsNil(o.AssociatedOrgs) {
 		return nil, false
 	}
+
 	return o.AssociatedOrgs, true
 }
 
@@ -152,7 +152,7 @@ func (o *FederationIdentityProvider) SetAssociatedOrgs(v []ConnectedOrgConfig) {
 	o.AssociatedOrgs = v
 }
 
-// GetAudienceUri returns the AudienceUri field value if set, zero value otherwise.
+// GetAudienceUri returns the AudienceUri field value if set, zero value otherwise
 func (o *FederationIdentityProvider) GetAudienceUri() string {
 	if o == nil || IsNil(o.AudienceUri) {
 		var ret string
@@ -167,6 +167,7 @@ func (o *FederationIdentityProvider) GetAudienceUriOk() (*string, bool) {
 	if o == nil || IsNil(o.AudienceUri) {
 		return nil, false
 	}
+
 	return o.AudienceUri, true
 }
 
@@ -184,7 +185,7 @@ func (o *FederationIdentityProvider) SetAudienceUri(v string) {
 	o.AudienceUri = &v
 }
 
-// GetDisplayName returns the DisplayName field value if set, zero value otherwise.
+// GetDisplayName returns the DisplayName field value if set, zero value otherwise
 func (o *FederationIdentityProvider) GetDisplayName() string {
 	if o == nil || IsNil(o.DisplayName) {
 		var ret string
@@ -199,6 +200,7 @@ func (o *FederationIdentityProvider) GetDisplayNameOk() (*string, bool) {
 	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
+
 	return o.DisplayName, true
 }
 
@@ -216,7 +218,7 @@ func (o *FederationIdentityProvider) SetDisplayName(v string) {
 	o.DisplayName = &v
 }
 
-// GetIssuerUri returns the IssuerUri field value if set, zero value otherwise.
+// GetIssuerUri returns the IssuerUri field value if set, zero value otherwise
 func (o *FederationIdentityProvider) GetIssuerUri() string {
 	if o == nil || IsNil(o.IssuerUri) {
 		var ret string
@@ -231,6 +233,7 @@ func (o *FederationIdentityProvider) GetIssuerUriOk() (*string, bool) {
 	if o == nil || IsNil(o.IssuerUri) {
 		return nil, false
 	}
+
 	return o.IssuerUri, true
 }
 
@@ -272,7 +275,7 @@ func (o *FederationIdentityProvider) SetOktaIdpId(v string) {
 	o.OktaIdpId = v
 }
 
-// GetPemFileInfo returns the PemFileInfo field value if set, zero value otherwise.
+// GetPemFileInfo returns the PemFileInfo field value if set, zero value otherwise
 func (o *FederationIdentityProvider) GetPemFileInfo() PemFileInfo {
 	if o == nil || IsNil(o.PemFileInfo) {
 		var ret PemFileInfo
@@ -287,6 +290,7 @@ func (o *FederationIdentityProvider) GetPemFileInfoOk() (*PemFileInfo, bool) {
 	if o == nil || IsNil(o.PemFileInfo) {
 		return nil, false
 	}
+
 	return o.PemFileInfo, true
 }
 
@@ -304,7 +308,7 @@ func (o *FederationIdentityProvider) SetPemFileInfo(v PemFileInfo) {
 	o.PemFileInfo = &v
 }
 
-// GetRequestBinding returns the RequestBinding field value if set, zero value otherwise.
+// GetRequestBinding returns the RequestBinding field value if set, zero value otherwise
 func (o *FederationIdentityProvider) GetRequestBinding() string {
 	if o == nil || IsNil(o.RequestBinding) {
 		var ret string
@@ -319,6 +323,7 @@ func (o *FederationIdentityProvider) GetRequestBindingOk() (*string, bool) {
 	if o == nil || IsNil(o.RequestBinding) {
 		return nil, false
 	}
+
 	return o.RequestBinding, true
 }
 
@@ -336,7 +341,7 @@ func (o *FederationIdentityProvider) SetRequestBinding(v string) {
 	o.RequestBinding = &v
 }
 
-// GetResponseSignatureAlgorithm returns the ResponseSignatureAlgorithm field value if set, zero value otherwise.
+// GetResponseSignatureAlgorithm returns the ResponseSignatureAlgorithm field value if set, zero value otherwise
 func (o *FederationIdentityProvider) GetResponseSignatureAlgorithm() string {
 	if o == nil || IsNil(o.ResponseSignatureAlgorithm) {
 		var ret string
@@ -351,6 +356,7 @@ func (o *FederationIdentityProvider) GetResponseSignatureAlgorithmOk() (*string,
 	if o == nil || IsNil(o.ResponseSignatureAlgorithm) {
 		return nil, false
 	}
+
 	return o.ResponseSignatureAlgorithm, true
 }
 
@@ -368,7 +374,7 @@ func (o *FederationIdentityProvider) SetResponseSignatureAlgorithm(v string) {
 	o.ResponseSignatureAlgorithm = &v
 }
 
-// GetSsoDebugEnabled returns the SsoDebugEnabled field value if set, zero value otherwise.
+// GetSsoDebugEnabled returns the SsoDebugEnabled field value if set, zero value otherwise
 func (o *FederationIdentityProvider) GetSsoDebugEnabled() bool {
 	if o == nil || IsNil(o.SsoDebugEnabled) {
 		var ret bool
@@ -383,6 +389,7 @@ func (o *FederationIdentityProvider) GetSsoDebugEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.SsoDebugEnabled) {
 		return nil, false
 	}
+
 	return o.SsoDebugEnabled, true
 }
 
@@ -400,7 +407,7 @@ func (o *FederationIdentityProvider) SetSsoDebugEnabled(v bool) {
 	o.SsoDebugEnabled = &v
 }
 
-// GetSsoUrl returns the SsoUrl field value if set, zero value otherwise.
+// GetSsoUrl returns the SsoUrl field value if set, zero value otherwise
 func (o *FederationIdentityProvider) GetSsoUrl() string {
 	if o == nil || IsNil(o.SsoUrl) {
 		var ret string
@@ -415,6 +422,7 @@ func (o *FederationIdentityProvider) GetSsoUrlOk() (*string, bool) {
 	if o == nil || IsNil(o.SsoUrl) {
 		return nil, false
 	}
+
 	return o.SsoUrl, true
 }
 
@@ -432,7 +440,7 @@ func (o *FederationIdentityProvider) SetSsoUrl(v string) {
 	o.SsoUrl = &v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// GetStatus returns the Status field value if set, zero value otherwise
 func (o *FederationIdentityProvider) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
 		var ret string
@@ -447,6 +455,7 @@ func (o *FederationIdentityProvider) GetStatusOk() (*string, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
+
 	return o.Status, true
 }
 
@@ -511,40 +520,4 @@ func (o FederationIdentityProvider) ToMap() (map[string]interface{}, error) {
 		toSerialize["status"] = o.Status
 	}
 	return toSerialize, nil
-}
-
-type NullableFederationIdentityProvider struct {
-	value *FederationIdentityProvider
-	isSet bool
-}
-
-func (v NullableFederationIdentityProvider) Get() *FederationIdentityProvider {
-	return v.value
-}
-
-func (v *NullableFederationIdentityProvider) Set(val *FederationIdentityProvider) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableFederationIdentityProvider) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableFederationIdentityProvider) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableFederationIdentityProvider(val *FederationIdentityProvider) *NullableFederationIdentityProvider {
-	return &NullableFederationIdentityProvider{value: val, isSet: true}
-}
-
-func (v NullableFederationIdentityProvider) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableFederationIdentityProvider) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

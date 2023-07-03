@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the DiskBackupShardedClusterSnapshotMember type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DiskBackupShardedClusterSnapshotMember{}
-
 // DiskBackupShardedClusterSnapshotMember struct for DiskBackupShardedClusterSnapshotMember
 type DiskBackupShardedClusterSnapshotMember struct {
 	// Human-readable label that identifies the cloud provider that stores this snapshot. The resource returns this parameter when `\"type\": \"replicaSet\"`.
@@ -121,40 +118,4 @@ func (o DiskBackupShardedClusterSnapshotMember) MarshalJSONWithoutReadOnly() ([]
 func (o DiskBackupShardedClusterSnapshotMember) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableDiskBackupShardedClusterSnapshotMember struct {
-	value *DiskBackupShardedClusterSnapshotMember
-	isSet bool
-}
-
-func (v NullableDiskBackupShardedClusterSnapshotMember) Get() *DiskBackupShardedClusterSnapshotMember {
-	return v.value
-}
-
-func (v *NullableDiskBackupShardedClusterSnapshotMember) Set(val *DiskBackupShardedClusterSnapshotMember) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableDiskBackupShardedClusterSnapshotMember) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableDiskBackupShardedClusterSnapshotMember) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableDiskBackupShardedClusterSnapshotMember(val *DiskBackupShardedClusterSnapshotMember) *NullableDiskBackupShardedClusterSnapshotMember {
-	return &NullableDiskBackupShardedClusterSnapshotMember{value: val, isSet: true}
-}
-
-func (v NullableDiskBackupShardedClusterSnapshotMember) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableDiskBackupShardedClusterSnapshotMember) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

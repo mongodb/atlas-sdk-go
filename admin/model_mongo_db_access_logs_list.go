@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the MongoDBAccessLogsList type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &MongoDBAccessLogsList{}
-
 // MongoDBAccessLogsList struct for MongoDBAccessLogsList
 type MongoDBAccessLogsList struct {
 	// Authentication attempt, one per object, made against the cluster.
@@ -32,7 +29,7 @@ func NewMongoDBAccessLogsListWithDefaults() *MongoDBAccessLogsList {
 	return &this
 }
 
-// GetAccessLogs returns the AccessLogs field value if set, zero value otherwise.
+// GetAccessLogs returns the AccessLogs field value if set, zero value otherwise
 func (o *MongoDBAccessLogsList) GetAccessLogs() []MongoDBAccessLogs {
 	if o == nil || IsNil(o.AccessLogs) {
 		var ret []MongoDBAccessLogs
@@ -47,6 +44,7 @@ func (o *MongoDBAccessLogsList) GetAccessLogsOk() ([]MongoDBAccessLogs, bool) {
 	if o == nil || IsNil(o.AccessLogs) {
 		return nil, false
 	}
+
 	return o.AccessLogs, true
 }
 
@@ -74,40 +72,4 @@ func (o MongoDBAccessLogsList) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o MongoDBAccessLogsList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableMongoDBAccessLogsList struct {
-	value *MongoDBAccessLogsList
-	isSet bool
-}
-
-func (v NullableMongoDBAccessLogsList) Get() *MongoDBAccessLogsList {
-	return v.value
-}
-
-func (v *NullableMongoDBAccessLogsList) Set(val *MongoDBAccessLogsList) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableMongoDBAccessLogsList) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableMongoDBAccessLogsList) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableMongoDBAccessLogsList(val *MongoDBAccessLogsList) *NullableMongoDBAccessLogsList {
-	return &NullableMongoDBAccessLogsList{value: val, isSet: true}
-}
-
-func (v NullableMongoDBAccessLogsList) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableMongoDBAccessLogsList) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

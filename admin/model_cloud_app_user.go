@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the CloudAppUser type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CloudAppUser{}
-
 // CloudAppUser struct for CloudAppUser
 type CloudAppUser struct {
 	// Two alphabet characters that identifies MongoDB Cloud user's geographic location. This parameter uses the ISO 3166-1a2 code format.
@@ -88,7 +85,7 @@ func (o *CloudAppUser) SetCountry(v string) {
 	o.Country = v
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise
 func (o *CloudAppUser) GetCreatedAt() time.Time {
 	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
@@ -103,6 +100,7 @@ func (o *CloudAppUser) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
+
 	return o.CreatedAt, true
 }
 
@@ -168,7 +166,7 @@ func (o *CloudAppUser) SetFirstName(v string) {
 	o.FirstName = v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *CloudAppUser) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -183,6 +181,7 @@ func (o *CloudAppUser) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -200,7 +199,7 @@ func (o *CloudAppUser) SetId(v string) {
 	o.Id = &v
 }
 
-// GetLastAuth returns the LastAuth field value if set, zero value otherwise.
+// GetLastAuth returns the LastAuth field value if set, zero value otherwise
 func (o *CloudAppUser) GetLastAuth() time.Time {
 	if o == nil || IsNil(o.LastAuth) {
 		var ret time.Time
@@ -215,6 +214,7 @@ func (o *CloudAppUser) GetLastAuthOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.LastAuth) {
 		return nil, false
 	}
+
 	return o.LastAuth, true
 }
 
@@ -256,7 +256,7 @@ func (o *CloudAppUser) SetLastName(v string) {
 	o.LastName = v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *CloudAppUser) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -271,6 +271,7 @@ func (o *CloudAppUser) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -336,7 +337,7 @@ func (o *CloudAppUser) SetPassword(v string) {
 	o.Password = v
 }
 
-// GetRoles returns the Roles field value if set, zero value otherwise.
+// GetRoles returns the Roles field value if set, zero value otherwise
 func (o *CloudAppUser) GetRoles() []CloudAccessRoleAssignment {
 	if o == nil || IsNil(o.Roles) {
 		var ret []CloudAccessRoleAssignment
@@ -351,6 +352,7 @@ func (o *CloudAppUser) GetRolesOk() ([]CloudAccessRoleAssignment, bool) {
 	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
+
 	return o.Roles, true
 }
 
@@ -368,7 +370,7 @@ func (o *CloudAppUser) SetRoles(v []CloudAccessRoleAssignment) {
 	o.Roles = v
 }
 
-// GetTeamIds returns the TeamIds field value if set, zero value otherwise.
+// GetTeamIds returns the TeamIds field value if set, zero value otherwise
 func (o *CloudAppUser) GetTeamIds() []string {
 	if o == nil || IsNil(o.TeamIds) {
 		var ret []string
@@ -383,6 +385,7 @@ func (o *CloudAppUser) GetTeamIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.TeamIds) {
 		return nil, false
 	}
+
 	return o.TeamIds, true
 }
 
@@ -444,40 +447,4 @@ func (o CloudAppUser) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["username"] = o.Username
 	return toSerialize, nil
-}
-
-type NullableCloudAppUser struct {
-	value *CloudAppUser
-	isSet bool
-}
-
-func (v NullableCloudAppUser) Get() *CloudAppUser {
-	return v.value
-}
-
-func (v *NullableCloudAppUser) Set(val *CloudAppUser) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableCloudAppUser) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableCloudAppUser) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableCloudAppUser(val *CloudAppUser) *NullableCloudAppUser {
-	return &NullableCloudAppUser{value: val, isSet: true}
-}
-
-func (v NullableCloudAppUser) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableCloudAppUser) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PaginatedNetworkAccess type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PaginatedNetworkAccess{}
-
 // PaginatedNetworkAccess struct for PaginatedNetworkAccess
 type PaginatedNetworkAccess struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -36,7 +33,7 @@ func NewPaginatedNetworkAccessWithDefaults() *PaginatedNetworkAccess {
 	return &this
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *PaginatedNetworkAccess) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -51,6 +48,7 @@ func (o *PaginatedNetworkAccess) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -68,7 +66,7 @@ func (o *PaginatedNetworkAccess) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetResults returns the Results field value if set, zero value otherwise.
+// GetResults returns the Results field value if set, zero value otherwise
 func (o *PaginatedNetworkAccess) GetResults() []NetworkPermissionEntry {
 	if o == nil || IsNil(o.Results) {
 		var ret []NetworkPermissionEntry
@@ -83,6 +81,7 @@ func (o *PaginatedNetworkAccess) GetResultsOk() ([]NetworkPermissionEntry, bool)
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
+
 	return o.Results, true
 }
 
@@ -100,7 +99,7 @@ func (o *PaginatedNetworkAccess) SetResults(v []NetworkPermissionEntry) {
 	o.Results = v
 }
 
-// GetTotalCount returns the TotalCount field value if set, zero value otherwise.
+// GetTotalCount returns the TotalCount field value if set, zero value otherwise
 func (o *PaginatedNetworkAccess) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int
@@ -115,6 +114,7 @@ func (o *PaginatedNetworkAccess) GetTotalCountOk() (*int, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
+
 	return o.TotalCount, true
 }
 
@@ -142,40 +142,4 @@ func (o PaginatedNetworkAccess) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o PaginatedNetworkAccess) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullablePaginatedNetworkAccess struct {
-	value *PaginatedNetworkAccess
-	isSet bool
-}
-
-func (v NullablePaginatedNetworkAccess) Get() *PaginatedNetworkAccess {
-	return v.value
-}
-
-func (v *NullablePaginatedNetworkAccess) Set(val *PaginatedNetworkAccess) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullablePaginatedNetworkAccess) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullablePaginatedNetworkAccess) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullablePaginatedNetworkAccess(val *PaginatedNetworkAccess) *NullablePaginatedNetworkAccess {
-	return &NullablePaginatedNetworkAccess{value: val, isSet: true}
-}
-
-func (v NullablePaginatedNetworkAccess) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullablePaginatedNetworkAccess) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

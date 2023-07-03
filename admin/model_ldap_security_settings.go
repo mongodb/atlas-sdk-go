@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the LDAPSecuritySettings type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &LDAPSecuritySettings{}
-
 // LDAPSecuritySettings Lightweight Directory Access Protocol (LDAP) over Transport Layer Security (TLS) configuration details that apply to the specified project.
 type LDAPSecuritySettings struct {
 	// Flag that indicates whether users can authenticate using an Lightweight Directory Access Protocol (LDAP) host.
@@ -58,7 +55,7 @@ func NewLDAPSecuritySettingsWithDefaults() *LDAPSecuritySettings {
 	return &this
 }
 
-// GetAuthenticationEnabled returns the AuthenticationEnabled field value if set, zero value otherwise.
+// GetAuthenticationEnabled returns the AuthenticationEnabled field value if set, zero value otherwise
 func (o *LDAPSecuritySettings) GetAuthenticationEnabled() bool {
 	if o == nil || IsNil(o.AuthenticationEnabled) {
 		var ret bool
@@ -73,6 +70,7 @@ func (o *LDAPSecuritySettings) GetAuthenticationEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.AuthenticationEnabled) {
 		return nil, false
 	}
+
 	return o.AuthenticationEnabled, true
 }
 
@@ -90,7 +88,7 @@ func (o *LDAPSecuritySettings) SetAuthenticationEnabled(v bool) {
 	o.AuthenticationEnabled = &v
 }
 
-// GetAuthorizationEnabled returns the AuthorizationEnabled field value if set, zero value otherwise.
+// GetAuthorizationEnabled returns the AuthorizationEnabled field value if set, zero value otherwise
 func (o *LDAPSecuritySettings) GetAuthorizationEnabled() bool {
 	if o == nil || IsNil(o.AuthorizationEnabled) {
 		var ret bool
@@ -105,6 +103,7 @@ func (o *LDAPSecuritySettings) GetAuthorizationEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.AuthorizationEnabled) {
 		return nil, false
 	}
+
 	return o.AuthorizationEnabled, true
 }
 
@@ -122,7 +121,7 @@ func (o *LDAPSecuritySettings) SetAuthorizationEnabled(v bool) {
 	o.AuthorizationEnabled = &v
 }
 
-// GetAuthzQueryTemplate returns the AuthzQueryTemplate field value if set, zero value otherwise.
+// GetAuthzQueryTemplate returns the AuthzQueryTemplate field value if set, zero value otherwise
 func (o *LDAPSecuritySettings) GetAuthzQueryTemplate() string {
 	if o == nil || IsNil(o.AuthzQueryTemplate) {
 		var ret string
@@ -137,6 +136,7 @@ func (o *LDAPSecuritySettings) GetAuthzQueryTemplateOk() (*string, bool) {
 	if o == nil || IsNil(o.AuthzQueryTemplate) {
 		return nil, false
 	}
+
 	return o.AuthzQueryTemplate, true
 }
 
@@ -154,7 +154,7 @@ func (o *LDAPSecuritySettings) SetAuthzQueryTemplate(v string) {
 	o.AuthzQueryTemplate = &v
 }
 
-// GetBindPassword returns the BindPassword field value if set, zero value otherwise.
+// GetBindPassword returns the BindPassword field value if set, zero value otherwise
 func (o *LDAPSecuritySettings) GetBindPassword() string {
 	if o == nil || IsNil(o.BindPassword) {
 		var ret string
@@ -169,6 +169,7 @@ func (o *LDAPSecuritySettings) GetBindPasswordOk() (*string, bool) {
 	if o == nil || IsNil(o.BindPassword) {
 		return nil, false
 	}
+
 	return o.BindPassword, true
 }
 
@@ -186,7 +187,7 @@ func (o *LDAPSecuritySettings) SetBindPassword(v string) {
 	o.BindPassword = &v
 }
 
-// GetBindUsername returns the BindUsername field value if set, zero value otherwise.
+// GetBindUsername returns the BindUsername field value if set, zero value otherwise
 func (o *LDAPSecuritySettings) GetBindUsername() string {
 	if o == nil || IsNil(o.BindUsername) {
 		var ret string
@@ -201,6 +202,7 @@ func (o *LDAPSecuritySettings) GetBindUsernameOk() (*string, bool) {
 	if o == nil || IsNil(o.BindUsername) {
 		return nil, false
 	}
+
 	return o.BindUsername, true
 }
 
@@ -218,7 +220,7 @@ func (o *LDAPSecuritySettings) SetBindUsername(v string) {
 	o.BindUsername = &v
 }
 
-// GetCaCertificate returns the CaCertificate field value if set, zero value otherwise.
+// GetCaCertificate returns the CaCertificate field value if set, zero value otherwise
 func (o *LDAPSecuritySettings) GetCaCertificate() string {
 	if o == nil || IsNil(o.CaCertificate) {
 		var ret string
@@ -233,6 +235,7 @@ func (o *LDAPSecuritySettings) GetCaCertificateOk() (*string, bool) {
 	if o == nil || IsNil(o.CaCertificate) {
 		return nil, false
 	}
+
 	return o.CaCertificate, true
 }
 
@@ -250,7 +253,7 @@ func (o *LDAPSecuritySettings) SetCaCertificate(v string) {
 	o.CaCertificate = &v
 }
 
-// GetHostname returns the Hostname field value if set, zero value otherwise.
+// GetHostname returns the Hostname field value if set, zero value otherwise
 func (o *LDAPSecuritySettings) GetHostname() string {
 	if o == nil || IsNil(o.Hostname) {
 		var ret string
@@ -265,6 +268,7 @@ func (o *LDAPSecuritySettings) GetHostnameOk() (*string, bool) {
 	if o == nil || IsNil(o.Hostname) {
 		return nil, false
 	}
+
 	return o.Hostname, true
 }
 
@@ -282,7 +286,7 @@ func (o *LDAPSecuritySettings) SetHostname(v string) {
 	o.Hostname = &v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *LDAPSecuritySettings) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -297,6 +301,7 @@ func (o *LDAPSecuritySettings) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -314,7 +319,7 @@ func (o *LDAPSecuritySettings) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetPort returns the Port field value if set, zero value otherwise.
+// GetPort returns the Port field value if set, zero value otherwise
 func (o *LDAPSecuritySettings) GetPort() int {
 	if o == nil || IsNil(o.Port) {
 		var ret int
@@ -329,6 +334,7 @@ func (o *LDAPSecuritySettings) GetPortOk() (*int, bool) {
 	if o == nil || IsNil(o.Port) {
 		return nil, false
 	}
+
 	return o.Port, true
 }
 
@@ -346,7 +352,7 @@ func (o *LDAPSecuritySettings) SetPort(v int) {
 	o.Port = &v
 }
 
-// GetUserToDNMapping returns the UserToDNMapping field value if set, zero value otherwise.
+// GetUserToDNMapping returns the UserToDNMapping field value if set, zero value otherwise
 func (o *LDAPSecuritySettings) GetUserToDNMapping() []UserToDNMapping {
 	if o == nil || IsNil(o.UserToDNMapping) {
 		var ret []UserToDNMapping
@@ -361,6 +367,7 @@ func (o *LDAPSecuritySettings) GetUserToDNMappingOk() ([]UserToDNMapping, bool) 
 	if o == nil || IsNil(o.UserToDNMapping) {
 		return nil, false
 	}
+
 	return o.UserToDNMapping, true
 }
 
@@ -415,40 +422,4 @@ func (o LDAPSecuritySettings) ToMap() (map[string]interface{}, error) {
 		toSerialize["userToDNMapping"] = o.UserToDNMapping
 	}
 	return toSerialize, nil
-}
-
-type NullableLDAPSecuritySettings struct {
-	value *LDAPSecuritySettings
-	isSet bool
-}
-
-func (v NullableLDAPSecuritySettings) Get() *LDAPSecuritySettings {
-	return v.value
-}
-
-func (v *NullableLDAPSecuritySettings) Set(val *LDAPSecuritySettings) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableLDAPSecuritySettings) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableLDAPSecuritySettings) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableLDAPSecuritySettings(val *LDAPSecuritySettings) *NullableLDAPSecuritySettings {
-	return &NullableLDAPSecuritySettings{value: val, isSet: true}
-}
-
-func (v NullableLDAPSecuritySettings) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableLDAPSecuritySettings) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

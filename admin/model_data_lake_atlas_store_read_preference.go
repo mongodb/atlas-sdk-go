@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the DataLakeAtlasStoreReadPreference type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DataLakeAtlasStoreReadPreference{}
-
 // DataLakeAtlasStoreReadPreference MongoDB Cloud cluster read preference, which describes how to route read requests to the cluster.
 type DataLakeAtlasStoreReadPreference struct {
 	// Maximum replication lag, or **staleness**, for reads from secondaries.
@@ -36,7 +33,7 @@ func NewDataLakeAtlasStoreReadPreferenceWithDefaults() *DataLakeAtlasStoreReadPr
 	return &this
 }
 
-// GetMaxStalenessSeconds returns the MaxStalenessSeconds field value if set, zero value otherwise.
+// GetMaxStalenessSeconds returns the MaxStalenessSeconds field value if set, zero value otherwise
 func (o *DataLakeAtlasStoreReadPreference) GetMaxStalenessSeconds() int {
 	if o == nil || IsNil(o.MaxStalenessSeconds) {
 		var ret int
@@ -51,6 +48,7 @@ func (o *DataLakeAtlasStoreReadPreference) GetMaxStalenessSecondsOk() (*int, boo
 	if o == nil || IsNil(o.MaxStalenessSeconds) {
 		return nil, false
 	}
+
 	return o.MaxStalenessSeconds, true
 }
 
@@ -68,7 +66,7 @@ func (o *DataLakeAtlasStoreReadPreference) SetMaxStalenessSeconds(v int) {
 	o.MaxStalenessSeconds = &v
 }
 
-// GetMode returns the Mode field value if set, zero value otherwise.
+// GetMode returns the Mode field value if set, zero value otherwise
 func (o *DataLakeAtlasStoreReadPreference) GetMode() string {
 	if o == nil || IsNil(o.Mode) {
 		var ret string
@@ -83,6 +81,7 @@ func (o *DataLakeAtlasStoreReadPreference) GetModeOk() (*string, bool) {
 	if o == nil || IsNil(o.Mode) {
 		return nil, false
 	}
+
 	return o.Mode, true
 }
 
@@ -100,7 +99,7 @@ func (o *DataLakeAtlasStoreReadPreference) SetMode(v string) {
 	o.Mode = &v
 }
 
-// GetTagSets returns the TagSets field value if set, zero value otherwise.
+// GetTagSets returns the TagSets field value if set, zero value otherwise
 func (o *DataLakeAtlasStoreReadPreference) GetTagSets() [][]DataLakeAtlasStoreReadPreferenceTag {
 	if o == nil || IsNil(o.TagSets) {
 		var ret [][]DataLakeAtlasStoreReadPreferenceTag
@@ -115,6 +114,7 @@ func (o *DataLakeAtlasStoreReadPreference) GetTagSetsOk() ([][]DataLakeAtlasStor
 	if o == nil || IsNil(o.TagSets) {
 		return nil, false
 	}
+
 	return o.TagSets, true
 }
 
@@ -151,40 +151,4 @@ func (o DataLakeAtlasStoreReadPreference) ToMap() (map[string]interface{}, error
 		toSerialize["tagSets"] = o.TagSets
 	}
 	return toSerialize, nil
-}
-
-type NullableDataLakeAtlasStoreReadPreference struct {
-	value *DataLakeAtlasStoreReadPreference
-	isSet bool
-}
-
-func (v NullableDataLakeAtlasStoreReadPreference) Get() *DataLakeAtlasStoreReadPreference {
-	return v.value
-}
-
-func (v *NullableDataLakeAtlasStoreReadPreference) Set(val *DataLakeAtlasStoreReadPreference) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableDataLakeAtlasStoreReadPreference) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableDataLakeAtlasStoreReadPreference) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableDataLakeAtlasStoreReadPreference(val *DataLakeAtlasStoreReadPreference) *NullableDataLakeAtlasStoreReadPreference {
-	return &NullableDataLakeAtlasStoreReadPreference{value: val, isSet: true}
-}
-
-func (v NullableDataLakeAtlasStoreReadPreference) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableDataLakeAtlasStoreReadPreference) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PerformanceAdvisorIndex type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PerformanceAdvisorIndex{}
-
 // PerformanceAdvisorIndex struct for PerformanceAdvisorIndex
 type PerformanceAdvisorIndex struct {
 	// The average size of an object in the collection of this index.
@@ -42,7 +39,7 @@ func NewPerformanceAdvisorIndexWithDefaults() *PerformanceAdvisorIndex {
 	return &this
 }
 
-// GetAvgObjSize returns the AvgObjSize field value if set, zero value otherwise.
+// GetAvgObjSize returns the AvgObjSize field value if set, zero value otherwise
 func (o *PerformanceAdvisorIndex) GetAvgObjSize() float64 {
 	if o == nil || IsNil(o.AvgObjSize) {
 		var ret float64
@@ -57,6 +54,7 @@ func (o *PerformanceAdvisorIndex) GetAvgObjSizeOk() (*float64, bool) {
 	if o == nil || IsNil(o.AvgObjSize) {
 		return nil, false
 	}
+
 	return o.AvgObjSize, true
 }
 
@@ -74,7 +72,7 @@ func (o *PerformanceAdvisorIndex) SetAvgObjSize(v float64) {
 	o.AvgObjSize = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *PerformanceAdvisorIndex) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -89,6 +87,7 @@ func (o *PerformanceAdvisorIndex) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -106,7 +105,7 @@ func (o *PerformanceAdvisorIndex) SetId(v string) {
 	o.Id = &v
 }
 
-// GetImpact returns the Impact field value if set, zero value otherwise.
+// GetImpact returns the Impact field value if set, zero value otherwise
 func (o *PerformanceAdvisorIndex) GetImpact() []string {
 	if o == nil || IsNil(o.Impact) {
 		var ret []string
@@ -121,6 +120,7 @@ func (o *PerformanceAdvisorIndex) GetImpactOk() ([]string, bool) {
 	if o == nil || IsNil(o.Impact) {
 		return nil, false
 	}
+
 	return o.Impact, true
 }
 
@@ -138,7 +138,7 @@ func (o *PerformanceAdvisorIndex) SetImpact(v []string) {
 	o.Impact = v
 }
 
-// GetIndex returns the Index field value if set, zero value otherwise.
+// GetIndex returns the Index field value if set, zero value otherwise
 func (o *PerformanceAdvisorIndex) GetIndex() []map[string]string {
 	if o == nil || IsNil(o.Index) {
 		var ret []map[string]string
@@ -153,6 +153,7 @@ func (o *PerformanceAdvisorIndex) GetIndexOk() ([]map[string]string, bool) {
 	if o == nil || IsNil(o.Index) {
 		return nil, false
 	}
+
 	return o.Index, true
 }
 
@@ -170,7 +171,7 @@ func (o *PerformanceAdvisorIndex) SetIndex(v []map[string]string) {
 	o.Index = v
 }
 
-// GetNamespace returns the Namespace field value if set, zero value otherwise.
+// GetNamespace returns the Namespace field value if set, zero value otherwise
 func (o *PerformanceAdvisorIndex) GetNamespace() string {
 	if o == nil || IsNil(o.Namespace) {
 		var ret string
@@ -185,6 +186,7 @@ func (o *PerformanceAdvisorIndex) GetNamespaceOk() (*string, bool) {
 	if o == nil || IsNil(o.Namespace) {
 		return nil, false
 	}
+
 	return o.Namespace, true
 }
 
@@ -202,7 +204,7 @@ func (o *PerformanceAdvisorIndex) SetNamespace(v string) {
 	o.Namespace = &v
 }
 
-// GetWeight returns the Weight field value if set, zero value otherwise.
+// GetWeight returns the Weight field value if set, zero value otherwise
 func (o *PerformanceAdvisorIndex) GetWeight() float64 {
 	if o == nil || IsNil(o.Weight) {
 		var ret float64
@@ -217,6 +219,7 @@ func (o *PerformanceAdvisorIndex) GetWeightOk() (*float64, bool) {
 	if o == nil || IsNil(o.Weight) {
 		return nil, false
 	}
+
 	return o.Weight, true
 }
 
@@ -244,40 +247,4 @@ func (o PerformanceAdvisorIndex) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o PerformanceAdvisorIndex) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullablePerformanceAdvisorIndex struct {
-	value *PerformanceAdvisorIndex
-	isSet bool
-}
-
-func (v NullablePerformanceAdvisorIndex) Get() *PerformanceAdvisorIndex {
-	return v.value
-}
-
-func (v *NullablePerformanceAdvisorIndex) Set(val *PerformanceAdvisorIndex) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullablePerformanceAdvisorIndex) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullablePerformanceAdvisorIndex) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullablePerformanceAdvisorIndex(val *PerformanceAdvisorIndex) *NullablePerformanceAdvisorIndex {
-	return &NullablePerformanceAdvisorIndex{value: val, isSet: true}
-}
-
-func (v NullablePerformanceAdvisorIndex) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullablePerformanceAdvisorIndex) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

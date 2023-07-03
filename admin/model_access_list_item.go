@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the AccessListItem type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AccessListItem{}
-
 // AccessListItem struct for AccessListItem
 type AccessListItem struct {
 	// Range of IP addresses in Classless Inter-Domain Routing (CIDR) notation that found in this project's access list.
@@ -35,7 +32,7 @@ func NewAccessListItemWithDefaults() *AccessListItem {
 	return &this
 }
 
-// GetCidrBlock returns the CidrBlock field value if set, zero value otherwise.
+// GetCidrBlock returns the CidrBlock field value if set, zero value otherwise
 func (o *AccessListItem) GetCidrBlock() string {
 	if o == nil || IsNil(o.CidrBlock) {
 		var ret string
@@ -50,6 +47,7 @@ func (o *AccessListItem) GetCidrBlockOk() (*string, bool) {
 	if o == nil || IsNil(o.CidrBlock) {
 		return nil, false
 	}
+
 	return o.CidrBlock, true
 }
 
@@ -101,40 +99,4 @@ func (o AccessListItem) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o AccessListItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableAccessListItem struct {
-	value *AccessListItem
-	isSet bool
-}
-
-func (v NullableAccessListItem) Get() *AccessListItem {
-	return v.value
-}
-
-func (v *NullableAccessListItem) Set(val *AccessListItem) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableAccessListItem) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableAccessListItem) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableAccessListItem(val *AccessListItem) *NullableAccessListItem {
-	return &NullableAccessListItem{value: val, isSet: true}
-}
-
-func (v NullableAccessListItem) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableAccessListItem) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

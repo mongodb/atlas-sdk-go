@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PaginatedPrivateNetworkEndpointIdEntry type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PaginatedPrivateNetworkEndpointIdEntry{}
-
 // PaginatedPrivateNetworkEndpointIdEntry struct for PaginatedPrivateNetworkEndpointIdEntry
 type PaginatedPrivateNetworkEndpointIdEntry struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -36,7 +33,7 @@ func NewPaginatedPrivateNetworkEndpointIdEntryWithDefaults() *PaginatedPrivateNe
 	return &this
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *PaginatedPrivateNetworkEndpointIdEntry) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -51,6 +48,7 @@ func (o *PaginatedPrivateNetworkEndpointIdEntry) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -68,7 +66,7 @@ func (o *PaginatedPrivateNetworkEndpointIdEntry) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetResults returns the Results field value if set, zero value otherwise.
+// GetResults returns the Results field value if set, zero value otherwise
 func (o *PaginatedPrivateNetworkEndpointIdEntry) GetResults() []PrivateNetworkEndpointIdEntry {
 	if o == nil || IsNil(o.Results) {
 		var ret []PrivateNetworkEndpointIdEntry
@@ -83,6 +81,7 @@ func (o *PaginatedPrivateNetworkEndpointIdEntry) GetResultsOk() ([]PrivateNetwor
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
+
 	return o.Results, true
 }
 
@@ -100,7 +99,7 @@ func (o *PaginatedPrivateNetworkEndpointIdEntry) SetResults(v []PrivateNetworkEn
 	o.Results = v
 }
 
-// GetTotalCount returns the TotalCount field value if set, zero value otherwise.
+// GetTotalCount returns the TotalCount field value if set, zero value otherwise
 func (o *PaginatedPrivateNetworkEndpointIdEntry) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int
@@ -115,6 +114,7 @@ func (o *PaginatedPrivateNetworkEndpointIdEntry) GetTotalCountOk() (*int, bool) 
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
+
 	return o.TotalCount, true
 }
 
@@ -142,40 +142,4 @@ func (o PaginatedPrivateNetworkEndpointIdEntry) MarshalJSONWithoutReadOnly() ([]
 func (o PaginatedPrivateNetworkEndpointIdEntry) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullablePaginatedPrivateNetworkEndpointIdEntry struct {
-	value *PaginatedPrivateNetworkEndpointIdEntry
-	isSet bool
-}
-
-func (v NullablePaginatedPrivateNetworkEndpointIdEntry) Get() *PaginatedPrivateNetworkEndpointIdEntry {
-	return v.value
-}
-
-func (v *NullablePaginatedPrivateNetworkEndpointIdEntry) Set(val *PaginatedPrivateNetworkEndpointIdEntry) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullablePaginatedPrivateNetworkEndpointIdEntry) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullablePaginatedPrivateNetworkEndpointIdEntry) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullablePaginatedPrivateNetworkEndpointIdEntry(val *PaginatedPrivateNetworkEndpointIdEntry) *NullablePaginatedPrivateNetworkEndpointIdEntry {
-	return &NullablePaginatedPrivateNetworkEndpointIdEntry{value: val, isSet: true}
-}
-
-func (v NullablePaginatedPrivateNetworkEndpointIdEntry) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullablePaginatedPrivateNetworkEndpointIdEntry) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

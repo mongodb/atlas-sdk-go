@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the LinkAtlas type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &LinkAtlas{}
-
 // LinkAtlas struct for LinkAtlas
 type LinkAtlas struct {
 	// Uniform Resource Locator (URL) that points another API resource to which this response has some relationship. This URL often begins with `https://cloud.mongodb.com/api/atlas`.
@@ -34,7 +31,7 @@ func NewLinkAtlasWithDefaults() *LinkAtlas {
 	return &this
 }
 
-// GetHref returns the Href field value if set, zero value otherwise.
+// GetHref returns the Href field value if set, zero value otherwise
 func (o *LinkAtlas) GetHref() string {
 	if o == nil || IsNil(o.Href) {
 		var ret string
@@ -49,6 +46,7 @@ func (o *LinkAtlas) GetHrefOk() (*string, bool) {
 	if o == nil || IsNil(o.Href) {
 		return nil, false
 	}
+
 	return o.Href, true
 }
 
@@ -66,7 +64,7 @@ func (o *LinkAtlas) SetHref(v string) {
 	o.Href = &v
 }
 
-// GetRel returns the Rel field value if set, zero value otherwise.
+// GetRel returns the Rel field value if set, zero value otherwise
 func (o *LinkAtlas) GetRel() string {
 	if o == nil || IsNil(o.Rel) {
 		var ret string
@@ -81,6 +79,7 @@ func (o *LinkAtlas) GetRelOk() (*string, bool) {
 	if o == nil || IsNil(o.Rel) {
 		return nil, false
 	}
+
 	return o.Rel, true
 }
 
@@ -114,40 +113,4 @@ func (o LinkAtlas) ToMap() (map[string]interface{}, error) {
 		toSerialize["rel"] = o.Rel
 	}
 	return toSerialize, nil
-}
-
-type NullableLinkAtlas struct {
-	value *LinkAtlas
-	isSet bool
-}
-
-func (v NullableLinkAtlas) Get() *LinkAtlas {
-	return v.value
-}
-
-func (v *NullableLinkAtlas) Set(val *LinkAtlas) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableLinkAtlas) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableLinkAtlas) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableLinkAtlas(val *LinkAtlas) *NullableLinkAtlas {
-	return &NullableLinkAtlas{value: val, isSet: true}
-}
-
-func (v NullableLinkAtlas) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableLinkAtlas) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

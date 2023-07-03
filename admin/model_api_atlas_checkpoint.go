@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the ApiAtlasCheckpoint type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ApiAtlasCheckpoint{}
-
 // ApiAtlasCheckpoint struct for ApiAtlasCheckpoint
 type ApiAtlasCheckpoint struct {
 	// Unique 24-hexadecimal digit string that identifies the cluster that contains the checkpoint.
@@ -49,7 +46,7 @@ func NewApiAtlasCheckpointWithDefaults() *ApiAtlasCheckpoint {
 	return &this
 }
 
-// GetClusterId returns the ClusterId field value if set, zero value otherwise.
+// GetClusterId returns the ClusterId field value if set, zero value otherwise
 func (o *ApiAtlasCheckpoint) GetClusterId() string {
 	if o == nil || IsNil(o.ClusterId) {
 		var ret string
@@ -64,6 +61,7 @@ func (o *ApiAtlasCheckpoint) GetClusterIdOk() (*string, bool) {
 	if o == nil || IsNil(o.ClusterId) {
 		return nil, false
 	}
+
 	return o.ClusterId, true
 }
 
@@ -81,7 +79,7 @@ func (o *ApiAtlasCheckpoint) SetClusterId(v string) {
 	o.ClusterId = &v
 }
 
-// GetCompleted returns the Completed field value if set, zero value otherwise.
+// GetCompleted returns the Completed field value if set, zero value otherwise
 func (o *ApiAtlasCheckpoint) GetCompleted() time.Time {
 	if o == nil || IsNil(o.Completed) {
 		var ret time.Time
@@ -96,6 +94,7 @@ func (o *ApiAtlasCheckpoint) GetCompletedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Completed) {
 		return nil, false
 	}
+
 	return o.Completed, true
 }
 
@@ -113,7 +112,7 @@ func (o *ApiAtlasCheckpoint) SetCompleted(v time.Time) {
 	o.Completed = &v
 }
 
-// GetGroupId returns the GroupId field value if set, zero value otherwise.
+// GetGroupId returns the GroupId field value if set, zero value otherwise
 func (o *ApiAtlasCheckpoint) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
 		var ret string
@@ -128,6 +127,7 @@ func (o *ApiAtlasCheckpoint) GetGroupIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupId) {
 		return nil, false
 	}
+
 	return o.GroupId, true
 }
 
@@ -145,7 +145,7 @@ func (o *ApiAtlasCheckpoint) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *ApiAtlasCheckpoint) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -160,6 +160,7 @@ func (o *ApiAtlasCheckpoint) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -177,7 +178,7 @@ func (o *ApiAtlasCheckpoint) SetId(v string) {
 	o.Id = &v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *ApiAtlasCheckpoint) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -192,6 +193,7 @@ func (o *ApiAtlasCheckpoint) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -209,7 +211,7 @@ func (o *ApiAtlasCheckpoint) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetParts returns the Parts field value if set, zero value otherwise.
+// GetParts returns the Parts field value if set, zero value otherwise
 func (o *ApiAtlasCheckpoint) GetParts() []ApiCheckpointPart {
 	if o == nil || IsNil(o.Parts) {
 		var ret []ApiCheckpointPart
@@ -224,6 +226,7 @@ func (o *ApiAtlasCheckpoint) GetPartsOk() ([]ApiCheckpointPart, bool) {
 	if o == nil || IsNil(o.Parts) {
 		return nil, false
 	}
+
 	return o.Parts, true
 }
 
@@ -241,7 +244,7 @@ func (o *ApiAtlasCheckpoint) SetParts(v []ApiCheckpointPart) {
 	o.Parts = v
 }
 
-// GetRestorable returns the Restorable field value if set, zero value otherwise.
+// GetRestorable returns the Restorable field value if set, zero value otherwise
 func (o *ApiAtlasCheckpoint) GetRestorable() bool {
 	if o == nil || IsNil(o.Restorable) {
 		var ret bool
@@ -256,6 +259,7 @@ func (o *ApiAtlasCheckpoint) GetRestorableOk() (*bool, bool) {
 	if o == nil || IsNil(o.Restorable) {
 		return nil, false
 	}
+
 	return o.Restorable, true
 }
 
@@ -273,7 +277,7 @@ func (o *ApiAtlasCheckpoint) SetRestorable(v bool) {
 	o.Restorable = &v
 }
 
-// GetStarted returns the Started field value if set, zero value otherwise.
+// GetStarted returns the Started field value if set, zero value otherwise
 func (o *ApiAtlasCheckpoint) GetStarted() time.Time {
 	if o == nil || IsNil(o.Started) {
 		var ret time.Time
@@ -288,6 +292,7 @@ func (o *ApiAtlasCheckpoint) GetStartedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Started) {
 		return nil, false
 	}
+
 	return o.Started, true
 }
 
@@ -305,7 +310,7 @@ func (o *ApiAtlasCheckpoint) SetStarted(v time.Time) {
 	o.Started = &v
 }
 
-// GetTimestamp returns the Timestamp field value if set, zero value otherwise.
+// GetTimestamp returns the Timestamp field value if set, zero value otherwise
 func (o *ApiAtlasCheckpoint) GetTimestamp() time.Time {
 	if o == nil || IsNil(o.Timestamp) {
 		var ret time.Time
@@ -320,6 +325,7 @@ func (o *ApiAtlasCheckpoint) GetTimestampOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Timestamp) {
 		return nil, false
 	}
+
 	return o.Timestamp, true
 }
 
@@ -347,40 +353,4 @@ func (o ApiAtlasCheckpoint) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o ApiAtlasCheckpoint) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableApiAtlasCheckpoint struct {
-	value *ApiAtlasCheckpoint
-	isSet bool
-}
-
-func (v NullableApiAtlasCheckpoint) Get() *ApiAtlasCheckpoint {
-	return v.value
-}
-
-func (v *NullableApiAtlasCheckpoint) Set(val *ApiAtlasCheckpoint) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableApiAtlasCheckpoint) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableApiAtlasCheckpoint) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableApiAtlasCheckpoint(val *ApiAtlasCheckpoint) *NullableApiAtlasCheckpoint {
-	return &NullableApiAtlasCheckpoint{value: val, isSet: true}
-}
-
-func (v NullableApiAtlasCheckpoint) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableApiAtlasCheckpoint) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the CloudDatabaseUser type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CloudDatabaseUser{}
-
 // CloudDatabaseUser struct for CloudDatabaseUser
 type CloudDatabaseUser struct {
 	// Human-readable label that indicates whether the new database user authenticates with the Amazon Web Services (AWS) Identity and Access Management (IAM) credentials associated with the user or the user's role.
@@ -78,7 +75,7 @@ func NewCloudDatabaseUserWithDefaults() *CloudDatabaseUser {
 	return &this
 }
 
-// GetAwsIAMType returns the AwsIAMType field value if set, zero value otherwise.
+// GetAwsIAMType returns the AwsIAMType field value if set, zero value otherwise
 func (o *CloudDatabaseUser) GetAwsIAMType() string {
 	if o == nil || IsNil(o.AwsIAMType) {
 		var ret string
@@ -93,6 +90,7 @@ func (o *CloudDatabaseUser) GetAwsIAMTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.AwsIAMType) {
 		return nil, false
 	}
+
 	return o.AwsIAMType, true
 }
 
@@ -134,7 +132,7 @@ func (o *CloudDatabaseUser) SetDatabaseName(v string) {
 	o.DatabaseName = v
 }
 
-// GetDeleteAfterDate returns the DeleteAfterDate field value if set, zero value otherwise.
+// GetDeleteAfterDate returns the DeleteAfterDate field value if set, zero value otherwise
 func (o *CloudDatabaseUser) GetDeleteAfterDate() time.Time {
 	if o == nil || IsNil(o.DeleteAfterDate) {
 		var ret time.Time
@@ -149,6 +147,7 @@ func (o *CloudDatabaseUser) GetDeleteAfterDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.DeleteAfterDate) {
 		return nil, false
 	}
+
 	return o.DeleteAfterDate, true
 }
 
@@ -190,7 +189,7 @@ func (o *CloudDatabaseUser) SetGroupId(v string) {
 	o.GroupId = v
 }
 
-// GetLabels returns the Labels field value if set, zero value otherwise.
+// GetLabels returns the Labels field value if set, zero value otherwise
 func (o *CloudDatabaseUser) GetLabels() []ComponentLabel {
 	if o == nil || IsNil(o.Labels) {
 		var ret []ComponentLabel
@@ -205,6 +204,7 @@ func (o *CloudDatabaseUser) GetLabelsOk() ([]ComponentLabel, bool) {
 	if o == nil || IsNil(o.Labels) {
 		return nil, false
 	}
+
 	return o.Labels, true
 }
 
@@ -222,7 +222,7 @@ func (o *CloudDatabaseUser) SetLabels(v []ComponentLabel) {
 	o.Labels = v
 }
 
-// GetLdapAuthType returns the LdapAuthType field value if set, zero value otherwise.
+// GetLdapAuthType returns the LdapAuthType field value if set, zero value otherwise
 func (o *CloudDatabaseUser) GetLdapAuthType() string {
 	if o == nil || IsNil(o.LdapAuthType) {
 		var ret string
@@ -237,6 +237,7 @@ func (o *CloudDatabaseUser) GetLdapAuthTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.LdapAuthType) {
 		return nil, false
 	}
+
 	return o.LdapAuthType, true
 }
 
@@ -254,7 +255,7 @@ func (o *CloudDatabaseUser) SetLdapAuthType(v string) {
 	o.LdapAuthType = &v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *CloudDatabaseUser) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -269,6 +270,7 @@ func (o *CloudDatabaseUser) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -286,7 +288,7 @@ func (o *CloudDatabaseUser) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetOidcAuthType returns the OidcAuthType field value if set, zero value otherwise.
+// GetOidcAuthType returns the OidcAuthType field value if set, zero value otherwise
 func (o *CloudDatabaseUser) GetOidcAuthType() string {
 	if o == nil || IsNil(o.OidcAuthType) {
 		var ret string
@@ -301,6 +303,7 @@ func (o *CloudDatabaseUser) GetOidcAuthTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.OidcAuthType) {
 		return nil, false
 	}
+
 	return o.OidcAuthType, true
 }
 
@@ -318,7 +321,7 @@ func (o *CloudDatabaseUser) SetOidcAuthType(v string) {
 	o.OidcAuthType = &v
 }
 
-// GetPassword returns the Password field value if set, zero value otherwise.
+// GetPassword returns the Password field value if set, zero value otherwise
 func (o *CloudDatabaseUser) GetPassword() string {
 	if o == nil || IsNil(o.Password) {
 		var ret string
@@ -333,6 +336,7 @@ func (o *CloudDatabaseUser) GetPasswordOk() (*string, bool) {
 	if o == nil || IsNil(o.Password) {
 		return nil, false
 	}
+
 	return o.Password, true
 }
 
@@ -350,7 +354,7 @@ func (o *CloudDatabaseUser) SetPassword(v string) {
 	o.Password = &v
 }
 
-// GetRoles returns the Roles field value if set, zero value otherwise.
+// GetRoles returns the Roles field value if set, zero value otherwise
 func (o *CloudDatabaseUser) GetRoles() []DatabaseUserRole {
 	if o == nil || IsNil(o.Roles) {
 		var ret []DatabaseUserRole
@@ -365,6 +369,7 @@ func (o *CloudDatabaseUser) GetRolesOk() ([]DatabaseUserRole, bool) {
 	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
+
 	return o.Roles, true
 }
 
@@ -382,7 +387,7 @@ func (o *CloudDatabaseUser) SetRoles(v []DatabaseUserRole) {
 	o.Roles = v
 }
 
-// GetScopes returns the Scopes field value if set, zero value otherwise.
+// GetScopes returns the Scopes field value if set, zero value otherwise
 func (o *CloudDatabaseUser) GetScopes() []UserScope {
 	if o == nil || IsNil(o.Scopes) {
 		var ret []UserScope
@@ -397,6 +402,7 @@ func (o *CloudDatabaseUser) GetScopesOk() ([]UserScope, bool) {
 	if o == nil || IsNil(o.Scopes) {
 		return nil, false
 	}
+
 	return o.Scopes, true
 }
 
@@ -438,7 +444,7 @@ func (o *CloudDatabaseUser) SetUsername(v string) {
 	o.Username = v
 }
 
-// GetX509Type returns the X509Type field value if set, zero value otherwise.
+// GetX509Type returns the X509Type field value if set, zero value otherwise
 func (o *CloudDatabaseUser) GetX509Type() string {
 	if o == nil || IsNil(o.X509Type) {
 		var ret string
@@ -453,6 +459,7 @@ func (o *CloudDatabaseUser) GetX509TypeOk() (*string, bool) {
 	if o == nil || IsNil(o.X509Type) {
 		return nil, false
 	}
+
 	return o.X509Type, true
 }
 
@@ -510,40 +517,4 @@ func (o CloudDatabaseUser) ToMap() (map[string]interface{}, error) {
 		toSerialize["x509Type"] = o.X509Type
 	}
 	return toSerialize, nil
-}
-
-type NullableCloudDatabaseUser struct {
-	value *CloudDatabaseUser
-	isSet bool
-}
-
-func (v NullableCloudDatabaseUser) Get() *CloudDatabaseUser {
-	return v.value
-}
-
-func (v *NullableCloudDatabaseUser) Set(val *CloudDatabaseUser) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableCloudDatabaseUser) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableCloudDatabaseUser) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableCloudDatabaseUser(val *CloudDatabaseUser) *NullableCloudDatabaseUser {
-	return &NullableCloudDatabaseUser{value: val, isSet: true}
-}
-
-func (v NullableCloudDatabaseUser) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableCloudDatabaseUser) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

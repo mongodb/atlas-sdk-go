@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the TriggerIngestionPipelineRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &TriggerIngestionPipelineRequest{}
-
 // TriggerIngestionPipelineRequest struct for TriggerIngestionPipelineRequest
 type TriggerIngestionPipelineRequest struct {
 	// Unique 24-hexadecimal character string that identifies the snapshot.
@@ -68,40 +65,4 @@ func (o TriggerIngestionPipelineRequest) ToMap() (map[string]interface{}, error)
 	toSerialize := map[string]interface{}{}
 	toSerialize["snapshotId"] = o.SnapshotId
 	return toSerialize, nil
-}
-
-type NullableTriggerIngestionPipelineRequest struct {
-	value *TriggerIngestionPipelineRequest
-	isSet bool
-}
-
-func (v NullableTriggerIngestionPipelineRequest) Get() *TriggerIngestionPipelineRequest {
-	return v.value
-}
-
-func (v *NullableTriggerIngestionPipelineRequest) Set(val *TriggerIngestionPipelineRequest) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableTriggerIngestionPipelineRequest) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableTriggerIngestionPipelineRequest) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableTriggerIngestionPipelineRequest(val *TriggerIngestionPipelineRequest) *NullableTriggerIngestionPipelineRequest {
-	return &NullableTriggerIngestionPipelineRequest{value: val, isSet: true}
-}
-
-func (v NullableTriggerIngestionPipelineRequest) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableTriggerIngestionPipelineRequest) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ServerlessConnectionStringsPrivateEndpointItem type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ServerlessConnectionStringsPrivateEndpointItem{}
-
 // ServerlessConnectionStringsPrivateEndpointItem Details of a private endpoint deployed for this serverless instance.
 type ServerlessConnectionStringsPrivateEndpointItem struct {
 	// Unique string that the cloud provider uses to identify the private endpoint.
@@ -36,7 +33,7 @@ func NewServerlessConnectionStringsPrivateEndpointItemWithDefaults() *Serverless
 	return &this
 }
 
-// GetEndpointId returns the EndpointId field value if set, zero value otherwise.
+// GetEndpointId returns the EndpointId field value if set, zero value otherwise
 func (o *ServerlessConnectionStringsPrivateEndpointItem) GetEndpointId() string {
 	if o == nil || IsNil(o.EndpointId) {
 		var ret string
@@ -51,6 +48,7 @@ func (o *ServerlessConnectionStringsPrivateEndpointItem) GetEndpointIdOk() (*str
 	if o == nil || IsNil(o.EndpointId) {
 		return nil, false
 	}
+
 	return o.EndpointId, true
 }
 
@@ -68,7 +66,7 @@ func (o *ServerlessConnectionStringsPrivateEndpointItem) SetEndpointId(v string)
 	o.EndpointId = &v
 }
 
-// GetProviderName returns the ProviderName field value if set, zero value otherwise.
+// GetProviderName returns the ProviderName field value if set, zero value otherwise
 func (o *ServerlessConnectionStringsPrivateEndpointItem) GetProviderName() string {
 	if o == nil || IsNil(o.ProviderName) {
 		var ret string
@@ -83,6 +81,7 @@ func (o *ServerlessConnectionStringsPrivateEndpointItem) GetProviderNameOk() (*s
 	if o == nil || IsNil(o.ProviderName) {
 		return nil, false
 	}
+
 	return o.ProviderName, true
 }
 
@@ -100,7 +99,7 @@ func (o *ServerlessConnectionStringsPrivateEndpointItem) SetProviderName(v strin
 	o.ProviderName = &v
 }
 
-// GetRegion returns the Region field value if set, zero value otherwise.
+// GetRegion returns the Region field value if set, zero value otherwise
 func (o *ServerlessConnectionStringsPrivateEndpointItem) GetRegion() string {
 	if o == nil || IsNil(o.Region) {
 		var ret string
@@ -115,6 +114,7 @@ func (o *ServerlessConnectionStringsPrivateEndpointItem) GetRegionOk() (*string,
 	if o == nil || IsNil(o.Region) {
 		return nil, false
 	}
+
 	return o.Region, true
 }
 
@@ -142,40 +142,4 @@ func (o ServerlessConnectionStringsPrivateEndpointItem) MarshalJSONWithoutReadOn
 func (o ServerlessConnectionStringsPrivateEndpointItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableServerlessConnectionStringsPrivateEndpointItem struct {
-	value *ServerlessConnectionStringsPrivateEndpointItem
-	isSet bool
-}
-
-func (v NullableServerlessConnectionStringsPrivateEndpointItem) Get() *ServerlessConnectionStringsPrivateEndpointItem {
-	return v.value
-}
-
-func (v *NullableServerlessConnectionStringsPrivateEndpointItem) Set(val *ServerlessConnectionStringsPrivateEndpointItem) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableServerlessConnectionStringsPrivateEndpointItem) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableServerlessConnectionStringsPrivateEndpointItem) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableServerlessConnectionStringsPrivateEndpointItem(val *ServerlessConnectionStringsPrivateEndpointItem) *NullableServerlessConnectionStringsPrivateEndpointItem {
-	return &NullableServerlessConnectionStringsPrivateEndpointItem{value: val, isSet: true}
-}
-
-func (v NullableServerlessConnectionStringsPrivateEndpointItem) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableServerlessConnectionStringsPrivateEndpointItem) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

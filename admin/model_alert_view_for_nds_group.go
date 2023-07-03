@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the AlertViewForNdsGroup type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AlertViewForNdsGroup{}
-
 // AlertViewForNdsGroup struct for AlertViewForNdsGroup
 type AlertViewForNdsGroup struct {
 	// Date and time until which this alert has been acknowledged. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC. The resource returns this parameter if a MongoDB User previously acknowledged this alert.  - To acknowledge this alert forever, set the parameter value to 100 years in the future.  - To unacknowledge a previously acknowledged alert, set the parameter value to a date in the past.
@@ -71,7 +68,7 @@ func NewAlertViewForNdsGroupWithDefaults() *AlertViewForNdsGroup {
 	return &this
 }
 
-// GetAcknowledgedUntil returns the AcknowledgedUntil field value if set, zero value otherwise.
+// GetAcknowledgedUntil returns the AcknowledgedUntil field value if set, zero value otherwise
 func (o *AlertViewForNdsGroup) GetAcknowledgedUntil() time.Time {
 	if o == nil || IsNil(o.AcknowledgedUntil) {
 		var ret time.Time
@@ -86,6 +83,7 @@ func (o *AlertViewForNdsGroup) GetAcknowledgedUntilOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.AcknowledgedUntil) {
 		return nil, false
 	}
+
 	return o.AcknowledgedUntil, true
 }
 
@@ -103,7 +101,7 @@ func (o *AlertViewForNdsGroup) SetAcknowledgedUntil(v time.Time) {
 	o.AcknowledgedUntil = &v
 }
 
-// GetAcknowledgementComment returns the AcknowledgementComment field value if set, zero value otherwise.
+// GetAcknowledgementComment returns the AcknowledgementComment field value if set, zero value otherwise
 func (o *AlertViewForNdsGroup) GetAcknowledgementComment() string {
 	if o == nil || IsNil(o.AcknowledgementComment) {
 		var ret string
@@ -118,6 +116,7 @@ func (o *AlertViewForNdsGroup) GetAcknowledgementCommentOk() (*string, bool) {
 	if o == nil || IsNil(o.AcknowledgementComment) {
 		return nil, false
 	}
+
 	return o.AcknowledgementComment, true
 }
 
@@ -135,7 +134,7 @@ func (o *AlertViewForNdsGroup) SetAcknowledgementComment(v string) {
 	o.AcknowledgementComment = &v
 }
 
-// GetAcknowledgingUsername returns the AcknowledgingUsername field value if set, zero value otherwise.
+// GetAcknowledgingUsername returns the AcknowledgingUsername field value if set, zero value otherwise
 func (o *AlertViewForNdsGroup) GetAcknowledgingUsername() string {
 	if o == nil || IsNil(o.AcknowledgingUsername) {
 		var ret string
@@ -150,6 +149,7 @@ func (o *AlertViewForNdsGroup) GetAcknowledgingUsernameOk() (*string, bool) {
 	if o == nil || IsNil(o.AcknowledgingUsername) {
 		return nil, false
 	}
+
 	return o.AcknowledgingUsername, true
 }
 
@@ -167,7 +167,7 @@ func (o *AlertViewForNdsGroup) SetAcknowledgingUsername(v string) {
 	o.AcknowledgingUsername = &v
 }
 
-// GetAlertConfigId returns the AlertConfigId field value if set, zero value otherwise.
+// GetAlertConfigId returns the AlertConfigId field value if set, zero value otherwise
 func (o *AlertViewForNdsGroup) GetAlertConfigId() string {
 	if o == nil || IsNil(o.AlertConfigId) {
 		var ret string
@@ -182,6 +182,7 @@ func (o *AlertViewForNdsGroup) GetAlertConfigIdOk() (*string, bool) {
 	if o == nil || IsNil(o.AlertConfigId) {
 		return nil, false
 	}
+
 	return o.AlertConfigId, true
 }
 
@@ -199,7 +200,7 @@ func (o *AlertViewForNdsGroup) SetAlertConfigId(v string) {
 	o.AlertConfigId = &v
 }
 
-// GetCreated returns the Created field value if set, zero value otherwise.
+// GetCreated returns the Created field value if set, zero value otherwise
 func (o *AlertViewForNdsGroup) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
 		var ret time.Time
@@ -214,6 +215,7 @@ func (o *AlertViewForNdsGroup) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
+
 	return o.Created, true
 }
 
@@ -231,7 +233,7 @@ func (o *AlertViewForNdsGroup) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
-// GetEventTypeName returns the EventTypeName field value if set, zero value otherwise.
+// GetEventTypeName returns the EventTypeName field value if set, zero value otherwise
 func (o *AlertViewForNdsGroup) GetEventTypeName() string {
 	if o == nil || IsNil(o.EventTypeName) {
 		var ret string
@@ -246,6 +248,7 @@ func (o *AlertViewForNdsGroup) GetEventTypeNameOk() (*string, bool) {
 	if o == nil || IsNil(o.EventTypeName) {
 		return nil, false
 	}
+
 	return o.EventTypeName, true
 }
 
@@ -263,7 +266,7 @@ func (o *AlertViewForNdsGroup) SetEventTypeName(v string) {
 	o.EventTypeName = &v
 }
 
-// GetGroupId returns the GroupId field value if set, zero value otherwise.
+// GetGroupId returns the GroupId field value if set, zero value otherwise
 func (o *AlertViewForNdsGroup) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
 		var ret string
@@ -278,6 +281,7 @@ func (o *AlertViewForNdsGroup) GetGroupIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupId) {
 		return nil, false
 	}
+
 	return o.GroupId, true
 }
 
@@ -295,7 +299,7 @@ func (o *AlertViewForNdsGroup) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *AlertViewForNdsGroup) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -310,6 +314,7 @@ func (o *AlertViewForNdsGroup) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -327,7 +332,7 @@ func (o *AlertViewForNdsGroup) SetId(v string) {
 	o.Id = &v
 }
 
-// GetLastNotified returns the LastNotified field value if set, zero value otherwise.
+// GetLastNotified returns the LastNotified field value if set, zero value otherwise
 func (o *AlertViewForNdsGroup) GetLastNotified() time.Time {
 	if o == nil || IsNil(o.LastNotified) {
 		var ret time.Time
@@ -342,6 +347,7 @@ func (o *AlertViewForNdsGroup) GetLastNotifiedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.LastNotified) {
 		return nil, false
 	}
+
 	return o.LastNotified, true
 }
 
@@ -359,7 +365,7 @@ func (o *AlertViewForNdsGroup) SetLastNotified(v time.Time) {
 	o.LastNotified = &v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *AlertViewForNdsGroup) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -374,6 +380,7 @@ func (o *AlertViewForNdsGroup) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -391,7 +398,7 @@ func (o *AlertViewForNdsGroup) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetOrgId returns the OrgId field value if set, zero value otherwise.
+// GetOrgId returns the OrgId field value if set, zero value otherwise
 func (o *AlertViewForNdsGroup) GetOrgId() string {
 	if o == nil || IsNil(o.OrgId) {
 		var ret string
@@ -406,6 +413,7 @@ func (o *AlertViewForNdsGroup) GetOrgIdOk() (*string, bool) {
 	if o == nil || IsNil(o.OrgId) {
 		return nil, false
 	}
+
 	return o.OrgId, true
 }
 
@@ -423,7 +431,7 @@ func (o *AlertViewForNdsGroup) SetOrgId(v string) {
 	o.OrgId = &v
 }
 
-// GetResolved returns the Resolved field value if set, zero value otherwise.
+// GetResolved returns the Resolved field value if set, zero value otherwise
 func (o *AlertViewForNdsGroup) GetResolved() time.Time {
 	if o == nil || IsNil(o.Resolved) {
 		var ret time.Time
@@ -438,6 +446,7 @@ func (o *AlertViewForNdsGroup) GetResolvedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Resolved) {
 		return nil, false
 	}
+
 	return o.Resolved, true
 }
 
@@ -455,7 +464,7 @@ func (o *AlertViewForNdsGroup) SetResolved(v time.Time) {
 	o.Resolved = &v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// GetStatus returns the Status field value if set, zero value otherwise
 func (o *AlertViewForNdsGroup) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
 		var ret string
@@ -470,6 +479,7 @@ func (o *AlertViewForNdsGroup) GetStatusOk() (*string, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
+
 	return o.Status, true
 }
 
@@ -487,7 +497,7 @@ func (o *AlertViewForNdsGroup) SetStatus(v string) {
 	o.Status = &v
 }
 
-// GetUpdated returns the Updated field value if set, zero value otherwise.
+// GetUpdated returns the Updated field value if set, zero value otherwise
 func (o *AlertViewForNdsGroup) GetUpdated() time.Time {
 	if o == nil || IsNil(o.Updated) {
 		var ret time.Time
@@ -502,6 +512,7 @@ func (o *AlertViewForNdsGroup) GetUpdatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Updated) {
 		return nil, false
 	}
+
 	return o.Updated, true
 }
 
@@ -519,7 +530,7 @@ func (o *AlertViewForNdsGroup) SetUpdated(v time.Time) {
 	o.Updated = &v
 }
 
-// GetClusterName returns the ClusterName field value if set, zero value otherwise.
+// GetClusterName returns the ClusterName field value if set, zero value otherwise
 func (o *AlertViewForNdsGroup) GetClusterName() string {
 	if o == nil || IsNil(o.ClusterName) {
 		var ret string
@@ -534,6 +545,7 @@ func (o *AlertViewForNdsGroup) GetClusterNameOk() (*string, bool) {
 	if o == nil || IsNil(o.ClusterName) {
 		return nil, false
 	}
+
 	return o.ClusterName, true
 }
 
@@ -551,7 +563,7 @@ func (o *AlertViewForNdsGroup) SetClusterName(v string) {
 	o.ClusterName = &v
 }
 
-// GetHostnameAndPort returns the HostnameAndPort field value if set, zero value otherwise.
+// GetHostnameAndPort returns the HostnameAndPort field value if set, zero value otherwise
 func (o *AlertViewForNdsGroup) GetHostnameAndPort() string {
 	if o == nil || IsNil(o.HostnameAndPort) {
 		var ret string
@@ -566,6 +578,7 @@ func (o *AlertViewForNdsGroup) GetHostnameAndPortOk() (*string, bool) {
 	if o == nil || IsNil(o.HostnameAndPort) {
 		return nil, false
 	}
+
 	return o.HostnameAndPort, true
 }
 
@@ -583,7 +596,7 @@ func (o *AlertViewForNdsGroup) SetHostnameAndPort(v string) {
 	o.HostnameAndPort = &v
 }
 
-// GetReplicaSetName returns the ReplicaSetName field value if set, zero value otherwise.
+// GetReplicaSetName returns the ReplicaSetName field value if set, zero value otherwise
 func (o *AlertViewForNdsGroup) GetReplicaSetName() string {
 	if o == nil || IsNil(o.ReplicaSetName) {
 		var ret string
@@ -598,6 +611,7 @@ func (o *AlertViewForNdsGroup) GetReplicaSetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.ReplicaSetName) {
 		return nil, false
 	}
+
 	return o.ReplicaSetName, true
 }
 
@@ -615,7 +629,7 @@ func (o *AlertViewForNdsGroup) SetReplicaSetName(v string) {
 	o.ReplicaSetName = &v
 }
 
-// GetCurrentValue returns the CurrentValue field value if set, zero value otherwise.
+// GetCurrentValue returns the CurrentValue field value if set, zero value otherwise
 func (o *AlertViewForNdsGroup) GetCurrentValue() NumberMetricValue {
 	if o == nil || IsNil(o.CurrentValue) {
 		var ret NumberMetricValue
@@ -630,6 +644,7 @@ func (o *AlertViewForNdsGroup) GetCurrentValueOk() (*NumberMetricValue, bool) {
 	if o == nil || IsNil(o.CurrentValue) {
 		return nil, false
 	}
+
 	return o.CurrentValue, true
 }
 
@@ -647,7 +662,7 @@ func (o *AlertViewForNdsGroup) SetCurrentValue(v NumberMetricValue) {
 	o.CurrentValue = &v
 }
 
-// GetMetricName returns the MetricName field value if set, zero value otherwise.
+// GetMetricName returns the MetricName field value if set, zero value otherwise
 func (o *AlertViewForNdsGroup) GetMetricName() string {
 	if o == nil || IsNil(o.MetricName) {
 		var ret string
@@ -662,6 +677,7 @@ func (o *AlertViewForNdsGroup) GetMetricNameOk() (*string, bool) {
 	if o == nil || IsNil(o.MetricName) {
 		return nil, false
 	}
+
 	return o.MetricName, true
 }
 
@@ -679,7 +695,7 @@ func (o *AlertViewForNdsGroup) SetMetricName(v string) {
 	o.MetricName = &v
 }
 
-// GetNonRunningHostIds returns the NonRunningHostIds field value if set, zero value otherwise.
+// GetNonRunningHostIds returns the NonRunningHostIds field value if set, zero value otherwise
 func (o *AlertViewForNdsGroup) GetNonRunningHostIds() []string {
 	if o == nil || IsNil(o.NonRunningHostIds) {
 		var ret []string
@@ -694,6 +710,7 @@ func (o *AlertViewForNdsGroup) GetNonRunningHostIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.NonRunningHostIds) {
 		return nil, false
 	}
+
 	return o.NonRunningHostIds, true
 }
 
@@ -711,7 +728,7 @@ func (o *AlertViewForNdsGroup) SetNonRunningHostIds(v []string) {
 	o.NonRunningHostIds = v
 }
 
-// GetParentClusterId returns the ParentClusterId field value if set, zero value otherwise.
+// GetParentClusterId returns the ParentClusterId field value if set, zero value otherwise
 func (o *AlertViewForNdsGroup) GetParentClusterId() string {
 	if o == nil || IsNil(o.ParentClusterId) {
 		var ret string
@@ -726,6 +743,7 @@ func (o *AlertViewForNdsGroup) GetParentClusterIdOk() (*string, bool) {
 	if o == nil || IsNil(o.ParentClusterId) {
 		return nil, false
 	}
+
 	return o.ParentClusterId, true
 }
 
@@ -762,40 +780,4 @@ func (o AlertViewForNdsGroup) ToMap() (map[string]interface{}, error) {
 		toSerialize["currentValue"] = o.CurrentValue
 	}
 	return toSerialize, nil
-}
-
-type NullableAlertViewForNdsGroup struct {
-	value *AlertViewForNdsGroup
-	isSet bool
-}
-
-func (v NullableAlertViewForNdsGroup) Get() *AlertViewForNdsGroup {
-	return v.value
-}
-
-func (v *NullableAlertViewForNdsGroup) Set(val *AlertViewForNdsGroup) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableAlertViewForNdsGroup) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableAlertViewForNdsGroup) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableAlertViewForNdsGroup(val *AlertViewForNdsGroup) *NullableAlertViewForNdsGroup {
-	return &NullableAlertViewForNdsGroup{value: val, isSet: true}
-}
-
-func (v NullableAlertViewForNdsGroup) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableAlertViewForNdsGroup) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

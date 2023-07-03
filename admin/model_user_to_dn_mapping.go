@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the UserToDNMapping type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &UserToDNMapping{}
-
 // UserToDNMapping User-to-Distinguished Name (DN) map that MongoDB Cloud uses to transform a Lightweight Directory Access Protocol (LDAP) username into an LDAP DN.
 type UserToDNMapping struct {
 	// Lightweight Directory Access Protocol (LDAP) query template that inserts the LDAP name that the regular expression matches into an LDAP query Uniform Resource Identifier (URI). The formatting for the query must conform to [RFC 4515](https://datatracker.ietf.org/doc/html/rfc4515) and [RFC 4516](https://datatracker.ietf.org/doc/html/rfc4516).
@@ -37,7 +34,7 @@ func NewUserToDNMappingWithDefaults() *UserToDNMapping {
 	return &this
 }
 
-// GetLdapQuery returns the LdapQuery field value if set, zero value otherwise.
+// GetLdapQuery returns the LdapQuery field value if set, zero value otherwise
 func (o *UserToDNMapping) GetLdapQuery() string {
 	if o == nil || IsNil(o.LdapQuery) {
 		var ret string
@@ -52,6 +49,7 @@ func (o *UserToDNMapping) GetLdapQueryOk() (*string, bool) {
 	if o == nil || IsNil(o.LdapQuery) {
 		return nil, false
 	}
+
 	return o.LdapQuery, true
 }
 
@@ -93,7 +91,7 @@ func (o *UserToDNMapping) SetMatch(v string) {
 	o.Match = v
 }
 
-// GetSubstitution returns the Substitution field value if set, zero value otherwise.
+// GetSubstitution returns the Substitution field value if set, zero value otherwise
 func (o *UserToDNMapping) GetSubstitution() string {
 	if o == nil || IsNil(o.Substitution) {
 		var ret string
@@ -108,6 +106,7 @@ func (o *UserToDNMapping) GetSubstitutionOk() (*string, bool) {
 	if o == nil || IsNil(o.Substitution) {
 		return nil, false
 	}
+
 	return o.Substitution, true
 }
 
@@ -142,40 +141,4 @@ func (o UserToDNMapping) ToMap() (map[string]interface{}, error) {
 		toSerialize["substitution"] = o.Substitution
 	}
 	return toSerialize, nil
-}
-
-type NullableUserToDNMapping struct {
-	value *UserToDNMapping
-	isSet bool
-}
-
-func (v NullableUserToDNMapping) Get() *UserToDNMapping {
-	return v.value
-}
-
-func (v *NullableUserToDNMapping) Set(val *UserToDNMapping) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableUserToDNMapping) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableUserToDNMapping) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableUserToDNMapping(val *UserToDNMapping) *NullableUserToDNMapping {
-	return &NullableUserToDNMapping{value: val, isSet: true}
-}
-
-func (v NullableUserToDNMapping) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableUserToDNMapping) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PaginatedOnlineArchive type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PaginatedOnlineArchive{}
-
 // PaginatedOnlineArchive struct for PaginatedOnlineArchive
 type PaginatedOnlineArchive struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -36,7 +33,7 @@ func NewPaginatedOnlineArchiveWithDefaults() *PaginatedOnlineArchive {
 	return &this
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *PaginatedOnlineArchive) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -51,6 +48,7 @@ func (o *PaginatedOnlineArchive) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -68,7 +66,7 @@ func (o *PaginatedOnlineArchive) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetResults returns the Results field value if set, zero value otherwise.
+// GetResults returns the Results field value if set, zero value otherwise
 func (o *PaginatedOnlineArchive) GetResults() []BackupOnlineArchive {
 	if o == nil || IsNil(o.Results) {
 		var ret []BackupOnlineArchive
@@ -83,6 +81,7 @@ func (o *PaginatedOnlineArchive) GetResultsOk() ([]BackupOnlineArchive, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
+
 	return o.Results, true
 }
 
@@ -100,7 +99,7 @@ func (o *PaginatedOnlineArchive) SetResults(v []BackupOnlineArchive) {
 	o.Results = v
 }
 
-// GetTotalCount returns the TotalCount field value if set, zero value otherwise.
+// GetTotalCount returns the TotalCount field value if set, zero value otherwise
 func (o *PaginatedOnlineArchive) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int
@@ -115,6 +114,7 @@ func (o *PaginatedOnlineArchive) GetTotalCountOk() (*int, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
+
 	return o.TotalCount, true
 }
 
@@ -142,40 +142,4 @@ func (o PaginatedOnlineArchive) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o PaginatedOnlineArchive) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullablePaginatedOnlineArchive struct {
-	value *PaginatedOnlineArchive
-	isSet bool
-}
-
-func (v NullablePaginatedOnlineArchive) Get() *PaginatedOnlineArchive {
-	return v.value
-}
-
-func (v *NullablePaginatedOnlineArchive) Set(val *PaginatedOnlineArchive) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullablePaginatedOnlineArchive) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullablePaginatedOnlineArchive) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullablePaginatedOnlineArchive(val *PaginatedOnlineArchive) *NullablePaginatedOnlineArchive {
-	return &NullablePaginatedOnlineArchive{value: val, isSet: true}
-}
-
-func (v NullablePaginatedOnlineArchive) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullablePaginatedOnlineArchive) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

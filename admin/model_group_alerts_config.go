@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the GroupAlertsConfig type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &GroupAlertsConfig{}
-
 // GroupAlertsConfig struct for GroupAlertsConfig
 type GroupAlertsConfig struct {
 	// Date and time when MongoDB Cloud created the alert configuration. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC.
@@ -55,7 +52,7 @@ func NewGroupAlertsConfigWithDefaults() *GroupAlertsConfig {
 	return &this
 }
 
-// GetCreated returns the Created field value if set, zero value otherwise.
+// GetCreated returns the Created field value if set, zero value otherwise
 func (o *GroupAlertsConfig) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
 		var ret time.Time
@@ -70,6 +67,7 @@ func (o *GroupAlertsConfig) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
+
 	return o.Created, true
 }
 
@@ -87,7 +85,7 @@ func (o *GroupAlertsConfig) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
-// GetEnabled returns the Enabled field value if set, zero value otherwise.
+// GetEnabled returns the Enabled field value if set, zero value otherwise
 func (o *GroupAlertsConfig) GetEnabled() bool {
 	if o == nil || IsNil(o.Enabled) {
 		var ret bool
@@ -102,6 +100,7 @@ func (o *GroupAlertsConfig) GetEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
+
 	return o.Enabled, true
 }
 
@@ -119,7 +118,7 @@ func (o *GroupAlertsConfig) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
-// GetEventTypeName returns the EventTypeName field value if set, zero value otherwise.
+// GetEventTypeName returns the EventTypeName field value if set, zero value otherwise
 func (o *GroupAlertsConfig) GetEventTypeName() string {
 	if o == nil || IsNil(o.EventTypeName) {
 		var ret string
@@ -134,6 +133,7 @@ func (o *GroupAlertsConfig) GetEventTypeNameOk() (*string, bool) {
 	if o == nil || IsNil(o.EventTypeName) {
 		return nil, false
 	}
+
 	return o.EventTypeName, true
 }
 
@@ -151,7 +151,7 @@ func (o *GroupAlertsConfig) SetEventTypeName(v string) {
 	o.EventTypeName = &v
 }
 
-// GetGroupId returns the GroupId field value if set, zero value otherwise.
+// GetGroupId returns the GroupId field value if set, zero value otherwise
 func (o *GroupAlertsConfig) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
 		var ret string
@@ -166,6 +166,7 @@ func (o *GroupAlertsConfig) GetGroupIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupId) {
 		return nil, false
 	}
+
 	return o.GroupId, true
 }
 
@@ -183,7 +184,7 @@ func (o *GroupAlertsConfig) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *GroupAlertsConfig) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -198,6 +199,7 @@ func (o *GroupAlertsConfig) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -215,7 +217,7 @@ func (o *GroupAlertsConfig) SetId(v string) {
 	o.Id = &v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *GroupAlertsConfig) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -230,6 +232,7 @@ func (o *GroupAlertsConfig) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -247,7 +250,7 @@ func (o *GroupAlertsConfig) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetMatchers returns the Matchers field value if set, zero value otherwise.
+// GetMatchers returns the Matchers field value if set, zero value otherwise
 func (o *GroupAlertsConfig) GetMatchers() []map[string]interface{} {
 	if o == nil || IsNil(o.Matchers) {
 		var ret []map[string]interface{}
@@ -262,6 +265,7 @@ func (o *GroupAlertsConfig) GetMatchersOk() ([]map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Matchers) {
 		return nil, false
 	}
+
 	return o.Matchers, true
 }
 
@@ -279,7 +283,7 @@ func (o *GroupAlertsConfig) SetMatchers(v []map[string]interface{}) {
 	o.Matchers = v
 }
 
-// GetNotifications returns the Notifications field value if set, zero value otherwise.
+// GetNotifications returns the Notifications field value if set, zero value otherwise
 func (o *GroupAlertsConfig) GetNotifications() []AlertsNotificationRootForGroup {
 	if o == nil || IsNil(o.Notifications) {
 		var ret []AlertsNotificationRootForGroup
@@ -294,6 +298,7 @@ func (o *GroupAlertsConfig) GetNotificationsOk() ([]AlertsNotificationRootForGro
 	if o == nil || IsNil(o.Notifications) {
 		return nil, false
 	}
+
 	return o.Notifications, true
 }
 
@@ -311,7 +316,7 @@ func (o *GroupAlertsConfig) SetNotifications(v []AlertsNotificationRootForGroup)
 	o.Notifications = v
 }
 
-// GetUpdated returns the Updated field value if set, zero value otherwise.
+// GetUpdated returns the Updated field value if set, zero value otherwise
 func (o *GroupAlertsConfig) GetUpdated() time.Time {
 	if o == nil || IsNil(o.Updated) {
 		var ret time.Time
@@ -326,6 +331,7 @@ func (o *GroupAlertsConfig) GetUpdatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Updated) {
 		return nil, false
 	}
+
 	return o.Updated, true
 }
 
@@ -343,7 +349,7 @@ func (o *GroupAlertsConfig) SetUpdated(v time.Time) {
 	o.Updated = &v
 }
 
-// GetMetricThreshold returns the MetricThreshold field value if set, zero value otherwise.
+// GetMetricThreshold returns the MetricThreshold field value if set, zero value otherwise
 func (o *GroupAlertsConfig) GetMetricThreshold() ServerlessMetricThreshold {
 	if o == nil || IsNil(o.MetricThreshold) {
 		var ret ServerlessMetricThreshold
@@ -358,6 +364,7 @@ func (o *GroupAlertsConfig) GetMetricThresholdOk() (*ServerlessMetricThreshold, 
 	if o == nil || IsNil(o.MetricThreshold) {
 		return nil, false
 	}
+
 	return o.MetricThreshold, true
 }
 
@@ -375,7 +382,7 @@ func (o *GroupAlertsConfig) SetMetricThreshold(v ServerlessMetricThreshold) {
 	o.MetricThreshold = &v
 }
 
-// GetThreshold returns the Threshold field value if set, zero value otherwise.
+// GetThreshold returns the Threshold field value if set, zero value otherwise
 func (o *GroupAlertsConfig) GetThreshold() GreaterThanRawThreshold {
 	if o == nil || IsNil(o.Threshold) {
 		var ret GreaterThanRawThreshold
@@ -390,6 +397,7 @@ func (o *GroupAlertsConfig) GetThresholdOk() (*GreaterThanRawThreshold, bool) {
 	if o == nil || IsNil(o.Threshold) {
 		return nil, false
 	}
+
 	return o.Threshold, true
 }
 
@@ -432,40 +440,4 @@ func (o GroupAlertsConfig) ToMap() (map[string]interface{}, error) {
 		toSerialize["threshold"] = o.Threshold
 	}
 	return toSerialize, nil
-}
-
-type NullableGroupAlertsConfig struct {
-	value *GroupAlertsConfig
-	isSet bool
-}
-
-func (v NullableGroupAlertsConfig) Get() *GroupAlertsConfig {
-	return v.value
-}
-
-func (v *NullableGroupAlertsConfig) Set(val *GroupAlertsConfig) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableGroupAlertsConfig) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableGroupAlertsConfig) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableGroupAlertsConfig(val *GroupAlertsConfig) *NullableGroupAlertsConfig {
-	return &NullableGroupAlertsConfig{value: val, isSet: true}
-}
-
-func (v NullableGroupAlertsConfig) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableGroupAlertsConfig) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

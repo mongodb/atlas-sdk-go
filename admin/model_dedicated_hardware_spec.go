@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the DedicatedHardwareSpec type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DedicatedHardwareSpec{}
-
 // DedicatedHardwareSpec Hardware specifications for read-only nodes in the region. Read-only nodes can never become the primary member, but can enable local reads.If you don't specify this parameter, no read-only nodes are deployed to the region.
 type DedicatedHardwareSpec struct {
 	// Number of nodes of the given type for MongoDB Cloud to deploy to the region.
@@ -42,7 +39,7 @@ func NewDedicatedHardwareSpecWithDefaults() *DedicatedHardwareSpec {
 	return &this
 }
 
-// GetNodeCount returns the NodeCount field value if set, zero value otherwise.
+// GetNodeCount returns the NodeCount field value if set, zero value otherwise
 func (o *DedicatedHardwareSpec) GetNodeCount() int {
 	if o == nil || IsNil(o.NodeCount) {
 		var ret int
@@ -57,6 +54,7 @@ func (o *DedicatedHardwareSpec) GetNodeCountOk() (*int, bool) {
 	if o == nil || IsNil(o.NodeCount) {
 		return nil, false
 	}
+
 	return o.NodeCount, true
 }
 
@@ -74,7 +72,7 @@ func (o *DedicatedHardwareSpec) SetNodeCount(v int) {
 	o.NodeCount = &v
 }
 
-// GetDiskIOPS returns the DiskIOPS field value if set, zero value otherwise.
+// GetDiskIOPS returns the DiskIOPS field value if set, zero value otherwise
 func (o *DedicatedHardwareSpec) GetDiskIOPS() int {
 	if o == nil || IsNil(o.DiskIOPS) {
 		var ret int
@@ -89,6 +87,7 @@ func (o *DedicatedHardwareSpec) GetDiskIOPSOk() (*int, bool) {
 	if o == nil || IsNil(o.DiskIOPS) {
 		return nil, false
 	}
+
 	return o.DiskIOPS, true
 }
 
@@ -106,7 +105,7 @@ func (o *DedicatedHardwareSpec) SetDiskIOPS(v int) {
 	o.DiskIOPS = &v
 }
 
-// GetEbsVolumeType returns the EbsVolumeType field value if set, zero value otherwise.
+// GetEbsVolumeType returns the EbsVolumeType field value if set, zero value otherwise
 func (o *DedicatedHardwareSpec) GetEbsVolumeType() string {
 	if o == nil || IsNil(o.EbsVolumeType) {
 		var ret string
@@ -121,6 +120,7 @@ func (o *DedicatedHardwareSpec) GetEbsVolumeTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.EbsVolumeType) {
 		return nil, false
 	}
+
 	return o.EbsVolumeType, true
 }
 
@@ -138,7 +138,7 @@ func (o *DedicatedHardwareSpec) SetEbsVolumeType(v string) {
 	o.EbsVolumeType = &v
 }
 
-// GetInstanceSize returns the InstanceSize field value if set, zero value otherwise.
+// GetInstanceSize returns the InstanceSize field value if set, zero value otherwise
 func (o *DedicatedHardwareSpec) GetInstanceSize() string {
 	if o == nil || IsNil(o.InstanceSize) {
 		var ret string
@@ -153,6 +153,7 @@ func (o *DedicatedHardwareSpec) GetInstanceSizeOk() (*string, bool) {
 	if o == nil || IsNil(o.InstanceSize) {
 		return nil, false
 	}
+
 	return o.InstanceSize, true
 }
 
@@ -192,40 +193,4 @@ func (o DedicatedHardwareSpec) ToMap() (map[string]interface{}, error) {
 		toSerialize["instanceSize"] = o.InstanceSize
 	}
 	return toSerialize, nil
-}
-
-type NullableDedicatedHardwareSpec struct {
-	value *DedicatedHardwareSpec
-	isSet bool
-}
-
-func (v NullableDedicatedHardwareSpec) Get() *DedicatedHardwareSpec {
-	return v.value
-}
-
-func (v *NullableDedicatedHardwareSpec) Set(val *DedicatedHardwareSpec) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableDedicatedHardwareSpec) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableDedicatedHardwareSpec) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableDedicatedHardwareSpec(val *DedicatedHardwareSpec) *NullableDedicatedHardwareSpec {
-	return &NullableDedicatedHardwareSpec{value: val, isSet: true}
-}
-
-func (v NullableDedicatedHardwareSpec) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableDedicatedHardwareSpec) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

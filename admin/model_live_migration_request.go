@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the LiveMigrationRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &LiveMigrationRequest{}
-
 // LiveMigrationRequest struct for LiveMigrationRequest
 type LiveMigrationRequest struct {
 	// Unique 24-hexadecimal digit string that identifies the migration request.
@@ -41,7 +38,7 @@ func NewLiveMigrationRequestWithDefaults() *LiveMigrationRequest {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *LiveMigrationRequest) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -56,6 +53,7 @@ func (o *LiveMigrationRequest) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -121,7 +119,7 @@ func (o *LiveMigrationRequest) SetDropEnabled(v bool) {
 	o.DropEnabled = v
 }
 
-// GetMigrationHosts returns the MigrationHosts field value if set, zero value otherwise.
+// GetMigrationHosts returns the MigrationHosts field value if set, zero value otherwise
 func (o *LiveMigrationRequest) GetMigrationHosts() []string {
 	if o == nil || IsNil(o.MigrationHosts) {
 		var ret []string
@@ -136,6 +134,7 @@ func (o *LiveMigrationRequest) GetMigrationHostsOk() ([]string, bool) {
 	if o == nil || IsNil(o.MigrationHosts) {
 		return nil, false
 	}
+
 	return o.MigrationHosts, true
 }
 
@@ -193,40 +192,4 @@ func (o LiveMigrationRequest) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["source"] = o.Source
 	return toSerialize, nil
-}
-
-type NullableLiveMigrationRequest struct {
-	value *LiveMigrationRequest
-	isSet bool
-}
-
-func (v NullableLiveMigrationRequest) Get() *LiveMigrationRequest {
-	return v.value
-}
-
-func (v *NullableLiveMigrationRequest) Set(val *LiveMigrationRequest) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableLiveMigrationRequest) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableLiveMigrationRequest) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableLiveMigrationRequest(val *LiveMigrationRequest) *NullableLiveMigrationRequest {
-	return &NullableLiveMigrationRequest{value: val, isSet: true}
-}
-
-func (v NullableLiveMigrationRequest) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableLiveMigrationRequest) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

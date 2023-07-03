@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the BackupLabel type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &BackupLabel{}
-
 // BackupLabel Collection of key-value pairs that represent custom data to add to the metadata file that MongoDB Cloud uploads to the bucket when the export job finishes.
 type BackupLabel struct {
 	// Key for the metadata file that MongoDB Cloud uploads to the bucket when the export job finishes.
@@ -34,7 +31,7 @@ func NewBackupLabelWithDefaults() *BackupLabel {
 	return &this
 }
 
-// GetKey returns the Key field value if set, zero value otherwise.
+// GetKey returns the Key field value if set, zero value otherwise
 func (o *BackupLabel) GetKey() string {
 	if o == nil || IsNil(o.Key) {
 		var ret string
@@ -49,6 +46,7 @@ func (o *BackupLabel) GetKeyOk() (*string, bool) {
 	if o == nil || IsNil(o.Key) {
 		return nil, false
 	}
+
 	return o.Key, true
 }
 
@@ -66,7 +64,7 @@ func (o *BackupLabel) SetKey(v string) {
 	o.Key = &v
 }
 
-// GetValue returns the Value field value if set, zero value otherwise.
+// GetValue returns the Value field value if set, zero value otherwise
 func (o *BackupLabel) GetValue() string {
 	if o == nil || IsNil(o.Value) {
 		var ret string
@@ -81,6 +79,7 @@ func (o *BackupLabel) GetValueOk() (*string, bool) {
 	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
+
 	return o.Value, true
 }
 
@@ -114,40 +113,4 @@ func (o BackupLabel) ToMap() (map[string]interface{}, error) {
 		toSerialize["value"] = o.Value
 	}
 	return toSerialize, nil
-}
-
-type NullableBackupLabel struct {
-	value *BackupLabel
-	isSet bool
-}
-
-func (v NullableBackupLabel) Get() *BackupLabel {
-	return v.value
-}
-
-func (v *NullableBackupLabel) Set(val *BackupLabel) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableBackupLabel) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableBackupLabel) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableBackupLabel(val *BackupLabel) *NullableBackupLabel {
-	return &NullableBackupLabel{value: val, isSet: true}
-}
-
-func (v NullableBackupLabel) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableBackupLabel) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

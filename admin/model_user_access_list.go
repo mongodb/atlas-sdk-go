@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the UserAccessList type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &UserAccessList{}
-
 // UserAccessList struct for UserAccessList
 type UserAccessList struct {
 	// Range of network addresses that you want to add to the access list for the API key. This parameter requires the range to be expressed in classless inter-domain routing (CIDR) notation of Internet Protocol version 4 or version 6 addresses. You can set a value for this parameter or **ipAddress** but not both in the same request.
@@ -45,7 +42,7 @@ func NewUserAccessListWithDefaults() *UserAccessList {
 	return &this
 }
 
-// GetCidrBlock returns the CidrBlock field value if set, zero value otherwise.
+// GetCidrBlock returns the CidrBlock field value if set, zero value otherwise
 func (o *UserAccessList) GetCidrBlock() string {
 	if o == nil || IsNil(o.CidrBlock) {
 		var ret string
@@ -60,6 +57,7 @@ func (o *UserAccessList) GetCidrBlockOk() (*string, bool) {
 	if o == nil || IsNil(o.CidrBlock) {
 		return nil, false
 	}
+
 	return o.CidrBlock, true
 }
 
@@ -77,7 +75,7 @@ func (o *UserAccessList) SetCidrBlock(v string) {
 	o.CidrBlock = &v
 }
 
-// GetCount returns the Count field value if set, zero value otherwise.
+// GetCount returns the Count field value if set, zero value otherwise
 func (o *UserAccessList) GetCount() int {
 	if o == nil || IsNil(o.Count) {
 		var ret int
@@ -92,6 +90,7 @@ func (o *UserAccessList) GetCountOk() (*int, bool) {
 	if o == nil || IsNil(o.Count) {
 		return nil, false
 	}
+
 	return o.Count, true
 }
 
@@ -109,7 +108,7 @@ func (o *UserAccessList) SetCount(v int) {
 	o.Count = &v
 }
 
-// GetCreated returns the Created field value if set, zero value otherwise.
+// GetCreated returns the Created field value if set, zero value otherwise
 func (o *UserAccessList) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
 		var ret time.Time
@@ -124,6 +123,7 @@ func (o *UserAccessList) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
+
 	return o.Created, true
 }
 
@@ -141,7 +141,7 @@ func (o *UserAccessList) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
-// GetIpAddress returns the IpAddress field value if set, zero value otherwise.
+// GetIpAddress returns the IpAddress field value if set, zero value otherwise
 func (o *UserAccessList) GetIpAddress() string {
 	if o == nil || IsNil(o.IpAddress) {
 		var ret string
@@ -156,6 +156,7 @@ func (o *UserAccessList) GetIpAddressOk() (*string, bool) {
 	if o == nil || IsNil(o.IpAddress) {
 		return nil, false
 	}
+
 	return o.IpAddress, true
 }
 
@@ -173,7 +174,7 @@ func (o *UserAccessList) SetIpAddress(v string) {
 	o.IpAddress = &v
 }
 
-// GetLastUsed returns the LastUsed field value if set, zero value otherwise.
+// GetLastUsed returns the LastUsed field value if set, zero value otherwise
 func (o *UserAccessList) GetLastUsed() time.Time {
 	if o == nil || IsNil(o.LastUsed) {
 		var ret time.Time
@@ -188,6 +189,7 @@ func (o *UserAccessList) GetLastUsedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.LastUsed) {
 		return nil, false
 	}
+
 	return o.LastUsed, true
 }
 
@@ -205,7 +207,7 @@ func (o *UserAccessList) SetLastUsed(v time.Time) {
 	o.LastUsed = &v
 }
 
-// GetLastUsedAddress returns the LastUsedAddress field value if set, zero value otherwise.
+// GetLastUsedAddress returns the LastUsedAddress field value if set, zero value otherwise
 func (o *UserAccessList) GetLastUsedAddress() string {
 	if o == nil || IsNil(o.LastUsedAddress) {
 		var ret string
@@ -220,6 +222,7 @@ func (o *UserAccessList) GetLastUsedAddressOk() (*string, bool) {
 	if o == nil || IsNil(o.LastUsedAddress) {
 		return nil, false
 	}
+
 	return o.LastUsedAddress, true
 }
 
@@ -237,7 +240,7 @@ func (o *UserAccessList) SetLastUsedAddress(v string) {
 	o.LastUsedAddress = &v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *UserAccessList) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -252,6 +255,7 @@ func (o *UserAccessList) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -285,40 +289,4 @@ func (o UserAccessList) ToMap() (map[string]interface{}, error) {
 		toSerialize["ipAddress"] = o.IpAddress
 	}
 	return toSerialize, nil
-}
-
-type NullableUserAccessList struct {
-	value *UserAccessList
-	isSet bool
-}
-
-func (v NullableUserAccessList) Get() *UserAccessList {
-	return v.value
-}
-
-func (v *NullableUserAccessList) Set(val *UserAccessList) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableUserAccessList) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableUserAccessList) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableUserAccessList(val *UserAccessList) *NullableUserAccessList {
-	return &NullableUserAccessList{value: val, isSet: true}
-}
-
-func (v NullableUserAccessList) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableUserAccessList) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

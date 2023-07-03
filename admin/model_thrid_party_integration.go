@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ThridPartyIntegration type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ThridPartyIntegration{}
-
 // ThridPartyIntegration Collection of settings that describe third-party integrations.
 type ThridPartyIntegration struct {
 	// Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.
@@ -46,7 +43,7 @@ type ThridPartyIntegration struct {
 	// Key that allows MongoDB Cloud to access your Slack account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.  **IMPORTANT**: Slack integrations now use the OAuth2 verification method and must  be initially configured, or updated from a legacy integration, through the Atlas  third-party service integrations page. Legacy tokens will soon no longer be  supported.
 	ApiToken *string `json:"apiToken,omitempty"`
 	// Name of the Slack channel to which MongoDB Cloud sends alert notifications.
-	ChannelName NullableString `json:"channelName,omitempty"`
+	ChannelName *NullableString `json:"channelName,omitempty"`
 	// Human-readable label that identifies your Slack team. Set this parameter when you configure a legacy Slack integration.
 	TeamName *string `json:"teamName,omitempty"`
 	// Routing key associated with your Splunk On-Call account.
@@ -78,7 +75,7 @@ func NewThridPartyIntegrationWithDefaults() *ThridPartyIntegration {
 	return &this
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value if set, zero value otherwise
 func (o *ThridPartyIntegration) GetType() string {
 	if o == nil || IsNil(o.Type) {
 		var ret string
@@ -93,6 +90,7 @@ func (o *ThridPartyIntegration) GetTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
+
 	return o.Type, true
 }
 
@@ -110,7 +108,7 @@ func (o *ThridPartyIntegration) SetType(v string) {
 	o.Type = &v
 }
 
-// GetApiKey returns the ApiKey field value if set, zero value otherwise.
+// GetApiKey returns the ApiKey field value if set, zero value otherwise
 func (o *ThridPartyIntegration) GetApiKey() string {
 	if o == nil || IsNil(o.ApiKey) {
 		var ret string
@@ -125,6 +123,7 @@ func (o *ThridPartyIntegration) GetApiKeyOk() (*string, bool) {
 	if o == nil || IsNil(o.ApiKey) {
 		return nil, false
 	}
+
 	return o.ApiKey, true
 }
 
@@ -142,7 +141,7 @@ func (o *ThridPartyIntegration) SetApiKey(v string) {
 	o.ApiKey = &v
 }
 
-// GetRegion returns the Region field value if set, zero value otherwise.
+// GetRegion returns the Region field value if set, zero value otherwise
 func (o *ThridPartyIntegration) GetRegion() string {
 	if o == nil || IsNil(o.Region) {
 		var ret string
@@ -157,6 +156,7 @@ func (o *ThridPartyIntegration) GetRegionOk() (*string, bool) {
 	if o == nil || IsNil(o.Region) {
 		return nil, false
 	}
+
 	return o.Region, true
 }
 
@@ -174,7 +174,7 @@ func (o *ThridPartyIntegration) SetRegion(v string) {
 	o.Region = &v
 }
 
-// GetMicrosoftTeamsWebhookUrl returns the MicrosoftTeamsWebhookUrl field value if set, zero value otherwise.
+// GetMicrosoftTeamsWebhookUrl returns the MicrosoftTeamsWebhookUrl field value if set, zero value otherwise
 func (o *ThridPartyIntegration) GetMicrosoftTeamsWebhookUrl() string {
 	if o == nil || IsNil(o.MicrosoftTeamsWebhookUrl) {
 		var ret string
@@ -189,6 +189,7 @@ func (o *ThridPartyIntegration) GetMicrosoftTeamsWebhookUrlOk() (*string, bool) 
 	if o == nil || IsNil(o.MicrosoftTeamsWebhookUrl) {
 		return nil, false
 	}
+
 	return o.MicrosoftTeamsWebhookUrl, true
 }
 
@@ -206,7 +207,7 @@ func (o *ThridPartyIntegration) SetMicrosoftTeamsWebhookUrl(v string) {
 	o.MicrosoftTeamsWebhookUrl = &v
 }
 
-// GetAccountId returns the AccountId field value if set, zero value otherwise.
+// GetAccountId returns the AccountId field value if set, zero value otherwise
 func (o *ThridPartyIntegration) GetAccountId() string {
 	if o == nil || IsNil(o.AccountId) {
 		var ret string
@@ -221,6 +222,7 @@ func (o *ThridPartyIntegration) GetAccountIdOk() (*string, bool) {
 	if o == nil || IsNil(o.AccountId) {
 		return nil, false
 	}
+
 	return o.AccountId, true
 }
 
@@ -238,7 +240,7 @@ func (o *ThridPartyIntegration) SetAccountId(v string) {
 	o.AccountId = &v
 }
 
-// GetLicenseKey returns the LicenseKey field value if set, zero value otherwise.
+// GetLicenseKey returns the LicenseKey field value if set, zero value otherwise
 func (o *ThridPartyIntegration) GetLicenseKey() string {
 	if o == nil || IsNil(o.LicenseKey) {
 		var ret string
@@ -253,6 +255,7 @@ func (o *ThridPartyIntegration) GetLicenseKeyOk() (*string, bool) {
 	if o == nil || IsNil(o.LicenseKey) {
 		return nil, false
 	}
+
 	return o.LicenseKey, true
 }
 
@@ -270,7 +273,7 @@ func (o *ThridPartyIntegration) SetLicenseKey(v string) {
 	o.LicenseKey = &v
 }
 
-// GetReadToken returns the ReadToken field value if set, zero value otherwise.
+// GetReadToken returns the ReadToken field value if set, zero value otherwise
 func (o *ThridPartyIntegration) GetReadToken() string {
 	if o == nil || IsNil(o.ReadToken) {
 		var ret string
@@ -285,6 +288,7 @@ func (o *ThridPartyIntegration) GetReadTokenOk() (*string, bool) {
 	if o == nil || IsNil(o.ReadToken) {
 		return nil, false
 	}
+
 	return o.ReadToken, true
 }
 
@@ -302,7 +306,7 @@ func (o *ThridPartyIntegration) SetReadToken(v string) {
 	o.ReadToken = &v
 }
 
-// GetWriteToken returns the WriteToken field value if set, zero value otherwise.
+// GetWriteToken returns the WriteToken field value if set, zero value otherwise
 func (o *ThridPartyIntegration) GetWriteToken() string {
 	if o == nil || IsNil(o.WriteToken) {
 		var ret string
@@ -317,6 +321,7 @@ func (o *ThridPartyIntegration) GetWriteTokenOk() (*string, bool) {
 	if o == nil || IsNil(o.WriteToken) {
 		return nil, false
 	}
+
 	return o.WriteToken, true
 }
 
@@ -334,7 +339,7 @@ func (o *ThridPartyIntegration) SetWriteToken(v string) {
 	o.WriteToken = &v
 }
 
-// GetServiceKey returns the ServiceKey field value if set, zero value otherwise.
+// GetServiceKey returns the ServiceKey field value if set, zero value otherwise
 func (o *ThridPartyIntegration) GetServiceKey() string {
 	if o == nil || IsNil(o.ServiceKey) {
 		var ret string
@@ -349,6 +354,7 @@ func (o *ThridPartyIntegration) GetServiceKeyOk() (*string, bool) {
 	if o == nil || IsNil(o.ServiceKey) {
 		return nil, false
 	}
+
 	return o.ServiceKey, true
 }
 
@@ -366,7 +372,7 @@ func (o *ThridPartyIntegration) SetServiceKey(v string) {
 	o.ServiceKey = &v
 }
 
-// GetEnabled returns the Enabled field value if set, zero value otherwise.
+// GetEnabled returns the Enabled field value if set, zero value otherwise
 func (o *ThridPartyIntegration) GetEnabled() bool {
 	if o == nil || IsNil(o.Enabled) {
 		var ret bool
@@ -381,6 +387,7 @@ func (o *ThridPartyIntegration) GetEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
+
 	return o.Enabled, true
 }
 
@@ -398,7 +405,7 @@ func (o *ThridPartyIntegration) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
-// GetListenAddress returns the ListenAddress field value if set, zero value otherwise.
+// GetListenAddress returns the ListenAddress field value if set, zero value otherwise
 func (o *ThridPartyIntegration) GetListenAddress() string {
 	if o == nil || IsNil(o.ListenAddress) {
 		var ret string
@@ -413,6 +420,7 @@ func (o *ThridPartyIntegration) GetListenAddressOk() (*string, bool) {
 	if o == nil || IsNil(o.ListenAddress) {
 		return nil, false
 	}
+
 	return o.ListenAddress, true
 }
 
@@ -430,7 +438,7 @@ func (o *ThridPartyIntegration) SetListenAddress(v string) {
 	o.ListenAddress = &v
 }
 
-// GetPassword returns the Password field value if set, zero value otherwise.
+// GetPassword returns the Password field value if set, zero value otherwise
 func (o *ThridPartyIntegration) GetPassword() string {
 	if o == nil || IsNil(o.Password) {
 		var ret string
@@ -445,6 +453,7 @@ func (o *ThridPartyIntegration) GetPasswordOk() (*string, bool) {
 	if o == nil || IsNil(o.Password) {
 		return nil, false
 	}
+
 	return o.Password, true
 }
 
@@ -462,7 +471,7 @@ func (o *ThridPartyIntegration) SetPassword(v string) {
 	o.Password = &v
 }
 
-// GetRateLimitInterval returns the RateLimitInterval field value if set, zero value otherwise.
+// GetRateLimitInterval returns the RateLimitInterval field value if set, zero value otherwise
 func (o *ThridPartyIntegration) GetRateLimitInterval() int {
 	if o == nil || IsNil(o.RateLimitInterval) {
 		var ret int
@@ -477,6 +486,7 @@ func (o *ThridPartyIntegration) GetRateLimitIntervalOk() (*int, bool) {
 	if o == nil || IsNil(o.RateLimitInterval) {
 		return nil, false
 	}
+
 	return o.RateLimitInterval, true
 }
 
@@ -494,7 +504,7 @@ func (o *ThridPartyIntegration) SetRateLimitInterval(v int) {
 	o.RateLimitInterval = &v
 }
 
-// GetScheme returns the Scheme field value if set, zero value otherwise.
+// GetScheme returns the Scheme field value if set, zero value otherwise
 func (o *ThridPartyIntegration) GetScheme() string {
 	if o == nil || IsNil(o.Scheme) {
 		var ret string
@@ -509,6 +519,7 @@ func (o *ThridPartyIntegration) GetSchemeOk() (*string, bool) {
 	if o == nil || IsNil(o.Scheme) {
 		return nil, false
 	}
+
 	return o.Scheme, true
 }
 
@@ -526,7 +537,7 @@ func (o *ThridPartyIntegration) SetScheme(v string) {
 	o.Scheme = &v
 }
 
-// GetServiceDiscovery returns the ServiceDiscovery field value if set, zero value otherwise.
+// GetServiceDiscovery returns the ServiceDiscovery field value if set, zero value otherwise
 func (o *ThridPartyIntegration) GetServiceDiscovery() string {
 	if o == nil || IsNil(o.ServiceDiscovery) {
 		var ret string
@@ -541,6 +552,7 @@ func (o *ThridPartyIntegration) GetServiceDiscoveryOk() (*string, bool) {
 	if o == nil || IsNil(o.ServiceDiscovery) {
 		return nil, false
 	}
+
 	return o.ServiceDiscovery, true
 }
 
@@ -558,7 +570,7 @@ func (o *ThridPartyIntegration) SetServiceDiscovery(v string) {
 	o.ServiceDiscovery = &v
 }
 
-// GetTlsPemPath returns the TlsPemPath field value if set, zero value otherwise.
+// GetTlsPemPath returns the TlsPemPath field value if set, zero value otherwise
 func (o *ThridPartyIntegration) GetTlsPemPath() string {
 	if o == nil || IsNil(o.TlsPemPath) {
 		var ret string
@@ -573,6 +585,7 @@ func (o *ThridPartyIntegration) GetTlsPemPathOk() (*string, bool) {
 	if o == nil || IsNil(o.TlsPemPath) {
 		return nil, false
 	}
+
 	return o.TlsPemPath, true
 }
 
@@ -590,7 +603,7 @@ func (o *ThridPartyIntegration) SetTlsPemPath(v string) {
 	o.TlsPemPath = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
+// GetUsername returns the Username field value if set, zero value otherwise
 func (o *ThridPartyIntegration) GetUsername() string {
 	if o == nil || IsNil(o.Username) {
 		var ret string
@@ -605,6 +618,7 @@ func (o *ThridPartyIntegration) GetUsernameOk() (*string, bool) {
 	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
+
 	return o.Username, true
 }
 
@@ -622,7 +636,7 @@ func (o *ThridPartyIntegration) SetUsername(v string) {
 	o.Username = &v
 }
 
-// GetApiToken returns the ApiToken field value if set, zero value otherwise.
+// GetApiToken returns the ApiToken field value if set, zero value otherwise
 func (o *ThridPartyIntegration) GetApiToken() string {
 	if o == nil || IsNil(o.ApiToken) {
 		var ret string
@@ -637,6 +651,7 @@ func (o *ThridPartyIntegration) GetApiTokenOk() (*string, bool) {
 	if o == nil || IsNil(o.ApiToken) {
 		return nil, false
 	}
+
 	return o.ApiToken, true
 }
 
@@ -654,28 +669,28 @@ func (o *ThridPartyIntegration) SetApiToken(v string) {
 	o.ApiToken = &v
 }
 
-// GetChannelName returns the ChannelName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetChannelName returns the ChannelName field value if set, zero value otherwise
 func (o *ThridPartyIntegration) GetChannelName() string {
-	if o == nil || IsNil(o.ChannelName.Get()) {
+	if o == nil || IsNil(o.ChannelName) {
 		var ret string
 		return ret
 	}
-	return *o.ChannelName.Get()
+	return *o.ChannelName
 }
 
 // GetChannelNameOk returns a tuple with the ChannelName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ThridPartyIntegration) GetChannelNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ChannelName) {
 		return nil, false
 	}
-	return o.ChannelName.Get(), o.ChannelName.IsSet()
+
+	return o.ChannelName, true
 }
 
 // HasChannelName returns a boolean if a field has been set.
 func (o *ThridPartyIntegration) HasChannelName() bool {
-	if o != nil && o.ChannelName.IsSet() {
+	if o != nil && !IsNil(o.ChannelName) {
 		return true
 	}
 
@@ -684,20 +699,10 @@ func (o *ThridPartyIntegration) HasChannelName() bool {
 
 // SetChannelName gets a reference to the given NullableString and assigns it to the ChannelName field.
 func (o *ThridPartyIntegration) SetChannelName(v string) {
-	o.ChannelName.Set(&v)
+	o.ChannelName = &v
 }
 
-// SetChannelNameNil sets the value for ChannelName to be an explicit nil
-func (o *ThridPartyIntegration) SetChannelNameNil() {
-	o.ChannelName.Set(nil)
-}
-
-// UnsetChannelName ensures that no value is present for ChannelName, not even an explicit nil
-func (o *ThridPartyIntegration) UnsetChannelName() {
-	o.ChannelName.Unset()
-}
-
-// GetTeamName returns the TeamName field value if set, zero value otherwise.
+// GetTeamName returns the TeamName field value if set, zero value otherwise
 func (o *ThridPartyIntegration) GetTeamName() string {
 	if o == nil || IsNil(o.TeamName) {
 		var ret string
@@ -712,6 +717,7 @@ func (o *ThridPartyIntegration) GetTeamNameOk() (*string, bool) {
 	if o == nil || IsNil(o.TeamName) {
 		return nil, false
 	}
+
 	return o.TeamName, true
 }
 
@@ -729,7 +735,7 @@ func (o *ThridPartyIntegration) SetTeamName(v string) {
 	o.TeamName = &v
 }
 
-// GetRoutingKey returns the RoutingKey field value if set, zero value otherwise.
+// GetRoutingKey returns the RoutingKey field value if set, zero value otherwise
 func (o *ThridPartyIntegration) GetRoutingKey() string {
 	if o == nil || IsNil(o.RoutingKey) {
 		var ret string
@@ -744,6 +750,7 @@ func (o *ThridPartyIntegration) GetRoutingKeyOk() (*string, bool) {
 	if o == nil || IsNil(o.RoutingKey) {
 		return nil, false
 	}
+
 	return o.RoutingKey, true
 }
 
@@ -761,7 +768,7 @@ func (o *ThridPartyIntegration) SetRoutingKey(v string) {
 	o.RoutingKey = &v
 }
 
-// GetSecret returns the Secret field value if set, zero value otherwise.
+// GetSecret returns the Secret field value if set, zero value otherwise
 func (o *ThridPartyIntegration) GetSecret() string {
 	if o == nil || IsNil(o.Secret) {
 		var ret string
@@ -776,6 +783,7 @@ func (o *ThridPartyIntegration) GetSecretOk() (*string, bool) {
 	if o == nil || IsNil(o.Secret) {
 		return nil, false
 	}
+
 	return o.Secret, true
 }
 
@@ -793,7 +801,7 @@ func (o *ThridPartyIntegration) SetSecret(v string) {
 	o.Secret = &v
 }
 
-// GetUrl returns the Url field value if set, zero value otherwise.
+// GetUrl returns the Url field value if set, zero value otherwise
 func (o *ThridPartyIntegration) GetUrl() string {
 	if o == nil || IsNil(o.Url) {
 		var ret string
@@ -808,6 +816,7 @@ func (o *ThridPartyIntegration) GetUrlOk() (*string, bool) {
 	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
+
 	return o.Url, true
 }
 
@@ -888,8 +897,8 @@ func (o ThridPartyIntegration) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ApiToken) {
 		toSerialize["apiToken"] = o.ApiToken
 	}
-	if o.ChannelName.IsSet() {
-		toSerialize["channelName"] = o.ChannelName.Get()
+	if !IsNil(o.ChannelName) {
+		toSerialize["channelName"] = o.ChannelName
 	}
 	if !IsNil(o.TeamName) {
 		toSerialize["teamName"] = o.TeamName
@@ -904,40 +913,4 @@ func (o ThridPartyIntegration) ToMap() (map[string]interface{}, error) {
 		toSerialize["url"] = o.Url
 	}
 	return toSerialize, nil
-}
-
-type NullableThridPartyIntegration struct {
-	value *ThridPartyIntegration
-	isSet bool
-}
-
-func (v NullableThridPartyIntegration) Get() *ThridPartyIntegration {
-	return v.value
-}
-
-func (v *NullableThridPartyIntegration) Set(val *ThridPartyIntegration) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableThridPartyIntegration) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableThridPartyIntegration) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableThridPartyIntegration(val *ThridPartyIntegration) *NullableThridPartyIntegration {
-	return &NullableThridPartyIntegration{value: val, isSet: true}
-}
-
-func (v NullableThridPartyIntegration) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableThridPartyIntegration) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

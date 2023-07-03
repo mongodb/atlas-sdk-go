@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the DiskBackupShardedClusterSnapshot type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DiskBackupShardedClusterSnapshot{}
-
 // DiskBackupShardedClusterSnapshot Details of the sharded cluster snapshot that MongoDB Cloud created.
 type DiskBackupShardedClusterSnapshot struct {
 	// Date and time when MongoDB Cloud took the snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
@@ -61,7 +58,7 @@ func NewDiskBackupShardedClusterSnapshotWithDefaults() *DiskBackupShardedCluster
 	return &this
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise
 func (o *DiskBackupShardedClusterSnapshot) GetCreatedAt() time.Time {
 	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
@@ -76,6 +73,7 @@ func (o *DiskBackupShardedClusterSnapshot) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
+
 	return o.CreatedAt, true
 }
 
@@ -93,7 +91,7 @@ func (o *DiskBackupShardedClusterSnapshot) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// GetDescription returns the Description field value if set, zero value otherwise
 func (o *DiskBackupShardedClusterSnapshot) GetDescription() string {
 	if o == nil || IsNil(o.Description) {
 		var ret string
@@ -108,6 +106,7 @@ func (o *DiskBackupShardedClusterSnapshot) GetDescriptionOk() (*string, bool) {
 	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
+
 	return o.Description, true
 }
 
@@ -125,7 +124,7 @@ func (o *DiskBackupShardedClusterSnapshot) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise.
+// GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise
 func (o *DiskBackupShardedClusterSnapshot) GetExpiresAt() time.Time {
 	if o == nil || IsNil(o.ExpiresAt) {
 		var ret time.Time
@@ -140,6 +139,7 @@ func (o *DiskBackupShardedClusterSnapshot) GetExpiresAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.ExpiresAt) {
 		return nil, false
 	}
+
 	return o.ExpiresAt, true
 }
 
@@ -157,7 +157,7 @@ func (o *DiskBackupShardedClusterSnapshot) SetExpiresAt(v time.Time) {
 	o.ExpiresAt = &v
 }
 
-// GetFrequencyType returns the FrequencyType field value if set, zero value otherwise.
+// GetFrequencyType returns the FrequencyType field value if set, zero value otherwise
 func (o *DiskBackupShardedClusterSnapshot) GetFrequencyType() string {
 	if o == nil || IsNil(o.FrequencyType) {
 		var ret string
@@ -172,6 +172,7 @@ func (o *DiskBackupShardedClusterSnapshot) GetFrequencyTypeOk() (*string, bool) 
 	if o == nil || IsNil(o.FrequencyType) {
 		return nil, false
 	}
+
 	return o.FrequencyType, true
 }
 
@@ -189,7 +190,7 @@ func (o *DiskBackupShardedClusterSnapshot) SetFrequencyType(v string) {
 	o.FrequencyType = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *DiskBackupShardedClusterSnapshot) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -204,6 +205,7 @@ func (o *DiskBackupShardedClusterSnapshot) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -221,7 +223,7 @@ func (o *DiskBackupShardedClusterSnapshot) SetId(v string) {
 	o.Id = &v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *DiskBackupShardedClusterSnapshot) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -236,6 +238,7 @@ func (o *DiskBackupShardedClusterSnapshot) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -253,7 +256,7 @@ func (o *DiskBackupShardedClusterSnapshot) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetMasterKeyUUID returns the MasterKeyUUID field value if set, zero value otherwise.
+// GetMasterKeyUUID returns the MasterKeyUUID field value if set, zero value otherwise
 func (o *DiskBackupShardedClusterSnapshot) GetMasterKeyUUID() string {
 	if o == nil || IsNil(o.MasterKeyUUID) {
 		var ret string
@@ -268,6 +271,7 @@ func (o *DiskBackupShardedClusterSnapshot) GetMasterKeyUUIDOk() (*string, bool) 
 	if o == nil || IsNil(o.MasterKeyUUID) {
 		return nil, false
 	}
+
 	return o.MasterKeyUUID, true
 }
 
@@ -285,7 +289,7 @@ func (o *DiskBackupShardedClusterSnapshot) SetMasterKeyUUID(v string) {
 	o.MasterKeyUUID = &v
 }
 
-// GetMembers returns the Members field value if set, zero value otherwise.
+// GetMembers returns the Members field value if set, zero value otherwise
 func (o *DiskBackupShardedClusterSnapshot) GetMembers() []DiskBackupShardedClusterSnapshotMember {
 	if o == nil || IsNil(o.Members) {
 		var ret []DiskBackupShardedClusterSnapshotMember
@@ -300,6 +304,7 @@ func (o *DiskBackupShardedClusterSnapshot) GetMembersOk() ([]DiskBackupShardedCl
 	if o == nil || IsNil(o.Members) {
 		return nil, false
 	}
+
 	return o.Members, true
 }
 
@@ -317,7 +322,7 @@ func (o *DiskBackupShardedClusterSnapshot) SetMembers(v []DiskBackupShardedClust
 	o.Members = v
 }
 
-// GetMongodVersion returns the MongodVersion field value if set, zero value otherwise.
+// GetMongodVersion returns the MongodVersion field value if set, zero value otherwise
 func (o *DiskBackupShardedClusterSnapshot) GetMongodVersion() string {
 	if o == nil || IsNil(o.MongodVersion) {
 		var ret string
@@ -332,6 +337,7 @@ func (o *DiskBackupShardedClusterSnapshot) GetMongodVersionOk() (*string, bool) 
 	if o == nil || IsNil(o.MongodVersion) {
 		return nil, false
 	}
+
 	return o.MongodVersion, true
 }
 
@@ -349,7 +355,7 @@ func (o *DiskBackupShardedClusterSnapshot) SetMongodVersion(v string) {
 	o.MongodVersion = &v
 }
 
-// GetPolicyItems returns the PolicyItems field value if set, zero value otherwise.
+// GetPolicyItems returns the PolicyItems field value if set, zero value otherwise
 func (o *DiskBackupShardedClusterSnapshot) GetPolicyItems() []string {
 	if o == nil || IsNil(o.PolicyItems) {
 		var ret []string
@@ -364,6 +370,7 @@ func (o *DiskBackupShardedClusterSnapshot) GetPolicyItemsOk() ([]string, bool) {
 	if o == nil || IsNil(o.PolicyItems) {
 		return nil, false
 	}
+
 	return o.PolicyItems, true
 }
 
@@ -381,7 +388,7 @@ func (o *DiskBackupShardedClusterSnapshot) SetPolicyItems(v []string) {
 	o.PolicyItems = v
 }
 
-// GetSnapshotIds returns the SnapshotIds field value if set, zero value otherwise.
+// GetSnapshotIds returns the SnapshotIds field value if set, zero value otherwise
 func (o *DiskBackupShardedClusterSnapshot) GetSnapshotIds() []string {
 	if o == nil || IsNil(o.SnapshotIds) {
 		var ret []string
@@ -396,6 +403,7 @@ func (o *DiskBackupShardedClusterSnapshot) GetSnapshotIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.SnapshotIds) {
 		return nil, false
 	}
+
 	return o.SnapshotIds, true
 }
 
@@ -413,7 +421,7 @@ func (o *DiskBackupShardedClusterSnapshot) SetSnapshotIds(v []string) {
 	o.SnapshotIds = v
 }
 
-// GetSnapshotType returns the SnapshotType field value if set, zero value otherwise.
+// GetSnapshotType returns the SnapshotType field value if set, zero value otherwise
 func (o *DiskBackupShardedClusterSnapshot) GetSnapshotType() string {
 	if o == nil || IsNil(o.SnapshotType) {
 		var ret string
@@ -428,6 +436,7 @@ func (o *DiskBackupShardedClusterSnapshot) GetSnapshotTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.SnapshotType) {
 		return nil, false
 	}
+
 	return o.SnapshotType, true
 }
 
@@ -445,7 +454,7 @@ func (o *DiskBackupShardedClusterSnapshot) SetSnapshotType(v string) {
 	o.SnapshotType = &v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// GetStatus returns the Status field value if set, zero value otherwise
 func (o *DiskBackupShardedClusterSnapshot) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
 		var ret string
@@ -460,6 +469,7 @@ func (o *DiskBackupShardedClusterSnapshot) GetStatusOk() (*string, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
+
 	return o.Status, true
 }
 
@@ -477,7 +487,7 @@ func (o *DiskBackupShardedClusterSnapshot) SetStatus(v string) {
 	o.Status = &v
 }
 
-// GetStorageSizeBytes returns the StorageSizeBytes field value if set, zero value otherwise.
+// GetStorageSizeBytes returns the StorageSizeBytes field value if set, zero value otherwise
 func (o *DiskBackupShardedClusterSnapshot) GetStorageSizeBytes() int64 {
 	if o == nil || IsNil(o.StorageSizeBytes) {
 		var ret int64
@@ -492,6 +502,7 @@ func (o *DiskBackupShardedClusterSnapshot) GetStorageSizeBytesOk() (*int64, bool
 	if o == nil || IsNil(o.StorageSizeBytes) {
 		return nil, false
 	}
+
 	return o.StorageSizeBytes, true
 }
 
@@ -509,7 +520,7 @@ func (o *DiskBackupShardedClusterSnapshot) SetStorageSizeBytes(v int64) {
 	o.StorageSizeBytes = &v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value if set, zero value otherwise
 func (o *DiskBackupShardedClusterSnapshot) GetType() string {
 	if o == nil || IsNil(o.Type) {
 		var ret string
@@ -524,6 +535,7 @@ func (o *DiskBackupShardedClusterSnapshot) GetTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
+
 	return o.Type, true
 }
 
@@ -551,40 +563,4 @@ func (o DiskBackupShardedClusterSnapshot) MarshalJSONWithoutReadOnly() ([]byte, 
 func (o DiskBackupShardedClusterSnapshot) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableDiskBackupShardedClusterSnapshot struct {
-	value *DiskBackupShardedClusterSnapshot
-	isSet bool
-}
-
-func (v NullableDiskBackupShardedClusterSnapshot) Get() *DiskBackupShardedClusterSnapshot {
-	return v.value
-}
-
-func (v *NullableDiskBackupShardedClusterSnapshot) Set(val *DiskBackupShardedClusterSnapshot) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableDiskBackupShardedClusterSnapshot) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableDiskBackupShardedClusterSnapshot) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableDiskBackupShardedClusterSnapshot(val *DiskBackupShardedClusterSnapshot) *NullableDiskBackupShardedClusterSnapshot {
-	return &NullableDiskBackupShardedClusterSnapshot{value: val, isSet: true}
-}
-
-func (v NullableDiskBackupShardedClusterSnapshot) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableDiskBackupShardedClusterSnapshot) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

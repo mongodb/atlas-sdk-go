@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the AdvancedAutoScalingSettings type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AdvancedAutoScalingSettings{}
-
 // AdvancedAutoScalingSettings Options that determine how this cluster handles resource scaling.
 type AdvancedAutoScalingSettings struct {
 	Compute *AdvancedComputeAutoScaling `json:"compute,omitempty"`
@@ -32,7 +29,7 @@ func NewAdvancedAutoScalingSettingsWithDefaults() *AdvancedAutoScalingSettings {
 	return &this
 }
 
-// GetCompute returns the Compute field value if set, zero value otherwise.
+// GetCompute returns the Compute field value if set, zero value otherwise
 func (o *AdvancedAutoScalingSettings) GetCompute() AdvancedComputeAutoScaling {
 	if o == nil || IsNil(o.Compute) {
 		var ret AdvancedComputeAutoScaling
@@ -47,6 +44,7 @@ func (o *AdvancedAutoScalingSettings) GetComputeOk() (*AdvancedComputeAutoScalin
 	if o == nil || IsNil(o.Compute) {
 		return nil, false
 	}
+
 	return o.Compute, true
 }
 
@@ -64,7 +62,7 @@ func (o *AdvancedAutoScalingSettings) SetCompute(v AdvancedComputeAutoScaling) {
 	o.Compute = &v
 }
 
-// GetDiskGB returns the DiskGB field value if set, zero value otherwise.
+// GetDiskGB returns the DiskGB field value if set, zero value otherwise
 func (o *AdvancedAutoScalingSettings) GetDiskGB() DiskGBAutoScaling {
 	if o == nil || IsNil(o.DiskGB) {
 		var ret DiskGBAutoScaling
@@ -79,6 +77,7 @@ func (o *AdvancedAutoScalingSettings) GetDiskGBOk() (*DiskGBAutoScaling, bool) {
 	if o == nil || IsNil(o.DiskGB) {
 		return nil, false
 	}
+
 	return o.DiskGB, true
 }
 
@@ -112,40 +111,4 @@ func (o AdvancedAutoScalingSettings) ToMap() (map[string]interface{}, error) {
 		toSerialize["diskGB"] = o.DiskGB
 	}
 	return toSerialize, nil
-}
-
-type NullableAdvancedAutoScalingSettings struct {
-	value *AdvancedAutoScalingSettings
-	isSet bool
-}
-
-func (v NullableAdvancedAutoScalingSettings) Get() *AdvancedAutoScalingSettings {
-	return v.value
-}
-
-func (v *NullableAdvancedAutoScalingSettings) Set(val *AdvancedAutoScalingSettings) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableAdvancedAutoScalingSettings) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableAdvancedAutoScalingSettings) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableAdvancedAutoScalingSettings(val *AdvancedAutoScalingSettings) *NullableAdvancedAutoScalingSettings {
-	return &NullableAdvancedAutoScalingSettings{value: val, isSet: true}
-}
-
-func (v NullableAdvancedAutoScalingSettings) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableAdvancedAutoScalingSettings) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the DiskBackupExportJobRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DiskBackupExportJobRequest{}
-
 // DiskBackupExportJobRequest struct for DiskBackupExportJobRequest
 type DiskBackupExportJobRequest struct {
 	// Collection of key-value pairs that represent custom data to add to the metadata file that MongoDB Cloud uploads to the bucket when the export job finishes.
@@ -40,7 +37,7 @@ func NewDiskBackupExportJobRequestWithDefaults() *DiskBackupExportJobRequest {
 	return &this
 }
 
-// GetCustomData returns the CustomData field value if set, zero value otherwise.
+// GetCustomData returns the CustomData field value if set, zero value otherwise
 func (o *DiskBackupExportJobRequest) GetCustomData() []BackupLabel {
 	if o == nil || IsNil(o.CustomData) {
 		var ret []BackupLabel
@@ -55,6 +52,7 @@ func (o *DiskBackupExportJobRequest) GetCustomDataOk() ([]BackupLabel, bool) {
 	if o == nil || IsNil(o.CustomData) {
 		return nil, false
 	}
+
 	return o.CustomData, true
 }
 
@@ -96,7 +94,7 @@ func (o *DiskBackupExportJobRequest) SetExportBucketId(v string) {
 	o.ExportBucketId = v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *DiskBackupExportJobRequest) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -111,6 +109,7 @@ func (o *DiskBackupExportJobRequest) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -167,40 +166,4 @@ func (o DiskBackupExportJobRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["exportBucketId"] = o.ExportBucketId
 	toSerialize["snapshotId"] = o.SnapshotId
 	return toSerialize, nil
-}
-
-type NullableDiskBackupExportJobRequest struct {
-	value *DiskBackupExportJobRequest
-	isSet bool
-}
-
-func (v NullableDiskBackupExportJobRequest) Get() *DiskBackupExportJobRequest {
-	return v.value
-}
-
-func (v *NullableDiskBackupExportJobRequest) Set(val *DiskBackupExportJobRequest) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableDiskBackupExportJobRequest) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableDiskBackupExportJobRequest) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableDiskBackupExportJobRequest(val *DiskBackupExportJobRequest) *NullableDiskBackupExportJobRequest {
-	return &NullableDiskBackupExportJobRequest{value: val, isSet: true}
-}
-
-func (v NullableDiskBackupExportJobRequest) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableDiskBackupExportJobRequest) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

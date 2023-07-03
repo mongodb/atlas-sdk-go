@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the ApiBSONTimestamp type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ApiBSONTimestamp{}
-
 // ApiBSONTimestamp BSON timestamp that indicates when the checkpoint token entry in the oplog occurred.
 type ApiBSONTimestamp struct {
 	// Date and time when the oplog recorded this database operation. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
@@ -35,7 +32,7 @@ func NewApiBSONTimestampWithDefaults() *ApiBSONTimestamp {
 	return &this
 }
 
-// GetDate returns the Date field value if set, zero value otherwise.
+// GetDate returns the Date field value if set, zero value otherwise
 func (o *ApiBSONTimestamp) GetDate() time.Time {
 	if o == nil || IsNil(o.Date) {
 		var ret time.Time
@@ -50,6 +47,7 @@ func (o *ApiBSONTimestamp) GetDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Date) {
 		return nil, false
 	}
+
 	return o.Date, true
 }
 
@@ -67,7 +65,7 @@ func (o *ApiBSONTimestamp) SetDate(v time.Time) {
 	o.Date = &v
 }
 
-// GetIncrement returns the Increment field value if set, zero value otherwise.
+// GetIncrement returns the Increment field value if set, zero value otherwise
 func (o *ApiBSONTimestamp) GetIncrement() int {
 	if o == nil || IsNil(o.Increment) {
 		var ret int
@@ -82,6 +80,7 @@ func (o *ApiBSONTimestamp) GetIncrementOk() (*int, bool) {
 	if o == nil || IsNil(o.Increment) {
 		return nil, false
 	}
+
 	return o.Increment, true
 }
 
@@ -109,40 +108,4 @@ func (o ApiBSONTimestamp) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o ApiBSONTimestamp) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableApiBSONTimestamp struct {
-	value *ApiBSONTimestamp
-	isSet bool
-}
-
-func (v NullableApiBSONTimestamp) Get() *ApiBSONTimestamp {
-	return v.value
-}
-
-func (v *NullableApiBSONTimestamp) Set(val *ApiBSONTimestamp) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableApiBSONTimestamp) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableApiBSONTimestamp) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableApiBSONTimestamp(val *ApiBSONTimestamp) *NullableApiBSONTimestamp {
-	return &NullableApiBSONTimestamp{value: val, isSet: true}
-}
-
-func (v NullableApiBSONTimestamp) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableApiBSONTimestamp) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

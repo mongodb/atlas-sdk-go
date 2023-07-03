@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the DataLakePipelinesPartitionField type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DataLakePipelinesPartitionField{}
-
 // DataLakePipelinesPartitionField Partition Field in the Data Lake Storage provider for a Data Lake Pipeline.
 type DataLakePipelinesPartitionField struct {
 	// Human-readable label that identifies the field name used to partition data.
@@ -98,40 +95,4 @@ func (o DataLakePipelinesPartitionField) ToMap() (map[string]interface{}, error)
 	toSerialize["fieldName"] = o.FieldName
 	toSerialize["order"] = o.Order
 	return toSerialize, nil
-}
-
-type NullableDataLakePipelinesPartitionField struct {
-	value *DataLakePipelinesPartitionField
-	isSet bool
-}
-
-func (v NullableDataLakePipelinesPartitionField) Get() *DataLakePipelinesPartitionField {
-	return v.value
-}
-
-func (v *NullableDataLakePipelinesPartitionField) Set(val *DataLakePipelinesPartitionField) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableDataLakePipelinesPartitionField) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableDataLakePipelinesPartitionField) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableDataLakePipelinesPartitionField(val *DataLakePipelinesPartitionField) *NullableDataLakePipelinesPartitionField {
-	return &NullableDataLakePipelinesPartitionField{value: val, isSet: true}
-}
-
-func (v NullableDataLakePipelinesPartitionField) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableDataLakePipelinesPartitionField) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

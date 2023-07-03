@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the CloudProviderAccessFeatureUsage type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CloudProviderAccessFeatureUsage{}
-
 // CloudProviderAccessFeatureUsage MongoDB Cloud features associated with this Amazon Web Services (AWS) Identity and Access Management (IAM) role.
 type CloudProviderAccessFeatureUsage struct {
 	// Human-readable label that describes one MongoDB Cloud feature linked to this Amazon Web Services (AWS) Identity and Access Management (IAM) role.
@@ -33,7 +30,7 @@ func NewCloudProviderAccessFeatureUsageWithDefaults() *CloudProviderAccessFeatur
 	return &this
 }
 
-// GetFeatureType returns the FeatureType field value if set, zero value otherwise.
+// GetFeatureType returns the FeatureType field value if set, zero value otherwise
 func (o *CloudProviderAccessFeatureUsage) GetFeatureType() string {
 	if o == nil || IsNil(o.FeatureType) {
 		var ret string
@@ -48,6 +45,7 @@ func (o *CloudProviderAccessFeatureUsage) GetFeatureTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.FeatureType) {
 		return nil, false
 	}
+
 	return o.FeatureType, true
 }
 
@@ -65,7 +63,7 @@ func (o *CloudProviderAccessFeatureUsage) SetFeatureType(v string) {
 	o.FeatureType = &v
 }
 
-// GetFeatureId returns the FeatureId field value if set, zero value otherwise.
+// GetFeatureId returns the FeatureId field value if set, zero value otherwise
 func (o *CloudProviderAccessFeatureUsage) GetFeatureId() CloudProviderAccessFeatureUsageExportSnapshotFeatureId {
 	if o == nil || IsNil(o.FeatureId) {
 		var ret CloudProviderAccessFeatureUsageExportSnapshotFeatureId
@@ -80,6 +78,7 @@ func (o *CloudProviderAccessFeatureUsage) GetFeatureIdOk() (*CloudProviderAccess
 	if o == nil || IsNil(o.FeatureId) {
 		return nil, false
 	}
+
 	return o.FeatureId, true
 }
 
@@ -110,40 +109,4 @@ func (o CloudProviderAccessFeatureUsage) ToMap() (map[string]interface{}, error)
 		toSerialize["featureId"] = o.FeatureId
 	}
 	return toSerialize, nil
-}
-
-type NullableCloudProviderAccessFeatureUsage struct {
-	value *CloudProviderAccessFeatureUsage
-	isSet bool
-}
-
-func (v NullableCloudProviderAccessFeatureUsage) Get() *CloudProviderAccessFeatureUsage {
-	return v.value
-}
-
-func (v *NullableCloudProviderAccessFeatureUsage) Set(val *CloudProviderAccessFeatureUsage) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableCloudProviderAccessFeatureUsage) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableCloudProviderAccessFeatureUsage) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableCloudProviderAccessFeatureUsage(val *CloudProviderAccessFeatureUsage) *NullableCloudProviderAccessFeatureUsage {
-	return &NullableCloudProviderAccessFeatureUsage{value: val, isSet: true}
-}
-
-func (v NullableCloudProviderAccessFeatureUsage) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableCloudProviderAccessFeatureUsage) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

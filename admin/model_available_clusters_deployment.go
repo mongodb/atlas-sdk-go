@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the AvailableClustersDeployment type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AvailableClustersDeployment{}
-
 // AvailableClustersDeployment Deployments that can be migrated to MongoDB Atlas.
 type AvailableClustersDeployment struct {
 	// Version of MongoDB Agent that monitors/manages the cluster.
@@ -58,7 +55,7 @@ func NewAvailableClustersDeploymentWithDefaults() *AvailableClustersDeployment {
 	return &this
 }
 
-// GetAgentVersion returns the AgentVersion field value if set, zero value otherwise.
+// GetAgentVersion returns the AgentVersion field value if set, zero value otherwise
 func (o *AvailableClustersDeployment) GetAgentVersion() string {
 	if o == nil || IsNil(o.AgentVersion) {
 		var ret string
@@ -73,6 +70,7 @@ func (o *AvailableClustersDeployment) GetAgentVersionOk() (*string, bool) {
 	if o == nil || IsNil(o.AgentVersion) {
 		return nil, false
 	}
+
 	return o.AgentVersion, true
 }
 
@@ -90,7 +88,7 @@ func (o *AvailableClustersDeployment) SetAgentVersion(v string) {
 	o.AgentVersion = &v
 }
 
-// GetClusterId returns the ClusterId field value if set, zero value otherwise.
+// GetClusterId returns the ClusterId field value if set, zero value otherwise
 func (o *AvailableClustersDeployment) GetClusterId() string {
 	if o == nil || IsNil(o.ClusterId) {
 		var ret string
@@ -105,6 +103,7 @@ func (o *AvailableClustersDeployment) GetClusterIdOk() (*string, bool) {
 	if o == nil || IsNil(o.ClusterId) {
 		return nil, false
 	}
+
 	return o.ClusterId, true
 }
 
@@ -122,7 +121,7 @@ func (o *AvailableClustersDeployment) SetClusterId(v string) {
 	o.ClusterId = &v
 }
 
-// GetDbSizeBytes returns the DbSizeBytes field value if set, zero value otherwise.
+// GetDbSizeBytes returns the DbSizeBytes field value if set, zero value otherwise
 func (o *AvailableClustersDeployment) GetDbSizeBytes() int64 {
 	if o == nil || IsNil(o.DbSizeBytes) {
 		var ret int64
@@ -137,6 +136,7 @@ func (o *AvailableClustersDeployment) GetDbSizeBytesOk() (*int64, bool) {
 	if o == nil || IsNil(o.DbSizeBytes) {
 		return nil, false
 	}
+
 	return o.DbSizeBytes, true
 }
 
@@ -250,7 +250,7 @@ func (o *AvailableClustersDeployment) SetName(v string) {
 	o.Name = v
 }
 
-// GetOplogSizeMB returns the OplogSizeMB field value if set, zero value otherwise.
+// GetOplogSizeMB returns the OplogSizeMB field value if set, zero value otherwise
 func (o *AvailableClustersDeployment) GetOplogSizeMB() int {
 	if o == nil || IsNil(o.OplogSizeMB) {
 		var ret int
@@ -265,6 +265,7 @@ func (o *AvailableClustersDeployment) GetOplogSizeMBOk() (*int, bool) {
 	if o == nil || IsNil(o.OplogSizeMB) {
 		return nil, false
 	}
+
 	return o.OplogSizeMB, true
 }
 
@@ -306,7 +307,7 @@ func (o *AvailableClustersDeployment) SetSharded(v bool) {
 	o.Sharded = v
 }
 
-// GetShardsSize returns the ShardsSize field value if set, zero value otherwise.
+// GetShardsSize returns the ShardsSize field value if set, zero value otherwise
 func (o *AvailableClustersDeployment) GetShardsSize() int {
 	if o == nil || IsNil(o.ShardsSize) {
 		var ret int
@@ -321,6 +322,7 @@ func (o *AvailableClustersDeployment) GetShardsSizeOk() (*int, bool) {
 	if o == nil || IsNil(o.ShardsSize) {
 		return nil, false
 	}
+
 	return o.ShardsSize, true
 }
 
@@ -372,40 +374,4 @@ func (o AvailableClustersDeployment) MarshalJSONWithoutReadOnly() ([]byte, error
 func (o AvailableClustersDeployment) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableAvailableClustersDeployment struct {
-	value *AvailableClustersDeployment
-	isSet bool
-}
-
-func (v NullableAvailableClustersDeployment) Get() *AvailableClustersDeployment {
-	return v.value
-}
-
-func (v *NullableAvailableClustersDeployment) Set(val *AvailableClustersDeployment) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableAvailableClustersDeployment) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableAvailableClustersDeployment) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableAvailableClustersDeployment(val *AvailableClustersDeployment) *NullableAvailableClustersDeployment {
-	return &NullableAvailableClustersDeployment{value: val, isSet: true}
-}
-
-func (v NullableAvailableClustersDeployment) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableAvailableClustersDeployment) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

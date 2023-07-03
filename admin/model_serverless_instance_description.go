@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the ServerlessInstanceDescription type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ServerlessInstanceDescription{}
-
 // ServerlessInstanceDescription Group of settings that configure a MongoDB serverless instance.
 type ServerlessInstanceDescription struct {
 	ConnectionStrings *ServerlessInstanceDescriptionConnectionStrings `json:"connectionStrings,omitempty"`
@@ -57,7 +54,7 @@ func NewServerlessInstanceDescriptionWithDefaults() *ServerlessInstanceDescripti
 	return &this
 }
 
-// GetConnectionStrings returns the ConnectionStrings field value if set, zero value otherwise.
+// GetConnectionStrings returns the ConnectionStrings field value if set, zero value otherwise
 func (o *ServerlessInstanceDescription) GetConnectionStrings() ServerlessInstanceDescriptionConnectionStrings {
 	if o == nil || IsNil(o.ConnectionStrings) {
 		var ret ServerlessInstanceDescriptionConnectionStrings
@@ -72,6 +69,7 @@ func (o *ServerlessInstanceDescription) GetConnectionStringsOk() (*ServerlessIns
 	if o == nil || IsNil(o.ConnectionStrings) {
 		return nil, false
 	}
+
 	return o.ConnectionStrings, true
 }
 
@@ -89,7 +87,7 @@ func (o *ServerlessInstanceDescription) SetConnectionStrings(v ServerlessInstanc
 	o.ConnectionStrings = &v
 }
 
-// GetCreateDate returns the CreateDate field value if set, zero value otherwise.
+// GetCreateDate returns the CreateDate field value if set, zero value otherwise
 func (o *ServerlessInstanceDescription) GetCreateDate() time.Time {
 	if o == nil || IsNil(o.CreateDate) {
 		var ret time.Time
@@ -104,6 +102,7 @@ func (o *ServerlessInstanceDescription) GetCreateDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CreateDate) {
 		return nil, false
 	}
+
 	return o.CreateDate, true
 }
 
@@ -121,7 +120,7 @@ func (o *ServerlessInstanceDescription) SetCreateDate(v time.Time) {
 	o.CreateDate = &v
 }
 
-// GetGroupId returns the GroupId field value if set, zero value otherwise.
+// GetGroupId returns the GroupId field value if set, zero value otherwise
 func (o *ServerlessInstanceDescription) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
 		var ret string
@@ -136,6 +135,7 @@ func (o *ServerlessInstanceDescription) GetGroupIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupId) {
 		return nil, false
 	}
+
 	return o.GroupId, true
 }
 
@@ -153,7 +153,7 @@ func (o *ServerlessInstanceDescription) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *ServerlessInstanceDescription) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -168,6 +168,7 @@ func (o *ServerlessInstanceDescription) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -185,7 +186,7 @@ func (o *ServerlessInstanceDescription) SetId(v string) {
 	o.Id = &v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *ServerlessInstanceDescription) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -200,6 +201,7 @@ func (o *ServerlessInstanceDescription) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -217,7 +219,7 @@ func (o *ServerlessInstanceDescription) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetMongoDBVersion returns the MongoDBVersion field value if set, zero value otherwise.
+// GetMongoDBVersion returns the MongoDBVersion field value if set, zero value otherwise
 func (o *ServerlessInstanceDescription) GetMongoDBVersion() string {
 	if o == nil || IsNil(o.MongoDBVersion) {
 		var ret string
@@ -232,6 +234,7 @@ func (o *ServerlessInstanceDescription) GetMongoDBVersionOk() (*string, bool) {
 	if o == nil || IsNil(o.MongoDBVersion) {
 		return nil, false
 	}
+
 	return o.MongoDBVersion, true
 }
 
@@ -249,7 +252,7 @@ func (o *ServerlessInstanceDescription) SetMongoDBVersion(v string) {
 	o.MongoDBVersion = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise
 func (o *ServerlessInstanceDescription) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
@@ -264,6 +267,7 @@ func (o *ServerlessInstanceDescription) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
+
 	return o.Name, true
 }
 
@@ -305,7 +309,7 @@ func (o *ServerlessInstanceDescription) SetProviderSettings(v ServerlessProvider
 	o.ProviderSettings = v
 }
 
-// GetServerlessBackupOptions returns the ServerlessBackupOptions field value if set, zero value otherwise.
+// GetServerlessBackupOptions returns the ServerlessBackupOptions field value if set, zero value otherwise
 func (o *ServerlessInstanceDescription) GetServerlessBackupOptions() ClusterServerlessBackupOptions {
 	if o == nil || IsNil(o.ServerlessBackupOptions) {
 		var ret ClusterServerlessBackupOptions
@@ -320,6 +324,7 @@ func (o *ServerlessInstanceDescription) GetServerlessBackupOptionsOk() (*Cluster
 	if o == nil || IsNil(o.ServerlessBackupOptions) {
 		return nil, false
 	}
+
 	return o.ServerlessBackupOptions, true
 }
 
@@ -337,7 +342,7 @@ func (o *ServerlessInstanceDescription) SetServerlessBackupOptions(v ClusterServ
 	o.ServerlessBackupOptions = &v
 }
 
-// GetStateName returns the StateName field value if set, zero value otherwise.
+// GetStateName returns the StateName field value if set, zero value otherwise
 func (o *ServerlessInstanceDescription) GetStateName() string {
 	if o == nil || IsNil(o.StateName) {
 		var ret string
@@ -352,6 +357,7 @@ func (o *ServerlessInstanceDescription) GetStateNameOk() (*string, bool) {
 	if o == nil || IsNil(o.StateName) {
 		return nil, false
 	}
+
 	return o.StateName, true
 }
 
@@ -369,7 +375,7 @@ func (o *ServerlessInstanceDescription) SetStateName(v string) {
 	o.StateName = &v
 }
 
-// GetTags returns the Tags field value if set, zero value otherwise.
+// GetTags returns the Tags field value if set, zero value otherwise
 func (o *ServerlessInstanceDescription) GetTags() []ResourceTag {
 	if o == nil || IsNil(o.Tags) {
 		var ret []ResourceTag
@@ -384,6 +390,7 @@ func (o *ServerlessInstanceDescription) GetTagsOk() ([]ResourceTag, bool) {
 	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
+
 	return o.Tags, true
 }
 
@@ -401,7 +408,7 @@ func (o *ServerlessInstanceDescription) SetTags(v []ResourceTag) {
 	o.Tags = v
 }
 
-// GetTerminationProtectionEnabled returns the TerminationProtectionEnabled field value if set, zero value otherwise.
+// GetTerminationProtectionEnabled returns the TerminationProtectionEnabled field value if set, zero value otherwise
 func (o *ServerlessInstanceDescription) GetTerminationProtectionEnabled() bool {
 	if o == nil || IsNil(o.TerminationProtectionEnabled) {
 		var ret bool
@@ -416,6 +423,7 @@ func (o *ServerlessInstanceDescription) GetTerminationProtectionEnabledOk() (*bo
 	if o == nil || IsNil(o.TerminationProtectionEnabled) {
 		return nil, false
 	}
+
 	return o.TerminationProtectionEnabled, true
 }
 
@@ -456,40 +464,4 @@ func (o ServerlessInstanceDescription) ToMap() (map[string]interface{}, error) {
 		toSerialize["terminationProtectionEnabled"] = o.TerminationProtectionEnabled
 	}
 	return toSerialize, nil
-}
-
-type NullableServerlessInstanceDescription struct {
-	value *ServerlessInstanceDescription
-	isSet bool
-}
-
-func (v NullableServerlessInstanceDescription) Get() *ServerlessInstanceDescription {
-	return v.value
-}
-
-func (v *NullableServerlessInstanceDescription) Set(val *ServerlessInstanceDescription) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableServerlessInstanceDescription) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableServerlessInstanceDescription) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableServerlessInstanceDescription(val *ServerlessInstanceDescription) *NullableServerlessInstanceDescription {
-	return &NullableServerlessInstanceDescription{value: val, isSet: true}
-}
-
-func (v NullableServerlessInstanceDescription) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableServerlessInstanceDescription) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ServerlessConnectionStringsPrivateEndpointList type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ServerlessConnectionStringsPrivateEndpointList{}
-
 // ServerlessConnectionStringsPrivateEndpointList Private endpoint connection string that you can use to connect to this serverless instance through a private endpoint.
 type ServerlessConnectionStringsPrivateEndpointList struct {
 	// List that contains the private endpoints through which you connect to MongoDB Cloud when you use **connectionStrings.privateEndpoint[n].srvConnectionString**.
@@ -36,7 +33,7 @@ func NewServerlessConnectionStringsPrivateEndpointListWithDefaults() *Serverless
 	return &this
 }
 
-// GetEndpoints returns the Endpoints field value if set, zero value otherwise.
+// GetEndpoints returns the Endpoints field value if set, zero value otherwise
 func (o *ServerlessConnectionStringsPrivateEndpointList) GetEndpoints() []ServerlessConnectionStringsPrivateEndpointItem {
 	if o == nil || IsNil(o.Endpoints) {
 		var ret []ServerlessConnectionStringsPrivateEndpointItem
@@ -51,6 +48,7 @@ func (o *ServerlessConnectionStringsPrivateEndpointList) GetEndpointsOk() ([]Ser
 	if o == nil || IsNil(o.Endpoints) {
 		return nil, false
 	}
+
 	return o.Endpoints, true
 }
 
@@ -68,7 +66,7 @@ func (o *ServerlessConnectionStringsPrivateEndpointList) SetEndpoints(v []Server
 	o.Endpoints = v
 }
 
-// GetSrvConnectionString returns the SrvConnectionString field value if set, zero value otherwise.
+// GetSrvConnectionString returns the SrvConnectionString field value if set, zero value otherwise
 func (o *ServerlessConnectionStringsPrivateEndpointList) GetSrvConnectionString() string {
 	if o == nil || IsNil(o.SrvConnectionString) {
 		var ret string
@@ -83,6 +81,7 @@ func (o *ServerlessConnectionStringsPrivateEndpointList) GetSrvConnectionStringO
 	if o == nil || IsNil(o.SrvConnectionString) {
 		return nil, false
 	}
+
 	return o.SrvConnectionString, true
 }
 
@@ -100,7 +99,7 @@ func (o *ServerlessConnectionStringsPrivateEndpointList) SetSrvConnectionString(
 	o.SrvConnectionString = &v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value if set, zero value otherwise
 func (o *ServerlessConnectionStringsPrivateEndpointList) GetType() string {
 	if o == nil || IsNil(o.Type) {
 		var ret string
@@ -115,6 +114,7 @@ func (o *ServerlessConnectionStringsPrivateEndpointList) GetTypeOk() (*string, b
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
+
 	return o.Type, true
 }
 
@@ -142,40 +142,4 @@ func (o ServerlessConnectionStringsPrivateEndpointList) MarshalJSONWithoutReadOn
 func (o ServerlessConnectionStringsPrivateEndpointList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableServerlessConnectionStringsPrivateEndpointList struct {
-	value *ServerlessConnectionStringsPrivateEndpointList
-	isSet bool
-}
-
-func (v NullableServerlessConnectionStringsPrivateEndpointList) Get() *ServerlessConnectionStringsPrivateEndpointList {
-	return v.value
-}
-
-func (v *NullableServerlessConnectionStringsPrivateEndpointList) Set(val *ServerlessConnectionStringsPrivateEndpointList) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableServerlessConnectionStringsPrivateEndpointList) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableServerlessConnectionStringsPrivateEndpointList) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableServerlessConnectionStringsPrivateEndpointList(val *ServerlessConnectionStringsPrivateEndpointList) *NullableServerlessConnectionStringsPrivateEndpointList {
-	return &NullableServerlessConnectionStringsPrivateEndpointList{value: val, isSet: true}
-}
-
-func (v NullableServerlessConnectionStringsPrivateEndpointList) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableServerlessConnectionStringsPrivateEndpointList) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the Namespaces type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Namespaces{}
-
 // Namespaces struct for Namespaces
 type Namespaces struct {
 	// List that contains each combination of database, collection, and type on the specified host.
@@ -32,7 +29,7 @@ func NewNamespacesWithDefaults() *Namespaces {
 	return &this
 }
 
-// GetNamespaces returns the Namespaces field value if set, zero value otherwise.
+// GetNamespaces returns the Namespaces field value if set, zero value otherwise
 func (o *Namespaces) GetNamespaces() []NamespaceObj {
 	if o == nil || IsNil(o.Namespaces) {
 		var ret []NamespaceObj
@@ -47,6 +44,7 @@ func (o *Namespaces) GetNamespacesOk() ([]NamespaceObj, bool) {
 	if o == nil || IsNil(o.Namespaces) {
 		return nil, false
 	}
+
 	return o.Namespaces, true
 }
 
@@ -74,40 +72,4 @@ func (o Namespaces) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o Namespaces) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableNamespaces struct {
-	value *Namespaces
-	isSet bool
-}
-
-func (v NullableNamespaces) Get() *Namespaces {
-	return v.value
-}
-
-func (v *NullableNamespaces) Set(val *Namespaces) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableNamespaces) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableNamespaces) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableNamespaces(val *Namespaces) *NullableNamespaces {
-	return &NullableNamespaces{value: val, isSet: true}
-}
-
-func (v NullableNamespaces) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableNamespaces) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

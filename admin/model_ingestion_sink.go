@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the IngestionSink type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &IngestionSink{}
-
 // IngestionSink Ingestion destination of a Data Lake Pipeline.
 type IngestionSink struct {
 	// Type of ingestion destination of this Data Lake Pipeline.
@@ -38,7 +35,7 @@ func NewIngestionSinkWithDefaults() *IngestionSink {
 	return &this
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value if set, zero value otherwise
 func (o *IngestionSink) GetType() string {
 	if o == nil || IsNil(o.Type) {
 		var ret string
@@ -53,6 +50,7 @@ func (o *IngestionSink) GetTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
+
 	return o.Type, true
 }
 
@@ -70,7 +68,7 @@ func (o *IngestionSink) SetType(v string) {
 	o.Type = &v
 }
 
-// GetMetadataProvider returns the MetadataProvider field value if set, zero value otherwise.
+// GetMetadataProvider returns the MetadataProvider field value if set, zero value otherwise
 func (o *IngestionSink) GetMetadataProvider() string {
 	if o == nil || IsNil(o.MetadataProvider) {
 		var ret string
@@ -85,6 +83,7 @@ func (o *IngestionSink) GetMetadataProviderOk() (*string, bool) {
 	if o == nil || IsNil(o.MetadataProvider) {
 		return nil, false
 	}
+
 	return o.MetadataProvider, true
 }
 
@@ -102,7 +101,7 @@ func (o *IngestionSink) SetMetadataProvider(v string) {
 	o.MetadataProvider = &v
 }
 
-// GetMetadataRegion returns the MetadataRegion field value if set, zero value otherwise.
+// GetMetadataRegion returns the MetadataRegion field value if set, zero value otherwise
 func (o *IngestionSink) GetMetadataRegion() string {
 	if o == nil || IsNil(o.MetadataRegion) {
 		var ret string
@@ -117,6 +116,7 @@ func (o *IngestionSink) GetMetadataRegionOk() (*string, bool) {
 	if o == nil || IsNil(o.MetadataRegion) {
 		return nil, false
 	}
+
 	return o.MetadataRegion, true
 }
 
@@ -134,7 +134,7 @@ func (o *IngestionSink) SetMetadataRegion(v string) {
 	o.MetadataRegion = &v
 }
 
-// GetPartitionFields returns the PartitionFields field value if set, zero value otherwise.
+// GetPartitionFields returns the PartitionFields field value if set, zero value otherwise
 func (o *IngestionSink) GetPartitionFields() []DataLakePipelinesPartitionField {
 	if o == nil || IsNil(o.PartitionFields) {
 		var ret []DataLakePipelinesPartitionField
@@ -149,6 +149,7 @@ func (o *IngestionSink) GetPartitionFieldsOk() ([]DataLakePipelinesPartitionFiel
 	if o == nil || IsNil(o.PartitionFields) {
 		return nil, false
 	}
+
 	return o.PartitionFields, true
 }
 
@@ -185,40 +186,4 @@ func (o IngestionSink) ToMap() (map[string]interface{}, error) {
 		toSerialize["partitionFields"] = o.PartitionFields
 	}
 	return toSerialize, nil
-}
-
-type NullableIngestionSink struct {
-	value *IngestionSink
-	isSet bool
-}
-
-func (v NullableIngestionSink) Get() *IngestionSink {
-	return v.value
-}
-
-func (v *NullableIngestionSink) Set(val *IngestionSink) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableIngestionSink) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableIngestionSink) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableIngestionSink(val *IngestionSink) *NullableIngestionSink {
-	return &NullableIngestionSink{value: val, isSet: true}
-}
-
-func (v NullableIngestionSink) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableIngestionSink) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

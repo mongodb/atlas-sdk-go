@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ApiAtlasSnapshotSchedule type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ApiAtlasSnapshotSchedule{}
-
 // ApiAtlasSnapshotSchedule struct for ApiAtlasSnapshotSchedule
 type ApiAtlasSnapshotSchedule struct {
 	// Quantity of time expressed in minutes between successive cluster checkpoints. This parameter applies only to sharded clusters. This number determines the granularity of continuous cloud backups for sharded clusters.
@@ -155,7 +152,7 @@ func (o *ApiAtlasSnapshotSchedule) SetGroupId(v string) {
 	o.GroupId = v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *ApiAtlasSnapshotSchedule) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -170,6 +167,7 @@ func (o *ApiAtlasSnapshotSchedule) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -325,40 +323,4 @@ func (o ApiAtlasSnapshotSchedule) ToMap() (map[string]interface{}, error) {
 	toSerialize["snapshotRetentionDays"] = o.SnapshotRetentionDays
 	toSerialize["weeklySnapshotRetentionWeeks"] = o.WeeklySnapshotRetentionWeeks
 	return toSerialize, nil
-}
-
-type NullableApiAtlasSnapshotSchedule struct {
-	value *ApiAtlasSnapshotSchedule
-	isSet bool
-}
-
-func (v NullableApiAtlasSnapshotSchedule) Get() *ApiAtlasSnapshotSchedule {
-	return v.value
-}
-
-func (v *NullableApiAtlasSnapshotSchedule) Set(val *ApiAtlasSnapshotSchedule) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableApiAtlasSnapshotSchedule) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableApiAtlasSnapshotSchedule) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableApiAtlasSnapshotSchedule(val *ApiAtlasSnapshotSchedule) *NullableApiAtlasSnapshotSchedule {
-	return &NullableApiAtlasSnapshotSchedule{value: val, isSet: true}
-}
-
-func (v NullableApiAtlasSnapshotSchedule) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableApiAtlasSnapshotSchedule) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

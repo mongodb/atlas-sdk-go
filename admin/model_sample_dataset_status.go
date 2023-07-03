@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the SampleDatasetStatus type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SampleDatasetStatus{}
-
 // SampleDatasetStatus struct for SampleDatasetStatus
 type SampleDatasetStatus struct {
 	// Unique 24-hexadecimal character string that identifies this sample dataset.
@@ -43,7 +40,7 @@ func NewSampleDatasetStatusWithDefaults() *SampleDatasetStatus {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *SampleDatasetStatus) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -58,6 +55,7 @@ func (o *SampleDatasetStatus) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -75,7 +73,7 @@ func (o *SampleDatasetStatus) SetId(v string) {
 	o.Id = &v
 }
 
-// GetClusterName returns the ClusterName field value if set, zero value otherwise.
+// GetClusterName returns the ClusterName field value if set, zero value otherwise
 func (o *SampleDatasetStatus) GetClusterName() string {
 	if o == nil || IsNil(o.ClusterName) {
 		var ret string
@@ -90,6 +88,7 @@ func (o *SampleDatasetStatus) GetClusterNameOk() (*string, bool) {
 	if o == nil || IsNil(o.ClusterName) {
 		return nil, false
 	}
+
 	return o.ClusterName, true
 }
 
@@ -107,7 +106,7 @@ func (o *SampleDatasetStatus) SetClusterName(v string) {
 	o.ClusterName = &v
 }
 
-// GetCompleteDate returns the CompleteDate field value if set, zero value otherwise.
+// GetCompleteDate returns the CompleteDate field value if set, zero value otherwise
 func (o *SampleDatasetStatus) GetCompleteDate() time.Time {
 	if o == nil || IsNil(o.CompleteDate) {
 		var ret time.Time
@@ -122,6 +121,7 @@ func (o *SampleDatasetStatus) GetCompleteDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CompleteDate) {
 		return nil, false
 	}
+
 	return o.CompleteDate, true
 }
 
@@ -139,7 +139,7 @@ func (o *SampleDatasetStatus) SetCompleteDate(v time.Time) {
 	o.CompleteDate = &v
 }
 
-// GetCreateDate returns the CreateDate field value if set, zero value otherwise.
+// GetCreateDate returns the CreateDate field value if set, zero value otherwise
 func (o *SampleDatasetStatus) GetCreateDate() time.Time {
 	if o == nil || IsNil(o.CreateDate) {
 		var ret time.Time
@@ -154,6 +154,7 @@ func (o *SampleDatasetStatus) GetCreateDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CreateDate) {
 		return nil, false
 	}
+
 	return o.CreateDate, true
 }
 
@@ -171,7 +172,7 @@ func (o *SampleDatasetStatus) SetCreateDate(v time.Time) {
 	o.CreateDate = &v
 }
 
-// GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise.
+// GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise
 func (o *SampleDatasetStatus) GetErrorMessage() string {
 	if o == nil || IsNil(o.ErrorMessage) {
 		var ret string
@@ -186,6 +187,7 @@ func (o *SampleDatasetStatus) GetErrorMessageOk() (*string, bool) {
 	if o == nil || IsNil(o.ErrorMessage) {
 		return nil, false
 	}
+
 	return o.ErrorMessage, true
 }
 
@@ -203,7 +205,7 @@ func (o *SampleDatasetStatus) SetErrorMessage(v string) {
 	o.ErrorMessage = &v
 }
 
-// GetState returns the State field value if set, zero value otherwise.
+// GetState returns the State field value if set, zero value otherwise
 func (o *SampleDatasetStatus) GetState() string {
 	if o == nil || IsNil(o.State) {
 		var ret string
@@ -218,6 +220,7 @@ func (o *SampleDatasetStatus) GetStateOk() (*string, bool) {
 	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
+
 	return o.State, true
 }
 
@@ -245,40 +248,4 @@ func (o SampleDatasetStatus) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o SampleDatasetStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableSampleDatasetStatus struct {
-	value *SampleDatasetStatus
-	isSet bool
-}
-
-func (v NullableSampleDatasetStatus) Get() *SampleDatasetStatus {
-	return v.value
-}
-
-func (v *NullableSampleDatasetStatus) Set(val *SampleDatasetStatus) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableSampleDatasetStatus) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableSampleDatasetStatus) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableSampleDatasetStatus(val *SampleDatasetStatus) *NullableSampleDatasetStatus {
-	return &NullableSampleDatasetStatus{value: val, isSet: true}
-}
-
-func (v NullableSampleDatasetStatus) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableSampleDatasetStatus) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the DatabasePrivilegeAction type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DatabasePrivilegeAction{}
-
 // DatabasePrivilegeAction Privilege action that the role grants.
 type DatabasePrivilegeAction struct {
 	// Human-readable label that identifies the privilege action.
@@ -59,7 +56,7 @@ func (o *DatabasePrivilegeAction) SetAction(v string) {
 	o.Action = v
 }
 
-// GetResources returns the Resources field value if set, zero value otherwise.
+// GetResources returns the Resources field value if set, zero value otherwise
 func (o *DatabasePrivilegeAction) GetResources() []DatabasePermittedNamespaceResource {
 	if o == nil || IsNil(o.Resources) {
 		var ret []DatabasePermittedNamespaceResource
@@ -74,6 +71,7 @@ func (o *DatabasePrivilegeAction) GetResourcesOk() ([]DatabasePermittedNamespace
 	if o == nil || IsNil(o.Resources) {
 		return nil, false
 	}
+
 	return o.Resources, true
 }
 
@@ -105,40 +103,4 @@ func (o DatabasePrivilegeAction) ToMap() (map[string]interface{}, error) {
 		toSerialize["resources"] = o.Resources
 	}
 	return toSerialize, nil
-}
-
-type NullableDatabasePrivilegeAction struct {
-	value *DatabasePrivilegeAction
-	isSet bool
-}
-
-func (v NullableDatabasePrivilegeAction) Get() *DatabasePrivilegeAction {
-	return v.value
-}
-
-func (v *NullableDatabasePrivilegeAction) Set(val *DatabasePrivilegeAction) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableDatabasePrivilegeAction) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableDatabasePrivilegeAction) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableDatabasePrivilegeAction(val *DatabasePrivilegeAction) *NullableDatabasePrivilegeAction {
-	return &NullableDatabasePrivilegeAction{value: val, isSet: true}
-}
-
-func (v NullableDatabasePrivilegeAction) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableDatabasePrivilegeAction) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

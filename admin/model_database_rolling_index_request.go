@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the DatabaseRollingIndexRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DatabaseRollingIndexRequest{}
-
 // DatabaseRollingIndexRequest struct for DatabaseRollingIndexRequest
 type DatabaseRollingIndexRequest struct {
 	Collation *Collation `json:"collation,omitempty"`
@@ -40,7 +37,7 @@ func NewDatabaseRollingIndexRequestWithDefaults() *DatabaseRollingIndexRequest {
 	return &this
 }
 
-// GetCollation returns the Collation field value if set, zero value otherwise.
+// GetCollation returns the Collation field value if set, zero value otherwise
 func (o *DatabaseRollingIndexRequest) GetCollation() Collation {
 	if o == nil || IsNil(o.Collation) {
 		var ret Collation
@@ -55,6 +52,7 @@ func (o *DatabaseRollingIndexRequest) GetCollationOk() (*Collation, bool) {
 	if o == nil || IsNil(o.Collation) {
 		return nil, false
 	}
+
 	return o.Collation, true
 }
 
@@ -120,7 +118,7 @@ func (o *DatabaseRollingIndexRequest) SetDb(v string) {
 	o.Db = v
 }
 
-// GetKeys returns the Keys field value if set, zero value otherwise.
+// GetKeys returns the Keys field value if set, zero value otherwise
 func (o *DatabaseRollingIndexRequest) GetKeys() []map[string]string {
 	if o == nil || IsNil(o.Keys) {
 		var ret []map[string]string
@@ -135,6 +133,7 @@ func (o *DatabaseRollingIndexRequest) GetKeysOk() ([]map[string]string, bool) {
 	if o == nil || IsNil(o.Keys) {
 		return nil, false
 	}
+
 	return o.Keys, true
 }
 
@@ -152,7 +151,7 @@ func (o *DatabaseRollingIndexRequest) SetKeys(v []map[string]string) {
 	o.Keys = v
 }
 
-// GetOptions returns the Options field value if set, zero value otherwise.
+// GetOptions returns the Options field value if set, zero value otherwise
 func (o *DatabaseRollingIndexRequest) GetOptions() IndexOptions {
 	if o == nil || IsNil(o.Options) {
 		var ret IndexOptions
@@ -167,6 +166,7 @@ func (o *DatabaseRollingIndexRequest) GetOptionsOk() (*IndexOptions, bool) {
 	if o == nil || IsNil(o.Options) {
 		return nil, false
 	}
+
 	return o.Options, true
 }
 
@@ -205,40 +205,4 @@ func (o DatabaseRollingIndexRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["options"] = o.Options
 	}
 	return toSerialize, nil
-}
-
-type NullableDatabaseRollingIndexRequest struct {
-	value *DatabaseRollingIndexRequest
-	isSet bool
-}
-
-func (v NullableDatabaseRollingIndexRequest) Get() *DatabaseRollingIndexRequest {
-	return v.value
-}
-
-func (v *NullableDatabaseRollingIndexRequest) Set(val *DatabaseRollingIndexRequest) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableDatabaseRollingIndexRequest) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableDatabaseRollingIndexRequest) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableDatabaseRollingIndexRequest(val *DatabaseRollingIndexRequest) *NullableDatabaseRollingIndexRequest {
-	return &NullableDatabaseRollingIndexRequest{value: val, isSet: true}
-}
-
-func (v NullableDatabaseRollingIndexRequest) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableDatabaseRollingIndexRequest) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

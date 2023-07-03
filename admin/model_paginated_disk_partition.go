@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PaginatedDiskPartition type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PaginatedDiskPartition{}
-
 // PaginatedDiskPartition struct for PaginatedDiskPartition
 type PaginatedDiskPartition struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -36,7 +33,7 @@ func NewPaginatedDiskPartitionWithDefaults() *PaginatedDiskPartition {
 	return &this
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *PaginatedDiskPartition) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -51,6 +48,7 @@ func (o *PaginatedDiskPartition) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -68,7 +66,7 @@ func (o *PaginatedDiskPartition) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetResults returns the Results field value if set, zero value otherwise.
+// GetResults returns the Results field value if set, zero value otherwise
 func (o *PaginatedDiskPartition) GetResults() []MeasurementDiskPartition {
 	if o == nil || IsNil(o.Results) {
 		var ret []MeasurementDiskPartition
@@ -83,6 +81,7 @@ func (o *PaginatedDiskPartition) GetResultsOk() ([]MeasurementDiskPartition, boo
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
+
 	return o.Results, true
 }
 
@@ -100,7 +99,7 @@ func (o *PaginatedDiskPartition) SetResults(v []MeasurementDiskPartition) {
 	o.Results = v
 }
 
-// GetTotalCount returns the TotalCount field value if set, zero value otherwise.
+// GetTotalCount returns the TotalCount field value if set, zero value otherwise
 func (o *PaginatedDiskPartition) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int
@@ -115,6 +114,7 @@ func (o *PaginatedDiskPartition) GetTotalCountOk() (*int, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
+
 	return o.TotalCount, true
 }
 
@@ -142,40 +142,4 @@ func (o PaginatedDiskPartition) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o PaginatedDiskPartition) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullablePaginatedDiskPartition struct {
-	value *PaginatedDiskPartition
-	isSet bool
-}
-
-func (v NullablePaginatedDiskPartition) Get() *PaginatedDiskPartition {
-	return v.value
-}
-
-func (v *NullablePaginatedDiskPartition) Set(val *PaginatedDiskPartition) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullablePaginatedDiskPartition) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullablePaginatedDiskPartition) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullablePaginatedDiskPartition(val *PaginatedDiskPartition) *NullablePaginatedDiskPartition {
-	return &NullablePaginatedDiskPartition{value: val, isSet: true}
-}
-
-func (v NullablePaginatedDiskPartition) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullablePaginatedDiskPartition) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

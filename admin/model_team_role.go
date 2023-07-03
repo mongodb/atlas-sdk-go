@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the TeamRole type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &TeamRole{}
-
 // TeamRole struct for TeamRole
 type TeamRole struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -36,7 +33,7 @@ func NewTeamRoleWithDefaults() *TeamRole {
 	return &this
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *TeamRole) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -51,6 +48,7 @@ func (o *TeamRole) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -68,7 +66,7 @@ func (o *TeamRole) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetRoleNames returns the RoleNames field value if set, zero value otherwise.
+// GetRoleNames returns the RoleNames field value if set, zero value otherwise
 func (o *TeamRole) GetRoleNames() []string {
 	if o == nil || IsNil(o.RoleNames) {
 		var ret []string
@@ -83,6 +81,7 @@ func (o *TeamRole) GetRoleNamesOk() ([]string, bool) {
 	if o == nil || IsNil(o.RoleNames) {
 		return nil, false
 	}
+
 	return o.RoleNames, true
 }
 
@@ -100,7 +99,7 @@ func (o *TeamRole) SetRoleNames(v []string) {
 	o.RoleNames = v
 }
 
-// GetTeamId returns the TeamId field value if set, zero value otherwise.
+// GetTeamId returns the TeamId field value if set, zero value otherwise
 func (o *TeamRole) GetTeamId() string {
 	if o == nil || IsNil(o.TeamId) {
 		var ret string
@@ -115,6 +114,7 @@ func (o *TeamRole) GetTeamIdOk() (*string, bool) {
 	if o == nil || IsNil(o.TeamId) {
 		return nil, false
 	}
+
 	return o.TeamId, true
 }
 
@@ -148,40 +148,4 @@ func (o TeamRole) ToMap() (map[string]interface{}, error) {
 		toSerialize["teamId"] = o.TeamId
 	}
 	return toSerialize, nil
-}
-
-type NullableTeamRole struct {
-	value *TeamRole
-	isSet bool
-}
-
-func (v NullableTeamRole) Get() *TeamRole {
-	return v.value
-}
-
-func (v *NullableTeamRole) Set(val *TeamRole) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableTeamRole) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableTeamRole) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableTeamRole(val *TeamRole) *NullableTeamRole {
-	return &NullableTeamRole{value: val, isSet: true}
-}
-
-func (v NullableTeamRole) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableTeamRole) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

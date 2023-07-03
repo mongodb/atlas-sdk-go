@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PemFileInfo type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PemFileInfo{}
-
 // PemFileInfo PEM file information for the identity provider's certificates.
 type PemFileInfo struct {
 	Certificates []X509Certificate `json:"certificates,omitempty"`
@@ -32,7 +29,7 @@ func NewPemFileInfoWithDefaults() *PemFileInfo {
 	return &this
 }
 
-// GetCertificates returns the Certificates field value if set, zero value otherwise.
+// GetCertificates returns the Certificates field value if set, zero value otherwise
 func (o *PemFileInfo) GetCertificates() []X509Certificate {
 	if o == nil || IsNil(o.Certificates) {
 		var ret []X509Certificate
@@ -47,6 +44,7 @@ func (o *PemFileInfo) GetCertificatesOk() ([]X509Certificate, bool) {
 	if o == nil || IsNil(o.Certificates) {
 		return nil, false
 	}
+
 	return o.Certificates, true
 }
 
@@ -64,7 +62,7 @@ func (o *PemFileInfo) SetCertificates(v []X509Certificate) {
 	o.Certificates = v
 }
 
-// GetFileName returns the FileName field value if set, zero value otherwise.
+// GetFileName returns the FileName field value if set, zero value otherwise
 func (o *PemFileInfo) GetFileName() string {
 	if o == nil || IsNil(o.FileName) {
 		var ret string
@@ -79,6 +77,7 @@ func (o *PemFileInfo) GetFileNameOk() (*string, bool) {
 	if o == nil || IsNil(o.FileName) {
 		return nil, false
 	}
+
 	return o.FileName, true
 }
 
@@ -112,40 +111,4 @@ func (o PemFileInfo) ToMap() (map[string]interface{}, error) {
 		toSerialize["fileName"] = o.FileName
 	}
 	return toSerialize, nil
-}
-
-type NullablePemFileInfo struct {
-	value *PemFileInfo
-	isSet bool
-}
-
-func (v NullablePemFileInfo) Get() *PemFileInfo {
-	return v.value
-}
-
-func (v *NullablePemFileInfo) Set(val *PemFileInfo) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullablePemFileInfo) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullablePemFileInfo) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullablePemFileInfo(val *PemFileInfo) *NullablePemFileInfo {
-	return &NullablePemFileInfo{value: val, isSet: true}
-}
-
-func (v NullablePemFileInfo) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullablePemFileInfo) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }
