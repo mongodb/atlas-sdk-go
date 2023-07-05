@@ -13,11 +13,11 @@ var _ MappedNullable = &IngestionSink{}
 type IngestionSink struct {
 	// Type of ingestion destination of this Data Lake Pipeline.
 	Type *string `json:"type,omitempty"`
-	// Target cloud provider for this Data Lake Pipeline.
+	// [type=DLS] Target cloud provider for this Data Lake Pipeline.
 	MetadataProvider *string `json:"metadataProvider,omitempty"`
-	// Target cloud provider region for this Data Lake Pipeline.
+	// [type=DLS] Target cloud provider region for this Data Lake Pipeline.
 	MetadataRegion *string `json:"metadataRegion,omitempty"`
-	// Ordered fields used to physically organize data in the destination.
+	// [type=DLS] Ordered fields used to physically organize data in the destination.
 	PartitionFields []DataLakePipelinesPartitionField `json:"partitionFields,omitempty"`
 }
 

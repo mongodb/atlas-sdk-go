@@ -18,15 +18,20 @@ function applyDecoratePropertiesWithInheritanceContext(openapi) {
          
           const subtypeRef = mapping[mappingKey];
           const subtypeName = subtypeRef.substring(subtypeRef.lastIndexOf('/') + 1);
-          const subtypeProperties = schemas[subtypeName].properties;
-          if(!subtypeProperties) return;
+          let subtypeProperties = schemas[subtypeName].properties;
+          if(!subtypeProperties && schemas[subtypeName].allOf) {
+            subtypeProperties = schemas[subtypeName].allOf[1]?.properties;
+          }
+          if(!subtypeProperties) {
+            return;
+          }
           Object.keys(subtypeProperties).forEach(propertyName => {
             prefixFormat = `[${discriminator.propertyName}=${mappingKey}]`
 
             const property = subtypeProperties[propertyName];
             property.description = property.description
               ? prefixFormat + ' ' + property.description 
-              : mappingKey;
+              : prefixFormat;
           });
         });
       }

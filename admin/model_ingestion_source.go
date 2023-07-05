@@ -13,15 +13,15 @@ var _ MappedNullable = &IngestionSource{}
 type IngestionSource struct {
 	// Type of ingestion source of this Data Lake Pipeline.
 	Type *string `json:"type,omitempty"`
-	// Human-readable name that identifies the cluster.
+	// [type=PERIODIC_CPS] Human-readable name that identifies the cluster.
 	ClusterName *string `json:"clusterName,omitempty"`
-	// Human-readable name that identifies the collection.
+	// [type=PERIODIC_CPS] Human-readable name that identifies the collection.
 	CollectionName *string `json:"collectionName,omitempty"`
-	// Human-readable name that identifies the database.
+	// [type=PERIODIC_CPS] Human-readable name that identifies the database.
 	DatabaseName *string `json:"databaseName,omitempty"`
-	// Unique 24-hexadecimal character string that identifies the project.
+	// [type=PERIODIC_CPS] Unique 24-hexadecimal character string that identifies the project.
 	GroupId *string `json:"groupId,omitempty"`
-	// Unique 24-hexadecimal character string that identifies a policy item.
+	// [type=PERIODIC_CPS] Unique 24-hexadecimal character string that identifies a policy item.
 	PolicyItemId *string `json:"policyItemId,omitempty"`
 }
 

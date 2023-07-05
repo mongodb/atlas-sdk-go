@@ -22,7 +22,7 @@ type CloudRegionConfig struct {
 	AnalyticsSpecs       *DedicatedHardwareSpec       `json:"analyticsSpecs,omitempty"`
 	AutoScaling          *AdvancedAutoScalingSettings `json:"autoScaling,omitempty"`
 	ReadOnlySpecs        *DedicatedHardwareSpec       `json:"readOnlySpecs,omitempty"`
-	// Cloud service provider on which MongoDB Cloud provisioned the multi-tenant cluster. The resource returns this parameter when **providerSettings.providerName** is `TENANT` and **providerSetting.instanceSizeName** is `M2` or `M5`.
+	// [providerName=TENANT] Cloud service provider on which MongoDB Cloud provisioned the multi-tenant cluster. The resource returns this parameter when **providerSettings.providerName** is `TENANT` and **providerSetting.instanceSizeName** is `M2` or `M5`.
 	BackingProviderName *string `json:"backingProviderName,omitempty"`
 }
 

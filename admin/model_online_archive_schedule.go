@@ -12,17 +12,17 @@ var _ MappedNullable = &OnlineArchiveSchedule{}
 // OnlineArchiveSchedule Regular frequency and duration when archiving process occurs.
 type OnlineArchiveSchedule struct {
 	Type string `json:"type"`
-	// Hour of the day when the scheduled window to run one online archive ends.
+	// [type=MONTHLY] Hour of the day when the scheduled window to run one online archive ends.
 	EndHour *int `json:"endHour,omitempty"`
-	// Minute of the hour when the scheduled window to run one online archive ends.
+	// [type=MONTHLY] Minute of the hour when the scheduled window to run one online archive ends.
 	EndMinute *int `json:"endMinute,omitempty"`
-	// Hour of the day when the when the scheduled window to run one online archive starts.
+	// [type=MONTHLY] Hour of the day when the when the scheduled window to run one online archive starts.
 	StartHour *int `json:"startHour,omitempty"`
-	// Minute of the hour when the scheduled window to run one online archive starts.
+	// [type=MONTHLY] Minute of the hour when the scheduled window to run one online archive starts.
 	StartMinute *int `json:"startMinute,omitempty"`
-	// Day of the week when the scheduled archive starts. The week starts with Monday (`1`) and ends with Sunday (`7`).
+	// [type=WEEKLY] Day of the week when the scheduled archive starts. The week starts with Monday (`1`) and ends with Sunday (`7`).
 	DayOfWeek *int `json:"dayOfWeek,omitempty"`
-	// Day of the month when the scheduled archive starts.
+	// [type=MONTHLY] Day of the month when the scheduled archive starts.
 	DayOfMonth *int `json:"dayOfMonth,omitempty"`
 }
 
