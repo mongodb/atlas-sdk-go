@@ -7,6 +7,7 @@ const {
   applyRemoveObjectAdditonalProperties,
   applyAddExperimentalTag,
   applyAnyOfTransformations,
+  applyDecoratePropertiesWithInheritanceContext,
 } = require("./transformations");
 
 const removeUnusedSchemas = require("./engine/removeUnused");
@@ -19,6 +20,7 @@ const stableOperationIds = require("./operations.stable.json").stableIds;
  */
 module.exports = function runTransformations(openapi) {
   openapi = applyDiscriminatorTransformations(openapi);
+  openapi = applyDecoratePropertiesWithInheritanceContext(openapi);
   openapi = applyOneOfTransformations(openapi);
   openapi = applyAnyOfTransformations(openapi);
   openapi = applyAllOfTransformations(openapi);

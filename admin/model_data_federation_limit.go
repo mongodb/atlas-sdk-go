@@ -12,19 +12,19 @@ var _ MappedNullable = &DataFederationLimit{}
 
 // DataFederationLimit Details of user managed limits.
 type DataFederationLimit struct {
-	// Amount that indicates the current usage of the limit.
+	// [name=dataFederation.bytesProcessed.weekly] [name=dataFederation.bytesProcessed.query] [name=dataFederation.bytesProcessed.monthly] [name=dataFederation.bytesProcessed.daily] Amount that indicates the current usage of the limit.
 	CurrentUsage *int64 `json:"currentUsage,omitempty"`
-	// Default value of the limit.
+	// [name=dataFederation.bytesProcessed.weekly] [name=dataFederation.bytesProcessed.query] [name=dataFederation.bytesProcessed.monthly] [name=dataFederation.bytesProcessed.daily] Default value of the limit.
 	DefaultLimit *int64 `json:"defaultLimit,omitempty"`
-	// Maximum value of the limit.
+	// [name=dataFederation.bytesProcessed.weekly] [name=dataFederation.bytesProcessed.query] [name=dataFederation.bytesProcessed.monthly] [name=dataFederation.bytesProcessed.daily] Maximum value of the limit.
 	MaximumLimit *int64 `json:"maximumLimit,omitempty"`
-	// Human-readable label that identifies the user-managed limit to modify.
+	// [name=dataFederation.bytesProcessed.weekly] [name=dataFederation.bytesProcessed.query] [name=dataFederation.bytesProcessed.monthly] [name=dataFederation.bytesProcessed.daily] Human-readable label that identifies the user-managed limit to modify.
 	Name string `json:"name"`
-	// Amount to set the limit to.
+	// [name=dataFederation.bytesProcessed.weekly] [name=dataFederation.bytesProcessed.query] [name=dataFederation.bytesProcessed.monthly] [name=dataFederation.bytesProcessed.daily] Amount to set the limit to.
 	Value int64 `json:"value"`
-	// Only used for Data Federation limits. Timestamp that indicates when this usage limit was last modified. This field uses the ISO 8601 timestamp format in UTC.
+	// [name=dataFederation.bytesProcessed.weekly] [name=dataFederation.bytesProcessed.query] [name=dataFederation.bytesProcessed.monthly] [name=dataFederation.bytesProcessed.daily] Only used for Data Federation limits. Timestamp that indicates when this usage limit was last modified. This field uses the ISO 8601 timestamp format in UTC.
 	LastModifiedDate *time.Time `json:"lastModifiedDate,omitempty"`
-	// Only used for Data Federation limits. Action to take when the usage limit is exceeded. If limit span is set to QUERY, this is ignored because MongoDB Cloud stops the query when it exceeds the usage limit.
+	// [name=dataFederation.bytesProcessed.weekly] [name=dataFederation.bytesProcessed.query] [name=dataFederation.bytesProcessed.monthly] [name=dataFederation.bytesProcessed.daily] Only used for Data Federation limits. Action to take when the usage limit is exceeded. If limit span is set to QUERY, this is ignored because MongoDB Cloud stops the query when it exceeds the usage limit.
 	OverrunPolicy *string `json:"overrunPolicy,omitempty"`
 }
 

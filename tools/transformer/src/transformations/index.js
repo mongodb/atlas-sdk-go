@@ -13,6 +13,7 @@ const {
 } = require("./additionalPropertiesObject");
 const { applyAddExperimentalTag } = require("./tagExperimental");
 const { applyAnyOfTransformations } = require("./anyOf");
+const applyDecoratePropertiesWithInheritanceContext  = require("./decorateProperties");
 
 module.exports = {
   applyModelNameTransformations,
@@ -27,4 +28,5 @@ module.exports = {
   applyRemoveObjectAdditonalProperties,
   applyAddExperimentalTag,
   applyAnyOfTransformations,
+  applyDecoratePropertiesWithInheritanceContext,
 };

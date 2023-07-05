@@ -12,19 +12,19 @@ var _ MappedNullable = &CloudProviderAccessAWSIAMRoleAllOf{}
 
 // CloudProviderAccessAWSIAMRoleAllOf struct for CloudProviderAccessAWSIAMRoleAllOf
 type CloudProviderAccessAWSIAMRoleAllOf struct {
-	// Amazon Resource Name that identifies the Amazon Web Services (AWS) user account that MongoDB Cloud uses when it assumes the Identity and Access Management (IAM) role.
+	// [providerName=AWS] Amazon Resource Name that identifies the Amazon Web Services (AWS) user account that MongoDB Cloud uses when it assumes the Identity and Access Management (IAM) role.
 	AtlasAWSAccountArn *string `json:"atlasAWSAccountArn,omitempty"`
-	// Unique external ID that MongoDB Cloud uses when it assumes the IAM role in your Amazon Web Services (AWS) account.
+	// [providerName=AWS] Unique external ID that MongoDB Cloud uses when it assumes the IAM role in your Amazon Web Services (AWS) account.
 	AtlasAssumedRoleExternalId *string `json:"atlasAssumedRoleExternalId,omitempty"`
-	// Date and time when someone authorized this role for the specified cloud service provider. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+	// [providerName=AWS] Date and time when someone authorized this role for the specified cloud service provider. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	AuthorizedDate *time.Time `json:"authorizedDate,omitempty"`
-	// Date and time when someone created this role for the specified cloud service provider. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+	// [providerName=AWS] Date and time when someone created this role for the specified cloud service provider. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	CreatedDate *time.Time `json:"createdDate,omitempty"`
-	// List that contains application features associated with this Amazon Web Services (AWS) Identity and Access Management (IAM) role.
+	// [providerName=AWS] List that contains application features associated with this Amazon Web Services (AWS) Identity and Access Management (IAM) role.
 	FeatureUsages []CloudProviderAccessFeatureUsage `json:"featureUsages,omitempty"`
-	// Amazon Resource Name (ARN) that identifies the Amazon Web Services (AWS) Identity and Access Management (IAM) role that MongoDB Cloud assumes when it accesses resources in your AWS account.
+	// [providerName=AWS] Amazon Resource Name (ARN) that identifies the Amazon Web Services (AWS) Identity and Access Management (IAM) role that MongoDB Cloud assumes when it accesses resources in your AWS account.
 	IamAssumedRoleArn *string `json:"iamAssumedRoleArn,omitempty"`
-	// Unique 24-hexadecimal digit string that identifies the role.
+	// [providerName=AWS] Unique 24-hexadecimal digit string that identifies the role.
 	RoleId *string `json:"roleId,omitempty"`
 }
 

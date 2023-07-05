@@ -12,31 +12,31 @@ var _ MappedNullable = &CloudProviderAccessAWSIAMRole{}
 
 // CloudProviderAccessAWSIAMRole Details that describe the features linked to the Amazon Web Services (AWS) Identity and Access Management (IAM) role.
 type CloudProviderAccessAWSIAMRole struct {
-	// Amazon Resource Name that identifies the Amazon Web Services (AWS) user account that MongoDB Cloud uses when it assumes the Identity and Access Management (IAM) role.
+	// [providerName=AWS] Amazon Resource Name that identifies the Amazon Web Services (AWS) user account that MongoDB Cloud uses when it assumes the Identity and Access Management (IAM) role.
 	AtlasAWSAccountArn *string `json:"atlasAWSAccountArn,omitempty"`
-	// Unique external ID that MongoDB Cloud uses when it assumes the IAM role in your Amazon Web Services (AWS) account.
+	// [providerName=AWS] Unique external ID that MongoDB Cloud uses when it assumes the IAM role in your Amazon Web Services (AWS) account.
 	AtlasAssumedRoleExternalId *string `json:"atlasAssumedRoleExternalId,omitempty"`
-	// Date and time when someone authorized this role for the specified cloud service provider. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+	// [providerName=AWS] Date and time when someone authorized this role for the specified cloud service provider. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	AuthorizedDate *time.Time `json:"authorizedDate,omitempty"`
-	// Date and time when someone created this role for the specified cloud service provider. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+	// [providerName=AWS] Date and time when someone created this role for the specified cloud service provider. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	CreatedDate *time.Time `json:"createdDate,omitempty"`
-	// List that contains application features associated with this Amazon Web Services (AWS) Identity and Access Management (IAM) role.
+	// [providerName=AWS] List that contains application features associated with this Amazon Web Services (AWS) Identity and Access Management (IAM) role.
 	FeatureUsages []CloudProviderAccessFeatureUsage `json:"featureUsages,omitempty"`
-	// Amazon Resource Name (ARN) that identifies the Amazon Web Services (AWS) Identity and Access Management (IAM) role that MongoDB Cloud assumes when it accesses resources in your AWS account.
+	// [providerName=AWS] Amazon Resource Name (ARN) that identifies the Amazon Web Services (AWS) Identity and Access Management (IAM) role that MongoDB Cloud assumes when it accesses resources in your AWS account.
 	IamAssumedRoleArn *string `json:"iamAssumedRoleArn,omitempty"`
-	// Unique 24-hexadecimal digit string that identifies the role.
+	// [providerName=AWS] Unique 24-hexadecimal digit string that identifies the role.
 	RoleId *string `json:"roleId,omitempty"`
 	// Human-readable label that identifies the cloud provider of the role.
 	ProviderName string `json:"providerName"`
-	// Unique 24-hexadecimal digit string that identifies the Azure Service Principal in Atlas.
+	// [providerName=AZURE] Unique 24-hexadecimal digit string that identifies the Azure Service Principal in Atlas.
 	Id *string `json:"_id,omitempty"`
-	// Azure Active Directory Application ID of Atlas.
+	// [providerName=AZURE] Azure Active Directory Application ID of Atlas.
 	AtlasAzureAppId *string `json:"atlasAzureAppId,omitempty"`
-	// Date and time when this Azure Service Principal was last updated. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+	// [providerName=AZURE] Date and time when this Azure Service Principal was last updated. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	LastUpdatedDate *time.Time `json:"lastUpdatedDate,omitempty"`
-	// UUID string that identifies the Azure Service Principal.
+	// [providerName=AZURE] UUID string that identifies the Azure Service Principal.
 	ServicePrincipalId *string `json:"servicePrincipalId,omitempty"`
-	// UUID String that identifies the Azure Active Directory Tenant ID.
+	// [providerName=AZURE] UUID String that identifies the Azure Active Directory Tenant ID.
 	TenantId *string `json:"tenantId,omitempty"`
 }
 

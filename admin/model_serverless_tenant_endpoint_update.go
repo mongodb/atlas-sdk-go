@@ -14,9 +14,9 @@ type ServerlessTenantEndpointUpdate struct {
 	// Human-readable comment associated with the private endpoint.
 	Comment      *string `json:"comment,omitempty"`
 	ProviderName string  `json:"providerName"`
-	// Unique string that identifies the Azure private endpoint's network interface for this private endpoint service.
+	// [providerName=AZURE] Unique string that identifies the Azure private endpoint's network interface for this private endpoint service.
 	CloudProviderEndpointId *string `json:"cloudProviderEndpointId,omitempty"`
-	// IPv4 address of the private endpoint in your Azure VNet that someone added to this private endpoint service.
+	// [providerName=AZURE] IPv4 address of the private endpoint in your Azure VNet that someone added to this private endpoint service.
 	PrivateEndpointIpAddress *string `json:"privateEndpointIpAddress,omitempty"`
 }
 

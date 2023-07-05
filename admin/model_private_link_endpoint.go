@@ -11,27 +11,27 @@ var _ MappedNullable = &PrivateLinkEndpoint{}
 
 // PrivateLinkEndpoint struct for PrivateLinkEndpoint
 type PrivateLinkEndpoint struct {
-	// Cloud service provider that serves the requested endpoint.
+	// [cloudProvider=GCP] Cloud service provider that serves the requested endpoint.
 	CloudProvider string `json:"cloudProvider"`
-	// Flag that indicates whether MongoDB Cloud received a request to remove the specified private endpoint from the private endpoint service.
+	// [cloudProvider=GCP] Flag that indicates whether MongoDB Cloud received a request to remove the specified private endpoint from the private endpoint service.
 	DeleteRequested *bool `json:"deleteRequested,omitempty"`
-	// Error message returned when requesting private connection resource. The resource returns `null` if the request succeeded.
+	// [cloudProvider=GCP] Error message returned when requesting private connection resource. The resource returns `null` if the request succeeded.
 	ErrorMessage *string `json:"errorMessage,omitempty"`
-	// State of the Amazon Web Service PrivateLink connection when MongoDB Cloud received this request.
+	// [cloudProvider=AWS] State of the Amazon Web Service PrivateLink connection when MongoDB Cloud received this request.
 	ConnectionStatus *string `json:"connectionStatus,omitempty"`
-	// Unique 24-hexadecimal digit string that identifies the interface endpoint.
+	// [cloudProvider=AWS] Unique 24-hexadecimal digit string that identifies the interface endpoint.
 	InterfaceEndpointId *string `json:"interfaceEndpointId,omitempty"`
-	// Human-readable label that identifies a set of endpoints.
+	// [cloudProvider=AZURE] Human-readable label that identifies a set of endpoints.
 	EndpointGroupName *string `json:"endpointGroupName,omitempty"`
-	// List of individual private endpoints that comprise this endpoint group.
+	// [cloudProvider=AZURE] List of individual private endpoints that comprise this endpoint group.
 	Endpoints []GCPConsumerForwardingRule `json:"endpoints,omitempty"`
-	// State of the Azure Private Link Service connection when MongoDB Cloud received this request.
+	// [cloudProvider=GCP] State of the Azure Private Link Service connection when MongoDB Cloud received this request.
 	Status *string `json:"status,omitempty"`
-	// Human-readable label that MongoDB Cloud generates that identifies the private endpoint connection.
+	// [cloudProvider=GCP] Human-readable label that MongoDB Cloud generates that identifies the private endpoint connection.
 	PrivateEndpointConnectionName *string `json:"privateEndpointConnectionName,omitempty"`
-	// IPv4 address of the private endpoint in your Azure VNet that someone added to this private endpoint service.
+	// [cloudProvider=GCP] IPv4 address of the private endpoint in your Azure VNet that someone added to this private endpoint service.
 	PrivateEndpointIPAddress *string `json:"privateEndpointIPAddress,omitempty"`
-	// Unique string that identifies the Azure private endpoint's network interface that someone added to this private endpoint service.
+	// [cloudProvider=GCP] Unique string that identifies the Azure private endpoint's network interface that someone added to this private endpoint service.
 	PrivateEndpointResourceId *string `json:"privateEndpointResourceId,omitempty"`
 }
 
