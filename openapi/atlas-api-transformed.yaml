@@ -15025,10 +15025,12 @@ components:
           readOnly: true
         currentValue:
           $ref: "#/components/schemas/NumberMetricValue"
+          description: SEARCH_MAX_NUMBER_OF_LUCENE_DOCS
         metricName:
           type: string
           description: >-
-            Name of the metric against which Atlas checks the configured
+            [metricName=SEARCH_MAX_NUMBER_OF_LUCENE_DOCS] Name of the metric
+            against which Atlas checks the configured
             `metricThreshold.threshold`.
 
 
@@ -16588,17 +16590,17 @@ components:
       properties:
         containerId:
           type: string
-          description: Unique 24-hexadecimal digit string that identifies the MongoDB
-            Cloud network container that contains the specified network peering
-            connection.
+          description: "[providerName=GCP] Unique 24-hexadecimal digit string that
+            identifies the MongoDB Cloud network container that contains the
+            specified network peering connection."
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
           pattern: ^([a-f0-9]{24})$
         id:
           type: string
-          description: Unique 24-hexadecimal digit string that identifies the network
-            peering connection.
+          description: "[providerName=GCP] Unique 24-hexadecimal digit string that
+            identifies the network peering connection."
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
@@ -16606,100 +16608,107 @@ components:
           readOnly: true
         providerName:
           type: string
-          description: Cloud service provider that serves the requested network peering
-            connection.
+          description: "[providerName=GCP] Cloud service provider that serves the
+            requested network peering connection."
         accepterRegionName:
           type: string
-          description: Amazon Web Services (AWS) region where the Virtual Peering
-            Connection (VPC) that you peered with the MongoDB Cloud VPC resides.
-            The resource returns `null` if your VPC and the MongoDB Cloud VPC
-            reside in the same region.
+          description: "[providerName=AWS] Amazon Web Services (AWS) region where the
+            Virtual Peering Connection (VPC) that you peered with the MongoDB
+            Cloud VPC resides. The resource returns `null` if your VPC and the
+            MongoDB Cloud VPC reside in the same region."
         awsAccountId:
           type: string
-          description: Unique twelve-digit string that identifies the Amazon Web Services
-            (AWS) account that owns the VPC that you peered with the MongoDB
-            Cloud VPC.
+          description: "[providerName=AWS] Unique twelve-digit string that identifies the
+            Amazon Web Services (AWS) account that owns the VPC that you peered
+            with the MongoDB Cloud VPC."
           maxLength: 12
           minLength: 12
           pattern: ^[0-9]{12}$
         connectionId:
           type: string
-          description: Unique string that identifies the peering connection on AWS.
+          description: "[providerName=AWS] Unique string that identifies the peering
+            connection on AWS."
           readOnly: true
         errorStateName:
           type: string
-          description: Type of error that can be returned when requesting an Amazon Web
-            Services (AWS) peering connection. The resource returns `null` if
-            the request succeeded.
+          description: "[providerName=AWS] Type of error that can be returned when
+            requesting an Amazon Web Services (AWS) peering connection. The
+            resource returns `null` if the request succeeded."
           readOnly: true
         routeTableCidrBlock:
           type: string
-          description: Internet Protocol (IP) addresses expressed in Classless
-            Inter-Domain Routing (CIDR) notation of the VPC's subnet that you
-            want to peer with the MongoDB Cloud VPC.
+          description: "[providerName=AWS] Internet Protocol (IP) addresses expressed in
+            Classless Inter-Domain Routing (CIDR) notation of the VPC's subnet
+            that you want to peer with the MongoDB Cloud VPC."
           pattern: ^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)(\.(?!$)|$)){4}|([0-9a-f]{1,4}\:){7}[0-9a-f]{1,4}$
         statusName:
           type: string
-          description: State of the network peering connection at the time you made the
-            request.
+          description: "[providerName=AWS] State of the network peering connection at the
+            time you made the request."
           readOnly: true
         vpcId:
           type: string
-          description: Unique string that identifies the VPC on Amazon Web Services (AWS)
-            that you want to peer with the MongoDB Cloud VPC.
+          description: "[providerName=AWS] Unique string that identifies the VPC on Amazon
+            Web Services (AWS) that you want to peer with the MongoDB Cloud
+            VPC."
           minLength: 5
           pattern: ^vpc-[0-9a-f]{17}$
         azureDirectoryId:
           type: string
-          description: Unique string that identifies the Azure AD directory in which the
-            VNet peered with the MongoDB Cloud VNet resides.
+          description: "[providerName=AZURE] Unique string that identifies the Azure AD
+            directory in which the VNet peered with the MongoDB Cloud VNet
+            resides."
           maxLength: 32
           minLength: 32
           pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
         azureSubscriptionId:
           type: string
-          description: Unique string that identifies the Azure subscription in which the
-            VNet you peered with the MongoDB Cloud VNet resides.
+          description: "[providerName=AZURE] Unique string that identifies the Azure
+            subscription in which the VNet you peered with the MongoDB Cloud
+            VNet resides."
           maxLength: 32
           minLength: 32
           pattern: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
         errorState:
           type: string
-          description: 'Error message returned when a requested Azure network peering
-            resource returns `"status" : "FAILED"`. The resource returns `null`
-            if the request succeeded.'
+          description: '[providerName=AZURE] Error message returned when a requested Azure
+            network peering resource returns `"status" : "FAILED"`. The resource
+            returns `null` if the request succeeded.'
           readOnly: true
         resourceGroupName:
           type: string
-          description: Human-readable label that identifies the resource group in which
-            the VNet to peer with the MongoDB Cloud VNet resides.
+          description: "[providerName=AZURE] Human-readable label that identifies the
+            resource group in which the VNet to peer with the MongoDB Cloud VNet
+            resides."
           pattern: ^([-\w._()])+$
         status:
           type: string
-          description: State of the network peering connection at the time you made the
-            request.
+          description: "[providerName=GCP] State of the network peering connection at the
+            time you made the request."
           readOnly: true
         vnetName:
           type: string
-          description: Human-readable label that identifies the VNet that you want to peer
-            with the MongoDB Cloud VNet.
+          description: "[providerName=AZURE] Human-readable label that identifies the VNet
+            that you want to peer with the MongoDB Cloud VNet."
           pattern: ^([-\w._()])+$
         errorMessage:
           type: string
-          description: Details of the error returned when requesting a GCP network peering
-            resource. The resource returns `null` if the request succeeded.
+          description: "[providerName=GCP] Details of the error returned when requesting a
+            GCP network peering resource. The resource returns `null` if the
+            request succeeded."
           readOnly: true
         gcpProjectId:
           type: string
-          description: Human-readable label that identifies the GCP project that contains
-            the network that you want to peer with the MongoDB Cloud VPC.
+          description: "[providerName=GCP] Human-readable label that identifies the GCP
+            project that contains the network that you want to peer with the
+            MongoDB Cloud VPC."
           maxLength: 30
           minLength: 6
           pattern: ^[a-z][0-9a-z-]{4,28}[0-9a-z]{1}
         networkName:
           type: string
-          description: Human-readable label that identifies the network to peer with the
-            MongoDB Cloud VPC.
+          description: "[providerName=GCP] Human-readable label that identifies the
+            network to peer with the MongoDB Cloud VPC."
           maxLength: 63
           minLength: 1
           pattern: "[a-z]([-a-z0-9]{0,62}[a-z0-9]{0,1})?"
@@ -18916,40 +18925,66 @@ components:
         currentUsage:
           type: integer
           format: int64
-          description: Amount that indicates the current usage of the limit.
+          description: "[name=dataFederation.bytesProcessed.weekly]
+            [name=dataFederation.bytesProcessed.query]
+            [name=dataFederation.bytesProcessed.monthly]
+            [name=dataFederation.bytesProcessed.daily] Amount that indicates the
+            current usage of the limit."
           readOnly: true
         defaultLimit:
           type: integer
           format: int64
-          description: Default value of the limit.
+          description: "[name=dataFederation.bytesProcessed.weekly]
+            [name=dataFederation.bytesProcessed.query]
+            [name=dataFederation.bytesProcessed.monthly]
+            [name=dataFederation.bytesProcessed.daily] Default value of the
+            limit."
           readOnly: true
         maximumLimit:
           type: integer
           format: int64
-          description: Maximum value of the limit.
+          description: "[name=dataFederation.bytesProcessed.weekly]
+            [name=dataFederation.bytesProcessed.query]
+            [name=dataFederation.bytesProcessed.monthly]
+            [name=dataFederation.bytesProcessed.daily] Maximum value of the
+            limit."
           readOnly: true
         name:
           type: string
-          description: Human-readable label that identifies the user-managed limit to
-            modify.
+          description: "[name=dataFederation.bytesProcessed.weekly]
+            [name=dataFederation.bytesProcessed.query]
+            [name=dataFederation.bytesProcessed.monthly]
+            [name=dataFederation.bytesProcessed.daily] Human-readable label that
+            identifies the user-managed limit to modify."
           readOnly: true
         value:
           type: integer
           format: int64
-          description: Amount to set the limit to.
+          description: "[name=dataFederation.bytesProcessed.weekly]
+            [name=dataFederation.bytesProcessed.query]
+            [name=dataFederation.bytesProcessed.monthly]
+            [name=dataFederation.bytesProcessed.daily] Amount to set the limit
+            to."
         lastModifiedDate:
           type: string
           format: date-time
-          description: Only used for Data Federation limits. Timestamp that indicates when
-            this usage limit was last modified. This field uses the ISO 8601
-            timestamp format in UTC.
+          description: "[name=dataFederation.bytesProcessed.weekly]
+            [name=dataFederation.bytesProcessed.query]
+            [name=dataFederation.bytesProcessed.monthly]
+            [name=dataFederation.bytesProcessed.daily] Only used for Data
+            Federation limits. Timestamp that indicates when this usage limit
+            was last modified. This field uses the ISO 8601 timestamp format in
+            UTC."
           readOnly: true
         overrunPolicy:
           type: string
-          description: Only used for Data Federation limits. Action to take when the usage
-            limit is exceeded. If limit span is set to QUERY, this is ignored
-            because MongoDB Cloud stops the query when it exceeds the usage
-            limit.
+          description: "[name=dataFederation.bytesProcessed.weekly]
+            [name=dataFederation.bytesProcessed.query]
+            [name=dataFederation.bytesProcessed.monthly]
+            [name=dataFederation.bytesProcessed.daily] Only used for Data
+            Federation limits. Action to take when the usage limit is exceeded.
+            If limit span is set to QUERY, this is ignored because MongoDB Cloud
+            stops the query when it exceeds the usage limit."
       required:
         - name
         - value
@@ -20048,44 +20083,46 @@ components:
       properties:
         cloudProvider:
           type: string
-          description: 'Human-readable label that identifies the cloud provider that
-            stores this snapshot. The resource returns this parameter when
-            `"type": "replicaSet"`.'
+          description: '[type=replicaSet] Human-readable label that identifies the cloud
+            provider that stores this snapshot. The resource returns this
+            parameter when `"type": "replicaSet"`.'
           readOnly: true
         copyRegions:
           type: array
-          description: List that identifies the regions to which MongoDB Cloud copies the
-            snapshot.
+          description: "[type=replicaSet] List that identifies the regions to which
+            MongoDB Cloud copies the snapshot."
           items:
             type: string
           readOnly: true
         createdAt:
           type: string
           format: date-time
-          description: Date and time when MongoDB Cloud took the snapshot. This parameter
-            expresses its value in the ISO 8601 timestamp format in UTC.
+          description: "[type=replicaSet] Date and time when MongoDB Cloud took the
+            snapshot. This parameter expresses its value in the ISO 8601
+            timestamp format in UTC."
           readOnly: true
         description:
           type: string
-          description: 'Human-readable phrase or sentence that explains the purpose of the
-            snapshot. The resource returns this parameter when `"status":
-            "onDemand"`.'
+          description: '[type=replicaSet] Human-readable phrase or sentence that explains
+            the purpose of the snapshot. The resource returns this parameter
+            when `"status": "onDemand"`.'
           readOnly: true
         expiresAt:
           type: string
           format: date-time
-          description: Date and time when MongoDB Cloud deletes the snapshot. This
-            parameter expresses its value in the ISO 8601 timestamp format in
-            UTC.
+          description: "[type=replicaSet] Date and time when MongoDB Cloud deletes the
+            snapshot. This parameter expresses its value in the ISO 8601
+            timestamp format in UTC."
           readOnly: true
         frequencyType:
           type: string
-          description: Human-readable label that identifies how often this snapshot
-            triggers.
+          description: "[type=replicaSet] Human-readable label that identifies how often
+            this snapshot triggers."
           readOnly: true
         id:
           type: string
-          description: Unique 24-hexadecimal digit string that identifies the snapshot.
+          description: "[type=replicaSet] Unique 24-hexadecimal digit string that
+            identifies the snapshot."
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
@@ -20093,9 +20130,9 @@ components:
           readOnly: true
         links:
           type: array
-          description: List of one or more Uniform Resource Locators (URLs) that point to
-            API sub-resources, related API resources, or both. RFC 5988 outlines
-            these relationships.
+          description: "[type=replicaSet] List of one or more Uniform Resource Locators
+            (URLs) that point to API sub-resources, related API resources, or
+            both. RFC 5988 outlines these relationships."
           externalDocs:
             description: Web Linking Specification (RFC 5988)
             url: https://datatracker.ietf.org/doc/html/rfc5988
@@ -20105,19 +20142,21 @@ components:
         masterKeyUUID:
           type: string
           format: uuid
-          description: 'Unique string that identifies the Amazon Web Services (AWS) Key
-            Management Service (KMS) Customer Master Key (CMK) used to encrypt
-            the snapshot. The resource returns this value when
-            `"encryptionEnabled" : true`.'
+          description: '[type=replicaSet] Unique string that identifies the Amazon Web
+            Services (AWS) Key Management Service (KMS) Customer Master Key
+            (CMK) used to encrypt the snapshot. The resource returns this value
+            when `"encryptionEnabled" : true`.'
           readOnly: true
         mongodVersion:
           type: string
-          description: Version of the MongoDB host that this snapshot backs up.
+          description: "[type=replicaSet] Version of the MongoDB host that this snapshot
+            backs up."
           pattern: ([\d]+\.[\d]+\.[\d]+)
           readOnly: true
         policyItems:
           type: array
-          description: List that contains unique identifiers for the policy items.
+          description: "[type=replicaSet] List that contains unique identifiers for the
+            policy items."
           items:
             type: string
             description: Unique 24-hexadecimal digit string that identifies one policy item.
@@ -20128,28 +20167,30 @@ components:
           readOnly: true
         replicaSetName:
           type: string
-          description: 'Human-readable label that identifies the replica set from which
-            MongoDB Cloud took this snapshot. The resource returns this
-            parameter when `"type": "replicaSet"`.'
+          description: '[type=replicaSet] Human-readable label that identifies the replica
+            set from which MongoDB Cloud took this snapshot. The resource
+            returns this parameter when `"type": "replicaSet"`.'
           readOnly: true
         snapshotType:
           type: string
-          description: Human-readable label that identifies when this snapshot triggers.
+          description: "[type=replicaSet] Human-readable label that identifies when this
+            snapshot triggers."
           readOnly: true
         status:
           type: string
-          description: Human-readable label that indicates the stage of the backup process
-            for this snapshot.
+          description: "[type=replicaSet] Human-readable label that indicates the stage of
+            the backup process for this snapshot."
           readOnly: true
         storageSizeBytes:
           type: integer
           format: int64
-          description: Number of bytes taken to store the backup snapshot.
+          description: "[type=replicaSet] Number of bytes taken to store the backup
+            snapshot."
           readOnly: true
         type:
           type: string
-          description: Human-readable label that categorizes the cluster as a replica set
-            or sharded cluster.
+          description: "[type=replicaSet] Human-readable label that categorizes the
+            cluster as a replica set or sharded cluster."
           readOnly: true
       title: Replica Set Snapshot
     DiskBackupShardedClusterSnapshot:
@@ -20159,30 +20200,32 @@ components:
         createdAt:
           type: string
           format: date-time
-          description: Date and time when MongoDB Cloud took the snapshot. This parameter
-            expresses its value in the ISO 8601 timestamp format in UTC.
+          description: "[type=shardedCluster] Date and time when MongoDB Cloud took the
+            snapshot. This parameter expresses its value in the ISO 8601
+            timestamp format in UTC."
           readOnly: true
         description:
           type: string
-          description: 'Human-readable phrase or sentence that explains the purpose of the
-            snapshot. The resource returns this parameter when `"status":
-            "onDemand"`.'
+          description: '[type=shardedCluster] Human-readable phrase or sentence that
+            explains the purpose of the snapshot. The resource returns this
+            parameter when `"status": "onDemand"`.'
           readOnly: true
         expiresAt:
           type: string
           format: date-time
-          description: Date and time when MongoDB Cloud deletes the snapshot. This
-            parameter expresses its value in the ISO 8601 timestamp format in
-            UTC.
+          description: "[type=shardedCluster] Date and time when MongoDB Cloud deletes the
+            snapshot. This parameter expresses its value in the ISO 8601
+            timestamp format in UTC."
           readOnly: true
         frequencyType:
           type: string
-          description: Human-readable label that identifies how often this snapshot
-            triggers.
+          description: "[type=shardedCluster] Human-readable label that identifies how
+            often this snapshot triggers."
           readOnly: true
         id:
           type: string
-          description: Unique 24-hexadecimal digit string that identifies the snapshot.
+          description: "[type=shardedCluster] Unique 24-hexadecimal digit string that
+            identifies the snapshot."
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
@@ -20190,9 +20233,9 @@ components:
           readOnly: true
         links:
           type: array
-          description: List of one or more Uniform Resource Locators (URLs) that point to
-            API sub-resources, related API resources, or both. RFC 5988 outlines
-            these relationships.
+          description: "[type=shardedCluster] List of one or more Uniform Resource
+            Locators (URLs) that point to API sub-resources, related API
+            resources, or both. RFC 5988 outlines these relationships."
           externalDocs:
             description: Web Linking Specification (RFC 5988)
             url: https://datatracker.ietf.org/doc/html/rfc5988
@@ -20202,27 +20245,29 @@ components:
         masterKeyUUID:
           type: string
           format: uuid
-          description: 'Unique string that identifies the Amazon Web Services (AWS) Key
-            Management Service (KMS) Customer Master Key (CMK) used to encrypt
-            the snapshot. The resource returns this value when
-            `"encryptionEnabled" : true`.'
+          description: '[type=shardedCluster] Unique string that identifies the Amazon Web
+            Services (AWS) Key Management Service (KMS) Customer Master Key
+            (CMK) used to encrypt the snapshot. The resource returns this value
+            when `"encryptionEnabled" : true`.'
           readOnly: true
         members:
           type: array
-          description: 'List that includes the snapshots and the cloud provider that
-            stores the snapshots. The resource returns this parameter when
-            `"type" : "SHARDED_CLUSTER"`.'
+          description: '[type=shardedCluster] List that includes the snapshots and the
+            cloud provider that stores the snapshots. The resource returns this
+            parameter when `"type" : "SHARDED_CLUSTER"`.'
           items:
             $ref: "#/components/schemas/DiskBackupShardedClusterSnapshotMember"
           readOnly: true
         mongodVersion:
           type: string
-          description: Version of the MongoDB host that this snapshot backs up.
+          description: "[type=shardedCluster] Version of the MongoDB host that this
+            snapshot backs up."
           pattern: ([\d]+\.[\d]+\.[\d]+)
           readOnly: true
         policyItems:
           type: array
-          description: List that contains unique identifiers for the policy items.
+          description: "[type=shardedCluster] List that contains unique identifiers for
+            the policy items."
           items:
             type: string
             description: Unique 24-hexadecimal digit string that identifies one policy item.
@@ -20233,12 +20278,12 @@ components:
           readOnly: true
         snapshotIds:
           type: array
-          description: 'List that contains the unique identifiers of the snapshots created
-            for the shards and config host for a sharded cluster. The resource
-            returns this parameter when `"type": "SHARDED_CLUSTER"`. These
-            identifiers should match the ones specified in the **members[n].id**
-            parameters. This allows you to map a snapshot to its shard or config
-            host name.'
+          description: '[type=shardedCluster] List that contains the unique identifiers of
+            the snapshots created for the shards and config host for a sharded
+            cluster. The resource returns this parameter when `"type":
+            "SHARDED_CLUSTER"`. These identifiers should match the ones
+            specified in the **members[n].id** parameters. This allows you to
+            map a snapshot to its shard or config host name.'
           items:
             type: string
             description: Unique 24-hexadecimal digit string that identifies the snapshot for
@@ -20251,22 +20296,24 @@ components:
           readOnly: true
         snapshotType:
           type: string
-          description: Human-readable label that identifies when this snapshot triggers.
+          description: "[type=shardedCluster] Human-readable label that identifies when
+            this snapshot triggers."
           readOnly: true
         status:
           type: string
-          description: Human-readable label that indicates the stage of the backup process
-            for this snapshot.
+          description: "[type=shardedCluster] Human-readable label that indicates the
+            stage of the backup process for this snapshot."
           readOnly: true
         storageSizeBytes:
           type: integer
           format: int64
-          description: Number of bytes taken to store the backup snapshot.
+          description: "[type=shardedCluster] Number of bytes taken to store the backup
+            snapshot."
           readOnly: true
         type:
           type: string
-          description: Human-readable label that categorizes the cluster as a replica set
-            or sharded cluster.
+          description: "[type=shardedCluster] Human-readable label that categorizes the
+            cluster as a replica set or sharded cluster."
           readOnly: true
       title: Sharded Cluster Snapshot
     DiskBackupShardedClusterSnapshotMember:
@@ -20301,30 +20348,32 @@ components:
         createdAt:
           type: string
           format: date-time
-          description: Date and time when MongoDB Cloud took the snapshot. This parameter
-            expresses its value in the ISO 8601 timestamp format in UTC.
+          description: "[type=shardedCluster] Date and time when MongoDB Cloud took the
+            snapshot. This parameter expresses its value in the ISO 8601
+            timestamp format in UTC."
           readOnly: true
         description:
           type: string
-          description: 'Human-readable phrase or sentence that explains the purpose of the
-            snapshot. The resource returns this parameter when `"status":
-            "onDemand"`.'
+          description: '[type=shardedCluster] Human-readable phrase or sentence that
+            explains the purpose of the snapshot. The resource returns this
+            parameter when `"status": "onDemand"`.'
           readOnly: true
         expiresAt:
           type: string
           format: date-time
-          description: Date and time when MongoDB Cloud deletes the snapshot. This
-            parameter expresses its value in the ISO 8601 timestamp format in
-            UTC.
+          description: "[type=shardedCluster] Date and time when MongoDB Cloud deletes the
+            snapshot. This parameter expresses its value in the ISO 8601
+            timestamp format in UTC."
           readOnly: true
         frequencyType:
           type: string
-          description: Human-readable label that identifies how often this snapshot
-            triggers.
+          description: "[type=shardedCluster] Human-readable label that identifies how
+            often this snapshot triggers."
           readOnly: true
         id:
           type: string
-          description: Unique 24-hexadecimal digit string that identifies the snapshot.
+          description: "[type=shardedCluster] Unique 24-hexadecimal digit string that
+            identifies the snapshot."
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
@@ -20332,9 +20381,9 @@ components:
           readOnly: true
         links:
           type: array
-          description: List of one or more Uniform Resource Locators (URLs) that point to
-            API sub-resources, related API resources, or both. RFC 5988 outlines
-            these relationships.
+          description: "[type=shardedCluster] List of one or more Uniform Resource
+            Locators (URLs) that point to API sub-resources, related API
+            resources, or both. RFC 5988 outlines these relationships."
           externalDocs:
             description: Web Linking Specification (RFC 5988)
             url: https://datatracker.ietf.org/doc/html/rfc5988
@@ -20344,19 +20393,21 @@ components:
         masterKeyUUID:
           type: string
           format: uuid
-          description: 'Unique string that identifies the Amazon Web Services (AWS) Key
-            Management Service (KMS) Customer Master Key (CMK) used to encrypt
-            the snapshot. The resource returns this value when
-            `"encryptionEnabled" : true`.'
+          description: '[type=shardedCluster] Unique string that identifies the Amazon Web
+            Services (AWS) Key Management Service (KMS) Customer Master Key
+            (CMK) used to encrypt the snapshot. The resource returns this value
+            when `"encryptionEnabled" : true`.'
           readOnly: true
         mongodVersion:
           type: string
-          description: Version of the MongoDB host that this snapshot backs up.
+          description: "[type=shardedCluster] Version of the MongoDB host that this
+            snapshot backs up."
           pattern: ([\d]+\.[\d]+\.[\d]+)
           readOnly: true
         policyItems:
           type: array
-          description: List that contains unique identifiers for the policy items.
+          description: "[type=shardedCluster] List that contains unique identifiers for
+            the policy items."
           items:
             type: string
             description: Unique 24-hexadecimal digit string that identifies one policy item.
@@ -20367,58 +20418,60 @@ components:
           readOnly: true
         snapshotType:
           type: string
-          description: Human-readable label that identifies when this snapshot triggers.
+          description: "[type=shardedCluster] Human-readable label that identifies when
+            this snapshot triggers."
           readOnly: true
         status:
           type: string
-          description: Human-readable label that indicates the stage of the backup process
-            for this snapshot.
+          description: "[type=shardedCluster] Human-readable label that indicates the
+            stage of the backup process for this snapshot."
           readOnly: true
         storageSizeBytes:
           type: integer
           format: int64
-          description: Number of bytes taken to store the backup snapshot.
+          description: "[type=shardedCluster] Number of bytes taken to store the backup
+            snapshot."
           readOnly: true
         type:
           type: string
-          description: Human-readable label that categorizes the cluster as a replica set
-            or sharded cluster.
+          description: "[type=shardedCluster] Human-readable label that categorizes the
+            cluster as a replica set or sharded cluster."
           readOnly: true
         cloudProvider:
           type: string
-          description: 'Human-readable label that identifies the cloud provider that
-            stores this snapshot. The resource returns this parameter when
-            `"type": "replicaSet"`.'
+          description: '[type=replicaSet] Human-readable label that identifies the cloud
+            provider that stores this snapshot. The resource returns this
+            parameter when `"type": "replicaSet"`.'
           readOnly: true
         copyRegions:
           type: array
-          description: List that identifies the regions to which MongoDB Cloud copies the
-            snapshot.
+          description: "[type=replicaSet] List that identifies the regions to which
+            MongoDB Cloud copies the snapshot."
           items:
             type: string
           readOnly: true
         replicaSetName:
           type: string
-          description: 'Human-readable label that identifies the replica set from which
-            MongoDB Cloud took this snapshot. The resource returns this
-            parameter when `"type": "replicaSet"`.'
+          description: '[type=replicaSet] Human-readable label that identifies the replica
+            set from which MongoDB Cloud took this snapshot. The resource
+            returns this parameter when `"type": "replicaSet"`.'
           readOnly: true
         members:
           type: array
-          description: 'List that includes the snapshots and the cloud provider that
-            stores the snapshots. The resource returns this parameter when
-            `"type" : "SHARDED_CLUSTER"`.'
+          description: '[type=shardedCluster] List that includes the snapshots and the
+            cloud provider that stores the snapshots. The resource returns this
+            parameter when `"type" : "SHARDED_CLUSTER"`.'
           items:
             $ref: "#/components/schemas/DiskBackupShardedClusterSnapshotMember"
           readOnly: true
         snapshotIds:
           type: array
-          description: 'List that contains the unique identifiers of the snapshots created
-            for the shards and config host for a sharded cluster. The resource
-            returns this parameter when `"type": "SHARDED_CLUSTER"`. These
-            identifiers should match the ones specified in the **members[n].id**
-            parameters. This allows you to map a snapshot to its shard or config
-            host name.'
+          description: '[type=shardedCluster] List that contains the unique identifiers of
+            the snapshots created for the shards and config host for a sharded
+            cluster. The resource returns this parameter when `"type":
+            "SHARDED_CLUSTER"`. These identifiers should match the ones
+            specified in the **members[n].id** parameters. This allows you to
+            map a snapshot to its shard or config host name.'
           items:
             type: string
             description: Unique 24-hexadecimal digit string that identifies the snapshot for
@@ -20712,17 +20765,19 @@ components:
       properties:
         cloudProvider:
           type: string
-          description: Cloud service provider that serves the requested endpoint service.
+          description: "[cloudProvider=GCP] Cloud service provider that serves the
+            requested endpoint service."
           readOnly: true
         errorMessage:
           type: string
-          description: Error message returned when requesting private connection resource.
-            The resource returns `null` if the request succeeded.
+          description: "[cloudProvider=GCP] Error message returned when requesting private
+            connection resource. The resource returns `null` if the request
+            succeeded."
           readOnly: true
         id:
           type: string
-          description: Unique 24-hexadecimal digit string that identifies the Private
-            Endpoint Service.
+          description: "[cloudProvider=GCP] Unique 24-hexadecimal digit string that
+            identifies the Private Endpoint Service."
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
@@ -20730,24 +20785,25 @@ components:
           readOnly: true
         regionName:
           type: string
-          description: Cloud provider region that manages this Private Endpoint Service.
+          description: "[cloudProvider=GCP] Cloud provider region that manages this
+            Private Endpoint Service."
           readOnly: true
         status:
           type: string
-          description: State of the Private Endpoint Service connection when MongoDB Cloud
-            received this request.
+          description: "[cloudProvider=GCP] State of the Private Endpoint Service
+            connection when MongoDB Cloud received this request."
           readOnly: true
         endpointServiceName:
           type: string
-          description: Unique string that identifies the Amazon Web Services (AWS)
-            PrivateLink endpoint service. MongoDB Cloud returns null while it
-            creates the endpoint service.
+          description: "[cloudProvider=AWS] Unique string that identifies the Amazon Web
+            Services (AWS) PrivateLink endpoint service. MongoDB Cloud returns
+            null while it creates the endpoint service."
           pattern: ^com\.amazonaws\.vpce\.[a-z-0-9]+\.vpce-svc-[0-9a-f]{17}
           readOnly: true
         interfaceEndpoints:
           type: array
-          description: List of strings that identify private endpoint interfaces applied
-            to the specified project.
+          description: "[cloudProvider=AWS] List of strings that identify private endpoint
+            interfaces applied to the specified project."
           items:
             type: string
             description: Unique 24-hexadecimal digit string that identifies the interface
@@ -20760,8 +20816,8 @@ components:
           readOnly: true
         privateEndpoints:
           type: array
-          description: List of private endpoints assigned to this Azure Private Link
-            Service.
+          description: "[cloudProvider=AZURE] List of private endpoints assigned to this
+            Azure Private Link Service."
           items:
             type: string
             description: Root-relative path to one private endpoint assigned to this Azure
@@ -20771,23 +20827,23 @@ components:
           readOnly: true
         privateLinkServiceName:
           type: string
-          description: Unique string that identifies the Azure Private Link Service that
-            MongoDB Cloud manages.
+          description: "[cloudProvider=AZURE] Unique string that identifies the Azure
+            Private Link Service that MongoDB Cloud manages."
           maxLength: 24
           minLength: 24
           pattern: ^pls_[0-9a-f]{24}$
           readOnly: true
         privateLinkServiceResourceId:
           type: string
-          description: Root-relative path that identifies of the Azure Private Link
-            Service that MongoDB Cloud manages. Use this value to create a
-            private endpoint connection to an Azure VNet.
+          description: "[cloudProvider=AZURE] Root-relative path that identifies of the
+            Azure Private Link Service that MongoDB Cloud manages. Use this
+            value to create a private endpoint connection to an Azure VNet."
           example: /subscriptions/ae349d51-d12b-ee3d-2a27-7d53f6479cf0/resourcegroups/KObGGz/providers/Microsoft.Network/privateLinkServices/pls_d1820713f8153388d533e9de
           readOnly: true
         endpointGroupNames:
           type: array
-          description: List of Google Cloud network endpoint groups that corresponds to
-            the Private Service Connect endpoint service.
+          description: "[cloudProvider=GCP] List of Google Cloud network endpoint groups
+            that corresponds to the Private Service Connect endpoint service."
           externalDocs:
             description: Google Cloud Forwarding Rule Concepts
             url: https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts
@@ -20797,9 +20853,10 @@ components:
               Private Service Connect endpoint service.
         serviceAttachmentNames:
           type: array
-          description: List of Uniform Resource Locators (URLs) that identifies endpoints
-            that MongoDB Cloud can use to access one Google Cloud Service across
-            a Google Cloud Virtual Private Connection (VPC) network.
+          description: "[cloudProvider=GCP] List of Uniform Resource Locators (URLs) that
+            identifies endpoints that MongoDB Cloud can use to access one Google
+            Cloud Service across a Google Cloud Virtual Private Connection (VPC)
+            network."
           externalDocs:
             description: Google Cloud Private Service Connect Service Attachments
             url: https://cloud.google.com/vpc/docs/private-service-connect#service-attachments
@@ -20994,10 +21051,12 @@ components:
           readOnly: true
         currentValue:
           $ref: "#/components/schemas/NumberMetricValue"
+          description: SEARCH_MAX_NUMBER_OF_LUCENE_DOCS
         metricName:
           type: string
-          description: Human-readable label of the metric associated with the **alertId**.
-            This field may change type of **currentValue** field.
+          description: "[metricName=SEARCH_MAX_NUMBER_OF_LUCENE_DOCS] Human-readable label
+            of the metric associated with the **alertId**. This field may change
+            type of **currentValue** field."
           readOnly: true
         whitelistEntry:
           type: string
@@ -21589,6 +21648,7 @@ components:
           $ref: "#/components/schemas/ServerlessMetricThreshold"
         threshold:
           $ref: "#/components/schemas/GreaterThanRawThreshold"
+          description: TOO_MANY_ELECTIONS
     GroupInvitation:
       type: object
       properties:
@@ -23983,28 +24043,30 @@ components:
       properties:
         cloudProvider:
           type: string
-          description: Cloud service provider that serves the requested endpoint.
+          description: "[cloudProvider=GCP] Cloud service provider that serves the
+            requested endpoint."
           readOnly: true
         deleteRequested:
           type: boolean
-          description: Flag that indicates whether MongoDB Cloud received a request to
-            remove the specified private endpoint from the private endpoint
-            service.
+          description: "[cloudProvider=GCP] Flag that indicates whether MongoDB Cloud
+            received a request to remove the specified private endpoint from the
+            private endpoint service."
           readOnly: true
         errorMessage:
           type: string
-          description: Error message returned when requesting private connection resource.
-            The resource returns `null` if the request succeeded.
+          description: "[cloudProvider=GCP] Error message returned when requesting private
+            connection resource. The resource returns `null` if the request
+            succeeded."
           readOnly: true
         connectionStatus:
           type: string
-          description: State of the Amazon Web Service PrivateLink connection when MongoDB
-            Cloud received this request.
+          description: "[cloudProvider=AWS] State of the Amazon Web Service PrivateLink
+            connection when MongoDB Cloud received this request."
           readOnly: true
         interfaceEndpointId:
           type: string
-          description: Unique 24-hexadecimal digit string that identifies the interface
-            endpoint.
+          description: "[cloudProvider=AWS] Unique 24-hexadecimal digit string that
+            identifies the interface endpoint."
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
@@ -24012,15 +24074,16 @@ components:
           readOnly: true
         endpointGroupName:
           type: string
-          description: Human-readable label that identifies a set of endpoints.
+          description: "[cloudProvider=AZURE] Human-readable label that identifies a set
+            of endpoints."
           externalDocs:
             description: Google Cloud Forwarding Rule Concepts
             url: https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts
           readOnly: true
         endpoints:
           type: array
-          description: List of individual private endpoints that comprise this endpoint
-            group.
+          description: "[cloudProvider=AZURE] List of individual private endpoints that
+            comprise this endpoint group."
           externalDocs:
             description: Google Cloud Forwarding Rule Concepts
             url: https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts
@@ -24029,24 +24092,25 @@ components:
           readOnly: true
         status:
           type: string
-          description: State of the Azure Private Link Service connection when MongoDB
-            Cloud received this request.
+          description: "[cloudProvider=GCP] State of the Azure Private Link Service
+            connection when MongoDB Cloud received this request."
           readOnly: true
         privateEndpointConnectionName:
           type: string
-          description: Human-readable label that MongoDB Cloud generates that identifies
-            the private endpoint connection.
+          description: "[cloudProvider=GCP] Human-readable label that MongoDB Cloud
+            generates that identifies the private endpoint connection."
           pattern: ^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}%2[fF]([-\w._()]+)%2[fF]([-\w._()]+)
           readOnly: true
         privateEndpointIPAddress:
           type: string
-          description: IPv4 address of the private endpoint in your Azure VNet that
-            someone added to this private endpoint service.
+          description: "[cloudProvider=GCP] IPv4 address of the private endpoint in your
+            Azure VNet that someone added to this private endpoint service."
           pattern: ^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)(\.(?!$)|$)){4}|([0-9a-f]{1,4}\:){7}[0-9a-f]{1,4}$
         privateEndpointResourceId:
           type: string
-          description: Unique string that identifies the Azure private endpoint's network
-            interface that someone added to this private endpoint service.
+          description: "[cloudProvider=GCP] Unique string that identifies the Azure
+            private endpoint's network interface that someone added to this
+            private endpoint service."
           example: /subscriptions/cba6d9c6-1d3f-3c11-03cb-c705d895e636/resourcegroups/qrRTqi4TSN)7yB5YLRjVDveH3.yLzpNR7Br0D3-SGrU3j0.0/providers/Microsoft.Network/privateEndpoints/pVP(vb(XeckpxtXzP0NaOsDjeWDbOK)DX8A2j2E_vBYL2.GEYIdln
           readOnly: true
       required:
@@ -24809,19 +24873,29 @@ components:
       properties:
         metricName:
           type: string
-          description: Human-readable label that identifies the metric against which
-            MongoDB Cloud checks the configured **metricThreshold.threshold**.
+          description: "[metricName=SERVERLESS_TOTAL_WRITE_UNITS]
+            [metricName=SERVERLESS_TOTAL_READ_UNITS] Human-readable label that
+            identifies the metric against which MongoDB Cloud checks the
+            configured **metricThreshold.threshold**."
         mode:
           type: string
-          description: MongoDB Cloud computes the current metric value as an average.
+          description: "[metricName=SERVERLESS_TOTAL_WRITE_UNITS]
+            [metricName=SERVERLESS_TOTAL_READ_UNITS] MongoDB Cloud computes the
+            current metric value as an average."
         operator:
           $ref: "#/components/schemas/Operator"
+          description: "[metricName=SERVERLESS_TOTAL_WRITE_UNITS]
+            SERVERLESS_TOTAL_READ_UNITS"
         threshold:
           type: number
           format: double
-          description: Value of metric that, when exceeded, triggers an alert.
+          description: "[metricName=SERVERLESS_TOTAL_WRITE_UNITS]
+            [metricName=SERVERLESS_TOTAL_READ_UNITS] Value of metric that, when
+            exceeded, triggers an alert."
         units:
           $ref: "#/components/schemas/ServerlessMetricUnits"
+          description: "[metricName=SERVERLESS_TOTAL_WRITE_UNITS]
+            SERVERLESS_TOTAL_READ_UNITS"
       title: Serverless Metric Threshold
     ServerlessMetricUnits:
       type: string
@@ -25257,13 +25331,14 @@ components:
       properties:
         type:
           type: string
-          description: Human-readable label that identifies the service to which you want
-            to integrate with MongoDB Cloud. The value must match the
-            third-party service integration type.
+          description: "[type=WEBHOOK] Human-readable label that identifies the service to
+            which you want to integrate with MongoDB Cloud. The value must match
+            the third-party service integration type."
         apiKey:
           type: string
           description: >-
-            Key that allows MongoDB Cloud to access your VictorOps account.
+            [type=VICTOR_OPS] Key that allows MongoDB Cloud to access your
+            VictorOps account.
 
 
             **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
@@ -25276,21 +25351,21 @@ components:
           example: "********************************9abc"
         region:
           type: string
-          description: PagerDuty region that indicates the API Uniform Resource Locator
-            (URL) to use.
+          description: "[type=PAGER_DUTY] PagerDuty region that indicates the API Uniform
+            Resource Locator (URL) to use."
         microsoftTeamsWebhookUrl:
           type: string
           description: >-
-            Endpoint web address of the Microsoft Teams webhook to which
-            MongoDB Cloud sends notifications.
+            [type=MICROSOFT_TEAMS] Endpoint web address of the Microsoft Teams
+            webhook to which MongoDB Cloud sends notifications.
 
 
             **NOTE**: When you view or edit the alert for a Microsoft Teams notification, the URL appears partially redacted.
           example: https://webhook.com/****
         accountId:
           type: string
-          description: Unique 40-hexadecimal digit string that identifies your New Relic
-            account.
+          description: "[type=NEW_RELIC] Unique 40-hexadecimal digit string that
+            identifies your New Relic account."
           example: bcc3c81b344a6030a3935c2527e2216535af7718
           maxLength: 40
           minLength: 40
@@ -25298,8 +25373,8 @@ components:
         licenseKey:
           type: string
           description: >-
-            Unique 40-hexadecimal digit string that identifies your New Relic
-            license.
+            [type=NEW_RELIC] Unique 40-hexadecimal digit string that identifies
+            your New Relic license.
 
 
             **IMPORTANT**: Effective Wednesday, June 16th, 2021, New Relic no longer supports the plugin-based integration with MongoDB. We do not recommend that you sign up for the plugin-based integration.
@@ -25311,16 +25386,17 @@ components:
           pattern: ^([0-9a-f]){40}$
         readToken:
           type: string
-          description: Query key used to access your New Relic account.
+          description: "[type=NEW_RELIC] Query key used to access your New Relic account."
           example: 193c96aee4a3ac640b98634562e2631f17ae0a69
         writeToken:
           type: string
-          description: Insert key associated with your New Relic account.
+          description: "[type=NEW_RELIC] Insert key associated with your New Relic account."
           example: a67b10e5cd7f8fb6a34b501136c409f373edc218
         serviceKey:
           type: string
           description: >-
-            Service key associated with your PagerDuty account.
+            [type=PAGER_DUTY] Service key associated with your PagerDuty
+            account.
 
 
             **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
@@ -25333,42 +25409,47 @@ components:
           example: "****************************7890"
         enabled:
           type: boolean
-          description: Flag that indicates whether someone has activated the Prometheus
-            integration.
+          description: "[type=PROMETHEUS] Flag that indicates whether someone has
+            activated the Prometheus integration."
         listenAddress:
           type: string
           default: :9216
-          description: Combination of IPv4 address and Internet Assigned Numbers Authority
-            (IANA) port or the IANA port alone to which Prometheus binds to
-            ingest MongoDB metrics.
+          description: "[type=PROMETHEUS] Combination of IPv4 address and Internet
+            Assigned Numbers Authority (IANA) port or the IANA port alone to
+            which Prometheus binds to ingest MongoDB metrics."
         password:
           type: string
           writeOnly: true
+          description: PROMETHEUS
         rateLimitInterval:
           type: integer
           format: int32
           writeOnly: true
+          description: PROMETHEUS
         scheme:
           type: string
-          description: Security Scheme to apply to HyperText Transfer Protocol (HTTP)
-            traffic between Prometheus and MongoDB Cloud.
+          description: "[type=PROMETHEUS] Security Scheme to apply to HyperText Transfer
+            Protocol (HTTP) traffic between Prometheus and MongoDB Cloud."
         serviceDiscovery:
           type: string
-          description: Desired method to discover the Prometheus service.
+          description: "[type=PROMETHEUS] Desired method to discover the Prometheus
+            service."
         tlsPemPath:
           type: string
-          description: Root-relative path to the Transport Layer Security (TLS) Privacy
-            Enhanced Mail (PEM) key and certificate file on the host.
+          description: "[type=PROMETHEUS] Root-relative path to the Transport Layer
+            Security (TLS) Privacy Enhanced Mail (PEM) key and certificate file
+            on the host."
           example: /path/to/file
         username:
           type: string
-          description: Human-readable label that identifies your Prometheus incoming
-            webhook.
+          description: "[type=PROMETHEUS] Human-readable label that identifies your
+            Prometheus incoming webhook."
           example: prom_user_618d48e05277a606ed2496fe
         apiToken:
           type: string
           description: >-
-            Key that allows MongoDB Cloud to access your Slack account.
+            [type=SLACK] Key that allows MongoDB Cloud to access your Slack
+            account.
 
 
             **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
@@ -25385,26 +25466,27 @@ components:
             *abcd"
         channelName:
           type: string
-          description: Name of the Slack channel to which MongoDB Cloud sends alert
-            notifications.
+          description: "[type=SLACK] Name of the Slack channel to which MongoDB Cloud
+            sends alert notifications."
           example: alerts
           maxLength: 80
           minLength: 1
           nullable: true
         teamName:
           type: string
-          description: Human-readable label that identifies your Slack team. Set this
-            parameter when you configure a legacy Slack integration.
+          description: "[type=SLACK] Human-readable label that identifies your Slack team.
+            Set this parameter when you configure a legacy Slack integration."
           example: MongoDB
         routingKey:
           type: string
-          description: Routing key associated with your Splunk On-Call account.
+          description: "[type=VICTOR_OPS] Routing key associated with your Splunk On-Call
+            account."
           example: test routing
         secret:
           type: string
           description: >-
-            An optional field returned if your webhook is configured with a
-            secret.
+            [type=WEBHOOK] An optional field returned if your webhook is
+            configured with a secret.
 
 
             **NOTE**: When you view or edit the alert for a webhook notification, the secret appears completely redacted.
@@ -25412,7 +25494,8 @@ components:
         url:
           type: string
           description: >-
-            Endpoint web address to which MongoDB Cloud sends notifications.
+            [type=WEBHOOK] Endpoint web address to which MongoDB Cloud sends
+            notifications.
 
 
             **NOTE**: When you view or edit the alert for a webhook notification, the URL appears partially redacted.
