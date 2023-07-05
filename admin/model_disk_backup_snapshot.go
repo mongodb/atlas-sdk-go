@@ -12,41 +12,41 @@ var _ MappedNullable = &DiskBackupSnapshot{}
 
 // DiskBackupSnapshot struct for DiskBackupSnapshot
 type DiskBackupSnapshot struct {
-	// Date and time when MongoDB Cloud took the snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+	// [type=shardedCluster] Date and time when MongoDB Cloud took the snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	// Human-readable phrase or sentence that explains the purpose of the snapshot. The resource returns this parameter when `\"status\": \"onDemand\"`.
+	// [type=shardedCluster] Human-readable phrase or sentence that explains the purpose of the snapshot. The resource returns this parameter when `\"status\": \"onDemand\"`.
 	Description *string `json:"description,omitempty"`
-	// Date and time when MongoDB Cloud deletes the snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+	// [type=shardedCluster] Date and time when MongoDB Cloud deletes the snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	ExpiresAt *time.Time `json:"expiresAt,omitempty"`
-	// Human-readable label that identifies how often this snapshot triggers.
+	// [type=shardedCluster] Human-readable label that identifies how often this snapshot triggers.
 	FrequencyType *string `json:"frequencyType,omitempty"`
-	// Unique 24-hexadecimal digit string that identifies the snapshot.
+	// [type=shardedCluster] Unique 24-hexadecimal digit string that identifies the snapshot.
 	Id *string `json:"id,omitempty"`
-	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+	// [type=shardedCluster] List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	Links []Link `json:"links,omitempty"`
-	// Unique string that identifies the Amazon Web Services (AWS) Key Management Service (KMS) Customer Master Key (CMK) used to encrypt the snapshot. The resource returns this value when `\"encryptionEnabled\" : true`.
+	// [type=shardedCluster] Unique string that identifies the Amazon Web Services (AWS) Key Management Service (KMS) Customer Master Key (CMK) used to encrypt the snapshot. The resource returns this value when `\"encryptionEnabled\" : true`.
 	MasterKeyUUID *string `json:"masterKeyUUID,omitempty"`
-	// Version of the MongoDB host that this snapshot backs up.
+	// [type=shardedCluster] Version of the MongoDB host that this snapshot backs up.
 	MongodVersion *string `json:"mongodVersion,omitempty"`
-	// List that contains unique identifiers for the policy items.
+	// [type=shardedCluster] List that contains unique identifiers for the policy items.
 	PolicyItems []string `json:"policyItems,omitempty"`
-	// Human-readable label that identifies when this snapshot triggers.
+	// [type=shardedCluster] Human-readable label that identifies when this snapshot triggers.
 	SnapshotType *string `json:"snapshotType,omitempty"`
-	// Human-readable label that indicates the stage of the backup process for this snapshot.
+	// [type=shardedCluster] Human-readable label that indicates the stage of the backup process for this snapshot.
 	Status *string `json:"status,omitempty"`
-	// Number of bytes taken to store the backup snapshot.
+	// [type=shardedCluster] Number of bytes taken to store the backup snapshot.
 	StorageSizeBytes *int64 `json:"storageSizeBytes,omitempty"`
-	// Human-readable label that categorizes the cluster as a replica set or sharded cluster.
+	// [type=shardedCluster] Human-readable label that categorizes the cluster as a replica set or sharded cluster.
 	Type *string `json:"type,omitempty"`
-	// Human-readable label that identifies the cloud provider that stores this snapshot. The resource returns this parameter when `\"type\": \"replicaSet\"`.
+	// [type=replicaSet] Human-readable label that identifies the cloud provider that stores this snapshot. The resource returns this parameter when `\"type\": \"replicaSet\"`.
 	CloudProvider *string `json:"cloudProvider,omitempty"`
-	// List that identifies the regions to which MongoDB Cloud copies the snapshot.
+	// [type=replicaSet] List that identifies the regions to which MongoDB Cloud copies the snapshot.
 	CopyRegions []string `json:"copyRegions,omitempty"`
-	// Human-readable label that identifies the replica set from which MongoDB Cloud took this snapshot. The resource returns this parameter when `\"type\": \"replicaSet\"`.
+	// [type=replicaSet] Human-readable label that identifies the replica set from which MongoDB Cloud took this snapshot. The resource returns this parameter when `\"type\": \"replicaSet\"`.
 	ReplicaSetName *string `json:"replicaSetName,omitempty"`
-	// List that includes the snapshots and the cloud provider that stores the snapshots. The resource returns this parameter when `\"type\" : \"SHARDED_CLUSTER\"`.
+	// [type=shardedCluster] List that includes the snapshots and the cloud provider that stores the snapshots. The resource returns this parameter when `\"type\" : \"SHARDED_CLUSTER\"`.
 	Members []DiskBackupShardedClusterSnapshotMember `json:"members,omitempty"`
-	// List that contains the unique identifiers of the snapshots created for the shards and config host for a sharded cluster. The resource returns this parameter when `\"type\": \"SHARDED_CLUSTER\"`. These identifiers should match the ones specified in the **members[n].id** parameters. This allows you to map a snapshot to its shard or config host name.
+	// [type=shardedCluster] List that contains the unique identifiers of the snapshots created for the shards and config host for a sharded cluster. The resource returns this parameter when `\"type\": \"SHARDED_CLUSTER\"`. These identifiers should match the ones specified in the **members[n].id** parameters. This allows you to map a snapshot to its shard or config host name.
 	SnapshotIds []string `json:"snapshotIds,omitempty"`
 }
 

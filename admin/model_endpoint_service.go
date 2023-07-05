@@ -11,29 +11,29 @@ var _ MappedNullable = &EndpointService{}
 
 // EndpointService struct for EndpointService
 type EndpointService struct {
-	// Cloud service provider that serves the requested endpoint service.
+	// [cloudProvider=GCP] Cloud service provider that serves the requested endpoint service.
 	CloudProvider string `json:"cloudProvider"`
-	// Error message returned when requesting private connection resource. The resource returns `null` if the request succeeded.
+	// [cloudProvider=GCP] Error message returned when requesting private connection resource. The resource returns `null` if the request succeeded.
 	ErrorMessage *string `json:"errorMessage,omitempty"`
-	// Unique 24-hexadecimal digit string that identifies the Private Endpoint Service.
+	// [cloudProvider=GCP] Unique 24-hexadecimal digit string that identifies the Private Endpoint Service.
 	Id *string `json:"id,omitempty"`
-	// Cloud provider region that manages this Private Endpoint Service.
+	// [cloudProvider=GCP] Cloud provider region that manages this Private Endpoint Service.
 	RegionName *string `json:"regionName,omitempty"`
-	// State of the Private Endpoint Service connection when MongoDB Cloud received this request.
+	// [cloudProvider=GCP] State of the Private Endpoint Service connection when MongoDB Cloud received this request.
 	Status *string `json:"status,omitempty"`
-	// Unique string that identifies the Amazon Web Services (AWS) PrivateLink endpoint service. MongoDB Cloud returns null while it creates the endpoint service.
+	// [cloudProvider=AWS] Unique string that identifies the Amazon Web Services (AWS) PrivateLink endpoint service. MongoDB Cloud returns null while it creates the endpoint service.
 	EndpointServiceName *string `json:"endpointServiceName,omitempty"`
-	// List of strings that identify private endpoint interfaces applied to the specified project.
+	// [cloudProvider=AWS] List of strings that identify private endpoint interfaces applied to the specified project.
 	InterfaceEndpoints []string `json:"interfaceEndpoints,omitempty"`
-	// List of private endpoints assigned to this Azure Private Link Service.
+	// [cloudProvider=AZURE] List of private endpoints assigned to this Azure Private Link Service.
 	PrivateEndpoints []string `json:"privateEndpoints,omitempty"`
-	// Unique string that identifies the Azure Private Link Service that MongoDB Cloud manages.
+	// [cloudProvider=AZURE] Unique string that identifies the Azure Private Link Service that MongoDB Cloud manages.
 	PrivateLinkServiceName *string `json:"privateLinkServiceName,omitempty"`
-	// Root-relative path that identifies of the Azure Private Link Service that MongoDB Cloud manages. Use this value to create a private endpoint connection to an Azure VNet.
+	// [cloudProvider=AZURE] Root-relative path that identifies of the Azure Private Link Service that MongoDB Cloud manages. Use this value to create a private endpoint connection to an Azure VNet.
 	PrivateLinkServiceResourceId *string `json:"privateLinkServiceResourceId,omitempty"`
-	// List of Google Cloud network endpoint groups that corresponds to the Private Service Connect endpoint service.
+	// [cloudProvider=GCP] List of Google Cloud network endpoint groups that corresponds to the Private Service Connect endpoint service.
 	EndpointGroupNames []string `json:"endpointGroupNames,omitempty"`
-	// List of Uniform Resource Locators (URLs) that identifies endpoints that MongoDB Cloud can use to access one Google Cloud Service across a Google Cloud Virtual Private Connection (VPC) network.
+	// [cloudProvider=GCP] List of Uniform Resource Locators (URLs) that identifies endpoints that MongoDB Cloud can use to access one Google Cloud Service across a Google Cloud Virtual Private Connection (VPC) network.
 	ServiceAttachmentNames []string `json:"serviceAttachmentNames,omitempty"`
 }
 

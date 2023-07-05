@@ -58,7 +58,7 @@ type EventViewForNdsGroup struct {
 	// Human-readable label of the replica set associated with the event.
 	ReplicaSetName *string            `json:"replicaSetName,omitempty"`
 	CurrentValue   *NumberMetricValue `json:"currentValue,omitempty"`
-	// Human-readable label of the metric associated with the **alertId**. This field may change type of **currentValue** field.
+	// [metricName=SEARCH_MAX_NUMBER_OF_LUCENE_DOCS] Human-readable label of the metric associated with the **alertId**. This field may change type of **currentValue** field.
 	MetricName *string `json:"metricName,omitempty"`
 	// Entry in the list of source host addresses that the API key accepts and this event targets.
 	WhitelistEntry *string `json:"whitelistEntry,omitempty"`

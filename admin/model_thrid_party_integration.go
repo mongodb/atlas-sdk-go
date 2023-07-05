@@ -11,49 +11,51 @@ var _ MappedNullable = &ThridPartyIntegration{}
 
 // ThridPartyIntegration Collection of settings that describe third-party integrations.
 type ThridPartyIntegration struct {
-	// Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.
+	// [type=WEBHOOK] Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.
 	Type *string `json:"type,omitempty"`
-	// Key that allows MongoDB Cloud to access your VictorOps account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.
+	// [type=VICTOR_OPS] Key that allows MongoDB Cloud to access your VictorOps account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.
 	ApiKey *string `json:"apiKey,omitempty"`
-	// PagerDuty region that indicates the API Uniform Resource Locator (URL) to use.
+	// [type=PAGER_DUTY] PagerDuty region that indicates the API Uniform Resource Locator (URL) to use.
 	Region *string `json:"region,omitempty"`
-	// Endpoint web address of the Microsoft Teams webhook to which MongoDB Cloud sends notifications.  **NOTE**: When you view or edit the alert for a Microsoft Teams notification, the URL appears partially redacted.
+	// [type=MICROSOFT_TEAMS] Endpoint web address of the Microsoft Teams webhook to which MongoDB Cloud sends notifications.  **NOTE**: When you view or edit the alert for a Microsoft Teams notification, the URL appears partially redacted.
 	MicrosoftTeamsWebhookUrl *string `json:"microsoftTeamsWebhookUrl,omitempty"`
-	// Unique 40-hexadecimal digit string that identifies your New Relic account.
+	// [type=NEW_RELIC] Unique 40-hexadecimal digit string that identifies your New Relic account.
 	AccountId *string `json:"accountId,omitempty"`
-	// Unique 40-hexadecimal digit string that identifies your New Relic license.  **IMPORTANT**: Effective Wednesday, June 16th, 2021, New Relic no longer supports the plugin-based integration with MongoDB. We do not recommend that you sign up for the plugin-based integration. To learn more, see the <a href=\"https://discuss.newrelic.com/t/new-relic-plugin-eol-wednesday-june-16th-2021/127267\" target=\"_blank\">New Relic Plugin EOL Statement</a> Consider configuring an alternative monitoring integration before June 16th to maintain visibility into your MongoDB deployments.
+	// [type=NEW_RELIC] Unique 40-hexadecimal digit string that identifies your New Relic license.  **IMPORTANT**: Effective Wednesday, June 16th, 2021, New Relic no longer supports the plugin-based integration with MongoDB. We do not recommend that you sign up for the plugin-based integration. To learn more, see the <a href=\"https://discuss.newrelic.com/t/new-relic-plugin-eol-wednesday-june-16th-2021/127267\" target=\"_blank\">New Relic Plugin EOL Statement</a> Consider configuring an alternative monitoring integration before June 16th to maintain visibility into your MongoDB deployments.
 	LicenseKey *string `json:"licenseKey,omitempty"`
-	// Query key used to access your New Relic account.
+	// [type=NEW_RELIC] Query key used to access your New Relic account.
 	ReadToken *string `json:"readToken,omitempty"`
-	// Insert key associated with your New Relic account.
+	// [type=NEW_RELIC] Insert key associated with your New Relic account.
 	WriteToken *string `json:"writeToken,omitempty"`
-	// Service key associated with your PagerDuty account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.
+	// [type=PAGER_DUTY] Service key associated with your PagerDuty account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.
 	ServiceKey *string `json:"serviceKey,omitempty"`
-	// Flag that indicates whether someone has activated the Prometheus integration.
+	// [type=PROMETHEUS] Flag that indicates whether someone has activated the Prometheus integration.
 	Enabled *bool `json:"enabled,omitempty"`
-	// Combination of IPv4 address and Internet Assigned Numbers Authority (IANA) port or the IANA port alone to which Prometheus binds to ingest MongoDB metrics.
-	ListenAddress     *string `json:"listenAddress,omitempty"`
-	Password          *string `json:"password,omitempty"`
-	RateLimitInterval *int    `json:"rateLimitInterval,omitempty"`
-	// Security Scheme to apply to HyperText Transfer Protocol (HTTP) traffic between Prometheus and MongoDB Cloud.
+	// [type=PROMETHEUS] Combination of IPv4 address and Internet Assigned Numbers Authority (IANA) port or the IANA port alone to which Prometheus binds to ingest MongoDB metrics.
+	ListenAddress *string `json:"listenAddress,omitempty"`
+	// PROMETHEUS
+	Password *string `json:"password,omitempty"`
+	// PROMETHEUS
+	RateLimitInterval *int `json:"rateLimitInterval,omitempty"`
+	// [type=PROMETHEUS] Security Scheme to apply to HyperText Transfer Protocol (HTTP) traffic between Prometheus and MongoDB Cloud.
 	Scheme *string `json:"scheme,omitempty"`
-	// Desired method to discover the Prometheus service.
+	// [type=PROMETHEUS] Desired method to discover the Prometheus service.
 	ServiceDiscovery *string `json:"serviceDiscovery,omitempty"`
-	// Root-relative path to the Transport Layer Security (TLS) Privacy Enhanced Mail (PEM) key and certificate file on the host.
+	// [type=PROMETHEUS] Root-relative path to the Transport Layer Security (TLS) Privacy Enhanced Mail (PEM) key and certificate file on the host.
 	TlsPemPath *string `json:"tlsPemPath,omitempty"`
-	// Human-readable label that identifies your Prometheus incoming webhook.
+	// [type=PROMETHEUS] Human-readable label that identifies your Prometheus incoming webhook.
 	Username *string `json:"username,omitempty"`
-	// Key that allows MongoDB Cloud to access your Slack account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.  **IMPORTANT**: Slack integrations now use the OAuth2 verification method and must  be initially configured, or updated from a legacy integration, through the Atlas  third-party service integrations page. Legacy tokens will soon no longer be  supported.
+	// [type=SLACK] Key that allows MongoDB Cloud to access your Slack account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.  **IMPORTANT**: Slack integrations now use the OAuth2 verification method and must  be initially configured, or updated from a legacy integration, through the Atlas  third-party service integrations page. Legacy tokens will soon no longer be  supported.
 	ApiToken *string `json:"apiToken,omitempty"`
-	// Name of the Slack channel to which MongoDB Cloud sends alert notifications.
+	// [type=SLACK] Name of the Slack channel to which MongoDB Cloud sends alert notifications.
 	ChannelName NullableString `json:"channelName,omitempty"`
-	// Human-readable label that identifies your Slack team. Set this parameter when you configure a legacy Slack integration.
+	// [type=SLACK] Human-readable label that identifies your Slack team. Set this parameter when you configure a legacy Slack integration.
 	TeamName *string `json:"teamName,omitempty"`
-	// Routing key associated with your Splunk On-Call account.
+	// [type=VICTOR_OPS] Routing key associated with your Splunk On-Call account.
 	RoutingKey *string `json:"routingKey,omitempty"`
-	// An optional field returned if your webhook is configured with a secret.  **NOTE**: When you view or edit the alert for a webhook notification, the secret appears completely redacted.
+	// [type=WEBHOOK] An optional field returned if your webhook is configured with a secret.  **NOTE**: When you view or edit the alert for a webhook notification, the secret appears completely redacted.
 	Secret *string `json:"secret,omitempty"`
-	// Endpoint web address to which MongoDB Cloud sends notifications.  **NOTE**: When you view or edit the alert for a webhook notification, the URL appears partially redacted.
+	// [type=WEBHOOK] Endpoint web address to which MongoDB Cloud sends notifications.  **NOTE**: When you view or edit the alert for a webhook notification, the URL appears partially redacted.
 	Url *string `json:"url,omitempty"`
 }
 

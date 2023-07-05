@@ -11,13 +11,13 @@ var _ MappedNullable = &ServerlessMetricThreshold{}
 
 // ServerlessMetricThreshold Threshold for the metric that, when exceeded, triggers an alert. The metric threshold pertains to event types which reflects changes of measurements and metrics about the serverless database.
 type ServerlessMetricThreshold struct {
-	// Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
+	// [metricName=SERVERLESS_TOTAL_WRITE_UNITS] [metricName=SERVERLESS_TOTAL_READ_UNITS] Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
 	MetricName *string `json:"metricName,omitempty"`
-	// MongoDB Cloud computes the current metric value as an average.
+	// [metricName=SERVERLESS_TOTAL_WRITE_UNITS] [metricName=SERVERLESS_TOTAL_READ_UNITS] MongoDB Cloud computes the current metric value as an average.
 	Mode *string `json:"mode,omitempty"`
 	// Comparison operator to apply when checking the current metric value.
 	Operator *string `json:"operator,omitempty"`
-	// Value of metric that, when exceeded, triggers an alert.
+	// [metricName=SERVERLESS_TOTAL_WRITE_UNITS] [metricName=SERVERLESS_TOTAL_READ_UNITS] Value of metric that, when exceeded, triggers an alert.
 	Threshold *float64 `json:"threshold,omitempty"`
 	// Element used to express the quantity. This can be an element of time, storage capacity, and the like.
 	Units *string `json:"units,omitempty"`

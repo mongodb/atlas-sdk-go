@@ -12,37 +12,37 @@ var _ MappedNullable = &DiskBackupReplicaSet{}
 
 // DiskBackupReplicaSet Details of the replica set snapshot that MongoDB Cloud created.
 type DiskBackupReplicaSet struct {
-	// Human-readable label that identifies the cloud provider that stores this snapshot. The resource returns this parameter when `\"type\": \"replicaSet\"`.
+	// [type=replicaSet] Human-readable label that identifies the cloud provider that stores this snapshot. The resource returns this parameter when `\"type\": \"replicaSet\"`.
 	CloudProvider *string `json:"cloudProvider,omitempty"`
-	// List that identifies the regions to which MongoDB Cloud copies the snapshot.
+	// [type=replicaSet] List that identifies the regions to which MongoDB Cloud copies the snapshot.
 	CopyRegions []string `json:"copyRegions,omitempty"`
-	// Date and time when MongoDB Cloud took the snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+	// [type=replicaSet] Date and time when MongoDB Cloud took the snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	// Human-readable phrase or sentence that explains the purpose of the snapshot. The resource returns this parameter when `\"status\": \"onDemand\"`.
+	// [type=replicaSet] Human-readable phrase or sentence that explains the purpose of the snapshot. The resource returns this parameter when `\"status\": \"onDemand\"`.
 	Description *string `json:"description,omitempty"`
-	// Date and time when MongoDB Cloud deletes the snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+	// [type=replicaSet] Date and time when MongoDB Cloud deletes the snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	ExpiresAt *time.Time `json:"expiresAt,omitempty"`
-	// Human-readable label that identifies how often this snapshot triggers.
+	// [type=replicaSet] Human-readable label that identifies how often this snapshot triggers.
 	FrequencyType *string `json:"frequencyType,omitempty"`
-	// Unique 24-hexadecimal digit string that identifies the snapshot.
+	// [type=replicaSet] Unique 24-hexadecimal digit string that identifies the snapshot.
 	Id *string `json:"id,omitempty"`
-	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+	// [type=replicaSet] List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	Links []Link `json:"links,omitempty"`
-	// Unique string that identifies the Amazon Web Services (AWS) Key Management Service (KMS) Customer Master Key (CMK) used to encrypt the snapshot. The resource returns this value when `\"encryptionEnabled\" : true`.
+	// [type=replicaSet] Unique string that identifies the Amazon Web Services (AWS) Key Management Service (KMS) Customer Master Key (CMK) used to encrypt the snapshot. The resource returns this value when `\"encryptionEnabled\" : true`.
 	MasterKeyUUID *string `json:"masterKeyUUID,omitempty"`
-	// Version of the MongoDB host that this snapshot backs up.
+	// [type=replicaSet] Version of the MongoDB host that this snapshot backs up.
 	MongodVersion *string `json:"mongodVersion,omitempty"`
-	// List that contains unique identifiers for the policy items.
+	// [type=replicaSet] List that contains unique identifiers for the policy items.
 	PolicyItems []string `json:"policyItems,omitempty"`
-	// Human-readable label that identifies the replica set from which MongoDB Cloud took this snapshot. The resource returns this parameter when `\"type\": \"replicaSet\"`.
+	// [type=replicaSet] Human-readable label that identifies the replica set from which MongoDB Cloud took this snapshot. The resource returns this parameter when `\"type\": \"replicaSet\"`.
 	ReplicaSetName *string `json:"replicaSetName,omitempty"`
-	// Human-readable label that identifies when this snapshot triggers.
+	// [type=replicaSet] Human-readable label that identifies when this snapshot triggers.
 	SnapshotType *string `json:"snapshotType,omitempty"`
-	// Human-readable label that indicates the stage of the backup process for this snapshot.
+	// [type=replicaSet] Human-readable label that indicates the stage of the backup process for this snapshot.
 	Status *string `json:"status,omitempty"`
-	// Number of bytes taken to store the backup snapshot.
+	// [type=replicaSet] Number of bytes taken to store the backup snapshot.
 	StorageSizeBytes *int64 `json:"storageSizeBytes,omitempty"`
-	// Human-readable label that categorizes the cluster as a replica set or sharded cluster.
+	// [type=replicaSet] Human-readable label that categorizes the cluster as a replica set or sharded cluster.
 	Type *string `json:"type,omitempty"`
 }
 
