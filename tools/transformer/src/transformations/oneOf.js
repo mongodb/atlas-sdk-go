@@ -4,6 +4,7 @@ const {
   getNameFromYamlPath,
   getObjectFromYamlPath,
   getAllObjects,
+  getObjectNameFromReference,
 } = require("../engine/readers");
 const { ignoreModels } = require("../oneOf.ignore.json");
 const { detectDuplicates } = require("../engine/transformers");
@@ -42,9 +43,11 @@ function transformOneOf(objectPath, api) {
   }
 
   // Expand references
-  const childObjects = parentObject.oneOf.map((childRef) =>
-    getObjectFromReference(childRef, api)
-  );
+  const childObjects = parentObject.oneOf.map((childRef) => {
+    const childObject = getObjectFromReference(childRef, api)
+    childObject._ref_name = getObjectNameFromReference(childRef, api)
+    return getObjectFromReference(childRef, api)
+  });
   const isEnum = childObjects.reduce(
     (isEnum, childObject) => isEnum && childObject.enum,
     true
@@ -69,7 +72,7 @@ function transformOneOfEnum(parentObject, api) {
   parentObject.enum = new Set(parentObject.enum);
 
   for (let childObject of childObjects) {
-    console.debug(`${childObject.title}: moving child enum values into parent`);
+    console.debug(`${childObject._ref_name}: moving child enum values into parent`);
     childObject.enum.forEach((enumValue) => parentObject.enum.add(enumValue));
     // Requires all enums to be same type
     parentObject.type = childObject.type;
@@ -108,7 +111,11 @@ function transformOneOfProperties(parentObject, api) {
       }
     }
     const childProperties = JSON.parse(JSON.stringify(childObject.properties));
-    console.debug(`${childObject.title}: moving child properties into parent`);
+    // Add child name to property description
+    for(let childPropertyName in childProperties) {
+      childProperties[childPropertyName].description =  `${childObject._ref_name}: ${ childProperties[childPropertyName].description}`
+    }
+    console.debug(`${childObject._ref_name}: moving child properties into parent`);
     const { duplicates } = detectDuplicates([
       parentObject.properties,
       childProperties,
