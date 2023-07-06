@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the MeasurementDiskPartition type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &MeasurementDiskPartition{}
-
 // MeasurementDiskPartition struct for MeasurementDiskPartition
 type MeasurementDiskPartition struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -34,7 +31,7 @@ func NewMeasurementDiskPartitionWithDefaults() *MeasurementDiskPartition {
 	return &this
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *MeasurementDiskPartition) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -49,6 +46,7 @@ func (o *MeasurementDiskPartition) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -66,7 +64,7 @@ func (o *MeasurementDiskPartition) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetPartitionName returns the PartitionName field value if set, zero value otherwise.
+// GetPartitionName returns the PartitionName field value if set, zero value otherwise
 func (o *MeasurementDiskPartition) GetPartitionName() string {
 	if o == nil || IsNil(o.PartitionName) {
 		var ret string
@@ -81,6 +79,7 @@ func (o *MeasurementDiskPartition) GetPartitionNameOk() (*string, bool) {
 	if o == nil || IsNil(o.PartitionName) {
 		return nil, false
 	}
+
 	return o.PartitionName, true
 }
 
@@ -108,40 +107,4 @@ func (o MeasurementDiskPartition) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o MeasurementDiskPartition) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableMeasurementDiskPartition struct {
-	value *MeasurementDiskPartition
-	isSet bool
-}
-
-func (v NullableMeasurementDiskPartition) Get() *MeasurementDiskPartition {
-	return v.value
-}
-
-func (v *NullableMeasurementDiskPartition) Set(val *MeasurementDiskPartition) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableMeasurementDiskPartition) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableMeasurementDiskPartition) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableMeasurementDiskPartition(val *MeasurementDiskPartition) *NullableMeasurementDiskPartition {
-	return &NullableMeasurementDiskPartition{value: val, isSet: true}
-}
-
-func (v NullableMeasurementDiskPartition) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableMeasurementDiskPartition) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the CloudProviderAccessAWSIAMRole type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CloudProviderAccessAWSIAMRole{}
-
 // CloudProviderAccessAWSIAMRole Details that describe the features linked to the Amazon Web Services (AWS) Identity and Access Management (IAM) role.
 type CloudProviderAccessAWSIAMRole struct {
 	// Amazon Resource Name that identifies the Amazon Web Services (AWS) user account that MongoDB Cloud uses when it assumes the Identity and Access Management (IAM) role.
@@ -58,7 +55,7 @@ func NewCloudProviderAccessAWSIAMRoleWithDefaults() *CloudProviderAccessAWSIAMRo
 	return &this
 }
 
-// GetAtlasAWSAccountArn returns the AtlasAWSAccountArn field value if set, zero value otherwise.
+// GetAtlasAWSAccountArn returns the AtlasAWSAccountArn field value if set, zero value otherwise
 func (o *CloudProviderAccessAWSIAMRole) GetAtlasAWSAccountArn() string {
 	if o == nil || IsNil(o.AtlasAWSAccountArn) {
 		var ret string
@@ -73,6 +70,7 @@ func (o *CloudProviderAccessAWSIAMRole) GetAtlasAWSAccountArnOk() (*string, bool
 	if o == nil || IsNil(o.AtlasAWSAccountArn) {
 		return nil, false
 	}
+
 	return o.AtlasAWSAccountArn, true
 }
 
@@ -90,7 +88,7 @@ func (o *CloudProviderAccessAWSIAMRole) SetAtlasAWSAccountArn(v string) {
 	o.AtlasAWSAccountArn = &v
 }
 
-// GetAtlasAssumedRoleExternalId returns the AtlasAssumedRoleExternalId field value if set, zero value otherwise.
+// GetAtlasAssumedRoleExternalId returns the AtlasAssumedRoleExternalId field value if set, zero value otherwise
 func (o *CloudProviderAccessAWSIAMRole) GetAtlasAssumedRoleExternalId() string {
 	if o == nil || IsNil(o.AtlasAssumedRoleExternalId) {
 		var ret string
@@ -105,6 +103,7 @@ func (o *CloudProviderAccessAWSIAMRole) GetAtlasAssumedRoleExternalIdOk() (*stri
 	if o == nil || IsNil(o.AtlasAssumedRoleExternalId) {
 		return nil, false
 	}
+
 	return o.AtlasAssumedRoleExternalId, true
 }
 
@@ -122,7 +121,7 @@ func (o *CloudProviderAccessAWSIAMRole) SetAtlasAssumedRoleExternalId(v string) 
 	o.AtlasAssumedRoleExternalId = &v
 }
 
-// GetAuthorizedDate returns the AuthorizedDate field value if set, zero value otherwise.
+// GetAuthorizedDate returns the AuthorizedDate field value if set, zero value otherwise
 func (o *CloudProviderAccessAWSIAMRole) GetAuthorizedDate() time.Time {
 	if o == nil || IsNil(o.AuthorizedDate) {
 		var ret time.Time
@@ -137,6 +136,7 @@ func (o *CloudProviderAccessAWSIAMRole) GetAuthorizedDateOk() (*time.Time, bool)
 	if o == nil || IsNil(o.AuthorizedDate) {
 		return nil, false
 	}
+
 	return o.AuthorizedDate, true
 }
 
@@ -154,7 +154,7 @@ func (o *CloudProviderAccessAWSIAMRole) SetAuthorizedDate(v time.Time) {
 	o.AuthorizedDate = &v
 }
 
-// GetCreatedDate returns the CreatedDate field value if set, zero value otherwise.
+// GetCreatedDate returns the CreatedDate field value if set, zero value otherwise
 func (o *CloudProviderAccessAWSIAMRole) GetCreatedDate() time.Time {
 	if o == nil || IsNil(o.CreatedDate) {
 		var ret time.Time
@@ -169,6 +169,7 @@ func (o *CloudProviderAccessAWSIAMRole) GetCreatedDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CreatedDate) {
 		return nil, false
 	}
+
 	return o.CreatedDate, true
 }
 
@@ -186,7 +187,7 @@ func (o *CloudProviderAccessAWSIAMRole) SetCreatedDate(v time.Time) {
 	o.CreatedDate = &v
 }
 
-// GetFeatureUsages returns the FeatureUsages field value if set, zero value otherwise.
+// GetFeatureUsages returns the FeatureUsages field value if set, zero value otherwise
 func (o *CloudProviderAccessAWSIAMRole) GetFeatureUsages() []CloudProviderAccessFeatureUsage {
 	if o == nil || IsNil(o.FeatureUsages) {
 		var ret []CloudProviderAccessFeatureUsage
@@ -201,6 +202,7 @@ func (o *CloudProviderAccessAWSIAMRole) GetFeatureUsagesOk() ([]CloudProviderAcc
 	if o == nil || IsNil(o.FeatureUsages) {
 		return nil, false
 	}
+
 	return o.FeatureUsages, true
 }
 
@@ -218,7 +220,7 @@ func (o *CloudProviderAccessAWSIAMRole) SetFeatureUsages(v []CloudProviderAccess
 	o.FeatureUsages = v
 }
 
-// GetIamAssumedRoleArn returns the IamAssumedRoleArn field value if set, zero value otherwise.
+// GetIamAssumedRoleArn returns the IamAssumedRoleArn field value if set, zero value otherwise
 func (o *CloudProviderAccessAWSIAMRole) GetIamAssumedRoleArn() string {
 	if o == nil || IsNil(o.IamAssumedRoleArn) {
 		var ret string
@@ -233,6 +235,7 @@ func (o *CloudProviderAccessAWSIAMRole) GetIamAssumedRoleArnOk() (*string, bool)
 	if o == nil || IsNil(o.IamAssumedRoleArn) {
 		return nil, false
 	}
+
 	return o.IamAssumedRoleArn, true
 }
 
@@ -250,7 +253,7 @@ func (o *CloudProviderAccessAWSIAMRole) SetIamAssumedRoleArn(v string) {
 	o.IamAssumedRoleArn = &v
 }
 
-// GetRoleId returns the RoleId field value if set, zero value otherwise.
+// GetRoleId returns the RoleId field value if set, zero value otherwise
 func (o *CloudProviderAccessAWSIAMRole) GetRoleId() string {
 	if o == nil || IsNil(o.RoleId) {
 		var ret string
@@ -265,6 +268,7 @@ func (o *CloudProviderAccessAWSIAMRole) GetRoleIdOk() (*string, bool) {
 	if o == nil || IsNil(o.RoleId) {
 		return nil, false
 	}
+
 	return o.RoleId, true
 }
 
@@ -306,7 +310,7 @@ func (o *CloudProviderAccessAWSIAMRole) SetProviderName(v string) {
 	o.ProviderName = v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *CloudProviderAccessAWSIAMRole) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -321,6 +325,7 @@ func (o *CloudProviderAccessAWSIAMRole) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -338,7 +343,7 @@ func (o *CloudProviderAccessAWSIAMRole) SetId(v string) {
 	o.Id = &v
 }
 
-// GetAtlasAzureAppId returns the AtlasAzureAppId field value if set, zero value otherwise.
+// GetAtlasAzureAppId returns the AtlasAzureAppId field value if set, zero value otherwise
 func (o *CloudProviderAccessAWSIAMRole) GetAtlasAzureAppId() string {
 	if o == nil || IsNil(o.AtlasAzureAppId) {
 		var ret string
@@ -353,6 +358,7 @@ func (o *CloudProviderAccessAWSIAMRole) GetAtlasAzureAppIdOk() (*string, bool) {
 	if o == nil || IsNil(o.AtlasAzureAppId) {
 		return nil, false
 	}
+
 	return o.AtlasAzureAppId, true
 }
 
@@ -370,7 +376,7 @@ func (o *CloudProviderAccessAWSIAMRole) SetAtlasAzureAppId(v string) {
 	o.AtlasAzureAppId = &v
 }
 
-// GetLastUpdatedDate returns the LastUpdatedDate field value if set, zero value otherwise.
+// GetLastUpdatedDate returns the LastUpdatedDate field value if set, zero value otherwise
 func (o *CloudProviderAccessAWSIAMRole) GetLastUpdatedDate() time.Time {
 	if o == nil || IsNil(o.LastUpdatedDate) {
 		var ret time.Time
@@ -385,6 +391,7 @@ func (o *CloudProviderAccessAWSIAMRole) GetLastUpdatedDateOk() (*time.Time, bool
 	if o == nil || IsNil(o.LastUpdatedDate) {
 		return nil, false
 	}
+
 	return o.LastUpdatedDate, true
 }
 
@@ -402,7 +409,7 @@ func (o *CloudProviderAccessAWSIAMRole) SetLastUpdatedDate(v time.Time) {
 	o.LastUpdatedDate = &v
 }
 
-// GetServicePrincipalId returns the ServicePrincipalId field value if set, zero value otherwise.
+// GetServicePrincipalId returns the ServicePrincipalId field value if set, zero value otherwise
 func (o *CloudProviderAccessAWSIAMRole) GetServicePrincipalId() string {
 	if o == nil || IsNil(o.ServicePrincipalId) {
 		var ret string
@@ -417,6 +424,7 @@ func (o *CloudProviderAccessAWSIAMRole) GetServicePrincipalIdOk() (*string, bool
 	if o == nil || IsNil(o.ServicePrincipalId) {
 		return nil, false
 	}
+
 	return o.ServicePrincipalId, true
 }
 
@@ -434,7 +442,7 @@ func (o *CloudProviderAccessAWSIAMRole) SetServicePrincipalId(v string) {
 	o.ServicePrincipalId = &v
 }
 
-// GetTenantId returns the TenantId field value if set, zero value otherwise.
+// GetTenantId returns the TenantId field value if set, zero value otherwise
 func (o *CloudProviderAccessAWSIAMRole) GetTenantId() string {
 	if o == nil || IsNil(o.TenantId) {
 		var ret string
@@ -449,6 +457,7 @@ func (o *CloudProviderAccessAWSIAMRole) GetTenantIdOk() (*string, bool) {
 	if o == nil || IsNil(o.TenantId) {
 		return nil, false
 	}
+
 	return o.TenantId, true
 }
 
@@ -489,40 +498,4 @@ func (o CloudProviderAccessAWSIAMRole) ToMap() (map[string]interface{}, error) {
 		toSerialize["tenantId"] = o.TenantId
 	}
 	return toSerialize, nil
-}
-
-type NullableCloudProviderAccessAWSIAMRole struct {
-	value *CloudProviderAccessAWSIAMRole
-	isSet bool
-}
-
-func (v NullableCloudProviderAccessAWSIAMRole) Get() *CloudProviderAccessAWSIAMRole {
-	return v.value
-}
-
-func (v *NullableCloudProviderAccessAWSIAMRole) Set(val *CloudProviderAccessAWSIAMRole) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableCloudProviderAccessAWSIAMRole) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableCloudProviderAccessAWSIAMRole) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableCloudProviderAccessAWSIAMRole(val *CloudProviderAccessAWSIAMRole) *NullableCloudProviderAccessAWSIAMRole {
-	return &NullableCloudProviderAccessAWSIAMRole{value: val, isSet: true}
-}
-
-func (v NullableCloudProviderAccessAWSIAMRole) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableCloudProviderAccessAWSIAMRole) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

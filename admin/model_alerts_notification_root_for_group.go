@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the AlertsNotificationRootForGroup type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AlertsNotificationRootForGroup{}
-
 // AlertsNotificationRootForGroup One target that MongoDB Cloud sends notifications when an alert triggers.
 type AlertsNotificationRootForGroup struct {
 	// Datadog API Key that MongoDB Cloud needs to send alert notifications to Datadog. You can find this API key in the Datadog dashboard. The resource requires this parameter when `\"notifications.[n].typeName\" : \"DATADOG\"`.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.
@@ -96,7 +93,7 @@ func NewAlertsNotificationRootForGroupWithDefaults() *AlertsNotificationRootForG
 	return &this
 }
 
-// GetDatadogApiKey returns the DatadogApiKey field value if set, zero value otherwise.
+// GetDatadogApiKey returns the DatadogApiKey field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetDatadogApiKey() string {
 	if o == nil || IsNil(o.DatadogApiKey) {
 		var ret string
@@ -111,6 +108,7 @@ func (o *AlertsNotificationRootForGroup) GetDatadogApiKeyOk() (*string, bool) {
 	if o == nil || IsNil(o.DatadogApiKey) {
 		return nil, false
 	}
+
 	return o.DatadogApiKey, true
 }
 
@@ -128,7 +126,7 @@ func (o *AlertsNotificationRootForGroup) SetDatadogApiKey(v string) {
 	o.DatadogApiKey = &v
 }
 
-// GetDatadogRegion returns the DatadogRegion field value if set, zero value otherwise.
+// GetDatadogRegion returns the DatadogRegion field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetDatadogRegion() string {
 	if o == nil || IsNil(o.DatadogRegion) {
 		var ret string
@@ -143,6 +141,7 @@ func (o *AlertsNotificationRootForGroup) GetDatadogRegionOk() (*string, bool) {
 	if o == nil || IsNil(o.DatadogRegion) {
 		return nil, false
 	}
+
 	return o.DatadogRegion, true
 }
 
@@ -160,7 +159,7 @@ func (o *AlertsNotificationRootForGroup) SetDatadogRegion(v string) {
 	o.DatadogRegion = &v
 }
 
-// GetDelayMin returns the DelayMin field value if set, zero value otherwise.
+// GetDelayMin returns the DelayMin field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetDelayMin() int {
 	if o == nil || IsNil(o.DelayMin) {
 		var ret int
@@ -175,6 +174,7 @@ func (o *AlertsNotificationRootForGroup) GetDelayMinOk() (*int, bool) {
 	if o == nil || IsNil(o.DelayMin) {
 		return nil, false
 	}
+
 	return o.DelayMin, true
 }
 
@@ -192,7 +192,7 @@ func (o *AlertsNotificationRootForGroup) SetDelayMin(v int) {
 	o.DelayMin = &v
 }
 
-// GetIntervalMin returns the IntervalMin field value if set, zero value otherwise.
+// GetIntervalMin returns the IntervalMin field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetIntervalMin() int {
 	if o == nil || IsNil(o.IntervalMin) {
 		var ret int
@@ -207,6 +207,7 @@ func (o *AlertsNotificationRootForGroup) GetIntervalMinOk() (*int, bool) {
 	if o == nil || IsNil(o.IntervalMin) {
 		return nil, false
 	}
+
 	return o.IntervalMin, true
 }
 
@@ -224,7 +225,7 @@ func (o *AlertsNotificationRootForGroup) SetIntervalMin(v int) {
 	o.IntervalMin = &v
 }
 
-// GetNotifierId returns the NotifierId field value if set, zero value otherwise.
+// GetNotifierId returns the NotifierId field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetNotifierId() string {
 	if o == nil || IsNil(o.NotifierId) {
 		var ret string
@@ -239,6 +240,7 @@ func (o *AlertsNotificationRootForGroup) GetNotifierIdOk() (*string, bool) {
 	if o == nil || IsNil(o.NotifierId) {
 		return nil, false
 	}
+
 	return o.NotifierId, true
 }
 
@@ -256,7 +258,7 @@ func (o *AlertsNotificationRootForGroup) SetNotifierId(v string) {
 	o.NotifierId = &v
 }
 
-// GetTypeName returns the TypeName field value if set, zero value otherwise.
+// GetTypeName returns the TypeName field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetTypeName() string {
 	if o == nil || IsNil(o.TypeName) {
 		var ret string
@@ -271,6 +273,7 @@ func (o *AlertsNotificationRootForGroup) GetTypeNameOk() (*string, bool) {
 	if o == nil || IsNil(o.TypeName) {
 		return nil, false
 	}
+
 	return o.TypeName, true
 }
 
@@ -288,7 +291,7 @@ func (o *AlertsNotificationRootForGroup) SetTypeName(v string) {
 	o.TypeName = &v
 }
 
-// GetEmailAddress returns the EmailAddress field value if set, zero value otherwise.
+// GetEmailAddress returns the EmailAddress field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetEmailAddress() string {
 	if o == nil || IsNil(o.EmailAddress) {
 		var ret string
@@ -303,6 +306,7 @@ func (o *AlertsNotificationRootForGroup) GetEmailAddressOk() (*string, bool) {
 	if o == nil || IsNil(o.EmailAddress) {
 		return nil, false
 	}
+
 	return o.EmailAddress, true
 }
 
@@ -320,7 +324,7 @@ func (o *AlertsNotificationRootForGroup) SetEmailAddress(v string) {
 	o.EmailAddress = &v
 }
 
-// GetEmailEnabled returns the EmailEnabled field value if set, zero value otherwise.
+// GetEmailEnabled returns the EmailEnabled field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetEmailEnabled() bool {
 	if o == nil || IsNil(o.EmailEnabled) {
 		var ret bool
@@ -335,6 +339,7 @@ func (o *AlertsNotificationRootForGroup) GetEmailEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.EmailEnabled) {
 		return nil, false
 	}
+
 	return o.EmailEnabled, true
 }
 
@@ -352,7 +357,7 @@ func (o *AlertsNotificationRootForGroup) SetEmailEnabled(v bool) {
 	o.EmailEnabled = &v
 }
 
-// GetRoles returns the Roles field value if set, zero value otherwise.
+// GetRoles returns the Roles field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetRoles() []string {
 	if o == nil || IsNil(o.Roles) {
 		var ret []string
@@ -367,6 +372,7 @@ func (o *AlertsNotificationRootForGroup) GetRolesOk() ([]string, bool) {
 	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
+
 	return o.Roles, true
 }
 
@@ -384,7 +390,7 @@ func (o *AlertsNotificationRootForGroup) SetRoles(v []string) {
 	o.Roles = v
 }
 
-// GetSmsEnabled returns the SmsEnabled field value if set, zero value otherwise.
+// GetSmsEnabled returns the SmsEnabled field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetSmsEnabled() bool {
 	if o == nil || IsNil(o.SmsEnabled) {
 		var ret bool
@@ -399,6 +405,7 @@ func (o *AlertsNotificationRootForGroup) GetSmsEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.SmsEnabled) {
 		return nil, false
 	}
+
 	return o.SmsEnabled, true
 }
 
@@ -416,7 +423,7 @@ func (o *AlertsNotificationRootForGroup) SetSmsEnabled(v bool) {
 	o.SmsEnabled = &v
 }
 
-// GetNotificationToken returns the NotificationToken field value if set, zero value otherwise.
+// GetNotificationToken returns the NotificationToken field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetNotificationToken() string {
 	if o == nil || IsNil(o.NotificationToken) {
 		var ret string
@@ -431,6 +438,7 @@ func (o *AlertsNotificationRootForGroup) GetNotificationTokenOk() (*string, bool
 	if o == nil || IsNil(o.NotificationToken) {
 		return nil, false
 	}
+
 	return o.NotificationToken, true
 }
 
@@ -448,7 +456,7 @@ func (o *AlertsNotificationRootForGroup) SetNotificationToken(v string) {
 	o.NotificationToken = &v
 }
 
-// GetRoomName returns the RoomName field value if set, zero value otherwise.
+// GetRoomName returns the RoomName field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetRoomName() string {
 	if o == nil || IsNil(o.RoomName) {
 		var ret string
@@ -463,6 +471,7 @@ func (o *AlertsNotificationRootForGroup) GetRoomNameOk() (*string, bool) {
 	if o == nil || IsNil(o.RoomName) {
 		return nil, false
 	}
+
 	return o.RoomName, true
 }
 
@@ -480,7 +489,7 @@ func (o *AlertsNotificationRootForGroup) SetRoomName(v string) {
 	o.RoomName = &v
 }
 
-// GetMicrosoftTeamsWebhookUrl returns the MicrosoftTeamsWebhookUrl field value if set, zero value otherwise.
+// GetMicrosoftTeamsWebhookUrl returns the MicrosoftTeamsWebhookUrl field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetMicrosoftTeamsWebhookUrl() string {
 	if o == nil || IsNil(o.MicrosoftTeamsWebhookUrl) {
 		var ret string
@@ -495,6 +504,7 @@ func (o *AlertsNotificationRootForGroup) GetMicrosoftTeamsWebhookUrlOk() (*strin
 	if o == nil || IsNil(o.MicrosoftTeamsWebhookUrl) {
 		return nil, false
 	}
+
 	return o.MicrosoftTeamsWebhookUrl, true
 }
 
@@ -512,7 +522,7 @@ func (o *AlertsNotificationRootForGroup) SetMicrosoftTeamsWebhookUrl(v string) {
 	o.MicrosoftTeamsWebhookUrl = &v
 }
 
-// GetOpsGenieApiKey returns the OpsGenieApiKey field value if set, zero value otherwise.
+// GetOpsGenieApiKey returns the OpsGenieApiKey field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetOpsGenieApiKey() string {
 	if o == nil || IsNil(o.OpsGenieApiKey) {
 		var ret string
@@ -527,6 +537,7 @@ func (o *AlertsNotificationRootForGroup) GetOpsGenieApiKeyOk() (*string, bool) {
 	if o == nil || IsNil(o.OpsGenieApiKey) {
 		return nil, false
 	}
+
 	return o.OpsGenieApiKey, true
 }
 
@@ -544,7 +555,7 @@ func (o *AlertsNotificationRootForGroup) SetOpsGenieApiKey(v string) {
 	o.OpsGenieApiKey = &v
 }
 
-// GetOpsGenieRegion returns the OpsGenieRegion field value if set, zero value otherwise.
+// GetOpsGenieRegion returns the OpsGenieRegion field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetOpsGenieRegion() string {
 	if o == nil || IsNil(o.OpsGenieRegion) {
 		var ret string
@@ -559,6 +570,7 @@ func (o *AlertsNotificationRootForGroup) GetOpsGenieRegionOk() (*string, bool) {
 	if o == nil || IsNil(o.OpsGenieRegion) {
 		return nil, false
 	}
+
 	return o.OpsGenieRegion, true
 }
 
@@ -576,7 +588,7 @@ func (o *AlertsNotificationRootForGroup) SetOpsGenieRegion(v string) {
 	o.OpsGenieRegion = &v
 }
 
-// GetRegion returns the Region field value if set, zero value otherwise.
+// GetRegion returns the Region field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetRegion() string {
 	if o == nil || IsNil(o.Region) {
 		var ret string
@@ -591,6 +603,7 @@ func (o *AlertsNotificationRootForGroup) GetRegionOk() (*string, bool) {
 	if o == nil || IsNil(o.Region) {
 		return nil, false
 	}
+
 	return o.Region, true
 }
 
@@ -608,7 +621,7 @@ func (o *AlertsNotificationRootForGroup) SetRegion(v string) {
 	o.Region = &v
 }
 
-// GetServiceKey returns the ServiceKey field value if set, zero value otherwise.
+// GetServiceKey returns the ServiceKey field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetServiceKey() string {
 	if o == nil || IsNil(o.ServiceKey) {
 		var ret string
@@ -623,6 +636,7 @@ func (o *AlertsNotificationRootForGroup) GetServiceKeyOk() (*string, bool) {
 	if o == nil || IsNil(o.ServiceKey) {
 		return nil, false
 	}
+
 	return o.ServiceKey, true
 }
 
@@ -640,7 +654,7 @@ func (o *AlertsNotificationRootForGroup) SetServiceKey(v string) {
 	o.ServiceKey = &v
 }
 
-// GetApiToken returns the ApiToken field value if set, zero value otherwise.
+// GetApiToken returns the ApiToken field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetApiToken() string {
 	if o == nil || IsNil(o.ApiToken) {
 		var ret string
@@ -655,6 +669,7 @@ func (o *AlertsNotificationRootForGroup) GetApiTokenOk() (*string, bool) {
 	if o == nil || IsNil(o.ApiToken) {
 		return nil, false
 	}
+
 	return o.ApiToken, true
 }
 
@@ -672,7 +687,7 @@ func (o *AlertsNotificationRootForGroup) SetApiToken(v string) {
 	o.ApiToken = &v
 }
 
-// GetChannelName returns the ChannelName field value if set, zero value otherwise.
+// GetChannelName returns the ChannelName field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetChannelName() string {
 	if o == nil || IsNil(o.ChannelName) {
 		var ret string
@@ -687,6 +702,7 @@ func (o *AlertsNotificationRootForGroup) GetChannelNameOk() (*string, bool) {
 	if o == nil || IsNil(o.ChannelName) {
 		return nil, false
 	}
+
 	return o.ChannelName, true
 }
 
@@ -704,7 +720,7 @@ func (o *AlertsNotificationRootForGroup) SetChannelName(v string) {
 	o.ChannelName = &v
 }
 
-// GetMobileNumber returns the MobileNumber field value if set, zero value otherwise.
+// GetMobileNumber returns the MobileNumber field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetMobileNumber() string {
 	if o == nil || IsNil(o.MobileNumber) {
 		var ret string
@@ -719,6 +735,7 @@ func (o *AlertsNotificationRootForGroup) GetMobileNumberOk() (*string, bool) {
 	if o == nil || IsNil(o.MobileNumber) {
 		return nil, false
 	}
+
 	return o.MobileNumber, true
 }
 
@@ -736,7 +753,7 @@ func (o *AlertsNotificationRootForGroup) SetMobileNumber(v string) {
 	o.MobileNumber = &v
 }
 
-// GetTeamId returns the TeamId field value if set, zero value otherwise.
+// GetTeamId returns the TeamId field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetTeamId() string {
 	if o == nil || IsNil(o.TeamId) {
 		var ret string
@@ -751,6 +768,7 @@ func (o *AlertsNotificationRootForGroup) GetTeamIdOk() (*string, bool) {
 	if o == nil || IsNil(o.TeamId) {
 		return nil, false
 	}
+
 	return o.TeamId, true
 }
 
@@ -768,7 +786,7 @@ func (o *AlertsNotificationRootForGroup) SetTeamId(v string) {
 	o.TeamId = &v
 }
 
-// GetTeamName returns the TeamName field value if set, zero value otherwise.
+// GetTeamName returns the TeamName field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetTeamName() string {
 	if o == nil || IsNil(o.TeamName) {
 		var ret string
@@ -783,6 +801,7 @@ func (o *AlertsNotificationRootForGroup) GetTeamNameOk() (*string, bool) {
 	if o == nil || IsNil(o.TeamName) {
 		return nil, false
 	}
+
 	return o.TeamName, true
 }
 
@@ -800,7 +819,7 @@ func (o *AlertsNotificationRootForGroup) SetTeamName(v string) {
 	o.TeamName = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
+// GetUsername returns the Username field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetUsername() string {
 	if o == nil || IsNil(o.Username) {
 		var ret string
@@ -815,6 +834,7 @@ func (o *AlertsNotificationRootForGroup) GetUsernameOk() (*string, bool) {
 	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
+
 	return o.Username, true
 }
 
@@ -832,7 +852,7 @@ func (o *AlertsNotificationRootForGroup) SetUsername(v string) {
 	o.Username = &v
 }
 
-// GetVictorOpsApiKey returns the VictorOpsApiKey field value if set, zero value otherwise.
+// GetVictorOpsApiKey returns the VictorOpsApiKey field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetVictorOpsApiKey() string {
 	if o == nil || IsNil(o.VictorOpsApiKey) {
 		var ret string
@@ -847,6 +867,7 @@ func (o *AlertsNotificationRootForGroup) GetVictorOpsApiKeyOk() (*string, bool) 
 	if o == nil || IsNil(o.VictorOpsApiKey) {
 		return nil, false
 	}
+
 	return o.VictorOpsApiKey, true
 }
 
@@ -864,7 +885,7 @@ func (o *AlertsNotificationRootForGroup) SetVictorOpsApiKey(v string) {
 	o.VictorOpsApiKey = &v
 }
 
-// GetVictorOpsRoutingKey returns the VictorOpsRoutingKey field value if set, zero value otherwise.
+// GetVictorOpsRoutingKey returns the VictorOpsRoutingKey field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetVictorOpsRoutingKey() string {
 	if o == nil || IsNil(o.VictorOpsRoutingKey) {
 		var ret string
@@ -879,6 +900,7 @@ func (o *AlertsNotificationRootForGroup) GetVictorOpsRoutingKeyOk() (*string, bo
 	if o == nil || IsNil(o.VictorOpsRoutingKey) {
 		return nil, false
 	}
+
 	return o.VictorOpsRoutingKey, true
 }
 
@@ -896,7 +918,7 @@ func (o *AlertsNotificationRootForGroup) SetVictorOpsRoutingKey(v string) {
 	o.VictorOpsRoutingKey = &v
 }
 
-// GetWebhookSecret returns the WebhookSecret field value if set, zero value otherwise.
+// GetWebhookSecret returns the WebhookSecret field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetWebhookSecret() string {
 	if o == nil || IsNil(o.WebhookSecret) {
 		var ret string
@@ -911,6 +933,7 @@ func (o *AlertsNotificationRootForGroup) GetWebhookSecretOk() (*string, bool) {
 	if o == nil || IsNil(o.WebhookSecret) {
 		return nil, false
 	}
+
 	return o.WebhookSecret, true
 }
 
@@ -928,7 +951,7 @@ func (o *AlertsNotificationRootForGroup) SetWebhookSecret(v string) {
 	o.WebhookSecret = &v
 }
 
-// GetWebhookUrl returns the WebhookUrl field value if set, zero value otherwise.
+// GetWebhookUrl returns the WebhookUrl field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetWebhookUrl() string {
 	if o == nil || IsNil(o.WebhookUrl) {
 		var ret string
@@ -943,6 +966,7 @@ func (o *AlertsNotificationRootForGroup) GetWebhookUrlOk() (*string, bool) {
 	if o == nil || IsNil(o.WebhookUrl) {
 		return nil, false
 	}
+
 	return o.WebhookUrl, true
 }
 
@@ -1051,40 +1075,4 @@ func (o AlertsNotificationRootForGroup) ToMap() (map[string]interface{}, error) 
 		toSerialize["webhookUrl"] = o.WebhookUrl
 	}
 	return toSerialize, nil
-}
-
-type NullableAlertsNotificationRootForGroup struct {
-	value *AlertsNotificationRootForGroup
-	isSet bool
-}
-
-func (v NullableAlertsNotificationRootForGroup) Get() *AlertsNotificationRootForGroup {
-	return v.value
-}
-
-func (v *NullableAlertsNotificationRootForGroup) Set(val *AlertsNotificationRootForGroup) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableAlertsNotificationRootForGroup) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableAlertsNotificationRootForGroup) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableAlertsNotificationRootForGroup(val *AlertsNotificationRootForGroup) *NullableAlertsNotificationRootForGroup {
-	return &NullableAlertsNotificationRootForGroup{value: val, isSet: true}
-}
-
-func (v NullableAlertsNotificationRootForGroup) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableAlertsNotificationRootForGroup) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

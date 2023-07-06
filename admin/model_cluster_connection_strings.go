@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ClusterConnectionStrings type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ClusterConnectionStrings{}
-
 // ClusterConnectionStrings Collection of Uniform Resource Locators that point to the MongoDB database.
 type ClusterConnectionStrings struct {
 	// Private endpoint-aware connection strings that use AWS-hosted clusters with Amazon Web Services (AWS) PrivateLink. Each key identifies an Amazon Web Services (AWS) interface endpoint. Each value identifies the related `mongodb://` connection string that you use to connect to MongoDB Cloud through the interface endpoint that the key names.
@@ -44,7 +41,7 @@ func NewClusterConnectionStringsWithDefaults() *ClusterConnectionStrings {
 	return &this
 }
 
-// GetAwsPrivateLink returns the AwsPrivateLink field value if set, zero value otherwise.
+// GetAwsPrivateLink returns the AwsPrivateLink field value if set, zero value otherwise
 func (o *ClusterConnectionStrings) GetAwsPrivateLink() map[string]string {
 	if o == nil || IsNil(o.AwsPrivateLink) {
 		var ret map[string]string
@@ -59,6 +56,7 @@ func (o *ClusterConnectionStrings) GetAwsPrivateLinkOk() (*map[string]string, bo
 	if o == nil || IsNil(o.AwsPrivateLink) {
 		return nil, false
 	}
+
 	return o.AwsPrivateLink, true
 }
 
@@ -76,7 +74,7 @@ func (o *ClusterConnectionStrings) SetAwsPrivateLink(v map[string]string) {
 	o.AwsPrivateLink = &v
 }
 
-// GetAwsPrivateLinkSrv returns the AwsPrivateLinkSrv field value if set, zero value otherwise.
+// GetAwsPrivateLinkSrv returns the AwsPrivateLinkSrv field value if set, zero value otherwise
 func (o *ClusterConnectionStrings) GetAwsPrivateLinkSrv() map[string]string {
 	if o == nil || IsNil(o.AwsPrivateLinkSrv) {
 		var ret map[string]string
@@ -91,6 +89,7 @@ func (o *ClusterConnectionStrings) GetAwsPrivateLinkSrvOk() (*map[string]string,
 	if o == nil || IsNil(o.AwsPrivateLinkSrv) {
 		return nil, false
 	}
+
 	return o.AwsPrivateLinkSrv, true
 }
 
@@ -108,7 +107,7 @@ func (o *ClusterConnectionStrings) SetAwsPrivateLinkSrv(v map[string]string) {
 	o.AwsPrivateLinkSrv = &v
 }
 
-// GetPrivate returns the Private field value if set, zero value otherwise.
+// GetPrivate returns the Private field value if set, zero value otherwise
 func (o *ClusterConnectionStrings) GetPrivate() string {
 	if o == nil || IsNil(o.Private) {
 		var ret string
@@ -123,6 +122,7 @@ func (o *ClusterConnectionStrings) GetPrivateOk() (*string, bool) {
 	if o == nil || IsNil(o.Private) {
 		return nil, false
 	}
+
 	return o.Private, true
 }
 
@@ -140,7 +140,7 @@ func (o *ClusterConnectionStrings) SetPrivate(v string) {
 	o.Private = &v
 }
 
-// GetPrivateEndpoint returns the PrivateEndpoint field value if set, zero value otherwise.
+// GetPrivateEndpoint returns the PrivateEndpoint field value if set, zero value otherwise
 func (o *ClusterConnectionStrings) GetPrivateEndpoint() []ClusterDescriptionConnectionStringsPrivateEndpoint {
 	if o == nil || IsNil(o.PrivateEndpoint) {
 		var ret []ClusterDescriptionConnectionStringsPrivateEndpoint
@@ -155,6 +155,7 @@ func (o *ClusterConnectionStrings) GetPrivateEndpointOk() ([]ClusterDescriptionC
 	if o == nil || IsNil(o.PrivateEndpoint) {
 		return nil, false
 	}
+
 	return o.PrivateEndpoint, true
 }
 
@@ -172,7 +173,7 @@ func (o *ClusterConnectionStrings) SetPrivateEndpoint(v []ClusterDescriptionConn
 	o.PrivateEndpoint = v
 }
 
-// GetPrivateSrv returns the PrivateSrv field value if set, zero value otherwise.
+// GetPrivateSrv returns the PrivateSrv field value if set, zero value otherwise
 func (o *ClusterConnectionStrings) GetPrivateSrv() string {
 	if o == nil || IsNil(o.PrivateSrv) {
 		var ret string
@@ -187,6 +188,7 @@ func (o *ClusterConnectionStrings) GetPrivateSrvOk() (*string, bool) {
 	if o == nil || IsNil(o.PrivateSrv) {
 		return nil, false
 	}
+
 	return o.PrivateSrv, true
 }
 
@@ -204,7 +206,7 @@ func (o *ClusterConnectionStrings) SetPrivateSrv(v string) {
 	o.PrivateSrv = &v
 }
 
-// GetStandard returns the Standard field value if set, zero value otherwise.
+// GetStandard returns the Standard field value if set, zero value otherwise
 func (o *ClusterConnectionStrings) GetStandard() string {
 	if o == nil || IsNil(o.Standard) {
 		var ret string
@@ -219,6 +221,7 @@ func (o *ClusterConnectionStrings) GetStandardOk() (*string, bool) {
 	if o == nil || IsNil(o.Standard) {
 		return nil, false
 	}
+
 	return o.Standard, true
 }
 
@@ -236,7 +239,7 @@ func (o *ClusterConnectionStrings) SetStandard(v string) {
 	o.Standard = &v
 }
 
-// GetStandardSrv returns the StandardSrv field value if set, zero value otherwise.
+// GetStandardSrv returns the StandardSrv field value if set, zero value otherwise
 func (o *ClusterConnectionStrings) GetStandardSrv() string {
 	if o == nil || IsNil(o.StandardSrv) {
 		var ret string
@@ -251,6 +254,7 @@ func (o *ClusterConnectionStrings) GetStandardSrvOk() (*string, bool) {
 	if o == nil || IsNil(o.StandardSrv) {
 		return nil, false
 	}
+
 	return o.StandardSrv, true
 }
 
@@ -278,40 +282,4 @@ func (o ClusterConnectionStrings) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o ClusterConnectionStrings) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableClusterConnectionStrings struct {
-	value *ClusterConnectionStrings
-	isSet bool
-}
-
-func (v NullableClusterConnectionStrings) Get() *ClusterConnectionStrings {
-	return v.value
-}
-
-func (v *NullableClusterConnectionStrings) Set(val *ClusterConnectionStrings) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableClusterConnectionStrings) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableClusterConnectionStrings) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableClusterConnectionStrings(val *ClusterConnectionStrings) *NullableClusterConnectionStrings {
-	return &NullableClusterConnectionStrings{value: val, isSet: true}
-}
-
-func (v NullableClusterConnectionStrings) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableClusterConnectionStrings) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

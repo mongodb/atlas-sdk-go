@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the OrganizationInvitationRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &OrganizationInvitationRequest{}
-
 // OrganizationInvitationRequest struct for OrganizationInvitationRequest
 type OrganizationInvitationRequest struct {
 	// One or more organization or project level roles to assign to the MongoDB Cloud user.
@@ -36,7 +33,7 @@ func NewOrganizationInvitationRequestWithDefaults() *OrganizationInvitationReque
 	return &this
 }
 
-// GetRoles returns the Roles field value if set, zero value otherwise.
+// GetRoles returns the Roles field value if set, zero value otherwise
 func (o *OrganizationInvitationRequest) GetRoles() []string {
 	if o == nil || IsNil(o.Roles) {
 		var ret []string
@@ -51,6 +48,7 @@ func (o *OrganizationInvitationRequest) GetRolesOk() ([]string, bool) {
 	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
+
 	return o.Roles, true
 }
 
@@ -68,7 +66,7 @@ func (o *OrganizationInvitationRequest) SetRoles(v []string) {
 	o.Roles = v
 }
 
-// GetTeamIds returns the TeamIds field value if set, zero value otherwise.
+// GetTeamIds returns the TeamIds field value if set, zero value otherwise
 func (o *OrganizationInvitationRequest) GetTeamIds() []string {
 	if o == nil || IsNil(o.TeamIds) {
 		var ret []string
@@ -83,6 +81,7 @@ func (o *OrganizationInvitationRequest) GetTeamIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.TeamIds) {
 		return nil, false
 	}
+
 	return o.TeamIds, true
 }
 
@@ -100,7 +99,7 @@ func (o *OrganizationInvitationRequest) SetTeamIds(v []string) {
 	o.TeamIds = v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
+// GetUsername returns the Username field value if set, zero value otherwise
 func (o *OrganizationInvitationRequest) GetUsername() string {
 	if o == nil || IsNil(o.Username) {
 		var ret string
@@ -115,6 +114,7 @@ func (o *OrganizationInvitationRequest) GetUsernameOk() (*string, bool) {
 	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
+
 	return o.Username, true
 }
 
@@ -151,40 +151,4 @@ func (o OrganizationInvitationRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["username"] = o.Username
 	}
 	return toSerialize, nil
-}
-
-type NullableOrganizationInvitationRequest struct {
-	value *OrganizationInvitationRequest
-	isSet bool
-}
-
-func (v NullableOrganizationInvitationRequest) Get() *OrganizationInvitationRequest {
-	return v.value
-}
-
-func (v *NullableOrganizationInvitationRequest) Set(val *OrganizationInvitationRequest) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableOrganizationInvitationRequest) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableOrganizationInvitationRequest) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableOrganizationInvitationRequest(val *OrganizationInvitationRequest) *NullableOrganizationInvitationRequest {
-	return &NullableOrganizationInvitationRequest{value: val, isSet: true}
-}
-
-func (v NullableOrganizationInvitationRequest) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableOrganizationInvitationRequest) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

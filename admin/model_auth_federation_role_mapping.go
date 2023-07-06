@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the AuthFederationRoleMapping type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AuthFederationRoleMapping{}
-
 // AuthFederationRoleMapping Mapping settings that link one IdP and MongoDB Cloud.
 type AuthFederationRoleMapping struct {
 	// Unique human-readable label that identifies the identity provider group to whichthis role mapping applies.
@@ -61,7 +58,7 @@ func (o *AuthFederationRoleMapping) SetExternalGroupName(v string) {
 	o.ExternalGroupName = v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *AuthFederationRoleMapping) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -76,6 +73,7 @@ func (o *AuthFederationRoleMapping) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -93,7 +91,7 @@ func (o *AuthFederationRoleMapping) SetId(v string) {
 	o.Id = &v
 }
 
-// GetRoleAssignments returns the RoleAssignments field value if set, zero value otherwise.
+// GetRoleAssignments returns the RoleAssignments field value if set, zero value otherwise
 func (o *AuthFederationRoleMapping) GetRoleAssignments() []RoleAssignment {
 	if o == nil || IsNil(o.RoleAssignments) {
 		var ret []RoleAssignment
@@ -108,6 +106,7 @@ func (o *AuthFederationRoleMapping) GetRoleAssignmentsOk() ([]RoleAssignment, bo
 	if o == nil || IsNil(o.RoleAssignments) {
 		return nil, false
 	}
+
 	return o.RoleAssignments, true
 }
 
@@ -139,40 +138,4 @@ func (o AuthFederationRoleMapping) ToMap() (map[string]interface{}, error) {
 		toSerialize["roleAssignments"] = o.RoleAssignments
 	}
 	return toSerialize, nil
-}
-
-type NullableAuthFederationRoleMapping struct {
-	value *AuthFederationRoleMapping
-	isSet bool
-}
-
-func (v NullableAuthFederationRoleMapping) Get() *AuthFederationRoleMapping {
-	return v.value
-}
-
-func (v *NullableAuthFederationRoleMapping) Set(val *AuthFederationRoleMapping) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableAuthFederationRoleMapping) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableAuthFederationRoleMapping) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableAuthFederationRoleMapping(val *AuthFederationRoleMapping) *NullableAuthFederationRoleMapping {
-	return &NullableAuthFederationRoleMapping{value: val, isSet: true}
-}
-
-func (v NullableAuthFederationRoleMapping) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableAuthFederationRoleMapping) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

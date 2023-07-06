@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the CloudCluster type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CloudCluster{}
-
 // CloudCluster Settings that describe the clusters in each project that the API key is authorized to view.
 type CloudCluster struct {
 	// Whole number that indicates the quantity of alerts open on the cluster.
@@ -52,7 +49,7 @@ func NewCloudClusterWithDefaults() *CloudCluster {
 	return &this
 }
 
-// GetAlertCount returns the AlertCount field value if set, zero value otherwise.
+// GetAlertCount returns the AlertCount field value if set, zero value otherwise
 func (o *CloudCluster) GetAlertCount() int {
 	if o == nil || IsNil(o.AlertCount) {
 		var ret int
@@ -67,6 +64,7 @@ func (o *CloudCluster) GetAlertCountOk() (*int, bool) {
 	if o == nil || IsNil(o.AlertCount) {
 		return nil, false
 	}
+
 	return o.AlertCount, true
 }
 
@@ -84,7 +82,7 @@ func (o *CloudCluster) SetAlertCount(v int) {
 	o.AlertCount = &v
 }
 
-// GetAuthEnabled returns the AuthEnabled field value if set, zero value otherwise.
+// GetAuthEnabled returns the AuthEnabled field value if set, zero value otherwise
 func (o *CloudCluster) GetAuthEnabled() bool {
 	if o == nil || IsNil(o.AuthEnabled) {
 		var ret bool
@@ -99,6 +97,7 @@ func (o *CloudCluster) GetAuthEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.AuthEnabled) {
 		return nil, false
 	}
+
 	return o.AuthEnabled, true
 }
 
@@ -116,7 +115,7 @@ func (o *CloudCluster) SetAuthEnabled(v bool) {
 	o.AuthEnabled = &v
 }
 
-// GetAvailability returns the Availability field value if set, zero value otherwise.
+// GetAvailability returns the Availability field value if set, zero value otherwise
 func (o *CloudCluster) GetAvailability() string {
 	if o == nil || IsNil(o.Availability) {
 		var ret string
@@ -131,6 +130,7 @@ func (o *CloudCluster) GetAvailabilityOk() (*string, bool) {
 	if o == nil || IsNil(o.Availability) {
 		return nil, false
 	}
+
 	return o.Availability, true
 }
 
@@ -148,7 +148,7 @@ func (o *CloudCluster) SetAvailability(v string) {
 	o.Availability = &v
 }
 
-// GetBackupEnabled returns the BackupEnabled field value if set, zero value otherwise.
+// GetBackupEnabled returns the BackupEnabled field value if set, zero value otherwise
 func (o *CloudCluster) GetBackupEnabled() bool {
 	if o == nil || IsNil(o.BackupEnabled) {
 		var ret bool
@@ -163,6 +163,7 @@ func (o *CloudCluster) GetBackupEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.BackupEnabled) {
 		return nil, false
 	}
+
 	return o.BackupEnabled, true
 }
 
@@ -180,7 +181,7 @@ func (o *CloudCluster) SetBackupEnabled(v bool) {
 	o.BackupEnabled = &v
 }
 
-// GetClusterId returns the ClusterId field value if set, zero value otherwise.
+// GetClusterId returns the ClusterId field value if set, zero value otherwise
 func (o *CloudCluster) GetClusterId() string {
 	if o == nil || IsNil(o.ClusterId) {
 		var ret string
@@ -195,6 +196,7 @@ func (o *CloudCluster) GetClusterIdOk() (*string, bool) {
 	if o == nil || IsNil(o.ClusterId) {
 		return nil, false
 	}
+
 	return o.ClusterId, true
 }
 
@@ -212,7 +214,7 @@ func (o *CloudCluster) SetClusterId(v string) {
 	o.ClusterId = &v
 }
 
-// GetDataSizeBytes returns the DataSizeBytes field value if set, zero value otherwise.
+// GetDataSizeBytes returns the DataSizeBytes field value if set, zero value otherwise
 func (o *CloudCluster) GetDataSizeBytes() int64 {
 	if o == nil || IsNil(o.DataSizeBytes) {
 		var ret int64
@@ -227,6 +229,7 @@ func (o *CloudCluster) GetDataSizeBytesOk() (*int64, bool) {
 	if o == nil || IsNil(o.DataSizeBytes) {
 		return nil, false
 	}
+
 	return o.DataSizeBytes, true
 }
 
@@ -244,7 +247,7 @@ func (o *CloudCluster) SetDataSizeBytes(v int64) {
 	o.DataSizeBytes = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise
 func (o *CloudCluster) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
@@ -259,6 +262,7 @@ func (o *CloudCluster) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
+
 	return o.Name, true
 }
 
@@ -276,7 +280,7 @@ func (o *CloudCluster) SetName(v string) {
 	o.Name = &v
 }
 
-// GetNodeCount returns the NodeCount field value if set, zero value otherwise.
+// GetNodeCount returns the NodeCount field value if set, zero value otherwise
 func (o *CloudCluster) GetNodeCount() int {
 	if o == nil || IsNil(o.NodeCount) {
 		var ret int
@@ -291,6 +295,7 @@ func (o *CloudCluster) GetNodeCountOk() (*int, bool) {
 	if o == nil || IsNil(o.NodeCount) {
 		return nil, false
 	}
+
 	return o.NodeCount, true
 }
 
@@ -308,7 +313,7 @@ func (o *CloudCluster) SetNodeCount(v int) {
 	o.NodeCount = &v
 }
 
-// GetSslEnabled returns the SslEnabled field value if set, zero value otherwise.
+// GetSslEnabled returns the SslEnabled field value if set, zero value otherwise
 func (o *CloudCluster) GetSslEnabled() bool {
 	if o == nil || IsNil(o.SslEnabled) {
 		var ret bool
@@ -323,6 +328,7 @@ func (o *CloudCluster) GetSslEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.SslEnabled) {
 		return nil, false
 	}
+
 	return o.SslEnabled, true
 }
 
@@ -340,7 +346,7 @@ func (o *CloudCluster) SetSslEnabled(v bool) {
 	o.SslEnabled = &v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value if set, zero value otherwise
 func (o *CloudCluster) GetType() string {
 	if o == nil || IsNil(o.Type) {
 		var ret string
@@ -355,6 +361,7 @@ func (o *CloudCluster) GetTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
+
 	return o.Type, true
 }
 
@@ -372,7 +379,7 @@ func (o *CloudCluster) SetType(v string) {
 	o.Type = &v
 }
 
-// GetVersions returns the Versions field value if set, zero value otherwise.
+// GetVersions returns the Versions field value if set, zero value otherwise
 func (o *CloudCluster) GetVersions() []string {
 	if o == nil || IsNil(o.Versions) {
 		var ret []string
@@ -387,6 +394,7 @@ func (o *CloudCluster) GetVersionsOk() ([]string, bool) {
 	if o == nil || IsNil(o.Versions) {
 		return nil, false
 	}
+
 	return o.Versions, true
 }
 
@@ -414,40 +422,4 @@ func (o CloudCluster) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o CloudCluster) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableCloudCluster struct {
-	value *CloudCluster
-	isSet bool
-}
-
-func (v NullableCloudCluster) Get() *CloudCluster {
-	return v.value
-}
-
-func (v *NullableCloudCluster) Set(val *CloudCluster) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableCloudCluster) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableCloudCluster) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableCloudCluster(val *CloudCluster) *NullableCloudCluster {
-	return &NullableCloudCluster{value: val, isSet: true}
-}
-
-func (v NullableCloudCluster) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableCloudCluster) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

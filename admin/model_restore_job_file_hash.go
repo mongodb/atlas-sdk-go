@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the RestoreJobFileHash type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &RestoreJobFileHash{}
-
 // RestoreJobFileHash Key and value pair that map one restore file to one hashed checksum. This parameter applies after you download the corresponding **delivery.url**.
 type RestoreJobFileHash struct {
 	// Human-readable label that identifies the hashed file.
@@ -38,7 +35,7 @@ func NewRestoreJobFileHashWithDefaults() *RestoreJobFileHash {
 	return &this
 }
 
-// GetFileName returns the FileName field value if set, zero value otherwise.
+// GetFileName returns the FileName field value if set, zero value otherwise
 func (o *RestoreJobFileHash) GetFileName() string {
 	if o == nil || IsNil(o.FileName) {
 		var ret string
@@ -53,6 +50,7 @@ func (o *RestoreJobFileHash) GetFileNameOk() (*string, bool) {
 	if o == nil || IsNil(o.FileName) {
 		return nil, false
 	}
+
 	return o.FileName, true
 }
 
@@ -70,7 +68,7 @@ func (o *RestoreJobFileHash) SetFileName(v string) {
 	o.FileName = &v
 }
 
-// GetHash returns the Hash field value if set, zero value otherwise.
+// GetHash returns the Hash field value if set, zero value otherwise
 func (o *RestoreJobFileHash) GetHash() string {
 	if o == nil || IsNil(o.Hash) {
 		var ret string
@@ -85,6 +83,7 @@ func (o *RestoreJobFileHash) GetHashOk() (*string, bool) {
 	if o == nil || IsNil(o.Hash) {
 		return nil, false
 	}
+
 	return o.Hash, true
 }
 
@@ -102,7 +101,7 @@ func (o *RestoreJobFileHash) SetHash(v string) {
 	o.Hash = &v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *RestoreJobFileHash) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -117,6 +116,7 @@ func (o *RestoreJobFileHash) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -134,7 +134,7 @@ func (o *RestoreJobFileHash) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetTypeName returns the TypeName field value if set, zero value otherwise.
+// GetTypeName returns the TypeName field value if set, zero value otherwise
 func (o *RestoreJobFileHash) GetTypeName() string {
 	if o == nil || IsNil(o.TypeName) {
 		var ret string
@@ -149,6 +149,7 @@ func (o *RestoreJobFileHash) GetTypeNameOk() (*string, bool) {
 	if o == nil || IsNil(o.TypeName) {
 		return nil, false
 	}
+
 	return o.TypeName, true
 }
 
@@ -176,40 +177,4 @@ func (o RestoreJobFileHash) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o RestoreJobFileHash) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableRestoreJobFileHash struct {
-	value *RestoreJobFileHash
-	isSet bool
-}
-
-func (v NullableRestoreJobFileHash) Get() *RestoreJobFileHash {
-	return v.value
-}
-
-func (v *NullableRestoreJobFileHash) Set(val *RestoreJobFileHash) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableRestoreJobFileHash) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableRestoreJobFileHash) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableRestoreJobFileHash(val *RestoreJobFileHash) *NullableRestoreJobFileHash {
-	return &NullableRestoreJobFileHash{value: val, isSet: true}
-}
-
-func (v NullableRestoreJobFileHash) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableRestoreJobFileHash) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

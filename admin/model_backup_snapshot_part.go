@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the BackupSnapshotPart type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &BackupSnapshotPart{}
-
 // BackupSnapshotPart Characteristics that identify this snapshot.
 type BackupSnapshotPart struct {
 	// Unique 24-hexadecimal digit string that identifies the cluster with the snapshots you want to return.
@@ -50,7 +47,7 @@ func NewBackupSnapshotPartWithDefaults() *BackupSnapshotPart {
 	return &this
 }
 
-// GetClusterId returns the ClusterId field value if set, zero value otherwise.
+// GetClusterId returns the ClusterId field value if set, zero value otherwise
 func (o *BackupSnapshotPart) GetClusterId() string {
 	if o == nil || IsNil(o.ClusterId) {
 		var ret string
@@ -65,6 +62,7 @@ func (o *BackupSnapshotPart) GetClusterIdOk() (*string, bool) {
 	if o == nil || IsNil(o.ClusterId) {
 		return nil, false
 	}
+
 	return o.ClusterId, true
 }
 
@@ -82,7 +80,7 @@ func (o *BackupSnapshotPart) SetClusterId(v string) {
 	o.ClusterId = &v
 }
 
-// GetCompressionSetting returns the CompressionSetting field value if set, zero value otherwise.
+// GetCompressionSetting returns the CompressionSetting field value if set, zero value otherwise
 func (o *BackupSnapshotPart) GetCompressionSetting() string {
 	if o == nil || IsNil(o.CompressionSetting) {
 		var ret string
@@ -97,6 +95,7 @@ func (o *BackupSnapshotPart) GetCompressionSettingOk() (*string, bool) {
 	if o == nil || IsNil(o.CompressionSetting) {
 		return nil, false
 	}
+
 	return o.CompressionSetting, true
 }
 
@@ -114,7 +113,7 @@ func (o *BackupSnapshotPart) SetCompressionSetting(v string) {
 	o.CompressionSetting = &v
 }
 
-// GetDataSizeBytes returns the DataSizeBytes field value if set, zero value otherwise.
+// GetDataSizeBytes returns the DataSizeBytes field value if set, zero value otherwise
 func (o *BackupSnapshotPart) GetDataSizeBytes() int64 {
 	if o == nil || IsNil(o.DataSizeBytes) {
 		var ret int64
@@ -129,6 +128,7 @@ func (o *BackupSnapshotPart) GetDataSizeBytesOk() (*int64, bool) {
 	if o == nil || IsNil(o.DataSizeBytes) {
 		return nil, false
 	}
+
 	return o.DataSizeBytes, true
 }
 
@@ -146,7 +146,7 @@ func (o *BackupSnapshotPart) SetDataSizeBytes(v int64) {
 	o.DataSizeBytes = &v
 }
 
-// GetEncryptionEnabled returns the EncryptionEnabled field value if set, zero value otherwise.
+// GetEncryptionEnabled returns the EncryptionEnabled field value if set, zero value otherwise
 func (o *BackupSnapshotPart) GetEncryptionEnabled() bool {
 	if o == nil || IsNil(o.EncryptionEnabled) {
 		var ret bool
@@ -161,6 +161,7 @@ func (o *BackupSnapshotPart) GetEncryptionEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.EncryptionEnabled) {
 		return nil, false
 	}
+
 	return o.EncryptionEnabled, true
 }
 
@@ -178,7 +179,7 @@ func (o *BackupSnapshotPart) SetEncryptionEnabled(v bool) {
 	o.EncryptionEnabled = &v
 }
 
-// GetFileSizeBytes returns the FileSizeBytes field value if set, zero value otherwise.
+// GetFileSizeBytes returns the FileSizeBytes field value if set, zero value otherwise
 func (o *BackupSnapshotPart) GetFileSizeBytes() int64 {
 	if o == nil || IsNil(o.FileSizeBytes) {
 		var ret int64
@@ -193,6 +194,7 @@ func (o *BackupSnapshotPart) GetFileSizeBytesOk() (*int64, bool) {
 	if o == nil || IsNil(o.FileSizeBytes) {
 		return nil, false
 	}
+
 	return o.FileSizeBytes, true
 }
 
@@ -210,7 +212,7 @@ func (o *BackupSnapshotPart) SetFileSizeBytes(v int64) {
 	o.FileSizeBytes = &v
 }
 
-// GetMasterKeyUUID returns the MasterKeyUUID field value if set, zero value otherwise.
+// GetMasterKeyUUID returns the MasterKeyUUID field value if set, zero value otherwise
 func (o *BackupSnapshotPart) GetMasterKeyUUID() string {
 	if o == nil || IsNil(o.MasterKeyUUID) {
 		var ret string
@@ -225,6 +227,7 @@ func (o *BackupSnapshotPart) GetMasterKeyUUIDOk() (*string, bool) {
 	if o == nil || IsNil(o.MasterKeyUUID) {
 		return nil, false
 	}
+
 	return o.MasterKeyUUID, true
 }
 
@@ -242,7 +245,7 @@ func (o *BackupSnapshotPart) SetMasterKeyUUID(v string) {
 	o.MasterKeyUUID = &v
 }
 
-// GetMongodVersion returns the MongodVersion field value if set, zero value otherwise.
+// GetMongodVersion returns the MongodVersion field value if set, zero value otherwise
 func (o *BackupSnapshotPart) GetMongodVersion() string {
 	if o == nil || IsNil(o.MongodVersion) {
 		var ret string
@@ -257,6 +260,7 @@ func (o *BackupSnapshotPart) GetMongodVersionOk() (*string, bool) {
 	if o == nil || IsNil(o.MongodVersion) {
 		return nil, false
 	}
+
 	return o.MongodVersion, true
 }
 
@@ -274,7 +278,7 @@ func (o *BackupSnapshotPart) SetMongodVersion(v string) {
 	o.MongodVersion = &v
 }
 
-// GetReplicaSetName returns the ReplicaSetName field value if set, zero value otherwise.
+// GetReplicaSetName returns the ReplicaSetName field value if set, zero value otherwise
 func (o *BackupSnapshotPart) GetReplicaSetName() string {
 	if o == nil || IsNil(o.ReplicaSetName) {
 		var ret string
@@ -289,6 +293,7 @@ func (o *BackupSnapshotPart) GetReplicaSetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.ReplicaSetName) {
 		return nil, false
 	}
+
 	return o.ReplicaSetName, true
 }
 
@@ -306,7 +311,7 @@ func (o *BackupSnapshotPart) SetReplicaSetName(v string) {
 	o.ReplicaSetName = &v
 }
 
-// GetStorageSizeBytes returns the StorageSizeBytes field value if set, zero value otherwise.
+// GetStorageSizeBytes returns the StorageSizeBytes field value if set, zero value otherwise
 func (o *BackupSnapshotPart) GetStorageSizeBytes() int64 {
 	if o == nil || IsNil(o.StorageSizeBytes) {
 		var ret int64
@@ -321,6 +326,7 @@ func (o *BackupSnapshotPart) GetStorageSizeBytesOk() (*int64, bool) {
 	if o == nil || IsNil(o.StorageSizeBytes) {
 		return nil, false
 	}
+
 	return o.StorageSizeBytes, true
 }
 
@@ -338,7 +344,7 @@ func (o *BackupSnapshotPart) SetStorageSizeBytes(v int64) {
 	o.StorageSizeBytes = &v
 }
 
-// GetTypeName returns the TypeName field value if set, zero value otherwise.
+// GetTypeName returns the TypeName field value if set, zero value otherwise
 func (o *BackupSnapshotPart) GetTypeName() string {
 	if o == nil || IsNil(o.TypeName) {
 		var ret string
@@ -353,6 +359,7 @@ func (o *BackupSnapshotPart) GetTypeNameOk() (*string, bool) {
 	if o == nil || IsNil(o.TypeName) {
 		return nil, false
 	}
+
 	return o.TypeName, true
 }
 
@@ -380,40 +387,4 @@ func (o BackupSnapshotPart) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o BackupSnapshotPart) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableBackupSnapshotPart struct {
-	value *BackupSnapshotPart
-	isSet bool
-}
-
-func (v NullableBackupSnapshotPart) Get() *BackupSnapshotPart {
-	return v.value
-}
-
-func (v *NullableBackupSnapshotPart) Set(val *BackupSnapshotPart) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableBackupSnapshotPart) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableBackupSnapshotPart) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableBackupSnapshotPart(val *BackupSnapshotPart) *NullableBackupSnapshotPart {
-	return &NullableBackupSnapshotPart{value: val, isSet: true}
-}
-
-func (v NullableBackupSnapshotPart) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableBackupSnapshotPart) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

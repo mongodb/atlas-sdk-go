@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ClusterDescriptionConnectionStringsPrivateEndpointEndpoint type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ClusterDescriptionConnectionStringsPrivateEndpointEndpoint{}
-
 // ClusterDescriptionConnectionStringsPrivateEndpointEndpoint Details of a private endpoint deployed for this cluster.
 type ClusterDescriptionConnectionStringsPrivateEndpointEndpoint struct {
 	// Unique string that the cloud provider uses to identify the private endpoint.
@@ -36,7 +33,7 @@ func NewClusterDescriptionConnectionStringsPrivateEndpointEndpointWithDefaults()
 	return &this
 }
 
-// GetEndpointId returns the EndpointId field value if set, zero value otherwise.
+// GetEndpointId returns the EndpointId field value if set, zero value otherwise
 func (o *ClusterDescriptionConnectionStringsPrivateEndpointEndpoint) GetEndpointId() string {
 	if o == nil || IsNil(o.EndpointId) {
 		var ret string
@@ -51,6 +48,7 @@ func (o *ClusterDescriptionConnectionStringsPrivateEndpointEndpoint) GetEndpoint
 	if o == nil || IsNil(o.EndpointId) {
 		return nil, false
 	}
+
 	return o.EndpointId, true
 }
 
@@ -68,7 +66,7 @@ func (o *ClusterDescriptionConnectionStringsPrivateEndpointEndpoint) SetEndpoint
 	o.EndpointId = &v
 }
 
-// GetProviderName returns the ProviderName field value if set, zero value otherwise.
+// GetProviderName returns the ProviderName field value if set, zero value otherwise
 func (o *ClusterDescriptionConnectionStringsPrivateEndpointEndpoint) GetProviderName() string {
 	if o == nil || IsNil(o.ProviderName) {
 		var ret string
@@ -83,6 +81,7 @@ func (o *ClusterDescriptionConnectionStringsPrivateEndpointEndpoint) GetProvider
 	if o == nil || IsNil(o.ProviderName) {
 		return nil, false
 	}
+
 	return o.ProviderName, true
 }
 
@@ -100,7 +99,7 @@ func (o *ClusterDescriptionConnectionStringsPrivateEndpointEndpoint) SetProvider
 	o.ProviderName = &v
 }
 
-// GetRegion returns the Region field value if set, zero value otherwise.
+// GetRegion returns the Region field value if set, zero value otherwise
 func (o *ClusterDescriptionConnectionStringsPrivateEndpointEndpoint) GetRegion() string {
 	if o == nil || IsNil(o.Region) {
 		var ret string
@@ -115,6 +114,7 @@ func (o *ClusterDescriptionConnectionStringsPrivateEndpointEndpoint) GetRegionOk
 	if o == nil || IsNil(o.Region) {
 		return nil, false
 	}
+
 	return o.Region, true
 }
 
@@ -142,40 +142,4 @@ func (o ClusterDescriptionConnectionStringsPrivateEndpointEndpoint) MarshalJSONW
 func (o ClusterDescriptionConnectionStringsPrivateEndpointEndpoint) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableClusterDescriptionConnectionStringsPrivateEndpointEndpoint struct {
-	value *ClusterDescriptionConnectionStringsPrivateEndpointEndpoint
-	isSet bool
-}
-
-func (v NullableClusterDescriptionConnectionStringsPrivateEndpointEndpoint) Get() *ClusterDescriptionConnectionStringsPrivateEndpointEndpoint {
-	return v.value
-}
-
-func (v *NullableClusterDescriptionConnectionStringsPrivateEndpointEndpoint) Set(val *ClusterDescriptionConnectionStringsPrivateEndpointEndpoint) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableClusterDescriptionConnectionStringsPrivateEndpointEndpoint) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableClusterDescriptionConnectionStringsPrivateEndpointEndpoint) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableClusterDescriptionConnectionStringsPrivateEndpointEndpoint(val *ClusterDescriptionConnectionStringsPrivateEndpointEndpoint) *NullableClusterDescriptionConnectionStringsPrivateEndpointEndpoint {
-	return &NullableClusterDescriptionConnectionStringsPrivateEndpointEndpoint{value: val, isSet: true}
-}
-
-func (v NullableClusterDescriptionConnectionStringsPrivateEndpointEndpoint) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableClusterDescriptionConnectionStringsPrivateEndpointEndpoint) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

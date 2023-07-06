@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ApiKeyUserDetails type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ApiKeyUserDetails{}
-
 // ApiKeyUserDetails struct for ApiKeyUserDetails
 type ApiKeyUserDetails struct {
 	// Purpose or explanation provided when someone created this organization API key.
@@ -42,7 +39,7 @@ func NewApiKeyUserDetailsWithDefaults() *ApiKeyUserDetails {
 	return &this
 }
 
-// GetDesc returns the Desc field value if set, zero value otherwise.
+// GetDesc returns the Desc field value if set, zero value otherwise
 func (o *ApiKeyUserDetails) GetDesc() string {
 	if o == nil || IsNil(o.Desc) {
 		var ret string
@@ -57,6 +54,7 @@ func (o *ApiKeyUserDetails) GetDescOk() (*string, bool) {
 	if o == nil || IsNil(o.Desc) {
 		return nil, false
 	}
+
 	return o.Desc, true
 }
 
@@ -74,7 +72,7 @@ func (o *ApiKeyUserDetails) SetDesc(v string) {
 	o.Desc = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *ApiKeyUserDetails) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -89,6 +87,7 @@ func (o *ApiKeyUserDetails) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -106,7 +105,7 @@ func (o *ApiKeyUserDetails) SetId(v string) {
 	o.Id = &v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *ApiKeyUserDetails) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -121,6 +120,7 @@ func (o *ApiKeyUserDetails) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -138,7 +138,7 @@ func (o *ApiKeyUserDetails) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetPrivateKey returns the PrivateKey field value if set, zero value otherwise.
+// GetPrivateKey returns the PrivateKey field value if set, zero value otherwise
 func (o *ApiKeyUserDetails) GetPrivateKey() string {
 	if o == nil || IsNil(o.PrivateKey) {
 		var ret string
@@ -153,6 +153,7 @@ func (o *ApiKeyUserDetails) GetPrivateKeyOk() (*string, bool) {
 	if o == nil || IsNil(o.PrivateKey) {
 		return nil, false
 	}
+
 	return o.PrivateKey, true
 }
 
@@ -170,7 +171,7 @@ func (o *ApiKeyUserDetails) SetPrivateKey(v string) {
 	o.PrivateKey = &v
 }
 
-// GetPublicKey returns the PublicKey field value if set, zero value otherwise.
+// GetPublicKey returns the PublicKey field value if set, zero value otherwise
 func (o *ApiKeyUserDetails) GetPublicKey() string {
 	if o == nil || IsNil(o.PublicKey) {
 		var ret string
@@ -185,6 +186,7 @@ func (o *ApiKeyUserDetails) GetPublicKeyOk() (*string, bool) {
 	if o == nil || IsNil(o.PublicKey) {
 		return nil, false
 	}
+
 	return o.PublicKey, true
 }
 
@@ -202,7 +204,7 @@ func (o *ApiKeyUserDetails) SetPublicKey(v string) {
 	o.PublicKey = &v
 }
 
-// GetRoles returns the Roles field value if set, zero value otherwise.
+// GetRoles returns the Roles field value if set, zero value otherwise
 func (o *ApiKeyUserDetails) GetRoles() []CloudAccessRoleAssignment {
 	if o == nil || IsNil(o.Roles) {
 		var ret []CloudAccessRoleAssignment
@@ -217,6 +219,7 @@ func (o *ApiKeyUserDetails) GetRolesOk() ([]CloudAccessRoleAssignment, bool) {
 	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
+
 	return o.Roles, true
 }
 
@@ -250,40 +253,4 @@ func (o ApiKeyUserDetails) ToMap() (map[string]interface{}, error) {
 		toSerialize["roles"] = o.Roles
 	}
 	return toSerialize, nil
-}
-
-type NullableApiKeyUserDetails struct {
-	value *ApiKeyUserDetails
-	isSet bool
-}
-
-func (v NullableApiKeyUserDetails) Get() *ApiKeyUserDetails {
-	return v.value
-}
-
-func (v *NullableApiKeyUserDetails) Set(val *ApiKeyUserDetails) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableApiKeyUserDetails) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableApiKeyUserDetails) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableApiKeyUserDetails(val *ApiKeyUserDetails) *NullableApiKeyUserDetails {
-	return &NullableApiKeyUserDetails{value: val, isSet: true}
-}
-
-func (v NullableApiKeyUserDetails) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableApiKeyUserDetails) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

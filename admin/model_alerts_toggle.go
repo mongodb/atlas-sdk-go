@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the AlertsToggle type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AlertsToggle{}
-
 // AlertsToggle Enables or disables the specified alert configuration in the specified project.
 type AlertsToggle struct {
 	// Flag that indicates whether to enable or disable the specified alert configuration in the specified project.
@@ -32,7 +29,7 @@ func NewAlertsToggleWithDefaults() *AlertsToggle {
 	return &this
 }
 
-// GetEnabled returns the Enabled field value if set, zero value otherwise.
+// GetEnabled returns the Enabled field value if set, zero value otherwise
 func (o *AlertsToggle) GetEnabled() bool {
 	if o == nil || IsNil(o.Enabled) {
 		var ret bool
@@ -47,6 +44,7 @@ func (o *AlertsToggle) GetEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
+
 	return o.Enabled, true
 }
 
@@ -77,40 +75,4 @@ func (o AlertsToggle) ToMap() (map[string]interface{}, error) {
 		toSerialize["enabled"] = o.Enabled
 	}
 	return toSerialize, nil
-}
-
-type NullableAlertsToggle struct {
-	value *AlertsToggle
-	isSet bool
-}
-
-func (v NullableAlertsToggle) Get() *AlertsToggle {
-	return v.value
-}
-
-func (v *NullableAlertsToggle) Set(val *AlertsToggle) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableAlertsToggle) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableAlertsToggle) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableAlertsToggle(val *AlertsToggle) *NullableAlertsToggle {
-	return &NullableAlertsToggle{value: val, isSet: true}
-}
-
-func (v NullableAlertsToggle) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableAlertsToggle) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

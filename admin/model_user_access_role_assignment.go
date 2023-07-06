@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the UserAccessRoleAssignment type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &UserAccessRoleAssignment{}
-
 // UserAccessRoleAssignment struct for UserAccessRoleAssignment
 type UserAccessRoleAssignment struct {
 	// Unique 24-hexadecimal digit string that identifies the organization API key.
@@ -34,7 +31,7 @@ func NewUserAccessRoleAssignmentWithDefaults() *UserAccessRoleAssignment {
 	return &this
 }
 
-// GetApiUserId returns the ApiUserId field value if set, zero value otherwise.
+// GetApiUserId returns the ApiUserId field value if set, zero value otherwise
 func (o *UserAccessRoleAssignment) GetApiUserId() string {
 	if o == nil || IsNil(o.ApiUserId) {
 		var ret string
@@ -49,6 +46,7 @@ func (o *UserAccessRoleAssignment) GetApiUserIdOk() (*string, bool) {
 	if o == nil || IsNil(o.ApiUserId) {
 		return nil, false
 	}
+
 	return o.ApiUserId, true
 }
 
@@ -66,7 +64,7 @@ func (o *UserAccessRoleAssignment) SetApiUserId(v string) {
 	o.ApiUserId = &v
 }
 
-// GetRoles returns the Roles field value if set, zero value otherwise.
+// GetRoles returns the Roles field value if set, zero value otherwise
 func (o *UserAccessRoleAssignment) GetRoles() []string {
 	if o == nil || IsNil(o.Roles) {
 		var ret []string
@@ -81,6 +79,7 @@ func (o *UserAccessRoleAssignment) GetRolesOk() ([]string, bool) {
 	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
+
 	return o.Roles, true
 }
 
@@ -111,40 +110,4 @@ func (o UserAccessRoleAssignment) ToMap() (map[string]interface{}, error) {
 		toSerialize["roles"] = o.Roles
 	}
 	return toSerialize, nil
-}
-
-type NullableUserAccessRoleAssignment struct {
-	value *UserAccessRoleAssignment
-	isSet bool
-}
-
-func (v NullableUserAccessRoleAssignment) Get() *UserAccessRoleAssignment {
-	return v.value
-}
-
-func (v *NullableUserAccessRoleAssignment) Set(val *UserAccessRoleAssignment) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableUserAccessRoleAssignment) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableUserAccessRoleAssignment) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableUserAccessRoleAssignment(val *UserAccessRoleAssignment) *NullableUserAccessRoleAssignment {
-	return &NullableUserAccessRoleAssignment{value: val, isSet: true}
-}
-
-func (v NullableUserAccessRoleAssignment) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableUserAccessRoleAssignment) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the CreateGCPForwardingRuleRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CreateGCPForwardingRuleRequest{}
-
 // CreateGCPForwardingRuleRequest struct for CreateGCPForwardingRuleRequest
 type CreateGCPForwardingRuleRequest struct {
 	// Human-readable label that identifies the Google Cloud consumer forwarding rule that you created.
@@ -34,7 +31,7 @@ func NewCreateGCPForwardingRuleRequestWithDefaults() *CreateGCPForwardingRuleReq
 	return &this
 }
 
-// GetEndpointName returns the EndpointName field value if set, zero value otherwise.
+// GetEndpointName returns the EndpointName field value if set, zero value otherwise
 func (o *CreateGCPForwardingRuleRequest) GetEndpointName() string {
 	if o == nil || IsNil(o.EndpointName) {
 		var ret string
@@ -49,6 +46,7 @@ func (o *CreateGCPForwardingRuleRequest) GetEndpointNameOk() (*string, bool) {
 	if o == nil || IsNil(o.EndpointName) {
 		return nil, false
 	}
+
 	return o.EndpointName, true
 }
 
@@ -66,7 +64,7 @@ func (o *CreateGCPForwardingRuleRequest) SetEndpointName(v string) {
 	o.EndpointName = &v
 }
 
-// GetIpAddress returns the IpAddress field value if set, zero value otherwise.
+// GetIpAddress returns the IpAddress field value if set, zero value otherwise
 func (o *CreateGCPForwardingRuleRequest) GetIpAddress() string {
 	if o == nil || IsNil(o.IpAddress) {
 		var ret string
@@ -81,6 +79,7 @@ func (o *CreateGCPForwardingRuleRequest) GetIpAddressOk() (*string, bool) {
 	if o == nil || IsNil(o.IpAddress) {
 		return nil, false
 	}
+
 	return o.IpAddress, true
 }
 
@@ -114,40 +113,4 @@ func (o CreateGCPForwardingRuleRequest) ToMap() (map[string]interface{}, error) 
 		toSerialize["ipAddress"] = o.IpAddress
 	}
 	return toSerialize, nil
-}
-
-type NullableCreateGCPForwardingRuleRequest struct {
-	value *CreateGCPForwardingRuleRequest
-	isSet bool
-}
-
-func (v NullableCreateGCPForwardingRuleRequest) Get() *CreateGCPForwardingRuleRequest {
-	return v.value
-}
-
-func (v *NullableCreateGCPForwardingRuleRequest) Set(val *CreateGCPForwardingRuleRequest) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableCreateGCPForwardingRuleRequest) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableCreateGCPForwardingRuleRequest) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableCreateGCPForwardingRuleRequest(val *CreateGCPForwardingRuleRequest) *NullableCreateGCPForwardingRuleRequest {
-	return &NullableCreateGCPForwardingRuleRequest{value: val, isSet: true}
-}
-
-func (v NullableCreateGCPForwardingRuleRequest) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableCreateGCPForwardingRuleRequest) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the UserCert type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &UserCert{}
-
 // UserCert struct for UserCert
 type UserCert struct {
 	// Unique 24-hexadecimal character string that identifies this certificate.
@@ -49,7 +46,7 @@ func NewUserCertWithDefaults() *UserCert {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *UserCert) GetId() int64 {
 	if o == nil || IsNil(o.Id) {
 		var ret int64
@@ -64,6 +61,7 @@ func (o *UserCert) GetIdOk() (*int64, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -81,7 +79,7 @@ func (o *UserCert) SetId(v int64) {
 	o.Id = &v
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise
 func (o *UserCert) GetCreatedAt() time.Time {
 	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
@@ -96,6 +94,7 @@ func (o *UserCert) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
+
 	return o.CreatedAt, true
 }
 
@@ -113,7 +112,7 @@ func (o *UserCert) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
-// GetGroupId returns the GroupId field value if set, zero value otherwise.
+// GetGroupId returns the GroupId field value if set, zero value otherwise
 func (o *UserCert) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
 		var ret string
@@ -128,6 +127,7 @@ func (o *UserCert) GetGroupIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupId) {
 		return nil, false
 	}
+
 	return o.GroupId, true
 }
 
@@ -145,7 +145,7 @@ func (o *UserCert) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *UserCert) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -160,6 +160,7 @@ func (o *UserCert) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -177,7 +178,7 @@ func (o *UserCert) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetMonthsUntilExpiration returns the MonthsUntilExpiration field value if set, zero value otherwise.
+// GetMonthsUntilExpiration returns the MonthsUntilExpiration field value if set, zero value otherwise
 func (o *UserCert) GetMonthsUntilExpiration() int {
 	if o == nil || IsNil(o.MonthsUntilExpiration) {
 		var ret int
@@ -192,6 +193,7 @@ func (o *UserCert) GetMonthsUntilExpirationOk() (*int, bool) {
 	if o == nil || IsNil(o.MonthsUntilExpiration) {
 		return nil, false
 	}
+
 	return o.MonthsUntilExpiration, true
 }
 
@@ -209,7 +211,7 @@ func (o *UserCert) SetMonthsUntilExpiration(v int) {
 	o.MonthsUntilExpiration = &v
 }
 
-// GetNotAfter returns the NotAfter field value if set, zero value otherwise.
+// GetNotAfter returns the NotAfter field value if set, zero value otherwise
 func (o *UserCert) GetNotAfter() time.Time {
 	if o == nil || IsNil(o.NotAfter) {
 		var ret time.Time
@@ -224,6 +226,7 @@ func (o *UserCert) GetNotAfterOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.NotAfter) {
 		return nil, false
 	}
+
 	return o.NotAfter, true
 }
 
@@ -241,7 +244,7 @@ func (o *UserCert) SetNotAfter(v time.Time) {
 	o.NotAfter = &v
 }
 
-// GetSubject returns the Subject field value if set, zero value otherwise.
+// GetSubject returns the Subject field value if set, zero value otherwise
 func (o *UserCert) GetSubject() string {
 	if o == nil || IsNil(o.Subject) {
 		var ret string
@@ -256,6 +259,7 @@ func (o *UserCert) GetSubjectOk() (*string, bool) {
 	if o == nil || IsNil(o.Subject) {
 		return nil, false
 	}
+
 	return o.Subject, true
 }
 
@@ -286,40 +290,4 @@ func (o UserCert) ToMap() (map[string]interface{}, error) {
 		toSerialize["monthsUntilExpiration"] = o.MonthsUntilExpiration
 	}
 	return toSerialize, nil
-}
-
-type NullableUserCert struct {
-	value *UserCert
-	isSet bool
-}
-
-func (v NullableUserCert) Get() *UserCert {
-	return v.value
-}
-
-func (v *NullableUserCert) Set(val *UserCert) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableUserCert) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableUserCert) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableUserCert(val *UserCert) *NullableUserCert {
-	return &NullableUserCert{value: val, isSet: true}
-}
-
-func (v NullableUserCert) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableUserCert) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

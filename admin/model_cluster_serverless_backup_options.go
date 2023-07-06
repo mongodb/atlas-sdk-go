@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ClusterServerlessBackupOptions type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ClusterServerlessBackupOptions{}
-
 // ClusterServerlessBackupOptions Group of settings that configure serverless backup.
 type ClusterServerlessBackupOptions struct {
 	// Flag that indicates whether the serverless instance uses **Serverless Continuous Backup**.  If this parameter is `false`, the serverless instance uses **Basic Backup**.   | Option | Description |  |---|---|  | Serverless Continuous Backup | Atlas takes incremental [snapshots](https://www.mongodb.com/docs/atlas/backup/cloud-backup/overview/#std-label-serverless-snapshots) of the data in your serverless instance every six hours and lets you restore the data from a selected point in time within the last 72 hours. Atlas also takes daily snapshots and retains these daily snapshots for 35 days. To learn more, see [Serverless Instance Costs](https://www.mongodb.com/docs/atlas/billing/serverless-instance-costs/#std-label-serverless-instance-costs). |  | Basic Backup | Atlas takes incremental [snapshots](https://www.mongodb.com/docs/atlas/backup/cloud-backup/overview/#std-label-serverless-snapshots) of the data in your serverless instance every six hours and retains only the two most recent snapshots. You can use this option for free. |
@@ -36,7 +33,7 @@ func NewClusterServerlessBackupOptionsWithDefaults() *ClusterServerlessBackupOpt
 	return &this
 }
 
-// GetServerlessContinuousBackupEnabled returns the ServerlessContinuousBackupEnabled field value if set, zero value otherwise.
+// GetServerlessContinuousBackupEnabled returns the ServerlessContinuousBackupEnabled field value if set, zero value otherwise
 func (o *ClusterServerlessBackupOptions) GetServerlessContinuousBackupEnabled() bool {
 	if o == nil || IsNil(o.ServerlessContinuousBackupEnabled) {
 		var ret bool
@@ -51,6 +48,7 @@ func (o *ClusterServerlessBackupOptions) GetServerlessContinuousBackupEnabledOk(
 	if o == nil || IsNil(o.ServerlessContinuousBackupEnabled) {
 		return nil, false
 	}
+
 	return o.ServerlessContinuousBackupEnabled, true
 }
 
@@ -81,40 +79,4 @@ func (o ClusterServerlessBackupOptions) ToMap() (map[string]interface{}, error) 
 		toSerialize["serverlessContinuousBackupEnabled"] = o.ServerlessContinuousBackupEnabled
 	}
 	return toSerialize, nil
-}
-
-type NullableClusterServerlessBackupOptions struct {
-	value *ClusterServerlessBackupOptions
-	isSet bool
-}
-
-func (v NullableClusterServerlessBackupOptions) Get() *ClusterServerlessBackupOptions {
-	return v.value
-}
-
-func (v *NullableClusterServerlessBackupOptions) Set(val *ClusterServerlessBackupOptions) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableClusterServerlessBackupOptions) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableClusterServerlessBackupOptions) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableClusterServerlessBackupOptions(val *ClusterServerlessBackupOptions) *NullableClusterServerlessBackupOptions {
-	return &NullableClusterServerlessBackupOptions{value: val, isSet: true}
-}
-
-func (v NullableClusterServerlessBackupOptions) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableClusterServerlessBackupOptions) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

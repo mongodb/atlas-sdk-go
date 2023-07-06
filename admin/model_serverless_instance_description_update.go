@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ServerlessInstanceDescriptionUpdate type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ServerlessInstanceDescriptionUpdate{}
-
 // ServerlessInstanceDescriptionUpdate Settings that you can update when you request a serverless cluster update.
 type ServerlessInstanceDescriptionUpdate struct {
 	ServerlessBackupOptions *ClusterServerlessBackupOptions `json:"serverlessBackupOptions,omitempty"`
@@ -39,7 +36,7 @@ func NewServerlessInstanceDescriptionUpdateWithDefaults() *ServerlessInstanceDes
 	return &this
 }
 
-// GetServerlessBackupOptions returns the ServerlessBackupOptions field value if set, zero value otherwise.
+// GetServerlessBackupOptions returns the ServerlessBackupOptions field value if set, zero value otherwise
 func (o *ServerlessInstanceDescriptionUpdate) GetServerlessBackupOptions() ClusterServerlessBackupOptions {
 	if o == nil || IsNil(o.ServerlessBackupOptions) {
 		var ret ClusterServerlessBackupOptions
@@ -54,6 +51,7 @@ func (o *ServerlessInstanceDescriptionUpdate) GetServerlessBackupOptionsOk() (*C
 	if o == nil || IsNil(o.ServerlessBackupOptions) {
 		return nil, false
 	}
+
 	return o.ServerlessBackupOptions, true
 }
 
@@ -71,7 +69,7 @@ func (o *ServerlessInstanceDescriptionUpdate) SetServerlessBackupOptions(v Clust
 	o.ServerlessBackupOptions = &v
 }
 
-// GetTags returns the Tags field value if set, zero value otherwise.
+// GetTags returns the Tags field value if set, zero value otherwise
 func (o *ServerlessInstanceDescriptionUpdate) GetTags() []ResourceTag {
 	if o == nil || IsNil(o.Tags) {
 		var ret []ResourceTag
@@ -86,6 +84,7 @@ func (o *ServerlessInstanceDescriptionUpdate) GetTagsOk() ([]ResourceTag, bool) 
 	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
+
 	return o.Tags, true
 }
 
@@ -103,7 +102,7 @@ func (o *ServerlessInstanceDescriptionUpdate) SetTags(v []ResourceTag) {
 	o.Tags = v
 }
 
-// GetTerminationProtectionEnabled returns the TerminationProtectionEnabled field value if set, zero value otherwise.
+// GetTerminationProtectionEnabled returns the TerminationProtectionEnabled field value if set, zero value otherwise
 func (o *ServerlessInstanceDescriptionUpdate) GetTerminationProtectionEnabled() bool {
 	if o == nil || IsNil(o.TerminationProtectionEnabled) {
 		var ret bool
@@ -118,6 +117,7 @@ func (o *ServerlessInstanceDescriptionUpdate) GetTerminationProtectionEnabledOk(
 	if o == nil || IsNil(o.TerminationProtectionEnabled) {
 		return nil, false
 	}
+
 	return o.TerminationProtectionEnabled, true
 }
 
@@ -154,40 +154,4 @@ func (o ServerlessInstanceDescriptionUpdate) ToMap() (map[string]interface{}, er
 		toSerialize["terminationProtectionEnabled"] = o.TerminationProtectionEnabled
 	}
 	return toSerialize, nil
-}
-
-type NullableServerlessInstanceDescriptionUpdate struct {
-	value *ServerlessInstanceDescriptionUpdate
-	isSet bool
-}
-
-func (v NullableServerlessInstanceDescriptionUpdate) Get() *ServerlessInstanceDescriptionUpdate {
-	return v.value
-}
-
-func (v *NullableServerlessInstanceDescriptionUpdate) Set(val *ServerlessInstanceDescriptionUpdate) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableServerlessInstanceDescriptionUpdate) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableServerlessInstanceDescriptionUpdate) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableServerlessInstanceDescriptionUpdate(val *ServerlessInstanceDescriptionUpdate) *NullableServerlessInstanceDescriptionUpdate {
-	return &NullableServerlessInstanceDescriptionUpdate{value: val, isSet: true}
-}
-
-func (v NullableServerlessInstanceDescriptionUpdate) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableServerlessInstanceDescriptionUpdate) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

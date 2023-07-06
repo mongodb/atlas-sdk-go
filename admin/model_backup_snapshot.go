@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the BackupSnapshot type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &BackupSnapshot{}
-
 // BackupSnapshot struct for BackupSnapshot
 type BackupSnapshot struct {
 	// Unique 24-hexadecimal digit string that identifies the cluster with the snapshots you want to return.
@@ -51,7 +48,7 @@ func NewBackupSnapshotWithDefaults() *BackupSnapshot {
 	return &this
 }
 
-// GetClusterId returns the ClusterId field value if set, zero value otherwise.
+// GetClusterId returns the ClusterId field value if set, zero value otherwise
 func (o *BackupSnapshot) GetClusterId() string {
 	if o == nil || IsNil(o.ClusterId) {
 		var ret string
@@ -66,6 +63,7 @@ func (o *BackupSnapshot) GetClusterIdOk() (*string, bool) {
 	if o == nil || IsNil(o.ClusterId) {
 		return nil, false
 	}
+
 	return o.ClusterId, true
 }
 
@@ -83,7 +81,7 @@ func (o *BackupSnapshot) SetClusterId(v string) {
 	o.ClusterId = &v
 }
 
-// GetComplete returns the Complete field value if set, zero value otherwise.
+// GetComplete returns the Complete field value if set, zero value otherwise
 func (o *BackupSnapshot) GetComplete() bool {
 	if o == nil || IsNil(o.Complete) {
 		var ret bool
@@ -98,6 +96,7 @@ func (o *BackupSnapshot) GetCompleteOk() (*bool, bool) {
 	if o == nil || IsNil(o.Complete) {
 		return nil, false
 	}
+
 	return o.Complete, true
 }
 
@@ -115,7 +114,7 @@ func (o *BackupSnapshot) SetComplete(v bool) {
 	o.Complete = &v
 }
 
-// GetCreated returns the Created field value if set, zero value otherwise.
+// GetCreated returns the Created field value if set, zero value otherwise
 func (o *BackupSnapshot) GetCreated() ApiBSONTimestamp {
 	if o == nil || IsNil(o.Created) {
 		var ret ApiBSONTimestamp
@@ -130,6 +129,7 @@ func (o *BackupSnapshot) GetCreatedOk() (*ApiBSONTimestamp, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
+
 	return o.Created, true
 }
 
@@ -147,7 +147,7 @@ func (o *BackupSnapshot) SetCreated(v ApiBSONTimestamp) {
 	o.Created = &v
 }
 
-// GetDoNotDelete returns the DoNotDelete field value if set, zero value otherwise.
+// GetDoNotDelete returns the DoNotDelete field value if set, zero value otherwise
 func (o *BackupSnapshot) GetDoNotDelete() bool {
 	if o == nil || IsNil(o.DoNotDelete) {
 		var ret bool
@@ -162,6 +162,7 @@ func (o *BackupSnapshot) GetDoNotDeleteOk() (*bool, bool) {
 	if o == nil || IsNil(o.DoNotDelete) {
 		return nil, false
 	}
+
 	return o.DoNotDelete, true
 }
 
@@ -179,7 +180,7 @@ func (o *BackupSnapshot) SetDoNotDelete(v bool) {
 	o.DoNotDelete = &v
 }
 
-// GetExpires returns the Expires field value if set, zero value otherwise.
+// GetExpires returns the Expires field value if set, zero value otherwise
 func (o *BackupSnapshot) GetExpires() time.Time {
 	if o == nil || IsNil(o.Expires) {
 		var ret time.Time
@@ -194,6 +195,7 @@ func (o *BackupSnapshot) GetExpiresOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Expires) {
 		return nil, false
 	}
+
 	return o.Expires, true
 }
 
@@ -211,7 +213,7 @@ func (o *BackupSnapshot) SetExpires(v time.Time) {
 	o.Expires = &v
 }
 
-// GetGroupId returns the GroupId field value if set, zero value otherwise.
+// GetGroupId returns the GroupId field value if set, zero value otherwise
 func (o *BackupSnapshot) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
 		var ret string
@@ -226,6 +228,7 @@ func (o *BackupSnapshot) GetGroupIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupId) {
 		return nil, false
 	}
+
 	return o.GroupId, true
 }
 
@@ -243,7 +246,7 @@ func (o *BackupSnapshot) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *BackupSnapshot) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -258,6 +261,7 @@ func (o *BackupSnapshot) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -275,7 +279,7 @@ func (o *BackupSnapshot) SetId(v string) {
 	o.Id = &v
 }
 
-// GetIncremental returns the Incremental field value if set, zero value otherwise.
+// GetIncremental returns the Incremental field value if set, zero value otherwise
 func (o *BackupSnapshot) GetIncremental() bool {
 	if o == nil || IsNil(o.Incremental) {
 		var ret bool
@@ -290,6 +294,7 @@ func (o *BackupSnapshot) GetIncrementalOk() (*bool, bool) {
 	if o == nil || IsNil(o.Incremental) {
 		return nil, false
 	}
+
 	return o.Incremental, true
 }
 
@@ -307,7 +312,7 @@ func (o *BackupSnapshot) SetIncremental(v bool) {
 	o.Incremental = &v
 }
 
-// GetLastOplogAppliedTimestamp returns the LastOplogAppliedTimestamp field value if set, zero value otherwise.
+// GetLastOplogAppliedTimestamp returns the LastOplogAppliedTimestamp field value if set, zero value otherwise
 func (o *BackupSnapshot) GetLastOplogAppliedTimestamp() ApiBSONTimestamp {
 	if o == nil || IsNil(o.LastOplogAppliedTimestamp) {
 		var ret ApiBSONTimestamp
@@ -322,6 +327,7 @@ func (o *BackupSnapshot) GetLastOplogAppliedTimestampOk() (*ApiBSONTimestamp, bo
 	if o == nil || IsNil(o.LastOplogAppliedTimestamp) {
 		return nil, false
 	}
+
 	return o.LastOplogAppliedTimestamp, true
 }
 
@@ -339,7 +345,7 @@ func (o *BackupSnapshot) SetLastOplogAppliedTimestamp(v ApiBSONTimestamp) {
 	o.LastOplogAppliedTimestamp = &v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *BackupSnapshot) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -354,6 +360,7 @@ func (o *BackupSnapshot) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -371,7 +378,7 @@ func (o *BackupSnapshot) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetParts returns the Parts field value if set, zero value otherwise.
+// GetParts returns the Parts field value if set, zero value otherwise
 func (o *BackupSnapshot) GetParts() []BackupSnapshotPart {
 	if o == nil || IsNil(o.Parts) {
 		var ret []BackupSnapshotPart
@@ -386,6 +393,7 @@ func (o *BackupSnapshot) GetPartsOk() ([]BackupSnapshotPart, bool) {
 	if o == nil || IsNil(o.Parts) {
 		return nil, false
 	}
+
 	return o.Parts, true
 }
 
@@ -425,40 +433,4 @@ func (o BackupSnapshot) ToMap() (map[string]interface{}, error) {
 		toSerialize["lastOplogAppliedTimestamp"] = o.LastOplogAppliedTimestamp
 	}
 	return toSerialize, nil
-}
-
-type NullableBackupSnapshot struct {
-	value *BackupSnapshot
-	isSet bool
-}
-
-func (v NullableBackupSnapshot) Get() *BackupSnapshot {
-	return v.value
-}
-
-func (v *NullableBackupSnapshot) Set(val *BackupSnapshot) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableBackupSnapshot) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableBackupSnapshot) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableBackupSnapshot(val *BackupSnapshot) *NullableBackupSnapshot {
-	return &NullableBackupSnapshot{value: val, isSet: true}
-}
-
-func (v NullableBackupSnapshot) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableBackupSnapshot) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the DataProtectionSettings type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DataProtectionSettings{}
-
 // DataProtectionSettings struct for DataProtectionSettings
 type DataProtectionSettings struct {
 	// Email address of the user who authorized to updated the Backup Compliance Policy  settings.
@@ -64,7 +61,7 @@ func NewDataProtectionSettingsWithDefaults() *DataProtectionSettings {
 	return &this
 }
 
-// GetAuthorizedEmail returns the AuthorizedEmail field value if set, zero value otherwise.
+// GetAuthorizedEmail returns the AuthorizedEmail field value if set, zero value otherwise
 func (o *DataProtectionSettings) GetAuthorizedEmail() string {
 	if o == nil || IsNil(o.AuthorizedEmail) {
 		var ret string
@@ -79,6 +76,7 @@ func (o *DataProtectionSettings) GetAuthorizedEmailOk() (*string, bool) {
 	if o == nil || IsNil(o.AuthorizedEmail) {
 		return nil, false
 	}
+
 	return o.AuthorizedEmail, true
 }
 
@@ -96,7 +94,7 @@ func (o *DataProtectionSettings) SetAuthorizedEmail(v string) {
 	o.AuthorizedEmail = &v
 }
 
-// GetCopyProtectionEnabled returns the CopyProtectionEnabled field value if set, zero value otherwise.
+// GetCopyProtectionEnabled returns the CopyProtectionEnabled field value if set, zero value otherwise
 func (o *DataProtectionSettings) GetCopyProtectionEnabled() bool {
 	if o == nil || IsNil(o.CopyProtectionEnabled) {
 		var ret bool
@@ -111,6 +109,7 @@ func (o *DataProtectionSettings) GetCopyProtectionEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.CopyProtectionEnabled) {
 		return nil, false
 	}
+
 	return o.CopyProtectionEnabled, true
 }
 
@@ -128,7 +127,7 @@ func (o *DataProtectionSettings) SetCopyProtectionEnabled(v bool) {
 	o.CopyProtectionEnabled = &v
 }
 
-// GetEncryptionAtRestEnabled returns the EncryptionAtRestEnabled field value if set, zero value otherwise.
+// GetEncryptionAtRestEnabled returns the EncryptionAtRestEnabled field value if set, zero value otherwise
 func (o *DataProtectionSettings) GetEncryptionAtRestEnabled() bool {
 	if o == nil || IsNil(o.EncryptionAtRestEnabled) {
 		var ret bool
@@ -143,6 +142,7 @@ func (o *DataProtectionSettings) GetEncryptionAtRestEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.EncryptionAtRestEnabled) {
 		return nil, false
 	}
+
 	return o.EncryptionAtRestEnabled, true
 }
 
@@ -160,7 +160,7 @@ func (o *DataProtectionSettings) SetEncryptionAtRestEnabled(v bool) {
 	o.EncryptionAtRestEnabled = &v
 }
 
-// GetOnDemandPolicyItem returns the OnDemandPolicyItem field value if set, zero value otherwise.
+// GetOnDemandPolicyItem returns the OnDemandPolicyItem field value if set, zero value otherwise
 func (o *DataProtectionSettings) GetOnDemandPolicyItem() DiskBackupApiPolicyItem {
 	if o == nil || IsNil(o.OnDemandPolicyItem) {
 		var ret DiskBackupApiPolicyItem
@@ -175,6 +175,7 @@ func (o *DataProtectionSettings) GetOnDemandPolicyItemOk() (*DiskBackupApiPolicy
 	if o == nil || IsNil(o.OnDemandPolicyItem) {
 		return nil, false
 	}
+
 	return o.OnDemandPolicyItem, true
 }
 
@@ -192,7 +193,7 @@ func (o *DataProtectionSettings) SetOnDemandPolicyItem(v DiskBackupApiPolicyItem
 	o.OnDemandPolicyItem = &v
 }
 
-// GetPitEnabled returns the PitEnabled field value if set, zero value otherwise.
+// GetPitEnabled returns the PitEnabled field value if set, zero value otherwise
 func (o *DataProtectionSettings) GetPitEnabled() bool {
 	if o == nil || IsNil(o.PitEnabled) {
 		var ret bool
@@ -207,6 +208,7 @@ func (o *DataProtectionSettings) GetPitEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.PitEnabled) {
 		return nil, false
 	}
+
 	return o.PitEnabled, true
 }
 
@@ -224,7 +226,7 @@ func (o *DataProtectionSettings) SetPitEnabled(v bool) {
 	o.PitEnabled = &v
 }
 
-// GetProjectId returns the ProjectId field value if set, zero value otherwise.
+// GetProjectId returns the ProjectId field value if set, zero value otherwise
 func (o *DataProtectionSettings) GetProjectId() string {
 	if o == nil || IsNil(o.ProjectId) {
 		var ret string
@@ -239,6 +241,7 @@ func (o *DataProtectionSettings) GetProjectIdOk() (*string, bool) {
 	if o == nil || IsNil(o.ProjectId) {
 		return nil, false
 	}
+
 	return o.ProjectId, true
 }
 
@@ -256,7 +259,7 @@ func (o *DataProtectionSettings) SetProjectId(v string) {
 	o.ProjectId = &v
 }
 
-// GetRestoreWindowDays returns the RestoreWindowDays field value if set, zero value otherwise.
+// GetRestoreWindowDays returns the RestoreWindowDays field value if set, zero value otherwise
 func (o *DataProtectionSettings) GetRestoreWindowDays() int {
 	if o == nil || IsNil(o.RestoreWindowDays) {
 		var ret int
@@ -271,6 +274,7 @@ func (o *DataProtectionSettings) GetRestoreWindowDaysOk() (*int, bool) {
 	if o == nil || IsNil(o.RestoreWindowDays) {
 		return nil, false
 	}
+
 	return o.RestoreWindowDays, true
 }
 
@@ -288,7 +292,7 @@ func (o *DataProtectionSettings) SetRestoreWindowDays(v int) {
 	o.RestoreWindowDays = &v
 }
 
-// GetScheduledPolicyItems returns the ScheduledPolicyItems field value if set, zero value otherwise.
+// GetScheduledPolicyItems returns the ScheduledPolicyItems field value if set, zero value otherwise
 func (o *DataProtectionSettings) GetScheduledPolicyItems() []DiskBackupApiPolicyItem {
 	if o == nil || IsNil(o.ScheduledPolicyItems) {
 		var ret []DiskBackupApiPolicyItem
@@ -303,6 +307,7 @@ func (o *DataProtectionSettings) GetScheduledPolicyItemsOk() ([]DiskBackupApiPol
 	if o == nil || IsNil(o.ScheduledPolicyItems) {
 		return nil, false
 	}
+
 	return o.ScheduledPolicyItems, true
 }
 
@@ -320,7 +325,7 @@ func (o *DataProtectionSettings) SetScheduledPolicyItems(v []DiskBackupApiPolicy
 	o.ScheduledPolicyItems = v
 }
 
-// GetState returns the State field value if set, zero value otherwise.
+// GetState returns the State field value if set, zero value otherwise
 func (o *DataProtectionSettings) GetState() string {
 	if o == nil || IsNil(o.State) {
 		var ret string
@@ -335,6 +340,7 @@ func (o *DataProtectionSettings) GetStateOk() (*string, bool) {
 	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
+
 	return o.State, true
 }
 
@@ -352,7 +358,7 @@ func (o *DataProtectionSettings) SetState(v string) {
 	o.State = &v
 }
 
-// GetUpdatedDate returns the UpdatedDate field value if set, zero value otherwise.
+// GetUpdatedDate returns the UpdatedDate field value if set, zero value otherwise
 func (o *DataProtectionSettings) GetUpdatedDate() time.Time {
 	if o == nil || IsNil(o.UpdatedDate) {
 		var ret time.Time
@@ -367,6 +373,7 @@ func (o *DataProtectionSettings) GetUpdatedDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.UpdatedDate) {
 		return nil, false
 	}
+
 	return o.UpdatedDate, true
 }
 
@@ -384,7 +391,7 @@ func (o *DataProtectionSettings) SetUpdatedDate(v time.Time) {
 	o.UpdatedDate = &v
 }
 
-// GetUpdatedUser returns the UpdatedUser field value if set, zero value otherwise.
+// GetUpdatedUser returns the UpdatedUser field value if set, zero value otherwise
 func (o *DataProtectionSettings) GetUpdatedUser() string {
 	if o == nil || IsNil(o.UpdatedUser) {
 		var ret string
@@ -399,6 +406,7 @@ func (o *DataProtectionSettings) GetUpdatedUserOk() (*string, bool) {
 	if o == nil || IsNil(o.UpdatedUser) {
 		return nil, false
 	}
+
 	return o.UpdatedUser, true
 }
 
@@ -450,40 +458,4 @@ func (o DataProtectionSettings) ToMap() (map[string]interface{}, error) {
 		toSerialize["scheduledPolicyItems"] = o.ScheduledPolicyItems
 	}
 	return toSerialize, nil
-}
-
-type NullableDataProtectionSettings struct {
-	value *DataProtectionSettings
-	isSet bool
-}
-
-func (v NullableDataProtectionSettings) Get() *DataProtectionSettings {
-	return v.value
-}
-
-func (v *NullableDataProtectionSettings) Set(val *DataProtectionSettings) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableDataProtectionSettings) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableDataProtectionSettings) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableDataProtectionSettings(val *DataProtectionSettings) *NullableDataProtectionSettings {
-	return &NullableDataProtectionSettings{value: val, isSet: true}
-}
-
-func (v NullableDataProtectionSettings) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableDataProtectionSettings) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

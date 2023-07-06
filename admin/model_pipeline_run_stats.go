@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PipelineRunStats type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PipelineRunStats{}
-
 // PipelineRunStats Runtime statistics for this Data Lake Pipeline run.
 type PipelineRunStats struct {
 	// Total data size in bytes exported for this pipeline run.
@@ -34,7 +31,7 @@ func NewPipelineRunStatsWithDefaults() *PipelineRunStats {
 	return &this
 }
 
-// GetBytesExported returns the BytesExported field value if set, zero value otherwise.
+// GetBytesExported returns the BytesExported field value if set, zero value otherwise
 func (o *PipelineRunStats) GetBytesExported() int64 {
 	if o == nil || IsNil(o.BytesExported) {
 		var ret int64
@@ -49,6 +46,7 @@ func (o *PipelineRunStats) GetBytesExportedOk() (*int64, bool) {
 	if o == nil || IsNil(o.BytesExported) {
 		return nil, false
 	}
+
 	return o.BytesExported, true
 }
 
@@ -66,7 +64,7 @@ func (o *PipelineRunStats) SetBytesExported(v int64) {
 	o.BytesExported = &v
 }
 
-// GetNumDocs returns the NumDocs field value if set, zero value otherwise.
+// GetNumDocs returns the NumDocs field value if set, zero value otherwise
 func (o *PipelineRunStats) GetNumDocs() int64 {
 	if o == nil || IsNil(o.NumDocs) {
 		var ret int64
@@ -81,6 +79,7 @@ func (o *PipelineRunStats) GetNumDocsOk() (*int64, bool) {
 	if o == nil || IsNil(o.NumDocs) {
 		return nil, false
 	}
+
 	return o.NumDocs, true
 }
 
@@ -108,40 +107,4 @@ func (o PipelineRunStats) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o PipelineRunStats) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullablePipelineRunStats struct {
-	value *PipelineRunStats
-	isSet bool
-}
-
-func (v NullablePipelineRunStats) Get() *PipelineRunStats {
-	return v.value
-}
-
-func (v *NullablePipelineRunStats) Set(val *PipelineRunStats) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullablePipelineRunStats) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullablePipelineRunStats) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullablePipelineRunStats(val *PipelineRunStats) *NullablePipelineRunStats {
-	return &NullablePipelineRunStats{value: val, isSet: true}
-}
-
-func (v NullablePipelineRunStats) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullablePipelineRunStats) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

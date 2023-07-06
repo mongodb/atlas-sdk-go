@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the OrganizationInvitationUpdateRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &OrganizationInvitationUpdateRequest{}
-
 // OrganizationInvitationUpdateRequest struct for OrganizationInvitationUpdateRequest
 type OrganizationInvitationUpdateRequest struct {
 	// One or more organization or project level roles to assign to the MongoDB Cloud user.
@@ -34,7 +31,7 @@ func NewOrganizationInvitationUpdateRequestWithDefaults() *OrganizationInvitatio
 	return &this
 }
 
-// GetRoles returns the Roles field value if set, zero value otherwise.
+// GetRoles returns the Roles field value if set, zero value otherwise
 func (o *OrganizationInvitationUpdateRequest) GetRoles() []string {
 	if o == nil || IsNil(o.Roles) {
 		var ret []string
@@ -49,6 +46,7 @@ func (o *OrganizationInvitationUpdateRequest) GetRolesOk() ([]string, bool) {
 	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
+
 	return o.Roles, true
 }
 
@@ -66,7 +64,7 @@ func (o *OrganizationInvitationUpdateRequest) SetRoles(v []string) {
 	o.Roles = v
 }
 
-// GetTeamIds returns the TeamIds field value if set, zero value otherwise.
+// GetTeamIds returns the TeamIds field value if set, zero value otherwise
 func (o *OrganizationInvitationUpdateRequest) GetTeamIds() []string {
 	if o == nil || IsNil(o.TeamIds) {
 		var ret []string
@@ -81,6 +79,7 @@ func (o *OrganizationInvitationUpdateRequest) GetTeamIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.TeamIds) {
 		return nil, false
 	}
+
 	return o.TeamIds, true
 }
 
@@ -114,40 +113,4 @@ func (o OrganizationInvitationUpdateRequest) ToMap() (map[string]interface{}, er
 		toSerialize["teamIds"] = o.TeamIds
 	}
 	return toSerialize, nil
-}
-
-type NullableOrganizationInvitationUpdateRequest struct {
-	value *OrganizationInvitationUpdateRequest
-	isSet bool
-}
-
-func (v NullableOrganizationInvitationUpdateRequest) Get() *OrganizationInvitationUpdateRequest {
-	return v.value
-}
-
-func (v *NullableOrganizationInvitationUpdateRequest) Set(val *OrganizationInvitationUpdateRequest) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableOrganizationInvitationUpdateRequest) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableOrganizationInvitationUpdateRequest) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableOrganizationInvitationUpdateRequest(val *OrganizationInvitationUpdateRequest) *NullableOrganizationInvitationUpdateRequest {
-	return &NullableOrganizationInvitationUpdateRequest{value: val, isSet: true}
-}
-
-func (v NullableOrganizationInvitationUpdateRequest) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableOrganizationInvitationUpdateRequest) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

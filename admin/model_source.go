@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the Source type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Source{}
-
 // Source Document that describes the source of the migration.
 type Source struct {
 	// Path to the CA certificate that signed SSL certificates use to authenticate to the source cluster.
@@ -48,7 +45,7 @@ func NewSourceWithDefaults() *Source {
 	return &this
 }
 
-// GetCaCertificatePath returns the CaCertificatePath field value if set, zero value otherwise.
+// GetCaCertificatePath returns the CaCertificatePath field value if set, zero value otherwise
 func (o *Source) GetCaCertificatePath() string {
 	if o == nil || IsNil(o.CaCertificatePath) {
 		var ret string
@@ -63,6 +60,7 @@ func (o *Source) GetCaCertificatePathOk() (*string, bool) {
 	if o == nil || IsNil(o.CaCertificatePath) {
 		return nil, false
 	}
+
 	return o.CaCertificatePath, true
 }
 
@@ -152,7 +150,7 @@ func (o *Source) SetManagedAuthentication(v bool) {
 	o.ManagedAuthentication = v
 }
 
-// GetPassword returns the Password field value if set, zero value otherwise.
+// GetPassword returns the Password field value if set, zero value otherwise
 func (o *Source) GetPassword() string {
 	if o == nil || IsNil(o.Password) {
 		var ret string
@@ -167,6 +165,7 @@ func (o *Source) GetPasswordOk() (*string, bool) {
 	if o == nil || IsNil(o.Password) {
 		return nil, false
 	}
+
 	return o.Password, true
 }
 
@@ -208,7 +207,7 @@ func (o *Source) SetSsl(v bool) {
 	o.Ssl = v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
+// GetUsername returns the Username field value if set, zero value otherwise
 func (o *Source) GetUsername() string {
 	if o == nil || IsNil(o.Username) {
 		var ret string
@@ -223,6 +222,7 @@ func (o *Source) GetUsernameOk() (*string, bool) {
 	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
+
 	return o.Username, true
 }
 
@@ -263,40 +263,4 @@ func (o Source) ToMap() (map[string]interface{}, error) {
 		toSerialize["username"] = o.Username
 	}
 	return toSerialize, nil
-}
-
-type NullableSource struct {
-	value *Source
-	isSet bool
-}
-
-func (v NullableSource) Get() *Source {
-	return v.value
-}
-
-func (v *NullableSource) Set(val *Source) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableSource) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableSource) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableSource(val *Source) *NullableSource {
-	return &NullableSource{value: val, isSet: true}
-}
-
-func (v NullableSource) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableSource) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

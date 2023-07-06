@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the LDAPVerifyConnectivityJobRequestParams type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &LDAPVerifyConnectivityJobRequestParams{}
-
 // LDAPVerifyConnectivityJobRequestParams Request information needed to verify an Lightweight Directory Access Protocol (LDAP) over Transport Layer Security (TLS) configuration. The response does not return the **bindPassword**.
 type LDAPVerifyConnectivityJobRequestParams struct {
 	// Lightweight Directory Access Protocol (LDAP) query template that MongoDB Cloud applies to create an LDAP query to return the LDAP groups associated with the authenticated MongoDB user. MongoDB Cloud uses this parameter only for user authorization.  Use the `{USER}` placeholder in the Uniform Resource Locator (URL) to substitute the authenticated username. The query relates to the host specified with the hostname. Format this query per [RFC 4515](https://tools.ietf.org/search/rfc4515) and [RFC 4516](https://datatracker.ietf.org/doc/html/rfc4516).
@@ -54,7 +51,7 @@ func NewLDAPVerifyConnectivityJobRequestParamsWithDefaults() *LDAPVerifyConnecti
 	return &this
 }
 
-// GetAuthzQueryTemplate returns the AuthzQueryTemplate field value if set, zero value otherwise.
+// GetAuthzQueryTemplate returns the AuthzQueryTemplate field value if set, zero value otherwise
 func (o *LDAPVerifyConnectivityJobRequestParams) GetAuthzQueryTemplate() string {
 	if o == nil || IsNil(o.AuthzQueryTemplate) {
 		var ret string
@@ -69,6 +66,7 @@ func (o *LDAPVerifyConnectivityJobRequestParams) GetAuthzQueryTemplateOk() (*str
 	if o == nil || IsNil(o.AuthzQueryTemplate) {
 		return nil, false
 	}
+
 	return o.AuthzQueryTemplate, true
 }
 
@@ -134,7 +132,7 @@ func (o *LDAPVerifyConnectivityJobRequestParams) SetBindUsername(v string) {
 	o.BindUsername = v
 }
 
-// GetCaCertificate returns the CaCertificate field value if set, zero value otherwise.
+// GetCaCertificate returns the CaCertificate field value if set, zero value otherwise
 func (o *LDAPVerifyConnectivityJobRequestParams) GetCaCertificate() string {
 	if o == nil || IsNil(o.CaCertificate) {
 		var ret string
@@ -149,6 +147,7 @@ func (o *LDAPVerifyConnectivityJobRequestParams) GetCaCertificateOk() (*string, 
 	if o == nil || IsNil(o.CaCertificate) {
 		return nil, false
 	}
+
 	return o.CaCertificate, true
 }
 
@@ -190,7 +189,7 @@ func (o *LDAPVerifyConnectivityJobRequestParams) SetHostname(v string) {
 	o.Hostname = v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *LDAPVerifyConnectivityJobRequestParams) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -205,6 +204,7 @@ func (o *LDAPVerifyConnectivityJobRequestParams) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -266,40 +266,4 @@ func (o LDAPVerifyConnectivityJobRequestParams) ToMap() (map[string]interface{},
 	toSerialize["hostname"] = o.Hostname
 	toSerialize["port"] = o.Port
 	return toSerialize, nil
-}
-
-type NullableLDAPVerifyConnectivityJobRequestParams struct {
-	value *LDAPVerifyConnectivityJobRequestParams
-	isSet bool
-}
-
-func (v NullableLDAPVerifyConnectivityJobRequestParams) Get() *LDAPVerifyConnectivityJobRequestParams {
-	return v.value
-}
-
-func (v *NullableLDAPVerifyConnectivityJobRequestParams) Set(val *LDAPVerifyConnectivityJobRequestParams) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableLDAPVerifyConnectivityJobRequestParams) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableLDAPVerifyConnectivityJobRequestParams) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableLDAPVerifyConnectivityJobRequestParams(val *LDAPVerifyConnectivityJobRequestParams) *NullableLDAPVerifyConnectivityJobRequestParams {
-	return &NullableLDAPVerifyConnectivityJobRequestParams{value: val, isSet: true}
-}
-
-func (v NullableLDAPVerifyConnectivityJobRequestParams) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableLDAPVerifyConnectivityJobRequestParams) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the BackupRestoreJob type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &BackupRestoreJob{}
-
 // BackupRestoreJob struct for BackupRestoreJob
 type BackupRestoreJob struct {
 	// Unique 24-hexadecimal digit string that identifies the batch to which this restore job belongs. This parameter exists only for a sharded cluster restore.
@@ -66,7 +63,7 @@ func NewBackupRestoreJobWithDefaults() *BackupRestoreJob {
 	return &this
 }
 
-// GetBatchId returns the BatchId field value if set, zero value otherwise.
+// GetBatchId returns the BatchId field value if set, zero value otherwise
 func (o *BackupRestoreJob) GetBatchId() string {
 	if o == nil || IsNil(o.BatchId) {
 		var ret string
@@ -81,6 +78,7 @@ func (o *BackupRestoreJob) GetBatchIdOk() (*string, bool) {
 	if o == nil || IsNil(o.BatchId) {
 		return nil, false
 	}
+
 	return o.BatchId, true
 }
 
@@ -98,7 +96,7 @@ func (o *BackupRestoreJob) SetBatchId(v string) {
 	o.BatchId = &v
 }
 
-// GetCheckpointId returns the CheckpointId field value if set, zero value otherwise.
+// GetCheckpointId returns the CheckpointId field value if set, zero value otherwise
 func (o *BackupRestoreJob) GetCheckpointId() string {
 	if o == nil || IsNil(o.CheckpointId) {
 		var ret string
@@ -113,6 +111,7 @@ func (o *BackupRestoreJob) GetCheckpointIdOk() (*string, bool) {
 	if o == nil || IsNil(o.CheckpointId) {
 		return nil, false
 	}
+
 	return o.CheckpointId, true
 }
 
@@ -130,7 +129,7 @@ func (o *BackupRestoreJob) SetCheckpointId(v string) {
 	o.CheckpointId = &v
 }
 
-// GetClusterId returns the ClusterId field value if set, zero value otherwise.
+// GetClusterId returns the ClusterId field value if set, zero value otherwise
 func (o *BackupRestoreJob) GetClusterId() string {
 	if o == nil || IsNil(o.ClusterId) {
 		var ret string
@@ -145,6 +144,7 @@ func (o *BackupRestoreJob) GetClusterIdOk() (*string, bool) {
 	if o == nil || IsNil(o.ClusterId) {
 		return nil, false
 	}
+
 	return o.ClusterId, true
 }
 
@@ -162,7 +162,7 @@ func (o *BackupRestoreJob) SetClusterId(v string) {
 	o.ClusterId = &v
 }
 
-// GetClusterName returns the ClusterName field value if set, zero value otherwise.
+// GetClusterName returns the ClusterName field value if set, zero value otherwise
 func (o *BackupRestoreJob) GetClusterName() string {
 	if o == nil || IsNil(o.ClusterName) {
 		var ret string
@@ -177,6 +177,7 @@ func (o *BackupRestoreJob) GetClusterNameOk() (*string, bool) {
 	if o == nil || IsNil(o.ClusterName) {
 		return nil, false
 	}
+
 	return o.ClusterName, true
 }
 
@@ -194,7 +195,7 @@ func (o *BackupRestoreJob) SetClusterName(v string) {
 	o.ClusterName = &v
 }
 
-// GetCreated returns the Created field value if set, zero value otherwise.
+// GetCreated returns the Created field value if set, zero value otherwise
 func (o *BackupRestoreJob) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
 		var ret time.Time
@@ -209,6 +210,7 @@ func (o *BackupRestoreJob) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
+
 	return o.Created, true
 }
 
@@ -250,7 +252,7 @@ func (o *BackupRestoreJob) SetDelivery(v BackupRestoreJobDelivery) {
 	o.Delivery = v
 }
 
-// GetEncryptionEnabled returns the EncryptionEnabled field value if set, zero value otherwise.
+// GetEncryptionEnabled returns the EncryptionEnabled field value if set, zero value otherwise
 func (o *BackupRestoreJob) GetEncryptionEnabled() bool {
 	if o == nil || IsNil(o.EncryptionEnabled) {
 		var ret bool
@@ -265,6 +267,7 @@ func (o *BackupRestoreJob) GetEncryptionEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.EncryptionEnabled) {
 		return nil, false
 	}
+
 	return o.EncryptionEnabled, true
 }
 
@@ -282,7 +285,7 @@ func (o *BackupRestoreJob) SetEncryptionEnabled(v bool) {
 	o.EncryptionEnabled = &v
 }
 
-// GetGroupId returns the GroupId field value if set, zero value otherwise.
+// GetGroupId returns the GroupId field value if set, zero value otherwise
 func (o *BackupRestoreJob) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
 		var ret string
@@ -297,6 +300,7 @@ func (o *BackupRestoreJob) GetGroupIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupId) {
 		return nil, false
 	}
+
 	return o.GroupId, true
 }
 
@@ -314,7 +318,7 @@ func (o *BackupRestoreJob) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
-// GetHashes returns the Hashes field value if set, zero value otherwise.
+// GetHashes returns the Hashes field value if set, zero value otherwise
 func (o *BackupRestoreJob) GetHashes() []RestoreJobFileHash {
 	if o == nil || IsNil(o.Hashes) {
 		var ret []RestoreJobFileHash
@@ -329,6 +333,7 @@ func (o *BackupRestoreJob) GetHashesOk() ([]RestoreJobFileHash, bool) {
 	if o == nil || IsNil(o.Hashes) {
 		return nil, false
 	}
+
 	return o.Hashes, true
 }
 
@@ -346,7 +351,7 @@ func (o *BackupRestoreJob) SetHashes(v []RestoreJobFileHash) {
 	o.Hashes = v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *BackupRestoreJob) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -361,6 +366,7 @@ func (o *BackupRestoreJob) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -378,7 +384,7 @@ func (o *BackupRestoreJob) SetId(v string) {
 	o.Id = &v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *BackupRestoreJob) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -393,6 +399,7 @@ func (o *BackupRestoreJob) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -410,7 +417,7 @@ func (o *BackupRestoreJob) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetMasterKeyUUID returns the MasterKeyUUID field value if set, zero value otherwise.
+// GetMasterKeyUUID returns the MasterKeyUUID field value if set, zero value otherwise
 func (o *BackupRestoreJob) GetMasterKeyUUID() string {
 	if o == nil || IsNil(o.MasterKeyUUID) {
 		var ret string
@@ -425,6 +432,7 @@ func (o *BackupRestoreJob) GetMasterKeyUUIDOk() (*string, bool) {
 	if o == nil || IsNil(o.MasterKeyUUID) {
 		return nil, false
 	}
+
 	return o.MasterKeyUUID, true
 }
 
@@ -442,7 +450,7 @@ func (o *BackupRestoreJob) SetMasterKeyUUID(v string) {
 	o.MasterKeyUUID = &v
 }
 
-// GetOplogInc returns the OplogInc field value if set, zero value otherwise.
+// GetOplogInc returns the OplogInc field value if set, zero value otherwise
 func (o *BackupRestoreJob) GetOplogInc() int {
 	if o == nil || IsNil(o.OplogInc) {
 		var ret int
@@ -457,6 +465,7 @@ func (o *BackupRestoreJob) GetOplogIncOk() (*int, bool) {
 	if o == nil || IsNil(o.OplogInc) {
 		return nil, false
 	}
+
 	return o.OplogInc, true
 }
 
@@ -474,7 +483,7 @@ func (o *BackupRestoreJob) SetOplogInc(v int) {
 	o.OplogInc = &v
 }
 
-// GetOplogTs returns the OplogTs field value if set, zero value otherwise.
+// GetOplogTs returns the OplogTs field value if set, zero value otherwise
 func (o *BackupRestoreJob) GetOplogTs() string {
 	if o == nil || IsNil(o.OplogTs) {
 		var ret string
@@ -489,6 +498,7 @@ func (o *BackupRestoreJob) GetOplogTsOk() (*string, bool) {
 	if o == nil || IsNil(o.OplogTs) {
 		return nil, false
 	}
+
 	return o.OplogTs, true
 }
 
@@ -506,7 +516,7 @@ func (o *BackupRestoreJob) SetOplogTs(v string) {
 	o.OplogTs = &v
 }
 
-// GetPointInTimeUTCMillis returns the PointInTimeUTCMillis field value if set, zero value otherwise.
+// GetPointInTimeUTCMillis returns the PointInTimeUTCMillis field value if set, zero value otherwise
 func (o *BackupRestoreJob) GetPointInTimeUTCMillis() int64 {
 	if o == nil || IsNil(o.PointInTimeUTCMillis) {
 		var ret int64
@@ -521,6 +531,7 @@ func (o *BackupRestoreJob) GetPointInTimeUTCMillisOk() (*int64, bool) {
 	if o == nil || IsNil(o.PointInTimeUTCMillis) {
 		return nil, false
 	}
+
 	return o.PointInTimeUTCMillis, true
 }
 
@@ -538,7 +549,7 @@ func (o *BackupRestoreJob) SetPointInTimeUTCMillis(v int64) {
 	o.PointInTimeUTCMillis = &v
 }
 
-// GetSnapshotId returns the SnapshotId field value if set, zero value otherwise.
+// GetSnapshotId returns the SnapshotId field value if set, zero value otherwise
 func (o *BackupRestoreJob) GetSnapshotId() string {
 	if o == nil || IsNil(o.SnapshotId) {
 		var ret string
@@ -553,6 +564,7 @@ func (o *BackupRestoreJob) GetSnapshotIdOk() (*string, bool) {
 	if o == nil || IsNil(o.SnapshotId) {
 		return nil, false
 	}
+
 	return o.SnapshotId, true
 }
 
@@ -570,7 +582,7 @@ func (o *BackupRestoreJob) SetSnapshotId(v string) {
 	o.SnapshotId = &v
 }
 
-// GetStatusName returns the StatusName field value if set, zero value otherwise.
+// GetStatusName returns the StatusName field value if set, zero value otherwise
 func (o *BackupRestoreJob) GetStatusName() string {
 	if o == nil || IsNil(o.StatusName) {
 		var ret string
@@ -585,6 +597,7 @@ func (o *BackupRestoreJob) GetStatusNameOk() (*string, bool) {
 	if o == nil || IsNil(o.StatusName) {
 		return nil, false
 	}
+
 	return o.StatusName, true
 }
 
@@ -602,7 +615,7 @@ func (o *BackupRestoreJob) SetStatusName(v string) {
 	o.StatusName = &v
 }
 
-// GetTimestamp returns the Timestamp field value if set, zero value otherwise.
+// GetTimestamp returns the Timestamp field value if set, zero value otherwise
 func (o *BackupRestoreJob) GetTimestamp() ApiBSONTimestamp {
 	if o == nil || IsNil(o.Timestamp) {
 		var ret ApiBSONTimestamp
@@ -617,6 +630,7 @@ func (o *BackupRestoreJob) GetTimestampOk() (*ApiBSONTimestamp, bool) {
 	if o == nil || IsNil(o.Timestamp) {
 		return nil, false
 	}
+
 	return o.Timestamp, true
 }
 
@@ -663,40 +677,4 @@ func (o BackupRestoreJob) ToMap() (map[string]interface{}, error) {
 		toSerialize["timestamp"] = o.Timestamp
 	}
 	return toSerialize, nil
-}
-
-type NullableBackupRestoreJob struct {
-	value *BackupRestoreJob
-	isSet bool
-}
-
-func (v NullableBackupRestoreJob) Get() *BackupRestoreJob {
-	return v.value
-}
-
-func (v *NullableBackupRestoreJob) Set(val *BackupRestoreJob) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableBackupRestoreJob) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableBackupRestoreJob) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableBackupRestoreJob(val *BackupRestoreJob) *NullableBackupRestoreJob {
-	return &NullableBackupRestoreJob{value: val, isSet: true}
-}
-
-func (v NullableBackupRestoreJob) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableBackupRestoreJob) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PerformanceAdvisorSlowQueryList type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PerformanceAdvisorSlowQueryList{}
-
 // PerformanceAdvisorSlowQueryList struct for PerformanceAdvisorSlowQueryList
 type PerformanceAdvisorSlowQueryList struct {
 	// List of operations that the Performance Advisor detected that took longer to execute than a specified threshold.
@@ -32,7 +29,7 @@ func NewPerformanceAdvisorSlowQueryListWithDefaults() *PerformanceAdvisorSlowQue
 	return &this
 }
 
-// GetSlowQueries returns the SlowQueries field value if set, zero value otherwise.
+// GetSlowQueries returns the SlowQueries field value if set, zero value otherwise
 func (o *PerformanceAdvisorSlowQueryList) GetSlowQueries() []PerformanceAdvisorSlowQuery {
 	if o == nil || IsNil(o.SlowQueries) {
 		var ret []PerformanceAdvisorSlowQuery
@@ -47,6 +44,7 @@ func (o *PerformanceAdvisorSlowQueryList) GetSlowQueriesOk() ([]PerformanceAdvis
 	if o == nil || IsNil(o.SlowQueries) {
 		return nil, false
 	}
+
 	return o.SlowQueries, true
 }
 
@@ -74,40 +72,4 @@ func (o PerformanceAdvisorSlowQueryList) MarshalJSONWithoutReadOnly() ([]byte, e
 func (o PerformanceAdvisorSlowQueryList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullablePerformanceAdvisorSlowQueryList struct {
-	value *PerformanceAdvisorSlowQueryList
-	isSet bool
-}
-
-func (v NullablePerformanceAdvisorSlowQueryList) Get() *PerformanceAdvisorSlowQueryList {
-	return v.value
-}
-
-func (v *NullablePerformanceAdvisorSlowQueryList) Set(val *PerformanceAdvisorSlowQueryList) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullablePerformanceAdvisorSlowQueryList) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullablePerformanceAdvisorSlowQueryList) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullablePerformanceAdvisorSlowQueryList(val *PerformanceAdvisorSlowQueryList) *NullablePerformanceAdvisorSlowQueryList {
-	return &NullablePerformanceAdvisorSlowQueryList{value: val, isSet: true}
-}
-
-func (v NullablePerformanceAdvisorSlowQueryList) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullablePerformanceAdvisorSlowQueryList) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

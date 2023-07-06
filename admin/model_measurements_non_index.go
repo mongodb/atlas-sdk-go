@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the MeasurementsNonIndex type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &MeasurementsNonIndex{}
-
 // MeasurementsNonIndex struct for MeasurementsNonIndex
 type MeasurementsNonIndex struct {
 	// Date and time that specifies when to stop retrieving measurements. If you set **end**, you must set **start**. You can't set this parameter and **period** in the same request. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
@@ -47,7 +44,7 @@ func NewMeasurementsNonIndexWithDefaults() *MeasurementsNonIndex {
 	return &this
 }
 
-// GetEnd returns the End field value if set, zero value otherwise.
+// GetEnd returns the End field value if set, zero value otherwise
 func (o *MeasurementsNonIndex) GetEnd() time.Time {
 	if o == nil || IsNil(o.End) {
 		var ret time.Time
@@ -62,6 +59,7 @@ func (o *MeasurementsNonIndex) GetEndOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.End) {
 		return nil, false
 	}
+
 	return o.End, true
 }
 
@@ -79,7 +77,7 @@ func (o *MeasurementsNonIndex) SetEnd(v time.Time) {
 	o.End = &v
 }
 
-// GetGranularity returns the Granularity field value if set, zero value otherwise.
+// GetGranularity returns the Granularity field value if set, zero value otherwise
 func (o *MeasurementsNonIndex) GetGranularity() string {
 	if o == nil || IsNil(o.Granularity) {
 		var ret string
@@ -94,6 +92,7 @@ func (o *MeasurementsNonIndex) GetGranularityOk() (*string, bool) {
 	if o == nil || IsNil(o.Granularity) {
 		return nil, false
 	}
+
 	return o.Granularity, true
 }
 
@@ -111,7 +110,7 @@ func (o *MeasurementsNonIndex) SetGranularity(v string) {
 	o.Granularity = &v
 }
 
-// GetGroupId returns the GroupId field value if set, zero value otherwise.
+// GetGroupId returns the GroupId field value if set, zero value otherwise
 func (o *MeasurementsNonIndex) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
 		var ret string
@@ -126,6 +125,7 @@ func (o *MeasurementsNonIndex) GetGroupIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupId) {
 		return nil, false
 	}
+
 	return o.GroupId, true
 }
 
@@ -143,7 +143,7 @@ func (o *MeasurementsNonIndex) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
-// GetHardwareMeasurements returns the HardwareMeasurements field value if set, zero value otherwise.
+// GetHardwareMeasurements returns the HardwareMeasurements field value if set, zero value otherwise
 func (o *MeasurementsNonIndex) GetHardwareMeasurements() []MetricsMeasurement {
 	if o == nil || IsNil(o.HardwareMeasurements) {
 		var ret []MetricsMeasurement
@@ -158,6 +158,7 @@ func (o *MeasurementsNonIndex) GetHardwareMeasurementsOk() ([]MetricsMeasurement
 	if o == nil || IsNil(o.HardwareMeasurements) {
 		return nil, false
 	}
+
 	return o.HardwareMeasurements, true
 }
 
@@ -175,7 +176,7 @@ func (o *MeasurementsNonIndex) SetHardwareMeasurements(v []MetricsMeasurement) {
 	o.HardwareMeasurements = v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *MeasurementsNonIndex) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -190,6 +191,7 @@ func (o *MeasurementsNonIndex) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -207,7 +209,7 @@ func (o *MeasurementsNonIndex) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetProcessId returns the ProcessId field value if set, zero value otherwise.
+// GetProcessId returns the ProcessId field value if set, zero value otherwise
 func (o *MeasurementsNonIndex) GetProcessId() string {
 	if o == nil || IsNil(o.ProcessId) {
 		var ret string
@@ -222,6 +224,7 @@ func (o *MeasurementsNonIndex) GetProcessIdOk() (*string, bool) {
 	if o == nil || IsNil(o.ProcessId) {
 		return nil, false
 	}
+
 	return o.ProcessId, true
 }
 
@@ -239,7 +242,7 @@ func (o *MeasurementsNonIndex) SetProcessId(v string) {
 	o.ProcessId = &v
 }
 
-// GetStart returns the Start field value if set, zero value otherwise.
+// GetStart returns the Start field value if set, zero value otherwise
 func (o *MeasurementsNonIndex) GetStart() time.Time {
 	if o == nil || IsNil(o.Start) {
 		var ret time.Time
@@ -254,6 +257,7 @@ func (o *MeasurementsNonIndex) GetStartOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Start) {
 		return nil, false
 	}
+
 	return o.Start, true
 }
 
@@ -271,7 +275,7 @@ func (o *MeasurementsNonIndex) SetStart(v time.Time) {
 	o.Start = &v
 }
 
-// GetStatusMeasurements returns the StatusMeasurements field value if set, zero value otherwise.
+// GetStatusMeasurements returns the StatusMeasurements field value if set, zero value otherwise
 func (o *MeasurementsNonIndex) GetStatusMeasurements() []MetricsMeasurement {
 	if o == nil || IsNil(o.StatusMeasurements) {
 		var ret []MetricsMeasurement
@@ -286,6 +290,7 @@ func (o *MeasurementsNonIndex) GetStatusMeasurementsOk() ([]MetricsMeasurement, 
 	if o == nil || IsNil(o.StatusMeasurements) {
 		return nil, false
 	}
+
 	return o.StatusMeasurements, true
 }
 
@@ -313,40 +318,4 @@ func (o MeasurementsNonIndex) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o MeasurementsNonIndex) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableMeasurementsNonIndex struct {
-	value *MeasurementsNonIndex
-	isSet bool
-}
-
-func (v NullableMeasurementsNonIndex) Get() *MeasurementsNonIndex {
-	return v.value
-}
-
-func (v *NullableMeasurementsNonIndex) Set(val *MeasurementsNonIndex) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableMeasurementsNonIndex) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableMeasurementsNonIndex) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableMeasurementsNonIndex(val *MeasurementsNonIndex) *NullableMeasurementsNonIndex {
-	return &NullableMeasurementsNonIndex{value: val, isSet: true}
-}
-
-func (v NullableMeasurementsNonIndex) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableMeasurementsNonIndex) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

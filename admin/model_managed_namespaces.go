@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ManagedNamespaces type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ManagedNamespaces{}
-
 // ManagedNamespaces struct for ManagedNamespaces
 type ManagedNamespaces struct {
 	// Human-readable label of the collection to manage for this Global Cluster.
@@ -131,7 +128,7 @@ func (o *ManagedNamespaces) SetDb(v string) {
 	o.Db = v
 }
 
-// GetIsCustomShardKeyHashed returns the IsCustomShardKeyHashed field value if set, zero value otherwise.
+// GetIsCustomShardKeyHashed returns the IsCustomShardKeyHashed field value if set, zero value otherwise
 func (o *ManagedNamespaces) GetIsCustomShardKeyHashed() bool {
 	if o == nil || IsNil(o.IsCustomShardKeyHashed) {
 		var ret bool
@@ -146,6 +143,7 @@ func (o *ManagedNamespaces) GetIsCustomShardKeyHashedOk() (*bool, bool) {
 	if o == nil || IsNil(o.IsCustomShardKeyHashed) {
 		return nil, false
 	}
+
 	return o.IsCustomShardKeyHashed, true
 }
 
@@ -163,7 +161,7 @@ func (o *ManagedNamespaces) SetIsCustomShardKeyHashed(v bool) {
 	o.IsCustomShardKeyHashed = &v
 }
 
-// GetIsShardKeyUnique returns the IsShardKeyUnique field value if set, zero value otherwise.
+// GetIsShardKeyUnique returns the IsShardKeyUnique field value if set, zero value otherwise
 func (o *ManagedNamespaces) GetIsShardKeyUnique() bool {
 	if o == nil || IsNil(o.IsShardKeyUnique) {
 		var ret bool
@@ -178,6 +176,7 @@ func (o *ManagedNamespaces) GetIsShardKeyUniqueOk() (*bool, bool) {
 	if o == nil || IsNil(o.IsShardKeyUnique) {
 		return nil, false
 	}
+
 	return o.IsShardKeyUnique, true
 }
 
@@ -195,7 +194,7 @@ func (o *ManagedNamespaces) SetIsShardKeyUnique(v bool) {
 	o.IsShardKeyUnique = &v
 }
 
-// GetNumInitialChunks returns the NumInitialChunks field value if set, zero value otherwise.
+// GetNumInitialChunks returns the NumInitialChunks field value if set, zero value otherwise
 func (o *ManagedNamespaces) GetNumInitialChunks() int64 {
 	if o == nil || IsNil(o.NumInitialChunks) {
 		var ret int64
@@ -210,6 +209,7 @@ func (o *ManagedNamespaces) GetNumInitialChunksOk() (*int64, bool) {
 	if o == nil || IsNil(o.NumInitialChunks) {
 		return nil, false
 	}
+
 	return o.NumInitialChunks, true
 }
 
@@ -227,7 +227,7 @@ func (o *ManagedNamespaces) SetNumInitialChunks(v int64) {
 	o.NumInitialChunks = &v
 }
 
-// GetPresplitHashedZones returns the PresplitHashedZones field value if set, zero value otherwise.
+// GetPresplitHashedZones returns the PresplitHashedZones field value if set, zero value otherwise
 func (o *ManagedNamespaces) GetPresplitHashedZones() bool {
 	if o == nil || IsNil(o.PresplitHashedZones) {
 		var ret bool
@@ -242,6 +242,7 @@ func (o *ManagedNamespaces) GetPresplitHashedZonesOk() (*bool, bool) {
 	if o == nil || IsNil(o.PresplitHashedZones) {
 		return nil, false
 	}
+
 	return o.PresplitHashedZones, true
 }
 
@@ -283,40 +284,4 @@ func (o ManagedNamespaces) ToMap() (map[string]interface{}, error) {
 		toSerialize["presplitHashedZones"] = o.PresplitHashedZones
 	}
 	return toSerialize, nil
-}
-
-type NullableManagedNamespaces struct {
-	value *ManagedNamespaces
-	isSet bool
-}
-
-func (v NullableManagedNamespaces) Get() *ManagedNamespaces {
-	return v.value
-}
-
-func (v *NullableManagedNamespaces) Set(val *ManagedNamespaces) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableManagedNamespaces) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableManagedNamespaces) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableManagedNamespaces(val *ManagedNamespaces) *NullableManagedNamespaces {
-	return &NullableManagedNamespaces{value: val, isSet: true}
-}
-
-func (v NullableManagedNamespaces) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableManagedNamespaces) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

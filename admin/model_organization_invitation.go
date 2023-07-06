@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the OrganizationInvitation type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &OrganizationInvitation{}
-
 // OrganizationInvitation struct for OrganizationInvitation
 type OrganizationInvitation struct {
 	// Date and time when MongoDB Cloud sent the invitation. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
@@ -52,7 +49,7 @@ func NewOrganizationInvitationWithDefaults() *OrganizationInvitation {
 	return &this
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise
 func (o *OrganizationInvitation) GetCreatedAt() time.Time {
 	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
@@ -67,6 +64,7 @@ func (o *OrganizationInvitation) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
+
 	return o.CreatedAt, true
 }
 
@@ -84,7 +82,7 @@ func (o *OrganizationInvitation) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
-// GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise.
+// GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise
 func (o *OrganizationInvitation) GetExpiresAt() time.Time {
 	if o == nil || IsNil(o.ExpiresAt) {
 		var ret time.Time
@@ -99,6 +97,7 @@ func (o *OrganizationInvitation) GetExpiresAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.ExpiresAt) {
 		return nil, false
 	}
+
 	return o.ExpiresAt, true
 }
 
@@ -116,7 +115,7 @@ func (o *OrganizationInvitation) SetExpiresAt(v time.Time) {
 	o.ExpiresAt = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *OrganizationInvitation) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -131,6 +130,7 @@ func (o *OrganizationInvitation) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -148,7 +148,7 @@ func (o *OrganizationInvitation) SetId(v string) {
 	o.Id = &v
 }
 
-// GetInviterUsername returns the InviterUsername field value if set, zero value otherwise.
+// GetInviterUsername returns the InviterUsername field value if set, zero value otherwise
 func (o *OrganizationInvitation) GetInviterUsername() string {
 	if o == nil || IsNil(o.InviterUsername) {
 		var ret string
@@ -163,6 +163,7 @@ func (o *OrganizationInvitation) GetInviterUsernameOk() (*string, bool) {
 	if o == nil || IsNil(o.InviterUsername) {
 		return nil, false
 	}
+
 	return o.InviterUsername, true
 }
 
@@ -180,7 +181,7 @@ func (o *OrganizationInvitation) SetInviterUsername(v string) {
 	o.InviterUsername = &v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *OrganizationInvitation) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -195,6 +196,7 @@ func (o *OrganizationInvitation) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -212,7 +214,7 @@ func (o *OrganizationInvitation) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetOrgId returns the OrgId field value if set, zero value otherwise.
+// GetOrgId returns the OrgId field value if set, zero value otherwise
 func (o *OrganizationInvitation) GetOrgId() string {
 	if o == nil || IsNil(o.OrgId) {
 		var ret string
@@ -227,6 +229,7 @@ func (o *OrganizationInvitation) GetOrgIdOk() (*string, bool) {
 	if o == nil || IsNil(o.OrgId) {
 		return nil, false
 	}
+
 	return o.OrgId, true
 }
 
@@ -268,7 +271,7 @@ func (o *OrganizationInvitation) SetOrgName(v string) {
 	o.OrgName = v
 }
 
-// GetRoles returns the Roles field value if set, zero value otherwise.
+// GetRoles returns the Roles field value if set, zero value otherwise
 func (o *OrganizationInvitation) GetRoles() []string {
 	if o == nil || IsNil(o.Roles) {
 		var ret []string
@@ -283,6 +286,7 @@ func (o *OrganizationInvitation) GetRolesOk() ([]string, bool) {
 	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
+
 	return o.Roles, true
 }
 
@@ -300,7 +304,7 @@ func (o *OrganizationInvitation) SetRoles(v []string) {
 	o.Roles = v
 }
 
-// GetTeamIds returns the TeamIds field value if set, zero value otherwise.
+// GetTeamIds returns the TeamIds field value if set, zero value otherwise
 func (o *OrganizationInvitation) GetTeamIds() []string {
 	if o == nil || IsNil(o.TeamIds) {
 		var ret []string
@@ -315,6 +319,7 @@ func (o *OrganizationInvitation) GetTeamIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.TeamIds) {
 		return nil, false
 	}
+
 	return o.TeamIds, true
 }
 
@@ -332,7 +337,7 @@ func (o *OrganizationInvitation) SetTeamIds(v []string) {
 	o.TeamIds = v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
+// GetUsername returns the Username field value if set, zero value otherwise
 func (o *OrganizationInvitation) GetUsername() string {
 	if o == nil || IsNil(o.Username) {
 		var ret string
@@ -347,6 +352,7 @@ func (o *OrganizationInvitation) GetUsernameOk() (*string, bool) {
 	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
+
 	return o.Username, true
 }
 
@@ -381,40 +387,4 @@ func (o OrganizationInvitation) ToMap() (map[string]interface{}, error) {
 		toSerialize["username"] = o.Username
 	}
 	return toSerialize, nil
-}
-
-type NullableOrganizationInvitation struct {
-	value *OrganizationInvitation
-	isSet bool
-}
-
-func (v NullableOrganizationInvitation) Get() *OrganizationInvitation {
-	return v.value
-}
-
-func (v *NullableOrganizationInvitation) Set(val *OrganizationInvitation) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableOrganizationInvitation) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableOrganizationInvitation) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableOrganizationInvitation(val *OrganizationInvitation) *NullableOrganizationInvitation {
-	return &NullableOrganizationInvitation{value: val, isSet: true}
-}
-
-func (v NullableOrganizationInvitation) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableOrganizationInvitation) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

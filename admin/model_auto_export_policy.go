@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the AutoExportPolicy type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AutoExportPolicy{}
-
 // AutoExportPolicy Policy for automatically exporting cloud backup snapshots.
 type AutoExportPolicy struct {
 	// Unique 24-hexadecimal character string that identifies the AWS Bucket.
@@ -34,7 +31,7 @@ func NewAutoExportPolicyWithDefaults() *AutoExportPolicy {
 	return &this
 }
 
-// GetExportBucketId returns the ExportBucketId field value if set, zero value otherwise.
+// GetExportBucketId returns the ExportBucketId field value if set, zero value otherwise
 func (o *AutoExportPolicy) GetExportBucketId() string {
 	if o == nil || IsNil(o.ExportBucketId) {
 		var ret string
@@ -49,6 +46,7 @@ func (o *AutoExportPolicy) GetExportBucketIdOk() (*string, bool) {
 	if o == nil || IsNil(o.ExportBucketId) {
 		return nil, false
 	}
+
 	return o.ExportBucketId, true
 }
 
@@ -66,7 +64,7 @@ func (o *AutoExportPolicy) SetExportBucketId(v string) {
 	o.ExportBucketId = &v
 }
 
-// GetFrequencyType returns the FrequencyType field value if set, zero value otherwise.
+// GetFrequencyType returns the FrequencyType field value if set, zero value otherwise
 func (o *AutoExportPolicy) GetFrequencyType() string {
 	if o == nil || IsNil(o.FrequencyType) {
 		var ret string
@@ -81,6 +79,7 @@ func (o *AutoExportPolicy) GetFrequencyTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.FrequencyType) {
 		return nil, false
 	}
+
 	return o.FrequencyType, true
 }
 
@@ -114,40 +113,4 @@ func (o AutoExportPolicy) ToMap() (map[string]interface{}, error) {
 		toSerialize["frequencyType"] = o.FrequencyType
 	}
 	return toSerialize, nil
-}
-
-type NullableAutoExportPolicy struct {
-	value *AutoExportPolicy
-	isSet bool
-}
-
-func (v NullableAutoExportPolicy) Get() *AutoExportPolicy {
-	return v.value
-}
-
-func (v *NullableAutoExportPolicy) Set(val *AutoExportPolicy) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableAutoExportPolicy) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableAutoExportPolicy) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableAutoExportPolicy(val *AutoExportPolicy) *NullableAutoExportPolicy {
-	return &NullableAutoExportPolicy{value: val, isSet: true}
-}
-
-func (v NullableAutoExportPolicy) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableAutoExportPolicy) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

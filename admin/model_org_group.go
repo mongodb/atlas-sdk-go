@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the OrgGroup type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &OrgGroup{}
-
 // OrgGroup struct for OrgGroup
 type OrgGroup struct {
 	// Settings that describe the clusters in each project that the API key is authorized to view.
@@ -44,7 +41,7 @@ func NewOrgGroupWithDefaults() *OrgGroup {
 	return &this
 }
 
-// GetClusters returns the Clusters field value if set, zero value otherwise.
+// GetClusters returns the Clusters field value if set, zero value otherwise
 func (o *OrgGroup) GetClusters() []CloudCluster {
 	if o == nil || IsNil(o.Clusters) {
 		var ret []CloudCluster
@@ -59,6 +56,7 @@ func (o *OrgGroup) GetClustersOk() ([]CloudCluster, bool) {
 	if o == nil || IsNil(o.Clusters) {
 		return nil, false
 	}
+
 	return o.Clusters, true
 }
 
@@ -76,7 +74,7 @@ func (o *OrgGroup) SetClusters(v []CloudCluster) {
 	o.Clusters = v
 }
 
-// GetGroupId returns the GroupId field value if set, zero value otherwise.
+// GetGroupId returns the GroupId field value if set, zero value otherwise
 func (o *OrgGroup) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
 		var ret string
@@ -91,6 +89,7 @@ func (o *OrgGroup) GetGroupIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupId) {
 		return nil, false
 	}
+
 	return o.GroupId, true
 }
 
@@ -108,7 +107,7 @@ func (o *OrgGroup) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
-// GetGroupName returns the GroupName field value if set, zero value otherwise.
+// GetGroupName returns the GroupName field value if set, zero value otherwise
 func (o *OrgGroup) GetGroupName() string {
 	if o == nil || IsNil(o.GroupName) {
 		var ret string
@@ -123,6 +122,7 @@ func (o *OrgGroup) GetGroupNameOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupName) {
 		return nil, false
 	}
+
 	return o.GroupName, true
 }
 
@@ -140,7 +140,7 @@ func (o *OrgGroup) SetGroupName(v string) {
 	o.GroupName = &v
 }
 
-// GetOrgId returns the OrgId field value if set, zero value otherwise.
+// GetOrgId returns the OrgId field value if set, zero value otherwise
 func (o *OrgGroup) GetOrgId() string {
 	if o == nil || IsNil(o.OrgId) {
 		var ret string
@@ -155,6 +155,7 @@ func (o *OrgGroup) GetOrgIdOk() (*string, bool) {
 	if o == nil || IsNil(o.OrgId) {
 		return nil, false
 	}
+
 	return o.OrgId, true
 }
 
@@ -172,7 +173,7 @@ func (o *OrgGroup) SetOrgId(v string) {
 	o.OrgId = &v
 }
 
-// GetOrgName returns the OrgName field value if set, zero value otherwise.
+// GetOrgName returns the OrgName field value if set, zero value otherwise
 func (o *OrgGroup) GetOrgName() string {
 	if o == nil || IsNil(o.OrgName) {
 		var ret string
@@ -187,6 +188,7 @@ func (o *OrgGroup) GetOrgNameOk() (*string, bool) {
 	if o == nil || IsNil(o.OrgName) {
 		return nil, false
 	}
+
 	return o.OrgName, true
 }
 
@@ -204,7 +206,7 @@ func (o *OrgGroup) SetOrgName(v string) {
 	o.OrgName = &v
 }
 
-// GetPlanType returns the PlanType field value if set, zero value otherwise.
+// GetPlanType returns the PlanType field value if set, zero value otherwise
 func (o *OrgGroup) GetPlanType() string {
 	if o == nil || IsNil(o.PlanType) {
 		var ret string
@@ -219,6 +221,7 @@ func (o *OrgGroup) GetPlanTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.PlanType) {
 		return nil, false
 	}
+
 	return o.PlanType, true
 }
 
@@ -236,7 +239,7 @@ func (o *OrgGroup) SetPlanType(v string) {
 	o.PlanType = &v
 }
 
-// GetTags returns the Tags field value if set, zero value otherwise.
+// GetTags returns the Tags field value if set, zero value otherwise
 func (o *OrgGroup) GetTags() []string {
 	if o == nil || IsNil(o.Tags) {
 		var ret []string
@@ -251,6 +254,7 @@ func (o *OrgGroup) GetTagsOk() ([]string, bool) {
 	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
+
 	return o.Tags, true
 }
 
@@ -284,40 +288,4 @@ func (o OrgGroup) ToMap() (map[string]interface{}, error) {
 		toSerialize["orgName"] = o.OrgName
 	}
 	return toSerialize, nil
-}
-
-type NullableOrgGroup struct {
-	value *OrgGroup
-	isSet bool
-}
-
-func (v NullableOrgGroup) Get() *OrgGroup {
-	return v.value
-}
-
-func (v *NullableOrgGroup) Set(val *OrgGroup) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableOrgGroup) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableOrgGroup) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableOrgGroup(val *OrgGroup) *NullableOrgGroup {
-	return &NullableOrgGroup{value: val, isSet: true}
-}
-
-func (v NullableOrgGroup) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableOrgGroup) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PaginatedIntegration type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PaginatedIntegration{}
-
 // PaginatedIntegration struct for PaginatedIntegration
 type PaginatedIntegration struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -36,7 +33,7 @@ func NewPaginatedIntegrationWithDefaults() *PaginatedIntegration {
 	return &this
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *PaginatedIntegration) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -51,6 +48,7 @@ func (o *PaginatedIntegration) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -68,7 +66,7 @@ func (o *PaginatedIntegration) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetResults returns the Results field value if set, zero value otherwise.
+// GetResults returns the Results field value if set, zero value otherwise
 func (o *PaginatedIntegration) GetResults() []ThridPartyIntegration {
 	if o == nil || IsNil(o.Results) {
 		var ret []ThridPartyIntegration
@@ -83,6 +81,7 @@ func (o *PaginatedIntegration) GetResultsOk() ([]ThridPartyIntegration, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
+
 	return o.Results, true
 }
 
@@ -100,7 +99,7 @@ func (o *PaginatedIntegration) SetResults(v []ThridPartyIntegration) {
 	o.Results = v
 }
 
-// GetTotalCount returns the TotalCount field value if set, zero value otherwise.
+// GetTotalCount returns the TotalCount field value if set, zero value otherwise
 func (o *PaginatedIntegration) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int
@@ -115,6 +114,7 @@ func (o *PaginatedIntegration) GetTotalCountOk() (*int, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
+
 	return o.TotalCount, true
 }
 
@@ -142,40 +142,4 @@ func (o PaginatedIntegration) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o PaginatedIntegration) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullablePaginatedIntegration struct {
-	value *PaginatedIntegration
-	isSet bool
-}
-
-func (v NullablePaginatedIntegration) Get() *PaginatedIntegration {
-	return v.value
-}
-
-func (v *NullablePaginatedIntegration) Set(val *PaginatedIntegration) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullablePaginatedIntegration) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullablePaginatedIntegration) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullablePaginatedIntegration(val *PaginatedIntegration) *NullablePaginatedIntegration {
-	return &NullablePaginatedIntegration{value: val, isSet: true}
-}
-
-func (v NullablePaginatedIntegration) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullablePaginatedIntegration) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

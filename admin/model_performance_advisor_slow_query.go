@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PerformanceAdvisorSlowQuery type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PerformanceAdvisorSlowQuery{}
-
 // PerformanceAdvisorSlowQuery Details of one slow query that the Performance Advisor detected.
 type PerformanceAdvisorSlowQuery struct {
 	// Text of the MongoDB log related to this slow query.
@@ -34,7 +31,7 @@ func NewPerformanceAdvisorSlowQueryWithDefaults() *PerformanceAdvisorSlowQuery {
 	return &this
 }
 
-// GetLine returns the Line field value if set, zero value otherwise.
+// GetLine returns the Line field value if set, zero value otherwise
 func (o *PerformanceAdvisorSlowQuery) GetLine() string {
 	if o == nil || IsNil(o.Line) {
 		var ret string
@@ -49,6 +46,7 @@ func (o *PerformanceAdvisorSlowQuery) GetLineOk() (*string, bool) {
 	if o == nil || IsNil(o.Line) {
 		return nil, false
 	}
+
 	return o.Line, true
 }
 
@@ -66,7 +64,7 @@ func (o *PerformanceAdvisorSlowQuery) SetLine(v string) {
 	o.Line = &v
 }
 
-// GetNamespace returns the Namespace field value if set, zero value otherwise.
+// GetNamespace returns the Namespace field value if set, zero value otherwise
 func (o *PerformanceAdvisorSlowQuery) GetNamespace() string {
 	if o == nil || IsNil(o.Namespace) {
 		var ret string
@@ -81,6 +79,7 @@ func (o *PerformanceAdvisorSlowQuery) GetNamespaceOk() (*string, bool) {
 	if o == nil || IsNil(o.Namespace) {
 		return nil, false
 	}
+
 	return o.Namespace, true
 }
 
@@ -108,40 +107,4 @@ func (o PerformanceAdvisorSlowQuery) MarshalJSONWithoutReadOnly() ([]byte, error
 func (o PerformanceAdvisorSlowQuery) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullablePerformanceAdvisorSlowQuery struct {
-	value *PerformanceAdvisorSlowQuery
-	isSet bool
-}
-
-func (v NullablePerformanceAdvisorSlowQuery) Get() *PerformanceAdvisorSlowQuery {
-	return v.value
-}
-
-func (v *NullablePerformanceAdvisorSlowQuery) Set(val *PerformanceAdvisorSlowQuery) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullablePerformanceAdvisorSlowQuery) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullablePerformanceAdvisorSlowQuery) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullablePerformanceAdvisorSlowQuery(val *PerformanceAdvisorSlowQuery) *NullablePerformanceAdvisorSlowQuery {
-	return &NullablePerformanceAdvisorSlowQuery{value: val, isSet: true}
-}
-
-func (v NullablePerformanceAdvisorSlowQuery) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullablePerformanceAdvisorSlowQuery) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

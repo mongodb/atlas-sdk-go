@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PartitionField type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PartitionField{}
-
 // PartitionField Metadata to partition this online archive.
 type PartitionField struct {
 	// Human-readable label that identifies the parameter that MongoDB Cloud uses to partition data. To specify a nested parameter, use the dot notation.
@@ -64,7 +61,7 @@ func (o *PartitionField) SetFieldName(v string) {
 	o.FieldName = v
 }
 
-// GetFieldType returns the FieldType field value if set, zero value otherwise.
+// GetFieldType returns the FieldType field value if set, zero value otherwise
 func (o *PartitionField) GetFieldType() string {
 	if o == nil || IsNil(o.FieldType) {
 		var ret string
@@ -79,6 +76,7 @@ func (o *PartitionField) GetFieldTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.FieldType) {
 		return nil, false
 	}
+
 	return o.FieldType, true
 }
 
@@ -132,40 +130,4 @@ func (o PartitionField) ToMap() (map[string]interface{}, error) {
 	toSerialize["fieldName"] = o.FieldName
 	toSerialize["order"] = o.Order
 	return toSerialize, nil
-}
-
-type NullablePartitionField struct {
-	value *PartitionField
-	isSet bool
-}
-
-func (v NullablePartitionField) Get() *PartitionField {
-	return v.value
-}
-
-func (v *NullablePartitionField) Set(val *PartitionField) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullablePartitionField) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullablePartitionField) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullablePartitionField(val *PartitionField) *NullablePartitionField {
-	return &NullablePartitionField{value: val, isSet: true}
-}
-
-func (v NullablePartitionField) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullablePartitionField) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the DatabasePermittedNamespaceResource type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DatabasePermittedNamespaceResource{}
-
 // DatabasePermittedNamespaceResource Namespace to which this database user has access.
 type DatabasePermittedNamespaceResource struct {
 	// Flag that indicates whether to grant the action on the cluster resource. If `true`, MongoDB Cloud ignores the **actions.resources.collection** and **actions.resources.db** parameters.
@@ -124,40 +121,4 @@ func (o DatabasePermittedNamespaceResource) ToMap() (map[string]interface{}, err
 	toSerialize["collection"] = o.Collection
 	toSerialize["db"] = o.Db
 	return toSerialize, nil
-}
-
-type NullableDatabasePermittedNamespaceResource struct {
-	value *DatabasePermittedNamespaceResource
-	isSet bool
-}
-
-func (v NullableDatabasePermittedNamespaceResource) Get() *DatabasePermittedNamespaceResource {
-	return v.value
-}
-
-func (v *NullableDatabasePermittedNamespaceResource) Set(val *DatabasePermittedNamespaceResource) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableDatabasePermittedNamespaceResource) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableDatabasePermittedNamespaceResource) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableDatabasePermittedNamespaceResource(val *DatabasePermittedNamespaceResource) *NullableDatabasePermittedNamespaceResource {
-	return &NullableDatabasePermittedNamespaceResource{value: val, isSet: true}
-}
-
-func (v NullableDatabasePermittedNamespaceResource) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableDatabasePermittedNamespaceResource) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

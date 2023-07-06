@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the DiskBackupApiPolicyItem type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DiskBackupApiPolicyItem{}
-
 // DiskBackupApiPolicyItem Specifications for one policy.
 type DiskBackupApiPolicyItem struct {
 	// Number that indicates the frequency interval for a set of snapshots. A value of `1` specifies the first instance of the corresponding `frequencyType`.  - In a monthly policy item, `1` indicates that the monthly snapshot occurs on the first day of the month and `40` indicates the last day of the month.  - In a weekly policy item, `1` indicates that the weekly snapshot occurs on Monday and `7` indicates Sunday.  - In an hourly policy item, you can set the frequency interval to `1`, `2`, `4`, `6`, `8`, or `12`. For hourly policy items for NVMe clusters, MongoDB Cloud accepts only `12` as the frequency interval value.   MongoDB Cloud ignores this setting for non-hourly policy items in Backup Compliance Policy settings.
@@ -92,7 +89,7 @@ func (o *DiskBackupApiPolicyItem) SetFrequencyType(v string) {
 	o.FrequencyType = v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *DiskBackupApiPolicyItem) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -107,6 +104,7 @@ func (o *DiskBackupApiPolicyItem) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -186,40 +184,4 @@ func (o DiskBackupApiPolicyItem) ToMap() (map[string]interface{}, error) {
 	toSerialize["retentionUnit"] = o.RetentionUnit
 	toSerialize["retentionValue"] = o.RetentionValue
 	return toSerialize, nil
-}
-
-type NullableDiskBackupApiPolicyItem struct {
-	value *DiskBackupApiPolicyItem
-	isSet bool
-}
-
-func (v NullableDiskBackupApiPolicyItem) Get() *DiskBackupApiPolicyItem {
-	return v.value
-}
-
-func (v *NullableDiskBackupApiPolicyItem) Set(val *DiskBackupApiPolicyItem) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableDiskBackupApiPolicyItem) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableDiskBackupApiPolicyItem) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableDiskBackupApiPolicyItem(val *DiskBackupApiPolicyItem) *NullableDiskBackupApiPolicyItem {
-	return &NullableDiskBackupApiPolicyItem{value: val, isSet: true}
-}
-
-func (v NullableDiskBackupApiPolicyItem) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableDiskBackupApiPolicyItem) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

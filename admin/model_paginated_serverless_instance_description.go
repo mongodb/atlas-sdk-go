@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PaginatedServerlessInstanceDescription type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PaginatedServerlessInstanceDescription{}
-
 // PaginatedServerlessInstanceDescription struct for PaginatedServerlessInstanceDescription
 type PaginatedServerlessInstanceDescription struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -36,7 +33,7 @@ func NewPaginatedServerlessInstanceDescriptionWithDefaults() *PaginatedServerles
 	return &this
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *PaginatedServerlessInstanceDescription) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -51,6 +48,7 @@ func (o *PaginatedServerlessInstanceDescription) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -68,7 +66,7 @@ func (o *PaginatedServerlessInstanceDescription) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetResults returns the Results field value if set, zero value otherwise.
+// GetResults returns the Results field value if set, zero value otherwise
 func (o *PaginatedServerlessInstanceDescription) GetResults() []ServerlessInstanceDescription {
 	if o == nil || IsNil(o.Results) {
 		var ret []ServerlessInstanceDescription
@@ -83,6 +81,7 @@ func (o *PaginatedServerlessInstanceDescription) GetResultsOk() ([]ServerlessIns
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
+
 	return o.Results, true
 }
 
@@ -100,7 +99,7 @@ func (o *PaginatedServerlessInstanceDescription) SetResults(v []ServerlessInstan
 	o.Results = v
 }
 
-// GetTotalCount returns the TotalCount field value if set, zero value otherwise.
+// GetTotalCount returns the TotalCount field value if set, zero value otherwise
 func (o *PaginatedServerlessInstanceDescription) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int
@@ -115,6 +114,7 @@ func (o *PaginatedServerlessInstanceDescription) GetTotalCountOk() (*int, bool) 
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
+
 	return o.TotalCount, true
 }
 
@@ -142,40 +142,4 @@ func (o PaginatedServerlessInstanceDescription) MarshalJSONWithoutReadOnly() ([]
 func (o PaginatedServerlessInstanceDescription) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullablePaginatedServerlessInstanceDescription struct {
-	value *PaginatedServerlessInstanceDescription
-	isSet bool
-}
-
-func (v NullablePaginatedServerlessInstanceDescription) Get() *PaginatedServerlessInstanceDescription {
-	return v.value
-}
-
-func (v *NullablePaginatedServerlessInstanceDescription) Set(val *PaginatedServerlessInstanceDescription) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullablePaginatedServerlessInstanceDescription) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullablePaginatedServerlessInstanceDescription) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullablePaginatedServerlessInstanceDescription(val *PaginatedServerlessInstanceDescription) *NullablePaginatedServerlessInstanceDescription {
-	return &NullablePaginatedServerlessInstanceDescription{value: val, isSet: true}
-}
-
-func (v NullablePaginatedServerlessInstanceDescription) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullablePaginatedServerlessInstanceDescription) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

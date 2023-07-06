@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the UserSecurity type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &UserSecurity{}
-
 // UserSecurity struct for UserSecurity
 type UserSecurity struct {
 	CustomerX509 *DBUserTLSX509Settings `json:"customerX509,omitempty"`
@@ -34,7 +31,7 @@ func NewUserSecurityWithDefaults() *UserSecurity {
 	return &this
 }
 
-// GetCustomerX509 returns the CustomerX509 field value if set, zero value otherwise.
+// GetCustomerX509 returns the CustomerX509 field value if set, zero value otherwise
 func (o *UserSecurity) GetCustomerX509() DBUserTLSX509Settings {
 	if o == nil || IsNil(o.CustomerX509) {
 		var ret DBUserTLSX509Settings
@@ -49,6 +46,7 @@ func (o *UserSecurity) GetCustomerX509Ok() (*DBUserTLSX509Settings, bool) {
 	if o == nil || IsNil(o.CustomerX509) {
 		return nil, false
 	}
+
 	return o.CustomerX509, true
 }
 
@@ -66,7 +64,7 @@ func (o *UserSecurity) SetCustomerX509(v DBUserTLSX509Settings) {
 	o.CustomerX509 = &v
 }
 
-// GetLdap returns the Ldap field value if set, zero value otherwise.
+// GetLdap returns the Ldap field value if set, zero value otherwise
 func (o *UserSecurity) GetLdap() LDAPSecuritySettings {
 	if o == nil || IsNil(o.Ldap) {
 		var ret LDAPSecuritySettings
@@ -81,6 +79,7 @@ func (o *UserSecurity) GetLdapOk() (*LDAPSecuritySettings, bool) {
 	if o == nil || IsNil(o.Ldap) {
 		return nil, false
 	}
+
 	return o.Ldap, true
 }
 
@@ -98,7 +97,7 @@ func (o *UserSecurity) SetLdap(v LDAPSecuritySettings) {
 	o.Ldap = &v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *UserSecurity) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -113,6 +112,7 @@ func (o *UserSecurity) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -146,40 +146,4 @@ func (o UserSecurity) ToMap() (map[string]interface{}, error) {
 		toSerialize["ldap"] = o.Ldap
 	}
 	return toSerialize, nil
-}
-
-type NullableUserSecurity struct {
-	value *UserSecurity
-	isSet bool
-}
-
-func (v NullableUserSecurity) Get() *UserSecurity {
-	return v.value
-}
-
-func (v *NullableUserSecurity) Set(val *UserSecurity) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableUserSecurity) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableUserSecurity) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableUserSecurity(val *UserSecurity) *NullableUserSecurity {
-	return &NullableUserSecurity{value: val, isSet: true}
-}
-
-func (v NullableUserSecurity) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableUserSecurity) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

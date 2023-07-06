@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the MetricDataPoint type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &MetricDataPoint{}
-
 // MetricDataPoint value of, and metadata provided for, one data point generated at a particular moment in time. If no data point exists for a particular moment in time, the `value` parameter returns `null`.
 type MetricDataPoint struct {
 	// Date and time when this data point occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
@@ -35,7 +32,7 @@ func NewMetricDataPointWithDefaults() *MetricDataPoint {
 	return &this
 }
 
-// GetTimestamp returns the Timestamp field value if set, zero value otherwise.
+// GetTimestamp returns the Timestamp field value if set, zero value otherwise
 func (o *MetricDataPoint) GetTimestamp() time.Time {
 	if o == nil || IsNil(o.Timestamp) {
 		var ret time.Time
@@ -50,6 +47,7 @@ func (o *MetricDataPoint) GetTimestampOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Timestamp) {
 		return nil, false
 	}
+
 	return o.Timestamp, true
 }
 
@@ -67,7 +65,7 @@ func (o *MetricDataPoint) SetTimestamp(v time.Time) {
 	o.Timestamp = &v
 }
 
-// GetValue returns the Value field value if set, zero value otherwise.
+// GetValue returns the Value field value if set, zero value otherwise
 func (o *MetricDataPoint) GetValue() float32 {
 	if o == nil || IsNil(o.Value) {
 		var ret float32
@@ -82,6 +80,7 @@ func (o *MetricDataPoint) GetValueOk() (*float32, bool) {
 	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
+
 	return o.Value, true
 }
 
@@ -109,40 +108,4 @@ func (o MetricDataPoint) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o MetricDataPoint) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableMetricDataPoint struct {
-	value *MetricDataPoint
-	isSet bool
-}
-
-func (v NullableMetricDataPoint) Get() *MetricDataPoint {
-	return v.value
-}
-
-func (v *NullableMetricDataPoint) Set(val *MetricDataPoint) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableMetricDataPoint) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableMetricDataPoint) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableMetricDataPoint(val *MetricDataPoint) *NullableMetricDataPoint {
-	return &NullableMetricDataPoint{value: val, isSet: true}
-}
-
-func (v NullableMetricDataPoint) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableMetricDataPoint) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

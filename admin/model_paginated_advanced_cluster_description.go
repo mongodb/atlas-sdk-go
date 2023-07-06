@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PaginatedAdvancedClusterDescription type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PaginatedAdvancedClusterDescription{}
-
 // PaginatedAdvancedClusterDescription struct for PaginatedAdvancedClusterDescription
 type PaginatedAdvancedClusterDescription struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -36,7 +33,7 @@ func NewPaginatedAdvancedClusterDescriptionWithDefaults() *PaginatedAdvancedClus
 	return &this
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *PaginatedAdvancedClusterDescription) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -51,6 +48,7 @@ func (o *PaginatedAdvancedClusterDescription) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -68,7 +66,7 @@ func (o *PaginatedAdvancedClusterDescription) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetResults returns the Results field value if set, zero value otherwise.
+// GetResults returns the Results field value if set, zero value otherwise
 func (o *PaginatedAdvancedClusterDescription) GetResults() []AdvancedClusterDescription {
 	if o == nil || IsNil(o.Results) {
 		var ret []AdvancedClusterDescription
@@ -83,6 +81,7 @@ func (o *PaginatedAdvancedClusterDescription) GetResultsOk() ([]AdvancedClusterD
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
+
 	return o.Results, true
 }
 
@@ -100,7 +99,7 @@ func (o *PaginatedAdvancedClusterDescription) SetResults(v []AdvancedClusterDesc
 	o.Results = v
 }
 
-// GetTotalCount returns the TotalCount field value if set, zero value otherwise.
+// GetTotalCount returns the TotalCount field value if set, zero value otherwise
 func (o *PaginatedAdvancedClusterDescription) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int
@@ -115,6 +114,7 @@ func (o *PaginatedAdvancedClusterDescription) GetTotalCountOk() (*int, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
+
 	return o.TotalCount, true
 }
 
@@ -142,40 +142,4 @@ func (o PaginatedAdvancedClusterDescription) MarshalJSONWithoutReadOnly() ([]byt
 func (o PaginatedAdvancedClusterDescription) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullablePaginatedAdvancedClusterDescription struct {
-	value *PaginatedAdvancedClusterDescription
-	isSet bool
-}
-
-func (v NullablePaginatedAdvancedClusterDescription) Get() *PaginatedAdvancedClusterDescription {
-	return v.value
-}
-
-func (v *NullablePaginatedAdvancedClusterDescription) Set(val *PaginatedAdvancedClusterDescription) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullablePaginatedAdvancedClusterDescription) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullablePaginatedAdvancedClusterDescription) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullablePaginatedAdvancedClusterDescription(val *PaginatedAdvancedClusterDescription) *NullablePaginatedAdvancedClusterDescription {
-	return &NullablePaginatedAdvancedClusterDescription{value: val, isSet: true}
-}
-
-func (v NullablePaginatedAdvancedClusterDescription) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullablePaginatedAdvancedClusterDescription) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

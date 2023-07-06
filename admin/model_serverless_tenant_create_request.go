@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ServerlessTenantCreateRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ServerlessTenantCreateRequest{}
-
 // ServerlessTenantCreateRequest struct for ServerlessTenantCreateRequest
 type ServerlessTenantCreateRequest struct {
 	// Human-readable comment associated with the private endpoint.
@@ -32,7 +29,7 @@ func NewServerlessTenantCreateRequestWithDefaults() *ServerlessTenantCreateReque
 	return &this
 }
 
-// GetComment returns the Comment field value if set, zero value otherwise.
+// GetComment returns the Comment field value if set, zero value otherwise
 func (o *ServerlessTenantCreateRequest) GetComment() string {
 	if o == nil || IsNil(o.Comment) {
 		var ret string
@@ -47,6 +44,7 @@ func (o *ServerlessTenantCreateRequest) GetCommentOk() (*string, bool) {
 	if o == nil || IsNil(o.Comment) {
 		return nil, false
 	}
+
 	return o.Comment, true
 }
 
@@ -77,40 +75,4 @@ func (o ServerlessTenantCreateRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["comment"] = o.Comment
 	}
 	return toSerialize, nil
-}
-
-type NullableServerlessTenantCreateRequest struct {
-	value *ServerlessTenantCreateRequest
-	isSet bool
-}
-
-func (v NullableServerlessTenantCreateRequest) Get() *ServerlessTenantCreateRequest {
-	return v.value
-}
-
-func (v *NullableServerlessTenantCreateRequest) Set(val *ServerlessTenantCreateRequest) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableServerlessTenantCreateRequest) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableServerlessTenantCreateRequest) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableServerlessTenantCreateRequest(val *ServerlessTenantCreateRequest) *NullableServerlessTenantCreateRequest {
-	return &NullableServerlessTenantCreateRequest{value: val, isSet: true}
-}
-
-func (v NullableServerlessTenantCreateRequest) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableServerlessTenantCreateRequest) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

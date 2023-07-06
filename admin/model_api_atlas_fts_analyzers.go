@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ApiAtlasFTSAnalyzers type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ApiAtlasFTSAnalyzers{}
-
 // ApiAtlasFTSAnalyzers Settings that describe one Atlas Search custom analyzer.
 type ApiAtlasFTSAnalyzers struct {
 	// Filters that examine text one character at a time and perform filtering operations.
@@ -39,7 +36,7 @@ func NewApiAtlasFTSAnalyzersWithDefaults() *ApiAtlasFTSAnalyzers {
 	return &this
 }
 
-// GetCharFilters returns the CharFilters field value if set, zero value otherwise.
+// GetCharFilters returns the CharFilters field value if set, zero value otherwise
 func (o *ApiAtlasFTSAnalyzers) GetCharFilters() []interface{} {
 	if o == nil || IsNil(o.CharFilters) {
 		var ret []interface{}
@@ -54,6 +51,7 @@ func (o *ApiAtlasFTSAnalyzers) GetCharFiltersOk() ([]interface{}, bool) {
 	if o == nil || IsNil(o.CharFilters) {
 		return nil, false
 	}
+
 	return o.CharFilters, true
 }
 
@@ -95,7 +93,7 @@ func (o *ApiAtlasFTSAnalyzers) SetName(v string) {
 	o.Name = v
 }
 
-// GetTokenFilters returns the TokenFilters field value if set, zero value otherwise.
+// GetTokenFilters returns the TokenFilters field value if set, zero value otherwise
 func (o *ApiAtlasFTSAnalyzers) GetTokenFilters() []interface{} {
 	if o == nil || IsNil(o.TokenFilters) {
 		var ret []interface{}
@@ -110,6 +108,7 @@ func (o *ApiAtlasFTSAnalyzers) GetTokenFiltersOk() ([]interface{}, bool) {
 	if o == nil || IsNil(o.TokenFilters) {
 		return nil, false
 	}
+
 	return o.TokenFilters, true
 }
 
@@ -169,40 +168,4 @@ func (o ApiAtlasFTSAnalyzers) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["tokenizer"] = o.Tokenizer
 	return toSerialize, nil
-}
-
-type NullableApiAtlasFTSAnalyzers struct {
-	value *ApiAtlasFTSAnalyzers
-	isSet bool
-}
-
-func (v NullableApiAtlasFTSAnalyzers) Get() *ApiAtlasFTSAnalyzers {
-	return v.value
-}
-
-func (v *NullableApiAtlasFTSAnalyzers) Set(val *ApiAtlasFTSAnalyzers) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableApiAtlasFTSAnalyzers) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableApiAtlasFTSAnalyzers) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableApiAtlasFTSAnalyzers(val *ApiAtlasFTSAnalyzers) *NullableApiAtlasFTSAnalyzers {
-	return &NullableApiAtlasFTSAnalyzers{value: val, isSet: true}
-}
-
-func (v NullableApiAtlasFTSAnalyzers) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableApiAtlasFTSAnalyzers) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

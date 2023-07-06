@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the CloudProviderContainer type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CloudProviderContainer{}
-
 // CloudProviderContainer Collection of settings that configures the network container for a virtual private connection on Amazon Web Services.
 type CloudProviderContainer struct {
 	// Unique 24-hexadecimal digit string that identifies the network peering container.
@@ -54,7 +51,7 @@ func NewCloudProviderContainerWithDefaults() *CloudProviderContainer {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *CloudProviderContainer) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -69,6 +66,7 @@ func (o *CloudProviderContainer) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -86,7 +84,7 @@ func (o *CloudProviderContainer) SetId(v string) {
 	o.Id = &v
 }
 
-// GetProviderName returns the ProviderName field value if set, zero value otherwise.
+// GetProviderName returns the ProviderName field value if set, zero value otherwise
 func (o *CloudProviderContainer) GetProviderName() string {
 	if o == nil || IsNil(o.ProviderName) {
 		var ret string
@@ -101,6 +99,7 @@ func (o *CloudProviderContainer) GetProviderNameOk() (*string, bool) {
 	if o == nil || IsNil(o.ProviderName) {
 		return nil, false
 	}
+
 	return o.ProviderName, true
 }
 
@@ -118,7 +117,7 @@ func (o *CloudProviderContainer) SetProviderName(v string) {
 	o.ProviderName = &v
 }
 
-// GetProvisioned returns the Provisioned field value if set, zero value otherwise.
+// GetProvisioned returns the Provisioned field value if set, zero value otherwise
 func (o *CloudProviderContainer) GetProvisioned() bool {
 	if o == nil || IsNil(o.Provisioned) {
 		var ret bool
@@ -133,6 +132,7 @@ func (o *CloudProviderContainer) GetProvisionedOk() (*bool, bool) {
 	if o == nil || IsNil(o.Provisioned) {
 		return nil, false
 	}
+
 	return o.Provisioned, true
 }
 
@@ -150,7 +150,7 @@ func (o *CloudProviderContainer) SetProvisioned(v bool) {
 	o.Provisioned = &v
 }
 
-// GetAtlasCidrBlock returns the AtlasCidrBlock field value if set, zero value otherwise.
+// GetAtlasCidrBlock returns the AtlasCidrBlock field value if set, zero value otherwise
 func (o *CloudProviderContainer) GetAtlasCidrBlock() string {
 	if o == nil || IsNil(o.AtlasCidrBlock) {
 		var ret string
@@ -165,6 +165,7 @@ func (o *CloudProviderContainer) GetAtlasCidrBlockOk() (*string, bool) {
 	if o == nil || IsNil(o.AtlasCidrBlock) {
 		return nil, false
 	}
+
 	return o.AtlasCidrBlock, true
 }
 
@@ -182,7 +183,7 @@ func (o *CloudProviderContainer) SetAtlasCidrBlock(v string) {
 	o.AtlasCidrBlock = &v
 }
 
-// GetAzureSubscriptionId returns the AzureSubscriptionId field value if set, zero value otherwise.
+// GetAzureSubscriptionId returns the AzureSubscriptionId field value if set, zero value otherwise
 func (o *CloudProviderContainer) GetAzureSubscriptionId() string {
 	if o == nil || IsNil(o.AzureSubscriptionId) {
 		var ret string
@@ -197,6 +198,7 @@ func (o *CloudProviderContainer) GetAzureSubscriptionIdOk() (*string, bool) {
 	if o == nil || IsNil(o.AzureSubscriptionId) {
 		return nil, false
 	}
+
 	return o.AzureSubscriptionId, true
 }
 
@@ -214,7 +216,7 @@ func (o *CloudProviderContainer) SetAzureSubscriptionId(v string) {
 	o.AzureSubscriptionId = &v
 }
 
-// GetRegion returns the Region field value if set, zero value otherwise.
+// GetRegion returns the Region field value if set, zero value otherwise
 func (o *CloudProviderContainer) GetRegion() string {
 	if o == nil || IsNil(o.Region) {
 		var ret string
@@ -229,6 +231,7 @@ func (o *CloudProviderContainer) GetRegionOk() (*string, bool) {
 	if o == nil || IsNil(o.Region) {
 		return nil, false
 	}
+
 	return o.Region, true
 }
 
@@ -246,7 +249,7 @@ func (o *CloudProviderContainer) SetRegion(v string) {
 	o.Region = &v
 }
 
-// GetVnetName returns the VnetName field value if set, zero value otherwise.
+// GetVnetName returns the VnetName field value if set, zero value otherwise
 func (o *CloudProviderContainer) GetVnetName() string {
 	if o == nil || IsNil(o.VnetName) {
 		var ret string
@@ -261,6 +264,7 @@ func (o *CloudProviderContainer) GetVnetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.VnetName) {
 		return nil, false
 	}
+
 	return o.VnetName, true
 }
 
@@ -278,7 +282,7 @@ func (o *CloudProviderContainer) SetVnetName(v string) {
 	o.VnetName = &v
 }
 
-// GetGcpProjectId returns the GcpProjectId field value if set, zero value otherwise.
+// GetGcpProjectId returns the GcpProjectId field value if set, zero value otherwise
 func (o *CloudProviderContainer) GetGcpProjectId() string {
 	if o == nil || IsNil(o.GcpProjectId) {
 		var ret string
@@ -293,6 +297,7 @@ func (o *CloudProviderContainer) GetGcpProjectIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GcpProjectId) {
 		return nil, false
 	}
+
 	return o.GcpProjectId, true
 }
 
@@ -310,7 +315,7 @@ func (o *CloudProviderContainer) SetGcpProjectId(v string) {
 	o.GcpProjectId = &v
 }
 
-// GetNetworkName returns the NetworkName field value if set, zero value otherwise.
+// GetNetworkName returns the NetworkName field value if set, zero value otherwise
 func (o *CloudProviderContainer) GetNetworkName() string {
 	if o == nil || IsNil(o.NetworkName) {
 		var ret string
@@ -325,6 +330,7 @@ func (o *CloudProviderContainer) GetNetworkNameOk() (*string, bool) {
 	if o == nil || IsNil(o.NetworkName) {
 		return nil, false
 	}
+
 	return o.NetworkName, true
 }
 
@@ -342,7 +348,7 @@ func (o *CloudProviderContainer) SetNetworkName(v string) {
 	o.NetworkName = &v
 }
 
-// GetRegions returns the Regions field value if set, zero value otherwise.
+// GetRegions returns the Regions field value if set, zero value otherwise
 func (o *CloudProviderContainer) GetRegions() []string {
 	if o == nil || IsNil(o.Regions) {
 		var ret []string
@@ -357,6 +363,7 @@ func (o *CloudProviderContainer) GetRegionsOk() ([]string, bool) {
 	if o == nil || IsNil(o.Regions) {
 		return nil, false
 	}
+
 	return o.Regions, true
 }
 
@@ -374,7 +381,7 @@ func (o *CloudProviderContainer) SetRegions(v []string) {
 	o.Regions = v
 }
 
-// GetRegionName returns the RegionName field value if set, zero value otherwise.
+// GetRegionName returns the RegionName field value if set, zero value otherwise
 func (o *CloudProviderContainer) GetRegionName() string {
 	if o == nil || IsNil(o.RegionName) {
 		var ret string
@@ -389,6 +396,7 @@ func (o *CloudProviderContainer) GetRegionNameOk() (*string, bool) {
 	if o == nil || IsNil(o.RegionName) {
 		return nil, false
 	}
+
 	return o.RegionName, true
 }
 
@@ -406,7 +414,7 @@ func (o *CloudProviderContainer) SetRegionName(v string) {
 	o.RegionName = &v
 }
 
-// GetVpcId returns the VpcId field value if set, zero value otherwise.
+// GetVpcId returns the VpcId field value if set, zero value otherwise
 func (o *CloudProviderContainer) GetVpcId() string {
 	if o == nil || IsNil(o.VpcId) {
 		var ret string
@@ -421,6 +429,7 @@ func (o *CloudProviderContainer) GetVpcIdOk() (*string, bool) {
 	if o == nil || IsNil(o.VpcId) {
 		return nil, false
 	}
+
 	return o.VpcId, true
 }
 
@@ -463,40 +472,4 @@ func (o CloudProviderContainer) ToMap() (map[string]interface{}, error) {
 		toSerialize["regionName"] = o.RegionName
 	}
 	return toSerialize, nil
-}
-
-type NullableCloudProviderContainer struct {
-	value *CloudProviderContainer
-	isSet bool
-}
-
-func (v NullableCloudProviderContainer) Get() *CloudProviderContainer {
-	return v.value
-}
-
-func (v *NullableCloudProviderContainer) Set(val *CloudProviderContainer) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableCloudProviderContainer) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableCloudProviderContainer) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableCloudProviderContainer(val *CloudProviderContainer) *NullableCloudProviderContainer {
-	return &NullableCloudProviderContainer{value: val, isSet: true}
-}
-
-func (v NullableCloudProviderContainer) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableCloudProviderContainer) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

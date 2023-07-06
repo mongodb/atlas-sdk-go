@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PaginatedTeamRole type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PaginatedTeamRole{}
-
 // PaginatedTeamRole struct for PaginatedTeamRole
 type PaginatedTeamRole struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -36,7 +33,7 @@ func NewPaginatedTeamRoleWithDefaults() *PaginatedTeamRole {
 	return &this
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *PaginatedTeamRole) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -51,6 +48,7 @@ func (o *PaginatedTeamRole) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -68,7 +66,7 @@ func (o *PaginatedTeamRole) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetResults returns the Results field value if set, zero value otherwise.
+// GetResults returns the Results field value if set, zero value otherwise
 func (o *PaginatedTeamRole) GetResults() []TeamRole {
 	if o == nil || IsNil(o.Results) {
 		var ret []TeamRole
@@ -83,6 +81,7 @@ func (o *PaginatedTeamRole) GetResultsOk() ([]TeamRole, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
+
 	return o.Results, true
 }
 
@@ -100,7 +99,7 @@ func (o *PaginatedTeamRole) SetResults(v []TeamRole) {
 	o.Results = v
 }
 
-// GetTotalCount returns the TotalCount field value if set, zero value otherwise.
+// GetTotalCount returns the TotalCount field value if set, zero value otherwise
 func (o *PaginatedTeamRole) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int
@@ -115,6 +114,7 @@ func (o *PaginatedTeamRole) GetTotalCountOk() (*int, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
+
 	return o.TotalCount, true
 }
 
@@ -142,40 +142,4 @@ func (o PaginatedTeamRole) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o PaginatedTeamRole) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullablePaginatedTeamRole struct {
-	value *PaginatedTeamRole
-	isSet bool
-}
-
-func (v NullablePaginatedTeamRole) Get() *PaginatedTeamRole {
-	return v.value
-}
-
-func (v *NullablePaginatedTeamRole) Set(val *PaginatedTeamRole) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullablePaginatedTeamRole) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullablePaginatedTeamRole) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullablePaginatedTeamRole(val *PaginatedTeamRole) *NullablePaginatedTeamRole {
-	return &NullablePaginatedTeamRole{value: val, isSet: true}
-}
-
-func (v NullablePaginatedTeamRole) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullablePaginatedTeamRole) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

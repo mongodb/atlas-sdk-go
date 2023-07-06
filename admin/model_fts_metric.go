@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the FTSMetric type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &FTSMetric{}
-
 // FTSMetric Measurement of one Atlas Search status when MongoDB Atlas received this request.
 type FTSMetric struct {
 	// Human-readable label that identifies this Atlas Search hardware, status, or index measurement.
@@ -94,40 +91,4 @@ func (o FTSMetric) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o FTSMetric) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableFTSMetric struct {
-	value *FTSMetric
-	isSet bool
-}
-
-func (v NullableFTSMetric) Get() *FTSMetric {
-	return v.value
-}
-
-func (v *NullableFTSMetric) Set(val *FTSMetric) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableFTSMetric) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableFTSMetric) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableFTSMetric(val *FTSMetric) *NullableFTSMetric {
-	return &NullableFTSMetric{value: val, isSet: true}
-}
-
-func (v NullableFTSMetric) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableFTSMetric) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

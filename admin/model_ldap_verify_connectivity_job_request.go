@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the LDAPVerifyConnectivityJobRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &LDAPVerifyConnectivityJobRequest{}
-
 // LDAPVerifyConnectivityJobRequest struct for LDAPVerifyConnectivityJobRequest
 type LDAPVerifyConnectivityJobRequest struct {
 	// Unique 24-hexadecimal digit string that identifies the project associated with this Lightweight Directory Access Protocol (LDAP) over Transport Layer Security (TLS) configuration.
@@ -41,7 +38,7 @@ func NewLDAPVerifyConnectivityJobRequestWithDefaults() *LDAPVerifyConnectivityJo
 	return &this
 }
 
-// GetGroupId returns the GroupId field value if set, zero value otherwise.
+// GetGroupId returns the GroupId field value if set, zero value otherwise
 func (o *LDAPVerifyConnectivityJobRequest) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
 		var ret string
@@ -56,6 +53,7 @@ func (o *LDAPVerifyConnectivityJobRequest) GetGroupIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupId) {
 		return nil, false
 	}
+
 	return o.GroupId, true
 }
 
@@ -73,7 +71,7 @@ func (o *LDAPVerifyConnectivityJobRequest) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *LDAPVerifyConnectivityJobRequest) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -88,6 +86,7 @@ func (o *LDAPVerifyConnectivityJobRequest) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -105,7 +104,7 @@ func (o *LDAPVerifyConnectivityJobRequest) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetRequest returns the Request field value if set, zero value otherwise.
+// GetRequest returns the Request field value if set, zero value otherwise
 func (o *LDAPVerifyConnectivityJobRequest) GetRequest() LDAPVerifyConnectivityJobRequestParams {
 	if o == nil || IsNil(o.Request) {
 		var ret LDAPVerifyConnectivityJobRequestParams
@@ -120,6 +119,7 @@ func (o *LDAPVerifyConnectivityJobRequest) GetRequestOk() (*LDAPVerifyConnectivi
 	if o == nil || IsNil(o.Request) {
 		return nil, false
 	}
+
 	return o.Request, true
 }
 
@@ -137,7 +137,7 @@ func (o *LDAPVerifyConnectivityJobRequest) SetRequest(v LDAPVerifyConnectivityJo
 	o.Request = &v
 }
 
-// GetRequestId returns the RequestId field value if set, zero value otherwise.
+// GetRequestId returns the RequestId field value if set, zero value otherwise
 func (o *LDAPVerifyConnectivityJobRequest) GetRequestId() string {
 	if o == nil || IsNil(o.RequestId) {
 		var ret string
@@ -152,6 +152,7 @@ func (o *LDAPVerifyConnectivityJobRequest) GetRequestIdOk() (*string, bool) {
 	if o == nil || IsNil(o.RequestId) {
 		return nil, false
 	}
+
 	return o.RequestId, true
 }
 
@@ -169,7 +170,7 @@ func (o *LDAPVerifyConnectivityJobRequest) SetRequestId(v string) {
 	o.RequestId = &v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// GetStatus returns the Status field value if set, zero value otherwise
 func (o *LDAPVerifyConnectivityJobRequest) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
 		var ret string
@@ -184,6 +185,7 @@ func (o *LDAPVerifyConnectivityJobRequest) GetStatusOk() (*string, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
+
 	return o.Status, true
 }
 
@@ -201,7 +203,7 @@ func (o *LDAPVerifyConnectivityJobRequest) SetStatus(v string) {
 	o.Status = &v
 }
 
-// GetValidations returns the Validations field value if set, zero value otherwise.
+// GetValidations returns the Validations field value if set, zero value otherwise
 func (o *LDAPVerifyConnectivityJobRequest) GetValidations() []LDAPVerifyConnectivityJobRequestValidation {
 	if o == nil || IsNil(o.Validations) {
 		var ret []LDAPVerifyConnectivityJobRequestValidation
@@ -216,6 +218,7 @@ func (o *LDAPVerifyConnectivityJobRequest) GetValidationsOk() ([]LDAPVerifyConne
 	if o == nil || IsNil(o.Validations) {
 		return nil, false
 	}
+
 	return o.Validations, true
 }
 
@@ -246,40 +249,4 @@ func (o LDAPVerifyConnectivityJobRequest) ToMap() (map[string]interface{}, error
 		toSerialize["request"] = o.Request
 	}
 	return toSerialize, nil
-}
-
-type NullableLDAPVerifyConnectivityJobRequest struct {
-	value *LDAPVerifyConnectivityJobRequest
-	isSet bool
-}
-
-func (v NullableLDAPVerifyConnectivityJobRequest) Get() *LDAPVerifyConnectivityJobRequest {
-	return v.value
-}
-
-func (v *NullableLDAPVerifyConnectivityJobRequest) Set(val *LDAPVerifyConnectivityJobRequest) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableLDAPVerifyConnectivityJobRequest) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableLDAPVerifyConnectivityJobRequest) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableLDAPVerifyConnectivityJobRequest(val *LDAPVerifyConnectivityJobRequest) *NullableLDAPVerifyConnectivityJobRequest {
-	return &NullableLDAPVerifyConnectivityJobRequest{value: val, isSet: true}
-}
-
-func (v NullableLDAPVerifyConnectivityJobRequest) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableLDAPVerifyConnectivityJobRequest) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

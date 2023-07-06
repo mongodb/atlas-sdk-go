@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the DataLakeDatabaseCollection type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DataLakeDatabaseCollection{}
-
 // DataLakeDatabaseCollection A collection and data sources that map to a “stores“ data store.
 type DataLakeDatabaseCollection struct {
 	// Array that contains the data stores that map to a collection for this data lake.
@@ -34,7 +31,7 @@ func NewDataLakeDatabaseCollectionWithDefaults() *DataLakeDatabaseCollection {
 	return &this
 }
 
-// GetDataSources returns the DataSources field value if set, zero value otherwise.
+// GetDataSources returns the DataSources field value if set, zero value otherwise
 func (o *DataLakeDatabaseCollection) GetDataSources() []DataLakeDatabaseDataSourceSettings {
 	if o == nil || IsNil(o.DataSources) {
 		var ret []DataLakeDatabaseDataSourceSettings
@@ -49,6 +46,7 @@ func (o *DataLakeDatabaseCollection) GetDataSourcesOk() ([]DataLakeDatabaseDataS
 	if o == nil || IsNil(o.DataSources) {
 		return nil, false
 	}
+
 	return o.DataSources, true
 }
 
@@ -66,7 +64,7 @@ func (o *DataLakeDatabaseCollection) SetDataSources(v []DataLakeDatabaseDataSour
 	o.DataSources = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise
 func (o *DataLakeDatabaseCollection) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
@@ -81,6 +79,7 @@ func (o *DataLakeDatabaseCollection) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
+
 	return o.Name, true
 }
 
@@ -114,40 +113,4 @@ func (o DataLakeDatabaseCollection) ToMap() (map[string]interface{}, error) {
 		toSerialize["name"] = o.Name
 	}
 	return toSerialize, nil
-}
-
-type NullableDataLakeDatabaseCollection struct {
-	value *DataLakeDatabaseCollection
-	isSet bool
-}
-
-func (v NullableDataLakeDatabaseCollection) Get() *DataLakeDatabaseCollection {
-	return v.value
-}
-
-func (v *NullableDataLakeDatabaseCollection) Set(val *DataLakeDatabaseCollection) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableDataLakeDatabaseCollection) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableDataLakeDatabaseCollection) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableDataLakeDatabaseCollection(val *DataLakeDatabaseCollection) *NullableDataLakeDatabaseCollection {
-	return &NullableDataLakeDatabaseCollection{value: val, isSet: true}
-}
-
-func (v NullableDataLakeDatabaseCollection) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableDataLakeDatabaseCollection) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

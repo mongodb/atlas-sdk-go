@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PaginatedCloudBackupShardedClusterSnapshot type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PaginatedCloudBackupShardedClusterSnapshot{}
-
 // PaginatedCloudBackupShardedClusterSnapshot struct for PaginatedCloudBackupShardedClusterSnapshot
 type PaginatedCloudBackupShardedClusterSnapshot struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -36,7 +33,7 @@ func NewPaginatedCloudBackupShardedClusterSnapshotWithDefaults() *PaginatedCloud
 	return &this
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *PaginatedCloudBackupShardedClusterSnapshot) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -51,6 +48,7 @@ func (o *PaginatedCloudBackupShardedClusterSnapshot) GetLinksOk() ([]Link, bool)
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -68,7 +66,7 @@ func (o *PaginatedCloudBackupShardedClusterSnapshot) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetResults returns the Results field value if set, zero value otherwise.
+// GetResults returns the Results field value if set, zero value otherwise
 func (o *PaginatedCloudBackupShardedClusterSnapshot) GetResults() []DiskBackupShardedClusterSnapshot {
 	if o == nil || IsNil(o.Results) {
 		var ret []DiskBackupShardedClusterSnapshot
@@ -83,6 +81,7 @@ func (o *PaginatedCloudBackupShardedClusterSnapshot) GetResultsOk() ([]DiskBacku
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
+
 	return o.Results, true
 }
 
@@ -100,7 +99,7 @@ func (o *PaginatedCloudBackupShardedClusterSnapshot) SetResults(v []DiskBackupSh
 	o.Results = v
 }
 
-// GetTotalCount returns the TotalCount field value if set, zero value otherwise.
+// GetTotalCount returns the TotalCount field value if set, zero value otherwise
 func (o *PaginatedCloudBackupShardedClusterSnapshot) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int
@@ -115,6 +114,7 @@ func (o *PaginatedCloudBackupShardedClusterSnapshot) GetTotalCountOk() (*int, bo
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
+
 	return o.TotalCount, true
 }
 
@@ -142,40 +142,4 @@ func (o PaginatedCloudBackupShardedClusterSnapshot) MarshalJSONWithoutReadOnly()
 func (o PaginatedCloudBackupShardedClusterSnapshot) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullablePaginatedCloudBackupShardedClusterSnapshot struct {
-	value *PaginatedCloudBackupShardedClusterSnapshot
-	isSet bool
-}
-
-func (v NullablePaginatedCloudBackupShardedClusterSnapshot) Get() *PaginatedCloudBackupShardedClusterSnapshot {
-	return v.value
-}
-
-func (v *NullablePaginatedCloudBackupShardedClusterSnapshot) Set(val *PaginatedCloudBackupShardedClusterSnapshot) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullablePaginatedCloudBackupShardedClusterSnapshot) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullablePaginatedCloudBackupShardedClusterSnapshot) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullablePaginatedCloudBackupShardedClusterSnapshot(val *PaginatedCloudBackupShardedClusterSnapshot) *NullablePaginatedCloudBackupShardedClusterSnapshot {
-	return &NullablePaginatedCloudBackupShardedClusterSnapshot{value: val, isSet: true}
-}
-
-func (v NullablePaginatedCloudBackupShardedClusterSnapshot) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullablePaginatedCloudBackupShardedClusterSnapshot) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

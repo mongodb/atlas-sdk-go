@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the MetricsMeasurement type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &MetricsMeasurement{}
-
 // MetricsMeasurement struct for MetricsMeasurement
 type MetricsMeasurement struct {
 	// List that contains the value of, and metadata provided for, one data point generated at a particular moment in time. If no data point exists for a particular moment in time, the `value` parameter returns `null`.
@@ -36,7 +33,7 @@ func NewMetricsMeasurementWithDefaults() *MetricsMeasurement {
 	return &this
 }
 
-// GetDataPoints returns the DataPoints field value if set, zero value otherwise.
+// GetDataPoints returns the DataPoints field value if set, zero value otherwise
 func (o *MetricsMeasurement) GetDataPoints() []MetricDataPoint {
 	if o == nil || IsNil(o.DataPoints) {
 		var ret []MetricDataPoint
@@ -51,6 +48,7 @@ func (o *MetricsMeasurement) GetDataPointsOk() ([]MetricDataPoint, bool) {
 	if o == nil || IsNil(o.DataPoints) {
 		return nil, false
 	}
+
 	return o.DataPoints, true
 }
 
@@ -68,7 +66,7 @@ func (o *MetricsMeasurement) SetDataPoints(v []MetricDataPoint) {
 	o.DataPoints = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise
 func (o *MetricsMeasurement) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
@@ -83,6 +81,7 @@ func (o *MetricsMeasurement) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
+
 	return o.Name, true
 }
 
@@ -100,7 +99,7 @@ func (o *MetricsMeasurement) SetName(v string) {
 	o.Name = &v
 }
 
-// GetUnits returns the Units field value if set, zero value otherwise.
+// GetUnits returns the Units field value if set, zero value otherwise
 func (o *MetricsMeasurement) GetUnits() string {
 	if o == nil || IsNil(o.Units) {
 		var ret string
@@ -115,6 +114,7 @@ func (o *MetricsMeasurement) GetUnitsOk() (*string, bool) {
 	if o == nil || IsNil(o.Units) {
 		return nil, false
 	}
+
 	return o.Units, true
 }
 
@@ -142,40 +142,4 @@ func (o MetricsMeasurement) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o MetricsMeasurement) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableMetricsMeasurement struct {
-	value *MetricsMeasurement
-	isSet bool
-}
-
-func (v NullableMetricsMeasurement) Get() *MetricsMeasurement {
-	return v.value
-}
-
-func (v *NullableMetricsMeasurement) Set(val *MetricsMeasurement) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableMetricsMeasurement) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableMetricsMeasurement) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableMetricsMeasurement(val *MetricsMeasurement) *NullableMetricsMeasurement {
-	return &NullableMetricsMeasurement{value: val, isSet: true}
-}
-
-func (v NullableMetricsMeasurement) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableMetricsMeasurement) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

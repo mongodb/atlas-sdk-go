@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the DataLakeAtlasStoreReadPreferenceTag type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DataLakeAtlasStoreReadPreferenceTag{}
-
 // DataLakeAtlasStoreReadPreferenceTag List that contains [tag sets](https://docs.mongodb.com/manual/core/read-preference-tags/) or tag specification documents. If specified, Atlas Data Lake routes read requests to replica set member or members that are associated with the specified tags.
 type DataLakeAtlasStoreReadPreferenceTag struct {
 	// Human-readable label of the tag.
@@ -34,7 +31,7 @@ func NewDataLakeAtlasStoreReadPreferenceTagWithDefaults() *DataLakeAtlasStoreRea
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise
 func (o *DataLakeAtlasStoreReadPreferenceTag) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
@@ -49,6 +46,7 @@ func (o *DataLakeAtlasStoreReadPreferenceTag) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
+
 	return o.Name, true
 }
 
@@ -66,7 +64,7 @@ func (o *DataLakeAtlasStoreReadPreferenceTag) SetName(v string) {
 	o.Name = &v
 }
 
-// GetValue returns the Value field value if set, zero value otherwise.
+// GetValue returns the Value field value if set, zero value otherwise
 func (o *DataLakeAtlasStoreReadPreferenceTag) GetValue() string {
 	if o == nil || IsNil(o.Value) {
 		var ret string
@@ -81,6 +79,7 @@ func (o *DataLakeAtlasStoreReadPreferenceTag) GetValueOk() (*string, bool) {
 	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
+
 	return o.Value, true
 }
 
@@ -114,40 +113,4 @@ func (o DataLakeAtlasStoreReadPreferenceTag) ToMap() (map[string]interface{}, er
 		toSerialize["value"] = o.Value
 	}
 	return toSerialize, nil
-}
-
-type NullableDataLakeAtlasStoreReadPreferenceTag struct {
-	value *DataLakeAtlasStoreReadPreferenceTag
-	isSet bool
-}
-
-func (v NullableDataLakeAtlasStoreReadPreferenceTag) Get() *DataLakeAtlasStoreReadPreferenceTag {
-	return v.value
-}
-
-func (v *NullableDataLakeAtlasStoreReadPreferenceTag) Set(val *DataLakeAtlasStoreReadPreferenceTag) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableDataLakeAtlasStoreReadPreferenceTag) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableDataLakeAtlasStoreReadPreferenceTag) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableDataLakeAtlasStoreReadPreferenceTag(val *DataLakeAtlasStoreReadPreferenceTag) *NullableDataLakeAtlasStoreReadPreferenceTag {
-	return &NullableDataLakeAtlasStoreReadPreferenceTag{value: val, isSet: true}
-}
-
-func (v NullableDataLakeAtlasStoreReadPreferenceTag) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableDataLakeAtlasStoreReadPreferenceTag) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the LDAPVerifyConnectivityJobRequestValidation type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &LDAPVerifyConnectivityJobRequestValidation{}
-
 // LDAPVerifyConnectivityJobRequestValidation One test that MongoDB Cloud runs to test verification of the provided Lightweight Directory Access Protocol (LDAP) over Transport Layer Security (TLS) configuration details.
 type LDAPVerifyConnectivityJobRequestValidation struct {
 	// Human-readable string that indicates the result of this verification test.
@@ -34,7 +31,7 @@ func NewLDAPVerifyConnectivityJobRequestValidationWithDefaults() *LDAPVerifyConn
 	return &this
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// GetStatus returns the Status field value if set, zero value otherwise
 func (o *LDAPVerifyConnectivityJobRequestValidation) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
 		var ret string
@@ -49,6 +46,7 @@ func (o *LDAPVerifyConnectivityJobRequestValidation) GetStatusOk() (*string, boo
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
+
 	return o.Status, true
 }
 
@@ -66,7 +64,7 @@ func (o *LDAPVerifyConnectivityJobRequestValidation) SetStatus(v string) {
 	o.Status = &v
 }
 
-// GetValidationType returns the ValidationType field value if set, zero value otherwise.
+// GetValidationType returns the ValidationType field value if set, zero value otherwise
 func (o *LDAPVerifyConnectivityJobRequestValidation) GetValidationType() string {
 	if o == nil || IsNil(o.ValidationType) {
 		var ret string
@@ -81,6 +79,7 @@ func (o *LDAPVerifyConnectivityJobRequestValidation) GetValidationTypeOk() (*str
 	if o == nil || IsNil(o.ValidationType) {
 		return nil, false
 	}
+
 	return o.ValidationType, true
 }
 
@@ -108,40 +107,4 @@ func (o LDAPVerifyConnectivityJobRequestValidation) MarshalJSONWithoutReadOnly()
 func (o LDAPVerifyConnectivityJobRequestValidation) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableLDAPVerifyConnectivityJobRequestValidation struct {
-	value *LDAPVerifyConnectivityJobRequestValidation
-	isSet bool
-}
-
-func (v NullableLDAPVerifyConnectivityJobRequestValidation) Get() *LDAPVerifyConnectivityJobRequestValidation {
-	return v.value
-}
-
-func (v *NullableLDAPVerifyConnectivityJobRequestValidation) Set(val *LDAPVerifyConnectivityJobRequestValidation) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableLDAPVerifyConnectivityJobRequestValidation) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableLDAPVerifyConnectivityJobRequestValidation) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableLDAPVerifyConnectivityJobRequestValidation(val *LDAPVerifyConnectivityJobRequestValidation) *NullableLDAPVerifyConnectivityJobRequestValidation {
-	return &NullableLDAPVerifyConnectivityJobRequestValidation{value: val, isSet: true}
-}
-
-func (v NullableLDAPVerifyConnectivityJobRequestValidation) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableLDAPVerifyConnectivityJobRequestValidation) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

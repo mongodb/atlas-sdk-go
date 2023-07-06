@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the AtlasClusterOutageSimulationOutageFilter type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AtlasClusterOutageSimulationOutageFilter{}
-
 // AtlasClusterOutageSimulationOutageFilter struct for AtlasClusterOutageSimulationOutageFilter
 type AtlasClusterOutageSimulationOutageFilter struct {
 	// The cloud provider of the region that undergoes the outage simulation.
@@ -36,7 +33,7 @@ func NewAtlasClusterOutageSimulationOutageFilterWithDefaults() *AtlasClusterOuta
 	return &this
 }
 
-// GetCloudProvider returns the CloudProvider field value if set, zero value otherwise.
+// GetCloudProvider returns the CloudProvider field value if set, zero value otherwise
 func (o *AtlasClusterOutageSimulationOutageFilter) GetCloudProvider() string {
 	if o == nil || IsNil(o.CloudProvider) {
 		var ret string
@@ -51,6 +48,7 @@ func (o *AtlasClusterOutageSimulationOutageFilter) GetCloudProviderOk() (*string
 	if o == nil || IsNil(o.CloudProvider) {
 		return nil, false
 	}
+
 	return o.CloudProvider, true
 }
 
@@ -68,7 +66,7 @@ func (o *AtlasClusterOutageSimulationOutageFilter) SetCloudProvider(v string) {
 	o.CloudProvider = &v
 }
 
-// GetRegionName returns the RegionName field value if set, zero value otherwise.
+// GetRegionName returns the RegionName field value if set, zero value otherwise
 func (o *AtlasClusterOutageSimulationOutageFilter) GetRegionName() string {
 	if o == nil || IsNil(o.RegionName) {
 		var ret string
@@ -83,6 +81,7 @@ func (o *AtlasClusterOutageSimulationOutageFilter) GetRegionNameOk() (*string, b
 	if o == nil || IsNil(o.RegionName) {
 		return nil, false
 	}
+
 	return o.RegionName, true
 }
 
@@ -100,7 +99,7 @@ func (o *AtlasClusterOutageSimulationOutageFilter) SetRegionName(v string) {
 	o.RegionName = &v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value if set, zero value otherwise
 func (o *AtlasClusterOutageSimulationOutageFilter) GetType() string {
 	if o == nil || IsNil(o.Type) {
 		var ret string
@@ -115,6 +114,7 @@ func (o *AtlasClusterOutageSimulationOutageFilter) GetTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
+
 	return o.Type, true
 }
 
@@ -151,40 +151,4 @@ func (o AtlasClusterOutageSimulationOutageFilter) ToMap() (map[string]interface{
 		toSerialize["type"] = o.Type
 	}
 	return toSerialize, nil
-}
-
-type NullableAtlasClusterOutageSimulationOutageFilter struct {
-	value *AtlasClusterOutageSimulationOutageFilter
-	isSet bool
-}
-
-func (v NullableAtlasClusterOutageSimulationOutageFilter) Get() *AtlasClusterOutageSimulationOutageFilter {
-	return v.value
-}
-
-func (v *NullableAtlasClusterOutageSimulationOutageFilter) Set(val *AtlasClusterOutageSimulationOutageFilter) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableAtlasClusterOutageSimulationOutageFilter) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableAtlasClusterOutageSimulationOutageFilter) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableAtlasClusterOutageSimulationOutageFilter(val *AtlasClusterOutageSimulationOutageFilter) *NullableAtlasClusterOutageSimulationOutageFilter {
-	return &NullableAtlasClusterOutageSimulationOutageFilter{value: val, isSet: true}
-}
-
-func (v NullableAtlasClusterOutageSimulationOutageFilter) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableAtlasClusterOutageSimulationOutageFilter) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the AWSKMSConfiguration type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AWSKMSConfiguration{}
-
 // AWSKMSConfiguration Amazon Web Services (AWS) KMS configuration details and encryption at rest configuration set for the specified project.
 type AWSKMSConfiguration struct {
 	// Unique alphanumeric string that identifies an Identity and Access Management (IAM) access key with permissions required to access your Amazon Web Services (AWS) Customer Master Key (CMK).
@@ -44,7 +41,7 @@ func NewAWSKMSConfigurationWithDefaults() *AWSKMSConfiguration {
 	return &this
 }
 
-// GetAccessKeyID returns the AccessKeyID field value if set, zero value otherwise.
+// GetAccessKeyID returns the AccessKeyID field value if set, zero value otherwise
 func (o *AWSKMSConfiguration) GetAccessKeyID() string {
 	if o == nil || IsNil(o.AccessKeyID) {
 		var ret string
@@ -59,6 +56,7 @@ func (o *AWSKMSConfiguration) GetAccessKeyIDOk() (*string, bool) {
 	if o == nil || IsNil(o.AccessKeyID) {
 		return nil, false
 	}
+
 	return o.AccessKeyID, true
 }
 
@@ -76,7 +74,7 @@ func (o *AWSKMSConfiguration) SetAccessKeyID(v string) {
 	o.AccessKeyID = &v
 }
 
-// GetCustomerMasterKeyID returns the CustomerMasterKeyID field value if set, zero value otherwise.
+// GetCustomerMasterKeyID returns the CustomerMasterKeyID field value if set, zero value otherwise
 func (o *AWSKMSConfiguration) GetCustomerMasterKeyID() string {
 	if o == nil || IsNil(o.CustomerMasterKeyID) {
 		var ret string
@@ -91,6 +89,7 @@ func (o *AWSKMSConfiguration) GetCustomerMasterKeyIDOk() (*string, bool) {
 	if o == nil || IsNil(o.CustomerMasterKeyID) {
 		return nil, false
 	}
+
 	return o.CustomerMasterKeyID, true
 }
 
@@ -108,7 +107,7 @@ func (o *AWSKMSConfiguration) SetCustomerMasterKeyID(v string) {
 	o.CustomerMasterKeyID = &v
 }
 
-// GetEnabled returns the Enabled field value if set, zero value otherwise.
+// GetEnabled returns the Enabled field value if set, zero value otherwise
 func (o *AWSKMSConfiguration) GetEnabled() bool {
 	if o == nil || IsNil(o.Enabled) {
 		var ret bool
@@ -123,6 +122,7 @@ func (o *AWSKMSConfiguration) GetEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
+
 	return o.Enabled, true
 }
 
@@ -140,7 +140,7 @@ func (o *AWSKMSConfiguration) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
-// GetRegion returns the Region field value if set, zero value otherwise.
+// GetRegion returns the Region field value if set, zero value otherwise
 func (o *AWSKMSConfiguration) GetRegion() string {
 	if o == nil || IsNil(o.Region) {
 		var ret string
@@ -155,6 +155,7 @@ func (o *AWSKMSConfiguration) GetRegionOk() (*string, bool) {
 	if o == nil || IsNil(o.Region) {
 		return nil, false
 	}
+
 	return o.Region, true
 }
 
@@ -172,7 +173,7 @@ func (o *AWSKMSConfiguration) SetRegion(v string) {
 	o.Region = &v
 }
 
-// GetRoleId returns the RoleId field value if set, zero value otherwise.
+// GetRoleId returns the RoleId field value if set, zero value otherwise
 func (o *AWSKMSConfiguration) GetRoleId() string {
 	if o == nil || IsNil(o.RoleId) {
 		var ret string
@@ -187,6 +188,7 @@ func (o *AWSKMSConfiguration) GetRoleIdOk() (*string, bool) {
 	if o == nil || IsNil(o.RoleId) {
 		return nil, false
 	}
+
 	return o.RoleId, true
 }
 
@@ -204,7 +206,7 @@ func (o *AWSKMSConfiguration) SetRoleId(v string) {
 	o.RoleId = &v
 }
 
-// GetSecretAccessKey returns the SecretAccessKey field value if set, zero value otherwise.
+// GetSecretAccessKey returns the SecretAccessKey field value if set, zero value otherwise
 func (o *AWSKMSConfiguration) GetSecretAccessKey() string {
 	if o == nil || IsNil(o.SecretAccessKey) {
 		var ret string
@@ -219,6 +221,7 @@ func (o *AWSKMSConfiguration) GetSecretAccessKeyOk() (*string, bool) {
 	if o == nil || IsNil(o.SecretAccessKey) {
 		return nil, false
 	}
+
 	return o.SecretAccessKey, true
 }
 
@@ -236,7 +239,7 @@ func (o *AWSKMSConfiguration) SetSecretAccessKey(v string) {
 	o.SecretAccessKey = &v
 }
 
-// GetValid returns the Valid field value if set, zero value otherwise.
+// GetValid returns the Valid field value if set, zero value otherwise
 func (o *AWSKMSConfiguration) GetValid() bool {
 	if o == nil || IsNil(o.Valid) {
 		var ret bool
@@ -251,6 +254,7 @@ func (o *AWSKMSConfiguration) GetValidOk() (*bool, bool) {
 	if o == nil || IsNil(o.Valid) {
 		return nil, false
 	}
+
 	return o.Valid, true
 }
 
@@ -296,40 +300,4 @@ func (o AWSKMSConfiguration) ToMap() (map[string]interface{}, error) {
 		toSerialize["secretAccessKey"] = o.SecretAccessKey
 	}
 	return toSerialize, nil
-}
-
-type NullableAWSKMSConfiguration struct {
-	value *AWSKMSConfiguration
-	isSet bool
-}
-
-func (v NullableAWSKMSConfiguration) Get() *AWSKMSConfiguration {
-	return v.value
-}
-
-func (v *NullableAWSKMSConfiguration) Set(val *AWSKMSConfiguration) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableAWSKMSConfiguration) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableAWSKMSConfiguration) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableAWSKMSConfiguration(val *AWSKMSConfiguration) *NullableAWSKMSConfiguration {
-	return &NullableAWSKMSConfiguration{value: val, isSet: true}
-}
-
-func (v NullableAWSKMSConfiguration) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableAWSKMSConfiguration) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

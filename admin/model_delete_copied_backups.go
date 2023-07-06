@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the DeleteCopiedBackups type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DeleteCopiedBackups{}
-
 // DeleteCopiedBackups Deleted copy setting whose backup copies need to also be deleted.
 type DeleteCopiedBackups struct {
 	// Human-readable label that identifies the cloud provider for the deleted copy setting whose backup copies you want to delete.
@@ -36,7 +33,7 @@ func NewDeleteCopiedBackupsWithDefaults() *DeleteCopiedBackups {
 	return &this
 }
 
-// GetCloudProvider returns the CloudProvider field value if set, zero value otherwise.
+// GetCloudProvider returns the CloudProvider field value if set, zero value otherwise
 func (o *DeleteCopiedBackups) GetCloudProvider() string {
 	if o == nil || IsNil(o.CloudProvider) {
 		var ret string
@@ -51,6 +48,7 @@ func (o *DeleteCopiedBackups) GetCloudProviderOk() (*string, bool) {
 	if o == nil || IsNil(o.CloudProvider) {
 		return nil, false
 	}
+
 	return o.CloudProvider, true
 }
 
@@ -68,7 +66,7 @@ func (o *DeleteCopiedBackups) SetCloudProvider(v string) {
 	o.CloudProvider = &v
 }
 
-// GetRegionName returns the RegionName field value if set, zero value otherwise.
+// GetRegionName returns the RegionName field value if set, zero value otherwise
 func (o *DeleteCopiedBackups) GetRegionName() string {
 	if o == nil || IsNil(o.RegionName) {
 		var ret string
@@ -83,6 +81,7 @@ func (o *DeleteCopiedBackups) GetRegionNameOk() (*string, bool) {
 	if o == nil || IsNil(o.RegionName) {
 		return nil, false
 	}
+
 	return o.RegionName, true
 }
 
@@ -100,7 +99,7 @@ func (o *DeleteCopiedBackups) SetRegionName(v string) {
 	o.RegionName = &v
 }
 
-// GetReplicationSpecId returns the ReplicationSpecId field value if set, zero value otherwise.
+// GetReplicationSpecId returns the ReplicationSpecId field value if set, zero value otherwise
 func (o *DeleteCopiedBackups) GetReplicationSpecId() string {
 	if o == nil || IsNil(o.ReplicationSpecId) {
 		var ret string
@@ -115,6 +114,7 @@ func (o *DeleteCopiedBackups) GetReplicationSpecIdOk() (*string, bool) {
 	if o == nil || IsNil(o.ReplicationSpecId) {
 		return nil, false
 	}
+
 	return o.ReplicationSpecId, true
 }
 
@@ -151,40 +151,4 @@ func (o DeleteCopiedBackups) ToMap() (map[string]interface{}, error) {
 		toSerialize["replicationSpecId"] = o.ReplicationSpecId
 	}
 	return toSerialize, nil
-}
-
-type NullableDeleteCopiedBackups struct {
-	value *DeleteCopiedBackups
-	isSet bool
-}
-
-func (v NullableDeleteCopiedBackups) Get() *DeleteCopiedBackups {
-	return v.value
-}
-
-func (v *NullableDeleteCopiedBackups) Set(val *DeleteCopiedBackups) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableDeleteCopiedBackups) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableDeleteCopiedBackups) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableDeleteCopiedBackups(val *DeleteCopiedBackups) *NullableDeleteCopiedBackups {
-	return &NullableDeleteCopiedBackups{value: val, isSet: true}
-}
-
-func (v NullableDeleteCopiedBackups) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableDeleteCopiedBackups) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

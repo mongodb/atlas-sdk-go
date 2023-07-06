@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PaginatedHostViewAtlas type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PaginatedHostViewAtlas{}
-
 // PaginatedHostViewAtlas struct for PaginatedHostViewAtlas
 type PaginatedHostViewAtlas struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -36,7 +33,7 @@ func NewPaginatedHostViewAtlasWithDefaults() *PaginatedHostViewAtlas {
 	return &this
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *PaginatedHostViewAtlas) GetLinks() []LinkAtlas {
 	if o == nil || IsNil(o.Links) {
 		var ret []LinkAtlas
@@ -51,6 +48,7 @@ func (o *PaginatedHostViewAtlas) GetLinksOk() ([]LinkAtlas, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -68,7 +66,7 @@ func (o *PaginatedHostViewAtlas) SetLinks(v []LinkAtlas) {
 	o.Links = v
 }
 
-// GetResults returns the Results field value if set, zero value otherwise.
+// GetResults returns the Results field value if set, zero value otherwise
 func (o *PaginatedHostViewAtlas) GetResults() []ApiHostViewAtlas {
 	if o == nil || IsNil(o.Results) {
 		var ret []ApiHostViewAtlas
@@ -83,6 +81,7 @@ func (o *PaginatedHostViewAtlas) GetResultsOk() ([]ApiHostViewAtlas, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
+
 	return o.Results, true
 }
 
@@ -100,7 +99,7 @@ func (o *PaginatedHostViewAtlas) SetResults(v []ApiHostViewAtlas) {
 	o.Results = v
 }
 
-// GetTotalCount returns the TotalCount field value if set, zero value otherwise.
+// GetTotalCount returns the TotalCount field value if set, zero value otherwise
 func (o *PaginatedHostViewAtlas) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int
@@ -115,6 +114,7 @@ func (o *PaginatedHostViewAtlas) GetTotalCountOk() (*int, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
+
 	return o.TotalCount, true
 }
 
@@ -142,40 +142,4 @@ func (o PaginatedHostViewAtlas) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o PaginatedHostViewAtlas) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullablePaginatedHostViewAtlas struct {
-	value *PaginatedHostViewAtlas
-	isSet bool
-}
-
-func (v NullablePaginatedHostViewAtlas) Get() *PaginatedHostViewAtlas {
-	return v.value
-}
-
-func (v *NullablePaginatedHostViewAtlas) Set(val *PaginatedHostViewAtlas) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullablePaginatedHostViewAtlas) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullablePaginatedHostViewAtlas) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullablePaginatedHostViewAtlas(val *PaginatedHostViewAtlas) *NullablePaginatedHostViewAtlas {
-	return &NullablePaginatedHostViewAtlas{value: val, isSet: true}
-}
-
-func (v NullablePaginatedHostViewAtlas) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullablePaginatedHostViewAtlas) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

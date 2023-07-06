@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PaginatedTenantRestore type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PaginatedTenantRestore{}
-
 // PaginatedTenantRestore struct for PaginatedTenantRestore
 type PaginatedTenantRestore struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -36,7 +33,7 @@ func NewPaginatedTenantRestoreWithDefaults() *PaginatedTenantRestore {
 	return &this
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *PaginatedTenantRestore) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -51,6 +48,7 @@ func (o *PaginatedTenantRestore) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -68,7 +66,7 @@ func (o *PaginatedTenantRestore) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetResults returns the Results field value if set, zero value otherwise.
+// GetResults returns the Results field value if set, zero value otherwise
 func (o *PaginatedTenantRestore) GetResults() []TenantRestore {
 	if o == nil || IsNil(o.Results) {
 		var ret []TenantRestore
@@ -83,6 +81,7 @@ func (o *PaginatedTenantRestore) GetResultsOk() ([]TenantRestore, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
+
 	return o.Results, true
 }
 
@@ -100,7 +99,7 @@ func (o *PaginatedTenantRestore) SetResults(v []TenantRestore) {
 	o.Results = v
 }
 
-// GetTotalCount returns the TotalCount field value if set, zero value otherwise.
+// GetTotalCount returns the TotalCount field value if set, zero value otherwise
 func (o *PaginatedTenantRestore) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int
@@ -115,6 +114,7 @@ func (o *PaginatedTenantRestore) GetTotalCountOk() (*int, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
+
 	return o.TotalCount, true
 }
 
@@ -142,40 +142,4 @@ func (o PaginatedTenantRestore) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o PaginatedTenantRestore) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullablePaginatedTenantRestore struct {
-	value *PaginatedTenantRestore
-	isSet bool
-}
-
-func (v NullablePaginatedTenantRestore) Get() *PaginatedTenantRestore {
-	return v.value
-}
-
-func (v *NullablePaginatedTenantRestore) Set(val *PaginatedTenantRestore) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullablePaginatedTenantRestore) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullablePaginatedTenantRestore) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullablePaginatedTenantRestore(val *PaginatedTenantRestore) *NullablePaginatedTenantRestore {
-	return &NullablePaginatedTenantRestore{value: val, isSet: true}
-}
-
-func (v NullablePaginatedTenantRestore) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullablePaginatedTenantRestore) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

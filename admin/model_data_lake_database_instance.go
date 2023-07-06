@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the DataLakeDatabaseInstance type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DataLakeDatabaseInstance{}
-
 // DataLakeDatabaseInstance Database associated with this data lake. Databases contain collections and views.
 type DataLakeDatabaseInstance struct {
 	// Array of collections and data sources that map to a ``stores`` data store.
@@ -42,7 +39,7 @@ func NewDataLakeDatabaseInstanceWithDefaults() *DataLakeDatabaseInstance {
 	return &this
 }
 
-// GetCollections returns the Collections field value if set, zero value otherwise.
+// GetCollections returns the Collections field value if set, zero value otherwise
 func (o *DataLakeDatabaseInstance) GetCollections() []DataLakeDatabaseCollection {
 	if o == nil || IsNil(o.Collections) {
 		var ret []DataLakeDatabaseCollection
@@ -57,6 +54,7 @@ func (o *DataLakeDatabaseInstance) GetCollectionsOk() ([]DataLakeDatabaseCollect
 	if o == nil || IsNil(o.Collections) {
 		return nil, false
 	}
+
 	return o.Collections, true
 }
 
@@ -74,7 +72,7 @@ func (o *DataLakeDatabaseInstance) SetCollections(v []DataLakeDatabaseCollection
 	o.Collections = v
 }
 
-// GetMaxWildcardCollections returns the MaxWildcardCollections field value if set, zero value otherwise.
+// GetMaxWildcardCollections returns the MaxWildcardCollections field value if set, zero value otherwise
 func (o *DataLakeDatabaseInstance) GetMaxWildcardCollections() int {
 	if o == nil || IsNil(o.MaxWildcardCollections) {
 		var ret int
@@ -89,6 +87,7 @@ func (o *DataLakeDatabaseInstance) GetMaxWildcardCollectionsOk() (*int, bool) {
 	if o == nil || IsNil(o.MaxWildcardCollections) {
 		return nil, false
 	}
+
 	return o.MaxWildcardCollections, true
 }
 
@@ -106,7 +105,7 @@ func (o *DataLakeDatabaseInstance) SetMaxWildcardCollections(v int) {
 	o.MaxWildcardCollections = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise
 func (o *DataLakeDatabaseInstance) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
@@ -121,6 +120,7 @@ func (o *DataLakeDatabaseInstance) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
+
 	return o.Name, true
 }
 
@@ -138,7 +138,7 @@ func (o *DataLakeDatabaseInstance) SetName(v string) {
 	o.Name = &v
 }
 
-// GetViews returns the Views field value if set, zero value otherwise.
+// GetViews returns the Views field value if set, zero value otherwise
 func (o *DataLakeDatabaseInstance) GetViews() []DataLakeApiBase {
 	if o == nil || IsNil(o.Views) {
 		var ret []DataLakeApiBase
@@ -153,6 +153,7 @@ func (o *DataLakeDatabaseInstance) GetViewsOk() ([]DataLakeApiBase, bool) {
 	if o == nil || IsNil(o.Views) {
 		return nil, false
 	}
+
 	return o.Views, true
 }
 
@@ -192,40 +193,4 @@ func (o DataLakeDatabaseInstance) ToMap() (map[string]interface{}, error) {
 		toSerialize["views"] = o.Views
 	}
 	return toSerialize, nil
-}
-
-type NullableDataLakeDatabaseInstance struct {
-	value *DataLakeDatabaseInstance
-	isSet bool
-}
-
-func (v NullableDataLakeDatabaseInstance) Get() *DataLakeDatabaseInstance {
-	return v.value
-}
-
-func (v *NullableDataLakeDatabaseInstance) Set(val *DataLakeDatabaseInstance) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableDataLakeDatabaseInstance) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableDataLakeDatabaseInstance) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableDataLakeDatabaseInstance(val *DataLakeDatabaseInstance) *NullableDataLakeDatabaseInstance {
-	return &NullableDataLakeDatabaseInstance{value: val, isSet: true}
-}
-
-func (v NullableDataLakeDatabaseInstance) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableDataLakeDatabaseInstance) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

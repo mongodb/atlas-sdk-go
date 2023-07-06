@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the CloudRegionConfig type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CloudRegionConfig{}
-
 // CloudRegionConfig Cloud service provider on which MongoDB Cloud provisions the hosts.
 type CloudRegionConfig struct {
 	ElectableSpecs *HardwareSpec `json:"electableSpecs,omitempty"`
@@ -43,7 +40,7 @@ func NewCloudRegionConfigWithDefaults() *CloudRegionConfig {
 	return &this
 }
 
-// GetElectableSpecs returns the ElectableSpecs field value if set, zero value otherwise.
+// GetElectableSpecs returns the ElectableSpecs field value if set, zero value otherwise
 func (o *CloudRegionConfig) GetElectableSpecs() HardwareSpec {
 	if o == nil || IsNil(o.ElectableSpecs) {
 		var ret HardwareSpec
@@ -58,6 +55,7 @@ func (o *CloudRegionConfig) GetElectableSpecsOk() (*HardwareSpec, bool) {
 	if o == nil || IsNil(o.ElectableSpecs) {
 		return nil, false
 	}
+
 	return o.ElectableSpecs, true
 }
 
@@ -75,7 +73,7 @@ func (o *CloudRegionConfig) SetElectableSpecs(v HardwareSpec) {
 	o.ElectableSpecs = &v
 }
 
-// GetPriority returns the Priority field value if set, zero value otherwise.
+// GetPriority returns the Priority field value if set, zero value otherwise
 func (o *CloudRegionConfig) GetPriority() int {
 	if o == nil || IsNil(o.Priority) {
 		var ret int
@@ -90,6 +88,7 @@ func (o *CloudRegionConfig) GetPriorityOk() (*int, bool) {
 	if o == nil || IsNil(o.Priority) {
 		return nil, false
 	}
+
 	return o.Priority, true
 }
 
@@ -107,7 +106,7 @@ func (o *CloudRegionConfig) SetPriority(v int) {
 	o.Priority = &v
 }
 
-// GetProviderName returns the ProviderName field value if set, zero value otherwise.
+// GetProviderName returns the ProviderName field value if set, zero value otherwise
 func (o *CloudRegionConfig) GetProviderName() string {
 	if o == nil || IsNil(o.ProviderName) {
 		var ret string
@@ -122,6 +121,7 @@ func (o *CloudRegionConfig) GetProviderNameOk() (*string, bool) {
 	if o == nil || IsNil(o.ProviderName) {
 		return nil, false
 	}
+
 	return o.ProviderName, true
 }
 
@@ -139,7 +139,7 @@ func (o *CloudRegionConfig) SetProviderName(v string) {
 	o.ProviderName = &v
 }
 
-// GetRegionName returns the RegionName field value if set, zero value otherwise.
+// GetRegionName returns the RegionName field value if set, zero value otherwise
 func (o *CloudRegionConfig) GetRegionName() string {
 	if o == nil || IsNil(o.RegionName) {
 		var ret string
@@ -154,6 +154,7 @@ func (o *CloudRegionConfig) GetRegionNameOk() (*string, bool) {
 	if o == nil || IsNil(o.RegionName) {
 		return nil, false
 	}
+
 	return o.RegionName, true
 }
 
@@ -171,7 +172,7 @@ func (o *CloudRegionConfig) SetRegionName(v string) {
 	o.RegionName = &v
 }
 
-// GetAnalyticsAutoScaling returns the AnalyticsAutoScaling field value if set, zero value otherwise.
+// GetAnalyticsAutoScaling returns the AnalyticsAutoScaling field value if set, zero value otherwise
 func (o *CloudRegionConfig) GetAnalyticsAutoScaling() AdvancedAutoScalingSettings {
 	if o == nil || IsNil(o.AnalyticsAutoScaling) {
 		var ret AdvancedAutoScalingSettings
@@ -186,6 +187,7 @@ func (o *CloudRegionConfig) GetAnalyticsAutoScalingOk() (*AdvancedAutoScalingSet
 	if o == nil || IsNil(o.AnalyticsAutoScaling) {
 		return nil, false
 	}
+
 	return o.AnalyticsAutoScaling, true
 }
 
@@ -203,7 +205,7 @@ func (o *CloudRegionConfig) SetAnalyticsAutoScaling(v AdvancedAutoScalingSetting
 	o.AnalyticsAutoScaling = &v
 }
 
-// GetAnalyticsSpecs returns the AnalyticsSpecs field value if set, zero value otherwise.
+// GetAnalyticsSpecs returns the AnalyticsSpecs field value if set, zero value otherwise
 func (o *CloudRegionConfig) GetAnalyticsSpecs() DedicatedHardwareSpec {
 	if o == nil || IsNil(o.AnalyticsSpecs) {
 		var ret DedicatedHardwareSpec
@@ -218,6 +220,7 @@ func (o *CloudRegionConfig) GetAnalyticsSpecsOk() (*DedicatedHardwareSpec, bool)
 	if o == nil || IsNil(o.AnalyticsSpecs) {
 		return nil, false
 	}
+
 	return o.AnalyticsSpecs, true
 }
 
@@ -235,7 +238,7 @@ func (o *CloudRegionConfig) SetAnalyticsSpecs(v DedicatedHardwareSpec) {
 	o.AnalyticsSpecs = &v
 }
 
-// GetAutoScaling returns the AutoScaling field value if set, zero value otherwise.
+// GetAutoScaling returns the AutoScaling field value if set, zero value otherwise
 func (o *CloudRegionConfig) GetAutoScaling() AdvancedAutoScalingSettings {
 	if o == nil || IsNil(o.AutoScaling) {
 		var ret AdvancedAutoScalingSettings
@@ -250,6 +253,7 @@ func (o *CloudRegionConfig) GetAutoScalingOk() (*AdvancedAutoScalingSettings, bo
 	if o == nil || IsNil(o.AutoScaling) {
 		return nil, false
 	}
+
 	return o.AutoScaling, true
 }
 
@@ -267,7 +271,7 @@ func (o *CloudRegionConfig) SetAutoScaling(v AdvancedAutoScalingSettings) {
 	o.AutoScaling = &v
 }
 
-// GetReadOnlySpecs returns the ReadOnlySpecs field value if set, zero value otherwise.
+// GetReadOnlySpecs returns the ReadOnlySpecs field value if set, zero value otherwise
 func (o *CloudRegionConfig) GetReadOnlySpecs() DedicatedHardwareSpec {
 	if o == nil || IsNil(o.ReadOnlySpecs) {
 		var ret DedicatedHardwareSpec
@@ -282,6 +286,7 @@ func (o *CloudRegionConfig) GetReadOnlySpecsOk() (*DedicatedHardwareSpec, bool) 
 	if o == nil || IsNil(o.ReadOnlySpecs) {
 		return nil, false
 	}
+
 	return o.ReadOnlySpecs, true
 }
 
@@ -299,7 +304,7 @@ func (o *CloudRegionConfig) SetReadOnlySpecs(v DedicatedHardwareSpec) {
 	o.ReadOnlySpecs = &v
 }
 
-// GetBackingProviderName returns the BackingProviderName field value if set, zero value otherwise.
+// GetBackingProviderName returns the BackingProviderName field value if set, zero value otherwise
 func (o *CloudRegionConfig) GetBackingProviderName() string {
 	if o == nil || IsNil(o.BackingProviderName) {
 		var ret string
@@ -314,6 +319,7 @@ func (o *CloudRegionConfig) GetBackingProviderNameOk() (*string, bool) {
 	if o == nil || IsNil(o.BackingProviderName) {
 		return nil, false
 	}
+
 	return o.BackingProviderName, true
 }
 
@@ -368,40 +374,4 @@ func (o CloudRegionConfig) ToMap() (map[string]interface{}, error) {
 		toSerialize["backingProviderName"] = o.BackingProviderName
 	}
 	return toSerialize, nil
-}
-
-type NullableCloudRegionConfig struct {
-	value *CloudRegionConfig
-	isSet bool
-}
-
-func (v NullableCloudRegionConfig) Get() *CloudRegionConfig {
-	return v.value
-}
-
-func (v *NullableCloudRegionConfig) Set(val *CloudRegionConfig) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableCloudRegionConfig) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableCloudRegionConfig) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableCloudRegionConfig(val *CloudRegionConfig) *NullableCloudRegionConfig {
-	return &NullableCloudRegionConfig{value: val, isSet: true}
-}
-
-func (v NullableCloudRegionConfig) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableCloudRegionConfig) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the BillingInvoice type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &BillingInvoice{}
-
 // BillingInvoice struct for BillingInvoice
 type BillingInvoice struct {
 	// Sum of services that the specified organization consumed in the period covered in this invoice. This parameter expresses its value in cents (100ths of one US Dollar) and calculates its value as **subtotalCents** + **salesTaxCents** - **startingBalanceCents**.
@@ -69,7 +66,7 @@ func NewBillingInvoiceWithDefaults() *BillingInvoice {
 	return &this
 }
 
-// GetAmountBilledCents returns the AmountBilledCents field value if set, zero value otherwise.
+// GetAmountBilledCents returns the AmountBilledCents field value if set, zero value otherwise
 func (o *BillingInvoice) GetAmountBilledCents() int64 {
 	if o == nil || IsNil(o.AmountBilledCents) {
 		var ret int64
@@ -84,6 +81,7 @@ func (o *BillingInvoice) GetAmountBilledCentsOk() (*int64, bool) {
 	if o == nil || IsNil(o.AmountBilledCents) {
 		return nil, false
 	}
+
 	return o.AmountBilledCents, true
 }
 
@@ -101,7 +99,7 @@ func (o *BillingInvoice) SetAmountBilledCents(v int64) {
 	o.AmountBilledCents = &v
 }
 
-// GetAmountPaidCents returns the AmountPaidCents field value if set, zero value otherwise.
+// GetAmountPaidCents returns the AmountPaidCents field value if set, zero value otherwise
 func (o *BillingInvoice) GetAmountPaidCents() int64 {
 	if o == nil || IsNil(o.AmountPaidCents) {
 		var ret int64
@@ -116,6 +114,7 @@ func (o *BillingInvoice) GetAmountPaidCentsOk() (*int64, bool) {
 	if o == nil || IsNil(o.AmountPaidCents) {
 		return nil, false
 	}
+
 	return o.AmountPaidCents, true
 }
 
@@ -133,7 +132,7 @@ func (o *BillingInvoice) SetAmountPaidCents(v int64) {
 	o.AmountPaidCents = &v
 }
 
-// GetCreated returns the Created field value if set, zero value otherwise.
+// GetCreated returns the Created field value if set, zero value otherwise
 func (o *BillingInvoice) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
 		var ret time.Time
@@ -148,6 +147,7 @@ func (o *BillingInvoice) GetCreatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Created) {
 		return nil, false
 	}
+
 	return o.Created, true
 }
 
@@ -165,7 +165,7 @@ func (o *BillingInvoice) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
-// GetCreditsCents returns the CreditsCents field value if set, zero value otherwise.
+// GetCreditsCents returns the CreditsCents field value if set, zero value otherwise
 func (o *BillingInvoice) GetCreditsCents() int64 {
 	if o == nil || IsNil(o.CreditsCents) {
 		var ret int64
@@ -180,6 +180,7 @@ func (o *BillingInvoice) GetCreditsCentsOk() (*int64, bool) {
 	if o == nil || IsNil(o.CreditsCents) {
 		return nil, false
 	}
+
 	return o.CreditsCents, true
 }
 
@@ -197,7 +198,7 @@ func (o *BillingInvoice) SetCreditsCents(v int64) {
 	o.CreditsCents = &v
 }
 
-// GetEndDate returns the EndDate field value if set, zero value otherwise.
+// GetEndDate returns the EndDate field value if set, zero value otherwise
 func (o *BillingInvoice) GetEndDate() time.Time {
 	if o == nil || IsNil(o.EndDate) {
 		var ret time.Time
@@ -212,6 +213,7 @@ func (o *BillingInvoice) GetEndDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.EndDate) {
 		return nil, false
 	}
+
 	return o.EndDate, true
 }
 
@@ -229,7 +231,7 @@ func (o *BillingInvoice) SetEndDate(v time.Time) {
 	o.EndDate = &v
 }
 
-// GetGroupId returns the GroupId field value if set, zero value otherwise.
+// GetGroupId returns the GroupId field value if set, zero value otherwise
 func (o *BillingInvoice) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
 		var ret string
@@ -244,6 +246,7 @@ func (o *BillingInvoice) GetGroupIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupId) {
 		return nil, false
 	}
+
 	return o.GroupId, true
 }
 
@@ -261,7 +264,7 @@ func (o *BillingInvoice) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *BillingInvoice) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -276,6 +279,7 @@ func (o *BillingInvoice) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -293,7 +297,7 @@ func (o *BillingInvoice) SetId(v string) {
 	o.Id = &v
 }
 
-// GetLineItems returns the LineItems field value if set, zero value otherwise.
+// GetLineItems returns the LineItems field value if set, zero value otherwise
 func (o *BillingInvoice) GetLineItems() []InvoiceLineItem {
 	if o == nil || IsNil(o.LineItems) {
 		var ret []InvoiceLineItem
@@ -308,6 +312,7 @@ func (o *BillingInvoice) GetLineItemsOk() ([]InvoiceLineItem, bool) {
 	if o == nil || IsNil(o.LineItems) {
 		return nil, false
 	}
+
 	return o.LineItems, true
 }
 
@@ -325,7 +330,7 @@ func (o *BillingInvoice) SetLineItems(v []InvoiceLineItem) {
 	o.LineItems = v
 }
 
-// GetLinkedInvoices returns the LinkedInvoices field value if set, zero value otherwise.
+// GetLinkedInvoices returns the LinkedInvoices field value if set, zero value otherwise
 func (o *BillingInvoice) GetLinkedInvoices() []BillingInvoice {
 	if o == nil || IsNil(o.LinkedInvoices) {
 		var ret []BillingInvoice
@@ -340,6 +345,7 @@ func (o *BillingInvoice) GetLinkedInvoicesOk() ([]BillingInvoice, bool) {
 	if o == nil || IsNil(o.LinkedInvoices) {
 		return nil, false
 	}
+
 	return o.LinkedInvoices, true
 }
 
@@ -357,7 +363,7 @@ func (o *BillingInvoice) SetLinkedInvoices(v []BillingInvoice) {
 	o.LinkedInvoices = v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *BillingInvoice) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -372,6 +378,7 @@ func (o *BillingInvoice) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -389,7 +396,7 @@ func (o *BillingInvoice) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetOrgId returns the OrgId field value if set, zero value otherwise.
+// GetOrgId returns the OrgId field value if set, zero value otherwise
 func (o *BillingInvoice) GetOrgId() string {
 	if o == nil || IsNil(o.OrgId) {
 		var ret string
@@ -404,6 +411,7 @@ func (o *BillingInvoice) GetOrgIdOk() (*string, bool) {
 	if o == nil || IsNil(o.OrgId) {
 		return nil, false
 	}
+
 	return o.OrgId, true
 }
 
@@ -421,7 +429,7 @@ func (o *BillingInvoice) SetOrgId(v string) {
 	o.OrgId = &v
 }
 
-// GetPayments returns the Payments field value if set, zero value otherwise.
+// GetPayments returns the Payments field value if set, zero value otherwise
 func (o *BillingInvoice) GetPayments() []BillingPayment {
 	if o == nil || IsNil(o.Payments) {
 		var ret []BillingPayment
@@ -436,6 +444,7 @@ func (o *BillingInvoice) GetPaymentsOk() ([]BillingPayment, bool) {
 	if o == nil || IsNil(o.Payments) {
 		return nil, false
 	}
+
 	return o.Payments, true
 }
 
@@ -453,7 +462,7 @@ func (o *BillingInvoice) SetPayments(v []BillingPayment) {
 	o.Payments = v
 }
 
-// GetRefunds returns the Refunds field value if set, zero value otherwise.
+// GetRefunds returns the Refunds field value if set, zero value otherwise
 func (o *BillingInvoice) GetRefunds() []BillingRefund {
 	if o == nil || IsNil(o.Refunds) {
 		var ret []BillingRefund
@@ -468,6 +477,7 @@ func (o *BillingInvoice) GetRefundsOk() ([]BillingRefund, bool) {
 	if o == nil || IsNil(o.Refunds) {
 		return nil, false
 	}
+
 	return o.Refunds, true
 }
 
@@ -485,7 +495,7 @@ func (o *BillingInvoice) SetRefunds(v []BillingRefund) {
 	o.Refunds = v
 }
 
-// GetSalesTaxCents returns the SalesTaxCents field value if set, zero value otherwise.
+// GetSalesTaxCents returns the SalesTaxCents field value if set, zero value otherwise
 func (o *BillingInvoice) GetSalesTaxCents() int64 {
 	if o == nil || IsNil(o.SalesTaxCents) {
 		var ret int64
@@ -500,6 +510,7 @@ func (o *BillingInvoice) GetSalesTaxCentsOk() (*int64, bool) {
 	if o == nil || IsNil(o.SalesTaxCents) {
 		return nil, false
 	}
+
 	return o.SalesTaxCents, true
 }
 
@@ -517,7 +528,7 @@ func (o *BillingInvoice) SetSalesTaxCents(v int64) {
 	o.SalesTaxCents = &v
 }
 
-// GetStartDate returns the StartDate field value if set, zero value otherwise.
+// GetStartDate returns the StartDate field value if set, zero value otherwise
 func (o *BillingInvoice) GetStartDate() time.Time {
 	if o == nil || IsNil(o.StartDate) {
 		var ret time.Time
@@ -532,6 +543,7 @@ func (o *BillingInvoice) GetStartDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.StartDate) {
 		return nil, false
 	}
+
 	return o.StartDate, true
 }
 
@@ -549,7 +561,7 @@ func (o *BillingInvoice) SetStartDate(v time.Time) {
 	o.StartDate = &v
 }
 
-// GetStartingBalanceCents returns the StartingBalanceCents field value if set, zero value otherwise.
+// GetStartingBalanceCents returns the StartingBalanceCents field value if set, zero value otherwise
 func (o *BillingInvoice) GetStartingBalanceCents() int64 {
 	if o == nil || IsNil(o.StartingBalanceCents) {
 		var ret int64
@@ -564,6 +576,7 @@ func (o *BillingInvoice) GetStartingBalanceCentsOk() (*int64, bool) {
 	if o == nil || IsNil(o.StartingBalanceCents) {
 		return nil, false
 	}
+
 	return o.StartingBalanceCents, true
 }
 
@@ -581,7 +594,7 @@ func (o *BillingInvoice) SetStartingBalanceCents(v int64) {
 	o.StartingBalanceCents = &v
 }
 
-// GetStatusName returns the StatusName field value if set, zero value otherwise.
+// GetStatusName returns the StatusName field value if set, zero value otherwise
 func (o *BillingInvoice) GetStatusName() string {
 	if o == nil || IsNil(o.StatusName) {
 		var ret string
@@ -596,6 +609,7 @@ func (o *BillingInvoice) GetStatusNameOk() (*string, bool) {
 	if o == nil || IsNil(o.StatusName) {
 		return nil, false
 	}
+
 	return o.StatusName, true
 }
 
@@ -613,7 +627,7 @@ func (o *BillingInvoice) SetStatusName(v string) {
 	o.StatusName = &v
 }
 
-// GetSubtotalCents returns the SubtotalCents field value if set, zero value otherwise.
+// GetSubtotalCents returns the SubtotalCents field value if set, zero value otherwise
 func (o *BillingInvoice) GetSubtotalCents() int64 {
 	if o == nil || IsNil(o.SubtotalCents) {
 		var ret int64
@@ -628,6 +642,7 @@ func (o *BillingInvoice) GetSubtotalCentsOk() (*int64, bool) {
 	if o == nil || IsNil(o.SubtotalCents) {
 		return nil, false
 	}
+
 	return o.SubtotalCents, true
 }
 
@@ -645,7 +660,7 @@ func (o *BillingInvoice) SetSubtotalCents(v int64) {
 	o.SubtotalCents = &v
 }
 
-// GetUpdated returns the Updated field value if set, zero value otherwise.
+// GetUpdated returns the Updated field value if set, zero value otherwise
 func (o *BillingInvoice) GetUpdated() time.Time {
 	if o == nil || IsNil(o.Updated) {
 		var ret time.Time
@@ -660,6 +675,7 @@ func (o *BillingInvoice) GetUpdatedOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Updated) {
 		return nil, false
 	}
+
 	return o.Updated, true
 }
 
@@ -690,40 +706,4 @@ func (o BillingInvoice) ToMap() (map[string]interface{}, error) {
 		toSerialize["statusName"] = o.StatusName
 	}
 	return toSerialize, nil
-}
-
-type NullableBillingInvoice struct {
-	value *BillingInvoice
-	isSet bool
-}
-
-func (v NullableBillingInvoice) Get() *BillingInvoice {
-	return v.value
-}
-
-func (v *NullableBillingInvoice) Set(val *BillingInvoice) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableBillingInvoice) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableBillingInvoice) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableBillingInvoice(val *BillingInvoice) *NullableBillingInvoice {
-	return &NullableBillingInvoice{value: val, isSet: true}
-}
-
-func (v NullableBillingInvoice) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableBillingInvoice) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ClusterDescriptionProcessArgs type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ClusterDescriptionProcessArgs{}
-
 // ClusterDescriptionProcessArgs struct for ClusterDescriptionProcessArgs
 type ClusterDescriptionProcessArgs struct {
 	// [Default level of acknowledgment requested from MongoDB for read operations](https://docs.mongodb.com/manual/reference/read-concern/) set for this cluster.  MongoDB 4.4 clusters default to `available`. MongoDB 5.0 and later clusters default to `local`.
@@ -24,9 +21,9 @@ type ClusterDescriptionProcessArgs struct {
 	// Flag that indicates whether the cluster disables executing any query that requires a collection scan to return results.
 	NoTableScan *bool `json:"noTableScan,omitempty"`
 	// Minimum retention window for cluster's oplog expressed in hours. A value of null indicates that the cluster uses the default minimum oplog window that MongoDB Cloud calculates.
-	OplogMinRetentionHours NullableFloat64 `json:"oplogMinRetentionHours,omitempty"`
+	OplogMinRetentionHours *float64 `json:"oplogMinRetentionHours,omitempty"`
 	// Storage limit of cluster's oplog expressed in megabytes. A value of null indicates that the cluster uses the default oplog size that MongoDB Cloud calculates.
-	OplogSizeMB NullableInt `json:"oplogSizeMB,omitempty"`
+	OplogSizeMB *int `json:"oplogSizeMB,omitempty"`
 	// Interval in seconds at which the mongosqld process re-samples data to create its relational schema.
 	SampleRefreshIntervalBIConnector *int `json:"sampleRefreshIntervalBIConnector,omitempty"`
 	// Number of documents per database to sample when gathering schema information.
@@ -78,7 +75,7 @@ func NewClusterDescriptionProcessArgsWithDefaults() *ClusterDescriptionProcessAr
 	return &this
 }
 
-// GetDefaultReadConcern returns the DefaultReadConcern field value if set, zero value otherwise.
+// GetDefaultReadConcern returns the DefaultReadConcern field value if set, zero value otherwise
 func (o *ClusterDescriptionProcessArgs) GetDefaultReadConcern() string {
 	if o == nil || IsNil(o.DefaultReadConcern) {
 		var ret string
@@ -93,6 +90,7 @@ func (o *ClusterDescriptionProcessArgs) GetDefaultReadConcernOk() (*string, bool
 	if o == nil || IsNil(o.DefaultReadConcern) {
 		return nil, false
 	}
+
 	return o.DefaultReadConcern, true
 }
 
@@ -110,7 +108,7 @@ func (o *ClusterDescriptionProcessArgs) SetDefaultReadConcern(v string) {
 	o.DefaultReadConcern = &v
 }
 
-// GetDefaultWriteConcern returns the DefaultWriteConcern field value if set, zero value otherwise.
+// GetDefaultWriteConcern returns the DefaultWriteConcern field value if set, zero value otherwise
 func (o *ClusterDescriptionProcessArgs) GetDefaultWriteConcern() string {
 	if o == nil || IsNil(o.DefaultWriteConcern) {
 		var ret string
@@ -125,6 +123,7 @@ func (o *ClusterDescriptionProcessArgs) GetDefaultWriteConcernOk() (*string, boo
 	if o == nil || IsNil(o.DefaultWriteConcern) {
 		return nil, false
 	}
+
 	return o.DefaultWriteConcern, true
 }
 
@@ -142,7 +141,7 @@ func (o *ClusterDescriptionProcessArgs) SetDefaultWriteConcern(v string) {
 	o.DefaultWriteConcern = &v
 }
 
-// GetFailIndexKeyTooLong returns the FailIndexKeyTooLong field value if set, zero value otherwise.
+// GetFailIndexKeyTooLong returns the FailIndexKeyTooLong field value if set, zero value otherwise
 func (o *ClusterDescriptionProcessArgs) GetFailIndexKeyTooLong() bool {
 	if o == nil || IsNil(o.FailIndexKeyTooLong) {
 		var ret bool
@@ -157,6 +156,7 @@ func (o *ClusterDescriptionProcessArgs) GetFailIndexKeyTooLongOk() (*bool, bool)
 	if o == nil || IsNil(o.FailIndexKeyTooLong) {
 		return nil, false
 	}
+
 	return o.FailIndexKeyTooLong, true
 }
 
@@ -174,7 +174,7 @@ func (o *ClusterDescriptionProcessArgs) SetFailIndexKeyTooLong(v bool) {
 	o.FailIndexKeyTooLong = &v
 }
 
-// GetJavascriptEnabled returns the JavascriptEnabled field value if set, zero value otherwise.
+// GetJavascriptEnabled returns the JavascriptEnabled field value if set, zero value otherwise
 func (o *ClusterDescriptionProcessArgs) GetJavascriptEnabled() bool {
 	if o == nil || IsNil(o.JavascriptEnabled) {
 		var ret bool
@@ -189,6 +189,7 @@ func (o *ClusterDescriptionProcessArgs) GetJavascriptEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.JavascriptEnabled) {
 		return nil, false
 	}
+
 	return o.JavascriptEnabled, true
 }
 
@@ -206,7 +207,7 @@ func (o *ClusterDescriptionProcessArgs) SetJavascriptEnabled(v bool) {
 	o.JavascriptEnabled = &v
 }
 
-// GetMinimumEnabledTlsProtocol returns the MinimumEnabledTlsProtocol field value if set, zero value otherwise.
+// GetMinimumEnabledTlsProtocol returns the MinimumEnabledTlsProtocol field value if set, zero value otherwise
 func (o *ClusterDescriptionProcessArgs) GetMinimumEnabledTlsProtocol() string {
 	if o == nil || IsNil(o.MinimumEnabledTlsProtocol) {
 		var ret string
@@ -221,6 +222,7 @@ func (o *ClusterDescriptionProcessArgs) GetMinimumEnabledTlsProtocolOk() (*strin
 	if o == nil || IsNil(o.MinimumEnabledTlsProtocol) {
 		return nil, false
 	}
+
 	return o.MinimumEnabledTlsProtocol, true
 }
 
@@ -238,7 +240,7 @@ func (o *ClusterDescriptionProcessArgs) SetMinimumEnabledTlsProtocol(v string) {
 	o.MinimumEnabledTlsProtocol = &v
 }
 
-// GetNoTableScan returns the NoTableScan field value if set, zero value otherwise.
+// GetNoTableScan returns the NoTableScan field value if set, zero value otherwise
 func (o *ClusterDescriptionProcessArgs) GetNoTableScan() bool {
 	if o == nil || IsNil(o.NoTableScan) {
 		var ret bool
@@ -253,6 +255,7 @@ func (o *ClusterDescriptionProcessArgs) GetNoTableScanOk() (*bool, bool) {
 	if o == nil || IsNil(o.NoTableScan) {
 		return nil, false
 	}
+
 	return o.NoTableScan, true
 }
 
@@ -270,93 +273,73 @@ func (o *ClusterDescriptionProcessArgs) SetNoTableScan(v bool) {
 	o.NoTableScan = &v
 }
 
-// GetOplogMinRetentionHours returns the OplogMinRetentionHours field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOplogMinRetentionHours returns the OplogMinRetentionHours field value if set, zero value otherwise
 func (o *ClusterDescriptionProcessArgs) GetOplogMinRetentionHours() float64 {
-	if o == nil || IsNil(o.OplogMinRetentionHours.Get()) {
+	if o == nil || IsNil(o.OplogMinRetentionHours) {
 		var ret float64
 		return ret
 	}
-	return *o.OplogMinRetentionHours.Get()
+	return *o.OplogMinRetentionHours
 }
 
 // GetOplogMinRetentionHoursOk returns a tuple with the OplogMinRetentionHours field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ClusterDescriptionProcessArgs) GetOplogMinRetentionHoursOk() (*float64, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OplogMinRetentionHours) {
 		return nil, false
 	}
-	return o.OplogMinRetentionHours.Get(), o.OplogMinRetentionHours.IsSet()
+
+	return o.OplogMinRetentionHours, true
 }
 
 // HasOplogMinRetentionHours returns a boolean if a field has been set.
 func (o *ClusterDescriptionProcessArgs) HasOplogMinRetentionHours() bool {
-	if o != nil && o.OplogMinRetentionHours.IsSet() {
+	if o != nil && !IsNil(o.OplogMinRetentionHours) {
 		return true
 	}
 
 	return false
 }
 
-// SetOplogMinRetentionHours gets a reference to the given NullableFloat64 and assigns it to the OplogMinRetentionHours field.
+// SetOplogMinRetentionHours gets a reference to the given float64 and assigns it to the OplogMinRetentionHours field.
 func (o *ClusterDescriptionProcessArgs) SetOplogMinRetentionHours(v float64) {
-	o.OplogMinRetentionHours.Set(&v)
+	o.OplogMinRetentionHours = &v
 }
 
-// SetOplogMinRetentionHoursNil sets the value for OplogMinRetentionHours to be an explicit nil
-func (o *ClusterDescriptionProcessArgs) SetOplogMinRetentionHoursNil() {
-	o.OplogMinRetentionHours.Set(nil)
-}
-
-// UnsetOplogMinRetentionHours ensures that no value is present for OplogMinRetentionHours, not even an explicit nil
-func (o *ClusterDescriptionProcessArgs) UnsetOplogMinRetentionHours() {
-	o.OplogMinRetentionHours.Unset()
-}
-
-// GetOplogSizeMB returns the OplogSizeMB field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOplogSizeMB returns the OplogSizeMB field value if set, zero value otherwise
 func (o *ClusterDescriptionProcessArgs) GetOplogSizeMB() int {
-	if o == nil || IsNil(o.OplogSizeMB.Get()) {
+	if o == nil || IsNil(o.OplogSizeMB) {
 		var ret int
 		return ret
 	}
-	return *o.OplogSizeMB.Get()
+	return *o.OplogSizeMB
 }
 
 // GetOplogSizeMBOk returns a tuple with the OplogSizeMB field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ClusterDescriptionProcessArgs) GetOplogSizeMBOk() (*int, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OplogSizeMB) {
 		return nil, false
 	}
-	return o.OplogSizeMB.Get(), o.OplogSizeMB.IsSet()
+
+	return o.OplogSizeMB, true
 }
 
 // HasOplogSizeMB returns a boolean if a field has been set.
 func (o *ClusterDescriptionProcessArgs) HasOplogSizeMB() bool {
-	if o != nil && o.OplogSizeMB.IsSet() {
+	if o != nil && !IsNil(o.OplogSizeMB) {
 		return true
 	}
 
 	return false
 }
 
-// SetOplogSizeMB gets a reference to the given NullableInt and assigns it to the OplogSizeMB field.
+// SetOplogSizeMB gets a reference to the given int and assigns it to the OplogSizeMB field.
 func (o *ClusterDescriptionProcessArgs) SetOplogSizeMB(v int) {
-	o.OplogSizeMB.Set(&v)
+	o.OplogSizeMB = &v
 }
 
-// SetOplogSizeMBNil sets the value for OplogSizeMB to be an explicit nil
-func (o *ClusterDescriptionProcessArgs) SetOplogSizeMBNil() {
-	o.OplogSizeMB.Set(nil)
-}
-
-// UnsetOplogSizeMB ensures that no value is present for OplogSizeMB, not even an explicit nil
-func (o *ClusterDescriptionProcessArgs) UnsetOplogSizeMB() {
-	o.OplogSizeMB.Unset()
-}
-
-// GetSampleRefreshIntervalBIConnector returns the SampleRefreshIntervalBIConnector field value if set, zero value otherwise.
+// GetSampleRefreshIntervalBIConnector returns the SampleRefreshIntervalBIConnector field value if set, zero value otherwise
 func (o *ClusterDescriptionProcessArgs) GetSampleRefreshIntervalBIConnector() int {
 	if o == nil || IsNil(o.SampleRefreshIntervalBIConnector) {
 		var ret int
@@ -371,6 +354,7 @@ func (o *ClusterDescriptionProcessArgs) GetSampleRefreshIntervalBIConnectorOk() 
 	if o == nil || IsNil(o.SampleRefreshIntervalBIConnector) {
 		return nil, false
 	}
+
 	return o.SampleRefreshIntervalBIConnector, true
 }
 
@@ -388,7 +372,7 @@ func (o *ClusterDescriptionProcessArgs) SetSampleRefreshIntervalBIConnector(v in
 	o.SampleRefreshIntervalBIConnector = &v
 }
 
-// GetSampleSizeBIConnector returns the SampleSizeBIConnector field value if set, zero value otherwise.
+// GetSampleSizeBIConnector returns the SampleSizeBIConnector field value if set, zero value otherwise
 func (o *ClusterDescriptionProcessArgs) GetSampleSizeBIConnector() int {
 	if o == nil || IsNil(o.SampleSizeBIConnector) {
 		var ret int
@@ -403,6 +387,7 @@ func (o *ClusterDescriptionProcessArgs) GetSampleSizeBIConnectorOk() (*int, bool
 	if o == nil || IsNil(o.SampleSizeBIConnector) {
 		return nil, false
 	}
+
 	return o.SampleSizeBIConnector, true
 }
 
@@ -447,11 +432,11 @@ func (o ClusterDescriptionProcessArgs) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NoTableScan) {
 		toSerialize["noTableScan"] = o.NoTableScan
 	}
-	if o.OplogMinRetentionHours.IsSet() {
-		toSerialize["oplogMinRetentionHours"] = o.OplogMinRetentionHours.Get()
+	if !IsNil(o.OplogMinRetentionHours) {
+		toSerialize["oplogMinRetentionHours"] = o.OplogMinRetentionHours
 	}
-	if o.OplogSizeMB.IsSet() {
-		toSerialize["oplogSizeMB"] = o.OplogSizeMB.Get()
+	if !IsNil(o.OplogSizeMB) {
+		toSerialize["oplogSizeMB"] = o.OplogSizeMB
 	}
 	if !IsNil(o.SampleRefreshIntervalBIConnector) {
 		toSerialize["sampleRefreshIntervalBIConnector"] = o.SampleRefreshIntervalBIConnector
@@ -460,40 +445,4 @@ func (o ClusterDescriptionProcessArgs) ToMap() (map[string]interface{}, error) {
 		toSerialize["sampleSizeBIConnector"] = o.SampleSizeBIConnector
 	}
 	return toSerialize, nil
-}
-
-type NullableClusterDescriptionProcessArgs struct {
-	value *ClusterDescriptionProcessArgs
-	isSet bool
-}
-
-func (v NullableClusterDescriptionProcessArgs) Get() *ClusterDescriptionProcessArgs {
-	return v.value
-}
-
-func (v *NullableClusterDescriptionProcessArgs) Set(val *ClusterDescriptionProcessArgs) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableClusterDescriptionProcessArgs) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableClusterDescriptionProcessArgs) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableClusterDescriptionProcessArgs(val *ClusterDescriptionProcessArgs) *NullableClusterDescriptionProcessArgs {
-	return &NullableClusterDescriptionProcessArgs{value: val, isSet: true}
-}
-
-func (v NullableClusterDescriptionProcessArgs) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableClusterDescriptionProcessArgs) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

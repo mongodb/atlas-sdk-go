@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ClusterCloudProviderInstanceSize type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ClusterCloudProviderInstanceSize{}
-
 // ClusterCloudProviderInstanceSize List of instances sizes that this cloud provider supports.
 type ClusterCloudProviderInstanceSize struct {
 	// List of regions that this cloud provider supports for this instance size.
@@ -34,7 +31,7 @@ func NewClusterCloudProviderInstanceSizeWithDefaults() *ClusterCloudProviderInst
 	return &this
 }
 
-// GetAvailableRegions returns the AvailableRegions field value if set, zero value otherwise.
+// GetAvailableRegions returns the AvailableRegions field value if set, zero value otherwise
 func (o *ClusterCloudProviderInstanceSize) GetAvailableRegions() []AvailableCloudProviderRegion {
 	if o == nil || IsNil(o.AvailableRegions) {
 		var ret []AvailableCloudProviderRegion
@@ -49,6 +46,7 @@ func (o *ClusterCloudProviderInstanceSize) GetAvailableRegionsOk() ([]AvailableC
 	if o == nil || IsNil(o.AvailableRegions) {
 		return nil, false
 	}
+
 	return o.AvailableRegions, true
 }
 
@@ -66,7 +64,7 @@ func (o *ClusterCloudProviderInstanceSize) SetAvailableRegions(v []AvailableClou
 	o.AvailableRegions = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise
 func (o *ClusterCloudProviderInstanceSize) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
@@ -81,6 +79,7 @@ func (o *ClusterCloudProviderInstanceSize) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
+
 	return o.Name, true
 }
 
@@ -108,40 +107,4 @@ func (o ClusterCloudProviderInstanceSize) MarshalJSONWithoutReadOnly() ([]byte, 
 func (o ClusterCloudProviderInstanceSize) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableClusterCloudProviderInstanceSize struct {
-	value *ClusterCloudProviderInstanceSize
-	isSet bool
-}
-
-func (v NullableClusterCloudProviderInstanceSize) Get() *ClusterCloudProviderInstanceSize {
-	return v.value
-}
-
-func (v *NullableClusterCloudProviderInstanceSize) Set(val *ClusterCloudProviderInstanceSize) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableClusterCloudProviderInstanceSize) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableClusterCloudProviderInstanceSize) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableClusterCloudProviderInstanceSize(val *ClusterCloudProviderInstanceSize) *NullableClusterCloudProviderInstanceSize {
-	return &NullableClusterCloudProviderInstanceSize{value: val, isSet: true}
-}
-
-func (v NullableClusterCloudProviderInstanceSize) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableClusterCloudProviderInstanceSize) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

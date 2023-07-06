@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the SamlIdentityProviderUpdate type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SamlIdentityProviderUpdate{}
-
 // SamlIdentityProviderUpdate struct for SamlIdentityProviderUpdate
 type SamlIdentityProviderUpdate struct {
 	// List that contains the domains associated with the identity provider.
@@ -52,7 +49,7 @@ func NewSamlIdentityProviderUpdateWithDefaults() *SamlIdentityProviderUpdate {
 	return &this
 }
 
-// GetAssociatedDomains returns the AssociatedDomains field value if set, zero value otherwise.
+// GetAssociatedDomains returns the AssociatedDomains field value if set, zero value otherwise
 func (o *SamlIdentityProviderUpdate) GetAssociatedDomains() []string {
 	if o == nil || IsNil(o.AssociatedDomains) {
 		var ret []string
@@ -67,6 +64,7 @@ func (o *SamlIdentityProviderUpdate) GetAssociatedDomainsOk() ([]string, bool) {
 	if o == nil || IsNil(o.AssociatedDomains) {
 		return nil, false
 	}
+
 	return o.AssociatedDomains, true
 }
 
@@ -84,7 +82,7 @@ func (o *SamlIdentityProviderUpdate) SetAssociatedDomains(v []string) {
 	o.AssociatedDomains = v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// GetDescription returns the Description field value if set, zero value otherwise
 func (o *SamlIdentityProviderUpdate) GetDescription() string {
 	if o == nil || IsNil(o.Description) {
 		var ret string
@@ -99,6 +97,7 @@ func (o *SamlIdentityProviderUpdate) GetDescriptionOk() (*string, bool) {
 	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
+
 	return o.Description, true
 }
 
@@ -116,7 +115,7 @@ func (o *SamlIdentityProviderUpdate) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetDisplayName returns the DisplayName field value if set, zero value otherwise.
+// GetDisplayName returns the DisplayName field value if set, zero value otherwise
 func (o *SamlIdentityProviderUpdate) GetDisplayName() string {
 	if o == nil || IsNil(o.DisplayName) {
 		var ret string
@@ -131,6 +130,7 @@ func (o *SamlIdentityProviderUpdate) GetDisplayNameOk() (*string, bool) {
 	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
+
 	return o.DisplayName, true
 }
 
@@ -148,7 +148,7 @@ func (o *SamlIdentityProviderUpdate) SetDisplayName(v string) {
 	o.DisplayName = &v
 }
 
-// GetIssuerUri returns the IssuerUri field value if set, zero value otherwise.
+// GetIssuerUri returns the IssuerUri field value if set, zero value otherwise
 func (o *SamlIdentityProviderUpdate) GetIssuerUri() string {
 	if o == nil || IsNil(o.IssuerUri) {
 		var ret string
@@ -163,6 +163,7 @@ func (o *SamlIdentityProviderUpdate) GetIssuerUriOk() (*string, bool) {
 	if o == nil || IsNil(o.IssuerUri) {
 		return nil, false
 	}
+
 	return o.IssuerUri, true
 }
 
@@ -180,7 +181,7 @@ func (o *SamlIdentityProviderUpdate) SetIssuerUri(v string) {
 	o.IssuerUri = &v
 }
 
-// GetPemFileInfo returns the PemFileInfo field value if set, zero value otherwise.
+// GetPemFileInfo returns the PemFileInfo field value if set, zero value otherwise
 func (o *SamlIdentityProviderUpdate) GetPemFileInfo() PemFileInfo {
 	if o == nil || IsNil(o.PemFileInfo) {
 		var ret PemFileInfo
@@ -195,6 +196,7 @@ func (o *SamlIdentityProviderUpdate) GetPemFileInfoOk() (*PemFileInfo, bool) {
 	if o == nil || IsNil(o.PemFileInfo) {
 		return nil, false
 	}
+
 	return o.PemFileInfo, true
 }
 
@@ -212,7 +214,7 @@ func (o *SamlIdentityProviderUpdate) SetPemFileInfo(v PemFileInfo) {
 	o.PemFileInfo = &v
 }
 
-// GetProtocol returns the Protocol field value if set, zero value otherwise.
+// GetProtocol returns the Protocol field value if set, zero value otherwise
 func (o *SamlIdentityProviderUpdate) GetProtocol() string {
 	if o == nil || IsNil(o.Protocol) {
 		var ret string
@@ -227,6 +229,7 @@ func (o *SamlIdentityProviderUpdate) GetProtocolOk() (*string, bool) {
 	if o == nil || IsNil(o.Protocol) {
 		return nil, false
 	}
+
 	return o.Protocol, true
 }
 
@@ -244,7 +247,7 @@ func (o *SamlIdentityProviderUpdate) SetProtocol(v string) {
 	o.Protocol = &v
 }
 
-// GetRequestBinding returns the RequestBinding field value if set, zero value otherwise.
+// GetRequestBinding returns the RequestBinding field value if set, zero value otherwise
 func (o *SamlIdentityProviderUpdate) GetRequestBinding() string {
 	if o == nil || IsNil(o.RequestBinding) {
 		var ret string
@@ -259,6 +262,7 @@ func (o *SamlIdentityProviderUpdate) GetRequestBindingOk() (*string, bool) {
 	if o == nil || IsNil(o.RequestBinding) {
 		return nil, false
 	}
+
 	return o.RequestBinding, true
 }
 
@@ -276,7 +280,7 @@ func (o *SamlIdentityProviderUpdate) SetRequestBinding(v string) {
 	o.RequestBinding = &v
 }
 
-// GetResponseSignatureAlgorithm returns the ResponseSignatureAlgorithm field value if set, zero value otherwise.
+// GetResponseSignatureAlgorithm returns the ResponseSignatureAlgorithm field value if set, zero value otherwise
 func (o *SamlIdentityProviderUpdate) GetResponseSignatureAlgorithm() string {
 	if o == nil || IsNil(o.ResponseSignatureAlgorithm) {
 		var ret string
@@ -291,6 +295,7 @@ func (o *SamlIdentityProviderUpdate) GetResponseSignatureAlgorithmOk() (*string,
 	if o == nil || IsNil(o.ResponseSignatureAlgorithm) {
 		return nil, false
 	}
+
 	return o.ResponseSignatureAlgorithm, true
 }
 
@@ -332,7 +337,7 @@ func (o *SamlIdentityProviderUpdate) SetSsoDebugEnabled(v bool) {
 	o.SsoDebugEnabled = v
 }
 
-// GetSsoUrl returns the SsoUrl field value if set, zero value otherwise.
+// GetSsoUrl returns the SsoUrl field value if set, zero value otherwise
 func (o *SamlIdentityProviderUpdate) GetSsoUrl() string {
 	if o == nil || IsNil(o.SsoUrl) {
 		var ret string
@@ -347,6 +352,7 @@ func (o *SamlIdentityProviderUpdate) GetSsoUrlOk() (*string, bool) {
 	if o == nil || IsNil(o.SsoUrl) {
 		return nil, false
 	}
+
 	return o.SsoUrl, true
 }
 
@@ -364,7 +370,7 @@ func (o *SamlIdentityProviderUpdate) SetSsoUrl(v string) {
 	o.SsoUrl = &v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// GetStatus returns the Status field value if set, zero value otherwise
 func (o *SamlIdentityProviderUpdate) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
 		var ret string
@@ -379,6 +385,7 @@ func (o *SamlIdentityProviderUpdate) GetStatusOk() (*string, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
+
 	return o.Status, true
 }
 
@@ -437,40 +444,4 @@ func (o SamlIdentityProviderUpdate) ToMap() (map[string]interface{}, error) {
 		toSerialize["status"] = o.Status
 	}
 	return toSerialize, nil
-}
-
-type NullableSamlIdentityProviderUpdate struct {
-	value *SamlIdentityProviderUpdate
-	isSet bool
-}
-
-func (v NullableSamlIdentityProviderUpdate) Get() *SamlIdentityProviderUpdate {
-	return v.value
-}
-
-func (v *NullableSamlIdentityProviderUpdate) Set(val *SamlIdentityProviderUpdate) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableSamlIdentityProviderUpdate) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableSamlIdentityProviderUpdate) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableSamlIdentityProviderUpdate(val *SamlIdentityProviderUpdate) *NullableSamlIdentityProviderUpdate {
-	return &NullableSamlIdentityProviderUpdate{value: val, isSet: true}
-}
-
-func (v NullableSamlIdentityProviderUpdate) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableSamlIdentityProviderUpdate) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

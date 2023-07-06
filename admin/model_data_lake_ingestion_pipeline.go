@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the DataLakeIngestionPipeline type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DataLakeIngestionPipeline{}
-
 // DataLakeIngestionPipeline Details of a Data Lake Pipeline.
 type DataLakeIngestionPipeline struct {
 	// Unique 24-hexadecimal digit string that identifies the Data Lake Pipeline.
@@ -47,7 +44,7 @@ func NewDataLakeIngestionPipelineWithDefaults() *DataLakeIngestionPipeline {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *DataLakeIngestionPipeline) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -62,6 +59,7 @@ func (o *DataLakeIngestionPipeline) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -79,7 +77,7 @@ func (o *DataLakeIngestionPipeline) SetId(v string) {
 	o.Id = &v
 }
 
-// GetCreatedDate returns the CreatedDate field value if set, zero value otherwise.
+// GetCreatedDate returns the CreatedDate field value if set, zero value otherwise
 func (o *DataLakeIngestionPipeline) GetCreatedDate() time.Time {
 	if o == nil || IsNil(o.CreatedDate) {
 		var ret time.Time
@@ -94,6 +92,7 @@ func (o *DataLakeIngestionPipeline) GetCreatedDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CreatedDate) {
 		return nil, false
 	}
+
 	return o.CreatedDate, true
 }
 
@@ -111,7 +110,7 @@ func (o *DataLakeIngestionPipeline) SetCreatedDate(v time.Time) {
 	o.CreatedDate = &v
 }
 
-// GetGroupId returns the GroupId field value if set, zero value otherwise.
+// GetGroupId returns the GroupId field value if set, zero value otherwise
 func (o *DataLakeIngestionPipeline) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
 		var ret string
@@ -126,6 +125,7 @@ func (o *DataLakeIngestionPipeline) GetGroupIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupId) {
 		return nil, false
 	}
+
 	return o.GroupId, true
 }
 
@@ -143,7 +143,7 @@ func (o *DataLakeIngestionPipeline) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
-// GetLastUpdatedDate returns the LastUpdatedDate field value if set, zero value otherwise.
+// GetLastUpdatedDate returns the LastUpdatedDate field value if set, zero value otherwise
 func (o *DataLakeIngestionPipeline) GetLastUpdatedDate() time.Time {
 	if o == nil || IsNil(o.LastUpdatedDate) {
 		var ret time.Time
@@ -158,6 +158,7 @@ func (o *DataLakeIngestionPipeline) GetLastUpdatedDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.LastUpdatedDate) {
 		return nil, false
 	}
+
 	return o.LastUpdatedDate, true
 }
 
@@ -175,7 +176,7 @@ func (o *DataLakeIngestionPipeline) SetLastUpdatedDate(v time.Time) {
 	o.LastUpdatedDate = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise
 func (o *DataLakeIngestionPipeline) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
@@ -190,6 +191,7 @@ func (o *DataLakeIngestionPipeline) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
+
 	return o.Name, true
 }
 
@@ -207,7 +209,7 @@ func (o *DataLakeIngestionPipeline) SetName(v string) {
 	o.Name = &v
 }
 
-// GetSink returns the Sink field value if set, zero value otherwise.
+// GetSink returns the Sink field value if set, zero value otherwise
 func (o *DataLakeIngestionPipeline) GetSink() IngestionSink {
 	if o == nil || IsNil(o.Sink) {
 		var ret IngestionSink
@@ -222,6 +224,7 @@ func (o *DataLakeIngestionPipeline) GetSinkOk() (*IngestionSink, bool) {
 	if o == nil || IsNil(o.Sink) {
 		return nil, false
 	}
+
 	return o.Sink, true
 }
 
@@ -239,7 +242,7 @@ func (o *DataLakeIngestionPipeline) SetSink(v IngestionSink) {
 	o.Sink = &v
 }
 
-// GetSource returns the Source field value if set, zero value otherwise.
+// GetSource returns the Source field value if set, zero value otherwise
 func (o *DataLakeIngestionPipeline) GetSource() IngestionSource {
 	if o == nil || IsNil(o.Source) {
 		var ret IngestionSource
@@ -254,6 +257,7 @@ func (o *DataLakeIngestionPipeline) GetSourceOk() (*IngestionSource, bool) {
 	if o == nil || IsNil(o.Source) {
 		return nil, false
 	}
+
 	return o.Source, true
 }
 
@@ -271,7 +275,7 @@ func (o *DataLakeIngestionPipeline) SetSource(v IngestionSource) {
 	o.Source = &v
 }
 
-// GetState returns the State field value if set, zero value otherwise.
+// GetState returns the State field value if set, zero value otherwise
 func (o *DataLakeIngestionPipeline) GetState() string {
 	if o == nil || IsNil(o.State) {
 		var ret string
@@ -286,6 +290,7 @@ func (o *DataLakeIngestionPipeline) GetStateOk() (*string, bool) {
 	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
+
 	return o.State, true
 }
 
@@ -303,7 +308,7 @@ func (o *DataLakeIngestionPipeline) SetState(v string) {
 	o.State = &v
 }
 
-// GetTransformations returns the Transformations field value if set, zero value otherwise.
+// GetTransformations returns the Transformations field value if set, zero value otherwise
 func (o *DataLakeIngestionPipeline) GetTransformations() []FieldTransformation {
 	if o == nil || IsNil(o.Transformations) {
 		var ret []FieldTransformation
@@ -318,6 +323,7 @@ func (o *DataLakeIngestionPipeline) GetTransformationsOk() ([]FieldTransformatio
 	if o == nil || IsNil(o.Transformations) {
 		return nil, false
 	}
+
 	return o.Transformations, true
 }
 
@@ -357,40 +363,4 @@ func (o DataLakeIngestionPipeline) ToMap() (map[string]interface{}, error) {
 		toSerialize["transformations"] = o.Transformations
 	}
 	return toSerialize, nil
-}
-
-type NullableDataLakeIngestionPipeline struct {
-	value *DataLakeIngestionPipeline
-	isSet bool
-}
-
-func (v NullableDataLakeIngestionPipeline) Get() *DataLakeIngestionPipeline {
-	return v.value
-}
-
-func (v *NullableDataLakeIngestionPipeline) Set(val *DataLakeIngestionPipeline) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableDataLakeIngestionPipeline) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableDataLakeIngestionPipeline) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableDataLakeIngestionPipeline(val *DataLakeIngestionPipeline) *NullableDataLakeIngestionPipeline {
-	return &NullableDataLakeIngestionPipeline{value: val, isSet: true}
-}
-
-func (v NullableDataLakeIngestionPipeline) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableDataLakeIngestionPipeline) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

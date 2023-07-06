@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the OrgFederationSettings type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &OrgFederationSettings{}
-
 // OrgFederationSettings Details that define how to connect one MongoDB Cloud organization to one federated authentication service.
 type OrgFederationSettings struct {
 	// List of domains associated with the organization's identity provider.
@@ -40,7 +37,7 @@ func NewOrgFederationSettingsWithDefaults() *OrgFederationSettings {
 	return &this
 }
 
-// GetFederatedDomains returns the FederatedDomains field value if set, zero value otherwise.
+// GetFederatedDomains returns the FederatedDomains field value if set, zero value otherwise
 func (o *OrgFederationSettings) GetFederatedDomains() []string {
 	if o == nil || IsNil(o.FederatedDomains) {
 		var ret []string
@@ -55,6 +52,7 @@ func (o *OrgFederationSettings) GetFederatedDomainsOk() ([]string, bool) {
 	if o == nil || IsNil(o.FederatedDomains) {
 		return nil, false
 	}
+
 	return o.FederatedDomains, true
 }
 
@@ -72,7 +70,7 @@ func (o *OrgFederationSettings) SetFederatedDomains(v []string) {
 	o.FederatedDomains = v
 }
 
-// GetHasRoleMappings returns the HasRoleMappings field value if set, zero value otherwise.
+// GetHasRoleMappings returns the HasRoleMappings field value if set, zero value otherwise
 func (o *OrgFederationSettings) GetHasRoleMappings() bool {
 	if o == nil || IsNil(o.HasRoleMappings) {
 		var ret bool
@@ -87,6 +85,7 @@ func (o *OrgFederationSettings) GetHasRoleMappingsOk() (*bool, bool) {
 	if o == nil || IsNil(o.HasRoleMappings) {
 		return nil, false
 	}
+
 	return o.HasRoleMappings, true
 }
 
@@ -104,7 +103,7 @@ func (o *OrgFederationSettings) SetHasRoleMappings(v bool) {
 	o.HasRoleMappings = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *OrgFederationSettings) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -119,6 +118,7 @@ func (o *OrgFederationSettings) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -136,7 +136,7 @@ func (o *OrgFederationSettings) SetId(v string) {
 	o.Id = &v
 }
 
-// GetIdentityProviderId returns the IdentityProviderId field value if set, zero value otherwise.
+// GetIdentityProviderId returns the IdentityProviderId field value if set, zero value otherwise
 func (o *OrgFederationSettings) GetIdentityProviderId() string {
 	if o == nil || IsNil(o.IdentityProviderId) {
 		var ret string
@@ -151,6 +151,7 @@ func (o *OrgFederationSettings) GetIdentityProviderIdOk() (*string, bool) {
 	if o == nil || IsNil(o.IdentityProviderId) {
 		return nil, false
 	}
+
 	return o.IdentityProviderId, true
 }
 
@@ -168,7 +169,7 @@ func (o *OrgFederationSettings) SetIdentityProviderId(v string) {
 	o.IdentityProviderId = &v
 }
 
-// GetIdentityProviderStatus returns the IdentityProviderStatus field value if set, zero value otherwise.
+// GetIdentityProviderStatus returns the IdentityProviderStatus field value if set, zero value otherwise
 func (o *OrgFederationSettings) GetIdentityProviderStatus() string {
 	if o == nil || IsNil(o.IdentityProviderStatus) {
 		var ret string
@@ -183,6 +184,7 @@ func (o *OrgFederationSettings) GetIdentityProviderStatusOk() (*string, bool) {
 	if o == nil || IsNil(o.IdentityProviderStatus) {
 		return nil, false
 	}
+
 	return o.IdentityProviderStatus, true
 }
 
@@ -222,40 +224,4 @@ func (o OrgFederationSettings) ToMap() (map[string]interface{}, error) {
 		toSerialize["identityProviderStatus"] = o.IdentityProviderStatus
 	}
 	return toSerialize, nil
-}
-
-type NullableOrgFederationSettings struct {
-	value *OrgFederationSettings
-	isSet bool
-}
-
-func (v NullableOrgFederationSettings) Get() *OrgFederationSettings {
-	return v.value
-}
-
-func (v *NullableOrgFederationSettings) Set(val *OrgFederationSettings) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableOrgFederationSettings) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableOrgFederationSettings) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableOrgFederationSettings(val *OrgFederationSettings) *NullableOrgFederationSettings {
-	return &NullableOrgFederationSettings{value: val, isSet: true}
-}
-
-func (v NullableOrgFederationSettings) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableOrgFederationSettings) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the DataLakeStoreSettings type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DataLakeStoreSettings{}
-
 // DataLakeStoreSettings Group of settings that define where the data is stored.
 type DataLakeStoreSettings struct {
 	// Human-readable label that identifies the data store. The **databases.[n].collections.[n].dataSources.[n].storeName** field references this values as part of the mapping configuration. To use MongoDB Cloud as a data store, the data lake requires a serverless instance or an `M10` or higher cluster.
@@ -73,7 +70,7 @@ func NewDataLakeStoreSettingsWithDefaults() *DataLakeStoreSettings {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise
 func (o *DataLakeStoreSettings) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
@@ -88,6 +85,7 @@ func (o *DataLakeStoreSettings) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
+
 	return o.Name, true
 }
 
@@ -129,7 +127,7 @@ func (o *DataLakeStoreSettings) SetProvider(v string) {
 	o.Provider = v
 }
 
-// GetAdditionalStorageClasses returns the AdditionalStorageClasses field value if set, zero value otherwise.
+// GetAdditionalStorageClasses returns the AdditionalStorageClasses field value if set, zero value otherwise
 func (o *DataLakeStoreSettings) GetAdditionalStorageClasses() []string {
 	if o == nil || IsNil(o.AdditionalStorageClasses) {
 		var ret []string
@@ -144,6 +142,7 @@ func (o *DataLakeStoreSettings) GetAdditionalStorageClassesOk() ([]string, bool)
 	if o == nil || IsNil(o.AdditionalStorageClasses) {
 		return nil, false
 	}
+
 	return o.AdditionalStorageClasses, true
 }
 
@@ -161,7 +160,7 @@ func (o *DataLakeStoreSettings) SetAdditionalStorageClasses(v []string) {
 	o.AdditionalStorageClasses = v
 }
 
-// GetBucket returns the Bucket field value if set, zero value otherwise.
+// GetBucket returns the Bucket field value if set, zero value otherwise
 func (o *DataLakeStoreSettings) GetBucket() string {
 	if o == nil || IsNil(o.Bucket) {
 		var ret string
@@ -176,6 +175,7 @@ func (o *DataLakeStoreSettings) GetBucketOk() (*string, bool) {
 	if o == nil || IsNil(o.Bucket) {
 		return nil, false
 	}
+
 	return o.Bucket, true
 }
 
@@ -193,7 +193,7 @@ func (o *DataLakeStoreSettings) SetBucket(v string) {
 	o.Bucket = &v
 }
 
-// GetDelimiter returns the Delimiter field value if set, zero value otherwise.
+// GetDelimiter returns the Delimiter field value if set, zero value otherwise
 func (o *DataLakeStoreSettings) GetDelimiter() string {
 	if o == nil || IsNil(o.Delimiter) {
 		var ret string
@@ -208,6 +208,7 @@ func (o *DataLakeStoreSettings) GetDelimiterOk() (*string, bool) {
 	if o == nil || IsNil(o.Delimiter) {
 		return nil, false
 	}
+
 	return o.Delimiter, true
 }
 
@@ -225,7 +226,7 @@ func (o *DataLakeStoreSettings) SetDelimiter(v string) {
 	o.Delimiter = &v
 }
 
-// GetIncludeTags returns the IncludeTags field value if set, zero value otherwise.
+// GetIncludeTags returns the IncludeTags field value if set, zero value otherwise
 func (o *DataLakeStoreSettings) GetIncludeTags() bool {
 	if o == nil || IsNil(o.IncludeTags) {
 		var ret bool
@@ -240,6 +241,7 @@ func (o *DataLakeStoreSettings) GetIncludeTagsOk() (*bool, bool) {
 	if o == nil || IsNil(o.IncludeTags) {
 		return nil, false
 	}
+
 	return o.IncludeTags, true
 }
 
@@ -257,7 +259,7 @@ func (o *DataLakeStoreSettings) SetIncludeTags(v bool) {
 	o.IncludeTags = &v
 }
 
-// GetPrefix returns the Prefix field value if set, zero value otherwise.
+// GetPrefix returns the Prefix field value if set, zero value otherwise
 func (o *DataLakeStoreSettings) GetPrefix() string {
 	if o == nil || IsNil(o.Prefix) {
 		var ret string
@@ -272,6 +274,7 @@ func (o *DataLakeStoreSettings) GetPrefixOk() (*string, bool) {
 	if o == nil || IsNil(o.Prefix) {
 		return nil, false
 	}
+
 	return o.Prefix, true
 }
 
@@ -289,7 +292,7 @@ func (o *DataLakeStoreSettings) SetPrefix(v string) {
 	o.Prefix = &v
 }
 
-// GetPublic returns the Public field value if set, zero value otherwise.
+// GetPublic returns the Public field value if set, zero value otherwise
 func (o *DataLakeStoreSettings) GetPublic() bool {
 	if o == nil || IsNil(o.Public) {
 		var ret bool
@@ -304,6 +307,7 @@ func (o *DataLakeStoreSettings) GetPublicOk() (*bool, bool) {
 	if o == nil || IsNil(o.Public) {
 		return nil, false
 	}
+
 	return o.Public, true
 }
 
@@ -321,7 +325,7 @@ func (o *DataLakeStoreSettings) SetPublic(v bool) {
 	o.Public = &v
 }
 
-// GetRegion returns the Region field value if set, zero value otherwise.
+// GetRegion returns the Region field value if set, zero value otherwise
 func (o *DataLakeStoreSettings) GetRegion() string {
 	if o == nil || IsNil(o.Region) {
 		var ret string
@@ -336,6 +340,7 @@ func (o *DataLakeStoreSettings) GetRegionOk() (*string, bool) {
 	if o == nil || IsNil(o.Region) {
 		return nil, false
 	}
+
 	return o.Region, true
 }
 
@@ -353,7 +358,7 @@ func (o *DataLakeStoreSettings) SetRegion(v string) {
 	o.Region = &v
 }
 
-// GetClusterId returns the ClusterId field value if set, zero value otherwise.
+// GetClusterId returns the ClusterId field value if set, zero value otherwise
 func (o *DataLakeStoreSettings) GetClusterId() string {
 	if o == nil || IsNil(o.ClusterId) {
 		var ret string
@@ -368,6 +373,7 @@ func (o *DataLakeStoreSettings) GetClusterIdOk() (*string, bool) {
 	if o == nil || IsNil(o.ClusterId) {
 		return nil, false
 	}
+
 	return o.ClusterId, true
 }
 
@@ -385,7 +391,7 @@ func (o *DataLakeStoreSettings) SetClusterId(v string) {
 	o.ClusterId = &v
 }
 
-// GetClusterName returns the ClusterName field value if set, zero value otherwise.
+// GetClusterName returns the ClusterName field value if set, zero value otherwise
 func (o *DataLakeStoreSettings) GetClusterName() string {
 	if o == nil || IsNil(o.ClusterName) {
 		var ret string
@@ -400,6 +406,7 @@ func (o *DataLakeStoreSettings) GetClusterNameOk() (*string, bool) {
 	if o == nil || IsNil(o.ClusterName) {
 		return nil, false
 	}
+
 	return o.ClusterName, true
 }
 
@@ -417,7 +424,7 @@ func (o *DataLakeStoreSettings) SetClusterName(v string) {
 	o.ClusterName = &v
 }
 
-// GetProjectId returns the ProjectId field value if set, zero value otherwise.
+// GetProjectId returns the ProjectId field value if set, zero value otherwise
 func (o *DataLakeStoreSettings) GetProjectId() string {
 	if o == nil || IsNil(o.ProjectId) {
 		var ret string
@@ -432,6 +439,7 @@ func (o *DataLakeStoreSettings) GetProjectIdOk() (*string, bool) {
 	if o == nil || IsNil(o.ProjectId) {
 		return nil, false
 	}
+
 	return o.ProjectId, true
 }
 
@@ -449,7 +457,7 @@ func (o *DataLakeStoreSettings) SetProjectId(v string) {
 	o.ProjectId = &v
 }
 
-// GetReadPreference returns the ReadPreference field value if set, zero value otherwise.
+// GetReadPreference returns the ReadPreference field value if set, zero value otherwise
 func (o *DataLakeStoreSettings) GetReadPreference() DataLakeAtlasStoreReadPreference {
 	if o == nil || IsNil(o.ReadPreference) {
 		var ret DataLakeAtlasStoreReadPreference
@@ -464,6 +472,7 @@ func (o *DataLakeStoreSettings) GetReadPreferenceOk() (*DataLakeAtlasStoreReadPr
 	if o == nil || IsNil(o.ReadPreference) {
 		return nil, false
 	}
+
 	return o.ReadPreference, true
 }
 
@@ -481,7 +490,7 @@ func (o *DataLakeStoreSettings) SetReadPreference(v DataLakeAtlasStoreReadPrefer
 	o.ReadPreference = &v
 }
 
-// GetAllowInsecure returns the AllowInsecure field value if set, zero value otherwise.
+// GetAllowInsecure returns the AllowInsecure field value if set, zero value otherwise
 func (o *DataLakeStoreSettings) GetAllowInsecure() bool {
 	if o == nil || IsNil(o.AllowInsecure) {
 		var ret bool
@@ -496,6 +505,7 @@ func (o *DataLakeStoreSettings) GetAllowInsecureOk() (*bool, bool) {
 	if o == nil || IsNil(o.AllowInsecure) {
 		return nil, false
 	}
+
 	return o.AllowInsecure, true
 }
 
@@ -513,7 +523,7 @@ func (o *DataLakeStoreSettings) SetAllowInsecure(v bool) {
 	o.AllowInsecure = &v
 }
 
-// GetDefaultFormat returns the DefaultFormat field value if set, zero value otherwise.
+// GetDefaultFormat returns the DefaultFormat field value if set, zero value otherwise
 func (o *DataLakeStoreSettings) GetDefaultFormat() string {
 	if o == nil || IsNil(o.DefaultFormat) {
 		var ret string
@@ -528,6 +538,7 @@ func (o *DataLakeStoreSettings) GetDefaultFormatOk() (*string, bool) {
 	if o == nil || IsNil(o.DefaultFormat) {
 		return nil, false
 	}
+
 	return o.DefaultFormat, true
 }
 
@@ -545,7 +556,7 @@ func (o *DataLakeStoreSettings) SetDefaultFormat(v string) {
 	o.DefaultFormat = &v
 }
 
-// GetUrls returns the Urls field value if set, zero value otherwise.
+// GetUrls returns the Urls field value if set, zero value otherwise
 func (o *DataLakeStoreSettings) GetUrls() []string {
 	if o == nil || IsNil(o.Urls) {
 		var ret []string
@@ -560,6 +571,7 @@ func (o *DataLakeStoreSettings) GetUrlsOk() ([]string, bool) {
 	if o == nil || IsNil(o.Urls) {
 		return nil, false
 	}
+
 	return o.Urls, true
 }
 
@@ -630,40 +642,4 @@ func (o DataLakeStoreSettings) ToMap() (map[string]interface{}, error) {
 		toSerialize["urls"] = o.Urls
 	}
 	return toSerialize, nil
-}
-
-type NullableDataLakeStoreSettings struct {
-	value *DataLakeStoreSettings
-	isSet bool
-}
-
-func (v NullableDataLakeStoreSettings) Get() *DataLakeStoreSettings {
-	return v.value
-}
-
-func (v *NullableDataLakeStoreSettings) Set(val *DataLakeStoreSettings) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableDataLakeStoreSettings) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableDataLakeStoreSettings) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableDataLakeStoreSettings(val *DataLakeStoreSettings) *NullableDataLakeStoreSettings {
-	return &NullableDataLakeStoreSettings{value: val, isSet: true}
-}
-
-func (v NullableDataLakeStoreSettings) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableDataLakeStoreSettings) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

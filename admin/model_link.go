@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the Link type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Link{}
-
 // Link struct for Link
 type Link struct {
 	// Uniform Resource Locator (URL) that points another API resource to which this response has some relationship. This URL often begins with `https://cloud.mongodb.com/api/atlas`.
@@ -34,7 +31,7 @@ func NewLinkWithDefaults() *Link {
 	return &this
 }
 
-// GetHref returns the Href field value if set, zero value otherwise.
+// GetHref returns the Href field value if set, zero value otherwise
 func (o *Link) GetHref() string {
 	if o == nil || IsNil(o.Href) {
 		var ret string
@@ -49,6 +46,7 @@ func (o *Link) GetHrefOk() (*string, bool) {
 	if o == nil || IsNil(o.Href) {
 		return nil, false
 	}
+
 	return o.Href, true
 }
 
@@ -66,7 +64,7 @@ func (o *Link) SetHref(v string) {
 	o.Href = &v
 }
 
-// GetRel returns the Rel field value if set, zero value otherwise.
+// GetRel returns the Rel field value if set, zero value otherwise
 func (o *Link) GetRel() string {
 	if o == nil || IsNil(o.Rel) {
 		var ret string
@@ -81,6 +79,7 @@ func (o *Link) GetRelOk() (*string, bool) {
 	if o == nil || IsNil(o.Rel) {
 		return nil, false
 	}
+
 	return o.Rel, true
 }
 
@@ -114,40 +113,4 @@ func (o Link) ToMap() (map[string]interface{}, error) {
 		toSerialize["rel"] = o.Rel
 	}
 	return toSerialize, nil
-}
-
-type NullableLink struct {
-	value *Link
-	isSet bool
-}
-
-func (v NullableLink) Get() *Link {
-	return v.value
-}
-
-func (v *NullableLink) Set(val *Link) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableLink) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableLink) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableLink(val *Link) *NullableLink {
-	return &NullableLink{value: val, isSet: true}
-}
-
-func (v NullableLink) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableLink) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

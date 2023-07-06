@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PaginatedAlertConfig type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PaginatedAlertConfig{}
-
 // PaginatedAlertConfig struct for PaginatedAlertConfig
 type PaginatedAlertConfig struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -36,7 +33,7 @@ func NewPaginatedAlertConfigWithDefaults() *PaginatedAlertConfig {
 	return &this
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *PaginatedAlertConfig) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -51,6 +48,7 @@ func (o *PaginatedAlertConfig) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -68,7 +66,7 @@ func (o *PaginatedAlertConfig) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetResults returns the Results field value if set, zero value otherwise.
+// GetResults returns the Results field value if set, zero value otherwise
 func (o *PaginatedAlertConfig) GetResults() []GroupAlertsConfig {
 	if o == nil || IsNil(o.Results) {
 		var ret []GroupAlertsConfig
@@ -83,6 +81,7 @@ func (o *PaginatedAlertConfig) GetResultsOk() ([]GroupAlertsConfig, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
+
 	return o.Results, true
 }
 
@@ -100,7 +99,7 @@ func (o *PaginatedAlertConfig) SetResults(v []GroupAlertsConfig) {
 	o.Results = v
 }
 
-// GetTotalCount returns the TotalCount field value if set, zero value otherwise.
+// GetTotalCount returns the TotalCount field value if set, zero value otherwise
 func (o *PaginatedAlertConfig) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int
@@ -115,6 +114,7 @@ func (o *PaginatedAlertConfig) GetTotalCountOk() (*int, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
+
 	return o.TotalCount, true
 }
 
@@ -142,40 +142,4 @@ func (o PaginatedAlertConfig) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o PaginatedAlertConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullablePaginatedAlertConfig struct {
-	value *PaginatedAlertConfig
-	isSet bool
-}
-
-func (v NullablePaginatedAlertConfig) Get() *PaginatedAlertConfig {
-	return v.value
-}
-
-func (v *NullablePaginatedAlertConfig) Set(val *PaginatedAlertConfig) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullablePaginatedAlertConfig) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullablePaginatedAlertConfig) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullablePaginatedAlertConfig(val *PaginatedAlertConfig) *NullablePaginatedAlertConfig {
-	return &NullablePaginatedAlertConfig{value: val, isSet: true}
-}
-
-func (v NullablePaginatedAlertConfig) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullablePaginatedAlertConfig) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

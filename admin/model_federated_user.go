@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the FederatedUser type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &FederatedUser{}
-
 // FederatedUser MongoDB Cloud user linked to this federated authentication.
 type FederatedUser struct {
 	// Email address of the MongoDB Cloud user linked to the federated organization.
@@ -140,7 +137,7 @@ func (o *FederatedUser) SetLastName(v string) {
 	o.LastName = v
 }
 
-// GetUserId returns the UserId field value if set, zero value otherwise.
+// GetUserId returns the UserId field value if set, zero value otherwise
 func (o *FederatedUser) GetUserId() string {
 	if o == nil || IsNil(o.UserId) {
 		var ret string
@@ -155,6 +152,7 @@ func (o *FederatedUser) GetUserIdOk() (*string, bool) {
 	if o == nil || IsNil(o.UserId) {
 		return nil, false
 	}
+
 	return o.UserId, true
 }
 
@@ -186,40 +184,4 @@ func (o FederatedUser) ToMap() (map[string]interface{}, error) {
 	toSerialize["firstName"] = o.FirstName
 	toSerialize["lastName"] = o.LastName
 	return toSerialize, nil
-}
-
-type NullableFederatedUser struct {
-	value *FederatedUser
-	isSet bool
-}
-
-func (v NullableFederatedUser) Get() *FederatedUser {
-	return v.value
-}
-
-func (v *NullableFederatedUser) Set(val *FederatedUser) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableFederatedUser) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableFederatedUser) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableFederatedUser(val *FederatedUser) *NullableFederatedUser {
-	return &NullableFederatedUser{value: val, isSet: true}
-}
-
-func (v NullableFederatedUser) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableFederatedUser) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

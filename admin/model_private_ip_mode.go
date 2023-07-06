@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PrivateIPMode type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PrivateIPMode{}
-
 // PrivateIPMode struct for PrivateIPMode
 type PrivateIPMode struct {
 	// Flag that indicates whether someone enabled **Connect via Peering Only** mode for the specified project.
@@ -68,40 +65,4 @@ func (o PrivateIPMode) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["enabled"] = o.Enabled
 	return toSerialize, nil
-}
-
-type NullablePrivateIPMode struct {
-	value *PrivateIPMode
-	isSet bool
-}
-
-func (v NullablePrivateIPMode) Get() *PrivateIPMode {
-	return v.value
-}
-
-func (v *NullablePrivateIPMode) Set(val *PrivateIPMode) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullablePrivateIPMode) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullablePrivateIPMode) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullablePrivateIPMode(val *PrivateIPMode) *NullablePrivateIPMode {
-	return &NullablePrivateIPMode{value: val, isSet: true}
-}
-
-func (v NullablePrivateIPMode) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullablePrivateIPMode) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

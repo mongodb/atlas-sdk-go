@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the GroupName type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &GroupName{}
-
 // GroupName Request view to update the group name.
 type GroupName struct {
 	// Human-readable label that identifies the project included in the MongoDB Cloud organization.
@@ -32,7 +29,7 @@ func NewGroupNameWithDefaults() *GroupName {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise
 func (o *GroupName) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
@@ -47,6 +44,7 @@ func (o *GroupName) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
+
 	return o.Name, true
 }
 
@@ -77,40 +75,4 @@ func (o GroupName) ToMap() (map[string]interface{}, error) {
 		toSerialize["name"] = o.Name
 	}
 	return toSerialize, nil
-}
-
-type NullableGroupName struct {
-	value *GroupName
-	isSet bool
-}
-
-func (v NullableGroupName) Get() *GroupName {
-	return v.value
-}
-
-func (v *NullableGroupName) Set(val *GroupName) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableGroupName) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableGroupName) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableGroupName(val *GroupName) *NullableGroupName {
-	return &NullableGroupName{value: val, isSet: true}
-}
-
-func (v NullableGroupName) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableGroupName) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ApiCheckpointPart type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ApiCheckpointPart{}
-
 // ApiCheckpointPart Metadata contained in one document that describes the complete snapshot taken for this node.
 type ApiCheckpointPart struct {
 	// Human-readable label that identifies the replica set to which this checkpoint applies.
@@ -39,7 +36,7 @@ func NewApiCheckpointPartWithDefaults() *ApiCheckpointPart {
 	return &this
 }
 
-// GetReplicaSetName returns the ReplicaSetName field value if set, zero value otherwise.
+// GetReplicaSetName returns the ReplicaSetName field value if set, zero value otherwise
 func (o *ApiCheckpointPart) GetReplicaSetName() string {
 	if o == nil || IsNil(o.ReplicaSetName) {
 		var ret string
@@ -54,6 +51,7 @@ func (o *ApiCheckpointPart) GetReplicaSetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.ReplicaSetName) {
 		return nil, false
 	}
+
 	return o.ReplicaSetName, true
 }
 
@@ -71,7 +69,7 @@ func (o *ApiCheckpointPart) SetReplicaSetName(v string) {
 	o.ReplicaSetName = &v
 }
 
-// GetShardName returns the ShardName field value if set, zero value otherwise.
+// GetShardName returns the ShardName field value if set, zero value otherwise
 func (o *ApiCheckpointPart) GetShardName() string {
 	if o == nil || IsNil(o.ShardName) {
 		var ret string
@@ -86,6 +84,7 @@ func (o *ApiCheckpointPart) GetShardNameOk() (*string, bool) {
 	if o == nil || IsNil(o.ShardName) {
 		return nil, false
 	}
+
 	return o.ShardName, true
 }
 
@@ -103,7 +102,7 @@ func (o *ApiCheckpointPart) SetShardName(v string) {
 	o.ShardName = &v
 }
 
-// GetTokenDiscovered returns the TokenDiscovered field value if set, zero value otherwise.
+// GetTokenDiscovered returns the TokenDiscovered field value if set, zero value otherwise
 func (o *ApiCheckpointPart) GetTokenDiscovered() bool {
 	if o == nil || IsNil(o.TokenDiscovered) {
 		var ret bool
@@ -118,6 +117,7 @@ func (o *ApiCheckpointPart) GetTokenDiscoveredOk() (*bool, bool) {
 	if o == nil || IsNil(o.TokenDiscovered) {
 		return nil, false
 	}
+
 	return o.TokenDiscovered, true
 }
 
@@ -135,7 +135,7 @@ func (o *ApiCheckpointPart) SetTokenDiscovered(v bool) {
 	o.TokenDiscovered = &v
 }
 
-// GetTokenTimestamp returns the TokenTimestamp field value if set, zero value otherwise.
+// GetTokenTimestamp returns the TokenTimestamp field value if set, zero value otherwise
 func (o *ApiCheckpointPart) GetTokenTimestamp() ApiBSONTimestamp {
 	if o == nil || IsNil(o.TokenTimestamp) {
 		var ret ApiBSONTimestamp
@@ -150,6 +150,7 @@ func (o *ApiCheckpointPart) GetTokenTimestampOk() (*ApiBSONTimestamp, bool) {
 	if o == nil || IsNil(o.TokenTimestamp) {
 		return nil, false
 	}
+
 	return o.TokenTimestamp, true
 }
 
@@ -167,7 +168,7 @@ func (o *ApiCheckpointPart) SetTokenTimestamp(v ApiBSONTimestamp) {
 	o.TokenTimestamp = &v
 }
 
-// GetTypeName returns the TypeName field value if set, zero value otherwise.
+// GetTypeName returns the TypeName field value if set, zero value otherwise
 func (o *ApiCheckpointPart) GetTypeName() string {
 	if o == nil || IsNil(o.TypeName) {
 		var ret string
@@ -182,6 +183,7 @@ func (o *ApiCheckpointPart) GetTypeNameOk() (*string, bool) {
 	if o == nil || IsNil(o.TypeName) {
 		return nil, false
 	}
+
 	return o.TypeName, true
 }
 
@@ -212,40 +214,4 @@ func (o ApiCheckpointPart) ToMap() (map[string]interface{}, error) {
 		toSerialize["tokenTimestamp"] = o.TokenTimestamp
 	}
 	return toSerialize, nil
-}
-
-type NullableApiCheckpointPart struct {
-	value *ApiCheckpointPart
-	isSet bool
-}
-
-func (v NullableApiCheckpointPart) Get() *ApiCheckpointPart {
-	return v.value
-}
-
-func (v *NullableApiCheckpointPart) Set(val *ApiCheckpointPart) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableApiCheckpointPart) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableApiCheckpointPart) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableApiCheckpointPart(val *ApiCheckpointPart) *NullableApiCheckpointPart {
-	return &NullableApiCheckpointPart{value: val, isSet: true}
-}
-
-func (v NullableApiCheckpointPart) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableApiCheckpointPart) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

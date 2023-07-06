@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the MesurementsDatabase type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &MesurementsDatabase{}
-
 // MesurementsDatabase struct for MesurementsDatabase
 type MesurementsDatabase struct {
 	// Human-readable label that identifies the database that the specified MongoDB process serves.
@@ -34,7 +31,7 @@ func NewMesurementsDatabaseWithDefaults() *MesurementsDatabase {
 	return &this
 }
 
-// GetDatabaseName returns the DatabaseName field value if set, zero value otherwise.
+// GetDatabaseName returns the DatabaseName field value if set, zero value otherwise
 func (o *MesurementsDatabase) GetDatabaseName() string {
 	if o == nil || IsNil(o.DatabaseName) {
 		var ret string
@@ -49,6 +46,7 @@ func (o *MesurementsDatabase) GetDatabaseNameOk() (*string, bool) {
 	if o == nil || IsNil(o.DatabaseName) {
 		return nil, false
 	}
+
 	return o.DatabaseName, true
 }
 
@@ -66,7 +64,7 @@ func (o *MesurementsDatabase) SetDatabaseName(v string) {
 	o.DatabaseName = &v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *MesurementsDatabase) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -81,6 +79,7 @@ func (o *MesurementsDatabase) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -111,40 +110,4 @@ func (o MesurementsDatabase) ToMap() (map[string]interface{}, error) {
 		toSerialize["databaseName"] = o.DatabaseName
 	}
 	return toSerialize, nil
-}
-
-type NullableMesurementsDatabase struct {
-	value *MesurementsDatabase
-	isSet bool
-}
-
-func (v NullableMesurementsDatabase) Get() *MesurementsDatabase {
-	return v.value
-}
-
-func (v *NullableMesurementsDatabase) Set(val *MesurementsDatabase) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableMesurementsDatabase) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableMesurementsDatabase) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableMesurementsDatabase(val *MesurementsDatabase) *NullableMesurementsDatabase {
-	return &NullableMesurementsDatabase{value: val, isSet: true}
-}
-
-func (v NullableMesurementsDatabase) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableMesurementsDatabase) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

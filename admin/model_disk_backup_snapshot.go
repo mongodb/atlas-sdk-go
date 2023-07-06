@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the DiskBackupSnapshot type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DiskBackupSnapshot{}
-
 // DiskBackupSnapshot struct for DiskBackupSnapshot
 type DiskBackupSnapshot struct {
 	// Date and time when MongoDB Cloud took the snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
@@ -67,7 +64,7 @@ func NewDiskBackupSnapshotWithDefaults() *DiskBackupSnapshot {
 	return &this
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise
 func (o *DiskBackupSnapshot) GetCreatedAt() time.Time {
 	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
@@ -82,6 +79,7 @@ func (o *DiskBackupSnapshot) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
+
 	return o.CreatedAt, true
 }
 
@@ -99,7 +97,7 @@ func (o *DiskBackupSnapshot) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// GetDescription returns the Description field value if set, zero value otherwise
 func (o *DiskBackupSnapshot) GetDescription() string {
 	if o == nil || IsNil(o.Description) {
 		var ret string
@@ -114,6 +112,7 @@ func (o *DiskBackupSnapshot) GetDescriptionOk() (*string, bool) {
 	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
+
 	return o.Description, true
 }
 
@@ -131,7 +130,7 @@ func (o *DiskBackupSnapshot) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise.
+// GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise
 func (o *DiskBackupSnapshot) GetExpiresAt() time.Time {
 	if o == nil || IsNil(o.ExpiresAt) {
 		var ret time.Time
@@ -146,6 +145,7 @@ func (o *DiskBackupSnapshot) GetExpiresAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.ExpiresAt) {
 		return nil, false
 	}
+
 	return o.ExpiresAt, true
 }
 
@@ -163,7 +163,7 @@ func (o *DiskBackupSnapshot) SetExpiresAt(v time.Time) {
 	o.ExpiresAt = &v
 }
 
-// GetFrequencyType returns the FrequencyType field value if set, zero value otherwise.
+// GetFrequencyType returns the FrequencyType field value if set, zero value otherwise
 func (o *DiskBackupSnapshot) GetFrequencyType() string {
 	if o == nil || IsNil(o.FrequencyType) {
 		var ret string
@@ -178,6 +178,7 @@ func (o *DiskBackupSnapshot) GetFrequencyTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.FrequencyType) {
 		return nil, false
 	}
+
 	return o.FrequencyType, true
 }
 
@@ -195,7 +196,7 @@ func (o *DiskBackupSnapshot) SetFrequencyType(v string) {
 	o.FrequencyType = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *DiskBackupSnapshot) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -210,6 +211,7 @@ func (o *DiskBackupSnapshot) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -227,7 +229,7 @@ func (o *DiskBackupSnapshot) SetId(v string) {
 	o.Id = &v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *DiskBackupSnapshot) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -242,6 +244,7 @@ func (o *DiskBackupSnapshot) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -259,7 +262,7 @@ func (o *DiskBackupSnapshot) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetMasterKeyUUID returns the MasterKeyUUID field value if set, zero value otherwise.
+// GetMasterKeyUUID returns the MasterKeyUUID field value if set, zero value otherwise
 func (o *DiskBackupSnapshot) GetMasterKeyUUID() string {
 	if o == nil || IsNil(o.MasterKeyUUID) {
 		var ret string
@@ -274,6 +277,7 @@ func (o *DiskBackupSnapshot) GetMasterKeyUUIDOk() (*string, bool) {
 	if o == nil || IsNil(o.MasterKeyUUID) {
 		return nil, false
 	}
+
 	return o.MasterKeyUUID, true
 }
 
@@ -291,7 +295,7 @@ func (o *DiskBackupSnapshot) SetMasterKeyUUID(v string) {
 	o.MasterKeyUUID = &v
 }
 
-// GetMongodVersion returns the MongodVersion field value if set, zero value otherwise.
+// GetMongodVersion returns the MongodVersion field value if set, zero value otherwise
 func (o *DiskBackupSnapshot) GetMongodVersion() string {
 	if o == nil || IsNil(o.MongodVersion) {
 		var ret string
@@ -306,6 +310,7 @@ func (o *DiskBackupSnapshot) GetMongodVersionOk() (*string, bool) {
 	if o == nil || IsNil(o.MongodVersion) {
 		return nil, false
 	}
+
 	return o.MongodVersion, true
 }
 
@@ -323,7 +328,7 @@ func (o *DiskBackupSnapshot) SetMongodVersion(v string) {
 	o.MongodVersion = &v
 }
 
-// GetPolicyItems returns the PolicyItems field value if set, zero value otherwise.
+// GetPolicyItems returns the PolicyItems field value if set, zero value otherwise
 func (o *DiskBackupSnapshot) GetPolicyItems() []string {
 	if o == nil || IsNil(o.PolicyItems) {
 		var ret []string
@@ -338,6 +343,7 @@ func (o *DiskBackupSnapshot) GetPolicyItemsOk() ([]string, bool) {
 	if o == nil || IsNil(o.PolicyItems) {
 		return nil, false
 	}
+
 	return o.PolicyItems, true
 }
 
@@ -355,7 +361,7 @@ func (o *DiskBackupSnapshot) SetPolicyItems(v []string) {
 	o.PolicyItems = v
 }
 
-// GetSnapshotType returns the SnapshotType field value if set, zero value otherwise.
+// GetSnapshotType returns the SnapshotType field value if set, zero value otherwise
 func (o *DiskBackupSnapshot) GetSnapshotType() string {
 	if o == nil || IsNil(o.SnapshotType) {
 		var ret string
@@ -370,6 +376,7 @@ func (o *DiskBackupSnapshot) GetSnapshotTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.SnapshotType) {
 		return nil, false
 	}
+
 	return o.SnapshotType, true
 }
 
@@ -387,7 +394,7 @@ func (o *DiskBackupSnapshot) SetSnapshotType(v string) {
 	o.SnapshotType = &v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// GetStatus returns the Status field value if set, zero value otherwise
 func (o *DiskBackupSnapshot) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
 		var ret string
@@ -402,6 +409,7 @@ func (o *DiskBackupSnapshot) GetStatusOk() (*string, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
+
 	return o.Status, true
 }
 
@@ -419,7 +427,7 @@ func (o *DiskBackupSnapshot) SetStatus(v string) {
 	o.Status = &v
 }
 
-// GetStorageSizeBytes returns the StorageSizeBytes field value if set, zero value otherwise.
+// GetStorageSizeBytes returns the StorageSizeBytes field value if set, zero value otherwise
 func (o *DiskBackupSnapshot) GetStorageSizeBytes() int64 {
 	if o == nil || IsNil(o.StorageSizeBytes) {
 		var ret int64
@@ -434,6 +442,7 @@ func (o *DiskBackupSnapshot) GetStorageSizeBytesOk() (*int64, bool) {
 	if o == nil || IsNil(o.StorageSizeBytes) {
 		return nil, false
 	}
+
 	return o.StorageSizeBytes, true
 }
 
@@ -451,7 +460,7 @@ func (o *DiskBackupSnapshot) SetStorageSizeBytes(v int64) {
 	o.StorageSizeBytes = &v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value if set, zero value otherwise
 func (o *DiskBackupSnapshot) GetType() string {
 	if o == nil || IsNil(o.Type) {
 		var ret string
@@ -466,6 +475,7 @@ func (o *DiskBackupSnapshot) GetTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
+
 	return o.Type, true
 }
 
@@ -483,7 +493,7 @@ func (o *DiskBackupSnapshot) SetType(v string) {
 	o.Type = &v
 }
 
-// GetCloudProvider returns the CloudProvider field value if set, zero value otherwise.
+// GetCloudProvider returns the CloudProvider field value if set, zero value otherwise
 func (o *DiskBackupSnapshot) GetCloudProvider() string {
 	if o == nil || IsNil(o.CloudProvider) {
 		var ret string
@@ -498,6 +508,7 @@ func (o *DiskBackupSnapshot) GetCloudProviderOk() (*string, bool) {
 	if o == nil || IsNil(o.CloudProvider) {
 		return nil, false
 	}
+
 	return o.CloudProvider, true
 }
 
@@ -515,7 +526,7 @@ func (o *DiskBackupSnapshot) SetCloudProvider(v string) {
 	o.CloudProvider = &v
 }
 
-// GetCopyRegions returns the CopyRegions field value if set, zero value otherwise.
+// GetCopyRegions returns the CopyRegions field value if set, zero value otherwise
 func (o *DiskBackupSnapshot) GetCopyRegions() []string {
 	if o == nil || IsNil(o.CopyRegions) {
 		var ret []string
@@ -530,6 +541,7 @@ func (o *DiskBackupSnapshot) GetCopyRegionsOk() ([]string, bool) {
 	if o == nil || IsNil(o.CopyRegions) {
 		return nil, false
 	}
+
 	return o.CopyRegions, true
 }
 
@@ -547,7 +559,7 @@ func (o *DiskBackupSnapshot) SetCopyRegions(v []string) {
 	o.CopyRegions = v
 }
 
-// GetReplicaSetName returns the ReplicaSetName field value if set, zero value otherwise.
+// GetReplicaSetName returns the ReplicaSetName field value if set, zero value otherwise
 func (o *DiskBackupSnapshot) GetReplicaSetName() string {
 	if o == nil || IsNil(o.ReplicaSetName) {
 		var ret string
@@ -562,6 +574,7 @@ func (o *DiskBackupSnapshot) GetReplicaSetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.ReplicaSetName) {
 		return nil, false
 	}
+
 	return o.ReplicaSetName, true
 }
 
@@ -579,7 +592,7 @@ func (o *DiskBackupSnapshot) SetReplicaSetName(v string) {
 	o.ReplicaSetName = &v
 }
 
-// GetMembers returns the Members field value if set, zero value otherwise.
+// GetMembers returns the Members field value if set, zero value otherwise
 func (o *DiskBackupSnapshot) GetMembers() []DiskBackupShardedClusterSnapshotMember {
 	if o == nil || IsNil(o.Members) {
 		var ret []DiskBackupShardedClusterSnapshotMember
@@ -594,6 +607,7 @@ func (o *DiskBackupSnapshot) GetMembersOk() ([]DiskBackupShardedClusterSnapshotM
 	if o == nil || IsNil(o.Members) {
 		return nil, false
 	}
+
 	return o.Members, true
 }
 
@@ -611,7 +625,7 @@ func (o *DiskBackupSnapshot) SetMembers(v []DiskBackupShardedClusterSnapshotMemb
 	o.Members = v
 }
 
-// GetSnapshotIds returns the SnapshotIds field value if set, zero value otherwise.
+// GetSnapshotIds returns the SnapshotIds field value if set, zero value otherwise
 func (o *DiskBackupSnapshot) GetSnapshotIds() []string {
 	if o == nil || IsNil(o.SnapshotIds) {
 		var ret []string
@@ -626,6 +640,7 @@ func (o *DiskBackupSnapshot) GetSnapshotIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.SnapshotIds) {
 		return nil, false
 	}
+
 	return o.SnapshotIds, true
 }
 
@@ -653,40 +668,4 @@ func (o DiskBackupSnapshot) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o DiskBackupSnapshot) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableDiskBackupSnapshot struct {
-	value *DiskBackupSnapshot
-	isSet bool
-}
-
-func (v NullableDiskBackupSnapshot) Get() *DiskBackupSnapshot {
-	return v.value
-}
-
-func (v *NullableDiskBackupSnapshot) Set(val *DiskBackupSnapshot) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableDiskBackupSnapshot) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableDiskBackupSnapshot) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableDiskBackupSnapshot(val *DiskBackupSnapshot) *NullableDiskBackupSnapshot {
-	return &NullableDiskBackupSnapshot{value: val, isSet: true}
-}
-
-func (v NullableDiskBackupSnapshot) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableDiskBackupSnapshot) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the OrganizationSettings type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &OrganizationSettings{}
-
 // OrganizationSettings Collection of settings that configures the organization.
 type OrganizationSettings struct {
 	// Flag that indicates whether to require API operations to originate from an IP Address added to the API access list for the specified organization.
@@ -36,7 +33,7 @@ func NewOrganizationSettingsWithDefaults() *OrganizationSettings {
 	return &this
 }
 
-// GetApiAccessListRequired returns the ApiAccessListRequired field value if set, zero value otherwise.
+// GetApiAccessListRequired returns the ApiAccessListRequired field value if set, zero value otherwise
 func (o *OrganizationSettings) GetApiAccessListRequired() bool {
 	if o == nil || IsNil(o.ApiAccessListRequired) {
 		var ret bool
@@ -51,6 +48,7 @@ func (o *OrganizationSettings) GetApiAccessListRequiredOk() (*bool, bool) {
 	if o == nil || IsNil(o.ApiAccessListRequired) {
 		return nil, false
 	}
+
 	return o.ApiAccessListRequired, true
 }
 
@@ -68,7 +66,7 @@ func (o *OrganizationSettings) SetApiAccessListRequired(v bool) {
 	o.ApiAccessListRequired = &v
 }
 
-// GetMultiFactorAuthRequired returns the MultiFactorAuthRequired field value if set, zero value otherwise.
+// GetMultiFactorAuthRequired returns the MultiFactorAuthRequired field value if set, zero value otherwise
 func (o *OrganizationSettings) GetMultiFactorAuthRequired() bool {
 	if o == nil || IsNil(o.MultiFactorAuthRequired) {
 		var ret bool
@@ -83,6 +81,7 @@ func (o *OrganizationSettings) GetMultiFactorAuthRequiredOk() (*bool, bool) {
 	if o == nil || IsNil(o.MultiFactorAuthRequired) {
 		return nil, false
 	}
+
 	return o.MultiFactorAuthRequired, true
 }
 
@@ -100,7 +99,7 @@ func (o *OrganizationSettings) SetMultiFactorAuthRequired(v bool) {
 	o.MultiFactorAuthRequired = &v
 }
 
-// GetRestrictEmployeeAccess returns the RestrictEmployeeAccess field value if set, zero value otherwise.
+// GetRestrictEmployeeAccess returns the RestrictEmployeeAccess field value if set, zero value otherwise
 func (o *OrganizationSettings) GetRestrictEmployeeAccess() bool {
 	if o == nil || IsNil(o.RestrictEmployeeAccess) {
 		var ret bool
@@ -115,6 +114,7 @@ func (o *OrganizationSettings) GetRestrictEmployeeAccessOk() (*bool, bool) {
 	if o == nil || IsNil(o.RestrictEmployeeAccess) {
 		return nil, false
 	}
+
 	return o.RestrictEmployeeAccess, true
 }
 
@@ -151,40 +151,4 @@ func (o OrganizationSettings) ToMap() (map[string]interface{}, error) {
 		toSerialize["restrictEmployeeAccess"] = o.RestrictEmployeeAccess
 	}
 	return toSerialize, nil
-}
-
-type NullableOrganizationSettings struct {
-	value *OrganizationSettings
-	isSet bool
-}
-
-func (v NullableOrganizationSettings) Get() *OrganizationSettings {
-	return v.value
-}
-
-func (v *NullableOrganizationSettings) Set(val *OrganizationSettings) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableOrganizationSettings) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableOrganizationSettings) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableOrganizationSettings(val *OrganizationSettings) *NullableOrganizationSettings {
-	return &NullableOrganizationSettings{value: val, isSet: true}
-}
-
-func (v NullableOrganizationSettings) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableOrganizationSettings) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

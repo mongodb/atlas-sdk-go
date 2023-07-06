@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the DiskBackupOnDemandSnapshotRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DiskBackupOnDemandSnapshotRequest{}
-
 // DiskBackupOnDemandSnapshotRequest struct for DiskBackupOnDemandSnapshotRequest
 type DiskBackupOnDemandSnapshotRequest struct {
 	// Human-readable phrase or sentence that explains the purpose of the snapshot. The resource returns this parameter when `\"status\" : \"onDemand\"`.
@@ -36,7 +33,7 @@ func NewDiskBackupOnDemandSnapshotRequestWithDefaults() *DiskBackupOnDemandSnaps
 	return &this
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// GetDescription returns the Description field value if set, zero value otherwise
 func (o *DiskBackupOnDemandSnapshotRequest) GetDescription() string {
 	if o == nil || IsNil(o.Description) {
 		var ret string
@@ -51,6 +48,7 @@ func (o *DiskBackupOnDemandSnapshotRequest) GetDescriptionOk() (*string, bool) {
 	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
+
 	return o.Description, true
 }
 
@@ -68,7 +66,7 @@ func (o *DiskBackupOnDemandSnapshotRequest) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *DiskBackupOnDemandSnapshotRequest) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -83,6 +81,7 @@ func (o *DiskBackupOnDemandSnapshotRequest) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -100,7 +99,7 @@ func (o *DiskBackupOnDemandSnapshotRequest) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetRetentionInDays returns the RetentionInDays field value if set, zero value otherwise.
+// GetRetentionInDays returns the RetentionInDays field value if set, zero value otherwise
 func (o *DiskBackupOnDemandSnapshotRequest) GetRetentionInDays() int {
 	if o == nil || IsNil(o.RetentionInDays) {
 		var ret int
@@ -115,6 +114,7 @@ func (o *DiskBackupOnDemandSnapshotRequest) GetRetentionInDaysOk() (*int, bool) 
 	if o == nil || IsNil(o.RetentionInDays) {
 		return nil, false
 	}
+
 	return o.RetentionInDays, true
 }
 
@@ -148,40 +148,4 @@ func (o DiskBackupOnDemandSnapshotRequest) ToMap() (map[string]interface{}, erro
 		toSerialize["retentionInDays"] = o.RetentionInDays
 	}
 	return toSerialize, nil
-}
-
-type NullableDiskBackupOnDemandSnapshotRequest struct {
-	value *DiskBackupOnDemandSnapshotRequest
-	isSet bool
-}
-
-func (v NullableDiskBackupOnDemandSnapshotRequest) Get() *DiskBackupOnDemandSnapshotRequest {
-	return v.value
-}
-
-func (v *NullableDiskBackupOnDemandSnapshotRequest) Set(val *DiskBackupOnDemandSnapshotRequest) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableDiskBackupOnDemandSnapshotRequest) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableDiskBackupOnDemandSnapshotRequest) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableDiskBackupOnDemandSnapshotRequest(val *DiskBackupOnDemandSnapshotRequest) *NullableDiskBackupOnDemandSnapshotRequest {
-	return &NullableDiskBackupOnDemandSnapshotRequest{value: val, isSet: true}
-}
-
-func (v NullableDiskBackupOnDemandSnapshotRequest) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableDiskBackupOnDemandSnapshotRequest) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

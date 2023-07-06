@@ -7,6 +7,7 @@ const {
   applyRemoveObjectAdditonalProperties,
   applyAddExperimentalTag,
   applyAnyOfTransformations,
+  applyRemoveNullableTransformations,
 } = require("./transformations");
 
 const removeUnusedSchemas = require("./engine/removeUnused");
@@ -23,6 +24,7 @@ module.exports = function runTransformations(openapi) {
   openapi = applyAnyOfTransformations(openapi);
   openapi = applyAllOfTransformations(openapi);
   openapi = applyRemoveEnumsTransformations(openapi);
+  openapi = applyRemoveNullableTransformations(openapi);
   openapi = applyRemoveObjectAdditonalProperties(openapi);
   openapi = applyAddExperimentalTag(openapi, stableOperationIds);
 

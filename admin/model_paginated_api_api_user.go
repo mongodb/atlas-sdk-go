@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PaginatedApiApiUser type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PaginatedApiApiUser{}
-
 // PaginatedApiApiUser struct for PaginatedApiApiUser
 type PaginatedApiApiUser struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -36,7 +33,7 @@ func NewPaginatedApiApiUserWithDefaults() *PaginatedApiApiUser {
 	return &this
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *PaginatedApiApiUser) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -51,6 +48,7 @@ func (o *PaginatedApiApiUser) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -68,7 +66,7 @@ func (o *PaginatedApiApiUser) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetResults returns the Results field value if set, zero value otherwise.
+// GetResults returns the Results field value if set, zero value otherwise
 func (o *PaginatedApiApiUser) GetResults() []ApiKeyUserDetails {
 	if o == nil || IsNil(o.Results) {
 		var ret []ApiKeyUserDetails
@@ -83,6 +81,7 @@ func (o *PaginatedApiApiUser) GetResultsOk() ([]ApiKeyUserDetails, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
+
 	return o.Results, true
 }
 
@@ -100,7 +99,7 @@ func (o *PaginatedApiApiUser) SetResults(v []ApiKeyUserDetails) {
 	o.Results = v
 }
 
-// GetTotalCount returns the TotalCount field value if set, zero value otherwise.
+// GetTotalCount returns the TotalCount field value if set, zero value otherwise
 func (o *PaginatedApiApiUser) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int
@@ -115,6 +114,7 @@ func (o *PaginatedApiApiUser) GetTotalCountOk() (*int, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
+
 	return o.TotalCount, true
 }
 
@@ -142,40 +142,4 @@ func (o PaginatedApiApiUser) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o PaginatedApiApiUser) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullablePaginatedApiApiUser struct {
-	value *PaginatedApiApiUser
-	isSet bool
-}
-
-func (v NullablePaginatedApiApiUser) Get() *PaginatedApiApiUser {
-	return v.value
-}
-
-func (v *NullablePaginatedApiApiUser) Set(val *PaginatedApiApiUser) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullablePaginatedApiApiUser) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullablePaginatedApiApiUser) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullablePaginatedApiApiUser(val *PaginatedApiApiUser) *NullablePaginatedApiApiUser {
-	return &NullablePaginatedApiApiUser{value: val, isSet: true}
-}
-
-func (v NullablePaginatedApiApiUser) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullablePaginatedApiApiUser) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

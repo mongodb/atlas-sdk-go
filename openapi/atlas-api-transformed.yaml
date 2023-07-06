@@ -15498,7 +15498,6 @@ components:
     ApiKey:
       type: object
       description: Details contained in one API key.
-      nullable: true
       properties:
         accessList:
           type: array
@@ -18219,7 +18218,6 @@ components:
             description: This option corresponds to the `storage.oplogMinRetentionHours`
               `mongod` configuration file option.
             url: https://docs.mongodb.com/upcoming/reference/configuration-options/#mongodb-setting-storage.oplogMinRetentionHours
-          nullable: true
         oplogSizeMB:
           type: integer
           format: int32
@@ -18230,7 +18228,6 @@ components:
             description: This option corresponds to the `replication.oplogSizeMB` `mongod`
               configuration file option.
             url: https://docs.mongodb.com/upcoming/reference/configuration-options/#mongodb-setting-replication.oplogSizeMB
-          nullable: true
         sampleRefreshIntervalBIConnector:
           type: integer
           format: int32
@@ -22836,7 +22833,6 @@ components:
         errorMessage:
           type: string
           description: Reason why the validation job failed.
-          nullable: true
           readOnly: true
         groupId:
           type: string
@@ -22859,7 +22855,6 @@ components:
           type: string
           description: State of the specified validation job returned at the time of the
             request.
-          nullable: true
           readOnly: true
     LiveMigrationRequest:
       type: object
@@ -22912,7 +22907,6 @@ components:
           description: Replication lag between the source and destination clusters. Atlas
             returns this setting only during an active migration, before the
             cutover phase.
-          nullable: true
           readOnly: true
         migrationHosts:
           type: array
@@ -25390,7 +25384,6 @@ components:
           example: alerts
           maxLength: 80
           minLength: 1
-          nullable: true
         teamName:
           type: string
           description: Human-readable label that identifies your Slack team. Set this

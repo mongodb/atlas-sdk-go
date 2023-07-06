@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the CloudProviderRegions type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CloudProviderRegions{}
-
 // CloudProviderRegions struct for CloudProviderRegions
 type CloudProviderRegions struct {
 	// List of instances sizes that this cloud provider supports.
@@ -34,7 +31,7 @@ func NewCloudProviderRegionsWithDefaults() *CloudProviderRegions {
 	return &this
 }
 
-// GetInstanceSizes returns the InstanceSizes field value if set, zero value otherwise.
+// GetInstanceSizes returns the InstanceSizes field value if set, zero value otherwise
 func (o *CloudProviderRegions) GetInstanceSizes() []ClusterCloudProviderInstanceSize {
 	if o == nil || IsNil(o.InstanceSizes) {
 		var ret []ClusterCloudProviderInstanceSize
@@ -49,6 +46,7 @@ func (o *CloudProviderRegions) GetInstanceSizesOk() ([]ClusterCloudProviderInsta
 	if o == nil || IsNil(o.InstanceSizes) {
 		return nil, false
 	}
+
 	return o.InstanceSizes, true
 }
 
@@ -66,7 +64,7 @@ func (o *CloudProviderRegions) SetInstanceSizes(v []ClusterCloudProviderInstance
 	o.InstanceSizes = v
 }
 
-// GetProvider returns the Provider field value if set, zero value otherwise.
+// GetProvider returns the Provider field value if set, zero value otherwise
 func (o *CloudProviderRegions) GetProvider() string {
 	if o == nil || IsNil(o.Provider) {
 		var ret string
@@ -81,6 +79,7 @@ func (o *CloudProviderRegions) GetProviderOk() (*string, bool) {
 	if o == nil || IsNil(o.Provider) {
 		return nil, false
 	}
+
 	return o.Provider, true
 }
 
@@ -111,40 +110,4 @@ func (o CloudProviderRegions) ToMap() (map[string]interface{}, error) {
 		toSerialize["provider"] = o.Provider
 	}
 	return toSerialize, nil
-}
-
-type NullableCloudProviderRegions struct {
-	value *CloudProviderRegions
-	isSet bool
-}
-
-func (v NullableCloudProviderRegions) Get() *CloudProviderRegions {
-	return v.value
-}
-
-func (v *NullableCloudProviderRegions) Set(val *CloudProviderRegions) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableCloudProviderRegions) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableCloudProviderRegions) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableCloudProviderRegions(val *CloudProviderRegions) *NullableCloudProviderRegions {
-	return &NullableCloudProviderRegions{value: val, isSet: true}
-}
-
-func (v NullableCloudProviderRegions) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableCloudProviderRegions) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

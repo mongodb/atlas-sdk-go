@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the BackupSnapshotRetention type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &BackupSnapshotRetention{}
-
 // BackupSnapshotRetention struct for BackupSnapshotRetention
 type BackupSnapshotRetention struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -38,7 +35,7 @@ func NewBackupSnapshotRetentionWithDefaults() *BackupSnapshotRetention {
 	return &this
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *BackupSnapshotRetention) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -53,6 +50,7 @@ func (o *BackupSnapshotRetention) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -130,40 +128,4 @@ func (o BackupSnapshotRetention) ToMap() (map[string]interface{}, error) {
 	toSerialize["retentionUnit"] = o.RetentionUnit
 	toSerialize["retentionValue"] = o.RetentionValue
 	return toSerialize, nil
-}
-
-type NullableBackupSnapshotRetention struct {
-	value *BackupSnapshotRetention
-	isSet bool
-}
-
-func (v NullableBackupSnapshotRetention) Get() *BackupSnapshotRetention {
-	return v.value
-}
-
-func (v *NullableBackupSnapshotRetention) Set(val *BackupSnapshotRetention) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableBackupSnapshotRetention) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableBackupSnapshotRetention) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableBackupSnapshotRetention(val *BackupSnapshotRetention) *NullableBackupSnapshotRetention {
-	return &NullableBackupSnapshotRetention{value: val, isSet: true}
-}
-
-func (v NullableBackupSnapshotRetention) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableBackupSnapshotRetention) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

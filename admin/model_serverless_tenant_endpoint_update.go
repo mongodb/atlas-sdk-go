@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ServerlessTenantEndpointUpdate type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ServerlessTenantEndpointUpdate{}
-
 // ServerlessTenantEndpointUpdate Update view for a serverless tenant endpoint.
 type ServerlessTenantEndpointUpdate struct {
 	// Human-readable comment associated with the private endpoint.
@@ -38,7 +35,7 @@ func NewServerlessTenantEndpointUpdateWithDefaults() *ServerlessTenantEndpointUp
 	return &this
 }
 
-// GetComment returns the Comment field value if set, zero value otherwise.
+// GetComment returns the Comment field value if set, zero value otherwise
 func (o *ServerlessTenantEndpointUpdate) GetComment() string {
 	if o == nil || IsNil(o.Comment) {
 		var ret string
@@ -53,6 +50,7 @@ func (o *ServerlessTenantEndpointUpdate) GetCommentOk() (*string, bool) {
 	if o == nil || IsNil(o.Comment) {
 		return nil, false
 	}
+
 	return o.Comment, true
 }
 
@@ -94,7 +92,7 @@ func (o *ServerlessTenantEndpointUpdate) SetProviderName(v string) {
 	o.ProviderName = v
 }
 
-// GetCloudProviderEndpointId returns the CloudProviderEndpointId field value if set, zero value otherwise.
+// GetCloudProviderEndpointId returns the CloudProviderEndpointId field value if set, zero value otherwise
 func (o *ServerlessTenantEndpointUpdate) GetCloudProviderEndpointId() string {
 	if o == nil || IsNil(o.CloudProviderEndpointId) {
 		var ret string
@@ -109,6 +107,7 @@ func (o *ServerlessTenantEndpointUpdate) GetCloudProviderEndpointIdOk() (*string
 	if o == nil || IsNil(o.CloudProviderEndpointId) {
 		return nil, false
 	}
+
 	return o.CloudProviderEndpointId, true
 }
 
@@ -126,7 +125,7 @@ func (o *ServerlessTenantEndpointUpdate) SetCloudProviderEndpointId(v string) {
 	o.CloudProviderEndpointId = &v
 }
 
-// GetPrivateEndpointIpAddress returns the PrivateEndpointIpAddress field value if set, zero value otherwise.
+// GetPrivateEndpointIpAddress returns the PrivateEndpointIpAddress field value if set, zero value otherwise
 func (o *ServerlessTenantEndpointUpdate) GetPrivateEndpointIpAddress() string {
 	if o == nil || IsNil(o.PrivateEndpointIpAddress) {
 		var ret string
@@ -141,6 +140,7 @@ func (o *ServerlessTenantEndpointUpdate) GetPrivateEndpointIpAddressOk() (*strin
 	if o == nil || IsNil(o.PrivateEndpointIpAddress) {
 		return nil, false
 	}
+
 	return o.PrivateEndpointIpAddress, true
 }
 
@@ -178,40 +178,4 @@ func (o ServerlessTenantEndpointUpdate) ToMap() (map[string]interface{}, error) 
 		toSerialize["privateEndpointIpAddress"] = o.PrivateEndpointIpAddress
 	}
 	return toSerialize, nil
-}
-
-type NullableServerlessTenantEndpointUpdate struct {
-	value *ServerlessTenantEndpointUpdate
-	isSet bool
-}
-
-func (v NullableServerlessTenantEndpointUpdate) Get() *ServerlessTenantEndpointUpdate {
-	return v.value
-}
-
-func (v *NullableServerlessTenantEndpointUpdate) Set(val *ServerlessTenantEndpointUpdate) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableServerlessTenantEndpointUpdate) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableServerlessTenantEndpointUpdate) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableServerlessTenantEndpointUpdate(val *ServerlessTenantEndpointUpdate) *NullableServerlessTenantEndpointUpdate {
-	return &NullableServerlessTenantEndpointUpdate{value: val, isSet: true}
-}
-
-func (v NullableServerlessTenantEndpointUpdate) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableServerlessTenantEndpointUpdate) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

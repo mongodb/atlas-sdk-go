@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the IndexOptions type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &IndexOptions{}
-
 // IndexOptions One or more settings that determine how the MongoDB Cloud creates this MongoDB index.
 type IndexOptions struct {
 	// Index version number applied to the 2dsphere index. MongoDB 3.2 and later use version 3. Use this option to override the default version number. This option applies to the **2dsphere** index type only.
@@ -110,7 +107,7 @@ func NewIndexOptionsWithDefaults() *IndexOptions {
 	return &this
 }
 
-// GetVar2dsphereIndexVersion returns the Var2dsphereIndexVersion field value if set, zero value otherwise.
+// GetVar2dsphereIndexVersion returns the Var2dsphereIndexVersion field value if set, zero value otherwise
 func (o *IndexOptions) GetVar2dsphereIndexVersion() int {
 	if o == nil || IsNil(o.Var2dsphereIndexVersion) {
 		var ret int
@@ -125,6 +122,7 @@ func (o *IndexOptions) GetVar2dsphereIndexVersionOk() (*int, bool) {
 	if o == nil || IsNil(o.Var2dsphereIndexVersion) {
 		return nil, false
 	}
+
 	return o.Var2dsphereIndexVersion, true
 }
 
@@ -142,7 +140,7 @@ func (o *IndexOptions) SetVar2dsphereIndexVersion(v int) {
 	o.Var2dsphereIndexVersion = &v
 }
 
-// GetBackground returns the Background field value if set, zero value otherwise.
+// GetBackground returns the Background field value if set, zero value otherwise
 func (o *IndexOptions) GetBackground() bool {
 	if o == nil || IsNil(o.Background) {
 		var ret bool
@@ -157,6 +155,7 @@ func (o *IndexOptions) GetBackgroundOk() (*bool, bool) {
 	if o == nil || IsNil(o.Background) {
 		return nil, false
 	}
+
 	return o.Background, true
 }
 
@@ -174,7 +173,7 @@ func (o *IndexOptions) SetBackground(v bool) {
 	o.Background = &v
 }
 
-// GetBits returns the Bits field value if set, zero value otherwise.
+// GetBits returns the Bits field value if set, zero value otherwise
 func (o *IndexOptions) GetBits() int {
 	if o == nil || IsNil(o.Bits) {
 		var ret int
@@ -189,6 +188,7 @@ func (o *IndexOptions) GetBitsOk() (*int, bool) {
 	if o == nil || IsNil(o.Bits) {
 		return nil, false
 	}
+
 	return o.Bits, true
 }
 
@@ -206,7 +206,7 @@ func (o *IndexOptions) SetBits(v int) {
 	o.Bits = &v
 }
 
-// GetBucketSize returns the BucketSize field value if set, zero value otherwise.
+// GetBucketSize returns the BucketSize field value if set, zero value otherwise
 func (o *IndexOptions) GetBucketSize() int {
 	if o == nil || IsNil(o.BucketSize) {
 		var ret int
@@ -221,6 +221,7 @@ func (o *IndexOptions) GetBucketSizeOk() (*int, bool) {
 	if o == nil || IsNil(o.BucketSize) {
 		return nil, false
 	}
+
 	return o.BucketSize, true
 }
 
@@ -238,7 +239,7 @@ func (o *IndexOptions) SetBucketSize(v int) {
 	o.BucketSize = &v
 }
 
-// GetColumnstoreProjection returns the ColumnstoreProjection field value if set, zero value otherwise.
+// GetColumnstoreProjection returns the ColumnstoreProjection field value if set, zero value otherwise
 func (o *IndexOptions) GetColumnstoreProjection() map[string]int {
 	if o == nil || IsNil(o.ColumnstoreProjection) {
 		var ret map[string]int
@@ -253,6 +254,7 @@ func (o *IndexOptions) GetColumnstoreProjectionOk() (*map[string]int, bool) {
 	if o == nil || IsNil(o.ColumnstoreProjection) {
 		return nil, false
 	}
+
 	return o.ColumnstoreProjection, true
 }
 
@@ -270,7 +272,7 @@ func (o *IndexOptions) SetColumnstoreProjection(v map[string]int) {
 	o.ColumnstoreProjection = &v
 }
 
-// GetDefaultLanguage returns the DefaultLanguage field value if set, zero value otherwise.
+// GetDefaultLanguage returns the DefaultLanguage field value if set, zero value otherwise
 func (o *IndexOptions) GetDefaultLanguage() string {
 	if o == nil || IsNil(o.DefaultLanguage) {
 		var ret string
@@ -285,6 +287,7 @@ func (o *IndexOptions) GetDefaultLanguageOk() (*string, bool) {
 	if o == nil || IsNil(o.DefaultLanguage) {
 		return nil, false
 	}
+
 	return o.DefaultLanguage, true
 }
 
@@ -302,7 +305,7 @@ func (o *IndexOptions) SetDefaultLanguage(v string) {
 	o.DefaultLanguage = &v
 }
 
-// GetExpireAfterSeconds returns the ExpireAfterSeconds field value if set, zero value otherwise.
+// GetExpireAfterSeconds returns the ExpireAfterSeconds field value if set, zero value otherwise
 func (o *IndexOptions) GetExpireAfterSeconds() int {
 	if o == nil || IsNil(o.ExpireAfterSeconds) {
 		var ret int
@@ -317,6 +320,7 @@ func (o *IndexOptions) GetExpireAfterSecondsOk() (*int, bool) {
 	if o == nil || IsNil(o.ExpireAfterSeconds) {
 		return nil, false
 	}
+
 	return o.ExpireAfterSeconds, true
 }
 
@@ -334,7 +338,7 @@ func (o *IndexOptions) SetExpireAfterSeconds(v int) {
 	o.ExpireAfterSeconds = &v
 }
 
-// GetHidden returns the Hidden field value if set, zero value otherwise.
+// GetHidden returns the Hidden field value if set, zero value otherwise
 func (o *IndexOptions) GetHidden() bool {
 	if o == nil || IsNil(o.Hidden) {
 		var ret bool
@@ -349,6 +353,7 @@ func (o *IndexOptions) GetHiddenOk() (*bool, bool) {
 	if o == nil || IsNil(o.Hidden) {
 		return nil, false
 	}
+
 	return o.Hidden, true
 }
 
@@ -366,7 +371,7 @@ func (o *IndexOptions) SetHidden(v bool) {
 	o.Hidden = &v
 }
 
-// GetLanguageOverride returns the LanguageOverride field value if set, zero value otherwise.
+// GetLanguageOverride returns the LanguageOverride field value if set, zero value otherwise
 func (o *IndexOptions) GetLanguageOverride() string {
 	if o == nil || IsNil(o.LanguageOverride) {
 		var ret string
@@ -381,6 +386,7 @@ func (o *IndexOptions) GetLanguageOverrideOk() (*string, bool) {
 	if o == nil || IsNil(o.LanguageOverride) {
 		return nil, false
 	}
+
 	return o.LanguageOverride, true
 }
 
@@ -398,7 +404,7 @@ func (o *IndexOptions) SetLanguageOverride(v string) {
 	o.LanguageOverride = &v
 }
 
-// GetMax returns the Max field value if set, zero value otherwise.
+// GetMax returns the Max field value if set, zero value otherwise
 func (o *IndexOptions) GetMax() int {
 	if o == nil || IsNil(o.Max) {
 		var ret int
@@ -413,6 +419,7 @@ func (o *IndexOptions) GetMaxOk() (*int, bool) {
 	if o == nil || IsNil(o.Max) {
 		return nil, false
 	}
+
 	return o.Max, true
 }
 
@@ -430,7 +437,7 @@ func (o *IndexOptions) SetMax(v int) {
 	o.Max = &v
 }
 
-// GetMin returns the Min field value if set, zero value otherwise.
+// GetMin returns the Min field value if set, zero value otherwise
 func (o *IndexOptions) GetMin() int {
 	if o == nil || IsNil(o.Min) {
 		var ret int
@@ -445,6 +452,7 @@ func (o *IndexOptions) GetMinOk() (*int, bool) {
 	if o == nil || IsNil(o.Min) {
 		return nil, false
 	}
+
 	return o.Min, true
 }
 
@@ -462,7 +470,7 @@ func (o *IndexOptions) SetMin(v int) {
 	o.Min = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise
 func (o *IndexOptions) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
@@ -477,6 +485,7 @@ func (o *IndexOptions) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
+
 	return o.Name, true
 }
 
@@ -494,7 +503,7 @@ func (o *IndexOptions) SetName(v string) {
 	o.Name = &v
 }
 
-// GetPartialFilterExpression returns the PartialFilterExpression field value if set, zero value otherwise.
+// GetPartialFilterExpression returns the PartialFilterExpression field value if set, zero value otherwise
 func (o *IndexOptions) GetPartialFilterExpression() map[string]interface{} {
 	if o == nil || IsNil(o.PartialFilterExpression) {
 		var ret map[string]interface{}
@@ -509,6 +518,7 @@ func (o *IndexOptions) GetPartialFilterExpressionOk() (map[string]interface{}, b
 	if o == nil || IsNil(o.PartialFilterExpression) {
 		return map[string]interface{}{}, false
 	}
+
 	return o.PartialFilterExpression, true
 }
 
@@ -526,7 +536,7 @@ func (o *IndexOptions) SetPartialFilterExpression(v map[string]interface{}) {
 	o.PartialFilterExpression = v
 }
 
-// GetSparse returns the Sparse field value if set, zero value otherwise.
+// GetSparse returns the Sparse field value if set, zero value otherwise
 func (o *IndexOptions) GetSparse() bool {
 	if o == nil || IsNil(o.Sparse) {
 		var ret bool
@@ -541,6 +551,7 @@ func (o *IndexOptions) GetSparseOk() (*bool, bool) {
 	if o == nil || IsNil(o.Sparse) {
 		return nil, false
 	}
+
 	return o.Sparse, true
 }
 
@@ -558,7 +569,7 @@ func (o *IndexOptions) SetSparse(v bool) {
 	o.Sparse = &v
 }
 
-// GetStorageEngine returns the StorageEngine field value if set, zero value otherwise.
+// GetStorageEngine returns the StorageEngine field value if set, zero value otherwise
 func (o *IndexOptions) GetStorageEngine() map[string]interface{} {
 	if o == nil || IsNil(o.StorageEngine) {
 		var ret map[string]interface{}
@@ -573,6 +584,7 @@ func (o *IndexOptions) GetStorageEngineOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.StorageEngine) {
 		return map[string]interface{}{}, false
 	}
+
 	return o.StorageEngine, true
 }
 
@@ -590,7 +602,7 @@ func (o *IndexOptions) SetStorageEngine(v map[string]interface{}) {
 	o.StorageEngine = v
 }
 
-// GetTextIndexVersion returns the TextIndexVersion field value if set, zero value otherwise.
+// GetTextIndexVersion returns the TextIndexVersion field value if set, zero value otherwise
 func (o *IndexOptions) GetTextIndexVersion() int {
 	if o == nil || IsNil(o.TextIndexVersion) {
 		var ret int
@@ -605,6 +617,7 @@ func (o *IndexOptions) GetTextIndexVersionOk() (*int, bool) {
 	if o == nil || IsNil(o.TextIndexVersion) {
 		return nil, false
 	}
+
 	return o.TextIndexVersion, true
 }
 
@@ -622,7 +635,7 @@ func (o *IndexOptions) SetTextIndexVersion(v int) {
 	o.TextIndexVersion = &v
 }
 
-// GetUnique returns the Unique field value if set, zero value otherwise.
+// GetUnique returns the Unique field value if set, zero value otherwise
 func (o *IndexOptions) GetUnique() bool {
 	if o == nil || IsNil(o.Unique) {
 		var ret bool
@@ -637,6 +650,7 @@ func (o *IndexOptions) GetUniqueOk() (*bool, bool) {
 	if o == nil || IsNil(o.Unique) {
 		return nil, false
 	}
+
 	return o.Unique, true
 }
 
@@ -654,7 +668,7 @@ func (o *IndexOptions) SetUnique(v bool) {
 	o.Unique = &v
 }
 
-// GetWeights returns the Weights field value if set, zero value otherwise.
+// GetWeights returns the Weights field value if set, zero value otherwise
 func (o *IndexOptions) GetWeights() map[string]interface{} {
 	if o == nil || IsNil(o.Weights) {
 		var ret map[string]interface{}
@@ -669,6 +683,7 @@ func (o *IndexOptions) GetWeightsOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Weights) {
 		return map[string]interface{}{}, false
 	}
+
 	return o.Weights, true
 }
 
@@ -750,40 +765,4 @@ func (o IndexOptions) ToMap() (map[string]interface{}, error) {
 		toSerialize["weights"] = o.Weights
 	}
 	return toSerialize, nil
-}
-
-type NullableIndexOptions struct {
-	value *IndexOptions
-	isSet bool
-}
-
-func (v NullableIndexOptions) Get() *IndexOptions {
-	return v.value
-}
-
-func (v *NullableIndexOptions) Set(val *IndexOptions) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableIndexOptions) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableIndexOptions) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableIndexOptions(val *IndexOptions) *NullableIndexOptions {
-	return &NullableIndexOptions{value: val, isSet: true}
-}
-
-func (v NullableIndexOptions) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableIndexOptions) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

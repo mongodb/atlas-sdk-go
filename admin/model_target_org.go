@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the TargetOrg type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &TargetOrg{}
-
 // TargetOrg struct for TargetOrg
 type TargetOrg struct {
 	// Link token that contains all the information required to complete the link.
@@ -68,40 +65,4 @@ func (o TargetOrg) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["linkToken"] = o.LinkToken
 	return toSerialize, nil
-}
-
-type NullableTargetOrg struct {
-	value *TargetOrg
-	isSet bool
-}
-
-func (v NullableTargetOrg) Get() *TargetOrg {
-	return v.value
-}
-
-func (v *NullableTargetOrg) Set(val *TargetOrg) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableTargetOrg) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableTargetOrg) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableTargetOrg(val *TargetOrg) *NullableTargetOrg {
-	return &NullableTargetOrg{value: val, isSet: true}
-}
-
-func (v NullableTargetOrg) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableTargetOrg) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

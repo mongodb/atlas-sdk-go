@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the RegionSpec type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &RegionSpec{}
-
 // RegionSpec Physical location where MongoDB Cloud provisions cluster nodes.
 type RegionSpec struct {
 	// Number of analytics nodes in the region. Analytics nodes handle analytic data such as reporting queries from MongoDB Connector for Business Intelligence on MongoDB Cloud. Analytics nodes are read-only, and can never become the primary. Use **replicationSpecs[n].{region}.analyticsNodes** instead.
@@ -38,7 +35,7 @@ func NewRegionSpecWithDefaults() *RegionSpec {
 	return &this
 }
 
-// GetAnalyticsNodes returns the AnalyticsNodes field value if set, zero value otherwise.
+// GetAnalyticsNodes returns the AnalyticsNodes field value if set, zero value otherwise
 func (o *RegionSpec) GetAnalyticsNodes() int {
 	if o == nil || IsNil(o.AnalyticsNodes) {
 		var ret int
@@ -53,6 +50,7 @@ func (o *RegionSpec) GetAnalyticsNodesOk() (*int, bool) {
 	if o == nil || IsNil(o.AnalyticsNodes) {
 		return nil, false
 	}
+
 	return o.AnalyticsNodes, true
 }
 
@@ -70,7 +68,7 @@ func (o *RegionSpec) SetAnalyticsNodes(v int) {
 	o.AnalyticsNodes = &v
 }
 
-// GetElectableNodes returns the ElectableNodes field value if set, zero value otherwise.
+// GetElectableNodes returns the ElectableNodes field value if set, zero value otherwise
 func (o *RegionSpec) GetElectableNodes() int {
 	if o == nil || IsNil(o.ElectableNodes) {
 		var ret int
@@ -85,6 +83,7 @@ func (o *RegionSpec) GetElectableNodesOk() (*int, bool) {
 	if o == nil || IsNil(o.ElectableNodes) {
 		return nil, false
 	}
+
 	return o.ElectableNodes, true
 }
 
@@ -102,7 +101,7 @@ func (o *RegionSpec) SetElectableNodes(v int) {
 	o.ElectableNodes = &v
 }
 
-// GetPriority returns the Priority field value if set, zero value otherwise.
+// GetPriority returns the Priority field value if set, zero value otherwise
 func (o *RegionSpec) GetPriority() int {
 	if o == nil || IsNil(o.Priority) {
 		var ret int
@@ -117,6 +116,7 @@ func (o *RegionSpec) GetPriorityOk() (*int, bool) {
 	if o == nil || IsNil(o.Priority) {
 		return nil, false
 	}
+
 	return o.Priority, true
 }
 
@@ -134,7 +134,7 @@ func (o *RegionSpec) SetPriority(v int) {
 	o.Priority = &v
 }
 
-// GetReadOnlyNodes returns the ReadOnlyNodes field value if set, zero value otherwise.
+// GetReadOnlyNodes returns the ReadOnlyNodes field value if set, zero value otherwise
 func (o *RegionSpec) GetReadOnlyNodes() int {
 	if o == nil || IsNil(o.ReadOnlyNodes) {
 		var ret int
@@ -149,6 +149,7 @@ func (o *RegionSpec) GetReadOnlyNodesOk() (*int, bool) {
 	if o == nil || IsNil(o.ReadOnlyNodes) {
 		return nil, false
 	}
+
 	return o.ReadOnlyNodes, true
 }
 
@@ -188,40 +189,4 @@ func (o RegionSpec) ToMap() (map[string]interface{}, error) {
 		toSerialize["readOnlyNodes"] = o.ReadOnlyNodes
 	}
 	return toSerialize, nil
-}
-
-type NullableRegionSpec struct {
-	value *RegionSpec
-	isSet bool
-}
-
-func (v NullableRegionSpec) Get() *RegionSpec {
-	return v.value
-}
-
-func (v *NullableRegionSpec) Set(val *RegionSpec) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableRegionSpec) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableRegionSpec) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableRegionSpec(val *RegionSpec) *NullableRegionSpec {
-	return &NullableRegionSpec{value: val, isSet: true}
-}
-
-func (v NullableRegionSpec) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableRegionSpec) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the ClusterOutageSimulation type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ClusterOutageSimulation{}
-
 // ClusterOutageSimulation struct for ClusterOutageSimulation
 type ClusterOutageSimulation struct {
 	// Human-readable label that identifies the cluster that undergoes outage simulation.
@@ -43,7 +40,7 @@ func NewClusterOutageSimulationWithDefaults() *ClusterOutageSimulation {
 	return &this
 }
 
-// GetClusterName returns the ClusterName field value if set, zero value otherwise.
+// GetClusterName returns the ClusterName field value if set, zero value otherwise
 func (o *ClusterOutageSimulation) GetClusterName() string {
 	if o == nil || IsNil(o.ClusterName) {
 		var ret string
@@ -58,6 +55,7 @@ func (o *ClusterOutageSimulation) GetClusterNameOk() (*string, bool) {
 	if o == nil || IsNil(o.ClusterName) {
 		return nil, false
 	}
+
 	return o.ClusterName, true
 }
 
@@ -75,7 +73,7 @@ func (o *ClusterOutageSimulation) SetClusterName(v string) {
 	o.ClusterName = &v
 }
 
-// GetGroupId returns the GroupId field value if set, zero value otherwise.
+// GetGroupId returns the GroupId field value if set, zero value otherwise
 func (o *ClusterOutageSimulation) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
 		var ret string
@@ -90,6 +88,7 @@ func (o *ClusterOutageSimulation) GetGroupIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupId) {
 		return nil, false
 	}
+
 	return o.GroupId, true
 }
 
@@ -107,7 +106,7 @@ func (o *ClusterOutageSimulation) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *ClusterOutageSimulation) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -122,6 +121,7 @@ func (o *ClusterOutageSimulation) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -139,7 +139,7 @@ func (o *ClusterOutageSimulation) SetId(v string) {
 	o.Id = &v
 }
 
-// GetOutageFilters returns the OutageFilters field value if set, zero value otherwise.
+// GetOutageFilters returns the OutageFilters field value if set, zero value otherwise
 func (o *ClusterOutageSimulation) GetOutageFilters() []AtlasClusterOutageSimulationOutageFilter {
 	if o == nil || IsNil(o.OutageFilters) {
 		var ret []AtlasClusterOutageSimulationOutageFilter
@@ -154,6 +154,7 @@ func (o *ClusterOutageSimulation) GetOutageFiltersOk() ([]AtlasClusterOutageSimu
 	if o == nil || IsNil(o.OutageFilters) {
 		return nil, false
 	}
+
 	return o.OutageFilters, true
 }
 
@@ -171,7 +172,7 @@ func (o *ClusterOutageSimulation) SetOutageFilters(v []AtlasClusterOutageSimulat
 	o.OutageFilters = v
 }
 
-// GetStartRequestDate returns the StartRequestDate field value if set, zero value otherwise.
+// GetStartRequestDate returns the StartRequestDate field value if set, zero value otherwise
 func (o *ClusterOutageSimulation) GetStartRequestDate() time.Time {
 	if o == nil || IsNil(o.StartRequestDate) {
 		var ret time.Time
@@ -186,6 +187,7 @@ func (o *ClusterOutageSimulation) GetStartRequestDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.StartRequestDate) {
 		return nil, false
 	}
+
 	return o.StartRequestDate, true
 }
 
@@ -203,7 +205,7 @@ func (o *ClusterOutageSimulation) SetStartRequestDate(v time.Time) {
 	o.StartRequestDate = &v
 }
 
-// GetState returns the State field value if set, zero value otherwise.
+// GetState returns the State field value if set, zero value otherwise
 func (o *ClusterOutageSimulation) GetState() string {
 	if o == nil || IsNil(o.State) {
 		var ret string
@@ -218,6 +220,7 @@ func (o *ClusterOutageSimulation) GetStateOk() (*string, bool) {
 	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
+
 	return o.State, true
 }
 
@@ -248,40 +251,4 @@ func (o ClusterOutageSimulation) ToMap() (map[string]interface{}, error) {
 		toSerialize["outageFilters"] = o.OutageFilters
 	}
 	return toSerialize, nil
-}
-
-type NullableClusterOutageSimulation struct {
-	value *ClusterOutageSimulation
-	isSet bool
-}
-
-func (v NullableClusterOutageSimulation) Get() *ClusterOutageSimulation {
-	return v.value
-}
-
-func (v *NullableClusterOutageSimulation) Set(val *ClusterOutageSimulation) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableClusterOutageSimulation) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableClusterOutageSimulation) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableClusterOutageSimulation(val *ClusterOutageSimulation) *NullableClusterOutageSimulation {
-	return &NullableClusterOutageSimulation{value: val, isSet: true}
-}
-
-func (v NullableClusterOutageSimulation) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableClusterOutageSimulation) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

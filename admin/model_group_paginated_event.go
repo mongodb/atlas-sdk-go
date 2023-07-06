@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the GroupPaginatedEvent type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &GroupPaginatedEvent{}
-
 // GroupPaginatedEvent struct for GroupPaginatedEvent
 type GroupPaginatedEvent struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -36,7 +33,7 @@ func NewGroupPaginatedEventWithDefaults() *GroupPaginatedEvent {
 	return &this
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *GroupPaginatedEvent) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -51,6 +48,7 @@ func (o *GroupPaginatedEvent) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -68,7 +66,7 @@ func (o *GroupPaginatedEvent) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetResults returns the Results field value if set, zero value otherwise.
+// GetResults returns the Results field value if set, zero value otherwise
 func (o *GroupPaginatedEvent) GetResults() []EventViewForNdsGroup {
 	if o == nil || IsNil(o.Results) {
 		var ret []EventViewForNdsGroup
@@ -83,6 +81,7 @@ func (o *GroupPaginatedEvent) GetResultsOk() ([]EventViewForNdsGroup, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
+
 	return o.Results, true
 }
 
@@ -100,7 +99,7 @@ func (o *GroupPaginatedEvent) SetResults(v []EventViewForNdsGroup) {
 	o.Results = v
 }
 
-// GetTotalCount returns the TotalCount field value if set, zero value otherwise.
+// GetTotalCount returns the TotalCount field value if set, zero value otherwise
 func (o *GroupPaginatedEvent) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int
@@ -115,6 +114,7 @@ func (o *GroupPaginatedEvent) GetTotalCountOk() (*int, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
+
 	return o.TotalCount, true
 }
 
@@ -142,40 +142,4 @@ func (o GroupPaginatedEvent) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o GroupPaginatedEvent) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableGroupPaginatedEvent struct {
-	value *GroupPaginatedEvent
-	isSet bool
-}
-
-func (v NullableGroupPaginatedEvent) Get() *GroupPaginatedEvent {
-	return v.value
-}
-
-func (v *NullableGroupPaginatedEvent) Set(val *GroupPaginatedEvent) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableGroupPaginatedEvent) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableGroupPaginatedEvent) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableGroupPaginatedEvent(val *GroupPaginatedEvent) *NullableGroupPaginatedEvent {
-	return &NullableGroupPaginatedEvent{value: val, isSet: true}
-}
-
-func (v NullableGroupPaginatedEvent) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableGroupPaginatedEvent) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the AdvancedClusterDescription type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AdvancedClusterDescription{}
-
 // AdvancedClusterDescription struct for AdvancedClusterDescription
 type AdvancedClusterDescription struct {
 	// Flag that indicates whether the cluster can perform backups. If set to `true`, the cluster can perform backups. You must set this value to `true` for NVMe clusters. Backup uses [Cloud Backups](https://docs.atlas.mongodb.com/backup/cloud-backup/overview/) for dedicated clusters and [Shared Cluster Backups](https://docs.atlas.mongodb.com/backup/shared-tier/overview/) for tenant clusters. If set to `false`, the cluster doesn't use backups.
@@ -93,7 +90,7 @@ func NewAdvancedClusterDescriptionWithDefaults() *AdvancedClusterDescription {
 	return &this
 }
 
-// GetBackupEnabled returns the BackupEnabled field value if set, zero value otherwise.
+// GetBackupEnabled returns the BackupEnabled field value if set, zero value otherwise
 func (o *AdvancedClusterDescription) GetBackupEnabled() bool {
 	if o == nil || IsNil(o.BackupEnabled) {
 		var ret bool
@@ -108,6 +105,7 @@ func (o *AdvancedClusterDescription) GetBackupEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.BackupEnabled) {
 		return nil, false
 	}
+
 	return o.BackupEnabled, true
 }
 
@@ -125,7 +123,7 @@ func (o *AdvancedClusterDescription) SetBackupEnabled(v bool) {
 	o.BackupEnabled = &v
 }
 
-// GetBiConnector returns the BiConnector field value if set, zero value otherwise.
+// GetBiConnector returns the BiConnector field value if set, zero value otherwise
 func (o *AdvancedClusterDescription) GetBiConnector() BiConnector {
 	if o == nil || IsNil(o.BiConnector) {
 		var ret BiConnector
@@ -140,6 +138,7 @@ func (o *AdvancedClusterDescription) GetBiConnectorOk() (*BiConnector, bool) {
 	if o == nil || IsNil(o.BiConnector) {
 		return nil, false
 	}
+
 	return o.BiConnector, true
 }
 
@@ -157,7 +156,7 @@ func (o *AdvancedClusterDescription) SetBiConnector(v BiConnector) {
 	o.BiConnector = &v
 }
 
-// GetClusterType returns the ClusterType field value if set, zero value otherwise.
+// GetClusterType returns the ClusterType field value if set, zero value otherwise
 func (o *AdvancedClusterDescription) GetClusterType() string {
 	if o == nil || IsNil(o.ClusterType) {
 		var ret string
@@ -172,6 +171,7 @@ func (o *AdvancedClusterDescription) GetClusterTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.ClusterType) {
 		return nil, false
 	}
+
 	return o.ClusterType, true
 }
 
@@ -189,7 +189,7 @@ func (o *AdvancedClusterDescription) SetClusterType(v string) {
 	o.ClusterType = &v
 }
 
-// GetConnectionStrings returns the ConnectionStrings field value if set, zero value otherwise.
+// GetConnectionStrings returns the ConnectionStrings field value if set, zero value otherwise
 func (o *AdvancedClusterDescription) GetConnectionStrings() ClusterConnectionStrings {
 	if o == nil || IsNil(o.ConnectionStrings) {
 		var ret ClusterConnectionStrings
@@ -204,6 +204,7 @@ func (o *AdvancedClusterDescription) GetConnectionStringsOk() (*ClusterConnectio
 	if o == nil || IsNil(o.ConnectionStrings) {
 		return nil, false
 	}
+
 	return o.ConnectionStrings, true
 }
 
@@ -221,7 +222,7 @@ func (o *AdvancedClusterDescription) SetConnectionStrings(v ClusterConnectionStr
 	o.ConnectionStrings = &v
 }
 
-// GetCreateDate returns the CreateDate field value if set, zero value otherwise.
+// GetCreateDate returns the CreateDate field value if set, zero value otherwise
 func (o *AdvancedClusterDescription) GetCreateDate() time.Time {
 	if o == nil || IsNil(o.CreateDate) {
 		var ret time.Time
@@ -236,6 +237,7 @@ func (o *AdvancedClusterDescription) GetCreateDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.CreateDate) {
 		return nil, false
 	}
+
 	return o.CreateDate, true
 }
 
@@ -253,7 +255,7 @@ func (o *AdvancedClusterDescription) SetCreateDate(v time.Time) {
 	o.CreateDate = &v
 }
 
-// GetDiskSizeGB returns the DiskSizeGB field value if set, zero value otherwise.
+// GetDiskSizeGB returns the DiskSizeGB field value if set, zero value otherwise
 func (o *AdvancedClusterDescription) GetDiskSizeGB() float64 {
 	if o == nil || IsNil(o.DiskSizeGB) {
 		var ret float64
@@ -268,6 +270,7 @@ func (o *AdvancedClusterDescription) GetDiskSizeGBOk() (*float64, bool) {
 	if o == nil || IsNil(o.DiskSizeGB) {
 		return nil, false
 	}
+
 	return o.DiskSizeGB, true
 }
 
@@ -285,7 +288,7 @@ func (o *AdvancedClusterDescription) SetDiskSizeGB(v float64) {
 	o.DiskSizeGB = &v
 }
 
-// GetEncryptionAtRestProvider returns the EncryptionAtRestProvider field value if set, zero value otherwise.
+// GetEncryptionAtRestProvider returns the EncryptionAtRestProvider field value if set, zero value otherwise
 func (o *AdvancedClusterDescription) GetEncryptionAtRestProvider() string {
 	if o == nil || IsNil(o.EncryptionAtRestProvider) {
 		var ret string
@@ -300,6 +303,7 @@ func (o *AdvancedClusterDescription) GetEncryptionAtRestProviderOk() (*string, b
 	if o == nil || IsNil(o.EncryptionAtRestProvider) {
 		return nil, false
 	}
+
 	return o.EncryptionAtRestProvider, true
 }
 
@@ -317,7 +321,7 @@ func (o *AdvancedClusterDescription) SetEncryptionAtRestProvider(v string) {
 	o.EncryptionAtRestProvider = &v
 }
 
-// GetGroupId returns the GroupId field value if set, zero value otherwise.
+// GetGroupId returns the GroupId field value if set, zero value otherwise
 func (o *AdvancedClusterDescription) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
 		var ret string
@@ -332,6 +336,7 @@ func (o *AdvancedClusterDescription) GetGroupIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupId) {
 		return nil, false
 	}
+
 	return o.GroupId, true
 }
 
@@ -349,7 +354,7 @@ func (o *AdvancedClusterDescription) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *AdvancedClusterDescription) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -364,6 +369,7 @@ func (o *AdvancedClusterDescription) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -381,7 +387,7 @@ func (o *AdvancedClusterDescription) SetId(v string) {
 	o.Id = &v
 }
 
-// GetLabels returns the Labels field value if set, zero value otherwise.
+// GetLabels returns the Labels field value if set, zero value otherwise
 func (o *AdvancedClusterDescription) GetLabels() []ComponentLabel {
 	if o == nil || IsNil(o.Labels) {
 		var ret []ComponentLabel
@@ -396,6 +402,7 @@ func (o *AdvancedClusterDescription) GetLabelsOk() ([]ComponentLabel, bool) {
 	if o == nil || IsNil(o.Labels) {
 		return nil, false
 	}
+
 	return o.Labels, true
 }
 
@@ -413,7 +420,7 @@ func (o *AdvancedClusterDescription) SetLabels(v []ComponentLabel) {
 	o.Labels = v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *AdvancedClusterDescription) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -428,6 +435,7 @@ func (o *AdvancedClusterDescription) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -445,7 +453,7 @@ func (o *AdvancedClusterDescription) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetMongoDBMajorVersion returns the MongoDBMajorVersion field value if set, zero value otherwise.
+// GetMongoDBMajorVersion returns the MongoDBMajorVersion field value if set, zero value otherwise
 func (o *AdvancedClusterDescription) GetMongoDBMajorVersion() string {
 	if o == nil || IsNil(o.MongoDBMajorVersion) {
 		var ret string
@@ -460,6 +468,7 @@ func (o *AdvancedClusterDescription) GetMongoDBMajorVersionOk() (*string, bool) 
 	if o == nil || IsNil(o.MongoDBMajorVersion) {
 		return nil, false
 	}
+
 	return o.MongoDBMajorVersion, true
 }
 
@@ -477,7 +486,7 @@ func (o *AdvancedClusterDescription) SetMongoDBMajorVersion(v string) {
 	o.MongoDBMajorVersion = &v
 }
 
-// GetMongoDBVersion returns the MongoDBVersion field value if set, zero value otherwise.
+// GetMongoDBVersion returns the MongoDBVersion field value if set, zero value otherwise
 func (o *AdvancedClusterDescription) GetMongoDBVersion() string {
 	if o == nil || IsNil(o.MongoDBVersion) {
 		var ret string
@@ -492,6 +501,7 @@ func (o *AdvancedClusterDescription) GetMongoDBVersionOk() (*string, bool) {
 	if o == nil || IsNil(o.MongoDBVersion) {
 		return nil, false
 	}
+
 	return o.MongoDBVersion, true
 }
 
@@ -509,7 +519,7 @@ func (o *AdvancedClusterDescription) SetMongoDBVersion(v string) {
 	o.MongoDBVersion = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise
 func (o *AdvancedClusterDescription) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
@@ -524,6 +534,7 @@ func (o *AdvancedClusterDescription) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
+
 	return o.Name, true
 }
 
@@ -541,7 +552,7 @@ func (o *AdvancedClusterDescription) SetName(v string) {
 	o.Name = &v
 }
 
-// GetPaused returns the Paused field value if set, zero value otherwise.
+// GetPaused returns the Paused field value if set, zero value otherwise
 func (o *AdvancedClusterDescription) GetPaused() bool {
 	if o == nil || IsNil(o.Paused) {
 		var ret bool
@@ -556,6 +567,7 @@ func (o *AdvancedClusterDescription) GetPausedOk() (*bool, bool) {
 	if o == nil || IsNil(o.Paused) {
 		return nil, false
 	}
+
 	return o.Paused, true
 }
 
@@ -573,7 +585,7 @@ func (o *AdvancedClusterDescription) SetPaused(v bool) {
 	o.Paused = &v
 }
 
-// GetPitEnabled returns the PitEnabled field value if set, zero value otherwise.
+// GetPitEnabled returns the PitEnabled field value if set, zero value otherwise
 func (o *AdvancedClusterDescription) GetPitEnabled() bool {
 	if o == nil || IsNil(o.PitEnabled) {
 		var ret bool
@@ -588,6 +600,7 @@ func (o *AdvancedClusterDescription) GetPitEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.PitEnabled) {
 		return nil, false
 	}
+
 	return o.PitEnabled, true
 }
 
@@ -605,7 +618,7 @@ func (o *AdvancedClusterDescription) SetPitEnabled(v bool) {
 	o.PitEnabled = &v
 }
 
-// GetReplicationSpecs returns the ReplicationSpecs field value if set, zero value otherwise.
+// GetReplicationSpecs returns the ReplicationSpecs field value if set, zero value otherwise
 func (o *AdvancedClusterDescription) GetReplicationSpecs() []ReplicationSpec {
 	if o == nil || IsNil(o.ReplicationSpecs) {
 		var ret []ReplicationSpec
@@ -620,6 +633,7 @@ func (o *AdvancedClusterDescription) GetReplicationSpecsOk() ([]ReplicationSpec,
 	if o == nil || IsNil(o.ReplicationSpecs) {
 		return nil, false
 	}
+
 	return o.ReplicationSpecs, true
 }
 
@@ -637,7 +651,7 @@ func (o *AdvancedClusterDescription) SetReplicationSpecs(v []ReplicationSpec) {
 	o.ReplicationSpecs = v
 }
 
-// GetRootCertType returns the RootCertType field value if set, zero value otherwise.
+// GetRootCertType returns the RootCertType field value if set, zero value otherwise
 func (o *AdvancedClusterDescription) GetRootCertType() string {
 	if o == nil || IsNil(o.RootCertType) {
 		var ret string
@@ -652,6 +666,7 @@ func (o *AdvancedClusterDescription) GetRootCertTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.RootCertType) {
 		return nil, false
 	}
+
 	return o.RootCertType, true
 }
 
@@ -669,7 +684,7 @@ func (o *AdvancedClusterDescription) SetRootCertType(v string) {
 	o.RootCertType = &v
 }
 
-// GetStateName returns the StateName field value if set, zero value otherwise.
+// GetStateName returns the StateName field value if set, zero value otherwise
 func (o *AdvancedClusterDescription) GetStateName() string {
 	if o == nil || IsNil(o.StateName) {
 		var ret string
@@ -684,6 +699,7 @@ func (o *AdvancedClusterDescription) GetStateNameOk() (*string, bool) {
 	if o == nil || IsNil(o.StateName) {
 		return nil, false
 	}
+
 	return o.StateName, true
 }
 
@@ -701,7 +717,7 @@ func (o *AdvancedClusterDescription) SetStateName(v string) {
 	o.StateName = &v
 }
 
-// GetTags returns the Tags field value if set, zero value otherwise.
+// GetTags returns the Tags field value if set, zero value otherwise
 func (o *AdvancedClusterDescription) GetTags() []ResourceTag {
 	if o == nil || IsNil(o.Tags) {
 		var ret []ResourceTag
@@ -716,6 +732,7 @@ func (o *AdvancedClusterDescription) GetTagsOk() ([]ResourceTag, bool) {
 	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
+
 	return o.Tags, true
 }
 
@@ -733,7 +750,7 @@ func (o *AdvancedClusterDescription) SetTags(v []ResourceTag) {
 	o.Tags = v
 }
 
-// GetTerminationProtectionEnabled returns the TerminationProtectionEnabled field value if set, zero value otherwise.
+// GetTerminationProtectionEnabled returns the TerminationProtectionEnabled field value if set, zero value otherwise
 func (o *AdvancedClusterDescription) GetTerminationProtectionEnabled() bool {
 	if o == nil || IsNil(o.TerminationProtectionEnabled) {
 		var ret bool
@@ -748,6 +765,7 @@ func (o *AdvancedClusterDescription) GetTerminationProtectionEnabledOk() (*bool,
 	if o == nil || IsNil(o.TerminationProtectionEnabled) {
 		return nil, false
 	}
+
 	return o.TerminationProtectionEnabled, true
 }
 
@@ -765,7 +783,7 @@ func (o *AdvancedClusterDescription) SetTerminationProtectionEnabled(v bool) {
 	o.TerminationProtectionEnabled = &v
 }
 
-// GetVersionReleaseSystem returns the VersionReleaseSystem field value if set, zero value otherwise.
+// GetVersionReleaseSystem returns the VersionReleaseSystem field value if set, zero value otherwise
 func (o *AdvancedClusterDescription) GetVersionReleaseSystem() string {
 	if o == nil || IsNil(o.VersionReleaseSystem) {
 		var ret string
@@ -780,6 +798,7 @@ func (o *AdvancedClusterDescription) GetVersionReleaseSystemOk() (*string, bool)
 	if o == nil || IsNil(o.VersionReleaseSystem) {
 		return nil, false
 	}
+
 	return o.VersionReleaseSystem, true
 }
 
@@ -855,40 +874,4 @@ func (o AdvancedClusterDescription) ToMap() (map[string]interface{}, error) {
 		toSerialize["versionReleaseSystem"] = o.VersionReleaseSystem
 	}
 	return toSerialize, nil
-}
-
-type NullableAdvancedClusterDescription struct {
-	value *AdvancedClusterDescription
-	isSet bool
-}
-
-func (v NullableAdvancedClusterDescription) Get() *AdvancedClusterDescription {
-	return v.value
-}
-
-func (v *NullableAdvancedClusterDescription) Set(val *AdvancedClusterDescription) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableAdvancedClusterDescription) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableAdvancedClusterDescription) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableAdvancedClusterDescription(val *AdvancedClusterDescription) *NullableAdvancedClusterDescription {
-	return &NullableAdvancedClusterDescription{value: val, isSet: true}
-}
-
-func (v NullableAdvancedClusterDescription) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableAdvancedClusterDescription) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

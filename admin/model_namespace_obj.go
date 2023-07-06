@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the NamespaceObj type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &NamespaceObj{}
-
 // NamespaceObj Human-readable label that identifies the namespace on the specified host. The resource expresses this parameter value as `<database>.<collection>`.
 type NamespaceObj struct {
 	// Human-readable label that identifies the namespace on the specified host. The resource expresses this parameter value as `<database>.<collection>`.
@@ -34,7 +31,7 @@ func NewNamespaceObjWithDefaults() *NamespaceObj {
 	return &this
 }
 
-// GetNamespace returns the Namespace field value if set, zero value otherwise.
+// GetNamespace returns the Namespace field value if set, zero value otherwise
 func (o *NamespaceObj) GetNamespace() string {
 	if o == nil || IsNil(o.Namespace) {
 		var ret string
@@ -49,6 +46,7 @@ func (o *NamespaceObj) GetNamespaceOk() (*string, bool) {
 	if o == nil || IsNil(o.Namespace) {
 		return nil, false
 	}
+
 	return o.Namespace, true
 }
 
@@ -66,7 +64,7 @@ func (o *NamespaceObj) SetNamespace(v string) {
 	o.Namespace = &v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value if set, zero value otherwise
 func (o *NamespaceObj) GetType() string {
 	if o == nil || IsNil(o.Type) {
 		var ret string
@@ -81,6 +79,7 @@ func (o *NamespaceObj) GetTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
+
 	return o.Type, true
 }
 
@@ -108,40 +107,4 @@ func (o NamespaceObj) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o NamespaceObj) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableNamespaceObj struct {
-	value *NamespaceObj
-	isSet bool
-}
-
-func (v NullableNamespaceObj) Get() *NamespaceObj {
-	return v.value
-}
-
-func (v *NullableNamespaceObj) Set(val *NamespaceObj) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableNamespaceObj) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableNamespaceObj) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableNamespaceObj(val *NamespaceObj) *NullableNamespaceObj {
-	return &NullableNamespaceObj{value: val, isSet: true}
-}
-
-func (v NullableNamespaceObj) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableNamespaceObj) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

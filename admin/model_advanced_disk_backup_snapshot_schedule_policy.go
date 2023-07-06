@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the AdvancedDiskBackupSnapshotSchedulePolicy type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AdvancedDiskBackupSnapshotSchedulePolicy{}
-
 // AdvancedDiskBackupSnapshotSchedulePolicy List that contains a document for each backup policy item in the desired backup policy.
 type AdvancedDiskBackupSnapshotSchedulePolicy struct {
 	// Unique 24-hexadecimal digit string that identifies this backup policy.
@@ -34,7 +31,7 @@ func NewAdvancedDiskBackupSnapshotSchedulePolicyWithDefaults() *AdvancedDiskBack
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *AdvancedDiskBackupSnapshotSchedulePolicy) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -49,6 +46,7 @@ func (o *AdvancedDiskBackupSnapshotSchedulePolicy) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -66,7 +64,7 @@ func (o *AdvancedDiskBackupSnapshotSchedulePolicy) SetId(v string) {
 	o.Id = &v
 }
 
-// GetPolicyItems returns the PolicyItems field value if set, zero value otherwise.
+// GetPolicyItems returns the PolicyItems field value if set, zero value otherwise
 func (o *AdvancedDiskBackupSnapshotSchedulePolicy) GetPolicyItems() []DiskBackupApiPolicyItem {
 	if o == nil || IsNil(o.PolicyItems) {
 		var ret []DiskBackupApiPolicyItem
@@ -81,6 +79,7 @@ func (o *AdvancedDiskBackupSnapshotSchedulePolicy) GetPolicyItemsOk() ([]DiskBac
 	if o == nil || IsNil(o.PolicyItems) {
 		return nil, false
 	}
+
 	return o.PolicyItems, true
 }
 
@@ -114,40 +113,4 @@ func (o AdvancedDiskBackupSnapshotSchedulePolicy) ToMap() (map[string]interface{
 		toSerialize["policyItems"] = o.PolicyItems
 	}
 	return toSerialize, nil
-}
-
-type NullableAdvancedDiskBackupSnapshotSchedulePolicy struct {
-	value *AdvancedDiskBackupSnapshotSchedulePolicy
-	isSet bool
-}
-
-func (v NullableAdvancedDiskBackupSnapshotSchedulePolicy) Get() *AdvancedDiskBackupSnapshotSchedulePolicy {
-	return v.value
-}
-
-func (v *NullableAdvancedDiskBackupSnapshotSchedulePolicy) Set(val *AdvancedDiskBackupSnapshotSchedulePolicy) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableAdvancedDiskBackupSnapshotSchedulePolicy) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableAdvancedDiskBackupSnapshotSchedulePolicy) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableAdvancedDiskBackupSnapshotSchedulePolicy(val *AdvancedDiskBackupSnapshotSchedulePolicy) *NullableAdvancedDiskBackupSnapshotSchedulePolicy {
-	return &NullableAdvancedDiskBackupSnapshotSchedulePolicy{value: val, isSet: true}
-}
-
-func (v NullableAdvancedDiskBackupSnapshotSchedulePolicy) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableAdvancedDiskBackupSnapshotSchedulePolicy) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

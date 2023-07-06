@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PaginatedBackupSnapshot type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PaginatedBackupSnapshot{}
-
 // PaginatedBackupSnapshot struct for PaginatedBackupSnapshot
 type PaginatedBackupSnapshot struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -36,7 +33,7 @@ func NewPaginatedBackupSnapshotWithDefaults() *PaginatedBackupSnapshot {
 	return &this
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *PaginatedBackupSnapshot) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -51,6 +48,7 @@ func (o *PaginatedBackupSnapshot) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -68,7 +66,7 @@ func (o *PaginatedBackupSnapshot) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetResults returns the Results field value if set, zero value otherwise.
+// GetResults returns the Results field value if set, zero value otherwise
 func (o *PaginatedBackupSnapshot) GetResults() []DiskBackupSnapshot {
 	if o == nil || IsNil(o.Results) {
 		var ret []DiskBackupSnapshot
@@ -83,6 +81,7 @@ func (o *PaginatedBackupSnapshot) GetResultsOk() ([]DiskBackupSnapshot, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
+
 	return o.Results, true
 }
 
@@ -100,7 +99,7 @@ func (o *PaginatedBackupSnapshot) SetResults(v []DiskBackupSnapshot) {
 	o.Results = v
 }
 
-// GetTotalCount returns the TotalCount field value if set, zero value otherwise.
+// GetTotalCount returns the TotalCount field value if set, zero value otherwise
 func (o *PaginatedBackupSnapshot) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int
@@ -115,6 +114,7 @@ func (o *PaginatedBackupSnapshot) GetTotalCountOk() (*int, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
+
 	return o.TotalCount, true
 }
 
@@ -142,40 +142,4 @@ func (o PaginatedBackupSnapshot) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o PaginatedBackupSnapshot) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullablePaginatedBackupSnapshot struct {
-	value *PaginatedBackupSnapshot
-	isSet bool
-}
-
-func (v NullablePaginatedBackupSnapshot) Get() *PaginatedBackupSnapshot {
-	return v.value
-}
-
-func (v *NullablePaginatedBackupSnapshot) Set(val *PaginatedBackupSnapshot) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullablePaginatedBackupSnapshot) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullablePaginatedBackupSnapshot) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullablePaginatedBackupSnapshot(val *PaginatedBackupSnapshot) *NullablePaginatedBackupSnapshot {
-	return &NullablePaginatedBackupSnapshot{value: val, isSet: true}
-}
-
-func (v NullablePaginatedBackupSnapshot) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullablePaginatedBackupSnapshot) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

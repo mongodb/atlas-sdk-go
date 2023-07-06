@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the CreateEndpointRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CreateEndpointRequest{}
-
 // CreateEndpointRequest struct for CreateEndpointRequest
 type CreateEndpointRequest struct {
 	// Unique string that identifies the private endpoint's network interface that someone added to this private endpoint service.
@@ -40,7 +37,7 @@ func NewCreateEndpointRequestWithDefaults() *CreateEndpointRequest {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *CreateEndpointRequest) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -55,6 +52,7 @@ func (o *CreateEndpointRequest) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -72,7 +70,7 @@ func (o *CreateEndpointRequest) SetId(v string) {
 	o.Id = &v
 }
 
-// GetPrivateEndpointIPAddress returns the PrivateEndpointIPAddress field value if set, zero value otherwise.
+// GetPrivateEndpointIPAddress returns the PrivateEndpointIPAddress field value if set, zero value otherwise
 func (o *CreateEndpointRequest) GetPrivateEndpointIPAddress() string {
 	if o == nil || IsNil(o.PrivateEndpointIPAddress) {
 		var ret string
@@ -87,6 +85,7 @@ func (o *CreateEndpointRequest) GetPrivateEndpointIPAddressOk() (*string, bool) 
 	if o == nil || IsNil(o.PrivateEndpointIPAddress) {
 		return nil, false
 	}
+
 	return o.PrivateEndpointIPAddress, true
 }
 
@@ -104,7 +103,7 @@ func (o *CreateEndpointRequest) SetPrivateEndpointIPAddress(v string) {
 	o.PrivateEndpointIPAddress = &v
 }
 
-// GetEndpointGroupName returns the EndpointGroupName field value if set, zero value otherwise.
+// GetEndpointGroupName returns the EndpointGroupName field value if set, zero value otherwise
 func (o *CreateEndpointRequest) GetEndpointGroupName() string {
 	if o == nil || IsNil(o.EndpointGroupName) {
 		var ret string
@@ -119,6 +118,7 @@ func (o *CreateEndpointRequest) GetEndpointGroupNameOk() (*string, bool) {
 	if o == nil || IsNil(o.EndpointGroupName) {
 		return nil, false
 	}
+
 	return o.EndpointGroupName, true
 }
 
@@ -136,7 +136,7 @@ func (o *CreateEndpointRequest) SetEndpointGroupName(v string) {
 	o.EndpointGroupName = &v
 }
 
-// GetEndpoints returns the Endpoints field value if set, zero value otherwise.
+// GetEndpoints returns the Endpoints field value if set, zero value otherwise
 func (o *CreateEndpointRequest) GetEndpoints() []CreateGCPForwardingRuleRequest {
 	if o == nil || IsNil(o.Endpoints) {
 		var ret []CreateGCPForwardingRuleRequest
@@ -151,6 +151,7 @@ func (o *CreateEndpointRequest) GetEndpointsOk() ([]CreateGCPForwardingRuleReque
 	if o == nil || IsNil(o.Endpoints) {
 		return nil, false
 	}
+
 	return o.Endpoints, true
 }
 
@@ -168,7 +169,7 @@ func (o *CreateEndpointRequest) SetEndpoints(v []CreateGCPForwardingRuleRequest)
 	o.Endpoints = v
 }
 
-// GetGcpProjectId returns the GcpProjectId field value if set, zero value otherwise.
+// GetGcpProjectId returns the GcpProjectId field value if set, zero value otherwise
 func (o *CreateEndpointRequest) GetGcpProjectId() string {
 	if o == nil || IsNil(o.GcpProjectId) {
 		var ret string
@@ -183,6 +184,7 @@ func (o *CreateEndpointRequest) GetGcpProjectIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GcpProjectId) {
 		return nil, false
 	}
+
 	return o.GcpProjectId, true
 }
 
@@ -225,40 +227,4 @@ func (o CreateEndpointRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["gcpProjectId"] = o.GcpProjectId
 	}
 	return toSerialize, nil
-}
-
-type NullableCreateEndpointRequest struct {
-	value *CreateEndpointRequest
-	isSet bool
-}
-
-func (v NullableCreateEndpointRequest) Get() *CreateEndpointRequest {
-	return v.value
-}
-
-func (v *NullableCreateEndpointRequest) Set(val *CreateEndpointRequest) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableCreateEndpointRequest) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableCreateEndpointRequest) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableCreateEndpointRequest(val *CreateEndpointRequest) *NullableCreateEndpointRequest {
-	return &NullableCreateEndpointRequest{value: val, isSet: true}
-}
-
-func (v NullableCreateEndpointRequest) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableCreateEndpointRequest) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

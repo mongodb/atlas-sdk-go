@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the CreateOrganizationResponse type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CreateOrganizationResponse{}
-
 // CreateOrganizationResponse struct for CreateOrganizationResponse
 type CreateOrganizationResponse struct {
 	ApiKey *ApiKeyUserDetails `json:"apiKey,omitempty"`
@@ -36,7 +33,7 @@ func NewCreateOrganizationResponseWithDefaults() *CreateOrganizationResponse {
 	return &this
 }
 
-// GetApiKey returns the ApiKey field value if set, zero value otherwise.
+// GetApiKey returns the ApiKey field value if set, zero value otherwise
 func (o *CreateOrganizationResponse) GetApiKey() ApiKeyUserDetails {
 	if o == nil || IsNil(o.ApiKey) {
 		var ret ApiKeyUserDetails
@@ -51,6 +48,7 @@ func (o *CreateOrganizationResponse) GetApiKeyOk() (*ApiKeyUserDetails, bool) {
 	if o == nil || IsNil(o.ApiKey) {
 		return nil, false
 	}
+
 	return o.ApiKey, true
 }
 
@@ -68,7 +66,7 @@ func (o *CreateOrganizationResponse) SetApiKey(v ApiKeyUserDetails) {
 	o.ApiKey = &v
 }
 
-// GetFederationSettingsId returns the FederationSettingsId field value if set, zero value otherwise.
+// GetFederationSettingsId returns the FederationSettingsId field value if set, zero value otherwise
 func (o *CreateOrganizationResponse) GetFederationSettingsId() string {
 	if o == nil || IsNil(o.FederationSettingsId) {
 		var ret string
@@ -83,6 +81,7 @@ func (o *CreateOrganizationResponse) GetFederationSettingsIdOk() (*string, bool)
 	if o == nil || IsNil(o.FederationSettingsId) {
 		return nil, false
 	}
+
 	return o.FederationSettingsId, true
 }
 
@@ -100,7 +99,7 @@ func (o *CreateOrganizationResponse) SetFederationSettingsId(v string) {
 	o.FederationSettingsId = &v
 }
 
-// GetOrgOwnerId returns the OrgOwnerId field value if set, zero value otherwise.
+// GetOrgOwnerId returns the OrgOwnerId field value if set, zero value otherwise
 func (o *CreateOrganizationResponse) GetOrgOwnerId() string {
 	if o == nil || IsNil(o.OrgOwnerId) {
 		var ret string
@@ -115,6 +114,7 @@ func (o *CreateOrganizationResponse) GetOrgOwnerIdOk() (*string, bool) {
 	if o == nil || IsNil(o.OrgOwnerId) {
 		return nil, false
 	}
+
 	return o.OrgOwnerId, true
 }
 
@@ -132,7 +132,7 @@ func (o *CreateOrganizationResponse) SetOrgOwnerId(v string) {
 	o.OrgOwnerId = &v
 }
 
-// GetOrganization returns the Organization field value if set, zero value otherwise.
+// GetOrganization returns the Organization field value if set, zero value otherwise
 func (o *CreateOrganizationResponse) GetOrganization() AtlasOrganization {
 	if o == nil || IsNil(o.Organization) {
 		var ret AtlasOrganization
@@ -147,6 +147,7 @@ func (o *CreateOrganizationResponse) GetOrganizationOk() (*AtlasOrganization, bo
 	if o == nil || IsNil(o.Organization) {
 		return nil, false
 	}
+
 	return o.Organization, true
 }
 
@@ -180,40 +181,4 @@ func (o CreateOrganizationResponse) ToMap() (map[string]interface{}, error) {
 		toSerialize["organization"] = o.Organization
 	}
 	return toSerialize, nil
-}
-
-type NullableCreateOrganizationResponse struct {
-	value *CreateOrganizationResponse
-	isSet bool
-}
-
-func (v NullableCreateOrganizationResponse) Get() *CreateOrganizationResponse {
-	return v.value
-}
-
-func (v *NullableCreateOrganizationResponse) Set(val *CreateOrganizationResponse) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableCreateOrganizationResponse) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableCreateOrganizationResponse) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableCreateOrganizationResponse(val *CreateOrganizationResponse) *NullableCreateOrganizationResponse {
-	return &NullableCreateOrganizationResponse{value: val, isSet: true}
-}
-
-func (v NullableCreateOrganizationResponse) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableCreateOrganizationResponse) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

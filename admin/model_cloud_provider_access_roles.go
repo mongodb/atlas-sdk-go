@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the CloudProviderAccessRoles type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CloudProviderAccessRoles{}
-
 // CloudProviderAccessRoles struct for CloudProviderAccessRoles
 type CloudProviderAccessRoles struct {
 	// List that contains the Amazon Web Services (AWS) IAM roles registered and authorized with MongoDB Cloud.
@@ -32,7 +29,7 @@ func NewCloudProviderAccessRolesWithDefaults() *CloudProviderAccessRoles {
 	return &this
 }
 
-// GetAwsIamRoles returns the AwsIamRoles field value if set, zero value otherwise.
+// GetAwsIamRoles returns the AwsIamRoles field value if set, zero value otherwise
 func (o *CloudProviderAccessRoles) GetAwsIamRoles() []CloudProviderAccessAWSIAMRole {
 	if o == nil || IsNil(o.AwsIamRoles) {
 		var ret []CloudProviderAccessAWSIAMRole
@@ -47,6 +44,7 @@ func (o *CloudProviderAccessRoles) GetAwsIamRolesOk() ([]CloudProviderAccessAWSI
 	if o == nil || IsNil(o.AwsIamRoles) {
 		return nil, false
 	}
+
 	return o.AwsIamRoles, true
 }
 
@@ -77,40 +75,4 @@ func (o CloudProviderAccessRoles) ToMap() (map[string]interface{}, error) {
 		toSerialize["awsIamRoles"] = o.AwsIamRoles
 	}
 	return toSerialize, nil
-}
-
-type NullableCloudProviderAccessRoles struct {
-	value *CloudProviderAccessRoles
-	isSet bool
-}
-
-func (v NullableCloudProviderAccessRoles) Get() *CloudProviderAccessRoles {
-	return v.value
-}
-
-func (v *NullableCloudProviderAccessRoles) Set(val *CloudProviderAccessRoles) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableCloudProviderAccessRoles) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableCloudProviderAccessRoles) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableCloudProviderAccessRoles(val *CloudProviderAccessRoles) *NullableCloudProviderAccessRoles {
-	return &NullableCloudProviderAccessRoles{value: val, isSet: true}
-}
-
-func (v NullableCloudProviderAccessRoles) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableCloudProviderAccessRoles) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

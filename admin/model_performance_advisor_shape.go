@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PerformanceAdvisorShape type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PerformanceAdvisorShape{}
-
 // PerformanceAdvisorShape struct for PerformanceAdvisorShape
 type PerformanceAdvisorShape struct {
 	// Average duration in milliseconds for the queries examined that match this shape.
@@ -42,7 +39,7 @@ func NewPerformanceAdvisorShapeWithDefaults() *PerformanceAdvisorShape {
 	return &this
 }
 
-// GetAvgMs returns the AvgMs field value if set, zero value otherwise.
+// GetAvgMs returns the AvgMs field value if set, zero value otherwise
 func (o *PerformanceAdvisorShape) GetAvgMs() int64 {
 	if o == nil || IsNil(o.AvgMs) {
 		var ret int64
@@ -57,6 +54,7 @@ func (o *PerformanceAdvisorShape) GetAvgMsOk() (*int64, bool) {
 	if o == nil || IsNil(o.AvgMs) {
 		return nil, false
 	}
+
 	return o.AvgMs, true
 }
 
@@ -74,7 +72,7 @@ func (o *PerformanceAdvisorShape) SetAvgMs(v int64) {
 	o.AvgMs = &v
 }
 
-// GetCount returns the Count field value if set, zero value otherwise.
+// GetCount returns the Count field value if set, zero value otherwise
 func (o *PerformanceAdvisorShape) GetCount() int64 {
 	if o == nil || IsNil(o.Count) {
 		var ret int64
@@ -89,6 +87,7 @@ func (o *PerformanceAdvisorShape) GetCountOk() (*int64, bool) {
 	if o == nil || IsNil(o.Count) {
 		return nil, false
 	}
+
 	return o.Count, true
 }
 
@@ -106,7 +105,7 @@ func (o *PerformanceAdvisorShape) SetCount(v int64) {
 	o.Count = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *PerformanceAdvisorShape) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -121,6 +120,7 @@ func (o *PerformanceAdvisorShape) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -138,7 +138,7 @@ func (o *PerformanceAdvisorShape) SetId(v string) {
 	o.Id = &v
 }
 
-// GetInefficiencyScore returns the InefficiencyScore field value if set, zero value otherwise.
+// GetInefficiencyScore returns the InefficiencyScore field value if set, zero value otherwise
 func (o *PerformanceAdvisorShape) GetInefficiencyScore() int64 {
 	if o == nil || IsNil(o.InefficiencyScore) {
 		var ret int64
@@ -153,6 +153,7 @@ func (o *PerformanceAdvisorShape) GetInefficiencyScoreOk() (*int64, bool) {
 	if o == nil || IsNil(o.InefficiencyScore) {
 		return nil, false
 	}
+
 	return o.InefficiencyScore, true
 }
 
@@ -170,7 +171,7 @@ func (o *PerformanceAdvisorShape) SetInefficiencyScore(v int64) {
 	o.InefficiencyScore = &v
 }
 
-// GetNamespace returns the Namespace field value if set, zero value otherwise.
+// GetNamespace returns the Namespace field value if set, zero value otherwise
 func (o *PerformanceAdvisorShape) GetNamespace() string {
 	if o == nil || IsNil(o.Namespace) {
 		var ret string
@@ -185,6 +186,7 @@ func (o *PerformanceAdvisorShape) GetNamespaceOk() (*string, bool) {
 	if o == nil || IsNil(o.Namespace) {
 		return nil, false
 	}
+
 	return o.Namespace, true
 }
 
@@ -202,7 +204,7 @@ func (o *PerformanceAdvisorShape) SetNamespace(v string) {
 	o.Namespace = &v
 }
 
-// GetOperations returns the Operations field value if set, zero value otherwise.
+// GetOperations returns the Operations field value if set, zero value otherwise
 func (o *PerformanceAdvisorShape) GetOperations() []PerformanceAdvisorOperation {
 	if o == nil || IsNil(o.Operations) {
 		var ret []PerformanceAdvisorOperation
@@ -217,6 +219,7 @@ func (o *PerformanceAdvisorShape) GetOperationsOk() ([]PerformanceAdvisorOperati
 	if o == nil || IsNil(o.Operations) {
 		return nil, false
 	}
+
 	return o.Operations, true
 }
 
@@ -244,40 +247,4 @@ func (o PerformanceAdvisorShape) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o PerformanceAdvisorShape) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullablePerformanceAdvisorShape struct {
-	value *PerformanceAdvisorShape
-	isSet bool
-}
-
-func (v NullablePerformanceAdvisorShape) Get() *PerformanceAdvisorShape {
-	return v.value
-}
-
-func (v *NullablePerformanceAdvisorShape) Set(val *PerformanceAdvisorShape) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullablePerformanceAdvisorShape) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullablePerformanceAdvisorShape) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullablePerformanceAdvisorShape(val *PerformanceAdvisorShape) *NullablePerformanceAdvisorShape {
-	return &NullablePerformanceAdvisorShape{value: val, isSet: true}
-}
-
-func (v NullablePerformanceAdvisorShape) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullablePerformanceAdvisorShape) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

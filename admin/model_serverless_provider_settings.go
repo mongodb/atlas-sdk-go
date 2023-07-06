@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ServerlessProviderSettings type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ServerlessProviderSettings{}
-
 // ServerlessProviderSettings Group of cloud provider settings that configure the provisioned MongoDB serverless instance.
 type ServerlessProviderSettings struct {
 	// Cloud service provider on which MongoDB Cloud provisioned the serverless instance.
@@ -66,7 +63,7 @@ func (o *ServerlessProviderSettings) SetBackingProviderName(v string) {
 	o.BackingProviderName = v
 }
 
-// GetProviderName returns the ProviderName field value if set, zero value otherwise.
+// GetProviderName returns the ProviderName field value if set, zero value otherwise
 func (o *ServerlessProviderSettings) GetProviderName() string {
 	if o == nil || IsNil(o.ProviderName) {
 		var ret string
@@ -81,6 +78,7 @@ func (o *ServerlessProviderSettings) GetProviderNameOk() (*string, bool) {
 	if o == nil || IsNil(o.ProviderName) {
 		return nil, false
 	}
+
 	return o.ProviderName, true
 }
 
@@ -137,40 +135,4 @@ func (o ServerlessProviderSettings) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["regionName"] = o.RegionName
 	return toSerialize, nil
-}
-
-type NullableServerlessProviderSettings struct {
-	value *ServerlessProviderSettings
-	isSet bool
-}
-
-func (v NullableServerlessProviderSettings) Get() *ServerlessProviderSettings {
-	return v.value
-}
-
-func (v *NullableServerlessProviderSettings) Set(val *ServerlessProviderSettings) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableServerlessProviderSettings) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableServerlessProviderSettings) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableServerlessProviderSettings(val *ServerlessProviderSettings) *NullableServerlessProviderSettings {
-	return &NullableServerlessProviderSettings{value: val, isSet: true}
-}
-
-func (v NullableServerlessProviderSettings) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableServerlessProviderSettings) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

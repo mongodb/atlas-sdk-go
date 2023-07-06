@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the BiConnector type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &BiConnector{}
-
 // BiConnector Settings needed to configure the MongoDB Connector for Business Intelligence for this cluster.
 type BiConnector struct {
 	// Flag that indicates whether MongoDB Connector for Business Intelligence is enabled on the specified cluster.
@@ -34,7 +31,7 @@ func NewBiConnectorWithDefaults() *BiConnector {
 	return &this
 }
 
-// GetEnabled returns the Enabled field value if set, zero value otherwise.
+// GetEnabled returns the Enabled field value if set, zero value otherwise
 func (o *BiConnector) GetEnabled() bool {
 	if o == nil || IsNil(o.Enabled) {
 		var ret bool
@@ -49,6 +46,7 @@ func (o *BiConnector) GetEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
+
 	return o.Enabled, true
 }
 
@@ -66,7 +64,7 @@ func (o *BiConnector) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
-// GetReadPreference returns the ReadPreference field value if set, zero value otherwise.
+// GetReadPreference returns the ReadPreference field value if set, zero value otherwise
 func (o *BiConnector) GetReadPreference() string {
 	if o == nil || IsNil(o.ReadPreference) {
 		var ret string
@@ -81,6 +79,7 @@ func (o *BiConnector) GetReadPreferenceOk() (*string, bool) {
 	if o == nil || IsNil(o.ReadPreference) {
 		return nil, false
 	}
+
 	return o.ReadPreference, true
 }
 
@@ -114,40 +113,4 @@ func (o BiConnector) ToMap() (map[string]interface{}, error) {
 		toSerialize["readPreference"] = o.ReadPreference
 	}
 	return toSerialize, nil
-}
-
-type NullableBiConnector struct {
-	value *BiConnector
-	isSet bool
-}
-
-func (v NullableBiConnector) Get() *BiConnector {
-	return v.value
-}
-
-func (v *NullableBiConnector) Set(val *BiConnector) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableBiConnector) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableBiConnector) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableBiConnector(val *BiConnector) *NullableBiConnector {
-	return &NullableBiConnector{value: val, isSet: true}
-}
-
-func (v NullableBiConnector) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableBiConnector) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the DataFederationLimit type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DataFederationLimit{}
-
 // DataFederationLimit Details of user managed limits.
 type DataFederationLimit struct {
 	// Amount that indicates the current usage of the limit.
@@ -47,7 +44,7 @@ func NewDataFederationLimitWithDefaults() *DataFederationLimit {
 	return &this
 }
 
-// GetCurrentUsage returns the CurrentUsage field value if set, zero value otherwise.
+// GetCurrentUsage returns the CurrentUsage field value if set, zero value otherwise
 func (o *DataFederationLimit) GetCurrentUsage() int64 {
 	if o == nil || IsNil(o.CurrentUsage) {
 		var ret int64
@@ -62,6 +59,7 @@ func (o *DataFederationLimit) GetCurrentUsageOk() (*int64, bool) {
 	if o == nil || IsNil(o.CurrentUsage) {
 		return nil, false
 	}
+
 	return o.CurrentUsage, true
 }
 
@@ -79,7 +77,7 @@ func (o *DataFederationLimit) SetCurrentUsage(v int64) {
 	o.CurrentUsage = &v
 }
 
-// GetDefaultLimit returns the DefaultLimit field value if set, zero value otherwise.
+// GetDefaultLimit returns the DefaultLimit field value if set, zero value otherwise
 func (o *DataFederationLimit) GetDefaultLimit() int64 {
 	if o == nil || IsNil(o.DefaultLimit) {
 		var ret int64
@@ -94,6 +92,7 @@ func (o *DataFederationLimit) GetDefaultLimitOk() (*int64, bool) {
 	if o == nil || IsNil(o.DefaultLimit) {
 		return nil, false
 	}
+
 	return o.DefaultLimit, true
 }
 
@@ -111,7 +110,7 @@ func (o *DataFederationLimit) SetDefaultLimit(v int64) {
 	o.DefaultLimit = &v
 }
 
-// GetMaximumLimit returns the MaximumLimit field value if set, zero value otherwise.
+// GetMaximumLimit returns the MaximumLimit field value if set, zero value otherwise
 func (o *DataFederationLimit) GetMaximumLimit() int64 {
 	if o == nil || IsNil(o.MaximumLimit) {
 		var ret int64
@@ -126,6 +125,7 @@ func (o *DataFederationLimit) GetMaximumLimitOk() (*int64, bool) {
 	if o == nil || IsNil(o.MaximumLimit) {
 		return nil, false
 	}
+
 	return o.MaximumLimit, true
 }
 
@@ -191,7 +191,7 @@ func (o *DataFederationLimit) SetValue(v int64) {
 	o.Value = v
 }
 
-// GetLastModifiedDate returns the LastModifiedDate field value if set, zero value otherwise.
+// GetLastModifiedDate returns the LastModifiedDate field value if set, zero value otherwise
 func (o *DataFederationLimit) GetLastModifiedDate() time.Time {
 	if o == nil || IsNil(o.LastModifiedDate) {
 		var ret time.Time
@@ -206,6 +206,7 @@ func (o *DataFederationLimit) GetLastModifiedDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.LastModifiedDate) {
 		return nil, false
 	}
+
 	return o.LastModifiedDate, true
 }
 
@@ -223,7 +224,7 @@ func (o *DataFederationLimit) SetLastModifiedDate(v time.Time) {
 	o.LastModifiedDate = &v
 }
 
-// GetOverrunPolicy returns the OverrunPolicy field value if set, zero value otherwise.
+// GetOverrunPolicy returns the OverrunPolicy field value if set, zero value otherwise
 func (o *DataFederationLimit) GetOverrunPolicy() string {
 	if o == nil || IsNil(o.OverrunPolicy) {
 		var ret string
@@ -238,6 +239,7 @@ func (o *DataFederationLimit) GetOverrunPolicyOk() (*string, bool) {
 	if o == nil || IsNil(o.OverrunPolicy) {
 		return nil, false
 	}
+
 	return o.OverrunPolicy, true
 }
 
@@ -269,40 +271,4 @@ func (o DataFederationLimit) ToMap() (map[string]interface{}, error) {
 		toSerialize["overrunPolicy"] = o.OverrunPolicy
 	}
 	return toSerialize, nil
-}
-
-type NullableDataFederationLimit struct {
-	value *DataFederationLimit
-	isSet bool
-}
-
-func (v NullableDataFederationLimit) Get() *DataFederationLimit {
-	return v.value
-}
-
-func (v *NullableDataFederationLimit) Set(val *DataFederationLimit) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableDataFederationLimit) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableDataFederationLimit) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableDataFederationLimit(val *DataFederationLimit) *NullableDataFederationLimit {
-	return &NullableDataFederationLimit{value: val, isSet: true}
-}
-
-func (v NullableDataFederationLimit) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableDataFederationLimit) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

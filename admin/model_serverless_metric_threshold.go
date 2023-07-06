@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ServerlessMetricThreshold type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ServerlessMetricThreshold{}
-
 // ServerlessMetricThreshold Threshold for the metric that, when exceeded, triggers an alert. The metric threshold pertains to event types which reflects changes of measurements and metrics about the serverless database.
 type ServerlessMetricThreshold struct {
 	// Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
@@ -40,7 +37,7 @@ func NewServerlessMetricThresholdWithDefaults() *ServerlessMetricThreshold {
 	return &this
 }
 
-// GetMetricName returns the MetricName field value if set, zero value otherwise.
+// GetMetricName returns the MetricName field value if set, zero value otherwise
 func (o *ServerlessMetricThreshold) GetMetricName() string {
 	if o == nil || IsNil(o.MetricName) {
 		var ret string
@@ -55,6 +52,7 @@ func (o *ServerlessMetricThreshold) GetMetricNameOk() (*string, bool) {
 	if o == nil || IsNil(o.MetricName) {
 		return nil, false
 	}
+
 	return o.MetricName, true
 }
 
@@ -72,7 +70,7 @@ func (o *ServerlessMetricThreshold) SetMetricName(v string) {
 	o.MetricName = &v
 }
 
-// GetMode returns the Mode field value if set, zero value otherwise.
+// GetMode returns the Mode field value if set, zero value otherwise
 func (o *ServerlessMetricThreshold) GetMode() string {
 	if o == nil || IsNil(o.Mode) {
 		var ret string
@@ -87,6 +85,7 @@ func (o *ServerlessMetricThreshold) GetModeOk() (*string, bool) {
 	if o == nil || IsNil(o.Mode) {
 		return nil, false
 	}
+
 	return o.Mode, true
 }
 
@@ -104,7 +103,7 @@ func (o *ServerlessMetricThreshold) SetMode(v string) {
 	o.Mode = &v
 }
 
-// GetOperator returns the Operator field value if set, zero value otherwise.
+// GetOperator returns the Operator field value if set, zero value otherwise
 func (o *ServerlessMetricThreshold) GetOperator() string {
 	if o == nil || IsNil(o.Operator) {
 		var ret string
@@ -119,6 +118,7 @@ func (o *ServerlessMetricThreshold) GetOperatorOk() (*string, bool) {
 	if o == nil || IsNil(o.Operator) {
 		return nil, false
 	}
+
 	return o.Operator, true
 }
 
@@ -136,7 +136,7 @@ func (o *ServerlessMetricThreshold) SetOperator(v string) {
 	o.Operator = &v
 }
 
-// GetThreshold returns the Threshold field value if set, zero value otherwise.
+// GetThreshold returns the Threshold field value if set, zero value otherwise
 func (o *ServerlessMetricThreshold) GetThreshold() float64 {
 	if o == nil || IsNil(o.Threshold) {
 		var ret float64
@@ -151,6 +151,7 @@ func (o *ServerlessMetricThreshold) GetThresholdOk() (*float64, bool) {
 	if o == nil || IsNil(o.Threshold) {
 		return nil, false
 	}
+
 	return o.Threshold, true
 }
 
@@ -168,7 +169,7 @@ func (o *ServerlessMetricThreshold) SetThreshold(v float64) {
 	o.Threshold = &v
 }
 
-// GetUnits returns the Units field value if set, zero value otherwise.
+// GetUnits returns the Units field value if set, zero value otherwise
 func (o *ServerlessMetricThreshold) GetUnits() string {
 	if o == nil || IsNil(o.Units) {
 		var ret string
@@ -183,6 +184,7 @@ func (o *ServerlessMetricThreshold) GetUnitsOk() (*string, bool) {
 	if o == nil || IsNil(o.Units) {
 		return nil, false
 	}
+
 	return o.Units, true
 }
 
@@ -225,40 +227,4 @@ func (o ServerlessMetricThreshold) ToMap() (map[string]interface{}, error) {
 		toSerialize["units"] = o.Units
 	}
 	return toSerialize, nil
-}
-
-type NullableServerlessMetricThreshold struct {
-	value *ServerlessMetricThreshold
-	isSet bool
-}
-
-func (v NullableServerlessMetricThreshold) Get() *ServerlessMetricThreshold {
-	return v.value
-}
-
-func (v *NullableServerlessMetricThreshold) Set(val *ServerlessMetricThreshold) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableServerlessMetricThreshold) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableServerlessMetricThreshold) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableServerlessMetricThreshold(val *ServerlessMetricThreshold) *NullableServerlessMetricThreshold {
-	return &NullableServerlessMetricThreshold{value: val, isSet: true}
-}
-
-func (v NullableServerlessMetricThreshold) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableServerlessMetricThreshold) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

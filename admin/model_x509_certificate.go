@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the X509Certificate type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &X509Certificate{}
-
 // X509Certificate struct for X509Certificate
 type X509Certificate struct {
 	Content   *string    `json:"content,omitempty"`
@@ -34,7 +31,7 @@ func NewX509CertificateWithDefaults() *X509Certificate {
 	return &this
 }
 
-// GetContent returns the Content field value if set, zero value otherwise.
+// GetContent returns the Content field value if set, zero value otherwise
 func (o *X509Certificate) GetContent() string {
 	if o == nil || IsNil(o.Content) {
 		var ret string
@@ -49,6 +46,7 @@ func (o *X509Certificate) GetContentOk() (*string, bool) {
 	if o == nil || IsNil(o.Content) {
 		return nil, false
 	}
+
 	return o.Content, true
 }
 
@@ -66,7 +64,7 @@ func (o *X509Certificate) SetContent(v string) {
 	o.Content = &v
 }
 
-// GetNotAfter returns the NotAfter field value if set, zero value otherwise.
+// GetNotAfter returns the NotAfter field value if set, zero value otherwise
 func (o *X509Certificate) GetNotAfter() time.Time {
 	if o == nil || IsNil(o.NotAfter) {
 		var ret time.Time
@@ -81,6 +79,7 @@ func (o *X509Certificate) GetNotAfterOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.NotAfter) {
 		return nil, false
 	}
+
 	return o.NotAfter, true
 }
 
@@ -98,7 +97,7 @@ func (o *X509Certificate) SetNotAfter(v time.Time) {
 	o.NotAfter = &v
 }
 
-// GetNotBefore returns the NotBefore field value if set, zero value otherwise.
+// GetNotBefore returns the NotBefore field value if set, zero value otherwise
 func (o *X509Certificate) GetNotBefore() time.Time {
 	if o == nil || IsNil(o.NotBefore) {
 		var ret time.Time
@@ -113,6 +112,7 @@ func (o *X509Certificate) GetNotBeforeOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.NotBefore) {
 		return nil, false
 	}
+
 	return o.NotBefore, true
 }
 
@@ -149,40 +149,4 @@ func (o X509Certificate) ToMap() (map[string]interface{}, error) {
 		toSerialize["notBefore"] = o.NotBefore
 	}
 	return toSerialize, nil
-}
-
-type NullableX509Certificate struct {
-	value *X509Certificate
-	isSet bool
-}
-
-func (v NullableX509Certificate) Get() *X509Certificate {
-	return v.value
-}
-
-func (v *NullableX509Certificate) Set(val *X509Certificate) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableX509Certificate) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableX509Certificate) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableX509Certificate(val *X509Certificate) *NullableX509Certificate {
-	return &NullableX509Certificate{value: val, isSet: true}
-}
-
-func (v NullableX509Certificate) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableX509Certificate) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

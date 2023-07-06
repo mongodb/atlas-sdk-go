@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the MetricDataPointAtlas type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &MetricDataPointAtlas{}
-
 // MetricDataPointAtlas value of, and metadata provided for, one data point generated at a particular moment in time. If no data point exists for a particular moment in time, the `value` parameter returns `null`.
 type MetricDataPointAtlas struct {
 	// Date and time when this data point occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
@@ -35,7 +32,7 @@ func NewMetricDataPointAtlasWithDefaults() *MetricDataPointAtlas {
 	return &this
 }
 
-// GetTimestamp returns the Timestamp field value if set, zero value otherwise.
+// GetTimestamp returns the Timestamp field value if set, zero value otherwise
 func (o *MetricDataPointAtlas) GetTimestamp() time.Time {
 	if o == nil || IsNil(o.Timestamp) {
 		var ret time.Time
@@ -50,6 +47,7 @@ func (o *MetricDataPointAtlas) GetTimestampOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Timestamp) {
 		return nil, false
 	}
+
 	return o.Timestamp, true
 }
 
@@ -67,7 +65,7 @@ func (o *MetricDataPointAtlas) SetTimestamp(v time.Time) {
 	o.Timestamp = &v
 }
 
-// GetValue returns the Value field value if set, zero value otherwise.
+// GetValue returns the Value field value if set, zero value otherwise
 func (o *MetricDataPointAtlas) GetValue() float32 {
 	if o == nil || IsNil(o.Value) {
 		var ret float32
@@ -82,6 +80,7 @@ func (o *MetricDataPointAtlas) GetValueOk() (*float32, bool) {
 	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
+
 	return o.Value, true
 }
 
@@ -109,40 +108,4 @@ func (o MetricDataPointAtlas) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o MetricDataPointAtlas) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableMetricDataPointAtlas struct {
-	value *MetricDataPointAtlas
-	isSet bool
-}
-
-func (v NullableMetricDataPointAtlas) Get() *MetricDataPointAtlas {
-	return v.value
-}
-
-func (v *NullableMetricDataPointAtlas) Set(val *MetricDataPointAtlas) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableMetricDataPointAtlas) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableMetricDataPointAtlas) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableMetricDataPointAtlas(val *MetricDataPointAtlas) *NullableMetricDataPointAtlas {
-	return &NullableMetricDataPointAtlas{value: val, isSet: true}
-}
-
-func (v NullableMetricDataPointAtlas) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableMetricDataPointAtlas) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

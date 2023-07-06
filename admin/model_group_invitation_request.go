@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the GroupInvitationRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &GroupInvitationRequest{}
-
 // GroupInvitationRequest struct for GroupInvitationRequest
 type GroupInvitationRequest struct {
 	// One or more organization or project level roles to assign to the MongoDB Cloud user.
@@ -34,7 +31,7 @@ func NewGroupInvitationRequestWithDefaults() *GroupInvitationRequest {
 	return &this
 }
 
-// GetRoles returns the Roles field value if set, zero value otherwise.
+// GetRoles returns the Roles field value if set, zero value otherwise
 func (o *GroupInvitationRequest) GetRoles() []string {
 	if o == nil || IsNil(o.Roles) {
 		var ret []string
@@ -49,6 +46,7 @@ func (o *GroupInvitationRequest) GetRolesOk() ([]string, bool) {
 	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
+
 	return o.Roles, true
 }
 
@@ -66,7 +64,7 @@ func (o *GroupInvitationRequest) SetRoles(v []string) {
 	o.Roles = v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
+// GetUsername returns the Username field value if set, zero value otherwise
 func (o *GroupInvitationRequest) GetUsername() string {
 	if o == nil || IsNil(o.Username) {
 		var ret string
@@ -81,6 +79,7 @@ func (o *GroupInvitationRequest) GetUsernameOk() (*string, bool) {
 	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
+
 	return o.Username, true
 }
 
@@ -114,40 +113,4 @@ func (o GroupInvitationRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["username"] = o.Username
 	}
 	return toSerialize, nil
-}
-
-type NullableGroupInvitationRequest struct {
-	value *GroupInvitationRequest
-	isSet bool
-}
-
-func (v NullableGroupInvitationRequest) Get() *GroupInvitationRequest {
-	return v.value
-}
-
-func (v *NullableGroupInvitationRequest) Set(val *GroupInvitationRequest) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableGroupInvitationRequest) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableGroupInvitationRequest) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableGroupInvitationRequest(val *GroupInvitationRequest) *NullableGroupInvitationRequest {
-	return &NullableGroupInvitationRequest{value: val, isSet: true}
-}
-
-func (v NullableGroupInvitationRequest) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableGroupInvitationRequest) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

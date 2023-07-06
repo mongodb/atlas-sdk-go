@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the AdvancedComputeAutoScaling type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AdvancedComputeAutoScaling{}
-
 // AdvancedComputeAutoScaling Options that determine how this cluster handles CPU scaling.
 type AdvancedComputeAutoScaling struct {
 	// Flag that indicates whether someone enabled instance size auto-scaling.  - Set to `true` to enable instance size auto-scaling. If enabled, you must specify a value for **replicationSpecs[n].regionConfigs[m].autoScaling.compute.maxInstanceSize**. - Set to `false` to disable instance size automatic scaling.
@@ -38,7 +35,7 @@ func NewAdvancedComputeAutoScalingWithDefaults() *AdvancedComputeAutoScaling {
 	return &this
 }
 
-// GetEnabled returns the Enabled field value if set, zero value otherwise.
+// GetEnabled returns the Enabled field value if set, zero value otherwise
 func (o *AdvancedComputeAutoScaling) GetEnabled() bool {
 	if o == nil || IsNil(o.Enabled) {
 		var ret bool
@@ -53,6 +50,7 @@ func (o *AdvancedComputeAutoScaling) GetEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
+
 	return o.Enabled, true
 }
 
@@ -70,7 +68,7 @@ func (o *AdvancedComputeAutoScaling) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
-// GetMaxInstanceSize returns the MaxInstanceSize field value if set, zero value otherwise.
+// GetMaxInstanceSize returns the MaxInstanceSize field value if set, zero value otherwise
 func (o *AdvancedComputeAutoScaling) GetMaxInstanceSize() string {
 	if o == nil || IsNil(o.MaxInstanceSize) {
 		var ret string
@@ -85,6 +83,7 @@ func (o *AdvancedComputeAutoScaling) GetMaxInstanceSizeOk() (*string, bool) {
 	if o == nil || IsNil(o.MaxInstanceSize) {
 		return nil, false
 	}
+
 	return o.MaxInstanceSize, true
 }
 
@@ -102,7 +101,7 @@ func (o *AdvancedComputeAutoScaling) SetMaxInstanceSize(v string) {
 	o.MaxInstanceSize = &v
 }
 
-// GetMinInstanceSize returns the MinInstanceSize field value if set, zero value otherwise.
+// GetMinInstanceSize returns the MinInstanceSize field value if set, zero value otherwise
 func (o *AdvancedComputeAutoScaling) GetMinInstanceSize() string {
 	if o == nil || IsNil(o.MinInstanceSize) {
 		var ret string
@@ -117,6 +116,7 @@ func (o *AdvancedComputeAutoScaling) GetMinInstanceSizeOk() (*string, bool) {
 	if o == nil || IsNil(o.MinInstanceSize) {
 		return nil, false
 	}
+
 	return o.MinInstanceSize, true
 }
 
@@ -134,7 +134,7 @@ func (o *AdvancedComputeAutoScaling) SetMinInstanceSize(v string) {
 	o.MinInstanceSize = &v
 }
 
-// GetScaleDownEnabled returns the ScaleDownEnabled field value if set, zero value otherwise.
+// GetScaleDownEnabled returns the ScaleDownEnabled field value if set, zero value otherwise
 func (o *AdvancedComputeAutoScaling) GetScaleDownEnabled() bool {
 	if o == nil || IsNil(o.ScaleDownEnabled) {
 		var ret bool
@@ -149,6 +149,7 @@ func (o *AdvancedComputeAutoScaling) GetScaleDownEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.ScaleDownEnabled) {
 		return nil, false
 	}
+
 	return o.ScaleDownEnabled, true
 }
 
@@ -188,40 +189,4 @@ func (o AdvancedComputeAutoScaling) ToMap() (map[string]interface{}, error) {
 		toSerialize["scaleDownEnabled"] = o.ScaleDownEnabled
 	}
 	return toSerialize, nil
-}
-
-type NullableAdvancedComputeAutoScaling struct {
-	value *AdvancedComputeAutoScaling
-	isSet bool
-}
-
-func (v NullableAdvancedComputeAutoScaling) Get() *AdvancedComputeAutoScaling {
-	return v.value
-}
-
-func (v *NullableAdvancedComputeAutoScaling) Set(val *AdvancedComputeAutoScaling) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableAdvancedComputeAutoScaling) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableAdvancedComputeAutoScaling) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableAdvancedComputeAutoScaling(val *AdvancedComputeAutoScaling) *NullableAdvancedComputeAutoScaling {
-	return &NullableAdvancedComputeAutoScaling{value: val, isSet: true}
-}
-
-func (v NullableAdvancedComputeAutoScaling) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableAdvancedComputeAutoScaling) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

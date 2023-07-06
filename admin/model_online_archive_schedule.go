@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the OnlineArchiveSchedule type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &OnlineArchiveSchedule{}
-
 // OnlineArchiveSchedule Regular frequency and duration when archiving process occurs.
 type OnlineArchiveSchedule struct {
 	Type string `json:"type"`
@@ -68,7 +65,7 @@ func (o *OnlineArchiveSchedule) SetType(v string) {
 	o.Type = v
 }
 
-// GetEndHour returns the EndHour field value if set, zero value otherwise.
+// GetEndHour returns the EndHour field value if set, zero value otherwise
 func (o *OnlineArchiveSchedule) GetEndHour() int {
 	if o == nil || IsNil(o.EndHour) {
 		var ret int
@@ -83,6 +80,7 @@ func (o *OnlineArchiveSchedule) GetEndHourOk() (*int, bool) {
 	if o == nil || IsNil(o.EndHour) {
 		return nil, false
 	}
+
 	return o.EndHour, true
 }
 
@@ -100,7 +98,7 @@ func (o *OnlineArchiveSchedule) SetEndHour(v int) {
 	o.EndHour = &v
 }
 
-// GetEndMinute returns the EndMinute field value if set, zero value otherwise.
+// GetEndMinute returns the EndMinute field value if set, zero value otherwise
 func (o *OnlineArchiveSchedule) GetEndMinute() int {
 	if o == nil || IsNil(o.EndMinute) {
 		var ret int
@@ -115,6 +113,7 @@ func (o *OnlineArchiveSchedule) GetEndMinuteOk() (*int, bool) {
 	if o == nil || IsNil(o.EndMinute) {
 		return nil, false
 	}
+
 	return o.EndMinute, true
 }
 
@@ -132,7 +131,7 @@ func (o *OnlineArchiveSchedule) SetEndMinute(v int) {
 	o.EndMinute = &v
 }
 
-// GetStartHour returns the StartHour field value if set, zero value otherwise.
+// GetStartHour returns the StartHour field value if set, zero value otherwise
 func (o *OnlineArchiveSchedule) GetStartHour() int {
 	if o == nil || IsNil(o.StartHour) {
 		var ret int
@@ -147,6 +146,7 @@ func (o *OnlineArchiveSchedule) GetStartHourOk() (*int, bool) {
 	if o == nil || IsNil(o.StartHour) {
 		return nil, false
 	}
+
 	return o.StartHour, true
 }
 
@@ -164,7 +164,7 @@ func (o *OnlineArchiveSchedule) SetStartHour(v int) {
 	o.StartHour = &v
 }
 
-// GetStartMinute returns the StartMinute field value if set, zero value otherwise.
+// GetStartMinute returns the StartMinute field value if set, zero value otherwise
 func (o *OnlineArchiveSchedule) GetStartMinute() int {
 	if o == nil || IsNil(o.StartMinute) {
 		var ret int
@@ -179,6 +179,7 @@ func (o *OnlineArchiveSchedule) GetStartMinuteOk() (*int, bool) {
 	if o == nil || IsNil(o.StartMinute) {
 		return nil, false
 	}
+
 	return o.StartMinute, true
 }
 
@@ -196,7 +197,7 @@ func (o *OnlineArchiveSchedule) SetStartMinute(v int) {
 	o.StartMinute = &v
 }
 
-// GetDayOfWeek returns the DayOfWeek field value if set, zero value otherwise.
+// GetDayOfWeek returns the DayOfWeek field value if set, zero value otherwise
 func (o *OnlineArchiveSchedule) GetDayOfWeek() int {
 	if o == nil || IsNil(o.DayOfWeek) {
 		var ret int
@@ -211,6 +212,7 @@ func (o *OnlineArchiveSchedule) GetDayOfWeekOk() (*int, bool) {
 	if o == nil || IsNil(o.DayOfWeek) {
 		return nil, false
 	}
+
 	return o.DayOfWeek, true
 }
 
@@ -228,7 +230,7 @@ func (o *OnlineArchiveSchedule) SetDayOfWeek(v int) {
 	o.DayOfWeek = &v
 }
 
-// GetDayOfMonth returns the DayOfMonth field value if set, zero value otherwise.
+// GetDayOfMonth returns the DayOfMonth field value if set, zero value otherwise
 func (o *OnlineArchiveSchedule) GetDayOfMonth() int {
 	if o == nil || IsNil(o.DayOfMonth) {
 		var ret int
@@ -243,6 +245,7 @@ func (o *OnlineArchiveSchedule) GetDayOfMonthOk() (*int, bool) {
 	if o == nil || IsNil(o.DayOfMonth) {
 		return nil, false
 	}
+
 	return o.DayOfMonth, true
 }
 
@@ -289,40 +292,4 @@ func (o OnlineArchiveSchedule) ToMap() (map[string]interface{}, error) {
 		toSerialize["dayOfMonth"] = o.DayOfMonth
 	}
 	return toSerialize, nil
-}
-
-type NullableOnlineArchiveSchedule struct {
-	value *OnlineArchiveSchedule
-	isSet bool
-}
-
-func (v NullableOnlineArchiveSchedule) Get() *OnlineArchiveSchedule {
-	return v.value
-}
-
-func (v *NullableOnlineArchiveSchedule) Set(val *OnlineArchiveSchedule) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableOnlineArchiveSchedule) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableOnlineArchiveSchedule) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableOnlineArchiveSchedule(val *OnlineArchiveSchedule) *NullableOnlineArchiveSchedule {
-	return &NullableOnlineArchiveSchedule{value: val, isSet: true}
-}
-
-func (v NullableOnlineArchiveSchedule) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableOnlineArchiveSchedule) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

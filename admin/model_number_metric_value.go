@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the NumberMetricValue type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &NumberMetricValue{}
-
 // NumberMetricValue Measurement of the **metricName** recorded at the time of the event.
 type NumberMetricValue struct {
 	// Amount of the **metricName** recorded at the time of the event. This value triggered the alert.
@@ -34,7 +31,7 @@ func NewNumberMetricValueWithDefaults() *NumberMetricValue {
 	return &this
 }
 
-// GetNumber returns the Number field value if set, zero value otherwise.
+// GetNumber returns the Number field value if set, zero value otherwise
 func (o *NumberMetricValue) GetNumber() float64 {
 	if o == nil || IsNil(o.Number) {
 		var ret float64
@@ -49,6 +46,7 @@ func (o *NumberMetricValue) GetNumberOk() (*float64, bool) {
 	if o == nil || IsNil(o.Number) {
 		return nil, false
 	}
+
 	return o.Number, true
 }
 
@@ -66,7 +64,7 @@ func (o *NumberMetricValue) SetNumber(v float64) {
 	o.Number = &v
 }
 
-// GetUnits returns the Units field value if set, zero value otherwise.
+// GetUnits returns the Units field value if set, zero value otherwise
 func (o *NumberMetricValue) GetUnits() string {
 	if o == nil || IsNil(o.Units) {
 		var ret string
@@ -81,6 +79,7 @@ func (o *NumberMetricValue) GetUnitsOk() (*string, bool) {
 	if o == nil || IsNil(o.Units) {
 		return nil, false
 	}
+
 	return o.Units, true
 }
 
@@ -111,40 +110,4 @@ func (o NumberMetricValue) ToMap() (map[string]interface{}, error) {
 		toSerialize["units"] = o.Units
 	}
 	return toSerialize, nil
-}
-
-type NullableNumberMetricValue struct {
-	value *NumberMetricValue
-	isSet bool
-}
-
-func (v NullableNumberMetricValue) Get() *NumberMetricValue {
-	return v.value
-}
-
-func (v *NullableNumberMetricValue) Set(val *NumberMetricValue) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableNumberMetricValue) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableNumberMetricValue) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableNumberMetricValue(val *NumberMetricValue) *NullableNumberMetricValue {
-	return &NullableNumberMetricValue{value: val, isSet: true}
-}
-
-func (v NullableNumberMetricValue) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableNumberMetricValue) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

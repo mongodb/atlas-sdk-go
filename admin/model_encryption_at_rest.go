@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the EncryptionAtRest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &EncryptionAtRest{}
-
 // EncryptionAtRest struct for EncryptionAtRest
 type EncryptionAtRest struct {
 	AwsKms         *AWSKMSConfiguration `json:"awsKms,omitempty"`
@@ -33,7 +30,7 @@ func NewEncryptionAtRestWithDefaults() *EncryptionAtRest {
 	return &this
 }
 
-// GetAwsKms returns the AwsKms field value if set, zero value otherwise.
+// GetAwsKms returns the AwsKms field value if set, zero value otherwise
 func (o *EncryptionAtRest) GetAwsKms() AWSKMSConfiguration {
 	if o == nil || IsNil(o.AwsKms) {
 		var ret AWSKMSConfiguration
@@ -48,6 +45,7 @@ func (o *EncryptionAtRest) GetAwsKmsOk() (*AWSKMSConfiguration, bool) {
 	if o == nil || IsNil(o.AwsKms) {
 		return nil, false
 	}
+
 	return o.AwsKms, true
 }
 
@@ -65,7 +63,7 @@ func (o *EncryptionAtRest) SetAwsKms(v AWSKMSConfiguration) {
 	o.AwsKms = &v
 }
 
-// GetAzureKeyVault returns the AzureKeyVault field value if set, zero value otherwise.
+// GetAzureKeyVault returns the AzureKeyVault field value if set, zero value otherwise
 func (o *EncryptionAtRest) GetAzureKeyVault() AzureKeyVault {
 	if o == nil || IsNil(o.AzureKeyVault) {
 		var ret AzureKeyVault
@@ -80,6 +78,7 @@ func (o *EncryptionAtRest) GetAzureKeyVaultOk() (*AzureKeyVault, bool) {
 	if o == nil || IsNil(o.AzureKeyVault) {
 		return nil, false
 	}
+
 	return o.AzureKeyVault, true
 }
 
@@ -97,7 +96,7 @@ func (o *EncryptionAtRest) SetAzureKeyVault(v AzureKeyVault) {
 	o.AzureKeyVault = &v
 }
 
-// GetGoogleCloudKms returns the GoogleCloudKms field value if set, zero value otherwise.
+// GetGoogleCloudKms returns the GoogleCloudKms field value if set, zero value otherwise
 func (o *EncryptionAtRest) GetGoogleCloudKms() GoogleCloudKMS {
 	if o == nil || IsNil(o.GoogleCloudKms) {
 		var ret GoogleCloudKMS
@@ -112,6 +111,7 @@ func (o *EncryptionAtRest) GetGoogleCloudKmsOk() (*GoogleCloudKMS, bool) {
 	if o == nil || IsNil(o.GoogleCloudKms) {
 		return nil, false
 	}
+
 	return o.GoogleCloudKms, true
 }
 
@@ -148,40 +148,4 @@ func (o EncryptionAtRest) ToMap() (map[string]interface{}, error) {
 		toSerialize["googleCloudKms"] = o.GoogleCloudKms
 	}
 	return toSerialize, nil
-}
-
-type NullableEncryptionAtRest struct {
-	value *EncryptionAtRest
-	isSet bool
-}
-
-func (v NullableEncryptionAtRest) Get() *EncryptionAtRest {
-	return v.value
-}
-
-func (v *NullableEncryptionAtRest) Set(val *EncryptionAtRest) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableEncryptionAtRest) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableEncryptionAtRest) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableEncryptionAtRest(val *EncryptionAtRest) *NullableEncryptionAtRest {
-	return &NullableEncryptionAtRest{value: val, isSet: true}
-}
-
-func (v NullableEncryptionAtRest) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableEncryptionAtRest) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

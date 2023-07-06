@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the GroupMaintenanceWindow type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &GroupMaintenanceWindow{}
-
 // GroupMaintenanceWindow struct for GroupMaintenanceWindow
 type GroupMaintenanceWindow struct {
 	// Flag that indicates whether MongoDB Cloud should defer all maintenance windows for one week after you enable them.
@@ -40,7 +37,7 @@ func NewGroupMaintenanceWindowWithDefaults() *GroupMaintenanceWindow {
 	return &this
 }
 
-// GetAutoDeferOnceEnabled returns the AutoDeferOnceEnabled field value if set, zero value otherwise.
+// GetAutoDeferOnceEnabled returns the AutoDeferOnceEnabled field value if set, zero value otherwise
 func (o *GroupMaintenanceWindow) GetAutoDeferOnceEnabled() bool {
 	if o == nil || IsNil(o.AutoDeferOnceEnabled) {
 		var ret bool
@@ -55,6 +52,7 @@ func (o *GroupMaintenanceWindow) GetAutoDeferOnceEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.AutoDeferOnceEnabled) {
 		return nil, false
 	}
+
 	return o.AutoDeferOnceEnabled, true
 }
 
@@ -120,7 +118,7 @@ func (o *GroupMaintenanceWindow) SetHourOfDay(v int) {
 	o.HourOfDay = v
 }
 
-// GetStartASAP returns the StartASAP field value if set, zero value otherwise.
+// GetStartASAP returns the StartASAP field value if set, zero value otherwise
 func (o *GroupMaintenanceWindow) GetStartASAP() bool {
 	if o == nil || IsNil(o.StartASAP) {
 		var ret bool
@@ -135,6 +133,7 @@ func (o *GroupMaintenanceWindow) GetStartASAPOk() (*bool, bool) {
 	if o == nil || IsNil(o.StartASAP) {
 		return nil, false
 	}
+
 	return o.StartASAP, true
 }
 
@@ -170,40 +169,4 @@ func (o GroupMaintenanceWindow) ToMap() (map[string]interface{}, error) {
 		toSerialize["startASAP"] = o.StartASAP
 	}
 	return toSerialize, nil
-}
-
-type NullableGroupMaintenanceWindow struct {
-	value *GroupMaintenanceWindow
-	isSet bool
-}
-
-func (v NullableGroupMaintenanceWindow) Get() *GroupMaintenanceWindow {
-	return v.value
-}
-
-func (v *NullableGroupMaintenanceWindow) Set(val *GroupMaintenanceWindow) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableGroupMaintenanceWindow) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableGroupMaintenanceWindow) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableGroupMaintenanceWindow(val *GroupMaintenanceWindow) *NullableGroupMaintenanceWindow {
-	return &NullableGroupMaintenanceWindow{value: val, isSet: true}
-}
-
-func (v NullableGroupMaintenanceWindow) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableGroupMaintenanceWindow) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

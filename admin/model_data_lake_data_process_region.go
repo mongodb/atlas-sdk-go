@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the DataLakeDataProcessRegion type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DataLakeDataProcessRegion{}
-
 // DataLakeDataProcessRegion Information about the cloud provider region to which the data lake routes client connections. MongoDB Cloud supports AWS only.
 type DataLakeDataProcessRegion struct {
 	// Name of the cloud service that hosts the data lake's data stores.
@@ -96,40 +93,4 @@ func (o DataLakeDataProcessRegion) ToMap() (map[string]interface{}, error) {
 	toSerialize["cloudProvider"] = o.CloudProvider
 	toSerialize["region"] = o.Region
 	return toSerialize, nil
-}
-
-type NullableDataLakeDataProcessRegion struct {
-	value *DataLakeDataProcessRegion
-	isSet bool
-}
-
-func (v NullableDataLakeDataProcessRegion) Get() *DataLakeDataProcessRegion {
-	return v.value
-}
-
-func (v *NullableDataLakeDataProcessRegion) Set(val *DataLakeDataProcessRegion) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableDataLakeDataProcessRegion) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableDataLakeDataProcessRegion) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableDataLakeDataProcessRegion(val *DataLakeDataProcessRegion) *NullableDataLakeDataProcessRegion {
-	return &NullableDataLakeDataProcessRegion{value: val, isSet: true}
-}
-
-func (v NullableDataLakeDataProcessRegion) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableDataLakeDataProcessRegion) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

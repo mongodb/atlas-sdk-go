@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the LiveImportAvailableProject type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &LiveImportAvailableProject{}
-
 // LiveImportAvailableProject struct for LiveImportAvailableProject
 type LiveImportAvailableProject struct {
 	// List of clusters that can be migrated to MongoDB Cloud.
@@ -40,7 +37,7 @@ func NewLiveImportAvailableProjectWithDefaults() *LiveImportAvailableProject {
 	return &this
 }
 
-// GetDeployments returns the Deployments field value if set, zero value otherwise.
+// GetDeployments returns the Deployments field value if set, zero value otherwise
 func (o *LiveImportAvailableProject) GetDeployments() []AvailableClustersDeployment {
 	if o == nil || IsNil(o.Deployments) {
 		var ret []AvailableClustersDeployment
@@ -55,6 +52,7 @@ func (o *LiveImportAvailableProject) GetDeploymentsOk() ([]AvailableClustersDepl
 	if o == nil || IsNil(o.Deployments) {
 		return nil, false
 	}
+
 	return o.Deployments, true
 }
 
@@ -72,7 +70,7 @@ func (o *LiveImportAvailableProject) SetDeployments(v []AvailableClustersDeploym
 	o.Deployments = v
 }
 
-// GetMigrationHosts returns the MigrationHosts field value if set, zero value otherwise.
+// GetMigrationHosts returns the MigrationHosts field value if set, zero value otherwise
 func (o *LiveImportAvailableProject) GetMigrationHosts() []string {
 	if o == nil || IsNil(o.MigrationHosts) {
 		var ret []string
@@ -87,6 +85,7 @@ func (o *LiveImportAvailableProject) GetMigrationHostsOk() ([]string, bool) {
 	if o == nil || IsNil(o.MigrationHosts) {
 		return nil, false
 	}
+
 	return o.MigrationHosts, true
 }
 
@@ -168,40 +167,4 @@ func (o LiveImportAvailableProject) ToMap() (map[string]interface{}, error) {
 		toSerialize["migrationHosts"] = o.MigrationHosts
 	}
 	return toSerialize, nil
-}
-
-type NullableLiveImportAvailableProject struct {
-	value *LiveImportAvailableProject
-	isSet bool
-}
-
-func (v NullableLiveImportAvailableProject) Get() *LiveImportAvailableProject {
-	return v.value
-}
-
-func (v *NullableLiveImportAvailableProject) Set(val *LiveImportAvailableProject) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableLiveImportAvailableProject) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableLiveImportAvailableProject) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableLiveImportAvailableProject(val *LiveImportAvailableProject) *NullableLiveImportAvailableProject {
-	return &NullableLiveImportAvailableProject{value: val, isSet: true}
-}
-
-func (v NullableLiveImportAvailableProject) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableLiveImportAvailableProject) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

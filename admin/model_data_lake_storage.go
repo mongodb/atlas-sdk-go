@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the DataLakeStorage type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DataLakeStorage{}
-
 // DataLakeStorage Configuration information for each data store and its mapping to MongoDB Cloud databases.
 type DataLakeStorage struct {
 	// Array that contains the queryable databases and collections for this data lake.
@@ -34,7 +31,7 @@ func NewDataLakeStorageWithDefaults() *DataLakeStorage {
 	return &this
 }
 
-// GetDatabases returns the Databases field value if set, zero value otherwise.
+// GetDatabases returns the Databases field value if set, zero value otherwise
 func (o *DataLakeStorage) GetDatabases() []DataLakeDatabaseInstance {
 	if o == nil || IsNil(o.Databases) {
 		var ret []DataLakeDatabaseInstance
@@ -49,6 +46,7 @@ func (o *DataLakeStorage) GetDatabasesOk() ([]DataLakeDatabaseInstance, bool) {
 	if o == nil || IsNil(o.Databases) {
 		return nil, false
 	}
+
 	return o.Databases, true
 }
 
@@ -66,7 +64,7 @@ func (o *DataLakeStorage) SetDatabases(v []DataLakeDatabaseInstance) {
 	o.Databases = v
 }
 
-// GetStores returns the Stores field value if set, zero value otherwise.
+// GetStores returns the Stores field value if set, zero value otherwise
 func (o *DataLakeStorage) GetStores() []DataLakeStoreSettings {
 	if o == nil || IsNil(o.Stores) {
 		var ret []DataLakeStoreSettings
@@ -81,6 +79,7 @@ func (o *DataLakeStorage) GetStoresOk() ([]DataLakeStoreSettings, bool) {
 	if o == nil || IsNil(o.Stores) {
 		return nil, false
 	}
+
 	return o.Stores, true
 }
 
@@ -114,40 +113,4 @@ func (o DataLakeStorage) ToMap() (map[string]interface{}, error) {
 		toSerialize["stores"] = o.Stores
 	}
 	return toSerialize, nil
-}
-
-type NullableDataLakeStorage struct {
-	value *DataLakeStorage
-	isSet bool
-}
-
-func (v NullableDataLakeStorage) Get() *DataLakeStorage {
-	return v.value
-}
-
-func (v *NullableDataLakeStorage) Set(val *DataLakeStorage) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableDataLakeStorage) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableDataLakeStorage) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableDataLakeStorage(val *DataLakeStorage) *NullableDataLakeStorage {
-	return &NullableDataLakeStorage{value: val, isSet: true}
-}
-
-func (v NullableDataLakeStorage) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableDataLakeStorage) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

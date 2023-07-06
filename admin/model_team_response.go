@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the TeamResponse type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &TeamResponse{}
-
 // TeamResponse struct for TeamResponse
 type TeamResponse struct {
 	// Unique 24-hexadecimal digit string that identifies this team.
@@ -36,7 +33,7 @@ func NewTeamResponseWithDefaults() *TeamResponse {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *TeamResponse) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -51,6 +48,7 @@ func (o *TeamResponse) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -68,7 +66,7 @@ func (o *TeamResponse) SetId(v string) {
 	o.Id = &v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *TeamResponse) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -83,6 +81,7 @@ func (o *TeamResponse) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -100,7 +99,7 @@ func (o *TeamResponse) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise
 func (o *TeamResponse) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
@@ -115,6 +114,7 @@ func (o *TeamResponse) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
+
 	return o.Name, true
 }
 
@@ -145,40 +145,4 @@ func (o TeamResponse) ToMap() (map[string]interface{}, error) {
 		toSerialize["name"] = o.Name
 	}
 	return toSerialize, nil
-}
-
-type NullableTeamResponse struct {
-	value *TeamResponse
-	isSet bool
-}
-
-func (v NullableTeamResponse) Get() *TeamResponse {
-	return v.value
-}
-
-func (v *NullableTeamResponse) Set(val *TeamResponse) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableTeamResponse) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableTeamResponse) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableTeamResponse(val *TeamResponse) *NullableTeamResponse {
-	return &NullableTeamResponse{value: val, isSet: true}
-}
-
-func (v NullableTeamResponse) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableTeamResponse) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the TenantRestore type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &TenantRestore{}
-
 // TenantRestore struct for TenantRestore
 type TenantRestore struct {
 	// Human-readable label that identifies the source cluster.
@@ -61,7 +58,7 @@ func NewTenantRestoreWithDefaults() *TenantRestore {
 	return &this
 }
 
-// GetClusterName returns the ClusterName field value if set, zero value otherwise.
+// GetClusterName returns the ClusterName field value if set, zero value otherwise
 func (o *TenantRestore) GetClusterName() string {
 	if o == nil || IsNil(o.ClusterName) {
 		var ret string
@@ -76,6 +73,7 @@ func (o *TenantRestore) GetClusterNameOk() (*string, bool) {
 	if o == nil || IsNil(o.ClusterName) {
 		return nil, false
 	}
+
 	return o.ClusterName, true
 }
 
@@ -93,7 +91,7 @@ func (o *TenantRestore) SetClusterName(v string) {
 	o.ClusterName = &v
 }
 
-// GetDeliveryType returns the DeliveryType field value if set, zero value otherwise.
+// GetDeliveryType returns the DeliveryType field value if set, zero value otherwise
 func (o *TenantRestore) GetDeliveryType() string {
 	if o == nil || IsNil(o.DeliveryType) {
 		var ret string
@@ -108,6 +106,7 @@ func (o *TenantRestore) GetDeliveryTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.DeliveryType) {
 		return nil, false
 	}
+
 	return o.DeliveryType, true
 }
 
@@ -125,7 +124,7 @@ func (o *TenantRestore) SetDeliveryType(v string) {
 	o.DeliveryType = &v
 }
 
-// GetExpirationDate returns the ExpirationDate field value if set, zero value otherwise.
+// GetExpirationDate returns the ExpirationDate field value if set, zero value otherwise
 func (o *TenantRestore) GetExpirationDate() time.Time {
 	if o == nil || IsNil(o.ExpirationDate) {
 		var ret time.Time
@@ -140,6 +139,7 @@ func (o *TenantRestore) GetExpirationDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.ExpirationDate) {
 		return nil, false
 	}
+
 	return o.ExpirationDate, true
 }
 
@@ -157,7 +157,7 @@ func (o *TenantRestore) SetExpirationDate(v time.Time) {
 	o.ExpirationDate = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *TenantRestore) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -172,6 +172,7 @@ func (o *TenantRestore) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -189,7 +190,7 @@ func (o *TenantRestore) SetId(v string) {
 	o.Id = &v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *TenantRestore) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -204,6 +205,7 @@ func (o *TenantRestore) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -221,7 +223,7 @@ func (o *TenantRestore) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetProjectId returns the ProjectId field value if set, zero value otherwise.
+// GetProjectId returns the ProjectId field value if set, zero value otherwise
 func (o *TenantRestore) GetProjectId() string {
 	if o == nil || IsNil(o.ProjectId) {
 		var ret string
@@ -236,6 +238,7 @@ func (o *TenantRestore) GetProjectIdOk() (*string, bool) {
 	if o == nil || IsNil(o.ProjectId) {
 		return nil, false
 	}
+
 	return o.ProjectId, true
 }
 
@@ -253,7 +256,7 @@ func (o *TenantRestore) SetProjectId(v string) {
 	o.ProjectId = &v
 }
 
-// GetRestoreFinishedDate returns the RestoreFinishedDate field value if set, zero value otherwise.
+// GetRestoreFinishedDate returns the RestoreFinishedDate field value if set, zero value otherwise
 func (o *TenantRestore) GetRestoreFinishedDate() time.Time {
 	if o == nil || IsNil(o.RestoreFinishedDate) {
 		var ret time.Time
@@ -268,6 +271,7 @@ func (o *TenantRestore) GetRestoreFinishedDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.RestoreFinishedDate) {
 		return nil, false
 	}
+
 	return o.RestoreFinishedDate, true
 }
 
@@ -285,7 +289,7 @@ func (o *TenantRestore) SetRestoreFinishedDate(v time.Time) {
 	o.RestoreFinishedDate = &v
 }
 
-// GetRestoreScheduledDate returns the RestoreScheduledDate field value if set, zero value otherwise.
+// GetRestoreScheduledDate returns the RestoreScheduledDate field value if set, zero value otherwise
 func (o *TenantRestore) GetRestoreScheduledDate() time.Time {
 	if o == nil || IsNil(o.RestoreScheduledDate) {
 		var ret time.Time
@@ -300,6 +304,7 @@ func (o *TenantRestore) GetRestoreScheduledDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.RestoreScheduledDate) {
 		return nil, false
 	}
+
 	return o.RestoreScheduledDate, true
 }
 
@@ -317,7 +322,7 @@ func (o *TenantRestore) SetRestoreScheduledDate(v time.Time) {
 	o.RestoreScheduledDate = &v
 }
 
-// GetSnapshotFinishedDate returns the SnapshotFinishedDate field value if set, zero value otherwise.
+// GetSnapshotFinishedDate returns the SnapshotFinishedDate field value if set, zero value otherwise
 func (o *TenantRestore) GetSnapshotFinishedDate() time.Time {
 	if o == nil || IsNil(o.SnapshotFinishedDate) {
 		var ret time.Time
@@ -332,6 +337,7 @@ func (o *TenantRestore) GetSnapshotFinishedDateOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.SnapshotFinishedDate) {
 		return nil, false
 	}
+
 	return o.SnapshotFinishedDate, true
 }
 
@@ -373,7 +379,7 @@ func (o *TenantRestore) SetSnapshotId(v string) {
 	o.SnapshotId = v
 }
 
-// GetSnapshotUrl returns the SnapshotUrl field value if set, zero value otherwise.
+// GetSnapshotUrl returns the SnapshotUrl field value if set, zero value otherwise
 func (o *TenantRestore) GetSnapshotUrl() string {
 	if o == nil || IsNil(o.SnapshotUrl) {
 		var ret string
@@ -388,6 +394,7 @@ func (o *TenantRestore) GetSnapshotUrlOk() (*string, bool) {
 	if o == nil || IsNil(o.SnapshotUrl) {
 		return nil, false
 	}
+
 	return o.SnapshotUrl, true
 }
 
@@ -405,7 +412,7 @@ func (o *TenantRestore) SetSnapshotUrl(v string) {
 	o.SnapshotUrl = &v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// GetStatus returns the Status field value if set, zero value otherwise
 func (o *TenantRestore) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
 		var ret string
@@ -420,6 +427,7 @@ func (o *TenantRestore) GetStatusOk() (*string, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
+
 	return o.Status, true
 }
 
@@ -461,7 +469,7 @@ func (o *TenantRestore) SetTargetDeploymentItemName(v string) {
 	o.TargetDeploymentItemName = v
 }
 
-// GetTargetProjectId returns the TargetProjectId field value if set, zero value otherwise.
+// GetTargetProjectId returns the TargetProjectId field value if set, zero value otherwise
 func (o *TenantRestore) GetTargetProjectId() string {
 	if o == nil || IsNil(o.TargetProjectId) {
 		var ret string
@@ -476,6 +484,7 @@ func (o *TenantRestore) GetTargetProjectIdOk() (*string, bool) {
 	if o == nil || IsNil(o.TargetProjectId) {
 		return nil, false
 	}
+
 	return o.TargetProjectId, true
 }
 
@@ -508,40 +517,4 @@ func (o TenantRestore) ToMap() (map[string]interface{}, error) {
 		toSerialize["targetProjectId"] = o.TargetProjectId
 	}
 	return toSerialize, nil
-}
-
-type NullableTenantRestore struct {
-	value *TenantRestore
-	isSet bool
-}
-
-func (v NullableTenantRestore) Get() *TenantRestore {
-	return v.value
-}
-
-func (v *NullableTenantRestore) Set(val *TenantRestore) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableTenantRestore) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableTenantRestore) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableTenantRestore(val *TenantRestore) *NullableTenantRestore {
-	return &NullableTenantRestore{value: val, isSet: true}
-}
-
-func (v NullableTenantRestore) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableTenantRestore) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

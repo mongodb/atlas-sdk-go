@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the BackupRestoreJobDelivery type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &BackupRestoreJobDelivery{}
-
 // BackupRestoreJobDelivery Method and details that indicate how to deliver the restored snapshot data.
 type BackupRestoreJobDelivery struct {
 	// Header name to use when downloading the restore, used with `\"delivery.methodName\" : \"HTTP\"`.
@@ -57,7 +54,7 @@ func NewBackupRestoreJobDeliveryWithDefaults() *BackupRestoreJobDelivery {
 	return &this
 }
 
-// GetAuthHeader returns the AuthHeader field value if set, zero value otherwise.
+// GetAuthHeader returns the AuthHeader field value if set, zero value otherwise
 func (o *BackupRestoreJobDelivery) GetAuthHeader() string {
 	if o == nil || IsNil(o.AuthHeader) {
 		var ret string
@@ -72,6 +69,7 @@ func (o *BackupRestoreJobDelivery) GetAuthHeaderOk() (*string, bool) {
 	if o == nil || IsNil(o.AuthHeader) {
 		return nil, false
 	}
+
 	return o.AuthHeader, true
 }
 
@@ -89,7 +87,7 @@ func (o *BackupRestoreJobDelivery) SetAuthHeader(v string) {
 	o.AuthHeader = &v
 }
 
-// GetAuthValue returns the AuthValue field value if set, zero value otherwise.
+// GetAuthValue returns the AuthValue field value if set, zero value otherwise
 func (o *BackupRestoreJobDelivery) GetAuthValue() string {
 	if o == nil || IsNil(o.AuthValue) {
 		var ret string
@@ -104,6 +102,7 @@ func (o *BackupRestoreJobDelivery) GetAuthValueOk() (*string, bool) {
 	if o == nil || IsNil(o.AuthValue) {
 		return nil, false
 	}
+
 	return o.AuthValue, true
 }
 
@@ -121,7 +120,7 @@ func (o *BackupRestoreJobDelivery) SetAuthValue(v string) {
 	o.AuthValue = &v
 }
 
-// GetExpirationHours returns the ExpirationHours field value if set, zero value otherwise.
+// GetExpirationHours returns the ExpirationHours field value if set, zero value otherwise
 func (o *BackupRestoreJobDelivery) GetExpirationHours() int {
 	if o == nil || IsNil(o.ExpirationHours) {
 		var ret int
@@ -136,6 +135,7 @@ func (o *BackupRestoreJobDelivery) GetExpirationHoursOk() (*int, bool) {
 	if o == nil || IsNil(o.ExpirationHours) {
 		return nil, false
 	}
+
 	return o.ExpirationHours, true
 }
 
@@ -153,7 +153,7 @@ func (o *BackupRestoreJobDelivery) SetExpirationHours(v int) {
 	o.ExpirationHours = &v
 }
 
-// GetExpires returns the Expires field value if set, zero value otherwise.
+// GetExpires returns the Expires field value if set, zero value otherwise
 func (o *BackupRestoreJobDelivery) GetExpires() time.Time {
 	if o == nil || IsNil(o.Expires) {
 		var ret time.Time
@@ -168,6 +168,7 @@ func (o *BackupRestoreJobDelivery) GetExpiresOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Expires) {
 		return nil, false
 	}
+
 	return o.Expires, true
 }
 
@@ -185,7 +186,7 @@ func (o *BackupRestoreJobDelivery) SetExpires(v time.Time) {
 	o.Expires = &v
 }
 
-// GetMaxDownloads returns the MaxDownloads field value if set, zero value otherwise.
+// GetMaxDownloads returns the MaxDownloads field value if set, zero value otherwise
 func (o *BackupRestoreJobDelivery) GetMaxDownloads() int {
 	if o == nil || IsNil(o.MaxDownloads) {
 		var ret int
@@ -200,6 +201,7 @@ func (o *BackupRestoreJobDelivery) GetMaxDownloadsOk() (*int, bool) {
 	if o == nil || IsNil(o.MaxDownloads) {
 		return nil, false
 	}
+
 	return o.MaxDownloads, true
 }
 
@@ -241,7 +243,7 @@ func (o *BackupRestoreJobDelivery) SetMethodName(v string) {
 	o.MethodName = v
 }
 
-// GetStatusName returns the StatusName field value if set, zero value otherwise.
+// GetStatusName returns the StatusName field value if set, zero value otherwise
 func (o *BackupRestoreJobDelivery) GetStatusName() string {
 	if o == nil || IsNil(o.StatusName) {
 		var ret string
@@ -256,6 +258,7 @@ func (o *BackupRestoreJobDelivery) GetStatusNameOk() (*string, bool) {
 	if o == nil || IsNil(o.StatusName) {
 		return nil, false
 	}
+
 	return o.StatusName, true
 }
 
@@ -273,7 +276,7 @@ func (o *BackupRestoreJobDelivery) SetStatusName(v string) {
 	o.StatusName = &v
 }
 
-// GetTargetClusterId returns the TargetClusterId field value if set, zero value otherwise.
+// GetTargetClusterId returns the TargetClusterId field value if set, zero value otherwise
 func (o *BackupRestoreJobDelivery) GetTargetClusterId() string {
 	if o == nil || IsNil(o.TargetClusterId) {
 		var ret string
@@ -288,6 +291,7 @@ func (o *BackupRestoreJobDelivery) GetTargetClusterIdOk() (*string, bool) {
 	if o == nil || IsNil(o.TargetClusterId) {
 		return nil, false
 	}
+
 	return o.TargetClusterId, true
 }
 
@@ -305,7 +309,7 @@ func (o *BackupRestoreJobDelivery) SetTargetClusterId(v string) {
 	o.TargetClusterId = &v
 }
 
-// GetTargetClusterName returns the TargetClusterName field value if set, zero value otherwise.
+// GetTargetClusterName returns the TargetClusterName field value if set, zero value otherwise
 func (o *BackupRestoreJobDelivery) GetTargetClusterName() string {
 	if o == nil || IsNil(o.TargetClusterName) {
 		var ret string
@@ -320,6 +324,7 @@ func (o *BackupRestoreJobDelivery) GetTargetClusterNameOk() (*string, bool) {
 	if o == nil || IsNil(o.TargetClusterName) {
 		return nil, false
 	}
+
 	return o.TargetClusterName, true
 }
 
@@ -337,7 +342,7 @@ func (o *BackupRestoreJobDelivery) SetTargetClusterName(v string) {
 	o.TargetClusterName = &v
 }
 
-// GetTargetGroupId returns the TargetGroupId field value if set, zero value otherwise.
+// GetTargetGroupId returns the TargetGroupId field value if set, zero value otherwise
 func (o *BackupRestoreJobDelivery) GetTargetGroupId() string {
 	if o == nil || IsNil(o.TargetGroupId) {
 		var ret string
@@ -352,6 +357,7 @@ func (o *BackupRestoreJobDelivery) GetTargetGroupIdOk() (*string, bool) {
 	if o == nil || IsNil(o.TargetGroupId) {
 		return nil, false
 	}
+
 	return o.TargetGroupId, true
 }
 
@@ -369,7 +375,7 @@ func (o *BackupRestoreJobDelivery) SetTargetGroupId(v string) {
 	o.TargetGroupId = &v
 }
 
-// GetUrl returns the Url field value if set, zero value otherwise.
+// GetUrl returns the Url field value if set, zero value otherwise
 // Deprecated
 func (o *BackupRestoreJobDelivery) GetUrl() string {
 	if o == nil || IsNil(o.Url) {
@@ -386,6 +392,7 @@ func (o *BackupRestoreJobDelivery) GetUrlOk() (*string, bool) {
 	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
+
 	return o.Url, true
 }
 
@@ -404,7 +411,7 @@ func (o *BackupRestoreJobDelivery) SetUrl(v string) {
 	o.Url = &v
 }
 
-// GetUrlV2 returns the UrlV2 field value if set, zero value otherwise.
+// GetUrlV2 returns the UrlV2 field value if set, zero value otherwise
 func (o *BackupRestoreJobDelivery) GetUrlV2() string {
 	if o == nil || IsNil(o.UrlV2) {
 		var ret string
@@ -419,6 +426,7 @@ func (o *BackupRestoreJobDelivery) GetUrlV2Ok() (*string, bool) {
 	if o == nil || IsNil(o.UrlV2) {
 		return nil, false
 	}
+
 	return o.UrlV2, true
 }
 
@@ -462,40 +470,4 @@ func (o BackupRestoreJobDelivery) ToMap() (map[string]interface{}, error) {
 		toSerialize["targetGroupId"] = o.TargetGroupId
 	}
 	return toSerialize, nil
-}
-
-type NullableBackupRestoreJobDelivery struct {
-	value *BackupRestoreJobDelivery
-	isSet bool
-}
-
-func (v NullableBackupRestoreJobDelivery) Get() *BackupRestoreJobDelivery {
-	return v.value
-}
-
-func (v *NullableBackupRestoreJobDelivery) Set(val *BackupRestoreJobDelivery) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableBackupRestoreJobDelivery) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableBackupRestoreJobDelivery) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableBackupRestoreJobDelivery(val *BackupRestoreJobDelivery) *NullableBackupRestoreJobDelivery {
-	return &NullableBackupRestoreJobDelivery{value: val, isSet: true}
-}
-
-func (v NullableBackupRestoreJobDelivery) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableBackupRestoreJobDelivery) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

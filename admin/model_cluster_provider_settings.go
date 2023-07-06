@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ClusterProviderSettings type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ClusterProviderSettings{}
-
 // ClusterProviderSettings Group of cloud provider settings that configure the provisioned MongoDB hosts.
 type ClusterProviderSettings struct {
 	ProviderName string                  `json:"providerName"`
@@ -76,7 +73,7 @@ func (o *ClusterProviderSettings) SetProviderName(v string) {
 	o.ProviderName = v
 }
 
-// GetAutoScaling returns the AutoScaling field value if set, zero value otherwise.
+// GetAutoScaling returns the AutoScaling field value if set, zero value otherwise
 func (o *ClusterProviderSettings) GetAutoScaling() ClusterFreeAutoScaling {
 	if o == nil || IsNil(o.AutoScaling) {
 		var ret ClusterFreeAutoScaling
@@ -91,6 +88,7 @@ func (o *ClusterProviderSettings) GetAutoScalingOk() (*ClusterFreeAutoScaling, b
 	if o == nil || IsNil(o.AutoScaling) {
 		return nil, false
 	}
+
 	return o.AutoScaling, true
 }
 
@@ -108,7 +106,7 @@ func (o *ClusterProviderSettings) SetAutoScaling(v ClusterFreeAutoScaling) {
 	o.AutoScaling = &v
 }
 
-// GetDiskIOPS returns the DiskIOPS field value if set, zero value otherwise.
+// GetDiskIOPS returns the DiskIOPS field value if set, zero value otherwise
 func (o *ClusterProviderSettings) GetDiskIOPS() int {
 	if o == nil || IsNil(o.DiskIOPS) {
 		var ret int
@@ -123,6 +121,7 @@ func (o *ClusterProviderSettings) GetDiskIOPSOk() (*int, bool) {
 	if o == nil || IsNil(o.DiskIOPS) {
 		return nil, false
 	}
+
 	return o.DiskIOPS, true
 }
 
@@ -140,7 +139,7 @@ func (o *ClusterProviderSettings) SetDiskIOPS(v int) {
 	o.DiskIOPS = &v
 }
 
-// GetEncryptEBSVolume returns the EncryptEBSVolume field value if set, zero value otherwise.
+// GetEncryptEBSVolume returns the EncryptEBSVolume field value if set, zero value otherwise
 // Deprecated
 func (o *ClusterProviderSettings) GetEncryptEBSVolume() bool {
 	if o == nil || IsNil(o.EncryptEBSVolume) {
@@ -157,6 +156,7 @@ func (o *ClusterProviderSettings) GetEncryptEBSVolumeOk() (*bool, bool) {
 	if o == nil || IsNil(o.EncryptEBSVolume) {
 		return nil, false
 	}
+
 	return o.EncryptEBSVolume, true
 }
 
@@ -175,7 +175,7 @@ func (o *ClusterProviderSettings) SetEncryptEBSVolume(v bool) {
 	o.EncryptEBSVolume = &v
 }
 
-// GetInstanceSizeName returns the InstanceSizeName field value if set, zero value otherwise.
+// GetInstanceSizeName returns the InstanceSizeName field value if set, zero value otherwise
 func (o *ClusterProviderSettings) GetInstanceSizeName() string {
 	if o == nil || IsNil(o.InstanceSizeName) {
 		var ret string
@@ -190,6 +190,7 @@ func (o *ClusterProviderSettings) GetInstanceSizeNameOk() (*string, bool) {
 	if o == nil || IsNil(o.InstanceSizeName) {
 		return nil, false
 	}
+
 	return o.InstanceSizeName, true
 }
 
@@ -207,7 +208,7 @@ func (o *ClusterProviderSettings) SetInstanceSizeName(v string) {
 	o.InstanceSizeName = &v
 }
 
-// GetRegionName returns the RegionName field value if set, zero value otherwise.
+// GetRegionName returns the RegionName field value if set, zero value otherwise
 func (o *ClusterProviderSettings) GetRegionName() string {
 	if o == nil || IsNil(o.RegionName) {
 		var ret string
@@ -222,6 +223,7 @@ func (o *ClusterProviderSettings) GetRegionNameOk() (*string, bool) {
 	if o == nil || IsNil(o.RegionName) {
 		return nil, false
 	}
+
 	return o.RegionName, true
 }
 
@@ -239,7 +241,7 @@ func (o *ClusterProviderSettings) SetRegionName(v string) {
 	o.RegionName = &v
 }
 
-// GetVolumeType returns the VolumeType field value if set, zero value otherwise.
+// GetVolumeType returns the VolumeType field value if set, zero value otherwise
 func (o *ClusterProviderSettings) GetVolumeType() string {
 	if o == nil || IsNil(o.VolumeType) {
 		var ret string
@@ -254,6 +256,7 @@ func (o *ClusterProviderSettings) GetVolumeTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.VolumeType) {
 		return nil, false
 	}
+
 	return o.VolumeType, true
 }
 
@@ -271,7 +274,7 @@ func (o *ClusterProviderSettings) SetVolumeType(v string) {
 	o.VolumeType = &v
 }
 
-// GetDiskTypeName returns the DiskTypeName field value if set, zero value otherwise.
+// GetDiskTypeName returns the DiskTypeName field value if set, zero value otherwise
 func (o *ClusterProviderSettings) GetDiskTypeName() string {
 	if o == nil || IsNil(o.DiskTypeName) {
 		var ret string
@@ -286,6 +289,7 @@ func (o *ClusterProviderSettings) GetDiskTypeNameOk() (*string, bool) {
 	if o == nil || IsNil(o.DiskTypeName) {
 		return nil, false
 	}
+
 	return o.DiskTypeName, true
 }
 
@@ -303,7 +307,7 @@ func (o *ClusterProviderSettings) SetDiskTypeName(v string) {
 	o.DiskTypeName = &v
 }
 
-// GetBackingProviderName returns the BackingProviderName field value if set, zero value otherwise.
+// GetBackingProviderName returns the BackingProviderName field value if set, zero value otherwise
 func (o *ClusterProviderSettings) GetBackingProviderName() string {
 	if o == nil || IsNil(o.BackingProviderName) {
 		var ret string
@@ -318,6 +322,7 @@ func (o *ClusterProviderSettings) GetBackingProviderNameOk() (*string, bool) {
 	if o == nil || IsNil(o.BackingProviderName) {
 		return nil, false
 	}
+
 	return o.BackingProviderName, true
 }
 
@@ -370,40 +375,4 @@ func (o ClusterProviderSettings) ToMap() (map[string]interface{}, error) {
 		toSerialize["backingProviderName"] = o.BackingProviderName
 	}
 	return toSerialize, nil
-}
-
-type NullableClusterProviderSettings struct {
-	value *ClusterProviderSettings
-	isSet bool
-}
-
-func (v NullableClusterProviderSettings) Get() *ClusterProviderSettings {
-	return v.value
-}
-
-func (v *NullableClusterProviderSettings) Set(val *ClusterProviderSettings) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableClusterProviderSettings) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableClusterProviderSettings) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableClusterProviderSettings(val *ClusterProviderSettings) *NullableClusterProviderSettings {
-	return &NullableClusterProviderSettings{value: val, isSet: true}
-}
-
-func (v NullableClusterProviderSettings) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableClusterProviderSettings) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

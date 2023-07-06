@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the NetworkPermissionEntryStatus type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &NetworkPermissionEntryStatus{}
-
 // NetworkPermissionEntryStatus struct for NetworkPermissionEntryStatus
 type NetworkPermissionEntryStatus struct {
 	// State of the access list entry when MongoDB Cloud made this request.  | Status | Activity | |---|---| | `ACTIVE` | This access list entry applies to all relevant cloud providers. | | `PENDING` | MongoDB Cloud has started to add access list entry. This access list entry may not apply to all cloud providers at the time of this request. | | `FAILED` | MongoDB Cloud didn't succeed in adding this access list entry. |
@@ -67,40 +64,4 @@ func (o NetworkPermissionEntryStatus) MarshalJSONWithoutReadOnly() ([]byte, erro
 func (o NetworkPermissionEntryStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableNetworkPermissionEntryStatus struct {
-	value *NetworkPermissionEntryStatus
-	isSet bool
-}
-
-func (v NullableNetworkPermissionEntryStatus) Get() *NetworkPermissionEntryStatus {
-	return v.value
-}
-
-func (v *NullableNetworkPermissionEntryStatus) Set(val *NetworkPermissionEntryStatus) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableNetworkPermissionEntryStatus) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableNetworkPermissionEntryStatus) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableNetworkPermissionEntryStatus(val *NetworkPermissionEntryStatus) *NullableNetworkPermissionEntryStatus {
-	return &NullableNetworkPermissionEntryStatus{value: val, isSet: true}
-}
-
-func (v NullableNetworkPermissionEntryStatus) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableNetworkPermissionEntryStatus) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ComponentLabel type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ComponentLabel{}
-
 // ComponentLabel Human-readable labels applied to this MongoDB Cloud component.
 type ComponentLabel struct {
 	// Key applied to tag and categorize this component.
@@ -34,7 +31,7 @@ func NewComponentLabelWithDefaults() *ComponentLabel {
 	return &this
 }
 
-// GetKey returns the Key field value if set, zero value otherwise.
+// GetKey returns the Key field value if set, zero value otherwise
 func (o *ComponentLabel) GetKey() string {
 	if o == nil || IsNil(o.Key) {
 		var ret string
@@ -49,6 +46,7 @@ func (o *ComponentLabel) GetKeyOk() (*string, bool) {
 	if o == nil || IsNil(o.Key) {
 		return nil, false
 	}
+
 	return o.Key, true
 }
 
@@ -66,7 +64,7 @@ func (o *ComponentLabel) SetKey(v string) {
 	o.Key = &v
 }
 
-// GetValue returns the Value field value if set, zero value otherwise.
+// GetValue returns the Value field value if set, zero value otherwise
 func (o *ComponentLabel) GetValue() string {
 	if o == nil || IsNil(o.Value) {
 		var ret string
@@ -81,6 +79,7 @@ func (o *ComponentLabel) GetValueOk() (*string, bool) {
 	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
+
 	return o.Value, true
 }
 
@@ -114,40 +113,4 @@ func (o ComponentLabel) ToMap() (map[string]interface{}, error) {
 		toSerialize["value"] = o.Value
 	}
 	return toSerialize, nil
-}
-
-type NullableComponentLabel struct {
-	value *ComponentLabel
-	isSet bool
-}
-
-func (v NullableComponentLabel) Get() *ComponentLabel {
-	return v.value
-}
-
-func (v *NullableComponentLabel) Set(val *ComponentLabel) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableComponentLabel) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableComponentLabel) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableComponentLabel(val *ComponentLabel) *NullableComponentLabel {
-	return &NullableComponentLabel{value: val, isSet: true}
-}
-
-func (v NullableComponentLabel) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableComponentLabel) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

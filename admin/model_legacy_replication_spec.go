@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the LegacyReplicationSpec type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &LegacyReplicationSpec{}
-
 // LegacyReplicationSpec struct for LegacyReplicationSpec
 type LegacyReplicationSpec struct {
 	// Unique 24-hexadecimal digit string that identifies the replication object for a zone in a Global Cluster.  - If you include existing zones in the request, you must specify this parameter.  - If you add a new zone to an existing Global Cluster, you may specify this parameter. The request deletes any existing zones in a Global Cluster that you exclude from the request.
@@ -42,7 +39,7 @@ func NewLegacyReplicationSpecWithDefaults() *LegacyReplicationSpec {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *LegacyReplicationSpec) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -57,6 +54,7 @@ func (o *LegacyReplicationSpec) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -74,7 +72,7 @@ func (o *LegacyReplicationSpec) SetId(v string) {
 	o.Id = &v
 }
 
-// GetNumShards returns the NumShards field value if set, zero value otherwise.
+// GetNumShards returns the NumShards field value if set, zero value otherwise
 func (o *LegacyReplicationSpec) GetNumShards() int {
 	if o == nil || IsNil(o.NumShards) {
 		var ret int
@@ -89,6 +87,7 @@ func (o *LegacyReplicationSpec) GetNumShardsOk() (*int, bool) {
 	if o == nil || IsNil(o.NumShards) {
 		return nil, false
 	}
+
 	return o.NumShards, true
 }
 
@@ -106,7 +105,7 @@ func (o *LegacyReplicationSpec) SetNumShards(v int) {
 	o.NumShards = &v
 }
 
-// GetRegionsConfig returns the RegionsConfig field value if set, zero value otherwise.
+// GetRegionsConfig returns the RegionsConfig field value if set, zero value otherwise
 func (o *LegacyReplicationSpec) GetRegionsConfig() map[string]RegionSpec {
 	if o == nil || IsNil(o.RegionsConfig) {
 		var ret map[string]RegionSpec
@@ -121,6 +120,7 @@ func (o *LegacyReplicationSpec) GetRegionsConfigOk() (*map[string]RegionSpec, bo
 	if o == nil || IsNil(o.RegionsConfig) {
 		return nil, false
 	}
+
 	return o.RegionsConfig, true
 }
 
@@ -138,7 +138,7 @@ func (o *LegacyReplicationSpec) SetRegionsConfig(v map[string]RegionSpec) {
 	o.RegionsConfig = &v
 }
 
-// GetZoneName returns the ZoneName field value if set, zero value otherwise.
+// GetZoneName returns the ZoneName field value if set, zero value otherwise
 func (o *LegacyReplicationSpec) GetZoneName() string {
 	if o == nil || IsNil(o.ZoneName) {
 		var ret string
@@ -153,6 +153,7 @@ func (o *LegacyReplicationSpec) GetZoneNameOk() (*string, bool) {
 	if o == nil || IsNil(o.ZoneName) {
 		return nil, false
 	}
+
 	return o.ZoneName, true
 }
 
@@ -192,40 +193,4 @@ func (o LegacyReplicationSpec) ToMap() (map[string]interface{}, error) {
 		toSerialize["zoneName"] = o.ZoneName
 	}
 	return toSerialize, nil
-}
-
-type NullableLegacyReplicationSpec struct {
-	value *LegacyReplicationSpec
-	isSet bool
-}
-
-func (v NullableLegacyReplicationSpec) Get() *LegacyReplicationSpec {
-	return v.value
-}
-
-func (v *NullableLegacyReplicationSpec) Set(val *LegacyReplicationSpec) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableLegacyReplicationSpec) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableLegacyReplicationSpec) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableLegacyReplicationSpec(val *LegacyReplicationSpec) *NullableLegacyReplicationSpec {
-	return &NullableLegacyReplicationSpec{value: val, isSet: true}
-}
-
-func (v NullableLegacyReplicationSpec) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableLegacyReplicationSpec) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

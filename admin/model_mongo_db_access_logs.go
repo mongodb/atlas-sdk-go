@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the MongoDBAccessLogs type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &MongoDBAccessLogs{}
-
 // MongoDBAccessLogs Authentication attempt, one per object, made against the cluster.
 type MongoDBAccessLogs struct {
 	// Flag that indicates whether the response should return successful authentication attempts only.
@@ -48,7 +45,7 @@ func NewMongoDBAccessLogsWithDefaults() *MongoDBAccessLogs {
 	return &this
 }
 
-// GetAuthResult returns the AuthResult field value if set, zero value otherwise.
+// GetAuthResult returns the AuthResult field value if set, zero value otherwise
 func (o *MongoDBAccessLogs) GetAuthResult() bool {
 	if o == nil || IsNil(o.AuthResult) {
 		var ret bool
@@ -63,6 +60,7 @@ func (o *MongoDBAccessLogs) GetAuthResultOk() (*bool, bool) {
 	if o == nil || IsNil(o.AuthResult) {
 		return nil, false
 	}
+
 	return o.AuthResult, true
 }
 
@@ -80,7 +78,7 @@ func (o *MongoDBAccessLogs) SetAuthResult(v bool) {
 	o.AuthResult = &v
 }
 
-// GetAuthSource returns the AuthSource field value if set, zero value otherwise.
+// GetAuthSource returns the AuthSource field value if set, zero value otherwise
 func (o *MongoDBAccessLogs) GetAuthSource() string {
 	if o == nil || IsNil(o.AuthSource) {
 		var ret string
@@ -95,6 +93,7 @@ func (o *MongoDBAccessLogs) GetAuthSourceOk() (*string, bool) {
 	if o == nil || IsNil(o.AuthSource) {
 		return nil, false
 	}
+
 	return o.AuthSource, true
 }
 
@@ -112,7 +111,7 @@ func (o *MongoDBAccessLogs) SetAuthSource(v string) {
 	o.AuthSource = &v
 }
 
-// GetFailureReason returns the FailureReason field value if set, zero value otherwise.
+// GetFailureReason returns the FailureReason field value if set, zero value otherwise
 func (o *MongoDBAccessLogs) GetFailureReason() string {
 	if o == nil || IsNil(o.FailureReason) {
 		var ret string
@@ -127,6 +126,7 @@ func (o *MongoDBAccessLogs) GetFailureReasonOk() (*string, bool) {
 	if o == nil || IsNil(o.FailureReason) {
 		return nil, false
 	}
+
 	return o.FailureReason, true
 }
 
@@ -144,7 +144,7 @@ func (o *MongoDBAccessLogs) SetFailureReason(v string) {
 	o.FailureReason = &v
 }
 
-// GetGroupId returns the GroupId field value if set, zero value otherwise.
+// GetGroupId returns the GroupId field value if set, zero value otherwise
 func (o *MongoDBAccessLogs) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
 		var ret string
@@ -159,6 +159,7 @@ func (o *MongoDBAccessLogs) GetGroupIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupId) {
 		return nil, false
 	}
+
 	return o.GroupId, true
 }
 
@@ -176,7 +177,7 @@ func (o *MongoDBAccessLogs) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
-// GetHostname returns the Hostname field value if set, zero value otherwise.
+// GetHostname returns the Hostname field value if set, zero value otherwise
 func (o *MongoDBAccessLogs) GetHostname() string {
 	if o == nil || IsNil(o.Hostname) {
 		var ret string
@@ -191,6 +192,7 @@ func (o *MongoDBAccessLogs) GetHostnameOk() (*string, bool) {
 	if o == nil || IsNil(o.Hostname) {
 		return nil, false
 	}
+
 	return o.Hostname, true
 }
 
@@ -208,7 +210,7 @@ func (o *MongoDBAccessLogs) SetHostname(v string) {
 	o.Hostname = &v
 }
 
-// GetIpAddress returns the IpAddress field value if set, zero value otherwise.
+// GetIpAddress returns the IpAddress field value if set, zero value otherwise
 func (o *MongoDBAccessLogs) GetIpAddress() string {
 	if o == nil || IsNil(o.IpAddress) {
 		var ret string
@@ -223,6 +225,7 @@ func (o *MongoDBAccessLogs) GetIpAddressOk() (*string, bool) {
 	if o == nil || IsNil(o.IpAddress) {
 		return nil, false
 	}
+
 	return o.IpAddress, true
 }
 
@@ -240,7 +243,7 @@ func (o *MongoDBAccessLogs) SetIpAddress(v string) {
 	o.IpAddress = &v
 }
 
-// GetLogLine returns the LogLine field value if set, zero value otherwise.
+// GetLogLine returns the LogLine field value if set, zero value otherwise
 func (o *MongoDBAccessLogs) GetLogLine() string {
 	if o == nil || IsNil(o.LogLine) {
 		var ret string
@@ -255,6 +258,7 @@ func (o *MongoDBAccessLogs) GetLogLineOk() (*string, bool) {
 	if o == nil || IsNil(o.LogLine) {
 		return nil, false
 	}
+
 	return o.LogLine, true
 }
 
@@ -272,7 +276,7 @@ func (o *MongoDBAccessLogs) SetLogLine(v string) {
 	o.LogLine = &v
 }
 
-// GetTimestamp returns the Timestamp field value if set, zero value otherwise.
+// GetTimestamp returns the Timestamp field value if set, zero value otherwise
 func (o *MongoDBAccessLogs) GetTimestamp() string {
 	if o == nil || IsNil(o.Timestamp) {
 		var ret string
@@ -287,6 +291,7 @@ func (o *MongoDBAccessLogs) GetTimestampOk() (*string, bool) {
 	if o == nil || IsNil(o.Timestamp) {
 		return nil, false
 	}
+
 	return o.Timestamp, true
 }
 
@@ -304,7 +309,7 @@ func (o *MongoDBAccessLogs) SetTimestamp(v string) {
 	o.Timestamp = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
+// GetUsername returns the Username field value if set, zero value otherwise
 func (o *MongoDBAccessLogs) GetUsername() string {
 	if o == nil || IsNil(o.Username) {
 		var ret string
@@ -319,6 +324,7 @@ func (o *MongoDBAccessLogs) GetUsernameOk() (*string, bool) {
 	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
+
 	return o.Username, true
 }
 
@@ -349,40 +355,4 @@ func (o MongoDBAccessLogs) ToMap() (map[string]interface{}, error) {
 		toSerialize["authResult"] = o.AuthResult
 	}
 	return toSerialize, nil
-}
-
-type NullableMongoDBAccessLogs struct {
-	value *MongoDBAccessLogs
-	isSet bool
-}
-
-func (v NullableMongoDBAccessLogs) Get() *MongoDBAccessLogs {
-	return v.value
-}
-
-func (v *NullableMongoDBAccessLogs) Set(val *MongoDBAccessLogs) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableMongoDBAccessLogs) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableMongoDBAccessLogs) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableMongoDBAccessLogs(val *MongoDBAccessLogs) *NullableMongoDBAccessLogs {
-	return &NullableMongoDBAccessLogs{value: val, isSet: true}
-}
-
-func (v NullableMongoDBAccessLogs) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableMongoDBAccessLogs) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

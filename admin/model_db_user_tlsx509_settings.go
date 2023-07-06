@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the DBUserTLSX509Settings type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DBUserTLSX509Settings{}
-
 // DBUserTLSX509Settings Settings to configure TLS Certificates for database users.
 type DBUserTLSX509Settings struct {
 	// Concatenated list of customer certificate authority (CA) certificates needed to authenticate database users. MongoDB Cloud expects this as a PEM-formatted certificate.
@@ -34,7 +31,7 @@ func NewDBUserTLSX509SettingsWithDefaults() *DBUserTLSX509Settings {
 	return &this
 }
 
-// GetCas returns the Cas field value if set, zero value otherwise.
+// GetCas returns the Cas field value if set, zero value otherwise
 func (o *DBUserTLSX509Settings) GetCas() string {
 	if o == nil || IsNil(o.Cas) {
 		var ret string
@@ -49,6 +46,7 @@ func (o *DBUserTLSX509Settings) GetCasOk() (*string, bool) {
 	if o == nil || IsNil(o.Cas) {
 		return nil, false
 	}
+
 	return o.Cas, true
 }
 
@@ -66,7 +64,7 @@ func (o *DBUserTLSX509Settings) SetCas(v string) {
 	o.Cas = &v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *DBUserTLSX509Settings) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -81,6 +79,7 @@ func (o *DBUserTLSX509Settings) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -111,40 +110,4 @@ func (o DBUserTLSX509Settings) ToMap() (map[string]interface{}, error) {
 		toSerialize["cas"] = o.Cas
 	}
 	return toSerialize, nil
-}
-
-type NullableDBUserTLSX509Settings struct {
-	value *DBUserTLSX509Settings
-	isSet bool
-}
-
-func (v NullableDBUserTLSX509Settings) Get() *DBUserTLSX509Settings {
-	return v.value
-}
-
-func (v *NullableDBUserTLSX509Settings) Set(val *DBUserTLSX509Settings) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableDBUserTLSX509Settings) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableDBUserTLSX509Settings) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableDBUserTLSX509Settings(val *DBUserTLSX509Settings) *NullableDBUserTLSX509Settings {
-	return &NullableDBUserTLSX509Settings{value: val, isSet: true}
-}
-
-func (v NullableDBUserTLSX509Settings) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableDBUserTLSX509Settings) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

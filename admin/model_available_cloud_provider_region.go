@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the AvailableCloudProviderRegion type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AvailableCloudProviderRegion{}
-
 // AvailableCloudProviderRegion List of regions that this cloud provider supports for this instance size.
 type AvailableCloudProviderRegion struct {
 	// Flag that indicates whether the cloud provider sets this region as its default. AWS defaults to US_EAST_1, GCP defaults to CENTRAL_US, and AZURE defaults to US_WEST_2.
@@ -34,7 +31,7 @@ func NewAvailableCloudProviderRegionWithDefaults() *AvailableCloudProviderRegion
 	return &this
 }
 
-// GetDefault returns the Default field value if set, zero value otherwise.
+// GetDefault returns the Default field value if set, zero value otherwise
 func (o *AvailableCloudProviderRegion) GetDefault() bool {
 	if o == nil || IsNil(o.Default) {
 		var ret bool
@@ -49,6 +46,7 @@ func (o *AvailableCloudProviderRegion) GetDefaultOk() (*bool, bool) {
 	if o == nil || IsNil(o.Default) {
 		return nil, false
 	}
+
 	return o.Default, true
 }
 
@@ -66,7 +64,7 @@ func (o *AvailableCloudProviderRegion) SetDefault(v bool) {
 	o.Default = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise
 func (o *AvailableCloudProviderRegion) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
@@ -81,6 +79,7 @@ func (o *AvailableCloudProviderRegion) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
+
 	return o.Name, true
 }
 
@@ -108,40 +107,4 @@ func (o AvailableCloudProviderRegion) MarshalJSONWithoutReadOnly() ([]byte, erro
 func (o AvailableCloudProviderRegion) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	return toSerialize, nil
-}
-
-type NullableAvailableCloudProviderRegion struct {
-	value *AvailableCloudProviderRegion
-	isSet bool
-}
-
-func (v NullableAvailableCloudProviderRegion) Get() *AvailableCloudProviderRegion {
-	return v.value
-}
-
-func (v *NullableAvailableCloudProviderRegion) Set(val *AvailableCloudProviderRegion) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableAvailableCloudProviderRegion) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableAvailableCloudProviderRegion) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableAvailableCloudProviderRegion(val *AvailableCloudProviderRegion) *NullableAvailableCloudProviderRegion {
-	return &NullableAvailableCloudProviderRegion{value: val, isSet: true}
-}
-
-func (v NullableAvailableCloudProviderRegion) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableAvailableCloudProviderRegion) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

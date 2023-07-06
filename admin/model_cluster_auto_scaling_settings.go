@@ -6,9 +6,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ClusterAutoScalingSettings type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ClusterAutoScalingSettings{}
-
 // ClusterAutoScalingSettings Range of instance sizes to which your cluster can scale.
 type ClusterAutoScalingSettings struct {
 	Compute *ClusterComputeAutoScaling `json:"compute,omitempty"`
@@ -33,7 +30,7 @@ func NewClusterAutoScalingSettingsWithDefaults() *ClusterAutoScalingSettings {
 	return &this
 }
 
-// GetCompute returns the Compute field value if set, zero value otherwise.
+// GetCompute returns the Compute field value if set, zero value otherwise
 func (o *ClusterAutoScalingSettings) GetCompute() ClusterComputeAutoScaling {
 	if o == nil || IsNil(o.Compute) {
 		var ret ClusterComputeAutoScaling
@@ -48,6 +45,7 @@ func (o *ClusterAutoScalingSettings) GetComputeOk() (*ClusterComputeAutoScaling,
 	if o == nil || IsNil(o.Compute) {
 		return nil, false
 	}
+
 	return o.Compute, true
 }
 
@@ -65,7 +63,7 @@ func (o *ClusterAutoScalingSettings) SetCompute(v ClusterComputeAutoScaling) {
 	o.Compute = &v
 }
 
-// GetDiskGBEnabled returns the DiskGBEnabled field value if set, zero value otherwise.
+// GetDiskGBEnabled returns the DiskGBEnabled field value if set, zero value otherwise
 func (o *ClusterAutoScalingSettings) GetDiskGBEnabled() bool {
 	if o == nil || IsNil(o.DiskGBEnabled) {
 		var ret bool
@@ -80,6 +78,7 @@ func (o *ClusterAutoScalingSettings) GetDiskGBEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.DiskGBEnabled) {
 		return nil, false
 	}
+
 	return o.DiskGBEnabled, true
 }
 
@@ -113,40 +112,4 @@ func (o ClusterAutoScalingSettings) ToMap() (map[string]interface{}, error) {
 		toSerialize["diskGBEnabled"] = o.DiskGBEnabled
 	}
 	return toSerialize, nil
-}
-
-type NullableClusterAutoScalingSettings struct {
-	value *ClusterAutoScalingSettings
-	isSet bool
-}
-
-func (v NullableClusterAutoScalingSettings) Get() *ClusterAutoScalingSettings {
-	return v.value
-}
-
-func (v *NullableClusterAutoScalingSettings) Set(val *ClusterAutoScalingSettings) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableClusterAutoScalingSettings) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableClusterAutoScalingSettings) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableClusterAutoScalingSettings(val *ClusterAutoScalingSettings) *NullableClusterAutoScalingSettings {
-	return &NullableClusterAutoScalingSettings{value: val, isSet: true}
-}
-
-func (v NullableClusterAutoScalingSettings) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableClusterAutoScalingSettings) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }

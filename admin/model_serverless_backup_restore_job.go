@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// checks if the ServerlessBackupRestoreJob type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ServerlessBackupRestoreJob{}
-
 // ServerlessBackupRestoreJob struct for ServerlessBackupRestoreJob
 type ServerlessBackupRestoreJob struct {
 	// Flag that indicates whether someone canceled this restore job.
@@ -67,7 +64,7 @@ func NewServerlessBackupRestoreJobWithDefaults() *ServerlessBackupRestoreJob {
 	return &this
 }
 
-// GetCancelled returns the Cancelled field value if set, zero value otherwise.
+// GetCancelled returns the Cancelled field value if set, zero value otherwise
 func (o *ServerlessBackupRestoreJob) GetCancelled() bool {
 	if o == nil || IsNil(o.Cancelled) {
 		var ret bool
@@ -82,6 +79,7 @@ func (o *ServerlessBackupRestoreJob) GetCancelledOk() (*bool, bool) {
 	if o == nil || IsNil(o.Cancelled) {
 		return nil, false
 	}
+
 	return o.Cancelled, true
 }
 
@@ -123,7 +121,7 @@ func (o *ServerlessBackupRestoreJob) SetDeliveryType(v string) {
 	o.DeliveryType = v
 }
 
-// GetDeliveryUrl returns the DeliveryUrl field value if set, zero value otherwise.
+// GetDeliveryUrl returns the DeliveryUrl field value if set, zero value otherwise
 func (o *ServerlessBackupRestoreJob) GetDeliveryUrl() []string {
 	if o == nil || IsNil(o.DeliveryUrl) {
 		var ret []string
@@ -138,6 +136,7 @@ func (o *ServerlessBackupRestoreJob) GetDeliveryUrlOk() ([]string, bool) {
 	if o == nil || IsNil(o.DeliveryUrl) {
 		return nil, false
 	}
+
 	return o.DeliveryUrl, true
 }
 
@@ -155,7 +154,7 @@ func (o *ServerlessBackupRestoreJob) SetDeliveryUrl(v []string) {
 	o.DeliveryUrl = v
 }
 
-// GetDesiredTimestamp returns the DesiredTimestamp field value if set, zero value otherwise.
+// GetDesiredTimestamp returns the DesiredTimestamp field value if set, zero value otherwise
 func (o *ServerlessBackupRestoreJob) GetDesiredTimestamp() ApiBSONTimestamp {
 	if o == nil || IsNil(o.DesiredTimestamp) {
 		var ret ApiBSONTimestamp
@@ -170,6 +169,7 @@ func (o *ServerlessBackupRestoreJob) GetDesiredTimestampOk() (*ApiBSONTimestamp,
 	if o == nil || IsNil(o.DesiredTimestamp) {
 		return nil, false
 	}
+
 	return o.DesiredTimestamp, true
 }
 
@@ -187,7 +187,7 @@ func (o *ServerlessBackupRestoreJob) SetDesiredTimestamp(v ApiBSONTimestamp) {
 	o.DesiredTimestamp = &v
 }
 
-// GetExpired returns the Expired field value if set, zero value otherwise.
+// GetExpired returns the Expired field value if set, zero value otherwise
 func (o *ServerlessBackupRestoreJob) GetExpired() bool {
 	if o == nil || IsNil(o.Expired) {
 		var ret bool
@@ -202,6 +202,7 @@ func (o *ServerlessBackupRestoreJob) GetExpiredOk() (*bool, bool) {
 	if o == nil || IsNil(o.Expired) {
 		return nil, false
 	}
+
 	return o.Expired, true
 }
 
@@ -219,7 +220,7 @@ func (o *ServerlessBackupRestoreJob) SetExpired(v bool) {
 	o.Expired = &v
 }
 
-// GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise.
+// GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise
 func (o *ServerlessBackupRestoreJob) GetExpiresAt() time.Time {
 	if o == nil || IsNil(o.ExpiresAt) {
 		var ret time.Time
@@ -234,6 +235,7 @@ func (o *ServerlessBackupRestoreJob) GetExpiresAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.ExpiresAt) {
 		return nil, false
 	}
+
 	return o.ExpiresAt, true
 }
 
@@ -251,7 +253,7 @@ func (o *ServerlessBackupRestoreJob) SetExpiresAt(v time.Time) {
 	o.ExpiresAt = &v
 }
 
-// GetFailed returns the Failed field value if set, zero value otherwise.
+// GetFailed returns the Failed field value if set, zero value otherwise
 func (o *ServerlessBackupRestoreJob) GetFailed() bool {
 	if o == nil || IsNil(o.Failed) {
 		var ret bool
@@ -266,6 +268,7 @@ func (o *ServerlessBackupRestoreJob) GetFailedOk() (*bool, bool) {
 	if o == nil || IsNil(o.Failed) {
 		return nil, false
 	}
+
 	return o.Failed, true
 }
 
@@ -283,7 +286,7 @@ func (o *ServerlessBackupRestoreJob) SetFailed(v bool) {
 	o.Failed = &v
 }
 
-// GetFinishedAt returns the FinishedAt field value if set, zero value otherwise.
+// GetFinishedAt returns the FinishedAt field value if set, zero value otherwise
 func (o *ServerlessBackupRestoreJob) GetFinishedAt() time.Time {
 	if o == nil || IsNil(o.FinishedAt) {
 		var ret time.Time
@@ -298,6 +301,7 @@ func (o *ServerlessBackupRestoreJob) GetFinishedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.FinishedAt) {
 		return nil, false
 	}
+
 	return o.FinishedAt, true
 }
 
@@ -315,7 +319,7 @@ func (o *ServerlessBackupRestoreJob) SetFinishedAt(v time.Time) {
 	o.FinishedAt = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise
 func (o *ServerlessBackupRestoreJob) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
@@ -330,6 +334,7 @@ func (o *ServerlessBackupRestoreJob) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
+
 	return o.Id, true
 }
 
@@ -347,7 +352,7 @@ func (o *ServerlessBackupRestoreJob) SetId(v string) {
 	o.Id = &v
 }
 
-// GetLinks returns the Links field value if set, zero value otherwise.
+// GetLinks returns the Links field value if set, zero value otherwise
 func (o *ServerlessBackupRestoreJob) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
@@ -362,6 +367,7 @@ func (o *ServerlessBackupRestoreJob) GetLinksOk() ([]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
+
 	return o.Links, true
 }
 
@@ -379,7 +385,7 @@ func (o *ServerlessBackupRestoreJob) SetLinks(v []Link) {
 	o.Links = v
 }
 
-// GetOplogInc returns the OplogInc field value if set, zero value otherwise.
+// GetOplogInc returns the OplogInc field value if set, zero value otherwise
 func (o *ServerlessBackupRestoreJob) GetOplogInc() int {
 	if o == nil || IsNil(o.OplogInc) {
 		var ret int
@@ -394,6 +400,7 @@ func (o *ServerlessBackupRestoreJob) GetOplogIncOk() (*int, bool) {
 	if o == nil || IsNil(o.OplogInc) {
 		return nil, false
 	}
+
 	return o.OplogInc, true
 }
 
@@ -411,7 +418,7 @@ func (o *ServerlessBackupRestoreJob) SetOplogInc(v int) {
 	o.OplogInc = &v
 }
 
-// GetOplogTs returns the OplogTs field value if set, zero value otherwise.
+// GetOplogTs returns the OplogTs field value if set, zero value otherwise
 func (o *ServerlessBackupRestoreJob) GetOplogTs() int {
 	if o == nil || IsNil(o.OplogTs) {
 		var ret int
@@ -426,6 +433,7 @@ func (o *ServerlessBackupRestoreJob) GetOplogTsOk() (*int, bool) {
 	if o == nil || IsNil(o.OplogTs) {
 		return nil, false
 	}
+
 	return o.OplogTs, true
 }
 
@@ -443,7 +451,7 @@ func (o *ServerlessBackupRestoreJob) SetOplogTs(v int) {
 	o.OplogTs = &v
 }
 
-// GetPointInTimeUTCSeconds returns the PointInTimeUTCSeconds field value if set, zero value otherwise.
+// GetPointInTimeUTCSeconds returns the PointInTimeUTCSeconds field value if set, zero value otherwise
 func (o *ServerlessBackupRestoreJob) GetPointInTimeUTCSeconds() int {
 	if o == nil || IsNil(o.PointInTimeUTCSeconds) {
 		var ret int
@@ -458,6 +466,7 @@ func (o *ServerlessBackupRestoreJob) GetPointInTimeUTCSecondsOk() (*int, bool) {
 	if o == nil || IsNil(o.PointInTimeUTCSeconds) {
 		return nil, false
 	}
+
 	return o.PointInTimeUTCSeconds, true
 }
 
@@ -475,7 +484,7 @@ func (o *ServerlessBackupRestoreJob) SetPointInTimeUTCSeconds(v int) {
 	o.PointInTimeUTCSeconds = &v
 }
 
-// GetSnapshotId returns the SnapshotId field value if set, zero value otherwise.
+// GetSnapshotId returns the SnapshotId field value if set, zero value otherwise
 func (o *ServerlessBackupRestoreJob) GetSnapshotId() string {
 	if o == nil || IsNil(o.SnapshotId) {
 		var ret string
@@ -490,6 +499,7 @@ func (o *ServerlessBackupRestoreJob) GetSnapshotIdOk() (*string, bool) {
 	if o == nil || IsNil(o.SnapshotId) {
 		return nil, false
 	}
+
 	return o.SnapshotId, true
 }
 
@@ -555,7 +565,7 @@ func (o *ServerlessBackupRestoreJob) SetTargetGroupId(v string) {
 	o.TargetGroupId = v
 }
 
-// GetTimestamp returns the Timestamp field value if set, zero value otherwise.
+// GetTimestamp returns the Timestamp field value if set, zero value otherwise
 func (o *ServerlessBackupRestoreJob) GetTimestamp() time.Time {
 	if o == nil || IsNil(o.Timestamp) {
 		var ret time.Time
@@ -570,6 +580,7 @@ func (o *ServerlessBackupRestoreJob) GetTimestampOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.Timestamp) {
 		return nil, false
 	}
+
 	return o.Timestamp, true
 }
 
@@ -615,40 +626,4 @@ func (o ServerlessBackupRestoreJob) ToMap() (map[string]interface{}, error) {
 	toSerialize["targetClusterName"] = o.TargetClusterName
 	toSerialize["targetGroupId"] = o.TargetGroupId
 	return toSerialize, nil
-}
-
-type NullableServerlessBackupRestoreJob struct {
-	value *ServerlessBackupRestoreJob
-	isSet bool
-}
-
-func (v NullableServerlessBackupRestoreJob) Get() *ServerlessBackupRestoreJob {
-	return v.value
-}
-
-func (v *NullableServerlessBackupRestoreJob) Set(val *ServerlessBackupRestoreJob) {
-	v.value = val
-	v.isSet = true
-}
-
-func (v NullableServerlessBackupRestoreJob) IsSet() bool {
-	return v.isSet
-}
-
-func (v *NullableServerlessBackupRestoreJob) Unset() {
-	v.value = nil
-	v.isSet = false
-}
-
-func NewNullableServerlessBackupRestoreJob(val *ServerlessBackupRestoreJob) *NullableServerlessBackupRestoreJob {
-	return &NullableServerlessBackupRestoreJob{value: val, isSet: true}
-}
-
-func (v NullableServerlessBackupRestoreJob) MarshalJSON() ([]byte, error) {
-	return json.Marshal(v.value)
-}
-
-func (v *NullableServerlessBackupRestoreJob) UnmarshalJSON(src []byte) error {
-	v.isSet = true
-	return json.Unmarshal(src, &v.value)
 }
