@@ -12,7 +12,7 @@ Structures weren't part of the API and should not be used by end users.
 2. Data structures now use golang base types instead of `NullableString` or `NullableInt`.
 For example:
 
-`ThridPartyIntegration.ChannelName NullableString` => `ChannelName *string`
+`ThirdPartyIntegration.ChannelName NullableString` => `ChannelName *string`
 
 Following list of the models have been affected:
 ```
