@@ -15,5 +15,5 @@
 package core
 
 const (
-	Version = "v20230201001.0.0"
+	Version = "v20230201002.0.0"
 )
