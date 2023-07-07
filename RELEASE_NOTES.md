@@ -7,12 +7,9 @@
 
 ## Breaking Changes
 
-1. All golang structures starting from `admin.Nullable` have been removed.
-Structures weren't part of the API and should not be used by end users.
-2. Data structures now use golang base types instead of `NullableString` or `NullableInt`.
-For example:
-
-`ThirdPartyIntegration.ChannelName NullableString` => `ChannelName *string`
+- Removed all internal golang structures starting with `admin.Nullable`.
+- Data structures now use golang base types instead of `NullableString` or `NullableInt`. For example, the data structure
+`ThirdPartyIntegration.ChannelName` NullableString now uses the ChannelName *string base type.
 
 This change affects the following models:
 ```
