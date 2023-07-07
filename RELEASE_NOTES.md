@@ -14,7 +14,7 @@ For example:
 
 `ThirdPartyIntegration.ChannelName NullableString` => `ChannelName *string`
 
-Following list of the models have been affected:
+This change affects the following models:
 ```
 admin/model_cluster_description_process_args.go
 admin/model_live_import_validation.go
