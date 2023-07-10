@@ -6,6 +6,12 @@
    * [Performing Data Modification](./doc_1_concepts.md#performing-data-modification)
    * [Experimental Methods](./doc_1_concepts.md#experimental-methods)
    * [Example](./doc_1_concepts.md#example)
+   * [Release Strategy (Semantic Versioning)](./doc_1_concepts.md#release-strategy-semantic-versioning)
+      * [Versioning Rules](./doc_1_concepts.md#versioning-rules)
+         * [Major Version (vYYYYMMDDXXX.0.0)](./doc_1_concepts.md#major-version-vyyyymmddxxx00)
+         * [Minor Version (vYYYYMMDDXXX.Y.0)](./doc_1_concepts.md#minor-version-vyyyymmddxxxy0)
+         * [Patch Version (vYYYYMMDDXXX.Y.Z)](./doc_1_concepts.md#patch-version-vyyyymmddxxxyz)
+   * [Example Version: v20230201001.0.0](./doc_1_concepts.md#example-version-v2023020100100)
 
 * [Error Handling](./doc_2_error_handling.md#error-handling)
    * [Fetching Error Object](./doc_2_error_handling.md#fetching-error-object)
@@ -21,6 +27,7 @@
       * [Multiple Choices when Creating Request Body Objects](./doc_3_migration.md#multiple-choices-when-creating-request-body-objects)
 
 * [Authenticate using the Atlas Go SDK](./doc_4_authentication.md#authenticate-using-the-atlas-go-sdk)
+      * [Use the Atlas Go SDK in Your Code](./doc_4_authentication.md#use-the-atlas-go-sdk-in-your-code)
 
 * [Best Practices](./doc_5_best_practices.md#best-practices)
    * [Using Getters Instead of Direct Field Access](./doc_5_best_practices.md#using-getters-instead-of-direct-field-access)
