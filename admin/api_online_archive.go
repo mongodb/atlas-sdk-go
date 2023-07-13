@@ -17,14 +17,14 @@ type OnlineArchiveApi interface {
 	/*
 		CreateOnlineArchive Create One Online Archive
 
-		Creates one online archive. This archive stores data from one cluster within one project. To use this resource, the requesting API Key must have the Project Data Access Admin role. This resource doesn't require the API Key to have an Access List.
+		Creates one online archive. This archive stores data from one cluster within one project. To use this resource, the requesting API Key must have the Project Data Access Admin role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param clusterName Human-readable label that identifies the cluster that contains the collection for which you want to create one online archive.
 		@return CreateOnlineArchiveApiRequest
 	*/
-	CreateOnlineArchive(ctx context.Context, groupId string, clusterName string, backupOnlineArchive *BackupOnlineArchive) CreateOnlineArchiveApiRequest
+	CreateOnlineArchive(ctx context.Context, groupId string, clusterName string, backupOnlineArchiveCreate *BackupOnlineArchiveCreate) CreateOnlineArchiveApiRequest
 	/*
 		CreateOnlineArchive Create One Online Archive
 
@@ -41,7 +41,7 @@ type OnlineArchiveApi interface {
 	/*
 		DeleteOnlineArchive Remove One Online Archive
 
-		Removes one online archive. This archive stores data from one cluster within one project. To use this resource, the requesting API Key must have the Project Data Access Admin role. This resource doesn't require the API Key to have an Access List.
+		Removes one online archive. This archive stores data from one cluster within one project. To use this resource, the requesting API Key must have the Project Data Access Admin role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -66,7 +66,7 @@ type OnlineArchiveApi interface {
 	/*
 		DownloadOnlineArchiveQueryLogs Download Online Archive Query Logs
 
-		[experimental] Downloads query logs for the specified online archive. To use this resource, the requesting API Key must have the Project Data Access Read Only or higher role. This resource doesn't require the API Key to have an Access List.
+		[experimental] Downloads query logs for the specified online archive. To use this resource, the requesting API Key must have the Project Data Access Read Only or higher role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -90,7 +90,7 @@ type OnlineArchiveApi interface {
 	/*
 		GetOnlineArchive Return One Online Archive
 
-		Returns one online archive for one cluster. This archive stores data from one cluster within one project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+		Returns one online archive for one cluster. This archive stores data from one cluster within one project. To use this resource, the requesting API Key must have the Project Read Only role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -115,7 +115,7 @@ type OnlineArchiveApi interface {
 	/*
 		ListOnlineArchives Return All Online Archives for One Cluster
 
-		Returns details of all online archives. This archive stores data from one cluster within one project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+		Returns details of all online archives. This archive stores data from one cluster within one project. To use this resource, the requesting API Key must have the Project Read Only role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -139,7 +139,7 @@ type OnlineArchiveApi interface {
 	/*
 		UpdateOnlineArchive Update One Online Archive
 
-		Updates, pauses, or resumes one online archive. This archive stores data from one cluster within one project. To use this resource, the requesting API Key must have the Project Data Access Admin role. This resource doesn't require the API Key to have an Access List.
+		Updates, pauses, or resumes one online archive. This archive stores data from one cluster within one project. To use this resource, the requesting API Key must have the Project Data Access Admin role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -166,26 +166,26 @@ type OnlineArchiveApi interface {
 type OnlineArchiveApiService service
 
 type CreateOnlineArchiveApiRequest struct {
-	ctx                 context.Context
-	ApiService          OnlineArchiveApi
-	groupId             string
-	clusterName         string
-	backupOnlineArchive *BackupOnlineArchive
+	ctx                       context.Context
+	ApiService                OnlineArchiveApi
+	groupId                   string
+	clusterName               string
+	backupOnlineArchiveCreate *BackupOnlineArchiveCreate
 }
 
 type CreateOnlineArchiveApiParams struct {
-	GroupId             string
-	ClusterName         string
-	BackupOnlineArchive *BackupOnlineArchive
+	GroupId                   string
+	ClusterName               string
+	BackupOnlineArchiveCreate *BackupOnlineArchiveCreate
 }
 
 func (a *OnlineArchiveApiService) CreateOnlineArchiveWithParams(ctx context.Context, args *CreateOnlineArchiveApiParams) CreateOnlineArchiveApiRequest {
 	return CreateOnlineArchiveApiRequest{
-		ApiService:          a,
-		ctx:                 ctx,
-		groupId:             args.GroupId,
-		clusterName:         args.ClusterName,
-		backupOnlineArchive: args.BackupOnlineArchive,
+		ApiService:                a,
+		ctx:                       ctx,
+		groupId:                   args.GroupId,
+		clusterName:               args.ClusterName,
+		backupOnlineArchiveCreate: args.BackupOnlineArchiveCreate,
 	}
 }
 
@@ -196,20 +196,20 @@ func (r CreateOnlineArchiveApiRequest) Execute() (*BackupOnlineArchive, *http.Re
 /*
 CreateOnlineArchive Create One Online Archive
 
-Creates one online archive. This archive stores data from one cluster within one project. To use this resource, the requesting API Key must have the Project Data Access Admin role. This resource doesn't require the API Key to have an Access List.
+Creates one online archive. This archive stores data from one cluster within one project. To use this resource, the requesting API Key must have the Project Data Access Admin role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Human-readable label that identifies the cluster that contains the collection for which you want to create one online archive.
 	@return CreateOnlineArchiveApiRequest
 */
-func (a *OnlineArchiveApiService) CreateOnlineArchive(ctx context.Context, groupId string, clusterName string, backupOnlineArchive *BackupOnlineArchive) CreateOnlineArchiveApiRequest {
+func (a *OnlineArchiveApiService) CreateOnlineArchive(ctx context.Context, groupId string, clusterName string, backupOnlineArchiveCreate *BackupOnlineArchiveCreate) CreateOnlineArchiveApiRequest {
 	return CreateOnlineArchiveApiRequest{
-		ApiService:          a,
-		ctx:                 ctx,
-		groupId:             groupId,
-		clusterName:         clusterName,
-		backupOnlineArchive: backupOnlineArchive,
+		ApiService:                a,
+		ctx:                       ctx,
+		groupId:                   groupId,
+		clusterName:               clusterName,
+		backupOnlineArchiveCreate: backupOnlineArchiveCreate,
 	}
 }
 
@@ -248,8 +248,8 @@ func (a *OnlineArchiveApiService) createOnlineArchiveExecute(r CreateOnlineArchi
 	if strlen(r.clusterName) > 64 {
 		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
 	}
-	if r.backupOnlineArchive == nil {
-		return localVarReturnValue, nil, reportError("backupOnlineArchive is required and must be specified")
+	if r.backupOnlineArchiveCreate == nil {
+		return localVarReturnValue, nil, reportError("backupOnlineArchiveCreate is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -270,7 +270,7 @@ func (a *OnlineArchiveApiService) createOnlineArchiveExecute(r CreateOnlineArchi
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.backupOnlineArchive
+	localVarPostBody = r.backupOnlineArchiveCreate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -347,7 +347,7 @@ func (r DeleteOnlineArchiveApiRequest) Execute() (map[string]interface{}, *http.
 /*
 DeleteOnlineArchive Remove One Online Archive
 
-Removes one online archive. This archive stores data from one cluster within one project. To use this resource, the requesting API Key must have the Project Data Access Admin role. This resource doesn't require the API Key to have an Access List.
+Removes one online archive. This archive stores data from one cluster within one project. To use this resource, the requesting API Key must have the Project Data Access Admin role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -525,7 +525,7 @@ func (r DownloadOnlineArchiveQueryLogsApiRequest) Execute() (*os.File, *http.Res
 /*
 DownloadOnlineArchiveQueryLogs Download Online Archive Query Logs
 
-[experimental] Downloads query logs for the specified online archive. To use this resource, the requesting API Key must have the Project Data Access Read Only or higher role. This resource doesn't require the API Key to have an Access List.
+[experimental] Downloads query logs for the specified online archive. To use this resource, the requesting API Key must have the Project Data Access Read Only or higher role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -683,7 +683,7 @@ func (r GetOnlineArchiveApiRequest) Execute() (*BackupOnlineArchive, *http.Respo
 /*
 GetOnlineArchive Return One Online Archive
 
-Returns one online archive for one cluster. This archive stores data from one cluster within one project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+Returns one online archive for one cluster. This archive stores data from one cluster within one project. To use this resource, the requesting API Key must have the Project Read Only role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -861,7 +861,7 @@ func (r ListOnlineArchivesApiRequest) Execute() (*PaginatedOnlineArchive, *http.
 /*
 ListOnlineArchives Return All Online Archives for One Cluster
 
-Returns details of all online archives. This archive stores data from one cluster within one project. To use this resource, the requesting API Key must have the Project Read Only role. This resource doesn't require the API Key to have an Access List.
+Returns details of all online archives. This archive stores data from one cluster within one project. To use this resource, the requesting API Key must have the Project Read Only role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1030,7 +1030,7 @@ func (r UpdateOnlineArchiveApiRequest) Execute() (*BackupOnlineArchive, *http.Re
 /*
 UpdateOnlineArchive Update One Online Archive
 
-Updates, pauses, or resumes one online archive. This archive stores data from one cluster within one project. To use this resource, the requesting API Key must have the Project Data Access Admin role. This resource doesn't require the API Key to have an Access List.
+Updates, pauses, or resumes one online archive. This archive stores data from one cluster within one project. To use this resource, the requesting API Key must have the Project Data Access Admin role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
