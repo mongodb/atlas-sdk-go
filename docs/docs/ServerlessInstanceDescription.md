@@ -60,7 +60,6 @@ SetConnectionStrings sets ConnectionStrings field to given value.
 `func (o *ServerlessInstanceDescription) HasConnectionStrings() bool`
 
 HasConnectionStrings returns a boolean if a field has been set.
-
 ### GetCreateDate
 
 `func (o *ServerlessInstanceDescription) GetCreateDate() time.Time`
@@ -85,7 +84,6 @@ SetCreateDate sets CreateDate field to given value.
 `func (o *ServerlessInstanceDescription) HasCreateDate() bool`
 
 HasCreateDate returns a boolean if a field has been set.
-
 ### GetGroupId
 
 `func (o *ServerlessInstanceDescription) GetGroupId() string`
@@ -110,7 +108,6 @@ SetGroupId sets GroupId field to given value.
 `func (o *ServerlessInstanceDescription) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
-
 ### GetId
 
 `func (o *ServerlessInstanceDescription) GetId() string`
@@ -135,7 +132,6 @@ SetId sets Id field to given value.
 `func (o *ServerlessInstanceDescription) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *ServerlessInstanceDescription) GetLinks() []Link`
@@ -160,7 +156,6 @@ SetLinks sets Links field to given value.
 `func (o *ServerlessInstanceDescription) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetMongoDBVersion
 
 `func (o *ServerlessInstanceDescription) GetMongoDBVersion() string`
@@ -185,7 +180,6 @@ SetMongoDBVersion sets MongoDBVersion field to given value.
 `func (o *ServerlessInstanceDescription) HasMongoDBVersion() bool`
 
 HasMongoDBVersion returns a boolean if a field has been set.
-
 ### GetName
 
 `func (o *ServerlessInstanceDescription) GetName() string`
@@ -210,7 +204,6 @@ SetName sets Name field to given value.
 `func (o *ServerlessInstanceDescription) HasName() bool`
 
 HasName returns a boolean if a field has been set.
-
 ### GetProviderSettings
 
 `func (o *ServerlessInstanceDescription) GetProviderSettings() ServerlessProviderSettings`
@@ -229,7 +222,6 @@ and a boolean to check if the value has been set.
 `func (o *ServerlessInstanceDescription) SetProviderSettings(v ServerlessProviderSettings)`
 
 SetProviderSettings sets ProviderSettings field to given value.
-
 
 ### GetServerlessBackupOptions
 
@@ -255,7 +247,6 @@ SetServerlessBackupOptions sets ServerlessBackupOptions field to given value.
 `func (o *ServerlessInstanceDescription) HasServerlessBackupOptions() bool`
 
 HasServerlessBackupOptions returns a boolean if a field has been set.
-
 ### GetStateName
 
 `func (o *ServerlessInstanceDescription) GetStateName() string`
@@ -280,7 +271,6 @@ SetStateName sets StateName field to given value.
 `func (o *ServerlessInstanceDescription) HasStateName() bool`
 
 HasStateName returns a boolean if a field has been set.
-
 ### GetTags
 
 `func (o *ServerlessInstanceDescription) GetTags() []ResourceTag`
@@ -305,7 +295,6 @@ SetTags sets Tags field to given value.
 `func (o *ServerlessInstanceDescription) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
-
 ### GetTerminationProtectionEnabled
 
 `func (o *ServerlessInstanceDescription) GetTerminationProtectionEnabled() bool`
@@ -330,7 +319,6 @@ SetTerminationProtectionEnabled sets TerminationProtectionEnabled field to given
 `func (o *ServerlessInstanceDescription) HasTerminationProtectionEnabled() bool`
 
 HasTerminationProtectionEnabled returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

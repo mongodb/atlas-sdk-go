@@ -54,7 +54,6 @@ SetDesc sets Desc field to given value.
 `func (o *ApiKeyUserDetails) HasDesc() bool`
 
 HasDesc returns a boolean if a field has been set.
-
 ### GetId
 
 `func (o *ApiKeyUserDetails) GetId() string`
@@ -79,7 +78,6 @@ SetId sets Id field to given value.
 `func (o *ApiKeyUserDetails) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *ApiKeyUserDetails) GetLinks() []Link`
@@ -104,7 +102,6 @@ SetLinks sets Links field to given value.
 `func (o *ApiKeyUserDetails) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetPrivateKey
 
 `func (o *ApiKeyUserDetails) GetPrivateKey() string`
@@ -129,7 +126,6 @@ SetPrivateKey sets PrivateKey field to given value.
 `func (o *ApiKeyUserDetails) HasPrivateKey() bool`
 
 HasPrivateKey returns a boolean if a field has been set.
-
 ### GetPublicKey
 
 `func (o *ApiKeyUserDetails) GetPublicKey() string`
@@ -154,7 +150,6 @@ SetPublicKey sets PublicKey field to given value.
 `func (o *ApiKeyUserDetails) HasPublicKey() bool`
 
 HasPublicKey returns a boolean if a field has been set.
-
 ### GetRoles
 
 `func (o *ApiKeyUserDetails) GetRoles() []CloudAccessRoleAssignment`
@@ -179,7 +174,6 @@ SetRoles sets Roles field to given value.
 `func (o *ApiKeyUserDetails) HasRoles() bool`
 
 HasRoles returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

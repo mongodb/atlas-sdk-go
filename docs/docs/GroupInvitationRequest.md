@@ -50,7 +50,6 @@ SetRoles sets Roles field to given value.
 `func (o *GroupInvitationRequest) HasRoles() bool`
 
 HasRoles returns a boolean if a field has been set.
-
 ### GetUsername
 
 `func (o *GroupInvitationRequest) GetUsername() string`
@@ -75,7 +74,6 @@ SetUsername sets Username field to given value.
 `func (o *GroupInvitationRequest) HasUsername() bool`
 
 HasUsername returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

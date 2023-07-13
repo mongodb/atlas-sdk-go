@@ -52,7 +52,6 @@ SetNodeCount sets NodeCount field to given value.
 `func (o *DedicatedHardwareSpec) HasNodeCount() bool`
 
 HasNodeCount returns a boolean if a field has been set.
-
 ### GetDiskIOPS
 
 `func (o *DedicatedHardwareSpec) GetDiskIOPS() int`
@@ -77,7 +76,6 @@ SetDiskIOPS sets DiskIOPS field to given value.
 `func (o *DedicatedHardwareSpec) HasDiskIOPS() bool`
 
 HasDiskIOPS returns a boolean if a field has been set.
-
 ### GetEbsVolumeType
 
 `func (o *DedicatedHardwareSpec) GetEbsVolumeType() string`
@@ -102,7 +100,6 @@ SetEbsVolumeType sets EbsVolumeType field to given value.
 `func (o *DedicatedHardwareSpec) HasEbsVolumeType() bool`
 
 HasEbsVolumeType returns a boolean if a field has been set.
-
 ### GetInstanceSize
 
 `func (o *DedicatedHardwareSpec) GetInstanceSize() string`
@@ -127,7 +124,6 @@ SetInstanceSize sets InstanceSize field to given value.
 `func (o *DedicatedHardwareSpec) HasInstanceSize() bool`
 
 HasInstanceSize returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

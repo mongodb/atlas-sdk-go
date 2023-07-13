@@ -62,7 +62,6 @@ SetClusterName sets ClusterName field to given value.
 `func (o *TenantRestore) HasClusterName() bool`
 
 HasClusterName returns a boolean if a field has been set.
-
 ### GetDeliveryType
 
 `func (o *TenantRestore) GetDeliveryType() string`
@@ -87,7 +86,6 @@ SetDeliveryType sets DeliveryType field to given value.
 `func (o *TenantRestore) HasDeliveryType() bool`
 
 HasDeliveryType returns a boolean if a field has been set.
-
 ### GetExpirationDate
 
 `func (o *TenantRestore) GetExpirationDate() time.Time`
@@ -112,7 +110,6 @@ SetExpirationDate sets ExpirationDate field to given value.
 `func (o *TenantRestore) HasExpirationDate() bool`
 
 HasExpirationDate returns a boolean if a field has been set.
-
 ### GetId
 
 `func (o *TenantRestore) GetId() string`
@@ -137,7 +134,6 @@ SetId sets Id field to given value.
 `func (o *TenantRestore) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *TenantRestore) GetLinks() []Link`
@@ -162,7 +158,6 @@ SetLinks sets Links field to given value.
 `func (o *TenantRestore) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetProjectId
 
 `func (o *TenantRestore) GetProjectId() string`
@@ -187,7 +182,6 @@ SetProjectId sets ProjectId field to given value.
 `func (o *TenantRestore) HasProjectId() bool`
 
 HasProjectId returns a boolean if a field has been set.
-
 ### GetRestoreFinishedDate
 
 `func (o *TenantRestore) GetRestoreFinishedDate() time.Time`
@@ -212,7 +206,6 @@ SetRestoreFinishedDate sets RestoreFinishedDate field to given value.
 `func (o *TenantRestore) HasRestoreFinishedDate() bool`
 
 HasRestoreFinishedDate returns a boolean if a field has been set.
-
 ### GetRestoreScheduledDate
 
 `func (o *TenantRestore) GetRestoreScheduledDate() time.Time`
@@ -237,7 +230,6 @@ SetRestoreScheduledDate sets RestoreScheduledDate field to given value.
 `func (o *TenantRestore) HasRestoreScheduledDate() bool`
 
 HasRestoreScheduledDate returns a boolean if a field has been set.
-
 ### GetSnapshotFinishedDate
 
 `func (o *TenantRestore) GetSnapshotFinishedDate() time.Time`
@@ -262,7 +254,6 @@ SetSnapshotFinishedDate sets SnapshotFinishedDate field to given value.
 `func (o *TenantRestore) HasSnapshotFinishedDate() bool`
 
 HasSnapshotFinishedDate returns a boolean if a field has been set.
-
 ### GetSnapshotId
 
 `func (o *TenantRestore) GetSnapshotId() string`
@@ -281,7 +272,6 @@ and a boolean to check if the value has been set.
 `func (o *TenantRestore) SetSnapshotId(v string)`
 
 SetSnapshotId sets SnapshotId field to given value.
-
 
 ### GetSnapshotUrl
 
@@ -307,7 +297,6 @@ SetSnapshotUrl sets SnapshotUrl field to given value.
 `func (o *TenantRestore) HasSnapshotUrl() bool`
 
 HasSnapshotUrl returns a boolean if a field has been set.
-
 ### GetStatus
 
 `func (o *TenantRestore) GetStatus() string`
@@ -332,7 +321,6 @@ SetStatus sets Status field to given value.
 `func (o *TenantRestore) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
-
 ### GetTargetDeploymentItemName
 
 `func (o *TenantRestore) GetTargetDeploymentItemName() string`
@@ -351,7 +339,6 @@ and a boolean to check if the value has been set.
 `func (o *TenantRestore) SetTargetDeploymentItemName(v string)`
 
 SetTargetDeploymentItemName sets TargetDeploymentItemName field to given value.
-
 
 ### GetTargetProjectId
 
@@ -377,7 +364,6 @@ SetTargetProjectId sets TargetProjectId field to given value.
 `func (o *TenantRestore) HasTargetProjectId() bool`
 
 HasTargetProjectId returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -50,7 +50,6 @@ SetExportBucketId sets ExportBucketId field to given value.
 `func (o *CloudProviderAccessFeatureUsageExportSnapshotFeatureId) HasExportBucketId() bool`
 
 HasExportBucketId returns a boolean if a field has been set.
-
 ### GetGroupId
 
 `func (o *CloudProviderAccessFeatureUsageExportSnapshotFeatureId) GetGroupId() string`
@@ -75,7 +74,6 @@ SetGroupId sets GroupId field to given value.
 `func (o *CloudProviderAccessFeatureUsageExportSnapshotFeatureId) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

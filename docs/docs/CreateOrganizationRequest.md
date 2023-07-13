@@ -52,7 +52,6 @@ SetApiKey sets ApiKey field to given value.
 `func (o *CreateOrganizationRequest) HasApiKey() bool`
 
 HasApiKey returns a boolean if a field has been set.
-
 ### GetFederationSettingsId
 
 `func (o *CreateOrganizationRequest) GetFederationSettingsId() string`
@@ -77,7 +76,6 @@ SetFederationSettingsId sets FederationSettingsId field to given value.
 `func (o *CreateOrganizationRequest) HasFederationSettingsId() bool`
 
 HasFederationSettingsId returns a boolean if a field has been set.
-
 ### GetName
 
 `func (o *CreateOrganizationRequest) GetName() string`
@@ -96,7 +94,6 @@ and a boolean to check if the value has been set.
 `func (o *CreateOrganizationRequest) SetName(v string)`
 
 SetName sets Name field to given value.
-
 
 ### GetOrgOwnerId
 
@@ -122,7 +119,6 @@ SetOrgOwnerId sets OrgOwnerId field to given value.
 `func (o *CreateOrganizationRequest) HasOrgOwnerId() bool`
 
 HasOrgOwnerId returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

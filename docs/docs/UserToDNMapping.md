@@ -51,7 +51,6 @@ SetLdapQuery sets LdapQuery field to given value.
 `func (o *UserToDNMapping) HasLdapQuery() bool`
 
 HasLdapQuery returns a boolean if a field has been set.
-
 ### GetMatch
 
 `func (o *UserToDNMapping) GetMatch() string`
@@ -70,7 +69,6 @@ and a boolean to check if the value has been set.
 `func (o *UserToDNMapping) SetMatch(v string)`
 
 SetMatch sets Match field to given value.
-
 
 ### GetSubstitution
 
@@ -96,7 +94,6 @@ SetSubstitution sets Substitution field to given value.
 `func (o *UserToDNMapping) HasSubstitution() bool`
 
 HasSubstitution returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

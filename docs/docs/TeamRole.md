@@ -51,7 +51,6 @@ SetLinks sets Links field to given value.
 `func (o *TeamRole) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetRoleNames
 
 `func (o *TeamRole) GetRoleNames() []string`
@@ -76,7 +75,6 @@ SetRoleNames sets RoleNames field to given value.
 `func (o *TeamRole) HasRoleNames() bool`
 
 HasRoleNames returns a boolean if a field has been set.
-
 ### GetTeamId
 
 `func (o *TeamRole) GetTeamId() string`
@@ -101,7 +99,6 @@ SetTeamId sets TeamId field to given value.
 `func (o *TeamRole) HasTeamId() bool`
 
 HasTeamId returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

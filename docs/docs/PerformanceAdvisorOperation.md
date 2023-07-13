@@ -50,7 +50,6 @@ SetPredicates sets Predicates field to given value.
 `func (o *PerformanceAdvisorOperation) HasPredicates() bool`
 
 HasPredicates returns a boolean if a field has been set.
-
 ### GetStats
 
 `func (o *PerformanceAdvisorOperation) GetStats() PerformanceAdvisorOpStats`
@@ -75,7 +74,6 @@ SetStats sets Stats field to given value.
 `func (o *PerformanceAdvisorOperation) HasStats() bool`
 
 HasStats returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

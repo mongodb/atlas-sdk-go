@@ -58,7 +58,6 @@ SetAnalyzer sets Analyzer field to given value.
 `func (o *ClusterSearchIndex) HasAnalyzer() bool`
 
 HasAnalyzer returns a boolean if a field has been set.
-
 ### GetAnalyzers
 
 `func (o *ClusterSearchIndex) GetAnalyzers() []ApiAtlasFTSAnalyzers`
@@ -83,7 +82,6 @@ SetAnalyzers sets Analyzers field to given value.
 `func (o *ClusterSearchIndex) HasAnalyzers() bool`
 
 HasAnalyzers returns a boolean if a field has been set.
-
 ### GetCollectionName
 
 `func (o *ClusterSearchIndex) GetCollectionName() string`
@@ -103,7 +101,6 @@ and a boolean to check if the value has been set.
 
 SetCollectionName sets CollectionName field to given value.
 
-
 ### GetDatabase
 
 `func (o *ClusterSearchIndex) GetDatabase() string`
@@ -122,7 +119,6 @@ and a boolean to check if the value has been set.
 `func (o *ClusterSearchIndex) SetDatabase(v string)`
 
 SetDatabase sets Database field to given value.
-
 
 ### GetIndexID
 
@@ -148,7 +144,6 @@ SetIndexID sets IndexID field to given value.
 `func (o *ClusterSearchIndex) HasIndexID() bool`
 
 HasIndexID returns a boolean if a field has been set.
-
 ### GetMappings
 
 `func (o *ClusterSearchIndex) GetMappings() ApiAtlasFTSMappings`
@@ -173,7 +168,6 @@ SetMappings sets Mappings field to given value.
 `func (o *ClusterSearchIndex) HasMappings() bool`
 
 HasMappings returns a boolean if a field has been set.
-
 ### GetName
 
 `func (o *ClusterSearchIndex) GetName() string`
@@ -192,7 +186,6 @@ and a boolean to check if the value has been set.
 `func (o *ClusterSearchIndex) SetName(v string)`
 
 SetName sets Name field to given value.
-
 
 ### GetSearchAnalyzer
 
@@ -218,7 +211,6 @@ SetSearchAnalyzer sets SearchAnalyzer field to given value.
 `func (o *ClusterSearchIndex) HasSearchAnalyzer() bool`
 
 HasSearchAnalyzer returns a boolean if a field has been set.
-
 ### GetStatus
 
 `func (o *ClusterSearchIndex) GetStatus() string`
@@ -243,7 +235,6 @@ SetStatus sets Status field to given value.
 `func (o *ClusterSearchIndex) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
-
 ### GetSynonyms
 
 `func (o *ClusterSearchIndex) GetSynonyms() []SearchSynonymMappingDefinition`
@@ -268,7 +259,6 @@ SetSynonyms sets Synonyms field to given value.
 `func (o *ClusterSearchIndex) HasSynonyms() bool`
 
 HasSynonyms returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

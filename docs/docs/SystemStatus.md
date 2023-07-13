@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ApiKey** | [**NullableApiKey**](ApiKey.md) |  | 
+**ApiKey** | [**ApiKey**](ApiKey.md) |  | 
 **AppName** | **string** | Human-readable label that identifies the service from which you requested this response. | [readonly] 
 **Build** | **string** | Unique 40-hexadecimal digit hash that identifies the latest git commit merged for this application. | [readonly] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewSystemStatus
 
-`func NewSystemStatus(apiKey NullableApiKey, appName string, build string, throttling bool, ) *SystemStatus`
+`func NewSystemStatus(apiKey ApiKey, appName string, build string, throttling bool, ) *SystemStatus`
 
 NewSystemStatus instantiates a new SystemStatus object
 This constructor will assign default values to properties that have it defined,
@@ -48,17 +48,6 @@ and a boolean to check if the value has been set.
 
 SetApiKey sets ApiKey field to given value.
 
-
-### SetApiKeyNil
-
-`func (o *SystemStatus) SetApiKeyNil(b bool)`
-
- SetApiKeyNil sets the value for ApiKey to be an explicit nil
-
-### UnsetApiKey
-`func (o *SystemStatus) UnsetApiKey()`
-
-UnsetApiKey ensures that no value is present for ApiKey, not even an explicit nil
 ### GetAppName
 
 `func (o *SystemStatus) GetAppName() string`
@@ -78,7 +67,6 @@ and a boolean to check if the value has been set.
 
 SetAppName sets AppName field to given value.
 
-
 ### GetBuild
 
 `func (o *SystemStatus) GetBuild() string`
@@ -97,7 +85,6 @@ and a boolean to check if the value has been set.
 `func (o *SystemStatus) SetBuild(v string)`
 
 SetBuild sets Build field to given value.
-
 
 ### GetLinks
 
@@ -123,7 +110,6 @@ SetLinks sets Links field to given value.
 `func (o *SystemStatus) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetThrottling
 
 `func (o *SystemStatus) GetThrottling() bool`
@@ -142,7 +128,6 @@ and a boolean to check if the value has been set.
 `func (o *SystemStatus) SetThrottling(v bool)`
 
 SetThrottling sets Throttling field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

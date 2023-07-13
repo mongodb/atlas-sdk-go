@@ -56,7 +56,6 @@ SetCurrentUsage sets CurrentUsage field to given value.
 `func (o *DataFederationTenantQueryLimit) HasCurrentUsage() bool`
 
 HasCurrentUsage returns a boolean if a field has been set.
-
 ### GetDefaultLimit
 
 `func (o *DataFederationTenantQueryLimit) GetDefaultLimit() int64`
@@ -81,7 +80,6 @@ SetDefaultLimit sets DefaultLimit field to given value.
 `func (o *DataFederationTenantQueryLimit) HasDefaultLimit() bool`
 
 HasDefaultLimit returns a boolean if a field has been set.
-
 ### GetLastModifiedDate
 
 `func (o *DataFederationTenantQueryLimit) GetLastModifiedDate() time.Time`
@@ -106,7 +104,6 @@ SetLastModifiedDate sets LastModifiedDate field to given value.
 `func (o *DataFederationTenantQueryLimit) HasLastModifiedDate() bool`
 
 HasLastModifiedDate returns a boolean if a field has been set.
-
 ### GetMaximumLimit
 
 `func (o *DataFederationTenantQueryLimit) GetMaximumLimit() int64`
@@ -131,7 +128,6 @@ SetMaximumLimit sets MaximumLimit field to given value.
 `func (o *DataFederationTenantQueryLimit) HasMaximumLimit() bool`
 
 HasMaximumLimit returns a boolean if a field has been set.
-
 ### GetName
 
 `func (o *DataFederationTenantQueryLimit) GetName() string`
@@ -150,7 +146,6 @@ and a boolean to check if the value has been set.
 `func (o *DataFederationTenantQueryLimit) SetName(v string)`
 
 SetName sets Name field to given value.
-
 
 ### GetOverrunPolicy
 
@@ -176,7 +171,6 @@ SetOverrunPolicy sets OverrunPolicy field to given value.
 `func (o *DataFederationTenantQueryLimit) HasOverrunPolicy() bool`
 
 HasOverrunPolicy returns a boolean if a field has been set.
-
 ### GetTenantName
 
 `func (o *DataFederationTenantQueryLimit) GetTenantName() string`
@@ -201,7 +195,6 @@ SetTenantName sets TenantName field to given value.
 `func (o *DataFederationTenantQueryLimit) HasTenantName() bool`
 
 HasTenantName returns a boolean if a field has been set.
-
 ### GetValue
 
 `func (o *DataFederationTenantQueryLimit) GetValue() int64`
@@ -220,7 +213,6 @@ and a boolean to check if the value has been set.
 `func (o *DataFederationTenantQueryLimit) SetValue(v int64)`
 
 SetValue sets Value field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

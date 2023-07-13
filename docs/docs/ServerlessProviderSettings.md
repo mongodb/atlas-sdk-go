@@ -46,7 +46,6 @@ and a boolean to check if the value has been set.
 
 SetBackingProviderName sets BackingProviderName field to given value.
 
-
 ### GetProviderName
 
 `func (o *ServerlessProviderSettings) GetProviderName() string`
@@ -71,7 +70,6 @@ SetProviderName sets ProviderName field to given value.
 `func (o *ServerlessProviderSettings) HasProviderName() bool`
 
 HasProviderName returns a boolean if a field has been set.
-
 ### GetRegionName
 
 `func (o *ServerlessProviderSettings) GetRegionName() string`
@@ -90,7 +88,6 @@ and a boolean to check if the value has been set.
 `func (o *ServerlessProviderSettings) SetRegionName(v string)`
 
 SetRegionName sets RegionName field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

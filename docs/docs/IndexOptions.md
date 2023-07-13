@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **Sparse** | Pointer to **bool** | Flag that indicates whether the index references documents that only have the specified parameter. These indexes use less space but behave differently in some situations like when sorting. The following index types default to sparse and ignore this option: &#x60;2dsphere&#x60;, &#x60;2d&#x60;, &#x60;geoHaystack&#x60;, &#x60;text&#x60;.  Compound indexes that includes one or more indexes with &#x60;2dsphere&#x60; keys alongside other key types, only the &#x60;2dsphere&#x60; index parameters determine which documents the index references. If you run MongoDB 3.2 or later, use partial indexes. This option applies to all index types. | [optional] [default to false]
 **StorageEngine** | Pointer to **map[string]interface{}** | Storage engine set for the specific index. This value can be set only at creation. This option uses the following format: &#x60;\&quot;storageEngine\&quot; : { \&quot;&lt;storage-engine-name&gt;\&quot; : \&quot;&lt;options&gt;\&quot; }&#x60; MongoDB validates storage engine configuration options when creating indexes. To support replica sets with members with different storage engines, MongoDB logs these options to the oplog during replication. This option applies to all index types. | [optional] 
 **TextIndexVersion** | Pointer to **int** | Version applied to this text index. MongoDB 3.2 and later use version &#x60;3&#x60;. Use this option to override the default version number. This option applies to the **text** index type only. | [optional] [default to 3]
-**Unique** | Pointer to **bool** | Flag that indicates whether this index can accept insertion or update of documents when the index key value matches an existing index key value. Set &#x60;\&quot;unique\&quot; : true&#x60; to set this index as unique. You can&#39;t set a hashed index to be unique. This option applies to all index types. | [optional] [default to false]
+**Unique** | Pointer to **bool** | Flag that indicates whether this index can accept insertion or update of documents when the index key value matches an existing index key value. Set &#x60;\&quot;unique\&quot; : true&#x60; to set this index as unique. You can&#39;t set a hashed index to be unique. This option applies to all index types. This option is unsupported for rolling indexes. | [optional] [default to false]
 **Weights** | Pointer to **map[string]interface{}** | Relative importance to place upon provided index parameters. This object expresses this as key/value pairs of index parameter and weight to apply to that parameter. You can specify weights for some or all the indexed parameters. The weight must be an integer between 1 and 99,999. MongoDB 5.0 and later can apply **weights** to **text** indexes only. | [optional] 
 
 ## Methods
@@ -66,7 +66,6 @@ SetVar2dsphereIndexVersion sets Var2dsphereIndexVersion field to given value.
 `func (o *IndexOptions) HasVar2dsphereIndexVersion() bool`
 
 HasVar2dsphereIndexVersion returns a boolean if a field has been set.
-
 ### GetBackground
 
 `func (o *IndexOptions) GetBackground() bool`
@@ -91,7 +90,6 @@ SetBackground sets Background field to given value.
 `func (o *IndexOptions) HasBackground() bool`
 
 HasBackground returns a boolean if a field has been set.
-
 ### GetBits
 
 `func (o *IndexOptions) GetBits() int`
@@ -116,7 +114,6 @@ SetBits sets Bits field to given value.
 `func (o *IndexOptions) HasBits() bool`
 
 HasBits returns a boolean if a field has been set.
-
 ### GetBucketSize
 
 `func (o *IndexOptions) GetBucketSize() int`
@@ -141,7 +138,6 @@ SetBucketSize sets BucketSize field to given value.
 `func (o *IndexOptions) HasBucketSize() bool`
 
 HasBucketSize returns a boolean if a field has been set.
-
 ### GetColumnstoreProjection
 
 `func (o *IndexOptions) GetColumnstoreProjection() map[string]int`
@@ -166,7 +162,6 @@ SetColumnstoreProjection sets ColumnstoreProjection field to given value.
 `func (o *IndexOptions) HasColumnstoreProjection() bool`
 
 HasColumnstoreProjection returns a boolean if a field has been set.
-
 ### GetDefaultLanguage
 
 `func (o *IndexOptions) GetDefaultLanguage() string`
@@ -191,7 +186,6 @@ SetDefaultLanguage sets DefaultLanguage field to given value.
 `func (o *IndexOptions) HasDefaultLanguage() bool`
 
 HasDefaultLanguage returns a boolean if a field has been set.
-
 ### GetExpireAfterSeconds
 
 `func (o *IndexOptions) GetExpireAfterSeconds() int`
@@ -216,7 +210,6 @@ SetExpireAfterSeconds sets ExpireAfterSeconds field to given value.
 `func (o *IndexOptions) HasExpireAfterSeconds() bool`
 
 HasExpireAfterSeconds returns a boolean if a field has been set.
-
 ### GetHidden
 
 `func (o *IndexOptions) GetHidden() bool`
@@ -241,7 +234,6 @@ SetHidden sets Hidden field to given value.
 `func (o *IndexOptions) HasHidden() bool`
 
 HasHidden returns a boolean if a field has been set.
-
 ### GetLanguageOverride
 
 `func (o *IndexOptions) GetLanguageOverride() string`
@@ -266,7 +258,6 @@ SetLanguageOverride sets LanguageOverride field to given value.
 `func (o *IndexOptions) HasLanguageOverride() bool`
 
 HasLanguageOverride returns a boolean if a field has been set.
-
 ### GetMax
 
 `func (o *IndexOptions) GetMax() int`
@@ -291,7 +282,6 @@ SetMax sets Max field to given value.
 `func (o *IndexOptions) HasMax() bool`
 
 HasMax returns a boolean if a field has been set.
-
 ### GetMin
 
 `func (o *IndexOptions) GetMin() int`
@@ -316,7 +306,6 @@ SetMin sets Min field to given value.
 `func (o *IndexOptions) HasMin() bool`
 
 HasMin returns a boolean if a field has been set.
-
 ### GetName
 
 `func (o *IndexOptions) GetName() string`
@@ -341,7 +330,6 @@ SetName sets Name field to given value.
 `func (o *IndexOptions) HasName() bool`
 
 HasName returns a boolean if a field has been set.
-
 ### GetPartialFilterExpression
 
 `func (o *IndexOptions) GetPartialFilterExpression() map[string]interface{}`
@@ -366,7 +354,6 @@ SetPartialFilterExpression sets PartialFilterExpression field to given value.
 `func (o *IndexOptions) HasPartialFilterExpression() bool`
 
 HasPartialFilterExpression returns a boolean if a field has been set.
-
 ### GetSparse
 
 `func (o *IndexOptions) GetSparse() bool`
@@ -391,7 +378,6 @@ SetSparse sets Sparse field to given value.
 `func (o *IndexOptions) HasSparse() bool`
 
 HasSparse returns a boolean if a field has been set.
-
 ### GetStorageEngine
 
 `func (o *IndexOptions) GetStorageEngine() map[string]interface{}`
@@ -416,7 +402,6 @@ SetStorageEngine sets StorageEngine field to given value.
 `func (o *IndexOptions) HasStorageEngine() bool`
 
 HasStorageEngine returns a boolean if a field has been set.
-
 ### GetTextIndexVersion
 
 `func (o *IndexOptions) GetTextIndexVersion() int`
@@ -441,7 +426,6 @@ SetTextIndexVersion sets TextIndexVersion field to given value.
 `func (o *IndexOptions) HasTextIndexVersion() bool`
 
 HasTextIndexVersion returns a boolean if a field has been set.
-
 ### GetUnique
 
 `func (o *IndexOptions) GetUnique() bool`
@@ -466,7 +450,6 @@ SetUnique sets Unique field to given value.
 `func (o *IndexOptions) HasUnique() bool`
 
 HasUnique returns a boolean if a field has been set.
-
 ### GetWeights
 
 `func (o *IndexOptions) GetWeights() map[string]interface{}`
@@ -491,7 +474,6 @@ SetWeights sets Weights field to given value.
 `func (o *IndexOptions) HasWeights() bool`
 
 HasWeights returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

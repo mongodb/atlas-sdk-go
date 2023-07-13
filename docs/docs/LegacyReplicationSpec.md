@@ -52,7 +52,6 @@ SetId sets Id field to given value.
 `func (o *LegacyReplicationSpec) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetNumShards
 
 `func (o *LegacyReplicationSpec) GetNumShards() int`
@@ -77,7 +76,6 @@ SetNumShards sets NumShards field to given value.
 `func (o *LegacyReplicationSpec) HasNumShards() bool`
 
 HasNumShards returns a boolean if a field has been set.
-
 ### GetRegionsConfig
 
 `func (o *LegacyReplicationSpec) GetRegionsConfig() map[string]RegionSpec`
@@ -102,7 +100,6 @@ SetRegionsConfig sets RegionsConfig field to given value.
 `func (o *LegacyReplicationSpec) HasRegionsConfig() bool`
 
 HasRegionsConfig returns a boolean if a field has been set.
-
 ### GetZoneName
 
 `func (o *LegacyReplicationSpec) GetZoneName() string`
@@ -127,7 +124,6 @@ SetZoneName sets ZoneName field to given value.
 `func (o *LegacyReplicationSpec) HasZoneName() bool`
 
 HasZoneName returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

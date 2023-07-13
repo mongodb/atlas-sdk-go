@@ -54,7 +54,6 @@ SetAvgMs sets AvgMs field to given value.
 `func (o *PerformanceAdvisorShape) HasAvgMs() bool`
 
 HasAvgMs returns a boolean if a field has been set.
-
 ### GetCount
 
 `func (o *PerformanceAdvisorShape) GetCount() int64`
@@ -79,7 +78,6 @@ SetCount sets Count field to given value.
 `func (o *PerformanceAdvisorShape) HasCount() bool`
 
 HasCount returns a boolean if a field has been set.
-
 ### GetId
 
 `func (o *PerformanceAdvisorShape) GetId() string`
@@ -104,7 +102,6 @@ SetId sets Id field to given value.
 `func (o *PerformanceAdvisorShape) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetInefficiencyScore
 
 `func (o *PerformanceAdvisorShape) GetInefficiencyScore() int64`
@@ -129,7 +126,6 @@ SetInefficiencyScore sets InefficiencyScore field to given value.
 `func (o *PerformanceAdvisorShape) HasInefficiencyScore() bool`
 
 HasInefficiencyScore returns a boolean if a field has been set.
-
 ### GetNamespace
 
 `func (o *PerformanceAdvisorShape) GetNamespace() string`
@@ -154,7 +150,6 @@ SetNamespace sets Namespace field to given value.
 `func (o *PerformanceAdvisorShape) HasNamespace() bool`
 
 HasNamespace returns a boolean if a field has been set.
-
 ### GetOperations
 
 `func (o *PerformanceAdvisorShape) GetOperations() []PerformanceAdvisorOperation`
@@ -179,7 +174,6 @@ SetOperations sets Operations field to given value.
 `func (o *PerformanceAdvisorShape) HasOperations() bool`
 
 HasOperations returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

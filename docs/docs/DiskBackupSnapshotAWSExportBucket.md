@@ -53,7 +53,6 @@ SetId sets Id field to given value.
 `func (o *DiskBackupSnapshotAWSExportBucket) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetBucketName
 
 `func (o *DiskBackupSnapshotAWSExportBucket) GetBucketName() string`
@@ -78,7 +77,6 @@ SetBucketName sets BucketName field to given value.
 `func (o *DiskBackupSnapshotAWSExportBucket) HasBucketName() bool`
 
 HasBucketName returns a boolean if a field has been set.
-
 ### GetCloudProvider
 
 `func (o *DiskBackupSnapshotAWSExportBucket) GetCloudProvider() string`
@@ -103,7 +101,6 @@ SetCloudProvider sets CloudProvider field to given value.
 `func (o *DiskBackupSnapshotAWSExportBucket) HasCloudProvider() bool`
 
 HasCloudProvider returns a boolean if a field has been set.
-
 ### GetIamRoleId
 
 `func (o *DiskBackupSnapshotAWSExportBucket) GetIamRoleId() string`
@@ -128,7 +125,6 @@ SetIamRoleId sets IamRoleId field to given value.
 `func (o *DiskBackupSnapshotAWSExportBucket) HasIamRoleId() bool`
 
 HasIamRoleId returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *DiskBackupSnapshotAWSExportBucket) GetLinks() []Link`
@@ -153,7 +149,6 @@ SetLinks sets Links field to given value.
 `func (o *DiskBackupSnapshotAWSExportBucket) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -51,7 +51,6 @@ SetGroupId sets GroupId field to given value.
 `func (o *CloudAccessRoleAssignment) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
-
 ### GetOrgId
 
 `func (o *CloudAccessRoleAssignment) GetOrgId() string`
@@ -76,7 +75,6 @@ SetOrgId sets OrgId field to given value.
 `func (o *CloudAccessRoleAssignment) HasOrgId() bool`
 
 HasOrgId returns a boolean if a field has been set.
-
 ### GetRoleName
 
 `func (o *CloudAccessRoleAssignment) GetRoleName() string`
@@ -101,7 +99,6 @@ SetRoleName sets RoleName field to given value.
 `func (o *CloudAccessRoleAssignment) HasRoleName() bool`
 
 HasRoleName returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

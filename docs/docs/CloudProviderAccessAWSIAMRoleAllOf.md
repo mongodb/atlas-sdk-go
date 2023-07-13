@@ -55,7 +55,6 @@ SetAtlasAWSAccountArn sets AtlasAWSAccountArn field to given value.
 `func (o *CloudProviderAccessAWSIAMRoleAllOf) HasAtlasAWSAccountArn() bool`
 
 HasAtlasAWSAccountArn returns a boolean if a field has been set.
-
 ### GetAtlasAssumedRoleExternalId
 
 `func (o *CloudProviderAccessAWSIAMRoleAllOf) GetAtlasAssumedRoleExternalId() string`
@@ -80,7 +79,6 @@ SetAtlasAssumedRoleExternalId sets AtlasAssumedRoleExternalId field to given val
 `func (o *CloudProviderAccessAWSIAMRoleAllOf) HasAtlasAssumedRoleExternalId() bool`
 
 HasAtlasAssumedRoleExternalId returns a boolean if a field has been set.
-
 ### GetAuthorizedDate
 
 `func (o *CloudProviderAccessAWSIAMRoleAllOf) GetAuthorizedDate() time.Time`
@@ -105,7 +103,6 @@ SetAuthorizedDate sets AuthorizedDate field to given value.
 `func (o *CloudProviderAccessAWSIAMRoleAllOf) HasAuthorizedDate() bool`
 
 HasAuthorizedDate returns a boolean if a field has been set.
-
 ### GetCreatedDate
 
 `func (o *CloudProviderAccessAWSIAMRoleAllOf) GetCreatedDate() time.Time`
@@ -130,7 +127,6 @@ SetCreatedDate sets CreatedDate field to given value.
 `func (o *CloudProviderAccessAWSIAMRoleAllOf) HasCreatedDate() bool`
 
 HasCreatedDate returns a boolean if a field has been set.
-
 ### GetFeatureUsages
 
 `func (o *CloudProviderAccessAWSIAMRoleAllOf) GetFeatureUsages() []CloudProviderAccessFeatureUsage`
@@ -155,7 +151,6 @@ SetFeatureUsages sets FeatureUsages field to given value.
 `func (o *CloudProviderAccessAWSIAMRoleAllOf) HasFeatureUsages() bool`
 
 HasFeatureUsages returns a boolean if a field has been set.
-
 ### GetIamAssumedRoleArn
 
 `func (o *CloudProviderAccessAWSIAMRoleAllOf) GetIamAssumedRoleArn() string`
@@ -180,7 +175,6 @@ SetIamAssumedRoleArn sets IamAssumedRoleArn field to given value.
 `func (o *CloudProviderAccessAWSIAMRoleAllOf) HasIamAssumedRoleArn() bool`
 
 HasIamAssumedRoleArn returns a boolean if a field has been set.
-
 ### GetRoleId
 
 `func (o *CloudProviderAccessAWSIAMRoleAllOf) GetRoleId() string`
@@ -205,7 +199,6 @@ SetRoleId sets RoleId field to given value.
 `func (o *CloudProviderAccessAWSIAMRoleAllOf) HasRoleId() bool`
 
 HasRoleId returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -47,7 +47,6 @@ and a boolean to check if the value has been set.
 
 SetAuditAuthorizationSuccess sets AuditAuthorizationSuccess field to given value.
 
-
 ### GetAuditFilter
 
 `func (o *AuditLog) GetAuditFilter() string`
@@ -66,7 +65,6 @@ and a boolean to check if the value has been set.
 `func (o *AuditLog) SetAuditFilter(v string)`
 
 SetAuditFilter sets AuditFilter field to given value.
-
 
 ### GetConfigurationType
 
@@ -92,7 +90,6 @@ SetConfigurationType sets ConfigurationType field to given value.
 `func (o *AuditLog) HasConfigurationType() bool`
 
 HasConfigurationType returns a boolean if a field has been set.
-
 ### GetEnabled
 
 `func (o *AuditLog) GetEnabled() bool`
@@ -111,7 +108,6 @@ and a boolean to check if the value has been set.
 `func (o *AuditLog) SetEnabled(v bool)`
 
 SetEnabled sets Enabled field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -52,7 +52,6 @@ SetId sets Id field to given value.
 `func (o *ReplicationSpec) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetNumShards
 
 `func (o *ReplicationSpec) GetNumShards() int`
@@ -77,7 +76,6 @@ SetNumShards sets NumShards field to given value.
 `func (o *ReplicationSpec) HasNumShards() bool`
 
 HasNumShards returns a boolean if a field has been set.
-
 ### GetRegionConfigs
 
 `func (o *ReplicationSpec) GetRegionConfigs() []CloudRegionConfig`
@@ -102,7 +100,6 @@ SetRegionConfigs sets RegionConfigs field to given value.
 `func (o *ReplicationSpec) HasRegionConfigs() bool`
 
 HasRegionConfigs returns a boolean if a field has been set.
-
 ### GetZoneName
 
 `func (o *ReplicationSpec) GetZoneName() string`
@@ -127,7 +124,6 @@ SetZoneName sets ZoneName field to given value.
 `func (o *ReplicationSpec) HasZoneName() bool`
 
 HasZoneName returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

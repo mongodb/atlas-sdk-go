@@ -56,7 +56,6 @@ SetAmountBilledCents sets AmountBilledCents field to given value.
 `func (o *BillingPayment) HasAmountBilledCents() bool`
 
 HasAmountBilledCents returns a boolean if a field has been set.
-
 ### GetAmountPaidCents
 
 `func (o *BillingPayment) GetAmountPaidCents() int64`
@@ -81,7 +80,6 @@ SetAmountPaidCents sets AmountPaidCents field to given value.
 `func (o *BillingPayment) HasAmountPaidCents() bool`
 
 HasAmountPaidCents returns a boolean if a field has been set.
-
 ### GetCreated
 
 `func (o *BillingPayment) GetCreated() time.Time`
@@ -106,7 +104,6 @@ SetCreated sets Created field to given value.
 `func (o *BillingPayment) HasCreated() bool`
 
 HasCreated returns a boolean if a field has been set.
-
 ### GetId
 
 `func (o *BillingPayment) GetId() string`
@@ -131,7 +128,6 @@ SetId sets Id field to given value.
 `func (o *BillingPayment) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetSalesTaxCents
 
 `func (o *BillingPayment) GetSalesTaxCents() int64`
@@ -156,7 +152,6 @@ SetSalesTaxCents sets SalesTaxCents field to given value.
 `func (o *BillingPayment) HasSalesTaxCents() bool`
 
 HasSalesTaxCents returns a boolean if a field has been set.
-
 ### GetStatusName
 
 `func (o *BillingPayment) GetStatusName() string`
@@ -181,7 +176,6 @@ SetStatusName sets StatusName field to given value.
 `func (o *BillingPayment) HasStatusName() bool`
 
 HasStatusName returns a boolean if a field has been set.
-
 ### GetSubtotalCents
 
 `func (o *BillingPayment) GetSubtotalCents() int64`
@@ -206,7 +200,6 @@ SetSubtotalCents sets SubtotalCents field to given value.
 `func (o *BillingPayment) HasSubtotalCents() bool`
 
 HasSubtotalCents returns a boolean if a field has been set.
-
 ### GetUpdated
 
 `func (o *BillingPayment) GetUpdated() time.Time`
@@ -231,7 +224,6 @@ SetUpdated sets Updated field to given value.
 `func (o *BillingPayment) HasUpdated() bool`
 
 HasUpdated returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

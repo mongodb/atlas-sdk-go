@@ -52,7 +52,6 @@ SetComment sets Comment field to given value.
 `func (o *ServerlessTenantEndpointUpdate) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
-
 ### GetProviderName
 
 `func (o *ServerlessTenantEndpointUpdate) GetProviderName() string`
@@ -71,7 +70,6 @@ and a boolean to check if the value has been set.
 `func (o *ServerlessTenantEndpointUpdate) SetProviderName(v string)`
 
 SetProviderName sets ProviderName field to given value.
-
 
 ### GetCloudProviderEndpointId
 
@@ -97,7 +95,6 @@ SetCloudProviderEndpointId sets CloudProviderEndpointId field to given value.
 `func (o *ServerlessTenantEndpointUpdate) HasCloudProviderEndpointId() bool`
 
 HasCloudProviderEndpointId returns a boolean if a field has been set.
-
 ### GetPrivateEndpointIpAddress
 
 `func (o *ServerlessTenantEndpointUpdate) GetPrivateEndpointIpAddress() string`
@@ -122,7 +119,6 @@ SetPrivateEndpointIpAddress sets PrivateEndpointIpAddress field to given value.
 `func (o *ServerlessTenantEndpointUpdate) HasPrivateEndpointIpAddress() bool`
 
 HasPrivateEndpointIpAddress returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

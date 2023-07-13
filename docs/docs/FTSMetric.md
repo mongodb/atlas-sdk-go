@@ -45,7 +45,6 @@ and a boolean to check if the value has been set.
 
 SetMetricName sets MetricName field to given value.
 
-
 ### GetUnits
 
 `func (o *FTSMetric) GetUnits() string`
@@ -64,7 +63,6 @@ and a boolean to check if the value has been set.
 `func (o *FTSMetric) SetUnits(v string)`
 
 SetUnits sets Units field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

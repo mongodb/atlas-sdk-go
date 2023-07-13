@@ -15,8 +15,11 @@ type BackupOnlineArchive struct {
 	// Human-readable label that identifies the collection for which you created the online archive.
 	CollName *string `json:"collName,omitempty"`
 	// Classification of MongoDB database collection that you want to return.  If you set this parameter to `TIMESERIES`, set `\"criteria.type\" : \"date\"` and `\"criteria.dateFormat\" : \"ISODATE\"`.
-	CollectionType *string   `json:"collectionType,omitempty"`
-	Criteria       *Criteria `json:"criteria,omitempty"`
+	CollectionType    *string            `json:"collectionType,omitempty"`
+	Criteria          *Criteria          `json:"criteria,omitempty"`
+	DataProcessRegion *DataProcessRegion `json:"dataProcessRegion,omitempty"`
+	// Human-readable label that identifies the dataset that Atlas generates for this online archive.
+	DataSetName *string `json:"dataSetName,omitempty"`
 	// Human-readable label of the database that contains the collection that contains the online archive.
 	DbName *string `json:"dbName,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project that contains the specified cluster. The specified cluster contains the collection for which to create the online archive.
@@ -214,6 +217,72 @@ func (o *BackupOnlineArchive) HasCriteria() bool {
 // SetCriteria gets a reference to the given Criteria and assigns it to the Criteria field.
 func (o *BackupOnlineArchive) SetCriteria(v Criteria) {
 	o.Criteria = &v
+}
+
+// GetDataProcessRegion returns the DataProcessRegion field value if set, zero value otherwise
+func (o *BackupOnlineArchive) GetDataProcessRegion() DataProcessRegion {
+	if o == nil || IsNil(o.DataProcessRegion) {
+		var ret DataProcessRegion
+		return ret
+	}
+	return *o.DataProcessRegion
+}
+
+// GetDataProcessRegionOk returns a tuple with the DataProcessRegion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BackupOnlineArchive) GetDataProcessRegionOk() (*DataProcessRegion, bool) {
+	if o == nil || IsNil(o.DataProcessRegion) {
+		return nil, false
+	}
+
+	return o.DataProcessRegion, true
+}
+
+// HasDataProcessRegion returns a boolean if a field has been set.
+func (o *BackupOnlineArchive) HasDataProcessRegion() bool {
+	if o != nil && !IsNil(o.DataProcessRegion) {
+		return true
+	}
+
+	return false
+}
+
+// SetDataProcessRegion gets a reference to the given DataProcessRegion and assigns it to the DataProcessRegion field.
+func (o *BackupOnlineArchive) SetDataProcessRegion(v DataProcessRegion) {
+	o.DataProcessRegion = &v
+}
+
+// GetDataSetName returns the DataSetName field value if set, zero value otherwise
+func (o *BackupOnlineArchive) GetDataSetName() string {
+	if o == nil || IsNil(o.DataSetName) {
+		var ret string
+		return ret
+	}
+	return *o.DataSetName
+}
+
+// GetDataSetNameOk returns a tuple with the DataSetName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BackupOnlineArchive) GetDataSetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.DataSetName) {
+		return nil, false
+	}
+
+	return o.DataSetName, true
+}
+
+// HasDataSetName returns a boolean if a field has been set.
+func (o *BackupOnlineArchive) HasDataSetName() bool {
+	if o != nil && !IsNil(o.DataSetName) {
+		return true
+	}
+
+	return false
+}
+
+// SetDataSetName gets a reference to the given string and assigns it to the DataSetName field.
+func (o *BackupOnlineArchive) SetDataSetName(v string) {
+	o.DataSetName = &v
 }
 
 // GetDbName returns the DbName field value if set, zero value otherwise
@@ -431,6 +500,9 @@ func (o BackupOnlineArchive) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Criteria) {
 		toSerialize["criteria"] = o.Criteria
+	}
+	if !IsNil(o.DataProcessRegion) {
+		toSerialize["dataProcessRegion"] = o.DataProcessRegion
 	}
 	if !IsNil(o.DbName) {
 		toSerialize["dbName"] = o.DbName

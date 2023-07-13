@@ -50,7 +50,6 @@ SetRoles sets Roles field to given value.
 `func (o *OrganizationInvitationUpdateRequest) HasRoles() bool`
 
 HasRoles returns a boolean if a field has been set.
-
 ### GetTeamIds
 
 `func (o *OrganizationInvitationUpdateRequest) GetTeamIds() []string`
@@ -75,7 +74,6 @@ SetTeamIds sets TeamIds field to given value.
 `func (o *OrganizationInvitationUpdateRequest) HasTeamIds() bool`
 
 HasTeamIds returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

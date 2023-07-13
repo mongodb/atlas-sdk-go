@@ -52,7 +52,6 @@ SetId sets Id field to given value.
 `func (o *Team) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *Team) GetLinks() []Link`
@@ -77,7 +76,6 @@ SetLinks sets Links field to given value.
 `func (o *Team) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetName
 
 `func (o *Team) GetName() string`
@@ -96,7 +94,6 @@ and a boolean to check if the value has been set.
 `func (o *Team) SetName(v string)`
 
 SetName sets Name field to given value.
-
 
 ### GetUsernames
 
@@ -122,7 +119,6 @@ SetUsernames sets Usernames field to given value.
 `func (o *Team) HasUsernames() bool`
 
 HasUsernames returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

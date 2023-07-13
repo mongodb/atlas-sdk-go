@@ -80,7 +80,6 @@ SetApiKeyId sets ApiKeyId field to given value.
 `func (o *EventViewForNdsGroup) HasApiKeyId() bool`
 
 HasApiKeyId returns a boolean if a field has been set.
-
 ### GetCreated
 
 `func (o *EventViewForNdsGroup) GetCreated() time.Time`
@@ -105,7 +104,6 @@ SetCreated sets Created field to given value.
 `func (o *EventViewForNdsGroup) HasCreated() bool`
 
 HasCreated returns a boolean if a field has been set.
-
 ### GetEventTypeName
 
 `func (o *EventViewForNdsGroup) GetEventTypeName() string`
@@ -130,7 +128,6 @@ SetEventTypeName sets EventTypeName field to given value.
 `func (o *EventViewForNdsGroup) HasEventTypeName() bool`
 
 HasEventTypeName returns a boolean if a field has been set.
-
 ### GetGroupId
 
 `func (o *EventViewForNdsGroup) GetGroupId() string`
@@ -155,7 +152,6 @@ SetGroupId sets GroupId field to given value.
 `func (o *EventViewForNdsGroup) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
-
 ### GetId
 
 `func (o *EventViewForNdsGroup) GetId() string`
@@ -180,7 +176,6 @@ SetId sets Id field to given value.
 `func (o *EventViewForNdsGroup) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetIsGlobalAdmin
 
 `func (o *EventViewForNdsGroup) GetIsGlobalAdmin() bool`
@@ -205,7 +200,6 @@ SetIsGlobalAdmin sets IsGlobalAdmin field to given value.
 `func (o *EventViewForNdsGroup) HasIsGlobalAdmin() bool`
 
 HasIsGlobalAdmin returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *EventViewForNdsGroup) GetLinks() []Link`
@@ -230,7 +224,6 @@ SetLinks sets Links field to given value.
 `func (o *EventViewForNdsGroup) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetOrgId
 
 `func (o *EventViewForNdsGroup) GetOrgId() string`
@@ -255,7 +248,6 @@ SetOrgId sets OrgId field to given value.
 `func (o *EventViewForNdsGroup) HasOrgId() bool`
 
 HasOrgId returns a boolean if a field has been set.
-
 ### GetPublicKey
 
 `func (o *EventViewForNdsGroup) GetPublicKey() string`
@@ -280,7 +272,6 @@ SetPublicKey sets PublicKey field to given value.
 `func (o *EventViewForNdsGroup) HasPublicKey() bool`
 
 HasPublicKey returns a boolean if a field has been set.
-
 ### GetRaw
 
 `func (o *EventViewForNdsGroup) GetRaw() Raw`
@@ -305,7 +296,6 @@ SetRaw sets Raw field to given value.
 `func (o *EventViewForNdsGroup) HasRaw() bool`
 
 HasRaw returns a boolean if a field has been set.
-
 ### GetRemoteAddress
 
 `func (o *EventViewForNdsGroup) GetRemoteAddress() string`
@@ -330,7 +320,6 @@ SetRemoteAddress sets RemoteAddress field to given value.
 `func (o *EventViewForNdsGroup) HasRemoteAddress() bool`
 
 HasRemoteAddress returns a boolean if a field has been set.
-
 ### GetUserId
 
 `func (o *EventViewForNdsGroup) GetUserId() string`
@@ -355,7 +344,6 @@ SetUserId sets UserId field to given value.
 `func (o *EventViewForNdsGroup) HasUserId() bool`
 
 HasUserId returns a boolean if a field has been set.
-
 ### GetUsername
 
 `func (o *EventViewForNdsGroup) GetUsername() string`
@@ -380,7 +368,6 @@ SetUsername sets Username field to given value.
 `func (o *EventViewForNdsGroup) HasUsername() bool`
 
 HasUsername returns a boolean if a field has been set.
-
 ### GetAlertId
 
 `func (o *EventViewForNdsGroup) GetAlertId() string`
@@ -405,7 +392,6 @@ SetAlertId sets AlertId field to given value.
 `func (o *EventViewForNdsGroup) HasAlertId() bool`
 
 HasAlertId returns a boolean if a field has been set.
-
 ### GetAlertConfigId
 
 `func (o *EventViewForNdsGroup) GetAlertConfigId() string`
@@ -430,7 +416,6 @@ SetAlertConfigId sets AlertConfigId field to given value.
 `func (o *EventViewForNdsGroup) HasAlertConfigId() bool`
 
 HasAlertConfigId returns a boolean if a field has been set.
-
 ### GetInvoiceId
 
 `func (o *EventViewForNdsGroup) GetInvoiceId() string`
@@ -455,7 +440,6 @@ SetInvoiceId sets InvoiceId field to given value.
 `func (o *EventViewForNdsGroup) HasInvoiceId() bool`
 
 HasInvoiceId returns a boolean if a field has been set.
-
 ### GetPaymentId
 
 `func (o *EventViewForNdsGroup) GetPaymentId() string`
@@ -480,7 +464,6 @@ SetPaymentId sets PaymentId field to given value.
 `func (o *EventViewForNdsGroup) HasPaymentId() bool`
 
 HasPaymentId returns a boolean if a field has been set.
-
 ### GetShardName
 
 `func (o *EventViewForNdsGroup) GetShardName() string`
@@ -505,7 +488,6 @@ SetShardName sets ShardName field to given value.
 `func (o *EventViewForNdsGroup) HasShardName() bool`
 
 HasShardName returns a boolean if a field has been set.
-
 ### GetCollection
 
 `func (o *EventViewForNdsGroup) GetCollection() string`
@@ -530,7 +512,6 @@ SetCollection sets Collection field to given value.
 `func (o *EventViewForNdsGroup) HasCollection() bool`
 
 HasCollection returns a boolean if a field has been set.
-
 ### GetDatabase
 
 `func (o *EventViewForNdsGroup) GetDatabase() string`
@@ -555,7 +536,6 @@ SetDatabase sets Database field to given value.
 `func (o *EventViewForNdsGroup) HasDatabase() bool`
 
 HasDatabase returns a boolean if a field has been set.
-
 ### GetOpType
 
 `func (o *EventViewForNdsGroup) GetOpType() string`
@@ -580,7 +560,6 @@ SetOpType sets OpType field to given value.
 `func (o *EventViewForNdsGroup) HasOpType() bool`
 
 HasOpType returns a boolean if a field has been set.
-
 ### GetPort
 
 `func (o *EventViewForNdsGroup) GetPort() int`
@@ -605,7 +584,6 @@ SetPort sets Port field to given value.
 `func (o *EventViewForNdsGroup) HasPort() bool`
 
 HasPort returns a boolean if a field has been set.
-
 ### GetReplicaSetName
 
 `func (o *EventViewForNdsGroup) GetReplicaSetName() string`
@@ -630,7 +608,6 @@ SetReplicaSetName sets ReplicaSetName field to given value.
 `func (o *EventViewForNdsGroup) HasReplicaSetName() bool`
 
 HasReplicaSetName returns a boolean if a field has been set.
-
 ### GetCurrentValue
 
 `func (o *EventViewForNdsGroup) GetCurrentValue() NumberMetricValue`
@@ -655,7 +632,6 @@ SetCurrentValue sets CurrentValue field to given value.
 `func (o *EventViewForNdsGroup) HasCurrentValue() bool`
 
 HasCurrentValue returns a boolean if a field has been set.
-
 ### GetMetricName
 
 `func (o *EventViewForNdsGroup) GetMetricName() string`
@@ -680,7 +656,6 @@ SetMetricName sets MetricName field to given value.
 `func (o *EventViewForNdsGroup) HasMetricName() bool`
 
 HasMetricName returns a boolean if a field has been set.
-
 ### GetWhitelistEntry
 
 `func (o *EventViewForNdsGroup) GetWhitelistEntry() string`
@@ -705,7 +680,6 @@ SetWhitelistEntry sets WhitelistEntry field to given value.
 `func (o *EventViewForNdsGroup) HasWhitelistEntry() bool`
 
 HasWhitelistEntry returns a boolean if a field has been set.
-
 ### GetEndpointId
 
 `func (o *EventViewForNdsGroup) GetEndpointId() string`
@@ -730,7 +704,6 @@ SetEndpointId sets EndpointId field to given value.
 `func (o *EventViewForNdsGroup) HasEndpointId() bool`
 
 HasEndpointId returns a boolean if a field has been set.
-
 ### GetProviderEndpointId
 
 `func (o *EventViewForNdsGroup) GetProviderEndpointId() string`
@@ -755,7 +728,6 @@ SetProviderEndpointId sets ProviderEndpointId field to given value.
 `func (o *EventViewForNdsGroup) HasProviderEndpointId() bool`
 
 HasProviderEndpointId returns a boolean if a field has been set.
-
 ### GetTeamId
 
 `func (o *EventViewForNdsGroup) GetTeamId() string`
@@ -780,7 +752,6 @@ SetTeamId sets TeamId field to given value.
 `func (o *EventViewForNdsGroup) HasTeamId() bool`
 
 HasTeamId returns a boolean if a field has been set.
-
 ### GetTargetUsername
 
 `func (o *EventViewForNdsGroup) GetTargetUsername() string`
@@ -805,7 +776,6 @@ SetTargetUsername sets TargetUsername field to given value.
 `func (o *EventViewForNdsGroup) HasTargetUsername() bool`
 
 HasTargetUsername returns a boolean if a field has been set.
-
 ### GetResourceId
 
 `func (o *EventViewForNdsGroup) GetResourceId() string`
@@ -830,7 +800,6 @@ SetResourceId sets ResourceId field to given value.
 `func (o *EventViewForNdsGroup) HasResourceId() bool`
 
 HasResourceId returns a boolean if a field has been set.
-
 ### GetResourceType
 
 `func (o *EventViewForNdsGroup) GetResourceType() string`
@@ -855,7 +824,6 @@ SetResourceType sets ResourceType field to given value.
 `func (o *EventViewForNdsGroup) HasResourceType() bool`
 
 HasResourceType returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

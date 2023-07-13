@@ -52,7 +52,6 @@ SetType sets Type field to given value.
 `func (o *IngestionSink) HasType() bool`
 
 HasType returns a boolean if a field has been set.
-
 ### GetMetadataProvider
 
 `func (o *IngestionSink) GetMetadataProvider() string`
@@ -77,7 +76,6 @@ SetMetadataProvider sets MetadataProvider field to given value.
 `func (o *IngestionSink) HasMetadataProvider() bool`
 
 HasMetadataProvider returns a boolean if a field has been set.
-
 ### GetMetadataRegion
 
 `func (o *IngestionSink) GetMetadataRegion() string`
@@ -102,7 +100,6 @@ SetMetadataRegion sets MetadataRegion field to given value.
 `func (o *IngestionSink) HasMetadataRegion() bool`
 
 HasMetadataRegion returns a boolean if a field has been set.
-
 ### GetPartitionFields
 
 `func (o *IngestionSink) GetPartitionFields() []DataLakePipelinesPartitionField`
@@ -127,7 +124,6 @@ SetPartitionFields sets PartitionFields field to given value.
 `func (o *IngestionSink) HasPartitionFields() bool`
 
 HasPartitionFields returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

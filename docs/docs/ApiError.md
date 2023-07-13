@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Detail** | Pointer to **string** |  | [optional] 
+**Detail** | Pointer to **string** | Describes the specific conditions or reasons that cause each type of error. | [optional] 
 **Error** | Pointer to **int** | HTTP status code returned with this error. | [optional] 
 **ErrorCode** | Pointer to **string** | Application error code returned with this error. | [optional] 
 **Parameters** | Pointer to **[]interface{}** | Parameter uses to give more information about the error. | [optional] 
@@ -53,7 +53,6 @@ SetDetail sets Detail field to given value.
 `func (o *ApiError) HasDetail() bool`
 
 HasDetail returns a boolean if a field has been set.
-
 ### GetError
 
 `func (o *ApiError) GetError() int`
@@ -78,7 +77,6 @@ SetError sets Error field to given value.
 `func (o *ApiError) HasError() bool`
 
 HasError returns a boolean if a field has been set.
-
 ### GetErrorCode
 
 `func (o *ApiError) GetErrorCode() string`
@@ -103,7 +101,6 @@ SetErrorCode sets ErrorCode field to given value.
 `func (o *ApiError) HasErrorCode() bool`
 
 HasErrorCode returns a boolean if a field has been set.
-
 ### GetParameters
 
 `func (o *ApiError) GetParameters() []interface{}`
@@ -128,7 +125,6 @@ SetParameters sets Parameters field to given value.
 `func (o *ApiError) HasParameters() bool`
 
 HasParameters returns a boolean if a field has been set.
-
 ### GetReason
 
 `func (o *ApiError) GetReason() string`
@@ -153,7 +149,6 @@ SetReason sets Reason field to given value.
 `func (o *ApiError) HasReason() bool`
 
 HasReason returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

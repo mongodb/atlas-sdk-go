@@ -52,7 +52,6 @@ SetApiKey sets ApiKey field to given value.
 `func (o *CreateOrganizationResponse) HasApiKey() bool`
 
 HasApiKey returns a boolean if a field has been set.
-
 ### GetFederationSettingsId
 
 `func (o *CreateOrganizationResponse) GetFederationSettingsId() string`
@@ -77,7 +76,6 @@ SetFederationSettingsId sets FederationSettingsId field to given value.
 `func (o *CreateOrganizationResponse) HasFederationSettingsId() bool`
 
 HasFederationSettingsId returns a boolean if a field has been set.
-
 ### GetOrgOwnerId
 
 `func (o *CreateOrganizationResponse) GetOrgOwnerId() string`
@@ -102,7 +100,6 @@ SetOrgOwnerId sets OrgOwnerId field to given value.
 `func (o *CreateOrganizationResponse) HasOrgOwnerId() bool`
 
 HasOrgOwnerId returns a boolean if a field has been set.
-
 ### GetOrganization
 
 `func (o *CreateOrganizationResponse) GetOrganization() AtlasOrganization`
@@ -127,7 +124,6 @@ SetOrganization sets Organization field to given value.
 `func (o *CreateOrganizationResponse) HasOrganization() bool`
 
 HasOrganization returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

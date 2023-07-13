@@ -52,7 +52,6 @@ SetAutoDeferOnceEnabled sets AutoDeferOnceEnabled field to given value.
 `func (o *GroupMaintenanceWindow) HasAutoDeferOnceEnabled() bool`
 
 HasAutoDeferOnceEnabled returns a boolean if a field has been set.
-
 ### GetDayOfWeek
 
 `func (o *GroupMaintenanceWindow) GetDayOfWeek() int`
@@ -72,7 +71,6 @@ and a boolean to check if the value has been set.
 
 SetDayOfWeek sets DayOfWeek field to given value.
 
-
 ### GetHourOfDay
 
 `func (o *GroupMaintenanceWindow) GetHourOfDay() int`
@@ -91,7 +89,6 @@ and a boolean to check if the value has been set.
 `func (o *GroupMaintenanceWindow) SetHourOfDay(v int)`
 
 SetHourOfDay sets HourOfDay field to given value.
-
 
 ### GetStartASAP
 
@@ -117,7 +114,6 @@ SetStartASAP sets StartASAP field to given value.
 `func (o *GroupMaintenanceWindow) HasStartASAP() bool`
 
 HasStartASAP returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

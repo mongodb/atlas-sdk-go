@@ -52,7 +52,6 @@ SetCollections sets Collections field to given value.
 `func (o *DataLakeDatabaseInstance) HasCollections() bool`
 
 HasCollections returns a boolean if a field has been set.
-
 ### GetMaxWildcardCollections
 
 `func (o *DataLakeDatabaseInstance) GetMaxWildcardCollections() int`
@@ -77,7 +76,6 @@ SetMaxWildcardCollections sets MaxWildcardCollections field to given value.
 `func (o *DataLakeDatabaseInstance) HasMaxWildcardCollections() bool`
 
 HasMaxWildcardCollections returns a boolean if a field has been set.
-
 ### GetName
 
 `func (o *DataLakeDatabaseInstance) GetName() string`
@@ -102,7 +100,6 @@ SetName sets Name field to given value.
 `func (o *DataLakeDatabaseInstance) HasName() bool`
 
 HasName returns a boolean if a field has been set.
-
 ### GetViews
 
 `func (o *DataLakeDatabaseInstance) GetViews() []DataLakeApiBase`
@@ -127,7 +124,6 @@ SetViews sets Views field to given value.
 `func (o *DataLakeDatabaseInstance) HasViews() bool`
 
 HasViews returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

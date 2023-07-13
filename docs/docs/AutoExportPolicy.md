@@ -50,7 +50,6 @@ SetExportBucketId sets ExportBucketId field to given value.
 `func (o *AutoExportPolicy) HasExportBucketId() bool`
 
 HasExportBucketId returns a boolean if a field has been set.
-
 ### GetFrequencyType
 
 `func (o *AutoExportPolicy) GetFrequencyType() string`
@@ -75,7 +74,6 @@ SetFrequencyType sets FrequencyType field to given value.
 `func (o *AutoExportPolicy) HasFrequencyType() bool`
 
 HasFrequencyType returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

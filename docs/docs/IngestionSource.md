@@ -54,7 +54,6 @@ SetType sets Type field to given value.
 `func (o *IngestionSource) HasType() bool`
 
 HasType returns a boolean if a field has been set.
-
 ### GetClusterName
 
 `func (o *IngestionSource) GetClusterName() string`
@@ -79,7 +78,6 @@ SetClusterName sets ClusterName field to given value.
 `func (o *IngestionSource) HasClusterName() bool`
 
 HasClusterName returns a boolean if a field has been set.
-
 ### GetCollectionName
 
 `func (o *IngestionSource) GetCollectionName() string`
@@ -104,7 +102,6 @@ SetCollectionName sets CollectionName field to given value.
 `func (o *IngestionSource) HasCollectionName() bool`
 
 HasCollectionName returns a boolean if a field has been set.
-
 ### GetDatabaseName
 
 `func (o *IngestionSource) GetDatabaseName() string`
@@ -129,7 +126,6 @@ SetDatabaseName sets DatabaseName field to given value.
 `func (o *IngestionSource) HasDatabaseName() bool`
 
 HasDatabaseName returns a boolean if a field has been set.
-
 ### GetGroupId
 
 `func (o *IngestionSource) GetGroupId() string`
@@ -154,7 +150,6 @@ SetGroupId sets GroupId field to given value.
 `func (o *IngestionSource) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
-
 ### GetPolicyItemId
 
 `func (o *IngestionSource) GetPolicyItemId() string`
@@ -179,7 +174,6 @@ SetPolicyItemId sets PolicyItemId field to given value.
 `func (o *IngestionSource) HasPolicyItemId() bool`
 
 HasPolicyItemId returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

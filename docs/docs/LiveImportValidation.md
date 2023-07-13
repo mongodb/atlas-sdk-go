@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the validation. | [optional] [readonly] 
-**ErrorMessage** | Pointer to **NullableString** | Reason why the validation job failed. | [optional] [readonly] 
+**ErrorMessage** | Pointer to **string** | Reason why the validation job failed. | [optional] [readonly] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the project to validate. | [optional] [readonly] 
 **SourceGroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the source project. | [optional] 
-**Status** | Pointer to **NullableString** | State of the specified validation job returned at the time of the request. | [optional] [readonly] 
+**Status** | Pointer to **string** | State of the specified validation job returned at the time of the request. | [optional] [readonly] 
 
 ## Methods
 
@@ -53,7 +53,6 @@ SetId sets Id field to given value.
 `func (o *LiveImportValidation) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetErrorMessage
 
 `func (o *LiveImportValidation) GetErrorMessage() string`
@@ -78,17 +77,6 @@ SetErrorMessage sets ErrorMessage field to given value.
 `func (o *LiveImportValidation) HasErrorMessage() bool`
 
 HasErrorMessage returns a boolean if a field has been set.
-
-### SetErrorMessageNil
-
-`func (o *LiveImportValidation) SetErrorMessageNil(b bool)`
-
- SetErrorMessageNil sets the value for ErrorMessage to be an explicit nil
-
-### UnsetErrorMessage
-`func (o *LiveImportValidation) UnsetErrorMessage()`
-
-UnsetErrorMessage ensures that no value is present for ErrorMessage, not even an explicit nil
 ### GetGroupId
 
 `func (o *LiveImportValidation) GetGroupId() string`
@@ -113,7 +101,6 @@ SetGroupId sets GroupId field to given value.
 `func (o *LiveImportValidation) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
-
 ### GetSourceGroupId
 
 `func (o *LiveImportValidation) GetSourceGroupId() string`
@@ -138,7 +125,6 @@ SetSourceGroupId sets SourceGroupId field to given value.
 `func (o *LiveImportValidation) HasSourceGroupId() bool`
 
 HasSourceGroupId returns a boolean if a field has been set.
-
 ### GetStatus
 
 `func (o *LiveImportValidation) GetStatus() string`
@@ -163,17 +149,6 @@ SetStatus sets Status field to given value.
 `func (o *LiveImportValidation) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
-
-### SetStatusNil
-
-`func (o *LiveImportValidation) SetStatusNil(b bool)`
-
- SetStatusNil sets the value for Status to be an explicit nil
-
-### UnsetStatus
-`func (o *LiveImportValidation) UnsetStatus()`
-
-UnsetStatus ensures that no value is present for Status, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

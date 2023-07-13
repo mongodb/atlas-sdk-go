@@ -54,7 +54,6 @@ SetIsCollectDatabaseSpecificsStatisticsEnabled sets IsCollectDatabaseSpecificsSt
 `func (o *GroupSettings) HasIsCollectDatabaseSpecificsStatisticsEnabled() bool`
 
 HasIsCollectDatabaseSpecificsStatisticsEnabled returns a boolean if a field has been set.
-
 ### GetIsDataExplorerEnabled
 
 `func (o *GroupSettings) GetIsDataExplorerEnabled() bool`
@@ -79,7 +78,6 @@ SetIsDataExplorerEnabled sets IsDataExplorerEnabled field to given value.
 `func (o *GroupSettings) HasIsDataExplorerEnabled() bool`
 
 HasIsDataExplorerEnabled returns a boolean if a field has been set.
-
 ### GetIsExtendedStorageSizesEnabled
 
 `func (o *GroupSettings) GetIsExtendedStorageSizesEnabled() bool`
@@ -104,7 +102,6 @@ SetIsExtendedStorageSizesEnabled sets IsExtendedStorageSizesEnabled field to giv
 `func (o *GroupSettings) HasIsExtendedStorageSizesEnabled() bool`
 
 HasIsExtendedStorageSizesEnabled returns a boolean if a field has been set.
-
 ### GetIsPerformanceAdvisorEnabled
 
 `func (o *GroupSettings) GetIsPerformanceAdvisorEnabled() bool`
@@ -129,7 +126,6 @@ SetIsPerformanceAdvisorEnabled sets IsPerformanceAdvisorEnabled field to given v
 `func (o *GroupSettings) HasIsPerformanceAdvisorEnabled() bool`
 
 HasIsPerformanceAdvisorEnabled returns a boolean if a field has been set.
-
 ### GetIsRealtimePerformancePanelEnabled
 
 `func (o *GroupSettings) GetIsRealtimePerformancePanelEnabled() bool`
@@ -154,7 +150,6 @@ SetIsRealtimePerformancePanelEnabled sets IsRealtimePerformancePanelEnabled fiel
 `func (o *GroupSettings) HasIsRealtimePerformancePanelEnabled() bool`
 
 HasIsRealtimePerformancePanelEnabled returns a boolean if a field has been set.
-
 ### GetIsSchemaAdvisorEnabled
 
 `func (o *GroupSettings) GetIsSchemaAdvisorEnabled() bool`
@@ -179,7 +174,6 @@ SetIsSchemaAdvisorEnabled sets IsSchemaAdvisorEnabled field to given value.
 `func (o *GroupSettings) HasIsSchemaAdvisorEnabled() bool`
 
 HasIsSchemaAdvisorEnabled returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -46,7 +46,6 @@ and a boolean to check if the value has been set.
 
 SetExternalGroupName sets ExternalGroupName field to given value.
 
-
 ### GetId
 
 `func (o *AuthFederationRoleMapping) GetId() string`
@@ -71,7 +70,6 @@ SetId sets Id field to given value.
 `func (o *AuthFederationRoleMapping) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetRoleAssignments
 
 `func (o *AuthFederationRoleMapping) GetRoleAssignments() []RoleAssignment`
@@ -96,7 +94,6 @@ SetRoleAssignments sets RoleAssignments field to given value.
 `func (o *AuthFederationRoleMapping) HasRoleAssignments() bool`
 
 HasRoleAssignments returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

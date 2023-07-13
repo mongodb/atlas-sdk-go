@@ -56,7 +56,6 @@ and a boolean to check if the value has been set.
 
 SetCountry sets Country field to given value.
 
-
 ### GetCreatedAt
 
 `func (o *CloudAppUser) GetCreatedAt() time.Time`
@@ -81,7 +80,6 @@ SetCreatedAt sets CreatedAt field to given value.
 `func (o *CloudAppUser) HasCreatedAt() bool`
 
 HasCreatedAt returns a boolean if a field has been set.
-
 ### GetEmailAddress
 
 `func (o *CloudAppUser) GetEmailAddress() string`
@@ -101,7 +99,6 @@ and a boolean to check if the value has been set.
 
 SetEmailAddress sets EmailAddress field to given value.
 
-
 ### GetFirstName
 
 `func (o *CloudAppUser) GetFirstName() string`
@@ -120,7 +117,6 @@ and a boolean to check if the value has been set.
 `func (o *CloudAppUser) SetFirstName(v string)`
 
 SetFirstName sets FirstName field to given value.
-
 
 ### GetId
 
@@ -146,7 +142,6 @@ SetId sets Id field to given value.
 `func (o *CloudAppUser) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetLastAuth
 
 `func (o *CloudAppUser) GetLastAuth() time.Time`
@@ -171,7 +166,6 @@ SetLastAuth sets LastAuth field to given value.
 `func (o *CloudAppUser) HasLastAuth() bool`
 
 HasLastAuth returns a boolean if a field has been set.
-
 ### GetLastName
 
 `func (o *CloudAppUser) GetLastName() string`
@@ -190,7 +184,6 @@ and a boolean to check if the value has been set.
 `func (o *CloudAppUser) SetLastName(v string)`
 
 SetLastName sets LastName field to given value.
-
 
 ### GetLinks
 
@@ -216,7 +209,6 @@ SetLinks sets Links field to given value.
 `func (o *CloudAppUser) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetMobileNumber
 
 `func (o *CloudAppUser) GetMobileNumber() string`
@@ -236,7 +228,6 @@ and a boolean to check if the value has been set.
 
 SetMobileNumber sets MobileNumber field to given value.
 
-
 ### GetPassword
 
 `func (o *CloudAppUser) GetPassword() string`
@@ -255,7 +246,6 @@ and a boolean to check if the value has been set.
 `func (o *CloudAppUser) SetPassword(v string)`
 
 SetPassword sets Password field to given value.
-
 
 ### GetRoles
 
@@ -281,7 +271,6 @@ SetRoles sets Roles field to given value.
 `func (o *CloudAppUser) HasRoles() bool`
 
 HasRoles returns a boolean if a field has been set.
-
 ### GetTeamIds
 
 `func (o *CloudAppUser) GetTeamIds() []string`
@@ -306,7 +295,6 @@ SetTeamIds sets TeamIds field to given value.
 `func (o *CloudAppUser) HasTeamIds() bool`
 
 HasTeamIds returns a boolean if a field has been set.
-
 ### GetUsername
 
 `func (o *CloudAppUser) GetUsername() string`
@@ -325,7 +313,6 @@ and a boolean to check if the value has been set.
 `func (o *CloudAppUser) SetUsername(v string)`
 
 SetUsername sets Username field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

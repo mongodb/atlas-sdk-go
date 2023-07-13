@@ -58,7 +58,6 @@ SetT sets T field to given value.
 `func (o *Raw) HasT() bool`
 
 HasT returns a boolean if a field has been set.
-
 ### GetAlertConfigId
 
 `func (o *Raw) GetAlertConfigId() string`
@@ -83,7 +82,6 @@ SetAlertConfigId sets AlertConfigId field to given value.
 `func (o *Raw) HasAlertConfigId() bool`
 
 HasAlertConfigId returns a boolean if a field has been set.
-
 ### GetCid
 
 `func (o *Raw) GetCid() string`
@@ -108,7 +106,6 @@ SetCid sets Cid field to given value.
 `func (o *Raw) HasCid() bool`
 
 HasCid returns a boolean if a field has been set.
-
 ### GetCre
 
 `func (o *Raw) GetCre() time.Time`
@@ -133,7 +130,6 @@ SetCre sets Cre field to given value.
 `func (o *Raw) HasCre() bool`
 
 HasCre returns a boolean if a field has been set.
-
 ### GetDescription
 
 `func (o *Raw) GetDescription() string`
@@ -158,7 +154,6 @@ SetDescription sets Description field to given value.
 `func (o *Raw) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
-
 ### GetGn
 
 `func (o *Raw) GetGn() string`
@@ -183,7 +178,6 @@ SetGn sets Gn field to given value.
 `func (o *Raw) HasGn() bool`
 
 HasGn returns a boolean if a field has been set.
-
 ### GetId
 
 `func (o *Raw) GetId() string`
@@ -208,7 +202,6 @@ SetId sets Id field to given value.
 `func (o *Raw) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetOrgId
 
 `func (o *Raw) GetOrgId() string`
@@ -233,7 +226,6 @@ SetOrgId sets OrgId field to given value.
 `func (o *Raw) HasOrgId() bool`
 
 HasOrgId returns a boolean if a field has been set.
-
 ### GetOrgName
 
 `func (o *Raw) GetOrgName() string`
@@ -258,7 +250,6 @@ SetOrgName sets OrgName field to given value.
 `func (o *Raw) HasOrgName() bool`
 
 HasOrgName returns a boolean if a field has been set.
-
 ### GetSeverity
 
 `func (o *Raw) GetSeverity() string`
@@ -283,7 +274,6 @@ SetSeverity sets Severity field to given value.
 `func (o *Raw) HasSeverity() bool`
 
 HasSeverity returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

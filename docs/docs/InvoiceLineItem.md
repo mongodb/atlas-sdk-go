@@ -65,7 +65,6 @@ SetClusterName sets ClusterName field to given value.
 `func (o *InvoiceLineItem) HasClusterName() bool`
 
 HasClusterName returns a boolean if a field has been set.
-
 ### GetCreated
 
 `func (o *InvoiceLineItem) GetCreated() time.Time`
@@ -90,7 +89,6 @@ SetCreated sets Created field to given value.
 `func (o *InvoiceLineItem) HasCreated() bool`
 
 HasCreated returns a boolean if a field has been set.
-
 ### GetDiscountCents
 
 `func (o *InvoiceLineItem) GetDiscountCents() int64`
@@ -115,7 +113,6 @@ SetDiscountCents sets DiscountCents field to given value.
 `func (o *InvoiceLineItem) HasDiscountCents() bool`
 
 HasDiscountCents returns a boolean if a field has been set.
-
 ### GetEndDate
 
 `func (o *InvoiceLineItem) GetEndDate() time.Time`
@@ -140,7 +137,6 @@ SetEndDate sets EndDate field to given value.
 `func (o *InvoiceLineItem) HasEndDate() bool`
 
 HasEndDate returns a boolean if a field has been set.
-
 ### GetGroupId
 
 `func (o *InvoiceLineItem) GetGroupId() string`
@@ -165,7 +161,6 @@ SetGroupId sets GroupId field to given value.
 `func (o *InvoiceLineItem) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
-
 ### GetGroupName
 
 `func (o *InvoiceLineItem) GetGroupName() string`
@@ -190,7 +185,6 @@ SetGroupName sets GroupName field to given value.
 `func (o *InvoiceLineItem) HasGroupName() bool`
 
 HasGroupName returns a boolean if a field has been set.
-
 ### GetNote
 
 `func (o *InvoiceLineItem) GetNote() string`
@@ -215,7 +209,6 @@ SetNote sets Note field to given value.
 `func (o *InvoiceLineItem) HasNote() bool`
 
 HasNote returns a boolean if a field has been set.
-
 ### GetPercentDiscount
 
 `func (o *InvoiceLineItem) GetPercentDiscount() float32`
@@ -240,7 +233,6 @@ SetPercentDiscount sets PercentDiscount field to given value.
 `func (o *InvoiceLineItem) HasPercentDiscount() bool`
 
 HasPercentDiscount returns a boolean if a field has been set.
-
 ### GetQuantity
 
 `func (o *InvoiceLineItem) GetQuantity() float64`
@@ -265,7 +257,6 @@ SetQuantity sets Quantity field to given value.
 `func (o *InvoiceLineItem) HasQuantity() bool`
 
 HasQuantity returns a boolean if a field has been set.
-
 ### GetSku
 
 `func (o *InvoiceLineItem) GetSku() string`
@@ -290,7 +281,6 @@ SetSku sets Sku field to given value.
 `func (o *InvoiceLineItem) HasSku() bool`
 
 HasSku returns a boolean if a field has been set.
-
 ### GetStartDate
 
 `func (o *InvoiceLineItem) GetStartDate() time.Time`
@@ -315,7 +305,6 @@ SetStartDate sets StartDate field to given value.
 `func (o *InvoiceLineItem) HasStartDate() bool`
 
 HasStartDate returns a boolean if a field has been set.
-
 ### GetStitchAppName
 
 `func (o *InvoiceLineItem) GetStitchAppName() string`
@@ -340,7 +329,6 @@ SetStitchAppName sets StitchAppName field to given value.
 `func (o *InvoiceLineItem) HasStitchAppName() bool`
 
 HasStitchAppName returns a boolean if a field has been set.
-
 ### GetTierLowerBound
 
 `func (o *InvoiceLineItem) GetTierLowerBound() float64`
@@ -365,7 +353,6 @@ SetTierLowerBound sets TierLowerBound field to given value.
 `func (o *InvoiceLineItem) HasTierLowerBound() bool`
 
 HasTierLowerBound returns a boolean if a field has been set.
-
 ### GetTierUpperBound
 
 `func (o *InvoiceLineItem) GetTierUpperBound() float64`
@@ -390,7 +377,6 @@ SetTierUpperBound sets TierUpperBound field to given value.
 `func (o *InvoiceLineItem) HasTierUpperBound() bool`
 
 HasTierUpperBound returns a boolean if a field has been set.
-
 ### GetTotalPriceCents
 
 `func (o *InvoiceLineItem) GetTotalPriceCents() int64`
@@ -415,7 +401,6 @@ SetTotalPriceCents sets TotalPriceCents field to given value.
 `func (o *InvoiceLineItem) HasTotalPriceCents() bool`
 
 HasTotalPriceCents returns a boolean if a field has been set.
-
 ### GetUnit
 
 `func (o *InvoiceLineItem) GetUnit() string`
@@ -440,7 +425,6 @@ SetUnit sets Unit field to given value.
 `func (o *InvoiceLineItem) HasUnit() bool`
 
 HasUnit returns a boolean if a field has been set.
-
 ### GetUnitPriceDollars
 
 `func (o *InvoiceLineItem) GetUnitPriceDollars() float64`
@@ -465,7 +449,6 @@ SetUnitPriceDollars sets UnitPriceDollars field to given value.
 `func (o *InvoiceLineItem) HasUnitPriceDollars() bool`
 
 HasUnitPriceDollars returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

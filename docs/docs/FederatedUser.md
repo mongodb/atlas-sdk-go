@@ -48,7 +48,6 @@ and a boolean to check if the value has been set.
 
 SetEmailAddress sets EmailAddress field to given value.
 
-
 ### GetFederationSettingsId
 
 `func (o *FederatedUser) GetFederationSettingsId() string`
@@ -67,7 +66,6 @@ and a boolean to check if the value has been set.
 `func (o *FederatedUser) SetFederationSettingsId(v string)`
 
 SetFederationSettingsId sets FederationSettingsId field to given value.
-
 
 ### GetFirstName
 
@@ -88,7 +86,6 @@ and a boolean to check if the value has been set.
 
 SetFirstName sets FirstName field to given value.
 
-
 ### GetLastName
 
 `func (o *FederatedUser) GetLastName() string`
@@ -107,7 +104,6 @@ and a boolean to check if the value has been set.
 `func (o *FederatedUser) SetLastName(v string)`
 
 SetLastName sets LastName field to given value.
-
 
 ### GetUserId
 
@@ -133,7 +129,6 @@ SetUserId sets UserId field to given value.
 `func (o *FederatedUser) HasUserId() bool`
 
 HasUserId returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **ReplicaSetName** | Pointer to **string** | Name of the replica set to which this alert applies. The response returns this parameter for alerts of events impacting backups, hosts, or replica sets. | [optional] [readonly] 
 **CurrentValue** | Pointer to [**NumberMetricValue**](NumberMetricValue.md) |  | [optional] 
 **MetricName** | Pointer to **string** | Name of the metric against which Atlas checks the configured &#x60;metricThreshold.threshold&#x60;.  To learn more about the available metrics, see &lt;a href&#x3D;\&quot;https://www.mongodb.com/docs/atlas/reference/alert-host-metrics/#std-label-measurement-types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Host Metrics&lt;/a&gt;.  **NOTE**: If you set eventTypeName to OUTSIDE_SERVERLESS_METRIC_THRESHOLD, you can specify only metrics available for serverless. To learn more, see &lt;a href&#x3D;\&quot;https://dochub.mongodb.org/core/alert-config-serverless-measurements\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Serverless Measurements&lt;/a&gt;. | [optional] [readonly] 
-**NonRunningHostIds** | Pointer to **[]string** |  | [optional] [readonly] 
+**NonRunningHostIds** | Pointer to **[]string** | List of unique 24-hexadecimal character strings that identify the replica set members that are not in PRIMARY nor SECONDARY state. | [optional] [readonly] 
 **ParentClusterId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the parent cluster to which this alert applies. The parent cluster contains the sharded nodes. MongoDB Cloud returns this parameter only for alerts of events impacting sharded clusters. | [optional] [readonly] 
 
 ## Methods
@@ -69,7 +69,6 @@ SetAcknowledgedUntil sets AcknowledgedUntil field to given value.
 `func (o *AlertViewForNdsGroup) HasAcknowledgedUntil() bool`
 
 HasAcknowledgedUntil returns a boolean if a field has been set.
-
 ### GetAcknowledgementComment
 
 `func (o *AlertViewForNdsGroup) GetAcknowledgementComment() string`
@@ -94,7 +93,6 @@ SetAcknowledgementComment sets AcknowledgementComment field to given value.
 `func (o *AlertViewForNdsGroup) HasAcknowledgementComment() bool`
 
 HasAcknowledgementComment returns a boolean if a field has been set.
-
 ### GetAcknowledgingUsername
 
 `func (o *AlertViewForNdsGroup) GetAcknowledgingUsername() string`
@@ -119,7 +117,6 @@ SetAcknowledgingUsername sets AcknowledgingUsername field to given value.
 `func (o *AlertViewForNdsGroup) HasAcknowledgingUsername() bool`
 
 HasAcknowledgingUsername returns a boolean if a field has been set.
-
 ### GetAlertConfigId
 
 `func (o *AlertViewForNdsGroup) GetAlertConfigId() string`
@@ -144,7 +141,6 @@ SetAlertConfigId sets AlertConfigId field to given value.
 `func (o *AlertViewForNdsGroup) HasAlertConfigId() bool`
 
 HasAlertConfigId returns a boolean if a field has been set.
-
 ### GetCreated
 
 `func (o *AlertViewForNdsGroup) GetCreated() time.Time`
@@ -169,7 +165,6 @@ SetCreated sets Created field to given value.
 `func (o *AlertViewForNdsGroup) HasCreated() bool`
 
 HasCreated returns a boolean if a field has been set.
-
 ### GetEventTypeName
 
 `func (o *AlertViewForNdsGroup) GetEventTypeName() string`
@@ -194,7 +189,6 @@ SetEventTypeName sets EventTypeName field to given value.
 `func (o *AlertViewForNdsGroup) HasEventTypeName() bool`
 
 HasEventTypeName returns a boolean if a field has been set.
-
 ### GetGroupId
 
 `func (o *AlertViewForNdsGroup) GetGroupId() string`
@@ -219,7 +213,6 @@ SetGroupId sets GroupId field to given value.
 `func (o *AlertViewForNdsGroup) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
-
 ### GetId
 
 `func (o *AlertViewForNdsGroup) GetId() string`
@@ -244,7 +237,6 @@ SetId sets Id field to given value.
 `func (o *AlertViewForNdsGroup) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetLastNotified
 
 `func (o *AlertViewForNdsGroup) GetLastNotified() time.Time`
@@ -269,7 +261,6 @@ SetLastNotified sets LastNotified field to given value.
 `func (o *AlertViewForNdsGroup) HasLastNotified() bool`
 
 HasLastNotified returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *AlertViewForNdsGroup) GetLinks() []Link`
@@ -294,7 +285,6 @@ SetLinks sets Links field to given value.
 `func (o *AlertViewForNdsGroup) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetOrgId
 
 `func (o *AlertViewForNdsGroup) GetOrgId() string`
@@ -319,7 +309,6 @@ SetOrgId sets OrgId field to given value.
 `func (o *AlertViewForNdsGroup) HasOrgId() bool`
 
 HasOrgId returns a boolean if a field has been set.
-
 ### GetResolved
 
 `func (o *AlertViewForNdsGroup) GetResolved() time.Time`
@@ -344,7 +333,6 @@ SetResolved sets Resolved field to given value.
 `func (o *AlertViewForNdsGroup) HasResolved() bool`
 
 HasResolved returns a boolean if a field has been set.
-
 ### GetStatus
 
 `func (o *AlertViewForNdsGroup) GetStatus() string`
@@ -369,7 +357,6 @@ SetStatus sets Status field to given value.
 `func (o *AlertViewForNdsGroup) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
-
 ### GetUpdated
 
 `func (o *AlertViewForNdsGroup) GetUpdated() time.Time`
@@ -394,7 +381,6 @@ SetUpdated sets Updated field to given value.
 `func (o *AlertViewForNdsGroup) HasUpdated() bool`
 
 HasUpdated returns a boolean if a field has been set.
-
 ### GetClusterName
 
 `func (o *AlertViewForNdsGroup) GetClusterName() string`
@@ -419,7 +405,6 @@ SetClusterName sets ClusterName field to given value.
 `func (o *AlertViewForNdsGroup) HasClusterName() bool`
 
 HasClusterName returns a boolean if a field has been set.
-
 ### GetHostnameAndPort
 
 `func (o *AlertViewForNdsGroup) GetHostnameAndPort() string`
@@ -444,7 +429,6 @@ SetHostnameAndPort sets HostnameAndPort field to given value.
 `func (o *AlertViewForNdsGroup) HasHostnameAndPort() bool`
 
 HasHostnameAndPort returns a boolean if a field has been set.
-
 ### GetReplicaSetName
 
 `func (o *AlertViewForNdsGroup) GetReplicaSetName() string`
@@ -469,7 +453,6 @@ SetReplicaSetName sets ReplicaSetName field to given value.
 `func (o *AlertViewForNdsGroup) HasReplicaSetName() bool`
 
 HasReplicaSetName returns a boolean if a field has been set.
-
 ### GetCurrentValue
 
 `func (o *AlertViewForNdsGroup) GetCurrentValue() NumberMetricValue`
@@ -494,7 +477,6 @@ SetCurrentValue sets CurrentValue field to given value.
 `func (o *AlertViewForNdsGroup) HasCurrentValue() bool`
 
 HasCurrentValue returns a boolean if a field has been set.
-
 ### GetMetricName
 
 `func (o *AlertViewForNdsGroup) GetMetricName() string`
@@ -519,7 +501,6 @@ SetMetricName sets MetricName field to given value.
 `func (o *AlertViewForNdsGroup) HasMetricName() bool`
 
 HasMetricName returns a boolean if a field has been set.
-
 ### GetNonRunningHostIds
 
 `func (o *AlertViewForNdsGroup) GetNonRunningHostIds() []string`
@@ -544,7 +525,6 @@ SetNonRunningHostIds sets NonRunningHostIds field to given value.
 `func (o *AlertViewForNdsGroup) HasNonRunningHostIds() bool`
 
 HasNonRunningHostIds returns a boolean if a field has been set.
-
 ### GetParentClusterId
 
 `func (o *AlertViewForNdsGroup) GetParentClusterId() string`
@@ -569,7 +549,6 @@ SetParentClusterId sets ParentClusterId field to given value.
 `func (o *AlertViewForNdsGroup) HasParentClusterId() bool`
 
 HasParentClusterId returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

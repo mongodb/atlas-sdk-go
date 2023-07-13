@@ -67,7 +67,6 @@ SetAmountBilledCents sets AmountBilledCents field to given value.
 `func (o *BillingInvoice) HasAmountBilledCents() bool`
 
 HasAmountBilledCents returns a boolean if a field has been set.
-
 ### GetAmountPaidCents
 
 `func (o *BillingInvoice) GetAmountPaidCents() int64`
@@ -92,7 +91,6 @@ SetAmountPaidCents sets AmountPaidCents field to given value.
 `func (o *BillingInvoice) HasAmountPaidCents() bool`
 
 HasAmountPaidCents returns a boolean if a field has been set.
-
 ### GetCreated
 
 `func (o *BillingInvoice) GetCreated() time.Time`
@@ -117,7 +115,6 @@ SetCreated sets Created field to given value.
 `func (o *BillingInvoice) HasCreated() bool`
 
 HasCreated returns a boolean if a field has been set.
-
 ### GetCreditsCents
 
 `func (o *BillingInvoice) GetCreditsCents() int64`
@@ -142,7 +139,6 @@ SetCreditsCents sets CreditsCents field to given value.
 `func (o *BillingInvoice) HasCreditsCents() bool`
 
 HasCreditsCents returns a boolean if a field has been set.
-
 ### GetEndDate
 
 `func (o *BillingInvoice) GetEndDate() time.Time`
@@ -167,7 +163,6 @@ SetEndDate sets EndDate field to given value.
 `func (o *BillingInvoice) HasEndDate() bool`
 
 HasEndDate returns a boolean if a field has been set.
-
 ### GetGroupId
 
 `func (o *BillingInvoice) GetGroupId() string`
@@ -192,7 +187,6 @@ SetGroupId sets GroupId field to given value.
 `func (o *BillingInvoice) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
-
 ### GetId
 
 `func (o *BillingInvoice) GetId() string`
@@ -217,7 +211,6 @@ SetId sets Id field to given value.
 `func (o *BillingInvoice) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetLineItems
 
 `func (o *BillingInvoice) GetLineItems() []InvoiceLineItem`
@@ -242,7 +235,6 @@ SetLineItems sets LineItems field to given value.
 `func (o *BillingInvoice) HasLineItems() bool`
 
 HasLineItems returns a boolean if a field has been set.
-
 ### GetLinkedInvoices
 
 `func (o *BillingInvoice) GetLinkedInvoices() []BillingInvoice`
@@ -267,7 +259,6 @@ SetLinkedInvoices sets LinkedInvoices field to given value.
 `func (o *BillingInvoice) HasLinkedInvoices() bool`
 
 HasLinkedInvoices returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *BillingInvoice) GetLinks() []Link`
@@ -292,7 +283,6 @@ SetLinks sets Links field to given value.
 `func (o *BillingInvoice) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetOrgId
 
 `func (o *BillingInvoice) GetOrgId() string`
@@ -317,7 +307,6 @@ SetOrgId sets OrgId field to given value.
 `func (o *BillingInvoice) HasOrgId() bool`
 
 HasOrgId returns a boolean if a field has been set.
-
 ### GetPayments
 
 `func (o *BillingInvoice) GetPayments() []BillingPayment`
@@ -342,7 +331,6 @@ SetPayments sets Payments field to given value.
 `func (o *BillingInvoice) HasPayments() bool`
 
 HasPayments returns a boolean if a field has been set.
-
 ### GetRefunds
 
 `func (o *BillingInvoice) GetRefunds() []BillingRefund`
@@ -367,7 +355,6 @@ SetRefunds sets Refunds field to given value.
 `func (o *BillingInvoice) HasRefunds() bool`
 
 HasRefunds returns a boolean if a field has been set.
-
 ### GetSalesTaxCents
 
 `func (o *BillingInvoice) GetSalesTaxCents() int64`
@@ -392,7 +379,6 @@ SetSalesTaxCents sets SalesTaxCents field to given value.
 `func (o *BillingInvoice) HasSalesTaxCents() bool`
 
 HasSalesTaxCents returns a boolean if a field has been set.
-
 ### GetStartDate
 
 `func (o *BillingInvoice) GetStartDate() time.Time`
@@ -417,7 +403,6 @@ SetStartDate sets StartDate field to given value.
 `func (o *BillingInvoice) HasStartDate() bool`
 
 HasStartDate returns a boolean if a field has been set.
-
 ### GetStartingBalanceCents
 
 `func (o *BillingInvoice) GetStartingBalanceCents() int64`
@@ -442,7 +427,6 @@ SetStartingBalanceCents sets StartingBalanceCents field to given value.
 `func (o *BillingInvoice) HasStartingBalanceCents() bool`
 
 HasStartingBalanceCents returns a boolean if a field has been set.
-
 ### GetStatusName
 
 `func (o *BillingInvoice) GetStatusName() string`
@@ -467,7 +451,6 @@ SetStatusName sets StatusName field to given value.
 `func (o *BillingInvoice) HasStatusName() bool`
 
 HasStatusName returns a boolean if a field has been set.
-
 ### GetSubtotalCents
 
 `func (o *BillingInvoice) GetSubtotalCents() int64`
@@ -492,7 +475,6 @@ SetSubtotalCents sets SubtotalCents field to given value.
 `func (o *BillingInvoice) HasSubtotalCents() bool`
 
 HasSubtotalCents returns a boolean if a field has been set.
-
 ### GetUpdated
 
 `func (o *BillingInvoice) GetUpdated() time.Time`
@@ -517,7 +499,6 @@ SetUpdated sets Updated field to given value.
 `func (o *BillingInvoice) HasUpdated() bool`
 
 HasUpdated returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

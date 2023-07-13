@@ -61,7 +61,6 @@ SetAwsIAMType sets AwsIAMType field to given value.
 `func (o *CloudDatabaseUser) HasAwsIAMType() bool`
 
 HasAwsIAMType returns a boolean if a field has been set.
-
 ### GetDatabaseName
 
 `func (o *CloudDatabaseUser) GetDatabaseName() string`
@@ -80,7 +79,6 @@ and a boolean to check if the value has been set.
 `func (o *CloudDatabaseUser) SetDatabaseName(v string)`
 
 SetDatabaseName sets DatabaseName field to given value.
-
 
 ### GetDeleteAfterDate
 
@@ -106,7 +104,6 @@ SetDeleteAfterDate sets DeleteAfterDate field to given value.
 `func (o *CloudDatabaseUser) HasDeleteAfterDate() bool`
 
 HasDeleteAfterDate returns a boolean if a field has been set.
-
 ### GetGroupId
 
 `func (o *CloudDatabaseUser) GetGroupId() string`
@@ -125,7 +122,6 @@ and a boolean to check if the value has been set.
 `func (o *CloudDatabaseUser) SetGroupId(v string)`
 
 SetGroupId sets GroupId field to given value.
-
 
 ### GetLabels
 
@@ -151,7 +147,6 @@ SetLabels sets Labels field to given value.
 `func (o *CloudDatabaseUser) HasLabels() bool`
 
 HasLabels returns a boolean if a field has been set.
-
 ### GetLdapAuthType
 
 `func (o *CloudDatabaseUser) GetLdapAuthType() string`
@@ -176,7 +171,6 @@ SetLdapAuthType sets LdapAuthType field to given value.
 `func (o *CloudDatabaseUser) HasLdapAuthType() bool`
 
 HasLdapAuthType returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *CloudDatabaseUser) GetLinks() []Link`
@@ -201,7 +195,6 @@ SetLinks sets Links field to given value.
 `func (o *CloudDatabaseUser) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetOidcAuthType
 
 `func (o *CloudDatabaseUser) GetOidcAuthType() string`
@@ -226,7 +219,6 @@ SetOidcAuthType sets OidcAuthType field to given value.
 `func (o *CloudDatabaseUser) HasOidcAuthType() bool`
 
 HasOidcAuthType returns a boolean if a field has been set.
-
 ### GetPassword
 
 `func (o *CloudDatabaseUser) GetPassword() string`
@@ -251,7 +243,6 @@ SetPassword sets Password field to given value.
 `func (o *CloudDatabaseUser) HasPassword() bool`
 
 HasPassword returns a boolean if a field has been set.
-
 ### GetRoles
 
 `func (o *CloudDatabaseUser) GetRoles() []DatabaseUserRole`
@@ -276,7 +267,6 @@ SetRoles sets Roles field to given value.
 `func (o *CloudDatabaseUser) HasRoles() bool`
 
 HasRoles returns a boolean if a field has been set.
-
 ### GetScopes
 
 `func (o *CloudDatabaseUser) GetScopes() []UserScope`
@@ -301,7 +291,6 @@ SetScopes sets Scopes field to given value.
 `func (o *CloudDatabaseUser) HasScopes() bool`
 
 HasScopes returns a boolean if a field has been set.
-
 ### GetUsername
 
 `func (o *CloudDatabaseUser) GetUsername() string`
@@ -320,7 +309,6 @@ and a boolean to check if the value has been set.
 `func (o *CloudDatabaseUser) SetUsername(v string)`
 
 SetUsername sets Username field to given value.
-
 
 ### GetX509Type
 
@@ -346,7 +334,6 @@ SetX509Type sets X509Type field to given value.
 `func (o *CloudDatabaseUser) HasX509Type() bool`
 
 HasX509Type returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

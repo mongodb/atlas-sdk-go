@@ -80,7 +80,6 @@ SetAutoScaling sets AutoScaling field to given value.
 `func (o *LegacyAtlasCluster) HasAutoScaling() bool`
 
 HasAutoScaling returns a boolean if a field has been set.
-
 ### GetBackupEnabled
 
 `func (o *LegacyAtlasCluster) GetBackupEnabled() bool`
@@ -105,7 +104,6 @@ SetBackupEnabled sets BackupEnabled field to given value.
 `func (o *LegacyAtlasCluster) HasBackupEnabled() bool`
 
 HasBackupEnabled returns a boolean if a field has been set.
-
 ### GetBiConnector
 
 `func (o *LegacyAtlasCluster) GetBiConnector() BiConnector`
@@ -130,7 +128,6 @@ SetBiConnector sets BiConnector field to given value.
 `func (o *LegacyAtlasCluster) HasBiConnector() bool`
 
 HasBiConnector returns a boolean if a field has been set.
-
 ### GetClusterType
 
 `func (o *LegacyAtlasCluster) GetClusterType() string`
@@ -155,7 +152,6 @@ SetClusterType sets ClusterType field to given value.
 `func (o *LegacyAtlasCluster) HasClusterType() bool`
 
 HasClusterType returns a boolean if a field has been set.
-
 ### GetConnectionStrings
 
 `func (o *LegacyAtlasCluster) GetConnectionStrings() ClusterConnectionStrings`
@@ -180,7 +176,6 @@ SetConnectionStrings sets ConnectionStrings field to given value.
 `func (o *LegacyAtlasCluster) HasConnectionStrings() bool`
 
 HasConnectionStrings returns a boolean if a field has been set.
-
 ### GetCreateDate
 
 `func (o *LegacyAtlasCluster) GetCreateDate() time.Time`
@@ -205,7 +200,6 @@ SetCreateDate sets CreateDate field to given value.
 `func (o *LegacyAtlasCluster) HasCreateDate() bool`
 
 HasCreateDate returns a boolean if a field has been set.
-
 ### GetDiskSizeGB
 
 `func (o *LegacyAtlasCluster) GetDiskSizeGB() float64`
@@ -230,7 +224,6 @@ SetDiskSizeGB sets DiskSizeGB field to given value.
 `func (o *LegacyAtlasCluster) HasDiskSizeGB() bool`
 
 HasDiskSizeGB returns a boolean if a field has been set.
-
 ### GetEncryptionAtRestProvider
 
 `func (o *LegacyAtlasCluster) GetEncryptionAtRestProvider() string`
@@ -255,7 +248,6 @@ SetEncryptionAtRestProvider sets EncryptionAtRestProvider field to given value.
 `func (o *LegacyAtlasCluster) HasEncryptionAtRestProvider() bool`
 
 HasEncryptionAtRestProvider returns a boolean if a field has been set.
-
 ### GetGroupId
 
 `func (o *LegacyAtlasCluster) GetGroupId() string`
@@ -280,7 +272,6 @@ SetGroupId sets GroupId field to given value.
 `func (o *LegacyAtlasCluster) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
-
 ### GetId
 
 `func (o *LegacyAtlasCluster) GetId() string`
@@ -305,7 +296,6 @@ SetId sets Id field to given value.
 `func (o *LegacyAtlasCluster) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetLabels
 
 `func (o *LegacyAtlasCluster) GetLabels() []ComponentLabel`
@@ -330,7 +320,6 @@ SetLabels sets Labels field to given value.
 `func (o *LegacyAtlasCluster) HasLabels() bool`
 
 HasLabels returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *LegacyAtlasCluster) GetLinks() []Link`
@@ -355,7 +344,6 @@ SetLinks sets Links field to given value.
 `func (o *LegacyAtlasCluster) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetMongoDBMajorVersion
 
 `func (o *LegacyAtlasCluster) GetMongoDBMajorVersion() string`
@@ -380,7 +368,6 @@ SetMongoDBMajorVersion sets MongoDBMajorVersion field to given value.
 `func (o *LegacyAtlasCluster) HasMongoDBMajorVersion() bool`
 
 HasMongoDBMajorVersion returns a boolean if a field has been set.
-
 ### GetMongoDBVersion
 
 `func (o *LegacyAtlasCluster) GetMongoDBVersion() string`
@@ -405,7 +392,6 @@ SetMongoDBVersion sets MongoDBVersion field to given value.
 `func (o *LegacyAtlasCluster) HasMongoDBVersion() bool`
 
 HasMongoDBVersion returns a boolean if a field has been set.
-
 ### GetMongoURI
 
 `func (o *LegacyAtlasCluster) GetMongoURI() string`
@@ -430,7 +416,6 @@ SetMongoURI sets MongoURI field to given value.
 `func (o *LegacyAtlasCluster) HasMongoURI() bool`
 
 HasMongoURI returns a boolean if a field has been set.
-
 ### GetMongoURIUpdated
 
 `func (o *LegacyAtlasCluster) GetMongoURIUpdated() time.Time`
@@ -455,7 +440,6 @@ SetMongoURIUpdated sets MongoURIUpdated field to given value.
 `func (o *LegacyAtlasCluster) HasMongoURIUpdated() bool`
 
 HasMongoURIUpdated returns a boolean if a field has been set.
-
 ### GetMongoURIWithOptions
 
 `func (o *LegacyAtlasCluster) GetMongoURIWithOptions() string`
@@ -480,7 +464,6 @@ SetMongoURIWithOptions sets MongoURIWithOptions field to given value.
 `func (o *LegacyAtlasCluster) HasMongoURIWithOptions() bool`
 
 HasMongoURIWithOptions returns a boolean if a field has been set.
-
 ### GetName
 
 `func (o *LegacyAtlasCluster) GetName() string`
@@ -505,7 +488,6 @@ SetName sets Name field to given value.
 `func (o *LegacyAtlasCluster) HasName() bool`
 
 HasName returns a boolean if a field has been set.
-
 ### GetNumShards
 
 `func (o *LegacyAtlasCluster) GetNumShards() int`
@@ -530,7 +512,6 @@ SetNumShards sets NumShards field to given value.
 `func (o *LegacyAtlasCluster) HasNumShards() bool`
 
 HasNumShards returns a boolean if a field has been set.
-
 ### GetPaused
 
 `func (o *LegacyAtlasCluster) GetPaused() bool`
@@ -555,7 +536,6 @@ SetPaused sets Paused field to given value.
 `func (o *LegacyAtlasCluster) HasPaused() bool`
 
 HasPaused returns a boolean if a field has been set.
-
 ### GetPitEnabled
 
 `func (o *LegacyAtlasCluster) GetPitEnabled() bool`
@@ -580,7 +560,6 @@ SetPitEnabled sets PitEnabled field to given value.
 `func (o *LegacyAtlasCluster) HasPitEnabled() bool`
 
 HasPitEnabled returns a boolean if a field has been set.
-
 ### GetProviderBackupEnabled
 
 `func (o *LegacyAtlasCluster) GetProviderBackupEnabled() bool`
@@ -605,7 +584,6 @@ SetProviderBackupEnabled sets ProviderBackupEnabled field to given value.
 `func (o *LegacyAtlasCluster) HasProviderBackupEnabled() bool`
 
 HasProviderBackupEnabled returns a boolean if a field has been set.
-
 ### GetProviderSettings
 
 `func (o *LegacyAtlasCluster) GetProviderSettings() ClusterProviderSettings`
@@ -630,7 +608,6 @@ SetProviderSettings sets ProviderSettings field to given value.
 `func (o *LegacyAtlasCluster) HasProviderSettings() bool`
 
 HasProviderSettings returns a boolean if a field has been set.
-
 ### GetReplicationFactor
 
 `func (o *LegacyAtlasCluster) GetReplicationFactor() int`
@@ -655,7 +632,6 @@ SetReplicationFactor sets ReplicationFactor field to given value.
 `func (o *LegacyAtlasCluster) HasReplicationFactor() bool`
 
 HasReplicationFactor returns a boolean if a field has been set.
-
 ### GetReplicationSpec
 
 `func (o *LegacyAtlasCluster) GetReplicationSpec() map[string]RegionSpec`
@@ -680,7 +656,6 @@ SetReplicationSpec sets ReplicationSpec field to given value.
 `func (o *LegacyAtlasCluster) HasReplicationSpec() bool`
 
 HasReplicationSpec returns a boolean if a field has been set.
-
 ### GetReplicationSpecs
 
 `func (o *LegacyAtlasCluster) GetReplicationSpecs() []LegacyReplicationSpec`
@@ -705,7 +680,6 @@ SetReplicationSpecs sets ReplicationSpecs field to given value.
 `func (o *LegacyAtlasCluster) HasReplicationSpecs() bool`
 
 HasReplicationSpecs returns a boolean if a field has been set.
-
 ### GetRootCertType
 
 `func (o *LegacyAtlasCluster) GetRootCertType() string`
@@ -730,7 +704,6 @@ SetRootCertType sets RootCertType field to given value.
 `func (o *LegacyAtlasCluster) HasRootCertType() bool`
 
 HasRootCertType returns a boolean if a field has been set.
-
 ### GetSrvAddress
 
 `func (o *LegacyAtlasCluster) GetSrvAddress() string`
@@ -755,7 +728,6 @@ SetSrvAddress sets SrvAddress field to given value.
 `func (o *LegacyAtlasCluster) HasSrvAddress() bool`
 
 HasSrvAddress returns a boolean if a field has been set.
-
 ### GetStateName
 
 `func (o *LegacyAtlasCluster) GetStateName() string`
@@ -780,7 +752,6 @@ SetStateName sets StateName field to given value.
 `func (o *LegacyAtlasCluster) HasStateName() bool`
 
 HasStateName returns a boolean if a field has been set.
-
 ### GetTags
 
 `func (o *LegacyAtlasCluster) GetTags() []ResourceTag`
@@ -805,7 +776,6 @@ SetTags sets Tags field to given value.
 `func (o *LegacyAtlasCluster) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
-
 ### GetTerminationProtectionEnabled
 
 `func (o *LegacyAtlasCluster) GetTerminationProtectionEnabled() bool`
@@ -830,7 +800,6 @@ SetTerminationProtectionEnabled sets TerminationProtectionEnabled field to given
 `func (o *LegacyAtlasCluster) HasTerminationProtectionEnabled() bool`
 
 HasTerminationProtectionEnabled returns a boolean if a field has been set.
-
 ### GetVersionReleaseSystem
 
 `func (o *LegacyAtlasCluster) GetVersionReleaseSystem() string`
@@ -855,7 +824,6 @@ SetVersionReleaseSystem sets VersionReleaseSystem field to given value.
 `func (o *LegacyAtlasCluster) HasVersionReleaseSystem() bool`
 
 HasVersionReleaseSystem returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

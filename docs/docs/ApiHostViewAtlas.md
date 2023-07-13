@@ -60,7 +60,6 @@ SetCreated sets Created field to given value.
 `func (o *ApiHostViewAtlas) HasCreated() bool`
 
 HasCreated returns a boolean if a field has been set.
-
 ### GetGroupId
 
 `func (o *ApiHostViewAtlas) GetGroupId() string`
@@ -85,7 +84,6 @@ SetGroupId sets GroupId field to given value.
 `func (o *ApiHostViewAtlas) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
-
 ### GetHostname
 
 `func (o *ApiHostViewAtlas) GetHostname() string`
@@ -110,7 +108,6 @@ SetHostname sets Hostname field to given value.
 `func (o *ApiHostViewAtlas) HasHostname() bool`
 
 HasHostname returns a boolean if a field has been set.
-
 ### GetId
 
 `func (o *ApiHostViewAtlas) GetId() string`
@@ -135,7 +132,6 @@ SetId sets Id field to given value.
 `func (o *ApiHostViewAtlas) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetLastPing
 
 `func (o *ApiHostViewAtlas) GetLastPing() time.Time`
@@ -160,7 +156,6 @@ SetLastPing sets LastPing field to given value.
 `func (o *ApiHostViewAtlas) HasLastPing() bool`
 
 HasLastPing returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *ApiHostViewAtlas) GetLinks() []LinkAtlas`
@@ -185,7 +180,6 @@ SetLinks sets Links field to given value.
 `func (o *ApiHostViewAtlas) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetPort
 
 `func (o *ApiHostViewAtlas) GetPort() int`
@@ -210,7 +204,6 @@ SetPort sets Port field to given value.
 `func (o *ApiHostViewAtlas) HasPort() bool`
 
 HasPort returns a boolean if a field has been set.
-
 ### GetReplicaSetName
 
 `func (o *ApiHostViewAtlas) GetReplicaSetName() string`
@@ -235,7 +228,6 @@ SetReplicaSetName sets ReplicaSetName field to given value.
 `func (o *ApiHostViewAtlas) HasReplicaSetName() bool`
 
 HasReplicaSetName returns a boolean if a field has been set.
-
 ### GetShardName
 
 `func (o *ApiHostViewAtlas) GetShardName() string`
@@ -260,7 +252,6 @@ SetShardName sets ShardName field to given value.
 `func (o *ApiHostViewAtlas) HasShardName() bool`
 
 HasShardName returns a boolean if a field has been set.
-
 ### GetTypeName
 
 `func (o *ApiHostViewAtlas) GetTypeName() string`
@@ -285,7 +276,6 @@ SetTypeName sets TypeName field to given value.
 `func (o *ApiHostViewAtlas) HasTypeName() bool`
 
 HasTypeName returns a boolean if a field has been set.
-
 ### GetUserAlias
 
 `func (o *ApiHostViewAtlas) GetUserAlias() string`
@@ -310,7 +300,6 @@ SetUserAlias sets UserAlias field to given value.
 `func (o *ApiHostViewAtlas) HasUserAlias() bool`
 
 HasUserAlias returns a boolean if a field has been set.
-
 ### GetVersion
 
 `func (o *ApiHostViewAtlas) GetVersion() string`
@@ -335,7 +324,6 @@ SetVersion sets Version field to given value.
 `func (o *ApiHostViewAtlas) HasVersion() bool`
 
 HasVersion returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

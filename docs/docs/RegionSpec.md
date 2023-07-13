@@ -52,7 +52,6 @@ SetAnalyticsNodes sets AnalyticsNodes field to given value.
 `func (o *RegionSpec) HasAnalyticsNodes() bool`
 
 HasAnalyticsNodes returns a boolean if a field has been set.
-
 ### GetElectableNodes
 
 `func (o *RegionSpec) GetElectableNodes() int`
@@ -77,7 +76,6 @@ SetElectableNodes sets ElectableNodes field to given value.
 `func (o *RegionSpec) HasElectableNodes() bool`
 
 HasElectableNodes returns a boolean if a field has been set.
-
 ### GetPriority
 
 `func (o *RegionSpec) GetPriority() int`
@@ -102,7 +100,6 @@ SetPriority sets Priority field to given value.
 `func (o *RegionSpec) HasPriority() bool`
 
 HasPriority returns a boolean if a field has been set.
-
 ### GetReadOnlyNodes
 
 `func (o *RegionSpec) GetReadOnlyNodes() int`
@@ -127,7 +124,6 @@ SetReadOnlyNodes sets ReadOnlyNodes field to given value.
 `func (o *RegionSpec) HasReadOnlyNodes() bool`
 
 HasReadOnlyNodes returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

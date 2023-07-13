@@ -54,7 +54,6 @@ SetClusterName sets ClusterName field to given value.
 `func (o *ClusterOutageSimulation) HasClusterName() bool`
 
 HasClusterName returns a boolean if a field has been set.
-
 ### GetGroupId
 
 `func (o *ClusterOutageSimulation) GetGroupId() string`
@@ -79,7 +78,6 @@ SetGroupId sets GroupId field to given value.
 `func (o *ClusterOutageSimulation) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
-
 ### GetId
 
 `func (o *ClusterOutageSimulation) GetId() string`
@@ -104,7 +102,6 @@ SetId sets Id field to given value.
 `func (o *ClusterOutageSimulation) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetOutageFilters
 
 `func (o *ClusterOutageSimulation) GetOutageFilters() []AtlasClusterOutageSimulationOutageFilter`
@@ -129,7 +126,6 @@ SetOutageFilters sets OutageFilters field to given value.
 `func (o *ClusterOutageSimulation) HasOutageFilters() bool`
 
 HasOutageFilters returns a boolean if a field has been set.
-
 ### GetStartRequestDate
 
 `func (o *ClusterOutageSimulation) GetStartRequestDate() time.Time`
@@ -154,7 +150,6 @@ SetStartRequestDate sets StartRequestDate field to given value.
 `func (o *ClusterOutageSimulation) HasStartRequestDate() bool`
 
 HasStartRequestDate returns a boolean if a field has been set.
-
 ### GetState
 
 `func (o *ClusterOutageSimulation) GetState() string`
@@ -179,7 +174,6 @@ SetState sets State field to given value.
 `func (o *ClusterOutageSimulation) HasState() bool`
 
 HasState returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

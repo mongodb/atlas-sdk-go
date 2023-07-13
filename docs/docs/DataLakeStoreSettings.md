@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **IncludeTags** | Pointer to **bool** | Flag that indicates whether to use S3 tags on the files in the given path as additional partition attributes. If set to &#x60;true&#x60;, data lake adds the S3 tags as additional partition attributes and adds new top-level BSON elements associating each tag to each document. | [optional] [default to false]
 **Prefix** | Pointer to **string** | Prefix that MongoDB Cloud applies when searching for files in the S3 bucket. The data store prepends the value of prefix to the **databases.[n].collections.[n].dataSources.[n].path** to create the full path for files to ingest. If omitted, MongoDB Cloud searches all files from the root of the S3 bucket. | [optional] 
 **Public** | Pointer to **bool** | Flag that indicates whether the bucket is public. If set to &#x60;true&#x60;, MongoDB Cloud doesn&#39;t use the configured AWS Identity and Access Management (IAM) role to access the S3 bucket. If set to &#x60;false&#x60;, the configured AWS IAM role must include permissions to access the S3 bucket. | [optional] [default to false]
-**Region** | Pointer to **string** |  Physical location where MongoDB Cloud deploys your AWS-hosted MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. MongoDB Cloud assigns the VPC a CIDR block. To limit a new VPC peering connection to one CIDR block and region, create the connection first. Deploy the cluster after the connection starts. | [optional] 
+**Region** | Pointer to **string** | Physical location where MongoDB Cloud deploys your AWS-hosted MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. MongoDB Cloud assigns the VPC a CIDR block. To limit a new VPC peering connection to one CIDR block and region, create the connection first. Deploy the cluster after the connection starts. | [optional] 
 **ClusterId** | Pointer to **string** | ID of the Cluster the Online Archive belongs to. | [optional] 
 **ClusterName** | Pointer to **string** | Human-readable label of the MongoDB Cloud cluster on which the store is based. | [optional] 
 **ProjectId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the project. | [optional] [readonly] 
@@ -64,7 +64,6 @@ SetName sets Name field to given value.
 `func (o *DataLakeStoreSettings) HasName() bool`
 
 HasName returns a boolean if a field has been set.
-
 ### GetProvider
 
 `func (o *DataLakeStoreSettings) GetProvider() string`
@@ -83,7 +82,6 @@ and a boolean to check if the value has been set.
 `func (o *DataLakeStoreSettings) SetProvider(v string)`
 
 SetProvider sets Provider field to given value.
-
 
 ### GetAdditionalStorageClasses
 
@@ -109,7 +107,6 @@ SetAdditionalStorageClasses sets AdditionalStorageClasses field to given value.
 `func (o *DataLakeStoreSettings) HasAdditionalStorageClasses() bool`
 
 HasAdditionalStorageClasses returns a boolean if a field has been set.
-
 ### GetBucket
 
 `func (o *DataLakeStoreSettings) GetBucket() string`
@@ -134,7 +131,6 @@ SetBucket sets Bucket field to given value.
 `func (o *DataLakeStoreSettings) HasBucket() bool`
 
 HasBucket returns a boolean if a field has been set.
-
 ### GetDelimiter
 
 `func (o *DataLakeStoreSettings) GetDelimiter() string`
@@ -159,7 +155,6 @@ SetDelimiter sets Delimiter field to given value.
 `func (o *DataLakeStoreSettings) HasDelimiter() bool`
 
 HasDelimiter returns a boolean if a field has been set.
-
 ### GetIncludeTags
 
 `func (o *DataLakeStoreSettings) GetIncludeTags() bool`
@@ -184,7 +179,6 @@ SetIncludeTags sets IncludeTags field to given value.
 `func (o *DataLakeStoreSettings) HasIncludeTags() bool`
 
 HasIncludeTags returns a boolean if a field has been set.
-
 ### GetPrefix
 
 `func (o *DataLakeStoreSettings) GetPrefix() string`
@@ -209,7 +203,6 @@ SetPrefix sets Prefix field to given value.
 `func (o *DataLakeStoreSettings) HasPrefix() bool`
 
 HasPrefix returns a boolean if a field has been set.
-
 ### GetPublic
 
 `func (o *DataLakeStoreSettings) GetPublic() bool`
@@ -234,7 +227,6 @@ SetPublic sets Public field to given value.
 `func (o *DataLakeStoreSettings) HasPublic() bool`
 
 HasPublic returns a boolean if a field has been set.
-
 ### GetRegion
 
 `func (o *DataLakeStoreSettings) GetRegion() string`
@@ -259,7 +251,6 @@ SetRegion sets Region field to given value.
 `func (o *DataLakeStoreSettings) HasRegion() bool`
 
 HasRegion returns a boolean if a field has been set.
-
 ### GetClusterId
 
 `func (o *DataLakeStoreSettings) GetClusterId() string`
@@ -284,7 +275,6 @@ SetClusterId sets ClusterId field to given value.
 `func (o *DataLakeStoreSettings) HasClusterId() bool`
 
 HasClusterId returns a boolean if a field has been set.
-
 ### GetClusterName
 
 `func (o *DataLakeStoreSettings) GetClusterName() string`
@@ -309,7 +299,6 @@ SetClusterName sets ClusterName field to given value.
 `func (o *DataLakeStoreSettings) HasClusterName() bool`
 
 HasClusterName returns a boolean if a field has been set.
-
 ### GetProjectId
 
 `func (o *DataLakeStoreSettings) GetProjectId() string`
@@ -334,7 +323,6 @@ SetProjectId sets ProjectId field to given value.
 `func (o *DataLakeStoreSettings) HasProjectId() bool`
 
 HasProjectId returns a boolean if a field has been set.
-
 ### GetReadPreference
 
 `func (o *DataLakeStoreSettings) GetReadPreference() DataLakeAtlasStoreReadPreference`
@@ -359,7 +347,6 @@ SetReadPreference sets ReadPreference field to given value.
 `func (o *DataLakeStoreSettings) HasReadPreference() bool`
 
 HasReadPreference returns a boolean if a field has been set.
-
 ### GetAllowInsecure
 
 `func (o *DataLakeStoreSettings) GetAllowInsecure() bool`
@@ -384,7 +371,6 @@ SetAllowInsecure sets AllowInsecure field to given value.
 `func (o *DataLakeStoreSettings) HasAllowInsecure() bool`
 
 HasAllowInsecure returns a boolean if a field has been set.
-
 ### GetDefaultFormat
 
 `func (o *DataLakeStoreSettings) GetDefaultFormat() string`
@@ -409,7 +395,6 @@ SetDefaultFormat sets DefaultFormat field to given value.
 `func (o *DataLakeStoreSettings) HasDefaultFormat() bool`
 
 HasDefaultFormat returns a boolean if a field has been set.
-
 ### GetUrls
 
 `func (o *DataLakeStoreSettings) GetUrls() []string`
@@ -434,7 +419,6 @@ SetUrls sets Urls field to given value.
 `func (o *DataLakeStoreSettings) HasUrls() bool`
 
 HasUrls returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -52,7 +52,6 @@ SetEnabled sets Enabled field to given value.
 `func (o *AdvancedComputeAutoScaling) HasEnabled() bool`
 
 HasEnabled returns a boolean if a field has been set.
-
 ### GetMaxInstanceSize
 
 `func (o *AdvancedComputeAutoScaling) GetMaxInstanceSize() string`
@@ -77,7 +76,6 @@ SetMaxInstanceSize sets MaxInstanceSize field to given value.
 `func (o *AdvancedComputeAutoScaling) HasMaxInstanceSize() bool`
 
 HasMaxInstanceSize returns a boolean if a field has been set.
-
 ### GetMinInstanceSize
 
 `func (o *AdvancedComputeAutoScaling) GetMinInstanceSize() string`
@@ -102,7 +100,6 @@ SetMinInstanceSize sets MinInstanceSize field to given value.
 `func (o *AdvancedComputeAutoScaling) HasMinInstanceSize() bool`
 
 HasMinInstanceSize returns a boolean if a field has been set.
-
 ### GetScaleDownEnabled
 
 `func (o *AdvancedComputeAutoScaling) GetScaleDownEnabled() bool`
@@ -127,7 +124,6 @@ SetScaleDownEnabled sets ScaleDownEnabled field to given value.
 `func (o *AdvancedComputeAutoScaling) HasScaleDownEnabled() bool`
 
 HasScaleDownEnabled returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

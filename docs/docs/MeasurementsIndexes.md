@@ -58,7 +58,6 @@ SetCollectionName sets CollectionName field to given value.
 `func (o *MeasurementsIndexes) HasCollectionName() bool`
 
 HasCollectionName returns a boolean if a field has been set.
-
 ### GetDatabaseName
 
 `func (o *MeasurementsIndexes) GetDatabaseName() string`
@@ -83,7 +82,6 @@ SetDatabaseName sets DatabaseName field to given value.
 `func (o *MeasurementsIndexes) HasDatabaseName() bool`
 
 HasDatabaseName returns a boolean if a field has been set.
-
 ### GetEnd
 
 `func (o *MeasurementsIndexes) GetEnd() time.Time`
@@ -108,7 +106,6 @@ SetEnd sets End field to given value.
 `func (o *MeasurementsIndexes) HasEnd() bool`
 
 HasEnd returns a boolean if a field has been set.
-
 ### GetGranularity
 
 `func (o *MeasurementsIndexes) GetGranularity() string`
@@ -133,7 +130,6 @@ SetGranularity sets Granularity field to given value.
 `func (o *MeasurementsIndexes) HasGranularity() bool`
 
 HasGranularity returns a boolean if a field has been set.
-
 ### GetGroupId
 
 `func (o *MeasurementsIndexes) GetGroupId() string`
@@ -158,7 +154,6 @@ SetGroupId sets GroupId field to given value.
 `func (o *MeasurementsIndexes) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
-
 ### GetIndexIds
 
 `func (o *MeasurementsIndexes) GetIndexIds() []string`
@@ -183,7 +178,6 @@ SetIndexIds sets IndexIds field to given value.
 `func (o *MeasurementsIndexes) HasIndexIds() bool`
 
 HasIndexIds returns a boolean if a field has been set.
-
 ### GetIndexStatsMeasurements
 
 `func (o *MeasurementsIndexes) GetIndexStatsMeasurements() []MetricsMeasurement`
@@ -208,7 +202,6 @@ SetIndexStatsMeasurements sets IndexStatsMeasurements field to given value.
 `func (o *MeasurementsIndexes) HasIndexStatsMeasurements() bool`
 
 HasIndexStatsMeasurements returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *MeasurementsIndexes) GetLinks() []Link`
@@ -233,7 +226,6 @@ SetLinks sets Links field to given value.
 `func (o *MeasurementsIndexes) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetProcessId
 
 `func (o *MeasurementsIndexes) GetProcessId() string`
@@ -258,7 +250,6 @@ SetProcessId sets ProcessId field to given value.
 `func (o *MeasurementsIndexes) HasProcessId() bool`
 
 HasProcessId returns a boolean if a field has been set.
-
 ### GetStart
 
 `func (o *MeasurementsIndexes) GetStart() time.Time`
@@ -283,7 +274,6 @@ SetStart sets Start field to given value.
 `func (o *MeasurementsIndexes) HasStart() bool`
 
 HasStart returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

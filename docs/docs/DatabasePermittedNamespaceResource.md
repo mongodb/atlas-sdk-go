@@ -46,7 +46,6 @@ and a boolean to check if the value has been set.
 
 SetCluster sets Cluster field to given value.
 
-
 ### GetCollection
 
 `func (o *DatabasePermittedNamespaceResource) GetCollection() string`
@@ -66,7 +65,6 @@ and a boolean to check if the value has been set.
 
 SetCollection sets Collection field to given value.
 
-
 ### GetDb
 
 `func (o *DatabasePermittedNamespaceResource) GetDb() string`
@@ -85,7 +83,6 @@ and a boolean to check if the value has been set.
 `func (o *DatabasePermittedNamespaceResource) SetDb(v string)`
 
 SetDb sets Db field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

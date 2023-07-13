@@ -55,7 +55,6 @@ SetAuthzQueryTemplate sets AuthzQueryTemplate field to given value.
 `func (o *LDAPVerifyConnectivityJobRequestParams) HasAuthzQueryTemplate() bool`
 
 HasAuthzQueryTemplate returns a boolean if a field has been set.
-
 ### GetBindPassword
 
 `func (o *LDAPVerifyConnectivityJobRequestParams) GetBindPassword() string`
@@ -75,7 +74,6 @@ and a boolean to check if the value has been set.
 
 SetBindPassword sets BindPassword field to given value.
 
-
 ### GetBindUsername
 
 `func (o *LDAPVerifyConnectivityJobRequestParams) GetBindUsername() string`
@@ -94,7 +92,6 @@ and a boolean to check if the value has been set.
 `func (o *LDAPVerifyConnectivityJobRequestParams) SetBindUsername(v string)`
 
 SetBindUsername sets BindUsername field to given value.
-
 
 ### GetCaCertificate
 
@@ -120,7 +117,6 @@ SetCaCertificate sets CaCertificate field to given value.
 `func (o *LDAPVerifyConnectivityJobRequestParams) HasCaCertificate() bool`
 
 HasCaCertificate returns a boolean if a field has been set.
-
 ### GetHostname
 
 `func (o *LDAPVerifyConnectivityJobRequestParams) GetHostname() string`
@@ -139,7 +135,6 @@ and a boolean to check if the value has been set.
 `func (o *LDAPVerifyConnectivityJobRequestParams) SetHostname(v string)`
 
 SetHostname sets Hostname field to given value.
-
 
 ### GetLinks
 
@@ -165,7 +160,6 @@ SetLinks sets Links field to given value.
 `func (o *LDAPVerifyConnectivityJobRequestParams) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetPort
 
 `func (o *LDAPVerifyConnectivityJobRequestParams) GetPort() int`
@@ -184,7 +178,6 @@ and a boolean to check if the value has been set.
 `func (o *LDAPVerifyConnectivityJobRequestParams) SetPort(v int)`
 
 SetPort sets Port field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

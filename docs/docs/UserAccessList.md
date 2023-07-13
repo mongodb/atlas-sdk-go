@@ -55,7 +55,6 @@ SetCidrBlock sets CidrBlock field to given value.
 `func (o *UserAccessList) HasCidrBlock() bool`
 
 HasCidrBlock returns a boolean if a field has been set.
-
 ### GetCount
 
 `func (o *UserAccessList) GetCount() int`
@@ -80,7 +79,6 @@ SetCount sets Count field to given value.
 `func (o *UserAccessList) HasCount() bool`
 
 HasCount returns a boolean if a field has been set.
-
 ### GetCreated
 
 `func (o *UserAccessList) GetCreated() time.Time`
@@ -105,7 +103,6 @@ SetCreated sets Created field to given value.
 `func (o *UserAccessList) HasCreated() bool`
 
 HasCreated returns a boolean if a field has been set.
-
 ### GetIpAddress
 
 `func (o *UserAccessList) GetIpAddress() string`
@@ -130,7 +127,6 @@ SetIpAddress sets IpAddress field to given value.
 `func (o *UserAccessList) HasIpAddress() bool`
 
 HasIpAddress returns a boolean if a field has been set.
-
 ### GetLastUsed
 
 `func (o *UserAccessList) GetLastUsed() time.Time`
@@ -155,7 +151,6 @@ SetLastUsed sets LastUsed field to given value.
 `func (o *UserAccessList) HasLastUsed() bool`
 
 HasLastUsed returns a boolean if a field has been set.
-
 ### GetLastUsedAddress
 
 `func (o *UserAccessList) GetLastUsedAddress() string`
@@ -180,7 +175,6 @@ SetLastUsedAddress sets LastUsedAddress field to given value.
 `func (o *UserAccessList) HasLastUsedAddress() bool`
 
 HasLastUsedAddress returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *UserAccessList) GetLinks() []Link`
@@ -205,7 +199,6 @@ SetLinks sets Links field to given value.
 `func (o *UserAccessList) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

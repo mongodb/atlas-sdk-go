@@ -55,7 +55,6 @@ SetId sets Id field to given value.
 `func (o *UserCert) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetCreatedAt
 
 `func (o *UserCert) GetCreatedAt() time.Time`
@@ -80,7 +79,6 @@ SetCreatedAt sets CreatedAt field to given value.
 `func (o *UserCert) HasCreatedAt() bool`
 
 HasCreatedAt returns a boolean if a field has been set.
-
 ### GetGroupId
 
 `func (o *UserCert) GetGroupId() string`
@@ -105,7 +103,6 @@ SetGroupId sets GroupId field to given value.
 `func (o *UserCert) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *UserCert) GetLinks() []Link`
@@ -130,7 +127,6 @@ SetLinks sets Links field to given value.
 `func (o *UserCert) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetMonthsUntilExpiration
 
 `func (o *UserCert) GetMonthsUntilExpiration() int`
@@ -155,7 +151,6 @@ SetMonthsUntilExpiration sets MonthsUntilExpiration field to given value.
 `func (o *UserCert) HasMonthsUntilExpiration() bool`
 
 HasMonthsUntilExpiration returns a boolean if a field has been set.
-
 ### GetNotAfter
 
 `func (o *UserCert) GetNotAfter() time.Time`
@@ -180,7 +175,6 @@ SetNotAfter sets NotAfter field to given value.
 `func (o *UserCert) HasNotAfter() bool`
 
 HasNotAfter returns a boolean if a field has been set.
-
 ### GetSubject
 
 `func (o *UserCert) GetSubject() string`
@@ -205,7 +199,6 @@ SetSubject sets Subject field to given value.
 `func (o *UserCert) HasSubject() bool`
 
 HasSubject returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

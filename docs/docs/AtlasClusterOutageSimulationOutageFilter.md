@@ -51,7 +51,6 @@ SetCloudProvider sets CloudProvider field to given value.
 `func (o *AtlasClusterOutageSimulationOutageFilter) HasCloudProvider() bool`
 
 HasCloudProvider returns a boolean if a field has been set.
-
 ### GetRegionName
 
 `func (o *AtlasClusterOutageSimulationOutageFilter) GetRegionName() string`
@@ -76,7 +75,6 @@ SetRegionName sets RegionName field to given value.
 `func (o *AtlasClusterOutageSimulationOutageFilter) HasRegionName() bool`
 
 HasRegionName returns a boolean if a field has been set.
-
 ### GetType
 
 `func (o *AtlasClusterOutageSimulationOutageFilter) GetType() string`
@@ -101,7 +99,6 @@ SetType sets Type field to given value.
 `func (o *AtlasClusterOutageSimulationOutageFilter) HasType() bool`
 
 HasType returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -59,7 +59,6 @@ SetClusterId sets ClusterId field to given value.
 `func (o *BackupSnapshot) HasClusterId() bool`
 
 HasClusterId returns a boolean if a field has been set.
-
 ### GetComplete
 
 `func (o *BackupSnapshot) GetComplete() bool`
@@ -84,7 +83,6 @@ SetComplete sets Complete field to given value.
 `func (o *BackupSnapshot) HasComplete() bool`
 
 HasComplete returns a boolean if a field has been set.
-
 ### GetCreated
 
 `func (o *BackupSnapshot) GetCreated() ApiBSONTimestamp`
@@ -109,7 +107,6 @@ SetCreated sets Created field to given value.
 `func (o *BackupSnapshot) HasCreated() bool`
 
 HasCreated returns a boolean if a field has been set.
-
 ### GetDoNotDelete
 
 `func (o *BackupSnapshot) GetDoNotDelete() bool`
@@ -134,7 +131,6 @@ SetDoNotDelete sets DoNotDelete field to given value.
 `func (o *BackupSnapshot) HasDoNotDelete() bool`
 
 HasDoNotDelete returns a boolean if a field has been set.
-
 ### GetExpires
 
 `func (o *BackupSnapshot) GetExpires() time.Time`
@@ -159,7 +155,6 @@ SetExpires sets Expires field to given value.
 `func (o *BackupSnapshot) HasExpires() bool`
 
 HasExpires returns a boolean if a field has been set.
-
 ### GetGroupId
 
 `func (o *BackupSnapshot) GetGroupId() string`
@@ -184,7 +179,6 @@ SetGroupId sets GroupId field to given value.
 `func (o *BackupSnapshot) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
-
 ### GetId
 
 `func (o *BackupSnapshot) GetId() string`
@@ -209,7 +203,6 @@ SetId sets Id field to given value.
 `func (o *BackupSnapshot) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetIncremental
 
 `func (o *BackupSnapshot) GetIncremental() bool`
@@ -234,7 +227,6 @@ SetIncremental sets Incremental field to given value.
 `func (o *BackupSnapshot) HasIncremental() bool`
 
 HasIncremental returns a boolean if a field has been set.
-
 ### GetLastOplogAppliedTimestamp
 
 `func (o *BackupSnapshot) GetLastOplogAppliedTimestamp() ApiBSONTimestamp`
@@ -259,7 +251,6 @@ SetLastOplogAppliedTimestamp sets LastOplogAppliedTimestamp field to given value
 `func (o *BackupSnapshot) HasLastOplogAppliedTimestamp() bool`
 
 HasLastOplogAppliedTimestamp returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *BackupSnapshot) GetLinks() []Link`
@@ -284,7 +275,6 @@ SetLinks sets Links field to given value.
 `func (o *BackupSnapshot) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetParts
 
 `func (o *BackupSnapshot) GetParts() []BackupSnapshotPart`
@@ -309,7 +299,6 @@ SetParts sets Parts field to given value.
 `func (o *BackupSnapshot) HasParts() bool`
 
 HasParts returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
