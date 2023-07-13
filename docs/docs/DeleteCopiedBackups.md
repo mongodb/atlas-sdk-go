@@ -51,7 +51,6 @@ SetCloudProvider sets CloudProvider field to given value.
 `func (o *DeleteCopiedBackups) HasCloudProvider() bool`
 
 HasCloudProvider returns a boolean if a field has been set.
-
 ### GetRegionName
 
 `func (o *DeleteCopiedBackups) GetRegionName() string`
@@ -76,7 +75,6 @@ SetRegionName sets RegionName field to given value.
 `func (o *DeleteCopiedBackups) HasRegionName() bool`
 
 HasRegionName returns a boolean if a field has been set.
-
 ### GetReplicationSpecId
 
 `func (o *DeleteCopiedBackups) GetReplicationSpecId() string`
@@ -101,7 +99,6 @@ SetReplicationSpecId sets ReplicationSpecId field to given value.
 `func (o *DeleteCopiedBackups) HasReplicationSpecId() bool`
 
 HasReplicationSpecId returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

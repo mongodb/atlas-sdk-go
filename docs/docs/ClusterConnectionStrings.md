@@ -55,7 +55,6 @@ SetAwsPrivateLink sets AwsPrivateLink field to given value.
 `func (o *ClusterConnectionStrings) HasAwsPrivateLink() bool`
 
 HasAwsPrivateLink returns a boolean if a field has been set.
-
 ### GetAwsPrivateLinkSrv
 
 `func (o *ClusterConnectionStrings) GetAwsPrivateLinkSrv() map[string]string`
@@ -80,7 +79,6 @@ SetAwsPrivateLinkSrv sets AwsPrivateLinkSrv field to given value.
 `func (o *ClusterConnectionStrings) HasAwsPrivateLinkSrv() bool`
 
 HasAwsPrivateLinkSrv returns a boolean if a field has been set.
-
 ### GetPrivate
 
 `func (o *ClusterConnectionStrings) GetPrivate() string`
@@ -105,7 +103,6 @@ SetPrivate sets Private field to given value.
 `func (o *ClusterConnectionStrings) HasPrivate() bool`
 
 HasPrivate returns a boolean if a field has been set.
-
 ### GetPrivateEndpoint
 
 `func (o *ClusterConnectionStrings) GetPrivateEndpoint() []ClusterDescriptionConnectionStringsPrivateEndpoint`
@@ -130,7 +127,6 @@ SetPrivateEndpoint sets PrivateEndpoint field to given value.
 `func (o *ClusterConnectionStrings) HasPrivateEndpoint() bool`
 
 HasPrivateEndpoint returns a boolean if a field has been set.
-
 ### GetPrivateSrv
 
 `func (o *ClusterConnectionStrings) GetPrivateSrv() string`
@@ -155,7 +151,6 @@ SetPrivateSrv sets PrivateSrv field to given value.
 `func (o *ClusterConnectionStrings) HasPrivateSrv() bool`
 
 HasPrivateSrv returns a boolean if a field has been set.
-
 ### GetStandard
 
 `func (o *ClusterConnectionStrings) GetStandard() string`
@@ -180,7 +175,6 @@ SetStandard sets Standard field to given value.
 `func (o *ClusterConnectionStrings) HasStandard() bool`
 
 HasStandard returns a boolean if a field has been set.
-
 ### GetStandardSrv
 
 `func (o *ClusterConnectionStrings) GetStandardSrv() string`
@@ -205,7 +199,6 @@ SetStandardSrv sets StandardSrv field to given value.
 `func (o *ClusterConnectionStrings) HasStandardSrv() bool`
 
 HasStandardSrv returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

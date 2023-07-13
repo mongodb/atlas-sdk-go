@@ -51,7 +51,6 @@ SetLinks sets Links field to given value.
 `func (o *BackupSnapshotRetention) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetRetentionUnit
 
 `func (o *BackupSnapshotRetention) GetRetentionUnit() string`
@@ -71,7 +70,6 @@ and a boolean to check if the value has been set.
 
 SetRetentionUnit sets RetentionUnit field to given value.
 
-
 ### GetRetentionValue
 
 `func (o *BackupSnapshotRetention) GetRetentionValue() int`
@@ -90,7 +88,6 @@ and a boolean to check if the value has been set.
 `func (o *BackupSnapshotRetention) SetRetentionValue(v int)`
 
 SetRetentionValue sets RetentionValue field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

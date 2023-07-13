@@ -109,7 +109,7 @@ type CloudProviderAccessApi interface {
 	GetCloudProviderAccessRoleWithParams(ctx context.Context, args *GetCloudProviderAccessRoleApiParams) GetCloudProviderAccessRoleApiRequest
 
 	// Interface only available internally
-	getCloudProviderAccessRoleExecute(r GetCloudProviderAccessRoleApiRequest) (*CloudProviderAccessRoles, *http.Response, error)
+	getCloudProviderAccessRoleExecute(r GetCloudProviderAccessRoleApiRequest) (*CloudProviderAccessRole, *http.Response, error)
 
 	/*
 		ListCloudProviderAccessRoles Return All Cloud Provider Access Roles
@@ -587,7 +587,7 @@ func (a *CloudProviderAccessApiService) GetCloudProviderAccessRoleWithParams(ctx
 	}
 }
 
-func (r GetCloudProviderAccessRoleApiRequest) Execute() (*CloudProviderAccessRoles, *http.Response, error) {
+func (r GetCloudProviderAccessRoleApiRequest) Execute() (*CloudProviderAccessRole, *http.Response, error) {
 	return r.ApiService.getCloudProviderAccessRoleExecute(r)
 }
 
@@ -612,13 +612,13 @@ func (a *CloudProviderAccessApiService) GetCloudProviderAccessRole(ctx context.C
 
 // Execute executes the request
 //
-//	@return CloudProviderAccessRoles
-func (a *CloudProviderAccessApiService) getCloudProviderAccessRoleExecute(r GetCloudProviderAccessRoleApiRequest) (*CloudProviderAccessRoles, *http.Response, error) {
+//	@return CloudProviderAccessRole
+func (a *CloudProviderAccessApiService) getCloudProviderAccessRoleExecute(r GetCloudProviderAccessRoleApiRequest) (*CloudProviderAccessRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *CloudProviderAccessRoles
+		localVarReturnValue *CloudProviderAccessRole
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAccessApiService.GetCloudProviderAccessRole")

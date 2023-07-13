@@ -50,7 +50,6 @@ SetExportedCollections sets ExportedCollections field to given value.
 `func (o *ExportStatus) HasExportedCollections() bool`
 
 HasExportedCollections returns a boolean if a field has been set.
-
 ### GetTotalCollections
 
 `func (o *ExportStatus) GetTotalCollections() int`
@@ -75,7 +74,6 @@ SetTotalCollections sets TotalCollections field to given value.
 `func (o *ExportStatus) HasTotalCollections() bool`
 
 HasTotalCollections returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

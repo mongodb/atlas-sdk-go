@@ -59,7 +59,6 @@ SetId sets Id field to given value.
 `func (o *IngestionPipelineRun) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetBackupFrequencyType
 
 `func (o *IngestionPipelineRun) GetBackupFrequencyType() string`
@@ -84,7 +83,6 @@ SetBackupFrequencyType sets BackupFrequencyType field to given value.
 `func (o *IngestionPipelineRun) HasBackupFrequencyType() bool`
 
 HasBackupFrequencyType returns a boolean if a field has been set.
-
 ### GetCreatedDate
 
 `func (o *IngestionPipelineRun) GetCreatedDate() time.Time`
@@ -109,7 +107,6 @@ SetCreatedDate sets CreatedDate field to given value.
 `func (o *IngestionPipelineRun) HasCreatedDate() bool`
 
 HasCreatedDate returns a boolean if a field has been set.
-
 ### GetDatasetName
 
 `func (o *IngestionPipelineRun) GetDatasetName() string`
@@ -134,7 +131,6 @@ SetDatasetName sets DatasetName field to given value.
 `func (o *IngestionPipelineRun) HasDatasetName() bool`
 
 HasDatasetName returns a boolean if a field has been set.
-
 ### GetGroupId
 
 `func (o *IngestionPipelineRun) GetGroupId() string`
@@ -159,7 +155,6 @@ SetGroupId sets GroupId field to given value.
 `func (o *IngestionPipelineRun) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
-
 ### GetLastUpdatedDate
 
 `func (o *IngestionPipelineRun) GetLastUpdatedDate() time.Time`
@@ -184,7 +179,6 @@ SetLastUpdatedDate sets LastUpdatedDate field to given value.
 `func (o *IngestionPipelineRun) HasLastUpdatedDate() bool`
 
 HasLastUpdatedDate returns a boolean if a field has been set.
-
 ### GetPhase
 
 `func (o *IngestionPipelineRun) GetPhase() string`
@@ -209,7 +203,6 @@ SetPhase sets Phase field to given value.
 `func (o *IngestionPipelineRun) HasPhase() bool`
 
 HasPhase returns a boolean if a field has been set.
-
 ### GetPipelineId
 
 `func (o *IngestionPipelineRun) GetPipelineId() string`
@@ -234,7 +227,6 @@ SetPipelineId sets PipelineId field to given value.
 `func (o *IngestionPipelineRun) HasPipelineId() bool`
 
 HasPipelineId returns a boolean if a field has been set.
-
 ### GetSnapshotId
 
 `func (o *IngestionPipelineRun) GetSnapshotId() string`
@@ -259,7 +251,6 @@ SetSnapshotId sets SnapshotId field to given value.
 `func (o *IngestionPipelineRun) HasSnapshotId() bool`
 
 HasSnapshotId returns a boolean if a field has been set.
-
 ### GetState
 
 `func (o *IngestionPipelineRun) GetState() string`
@@ -284,7 +275,6 @@ SetState sets State field to given value.
 `func (o *IngestionPipelineRun) HasState() bool`
 
 HasState returns a boolean if a field has been set.
-
 ### GetStats
 
 `func (o *IngestionPipelineRun) GetStats() PipelineRunStats`
@@ -309,7 +299,6 @@ SetStats sets Stats field to given value.
 `func (o *IngestionPipelineRun) HasStats() bool`
 
 HasStats returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

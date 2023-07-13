@@ -50,7 +50,6 @@ SetField sets Field field to given value.
 `func (o *FieldTransformation) HasField() bool`
 
 HasField returns a boolean if a field has been set.
-
 ### GetType
 
 `func (o *FieldTransformation) GetType() string`
@@ -75,7 +74,6 @@ SetType sets Type field to given value.
 `func (o *FieldTransformation) HasType() bool`
 
 HasType returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

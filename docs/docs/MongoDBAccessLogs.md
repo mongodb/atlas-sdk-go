@@ -57,7 +57,6 @@ SetAuthResult sets AuthResult field to given value.
 `func (o *MongoDBAccessLogs) HasAuthResult() bool`
 
 HasAuthResult returns a boolean if a field has been set.
-
 ### GetAuthSource
 
 `func (o *MongoDBAccessLogs) GetAuthSource() string`
@@ -82,7 +81,6 @@ SetAuthSource sets AuthSource field to given value.
 `func (o *MongoDBAccessLogs) HasAuthSource() bool`
 
 HasAuthSource returns a boolean if a field has been set.
-
 ### GetFailureReason
 
 `func (o *MongoDBAccessLogs) GetFailureReason() string`
@@ -107,7 +105,6 @@ SetFailureReason sets FailureReason field to given value.
 `func (o *MongoDBAccessLogs) HasFailureReason() bool`
 
 HasFailureReason returns a boolean if a field has been set.
-
 ### GetGroupId
 
 `func (o *MongoDBAccessLogs) GetGroupId() string`
@@ -132,7 +129,6 @@ SetGroupId sets GroupId field to given value.
 `func (o *MongoDBAccessLogs) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
-
 ### GetHostname
 
 `func (o *MongoDBAccessLogs) GetHostname() string`
@@ -157,7 +153,6 @@ SetHostname sets Hostname field to given value.
 `func (o *MongoDBAccessLogs) HasHostname() bool`
 
 HasHostname returns a boolean if a field has been set.
-
 ### GetIpAddress
 
 `func (o *MongoDBAccessLogs) GetIpAddress() string`
@@ -182,7 +177,6 @@ SetIpAddress sets IpAddress field to given value.
 `func (o *MongoDBAccessLogs) HasIpAddress() bool`
 
 HasIpAddress returns a boolean if a field has been set.
-
 ### GetLogLine
 
 `func (o *MongoDBAccessLogs) GetLogLine() string`
@@ -207,7 +201,6 @@ SetLogLine sets LogLine field to given value.
 `func (o *MongoDBAccessLogs) HasLogLine() bool`
 
 HasLogLine returns a boolean if a field has been set.
-
 ### GetTimestamp
 
 `func (o *MongoDBAccessLogs) GetTimestamp() string`
@@ -232,7 +225,6 @@ SetTimestamp sets Timestamp field to given value.
 `func (o *MongoDBAccessLogs) HasTimestamp() bool`
 
 HasTimestamp returns a boolean if a field has been set.
-
 ### GetUsername
 
 `func (o *MongoDBAccessLogs) GetUsername() string`
@@ -257,7 +249,6 @@ SetUsername sets Username field to given value.
 `func (o *MongoDBAccessLogs) HasUsername() bool`
 
 HasUsername returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -51,7 +51,6 @@ SetGroupId sets GroupId field to given value.
 `func (o *RoleAssignment) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
-
 ### GetOrgId
 
 `func (o *RoleAssignment) GetOrgId() string`
@@ -76,7 +75,6 @@ SetOrgId sets OrgId field to given value.
 `func (o *RoleAssignment) HasOrgId() bool`
 
 HasOrgId returns a boolean if a field has been set.
-
 ### GetRole
 
 `func (o *RoleAssignment) GetRole() string`
@@ -101,7 +99,6 @@ SetRole sets Role field to given value.
 `func (o *RoleAssignment) HasRole() bool`
 
 HasRole returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

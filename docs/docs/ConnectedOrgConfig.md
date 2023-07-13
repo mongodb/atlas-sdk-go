@@ -56,7 +56,6 @@ SetDataAccessIdentityProviderIds sets DataAccessIdentityProviderIds field to giv
 `func (o *ConnectedOrgConfig) HasDataAccessIdentityProviderIds() bool`
 
 HasDataAccessIdentityProviderIds returns a boolean if a field has been set.
-
 ### GetDomainAllowList
 
 `func (o *ConnectedOrgConfig) GetDomainAllowList() []string`
@@ -81,7 +80,6 @@ SetDomainAllowList sets DomainAllowList field to given value.
 `func (o *ConnectedOrgConfig) HasDomainAllowList() bool`
 
 HasDomainAllowList returns a boolean if a field has been set.
-
 ### GetDomainRestrictionEnabled
 
 `func (o *ConnectedOrgConfig) GetDomainRestrictionEnabled() bool`
@@ -100,7 +98,6 @@ and a boolean to check if the value has been set.
 `func (o *ConnectedOrgConfig) SetDomainRestrictionEnabled(v bool)`
 
 SetDomainRestrictionEnabled sets DomainRestrictionEnabled field to given value.
-
 
 ### GetIdentityProviderId
 
@@ -121,7 +118,6 @@ and a boolean to check if the value has been set.
 
 SetIdentityProviderId sets IdentityProviderId field to given value.
 
-
 ### GetOrgId
 
 `func (o *ConnectedOrgConfig) GetOrgId() string`
@@ -140,7 +136,6 @@ and a boolean to check if the value has been set.
 `func (o *ConnectedOrgConfig) SetOrgId(v string)`
 
 SetOrgId sets OrgId field to given value.
-
 
 ### GetPostAuthRoleGrants
 
@@ -166,7 +161,6 @@ SetPostAuthRoleGrants sets PostAuthRoleGrants field to given value.
 `func (o *ConnectedOrgConfig) HasPostAuthRoleGrants() bool`
 
 HasPostAuthRoleGrants returns a boolean if a field has been set.
-
 ### GetRoleMappings
 
 `func (o *ConnectedOrgConfig) GetRoleMappings() []AuthFederationRoleMapping`
@@ -191,7 +185,6 @@ SetRoleMappings sets RoleMappings field to given value.
 `func (o *ConnectedOrgConfig) HasRoleMappings() bool`
 
 HasRoleMappings returns a boolean if a field has been set.
-
 ### GetUserConflicts
 
 `func (o *ConnectedOrgConfig) GetUserConflicts() []FederatedUser`
@@ -216,7 +209,6 @@ SetUserConflicts sets UserConflicts field to given value.
 `func (o *ConnectedOrgConfig) HasUserConflicts() bool`
 
 HasUserConflicts returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

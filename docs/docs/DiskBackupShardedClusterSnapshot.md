@@ -63,7 +63,6 @@ SetCreatedAt sets CreatedAt field to given value.
 `func (o *DiskBackupShardedClusterSnapshot) HasCreatedAt() bool`
 
 HasCreatedAt returns a boolean if a field has been set.
-
 ### GetDescription
 
 `func (o *DiskBackupShardedClusterSnapshot) GetDescription() string`
@@ -88,7 +87,6 @@ SetDescription sets Description field to given value.
 `func (o *DiskBackupShardedClusterSnapshot) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
-
 ### GetExpiresAt
 
 `func (o *DiskBackupShardedClusterSnapshot) GetExpiresAt() time.Time`
@@ -113,7 +111,6 @@ SetExpiresAt sets ExpiresAt field to given value.
 `func (o *DiskBackupShardedClusterSnapshot) HasExpiresAt() bool`
 
 HasExpiresAt returns a boolean if a field has been set.
-
 ### GetFrequencyType
 
 `func (o *DiskBackupShardedClusterSnapshot) GetFrequencyType() string`
@@ -138,7 +135,6 @@ SetFrequencyType sets FrequencyType field to given value.
 `func (o *DiskBackupShardedClusterSnapshot) HasFrequencyType() bool`
 
 HasFrequencyType returns a boolean if a field has been set.
-
 ### GetId
 
 `func (o *DiskBackupShardedClusterSnapshot) GetId() string`
@@ -163,7 +159,6 @@ SetId sets Id field to given value.
 `func (o *DiskBackupShardedClusterSnapshot) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *DiskBackupShardedClusterSnapshot) GetLinks() []Link`
@@ -188,7 +183,6 @@ SetLinks sets Links field to given value.
 `func (o *DiskBackupShardedClusterSnapshot) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetMasterKeyUUID
 
 `func (o *DiskBackupShardedClusterSnapshot) GetMasterKeyUUID() string`
@@ -213,7 +207,6 @@ SetMasterKeyUUID sets MasterKeyUUID field to given value.
 `func (o *DiskBackupShardedClusterSnapshot) HasMasterKeyUUID() bool`
 
 HasMasterKeyUUID returns a boolean if a field has been set.
-
 ### GetMembers
 
 `func (o *DiskBackupShardedClusterSnapshot) GetMembers() []DiskBackupShardedClusterSnapshotMember`
@@ -238,7 +231,6 @@ SetMembers sets Members field to given value.
 `func (o *DiskBackupShardedClusterSnapshot) HasMembers() bool`
 
 HasMembers returns a boolean if a field has been set.
-
 ### GetMongodVersion
 
 `func (o *DiskBackupShardedClusterSnapshot) GetMongodVersion() string`
@@ -263,7 +255,6 @@ SetMongodVersion sets MongodVersion field to given value.
 `func (o *DiskBackupShardedClusterSnapshot) HasMongodVersion() bool`
 
 HasMongodVersion returns a boolean if a field has been set.
-
 ### GetPolicyItems
 
 `func (o *DiskBackupShardedClusterSnapshot) GetPolicyItems() []string`
@@ -288,7 +279,6 @@ SetPolicyItems sets PolicyItems field to given value.
 `func (o *DiskBackupShardedClusterSnapshot) HasPolicyItems() bool`
 
 HasPolicyItems returns a boolean if a field has been set.
-
 ### GetSnapshotIds
 
 `func (o *DiskBackupShardedClusterSnapshot) GetSnapshotIds() []string`
@@ -313,7 +303,6 @@ SetSnapshotIds sets SnapshotIds field to given value.
 `func (o *DiskBackupShardedClusterSnapshot) HasSnapshotIds() bool`
 
 HasSnapshotIds returns a boolean if a field has been set.
-
 ### GetSnapshotType
 
 `func (o *DiskBackupShardedClusterSnapshot) GetSnapshotType() string`
@@ -338,7 +327,6 @@ SetSnapshotType sets SnapshotType field to given value.
 `func (o *DiskBackupShardedClusterSnapshot) HasSnapshotType() bool`
 
 HasSnapshotType returns a boolean if a field has been set.
-
 ### GetStatus
 
 `func (o *DiskBackupShardedClusterSnapshot) GetStatus() string`
@@ -363,7 +351,6 @@ SetStatus sets Status field to given value.
 `func (o *DiskBackupShardedClusterSnapshot) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
-
 ### GetStorageSizeBytes
 
 `func (o *DiskBackupShardedClusterSnapshot) GetStorageSizeBytes() int64`
@@ -388,7 +375,6 @@ SetStorageSizeBytes sets StorageSizeBytes field to given value.
 `func (o *DiskBackupShardedClusterSnapshot) HasStorageSizeBytes() bool`
 
 HasStorageSizeBytes returns a boolean if a field has been set.
-
 ### GetType
 
 `func (o *DiskBackupShardedClusterSnapshot) GetType() string`
@@ -413,7 +399,6 @@ SetType sets Type field to given value.
 `func (o *DiskBackupShardedClusterSnapshot) HasType() bool`
 
 HasType returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

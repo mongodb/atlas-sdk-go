@@ -58,7 +58,6 @@ SetClusterId sets ClusterId field to given value.
 `func (o *BackupSnapshotPart) HasClusterId() bool`
 
 HasClusterId returns a boolean if a field has been set.
-
 ### GetCompressionSetting
 
 `func (o *BackupSnapshotPart) GetCompressionSetting() string`
@@ -83,7 +82,6 @@ SetCompressionSetting sets CompressionSetting field to given value.
 `func (o *BackupSnapshotPart) HasCompressionSetting() bool`
 
 HasCompressionSetting returns a boolean if a field has been set.
-
 ### GetDataSizeBytes
 
 `func (o *BackupSnapshotPart) GetDataSizeBytes() int64`
@@ -108,7 +106,6 @@ SetDataSizeBytes sets DataSizeBytes field to given value.
 `func (o *BackupSnapshotPart) HasDataSizeBytes() bool`
 
 HasDataSizeBytes returns a boolean if a field has been set.
-
 ### GetEncryptionEnabled
 
 `func (o *BackupSnapshotPart) GetEncryptionEnabled() bool`
@@ -133,7 +130,6 @@ SetEncryptionEnabled sets EncryptionEnabled field to given value.
 `func (o *BackupSnapshotPart) HasEncryptionEnabled() bool`
 
 HasEncryptionEnabled returns a boolean if a field has been set.
-
 ### GetFileSizeBytes
 
 `func (o *BackupSnapshotPart) GetFileSizeBytes() int64`
@@ -158,7 +154,6 @@ SetFileSizeBytes sets FileSizeBytes field to given value.
 `func (o *BackupSnapshotPart) HasFileSizeBytes() bool`
 
 HasFileSizeBytes returns a boolean if a field has been set.
-
 ### GetMasterKeyUUID
 
 `func (o *BackupSnapshotPart) GetMasterKeyUUID() string`
@@ -183,7 +178,6 @@ SetMasterKeyUUID sets MasterKeyUUID field to given value.
 `func (o *BackupSnapshotPart) HasMasterKeyUUID() bool`
 
 HasMasterKeyUUID returns a boolean if a field has been set.
-
 ### GetMongodVersion
 
 `func (o *BackupSnapshotPart) GetMongodVersion() string`
@@ -208,7 +202,6 @@ SetMongodVersion sets MongodVersion field to given value.
 `func (o *BackupSnapshotPart) HasMongodVersion() bool`
 
 HasMongodVersion returns a boolean if a field has been set.
-
 ### GetReplicaSetName
 
 `func (o *BackupSnapshotPart) GetReplicaSetName() string`
@@ -233,7 +226,6 @@ SetReplicaSetName sets ReplicaSetName field to given value.
 `func (o *BackupSnapshotPart) HasReplicaSetName() bool`
 
 HasReplicaSetName returns a boolean if a field has been set.
-
 ### GetStorageSizeBytes
 
 `func (o *BackupSnapshotPart) GetStorageSizeBytes() int64`
@@ -258,7 +250,6 @@ SetStorageSizeBytes sets StorageSizeBytes field to given value.
 `func (o *BackupSnapshotPart) HasStorageSizeBytes() bool`
 
 HasStorageSizeBytes returns a boolean if a field has been set.
-
 ### GetTypeName
 
 `func (o *BackupSnapshotPart) GetTypeName() string`
@@ -283,7 +274,6 @@ SetTypeName sets TypeName field to given value.
 `func (o *BackupSnapshotPart) HasTypeName() bool`
 
 HasTypeName returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -50,7 +50,6 @@ SetCustomZoneMapping sets CustomZoneMapping field to given value.
 `func (o *GeoSharding) HasCustomZoneMapping() bool`
 
 HasCustomZoneMapping returns a boolean if a field has been set.
-
 ### GetManagedNamespaces
 
 `func (o *GeoSharding) GetManagedNamespaces() []ManagedNamespaces`
@@ -75,7 +74,6 @@ SetManagedNamespaces sets ManagedNamespaces field to given value.
 `func (o *GeoSharding) HasManagedNamespaces() bool`
 
 HasManagedNamespaces returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

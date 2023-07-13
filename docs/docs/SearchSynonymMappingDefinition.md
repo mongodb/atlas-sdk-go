@@ -46,7 +46,6 @@ and a boolean to check if the value has been set.
 
 SetAnalyzer sets Analyzer field to given value.
 
-
 ### GetName
 
 `func (o *SearchSynonymMappingDefinition) GetName() string`
@@ -66,7 +65,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
 ### GetSource
 
 `func (o *SearchSynonymMappingDefinition) GetSource() SynonymSource`
@@ -85,7 +83,6 @@ and a boolean to check if the value has been set.
 `func (o *SearchSynonymMappingDefinition) SetSource(v SynonymSource)`
 
 SetSource sets Source field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -50,7 +50,6 @@ SetTimestamp sets Timestamp field to given value.
 `func (o *MetricDataPointAtlas) HasTimestamp() bool`
 
 HasTimestamp returns a boolean if a field has been set.
-
 ### GetValue
 
 `func (o *MetricDataPointAtlas) GetValue() float32`
@@ -75,7 +74,6 @@ SetValue sets Value field to given value.
 `func (o *MetricDataPointAtlas) HasValue() bool`
 
 HasValue returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

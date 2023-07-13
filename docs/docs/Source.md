@@ -55,7 +55,6 @@ SetCaCertificatePath sets CaCertificatePath field to given value.
 `func (o *Source) HasCaCertificatePath() bool`
 
 HasCaCertificatePath returns a boolean if a field has been set.
-
 ### GetClusterName
 
 `func (o *Source) GetClusterName() string`
@@ -74,7 +73,6 @@ and a boolean to check if the value has been set.
 `func (o *Source) SetClusterName(v string)`
 
 SetClusterName sets ClusterName field to given value.
-
 
 ### GetGroupId
 
@@ -95,7 +93,6 @@ and a boolean to check if the value has been set.
 
 SetGroupId sets GroupId field to given value.
 
-
 ### GetManagedAuthentication
 
 `func (o *Source) GetManagedAuthentication() bool`
@@ -114,7 +111,6 @@ and a boolean to check if the value has been set.
 `func (o *Source) SetManagedAuthentication(v bool)`
 
 SetManagedAuthentication sets ManagedAuthentication field to given value.
-
 
 ### GetPassword
 
@@ -140,7 +136,6 @@ SetPassword sets Password field to given value.
 `func (o *Source) HasPassword() bool`
 
 HasPassword returns a boolean if a field has been set.
-
 ### GetSsl
 
 `func (o *Source) GetSsl() bool`
@@ -159,7 +154,6 @@ and a boolean to check if the value has been set.
 `func (o *Source) SetSsl(v bool)`
 
 SetSsl sets Ssl field to given value.
-
 
 ### GetUsername
 
@@ -185,7 +179,6 @@ SetUsername sets Username field to given value.
 `func (o *Source) HasUsername() bool`
 
 HasUsername returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

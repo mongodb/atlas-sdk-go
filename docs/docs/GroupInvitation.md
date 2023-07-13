@@ -57,7 +57,6 @@ SetCreatedAt sets CreatedAt field to given value.
 `func (o *GroupInvitation) HasCreatedAt() bool`
 
 HasCreatedAt returns a boolean if a field has been set.
-
 ### GetExpiresAt
 
 `func (o *GroupInvitation) GetExpiresAt() time.Time`
@@ -82,7 +81,6 @@ SetExpiresAt sets ExpiresAt field to given value.
 `func (o *GroupInvitation) HasExpiresAt() bool`
 
 HasExpiresAt returns a boolean if a field has been set.
-
 ### GetGroupId
 
 `func (o *GroupInvitation) GetGroupId() string`
@@ -107,7 +105,6 @@ SetGroupId sets GroupId field to given value.
 `func (o *GroupInvitation) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
-
 ### GetGroupName
 
 `func (o *GroupInvitation) GetGroupName() string`
@@ -132,7 +129,6 @@ SetGroupName sets GroupName field to given value.
 `func (o *GroupInvitation) HasGroupName() bool`
 
 HasGroupName returns a boolean if a field has been set.
-
 ### GetId
 
 `func (o *GroupInvitation) GetId() string`
@@ -157,7 +153,6 @@ SetId sets Id field to given value.
 `func (o *GroupInvitation) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetInviterUsername
 
 `func (o *GroupInvitation) GetInviterUsername() string`
@@ -182,7 +177,6 @@ SetInviterUsername sets InviterUsername field to given value.
 `func (o *GroupInvitation) HasInviterUsername() bool`
 
 HasInviterUsername returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *GroupInvitation) GetLinks() []Link`
@@ -207,7 +201,6 @@ SetLinks sets Links field to given value.
 `func (o *GroupInvitation) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetRoles
 
 `func (o *GroupInvitation) GetRoles() []string`
@@ -232,7 +225,6 @@ SetRoles sets Roles field to given value.
 `func (o *GroupInvitation) HasRoles() bool`
 
 HasRoles returns a boolean if a field has been set.
-
 ### GetUsername
 
 `func (o *GroupInvitation) GetUsername() string`
@@ -257,7 +249,6 @@ SetUsername sets Username field to given value.
 `func (o *GroupInvitation) HasUsername() bool`
 
 HasUsername returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

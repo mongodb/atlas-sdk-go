@@ -55,7 +55,6 @@ SetCurrentUsage sets CurrentUsage field to given value.
 `func (o *DataFederationLimit) HasCurrentUsage() bool`
 
 HasCurrentUsage returns a boolean if a field has been set.
-
 ### GetDefaultLimit
 
 `func (o *DataFederationLimit) GetDefaultLimit() int64`
@@ -80,7 +79,6 @@ SetDefaultLimit sets DefaultLimit field to given value.
 `func (o *DataFederationLimit) HasDefaultLimit() bool`
 
 HasDefaultLimit returns a boolean if a field has been set.
-
 ### GetMaximumLimit
 
 `func (o *DataFederationLimit) GetMaximumLimit() int64`
@@ -105,7 +103,6 @@ SetMaximumLimit sets MaximumLimit field to given value.
 `func (o *DataFederationLimit) HasMaximumLimit() bool`
 
 HasMaximumLimit returns a boolean if a field has been set.
-
 ### GetName
 
 `func (o *DataFederationLimit) GetName() string`
@@ -125,7 +122,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
 ### GetValue
 
 `func (o *DataFederationLimit) GetValue() int64`
@@ -144,7 +140,6 @@ and a boolean to check if the value has been set.
 `func (o *DataFederationLimit) SetValue(v int64)`
 
 SetValue sets Value field to given value.
-
 
 ### GetLastModifiedDate
 
@@ -170,7 +165,6 @@ SetLastModifiedDate sets LastModifiedDate field to given value.
 `func (o *DataFederationLimit) HasLastModifiedDate() bool`
 
 HasLastModifiedDate returns a boolean if a field has been set.
-
 ### GetOverrunPolicy
 
 `func (o *DataFederationLimit) GetOverrunPolicy() string`
@@ -195,7 +189,6 @@ SetOverrunPolicy sets OverrunPolicy field to given value.
 `func (o *DataFederationLimit) HasOverrunPolicy() bool`
 
 HasOverrunPolicy returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

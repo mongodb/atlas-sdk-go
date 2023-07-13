@@ -50,7 +50,6 @@ SetDataSources sets DataSources field to given value.
 `func (o *DataLakeDatabaseCollection) HasDataSources() bool`
 
 HasDataSources returns a boolean if a field has been set.
-
 ### GetName
 
 `func (o *DataLakeDatabaseCollection) GetName() string`
@@ -75,7 +74,6 @@ SetName sets Name field to given value.
 `func (o *DataLakeDatabaseCollection) HasName() bool`
 
 HasName returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

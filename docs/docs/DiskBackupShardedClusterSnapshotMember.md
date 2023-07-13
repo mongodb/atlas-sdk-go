@@ -46,7 +46,6 @@ and a boolean to check if the value has been set.
 
 SetCloudProvider sets CloudProvider field to given value.
 
-
 ### GetId
 
 `func (o *DiskBackupShardedClusterSnapshotMember) GetId() string`
@@ -66,7 +65,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetReplicaSetName
 
 `func (o *DiskBackupShardedClusterSnapshotMember) GetReplicaSetName() string`
@@ -85,7 +83,6 @@ and a boolean to check if the value has been set.
 `func (o *DiskBackupShardedClusterSnapshotMember) SetReplicaSetName(v string)`
 
 SetReplicaSetName sets ReplicaSetName field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

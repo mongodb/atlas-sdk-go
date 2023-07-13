@@ -50,7 +50,6 @@ SetPrivateEndpoint sets PrivateEndpoint field to given value.
 `func (o *ServerlessInstanceDescriptionConnectionStrings) HasPrivateEndpoint() bool`
 
 HasPrivateEndpoint returns a boolean if a field has been set.
-
 ### GetStandardSrv
 
 `func (o *ServerlessInstanceDescriptionConnectionStrings) GetStandardSrv() string`
@@ -75,7 +74,6 @@ SetStandardSrv sets StandardSrv field to given value.
 `func (o *ServerlessInstanceDescriptionConnectionStrings) HasStandardSrv() bool`
 
 HasStandardSrv returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -50,7 +50,6 @@ SetLine sets Line field to given value.
 `func (o *PerformanceAdvisorSlowQuery) HasLine() bool`
 
 HasLine returns a boolean if a field has been set.
-
 ### GetNamespace
 
 `func (o *PerformanceAdvisorSlowQuery) GetNamespace() string`
@@ -75,7 +74,6 @@ SetNamespace sets Namespace field to given value.
 `func (o *PerformanceAdvisorSlowQuery) HasNamespace() bool`
 
 HasNamespace returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

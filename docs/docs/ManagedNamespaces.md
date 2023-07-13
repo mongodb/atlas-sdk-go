@@ -50,7 +50,6 @@ and a boolean to check if the value has been set.
 
 SetCollection sets Collection field to given value.
 
-
 ### GetCustomShardKey
 
 `func (o *ManagedNamespaces) GetCustomShardKey() string`
@@ -70,7 +69,6 @@ and a boolean to check if the value has been set.
 
 SetCustomShardKey sets CustomShardKey field to given value.
 
-
 ### GetDb
 
 `func (o *ManagedNamespaces) GetDb() string`
@@ -89,7 +87,6 @@ and a boolean to check if the value has been set.
 `func (o *ManagedNamespaces) SetDb(v string)`
 
 SetDb sets Db field to given value.
-
 
 ### GetIsCustomShardKeyHashed
 
@@ -115,7 +112,6 @@ SetIsCustomShardKeyHashed sets IsCustomShardKeyHashed field to given value.
 `func (o *ManagedNamespaces) HasIsCustomShardKeyHashed() bool`
 
 HasIsCustomShardKeyHashed returns a boolean if a field has been set.
-
 ### GetIsShardKeyUnique
 
 `func (o *ManagedNamespaces) GetIsShardKeyUnique() bool`
@@ -140,7 +136,6 @@ SetIsShardKeyUnique sets IsShardKeyUnique field to given value.
 `func (o *ManagedNamespaces) HasIsShardKeyUnique() bool`
 
 HasIsShardKeyUnique returns a boolean if a field has been set.
-
 ### GetNumInitialChunks
 
 `func (o *ManagedNamespaces) GetNumInitialChunks() int64`
@@ -165,7 +160,6 @@ SetNumInitialChunks sets NumInitialChunks field to given value.
 `func (o *ManagedNamespaces) HasNumInitialChunks() bool`
 
 HasNumInitialChunks returns a boolean if a field has been set.
-
 ### GetPresplitHashedZones
 
 `func (o *ManagedNamespaces) GetPresplitHashedZones() bool`
@@ -190,7 +184,6 @@ SetPresplitHashedZones sets PresplitHashedZones field to given value.
 `func (o *ManagedNamespaces) HasPresplitHashedZones() bool`
 
 HasPresplitHashedZones returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

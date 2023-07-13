@@ -57,7 +57,6 @@ SetAlternate sets Alternate field to given value.
 `func (o *Collation) HasAlternate() bool`
 
 HasAlternate returns a boolean if a field has been set.
-
 ### GetBackwards
 
 `func (o *Collation) GetBackwards() bool`
@@ -82,7 +81,6 @@ SetBackwards sets Backwards field to given value.
 `func (o *Collation) HasBackwards() bool`
 
 HasBackwards returns a boolean if a field has been set.
-
 ### GetCaseFirst
 
 `func (o *Collation) GetCaseFirst() string`
@@ -107,7 +105,6 @@ SetCaseFirst sets CaseFirst field to given value.
 `func (o *Collation) HasCaseFirst() bool`
 
 HasCaseFirst returns a boolean if a field has been set.
-
 ### GetCaseLevel
 
 `func (o *Collation) GetCaseLevel() bool`
@@ -132,7 +129,6 @@ SetCaseLevel sets CaseLevel field to given value.
 `func (o *Collation) HasCaseLevel() bool`
 
 HasCaseLevel returns a boolean if a field has been set.
-
 ### GetLocale
 
 `func (o *Collation) GetLocale() string`
@@ -151,7 +147,6 @@ and a boolean to check if the value has been set.
 `func (o *Collation) SetLocale(v string)`
 
 SetLocale sets Locale field to given value.
-
 
 ### GetMaxVariable
 
@@ -177,7 +172,6 @@ SetMaxVariable sets MaxVariable field to given value.
 `func (o *Collation) HasMaxVariable() bool`
 
 HasMaxVariable returns a boolean if a field has been set.
-
 ### GetNormalization
 
 `func (o *Collation) GetNormalization() bool`
@@ -202,7 +196,6 @@ SetNormalization sets Normalization field to given value.
 `func (o *Collation) HasNormalization() bool`
 
 HasNormalization returns a boolean if a field has been set.
-
 ### GetNumericOrdering
 
 `func (o *Collation) GetNumericOrdering() bool`
@@ -227,7 +220,6 @@ SetNumericOrdering sets NumericOrdering field to given value.
 `func (o *Collation) HasNumericOrdering() bool`
 
 HasNumericOrdering returns a boolean if a field has been set.
-
 ### GetStrength
 
 `func (o *Collation) GetStrength() int`
@@ -252,7 +244,6 @@ SetStrength sets Strength field to given value.
 `func (o *Collation) HasStrength() bool`
 
 HasStrength returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

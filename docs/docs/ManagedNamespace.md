@@ -55,7 +55,6 @@ SetCollection sets Collection field to given value.
 `func (o *ManagedNamespace) HasCollection() bool`
 
 HasCollection returns a boolean if a field has been set.
-
 ### GetCustomShardKey
 
 `func (o *ManagedNamespace) GetCustomShardKey() string`
@@ -80,7 +79,6 @@ SetCustomShardKey sets CustomShardKey field to given value.
 `func (o *ManagedNamespace) HasCustomShardKey() bool`
 
 HasCustomShardKey returns a boolean if a field has been set.
-
 ### GetDb
 
 `func (o *ManagedNamespace) GetDb() string`
@@ -105,7 +103,6 @@ SetDb sets Db field to given value.
 `func (o *ManagedNamespace) HasDb() bool`
 
 HasDb returns a boolean if a field has been set.
-
 ### GetIsCustomShardKeyHashed
 
 `func (o *ManagedNamespace) GetIsCustomShardKeyHashed() bool`
@@ -130,7 +127,6 @@ SetIsCustomShardKeyHashed sets IsCustomShardKeyHashed field to given value.
 `func (o *ManagedNamespace) HasIsCustomShardKeyHashed() bool`
 
 HasIsCustomShardKeyHashed returns a boolean if a field has been set.
-
 ### GetIsShardKeyUnique
 
 `func (o *ManagedNamespace) GetIsShardKeyUnique() bool`
@@ -155,7 +151,6 @@ SetIsShardKeyUnique sets IsShardKeyUnique field to given value.
 `func (o *ManagedNamespace) HasIsShardKeyUnique() bool`
 
 HasIsShardKeyUnique returns a boolean if a field has been set.
-
 ### GetNumInitialChunks
 
 `func (o *ManagedNamespace) GetNumInitialChunks() int64`
@@ -180,7 +175,6 @@ SetNumInitialChunks sets NumInitialChunks field to given value.
 `func (o *ManagedNamespace) HasNumInitialChunks() bool`
 
 HasNumInitialChunks returns a boolean if a field has been set.
-
 ### GetPresplitHashedZones
 
 `func (o *ManagedNamespace) GetPresplitHashedZones() bool`
@@ -205,7 +199,6 @@ SetPresplitHashedZones sets PresplitHashedZones field to given value.
 `func (o *ManagedNamespace) HasPresplitHashedZones() bool`
 
 HasPresplitHashedZones returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

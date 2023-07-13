@@ -52,7 +52,6 @@ SetFileName sets FileName field to given value.
 `func (o *RestoreJobFileHash) HasFileName() bool`
 
 HasFileName returns a boolean if a field has been set.
-
 ### GetHash
 
 `func (o *RestoreJobFileHash) GetHash() string`
@@ -77,7 +76,6 @@ SetHash sets Hash field to given value.
 `func (o *RestoreJobFileHash) HasHash() bool`
 
 HasHash returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *RestoreJobFileHash) GetLinks() []Link`
@@ -102,7 +100,6 @@ SetLinks sets Links field to given value.
 `func (o *RestoreJobFileHash) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetTypeName
 
 `func (o *RestoreJobFileHash) GetTypeName() string`
@@ -127,7 +124,6 @@ SetTypeName sets TypeName field to given value.
 `func (o *RestoreJobFileHash) HasTypeName() bool`
 
 HasTypeName returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

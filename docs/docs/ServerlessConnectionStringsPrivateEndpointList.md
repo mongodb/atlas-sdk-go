@@ -51,7 +51,6 @@ SetEndpoints sets Endpoints field to given value.
 `func (o *ServerlessConnectionStringsPrivateEndpointList) HasEndpoints() bool`
 
 HasEndpoints returns a boolean if a field has been set.
-
 ### GetSrvConnectionString
 
 `func (o *ServerlessConnectionStringsPrivateEndpointList) GetSrvConnectionString() string`
@@ -76,7 +75,6 @@ SetSrvConnectionString sets SrvConnectionString field to given value.
 `func (o *ServerlessConnectionStringsPrivateEndpointList) HasSrvConnectionString() bool`
 
 HasSrvConnectionString returns a boolean if a field has been set.
-
 ### GetType
 
 `func (o *ServerlessConnectionStringsPrivateEndpointList) GetType() string`
@@ -101,7 +99,6 @@ SetType sets Type field to given value.
 `func (o *ServerlessConnectionStringsPrivateEndpointList) HasType() bool`
 
 HasType returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

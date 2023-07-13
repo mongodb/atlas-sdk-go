@@ -54,7 +54,6 @@ SetId sets Id field to given value.
 `func (o *SampleDatasetStatus) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetClusterName
 
 `func (o *SampleDatasetStatus) GetClusterName() string`
@@ -79,7 +78,6 @@ SetClusterName sets ClusterName field to given value.
 `func (o *SampleDatasetStatus) HasClusterName() bool`
 
 HasClusterName returns a boolean if a field has been set.
-
 ### GetCompleteDate
 
 `func (o *SampleDatasetStatus) GetCompleteDate() time.Time`
@@ -104,7 +102,6 @@ SetCompleteDate sets CompleteDate field to given value.
 `func (o *SampleDatasetStatus) HasCompleteDate() bool`
 
 HasCompleteDate returns a boolean if a field has been set.
-
 ### GetCreateDate
 
 `func (o *SampleDatasetStatus) GetCreateDate() time.Time`
@@ -129,7 +126,6 @@ SetCreateDate sets CreateDate field to given value.
 `func (o *SampleDatasetStatus) HasCreateDate() bool`
 
 HasCreateDate returns a boolean if a field has been set.
-
 ### GetErrorMessage
 
 `func (o *SampleDatasetStatus) GetErrorMessage() string`
@@ -154,7 +150,6 @@ SetErrorMessage sets ErrorMessage field to given value.
 `func (o *SampleDatasetStatus) HasErrorMessage() bool`
 
 HasErrorMessage returns a boolean if a field has been set.
-
 ### GetState
 
 `func (o *SampleDatasetStatus) GetState() string`
@@ -179,7 +174,6 @@ SetState sets State field to given value.
 `func (o *SampleDatasetStatus) HasState() bool`
 
 HasState returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

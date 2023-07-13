@@ -68,7 +68,6 @@ SetApiKeyId sets ApiKeyId field to given value.
 `func (o *EventViewForOrg) HasApiKeyId() bool`
 
 HasApiKeyId returns a boolean if a field has been set.
-
 ### GetCreated
 
 `func (o *EventViewForOrg) GetCreated() time.Time`
@@ -93,7 +92,6 @@ SetCreated sets Created field to given value.
 `func (o *EventViewForOrg) HasCreated() bool`
 
 HasCreated returns a boolean if a field has been set.
-
 ### GetEventTypeName
 
 `func (o *EventViewForOrg) GetEventTypeName() string`
@@ -118,7 +116,6 @@ SetEventTypeName sets EventTypeName field to given value.
 `func (o *EventViewForOrg) HasEventTypeName() bool`
 
 HasEventTypeName returns a boolean if a field has been set.
-
 ### GetGroupId
 
 `func (o *EventViewForOrg) GetGroupId() string`
@@ -143,7 +140,6 @@ SetGroupId sets GroupId field to given value.
 `func (o *EventViewForOrg) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
-
 ### GetId
 
 `func (o *EventViewForOrg) GetId() string`
@@ -168,7 +164,6 @@ SetId sets Id field to given value.
 `func (o *EventViewForOrg) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetIsGlobalAdmin
 
 `func (o *EventViewForOrg) GetIsGlobalAdmin() bool`
@@ -193,7 +188,6 @@ SetIsGlobalAdmin sets IsGlobalAdmin field to given value.
 `func (o *EventViewForOrg) HasIsGlobalAdmin() bool`
 
 HasIsGlobalAdmin returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *EventViewForOrg) GetLinks() []Link`
@@ -218,7 +212,6 @@ SetLinks sets Links field to given value.
 `func (o *EventViewForOrg) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetOrgId
 
 `func (o *EventViewForOrg) GetOrgId() string`
@@ -243,7 +236,6 @@ SetOrgId sets OrgId field to given value.
 `func (o *EventViewForOrg) HasOrgId() bool`
 
 HasOrgId returns a boolean if a field has been set.
-
 ### GetPublicKey
 
 `func (o *EventViewForOrg) GetPublicKey() string`
@@ -268,7 +260,6 @@ SetPublicKey sets PublicKey field to given value.
 `func (o *EventViewForOrg) HasPublicKey() bool`
 
 HasPublicKey returns a boolean if a field has been set.
-
 ### GetRaw
 
 `func (o *EventViewForOrg) GetRaw() Raw`
@@ -293,7 +284,6 @@ SetRaw sets Raw field to given value.
 `func (o *EventViewForOrg) HasRaw() bool`
 
 HasRaw returns a boolean if a field has been set.
-
 ### GetRemoteAddress
 
 `func (o *EventViewForOrg) GetRemoteAddress() string`
@@ -318,7 +308,6 @@ SetRemoteAddress sets RemoteAddress field to given value.
 `func (o *EventViewForOrg) HasRemoteAddress() bool`
 
 HasRemoteAddress returns a boolean if a field has been set.
-
 ### GetUserId
 
 `func (o *EventViewForOrg) GetUserId() string`
@@ -343,7 +332,6 @@ SetUserId sets UserId field to given value.
 `func (o *EventViewForOrg) HasUserId() bool`
 
 HasUserId returns a boolean if a field has been set.
-
 ### GetUsername
 
 `func (o *EventViewForOrg) GetUsername() string`
@@ -368,7 +356,6 @@ SetUsername sets Username field to given value.
 `func (o *EventViewForOrg) HasUsername() bool`
 
 HasUsername returns a boolean if a field has been set.
-
 ### GetAlertId
 
 `func (o *EventViewForOrg) GetAlertId() string`
@@ -393,7 +380,6 @@ SetAlertId sets AlertId field to given value.
 `func (o *EventViewForOrg) HasAlertId() bool`
 
 HasAlertId returns a boolean if a field has been set.
-
 ### GetAlertConfigId
 
 `func (o *EventViewForOrg) GetAlertConfigId() string`
@@ -418,7 +404,6 @@ SetAlertConfigId sets AlertConfigId field to given value.
 `func (o *EventViewForOrg) HasAlertConfigId() bool`
 
 HasAlertConfigId returns a boolean if a field has been set.
-
 ### GetInvoiceId
 
 `func (o *EventViewForOrg) GetInvoiceId() string`
@@ -443,7 +428,6 @@ SetInvoiceId sets InvoiceId field to given value.
 `func (o *EventViewForOrg) HasInvoiceId() bool`
 
 HasInvoiceId returns a boolean if a field has been set.
-
 ### GetPaymentId
 
 `func (o *EventViewForOrg) GetPaymentId() string`
@@ -468,7 +452,6 @@ SetPaymentId sets PaymentId field to given value.
 `func (o *EventViewForOrg) HasPaymentId() bool`
 
 HasPaymentId returns a boolean if a field has been set.
-
 ### GetWhitelistEntry
 
 `func (o *EventViewForOrg) GetWhitelistEntry() string`
@@ -493,7 +476,6 @@ SetWhitelistEntry sets WhitelistEntry field to given value.
 `func (o *EventViewForOrg) HasWhitelistEntry() bool`
 
 HasWhitelistEntry returns a boolean if a field has been set.
-
 ### GetTeamId
 
 `func (o *EventViewForOrg) GetTeamId() string`
@@ -518,7 +500,6 @@ SetTeamId sets TeamId field to given value.
 `func (o *EventViewForOrg) HasTeamId() bool`
 
 HasTeamId returns a boolean if a field has been set.
-
 ### GetTargetUsername
 
 `func (o *EventViewForOrg) GetTargetUsername() string`
@@ -543,7 +524,6 @@ SetTargetUsername sets TargetUsername field to given value.
 `func (o *EventViewForOrg) HasTargetUsername() bool`
 
 HasTargetUsername returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

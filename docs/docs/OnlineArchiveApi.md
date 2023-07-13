@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## CreateOnlineArchive
 
-> BackupOnlineArchive CreateOnlineArchive(ctx, groupId, clusterName, backupOnlineArchive BackupOnlineArchive).Execute()
+> BackupOnlineArchive CreateOnlineArchive(ctx, groupId, clusterName, backupOnlineArchiveCreate BackupOnlineArchiveCreate).Execute()
 
 Create One Online Archive
 
@@ -41,9 +41,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    backupOnlineArchive := *openapiclient.NewBackupOnlineArchive() // BackupOnlineArchive | 
+    backupOnlineArchiveCreate := *openapiclient.NewBackupOnlineArchiveCreate("CollName_example", *openapiclient.NewCriteria(), "DbName_example") // BackupOnlineArchiveCreate | 
 
-    resp, r, err := sdk.OnlineArchiveApi.CreateOnlineArchive(context.Background(), groupId, clusterName, &backupOnlineArchive).Execute()
+    resp, r, err := sdk.OnlineArchiveApi.CreateOnlineArchive(context.Background(), groupId, clusterName, &backupOnlineArchiveCreate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OnlineArchiveApi.CreateOnlineArchive``: %v\n", err)
         apiError := admin.AsError(err)
@@ -72,7 +72,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **backupOnlineArchive** | [**BackupOnlineArchive**](BackupOnlineArchive.md) | Creates one online archive. | 
+ **backupOnlineArchiveCreate** | [**BackupOnlineArchiveCreate**](BackupOnlineArchiveCreate.md) | Creates one online archive. | 
 
 ### Return type
 

@@ -51,7 +51,6 @@ SetCustomerX509 sets CustomerX509 field to given value.
 `func (o *UserSecurity) HasCustomerX509() bool`
 
 HasCustomerX509 returns a boolean if a field has been set.
-
 ### GetLdap
 
 `func (o *UserSecurity) GetLdap() LDAPSecuritySettings`
@@ -76,7 +75,6 @@ SetLdap sets Ldap field to given value.
 `func (o *UserSecurity) HasLdap() bool`
 
 HasLdap returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *UserSecurity) GetLinks() []Link`
@@ -101,7 +99,6 @@ SetLinks sets Links field to given value.
 `func (o *UserSecurity) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

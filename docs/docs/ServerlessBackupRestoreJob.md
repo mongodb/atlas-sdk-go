@@ -65,7 +65,6 @@ SetCancelled sets Cancelled field to given value.
 `func (o *ServerlessBackupRestoreJob) HasCancelled() bool`
 
 HasCancelled returns a boolean if a field has been set.
-
 ### GetDeliveryType
 
 `func (o *ServerlessBackupRestoreJob) GetDeliveryType() string`
@@ -84,7 +83,6 @@ and a boolean to check if the value has been set.
 `func (o *ServerlessBackupRestoreJob) SetDeliveryType(v string)`
 
 SetDeliveryType sets DeliveryType field to given value.
-
 
 ### GetDeliveryUrl
 
@@ -110,7 +108,6 @@ SetDeliveryUrl sets DeliveryUrl field to given value.
 `func (o *ServerlessBackupRestoreJob) HasDeliveryUrl() bool`
 
 HasDeliveryUrl returns a boolean if a field has been set.
-
 ### GetDesiredTimestamp
 
 `func (o *ServerlessBackupRestoreJob) GetDesiredTimestamp() ApiBSONTimestamp`
@@ -135,7 +132,6 @@ SetDesiredTimestamp sets DesiredTimestamp field to given value.
 `func (o *ServerlessBackupRestoreJob) HasDesiredTimestamp() bool`
 
 HasDesiredTimestamp returns a boolean if a field has been set.
-
 ### GetExpired
 
 `func (o *ServerlessBackupRestoreJob) GetExpired() bool`
@@ -160,7 +156,6 @@ SetExpired sets Expired field to given value.
 `func (o *ServerlessBackupRestoreJob) HasExpired() bool`
 
 HasExpired returns a boolean if a field has been set.
-
 ### GetExpiresAt
 
 `func (o *ServerlessBackupRestoreJob) GetExpiresAt() time.Time`
@@ -185,7 +180,6 @@ SetExpiresAt sets ExpiresAt field to given value.
 `func (o *ServerlessBackupRestoreJob) HasExpiresAt() bool`
 
 HasExpiresAt returns a boolean if a field has been set.
-
 ### GetFailed
 
 `func (o *ServerlessBackupRestoreJob) GetFailed() bool`
@@ -210,7 +204,6 @@ SetFailed sets Failed field to given value.
 `func (o *ServerlessBackupRestoreJob) HasFailed() bool`
 
 HasFailed returns a boolean if a field has been set.
-
 ### GetFinishedAt
 
 `func (o *ServerlessBackupRestoreJob) GetFinishedAt() time.Time`
@@ -235,7 +228,6 @@ SetFinishedAt sets FinishedAt field to given value.
 `func (o *ServerlessBackupRestoreJob) HasFinishedAt() bool`
 
 HasFinishedAt returns a boolean if a field has been set.
-
 ### GetId
 
 `func (o *ServerlessBackupRestoreJob) GetId() string`
@@ -260,7 +252,6 @@ SetId sets Id field to given value.
 `func (o *ServerlessBackupRestoreJob) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *ServerlessBackupRestoreJob) GetLinks() []Link`
@@ -285,7 +276,6 @@ SetLinks sets Links field to given value.
 `func (o *ServerlessBackupRestoreJob) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetOplogInc
 
 `func (o *ServerlessBackupRestoreJob) GetOplogInc() int`
@@ -310,7 +300,6 @@ SetOplogInc sets OplogInc field to given value.
 `func (o *ServerlessBackupRestoreJob) HasOplogInc() bool`
 
 HasOplogInc returns a boolean if a field has been set.
-
 ### GetOplogTs
 
 `func (o *ServerlessBackupRestoreJob) GetOplogTs() int`
@@ -335,7 +324,6 @@ SetOplogTs sets OplogTs field to given value.
 `func (o *ServerlessBackupRestoreJob) HasOplogTs() bool`
 
 HasOplogTs returns a boolean if a field has been set.
-
 ### GetPointInTimeUTCSeconds
 
 `func (o *ServerlessBackupRestoreJob) GetPointInTimeUTCSeconds() int`
@@ -360,7 +348,6 @@ SetPointInTimeUTCSeconds sets PointInTimeUTCSeconds field to given value.
 `func (o *ServerlessBackupRestoreJob) HasPointInTimeUTCSeconds() bool`
 
 HasPointInTimeUTCSeconds returns a boolean if a field has been set.
-
 ### GetSnapshotId
 
 `func (o *ServerlessBackupRestoreJob) GetSnapshotId() string`
@@ -385,7 +372,6 @@ SetSnapshotId sets SnapshotId field to given value.
 `func (o *ServerlessBackupRestoreJob) HasSnapshotId() bool`
 
 HasSnapshotId returns a boolean if a field has been set.
-
 ### GetTargetClusterName
 
 `func (o *ServerlessBackupRestoreJob) GetTargetClusterName() string`
@@ -405,7 +391,6 @@ and a boolean to check if the value has been set.
 
 SetTargetClusterName sets TargetClusterName field to given value.
 
-
 ### GetTargetGroupId
 
 `func (o *ServerlessBackupRestoreJob) GetTargetGroupId() string`
@@ -424,7 +409,6 @@ and a boolean to check if the value has been set.
 `func (o *ServerlessBackupRestoreJob) SetTargetGroupId(v string)`
 
 SetTargetGroupId sets TargetGroupId field to given value.
-
 
 ### GetTimestamp
 
@@ -450,7 +434,6 @@ SetTimestamp sets Timestamp field to given value.
 `func (o *ServerlessBackupRestoreJob) HasTimestamp() bool`
 
 HasTimestamp returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

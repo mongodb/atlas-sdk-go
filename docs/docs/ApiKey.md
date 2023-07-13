@@ -52,7 +52,6 @@ SetAccessList sets AccessList field to given value.
 `func (o *ApiKey) HasAccessList() bool`
 
 HasAccessList returns a boolean if a field has been set.
-
 ### GetId
 
 `func (o *ApiKey) GetId() string`
@@ -72,7 +71,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-
 ### GetPublicKey
 
 `func (o *ApiKey) GetPublicKey() string`
@@ -91,7 +89,6 @@ and a boolean to check if the value has been set.
 `func (o *ApiKey) SetPublicKey(v string)`
 
 SetPublicKey sets PublicKey field to given value.
-
 
 ### GetRoles
 
@@ -117,7 +114,6 @@ SetRoles sets Roles field to given value.
 `func (o *ApiKey) HasRoles() bool`
 
 HasRoles returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

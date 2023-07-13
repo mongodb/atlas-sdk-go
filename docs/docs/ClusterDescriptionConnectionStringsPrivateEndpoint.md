@@ -53,7 +53,6 @@ SetConnectionString sets ConnectionString field to given value.
 `func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) HasConnectionString() bool`
 
 HasConnectionString returns a boolean if a field has been set.
-
 ### GetEndpoints
 
 `func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) GetEndpoints() []ClusterDescriptionConnectionStringsPrivateEndpointEndpoint`
@@ -78,7 +77,6 @@ SetEndpoints sets Endpoints field to given value.
 `func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) HasEndpoints() bool`
 
 HasEndpoints returns a boolean if a field has been set.
-
 ### GetSrvConnectionString
 
 `func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) GetSrvConnectionString() string`
@@ -103,7 +101,6 @@ SetSrvConnectionString sets SrvConnectionString field to given value.
 `func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) HasSrvConnectionString() bool`
 
 HasSrvConnectionString returns a boolean if a field has been set.
-
 ### GetSrvShardOptimizedConnectionString
 
 `func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) GetSrvShardOptimizedConnectionString() string`
@@ -128,7 +125,6 @@ SetSrvShardOptimizedConnectionString sets SrvShardOptimizedConnectionString fiel
 `func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) HasSrvShardOptimizedConnectionString() bool`
 
 HasSrvShardOptimizedConnectionString returns a boolean if a field has been set.
-
 ### GetType
 
 `func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) GetType() string`
@@ -153,7 +149,6 @@ SetType sets Type field to given value.
 `func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) HasType() bool`
 
 HasType returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

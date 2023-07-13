@@ -50,7 +50,6 @@ SetCompute sets Compute field to given value.
 `func (o *AdvancedAutoScalingSettings) HasCompute() bool`
 
 HasCompute returns a boolean if a field has been set.
-
 ### GetDiskGB
 
 `func (o *AdvancedAutoScalingSettings) GetDiskGB() DiskGBAutoScaling`
@@ -75,7 +74,6 @@ SetDiskGB sets DiskGB field to given value.
 `func (o *AdvancedAutoScalingSettings) HasDiskGB() bool`
 
 HasDiskGB returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

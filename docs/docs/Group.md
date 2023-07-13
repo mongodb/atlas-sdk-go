@@ -51,7 +51,6 @@ and a boolean to check if the value has been set.
 
 SetClusterCount sets ClusterCount field to given value.
 
-
 ### GetCreated
 
 `func (o *Group) GetCreated() time.Time`
@@ -70,7 +69,6 @@ and a boolean to check if the value has been set.
 `func (o *Group) SetCreated(v time.Time)`
 
 SetCreated sets Created field to given value.
-
 
 ### GetId
 
@@ -96,7 +94,6 @@ SetId sets Id field to given value.
 `func (o *Group) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *Group) GetLinks() []Link`
@@ -121,7 +118,6 @@ SetLinks sets Links field to given value.
 `func (o *Group) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetName
 
 `func (o *Group) GetName() string`
@@ -141,7 +137,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
 ### GetOrgId
 
 `func (o *Group) GetOrgId() string`
@@ -160,7 +155,6 @@ and a boolean to check if the value has been set.
 `func (o *Group) SetOrgId(v string)`
 
 SetOrgId sets OrgId field to given value.
-
 
 ### GetRegionUsageRestrictions
 
@@ -186,7 +180,6 @@ SetRegionUsageRestrictions sets RegionUsageRestrictions field to given value.
 `func (o *Group) HasRegionUsageRestrictions() bool`
 
 HasRegionUsageRestrictions returns a boolean if a field has been set.
-
 ### GetWithDefaultAlertsSettings
 
 `func (o *Group) GetWithDefaultAlertsSettings() bool`
@@ -211,7 +204,6 @@ SetWithDefaultAlertsSettings sets WithDefaultAlertsSettings field to given value
 `func (o *Group) HasWithDefaultAlertsSettings() bool`
 
 HasWithDefaultAlertsSettings returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

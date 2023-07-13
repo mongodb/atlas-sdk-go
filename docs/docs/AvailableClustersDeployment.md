@@ -59,7 +59,6 @@ SetAgentVersion sets AgentVersion field to given value.
 `func (o *AvailableClustersDeployment) HasAgentVersion() bool`
 
 HasAgentVersion returns a boolean if a field has been set.
-
 ### GetClusterId
 
 `func (o *AvailableClustersDeployment) GetClusterId() string`
@@ -84,7 +83,6 @@ SetClusterId sets ClusterId field to given value.
 `func (o *AvailableClustersDeployment) HasClusterId() bool`
 
 HasClusterId returns a boolean if a field has been set.
-
 ### GetDbSizeBytes
 
 `func (o *AvailableClustersDeployment) GetDbSizeBytes() int64`
@@ -109,7 +107,6 @@ SetDbSizeBytes sets DbSizeBytes field to given value.
 `func (o *AvailableClustersDeployment) HasDbSizeBytes() bool`
 
 HasDbSizeBytes returns a boolean if a field has been set.
-
 ### GetFeatureCompatibilityVersion
 
 `func (o *AvailableClustersDeployment) GetFeatureCompatibilityVersion() string`
@@ -128,7 +125,6 @@ and a boolean to check if the value has been set.
 `func (o *AvailableClustersDeployment) SetFeatureCompatibilityVersion(v string)`
 
 SetFeatureCompatibilityVersion sets FeatureCompatibilityVersion field to given value.
-
 
 ### GetManaged
 
@@ -149,7 +145,6 @@ and a boolean to check if the value has been set.
 
 SetManaged sets Managed field to given value.
 
-
 ### GetMongoDBVersion
 
 `func (o *AvailableClustersDeployment) GetMongoDBVersion() string`
@@ -169,7 +164,6 @@ and a boolean to check if the value has been set.
 
 SetMongoDBVersion sets MongoDBVersion field to given value.
 
-
 ### GetName
 
 `func (o *AvailableClustersDeployment) GetName() string`
@@ -188,7 +182,6 @@ and a boolean to check if the value has been set.
 `func (o *AvailableClustersDeployment) SetName(v string)`
 
 SetName sets Name field to given value.
-
 
 ### GetOplogSizeMB
 
@@ -214,7 +207,6 @@ SetOplogSizeMB sets OplogSizeMB field to given value.
 `func (o *AvailableClustersDeployment) HasOplogSizeMB() bool`
 
 HasOplogSizeMB returns a boolean if a field has been set.
-
 ### GetSharded
 
 `func (o *AvailableClustersDeployment) GetSharded() bool`
@@ -233,7 +225,6 @@ and a boolean to check if the value has been set.
 `func (o *AvailableClustersDeployment) SetSharded(v bool)`
 
 SetSharded sets Sharded field to given value.
-
 
 ### GetShardsSize
 
@@ -259,7 +250,6 @@ SetShardsSize sets ShardsSize field to given value.
 `func (o *AvailableClustersDeployment) HasShardsSize() bool`
 
 HasShardsSize returns a boolean if a field has been set.
-
 ### GetTlsEnabled
 
 `func (o *AvailableClustersDeployment) GetTlsEnabled() bool`
@@ -278,7 +268,6 @@ and a boolean to check if the value has been set.
 `func (o *AvailableClustersDeployment) SetTlsEnabled(v bool)`
 
 SetTlsEnabled sets TlsEnabled field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -54,7 +54,6 @@ SetAvgObjSize sets AvgObjSize field to given value.
 `func (o *PerformanceAdvisorIndex) HasAvgObjSize() bool`
 
 HasAvgObjSize returns a boolean if a field has been set.
-
 ### GetId
 
 `func (o *PerformanceAdvisorIndex) GetId() string`
@@ -79,7 +78,6 @@ SetId sets Id field to given value.
 `func (o *PerformanceAdvisorIndex) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetImpact
 
 `func (o *PerformanceAdvisorIndex) GetImpact() []string`
@@ -104,7 +102,6 @@ SetImpact sets Impact field to given value.
 `func (o *PerformanceAdvisorIndex) HasImpact() bool`
 
 HasImpact returns a boolean if a field has been set.
-
 ### GetIndex
 
 `func (o *PerformanceAdvisorIndex) GetIndex() []map[string]string`
@@ -129,7 +126,6 @@ SetIndex sets Index field to given value.
 `func (o *PerformanceAdvisorIndex) HasIndex() bool`
 
 HasIndex returns a boolean if a field has been set.
-
 ### GetNamespace
 
 `func (o *PerformanceAdvisorIndex) GetNamespace() string`
@@ -154,7 +150,6 @@ SetNamespace sets Namespace field to given value.
 `func (o *PerformanceAdvisorIndex) HasNamespace() bool`
 
 HasNamespace returns a boolean if a field has been set.
-
 ### GetWeight
 
 `func (o *PerformanceAdvisorIndex) GetWeight() float64`
@@ -179,7 +174,6 @@ SetWeight sets Weight field to given value.
 `func (o *PerformanceAdvisorIndex) HasWeight() bool`
 
 HasWeight returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -50,7 +50,6 @@ and a boolean to check if the value has been set.
 
 SetType sets Type field to given value.
 
-
 ### GetEndHour
 
 `func (o *OnlineArchiveSchedule) GetEndHour() int`
@@ -75,7 +74,6 @@ SetEndHour sets EndHour field to given value.
 `func (o *OnlineArchiveSchedule) HasEndHour() bool`
 
 HasEndHour returns a boolean if a field has been set.
-
 ### GetEndMinute
 
 `func (o *OnlineArchiveSchedule) GetEndMinute() int`
@@ -100,7 +98,6 @@ SetEndMinute sets EndMinute field to given value.
 `func (o *OnlineArchiveSchedule) HasEndMinute() bool`
 
 HasEndMinute returns a boolean if a field has been set.
-
 ### GetStartHour
 
 `func (o *OnlineArchiveSchedule) GetStartHour() int`
@@ -125,7 +122,6 @@ SetStartHour sets StartHour field to given value.
 `func (o *OnlineArchiveSchedule) HasStartHour() bool`
 
 HasStartHour returns a boolean if a field has been set.
-
 ### GetStartMinute
 
 `func (o *OnlineArchiveSchedule) GetStartMinute() int`
@@ -150,7 +146,6 @@ SetStartMinute sets StartMinute field to given value.
 `func (o *OnlineArchiveSchedule) HasStartMinute() bool`
 
 HasStartMinute returns a boolean if a field has been set.
-
 ### GetDayOfWeek
 
 `func (o *OnlineArchiveSchedule) GetDayOfWeek() int`
@@ -175,7 +170,6 @@ SetDayOfWeek sets DayOfWeek field to given value.
 `func (o *OnlineArchiveSchedule) HasDayOfWeek() bool`
 
 HasDayOfWeek returns a boolean if a field has been set.
-
 ### GetDayOfMonth
 
 `func (o *OnlineArchiveSchedule) GetDayOfMonth() int`
@@ -200,7 +194,6 @@ SetDayOfMonth sets DayOfMonth field to given value.
 `func (o *OnlineArchiveSchedule) HasDayOfMonth() bool`
 
 HasDayOfMonth returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

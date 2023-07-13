@@ -50,7 +50,6 @@ SetDatabases sets Databases field to given value.
 `func (o *DataLakeStorage) HasDatabases() bool`
 
 HasDatabases returns a boolean if a field has been set.
-
 ### GetStores
 
 `func (o *DataLakeStorage) GetStores() []DataLakeStoreSettings`
@@ -75,7 +74,6 @@ SetStores sets Stores field to given value.
 `func (o *DataLakeStorage) HasStores() bool`
 
 HasStores returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

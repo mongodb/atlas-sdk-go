@@ -55,7 +55,6 @@ and a boolean to check if the value has been set.
 
 SetCloudProvider sets CloudProvider field to given value.
 
-
 ### GetErrorMessage
 
 `func (o *EndpointService) GetErrorMessage() string`
@@ -80,7 +79,6 @@ SetErrorMessage sets ErrorMessage field to given value.
 `func (o *EndpointService) HasErrorMessage() bool`
 
 HasErrorMessage returns a boolean if a field has been set.
-
 ### GetId
 
 `func (o *EndpointService) GetId() string`
@@ -105,7 +103,6 @@ SetId sets Id field to given value.
 `func (o *EndpointService) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetRegionName
 
 `func (o *EndpointService) GetRegionName() string`
@@ -130,7 +127,6 @@ SetRegionName sets RegionName field to given value.
 `func (o *EndpointService) HasRegionName() bool`
 
 HasRegionName returns a boolean if a field has been set.
-
 ### GetStatus
 
 `func (o *EndpointService) GetStatus() string`
@@ -155,7 +151,6 @@ SetStatus sets Status field to given value.
 `func (o *EndpointService) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
-
 ### GetEndpointServiceName
 
 `func (o *EndpointService) GetEndpointServiceName() string`
@@ -180,7 +175,6 @@ SetEndpointServiceName sets EndpointServiceName field to given value.
 `func (o *EndpointService) HasEndpointServiceName() bool`
 
 HasEndpointServiceName returns a boolean if a field has been set.
-
 ### GetInterfaceEndpoints
 
 `func (o *EndpointService) GetInterfaceEndpoints() []string`
@@ -205,7 +199,6 @@ SetInterfaceEndpoints sets InterfaceEndpoints field to given value.
 `func (o *EndpointService) HasInterfaceEndpoints() bool`
 
 HasInterfaceEndpoints returns a boolean if a field has been set.
-
 ### GetPrivateEndpoints
 
 `func (o *EndpointService) GetPrivateEndpoints() []string`
@@ -230,7 +223,6 @@ SetPrivateEndpoints sets PrivateEndpoints field to given value.
 `func (o *EndpointService) HasPrivateEndpoints() bool`
 
 HasPrivateEndpoints returns a boolean if a field has been set.
-
 ### GetPrivateLinkServiceName
 
 `func (o *EndpointService) GetPrivateLinkServiceName() string`
@@ -255,7 +247,6 @@ SetPrivateLinkServiceName sets PrivateLinkServiceName field to given value.
 `func (o *EndpointService) HasPrivateLinkServiceName() bool`
 
 HasPrivateLinkServiceName returns a boolean if a field has been set.
-
 ### GetPrivateLinkServiceResourceId
 
 `func (o *EndpointService) GetPrivateLinkServiceResourceId() string`
@@ -280,7 +271,6 @@ SetPrivateLinkServiceResourceId sets PrivateLinkServiceResourceId field to given
 `func (o *EndpointService) HasPrivateLinkServiceResourceId() bool`
 
 HasPrivateLinkServiceResourceId returns a boolean if a field has been set.
-
 ### GetEndpointGroupNames
 
 `func (o *EndpointService) GetEndpointGroupNames() []string`
@@ -305,7 +295,6 @@ SetEndpointGroupNames sets EndpointGroupNames field to given value.
 `func (o *EndpointService) HasEndpointGroupNames() bool`
 
 HasEndpointGroupNames returns a boolean if a field has been set.
-
 ### GetServiceAttachmentNames
 
 `func (o *EndpointService) GetServiceAttachmentNames() []string`
@@ -330,7 +319,6 @@ SetServiceAttachmentNames sets ServiceAttachmentNames field to given value.
 `func (o *EndpointService) HasServiceAttachmentNames() bool`
 
 HasServiceAttachmentNames returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

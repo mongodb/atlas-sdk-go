@@ -59,7 +59,6 @@ SetAuthorizedEmail sets AuthorizedEmail field to given value.
 `func (o *DataProtectionSettings) HasAuthorizedEmail() bool`
 
 HasAuthorizedEmail returns a boolean if a field has been set.
-
 ### GetCopyProtectionEnabled
 
 `func (o *DataProtectionSettings) GetCopyProtectionEnabled() bool`
@@ -84,7 +83,6 @@ SetCopyProtectionEnabled sets CopyProtectionEnabled field to given value.
 `func (o *DataProtectionSettings) HasCopyProtectionEnabled() bool`
 
 HasCopyProtectionEnabled returns a boolean if a field has been set.
-
 ### GetEncryptionAtRestEnabled
 
 `func (o *DataProtectionSettings) GetEncryptionAtRestEnabled() bool`
@@ -109,7 +107,6 @@ SetEncryptionAtRestEnabled sets EncryptionAtRestEnabled field to given value.
 `func (o *DataProtectionSettings) HasEncryptionAtRestEnabled() bool`
 
 HasEncryptionAtRestEnabled returns a boolean if a field has been set.
-
 ### GetOnDemandPolicyItem
 
 `func (o *DataProtectionSettings) GetOnDemandPolicyItem() DiskBackupApiPolicyItem`
@@ -134,7 +131,6 @@ SetOnDemandPolicyItem sets OnDemandPolicyItem field to given value.
 `func (o *DataProtectionSettings) HasOnDemandPolicyItem() bool`
 
 HasOnDemandPolicyItem returns a boolean if a field has been set.
-
 ### GetPitEnabled
 
 `func (o *DataProtectionSettings) GetPitEnabled() bool`
@@ -159,7 +155,6 @@ SetPitEnabled sets PitEnabled field to given value.
 `func (o *DataProtectionSettings) HasPitEnabled() bool`
 
 HasPitEnabled returns a boolean if a field has been set.
-
 ### GetProjectId
 
 `func (o *DataProtectionSettings) GetProjectId() string`
@@ -184,7 +179,6 @@ SetProjectId sets ProjectId field to given value.
 `func (o *DataProtectionSettings) HasProjectId() bool`
 
 HasProjectId returns a boolean if a field has been set.
-
 ### GetRestoreWindowDays
 
 `func (o *DataProtectionSettings) GetRestoreWindowDays() int`
@@ -209,7 +203,6 @@ SetRestoreWindowDays sets RestoreWindowDays field to given value.
 `func (o *DataProtectionSettings) HasRestoreWindowDays() bool`
 
 HasRestoreWindowDays returns a boolean if a field has been set.
-
 ### GetScheduledPolicyItems
 
 `func (o *DataProtectionSettings) GetScheduledPolicyItems() []DiskBackupApiPolicyItem`
@@ -234,7 +227,6 @@ SetScheduledPolicyItems sets ScheduledPolicyItems field to given value.
 `func (o *DataProtectionSettings) HasScheduledPolicyItems() bool`
 
 HasScheduledPolicyItems returns a boolean if a field has been set.
-
 ### GetState
 
 `func (o *DataProtectionSettings) GetState() string`
@@ -259,7 +251,6 @@ SetState sets State field to given value.
 `func (o *DataProtectionSettings) HasState() bool`
 
 HasState returns a boolean if a field has been set.
-
 ### GetUpdatedDate
 
 `func (o *DataProtectionSettings) GetUpdatedDate() time.Time`
@@ -284,7 +275,6 @@ SetUpdatedDate sets UpdatedDate field to given value.
 `func (o *DataProtectionSettings) HasUpdatedDate() bool`
 
 HasUpdatedDate returns a boolean if a field has been set.
-
 ### GetUpdatedUser
 
 `func (o *DataProtectionSettings) GetUpdatedUser() string`
@@ -309,7 +299,6 @@ SetUpdatedUser sets UpdatedUser field to given value.
 `func (o *DataProtectionSettings) HasUpdatedUser() bool`
 
 HasUpdatedUser returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

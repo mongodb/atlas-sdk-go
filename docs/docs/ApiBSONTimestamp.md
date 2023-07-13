@@ -50,7 +50,6 @@ SetDate sets Date field to given value.
 `func (o *ApiBSONTimestamp) HasDate() bool`
 
 HasDate returns a boolean if a field has been set.
-
 ### GetIncrement
 
 `func (o *ApiBSONTimestamp) GetIncrement() int`
@@ -75,7 +74,6 @@ SetIncrement sets Increment field to given value.
 `func (o *ApiBSONTimestamp) HasIncrement() bool`
 
 HasIncrement returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

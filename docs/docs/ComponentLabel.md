@@ -50,7 +50,6 @@ SetKey sets Key field to given value.
 `func (o *ComponentLabel) HasKey() bool`
 
 HasKey returns a boolean if a field has been set.
-
 ### GetValue
 
 `func (o *ComponentLabel) GetValue() string`
@@ -75,7 +74,6 @@ SetValue sets Value field to given value.
 `func (o *ComponentLabel) HasValue() bool`
 
 HasValue returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

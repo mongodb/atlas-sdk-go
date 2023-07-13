@@ -51,7 +51,6 @@ SetMaxStalenessSeconds sets MaxStalenessSeconds field to given value.
 `func (o *DataLakeAtlasStoreReadPreference) HasMaxStalenessSeconds() bool`
 
 HasMaxStalenessSeconds returns a boolean if a field has been set.
-
 ### GetMode
 
 `func (o *DataLakeAtlasStoreReadPreference) GetMode() string`
@@ -76,7 +75,6 @@ SetMode sets Mode field to given value.
 `func (o *DataLakeAtlasStoreReadPreference) HasMode() bool`
 
 HasMode returns a boolean if a field has been set.
-
 ### GetTagSets
 
 `func (o *DataLakeAtlasStoreReadPreference) GetTagSets() [][]DataLakeAtlasStoreReadPreferenceTag`
@@ -101,7 +99,6 @@ SetTagSets sets TagSets field to given value.
 `func (o *DataLakeAtlasStoreReadPreference) HasTagSets() bool`
 
 HasTagSets returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
