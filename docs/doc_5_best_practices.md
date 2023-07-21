@@ -30,16 +30,16 @@ if test != ""
 
 ## Working with Date Fields
 
-In the Atlas SDK GO, date fields are represented by `*time.Time` type to handle time-related data. 
-When comparing values that are `time.Time` based never compare pointers directly or 
+In the Atlas Go SDK, the `*time.Time` type represents date fields for handling time-related data. 
+When you compare values based on `time.Time`, either never compare pointers directly or do the following:
 
-1. Avoid using direct comparison operators (e.g., `myStruct.MyDateField == ""`) to check for equality. Comparing pointers directly will check if they refer to the same memory address rather than comparing the actual date values. Since each time.Time instance is allocated in different memory locations, direct comparisons may yield unexpected results.
+1. Avoid using direct comparison operators (e.g., `myStruct.MyDateField == ""`) to check for equality. Comparing pointers directly will check if they refer to the same memory address rather than comparing the actual date values. Since each `time.Time` instance is allocated in different memory locations, direct comparisons might yield unexpected results.
 
-2. Use the `Has` Function for Checking Non-Nil Pointers:
-The SDK provides a dedicated `HasFieldName` or `GetFieldName` function for each model to check if a time.Time pointer is not nil before accessing its value. Always use this function to ensure that the pointer is valid before performing any operations.
+2. Use the `Has` function to check non-nil pointers:
+The SDK provides a dedicated `HasFieldName` or `GetFieldName` function for each model to check if a `time.Time` pointer is non-nil before accessing its value. Always use this function to ensure that the pointer is valid before you perform any operations.
 
-3. Use time.Time Methods for Comparing Date Values:
-When you have confirmed that the time.Time pointer is not nil, you can safely use `time.Time` methods to compare the actual date values. Commonly used methods for comparison include `Before`, `After`, and `Equal`:
+3. Use `time.Time` methods to compare date values:
+When you have confirmed that the `time.Time pointer` is non-nil, you can safely use `time.Time` methods to compare the actual date values. Commonly used methods for comparison include `Before`, `After`, and `Equal`:
 ```go
     if datePtr1.Before(*datePtr2) {
         // datePtr1 is before datePtr2.
