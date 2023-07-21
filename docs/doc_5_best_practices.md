@@ -41,6 +41,10 @@ The SDK provides a dedicated `HasFieldName` or `GetFieldName` function for each 
 3. Use `time.Time` methods to compare date values:
 When you have confirmed that the `time.Time pointer` is non-nil, you can safely use `time.Time` methods to compare the actual date values. Commonly used methods for comparison include `Before`, `After`, and `Equal`:
 ```go
+   if !sdkModel.HasSomeDateField() {
+       return;
+   }
+    datePtr1 := sdkModel.SomeDateField;
     if datePtr1.Before(*datePtr2) {
         // datePtr1 is before datePtr2.
     } else if datePtr1.After(*datePtr2) {
