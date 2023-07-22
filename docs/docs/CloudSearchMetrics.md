@@ -49,7 +49,6 @@ and a boolean to check if the value has been set.
 
 SetGroupId sets GroupId field to given value.
 
-
 ### GetHardwareMetrics
 
 `func (o *CloudSearchMetrics) GetHardwareMetrics() []FTSMetric`
@@ -74,7 +73,6 @@ SetHardwareMetrics sets HardwareMetrics field to given value.
 `func (o *CloudSearchMetrics) HasHardwareMetrics() bool`
 
 HasHardwareMetrics returns a boolean if a field has been set.
-
 ### GetIndexMetrics
 
 `func (o *CloudSearchMetrics) GetIndexMetrics() []FTSMetric`
@@ -99,7 +97,6 @@ SetIndexMetrics sets IndexMetrics field to given value.
 `func (o *CloudSearchMetrics) HasIndexMetrics() bool`
 
 HasIndexMetrics returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *CloudSearchMetrics) GetLinks() []Link`
@@ -124,7 +121,6 @@ SetLinks sets Links field to given value.
 `func (o *CloudSearchMetrics) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetProcessId
 
 `func (o *CloudSearchMetrics) GetProcessId() string`
@@ -143,7 +139,6 @@ and a boolean to check if the value has been set.
 `func (o *CloudSearchMetrics) SetProcessId(v string)`
 
 SetProcessId sets ProcessId field to given value.
-
 
 ### GetStatusMetrics
 
@@ -169,7 +164,6 @@ SetStatusMetrics sets StatusMetrics field to given value.
 `func (o *CloudSearchMetrics) HasStatusMetrics() bool`
 
 HasStatusMetrics returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

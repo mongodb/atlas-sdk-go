@@ -58,7 +58,6 @@ SetAuthenticationEnabled sets AuthenticationEnabled field to given value.
 `func (o *LDAPSecuritySettings) HasAuthenticationEnabled() bool`
 
 HasAuthenticationEnabled returns a boolean if a field has been set.
-
 ### GetAuthorizationEnabled
 
 `func (o *LDAPSecuritySettings) GetAuthorizationEnabled() bool`
@@ -83,7 +82,6 @@ SetAuthorizationEnabled sets AuthorizationEnabled field to given value.
 `func (o *LDAPSecuritySettings) HasAuthorizationEnabled() bool`
 
 HasAuthorizationEnabled returns a boolean if a field has been set.
-
 ### GetAuthzQueryTemplate
 
 `func (o *LDAPSecuritySettings) GetAuthzQueryTemplate() string`
@@ -108,7 +106,6 @@ SetAuthzQueryTemplate sets AuthzQueryTemplate field to given value.
 `func (o *LDAPSecuritySettings) HasAuthzQueryTemplate() bool`
 
 HasAuthzQueryTemplate returns a boolean if a field has been set.
-
 ### GetBindPassword
 
 `func (o *LDAPSecuritySettings) GetBindPassword() string`
@@ -133,7 +130,6 @@ SetBindPassword sets BindPassword field to given value.
 `func (o *LDAPSecuritySettings) HasBindPassword() bool`
 
 HasBindPassword returns a boolean if a field has been set.
-
 ### GetBindUsername
 
 `func (o *LDAPSecuritySettings) GetBindUsername() string`
@@ -158,7 +154,6 @@ SetBindUsername sets BindUsername field to given value.
 `func (o *LDAPSecuritySettings) HasBindUsername() bool`
 
 HasBindUsername returns a boolean if a field has been set.
-
 ### GetCaCertificate
 
 `func (o *LDAPSecuritySettings) GetCaCertificate() string`
@@ -183,7 +178,6 @@ SetCaCertificate sets CaCertificate field to given value.
 `func (o *LDAPSecuritySettings) HasCaCertificate() bool`
 
 HasCaCertificate returns a boolean if a field has been set.
-
 ### GetHostname
 
 `func (o *LDAPSecuritySettings) GetHostname() string`
@@ -208,7 +202,6 @@ SetHostname sets Hostname field to given value.
 `func (o *LDAPSecuritySettings) HasHostname() bool`
 
 HasHostname returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *LDAPSecuritySettings) GetLinks() []Link`
@@ -233,7 +226,6 @@ SetLinks sets Links field to given value.
 `func (o *LDAPSecuritySettings) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetPort
 
 `func (o *LDAPSecuritySettings) GetPort() int`
@@ -258,7 +250,6 @@ SetPort sets Port field to given value.
 `func (o *LDAPSecuritySettings) HasPort() bool`
 
 HasPort returns a boolean if a field has been set.
-
 ### GetUserToDNMapping
 
 `func (o *LDAPSecuritySettings) GetUserToDNMapping() []UserToDNMapping`
@@ -283,7 +274,6 @@ SetUserToDNMapping sets UserToDNMapping field to given value.
 `func (o *LDAPSecuritySettings) HasUserToDNMapping() bool`
 
 HasUserToDNMapping returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

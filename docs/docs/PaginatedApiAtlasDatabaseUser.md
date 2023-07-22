@@ -51,7 +51,6 @@ SetLinks sets Links field to given value.
 `func (o *PaginatedApiAtlasDatabaseUser) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetResults
 
 `func (o *PaginatedApiAtlasDatabaseUser) GetResults() []CloudDatabaseUser`
@@ -76,7 +75,6 @@ SetResults sets Results field to given value.
 `func (o *PaginatedApiAtlasDatabaseUser) HasResults() bool`
 
 HasResults returns a boolean if a field has been set.
-
 ### GetTotalCount
 
 `func (o *PaginatedApiAtlasDatabaseUser) GetTotalCount() int`
@@ -101,7 +99,6 @@ SetTotalCount sets TotalCount field to given value.
 `func (o *PaginatedApiAtlasDatabaseUser) HasTotalCount() bool`
 
 HasTotalCount returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -49,7 +49,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
 ### GetProviderSettings
 
 `func (o *ServerlessInstanceDescriptionCreate) GetProviderSettings() ServerlessProviderSettings`
@@ -68,7 +67,6 @@ and a boolean to check if the value has been set.
 `func (o *ServerlessInstanceDescriptionCreate) SetProviderSettings(v ServerlessProviderSettings)`
 
 SetProviderSettings sets ProviderSettings field to given value.
-
 
 ### GetServerlessBackupOptions
 
@@ -94,7 +92,6 @@ SetServerlessBackupOptions sets ServerlessBackupOptions field to given value.
 `func (o *ServerlessInstanceDescriptionCreate) HasServerlessBackupOptions() bool`
 
 HasServerlessBackupOptions returns a boolean if a field has been set.
-
 ### GetStateName
 
 `func (o *ServerlessInstanceDescriptionCreate) GetStateName() string`
@@ -119,7 +116,6 @@ SetStateName sets StateName field to given value.
 `func (o *ServerlessInstanceDescriptionCreate) HasStateName() bool`
 
 HasStateName returns a boolean if a field has been set.
-
 ### GetTags
 
 `func (o *ServerlessInstanceDescriptionCreate) GetTags() []ResourceTag`
@@ -144,7 +140,6 @@ SetTags sets Tags field to given value.
 `func (o *ServerlessInstanceDescriptionCreate) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
-
 ### GetTerminationProtectionEnabled
 
 `func (o *ServerlessInstanceDescriptionCreate) GetTerminationProtectionEnabled() bool`
@@ -169,7 +164,6 @@ SetTerminationProtectionEnabled sets TerminationProtectionEnabled field to given
 `func (o *ServerlessInstanceDescriptionCreate) HasTerminationProtectionEnabled() bool`
 
 HasTerminationProtectionEnabled returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -53,7 +53,6 @@ and a boolean to check if the value has been set.
 
 SetClusterCheckpointIntervalMin sets ClusterCheckpointIntervalMin field to given value.
 
-
 ### GetClusterId
 
 `func (o *ApiAtlasSnapshotSchedule) GetClusterId() string`
@@ -72,7 +71,6 @@ and a boolean to check if the value has been set.
 `func (o *ApiAtlasSnapshotSchedule) SetClusterId(v string)`
 
 SetClusterId sets ClusterId field to given value.
-
 
 ### GetDailySnapshotRetentionDays
 
@@ -93,7 +91,6 @@ and a boolean to check if the value has been set.
 
 SetDailySnapshotRetentionDays sets DailySnapshotRetentionDays field to given value.
 
-
 ### GetGroupId
 
 `func (o *ApiAtlasSnapshotSchedule) GetGroupId() string`
@@ -112,7 +109,6 @@ and a boolean to check if the value has been set.
 `func (o *ApiAtlasSnapshotSchedule) SetGroupId(v string)`
 
 SetGroupId sets GroupId field to given value.
-
 
 ### GetLinks
 
@@ -138,7 +134,6 @@ SetLinks sets Links field to given value.
 `func (o *ApiAtlasSnapshotSchedule) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetMonthlySnapshotRetentionMonths
 
 `func (o *ApiAtlasSnapshotSchedule) GetMonthlySnapshotRetentionMonths() int`
@@ -157,7 +152,6 @@ and a boolean to check if the value has been set.
 `func (o *ApiAtlasSnapshotSchedule) SetMonthlySnapshotRetentionMonths(v int)`
 
 SetMonthlySnapshotRetentionMonths sets MonthlySnapshotRetentionMonths field to given value.
-
 
 ### GetPointInTimeWindowHours
 
@@ -178,7 +172,6 @@ and a boolean to check if the value has been set.
 
 SetPointInTimeWindowHours sets PointInTimeWindowHours field to given value.
 
-
 ### GetSnapshotIntervalHours
 
 `func (o *ApiAtlasSnapshotSchedule) GetSnapshotIntervalHours() int`
@@ -197,7 +190,6 @@ and a boolean to check if the value has been set.
 `func (o *ApiAtlasSnapshotSchedule) SetSnapshotIntervalHours(v int)`
 
 SetSnapshotIntervalHours sets SnapshotIntervalHours field to given value.
-
 
 ### GetSnapshotRetentionDays
 
@@ -218,7 +210,6 @@ and a boolean to check if the value has been set.
 
 SetSnapshotRetentionDays sets SnapshotRetentionDays field to given value.
 
-
 ### GetWeeklySnapshotRetentionWeeks
 
 `func (o *ApiAtlasSnapshotSchedule) GetWeeklySnapshotRetentionWeeks() int`
@@ -237,7 +228,6 @@ and a boolean to check if the value has been set.
 `func (o *ApiAtlasSnapshotSchedule) SetWeeklySnapshotRetentionWeeks(v int)`
 
 SetWeeklySnapshotRetentionWeeks sets WeeklySnapshotRetentionWeeks field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

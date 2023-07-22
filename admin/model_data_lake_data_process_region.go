@@ -6,11 +6,11 @@ import (
 	"encoding/json"
 )
 
-// DataLakeDataProcessRegion Information about the cloud provider region to which the data lake routes client connections. MongoDB Cloud supports AWS only.
+// DataLakeDataProcessRegion Information about the cloud provider region to which the data lake routes client connections.
 type DataLakeDataProcessRegion struct {
 	// Name of the cloud service that hosts the data lake's data stores.
 	CloudProvider string `json:"cloudProvider"`
-	// Atlas Data Lake Regions.
+	// Name of the region to which the data lake routes client connections.
 	Region string `json:"region"`
 }
 

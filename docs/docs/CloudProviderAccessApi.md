@@ -244,7 +244,7 @@ Name | Type | Description  | Notes
 
 ## GetCloudProviderAccessRole
 
-> CloudProviderAccessRoles GetCloudProviderAccessRole(ctx, groupId, roleId).Execute()
+> CloudProviderAccessRole GetCloudProviderAccessRole(ctx, groupId, roleId).Execute()
 
 Return specified Cloud Provider Access Role
 
@@ -282,7 +282,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetCloudProviderAccessRole`: CloudProviderAccessRoles
+    // response from `GetCloudProviderAccessRole`: CloudProviderAccessRole
     fmt.Fprintf(os.Stdout, "Response from `CloudProviderAccessApi.GetCloudProviderAccessRole`: %v\n", resp)
 }
 ```
@@ -308,7 +308,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CloudProviderAccessRoles**](CloudProviderAccessRoles.md)
+[**CloudProviderAccessRole**](CloudProviderAccessRole.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

@@ -57,7 +57,6 @@ SetId sets Id field to given value.
 `func (o *DataLakeIngestionPipeline) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetCreatedDate
 
 `func (o *DataLakeIngestionPipeline) GetCreatedDate() time.Time`
@@ -82,7 +81,6 @@ SetCreatedDate sets CreatedDate field to given value.
 `func (o *DataLakeIngestionPipeline) HasCreatedDate() bool`
 
 HasCreatedDate returns a boolean if a field has been set.
-
 ### GetGroupId
 
 `func (o *DataLakeIngestionPipeline) GetGroupId() string`
@@ -107,7 +105,6 @@ SetGroupId sets GroupId field to given value.
 `func (o *DataLakeIngestionPipeline) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
-
 ### GetLastUpdatedDate
 
 `func (o *DataLakeIngestionPipeline) GetLastUpdatedDate() time.Time`
@@ -132,7 +129,6 @@ SetLastUpdatedDate sets LastUpdatedDate field to given value.
 `func (o *DataLakeIngestionPipeline) HasLastUpdatedDate() bool`
 
 HasLastUpdatedDate returns a boolean if a field has been set.
-
 ### GetName
 
 `func (o *DataLakeIngestionPipeline) GetName() string`
@@ -157,7 +153,6 @@ SetName sets Name field to given value.
 `func (o *DataLakeIngestionPipeline) HasName() bool`
 
 HasName returns a boolean if a field has been set.
-
 ### GetSink
 
 `func (o *DataLakeIngestionPipeline) GetSink() IngestionSink`
@@ -182,7 +177,6 @@ SetSink sets Sink field to given value.
 `func (o *DataLakeIngestionPipeline) HasSink() bool`
 
 HasSink returns a boolean if a field has been set.
-
 ### GetSource
 
 `func (o *DataLakeIngestionPipeline) GetSource() IngestionSource`
@@ -207,7 +201,6 @@ SetSource sets Source field to given value.
 `func (o *DataLakeIngestionPipeline) HasSource() bool`
 
 HasSource returns a boolean if a field has been set.
-
 ### GetState
 
 `func (o *DataLakeIngestionPipeline) GetState() string`
@@ -232,7 +225,6 @@ SetState sets State field to given value.
 `func (o *DataLakeIngestionPipeline) HasState() bool`
 
 HasState returns a boolean if a field has been set.
-
 ### GetTransformations
 
 `func (o *DataLakeIngestionPipeline) GetTransformations() []FieldTransformation`
@@ -257,7 +249,6 @@ SetTransformations sets Transformations field to given value.
 `func (o *DataLakeIngestionPipeline) HasTransformations() bool`
 
 HasTransformations returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

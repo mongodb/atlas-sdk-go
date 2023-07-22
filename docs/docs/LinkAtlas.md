@@ -50,7 +50,6 @@ SetHref sets Href field to given value.
 `func (o *LinkAtlas) HasHref() bool`
 
 HasHref returns a boolean if a field has been set.
-
 ### GetRel
 
 `func (o *LinkAtlas) GetRel() string`
@@ -75,7 +74,6 @@ SetRel sets Rel field to given value.
 `func (o *LinkAtlas) HasRel() bool`
 
 HasRel returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -55,7 +55,6 @@ SetAwsSecurityGroup sets AwsSecurityGroup field to given value.
 `func (o *NetworkPermissionEntry) HasAwsSecurityGroup() bool`
 
 HasAwsSecurityGroup returns a boolean if a field has been set.
-
 ### GetCidrBlock
 
 `func (o *NetworkPermissionEntry) GetCidrBlock() string`
@@ -80,7 +79,6 @@ SetCidrBlock sets CidrBlock field to given value.
 `func (o *NetworkPermissionEntry) HasCidrBlock() bool`
 
 HasCidrBlock returns a boolean if a field has been set.
-
 ### GetComment
 
 `func (o *NetworkPermissionEntry) GetComment() string`
@@ -105,7 +103,6 @@ SetComment sets Comment field to given value.
 `func (o *NetworkPermissionEntry) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
-
 ### GetDeleteAfterDate
 
 `func (o *NetworkPermissionEntry) GetDeleteAfterDate() time.Time`
@@ -130,7 +127,6 @@ SetDeleteAfterDate sets DeleteAfterDate field to given value.
 `func (o *NetworkPermissionEntry) HasDeleteAfterDate() bool`
 
 HasDeleteAfterDate returns a boolean if a field has been set.
-
 ### GetGroupId
 
 `func (o *NetworkPermissionEntry) GetGroupId() string`
@@ -155,7 +151,6 @@ SetGroupId sets GroupId field to given value.
 `func (o *NetworkPermissionEntry) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
-
 ### GetIpAddress
 
 `func (o *NetworkPermissionEntry) GetIpAddress() string`
@@ -180,7 +175,6 @@ SetIpAddress sets IpAddress field to given value.
 `func (o *NetworkPermissionEntry) HasIpAddress() bool`
 
 HasIpAddress returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *NetworkPermissionEntry) GetLinks() []Link`
@@ -205,7 +199,6 @@ SetLinks sets Links field to given value.
 `func (o *NetworkPermissionEntry) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

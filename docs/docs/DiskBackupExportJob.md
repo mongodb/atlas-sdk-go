@@ -60,7 +60,6 @@ SetComponents sets Components field to given value.
 `func (o *DiskBackupExportJob) HasComponents() bool`
 
 HasComponents returns a boolean if a field has been set.
-
 ### GetCreatedAt
 
 `func (o *DiskBackupExportJob) GetCreatedAt() time.Time`
@@ -85,7 +84,6 @@ SetCreatedAt sets CreatedAt field to given value.
 `func (o *DiskBackupExportJob) HasCreatedAt() bool`
 
 HasCreatedAt returns a boolean if a field has been set.
-
 ### GetCustomData
 
 `func (o *DiskBackupExportJob) GetCustomData() []BackupLabel`
@@ -110,7 +108,6 @@ SetCustomData sets CustomData field to given value.
 `func (o *DiskBackupExportJob) HasCustomData() bool`
 
 HasCustomData returns a boolean if a field has been set.
-
 ### GetDeliveryUrl
 
 `func (o *DiskBackupExportJob) GetDeliveryUrl() []string`
@@ -135,7 +132,6 @@ SetDeliveryUrl sets DeliveryUrl field to given value.
 `func (o *DiskBackupExportJob) HasDeliveryUrl() bool`
 
 HasDeliveryUrl returns a boolean if a field has been set.
-
 ### GetExportBucketId
 
 `func (o *DiskBackupExportJob) GetExportBucketId() string`
@@ -154,7 +150,6 @@ and a boolean to check if the value has been set.
 `func (o *DiskBackupExportJob) SetExportBucketId(v string)`
 
 SetExportBucketId sets ExportBucketId field to given value.
-
 
 ### GetExportStatus
 
@@ -180,7 +175,6 @@ SetExportStatus sets ExportStatus field to given value.
 `func (o *DiskBackupExportJob) HasExportStatus() bool`
 
 HasExportStatus returns a boolean if a field has been set.
-
 ### GetFinishedAt
 
 `func (o *DiskBackupExportJob) GetFinishedAt() time.Time`
@@ -205,7 +199,6 @@ SetFinishedAt sets FinishedAt field to given value.
 `func (o *DiskBackupExportJob) HasFinishedAt() bool`
 
 HasFinishedAt returns a boolean if a field has been set.
-
 ### GetId
 
 `func (o *DiskBackupExportJob) GetId() string`
@@ -230,7 +223,6 @@ SetId sets Id field to given value.
 `func (o *DiskBackupExportJob) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *DiskBackupExportJob) GetLinks() []Link`
@@ -255,7 +247,6 @@ SetLinks sets Links field to given value.
 `func (o *DiskBackupExportJob) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetPrefix
 
 `func (o *DiskBackupExportJob) GetPrefix() string`
@@ -280,7 +271,6 @@ SetPrefix sets Prefix field to given value.
 `func (o *DiskBackupExportJob) HasPrefix() bool`
 
 HasPrefix returns a boolean if a field has been set.
-
 ### GetSnapshotId
 
 `func (o *DiskBackupExportJob) GetSnapshotId() string`
@@ -305,7 +295,6 @@ SetSnapshotId sets SnapshotId field to given value.
 `func (o *DiskBackupExportJob) HasSnapshotId() bool`
 
 HasSnapshotId returns a boolean if a field has been set.
-
 ### GetState
 
 `func (o *DiskBackupExportJob) GetState() string`
@@ -330,7 +319,6 @@ SetState sets State field to given value.
 `func (o *DiskBackupExportJob) HasState() bool`
 
 HasState returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

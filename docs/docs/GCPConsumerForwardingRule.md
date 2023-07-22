@@ -51,7 +51,6 @@ SetEndpointName sets EndpointName field to given value.
 `func (o *GCPConsumerForwardingRule) HasEndpointName() bool`
 
 HasEndpointName returns a boolean if a field has been set.
-
 ### GetIpAddress
 
 `func (o *GCPConsumerForwardingRule) GetIpAddress() string`
@@ -76,7 +75,6 @@ SetIpAddress sets IpAddress field to given value.
 `func (o *GCPConsumerForwardingRule) HasIpAddress() bool`
 
 HasIpAddress returns a boolean if a field has been set.
-
 ### GetStatus
 
 `func (o *GCPConsumerForwardingRule) GetStatus() string`
@@ -101,7 +99,6 @@ SetStatus sets Status field to given value.
 `func (o *GCPConsumerForwardingRule) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

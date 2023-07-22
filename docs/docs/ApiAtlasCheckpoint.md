@@ -57,7 +57,6 @@ SetClusterId sets ClusterId field to given value.
 `func (o *ApiAtlasCheckpoint) HasClusterId() bool`
 
 HasClusterId returns a boolean if a field has been set.
-
 ### GetCompleted
 
 `func (o *ApiAtlasCheckpoint) GetCompleted() time.Time`
@@ -82,7 +81,6 @@ SetCompleted sets Completed field to given value.
 `func (o *ApiAtlasCheckpoint) HasCompleted() bool`
 
 HasCompleted returns a boolean if a field has been set.
-
 ### GetGroupId
 
 `func (o *ApiAtlasCheckpoint) GetGroupId() string`
@@ -107,7 +105,6 @@ SetGroupId sets GroupId field to given value.
 `func (o *ApiAtlasCheckpoint) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
-
 ### GetId
 
 `func (o *ApiAtlasCheckpoint) GetId() string`
@@ -132,7 +129,6 @@ SetId sets Id field to given value.
 `func (o *ApiAtlasCheckpoint) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *ApiAtlasCheckpoint) GetLinks() []Link`
@@ -157,7 +153,6 @@ SetLinks sets Links field to given value.
 `func (o *ApiAtlasCheckpoint) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetParts
 
 `func (o *ApiAtlasCheckpoint) GetParts() []ApiCheckpointPart`
@@ -182,7 +177,6 @@ SetParts sets Parts field to given value.
 `func (o *ApiAtlasCheckpoint) HasParts() bool`
 
 HasParts returns a boolean if a field has been set.
-
 ### GetRestorable
 
 `func (o *ApiAtlasCheckpoint) GetRestorable() bool`
@@ -207,7 +201,6 @@ SetRestorable sets Restorable field to given value.
 `func (o *ApiAtlasCheckpoint) HasRestorable() bool`
 
 HasRestorable returns a boolean if a field has been set.
-
 ### GetStarted
 
 `func (o *ApiAtlasCheckpoint) GetStarted() time.Time`
@@ -232,7 +225,6 @@ SetStarted sets Started field to given value.
 `func (o *ApiAtlasCheckpoint) HasStarted() bool`
 
 HasStarted returns a boolean if a field has been set.
-
 ### GetTimestamp
 
 `func (o *ApiAtlasCheckpoint) GetTimestamp() time.Time`
@@ -257,7 +249,6 @@ SetTimestamp sets Timestamp field to given value.
 `func (o *ApiAtlasCheckpoint) HasTimestamp() bool`
 
 HasTimestamp returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

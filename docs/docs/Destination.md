@@ -47,7 +47,6 @@ and a boolean to check if the value has been set.
 
 SetClusterName sets ClusterName field to given value.
 
-
 ### GetGroupId
 
 `func (o *Destination) GetGroupId() string`
@@ -67,7 +66,6 @@ and a boolean to check if the value has been set.
 
 SetGroupId sets GroupId field to given value.
 
-
 ### GetHostnameSchemaType
 
 `func (o *Destination) GetHostnameSchemaType() string`
@@ -86,7 +84,6 @@ and a boolean to check if the value has been set.
 `func (o *Destination) SetHostnameSchemaType(v string)`
 
 SetHostnameSchemaType sets HostnameSchemaType field to given value.
-
 
 ### GetPrivateLinkId
 
@@ -112,7 +109,6 @@ SetPrivateLinkId sets PrivateLinkId field to given value.
 `func (o *Destination) HasPrivateLinkId() bool`
 
 HasPrivateLinkId returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

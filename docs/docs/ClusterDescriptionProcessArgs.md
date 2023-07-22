@@ -10,10 +10,11 @@ Name | Type | Description | Notes
 **JavascriptEnabled** | Pointer to **bool** | Flag that indicates whether the cluster allows execution of operations that perform server-side executions of JavaScript. | [optional] [default to true]
 **MinimumEnabledTlsProtocol** | Pointer to **string** | Minimum Transport Layer Security (TLS) version that the cluster accepts for incoming connections. Clusters using TLS 1.0 or 1.1 should consider setting TLS 1.2 as the minimum TLS protocol version. | [optional] 
 **NoTableScan** | Pointer to **bool** | Flag that indicates whether the cluster disables executing any query that requires a collection scan to return results. | [optional] [default to false]
-**OplogMinRetentionHours** | Pointer to **NullableFloat64** | Minimum retention window for cluster&#39;s oplog expressed in hours. A value of null indicates that the cluster uses the default minimum oplog window that MongoDB Cloud calculates. | [optional] 
-**OplogSizeMB** | Pointer to **NullableInt** | Storage limit of cluster&#39;s oplog expressed in megabytes. A value of null indicates that the cluster uses the default oplog size that MongoDB Cloud calculates. | [optional] 
+**OplogMinRetentionHours** | Pointer to **float64** | Minimum retention window for cluster&#39;s oplog expressed in hours. A value of null indicates that the cluster uses the default minimum oplog window that MongoDB Cloud calculates. | [optional] 
+**OplogSizeMB** | Pointer to **int** | Storage limit of cluster&#39;s oplog expressed in megabytes. A value of null indicates that the cluster uses the default oplog size that MongoDB Cloud calculates. | [optional] 
 **SampleRefreshIntervalBIConnector** | Pointer to **int** | Interval in seconds at which the mongosqld process re-samples data to create its relational schema. | [optional] [default to 0]
 **SampleSizeBIConnector** | Pointer to **int** | Number of documents per database to sample when gathering schema information. | [optional] [default to 1000]
+**TransactionLifetimeLimitSeconds** | Pointer to **int64** | Lifetime, in seconds, of multi-document transactions. Atlas considers the transactions that exceed this limit as expired and so aborts them through a periodic cleanup process. | [optional] [default to 60]
 
 ## Methods
 
@@ -58,7 +59,6 @@ SetDefaultReadConcern sets DefaultReadConcern field to given value.
 `func (o *ClusterDescriptionProcessArgs) HasDefaultReadConcern() bool`
 
 HasDefaultReadConcern returns a boolean if a field has been set.
-
 ### GetDefaultWriteConcern
 
 `func (o *ClusterDescriptionProcessArgs) GetDefaultWriteConcern() string`
@@ -83,7 +83,6 @@ SetDefaultWriteConcern sets DefaultWriteConcern field to given value.
 `func (o *ClusterDescriptionProcessArgs) HasDefaultWriteConcern() bool`
 
 HasDefaultWriteConcern returns a boolean if a field has been set.
-
 ### GetFailIndexKeyTooLong
 
 `func (o *ClusterDescriptionProcessArgs) GetFailIndexKeyTooLong() bool`
@@ -108,7 +107,6 @@ SetFailIndexKeyTooLong sets FailIndexKeyTooLong field to given value.
 `func (o *ClusterDescriptionProcessArgs) HasFailIndexKeyTooLong() bool`
 
 HasFailIndexKeyTooLong returns a boolean if a field has been set.
-
 ### GetJavascriptEnabled
 
 `func (o *ClusterDescriptionProcessArgs) GetJavascriptEnabled() bool`
@@ -133,7 +131,6 @@ SetJavascriptEnabled sets JavascriptEnabled field to given value.
 `func (o *ClusterDescriptionProcessArgs) HasJavascriptEnabled() bool`
 
 HasJavascriptEnabled returns a boolean if a field has been set.
-
 ### GetMinimumEnabledTlsProtocol
 
 `func (o *ClusterDescriptionProcessArgs) GetMinimumEnabledTlsProtocol() string`
@@ -158,7 +155,6 @@ SetMinimumEnabledTlsProtocol sets MinimumEnabledTlsProtocol field to given value
 `func (o *ClusterDescriptionProcessArgs) HasMinimumEnabledTlsProtocol() bool`
 
 HasMinimumEnabledTlsProtocol returns a boolean if a field has been set.
-
 ### GetNoTableScan
 
 `func (o *ClusterDescriptionProcessArgs) GetNoTableScan() bool`
@@ -183,7 +179,6 @@ SetNoTableScan sets NoTableScan field to given value.
 `func (o *ClusterDescriptionProcessArgs) HasNoTableScan() bool`
 
 HasNoTableScan returns a boolean if a field has been set.
-
 ### GetOplogMinRetentionHours
 
 `func (o *ClusterDescriptionProcessArgs) GetOplogMinRetentionHours() float64`
@@ -208,17 +203,6 @@ SetOplogMinRetentionHours sets OplogMinRetentionHours field to given value.
 `func (o *ClusterDescriptionProcessArgs) HasOplogMinRetentionHours() bool`
 
 HasOplogMinRetentionHours returns a boolean if a field has been set.
-
-### SetOplogMinRetentionHoursNil
-
-`func (o *ClusterDescriptionProcessArgs) SetOplogMinRetentionHoursNil(b bool)`
-
- SetOplogMinRetentionHoursNil sets the value for OplogMinRetentionHours to be an explicit nil
-
-### UnsetOplogMinRetentionHours
-`func (o *ClusterDescriptionProcessArgs) UnsetOplogMinRetentionHours()`
-
-UnsetOplogMinRetentionHours ensures that no value is present for OplogMinRetentionHours, not even an explicit nil
 ### GetOplogSizeMB
 
 `func (o *ClusterDescriptionProcessArgs) GetOplogSizeMB() int`
@@ -243,17 +227,6 @@ SetOplogSizeMB sets OplogSizeMB field to given value.
 `func (o *ClusterDescriptionProcessArgs) HasOplogSizeMB() bool`
 
 HasOplogSizeMB returns a boolean if a field has been set.
-
-### SetOplogSizeMBNil
-
-`func (o *ClusterDescriptionProcessArgs) SetOplogSizeMBNil(b bool)`
-
- SetOplogSizeMBNil sets the value for OplogSizeMB to be an explicit nil
-
-### UnsetOplogSizeMB
-`func (o *ClusterDescriptionProcessArgs) UnsetOplogSizeMB()`
-
-UnsetOplogSizeMB ensures that no value is present for OplogSizeMB, not even an explicit nil
 ### GetSampleRefreshIntervalBIConnector
 
 `func (o *ClusterDescriptionProcessArgs) GetSampleRefreshIntervalBIConnector() int`
@@ -278,7 +251,6 @@ SetSampleRefreshIntervalBIConnector sets SampleRefreshIntervalBIConnector field 
 `func (o *ClusterDescriptionProcessArgs) HasSampleRefreshIntervalBIConnector() bool`
 
 HasSampleRefreshIntervalBIConnector returns a boolean if a field has been set.
-
 ### GetSampleSizeBIConnector
 
 `func (o *ClusterDescriptionProcessArgs) GetSampleSizeBIConnector() int`
@@ -303,7 +275,30 @@ SetSampleSizeBIConnector sets SampleSizeBIConnector field to given value.
 `func (o *ClusterDescriptionProcessArgs) HasSampleSizeBIConnector() bool`
 
 HasSampleSizeBIConnector returns a boolean if a field has been set.
+### GetTransactionLifetimeLimitSeconds
 
+`func (o *ClusterDescriptionProcessArgs) GetTransactionLifetimeLimitSeconds() int64`
+
+GetTransactionLifetimeLimitSeconds returns the TransactionLifetimeLimitSeconds field if non-nil, zero value otherwise.
+
+### GetTransactionLifetimeLimitSecondsOk
+
+`func (o *ClusterDescriptionProcessArgs) GetTransactionLifetimeLimitSecondsOk() (*int64, bool)`
+
+GetTransactionLifetimeLimitSecondsOk returns a tuple with the TransactionLifetimeLimitSeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTransactionLifetimeLimitSeconds
+
+`func (o *ClusterDescriptionProcessArgs) SetTransactionLifetimeLimitSeconds(v int64)`
+
+SetTransactionLifetimeLimitSeconds sets TransactionLifetimeLimitSeconds field to given value.
+
+### HasTransactionLifetimeLimitSeconds
+
+`func (o *ClusterDescriptionProcessArgs) HasTransactionLifetimeLimitSeconds() bool`
+
+HasTransactionLifetimeLimitSeconds returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

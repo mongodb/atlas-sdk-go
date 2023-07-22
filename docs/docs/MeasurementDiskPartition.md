@@ -50,7 +50,6 @@ SetLinks sets Links field to given value.
 `func (o *MeasurementDiskPartition) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetPartitionName
 
 `func (o *MeasurementDiskPartition) GetPartitionName() string`
@@ -75,7 +74,6 @@ SetPartitionName sets PartitionName field to given value.
 `func (o *MeasurementDiskPartition) HasPartitionName() bool`
 
 HasPartitionName returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

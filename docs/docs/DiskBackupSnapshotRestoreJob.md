@@ -66,7 +66,6 @@ SetCancelled sets Cancelled field to given value.
 `func (o *DiskBackupSnapshotRestoreJob) HasCancelled() bool`
 
 HasCancelled returns a boolean if a field has been set.
-
 ### GetComponents
 
 `func (o *DiskBackupSnapshotRestoreJob) GetComponents() []DiskBackupBaseRestoreMember`
@@ -91,7 +90,6 @@ SetComponents sets Components field to given value.
 `func (o *DiskBackupSnapshotRestoreJob) HasComponents() bool`
 
 HasComponents returns a boolean if a field has been set.
-
 ### GetDeliveryType
 
 `func (o *DiskBackupSnapshotRestoreJob) GetDeliveryType() string`
@@ -110,7 +108,6 @@ and a boolean to check if the value has been set.
 `func (o *DiskBackupSnapshotRestoreJob) SetDeliveryType(v string)`
 
 SetDeliveryType sets DeliveryType field to given value.
-
 
 ### GetDeliveryUrl
 
@@ -136,7 +133,6 @@ SetDeliveryUrl sets DeliveryUrl field to given value.
 `func (o *DiskBackupSnapshotRestoreJob) HasDeliveryUrl() bool`
 
 HasDeliveryUrl returns a boolean if a field has been set.
-
 ### GetDesiredTimestamp
 
 `func (o *DiskBackupSnapshotRestoreJob) GetDesiredTimestamp() ApiBSONTimestamp`
@@ -161,7 +157,6 @@ SetDesiredTimestamp sets DesiredTimestamp field to given value.
 `func (o *DiskBackupSnapshotRestoreJob) HasDesiredTimestamp() bool`
 
 HasDesiredTimestamp returns a boolean if a field has been set.
-
 ### GetExpired
 
 `func (o *DiskBackupSnapshotRestoreJob) GetExpired() bool`
@@ -186,7 +181,6 @@ SetExpired sets Expired field to given value.
 `func (o *DiskBackupSnapshotRestoreJob) HasExpired() bool`
 
 HasExpired returns a boolean if a field has been set.
-
 ### GetExpiresAt
 
 `func (o *DiskBackupSnapshotRestoreJob) GetExpiresAt() time.Time`
@@ -211,7 +205,6 @@ SetExpiresAt sets ExpiresAt field to given value.
 `func (o *DiskBackupSnapshotRestoreJob) HasExpiresAt() bool`
 
 HasExpiresAt returns a boolean if a field has been set.
-
 ### GetFailed
 
 `func (o *DiskBackupSnapshotRestoreJob) GetFailed() bool`
@@ -236,7 +229,6 @@ SetFailed sets Failed field to given value.
 `func (o *DiskBackupSnapshotRestoreJob) HasFailed() bool`
 
 HasFailed returns a boolean if a field has been set.
-
 ### GetFinishedAt
 
 `func (o *DiskBackupSnapshotRestoreJob) GetFinishedAt() time.Time`
@@ -261,7 +253,6 @@ SetFinishedAt sets FinishedAt field to given value.
 `func (o *DiskBackupSnapshotRestoreJob) HasFinishedAt() bool`
 
 HasFinishedAt returns a boolean if a field has been set.
-
 ### GetId
 
 `func (o *DiskBackupSnapshotRestoreJob) GetId() string`
@@ -286,7 +277,6 @@ SetId sets Id field to given value.
 `func (o *DiskBackupSnapshotRestoreJob) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *DiskBackupSnapshotRestoreJob) GetLinks() []Link`
@@ -311,7 +301,6 @@ SetLinks sets Links field to given value.
 `func (o *DiskBackupSnapshotRestoreJob) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetOplogInc
 
 `func (o *DiskBackupSnapshotRestoreJob) GetOplogInc() int`
@@ -336,7 +325,6 @@ SetOplogInc sets OplogInc field to given value.
 `func (o *DiskBackupSnapshotRestoreJob) HasOplogInc() bool`
 
 HasOplogInc returns a boolean if a field has been set.
-
 ### GetOplogTs
 
 `func (o *DiskBackupSnapshotRestoreJob) GetOplogTs() int`
@@ -361,7 +349,6 @@ SetOplogTs sets OplogTs field to given value.
 `func (o *DiskBackupSnapshotRestoreJob) HasOplogTs() bool`
 
 HasOplogTs returns a boolean if a field has been set.
-
 ### GetPointInTimeUTCSeconds
 
 `func (o *DiskBackupSnapshotRestoreJob) GetPointInTimeUTCSeconds() int`
@@ -386,7 +373,6 @@ SetPointInTimeUTCSeconds sets PointInTimeUTCSeconds field to given value.
 `func (o *DiskBackupSnapshotRestoreJob) HasPointInTimeUTCSeconds() bool`
 
 HasPointInTimeUTCSeconds returns a boolean if a field has been set.
-
 ### GetSnapshotId
 
 `func (o *DiskBackupSnapshotRestoreJob) GetSnapshotId() string`
@@ -411,7 +397,6 @@ SetSnapshotId sets SnapshotId field to given value.
 `func (o *DiskBackupSnapshotRestoreJob) HasSnapshotId() bool`
 
 HasSnapshotId returns a boolean if a field has been set.
-
 ### GetTargetClusterName
 
 `func (o *DiskBackupSnapshotRestoreJob) GetTargetClusterName() string`
@@ -431,7 +416,6 @@ and a boolean to check if the value has been set.
 
 SetTargetClusterName sets TargetClusterName field to given value.
 
-
 ### GetTargetGroupId
 
 `func (o *DiskBackupSnapshotRestoreJob) GetTargetGroupId() string`
@@ -450,7 +434,6 @@ and a boolean to check if the value has been set.
 `func (o *DiskBackupSnapshotRestoreJob) SetTargetGroupId(v string)`
 
 SetTargetGroupId sets TargetGroupId field to given value.
-
 
 ### GetTimestamp
 
@@ -476,7 +459,6 @@ SetTimestamp sets Timestamp field to given value.
 `func (o *DiskBackupSnapshotRestoreJob) HasTimestamp() bool`
 
 HasTimestamp returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

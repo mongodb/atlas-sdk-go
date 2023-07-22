@@ -70,7 +70,6 @@ SetBackupEnabled sets BackupEnabled field to given value.
 `func (o *AdvancedClusterDescription) HasBackupEnabled() bool`
 
 HasBackupEnabled returns a boolean if a field has been set.
-
 ### GetBiConnector
 
 `func (o *AdvancedClusterDescription) GetBiConnector() BiConnector`
@@ -95,7 +94,6 @@ SetBiConnector sets BiConnector field to given value.
 `func (o *AdvancedClusterDescription) HasBiConnector() bool`
 
 HasBiConnector returns a boolean if a field has been set.
-
 ### GetClusterType
 
 `func (o *AdvancedClusterDescription) GetClusterType() string`
@@ -120,7 +118,6 @@ SetClusterType sets ClusterType field to given value.
 `func (o *AdvancedClusterDescription) HasClusterType() bool`
 
 HasClusterType returns a boolean if a field has been set.
-
 ### GetConnectionStrings
 
 `func (o *AdvancedClusterDescription) GetConnectionStrings() ClusterConnectionStrings`
@@ -145,7 +142,6 @@ SetConnectionStrings sets ConnectionStrings field to given value.
 `func (o *AdvancedClusterDescription) HasConnectionStrings() bool`
 
 HasConnectionStrings returns a boolean if a field has been set.
-
 ### GetCreateDate
 
 `func (o *AdvancedClusterDescription) GetCreateDate() time.Time`
@@ -170,7 +166,6 @@ SetCreateDate sets CreateDate field to given value.
 `func (o *AdvancedClusterDescription) HasCreateDate() bool`
 
 HasCreateDate returns a boolean if a field has been set.
-
 ### GetDiskSizeGB
 
 `func (o *AdvancedClusterDescription) GetDiskSizeGB() float64`
@@ -195,7 +190,6 @@ SetDiskSizeGB sets DiskSizeGB field to given value.
 `func (o *AdvancedClusterDescription) HasDiskSizeGB() bool`
 
 HasDiskSizeGB returns a boolean if a field has been set.
-
 ### GetEncryptionAtRestProvider
 
 `func (o *AdvancedClusterDescription) GetEncryptionAtRestProvider() string`
@@ -220,7 +214,6 @@ SetEncryptionAtRestProvider sets EncryptionAtRestProvider field to given value.
 `func (o *AdvancedClusterDescription) HasEncryptionAtRestProvider() bool`
 
 HasEncryptionAtRestProvider returns a boolean if a field has been set.
-
 ### GetGroupId
 
 `func (o *AdvancedClusterDescription) GetGroupId() string`
@@ -245,7 +238,6 @@ SetGroupId sets GroupId field to given value.
 `func (o *AdvancedClusterDescription) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
-
 ### GetId
 
 `func (o *AdvancedClusterDescription) GetId() string`
@@ -270,7 +262,6 @@ SetId sets Id field to given value.
 `func (o *AdvancedClusterDescription) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetLabels
 
 `func (o *AdvancedClusterDescription) GetLabels() []ComponentLabel`
@@ -295,7 +286,6 @@ SetLabels sets Labels field to given value.
 `func (o *AdvancedClusterDescription) HasLabels() bool`
 
 HasLabels returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *AdvancedClusterDescription) GetLinks() []Link`
@@ -320,7 +310,6 @@ SetLinks sets Links field to given value.
 `func (o *AdvancedClusterDescription) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetMongoDBMajorVersion
 
 `func (o *AdvancedClusterDescription) GetMongoDBMajorVersion() string`
@@ -345,7 +334,6 @@ SetMongoDBMajorVersion sets MongoDBMajorVersion field to given value.
 `func (o *AdvancedClusterDescription) HasMongoDBMajorVersion() bool`
 
 HasMongoDBMajorVersion returns a boolean if a field has been set.
-
 ### GetMongoDBVersion
 
 `func (o *AdvancedClusterDescription) GetMongoDBVersion() string`
@@ -370,7 +358,6 @@ SetMongoDBVersion sets MongoDBVersion field to given value.
 `func (o *AdvancedClusterDescription) HasMongoDBVersion() bool`
 
 HasMongoDBVersion returns a boolean if a field has been set.
-
 ### GetName
 
 `func (o *AdvancedClusterDescription) GetName() string`
@@ -395,7 +382,6 @@ SetName sets Name field to given value.
 `func (o *AdvancedClusterDescription) HasName() bool`
 
 HasName returns a boolean if a field has been set.
-
 ### GetPaused
 
 `func (o *AdvancedClusterDescription) GetPaused() bool`
@@ -420,7 +406,6 @@ SetPaused sets Paused field to given value.
 `func (o *AdvancedClusterDescription) HasPaused() bool`
 
 HasPaused returns a boolean if a field has been set.
-
 ### GetPitEnabled
 
 `func (o *AdvancedClusterDescription) GetPitEnabled() bool`
@@ -445,7 +430,6 @@ SetPitEnabled sets PitEnabled field to given value.
 `func (o *AdvancedClusterDescription) HasPitEnabled() bool`
 
 HasPitEnabled returns a boolean if a field has been set.
-
 ### GetReplicationSpecs
 
 `func (o *AdvancedClusterDescription) GetReplicationSpecs() []ReplicationSpec`
@@ -470,7 +454,6 @@ SetReplicationSpecs sets ReplicationSpecs field to given value.
 `func (o *AdvancedClusterDescription) HasReplicationSpecs() bool`
 
 HasReplicationSpecs returns a boolean if a field has been set.
-
 ### GetRootCertType
 
 `func (o *AdvancedClusterDescription) GetRootCertType() string`
@@ -495,7 +478,6 @@ SetRootCertType sets RootCertType field to given value.
 `func (o *AdvancedClusterDescription) HasRootCertType() bool`
 
 HasRootCertType returns a boolean if a field has been set.
-
 ### GetStateName
 
 `func (o *AdvancedClusterDescription) GetStateName() string`
@@ -520,7 +502,6 @@ SetStateName sets StateName field to given value.
 `func (o *AdvancedClusterDescription) HasStateName() bool`
 
 HasStateName returns a boolean if a field has been set.
-
 ### GetTags
 
 `func (o *AdvancedClusterDescription) GetTags() []ResourceTag`
@@ -545,7 +526,6 @@ SetTags sets Tags field to given value.
 `func (o *AdvancedClusterDescription) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
-
 ### GetTerminationProtectionEnabled
 
 `func (o *AdvancedClusterDescription) GetTerminationProtectionEnabled() bool`
@@ -570,7 +550,6 @@ SetTerminationProtectionEnabled sets TerminationProtectionEnabled field to given
 `func (o *AdvancedClusterDescription) HasTerminationProtectionEnabled() bool`
 
 HasTerminationProtectionEnabled returns a boolean if a field has been set.
-
 ### GetVersionReleaseSystem
 
 `func (o *AdvancedClusterDescription) GetVersionReleaseSystem() string`
@@ -595,7 +574,6 @@ SetVersionReleaseSystem sets VersionReleaseSystem field to given value.
 `func (o *AdvancedClusterDescription) HasVersionReleaseSystem() bool`
 
 HasVersionReleaseSystem returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -58,7 +58,6 @@ SetCreatedAt sets CreatedAt field to given value.
 `func (o *ServerlessBackupSnapshot) HasCreatedAt() bool`
 
 HasCreatedAt returns a boolean if a field has been set.
-
 ### GetExpiresAt
 
 `func (o *ServerlessBackupSnapshot) GetExpiresAt() time.Time`
@@ -83,7 +82,6 @@ SetExpiresAt sets ExpiresAt field to given value.
 `func (o *ServerlessBackupSnapshot) HasExpiresAt() bool`
 
 HasExpiresAt returns a boolean if a field has been set.
-
 ### GetFrequencyType
 
 `func (o *ServerlessBackupSnapshot) GetFrequencyType() string`
@@ -108,7 +106,6 @@ SetFrequencyType sets FrequencyType field to given value.
 `func (o *ServerlessBackupSnapshot) HasFrequencyType() bool`
 
 HasFrequencyType returns a boolean if a field has been set.
-
 ### GetId
 
 `func (o *ServerlessBackupSnapshot) GetId() string`
@@ -133,7 +130,6 @@ SetId sets Id field to given value.
 `func (o *ServerlessBackupSnapshot) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *ServerlessBackupSnapshot) GetLinks() []Link`
@@ -158,7 +154,6 @@ SetLinks sets Links field to given value.
 `func (o *ServerlessBackupSnapshot) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetMongodVersion
 
 `func (o *ServerlessBackupSnapshot) GetMongodVersion() string`
@@ -183,7 +178,6 @@ SetMongodVersion sets MongodVersion field to given value.
 `func (o *ServerlessBackupSnapshot) HasMongodVersion() bool`
 
 HasMongodVersion returns a boolean if a field has been set.
-
 ### GetServerlessInstanceName
 
 `func (o *ServerlessBackupSnapshot) GetServerlessInstanceName() string`
@@ -208,7 +202,6 @@ SetServerlessInstanceName sets ServerlessInstanceName field to given value.
 `func (o *ServerlessBackupSnapshot) HasServerlessInstanceName() bool`
 
 HasServerlessInstanceName returns a boolean if a field has been set.
-
 ### GetSnapshotType
 
 `func (o *ServerlessBackupSnapshot) GetSnapshotType() string`
@@ -233,7 +226,6 @@ SetSnapshotType sets SnapshotType field to given value.
 `func (o *ServerlessBackupSnapshot) HasSnapshotType() bool`
 
 HasSnapshotType returns a boolean if a field has been set.
-
 ### GetStatus
 
 `func (o *ServerlessBackupSnapshot) GetStatus() string`
@@ -258,7 +250,6 @@ SetStatus sets Status field to given value.
 `func (o *ServerlessBackupSnapshot) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
-
 ### GetStorageSizeBytes
 
 `func (o *ServerlessBackupSnapshot) GetStorageSizeBytes() int64`
@@ -283,7 +274,6 @@ SetStorageSizeBytes sets StorageSizeBytes field to given value.
 `func (o *ServerlessBackupSnapshot) HasStorageSizeBytes() bool`
 
 HasStorageSizeBytes returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

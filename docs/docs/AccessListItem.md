@@ -50,7 +50,6 @@ SetCidrBlock sets CidrBlock field to given value.
 `func (o *AccessListItem) HasCidrBlock() bool`
 
 HasCidrBlock returns a boolean if a field has been set.
-
 ### GetIpAddress
 
 `func (o *AccessListItem) GetIpAddress() string`
@@ -69,7 +68,6 @@ and a boolean to check if the value has been set.
 `func (o *AccessListItem) SetIpAddress(v string)`
 
 SetIpAddress sets IpAddress field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
