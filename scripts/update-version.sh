@@ -1,3 +1,4 @@
+#!/bin/bash
 set -ueo pipefail
 
 source ./scripts/extract-version.sh
