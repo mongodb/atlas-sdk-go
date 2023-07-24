@@ -1,19 +1,7 @@
 #!/bin/bash
 set -ueo pipefail
 
-file_path="./openapi/versions.json"
 target_file_path="./internal/core/version.go"
-
-last_element=$(cat $file_path | jq -r '.versions."2.0" | .[-1]')
-
-# Remove hyphens from the last_element
-cleaned_last_element=$(echo "$last_element" | tr -d '-')
-
-# Set the extracted version as an environment variable
-export CURRENT_RESOURCE_VERSION="$cleaned_last_element"
-
-# Display the extracted version
-echo "Current Resource Version: $CURRENT_RESOURCE_VERSION"
 
 source ./scripts/extract-version.sh
 

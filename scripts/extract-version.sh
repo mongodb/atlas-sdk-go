@@ -11,3 +11,17 @@ export SDK_VERSION="$version"
 export SDK_RESOURCE_VERSION="$resource_version"
 
 echo "Extracted version from version.go file: '$SDK_VERSION'. Resource Version: '$SDK_RESOURCE_VERSION'"
+
+versions_file_path="./openapi/versions.json"
+
+last_element=$(cat $versions_file_path | jq -r '.versions."2.0" | .[-1]')
+
+# Remove hyphens from the last_element
+cleaned_last_element=$(echo "$last_element" | tr -d '-')
+
+# Set the extracted version as an environment variable
+export CURRENT_RESOURCE_VERSION="$cleaned_last_element"
+
+echo "Extracted version versions.json: '$CURRENT_RESOURCE_VERSION'."
+
+
