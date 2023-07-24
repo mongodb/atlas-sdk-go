@@ -32,10 +32,10 @@ else
 	echo "Resource Version is not up to date. Changing major version."
 	export SDK_VERSION="v${CURRENT_RESOURCE_VERSION}001.0.0"
 	echo "Modifying $CURRENT_RESOURCE_VERSION Resource Version across the repository."
-	for file in $(find . -type f -name "*" -exec grep -l $CURRENT_RESOURCE_VERSION {} +); do
+	find . -type f -name "*" -not -path '*/\.*' -exec grep -l "$CURRENT_RESOURCE_VERSION" {} + | while read -r file; do
 		echo "Modifying $file"
-    	sed 's/$CURRENT_RESOURCE_VERSION/$SDK_RESOURCE_VERSION}/g' "${file}" > "${file}_tmp"
-		mv "${file}_tmp" "${file}"
+		sed "s/$CURRENT_RESOURCE_VERSION/$SDK_RESOURCE_VERSION/g" "$file" > "${file}_tmp"
+		mv "${file}_tmp" "$file"
 	done
 fi
 
