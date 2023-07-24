@@ -64,13 +64,10 @@ jobs:
             ## Manual Review Procedure
 
             1. Review changes in the OpenAPI file (openapi/atlas-api.yaml)
-            2. Do we see any breaking changes? Renames in methods or models that will affect customers.
-            3. If we see any breaking changes please:
-              - Manually edit version.go file and bump the version to the next major version
-              - Add required Release Notes to the CHANGELOG.md file
-              - Add a comment to the PR with the description of the breaking change
-            3. Merge PR into main branch 
-            4. After merge automated release process will be triggered. 
+            3. If we see any breaking changes unrelated to the new resource versions please manually edit ./internal/core/version.go file and bump the version to the next major ./internal/core/version.go
+            4. Run make update-version to reflect version changes across the repository
+            5. Merge PR into main branch 
+            6. After merge automated release process will be triggered. 
             
           
 
