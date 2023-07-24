@@ -62,3 +62,7 @@ openapi-pipeline:
 gen-docs:
 	$(MAKE) -C tools generate_docs
 	./scripts/toc.sh
+
+.PHONY: new-release
+new-release:
+	./scripts/new-version.sh

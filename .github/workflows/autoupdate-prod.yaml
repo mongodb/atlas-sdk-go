@@ -26,10 +26,15 @@ jobs:
       - name: Run generation
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         working-directory: ./tools
-        run: make clean_and_generate
+        run: |
+          make clean_and_generate
       - name: Run docs generation
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         run: make gen-docs
+      - name: Release updates
+        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        run: |
+          make release-bump
       - uses: peter-evans/create-pull-request@v5
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         env:
@@ -38,6 +43,7 @@ jobs:
           title: "APIBot: SDK update based on recent changes in Atlas API"
           commit-message: "Automated openapi client update"
           delete-branch: true
+          labels: auto_release
           branch: api-bot-update
           body: |
             Automatic update for MongoDB Atlas Go Client based on OpenAPI changes.
@@ -51,17 +57,21 @@ jobs:
 
             ## Important Details
 
-            1. If build is failing please check the logs and identify if issues 
-            2. Do not attempt to manually fix any issues in the PR. 
+            1. If build is failing please check the logs and fix the issues in the OpenAPI file (openapi/atlas-api.yaml)
+            2. Do not attempt to manually fix any issues in the Golang Codebase as all changes are automatically generated. 
             Fixes should be applied to the OpenAPI file (openapi/atlas-api.yaml) or ./tools engine in separate PR.
 
             ## Manual Review Procedure
 
             1. Review changes in the OpenAPI file (openapi/atlas-api.yaml)
-            1.1 Do we see any breaking changes? Renames in methods or models that will affect customers.
-            2. Check for new versions in openapi/versions.yaml file. 
-            2.1 If new version is introduced we going to have new major release of the SDK.
+            2. Do we see any breaking changes? Renames in methods or models that will affect customers.
+            3. If we see any breaking changes please:
+              - Manually edit version.go file and bump the version to the next major version
+              - Add required Release Notes to the CHANGELOG.md file
+              - Add a comment to the PR with the description of the breaking change
             3. Merge PR into main branch 
             4. After merge automated release process will be triggered. 
+            
+          
 
 

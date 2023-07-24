@@ -32,7 +32,8 @@ else
 	export SDK_VERSION="v${CURRENT_RESOURCE_VERSION}001.0.0"
 	echo "Modifying Resource Version across the repository."
 	for file in $(find . -type f -name "*"); do
-    	sed -i 's/$CURRENT_RESOURCE_VERSION/$SDK_RESOURCE_VERSION}/g' "$file" > "$file"
+    	sed 's/$CURRENT_RESOURCE_VERSION/$SDK_RESOURCE_VERSION}/g' "${file}_tmp"
+		mv "${file}_tmp" "${file}"
 	done
 fi
 
