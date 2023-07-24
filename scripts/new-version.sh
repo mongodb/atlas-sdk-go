@@ -22,17 +22,19 @@ if [ "$CURRENT_RESOURCE_VERSION" == "$SDK_RESOURCE_VERSION" ]; then
 	echo "Resource Version is already up to date. Changing minor version."
 	# Extract the minor version from the SDK_VERSION
 	minor_version=$(echo "$SDK_VERSION" | awk -F'.' '{print $2}')
+	major_version=$(echo "$SDK_VERSION" | awk -F'.' '{print $1}')
 	# Increment the minor version
 	new_minor_version=$((minor_version + 1))
 	# Update the SDK_VERSION
-	export SDK_VERSION="v${CURRENT_RESOURCE_VERSION}001.${new_minor_version}.0"
+	export SDK_VERSION="${major_version}.${new_minor_version}.0"
 else	
 	# Update the SDK_VERSION
 	echo "Resource Version is not up to date. Changing major version."
 	export SDK_VERSION="v${CURRENT_RESOURCE_VERSION}001.0.0"
-	echo "Modifying Resource Version across the repository."
-	for file in $(find . -type f -name "*"); do
-    	sed 's/$CURRENT_RESOURCE_VERSION/$SDK_RESOURCE_VERSION}/g' "${file}_tmp"
+	echo "Modifying $CURRENT_RESOURCE_VERSION Resource Version across the repository."
+	for file in $(find . -type f -name "*" -exec grep -l $CURRENT_RESOURCE_VERSION {} +); do
+		echo "Modifying $file"
+    	sed 's/$CURRENT_RESOURCE_VERSION/$SDK_RESOURCE_VERSION}/g' "${file}" > "${file}_tmp"
 		mv "${file}_tmp" "${file}"
 	done
 fi
