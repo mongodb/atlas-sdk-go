@@ -17,6 +17,7 @@ HYPEN_RESOURCE_VERSION=$(cat $versions_file_path | jq -r '.versions."2.0" | .[-1
 NEW_RESOURCE_VERSION=$(echo "$HYPEN_RESOURCE_VERSION" | tr -d '-')
 
 echo "Extracted version from version.go file: '$SDK_VERSION'. Resource Version: '$SDK_RESOURCE_VERSION'"
+echo "Major: $SDK_MAJOR_VERSION' Minor: $SDK_MAJOR_VERSION"
 echo "Extracted version versions.json: '$NEW_RESOURCE_VERSION'."
 
 
