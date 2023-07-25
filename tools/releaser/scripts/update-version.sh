@@ -1,7 +1,8 @@
 #!/bin/bash
 set -ueo pipefail
 
-source ./scripts/extract-version.sh
+script_path=$(dirname "$0")
+source "$script_path/extract-version.sh"
 
 # Display the extracted version
 echo "Current Resource Version: $CURRENT_RESOURCE_VERSION"

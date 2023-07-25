@@ -1,9 +1,10 @@
 #!/bin/bash
 set -ueo pipefail
 
-target_file_path="../../internal/core/version.go"
+target_file_path="../internal/core/version.go"
 
-source ./scripts/extract-version.sh
+script_path=$(dirname "$0")
+source $script_path/extract-version.sh
 
 # Update the version.go file with the new version
 if [ "$CURRENT_RESOURCE_VERSION" == "$SDK_RESOURCE_VERSION" ]; then

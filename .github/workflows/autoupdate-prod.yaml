@@ -33,8 +33,9 @@ jobs:
         run: make gen-docs
       - name: Release updates
         if: steps.verify-changed-files.outputs.files_changed == 'true'
+        working-directory: ./tools
         run: |
-          make release-bump
+          make new-release  
       - uses: peter-evans/create-pull-request@v5
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         env:
