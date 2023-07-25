@@ -53,7 +53,6 @@ SetFederatedDomains sets FederatedDomains field to given value.
 `func (o *OrgFederationSettings) HasFederatedDomains() bool`
 
 HasFederatedDomains returns a boolean if a field has been set.
-
 ### GetHasRoleMappings
 
 `func (o *OrgFederationSettings) GetHasRoleMappings() bool`
@@ -78,7 +77,6 @@ SetHasRoleMappings sets HasRoleMappings field to given value.
 `func (o *OrgFederationSettings) HasHasRoleMappings() bool`
 
 HasHasRoleMappings returns a boolean if a field has been set.
-
 ### GetId
 
 `func (o *OrgFederationSettings) GetId() string`
@@ -103,7 +101,6 @@ SetId sets Id field to given value.
 `func (o *OrgFederationSettings) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetIdentityProviderId
 
 `func (o *OrgFederationSettings) GetIdentityProviderId() string`
@@ -128,7 +125,6 @@ SetIdentityProviderId sets IdentityProviderId field to given value.
 `func (o *OrgFederationSettings) HasIdentityProviderId() bool`
 
 HasIdentityProviderId returns a boolean if a field has been set.
-
 ### GetIdentityProviderStatus
 
 `func (o *OrgFederationSettings) GetIdentityProviderStatus() string`
@@ -153,7 +149,6 @@ SetIdentityProviderStatus sets IdentityProviderStatus field to given value.
 `func (o *OrgFederationSettings) HasIdentityProviderStatus() bool`
 
 HasIdentityProviderStatus returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

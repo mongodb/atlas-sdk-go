@@ -51,7 +51,6 @@ SetApiAccessListRequired sets ApiAccessListRequired field to given value.
 `func (o *OrganizationSettings) HasApiAccessListRequired() bool`
 
 HasApiAccessListRequired returns a boolean if a field has been set.
-
 ### GetMultiFactorAuthRequired
 
 `func (o *OrganizationSettings) GetMultiFactorAuthRequired() bool`
@@ -76,7 +75,6 @@ SetMultiFactorAuthRequired sets MultiFactorAuthRequired field to given value.
 `func (o *OrganizationSettings) HasMultiFactorAuthRequired() bool`
 
 HasMultiFactorAuthRequired returns a boolean if a field has been set.
-
 ### GetRestrictEmployeeAccess
 
 `func (o *OrganizationSettings) GetRestrictEmployeeAccess() bool`
@@ -101,7 +99,6 @@ SetRestrictEmployeeAccess sets RestrictEmployeeAccess field to given value.
 `func (o *OrganizationSettings) HasRestrictEmployeeAccess() bool`
 
 HasRestrictEmployeeAccess returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

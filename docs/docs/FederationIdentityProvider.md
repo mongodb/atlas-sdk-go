@@ -61,7 +61,6 @@ SetAcsUrl sets AcsUrl field to given value.
 `func (o *FederationIdentityProvider) HasAcsUrl() bool`
 
 HasAcsUrl returns a boolean if a field has been set.
-
 ### GetAssociatedDomains
 
 `func (o *FederationIdentityProvider) GetAssociatedDomains() []string`
@@ -86,7 +85,6 @@ SetAssociatedDomains sets AssociatedDomains field to given value.
 `func (o *FederationIdentityProvider) HasAssociatedDomains() bool`
 
 HasAssociatedDomains returns a boolean if a field has been set.
-
 ### GetAssociatedOrgs
 
 `func (o *FederationIdentityProvider) GetAssociatedOrgs() []ConnectedOrgConfig`
@@ -111,7 +109,6 @@ SetAssociatedOrgs sets AssociatedOrgs field to given value.
 `func (o *FederationIdentityProvider) HasAssociatedOrgs() bool`
 
 HasAssociatedOrgs returns a boolean if a field has been set.
-
 ### GetAudienceUri
 
 `func (o *FederationIdentityProvider) GetAudienceUri() string`
@@ -136,7 +133,6 @@ SetAudienceUri sets AudienceUri field to given value.
 `func (o *FederationIdentityProvider) HasAudienceUri() bool`
 
 HasAudienceUri returns a boolean if a field has been set.
-
 ### GetDisplayName
 
 `func (o *FederationIdentityProvider) GetDisplayName() string`
@@ -161,7 +157,6 @@ SetDisplayName sets DisplayName field to given value.
 `func (o *FederationIdentityProvider) HasDisplayName() bool`
 
 HasDisplayName returns a boolean if a field has been set.
-
 ### GetIssuerUri
 
 `func (o *FederationIdentityProvider) GetIssuerUri() string`
@@ -186,7 +181,6 @@ SetIssuerUri sets IssuerUri field to given value.
 `func (o *FederationIdentityProvider) HasIssuerUri() bool`
 
 HasIssuerUri returns a boolean if a field has been set.
-
 ### GetOktaIdpId
 
 `func (o *FederationIdentityProvider) GetOktaIdpId() string`
@@ -205,7 +199,6 @@ and a boolean to check if the value has been set.
 `func (o *FederationIdentityProvider) SetOktaIdpId(v string)`
 
 SetOktaIdpId sets OktaIdpId field to given value.
-
 
 ### GetPemFileInfo
 
@@ -231,7 +224,6 @@ SetPemFileInfo sets PemFileInfo field to given value.
 `func (o *FederationIdentityProvider) HasPemFileInfo() bool`
 
 HasPemFileInfo returns a boolean if a field has been set.
-
 ### GetRequestBinding
 
 `func (o *FederationIdentityProvider) GetRequestBinding() string`
@@ -256,7 +248,6 @@ SetRequestBinding sets RequestBinding field to given value.
 `func (o *FederationIdentityProvider) HasRequestBinding() bool`
 
 HasRequestBinding returns a boolean if a field has been set.
-
 ### GetResponseSignatureAlgorithm
 
 `func (o *FederationIdentityProvider) GetResponseSignatureAlgorithm() string`
@@ -281,7 +272,6 @@ SetResponseSignatureAlgorithm sets ResponseSignatureAlgorithm field to given val
 `func (o *FederationIdentityProvider) HasResponseSignatureAlgorithm() bool`
 
 HasResponseSignatureAlgorithm returns a boolean if a field has been set.
-
 ### GetSsoDebugEnabled
 
 `func (o *FederationIdentityProvider) GetSsoDebugEnabled() bool`
@@ -306,7 +296,6 @@ SetSsoDebugEnabled sets SsoDebugEnabled field to given value.
 `func (o *FederationIdentityProvider) HasSsoDebugEnabled() bool`
 
 HasSsoDebugEnabled returns a boolean if a field has been set.
-
 ### GetSsoUrl
 
 `func (o *FederationIdentityProvider) GetSsoUrl() string`
@@ -331,7 +320,6 @@ SetSsoUrl sets SsoUrl field to given value.
 `func (o *FederationIdentityProvider) HasSsoUrl() bool`
 
 HasSsoUrl returns a boolean if a field has been set.
-
 ### GetStatus
 
 `func (o *FederationIdentityProvider) GetStatus() string`
@@ -356,7 +344,6 @@ SetStatus sets Status field to given value.
 `func (o *FederationIdentityProvider) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -50,7 +50,6 @@ SetDatabaseName sets DatabaseName field to given value.
 `func (o *MesurementsDatabase) HasDatabaseName() bool`
 
 HasDatabaseName returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *MesurementsDatabase) GetLinks() []Link`
@@ -75,7 +74,6 @@ SetLinks sets Links field to given value.
 `func (o *MesurementsDatabase) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -50,7 +50,6 @@ SetNamespace sets Namespace field to given value.
 `func (o *NamespaceObj) HasNamespace() bool`
 
 HasNamespace returns a boolean if a field has been set.
-
 ### GetType
 
 `func (o *NamespaceObj) GetType() string`
@@ -75,7 +74,6 @@ SetType sets Type field to given value.
 `func (o *NamespaceObj) HasType() bool`
 
 HasType returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

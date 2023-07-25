@@ -50,7 +50,6 @@ SetInstanceSizes sets InstanceSizes field to given value.
 `func (o *CloudProviderRegions) HasInstanceSizes() bool`
 
 HasInstanceSizes returns a boolean if a field has been set.
-
 ### GetProvider
 
 `func (o *CloudProviderRegions) GetProvider() string`
@@ -75,7 +74,6 @@ SetProvider sets Provider field to given value.
 `func (o *CloudProviderRegions) HasProvider() bool`
 
 HasProvider returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

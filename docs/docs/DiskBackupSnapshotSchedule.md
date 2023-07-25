@@ -62,7 +62,6 @@ SetAutoExportEnabled sets AutoExportEnabled field to given value.
 `func (o *DiskBackupSnapshotSchedule) HasAutoExportEnabled() bool`
 
 HasAutoExportEnabled returns a boolean if a field has been set.
-
 ### GetClusterId
 
 `func (o *DiskBackupSnapshotSchedule) GetClusterId() string`
@@ -87,7 +86,6 @@ SetClusterId sets ClusterId field to given value.
 `func (o *DiskBackupSnapshotSchedule) HasClusterId() bool`
 
 HasClusterId returns a boolean if a field has been set.
-
 ### GetClusterName
 
 `func (o *DiskBackupSnapshotSchedule) GetClusterName() string`
@@ -112,7 +110,6 @@ SetClusterName sets ClusterName field to given value.
 `func (o *DiskBackupSnapshotSchedule) HasClusterName() bool`
 
 HasClusterName returns a boolean if a field has been set.
-
 ### GetCopySettings
 
 `func (o *DiskBackupSnapshotSchedule) GetCopySettings() []DiskBackupCopySetting`
@@ -137,7 +134,6 @@ SetCopySettings sets CopySettings field to given value.
 `func (o *DiskBackupSnapshotSchedule) HasCopySettings() bool`
 
 HasCopySettings returns a boolean if a field has been set.
-
 ### GetDeleteCopiedBackups
 
 `func (o *DiskBackupSnapshotSchedule) GetDeleteCopiedBackups() []DeleteCopiedBackups`
@@ -162,7 +158,6 @@ SetDeleteCopiedBackups sets DeleteCopiedBackups field to given value.
 `func (o *DiskBackupSnapshotSchedule) HasDeleteCopiedBackups() bool`
 
 HasDeleteCopiedBackups returns a boolean if a field has been set.
-
 ### GetExport
 
 `func (o *DiskBackupSnapshotSchedule) GetExport() AutoExportPolicy`
@@ -187,7 +182,6 @@ SetExport sets Export field to given value.
 `func (o *DiskBackupSnapshotSchedule) HasExport() bool`
 
 HasExport returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *DiskBackupSnapshotSchedule) GetLinks() []Link`
@@ -212,7 +206,6 @@ SetLinks sets Links field to given value.
 `func (o *DiskBackupSnapshotSchedule) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetNextSnapshot
 
 `func (o *DiskBackupSnapshotSchedule) GetNextSnapshot() time.Time`
@@ -237,7 +230,6 @@ SetNextSnapshot sets NextSnapshot field to given value.
 `func (o *DiskBackupSnapshotSchedule) HasNextSnapshot() bool`
 
 HasNextSnapshot returns a boolean if a field has been set.
-
 ### GetPolicies
 
 `func (o *DiskBackupSnapshotSchedule) GetPolicies() []AdvancedDiskBackupSnapshotSchedulePolicy`
@@ -262,7 +254,6 @@ SetPolicies sets Policies field to given value.
 `func (o *DiskBackupSnapshotSchedule) HasPolicies() bool`
 
 HasPolicies returns a boolean if a field has been set.
-
 ### GetReferenceHourOfDay
 
 `func (o *DiskBackupSnapshotSchedule) GetReferenceHourOfDay() int`
@@ -287,7 +278,6 @@ SetReferenceHourOfDay sets ReferenceHourOfDay field to given value.
 `func (o *DiskBackupSnapshotSchedule) HasReferenceHourOfDay() bool`
 
 HasReferenceHourOfDay returns a boolean if a field has been set.
-
 ### GetReferenceMinuteOfHour
 
 `func (o *DiskBackupSnapshotSchedule) GetReferenceMinuteOfHour() int`
@@ -312,7 +302,6 @@ SetReferenceMinuteOfHour sets ReferenceMinuteOfHour field to given value.
 `func (o *DiskBackupSnapshotSchedule) HasReferenceMinuteOfHour() bool`
 
 HasReferenceMinuteOfHour returns a boolean if a field has been set.
-
 ### GetRestoreWindowDays
 
 `func (o *DiskBackupSnapshotSchedule) GetRestoreWindowDays() int`
@@ -337,7 +326,6 @@ SetRestoreWindowDays sets RestoreWindowDays field to given value.
 `func (o *DiskBackupSnapshotSchedule) HasRestoreWindowDays() bool`
 
 HasRestoreWindowDays returns a boolean if a field has been set.
-
 ### GetUpdateSnapshots
 
 `func (o *DiskBackupSnapshotSchedule) GetUpdateSnapshots() bool`
@@ -362,7 +350,6 @@ SetUpdateSnapshots sets UpdateSnapshots field to given value.
 `func (o *DiskBackupSnapshotSchedule) HasUpdateSnapshots() bool`
 
 HasUpdateSnapshots returns a boolean if a field has been set.
-
 ### GetUseOrgAndGroupNamesInExportPrefix
 
 `func (o *DiskBackupSnapshotSchedule) GetUseOrgAndGroupNamesInExportPrefix() bool`
@@ -387,7 +374,6 @@ SetUseOrgAndGroupNamesInExportPrefix sets UseOrgAndGroupNamesInExportPrefix fiel
 `func (o *DiskBackupSnapshotSchedule) HasUseOrgAndGroupNamesInExportPrefix() bool`
 
 HasUseOrgAndGroupNamesInExportPrefix returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

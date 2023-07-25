@@ -53,7 +53,6 @@ SetCloudProvider sets CloudProvider field to given value.
 `func (o *DiskBackupCopySetting) HasCloudProvider() bool`
 
 HasCloudProvider returns a boolean if a field has been set.
-
 ### GetFrequencies
 
 `func (o *DiskBackupCopySetting) GetFrequencies() []string`
@@ -78,7 +77,6 @@ SetFrequencies sets Frequencies field to given value.
 `func (o *DiskBackupCopySetting) HasFrequencies() bool`
 
 HasFrequencies returns a boolean if a field has been set.
-
 ### GetRegionName
 
 `func (o *DiskBackupCopySetting) GetRegionName() string`
@@ -103,7 +101,6 @@ SetRegionName sets RegionName field to given value.
 `func (o *DiskBackupCopySetting) HasRegionName() bool`
 
 HasRegionName returns a boolean if a field has been set.
-
 ### GetReplicationSpecId
 
 `func (o *DiskBackupCopySetting) GetReplicationSpecId() string`
@@ -128,7 +125,6 @@ SetReplicationSpecId sets ReplicationSpecId field to given value.
 `func (o *DiskBackupCopySetting) HasReplicationSpecId() bool`
 
 HasReplicationSpecId returns a boolean if a field has been set.
-
 ### GetShouldCopyOplogs
 
 `func (o *DiskBackupCopySetting) GetShouldCopyOplogs() bool`
@@ -153,7 +149,6 @@ SetShouldCopyOplogs sets ShouldCopyOplogs field to given value.
 `func (o *DiskBackupCopySetting) HasShouldCopyOplogs() bool`
 
 HasShouldCopyOplogs returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

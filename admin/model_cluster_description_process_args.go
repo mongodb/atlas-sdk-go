@@ -28,6 +28,8 @@ type ClusterDescriptionProcessArgs struct {
 	SampleRefreshIntervalBIConnector *int `json:"sampleRefreshIntervalBIConnector,omitempty"`
 	// Number of documents per database to sample when gathering schema information.
 	SampleSizeBIConnector *int `json:"sampleSizeBIConnector,omitempty"`
+	// Lifetime, in seconds, of multi-document transactions. Atlas considers the transactions that exceed this limit as expired and so aborts them through a periodic cleanup process.
+	TransactionLifetimeLimitSeconds *int64 `json:"transactionLifetimeLimitSeconds,omitempty"`
 }
 
 // NewClusterDescriptionProcessArgs instantiates a new ClusterDescriptionProcessArgs object
@@ -50,6 +52,8 @@ func NewClusterDescriptionProcessArgs() *ClusterDescriptionProcessArgs {
 	this.SampleRefreshIntervalBIConnector = &sampleRefreshIntervalBIConnector
 	var sampleSizeBIConnector int = 1000
 	this.SampleSizeBIConnector = &sampleSizeBIConnector
+	var transactionLifetimeLimitSeconds int64 = 60
+	this.TransactionLifetimeLimitSeconds = &transactionLifetimeLimitSeconds
 	return &this
 }
 
@@ -72,6 +76,8 @@ func NewClusterDescriptionProcessArgsWithDefaults() *ClusterDescriptionProcessAr
 	this.SampleRefreshIntervalBIConnector = &sampleRefreshIntervalBIConnector
 	var sampleSizeBIConnector int = 1000
 	this.SampleSizeBIConnector = &sampleSizeBIConnector
+	var transactionLifetimeLimitSeconds int64 = 60
+	this.TransactionLifetimeLimitSeconds = &transactionLifetimeLimitSeconds
 	return &this
 }
 
@@ -405,6 +411,39 @@ func (o *ClusterDescriptionProcessArgs) SetSampleSizeBIConnector(v int) {
 	o.SampleSizeBIConnector = &v
 }
 
+// GetTransactionLifetimeLimitSeconds returns the TransactionLifetimeLimitSeconds field value if set, zero value otherwise
+func (o *ClusterDescriptionProcessArgs) GetTransactionLifetimeLimitSeconds() int64 {
+	if o == nil || IsNil(o.TransactionLifetimeLimitSeconds) {
+		var ret int64
+		return ret
+	}
+	return *o.TransactionLifetimeLimitSeconds
+}
+
+// GetTransactionLifetimeLimitSecondsOk returns a tuple with the TransactionLifetimeLimitSeconds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterDescriptionProcessArgs) GetTransactionLifetimeLimitSecondsOk() (*int64, bool) {
+	if o == nil || IsNil(o.TransactionLifetimeLimitSeconds) {
+		return nil, false
+	}
+
+	return o.TransactionLifetimeLimitSeconds, true
+}
+
+// HasTransactionLifetimeLimitSeconds returns a boolean if a field has been set.
+func (o *ClusterDescriptionProcessArgs) HasTransactionLifetimeLimitSeconds() bool {
+	if o != nil && !IsNil(o.TransactionLifetimeLimitSeconds) {
+		return true
+	}
+
+	return false
+}
+
+// SetTransactionLifetimeLimitSeconds gets a reference to the given int64 and assigns it to the TransactionLifetimeLimitSeconds field.
+func (o *ClusterDescriptionProcessArgs) SetTransactionLifetimeLimitSeconds(v int64) {
+	o.TransactionLifetimeLimitSeconds = &v
+}
+
 func (o ClusterDescriptionProcessArgs) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -443,6 +482,9 @@ func (o ClusterDescriptionProcessArgs) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SampleSizeBIConnector) {
 		toSerialize["sampleSizeBIConnector"] = o.SampleSizeBIConnector
+	}
+	if !IsNil(o.TransactionLifetimeLimitSeconds) {
+		toSerialize["transactionLifetimeLimitSeconds"] = o.TransactionLifetimeLimitSeconds
 	}
 	return toSerialize, nil
 }

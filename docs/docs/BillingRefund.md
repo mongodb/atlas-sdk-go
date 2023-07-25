@@ -52,7 +52,6 @@ SetAmountCents sets AmountCents field to given value.
 `func (o *BillingRefund) HasAmountCents() bool`
 
 HasAmountCents returns a boolean if a field has been set.
-
 ### GetCreated
 
 `func (o *BillingRefund) GetCreated() time.Time`
@@ -77,7 +76,6 @@ SetCreated sets Created field to given value.
 `func (o *BillingRefund) HasCreated() bool`
 
 HasCreated returns a boolean if a field has been set.
-
 ### GetPaymentId
 
 `func (o *BillingRefund) GetPaymentId() string`
@@ -102,7 +100,6 @@ SetPaymentId sets PaymentId field to given value.
 `func (o *BillingRefund) HasPaymentId() bool`
 
 HasPaymentId returns a boolean if a field has been set.
-
 ### GetReason
 
 `func (o *BillingRefund) GetReason() string`
@@ -127,7 +124,6 @@ SetReason sets Reason field to given value.
 `func (o *BillingRefund) HasReason() bool`
 
 HasReason returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

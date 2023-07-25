@@ -51,7 +51,6 @@ SetServerlessBackupOptions sets ServerlessBackupOptions field to given value.
 `func (o *ServerlessInstanceDescriptionUpdate) HasServerlessBackupOptions() bool`
 
 HasServerlessBackupOptions returns a boolean if a field has been set.
-
 ### GetTags
 
 `func (o *ServerlessInstanceDescriptionUpdate) GetTags() []ResourceTag`
@@ -76,7 +75,6 @@ SetTags sets Tags field to given value.
 `func (o *ServerlessInstanceDescriptionUpdate) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
-
 ### GetTerminationProtectionEnabled
 
 `func (o *ServerlessInstanceDescriptionUpdate) GetTerminationProtectionEnabled() bool`
@@ -101,7 +99,6 @@ SetTerminationProtectionEnabled sets TerminationProtectionEnabled field to given
 `func (o *ServerlessInstanceDescriptionUpdate) HasTerminationProtectionEnabled() bool`
 
 HasTerminationProtectionEnabled returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

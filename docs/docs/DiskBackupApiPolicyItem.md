@@ -48,7 +48,6 @@ and a boolean to check if the value has been set.
 
 SetFrequencyInterval sets FrequencyInterval field to given value.
 
-
 ### GetFrequencyType
 
 `func (o *DiskBackupApiPolicyItem) GetFrequencyType() string`
@@ -67,7 +66,6 @@ and a boolean to check if the value has been set.
 `func (o *DiskBackupApiPolicyItem) SetFrequencyType(v string)`
 
 SetFrequencyType sets FrequencyType field to given value.
-
 
 ### GetId
 
@@ -93,7 +91,6 @@ SetId sets Id field to given value.
 `func (o *DiskBackupApiPolicyItem) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetRetentionUnit
 
 `func (o *DiskBackupApiPolicyItem) GetRetentionUnit() string`
@@ -113,7 +110,6 @@ and a boolean to check if the value has been set.
 
 SetRetentionUnit sets RetentionUnit field to given value.
 
-
 ### GetRetentionValue
 
 `func (o *DiskBackupApiPolicyItem) GetRetentionValue() int`
@@ -132,7 +128,6 @@ and a boolean to check if the value has been set.
 `func (o *DiskBackupApiPolicyItem) SetRetentionValue(v int)`
 
 SetRetentionValue sets RetentionValue field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

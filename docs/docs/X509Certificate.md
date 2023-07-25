@@ -51,7 +51,6 @@ SetContent sets Content field to given value.
 `func (o *X509Certificate) HasContent() bool`
 
 HasContent returns a boolean if a field has been set.
-
 ### GetNotAfter
 
 `func (o *X509Certificate) GetNotAfter() time.Time`
@@ -76,7 +75,6 @@ SetNotAfter sets NotAfter field to given value.
 `func (o *X509Certificate) HasNotAfter() bool`
 
 HasNotAfter returns a boolean if a field has been set.
-
 ### GetNotBefore
 
 `func (o *X509Certificate) GetNotBefore() time.Time`
@@ -101,7 +99,6 @@ SetNotBefore sets NotBefore field to given value.
 `func (o *X509Certificate) HasNotBefore() bool`
 
 HasNotBefore returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -62,7 +62,6 @@ and a boolean to check if the value has been set.
 
 SetContainerId sets ContainerId field to given value.
 
-
 ### GetId
 
 `func (o *BaseNetworkPeeringConnectionSettings) GetId() string`
@@ -87,7 +86,6 @@ SetId sets Id field to given value.
 `func (o *BaseNetworkPeeringConnectionSettings) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetProviderName
 
 `func (o *BaseNetworkPeeringConnectionSettings) GetProviderName() string`
@@ -112,7 +110,6 @@ SetProviderName sets ProviderName field to given value.
 `func (o *BaseNetworkPeeringConnectionSettings) HasProviderName() bool`
 
 HasProviderName returns a boolean if a field has been set.
-
 ### GetAccepterRegionName
 
 `func (o *BaseNetworkPeeringConnectionSettings) GetAccepterRegionName() string`
@@ -137,7 +134,6 @@ SetAccepterRegionName sets AccepterRegionName field to given value.
 `func (o *BaseNetworkPeeringConnectionSettings) HasAccepterRegionName() bool`
 
 HasAccepterRegionName returns a boolean if a field has been set.
-
 ### GetAwsAccountId
 
 `func (o *BaseNetworkPeeringConnectionSettings) GetAwsAccountId() string`
@@ -162,7 +158,6 @@ SetAwsAccountId sets AwsAccountId field to given value.
 `func (o *BaseNetworkPeeringConnectionSettings) HasAwsAccountId() bool`
 
 HasAwsAccountId returns a boolean if a field has been set.
-
 ### GetConnectionId
 
 `func (o *BaseNetworkPeeringConnectionSettings) GetConnectionId() string`
@@ -187,7 +182,6 @@ SetConnectionId sets ConnectionId field to given value.
 `func (o *BaseNetworkPeeringConnectionSettings) HasConnectionId() bool`
 
 HasConnectionId returns a boolean if a field has been set.
-
 ### GetErrorStateName
 
 `func (o *BaseNetworkPeeringConnectionSettings) GetErrorStateName() string`
@@ -212,7 +206,6 @@ SetErrorStateName sets ErrorStateName field to given value.
 `func (o *BaseNetworkPeeringConnectionSettings) HasErrorStateName() bool`
 
 HasErrorStateName returns a boolean if a field has been set.
-
 ### GetRouteTableCidrBlock
 
 `func (o *BaseNetworkPeeringConnectionSettings) GetRouteTableCidrBlock() string`
@@ -237,7 +230,6 @@ SetRouteTableCidrBlock sets RouteTableCidrBlock field to given value.
 `func (o *BaseNetworkPeeringConnectionSettings) HasRouteTableCidrBlock() bool`
 
 HasRouteTableCidrBlock returns a boolean if a field has been set.
-
 ### GetStatusName
 
 `func (o *BaseNetworkPeeringConnectionSettings) GetStatusName() string`
@@ -262,7 +254,6 @@ SetStatusName sets StatusName field to given value.
 `func (o *BaseNetworkPeeringConnectionSettings) HasStatusName() bool`
 
 HasStatusName returns a boolean if a field has been set.
-
 ### GetVpcId
 
 `func (o *BaseNetworkPeeringConnectionSettings) GetVpcId() string`
@@ -287,7 +278,6 @@ SetVpcId sets VpcId field to given value.
 `func (o *BaseNetworkPeeringConnectionSettings) HasVpcId() bool`
 
 HasVpcId returns a boolean if a field has been set.
-
 ### GetAzureDirectoryId
 
 `func (o *BaseNetworkPeeringConnectionSettings) GetAzureDirectoryId() string`
@@ -312,7 +302,6 @@ SetAzureDirectoryId sets AzureDirectoryId field to given value.
 `func (o *BaseNetworkPeeringConnectionSettings) HasAzureDirectoryId() bool`
 
 HasAzureDirectoryId returns a boolean if a field has been set.
-
 ### GetAzureSubscriptionId
 
 `func (o *BaseNetworkPeeringConnectionSettings) GetAzureSubscriptionId() string`
@@ -337,7 +326,6 @@ SetAzureSubscriptionId sets AzureSubscriptionId field to given value.
 `func (o *BaseNetworkPeeringConnectionSettings) HasAzureSubscriptionId() bool`
 
 HasAzureSubscriptionId returns a boolean if a field has been set.
-
 ### GetErrorState
 
 `func (o *BaseNetworkPeeringConnectionSettings) GetErrorState() string`
@@ -362,7 +350,6 @@ SetErrorState sets ErrorState field to given value.
 `func (o *BaseNetworkPeeringConnectionSettings) HasErrorState() bool`
 
 HasErrorState returns a boolean if a field has been set.
-
 ### GetResourceGroupName
 
 `func (o *BaseNetworkPeeringConnectionSettings) GetResourceGroupName() string`
@@ -387,7 +374,6 @@ SetResourceGroupName sets ResourceGroupName field to given value.
 `func (o *BaseNetworkPeeringConnectionSettings) HasResourceGroupName() bool`
 
 HasResourceGroupName returns a boolean if a field has been set.
-
 ### GetStatus
 
 `func (o *BaseNetworkPeeringConnectionSettings) GetStatus() string`
@@ -412,7 +398,6 @@ SetStatus sets Status field to given value.
 `func (o *BaseNetworkPeeringConnectionSettings) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
-
 ### GetVnetName
 
 `func (o *BaseNetworkPeeringConnectionSettings) GetVnetName() string`
@@ -437,7 +422,6 @@ SetVnetName sets VnetName field to given value.
 `func (o *BaseNetworkPeeringConnectionSettings) HasVnetName() bool`
 
 HasVnetName returns a boolean if a field has been set.
-
 ### GetErrorMessage
 
 `func (o *BaseNetworkPeeringConnectionSettings) GetErrorMessage() string`
@@ -462,7 +446,6 @@ SetErrorMessage sets ErrorMessage field to given value.
 `func (o *BaseNetworkPeeringConnectionSettings) HasErrorMessage() bool`
 
 HasErrorMessage returns a boolean if a field has been set.
-
 ### GetGcpProjectId
 
 `func (o *BaseNetworkPeeringConnectionSettings) GetGcpProjectId() string`
@@ -487,7 +470,6 @@ SetGcpProjectId sets GcpProjectId field to given value.
 `func (o *BaseNetworkPeeringConnectionSettings) HasGcpProjectId() bool`
 
 HasGcpProjectId returns a boolean if a field has been set.
-
 ### GetNetworkName
 
 `func (o *BaseNetworkPeeringConnectionSettings) GetNetworkName() string`
@@ -512,7 +494,6 @@ SetNetworkName sets NetworkName field to given value.
 `func (o *BaseNetworkPeeringConnectionSettings) HasNetworkName() bool`
 
 HasNetworkName returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

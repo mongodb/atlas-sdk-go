@@ -59,7 +59,6 @@ SetAlertCount sets AlertCount field to given value.
 `func (o *CloudCluster) HasAlertCount() bool`
 
 HasAlertCount returns a boolean if a field has been set.
-
 ### GetAuthEnabled
 
 `func (o *CloudCluster) GetAuthEnabled() bool`
@@ -84,7 +83,6 @@ SetAuthEnabled sets AuthEnabled field to given value.
 `func (o *CloudCluster) HasAuthEnabled() bool`
 
 HasAuthEnabled returns a boolean if a field has been set.
-
 ### GetAvailability
 
 `func (o *CloudCluster) GetAvailability() string`
@@ -109,7 +107,6 @@ SetAvailability sets Availability field to given value.
 `func (o *CloudCluster) HasAvailability() bool`
 
 HasAvailability returns a boolean if a field has been set.
-
 ### GetBackupEnabled
 
 `func (o *CloudCluster) GetBackupEnabled() bool`
@@ -134,7 +131,6 @@ SetBackupEnabled sets BackupEnabled field to given value.
 `func (o *CloudCluster) HasBackupEnabled() bool`
 
 HasBackupEnabled returns a boolean if a field has been set.
-
 ### GetClusterId
 
 `func (o *CloudCluster) GetClusterId() string`
@@ -159,7 +155,6 @@ SetClusterId sets ClusterId field to given value.
 `func (o *CloudCluster) HasClusterId() bool`
 
 HasClusterId returns a boolean if a field has been set.
-
 ### GetDataSizeBytes
 
 `func (o *CloudCluster) GetDataSizeBytes() int64`
@@ -184,7 +179,6 @@ SetDataSizeBytes sets DataSizeBytes field to given value.
 `func (o *CloudCluster) HasDataSizeBytes() bool`
 
 HasDataSizeBytes returns a boolean if a field has been set.
-
 ### GetName
 
 `func (o *CloudCluster) GetName() string`
@@ -209,7 +203,6 @@ SetName sets Name field to given value.
 `func (o *CloudCluster) HasName() bool`
 
 HasName returns a boolean if a field has been set.
-
 ### GetNodeCount
 
 `func (o *CloudCluster) GetNodeCount() int`
@@ -234,7 +227,6 @@ SetNodeCount sets NodeCount field to given value.
 `func (o *CloudCluster) HasNodeCount() bool`
 
 HasNodeCount returns a boolean if a field has been set.
-
 ### GetSslEnabled
 
 `func (o *CloudCluster) GetSslEnabled() bool`
@@ -259,7 +251,6 @@ SetSslEnabled sets SslEnabled field to given value.
 `func (o *CloudCluster) HasSslEnabled() bool`
 
 HasSslEnabled returns a boolean if a field has been set.
-
 ### GetType
 
 `func (o *CloudCluster) GetType() string`
@@ -284,7 +275,6 @@ SetType sets Type field to given value.
 `func (o *CloudCluster) HasType() bool`
 
 HasType returns a boolean if a field has been set.
-
 ### GetVersions
 
 `func (o *CloudCluster) GetVersions() []string`
@@ -309,7 +299,6 @@ SetVersions sets Versions field to given value.
 `func (o *CloudCluster) HasVersions() bool`
 
 HasVersions returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

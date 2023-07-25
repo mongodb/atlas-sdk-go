@@ -51,7 +51,6 @@ SetCollectionName sets CollectionName field to given value.
 `func (o *DatabaseUserRole) HasCollectionName() bool`
 
 HasCollectionName returns a boolean if a field has been set.
-
 ### GetDatabaseName
 
 `func (o *DatabaseUserRole) GetDatabaseName() string`
@@ -71,7 +70,6 @@ and a boolean to check if the value has been set.
 
 SetDatabaseName sets DatabaseName field to given value.
 
-
 ### GetRoleName
 
 `func (o *DatabaseUserRole) GetRoleName() string`
@@ -90,7 +88,6 @@ and a boolean to check if the value has been set.
 `func (o *DatabaseUserRole) SetRoleName(v string)`
 
 SetRoleName sets RoleName field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

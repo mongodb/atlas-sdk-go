@@ -53,7 +53,6 @@ SetCollation sets Collation field to given value.
 `func (o *DatabaseRollingIndexRequest) HasCollation() bool`
 
 HasCollation returns a boolean if a field has been set.
-
 ### GetCollection
 
 `func (o *DatabaseRollingIndexRequest) GetCollection() string`
@@ -73,7 +72,6 @@ and a boolean to check if the value has been set.
 
 SetCollection sets Collection field to given value.
 
-
 ### GetDb
 
 `func (o *DatabaseRollingIndexRequest) GetDb() string`
@@ -92,7 +90,6 @@ and a boolean to check if the value has been set.
 `func (o *DatabaseRollingIndexRequest) SetDb(v string)`
 
 SetDb sets Db field to given value.
-
 
 ### GetKeys
 
@@ -118,7 +115,6 @@ SetKeys sets Keys field to given value.
 `func (o *DatabaseRollingIndexRequest) HasKeys() bool`
 
 HasKeys returns a boolean if a field has been set.
-
 ### GetOptions
 
 `func (o *DatabaseRollingIndexRequest) GetOptions() IndexOptions`
@@ -143,7 +139,6 @@ SetOptions sets Options field to given value.
 `func (o *DatabaseRollingIndexRequest) HasOptions() bool`
 
 HasOptions returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

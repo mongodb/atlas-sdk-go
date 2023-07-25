@@ -58,7 +58,6 @@ SetAllowInsecure sets AllowInsecure field to given value.
 `func (o *DataLakeDatabaseDataSourceSettings) HasAllowInsecure() bool`
 
 HasAllowInsecure returns a boolean if a field has been set.
-
 ### GetCollection
 
 `func (o *DataLakeDatabaseDataSourceSettings) GetCollection() string`
@@ -83,7 +82,6 @@ SetCollection sets Collection field to given value.
 `func (o *DataLakeDatabaseDataSourceSettings) HasCollection() bool`
 
 HasCollection returns a boolean if a field has been set.
-
 ### GetCollectionRegex
 
 `func (o *DataLakeDatabaseDataSourceSettings) GetCollectionRegex() string`
@@ -108,7 +106,6 @@ SetCollectionRegex sets CollectionRegex field to given value.
 `func (o *DataLakeDatabaseDataSourceSettings) HasCollectionRegex() bool`
 
 HasCollectionRegex returns a boolean if a field has been set.
-
 ### GetDatabase
 
 `func (o *DataLakeDatabaseDataSourceSettings) GetDatabase() string`
@@ -133,7 +130,6 @@ SetDatabase sets Database field to given value.
 `func (o *DataLakeDatabaseDataSourceSettings) HasDatabase() bool`
 
 HasDatabase returns a boolean if a field has been set.
-
 ### GetDatabaseRegex
 
 `func (o *DataLakeDatabaseDataSourceSettings) GetDatabaseRegex() string`
@@ -158,7 +154,6 @@ SetDatabaseRegex sets DatabaseRegex field to given value.
 `func (o *DataLakeDatabaseDataSourceSettings) HasDatabaseRegex() bool`
 
 HasDatabaseRegex returns a boolean if a field has been set.
-
 ### GetDefaultFormat
 
 `func (o *DataLakeDatabaseDataSourceSettings) GetDefaultFormat() string`
@@ -183,7 +178,6 @@ SetDefaultFormat sets DefaultFormat field to given value.
 `func (o *DataLakeDatabaseDataSourceSettings) HasDefaultFormat() bool`
 
 HasDefaultFormat returns a boolean if a field has been set.
-
 ### GetPath
 
 `func (o *DataLakeDatabaseDataSourceSettings) GetPath() string`
@@ -208,7 +202,6 @@ SetPath sets Path field to given value.
 `func (o *DataLakeDatabaseDataSourceSettings) HasPath() bool`
 
 HasPath returns a boolean if a field has been set.
-
 ### GetProvenanceFieldName
 
 `func (o *DataLakeDatabaseDataSourceSettings) GetProvenanceFieldName() string`
@@ -233,7 +226,6 @@ SetProvenanceFieldName sets ProvenanceFieldName field to given value.
 `func (o *DataLakeDatabaseDataSourceSettings) HasProvenanceFieldName() bool`
 
 HasProvenanceFieldName returns a boolean if a field has been set.
-
 ### GetStoreName
 
 `func (o *DataLakeDatabaseDataSourceSettings) GetStoreName() string`
@@ -258,7 +250,6 @@ SetStoreName sets StoreName field to given value.
 `func (o *DataLakeDatabaseDataSourceSettings) HasStoreName() bool`
 
 HasStoreName returns a boolean if a field has been set.
-
 ### GetUrls
 
 `func (o *DataLakeDatabaseDataSourceSettings) GetUrls() []string`
@@ -283,7 +274,6 @@ SetUrls sets Urls field to given value.
 `func (o *DataLakeDatabaseDataSourceSettings) HasUrls() bool`
 
 HasUrls returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

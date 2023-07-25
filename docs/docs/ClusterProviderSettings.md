@@ -52,7 +52,6 @@ and a boolean to check if the value has been set.
 
 SetProviderName sets ProviderName field to given value.
 
-
 ### GetAutoScaling
 
 `func (o *ClusterProviderSettings) GetAutoScaling() ClusterFreeAutoScaling`
@@ -77,7 +76,6 @@ SetAutoScaling sets AutoScaling field to given value.
 `func (o *ClusterProviderSettings) HasAutoScaling() bool`
 
 HasAutoScaling returns a boolean if a field has been set.
-
 ### GetDiskIOPS
 
 `func (o *ClusterProviderSettings) GetDiskIOPS() int`
@@ -102,7 +100,6 @@ SetDiskIOPS sets DiskIOPS field to given value.
 `func (o *ClusterProviderSettings) HasDiskIOPS() bool`
 
 HasDiskIOPS returns a boolean if a field has been set.
-
 ### GetEncryptEBSVolume
 
 `func (o *ClusterProviderSettings) GetEncryptEBSVolume() bool`
@@ -127,7 +124,6 @@ SetEncryptEBSVolume sets EncryptEBSVolume field to given value.
 `func (o *ClusterProviderSettings) HasEncryptEBSVolume() bool`
 
 HasEncryptEBSVolume returns a boolean if a field has been set.
-
 ### GetInstanceSizeName
 
 `func (o *ClusterProviderSettings) GetInstanceSizeName() string`
@@ -152,7 +148,6 @@ SetInstanceSizeName sets InstanceSizeName field to given value.
 `func (o *ClusterProviderSettings) HasInstanceSizeName() bool`
 
 HasInstanceSizeName returns a boolean if a field has been set.
-
 ### GetRegionName
 
 `func (o *ClusterProviderSettings) GetRegionName() string`
@@ -177,7 +172,6 @@ SetRegionName sets RegionName field to given value.
 `func (o *ClusterProviderSettings) HasRegionName() bool`
 
 HasRegionName returns a boolean if a field has been set.
-
 ### GetVolumeType
 
 `func (o *ClusterProviderSettings) GetVolumeType() string`
@@ -202,7 +196,6 @@ SetVolumeType sets VolumeType field to given value.
 `func (o *ClusterProviderSettings) HasVolumeType() bool`
 
 HasVolumeType returns a boolean if a field has been set.
-
 ### GetDiskTypeName
 
 `func (o *ClusterProviderSettings) GetDiskTypeName() string`
@@ -227,7 +220,6 @@ SetDiskTypeName sets DiskTypeName field to given value.
 `func (o *ClusterProviderSettings) HasDiskTypeName() bool`
 
 HasDiskTypeName returns a boolean if a field has been set.
-
 ### GetBackingProviderName
 
 `func (o *ClusterProviderSettings) GetBackingProviderName() string`
@@ -252,7 +244,6 @@ SetBackingProviderName sets BackingProviderName field to given value.
 `func (o *ClusterProviderSettings) HasBackingProviderName() bool`
 
 HasBackingProviderName returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

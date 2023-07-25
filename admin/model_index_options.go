@@ -40,7 +40,7 @@ type IndexOptions struct {
 	StorageEngine map[string]interface{} `json:"storageEngine,omitempty"`
 	// Version applied to this text index. MongoDB 3.2 and later use version `3`. Use this option to override the default version number. This option applies to the **text** index type only.
 	TextIndexVersion *int `json:"textIndexVersion,omitempty"`
-	// Flag that indicates whether this index can accept insertion or update of documents when the index key value matches an existing index key value. Set `\"unique\" : true` to set this index as unique. You can't set a hashed index to be unique. This option applies to all index types.
+	// Flag that indicates whether this index can accept insertion or update of documents when the index key value matches an existing index key value. Set `\"unique\" : true` to set this index as unique. You can't set a hashed index to be unique. This option applies to all index types. This option is unsupported for rolling indexes.
 	Unique *bool `json:"unique,omitempty"`
 	// Relative importance to place upon provided index parameters. This object expresses this as key/value pairs of index parameter and weight to apply to that parameter. You can specify weights for some or all the indexed parameters. The weight must be an integer between 1 and 99,999. MongoDB 5.0 and later can apply **weights** to **text** indexes only.
 	Weights map[string]interface{} `json:"weights,omitempty"`

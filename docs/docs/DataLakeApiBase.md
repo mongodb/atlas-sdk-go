@@ -51,7 +51,6 @@ SetName sets Name field to given value.
 `func (o *DataLakeApiBase) HasName() bool`
 
 HasName returns a boolean if a field has been set.
-
 ### GetPipeline
 
 `func (o *DataLakeApiBase) GetPipeline() string`
@@ -76,7 +75,6 @@ SetPipeline sets Pipeline field to given value.
 `func (o *DataLakeApiBase) HasPipeline() bool`
 
 HasPipeline returns a boolean if a field has been set.
-
 ### GetSource
 
 `func (o *DataLakeApiBase) GetSource() string`
@@ -101,7 +99,6 @@ SetSource sets Source field to given value.
 `func (o *DataLakeApiBase) HasSource() bool`
 
 HasSource returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

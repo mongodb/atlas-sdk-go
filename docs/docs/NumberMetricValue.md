@@ -50,7 +50,6 @@ SetNumber sets Number field to given value.
 `func (o *NumberMetricValue) HasNumber() bool`
 
 HasNumber returns a boolean if a field has been set.
-
 ### GetUnits
 
 `func (o *NumberMetricValue) GetUnits() string`
@@ -75,7 +74,6 @@ SetUnits sets Units field to given value.
 `func (o *NumberMetricValue) HasUnits() bool`
 
 HasUnits returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

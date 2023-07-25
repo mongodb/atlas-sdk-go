@@ -54,7 +54,6 @@ SetMaxGram sets MaxGram field to given value.
 `func (o *ApiAtlasFTSAnalyzersTokenizer) HasMaxGram() bool`
 
 HasMaxGram returns a boolean if a field has been set.
-
 ### GetMinGram
 
 `func (o *ApiAtlasFTSAnalyzersTokenizer) GetMinGram() int`
@@ -79,7 +78,6 @@ SetMinGram sets MinGram field to given value.
 `func (o *ApiAtlasFTSAnalyzersTokenizer) HasMinGram() bool`
 
 HasMinGram returns a boolean if a field has been set.
-
 ### GetType
 
 `func (o *ApiAtlasFTSAnalyzersTokenizer) GetType() string`
@@ -104,7 +102,6 @@ SetType sets Type field to given value.
 `func (o *ApiAtlasFTSAnalyzersTokenizer) HasType() bool`
 
 HasType returns a boolean if a field has been set.
-
 ### GetGroup
 
 `func (o *ApiAtlasFTSAnalyzersTokenizer) GetGroup() int`
@@ -129,7 +126,6 @@ SetGroup sets Group field to given value.
 `func (o *ApiAtlasFTSAnalyzersTokenizer) HasGroup() bool`
 
 HasGroup returns a boolean if a field has been set.
-
 ### GetPattern
 
 `func (o *ApiAtlasFTSAnalyzersTokenizer) GetPattern() string`
@@ -154,7 +150,6 @@ SetPattern sets Pattern field to given value.
 `func (o *ApiAtlasFTSAnalyzersTokenizer) HasPattern() bool`
 
 HasPattern returns a boolean if a field has been set.
-
 ### GetMaxTokenLength
 
 `func (o *ApiAtlasFTSAnalyzersTokenizer) GetMaxTokenLength() int`
@@ -179,7 +174,6 @@ SetMaxTokenLength sets MaxTokenLength field to given value.
 `func (o *ApiAtlasFTSAnalyzersTokenizer) HasMaxTokenLength() bool`
 
 HasMaxTokenLength returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

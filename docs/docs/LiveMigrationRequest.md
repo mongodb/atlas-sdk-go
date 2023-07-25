@@ -53,7 +53,6 @@ SetId sets Id field to given value.
 `func (o *LiveMigrationRequest) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetDestination
 
 `func (o *LiveMigrationRequest) GetDestination() Destination`
@@ -73,7 +72,6 @@ and a boolean to check if the value has been set.
 
 SetDestination sets Destination field to given value.
 
-
 ### GetDropEnabled
 
 `func (o *LiveMigrationRequest) GetDropEnabled() bool`
@@ -92,7 +90,6 @@ and a boolean to check if the value has been set.
 `func (o *LiveMigrationRequest) SetDropEnabled(v bool)`
 
 SetDropEnabled sets DropEnabled field to given value.
-
 
 ### GetMigrationHosts
 
@@ -118,7 +115,6 @@ SetMigrationHosts sets MigrationHosts field to given value.
 `func (o *LiveMigrationRequest) HasMigrationHosts() bool`
 
 HasMigrationHosts returns a boolean if a field has been set.
-
 ### GetSource
 
 `func (o *LiveMigrationRequest) GetSource() Source`
@@ -137,7 +133,6 @@ and a boolean to check if the value has been set.
 `func (o *LiveMigrationRequest) SetSource(v Source)`
 
 SetSource sets Source field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

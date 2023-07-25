@@ -59,7 +59,6 @@ SetAssociatedDomains sets AssociatedDomains field to given value.
 `func (o *SamlIdentityProviderUpdate) HasAssociatedDomains() bool`
 
 HasAssociatedDomains returns a boolean if a field has been set.
-
 ### GetDescription
 
 `func (o *SamlIdentityProviderUpdate) GetDescription() string`
@@ -84,7 +83,6 @@ SetDescription sets Description field to given value.
 `func (o *SamlIdentityProviderUpdate) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
-
 ### GetDisplayName
 
 `func (o *SamlIdentityProviderUpdate) GetDisplayName() string`
@@ -109,7 +107,6 @@ SetDisplayName sets DisplayName field to given value.
 `func (o *SamlIdentityProviderUpdate) HasDisplayName() bool`
 
 HasDisplayName returns a boolean if a field has been set.
-
 ### GetIssuerUri
 
 `func (o *SamlIdentityProviderUpdate) GetIssuerUri() string`
@@ -134,7 +131,6 @@ SetIssuerUri sets IssuerUri field to given value.
 `func (o *SamlIdentityProviderUpdate) HasIssuerUri() bool`
 
 HasIssuerUri returns a boolean if a field has been set.
-
 ### GetPemFileInfo
 
 `func (o *SamlIdentityProviderUpdate) GetPemFileInfo() PemFileInfo`
@@ -159,7 +155,6 @@ SetPemFileInfo sets PemFileInfo field to given value.
 `func (o *SamlIdentityProviderUpdate) HasPemFileInfo() bool`
 
 HasPemFileInfo returns a boolean if a field has been set.
-
 ### GetProtocol
 
 `func (o *SamlIdentityProviderUpdate) GetProtocol() string`
@@ -184,7 +179,6 @@ SetProtocol sets Protocol field to given value.
 `func (o *SamlIdentityProviderUpdate) HasProtocol() bool`
 
 HasProtocol returns a boolean if a field has been set.
-
 ### GetRequestBinding
 
 `func (o *SamlIdentityProviderUpdate) GetRequestBinding() string`
@@ -209,7 +203,6 @@ SetRequestBinding sets RequestBinding field to given value.
 `func (o *SamlIdentityProviderUpdate) HasRequestBinding() bool`
 
 HasRequestBinding returns a boolean if a field has been set.
-
 ### GetResponseSignatureAlgorithm
 
 `func (o *SamlIdentityProviderUpdate) GetResponseSignatureAlgorithm() string`
@@ -234,7 +227,6 @@ SetResponseSignatureAlgorithm sets ResponseSignatureAlgorithm field to given val
 `func (o *SamlIdentityProviderUpdate) HasResponseSignatureAlgorithm() bool`
 
 HasResponseSignatureAlgorithm returns a boolean if a field has been set.
-
 ### GetSsoDebugEnabled
 
 `func (o *SamlIdentityProviderUpdate) GetSsoDebugEnabled() bool`
@@ -253,7 +245,6 @@ and a boolean to check if the value has been set.
 `func (o *SamlIdentityProviderUpdate) SetSsoDebugEnabled(v bool)`
 
 SetSsoDebugEnabled sets SsoDebugEnabled field to given value.
-
 
 ### GetSsoUrl
 
@@ -279,7 +270,6 @@ SetSsoUrl sets SsoUrl field to given value.
 `func (o *SamlIdentityProviderUpdate) HasSsoUrl() bool`
 
 HasSsoUrl returns a boolean if a field has been set.
-
 ### GetStatus
 
 `func (o *SamlIdentityProviderUpdate) GetStatus() string`
@@ -304,7 +294,6 @@ SetStatus sets Status field to given value.
 `func (o *SamlIdentityProviderUpdate) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

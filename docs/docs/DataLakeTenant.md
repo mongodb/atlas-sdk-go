@@ -55,7 +55,6 @@ SetCloudProviderConfig sets CloudProviderConfig field to given value.
 `func (o *DataLakeTenant) HasCloudProviderConfig() bool`
 
 HasCloudProviderConfig returns a boolean if a field has been set.
-
 ### GetDataProcessRegion
 
 `func (o *DataLakeTenant) GetDataProcessRegion() DataLakeDataProcessRegion`
@@ -80,7 +79,6 @@ SetDataProcessRegion sets DataProcessRegion field to given value.
 `func (o *DataLakeTenant) HasDataProcessRegion() bool`
 
 HasDataProcessRegion returns a boolean if a field has been set.
-
 ### GetGroupId
 
 `func (o *DataLakeTenant) GetGroupId() string`
@@ -105,7 +103,6 @@ SetGroupId sets GroupId field to given value.
 `func (o *DataLakeTenant) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
-
 ### GetHostnames
 
 `func (o *DataLakeTenant) GetHostnames() []string`
@@ -130,7 +127,6 @@ SetHostnames sets Hostnames field to given value.
 `func (o *DataLakeTenant) HasHostnames() bool`
 
 HasHostnames returns a boolean if a field has been set.
-
 ### GetName
 
 `func (o *DataLakeTenant) GetName() string`
@@ -155,7 +151,6 @@ SetName sets Name field to given value.
 `func (o *DataLakeTenant) HasName() bool`
 
 HasName returns a boolean if a field has been set.
-
 ### GetState
 
 `func (o *DataLakeTenant) GetState() string`
@@ -180,7 +175,6 @@ SetState sets State field to given value.
 `func (o *DataLakeTenant) HasState() bool`
 
 HasState returns a boolean if a field has been set.
-
 ### GetStorage
 
 `func (o *DataLakeTenant) GetStorage() DataLakeStorage`
@@ -205,7 +199,6 @@ SetStorage sets Storage field to given value.
 `func (o *DataLakeTenant) HasStorage() bool`
 
 HasStorage returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

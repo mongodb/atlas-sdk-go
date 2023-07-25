@@ -52,7 +52,6 @@ SetCustomData sets CustomData field to given value.
 `func (o *DiskBackupExportJobRequest) HasCustomData() bool`
 
 HasCustomData returns a boolean if a field has been set.
-
 ### GetExportBucketId
 
 `func (o *DiskBackupExportJobRequest) GetExportBucketId() string`
@@ -71,7 +70,6 @@ and a boolean to check if the value has been set.
 `func (o *DiskBackupExportJobRequest) SetExportBucketId(v string)`
 
 SetExportBucketId sets ExportBucketId field to given value.
-
 
 ### GetLinks
 
@@ -97,7 +95,6 @@ SetLinks sets Links field to given value.
 `func (o *DiskBackupExportJobRequest) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetSnapshotId
 
 `func (o *DiskBackupExportJobRequest) GetSnapshotId() string`
@@ -116,7 +113,6 @@ and a boolean to check if the value has been set.
 `func (o *DiskBackupExportJobRequest) SetSnapshotId(v string)`
 
 SetSnapshotId sets SnapshotId field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

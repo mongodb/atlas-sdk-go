@@ -52,7 +52,6 @@ SetComment sets Comment field to given value.
 `func (o *PrivateNetworkEndpointIdEntry) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
-
 ### GetEndpointId
 
 `func (o *PrivateNetworkEndpointIdEntry) GetEndpointId() string`
@@ -71,7 +70,6 @@ and a boolean to check if the value has been set.
 `func (o *PrivateNetworkEndpointIdEntry) SetEndpointId(v string)`
 
 SetEndpointId sets EndpointId field to given value.
-
 
 ### GetProvider
 
@@ -97,7 +95,6 @@ SetProvider sets Provider field to given value.
 `func (o *PrivateNetworkEndpointIdEntry) HasProvider() bool`
 
 HasProvider returns a boolean if a field has been set.
-
 ### GetType
 
 `func (o *PrivateNetworkEndpointIdEntry) GetType() string`
@@ -122,7 +119,6 @@ SetType sets Type field to given value.
 `func (o *PrivateNetworkEndpointIdEntry) HasType() bool`
 
 HasType returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

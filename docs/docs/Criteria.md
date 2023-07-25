@@ -53,7 +53,6 @@ SetType sets Type field to given value.
 `func (o *Criteria) HasType() bool`
 
 HasType returns a boolean if a field has been set.
-
 ### GetQuery
 
 `func (o *Criteria) GetQuery() string`
@@ -78,7 +77,6 @@ SetQuery sets Query field to given value.
 `func (o *Criteria) HasQuery() bool`
 
 HasQuery returns a boolean if a field has been set.
-
 ### GetDateField
 
 `func (o *Criteria) GetDateField() string`
@@ -103,7 +101,6 @@ SetDateField sets DateField field to given value.
 `func (o *Criteria) HasDateField() bool`
 
 HasDateField returns a boolean if a field has been set.
-
 ### GetDateFormat
 
 `func (o *Criteria) GetDateFormat() string`
@@ -128,7 +125,6 @@ SetDateFormat sets DateFormat field to given value.
 `func (o *Criteria) HasDateFormat() bool`
 
 HasDateFormat returns a boolean if a field has been set.
-
 ### GetExpireAfterDays
 
 `func (o *Criteria) GetExpireAfterDays() int`
@@ -153,7 +149,6 @@ SetExpireAfterDays sets ExpireAfterDays field to given value.
 `func (o *Criteria) HasExpireAfterDays() bool`
 
 HasExpireAfterDays returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

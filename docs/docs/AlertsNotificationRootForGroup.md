@@ -75,7 +75,6 @@ SetDatadogApiKey sets DatadogApiKey field to given value.
 `func (o *AlertsNotificationRootForGroup) HasDatadogApiKey() bool`
 
 HasDatadogApiKey returns a boolean if a field has been set.
-
 ### GetDatadogRegion
 
 `func (o *AlertsNotificationRootForGroup) GetDatadogRegion() string`
@@ -100,7 +99,6 @@ SetDatadogRegion sets DatadogRegion field to given value.
 `func (o *AlertsNotificationRootForGroup) HasDatadogRegion() bool`
 
 HasDatadogRegion returns a boolean if a field has been set.
-
 ### GetDelayMin
 
 `func (o *AlertsNotificationRootForGroup) GetDelayMin() int`
@@ -125,7 +123,6 @@ SetDelayMin sets DelayMin field to given value.
 `func (o *AlertsNotificationRootForGroup) HasDelayMin() bool`
 
 HasDelayMin returns a boolean if a field has been set.
-
 ### GetIntervalMin
 
 `func (o *AlertsNotificationRootForGroup) GetIntervalMin() int`
@@ -150,7 +147,6 @@ SetIntervalMin sets IntervalMin field to given value.
 `func (o *AlertsNotificationRootForGroup) HasIntervalMin() bool`
 
 HasIntervalMin returns a boolean if a field has been set.
-
 ### GetNotifierId
 
 `func (o *AlertsNotificationRootForGroup) GetNotifierId() string`
@@ -175,7 +171,6 @@ SetNotifierId sets NotifierId field to given value.
 `func (o *AlertsNotificationRootForGroup) HasNotifierId() bool`
 
 HasNotifierId returns a boolean if a field has been set.
-
 ### GetTypeName
 
 `func (o *AlertsNotificationRootForGroup) GetTypeName() string`
@@ -200,7 +195,6 @@ SetTypeName sets TypeName field to given value.
 `func (o *AlertsNotificationRootForGroup) HasTypeName() bool`
 
 HasTypeName returns a boolean if a field has been set.
-
 ### GetEmailAddress
 
 `func (o *AlertsNotificationRootForGroup) GetEmailAddress() string`
@@ -225,7 +219,6 @@ SetEmailAddress sets EmailAddress field to given value.
 `func (o *AlertsNotificationRootForGroup) HasEmailAddress() bool`
 
 HasEmailAddress returns a boolean if a field has been set.
-
 ### GetEmailEnabled
 
 `func (o *AlertsNotificationRootForGroup) GetEmailEnabled() bool`
@@ -250,7 +243,6 @@ SetEmailEnabled sets EmailEnabled field to given value.
 `func (o *AlertsNotificationRootForGroup) HasEmailEnabled() bool`
 
 HasEmailEnabled returns a boolean if a field has been set.
-
 ### GetRoles
 
 `func (o *AlertsNotificationRootForGroup) GetRoles() []string`
@@ -275,7 +267,6 @@ SetRoles sets Roles field to given value.
 `func (o *AlertsNotificationRootForGroup) HasRoles() bool`
 
 HasRoles returns a boolean if a field has been set.
-
 ### GetSmsEnabled
 
 `func (o *AlertsNotificationRootForGroup) GetSmsEnabled() bool`
@@ -300,7 +291,6 @@ SetSmsEnabled sets SmsEnabled field to given value.
 `func (o *AlertsNotificationRootForGroup) HasSmsEnabled() bool`
 
 HasSmsEnabled returns a boolean if a field has been set.
-
 ### GetNotificationToken
 
 `func (o *AlertsNotificationRootForGroup) GetNotificationToken() string`
@@ -325,7 +315,6 @@ SetNotificationToken sets NotificationToken field to given value.
 `func (o *AlertsNotificationRootForGroup) HasNotificationToken() bool`
 
 HasNotificationToken returns a boolean if a field has been set.
-
 ### GetRoomName
 
 `func (o *AlertsNotificationRootForGroup) GetRoomName() string`
@@ -350,7 +339,6 @@ SetRoomName sets RoomName field to given value.
 `func (o *AlertsNotificationRootForGroup) HasRoomName() bool`
 
 HasRoomName returns a boolean if a field has been set.
-
 ### GetMicrosoftTeamsWebhookUrl
 
 `func (o *AlertsNotificationRootForGroup) GetMicrosoftTeamsWebhookUrl() string`
@@ -375,7 +363,6 @@ SetMicrosoftTeamsWebhookUrl sets MicrosoftTeamsWebhookUrl field to given value.
 `func (o *AlertsNotificationRootForGroup) HasMicrosoftTeamsWebhookUrl() bool`
 
 HasMicrosoftTeamsWebhookUrl returns a boolean if a field has been set.
-
 ### GetOpsGenieApiKey
 
 `func (o *AlertsNotificationRootForGroup) GetOpsGenieApiKey() string`
@@ -400,7 +387,6 @@ SetOpsGenieApiKey sets OpsGenieApiKey field to given value.
 `func (o *AlertsNotificationRootForGroup) HasOpsGenieApiKey() bool`
 
 HasOpsGenieApiKey returns a boolean if a field has been set.
-
 ### GetOpsGenieRegion
 
 `func (o *AlertsNotificationRootForGroup) GetOpsGenieRegion() string`
@@ -425,7 +411,6 @@ SetOpsGenieRegion sets OpsGenieRegion field to given value.
 `func (o *AlertsNotificationRootForGroup) HasOpsGenieRegion() bool`
 
 HasOpsGenieRegion returns a boolean if a field has been set.
-
 ### GetRegion
 
 `func (o *AlertsNotificationRootForGroup) GetRegion() string`
@@ -450,7 +435,6 @@ SetRegion sets Region field to given value.
 `func (o *AlertsNotificationRootForGroup) HasRegion() bool`
 
 HasRegion returns a boolean if a field has been set.
-
 ### GetServiceKey
 
 `func (o *AlertsNotificationRootForGroup) GetServiceKey() string`
@@ -475,7 +459,6 @@ SetServiceKey sets ServiceKey field to given value.
 `func (o *AlertsNotificationRootForGroup) HasServiceKey() bool`
 
 HasServiceKey returns a boolean if a field has been set.
-
 ### GetApiToken
 
 `func (o *AlertsNotificationRootForGroup) GetApiToken() string`
@@ -500,7 +483,6 @@ SetApiToken sets ApiToken field to given value.
 `func (o *AlertsNotificationRootForGroup) HasApiToken() bool`
 
 HasApiToken returns a boolean if a field has been set.
-
 ### GetChannelName
 
 `func (o *AlertsNotificationRootForGroup) GetChannelName() string`
@@ -525,7 +507,6 @@ SetChannelName sets ChannelName field to given value.
 `func (o *AlertsNotificationRootForGroup) HasChannelName() bool`
 
 HasChannelName returns a boolean if a field has been set.
-
 ### GetMobileNumber
 
 `func (o *AlertsNotificationRootForGroup) GetMobileNumber() string`
@@ -550,7 +531,6 @@ SetMobileNumber sets MobileNumber field to given value.
 `func (o *AlertsNotificationRootForGroup) HasMobileNumber() bool`
 
 HasMobileNumber returns a boolean if a field has been set.
-
 ### GetTeamId
 
 `func (o *AlertsNotificationRootForGroup) GetTeamId() string`
@@ -575,7 +555,6 @@ SetTeamId sets TeamId field to given value.
 `func (o *AlertsNotificationRootForGroup) HasTeamId() bool`
 
 HasTeamId returns a boolean if a field has been set.
-
 ### GetTeamName
 
 `func (o *AlertsNotificationRootForGroup) GetTeamName() string`
@@ -600,7 +579,6 @@ SetTeamName sets TeamName field to given value.
 `func (o *AlertsNotificationRootForGroup) HasTeamName() bool`
 
 HasTeamName returns a boolean if a field has been set.
-
 ### GetUsername
 
 `func (o *AlertsNotificationRootForGroup) GetUsername() string`
@@ -625,7 +603,6 @@ SetUsername sets Username field to given value.
 `func (o *AlertsNotificationRootForGroup) HasUsername() bool`
 
 HasUsername returns a boolean if a field has been set.
-
 ### GetVictorOpsApiKey
 
 `func (o *AlertsNotificationRootForGroup) GetVictorOpsApiKey() string`
@@ -650,7 +627,6 @@ SetVictorOpsApiKey sets VictorOpsApiKey field to given value.
 `func (o *AlertsNotificationRootForGroup) HasVictorOpsApiKey() bool`
 
 HasVictorOpsApiKey returns a boolean if a field has been set.
-
 ### GetVictorOpsRoutingKey
 
 `func (o *AlertsNotificationRootForGroup) GetVictorOpsRoutingKey() string`
@@ -675,7 +651,6 @@ SetVictorOpsRoutingKey sets VictorOpsRoutingKey field to given value.
 `func (o *AlertsNotificationRootForGroup) HasVictorOpsRoutingKey() bool`
 
 HasVictorOpsRoutingKey returns a boolean if a field has been set.
-
 ### GetWebhookSecret
 
 `func (o *AlertsNotificationRootForGroup) GetWebhookSecret() string`
@@ -700,7 +675,6 @@ SetWebhookSecret sets WebhookSecret field to given value.
 `func (o *AlertsNotificationRootForGroup) HasWebhookSecret() bool`
 
 HasWebhookSecret returns a boolean if a field has been set.
-
 ### GetWebhookUrl
 
 `func (o *AlertsNotificationRootForGroup) GetWebhookUrl() string`
@@ -725,7 +699,6 @@ SetWebhookUrl sets WebhookUrl field to given value.
 `func (o *AlertsNotificationRootForGroup) HasWebhookUrl() bool`
 
 HasWebhookUrl returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
