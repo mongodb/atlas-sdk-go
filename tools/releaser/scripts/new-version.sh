@@ -1,7 +1,7 @@
 #!/bin/bash
 set -ueo pipefail
 
-target_file_path="./internal/core/version.go"
+target_file_path="../../internal/core/version.go"
 
 source ./scripts/extract-version.sh
 
@@ -20,11 +20,7 @@ else
 	echo "Resource Version is not up to date. Changing major version."
 	export SDK_VERSION="v${CURRENT_RESOURCE_VERSION}001.0.0"
 	echo "Modifying $CURRENT_RESOURCE_VERSION Resource Version across the repository."
-	find . -type f -name "*" -not -path '*/\.*' -exec grep -l "$CURRENT_RESOURCE_VERSION" {} + | while read -r file; do
-		echo "Modifying $file"
-		sed "s/$CURRENT_RESOURCE_VERSION/$SDK_RESOURCE_VERSION/g" "$file" > "${file}_tmp"
-		mv "${file}_tmp" "$file"
-	done
+	npm exec replace-in-file $CURRENT_RESOURCE_VERSION $SDK_RESOURCE_VERSION ./* --ignore=*/node_modules/*, ./.* --dry
 fi
 
 echo "Creating new version.go file with $SDK_VERSION and resource version: $CURRENT_RESOURCE_VERSION"
