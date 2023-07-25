@@ -16,13 +16,12 @@ if [ "$CURRENT_RESOURCE_VERSION" == "$SDK_RESOURCE_VERSION" ]; then
 	new_minor_version=$((minor_version + 1))
 	# Update the SDK_VERSION
 	export SDK_VERSION="${major_version}.${new_minor_version}.0"
-else	
+else	 
 	# Update the SDK_VERSION
 	echo "Resource Version is not up to date. Changing major version."
 	export SDK_VERSION="v${CURRENT_RESOURCE_VERSION}001.0.0"
 	echo "Modifying $CURRENT_RESOURCE_VERSION Resource Version across the repository."
-	npm exec replace-in-file $CURRENT_RESOURCE_VERSION $SDK_RESOURCE_VERSION ./* --ignore=*/node_modules/*, ./.* --dry
-fi
+	npm exec replace-in-file $CURRENT_RESOURCE_VERSION $SDK_RESOURCE_VERSION *.go,*.md,.*.mustache
 
 echo "Creating new version.go file with $SDK_VERSION and resource version: $CURRENT_RESOURCE_VERSION"
 
@@ -37,4 +36,3 @@ const (
 	// Resource Version.
 	Resource = \"$CURRENT_RESOURCE_VERSION\"
 )" > $target_file_path
-

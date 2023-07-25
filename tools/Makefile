@@ -35,7 +35,6 @@ generate_tests:
 
 .PHONY: new-release
 new-release:
-	npm install
 	./releaser/scripts/new-version.sh
 
 .PHONY: update-version
