@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **AccessKeyID** | Pointer to **string** | Unique alphanumeric string that identifies an Identity and Access Management (IAM) access key with permissions required to access your Amazon Web Services (AWS) Customer Master Key (CMK). | [optional] 
 **CustomerMasterKeyID** | Pointer to **string** | Unique alphanumeric string that identifies the Amazon Web Services (AWS) Customer Master Key (CMK) you used to encrypt and decrypt the MongoDB master keys. | [optional] 
 **Enabled** | Pointer to **bool** | Flag that indicates whether someone enabled encryption at rest for the specified project through Amazon Web Services (AWS) Key Management Service (KMS). To disable encryption at rest using customer key management and remove the configuration details, pass only this parameter with a value of &#x60;false&#x60;. | [optional] 
-**Region** | Pointer to **string** |  Physical location where MongoDB Cloud deploys your AWS-hosted MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. MongoDB Cloud assigns the VPC a CIDR block. To limit a new VPC peering connection to one CIDR block and region, create the connection first. Deploy the cluster after the connection starts. | [optional] 
+**Region** | Pointer to **string** | Physical location where MongoDB Cloud deploys your AWS-hosted MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. MongoDB Cloud assigns the VPC a CIDR block. To limit a new VPC peering connection to one CIDR block and region, create the connection first. Deploy the cluster after the connection starts. | [optional] 
 **RoleId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies an Amazon Web Services (AWS) Identity and Access Management (IAM) role. This IAM role has the permissions required to manage your AWS customer master key. | [optional] 
 **SecretAccessKey** | Pointer to **string** | Human-readable label of the Identity and Access Management (IAM) secret access key with permissions required to access your Amazon Web Services (AWS) customer master key. | [optional] 
 **Valid** | Pointer to **bool** | Flag that indicates whether the Amazon Web Services (AWS) Key Management Service (KMS) encryption key can encrypt and decrypt data. | [optional] [readonly] 
@@ -55,7 +55,6 @@ SetAccessKeyID sets AccessKeyID field to given value.
 `func (o *AWSKMSConfiguration) HasAccessKeyID() bool`
 
 HasAccessKeyID returns a boolean if a field has been set.
-
 ### GetCustomerMasterKeyID
 
 `func (o *AWSKMSConfiguration) GetCustomerMasterKeyID() string`
@@ -80,7 +79,6 @@ SetCustomerMasterKeyID sets CustomerMasterKeyID field to given value.
 `func (o *AWSKMSConfiguration) HasCustomerMasterKeyID() bool`
 
 HasCustomerMasterKeyID returns a boolean if a field has been set.
-
 ### GetEnabled
 
 `func (o *AWSKMSConfiguration) GetEnabled() bool`
@@ -105,7 +103,6 @@ SetEnabled sets Enabled field to given value.
 `func (o *AWSKMSConfiguration) HasEnabled() bool`
 
 HasEnabled returns a boolean if a field has been set.
-
 ### GetRegion
 
 `func (o *AWSKMSConfiguration) GetRegion() string`
@@ -130,7 +127,6 @@ SetRegion sets Region field to given value.
 `func (o *AWSKMSConfiguration) HasRegion() bool`
 
 HasRegion returns a boolean if a field has been set.
-
 ### GetRoleId
 
 `func (o *AWSKMSConfiguration) GetRoleId() string`
@@ -155,7 +151,6 @@ SetRoleId sets RoleId field to given value.
 `func (o *AWSKMSConfiguration) HasRoleId() bool`
 
 HasRoleId returns a boolean if a field has been set.
-
 ### GetSecretAccessKey
 
 `func (o *AWSKMSConfiguration) GetSecretAccessKey() string`
@@ -180,7 +175,6 @@ SetSecretAccessKey sets SecretAccessKey field to given value.
 `func (o *AWSKMSConfiguration) HasSecretAccessKey() bool`
 
 HasSecretAccessKey returns a boolean if a field has been set.
-
 ### GetValid
 
 `func (o *AWSKMSConfiguration) GetValid() bool`
@@ -205,7 +199,6 @@ SetValid sets Valid field to given value.
 `func (o *AWSKMSConfiguration) HasValid() bool`
 
 HasValid returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

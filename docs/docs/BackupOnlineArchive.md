@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **CollName** | Pointer to **string** | Human-readable label that identifies the collection for which you created the online archive. | [optional] 
 **CollectionType** | Pointer to **string** | Classification of MongoDB database collection that you want to return.  If you set this parameter to &#x60;TIMESERIES&#x60;, set &#x60;\&quot;criteria.type\&quot; : \&quot;date\&quot;&#x60; and &#x60;\&quot;criteria.dateFormat\&quot; : \&quot;ISODATE\&quot;&#x60;. | [optional] [default to "STANDARD"]
 **Criteria** | Pointer to [**Criteria**](Criteria.md) |  | [optional] 
+**DataProcessRegion** | Pointer to [**DataProcessRegion**](DataProcessRegion.md) |  | [optional] 
+**DataSetName** | Pointer to **string** | Human-readable label that identifies the dataset that Atlas generates for this online archive. | [optional] [readonly] 
 **DbName** | Pointer to **string** | Human-readable label of the database that contains the collection that contains the online archive. | [optional] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the project that contains the specified cluster. The specified cluster contains the collection for which to create the online archive. | [optional] [readonly] 
 **PartitionFields** | Pointer to [**[]PartitionField**](PartitionField.md) | List that contains document parameters to use to logically divide data within a collection. Partitions provide a coarse level of filtering of the underlying collection data. To divide your data, specify up to two parameters that you frequently query. Any queries that don&#39;t use these parameters result in a full collection scan of all archived documents. This takes more time and increase your costs. | [optional] 
@@ -59,7 +61,6 @@ SetId sets Id field to given value.
 `func (o *BackupOnlineArchive) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetClusterName
 
 `func (o *BackupOnlineArchive) GetClusterName() string`
@@ -84,7 +85,6 @@ SetClusterName sets ClusterName field to given value.
 `func (o *BackupOnlineArchive) HasClusterName() bool`
 
 HasClusterName returns a boolean if a field has been set.
-
 ### GetCollName
 
 `func (o *BackupOnlineArchive) GetCollName() string`
@@ -109,7 +109,6 @@ SetCollName sets CollName field to given value.
 `func (o *BackupOnlineArchive) HasCollName() bool`
 
 HasCollName returns a boolean if a field has been set.
-
 ### GetCollectionType
 
 `func (o *BackupOnlineArchive) GetCollectionType() string`
@@ -134,7 +133,6 @@ SetCollectionType sets CollectionType field to given value.
 `func (o *BackupOnlineArchive) HasCollectionType() bool`
 
 HasCollectionType returns a boolean if a field has been set.
-
 ### GetCriteria
 
 `func (o *BackupOnlineArchive) GetCriteria() Criteria`
@@ -159,7 +157,54 @@ SetCriteria sets Criteria field to given value.
 `func (o *BackupOnlineArchive) HasCriteria() bool`
 
 HasCriteria returns a boolean if a field has been set.
+### GetDataProcessRegion
 
+`func (o *BackupOnlineArchive) GetDataProcessRegion() DataProcessRegion`
+
+GetDataProcessRegion returns the DataProcessRegion field if non-nil, zero value otherwise.
+
+### GetDataProcessRegionOk
+
+`func (o *BackupOnlineArchive) GetDataProcessRegionOk() (*DataProcessRegion, bool)`
+
+GetDataProcessRegionOk returns a tuple with the DataProcessRegion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDataProcessRegion
+
+`func (o *BackupOnlineArchive) SetDataProcessRegion(v DataProcessRegion)`
+
+SetDataProcessRegion sets DataProcessRegion field to given value.
+
+### HasDataProcessRegion
+
+`func (o *BackupOnlineArchive) HasDataProcessRegion() bool`
+
+HasDataProcessRegion returns a boolean if a field has been set.
+### GetDataSetName
+
+`func (o *BackupOnlineArchive) GetDataSetName() string`
+
+GetDataSetName returns the DataSetName field if non-nil, zero value otherwise.
+
+### GetDataSetNameOk
+
+`func (o *BackupOnlineArchive) GetDataSetNameOk() (*string, bool)`
+
+GetDataSetNameOk returns a tuple with the DataSetName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDataSetName
+
+`func (o *BackupOnlineArchive) SetDataSetName(v string)`
+
+SetDataSetName sets DataSetName field to given value.
+
+### HasDataSetName
+
+`func (o *BackupOnlineArchive) HasDataSetName() bool`
+
+HasDataSetName returns a boolean if a field has been set.
 ### GetDbName
 
 `func (o *BackupOnlineArchive) GetDbName() string`
@@ -184,7 +229,6 @@ SetDbName sets DbName field to given value.
 `func (o *BackupOnlineArchive) HasDbName() bool`
 
 HasDbName returns a boolean if a field has been set.
-
 ### GetGroupId
 
 `func (o *BackupOnlineArchive) GetGroupId() string`
@@ -209,7 +253,6 @@ SetGroupId sets GroupId field to given value.
 `func (o *BackupOnlineArchive) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
-
 ### GetPartitionFields
 
 `func (o *BackupOnlineArchive) GetPartitionFields() []PartitionField`
@@ -234,7 +277,6 @@ SetPartitionFields sets PartitionFields field to given value.
 `func (o *BackupOnlineArchive) HasPartitionFields() bool`
 
 HasPartitionFields returns a boolean if a field has been set.
-
 ### GetPaused
 
 `func (o *BackupOnlineArchive) GetPaused() bool`
@@ -259,7 +301,6 @@ SetPaused sets Paused field to given value.
 `func (o *BackupOnlineArchive) HasPaused() bool`
 
 HasPaused returns a boolean if a field has been set.
-
 ### GetSchedule
 
 `func (o *BackupOnlineArchive) GetSchedule() OnlineArchiveSchedule`
@@ -284,7 +325,6 @@ SetSchedule sets Schedule field to given value.
 `func (o *BackupOnlineArchive) HasSchedule() bool`
 
 HasSchedule returns a boolean if a field has been set.
-
 ### GetState
 
 `func (o *BackupOnlineArchive) GetState() string`
@@ -309,7 +349,6 @@ SetState sets State field to given value.
 `func (o *BackupOnlineArchive) HasState() bool`
 
 HasState returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

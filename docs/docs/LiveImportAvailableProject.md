@@ -52,7 +52,6 @@ SetDeployments sets Deployments field to given value.
 `func (o *LiveImportAvailableProject) HasDeployments() bool`
 
 HasDeployments returns a boolean if a field has been set.
-
 ### GetMigrationHosts
 
 `func (o *LiveImportAvailableProject) GetMigrationHosts() []string`
@@ -77,7 +76,6 @@ SetMigrationHosts sets MigrationHosts field to given value.
 `func (o *LiveImportAvailableProject) HasMigrationHosts() bool`
 
 HasMigrationHosts returns a boolean if a field has been set.
-
 ### GetName
 
 `func (o *LiveImportAvailableProject) GetName() string`
@@ -97,7 +95,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-
 ### GetProjectId
 
 `func (o *LiveImportAvailableProject) GetProjectId() string`
@@ -116,7 +113,6 @@ and a boolean to check if the value has been set.
 `func (o *LiveImportAvailableProject) SetProjectId(v string)`
 
 SetProjectId sets ProjectId field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

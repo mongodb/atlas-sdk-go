@@ -64,7 +64,6 @@ SetCloudProvider sets CloudProvider field to given value.
 `func (o *DiskBackupReplicaSet) HasCloudProvider() bool`
 
 HasCloudProvider returns a boolean if a field has been set.
-
 ### GetCopyRegions
 
 `func (o *DiskBackupReplicaSet) GetCopyRegions() []string`
@@ -89,7 +88,6 @@ SetCopyRegions sets CopyRegions field to given value.
 `func (o *DiskBackupReplicaSet) HasCopyRegions() bool`
 
 HasCopyRegions returns a boolean if a field has been set.
-
 ### GetCreatedAt
 
 `func (o *DiskBackupReplicaSet) GetCreatedAt() time.Time`
@@ -114,7 +112,6 @@ SetCreatedAt sets CreatedAt field to given value.
 `func (o *DiskBackupReplicaSet) HasCreatedAt() bool`
 
 HasCreatedAt returns a boolean if a field has been set.
-
 ### GetDescription
 
 `func (o *DiskBackupReplicaSet) GetDescription() string`
@@ -139,7 +136,6 @@ SetDescription sets Description field to given value.
 `func (o *DiskBackupReplicaSet) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
-
 ### GetExpiresAt
 
 `func (o *DiskBackupReplicaSet) GetExpiresAt() time.Time`
@@ -164,7 +160,6 @@ SetExpiresAt sets ExpiresAt field to given value.
 `func (o *DiskBackupReplicaSet) HasExpiresAt() bool`
 
 HasExpiresAt returns a boolean if a field has been set.
-
 ### GetFrequencyType
 
 `func (o *DiskBackupReplicaSet) GetFrequencyType() string`
@@ -189,7 +184,6 @@ SetFrequencyType sets FrequencyType field to given value.
 `func (o *DiskBackupReplicaSet) HasFrequencyType() bool`
 
 HasFrequencyType returns a boolean if a field has been set.
-
 ### GetId
 
 `func (o *DiskBackupReplicaSet) GetId() string`
@@ -214,7 +208,6 @@ SetId sets Id field to given value.
 `func (o *DiskBackupReplicaSet) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *DiskBackupReplicaSet) GetLinks() []Link`
@@ -239,7 +232,6 @@ SetLinks sets Links field to given value.
 `func (o *DiskBackupReplicaSet) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetMasterKeyUUID
 
 `func (o *DiskBackupReplicaSet) GetMasterKeyUUID() string`
@@ -264,7 +256,6 @@ SetMasterKeyUUID sets MasterKeyUUID field to given value.
 `func (o *DiskBackupReplicaSet) HasMasterKeyUUID() bool`
 
 HasMasterKeyUUID returns a boolean if a field has been set.
-
 ### GetMongodVersion
 
 `func (o *DiskBackupReplicaSet) GetMongodVersion() string`
@@ -289,7 +280,6 @@ SetMongodVersion sets MongodVersion field to given value.
 `func (o *DiskBackupReplicaSet) HasMongodVersion() bool`
 
 HasMongodVersion returns a boolean if a field has been set.
-
 ### GetPolicyItems
 
 `func (o *DiskBackupReplicaSet) GetPolicyItems() []string`
@@ -314,7 +304,6 @@ SetPolicyItems sets PolicyItems field to given value.
 `func (o *DiskBackupReplicaSet) HasPolicyItems() bool`
 
 HasPolicyItems returns a boolean if a field has been set.
-
 ### GetReplicaSetName
 
 `func (o *DiskBackupReplicaSet) GetReplicaSetName() string`
@@ -339,7 +328,6 @@ SetReplicaSetName sets ReplicaSetName field to given value.
 `func (o *DiskBackupReplicaSet) HasReplicaSetName() bool`
 
 HasReplicaSetName returns a boolean if a field has been set.
-
 ### GetSnapshotType
 
 `func (o *DiskBackupReplicaSet) GetSnapshotType() string`
@@ -364,7 +352,6 @@ SetSnapshotType sets SnapshotType field to given value.
 `func (o *DiskBackupReplicaSet) HasSnapshotType() bool`
 
 HasSnapshotType returns a boolean if a field has been set.
-
 ### GetStatus
 
 `func (o *DiskBackupReplicaSet) GetStatus() string`
@@ -389,7 +376,6 @@ SetStatus sets Status field to given value.
 `func (o *DiskBackupReplicaSet) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
-
 ### GetStorageSizeBytes
 
 `func (o *DiskBackupReplicaSet) GetStorageSizeBytes() int64`
@@ -414,7 +400,6 @@ SetStorageSizeBytes sets StorageSizeBytes field to given value.
 `func (o *DiskBackupReplicaSet) HasStorageSizeBytes() bool`
 
 HasStorageSizeBytes returns a boolean if a field has been set.
-
 ### GetType
 
 `func (o *DiskBackupReplicaSet) GetType() string`
@@ -439,7 +424,6 @@ SetType sets Type field to given value.
 `func (o *DiskBackupReplicaSet) HasType() bool`
 
 HasType returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

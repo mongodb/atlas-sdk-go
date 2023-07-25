@@ -50,7 +50,6 @@ SetStatus sets Status field to given value.
 `func (o *LDAPVerifyConnectivityJobRequestValidation) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
-
 ### GetValidationType
 
 `func (o *LDAPVerifyConnectivityJobRequestValidation) GetValidationType() string`
@@ -75,7 +74,6 @@ SetValidationType sets ValidationType field to given value.
 `func (o *LDAPVerifyConnectivityJobRequestValidation) HasValidationType() bool`
 
 HasValidationType returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

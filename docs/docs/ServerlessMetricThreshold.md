@@ -53,7 +53,6 @@ SetMetricName sets MetricName field to given value.
 `func (o *ServerlessMetricThreshold) HasMetricName() bool`
 
 HasMetricName returns a boolean if a field has been set.
-
 ### GetMode
 
 `func (o *ServerlessMetricThreshold) GetMode() string`
@@ -78,7 +77,6 @@ SetMode sets Mode field to given value.
 `func (o *ServerlessMetricThreshold) HasMode() bool`
 
 HasMode returns a boolean if a field has been set.
-
 ### GetOperator
 
 `func (o *ServerlessMetricThreshold) GetOperator() string`
@@ -103,7 +101,6 @@ SetOperator sets Operator field to given value.
 `func (o *ServerlessMetricThreshold) HasOperator() bool`
 
 HasOperator returns a boolean if a field has been set.
-
 ### GetThreshold
 
 `func (o *ServerlessMetricThreshold) GetThreshold() float64`
@@ -128,7 +125,6 @@ SetThreshold sets Threshold field to given value.
 `func (o *ServerlessMetricThreshold) HasThreshold() bool`
 
 HasThreshold returns a boolean if a field has been set.
-
 ### GetUnits
 
 `func (o *ServerlessMetricThreshold) GetUnits() string`
@@ -153,7 +149,6 @@ SetUnits sets Units field to given value.
 `func (o *ServerlessMetricThreshold) HasUnits() bool`
 
 HasUnits returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

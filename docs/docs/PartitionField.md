@@ -46,7 +46,6 @@ and a boolean to check if the value has been set.
 
 SetFieldName sets FieldName field to given value.
 
-
 ### GetFieldType
 
 `func (o *PartitionField) GetFieldType() string`
@@ -71,7 +70,6 @@ SetFieldType sets FieldType field to given value.
 `func (o *PartitionField) HasFieldType() bool`
 
 HasFieldType returns a boolean if a field has been set.
-
 ### GetOrder
 
 `func (o *PartitionField) GetOrder() int`
@@ -90,7 +88,6 @@ and a boolean to check if the value has been set.
 `func (o *PartitionField) SetOrder(v int)`
 
 SetOrder sets Order field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

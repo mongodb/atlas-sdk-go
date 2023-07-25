@@ -50,7 +50,6 @@ SetShapes sets Shapes field to given value.
 `func (o *PerformanceAdvisorResponse) HasShapes() bool`
 
 HasShapes returns a boolean if a field has been set.
-
 ### GetSuggestedIndexes
 
 `func (o *PerformanceAdvisorResponse) GetSuggestedIndexes() []PerformanceAdvisorIndex`
@@ -75,7 +74,6 @@ SetSuggestedIndexes sets SuggestedIndexes field to given value.
 `func (o *PerformanceAdvisorResponse) HasSuggestedIndexes() bool`
 
 HasSuggestedIndexes returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

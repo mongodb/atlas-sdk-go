@@ -59,7 +59,6 @@ SetCreated sets Created field to given value.
 `func (o *GroupAlertsConfig) HasCreated() bool`
 
 HasCreated returns a boolean if a field has been set.
-
 ### GetEnabled
 
 `func (o *GroupAlertsConfig) GetEnabled() bool`
@@ -84,7 +83,6 @@ SetEnabled sets Enabled field to given value.
 `func (o *GroupAlertsConfig) HasEnabled() bool`
 
 HasEnabled returns a boolean if a field has been set.
-
 ### GetEventTypeName
 
 `func (o *GroupAlertsConfig) GetEventTypeName() string`
@@ -109,7 +107,6 @@ SetEventTypeName sets EventTypeName field to given value.
 `func (o *GroupAlertsConfig) HasEventTypeName() bool`
 
 HasEventTypeName returns a boolean if a field has been set.
-
 ### GetGroupId
 
 `func (o *GroupAlertsConfig) GetGroupId() string`
@@ -134,7 +131,6 @@ SetGroupId sets GroupId field to given value.
 `func (o *GroupAlertsConfig) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
-
 ### GetId
 
 `func (o *GroupAlertsConfig) GetId() string`
@@ -159,7 +155,6 @@ SetId sets Id field to given value.
 `func (o *GroupAlertsConfig) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *GroupAlertsConfig) GetLinks() []Link`
@@ -184,7 +179,6 @@ SetLinks sets Links field to given value.
 `func (o *GroupAlertsConfig) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetMatchers
 
 `func (o *GroupAlertsConfig) GetMatchers() []map[string]interface{}`
@@ -209,7 +203,6 @@ SetMatchers sets Matchers field to given value.
 `func (o *GroupAlertsConfig) HasMatchers() bool`
 
 HasMatchers returns a boolean if a field has been set.
-
 ### GetNotifications
 
 `func (o *GroupAlertsConfig) GetNotifications() []AlertsNotificationRootForGroup`
@@ -234,7 +227,6 @@ SetNotifications sets Notifications field to given value.
 `func (o *GroupAlertsConfig) HasNotifications() bool`
 
 HasNotifications returns a boolean if a field has been set.
-
 ### GetUpdated
 
 `func (o *GroupAlertsConfig) GetUpdated() time.Time`
@@ -259,7 +251,6 @@ SetUpdated sets Updated field to given value.
 `func (o *GroupAlertsConfig) HasUpdated() bool`
 
 HasUpdated returns a boolean if a field has been set.
-
 ### GetMetricThreshold
 
 `func (o *GroupAlertsConfig) GetMetricThreshold() ServerlessMetricThreshold`
@@ -284,7 +275,6 @@ SetMetricThreshold sets MetricThreshold field to given value.
 `func (o *GroupAlertsConfig) HasMetricThreshold() bool`
 
 HasMetricThreshold returns a boolean if a field has been set.
-
 ### GetThreshold
 
 `func (o *GroupAlertsConfig) GetThreshold() GreaterThanRawThreshold`
@@ -309,7 +299,6 @@ SetThreshold sets Threshold field to given value.
 `func (o *GroupAlertsConfig) HasThreshold() bool`
 
 HasThreshold returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **TlsPemPath** | Pointer to **string** | Root-relative path to the Transport Layer Security (TLS) Privacy Enhanced Mail (PEM) key and certificate file on the host. | [optional] 
 **Username** | Pointer to **string** | Human-readable label that identifies your Prometheus incoming webhook. | [optional] 
 **ApiToken** | Pointer to **string** | Key that allows MongoDB Cloud to access your Slack account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.  **IMPORTANT**: Slack integrations now use the OAuth2 verification method and must  be initially configured, or updated from a legacy integration, through the Atlas  third-party service integrations page. Legacy tokens will soon no longer be  supported. | [optional] 
-**ChannelName** | Pointer to **NullableString** | Name of the Slack channel to which MongoDB Cloud sends alert notifications. | [optional] 
+**ChannelName** | Pointer to **string** | Name of the Slack channel to which MongoDB Cloud sends alert notifications. | [optional] 
 **TeamName** | Pointer to **string** | Human-readable label that identifies your Slack team. Set this parameter when you configure a legacy Slack integration. | [optional] 
 **RoutingKey** | Pointer to **string** | Routing key associated with your Splunk On-Call account. | [optional] 
 **Secret** | Pointer to **string** | An optional field returned if your webhook is configured with a secret.  **NOTE**: When you view or edit the alert for a webhook notification, the secret appears completely redacted. | [optional] 
@@ -71,7 +71,6 @@ SetType sets Type field to given value.
 `func (o *ThridPartyIntegration) HasType() bool`
 
 HasType returns a boolean if a field has been set.
-
 ### GetApiKey
 
 `func (o *ThridPartyIntegration) GetApiKey() string`
@@ -96,7 +95,6 @@ SetApiKey sets ApiKey field to given value.
 `func (o *ThridPartyIntegration) HasApiKey() bool`
 
 HasApiKey returns a boolean if a field has been set.
-
 ### GetRegion
 
 `func (o *ThridPartyIntegration) GetRegion() string`
@@ -121,7 +119,6 @@ SetRegion sets Region field to given value.
 `func (o *ThridPartyIntegration) HasRegion() bool`
 
 HasRegion returns a boolean if a field has been set.
-
 ### GetMicrosoftTeamsWebhookUrl
 
 `func (o *ThridPartyIntegration) GetMicrosoftTeamsWebhookUrl() string`
@@ -146,7 +143,6 @@ SetMicrosoftTeamsWebhookUrl sets MicrosoftTeamsWebhookUrl field to given value.
 `func (o *ThridPartyIntegration) HasMicrosoftTeamsWebhookUrl() bool`
 
 HasMicrosoftTeamsWebhookUrl returns a boolean if a field has been set.
-
 ### GetAccountId
 
 `func (o *ThridPartyIntegration) GetAccountId() string`
@@ -171,7 +167,6 @@ SetAccountId sets AccountId field to given value.
 `func (o *ThridPartyIntegration) HasAccountId() bool`
 
 HasAccountId returns a boolean if a field has been set.
-
 ### GetLicenseKey
 
 `func (o *ThridPartyIntegration) GetLicenseKey() string`
@@ -196,7 +191,6 @@ SetLicenseKey sets LicenseKey field to given value.
 `func (o *ThridPartyIntegration) HasLicenseKey() bool`
 
 HasLicenseKey returns a boolean if a field has been set.
-
 ### GetReadToken
 
 `func (o *ThridPartyIntegration) GetReadToken() string`
@@ -221,7 +215,6 @@ SetReadToken sets ReadToken field to given value.
 `func (o *ThridPartyIntegration) HasReadToken() bool`
 
 HasReadToken returns a boolean if a field has been set.
-
 ### GetWriteToken
 
 `func (o *ThridPartyIntegration) GetWriteToken() string`
@@ -246,7 +239,6 @@ SetWriteToken sets WriteToken field to given value.
 `func (o *ThridPartyIntegration) HasWriteToken() bool`
 
 HasWriteToken returns a boolean if a field has been set.
-
 ### GetServiceKey
 
 `func (o *ThridPartyIntegration) GetServiceKey() string`
@@ -271,7 +263,6 @@ SetServiceKey sets ServiceKey field to given value.
 `func (o *ThridPartyIntegration) HasServiceKey() bool`
 
 HasServiceKey returns a boolean if a field has been set.
-
 ### GetEnabled
 
 `func (o *ThridPartyIntegration) GetEnabled() bool`
@@ -296,7 +287,6 @@ SetEnabled sets Enabled field to given value.
 `func (o *ThridPartyIntegration) HasEnabled() bool`
 
 HasEnabled returns a boolean if a field has been set.
-
 ### GetListenAddress
 
 `func (o *ThridPartyIntegration) GetListenAddress() string`
@@ -321,7 +311,6 @@ SetListenAddress sets ListenAddress field to given value.
 `func (o *ThridPartyIntegration) HasListenAddress() bool`
 
 HasListenAddress returns a boolean if a field has been set.
-
 ### GetPassword
 
 `func (o *ThridPartyIntegration) GetPassword() string`
@@ -346,7 +335,6 @@ SetPassword sets Password field to given value.
 `func (o *ThridPartyIntegration) HasPassword() bool`
 
 HasPassword returns a boolean if a field has been set.
-
 ### GetRateLimitInterval
 
 `func (o *ThridPartyIntegration) GetRateLimitInterval() int`
@@ -371,7 +359,6 @@ SetRateLimitInterval sets RateLimitInterval field to given value.
 `func (o *ThridPartyIntegration) HasRateLimitInterval() bool`
 
 HasRateLimitInterval returns a boolean if a field has been set.
-
 ### GetScheme
 
 `func (o *ThridPartyIntegration) GetScheme() string`
@@ -396,7 +383,6 @@ SetScheme sets Scheme field to given value.
 `func (o *ThridPartyIntegration) HasScheme() bool`
 
 HasScheme returns a boolean if a field has been set.
-
 ### GetServiceDiscovery
 
 `func (o *ThridPartyIntegration) GetServiceDiscovery() string`
@@ -421,7 +407,6 @@ SetServiceDiscovery sets ServiceDiscovery field to given value.
 `func (o *ThridPartyIntegration) HasServiceDiscovery() bool`
 
 HasServiceDiscovery returns a boolean if a field has been set.
-
 ### GetTlsPemPath
 
 `func (o *ThridPartyIntegration) GetTlsPemPath() string`
@@ -446,7 +431,6 @@ SetTlsPemPath sets TlsPemPath field to given value.
 `func (o *ThridPartyIntegration) HasTlsPemPath() bool`
 
 HasTlsPemPath returns a boolean if a field has been set.
-
 ### GetUsername
 
 `func (o *ThridPartyIntegration) GetUsername() string`
@@ -471,7 +455,6 @@ SetUsername sets Username field to given value.
 `func (o *ThridPartyIntegration) HasUsername() bool`
 
 HasUsername returns a boolean if a field has been set.
-
 ### GetApiToken
 
 `func (o *ThridPartyIntegration) GetApiToken() string`
@@ -496,7 +479,6 @@ SetApiToken sets ApiToken field to given value.
 `func (o *ThridPartyIntegration) HasApiToken() bool`
 
 HasApiToken returns a boolean if a field has been set.
-
 ### GetChannelName
 
 `func (o *ThridPartyIntegration) GetChannelName() string`
@@ -521,17 +503,6 @@ SetChannelName sets ChannelName field to given value.
 `func (o *ThridPartyIntegration) HasChannelName() bool`
 
 HasChannelName returns a boolean if a field has been set.
-
-### SetChannelNameNil
-
-`func (o *ThridPartyIntegration) SetChannelNameNil(b bool)`
-
- SetChannelNameNil sets the value for ChannelName to be an explicit nil
-
-### UnsetChannelName
-`func (o *ThridPartyIntegration) UnsetChannelName()`
-
-UnsetChannelName ensures that no value is present for ChannelName, not even an explicit nil
 ### GetTeamName
 
 `func (o *ThridPartyIntegration) GetTeamName() string`
@@ -556,7 +527,6 @@ SetTeamName sets TeamName field to given value.
 `func (o *ThridPartyIntegration) HasTeamName() bool`
 
 HasTeamName returns a boolean if a field has been set.
-
 ### GetRoutingKey
 
 `func (o *ThridPartyIntegration) GetRoutingKey() string`
@@ -581,7 +551,6 @@ SetRoutingKey sets RoutingKey field to given value.
 `func (o *ThridPartyIntegration) HasRoutingKey() bool`
 
 HasRoutingKey returns a boolean if a field has been set.
-
 ### GetSecret
 
 `func (o *ThridPartyIntegration) GetSecret() string`
@@ -606,7 +575,6 @@ SetSecret sets Secret field to given value.
 `func (o *ThridPartyIntegration) HasSecret() bool`
 
 HasSecret returns a boolean if a field has been set.
-
 ### GetUrl
 
 `func (o *ThridPartyIntegration) GetUrl() string`
@@ -631,7 +599,6 @@ SetUrl sets Url field to given value.
 `func (o *ThridPartyIntegration) HasUrl() bool`
 
 HasUrl returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

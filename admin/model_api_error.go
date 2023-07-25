@@ -8,6 +8,7 @@ import (
 
 // ApiError struct for ApiError
 type ApiError struct {
+	// Describes the specific conditions or reasons that cause each type of error.
 	Detail *string `json:"detail,omitempty"`
 	// HTTP status code returned with this error.
 	Error *int `json:"error,omitempty"`

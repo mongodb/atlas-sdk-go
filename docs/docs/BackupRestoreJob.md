@@ -66,7 +66,6 @@ SetBatchId sets BatchId field to given value.
 `func (o *BackupRestoreJob) HasBatchId() bool`
 
 HasBatchId returns a boolean if a field has been set.
-
 ### GetCheckpointId
 
 `func (o *BackupRestoreJob) GetCheckpointId() string`
@@ -91,7 +90,6 @@ SetCheckpointId sets CheckpointId field to given value.
 `func (o *BackupRestoreJob) HasCheckpointId() bool`
 
 HasCheckpointId returns a boolean if a field has been set.
-
 ### GetClusterId
 
 `func (o *BackupRestoreJob) GetClusterId() string`
@@ -116,7 +114,6 @@ SetClusterId sets ClusterId field to given value.
 `func (o *BackupRestoreJob) HasClusterId() bool`
 
 HasClusterId returns a boolean if a field has been set.
-
 ### GetClusterName
 
 `func (o *BackupRestoreJob) GetClusterName() string`
@@ -141,7 +138,6 @@ SetClusterName sets ClusterName field to given value.
 `func (o *BackupRestoreJob) HasClusterName() bool`
 
 HasClusterName returns a boolean if a field has been set.
-
 ### GetCreated
 
 `func (o *BackupRestoreJob) GetCreated() time.Time`
@@ -166,7 +162,6 @@ SetCreated sets Created field to given value.
 `func (o *BackupRestoreJob) HasCreated() bool`
 
 HasCreated returns a boolean if a field has been set.
-
 ### GetDelivery
 
 `func (o *BackupRestoreJob) GetDelivery() BackupRestoreJobDelivery`
@@ -185,7 +180,6 @@ and a boolean to check if the value has been set.
 `func (o *BackupRestoreJob) SetDelivery(v BackupRestoreJobDelivery)`
 
 SetDelivery sets Delivery field to given value.
-
 
 ### GetEncryptionEnabled
 
@@ -211,7 +205,6 @@ SetEncryptionEnabled sets EncryptionEnabled field to given value.
 `func (o *BackupRestoreJob) HasEncryptionEnabled() bool`
 
 HasEncryptionEnabled returns a boolean if a field has been set.
-
 ### GetGroupId
 
 `func (o *BackupRestoreJob) GetGroupId() string`
@@ -236,7 +229,6 @@ SetGroupId sets GroupId field to given value.
 `func (o *BackupRestoreJob) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
-
 ### GetHashes
 
 `func (o *BackupRestoreJob) GetHashes() []RestoreJobFileHash`
@@ -261,7 +253,6 @@ SetHashes sets Hashes field to given value.
 `func (o *BackupRestoreJob) HasHashes() bool`
 
 HasHashes returns a boolean if a field has been set.
-
 ### GetId
 
 `func (o *BackupRestoreJob) GetId() string`
@@ -286,7 +277,6 @@ SetId sets Id field to given value.
 `func (o *BackupRestoreJob) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *BackupRestoreJob) GetLinks() []Link`
@@ -311,7 +301,6 @@ SetLinks sets Links field to given value.
 `func (o *BackupRestoreJob) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetMasterKeyUUID
 
 `func (o *BackupRestoreJob) GetMasterKeyUUID() string`
@@ -336,7 +325,6 @@ SetMasterKeyUUID sets MasterKeyUUID field to given value.
 `func (o *BackupRestoreJob) HasMasterKeyUUID() bool`
 
 HasMasterKeyUUID returns a boolean if a field has been set.
-
 ### GetOplogInc
 
 `func (o *BackupRestoreJob) GetOplogInc() int`
@@ -361,7 +349,6 @@ SetOplogInc sets OplogInc field to given value.
 `func (o *BackupRestoreJob) HasOplogInc() bool`
 
 HasOplogInc returns a boolean if a field has been set.
-
 ### GetOplogTs
 
 `func (o *BackupRestoreJob) GetOplogTs() string`
@@ -386,7 +373,6 @@ SetOplogTs sets OplogTs field to given value.
 `func (o *BackupRestoreJob) HasOplogTs() bool`
 
 HasOplogTs returns a boolean if a field has been set.
-
 ### GetPointInTimeUTCMillis
 
 `func (o *BackupRestoreJob) GetPointInTimeUTCMillis() int64`
@@ -411,7 +397,6 @@ SetPointInTimeUTCMillis sets PointInTimeUTCMillis field to given value.
 `func (o *BackupRestoreJob) HasPointInTimeUTCMillis() bool`
 
 HasPointInTimeUTCMillis returns a boolean if a field has been set.
-
 ### GetSnapshotId
 
 `func (o *BackupRestoreJob) GetSnapshotId() string`
@@ -436,7 +421,6 @@ SetSnapshotId sets SnapshotId field to given value.
 `func (o *BackupRestoreJob) HasSnapshotId() bool`
 
 HasSnapshotId returns a boolean if a field has been set.
-
 ### GetStatusName
 
 `func (o *BackupRestoreJob) GetStatusName() string`
@@ -461,7 +445,6 @@ SetStatusName sets StatusName field to given value.
 `func (o *BackupRestoreJob) HasStatusName() bool`
 
 HasStatusName returns a boolean if a field has been set.
-
 ### GetTimestamp
 
 `func (o *BackupRestoreJob) GetTimestamp() ApiBSONTimestamp`
@@ -486,7 +469,6 @@ SetTimestamp sets Timestamp field to given value.
 `func (o *BackupRestoreJob) HasTimestamp() bool`
 
 HasTimestamp returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

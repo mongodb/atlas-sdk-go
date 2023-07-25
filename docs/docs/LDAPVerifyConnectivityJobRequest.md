@@ -54,7 +54,6 @@ SetGroupId sets GroupId field to given value.
 `func (o *LDAPVerifyConnectivityJobRequest) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *LDAPVerifyConnectivityJobRequest) GetLinks() []Link`
@@ -79,7 +78,6 @@ SetLinks sets Links field to given value.
 `func (o *LDAPVerifyConnectivityJobRequest) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetRequest
 
 `func (o *LDAPVerifyConnectivityJobRequest) GetRequest() LDAPVerifyConnectivityJobRequestParams`
@@ -104,7 +102,6 @@ SetRequest sets Request field to given value.
 `func (o *LDAPVerifyConnectivityJobRequest) HasRequest() bool`
 
 HasRequest returns a boolean if a field has been set.
-
 ### GetRequestId
 
 `func (o *LDAPVerifyConnectivityJobRequest) GetRequestId() string`
@@ -129,7 +126,6 @@ SetRequestId sets RequestId field to given value.
 `func (o *LDAPVerifyConnectivityJobRequest) HasRequestId() bool`
 
 HasRequestId returns a boolean if a field has been set.
-
 ### GetStatus
 
 `func (o *LDAPVerifyConnectivityJobRequest) GetStatus() string`
@@ -154,7 +150,6 @@ SetStatus sets Status field to given value.
 `func (o *LDAPVerifyConnectivityJobRequest) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
-
 ### GetValidations
 
 `func (o *LDAPVerifyConnectivityJobRequest) GetValidations() []LDAPVerifyConnectivityJobRequestValidation`
@@ -179,7 +174,6 @@ SetValidations sets Validations field to given value.
 `func (o *LDAPVerifyConnectivityJobRequest) HasValidations() bool`
 
 HasValidations returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

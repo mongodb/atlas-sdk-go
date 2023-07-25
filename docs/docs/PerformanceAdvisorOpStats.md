@@ -52,7 +52,6 @@ SetMs sets Ms field to given value.
 `func (o *PerformanceAdvisorOpStats) HasMs() bool`
 
 HasMs returns a boolean if a field has been set.
-
 ### GetNReturned
 
 `func (o *PerformanceAdvisorOpStats) GetNReturned() int64`
@@ -77,7 +76,6 @@ SetNReturned sets NReturned field to given value.
 `func (o *PerformanceAdvisorOpStats) HasNReturned() bool`
 
 HasNReturned returns a boolean if a field has been set.
-
 ### GetNScanned
 
 `func (o *PerformanceAdvisorOpStats) GetNScanned() int64`
@@ -102,7 +100,6 @@ SetNScanned sets NScanned field to given value.
 `func (o *PerformanceAdvisorOpStats) HasNScanned() bool`
 
 HasNScanned returns a boolean if a field has been set.
-
 ### GetTs
 
 `func (o *PerformanceAdvisorOpStats) GetTs() int64`
@@ -127,7 +124,6 @@ SetTs sets Ts field to given value.
 `func (o *PerformanceAdvisorOpStats) HasTs() bool`
 
 HasTs returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

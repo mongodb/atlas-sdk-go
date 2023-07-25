@@ -51,7 +51,6 @@ SetDescription sets Description field to given value.
 `func (o *DiskBackupOnDemandSnapshotRequest) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *DiskBackupOnDemandSnapshotRequest) GetLinks() []Link`
@@ -76,7 +75,6 @@ SetLinks sets Links field to given value.
 `func (o *DiskBackupOnDemandSnapshotRequest) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetRetentionInDays
 
 `func (o *DiskBackupOnDemandSnapshotRequest) GetRetentionInDays() int`
@@ -101,7 +99,6 @@ SetRetentionInDays sets RetentionInDays field to given value.
 `func (o *DiskBackupOnDemandSnapshotRequest) HasRetentionInDays() bool`
 
 HasRetentionInDays returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

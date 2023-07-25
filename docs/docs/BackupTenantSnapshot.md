@@ -56,7 +56,6 @@ SetExpiration sets Expiration field to given value.
 `func (o *BackupTenantSnapshot) HasExpiration() bool`
 
 HasExpiration returns a boolean if a field has been set.
-
 ### GetFinishTime
 
 `func (o *BackupTenantSnapshot) GetFinishTime() time.Time`
@@ -81,7 +80,6 @@ SetFinishTime sets FinishTime field to given value.
 `func (o *BackupTenantSnapshot) HasFinishTime() bool`
 
 HasFinishTime returns a boolean if a field has been set.
-
 ### GetId
 
 `func (o *BackupTenantSnapshot) GetId() string`
@@ -106,7 +104,6 @@ SetId sets Id field to given value.
 `func (o *BackupTenantSnapshot) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *BackupTenantSnapshot) GetLinks() []Link`
@@ -131,7 +128,6 @@ SetLinks sets Links field to given value.
 `func (o *BackupTenantSnapshot) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetMongoDBVersion
 
 `func (o *BackupTenantSnapshot) GetMongoDBVersion() string`
@@ -156,7 +152,6 @@ SetMongoDBVersion sets MongoDBVersion field to given value.
 `func (o *BackupTenantSnapshot) HasMongoDBVersion() bool`
 
 HasMongoDBVersion returns a boolean if a field has been set.
-
 ### GetScheduledTime
 
 `func (o *BackupTenantSnapshot) GetScheduledTime() time.Time`
@@ -181,7 +176,6 @@ SetScheduledTime sets ScheduledTime field to given value.
 `func (o *BackupTenantSnapshot) HasScheduledTime() bool`
 
 HasScheduledTime returns a boolean if a field has been set.
-
 ### GetStartTime
 
 `func (o *BackupTenantSnapshot) GetStartTime() time.Time`
@@ -206,7 +200,6 @@ SetStartTime sets StartTime field to given value.
 `func (o *BackupTenantSnapshot) HasStartTime() bool`
 
 HasStartTime returns a boolean if a field has been set.
-
 ### GetStatus
 
 `func (o *BackupTenantSnapshot) GetStatus() string`
@@ -231,7 +224,6 @@ SetStatus sets Status field to given value.
 `func (o *BackupTenantSnapshot) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

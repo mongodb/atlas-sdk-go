@@ -24,7 +24,7 @@ type OnlineArchiveApi interface {
 		@param clusterName Human-readable label that identifies the cluster that contains the collection for which you want to create one online archive.
 		@return CreateOnlineArchiveApiRequest
 	*/
-	CreateOnlineArchive(ctx context.Context, groupId string, clusterName string, backupOnlineArchive *BackupOnlineArchive) CreateOnlineArchiveApiRequest
+	CreateOnlineArchive(ctx context.Context, groupId string, clusterName string, backupOnlineArchiveCreate *BackupOnlineArchiveCreate) CreateOnlineArchiveApiRequest
 	/*
 		CreateOnlineArchive Create One Online Archive
 
@@ -166,26 +166,26 @@ type OnlineArchiveApi interface {
 type OnlineArchiveApiService service
 
 type CreateOnlineArchiveApiRequest struct {
-	ctx                 context.Context
-	ApiService          OnlineArchiveApi
-	groupId             string
-	clusterName         string
-	backupOnlineArchive *BackupOnlineArchive
+	ctx                       context.Context
+	ApiService                OnlineArchiveApi
+	groupId                   string
+	clusterName               string
+	backupOnlineArchiveCreate *BackupOnlineArchiveCreate
 }
 
 type CreateOnlineArchiveApiParams struct {
-	GroupId             string
-	ClusterName         string
-	BackupOnlineArchive *BackupOnlineArchive
+	GroupId                   string
+	ClusterName               string
+	BackupOnlineArchiveCreate *BackupOnlineArchiveCreate
 }
 
 func (a *OnlineArchiveApiService) CreateOnlineArchiveWithParams(ctx context.Context, args *CreateOnlineArchiveApiParams) CreateOnlineArchiveApiRequest {
 	return CreateOnlineArchiveApiRequest{
-		ApiService:          a,
-		ctx:                 ctx,
-		groupId:             args.GroupId,
-		clusterName:         args.ClusterName,
-		backupOnlineArchive: args.BackupOnlineArchive,
+		ApiService:                a,
+		ctx:                       ctx,
+		groupId:                   args.GroupId,
+		clusterName:               args.ClusterName,
+		backupOnlineArchiveCreate: args.BackupOnlineArchiveCreate,
 	}
 }
 
@@ -203,13 +203,13 @@ Creates one online archive. This archive stores data from one cluster within one
 	@param clusterName Human-readable label that identifies the cluster that contains the collection for which you want to create one online archive.
 	@return CreateOnlineArchiveApiRequest
 */
-func (a *OnlineArchiveApiService) CreateOnlineArchive(ctx context.Context, groupId string, clusterName string, backupOnlineArchive *BackupOnlineArchive) CreateOnlineArchiveApiRequest {
+func (a *OnlineArchiveApiService) CreateOnlineArchive(ctx context.Context, groupId string, clusterName string, backupOnlineArchiveCreate *BackupOnlineArchiveCreate) CreateOnlineArchiveApiRequest {
 	return CreateOnlineArchiveApiRequest{
-		ApiService:          a,
-		ctx:                 ctx,
-		groupId:             groupId,
-		clusterName:         clusterName,
-		backupOnlineArchive: backupOnlineArchive,
+		ApiService:                a,
+		ctx:                       ctx,
+		groupId:                   groupId,
+		clusterName:               clusterName,
+		backupOnlineArchiveCreate: backupOnlineArchiveCreate,
 	}
 }
 
@@ -248,8 +248,8 @@ func (a *OnlineArchiveApiService) createOnlineArchiveExecute(r CreateOnlineArchi
 	if strlen(r.clusterName) > 64 {
 		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
 	}
-	if r.backupOnlineArchive == nil {
-		return localVarReturnValue, nil, reportError("backupOnlineArchive is required and must be specified")
+	if r.backupOnlineArchiveCreate == nil {
+		return localVarReturnValue, nil, reportError("backupOnlineArchiveCreate is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -270,7 +270,7 @@ func (a *OnlineArchiveApiService) createOnlineArchiveExecute(r CreateOnlineArchi
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.backupOnlineArchive
+	localVarPostBody = r.backupOnlineArchiveCreate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

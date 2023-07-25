@@ -51,7 +51,6 @@ SetActions sets Actions field to given value.
 `func (o *UserCustomDBRole) HasActions() bool`
 
 HasActions returns a boolean if a field has been set.
-
 ### GetInheritedRoles
 
 `func (o *UserCustomDBRole) GetInheritedRoles() []DatabaseInheritedRole`
@@ -76,7 +75,6 @@ SetInheritedRoles sets InheritedRoles field to given value.
 `func (o *UserCustomDBRole) HasInheritedRoles() bool`
 
 HasInheritedRoles returns a boolean if a field has been set.
-
 ### GetRoleName
 
 `func (o *UserCustomDBRole) GetRoleName() string`
@@ -95,7 +93,6 @@ and a boolean to check if the value has been set.
 `func (o *UserCustomDBRole) SetRoleName(v string)`
 
 SetRoleName sets RoleName field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

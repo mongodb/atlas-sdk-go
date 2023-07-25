@@ -45,7 +45,6 @@ and a boolean to check if the value has been set.
 
 SetDb sets Db field to given value.
 
-
 ### GetRole
 
 `func (o *DatabaseInheritedRole) GetRole() string`
@@ -64,7 +63,6 @@ and a boolean to check if the value has been set.
 `func (o *DatabaseInheritedRole) SetRole(v string)`
 
 SetRole sets Role field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

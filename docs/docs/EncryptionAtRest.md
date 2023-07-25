@@ -51,7 +51,6 @@ SetAwsKms sets AwsKms field to given value.
 `func (o *EncryptionAtRest) HasAwsKms() bool`
 
 HasAwsKms returns a boolean if a field has been set.
-
 ### GetAzureKeyVault
 
 `func (o *EncryptionAtRest) GetAzureKeyVault() AzureKeyVault`
@@ -76,7 +75,6 @@ SetAzureKeyVault sets AzureKeyVault field to given value.
 `func (o *EncryptionAtRest) HasAzureKeyVault() bool`
 
 HasAzureKeyVault returns a boolean if a field has been set.
-
 ### GetGoogleCloudKms
 
 `func (o *EncryptionAtRest) GetGoogleCloudKms() GoogleCloudKMS`
@@ -101,7 +99,6 @@ SetGoogleCloudKms sets GoogleCloudKms field to given value.
 `func (o *EncryptionAtRest) HasGoogleCloudKms() bool`
 
 HasGoogleCloudKms returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

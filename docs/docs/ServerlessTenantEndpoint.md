@@ -57,7 +57,6 @@ SetId sets Id field to given value.
 `func (o *ServerlessTenantEndpoint) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetCloudProviderEndpointId
 
 `func (o *ServerlessTenantEndpoint) GetCloudProviderEndpointId() string`
@@ -82,7 +81,6 @@ SetCloudProviderEndpointId sets CloudProviderEndpointId field to given value.
 `func (o *ServerlessTenantEndpoint) HasCloudProviderEndpointId() bool`
 
 HasCloudProviderEndpointId returns a boolean if a field has been set.
-
 ### GetComment
 
 `func (o *ServerlessTenantEndpoint) GetComment() string`
@@ -107,7 +105,6 @@ SetComment sets Comment field to given value.
 `func (o *ServerlessTenantEndpoint) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
-
 ### GetEndpointServiceName
 
 `func (o *ServerlessTenantEndpoint) GetEndpointServiceName() string`
@@ -132,7 +129,6 @@ SetEndpointServiceName sets EndpointServiceName field to given value.
 `func (o *ServerlessTenantEndpoint) HasEndpointServiceName() bool`
 
 HasEndpointServiceName returns a boolean if a field has been set.
-
 ### GetErrorMessage
 
 `func (o *ServerlessTenantEndpoint) GetErrorMessage() string`
@@ -157,7 +153,6 @@ SetErrorMessage sets ErrorMessage field to given value.
 `func (o *ServerlessTenantEndpoint) HasErrorMessage() bool`
 
 HasErrorMessage returns a boolean if a field has been set.
-
 ### GetStatus
 
 `func (o *ServerlessTenantEndpoint) GetStatus() string`
@@ -182,7 +177,6 @@ SetStatus sets Status field to given value.
 `func (o *ServerlessTenantEndpoint) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
-
 ### GetProviderName
 
 `func (o *ServerlessTenantEndpoint) GetProviderName() string`
@@ -207,7 +201,6 @@ SetProviderName sets ProviderName field to given value.
 `func (o *ServerlessTenantEndpoint) HasProviderName() bool`
 
 HasProviderName returns a boolean if a field has been set.
-
 ### GetPrivateEndpointIpAddress
 
 `func (o *ServerlessTenantEndpoint) GetPrivateEndpointIpAddress() string`
@@ -232,7 +225,6 @@ SetPrivateEndpointIpAddress sets PrivateEndpointIpAddress field to given value.
 `func (o *ServerlessTenantEndpoint) HasPrivateEndpointIpAddress() bool`
 
 HasPrivateEndpointIpAddress returns a boolean if a field has been set.
-
 ### GetPrivateLinkServiceResourceId
 
 `func (o *ServerlessTenantEndpoint) GetPrivateLinkServiceResourceId() string`
@@ -257,7 +249,6 @@ SetPrivateLinkServiceResourceId sets PrivateLinkServiceResourceId field to given
 `func (o *ServerlessTenantEndpoint) HasPrivateLinkServiceResourceId() bool`
 
 HasPrivateLinkServiceResourceId returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

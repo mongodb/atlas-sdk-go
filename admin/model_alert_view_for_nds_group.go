@@ -45,7 +45,8 @@ type AlertViewForNdsGroup struct {
 	ReplicaSetName *string            `json:"replicaSetName,omitempty"`
 	CurrentValue   *NumberMetricValue `json:"currentValue,omitempty"`
 	// Name of the metric against which Atlas checks the configured `metricThreshold.threshold`.  To learn more about the available metrics, see <a href=\"https://www.mongodb.com/docs/atlas/reference/alert-host-metrics/#std-label-measurement-types\" target=\"_blank\">Host Metrics</a>.  **NOTE**: If you set eventTypeName to OUTSIDE_SERVERLESS_METRIC_THRESHOLD, you can specify only metrics available for serverless. To learn more, see <a href=\"https://dochub.mongodb.org/core/alert-config-serverless-measurements\" target=\"_blank\">Serverless Measurements</a>.
-	MetricName        *string  `json:"metricName,omitempty"`
+	MetricName *string `json:"metricName,omitempty"`
+	// List of unique 24-hexadecimal character strings that identify the replica set members that are not in PRIMARY nor SECONDARY state.
 	NonRunningHostIds []string `json:"nonRunningHostIds,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the parent cluster to which this alert applies. The parent cluster contains the sharded nodes. MongoDB Cloud returns this parameter only for alerts of events impacting sharded clusters.
 	ParentClusterId *string `json:"parentClusterId,omitempty"`

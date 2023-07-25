@@ -55,7 +55,6 @@ SetClusters sets Clusters field to given value.
 `func (o *OrgGroup) HasClusters() bool`
 
 HasClusters returns a boolean if a field has been set.
-
 ### GetGroupId
 
 `func (o *OrgGroup) GetGroupId() string`
@@ -80,7 +79,6 @@ SetGroupId sets GroupId field to given value.
 `func (o *OrgGroup) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
-
 ### GetGroupName
 
 `func (o *OrgGroup) GetGroupName() string`
@@ -105,7 +103,6 @@ SetGroupName sets GroupName field to given value.
 `func (o *OrgGroup) HasGroupName() bool`
 
 HasGroupName returns a boolean if a field has been set.
-
 ### GetOrgId
 
 `func (o *OrgGroup) GetOrgId() string`
@@ -130,7 +127,6 @@ SetOrgId sets OrgId field to given value.
 `func (o *OrgGroup) HasOrgId() bool`
 
 HasOrgId returns a boolean if a field has been set.
-
 ### GetOrgName
 
 `func (o *OrgGroup) GetOrgName() string`
@@ -155,7 +151,6 @@ SetOrgName sets OrgName field to given value.
 `func (o *OrgGroup) HasOrgName() bool`
 
 HasOrgName returns a boolean if a field has been set.
-
 ### GetPlanType
 
 `func (o *OrgGroup) GetPlanType() string`
@@ -180,7 +175,6 @@ SetPlanType sets PlanType field to given value.
 `func (o *OrgGroup) HasPlanType() bool`
 
 HasPlanType returns a boolean if a field has been set.
-
 ### GetTags
 
 `func (o *OrgGroup) GetTags() []string`
@@ -205,7 +199,6 @@ SetTags sets Tags field to given value.
 `func (o *OrgGroup) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

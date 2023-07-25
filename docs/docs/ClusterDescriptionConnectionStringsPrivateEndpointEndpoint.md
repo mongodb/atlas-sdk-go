@@ -51,7 +51,6 @@ SetEndpointId sets EndpointId field to given value.
 `func (o *ClusterDescriptionConnectionStringsPrivateEndpointEndpoint) HasEndpointId() bool`
 
 HasEndpointId returns a boolean if a field has been set.
-
 ### GetProviderName
 
 `func (o *ClusterDescriptionConnectionStringsPrivateEndpointEndpoint) GetProviderName() string`
@@ -76,7 +75,6 @@ SetProviderName sets ProviderName field to given value.
 `func (o *ClusterDescriptionConnectionStringsPrivateEndpointEndpoint) HasProviderName() bool`
 
 HasProviderName returns a boolean if a field has been set.
-
 ### GetRegion
 
 `func (o *ClusterDescriptionConnectionStringsPrivateEndpointEndpoint) GetRegion() string`
@@ -101,7 +99,6 @@ SetRegion sets Region field to given value.
 `func (o *ClusterDescriptionConnectionStringsPrivateEndpointEndpoint) HasRegion() bool`
 
 HasRegion returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

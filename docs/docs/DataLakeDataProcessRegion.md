@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CloudProvider** | **string** | Name of the cloud service that hosts the data lake&#39;s data stores. | 
-**Region** | **string** | Atlas Data Lake Regions. | 
+**Region** | **string** | Name of the region to which the data lake routes client connections. | 
 
 ## Methods
 
@@ -45,7 +45,6 @@ and a boolean to check if the value has been set.
 
 SetCloudProvider sets CloudProvider field to given value.
 
-
 ### GetRegion
 
 `func (o *DataLakeDataProcessRegion) GetRegion() string`
@@ -64,7 +63,6 @@ and a boolean to check if the value has been set.
 `func (o *DataLakeDataProcessRegion) SetRegion(v string)`
 
 SetRegion sets Region field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

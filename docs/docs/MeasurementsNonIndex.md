@@ -56,7 +56,6 @@ SetEnd sets End field to given value.
 `func (o *MeasurementsNonIndex) HasEnd() bool`
 
 HasEnd returns a boolean if a field has been set.
-
 ### GetGranularity
 
 `func (o *MeasurementsNonIndex) GetGranularity() string`
@@ -81,7 +80,6 @@ SetGranularity sets Granularity field to given value.
 `func (o *MeasurementsNonIndex) HasGranularity() bool`
 
 HasGranularity returns a boolean if a field has been set.
-
 ### GetGroupId
 
 `func (o *MeasurementsNonIndex) GetGroupId() string`
@@ -106,7 +104,6 @@ SetGroupId sets GroupId field to given value.
 `func (o *MeasurementsNonIndex) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
-
 ### GetHardwareMeasurements
 
 `func (o *MeasurementsNonIndex) GetHardwareMeasurements() []MetricsMeasurement`
@@ -131,7 +128,6 @@ SetHardwareMeasurements sets HardwareMeasurements field to given value.
 `func (o *MeasurementsNonIndex) HasHardwareMeasurements() bool`
 
 HasHardwareMeasurements returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *MeasurementsNonIndex) GetLinks() []Link`
@@ -156,7 +152,6 @@ SetLinks sets Links field to given value.
 `func (o *MeasurementsNonIndex) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetProcessId
 
 `func (o *MeasurementsNonIndex) GetProcessId() string`
@@ -181,7 +176,6 @@ SetProcessId sets ProcessId field to given value.
 `func (o *MeasurementsNonIndex) HasProcessId() bool`
 
 HasProcessId returns a boolean if a field has been set.
-
 ### GetStart
 
 `func (o *MeasurementsNonIndex) GetStart() time.Time`
@@ -206,7 +200,6 @@ SetStart sets Start field to given value.
 `func (o *MeasurementsNonIndex) HasStart() bool`
 
 HasStart returns a boolean if a field has been set.
-
 ### GetStatusMeasurements
 
 `func (o *MeasurementsNonIndex) GetStatusMeasurements() []MetricsMeasurement`
@@ -231,7 +224,6 @@ SetStatusMeasurements sets StatusMeasurements field to given value.
 `func (o *MeasurementsNonIndex) HasStatusMeasurements() bool`
 
 HasStatusMeasurements returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -52,7 +52,6 @@ SetId sets Id field to given value.
 `func (o *AtlasOrganization) HasId() bool`
 
 HasId returns a boolean if a field has been set.
-
 ### GetIsDeleted
 
 `func (o *AtlasOrganization) GetIsDeleted() bool`
@@ -77,7 +76,6 @@ SetIsDeleted sets IsDeleted field to given value.
 `func (o *AtlasOrganization) HasIsDeleted() bool`
 
 HasIsDeleted returns a boolean if a field has been set.
-
 ### GetLinks
 
 `func (o *AtlasOrganization) GetLinks() []Link`
@@ -102,7 +100,6 @@ SetLinks sets Links field to given value.
 `func (o *AtlasOrganization) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
-
 ### GetName
 
 `func (o *AtlasOrganization) GetName() string`
@@ -121,7 +118,6 @@ and a boolean to check if the value has been set.
 `func (o *AtlasOrganization) SetName(v string)`
 
 SetName sets Name field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

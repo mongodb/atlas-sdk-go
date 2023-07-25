@@ -53,7 +53,6 @@ SetExternalId sets ExternalId field to given value.
 `func (o *DataLakeAWSCloudProviderConfig) HasExternalId() bool`
 
 HasExternalId returns a boolean if a field has been set.
-
 ### GetIamAssumedRoleARN
 
 `func (o *DataLakeAWSCloudProviderConfig) GetIamAssumedRoleARN() string`
@@ -78,7 +77,6 @@ SetIamAssumedRoleARN sets IamAssumedRoleARN field to given value.
 `func (o *DataLakeAWSCloudProviderConfig) HasIamAssumedRoleARN() bool`
 
 HasIamAssumedRoleARN returns a boolean if a field has been set.
-
 ### GetIamUserARN
 
 `func (o *DataLakeAWSCloudProviderConfig) GetIamUserARN() string`
@@ -103,7 +101,6 @@ SetIamUserARN sets IamUserARN field to given value.
 `func (o *DataLakeAWSCloudProviderConfig) HasIamUserARN() bool`
 
 HasIamUserARN returns a boolean if a field has been set.
-
 ### GetRoleId
 
 `func (o *DataLakeAWSCloudProviderConfig) GetRoleId() string`
@@ -123,7 +120,6 @@ and a boolean to check if the value has been set.
 
 SetRoleId sets RoleId field to given value.
 
-
 ### GetTestS3Bucket
 
 `func (o *DataLakeAWSCloudProviderConfig) GetTestS3Bucket() string`
@@ -142,7 +138,6 @@ and a boolean to check if the value has been set.
 `func (o *DataLakeAWSCloudProviderConfig) SetTestS3Bucket(v string)`
 
 SetTestS3Bucket sets TestS3Bucket field to given value.
-
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

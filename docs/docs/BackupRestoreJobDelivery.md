@@ -60,7 +60,6 @@ SetAuthHeader sets AuthHeader field to given value.
 `func (o *BackupRestoreJobDelivery) HasAuthHeader() bool`
 
 HasAuthHeader returns a boolean if a field has been set.
-
 ### GetAuthValue
 
 `func (o *BackupRestoreJobDelivery) GetAuthValue() string`
@@ -85,7 +84,6 @@ SetAuthValue sets AuthValue field to given value.
 `func (o *BackupRestoreJobDelivery) HasAuthValue() bool`
 
 HasAuthValue returns a boolean if a field has been set.
-
 ### GetExpirationHours
 
 `func (o *BackupRestoreJobDelivery) GetExpirationHours() int`
@@ -110,7 +108,6 @@ SetExpirationHours sets ExpirationHours field to given value.
 `func (o *BackupRestoreJobDelivery) HasExpirationHours() bool`
 
 HasExpirationHours returns a boolean if a field has been set.
-
 ### GetExpires
 
 `func (o *BackupRestoreJobDelivery) GetExpires() time.Time`
@@ -135,7 +132,6 @@ SetExpires sets Expires field to given value.
 `func (o *BackupRestoreJobDelivery) HasExpires() bool`
 
 HasExpires returns a boolean if a field has been set.
-
 ### GetMaxDownloads
 
 `func (o *BackupRestoreJobDelivery) GetMaxDownloads() int`
@@ -160,7 +156,6 @@ SetMaxDownloads sets MaxDownloads field to given value.
 `func (o *BackupRestoreJobDelivery) HasMaxDownloads() bool`
 
 HasMaxDownloads returns a boolean if a field has been set.
-
 ### GetMethodName
 
 `func (o *BackupRestoreJobDelivery) GetMethodName() string`
@@ -179,7 +174,6 @@ and a boolean to check if the value has been set.
 `func (o *BackupRestoreJobDelivery) SetMethodName(v string)`
 
 SetMethodName sets MethodName field to given value.
-
 
 ### GetStatusName
 
@@ -205,7 +199,6 @@ SetStatusName sets StatusName field to given value.
 `func (o *BackupRestoreJobDelivery) HasStatusName() bool`
 
 HasStatusName returns a boolean if a field has been set.
-
 ### GetTargetClusterId
 
 `func (o *BackupRestoreJobDelivery) GetTargetClusterId() string`
@@ -230,7 +223,6 @@ SetTargetClusterId sets TargetClusterId field to given value.
 `func (o *BackupRestoreJobDelivery) HasTargetClusterId() bool`
 
 HasTargetClusterId returns a boolean if a field has been set.
-
 ### GetTargetClusterName
 
 `func (o *BackupRestoreJobDelivery) GetTargetClusterName() string`
@@ -255,7 +247,6 @@ SetTargetClusterName sets TargetClusterName field to given value.
 `func (o *BackupRestoreJobDelivery) HasTargetClusterName() bool`
 
 HasTargetClusterName returns a boolean if a field has been set.
-
 ### GetTargetGroupId
 
 `func (o *BackupRestoreJobDelivery) GetTargetGroupId() string`
@@ -280,7 +271,6 @@ SetTargetGroupId sets TargetGroupId field to given value.
 `func (o *BackupRestoreJobDelivery) HasTargetGroupId() bool`
 
 HasTargetGroupId returns a boolean if a field has been set.
-
 ### GetUrl
 
 `func (o *BackupRestoreJobDelivery) GetUrl() string`
@@ -305,7 +295,6 @@ SetUrl sets Url field to given value.
 `func (o *BackupRestoreJobDelivery) HasUrl() bool`
 
 HasUrl returns a boolean if a field has been set.
-
 ### GetUrlV2
 
 `func (o *BackupRestoreJobDelivery) GetUrlV2() string`
@@ -330,7 +319,6 @@ SetUrlV2 sets UrlV2 field to given value.
 `func (o *BackupRestoreJobDelivery) HasUrlV2() bool`
 
 HasUrlV2 returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

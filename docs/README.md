@@ -32,6 +32,7 @@
 * [Best Practices](./doc_5_best_practices.md#best-practices)
    * [Using Getters Instead of Direct Field Access](./doc_5_best_practices.md#using-getters-instead-of-direct-field-access)
    * [Check for Empty Strings for String Pointers](./doc_5_best_practices.md#check-for-empty-strings-for-string-pointers)
+   * [Working with Date Fields](./doc_5_best_practices.md#working-with-date-fields)
    * [Use Method for Creating Models](./doc_5_best_practices.md#use-method-for-creating-models)
    * [Use golangci-lint Validators](./doc_5_best_practices.md#use-golangci-lint-validators)
       * [Linting Issues](./doc_5_best_practices.md#linting-issues)

@@ -53,7 +53,6 @@ SetReplicaSetName sets ReplicaSetName field to given value.
 `func (o *ApiCheckpointPart) HasReplicaSetName() bool`
 
 HasReplicaSetName returns a boolean if a field has been set.
-
 ### GetShardName
 
 `func (o *ApiCheckpointPart) GetShardName() string`
@@ -78,7 +77,6 @@ SetShardName sets ShardName field to given value.
 `func (o *ApiCheckpointPart) HasShardName() bool`
 
 HasShardName returns a boolean if a field has been set.
-
 ### GetTokenDiscovered
 
 `func (o *ApiCheckpointPart) GetTokenDiscovered() bool`
@@ -103,7 +101,6 @@ SetTokenDiscovered sets TokenDiscovered field to given value.
 `func (o *ApiCheckpointPart) HasTokenDiscovered() bool`
 
 HasTokenDiscovered returns a boolean if a field has been set.
-
 ### GetTokenTimestamp
 
 `func (o *ApiCheckpointPart) GetTokenTimestamp() ApiBSONTimestamp`
@@ -128,7 +125,6 @@ SetTokenTimestamp sets TokenTimestamp field to given value.
 `func (o *ApiCheckpointPart) HasTokenTimestamp() bool`
 
 HasTokenTimestamp returns a boolean if a field has been set.
-
 ### GetTypeName
 
 `func (o *ApiCheckpointPart) GetTypeName() string`
@@ -153,7 +149,6 @@ SetTypeName sets TypeName field to given value.
 `func (o *ApiCheckpointPart) HasTypeName() bool`
 
 HasTypeName returns a boolean if a field has been set.
-
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
