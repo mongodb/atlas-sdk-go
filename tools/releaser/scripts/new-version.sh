@@ -6,6 +6,7 @@ target_file_path="../internal/core/version.go"
 
 script_path=$(dirname "$0")
 source $script_path/extract-version.sh
+source $script_path/version-paths.sh
 
 # Update the version.go file with the new version
 if [ "$NEW_RESOURCE_VERSION" == "$SDK_RESOURCE_VERSION" ]; then
@@ -19,7 +20,7 @@ else
 	echo "Resource Version is not up to date. Changing major version."
 	SDK_VERSION="v${NEW_RESOURCE_VERSION}001.0.0"
 	echo "Modifying $NEW_RESOURCE_VERSION to $SDK_RESOURCE_VERSION Resource Version across the repository."
-	npm exec -c "replace-in-file $NEW_RESOURCE_VERSION $SDK_RESOURCE_VERSION ../*.go,../*.md,../*.mustache"
+	npm exec -c "replace-in-file $NEW_RESOURCE_VERSION $SDK_MAJOR_VERSION $VERSION_UPDATE_PATHS"
 fi 
 
 echo "Creating new version.go file with $SDK_VERSION and resource version: $NEW_RESOURCE_VERSION"
