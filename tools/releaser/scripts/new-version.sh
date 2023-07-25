@@ -21,7 +21,7 @@ else
 	NEW_MAJOR_VERSION="${NEW_RESOURCE_VERSION}001"
 	SDK_VERSION="v${NEW_MAJOR_VERSION}.0.0" 
 	echo "Modifying $NEW_RESOURCE_VERSION to $SDK_RESOURCE_VERSION Resource Version across the repository."
-	npm exec -c "replace-in-file $SDK_MAJOR_VERSION $NEW_MAJOR_VERSION $VERSION_UPDATE_PATHS"
+	npm exec -c "replace-in-file /$SDK_MAJOR_VERSION/g $NEW_MAJOR_VERSION $VERSION_UPDATE_PATHS --isRegex"
 fi 
 
 echo "Creating new version.go file with $SDK_VERSION and resource version: $NEW_RESOURCE_VERSION"

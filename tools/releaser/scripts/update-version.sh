@@ -15,4 +15,4 @@ echo $major_version_bump
 BUMPED_MAJOR_VERSION="v${SDK_RESOURCE_VERSION}${major_version_bump}"
 
 echo "Modifying $SDK_MAJOR_VERSION to $BUMPED_MAJOR_VERSION Resource Version across the repository."
-npm exec -c "replace-in-file $SDK_MAJOR_VERSION $BUMPED_MAJOR_VERSION $VERSION_UPDATE_PATHS"
+npm exec -c "replace-in-file /$SDK_MAJOR_VERSION/g $BUMPED_MAJOR_VERSION $VERSION_UPDATE_PATHS --isRegex"
