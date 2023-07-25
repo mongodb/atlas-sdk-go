@@ -35,9 +35,9 @@ echo "package core
 // When version is bumped in the PR it means that the PR is ready to be merged.
 // For more information please see: https://github.com/mongodb/atlas-sdk-go/blob/main/docs/doc_1_concepts.md
 const (
-	// SDK release tag version
+	// SDK release tag version.
 	Version = \"${SDK_VERSION}\"
-	// Resource Version
+	// Resource Version.
 	Resource = \"$CURRENT_RESOURCE_VERSION\"
 )" > $target_file_path
 
