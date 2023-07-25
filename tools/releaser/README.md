@@ -28,11 +28,12 @@ For major releases (breaking changes) introduced outside new Resource Version.
 
 ## Automation Process Internals
 
-Automation reads Resource Version in the `version.go` file and in the OpenAPI `versions.json` 
+Automation reads Resource Version in the `version.go` file and in the OpenAPI `versions.json`
 
-### New Resource Version 
+### New Resource Version
 
 For new Resource Version introduced in the versions.json
+
 - Reset minor version
 - Replace all occurences of the Major version in the repository
 - Update versions in versions.go
