@@ -1,38 +1,30 @@
 #!/bin/bash
-set -ueo pipefail
+set -ueox pipefail
 
+## Target version file
 target_file_path="../internal/core/version.go"
 
 script_path=$(dirname "$0")
 source $script_path/extract-version.sh
 
 # Update the version.go file with the new version
-if [ "$CURRENT_RESOURCE_VERSION" == "$SDK_RESOURCE_VERSION" ]; then
+if [ "$NEW_RESOURCE_VERSION" == "$SDK_RESOURCE_VERSION" ]; then
 	echo "Resource Version is already up to date. Changing minor version."
-	# Extract the minor version from the SDK_VERSION
-	minor_version=$(echo "$SDK_VERSION" | awk -F'.' '{print $2}')
-	major_version=$(echo "$SDK_VERSION" | awk -F'.' '{print $1}')
 	# Increment the minor version
-	new_minor_version=$((minor_version + 1))
+	new_minor_version=$((SDK_MINOR_VERSION + 1))
 	# Update the SDK_VERSION
-	export SDK_VERSION="${major_version}.${new_minor_version}.0"
+	SDK_VERSION="${SDK_MAJOR_VERSION}.${new_minor_version}.0"
 else	 
 	# Update the SDK_VERSION
 	echo "Resource Version is not up to date. Changing major version."
-	export SDK_VERSION="v${CURRENT_RESOURCE_VERSION}001.0.0"
-	echo "Modifying $CURRENT_RESOURCE_VERSION Resource Version across the repository."
-	npm exec replace-in-file $CURRENT_RESOURCE_VERSION $SDK_RESOURCE_VERSION *.go,*.md,.*.mustache
+	SDK_VERSION="v${NEW_RESOURCE_VERSION}001.0.0"
+	echo "Modifying $NEW_RESOURCE_VERSION to $SDK_RESOURCE_VERSION Resource Version across the repository."
+	npm exec -c "replace-in-file $NEW_RESOURCE_VERSION $SDK_RESOURCE_VERSION ../*.go,../*.md,../*.mustache"
+fi 
 
-echo "Creating new version.go file with $SDK_VERSION and resource version: $CURRENT_RESOURCE_VERSION"
+echo "Creating new version.go file with $SDK_VERSION and resource version: $NEW_RESOURCE_VERSION"
 
-echo "package core
+export SDK_VERSION="${SDK_VERSION}"
+export NEW_RESOURCE_VERSION="${NEW_RESOURCE_VERSION}"
 
-// Version of the SDK used for the autorelease process.
-// When version is bumped in the PR it means that the PR is ready to be merged.
-// For more information please see: https://github.com/mongodb/atlas-sdk-go/blob/main/docs/doc_1_concepts.md
-const (
-	// SDK release tag version.
-	Version = \"${SDK_VERSION}\"
-	// Resource Version.
-	Resource = \"$CURRENT_RESOURCE_VERSION\"
-)" > $target_file_path
+envsubst < $script_path/../templates/VERSION.tmpl > $target_file_path
