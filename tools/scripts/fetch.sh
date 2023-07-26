@@ -40,3 +40,5 @@ curl --show-error --fail --silent -o "$OPENAPI_FILE_NAME" \
      -H "Accept: application/yaml" "$openapi_url"
 
 popd -0 
+
+git status
