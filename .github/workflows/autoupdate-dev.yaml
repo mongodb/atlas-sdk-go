@@ -54,7 +54,7 @@ jobs:
             ## Using early development changes
 
             ```
-              ▶ go get go.mongodb.org/atlas-sdk/v20230201002@dev-latest   
+              ▶ go get go.mongodb.org/atlas-sdk/v20230201003@dev-latest   
             ```
 
             ## Automated checks done for dev sdk
