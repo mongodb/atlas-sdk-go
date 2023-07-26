@@ -23,8 +23,8 @@ Manual release is possible by updating `./internal/core/version.go` file with mi
 
 For major releases (breaking changes) introduced outside new Resource Version.
 
-1. Please update `./internal/core/version.go` file with major version bump.
-2. Run `make update-version` command
+1. Run `make update-version` command
+2. Provide list of breaking changes in [BREAKING_CHANGES.md]([end user versioning guide](https://github.com/mongodb/atlas-sdk-go/blob/main/BREAKING_CHANGES.md)
 
 ## Automation Process Internals
 
