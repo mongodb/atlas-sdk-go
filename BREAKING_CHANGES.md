@@ -1,3 +1,7 @@
+## v20230202003
+
+- `OnlineArchiveApi.CreateOnlineArchive` updated to take struct `BackupOnlineArchiveCreate` as input parameter
+
 ## v20230202002
 
 - Removed all internal golang structures starting with `admin.Nullable`.
