@@ -30,7 +30,7 @@ func main() {
 	sdk, err := admin.NewClient(
 		admin.UseDigestAuth(apiKey, apiSecret),
 		admin.UseBaseURL(url),
-		admin.UseDebug(false))
+		admin.UseDebug(true))
 	examples.HandleErr(err, nil)
 
 	current := new(admin.CloudDatabaseUser)
