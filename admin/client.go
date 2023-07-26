@@ -193,10 +193,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	return c
 }
 
-func atoi(in string) (int, error) {
-	return strconv.Atoi(in)
-}
-
 // selectHeaderContentType select a content type from the available list.
 func selectHeaderContentType(contentTypes []string) string {
 	if len(contentTypes) == 0 {
@@ -224,20 +220,6 @@ func contains(haystack []string, needle string) bool {
 		}
 	}
 	return false
-}
-
-// Verify optional parameters are of the correct type.
-func typeCheckParameter(obj interface{}, expected string, name string) error {
-	// Make sure there is an object.
-	if obj == nil {
-		return nil
-	}
-
-	// Check the type is as expected.
-	if reflect.TypeOf(obj).String() != expected {
-		return fmt.Errorf("expected %s to be of type %s but received %s", name, expected, reflect.TypeOf(obj).String())
-	}
-	return nil
 }
 
 func parameterValueToString(obj interface{}, key string) string {
@@ -300,8 +282,8 @@ func parameterAddToHeaderOrQuery(headerOrQueryParams interface{}, keyPrefix stri
 			}
 			iter := indValue.MapRange()
 			for iter.Next() {
-				k, v := iter.Key(), iter.Value()
-				parameterAddToHeaderOrQuery(headerOrQueryParams, fmt.Sprintf("%s[%s]", keyPrefix, k.String()), v.Interface(), collectionType)
+				mapKey, mapValue := iter.Key(), iter.Value()
+				parameterAddToHeaderOrQuery(headerOrQueryParams, fmt.Sprintf("%s[%s]", keyPrefix, mapKey.String()), mapValue.Interface(), collectionType)
 			}
 			return
 
@@ -335,20 +317,9 @@ func parameterAddToHeaderOrQuery(headerOrQueryParams interface{}, keyPrefix stri
 		} else {
 			valuesMap.Add(keyPrefix, value)
 		}
-		break
 	case map[string]string:
 		valuesMap[keyPrefix] = value
-		break
 	}
-}
-
-// helper for converting interface{} parameters to json strings
-func parameterToJson(obj interface{}) (string, error) {
-	jsonBuf, err := json.Marshal(obj)
-	if err != nil {
-		return "", err
-	}
-	return string(jsonBuf), err
 }
 
 // callAPI do the request.
@@ -367,8 +338,8 @@ func (c *APIClient) callAPI(request *http.Request) (*http.Response, error) {
 	}
 
 	if c.cfg.Debug {
-		dump, err := httputil.DumpResponse(resp, true)
-		if err != nil {
+		dump, err1 := httputil.DumpResponse(resp, true)
+		if err1 != nil {
 			return resp, err
 		}
 		log.Printf("\n%s\n", string(dump))
@@ -397,7 +368,6 @@ func (c *APIClient) prepareRequest(
 	queryParams url.Values,
 	formParams url.Values,
 	formFiles []formFile) (localVarRequest *http.Request, err error) {
-
 	var body *bytes.Buffer
 
 	// Detect postBody type and post.
@@ -417,7 +387,7 @@ func (c *APIClient) prepareRequest(
 	// add form parameters and file if available.
 	if strings.HasPrefix(headerParams["Content-Type"], "multipart/form-data") && len(formParams) > 0 || (len(formFiles) > 0) {
 		if body != nil {
-			return nil, errors.New("Cannot specify postBody and multipart form at the same time.")
+			return nil, errors.New("cannot specify postBody and multipart form at the same time")
 		}
 		body = &bytes.Buffer{}
 		w := multipart.NewWriter(body)
@@ -430,19 +400,22 @@ func (c *APIClient) prepareRequest(
 						return nil, err
 					}
 				} else { // form value
-					w.WriteField(k, iv)
+					err = w.WriteField(k, iv)
+					if err != nil {
+						return nil, err
+					}
 				}
 			}
 		}
 		for _, formFile := range formFiles {
 			if len(formFile.fileBytes) > 0 && formFile.fileName != "" {
 				w.Boundary()
-				part, err := w.CreateFormFile(formFile.formFileName, filepath.Base(formFile.fileName))
-				if err != nil {
+				part, err1 := w.CreateFormFile(formFile.formFileName, filepath.Base(formFile.fileName))
+				if err1 != nil {
 					return nil, err
 				}
-				_, err = part.Write(formFile.fileBytes)
-				if err != nil {
+				_, err1 = part.Write(formFile.fileBytes)
+				if err1 != nil {
 					return nil, err
 				}
 			}
@@ -458,7 +431,7 @@ func (c *APIClient) prepareRequest(
 
 	if strings.HasPrefix(headerParams["Content-Type"], "application/x-www-form-urlencoded") && len(formParams) > 0 {
 		if body != nil {
-			return nil, errors.New("Cannot specify postBody and x-www-form-urlencoded form at the same time.")
+			return nil, errors.New("cannot specify postBody and x-www-form-urlencoded form at the same time")
 		}
 		body = &bytes.Buffer{}
 		body.WriteString(formParams.Encode())
@@ -467,23 +440,23 @@ func (c *APIClient) prepareRequest(
 	}
 
 	// Setup path and query parameters
-	url, err := url.Parse(path)
+	urlData, err := url.Parse(path)
 	if err != nil {
 		return nil, err
 	}
 
 	// Override request host, if applicable
 	if c.cfg.Host != "" {
-		url.Host = c.cfg.Host
+		urlData.Host = c.cfg.Host
 	}
 
 	// Override request scheme, if applicable
 	if c.cfg.Scheme != "" {
-		url.Scheme = c.cfg.Scheme
+		urlData.Scheme = c.cfg.Scheme
 	}
 
 	// Adding Query Param
-	query := url.Query()
+	query := urlData.Query()
 	for k, v := range queryParams {
 		for _, iv := range v {
 			query.Add(k, iv)
@@ -491,7 +464,7 @@ func (c *APIClient) prepareRequest(
 	}
 
 	// Encode the parameters.
-	url.RawQuery = queryParamSplit.ReplaceAllStringFunc(query.Encode(), func(s string) string {
+	urlData.RawQuery = queryParamSplit.ReplaceAllStringFunc(query.Encode(), func(s string) string {
 		pieces := strings.Split(s, "=")
 		pieces[0] = queryDescape.Replace(pieces[0])
 		return strings.Join(pieces, "=")
@@ -499,9 +472,9 @@ func (c *APIClient) prepareRequest(
 
 	// Generate a new request
 	if body != nil {
-		localVarRequest, err = http.NewRequest(method, url.String(), body)
+		localVarRequest, err = http.NewRequest(method, urlData.String(), body)
 	} else {
-		localVarRequest, err = http.NewRequest(method, url.String(), nil)
+		localVarRequest, err = http.NewRequest(method, urlData.String(), http.NoBody)
 	}
 	if err != nil {
 		return nil, err
@@ -541,16 +514,23 @@ func (c *APIClient) decode(v interface{}, b []byte, contentType string) (err err
 		*s = string(b)
 		return nil
 	}
-	if f, ok := v.(*os.File); ok {
-		f, err = os.CreateTemp("", "HttpClientFile")
-		if err != nil {
+	if _, ok := v.(*os.File); ok {
+		f, err1 := os.CreateTemp("", "HttpClientFile")
+		if err1 != nil {
+			if c.cfg.Debug {
+				log.Printf("\n%s\n", err1)
+			}
 			return
 		}
-		_, err = f.Write(b)
+		_, err1 = f.Write(b)
 		if err != nil {
+			if c.cfg.Debug {
+				log.Printf("\n%s\n", err1)
+			}
 			return
 		}
-		_, err = f.Seek(0, io.SeekStart)
+
+		_, _ = f.Seek(0, io.SeekStart)
 		return
 	}
 	if f, ok := v.(**os.File); ok {
@@ -566,10 +546,7 @@ func (c *APIClient) decode(v interface{}, b []byte, contentType string) (err err
 		return
 	}
 	if xmlCheck.MatchString(contentType) {
-		if err = xml.Unmarshal(b, v); err != nil {
-			return err
-		}
-		return nil
+		return xml.Unmarshal(b, v)
 	}
 	if jsonCheck.MatchString(contentType) {
 		if actualObj, ok := v.(interface{ GetActualInstance() interface{} }); ok { // oneOf, anyOf schemas
@@ -578,7 +555,7 @@ func (c *APIClient) decode(v interface{}, b []byte, contentType string) (err err
 					return err
 				}
 			} else {
-				return errors.New("Unknown type with GetActualInstance but no unmarshalObj.UnmarshalJSON defined")
+				return errors.New("unknown type with GetActualInstance but no unmarshalObj.UnmarshalJSON defined")
 			}
 		} else if err = json.Unmarshal(b, v); err != nil { // simple model
 			return err
@@ -613,13 +590,6 @@ func reportError(format string, a ...interface{}) error {
 	return fmt.Errorf(format, a...)
 }
 
-// A wrapper for strict JSON decoding
-func newStrictDecoder(data []byte) *json.Decoder {
-	dec := json.NewDecoder(bytes.NewBuffer(data))
-	dec.DisallowUnknownFields()
-	return dec
-}
-
 // Set request body from an interface{}
 func setBody(body interface{}, contentType string) (bodyBuf *bytes.Buffer, err error) {
 	if bodyBuf == nil {
@@ -647,7 +617,7 @@ func setBody(body interface{}, contentType string) (bodyBuf *bytes.Buffer, err e
 	}
 
 	if bodyBuf.Len() == 0 {
-		err = fmt.Errorf("invalid body type %s\n", contentType)
+		err = fmt.Errorf("invalid body type %s", contentType)
 		return nil, err
 	}
 	return bodyBuf, nil
@@ -672,56 +642,6 @@ func detectContentType(body interface{}) string {
 	}
 
 	return contentType
-}
-
-// Ripped from https://github.com/gregjones/httpcache/blob/master/httpcache.go
-type cacheControl map[string]string
-
-func parseCacheControl(headers http.Header) cacheControl {
-	cc := cacheControl{}
-	ccHeader := headers.Get("Cache-Control")
-	for _, part := range strings.Split(ccHeader, ",") {
-		part = strings.Trim(part, " ")
-		if part == "" {
-			continue
-		}
-		if strings.ContainsRune(part, '=') {
-			keyval := strings.Split(part, "=")
-			cc[strings.Trim(keyval[0], " ")] = strings.Trim(keyval[1], ",")
-		} else {
-			cc[part] = ""
-		}
-	}
-	return cc
-}
-
-// CacheExpires helper function to determine remaining time before repeating a request.
-func CacheExpires(r *http.Response) time.Time {
-	// Figure out when the cache expires.
-	var expires time.Time
-	now, err := time.Parse(time.RFC1123, r.Header.Get("date"))
-	if err != nil {
-		return time.Now()
-	}
-	respCacheControl := parseCacheControl(r.Header)
-
-	if maxAge, ok := respCacheControl["max-age"]; ok {
-		lifetime, err := time.ParseDuration(maxAge + "s")
-		if err != nil {
-			expires = now
-		} else {
-			expires = now.Add(lifetime)
-		}
-	} else {
-		expiresHeader := r.Header.Get("Expires")
-		if expiresHeader != "" {
-			expires, err = time.Parse(time.RFC1123, expiresHeader)
-			if err != nil {
-				expires = now
-			}
-		}
-	}
-	return expires
 }
 
 func strlen(s string) int {
@@ -751,18 +671,18 @@ func (e GenericOpenAPIError) Model() ApiError {
 }
 
 // SetModel sets model instance: Should be only used for testing
-func (e GenericOpenAPIError) SetModel(errorModel ApiError) {
+func (e *GenericOpenAPIError) SetModel(errorModel ApiError) {
 	e.model = errorModel
 }
 
 // SetError sets error string: Should be only used for testing
-func (e GenericOpenAPIError) SetError(errorString string) {
+func (e *GenericOpenAPIError) SetError(errorString string) {
 	e.error = errorString
 }
 
 // format error message using title and detail when model implements Error
 func formatErrorMessage(status, path, method string, v ApiError) string {
-	return fmt.Sprintf("%v %v: HTTP %d (Error code: %q) Detail: %v Reason: %v. Params: %v",
-		method, path, v.GetError(), v.GetErrorCode(),
+	return fmt.Sprintf("%v %v: HTTP %v (Error code: %q) Detail: %v Reason: %v. Params: %v",
+		method, path, status, v.GetErrorCode(),
 		v.GetDetail(), v.GetReason(), v.GetParameters())
 }

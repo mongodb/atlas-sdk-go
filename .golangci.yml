@@ -8,6 +8,16 @@ linters-settings:
       - style
     disabled-checks:
       - octalLiteral
+      # We cannot control openapi format
+      - hugeParam
+      # Types are dynamic/OpenAPI driven.
+      - paramTypeCombine
+      - wrapperFunc
+      - ptrToRefParam
+      - emptyFallthrough
+      - nestingReduce
+      - sloppyReassign
+      - typeAssertChain
   gocyclo:
     min-complexity: 15
   govet:
@@ -28,7 +38,7 @@ linters-settings:
       - name: error-naming
       - name: errorf
       - name: exported
-      - name: indent-error-flow
+      # - name: indent-error-flow
       - name: if-return
       - name: increment-decrement
       # We want to maintain OpenAPI consistency and ignore golang standards
@@ -39,13 +49,14 @@ linters-settings:
       - name: range
       - name: time-naming
       - name: unexported-return
-      - name: indent-error-flow
       - name: errorf
       - name: empty-block
       - name: superfluous-else
       - name: struct-tag
-      - name: unused-parameter
-      - name: unused-receiver
+      # OpenAPI paths can have 0 parameters
+      # - name: unused-parameter
+      # We still want empty methods for consistency - do not control if method will be empty.
+      # - name: unused-receiver
       - name: unreachable-code
       - name: redefines-builtin-id
   tagliatelle:
@@ -66,13 +77,17 @@ linters:
     - dogsled # Checks assignments with too many blank identifiers (e.g. x, _, _, _, := f()) [fast: true, auto-fix: false]
     - errcheck # Errcheck is a program for checking for unchecked errors in go programs. These unchecked errors can be critical bugs in some cases [fast: false, auto-fix: false]
     - errorlint # errorlint is a linter for that can be used to find code that will cause problems with the error wrapping scheme introduced in Go 1.13. [fast: false, auto-fix: false]
-    - exhaustive # check exhaustiveness of enum switch statements [fast: false, auto-fix: false]
+    # Upstream code intentionally have number of non exhaustive checks
+    # - exhaustive # check exhaustiveness of enum switch statements [fast: false, auto-fix: false]
     - exportloopref # checks for pointers to enclosing loop variables [fast: false, auto-fix: false]
     - gochecknoinits # Checks that no init functions are present in Go code [fast: true, auto-fix: false]
     - gocritic # Provides many diagnostics that check for bugs, performance and style issues. [fast: false, auto-fix: false]
+    # Needs to be disabled for generated content as complexity comes from OpenAPI
     # - gocyclo # Computes and checks the cyclomatic complexity of functions [fast: true, auto-fix: false]
-    - godot # Check if comments end in a period [fast: true, auto-fix: true]
-    - gofmt # Gofmt checks whether code was gofmt-ed. By default this tool runs with -s option to check for code simplification [fast: true, auto-fix: true]
+    # We do not control comment content - it is OpenAPI driven
+    # - godot # Check if comments end in a period [fast: true, auto-fix: true]
+    # HTML format of our comments break this check thinking that files aren't formatted
+    #- gofmt # Gofmt checks whether code was gofmt-ed. By default this tool runs with -s option to check for code simplification [fast: true, auto-fix: true]
     - goimports # Goimports does everything that gofmt does. Additionally it checks unused imports [fast: true, auto-fix: true]
     - goprintffuncname # Checks that printf-like functions are named with `f` at the end [fast: true, auto-fix: false]
     - gosec # Inspects source code for security problems [fast: false, auto-fix: false]
@@ -89,7 +104,8 @@ linters:
     - unconvert # Remove unnecessary type conversions [fast: false, auto-fix: false]
     - unparam # Reports unused function parameters [fast: false, auto-fix: false]
     - unused # Checks Go code for unused constants, variables, functions and types [fast: false, auto-fix: false]
-    - whitespace # Tool for detection of leading and trailing whitespace [fast: true, auto-fix: true]
+    # Disable as it is hard to avoid whitespace when building templates
+    #- whitespace # Tool for detection of leading and trailing whitespace [fast: true, auto-fix: true]
 
   # don't enable:
 #    Replaced by revive
