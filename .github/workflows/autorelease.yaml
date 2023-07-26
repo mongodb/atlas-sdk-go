@@ -1,0 +1,25 @@
+name: Autorelease
+on:
+  push:
+    branches:
+      - main
+      - release-automation
+  
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Release env
+        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        working-directory: ./tools
+        run: |
+          ./releaser/scripts/setghenv.sh
+      - name: Create Release 
+        uses: softprops/action-gh-release@v1
+        with:
+          body: ${{ env.RELEASE_NOTES }}
+          draft: true
+          tag_name: ${{ env.RELEASE_TAG }}
+          name: ${{ env.RELEASE_TAG }}
