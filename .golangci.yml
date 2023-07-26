@@ -87,8 +87,8 @@ linters:
     # We do not control comment content - it is OpenAPI driven
     # - godot # Check if comments end in a period [fast: true, auto-fix: true]
     # HTML format of our comments break this check thinking that files aren't formatted
-    #- gofmt # Gofmt checks whether code was gofmt-ed. By default this tool runs with -s option to check for code simplification [fast: true, auto-fix: true]
-    - goimports # Goimports does everything that gofmt does. Additionally it checks unused imports [fast: true, auto-fix: true]
+    # - gofmt # Gofmt checks whether code was gofmt-ed. By default this tool runs with -s option to check for code simplification [fast: true, auto-fix: true]
+    # - goimports # Goimports does everything that gofmt does. Additionally it checks unused imports [fast: true, auto-fix: true]
     - goprintffuncname # Checks that printf-like functions are named with `f` at the end [fast: true, auto-fix: false]
     - gosec # Inspects source code for security problems [fast: false, auto-fix: false]
     - gosimple # Linter for Go source code that specializes in simplifying a code [fast: false, auto-fix: false]
@@ -105,7 +105,7 @@ linters:
     - unparam # Reports unused function parameters [fast: false, auto-fix: false]
     - unused # Checks Go code for unused constants, variables, functions and types [fast: false, auto-fix: false]
     # Disable as it is hard to avoid whitespace when building templates
-    #- whitespace # Tool for detection of leading and trailing whitespace [fast: true, auto-fix: true]
+    # - whitespace # Tool for detection of leading and trailing whitespace [fast: true, auto-fix: true]
 
   # don't enable:
 #    Replaced by revive
