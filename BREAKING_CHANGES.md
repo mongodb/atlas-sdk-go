@@ -1,6 +1,7 @@
 ## v20230202003
 
 - `OnlineArchiveApi.CreateOnlineArchive` updated to take struct `BackupOnlineArchiveCreate` as input parameter
+    - `CollName`, `Criteria`, and `DbName` are now required properties (previously optional)
 - `PerformanceAdvisorIndex` `Index` property corrected from `[]map[string]string` to `[]map[string]int`
 
 ## v20230202002
