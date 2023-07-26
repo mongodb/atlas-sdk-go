@@ -2,7 +2,11 @@ name: Generate SDK
 on:
  schedule:
    - cron: '30 8 * * *'
+ push:
+   branches: 
+     - test-autoupdate
  workflow_dispatch:
+
   
 jobs:
   generate-client:
