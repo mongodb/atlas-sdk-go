@@ -12,7 +12,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Release env
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
         working-directory: ./tools
         run: |
           ./releaser/scripts/setghenv.sh
