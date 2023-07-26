@@ -19,4 +19,4 @@ echo "Modifying $SDK_MAJOR_VERSION to $BUMPED_MAJOR_VERSION Resource Version acr
 npm exec -c "replace-in-file /$SDK_MAJOR_VERSION/g $BUMPED_MAJOR_VERSION $VERSION_UPDATE_PATHS --isRegex"
 
 echo "Creating empty breaking changes file for $SDK_MAJOR_VERSION"
-touch $script_path/../breaking_changes/${SDK_MAJOR_VERSION}.md
+touch "$script_path/../breaking_changes/${SDK_MAJOR_VERSION}.md"
