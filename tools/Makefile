@@ -32,3 +32,12 @@ generate_docs:
 generate_tests:	
 	rm -Rf ../test/generated/test*
 	./scripts/generate_tests.sh
+
+.PHONY: new-release
+new-release:
+	./releaser/scripts/new-version.sh
+
+.PHONY: update-version
+update-version:
+	## When manually updating major version
+	./releaser/scripts/update-version.sh

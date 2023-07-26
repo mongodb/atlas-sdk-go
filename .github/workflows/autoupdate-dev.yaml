@@ -2,10 +2,10 @@ name: Generate Dev SDK
 on:
   workflow_dispatch:
   schedule:
-   - cron: '30 8 * * *'
+   - cron: '30 8 * * 1,3,5'
   push:
     branches:
-      - master
+      - main
     paths:
       - "tools/**"
   
@@ -54,7 +54,7 @@ jobs:
             ## Using early development changes
 
             ```
-              ▶ go get go.mongodb.org/atlas-sdk@dev-latest   
+              ▶ go get go.mongodb.org/atlas-sdk/v20230201002@dev-latest   
             ```
 
             ## Automated checks done for dev sdk
