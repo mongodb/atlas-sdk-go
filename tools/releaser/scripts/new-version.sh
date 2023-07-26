@@ -5,7 +5,9 @@ set -ueo pipefail
 target_file_path="../internal/core/version.go"
 
 script_path=$(dirname "$0")
+# shellcheck source=/dev/null
 source "$script_path/extract-version.sh"
+# shellcheck source=/dev/null
 source "$script_path/version-paths.sh"
 
 # Update the version.go file with the new version
