@@ -12,27 +12,28 @@ set -o nounset
 
 ## Input variables with defaults
 
-## Locked version of the versioned API
-CURRENT_REVISION=${CURRENT_REVISION:-"2023-02-01"}
 
 ## OpenAPI file (latest)
 OPENAPI_FILE_NAME=${OPENAPI_FILE_NAME:-"atlas-api.yaml"}
+
 
 ## Base URL
 API_BASE_URL=${API_BASE_URL:-"https://cloud.mongodb.com/api/openapi"}
 
 ## Folder used for fetching files
 OPENAPI_FOLDER=${OPENAPI_FOLDER:-"../openapi"}
-
-openapi_url="$API_BASE_URL/spec/2.0?version=$CURRENT_REVISION&filter=sdk"
 versions_url="$API_BASE_URL/versions"
 
 pushd "$OPENAPI_FOLDER"
 
 echo "Fetching versions from $versions_url"
-
-curl --show-error --fail --silent -o "versions.json" \
+versions_file="versions.json"
+curl --show-error --fail --silent -o "$versions_file" \
      -H "Accept: application/json" "$versions_url"
+
+## Dynamic Versioned API Version
+CURRENT_REVISION=$(cat ./$versions_file | jq -r '.versions."2.0" | .[-1]')
+openapi_url="$API_BASE_URL/spec/2.0?version=$CURRENT_REVISION&filter=sdk"
 
 echo "Fetching api from $openapi_url to $OPENAPI_FILE_NAME"
 
