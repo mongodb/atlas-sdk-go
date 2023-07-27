@@ -16,18 +16,17 @@ set -o nounset
 ## OpenAPI file (latest)
 OPENAPI_FILE_NAME=${OPENAPI_FILE_NAME:-"atlas-api.yaml"}
 
-
 ## Base URL
 API_BASE_URL=${API_BASE_URL:-"https://cloud.mongodb.com/api/openapi"}
 
 ## Folder used for fetching files
 OPENAPI_FOLDER=${OPENAPI_FOLDER:-"../openapi"}
 versions_url="$API_BASE_URL/versions"
+versions_file="versions.json"
 
 pushd "$OPENAPI_FOLDER"
-
 echo "Fetching versions from $versions_url"
-versions_file="versions.json"
+
 curl --show-error --fail --silent -o "$versions_file" \
      -H "Accept: application/json" "$versions_url"
 
