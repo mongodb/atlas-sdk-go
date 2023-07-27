@@ -1,5 +1,6 @@
 name: Autorelease
 on:
+  workflow_dispatch: {} # workflow can be run manually
   push:
     branches:
       - main
