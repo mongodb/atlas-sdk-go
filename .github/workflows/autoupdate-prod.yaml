@@ -18,7 +18,7 @@ jobs:
         working-directory: ./tools
         run: make fetch_openapi
       - name: Verify Changed files
-        uses: tj-actions/verify-changed-files@v16
+        uses: tj-actions/verify-changed-files@54fe0b71ee3dcf98a88eb23a360ec8d80ba9ed40
         id: verify-changed-files
         with:
           files: |
