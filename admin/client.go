@@ -32,7 +32,7 @@ var (
 	queryDescape    = strings.NewReplacer("%5B", "[", "%5D", "]")
 )
 
-// APIClient manages communication with the MongoDB Atlas Administration API API v2.0~a478ebcd68
+// APIClient manages communication with the MongoDB Atlas Administration API API v2.0~c2a0ecdd49
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration
@@ -91,8 +91,6 @@ type APIClient struct {
 	MongoDBCloudUsersApi MongoDBCloudUsersApi
 
 	MonitoringAndLogsApi MonitoringAndLogsApi
-
-	MultiCloudClustersApi MultiCloudClustersApi
 
 	NetworkPeeringApi NetworkPeeringApi
 
@@ -171,7 +169,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.MaintenanceWindowsApi = (*MaintenanceWindowsApiService)(&c.common)
 	c.MongoDBCloudUsersApi = (*MongoDBCloudUsersApiService)(&c.common)
 	c.MonitoringAndLogsApi = (*MonitoringAndLogsApiService)(&c.common)
-	c.MultiCloudClustersApi = (*MultiCloudClustersApiService)(&c.common)
 	c.NetworkPeeringApi = (*NetworkPeeringApiService)(&c.common)
 	c.OnlineArchiveApi = (*OnlineArchiveApiService)(&c.common)
 	c.OrganizationsApi = (*OrganizationsApiService)(&c.common)
