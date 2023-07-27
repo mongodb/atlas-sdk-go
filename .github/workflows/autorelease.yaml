@@ -1,0 +1,24 @@
+name: Autorelease
+on:
+  workflow_dispatch: {} # workflow can be run manually
+  push:
+    branches:
+      - main
+  
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Release env
+        working-directory: ./tools
+        run: |
+          ./releaser/scripts/setghenv.sh
+      - name: Create Release 
+        uses: softprops/action-gh-release@v1
+        with:
+          body: ${{ env.RELEASE_NOTES }}
+          draft: true
+          tag_name: ${{ env.RELEASE_TAG }}
+          name: ${{ env.RELEASE_TAG }}
