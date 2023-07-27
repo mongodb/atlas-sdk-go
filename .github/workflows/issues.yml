@@ -33,7 +33,7 @@
             --data '{
               "fields": {
                   "project": {
-                      "id": "19383"
+                      "id": "10984"
                   },
                   "summary": "HELP: '"${ISSUE_TITLE_NO_SPECIAL_CHARS}"'",
                   "issuetype": {
