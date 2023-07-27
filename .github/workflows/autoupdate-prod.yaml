@@ -44,7 +44,6 @@ jobs:
           title: "APIBot: SDK update based on recent changes in Atlas API"
           commit-message: "Automated openapi client update"
           delete-branch: true
-          labels: auto_release
           branch: api-bot-update
           body: |
             Automatic update for MongoDB Atlas Go Client based on OpenAPI changes.
