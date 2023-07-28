@@ -4,6 +4,8 @@
   on:
     issues:
       types: [opened]
+    pull_request:
+      
   permissions: 
     issues: write
     contents: read
@@ -39,7 +41,7 @@
                   "issuetype": {
                       "id": "12"
                   },
-                  "customfield_12751": "22222",
+                  "customfield_12751": ["22222"],
                   "description": "This ticket tracks the following GitHub issue: '"${ISSUE_URL}"'.",
                   "components": [
                       {
