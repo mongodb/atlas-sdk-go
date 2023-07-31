@@ -2,11 +2,13 @@
 
 ## Introduction
 
-The GO SDK is an automatically generated library using a highly customized version of the OpenAPI Generator. It allows developers to interact with the public MongoDB Atlas V2 API easily.
+The GO SDK is an automatically generated library using a highly customized version of the [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator). It allows developers to interact with the public MongoDB [Atlas V2 API](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/).
 
-Developers should be aware that the SDK is generated and will be automatically updated based on changes to the API definition. Manual changes to the generated code should be avoided whenever possible, as they might be overwritten during the next generation process.
+Developers should be aware that the SDK is **generated** and will be automatically updated based on changes to the OpenAPI definition. 
+Manual changes to the generated code should be avoided, as they will be overwritten during the next generation process.
 
-The OpenAPI Generator is a powerful tool that takes an OpenAPI Specification (OAS) file (formerly known as Swagger Specification) as input and generates client libraries, server stubs, and other artifacts in multiple programming languages. By using the OpenAPI Generator, the GO SDK can quickly adapt to changes in the MongoDB Atlas API and provide an up-to-date and consistent interface for Atlas users.
+The [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator) is a powerful tool that takes an OpenAPI Specification (OAS) file (formerly known as Swagger Specification). 
+By using the OpenAPI Generator, the Atlas GO SDK can quickly adapt to changes in the MongoDB [Atlas V2 API](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/) and provide an up-to-date and consistent interface for Atlas users.
 
 ## SDK Input
 
@@ -14,37 +16,36 @@ The SDK fetches the public MongoDB Atlas V2 API specification to generate the cl
 
 Developers can update the SDK by running:
 
-- Generate SDK (Generates )
+- Generate SDK (Generates an official SDK update PR)
 - Generate Dev SDK (Generates SDK containing feature preview changes)
 
-See github workflows for more information:
+See GitHub workflows for more information:
 
-https://github.com/mongodb/atlas-sdk-go/actions/
+https://github.com/mongodb/atlas-sdk-go/actions
 
-> NOTE: When running job manually please leave required branch name argument unchanged during manual runs.
+> NOTE: When running the job manually please leave the required branch name argument unchanged during manual runs.
 
 ## SDK Output
 
-The output of the SDK is the Golang source code, which is stored in the ./admin folder. The generated code provides a set of functions and data structures that correspond to the API endpoints and data models defined in the MongoDB Atlas API specification.
+The output of the SDK is the Golang source code, which is stored in the `./admin` folder. The generated code provides a set of functions and data structures that correspond to the API endpoints and data models defined in the MongoDB Atlas API specification.
 
 The SDK output should not be modified directly. Instead, developers should make any necessary changes or customizations in:
 
-- OpenAPI 
+- OpenAPI
 - SDK Specific Mustache templates
 
 For more information please refer to the [SDK Tools Documentation](./tools)
 
 ## Performing SDK Manual Changes
 
-Although manual changes to the SDK are discouraged for generated content, sdk contains also manually written codebase.
-For example `auth` API is currently maintained by the team. 
-It is crucial to carefully document any manual changes made to the SDK to ensure that the changes are understood and maintained properly in the future.
+Although manual changes to the SDK are discouraged for generated content, sdk contains also a manually written codebase.
+For example `./auth` API is currently maintained by the team. 
 
 ## SDK Tools
 
 The OpenAPI Generator configuration and templates used for SDK generation are available under the `./tools` folder. 
 These tools include various configuration files and templates that influence the code generation process.
-SDK tools also contain OpenAPI transformation engine that simplifies our OpenAPI file for generation purposes.
+SDK tools also contain an OpenAPI transformation engine that simplifies our OpenAPI file for SDK generation purposes.
 
 For more information please refer to the [SDK Tools Documentation](./tools) 
 
@@ -52,9 +53,9 @@ For more information please refer to the [SDK Tools Documentation](./tools)
 
 The SDK is automatically released for each pull request containing generated code. 
 This means that any updates or enhancements made to the MongoDB Atlas API will be reflected in the SDK with each new release automatically.
-Each pull request containing generated code also include review instructions. 
+Each pull request containing generated code also includes review instructions. 
 
-> NOTE: SDK update PRs require team reviews before merge
+> NOTE: SDK update PRs require team reviews before the merge
 
 See [./tools/releaser](./tools/releaser) for more information.
 
@@ -62,8 +63,7 @@ See [./tools/releaser](./tools/releaser) for more information.
 
 To help developers get started quickly with the SDK, a number of runnable examples are included in the `./examples` folder. These examples demonstrate various use cases and interactions with the MongoDB Atlas API, showcasing how to perform common tasks using the SDK.
 
-> NOTE: Examples are run manually and not covered by e2e tests we have.
-> NOTE: As openapi 
+> NOTE: Examples are run manually and not covered by the e2e tests we have.
 
 ## Documentation
 
@@ -73,7 +73,7 @@ The documentation for the SDK is stored under the docs folder. It is divided int
 
 Manual documentation is stored in `./docs/doc_{number}` files. This documentation is written manually and covers aspects of the SDK that cannot be automatically generated from the OpenAPI Specification.
 
-The `./docs/doc_{number}` files should be used to provide detailed explanations, usage instructions, and best practices related to the SDK. Changes made to the manual documentation require review and approval by the docs team, ensuring that the documentation remains accurate and up-to-date.
+The `./docs/doc_{number}*.md` files should be used to provide detailed explanations, usage instructions, and best practices related to the SDK. Changes made to the manual documentation require review and approval by the docs team, ensuring that the documentation remains accurate and up-to-date.
 
 ### Automatically Generated Documentation
 
@@ -82,8 +82,8 @@ The automatically generated documentation serves as a reference for developers, 
 
 ## Tracking Upstream Issues
 
-To maintain traceability and streamline issue management, each upstream issue from the MongoDB Atlas V2 API automatically generates an internal Jira issue. This integration helps ensure that all relevant issues are properly tracked and resolved.
+To maintain traceability and streamline issue management, each upstream issue automatically generates an internal Jira.
 
 ## Tracking PR Reviews
 
-Currently apix-1 team is notified for each autoupdate PR of the SDK.
+Currently, apix-1 GitHub team is notified for each auto-update PR of the SDK. Each PR requires a team review.
