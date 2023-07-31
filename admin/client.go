@@ -32,7 +32,7 @@ var (
 	queryDescape    = strings.NewReplacer("%5B", "[", "%5D", "]")
 )
 
-// APIClient manages communication with the MongoDB Atlas Administration API API v2.0~a478ebcd68
+// APIClient manages communication with the MongoDB Atlas Administration API API v2.0~f77c39e317
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration
@@ -92,8 +92,6 @@ type APIClient struct {
 
 	MonitoringAndLogsApi MonitoringAndLogsApi
 
-	MultiCloudClustersApi MultiCloudClustersApi
-
 	NetworkPeeringApi NetworkPeeringApi
 
 	OnlineArchiveApi OnlineArchiveApi
@@ -110,6 +108,8 @@ type APIClient struct {
 
 	ProjectsApi ProjectsApi
 
+	PushBasedLogExportApi PushBasedLogExportApi
+
 	RollingIndexApi RollingIndexApi
 
 	RootApi RootApi
@@ -121,6 +121,8 @@ type APIClient struct {
 	SharedTierRestoreJobsApi SharedTierRestoreJobsApi
 
 	SharedTierSnapshotsApi SharedTierSnapshotsApi
+
+	StreamsApi StreamsApi
 
 	TeamsApi TeamsApi
 
@@ -171,7 +173,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.MaintenanceWindowsApi = (*MaintenanceWindowsApiService)(&c.common)
 	c.MongoDBCloudUsersApi = (*MongoDBCloudUsersApiService)(&c.common)
 	c.MonitoringAndLogsApi = (*MonitoringAndLogsApiService)(&c.common)
-	c.MultiCloudClustersApi = (*MultiCloudClustersApiService)(&c.common)
 	c.NetworkPeeringApi = (*NetworkPeeringApiService)(&c.common)
 	c.OnlineArchiveApi = (*OnlineArchiveApiService)(&c.common)
 	c.OrganizationsApi = (*OrganizationsApiService)(&c.common)
@@ -180,12 +181,14 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ProgrammaticAPIKeysApi = (*ProgrammaticAPIKeysApiService)(&c.common)
 	c.ProjectIPAccessListApi = (*ProjectIPAccessListApiService)(&c.common)
 	c.ProjectsApi = (*ProjectsApiService)(&c.common)
+	c.PushBasedLogExportApi = (*PushBasedLogExportApiService)(&c.common)
 	c.RollingIndexApi = (*RollingIndexApiService)(&c.common)
 	c.RootApi = (*RootApiService)(&c.common)
 	c.ServerlessInstancesApi = (*ServerlessInstancesApiService)(&c.common)
 	c.ServerlessPrivateEndpointsApi = (*ServerlessPrivateEndpointsApiService)(&c.common)
 	c.SharedTierRestoreJobsApi = (*SharedTierRestoreJobsApiService)(&c.common)
 	c.SharedTierSnapshotsApi = (*SharedTierSnapshotsApiService)(&c.common)
+	c.StreamsApi = (*StreamsApiService)(&c.common)
 	c.TeamsApi = (*TeamsApiService)(&c.common)
 	c.ThirdPartyIntegrationsApi = (*ThirdPartyIntegrationsApiService)(&c.common)
 	c.X509AuthenticationApi = (*X509AuthenticationApiService)(&c.common)

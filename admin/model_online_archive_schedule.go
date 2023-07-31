@@ -8,6 +8,7 @@ import (
 
 // OnlineArchiveSchedule Regular frequency and duration when archiving process occurs.
 type OnlineArchiveSchedule struct {
+	// Type of schedule.
 	Type string `json:"type"`
 	// Hour of the day when the scheduled window to run one online archive ends.
 	EndHour *int `json:"endHour,omitempty"`

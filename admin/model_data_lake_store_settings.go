@@ -23,14 +23,13 @@ type DataLakeStoreSettings struct {
 	Prefix *string `json:"prefix,omitempty"`
 	// Flag that indicates whether the bucket is public. If set to `true`, MongoDB Cloud doesn't use the configured AWS Identity and Access Management (IAM) role to access the S3 bucket. If set to `false`, the configured AWS IAM role must include permissions to access the S3 bucket.
 	Public *bool `json:"public,omitempty"`
-	// Physical location where MongoDB Cloud deploys your AWS-hosted MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. MongoDB Cloud assigns the VPC a CIDR block. To limit a new VPC peering connection to one CIDR block and region, create the connection first. Deploy the cluster after the connection starts.
+	// Microsoft Azure Regions.
 	Region *string `json:"region,omitempty"`
-	// ID of the Cluster the Online Archive belongs to.
-	ClusterId *string `json:"clusterId,omitempty"`
 	// Human-readable label of the MongoDB Cloud cluster on which the store is based.
 	ClusterName *string `json:"clusterName,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project.
 	ProjectId      *string                           `json:"projectId,omitempty"`
+	ReadConcern    *DataLakeAtlasStoreReadConcern    `json:"readConcern,omitempty"`
 	ReadPreference *DataLakeAtlasStoreReadPreference `json:"readPreference,omitempty"`
 	// Flag that validates the scheme in the specified URLs. If `true`, allows insecure `HTTP` scheme, doesn't verify the server's certificate chain and hostname, and accepts any certificate with any hostname presented by the server. If `false`, allows secure `HTTPS` scheme only.
 	AllowInsecure *bool `json:"allowInsecure,omitempty"`
@@ -358,39 +357,6 @@ func (o *DataLakeStoreSettings) SetRegion(v string) {
 	o.Region = &v
 }
 
-// GetClusterId returns the ClusterId field value if set, zero value otherwise
-func (o *DataLakeStoreSettings) GetClusterId() string {
-	if o == nil || IsNil(o.ClusterId) {
-		var ret string
-		return ret
-	}
-	return *o.ClusterId
-}
-
-// GetClusterIdOk returns a tuple with the ClusterId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DataLakeStoreSettings) GetClusterIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ClusterId) {
-		return nil, false
-	}
-
-	return o.ClusterId, true
-}
-
-// HasClusterId returns a boolean if a field has been set.
-func (o *DataLakeStoreSettings) HasClusterId() bool {
-	if o != nil && !IsNil(o.ClusterId) {
-		return true
-	}
-
-	return false
-}
-
-// SetClusterId gets a reference to the given string and assigns it to the ClusterId field.
-func (o *DataLakeStoreSettings) SetClusterId(v string) {
-	o.ClusterId = &v
-}
-
 // GetClusterName returns the ClusterName field value if set, zero value otherwise
 func (o *DataLakeStoreSettings) GetClusterName() string {
 	if o == nil || IsNil(o.ClusterName) {
@@ -455,6 +421,39 @@ func (o *DataLakeStoreSettings) HasProjectId() bool {
 // SetProjectId gets a reference to the given string and assigns it to the ProjectId field.
 func (o *DataLakeStoreSettings) SetProjectId(v string) {
 	o.ProjectId = &v
+}
+
+// GetReadConcern returns the ReadConcern field value if set, zero value otherwise
+func (o *DataLakeStoreSettings) GetReadConcern() DataLakeAtlasStoreReadConcern {
+	if o == nil || IsNil(o.ReadConcern) {
+		var ret DataLakeAtlasStoreReadConcern
+		return ret
+	}
+	return *o.ReadConcern
+}
+
+// GetReadConcernOk returns a tuple with the ReadConcern field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DataLakeStoreSettings) GetReadConcernOk() (*DataLakeAtlasStoreReadConcern, bool) {
+	if o == nil || IsNil(o.ReadConcern) {
+		return nil, false
+	}
+
+	return o.ReadConcern, true
+}
+
+// HasReadConcern returns a boolean if a field has been set.
+func (o *DataLakeStoreSettings) HasReadConcern() bool {
+	if o != nil && !IsNil(o.ReadConcern) {
+		return true
+	}
+
+	return false
+}
+
+// SetReadConcern gets a reference to the given DataLakeAtlasStoreReadConcern and assigns it to the ReadConcern field.
+func (o *DataLakeStoreSettings) SetReadConcern(v DataLakeAtlasStoreReadConcern) {
+	o.ReadConcern = &v
 }
 
 // GetReadPreference returns the ReadPreference field value if set, zero value otherwise
@@ -623,11 +622,11 @@ func (o DataLakeStoreSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Region) {
 		toSerialize["region"] = o.Region
 	}
-	if !IsNil(o.ClusterId) {
-		toSerialize["clusterId"] = o.ClusterId
-	}
 	if !IsNil(o.ClusterName) {
 		toSerialize["clusterName"] = o.ClusterName
+	}
+	if !IsNil(o.ReadConcern) {
+		toSerialize["readConcern"] = o.ReadConcern
 	}
 	if !IsNil(o.ReadPreference) {
 		toSerialize["readPreference"] = o.ReadPreference
