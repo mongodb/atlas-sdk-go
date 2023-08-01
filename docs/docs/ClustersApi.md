@@ -4,16 +4,249 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**CreateCluster**](ClustersApi.md#CreateCluster) | **Post** /api/atlas/v2/groups/{groupId}/clusters | Create One Multi-Cloud Cluster from One Project
+[**DeleteCluster**](ClustersApi.md#DeleteCluster) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Remove One Multi-Cloud Cluster from One Project
+[**GetCluster**](ClustersApi.md#GetCluster) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Return One Multi-Cloud Cluster from One Project
 [**GetClusterAdvancedConfiguration**](ClustersApi.md#GetClusterAdvancedConfiguration) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs | Return One Advanced Configuration Options for One Cluster
 [**GetClusterStatus**](ClustersApi.md#GetClusterStatus) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/status | Return Status of All Cluster Operations
 [**GetSampleDatasetLoadStatus**](ClustersApi.md#GetSampleDatasetLoadStatus) | **Get** /api/atlas/v2/groups/{groupId}/sampleDatasetLoad/{sampleDatasetId} | Check Status of Cluster Sample Dataset Request
 [**ListCloudProviderRegions**](ClustersApi.md#ListCloudProviderRegions) | **Get** /api/atlas/v2/groups/{groupId}/clusters/provider/regions | Return All Cloud Provider Regions
+[**ListClusters**](ClustersApi.md#ListClusters) | **Get** /api/atlas/v2/groups/{groupId}/clusters | Return All Clusters in One Project
 [**ListClustersForAllProjects**](ClustersApi.md#ListClustersForAllProjects) | **Get** /api/atlas/v2/clusters | Return All Authorized Clusters in All Projects
 [**LoadSampleDataset**](ClustersApi.md#LoadSampleDataset) | **Post** /api/atlas/v2/groups/{groupId}/sampleDatasetLoad/{name} | Load Sample Dataset Request into Cluster
+[**TestFailover**](ClustersApi.md#TestFailover) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restartPrimaries | Test Failover for One Multi-Cloud Cluster
+[**UpdateCluster**](ClustersApi.md#UpdateCluster) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Modify One Multi-Cloud Cluster from One Project
 [**UpdateClusterAdvancedConfiguration**](ClustersApi.md#UpdateClusterAdvancedConfiguration) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs | Update Advanced Configuration Options for One Cluster
 [**UpgradeSharedCluster**](ClustersApi.md#UpgradeSharedCluster) | **Post** /api/atlas/v2/groups/{groupId}/clusters/tenantUpgrade | Upgrade One Shared-tier Cluster
 [**UpgradeSharedClusterToServerless**](ClustersApi.md#UpgradeSharedClusterToServerless) | **Post** /api/atlas/v2/groups/{groupId}/clusters/tenantUpgradeToServerless | Upgrades One Shared-Tier Cluster to the Serverless Instance
 
+
+
+## CreateCluster
+
+> AdvancedClusterDescription CreateCluster(ctx, groupId, advancedClusterDescription AdvancedClusterDescription).Execute()
+
+Create One Multi-Cloud Cluster from One Project
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20230201004/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    advancedClusterDescription := *openapiclient.NewAdvancedClusterDescription() // AdvancedClusterDescription | 
+
+    resp, r, err := sdk.ClustersApi.CreateCluster(context.Background(), groupId, &advancedClusterDescription).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.CreateCluster``: %v\n", err)
+        apiError := admin.AsError(err)
+        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+    }
+    // response from `CreateCluster`: AdvancedClusterDescription
+    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.CreateCluster`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateClusterRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **advancedClusterDescription** | [**AdvancedClusterDescription**](AdvancedClusterDescription.md) | Cluster to create in the specific project. | 
+
+### Return type
+
+[**AdvancedClusterDescription**](AdvancedClusterDescription.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2023-02-01+json
+- **Accept**: application/vnd.atlas.2023-02-01+json, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteCluster
+
+> DeleteCluster(ctx, groupId, clusterName).RetainBackups(retainBackups).Execute()
+
+Remove One Multi-Cloud Cluster from One Project
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20230201004/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    clusterName := "clusterName_example" // string | 
+    retainBackups := true // bool |  (optional)
+
+    r, err := sdk.ClustersApi.DeleteCluster(context.Background(), groupId, clusterName).RetainBackups(retainBackups).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.DeleteCluster``: %v\n", err)
+        apiError := admin.AsError(err)
+        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**clusterName** | **string** | Human-readable label that identifies the cluster. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteClusterRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **retainBackups** | **bool** | Flag that indicates whether to retain backup snapshots for the deleted dedicated cluster. | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2023-02-01+json, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetCluster
+
+> AdvancedClusterDescription GetCluster(ctx, groupId, clusterName).Execute()
+
+Return One Multi-Cloud Cluster from One Project
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20230201004/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    clusterName := "clusterName_example" // string | 
+
+    resp, r, err := sdk.ClustersApi.GetCluster(context.Background(), groupId, clusterName).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.GetCluster``: %v\n", err)
+        apiError := admin.AsError(err)
+        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+    }
+    // response from `GetCluster`: AdvancedClusterDescription
+    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.GetCluster`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**clusterName** | **string** | Human-readable label that identifies this advanced cluster. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetClusterRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**AdvancedClusterDescription**](AdvancedClusterDescription.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2023-02-01+json, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## GetClusterAdvancedConfiguration
@@ -33,7 +266,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201003/admin"
+    "go.mongodb.org/atlas-sdk/v20230201004/admin"
 )
 
 func main() {
@@ -114,7 +347,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201003/admin"
+    "go.mongodb.org/atlas-sdk/v20230201004/admin"
 )
 
 func main() {
@@ -190,7 +423,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201003/admin"
+    "go.mongodb.org/atlas-sdk/v20230201004/admin"
 )
 
 func main() {
@@ -266,7 +499,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201003/admin"
+    "go.mongodb.org/atlas-sdk/v20230201004/admin"
 )
 
 func main() {
@@ -332,6 +565,85 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ListClusters
+
+> PaginatedAdvancedClusterDescription ListClusters(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+
+Return All Clusters in One Project
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20230201004/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    includeCount := true // bool |  (optional) (default to true)
+    itemsPerPage := int(100) // int |  (optional) (default to 100)
+    pageNum := int(1) // int |  (optional) (default to 1)
+
+    resp, r, err := sdk.ClustersApi.ListClusters(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.ListClusters``: %v\n", err)
+        apiError := admin.AsError(err)
+        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+    }
+    // response from `ListClusters`: PaginatedAdvancedClusterDescription
+    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.ListClusters`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListClustersRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (**totalCount**) in the response. | [default to true]
+ **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
+ **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
+
+### Return type
+
+[**PaginatedAdvancedClusterDescription**](PaginatedAdvancedClusterDescription.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2023-02-01+json, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ListClustersForAllProjects
 
 > PaginatedOrgGroup ListClustersForAllProjects(ctx).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
@@ -354,7 +666,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201003/admin"
+    "go.mongodb.org/atlas-sdk/v20230201004/admin"
 )
 
 func main() {
@@ -427,7 +739,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201003/admin"
+    "go.mongodb.org/atlas-sdk/v20230201004/admin"
 )
 
 func main() {
@@ -486,6 +798,158 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## TestFailover
+
+> TestFailover(ctx, groupId, clusterName).Execute()
+
+Test Failover for One Multi-Cloud Cluster
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20230201004/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    clusterName := "clusterName_example" // string | 
+
+    r, err := sdk.ClustersApi.TestFailover(context.Background(), groupId, clusterName).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.TestFailover``: %v\n", err)
+        apiError := admin.AsError(err)
+        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**clusterName** | **string** | Human-readable label that identifies the cluster. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTestFailoverRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2023-02-01+json, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateCluster
+
+> AdvancedClusterDescription UpdateCluster(ctx, groupId, clusterName, advancedClusterDescription AdvancedClusterDescription).Execute()
+
+Modify One Multi-Cloud Cluster from One Project
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20230201004/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    clusterName := "clusterName_example" // string | 
+    advancedClusterDescription := *openapiclient.NewAdvancedClusterDescription() // AdvancedClusterDescription | 
+
+    resp, r, err := sdk.ClustersApi.UpdateCluster(context.Background(), groupId, clusterName, &advancedClusterDescription).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.UpdateCluster``: %v\n", err)
+        apiError := admin.AsError(err)
+        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+    }
+    // response from `UpdateCluster`: AdvancedClusterDescription
+    fmt.Fprintf(os.Stdout, "Response from `ClustersApi.UpdateCluster`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**clusterName** | **string** | Human-readable label that identifies the cluster. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateClusterRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **advancedClusterDescription** | [**AdvancedClusterDescription**](AdvancedClusterDescription.md) | Cluster to update in the specified project. | 
+
+### Return type
+
+[**AdvancedClusterDescription**](AdvancedClusterDescription.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2023-02-01+json
+- **Accept**: application/vnd.atlas.2023-02-01+json, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## UpdateClusterAdvancedConfiguration
 
 > ClusterDescriptionProcessArgs UpdateClusterAdvancedConfiguration(ctx, groupId, clusterName, clusterDescriptionProcessArgs ClusterDescriptionProcessArgs).Execute()
@@ -503,7 +967,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201003/admin"
+    "go.mongodb.org/atlas-sdk/v20230201004/admin"
 )
 
 func main() {
@@ -586,7 +1050,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201003/admin"
+    "go.mongodb.org/atlas-sdk/v20230201004/admin"
 )
 
 func main() {
@@ -666,7 +1130,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201003/admin"
+    "go.mongodb.org/atlas-sdk/v20230201004/admin"
 )
 
 func main() {

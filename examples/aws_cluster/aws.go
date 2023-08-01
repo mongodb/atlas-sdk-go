@@ -10,8 +10,8 @@ import (
 
 	"context"
 
-	"go.mongodb.org/atlas-sdk/v20230201003/admin"
-	"go.mongodb.org/atlas-sdk/v20230201003/examples"
+	"go.mongodb.org/atlas-sdk/v20230201004/admin"
+	"go.mongodb.org/atlas-sdk/v20230201004/examples"
 )
 
 /*
@@ -58,7 +58,7 @@ func main() {
 
 	// -- 2. Create Cluster
 	cluster := createClusterRequest(projectId)
-	createdCluster, resp, err := sdk.MultiCloudClustersApi.CreateCluster(ctx, projectId, cluster).Execute()
+	createdCluster, resp, err := sdk.ClustersApi.CreateCluster(ctx, projectId, cluster).Execute()
 	examples.HandleErr(err, resp)
 
 	// -- 3. Create Database User
