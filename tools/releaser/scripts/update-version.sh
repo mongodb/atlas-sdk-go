@@ -20,3 +20,12 @@ npm exec -c "replace-in-file /$SDK_MAJOR_VERSION/g $BUMPED_MAJOR_VERSION $VERSIO
 
 echo "Creating empty breaking changes file for $BUMPED_MAJOR_VERSION"
 echo "# Breaking Changes" > "$script_path/../breaking_changes/${BUMPED_MAJOR_VERSION}.md"
+
+## Explicitly update version.go file
+export SDK_VERSION="${BUMPED_MAJOR_VERSION}.0.0"
+export NEW_RESOURCE_VERSION="${BUMPED_MAJOR_VERSION}"
+
+echo "Updating version.go file: $SDK_VERSION"
+target_file_path="$script_path/../../../internal/core/version.go"
+envsubst < "$script_path/../templates/VERSION.tmpl" > "$target_file_path"
+
