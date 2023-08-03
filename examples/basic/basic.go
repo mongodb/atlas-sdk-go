@@ -47,4 +47,3 @@ func main() {
 	projectId := projects.GetResults()[0].GetId()
 	fmt.Printf("Project we use %v", projectId)
 }
- 
