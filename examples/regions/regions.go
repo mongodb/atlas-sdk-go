@@ -29,12 +29,12 @@ func main() {
 	examples.HandleErr(err, nil)
 
 	// -- 1. Get first project
-	projects, response, err := sdk.ProjectsApi.ListProjectsWithParams(ctx, 
+	projects, response, err := sdk.ProjectsApi.ListProjectsWithParams(ctx,
 		&admin.ListProjectsApiParams{
 			ItemsPerPage: admin.PtrInt(1),
 			IncludeCount: admin.PtrBool(true),
-			PageNum: 	admin.PtrInt(1),
-	}).Execute()
+			PageNum:      admin.PtrInt(1),
+		}).Execute()
 	examples.HandleErr(err, response)
 
 	if projects.GetTotalCount() == 0 {
@@ -42,8 +42,8 @@ func main() {
 	}
 
 	projectId := projects.GetResults()[0].GetId()
-	providers := []string{"AWS","GCP","AZURE"}
-	regions,response, err := sdk.ClustersApi.ListCloudProviderRegions(ctx,projectId).Providers(providers).Execute()
-	examples.HandleErr(err,response)
-	fmt.Println(regions);
+	providers := []string{"AWS", "GCP", "AZURE"}
+	regions, response, err := sdk.ClustersApi.ListCloudProviderRegions(ctx, projectId).Providers(providers).Execute()
+	examples.HandleErr(err, response)
+	fmt.Println(regions)
 }
