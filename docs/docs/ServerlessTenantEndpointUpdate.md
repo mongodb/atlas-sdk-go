@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Comment** | Pointer to **string** | Human-readable comment associated with the private endpoint. | [optional] 
-**ProviderName** | **string** |  | 
+**ProviderName** | **string** | Human-readable label that identifies the cloud provider of the tenant endpoint. | 
 **CloudProviderEndpointId** | Pointer to **string** | Unique string that identifies the Azure private endpoint&#39;s network interface for this private endpoint service. | [optional] 
 **PrivateEndpointIpAddress** | Pointer to **string** | IPv4 address of the private endpoint in your Azure VNet that someone added to this private endpoint service. | [optional] 
 

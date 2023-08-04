@@ -8,9 +8,11 @@ import (
 
 // ClusterDescriptionProcessArgs struct for ClusterDescriptionProcessArgs
 type ClusterDescriptionProcessArgs struct {
-	// [Default level of acknowledgment requested from MongoDB for read operations](https://docs.mongodb.com/manual/reference/read-concern/) set for this cluster.  MongoDB 4.4 clusters default to `available`. MongoDB 5.0 and later clusters default to `local`.
+	// Number of threads on the source shard and the receiving shard for chunk migration. The number of threads should not exceed the half the total number of CPU cores in the sharded cluster.
+	ChunkMigrationConcurrency *int `json:"chunkMigrationConcurrency,omitempty"`
+	// Default level of acknowledgment requested from MongoDB for read operations set for this cluster.  MongoDB 4.4 clusters default to `available`. MongoDB 5.0 and later clusters default to `local`.
 	DefaultReadConcern *string `json:"defaultReadConcern,omitempty"`
-	// [Default level of acknowledgment requested from MongoDB for write operations](https://docs.mongodb.com/manual/reference/write-concern/) set for this cluster.  MongoDB 4.4 clusters default to `1`. MongoDB 5.0 and later clusters default to `majority`.
+	// Default level of acknowledgment requested from MongoDB for write operations set for this cluster.  MongoDB 4.4 clusters default to `1`. MongoDB 5.0 and later clusters default to `majority`.
 	DefaultWriteConcern *string `json:"defaultWriteConcern,omitempty"`
 	// Flag that indicates whether you can insert or update documents where all indexed entries don't exceed 1024 bytes. If you set this to false, [mongod](https://docs.mongodb.com/upcoming/reference/program/mongod/#mongodb-binary-bin.mongod) writes documents that exceed this limit but doesn't index them.
 	FailIndexKeyTooLong *bool `json:"failIndexKeyTooLong,omitempty"`
@@ -38,6 +40,8 @@ type ClusterDescriptionProcessArgs struct {
 // will change when the set of required properties is changed
 func NewClusterDescriptionProcessArgs() *ClusterDescriptionProcessArgs {
 	this := ClusterDescriptionProcessArgs{}
+	var chunkMigrationConcurrency int = 1
+	this.ChunkMigrationConcurrency = &chunkMigrationConcurrency
 	var defaultReadConcern string = "available"
 	this.DefaultReadConcern = &defaultReadConcern
 	var defaultWriteConcern string = "1"
@@ -62,6 +66,8 @@ func NewClusterDescriptionProcessArgs() *ClusterDescriptionProcessArgs {
 // but it doesn't guarantee that properties required by API are set
 func NewClusterDescriptionProcessArgsWithDefaults() *ClusterDescriptionProcessArgs {
 	this := ClusterDescriptionProcessArgs{}
+	var chunkMigrationConcurrency int = 1
+	this.ChunkMigrationConcurrency = &chunkMigrationConcurrency
 	var defaultReadConcern string = "available"
 	this.DefaultReadConcern = &defaultReadConcern
 	var defaultWriteConcern string = "1"
@@ -79,6 +85,39 @@ func NewClusterDescriptionProcessArgsWithDefaults() *ClusterDescriptionProcessAr
 	var transactionLifetimeLimitSeconds int64 = 60
 	this.TransactionLifetimeLimitSeconds = &transactionLifetimeLimitSeconds
 	return &this
+}
+
+// GetChunkMigrationConcurrency returns the ChunkMigrationConcurrency field value if set, zero value otherwise
+func (o *ClusterDescriptionProcessArgs) GetChunkMigrationConcurrency() int {
+	if o == nil || IsNil(o.ChunkMigrationConcurrency) {
+		var ret int
+		return ret
+	}
+	return *o.ChunkMigrationConcurrency
+}
+
+// GetChunkMigrationConcurrencyOk returns a tuple with the ChunkMigrationConcurrency field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterDescriptionProcessArgs) GetChunkMigrationConcurrencyOk() (*int, bool) {
+	if o == nil || IsNil(o.ChunkMigrationConcurrency) {
+		return nil, false
+	}
+
+	return o.ChunkMigrationConcurrency, true
+}
+
+// HasChunkMigrationConcurrency returns a boolean if a field has been set.
+func (o *ClusterDescriptionProcessArgs) HasChunkMigrationConcurrency() bool {
+	if o != nil && !IsNil(o.ChunkMigrationConcurrency) {
+		return true
+	}
+
+	return false
+}
+
+// SetChunkMigrationConcurrency gets a reference to the given int and assigns it to the ChunkMigrationConcurrency field.
+func (o *ClusterDescriptionProcessArgs) SetChunkMigrationConcurrency(v int) {
+	o.ChunkMigrationConcurrency = &v
 }
 
 // GetDefaultReadConcern returns the DefaultReadConcern field value if set, zero value otherwise
@@ -453,6 +492,9 @@ func (o ClusterDescriptionProcessArgs) MarshalJSONWithoutReadOnly() ([]byte, err
 }
 func (o ClusterDescriptionProcessArgs) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.ChunkMigrationConcurrency) {
+		toSerialize["chunkMigrationConcurrency"] = o.ChunkMigrationConcurrency
+	}
 	if !IsNil(o.DefaultReadConcern) {
 		toSerialize["defaultReadConcern"] = o.DefaultReadConcern
 	}

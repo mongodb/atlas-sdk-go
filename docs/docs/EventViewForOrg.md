@@ -24,6 +24,8 @@ Name | Type | Description | Notes
 **WhitelistEntry** | Pointer to **string** | Entry in the list of source host addresses that the API key accepts and this event targets. | [optional] [readonly] 
 **TeamId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the organization team associated with this event. | [optional] [readonly] 
 **TargetUsername** | Pointer to **string** | Email address for the console user that this event targets. The resource returns this parameter when &#x60;\&quot;eventTypeName\&quot; : \&quot;USER\&quot;&#x60;. | [optional] [readonly] 
+**ResourceId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the resource associated with the event. | [optional] [readonly] 
+**ResourceType** | Pointer to **string** | Unique identifier of resource type. | [optional] 
 
 ## Methods
 
@@ -524,6 +526,54 @@ SetTargetUsername sets TargetUsername field to given value.
 `func (o *EventViewForOrg) HasTargetUsername() bool`
 
 HasTargetUsername returns a boolean if a field has been set.
+### GetResourceId
+
+`func (o *EventViewForOrg) GetResourceId() string`
+
+GetResourceId returns the ResourceId field if non-nil, zero value otherwise.
+
+### GetResourceIdOk
+
+`func (o *EventViewForOrg) GetResourceIdOk() (*string, bool)`
+
+GetResourceIdOk returns a tuple with the ResourceId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResourceId
+
+`func (o *EventViewForOrg) SetResourceId(v string)`
+
+SetResourceId sets ResourceId field to given value.
+
+### HasResourceId
+
+`func (o *EventViewForOrg) HasResourceId() bool`
+
+HasResourceId returns a boolean if a field has been set.
+### GetResourceType
+
+`func (o *EventViewForOrg) GetResourceType() string`
+
+GetResourceType returns the ResourceType field if non-nil, zero value otherwise.
+
+### GetResourceTypeOk
+
+`func (o *EventViewForOrg) GetResourceTypeOk() (*string, bool)`
+
+GetResourceTypeOk returns a tuple with the ResourceType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResourceType
+
+`func (o *EventViewForOrg) SetResourceType(v string)`
+
+SetResourceType sets ResourceType field to given value.
+
+### HasResourceType
+
+`func (o *EventViewForOrg) HasResourceType() bool`
+
+HasResourceType returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

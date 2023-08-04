@@ -33,6 +33,8 @@ type InvoiceLineItem struct {
 	StartDate *time.Time `json:"startDate,omitempty"`
 	// Human-readable label that identifies the Atlas App Services application associated with this line item.
 	StitchAppName *string `json:"stitchAppName,omitempty"`
+	// A map of key-value pairs corresponding to the tags associated with the line item resource.
+	Tags *map[string][]string `json:"tags,omitempty"`
 	// Lower bound for usage amount range in current SKU tier.   **NOTE**: **lineItems[n].tierLowerBound** appears only if your **lineItems[n].sku** is tiered.
 	TierLowerBound *float64 `json:"tierLowerBound,omitempty"`
 	// Upper bound for usage amount range in current SKU tier.   **NOTE**: **lineItems[n].tierUpperBound** appears only if your **lineItems[n].sku** is tiered.
@@ -456,6 +458,39 @@ func (o *InvoiceLineItem) HasStitchAppName() bool {
 // SetStitchAppName gets a reference to the given string and assigns it to the StitchAppName field.
 func (o *InvoiceLineItem) SetStitchAppName(v string) {
 	o.StitchAppName = &v
+}
+
+// GetTags returns the Tags field value if set, zero value otherwise
+func (o *InvoiceLineItem) GetTags() map[string][]string {
+	if o == nil || IsNil(o.Tags) {
+		var ret map[string][]string
+		return ret
+	}
+	return *o.Tags
+}
+
+// GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InvoiceLineItem) GetTagsOk() (*map[string][]string, bool) {
+	if o == nil || IsNil(o.Tags) {
+		return nil, false
+	}
+
+	return o.Tags, true
+}
+
+// HasTags returns a boolean if a field has been set.
+func (o *InvoiceLineItem) HasTags() bool {
+	if o != nil && !IsNil(o.Tags) {
+		return true
+	}
+
+	return false
+}
+
+// SetTags gets a reference to the given map[string][]string and assigns it to the Tags field.
+func (o *InvoiceLineItem) SetTags(v map[string][]string) {
+	o.Tags = &v
 }
 
 // GetTierLowerBound returns the TierLowerBound field value if set, zero value otherwise
