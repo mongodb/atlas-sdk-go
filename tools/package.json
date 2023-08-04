@@ -7,7 +7,7 @@
   "dependencies": {
     "replace-in-file": "^7.0.1",
     "simple-node-logger": "^21.8.12",
-    "yaml": "2.2.1"
+    "yaml": "2.2.2"
   },
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "2.7.0",
