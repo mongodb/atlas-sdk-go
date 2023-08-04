@@ -1,8 +1,8 @@
 openapi: 3.0.1
 info:
   description: >-
-    The MongoDB Atlas Administration API allows developers to manage
-    all components in MongoDB Atlas.
+    The MongoDB Atlas Administration API allows developers to manage all
+    components in MongoDB Atlas.
 
 
     The Atlas Administration API uses HTTP Digest Authentication to authenticate requests. Provide a programmatic API public key and corresponding private key as the username and password when constructing the HTTP request. For example, to [return database access history](#tag/Access-Tracking/operation/listAccessLogsByClusterName) with [cURL](https://en.wikipedia.org/wiki/CURL), run the following command in the terminal:
@@ -105,9 +105,9 @@ tags:
       as role mappings and connected organization configurations.
     name: Federated Authentication
   - description: >-
-      Returns, adds, and removes Global Cluster managed namespaces and
-      custom zone mappings. Each collection in a Global Cluster is associated
-      with a managed namespace. When you create a managed namespace for a Global
+      Returns, adds, and removes Global Cluster managed namespaces and custom
+      zone mappings. Each collection in a Global Cluster is associated with a
+      managed namespace. When you create a managed namespace for a Global
       Cluster, MongoDB Cloud creates an empty collection for that namespace.
       Creating a managed namespace doesn't populate a collection with data.
       Similarly, deleting a managed namespace doesn't delete the associated
@@ -142,8 +142,8 @@ tags:
   - description: Returns database deployment monitoring and logging data.
     name: Monitoring and Logs
   - description: >-
-      Returns, adds, edits, and removes network peering containers and
-      peering connections.
+      Returns, adds, edits, and removes network peering containers and peering
+      connections.
 
       When you deploy an M10+ dedicated cluster, Atlas creates a VPC for the selected provider and region or regions if no existing VPC or VPC peering connection exists for that provider and region. Atlas assigns the VPC a Classless Inter-Domain Routing (CIDR) block.
     name: Network Peering
@@ -1400,9 +1400,9 @@ paths:
   "/api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId}":
     delete:
       description: >-
-        Removes one alert configuration from the specified project. To use
-        this resource, the requesting API Key must have the Organization Owner
-        or Project Owner role.
+        Removes one alert configuration from the specified project. To use this
+        resource, the requesting API Key must have the Organization Owner or
+        Project Owner role.
 
 
         This resource remains under revision and may change.
@@ -1442,10 +1442,10 @@ paths:
         - Alert Configurations
     get:
       description: >-
-        Returns the specified alert configuration from the specified
-        project. To use this resource, the requesting API Key must have the
-        Project Read Only role. This resource doesn't require the API Key to
-        have an Access List.
+        Returns the specified alert configuration from the specified project. To
+        use this resource, the requesting API Key must have the Project Read
+        Only role. This resource doesn't require the API Key to have an Access
+        List.
 
 
         This resource remains under revision and may change.
@@ -1488,10 +1488,10 @@ paths:
       x-xgen-experimental: true
     patch:
       description: >-
-        Enables or disables the specified alert configuration in the
-        specified project. The resource enables the specified alert
-        configuration if currently enabled. The resource disables the specified
-        alert configuration if currently disabled. To use this resource, the
+        Enables or disables the specified alert configuration in the specified
+        project. The resource enables the specified alert configuration if
+        currently enabled. The resource disables the specified alert
+        configuration if currently disabled. To use this resource, the
         requesting API Key must have the Organization Owner or Project Owner
         role.
 
@@ -1604,12 +1604,11 @@ paths:
   "/api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId}/alerts":
     get:
       description: >-
-        Returns all open alerts that the specified alert configuration
-        triggers. These alert configurations apply to the specified project
-        only. Alert configurations define the triggers and notification methods
-        for alerts. Open alerts have been triggered but remain unacknowledged.
-        To use this resource, the requesting API Key must have the Project Read
-        Only role.
+        Returns all open alerts that the specified alert configuration triggers.
+        These alert configurations apply to the specified project only. Alert
+        configurations define the triggers and notification methods for alerts.
+        Open alerts have been triggered but remain unacknowledged. To use this
+        resource, the requesting API Key must have the Project Read Only role.
 
 
         This resource remains under revision and may change.
@@ -1656,11 +1655,11 @@ paths:
   "/api/atlas/v2/groups/{groupId}/alerts":
     get:
       description: >-
-        Returns all alerts. These alerts apply to all components in one
-        project. You receive an alert when a monitored component meets or
-        exceeds a value you set. To use this resource, the requesting API Key
-        must have the Project Read Only role. This resource doesn't require the
-        API Key to have an Access List.
+        Returns all alerts. These alerts apply to all components in one project.
+        You receive an alert when a monitored component meets or exceeds a value
+        you set. To use this resource, the requesting API Key must have the
+        Project Read Only role. This resource doesn't require the API Key to
+        have an Access List.
 
 
         This resource remains under revision and may change.
@@ -1698,11 +1697,11 @@ paths:
   "/api/atlas/v2/groups/{groupId}/alerts/{alertId}":
     get:
       description: >-
-        Returns one alert. This alert applies to any component in one
-        project. You receive an alert when a monitored component meets or
-        exceeds a value you set. To use this resource, the requesting API Key
-        must have the Project Read Only role. This resource doesn't require the
-        API Key to have an Access List.
+        Returns one alert. This alert applies to any component in one project.
+        You receive an alert when a monitored component meets or exceeds a value
+        you set. To use this resource, the requesting API Key must have the
+        Project Read Only role. This resource doesn't require the API Key to
+        have an Access List.
 
 
         This resource remains under revision and may change.
@@ -1796,10 +1795,9 @@ paths:
   "/api/atlas/v2/groups/{groupId}/alerts/{alertId}/alertConfigs":
     get:
       description: >-
-        Returns all alert configurations set for the specified alert. To
-        use this resource, the requesting API Key must have the Project Read
-        Only role. This resource doesn't require the API Key to have an Access
-        List.
+        Returns all alert configurations set for the specified alert. To use
+        this resource, the requesting API Key must have the Project Read Only
+        role. This resource doesn't require the API Key to have an Access List.
 
 
         This resource remains under revision and may change.
@@ -2407,8 +2405,8 @@ paths:
         - Cloud Provider Access
     post:
       description: >-
-        Creates one Amazon Web Services (AWS) Identity and Access
-        Management (IAM) role. Some MongoDB Cloud features use AWS IAM roles for
+        Creates one Amazon Web Services (AWS) Identity and Access Management
+        (IAM) role. Some MongoDB Cloud features use AWS IAM roles for
         authentication. To use this resource, the requesting API Key must have
         the Project Owner role. This resource doesn't require the API Key to
         have an Access List.
@@ -3165,12 +3163,11 @@ paths:
         - Cloud Backups
     post:
       description: >-
-        Restores one snapshot of one cluster from the specified project.
-        Atlas takes on-demand snapshots immediately and scheduled snapshots at
-        regular intervals. If an on-demand snapshot with a status of **queued**
-        or **inProgress** exists, before taking another snapshot, wait until
-        Atlas completes completes processing the previously taken on-demand
-        snapshot.
+        Restores one snapshot of one cluster from the specified project. Atlas
+        takes on-demand snapshots immediately and scheduled snapshots at regular
+        intervals. If an on-demand snapshot with a status of **queued** or
+        **inProgress** exists, before taking another snapshot, wait until Atlas
+        completes completes processing the previously taken on-demand snapshot.
 
          To use this resource, the requesting API Key must have the Project Owner role and an entry for the project access list.
       operationId: createBackupRestoreJob
@@ -3403,8 +3400,8 @@ paths:
             schema:
               $ref: "#/components/schemas/DiskBackupSnapshotSchedule"
         description: >-
-          Updates the cloud backup schedule for one cluster within the
-          specified project.
+          Updates the cloud backup schedule for one cluster within the specified
+          project.
 
 
           **Note**: In the request body, provide only the fields that you want to update.
@@ -5325,10 +5322,10 @@ paths:
     get:
       deprecated: true
       description: >-
-        Returns all legacy backup restore jobs for one cluster in the
-        specified project. To use this resource, the requesting API Key must
-        have the Project Read Only role. This resource doesn't require the API
-        Key to have an Access List.
+        Returns all legacy backup restore jobs for one cluster in the specified
+        project. To use this resource, the requesting API Key must have the
+        Project Read Only role. This resource doesn't require the API Key to
+        have an Access List.
 
          Effective 23 March 2020, all new clusters can use only Cloud Backups. When you upgrade to 4.2, your backup system upgrades to cloud backup if it is currently set to legacy backup. After this upgrade, all your existing legacy backup snapshots remain available. They expire over time in accordance with your retention policy. Your backup policy resets to the default schedule. If you had a custom backup policy in place with legacy backups, you must re-create it with the procedure outlined in the [Cloud Backup documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/scheduling/#std-label-cloud-provider-backup-schedule). If you use the `BATCH-ID` query parameter, you can retrieve all restore jobs in the specified batch. When creating a restore job for a sharded cluster, MongoDB Cloud creates a separate job for each shard, plus another for the config server. Each of those jobs are part of a batch. However, a batch can't include a restore job for a replica set.
       operationId: listLegacyBackupRestoreJobs
@@ -5444,10 +5441,10 @@ paths:
     get:
       deprecated: true
       description: >-
-        Returns one legacy backup restore job for one cluster in the
-        specified project. To use this resource, the requesting API Key must
-        have the Project Read Only role. This resource doesn't require the API
-        Key to have an Access List.
+        Returns one legacy backup restore job for one cluster in the specified
+        project. To use this resource, the requesting API Key must have the
+        Project Read Only role. This resource doesn't require the API Key to
+        have an Access List.
 
          Effective 23 March 2020, all new clusters can use only Cloud Backups. When you upgrade to 4.2, your backup system upgrades to cloud backup if it is currently set to legacy backup. After this upgrade, all your existing legacy backup snapshots remain available. They expire over time in accordance with your retention policy. Your backup policy resets to the default schedule. If you had a custom backup policy in place with legacy backups, you must re-create it with the procedure outlined in the [Cloud Backup documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/scheduling/#std-label-cloud-provider-backup-schedule).
       operationId: getLegacyBackupRestoreJob
@@ -5496,9 +5493,9 @@ paths:
     get:
       deprecated: true
       description: >-
-        Returns the snapshot schedule for one cluster in the specified
-        project. To use this resource, the requesting API Key must have the
-        Project Read Only role.
+        Returns the snapshot schedule for one cluster in the specified project.
+        To use this resource, the requesting API Key must have the Project Read
+        Only role.
 
          Effective 23 March 2020, all new clusters can use only Cloud Backups. When you upgrade to 4.2, your backup system upgrades to cloud backup if it is currently set to legacy backup. After this upgrade, all your existing legacy backup snapshots remain available. They expire over time in accordance with your retention policy. Your backup policy resets to the default schedule. If you had a custom backup policy in place with legacy backups, you must re-create it with the procedure outlined in the [Cloud Backup documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/scheduling/#std-label-cloud-provider-backup-schedule).
       operationId: getLegacySnapshotSchedule
@@ -5535,9 +5532,9 @@ paths:
     patch:
       deprecated: true
       description: >-
-        Updates the snapshot schedule for one cluster in the specified
-        project. To use this resource, the requesting API Key must have the
-        Project Owner role.
+        Updates the snapshot schedule for one cluster in the specified project.
+        To use this resource, the requesting API Key must have the Project Owner
+        role.
 
          Effective 23 March 2020, all new clusters can use only Cloud Backups. When you upgrade to 4.2, your backup system upgrades to cloud backup if it is currently set to legacy backup. After this upgrade, all your existing legacy backup snapshots remain available. They expire over time in accordance with your retention policy. Your backup policy resets to the default schedule. If you had a custom backup policy in place with legacy backups, you must re-create it with the procedure outlined in the [Cloud Backup documentation](https://www.mongodb.com/docs/atlas/backup/cloud-backup/scheduling/#std-label-cloud-provider-backup-schedule).
       operationId: updateLegacySnapshotSchedule
@@ -7238,11 +7235,10 @@ paths:
         - X.509 Authentication
     post:
       description: >-
-        Generates one X.509 certificate for the specified MongoDB user.
-        Atlas manages the certificate and MongoDB user that belong to one
-        project. To use this resource, the requesting API Key must have the
-        Project Owner role. This resource doesn't require the API Key to have an
-        Access List.
+        Generates one X.509 certificate for the specified MongoDB user. Atlas
+        manages the certificate and MongoDB user that belong to one project. To
+        use this resource, the requesting API Key must have the Project Owner
+        role. This resource doesn't require the API Key to have an Access List.
 
 
         To get MongoDB Cloud to generate a managed certificate for a database user, set `"x509Type" : "MANAGED"` on the desired MongoDB Database User.
@@ -7499,8 +7495,8 @@ paths:
             schema:
               $ref: "#/components/schemas/EncryptionAtRest"
         description: >-
-          Required parameters depend on whether someone has enabled
-          Encryption at Rest using Customer Key Management:
+          Required parameters depend on whether someone has enabled Encryption
+          at Rest using Customer Key Management:
 
 
           If you have enabled Encryption at Rest using Customer Key Management (CMK), Atlas requires all of the parameters for the desired encryption provider.
@@ -7543,11 +7539,10 @@ paths:
   "/api/atlas/v2/groups/{groupId}/events":
     get:
       description: >-
-        Returns one event for the specified project. Events identify
-        significant database, billing, or security activities or status changes.
-        To use this resource, the requesting API Key must have the Project Read
-        Only role. This resource doesn't require the API Key to have an Access
-        List.
+        Returns one event for the specified project. Events identify significant
+        database, billing, or security activities or status changes. To use this
+        resource, the requesting API Key must have the Project Read Only role.
+        This resource doesn't require the API Key to have an Access List.
 
 
         This resource remains under revision and may change.
@@ -7627,11 +7622,10 @@ paths:
   "/api/atlas/v2/groups/{groupId}/events/{eventId}":
     get:
       description: >-
-        Returns one event for the specified project. Events identify
-        significant database, billing, or security activities or status changes.
-        To use this resource, the requesting API Key must have the Project Read
-        Only role. This resource doesn't require the API Key to have an Access
-        List.
+        Returns one event for the specified project. Events identify significant
+        database, billing, or security activities or status changes. To use this
+        resource, the requesting API Key must have the Project Read Only role.
+        This resource doesn't require the API Key to have an Access List.
 
 
         This resource remains under revision and may change.
@@ -8458,9 +8452,9 @@ paths:
       x-xgen-experimental: true
     patch:
       description: >-
-        Sets the specified project limit. To use this resource, the
-        requesting API Key must have the Project Owner role. This resource
-        doesn't require the API Key to have an Access List.
+        Sets the specified project limit. To use this resource, the requesting
+        API Key must have the Project Owner role. This resource doesn't require
+        the API Key to have an Access List.
 
 
         **NOTE**: Increasing the following configuration limits might lead to slower response times in the MongoDB Cloud UI or increased user management overhead leading to authentication or authorization re-architecture. If possible, we recommend that you create additional projects to gain access to more of these resources for a more sustainable growth pattern.
@@ -8533,8 +8527,7 @@ paths:
   "/api/atlas/v2/groups/{groupId}/liveMigrations":
     post:
       description: >-
-        Migrate one cluster that Cloud or Ops Manager manages to MongoDB
-        Atlas.
+        Migrate one cluster that Cloud or Ops Manager manages to MongoDB Atlas.
 
          Please make sure to [validate](#tag/Cloud-Migration-Service/operation/validateOneMigration) your migration before initiating it.
 
@@ -9817,9 +9810,9 @@ paths:
         - Serverless Private Endpoints
     post:
       description: >-
-        Creates one private endpoint for one serverless instance. To use
-        this resource, the requesting API Key must have the Project Owner role.
-        This resource doesn't require the API Key to have an Access List.
+        Creates one private endpoint for one serverless instance. To use this
+        resource, the requesting API Key must have the Project Owner role. This
+        resource doesn't require the API Key to have an Access List.
 
          A new endpoint won't be immediately available after creation.  Read the steps in the linked tutorial for detailed guidance.
       externalDocs:
@@ -10413,15 +10406,15 @@ paths:
         - Data Federation
     post:
       description: >-
-        Adds one private endpoint for Federated Database Instances and
-        Online Archives to the specified projects. If the endpoint ID already
-        exists and the associated comment is unchanged, Atlas Data Federation
-        makes no change to the endpoint ID list. If the endpoint ID already
-        exists and the associated comment is changed, Atlas Data Federation
-        updates the comment value only in the endpoint ID list. If the endpoint
-        ID doesn't exist, Atlas Data Federation appends the new endpoint to the
-        list of endpoints in the endpoint ID list. Each region has an associated
-        service name for the various endpoints in each region.
+        Adds one private endpoint for Federated Database Instances and Online
+        Archives to the specified projects. If the endpoint ID already exists
+        and the associated comment is unchanged, Atlas Data Federation makes no
+        change to the endpoint ID list. If the endpoint ID already exists and
+        the associated comment is changed, Atlas Data Federation updates the
+        comment value only in the endpoint ID list. If the endpoint ID doesn't
+        exist, Atlas Data Federation appends the new endpoint to the list of
+        endpoints in the endpoint ID list. Each region has an associated service
+        name for the various endpoints in each region.
 
          `us-east-1` is `com.amazonaws.vpce.us-east-1.vpce-svc-00e311695874992b4`.
 
@@ -10829,9 +10822,8 @@ paths:
   "/api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName}":
     get:
       description: >-
-        Returns the measurements of one disk or partition for the specified
-        host for the specified project. Returned value can be one of the
-        following:
+        Returns the measurements of one disk or partition for the specified host
+        for the specified project. Returned value can be one of the following:
 
         - Throughput of I/O operations for the disk partition used for the MongoDB process
 
@@ -10887,9 +10879,8 @@ paths:
   "/api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName}/measurements":
     get:
       description: >-
-        Returns the measurements of one disk or partition for the specified
-        host for the specified project. Returned value can be one of the
-        following:
+        Returns the measurements of one disk or partition for the specified host
+        for the specified project. Returned value can be one of the following:
 
         - Throughput of I/O operations for the disk partition used for the MongoDB process
 
@@ -12081,8 +12072,8 @@ paths:
   "/api/atlas/v2/groups/{groupId}/userSecurity/customerX509":
     delete:
       description: >-
-        Clears the customer-managed X.509 settings on a project, including
-        the uploaded Certificate Authority, which disables self-managed X.509.
+        Clears the customer-managed X.509 settings on a project, including the
+        uploaded Certificate Authority, which disables self-managed X.509.
 
          Updating this configuration triggers a rolling restart of the database. You must have the Project Owner role to use this endpoint. This resource doesn't require the API Key to have an Access List.
       operationId: disableCustomerManagedX509
@@ -12386,8 +12377,8 @@ paths:
   "/api/atlas/v2/orgs/{orgId}":
     delete:
       description: >-
-        Removes one specified organization. MongoDB Cloud imposes the
-        following limits on this resource:
+        Removes one specified organization. MongoDB Cloud imposes the following
+        limits on this resource:
 
          - Organizations with active projects cannot be removed.
          - All projects in the organization must be removed before you can remove the organization.
@@ -14151,10 +14142,10 @@ paths:
   /api/atlas/v2/users:
     post:
       description: >-
-        Creates one MongoDB Cloud user account. A MongoDB Cloud user
-        account grants access to only the MongoDB Cloud application. To grant
-        database access, create a database user. MongoDB Cloud sends an email to
-        the users you specify, inviting them to join the project. Invited users
+        Creates one MongoDB Cloud user account. A MongoDB Cloud user account
+        grants access to only the MongoDB Cloud application. To grant database
+        access, create a database user. MongoDB Cloud sends an email to the
+        users you specify, inviting them to join the project. Invited users
         don't have access to the project until they accept the invitation.
         Invitations expire after 30 days.
 
@@ -14333,9 +14324,9 @@ components:
         example: PT1M
     groupId:
       description: >-
-        Unique 24-hexadecimal digit string that identifies your project.
-        Use the [/groups](#tag/Projects/operation/listProjects) endpoint to
-        retrieve all projects to which the authenticated user has access.
+        Unique 24-hexadecimal digit string that identifies your project. Use the
+        [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all
+        projects to which the authenticated user has access.
 
 
         **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -15075,10 +15066,10 @@ components:
         datadogApiKey:
           type: string
           description: >-
-            Datadog API Key that MongoDB Cloud needs to send alert
-            notifications to Datadog. You can find this API key in the Datadog
-            dashboard. The resource requires this parameter when
-            `"notifications.[n].typeName" : "DATADOG"`.
+            Datadog API Key that MongoDB Cloud needs to send alert notifications
+            to Datadog. You can find this API key in the Datadog dashboard. The
+            resource requires this parameter when `"notifications.[n].typeName"
+            : "DATADOG"`.
 
 
             **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:
@@ -15252,9 +15243,9 @@ components:
         serviceKey:
           type: string
           description: >-
-            PagerDuty service key that MongoDB Cloud needs to send
-            notifications via PagerDuty. The resource requires this parameter
-            when `"notifications.[n].typeName" : "PAGER_DUTY"`. If the key later
+            PagerDuty service key that MongoDB Cloud needs to send notifications
+            via PagerDuty. The resource requires this parameter when
+            `"notifications.[n].typeName" : "PAGER_DUTY"`. If the key later
             becomes invalid, MongoDB Cloud sends an email to the project owners.
             If the key remains invalid, MongoDB Cloud removes it.
 
@@ -17063,8 +17054,8 @@ components:
         statusName:
           type: string
           description: >
-            Phase of payment processing for the associated invoice when you
-            made this request.
+            Phase of payment processing for the associated invoice when you made
+            this request.
 
 
             These phases include:
@@ -19934,9 +19925,9 @@ components:
           type: integer
           format: int32
           description: >-
-            Number that indicates the frequency interval for a set of
-            snapshots. A value of `1` specifies the first instance of the
-            corresponding `frequencyType`.
+            Number that indicates the frequency interval for a set of snapshots.
+            A value of `1` specifies the first instance of the corresponding
+            `frequencyType`.
 
 
             - In a monthly policy item, `1` indicates that the monthly snapshot occurs on the first day of the month and `40` indicates the last day of the month.
@@ -21993,9 +21984,9 @@ components:
           type: integer
           format: int32
           description: >-
-            Number of units within which to group the location values. You
-            could group in the same bucket those location values within the
-            specified number of units to each other. This option applies to the
+            Number of units within which to group the location values. You could
+            group in the same bucket those location values within the specified
+            number of units to each other. This option applies to the
             geoHaystack index type only.
 
 
@@ -22085,8 +22076,8 @@ components:
               - `$and` (top-level only)
                This option applies to all index types.
           description: >-
-            Rules that limit the documents that the index references to a
-            filter expression. All MongoDB index types accept a
+            Rules that limit the documents that the index references to a filter
+            expression. All MongoDB index types accept a
             **partialFilterExpression** option. **partialFilterExpression** can
             include following expressions:
 
@@ -22105,8 +22096,8 @@ components:
           type: boolean
           default: false
           description: >-
-            Flag that indicates whether the index references documents that
-            only have the specified parameter. These indexes use less space but
+            Flag that indicates whether the index references documents that only
+            have the specified parameter. These indexes use less space but
             behave differently in some situations like when sorting. The
             following index types default to sparse and ignore this option:
             `2dsphere`, `2d`, `geoHaystack`, `text`.
@@ -23565,8 +23556,7 @@ components:
         STATUS:
           type: string
           description: >
-            State of the access list entry when MongoDB Cloud made this
-            request.
+            State of the access list entry when MongoDB Cloud made this request.
 
 
             | Status | Activity |
@@ -25415,8 +25405,8 @@ components:
         microsoftTeamsWebhookUrl:
           type: string
           description: >-
-            Endpoint web address of the Microsoft Teams webhook to which
-            MongoDB Cloud sends notifications.
+            Endpoint web address of the Microsoft Teams webhook to which MongoDB
+            Cloud sends notifications.
 
 
             **NOTE**: When you view or edit the alert for a Microsoft Teams notification, the URL appears partially redacted.
@@ -27452,8 +27442,8 @@ components:
         enabled:
           type: boolean
           description: >-
-            Flag that indicates whether someone enabled the regionalized
-            private endpoint setting for the specified project.
+            Flag that indicates whether someone enabled the regionalized private
+            endpoint setting for the specified project.
 
 
             - Set this value to `true` to enable regionalized private endpoints. This allows you to create more than one private endpoint in a cloud provider region. You need to enable this setting to connect to multi-region and global MongoDB Cloud sharded clusters. Enabling regionalized private endpoints introduces the following limitations:
