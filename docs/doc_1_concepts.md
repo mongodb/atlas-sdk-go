@@ -49,7 +49,7 @@ Use the `{Operation}()` method to perform modifications. For example:
 
 ## Experimental Methods
 
-GO SDK uses experimental labels in documentation and codebase to mark newly introduced methods that have not yet undergone extensive usage and testing. 
+GO SDK uses `experimental` label in documentation and codebase to mark newly introduced methods that have not yet undergone extensive usage and testing. 
 
 > NOTE: `Experimental` label is specifically associated with GO SDK methods, and does not pertain to the underlying Atlas feature itself. 
 
