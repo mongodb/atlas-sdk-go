@@ -2107,7 +2107,6 @@ paths:
       summary: Update Auditing Configuration for One Project
       tags:
         - Auditing
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/awsCustomDNS":
     get:
       description: Returns the custom DNS configuration for AWS clusters in the
@@ -2134,7 +2133,6 @@ paths:
       summary: Return One Custom DNS Configuration for Atlas Clusters on AWS
       tags:
         - AWS Clusters DNS
-      x-xgen-experimental: true
     patch:
       description: Enables or disables the custom DNS configuration for AWS clusters
         in the specified project. Enable custom DNS if you use AWS VPC peering
@@ -2169,7 +2167,6 @@ paths:
       summary: Toggle State of One Custom DNS Configuration for Atlas Clusters on AWS
       tags:
         - AWS Clusters DNS
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/backup/exportBuckets":
     get:
       description: Returns all AWS S3 buckets associated with the specified project.
@@ -2340,7 +2337,6 @@ paths:
       summary: Return the Backup Compliance Policy settings
       tags:
         - Cloud Backups
-      x-xgen-experimental: true
     put:
       description: Updates the Backup Compliance Policy settings for the specified
         project. To use this resource, the requesting API Key must have the
@@ -2376,7 +2372,6 @@ paths:
       summary: Update or enable the Backup Compliance Policy settings
       tags:
         - Cloud Backups
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/cloudProviderAccess":
     get:
       description: Returns all Amazon Web Services (AWS) Identity and Access
@@ -6393,7 +6388,6 @@ paths:
       summary: Return All Federated Database Instances in One Project
       tags:
         - Data Federation
-      x-xgen-experimental: true
     post:
       description: Creates one federated database instance in the specified project.
         To use this resource, the requesting API Key must have the Project Owner
@@ -6437,7 +6431,6 @@ paths:
       summary: Create One Federated Database Instance in One Project
       tags:
         - Data Federation
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}":
     delete:
       description: Removes one federated database instance from the specified project.
@@ -6471,7 +6464,6 @@ paths:
       summary: Remove One Federated Database Instance from One Project
       tags:
         - Data Federation
-      x-xgen-experimental: true
     get:
       description: Returns the details of one federated database instance within the
         specified project. To use this resource, the requesting API Key must
@@ -6508,7 +6500,6 @@ paths:
       summary: Return One Federated Database Instance in One Project
       tags:
         - Data Federation
-      x-xgen-experimental: true
     patch:
       description: Updates the details of one federated database instance in the
         specified project. To use this resource, the requesting API Key must
@@ -6560,7 +6551,6 @@ paths:
       summary: Update One Federated Database Instance in One Project
       tags:
         - Data Federation
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits":
     get:
       description: Returns query limits for a federated databases instance in the
@@ -6598,7 +6588,6 @@ paths:
       summary: Return All Query Limits for One Federated Database Instance
       tags:
         - Data Federation
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits/{limitName}":
     delete:
       description: Deletes one query limit for one federated database instance. To use
@@ -6652,7 +6641,6 @@ paths:
       summary: Delete One Query Limit For One Federated Database Instance
       tags:
         - Data Federation
-      x-xgen-experimental: true
     get:
       description: Returns the details of one query limit for the specified federated
         database instance in the specified project. To use this resource, the
@@ -6706,7 +6694,6 @@ paths:
       summary: Return One Federated Database Instance Query Limit for One Project
       tags:
         - Data Federation
-      x-xgen-experimental: true
     patch:
       description: Creates or updates one query limit for one federated database
         instance. To use this resource, the requesting API Key must have the
@@ -6771,7 +6758,6 @@ paths:
       summary: Configure One Query Limit for One Federated Database Instance
       tags:
         - Data Federation
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/queryLogs.gz":
     get:
       description: Downloads the query logs for the specified federated database
@@ -6835,7 +6821,6 @@ paths:
       summary: Download Query Logs for One Federated Database Instance
       tags:
         - Data Federation
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/databaseUsers":
     get:
       description: Returns all database users that belong to the specified project. To
@@ -10189,7 +10174,6 @@ paths:
       summary: Create One Private Endpoint for One Provider
       tags:
         - Private Endpoint Services
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId}/endpoint/{endpointId}":
     delete:
       description: Removes one private endpoint from the specified project and private
@@ -12030,7 +12014,6 @@ paths:
       summary: Return the Current LDAP or X.509 Configuration
       tags:
         - LDAP Configuration
-      x-xgen-experimental: true
     patch:
       description: >-
         Edits the LDAP configuration for the specified project. To use this
@@ -12068,7 +12051,6 @@ paths:
       summary: Edit the LDAP or X.509 Configuration
       tags:
         - LDAP Configuration
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/userSecurity/customerX509":
     delete:
       description: >-
@@ -12123,7 +12105,6 @@ paths:
       summary: Remove the Current LDAP User to DN Mapping
       tags:
         - LDAP Configuration
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify":
     post:
       description: Verifies the LDAP configuration for the specified project. To use
@@ -12159,7 +12140,6 @@ paths:
       summary: Verify the LDAP Configuration in One Project
       tags:
         - LDAP Configuration
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify/{requestId}":
     get:
       description: Returns the status of one request to verify one LDAP configuration
@@ -12197,7 +12177,6 @@ paths:
       summary: Return the Status of One Verify LDAP Configuration Request
       tags:
         - LDAP Configuration
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/users":
     get:
       description: Returns details about all users in the specified project. Users
