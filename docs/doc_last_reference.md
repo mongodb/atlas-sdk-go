@@ -4,7 +4,7 @@
 
 All URIs are relative to *https://cloud.mongodb.com*
 
-Class        | Method        | HTTP request  | Description   | Stability level   
+Class        | Method        | HTTP request  | Description   | [SDK Maturity](https://github.com/mongodb/atlas-sdk-go/blob/main/docs/doc_1_concepts.md#experimental-methods)   
 ------------ | ------------- | ------------- | ------------- | -------------
 *AWSClustersDNSApi* | [GetAWSCustomDNS](./docs/AWSClustersDNSApi.md#getawscustomdns) | **Get** /api/atlas/v2/groups/{groupId}/awsCustomDNS | Return One Custom DNS Configuration for Atlas Clusters on AWS | Experimental
 *AWSClustersDNSApi* | [ToggleAWSCustomDNS](./docs/AWSClustersDNSApi.md#toggleawscustomdns) | **Patch** /api/atlas/v2/groups/{groupId}/awsCustomDNS | Toggle State of One Custom DNS Configuration for Atlas Clusters on AWS | Experimental
