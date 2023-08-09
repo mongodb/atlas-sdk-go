@@ -49,12 +49,11 @@ Use the `{Operation}()` method to perform modifications. For example:
 
 ## Experimental Methods
 
-Please note that we have some methods marked as experimental, denoted by the [experimental] tag in the operation description. 
-This signifies that the method might be changed in the future without compatibility guarantees.
+GO SDK uses experimental labels in documentation and codebase to mark newly introduced methods that have not yet undergone extensive usage and testing. 
 
-If you encounter any problems with methods marked as experimental, feel free to raise a [Github issue](https://github.com/mongodb/atlas-sdk-go/issues/new/choose) and the team will work to resolve it.
+> NOTE: `Experimental` label is specifically associated with GO SDK methods, and does not pertain to the underlying Atlas feature itself. 
 
-If you belive a method should be marked as stable, feel free to raise a PR appending the method's OperationId to our [operations.stable.json](https://github.com/mongodb/atlas-sdk-go/blob/main/tools/transformer/src/operations.stable.json) set.
+If you encounter any problems with methods marked as experimental, feel free to raise a [Github issue](https://github.com/mongodb/atlas-sdk-go/issues/new/choose).
 
 ## Example
 
