@@ -16,11 +16,6 @@ Method | HTTP request | Description
 Return One Custom DNS Configuration for Atlas Clusters on AWS
 
 
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
-
 ### Example
 
 ```go
@@ -93,11 +88,6 @@ Name | Type | Description  | Notes
 
 Toggle State of One Custom DNS Configuration for Atlas Clusters on AWS
 
-
-## Experimental
-
-This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
-For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
 
 ### Example
 
