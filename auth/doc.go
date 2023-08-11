@@ -22,17 +22,19 @@ Usage
 Construct a new client Config, then use the various methods to complete a flow.
 For example:
 
-	config := auth.NewConfigWithOptions(nil, auth.SetClientID("my-client-id"), auth.SetScopes([]string{"openid"}))
-
-	code, _, err := config.RequestCode(ctx)
-	if err!= nil {
+	config, err := auth.NewConfigWithOptions(nil, auth.SetClientID("my-client-id"), auth.SetScopes([]string{"openid"}))
+	if err != nil {
 		panic(err)
 	}
-	token, _, err := config.PollToken(ctx, code)
-	if err!= nil {
+	code, _, err := config.RequestCode(context.TODO())
+	if err != nil {
 		panic(err)
 	}
-	fmt.PrintLn(accessToken.AccessToken)
+	token, _, err := config.PollToken(context.TODO(), code)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(token.AccessToken)
 
 NOTE: Using the https://godoc.org/context package, one can easily
 pass cancellation signals and deadlines to various services of the client for
