@@ -49,9 +49,9 @@ Use the `{Operation}()` method to perform modifications. For example:
 
 ## Experimental Methods
 
-GO SDK uses `experimental` label in documentation and codebase to mark newly introduced methods that have not yet undergone extensive usage and testing. 
+The Atlas Go SDK uses the `experimental` label in the documentation and codebase to mark newly introduced methods that have not yet undergone extensive usage and testing. 
 
-> NOTE: `Experimental` label is specifically associated with GO SDK methods, and does not pertain to the underlying Atlas feature itself. 
+Note: The `experimental` label refers specifically to the Atlas Go SDK methods. The label does not pertain to the underlying Atlas feature. 
 
 If you encounter any problems with methods marked as experimental, feel free to raise a [Github issue](https://github.com/mongodb/atlas-sdk-go/issues/new/choose).
 
