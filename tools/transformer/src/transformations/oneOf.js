@@ -107,31 +107,10 @@ function transformOneOfProperties(parentObject, api) {
         throw new Error(`${JSON.stringify(childObject, "", 2)}`);
       }
     }
-    const childProperties = JSON.parse(JSON.stringify(childObject.properties));
     console.debug(`${childObject.title}: moving child properties into parent`);
-    const { duplicates } = detectDuplicates([
-      parentObject.properties,
-      childProperties,
-    ]);
-    if (duplicates.length > 0) {
-      const duplicatesSource = childObject.title || "";
-      const missmatches = duplicates.filter((e) => e.typeMismatch);
-      if (missmatches.length > 0) {
-        throw new Error(
-          `${duplicatesSource} missmatch type detected: ${JSON.stringify(
-            missmatches,
-            undefined,
-            2
-          )}`
-        );
-      } else {
-        console.info(
-          `## ${duplicatesSource} - Detected properties that would be overriden: ${JSON.stringify(
-            duplicates
-          )}\n`
-        );
-      }
-    }
+    handleDuplicates(parentObject, childObject);
+    const childProperties = JSON.parse(JSON.stringify(childObject.properties));
+
     parentObject.properties = {
       ...parentObject.properties,
       ...childProperties,
@@ -141,6 +120,39 @@ function transformOneOfProperties(parentObject, api) {
   // Remove invalid fields
   delete parentObject.discriminator;
   delete parentObject.oneOf;
+}
+
+function handleDuplicates(parentObject, childObject) {
+  const duplicates = detectDuplicates([
+    parentObject.properties,
+    childObject.properties,
+  ]);
+  if (duplicates.length > 0) {
+    const duplicatesSource = childObject.title || "";
+    const missmatches = duplicates.filter((e) => e.typeMismatch);
+    if (missmatches.length > 0) {
+      throw new Error(
+        `${duplicatesSource} missmatch type detected: ${JSON.stringify(
+          missmatches,
+          undefined,
+          2
+        )}`
+      );
+    } else {
+      console.info(
+        `## ${duplicatesSource} - Detected properties that would be overriden: ${JSON.stringify(
+          duplicates
+        )}\n`
+      );
+
+      for (duplicate of duplicates) {
+        childObject.properties[duplicate.key].description =
+          parentObject.properties[duplicate.key].description +
+          "\n Alternatively: " +
+          childObject.properties[duplicate.key].description;
+      }
+    }
+  }
 }
 
 function canApplyOneOfTransformation(obj, api) {
