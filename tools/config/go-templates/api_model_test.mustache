@@ -1,0 +1,34 @@
+package {{packageName}}
+
+{{#models}}
+import (
+	"fmt"
+	## Hardcoded in template
+	admin "go.mongodb.org/atlas-sdk/v20230201004/admin"
+)
+
+{{#model}}
+var testModel{{classname}} admin.{{classname}}
+func initModelTest{{classname}}() {
+	testModel{{classname}} = admin.{{classname}}{
+	{{#parent}}
+	{{^isMap}}
+	{{^isArray}}
+		{{{parent}}}
+	{{/isArray}}
+	{{/isMap}}
+	{{#isArray}}
+		Items {{{parent}}} = []{{{parent}}}{},
+	{{/isArray}}
+	{{/parent}}
+	{{#vars}}
+	{{^-first}}
+	{{/-first}}
+		{{name}}: {{^required}}nil{{/required}}{{#required}}{{^isPrimitiveType}}admin.{{{dataType}}}{}{{/isPrimitiveType}{{^isPrimitiveType}}{{/isPrimitiveType}}{{/required}},
+	{{/vars}}
+	}
+
+	fmt.Println(testModel{{classname}})
+}
+{{/model}}
+{{/models}}

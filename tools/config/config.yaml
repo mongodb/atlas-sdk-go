@@ -14,3 +14,5 @@ files:
   doc.mustache:
     templateType: SupportingFiles
     destinationFilename: doc.go
+  api_model_test.mustache:
+    templateType: ModelTests

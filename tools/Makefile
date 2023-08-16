@@ -28,10 +28,14 @@ generate_docs:
 	rm -Rf ../docs/docs/*
 	./scripts/generate_docs.sh
 
-.PHONY: generate_tests
-generate_tests:	
-	rm -Rf ../test/generated/test*
+.PHONY: generate_client_tests
+generate_client_tests:	
+	rm -Rf ../test/generated/test/*
 	./scripts/generate_tests.sh
+
+.PHONY: compile-client-tests
+compile-client-tests:	
+	go build ../test/generated/test
 
 .PHONY: new-release
 new-release:

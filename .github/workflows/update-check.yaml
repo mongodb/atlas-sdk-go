@@ -1,0 +1,31 @@
+## Workflow to check breaking changes against previous version of the SDK
+name: Breaking Changes check
+
+on:
+  push:
+    branches:
+      - api-bot-update
+
+jobs:
+  automate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v2
+
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 'latest'
+
+      - name: Revert atlas-api.yaml to previous version
+        run: |
+          git checkout HEAD~1 -- openapi/atlas-api.yaml
+
+      - name: Generate Client Tests
+        working-directory: ./tools
+        run: make generate-client-tests
+      
+      - name: Compile Client Tests
+        working-directory: ./tools
+        run: make compile-client-tests
