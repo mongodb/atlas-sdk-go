@@ -146,6 +146,11 @@ function handleDuplicates(parentObject, childObject) {
       );
 
       for (duplicate of duplicates) {
+        childProperty = childObject.properties[duplicate.key]
+        parentProperty = parentObject.properties[duplicate.key]
+
+        if(parentProperty.description && 
+          childProperty.description !== parentProperty.description)
         childObject.properties[duplicate.key].description =
           parentObject.properties[duplicate.key].description +
           "\n Alternatively: " +

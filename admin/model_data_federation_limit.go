@@ -9,15 +9,15 @@ import (
 
 // DataFederationLimit Details of user managed limits.
 type DataFederationLimit struct {
-	// Amount that indicates the current usage of the limit.  Alternatively: Amount that indicates the current usage of the limit.  Alternatively: Amount that indicates the current usage of the limit.
+	// Amount that indicates the current usage of the limit.
 	CurrentUsage *int64 `json:"currentUsage,omitempty"`
-	// Default value of the limit.  Alternatively: Default value of the limit.  Alternatively: Default value of the limit.
+	// Default value of the limit.
 	DefaultLimit *int64 `json:"defaultLimit,omitempty"`
-	// Maximum value of the limit.  Alternatively: Maximum value of the limit.  Alternatively: Maximum value of the limit.
+	// Maximum value of the limit.
 	MaximumLimit *int64 `json:"maximumLimit,omitempty"`
-	// Human-readable label that identifies the user-managed limit to modify.  Alternatively: Human-readable label that identifies the user-managed limit to modify.  Alternatively: Human-readable label that identifies the user-managed limit to modify.
+	// Human-readable label that identifies the user-managed limit to modify.
 	Name string `json:"name"`
-	// Amount to set the limit to.  Alternatively: Amount to set the limit to.  Alternatively: Amount to set the limit to.
+	// Amount to set the limit to.
 	Value int64 `json:"value"`
 	// Only used for Data Federation limits. Timestamp that indicates when this usage limit was last modified. This field uses the ISO 8601 timestamp format in UTC.
 	LastModifiedDate *time.Time `json:"lastModifiedDate,omitempty"`

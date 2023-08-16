@@ -10,13 +10,13 @@ import (
 type IngestionSource struct {
 	// Type of ingestion source of this Data Lake Pipeline.
 	Type *string `json:"type,omitempty"`
-	// Human-readable name that identifies the cluster.  Alternatively: Human-readable name that identifies the cluster.
+	// Human-readable name that identifies the cluster.
 	ClusterName *string `json:"clusterName,omitempty"`
-	// Human-readable name that identifies the collection.  Alternatively: Human-readable name that identifies the collection.
+	// Human-readable name that identifies the collection.
 	CollectionName *string `json:"collectionName,omitempty"`
-	// Human-readable name that identifies the database.  Alternatively: Human-readable name that identifies the database.
+	// Human-readable name that identifies the database.
 	DatabaseName *string `json:"databaseName,omitempty"`
-	// Unique 24-hexadecimal character string that identifies the project.  Alternatively: Unique 24-hexadecimal character string that identifies the project.
+	// Unique 24-hexadecimal character string that identifies the project.
 	GroupId *string `json:"groupId,omitempty"`
 	// Unique 24-hexadecimal character string that identifies a policy item.
 	PolicyItemId *string `json:"policyItemId,omitempty"`

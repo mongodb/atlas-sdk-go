@@ -8,19 +8,19 @@ import (
 
 // ServerlessTenantEndpoint struct for ServerlessTenantEndpoint
 type ServerlessTenantEndpoint struct {
-	// Unique 24-hexadecimal digit string that identifies the private endpoint.  Alternatively: Unique 24-hexadecimal digit string that identifies the private endpoint.  Alternatively: Unique 24-hexadecimal digit string that identifies the private endpoint.
+	// Unique 24-hexadecimal digit string that identifies the private endpoint.
 	Id *string `json:"_id,omitempty"`
-	// Unique string that identifies the private endpoint's network interface.  Alternatively: Unique string that identifies the private endpoint's network interface.  Alternatively: Unique string that identifies the Azure private endpoint's network interface that someone added to this private endpoint service.
+	// Unique string that identifies the private endpoint's network interface.  Alternatively: Unique string that identifies the Azure private endpoint's network interface that someone added to this private endpoint service.
 	CloudProviderEndpointId *string `json:"cloudProviderEndpointId,omitempty"`
-	// Human-readable comment associated with the private endpoint.  Alternatively: Human-readable comment associated with the private endpoint.  Alternatively: Human-readable comment associated with the private endpoint.
+	// Human-readable comment associated with the private endpoint.
 	Comment *string `json:"comment,omitempty"`
 	// Unique string that identifies the PrivateLink endpoint service. MongoDB Cloud returns null while it creates the endpoint service.  Alternatively: Unique string that identifies the Amazon Web Services (AWS) PrivateLink endpoint service. MongoDB Cloud returns null while it creates the endpoint service.  Alternatively: Unique string that identifies the Azure private endpoint service. MongoDB Cloud returns null while it creates the endpoint service.
 	EndpointServiceName *string `json:"endpointServiceName,omitempty"`
-	// Human-readable error message that indicates error condition associated with establishing the private endpoint connection.  Alternatively: Human-readable error message that indicates error condition associated with establishing the private endpoint connection.  Alternatively: Human-readable error message that indicates error condition associated with establishing the private endpoint connection.
+	// Human-readable error message that indicates error condition associated with establishing the private endpoint connection.
 	ErrorMessage *string `json:"errorMessage,omitempty"`
-	// Human-readable label that indicates the current operating status of the private endpoint.  Alternatively: Human-readable label that indicates the current operating status of the private endpoint.  Alternatively: Human-readable label that indicates the current operating status of the private endpoint.
+	// Human-readable label that indicates the current operating status of the private endpoint.
 	Status *string `json:"status,omitempty"`
-	// Human-readable label that identifies the cloud service provider.  Alternatively: Human-readable label that identifies the cloud service provider.
+	// Human-readable label that identifies the cloud service provider.
 	ProviderName *string `json:"providerName,omitempty"`
 	// IPv4 address of the private endpoint in your Azure VNet that someone added to this private endpoint service.
 	PrivateEndpointIpAddress *string `json:"privateEndpointIpAddress,omitempty"`
