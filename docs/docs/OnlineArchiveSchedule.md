@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Type** | **string** |  | 
+**Type** | **string** | Type of schedule. | 
 **EndHour** | Pointer to **int** | Hour of the day when the scheduled window to run one online archive ends. | [optional] 
 **EndMinute** | Pointer to **int** | Minute of the hour when the scheduled window to run one online archive ends. | [optional] 
 **StartHour** | Pointer to **int** | Hour of the day when the when the scheduled window to run one online archive starts. | [optional] 

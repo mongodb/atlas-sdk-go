@@ -48,6 +48,10 @@ type EventViewForOrg struct {
 	TeamId *string `json:"teamId,omitempty"`
 	// Email address for the console user that this event targets. The resource returns this parameter when `\"eventTypeName\" : \"USER\"`.
 	TargetUsername *string `json:"targetUsername,omitempty"`
+	// Unique 24-hexadecimal digit string that identifies the resource associated with the event.
+	ResourceId *string `json:"resourceId,omitempty"`
+	// Unique identifier of resource type.
+	ResourceType *string `json:"resourceType,omitempty"`
 }
 
 // NewEventViewForOrg instantiates a new EventViewForOrg object
@@ -727,6 +731,72 @@ func (o *EventViewForOrg) SetTargetUsername(v string) {
 	o.TargetUsername = &v
 }
 
+// GetResourceId returns the ResourceId field value if set, zero value otherwise
+func (o *EventViewForOrg) GetResourceId() string {
+	if o == nil || IsNil(o.ResourceId) {
+		var ret string
+		return ret
+	}
+	return *o.ResourceId
+}
+
+// GetResourceIdOk returns a tuple with the ResourceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForOrg) GetResourceIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ResourceId) {
+		return nil, false
+	}
+
+	return o.ResourceId, true
+}
+
+// HasResourceId returns a boolean if a field has been set.
+func (o *EventViewForOrg) HasResourceId() bool {
+	if o != nil && !IsNil(o.ResourceId) {
+		return true
+	}
+
+	return false
+}
+
+// SetResourceId gets a reference to the given string and assigns it to the ResourceId field.
+func (o *EventViewForOrg) SetResourceId(v string) {
+	o.ResourceId = &v
+}
+
+// GetResourceType returns the ResourceType field value if set, zero value otherwise
+func (o *EventViewForOrg) GetResourceType() string {
+	if o == nil || IsNil(o.ResourceType) {
+		var ret string
+		return ret
+	}
+	return *o.ResourceType
+}
+
+// GetResourceTypeOk returns a tuple with the ResourceType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForOrg) GetResourceTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.ResourceType) {
+		return nil, false
+	}
+
+	return o.ResourceType, true
+}
+
+// HasResourceType returns a boolean if a field has been set.
+func (o *EventViewForOrg) HasResourceType() bool {
+	if o != nil && !IsNil(o.ResourceType) {
+		return true
+	}
+
+	return false
+}
+
+// SetResourceType gets a reference to the given string and assigns it to the ResourceType field.
+func (o *EventViewForOrg) SetResourceType(v string) {
+	o.ResourceType = &v
+}
+
 func (o EventViewForOrg) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -741,6 +811,9 @@ func (o EventViewForOrg) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Raw) {
 		toSerialize["raw"] = o.Raw
+	}
+	if !IsNil(o.ResourceType) {
+		toSerialize["resourceType"] = o.ResourceType
 	}
 	return toSerialize, nil
 }
