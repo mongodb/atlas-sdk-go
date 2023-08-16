@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **MaxStalenessSeconds** | Pointer to **int** | Maximum replication lag, or **staleness**, for reads from secondaries. | [optional] 
-**Mode** | Pointer to **string** | [Read preference mode](https://docs.mongodb.com/manual/core/read-preference/#read-preference-modes) that specifies to which replica set member to route the read requests. | [optional] 
-**TagSets** | Pointer to [**[][]DataLakeAtlasStoreReadPreferenceTag**]([]DataLakeAtlasStoreReadPreferenceTag.md) | List that contains [tag sets](https://docs.mongodb.com/manual/core/read-preference-tags/) or tag specification documents. If specified, Atlas Data Lake routes read requests to replica set member or members that are associated with the specified tags. | [optional] 
+**Mode** | Pointer to **string** | Read preference mode that specifies to which replica set member to route the read requests. | [optional] 
+**TagSets** | Pointer to [**[][]DataLakeAtlasStoreReadPreferenceTag**]([]DataLakeAtlasStoreReadPreferenceTag.md) | List that contains tag sets or tag specification documents. If specified, Atlas Data Lake routes read requests to replica set member or members that are associated with the specified tags. | [optional] 
 
 ## Methods
 

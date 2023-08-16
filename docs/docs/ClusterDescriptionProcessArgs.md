@@ -4,8 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DefaultReadConcern** | Pointer to **string** | [Default level of acknowledgment requested from MongoDB for read operations](https://docs.mongodb.com/manual/reference/read-concern/) set for this cluster.  MongoDB 4.4 clusters default to &#x60;available&#x60;. MongoDB 5.0 and later clusters default to &#x60;local&#x60;. | [optional] [default to "available"]
-**DefaultWriteConcern** | Pointer to **string** | [Default level of acknowledgment requested from MongoDB for write operations](https://docs.mongodb.com/manual/reference/write-concern/) set for this cluster.  MongoDB 4.4 clusters default to &#x60;1&#x60;. MongoDB 5.0 and later clusters default to &#x60;majority&#x60;. | [optional] [default to "1"]
+**ChunkMigrationConcurrency** | Pointer to **int** | Number of threads on the source shard and the receiving shard for chunk migration. The number of threads should not exceed the half the total number of CPU cores in the sharded cluster. | [optional] [default to 1]
+**DefaultReadConcern** | Pointer to **string** | Default level of acknowledgment requested from MongoDB for read operations set for this cluster.  MongoDB 4.4 clusters default to &#x60;available&#x60;. MongoDB 5.0 and later clusters default to &#x60;local&#x60;. | [optional] [default to "available"]
+**DefaultWriteConcern** | Pointer to **string** | Default level of acknowledgment requested from MongoDB for write operations set for this cluster.  MongoDB 4.4 clusters default to &#x60;1&#x60;. MongoDB 5.0 and later clusters default to &#x60;majority&#x60;. | [optional] [default to "1"]
 **FailIndexKeyTooLong** | Pointer to **bool** | Flag that indicates whether you can insert or update documents where all indexed entries don&#39;t exceed 1024 bytes. If you set this to false, [mongod](https://docs.mongodb.com/upcoming/reference/program/mongod/#mongodb-binary-bin.mongod) writes documents that exceed this limit but doesn&#39;t index them. | [optional] [default to true]
 **JavascriptEnabled** | Pointer to **bool** | Flag that indicates whether the cluster allows execution of operations that perform server-side executions of JavaScript. | [optional] [default to true]
 **MinimumEnabledTlsProtocol** | Pointer to **string** | Minimum Transport Layer Security (TLS) version that the cluster accepts for incoming connections. Clusters using TLS 1.0 or 1.1 should consider setting TLS 1.2 as the minimum TLS protocol version. | [optional] 
@@ -35,6 +36,30 @@ NewClusterDescriptionProcessArgsWithDefaults instantiates a new ClusterDescripti
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetChunkMigrationConcurrency
+
+`func (o *ClusterDescriptionProcessArgs) GetChunkMigrationConcurrency() int`
+
+GetChunkMigrationConcurrency returns the ChunkMigrationConcurrency field if non-nil, zero value otherwise.
+
+### GetChunkMigrationConcurrencyOk
+
+`func (o *ClusterDescriptionProcessArgs) GetChunkMigrationConcurrencyOk() (*int, bool)`
+
+GetChunkMigrationConcurrencyOk returns a tuple with the ChunkMigrationConcurrency field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetChunkMigrationConcurrency
+
+`func (o *ClusterDescriptionProcessArgs) SetChunkMigrationConcurrency(v int)`
+
+SetChunkMigrationConcurrency sets ChunkMigrationConcurrency field to given value.
+
+### HasChunkMigrationConcurrency
+
+`func (o *ClusterDescriptionProcessArgs) HasChunkMigrationConcurrency() bool`
+
+HasChunkMigrationConcurrency returns a boolean if a field has been set.
 ### GetDefaultReadConcern
 
 `func (o *ClusterDescriptionProcessArgs) GetDefaultReadConcern() string`

@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **Sku** | Pointer to **string** | Human-readable description of the service that this line item provided. This Stock Keeping Unit (SKU) could be the instance type, a support charge, advanced security, or another service. | [optional] [readonly] 
 **StartDate** | Pointer to **time.Time** | Date and time when MongoDB Cloud began charging for this line item. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **StitchAppName** | Pointer to **string** | Human-readable label that identifies the Atlas App Services application associated with this line item. | [optional] [readonly] 
+**Tags** | Pointer to **map[string][]string** | A map of key-value pairs corresponding to the tags associated with the line item resource. | [optional] [readonly] 
 **TierLowerBound** | Pointer to **float64** | Lower bound for usage amount range in current SKU tier.   **NOTE**: **lineItems[n].tierLowerBound** appears only if your **lineItems[n].sku** is tiered. | [optional] [readonly] 
 **TierUpperBound** | Pointer to **float64** | Upper bound for usage amount range in current SKU tier.   **NOTE**: **lineItems[n].tierUpperBound** appears only if your **lineItems[n].sku** is tiered. | [optional] [readonly] 
 **TotalPriceCents** | Pointer to **int64** | Sum of the cost set for this line item. MongoDB Cloud expresses this value in cents (100ths of one US Dollar) and calculates this value as **unitPriceDollars** × **quantity** × 100. | [optional] [readonly] 
@@ -329,6 +330,30 @@ SetStitchAppName sets StitchAppName field to given value.
 `func (o *InvoiceLineItem) HasStitchAppName() bool`
 
 HasStitchAppName returns a boolean if a field has been set.
+### GetTags
+
+`func (o *InvoiceLineItem) GetTags() map[string][]string`
+
+GetTags returns the Tags field if non-nil, zero value otherwise.
+
+### GetTagsOk
+
+`func (o *InvoiceLineItem) GetTagsOk() (*map[string][]string, bool)`
+
+GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTags
+
+`func (o *InvoiceLineItem) SetTags(v map[string][]string)`
+
+SetTags sets Tags field to given value.
+
+### HasTags
+
+`func (o *InvoiceLineItem) HasTags() bool`
+
+HasTags returns a boolean if a field has been set.
 ### GetTierLowerBound
 
 `func (o *InvoiceLineItem) GetTierLowerBound() float64`

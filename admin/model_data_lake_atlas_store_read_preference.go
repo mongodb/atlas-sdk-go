@@ -10,9 +10,9 @@ import (
 type DataLakeAtlasStoreReadPreference struct {
 	// Maximum replication lag, or **staleness**, for reads from secondaries.
 	MaxStalenessSeconds *int `json:"maxStalenessSeconds,omitempty"`
-	// [Read preference mode](https://docs.mongodb.com/manual/core/read-preference/#read-preference-modes) that specifies to which replica set member to route the read requests.
+	// Read preference mode that specifies to which replica set member to route the read requests.
 	Mode *string `json:"mode,omitempty"`
-	// List that contains [tag sets](https://docs.mongodb.com/manual/core/read-preference-tags/) or tag specification documents. If specified, Atlas Data Lake routes read requests to replica set member or members that are associated with the specified tags.
+	// List that contains tag sets or tag specification documents. If specified, Atlas Data Lake routes read requests to replica set member or members that are associated with the specified tags.
 	TagSets [][]DataLakeAtlasStoreReadPreferenceTag `json:"tagSets,omitempty"`
 }
 

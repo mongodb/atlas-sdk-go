@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **FeatureType** | Pointer to **string** | Human-readable label that describes one MongoDB Cloud feature linked to this Amazon Web Services (AWS) Identity and Access Management (IAM) role. | [optional] [readonly] 
-**FeatureId** | Pointer to [**CloudProviderAccessFeatureUsageExportSnapshotFeatureId**](CloudProviderAccessFeatureUsageExportSnapshotFeatureId.md) |  | [optional] 
+**FeatureId** | Pointer to [**CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId**](CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId.md) |  | [optional] 
 
 ## Methods
 
@@ -52,20 +52,20 @@ SetFeatureType sets FeatureType field to given value.
 HasFeatureType returns a boolean if a field has been set.
 ### GetFeatureId
 
-`func (o *CloudProviderAccessFeatureUsage) GetFeatureId() CloudProviderAccessFeatureUsageExportSnapshotFeatureId`
+`func (o *CloudProviderAccessFeatureUsage) GetFeatureId() CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId`
 
 GetFeatureId returns the FeatureId field if non-nil, zero value otherwise.
 
 ### GetFeatureIdOk
 
-`func (o *CloudProviderAccessFeatureUsage) GetFeatureIdOk() (*CloudProviderAccessFeatureUsageExportSnapshotFeatureId, bool)`
+`func (o *CloudProviderAccessFeatureUsage) GetFeatureIdOk() (*CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId, bool)`
 
 GetFeatureIdOk returns a tuple with the FeatureId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFeatureId
 
-`func (o *CloudProviderAccessFeatureUsage) SetFeatureId(v CloudProviderAccessFeatureUsageExportSnapshotFeatureId)`
+`func (o *CloudProviderAccessFeatureUsage) SetFeatureId(v CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId)`
 
 SetFeatureId sets FeatureId field to given value.
 
