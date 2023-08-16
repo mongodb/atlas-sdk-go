@@ -27,9 +27,9 @@ type DataLakeStoreSettings struct {
 	Region *string `json:"region,omitempty"`
 	// ID of the Cluster the Online Archive belongs to.
 	ClusterId *string `json:"clusterId,omitempty"`
-	// Human-readable label of the MongoDB Cloud cluster on which the store is based.
+	// Name of the Cluster the Online Archive belongs to.  Alternatively: Human-readable label of the MongoDB Cloud cluster on which the store is based.
 	ClusterName *string `json:"clusterName,omitempty"`
-	// Unique 24-hexadecimal digit string that identifies the project.
+	// ID of the Project the Online Archive belongs to.  Alternatively: Unique 24-hexadecimal digit string that identifies the project.
 	ProjectId      *string                           `json:"projectId,omitempty"`
 	ReadPreference *DataLakeAtlasStoreReadPreference `json:"readPreference,omitempty"`
 	// Flag that validates the scheme in the specified URLs. If `true`, allows insecure `HTTP` scheme, doesn't verify the server's certificate chain and hostname, and accepts any certificate with any hostname presented by the server. If `false`, allows secure `HTTPS` scheme only.

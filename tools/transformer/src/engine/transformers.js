@@ -36,7 +36,7 @@ function detectDuplicates(objArray) {
       }
     }
   }
-  return { duplicates };
+  return duplicates;
 }
 
 function expandReference(obj, apiObject) {

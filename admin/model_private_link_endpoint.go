@@ -22,7 +22,7 @@ type PrivateLinkEndpoint struct {
 	EndpointGroupName *string `json:"endpointGroupName,omitempty"`
 	// List of individual private endpoints that comprise this endpoint group.
 	Endpoints []GCPConsumerForwardingRule `json:"endpoints,omitempty"`
-	// State of the Azure Private Link Service connection when MongoDB Cloud received this request.
+	// State of the Google Cloud network endpoint group when MongoDB Cloud received this request.  Alternatively: State of the Azure Private Link Service connection when MongoDB Cloud received this request.
 	Status *string `json:"status,omitempty"`
 	// Human-readable label that MongoDB Cloud generates that identifies the private endpoint connection.
 	PrivateEndpointConnectionName *string `json:"privateEndpointConnectionName,omitempty"`

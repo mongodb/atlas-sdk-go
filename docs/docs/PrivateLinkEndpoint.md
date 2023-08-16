@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **InterfaceEndpointId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the interface endpoint. | [optional] [readonly] 
 **EndpointGroupName** | Pointer to **string** | Human-readable label that identifies a set of endpoints. | [optional] [readonly] 
 **Endpoints** | Pointer to [**[]GCPConsumerForwardingRule**](GCPConsumerForwardingRule.md) | List of individual private endpoints that comprise this endpoint group. | [optional] [readonly] 
-**Status** | Pointer to **string** | State of the Azure Private Link Service connection when MongoDB Cloud received this request. | [optional] [readonly] 
+**Status** | Pointer to **string** | State of the Google Cloud network endpoint group when MongoDB Cloud received this request.  Alternatively: State of the Azure Private Link Service connection when MongoDB Cloud received this request. | [optional] [readonly] 
 **PrivateEndpointConnectionName** | Pointer to **string** | Human-readable label that MongoDB Cloud generates that identifies the private endpoint connection. | [optional] [readonly] 
 **PrivateEndpointIPAddress** | Pointer to **string** | IPv4 address of the private endpoint in your Azure VNet that someone added to this private endpoint service. | [optional] 
 **PrivateEndpointResourceId** | Pointer to **string** | Unique string that identifies the Azure private endpoint&#39;s network interface that someone added to this private endpoint service. | [optional] [readonly] 
