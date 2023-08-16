@@ -153,10 +153,10 @@ function handleDuplicates(parentObject, childObject) {
           parentProperty.description &&
           childProperty.description !== parentProperty.description
         )
-          childObject.properties[duplicate.key].description =
-            parentObject.properties[duplicate.key].description +
+          childProperty.description =
+            parentProperty.description +
             "\n\nAlternatively:\n" +
-            childObject.properties[duplicate.key].description;
+            childProperty.description;
       }
     }
   }
