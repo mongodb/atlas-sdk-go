@@ -155,7 +155,7 @@ function handleDuplicates(parentObject, childObject) {
         )
           childObject.properties[duplicate.key].description =
             parentObject.properties[duplicate.key].description +
-            "\n Alternatively: " +
+            "\n\nAlternatively:\n" +
             childObject.properties[duplicate.key].description;
       }
     }
