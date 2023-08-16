@@ -8,11 +8,11 @@ import (
 
 // PrivateLinkEndpoint struct for PrivateLinkEndpoint
 type PrivateLinkEndpoint struct {
-	// Cloud service provider that serves the requested endpoint.
+	// Cloud service provider that serves the requested endpoint.  Alternatively: Cloud service provider that serves the requested endpoint.  Alternatively: Cloud service provider that serves the requested endpoint.  Alternatively: Cloud service provider that serves the requested endpoint.
 	CloudProvider string `json:"cloudProvider"`
-	// Flag that indicates whether MongoDB Cloud received a request to remove the specified private endpoint from the private endpoint service.
+	// Flag that indicates whether MongoDB Cloud received a request to remove the specified private endpoint from the private endpoint service.  Alternatively: Flag that indicates whether MongoDB Cloud received a request to remove the specified private endpoint from the private endpoint service.  Alternatively: Flag that indicates whether MongoDB Cloud received a request to remove the specified private endpoint from the private endpoint service.  Alternatively: Flag that indicates whether MongoDB Cloud received a request to remove the specified private endpoint from the private endpoint service.
 	DeleteRequested *bool `json:"deleteRequested,omitempty"`
-	// Error message returned when requesting private connection resource. The resource returns `null` if the request succeeded.
+	// Error message returned when requesting private connection resource. The resource returns `null` if the request succeeded.  Alternatively: Error message returned when requesting private connection resource. The resource returns `null` if the request succeeded.  Alternatively: Error message returned when requesting private connection resource. The resource returns `null` if the request succeeded.  Alternatively: Error message returned when requesting private connection resource. The resource returns `null` if the request succeeded.
 	ErrorMessage *string `json:"errorMessage,omitempty"`
 	// State of the Amazon Web Service PrivateLink connection when MongoDB Cloud received this request.
 	ConnectionStatus *string `json:"connectionStatus,omitempty"`
@@ -22,7 +22,7 @@ type PrivateLinkEndpoint struct {
 	EndpointGroupName *string `json:"endpointGroupName,omitempty"`
 	// List of individual private endpoints that comprise this endpoint group.
 	Endpoints []GCPConsumerForwardingRule `json:"endpoints,omitempty"`
-	// State of the Azure Private Link Service connection when MongoDB Cloud received this request.
+	// State of the Google Cloud network endpoint group when MongoDB Cloud received this request.  Alternatively: State of the Azure Private Link Service connection when MongoDB Cloud received this request.
 	Status *string `json:"status,omitempty"`
 	// Human-readable label that MongoDB Cloud generates that identifies the private endpoint connection.
 	PrivateEndpointConnectionName *string `json:"privateEndpointConnectionName,omitempty"`

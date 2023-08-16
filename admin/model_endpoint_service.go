@@ -8,15 +8,15 @@ import (
 
 // EndpointService struct for EndpointService
 type EndpointService struct {
-	// Cloud service provider that serves the requested endpoint service.
+	// Cloud service provider that serves the requested endpoint service.  Alternatively: Cloud service provider that serves the requested endpoint service.  Alternatively: Cloud service provider that serves the requested endpoint service.  Alternatively: Cloud service provider that serves the requested endpoint service.
 	CloudProvider string `json:"cloudProvider"`
-	// Error message returned when requesting private connection resource. The resource returns `null` if the request succeeded.
+	// Error message returned when requesting private connection resource. The resource returns `null` if the request succeeded.  Alternatively: Error message returned when requesting private connection resource. The resource returns `null` if the request succeeded.  Alternatively: Error message returned when requesting private connection resource. The resource returns `null` if the request succeeded.  Alternatively: Error message returned when requesting private connection resource. The resource returns `null` if the request succeeded.
 	ErrorMessage *string `json:"errorMessage,omitempty"`
-	// Unique 24-hexadecimal digit string that identifies the Private Endpoint Service.
+	// Unique 24-hexadecimal digit string that identifies the Private Endpoint Service.  Alternatively: Unique 24-hexadecimal digit string that identifies the Private Endpoint Service.  Alternatively: Unique 24-hexadecimal digit string that identifies the Private Endpoint Service.  Alternatively: Unique 24-hexadecimal digit string that identifies the Private Endpoint Service.
 	Id *string `json:"id,omitempty"`
-	// Cloud provider region that manages this Private Endpoint Service.
+	// Cloud provider region that manages this Private Endpoint Service.  Alternatively: Cloud provider region that manages this Private Endpoint Service.  Alternatively: Cloud provider region that manages this Private Endpoint Service.  Alternatively: Cloud provider region that manages this Private Endpoint Service.
 	RegionName *string `json:"regionName,omitempty"`
-	// State of the Private Endpoint Service connection when MongoDB Cloud received this request.
+	// State of the Private Endpoint Service connection when MongoDB Cloud received this request.  Alternatively: State of the Private Endpoint Service connection when MongoDB Cloud received this request.  Alternatively: State of the Private Endpoint Service connection when MongoDB Cloud received this request.  Alternatively: State of the Private Endpoint Service connection when MongoDB Cloud received this request.
 	Status *string `json:"status,omitempty"`
 	// Unique string that identifies the Amazon Web Services (AWS) PrivateLink endpoint service. MongoDB Cloud returns null while it creates the endpoint service.
 	EndpointServiceName *string `json:"endpointServiceName,omitempty"`

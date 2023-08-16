@@ -8,17 +8,17 @@ import (
 
 // ApiAtlasFTSAnalyzersTokenizer Tokenizer that you want to use to create tokens. Tokens determine how Atlas Search splits up text into discrete chunks for indexing.
 type ApiAtlasFTSAnalyzersTokenizer struct {
-	// Characters to include in the longest token that Atlas Search creates.
+	// Characters to include in the longest token that Atlas Search creates.  Alternatively: Characters to include in the longest token that Atlas Search creates.
 	MaxGram *int `json:"maxGram,omitempty"`
-	// Characters to include in the shortest token that Atlas Search creates.
+	// Characters to include in the shortest token that Atlas Search creates.  Alternatively: Characters to include in the shortest token that Atlas Search creates.
 	MinGram *int `json:"minGram,omitempty"`
-	// Human-readable label that identifies this tokenizer type.
+	// Human-readable label that identifies this tokenizer type.  Alternatively: Human-readable label that identifies this tokenizer type.  Alternatively: Human-readable label that identifies this tokenizer type.  Alternatively: Human-readable label that identifies this tokenizer type.  Alternatively: Human-readable label that identifies this tokenizer type.  Alternatively: Human-readable label that identifies this tokenizer type.  Alternatively: Human-readable label that identifies this tokenizer type.  Alternatively: Human-readable label that identifies this tokenizer type.
 	Type *string `json:"type,omitempty"`
 	// Index of the character group within the matching expression to extract into tokens. Use `0` to extract all character groups.
 	Group *int `json:"group,omitempty"`
-	// Regular expression to match against.
+	// Regular expression to match against.  Alternatively: Regular expression to match against.
 	Pattern *string `json:"pattern,omitempty"`
-	// Maximum number of characters in a single token. Tokens greater than this length are split at this length into multiple tokens.
+	// Maximum number of characters in a single token. Tokens greater than this length are split at this length into multiple tokens.  Alternatively: Maximum number of characters in a single token. Tokens greater than this length are split at this length into multiple tokens.  Alternatively: Maximum number of characters in a single token. Tokens greater than this length are split at this length into multiple tokens.
 	MaxTokenLength *int `json:"maxTokenLength,omitempty"`
 }
 

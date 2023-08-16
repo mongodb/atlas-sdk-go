@@ -8,11 +8,11 @@ import (
 
 // BaseNetworkPeeringConnectionSettings struct for BaseNetworkPeeringConnectionSettings
 type BaseNetworkPeeringConnectionSettings struct {
-	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container that contains the specified network peering connection.
+	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container that contains the specified network peering connection.  Alternatively: Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container that contains the specified network peering connection.  Alternatively: Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container that contains the specified network peering connection.  Alternatively: Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container that contains the specified network peering connection.
 	ContainerId string `json:"containerId"`
-	// Unique 24-hexadecimal digit string that identifies the network peering connection.
+	// Unique 24-hexadecimal digit string that identifies the network peering connection.  Alternatively: Unique 24-hexadecimal digit string that identifies the network peering connection.  Alternatively: Unique 24-hexadecimal digit string that identifies the network peering connection.  Alternatively: Unique 24-hexadecimal digit string that identifies the network peering connection.
 	Id *string `json:"id,omitempty"`
-	// Cloud service provider that serves the requested network peering connection.
+	// Cloud service provider that serves the requested network peering connection.  Alternatively: Cloud service provider that serves the requested network peering connection.  Alternatively: Cloud service provider that serves the requested network peering connection.  Alternatively: Cloud service provider that serves the requested network peering connection.
 	ProviderName *string `json:"providerName,omitempty"`
 	// Amazon Web Services (AWS) region where the Virtual Peering Connection (VPC) that you peered with the MongoDB Cloud VPC resides. The resource returns `null` if your VPC and the MongoDB Cloud VPC reside in the same region.
 	AccepterRegionName *string `json:"accepterRegionName,omitempty"`
@@ -36,7 +36,7 @@ type BaseNetworkPeeringConnectionSettings struct {
 	ErrorState *string `json:"errorState,omitempty"`
 	// Human-readable label that identifies the resource group in which the VNet to peer with the MongoDB Cloud VNet resides.
 	ResourceGroupName *string `json:"resourceGroupName,omitempty"`
-	// State of the network peering connection at the time you made the request.
+	// State of the network peering connection at the time you made the request.  Alternatively: State of the network peering connection at the time you made the request.
 	Status *string `json:"status,omitempty"`
 	// Human-readable label that identifies the VNet that you want to peer with the MongoDB Cloud VNet.
 	VnetName *string `json:"vnetName,omitempty"`

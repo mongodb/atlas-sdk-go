@@ -12,9 +12,9 @@ type HardwareSpec struct {
 	DiskIOPS *int `json:"diskIOPS,omitempty"`
 	// Type of storage you want to attach to your AWS-provisioned cluster.  - `STANDARD` volume types can't exceed the default input/output operations per second (IOPS) rate for the selected volume size.   - `PROVISIONED` volume types must fall within the allowable IOPS range for the selected volume size.
 	EbsVolumeType *string `json:"ebsVolumeType,omitempty"`
-	// Hardware specification for the instance sizes in this region. Each instance size has a default storage and memory capacity. The instance size you select applies to all the data-bearing hosts in your instance size.
+	// Hardware specification for the instance sizes in this region. Each instance size has a default storage and memory capacity. The instance size you select applies to all the data-bearing hosts in your instance size.  Alternatively: Hardware specification for the instance sizes in this region. Each instance size has a default storage and memory capacity. The instance size you select applies to all the data-bearing hosts in your instance size.  Alternatively: Hardware specification for the instance sizes in this region. Each instance size has a default storage and memory capacity. The instance size you select applies to all the data-bearing hosts in your instance size.  Alternatively: Hardware specification for the instance sizes in this region. Each instance size has a default storage and memory capacity. The instance size you select applies to all the data-bearing hosts in your instance size.
 	InstanceSize *string `json:"instanceSize,omitempty"`
-	// Number of nodes of the given type for MongoDB Cloud to deploy to the region.
+	// Number of nodes of the given type for MongoDB Cloud to deploy to the region.  Alternatively: Number of nodes of the given type for MongoDB Cloud to deploy to the region.  Alternatively: Number of nodes of the given type for MongoDB Cloud to deploy to the region.
 	NodeCount *int `json:"nodeCount,omitempty"`
 }
 
