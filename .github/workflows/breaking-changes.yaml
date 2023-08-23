@@ -1,4 +1,4 @@
-name: Detect Breaking Changes
+name: (Optional) Detect Breaking Changes
 on: [ pull_request ]
 jobs:
   go-apidiff:
