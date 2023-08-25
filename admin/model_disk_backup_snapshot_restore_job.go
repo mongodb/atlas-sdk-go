@@ -38,10 +38,10 @@ type DiskBackupSnapshotRestoreJob struct {
 	PointInTimeUTCSeconds *int `json:"pointInTimeUTCSeconds,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the snapshot.
 	SnapshotId *string `json:"snapshotId,omitempty"`
-	// Human-readable label that identifies the target cluster to which the restore job restores the snapshot. The resource returns this parameter when `\"deliveryType\":` `\"automated\"`.
-	TargetClusterName string `json:"targetClusterName"`
-	// Unique 24-hexadecimal digit string that identifies the target project for the specified **targetClusterName**.
-	TargetGroupId string `json:"targetGroupId"`
+	// Human-readable label that identifies the target cluster to which the restore job restores the snapshot. The resource returns this parameter when `\"deliveryType\":` `\"automated\"`. Required for `automated` and `pointInTime` restore types.
+	TargetClusterName *string `json:"targetClusterName,omitempty"`
+	// Unique 24-hexadecimal digit string that identifies the target project for the specified **targetClusterName**. Required for `automated` and `pointInTime` restore types.
+	TargetGroupId *string `json:"targetGroupId,omitempty"`
 	// Date and time when MongoDB Cloud took the snapshot associated with **snapshotId**. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	Timestamp *time.Time `json:"timestamp,omitempty"`
 }
@@ -50,11 +50,9 @@ type DiskBackupSnapshotRestoreJob struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDiskBackupSnapshotRestoreJob(deliveryType string, targetClusterName string, targetGroupId string) *DiskBackupSnapshotRestoreJob {
+func NewDiskBackupSnapshotRestoreJob(deliveryType string) *DiskBackupSnapshotRestoreJob {
 	this := DiskBackupSnapshotRestoreJob{}
 	this.DeliveryType = deliveryType
-	this.TargetClusterName = targetClusterName
-	this.TargetGroupId = targetGroupId
 	return &this
 }
 
@@ -552,52 +550,70 @@ func (o *DiskBackupSnapshotRestoreJob) SetSnapshotId(v string) {
 	o.SnapshotId = &v
 }
 
-// GetTargetClusterName returns the TargetClusterName field value
+// GetTargetClusterName returns the TargetClusterName field value if set, zero value otherwise
 func (o *DiskBackupSnapshotRestoreJob) GetTargetClusterName() string {
-	if o == nil {
+	if o == nil || IsNil(o.TargetClusterName) {
 		var ret string
 		return ret
 	}
-
-	return o.TargetClusterName
+	return *o.TargetClusterName
 }
 
-// GetTargetClusterNameOk returns a tuple with the TargetClusterName field value
+// GetTargetClusterNameOk returns a tuple with the TargetClusterName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DiskBackupSnapshotRestoreJob) GetTargetClusterNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TargetClusterName) {
 		return nil, false
 	}
-	return &o.TargetClusterName, true
+
+	return o.TargetClusterName, true
 }
 
-// SetTargetClusterName sets field value
+// HasTargetClusterName returns a boolean if a field has been set.
+func (o *DiskBackupSnapshotRestoreJob) HasTargetClusterName() bool {
+	if o != nil && !IsNil(o.TargetClusterName) {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetClusterName gets a reference to the given string and assigns it to the TargetClusterName field.
 func (o *DiskBackupSnapshotRestoreJob) SetTargetClusterName(v string) {
-	o.TargetClusterName = v
+	o.TargetClusterName = &v
 }
 
-// GetTargetGroupId returns the TargetGroupId field value
+// GetTargetGroupId returns the TargetGroupId field value if set, zero value otherwise
 func (o *DiskBackupSnapshotRestoreJob) GetTargetGroupId() string {
-	if o == nil {
+	if o == nil || IsNil(o.TargetGroupId) {
 		var ret string
 		return ret
 	}
-
-	return o.TargetGroupId
+	return *o.TargetGroupId
 }
 
-// GetTargetGroupIdOk returns a tuple with the TargetGroupId field value
+// GetTargetGroupIdOk returns a tuple with the TargetGroupId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DiskBackupSnapshotRestoreJob) GetTargetGroupIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TargetGroupId) {
 		return nil, false
 	}
-	return &o.TargetGroupId, true
+
+	return o.TargetGroupId, true
 }
 
-// SetTargetGroupId sets field value
+// HasTargetGroupId returns a boolean if a field has been set.
+func (o *DiskBackupSnapshotRestoreJob) HasTargetGroupId() bool {
+	if o != nil && !IsNil(o.TargetGroupId) {
+		return true
+	}
+
+	return false
+}
+
+// SetTargetGroupId gets a reference to the given string and assigns it to the TargetGroupId field.
 func (o *DiskBackupSnapshotRestoreJob) SetTargetGroupId(v string) {
-	o.TargetGroupId = v
+	o.TargetGroupId = &v
 }
 
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise
@@ -658,7 +674,11 @@ func (o DiskBackupSnapshotRestoreJob) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SnapshotId) {
 		toSerialize["snapshotId"] = o.SnapshotId
 	}
-	toSerialize["targetClusterName"] = o.TargetClusterName
-	toSerialize["targetGroupId"] = o.TargetGroupId
+	if !IsNil(o.TargetClusterName) {
+		toSerialize["targetClusterName"] = o.TargetClusterName
+	}
+	if !IsNil(o.TargetGroupId) {
+		toSerialize["targetGroupId"] = o.TargetGroupId
+	}
 	return toSerialize, nil
 }

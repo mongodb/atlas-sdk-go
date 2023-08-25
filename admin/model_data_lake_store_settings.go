@@ -29,6 +29,7 @@ type DataLakeStoreSettings struct {
 	ClusterName *string `json:"clusterName,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project.
 	ProjectId      *string                           `json:"projectId,omitempty"`
+	ReadConcern    *DataLakeAtlasStoreReadConcern    `json:"readConcern,omitempty"`
 	ReadPreference *DataLakeAtlasStoreReadPreference `json:"readPreference,omitempty"`
 	// Flag that validates the scheme in the specified URLs. If `true`, allows insecure `HTTP` scheme, doesn't verify the server's certificate chain and hostname, and accepts any certificate with any hostname presented by the server. If `false`, allows secure `HTTPS` scheme only.
 	AllowInsecure *bool `json:"allowInsecure,omitempty"`
@@ -422,6 +423,39 @@ func (o *DataLakeStoreSettings) SetProjectId(v string) {
 	o.ProjectId = &v
 }
 
+// GetReadConcern returns the ReadConcern field value if set, zero value otherwise
+func (o *DataLakeStoreSettings) GetReadConcern() DataLakeAtlasStoreReadConcern {
+	if o == nil || IsNil(o.ReadConcern) {
+		var ret DataLakeAtlasStoreReadConcern
+		return ret
+	}
+	return *o.ReadConcern
+}
+
+// GetReadConcernOk returns a tuple with the ReadConcern field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DataLakeStoreSettings) GetReadConcernOk() (*DataLakeAtlasStoreReadConcern, bool) {
+	if o == nil || IsNil(o.ReadConcern) {
+		return nil, false
+	}
+
+	return o.ReadConcern, true
+}
+
+// HasReadConcern returns a boolean if a field has been set.
+func (o *DataLakeStoreSettings) HasReadConcern() bool {
+	if o != nil && !IsNil(o.ReadConcern) {
+		return true
+	}
+
+	return false
+}
+
+// SetReadConcern gets a reference to the given DataLakeAtlasStoreReadConcern and assigns it to the ReadConcern field.
+func (o *DataLakeStoreSettings) SetReadConcern(v DataLakeAtlasStoreReadConcern) {
+	o.ReadConcern = &v
+}
+
 // GetReadPreference returns the ReadPreference field value if set, zero value otherwise
 func (o *DataLakeStoreSettings) GetReadPreference() DataLakeAtlasStoreReadPreference {
 	if o == nil || IsNil(o.ReadPreference) {
@@ -590,6 +624,9 @@ func (o DataLakeStoreSettings) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ClusterName) {
 		toSerialize["clusterName"] = o.ClusterName
+	}
+	if !IsNil(o.ReadConcern) {
+		toSerialize["readConcern"] = o.ReadConcern
 	}
 	if !IsNil(o.ReadPreference) {
 		toSerialize["readPreference"] = o.ReadPreference

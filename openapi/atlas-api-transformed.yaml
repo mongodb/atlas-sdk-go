@@ -23,8 +23,8 @@ info:
     url: https://creativecommons.org/licenses/by-nc-sa/3.0/us/
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
-  version: 2.0~8c21cdd766
-  x-xgen-sha: 8c21cdd7661d2221f8405b831f721af6db580fea
+  version: 2.0~04131a87ec
+  x-xgen-sha: 04131a87ec55f7b8c6c56c2ff1beb80dc12e5e38
 servers:
   - url: https://cloud.mongodb.com
 tags:
@@ -4725,6 +4725,9 @@ paths:
       summary: Create One Online Archive
       tags:
         - Online Archive
+      x-xgen-changelog:
+        2023-08-02: If 'criteria':'DATE' is specified, then you must specify 'DATE'
+          values in partition fields
   "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/queryLogs.gz":
     get:
       description: Downloads query logs for the specified online archive. To use this
@@ -6833,8 +6836,16 @@ paths:
                 $ref: "#/components/schemas/CloudDatabaseUser"
               x-xgen-version: 2023-01-01
           description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
         "401":
           $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
       security:
@@ -12235,6 +12246,54 @@ paths:
       summary: Remove One User from One Project
       tags:
         - Projects
+  "/api/atlas/v2/groups/{groupId}/users/{userId}/roles":
+    put:
+      description: Updates the roles of the specified user in the specified project.
+        To specify the user to update, provide the unique 24-hexadecimal digit
+        string that identifies the user in the specified project. To use this
+        resource, the requesting API Key must have the Group User Admin role.
+      operationId: updateProjectRoles
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Unique 24-hexadecimal digit string that identifies the user to
+            modify.
+          in: path
+          name: userId
+          required: true
+          schema:
+            type: string
+            maxLength: 24
+            minLength: 24
+            pattern: ^([a-f0-9]{24})$
+      requestBody:
+        content:
+          application/vnd.atlas.2023-01-01+json:
+            schema:
+              $ref: "#/components/schemas/UpdateGroupRolesForUser"
+        description: Roles to update for the specified user.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: "#/components/schemas/UpdateGroupRolesForUser"
+              x-xgen-version: 2023-01-01
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Update Project Roles for One MongoDB Cloud User
+      tags:
+        - Projects
+      x-xgen-experimental: true
   /api/atlas/v2/orgs:
     get:
       description: Returns all organizations to which you belong. To use this
@@ -14052,6 +14111,55 @@ paths:
       tags:
         - Organizations
       x-xgen-experimental: true
+  "/api/atlas/v2/orgs/{orgId}/users/{userId}/roles":
+    put:
+      description: Updates the roles of the specified user in the specified
+        organization. To specify the user to update, provide the unique
+        24-hexadecimal digit string that identifies the user in the specified
+        organization. To use this resource, the requesting API Key must have the
+        Organization User Admin role.
+      operationId: updateOrganizationRoles
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - description: Unique 24-hexadecimal digit string that identifies the user to
+            modify.
+          in: path
+          name: userId
+          required: true
+          schema:
+            type: string
+            maxLength: 24
+            minLength: 24
+            pattern: ^([a-f0-9]{24})$
+      requestBody:
+        content:
+          application/vnd.atlas.2023-01-01+json:
+            schema:
+              $ref: "#/components/schemas/UpdateOrgRolesForUser"
+        description: Roles to update for the specified user.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: "#/components/schemas/UpdateOrgRolesForUser"
+              x-xgen-version: 2023-01-01
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Update Organization Roles for One MongoDB Cloud User
+      tags:
+        - Organizations
+      x-xgen-experimental: true
   /api/atlas/v2/users:
     post:
       description: >-
@@ -14593,6 +14701,21 @@ components:
     AdvancedClusterDescription:
       type: object
       properties:
+        acceptDataRisksAndForceReplicaSetReconfig:
+          type: string
+          format: date-time
+          description: If reconfiguration is necessary to regain a primary due to a
+            regional outage, submit this field alongside your topology
+            reconfiguration to request a new regional outage resistant topology.
+            Forced reconfigurations during an outage of the majority of
+            electable nodes carry a risk of data loss if replicated writes (even
+            majority committed writes) have not been replicated to the new
+            primary node. MongoDB Atlas docs contain more information. To
+            proceed with an operation which carries that risk, set
+            **acceptDataRisksAndForceReplicaSetReconfig** to the current date.
+          externalDocs:
+            description: Reconfiguring a Replica Set during a regional outage
+            url: https://dochub.mongodb.org/core/regional-outage-reconfigure-replica-set
         backupEnabled:
           type: boolean
           default: false
@@ -19197,6 +19320,18 @@ components:
           type: string
           description: Human-readable label that identifies the source collection for the
             view.
+    DataLakeAtlasStoreReadConcern:
+      type: object
+      description: MongoDB Cloud cluster read concern, which determines the
+        consistency and isolation properties of the data read from an Atlas
+        cluster.
+      properties:
+        level:
+          type: string
+          description: "[Read Concern
+            level](https://www.mongodb.com/docs/manual/reference/read-concern/#\
+            read-concern-levels) that specifies the consistency and availability
+            of the data read."
     DataLakeAtlasStoreReadPreference:
       type: object
       description: MongoDB Cloud cluster read preference, which describes how to route
@@ -19304,6 +19439,15 @@ components:
           description: Regex pattern to use for creating the wildcard (*) database. To
             learn more about the regex syntax, see [Go programming
             language](https://pkg.go.dev/regexp).
+        datasetName:
+          type: string
+          description: Human-readable label that identifies the dataset that Atlas
+            generates for an ingestion pipeline run or Online Archive.
+          example: v1$atlas$snapshot$Cluster0$myDatabase$myCollection$19700101T000000Z
+        datasetPrefix:
+          type: string
+          description: Human-readable label that matches against the dataset names for
+            ingestion pipeline runs or Online Archives.
         defaultFormat:
           type: string
           description: File format that MongoDB Cloud uses if it encounters a file without
@@ -19323,6 +19467,12 @@ components:
           type: string
           description: Human-readable label that identifies the data store that MongoDB
             Cloud maps to the collection.
+        trimLevel:
+          type: integer
+          format: int32
+          description: Unsigned integer that specifies how many fields of the dataset name
+            to trim from the left of the dataset name before mapping the
+            remaining fields to a wildcard collection name.
         urls:
           type: array
           description: URLs of the publicly accessible data files. You can't specify URLs
@@ -19537,6 +19687,8 @@ components:
           minLength: 24
           pattern: ^([a-f0-9]{24})$
           readOnly: true
+        readConcern:
+          $ref: "#/components/schemas/DataLakeAtlasStoreReadConcern"
         readPreference:
           $ref: "#/components/schemas/DataLakeAtlasStoreReadPreference"
         allowInsecure:
@@ -19672,6 +19824,8 @@ components:
             Compliance Policy settings. MongoDB Cloud ignores this email setting
             when you enable or update the Backup Compliance Policy settings.
           readOnly: true
+      required:
+        - authorizedEmail
     DatabaseInheritedRole:
       type: object
       description: Role inherited from another context for this database user.
@@ -20705,14 +20859,16 @@ components:
           type: string
           description: Human-readable label that identifies the target cluster to which
             the restore job restores the snapshot. The resource returns this
-            parameter when `"deliveryType":` `"automated"`.
+            parameter when `"deliveryType":` `"automated"`. Required for
+            `automated` and `pointInTime` restore types.
           maxLength: 64
           minLength: 1
           pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
         targetGroupId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the target
-            project for the specified **targetClusterName**.
+            project for the specified **targetClusterName**. Required for
+            `automated` and `pointInTime` restore types.
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
@@ -20726,8 +20882,6 @@ components:
           readOnly: true
       required:
         - deliveryType
-        - targetClusterName
-        - targetGroupId
     DiskBackupSnapshotSchedule:
       type: object
       properties:
@@ -21128,6 +21282,12 @@ components:
           description: Human-readable label of the metric associated with the **alertId**.
             This field may change type of **currentValue** field.
           readOnly: true
+        dbUserUsername:
+          type: string
+          description: The username of the MongoDB User that was created, deleted, or
+            edited.
+          example: user1
+          readOnly: true
         whitelistEntry:
           type: string
           description: Entry in the list of source host addresses that the API key accepts
@@ -21317,6 +21477,12 @@ components:
           minLength: 24
           pattern: ^([a-f0-9]{24})$
           readOnly: true
+        dbUserUsername:
+          type: string
+          description: The username of the MongoDB User that was created, deleted, or
+            edited.
+          example: user1
+          readOnly: true
         whitelistEntry:
           type: string
           description: Entry in the list of source host addresses that the API key accepts
@@ -21352,6 +21518,16 @@ components:
           type: string
           description: Unique identifier of resource type.
           example: cluster
+    ExperimentRegistration:
+      type: object
+      properties:
+        experimentId:
+          type: string
+        key:
+          type: string
+        variationId:
+          type: integer
+          format: int32
     ExportStatus:
       type: object
       description: State of the export job for the collections on the replica set only.
@@ -21596,67 +21772,94 @@ components:
     Group:
       type: object
       properties:
-        clusterCount:
+        activeAgentCount:
+          type: integer
+          format: int32
+        chttl:
           type: integer
           format: int64
-          description: Quantity of MongoDB Cloud clusters deployed in this project.
-          readOnly: true
-        created:
+        cre:
           type: string
           format: date-time
-          description: Date and time when MongoDB Cloud created this project. This
-            parameter expresses its value in the ISO 8601 timestamp format in
-            UTC.
-          readOnly: true
+        defaultTimeZoneDisplay:
+          type: string
+        defaultTimeZoneDisplayShort:
+          type: string
+        defaultTimeZoneId:
+          type: string
+        disableDbstats:
+          type: boolean
+        enableAllHostLogs:
+          type: boolean
+        enableAllHostProfilers:
+          type: boolean
+        enableCurrentIpWarning:
+          type: boolean
+        experiments:
+          type: array
+          items:
+            $ref: "#/components/schemas/ExperimentRegistration"
+        featureFlags:
+          type: array
+          items:
+            $ref: "#/components/schemas/ToggleableFeatureFlag"
+        groupType:
+          type: string
+        hasActiveBackups:
+          type: boolean
+        hasActiveUI:
+          type: boolean
+        hasAddedHosts:
+          type: boolean
         id:
           type: string
-          description: Unique 24-hexadecimal digit string that identifies the MongoDB
-            Cloud project.
           example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
           pattern: ^([a-f0-9]{24})$
-          readOnly: true
-        links:
-          type: array
-          description: List of one or more Uniform Resource Locators (URLs) that point to
-            API sub-resources, related API resources, or both. RFC 5988 outlines
-            these relationships.
-          externalDocs:
-            description: Web Linking Specification (RFC 5988)
-            url: https://datatracker.ietf.org/doc/html/rfc5988
-          items:
-            $ref: "#/components/schemas/Link"
-          readOnly: true
+        integrations:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: "#/components/schemas/Integration"
+        isIntercomEligible:
+          type: boolean
+        isProjectOverviewEnabled:
+          type: boolean
+        lastClusterActiveSampleTime:
+          type: string
+          format: date-time
+        lmav:
+          type: string
         name:
           type: string
-          description: Human-readable label that identifies the project included in the
-            MongoDB Cloud organization.
-          maxLength: 64
-          minLength: 1
-          pattern: ^[\p{L}\p{N}\-_.(),:&@+']{1,64}$
-        orgId:
+        newRelicInsightsAccountId:
           type: string
-          description: Unique 24-hexadecimal digit string that identifies the MongoDB
-            Cloud organization to which the project belongs.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-        regionUsageRestrictions:
+        newRelicInsightsReadToken:
           type: string
-          default: NONE
-          description: Region usage restrictions that designate the project's AWS region.
-        withDefaultAlertsSettings:
+        newRelicInsightsWriteToken:
+          type: string
+        newRelicLicenseKey:
+          type: string
+        preferredHostnames:
+          type: array
+          items:
+            $ref: "#/components/schemas/PreferredHostname"
+        prom:
+          $ref: "#/components/schemas/PrometheusConfig"
+        status:
+          $ref: "#/components/schemas/GroupStatus"
+        storageConfig:
+          $ref: "#/components/schemas/GroupStorageConfig"
+        summaryStatistics:
+          $ref: "#/components/schemas/GroupSummaryStatistics"
+        suppressMongosAutoDiscovery:
           type: boolean
-          description: Flag that indicates whether to create the project with default
-            alert settings.
-          writeOnly: true
-      required:
-        - clusterCount
-        - created
-        - name
-        - orgId
+        teams:
+          type: array
+          items:
+            $ref: "#/components/schemas/TeamRoleAssignment"
+        useCNRegionsOnly:
+          type: boolean
     GroupAlertsConfig:
       type: object
       properties:
@@ -21972,6 +22175,47 @@ components:
           type: boolean
           description: Flag that indicates whether to enable the Schema Advisor for the
             specified project.
+    GroupStatus:
+      type: object
+      properties:
+        displayName:
+          type: string
+        since:
+          type: string
+          format: date-time
+        status:
+          type: string
+    GroupStorageConfig:
+      type: object
+      properties:
+        mode:
+          type: string
+    GroupSummaryStatistics:
+      type: object
+      properties:
+        dataSizeBackedUpBytes:
+          type: integer
+          format: int64
+        dataSizeNoLocalBytes:
+          type: integer
+          format: int64
+        lastInvoiceAmountCents:
+          type: integer
+          format: int64
+        numBillableServer:
+          type: integer
+          format: int32
+        numCluster:
+          type: integer
+          format: int32
+        numPaidAtlasClusters:
+          type: integer
+          format: int32
+        numTotalAtlasClusters:
+          type: integer
+          format: int32
+        supportLevelLabel:
+          type: string
     HardwareSpec:
       type: object
       description: Hardware specifications for all electable nodes deployed in the
@@ -22366,6 +22610,8 @@ components:
           minLength: 24
           pattern: ^([a-f0-9]{24})$
       title: Ingestion Source
+    Integration:
+      type: object
     InvoiceLineItem:
       type: object
       description: One service included in this invoice.
@@ -22373,7 +22619,8 @@ components:
         clusterName:
           type: string
           description: Human-readable label that identifies the cluster that incurred the
-            charge.
+            charge. Atlas doesn't return this field for line items that describe
+            data transfer on Google Cloud Platform.
           maxLength: 64
           minLength: 1
           pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
@@ -22725,6 +22972,21 @@ components:
       type: object
       description: Group of settings that configure a MongoDB cluster.
       properties:
+        acceptDataRisksAndForceReplicaSetReconfig:
+          type: string
+          format: date-time
+          description: If reconfiguration is necessary to regain a primary due to a
+            regional outage, submit this field alongside your topology
+            reconfiguration to request a new regional outage resistant topology.
+            Forced reconfigurations during an outage of the majority of
+            electable nodes carry a risk of data loss if replicated writes (even
+            majority committed writes) have not been replicated to the new
+            primary node. MongoDB Atlas docs contain more information. To
+            proceed with an operation which carries that risk, set
+            **acceptDataRisksAndForceReplicaSetReconfig** to the current date.
+          externalDocs:
+            description: Reconfiguring a Replica Set during a regional outage
+            url: https://dochub.mongodb.org/core/regional-outage-reconfigure-replica-set
         autoScaling:
           $ref: "#/components/schemas/ClusterAutoScalingSettings"
         backupEnabled:
@@ -24202,6 +24464,19 @@ components:
           readOnly: true
       readOnly: true
       title: Data Lake Pipeline Run Statistics
+    PreferredHostname:
+      type: object
+      properties:
+        endsWith:
+          type: boolean
+        id:
+          type: string
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
+        regexp:
+          type: boolean
+        value:
+          type: string
     PrivateLinkEndpoint:
       type: object
       properties:
@@ -24311,6 +24586,30 @@ components:
             with this private endpoint.
       required:
         - endpointId
+    PrometheusConfig:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        listenAddress:
+          type: string
+        metricsPath:
+          type: string
+        mode:
+          type: string
+        rateLimitIntervalSeconds:
+          type: integer
+          format: int32
+        scheme:
+          type: string
+        serviceDiscovery:
+          type: string
+        tlsPemPassword:
+          type: string
+        tlsPemPath:
+          type: string
+        username:
+          type: string
     PushBasedLogExportProject:
       type: object
       properties:
@@ -25438,6 +25737,18 @@ components:
           maxLength: 24
           minLength: 24
           pattern: ^([a-f0-9]{24})$
+    TeamRoleAssignment:
+      type: object
+      properties:
+        roles:
+          type: array
+          items:
+            type: string
+          uniqueItems: true
+        teamId:
+          type: string
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
     TenantRestore:
       type: object
       properties:
@@ -25800,6 +26111,13 @@ components:
             **NOTE**: When you view or edit the alert for a webhook notification, the URL appears partially redacted.
           example: https://webhook.com/****
       title: Third-Party Integration
+    ToggleableFeatureFlag:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        flag:
+          type: string
     TriggerIngestionPipelineRequest:
       type: object
       properties:
@@ -25826,6 +26144,92 @@ components:
           description: List of the built-in roles that this custom role inherits.
           items:
             $ref: "#/components/schemas/DatabaseInheritedRole"
+          uniqueItems: true
+    UpdateGroupRolesForUser:
+      type: object
+      properties:
+        groupRoles:
+          type: array
+          description: List of objects that describe the user's roles.
+          items:
+            type: string
+            description: >+
+              Human-readable label that identifies the collection of privileges
+              that MongoDB Cloud grants a specific API key, MongoDB Cloud user,
+              or MongoDB Cloud team. These roles only include project-level
+              roles.
+
+
+              Project Roles
+
+
+              * GROUP_CLUSTER_MANAGER
+
+              * GROUP_DATA_ACCESS_ADMIN
+
+              * GROUP_DATA_ACCESS_READ_ONLY
+
+              * GROUP_DATA_ACCESS_READ_WRITE
+
+              * GROUP_OWNER
+
+              * GROUP_READ_ONLY
+
+              * GROUP_SEARCH_INDEX_EDITOR
+
+          readOnly: true
+          uniqueItems: true
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+    UpdateOrgRolesForUser:
+      type: object
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        orgRoles:
+          type: array
+          description: List of objects that describe the user's roles.
+          items:
+            type: string
+            description: >+
+              Human-readable label that identifies the collection of privileges
+              that MongoDB Cloud grants a specific API key, MongoDB Cloud user,
+              or MongoDB Cloud team. These roles only include organization-level
+              roles.
+
+
+              Organization Roles
+
+
+              * ORG_OWNER
+
+              * ORG_MEMBER
+
+              * ORG_GROUP_CREATOR
+
+              * ORG_BILLING_ADMIN
+
+              * ORG_READ_ONLY
+
+          readOnly: true
           uniqueItems: true
     UserAccessList:
       type: object
@@ -27752,7 +28156,6 @@ components:
           type: object
           description: Tokenizer that you want to use to create tokens. Tokens determine
             how Atlas Search splits up text into discrete chunks for indexing.
-          x-xgen-go-transform: merge-oneOf
           properties:
             maxGram:
               type: integer

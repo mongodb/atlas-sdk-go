@@ -9,7 +9,7 @@ import (
 
 // InvoiceLineItem One service included in this invoice.
 type InvoiceLineItem struct {
-	// Human-readable label that identifies the cluster that incurred the charge.
+	// Human-readable label that identifies the cluster that incurred the charge. Atlas doesn't return this field for line items that describe data transfer on Google Cloud Platform.
 	ClusterName *string `json:"clusterName,omitempty"`
 	// Date and time when MongoDB Cloud created this line item. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	Created *time.Time `json:"created,omitempty"`

@@ -19,6 +19,7 @@ Method | HTTP request | Description
 [**RenameOrganization**](OrganizationsApi.md#RenameOrganization) | **Patch** /api/atlas/v2/orgs/{orgId} | Rename One Organization
 [**UpdateOrganizationInvitation**](OrganizationsApi.md#UpdateOrganizationInvitation) | **Patch** /api/atlas/v2/orgs/{orgId}/invites | Update One Organization Invitation
 [**UpdateOrganizationInvitationById**](OrganizationsApi.md#UpdateOrganizationInvitationById) | **Patch** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Update One Organization Invitation by Invitation ID
+[**UpdateOrganizationRoles**](OrganizationsApi.md#UpdateOrganizationRoles) | **Put** /api/atlas/v2/orgs/{orgId}/users/{userId}/roles | Update Organization Roles for One MongoDB Cloud User
 [**UpdateOrganizationSettings**](OrganizationsApi.md#UpdateOrganizationSettings) | **Patch** /api/atlas/v2/orgs/{orgId}/settings | Update Settings for One Organization
 
 
@@ -1153,6 +1154,89 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**OrganizationInvitation**](OrganizationInvitation.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2023-01-01+json
+- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateOrganizationRoles
+
+> UpdateOrgRolesForUser UpdateOrganizationRoles(ctx, orgId, userId, updateOrgRolesForUser UpdateOrgRolesForUser).Execute()
+
+Update Organization Roles for One MongoDB Cloud User
+
+
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20230201005/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+
+    orgId := "4888442a3354817a7320eb61" // string | 
+    userId := "userId_example" // string | 
+    updateOrgRolesForUser := *openapiclient.NewUpdateOrgRolesForUser() // UpdateOrgRolesForUser | 
+
+    resp, r, err := sdk.OrganizationsApi.UpdateOrganizationRoles(context.Background(), orgId, userId, &updateOrgRolesForUser).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.UpdateOrganizationRoles``: %v\n", err)
+        apiError := admin.AsError(err)
+        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+    }
+    // response from `UpdateOrganizationRoles`: UpdateOrgRolesForUser
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.UpdateOrganizationRoles`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+**userId** | **string** | Unique 24-hexadecimal digit string that identifies the user to modify. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateOrganizationRolesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **updateOrgRolesForUser** | [**UpdateOrgRolesForUser**](UpdateOrgRolesForUser.md) | Roles to update for the specified user. | 
+
+### Return type
+
+[**UpdateOrgRolesForUser**](UpdateOrgRolesForUser.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

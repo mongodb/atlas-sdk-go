@@ -372,6 +372,30 @@ type OrganizationsApi interface {
 	updateOrganizationInvitationByIdExecute(r UpdateOrganizationInvitationByIdApiRequest) (*OrganizationInvitation, *http.Response, error)
 
 	/*
+		UpdateOrganizationRoles Update Organization Roles for One MongoDB Cloud User
+
+		[experimental] Updates the roles of the specified user in the specified organization. To specify the user to update, provide the unique 24-hexadecimal digit string that identifies the user in the specified organization. To use this resource, the requesting API Key must have the Organization User Admin role.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param userId Unique 24-hexadecimal digit string that identifies the user to modify.
+		@return UpdateOrganizationRolesApiRequest
+	*/
+	UpdateOrganizationRoles(ctx context.Context, orgId string, userId string, updateOrgRolesForUser *UpdateOrgRolesForUser) UpdateOrganizationRolesApiRequest
+	/*
+		UpdateOrganizationRoles Update Organization Roles for One MongoDB Cloud User
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param UpdateOrganizationRolesApiParams - Parameters for the request
+		@return UpdateOrganizationRolesApiRequest
+	*/
+	UpdateOrganizationRolesWithParams(ctx context.Context, args *UpdateOrganizationRolesApiParams) UpdateOrganizationRolesApiRequest
+
+	// Interface only available internally
+	updateOrganizationRolesExecute(r UpdateOrganizationRolesApiRequest) (*UpdateOrgRolesForUser, *http.Response, error)
+
+	/*
 		UpdateOrganizationSettings Update Settings for One Organization
 
 		[experimental] Updates the organization's settings. To use this resource, the requesting API Key must have the Organization Owner role.
@@ -2558,6 +2582,157 @@ func (a *OrganizationsApiService) updateOrganizationInvitationByIdExecute(r Upda
 	}
 	// body params
 	localVarPostBody = r.organizationInvitationUpdateRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		var v ApiError
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
+		newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type UpdateOrganizationRolesApiRequest struct {
+	ctx                   context.Context
+	ApiService            OrganizationsApi
+	orgId                 string
+	userId                string
+	updateOrgRolesForUser *UpdateOrgRolesForUser
+}
+
+type UpdateOrganizationRolesApiParams struct {
+	OrgId                 string
+	UserId                string
+	UpdateOrgRolesForUser *UpdateOrgRolesForUser
+}
+
+func (a *OrganizationsApiService) UpdateOrganizationRolesWithParams(ctx context.Context, args *UpdateOrganizationRolesApiParams) UpdateOrganizationRolesApiRequest {
+	return UpdateOrganizationRolesApiRequest{
+		ApiService:            a,
+		ctx:                   ctx,
+		orgId:                 args.OrgId,
+		userId:                args.UserId,
+		updateOrgRolesForUser: args.UpdateOrgRolesForUser,
+	}
+}
+
+func (r UpdateOrganizationRolesApiRequest) Execute() (*UpdateOrgRolesForUser, *http.Response, error) {
+	return r.ApiService.updateOrganizationRolesExecute(r)
+}
+
+/*
+UpdateOrganizationRoles Update Organization Roles for One MongoDB Cloud User
+
+[experimental] Updates the roles of the specified user in the specified organization. To specify the user to update, provide the unique 24-hexadecimal digit string that identifies the user in the specified organization. To use this resource, the requesting API Key must have the Organization User Admin role.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param userId Unique 24-hexadecimal digit string that identifies the user to modify.
+	@return UpdateOrganizationRolesApiRequest
+*/
+func (a *OrganizationsApiService) UpdateOrganizationRoles(ctx context.Context, orgId string, userId string, updateOrgRolesForUser *UpdateOrgRolesForUser) UpdateOrganizationRolesApiRequest {
+	return UpdateOrganizationRolesApiRequest{
+		ApiService:            a,
+		ctx:                   ctx,
+		orgId:                 orgId,
+		userId:                userId,
+		updateOrgRolesForUser: updateOrgRolesForUser,
+	}
+}
+
+// Execute executes the request
+//
+//	@return UpdateOrgRolesForUser
+func (a *OrganizationsApiService) updateOrganizationRolesExecute(r UpdateOrganizationRolesApiRequest) (*UpdateOrgRolesForUser, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UpdateOrgRolesForUser
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.UpdateOrganizationRoles")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/users/{userId}/roles"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(parameterValueToString(r.userId, "userId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if strlen(r.orgId) < 24 {
+		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
+	}
+	if strlen(r.orgId) > 24 {
+		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
+	}
+	if strlen(r.userId) < 24 {
+		return localVarReturnValue, nil, reportError("userId must have at least 24 elements")
+	}
+	if strlen(r.userId) > 24 {
+		return localVarReturnValue, nil, reportError("userId must have less than 24 elements")
+	}
+	if r.updateOrgRolesForUser == nil {
+		return localVarReturnValue, nil, reportError("updateOrgRolesForUser is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.updateOrgRolesForUser
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

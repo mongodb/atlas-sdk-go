@@ -19,15 +19,15 @@ Name | Type | Description | Notes
 **OplogTs** | Pointer to **int** | Date and time from which you want to restore this snapshot. This parameter expresses this timestamp in the number of seconds that have elapsed since the UNIX epoch. This number represents the first part of an Oplog timestamp. The resource returns this parameter when &#x60;\&quot;deliveryType\&quot; : \&quot;pointInTime\&quot;&#x60; and **oplogTs** exceeds &#x60;0&#x60;. | [optional] 
 **PointInTimeUTCSeconds** | Pointer to **int** | Date and time from which MongoDB Cloud restored this snapshot. This parameter expresses this timestamp in the number of seconds that have elapsed since the UNIX epoch. The resource returns this parameter when &#x60;\&quot;deliveryType\&quot; : \&quot;pointInTime\&quot;&#x60; and **pointInTimeUTCSeconds** exceeds &#x60;0&#x60;. | [optional] 
 **SnapshotId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the snapshot. | [optional] 
-**TargetClusterName** | **string** | Human-readable label that identifies the target cluster to which the restore job restores the snapshot. The resource returns this parameter when &#x60;\&quot;deliveryType\&quot;:&#x60; &#x60;\&quot;automated\&quot;&#x60;. | 
-**TargetGroupId** | **string** | Unique 24-hexadecimal digit string that identifies the target project for the specified **targetClusterName**. | 
+**TargetClusterName** | Pointer to **string** | Human-readable label that identifies the target cluster to which the restore job restores the snapshot. The resource returns this parameter when &#x60;\&quot;deliveryType\&quot;:&#x60; &#x60;\&quot;automated\&quot;&#x60;. Required for &#x60;automated&#x60; and &#x60;pointInTime&#x60; restore types. | [optional] 
+**TargetGroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the target project for the specified **targetClusterName**. Required for &#x60;automated&#x60; and &#x60;pointInTime&#x60; restore types. | [optional] 
 **Timestamp** | Pointer to **time.Time** | Date and time when MongoDB Cloud took the snapshot associated with **snapshotId**. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 
 ## Methods
 
 ### NewDiskBackupSnapshotRestoreJob
 
-`func NewDiskBackupSnapshotRestoreJob(deliveryType string, targetClusterName string, targetGroupId string, ) *DiskBackupSnapshotRestoreJob`
+`func NewDiskBackupSnapshotRestoreJob(deliveryType string, ) *DiskBackupSnapshotRestoreJob`
 
 NewDiskBackupSnapshotRestoreJob instantiates a new DiskBackupSnapshotRestoreJob object
 This constructor will assign default values to properties that have it defined,
@@ -416,6 +416,11 @@ and a boolean to check if the value has been set.
 
 SetTargetClusterName sets TargetClusterName field to given value.
 
+### HasTargetClusterName
+
+`func (o *DiskBackupSnapshotRestoreJob) HasTargetClusterName() bool`
+
+HasTargetClusterName returns a boolean if a field has been set.
 ### GetTargetGroupId
 
 `func (o *DiskBackupSnapshotRestoreJob) GetTargetGroupId() string`
@@ -435,6 +440,11 @@ and a boolean to check if the value has been set.
 
 SetTargetGroupId sets TargetGroupId field to given value.
 
+### HasTargetGroupId
+
+`func (o *DiskBackupSnapshotRestoreJob) HasTargetGroupId() bool`
+
+HasTargetGroupId returns a boolean if a field has been set.
 ### GetTimestamp
 
 `func (o *DiskBackupSnapshotRestoreJob) GetTimestamp() time.Time`

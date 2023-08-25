@@ -42,6 +42,8 @@ type EventViewForOrg struct {
 	InvoiceId *string `json:"invoiceId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the invoice payment associated with this event.
 	PaymentId *string `json:"paymentId,omitempty"`
+	// The username of the MongoDB User that was created, deleted, or edited.
+	DbUserUsername *string `json:"dbUserUsername,omitempty"`
 	// Entry in the list of source host addresses that the API key accepts and this event targets.
 	WhitelistEntry *string `json:"whitelistEntry,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the organization team associated with this event.
@@ -630,6 +632,39 @@ func (o *EventViewForOrg) HasPaymentId() bool {
 // SetPaymentId gets a reference to the given string and assigns it to the PaymentId field.
 func (o *EventViewForOrg) SetPaymentId(v string) {
 	o.PaymentId = &v
+}
+
+// GetDbUserUsername returns the DbUserUsername field value if set, zero value otherwise
+func (o *EventViewForOrg) GetDbUserUsername() string {
+	if o == nil || IsNil(o.DbUserUsername) {
+		var ret string
+		return ret
+	}
+	return *o.DbUserUsername
+}
+
+// GetDbUserUsernameOk returns a tuple with the DbUserUsername field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForOrg) GetDbUserUsernameOk() (*string, bool) {
+	if o == nil || IsNil(o.DbUserUsername) {
+		return nil, false
+	}
+
+	return o.DbUserUsername, true
+}
+
+// HasDbUserUsername returns a boolean if a field has been set.
+func (o *EventViewForOrg) HasDbUserUsername() bool {
+	if o != nil && !IsNil(o.DbUserUsername) {
+		return true
+	}
+
+	return false
+}
+
+// SetDbUserUsername gets a reference to the given string and assigns it to the DbUserUsername field.
+func (o *EventViewForOrg) SetDbUserUsername(v string) {
+	o.DbUserUsername = &v
 }
 
 // GetWhitelistEntry returns the WhitelistEntry field value if set, zero value otherwise

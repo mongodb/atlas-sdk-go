@@ -10,7 +10,7 @@ import (
 // DataProtectionSettings struct for DataProtectionSettings
 type DataProtectionSettings struct {
 	// Email address of the user who authorized to updated the Backup Compliance Policy  settings.
-	AuthorizedEmail *string `json:"authorizedEmail,omitempty"`
+	AuthorizedEmail string `json:"authorizedEmail"`
 	// Flag that indicates whether to enable additional backup copies for the cluster. If unspecified, this value defaults to false.
 	CopyProtectionEnabled *bool `json:"copyProtectionEnabled,omitempty"`
 	// Flag that indicates whether Encryption at Rest using Customer Key  Management is required for all clusters with a Backup Compliance Policy. If unspecified, this value defaults to false.
@@ -36,8 +36,9 @@ type DataProtectionSettings struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDataProtectionSettings() *DataProtectionSettings {
+func NewDataProtectionSettings(authorizedEmail string) *DataProtectionSettings {
 	this := DataProtectionSettings{}
+	this.AuthorizedEmail = authorizedEmail
 	var copyProtectionEnabled bool = false
 	this.CopyProtectionEnabled = &copyProtectionEnabled
 	var encryptionAtRestEnabled bool = false
@@ -61,37 +62,28 @@ func NewDataProtectionSettingsWithDefaults() *DataProtectionSettings {
 	return &this
 }
 
-// GetAuthorizedEmail returns the AuthorizedEmail field value if set, zero value otherwise
+// GetAuthorizedEmail returns the AuthorizedEmail field value
 func (o *DataProtectionSettings) GetAuthorizedEmail() string {
-	if o == nil || IsNil(o.AuthorizedEmail) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.AuthorizedEmail
+
+	return o.AuthorizedEmail
 }
 
-// GetAuthorizedEmailOk returns a tuple with the AuthorizedEmail field value if set, nil otherwise
+// GetAuthorizedEmailOk returns a tuple with the AuthorizedEmail field value
 // and a boolean to check if the value has been set.
 func (o *DataProtectionSettings) GetAuthorizedEmailOk() (*string, bool) {
-	if o == nil || IsNil(o.AuthorizedEmail) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.AuthorizedEmail, true
+	return &o.AuthorizedEmail, true
 }
 
-// HasAuthorizedEmail returns a boolean if a field has been set.
-func (o *DataProtectionSettings) HasAuthorizedEmail() bool {
-	if o != nil && !IsNil(o.AuthorizedEmail) {
-		return true
-	}
-
-	return false
-}
-
-// SetAuthorizedEmail gets a reference to the given string and assigns it to the AuthorizedEmail field.
+// SetAuthorizedEmail sets field value
 func (o *DataProtectionSettings) SetAuthorizedEmail(v string) {
-	o.AuthorizedEmail = &v
+	o.AuthorizedEmail = v
 }
 
 // GetCopyProtectionEnabled returns the CopyProtectionEnabled field value if set, zero value otherwise
@@ -433,9 +425,7 @@ func (o DataProtectionSettings) MarshalJSONWithoutReadOnly() ([]byte, error) {
 }
 func (o DataProtectionSettings) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AuthorizedEmail) {
-		toSerialize["authorizedEmail"] = o.AuthorizedEmail
-	}
+	toSerialize["authorizedEmail"] = o.AuthorizedEmail
 	if !IsNil(o.CopyProtectionEnabled) {
 		toSerialize["copyProtectionEnabled"] = o.CopyProtectionEnabled
 	}

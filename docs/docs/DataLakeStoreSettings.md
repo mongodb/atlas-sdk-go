@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **Region** | Pointer to **string** | Physical location where MongoDB Cloud deploys your AWS-hosted MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. MongoDB Cloud assigns the VPC a CIDR block. To limit a new VPC peering connection to one CIDR block and region, create the connection first. Deploy the cluster after the connection starts.  Alternatively: Microsoft Azure Regions. | [optional] 
 **ClusterName** | Pointer to **string** | Human-readable label of the MongoDB Cloud cluster on which the store is based. | [optional] 
 **ProjectId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the project. | [optional] [readonly] 
+**ReadConcern** | Pointer to [**DataLakeAtlasStoreReadConcern**](DataLakeAtlasStoreReadConcern.md) |  | [optional] 
 **ReadPreference** | Pointer to [**DataLakeAtlasStoreReadPreference**](DataLakeAtlasStoreReadPreference.md) |  | [optional] 
 **AllowInsecure** | Pointer to **bool** | Flag that validates the scheme in the specified URLs. If &#x60;true&#x60;, allows insecure &#x60;HTTP&#x60; scheme, doesn&#39;t verify the server&#39;s certificate chain and hostname, and accepts any certificate with any hostname presented by the server. If &#x60;false&#x60;, allows secure &#x60;HTTPS&#x60; scheme only. | [optional] [default to false]
 **DefaultFormat** | Pointer to **string** | Default format that Data Lake assumes if it encounters a file without an extension while searching the &#x60;storeName&#x60;. If omitted, Data Lake attempts to detect the file type by processing a few bytes of the file. The specified format only applies to the URLs specified in the **databases.[n].collections.[n].dataSources** object. | [optional] 
@@ -298,6 +299,30 @@ SetProjectId sets ProjectId field to given value.
 `func (o *DataLakeStoreSettings) HasProjectId() bool`
 
 HasProjectId returns a boolean if a field has been set.
+### GetReadConcern
+
+`func (o *DataLakeStoreSettings) GetReadConcern() DataLakeAtlasStoreReadConcern`
+
+GetReadConcern returns the ReadConcern field if non-nil, zero value otherwise.
+
+### GetReadConcernOk
+
+`func (o *DataLakeStoreSettings) GetReadConcernOk() (*DataLakeAtlasStoreReadConcern, bool)`
+
+GetReadConcernOk returns a tuple with the ReadConcern field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReadConcern
+
+`func (o *DataLakeStoreSettings) SetReadConcern(v DataLakeAtlasStoreReadConcern)`
+
+SetReadConcern sets ReadConcern field to given value.
+
+### HasReadConcern
+
+`func (o *DataLakeStoreSettings) HasReadConcern() bool`
+
+HasReadConcern returns a boolean if a field has been set.
 ### GetReadPreference
 
 `func (o *DataLakeStoreSettings) GetReadPreference() DataLakeAtlasStoreReadPreference`

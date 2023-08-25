@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AcceptDataRisksAndForceReplicaSetReconfig** | Pointer to **time.Time** | If reconfiguration is necessary to regain a primary due to a regional outage, submit this field alongside your topology reconfiguration to request a new regional outage resistant topology. Forced reconfigurations during an outage of the majority of electable nodes carry a risk of data loss if replicated writes (even majority committed writes) have not been replicated to the new primary node. MongoDB Atlas docs contain more information. To proceed with an operation which carries that risk, set **acceptDataRisksAndForceReplicaSetReconfig** to the current date. | [optional] 
 **BackupEnabled** | Pointer to **bool** | Flag that indicates whether the cluster can perform backups. If set to &#x60;true&#x60;, the cluster can perform backups. You must set this value to &#x60;true&#x60; for NVMe clusters. Backup uses [Cloud Backups](https://docs.atlas.mongodb.com/backup/cloud-backup/overview/) for dedicated clusters and [Shared Cluster Backups](https://docs.atlas.mongodb.com/backup/shared-tier/overview/) for tenant clusters. If set to &#x60;false&#x60;, the cluster doesn&#39;t use backups. | [optional] [default to false]
 **BiConnector** | Pointer to [**BiConnector**](BiConnector.md) |  | [optional] 
 **ClusterType** | Pointer to **string** | Configuration of nodes that comprise the cluster. | [optional] 
@@ -46,6 +47,30 @@ NewAdvancedClusterDescriptionWithDefaults instantiates a new AdvancedClusterDesc
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetAcceptDataRisksAndForceReplicaSetReconfig
+
+`func (o *AdvancedClusterDescription) GetAcceptDataRisksAndForceReplicaSetReconfig() time.Time`
+
+GetAcceptDataRisksAndForceReplicaSetReconfig returns the AcceptDataRisksAndForceReplicaSetReconfig field if non-nil, zero value otherwise.
+
+### GetAcceptDataRisksAndForceReplicaSetReconfigOk
+
+`func (o *AdvancedClusterDescription) GetAcceptDataRisksAndForceReplicaSetReconfigOk() (*time.Time, bool)`
+
+GetAcceptDataRisksAndForceReplicaSetReconfigOk returns a tuple with the AcceptDataRisksAndForceReplicaSetReconfig field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAcceptDataRisksAndForceReplicaSetReconfig
+
+`func (o *AdvancedClusterDescription) SetAcceptDataRisksAndForceReplicaSetReconfig(v time.Time)`
+
+SetAcceptDataRisksAndForceReplicaSetReconfig sets AcceptDataRisksAndForceReplicaSetReconfig field to given value.
+
+### HasAcceptDataRisksAndForceReplicaSetReconfig
+
+`func (o *AdvancedClusterDescription) HasAcceptDataRisksAndForceReplicaSetReconfig() bool`
+
+HasAcceptDataRisksAndForceReplicaSetReconfig returns a boolean if a field has been set.
 ### GetBackupEnabled
 
 `func (o *AdvancedClusterDescription) GetBackupEnabled() bool`

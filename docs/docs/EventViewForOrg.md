@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **AlertConfigId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the alert configuration associated with the **alertId**. | [optional] [readonly] 
 **InvoiceId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies of the invoice associated with the event. | [optional] [readonly] 
 **PaymentId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the invoice payment associated with this event. | [optional] [readonly] 
+**DbUserUsername** | Pointer to **string** | The username of the MongoDB User that was created, deleted, or edited. | [optional] [readonly] 
 **WhitelistEntry** | Pointer to **string** | Entry in the list of source host addresses that the API key accepts and this event targets. | [optional] [readonly] 
 **TeamId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the organization team associated with this event. | [optional] [readonly] 
 **TargetUsername** | Pointer to **string** | Email address for the console user that this event targets. The resource returns this parameter when &#x60;\&quot;eventTypeName\&quot; : \&quot;USER\&quot;&#x60;. | [optional] [readonly] 
@@ -454,6 +455,30 @@ SetPaymentId sets PaymentId field to given value.
 `func (o *EventViewForOrg) HasPaymentId() bool`
 
 HasPaymentId returns a boolean if a field has been set.
+### GetDbUserUsername
+
+`func (o *EventViewForOrg) GetDbUserUsername() string`
+
+GetDbUserUsername returns the DbUserUsername field if non-nil, zero value otherwise.
+
+### GetDbUserUsernameOk
+
+`func (o *EventViewForOrg) GetDbUserUsernameOk() (*string, bool)`
+
+GetDbUserUsernameOk returns a tuple with the DbUserUsername field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDbUserUsername
+
+`func (o *EventViewForOrg) SetDbUserUsername(v string)`
+
+SetDbUserUsername sets DbUserUsername field to given value.
+
+### HasDbUserUsername
+
+`func (o *EventViewForOrg) HasDbUserUsername() bool`
+
+HasDbUserUsername returns a boolean if a field has been set.
 ### GetWhitelistEntry
 
 `func (o *EventViewForOrg) GetWhitelistEntry() string`

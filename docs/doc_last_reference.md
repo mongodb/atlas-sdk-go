@@ -228,6 +228,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
 *OrganizationsApi* | [RenameOrganization](./docs/OrganizationsApi.md#renameorganization) | **Patch** /api/atlas/v2/orgs/{orgId} | Rename One Organization | Experimental
 *OrganizationsApi* | [UpdateOrganizationInvitation](./docs/OrganizationsApi.md#updateorganizationinvitation) | **Patch** /api/atlas/v2/orgs/{orgId}/invites | Update One Organization Invitation | Stable
 *OrganizationsApi* | [UpdateOrganizationInvitationById](./docs/OrganizationsApi.md#updateorganizationinvitationbyid) | **Patch** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Update One Organization Invitation by Invitation ID | Stable
+*OrganizationsApi* | [UpdateOrganizationRoles](./docs/OrganizationsApi.md#updateorganizationroles) | **Put** /api/atlas/v2/orgs/{orgId}/users/{userId}/roles | Update Organization Roles for One MongoDB Cloud User | Experimental
 *OrganizationsApi* | [UpdateOrganizationSettings](./docs/OrganizationsApi.md#updateorganizationsettings) | **Patch** /api/atlas/v2/orgs/{orgId}/settings | Update Settings for One Organization | Experimental
 *PerformanceAdvisorApi* | [DisableSlowOperationThresholding](./docs/PerformanceAdvisorApi.md#disableslowoperationthresholding) | **Delete** /api/atlas/v2/groups/{groupId}/managedSlowMs/disable | Disable Managed Slow Operation Threshold | Stable
 *PerformanceAdvisorApi* | [EnableSlowOperationThresholding](./docs/PerformanceAdvisorApi.md#enableslowoperationthresholding) | **Post** /api/atlas/v2/groups/{groupId}/managedSlowMs/enable | Enable Managed Slow Operation Threshold | Stable
@@ -281,6 +282,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
 *ProjectsApi* | [UpdateProject](./docs/ProjectsApi.md#updateproject) | **Patch** /api/atlas/v2/groups/{groupId} | Update One Project Name | Experimental
 *ProjectsApi* | [UpdateProjectInvitation](./docs/ProjectsApi.md#updateprojectinvitation) | **Patch** /api/atlas/v2/groups/{groupId}/invites | Update One Project Invitation | Stable
 *ProjectsApi* | [UpdateProjectInvitationById](./docs/ProjectsApi.md#updateprojectinvitationbyid) | **Patch** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Update One Project Invitation by Invitation ID | Stable
+*ProjectsApi* | [UpdateProjectRoles](./docs/ProjectsApi.md#updateprojectroles) | **Put** /api/atlas/v2/groups/{groupId}/users/{userId}/roles | Update Project Roles for One MongoDB Cloud User | Experimental
 *ProjectsApi* | [UpdateProjectSettings](./docs/ProjectsApi.md#updateprojectsettings) | **Patch** /api/atlas/v2/groups/{groupId}/settings | Update One Project Settings | Stable
 *PushBasedLogExportApi* | [CreatePushBasedLogConfiguration](./docs/PushBasedLogExportApi.md#createpushbasedlogconfiguration) | **Post** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Enable the push-based log export feature for a project | Experimental
 *PushBasedLogExportApi* | [DeletePushBasedLogConfiguration](./docs/PushBasedLogExportApi.md#deletepushbasedlogconfiguration) | **Delete** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Disable the push-based log export feature for a project | Experimental
@@ -417,6 +419,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [DataFederationTenantQueryLimit](./docs/DataFederationTenantQueryLimit.md)
  - [DataLakeAWSCloudProviderConfig](./docs/DataLakeAWSCloudProviderConfig.md)
  - [DataLakeApiBase](./docs/DataLakeApiBase.md)
+ - [DataLakeAtlasStoreReadConcern](./docs/DataLakeAtlasStoreReadConcern.md)
  - [DataLakeAtlasStoreReadPreference](./docs/DataLakeAtlasStoreReadPreference.md)
  - [DataLakeAtlasStoreReadPreferenceTag](./docs/DataLakeAtlasStoreReadPreferenceTag.md)
  - [DataLakeCloudProviderConfig](./docs/DataLakeCloudProviderConfig.md)
@@ -457,6 +460,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [EndpointService](./docs/EndpointService.md)
  - [EventViewForNdsGroup](./docs/EventViewForNdsGroup.md)
  - [EventViewForOrg](./docs/EventViewForOrg.md)
+ - [ExperimentRegistration](./docs/ExperimentRegistration.md)
  - [ExportStatus](./docs/ExportStatus.md)
  - [FTSMetric](./docs/FTSMetric.md)
  - [FederatedUser](./docs/FederatedUser.md)
@@ -475,6 +479,9 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [GroupName](./docs/GroupName.md)
  - [GroupPaginatedEvent](./docs/GroupPaginatedEvent.md)
  - [GroupSettings](./docs/GroupSettings.md)
+ - [GroupStatus](./docs/GroupStatus.md)
+ - [GroupStorageConfig](./docs/GroupStorageConfig.md)
+ - [GroupSummaryStatistics](./docs/GroupSummaryStatistics.md)
  - [HardwareSpec](./docs/HardwareSpec.md)
  - [IndexOptions](./docs/IndexOptions.md)
  - [IngestionPipelineRun](./docs/IngestionPipelineRun.md)
@@ -568,10 +575,12 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [PerformanceAdvisorSlowQuery](./docs/PerformanceAdvisorSlowQuery.md)
  - [PerformanceAdvisorSlowQueryList](./docs/PerformanceAdvisorSlowQueryList.md)
  - [PipelineRunStats](./docs/PipelineRunStats.md)
+ - [PreferredHostname](./docs/PreferredHostname.md)
  - [PrivateIPMode](./docs/PrivateIPMode.md)
  - [PrivateLinkEndpoint](./docs/PrivateLinkEndpoint.md)
  - [PrivateNetworkEndpointIdEntry](./docs/PrivateNetworkEndpointIdEntry.md)
  - [ProjectSettingItem](./docs/ProjectSettingItem.md)
+ - [PrometheusConfig](./docs/PrometheusConfig.md)
  - [PushBasedLogExportProject](./docs/PushBasedLogExportProject.md)
  - [Raw](./docs/Raw.md)
  - [RegionSpec](./docs/RegionSpec.md)
@@ -603,10 +612,14 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [Team](./docs/Team.md)
  - [TeamResponse](./docs/TeamResponse.md)
  - [TeamRole](./docs/TeamRole.md)
+ - [TeamRoleAssignment](./docs/TeamRoleAssignment.md)
  - [TenantRestore](./docs/TenantRestore.md)
  - [ThridPartyIntegration](./docs/ThridPartyIntegration.md)
+ - [ToggleableFeatureFlag](./docs/ToggleableFeatureFlag.md)
  - [TriggerIngestionPipelineRequest](./docs/TriggerIngestionPipelineRequest.md)
  - [UpdateCustomDBRole](./docs/UpdateCustomDBRole.md)
+ - [UpdateGroupRolesForUser](./docs/UpdateGroupRolesForUser.md)
+ - [UpdateOrgRolesForUser](./docs/UpdateOrgRolesForUser.md)
  - [UserAccessList](./docs/UserAccessList.md)
  - [UserAccessRoleAssignment](./docs/UserAccessRoleAssignment.md)
  - [UserCert](./docs/UserCert.md)

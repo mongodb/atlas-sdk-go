@@ -18,8 +18,8 @@ info:
     url: https://creativecommons.org/licenses/by-nc-sa/3.0/us/
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
-  version: 2.0~8c21cdd766
-  x-xgen-sha: 8c21cdd7661d2221f8405b831f721af6db580fea
+  version: 2.0~04131a87ec
+  x-xgen-sha: 04131a87ec55f7b8c6c56c2ff1beb80dc12e5e38
 servers:
 - url: https://cloud.mongodb.com
 tags:
@@ -4564,6 +4564,9 @@ paths:
       summary: Create One Online Archive
       tags:
       - Online Archive
+      x-xgen-changelog:
+        "2023-08-02": "If 'criteria':'DATE' is specified, then you must specify 'DATE'\
+          \ values in partition fields"
   /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/queryLogs.gz:
     get:
       description: "Downloads query logs for the specified online archive. To use\
@@ -6641,8 +6644,16 @@ paths:
                 $ref: '#/components/schemas/CloudDatabaseUser'
               x-xgen-version: 2023-01-01
           description: OK
+        "400":
+          $ref: '#/components/responses/badRequest'
         "401":
           $ref: '#/components/responses/unauthorized'
+        "403":
+          $ref: '#/components/responses/forbidden'
+        "404":
+          $ref: '#/components/responses/notFound'
+        "409":
+          $ref: '#/components/responses/conflict'
         "500":
           $ref: '#/components/responses/internalServerError'
       security:
@@ -10555,8 +10566,6 @@ paths:
             - MAX_DISK_PARTITION_IOPS_WRITE
             - DISK_PARTITION_IOPS_TOTAL
             - MAX_DISK_PARTITION_IOPS_TOTAL
-            - DISK_PARTITION_UTILIZATION
-            - MAX_DISK_PARTITION_UTILIZATION
             - DISK_PARTITION_LATENCY_READ
             - MAX_DISK_PARTITION_LATENCY_READ
             - DISK_PARTITION_LATENCY_WRITE
@@ -12145,6 +12154,53 @@ paths:
       security:
       - DigestAuth: []
       summary: Remove One User from One Project
+      tags:
+      - Projects
+  /api/atlas/v2/groups/{groupId}/users/{userId}/roles:
+    put:
+      description: "Updates the roles of the specified user in the specified project.\
+        \ To specify the user to update, provide the unique 24-hexadecimal digit string\
+        \ that identifies the user in the specified project. To use this resource,\
+        \ the requesting API Key must have the Group User Admin role."
+      operationId: updateProjectRoles
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      - description: Unique 24-hexadecimal digit string that identifies the user to
+          modify.
+        in: path
+        name: userId
+        required: true
+        schema:
+          type: string
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+      requestBody:
+        content:
+          application/vnd.atlas.2023-01-01+json:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupRolesForUser'
+        description: Roles to update for the specified user.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/UpdateGroupRolesForUser'
+              x-xgen-version: 2023-01-01
+          description: OK
+        "401":
+          $ref: '#/components/responses/unauthorized'
+        "403":
+          $ref: '#/components/responses/forbidden'
+        "404":
+          $ref: '#/components/responses/notFound'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Update Project Roles for One MongoDB Cloud User
       tags:
       - Projects
   /api/atlas/v2/orgs:
@@ -13922,6 +13978,53 @@ paths:
       summary: Remove One MongoDB Cloud User from One Organization
       tags:
       - Organizations
+  /api/atlas/v2/orgs/{orgId}/users/{userId}/roles:
+    put:
+      description: "Updates the roles of the specified user in the specified organization.\
+        \ To specify the user to update, provide the unique 24-hexadecimal digit string\
+        \ that identifies the user in the specified organization. To use this resource,\
+        \ the requesting API Key must have the Organization User Admin role."
+      operationId: updateOrganizationRoles
+      parameters:
+      - $ref: '#/components/parameters/orgId'
+      - description: Unique 24-hexadecimal digit string that identifies the user to
+          modify.
+        in: path
+        name: userId
+        required: true
+        schema:
+          type: string
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+      requestBody:
+        content:
+          application/vnd.atlas.2023-01-01+json:
+            schema:
+              $ref: '#/components/schemas/UpdateOrgRolesForUser'
+        description: Roles to update for the specified user.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/UpdateOrgRolesForUser'
+              x-xgen-version: 2023-01-01
+          description: OK
+        "401":
+          $ref: '#/components/responses/unauthorized'
+        "403":
+          $ref: '#/components/responses/forbidden'
+        "404":
+          $ref: '#/components/responses/notFound'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Update Organization Roles for One MongoDB Cloud User
+      tags:
+      - Organizations
   /api/atlas/v2/users:
     post:
       description: |-
@@ -14967,6 +15070,20 @@ components:
     AdvancedClusterDescription:
       type: object
       properties:
+        acceptDataRisksAndForceReplicaSetReconfig:
+          type: string
+          format: date-time
+          description: "If reconfiguration is necessary to regain a primary due to\
+            \ a regional outage, submit this field alongside your topology reconfiguration\
+            \ to request a new regional outage resistant topology. Forced reconfigurations\
+            \ during an outage of the majority of electable nodes carry a risk of\
+            \ data loss if replicated writes (even majority committed writes) have\
+            \ not been replicated to the new primary node. MongoDB Atlas docs contain\
+            \ more information. To proceed with an operation which carries that risk,\
+            \ set **acceptDataRisksAndForceReplicaSetReconfig** to the current date."
+          externalDocs:
+            description: Reconfiguring a Replica Set during a regional outage
+            url: https://dochub.mongodb.org/core/regional-outage-reconfigure-replica-set
         backupEnabled:
           type: boolean
           default: false
@@ -15855,7 +15972,6 @@ components:
             - $ref: '#/components/schemas/charFiltericuNormalize'
             - $ref: '#/components/schemas/charFiltermapping'
             - $ref: '#/components/schemas/charFilterpersian'
-            x-xgen-go-transform: merge-oneOf
         name:
           type: string
           description: |-
@@ -15911,7 +16027,6 @@ components:
           - $ref: '#/components/schemas/tokenizerstandard'
           - $ref: '#/components/schemas/tokenizeruaxUrlEmail'
           - $ref: '#/components/schemas/tokenizerwhitespace'
-          x-xgen-go-transform: merge-oneOf
       required:
       - name
       - tokenizer
@@ -17232,6 +17347,135 @@ components:
           - billion
           - ""
       title: App Services Metric Threshold
+    AppUser:
+      type: object
+      properties:
+        accountMultiFactorAuthSetupRequired:
+          type: boolean
+        ccid:
+          type: string
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
+        chartRefreshRate:
+          type: integer
+          format: int32
+        city:
+          type: string
+        created:
+          type: string
+          format: date-time
+        currentOrgId:
+          type: string
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
+        dateFormatCode:
+          type: string
+        defaultChartEpochTypeId:
+          type: string
+        defaultChartGranularity:
+          type: integer
+          format: int64
+        defaultChartWindow:
+          type: string
+        defaultChartZoom:
+          type: integer
+          format: int64
+        displayChartAnnotations:
+          type: boolean
+        emailLastVerified:
+          type: string
+          format: date-time
+        employer:
+          type: string
+        firstName:
+          type: string
+        flaggedForPersonalizationWizard:
+          type: boolean
+        goToDisabled:
+          type: boolean
+        hasAccountMultiFactorAuth:
+          type: boolean
+        hasAcknowledgedDarkMode:
+          type: boolean
+        hasMultiFactorAuth:
+          type: boolean
+        id:
+          type: string
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
+        isoA2CountryCode:
+          type: string
+        lastAuthAddr:
+          type: string
+        lastAuthMethod:
+          type: string
+          enum:
+          - LOCAL
+          - LDAP
+          - OKTA
+          - GOOGLE
+          - GITHUB
+          - EXTERNAL_IDP
+          - REGIONAL_TOKEN
+        lastName:
+          type: string
+        marketplaceRegistrationData:
+          $ref: '#/components/schemas/MarketplaceRegistrationData'
+        multiFactorAuth:
+          $ref: '#/components/schemas/MultiFactorAuthSettings'
+        needsEmailVerification:
+          type: boolean
+        oktaUserId:
+          type: string
+        orgIds:
+          type: array
+          items:
+            type: string
+            example: 32b6e34b3d91647abb20e7b8
+            pattern: "^([a-f0-9]{24})$"
+        phoneNumber:
+          type: string
+        postalCode:
+          type: string
+        primaryEmail:
+          type: string
+        separateOpcounterCharts:
+          type: boolean
+        shouldApplyOrgUiAccessListForApi:
+          type: boolean
+        state:
+          type: string
+        streetLine1:
+          type: string
+        streetLine2:
+          type: string
+        supportsMultiFactorAuth:
+          type: boolean
+        themePreference:
+          type: string
+          enum:
+          - LIGHT
+          - DARK
+          - OS
+          writeOnly: true
+        timeFormatCode:
+          type: string
+        timeZoneCode:
+          type: string
+        timeZoneDisplay:
+          type: string
+        timeZoneDisplayShort:
+          type: string
+        timeZoneId:
+          type: string
+        type:
+          type: string
+          enum:
+          - LOCAL
+          - API
+          - INTERNAL_CLIENT
+        username:
+          type: string
     AtlasClusterOutageSimulationOutageFilter:
       type: object
       properties:
@@ -17290,6 +17534,59 @@ components:
           pattern: "^[\\p{L}\\p{N}\\-_.(),:&@+']{1,64}$"
       required:
       - name
+    AuditInfo:
+      type: object
+      properties:
+        _accountUserId:
+          type: string
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
+        _appUserCurrentOrgId:
+          type: string
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
+        _appUserId:
+          type: string
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
+        _clientId:
+          type: string
+        _eventSource:
+          type: string
+          enum:
+          - USER
+          - ACCOUNT
+          - API
+          - API_SVC
+          - MIGRATION
+          - INGESTION
+          - AUTOMATION
+          - ALERT_SVC
+          - PUBLIC_API
+          - ACCOUNTANT
+          - SYSTEM
+          - INTERNAL
+          - LDAP
+        _hasAnyGlobalRole:
+          type: boolean
+        _isMmsAdmin:
+          type: boolean
+        _remoteAddr:
+          type: string
+        _userApiKeyType:
+          type: string
+          enum:
+          - OPENID
+          - TEMPORARY
+          - INTERNAL
+        _userType:
+          type: string
+          enum:
+          - LOCAL
+          - API
+          - INTERNAL_CLIENT
+        _username:
+          type: string
     AuditLog:
       type: object
       properties:
@@ -17377,6 +17674,16 @@ components:
           enum:
           - monthly
       title: export
+    AutoRestrictOrgAccessInfo:
+      type: object
+      properties:
+        bypassAccessAutoRestriction:
+          type: boolean
+    AutoRestrictOrgAccessInfo_Atlas:
+      type: object
+      properties:
+        bypassAccessAutoRestriction:
+          type: boolean
     AutomationConfigEventTypeView:
       type: string
       description: Unique identifier of event type.
@@ -17671,6 +17978,13 @@ components:
       - routeTableCidrBlock
       - vpcId
       title: AWS
+    AwsRegistrationData:
+      type: object
+      properties:
+        customerId:
+          type: string
+        productCode:
+          type: string
     AzureCloudProviderContainer:
       type: object
       allOf:
@@ -18270,6 +18584,11 @@ components:
       description: Details that explain how MongoDB Cloud replicates data in one region
         on the specified MongoDB database.
       title: Azure Regional Replication Specifications
+    AzureRegistrationData:
+      type: object
+      properties:
+        subscriptionId:
+          type: string
     BackupLabel:
       type: object
       description: Collection of key-value pairs that represent custom data to add
@@ -23205,8 +23524,25 @@ components:
             minLength: 24
             pattern: "^([a-f0-9]{24})$"
             readOnly: true
+          readConcern:
+            $ref: '#/components/schemas/DataLakeAtlasStoreReadConcern'
           readPreference:
             $ref: '#/components/schemas/DataLakeAtlasStoreReadPreference'
+    DataLakeAtlasStoreReadConcern:
+      type: object
+      description: "MongoDB Cloud cluster read concern, which determines the consistency\
+        \ and isolation properties of the data read from an Atlas cluster."
+      properties:
+        level:
+          type: string
+          description: "[Read Concern level](https://www.mongodb.com/docs/manual/reference/read-concern/#read-concern-levels)\
+            \ that specifies the consistency and availability of the data read."
+          enum:
+          - LOCAL
+          - MAJORITY
+          - LINEARIZABLE
+          - SNAPSHOT
+          - AVAILABLE
     DataLakeAtlasStoreReadPreference:
       type: object
       description: "MongoDB Cloud cluster read preference, which describes how to\
@@ -23515,6 +23851,15 @@ components:
           type: string
           description: "Regex pattern to use for creating the wildcard (*) database.\
             \ To learn more about the regex syntax, see [Go programming language](https://pkg.go.dev/regexp)."
+        datasetName:
+          type: string
+          description: Human-readable label that identifies the dataset that Atlas
+            generates for an ingestion pipeline run or Online Archive.
+          example: v1$atlas$snapshot$Cluster0$myDatabase$myCollection$19700101T000000Z
+        datasetPrefix:
+          type: string
+          description: Human-readable label that matches against the dataset names
+            for ingestion pipeline runs or Online Archives.
         defaultFormat:
           type: string
           description: File format that MongoDB Cloud uses if it encounters a file
@@ -23552,6 +23897,12 @@ components:
           type: string
           description: Human-readable label that identifies the data store that MongoDB
             Cloud maps to the collection.
+        trimLevel:
+          type: integer
+          format: int32
+          description: Unsigned integer that specifies how many fields of the dataset
+            name to trim from the left of the dataset name before mapping the remaining
+            fields to a wildcard collection name.
         urls:
           type: array
           description: "URLs of the publicly accessible data files. You can't specify\
@@ -24317,6 +24668,8 @@ components:
             Compliance Policy settings. MongoDB Cloud ignores this email setting when
             you enable or update the Backup Compliance Policy settings.
           readOnly: true
+      required:
+      - authorizedEmail
     DatabaseInheritedRole:
       type: object
       description: Role inherited from another context for this database user.
@@ -25051,6 +25404,7 @@ components:
             - CLUSTER_CONNECTION_GET_DATABASES
             - CLUSTER_CONNECTION_GET_DATABASE_COLLECTIONS
             - CLUSTER_CONNECTION_GET_DATABASE_NAMESPACES
+            - CLUSTER_CONNECTION_GET_NAMESPACES_WITH_UUID
             - CLUSTER_CONNECTION_AGGREGATE
             - CLUSTER_CONNECTION_CREATE_COLLECTION
             - CLUSTER_CONNECTION_SAMPLE_COLLECTION_FIELD_NAMES
@@ -26062,6 +26416,9 @@ components:
           type: string
           description: Human-readable label that categorizes the cluster as a replica
             set or sharded cluster.
+          enum:
+          - replicaSet
+          - shardedCluster
           readOnly: true
       title: Replica Set Snapshot
     DiskBackupShardedClusterSnapshot:
@@ -26191,6 +26548,9 @@ components:
           type: string
           description: Human-readable label that categorizes the cluster as a replica
             set or sharded cluster.
+          enum:
+          - replicaSet
+          - shardedCluster
           readOnly: true
       title: Sharded Cluster Snapshot
     DiskBackupShardedClusterSnapshotMember:
@@ -26329,6 +26689,9 @@ components:
           type: string
           description: Human-readable label that categorizes the cluster as a replica
             set or sharded cluster.
+          enum:
+          - replicaSet
+          - shardedCluster
           readOnly: true
     DiskBackupSnapshotAWSExportBucket:
       type: object
@@ -26485,14 +26848,16 @@ components:
           type: string
           description: Human-readable label that identifies the target cluster to
             which the restore job restores the snapshot. The resource returns this
-            parameter when `"deliveryType":` `"automated"`.
+            parameter when `"deliveryType":` `"automated"`. Required for `automated`
+            and `pointInTime` restore types.
           maxLength: 64
           minLength: 1
           pattern: "^[a-zA-Z0-9][a-zA-Z0-9-]*$"
         targetGroupId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the target
-            project for the specified **targetClusterName**.
+            project for the specified **targetClusterName**. Required for `automated`
+            and `pointInTime` restore types.
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
@@ -26506,8 +26871,6 @@ components:
           readOnly: true
       required:
       - deliveryType
-      - targetClusterName
-      - targetGroupId
     DiskBackupSnapshotSchedule:
       type: object
       properties:
@@ -26916,6 +27279,7 @@ components:
         - CLUSTER_CONNECTION_GET_DATABASES
         - CLUSTER_CONNECTION_GET_DATABASE_COLLECTIONS
         - CLUSTER_CONNECTION_GET_DATABASE_NAMESPACES
+        - CLUSTER_CONNECTION_GET_NAMESPACES_WITH_UUID
         - CLUSTER_CONNECTION_AGGREGATE
         - CLUSTER_CONNECTION_CREATE_COLLECTION
         - CLUSTER_CONNECTION_SAMPLE_COLLECTION_FIELD_NAMES
@@ -27246,6 +27610,10 @@ components:
         - NODE_ROLLING_RESYNC_SCHEDULED
         - CLUSTER_ROLLING_RESYNC_CANCELED
         - CLUSTER_OS_UPDATED
+        - PUSH_BASED_LOG_EXPORT_ENABLED
+        - PUSH_BASED_LOG_EXPORT_CONFIGURATION_UPDATED
+        - PUSH_BASED_LOG_EXPORT_DISABLED
+        - AZURE_CLUSTER_PREFERRED_STORAGE_TYPE_UPDATED
         title: NDS Audit Types
       - type: string
         enum:
@@ -27743,6 +28111,26 @@ components:
           readOnly: true
       required:
       - description
+    ExperimentRegistration:
+      type: object
+      properties:
+        experimentId:
+          type: string
+        key:
+          type: string
+        variationId:
+          type: integer
+          format: int32
+    ExperimentRegistration_Atlas:
+      type: object
+      properties:
+        experimentId:
+          type: string
+        key:
+          type: string
+        variationId:
+          type: integer
+          format: int32
     ExportStatus:
       type: object
       description: State of the export job for the collections on the replica set
@@ -28499,6 +28887,11 @@ components:
       description: Details that explain how MongoDB Cloud replicates data in one region
         on the specified MongoDB database.
       title: GCP Regional Replication Specifications
+    GcpRegistrationData:
+      type: object
+      properties:
+        accountId:
+          type: string
     GeoSharding:
       type: object
       properties:
@@ -28685,71 +29078,98 @@ components:
     Group:
       type: object
       properties:
-        clusterCount:
+        activeAgentCount:
+          type: integer
+          format: int32
+        chttl:
           type: integer
           format: int64
-          description: Quantity of MongoDB Cloud clusters deployed in this project.
-          readOnly: true
-        created:
+        cre:
           type: string
           format: date-time
-          description: Date and time when MongoDB Cloud created this project. This
-            parameter expresses its value in the ISO 8601 timestamp format in UTC.
-          readOnly: true
+        defaultTimeZoneDisplay:
+          type: string
+        defaultTimeZoneDisplayShort:
+          type: string
+        defaultTimeZoneId:
+          type: string
+        disableDbstats:
+          type: boolean
+        enableAllHostLogs:
+          type: boolean
+        enableAllHostProfilers:
+          type: boolean
+        enableCurrentIpWarning:
+          type: boolean
+        experiments:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExperimentRegistration'
+        featureFlags:
+          type: array
+          items:
+            $ref: '#/components/schemas/ToggleableFeatureFlag'
+        groupType:
+          type: string
+          enum:
+          - CLOUD
+          - NDS
+          - ONPREM
+        hasActiveBackups:
+          type: boolean
+        hasActiveUI:
+          type: boolean
+        hasAddedHosts:
+          type: boolean
         id:
           type: string
-          description: Unique 24-hexadecimal digit string that identifies the MongoDB
-            Cloud project.
           example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
           pattern: "^([a-f0-9]{24})$"
-          readOnly: true
-        links:
-          type: array
-          description: "List of one or more Uniform Resource Locators (URLs) that\
-            \ point to API sub-resources, related API resources, or both. RFC 5988\
-            \ outlines these relationships."
-          externalDocs:
-            description: Web Linking Specification (RFC 5988)
-            url: https://datatracker.ietf.org/doc/html/rfc5988
-          items:
-            $ref: '#/components/schemas/Link'
-          readOnly: true
+        integrations:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/Integration'
+        isIntercomEligible:
+          type: boolean
+        isProjectOverviewEnabled:
+          type: boolean
+        lastClusterActiveSampleTime:
+          type: string
+          format: date-time
+        lmav:
+          type: string
         name:
           type: string
-          description: Human-readable label that identifies the project included in
-            the MongoDB Cloud organization.
-          maxLength: 64
-          minLength: 1
-          pattern: "^[\\p{L}\\p{N}\\-_.(),:&@+']{1,64}$"
-        orgId:
+        newRelicInsightsAccountId:
           type: string
-          description: Unique 24-hexadecimal digit string that identifies the MongoDB
-            Cloud organization to which the project belongs.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: "^([a-f0-9]{24})$"
-        regionUsageRestrictions:
+        newRelicInsightsReadToken:
           type: string
-          default: NONE
-          description: Region usage restrictions that designate the project's AWS
-            region.
-          enum:
-          - GOV_REGIONS_ONLY
-          - COMMERCIAL_FEDRAMP_REGIONS_ONLY
-          - NONE
-        withDefaultAlertsSettings:
+        newRelicInsightsWriteToken:
+          type: string
+        newRelicLicenseKey:
+          type: string
+        preferredHostnames:
+          type: array
+          items:
+            $ref: '#/components/schemas/PreferredHostname'
+        prom:
+          $ref: '#/components/schemas/PrometheusConfig'
+        status:
+          $ref: '#/components/schemas/GroupStatus'
+        storageConfig:
+          $ref: '#/components/schemas/GroupStorageConfig'
+        summaryStatistics:
+          $ref: '#/components/schemas/GroupSummaryStatistics'
+        suppressMongosAutoDiscovery:
           type: boolean
-          description: Flag that indicates whether to create the project with default
-            alert settings.
-          writeOnly: true
-      required:
-      - clusterCount
-      - created
-      - name
-      - orgId
+        teams:
+          type: array
+          items:
+            $ref: '#/components/schemas/TeamRoleAssignment'
+        useCNRegionsOnly:
+          type: boolean
     GroupAlertsConfig:
       type: object
       oneOf:
@@ -29061,6 +29481,201 @@ components:
           type: boolean
           description: Flag that indicates whether to enable the Schema Advisor for
             the specified project.
+    GroupStatus:
+      type: object
+      properties:
+        displayName:
+          type: string
+        since:
+          type: string
+          format: date-time
+        status:
+          type: string
+          enum:
+          - DEAD
+          - ACTIVE
+          - CLOSING
+          - CLOSED
+    GroupStatus_Atlas:
+      type: object
+      properties:
+        displayName:
+          type: string
+        since:
+          type: string
+          format: date-time
+        status:
+          type: string
+          enum:
+          - DEAD
+          - ACTIVE
+          - CLOSING
+          - CLOSED
+    GroupStorageConfig:
+      type: object
+      properties:
+        mode:
+          type: string
+          enum:
+          - CLASSIC
+          - DUAL
+          - V3
+    GroupStorageConfig_Atlas:
+      type: object
+      properties:
+        mode:
+          type: string
+          enum:
+          - CLASSIC
+          - DUAL
+          - V3
+    GroupSummaryStatistics:
+      type: object
+      properties:
+        dataSizeBackedUpBytes:
+          type: integer
+          format: int64
+        dataSizeNoLocalBytes:
+          type: integer
+          format: int64
+        lastInvoiceAmountCents:
+          type: integer
+          format: int64
+        numBillableServer:
+          type: integer
+          format: int32
+        numCluster:
+          type: integer
+          format: int32
+        numPaidAtlasClusters:
+          type: integer
+          format: int32
+        numTotalAtlasClusters:
+          type: integer
+          format: int32
+        supportLevelLabel:
+          type: string
+    GroupSummaryStatistics_Atlas:
+      type: object
+      properties:
+        dataSizeBackedUpBytes:
+          type: integer
+          format: int64
+        dataSizeNoLocalBytes:
+          type: integer
+          format: int64
+        lastInvoiceAmountCents:
+          type: integer
+          format: int64
+        numBillableServer:
+          type: integer
+          format: int32
+        numCluster:
+          type: integer
+          format: int32
+        numPaidAtlasClusters:
+          type: integer
+          format: int32
+        numTotalAtlasClusters:
+          type: integer
+          format: int32
+        supportLevelLabel:
+          type: string
+    Group_Atlas:
+      type: object
+      properties:
+        activeAgentCount:
+          type: integer
+          format: int32
+        chttl:
+          type: integer
+          format: int64
+        cre:
+          type: string
+          format: date-time
+        defaultTimeZoneDisplay:
+          type: string
+        defaultTimeZoneDisplayShort:
+          type: string
+        defaultTimeZoneId:
+          type: string
+        disableDbstats:
+          type: boolean
+        enableAllHostLogs:
+          type: boolean
+        enableAllHostProfilers:
+          type: boolean
+        enableCurrentIpWarning:
+          type: boolean
+        experiments:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExperimentRegistration_Atlas'
+        featureFlags:
+          type: array
+          items:
+            $ref: '#/components/schemas/ToggleableFeatureFlag_Atlas'
+        groupType:
+          type: string
+          enum:
+          - CLOUD
+          - NDS
+          - ONPREM
+        hasActiveBackups:
+          type: boolean
+        hasActiveUI:
+          type: boolean
+        hasAddedHosts:
+          type: boolean
+        id:
+          type: string
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
+        integrations:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/Integration_Atlas'
+        isIntercomEligible:
+          type: boolean
+        isProjectOverviewEnabled:
+          type: boolean
+        lastClusterActiveSampleTime:
+          type: string
+          format: date-time
+        lmav:
+          type: string
+        name:
+          type: string
+        newRelicInsightsAccountId:
+          type: string
+        newRelicInsightsReadToken:
+          type: string
+        newRelicInsightsWriteToken:
+          type: string
+        newRelicLicenseKey:
+          type: string
+        preferredHostnames:
+          type: array
+          items:
+            $ref: '#/components/schemas/PreferredHostname_Atlas'
+        prom:
+          $ref: '#/components/schemas/PrometheusConfig_Atlas'
+        status:
+          $ref: '#/components/schemas/GroupStatus_Atlas'
+        storageConfig:
+          $ref: '#/components/schemas/GroupStorageConfig_Atlas'
+        summaryStatistics:
+          $ref: '#/components/schemas/GroupSummaryStatistics_Atlas'
+        suppressMongosAutoDiscovery:
+          type: boolean
+        teams:
+          type: array
+          items:
+            $ref: '#/components/schemas/TeamRoleAssignment_Atlas'
+        useCNRegionsOnly:
+          type: boolean
     HardwareSpec:
       type: object
       description: "Hardware specifications for all electable nodes deployed in the\
@@ -30517,6 +31132,12 @@ components:
           - ""
           readOnly: true
       readOnly: true
+    HttpServletRequest:
+      type: object
+    HttpServletRequest_Atlas:
+      type: object
+    HttpServletResponse:
+      type: object
     IndexOptions:
       type: object
       description: One or more settings that determine how the MongoDB Cloud creates
@@ -30818,6 +31439,10 @@ components:
           - PERIODIC_CPS
           - ON_DEMAND_CPS
       title: Ingestion Source
+    Integration:
+      type: object
+    Integration_Atlas:
+      type: object
     InvoiceLineItem:
       type: object
       description: One service included in this invoice.
@@ -30825,7 +31450,8 @@ components:
         clusterName:
           type: string
           description: Human-readable label that identifies the cluster that incurred
-            the charge.
+            the charge. Atlas doesn't return this field for line items that describe
+            data transfer on Google Cloud Platform.
           maxLength: 64
           minLength: 1
           pattern: "^[a-zA-Z0-9][a-zA-Z0-9-]*$"
@@ -31484,6 +32110,20 @@ components:
       type: object
       description: Group of settings that configure a MongoDB cluster.
       properties:
+        acceptDataRisksAndForceReplicaSetReconfig:
+          type: string
+          format: date-time
+          description: "If reconfiguration is necessary to regain a primary due to\
+            \ a regional outage, submit this field alongside your topology reconfiguration\
+            \ to request a new regional outage resistant topology. Forced reconfigurations\
+            \ during an outage of the majority of electable nodes carry a risk of\
+            \ data loss if replicated writes (even majority committed writes) have\
+            \ not been replicated to the new primary node. MongoDB Atlas docs contain\
+            \ more information. To proceed with an operation which carries that risk,\
+            \ set **acceptDataRisksAndForceReplicaSetReconfig** to the current date."
+          externalDocs:
+            description: Reconfiguring a Replica Set during a regional outage
+            url: https://dochub.mongodb.org/core/regional-outage-reconfigure-replica-set
         autoScaling:
           $ref: '#/components/schemas/ClusterAutoScalingSettings'
         backupEnabled:
@@ -32171,6 +32811,21 @@ components:
       - collection
       - customShardKey
       - db
+    MarketplaceRegistrationData:
+      type: object
+      properties:
+        awsRegistrationData:
+          $ref: '#/components/schemas/AwsRegistrationData'
+        azureRegistrationData:
+          $ref: '#/components/schemas/AzureRegistrationData'
+        gcpRegistrationData:
+          $ref: '#/components/schemas/GcpRegistrationData'
+        partnerType:
+          type: string
+          enum:
+          - AWS
+          - AZURE
+          - GCP
     MatcherFieldView:
       type: object
       oneOf:
@@ -32672,6 +33327,25 @@ components:
             minimum: 0
       required:
       - type
+    MultiFactorAuthSettings:
+      type: object
+      properties:
+        authCode:
+          type: string
+        authenticator:
+          type: boolean
+        backupPhone:
+          type: string
+        backupPhoneExtension:
+          type: string
+        extension:
+          type: string
+        phone:
+          type: string
+        updateKey:
+          type: string
+        voice:
+          type: boolean
     NDSAuditTypeViewForNdsGroup:
       type: string
       description: Unique identifier of event type.
@@ -32846,6 +33520,10 @@ components:
       - NODE_ROLLING_RESYNC_SCHEDULED
       - CLUSTER_ROLLING_RESYNC_CANCELED
       - CLUSTER_OS_UPDATED
+      - PUSH_BASED_LOG_EXPORT_ENABLED
+      - PUSH_BASED_LOG_EXPORT_CONFIGURATION_UPDATED
+      - PUSH_BASED_LOG_EXPORT_DISABLED
+      - AZURE_CLUSTER_PREFERRED_STORAGE_TYPE_UPDATED
       example: CLUSTER_CREATED
       title: NDS Audit Types
     NDSAuditTypeViewForOrg:
@@ -32877,6 +33555,12 @@ components:
           description: Date and time when this event occurred. This parameter expresses
             its value in the <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank"
             rel="noopener noreferrer">ISO 8601</a> timestamp format in UTC.
+          readOnly: true
+        dbUserUsername:
+          type: string
+          description: "The username of the MongoDB User that was created, deleted,\
+            \ or edited."
+          example: user1
           readOnly: true
         eventTypeName:
           $ref: '#/components/schemas/NDSAuditTypeViewForNdsGroup'
@@ -32990,6 +33674,12 @@ components:
           description: Date and time when this event occurred. This parameter expresses
             its value in the <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank"
             rel="noopener noreferrer">ISO 8601</a> timestamp format in UTC.
+          readOnly: true
+        dbUserUsername:
+          type: string
+          description: "The username of the MongoDB User that was created, deleted,\
+            \ or edited."
+          example: user1
           readOnly: true
         eventTypeName:
           $ref: '#/components/schemas/NDSAuditTypeViewForOrg'
@@ -33198,6 +33888,8 @@ components:
       - eventTypeName
       - id
       title: NDS Auto Scaling Audits
+    NDSGroup:
+      type: object
     NDSNotificationView:
       type: object
       description: NDS notification configuration for MongoDB Cloud to send information
@@ -34487,6 +35179,18 @@ components:
             type: string
             readOnly: true
           readOnly: true
+    OrgLimits:
+      type: object
+      properties:
+        maxM0Clusters:
+          type: integer
+          format: int32
+    OrgLimits_Atlas:
+      type: object
+      properties:
+        maxM0Clusters:
+          type: integer
+          format: int32
     OrgNotification:
       type: object
       description: Org notification configuration for MongoDB Cloud to send information
@@ -34588,6 +35292,157 @@ components:
             query param is true.
           minimum: 0
           readOnly: true
+    OrgPaymentStatus:
+      type: object
+      properties:
+        disableDunningRecovery:
+          type: boolean
+        displayName:
+          type: string
+        lastContacted:
+          type: string
+          format: date-time
+        since:
+          type: string
+          format: date-time
+        status:
+          type: string
+          enum:
+          - OK
+          - DEAD
+          - WARNING
+          - SUSPENDED
+          - LOCKED
+          - EMBARGOED
+          - EMBARGO_CONFIRMED
+          - ADMIN_SUSPENDED
+    OrgPaymentStatus_Atlas:
+      type: object
+      properties:
+        disableDunningRecovery:
+          type: boolean
+        displayName:
+          type: string
+        lastContacted:
+          type: string
+          format: date-time
+        since:
+          type: string
+          format: date-time
+        status:
+          type: string
+          enum:
+          - OK
+          - DEAD
+          - WARNING
+          - SUSPENDED
+          - LOCKED
+          - EMBARGOED
+          - EMBARGO_CONFIRMED
+          - ADMIN_SUSPENDED
+    Organization:
+      type: object
+      properties:
+        acceptedCNRegionsTermsOfServiceDate:
+          type: string
+          format: date-time
+        atlas:
+          type: boolean
+        autoRestrictAccessInfo:
+          $ref: '#/components/schemas/AutoRestrictOrgAccessInfo'
+        billingEmail:
+          type: string
+        cloudManager:
+          type: boolean
+        created:
+          type: string
+          format: date-time
+        creator:
+          type: string
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
+        deleted:
+          type: string
+          format: date-time
+        featureFlags:
+          type: array
+          items:
+            $ref: '#/components/schemas/ToggleableFeatureFlag'
+        groupType:
+          type: string
+          enum:
+          - CLOUD
+          - NDS
+          - ONPREM
+        id:
+          type: string
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
+        inheritableProjectFeatureFlags:
+          type: array
+          items:
+            type: string
+        limits:
+          $ref: '#/components/schemas/OrgLimits'
+        multiFactorAuthRequired:
+          type: boolean
+        name:
+          type: string
+        ndsHourlyBillingLimitCents:
+          type: integer
+          format: int64
+        ndsMaxOutstandingBillCapCents:
+          type: integer
+          format: int64
+        ndsMaxOutstandingBillCents:
+          type: integer
+          format: int64
+        onPrem:
+          type: boolean
+        paymentStatus:
+          $ref: '#/components/schemas/OrgPaymentStatus'
+        planType:
+          type: string
+          enum:
+          - Classic
+          - Basic
+          - Premium
+          - Standard
+          - Free Tier
+          - Atlas
+          - Atlas Enterprise
+          - Atlas Platinum
+          - Atlas Starter
+          - Atlas Pro
+          - Atlas Developer
+          - Atlas Pro
+          - Atlas Premier
+          - Atlas Pro
+          - Atlas Pro
+          - OnPrem
+        publicApiWhitelistRequired:
+          type: boolean
+        restrictEmployeeAccess:
+          type: boolean
+        salesforceAccountId:
+          type: string
+        slackTeamName:
+          type: string
+        uiIpAccessListEnabled:
+          type: boolean
+        updated:
+          type: string
+          format: date-time
+        vatStatus:
+          type: string
+          enum:
+          - UNKNOWN
+          - VALID
+          - INVALID
+          - DISMISSED
+          - BLANK
+        vercelInfo:
+          $ref: '#/components/schemas/VercelInfo'
     OrganizationInvitation:
       type: object
       properties:
@@ -34759,6 +35614,109 @@ components:
             \ without explicit permission. Once this setting is turned on, you can\
             \ grant MongoDB Support a 24-hour bypass access to the Atlas deployment\
             \ to resolve support issues. To learn more, see: https://www.mongodb.com/docs/atlas/security-restrict-support-access/."
+    Organization_Atlas:
+      type: object
+      properties:
+        acceptedCNRegionsTermsOfServiceDate:
+          type: string
+          format: date-time
+        atlas:
+          type: boolean
+        autoRestrictAccessInfo:
+          $ref: '#/components/schemas/AutoRestrictOrgAccessInfo_Atlas'
+        billingEmail:
+          type: string
+        cloudManager:
+          type: boolean
+        created:
+          type: string
+          format: date-time
+        creator:
+          type: string
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
+        deleted:
+          type: string
+          format: date-time
+        featureFlags:
+          type: array
+          items:
+            $ref: '#/components/schemas/ToggleableFeatureFlag_Atlas'
+        groupType:
+          type: string
+          enum:
+          - CLOUD
+          - NDS
+          - ONPREM
+        id:
+          type: string
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
+        inheritableProjectFeatureFlags:
+          type: array
+          items:
+            type: string
+        limits:
+          $ref: '#/components/schemas/OrgLimits_Atlas'
+        multiFactorAuthRequired:
+          type: boolean
+        name:
+          type: string
+        ndsHourlyBillingLimitCents:
+          type: integer
+          format: int64
+        ndsMaxOutstandingBillCapCents:
+          type: integer
+          format: int64
+        ndsMaxOutstandingBillCents:
+          type: integer
+          format: int64
+        onPrem:
+          type: boolean
+        paymentStatus:
+          $ref: '#/components/schemas/OrgPaymentStatus_Atlas'
+        planType:
+          type: string
+          enum:
+          - Classic
+          - Basic
+          - Premium
+          - Standard
+          - Free Tier
+          - Atlas
+          - Atlas Enterprise
+          - Atlas Platinum
+          - Atlas Starter
+          - Atlas Pro
+          - Atlas Developer
+          - Atlas Pro
+          - Atlas Premier
+          - Atlas Pro
+          - Atlas Pro
+          - OnPrem
+        publicApiWhitelistRequired:
+          type: boolean
+        restrictEmployeeAccess:
+          type: boolean
+        salesforceAccountId:
+          type: string
+        slackTeamName:
+          type: string
+        uiIpAccessListEnabled:
+          type: boolean
+        updated:
+          type: string
+          format: date-time
+        vatStatus:
+          type: string
+          enum:
+          - UNKNOWN
+          - VALID
+          - INVALID
+          - DISMISSED
+          - BLANK
+        vercelInfo:
+          $ref: '#/components/schemas/VercelInfo_Atlas'
     PagerDuty:
       type: object
       description: Details to integrate one PagerDuty account with one MongoDB Cloud
@@ -36328,6 +37286,32 @@ components:
           readOnly: true
       readOnly: true
       title: Data Lake Pipeline Run Statistics
+    PreferredHostname:
+      type: object
+      properties:
+        endsWith:
+          type: boolean
+        id:
+          type: string
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
+        regexp:
+          type: boolean
+        value:
+          type: string
+    PreferredHostname_Atlas:
+      type: object
+      properties:
+        endsWith:
+          type: boolean
+        id:
+          type: string
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
+        regexp:
+          type: boolean
+        value:
+          type: string
     PrivateGCPEndpointGroup:
       type: object
       description: Group of Private Endpoint settings.
@@ -36530,6 +37514,54 @@ components:
       - serviceDiscovery
       - username
       title: PROMETHEUS
+    PrometheusConfig:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        listenAddress:
+          type: string
+        metricsPath:
+          type: string
+        mode:
+          type: string
+        rateLimitIntervalSeconds:
+          type: integer
+          format: int32
+        scheme:
+          type: string
+        serviceDiscovery:
+          type: string
+        tlsPemPassword:
+          type: string
+        tlsPemPath:
+          type: string
+        username:
+          type: string
+    PrometheusConfig_Atlas:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        listenAddress:
+          type: string
+        metricsPath:
+          type: string
+        mode:
+          type: string
+        rateLimitIntervalSeconds:
+          type: integer
+          format: int32
+        scheme:
+          type: string
+        serviceDiscovery:
+          type: string
+        tlsPemPassword:
+          type: string
+        tlsPemPath:
+          type: string
+        username:
+          type: string
     PushBasedLogExportProject:
       type: object
       properties:
@@ -36570,6 +37602,7 @@ components:
           - INITIATING
           - BUCKET_VERIFIED
           - BUCKET_VERIFICATION_FAILED
+          - ASSUME_ROLE_FAILED
           - ACTIVE
     RPUMetricThresholdView:
       type: object
@@ -39067,6 +40100,7 @@ components:
           enum:
           - Kafka
           - Cluster
+          - Sample
       readOnly: true
     StreamsDataProcessRegion:
       type: object
@@ -39756,6 +40790,138 @@ components:
           maxLength: 24
           minLength: 24
           pattern: "^([a-f0-9]{24})$"
+    TeamRoleAssignment:
+      type: object
+      properties:
+        roles:
+          type: array
+          items:
+            type: string
+            enum:
+            - GLOBAL_AUTOMATION_ADMIN
+            - GLOBAL_BACKUP_ADMIN
+            - GLOBAL_METERING_USER
+            - GLOBAL_METRICS_INTERNAL_USER
+            - GLOBAL_MONITORING_ADMIN
+            - GLOBAL_OWNER
+            - GLOBAL_READ_ONLY
+            - GLOBAL_USER_ADMIN
+            - GLOBAL_USER_READ_ONLY
+            - GLOBAL_ACCOUNT_SUSPENSION_ADMIN
+            - GLOBAL_BILLING_ADMIN
+            - GLOBAL_BILLING_READ_ONLY
+            - GLOBAL_LEGAL_ADMIN
+            - GLOBAL_FEATURE_FLAG_ADMIN
+            - GLOBAL_APP_SETTING_ADMIN
+            - GLOBAL_ATLAS_TSE
+            - GLOBAL_ATLAS_OPERATOR
+            - GLOBAL_ATLAS_MONGODB_ROLLOUT_ADMIN
+            - GLOBAL_ATLAS_ADMIN
+            - GLOBAL_STITCH_ADMIN
+            - GLOBAL_CHARTS_ADMIN
+            - GLOBAL_EVENT_ADMIN
+            - GLOBAL_EXPERIMENT_ASSIGNMENT_USER
+            - GLOBAL_STITCH_INTERNAL_ADMIN
+            - GLOBAL_BAAS_FEATURE_ADMIN
+            - GLOBAL_BAAS_SUPPORT
+            - GLOBAL_SECURITY_ADMIN
+            - GLOBAL_QUERY_ENGINE_INTERNAL_ADMIN
+            - GLOBAL_PROACTIVE_SUPPORT_ADMIN
+            - GLOBAL_INFRASTRUCTURE_INTERNAL_ADMIN
+            - GLOBAL_SALESFORCE_ADMIN
+            - GLOBAL_SALESFORCE_READ_ONLY
+            - GLOBAL_APP_SERVICES_CLUSTER_DEBUG_DATA_ACCESS
+            - ORG_MEMBER
+            - ORG_READ_ONLY
+            - ORG_BILLING_ADMIN
+            - ORG_GROUP_CREATOR
+            - ORG_OWNER
+            - ORG_BILLING_READ_ONLY
+            - ORG_TEAM_MEMBERS_ADMIN
+            - GROUP_AUTOMATION_ADMIN
+            - GROUP_BACKUP_ADMIN
+            - GROUP_MONITORING_ADMIN
+            - GROUP_OWNER
+            - GROUP_READ_ONLY
+            - GROUP_USER_ADMIN
+            - GROUP_BILLING_ADMIN
+            - GROUP_DATA_ACCESS_ADMIN
+            - GROUP_DATA_ACCESS_READ_ONLY
+            - GROUP_DATA_ACCESS_READ_WRITE
+            - GROUP_CHARTS_ADMIN
+            - GROUP_CLUSTER_MANAGER
+            - GROUP_SEARCH_INDEX_EDITOR
+          uniqueItems: true
+        teamId:
+          type: string
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
+    TeamRoleAssignment_Atlas:
+      type: object
+      properties:
+        roles:
+          type: array
+          items:
+            type: string
+            enum:
+            - GLOBAL_AUTOMATION_ADMIN
+            - GLOBAL_BACKUP_ADMIN
+            - GLOBAL_METERING_USER
+            - GLOBAL_METRICS_INTERNAL_USER
+            - GLOBAL_MONITORING_ADMIN
+            - GLOBAL_OWNER
+            - GLOBAL_READ_ONLY
+            - GLOBAL_USER_ADMIN
+            - GLOBAL_USER_READ_ONLY
+            - GLOBAL_ACCOUNT_SUSPENSION_ADMIN
+            - GLOBAL_BILLING_ADMIN
+            - GLOBAL_BILLING_READ_ONLY
+            - GLOBAL_LEGAL_ADMIN
+            - GLOBAL_FEATURE_FLAG_ADMIN
+            - GLOBAL_APP_SETTING_ADMIN
+            - GLOBAL_ATLAS_TSE
+            - GLOBAL_ATLAS_OPERATOR
+            - GLOBAL_ATLAS_MONGODB_ROLLOUT_ADMIN
+            - GLOBAL_ATLAS_ADMIN
+            - GLOBAL_STITCH_ADMIN
+            - GLOBAL_CHARTS_ADMIN
+            - GLOBAL_EVENT_ADMIN
+            - GLOBAL_EXPERIMENT_ASSIGNMENT_USER
+            - GLOBAL_STITCH_INTERNAL_ADMIN
+            - GLOBAL_BAAS_FEATURE_ADMIN
+            - GLOBAL_BAAS_SUPPORT
+            - GLOBAL_SECURITY_ADMIN
+            - GLOBAL_QUERY_ENGINE_INTERNAL_ADMIN
+            - GLOBAL_PROACTIVE_SUPPORT_ADMIN
+            - GLOBAL_INFRASTRUCTURE_INTERNAL_ADMIN
+            - GLOBAL_SALESFORCE_ADMIN
+            - GLOBAL_SALESFORCE_READ_ONLY
+            - GLOBAL_APP_SERVICES_CLUSTER_DEBUG_DATA_ACCESS
+            - ORG_MEMBER
+            - ORG_READ_ONLY
+            - ORG_BILLING_ADMIN
+            - ORG_GROUP_CREATOR
+            - ORG_OWNER
+            - ORG_BILLING_READ_ONLY
+            - ORG_TEAM_MEMBERS_ADMIN
+            - GROUP_AUTOMATION_ADMIN
+            - GROUP_BACKUP_ADMIN
+            - GROUP_MONITORING_ADMIN
+            - GROUP_OWNER
+            - GROUP_READ_ONLY
+            - GROUP_USER_ADMIN
+            - GROUP_BILLING_ADMIN
+            - GROUP_DATA_ACCESS_ADMIN
+            - GROUP_DATA_ACCESS_READ_ONLY
+            - GROUP_DATA_ACCESS_READ_WRITE
+            - GROUP_CHARTS_ADMIN
+            - GROUP_CLUSTER_MANAGER
+            - GROUP_SEARCH_INDEX_EDITOR
+          uniqueItems: true
+        teamId:
+          type: string
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
     TenantHardwareSpec:
       type: object
       properties:
@@ -40276,6 +41442,464 @@ components:
           $ref: '#/components/schemas/TimeMetricUnits'
       readOnly: true
       title: Time Metric Value
+    ToggleableFeatureFlag:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        flag:
+          type: string
+          enum:
+          - STREAMS_ENABLED
+          - STREAMS_ACCESS_GRANTED
+          - ATLAS_ENABLE_DECOMPOSE_PACPCM
+          - ACTIVITY_FEED_IMPROVEMENTS
+          - ADL_READ_CONCERN_MAJORITY
+          - ADL_SCHEMA_UNIQUE_FIELD_LIMIT
+          - ADL_TEST_MANUAL_CONTROLLED_FLAG
+          - ADL_TEST_AUTOMATED_CONTROLLED_FLAG
+          - ADL_TEST_ENABLED_FLAG
+          - ADL_TEST_DISABLED_FLAG
+          - ADL_USE_MONGOD_INSTEAD_OF_MQLRUN
+          - ATLAS_ALLOW_DEPRECATED_VERSIONS
+          - ATLAS_FTS
+          - ATLAS_X509_CRL
+          - ATLAS_AZURE_SSD_PV2
+          - ATLAS_AZURE_SSD_FORCE_PV1
+          - ATLAS_MOUNT_AZURE_DISK_WITH_LUN
+          - ATLAS_SERVERLESS_GRPC_SUPPORT
+          - ATLAS_ENABLE_TEST_COMMANDS
+          - ATLAS_DAILY_BIG_QUERY_BILLING
+          - ATLAS_DATA_REGIONALIZATION_ENABLED
+          - ATLAS_DEFER_SERVER_NODE_TYPE_TAG_UNTIL_PHASE_2
+          - ATLAS_DEPLOYS_UIS
+          - ATLAS_HALT_GROUP_LOG_INGESTION
+          - ATLAS_CN_REGIONS_ONLY
+          - ATLAS_USE_DATA_EXPLORER_SERVICE
+          - ATLAS_USE_PROVIDER_SUBDOMAINS
+          - ATLAS_USE_LEGACY_HOSTNAME_SCHEME
+          - ATLAS_FORCE_SKIP_FAST_PROVISION
+          - ATLAS_CHURN_SURVEY
+          - ATLAS_HIDE_QUICK_ACCESS_PAGE
+          - CLUSTER_TAGGING_BILLING_EXPORT
+          - ATLAS_MONGODB_7_0
+          - ATLAS_PUSH_BASED_LOG_EXPORT
+          - ATLAS_PUSH_BASED_LOG_EXPORT_CLUSTER_LEVEL
+          - SINGLE_TARGET_SERVERLESS_DEPLOYMENT
+          - AUTOMATION
+          - AUTOMATION_CHANGE_LISTENER
+          - AUTOMATION_CONFIG_PUBLISH_CHANGE_EVENT
+          - AUTOMATION_EDITOR_AUTOFILL
+          - AUTOMATION_MONGO_DEVELOPMENT_VERSIONS
+          - AUTOMATION_VERIFY_DOWNLOADS
+          - AUTOMATION_PROXY_CONFIG_CHANGE_EVENT
+          - AUTOMATION_ENABLE_V6
+          - AUTOMATION_ENABLE_V7
+          - ATLAS_AUTO_RETRIEVE_DRAFT_CLUSTER_CONFIG
+          - AWS_USAGE_REPORT_CREATION
+          - AZURE_USAGE_REPORT_CREATION
+          - GCP_USAGE_REPORT_CREATION
+          - AWS_PRIVATE_ENDPOINT_WAITING_FOR_USER
+          - AWS_GRAVITON
+          - AWS_INTEL_OVER_GRAVITON
+          - BAAS
+          - BACKUP_ENABLE_AWS_PRIVATELINK_OPTION
+          - BACKUP_ALLOW_EDIT_OPLOG_WINDOW
+          - BACKUP_INCREMENTAL_WT
+          - BACKUP_S3_OPLOG_STORE_IN_OM
+          - BACKUP_INCREMENTAL_WT_FULL_SNAPSHOT_DAY_OF_WEEK
+          - BACKUP_WT_ENCRYPTION
+          - BACKUP_WT_LOCAL_KEY_FILE_ENCRYPTION
+          - BACKUP_WT_LOCAL_KEY_FILE_ENCRYPTION_FOR_ORG
+          - BACKUP_AUTO_RECOVERY_UNSAFE_APPLY_OPS
+          - BACKUP_WTC_CONCURRENT_GROOMS
+          - BACKUP_WTC_CONCURRENT_MONGO_BLOCKSTORE_GROOMS
+          - BACKUP_WTC_NAMESPACE_FILTERING
+          - BACKUP_PARALLEL_RESTORES
+          - BACKUP_THIRD_PARTY_MANAGED
+          - BACKUP_WTC_BACKPRESSURE
+          - BACKUP_MULTIPLE_WORKERS_PER_FILE
+          - BACKUP_DISCONTINUE_34
+          - BACKUP_V2
+          - BACKUP_WHITELISTS
+          - BI_CONNECTOR
+          - CHARTS
+          - CLASSIC_API_ACCESS
+          - CLASSIC_CHARTS
+          - CHARTS_ACTIVATION_OPTIMIZATION
+          - CHEF_CONF_PUSH
+          - CLIENT_METADATA_COLLECTION
+          - COMMENT_SERVICE
+          - CONTINUOUS_BACKUP_ALLOWED_FOR_NEW_AWS_CLUSTERS
+          - CPS_BACKUP_LOCK_MVP
+          - CPS_BACKUP_LOCK_GA
+          - CPS_BACKUP_COMPLIANCE_POLICY_POST_GA
+          - CPS_BACKUP_COMPLIANCE_POLICY_POST_GA_DISABLE_POLICY
+          - CPS_CONCURRENT_SNAPSHOTS
+          - CPS_DIRECT_ATTACH
+          - TURN_CPS_PV2_INSTANT_RESTORE_OFF
+          - CPS_PV2_STREAMING_RESTORE
+          - CPS_RESTORE_SEARCH_INDEX
+          - TURN_CPS_DIRECT_ATTACH_OFF
+          - CPS_DOWNLOAD_ENCRYPTED_SNAPSHOT
+          - CPS_GCP_AND_AZURE_NEW_CLUSTERS_ONLY_CPS
+          - CPS_SNAPSHOT_EXPORT_HIGH_FREQUENCY
+          - CPS_SNAPSHOT_EXPORT_UI
+          - CPS_SNAPSHOT_CONSISTENT_EXPORT
+          - CPS_SNAPSHOT_DISTRIBUTION_AWS
+          - CPS_SNAPSHOT_DISTRIBUTION_GCP
+          - CPS_SNAPSHOT_DISTRIBUTION_AZURE
+          - CPS_SNAPSHOT_DISTRIBUTION_LARGE_REGION_SET
+          - CPS_SNAPSHOT_DISTRIBUTION_UI
+          - CPS_GP3_MIGRATION
+          - CPS_OPLOG_MIGRATION
+          - CPS_SUCCESSIVE_UPGRADE_QUARTERLY
+          - CROSS_ORG_BILLING
+          - CUSTOMER_FEDERATION
+          - OM_CONFIG_FOR_GLOBAL_MONITORING_ADMIN
+          - DATADOG_METRICS_INTEGRATION
+          - DATADOG_CUSTOM_ENDPOINT
+          - DATA_EXPLORER
+          - DATA_EXPLORER_AGGREGATION
+          - DATA_EXPLORER_CRUD
+          - DATA_EXPLORER_MULTI_TENANT
+          - ECOSYSTEM
+          - EXTEND_MAX_ALLOWED_DISK_SIZES
+          - ALERT_STATE_FLAPPING_DETECTION
+          - FLEX_CONSULTING_ALERTS_CHECK
+          - INSTALL_AGENT_SCRIPT
+          - ATLAS_SERVERLESS_USES_SERVERLESS_AGENT
+          - ATLAS_SERVERLESS_WEIGHTED_BILLING_MODEL
+          - MANAGED_SLOW_MS
+          - MONGODB_ACCESS_HISTORY
+          - MONITORING_CLUSTER_REFERENCES_AUTOCORRECT
+          - MONITORING_HOST_MAPPINGS_AUTOCORRECT
+          - M10_SHARDED_CLUSTERS
+          - NDS_CLUSTERS
+          - NEW_DEPLOYMENT_SERVER_UI
+          - NEWRELIC_INTEGRATION
+          - PA_FEEDBACK
+          - PA_BUGS_AND_SUSTAINABILITY
+          - PA_SIZE_BASED_RANKING_ALGORITHM
+          - PAYPAL
+          - PERFORMANCE_ADVISOR
+          - SCHEMA_ADVISOR
+          - RESOURCE_TAG_COMPONENT
+          - RESOURCE_TAG_COMPONENT_PROJECTS
+          - SEGMENT_GROUP_SYNCHRONIZER
+          - SELF_SERVE_CONSULTING_UNITS
+          - PROFILER_NDS
+          - PROFILER_V2
+          - PROFILER_V3
+          - PROMETHEUS_INTEGRATION
+          - PROMETHEUS_INTEGRATION_RATE_LIMIT_CONFIG
+          - QUERYABLE_BACKUP
+          - QUERYABLE_FSCACHE
+          - QUERYABLE_WT_BACKUP
+          - REALM_SYNC_BETA
+          - REALTIME
+          - ROLLING_INDEXES
+          - RSYNC_BASED_HEAD_CREATION
+          - S3_VALIDATION_TESTING
+          - STORAGE_ENGINE_BACKUP
+          - TEAMS
+          - ATLAS_SHARED_TIER_X509_Auth
+          - OPLATENCY
+          - AUTO_INDEXING
+          - SERVERLESS_METRICS_TO_DW
+          - DEDICATED_ATLAS_SEARCH_NODES
+          - DEDICATED_ATLAS_SEARCH_NODES_FOR_SHARDED_CLUSTER
+          - DEDICATED_ATLAS_SEARCH_NODES_MIGRATION
+          - ATLAS_SEARCH_INDEX_MANAGEMENT
+          - ATLAS_SEARCH_VIB_CUSTOM_ANALYZERS
+          - ATLAS_SEARCH_REINDEXING_FOR_SORT
+          - ATLAS_SEARCH_BUFFERLESS_INITIAL_SYNC
+          - ATLAS_SEARCH_SEARCH_CONF_CALL_VIA_SEARCH_GATEWAY
+          - ATLAS_DATA_LAKE_STORAGE_FOR_ONLINE_ARCHIVE
+          - ATLAS_DATA_LAKE_STORAGE_FORCE_V2_UPGRADE_FOR_ONLINE_ARCHIVE
+          - ATLAS_DATA_LAKE_STORAGE_ALLOW_HOURLY_INGESTION
+          - ATLAS_CLOUD_PROVIDER_ACCESS_FOR_AZURE
+          - ONLINE_ARCHIVE_V1
+          - ONLINE_ARCHIVE_V3_TIME_SERIES
+          - ONLINE_ARCHIVE_AZURE
+          - ONLINE_ARCHIVE_AS_DATA_SOURCE
+          - ONLINE_ARCHIVE_IGNORE_DATA_SIZE_THRESHOLD
+          - ONLINE_ARCHIVE_PIN_TO_PRIMARY_REGION
+          - ATLAS_DATA_FEDERATION_TEMPLATED_ONBOARDING
+          - ALLOW_VULNERABILITY_SCANNING
+          - ATLAS_CONTINUOUS_DELIVERY
+          - REALM_EVENTS
+          - FAILED_ROLLING_INDEX_CLEANUP
+          - REALM_METRICS
+          - REALM_METRICS_ALERTS
+          - ATLAS_PUSH_LIVE_MIGRATIONS_MONGOMIRROR_REPLICASET_TO_SINGLE_SHARD
+          - ATLAS_PUSH_LIVE_MIGRATIONS_MONGOSYNC_REPLICASETS
+          - ATLAS_PUSH_LIVE_MIGRATIONS_MONGOSYNC_SHARDEDCLUSTER
+          - ATLAS_LIVE_MIGRATE_MONGOSYNC_REPLICASET_TO_SINGLE_SHARD
+          - ATLAS_LIVE_MIGRATE_SHARDED_HORIZONS
+          - ATLAS_LIVE_MIGRATE_MONGOSYNC_SHARDED_CLUSTERS
+          - ATLAS_LIVE_MIGRATE_MONGOSYNC_REPLICA_SETS
+          - ATLAS_LIVE_MIGRATE_MONGOSYNC_OLDER_VERSION_SUPPORT
+          - OPT_OUT_FROM_KINESIS
+          - CANONICAL_HOSTS_TTL_FILTERED_READS_ENABLED
+          - CANONICAL_HOSTS_TTL_WRITES_ENABLED
+          - SHARDED_CLUSTER_NAMESPACE_METRICS
+          - NAMESPACE_QUERY_LATENCY_METRICS
+          - SKIP_UPDATE_CLUSTERS_DURING_LIVE_MIGRATION
+          - PERFORMANCE_ADVISOR_RECOMMEND_SEARCH
+          - UI_ACCESS_LIST
+          - ATLAS_SEARCH_QUERY_TELEMETRY
+          - PROFILER_RANDOM_SAMPLING_SLOW_LOG_STREAMER
+          - AZURE_SALES_SOLD_AUTOMATED_REPORTING
+          - DISABLE_PREMIUM_DATADOG
+          - SERVERLESS_AUTO_INDEXING
+          - ENABLE_SCRAM_SHA256_AUTH
+          - AUTOMATION_CHANGES_WEB_CLIENT
+          - LOGCOLLECTION_S3_BACKEND
+          - REGIONALIZED_ALERT_PROCESSING
+          - SERVERLESS_SIZE_BASED_PA
+          - ATLAS_SEARCH_RENEWED_JSON_EDITOR
+          - SERVERLESS_AUTO_INDEXING_CONFIG
+          - ATLAS_PROVIDE_HARDCODED_OIDC_IDP_INFORMATION
+          - TOKENIZED_QUERY_SHAPE_STATS_METRICS
+          - ENABLE_EXPERIMENT_HOLDOUTS
+          - QUERY_INSIGHTS
+          - SERVERLESS_AUTO_SCALE_WITH_SPLIT
+          - SERVERLESS_AUTO_SCALE_WITH_MERGE
+          - GCP_INSTANCE_OS_AL2
+          - DISTRIBUTED_LINKED_ORG_BILLING
+          - HIDE_DISK_UTIL_CHARTS_AND_ALERTS
+          - ATLAS_OPT_OUT_PERIODIC_CORRUPTION_DETECTION
+          - SALESFORCE_OPPORTUNITY_LINE_ITEM_ELASTIC_FLAG
+    ToggleableFeatureFlag_Atlas:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        flag:
+          type: string
+          enum:
+          - STREAMS_ENABLED
+          - STREAMS_ACCESS_GRANTED
+          - ATLAS_ENABLE_DECOMPOSE_PACPCM
+          - ACTIVITY_FEED_IMPROVEMENTS
+          - ADL_READ_CONCERN_MAJORITY
+          - ADL_SCHEMA_UNIQUE_FIELD_LIMIT
+          - ADL_TEST_MANUAL_CONTROLLED_FLAG
+          - ADL_TEST_AUTOMATED_CONTROLLED_FLAG
+          - ADL_TEST_ENABLED_FLAG
+          - ADL_TEST_DISABLED_FLAG
+          - ADL_USE_MONGOD_INSTEAD_OF_MQLRUN
+          - ATLAS_ALLOW_DEPRECATED_VERSIONS
+          - ATLAS_FTS
+          - ATLAS_X509_CRL
+          - ATLAS_AZURE_SSD_PV2
+          - ATLAS_AZURE_SSD_FORCE_PV1
+          - ATLAS_MOUNT_AZURE_DISK_WITH_LUN
+          - ATLAS_SERVERLESS_GRPC_SUPPORT
+          - ATLAS_ENABLE_TEST_COMMANDS
+          - ATLAS_DAILY_BIG_QUERY_BILLING
+          - ATLAS_DATA_REGIONALIZATION_ENABLED
+          - ATLAS_DEFER_SERVER_NODE_TYPE_TAG_UNTIL_PHASE_2
+          - ATLAS_DEPLOYS_UIS
+          - ATLAS_HALT_GROUP_LOG_INGESTION
+          - ATLAS_CN_REGIONS_ONLY
+          - ATLAS_USE_DATA_EXPLORER_SERVICE
+          - ATLAS_USE_PROVIDER_SUBDOMAINS
+          - ATLAS_USE_LEGACY_HOSTNAME_SCHEME
+          - ATLAS_FORCE_SKIP_FAST_PROVISION
+          - ATLAS_CHURN_SURVEY
+          - ATLAS_HIDE_QUICK_ACCESS_PAGE
+          - CLUSTER_TAGGING_BILLING_EXPORT
+          - ATLAS_MONGODB_7_0
+          - ATLAS_PUSH_BASED_LOG_EXPORT
+          - ATLAS_PUSH_BASED_LOG_EXPORT_CLUSTER_LEVEL
+          - SINGLE_TARGET_SERVERLESS_DEPLOYMENT
+          - AUTOMATION
+          - AUTOMATION_CHANGE_LISTENER
+          - AUTOMATION_CONFIG_PUBLISH_CHANGE_EVENT
+          - AUTOMATION_EDITOR_AUTOFILL
+          - AUTOMATION_MONGO_DEVELOPMENT_VERSIONS
+          - AUTOMATION_VERIFY_DOWNLOADS
+          - AUTOMATION_PROXY_CONFIG_CHANGE_EVENT
+          - AUTOMATION_ENABLE_V6
+          - AUTOMATION_ENABLE_V7
+          - ATLAS_AUTO_RETRIEVE_DRAFT_CLUSTER_CONFIG
+          - AWS_USAGE_REPORT_CREATION
+          - AZURE_USAGE_REPORT_CREATION
+          - GCP_USAGE_REPORT_CREATION
+          - AWS_PRIVATE_ENDPOINT_WAITING_FOR_USER
+          - AWS_GRAVITON
+          - AWS_INTEL_OVER_GRAVITON
+          - BAAS
+          - BACKUP_ENABLE_AWS_PRIVATELINK_OPTION
+          - BACKUP_ALLOW_EDIT_OPLOG_WINDOW
+          - BACKUP_INCREMENTAL_WT
+          - BACKUP_S3_OPLOG_STORE_IN_OM
+          - BACKUP_INCREMENTAL_WT_FULL_SNAPSHOT_DAY_OF_WEEK
+          - BACKUP_WT_ENCRYPTION
+          - BACKUP_WT_LOCAL_KEY_FILE_ENCRYPTION
+          - BACKUP_WT_LOCAL_KEY_FILE_ENCRYPTION_FOR_ORG
+          - BACKUP_AUTO_RECOVERY_UNSAFE_APPLY_OPS
+          - BACKUP_WTC_CONCURRENT_GROOMS
+          - BACKUP_WTC_CONCURRENT_MONGO_BLOCKSTORE_GROOMS
+          - BACKUP_WTC_NAMESPACE_FILTERING
+          - BACKUP_PARALLEL_RESTORES
+          - BACKUP_THIRD_PARTY_MANAGED
+          - BACKUP_WTC_BACKPRESSURE
+          - BACKUP_MULTIPLE_WORKERS_PER_FILE
+          - BACKUP_DISCONTINUE_34
+          - BACKUP_V2
+          - BACKUP_WHITELISTS
+          - BI_CONNECTOR
+          - CHARTS
+          - CLASSIC_API_ACCESS
+          - CLASSIC_CHARTS
+          - CHARTS_ACTIVATION_OPTIMIZATION
+          - CHEF_CONF_PUSH
+          - CLIENT_METADATA_COLLECTION
+          - COMMENT_SERVICE
+          - CONTINUOUS_BACKUP_ALLOWED_FOR_NEW_AWS_CLUSTERS
+          - CPS_BACKUP_LOCK_MVP
+          - CPS_BACKUP_LOCK_GA
+          - CPS_BACKUP_COMPLIANCE_POLICY_POST_GA
+          - CPS_BACKUP_COMPLIANCE_POLICY_POST_GA_DISABLE_POLICY
+          - CPS_CONCURRENT_SNAPSHOTS
+          - CPS_DIRECT_ATTACH
+          - TURN_CPS_PV2_INSTANT_RESTORE_OFF
+          - CPS_PV2_STREAMING_RESTORE
+          - CPS_RESTORE_SEARCH_INDEX
+          - TURN_CPS_DIRECT_ATTACH_OFF
+          - CPS_DOWNLOAD_ENCRYPTED_SNAPSHOT
+          - CPS_GCP_AND_AZURE_NEW_CLUSTERS_ONLY_CPS
+          - CPS_SNAPSHOT_EXPORT_HIGH_FREQUENCY
+          - CPS_SNAPSHOT_EXPORT_UI
+          - CPS_SNAPSHOT_CONSISTENT_EXPORT
+          - CPS_SNAPSHOT_DISTRIBUTION_AWS
+          - CPS_SNAPSHOT_DISTRIBUTION_GCP
+          - CPS_SNAPSHOT_DISTRIBUTION_AZURE
+          - CPS_SNAPSHOT_DISTRIBUTION_LARGE_REGION_SET
+          - CPS_SNAPSHOT_DISTRIBUTION_UI
+          - CPS_GP3_MIGRATION
+          - CPS_OPLOG_MIGRATION
+          - CPS_SUCCESSIVE_UPGRADE_QUARTERLY
+          - CROSS_ORG_BILLING
+          - CUSTOMER_FEDERATION
+          - OM_CONFIG_FOR_GLOBAL_MONITORING_ADMIN
+          - DATADOG_METRICS_INTEGRATION
+          - DATADOG_CUSTOM_ENDPOINT
+          - DATA_EXPLORER
+          - DATA_EXPLORER_AGGREGATION
+          - DATA_EXPLORER_CRUD
+          - DATA_EXPLORER_MULTI_TENANT
+          - ECOSYSTEM
+          - EXTEND_MAX_ALLOWED_DISK_SIZES
+          - ALERT_STATE_FLAPPING_DETECTION
+          - FLEX_CONSULTING_ALERTS_CHECK
+          - INSTALL_AGENT_SCRIPT
+          - ATLAS_SERVERLESS_USES_SERVERLESS_AGENT
+          - ATLAS_SERVERLESS_WEIGHTED_BILLING_MODEL
+          - MANAGED_SLOW_MS
+          - MONGODB_ACCESS_HISTORY
+          - MONITORING_CLUSTER_REFERENCES_AUTOCORRECT
+          - MONITORING_HOST_MAPPINGS_AUTOCORRECT
+          - M10_SHARDED_CLUSTERS
+          - NDS_CLUSTERS
+          - NEW_DEPLOYMENT_SERVER_UI
+          - NEWRELIC_INTEGRATION
+          - PA_FEEDBACK
+          - PA_BUGS_AND_SUSTAINABILITY
+          - PA_SIZE_BASED_RANKING_ALGORITHM
+          - PAYPAL
+          - PERFORMANCE_ADVISOR
+          - SCHEMA_ADVISOR
+          - RESOURCE_TAG_COMPONENT
+          - RESOURCE_TAG_COMPONENT_PROJECTS
+          - SEGMENT_GROUP_SYNCHRONIZER
+          - SELF_SERVE_CONSULTING_UNITS
+          - PROFILER_NDS
+          - PROFILER_V2
+          - PROFILER_V3
+          - PROMETHEUS_INTEGRATION
+          - PROMETHEUS_INTEGRATION_RATE_LIMIT_CONFIG
+          - QUERYABLE_BACKUP
+          - QUERYABLE_FSCACHE
+          - QUERYABLE_WT_BACKUP
+          - REALM_SYNC_BETA
+          - REALTIME
+          - ROLLING_INDEXES
+          - RSYNC_BASED_HEAD_CREATION
+          - S3_VALIDATION_TESTING
+          - STORAGE_ENGINE_BACKUP
+          - TEAMS
+          - ATLAS_SHARED_TIER_X509_Auth
+          - OPLATENCY
+          - AUTO_INDEXING
+          - SERVERLESS_METRICS_TO_DW
+          - DEDICATED_ATLAS_SEARCH_NODES
+          - DEDICATED_ATLAS_SEARCH_NODES_FOR_SHARDED_CLUSTER
+          - DEDICATED_ATLAS_SEARCH_NODES_MIGRATION
+          - ATLAS_SEARCH_INDEX_MANAGEMENT
+          - ATLAS_SEARCH_VIB_CUSTOM_ANALYZERS
+          - ATLAS_SEARCH_REINDEXING_FOR_SORT
+          - ATLAS_SEARCH_BUFFERLESS_INITIAL_SYNC
+          - ATLAS_SEARCH_SEARCH_CONF_CALL_VIA_SEARCH_GATEWAY
+          - ATLAS_DATA_LAKE_STORAGE_FOR_ONLINE_ARCHIVE
+          - ATLAS_DATA_LAKE_STORAGE_FORCE_V2_UPGRADE_FOR_ONLINE_ARCHIVE
+          - ATLAS_DATA_LAKE_STORAGE_ALLOW_HOURLY_INGESTION
+          - ATLAS_CLOUD_PROVIDER_ACCESS_FOR_AZURE
+          - ONLINE_ARCHIVE_V1
+          - ONLINE_ARCHIVE_V3_TIME_SERIES
+          - ONLINE_ARCHIVE_AZURE
+          - ONLINE_ARCHIVE_AS_DATA_SOURCE
+          - ONLINE_ARCHIVE_IGNORE_DATA_SIZE_THRESHOLD
+          - ONLINE_ARCHIVE_PIN_TO_PRIMARY_REGION
+          - ATLAS_DATA_FEDERATION_TEMPLATED_ONBOARDING
+          - ALLOW_VULNERABILITY_SCANNING
+          - ATLAS_CONTINUOUS_DELIVERY
+          - REALM_EVENTS
+          - FAILED_ROLLING_INDEX_CLEANUP
+          - REALM_METRICS
+          - REALM_METRICS_ALERTS
+          - ATLAS_PUSH_LIVE_MIGRATIONS_MONGOMIRROR_REPLICASET_TO_SINGLE_SHARD
+          - ATLAS_PUSH_LIVE_MIGRATIONS_MONGOSYNC_REPLICASETS
+          - ATLAS_PUSH_LIVE_MIGRATIONS_MONGOSYNC_SHARDEDCLUSTER
+          - ATLAS_LIVE_MIGRATE_MONGOSYNC_REPLICASET_TO_SINGLE_SHARD
+          - ATLAS_LIVE_MIGRATE_SHARDED_HORIZONS
+          - ATLAS_LIVE_MIGRATE_MONGOSYNC_SHARDED_CLUSTERS
+          - ATLAS_LIVE_MIGRATE_MONGOSYNC_REPLICA_SETS
+          - ATLAS_LIVE_MIGRATE_MONGOSYNC_OLDER_VERSION_SUPPORT
+          - OPT_OUT_FROM_KINESIS
+          - CANONICAL_HOSTS_TTL_FILTERED_READS_ENABLED
+          - CANONICAL_HOSTS_TTL_WRITES_ENABLED
+          - SHARDED_CLUSTER_NAMESPACE_METRICS
+          - NAMESPACE_QUERY_LATENCY_METRICS
+          - SKIP_UPDATE_CLUSTERS_DURING_LIVE_MIGRATION
+          - PERFORMANCE_ADVISOR_RECOMMEND_SEARCH
+          - UI_ACCESS_LIST
+          - ATLAS_SEARCH_QUERY_TELEMETRY
+          - PROFILER_RANDOM_SAMPLING_SLOW_LOG_STREAMER
+          - AZURE_SALES_SOLD_AUTOMATED_REPORTING
+          - DISABLE_PREMIUM_DATADOG
+          - SERVERLESS_AUTO_INDEXING
+          - ENABLE_SCRAM_SHA256_AUTH
+          - AUTOMATION_CHANGES_WEB_CLIENT
+          - LOGCOLLECTION_S3_BACKEND
+          - REGIONALIZED_ALERT_PROCESSING
+          - SERVERLESS_SIZE_BASED_PA
+          - ATLAS_SEARCH_RENEWED_JSON_EDITOR
+          - SERVERLESS_AUTO_INDEXING_CONFIG
+          - ATLAS_PROVIDE_HARDCODED_OIDC_IDP_INFORMATION
+          - TOKENIZED_QUERY_SHAPE_STATS_METRICS
+          - ENABLE_EXPERIMENT_HOLDOUTS
+          - QUERY_INSIGHTS
+          - SERVERLESS_AUTO_SCALE_WITH_SPLIT
+          - SERVERLESS_AUTO_SCALE_WITH_MERGE
+          - GCP_INSTANCE_OS_AL2
+          - DISTRIBUTED_LINKED_ORG_BILLING
+          - HIDE_DISK_UTIL_CHARTS_AND_ALERTS
+          - ATLAS_OPT_OUT_PERIODIC_CORRUPTION_DETECTION
+          - SALESFORCE_OPPORTUNITY_LINE_ITEM_ELASTIC_FLAG
     TriggerIngestionPipelineRequest:
       type: object
       properties:
@@ -40303,6 +41927,86 @@ components:
           description: List of the built-in roles that this custom role inherits.
           items:
             $ref: '#/components/schemas/DatabaseInheritedRole'
+          uniqueItems: true
+    UpdateGroupRolesForUser:
+      type: object
+      properties:
+        groupRoles:
+          type: array
+          description: List of objects that describe the user's roles.
+          items:
+            type: string
+            description: |+
+              Human-readable label that identifies the collection of privileges that MongoDB Cloud grants a specific API key, MongoDB Cloud user, or MongoDB Cloud team. These roles only include project-level roles.
+
+              Project Roles
+
+              * GROUP_CLUSTER_MANAGER
+              * GROUP_DATA_ACCESS_ADMIN
+              * GROUP_DATA_ACCESS_READ_ONLY
+              * GROUP_DATA_ACCESS_READ_WRITE
+              * GROUP_OWNER
+              * GROUP_READ_ONLY
+              * GROUP_SEARCH_INDEX_EDITOR
+
+            enum:
+            - GROUP_CLUSTER_MANAGER
+            - GROUP_DATA_ACCESS_ADMIN
+            - GROUP_DATA_ACCESS_READ_ONLY
+            - GROUP_DATA_ACCESS_READ_WRITE
+            - GROUP_OWNER
+            - GROUP_READ_ONLY
+            - GROUP_SEARCH_INDEX_EDITOR
+          readOnly: true
+          uniqueItems: true
+        links:
+          type: array
+          description: "List of one or more Uniform Resource Locators (URLs) that\
+            \ point to API sub-resources, related API resources, or both. RFC 5988\
+            \ outlines these relationships."
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: '#/components/schemas/Link'
+          readOnly: true
+    UpdateOrgRolesForUser:
+      type: object
+      properties:
+        links:
+          type: array
+          description: "List of one or more Uniform Resource Locators (URLs) that\
+            \ point to API sub-resources, related API resources, or both. RFC 5988\
+            \ outlines these relationships."
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: '#/components/schemas/Link'
+          readOnly: true
+        orgRoles:
+          type: array
+          description: List of objects that describe the user's roles.
+          items:
+            type: string
+            description: |+
+              Human-readable label that identifies the collection of privileges that MongoDB Cloud grants a specific API key, MongoDB Cloud user, or MongoDB Cloud team. These roles only include organization-level roles.
+
+              Organization Roles
+
+              * ORG_OWNER
+              * ORG_MEMBER
+              * ORG_GROUP_CREATOR
+              * ORG_BILLING_ADMIN
+              * ORG_READ_ONLY
+
+            enum:
+            - ORG_OWNER
+            - ORG_MEMBER
+            - ORG_GROUP_CREATOR
+            - ORG_BILLING_ADMIN
+            - ORG_READ_ONLY
+          readOnly: true
           uniqueItems: true
     UserAccessList:
       type: object
@@ -40857,6 +42561,98 @@ components:
       required:
       - match
       title: User to Distinguished Name Mapping
+    VercelInfo:
+      type: object
+      properties:
+        accessToken:
+          type: string
+        configurationId:
+          type: string
+        created:
+          type: string
+          format: date-time
+        linkedClusters:
+          type: array
+          items:
+            $ref: '#/components/schemas/VercelLinkedCluster'
+        vercelEmail:
+          type: string
+        vercelTeamId:
+          type: string
+        vercelTeamName:
+          type: string
+        vercelUserId:
+          type: string
+    VercelInfo_Atlas:
+      type: object
+      properties:
+        accessToken:
+          type: string
+        configurationId:
+          type: string
+        created:
+          type: string
+          format: date-time
+        linkedClusters:
+          type: array
+          items:
+            $ref: '#/components/schemas/VercelLinkedCluster_Atlas'
+        vercelEmail:
+          type: string
+        vercelTeamId:
+          type: string
+        vercelTeamName:
+          type: string
+        vercelUserId:
+          type: string
+    VercelLinkedCluster:
+      type: object
+      properties:
+        clusterName:
+          type: string
+        dbName:
+          type: string
+        groupId:
+          type: string
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
+        setupInitialDataApi:
+          type: boolean
+        vercelProjects:
+          type: array
+          items:
+            $ref: '#/components/schemas/VercelProject'
+    VercelLinkedCluster_Atlas:
+      type: object
+      properties:
+        clusterName:
+          type: string
+        dbName:
+          type: string
+        groupId:
+          type: string
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
+        setupInitialDataApi:
+          type: boolean
+        vercelProjects:
+          type: array
+          items:
+            $ref: '#/components/schemas/VercelProject_Atlas'
+    VercelProject:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    VercelProject_Atlas:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
     VictorOps:
       type: object
       description: Details to integrate one Splunk On-Call account with one MongoDB
