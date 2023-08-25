@@ -58,6 +58,10 @@ jobs:
             2. Documentation style
             3. Transformation engine linting
 
+            ## Breaking Changes
+            
+            For list of possible breaking changes please refer to `Detect Breaking Changes` job.
+
             ## Release schedule
             
             PR is updated 3 times a week with latest changes from the RC for the API.
