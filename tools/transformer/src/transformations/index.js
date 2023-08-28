@@ -14,6 +14,7 @@ const {
 const { applyAddExperimentalTag } = require("./tagExperimental");
 const { applyAnyOfTransformations } = require("./anyOf");
 const { applyRemoveNullableTransformations } = require("./removeNullable");
+const { removeRefsFromParameters } = require("./removeInvalidParams");
 
 module.exports = {
   applyModelNameTransformations,
@@ -29,4 +30,5 @@ module.exports = {
   applyAddExperimentalTag,
   applyAnyOfTransformations,
   applyRemoveNullableTransformations,
+  removeRefsFromParameters,
 };

@@ -8,6 +8,7 @@ const {
   applyAddExperimentalTag,
   applyAnyOfTransformations,
   applyRemoveNullableTransformations,
+  removeRefsFromParameters,
 } = require("./transformations");
 
 const removeUnusedSchemas = require("./engine/removeUnused");
@@ -61,6 +62,11 @@ module.exports = function runTransformations(openapi) {
   if (openapi.components.schemas.ApiError) {
     openapi.components.schemas.ApiError.properties.parameters.items = {};
   }
+
+  const result = removeRefsFromParameters(openapi, [
+    "#/components/parameters/envelope",
+    "#/components/parameters/pretty",
+  ]);
 
   return openapi;
 };

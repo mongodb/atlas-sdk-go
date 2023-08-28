@@ -21518,16 +21518,6 @@ components:
           type: string
           description: Unique identifier of resource type.
           example: cluster
-    ExperimentRegistration:
-      type: object
-      properties:
-        experimentId:
-          type: string
-        key:
-          type: string
-        variationId:
-          type: integer
-          format: int32
     ExportStatus:
       type: object
       description: State of the export job for the collections on the replica set only.
@@ -21772,94 +21762,67 @@ components:
     Group:
       type: object
       properties:
-        activeAgentCount:
-          type: integer
-          format: int32
-        chttl:
+        clusterCount:
           type: integer
           format: int64
-        cre:
+          description: Quantity of MongoDB Cloud clusters deployed in this project.
+          readOnly: true
+        created:
           type: string
           format: date-time
-        defaultTimeZoneDisplay:
-          type: string
-        defaultTimeZoneDisplayShort:
-          type: string
-        defaultTimeZoneId:
-          type: string
-        disableDbstats:
-          type: boolean
-        enableAllHostLogs:
-          type: boolean
-        enableAllHostProfilers:
-          type: boolean
-        enableCurrentIpWarning:
-          type: boolean
-        experiments:
-          type: array
-          items:
-            $ref: "#/components/schemas/ExperimentRegistration"
-        featureFlags:
-          type: array
-          items:
-            $ref: "#/components/schemas/ToggleableFeatureFlag"
-        groupType:
-          type: string
-        hasActiveBackups:
-          type: boolean
-        hasActiveUI:
-          type: boolean
-        hasAddedHosts:
-          type: boolean
+          description: Date and time when MongoDB Cloud created this project. This
+            parameter expresses its value in the ISO 8601 timestamp format in
+            UTC.
+          readOnly: true
         id:
           type: string
+          description: Unique 24-hexadecimal digit string that identifies the MongoDB
+            Cloud project.
           example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
           pattern: ^([a-f0-9]{24})$
-        integrations:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: "#/components/schemas/Integration"
-        isIntercomEligible:
-          type: boolean
-        isProjectOverviewEnabled:
-          type: boolean
-        lastClusterActiveSampleTime:
-          type: string
-          format: date-time
-        lmav:
-          type: string
+          readOnly: true
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
         name:
           type: string
-        newRelicInsightsAccountId:
+          description: Human-readable label that identifies the project included in the
+            MongoDB Cloud organization.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[\p{L}\p{N}\-_.(),:&@+']{1,64}$
+        orgId:
           type: string
-        newRelicInsightsReadToken:
+          description: Unique 24-hexadecimal digit string that identifies the MongoDB
+            Cloud organization to which the project belongs.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+        regionUsageRestrictions:
           type: string
-        newRelicInsightsWriteToken:
-          type: string
-        newRelicLicenseKey:
-          type: string
-        preferredHostnames:
-          type: array
-          items:
-            $ref: "#/components/schemas/PreferredHostname"
-        prom:
-          $ref: "#/components/schemas/PrometheusConfig"
-        status:
-          $ref: "#/components/schemas/GroupStatus"
-        storageConfig:
-          $ref: "#/components/schemas/GroupStorageConfig"
-        summaryStatistics:
-          $ref: "#/components/schemas/GroupSummaryStatistics"
-        suppressMongosAutoDiscovery:
+          default: NONE
+          description: Region usage restrictions that designate the project's AWS region.
+        withDefaultAlertsSettings:
           type: boolean
-        teams:
-          type: array
-          items:
-            $ref: "#/components/schemas/TeamRoleAssignment"
-        useCNRegionsOnly:
-          type: boolean
+          description: Flag that indicates whether to create the project with default
+            alert settings.
+          writeOnly: true
+      required:
+        - clusterCount
+        - created
+        - name
+        - orgId
     GroupAlertsConfig:
       type: object
       properties:
@@ -22175,47 +22138,6 @@ components:
           type: boolean
           description: Flag that indicates whether to enable the Schema Advisor for the
             specified project.
-    GroupStatus:
-      type: object
-      properties:
-        displayName:
-          type: string
-        since:
-          type: string
-          format: date-time
-        status:
-          type: string
-    GroupStorageConfig:
-      type: object
-      properties:
-        mode:
-          type: string
-    GroupSummaryStatistics:
-      type: object
-      properties:
-        dataSizeBackedUpBytes:
-          type: integer
-          format: int64
-        dataSizeNoLocalBytes:
-          type: integer
-          format: int64
-        lastInvoiceAmountCents:
-          type: integer
-          format: int64
-        numBillableServer:
-          type: integer
-          format: int32
-        numCluster:
-          type: integer
-          format: int32
-        numPaidAtlasClusters:
-          type: integer
-          format: int32
-        numTotalAtlasClusters:
-          type: integer
-          format: int32
-        supportLevelLabel:
-          type: string
     HardwareSpec:
       type: object
       description: Hardware specifications for all electable nodes deployed in the
@@ -22610,8 +22532,6 @@ components:
           minLength: 24
           pattern: ^([a-f0-9]{24})$
       title: Ingestion Source
-    Integration:
-      type: object
     InvoiceLineItem:
       type: object
       description: One service included in this invoice.
@@ -24464,19 +24384,6 @@ components:
           readOnly: true
       readOnly: true
       title: Data Lake Pipeline Run Statistics
-    PreferredHostname:
-      type: object
-      properties:
-        endsWith:
-          type: boolean
-        id:
-          type: string
-          example: 32b6e34b3d91647abb20e7b8
-          pattern: ^([a-f0-9]{24})$
-        regexp:
-          type: boolean
-        value:
-          type: string
     PrivateLinkEndpoint:
       type: object
       properties:
@@ -24586,30 +24493,6 @@ components:
             with this private endpoint.
       required:
         - endpointId
-    PrometheusConfig:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-        listenAddress:
-          type: string
-        metricsPath:
-          type: string
-        mode:
-          type: string
-        rateLimitIntervalSeconds:
-          type: integer
-          format: int32
-        scheme:
-          type: string
-        serviceDiscovery:
-          type: string
-        tlsPemPassword:
-          type: string
-        tlsPemPath:
-          type: string
-        username:
-          type: string
     PushBasedLogExportProject:
       type: object
       properties:
@@ -25737,18 +25620,6 @@ components:
           maxLength: 24
           minLength: 24
           pattern: ^([a-f0-9]{24})$
-    TeamRoleAssignment:
-      type: object
-      properties:
-        roles:
-          type: array
-          items:
-            type: string
-          uniqueItems: true
-        teamId:
-          type: string
-          example: 32b6e34b3d91647abb20e7b8
-          pattern: ^([a-f0-9]{24})$
     TenantRestore:
       type: object
       properties:
@@ -26111,13 +25982,6 @@ components:
             **NOTE**: When you view or edit the alert for a webhook notification, the URL appears partially redacted.
           example: https://webhook.com/****
       title: Third-Party Integration
-    ToggleableFeatureFlag:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-        flag:
-          type: string
     TriggerIngestionPipelineRequest:
       type: object
       properties:
