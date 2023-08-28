@@ -23,7 +23,7 @@ echo "# Breaking Changes" > "$script_path/../breaking_changes/${BUMPED_MAJOR_VER
 
 ## Explicitly update version.go file
 export SDK_VERSION="${BUMPED_MAJOR_VERSION}.0.0"
-export NEW_RESOURCE_VERSION="${BUMPED_MAJOR_VERSION}"
+export NEW_RESOURCE_VERSION="${SDK_RESOURCE_VERSION}"
 
 echo "Updating version.go file: $SDK_VERSION"
 target_file_path="$script_path/../../../internal/core/version.go"
