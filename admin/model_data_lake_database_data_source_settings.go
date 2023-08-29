@@ -18,6 +18,10 @@ type DataLakeDatabaseDataSourceSettings struct {
 	Database *string `json:"database,omitempty"`
 	// Regex pattern to use for creating the wildcard (*) database. To learn more about the regex syntax, see [Go programming language](https://pkg.go.dev/regexp).
 	DatabaseRegex *string `json:"databaseRegex,omitempty"`
+	// Human-readable label that identifies the dataset that Atlas generates for an ingestion pipeline run or Online Archive.
+	DatasetName *string `json:"datasetName,omitempty"`
+	// Human-readable label that matches against the dataset names for ingestion pipeline runs or Online Archives.
+	DatasetPrefix *string `json:"datasetPrefix,omitempty"`
 	// File format that MongoDB Cloud uses if it encounters a file without a file extension while searching **storeName**.
 	DefaultFormat *string `json:"defaultFormat,omitempty"`
 	// File path that controls how MongoDB Cloud searches for and parses files in the **storeName** before mapping them to a collection.Specify ``/`` to capture all files and folders from the ``prefix`` path.
@@ -26,6 +30,8 @@ type DataLakeDatabaseDataSourceSettings struct {
 	ProvenanceFieldName *string `json:"provenanceFieldName,omitempty"`
 	// Human-readable label that identifies the data store that MongoDB Cloud maps to the collection.
 	StoreName *string `json:"storeName,omitempty"`
+	// Unsigned integer that specifies how many fields of the dataset name to trim from the left of the dataset name before mapping the remaining fields to a wildcard collection name.
+	TrimLevel *int `json:"trimLevel,omitempty"`
 	// URLs of the publicly accessible data files. You can't specify URLs that require authentication. Atlas Data Lake creates a partition for each URL. If empty or omitted, Data Lake uses the URLs from the store specified in the **dataSources.storeName** parameter.
 	Urls []string `json:"urls,omitempty"`
 }
@@ -216,6 +222,72 @@ func (o *DataLakeDatabaseDataSourceSettings) SetDatabaseRegex(v string) {
 	o.DatabaseRegex = &v
 }
 
+// GetDatasetName returns the DatasetName field value if set, zero value otherwise
+func (o *DataLakeDatabaseDataSourceSettings) GetDatasetName() string {
+	if o == nil || IsNil(o.DatasetName) {
+		var ret string
+		return ret
+	}
+	return *o.DatasetName
+}
+
+// GetDatasetNameOk returns a tuple with the DatasetName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DataLakeDatabaseDataSourceSettings) GetDatasetNameOk() (*string, bool) {
+	if o == nil || IsNil(o.DatasetName) {
+		return nil, false
+	}
+
+	return o.DatasetName, true
+}
+
+// HasDatasetName returns a boolean if a field has been set.
+func (o *DataLakeDatabaseDataSourceSettings) HasDatasetName() bool {
+	if o != nil && !IsNil(o.DatasetName) {
+		return true
+	}
+
+	return false
+}
+
+// SetDatasetName gets a reference to the given string and assigns it to the DatasetName field.
+func (o *DataLakeDatabaseDataSourceSettings) SetDatasetName(v string) {
+	o.DatasetName = &v
+}
+
+// GetDatasetPrefix returns the DatasetPrefix field value if set, zero value otherwise
+func (o *DataLakeDatabaseDataSourceSettings) GetDatasetPrefix() string {
+	if o == nil || IsNil(o.DatasetPrefix) {
+		var ret string
+		return ret
+	}
+	return *o.DatasetPrefix
+}
+
+// GetDatasetPrefixOk returns a tuple with the DatasetPrefix field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DataLakeDatabaseDataSourceSettings) GetDatasetPrefixOk() (*string, bool) {
+	if o == nil || IsNil(o.DatasetPrefix) {
+		return nil, false
+	}
+
+	return o.DatasetPrefix, true
+}
+
+// HasDatasetPrefix returns a boolean if a field has been set.
+func (o *DataLakeDatabaseDataSourceSettings) HasDatasetPrefix() bool {
+	if o != nil && !IsNil(o.DatasetPrefix) {
+		return true
+	}
+
+	return false
+}
+
+// SetDatasetPrefix gets a reference to the given string and assigns it to the DatasetPrefix field.
+func (o *DataLakeDatabaseDataSourceSettings) SetDatasetPrefix(v string) {
+	o.DatasetPrefix = &v
+}
+
 // GetDefaultFormat returns the DefaultFormat field value if set, zero value otherwise
 func (o *DataLakeDatabaseDataSourceSettings) GetDefaultFormat() string {
 	if o == nil || IsNil(o.DefaultFormat) {
@@ -348,6 +420,39 @@ func (o *DataLakeDatabaseDataSourceSettings) SetStoreName(v string) {
 	o.StoreName = &v
 }
 
+// GetTrimLevel returns the TrimLevel field value if set, zero value otherwise
+func (o *DataLakeDatabaseDataSourceSettings) GetTrimLevel() int {
+	if o == nil || IsNil(o.TrimLevel) {
+		var ret int
+		return ret
+	}
+	return *o.TrimLevel
+}
+
+// GetTrimLevelOk returns a tuple with the TrimLevel field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DataLakeDatabaseDataSourceSettings) GetTrimLevelOk() (*int, bool) {
+	if o == nil || IsNil(o.TrimLevel) {
+		return nil, false
+	}
+
+	return o.TrimLevel, true
+}
+
+// HasTrimLevel returns a boolean if a field has been set.
+func (o *DataLakeDatabaseDataSourceSettings) HasTrimLevel() bool {
+	if o != nil && !IsNil(o.TrimLevel) {
+		return true
+	}
+
+	return false
+}
+
+// SetTrimLevel gets a reference to the given int and assigns it to the TrimLevel field.
+func (o *DataLakeDatabaseDataSourceSettings) SetTrimLevel(v int) {
+	o.TrimLevel = &v
+}
+
 // GetUrls returns the Urls field value if set, zero value otherwise
 func (o *DataLakeDatabaseDataSourceSettings) GetUrls() []string {
 	if o == nil || IsNil(o.Urls) {
@@ -405,6 +510,12 @@ func (o DataLakeDatabaseDataSourceSettings) ToMap() (map[string]interface{}, err
 	if !IsNil(o.DatabaseRegex) {
 		toSerialize["databaseRegex"] = o.DatabaseRegex
 	}
+	if !IsNil(o.DatasetName) {
+		toSerialize["datasetName"] = o.DatasetName
+	}
+	if !IsNil(o.DatasetPrefix) {
+		toSerialize["datasetPrefix"] = o.DatasetPrefix
+	}
 	if !IsNil(o.DefaultFormat) {
 		toSerialize["defaultFormat"] = o.DefaultFormat
 	}
@@ -416,6 +527,9 @@ func (o DataLakeDatabaseDataSourceSettings) ToMap() (map[string]interface{}, err
 	}
 	if !IsNil(o.StoreName) {
 		toSerialize["storeName"] = o.StoreName
+	}
+	if !IsNil(o.TrimLevel) {
+		toSerialize["trimLevel"] = o.TrimLevel
 	}
 	if !IsNil(o.Urls) {
 		toSerialize["urls"] = o.Urls

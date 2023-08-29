@@ -57,6 +57,8 @@ type EventViewForNdsGroup struct {
 	CurrentValue   *NumberMetricValue `json:"currentValue,omitempty"`
 	// Human-readable label of the metric associated with the **alertId**. This field may change type of **currentValue** field.
 	MetricName *string `json:"metricName,omitempty"`
+	// The username of the MongoDB User that was created, deleted, or edited.
+	DbUserUsername *string `json:"dbUserUsername,omitempty"`
 	// Entry in the list of source host addresses that the API key accepts and this event targets.
 	WhitelistEntry *string `json:"whitelistEntry,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the endpoint associated with this event.
@@ -913,6 +915,39 @@ func (o *EventViewForNdsGroup) HasMetricName() bool {
 // SetMetricName gets a reference to the given string and assigns it to the MetricName field.
 func (o *EventViewForNdsGroup) SetMetricName(v string) {
 	o.MetricName = &v
+}
+
+// GetDbUserUsername returns the DbUserUsername field value if set, zero value otherwise
+func (o *EventViewForNdsGroup) GetDbUserUsername() string {
+	if o == nil || IsNil(o.DbUserUsername) {
+		var ret string
+		return ret
+	}
+	return *o.DbUserUsername
+}
+
+// GetDbUserUsernameOk returns a tuple with the DbUserUsername field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForNdsGroup) GetDbUserUsernameOk() (*string, bool) {
+	if o == nil || IsNil(o.DbUserUsername) {
+		return nil, false
+	}
+
+	return o.DbUserUsername, true
+}
+
+// HasDbUserUsername returns a boolean if a field has been set.
+func (o *EventViewForNdsGroup) HasDbUserUsername() bool {
+	if o != nil && !IsNil(o.DbUserUsername) {
+		return true
+	}
+
+	return false
+}
+
+// SetDbUserUsername gets a reference to the given string and assigns it to the DbUserUsername field.
+func (o *EventViewForNdsGroup) SetDbUserUsername(v string) {
+	o.DbUserUsername = &v
 }
 
 // GetWhitelistEntry returns the WhitelistEntry field value if set, zero value otherwise

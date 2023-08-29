@@ -9,7 +9,9 @@ import (
 
 // LegacyAtlasCluster Group of settings that configure a MongoDB cluster.
 type LegacyAtlasCluster struct {
-	AutoScaling *ClusterAutoScalingSettings `json:"autoScaling,omitempty"`
+	// If reconfiguration is necessary to regain a primary due to a regional outage, submit this field alongside your topology reconfiguration to request a new regional outage resistant topology. Forced reconfigurations during an outage of the majority of electable nodes carry a risk of data loss if replicated writes (even majority committed writes) have not been replicated to the new primary node. MongoDB Atlas docs contain more information. To proceed with an operation which carries that risk, set **acceptDataRisksAndForceReplicaSetReconfig** to the current date.
+	AcceptDataRisksAndForceReplicaSetReconfig *time.Time                  `json:"acceptDataRisksAndForceReplicaSetReconfig,omitempty"`
+	AutoScaling                               *ClusterAutoScalingSettings `json:"autoScaling,omitempty"`
 	// Flag that indicates whether the cluster can perform backups. If set to `true`, the cluster can perform backups. You must set this value to `true` for NVMe clusters. Backup uses Cloud Backups for dedicated clusters and Shared Cluster Backups for tenant clusters. If set to `false`, the cluster doesn't use MongoDB Cloud backups.
 	BackupEnabled *bool        `json:"backupEnabled,omitempty"`
 	BiConnector   *BiConnector `json:"biConnector,omitempty"`
@@ -111,6 +113,39 @@ func NewLegacyAtlasClusterWithDefaults() *LegacyAtlasCluster {
 	var versionReleaseSystem string = "LTS"
 	this.VersionReleaseSystem = &versionReleaseSystem
 	return &this
+}
+
+// GetAcceptDataRisksAndForceReplicaSetReconfig returns the AcceptDataRisksAndForceReplicaSetReconfig field value if set, zero value otherwise
+func (o *LegacyAtlasCluster) GetAcceptDataRisksAndForceReplicaSetReconfig() time.Time {
+	if o == nil || IsNil(o.AcceptDataRisksAndForceReplicaSetReconfig) {
+		var ret time.Time
+		return ret
+	}
+	return *o.AcceptDataRisksAndForceReplicaSetReconfig
+}
+
+// GetAcceptDataRisksAndForceReplicaSetReconfigOk returns a tuple with the AcceptDataRisksAndForceReplicaSetReconfig field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LegacyAtlasCluster) GetAcceptDataRisksAndForceReplicaSetReconfigOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.AcceptDataRisksAndForceReplicaSetReconfig) {
+		return nil, false
+	}
+
+	return o.AcceptDataRisksAndForceReplicaSetReconfig, true
+}
+
+// HasAcceptDataRisksAndForceReplicaSetReconfig returns a boolean if a field has been set.
+func (o *LegacyAtlasCluster) HasAcceptDataRisksAndForceReplicaSetReconfig() bool {
+	if o != nil && !IsNil(o.AcceptDataRisksAndForceReplicaSetReconfig) {
+		return true
+	}
+
+	return false
+}
+
+// SetAcceptDataRisksAndForceReplicaSetReconfig gets a reference to the given time.Time and assigns it to the AcceptDataRisksAndForceReplicaSetReconfig field.
+func (o *LegacyAtlasCluster) SetAcceptDataRisksAndForceReplicaSetReconfig(v time.Time) {
+	o.AcceptDataRisksAndForceReplicaSetReconfig = &v
 }
 
 // GetAutoScaling returns the AutoScaling field value if set, zero value otherwise
@@ -1181,6 +1216,9 @@ func (o LegacyAtlasCluster) MarshalJSONWithoutReadOnly() ([]byte, error) {
 }
 func (o LegacyAtlasCluster) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.AcceptDataRisksAndForceReplicaSetReconfig) {
+		toSerialize["acceptDataRisksAndForceReplicaSetReconfig"] = o.AcceptDataRisksAndForceReplicaSetReconfig
+	}
 	if !IsNil(o.AutoScaling) {
 		toSerialize["autoScaling"] = o.AutoScaling
 	}

@@ -23,6 +23,7 @@ Method | HTTP request | Description
 [**UpdateProject**](ProjectsApi.md#UpdateProject) | **Patch** /api/atlas/v2/groups/{groupId} | Update One Project Name
 [**UpdateProjectInvitation**](ProjectsApi.md#UpdateProjectInvitation) | **Patch** /api/atlas/v2/groups/{groupId}/invites | Update One Project Invitation
 [**UpdateProjectInvitationById**](ProjectsApi.md#UpdateProjectInvitationById) | **Patch** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Update One Project Invitation by Invitation ID
+[**UpdateProjectRoles**](ProjectsApi.md#UpdateProjectRoles) | **Put** /api/atlas/v2/groups/{groupId}/users/{userId}/roles | Update Project Roles for One MongoDB Cloud User
 [**UpdateProjectSettings**](ProjectsApi.md#UpdateProjectSettings) | **Patch** /api/atlas/v2/groups/{groupId}/settings | Update One Project Settings
 
 
@@ -44,7 +45,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201005/admin"
+    "go.mongodb.org/atlas-sdk/v20230201006/admin"
 )
 
 func main() {
@@ -53,7 +54,7 @@ func main() {
 
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
-    group := *openapiclient.NewGroup(int64(123), time.Now(), "Name_example", "32b6e34b3d91647abb20e7b8") // Group | 
+    group := *openapiclient.NewGroup() // Group | 
     projectOwnerId := "projectOwnerId_example" // string |  (optional)
 
     resp, r, err := sdk.ProjectsApi.CreateProject(context.Background(), &group).ProjectOwnerId(projectOwnerId).Execute()
@@ -115,7 +116,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201005/admin"
+    "go.mongodb.org/atlas-sdk/v20230201006/admin"
 )
 
 func main() {
@@ -190,7 +191,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201005/admin"
+    "go.mongodb.org/atlas-sdk/v20230201006/admin"
 )
 
 func main() {
@@ -263,7 +264,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201005/admin"
+    "go.mongodb.org/atlas-sdk/v20230201006/admin"
 )
 
 func main() {
@@ -344,7 +345,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201005/admin"
+    "go.mongodb.org/atlas-sdk/v20230201006/admin"
 )
 
 func main() {
@@ -420,7 +421,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201005/admin"
+    "go.mongodb.org/atlas-sdk/v20230201006/admin"
 )
 
 func main() {
@@ -493,7 +494,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201005/admin"
+    "go.mongodb.org/atlas-sdk/v20230201006/admin"
 )
 
 func main() {
@@ -566,7 +567,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201005/admin"
+    "go.mongodb.org/atlas-sdk/v20230201006/admin"
 )
 
 func main() {
@@ -647,7 +648,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201005/admin"
+    "go.mongodb.org/atlas-sdk/v20230201006/admin"
 )
 
 func main() {
@@ -723,7 +724,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201005/admin"
+    "go.mongodb.org/atlas-sdk/v20230201006/admin"
 )
 
 func main() {
@@ -796,7 +797,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201005/admin"
+    "go.mongodb.org/atlas-sdk/v20230201006/admin"
 )
 
 func main() {
@@ -876,7 +877,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201005/admin"
+    "go.mongodb.org/atlas-sdk/v20230201006/admin"
 )
 
 func main() {
@@ -949,7 +950,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201005/admin"
+    "go.mongodb.org/atlas-sdk/v20230201006/admin"
 )
 
 func main() {
@@ -1032,7 +1033,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201005/admin"
+    "go.mongodb.org/atlas-sdk/v20230201006/admin"
 )
 
 func main() {
@@ -1105,7 +1106,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201005/admin"
+    "go.mongodb.org/atlas-sdk/v20230201006/admin"
 )
 
 func main() {
@@ -1184,7 +1185,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201005/admin"
+    "go.mongodb.org/atlas-sdk/v20230201006/admin"
 )
 
 func main() {
@@ -1267,7 +1268,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201005/admin"
+    "go.mongodb.org/atlas-sdk/v20230201006/admin"
 )
 
 func main() {
@@ -1342,7 +1343,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201005/admin"
+    "go.mongodb.org/atlas-sdk/v20230201006/admin"
 )
 
 func main() {
@@ -1417,7 +1418,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201005/admin"
+    "go.mongodb.org/atlas-sdk/v20230201006/admin"
 )
 
 func main() {
@@ -1478,6 +1479,89 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## UpdateProjectRoles
+
+> UpdateGroupRolesForUser UpdateProjectRoles(ctx, groupId, userId, updateGroupRolesForUser UpdateGroupRolesForUser).Execute()
+
+Update Project Roles for One MongoDB Cloud User
+
+
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20230201006/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    userId := "userId_example" // string | 
+    updateGroupRolesForUser := *openapiclient.NewUpdateGroupRolesForUser() // UpdateGroupRolesForUser | 
+
+    resp, r, err := sdk.ProjectsApi.UpdateProjectRoles(context.Background(), groupId, userId, &updateGroupRolesForUser).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.UpdateProjectRoles``: %v\n", err)
+        apiError := admin.AsError(err)
+        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+    }
+    // response from `UpdateProjectRoles`: UpdateGroupRolesForUser
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.UpdateProjectRoles`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**userId** | **string** | Unique 24-hexadecimal digit string that identifies the user to modify. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateProjectRolesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **updateGroupRolesForUser** | [**UpdateGroupRolesForUser**](UpdateGroupRolesForUser.md) | Roles to update for the specified user. | 
+
+### Return type
+
+[**UpdateGroupRolesForUser**](UpdateGroupRolesForUser.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2023-01-01+json
+- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## UpdateProjectSettings
 
 > GroupSettings UpdateProjectSettings(ctx, groupId, groupSettings GroupSettings).Execute()
@@ -1495,7 +1579,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201005/admin"
+    "go.mongodb.org/atlas-sdk/v20230201006/admin"
 )
 
 func main() {

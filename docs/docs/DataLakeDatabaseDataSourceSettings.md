@@ -9,10 +9,13 @@ Name | Type | Description | Notes
 **CollectionRegex** | Pointer to **string** | Regex pattern to use for creating the wildcard (*) collection. To learn more about the regex syntax, see [Go programming language](https://pkg.go.dev/regexp). | [optional] 
 **Database** | Pointer to **string** | Human-readable label that identifies the database, which contains the collection in the cluster. You must omit this parameter to generate wildcard (&#x60;*&#x60;) collections for dynamically generated databases. | [optional] 
 **DatabaseRegex** | Pointer to **string** | Regex pattern to use for creating the wildcard (*) database. To learn more about the regex syntax, see [Go programming language](https://pkg.go.dev/regexp). | [optional] 
+**DatasetName** | Pointer to **string** | Human-readable label that identifies the dataset that Atlas generates for an ingestion pipeline run or Online Archive. | [optional] 
+**DatasetPrefix** | Pointer to **string** | Human-readable label that matches against the dataset names for ingestion pipeline runs or Online Archives. | [optional] 
 **DefaultFormat** | Pointer to **string** | File format that MongoDB Cloud uses if it encounters a file without a file extension while searching **storeName**. | [optional] 
 **Path** | Pointer to **string** | File path that controls how MongoDB Cloud searches for and parses files in the **storeName** before mapping them to a collection.Specify &#x60;&#x60;/&#x60;&#x60; to capture all files and folders from the &#x60;&#x60;prefix&#x60;&#x60; path. | [optional] 
 **ProvenanceFieldName** | Pointer to **string** | Name for the field that includes the provenance of the documents in the results. MongoDB Cloud returns different fields in the results for each supported provider. | [optional] 
 **StoreName** | Pointer to **string** | Human-readable label that identifies the data store that MongoDB Cloud maps to the collection. | [optional] 
+**TrimLevel** | Pointer to **int** | Unsigned integer that specifies how many fields of the dataset name to trim from the left of the dataset name before mapping the remaining fields to a wildcard collection name. | [optional] 
 **Urls** | Pointer to **[]string** | URLs of the publicly accessible data files. You can&#39;t specify URLs that require authentication. Atlas Data Lake creates a partition for each URL. If empty or omitted, Data Lake uses the URLs from the store specified in the **dataSources.storeName** parameter. | [optional] 
 
 ## Methods
@@ -154,6 +157,54 @@ SetDatabaseRegex sets DatabaseRegex field to given value.
 `func (o *DataLakeDatabaseDataSourceSettings) HasDatabaseRegex() bool`
 
 HasDatabaseRegex returns a boolean if a field has been set.
+### GetDatasetName
+
+`func (o *DataLakeDatabaseDataSourceSettings) GetDatasetName() string`
+
+GetDatasetName returns the DatasetName field if non-nil, zero value otherwise.
+
+### GetDatasetNameOk
+
+`func (o *DataLakeDatabaseDataSourceSettings) GetDatasetNameOk() (*string, bool)`
+
+GetDatasetNameOk returns a tuple with the DatasetName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDatasetName
+
+`func (o *DataLakeDatabaseDataSourceSettings) SetDatasetName(v string)`
+
+SetDatasetName sets DatasetName field to given value.
+
+### HasDatasetName
+
+`func (o *DataLakeDatabaseDataSourceSettings) HasDatasetName() bool`
+
+HasDatasetName returns a boolean if a field has been set.
+### GetDatasetPrefix
+
+`func (o *DataLakeDatabaseDataSourceSettings) GetDatasetPrefix() string`
+
+GetDatasetPrefix returns the DatasetPrefix field if non-nil, zero value otherwise.
+
+### GetDatasetPrefixOk
+
+`func (o *DataLakeDatabaseDataSourceSettings) GetDatasetPrefixOk() (*string, bool)`
+
+GetDatasetPrefixOk returns a tuple with the DatasetPrefix field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDatasetPrefix
+
+`func (o *DataLakeDatabaseDataSourceSettings) SetDatasetPrefix(v string)`
+
+SetDatasetPrefix sets DatasetPrefix field to given value.
+
+### HasDatasetPrefix
+
+`func (o *DataLakeDatabaseDataSourceSettings) HasDatasetPrefix() bool`
+
+HasDatasetPrefix returns a boolean if a field has been set.
 ### GetDefaultFormat
 
 `func (o *DataLakeDatabaseDataSourceSettings) GetDefaultFormat() string`
@@ -250,6 +301,30 @@ SetStoreName sets StoreName field to given value.
 `func (o *DataLakeDatabaseDataSourceSettings) HasStoreName() bool`
 
 HasStoreName returns a boolean if a field has been set.
+### GetTrimLevel
+
+`func (o *DataLakeDatabaseDataSourceSettings) GetTrimLevel() int`
+
+GetTrimLevel returns the TrimLevel field if non-nil, zero value otherwise.
+
+### GetTrimLevelOk
+
+`func (o *DataLakeDatabaseDataSourceSettings) GetTrimLevelOk() (*int, bool)`
+
+GetTrimLevelOk returns a tuple with the TrimLevel field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTrimLevel
+
+`func (o *DataLakeDatabaseDataSourceSettings) SetTrimLevel(v int)`
+
+SetTrimLevel sets TrimLevel field to given value.
+
+### HasTrimLevel
+
+`func (o *DataLakeDatabaseDataSourceSettings) HasTrimLevel() bool`
+
+HasTrimLevel returns a boolean if a field has been set.
 ### GetUrls
 
 `func (o *DataLakeDatabaseDataSourceSettings) GetUrls() []string`

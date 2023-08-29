@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **ReplicaSetName** | Pointer to **string** | Human-readable label of the replica set associated with the event. | [optional] [readonly] 
 **CurrentValue** | Pointer to [**NumberMetricValue**](NumberMetricValue.md) |  | [optional] 
 **MetricName** | Pointer to **string** | Human-readable label of the metric associated with the **alertId**. This field may change type of **currentValue** field. | [optional] [readonly] 
+**DbUserUsername** | Pointer to **string** | The username of the MongoDB User that was created, deleted, or edited. | [optional] [readonly] 
 **WhitelistEntry** | Pointer to **string** | Entry in the list of source host addresses that the API key accepts and this event targets. | [optional] [readonly] 
 **EndpointId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the endpoint associated with this event. | [optional] [readonly] 
 **ProviderEndpointId** | Pointer to **string** | Unique identification string that the cloud provider uses to identify the private endpoint. | [optional] [readonly] 
@@ -656,6 +657,30 @@ SetMetricName sets MetricName field to given value.
 `func (o *EventViewForNdsGroup) HasMetricName() bool`
 
 HasMetricName returns a boolean if a field has been set.
+### GetDbUserUsername
+
+`func (o *EventViewForNdsGroup) GetDbUserUsername() string`
+
+GetDbUserUsername returns the DbUserUsername field if non-nil, zero value otherwise.
+
+### GetDbUserUsernameOk
+
+`func (o *EventViewForNdsGroup) GetDbUserUsernameOk() (*string, bool)`
+
+GetDbUserUsernameOk returns a tuple with the DbUserUsername field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDbUserUsername
+
+`func (o *EventViewForNdsGroup) SetDbUserUsername(v string)`
+
+SetDbUserUsername sets DbUserUsername field to given value.
+
+### HasDbUserUsername
+
+`func (o *EventViewForNdsGroup) HasDbUserUsername() bool`
+
+HasDbUserUsername returns a boolean if a field has been set.
 ### GetWhitelistEntry
 
 `func (o *EventViewForNdsGroup) GetWhitelistEntry() string`
