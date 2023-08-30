@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths: 
-      - "./internal/core/version.go"
+      - "internal/core/version.go"
   
 jobs:
   release:
