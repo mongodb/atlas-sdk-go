@@ -59,6 +59,29 @@ type OrganizationsApi interface {
 	createOrganizationInvitationExecute(r CreateOrganizationInvitationApiRequest) (*OrganizationInvitation, *http.Response, error)
 
 	/*
+		CreateServiceAccount Service Account Creation
+
+		[experimental] Create Service Account containing client id and client secrets.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@return CreateServiceAccountApiRequest
+	*/
+	CreateServiceAccount(ctx context.Context, orgId string, serviceAccountRequest *ServiceAccountRequest) CreateServiceAccountApiRequest
+	/*
+		CreateServiceAccount Service Account Creation
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param CreateServiceAccountApiParams - Parameters for the request
+		@return CreateServiceAccountApiRequest
+	*/
+	CreateServiceAccountWithParams(ctx context.Context, args *CreateServiceAccountApiParams) CreateServiceAccountApiRequest
+
+	// Interface only available internally
+	createServiceAccountExecute(r CreateServiceAccountApiRequest) (*ServiceAccount, *http.Response, error)
+
+	/*
 		DeleteOrganization Remove One Organization
 
 		Removes one specified organization. MongoDB Cloud imposes the following limits on this resource:
@@ -108,6 +131,30 @@ type OrganizationsApi interface {
 
 	// Interface only available internally
 	deleteOrganizationInvitationExecute(r DeleteOrganizationInvitationApiRequest) (map[string]interface{}, *http.Response, error)
+
+	/*
+		DeleteServiceAccount Service Account Deletion.
+
+		[experimental] Delete Service Account.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param serviceAccountId Id of the service account.
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@return DeleteServiceAccountApiRequest
+	*/
+	DeleteServiceAccount(ctx context.Context, serviceAccountId string, orgId string) DeleteServiceAccountApiRequest
+	/*
+		DeleteServiceAccount Service Account Deletion.
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param DeleteServiceAccountApiParams - Parameters for the request
+		@return DeleteServiceAccountApiRequest
+	*/
+	DeleteServiceAccountWithParams(ctx context.Context, args *DeleteServiceAccountApiParams) DeleteServiceAccountApiRequest
+
+	// Interface only available internally
+	deleteServiceAccountExecute(r DeleteServiceAccountApiRequest) (*http.Response, error)
 
 	/*
 		GetOrganization Return One Organization
@@ -178,6 +225,30 @@ type OrganizationsApi interface {
 
 	// Interface only available internally
 	getOrganizationSettingsExecute(r GetOrganizationSettingsApiRequest) (*OrganizationSettings, *http.Response, error)
+
+	/*
+		GetServiceAccount Service Account Fetching
+
+		[experimental] Get Service Account.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param serviceAccountId Id of the service account.
+		@return GetServiceAccountApiRequest
+	*/
+	GetServiceAccount(ctx context.Context, orgId string, serviceAccountId string) GetServiceAccountApiRequest
+	/*
+		GetServiceAccount Service Account Fetching
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetServiceAccountApiParams - Parameters for the request
+		@return GetServiceAccountApiRequest
+	*/
+	GetServiceAccountWithParams(ctx context.Context, args *GetServiceAccountApiParams) GetServiceAccountApiRequest
+
+	// Interface only available internally
+	getServiceAccountExecute(r GetServiceAccountApiRequest) (*ServiceAccountDetails, *http.Response, error)
 
 	/*
 		ListOrganizationInvitations Return All Organization Invitations
@@ -258,7 +329,7 @@ type OrganizationsApi interface {
 	/*
 		ListOrganizations Return All Organizations
 
-		Returns all organizations to which you belong. To use this resource, the requesting API Key must have the Organization Member role.
+		Returns all organizations to which the requesting API Key has access. To use this resource, the requesting API Key must have the Organization Member role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@return ListOrganizationsApiRequest
@@ -276,6 +347,29 @@ type OrganizationsApi interface {
 
 	// Interface only available internally
 	listOrganizationsExecute(r ListOrganizationsApiRequest) (*PaginatedOrganization, *http.Response, error)
+
+	/*
+		ListServiceAccounts Return All Service Accounts
+
+		[experimental] Return Service Accounts list containing service account details.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@return ListServiceAccountsApiRequest
+	*/
+	ListServiceAccounts(ctx context.Context, orgId string) ListServiceAccountsApiRequest
+	/*
+		ListServiceAccounts Return All Service Accounts
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListServiceAccountsApiParams - Parameters for the request
+		@return ListServiceAccountsApiRequest
+	*/
+	ListServiceAccountsWithParams(ctx context.Context, args *ListServiceAccountsApiParams) ListServiceAccountsApiRequest
+
+	// Interface only available internally
+	listServiceAccountsExecute(r ListServiceAccountsApiRequest) (*PaginatedServiceAccounts, *http.Response, error)
 
 	/*
 		RemoveOrganizationUser Remove One MongoDB Cloud User from One Organization
@@ -417,6 +511,30 @@ type OrganizationsApi interface {
 
 	// Interface only available internally
 	updateOrganizationSettingsExecute(r UpdateOrganizationSettingsApiRequest) (*OrganizationSettings, *http.Response, error)
+
+	/*
+		UpdateServiceAccount Service Account Update
+
+		[experimental] Update Service Account.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param serviceAccountId Id of the service account.
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@return UpdateServiceAccountApiRequest
+	*/
+	UpdateServiceAccount(ctx context.Context, serviceAccountId string, orgId string, serviceAccountUpdateRequest *ServiceAccountUpdateRequest) UpdateServiceAccountApiRequest
+	/*
+		UpdateServiceAccount Service Account Update
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param UpdateServiceAccountApiParams - Parameters for the request
+		@return UpdateServiceAccountApiRequest
+	*/
+	UpdateServiceAccountWithParams(ctx context.Context, args *UpdateServiceAccountApiParams) UpdateServiceAccountApiRequest
+
+	// Interface only available internally
+	updateServiceAccountExecute(r UpdateServiceAccountApiRequest) (*ServiceAccountDetails, *http.Response, error)
 }
 
 // OrganizationsApiService OrganizationsApi service
@@ -643,6 +761,145 @@ func (a *OrganizationsApiService) createOrganizationInvitationExecute(r CreateOr
 	}
 	// body params
 	localVarPostBody = r.organizationInvitationRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		var v ApiError
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
+		newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type CreateServiceAccountApiRequest struct {
+	ctx                   context.Context
+	ApiService            OrganizationsApi
+	orgId                 string
+	serviceAccountRequest *ServiceAccountRequest
+}
+
+type CreateServiceAccountApiParams struct {
+	OrgId                 string
+	ServiceAccountRequest *ServiceAccountRequest
+}
+
+func (a *OrganizationsApiService) CreateServiceAccountWithParams(ctx context.Context, args *CreateServiceAccountApiParams) CreateServiceAccountApiRequest {
+	return CreateServiceAccountApiRequest{
+		ApiService:            a,
+		ctx:                   ctx,
+		orgId:                 args.OrgId,
+		serviceAccountRequest: args.ServiceAccountRequest,
+	}
+}
+
+func (r CreateServiceAccountApiRequest) Execute() (*ServiceAccount, *http.Response, error) {
+	return r.ApiService.createServiceAccountExecute(r)
+}
+
+/*
+CreateServiceAccount Service Account Creation
+
+[experimental] Create Service Account containing client id and client secrets.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return CreateServiceAccountApiRequest
+*/
+func (a *OrganizationsApiService) CreateServiceAccount(ctx context.Context, orgId string, serviceAccountRequest *ServiceAccountRequest) CreateServiceAccountApiRequest {
+	return CreateServiceAccountApiRequest{
+		ApiService:            a,
+		ctx:                   ctx,
+		orgId:                 orgId,
+		serviceAccountRequest: serviceAccountRequest,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ServiceAccount
+func (a *OrganizationsApiService) createServiceAccountExecute(r CreateServiceAccountApiRequest) (*ServiceAccount, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ServiceAccount
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.CreateServiceAccount")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/serviceAccounts"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if strlen(r.orgId) < 24 {
+		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
+	}
+	if strlen(r.orgId) > 24 {
+		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
+	}
+	if r.serviceAccountRequest == nil {
+		return localVarReturnValue, nil, reportError("serviceAccountRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-02-01+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-02-01+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.serviceAccountRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -957,6 +1214,130 @@ func (a *OrganizationsApiService) deleteOrganizationInvitationExecute(r DeleteOr
 	}
 
 	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type DeleteServiceAccountApiRequest struct {
+	ctx              context.Context
+	ApiService       OrganizationsApi
+	serviceAccountId string
+	orgId            string
+}
+
+type DeleteServiceAccountApiParams struct {
+	ServiceAccountId string
+	OrgId            string
+}
+
+func (a *OrganizationsApiService) DeleteServiceAccountWithParams(ctx context.Context, args *DeleteServiceAccountApiParams) DeleteServiceAccountApiRequest {
+	return DeleteServiceAccountApiRequest{
+		ApiService:       a,
+		ctx:              ctx,
+		serviceAccountId: args.ServiceAccountId,
+		orgId:            args.OrgId,
+	}
+}
+
+func (r DeleteServiceAccountApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.deleteServiceAccountExecute(r)
+}
+
+/*
+DeleteServiceAccount Service Account Deletion.
+
+[experimental] Delete Service Account.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param serviceAccountId Id of the service account.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return DeleteServiceAccountApiRequest
+*/
+func (a *OrganizationsApiService) DeleteServiceAccount(ctx context.Context, serviceAccountId string, orgId string) DeleteServiceAccountApiRequest {
+	return DeleteServiceAccountApiRequest{
+		ApiService:       a,
+		ctx:              ctx,
+		serviceAccountId: serviceAccountId,
+		orgId:            orgId,
+	}
+}
+
+// Execute executes the request
+func (a *OrganizationsApiService) deleteServiceAccountExecute(r DeleteServiceAccountApiRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.DeleteServiceAccount")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{serviceAccountId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"serviceAccountId"+"}", url.PathEscape(parameterValueToString(r.serviceAccountId, "serviceAccountId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if strlen(r.orgId) < 24 {
+		return nil, reportError("orgId must have at least 24 elements")
+	}
+	if strlen(r.orgId) > 24 {
+		return nil, reportError("orgId must have less than 24 elements")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-02-01+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		var v ApiError
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
+		newErr.model = v
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
 }
 
 type GetOrganizationApiRequest struct {
@@ -1310,6 +1691,142 @@ func (a *OrganizationsApiService) getOrganizationSettingsExecute(r GetOrganizati
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		var v ApiError
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
+		newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type GetServiceAccountApiRequest struct {
+	ctx              context.Context
+	ApiService       OrganizationsApi
+	orgId            string
+	serviceAccountId string
+}
+
+type GetServiceAccountApiParams struct {
+	OrgId            string
+	ServiceAccountId string
+}
+
+func (a *OrganizationsApiService) GetServiceAccountWithParams(ctx context.Context, args *GetServiceAccountApiParams) GetServiceAccountApiRequest {
+	return GetServiceAccountApiRequest{
+		ApiService:       a,
+		ctx:              ctx,
+		orgId:            args.OrgId,
+		serviceAccountId: args.ServiceAccountId,
+	}
+}
+
+func (r GetServiceAccountApiRequest) Execute() (*ServiceAccountDetails, *http.Response, error) {
+	return r.ApiService.getServiceAccountExecute(r)
+}
+
+/*
+GetServiceAccount Service Account Fetching
+
+[experimental] Get Service Account.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param serviceAccountId Id of the service account.
+	@return GetServiceAccountApiRequest
+*/
+func (a *OrganizationsApiService) GetServiceAccount(ctx context.Context, orgId string, serviceAccountId string) GetServiceAccountApiRequest {
+	return GetServiceAccountApiRequest{
+		ApiService:       a,
+		ctx:              ctx,
+		orgId:            orgId,
+		serviceAccountId: serviceAccountId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ServiceAccountDetails
+func (a *OrganizationsApiService) getServiceAccountExecute(r GetServiceAccountApiRequest) (*ServiceAccountDetails, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ServiceAccountDetails
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.GetServiceAccount")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{serviceAccountId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"serviceAccountId"+"}", url.PathEscape(parameterValueToString(r.serviceAccountId, "serviceAccountId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if strlen(r.orgId) < 24 {
+		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
+	}
+	if strlen(r.orgId) > 24 {
+		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-02-01+json", "application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1936,7 +2453,7 @@ func (r ListOrganizationsApiRequest) Execute() (*PaginatedOrganization, *http.Re
 /*
 ListOrganizations Return All Organizations
 
-Returns all organizations to which you belong. To use this resource, the requesting API Key must have the Organization Member role.
+Returns all organizations to which the requesting API Key has access. To use this resource, the requesting API Key must have the Organization Member role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ListOrganizationsApiRequest
@@ -2005,6 +2522,168 @@ func (a *OrganizationsApiService) listOrganizationsExecute(r ListOrganizationsAp
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		var v ApiError
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
+		newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ListServiceAccountsApiRequest struct {
+	ctx          context.Context
+	ApiService   OrganizationsApi
+	orgId        string
+	itemsPerPage *int
+	pageNum      *int
+}
+
+type ListServiceAccountsApiParams struct {
+	OrgId        string
+	ItemsPerPage *int
+	PageNum      *int
+}
+
+func (a *OrganizationsApiService) ListServiceAccountsWithParams(ctx context.Context, args *ListServiceAccountsApiParams) ListServiceAccountsApiRequest {
+	return ListServiceAccountsApiRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		orgId:        args.OrgId,
+		itemsPerPage: args.ItemsPerPage,
+		pageNum:      args.PageNum,
+	}
+}
+
+// Number of items that the response returns per page.
+func (r ListServiceAccountsApiRequest) ItemsPerPage(itemsPerPage int) ListServiceAccountsApiRequest {
+	r.itemsPerPage = &itemsPerPage
+	return r
+}
+
+// Number of the page that displays the current set of the total objects that the response returns.
+func (r ListServiceAccountsApiRequest) PageNum(pageNum int) ListServiceAccountsApiRequest {
+	r.pageNum = &pageNum
+	return r
+}
+
+func (r ListServiceAccountsApiRequest) Execute() (*PaginatedServiceAccounts, *http.Response, error) {
+	return r.ApiService.listServiceAccountsExecute(r)
+}
+
+/*
+ListServiceAccounts Return All Service Accounts
+
+[experimental] Return Service Accounts list containing service account details.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return ListServiceAccountsApiRequest
+*/
+func (a *OrganizationsApiService) ListServiceAccounts(ctx context.Context, orgId string) ListServiceAccountsApiRequest {
+	return ListServiceAccountsApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		orgId:      orgId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return PaginatedServiceAccounts
+func (a *OrganizationsApiService) listServiceAccountsExecute(r ListServiceAccountsApiRequest) (*PaginatedServiceAccounts, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PaginatedServiceAccounts
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.ListServiceAccounts")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/serviceAccounts"
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if strlen(r.orgId) < 24 {
+		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
+	}
+	if strlen(r.orgId) > 24 {
+		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
+	}
+
+	if r.itemsPerPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	} else {
+		var defaultValue int = 100
+		r.itemsPerPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	}
+	if r.pageNum != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	} else {
+		var defaultValue int = 1
+		r.pageNum = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-02-01+json", "application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -2872,6 +3551,151 @@ func (a *OrganizationsApiService) updateOrganizationSettingsExecute(r UpdateOrga
 	}
 	// body params
 	localVarPostBody = r.organizationSettings
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		var v ApiError
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
+		newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type UpdateServiceAccountApiRequest struct {
+	ctx                         context.Context
+	ApiService                  OrganizationsApi
+	serviceAccountId            string
+	orgId                       string
+	serviceAccountUpdateRequest *ServiceAccountUpdateRequest
+}
+
+type UpdateServiceAccountApiParams struct {
+	ServiceAccountId            string
+	OrgId                       string
+	ServiceAccountUpdateRequest *ServiceAccountUpdateRequest
+}
+
+func (a *OrganizationsApiService) UpdateServiceAccountWithParams(ctx context.Context, args *UpdateServiceAccountApiParams) UpdateServiceAccountApiRequest {
+	return UpdateServiceAccountApiRequest{
+		ApiService:                  a,
+		ctx:                         ctx,
+		serviceAccountId:            args.ServiceAccountId,
+		orgId:                       args.OrgId,
+		serviceAccountUpdateRequest: args.ServiceAccountUpdateRequest,
+	}
+}
+
+func (r UpdateServiceAccountApiRequest) Execute() (*ServiceAccountDetails, *http.Response, error) {
+	return r.ApiService.updateServiceAccountExecute(r)
+}
+
+/*
+UpdateServiceAccount Service Account Update
+
+[experimental] Update Service Account.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param serviceAccountId Id of the service account.
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return UpdateServiceAccountApiRequest
+*/
+func (a *OrganizationsApiService) UpdateServiceAccount(ctx context.Context, serviceAccountId string, orgId string, serviceAccountUpdateRequest *ServiceAccountUpdateRequest) UpdateServiceAccountApiRequest {
+	return UpdateServiceAccountApiRequest{
+		ApiService:                  a,
+		ctx:                         ctx,
+		serviceAccountId:            serviceAccountId,
+		orgId:                       orgId,
+		serviceAccountUpdateRequest: serviceAccountUpdateRequest,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ServiceAccountDetails
+func (a *OrganizationsApiService) updateServiceAccountExecute(r UpdateServiceAccountApiRequest) (*ServiceAccountDetails, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ServiceAccountDetails
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.UpdateServiceAccount")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{serviceAccountId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"serviceAccountId"+"}", url.PathEscape(parameterValueToString(r.serviceAccountId, "serviceAccountId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(parameterValueToString(r.orgId, "orgId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if strlen(r.orgId) < 24 {
+		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
+	}
+	if strlen(r.orgId) > 24 {
+		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
+	}
+	if r.serviceAccountUpdateRequest == nil {
+		return localVarReturnValue, nil, reportError("serviceAccountUpdateRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-02-01+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-02-01+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.serviceAccountUpdateRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

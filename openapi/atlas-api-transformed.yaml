@@ -23,8 +23,8 @@ info:
     url: https://creativecommons.org/licenses/by-nc-sa/3.0/us/
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
-  version: 2.0~04131a87ec
-  x-xgen-sha: 04131a87ec55f7b8c6c56c2ff1beb80dc12e5e38
+  version: 2.0~3aa88d967a
+  x-xgen-sha: 3aa88d967aebfc70327b9cef16eb062fac99ee88
 servers:
   - url: https://cloud.mongodb.com
 tags:
@@ -195,6 +195,9 @@ tags:
     name: Shared-Tier Restore Jobs
   - description: Returns and requests to download shared-tier database deployment snapshots.
     name: Shared-Tier Snapshots
+  - description: Returns, adds, edits, and removes Streams Instances. This resource
+      requires your project ID.
+    name: Streams
   - description: Returns, adds, edits, or removes teams.
     name: Teams
   - description: >-
@@ -1856,7 +1859,7 @@ paths:
             schema:
               $ref: "#/components/schemas/CreateAtlasProjectApiKey"
         description: Organization API key to be created and assigned to the specified
-          project. This request requires both body parameters.
+          project.
         required: true
       responses:
         "200":
@@ -1941,7 +1944,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: "#/components/schemas/CreateAtlasProjectApiKey"
+              $ref: "#/components/schemas/UpdateAtlasProjectApiKey"
         description: Organization API Key to be updated. This request requires a minimum
           of one of the two body parameters.
         required: true
@@ -2331,9 +2334,9 @@ paths:
         - Cloud Backups
   "/api/atlas/v2/groups/{groupId}/cloudProviderAccess":
     get:
-      description: Returns all Amazon Web Services (AWS) Identity and Access
-        Management (IAM) roles with access to the specified project. To use this
-        resource, the requesting API Key must have the Project Owner role.
+      description: Returns all cloud provider access roles with access to the
+        specified project. To use this resource, the requesting API Key must
+        have the Project Owner role.
       operationId: listCloudProviderAccessRoles
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -2355,17 +2358,13 @@ paths:
       tags:
         - Cloud Provider Access
     post:
-      description: >-
-        Creates one Amazon Web Services (AWS) Identity and Access Management
-        (IAM) role. Some MongoDB Cloud features use AWS IAM roles for
+      description: Creates one access role for the specified cloud provider. Some
+        MongoDB Cloud features use these cloud provider access roles for
         authentication. To use this resource, the requesting API Key must have
         the Project Owner role.
-
-
-        After a successful request to this API endpoint, you can add the **atlasAWSAccountArn** and **atlasAssumedRoleExternalId** values to the trust policy in your AWS console to create an IAM Assumed Amazon Resource Name (ARN).
       externalDocs:
-        description: Set Up Unified AWS Access
-        url: https://www.mongodb.com/docs/atlas/security/set-up-unified-aws-access/#std-label-set-up-unified-aws-access
+        description: Set Up Access to Cloud Providers
+        url: https://www.mongodb.com/docs/atlas/security/cloud-provider-access/
       operationId: createCloudProviderAccessRole
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -2374,7 +2373,7 @@ paths:
           application/vnd.atlas.2023-01-01+json:
             schema:
               $ref: "#/components/schemas/CloudProviderAccessRole"
-        description: Creates one AWS IAM role.
+        description: Creates one role for the specified cloud provider.
         required: true
       responses:
         "200":
@@ -2395,7 +2394,7 @@ paths:
         - Cloud Provider Access
   "/api/atlas/v2/groups/{groupId}/cloudProviderAccess/{cloudProvider}/{roleId}":
     delete:
-      description: Revokes access to the specified project for the specified AWS IAM
+      description: Revokes access to the specified project for the specified access
         role. To use this resource, the requesting API Key must have the Project
         Owner role.
       operationId: deauthorizeCloudProviderAccessRole
@@ -2436,9 +2435,8 @@ paths:
         - Cloud Provider Access
   "/api/atlas/v2/groups/{groupId}/cloudProviderAccess/{roleId}":
     get:
-      description: Returns the Amazon Web Services (AWS) Identity and Access
-        Management (IAM) role with the specified id and with access to the
-        specified project. To use this resource, the requesting API Key must
+      description: Returns the access role with the specified id and with access to
+        the specified project. To use this resource, the requesting API Key must
         have the Project Owner role.
       operationId: getCloudProviderAccessRole
       parameters:
@@ -2471,14 +2469,13 @@ paths:
         - Cloud Provider Access
       x-xgen-experimental: true
     patch:
-      description: Grants access to the specified project for the specified Amazon Web
-        Services (AWS) Identity and Access Management (IAM) role. To use this
-        resource, the requesting API Key must have the Project Owner role. This
-        API endpoint is one step in a procedure to create unified AWS access for
-        MongoDB Cloud services.
+      description: Grants access to the specified project for the specified access
+        role. To use this resource, the requesting API Key must have the Project
+        Owner role. This API endpoint is one step in a procedure to create
+        unified access for MongoDB Cloud services.
       externalDocs:
-        description: Set Up Unified AWS Access
-        url: https://www.mongodb.com/docs/atlas/security/set-up-unified-aws-access/#std-label-set-up-unified-aws-access
+        description: Set Up Access to Cloud Providers
+        url: https://www.mongodb.com/docs/atlas/security/cloud-provider-access/
       operationId: authorizeCloudProviderAccessRole
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -2496,7 +2493,7 @@ paths:
           application/vnd.atlas.2023-01-01+json:
             schema:
               $ref: "#/components/schemas/CloudProviderAccessRole"
-        description: Grants access to the specified project for the specified AWS IAM role.
+        description: Grants access to the specified project for the specified access role.
         required: true
       responses:
         "200":
@@ -7462,6 +7459,18 @@ paths:
             type: array
             items:
               $ref: "#/components/schemas/EventTypeForNdsGroup"
+        - description: >-
+            Category of event that you would like to exclude from query results,
+            such as CLUSTER_CREATED
+
+
+            **IMPORTANT**: Event type names change frequently. Verify that you specify the event type correctly by checking the complete list of event types.
+          in: query
+          name: excludedEventType
+          schema:
+            type: array
+            items:
+              $ref: "#/components/schemas/EventTypeForNdsGroup"
         - description: Flag that indicates whether to include the raw document in the
             output. The raw document contains additional meta information about
             the event.
@@ -10671,20 +10680,9 @@ paths:
         - Monitoring and Logs
   "/api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName}":
     get:
-      description: >-
-        Returns the measurements of one disk or partition for the specified host
-        for the specified project. Returned value can be one of the following:
-
-        - Throughput of I/O operations for the disk partition used for the MongoDB process
-
-        - Percentage of time during which requests the partition issued and serviced
-
-        - Latency per operation type of the disk partition used for the MongoDB process
-
-        - Amount of free and used disk space on the disk partition used for the MongoDB process 
-
-
-        To use this resource, the requesting API Key must have the Project Read Only role.
+      description: Returns measurement details for one disk or partition for the
+        specified host for the specified project. To use this resource, the
+        requesting API Key must have the Project Read Only role.
       operationId: listDiskMeasurements
       parameters:
         - description: Human-readable label of the disk or partition to which the
@@ -10806,7 +10804,7 @@ paths:
   "/api/atlas/v2/groups/{groupId}/processes/{processId}/measurements":
     get:
       description: >-
-        Returns measurements of the disk or partition per process for the
+        Returns disk, partition, or host measurements per process for the
         specified host for the specified project. Returned value can be one of
         the following:
 
@@ -10816,7 +10814,9 @@ paths:
 
         - Latency per operation type of the disk partition used for the MongoDB process
 
-        - Amount of free and used disk space on the disk partition used for the MongoDB process 
+        - Amount of free and used disk space on the disk partition used for the MongoDB process
+
+        - Measurements for the host, such as CPU usage or number of I/O operations
 
 
         To use this resource, the requesting API Key must have the Project Read Only role.
@@ -11797,6 +11797,393 @@ paths:
       summary: Update One Project Settings
       tags:
         - Projects
+  "/api/atlas/v2/groups/{groupId}/streams":
+    get:
+      description: Returns all stream instances for the specified project.
+      operationId: listStreamInstances
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/pageNum"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedApiStreamsTenant"
+              x-xgen-version: 2023-02-01
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Return All Project Stream Instances
+      tags:
+        - Streams
+      x-xgen-experimental: true
+    post:
+      description: Creates one stream instance in the specified project. To use this
+        resource, the requesting API Key must have the Project Owner roles.
+      operationId: createStreamInstance
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+      requestBody:
+        content:
+          application/vnd.atlas.2023-02-01+json:
+            schema:
+              $ref: "#/components/schemas/StreamsTenant"
+        description: Details to create one streams instance in the specified project.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              schema:
+                $ref: "#/components/schemas/StreamsTenant"
+              x-xgen-version: 2023-02-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Create One Stream Instance
+      tags:
+        - Streams
+      x-xgen-experimental: true
+  "/api/atlas/v2/groups/{groupId}/streams/{tenantName}":
+    delete:
+      description: Delete one stream instance in the specified project. To use this
+        resource, the requesting API Key must have the Project Owner roles.
+      operationId: deleteStreamInstance
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the stream instance to delete.
+          in: path
+          name: tenantName
+          required: true
+          schema:
+            type: string
+      responses:
+        "202":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              schema:
+                $ref: "#/components/schemas/NoBody"
+              x-xgen-version: 2023-02-01
+          description: Accepted
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Delete One Stream Instance
+      tags:
+        - Streams
+      x-xgen-experimental: true
+    get:
+      description: Returns the details of one stream instance within the specified
+        project. To use this resource, the requesting API Key must have the
+        Project Read Only role.
+      operationId: getStreamInstance
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the stream instance to return.
+          in: path
+          name: tenantName
+          required: true
+          schema:
+            type: string
+        - description: Flag to indicate whether connections information should be included
+            in the stream instance.
+          in: query
+          name: includeConnections
+          schema:
+            type: boolean
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              schema:
+                $ref: "#/components/schemas/StreamsTenant"
+              x-xgen-version: 2023-02-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Return One Stream Instance
+      tags:
+        - Streams
+      x-xgen-experimental: true
+    patch:
+      description: Update one stream instance in the specified project. To use this
+        resource, the requesting API Key must have the Project Owner roles.
+      operationId: updateStreamInstance
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the stream instance to update.
+          in: path
+          name: tenantName
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/vnd.atlas.2023-02-01+json:
+            schema:
+              $ref: "#/components/schemas/StreamsDataProcessRegion"
+        description: Details of the new data process region to update in the streams
+          instance.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              schema:
+                $ref: "#/components/schemas/StreamsTenant"
+              x-xgen-version: 2023-02-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Update One Stream Instance
+      tags:
+        - Streams
+      x-xgen-experimental: true
+  "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections":
+    get:
+      description: Returns all connections of the stream instance for the specified project.
+      operationId: listStreamConnections
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/pageNum"
+        - description: Human-readable label that identifies the stream instance.
+          in: path
+          name: tenantName
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedApiStreamsConnection"
+              x-xgen-version: 2023-02-01
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Return All Connections Of The Stream Instances
+      tags:
+        - Streams
+      x-xgen-experimental: true
+    post:
+      description: Creates one connection for a stream instance in the specified
+        project. To use this resource, the requesting API Key must have the
+        Project Owner roles.
+      operationId: createStreamConnection
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the stream instance.
+          in: path
+          name: tenantName
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/vnd.atlas.2023-02-01+json:
+            schema:
+              $ref: "#/components/schemas/StreamsConnection"
+        description: Details to create one connection for a streams instance in the
+          specified project.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              schema:
+                $ref: "#/components/schemas/StreamsConnection"
+              x-xgen-version: 2023-02-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "409":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Create One Connection
+      tags:
+        - Streams
+      x-xgen-experimental: true
+  "/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}":
+    delete:
+      description: Delete one connection of the specified stream instance. To use this
+        resource, the requesting API Key must have the Project Owner roles.
+      operationId: deleteStreamConnection
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the stream instance.
+          in: path
+          name: tenantName
+          required: true
+          schema:
+            type: string
+        - description: Human-readable label that identifies the stream connection.
+          in: path
+          name: connectionName
+          required: true
+          schema:
+            type: string
+      responses:
+        "202":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              schema:
+                $ref: "#/components/schemas/NoBody"
+              x-xgen-version: 2023-02-01
+          description: Accepted
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Delete One Stream Connection
+      tags:
+        - Streams
+      x-xgen-experimental: true
+    get:
+      description: Returns the details of one stream connection within the specified
+        stream instance. To use this resource, the requesting API Key must have
+        the Project Read Only role.
+      operationId: getStreamConnection
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the stream instance to return.
+          in: path
+          name: tenantName
+          required: true
+          schema:
+            type: string
+        - description: Human-readable label that identifies the stream connection to return.
+          in: path
+          name: connectionName
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              schema:
+                $ref: "#/components/schemas/StreamsConnection"
+              x-xgen-version: 2023-02-01
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Return One Stream Connection
+      tags:
+        - Streams
+      x-xgen-experimental: true
+    patch:
+      description: Update one connection for the specified stream instance in the
+        specified project. To use this resource, the requesting API Key must
+        have the Project Owner roles.
+      operationId: updateStreamConnection
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the stream instance.
+          in: path
+          name: tenantName
+          required: true
+          schema:
+            type: string
+        - description: Human-readable label that identifies the stream connection.
+          in: path
+          name: connectionName
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/vnd.atlas.2023-02-01+json:
+            schema:
+              $ref: "#/components/schemas/StreamsConnection"
+        description: Details to update one connection for a streams instance in the
+          specified project.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              schema:
+                $ref: "#/components/schemas/StreamsConnection"
+              x-xgen-version: 2023-02-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Update One Stream Connection
+      tags:
+        - Streams
+      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/teams":
     get:
       description: Returns all teams to which the authenticated user has access in the
@@ -12196,7 +12583,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/PaginatedApiAppUser"
+                $ref: "#/components/schemas/PaginatedAppUser"
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -12296,8 +12683,9 @@ paths:
       x-xgen-experimental: true
   /api/atlas/v2/orgs:
     get:
-      description: Returns all organizations to which you belong. To use this
-        resource, the requesting API Key must have the Organization Member role.
+      description: Returns all organizations to which the requesting API Key has
+        access. To use this resource, the requesting API Key must have the
+        Organization Member role.
       operationId: listOrganizations
       parameters:
         - $ref: "#/components/parameters/includeCount"
@@ -12528,8 +12916,7 @@ paths:
           application/vnd.atlas.2023-01-01+json:
             schema:
               $ref: "#/components/schemas/CreateAtlasOrganizationApiKey"
-        description: Organization API Key to be created. This request requires both body
-          parameters.
+        description: Organization API Key to be created.
         required: true
       responses:
         "200":
@@ -12650,7 +13037,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: "#/components/schemas/CreateAtlasOrganizationApiKey"
+              $ref: "#/components/schemas/UpdateAtlasOrganizationApiKey"
         description: Organization API key to be updated. This request requires a minimum
           of one of the two body parameters.
         required: true
@@ -12878,6 +13265,88 @@ paths:
       summary: Return One Access List Entry for One Organization API Key
       tags:
         - Programmatic API Keys
+      x-xgen-experimental: true
+  "/api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage":
+    post:
+      description: Creates a query process within the Cost Explorer for the given
+        parameters. A token is returned that can be used to poll the status of
+        the query and eventually retrievethe results.
+      operationId: createCostExplorerQueryProcess
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+      requestBody:
+        content:
+          application/vnd.atlas.2023-01-01+json:
+            schema:
+              $ref: "#/components/schemas/CostExplorerFilterRequestBody"
+        description: Filter parameters for the Cost Explorer query.
+        required: true
+      responses:
+        "202":
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: "#/components/schemas/CostExplorerFilterResponse"
+              x-xgen-version: 2023-01-01
+          description: Accepted
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Create Cost Explorer query process
+      tags:
+        - Invoices
+      x-xgen-experimental: true
+  "/api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage/{token}":
+    get:
+      description: Returns the usage details for a Cost Explorer query, if the query
+        is finished and the data is ready to be viewed. If the data is not
+        ready, a 'processing' response willindicate that another request should
+        be sent later to view the data.
+      operationId: createCostExplorerQueryProcess_1
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - description: Unique 64 digit string that identifies the Cost Explorer query.
+          in: path
+          name: token
+          required: true
+          schema:
+            type: string
+            example: 4ABBE973862346D40F3AE859D4BE96E0F895764EB14EAB039E7B82F9D638C05C
+            maxLength: 64
+            minLength: 64
+      responses:
+        "102":
+          description: Processing
+        "200":
+          content:
+            application/vnd.atlas.2023-01-01+csv:
+              schema:
+                type: string
+              x-xgen-version: 2023-01-01
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: "#/components/schemas/CostExplorerQueryResult"
+              x-xgen-version: 2023-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Return results from a given Cost Explorer query, or notify that the
+        results are not ready yet.
+      tags:
+        - Invoices
       x-xgen-experimental: true
   "/api/atlas/v2/orgs/{orgId}/events":
     get:
@@ -13562,6 +14031,155 @@ paths:
       summary: Create One Link-Token
       tags:
         - Cloud Migration Service
+  "/api/atlas/v2/orgs/{orgId}/serviceAccounts":
+    get:
+      description: Return Service Accounts list containing service account details.
+      operationId: listServiceAccounts
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/pageNum"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedServiceAccounts"
+              x-xgen-version: 2023-02-01
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Return All Service Accounts
+      tags:
+        - Organizations
+      x-xgen-experimental: true
+    post:
+      description: Create Service Account containing client id and client secrets.
+      operationId: createServiceAccount
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+      requestBody:
+        content:
+          application/vnd.atlas.2023-02-01+json:
+            schema:
+              $ref: "#/components/schemas/ServiceAccountRequest"
+        description: Details to create service account in the specified organization.
+        required: true
+      responses:
+        "201":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              schema:
+                $ref: "#/components/schemas/ServiceAccount"
+              x-xgen-version: 2023-02-01
+          description: Created
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Service Account Creation
+      tags:
+        - Organizations
+      x-xgen-experimental: true
+  "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{serviceAccountId}":
+    delete:
+      description: Delete Service Account.
+      operationId: deleteServiceAccount
+      parameters:
+        - description: Id of the service account.
+          in: path
+          name: serviceAccountId
+          required: true
+          schema:
+            type: string
+        - $ref: "#/components/parameters/orgId"
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              x-xgen-version: 2023-02-01
+          description: This endpoint does not return a response body.
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Service Account Deletion.
+      tags:
+        - Organizations
+      x-xgen-experimental: true
+    get:
+      description: Get Service Account.
+      operationId: getServiceAccount
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - description: Id of the service account.
+          in: path
+          name: serviceAccountId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              schema:
+                $ref: "#/components/schemas/ServiceAccountDetails"
+              x-xgen-version: 2023-02-01
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Service Account Fetching
+      tags:
+        - Organizations
+      x-xgen-experimental: true
+    patch:
+      description: Update Service Account.
+      operationId: updateServiceAccount
+      parameters:
+        - description: Id of the service account.
+          in: path
+          name: serviceAccountId
+          required: true
+          schema:
+            type: string
+        - $ref: "#/components/parameters/orgId"
+      requestBody:
+        content:
+          application/vnd.atlas.2023-02-01+json:
+            schema:
+              $ref: "#/components/schemas/ServiceAccountUpdateRequest"
+        description: Details to update service account in the specified organization.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              schema:
+                $ref: "#/components/schemas/ServiceAccountDetails"
+              x-xgen-version: 2023-02-01
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Service Account Update
+      tags:
+        - Organizations
+      x-xgen-experimental: true
   "/api/atlas/v2/orgs/{orgId}/settings":
     get:
       description: Returns details about the specified organization's settings. To use
@@ -16873,6 +17491,9 @@ components:
           pattern: "[a-z]([-a-z0-9]{0,62}[a-z0-9]{0,1})?"
       required:
         - containerId
+    BaseStreamsRegion:
+      type: string
+      description: Name of the cloud provider region hosting Atlas Stream Processing.
     BiConnector:
       type: object
       description: Settings needed to configure the MongoDB Connector for Business
@@ -18997,6 +19618,69 @@ components:
         - domainRestrictionEnabled
         - identityProviderId
         - orgId
+    CostExplorerFilterRequestBody:
+      type: object
+      description: Request body for a cost explorer query.
+      properties:
+        clusters:
+          type: array
+          description: The list of projects to be included in the Cost Explorer Query.
+          example:
+            - 5feeac500000000000000000
+            - 61cfdfd00000000000000000
+          items:
+            type: string
+        endDate:
+          type: string
+          format: date
+          description: The exclusive ending date for the Cost Explorer query. The date
+            must be the start of a month.
+          example: 2022-02-01
+        groupBy:
+          type: string
+          description: The dimension to group the returned usage results by. At least one
+            filter value needs to be provided for a dimension to be used.
+        includePartialMatches:
+          type: boolean
+          description: Flag to control whether usage that matches the filter criteria, but
+            does not have values for all filter criteria is included in
+            response. Default is false, which excludes the partially matching
+            data.
+        organizations:
+          type: array
+          description: The list of organizations to be included in the Cost Explorer Query.
+          example:
+            - 5feeac500000000000000000
+            - 61cfdfd00000000000000000
+          items:
+            type: string
+        projects:
+          type: array
+          description: The list of projects to be included in the Cost Explorer Query.
+          example:
+            - 5feeac500000000000000000
+            - 61cfdfd00000000000000000
+          items:
+            type: string
+        services:
+          type: array
+          description: The list of projects to be included in the Cost Explorer Query.
+          example:
+            - Data Transfer
+            - Atlas Data Federation
+          items:
+            type: string
+        startDate:
+          type: string
+          format: date
+          description: The inclusive starting date for the Cost Explorer query. The date
+            must be the start of a month.
+          example: 2022-02-01
+      required:
+        - endDate
+        - startDate
+    CostExplorerQueryResult:
+      type: object
     CreateAtlasOrganizationApiKey:
       type: object
       properties:
@@ -19013,6 +19697,10 @@ components:
             organization.
           items:
             type: string
+          minItems: 1
+      required:
+        - desc
+        - roles
     CreateAtlasProjectApiKey:
       type: object
       properties:
@@ -19029,6 +19717,10 @@ components:
             project.
           items:
             type: string
+          minItems: 1
+      required:
+        - desc
+        - roles
     CreateEndpointRequest:
       type: object
       properties:
@@ -21518,6 +22210,16 @@ components:
           type: string
           description: Unique identifier of resource type.
           example: cluster
+    ExperimentRegistration:
+      type: object
+      properties:
+        experimentId:
+          type: string
+        key:
+          type: string
+        variationId:
+          type: integer
+          format: int32
     ExportStatus:
       type: object
       description: State of the export job for the collections on the replica set only.
@@ -21762,67 +22464,94 @@ components:
     Group:
       type: object
       properties:
-        clusterCount:
+        activeAgentCount:
+          type: integer
+          format: int32
+        chttl:
           type: integer
           format: int64
-          description: Quantity of MongoDB Cloud clusters deployed in this project.
-          readOnly: true
-        created:
+        cre:
           type: string
           format: date-time
-          description: Date and time when MongoDB Cloud created this project. This
-            parameter expresses its value in the ISO 8601 timestamp format in
-            UTC.
-          readOnly: true
+        defaultTimeZoneDisplay:
+          type: string
+        defaultTimeZoneDisplayShort:
+          type: string
+        defaultTimeZoneId:
+          type: string
+        disableDbstats:
+          type: boolean
+        enableAllHostLogs:
+          type: boolean
+        enableAllHostProfilers:
+          type: boolean
+        enableCurrentIpWarning:
+          type: boolean
+        experiments:
+          type: array
+          items:
+            $ref: "#/components/schemas/ExperimentRegistration"
+        featureFlags:
+          type: array
+          items:
+            $ref: "#/components/schemas/ToggleableFeatureFlag"
+        groupType:
+          type: string
+        hasActiveBackups:
+          type: boolean
+        hasActiveUI:
+          type: boolean
+        hasAddedHosts:
+          type: boolean
         id:
           type: string
-          description: Unique 24-hexadecimal digit string that identifies the MongoDB
-            Cloud project.
           example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
           pattern: ^([a-f0-9]{24})$
-          readOnly: true
-        links:
-          type: array
-          description: List of one or more Uniform Resource Locators (URLs) that point to
-            API sub-resources, related API resources, or both. RFC 5988 outlines
-            these relationships.
-          externalDocs:
-            description: Web Linking Specification (RFC 5988)
-            url: https://datatracker.ietf.org/doc/html/rfc5988
-          items:
-            $ref: "#/components/schemas/Link"
-          readOnly: true
+        integrations:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: "#/components/schemas/Integration"
+        isIntercomEligible:
+          type: boolean
+        isProjectOverviewEnabled:
+          type: boolean
+        lastClusterActiveSampleTime:
+          type: string
+          format: date-time
+        lmav:
+          type: string
         name:
           type: string
-          description: Human-readable label that identifies the project included in the
-            MongoDB Cloud organization.
-          maxLength: 64
-          minLength: 1
-          pattern: ^[\p{L}\p{N}\-_.(),:&@+']{1,64}$
-        orgId:
+        newRelicInsightsAccountId:
           type: string
-          description: Unique 24-hexadecimal digit string that identifies the MongoDB
-            Cloud organization to which the project belongs.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: ^([a-f0-9]{24})$
-        regionUsageRestrictions:
+        newRelicInsightsReadToken:
           type: string
-          default: NONE
-          description: Region usage restrictions that designate the project's AWS region.
-        withDefaultAlertsSettings:
+        newRelicInsightsWriteToken:
+          type: string
+        newRelicLicenseKey:
+          type: string
+        preferredHostnames:
+          type: array
+          items:
+            $ref: "#/components/schemas/PreferredHostname"
+        prom:
+          $ref: "#/components/schemas/PrometheusConfig"
+        status:
+          $ref: "#/components/schemas/GroupStatus"
+        storageConfig:
+          $ref: "#/components/schemas/GroupStorageConfig"
+        summaryStatistics:
+          $ref: "#/components/schemas/GroupSummaryStatistics"
+        suppressMongosAutoDiscovery:
           type: boolean
-          description: Flag that indicates whether to create the project with default
-            alert settings.
-          writeOnly: true
-      required:
-        - clusterCount
-        - created
-        - name
-        - orgId
+        teams:
+          type: array
+          items:
+            $ref: "#/components/schemas/TeamRoleAssignment"
+        useCNRegionsOnly:
+          type: boolean
     GroupAlertsConfig:
       type: object
       properties:
@@ -22138,6 +22867,47 @@ components:
           type: boolean
           description: Flag that indicates whether to enable the Schema Advisor for the
             specified project.
+    GroupStatus:
+      type: object
+      properties:
+        displayName:
+          type: string
+        since:
+          type: string
+          format: date-time
+        status:
+          type: string
+    GroupStorageConfig:
+      type: object
+      properties:
+        mode:
+          type: string
+    GroupSummaryStatistics:
+      type: object
+      properties:
+        dataSizeBackedUpBytes:
+          type: integer
+          format: int64
+        dataSizeNoLocalBytes:
+          type: integer
+          format: int64
+        lastInvoiceAmountCents:
+          type: integer
+          format: int64
+        numBillableServer:
+          type: integer
+          format: int32
+        numCluster:
+          type: integer
+          format: int32
+        numPaidAtlasClusters:
+          type: integer
+          format: int32
+        numTotalAtlasClusters:
+          type: integer
+          format: int32
+        supportLevelLabel:
+          type: string
     HardwareSpec:
       type: object
       description: Hardware specifications for all electable nodes deployed in the
@@ -22532,6 +23302,8 @@ components:
           minLength: 24
           pattern: ^([a-f0-9]{24})$
       title: Ingestion Source
+    Integration:
+      type: object
     InvoiceLineItem:
       type: object
       description: One service included in this invoice.
@@ -22539,8 +23311,7 @@ components:
         clusterName:
           type: string
           description: Human-readable label that identifies the cluster that incurred the
-            charge. Atlas doesn't return this field for line items that describe
-            data transfer on Google Cloud Platform.
+            charge.
           maxLength: 64
           minLength: 1
           pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
@@ -24182,6 +24953,35 @@ components:
           description: Number of documents returned in this response.
           minimum: 0
           readOnly: true
+    PaginatedServiceAccounts:
+      type: object
+      description: List of the Service Accounts
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud providers when
+            completing this request.
+          items:
+            $ref: "#/components/schemas/ServiceAccountDetails"
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Number of documents returned in this response if **includeCount**
+            query param is true.
+          minimum: 0
+          readOnly: true
     PemFileInfo:
       type: object
       description: PEM file information for the identity provider's certificates.
@@ -24384,6 +25184,19 @@ components:
           readOnly: true
       readOnly: true
       title: Data Lake Pipeline Run Statistics
+    PreferredHostname:
+      type: object
+      properties:
+        endsWith:
+          type: boolean
+        id:
+          type: string
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
+        regexp:
+          type: boolean
+        value:
+          type: string
     PrivateLinkEndpoint:
       type: object
       properties:
@@ -24493,6 +25306,30 @@ components:
             with this private endpoint.
       required:
         - endpointId
+    PrometheusConfig:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        listenAddress:
+          type: string
+        metricsPath:
+          type: string
+        mode:
+          type: string
+        rateLimitIntervalSeconds:
+          type: integer
+          format: int32
+        scheme:
+          type: string
+        serviceDiscovery:
+          type: string
+        tlsPemPassword:
+          type: string
+        tlsPemPath:
+          type: string
+        username:
+          type: string
     PushBasedLogExportProject:
       type: object
       properties:
@@ -25275,6 +26112,8 @@ components:
           description: Value of metric that, when exceeded, triggers an alert.
         units:
           $ref: "#/components/schemas/ServerlessMetricUnits"
+      required:
+        - metricName
       title: Serverless Metric Threshold
     ServerlessMetricUnits:
       type: string
@@ -25424,6 +26263,216 @@ components:
           writeOnly: true
       required:
         - providerName
+    ServiceAccount:
+      type: object
+      properties:
+        accessList:
+          type: array
+          items:
+            $ref: "#/components/schemas/ServiceAccountAccessList"
+          uniqueItems: true
+        description:
+          type: string
+          description: Description of the service account.
+        id:
+          type: string
+          description: ID for the service account.
+          pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
+        name:
+          type: string
+          description: Name for service account.
+        roles:
+          type: array
+          items:
+            $ref: "#/components/schemas/ServiceAccountAccessRole"
+          uniqueItems: true
+        secrets:
+          type: array
+          description: List of secrets.
+          items:
+            $ref: "#/components/schemas/ServiceAccountSecret"
+          uniqueItems: true
+    ServiceAccountAccessList:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+          description: Times it has been used.
+          readOnly: true
+        createdAt:
+          type: string
+          format: date-time
+          description: Time of creation.
+          readOnly: true
+        lastUsedAddress:
+          type: string
+          description: Last address where the service account was used from.
+          readOnly: true
+        lastUsedAt:
+          type: string
+          format: date-time
+          description: Last time the access list was used.
+          readOnly: true
+        networkAddress:
+          type: string
+          description: An IP address or CIDR notation.
+    ServiceAccountAccessRole:
+      type: object
+      properties:
+        groupId:
+          type: string
+          description: Project Id.
+        orgId:
+          type: string
+          description: Organization Id.
+        roleName:
+          type: string
+          description: Access Role.
+    ServiceAccountDetails:
+      type: object
+      properties:
+        accessList:
+          type: array
+          description: Service account access list.
+          items:
+            $ref: "#/components/schemas/ServiceAccountAccessList"
+          uniqueItems: true
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp representing creation time.
+        description:
+          type: string
+          description: Description of the service account.
+        id:
+          type: string
+          description: Service account client id.
+          pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
+        name:
+          type: string
+          description: Service account name.
+        roles:
+          type: array
+          items:
+            $ref: "#/components/schemas/ServiceAccountAccessRole"
+          uniqueItems: true
+        secrets:
+          type: array
+          items:
+            $ref: "#/components/schemas/ServiceAccountSecretDetails"
+          maxItems: 2
+          uniqueItems: true
+    ServiceAccountRequest:
+      type: object
+      properties:
+        accessList:
+          type: array
+          items:
+            $ref: "#/components/schemas/ServiceAccountAccessList"
+          uniqueItems: true
+        description:
+          type: string
+          description: Human readable description for service account.
+        name:
+          type: string
+          description: Human readable name for service account.
+        roles:
+          type: array
+          items:
+            $ref: "#/components/schemas/ServiceAccountAccessRole"
+          uniqueItems: true
+      required:
+        - description
+        - name
+        - roles
+    ServiceAccountSecret:
+      type: object
+      properties:
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp representing creation time.
+          readOnly: true
+        expiresAt:
+          type: string
+          format: date-time
+          description: Timestamp representing secret expiration time.
+          readOnly: true
+        id:
+          type: string
+          description: Unique 24-hexadecimal character string that identifies the secret.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        lastUsedAt:
+          type: string
+          format: date-time
+          description: Timestamp representing last time secret usage.
+          readOnly: true
+        secret:
+          type: string
+          description: Secret for the service account.
+          pattern: ^mdb_sa_sk_[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
+      required:
+        - createdAt
+        - expiresAt
+        - id
+    ServiceAccountSecretDetails:
+      type: object
+      properties:
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp representing creation time.
+          readOnly: true
+        expiresAt:
+          type: string
+          format: date-time
+          description: Timestamp representing secret expiration time.
+          readOnly: true
+        id:
+          type: string
+          description: Unique 24-hexadecimal character string that identifies the secret.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        lastUsedAt:
+          type: string
+          format: date-time
+          description: Timestamp representing last time secret usage.
+          readOnly: true
+        maskedSecretValue:
+          type: string
+          description: Value of client secret with masked values of the first 20 characters.
+          example: mdb_ic_sk_xxxxxxxx-xxxx-xxxx-xxxxxxxx12ce
+          readOnly: true
+      required:
+        - createdAt
+        - expiresAt
+        - id
+        - maskedSecretValue
+    ServiceAccountUpdateRequest:
+      type: object
+      properties:
+        accessList:
+          type: array
+          description: Service account access list.
+          items:
+            $ref: "#/components/schemas/ServiceAccountAccessList"
+          uniqueItems: true
+        description:
+          type: string
+          description: Description of the service account client.
+        name:
+          type: string
+          description: Client name for service account.
+        roles:
+          type: array
+          description: Service account access roles.
+          items:
+            $ref: "#/components/schemas/ServiceAccountAccessRole"
+          uniqueItems: true
     Source:
       type: object
       description: Document that describes the source of the migration.
@@ -25465,6 +26514,174 @@ components:
         - groupId
         - managedAuthentication
         - ssl
+    StreamsConnection:
+      type: object
+      description: Settings that define a connection to an external data store.
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        name:
+          type: string
+          description: Human-readable label that identifies the stream connection.
+        type:
+          type: string
+          description: Type of the connection. Can be either Cluster or Kafka.
+        clusterName:
+          type: string
+          description: Name of the cluster configured for this connection.
+        authentication:
+          $ref: "#/components/schemas/StreamsKafkaAuthentication"
+        bootstrapServers:
+          type: string
+          description: Comma separated list of server addresses.
+        config:
+          type: object
+          additionalProperties:
+            type: string
+            description: A map of Kafka key-value pairs for optional configuration. This is
+              a flat object, and keys can have '.' characters.
+            example: '{"group.protocol.type":"consumer","debug":"queue, msg, protocol"}'
+          description: A map of Kafka key-value pairs for optional configuration. This is
+            a flat object, and keys can have '.' characters.
+          example:
+            debug: queue, msg, protocol
+            group.protocol.type: consumer
+        security:
+          $ref: "#/components/schemas/StreamsKafkaSecurity"
+      readOnly: true
+    StreamsDataProcessRegion:
+      type: object
+      properties:
+        cloudProvider:
+          type: string
+          description: Label that identifies the cloud service provider where MongoDB
+            Cloud performs stream processing. Currently, this parameter supports
+            AWS only.
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        region:
+          $ref: "#/components/schemas/BaseStreamsRegion"
+      required:
+        - cloudProvider
+        - region
+    StreamsKafkaAuthentication:
+      type: object
+      description: User credentials required to connect to a Kafka Cluster. Includes
+        the authentication type, as well as the parameters for that
+        authentication mode.
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        mechanism:
+          type: string
+          description: Style of authentication. Can be one of PLAIN, SCRAM-256, or
+            SCRAM-512.
+        password:
+          type: string
+          format: password
+          description: Password of the account to connect to the Kafka cluster.
+          writeOnly: true
+        username:
+          type: string
+          description: Username of the account to connect to the Kafka cluster.
+    StreamsKafkaSecurity:
+      type: object
+      description: Properties for the secure transport connection to Kafka. For SSL,
+        this can include the trusted certificate to use.
+      properties:
+        brokerPublicCertificate:
+          type: string
+          description: A trusted, public x509 certificate for connecting to Kafka over SSL.
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        protocol:
+          type: string
+          description: Describes the transport type. Can be either PLAINTEXT or SSL.
+    StreamsTenant:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: Unique 24-hexadecimal character string that identifies the project.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        connections:
+          type: array
+          description: List of connections configured in the stream instance.
+          items:
+            $ref: "#/components/schemas/StreamsConnection"
+          readOnly: true
+        dataProcessRegion:
+          $ref: "#/components/schemas/StreamsDataProcessRegion"
+        groupId:
+          type: string
+          description: Unique 24-hexadecimal character string that identifies the project.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        hostnames:
+          type: array
+          description: List that contains the hostnames assigned to the stream instance.
+          items:
+            type: string
+            description: Unique hostname assigned to the stream instance.
+            readOnly: true
+          readOnly: true
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        name:
+          type: string
+          description: Human-readable label that identifies the stream instance.
     SynonymSource:
       type: object
       description: Data set that stores the mapping one or more words map to one or
@@ -25619,6 +26836,18 @@ components:
           example: 32b6e34b3d91647abb20e7b8
           maxLength: 24
           minLength: 24
+          pattern: ^([a-f0-9]{24})$
+    TeamRoleAssignment:
+      type: object
+      properties:
+        roles:
+          type: array
+          items:
+            type: string
+          uniqueItems: true
+        teamId:
+          type: string
+          example: 32b6e34b3d91647abb20e7b8
           pattern: ^([a-f0-9]{24})$
     TenantRestore:
       type: object
@@ -25982,6 +27211,13 @@ components:
             **NOTE**: When you view or edit the alert for a webhook notification, the URL appears partially redacted.
           example: https://webhook.com/****
       title: Third-Party Integration
+    ToggleableFeatureFlag:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        flag:
+          type: string
     TriggerIngestionPipelineRequest:
       type: object
       properties:
@@ -25995,6 +27231,38 @@ components:
           writeOnly: true
       required:
         - snapshotId
+    UpdateAtlasOrganizationApiKey:
+      type: object
+      properties:
+        desc:
+          type: string
+          description: Purpose or explanation provided when someone creates this
+            organization API key.
+          maxLength: 250
+          minLength: 1
+        roles:
+          type: array
+          description: List of roles to grant this API key. If you provide this list,
+            provide a minimum of one role and ensure each role applies to this
+            organization.
+          items:
+            type: string
+    UpdateAtlasProjectApiKey:
+      type: object
+      properties:
+        desc:
+          type: string
+          description: Purpose or explanation provided when someone creates this project
+            API key.
+          maxLength: 250
+          minLength: 1
+        roles:
+          type: array
+          description: List of roles to grant this API key. If you provide this list,
+            provide a minimum of one role and ensure each role applies to this
+            project.
+          items:
+            type: string
     UpdateCustomDBRole:
       type: object
       properties:
@@ -26014,34 +27282,9 @@ components:
       properties:
         groupRoles:
           type: array
-          description: List of objects that describe the user's roles.
+          description: One or more project level roles to assign to the MongoDB Cloud user.
           items:
             type: string
-            description: >+
-              Human-readable label that identifies the collection of privileges
-              that MongoDB Cloud grants a specific API key, MongoDB Cloud user,
-              or MongoDB Cloud team. These roles only include project-level
-              roles.
-
-
-              Project Roles
-
-
-              * GROUP_CLUSTER_MANAGER
-
-              * GROUP_DATA_ACCESS_ADMIN
-
-              * GROUP_DATA_ACCESS_READ_ONLY
-
-              * GROUP_DATA_ACCESS_READ_WRITE
-
-              * GROUP_OWNER
-
-              * GROUP_READ_ONLY
-
-              * GROUP_SEARCH_INDEX_EDITOR
-
-          readOnly: true
           uniqueItems: true
         links:
           type: array
@@ -26070,30 +27313,10 @@ components:
           readOnly: true
         orgRoles:
           type: array
-          description: List of objects that describe the user's roles.
+          description: One or more organization level roles to assign to the MongoDB Cloud
+            user.
           items:
             type: string
-            description: >+
-              Human-readable label that identifies the collection of privileges
-              that MongoDB Cloud grants a specific API key, MongoDB Cloud user,
-              or MongoDB Cloud team. These roles only include organization-level
-              roles.
-
-
-              Organization Roles
-
-
-              * ORG_OWNER
-
-              * ORG_MEMBER
-
-              * ORG_GROUP_CREATOR
-
-              * ORG_BILLING_ADMIN
-
-              * ORG_READ_ONLY
-
-          readOnly: true
           uniqueItems: true
     UserAccessList:
       type: object
@@ -26661,6 +27884,16 @@ components:
           description: Human-readable label that indicates the rate at which the export
             policy item occurs.
       title: export
+    CostExplorerFilterResponse:
+      type: object
+      description: Response object to give information about created query.
+      properties:
+        token:
+          type: string
+          description: The token used to identify the created Cost Explorer query.
+          example: d9ab638a801efe182f98ae3e18ea4bb47b9fda808a28a8c7de205bb0e94f7d71
+          maxLength: 64
+          minLength: 64
     Criteria:
       type: object
       description: >-
@@ -27163,6 +28396,62 @@ components:
           type: integer
           format: int32
           description: Number of documents returned in this response.
+          minimum: 0
+          readOnly: true
+    PaginatedApiStreamsConnection:
+      type: object
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud providers when
+            completing this request.
+          items:
+            $ref: "#/components/schemas/StreamsConnection"
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Number of documents returned in this response if **includeCount**
+            query param is true.
+          minimum: 0
+          readOnly: true
+    PaginatedApiStreamsTenant:
+      type: object
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud providers when
+            completing this request.
+          items:
+            $ref: "#/components/schemas/StreamsTenant"
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Number of documents returned in this response if **includeCount**
+            query param is true.
           minimum: 0
           readOnly: true
     PaginatedApiUserAccessList:

@@ -309,7 +309,7 @@ type ProgrammaticAPIKeysApi interface {
 		@param apiUserId Unique 24-hexadecimal digit string that identifies this organization API key you  want to update.
 		@return UpdateApiKeyApiRequest
 	*/
-	UpdateApiKey(ctx context.Context, orgId string, apiUserId string, createAtlasOrganizationApiKey *CreateAtlasOrganizationApiKey) UpdateApiKeyApiRequest
+	UpdateApiKey(ctx context.Context, orgId string, apiUserId string, updateAtlasOrganizationApiKey *UpdateAtlasOrganizationApiKey) UpdateApiKeyApiRequest
 	/*
 		UpdateApiKey Update One Organization API Key
 
@@ -333,7 +333,7 @@ type ProgrammaticAPIKeysApi interface {
 		@param apiUserId Unique 24-hexadecimal digit string that identifies this organization API key that you want to unassign from one project.
 		@return UpdateApiKeyRolesApiRequest
 	*/
-	UpdateApiKeyRoles(ctx context.Context, groupId string, apiUserId string, createAtlasProjectApiKey *CreateAtlasProjectApiKey) UpdateApiKeyRolesApiRequest
+	UpdateApiKeyRoles(ctx context.Context, groupId string, apiUserId string, updateAtlasProjectApiKey *UpdateAtlasProjectApiKey) UpdateApiKeyRolesApiRequest
 	/*
 		UpdateApiKeyRoles Update Roles of One Organization API Key to One Project
 
@@ -2252,13 +2252,13 @@ type UpdateApiKeyApiRequest struct {
 	ApiService                    ProgrammaticAPIKeysApi
 	orgId                         string
 	apiUserId                     string
-	createAtlasOrganizationApiKey *CreateAtlasOrganizationApiKey
+	updateAtlasOrganizationApiKey *UpdateAtlasOrganizationApiKey
 }
 
 type UpdateApiKeyApiParams struct {
 	OrgId                         string
 	ApiUserId                     string
-	CreateAtlasOrganizationApiKey *CreateAtlasOrganizationApiKey
+	UpdateAtlasOrganizationApiKey *UpdateAtlasOrganizationApiKey
 }
 
 func (a *ProgrammaticAPIKeysApiService) UpdateApiKeyWithParams(ctx context.Context, args *UpdateApiKeyApiParams) UpdateApiKeyApiRequest {
@@ -2267,7 +2267,7 @@ func (a *ProgrammaticAPIKeysApiService) UpdateApiKeyWithParams(ctx context.Conte
 		ctx:                           ctx,
 		orgId:                         args.OrgId,
 		apiUserId:                     args.ApiUserId,
-		createAtlasOrganizationApiKey: args.CreateAtlasOrganizationApiKey,
+		updateAtlasOrganizationApiKey: args.UpdateAtlasOrganizationApiKey,
 	}
 }
 
@@ -2285,13 +2285,13 @@ Updates one organization API key in the specified organization. The organization
 	@param apiUserId Unique 24-hexadecimal digit string that identifies this organization API key you  want to update.
 	@return UpdateApiKeyApiRequest
 */
-func (a *ProgrammaticAPIKeysApiService) UpdateApiKey(ctx context.Context, orgId string, apiUserId string, createAtlasOrganizationApiKey *CreateAtlasOrganizationApiKey) UpdateApiKeyApiRequest {
+func (a *ProgrammaticAPIKeysApiService) UpdateApiKey(ctx context.Context, orgId string, apiUserId string, updateAtlasOrganizationApiKey *UpdateAtlasOrganizationApiKey) UpdateApiKeyApiRequest {
 	return UpdateApiKeyApiRequest{
 		ApiService:                    a,
 		ctx:                           ctx,
 		orgId:                         orgId,
 		apiUserId:                     apiUserId,
-		createAtlasOrganizationApiKey: createAtlasOrganizationApiKey,
+		updateAtlasOrganizationApiKey: updateAtlasOrganizationApiKey,
 	}
 }
 
@@ -2330,8 +2330,8 @@ func (a *ProgrammaticAPIKeysApiService) updateApiKeyExecute(r UpdateApiKeyApiReq
 	if strlen(r.apiUserId) > 24 {
 		return localVarReturnValue, nil, reportError("apiUserId must have less than 24 elements")
 	}
-	if r.createAtlasOrganizationApiKey == nil {
-		return localVarReturnValue, nil, reportError("createAtlasOrganizationApiKey is required and must be specified")
+	if r.updateAtlasOrganizationApiKey == nil {
+		return localVarReturnValue, nil, reportError("updateAtlasOrganizationApiKey is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2352,7 +2352,7 @@ func (a *ProgrammaticAPIKeysApiService) updateApiKeyExecute(r UpdateApiKeyApiReq
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.createAtlasOrganizationApiKey
+	localVarPostBody = r.updateAtlasOrganizationApiKey
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2403,7 +2403,7 @@ type UpdateApiKeyRolesApiRequest struct {
 	ApiService               ProgrammaticAPIKeysApi
 	groupId                  string
 	apiUserId                string
-	createAtlasProjectApiKey *CreateAtlasProjectApiKey
+	updateAtlasProjectApiKey *UpdateAtlasProjectApiKey
 	pageNum                  *int
 	itemsPerPage             *int
 	includeCount             *bool
@@ -2412,7 +2412,7 @@ type UpdateApiKeyRolesApiRequest struct {
 type UpdateApiKeyRolesApiParams struct {
 	GroupId                  string
 	ApiUserId                string
-	CreateAtlasProjectApiKey *CreateAtlasProjectApiKey
+	UpdateAtlasProjectApiKey *UpdateAtlasProjectApiKey
 	PageNum                  *int
 	ItemsPerPage             *int
 	IncludeCount             *bool
@@ -2424,7 +2424,7 @@ func (a *ProgrammaticAPIKeysApiService) UpdateApiKeyRolesWithParams(ctx context.
 		ctx:                      ctx,
 		groupId:                  args.GroupId,
 		apiUserId:                args.ApiUserId,
-		createAtlasProjectApiKey: args.CreateAtlasProjectApiKey,
+		updateAtlasProjectApiKey: args.UpdateAtlasProjectApiKey,
 		pageNum:                  args.PageNum,
 		itemsPerPage:             args.ItemsPerPage,
 		includeCount:             args.IncludeCount,
@@ -2463,13 +2463,13 @@ Updates the roles of the organization API key that you specify for the project t
 	@param apiUserId Unique 24-hexadecimal digit string that identifies this organization API key that you want to unassign from one project.
 	@return UpdateApiKeyRolesApiRequest
 */
-func (a *ProgrammaticAPIKeysApiService) UpdateApiKeyRoles(ctx context.Context, groupId string, apiUserId string, createAtlasProjectApiKey *CreateAtlasProjectApiKey) UpdateApiKeyRolesApiRequest {
+func (a *ProgrammaticAPIKeysApiService) UpdateApiKeyRoles(ctx context.Context, groupId string, apiUserId string, updateAtlasProjectApiKey *UpdateAtlasProjectApiKey) UpdateApiKeyRolesApiRequest {
 	return UpdateApiKeyRolesApiRequest{
 		ApiService:               a,
 		ctx:                      ctx,
 		groupId:                  groupId,
 		apiUserId:                apiUserId,
-		createAtlasProjectApiKey: createAtlasProjectApiKey,
+		updateAtlasProjectApiKey: updateAtlasProjectApiKey,
 	}
 }
 
@@ -2508,8 +2508,8 @@ func (a *ProgrammaticAPIKeysApiService) updateApiKeyRolesExecute(r UpdateApiKeyR
 	if strlen(r.apiUserId) > 24 {
 		return localVarReturnValue, nil, reportError("apiUserId must have less than 24 elements")
 	}
-	if r.createAtlasProjectApiKey == nil {
-		return localVarReturnValue, nil, reportError("createAtlasProjectApiKey is required and must be specified")
+	if r.updateAtlasProjectApiKey == nil {
+		return localVarReturnValue, nil, reportError("updateAtlasProjectApiKey is required and must be specified")
 	}
 
 	if r.pageNum != nil {
@@ -2551,7 +2551,7 @@ func (a *ProgrammaticAPIKeysApiService) updateApiKeyRolesExecute(r UpdateApiKeyR
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.createAtlasProjectApiKey
+	localVarPostBody = r.updateAtlasProjectApiKey
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

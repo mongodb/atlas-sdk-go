@@ -149,11 +149,12 @@ type MonitoringAndLogsApi interface {
 	/*
 		GetHostMeasurements Return Measurements for One MongoDB Process
 
-		Returns measurements of the disk or partition per process for the specified host for the specified project. Returned value can be one of the following:
+		Returns disk, partition, or host measurements per process for the specified host for the specified project. Returned value can be one of the following:
 	- Throughput of I/O operations for the disk partition used for the MongoDB process
 	- Percentage of time during which requests the partition issued and serviced
 	- Latency per operation type of the disk partition used for the MongoDB process
 	- Amount of free and used disk space on the disk partition used for the MongoDB process
+	- Measurements for the host, such as CPU usage or number of I/O operations
 
 	To use this resource, the requesting API Key must have the Project Read Only role.
 
@@ -277,13 +278,7 @@ type MonitoringAndLogsApi interface {
 	/*
 		ListDiskMeasurements Return Measurements of One Disk
 
-		[experimental] Returns the measurements of one disk or partition for the specified host for the specified project. Returned value can be one of the following:
-	- Throughput of I/O operations for the disk partition used for the MongoDB process
-	- Percentage of time during which requests the partition issued and serviced
-	- Latency per operation type of the disk partition used for the MongoDB process
-	- Amount of free and used disk space on the disk partition used for the MongoDB process
-
-	To use this resource, the requesting API Key must have the Project Read Only role.
+		[experimental] Returns measurement details for one disk or partition for the specified host for the specified project. To use this resource, the requesting API Key must have the Project Read Only role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param partitionName Human-readable label of the disk or partition to which the measurements apply.
@@ -1320,11 +1315,12 @@ func (r GetHostMeasurementsApiRequest) Execute() (*ApiMeasurementsGeneralViewAtl
 /*
 GetHostMeasurements Return Measurements for One MongoDB Process
 
-Returns measurements of the disk or partition per process for the specified host for the specified project. Returned value can be one of the following:
+Returns disk, partition, or host measurements per process for the specified host for the specified project. Returned value can be one of the following:
 - Throughput of I/O operations for the disk partition used for the MongoDB process
 - Percentage of time during which requests the partition issued and serviced
 - Latency per operation type of the disk partition used for the MongoDB process
 - Amount of free and used disk space on the disk partition used for the MongoDB process
+- Measurements for the host, such as CPU usage or number of I/O operations
 
 To use this resource, the requesting API Key must have the Project Read Only role.
 
@@ -2277,13 +2273,7 @@ func (r ListDiskMeasurementsApiRequest) Execute() (*MeasurementDiskPartition, *h
 /*
 ListDiskMeasurements Return Measurements of One Disk
 
-[experimental] Returns the measurements of one disk or partition for the specified host for the specified project. Returned value can be one of the following:
-- Throughput of I/O operations for the disk partition used for the MongoDB process
-- Percentage of time during which requests the partition issued and serviced
-- Latency per operation type of the disk partition used for the MongoDB process
-- Amount of free and used disk space on the disk partition used for the MongoDB process
-
-To use this resource, the requesting API Key must have the Project Read Only role.
+[experimental] Returns measurement details for one disk or partition for the specified host for the specified project. To use this resource, the requesting API Key must have the Project Read Only role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param partitionName Human-readable label of the disk or partition to which the measurements apply.

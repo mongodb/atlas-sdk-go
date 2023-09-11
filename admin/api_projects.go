@@ -313,7 +313,7 @@ type ProjectsApi interface {
 	ListProjectUsersWithParams(ctx context.Context, args *ListProjectUsersApiParams) ListProjectUsersApiRequest
 
 	// Interface only available internally
-	listProjectUsersExecute(r ListProjectUsersApiRequest) (*PaginatedApiAppUser, *http.Response, error)
+	listProjectUsersExecute(r ListProjectUsersApiRequest) (*PaginatedAppUser, *http.Response, error)
 
 	/*
 		ListProjects Return All Projects
@@ -2197,7 +2197,7 @@ func (r ListProjectUsersApiRequest) IncludeOrgUsers(includeOrgUsers bool) ListPr
 	return r
 }
 
-func (r ListProjectUsersApiRequest) Execute() (*PaginatedApiAppUser, *http.Response, error) {
+func (r ListProjectUsersApiRequest) Execute() (*PaginatedAppUser, *http.Response, error) {
 	return r.ApiService.listProjectUsersExecute(r)
 }
 
@@ -2220,13 +2220,13 @@ func (a *ProjectsApiService) ListProjectUsers(ctx context.Context, groupId strin
 
 // Execute executes the request
 //
-//	@return PaginatedApiAppUser
-func (a *ProjectsApiService) listProjectUsersExecute(r ListProjectUsersApiRequest) (*PaginatedApiAppUser, *http.Response, error) {
+//	@return PaginatedAppUser
+func (a *ProjectsApiService) listProjectUsersExecute(r ListProjectUsersApiRequest) (*PaginatedAppUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *PaginatedApiAppUser
+		localVarReturnValue *PaginatedAppUser
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.ListProjectUsers")
