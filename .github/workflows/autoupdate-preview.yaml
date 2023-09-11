@@ -48,8 +48,8 @@ jobs:
             
             ## Using early preview changes
 
-            ```
-              ▶ go get go.mongodb.org/atlas-sdk/v20230201003@dev-latest   
+            ```sh
+            go get go.mongodb.org/atlas-sdk/v20230201003@dev-latest   
             ```
 
             ## Automated checks done for preview sdk
