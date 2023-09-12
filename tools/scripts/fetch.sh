@@ -40,7 +40,7 @@ echo "${sha}"
 ## Dynamic Versioned API Version
 CURRENT_API_REVISION=$(jq -r '.versions."2.0" | .[-1]' < "./${versions_file}")
 
-openapi_url="https://${}.s3.amazonaws.com/openapi/${sha}-v2-${CURRENT_API_REVISION}.yaml"
+openapi_url="https://${S3_BUCKET}.s3.amazonaws.com/openapi/${sha}-v2-${CURRENT_API_REVISION}.yaml"
 
 echo "Fetching api from $openapi_url to $OPENAPI_FILE_NAME"
 
