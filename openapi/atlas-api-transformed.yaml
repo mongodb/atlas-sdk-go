@@ -23,8 +23,8 @@ info:
     url: https://creativecommons.org/licenses/by-nc-sa/3.0/us/
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
-  version: 2.0~04131a87ec
-  x-xgen-sha: 04131a87ec55f7b8c6c56c2ff1beb80dc12e5e38
+  version: 2.0~c7b3ae9fa6
+  x-xgen-sha: c7b3ae9fa6aa3fd55226426a3994485d38fd26c1
 servers:
   - url: https://cloud.mongodb.com
 tags:
@@ -7158,6 +7158,10 @@ paths:
         "200":
           content:
             application/vnd.atlas.2023-01-01+json:
+              schema:
+                type: string
+                description: PEM file that contains the user's X.509 certificate and private
+                  key.
               x-xgen-version: 2023-01-01
           description: This endpoint returns a PEM file with the certificate and private
             key.
@@ -22539,8 +22543,7 @@ components:
         clusterName:
           type: string
           description: Human-readable label that identifies the cluster that incurred the
-            charge. Atlas doesn't return this field for line items that describe
-            data transfer on Google Cloud Platform.
+            charge.
           maxLength: 64
           minLength: 1
           pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
@@ -26014,34 +26017,9 @@ components:
       properties:
         groupRoles:
           type: array
-          description: List of objects that describe the user's roles.
+          description: One or more project level roles to assign to the MongoDB Cloud user.
           items:
             type: string
-            description: >+
-              Human-readable label that identifies the collection of privileges
-              that MongoDB Cloud grants a specific API key, MongoDB Cloud user,
-              or MongoDB Cloud team. These roles only include project-level
-              roles.
-
-
-              Project Roles
-
-
-              * GROUP_CLUSTER_MANAGER
-
-              * GROUP_DATA_ACCESS_ADMIN
-
-              * GROUP_DATA_ACCESS_READ_ONLY
-
-              * GROUP_DATA_ACCESS_READ_WRITE
-
-              * GROUP_OWNER
-
-              * GROUP_READ_ONLY
-
-              * GROUP_SEARCH_INDEX_EDITOR
-
-          readOnly: true
           uniqueItems: true
         links:
           type: array
@@ -26070,30 +26048,10 @@ components:
           readOnly: true
         orgRoles:
           type: array
-          description: List of objects that describe the user's roles.
+          description: One or more organization level roles to assign to the MongoDB Cloud
+            user.
           items:
             type: string
-            description: >+
-              Human-readable label that identifies the collection of privileges
-              that MongoDB Cloud grants a specific API key, MongoDB Cloud user,
-              or MongoDB Cloud team. These roles only include organization-level
-              roles.
-
-
-              Organization Roles
-
-
-              * ORG_OWNER
-
-              * ORG_MEMBER
-
-              * ORG_GROUP_CREATOR
-
-              * ORG_BILLING_ADMIN
-
-              * ORG_READ_ONLY
-
-          readOnly: true
           uniqueItems: true
     UserAccessList:
       type: object
