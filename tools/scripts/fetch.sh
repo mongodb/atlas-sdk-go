@@ -33,7 +33,7 @@ echo "Fetching versions from $versions_url"
 curl --show-error --fail --silent -o "${versions_file}" \
      -H "Accept: application/json" "${versions_url}"
 
-echo "Fetching sha"
+echo "Fetching OpenAPI release sha"
 sha=$(curl --show-error --fail --silent -H "Accept: text/plain" "${API_BASE_URL}/api/private/unauth/version")
 echo "${sha}"
 
