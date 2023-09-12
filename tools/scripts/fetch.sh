@@ -9,6 +9,7 @@ set -o nounset
 #   CURRENT_REVISION - current revision of the versioned API
 #   OPENAPI_FILE_NAME - openapi file name to use
 #   OPENAPI_FOLDER - folder for saving openapi file
+#   S3_BUCKET - S3 bucket where the spec is hosted
 #########################################################
 
 ## Input variables with defaults
@@ -22,6 +23,7 @@ API_BASE_URL=${API_BASE_URL:-"https://cloud.mongodb.com"}
 ## Folder used for fetching files
 OPENAPI_FOLDER=${OPENAPI_FOLDER:-"../openapi"}
 
+## S3 bucket where the spec is hosted
 S3_BUCKET=${S3_BUCKET:-"mongodb-mms-prod-build-server"}
 
 versions_url="${API_BASE_URL}/api/openapi/versions"
