@@ -15,8 +15,10 @@ jobs:
         uses: actions/checkout@v4
       - name: Fetch changes
         working-directory: ./tools
-        run: |
-          API_BASE_URL=${{ secrets.MDB_CURRENT_API_PREVIEW_URL }} make fetch_openapi
+        run: make fetch_openapi
+        env:
+          API_BASE_URL: ${ {secrets.MDB_CURRENT_API_PREVIEW_URL }}
+          S3_BUCKET: ${{ secrets.MDB_CURRENT_API_PREVIEW_S3_BUCKET }}
       - name: Verify Changed files
         uses: tj-actions/verify-changed-files@0ca1c5cfa298f4dbedc9b901048f8ee61f153f19
         id: verify-changed-files
