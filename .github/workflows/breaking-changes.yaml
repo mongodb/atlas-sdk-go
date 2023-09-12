@@ -12,6 +12,6 @@ jobs:
       with:
         go-version-file: 'go.mod'
     - uses: joelanford/go-apidiff@main
-    - name: The job has failed
+    - name: braking change detected
       if: ${{ failure() }}
       run: echo "run `make update-version` and commit the changes"
