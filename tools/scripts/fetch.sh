@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 set -o errexit
 set -o nounset
 
@@ -12,31 +13,37 @@ set -o nounset
 
 ## Input variables with defaults
 
-
 ## OpenAPI file (latest)
 OPENAPI_FILE_NAME=${OPENAPI_FILE_NAME:-"atlas-api.yaml"}
 
 ## Base URL
-API_BASE_URL=${API_BASE_URL:-"https://cloud.mongodb.com/api/openapi"}
+API_BASE_URL=${API_BASE_URL:-"https://cloud.mongodb.com"}
 
 ## Folder used for fetching files
 OPENAPI_FOLDER=${OPENAPI_FOLDER:-"../openapi"}
-versions_url="$API_BASE_URL/versions"
+
+S3_BUCKET=${S3_BUCKET:-"mongodb-mms-prod-build-server"}
+
+versions_url="${API_BASE_URL}/api/openapi/versions"
 versions_file="versions.json"
 
-pushd "$OPENAPI_FOLDER"
+pushd "${OPENAPI_FOLDER}"
 echo "Fetching versions from $versions_url"
 
-curl --show-error --fail --silent -o "$versions_file" \
-     -H "Accept: application/json" "$versions_url"
+curl --show-error --fail --silent -o "${versions_file}" \
+     -H "Accept: application/json" "${versions_url}"
+
+echo "Fetching sha"
+sha=$(curl --show-error --fail --silent -H "Accept: text/plain" "${API_BASE_URL}/api/private/unauth/version")
+echo "${sha}"
 
 ## Dynamic Versioned API Version
-CURRENT_REVISION=$(cat ./$versions_file | jq -r '.versions."2.0" | .[-1]')
-openapi_url="$API_BASE_URL/spec/2.0?version=$CURRENT_REVISION&filter=sdk"
+CURRENT_API_REVISION=$(jq -r '.versions."2.0" | .[-1]' < "./${versions_file}")
+
+openapi_url="https://${}.s3.amazonaws.com/openapi/${sha}-v2-${CURRENT_API_REVISION}.yaml"
 
 echo "Fetching api from $openapi_url to $OPENAPI_FILE_NAME"
 
-curl --show-error --fail --silent -o "$OPENAPI_FILE_NAME" \
-     -H "Accept: application/yaml" "$openapi_url"
+curl --show-error --fail --silent -o "$OPENAPI_FILE_NAME" "$openapi_url"
 
 popd -0 
