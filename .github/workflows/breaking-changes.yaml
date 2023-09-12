@@ -14,4 +14,4 @@ jobs:
     - uses: joelanford/go-apidiff@main
     - name: braking change detected
       if: ${{ failure() }}
-      run: echo "run `make update-version` and commit the changes"
+      run: echo "run `make update-version` and commit the changes if you already did this please ignore. See https://github.com/joelanford/go-apidiff/issues/37"
