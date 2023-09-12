@@ -1,5 +1,8 @@
 name: (Optional) Detect Breaking Changes
-on: [ pull_request ]
+on: 
+  pull_request: 
+     paths: '!tools/releaser/breaking_changes/**'
+
 jobs:
   go-apidiff:
     runs-on: ubuntu-latest
