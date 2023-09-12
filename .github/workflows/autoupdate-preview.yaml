@@ -8,11 +8,11 @@ jobs:
   generate-client:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
       - uses: actions/setup-go@v4
         with:
           go-version-file: 'go.mod'
-      - name: Checkout
-        uses: actions/checkout@v4
       - name: Fetch changes
         working-directory: ./tools
         run: make fetch_openapi
