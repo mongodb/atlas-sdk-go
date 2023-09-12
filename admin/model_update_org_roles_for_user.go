@@ -10,7 +10,7 @@ import (
 type UpdateOrgRolesForUser struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	Links []Link `json:"links,omitempty"`
-	// List of objects that describe the user's roles.
+	// One or more organization level roles to assign to the MongoDB Cloud user.
 	OrgRoles []string `json:"orgRoles,omitempty"`
 }
 
@@ -106,5 +106,8 @@ func (o UpdateOrgRolesForUser) MarshalJSONWithoutReadOnly() ([]byte, error) {
 }
 func (o UpdateOrgRolesForUser) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.OrgRoles) {
+		toSerialize["orgRoles"] = o.OrgRoles
+	}
 	return toSerialize, nil
 }

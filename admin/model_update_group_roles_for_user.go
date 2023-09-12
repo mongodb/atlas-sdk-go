@@ -8,7 +8,7 @@ import (
 
 // UpdateGroupRolesForUser struct for UpdateGroupRolesForUser
 type UpdateGroupRolesForUser struct {
-	// List of objects that describe the user's roles.
+	// One or more project level roles to assign to the MongoDB Cloud user.
 	GroupRoles []string `json:"groupRoles,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	Links []Link `json:"links,omitempty"`
@@ -106,5 +106,8 @@ func (o UpdateGroupRolesForUser) MarshalJSONWithoutReadOnly() ([]byte, error) {
 }
 func (o UpdateGroupRolesForUser) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.GroupRoles) {
+		toSerialize["groupRoles"] = o.GroupRoles
+	}
 	return toSerialize, nil
 }
