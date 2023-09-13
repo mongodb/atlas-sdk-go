@@ -21,6 +21,5 @@ jobs:
         uses: softprops/action-gh-release@c9b46fe7aad9f02afd89b12450b780f52dacfb2d
         with:
           body: ${{ env.RELEASE_NOTES }}
-          draft: true
           tag_name: ${{ env.RELEASE_TAG }}
           name: ${{ env.RELEASE_TAG }}
