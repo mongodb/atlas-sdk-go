@@ -19,7 +19,7 @@ echo "Modifying $SDK_MAJOR_VERSION to $BUMPED_MAJOR_VERSION Resource Version acr
 npm exec -c "replace-in-file /$SDK_MAJOR_VERSION/g $BUMPED_MAJOR_VERSION $VERSION_UPDATE_PATHS --isRegex"
 
 echo "Creating empty breaking changes file for $BUMPED_MAJOR_VERSION"
-echo "\n# Breaking Changes" > "$script_path/../breaking_changes/${BUMPED_MAJOR_VERSION}.md"
+printf "\n# Breaking Changes" > "$script_path/../breaking_changes/${BUMPED_MAJOR_VERSION}.md"
 
 ## Explicitly update version.go file
 export SDK_VERSION="${BUMPED_MAJOR_VERSION}.0.0"
