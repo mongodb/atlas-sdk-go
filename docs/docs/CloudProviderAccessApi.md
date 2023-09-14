@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **cloudProviderAccessRole** | [**CloudProviderAccessRole**](CloudProviderAccessRole.md) | Grants access to the specified project for the specified AWS IAM role. | 
+ **cloudProviderAccessRole** | [**CloudProviderAccessRole**](CloudProviderAccessRole.md) | Grants access to the specified project for the specified access role. | 
 
 ### Return type
 
@@ -146,7 +146,7 @@ Other parameters are passed through a pointer to a apiCreateCloudProviderAccessR
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **cloudProviderAccessRole** | [**CloudProviderAccessRole**](CloudProviderAccessRole.md) | Creates one AWS IAM role. | 
+ **cloudProviderAccessRole** | [**CloudProviderAccessRole**](CloudProviderAccessRole.md) | Creates one role for the specified cloud provider. | 
 
 ### Return type
 

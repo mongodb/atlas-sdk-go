@@ -9,17 +9,19 @@ import (
 // CreateAtlasOrganizationApiKey struct for CreateAtlasOrganizationApiKey
 type CreateAtlasOrganizationApiKey struct {
 	// Purpose or explanation provided when someone created this organization API key.
-	Desc *string `json:"desc,omitempty"`
+	Desc string `json:"desc"`
 	// List of roles to grant this API key. If you provide this list, provide a minimum of one role and ensure each role applies to this organization.
-	Roles []string `json:"roles,omitempty"`
+	Roles []string `json:"roles"`
 }
 
 // NewCreateAtlasOrganizationApiKey instantiates a new CreateAtlasOrganizationApiKey object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateAtlasOrganizationApiKey() *CreateAtlasOrganizationApiKey {
+func NewCreateAtlasOrganizationApiKey(desc string, roles []string) *CreateAtlasOrganizationApiKey {
 	this := CreateAtlasOrganizationApiKey{}
+	this.Desc = desc
+	this.Roles = roles
 	return &this
 }
 
@@ -31,68 +33,50 @@ func NewCreateAtlasOrganizationApiKeyWithDefaults() *CreateAtlasOrganizationApiK
 	return &this
 }
 
-// GetDesc returns the Desc field value if set, zero value otherwise
+// GetDesc returns the Desc field value
 func (o *CreateAtlasOrganizationApiKey) GetDesc() string {
-	if o == nil || IsNil(o.Desc) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Desc
+
+	return o.Desc
 }
 
-// GetDescOk returns a tuple with the Desc field value if set, nil otherwise
+// GetDescOk returns a tuple with the Desc field value
 // and a boolean to check if the value has been set.
 func (o *CreateAtlasOrganizationApiKey) GetDescOk() (*string, bool) {
-	if o == nil || IsNil(o.Desc) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.Desc, true
+	return &o.Desc, true
 }
 
-// HasDesc returns a boolean if a field has been set.
-func (o *CreateAtlasOrganizationApiKey) HasDesc() bool {
-	if o != nil && !IsNil(o.Desc) {
-		return true
-	}
-
-	return false
-}
-
-// SetDesc gets a reference to the given string and assigns it to the Desc field.
+// SetDesc sets field value
 func (o *CreateAtlasOrganizationApiKey) SetDesc(v string) {
-	o.Desc = &v
+	o.Desc = v
 }
 
-// GetRoles returns the Roles field value if set, zero value otherwise
+// GetRoles returns the Roles field value
 func (o *CreateAtlasOrganizationApiKey) GetRoles() []string {
-	if o == nil || IsNil(o.Roles) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
+
 	return o.Roles
 }
 
-// GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
+// GetRolesOk returns a tuple with the Roles field value
 // and a boolean to check if the value has been set.
 func (o *CreateAtlasOrganizationApiKey) GetRolesOk() ([]string, bool) {
-	if o == nil || IsNil(o.Roles) {
+	if o == nil {
 		return nil, false
 	}
-
 	return o.Roles, true
 }
 
-// HasRoles returns a boolean if a field has been set.
-func (o *CreateAtlasOrganizationApiKey) HasRoles() bool {
-	if o != nil && !IsNil(o.Roles) {
-		return true
-	}
-
-	return false
-}
-
-// SetRoles gets a reference to the given []string and assigns it to the Roles field.
+// SetRoles sets field value
 func (o *CreateAtlasOrganizationApiKey) SetRoles(v []string) {
 	o.Roles = v
 }
@@ -106,11 +90,7 @@ func (o CreateAtlasOrganizationApiKey) MarshalJSONWithoutReadOnly() ([]byte, err
 }
 func (o CreateAtlasOrganizationApiKey) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Desc) {
-		toSerialize["desc"] = o.Desc
-	}
-	if !IsNil(o.Roles) {
-		toSerialize["roles"] = o.Roles
-	}
+	toSerialize["desc"] = o.Desc
+	toSerialize["roles"] = o.Roles
 	return toSerialize, nil
 }

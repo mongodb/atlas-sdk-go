@@ -131,7 +131,7 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     orgId := "4888442a3354817a7320eb61" // string | 
-    createAtlasOrganizationApiKey := *openapiclient.NewCreateAtlasOrganizationApiKey() // CreateAtlasOrganizationApiKey | 
+    createAtlasOrganizationApiKey := *openapiclient.NewCreateAtlasOrganizationApiKey("Desc_example", []string{"Roles_example"}) // CreateAtlasOrganizationApiKey | 
 
     resp, r, err := sdk.ProgrammaticAPIKeysApi.CreateApiKey(context.Background(), orgId, &createAtlasOrganizationApiKey).Execute()
     if err != nil {
@@ -160,7 +160,7 @@ Other parameters are passed through a pointer to a apiCreateApiKeyRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **createAtlasOrganizationApiKey** | [**CreateAtlasOrganizationApiKey**](CreateAtlasOrganizationApiKey.md) | Organization API Key to be created. This request requires both body parameters. | 
+ **createAtlasOrganizationApiKey** | [**CreateAtlasOrganizationApiKey**](CreateAtlasOrganizationApiKey.md) | Organization API Key to be created. | 
 
 ### Return type
 
@@ -290,7 +290,7 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    createAtlasProjectApiKey := *openapiclient.NewCreateAtlasProjectApiKey() // CreateAtlasProjectApiKey | 
+    createAtlasProjectApiKey := *openapiclient.NewCreateAtlasProjectApiKey("Desc_example", []string{"Roles_example"}) // CreateAtlasProjectApiKey | 
 
     resp, r, err := sdk.ProgrammaticAPIKeysApi.CreateProjectApiKey(context.Background(), groupId, &createAtlasProjectApiKey).Execute()
     if err != nil {
@@ -319,7 +319,7 @@ Other parameters are passed through a pointer to a apiCreateProjectApiKeyRequest
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **createAtlasProjectApiKey** | [**CreateAtlasProjectApiKey**](CreateAtlasProjectApiKey.md) | Organization API key to be created and assigned to the specified project. This request requires both body parameters. | 
+ **createAtlasProjectApiKey** | [**CreateAtlasProjectApiKey**](CreateAtlasProjectApiKey.md) | Organization API key to be created and assigned to the specified project. | 
 
 ### Return type
 
@@ -971,7 +971,7 @@ Name | Type | Description  | Notes
 
 ## UpdateApiKey
 
-> ApiKeyUserDetails UpdateApiKey(ctx, orgId, apiUserId, createAtlasOrganizationApiKey CreateAtlasOrganizationApiKey).Execute()
+> ApiKeyUserDetails UpdateApiKey(ctx, orgId, apiUserId, updateAtlasOrganizationApiKey UpdateAtlasOrganizationApiKey).Execute()
 
 Update One Organization API Key
 
@@ -997,9 +997,9 @@ func main() {
 
     orgId := "4888442a3354817a7320eb61" // string | 
     apiUserId := "apiUserId_example" // string | 
-    createAtlasOrganizationApiKey := *openapiclient.NewCreateAtlasOrganizationApiKey() // CreateAtlasOrganizationApiKey | 
+    updateAtlasOrganizationApiKey := *openapiclient.NewUpdateAtlasOrganizationApiKey() // UpdateAtlasOrganizationApiKey | 
 
-    resp, r, err := sdk.ProgrammaticAPIKeysApi.UpdateApiKey(context.Background(), orgId, apiUserId, &createAtlasOrganizationApiKey).Execute()
+    resp, r, err := sdk.ProgrammaticAPIKeysApi.UpdateApiKey(context.Background(), orgId, apiUserId, &updateAtlasOrganizationApiKey).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.UpdateApiKey``: %v\n", err)
         apiError := admin.AsError(err)
@@ -1028,7 +1028,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **createAtlasOrganizationApiKey** | [**CreateAtlasOrganizationApiKey**](CreateAtlasOrganizationApiKey.md) | Organization API key to be updated. This request requires a minimum of one of the two body parameters. | 
+ **updateAtlasOrganizationApiKey** | [**UpdateAtlasOrganizationApiKey**](UpdateAtlasOrganizationApiKey.md) | Organization API key to be updated. This request requires a minimum of one of the two body parameters. | 
 
 ### Return type
 
@@ -1049,7 +1049,7 @@ Name | Type | Description  | Notes
 
 ## UpdateApiKeyRoles
 
-> ApiKeyUserDetails UpdateApiKeyRoles(ctx, groupId, apiUserId, createAtlasProjectApiKey CreateAtlasProjectApiKey).PageNum(pageNum).ItemsPerPage(itemsPerPage).IncludeCount(includeCount).Execute()
+> ApiKeyUserDetails UpdateApiKeyRoles(ctx, groupId, apiUserId, updateAtlasProjectApiKey UpdateAtlasProjectApiKey).PageNum(pageNum).ItemsPerPage(itemsPerPage).IncludeCount(includeCount).Execute()
 
 Update Roles of One Organization API Key to One Project
 
@@ -1075,12 +1075,12 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     apiUserId := "apiUserId_example" // string | 
-    createAtlasProjectApiKey := *openapiclient.NewCreateAtlasProjectApiKey() // CreateAtlasProjectApiKey | 
+    updateAtlasProjectApiKey := *openapiclient.NewUpdateAtlasProjectApiKey() // UpdateAtlasProjectApiKey | 
     pageNum := int(1) // int |  (optional) (default to 1)
     itemsPerPage := int(100) // int |  (optional) (default to 100)
     includeCount := true // bool |  (optional) (default to true)
 
-    resp, r, err := sdk.ProgrammaticAPIKeysApi.UpdateApiKeyRoles(context.Background(), groupId, apiUserId, &createAtlasProjectApiKey).PageNum(pageNum).ItemsPerPage(itemsPerPage).IncludeCount(includeCount).Execute()
+    resp, r, err := sdk.ProgrammaticAPIKeysApi.UpdateApiKeyRoles(context.Background(), groupId, apiUserId, &updateAtlasProjectApiKey).PageNum(pageNum).ItemsPerPage(itemsPerPage).IncludeCount(includeCount).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ProgrammaticAPIKeysApi.UpdateApiKeyRoles``: %v\n", err)
         apiError := admin.AsError(err)
@@ -1109,7 +1109,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **createAtlasProjectApiKey** | [**CreateAtlasProjectApiKey**](CreateAtlasProjectApiKey.md) | Organization API Key to be updated. This request requires a minimum of one of the two body parameters. | 
+ **updateAtlasProjectApiKey** | [**UpdateAtlasProjectApiKey**](UpdateAtlasProjectApiKey.md) | Organization API Key to be updated. This request requires a minimum of one of the two body parameters. | 
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
  **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (**totalCount**) in the response. | [default to true]

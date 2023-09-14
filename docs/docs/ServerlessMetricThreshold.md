@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MetricName** | Pointer to **string** | Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**. | [optional] 
+**MetricName** | **string** | Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**. | 
 **Mode** | Pointer to **string** | MongoDB Cloud computes the current metric value as an average. | [optional] 
 **Operator** | Pointer to **string** | Comparison operator to apply when checking the current metric value. | [optional] 
 **Threshold** | Pointer to **float64** | Value of metric that, when exceeded, triggers an alert. | [optional] 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewServerlessMetricThreshold
 
-`func NewServerlessMetricThreshold() *ServerlessMetricThreshold`
+`func NewServerlessMetricThreshold(metricName string, ) *ServerlessMetricThreshold`
 
 NewServerlessMetricThreshold instantiates a new ServerlessMetricThreshold object
 This constructor will assign default values to properties that have it defined,
@@ -48,11 +48,6 @@ and a boolean to check if the value has been set.
 
 SetMetricName sets MetricName field to given value.
 
-### HasMetricName
-
-`func (o *ServerlessMetricThreshold) HasMetricName() bool`
-
-HasMetricName returns a boolean if a field has been set.
 ### GetMode
 
 `func (o *ServerlessMetricThreshold) GetMode() string`

@@ -258,7 +258,7 @@ type OrganizationsApi interface {
 	/*
 		ListOrganizations Return All Organizations
 
-		Returns all organizations to which you belong. To use this resource, the requesting API Key must have the Organization Member role.
+		Returns all organizations to which the requesting API Key has access. To use this resource, the requesting API Key must have the Organization Member role.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@return ListOrganizationsApiRequest
@@ -1936,7 +1936,7 @@ func (r ListOrganizationsApiRequest) Execute() (*PaginatedOrganization, *http.Re
 /*
 ListOrganizations Return All Organizations
 
-Returns all organizations to which you belong. To use this resource, the requesting API Key must have the Organization Member role.
+Returns all organizations to which the requesting API Key has access. To use this resource, the requesting API Key must have the Organization Member role.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ListOrganizationsApiRequest

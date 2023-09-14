@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Desc** | Pointer to **string** | Purpose or explanation provided when someone created this organization API key. | [optional] 
-**Roles** | Pointer to **[]string** | List of roles to grant this API key. If you provide this list, provide a minimum of one role and ensure each role applies to this organization. | [optional] 
+**Desc** | **string** | Purpose or explanation provided when someone created this organization API key. | 
+**Roles** | **[]string** | List of roles to grant this API key. If you provide this list, provide a minimum of one role and ensure each role applies to this organization. | 
 
 ## Methods
 
 ### NewCreateAtlasOrganizationApiKey
 
-`func NewCreateAtlasOrganizationApiKey() *CreateAtlasOrganizationApiKey`
+`func NewCreateAtlasOrganizationApiKey(desc string, roles []string, ) *CreateAtlasOrganizationApiKey`
 
 NewCreateAtlasOrganizationApiKey instantiates a new CreateAtlasOrganizationApiKey object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetDesc sets Desc field to given value.
 
-### HasDesc
-
-`func (o *CreateAtlasOrganizationApiKey) HasDesc() bool`
-
-HasDesc returns a boolean if a field has been set.
 ### GetRoles
 
 `func (o *CreateAtlasOrganizationApiKey) GetRoles() []string`
@@ -69,11 +64,6 @@ and a boolean to check if the value has been set.
 
 SetRoles sets Roles field to given value.
 
-### HasRoles
-
-`func (o *CreateAtlasOrganizationApiKey) HasRoles() bool`
-
-HasRoles returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

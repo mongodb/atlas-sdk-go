@@ -266,7 +266,7 @@ Name | Type | Description  | Notes
 
 ## ListProjectEvents
 
-> GroupPaginatedEvent ListProjectEvents(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).ClusterNames(clusterNames).EventType(eventType).IncludeRaw(includeRaw).MaxDate(maxDate).MinDate(minDate).Execute()
+> GroupPaginatedEvent ListProjectEvents(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).ClusterNames(clusterNames).EventType(eventType).ExcludedEventType(excludedEventType).IncludeRaw(includeRaw).MaxDate(maxDate).MinDate(minDate).Execute()
 
 Return All Events from One Project
 
@@ -296,11 +296,12 @@ func main() {
     pageNum := int(1) // int |  (optional) (default to 1)
     clusterNames := []string{"Inner_example"} // []string |  (optional)
     eventType := []string{"Inner_example"} // []string |  (optional)
+    excludedEventType := []string{"Inner_example"} // []string |  (optional)
     includeRaw := true // bool |  (optional) (default to false)
     maxDate := time.Now() // time.Time |  (optional)
     minDate := time.Now() // time.Time |  (optional)
 
-    resp, r, err := sdk.EventsApi.ListProjectEvents(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).ClusterNames(clusterNames).EventType(eventType).IncludeRaw(includeRaw).MaxDate(maxDate).MinDate(minDate).Execute()
+    resp, r, err := sdk.EventsApi.ListProjectEvents(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).ClusterNames(clusterNames).EventType(eventType).ExcludedEventType(excludedEventType).IncludeRaw(includeRaw).MaxDate(maxDate).MinDate(minDate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `EventsApi.ListProjectEvents``: %v\n", err)
         apiError := admin.AsError(err)
@@ -332,6 +333,7 @@ Name | Type | Description  | Notes
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
  **clusterNames** | **[]string** | Human-readable label that identifies the cluster. | 
  **eventType** | **[]string** | Category of incident recorded at this moment in time.  **IMPORTANT**: The complete list of event type values changes frequently. | 
+ **excludedEventType** | **[]string** | Category of event that you would like to exclude from query results, such as CLUSTER_CREATED  **IMPORTANT**: Event type names change frequently. Verify that you specify the event type correctly by checking the complete list of event types. | 
  **includeRaw** | **bool** | Flag that indicates whether to include the raw document in the output. The raw document contains additional meta information about the event. | [default to false]
  **maxDate** | **time.Time** | Date and time from when MongoDB Cloud stops returning events. This parameter uses the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_8601\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;ISO 8601&lt;/a&gt; timestamp format in UTC. | 
  **minDate** | **time.Time** | Date and time from when MongoDB Cloud starts returning events. This parameter uses the &lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_8601\&quot; target&#x3D;\&quot;_blank\&quot; rel&#x3D;\&quot;noopener noreferrer\&quot;&gt;ISO 8601&lt;/a&gt; timestamp format in UTC. | 

@@ -678,44 +678,47 @@ func (a *EventsApiService) listOrganizationEventsExecute(r ListOrganizationEvent
 }
 
 type ListProjectEventsApiRequest struct {
-	ctx          context.Context
-	ApiService   EventsApi
-	groupId      string
-	includeCount *bool
-	itemsPerPage *int
-	pageNum      *int
-	clusterNames *[]string
-	eventType    *[]string
-	includeRaw   *bool
-	maxDate      *time.Time
-	minDate      *time.Time
+	ctx               context.Context
+	ApiService        EventsApi
+	groupId           string
+	includeCount      *bool
+	itemsPerPage      *int
+	pageNum           *int
+	clusterNames      *[]string
+	eventType         *[]string
+	excludedEventType *[]string
+	includeRaw        *bool
+	maxDate           *time.Time
+	minDate           *time.Time
 }
 
 type ListProjectEventsApiParams struct {
-	GroupId      string
-	IncludeCount *bool
-	ItemsPerPage *int
-	PageNum      *int
-	ClusterNames *[]string
-	EventType    *[]string
-	IncludeRaw   *bool
-	MaxDate      *time.Time
-	MinDate      *time.Time
+	GroupId           string
+	IncludeCount      *bool
+	ItemsPerPage      *int
+	PageNum           *int
+	ClusterNames      *[]string
+	EventType         *[]string
+	ExcludedEventType *[]string
+	IncludeRaw        *bool
+	MaxDate           *time.Time
+	MinDate           *time.Time
 }
 
 func (a *EventsApiService) ListProjectEventsWithParams(ctx context.Context, args *ListProjectEventsApiParams) ListProjectEventsApiRequest {
 	return ListProjectEventsApiRequest{
-		ApiService:   a,
-		ctx:          ctx,
-		groupId:      args.GroupId,
-		includeCount: args.IncludeCount,
-		itemsPerPage: args.ItemsPerPage,
-		pageNum:      args.PageNum,
-		clusterNames: args.ClusterNames,
-		eventType:    args.EventType,
-		includeRaw:   args.IncludeRaw,
-		maxDate:      args.MaxDate,
-		minDate:      args.MinDate,
+		ApiService:        a,
+		ctx:               ctx,
+		groupId:           args.GroupId,
+		includeCount:      args.IncludeCount,
+		itemsPerPage:      args.ItemsPerPage,
+		pageNum:           args.PageNum,
+		clusterNames:      args.ClusterNames,
+		eventType:         args.EventType,
+		excludedEventType: args.ExcludedEventType,
+		includeRaw:        args.IncludeRaw,
+		maxDate:           args.MaxDate,
+		minDate:           args.MinDate,
 	}
 }
 
@@ -746,6 +749,12 @@ func (r ListProjectEventsApiRequest) ClusterNames(clusterNames []string) ListPro
 // Category of incident recorded at this moment in time.  **IMPORTANT**: The complete list of event type values changes frequently.
 func (r ListProjectEventsApiRequest) EventType(eventType []string) ListProjectEventsApiRequest {
 	r.eventType = &eventType
+	return r
+}
+
+// Category of event that you would like to exclude from query results, such as CLUSTER_CREATED  **IMPORTANT**: Event type names change frequently. Verify that you specify the event type correctly by checking the complete list of event types.
+func (r ListProjectEventsApiRequest) ExcludedEventType(excludedEventType []string) ListProjectEventsApiRequest {
+	r.excludedEventType = &excludedEventType
 	return r
 }
 
@@ -852,6 +861,13 @@ func (a *EventsApiService) listProjectEventsExecute(r ListProjectEventsApiReques
 		// Workaround for unused import
 		_ = reflect.Append
 		parameterAddToHeaderOrQuery(localVarQueryParams, "eventType", t, "multi")
+
+	}
+	if r.excludedEventType != nil {
+		t := *r.excludedEventType
+		// Workaround for unused import
+		_ = reflect.Append
+		parameterAddToHeaderOrQuery(localVarQueryParams, "excludedEventType", t, "multi")
 
 	}
 	if r.includeRaw != nil {
