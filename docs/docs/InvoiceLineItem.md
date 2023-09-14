@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ClusterName** | Pointer to **string** | Human-readable label that identifies the cluster that incurred the charge. Atlas doesn&#39;t return this field for line items that describe data transfer on Google Cloud Platform. | [optional] [readonly] 
+**ClusterName** | Pointer to **string** | Human-readable label that identifies the cluster that incurred the charge. | [optional] [readonly] 
 **Created** | Pointer to **time.Time** | Date and time when MongoDB Cloud created this line item. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **DiscountCents** | Pointer to **int64** | Sum by which MongoDB discounted this line item. MongoDB Cloud expresses this value in cents (100ths of one US Dollar). The resource returns this parameter when a discount applies. | [optional] [readonly] 
 **EndDate** | Pointer to **time.Time** | Date and time when when MongoDB Cloud finished charging for this line item. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 

@@ -29,7 +29,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201007/admin"
+    "go.mongodb.org/atlas-sdk/v20230201008/admin"
 )
 
 func main() {
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **cloudProviderAccessRole** | [**CloudProviderAccessRole**](CloudProviderAccessRole.md) | Grants access to the specified project for the specified AWS IAM role. | 
+ **cloudProviderAccessRole** | [**CloudProviderAccessRole**](CloudProviderAccessRole.md) | Grants access to the specified project for the specified access role. | 
 
 ### Return type
 
@@ -107,7 +107,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201007/admin"
+    "go.mongodb.org/atlas-sdk/v20230201008/admin"
 )
 
 func main() {
@@ -146,7 +146,7 @@ Other parameters are passed through a pointer to a apiCreateCloudProviderAccessR
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **cloudProviderAccessRole** | [**CloudProviderAccessRole**](CloudProviderAccessRole.md) | Creates one AWS IAM role. | 
+ **cloudProviderAccessRole** | [**CloudProviderAccessRole**](CloudProviderAccessRole.md) | Creates one role for the specified cloud provider. | 
 
 ### Return type
 
@@ -182,7 +182,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201007/admin"
+    "go.mongodb.org/atlas-sdk/v20230201008/admin"
 )
 
 func main() {
@@ -264,7 +264,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201007/admin"
+    "go.mongodb.org/atlas-sdk/v20230201008/admin"
 )
 
 func main() {
@@ -340,7 +340,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201007/admin"
+    "go.mongodb.org/atlas-sdk/v20230201008/admin"
 )
 
 func main() {
