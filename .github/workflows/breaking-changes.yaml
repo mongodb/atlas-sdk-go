@@ -1,8 +1,8 @@
 name: (Optional) Detect Breaking Changes
-on: 
-  pull_request: 
+on:
+  pull_request:
      ## Exclude major releases containing breaking changes info
-     paths-ignore: 
+     paths-ignore:
       - 'tools/releaser/breaking_changes/**'
 jobs:
   go-apidiff:
@@ -18,4 +18,4 @@ jobs:
     - uses: joelanford/go-apidiff@main
     - name: braking change detected
       if: ${{ failure() }}
-      run: echo "run `Review job for false positives. If you see any issues run `make update-version` and commit the changes."
+      run: echo "Review for false positives. If you see any breaking change run `make update-version` and commit the changes."
