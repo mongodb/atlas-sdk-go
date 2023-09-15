@@ -35,13 +35,13 @@ echo "Fetching versions from $versions_url"
 curl --show-error --fail --silent -o "${versions_file}" \
      -H "Accept: application/json" "${versions_url}"
 
-echo "Fetching OpenAPI release sha"
-sha=$(curl --show-error --fail --silent -H "Accept: text/plain" "${API_BASE_URL}/api/private/unauth/version")
-echo "${sha}"
-
 ## Dynamic Versioned API Version
 CURRENT_API_REVISION=$(jq -r '.versions."2.0" | .[-1]' < "./${versions_file}")
 
+echo "Fetching OpenAPI release sha"
+sha=$(curl --show-error --fail --silent -H "Accept: text/plain" "${API_BASE_URL}/api/private/unauth/version")
+
+echo "Fetching OAS file for ${sha}"
 openapi_url="https://${S3_BUCKET}.s3.amazonaws.com/openapi/${sha}-v2-${CURRENT_API_REVISION}.yaml"
 
 echo "Fetching api from $openapi_url to $OPENAPI_FILE_NAME"
