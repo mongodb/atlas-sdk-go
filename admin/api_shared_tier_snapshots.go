@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-type SharedTierSnapshotsApi interface {
+type SharedTierSnapshotsAPI interface {
 
 	/*
 		DownloadSharedClusterBackup Download One M2 or M5 Cluster Snapshot
@@ -87,12 +87,12 @@ type SharedTierSnapshotsApi interface {
 	listSharedClusterBackupsExecute(r ListSharedClusterBackupsApiRequest) (*PaginatedTenantSnapshot, *http.Response, error)
 }
 
-// SharedTierSnapshotsApiService SharedTierSnapshotsApi service
-type SharedTierSnapshotsApiService service
+// SharedTierSnapshotsAPIService SharedTierSnapshotsAPI service
+type SharedTierSnapshotsAPIService service
 
 type DownloadSharedClusterBackupApiRequest struct {
 	ctx           context.Context
-	ApiService    SharedTierSnapshotsApi
+	ApiService    SharedTierSnapshotsAPI
 	clusterName   string
 	groupId       string
 	tenantRestore *TenantRestore
@@ -104,7 +104,7 @@ type DownloadSharedClusterBackupApiParams struct {
 	TenantRestore *TenantRestore
 }
 
-func (a *SharedTierSnapshotsApiService) DownloadSharedClusterBackupWithParams(ctx context.Context, args *DownloadSharedClusterBackupApiParams) DownloadSharedClusterBackupApiRequest {
+func (a *SharedTierSnapshotsAPIService) DownloadSharedClusterBackupWithParams(ctx context.Context, args *DownloadSharedClusterBackupApiParams) DownloadSharedClusterBackupApiRequest {
 	return DownloadSharedClusterBackupApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -128,7 +128,7 @@ DownloadSharedClusterBackup Download One M2 or M5 Cluster Snapshot
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return DownloadSharedClusterBackupApiRequest
 */
-func (a *SharedTierSnapshotsApiService) DownloadSharedClusterBackup(ctx context.Context, clusterName string, groupId string, tenantRestore *TenantRestore) DownloadSharedClusterBackupApiRequest {
+func (a *SharedTierSnapshotsAPIService) DownloadSharedClusterBackup(ctx context.Context, clusterName string, groupId string, tenantRestore *TenantRestore) DownloadSharedClusterBackupApiRequest {
 	return DownloadSharedClusterBackupApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -141,7 +141,7 @@ func (a *SharedTierSnapshotsApiService) DownloadSharedClusterBackup(ctx context.
 // Execute executes the request
 //
 //	@return TenantRestore
-func (a *SharedTierSnapshotsApiService) downloadSharedClusterBackupExecute(r DownloadSharedClusterBackupApiRequest) (*TenantRestore, *http.Response, error) {
+func (a *SharedTierSnapshotsAPIService) downloadSharedClusterBackupExecute(r DownloadSharedClusterBackupApiRequest) (*TenantRestore, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -149,7 +149,7 @@ func (a *SharedTierSnapshotsApiService) downloadSharedClusterBackupExecute(r Dow
 		localVarReturnValue *TenantRestore
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharedTierSnapshotsApiService.DownloadSharedClusterBackup")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharedTierSnapshotsAPIService.DownloadSharedClusterBackup")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -243,7 +243,7 @@ func (a *SharedTierSnapshotsApiService) downloadSharedClusterBackupExecute(r Dow
 
 type GetSharedClusterBackupApiRequest struct {
 	ctx         context.Context
-	ApiService  SharedTierSnapshotsApi
+	ApiService  SharedTierSnapshotsAPI
 	groupId     string
 	clusterName string
 	snapshotId  string
@@ -255,7 +255,7 @@ type GetSharedClusterBackupApiParams struct {
 	SnapshotId  string
 }
 
-func (a *SharedTierSnapshotsApiService) GetSharedClusterBackupWithParams(ctx context.Context, args *GetSharedClusterBackupApiParams) GetSharedClusterBackupApiRequest {
+func (a *SharedTierSnapshotsAPIService) GetSharedClusterBackupWithParams(ctx context.Context, args *GetSharedClusterBackupApiParams) GetSharedClusterBackupApiRequest {
 	return GetSharedClusterBackupApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -280,7 +280,7 @@ GetSharedClusterBackup Return One Snapshot for One M2 or M5 Cluster
 	@param snapshotId Unique 24-hexadecimal digit string that identifies the desired snapshot.
 	@return GetSharedClusterBackupApiRequest
 */
-func (a *SharedTierSnapshotsApiService) GetSharedClusterBackup(ctx context.Context, groupId string, clusterName string, snapshotId string) GetSharedClusterBackupApiRequest {
+func (a *SharedTierSnapshotsAPIService) GetSharedClusterBackup(ctx context.Context, groupId string, clusterName string, snapshotId string) GetSharedClusterBackupApiRequest {
 	return GetSharedClusterBackupApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -293,7 +293,7 @@ func (a *SharedTierSnapshotsApiService) GetSharedClusterBackup(ctx context.Conte
 // Execute executes the request
 //
 //	@return BackupTenantSnapshot
-func (a *SharedTierSnapshotsApiService) getSharedClusterBackupExecute(r GetSharedClusterBackupApiRequest) (*BackupTenantSnapshot, *http.Response, error) {
+func (a *SharedTierSnapshotsAPIService) getSharedClusterBackupExecute(r GetSharedClusterBackupApiRequest) (*BackupTenantSnapshot, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -301,7 +301,7 @@ func (a *SharedTierSnapshotsApiService) getSharedClusterBackupExecute(r GetShare
 		localVarReturnValue *BackupTenantSnapshot
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharedTierSnapshotsApiService.GetSharedClusterBackup")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharedTierSnapshotsAPIService.GetSharedClusterBackup")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -397,7 +397,7 @@ func (a *SharedTierSnapshotsApiService) getSharedClusterBackupExecute(r GetShare
 
 type ListSharedClusterBackupsApiRequest struct {
 	ctx         context.Context
-	ApiService  SharedTierSnapshotsApi
+	ApiService  SharedTierSnapshotsAPI
 	groupId     string
 	clusterName string
 }
@@ -407,7 +407,7 @@ type ListSharedClusterBackupsApiParams struct {
 	ClusterName string
 }
 
-func (a *SharedTierSnapshotsApiService) ListSharedClusterBackupsWithParams(ctx context.Context, args *ListSharedClusterBackupsApiParams) ListSharedClusterBackupsApiRequest {
+func (a *SharedTierSnapshotsAPIService) ListSharedClusterBackupsWithParams(ctx context.Context, args *ListSharedClusterBackupsApiParams) ListSharedClusterBackupsApiRequest {
 	return ListSharedClusterBackupsApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -430,7 +430,7 @@ ListSharedClusterBackups Return All Snapshots for One M2 or M5 Cluster
 	@param clusterName Human-readable label that identifies the cluster.
 	@return ListSharedClusterBackupsApiRequest
 */
-func (a *SharedTierSnapshotsApiService) ListSharedClusterBackups(ctx context.Context, groupId string, clusterName string) ListSharedClusterBackupsApiRequest {
+func (a *SharedTierSnapshotsAPIService) ListSharedClusterBackups(ctx context.Context, groupId string, clusterName string) ListSharedClusterBackupsApiRequest {
 	return ListSharedClusterBackupsApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -442,7 +442,7 @@ func (a *SharedTierSnapshotsApiService) ListSharedClusterBackups(ctx context.Con
 // Execute executes the request
 //
 //	@return PaginatedTenantSnapshot
-func (a *SharedTierSnapshotsApiService) listSharedClusterBackupsExecute(r ListSharedClusterBackupsApiRequest) (*PaginatedTenantSnapshot, *http.Response, error) {
+func (a *SharedTierSnapshotsAPIService) listSharedClusterBackupsExecute(r ListSharedClusterBackupsApiRequest) (*PaginatedTenantSnapshot, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -450,7 +450,7 @@ func (a *SharedTierSnapshotsApiService) listSharedClusterBackupsExecute(r ListSh
 		localVarReturnValue *PaginatedTenantSnapshot
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharedTierSnapshotsApiService.ListSharedClusterBackups")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharedTierSnapshotsAPIService.ListSharedClusterBackups")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

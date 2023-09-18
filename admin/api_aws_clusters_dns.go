@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-type AWSClustersDNSApi interface {
+type AWSClustersDNSAPI interface {
 
 	/*
 		GetAWSCustomDNS Return One Custom DNS Configuration for Atlas Clusters on AWS
@@ -60,12 +60,12 @@ type AWSClustersDNSApi interface {
 	toggleAWSCustomDNSExecute(r ToggleAWSCustomDNSApiRequest) (*AWSCustomDNSEnabled, *http.Response, error)
 }
 
-// AWSClustersDNSApiService AWSClustersDNSApi service
-type AWSClustersDNSApiService service
+// AWSClustersDNSAPIService AWSClustersDNSAPI service
+type AWSClustersDNSAPIService service
 
 type GetAWSCustomDNSApiRequest struct {
 	ctx        context.Context
-	ApiService AWSClustersDNSApi
+	ApiService AWSClustersDNSAPI
 	groupId    string
 }
 
@@ -73,7 +73,7 @@ type GetAWSCustomDNSApiParams struct {
 	GroupId string
 }
 
-func (a *AWSClustersDNSApiService) GetAWSCustomDNSWithParams(ctx context.Context, args *GetAWSCustomDNSApiParams) GetAWSCustomDNSApiRequest {
+func (a *AWSClustersDNSAPIService) GetAWSCustomDNSWithParams(ctx context.Context, args *GetAWSCustomDNSApiParams) GetAWSCustomDNSApiRequest {
 	return GetAWSCustomDNSApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -94,7 +94,7 @@ Returns the custom DNS configuration for AWS clusters in the specified project. 
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return GetAWSCustomDNSApiRequest
 */
-func (a *AWSClustersDNSApiService) GetAWSCustomDNS(ctx context.Context, groupId string) GetAWSCustomDNSApiRequest {
+func (a *AWSClustersDNSAPIService) GetAWSCustomDNS(ctx context.Context, groupId string) GetAWSCustomDNSApiRequest {
 	return GetAWSCustomDNSApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -105,7 +105,7 @@ func (a *AWSClustersDNSApiService) GetAWSCustomDNS(ctx context.Context, groupId 
 // Execute executes the request
 //
 //	@return AWSCustomDNSEnabled
-func (a *AWSClustersDNSApiService) getAWSCustomDNSExecute(r GetAWSCustomDNSApiRequest) (*AWSCustomDNSEnabled, *http.Response, error) {
+func (a *AWSClustersDNSAPIService) getAWSCustomDNSExecute(r GetAWSCustomDNSApiRequest) (*AWSCustomDNSEnabled, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -113,7 +113,7 @@ func (a *AWSClustersDNSApiService) getAWSCustomDNSExecute(r GetAWSCustomDNSApiRe
 		localVarReturnValue *AWSCustomDNSEnabled
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AWSClustersDNSApiService.GetAWSCustomDNS")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AWSClustersDNSAPIService.GetAWSCustomDNS")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -195,7 +195,7 @@ func (a *AWSClustersDNSApiService) getAWSCustomDNSExecute(r GetAWSCustomDNSApiRe
 
 type ToggleAWSCustomDNSApiRequest struct {
 	ctx                 context.Context
-	ApiService          AWSClustersDNSApi
+	ApiService          AWSClustersDNSAPI
 	groupId             string
 	aWSCustomDNSEnabled *AWSCustomDNSEnabled
 }
@@ -205,7 +205,7 @@ type ToggleAWSCustomDNSApiParams struct {
 	AWSCustomDNSEnabled *AWSCustomDNSEnabled
 }
 
-func (a *AWSClustersDNSApiService) ToggleAWSCustomDNSWithParams(ctx context.Context, args *ToggleAWSCustomDNSApiParams) ToggleAWSCustomDNSApiRequest {
+func (a *AWSClustersDNSAPIService) ToggleAWSCustomDNSWithParams(ctx context.Context, args *ToggleAWSCustomDNSApiParams) ToggleAWSCustomDNSApiRequest {
 	return ToggleAWSCustomDNSApiRequest{
 		ApiService:          a,
 		ctx:                 ctx,
@@ -227,7 +227,7 @@ Enables or disables the custom DNS configuration for AWS clusters in the specifi
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ToggleAWSCustomDNSApiRequest
 */
-func (a *AWSClustersDNSApiService) ToggleAWSCustomDNS(ctx context.Context, groupId string, aWSCustomDNSEnabled *AWSCustomDNSEnabled) ToggleAWSCustomDNSApiRequest {
+func (a *AWSClustersDNSAPIService) ToggleAWSCustomDNS(ctx context.Context, groupId string, aWSCustomDNSEnabled *AWSCustomDNSEnabled) ToggleAWSCustomDNSApiRequest {
 	return ToggleAWSCustomDNSApiRequest{
 		ApiService:          a,
 		ctx:                 ctx,
@@ -239,7 +239,7 @@ func (a *AWSClustersDNSApiService) ToggleAWSCustomDNS(ctx context.Context, group
 // Execute executes the request
 //
 //	@return AWSCustomDNSEnabled
-func (a *AWSClustersDNSApiService) toggleAWSCustomDNSExecute(r ToggleAWSCustomDNSApiRequest) (*AWSCustomDNSEnabled, *http.Response, error) {
+func (a *AWSClustersDNSAPIService) toggleAWSCustomDNSExecute(r ToggleAWSCustomDNSApiRequest) (*AWSCustomDNSEnabled, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -247,7 +247,7 @@ func (a *AWSClustersDNSApiService) toggleAWSCustomDNSExecute(r ToggleAWSCustomDN
 		localVarReturnValue *AWSCustomDNSEnabled
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AWSClustersDNSApiService.ToggleAWSCustomDNS")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AWSClustersDNSAPIService.ToggleAWSCustomDNS")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

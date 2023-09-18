@@ -12,7 +12,7 @@ import (
 	"strings"
 )
 
-type PerformanceAdvisorApi interface {
+type PerformanceAdvisorAPI interface {
 
 	/*
 		DisableSlowOperationThresholding Disable Managed Slow Operation Threshold
@@ -133,12 +133,12 @@ type PerformanceAdvisorApi interface {
 	listSuggestedIndexesExecute(r ListSuggestedIndexesApiRequest) (*PerformanceAdvisorResponse, *http.Response, error)
 }
 
-// PerformanceAdvisorApiService PerformanceAdvisorApi service
-type PerformanceAdvisorApiService service
+// PerformanceAdvisorAPIService PerformanceAdvisorAPI service
+type PerformanceAdvisorAPIService service
 
 type DisableSlowOperationThresholdingApiRequest struct {
 	ctx        context.Context
-	ApiService PerformanceAdvisorApi
+	ApiService PerformanceAdvisorAPI
 	groupId    string
 }
 
@@ -146,7 +146,7 @@ type DisableSlowOperationThresholdingApiParams struct {
 	GroupId string
 }
 
-func (a *PerformanceAdvisorApiService) DisableSlowOperationThresholdingWithParams(ctx context.Context, args *DisableSlowOperationThresholdingApiParams) DisableSlowOperationThresholdingApiRequest {
+func (a *PerformanceAdvisorAPIService) DisableSlowOperationThresholdingWithParams(ctx context.Context, args *DisableSlowOperationThresholdingApiParams) DisableSlowOperationThresholdingApiRequest {
 	return DisableSlowOperationThresholdingApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -167,7 +167,7 @@ Disables the slow operation threshold that MongoDB Cloud calculated for the spec
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return DisableSlowOperationThresholdingApiRequest
 */
-func (a *PerformanceAdvisorApiService) DisableSlowOperationThresholding(ctx context.Context, groupId string) DisableSlowOperationThresholdingApiRequest {
+func (a *PerformanceAdvisorAPIService) DisableSlowOperationThresholding(ctx context.Context, groupId string) DisableSlowOperationThresholdingApiRequest {
 	return DisableSlowOperationThresholdingApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -176,14 +176,14 @@ func (a *PerformanceAdvisorApiService) DisableSlowOperationThresholding(ctx cont
 }
 
 // Execute executes the request
-func (a *PerformanceAdvisorApiService) disableSlowOperationThresholdingExecute(r DisableSlowOperationThresholdingApiRequest) (*http.Response, error) {
+func (a *PerformanceAdvisorAPIService) disableSlowOperationThresholdingExecute(r DisableSlowOperationThresholdingApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorApiService.DisableSlowOperationThresholding")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorAPIService.DisableSlowOperationThresholding")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -256,7 +256,7 @@ func (a *PerformanceAdvisorApiService) disableSlowOperationThresholdingExecute(r
 
 type EnableSlowOperationThresholdingApiRequest struct {
 	ctx        context.Context
-	ApiService PerformanceAdvisorApi
+	ApiService PerformanceAdvisorAPI
 	groupId    string
 }
 
@@ -264,7 +264,7 @@ type EnableSlowOperationThresholdingApiParams struct {
 	GroupId string
 }
 
-func (a *PerformanceAdvisorApiService) EnableSlowOperationThresholdingWithParams(ctx context.Context, args *EnableSlowOperationThresholdingApiParams) EnableSlowOperationThresholdingApiRequest {
+func (a *PerformanceAdvisorAPIService) EnableSlowOperationThresholdingWithParams(ctx context.Context, args *EnableSlowOperationThresholdingApiParams) EnableSlowOperationThresholdingApiRequest {
 	return EnableSlowOperationThresholdingApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -285,7 +285,7 @@ Enables MongoDB Cloud to use its slow operation threshold for the specified proj
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return EnableSlowOperationThresholdingApiRequest
 */
-func (a *PerformanceAdvisorApiService) EnableSlowOperationThresholding(ctx context.Context, groupId string) EnableSlowOperationThresholdingApiRequest {
+func (a *PerformanceAdvisorAPIService) EnableSlowOperationThresholding(ctx context.Context, groupId string) EnableSlowOperationThresholdingApiRequest {
 	return EnableSlowOperationThresholdingApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -294,14 +294,14 @@ func (a *PerformanceAdvisorApiService) EnableSlowOperationThresholding(ctx conte
 }
 
 // Execute executes the request
-func (a *PerformanceAdvisorApiService) enableSlowOperationThresholdingExecute(r EnableSlowOperationThresholdingApiRequest) (*http.Response, error) {
+func (a *PerformanceAdvisorAPIService) enableSlowOperationThresholdingExecute(r EnableSlowOperationThresholdingApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorApiService.EnableSlowOperationThresholding")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorAPIService.EnableSlowOperationThresholding")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -374,7 +374,7 @@ func (a *PerformanceAdvisorApiService) enableSlowOperationThresholdingExecute(r 
 
 type ListSlowQueriesApiRequest struct {
 	ctx        context.Context
-	ApiService PerformanceAdvisorApi
+	ApiService PerformanceAdvisorAPI
 	groupId    string
 	processId  string
 	duration   *int64
@@ -392,7 +392,7 @@ type ListSlowQueriesApiParams struct {
 	Since      *int64
 }
 
-func (a *PerformanceAdvisorApiService) ListSlowQueriesWithParams(ctx context.Context, args *ListSlowQueriesApiParams) ListSlowQueriesApiRequest {
+func (a *PerformanceAdvisorAPIService) ListSlowQueriesWithParams(ctx context.Context, args *ListSlowQueriesApiParams) ListSlowQueriesApiRequest {
 	return ListSlowQueriesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -443,7 +443,7 @@ Returns log lines for slow queries that the Performance Advisor and Query Profil
 	@param processId Combination of host and port that serves the MongoDB process. The host must be the hostname, FQDN, IPv4 address, or IPv6 address of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
 	@return ListSlowQueriesApiRequest
 */
-func (a *PerformanceAdvisorApiService) ListSlowQueries(ctx context.Context, groupId string, processId string) ListSlowQueriesApiRequest {
+func (a *PerformanceAdvisorAPIService) ListSlowQueries(ctx context.Context, groupId string, processId string) ListSlowQueriesApiRequest {
 	return ListSlowQueriesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -455,7 +455,7 @@ func (a *PerformanceAdvisorApiService) ListSlowQueries(ctx context.Context, grou
 // Execute executes the request
 //
 //	@return PerformanceAdvisorSlowQueryList
-func (a *PerformanceAdvisorApiService) listSlowQueriesExecute(r ListSlowQueriesApiRequest) (*PerformanceAdvisorSlowQueryList, *http.Response, error) {
+func (a *PerformanceAdvisorAPIService) listSlowQueriesExecute(r ListSlowQueriesApiRequest) (*PerformanceAdvisorSlowQueryList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -463,7 +463,7 @@ func (a *PerformanceAdvisorApiService) listSlowQueriesExecute(r ListSlowQueriesA
 		localVarReturnValue *PerformanceAdvisorSlowQueryList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorApiService.ListSlowQueries")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorAPIService.ListSlowQueries")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -566,7 +566,7 @@ func (a *PerformanceAdvisorApiService) listSlowQueriesExecute(r ListSlowQueriesA
 
 type ListSlowQueryNamespacesApiRequest struct {
 	ctx        context.Context
-	ApiService PerformanceAdvisorApi
+	ApiService PerformanceAdvisorAPI
 	groupId    string
 	processId  string
 	duration   *int64
@@ -580,7 +580,7 @@ type ListSlowQueryNamespacesApiParams struct {
 	Since     *int64
 }
 
-func (a *PerformanceAdvisorApiService) ListSlowQueryNamespacesWithParams(ctx context.Context, args *ListSlowQueryNamespacesApiParams) ListSlowQueryNamespacesApiRequest {
+func (a *PerformanceAdvisorAPIService) ListSlowQueryNamespacesWithParams(ctx context.Context, args *ListSlowQueryNamespacesApiParams) ListSlowQueryNamespacesApiRequest {
 	return ListSlowQueryNamespacesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -617,7 +617,7 @@ Returns up to 20 namespaces for collections experiencing slow queries on the spe
 	@param processId Combination of host and port that serves the MongoDB process. The host must be the hostname, FQDN, IPv4 address, or IPv6 address of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
 	@return ListSlowQueryNamespacesApiRequest
 */
-func (a *PerformanceAdvisorApiService) ListSlowQueryNamespaces(ctx context.Context, groupId string, processId string) ListSlowQueryNamespacesApiRequest {
+func (a *PerformanceAdvisorAPIService) ListSlowQueryNamespaces(ctx context.Context, groupId string, processId string) ListSlowQueryNamespacesApiRequest {
 	return ListSlowQueryNamespacesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -629,7 +629,7 @@ func (a *PerformanceAdvisorApiService) ListSlowQueryNamespaces(ctx context.Conte
 // Execute executes the request
 //
 //	@return Namespaces
-func (a *PerformanceAdvisorApiService) listSlowQueryNamespacesExecute(r ListSlowQueryNamespacesApiRequest) (*Namespaces, *http.Response, error) {
+func (a *PerformanceAdvisorAPIService) listSlowQueryNamespacesExecute(r ListSlowQueryNamespacesApiRequest) (*Namespaces, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -637,7 +637,7 @@ func (a *PerformanceAdvisorApiService) listSlowQueryNamespacesExecute(r ListSlow
 		localVarReturnValue *Namespaces
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorApiService.ListSlowQueryNamespaces")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorAPIService.ListSlowQueryNamespaces")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -726,7 +726,7 @@ func (a *PerformanceAdvisorApiService) listSlowQueryNamespacesExecute(r ListSlow
 
 type ListSuggestedIndexesApiRequest struct {
 	ctx          context.Context
-	ApiService   PerformanceAdvisorApi
+	ApiService   PerformanceAdvisorAPI
 	groupId      string
 	processId    string
 	includeCount *bool
@@ -752,7 +752,7 @@ type ListSuggestedIndexesApiParams struct {
 	Since        *int64
 }
 
-func (a *PerformanceAdvisorApiService) ListSuggestedIndexesWithParams(ctx context.Context, args *ListSuggestedIndexesApiParams) ListSuggestedIndexesApiRequest {
+func (a *PerformanceAdvisorAPIService) ListSuggestedIndexesWithParams(ctx context.Context, args *ListSuggestedIndexesApiParams) ListSuggestedIndexesApiRequest {
 	return ListSuggestedIndexesApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -831,7 +831,7 @@ Returns the indexes that the Performance Advisor suggests. The Performance Advis
 	@param processId Combination of host and port that serves the MongoDB process. The host must be the hostname, FQDN, IPv4 address, or IPv6 address of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
 	@return ListSuggestedIndexesApiRequest
 */
-func (a *PerformanceAdvisorApiService) ListSuggestedIndexes(ctx context.Context, groupId string, processId string) ListSuggestedIndexesApiRequest {
+func (a *PerformanceAdvisorAPIService) ListSuggestedIndexes(ctx context.Context, groupId string, processId string) ListSuggestedIndexesApiRequest {
 	return ListSuggestedIndexesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -843,7 +843,7 @@ func (a *PerformanceAdvisorApiService) ListSuggestedIndexes(ctx context.Context,
 // Execute executes the request
 //
 //	@return PerformanceAdvisorResponse
-func (a *PerformanceAdvisorApiService) listSuggestedIndexesExecute(r ListSuggestedIndexesApiRequest) (*PerformanceAdvisorResponse, *http.Response, error) {
+func (a *PerformanceAdvisorAPIService) listSuggestedIndexesExecute(r ListSuggestedIndexesApiRequest) (*PerformanceAdvisorResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -851,7 +851,7 @@ func (a *PerformanceAdvisorApiService) listSuggestedIndexesExecute(r ListSuggest
 		localVarReturnValue *PerformanceAdvisorResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorApiService.ListSuggestedIndexes")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorAPIService.ListSuggestedIndexes")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

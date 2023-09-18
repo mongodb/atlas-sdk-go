@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-type EncryptionAtRestUsingCustomerKeyManagementApi interface {
+type EncryptionAtRestUsingCustomerKeyManagementAPI interface {
 
 	/*
 		GetEncryptionAtRest Return One Configuration for Encryption at Rest using Customer-Managed Keys for One Project
@@ -64,12 +64,12 @@ type EncryptionAtRestUsingCustomerKeyManagementApi interface {
 	updateEncryptionAtRestExecute(r UpdateEncryptionAtRestApiRequest) (*EncryptionAtRest, *http.Response, error)
 }
 
-// EncryptionAtRestUsingCustomerKeyManagementApiService EncryptionAtRestUsingCustomerKeyManagementApi service
-type EncryptionAtRestUsingCustomerKeyManagementApiService service
+// EncryptionAtRestUsingCustomerKeyManagementAPIService EncryptionAtRestUsingCustomerKeyManagementAPI service
+type EncryptionAtRestUsingCustomerKeyManagementAPIService service
 
 type GetEncryptionAtRestApiRequest struct {
 	ctx        context.Context
-	ApiService EncryptionAtRestUsingCustomerKeyManagementApi
+	ApiService EncryptionAtRestUsingCustomerKeyManagementAPI
 	groupId    string
 }
 
@@ -77,7 +77,7 @@ type GetEncryptionAtRestApiParams struct {
 	GroupId string
 }
 
-func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) GetEncryptionAtRestWithParams(ctx context.Context, args *GetEncryptionAtRestApiParams) GetEncryptionAtRestApiRequest {
+func (a *EncryptionAtRestUsingCustomerKeyManagementAPIService) GetEncryptionAtRestWithParams(ctx context.Context, args *GetEncryptionAtRestApiParams) GetEncryptionAtRestApiRequest {
 	return GetEncryptionAtRestApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -100,7 +100,7 @@ Returns the configuration for encryption at rest using the keys you manage throu
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return GetEncryptionAtRestApiRequest
 */
-func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) GetEncryptionAtRest(ctx context.Context, groupId string) GetEncryptionAtRestApiRequest {
+func (a *EncryptionAtRestUsingCustomerKeyManagementAPIService) GetEncryptionAtRest(ctx context.Context, groupId string) GetEncryptionAtRestApiRequest {
 	return GetEncryptionAtRestApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -111,7 +111,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) GetEncryptionAtRe
 // Execute executes the request
 //
 //	@return EncryptionAtRest
-func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) getEncryptionAtRestExecute(r GetEncryptionAtRestApiRequest) (*EncryptionAtRest, *http.Response, error) {
+func (a *EncryptionAtRestUsingCustomerKeyManagementAPIService) getEncryptionAtRestExecute(r GetEncryptionAtRestApiRequest) (*EncryptionAtRest, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -119,7 +119,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) getEncryptionAtRe
 		localVarReturnValue *EncryptionAtRest
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EncryptionAtRestUsingCustomerKeyManagementApiService.GetEncryptionAtRest")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EncryptionAtRestUsingCustomerKeyManagementAPIService.GetEncryptionAtRest")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -201,7 +201,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) getEncryptionAtRe
 
 type UpdateEncryptionAtRestApiRequest struct {
 	ctx              context.Context
-	ApiService       EncryptionAtRestUsingCustomerKeyManagementApi
+	ApiService       EncryptionAtRestUsingCustomerKeyManagementAPI
 	groupId          string
 	encryptionAtRest *EncryptionAtRest
 }
@@ -211,7 +211,7 @@ type UpdateEncryptionAtRestApiParams struct {
 	EncryptionAtRest *EncryptionAtRest
 }
 
-func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) UpdateEncryptionAtRestWithParams(ctx context.Context, args *UpdateEncryptionAtRestApiParams) UpdateEncryptionAtRestApiRequest {
+func (a *EncryptionAtRestUsingCustomerKeyManagementAPIService) UpdateEncryptionAtRestWithParams(ctx context.Context, args *UpdateEncryptionAtRestApiParams) UpdateEncryptionAtRestApiRequest {
 	return UpdateEncryptionAtRestApiRequest{
 		ApiService:       a,
 		ctx:              ctx,
@@ -235,7 +235,7 @@ UpdateEncryptionAtRest Update Configuration for Encryption at Rest using Custome
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return UpdateEncryptionAtRestApiRequest
 */
-func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) UpdateEncryptionAtRest(ctx context.Context, groupId string, encryptionAtRest *EncryptionAtRest) UpdateEncryptionAtRestApiRequest {
+func (a *EncryptionAtRestUsingCustomerKeyManagementAPIService) UpdateEncryptionAtRest(ctx context.Context, groupId string, encryptionAtRest *EncryptionAtRest) UpdateEncryptionAtRestApiRequest {
 	return UpdateEncryptionAtRestApiRequest{
 		ApiService:       a,
 		ctx:              ctx,
@@ -247,7 +247,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) UpdateEncryptionA
 // Execute executes the request
 //
 //	@return EncryptionAtRest
-func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) updateEncryptionAtRestExecute(r UpdateEncryptionAtRestApiRequest) (*EncryptionAtRest, *http.Response, error) {
+func (a *EncryptionAtRestUsingCustomerKeyManagementAPIService) updateEncryptionAtRestExecute(r UpdateEncryptionAtRestApiRequest) (*EncryptionAtRest, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -255,7 +255,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) updateEncryptionA
 		localVarReturnValue *EncryptionAtRest
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EncryptionAtRestUsingCustomerKeyManagementApiService.UpdateEncryptionAtRest")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EncryptionAtRestUsingCustomerKeyManagementAPIService.UpdateEncryptionAtRest")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

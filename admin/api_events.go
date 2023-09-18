@@ -13,7 +13,7 @@ import (
 	"time"
 )
 
-type EventsApi interface {
+type EventsAPI interface {
 
 	/*
 		GetOrganizationEvent Return One Event from One Organization
@@ -118,12 +118,12 @@ type EventsApi interface {
 	listProjectEventsExecute(r ListProjectEventsApiRequest) (*GroupPaginatedEvent, *http.Response, error)
 }
 
-// EventsApiService EventsApi service
-type EventsApiService service
+// EventsAPIService EventsAPI service
+type EventsAPIService service
 
 type GetOrganizationEventApiRequest struct {
 	ctx        context.Context
-	ApiService EventsApi
+	ApiService EventsAPI
 	orgId      string
 	eventId    string
 	includeRaw *bool
@@ -135,7 +135,7 @@ type GetOrganizationEventApiParams struct {
 	IncludeRaw *bool
 }
 
-func (a *EventsApiService) GetOrganizationEventWithParams(ctx context.Context, args *GetOrganizationEventApiParams) GetOrganizationEventApiRequest {
+func (a *EventsAPIService) GetOrganizationEventWithParams(ctx context.Context, args *GetOrganizationEventApiParams) GetOrganizationEventApiRequest {
 	return GetOrganizationEventApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -167,7 +167,7 @@ This resource remains under revision and may change.
 	@param eventId Unique 24-hexadecimal digit string that identifies the event that you want to return. Use the [/events](#tag/Events/operation/listOrganizationEvents) endpoint to retrieve all events to which the authenticated user has access.
 	@return GetOrganizationEventApiRequest
 */
-func (a *EventsApiService) GetOrganizationEvent(ctx context.Context, orgId string, eventId string) GetOrganizationEventApiRequest {
+func (a *EventsAPIService) GetOrganizationEvent(ctx context.Context, orgId string, eventId string) GetOrganizationEventApiRequest {
 	return GetOrganizationEventApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -179,7 +179,7 @@ func (a *EventsApiService) GetOrganizationEvent(ctx context.Context, orgId strin
 // Execute executes the request
 //
 //	@return EventViewForOrg
-func (a *EventsApiService) getOrganizationEventExecute(r GetOrganizationEventApiRequest) (*EventViewForOrg, *http.Response, error) {
+func (a *EventsAPIService) getOrganizationEventExecute(r GetOrganizationEventApiRequest) (*EventViewForOrg, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -187,7 +187,7 @@ func (a *EventsApiService) getOrganizationEventExecute(r GetOrganizationEventApi
 		localVarReturnValue *EventViewForOrg
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.GetOrganizationEvent")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.GetOrganizationEvent")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -283,7 +283,7 @@ func (a *EventsApiService) getOrganizationEventExecute(r GetOrganizationEventApi
 
 type GetProjectEventApiRequest struct {
 	ctx        context.Context
-	ApiService EventsApi
+	ApiService EventsAPI
 	groupId    string
 	eventId    string
 	includeRaw *bool
@@ -295,7 +295,7 @@ type GetProjectEventApiParams struct {
 	IncludeRaw *bool
 }
 
-func (a *EventsApiService) GetProjectEventWithParams(ctx context.Context, args *GetProjectEventApiParams) GetProjectEventApiRequest {
+func (a *EventsAPIService) GetProjectEventWithParams(ctx context.Context, args *GetProjectEventApiParams) GetProjectEventApiRequest {
 	return GetProjectEventApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -327,7 +327,7 @@ This resource remains under revision and may change.
 	@param eventId Unique 24-hexadecimal digit string that identifies the event that you want to return. Use the [/events](#tag/Events/operation/listProjectEvents) endpoint to retrieve all events to which the authenticated user has access.
 	@return GetProjectEventApiRequest
 */
-func (a *EventsApiService) GetProjectEvent(ctx context.Context, groupId string, eventId string) GetProjectEventApiRequest {
+func (a *EventsAPIService) GetProjectEvent(ctx context.Context, groupId string, eventId string) GetProjectEventApiRequest {
 	return GetProjectEventApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -339,7 +339,7 @@ func (a *EventsApiService) GetProjectEvent(ctx context.Context, groupId string, 
 // Execute executes the request
 //
 //	@return EventViewForNdsGroup
-func (a *EventsApiService) getProjectEventExecute(r GetProjectEventApiRequest) (*EventViewForNdsGroup, *http.Response, error) {
+func (a *EventsAPIService) getProjectEventExecute(r GetProjectEventApiRequest) (*EventViewForNdsGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -347,7 +347,7 @@ func (a *EventsApiService) getProjectEventExecute(r GetProjectEventApiRequest) (
 		localVarReturnValue *EventViewForNdsGroup
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.GetProjectEvent")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.GetProjectEvent")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -443,7 +443,7 @@ func (a *EventsApiService) getProjectEventExecute(r GetProjectEventApiRequest) (
 
 type ListOrganizationEventsApiRequest struct {
 	ctx          context.Context
-	ApiService   EventsApi
+	ApiService   EventsAPI
 	orgId        string
 	includeCount *bool
 	itemsPerPage *int
@@ -465,7 +465,7 @@ type ListOrganizationEventsApiParams struct {
 	MinDate      *time.Time
 }
 
-func (a *EventsApiService) ListOrganizationEventsWithParams(ctx context.Context, args *ListOrganizationEventsApiParams) ListOrganizationEventsApiRequest {
+func (a *EventsAPIService) ListOrganizationEventsWithParams(ctx context.Context, args *ListOrganizationEventsApiParams) ListOrganizationEventsApiRequest {
 	return ListOrganizationEventsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -537,7 +537,7 @@ This resource remains under revision and may change.
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return ListOrganizationEventsApiRequest
 */
-func (a *EventsApiService) ListOrganizationEvents(ctx context.Context, orgId string) ListOrganizationEventsApiRequest {
+func (a *EventsAPIService) ListOrganizationEvents(ctx context.Context, orgId string) ListOrganizationEventsApiRequest {
 	return ListOrganizationEventsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -548,7 +548,7 @@ func (a *EventsApiService) ListOrganizationEvents(ctx context.Context, orgId str
 // Execute executes the request
 //
 //	@return OrgPaginatedEvent
-func (a *EventsApiService) listOrganizationEventsExecute(r ListOrganizationEventsApiRequest) (*OrgPaginatedEvent, *http.Response, error) {
+func (a *EventsAPIService) listOrganizationEventsExecute(r ListOrganizationEventsApiRequest) (*OrgPaginatedEvent, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -556,7 +556,7 @@ func (a *EventsApiService) listOrganizationEventsExecute(r ListOrganizationEvent
 		localVarReturnValue *OrgPaginatedEvent
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.ListOrganizationEvents")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.ListOrganizationEvents")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -679,7 +679,7 @@ func (a *EventsApiService) listOrganizationEventsExecute(r ListOrganizationEvent
 
 type ListProjectEventsApiRequest struct {
 	ctx               context.Context
-	ApiService        EventsApi
+	ApiService        EventsAPI
 	groupId           string
 	includeCount      *bool
 	itemsPerPage      *int
@@ -705,7 +705,7 @@ type ListProjectEventsApiParams struct {
 	MinDate           *time.Time
 }
 
-func (a *EventsApiService) ListProjectEventsWithParams(ctx context.Context, args *ListProjectEventsApiParams) ListProjectEventsApiRequest {
+func (a *EventsAPIService) ListProjectEventsWithParams(ctx context.Context, args *ListProjectEventsApiParams) ListProjectEventsApiRequest {
 	return ListProjectEventsApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -791,7 +791,7 @@ This resource remains under revision and may change.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListProjectEventsApiRequest
 */
-func (a *EventsApiService) ListProjectEvents(ctx context.Context, groupId string) ListProjectEventsApiRequest {
+func (a *EventsAPIService) ListProjectEvents(ctx context.Context, groupId string) ListProjectEventsApiRequest {
 	return ListProjectEventsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -802,7 +802,7 @@ func (a *EventsApiService) ListProjectEvents(ctx context.Context, groupId string
 // Execute executes the request
 //
 //	@return GroupPaginatedEvent
-func (a *EventsApiService) listProjectEventsExecute(r ListProjectEventsApiRequest) (*GroupPaginatedEvent, *http.Response, error) {
+func (a *EventsAPIService) listProjectEventsExecute(r ListProjectEventsApiRequest) (*GroupPaginatedEvent, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -810,7 +810,7 @@ func (a *EventsApiService) listProjectEventsExecute(r ListProjectEventsApiReques
 		localVarReturnValue *GroupPaginatedEvent
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsApiService.ListProjectEvents")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EventsAPIService.ListProjectEvents")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

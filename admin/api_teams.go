@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-type TeamsApi interface {
+type TeamsAPI interface {
 
 	/*
 		AddAllTeamsToProject Add One or More Teams to One Project
@@ -323,12 +323,12 @@ type TeamsApi interface {
 	updateTeamRolesExecute(r UpdateTeamRolesApiRequest) (*PaginatedTeamRole, *http.Response, error)
 }
 
-// TeamsApiService TeamsApi service
-type TeamsApiService service
+// TeamsAPIService TeamsAPI service
+type TeamsAPIService service
 
 type AddAllTeamsToProjectApiRequest struct {
 	ctx        context.Context
-	ApiService TeamsApi
+	ApiService TeamsAPI
 	groupId    string
 	teamRole   *[]TeamRole
 }
@@ -338,7 +338,7 @@ type AddAllTeamsToProjectApiParams struct {
 	TeamRole *[]TeamRole
 }
 
-func (a *TeamsApiService) AddAllTeamsToProjectWithParams(ctx context.Context, args *AddAllTeamsToProjectApiParams) AddAllTeamsToProjectApiRequest {
+func (a *TeamsAPIService) AddAllTeamsToProjectWithParams(ctx context.Context, args *AddAllTeamsToProjectApiParams) AddAllTeamsToProjectApiRequest {
 	return AddAllTeamsToProjectApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -360,7 +360,7 @@ Adds one team to the specified project. All members of the team share the same p
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return AddAllTeamsToProjectApiRequest
 */
-func (a *TeamsApiService) AddAllTeamsToProject(ctx context.Context, groupId string, teamRole *[]TeamRole) AddAllTeamsToProjectApiRequest {
+func (a *TeamsAPIService) AddAllTeamsToProject(ctx context.Context, groupId string, teamRole *[]TeamRole) AddAllTeamsToProjectApiRequest {
 	return AddAllTeamsToProjectApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -372,7 +372,7 @@ func (a *TeamsApiService) AddAllTeamsToProject(ctx context.Context, groupId stri
 // Execute executes the request
 //
 //	@return PaginatedTeamRole
-func (a *TeamsApiService) addAllTeamsToProjectExecute(r AddAllTeamsToProjectApiRequest) (*PaginatedTeamRole, *http.Response, error) {
+func (a *TeamsAPIService) addAllTeamsToProjectExecute(r AddAllTeamsToProjectApiRequest) (*PaginatedTeamRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -380,7 +380,7 @@ func (a *TeamsApiService) addAllTeamsToProjectExecute(r AddAllTeamsToProjectApiR
 		localVarReturnValue *PaginatedTeamRole
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsApiService.AddAllTeamsToProject")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsAPIService.AddAllTeamsToProject")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -467,7 +467,7 @@ func (a *TeamsApiService) addAllTeamsToProjectExecute(r AddAllTeamsToProjectApiR
 
 type AddTeamUserApiRequest struct {
 	ctx           context.Context
-	ApiService    TeamsApi
+	ApiService    TeamsAPI
 	orgId         string
 	teamId        string
 	addUserToTeam *[]AddUserToTeam
@@ -479,7 +479,7 @@ type AddTeamUserApiParams struct {
 	AddUserToTeam *[]AddUserToTeam
 }
 
-func (a *TeamsApiService) AddTeamUserWithParams(ctx context.Context, args *AddTeamUserApiParams) AddTeamUserApiRequest {
+func (a *TeamsAPIService) AddTeamUserWithParams(ctx context.Context, args *AddTeamUserApiParams) AddTeamUserApiRequest {
 	return AddTeamUserApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -503,7 +503,7 @@ Adds one or more MongoDB Cloud users from the specified organization to the spec
 	@param teamId Unique 24-hexadecimal character string that identifies the team to which you want to add MongoDB Cloud users.
 	@return AddTeamUserApiRequest
 */
-func (a *TeamsApiService) AddTeamUser(ctx context.Context, orgId string, teamId string, addUserToTeam *[]AddUserToTeam) AddTeamUserApiRequest {
+func (a *TeamsAPIService) AddTeamUser(ctx context.Context, orgId string, teamId string, addUserToTeam *[]AddUserToTeam) AddTeamUserApiRequest {
 	return AddTeamUserApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -516,7 +516,7 @@ func (a *TeamsApiService) AddTeamUser(ctx context.Context, orgId string, teamId 
 // Execute executes the request
 //
 //	@return PaginatedApiAppUser
-func (a *TeamsApiService) addTeamUserExecute(r AddTeamUserApiRequest) (*PaginatedApiAppUser, *http.Response, error) {
+func (a *TeamsAPIService) addTeamUserExecute(r AddTeamUserApiRequest) (*PaginatedApiAppUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -524,7 +524,7 @@ func (a *TeamsApiService) addTeamUserExecute(r AddTeamUserApiRequest) (*Paginate
 		localVarReturnValue *PaginatedApiAppUser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsApiService.AddTeamUser")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsAPIService.AddTeamUser")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -618,7 +618,7 @@ func (a *TeamsApiService) addTeamUserExecute(r AddTeamUserApiRequest) (*Paginate
 
 type CreateTeamApiRequest struct {
 	ctx        context.Context
-	ApiService TeamsApi
+	ApiService TeamsAPI
 	orgId      string
 	team       *Team
 }
@@ -628,7 +628,7 @@ type CreateTeamApiParams struct {
 	Team  *Team
 }
 
-func (a *TeamsApiService) CreateTeamWithParams(ctx context.Context, args *CreateTeamApiParams) CreateTeamApiRequest {
+func (a *TeamsAPIService) CreateTeamWithParams(ctx context.Context, args *CreateTeamApiParams) CreateTeamApiRequest {
 	return CreateTeamApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -650,7 +650,7 @@ Creates one team in the specified organization. Teams enable you to grant projec
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return CreateTeamApiRequest
 */
-func (a *TeamsApiService) CreateTeam(ctx context.Context, orgId string, team *Team) CreateTeamApiRequest {
+func (a *TeamsAPIService) CreateTeam(ctx context.Context, orgId string, team *Team) CreateTeamApiRequest {
 	return CreateTeamApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -662,7 +662,7 @@ func (a *TeamsApiService) CreateTeam(ctx context.Context, orgId string, team *Te
 // Execute executes the request
 //
 //	@return Team
-func (a *TeamsApiService) createTeamExecute(r CreateTeamApiRequest) (*Team, *http.Response, error) {
+func (a *TeamsAPIService) createTeamExecute(r CreateTeamApiRequest) (*Team, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -670,7 +670,7 @@ func (a *TeamsApiService) createTeamExecute(r CreateTeamApiRequest) (*Team, *htt
 		localVarReturnValue *Team
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsApiService.CreateTeam")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsAPIService.CreateTeam")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -757,7 +757,7 @@ func (a *TeamsApiService) createTeamExecute(r CreateTeamApiRequest) (*Team, *htt
 
 type DeleteTeamApiRequest struct {
 	ctx        context.Context
-	ApiService TeamsApi
+	ApiService TeamsAPI
 	orgId      string
 	teamId     string
 }
@@ -767,7 +767,7 @@ type DeleteTeamApiParams struct {
 	TeamId string
 }
 
-func (a *TeamsApiService) DeleteTeamWithParams(ctx context.Context, args *DeleteTeamApiParams) DeleteTeamApiRequest {
+func (a *TeamsAPIService) DeleteTeamWithParams(ctx context.Context, args *DeleteTeamApiParams) DeleteTeamApiRequest {
 	return DeleteTeamApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -790,7 +790,7 @@ Removes one team specified using its unique 24-hexadecimal digit identifier from
 	@param teamId Unique 24-hexadecimal digit string that identifies the team that you want to delete.
 	@return DeleteTeamApiRequest
 */
-func (a *TeamsApiService) DeleteTeam(ctx context.Context, orgId string, teamId string) DeleteTeamApiRequest {
+func (a *TeamsAPIService) DeleteTeam(ctx context.Context, orgId string, teamId string) DeleteTeamApiRequest {
 	return DeleteTeamApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -802,7 +802,7 @@ func (a *TeamsApiService) DeleteTeam(ctx context.Context, orgId string, teamId s
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *TeamsApiService) deleteTeamExecute(r DeleteTeamApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *TeamsAPIService) deleteTeamExecute(r DeleteTeamApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -810,7 +810,7 @@ func (a *TeamsApiService) deleteTeamExecute(r DeleteTeamApiRequest) (map[string]
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsApiService.DeleteTeam")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsAPIService.DeleteTeam")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -899,7 +899,7 @@ func (a *TeamsApiService) deleteTeamExecute(r DeleteTeamApiRequest) (map[string]
 
 type GetTeamByIdApiRequest struct {
 	ctx        context.Context
-	ApiService TeamsApi
+	ApiService TeamsAPI
 	orgId      string
 	teamId     string
 }
@@ -909,7 +909,7 @@ type GetTeamByIdApiParams struct {
 	TeamId string
 }
 
-func (a *TeamsApiService) GetTeamByIdWithParams(ctx context.Context, args *GetTeamByIdApiParams) GetTeamByIdApiRequest {
+func (a *TeamsAPIService) GetTeamByIdWithParams(ctx context.Context, args *GetTeamByIdApiParams) GetTeamByIdApiRequest {
 	return GetTeamByIdApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -932,7 +932,7 @@ Returns one team that you identified using its unique 24-hexadecimal digit ID. T
 	@param teamId Unique 24-hexadecimal digit string that identifies the team whose information you want to return.
 	@return GetTeamByIdApiRequest
 */
-func (a *TeamsApiService) GetTeamById(ctx context.Context, orgId string, teamId string) GetTeamByIdApiRequest {
+func (a *TeamsAPIService) GetTeamById(ctx context.Context, orgId string, teamId string) GetTeamByIdApiRequest {
 	return GetTeamByIdApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -944,7 +944,7 @@ func (a *TeamsApiService) GetTeamById(ctx context.Context, orgId string, teamId 
 // Execute executes the request
 //
 //	@return TeamResponse
-func (a *TeamsApiService) getTeamByIdExecute(r GetTeamByIdApiRequest) (*TeamResponse, *http.Response, error) {
+func (a *TeamsAPIService) getTeamByIdExecute(r GetTeamByIdApiRequest) (*TeamResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -952,7 +952,7 @@ func (a *TeamsApiService) getTeamByIdExecute(r GetTeamByIdApiRequest) (*TeamResp
 		localVarReturnValue *TeamResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsApiService.GetTeamById")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsAPIService.GetTeamById")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1041,7 +1041,7 @@ func (a *TeamsApiService) getTeamByIdExecute(r GetTeamByIdApiRequest) (*TeamResp
 
 type GetTeamByNameApiRequest struct {
 	ctx        context.Context
-	ApiService TeamsApi
+	ApiService TeamsAPI
 	orgId      string
 	teamName   string
 }
@@ -1051,7 +1051,7 @@ type GetTeamByNameApiParams struct {
 	TeamName string
 }
 
-func (a *TeamsApiService) GetTeamByNameWithParams(ctx context.Context, args *GetTeamByNameApiParams) GetTeamByNameApiRequest {
+func (a *TeamsAPIService) GetTeamByNameWithParams(ctx context.Context, args *GetTeamByNameApiParams) GetTeamByNameApiRequest {
 	return GetTeamByNameApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1074,7 +1074,7 @@ Returns one team that you identified using its human-readable name. This team be
 	@param teamName Name of the team whose information you want to return.
 	@return GetTeamByNameApiRequest
 */
-func (a *TeamsApiService) GetTeamByName(ctx context.Context, orgId string, teamName string) GetTeamByNameApiRequest {
+func (a *TeamsAPIService) GetTeamByName(ctx context.Context, orgId string, teamName string) GetTeamByNameApiRequest {
 	return GetTeamByNameApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1086,7 +1086,7 @@ func (a *TeamsApiService) GetTeamByName(ctx context.Context, orgId string, teamN
 // Execute executes the request
 //
 //	@return TeamResponse
-func (a *TeamsApiService) getTeamByNameExecute(r GetTeamByNameApiRequest) (*TeamResponse, *http.Response, error) {
+func (a *TeamsAPIService) getTeamByNameExecute(r GetTeamByNameApiRequest) (*TeamResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1094,7 +1094,7 @@ func (a *TeamsApiService) getTeamByNameExecute(r GetTeamByNameApiRequest) (*Team
 		localVarReturnValue *TeamResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsApiService.GetTeamByName")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsAPIService.GetTeamByName")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1177,7 +1177,7 @@ func (a *TeamsApiService) getTeamByNameExecute(r GetTeamByNameApiRequest) (*Team
 
 type ListOrganizationTeamsApiRequest struct {
 	ctx          context.Context
-	ApiService   TeamsApi
+	ApiService   TeamsAPI
 	orgId        string
 	itemsPerPage *int
 	includeCount *bool
@@ -1191,7 +1191,7 @@ type ListOrganizationTeamsApiParams struct {
 	PageNum      *int
 }
 
-func (a *TeamsApiService) ListOrganizationTeamsWithParams(ctx context.Context, args *ListOrganizationTeamsApiParams) ListOrganizationTeamsApiRequest {
+func (a *TeamsAPIService) ListOrganizationTeamsWithParams(ctx context.Context, args *ListOrganizationTeamsApiParams) ListOrganizationTeamsApiRequest {
 	return ListOrganizationTeamsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1233,7 +1233,7 @@ Returns all teams that belong to the specified organization. Teams enable you to
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return ListOrganizationTeamsApiRequest
 */
-func (a *TeamsApiService) ListOrganizationTeams(ctx context.Context, orgId string) ListOrganizationTeamsApiRequest {
+func (a *TeamsAPIService) ListOrganizationTeams(ctx context.Context, orgId string) ListOrganizationTeamsApiRequest {
 	return ListOrganizationTeamsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1244,7 +1244,7 @@ func (a *TeamsApiService) ListOrganizationTeams(ctx context.Context, orgId strin
 // Execute executes the request
 //
 //	@return PaginatedTeam
-func (a *TeamsApiService) listOrganizationTeamsExecute(r ListOrganizationTeamsApiRequest) (*PaginatedTeam, *http.Response, error) {
+func (a *TeamsAPIService) listOrganizationTeamsExecute(r ListOrganizationTeamsApiRequest) (*PaginatedTeam, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1252,7 +1252,7 @@ func (a *TeamsApiService) listOrganizationTeamsExecute(r ListOrganizationTeamsAp
 		localVarReturnValue *PaginatedTeam
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsApiService.ListOrganizationTeams")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsAPIService.ListOrganizationTeams")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1355,7 +1355,7 @@ func (a *TeamsApiService) listOrganizationTeamsExecute(r ListOrganizationTeamsAp
 
 type ListProjectTeamsApiRequest struct {
 	ctx          context.Context
-	ApiService   TeamsApi
+	ApiService   TeamsAPI
 	groupId      string
 	includeCount *bool
 	itemsPerPage *int
@@ -1369,7 +1369,7 @@ type ListProjectTeamsApiParams struct {
 	PageNum      *int
 }
 
-func (a *TeamsApiService) ListProjectTeamsWithParams(ctx context.Context, args *ListProjectTeamsApiParams) ListProjectTeamsApiRequest {
+func (a *TeamsAPIService) ListProjectTeamsWithParams(ctx context.Context, args *ListProjectTeamsApiParams) ListProjectTeamsApiRequest {
 	return ListProjectTeamsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1411,7 +1411,7 @@ Returns all teams to which the authenticated user has access in the project spec
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListProjectTeamsApiRequest
 */
-func (a *TeamsApiService) ListProjectTeams(ctx context.Context, groupId string) ListProjectTeamsApiRequest {
+func (a *TeamsAPIService) ListProjectTeams(ctx context.Context, groupId string) ListProjectTeamsApiRequest {
 	return ListProjectTeamsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1422,7 +1422,7 @@ func (a *TeamsApiService) ListProjectTeams(ctx context.Context, groupId string) 
 // Execute executes the request
 //
 //	@return PaginatedTeamRole
-func (a *TeamsApiService) listProjectTeamsExecute(r ListProjectTeamsApiRequest) (*PaginatedTeamRole, *http.Response, error) {
+func (a *TeamsAPIService) listProjectTeamsExecute(r ListProjectTeamsApiRequest) (*PaginatedTeamRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1430,7 +1430,7 @@ func (a *TeamsApiService) listProjectTeamsExecute(r ListProjectTeamsApiRequest) 
 		localVarReturnValue *PaginatedTeamRole
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsApiService.ListProjectTeams")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsAPIService.ListProjectTeams")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1533,7 +1533,7 @@ func (a *TeamsApiService) listProjectTeamsExecute(r ListProjectTeamsApiRequest) 
 
 type ListTeamUsersApiRequest struct {
 	ctx          context.Context
-	ApiService   TeamsApi
+	ApiService   TeamsAPI
 	orgId        string
 	teamId       string
 	itemsPerPage *int
@@ -1547,7 +1547,7 @@ type ListTeamUsersApiParams struct {
 	PageNum      *int
 }
 
-func (a *TeamsApiService) ListTeamUsersWithParams(ctx context.Context, args *ListTeamUsersApiParams) ListTeamUsersApiRequest {
+func (a *TeamsAPIService) ListTeamUsersWithParams(ctx context.Context, args *ListTeamUsersApiParams) ListTeamUsersApiRequest {
 	return ListTeamUsersApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1584,7 +1584,7 @@ Returns all MongoDB Cloud users assigned to the team specified using its unique 
 	@param teamId Unique 24-hexadecimal digit string that identifies the team whose application users you want to return.
 	@return ListTeamUsersApiRequest
 */
-func (a *TeamsApiService) ListTeamUsers(ctx context.Context, orgId string, teamId string) ListTeamUsersApiRequest {
+func (a *TeamsAPIService) ListTeamUsers(ctx context.Context, orgId string, teamId string) ListTeamUsersApiRequest {
 	return ListTeamUsersApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1596,7 +1596,7 @@ func (a *TeamsApiService) ListTeamUsers(ctx context.Context, orgId string, teamI
 // Execute executes the request
 //
 //	@return PaginatedApiAppUser
-func (a *TeamsApiService) listTeamUsersExecute(r ListTeamUsersApiRequest) (*PaginatedApiAppUser, *http.Response, error) {
+func (a *TeamsAPIService) listTeamUsersExecute(r ListTeamUsersApiRequest) (*PaginatedApiAppUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1604,7 +1604,7 @@ func (a *TeamsApiService) listTeamUsersExecute(r ListTeamUsersApiRequest) (*Pagi
 		localVarReturnValue *PaginatedApiAppUser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsApiService.ListTeamUsers")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsAPIService.ListTeamUsers")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1707,7 +1707,7 @@ func (a *TeamsApiService) listTeamUsersExecute(r ListTeamUsersApiRequest) (*Pagi
 
 type RemoveProjectTeamApiRequest struct {
 	ctx        context.Context
-	ApiService TeamsApi
+	ApiService TeamsAPI
 	groupId    string
 	teamId     string
 }
@@ -1717,7 +1717,7 @@ type RemoveProjectTeamApiParams struct {
 	TeamId  string
 }
 
-func (a *TeamsApiService) RemoveProjectTeamWithParams(ctx context.Context, args *RemoveProjectTeamApiParams) RemoveProjectTeamApiRequest {
+func (a *TeamsAPIService) RemoveProjectTeamWithParams(ctx context.Context, args *RemoveProjectTeamApiParams) RemoveProjectTeamApiRequest {
 	return RemoveProjectTeamApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1740,7 +1740,7 @@ Removes one team specified using its unique 24-hexadecimal digit identifier from
 	@param teamId Unique 24-hexadecimal digit string that identifies the team that you want to remove from the specified project.
 	@return RemoveProjectTeamApiRequest
 */
-func (a *TeamsApiService) RemoveProjectTeam(ctx context.Context, groupId string, teamId string) RemoveProjectTeamApiRequest {
+func (a *TeamsAPIService) RemoveProjectTeam(ctx context.Context, groupId string, teamId string) RemoveProjectTeamApiRequest {
 	return RemoveProjectTeamApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1750,14 +1750,14 @@ func (a *TeamsApiService) RemoveProjectTeam(ctx context.Context, groupId string,
 }
 
 // Execute executes the request
-func (a *TeamsApiService) removeProjectTeamExecute(r RemoveProjectTeamApiRequest) (*http.Response, error) {
+func (a *TeamsAPIService) removeProjectTeamExecute(r RemoveProjectTeamApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsApiService.RemoveProjectTeam")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsAPIService.RemoveProjectTeam")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1837,7 +1837,7 @@ func (a *TeamsApiService) removeProjectTeamExecute(r RemoveProjectTeamApiRequest
 
 type RemoveTeamUserApiRequest struct {
 	ctx        context.Context
-	ApiService TeamsApi
+	ApiService TeamsAPI
 	orgId      string
 	teamId     string
 	userId     string
@@ -1849,7 +1849,7 @@ type RemoveTeamUserApiParams struct {
 	UserId string
 }
 
-func (a *TeamsApiService) RemoveTeamUserWithParams(ctx context.Context, args *RemoveTeamUserApiParams) RemoveTeamUserApiRequest {
+func (a *TeamsAPIService) RemoveTeamUserWithParams(ctx context.Context, args *RemoveTeamUserApiParams) RemoveTeamUserApiRequest {
 	return RemoveTeamUserApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1874,7 +1874,7 @@ Removes one MongoDB Cloud user from the specified team. This team belongs to one
 	@param userId Unique 24-hexadecimal digit string that identifies MongoDB Cloud user that you want to remove from the specified team.
 	@return RemoveTeamUserApiRequest
 */
-func (a *TeamsApiService) RemoveTeamUser(ctx context.Context, orgId string, teamId string, userId string) RemoveTeamUserApiRequest {
+func (a *TeamsAPIService) RemoveTeamUser(ctx context.Context, orgId string, teamId string, userId string) RemoveTeamUserApiRequest {
 	return RemoveTeamUserApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1885,14 +1885,14 @@ func (a *TeamsApiService) RemoveTeamUser(ctx context.Context, orgId string, team
 }
 
 // Execute executes the request
-func (a *TeamsApiService) removeTeamUserExecute(r RemoveTeamUserApiRequest) (*http.Response, error) {
+func (a *TeamsAPIService) removeTeamUserExecute(r RemoveTeamUserApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsApiService.RemoveTeamUser")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsAPIService.RemoveTeamUser")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1979,7 +1979,7 @@ func (a *TeamsApiService) removeTeamUserExecute(r RemoveTeamUserApiRequest) (*ht
 
 type RenameTeamApiRequest struct {
 	ctx        context.Context
-	ApiService TeamsApi
+	ApiService TeamsAPI
 	orgId      string
 	teamId     string
 	team       *Team
@@ -1991,7 +1991,7 @@ type RenameTeamApiParams struct {
 	Team   *Team
 }
 
-func (a *TeamsApiService) RenameTeamWithParams(ctx context.Context, args *RenameTeamApiParams) RenameTeamApiRequest {
+func (a *TeamsAPIService) RenameTeamWithParams(ctx context.Context, args *RenameTeamApiParams) RenameTeamApiRequest {
 	return RenameTeamApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2015,7 +2015,7 @@ RenameTeam Rename One Team
 	@param teamId Unique 24-hexadecimal digit string that identifies the team that you want to rename.
 	@return RenameTeamApiRequest
 */
-func (a *TeamsApiService) RenameTeam(ctx context.Context, orgId string, teamId string, team *Team) RenameTeamApiRequest {
+func (a *TeamsAPIService) RenameTeam(ctx context.Context, orgId string, teamId string, team *Team) RenameTeamApiRequest {
 	return RenameTeamApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2028,7 +2028,7 @@ func (a *TeamsApiService) RenameTeam(ctx context.Context, orgId string, teamId s
 // Execute executes the request
 //
 //	@return TeamResponse
-func (a *TeamsApiService) renameTeamExecute(r RenameTeamApiRequest) (*TeamResponse, *http.Response, error) {
+func (a *TeamsAPIService) renameTeamExecute(r RenameTeamApiRequest) (*TeamResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -2036,7 +2036,7 @@ func (a *TeamsApiService) renameTeamExecute(r RenameTeamApiRequest) (*TeamRespon
 		localVarReturnValue *TeamResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsApiService.RenameTeam")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsAPIService.RenameTeam")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2130,7 +2130,7 @@ func (a *TeamsApiService) renameTeamExecute(r RenameTeamApiRequest) (*TeamRespon
 
 type UpdateTeamRolesApiRequest struct {
 	ctx        context.Context
-	ApiService TeamsApi
+	ApiService TeamsAPI
 	groupId    string
 	teamId     string
 	teamRole   *TeamRole
@@ -2142,7 +2142,7 @@ type UpdateTeamRolesApiParams struct {
 	TeamRole *TeamRole
 }
 
-func (a *TeamsApiService) UpdateTeamRolesWithParams(ctx context.Context, args *UpdateTeamRolesApiParams) UpdateTeamRolesApiRequest {
+func (a *TeamsAPIService) UpdateTeamRolesWithParams(ctx context.Context, args *UpdateTeamRolesApiParams) UpdateTeamRolesApiRequest {
 	return UpdateTeamRolesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2166,7 +2166,7 @@ Updates the project roles assigned to the specified team. You can grant team rol
 	@param teamId Unique 24-hexadecimal digit string that identifies the team for which you want to update roles.
 	@return UpdateTeamRolesApiRequest
 */
-func (a *TeamsApiService) UpdateTeamRoles(ctx context.Context, groupId string, teamId string, teamRole *TeamRole) UpdateTeamRolesApiRequest {
+func (a *TeamsAPIService) UpdateTeamRoles(ctx context.Context, groupId string, teamId string, teamRole *TeamRole) UpdateTeamRolesApiRequest {
 	return UpdateTeamRolesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2179,7 +2179,7 @@ func (a *TeamsApiService) UpdateTeamRoles(ctx context.Context, groupId string, t
 // Execute executes the request
 //
 //	@return PaginatedTeamRole
-func (a *TeamsApiService) updateTeamRolesExecute(r UpdateTeamRolesApiRequest) (*PaginatedTeamRole, *http.Response, error) {
+func (a *TeamsAPIService) updateTeamRolesExecute(r UpdateTeamRolesApiRequest) (*PaginatedTeamRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -2187,7 +2187,7 @@ func (a *TeamsApiService) updateTeamRolesExecute(r UpdateTeamRolesApiRequest) (*
 		localVarReturnValue *PaginatedTeamRole
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsApiService.UpdateTeamRoles")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TeamsAPIService.UpdateTeamRoles")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

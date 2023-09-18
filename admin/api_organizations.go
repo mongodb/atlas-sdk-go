@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-type OrganizationsApi interface {
+type OrganizationsAPI interface {
 
 	/*
 		CreateOrganization Create One Organization
@@ -419,12 +419,12 @@ type OrganizationsApi interface {
 	updateOrganizationSettingsExecute(r UpdateOrganizationSettingsApiRequest) (*OrganizationSettings, *http.Response, error)
 }
 
-// OrganizationsApiService OrganizationsApi service
-type OrganizationsApiService service
+// OrganizationsAPIService OrganizationsAPI service
+type OrganizationsAPIService service
 
 type CreateOrganizationApiRequest struct {
 	ctx                       context.Context
-	ApiService                OrganizationsApi
+	ApiService                OrganizationsAPI
 	createOrganizationRequest *CreateOrganizationRequest
 }
 
@@ -432,7 +432,7 @@ type CreateOrganizationApiParams struct {
 	CreateOrganizationRequest *CreateOrganizationRequest
 }
 
-func (a *OrganizationsApiService) CreateOrganizationWithParams(ctx context.Context, args *CreateOrganizationApiParams) CreateOrganizationApiRequest {
+func (a *OrganizationsAPIService) CreateOrganizationWithParams(ctx context.Context, args *CreateOrganizationApiParams) CreateOrganizationApiRequest {
 	return CreateOrganizationApiRequest{
 		ApiService:                a,
 		ctx:                       ctx,
@@ -452,7 +452,7 @@ Creates one organization in MongoDB Cloud and links it to the requesting API Key
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return CreateOrganizationApiRequest
 */
-func (a *OrganizationsApiService) CreateOrganization(ctx context.Context, createOrganizationRequest *CreateOrganizationRequest) CreateOrganizationApiRequest {
+func (a *OrganizationsAPIService) CreateOrganization(ctx context.Context, createOrganizationRequest *CreateOrganizationRequest) CreateOrganizationApiRequest {
 	return CreateOrganizationApiRequest{
 		ApiService:                a,
 		ctx:                       ctx,
@@ -463,7 +463,7 @@ func (a *OrganizationsApiService) CreateOrganization(ctx context.Context, create
 // Execute executes the request
 //
 //	@return CreateOrganizationResponse
-func (a *OrganizationsApiService) createOrganizationExecute(r CreateOrganizationApiRequest) (*CreateOrganizationResponse, *http.Response, error) {
+func (a *OrganizationsAPIService) createOrganizationExecute(r CreateOrganizationApiRequest) (*CreateOrganizationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -471,7 +471,7 @@ func (a *OrganizationsApiService) createOrganizationExecute(r CreateOrganization
 		localVarReturnValue *CreateOrganizationResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.CreateOrganization")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.CreateOrganization")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -551,7 +551,7 @@ func (a *OrganizationsApiService) createOrganizationExecute(r CreateOrganization
 
 type CreateOrganizationInvitationApiRequest struct {
 	ctx                           context.Context
-	ApiService                    OrganizationsApi
+	ApiService                    OrganizationsAPI
 	orgId                         string
 	organizationInvitationRequest *OrganizationInvitationRequest
 }
@@ -561,7 +561,7 @@ type CreateOrganizationInvitationApiParams struct {
 	OrganizationInvitationRequest *OrganizationInvitationRequest
 }
 
-func (a *OrganizationsApiService) CreateOrganizationInvitationWithParams(ctx context.Context, args *CreateOrganizationInvitationApiParams) CreateOrganizationInvitationApiRequest {
+func (a *OrganizationsAPIService) CreateOrganizationInvitationWithParams(ctx context.Context, args *CreateOrganizationInvitationApiParams) CreateOrganizationInvitationApiRequest {
 	return CreateOrganizationInvitationApiRequest{
 		ApiService:                    a,
 		ctx:                           ctx,
@@ -583,7 +583,7 @@ Invites one MongoDB Cloud user to join the specified organization. The user must
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return CreateOrganizationInvitationApiRequest
 */
-func (a *OrganizationsApiService) CreateOrganizationInvitation(ctx context.Context, orgId string, organizationInvitationRequest *OrganizationInvitationRequest) CreateOrganizationInvitationApiRequest {
+func (a *OrganizationsAPIService) CreateOrganizationInvitation(ctx context.Context, orgId string, organizationInvitationRequest *OrganizationInvitationRequest) CreateOrganizationInvitationApiRequest {
 	return CreateOrganizationInvitationApiRequest{
 		ApiService:                    a,
 		ctx:                           ctx,
@@ -595,7 +595,7 @@ func (a *OrganizationsApiService) CreateOrganizationInvitation(ctx context.Conte
 // Execute executes the request
 //
 //	@return OrganizationInvitation
-func (a *OrganizationsApiService) createOrganizationInvitationExecute(r CreateOrganizationInvitationApiRequest) (*OrganizationInvitation, *http.Response, error) {
+func (a *OrganizationsAPIService) createOrganizationInvitationExecute(r CreateOrganizationInvitationApiRequest) (*OrganizationInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -603,7 +603,7 @@ func (a *OrganizationsApiService) createOrganizationInvitationExecute(r CreateOr
 		localVarReturnValue *OrganizationInvitation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.CreateOrganizationInvitation")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.CreateOrganizationInvitation")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -690,7 +690,7 @@ func (a *OrganizationsApiService) createOrganizationInvitationExecute(r CreateOr
 
 type DeleteOrganizationApiRequest struct {
 	ctx        context.Context
-	ApiService OrganizationsApi
+	ApiService OrganizationsAPI
 	orgId      string
 }
 
@@ -698,7 +698,7 @@ type DeleteOrganizationApiParams struct {
 	OrgId string
 }
 
-func (a *OrganizationsApiService) DeleteOrganizationWithParams(ctx context.Context, args *DeleteOrganizationApiParams) DeleteOrganizationApiRequest {
+func (a *OrganizationsAPIService) DeleteOrganizationWithParams(ctx context.Context, args *DeleteOrganizationApiParams) DeleteOrganizationApiRequest {
 	return DeleteOrganizationApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -724,7 +724,7 @@ Removes one specified organization. MongoDB Cloud imposes the following limits o
     @param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
     @return DeleteOrganizationApiRequest
 */
-func (a *OrganizationsApiService) DeleteOrganization(ctx context.Context, orgId string) DeleteOrganizationApiRequest {
+func (a *OrganizationsAPIService) DeleteOrganization(ctx context.Context, orgId string) DeleteOrganizationApiRequest {
 	return DeleteOrganizationApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -735,7 +735,7 @@ func (a *OrganizationsApiService) DeleteOrganization(ctx context.Context, orgId 
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *OrganizationsApiService) deleteOrganizationExecute(r DeleteOrganizationApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *OrganizationsAPIService) deleteOrganizationExecute(r DeleteOrganizationApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -743,7 +743,7 @@ func (a *OrganizationsApiService) deleteOrganizationExecute(r DeleteOrganization
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.DeleteOrganization")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.DeleteOrganization")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -825,7 +825,7 @@ func (a *OrganizationsApiService) deleteOrganizationExecute(r DeleteOrganization
 
 type DeleteOrganizationInvitationApiRequest struct {
 	ctx          context.Context
-	ApiService   OrganizationsApi
+	ApiService   OrganizationsAPI
 	orgId        string
 	invitationId string
 }
@@ -835,7 +835,7 @@ type DeleteOrganizationInvitationApiParams struct {
 	InvitationId string
 }
 
-func (a *OrganizationsApiService) DeleteOrganizationInvitationWithParams(ctx context.Context, args *DeleteOrganizationInvitationApiParams) DeleteOrganizationInvitationApiRequest {
+func (a *OrganizationsAPIService) DeleteOrganizationInvitationWithParams(ctx context.Context, args *DeleteOrganizationInvitationApiParams) DeleteOrganizationInvitationApiRequest {
 	return DeleteOrganizationInvitationApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -858,7 +858,7 @@ Cancels one pending invitation sent to the specified MongoDB Cloud user to join 
 	@param invitationId Unique 24-hexadecimal digit string that identifies the invitation.
 	@return DeleteOrganizationInvitationApiRequest
 */
-func (a *OrganizationsApiService) DeleteOrganizationInvitation(ctx context.Context, orgId string, invitationId string) DeleteOrganizationInvitationApiRequest {
+func (a *OrganizationsAPIService) DeleteOrganizationInvitation(ctx context.Context, orgId string, invitationId string) DeleteOrganizationInvitationApiRequest {
 	return DeleteOrganizationInvitationApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -870,7 +870,7 @@ func (a *OrganizationsApiService) DeleteOrganizationInvitation(ctx context.Conte
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *OrganizationsApiService) deleteOrganizationInvitationExecute(r DeleteOrganizationInvitationApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *OrganizationsAPIService) deleteOrganizationInvitationExecute(r DeleteOrganizationInvitationApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -878,7 +878,7 @@ func (a *OrganizationsApiService) deleteOrganizationInvitationExecute(r DeleteOr
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.DeleteOrganizationInvitation")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.DeleteOrganizationInvitation")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -961,7 +961,7 @@ func (a *OrganizationsApiService) deleteOrganizationInvitationExecute(r DeleteOr
 
 type GetOrganizationApiRequest struct {
 	ctx        context.Context
-	ApiService OrganizationsApi
+	ApiService OrganizationsAPI
 	orgId      string
 }
 
@@ -969,7 +969,7 @@ type GetOrganizationApiParams struct {
 	OrgId string
 }
 
-func (a *OrganizationsApiService) GetOrganizationWithParams(ctx context.Context, args *GetOrganizationApiParams) GetOrganizationApiRequest {
+func (a *OrganizationsAPIService) GetOrganizationWithParams(ctx context.Context, args *GetOrganizationApiParams) GetOrganizationApiRequest {
 	return GetOrganizationApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -990,7 +990,7 @@ Returns one organization to which the requesting API key has access. To use this
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return GetOrganizationApiRequest
 */
-func (a *OrganizationsApiService) GetOrganization(ctx context.Context, orgId string) GetOrganizationApiRequest {
+func (a *OrganizationsAPIService) GetOrganization(ctx context.Context, orgId string) GetOrganizationApiRequest {
 	return GetOrganizationApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1001,7 +1001,7 @@ func (a *OrganizationsApiService) GetOrganization(ctx context.Context, orgId str
 // Execute executes the request
 //
 //	@return AtlasOrganization
-func (a *OrganizationsApiService) getOrganizationExecute(r GetOrganizationApiRequest) (*AtlasOrganization, *http.Response, error) {
+func (a *OrganizationsAPIService) getOrganizationExecute(r GetOrganizationApiRequest) (*AtlasOrganization, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1009,7 +1009,7 @@ func (a *OrganizationsApiService) getOrganizationExecute(r GetOrganizationApiReq
 		localVarReturnValue *AtlasOrganization
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.GetOrganization")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.GetOrganization")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1091,7 +1091,7 @@ func (a *OrganizationsApiService) getOrganizationExecute(r GetOrganizationApiReq
 
 type GetOrganizationInvitationApiRequest struct {
 	ctx          context.Context
-	ApiService   OrganizationsApi
+	ApiService   OrganizationsAPI
 	orgId        string
 	invitationId string
 }
@@ -1101,7 +1101,7 @@ type GetOrganizationInvitationApiParams struct {
 	InvitationId string
 }
 
-func (a *OrganizationsApiService) GetOrganizationInvitationWithParams(ctx context.Context, args *GetOrganizationInvitationApiParams) GetOrganizationInvitationApiRequest {
+func (a *OrganizationsAPIService) GetOrganizationInvitationWithParams(ctx context.Context, args *GetOrganizationInvitationApiParams) GetOrganizationInvitationApiRequest {
 	return GetOrganizationInvitationApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1124,7 +1124,7 @@ Returns the details of one pending invitation to the specified organization. To 
 	@param invitationId Unique 24-hexadecimal digit string that identifies the invitation.
 	@return GetOrganizationInvitationApiRequest
 */
-func (a *OrganizationsApiService) GetOrganizationInvitation(ctx context.Context, orgId string, invitationId string) GetOrganizationInvitationApiRequest {
+func (a *OrganizationsAPIService) GetOrganizationInvitation(ctx context.Context, orgId string, invitationId string) GetOrganizationInvitationApiRequest {
 	return GetOrganizationInvitationApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1136,7 +1136,7 @@ func (a *OrganizationsApiService) GetOrganizationInvitation(ctx context.Context,
 // Execute executes the request
 //
 //	@return OrganizationInvitation
-func (a *OrganizationsApiService) getOrganizationInvitationExecute(r GetOrganizationInvitationApiRequest) (*OrganizationInvitation, *http.Response, error) {
+func (a *OrganizationsAPIService) getOrganizationInvitationExecute(r GetOrganizationInvitationApiRequest) (*OrganizationInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1144,7 +1144,7 @@ func (a *OrganizationsApiService) getOrganizationInvitationExecute(r GetOrganiza
 		localVarReturnValue *OrganizationInvitation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.GetOrganizationInvitation")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.GetOrganizationInvitation")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1233,7 +1233,7 @@ func (a *OrganizationsApiService) getOrganizationInvitationExecute(r GetOrganiza
 
 type GetOrganizationSettingsApiRequest struct {
 	ctx        context.Context
-	ApiService OrganizationsApi
+	ApiService OrganizationsAPI
 	orgId      string
 }
 
@@ -1241,7 +1241,7 @@ type GetOrganizationSettingsApiParams struct {
 	OrgId string
 }
 
-func (a *OrganizationsApiService) GetOrganizationSettingsWithParams(ctx context.Context, args *GetOrganizationSettingsApiParams) GetOrganizationSettingsApiRequest {
+func (a *OrganizationsAPIService) GetOrganizationSettingsWithParams(ctx context.Context, args *GetOrganizationSettingsApiParams) GetOrganizationSettingsApiRequest {
 	return GetOrganizationSettingsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1262,7 +1262,7 @@ GetOrganizationSettings Return Settings for One Organization
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return GetOrganizationSettingsApiRequest
 */
-func (a *OrganizationsApiService) GetOrganizationSettings(ctx context.Context, orgId string) GetOrganizationSettingsApiRequest {
+func (a *OrganizationsAPIService) GetOrganizationSettings(ctx context.Context, orgId string) GetOrganizationSettingsApiRequest {
 	return GetOrganizationSettingsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1273,7 +1273,7 @@ func (a *OrganizationsApiService) GetOrganizationSettings(ctx context.Context, o
 // Execute executes the request
 //
 //	@return OrganizationSettings
-func (a *OrganizationsApiService) getOrganizationSettingsExecute(r GetOrganizationSettingsApiRequest) (*OrganizationSettings, *http.Response, error) {
+func (a *OrganizationsAPIService) getOrganizationSettingsExecute(r GetOrganizationSettingsApiRequest) (*OrganizationSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1281,7 +1281,7 @@ func (a *OrganizationsApiService) getOrganizationSettingsExecute(r GetOrganizati
 		localVarReturnValue *OrganizationSettings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.GetOrganizationSettings")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.GetOrganizationSettings")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1363,7 +1363,7 @@ func (a *OrganizationsApiService) getOrganizationSettingsExecute(r GetOrganizati
 
 type ListOrganizationInvitationsApiRequest struct {
 	ctx        context.Context
-	ApiService OrganizationsApi
+	ApiService OrganizationsAPI
 	orgId      string
 	username   *string
 }
@@ -1373,7 +1373,7 @@ type ListOrganizationInvitationsApiParams struct {
 	Username *string
 }
 
-func (a *OrganizationsApiService) ListOrganizationInvitationsWithParams(ctx context.Context, args *ListOrganizationInvitationsApiParams) ListOrganizationInvitationsApiRequest {
+func (a *OrganizationsAPIService) ListOrganizationInvitationsWithParams(ctx context.Context, args *ListOrganizationInvitationsApiParams) ListOrganizationInvitationsApiRequest {
 	return ListOrganizationInvitationsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1401,7 +1401,7 @@ Returns all pending invitations to the specified organization. To use this resou
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return ListOrganizationInvitationsApiRequest
 */
-func (a *OrganizationsApiService) ListOrganizationInvitations(ctx context.Context, orgId string) ListOrganizationInvitationsApiRequest {
+func (a *OrganizationsAPIService) ListOrganizationInvitations(ctx context.Context, orgId string) ListOrganizationInvitationsApiRequest {
 	return ListOrganizationInvitationsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1412,7 +1412,7 @@ func (a *OrganizationsApiService) ListOrganizationInvitations(ctx context.Contex
 // Execute executes the request
 //
 //	@return []OrganizationInvitation
-func (a *OrganizationsApiService) listOrganizationInvitationsExecute(r ListOrganizationInvitationsApiRequest) ([]OrganizationInvitation, *http.Response, error) {
+func (a *OrganizationsAPIService) listOrganizationInvitationsExecute(r ListOrganizationInvitationsApiRequest) ([]OrganizationInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1420,7 +1420,7 @@ func (a *OrganizationsApiService) listOrganizationInvitationsExecute(r ListOrgan
 		localVarReturnValue []OrganizationInvitation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.ListOrganizationInvitations")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.ListOrganizationInvitations")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1505,7 +1505,7 @@ func (a *OrganizationsApiService) listOrganizationInvitationsExecute(r ListOrgan
 
 type ListOrganizationProjectsApiRequest struct {
 	ctx          context.Context
-	ApiService   OrganizationsApi
+	ApiService   OrganizationsAPI
 	orgId        string
 	includeCount *bool
 	itemsPerPage *int
@@ -1521,7 +1521,7 @@ type ListOrganizationProjectsApiParams struct {
 	Name         *string
 }
 
-func (a *OrganizationsApiService) ListOrganizationProjectsWithParams(ctx context.Context, args *ListOrganizationProjectsApiParams) ListOrganizationProjectsApiRequest {
+func (a *OrganizationsAPIService) ListOrganizationProjectsWithParams(ctx context.Context, args *ListOrganizationProjectsApiParams) ListOrganizationProjectsApiRequest {
 	return ListOrganizationProjectsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1577,7 +1577,7 @@ To use this resource, the requesting API Key must have the Organization Member r
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return ListOrganizationProjectsApiRequest
 */
-func (a *OrganizationsApiService) ListOrganizationProjects(ctx context.Context, orgId string) ListOrganizationProjectsApiRequest {
+func (a *OrganizationsAPIService) ListOrganizationProjects(ctx context.Context, orgId string) ListOrganizationProjectsApiRequest {
 	return ListOrganizationProjectsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1588,7 +1588,7 @@ func (a *OrganizationsApiService) ListOrganizationProjects(ctx context.Context, 
 // Execute executes the request
 //
 //	@return PaginatedAtlasGroup
-func (a *OrganizationsApiService) listOrganizationProjectsExecute(r ListOrganizationProjectsApiRequest) (*PaginatedAtlasGroup, *http.Response, error) {
+func (a *OrganizationsAPIService) listOrganizationProjectsExecute(r ListOrganizationProjectsApiRequest) (*PaginatedAtlasGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1596,7 +1596,7 @@ func (a *OrganizationsApiService) listOrganizationProjectsExecute(r ListOrganiza
 		localVarReturnValue *PaginatedAtlasGroup
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.ListOrganizationProjects")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.ListOrganizationProjects")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1702,7 +1702,7 @@ func (a *OrganizationsApiService) listOrganizationProjectsExecute(r ListOrganiza
 
 type ListOrganizationUsersApiRequest struct {
 	ctx          context.Context
-	ApiService   OrganizationsApi
+	ApiService   OrganizationsAPI
 	orgId        string
 	includeCount *bool
 	itemsPerPage *int
@@ -1716,7 +1716,7 @@ type ListOrganizationUsersApiParams struct {
 	PageNum      *int
 }
 
-func (a *OrganizationsApiService) ListOrganizationUsersWithParams(ctx context.Context, args *ListOrganizationUsersApiParams) ListOrganizationUsersApiRequest {
+func (a *OrganizationsAPIService) ListOrganizationUsersWithParams(ctx context.Context, args *ListOrganizationUsersApiParams) ListOrganizationUsersApiRequest {
 	return ListOrganizationUsersApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1758,7 +1758,7 @@ Returns details about the MongoDB Cloud users associated with the specified orga
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return ListOrganizationUsersApiRequest
 */
-func (a *OrganizationsApiService) ListOrganizationUsers(ctx context.Context, orgId string) ListOrganizationUsersApiRequest {
+func (a *OrganizationsAPIService) ListOrganizationUsers(ctx context.Context, orgId string) ListOrganizationUsersApiRequest {
 	return ListOrganizationUsersApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1769,7 +1769,7 @@ func (a *OrganizationsApiService) ListOrganizationUsers(ctx context.Context, org
 // Execute executes the request
 //
 //	@return PaginatedAppUser
-func (a *OrganizationsApiService) listOrganizationUsersExecute(r ListOrganizationUsersApiRequest) (*PaginatedAppUser, *http.Response, error) {
+func (a *OrganizationsAPIService) listOrganizationUsersExecute(r ListOrganizationUsersApiRequest) (*PaginatedAppUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1777,7 +1777,7 @@ func (a *OrganizationsApiService) listOrganizationUsersExecute(r ListOrganizatio
 		localVarReturnValue *PaginatedAppUser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.ListOrganizationUsers")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.ListOrganizationUsers")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1880,7 +1880,7 @@ func (a *OrganizationsApiService) listOrganizationUsersExecute(r ListOrganizatio
 
 type ListOrganizationsApiRequest struct {
 	ctx          context.Context
-	ApiService   OrganizationsApi
+	ApiService   OrganizationsAPI
 	includeCount *bool
 	itemsPerPage *int
 	pageNum      *int
@@ -1894,7 +1894,7 @@ type ListOrganizationsApiParams struct {
 	Name         *string
 }
 
-func (a *OrganizationsApiService) ListOrganizationsWithParams(ctx context.Context, args *ListOrganizationsApiParams) ListOrganizationsApiRequest {
+func (a *OrganizationsAPIService) ListOrganizationsWithParams(ctx context.Context, args *ListOrganizationsApiParams) ListOrganizationsApiRequest {
 	return ListOrganizationsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1941,7 +1941,7 @@ Returns all organizations to which the requesting API Key has access. To use thi
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ListOrganizationsApiRequest
 */
-func (a *OrganizationsApiService) ListOrganizations(ctx context.Context) ListOrganizationsApiRequest {
+func (a *OrganizationsAPIService) ListOrganizations(ctx context.Context) ListOrganizationsApiRequest {
 	return ListOrganizationsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1951,7 +1951,7 @@ func (a *OrganizationsApiService) ListOrganizations(ctx context.Context) ListOrg
 // Execute executes the request
 //
 //	@return PaginatedOrganization
-func (a *OrganizationsApiService) listOrganizationsExecute(r ListOrganizationsApiRequest) (*PaginatedOrganization, *http.Response, error) {
+func (a *OrganizationsAPIService) listOrganizationsExecute(r ListOrganizationsApiRequest) (*PaginatedOrganization, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1959,7 +1959,7 @@ func (a *OrganizationsApiService) listOrganizationsExecute(r ListOrganizationsAp
 		localVarReturnValue *PaginatedOrganization
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.ListOrganizations")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.ListOrganizations")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2058,7 +2058,7 @@ func (a *OrganizationsApiService) listOrganizationsExecute(r ListOrganizationsAp
 
 type RemoveOrganizationUserApiRequest struct {
 	ctx        context.Context
-	ApiService OrganizationsApi
+	ApiService OrganizationsAPI
 	orgId      string
 	userId     string
 }
@@ -2068,7 +2068,7 @@ type RemoveOrganizationUserApiParams struct {
 	UserId string
 }
 
-func (a *OrganizationsApiService) RemoveOrganizationUserWithParams(ctx context.Context, args *RemoveOrganizationUserApiParams) RemoveOrganizationUserApiRequest {
+func (a *OrganizationsAPIService) RemoveOrganizationUserWithParams(ctx context.Context, args *RemoveOrganizationUserApiParams) RemoveOrganizationUserApiRequest {
 	return RemoveOrganizationUserApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2091,7 +2091,7 @@ RemoveOrganizationUser Remove One MongoDB Cloud User from One Organization
 	@param userId Unique 24-hexadecimal digit string that identifies the user to be deleted.
 	@return RemoveOrganizationUserApiRequest
 */
-func (a *OrganizationsApiService) RemoveOrganizationUser(ctx context.Context, orgId string, userId string) RemoveOrganizationUserApiRequest {
+func (a *OrganizationsAPIService) RemoveOrganizationUser(ctx context.Context, orgId string, userId string) RemoveOrganizationUserApiRequest {
 	return RemoveOrganizationUserApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2103,7 +2103,7 @@ func (a *OrganizationsApiService) RemoveOrganizationUser(ctx context.Context, or
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *OrganizationsApiService) removeOrganizationUserExecute(r RemoveOrganizationUserApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *OrganizationsAPIService) removeOrganizationUserExecute(r RemoveOrganizationUserApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -2111,7 +2111,7 @@ func (a *OrganizationsApiService) removeOrganizationUserExecute(r RemoveOrganiza
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.RemoveOrganizationUser")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.RemoveOrganizationUser")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2200,7 +2200,7 @@ func (a *OrganizationsApiService) removeOrganizationUserExecute(r RemoveOrganiza
 
 type RenameOrganizationApiRequest struct {
 	ctx               context.Context
-	ApiService        OrganizationsApi
+	ApiService        OrganizationsAPI
 	orgId             string
 	atlasOrganization *AtlasOrganization
 }
@@ -2210,7 +2210,7 @@ type RenameOrganizationApiParams struct {
 	AtlasOrganization *AtlasOrganization
 }
 
-func (a *OrganizationsApiService) RenameOrganizationWithParams(ctx context.Context, args *RenameOrganizationApiParams) RenameOrganizationApiRequest {
+func (a *OrganizationsAPIService) RenameOrganizationWithParams(ctx context.Context, args *RenameOrganizationApiParams) RenameOrganizationApiRequest {
 	return RenameOrganizationApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -2232,7 +2232,7 @@ RenameOrganization Rename One Organization
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return RenameOrganizationApiRequest
 */
-func (a *OrganizationsApiService) RenameOrganization(ctx context.Context, orgId string, atlasOrganization *AtlasOrganization) RenameOrganizationApiRequest {
+func (a *OrganizationsAPIService) RenameOrganization(ctx context.Context, orgId string, atlasOrganization *AtlasOrganization) RenameOrganizationApiRequest {
 	return RenameOrganizationApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -2244,7 +2244,7 @@ func (a *OrganizationsApiService) RenameOrganization(ctx context.Context, orgId 
 // Execute executes the request
 //
 //	@return AtlasOrganization
-func (a *OrganizationsApiService) renameOrganizationExecute(r RenameOrganizationApiRequest) (*AtlasOrganization, *http.Response, error) {
+func (a *OrganizationsAPIService) renameOrganizationExecute(r RenameOrganizationApiRequest) (*AtlasOrganization, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -2252,7 +2252,7 @@ func (a *OrganizationsApiService) renameOrganizationExecute(r RenameOrganization
 		localVarReturnValue *AtlasOrganization
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.RenameOrganization")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.RenameOrganization")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2339,7 +2339,7 @@ func (a *OrganizationsApiService) renameOrganizationExecute(r RenameOrganization
 
 type UpdateOrganizationInvitationApiRequest struct {
 	ctx                           context.Context
-	ApiService                    OrganizationsApi
+	ApiService                    OrganizationsAPI
 	orgId                         string
 	organizationInvitationRequest *OrganizationInvitationRequest
 }
@@ -2349,7 +2349,7 @@ type UpdateOrganizationInvitationApiParams struct {
 	OrganizationInvitationRequest *OrganizationInvitationRequest
 }
 
-func (a *OrganizationsApiService) UpdateOrganizationInvitationWithParams(ctx context.Context, args *UpdateOrganizationInvitationApiParams) UpdateOrganizationInvitationApiRequest {
+func (a *OrganizationsAPIService) UpdateOrganizationInvitationWithParams(ctx context.Context, args *UpdateOrganizationInvitationApiParams) UpdateOrganizationInvitationApiRequest {
 	return UpdateOrganizationInvitationApiRequest{
 		ApiService:                    a,
 		ctx:                           ctx,
@@ -2371,7 +2371,7 @@ Updates the details of one pending invitation to the specified organization. To 
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return UpdateOrganizationInvitationApiRequest
 */
-func (a *OrganizationsApiService) UpdateOrganizationInvitation(ctx context.Context, orgId string, organizationInvitationRequest *OrganizationInvitationRequest) UpdateOrganizationInvitationApiRequest {
+func (a *OrganizationsAPIService) UpdateOrganizationInvitation(ctx context.Context, orgId string, organizationInvitationRequest *OrganizationInvitationRequest) UpdateOrganizationInvitationApiRequest {
 	return UpdateOrganizationInvitationApiRequest{
 		ApiService:                    a,
 		ctx:                           ctx,
@@ -2383,7 +2383,7 @@ func (a *OrganizationsApiService) UpdateOrganizationInvitation(ctx context.Conte
 // Execute executes the request
 //
 //	@return OrganizationInvitation
-func (a *OrganizationsApiService) updateOrganizationInvitationExecute(r UpdateOrganizationInvitationApiRequest) (*OrganizationInvitation, *http.Response, error) {
+func (a *OrganizationsAPIService) updateOrganizationInvitationExecute(r UpdateOrganizationInvitationApiRequest) (*OrganizationInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -2391,7 +2391,7 @@ func (a *OrganizationsApiService) updateOrganizationInvitationExecute(r UpdateOr
 		localVarReturnValue *OrganizationInvitation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.UpdateOrganizationInvitation")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.UpdateOrganizationInvitation")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2478,7 +2478,7 @@ func (a *OrganizationsApiService) updateOrganizationInvitationExecute(r UpdateOr
 
 type UpdateOrganizationInvitationByIdApiRequest struct {
 	ctx                                 context.Context
-	ApiService                          OrganizationsApi
+	ApiService                          OrganizationsAPI
 	orgId                               string
 	invitationId                        string
 	organizationInvitationUpdateRequest *OrganizationInvitationUpdateRequest
@@ -2490,7 +2490,7 @@ type UpdateOrganizationInvitationByIdApiParams struct {
 	OrganizationInvitationUpdateRequest *OrganizationInvitationUpdateRequest
 }
 
-func (a *OrganizationsApiService) UpdateOrganizationInvitationByIdWithParams(ctx context.Context, args *UpdateOrganizationInvitationByIdApiParams) UpdateOrganizationInvitationByIdApiRequest {
+func (a *OrganizationsAPIService) UpdateOrganizationInvitationByIdWithParams(ctx context.Context, args *UpdateOrganizationInvitationByIdApiParams) UpdateOrganizationInvitationByIdApiRequest {
 	return UpdateOrganizationInvitationByIdApiRequest{
 		ApiService:                          a,
 		ctx:                                 ctx,
@@ -2514,7 +2514,7 @@ Updates the details of one pending invitation to the specified organization. To 
 	@param invitationId Unique 24-hexadecimal digit string that identifies the invitation.
 	@return UpdateOrganizationInvitationByIdApiRequest
 */
-func (a *OrganizationsApiService) UpdateOrganizationInvitationById(ctx context.Context, orgId string, invitationId string, organizationInvitationUpdateRequest *OrganizationInvitationUpdateRequest) UpdateOrganizationInvitationByIdApiRequest {
+func (a *OrganizationsAPIService) UpdateOrganizationInvitationById(ctx context.Context, orgId string, invitationId string, organizationInvitationUpdateRequest *OrganizationInvitationUpdateRequest) UpdateOrganizationInvitationByIdApiRequest {
 	return UpdateOrganizationInvitationByIdApiRequest{
 		ApiService:                          a,
 		ctx:                                 ctx,
@@ -2527,7 +2527,7 @@ func (a *OrganizationsApiService) UpdateOrganizationInvitationById(ctx context.C
 // Execute executes the request
 //
 //	@return OrganizationInvitation
-func (a *OrganizationsApiService) updateOrganizationInvitationByIdExecute(r UpdateOrganizationInvitationByIdApiRequest) (*OrganizationInvitation, *http.Response, error) {
+func (a *OrganizationsAPIService) updateOrganizationInvitationByIdExecute(r UpdateOrganizationInvitationByIdApiRequest) (*OrganizationInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -2535,7 +2535,7 @@ func (a *OrganizationsApiService) updateOrganizationInvitationByIdExecute(r Upda
 		localVarReturnValue *OrganizationInvitation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.UpdateOrganizationInvitationById")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.UpdateOrganizationInvitationById")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2629,7 +2629,7 @@ func (a *OrganizationsApiService) updateOrganizationInvitationByIdExecute(r Upda
 
 type UpdateOrganizationRolesApiRequest struct {
 	ctx                   context.Context
-	ApiService            OrganizationsApi
+	ApiService            OrganizationsAPI
 	orgId                 string
 	userId                string
 	updateOrgRolesForUser *UpdateOrgRolesForUser
@@ -2641,7 +2641,7 @@ type UpdateOrganizationRolesApiParams struct {
 	UpdateOrgRolesForUser *UpdateOrgRolesForUser
 }
 
-func (a *OrganizationsApiService) UpdateOrganizationRolesWithParams(ctx context.Context, args *UpdateOrganizationRolesApiParams) UpdateOrganizationRolesApiRequest {
+func (a *OrganizationsAPIService) UpdateOrganizationRolesWithParams(ctx context.Context, args *UpdateOrganizationRolesApiParams) UpdateOrganizationRolesApiRequest {
 	return UpdateOrganizationRolesApiRequest{
 		ApiService:            a,
 		ctx:                   ctx,
@@ -2665,7 +2665,7 @@ UpdateOrganizationRoles Update Organization Roles for One MongoDB Cloud User
 	@param userId Unique 24-hexadecimal digit string that identifies the user to modify.
 	@return UpdateOrganizationRolesApiRequest
 */
-func (a *OrganizationsApiService) UpdateOrganizationRoles(ctx context.Context, orgId string, userId string, updateOrgRolesForUser *UpdateOrgRolesForUser) UpdateOrganizationRolesApiRequest {
+func (a *OrganizationsAPIService) UpdateOrganizationRoles(ctx context.Context, orgId string, userId string, updateOrgRolesForUser *UpdateOrgRolesForUser) UpdateOrganizationRolesApiRequest {
 	return UpdateOrganizationRolesApiRequest{
 		ApiService:            a,
 		ctx:                   ctx,
@@ -2678,7 +2678,7 @@ func (a *OrganizationsApiService) UpdateOrganizationRoles(ctx context.Context, o
 // Execute executes the request
 //
 //	@return UpdateOrgRolesForUser
-func (a *OrganizationsApiService) updateOrganizationRolesExecute(r UpdateOrganizationRolesApiRequest) (*UpdateOrgRolesForUser, *http.Response, error) {
+func (a *OrganizationsAPIService) updateOrganizationRolesExecute(r UpdateOrganizationRolesApiRequest) (*UpdateOrgRolesForUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -2686,7 +2686,7 @@ func (a *OrganizationsApiService) updateOrganizationRolesExecute(r UpdateOrganiz
 		localVarReturnValue *UpdateOrgRolesForUser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.UpdateOrganizationRoles")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.UpdateOrganizationRoles")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2780,7 +2780,7 @@ func (a *OrganizationsApiService) updateOrganizationRolesExecute(r UpdateOrganiz
 
 type UpdateOrganizationSettingsApiRequest struct {
 	ctx                  context.Context
-	ApiService           OrganizationsApi
+	ApiService           OrganizationsAPI
 	orgId                string
 	organizationSettings *OrganizationSettings
 }
@@ -2790,7 +2790,7 @@ type UpdateOrganizationSettingsApiParams struct {
 	OrganizationSettings *OrganizationSettings
 }
 
-func (a *OrganizationsApiService) UpdateOrganizationSettingsWithParams(ctx context.Context, args *UpdateOrganizationSettingsApiParams) UpdateOrganizationSettingsApiRequest {
+func (a *OrganizationsAPIService) UpdateOrganizationSettingsWithParams(ctx context.Context, args *UpdateOrganizationSettingsApiParams) UpdateOrganizationSettingsApiRequest {
 	return UpdateOrganizationSettingsApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -2812,7 +2812,7 @@ UpdateOrganizationSettings Update Settings for One Organization
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return UpdateOrganizationSettingsApiRequest
 */
-func (a *OrganizationsApiService) UpdateOrganizationSettings(ctx context.Context, orgId string, organizationSettings *OrganizationSettings) UpdateOrganizationSettingsApiRequest {
+func (a *OrganizationsAPIService) UpdateOrganizationSettings(ctx context.Context, orgId string, organizationSettings *OrganizationSettings) UpdateOrganizationSettingsApiRequest {
 	return UpdateOrganizationSettingsApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -2824,7 +2824,7 @@ func (a *OrganizationsApiService) UpdateOrganizationSettings(ctx context.Context
 // Execute executes the request
 //
 //	@return OrganizationSettings
-func (a *OrganizationsApiService) updateOrganizationSettingsExecute(r UpdateOrganizationSettingsApiRequest) (*OrganizationSettings, *http.Response, error) {
+func (a *OrganizationsAPIService) updateOrganizationSettingsExecute(r UpdateOrganizationSettingsApiRequest) (*OrganizationSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -2832,7 +2832,7 @@ func (a *OrganizationsApiService) updateOrganizationSettingsExecute(r UpdateOrga
 		localVarReturnValue *OrganizationSettings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.UpdateOrganizationSettings")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.UpdateOrganizationSettings")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

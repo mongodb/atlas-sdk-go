@@ -10,7 +10,7 @@ import (
 	"net/url"
 )
 
-type RootApi interface {
+type RootAPI interface {
 
 	/*
 		GetSystemStatus Return the status of this MongoDB application
@@ -35,18 +35,18 @@ type RootApi interface {
 	getSystemStatusExecute(r GetSystemStatusApiRequest) (*SystemStatus, *http.Response, error)
 }
 
-// RootApiService RootApi service
-type RootApiService service
+// RootAPIService RootAPI service
+type RootAPIService service
 
 type GetSystemStatusApiRequest struct {
 	ctx        context.Context
-	ApiService RootApi
+	ApiService RootAPI
 }
 
 type GetSystemStatusApiParams struct {
 }
 
-func (a *RootApiService) GetSystemStatusWithParams(ctx context.Context, args *GetSystemStatusApiParams) GetSystemStatusApiRequest {
+func (a *RootAPIService) GetSystemStatusWithParams(ctx context.Context, args *GetSystemStatusApiParams) GetSystemStatusApiRequest {
 	return GetSystemStatusApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -65,7 +65,7 @@ GetSystemStatus Return the status of this MongoDB application
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return GetSystemStatusApiRequest
 */
-func (a *RootApiService) GetSystemStatus(ctx context.Context) GetSystemStatusApiRequest {
+func (a *RootAPIService) GetSystemStatus(ctx context.Context) GetSystemStatusApiRequest {
 	return GetSystemStatusApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -75,7 +75,7 @@ func (a *RootApiService) GetSystemStatus(ctx context.Context) GetSystemStatusApi
 // Execute executes the request
 //
 //	@return SystemStatus
-func (a *RootApiService) getSystemStatusExecute(r GetSystemStatusApiRequest) (*SystemStatus, *http.Response, error) {
+func (a *RootAPIService) getSystemStatusExecute(r GetSystemStatusApiRequest) (*SystemStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -83,7 +83,7 @@ func (a *RootApiService) getSystemStatusExecute(r GetSystemStatusApiRequest) (*S
 		localVarReturnValue *SystemStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RootApiService.GetSystemStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RootAPIService.GetSystemStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

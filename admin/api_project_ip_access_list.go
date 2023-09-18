@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-type ProjectIPAccessListApi interface {
+type ProjectIPAccessListAPI interface {
 
 	/*
 		CreateProjectIpAccessList Add Entries to Project IP Access List
@@ -132,12 +132,12 @@ type ProjectIPAccessListApi interface {
 	listProjectIpAccessListsExecute(r ListProjectIpAccessListsApiRequest) (*PaginatedNetworkAccess, *http.Response, error)
 }
 
-// ProjectIPAccessListApiService ProjectIPAccessListApi service
-type ProjectIPAccessListApiService service
+// ProjectIPAccessListAPIService ProjectIPAccessListAPI service
+type ProjectIPAccessListAPIService service
 
 type CreateProjectIpAccessListApiRequest struct {
 	ctx                    context.Context
-	ApiService             ProjectIPAccessListApi
+	ApiService             ProjectIPAccessListAPI
 	groupId                string
 	networkPermissionEntry *[]NetworkPermissionEntry
 	includeCount           *bool
@@ -153,7 +153,7 @@ type CreateProjectIpAccessListApiParams struct {
 	PageNum                *int
 }
 
-func (a *ProjectIPAccessListApiService) CreateProjectIpAccessListWithParams(ctx context.Context, args *CreateProjectIpAccessListApiParams) CreateProjectIpAccessListApiRequest {
+func (a *ProjectIPAccessListAPIService) CreateProjectIpAccessListWithParams(ctx context.Context, args *CreateProjectIpAccessListApiParams) CreateProjectIpAccessListApiRequest {
 	return CreateProjectIpAccessListApiRequest{
 		ApiService:             a,
 		ctx:                    ctx,
@@ -196,7 +196,7 @@ Adds one or more access list entries to the specified project. MongoDB Cloud onl
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateProjectIpAccessListApiRequest
 */
-func (a *ProjectIPAccessListApiService) CreateProjectIpAccessList(ctx context.Context, groupId string, networkPermissionEntry *[]NetworkPermissionEntry) CreateProjectIpAccessListApiRequest {
+func (a *ProjectIPAccessListAPIService) CreateProjectIpAccessList(ctx context.Context, groupId string, networkPermissionEntry *[]NetworkPermissionEntry) CreateProjectIpAccessListApiRequest {
 	return CreateProjectIpAccessListApiRequest{
 		ApiService:             a,
 		ctx:                    ctx,
@@ -208,7 +208,7 @@ func (a *ProjectIPAccessListApiService) CreateProjectIpAccessList(ctx context.Co
 // Execute executes the request
 //
 //	@return PaginatedNetworkAccess
-func (a *ProjectIPAccessListApiService) createProjectIpAccessListExecute(r CreateProjectIpAccessListApiRequest) (*PaginatedNetworkAccess, *http.Response, error) {
+func (a *ProjectIPAccessListAPIService) createProjectIpAccessListExecute(r CreateProjectIpAccessListApiRequest) (*PaginatedNetworkAccess, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -216,7 +216,7 @@ func (a *ProjectIPAccessListApiService) createProjectIpAccessListExecute(r Creat
 		localVarReturnValue *PaginatedNetworkAccess
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectIPAccessListApiService.CreateProjectIpAccessList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectIPAccessListAPIService.CreateProjectIpAccessList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -324,7 +324,7 @@ func (a *ProjectIPAccessListApiService) createProjectIpAccessListExecute(r Creat
 
 type DeleteProjectIpAccessListApiRequest struct {
 	ctx        context.Context
-	ApiService ProjectIPAccessListApi
+	ApiService ProjectIPAccessListAPI
 	groupId    string
 	entryValue string
 }
@@ -334,7 +334,7 @@ type DeleteProjectIpAccessListApiParams struct {
 	EntryValue string
 }
 
-func (a *ProjectIPAccessListApiService) DeleteProjectIpAccessListWithParams(ctx context.Context, args *DeleteProjectIpAccessListApiParams) DeleteProjectIpAccessListApiRequest {
+func (a *ProjectIPAccessListAPIService) DeleteProjectIpAccessListWithParams(ctx context.Context, args *DeleteProjectIpAccessListApiParams) DeleteProjectIpAccessListApiRequest {
 	return DeleteProjectIpAccessListApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -357,7 +357,7 @@ Removes one access list entry from the specified project's IP access list. Each 
 	@param entryValue Access list entry that you want to remove from the project's IP access list. This value can use one of the following: one AWS security group ID, one IP address, or one CIDR block of addresses. For CIDR blocks that use a subnet mask, replace the forward slash (`/`) with its URL-encoded value (`%2F`). When you remove an entry from the IP access list, existing connections from the removed address or addresses may remain open for a variable amount of time. The amount of time it takes MongoDB Cloud to close the connection depends upon several factors, including:  - how your application established the connection, - how MongoDB Cloud or the driver using the address behaves, and - which protocol (like TCP or UDP) the connection uses.
 	@return DeleteProjectIpAccessListApiRequest
 */
-func (a *ProjectIPAccessListApiService) DeleteProjectIpAccessList(ctx context.Context, groupId string, entryValue string) DeleteProjectIpAccessListApiRequest {
+func (a *ProjectIPAccessListAPIService) DeleteProjectIpAccessList(ctx context.Context, groupId string, entryValue string) DeleteProjectIpAccessListApiRequest {
 	return DeleteProjectIpAccessListApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -369,7 +369,7 @@ func (a *ProjectIPAccessListApiService) DeleteProjectIpAccessList(ctx context.Co
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *ProjectIPAccessListApiService) deleteProjectIpAccessListExecute(r DeleteProjectIpAccessListApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *ProjectIPAccessListAPIService) deleteProjectIpAccessListExecute(r DeleteProjectIpAccessListApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -377,7 +377,7 @@ func (a *ProjectIPAccessListApiService) deleteProjectIpAccessListExecute(r Delet
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectIPAccessListApiService.DeleteProjectIpAccessList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectIPAccessListAPIService.DeleteProjectIpAccessList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -460,7 +460,7 @@ func (a *ProjectIPAccessListApiService) deleteProjectIpAccessListExecute(r Delet
 
 type GetProjectIpAccessListStatusApiRequest struct {
 	ctx        context.Context
-	ApiService ProjectIPAccessListApi
+	ApiService ProjectIPAccessListAPI
 	groupId    string
 	entryValue string
 }
@@ -470,7 +470,7 @@ type GetProjectIpAccessListStatusApiParams struct {
 	EntryValue string
 }
 
-func (a *ProjectIPAccessListApiService) GetProjectIpAccessListStatusWithParams(ctx context.Context, args *GetProjectIpAccessListStatusApiParams) GetProjectIpAccessListStatusApiRequest {
+func (a *ProjectIPAccessListAPIService) GetProjectIpAccessListStatusWithParams(ctx context.Context, args *GetProjectIpAccessListStatusApiParams) GetProjectIpAccessListStatusApiRequest {
 	return GetProjectIpAccessListStatusApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -493,7 +493,7 @@ GetProjectIpAccessListStatus Return Status of One Project IP Access List Entry
 	@param entryValue Network address or cloud provider security construct that identifies which project access list entry to be verified.
 	@return GetProjectIpAccessListStatusApiRequest
 */
-func (a *ProjectIPAccessListApiService) GetProjectIpAccessListStatus(ctx context.Context, groupId string, entryValue string) GetProjectIpAccessListStatusApiRequest {
+func (a *ProjectIPAccessListAPIService) GetProjectIpAccessListStatus(ctx context.Context, groupId string, entryValue string) GetProjectIpAccessListStatusApiRequest {
 	return GetProjectIpAccessListStatusApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -505,7 +505,7 @@ func (a *ProjectIPAccessListApiService) GetProjectIpAccessListStatus(ctx context
 // Execute executes the request
 //
 //	@return NetworkPermissionEntryStatus
-func (a *ProjectIPAccessListApiService) getProjectIpAccessListStatusExecute(r GetProjectIpAccessListStatusApiRequest) (*NetworkPermissionEntryStatus, *http.Response, error) {
+func (a *ProjectIPAccessListAPIService) getProjectIpAccessListStatusExecute(r GetProjectIpAccessListStatusApiRequest) (*NetworkPermissionEntryStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -513,7 +513,7 @@ func (a *ProjectIPAccessListApiService) getProjectIpAccessListStatusExecute(r Ge
 		localVarReturnValue *NetworkPermissionEntryStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectIPAccessListApiService.GetProjectIpAccessListStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectIPAccessListAPIService.GetProjectIpAccessListStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -596,7 +596,7 @@ func (a *ProjectIPAccessListApiService) getProjectIpAccessListStatusExecute(r Ge
 
 type GetProjectIpListApiRequest struct {
 	ctx        context.Context
-	ApiService ProjectIPAccessListApi
+	ApiService ProjectIPAccessListAPI
 	groupId    string
 	entryValue string
 }
@@ -606,7 +606,7 @@ type GetProjectIpListApiParams struct {
 	EntryValue string
 }
 
-func (a *ProjectIPAccessListApiService) GetProjectIpListWithParams(ctx context.Context, args *GetProjectIpListApiParams) GetProjectIpListApiRequest {
+func (a *ProjectIPAccessListAPIService) GetProjectIpListWithParams(ctx context.Context, args *GetProjectIpListApiParams) GetProjectIpListApiRequest {
 	return GetProjectIpListApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -629,7 +629,7 @@ Returns one access list entry from the specified project's IP access list. Each 
 	@param entryValue Access list entry that you want to return from the project's IP access list. This value can use one of the following: one AWS security group ID, one IP address, or one CIDR block of addresses. For CIDR blocks that use a subnet mask, replace the forward slash (`/`) with its URL-encoded value (`%2F`).
 	@return GetProjectIpListApiRequest
 */
-func (a *ProjectIPAccessListApiService) GetProjectIpList(ctx context.Context, groupId string, entryValue string) GetProjectIpListApiRequest {
+func (a *ProjectIPAccessListAPIService) GetProjectIpList(ctx context.Context, groupId string, entryValue string) GetProjectIpListApiRequest {
 	return GetProjectIpListApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -641,7 +641,7 @@ func (a *ProjectIPAccessListApiService) GetProjectIpList(ctx context.Context, gr
 // Execute executes the request
 //
 //	@return NetworkPermissionEntry
-func (a *ProjectIPAccessListApiService) getProjectIpListExecute(r GetProjectIpListApiRequest) (*NetworkPermissionEntry, *http.Response, error) {
+func (a *ProjectIPAccessListAPIService) getProjectIpListExecute(r GetProjectIpListApiRequest) (*NetworkPermissionEntry, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -649,7 +649,7 @@ func (a *ProjectIPAccessListApiService) getProjectIpListExecute(r GetProjectIpLi
 		localVarReturnValue *NetworkPermissionEntry
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectIPAccessListApiService.GetProjectIpList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectIPAccessListAPIService.GetProjectIpList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -732,7 +732,7 @@ func (a *ProjectIPAccessListApiService) getProjectIpListExecute(r GetProjectIpLi
 
 type ListProjectIpAccessListsApiRequest struct {
 	ctx          context.Context
-	ApiService   ProjectIPAccessListApi
+	ApiService   ProjectIPAccessListAPI
 	groupId      string
 	includeCount *bool
 	itemsPerPage *int
@@ -746,7 +746,7 @@ type ListProjectIpAccessListsApiParams struct {
 	PageNum      *int
 }
 
-func (a *ProjectIPAccessListApiService) ListProjectIpAccessListsWithParams(ctx context.Context, args *ListProjectIpAccessListsApiParams) ListProjectIpAccessListsApiRequest {
+func (a *ProjectIPAccessListAPIService) ListProjectIpAccessListsWithParams(ctx context.Context, args *ListProjectIpAccessListsApiParams) ListProjectIpAccessListsApiRequest {
 	return ListProjectIpAccessListsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -788,7 +788,7 @@ Returns all access list entries from the specified project's IP access list. Eac
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListProjectIpAccessListsApiRequest
 */
-func (a *ProjectIPAccessListApiService) ListProjectIpAccessLists(ctx context.Context, groupId string) ListProjectIpAccessListsApiRequest {
+func (a *ProjectIPAccessListAPIService) ListProjectIpAccessLists(ctx context.Context, groupId string) ListProjectIpAccessListsApiRequest {
 	return ListProjectIpAccessListsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -799,7 +799,7 @@ func (a *ProjectIPAccessListApiService) ListProjectIpAccessLists(ctx context.Con
 // Execute executes the request
 //
 //	@return PaginatedNetworkAccess
-func (a *ProjectIPAccessListApiService) listProjectIpAccessListsExecute(r ListProjectIpAccessListsApiRequest) (*PaginatedNetworkAccess, *http.Response, error) {
+func (a *ProjectIPAccessListAPIService) listProjectIpAccessListsExecute(r ListProjectIpAccessListsApiRequest) (*PaginatedNetworkAccess, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -807,7 +807,7 @@ func (a *ProjectIPAccessListApiService) listProjectIpAccessListsExecute(r ListPr
 		localVarReturnValue *PaginatedNetworkAccess
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectIPAccessListApiService.ListProjectIpAccessLists")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectIPAccessListAPIService.ListProjectIpAccessLists")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

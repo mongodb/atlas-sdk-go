@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-type InvoicesApi interface {
+type InvoicesAPI interface {
 
 	/*
 		CreateCostExplorerQueryProcess Create Cost Explorer query process
@@ -155,12 +155,12 @@ type InvoicesApi interface {
 	listPendingInvoicesExecute(r ListPendingInvoicesApiRequest) (*PaginatedApiInvoice, *http.Response, error)
 }
 
-// InvoicesApiService InvoicesApi service
-type InvoicesApiService service
+// InvoicesAPIService InvoicesAPI service
+type InvoicesAPIService service
 
 type CreateCostExplorerQueryProcessApiRequest struct {
 	ctx                           context.Context
-	ApiService                    InvoicesApi
+	ApiService                    InvoicesAPI
 	orgId                         string
 	costExplorerFilterRequestBody *CostExplorerFilterRequestBody
 }
@@ -170,7 +170,7 @@ type CreateCostExplorerQueryProcessApiParams struct {
 	CostExplorerFilterRequestBody *CostExplorerFilterRequestBody
 }
 
-func (a *InvoicesApiService) CreateCostExplorerQueryProcessWithParams(ctx context.Context, args *CreateCostExplorerQueryProcessApiParams) CreateCostExplorerQueryProcessApiRequest {
+func (a *InvoicesAPIService) CreateCostExplorerQueryProcessWithParams(ctx context.Context, args *CreateCostExplorerQueryProcessApiParams) CreateCostExplorerQueryProcessApiRequest {
 	return CreateCostExplorerQueryProcessApiRequest{
 		ApiService:                    a,
 		ctx:                           ctx,
@@ -192,7 +192,7 @@ CreateCostExplorerQueryProcess Create Cost Explorer query process
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return CreateCostExplorerQueryProcessApiRequest
 */
-func (a *InvoicesApiService) CreateCostExplorerQueryProcess(ctx context.Context, orgId string, costExplorerFilterRequestBody *CostExplorerFilterRequestBody) CreateCostExplorerQueryProcessApiRequest {
+func (a *InvoicesAPIService) CreateCostExplorerQueryProcess(ctx context.Context, orgId string, costExplorerFilterRequestBody *CostExplorerFilterRequestBody) CreateCostExplorerQueryProcessApiRequest {
 	return CreateCostExplorerQueryProcessApiRequest{
 		ApiService:                    a,
 		ctx:                           ctx,
@@ -204,7 +204,7 @@ func (a *InvoicesApiService) CreateCostExplorerQueryProcess(ctx context.Context,
 // Execute executes the request
 //
 //	@return CostExplorerFilterResponse
-func (a *InvoicesApiService) createCostExplorerQueryProcessExecute(r CreateCostExplorerQueryProcessApiRequest) (*CostExplorerFilterResponse, *http.Response, error) {
+func (a *InvoicesAPIService) createCostExplorerQueryProcessExecute(r CreateCostExplorerQueryProcessApiRequest) (*CostExplorerFilterResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -212,7 +212,7 @@ func (a *InvoicesApiService) createCostExplorerQueryProcessExecute(r CreateCostE
 		localVarReturnValue *CostExplorerFilterResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesApiService.CreateCostExplorerQueryProcess")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesAPIService.CreateCostExplorerQueryProcess")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -299,7 +299,7 @@ func (a *InvoicesApiService) createCostExplorerQueryProcessExecute(r CreateCostE
 
 type CreateCostExplorerQueryProcess1ApiRequest struct {
 	ctx        context.Context
-	ApiService InvoicesApi
+	ApiService InvoicesAPI
 	orgId      string
 	token      string
 }
@@ -309,7 +309,7 @@ type CreateCostExplorerQueryProcess1ApiParams struct {
 	Token string
 }
 
-func (a *InvoicesApiService) CreateCostExplorerQueryProcess1WithParams(ctx context.Context, args *CreateCostExplorerQueryProcess1ApiParams) CreateCostExplorerQueryProcess1ApiRequest {
+func (a *InvoicesAPIService) CreateCostExplorerQueryProcess1WithParams(ctx context.Context, args *CreateCostExplorerQueryProcess1ApiParams) CreateCostExplorerQueryProcess1ApiRequest {
 	return CreateCostExplorerQueryProcess1ApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -332,7 +332,7 @@ CreateCostExplorerQueryProcess1 Return results from a given Cost Explorer query,
 	@param token Unique 64 digit string that identifies the Cost Explorer query.
 	@return CreateCostExplorerQueryProcess1ApiRequest
 */
-func (a *InvoicesApiService) CreateCostExplorerQueryProcess1(ctx context.Context, orgId string, token string) CreateCostExplorerQueryProcess1ApiRequest {
+func (a *InvoicesAPIService) CreateCostExplorerQueryProcess1(ctx context.Context, orgId string, token string) CreateCostExplorerQueryProcess1ApiRequest {
 	return CreateCostExplorerQueryProcess1ApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -344,7 +344,7 @@ func (a *InvoicesApiService) CreateCostExplorerQueryProcess1(ctx context.Context
 // Execute executes the request
 //
 //	@return string
-func (a *InvoicesApiService) createCostExplorerQueryProcess1Execute(r CreateCostExplorerQueryProcess1ApiRequest) (string, *http.Response, error) {
+func (a *InvoicesAPIService) createCostExplorerQueryProcess1Execute(r CreateCostExplorerQueryProcess1ApiRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -352,7 +352,7 @@ func (a *InvoicesApiService) createCostExplorerQueryProcess1Execute(r CreateCost
 		localVarReturnValue string
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesApiService.CreateCostExplorerQueryProcess1")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesAPIService.CreateCostExplorerQueryProcess1")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -441,7 +441,7 @@ func (a *InvoicesApiService) createCostExplorerQueryProcess1Execute(r CreateCost
 
 type DownloadInvoiceCSVApiRequest struct {
 	ctx        context.Context
-	ApiService InvoicesApi
+	ApiService InvoicesAPI
 	orgId      string
 	invoiceId  string
 }
@@ -451,7 +451,7 @@ type DownloadInvoiceCSVApiParams struct {
 	InvoiceId string
 }
 
-func (a *InvoicesApiService) DownloadInvoiceCSVWithParams(ctx context.Context, args *DownloadInvoiceCSVApiParams) DownloadInvoiceCSVApiRequest {
+func (a *InvoicesAPIService) DownloadInvoiceCSVWithParams(ctx context.Context, args *DownloadInvoiceCSVApiParams) DownloadInvoiceCSVApiRequest {
 	return DownloadInvoiceCSVApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -474,7 +474,7 @@ DownloadInvoiceCSV Return One Organization Invoice as CSV
 	@param invoiceId Unique 24-hexadecimal digit string that identifies the invoice submitted to the specified organization. Charges typically post the next day.
 	@return DownloadInvoiceCSVApiRequest
 */
-func (a *InvoicesApiService) DownloadInvoiceCSV(ctx context.Context, orgId string, invoiceId string) DownloadInvoiceCSVApiRequest {
+func (a *InvoicesAPIService) DownloadInvoiceCSV(ctx context.Context, orgId string, invoiceId string) DownloadInvoiceCSVApiRequest {
 	return DownloadInvoiceCSVApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -486,7 +486,7 @@ func (a *InvoicesApiService) DownloadInvoiceCSV(ctx context.Context, orgId strin
 // Execute executes the request
 //
 //	@return string
-func (a *InvoicesApiService) downloadInvoiceCSVExecute(r DownloadInvoiceCSVApiRequest) (string, *http.Response, error) {
+func (a *InvoicesAPIService) downloadInvoiceCSVExecute(r DownloadInvoiceCSVApiRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -494,7 +494,7 @@ func (a *InvoicesApiService) downloadInvoiceCSVExecute(r DownloadInvoiceCSVApiRe
 		localVarReturnValue string
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesApiService.DownloadInvoiceCSV")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesAPIService.DownloadInvoiceCSV")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -577,7 +577,7 @@ func (a *InvoicesApiService) downloadInvoiceCSVExecute(r DownloadInvoiceCSVApiRe
 
 type GetInvoiceApiRequest struct {
 	ctx        context.Context
-	ApiService InvoicesApi
+	ApiService InvoicesAPI
 	orgId      string
 	invoiceId  string
 }
@@ -587,7 +587,7 @@ type GetInvoiceApiParams struct {
 	InvoiceId string
 }
 
-func (a *InvoicesApiService) GetInvoiceWithParams(ctx context.Context, args *GetInvoiceApiParams) GetInvoiceApiRequest {
+func (a *InvoicesAPIService) GetInvoiceWithParams(ctx context.Context, args *GetInvoiceApiParams) GetInvoiceApiRequest {
 	return GetInvoiceApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -610,7 +610,7 @@ GetInvoice Return One Organization Invoice
 	@param invoiceId Unique 24-hexadecimal digit string that identifies the invoice submitted to the specified organization. Charges typically post the next day.
 	@return GetInvoiceApiRequest
 */
-func (a *InvoicesApiService) GetInvoice(ctx context.Context, orgId string, invoiceId string) GetInvoiceApiRequest {
+func (a *InvoicesAPIService) GetInvoice(ctx context.Context, orgId string, invoiceId string) GetInvoiceApiRequest {
 	return GetInvoiceApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -622,7 +622,7 @@ func (a *InvoicesApiService) GetInvoice(ctx context.Context, orgId string, invoi
 // Execute executes the request
 //
 //	@return string
-func (a *InvoicesApiService) getInvoiceExecute(r GetInvoiceApiRequest) (string, *http.Response, error) {
+func (a *InvoicesAPIService) getInvoiceExecute(r GetInvoiceApiRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -630,7 +630,7 @@ func (a *InvoicesApiService) getInvoiceExecute(r GetInvoiceApiRequest) (string, 
 		localVarReturnValue string
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesApiService.GetInvoice")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesAPIService.GetInvoice")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -719,7 +719,7 @@ func (a *InvoicesApiService) getInvoiceExecute(r GetInvoiceApiRequest) (string, 
 
 type ListInvoicesApiRequest struct {
 	ctx          context.Context
-	ApiService   InvoicesApi
+	ApiService   InvoicesAPI
 	orgId        string
 	includeCount *bool
 	itemsPerPage *int
@@ -733,7 +733,7 @@ type ListInvoicesApiParams struct {
 	PageNum      *int
 }
 
-func (a *InvoicesApiService) ListInvoicesWithParams(ctx context.Context, args *ListInvoicesApiParams) ListInvoicesApiRequest {
+func (a *InvoicesAPIService) ListInvoicesWithParams(ctx context.Context, args *ListInvoicesApiParams) ListInvoicesApiRequest {
 	return ListInvoicesApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -775,7 +775,7 @@ ListInvoices Return All Invoices for One Organization
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return ListInvoicesApiRequest
 */
-func (a *InvoicesApiService) ListInvoices(ctx context.Context, orgId string) ListInvoicesApiRequest {
+func (a *InvoicesAPIService) ListInvoices(ctx context.Context, orgId string) ListInvoicesApiRequest {
 	return ListInvoicesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -786,7 +786,7 @@ func (a *InvoicesApiService) ListInvoices(ctx context.Context, orgId string) Lis
 // Execute executes the request
 //
 //	@return PaginatedApiInvoice
-func (a *InvoicesApiService) listInvoicesExecute(r ListInvoicesApiRequest) (*PaginatedApiInvoice, *http.Response, error) {
+func (a *InvoicesAPIService) listInvoicesExecute(r ListInvoicesApiRequest) (*PaginatedApiInvoice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -794,7 +794,7 @@ func (a *InvoicesApiService) listInvoicesExecute(r ListInvoicesApiRequest) (*Pag
 		localVarReturnValue *PaginatedApiInvoice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesApiService.ListInvoices")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesAPIService.ListInvoices")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -897,7 +897,7 @@ func (a *InvoicesApiService) listInvoicesExecute(r ListInvoicesApiRequest) (*Pag
 
 type ListPendingInvoicesApiRequest struct {
 	ctx        context.Context
-	ApiService InvoicesApi
+	ApiService InvoicesAPI
 	orgId      string
 }
 
@@ -905,7 +905,7 @@ type ListPendingInvoicesApiParams struct {
 	OrgId string
 }
 
-func (a *InvoicesApiService) ListPendingInvoicesWithParams(ctx context.Context, args *ListPendingInvoicesApiParams) ListPendingInvoicesApiRequest {
+func (a *InvoicesAPIService) ListPendingInvoicesWithParams(ctx context.Context, args *ListPendingInvoicesApiParams) ListPendingInvoicesApiRequest {
 	return ListPendingInvoicesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -926,7 +926,7 @@ ListPendingInvoices Return All Pending Invoices for One Organization
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return ListPendingInvoicesApiRequest
 */
-func (a *InvoicesApiService) ListPendingInvoices(ctx context.Context, orgId string) ListPendingInvoicesApiRequest {
+func (a *InvoicesAPIService) ListPendingInvoices(ctx context.Context, orgId string) ListPendingInvoicesApiRequest {
 	return ListPendingInvoicesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -937,7 +937,7 @@ func (a *InvoicesApiService) ListPendingInvoices(ctx context.Context, orgId stri
 // Execute executes the request
 //
 //	@return PaginatedApiInvoice
-func (a *InvoicesApiService) listPendingInvoicesExecute(r ListPendingInvoicesApiRequest) (*PaginatedApiInvoice, *http.Response, error) {
+func (a *InvoicesAPIService) listPendingInvoicesExecute(r ListPendingInvoicesApiRequest) (*PaginatedApiInvoice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -945,7 +945,7 @@ func (a *InvoicesApiService) listPendingInvoicesExecute(r ListPendingInvoicesApi
 		localVarReturnValue *PaginatedApiInvoice
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesApiService.ListPendingInvoices")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesAPIService.ListPendingInvoices")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

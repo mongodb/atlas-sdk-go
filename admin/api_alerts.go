@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-type AlertsApi interface {
+type AlertsAPI interface {
 
 	/*
 		AcknowledgeAlert Acknowledge One Alert from One Project
@@ -117,12 +117,12 @@ type AlertsApi interface {
 	listAlertsByAlertConfigurationIdExecute(r ListAlertsByAlertConfigurationIdApiRequest) (*PaginatedAlert, *http.Response, error)
 }
 
-// AlertsApiService AlertsApi service
-type AlertsApiService service
+// AlertsAPIService AlertsAPI service
+type AlertsAPIService service
 
 type AcknowledgeAlertApiRequest struct {
 	ctx                  context.Context
-	ApiService           AlertsApi
+	ApiService           AlertsAPI
 	groupId              string
 	alertId              string
 	alertViewForNdsGroup *AlertViewForNdsGroup
@@ -134,7 +134,7 @@ type AcknowledgeAlertApiParams struct {
 	AlertViewForNdsGroup *AlertViewForNdsGroup
 }
 
-func (a *AlertsApiService) AcknowledgeAlertWithParams(ctx context.Context, args *AcknowledgeAlertApiParams) AcknowledgeAlertApiRequest {
+func (a *AlertsAPIService) AcknowledgeAlertWithParams(ctx context.Context, args *AcknowledgeAlertApiParams) AcknowledgeAlertApiRequest {
 	return AcknowledgeAlertApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -160,7 +160,7 @@ This resource remains under revision and may change.
 	@param alertId Unique 24-hexadecimal digit string that identifies the alert. Use the [/alerts](#tag/Alerts/operation/listAlerts) endpoint to retrieve all alerts to which the authenticated user has access.
 	@return AcknowledgeAlertApiRequest
 */
-func (a *AlertsApiService) AcknowledgeAlert(ctx context.Context, groupId string, alertId string, alertViewForNdsGroup *AlertViewForNdsGroup) AcknowledgeAlertApiRequest {
+func (a *AlertsAPIService) AcknowledgeAlert(ctx context.Context, groupId string, alertId string, alertViewForNdsGroup *AlertViewForNdsGroup) AcknowledgeAlertApiRequest {
 	return AcknowledgeAlertApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -173,7 +173,7 @@ func (a *AlertsApiService) AcknowledgeAlert(ctx context.Context, groupId string,
 // Execute executes the request
 //
 //	@return AlertViewForNdsGroup
-func (a *AlertsApiService) acknowledgeAlertExecute(r AcknowledgeAlertApiRequest) (*AlertViewForNdsGroup, *http.Response, error) {
+func (a *AlertsAPIService) acknowledgeAlertExecute(r AcknowledgeAlertApiRequest) (*AlertViewForNdsGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -181,7 +181,7 @@ func (a *AlertsApiService) acknowledgeAlertExecute(r AcknowledgeAlertApiRequest)
 		localVarReturnValue *AlertViewForNdsGroup
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertsApiService.AcknowledgeAlert")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertsAPIService.AcknowledgeAlert")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -275,7 +275,7 @@ func (a *AlertsApiService) acknowledgeAlertExecute(r AcknowledgeAlertApiRequest)
 
 type GetAlertApiRequest struct {
 	ctx        context.Context
-	ApiService AlertsApi
+	ApiService AlertsAPI
 	groupId    string
 	alertId    string
 }
@@ -285,7 +285,7 @@ type GetAlertApiParams struct {
 	AlertId string
 }
 
-func (a *AlertsApiService) GetAlertWithParams(ctx context.Context, args *GetAlertApiParams) GetAlertApiRequest {
+func (a *AlertsAPIService) GetAlertWithParams(ctx context.Context, args *GetAlertApiParams) GetAlertApiRequest {
 	return GetAlertApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -310,7 +310,7 @@ This resource remains under revision and may change.
 	@param alertId Unique 24-hexadecimal digit string that identifies the alert. Use the [/alerts](#tag/Alerts/operation/listAlerts) endpoint to retrieve all alerts to which the authenticated user has access.
 	@return GetAlertApiRequest
 */
-func (a *AlertsApiService) GetAlert(ctx context.Context, groupId string, alertId string) GetAlertApiRequest {
+func (a *AlertsAPIService) GetAlert(ctx context.Context, groupId string, alertId string) GetAlertApiRequest {
 	return GetAlertApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -322,7 +322,7 @@ func (a *AlertsApiService) GetAlert(ctx context.Context, groupId string, alertId
 // Execute executes the request
 //
 //	@return AlertViewForNdsGroup
-func (a *AlertsApiService) getAlertExecute(r GetAlertApiRequest) (*AlertViewForNdsGroup, *http.Response, error) {
+func (a *AlertsAPIService) getAlertExecute(r GetAlertApiRequest) (*AlertViewForNdsGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -330,7 +330,7 @@ func (a *AlertsApiService) getAlertExecute(r GetAlertApiRequest) (*AlertViewForN
 		localVarReturnValue *AlertViewForNdsGroup
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertsApiService.GetAlert")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertsAPIService.GetAlert")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -419,7 +419,7 @@ func (a *AlertsApiService) getAlertExecute(r GetAlertApiRequest) (*AlertViewForN
 
 type ListAlertsApiRequest struct {
 	ctx          context.Context
-	ApiService   AlertsApi
+	ApiService   AlertsAPI
 	groupId      string
 	includeCount *bool
 	itemsPerPage *int
@@ -435,7 +435,7 @@ type ListAlertsApiParams struct {
 	Status       *string
 }
 
-func (a *AlertsApiService) ListAlertsWithParams(ctx context.Context, args *ListAlertsApiParams) ListAlertsApiRequest {
+func (a *AlertsAPIService) ListAlertsWithParams(ctx context.Context, args *ListAlertsApiParams) ListAlertsApiRequest {
 	return ListAlertsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -486,7 +486,7 @@ This resource remains under revision and may change.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListAlertsApiRequest
 */
-func (a *AlertsApiService) ListAlerts(ctx context.Context, groupId string) ListAlertsApiRequest {
+func (a *AlertsAPIService) ListAlerts(ctx context.Context, groupId string) ListAlertsApiRequest {
 	return ListAlertsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -497,7 +497,7 @@ func (a *AlertsApiService) ListAlerts(ctx context.Context, groupId string) ListA
 // Execute executes the request
 //
 //	@return PaginatedAlert
-func (a *AlertsApiService) listAlertsExecute(r ListAlertsApiRequest) (*PaginatedAlert, *http.Response, error) {
+func (a *AlertsAPIService) listAlertsExecute(r ListAlertsApiRequest) (*PaginatedAlert, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -505,7 +505,7 @@ func (a *AlertsApiService) listAlertsExecute(r ListAlertsApiRequest) (*Paginated
 		localVarReturnValue *PaginatedAlert
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertsApiService.ListAlerts")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertsAPIService.ListAlerts")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -611,7 +611,7 @@ func (a *AlertsApiService) listAlertsExecute(r ListAlertsApiRequest) (*Paginated
 
 type ListAlertsByAlertConfigurationIdApiRequest struct {
 	ctx           context.Context
-	ApiService    AlertsApi
+	ApiService    AlertsAPI
 	groupId       string
 	alertConfigId string
 	includeCount  *bool
@@ -627,7 +627,7 @@ type ListAlertsByAlertConfigurationIdApiParams struct {
 	PageNum       *int
 }
 
-func (a *AlertsApiService) ListAlertsByAlertConfigurationIdWithParams(ctx context.Context, args *ListAlertsByAlertConfigurationIdApiParams) ListAlertsByAlertConfigurationIdApiRequest {
+func (a *AlertsAPIService) ListAlertsByAlertConfigurationIdWithParams(ctx context.Context, args *ListAlertsByAlertConfigurationIdApiParams) ListAlertsByAlertConfigurationIdApiRequest {
 	return ListAlertsByAlertConfigurationIdApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -673,7 +673,7 @@ This resource remains under revision and may change.
 	@param alertConfigId Unique 24-hexadecimal digit string that identifies the alert configuration. Use the [/alertConfigs](#tag/Alert-Configurations/operation/listAlertConfigurations) endpoint to retrieve all alert configurations to which the authenticated user has access.
 	@return ListAlertsByAlertConfigurationIdApiRequest
 */
-func (a *AlertsApiService) ListAlertsByAlertConfigurationId(ctx context.Context, groupId string, alertConfigId string) ListAlertsByAlertConfigurationIdApiRequest {
+func (a *AlertsAPIService) ListAlertsByAlertConfigurationId(ctx context.Context, groupId string, alertConfigId string) ListAlertsByAlertConfigurationIdApiRequest {
 	return ListAlertsByAlertConfigurationIdApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -685,7 +685,7 @@ func (a *AlertsApiService) ListAlertsByAlertConfigurationId(ctx context.Context,
 // Execute executes the request
 //
 //	@return PaginatedAlert
-func (a *AlertsApiService) listAlertsByAlertConfigurationIdExecute(r ListAlertsByAlertConfigurationIdApiRequest) (*PaginatedAlert, *http.Response, error) {
+func (a *AlertsAPIService) listAlertsByAlertConfigurationIdExecute(r ListAlertsByAlertConfigurationIdApiRequest) (*PaginatedAlert, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -693,7 +693,7 @@ func (a *AlertsApiService) listAlertsByAlertConfigurationIdExecute(r ListAlertsB
 		localVarReturnValue *PaginatedAlert
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertsApiService.ListAlertsByAlertConfigurationId")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertsAPIService.ListAlertsByAlertConfigurationId")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

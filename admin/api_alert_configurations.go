@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-type AlertConfigurationsApi interface {
+type AlertConfigurationsAPI interface {
 
 	/*
 		CreateAlertConfiguration Create One Alert Configuration in One Project
@@ -220,12 +220,12 @@ type AlertConfigurationsApi interface {
 	updateAlertConfigurationExecute(r UpdateAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error)
 }
 
-// AlertConfigurationsApiService AlertConfigurationsApi service
-type AlertConfigurationsApiService service
+// AlertConfigurationsAPIService AlertConfigurationsAPI service
+type AlertConfigurationsAPIService service
 
 type CreateAlertConfigurationApiRequest struct {
 	ctx               context.Context
-	ApiService        AlertConfigurationsApi
+	ApiService        AlertConfigurationsAPI
 	groupId           string
 	groupAlertsConfig *GroupAlertsConfig
 }
@@ -235,7 +235,7 @@ type CreateAlertConfigurationApiParams struct {
 	GroupAlertsConfig *GroupAlertsConfig
 }
 
-func (a *AlertConfigurationsApiService) CreateAlertConfigurationWithParams(ctx context.Context, args *CreateAlertConfigurationApiParams) CreateAlertConfigurationApiRequest {
+func (a *AlertConfigurationsAPIService) CreateAlertConfigurationWithParams(ctx context.Context, args *CreateAlertConfigurationApiParams) CreateAlertConfigurationApiRequest {
 	return CreateAlertConfigurationApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -259,7 +259,7 @@ This resource remains under revision and may change.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateAlertConfigurationApiRequest
 */
-func (a *AlertConfigurationsApiService) CreateAlertConfiguration(ctx context.Context, groupId string, groupAlertsConfig *GroupAlertsConfig) CreateAlertConfigurationApiRequest {
+func (a *AlertConfigurationsAPIService) CreateAlertConfiguration(ctx context.Context, groupId string, groupAlertsConfig *GroupAlertsConfig) CreateAlertConfigurationApiRequest {
 	return CreateAlertConfigurationApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -271,7 +271,7 @@ func (a *AlertConfigurationsApiService) CreateAlertConfiguration(ctx context.Con
 // Execute executes the request
 //
 //	@return GroupAlertsConfig
-func (a *AlertConfigurationsApiService) createAlertConfigurationExecute(r CreateAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error) {
+func (a *AlertConfigurationsAPIService) createAlertConfigurationExecute(r CreateAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -279,7 +279,7 @@ func (a *AlertConfigurationsApiService) createAlertConfigurationExecute(r Create
 		localVarReturnValue *GroupAlertsConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertConfigurationsApiService.CreateAlertConfiguration")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertConfigurationsAPIService.CreateAlertConfiguration")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -366,7 +366,7 @@ func (a *AlertConfigurationsApiService) createAlertConfigurationExecute(r Create
 
 type DeleteAlertConfigurationApiRequest struct {
 	ctx           context.Context
-	ApiService    AlertConfigurationsApi
+	ApiService    AlertConfigurationsAPI
 	groupId       string
 	alertConfigId string
 }
@@ -376,7 +376,7 @@ type DeleteAlertConfigurationApiParams struct {
 	AlertConfigId string
 }
 
-func (a *AlertConfigurationsApiService) DeleteAlertConfigurationWithParams(ctx context.Context, args *DeleteAlertConfigurationApiParams) DeleteAlertConfigurationApiRequest {
+func (a *AlertConfigurationsAPIService) DeleteAlertConfigurationWithParams(ctx context.Context, args *DeleteAlertConfigurationApiParams) DeleteAlertConfigurationApiRequest {
 	return DeleteAlertConfigurationApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -401,7 +401,7 @@ This resource remains under revision and may change.
 	@param alertConfigId Unique 24-hexadecimal digit string that identifies the alert configuration. Use the [/alertConfigs](#tag/Alert-Configurations/operation/listAlertConfigurations) endpoint to retrieve all alert configurations to which the authenticated user has access.
 	@return DeleteAlertConfigurationApiRequest
 */
-func (a *AlertConfigurationsApiService) DeleteAlertConfiguration(ctx context.Context, groupId string, alertConfigId string) DeleteAlertConfigurationApiRequest {
+func (a *AlertConfigurationsAPIService) DeleteAlertConfiguration(ctx context.Context, groupId string, alertConfigId string) DeleteAlertConfigurationApiRequest {
 	return DeleteAlertConfigurationApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -411,14 +411,14 @@ func (a *AlertConfigurationsApiService) DeleteAlertConfiguration(ctx context.Con
 }
 
 // Execute executes the request
-func (a *AlertConfigurationsApiService) deleteAlertConfigurationExecute(r DeleteAlertConfigurationApiRequest) (*http.Response, error) {
+func (a *AlertConfigurationsAPIService) deleteAlertConfigurationExecute(r DeleteAlertConfigurationApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertConfigurationsApiService.DeleteAlertConfiguration")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertConfigurationsAPIService.DeleteAlertConfiguration")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -498,7 +498,7 @@ func (a *AlertConfigurationsApiService) deleteAlertConfigurationExecute(r Delete
 
 type GetAlertConfigurationApiRequest struct {
 	ctx           context.Context
-	ApiService    AlertConfigurationsApi
+	ApiService    AlertConfigurationsAPI
 	groupId       string
 	alertConfigId string
 }
@@ -508,7 +508,7 @@ type GetAlertConfigurationApiParams struct {
 	AlertConfigId string
 }
 
-func (a *AlertConfigurationsApiService) GetAlertConfigurationWithParams(ctx context.Context, args *GetAlertConfigurationApiParams) GetAlertConfigurationApiRequest {
+func (a *AlertConfigurationsAPIService) GetAlertConfigurationWithParams(ctx context.Context, args *GetAlertConfigurationApiParams) GetAlertConfigurationApiRequest {
 	return GetAlertConfigurationApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -533,7 +533,7 @@ This resource remains under revision and may change.
 	@param alertConfigId Unique 24-hexadecimal digit string that identifies the alert configuration. Use the [/alertConfigs](#tag/Alert-Configurations/operation/listAlertConfigurations) endpoint to retrieve all alert configurations to which the authenticated user has access.
 	@return GetAlertConfigurationApiRequest
 */
-func (a *AlertConfigurationsApiService) GetAlertConfiguration(ctx context.Context, groupId string, alertConfigId string) GetAlertConfigurationApiRequest {
+func (a *AlertConfigurationsAPIService) GetAlertConfiguration(ctx context.Context, groupId string, alertConfigId string) GetAlertConfigurationApiRequest {
 	return GetAlertConfigurationApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -545,7 +545,7 @@ func (a *AlertConfigurationsApiService) GetAlertConfiguration(ctx context.Contex
 // Execute executes the request
 //
 //	@return GroupAlertsConfig
-func (a *AlertConfigurationsApiService) getAlertConfigurationExecute(r GetAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error) {
+func (a *AlertConfigurationsAPIService) getAlertConfigurationExecute(r GetAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -553,7 +553,7 @@ func (a *AlertConfigurationsApiService) getAlertConfigurationExecute(r GetAlertC
 		localVarReturnValue *GroupAlertsConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertConfigurationsApiService.GetAlertConfiguration")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertConfigurationsAPIService.GetAlertConfiguration")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -642,13 +642,13 @@ func (a *AlertConfigurationsApiService) getAlertConfigurationExecute(r GetAlertC
 
 type ListAlertConfigurationMatchersFieldNamesApiRequest struct {
 	ctx        context.Context
-	ApiService AlertConfigurationsApi
+	ApiService AlertConfigurationsAPI
 }
 
 type ListAlertConfigurationMatchersFieldNamesApiParams struct {
 }
 
-func (a *AlertConfigurationsApiService) ListAlertConfigurationMatchersFieldNamesWithParams(ctx context.Context, args *ListAlertConfigurationMatchersFieldNamesApiParams) ListAlertConfigurationMatchersFieldNamesApiRequest {
+func (a *AlertConfigurationsAPIService) ListAlertConfigurationMatchersFieldNamesWithParams(ctx context.Context, args *ListAlertConfigurationMatchersFieldNamesApiParams) ListAlertConfigurationMatchersFieldNamesApiRequest {
 	return ListAlertConfigurationMatchersFieldNamesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -667,7 +667,7 @@ Get all field names that the `matchers.fieldName` parameter accepts when you cre
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ListAlertConfigurationMatchersFieldNamesApiRequest
 */
-func (a *AlertConfigurationsApiService) ListAlertConfigurationMatchersFieldNames(ctx context.Context) ListAlertConfigurationMatchersFieldNamesApiRequest {
+func (a *AlertConfigurationsAPIService) ListAlertConfigurationMatchersFieldNames(ctx context.Context) ListAlertConfigurationMatchersFieldNamesApiRequest {
 	return ListAlertConfigurationMatchersFieldNamesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -677,7 +677,7 @@ func (a *AlertConfigurationsApiService) ListAlertConfigurationMatchersFieldNames
 // Execute executes the request
 //
 //	@return []string
-func (a *AlertConfigurationsApiService) listAlertConfigurationMatchersFieldNamesExecute(r ListAlertConfigurationMatchersFieldNamesApiRequest) ([]string, *http.Response, error) {
+func (a *AlertConfigurationsAPIService) listAlertConfigurationMatchersFieldNamesExecute(r ListAlertConfigurationMatchersFieldNamesApiRequest) ([]string, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -685,7 +685,7 @@ func (a *AlertConfigurationsApiService) listAlertConfigurationMatchersFieldNames
 		localVarReturnValue []string
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertConfigurationsApiService.ListAlertConfigurationMatchersFieldNames")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertConfigurationsAPIService.ListAlertConfigurationMatchersFieldNames")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -760,7 +760,7 @@ func (a *AlertConfigurationsApiService) listAlertConfigurationMatchersFieldNames
 
 type ListAlertConfigurationsApiRequest struct {
 	ctx          context.Context
-	ApiService   AlertConfigurationsApi
+	ApiService   AlertConfigurationsAPI
 	groupId      string
 	includeCount *bool
 	itemsPerPage *int
@@ -774,7 +774,7 @@ type ListAlertConfigurationsApiParams struct {
 	PageNum      *int
 }
 
-func (a *AlertConfigurationsApiService) ListAlertConfigurationsWithParams(ctx context.Context, args *ListAlertConfigurationsApiParams) ListAlertConfigurationsApiRequest {
+func (a *AlertConfigurationsAPIService) ListAlertConfigurationsWithParams(ctx context.Context, args *ListAlertConfigurationsApiParams) ListAlertConfigurationsApiRequest {
 	return ListAlertConfigurationsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -818,7 +818,7 @@ This resource remains under revision and may change.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListAlertConfigurationsApiRequest
 */
-func (a *AlertConfigurationsApiService) ListAlertConfigurations(ctx context.Context, groupId string) ListAlertConfigurationsApiRequest {
+func (a *AlertConfigurationsAPIService) ListAlertConfigurations(ctx context.Context, groupId string) ListAlertConfigurationsApiRequest {
 	return ListAlertConfigurationsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -829,7 +829,7 @@ func (a *AlertConfigurationsApiService) ListAlertConfigurations(ctx context.Cont
 // Execute executes the request
 //
 //	@return PaginatedAlertConfig
-func (a *AlertConfigurationsApiService) listAlertConfigurationsExecute(r ListAlertConfigurationsApiRequest) (*PaginatedAlertConfig, *http.Response, error) {
+func (a *AlertConfigurationsAPIService) listAlertConfigurationsExecute(r ListAlertConfigurationsApiRequest) (*PaginatedAlertConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -837,7 +837,7 @@ func (a *AlertConfigurationsApiService) listAlertConfigurationsExecute(r ListAle
 		localVarReturnValue *PaginatedAlertConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertConfigurationsApiService.ListAlertConfigurations")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertConfigurationsAPIService.ListAlertConfigurations")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -940,7 +940,7 @@ func (a *AlertConfigurationsApiService) listAlertConfigurationsExecute(r ListAle
 
 type ListAlertConfigurationsByAlertIdApiRequest struct {
 	ctx          context.Context
-	ApiService   AlertConfigurationsApi
+	ApiService   AlertConfigurationsAPI
 	groupId      string
 	alertId      string
 	includeCount *bool
@@ -956,7 +956,7 @@ type ListAlertConfigurationsByAlertIdApiParams struct {
 	PageNum      *int
 }
 
-func (a *AlertConfigurationsApiService) ListAlertConfigurationsByAlertIdWithParams(ctx context.Context, args *ListAlertConfigurationsByAlertIdApiParams) ListAlertConfigurationsByAlertIdApiRequest {
+func (a *AlertConfigurationsAPIService) ListAlertConfigurationsByAlertIdWithParams(ctx context.Context, args *ListAlertConfigurationsByAlertIdApiParams) ListAlertConfigurationsByAlertIdApiRequest {
 	return ListAlertConfigurationsByAlertIdApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1002,7 +1002,7 @@ This resource remains under revision and may change.
 	@param alertId Unique 24-hexadecimal digit string that identifies the alert. Use the [/alerts](#tag/Alerts/operation/listAlerts) endpoint to retrieve all alerts to which the authenticated user has access.
 	@return ListAlertConfigurationsByAlertIdApiRequest
 */
-func (a *AlertConfigurationsApiService) ListAlertConfigurationsByAlertId(ctx context.Context, groupId string, alertId string) ListAlertConfigurationsByAlertIdApiRequest {
+func (a *AlertConfigurationsAPIService) ListAlertConfigurationsByAlertId(ctx context.Context, groupId string, alertId string) ListAlertConfigurationsByAlertIdApiRequest {
 	return ListAlertConfigurationsByAlertIdApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1014,7 +1014,7 @@ func (a *AlertConfigurationsApiService) ListAlertConfigurationsByAlertId(ctx con
 // Execute executes the request
 //
 //	@return PaginatedAlertConfig
-func (a *AlertConfigurationsApiService) listAlertConfigurationsByAlertIdExecute(r ListAlertConfigurationsByAlertIdApiRequest) (*PaginatedAlertConfig, *http.Response, error) {
+func (a *AlertConfigurationsAPIService) listAlertConfigurationsByAlertIdExecute(r ListAlertConfigurationsByAlertIdApiRequest) (*PaginatedAlertConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1022,7 +1022,7 @@ func (a *AlertConfigurationsApiService) listAlertConfigurationsByAlertIdExecute(
 		localVarReturnValue *PaginatedAlertConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertConfigurationsApiService.ListAlertConfigurationsByAlertId")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertConfigurationsAPIService.ListAlertConfigurationsByAlertId")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1132,7 +1132,7 @@ func (a *AlertConfigurationsApiService) listAlertConfigurationsByAlertIdExecute(
 
 type ToggleAlertConfigurationApiRequest struct {
 	ctx           context.Context
-	ApiService    AlertConfigurationsApi
+	ApiService    AlertConfigurationsAPI
 	groupId       string
 	alertConfigId string
 	alertsToggle  *AlertsToggle
@@ -1144,7 +1144,7 @@ type ToggleAlertConfigurationApiParams struct {
 	AlertsToggle  *AlertsToggle
 }
 
-func (a *AlertConfigurationsApiService) ToggleAlertConfigurationWithParams(ctx context.Context, args *ToggleAlertConfigurationApiParams) ToggleAlertConfigurationApiRequest {
+func (a *AlertConfigurationsAPIService) ToggleAlertConfigurationWithParams(ctx context.Context, args *ToggleAlertConfigurationApiParams) ToggleAlertConfigurationApiRequest {
 	return ToggleAlertConfigurationApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -1172,7 +1172,7 @@ This resource remains under revision and may change.
 	@param alertConfigId Unique 24-hexadecimal digit string that identifies the alert configuration that triggered this alert. Use the [/alertConfigs](#tag/Alert-Configurations/operation/listAlertConfigurations) endpoint to retrieve all alert configurations to which the authenticated user has access.
 	@return ToggleAlertConfigurationApiRequest
 */
-func (a *AlertConfigurationsApiService) ToggleAlertConfiguration(ctx context.Context, groupId string, alertConfigId string, alertsToggle *AlertsToggle) ToggleAlertConfigurationApiRequest {
+func (a *AlertConfigurationsAPIService) ToggleAlertConfiguration(ctx context.Context, groupId string, alertConfigId string, alertsToggle *AlertsToggle) ToggleAlertConfigurationApiRequest {
 	return ToggleAlertConfigurationApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -1185,7 +1185,7 @@ func (a *AlertConfigurationsApiService) ToggleAlertConfiguration(ctx context.Con
 // Execute executes the request
 //
 //	@return GroupAlertsConfig
-func (a *AlertConfigurationsApiService) toggleAlertConfigurationExecute(r ToggleAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error) {
+func (a *AlertConfigurationsAPIService) toggleAlertConfigurationExecute(r ToggleAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -1193,7 +1193,7 @@ func (a *AlertConfigurationsApiService) toggleAlertConfigurationExecute(r Toggle
 		localVarReturnValue *GroupAlertsConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertConfigurationsApiService.ToggleAlertConfiguration")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertConfigurationsAPIService.ToggleAlertConfiguration")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1287,7 +1287,7 @@ func (a *AlertConfigurationsApiService) toggleAlertConfigurationExecute(r Toggle
 
 type UpdateAlertConfigurationApiRequest struct {
 	ctx               context.Context
-	ApiService        AlertConfigurationsApi
+	ApiService        AlertConfigurationsAPI
 	groupId           string
 	alertConfigId     string
 	groupAlertsConfig *GroupAlertsConfig
@@ -1299,7 +1299,7 @@ type UpdateAlertConfigurationApiParams struct {
 	GroupAlertsConfig *GroupAlertsConfig
 }
 
-func (a *AlertConfigurationsApiService) UpdateAlertConfigurationWithParams(ctx context.Context, args *UpdateAlertConfigurationApiParams) UpdateAlertConfigurationApiRequest {
+func (a *AlertConfigurationsAPIService) UpdateAlertConfigurationWithParams(ctx context.Context, args *UpdateAlertConfigurationApiParams) UpdateAlertConfigurationApiRequest {
 	return UpdateAlertConfigurationApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -1327,7 +1327,7 @@ This resource remains under revision and may change.
 	@param alertConfigId Unique 24-hexadecimal digit string that identifies the alert configuration. Use the [/alertConfigs](#tag/Alert-Configurations/operation/listAlertConfigurations) endpoint to retrieve all alert configurations to which the authenticated user has access.
 	@return UpdateAlertConfigurationApiRequest
 */
-func (a *AlertConfigurationsApiService) UpdateAlertConfiguration(ctx context.Context, groupId string, alertConfigId string, groupAlertsConfig *GroupAlertsConfig) UpdateAlertConfigurationApiRequest {
+func (a *AlertConfigurationsAPIService) UpdateAlertConfiguration(ctx context.Context, groupId string, alertConfigId string, groupAlertsConfig *GroupAlertsConfig) UpdateAlertConfigurationApiRequest {
 	return UpdateAlertConfigurationApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -1340,7 +1340,7 @@ func (a *AlertConfigurationsApiService) UpdateAlertConfiguration(ctx context.Con
 // Execute executes the request
 //
 //	@return GroupAlertsConfig
-func (a *AlertConfigurationsApiService) updateAlertConfigurationExecute(r UpdateAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error) {
+func (a *AlertConfigurationsAPIService) updateAlertConfigurationExecute(r UpdateAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -1348,7 +1348,7 @@ func (a *AlertConfigurationsApiService) updateAlertConfigurationExecute(r Update
 		localVarReturnValue *GroupAlertsConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertConfigurationsApiService.UpdateAlertConfiguration")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertConfigurationsAPIService.UpdateAlertConfiguration")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-type ServerlessPrivateEndpointsApi interface {
+type ServerlessPrivateEndpointsAPI interface {
 
 	/*
 		CreateServerlessPrivateEndpoint Create One Private Endpoint for One Serverless Instance
@@ -139,12 +139,12 @@ type ServerlessPrivateEndpointsApi interface {
 	updateServerlessPrivateEndpointExecute(r UpdateServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error)
 }
 
-// ServerlessPrivateEndpointsApiService ServerlessPrivateEndpointsApi service
-type ServerlessPrivateEndpointsApiService service
+// ServerlessPrivateEndpointsAPIService ServerlessPrivateEndpointsAPI service
+type ServerlessPrivateEndpointsAPIService service
 
 type CreateServerlessPrivateEndpointApiRequest struct {
 	ctx                           context.Context
-	ApiService                    ServerlessPrivateEndpointsApi
+	ApiService                    ServerlessPrivateEndpointsAPI
 	groupId                       string
 	instanceName                  string
 	serverlessTenantCreateRequest *ServerlessTenantCreateRequest
@@ -156,7 +156,7 @@ type CreateServerlessPrivateEndpointApiParams struct {
 	ServerlessTenantCreateRequest *ServerlessTenantCreateRequest
 }
 
-func (a *ServerlessPrivateEndpointsApiService) CreateServerlessPrivateEndpointWithParams(ctx context.Context, args *CreateServerlessPrivateEndpointApiParams) CreateServerlessPrivateEndpointApiRequest {
+func (a *ServerlessPrivateEndpointsAPIService) CreateServerlessPrivateEndpointWithParams(ctx context.Context, args *CreateServerlessPrivateEndpointApiParams) CreateServerlessPrivateEndpointApiRequest {
 	return CreateServerlessPrivateEndpointApiRequest{
 		ApiService:                    a,
 		ctx:                           ctx,
@@ -182,7 +182,7 @@ CreateServerlessPrivateEndpoint Create One Private Endpoint for One Serverless I
 	@param instanceName Human-readable label that identifies the serverless instance for which the tenant endpoint will be created.
 	@return CreateServerlessPrivateEndpointApiRequest
 */
-func (a *ServerlessPrivateEndpointsApiService) CreateServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, serverlessTenantCreateRequest *ServerlessTenantCreateRequest) CreateServerlessPrivateEndpointApiRequest {
+func (a *ServerlessPrivateEndpointsAPIService) CreateServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, serverlessTenantCreateRequest *ServerlessTenantCreateRequest) CreateServerlessPrivateEndpointApiRequest {
 	return CreateServerlessPrivateEndpointApiRequest{
 		ApiService:                    a,
 		ctx:                           ctx,
@@ -195,7 +195,7 @@ func (a *ServerlessPrivateEndpointsApiService) CreateServerlessPrivateEndpoint(c
 // Execute executes the request
 //
 //	@return ServerlessTenantEndpoint
-func (a *ServerlessPrivateEndpointsApiService) createServerlessPrivateEndpointExecute(r CreateServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error) {
+func (a *ServerlessPrivateEndpointsAPIService) createServerlessPrivateEndpointExecute(r CreateServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -203,7 +203,7 @@ func (a *ServerlessPrivateEndpointsApiService) createServerlessPrivateEndpointEx
 		localVarReturnValue *ServerlessTenantEndpoint
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessPrivateEndpointsApiService.CreateServerlessPrivateEndpoint")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessPrivateEndpointsAPIService.CreateServerlessPrivateEndpoint")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -294,7 +294,7 @@ func (a *ServerlessPrivateEndpointsApiService) createServerlessPrivateEndpointEx
 
 type DeleteServerlessPrivateEndpointApiRequest struct {
 	ctx          context.Context
-	ApiService   ServerlessPrivateEndpointsApi
+	ApiService   ServerlessPrivateEndpointsAPI
 	groupId      string
 	instanceName string
 	endpointId   string
@@ -306,7 +306,7 @@ type DeleteServerlessPrivateEndpointApiParams struct {
 	EndpointId   string
 }
 
-func (a *ServerlessPrivateEndpointsApiService) DeleteServerlessPrivateEndpointWithParams(ctx context.Context, args *DeleteServerlessPrivateEndpointApiParams) DeleteServerlessPrivateEndpointApiRequest {
+func (a *ServerlessPrivateEndpointsAPIService) DeleteServerlessPrivateEndpointWithParams(ctx context.Context, args *DeleteServerlessPrivateEndpointApiParams) DeleteServerlessPrivateEndpointApiRequest {
 	return DeleteServerlessPrivateEndpointApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -331,7 +331,7 @@ DeleteServerlessPrivateEndpoint Remove One Private Endpoint for One Serverless I
 	@param endpointId Unique 24-hexadecimal digit string that identifies the tenant endpoint which will be removed.
 	@return DeleteServerlessPrivateEndpointApiRequest
 */
-func (a *ServerlessPrivateEndpointsApiService) DeleteServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, endpointId string) DeleteServerlessPrivateEndpointApiRequest {
+func (a *ServerlessPrivateEndpointsAPIService) DeleteServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, endpointId string) DeleteServerlessPrivateEndpointApiRequest {
 	return DeleteServerlessPrivateEndpointApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -344,7 +344,7 @@ func (a *ServerlessPrivateEndpointsApiService) DeleteServerlessPrivateEndpoint(c
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *ServerlessPrivateEndpointsApiService) deleteServerlessPrivateEndpointExecute(r DeleteServerlessPrivateEndpointApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *ServerlessPrivateEndpointsAPIService) deleteServerlessPrivateEndpointExecute(r DeleteServerlessPrivateEndpointApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -352,7 +352,7 @@ func (a *ServerlessPrivateEndpointsApiService) deleteServerlessPrivateEndpointEx
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessPrivateEndpointsApiService.DeleteServerlessPrivateEndpoint")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessPrivateEndpointsAPIService.DeleteServerlessPrivateEndpoint")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -445,7 +445,7 @@ func (a *ServerlessPrivateEndpointsApiService) deleteServerlessPrivateEndpointEx
 
 type GetServerlessPrivateEndpointApiRequest struct {
 	ctx          context.Context
-	ApiService   ServerlessPrivateEndpointsApi
+	ApiService   ServerlessPrivateEndpointsAPI
 	groupId      string
 	instanceName string
 	endpointId   string
@@ -457,7 +457,7 @@ type GetServerlessPrivateEndpointApiParams struct {
 	EndpointId   string
 }
 
-func (a *ServerlessPrivateEndpointsApiService) GetServerlessPrivateEndpointWithParams(ctx context.Context, args *GetServerlessPrivateEndpointApiParams) GetServerlessPrivateEndpointApiRequest {
+func (a *ServerlessPrivateEndpointsAPIService) GetServerlessPrivateEndpointWithParams(ctx context.Context, args *GetServerlessPrivateEndpointApiParams) GetServerlessPrivateEndpointApiRequest {
 	return GetServerlessPrivateEndpointApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -482,7 +482,7 @@ GetServerlessPrivateEndpoint Return One Private Endpoint for One Serverless Inst
 	@param endpointId Unique 24-hexadecimal digit string that identifies the tenant endpoint.
 	@return GetServerlessPrivateEndpointApiRequest
 */
-func (a *ServerlessPrivateEndpointsApiService) GetServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, endpointId string) GetServerlessPrivateEndpointApiRequest {
+func (a *ServerlessPrivateEndpointsAPIService) GetServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, endpointId string) GetServerlessPrivateEndpointApiRequest {
 	return GetServerlessPrivateEndpointApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -495,7 +495,7 @@ func (a *ServerlessPrivateEndpointsApiService) GetServerlessPrivateEndpoint(ctx 
 // Execute executes the request
 //
 //	@return ServerlessTenantEndpoint
-func (a *ServerlessPrivateEndpointsApiService) getServerlessPrivateEndpointExecute(r GetServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error) {
+func (a *ServerlessPrivateEndpointsAPIService) getServerlessPrivateEndpointExecute(r GetServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -503,7 +503,7 @@ func (a *ServerlessPrivateEndpointsApiService) getServerlessPrivateEndpointExecu
 		localVarReturnValue *ServerlessTenantEndpoint
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessPrivateEndpointsApiService.GetServerlessPrivateEndpoint")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessPrivateEndpointsAPIService.GetServerlessPrivateEndpoint")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -596,7 +596,7 @@ func (a *ServerlessPrivateEndpointsApiService) getServerlessPrivateEndpointExecu
 
 type ListServerlessPrivateEndpointsApiRequest struct {
 	ctx          context.Context
-	ApiService   ServerlessPrivateEndpointsApi
+	ApiService   ServerlessPrivateEndpointsAPI
 	groupId      string
 	instanceName string
 }
@@ -606,7 +606,7 @@ type ListServerlessPrivateEndpointsApiParams struct {
 	InstanceName string
 }
 
-func (a *ServerlessPrivateEndpointsApiService) ListServerlessPrivateEndpointsWithParams(ctx context.Context, args *ListServerlessPrivateEndpointsApiParams) ListServerlessPrivateEndpointsApiRequest {
+func (a *ServerlessPrivateEndpointsAPIService) ListServerlessPrivateEndpointsWithParams(ctx context.Context, args *ListServerlessPrivateEndpointsApiParams) ListServerlessPrivateEndpointsApiRequest {
 	return ListServerlessPrivateEndpointsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -629,7 +629,7 @@ Returns all private endpoints for one serverless instance. You must have at leas
 	@param instanceName Human-readable label that identifies the serverless instance associated with the tenant endpoint.
 	@return ListServerlessPrivateEndpointsApiRequest
 */
-func (a *ServerlessPrivateEndpointsApiService) ListServerlessPrivateEndpoints(ctx context.Context, groupId string, instanceName string) ListServerlessPrivateEndpointsApiRequest {
+func (a *ServerlessPrivateEndpointsAPIService) ListServerlessPrivateEndpoints(ctx context.Context, groupId string, instanceName string) ListServerlessPrivateEndpointsApiRequest {
 	return ListServerlessPrivateEndpointsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -641,7 +641,7 @@ func (a *ServerlessPrivateEndpointsApiService) ListServerlessPrivateEndpoints(ct
 // Execute executes the request
 //
 //	@return []ServerlessTenantEndpoint
-func (a *ServerlessPrivateEndpointsApiService) listServerlessPrivateEndpointsExecute(r ListServerlessPrivateEndpointsApiRequest) ([]ServerlessTenantEndpoint, *http.Response, error) {
+func (a *ServerlessPrivateEndpointsAPIService) listServerlessPrivateEndpointsExecute(r ListServerlessPrivateEndpointsApiRequest) ([]ServerlessTenantEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -649,7 +649,7 @@ func (a *ServerlessPrivateEndpointsApiService) listServerlessPrivateEndpointsExe
 		localVarReturnValue []ServerlessTenantEndpoint
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessPrivateEndpointsApiService.ListServerlessPrivateEndpoints")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessPrivateEndpointsAPIService.ListServerlessPrivateEndpoints")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -735,7 +735,7 @@ func (a *ServerlessPrivateEndpointsApiService) listServerlessPrivateEndpointsExe
 
 type UpdateServerlessPrivateEndpointApiRequest struct {
 	ctx                            context.Context
-	ApiService                     ServerlessPrivateEndpointsApi
+	ApiService                     ServerlessPrivateEndpointsAPI
 	groupId                        string
 	instanceName                   string
 	endpointId                     string
@@ -749,7 +749,7 @@ type UpdateServerlessPrivateEndpointApiParams struct {
 	ServerlessTenantEndpointUpdate *ServerlessTenantEndpointUpdate
 }
 
-func (a *ServerlessPrivateEndpointsApiService) UpdateServerlessPrivateEndpointWithParams(ctx context.Context, args *UpdateServerlessPrivateEndpointApiParams) UpdateServerlessPrivateEndpointApiRequest {
+func (a *ServerlessPrivateEndpointsAPIService) UpdateServerlessPrivateEndpointWithParams(ctx context.Context, args *UpdateServerlessPrivateEndpointApiParams) UpdateServerlessPrivateEndpointApiRequest {
 	return UpdateServerlessPrivateEndpointApiRequest{
 		ApiService:                     a,
 		ctx:                            ctx,
@@ -775,7 +775,7 @@ UpdateServerlessPrivateEndpoint Update One Private Endpoint for One Serverless I
 	@param endpointId Unique 24-hexadecimal digit string that identifies the tenant endpoint which will be updated.
 	@return UpdateServerlessPrivateEndpointApiRequest
 */
-func (a *ServerlessPrivateEndpointsApiService) UpdateServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, endpointId string, serverlessTenantEndpointUpdate *ServerlessTenantEndpointUpdate) UpdateServerlessPrivateEndpointApiRequest {
+func (a *ServerlessPrivateEndpointsAPIService) UpdateServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, endpointId string, serverlessTenantEndpointUpdate *ServerlessTenantEndpointUpdate) UpdateServerlessPrivateEndpointApiRequest {
 	return UpdateServerlessPrivateEndpointApiRequest{
 		ApiService:                     a,
 		ctx:                            ctx,
@@ -789,7 +789,7 @@ func (a *ServerlessPrivateEndpointsApiService) UpdateServerlessPrivateEndpoint(c
 // Execute executes the request
 //
 //	@return ServerlessTenantEndpoint
-func (a *ServerlessPrivateEndpointsApiService) updateServerlessPrivateEndpointExecute(r UpdateServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error) {
+func (a *ServerlessPrivateEndpointsAPIService) updateServerlessPrivateEndpointExecute(r UpdateServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -797,7 +797,7 @@ func (a *ServerlessPrivateEndpointsApiService) updateServerlessPrivateEndpointEx
 		localVarReturnValue *ServerlessTenantEndpoint
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessPrivateEndpointsApiService.UpdateServerlessPrivateEndpoint")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessPrivateEndpointsAPIService.UpdateServerlessPrivateEndpoint")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-type FederatedAuthenticationApi interface {
+type FederatedAuthenticationAPI interface {
 
 	/*
 		CreateRoleMapping Add One Role Mapping to One Organization
@@ -379,12 +379,12 @@ type FederatedAuthenticationApi interface {
 	updateRoleMappingExecute(r UpdateRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error)
 }
 
-// FederatedAuthenticationApiService FederatedAuthenticationApi service
-type FederatedAuthenticationApiService service
+// FederatedAuthenticationAPIService FederatedAuthenticationAPI service
+type FederatedAuthenticationAPIService service
 
 type CreateRoleMappingApiRequest struct {
 	ctx                       context.Context
-	ApiService                FederatedAuthenticationApi
+	ApiService                FederatedAuthenticationAPI
 	federationSettingsId      string
 	orgId                     string
 	authFederationRoleMapping *AuthFederationRoleMapping
@@ -396,7 +396,7 @@ type CreateRoleMappingApiParams struct {
 	AuthFederationRoleMapping *AuthFederationRoleMapping
 }
 
-func (a *FederatedAuthenticationApiService) CreateRoleMappingWithParams(ctx context.Context, args *CreateRoleMappingApiParams) CreateRoleMappingApiRequest {
+func (a *FederatedAuthenticationAPIService) CreateRoleMappingWithParams(ctx context.Context, args *CreateRoleMappingApiParams) CreateRoleMappingApiRequest {
 	return CreateRoleMappingApiRequest{
 		ApiService:                a,
 		ctx:                       ctx,
@@ -420,7 +420,7 @@ CreateRoleMapping Add One Role Mapping to One Organization
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return CreateRoleMappingApiRequest
 */
-func (a *FederatedAuthenticationApiService) CreateRoleMapping(ctx context.Context, federationSettingsId string, orgId string, authFederationRoleMapping *AuthFederationRoleMapping) CreateRoleMappingApiRequest {
+func (a *FederatedAuthenticationAPIService) CreateRoleMapping(ctx context.Context, federationSettingsId string, orgId string, authFederationRoleMapping *AuthFederationRoleMapping) CreateRoleMappingApiRequest {
 	return CreateRoleMappingApiRequest{
 		ApiService:                a,
 		ctx:                       ctx,
@@ -433,7 +433,7 @@ func (a *FederatedAuthenticationApiService) CreateRoleMapping(ctx context.Contex
 // Execute executes the request
 //
 //	@return AuthFederationRoleMapping
-func (a *FederatedAuthenticationApiService) createRoleMappingExecute(r CreateRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error) {
+func (a *FederatedAuthenticationAPIService) createRoleMappingExecute(r CreateRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -441,7 +441,7 @@ func (a *FederatedAuthenticationApiService) createRoleMappingExecute(r CreateRol
 		localVarReturnValue *AuthFederationRoleMapping
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.CreateRoleMapping")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationAPIService.CreateRoleMapping")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -535,7 +535,7 @@ func (a *FederatedAuthenticationApiService) createRoleMappingExecute(r CreateRol
 
 type DeleteFederationAppApiRequest struct {
 	ctx                  context.Context
-	ApiService           FederatedAuthenticationApi
+	ApiService           FederatedAuthenticationAPI
 	federationSettingsId string
 }
 
@@ -543,7 +543,7 @@ type DeleteFederationAppApiParams struct {
 	FederationSettingsId string
 }
 
-func (a *FederatedAuthenticationApiService) DeleteFederationAppWithParams(ctx context.Context, args *DeleteFederationAppApiParams) DeleteFederationAppApiRequest {
+func (a *FederatedAuthenticationAPIService) DeleteFederationAppWithParams(ctx context.Context, args *DeleteFederationAppApiParams) DeleteFederationAppApiRequest {
 	return DeleteFederationAppApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -564,7 +564,7 @@ DeleteFederationApp Delete the federation settings instance.
 	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
 	@return DeleteFederationAppApiRequest
 */
-func (a *FederatedAuthenticationApiService) DeleteFederationApp(ctx context.Context, federationSettingsId string) DeleteFederationAppApiRequest {
+func (a *FederatedAuthenticationAPIService) DeleteFederationApp(ctx context.Context, federationSettingsId string) DeleteFederationAppApiRequest {
 	return DeleteFederationAppApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -573,14 +573,14 @@ func (a *FederatedAuthenticationApiService) DeleteFederationApp(ctx context.Cont
 }
 
 // Execute executes the request
-func (a *FederatedAuthenticationApiService) deleteFederationAppExecute(r DeleteFederationAppApiRequest) (*http.Response, error) {
+func (a *FederatedAuthenticationAPIService) deleteFederationAppExecute(r DeleteFederationAppApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.DeleteFederationApp")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationAPIService.DeleteFederationApp")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -653,7 +653,7 @@ func (a *FederatedAuthenticationApiService) deleteFederationAppExecute(r DeleteF
 
 type DeleteRoleMappingApiRequest struct {
 	ctx                  context.Context
-	ApiService           FederatedAuthenticationApi
+	ApiService           FederatedAuthenticationAPI
 	federationSettingsId string
 	id                   string
 	orgId                string
@@ -665,7 +665,7 @@ type DeleteRoleMappingApiParams struct {
 	OrgId                string
 }
 
-func (a *FederatedAuthenticationApiService) DeleteRoleMappingWithParams(ctx context.Context, args *DeleteRoleMappingApiParams) DeleteRoleMappingApiRequest {
+func (a *FederatedAuthenticationAPIService) DeleteRoleMappingWithParams(ctx context.Context, args *DeleteRoleMappingApiParams) DeleteRoleMappingApiRequest {
 	return DeleteRoleMappingApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -690,7 +690,7 @@ DeleteRoleMapping Remove One Role Mapping from One Organization
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return DeleteRoleMappingApiRequest
 */
-func (a *FederatedAuthenticationApiService) DeleteRoleMapping(ctx context.Context, federationSettingsId string, id string, orgId string) DeleteRoleMappingApiRequest {
+func (a *FederatedAuthenticationAPIService) DeleteRoleMapping(ctx context.Context, federationSettingsId string, id string, orgId string) DeleteRoleMappingApiRequest {
 	return DeleteRoleMappingApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -701,14 +701,14 @@ func (a *FederatedAuthenticationApiService) DeleteRoleMapping(ctx context.Contex
 }
 
 // Execute executes the request
-func (a *FederatedAuthenticationApiService) deleteRoleMappingExecute(r DeleteRoleMappingApiRequest) (*http.Response, error) {
+func (a *FederatedAuthenticationAPIService) deleteRoleMappingExecute(r DeleteRoleMappingApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.DeleteRoleMapping")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationAPIService.DeleteRoleMapping")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -795,7 +795,7 @@ func (a *FederatedAuthenticationApiService) deleteRoleMappingExecute(r DeleteRol
 
 type GetConnectedOrgConfigApiRequest struct {
 	ctx                  context.Context
-	ApiService           FederatedAuthenticationApi
+	ApiService           FederatedAuthenticationAPI
 	federationSettingsId string
 	orgId                string
 }
@@ -805,7 +805,7 @@ type GetConnectedOrgConfigApiParams struct {
 	OrgId                string
 }
 
-func (a *FederatedAuthenticationApiService) GetConnectedOrgConfigWithParams(ctx context.Context, args *GetConnectedOrgConfigApiParams) GetConnectedOrgConfigApiRequest {
+func (a *FederatedAuthenticationAPIService) GetConnectedOrgConfigWithParams(ctx context.Context, args *GetConnectedOrgConfigApiParams) GetConnectedOrgConfigApiRequest {
 	return GetConnectedOrgConfigApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -828,7 +828,7 @@ GetConnectedOrgConfig Return One Org Config Connected to One Federation
 	@param orgId Unique 24-hexadecimal digit string that identifies the connected organization configuration to return.
 	@return GetConnectedOrgConfigApiRequest
 */
-func (a *FederatedAuthenticationApiService) GetConnectedOrgConfig(ctx context.Context, federationSettingsId string, orgId string) GetConnectedOrgConfigApiRequest {
+func (a *FederatedAuthenticationAPIService) GetConnectedOrgConfig(ctx context.Context, federationSettingsId string, orgId string) GetConnectedOrgConfigApiRequest {
 	return GetConnectedOrgConfigApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -840,7 +840,7 @@ func (a *FederatedAuthenticationApiService) GetConnectedOrgConfig(ctx context.Co
 // Execute executes the request
 //
 //	@return ConnectedOrgConfig
-func (a *FederatedAuthenticationApiService) getConnectedOrgConfigExecute(r GetConnectedOrgConfigApiRequest) (*ConnectedOrgConfig, *http.Response, error) {
+func (a *FederatedAuthenticationAPIService) getConnectedOrgConfigExecute(r GetConnectedOrgConfigApiRequest) (*ConnectedOrgConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -848,7 +848,7 @@ func (a *FederatedAuthenticationApiService) getConnectedOrgConfigExecute(r GetCo
 		localVarReturnValue *ConnectedOrgConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.GetConnectedOrgConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationAPIService.GetConnectedOrgConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -937,7 +937,7 @@ func (a *FederatedAuthenticationApiService) getConnectedOrgConfigExecute(r GetCo
 
 type GetFederationSettingsApiRequest struct {
 	ctx        context.Context
-	ApiService FederatedAuthenticationApi
+	ApiService FederatedAuthenticationAPI
 	orgId      string
 }
 
@@ -945,7 +945,7 @@ type GetFederationSettingsApiParams struct {
 	OrgId string
 }
 
-func (a *FederatedAuthenticationApiService) GetFederationSettingsWithParams(ctx context.Context, args *GetFederationSettingsApiParams) GetFederationSettingsApiRequest {
+func (a *FederatedAuthenticationAPIService) GetFederationSettingsWithParams(ctx context.Context, args *GetFederationSettingsApiParams) GetFederationSettingsApiRequest {
 	return GetFederationSettingsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -966,7 +966,7 @@ GetFederationSettings Return Federation Settings for One Organization
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return GetFederationSettingsApiRequest
 */
-func (a *FederatedAuthenticationApiService) GetFederationSettings(ctx context.Context, orgId string) GetFederationSettingsApiRequest {
+func (a *FederatedAuthenticationAPIService) GetFederationSettings(ctx context.Context, orgId string) GetFederationSettingsApiRequest {
 	return GetFederationSettingsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -977,7 +977,7 @@ func (a *FederatedAuthenticationApiService) GetFederationSettings(ctx context.Co
 // Execute executes the request
 //
 //	@return OrgFederationSettings
-func (a *FederatedAuthenticationApiService) getFederationSettingsExecute(r GetFederationSettingsApiRequest) (*OrgFederationSettings, *http.Response, error) {
+func (a *FederatedAuthenticationAPIService) getFederationSettingsExecute(r GetFederationSettingsApiRequest) (*OrgFederationSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -985,7 +985,7 @@ func (a *FederatedAuthenticationApiService) getFederationSettingsExecute(r GetFe
 		localVarReturnValue *OrgFederationSettings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.GetFederationSettings")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationAPIService.GetFederationSettings")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1067,7 +1067,7 @@ func (a *FederatedAuthenticationApiService) getFederationSettingsExecute(r GetFe
 
 type GetIdentityProviderApiRequest struct {
 	ctx                  context.Context
-	ApiService           FederatedAuthenticationApi
+	ApiService           FederatedAuthenticationAPI
 	federationSettingsId string
 	identityProviderId   string
 }
@@ -1077,7 +1077,7 @@ type GetIdentityProviderApiParams struct {
 	IdentityProviderId   string
 }
 
-func (a *FederatedAuthenticationApiService) GetIdentityProviderWithParams(ctx context.Context, args *GetIdentityProviderApiParams) GetIdentityProviderApiRequest {
+func (a *FederatedAuthenticationAPIService) GetIdentityProviderWithParams(ctx context.Context, args *GetIdentityProviderApiParams) GetIdentityProviderApiRequest {
 	return GetIdentityProviderApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -1100,7 +1100,7 @@ GetIdentityProvider Return one identity provider from the specified federation.
 	@param identityProviderId Unique 20-hexadecimal digit string that identifies the identity provider.
 	@return GetIdentityProviderApiRequest
 */
-func (a *FederatedAuthenticationApiService) GetIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string) GetIdentityProviderApiRequest {
+func (a *FederatedAuthenticationAPIService) GetIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string) GetIdentityProviderApiRequest {
 	return GetIdentityProviderApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -1112,7 +1112,7 @@ func (a *FederatedAuthenticationApiService) GetIdentityProvider(ctx context.Cont
 // Execute executes the request
 //
 //	@return FederationIdentityProvider
-func (a *FederatedAuthenticationApiService) getIdentityProviderExecute(r GetIdentityProviderApiRequest) (*FederationIdentityProvider, *http.Response, error) {
+func (a *FederatedAuthenticationAPIService) getIdentityProviderExecute(r GetIdentityProviderApiRequest) (*FederationIdentityProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1120,7 +1120,7 @@ func (a *FederatedAuthenticationApiService) getIdentityProviderExecute(r GetIden
 		localVarReturnValue *FederationIdentityProvider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.GetIdentityProvider")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationAPIService.GetIdentityProvider")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1209,7 +1209,7 @@ func (a *FederatedAuthenticationApiService) getIdentityProviderExecute(r GetIden
 
 type GetIdentityProviderMetadataApiRequest struct {
 	ctx                  context.Context
-	ApiService           FederatedAuthenticationApi
+	ApiService           FederatedAuthenticationAPI
 	federationSettingsId string
 	identityProviderId   string
 }
@@ -1219,7 +1219,7 @@ type GetIdentityProviderMetadataApiParams struct {
 	IdentityProviderId   string
 }
 
-func (a *FederatedAuthenticationApiService) GetIdentityProviderMetadataWithParams(ctx context.Context, args *GetIdentityProviderMetadataApiParams) GetIdentityProviderMetadataApiRequest {
+func (a *FederatedAuthenticationAPIService) GetIdentityProviderMetadataWithParams(ctx context.Context, args *GetIdentityProviderMetadataApiParams) GetIdentityProviderMetadataApiRequest {
 	return GetIdentityProviderMetadataApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -1242,7 +1242,7 @@ GetIdentityProviderMetadata Return the metadata of one identity provider in the 
 	@param identityProviderId Unique 20-hexadecimal digit string that identifies the identity provider.
 	@return GetIdentityProviderMetadataApiRequest
 */
-func (a *FederatedAuthenticationApiService) GetIdentityProviderMetadata(ctx context.Context, federationSettingsId string, identityProviderId string) GetIdentityProviderMetadataApiRequest {
+func (a *FederatedAuthenticationAPIService) GetIdentityProviderMetadata(ctx context.Context, federationSettingsId string, identityProviderId string) GetIdentityProviderMetadataApiRequest {
 	return GetIdentityProviderMetadataApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -1254,7 +1254,7 @@ func (a *FederatedAuthenticationApiService) GetIdentityProviderMetadata(ctx cont
 // Execute executes the request
 //
 //	@return string
-func (a *FederatedAuthenticationApiService) getIdentityProviderMetadataExecute(r GetIdentityProviderMetadataApiRequest) (string, *http.Response, error) {
+func (a *FederatedAuthenticationAPIService) getIdentityProviderMetadataExecute(r GetIdentityProviderMetadataApiRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1262,7 +1262,7 @@ func (a *FederatedAuthenticationApiService) getIdentityProviderMetadataExecute(r
 		localVarReturnValue string
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.GetIdentityProviderMetadata")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationAPIService.GetIdentityProviderMetadata")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1351,7 +1351,7 @@ func (a *FederatedAuthenticationApiService) getIdentityProviderMetadataExecute(r
 
 type GetRoleMappingApiRequest struct {
 	ctx                  context.Context
-	ApiService           FederatedAuthenticationApi
+	ApiService           FederatedAuthenticationAPI
 	federationSettingsId string
 	id                   string
 	orgId                string
@@ -1363,7 +1363,7 @@ type GetRoleMappingApiParams struct {
 	OrgId                string
 }
 
-func (a *FederatedAuthenticationApiService) GetRoleMappingWithParams(ctx context.Context, args *GetRoleMappingApiParams) GetRoleMappingApiRequest {
+func (a *FederatedAuthenticationAPIService) GetRoleMappingWithParams(ctx context.Context, args *GetRoleMappingApiParams) GetRoleMappingApiRequest {
 	return GetRoleMappingApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -1388,7 +1388,7 @@ GetRoleMapping Return One Role Mapping from One Organization
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return GetRoleMappingApiRequest
 */
-func (a *FederatedAuthenticationApiService) GetRoleMapping(ctx context.Context, federationSettingsId string, id string, orgId string) GetRoleMappingApiRequest {
+func (a *FederatedAuthenticationAPIService) GetRoleMapping(ctx context.Context, federationSettingsId string, id string, orgId string) GetRoleMappingApiRequest {
 	return GetRoleMappingApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -1401,7 +1401,7 @@ func (a *FederatedAuthenticationApiService) GetRoleMapping(ctx context.Context, 
 // Execute executes the request
 //
 //	@return AuthFederationRoleMapping
-func (a *FederatedAuthenticationApiService) getRoleMappingExecute(r GetRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error) {
+func (a *FederatedAuthenticationAPIService) getRoleMappingExecute(r GetRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1409,7 +1409,7 @@ func (a *FederatedAuthenticationApiService) getRoleMappingExecute(r GetRoleMappi
 		localVarReturnValue *AuthFederationRoleMapping
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.GetRoleMapping")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationAPIService.GetRoleMapping")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1505,7 +1505,7 @@ func (a *FederatedAuthenticationApiService) getRoleMappingExecute(r GetRoleMappi
 
 type ListConnectedOrgConfigsApiRequest struct {
 	ctx                  context.Context
-	ApiService           FederatedAuthenticationApi
+	ApiService           FederatedAuthenticationAPI
 	federationSettingsId string
 }
 
@@ -1513,7 +1513,7 @@ type ListConnectedOrgConfigsApiParams struct {
 	FederationSettingsId string
 }
 
-func (a *FederatedAuthenticationApiService) ListConnectedOrgConfigsWithParams(ctx context.Context, args *ListConnectedOrgConfigsApiParams) ListConnectedOrgConfigsApiRequest {
+func (a *FederatedAuthenticationAPIService) ListConnectedOrgConfigsWithParams(ctx context.Context, args *ListConnectedOrgConfigsApiParams) ListConnectedOrgConfigsApiRequest {
 	return ListConnectedOrgConfigsApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -1534,7 +1534,7 @@ ListConnectedOrgConfigs Return All Connected Org Configs from the Federation
 	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
 	@return ListConnectedOrgConfigsApiRequest
 */
-func (a *FederatedAuthenticationApiService) ListConnectedOrgConfigs(ctx context.Context, federationSettingsId string) ListConnectedOrgConfigsApiRequest {
+func (a *FederatedAuthenticationAPIService) ListConnectedOrgConfigs(ctx context.Context, federationSettingsId string) ListConnectedOrgConfigsApiRequest {
 	return ListConnectedOrgConfigsApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -1545,7 +1545,7 @@ func (a *FederatedAuthenticationApiService) ListConnectedOrgConfigs(ctx context.
 // Execute executes the request
 //
 //	@return []ConnectedOrgConfig
-func (a *FederatedAuthenticationApiService) listConnectedOrgConfigsExecute(r ListConnectedOrgConfigsApiRequest) ([]ConnectedOrgConfig, *http.Response, error) {
+func (a *FederatedAuthenticationAPIService) listConnectedOrgConfigsExecute(r ListConnectedOrgConfigsApiRequest) ([]ConnectedOrgConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1553,7 +1553,7 @@ func (a *FederatedAuthenticationApiService) listConnectedOrgConfigsExecute(r Lis
 		localVarReturnValue []ConnectedOrgConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.ListConnectedOrgConfigs")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationAPIService.ListConnectedOrgConfigs")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1635,7 +1635,7 @@ func (a *FederatedAuthenticationApiService) listConnectedOrgConfigsExecute(r Lis
 
 type ListIdentityProvidersApiRequest struct {
 	ctx                  context.Context
-	ApiService           FederatedAuthenticationApi
+	ApiService           FederatedAuthenticationAPI
 	federationSettingsId string
 }
 
@@ -1643,7 +1643,7 @@ type ListIdentityProvidersApiParams struct {
 	FederationSettingsId string
 }
 
-func (a *FederatedAuthenticationApiService) ListIdentityProvidersWithParams(ctx context.Context, args *ListIdentityProvidersApiParams) ListIdentityProvidersApiRequest {
+func (a *FederatedAuthenticationAPIService) ListIdentityProvidersWithParams(ctx context.Context, args *ListIdentityProvidersApiParams) ListIdentityProvidersApiRequest {
 	return ListIdentityProvidersApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -1664,7 +1664,7 @@ ListIdentityProviders Return all identity providers from the specified federatio
 	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
 	@return ListIdentityProvidersApiRequest
 */
-func (a *FederatedAuthenticationApiService) ListIdentityProviders(ctx context.Context, federationSettingsId string) ListIdentityProvidersApiRequest {
+func (a *FederatedAuthenticationAPIService) ListIdentityProviders(ctx context.Context, federationSettingsId string) ListIdentityProvidersApiRequest {
 	return ListIdentityProvidersApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -1675,7 +1675,7 @@ func (a *FederatedAuthenticationApiService) ListIdentityProviders(ctx context.Co
 // Execute executes the request
 //
 //	@return []FederationIdentityProvider
-func (a *FederatedAuthenticationApiService) listIdentityProvidersExecute(r ListIdentityProvidersApiRequest) ([]FederationIdentityProvider, *http.Response, error) {
+func (a *FederatedAuthenticationAPIService) listIdentityProvidersExecute(r ListIdentityProvidersApiRequest) ([]FederationIdentityProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1683,7 +1683,7 @@ func (a *FederatedAuthenticationApiService) listIdentityProvidersExecute(r ListI
 		localVarReturnValue []FederationIdentityProvider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.ListIdentityProviders")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationAPIService.ListIdentityProviders")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1765,7 +1765,7 @@ func (a *FederatedAuthenticationApiService) listIdentityProvidersExecute(r ListI
 
 type ListRoleMappingsApiRequest struct {
 	ctx                  context.Context
-	ApiService           FederatedAuthenticationApi
+	ApiService           FederatedAuthenticationAPI
 	federationSettingsId string
 	orgId                string
 }
@@ -1775,7 +1775,7 @@ type ListRoleMappingsApiParams struct {
 	OrgId                string
 }
 
-func (a *FederatedAuthenticationApiService) ListRoleMappingsWithParams(ctx context.Context, args *ListRoleMappingsApiParams) ListRoleMappingsApiRequest {
+func (a *FederatedAuthenticationAPIService) ListRoleMappingsWithParams(ctx context.Context, args *ListRoleMappingsApiParams) ListRoleMappingsApiRequest {
 	return ListRoleMappingsApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -1798,7 +1798,7 @@ ListRoleMappings Return All Role Mappings from One Organization
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return ListRoleMappingsApiRequest
 */
-func (a *FederatedAuthenticationApiService) ListRoleMappings(ctx context.Context, federationSettingsId string, orgId string) ListRoleMappingsApiRequest {
+func (a *FederatedAuthenticationAPIService) ListRoleMappings(ctx context.Context, federationSettingsId string, orgId string) ListRoleMappingsApiRequest {
 	return ListRoleMappingsApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -1810,7 +1810,7 @@ func (a *FederatedAuthenticationApiService) ListRoleMappings(ctx context.Context
 // Execute executes the request
 //
 //	@return []AuthFederationRoleMapping
-func (a *FederatedAuthenticationApiService) listRoleMappingsExecute(r ListRoleMappingsApiRequest) ([]AuthFederationRoleMapping, *http.Response, error) {
+func (a *FederatedAuthenticationAPIService) listRoleMappingsExecute(r ListRoleMappingsApiRequest) ([]AuthFederationRoleMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1818,7 +1818,7 @@ func (a *FederatedAuthenticationApiService) listRoleMappingsExecute(r ListRoleMa
 		localVarReturnValue []AuthFederationRoleMapping
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.ListRoleMappings")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationAPIService.ListRoleMappings")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1907,7 +1907,7 @@ func (a *FederatedAuthenticationApiService) listRoleMappingsExecute(r ListRoleMa
 
 type RemoveConnectedOrgConfigApiRequest struct {
 	ctx                  context.Context
-	ApiService           FederatedAuthenticationApi
+	ApiService           FederatedAuthenticationAPI
 	federationSettingsId string
 	orgId                string
 }
@@ -1917,7 +1917,7 @@ type RemoveConnectedOrgConfigApiParams struct {
 	OrgId                string
 }
 
-func (a *FederatedAuthenticationApiService) RemoveConnectedOrgConfigWithParams(ctx context.Context, args *RemoveConnectedOrgConfigApiParams) RemoveConnectedOrgConfigApiRequest {
+func (a *FederatedAuthenticationAPIService) RemoveConnectedOrgConfigWithParams(ctx context.Context, args *RemoveConnectedOrgConfigApiParams) RemoveConnectedOrgConfigApiRequest {
 	return RemoveConnectedOrgConfigApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -1940,7 +1940,7 @@ RemoveConnectedOrgConfig Remove One Org Config Connected to One Federation
 	@param orgId Unique 24-hexadecimal digit string that identifies the connected organization configuration to remove.
 	@return RemoveConnectedOrgConfigApiRequest
 */
-func (a *FederatedAuthenticationApiService) RemoveConnectedOrgConfig(ctx context.Context, federationSettingsId string, orgId string) RemoveConnectedOrgConfigApiRequest {
+func (a *FederatedAuthenticationAPIService) RemoveConnectedOrgConfig(ctx context.Context, federationSettingsId string, orgId string) RemoveConnectedOrgConfigApiRequest {
 	return RemoveConnectedOrgConfigApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -1952,7 +1952,7 @@ func (a *FederatedAuthenticationApiService) RemoveConnectedOrgConfig(ctx context
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *FederatedAuthenticationApiService) removeConnectedOrgConfigExecute(r RemoveConnectedOrgConfigApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *FederatedAuthenticationAPIService) removeConnectedOrgConfigExecute(r RemoveConnectedOrgConfigApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -1960,7 +1960,7 @@ func (a *FederatedAuthenticationApiService) removeConnectedOrgConfigExecute(r Re
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.RemoveConnectedOrgConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationAPIService.RemoveConnectedOrgConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2049,7 +2049,7 @@ func (a *FederatedAuthenticationApiService) removeConnectedOrgConfigExecute(r Re
 
 type UpdateConnectedOrgConfigApiRequest struct {
 	ctx                  context.Context
-	ApiService           FederatedAuthenticationApi
+	ApiService           FederatedAuthenticationAPI
 	federationSettingsId string
 	orgId                string
 	connectedOrgConfig   *ConnectedOrgConfig
@@ -2061,7 +2061,7 @@ type UpdateConnectedOrgConfigApiParams struct {
 	ConnectedOrgConfig   *ConnectedOrgConfig
 }
 
-func (a *FederatedAuthenticationApiService) UpdateConnectedOrgConfigWithParams(ctx context.Context, args *UpdateConnectedOrgConfigApiParams) UpdateConnectedOrgConfigApiRequest {
+func (a *FederatedAuthenticationAPIService) UpdateConnectedOrgConfigWithParams(ctx context.Context, args *UpdateConnectedOrgConfigApiParams) UpdateConnectedOrgConfigApiRequest {
 	return UpdateConnectedOrgConfigApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -2091,7 +2091,7 @@ UpdateConnectedOrgConfig Update One Org Config Connected to One Federation
 	@param orgId Unique 24-hexadecimal digit string that identifies the connected organization configuration to update.
 	@return UpdateConnectedOrgConfigApiRequest
 */
-func (a *FederatedAuthenticationApiService) UpdateConnectedOrgConfig(ctx context.Context, federationSettingsId string, orgId string, connectedOrgConfig *ConnectedOrgConfig) UpdateConnectedOrgConfigApiRequest {
+func (a *FederatedAuthenticationAPIService) UpdateConnectedOrgConfig(ctx context.Context, federationSettingsId string, orgId string, connectedOrgConfig *ConnectedOrgConfig) UpdateConnectedOrgConfigApiRequest {
 	return UpdateConnectedOrgConfigApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -2104,7 +2104,7 @@ func (a *FederatedAuthenticationApiService) UpdateConnectedOrgConfig(ctx context
 // Execute executes the request
 //
 //	@return ConnectedOrgConfig
-func (a *FederatedAuthenticationApiService) updateConnectedOrgConfigExecute(r UpdateConnectedOrgConfigApiRequest) (*ConnectedOrgConfig, *http.Response, error) {
+func (a *FederatedAuthenticationAPIService) updateConnectedOrgConfigExecute(r UpdateConnectedOrgConfigApiRequest) (*ConnectedOrgConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -2112,7 +2112,7 @@ func (a *FederatedAuthenticationApiService) updateConnectedOrgConfigExecute(r Up
 		localVarReturnValue *ConnectedOrgConfig
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.UpdateConnectedOrgConfig")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationAPIService.UpdateConnectedOrgConfig")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2206,7 +2206,7 @@ func (a *FederatedAuthenticationApiService) updateConnectedOrgConfigExecute(r Up
 
 type UpdateIdentityProviderApiRequest struct {
 	ctx                        context.Context
-	ApiService                 FederatedAuthenticationApi
+	ApiService                 FederatedAuthenticationAPI
 	federationSettingsId       string
 	identityProviderId         string
 	samlIdentityProviderUpdate *SamlIdentityProviderUpdate
@@ -2218,7 +2218,7 @@ type UpdateIdentityProviderApiParams struct {
 	SamlIdentityProviderUpdate *SamlIdentityProviderUpdate
 }
 
-func (a *FederatedAuthenticationApiService) UpdateIdentityProviderWithParams(ctx context.Context, args *UpdateIdentityProviderApiParams) UpdateIdentityProviderApiRequest {
+func (a *FederatedAuthenticationAPIService) UpdateIdentityProviderWithParams(ctx context.Context, args *UpdateIdentityProviderApiParams) UpdateIdentityProviderApiRequest {
 	return UpdateIdentityProviderApiRequest{
 		ApiService:                 a,
 		ctx:                        ctx,
@@ -2242,7 +2242,7 @@ UpdateIdentityProvider Update the identity provider.
 	@param identityProviderId Unique 20-hexadecimal digit string that identifies the identity provider.
 	@return UpdateIdentityProviderApiRequest
 */
-func (a *FederatedAuthenticationApiService) UpdateIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string, samlIdentityProviderUpdate *SamlIdentityProviderUpdate) UpdateIdentityProviderApiRequest {
+func (a *FederatedAuthenticationAPIService) UpdateIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string, samlIdentityProviderUpdate *SamlIdentityProviderUpdate) UpdateIdentityProviderApiRequest {
 	return UpdateIdentityProviderApiRequest{
 		ApiService:                 a,
 		ctx:                        ctx,
@@ -2255,7 +2255,7 @@ func (a *FederatedAuthenticationApiService) UpdateIdentityProvider(ctx context.C
 // Execute executes the request
 //
 //	@return FederationIdentityProvider
-func (a *FederatedAuthenticationApiService) updateIdentityProviderExecute(r UpdateIdentityProviderApiRequest) (*FederationIdentityProvider, *http.Response, error) {
+func (a *FederatedAuthenticationAPIService) updateIdentityProviderExecute(r UpdateIdentityProviderApiRequest) (*FederationIdentityProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -2263,7 +2263,7 @@ func (a *FederatedAuthenticationApiService) updateIdentityProviderExecute(r Upda
 		localVarReturnValue *FederationIdentityProvider
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.UpdateIdentityProvider")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationAPIService.UpdateIdentityProvider")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2357,7 +2357,7 @@ func (a *FederatedAuthenticationApiService) updateIdentityProviderExecute(r Upda
 
 type UpdateRoleMappingApiRequest struct {
 	ctx                       context.Context
-	ApiService                FederatedAuthenticationApi
+	ApiService                FederatedAuthenticationAPI
 	federationSettingsId      string
 	id                        string
 	orgId                     string
@@ -2371,7 +2371,7 @@ type UpdateRoleMappingApiParams struct {
 	AuthFederationRoleMapping *AuthFederationRoleMapping
 }
 
-func (a *FederatedAuthenticationApiService) UpdateRoleMappingWithParams(ctx context.Context, args *UpdateRoleMappingApiParams) UpdateRoleMappingApiRequest {
+func (a *FederatedAuthenticationAPIService) UpdateRoleMappingWithParams(ctx context.Context, args *UpdateRoleMappingApiParams) UpdateRoleMappingApiRequest {
 	return UpdateRoleMappingApiRequest{
 		ApiService:                a,
 		ctx:                       ctx,
@@ -2397,7 +2397,7 @@ UpdateRoleMapping Update One Role Mapping in One Organization
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [/orgs](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return UpdateRoleMappingApiRequest
 */
-func (a *FederatedAuthenticationApiService) UpdateRoleMapping(ctx context.Context, federationSettingsId string, id string, orgId string, authFederationRoleMapping *AuthFederationRoleMapping) UpdateRoleMappingApiRequest {
+func (a *FederatedAuthenticationAPIService) UpdateRoleMapping(ctx context.Context, federationSettingsId string, id string, orgId string, authFederationRoleMapping *AuthFederationRoleMapping) UpdateRoleMappingApiRequest {
 	return UpdateRoleMappingApiRequest{
 		ApiService:                a,
 		ctx:                       ctx,
@@ -2411,7 +2411,7 @@ func (a *FederatedAuthenticationApiService) UpdateRoleMapping(ctx context.Contex
 // Execute executes the request
 //
 //	@return AuthFederationRoleMapping
-func (a *FederatedAuthenticationApiService) updateRoleMappingExecute(r UpdateRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error) {
+func (a *FederatedAuthenticationAPIService) updateRoleMappingExecute(r UpdateRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -2419,7 +2419,7 @@ func (a *FederatedAuthenticationApiService) updateRoleMappingExecute(r UpdateRol
 		localVarReturnValue *AuthFederationRoleMapping
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.UpdateRoleMapping")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationAPIService.UpdateRoleMapping")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

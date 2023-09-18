@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-type StreamsApi interface {
+type StreamsAPI interface {
 
 	/*
 		CreateStreamConnection Create One Connection
@@ -255,12 +255,12 @@ type StreamsApi interface {
 	updateStreamInstanceExecute(r UpdateStreamInstanceApiRequest) (*StreamsTenant, *http.Response, error)
 }
 
-// StreamsApiService StreamsApi service
-type StreamsApiService service
+// StreamsAPIService StreamsAPI service
+type StreamsAPIService service
 
 type CreateStreamConnectionApiRequest struct {
 	ctx               context.Context
-	ApiService        StreamsApi
+	ApiService        StreamsAPI
 	groupId           string
 	tenantName        string
 	streamsConnection *StreamsConnection
@@ -272,7 +272,7 @@ type CreateStreamConnectionApiParams struct {
 	StreamsConnection *StreamsConnection
 }
 
-func (a *StreamsApiService) CreateStreamConnectionWithParams(ctx context.Context, args *CreateStreamConnectionApiParams) CreateStreamConnectionApiRequest {
+func (a *StreamsAPIService) CreateStreamConnectionWithParams(ctx context.Context, args *CreateStreamConnectionApiParams) CreateStreamConnectionApiRequest {
 	return CreateStreamConnectionApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -296,7 +296,7 @@ CreateStreamConnection Create One Connection
 	@param tenantName Human-readable label that identifies the stream instance.
 	@return CreateStreamConnectionApiRequest
 */
-func (a *StreamsApiService) CreateStreamConnection(ctx context.Context, groupId string, tenantName string, streamsConnection *StreamsConnection) CreateStreamConnectionApiRequest {
+func (a *StreamsAPIService) CreateStreamConnection(ctx context.Context, groupId string, tenantName string, streamsConnection *StreamsConnection) CreateStreamConnectionApiRequest {
 	return CreateStreamConnectionApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -309,7 +309,7 @@ func (a *StreamsApiService) CreateStreamConnection(ctx context.Context, groupId 
 // Execute executes the request
 //
 //	@return StreamsConnection
-func (a *StreamsApiService) createStreamConnectionExecute(r CreateStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
+func (a *StreamsAPIService) createStreamConnectionExecute(r CreateStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -317,7 +317,7 @@ func (a *StreamsApiService) createStreamConnectionExecute(r CreateStreamConnecti
 		localVarReturnValue *StreamsConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.CreateStreamConnection")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.CreateStreamConnection")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -405,7 +405,7 @@ func (a *StreamsApiService) createStreamConnectionExecute(r CreateStreamConnecti
 
 type CreateStreamInstanceApiRequest struct {
 	ctx           context.Context
-	ApiService    StreamsApi
+	ApiService    StreamsAPI
 	groupId       string
 	streamsTenant *StreamsTenant
 }
@@ -415,7 +415,7 @@ type CreateStreamInstanceApiParams struct {
 	StreamsTenant *StreamsTenant
 }
 
-func (a *StreamsApiService) CreateStreamInstanceWithParams(ctx context.Context, args *CreateStreamInstanceApiParams) CreateStreamInstanceApiRequest {
+func (a *StreamsAPIService) CreateStreamInstanceWithParams(ctx context.Context, args *CreateStreamInstanceApiParams) CreateStreamInstanceApiRequest {
 	return CreateStreamInstanceApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -437,7 +437,7 @@ CreateStreamInstance Create One Stream Instance
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateStreamInstanceApiRequest
 */
-func (a *StreamsApiService) CreateStreamInstance(ctx context.Context, groupId string, streamsTenant *StreamsTenant) CreateStreamInstanceApiRequest {
+func (a *StreamsAPIService) CreateStreamInstance(ctx context.Context, groupId string, streamsTenant *StreamsTenant) CreateStreamInstanceApiRequest {
 	return CreateStreamInstanceApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -449,7 +449,7 @@ func (a *StreamsApiService) CreateStreamInstance(ctx context.Context, groupId st
 // Execute executes the request
 //
 //	@return StreamsTenant
-func (a *StreamsApiService) createStreamInstanceExecute(r CreateStreamInstanceApiRequest) (*StreamsTenant, *http.Response, error) {
+func (a *StreamsAPIService) createStreamInstanceExecute(r CreateStreamInstanceApiRequest) (*StreamsTenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -457,7 +457,7 @@ func (a *StreamsApiService) createStreamInstanceExecute(r CreateStreamInstanceAp
 		localVarReturnValue *StreamsTenant
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.CreateStreamInstance")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.CreateStreamInstance")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -544,7 +544,7 @@ func (a *StreamsApiService) createStreamInstanceExecute(r CreateStreamInstanceAp
 
 type DeleteStreamConnectionApiRequest struct {
 	ctx            context.Context
-	ApiService     StreamsApi
+	ApiService     StreamsAPI
 	groupId        string
 	tenantName     string
 	connectionName string
@@ -556,7 +556,7 @@ type DeleteStreamConnectionApiParams struct {
 	ConnectionName string
 }
 
-func (a *StreamsApiService) DeleteStreamConnectionWithParams(ctx context.Context, args *DeleteStreamConnectionApiParams) DeleteStreamConnectionApiRequest {
+func (a *StreamsAPIService) DeleteStreamConnectionWithParams(ctx context.Context, args *DeleteStreamConnectionApiParams) DeleteStreamConnectionApiRequest {
 	return DeleteStreamConnectionApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -581,7 +581,7 @@ DeleteStreamConnection Delete One Stream Connection
 	@param connectionName Human-readable label that identifies the stream connection.
 	@return DeleteStreamConnectionApiRequest
 */
-func (a *StreamsApiService) DeleteStreamConnection(ctx context.Context, groupId string, tenantName string, connectionName string) DeleteStreamConnectionApiRequest {
+func (a *StreamsAPIService) DeleteStreamConnection(ctx context.Context, groupId string, tenantName string, connectionName string) DeleteStreamConnectionApiRequest {
 	return DeleteStreamConnectionApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -594,7 +594,7 @@ func (a *StreamsApiService) DeleteStreamConnection(ctx context.Context, groupId 
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *StreamsApiService) deleteStreamConnectionExecute(r DeleteStreamConnectionApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *StreamsAPIService) deleteStreamConnectionExecute(r DeleteStreamConnectionApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -602,7 +602,7 @@ func (a *StreamsApiService) deleteStreamConnectionExecute(r DeleteStreamConnecti
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.DeleteStreamConnection")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.DeleteStreamConnection")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -686,7 +686,7 @@ func (a *StreamsApiService) deleteStreamConnectionExecute(r DeleteStreamConnecti
 
 type DeleteStreamInstanceApiRequest struct {
 	ctx        context.Context
-	ApiService StreamsApi
+	ApiService StreamsAPI
 	groupId    string
 	tenantName string
 }
@@ -696,7 +696,7 @@ type DeleteStreamInstanceApiParams struct {
 	TenantName string
 }
 
-func (a *StreamsApiService) DeleteStreamInstanceWithParams(ctx context.Context, args *DeleteStreamInstanceApiParams) DeleteStreamInstanceApiRequest {
+func (a *StreamsAPIService) DeleteStreamInstanceWithParams(ctx context.Context, args *DeleteStreamInstanceApiParams) DeleteStreamInstanceApiRequest {
 	return DeleteStreamInstanceApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -719,7 +719,7 @@ DeleteStreamInstance Delete One Stream Instance
 	@param tenantName Human-readable label that identifies the stream instance to delete.
 	@return DeleteStreamInstanceApiRequest
 */
-func (a *StreamsApiService) DeleteStreamInstance(ctx context.Context, groupId string, tenantName string) DeleteStreamInstanceApiRequest {
+func (a *StreamsAPIService) DeleteStreamInstance(ctx context.Context, groupId string, tenantName string) DeleteStreamInstanceApiRequest {
 	return DeleteStreamInstanceApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -731,7 +731,7 @@ func (a *StreamsApiService) DeleteStreamInstance(ctx context.Context, groupId st
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *StreamsApiService) deleteStreamInstanceExecute(r DeleteStreamInstanceApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *StreamsAPIService) deleteStreamInstanceExecute(r DeleteStreamInstanceApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -739,7 +739,7 @@ func (a *StreamsApiService) deleteStreamInstanceExecute(r DeleteStreamInstanceAp
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.DeleteStreamInstance")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.DeleteStreamInstance")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -822,7 +822,7 @@ func (a *StreamsApiService) deleteStreamInstanceExecute(r DeleteStreamInstanceAp
 
 type GetStreamConnectionApiRequest struct {
 	ctx            context.Context
-	ApiService     StreamsApi
+	ApiService     StreamsAPI
 	groupId        string
 	tenantName     string
 	connectionName string
@@ -834,7 +834,7 @@ type GetStreamConnectionApiParams struct {
 	ConnectionName string
 }
 
-func (a *StreamsApiService) GetStreamConnectionWithParams(ctx context.Context, args *GetStreamConnectionApiParams) GetStreamConnectionApiRequest {
+func (a *StreamsAPIService) GetStreamConnectionWithParams(ctx context.Context, args *GetStreamConnectionApiParams) GetStreamConnectionApiRequest {
 	return GetStreamConnectionApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -859,7 +859,7 @@ GetStreamConnection Return One Stream Connection
 	@param connectionName Human-readable label that identifies the stream connection to return.
 	@return GetStreamConnectionApiRequest
 */
-func (a *StreamsApiService) GetStreamConnection(ctx context.Context, groupId string, tenantName string, connectionName string) GetStreamConnectionApiRequest {
+func (a *StreamsAPIService) GetStreamConnection(ctx context.Context, groupId string, tenantName string, connectionName string) GetStreamConnectionApiRequest {
 	return GetStreamConnectionApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -872,7 +872,7 @@ func (a *StreamsApiService) GetStreamConnection(ctx context.Context, groupId str
 // Execute executes the request
 //
 //	@return StreamsConnection
-func (a *StreamsApiService) getStreamConnectionExecute(r GetStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
+func (a *StreamsAPIService) getStreamConnectionExecute(r GetStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -880,7 +880,7 @@ func (a *StreamsApiService) getStreamConnectionExecute(r GetStreamConnectionApiR
 		localVarReturnValue *StreamsConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.GetStreamConnection")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.GetStreamConnection")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -964,7 +964,7 @@ func (a *StreamsApiService) getStreamConnectionExecute(r GetStreamConnectionApiR
 
 type GetStreamInstanceApiRequest struct {
 	ctx                context.Context
-	ApiService         StreamsApi
+	ApiService         StreamsAPI
 	groupId            string
 	tenantName         string
 	includeConnections *bool
@@ -976,7 +976,7 @@ type GetStreamInstanceApiParams struct {
 	IncludeConnections *bool
 }
 
-func (a *StreamsApiService) GetStreamInstanceWithParams(ctx context.Context, args *GetStreamInstanceApiParams) GetStreamInstanceApiRequest {
+func (a *StreamsAPIService) GetStreamInstanceWithParams(ctx context.Context, args *GetStreamInstanceApiParams) GetStreamInstanceApiRequest {
 	return GetStreamInstanceApiRequest{
 		ApiService:         a,
 		ctx:                ctx,
@@ -1006,7 +1006,7 @@ GetStreamInstance Return One Stream Instance
 	@param tenantName Human-readable label that identifies the stream instance to return.
 	@return GetStreamInstanceApiRequest
 */
-func (a *StreamsApiService) GetStreamInstance(ctx context.Context, groupId string, tenantName string) GetStreamInstanceApiRequest {
+func (a *StreamsAPIService) GetStreamInstance(ctx context.Context, groupId string, tenantName string) GetStreamInstanceApiRequest {
 	return GetStreamInstanceApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1018,7 +1018,7 @@ func (a *StreamsApiService) GetStreamInstance(ctx context.Context, groupId strin
 // Execute executes the request
 //
 //	@return StreamsTenant
-func (a *StreamsApiService) getStreamInstanceExecute(r GetStreamInstanceApiRequest) (*StreamsTenant, *http.Response, error) {
+func (a *StreamsAPIService) getStreamInstanceExecute(r GetStreamInstanceApiRequest) (*StreamsTenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1026,7 +1026,7 @@ func (a *StreamsApiService) getStreamInstanceExecute(r GetStreamInstanceApiReque
 		localVarReturnValue *StreamsTenant
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.GetStreamInstance")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.GetStreamInstance")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1112,7 +1112,7 @@ func (a *StreamsApiService) getStreamInstanceExecute(r GetStreamInstanceApiReque
 
 type ListStreamConnectionsApiRequest struct {
 	ctx          context.Context
-	ApiService   StreamsApi
+	ApiService   StreamsAPI
 	groupId      string
 	tenantName   string
 	itemsPerPage *int
@@ -1126,7 +1126,7 @@ type ListStreamConnectionsApiParams struct {
 	PageNum      *int
 }
 
-func (a *StreamsApiService) ListStreamConnectionsWithParams(ctx context.Context, args *ListStreamConnectionsApiParams) ListStreamConnectionsApiRequest {
+func (a *StreamsAPIService) ListStreamConnectionsWithParams(ctx context.Context, args *ListStreamConnectionsApiParams) ListStreamConnectionsApiRequest {
 	return ListStreamConnectionsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1163,7 +1163,7 @@ ListStreamConnections Return All Connections Of The Stream Instances
 	@param tenantName Human-readable label that identifies the stream instance.
 	@return ListStreamConnectionsApiRequest
 */
-func (a *StreamsApiService) ListStreamConnections(ctx context.Context, groupId string, tenantName string) ListStreamConnectionsApiRequest {
+func (a *StreamsAPIService) ListStreamConnections(ctx context.Context, groupId string, tenantName string) ListStreamConnectionsApiRequest {
 	return ListStreamConnectionsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1175,7 +1175,7 @@ func (a *StreamsApiService) ListStreamConnections(ctx context.Context, groupId s
 // Execute executes the request
 //
 //	@return PaginatedApiStreamsConnection
-func (a *StreamsApiService) listStreamConnectionsExecute(r ListStreamConnectionsApiRequest) (*PaginatedApiStreamsConnection, *http.Response, error) {
+func (a *StreamsAPIService) listStreamConnectionsExecute(r ListStreamConnectionsApiRequest) (*PaginatedApiStreamsConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1183,7 +1183,7 @@ func (a *StreamsApiService) listStreamConnectionsExecute(r ListStreamConnections
 		localVarReturnValue *PaginatedApiStreamsConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.ListStreamConnections")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.ListStreamConnections")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1280,7 +1280,7 @@ func (a *StreamsApiService) listStreamConnectionsExecute(r ListStreamConnections
 
 type ListStreamInstancesApiRequest struct {
 	ctx          context.Context
-	ApiService   StreamsApi
+	ApiService   StreamsAPI
 	groupId      string
 	itemsPerPage *int
 	pageNum      *int
@@ -1292,7 +1292,7 @@ type ListStreamInstancesApiParams struct {
 	PageNum      *int
 }
 
-func (a *StreamsApiService) ListStreamInstancesWithParams(ctx context.Context, args *ListStreamInstancesApiParams) ListStreamInstancesApiRequest {
+func (a *StreamsAPIService) ListStreamInstancesWithParams(ctx context.Context, args *ListStreamInstancesApiParams) ListStreamInstancesApiRequest {
 	return ListStreamInstancesApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1327,7 +1327,7 @@ ListStreamInstances Return All Project Stream Instances
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListStreamInstancesApiRequest
 */
-func (a *StreamsApiService) ListStreamInstances(ctx context.Context, groupId string) ListStreamInstancesApiRequest {
+func (a *StreamsAPIService) ListStreamInstances(ctx context.Context, groupId string) ListStreamInstancesApiRequest {
 	return ListStreamInstancesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1338,7 +1338,7 @@ func (a *StreamsApiService) ListStreamInstances(ctx context.Context, groupId str
 // Execute executes the request
 //
 //	@return PaginatedApiStreamsTenant
-func (a *StreamsApiService) listStreamInstancesExecute(r ListStreamInstancesApiRequest) (*PaginatedApiStreamsTenant, *http.Response, error) {
+func (a *StreamsAPIService) listStreamInstancesExecute(r ListStreamInstancesApiRequest) (*PaginatedApiStreamsTenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1346,7 +1346,7 @@ func (a *StreamsApiService) listStreamInstancesExecute(r ListStreamInstancesApiR
 		localVarReturnValue *PaginatedApiStreamsTenant
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.ListStreamInstances")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.ListStreamInstances")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1442,7 +1442,7 @@ func (a *StreamsApiService) listStreamInstancesExecute(r ListStreamInstancesApiR
 
 type UpdateStreamConnectionApiRequest struct {
 	ctx               context.Context
-	ApiService        StreamsApi
+	ApiService        StreamsAPI
 	groupId           string
 	tenantName        string
 	connectionName    string
@@ -1456,7 +1456,7 @@ type UpdateStreamConnectionApiParams struct {
 	StreamsConnection *StreamsConnection
 }
 
-func (a *StreamsApiService) UpdateStreamConnectionWithParams(ctx context.Context, args *UpdateStreamConnectionApiParams) UpdateStreamConnectionApiRequest {
+func (a *StreamsAPIService) UpdateStreamConnectionWithParams(ctx context.Context, args *UpdateStreamConnectionApiParams) UpdateStreamConnectionApiRequest {
 	return UpdateStreamConnectionApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -1482,7 +1482,7 @@ UpdateStreamConnection Update One Stream Connection
 	@param connectionName Human-readable label that identifies the stream connection.
 	@return UpdateStreamConnectionApiRequest
 */
-func (a *StreamsApiService) UpdateStreamConnection(ctx context.Context, groupId string, tenantName string, connectionName string, streamsConnection *StreamsConnection) UpdateStreamConnectionApiRequest {
+func (a *StreamsAPIService) UpdateStreamConnection(ctx context.Context, groupId string, tenantName string, connectionName string, streamsConnection *StreamsConnection) UpdateStreamConnectionApiRequest {
 	return UpdateStreamConnectionApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -1496,7 +1496,7 @@ func (a *StreamsApiService) UpdateStreamConnection(ctx context.Context, groupId 
 // Execute executes the request
 //
 //	@return StreamsConnection
-func (a *StreamsApiService) updateStreamConnectionExecute(r UpdateStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
+func (a *StreamsAPIService) updateStreamConnectionExecute(r UpdateStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -1504,7 +1504,7 @@ func (a *StreamsApiService) updateStreamConnectionExecute(r UpdateStreamConnecti
 		localVarReturnValue *StreamsConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.UpdateStreamConnection")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.UpdateStreamConnection")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1593,7 +1593,7 @@ func (a *StreamsApiService) updateStreamConnectionExecute(r UpdateStreamConnecti
 
 type UpdateStreamInstanceApiRequest struct {
 	ctx                      context.Context
-	ApiService               StreamsApi
+	ApiService               StreamsAPI
 	groupId                  string
 	tenantName               string
 	streamsDataProcessRegion *StreamsDataProcessRegion
@@ -1605,7 +1605,7 @@ type UpdateStreamInstanceApiParams struct {
 	StreamsDataProcessRegion *StreamsDataProcessRegion
 }
 
-func (a *StreamsApiService) UpdateStreamInstanceWithParams(ctx context.Context, args *UpdateStreamInstanceApiParams) UpdateStreamInstanceApiRequest {
+func (a *StreamsAPIService) UpdateStreamInstanceWithParams(ctx context.Context, args *UpdateStreamInstanceApiParams) UpdateStreamInstanceApiRequest {
 	return UpdateStreamInstanceApiRequest{
 		ApiService:               a,
 		ctx:                      ctx,
@@ -1629,7 +1629,7 @@ UpdateStreamInstance Update One Stream Instance
 	@param tenantName Human-readable label that identifies the stream instance to update.
 	@return UpdateStreamInstanceApiRequest
 */
-func (a *StreamsApiService) UpdateStreamInstance(ctx context.Context, groupId string, tenantName string, streamsDataProcessRegion *StreamsDataProcessRegion) UpdateStreamInstanceApiRequest {
+func (a *StreamsAPIService) UpdateStreamInstance(ctx context.Context, groupId string, tenantName string, streamsDataProcessRegion *StreamsDataProcessRegion) UpdateStreamInstanceApiRequest {
 	return UpdateStreamInstanceApiRequest{
 		ApiService:               a,
 		ctx:                      ctx,
@@ -1642,7 +1642,7 @@ func (a *StreamsApiService) UpdateStreamInstance(ctx context.Context, groupId st
 // Execute executes the request
 //
 //	@return StreamsTenant
-func (a *StreamsApiService) updateStreamInstanceExecute(r UpdateStreamInstanceApiRequest) (*StreamsTenant, *http.Response, error) {
+func (a *StreamsAPIService) updateStreamInstanceExecute(r UpdateStreamInstanceApiRequest) (*StreamsTenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -1650,7 +1650,7 @@ func (a *StreamsApiService) updateStreamInstanceExecute(r UpdateStreamInstanceAp
 		localVarReturnValue *StreamsTenant
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.UpdateStreamInstance")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.UpdateStreamInstance")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

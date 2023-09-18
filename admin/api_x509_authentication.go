@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-type X509AuthenticationApi interface {
+type X509AuthenticationAPI interface {
 
 	/*
 		CreateDatabaseUserCertificate Create One X.509 Certificate for One MongoDB User
@@ -91,12 +91,12 @@ type X509AuthenticationApi interface {
 	listDatabaseUserCertificatesExecute(r ListDatabaseUserCertificatesApiRequest) (*PaginatedUserCert, *http.Response, error)
 }
 
-// X509AuthenticationApiService X509AuthenticationApi service
-type X509AuthenticationApiService service
+// X509AuthenticationAPIService X509AuthenticationAPI service
+type X509AuthenticationAPIService service
 
 type CreateDatabaseUserCertificateApiRequest struct {
 	ctx        context.Context
-	ApiService X509AuthenticationApi
+	ApiService X509AuthenticationAPI
 	groupId    string
 	username   string
 	userCert   *UserCert
@@ -108,7 +108,7 @@ type CreateDatabaseUserCertificateApiParams struct {
 	UserCert *UserCert
 }
 
-func (a *X509AuthenticationApiService) CreateDatabaseUserCertificateWithParams(ctx context.Context, args *CreateDatabaseUserCertificateApiParams) CreateDatabaseUserCertificateApiRequest {
+func (a *X509AuthenticationAPIService) CreateDatabaseUserCertificateWithParams(ctx context.Context, args *CreateDatabaseUserCertificateApiParams) CreateDatabaseUserCertificateApiRequest {
 	return CreateDatabaseUserCertificateApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -136,7 +136,7 @@ If you are managing your own Certificate Authority (CA) in Self-Managed X.509 mo
 	@param username Human-readable label that represents the MongoDB database user account for whom to create a certificate.
 	@return CreateDatabaseUserCertificateApiRequest
 */
-func (a *X509AuthenticationApiService) CreateDatabaseUserCertificate(ctx context.Context, groupId string, username string, userCert *UserCert) CreateDatabaseUserCertificateApiRequest {
+func (a *X509AuthenticationAPIService) CreateDatabaseUserCertificate(ctx context.Context, groupId string, username string, userCert *UserCert) CreateDatabaseUserCertificateApiRequest {
 	return CreateDatabaseUserCertificateApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -149,7 +149,7 @@ func (a *X509AuthenticationApiService) CreateDatabaseUserCertificate(ctx context
 // Execute executes the request
 //
 //	@return string
-func (a *X509AuthenticationApiService) createDatabaseUserCertificateExecute(r CreateDatabaseUserCertificateApiRequest) (string, *http.Response, error) {
+func (a *X509AuthenticationAPIService) createDatabaseUserCertificateExecute(r CreateDatabaseUserCertificateApiRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -157,7 +157,7 @@ func (a *X509AuthenticationApiService) createDatabaseUserCertificateExecute(r Cr
 		localVarReturnValue string
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "X509AuthenticationApiService.CreateDatabaseUserCertificate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "X509AuthenticationAPIService.CreateDatabaseUserCertificate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -245,7 +245,7 @@ func (a *X509AuthenticationApiService) createDatabaseUserCertificateExecute(r Cr
 
 type DisableCustomerManagedX509ApiRequest struct {
 	ctx        context.Context
-	ApiService X509AuthenticationApi
+	ApiService X509AuthenticationAPI
 	groupId    string
 }
 
@@ -253,7 +253,7 @@ type DisableCustomerManagedX509ApiParams struct {
 	GroupId string
 }
 
-func (a *X509AuthenticationApiService) DisableCustomerManagedX509WithParams(ctx context.Context, args *DisableCustomerManagedX509ApiParams) DisableCustomerManagedX509ApiRequest {
+func (a *X509AuthenticationAPIService) DisableCustomerManagedX509WithParams(ctx context.Context, args *DisableCustomerManagedX509ApiParams) DisableCustomerManagedX509ApiRequest {
 	return DisableCustomerManagedX509ApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -276,7 +276,7 @@ Clears the customer-managed X.509 settings on a project, including the uploaded 
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return DisableCustomerManagedX509ApiRequest
 */
-func (a *X509AuthenticationApiService) DisableCustomerManagedX509(ctx context.Context, groupId string) DisableCustomerManagedX509ApiRequest {
+func (a *X509AuthenticationAPIService) DisableCustomerManagedX509(ctx context.Context, groupId string) DisableCustomerManagedX509ApiRequest {
 	return DisableCustomerManagedX509ApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -287,7 +287,7 @@ func (a *X509AuthenticationApiService) DisableCustomerManagedX509(ctx context.Co
 // Execute executes the request
 //
 //	@return UserSecurity
-func (a *X509AuthenticationApiService) disableCustomerManagedX509Execute(r DisableCustomerManagedX509ApiRequest) (*UserSecurity, *http.Response, error) {
+func (a *X509AuthenticationAPIService) disableCustomerManagedX509Execute(r DisableCustomerManagedX509ApiRequest) (*UserSecurity, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -295,7 +295,7 @@ func (a *X509AuthenticationApiService) disableCustomerManagedX509Execute(r Disab
 		localVarReturnValue *UserSecurity
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "X509AuthenticationApiService.DisableCustomerManagedX509")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "X509AuthenticationAPIService.DisableCustomerManagedX509")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -377,7 +377,7 @@ func (a *X509AuthenticationApiService) disableCustomerManagedX509Execute(r Disab
 
 type ListDatabaseUserCertificatesApiRequest struct {
 	ctx          context.Context
-	ApiService   X509AuthenticationApi
+	ApiService   X509AuthenticationAPI
 	groupId      string
 	username     string
 	includeCount *bool
@@ -393,7 +393,7 @@ type ListDatabaseUserCertificatesApiParams struct {
 	PageNum      *int
 }
 
-func (a *X509AuthenticationApiService) ListDatabaseUserCertificatesWithParams(ctx context.Context, args *ListDatabaseUserCertificatesApiParams) ListDatabaseUserCertificatesApiRequest {
+func (a *X509AuthenticationAPIService) ListDatabaseUserCertificatesWithParams(ctx context.Context, args *ListDatabaseUserCertificatesApiParams) ListDatabaseUserCertificatesApiRequest {
 	return ListDatabaseUserCertificatesApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -437,7 +437,7 @@ Returns all unexpired X.509 certificates for the specified MongoDB user. This Mo
 	@param username Human-readable label that represents the MongoDB database user account whose certificates you want to return.
 	@return ListDatabaseUserCertificatesApiRequest
 */
-func (a *X509AuthenticationApiService) ListDatabaseUserCertificates(ctx context.Context, groupId string, username string) ListDatabaseUserCertificatesApiRequest {
+func (a *X509AuthenticationAPIService) ListDatabaseUserCertificates(ctx context.Context, groupId string, username string) ListDatabaseUserCertificatesApiRequest {
 	return ListDatabaseUserCertificatesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -449,7 +449,7 @@ func (a *X509AuthenticationApiService) ListDatabaseUserCertificates(ctx context.
 // Execute executes the request
 //
 //	@return PaginatedUserCert
-func (a *X509AuthenticationApiService) listDatabaseUserCertificatesExecute(r ListDatabaseUserCertificatesApiRequest) (*PaginatedUserCert, *http.Response, error) {
+func (a *X509AuthenticationAPIService) listDatabaseUserCertificatesExecute(r ListDatabaseUserCertificatesApiRequest) (*PaginatedUserCert, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -457,7 +457,7 @@ func (a *X509AuthenticationApiService) listDatabaseUserCertificatesExecute(r Lis
 		localVarReturnValue *PaginatedUserCert
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "X509AuthenticationApiService.ListDatabaseUserCertificates")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "X509AuthenticationAPIService.ListDatabaseUserCertificates")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

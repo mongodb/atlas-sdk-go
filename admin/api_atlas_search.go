@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-type AtlasSearchApi interface {
+type AtlasSearchAPI interface {
 
 	/*
 		CreateAtlasSearchIndex Create One Atlas Search Index
@@ -139,12 +139,12 @@ type AtlasSearchApi interface {
 	updateAtlasSearchIndexExecute(r UpdateAtlasSearchIndexApiRequest) (*ClusterSearchIndex, *http.Response, error)
 }
 
-// AtlasSearchApiService AtlasSearchApi service
-type AtlasSearchApiService service
+// AtlasSearchAPIService AtlasSearchAPI service
+type AtlasSearchAPIService service
 
 type CreateAtlasSearchIndexApiRequest struct {
 	ctx                context.Context
-	ApiService         AtlasSearchApi
+	ApiService         AtlasSearchAPI
 	groupId            string
 	clusterName        string
 	clusterSearchIndex *ClusterSearchIndex
@@ -156,7 +156,7 @@ type CreateAtlasSearchIndexApiParams struct {
 	ClusterSearchIndex *ClusterSearchIndex
 }
 
-func (a *AtlasSearchApiService) CreateAtlasSearchIndexWithParams(ctx context.Context, args *CreateAtlasSearchIndexApiParams) CreateAtlasSearchIndexApiRequest {
+func (a *AtlasSearchAPIService) CreateAtlasSearchIndexWithParams(ctx context.Context, args *CreateAtlasSearchIndexApiParams) CreateAtlasSearchIndexApiRequest {
 	return CreateAtlasSearchIndexApiRequest{
 		ApiService:         a,
 		ctx:                ctx,
@@ -180,7 +180,7 @@ Creates one Atlas Search index on the specified collection. Atlas Search indexes
 	@param clusterName Name of the cluster that contains the collection on which to create an Atlas Search index.
 	@return CreateAtlasSearchIndexApiRequest
 */
-func (a *AtlasSearchApiService) CreateAtlasSearchIndex(ctx context.Context, groupId string, clusterName string, clusterSearchIndex *ClusterSearchIndex) CreateAtlasSearchIndexApiRequest {
+func (a *AtlasSearchAPIService) CreateAtlasSearchIndex(ctx context.Context, groupId string, clusterName string, clusterSearchIndex *ClusterSearchIndex) CreateAtlasSearchIndexApiRequest {
 	return CreateAtlasSearchIndexApiRequest{
 		ApiService:         a,
 		ctx:                ctx,
@@ -193,7 +193,7 @@ func (a *AtlasSearchApiService) CreateAtlasSearchIndex(ctx context.Context, grou
 // Execute executes the request
 //
 //	@return ClusterSearchIndex
-func (a *AtlasSearchApiService) createAtlasSearchIndexExecute(r CreateAtlasSearchIndexApiRequest) (*ClusterSearchIndex, *http.Response, error) {
+func (a *AtlasSearchAPIService) createAtlasSearchIndexExecute(r CreateAtlasSearchIndexApiRequest) (*ClusterSearchIndex, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -201,7 +201,7 @@ func (a *AtlasSearchApiService) createAtlasSearchIndexExecute(r CreateAtlasSearc
 		localVarReturnValue *ClusterSearchIndex
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AtlasSearchApiService.CreateAtlasSearchIndex")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AtlasSearchAPIService.CreateAtlasSearchIndex")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -295,7 +295,7 @@ func (a *AtlasSearchApiService) createAtlasSearchIndexExecute(r CreateAtlasSearc
 
 type DeleteAtlasSearchIndexApiRequest struct {
 	ctx         context.Context
-	ApiService  AtlasSearchApi
+	ApiService  AtlasSearchAPI
 	groupId     string
 	clusterName string
 	indexId     string
@@ -307,7 +307,7 @@ type DeleteAtlasSearchIndexApiParams struct {
 	IndexId     string
 }
 
-func (a *AtlasSearchApiService) DeleteAtlasSearchIndexWithParams(ctx context.Context, args *DeleteAtlasSearchIndexApiParams) DeleteAtlasSearchIndexApiRequest {
+func (a *AtlasSearchAPIService) DeleteAtlasSearchIndexWithParams(ctx context.Context, args *DeleteAtlasSearchIndexApiParams) DeleteAtlasSearchIndexApiRequest {
 	return DeleteAtlasSearchIndexApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -332,7 +332,7 @@ Removes one Atlas Search index that you identified with its unique ID. To use th
 	@param indexId Unique 24-hexadecimal digit string that identifies the Atlas Search index. Use the [Get All Atlas Search Indexes for a Collection API](https://docs.atlas.mongodb.com/reference/api/fts-indexes-get-all/) endpoint to find the IDs of all Atlas Search indexes.
 	@return DeleteAtlasSearchIndexApiRequest
 */
-func (a *AtlasSearchApiService) DeleteAtlasSearchIndex(ctx context.Context, groupId string, clusterName string, indexId string) DeleteAtlasSearchIndexApiRequest {
+func (a *AtlasSearchAPIService) DeleteAtlasSearchIndex(ctx context.Context, groupId string, clusterName string, indexId string) DeleteAtlasSearchIndexApiRequest {
 	return DeleteAtlasSearchIndexApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -345,7 +345,7 @@ func (a *AtlasSearchApiService) DeleteAtlasSearchIndex(ctx context.Context, grou
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *AtlasSearchApiService) deleteAtlasSearchIndexExecute(r DeleteAtlasSearchIndexApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *AtlasSearchAPIService) deleteAtlasSearchIndexExecute(r DeleteAtlasSearchIndexApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -353,7 +353,7 @@ func (a *AtlasSearchApiService) deleteAtlasSearchIndexExecute(r DeleteAtlasSearc
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AtlasSearchApiService.DeleteAtlasSearchIndex")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AtlasSearchAPIService.DeleteAtlasSearchIndex")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -449,7 +449,7 @@ func (a *AtlasSearchApiService) deleteAtlasSearchIndexExecute(r DeleteAtlasSearc
 
 type GetAtlasSearchIndexApiRequest struct {
 	ctx         context.Context
-	ApiService  AtlasSearchApi
+	ApiService  AtlasSearchAPI
 	groupId     string
 	clusterName string
 	indexId     string
@@ -461,7 +461,7 @@ type GetAtlasSearchIndexApiParams struct {
 	IndexId     string
 }
 
-func (a *AtlasSearchApiService) GetAtlasSearchIndexWithParams(ctx context.Context, args *GetAtlasSearchIndexApiParams) GetAtlasSearchIndexApiRequest {
+func (a *AtlasSearchAPIService) GetAtlasSearchIndexWithParams(ctx context.Context, args *GetAtlasSearchIndexApiParams) GetAtlasSearchIndexApiRequest {
 	return GetAtlasSearchIndexApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -486,7 +486,7 @@ Returns one Atlas Search index in the specified project. You identify this index
 	@param indexId Unique 24-hexadecimal digit string that identifies the Application Search [index](https://docs.atlas.mongodb.com/reference/atlas-search/index-definitions/). Use the [Get All Application Search Indexes for a Collection API](https://docs.atlas.mongodb.com/reference/api/fts-indexes-get-all/) endpoint to find the IDs of all Application Search indexes.
 	@return GetAtlasSearchIndexApiRequest
 */
-func (a *AtlasSearchApiService) GetAtlasSearchIndex(ctx context.Context, groupId string, clusterName string, indexId string) GetAtlasSearchIndexApiRequest {
+func (a *AtlasSearchAPIService) GetAtlasSearchIndex(ctx context.Context, groupId string, clusterName string, indexId string) GetAtlasSearchIndexApiRequest {
 	return GetAtlasSearchIndexApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -499,7 +499,7 @@ func (a *AtlasSearchApiService) GetAtlasSearchIndex(ctx context.Context, groupId
 // Execute executes the request
 //
 //	@return ClusterSearchIndex
-func (a *AtlasSearchApiService) getAtlasSearchIndexExecute(r GetAtlasSearchIndexApiRequest) (*ClusterSearchIndex, *http.Response, error) {
+func (a *AtlasSearchAPIService) getAtlasSearchIndexExecute(r GetAtlasSearchIndexApiRequest) (*ClusterSearchIndex, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -507,7 +507,7 @@ func (a *AtlasSearchApiService) getAtlasSearchIndexExecute(r GetAtlasSearchIndex
 		localVarReturnValue *ClusterSearchIndex
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AtlasSearchApiService.GetAtlasSearchIndex")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AtlasSearchAPIService.GetAtlasSearchIndex")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -603,7 +603,7 @@ func (a *AtlasSearchApiService) getAtlasSearchIndexExecute(r GetAtlasSearchIndex
 
 type ListAtlasSearchIndexesApiRequest struct {
 	ctx            context.Context
-	ApiService     AtlasSearchApi
+	ApiService     AtlasSearchAPI
 	groupId        string
 	clusterName    string
 	collectionName string
@@ -617,7 +617,7 @@ type ListAtlasSearchIndexesApiParams struct {
 	DatabaseName   string
 }
 
-func (a *AtlasSearchApiService) ListAtlasSearchIndexesWithParams(ctx context.Context, args *ListAtlasSearchIndexesApiParams) ListAtlasSearchIndexesApiRequest {
+func (a *AtlasSearchAPIService) ListAtlasSearchIndexesWithParams(ctx context.Context, args *ListAtlasSearchIndexesApiParams) ListAtlasSearchIndexesApiRequest {
 	return ListAtlasSearchIndexesApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -644,7 +644,7 @@ Returns all Atlas Search indexes on the specified collection. Atlas Search index
 	@param databaseName Human-readable label that identifies the database that contains the collection with one or more Atlas Search indexes.
 	@return ListAtlasSearchIndexesApiRequest
 */
-func (a *AtlasSearchApiService) ListAtlasSearchIndexes(ctx context.Context, groupId string, clusterName string, collectionName string, databaseName string) ListAtlasSearchIndexesApiRequest {
+func (a *AtlasSearchAPIService) ListAtlasSearchIndexes(ctx context.Context, groupId string, clusterName string, collectionName string, databaseName string) ListAtlasSearchIndexesApiRequest {
 	return ListAtlasSearchIndexesApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -658,7 +658,7 @@ func (a *AtlasSearchApiService) ListAtlasSearchIndexes(ctx context.Context, grou
 // Execute executes the request
 //
 //	@return []ClusterSearchIndex
-func (a *AtlasSearchApiService) listAtlasSearchIndexesExecute(r ListAtlasSearchIndexesApiRequest) ([]ClusterSearchIndex, *http.Response, error) {
+func (a *AtlasSearchAPIService) listAtlasSearchIndexesExecute(r ListAtlasSearchIndexesApiRequest) ([]ClusterSearchIndex, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -666,7 +666,7 @@ func (a *AtlasSearchApiService) listAtlasSearchIndexesExecute(r ListAtlasSearchI
 		localVarReturnValue []ClusterSearchIndex
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AtlasSearchApiService.ListAtlasSearchIndexes")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AtlasSearchAPIService.ListAtlasSearchIndexes")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -757,7 +757,7 @@ func (a *AtlasSearchApiService) listAtlasSearchIndexesExecute(r ListAtlasSearchI
 
 type UpdateAtlasSearchIndexApiRequest struct {
 	ctx                context.Context
-	ApiService         AtlasSearchApi
+	ApiService         AtlasSearchAPI
 	groupId            string
 	clusterName        string
 	indexId            string
@@ -771,7 +771,7 @@ type UpdateAtlasSearchIndexApiParams struct {
 	ClusterSearchIndex *ClusterSearchIndex
 }
 
-func (a *AtlasSearchApiService) UpdateAtlasSearchIndexWithParams(ctx context.Context, args *UpdateAtlasSearchIndexApiParams) UpdateAtlasSearchIndexApiRequest {
+func (a *AtlasSearchAPIService) UpdateAtlasSearchIndexWithParams(ctx context.Context, args *UpdateAtlasSearchIndexApiParams) UpdateAtlasSearchIndexApiRequest {
 	return UpdateAtlasSearchIndexApiRequest{
 		ApiService:         a,
 		ctx:                ctx,
@@ -797,7 +797,7 @@ Updates one Atlas Search index that you identified with its unique ID. Atlas Sea
 	@param indexId Unique 24-hexadecimal digit string that identifies the Atlas Search [index](https://docs.atlas.mongodb.com/reference/atlas-search/index-definitions/). Use the [Get All Atlas Search Indexes for a Collection API](https://docs.atlas.mongodb.com/reference/api/fts-indexes-get-all/) endpoint to find the IDs of all Atlas Search indexes.
 	@return UpdateAtlasSearchIndexApiRequest
 */
-func (a *AtlasSearchApiService) UpdateAtlasSearchIndex(ctx context.Context, groupId string, clusterName string, indexId string, clusterSearchIndex *ClusterSearchIndex) UpdateAtlasSearchIndexApiRequest {
+func (a *AtlasSearchAPIService) UpdateAtlasSearchIndex(ctx context.Context, groupId string, clusterName string, indexId string, clusterSearchIndex *ClusterSearchIndex) UpdateAtlasSearchIndexApiRequest {
 	return UpdateAtlasSearchIndexApiRequest{
 		ApiService:         a,
 		ctx:                ctx,
@@ -811,7 +811,7 @@ func (a *AtlasSearchApiService) UpdateAtlasSearchIndex(ctx context.Context, grou
 // Execute executes the request
 //
 //	@return ClusterSearchIndex
-func (a *AtlasSearchApiService) updateAtlasSearchIndexExecute(r UpdateAtlasSearchIndexApiRequest) (*ClusterSearchIndex, *http.Response, error) {
+func (a *AtlasSearchAPIService) updateAtlasSearchIndexExecute(r UpdateAtlasSearchIndexApiRequest) (*ClusterSearchIndex, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -819,7 +819,7 @@ func (a *AtlasSearchApiService) updateAtlasSearchIndexExecute(r UpdateAtlasSearc
 		localVarReturnValue *ClusterSearchIndex
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AtlasSearchApiService.UpdateAtlasSearchIndex")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AtlasSearchAPIService.UpdateAtlasSearchIndex")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

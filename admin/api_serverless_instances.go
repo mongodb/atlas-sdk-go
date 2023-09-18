@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-type ServerlessInstancesApi interface {
+type ServerlessInstancesAPI interface {
 
 	/*
 		CreateServerlessInstance Create One Serverless Instance in One Project
@@ -132,12 +132,12 @@ type ServerlessInstancesApi interface {
 	updateServerlessInstanceExecute(r UpdateServerlessInstanceApiRequest) (*ServerlessInstanceDescription, *http.Response, error)
 }
 
-// ServerlessInstancesApiService ServerlessInstancesApi service
-type ServerlessInstancesApiService service
+// ServerlessInstancesAPIService ServerlessInstancesAPI service
+type ServerlessInstancesAPIService service
 
 type CreateServerlessInstanceApiRequest struct {
 	ctx                                 context.Context
-	ApiService                          ServerlessInstancesApi
+	ApiService                          ServerlessInstancesAPI
 	groupId                             string
 	serverlessInstanceDescriptionCreate *ServerlessInstanceDescriptionCreate
 }
@@ -147,7 +147,7 @@ type CreateServerlessInstanceApiParams struct {
 	ServerlessInstanceDescriptionCreate *ServerlessInstanceDescriptionCreate
 }
 
-func (a *ServerlessInstancesApiService) CreateServerlessInstanceWithParams(ctx context.Context, args *CreateServerlessInstanceApiParams) CreateServerlessInstanceApiRequest {
+func (a *ServerlessInstancesAPIService) CreateServerlessInstanceWithParams(ctx context.Context, args *CreateServerlessInstanceApiParams) CreateServerlessInstanceApiRequest {
 	return CreateServerlessInstanceApiRequest{
 		ApiService:                          a,
 		ctx:                                 ctx,
@@ -169,7 +169,7 @@ Creates one serverless instance in the specified project. To use this resource, 
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateServerlessInstanceApiRequest
 */
-func (a *ServerlessInstancesApiService) CreateServerlessInstance(ctx context.Context, groupId string, serverlessInstanceDescriptionCreate *ServerlessInstanceDescriptionCreate) CreateServerlessInstanceApiRequest {
+func (a *ServerlessInstancesAPIService) CreateServerlessInstance(ctx context.Context, groupId string, serverlessInstanceDescriptionCreate *ServerlessInstanceDescriptionCreate) CreateServerlessInstanceApiRequest {
 	return CreateServerlessInstanceApiRequest{
 		ApiService:                          a,
 		ctx:                                 ctx,
@@ -181,7 +181,7 @@ func (a *ServerlessInstancesApiService) CreateServerlessInstance(ctx context.Con
 // Execute executes the request
 //
 //	@return ServerlessInstanceDescription
-func (a *ServerlessInstancesApiService) createServerlessInstanceExecute(r CreateServerlessInstanceApiRequest) (*ServerlessInstanceDescription, *http.Response, error) {
+func (a *ServerlessInstancesAPIService) createServerlessInstanceExecute(r CreateServerlessInstanceApiRequest) (*ServerlessInstanceDescription, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -189,7 +189,7 @@ func (a *ServerlessInstancesApiService) createServerlessInstanceExecute(r Create
 		localVarReturnValue *ServerlessInstanceDescription
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessInstancesApiService.CreateServerlessInstance")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessInstancesAPIService.CreateServerlessInstance")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -276,7 +276,7 @@ func (a *ServerlessInstancesApiService) createServerlessInstanceExecute(r Create
 
 type DeleteServerlessInstanceApiRequest struct {
 	ctx        context.Context
-	ApiService ServerlessInstancesApi
+	ApiService ServerlessInstancesAPI
 	groupId    string
 	name       string
 }
@@ -286,7 +286,7 @@ type DeleteServerlessInstanceApiParams struct {
 	Name    string
 }
 
-func (a *ServerlessInstancesApiService) DeleteServerlessInstanceWithParams(ctx context.Context, args *DeleteServerlessInstanceApiParams) DeleteServerlessInstanceApiRequest {
+func (a *ServerlessInstancesAPIService) DeleteServerlessInstanceWithParams(ctx context.Context, args *DeleteServerlessInstanceApiParams) DeleteServerlessInstanceApiRequest {
 	return DeleteServerlessInstanceApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -309,7 +309,7 @@ Removes one serverless instance from the specified project. The serverless insta
 	@param name Human-readable label that identifies the serverless instance.
 	@return DeleteServerlessInstanceApiRequest
 */
-func (a *ServerlessInstancesApiService) DeleteServerlessInstance(ctx context.Context, groupId string, name string) DeleteServerlessInstanceApiRequest {
+func (a *ServerlessInstancesAPIService) DeleteServerlessInstance(ctx context.Context, groupId string, name string) DeleteServerlessInstanceApiRequest {
 	return DeleteServerlessInstanceApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -321,7 +321,7 @@ func (a *ServerlessInstancesApiService) DeleteServerlessInstance(ctx context.Con
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *ServerlessInstancesApiService) deleteServerlessInstanceExecute(r DeleteServerlessInstanceApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *ServerlessInstancesAPIService) deleteServerlessInstanceExecute(r DeleteServerlessInstanceApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -329,7 +329,7 @@ func (a *ServerlessInstancesApiService) deleteServerlessInstanceExecute(r Delete
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessInstancesApiService.DeleteServerlessInstance")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessInstancesAPIService.DeleteServerlessInstance")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -418,7 +418,7 @@ func (a *ServerlessInstancesApiService) deleteServerlessInstanceExecute(r Delete
 
 type GetServerlessInstanceApiRequest struct {
 	ctx        context.Context
-	ApiService ServerlessInstancesApi
+	ApiService ServerlessInstancesAPI
 	groupId    string
 	name       string
 }
@@ -428,7 +428,7 @@ type GetServerlessInstanceApiParams struct {
 	Name    string
 }
 
-func (a *ServerlessInstancesApiService) GetServerlessInstanceWithParams(ctx context.Context, args *GetServerlessInstanceApiParams) GetServerlessInstanceApiRequest {
+func (a *ServerlessInstancesAPIService) GetServerlessInstanceWithParams(ctx context.Context, args *GetServerlessInstanceApiParams) GetServerlessInstanceApiRequest {
 	return GetServerlessInstanceApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -451,7 +451,7 @@ Returns details for one serverless instance in the specified project. To use thi
 	@param name Human-readable label that identifies the serverless instance.
 	@return GetServerlessInstanceApiRequest
 */
-func (a *ServerlessInstancesApiService) GetServerlessInstance(ctx context.Context, groupId string, name string) GetServerlessInstanceApiRequest {
+func (a *ServerlessInstancesAPIService) GetServerlessInstance(ctx context.Context, groupId string, name string) GetServerlessInstanceApiRequest {
 	return GetServerlessInstanceApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -463,7 +463,7 @@ func (a *ServerlessInstancesApiService) GetServerlessInstance(ctx context.Contex
 // Execute executes the request
 //
 //	@return ServerlessInstanceDescription
-func (a *ServerlessInstancesApiService) getServerlessInstanceExecute(r GetServerlessInstanceApiRequest) (*ServerlessInstanceDescription, *http.Response, error) {
+func (a *ServerlessInstancesAPIService) getServerlessInstanceExecute(r GetServerlessInstanceApiRequest) (*ServerlessInstanceDescription, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -471,7 +471,7 @@ func (a *ServerlessInstancesApiService) getServerlessInstanceExecute(r GetServer
 		localVarReturnValue *ServerlessInstanceDescription
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessInstancesApiService.GetServerlessInstance")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessInstancesAPIService.GetServerlessInstance")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -560,7 +560,7 @@ func (a *ServerlessInstancesApiService) getServerlessInstanceExecute(r GetServer
 
 type ListServerlessInstancesApiRequest struct {
 	ctx          context.Context
-	ApiService   ServerlessInstancesApi
+	ApiService   ServerlessInstancesAPI
 	groupId      string
 	includeCount *bool
 	itemsPerPage *int
@@ -574,7 +574,7 @@ type ListServerlessInstancesApiParams struct {
 	PageNum      *int
 }
 
-func (a *ServerlessInstancesApiService) ListServerlessInstancesWithParams(ctx context.Context, args *ListServerlessInstancesApiParams) ListServerlessInstancesApiRequest {
+func (a *ServerlessInstancesAPIService) ListServerlessInstancesWithParams(ctx context.Context, args *ListServerlessInstancesApiParams) ListServerlessInstancesApiRequest {
 	return ListServerlessInstancesApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -616,7 +616,7 @@ Returns details for all serverless instances in the specified project. To use th
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListServerlessInstancesApiRequest
 */
-func (a *ServerlessInstancesApiService) ListServerlessInstances(ctx context.Context, groupId string) ListServerlessInstancesApiRequest {
+func (a *ServerlessInstancesAPIService) ListServerlessInstances(ctx context.Context, groupId string) ListServerlessInstancesApiRequest {
 	return ListServerlessInstancesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -627,7 +627,7 @@ func (a *ServerlessInstancesApiService) ListServerlessInstances(ctx context.Cont
 // Execute executes the request
 //
 //	@return PaginatedServerlessInstanceDescription
-func (a *ServerlessInstancesApiService) listServerlessInstancesExecute(r ListServerlessInstancesApiRequest) (*PaginatedServerlessInstanceDescription, *http.Response, error) {
+func (a *ServerlessInstancesAPIService) listServerlessInstancesExecute(r ListServerlessInstancesApiRequest) (*PaginatedServerlessInstanceDescription, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -635,7 +635,7 @@ func (a *ServerlessInstancesApiService) listServerlessInstancesExecute(r ListSer
 		localVarReturnValue *PaginatedServerlessInstanceDescription
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessInstancesApiService.ListServerlessInstances")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessInstancesAPIService.ListServerlessInstances")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -738,7 +738,7 @@ func (a *ServerlessInstancesApiService) listServerlessInstancesExecute(r ListSer
 
 type UpdateServerlessInstanceApiRequest struct {
 	ctx                                 context.Context
-	ApiService                          ServerlessInstancesApi
+	ApiService                          ServerlessInstancesAPI
 	groupId                             string
 	name                                string
 	serverlessInstanceDescriptionUpdate *ServerlessInstanceDescriptionUpdate
@@ -750,7 +750,7 @@ type UpdateServerlessInstanceApiParams struct {
 	ServerlessInstanceDescriptionUpdate *ServerlessInstanceDescriptionUpdate
 }
 
-func (a *ServerlessInstancesApiService) UpdateServerlessInstanceWithParams(ctx context.Context, args *UpdateServerlessInstanceApiParams) UpdateServerlessInstanceApiRequest {
+func (a *ServerlessInstancesAPIService) UpdateServerlessInstanceWithParams(ctx context.Context, args *UpdateServerlessInstanceApiParams) UpdateServerlessInstanceApiRequest {
 	return UpdateServerlessInstanceApiRequest{
 		ApiService:                          a,
 		ctx:                                 ctx,
@@ -774,7 +774,7 @@ Updates one serverless instance in the specified project. To use this resource, 
 	@param name Human-readable label that identifies the serverless instance.
 	@return UpdateServerlessInstanceApiRequest
 */
-func (a *ServerlessInstancesApiService) UpdateServerlessInstance(ctx context.Context, groupId string, name string, serverlessInstanceDescriptionUpdate *ServerlessInstanceDescriptionUpdate) UpdateServerlessInstanceApiRequest {
+func (a *ServerlessInstancesAPIService) UpdateServerlessInstance(ctx context.Context, groupId string, name string, serverlessInstanceDescriptionUpdate *ServerlessInstanceDescriptionUpdate) UpdateServerlessInstanceApiRequest {
 	return UpdateServerlessInstanceApiRequest{
 		ApiService:                          a,
 		ctx:                                 ctx,
@@ -787,7 +787,7 @@ func (a *ServerlessInstancesApiService) UpdateServerlessInstance(ctx context.Con
 // Execute executes the request
 //
 //	@return ServerlessInstanceDescription
-func (a *ServerlessInstancesApiService) updateServerlessInstanceExecute(r UpdateServerlessInstanceApiRequest) (*ServerlessInstanceDescription, *http.Response, error) {
+func (a *ServerlessInstancesAPIService) updateServerlessInstanceExecute(r UpdateServerlessInstanceApiRequest) (*ServerlessInstanceDescription, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -795,7 +795,7 @@ func (a *ServerlessInstancesApiService) updateServerlessInstanceExecute(r Update
 		localVarReturnValue *ServerlessInstanceDescription
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessInstancesApiService.UpdateServerlessInstance")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessInstancesAPIService.UpdateServerlessInstance")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

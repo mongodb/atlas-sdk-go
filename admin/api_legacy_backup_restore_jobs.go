@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-type LegacyBackupRestoreJobsApi interface {
+type LegacyBackupRestoreJobsAPI interface {
 
 	/*
 		CreateLegacyBackupRestoreJob Create One Legacy Backup Restore Job
@@ -23,7 +23,7 @@ type LegacyBackupRestoreJobsApi interface {
 		@param clusterName Human-readable label that identifies the cluster with the snapshot you want to return.
 		@return CreateLegacyBackupRestoreJobApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for LegacyBackupRestoreJobsApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for LegacyBackupRestoreJobsAPI
 	*/
 	CreateLegacyBackupRestoreJob(ctx context.Context, groupId string, clusterName string, backupRestoreJob *BackupRestoreJob) CreateLegacyBackupRestoreJobApiRequest
 	/*
@@ -34,7 +34,7 @@ type LegacyBackupRestoreJobsApi interface {
 		@param CreateLegacyBackupRestoreJobApiParams - Parameters for the request
 		@return CreateLegacyBackupRestoreJobApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for LegacyBackupRestoreJobsApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for LegacyBackupRestoreJobsAPI
 	*/
 	CreateLegacyBackupRestoreJobWithParams(ctx context.Context, args *CreateLegacyBackupRestoreJobApiParams) CreateLegacyBackupRestoreJobApiRequest
 
@@ -42,12 +42,12 @@ type LegacyBackupRestoreJobsApi interface {
 	createLegacyBackupRestoreJobExecute(r CreateLegacyBackupRestoreJobApiRequest) (*PaginatedRestoreJob, *http.Response, error)
 }
 
-// LegacyBackupRestoreJobsApiService LegacyBackupRestoreJobsApi service
-type LegacyBackupRestoreJobsApiService service
+// LegacyBackupRestoreJobsAPIService LegacyBackupRestoreJobsAPI service
+type LegacyBackupRestoreJobsAPIService service
 
 type CreateLegacyBackupRestoreJobApiRequest struct {
 	ctx              context.Context
-	ApiService       LegacyBackupRestoreJobsApi
+	ApiService       LegacyBackupRestoreJobsAPI
 	groupId          string
 	clusterName      string
 	backupRestoreJob *BackupRestoreJob
@@ -59,7 +59,7 @@ type CreateLegacyBackupRestoreJobApiParams struct {
 	BackupRestoreJob *BackupRestoreJob
 }
 
-func (a *LegacyBackupRestoreJobsApiService) CreateLegacyBackupRestoreJobWithParams(ctx context.Context, args *CreateLegacyBackupRestoreJobApiParams) CreateLegacyBackupRestoreJobApiRequest {
+func (a *LegacyBackupRestoreJobsAPIService) CreateLegacyBackupRestoreJobWithParams(ctx context.Context, args *CreateLegacyBackupRestoreJobApiParams) CreateLegacyBackupRestoreJobApiRequest {
 	return CreateLegacyBackupRestoreJobApiRequest{
 		ApiService:       a,
 		ctx:              ctx,
@@ -85,7 +85,7 @@ CreateLegacyBackupRestoreJob Create One Legacy Backup Restore Job
 
 Deprecated
 */
-func (a *LegacyBackupRestoreJobsApiService) CreateLegacyBackupRestoreJob(ctx context.Context, groupId string, clusterName string, backupRestoreJob *BackupRestoreJob) CreateLegacyBackupRestoreJobApiRequest {
+func (a *LegacyBackupRestoreJobsAPIService) CreateLegacyBackupRestoreJob(ctx context.Context, groupId string, clusterName string, backupRestoreJob *BackupRestoreJob) CreateLegacyBackupRestoreJobApiRequest {
 	return CreateLegacyBackupRestoreJobApiRequest{
 		ApiService:       a,
 		ctx:              ctx,
@@ -100,7 +100,7 @@ func (a *LegacyBackupRestoreJobsApiService) CreateLegacyBackupRestoreJob(ctx con
 //	@return PaginatedRestoreJob
 //
 // Deprecated
-func (a *LegacyBackupRestoreJobsApiService) createLegacyBackupRestoreJobExecute(r CreateLegacyBackupRestoreJobApiRequest) (*PaginatedRestoreJob, *http.Response, error) {
+func (a *LegacyBackupRestoreJobsAPIService) createLegacyBackupRestoreJobExecute(r CreateLegacyBackupRestoreJobApiRequest) (*PaginatedRestoreJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -108,7 +108,7 @@ func (a *LegacyBackupRestoreJobsApiService) createLegacyBackupRestoreJobExecute(
 		localVarReturnValue *PaginatedRestoreJob
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LegacyBackupRestoreJobsApiService.CreateLegacyBackupRestoreJob")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LegacyBackupRestoreJobsAPIService.CreateLegacyBackupRestoreJob")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-type SharedTierRestoreJobsApi interface {
+type SharedTierRestoreJobsAPI interface {
 
 	/*
 		CreateSharedClusterBackupRestoreJob Create One Restore Job from One M2 or M5 Cluster
@@ -87,12 +87,12 @@ type SharedTierRestoreJobsApi interface {
 	listSharedClusterBackupRestoreJobsExecute(r ListSharedClusterBackupRestoreJobsApiRequest) (*PaginatedTenantRestore, *http.Response, error)
 }
 
-// SharedTierRestoreJobsApiService SharedTierRestoreJobsApi service
-type SharedTierRestoreJobsApiService service
+// SharedTierRestoreJobsAPIService SharedTierRestoreJobsAPI service
+type SharedTierRestoreJobsAPIService service
 
 type CreateSharedClusterBackupRestoreJobApiRequest struct {
 	ctx           context.Context
-	ApiService    SharedTierRestoreJobsApi
+	ApiService    SharedTierRestoreJobsAPI
 	clusterName   string
 	groupId       string
 	tenantRestore *TenantRestore
@@ -104,7 +104,7 @@ type CreateSharedClusterBackupRestoreJobApiParams struct {
 	TenantRestore *TenantRestore
 }
 
-func (a *SharedTierRestoreJobsApiService) CreateSharedClusterBackupRestoreJobWithParams(ctx context.Context, args *CreateSharedClusterBackupRestoreJobApiParams) CreateSharedClusterBackupRestoreJobApiRequest {
+func (a *SharedTierRestoreJobsAPIService) CreateSharedClusterBackupRestoreJobWithParams(ctx context.Context, args *CreateSharedClusterBackupRestoreJobApiParams) CreateSharedClusterBackupRestoreJobApiRequest {
 	return CreateSharedClusterBackupRestoreJobApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -128,7 +128,7 @@ CreateSharedClusterBackupRestoreJob Create One Restore Job from One M2 or M5 Clu
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateSharedClusterBackupRestoreJobApiRequest
 */
-func (a *SharedTierRestoreJobsApiService) CreateSharedClusterBackupRestoreJob(ctx context.Context, clusterName string, groupId string, tenantRestore *TenantRestore) CreateSharedClusterBackupRestoreJobApiRequest {
+func (a *SharedTierRestoreJobsAPIService) CreateSharedClusterBackupRestoreJob(ctx context.Context, clusterName string, groupId string, tenantRestore *TenantRestore) CreateSharedClusterBackupRestoreJobApiRequest {
 	return CreateSharedClusterBackupRestoreJobApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -141,7 +141,7 @@ func (a *SharedTierRestoreJobsApiService) CreateSharedClusterBackupRestoreJob(ct
 // Execute executes the request
 //
 //	@return TenantRestore
-func (a *SharedTierRestoreJobsApiService) createSharedClusterBackupRestoreJobExecute(r CreateSharedClusterBackupRestoreJobApiRequest) (*TenantRestore, *http.Response, error) {
+func (a *SharedTierRestoreJobsAPIService) createSharedClusterBackupRestoreJobExecute(r CreateSharedClusterBackupRestoreJobApiRequest) (*TenantRestore, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -149,7 +149,7 @@ func (a *SharedTierRestoreJobsApiService) createSharedClusterBackupRestoreJobExe
 		localVarReturnValue *TenantRestore
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharedTierRestoreJobsApiService.CreateSharedClusterBackupRestoreJob")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharedTierRestoreJobsAPIService.CreateSharedClusterBackupRestoreJob")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -243,7 +243,7 @@ func (a *SharedTierRestoreJobsApiService) createSharedClusterBackupRestoreJobExe
 
 type GetSharedClusterBackupRestoreJobApiRequest struct {
 	ctx         context.Context
-	ApiService  SharedTierRestoreJobsApi
+	ApiService  SharedTierRestoreJobsAPI
 	clusterName string
 	groupId     string
 	restoreId   string
@@ -255,7 +255,7 @@ type GetSharedClusterBackupRestoreJobApiParams struct {
 	RestoreId   string
 }
 
-func (a *SharedTierRestoreJobsApiService) GetSharedClusterBackupRestoreJobWithParams(ctx context.Context, args *GetSharedClusterBackupRestoreJobApiParams) GetSharedClusterBackupRestoreJobApiRequest {
+func (a *SharedTierRestoreJobsAPIService) GetSharedClusterBackupRestoreJobWithParams(ctx context.Context, args *GetSharedClusterBackupRestoreJobApiParams) GetSharedClusterBackupRestoreJobApiRequest {
 	return GetSharedClusterBackupRestoreJobApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -280,7 +280,7 @@ GetSharedClusterBackupRestoreJob Return One Restore Job for One M2 or M5 Cluster
 	@param restoreId Unique 24-hexadecimal digit string that identifies the restore job to return.
 	@return GetSharedClusterBackupRestoreJobApiRequest
 */
-func (a *SharedTierRestoreJobsApiService) GetSharedClusterBackupRestoreJob(ctx context.Context, clusterName string, groupId string, restoreId string) GetSharedClusterBackupRestoreJobApiRequest {
+func (a *SharedTierRestoreJobsAPIService) GetSharedClusterBackupRestoreJob(ctx context.Context, clusterName string, groupId string, restoreId string) GetSharedClusterBackupRestoreJobApiRequest {
 	return GetSharedClusterBackupRestoreJobApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -293,7 +293,7 @@ func (a *SharedTierRestoreJobsApiService) GetSharedClusterBackupRestoreJob(ctx c
 // Execute executes the request
 //
 //	@return TenantRestore
-func (a *SharedTierRestoreJobsApiService) getSharedClusterBackupRestoreJobExecute(r GetSharedClusterBackupRestoreJobApiRequest) (*TenantRestore, *http.Response, error) {
+func (a *SharedTierRestoreJobsAPIService) getSharedClusterBackupRestoreJobExecute(r GetSharedClusterBackupRestoreJobApiRequest) (*TenantRestore, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -301,7 +301,7 @@ func (a *SharedTierRestoreJobsApiService) getSharedClusterBackupRestoreJobExecut
 		localVarReturnValue *TenantRestore
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharedTierRestoreJobsApiService.GetSharedClusterBackupRestoreJob")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharedTierRestoreJobsAPIService.GetSharedClusterBackupRestoreJob")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -397,7 +397,7 @@ func (a *SharedTierRestoreJobsApiService) getSharedClusterBackupRestoreJobExecut
 
 type ListSharedClusterBackupRestoreJobsApiRequest struct {
 	ctx         context.Context
-	ApiService  SharedTierRestoreJobsApi
+	ApiService  SharedTierRestoreJobsAPI
 	clusterName string
 	groupId     string
 }
@@ -407,7 +407,7 @@ type ListSharedClusterBackupRestoreJobsApiParams struct {
 	GroupId     string
 }
 
-func (a *SharedTierRestoreJobsApiService) ListSharedClusterBackupRestoreJobsWithParams(ctx context.Context, args *ListSharedClusterBackupRestoreJobsApiParams) ListSharedClusterBackupRestoreJobsApiRequest {
+func (a *SharedTierRestoreJobsAPIService) ListSharedClusterBackupRestoreJobsWithParams(ctx context.Context, args *ListSharedClusterBackupRestoreJobsApiParams) ListSharedClusterBackupRestoreJobsApiRequest {
 	return ListSharedClusterBackupRestoreJobsApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -430,7 +430,7 @@ ListSharedClusterBackupRestoreJobs Return All Restore Jobs for One M2 or M5 Clus
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListSharedClusterBackupRestoreJobsApiRequest
 */
-func (a *SharedTierRestoreJobsApiService) ListSharedClusterBackupRestoreJobs(ctx context.Context, clusterName string, groupId string) ListSharedClusterBackupRestoreJobsApiRequest {
+func (a *SharedTierRestoreJobsAPIService) ListSharedClusterBackupRestoreJobs(ctx context.Context, clusterName string, groupId string) ListSharedClusterBackupRestoreJobsApiRequest {
 	return ListSharedClusterBackupRestoreJobsApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -442,7 +442,7 @@ func (a *SharedTierRestoreJobsApiService) ListSharedClusterBackupRestoreJobs(ctx
 // Execute executes the request
 //
 //	@return PaginatedTenantRestore
-func (a *SharedTierRestoreJobsApiService) listSharedClusterBackupRestoreJobsExecute(r ListSharedClusterBackupRestoreJobsApiRequest) (*PaginatedTenantRestore, *http.Response, error) {
+func (a *SharedTierRestoreJobsAPIService) listSharedClusterBackupRestoreJobsExecute(r ListSharedClusterBackupRestoreJobsApiRequest) (*PaginatedTenantRestore, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -450,7 +450,7 @@ func (a *SharedTierRestoreJobsApiService) listSharedClusterBackupRestoreJobsExec
 		localVarReturnValue *PaginatedTenantRestore
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharedTierRestoreJobsApiService.ListSharedClusterBackupRestoreJobs")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharedTierRestoreJobsAPIService.ListSharedClusterBackupRestoreJobs")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

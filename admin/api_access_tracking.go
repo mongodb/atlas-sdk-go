@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-type AccessTrackingApi interface {
+type AccessTrackingAPI interface {
 
 	/*
 		ListAccessLogsByClusterName Return Database Access History for One Cluster using Its Cluster Name
@@ -62,12 +62,12 @@ type AccessTrackingApi interface {
 	listAccessLogsByHostnameExecute(r ListAccessLogsByHostnameApiRequest) (*MongoDBAccessLogsList, *http.Response, error)
 }
 
-// AccessTrackingApiService AccessTrackingApi service
-type AccessTrackingApiService service
+// AccessTrackingAPIService AccessTrackingAPI service
+type AccessTrackingAPIService service
 
 type ListAccessLogsByClusterNameApiRequest struct {
 	ctx         context.Context
-	ApiService  AccessTrackingApi
+	ApiService  AccessTrackingAPI
 	groupId     string
 	clusterName string
 	authResult  *bool
@@ -87,7 +87,7 @@ type ListAccessLogsByClusterNameApiParams struct {
 	Start       *int64
 }
 
-func (a *AccessTrackingApiService) ListAccessLogsByClusterNameWithParams(ctx context.Context, args *ListAccessLogsByClusterNameApiParams) ListAccessLogsByClusterNameApiRequest {
+func (a *AccessTrackingAPIService) ListAccessLogsByClusterNameWithParams(ctx context.Context, args *ListAccessLogsByClusterNameApiParams) ListAccessLogsByClusterNameApiRequest {
 	return ListAccessLogsByClusterNameApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -145,7 +145,7 @@ Returns the access logs of one cluster identified by the cluster's name. Access 
 	@param clusterName Human-readable label that identifies the cluster.
 	@return ListAccessLogsByClusterNameApiRequest
 */
-func (a *AccessTrackingApiService) ListAccessLogsByClusterName(ctx context.Context, groupId string, clusterName string) ListAccessLogsByClusterNameApiRequest {
+func (a *AccessTrackingAPIService) ListAccessLogsByClusterName(ctx context.Context, groupId string, clusterName string) ListAccessLogsByClusterNameApiRequest {
 	return ListAccessLogsByClusterNameApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -157,7 +157,7 @@ func (a *AccessTrackingApiService) ListAccessLogsByClusterName(ctx context.Conte
 // Execute executes the request
 //
 //	@return MongoDBAccessLogsList
-func (a *AccessTrackingApiService) listAccessLogsByClusterNameExecute(r ListAccessLogsByClusterNameApiRequest) (*MongoDBAccessLogsList, *http.Response, error) {
+func (a *AccessTrackingAPIService) listAccessLogsByClusterNameExecute(r ListAccessLogsByClusterNameApiRequest) (*MongoDBAccessLogsList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -165,7 +165,7 @@ func (a *AccessTrackingApiService) listAccessLogsByClusterNameExecute(r ListAcce
 		localVarReturnValue *MongoDBAccessLogsList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessTrackingApiService.ListAccessLogsByClusterName")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessTrackingAPIService.ListAccessLogsByClusterName")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -273,7 +273,7 @@ func (a *AccessTrackingApiService) listAccessLogsByClusterNameExecute(r ListAcce
 
 type ListAccessLogsByHostnameApiRequest struct {
 	ctx        context.Context
-	ApiService AccessTrackingApi
+	ApiService AccessTrackingAPI
 	groupId    string
 	hostname   string
 	authResult *bool
@@ -293,7 +293,7 @@ type ListAccessLogsByHostnameApiParams struct {
 	Start      *int64
 }
 
-func (a *AccessTrackingApiService) ListAccessLogsByHostnameWithParams(ctx context.Context, args *ListAccessLogsByHostnameApiParams) ListAccessLogsByHostnameApiRequest {
+func (a *AccessTrackingAPIService) ListAccessLogsByHostnameWithParams(ctx context.Context, args *ListAccessLogsByHostnameApiParams) ListAccessLogsByHostnameApiRequest {
 	return ListAccessLogsByHostnameApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -351,7 +351,7 @@ Returns the access logs of one cluster identified by the cluster's hostname. Acc
 	@param hostname Fully qualified domain name or IP address of the MongoDB host that stores the log files that you want to download.
 	@return ListAccessLogsByHostnameApiRequest
 */
-func (a *AccessTrackingApiService) ListAccessLogsByHostname(ctx context.Context, groupId string, hostname string) ListAccessLogsByHostnameApiRequest {
+func (a *AccessTrackingAPIService) ListAccessLogsByHostname(ctx context.Context, groupId string, hostname string) ListAccessLogsByHostnameApiRequest {
 	return ListAccessLogsByHostnameApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -363,7 +363,7 @@ func (a *AccessTrackingApiService) ListAccessLogsByHostname(ctx context.Context,
 // Execute executes the request
 //
 //	@return MongoDBAccessLogsList
-func (a *AccessTrackingApiService) listAccessLogsByHostnameExecute(r ListAccessLogsByHostnameApiRequest) (*MongoDBAccessLogsList, *http.Response, error) {
+func (a *AccessTrackingAPIService) listAccessLogsByHostnameExecute(r ListAccessLogsByHostnameApiRequest) (*MongoDBAccessLogsList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -371,7 +371,7 @@ func (a *AccessTrackingApiService) listAccessLogsByHostnameExecute(r ListAccessL
 		localVarReturnValue *MongoDBAccessLogsList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessTrackingApiService.ListAccessLogsByHostname")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessTrackingAPIService.ListAccessLogsByHostname")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

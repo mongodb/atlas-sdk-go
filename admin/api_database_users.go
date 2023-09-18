@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-type DatabaseUsersApi interface {
+type DatabaseUsersAPI interface {
 
 	/*
 		CreateDatabaseUser Create One Database User in One Project
@@ -135,12 +135,12 @@ type DatabaseUsersApi interface {
 	updateDatabaseUserExecute(r UpdateDatabaseUserApiRequest) (*CloudDatabaseUser, *http.Response, error)
 }
 
-// DatabaseUsersApiService DatabaseUsersApi service
-type DatabaseUsersApiService service
+// DatabaseUsersAPIService DatabaseUsersAPI service
+type DatabaseUsersAPIService service
 
 type CreateDatabaseUserApiRequest struct {
 	ctx               context.Context
-	ApiService        DatabaseUsersApi
+	ApiService        DatabaseUsersAPI
 	groupId           string
 	cloudDatabaseUser *CloudDatabaseUser
 }
@@ -150,7 +150,7 @@ type CreateDatabaseUserApiParams struct {
 	CloudDatabaseUser *CloudDatabaseUser
 }
 
-func (a *DatabaseUsersApiService) CreateDatabaseUserWithParams(ctx context.Context, args *CreateDatabaseUserApiParams) CreateDatabaseUserApiRequest {
+func (a *DatabaseUsersAPIService) CreateDatabaseUserWithParams(ctx context.Context, args *CreateDatabaseUserApiParams) CreateDatabaseUserApiRequest {
 	return CreateDatabaseUserApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -172,7 +172,7 @@ Creates one database user in the specified project. This MongoDB Cloud supports 
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateDatabaseUserApiRequest
 */
-func (a *DatabaseUsersApiService) CreateDatabaseUser(ctx context.Context, groupId string, cloudDatabaseUser *CloudDatabaseUser) CreateDatabaseUserApiRequest {
+func (a *DatabaseUsersAPIService) CreateDatabaseUser(ctx context.Context, groupId string, cloudDatabaseUser *CloudDatabaseUser) CreateDatabaseUserApiRequest {
 	return CreateDatabaseUserApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -184,7 +184,7 @@ func (a *DatabaseUsersApiService) CreateDatabaseUser(ctx context.Context, groupI
 // Execute executes the request
 //
 //	@return CloudDatabaseUser
-func (a *DatabaseUsersApiService) createDatabaseUserExecute(r CreateDatabaseUserApiRequest) (*CloudDatabaseUser, *http.Response, error) {
+func (a *DatabaseUsersAPIService) createDatabaseUserExecute(r CreateDatabaseUserApiRequest) (*CloudDatabaseUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -192,7 +192,7 @@ func (a *DatabaseUsersApiService) createDatabaseUserExecute(r CreateDatabaseUser
 		localVarReturnValue *CloudDatabaseUser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseUsersApiService.CreateDatabaseUser")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseUsersAPIService.CreateDatabaseUser")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -279,7 +279,7 @@ func (a *DatabaseUsersApiService) createDatabaseUserExecute(r CreateDatabaseUser
 
 type DeleteDatabaseUserApiRequest struct {
 	ctx          context.Context
-	ApiService   DatabaseUsersApi
+	ApiService   DatabaseUsersAPI
 	groupId      string
 	databaseName string
 	username     string
@@ -291,7 +291,7 @@ type DeleteDatabaseUserApiParams struct {
 	Username     string
 }
 
-func (a *DatabaseUsersApiService) DeleteDatabaseUserWithParams(ctx context.Context, args *DeleteDatabaseUserApiParams) DeleteDatabaseUserApiRequest {
+func (a *DatabaseUsersAPIService) DeleteDatabaseUserWithParams(ctx context.Context, args *DeleteDatabaseUserApiParams) DeleteDatabaseUserApiRequest {
 	return DeleteDatabaseUserApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -316,7 +316,7 @@ Removes one database user from the specified project. To use this resource, the 
 	@param username Human-readable label that represents the user that authenticates to MongoDB. The format of this label depends on the method of authentication:  | Authentication Method | Parameter Needed | Parameter Value | username Format | |---|---|---|---| | AWS IAM | awsType | ROLE | <abbr title=\"Amazon Resource Name\">ARN</abbr> | | AWS IAM | awsType | USER | <abbr title=\"Amazon Resource Name\">ARN</abbr> | | x.509 | x509Type | CUSTOMER | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | x.509 | x509Type | MANAGED | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | LDAP | ldapAuthType | USER | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | LDAP | ldapAuthType | GROUP | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | OIDC | oidcAuthType | IDP_GROUP | Atlas OIDC IdP ID (found in federation settings), followed by a '/', followed by the IdP group name | | SCRAM-SHA | awsType, x509Type, ldapAuthType, oidcAuthType | NONE | Alphanumeric string |
 	@return DeleteDatabaseUserApiRequest
 */
-func (a *DatabaseUsersApiService) DeleteDatabaseUser(ctx context.Context, groupId string, databaseName string, username string) DeleteDatabaseUserApiRequest {
+func (a *DatabaseUsersAPIService) DeleteDatabaseUser(ctx context.Context, groupId string, databaseName string, username string) DeleteDatabaseUserApiRequest {
 	return DeleteDatabaseUserApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -329,7 +329,7 @@ func (a *DatabaseUsersApiService) DeleteDatabaseUser(ctx context.Context, groupI
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *DatabaseUsersApiService) deleteDatabaseUserExecute(r DeleteDatabaseUserApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *DatabaseUsersAPIService) deleteDatabaseUserExecute(r DeleteDatabaseUserApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -337,7 +337,7 @@ func (a *DatabaseUsersApiService) deleteDatabaseUserExecute(r DeleteDatabaseUser
 		localVarReturnValue map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseUsersApiService.DeleteDatabaseUser")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseUsersAPIService.DeleteDatabaseUser")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -421,7 +421,7 @@ func (a *DatabaseUsersApiService) deleteDatabaseUserExecute(r DeleteDatabaseUser
 
 type GetDatabaseUserApiRequest struct {
 	ctx          context.Context
-	ApiService   DatabaseUsersApi
+	ApiService   DatabaseUsersAPI
 	groupId      string
 	databaseName string
 	username     string
@@ -433,7 +433,7 @@ type GetDatabaseUserApiParams struct {
 	Username     string
 }
 
-func (a *DatabaseUsersApiService) GetDatabaseUserWithParams(ctx context.Context, args *GetDatabaseUserApiParams) GetDatabaseUserApiRequest {
+func (a *DatabaseUsersAPIService) GetDatabaseUserWithParams(ctx context.Context, args *GetDatabaseUserApiParams) GetDatabaseUserApiRequest {
 	return GetDatabaseUserApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -458,7 +458,7 @@ Returns one database user that belong to the specified project. To use this reso
 	@param username Human-readable label that represents the user that authenticates to MongoDB. The format of this label depends on the method of authentication:  | Authentication Method | Parameter Needed | Parameter Value | username Format | |---|---|---|---| | AWS IAM | awsType | ROLE | <abbr title=\"Amazon Resource Name\">ARN</abbr> | | AWS IAM | awsType | USER | <abbr title=\"Amazon Resource Name\">ARN</abbr> | | x.509 | x509Type | CUSTOMER | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | x.509 | x509Type | MANAGED | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | LDAP | ldapAuthType | USER | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | LDAP | ldapAuthType | GROUP | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | OIDC | oidcAuthType | IDP_GROUP | Atlas OIDC IdP ID (found in federation settings), followed by a '/', followed by the IdP group name | | SCRAM-SHA | awsType, x509Type, ldapAuthType, oidcAuthType | NONE | Alphanumeric string |
 	@return GetDatabaseUserApiRequest
 */
-func (a *DatabaseUsersApiService) GetDatabaseUser(ctx context.Context, groupId string, databaseName string, username string) GetDatabaseUserApiRequest {
+func (a *DatabaseUsersAPIService) GetDatabaseUser(ctx context.Context, groupId string, databaseName string, username string) GetDatabaseUserApiRequest {
 	return GetDatabaseUserApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -471,7 +471,7 @@ func (a *DatabaseUsersApiService) GetDatabaseUser(ctx context.Context, groupId s
 // Execute executes the request
 //
 //	@return CloudDatabaseUser
-func (a *DatabaseUsersApiService) getDatabaseUserExecute(r GetDatabaseUserApiRequest) (*CloudDatabaseUser, *http.Response, error) {
+func (a *DatabaseUsersAPIService) getDatabaseUserExecute(r GetDatabaseUserApiRequest) (*CloudDatabaseUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -479,7 +479,7 @@ func (a *DatabaseUsersApiService) getDatabaseUserExecute(r GetDatabaseUserApiReq
 		localVarReturnValue *CloudDatabaseUser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseUsersApiService.GetDatabaseUser")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseUsersAPIService.GetDatabaseUser")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -563,7 +563,7 @@ func (a *DatabaseUsersApiService) getDatabaseUserExecute(r GetDatabaseUserApiReq
 
 type ListDatabaseUsersApiRequest struct {
 	ctx          context.Context
-	ApiService   DatabaseUsersApi
+	ApiService   DatabaseUsersAPI
 	groupId      string
 	includeCount *bool
 	itemsPerPage *int
@@ -577,7 +577,7 @@ type ListDatabaseUsersApiParams struct {
 	PageNum      *int
 }
 
-func (a *DatabaseUsersApiService) ListDatabaseUsersWithParams(ctx context.Context, args *ListDatabaseUsersApiParams) ListDatabaseUsersApiRequest {
+func (a *DatabaseUsersAPIService) ListDatabaseUsersWithParams(ctx context.Context, args *ListDatabaseUsersApiParams) ListDatabaseUsersApiRequest {
 	return ListDatabaseUsersApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -619,7 +619,7 @@ Returns all database users that belong to the specified project. To use this res
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListDatabaseUsersApiRequest
 */
-func (a *DatabaseUsersApiService) ListDatabaseUsers(ctx context.Context, groupId string) ListDatabaseUsersApiRequest {
+func (a *DatabaseUsersAPIService) ListDatabaseUsers(ctx context.Context, groupId string) ListDatabaseUsersApiRequest {
 	return ListDatabaseUsersApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -630,7 +630,7 @@ func (a *DatabaseUsersApiService) ListDatabaseUsers(ctx context.Context, groupId
 // Execute executes the request
 //
 //	@return PaginatedApiAtlasDatabaseUser
-func (a *DatabaseUsersApiService) listDatabaseUsersExecute(r ListDatabaseUsersApiRequest) (*PaginatedApiAtlasDatabaseUser, *http.Response, error) {
+func (a *DatabaseUsersAPIService) listDatabaseUsersExecute(r ListDatabaseUsersApiRequest) (*PaginatedApiAtlasDatabaseUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -638,7 +638,7 @@ func (a *DatabaseUsersApiService) listDatabaseUsersExecute(r ListDatabaseUsersAp
 		localVarReturnValue *PaginatedApiAtlasDatabaseUser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseUsersApiService.ListDatabaseUsers")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseUsersAPIService.ListDatabaseUsers")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -741,7 +741,7 @@ func (a *DatabaseUsersApiService) listDatabaseUsersExecute(r ListDatabaseUsersAp
 
 type UpdateDatabaseUserApiRequest struct {
 	ctx               context.Context
-	ApiService        DatabaseUsersApi
+	ApiService        DatabaseUsersAPI
 	groupId           string
 	databaseName      string
 	username          string
@@ -755,7 +755,7 @@ type UpdateDatabaseUserApiParams struct {
 	CloudDatabaseUser *CloudDatabaseUser
 }
 
-func (a *DatabaseUsersApiService) UpdateDatabaseUserWithParams(ctx context.Context, args *UpdateDatabaseUserApiParams) UpdateDatabaseUserApiRequest {
+func (a *DatabaseUsersAPIService) UpdateDatabaseUserWithParams(ctx context.Context, args *UpdateDatabaseUserApiParams) UpdateDatabaseUserApiRequest {
 	return UpdateDatabaseUserApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -781,7 +781,7 @@ Updates one database user that belongs to the specified project. To use this res
 	@param username Human-readable label that represents the user that authenticates to MongoDB. The format of this label depends on the method of authentication:  | Authentication Method | Parameter Needed | Parameter Value | username Format | |---|---|---|---| | AWS IAM | awsType | ROLE | <abbr title=\"Amazon Resource Name\">ARN</abbr> | | AWS IAM | awsType | USER | <abbr title=\"Amazon Resource Name\">ARN</abbr> | | x.509 | x509Type | CUSTOMER | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | x.509 | x509Type | MANAGED | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | LDAP | ldapAuthType | USER | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | LDAP | ldapAuthType | GROUP | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | OIDC | oidcAuthType | IDP_GROUP | Atlas OIDC IdP ID (found in federation settings), followed by a '/', followed by the IdP group name | | SCRAM-SHA | awsType, x509Type, ldapAuthType, oidcAuthType | NONE | Alphanumeric string |
 	@return UpdateDatabaseUserApiRequest
 */
-func (a *DatabaseUsersApiService) UpdateDatabaseUser(ctx context.Context, groupId string, databaseName string, username string, cloudDatabaseUser *CloudDatabaseUser) UpdateDatabaseUserApiRequest {
+func (a *DatabaseUsersAPIService) UpdateDatabaseUser(ctx context.Context, groupId string, databaseName string, username string, cloudDatabaseUser *CloudDatabaseUser) UpdateDatabaseUserApiRequest {
 	return UpdateDatabaseUserApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -795,7 +795,7 @@ func (a *DatabaseUsersApiService) UpdateDatabaseUser(ctx context.Context, groupI
 // Execute executes the request
 //
 //	@return CloudDatabaseUser
-func (a *DatabaseUsersApiService) updateDatabaseUserExecute(r UpdateDatabaseUserApiRequest) (*CloudDatabaseUser, *http.Response, error) {
+func (a *DatabaseUsersAPIService) updateDatabaseUserExecute(r UpdateDatabaseUserApiRequest) (*CloudDatabaseUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -803,7 +803,7 @@ func (a *DatabaseUsersApiService) updateDatabaseUserExecute(r UpdateDatabaseUser
 		localVarReturnValue *CloudDatabaseUser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseUsersApiService.UpdateDatabaseUser")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseUsersAPIService.UpdateDatabaseUser")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

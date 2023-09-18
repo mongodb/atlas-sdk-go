@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-type ClusterOutageSimulationApi interface {
+type ClusterOutageSimulationAPI interface {
 
 	/*
 		EndOutageSimulation End an Outage Simulation
@@ -86,12 +86,12 @@ type ClusterOutageSimulationApi interface {
 	startOutageSimulationExecute(r StartOutageSimulationApiRequest) (*ClusterOutageSimulation, *http.Response, error)
 }
 
-// ClusterOutageSimulationApiService ClusterOutageSimulationApi service
-type ClusterOutageSimulationApiService service
+// ClusterOutageSimulationAPIService ClusterOutageSimulationAPI service
+type ClusterOutageSimulationAPIService service
 
 type EndOutageSimulationApiRequest struct {
 	ctx         context.Context
-	ApiService  ClusterOutageSimulationApi
+	ApiService  ClusterOutageSimulationAPI
 	groupId     string
 	clusterName string
 }
@@ -101,7 +101,7 @@ type EndOutageSimulationApiParams struct {
 	ClusterName string
 }
 
-func (a *ClusterOutageSimulationApiService) EndOutageSimulationWithParams(ctx context.Context, args *EndOutageSimulationApiParams) EndOutageSimulationApiRequest {
+func (a *ClusterOutageSimulationAPIService) EndOutageSimulationWithParams(ctx context.Context, args *EndOutageSimulationApiParams) EndOutageSimulationApiRequest {
 	return EndOutageSimulationApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -124,7 +124,7 @@ EndOutageSimulation End an Outage Simulation
 	@param clusterName Human-readable label that identifies the cluster that is undergoing outage simulation.
 	@return EndOutageSimulationApiRequest
 */
-func (a *ClusterOutageSimulationApiService) EndOutageSimulation(ctx context.Context, groupId string, clusterName string) EndOutageSimulationApiRequest {
+func (a *ClusterOutageSimulationAPIService) EndOutageSimulation(ctx context.Context, groupId string, clusterName string) EndOutageSimulationApiRequest {
 	return EndOutageSimulationApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -136,7 +136,7 @@ func (a *ClusterOutageSimulationApiService) EndOutageSimulation(ctx context.Cont
 // Execute executes the request
 //
 //	@return ClusterOutageSimulation
-func (a *ClusterOutageSimulationApiService) endOutageSimulationExecute(r EndOutageSimulationApiRequest) (*ClusterOutageSimulation, *http.Response, error) {
+func (a *ClusterOutageSimulationAPIService) endOutageSimulationExecute(r EndOutageSimulationApiRequest) (*ClusterOutageSimulation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -144,7 +144,7 @@ func (a *ClusterOutageSimulationApiService) endOutageSimulationExecute(r EndOuta
 		localVarReturnValue *ClusterOutageSimulation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClusterOutageSimulationApiService.EndOutageSimulation")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClusterOutageSimulationAPIService.EndOutageSimulation")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -233,7 +233,7 @@ func (a *ClusterOutageSimulationApiService) endOutageSimulationExecute(r EndOuta
 
 type GetOutageSimulationApiRequest struct {
 	ctx         context.Context
-	ApiService  ClusterOutageSimulationApi
+	ApiService  ClusterOutageSimulationAPI
 	groupId     string
 	clusterName string
 }
@@ -243,7 +243,7 @@ type GetOutageSimulationApiParams struct {
 	ClusterName string
 }
 
-func (a *ClusterOutageSimulationApiService) GetOutageSimulationWithParams(ctx context.Context, args *GetOutageSimulationApiParams) GetOutageSimulationApiRequest {
+func (a *ClusterOutageSimulationAPIService) GetOutageSimulationWithParams(ctx context.Context, args *GetOutageSimulationApiParams) GetOutageSimulationApiRequest {
 	return GetOutageSimulationApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -266,7 +266,7 @@ GetOutageSimulation Return One Outage Simulation
 	@param clusterName Human-readable label that identifies the cluster that is undergoing outage simulation.
 	@return GetOutageSimulationApiRequest
 */
-func (a *ClusterOutageSimulationApiService) GetOutageSimulation(ctx context.Context, groupId string, clusterName string) GetOutageSimulationApiRequest {
+func (a *ClusterOutageSimulationAPIService) GetOutageSimulation(ctx context.Context, groupId string, clusterName string) GetOutageSimulationApiRequest {
 	return GetOutageSimulationApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -278,7 +278,7 @@ func (a *ClusterOutageSimulationApiService) GetOutageSimulation(ctx context.Cont
 // Execute executes the request
 //
 //	@return ClusterOutageSimulation
-func (a *ClusterOutageSimulationApiService) getOutageSimulationExecute(r GetOutageSimulationApiRequest) (*ClusterOutageSimulation, *http.Response, error) {
+func (a *ClusterOutageSimulationAPIService) getOutageSimulationExecute(r GetOutageSimulationApiRequest) (*ClusterOutageSimulation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -286,7 +286,7 @@ func (a *ClusterOutageSimulationApiService) getOutageSimulationExecute(r GetOuta
 		localVarReturnValue *ClusterOutageSimulation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClusterOutageSimulationApiService.GetOutageSimulation")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClusterOutageSimulationAPIService.GetOutageSimulation")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -375,7 +375,7 @@ func (a *ClusterOutageSimulationApiService) getOutageSimulationExecute(r GetOuta
 
 type StartOutageSimulationApiRequest struct {
 	ctx                     context.Context
-	ApiService              ClusterOutageSimulationApi
+	ApiService              ClusterOutageSimulationAPI
 	groupId                 string
 	clusterName             string
 	clusterOutageSimulation *ClusterOutageSimulation
@@ -387,7 +387,7 @@ type StartOutageSimulationApiParams struct {
 	ClusterOutageSimulation *ClusterOutageSimulation
 }
 
-func (a *ClusterOutageSimulationApiService) StartOutageSimulationWithParams(ctx context.Context, args *StartOutageSimulationApiParams) StartOutageSimulationApiRequest {
+func (a *ClusterOutageSimulationAPIService) StartOutageSimulationWithParams(ctx context.Context, args *StartOutageSimulationApiParams) StartOutageSimulationApiRequest {
 	return StartOutageSimulationApiRequest{
 		ApiService:              a,
 		ctx:                     ctx,
@@ -411,7 +411,7 @@ StartOutageSimulation Start an Outage Simulation
 	@param clusterName Human-readable label that identifies the cluster to undergo an outage simulation.
 	@return StartOutageSimulationApiRequest
 */
-func (a *ClusterOutageSimulationApiService) StartOutageSimulation(ctx context.Context, groupId string, clusterName string, clusterOutageSimulation *ClusterOutageSimulation) StartOutageSimulationApiRequest {
+func (a *ClusterOutageSimulationAPIService) StartOutageSimulation(ctx context.Context, groupId string, clusterName string, clusterOutageSimulation *ClusterOutageSimulation) StartOutageSimulationApiRequest {
 	return StartOutageSimulationApiRequest{
 		ApiService:              a,
 		ctx:                     ctx,
@@ -424,7 +424,7 @@ func (a *ClusterOutageSimulationApiService) StartOutageSimulation(ctx context.Co
 // Execute executes the request
 //
 //	@return ClusterOutageSimulation
-func (a *ClusterOutageSimulationApiService) startOutageSimulationExecute(r StartOutageSimulationApiRequest) (*ClusterOutageSimulation, *http.Response, error) {
+func (a *ClusterOutageSimulationAPIService) startOutageSimulationExecute(r StartOutageSimulationApiRequest) (*ClusterOutageSimulation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *ClusterOutageSimulationApiService) startOutageSimulationExecute(r Start
 		localVarReturnValue *ClusterOutageSimulation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClusterOutageSimulationApiService.StartOutageSimulation")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClusterOutageSimulationAPIService.StartOutageSimulation")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
