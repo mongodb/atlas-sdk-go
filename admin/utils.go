@@ -57,6 +57,7 @@ func GetOrDefault[T any](ptr *T, defaultValue T) T {
 	return defaultValue
 }
 
+// TimePtrToStringPtr converts the time to the string pointer.
 func TimePtrToStringPtr(t *time.Time) *string {
 	if t == nil {
 		return nil
@@ -73,6 +74,7 @@ func TimeToString(t time.Time) string {
 	return t.UTC().Format(time.RFC3339Nano)
 }
 
+// Int64PtrToIntPtr convert int64 to int pointer.
 func Int64PtrToIntPtr(i64 *int64) *int {
 	if i64 == nil {
 		return nil
