@@ -18,8 +18,8 @@ info:
     url: https://creativecommons.org/licenses/by-nc-sa/3.0/us/
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
-  version: 2.0~c7b3ae9fa6
-  x-xgen-sha: c7b3ae9fa6aa3fd55226426a3994485d38fd26c1
+  version: 2.0~6e54278ed8
+  x-xgen-sha: 6e54278ed80f8e54655f8d970425d6ee8247ae30
 servers:
 - url: https://cloud.mongodb.com
 tags:
@@ -171,6 +171,9 @@ tags:
   name: Shared-Tier Restore Jobs
 - description: Returns and requests to download shared-tier database deployment snapshots.
   name: Shared-Tier Snapshots
+- description: "Returns, adds, edits, and removes Streams Instances. This resource\
+    \ requires your project ID."
+  name: Streams
 - description: "Returns, adds, edits, or removes teams."
   name: Teams
 - description: |-
@@ -1804,7 +1807,7 @@ paths:
             schema:
               $ref: '#/components/schemas/CreateAtlasProjectApiKey'
         description: Organization API key to be created and assigned to the specified
-          project. This request requires both body parameters.
+          project.
         required: true
       responses:
         "200":
@@ -1893,7 +1896,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: '#/components/schemas/CreateAtlasProjectApiKey'
+              $ref: '#/components/schemas/UpdateAtlasProjectApiKey'
         description: Organization API Key to be updated. This request requires a minimum
           of one of the two body parameters.
         required: true
@@ -2302,9 +2305,9 @@ paths:
       - Cloud Backups
   /api/atlas/v2/groups/{groupId}/cloudProviderAccess:
     get:
-      description: "Returns all Amazon Web Services (AWS) Identity and Access Management\
-        \ (IAM) roles with access to the specified project. To use this resource,\
-        \ the requesting API Key must have the Project Owner role."
+      description: "Returns all cloud provider access roles with access to the specified\
+        \ project. To use this resource, the requesting API Key must have the Project\
+        \ Owner role."
       operationId: listCloudProviderAccessRoles
       parameters:
       - $ref: '#/components/parameters/envelope'
@@ -2328,13 +2331,13 @@ paths:
       tags:
       - Cloud Provider Access
     post:
-      description: |-
-        Creates one Amazon Web Services (AWS) Identity and Access Management (IAM) role. Some MongoDB Cloud features use AWS IAM roles for authentication. To use this resource, the requesting API Key must have the Project Owner role.
-
-        After a successful request to this API endpoint, you can add the **atlasAWSAccountArn** and **atlasAssumedRoleExternalId** values to the trust policy in your AWS console to create an IAM Assumed Amazon Resource Name (ARN).
+      description: "Creates one access role for the specified cloud provider. Some\
+        \ MongoDB Cloud features use these cloud provider access roles for authentication.\
+        \ To use this resource, the requesting API Key must have the Project Owner\
+        \ role."
       externalDocs:
-        description: Set Up Unified AWS Access
-        url: https://www.mongodb.com/docs/atlas/security/set-up-unified-aws-access/#std-label-set-up-unified-aws-access
+        description: Set Up Access to Cloud Providers
+        url: https://www.mongodb.com/docs/atlas/security/cloud-provider-access/
       operationId: createCloudProviderAccessRole
       parameters:
       - $ref: '#/components/parameters/envelope'
@@ -2345,7 +2348,7 @@ paths:
           application/vnd.atlas.2023-01-01+json:
             schema:
               $ref: '#/components/schemas/CloudProviderAccessRole'
-        description: Creates one AWS IAM role.
+        description: Creates one role for the specified cloud provider.
         required: true
       responses:
         "200":
@@ -2366,8 +2369,8 @@ paths:
       - Cloud Provider Access
   /api/atlas/v2/groups/{groupId}/cloudProviderAccess/{cloudProvider}/{roleId}:
     delete:
-      description: "Revokes access to the specified project for the specified AWS\
-        \ IAM role. To use this resource, the requesting API Key must have the Project\
+      description: "Revokes access to the specified project for the specified access\
+        \ role. To use this resource, the requesting API Key must have the Project\
         \ Owner role."
       operationId: deauthorizeCloudProviderAccessRole
       parameters:
@@ -2411,10 +2414,9 @@ paths:
       - Cloud Provider Access
   /api/atlas/v2/groups/{groupId}/cloudProviderAccess/{roleId}:
     get:
-      description: "Returns the Amazon Web Services (AWS) Identity and Access Management\
-        \ (IAM) role with the specified id and with access to the specified project.\
-        \ To use this resource, the requesting API Key must have the Project Owner\
-        \ role."
+      description: "Returns the access role with the specified id and with access\
+        \ to the specified project. To use this resource, the requesting API Key must\
+        \ have the Project Owner role."
       operationId: getCloudProviderAccessRole
       parameters:
       - $ref: '#/components/parameters/envelope'
@@ -2447,14 +2449,13 @@ paths:
       tags:
       - Cloud Provider Access
     patch:
-      description: "Grants access to the specified project for the specified Amazon\
-        \ Web Services (AWS) Identity and Access Management (IAM) role. To use this\
-        \ resource, the requesting API Key must have the Project Owner role. This\
-        \ API endpoint is one step in a procedure to create unified AWS access for\
-        \ MongoDB Cloud services."
+      description: "Grants access to the specified project for the specified access\
+        \ role. To use this resource, the requesting API Key must have the Project\
+        \ Owner role. This API endpoint is one step in a procedure to create unified\
+        \ access for MongoDB Cloud services."
       externalDocs:
-        description: Set Up Unified AWS Access
-        url: https://www.mongodb.com/docs/atlas/security/set-up-unified-aws-access/#std-label-set-up-unified-aws-access
+        description: Set Up Access to Cloud Providers
+        url: https://www.mongodb.com/docs/atlas/security/cloud-provider-access/
       operationId: authorizeCloudProviderAccessRole
       parameters:
       - $ref: '#/components/parameters/envelope'
@@ -2474,8 +2475,8 @@ paths:
           application/vnd.atlas.2023-01-01+json:
             schema:
               $ref: '#/components/schemas/CloudProviderAccessRole'
-        description: Grants access to the specified project for the specified AWS
-          IAM role.
+        description: Grants access to the specified project for the specified access
+          role.
         required: true
       responses:
         "200":
@@ -7498,6 +7499,16 @@ paths:
           type: array
           items:
             $ref: '#/components/schemas/EventTypeForNdsGroup'
+      - description: |-
+          Category of event that you would like to exclude from query results, such as CLUSTER_CREATED
+
+          **IMPORTANT**: Event type names change frequently. Verify that you specify the event type correctly by checking the complete list of event types.
+        in: query
+        name: excludedEventType
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventTypeForNdsGroup'
       - description: Flag that indicates whether to include the raw document in the
           output. The raw document contains additional meta information about the
           event.
@@ -10916,14 +10927,9 @@ paths:
       - Monitoring and Logs
   /api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName}:
     get:
-      description: "Returns the measurements of one disk or partition for the specified\
-        \ host for the specified project. Returned value can be one of the following:\n\
-        - Throughput of I/O operations for the disk partition used for the MongoDB\
-        \ process\n- Percentage of time during which requests the partition issued\
-        \ and serviced\n- Latency per operation type of the disk partition used for\
-        \ the MongoDB process\n- Amount of free and used disk space on the disk partition\
-        \ used for the MongoDB process \n\nTo use this resource, the requesting API\
-        \ Key must have the Project Read Only role."
+      description: "Returns measurement details for one disk or partition for the\
+        \ specified host for the specified project. To use this resource, the requesting\
+        \ API Key must have the Project Read Only role."
       operationId: listDiskMeasurements
       parameters:
       - $ref: '#/components/parameters/envelope'
@@ -11060,14 +11066,15 @@ paths:
       - Monitoring and Logs
   /api/atlas/v2/groups/{groupId}/processes/{processId}/measurements:
     get:
-      description: "Returns measurements of the disk or partition per process for\
-        \ the specified host for the specified project. Returned value can be one\
-        \ of the following:\n- Throughput of I/O operations for the disk partition\
-        \ used for the MongoDB process\n- Percentage of time during which requests\
-        \ the partition issued and serviced\n- Latency per operation type of the disk\
-        \ partition used for the MongoDB process\n- Amount of free and used disk space\
-        \ on the disk partition used for the MongoDB process \n\nTo use this resource,\
-        \ the requesting API Key must have the Project Read Only role."
+      description: |-
+        Returns disk, partition, or host measurements per process for the specified host for the specified project. Returned value can be one of the following:
+        - Throughput of I/O operations for the disk partition used for the MongoDB process
+        - Percentage of time during which requests the partition issued and serviced
+        - Latency per operation type of the disk partition used for the MongoDB process
+        - Amount of free and used disk space on the disk partition used for the MongoDB process
+        - Measurements for the host, such as CPU usage or number of I/O operations
+
+        To use this resource, the requesting API Key must have the Project Read Only role.
       operationId: getHostMeasurements
       parameters:
       - $ref: '#/components/parameters/envelope'
@@ -12188,6 +12195,433 @@ paths:
       summary: Update One Project Settings
       tags:
       - Projects
+  /api/atlas/v2/groups/{groupId}/streams:
+    get:
+      description: Returns all stream instances for the specified project.
+      operationId: listStreamInstances
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/envelope'
+      - $ref: '#/components/parameters/itemsPerPage'
+      - $ref: '#/components/parameters/pageNum'
+      - $ref: '#/components/parameters/pretty'
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              schema:
+                $ref: '#/components/schemas/PaginatedApiStreamsTenantView'
+              x-xgen-version: 2023-02-01
+          description: OK
+        "401":
+          $ref: '#/components/responses/unauthorized'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Return All Project Stream Instances
+      tags:
+      - Streams
+      x-xgen-changelog:
+        "2023-09-11": "The MongoDB Atlas Streams Processing API is now exposed as\
+          \ part of private preview, but is subject to change until GA."
+    post:
+      description: "Creates one stream instance in the specified project. To use this\
+        \ resource, the requesting API Key must have the Project Owner roles."
+      operationId: createStreamInstance
+      parameters:
+      - $ref: '#/components/parameters/envelope'
+      - $ref: '#/components/parameters/pretty'
+      - $ref: '#/components/parameters/groupId'
+      requestBody:
+        content:
+          application/vnd.atlas.2023-02-01+json:
+            schema:
+              $ref: '#/components/schemas/StreamsTenant'
+        description: Details to create one streams instance in the specified project.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              schema:
+                $ref: '#/components/schemas/StreamsTenant'
+              x-xgen-version: 2023-02-01
+          description: OK
+        "400":
+          $ref: '#/components/responses/badRequest'
+        "401":
+          $ref: '#/components/responses/unauthorized'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Create One Stream Instance
+      tags:
+      - Streams
+      x-xgen-changelog:
+        "2023-09-11": "The MongoDB Atlas Streams Processing API is now exposed as\
+          \ part of private preview, but is subject to change until GA."
+  /api/atlas/v2/groups/{groupId}/streams/{tenantName}:
+    delete:
+      description: "Delete one stream instance in the specified project. To use this\
+        \ resource, the requesting API Key must have the Project Owner roles."
+      operationId: deleteStreamInstance
+      parameters:
+      - $ref: '#/components/parameters/envelope'
+      - $ref: '#/components/parameters/pretty'
+      - $ref: '#/components/parameters/groupId'
+      - description: Human-readable label that identifies the stream instance to delete.
+        in: path
+        name: tenantName
+        required: true
+        schema:
+          type: string
+      responses:
+        "202":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              schema:
+                $ref: '#/components/schemas/NoBody'
+              x-xgen-version: 2023-02-01
+          description: Accepted
+        "401":
+          $ref: '#/components/responses/unauthorized'
+        "403":
+          $ref: '#/components/responses/forbidden'
+        "404":
+          $ref: '#/components/responses/notFound'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Delete One Stream Instance
+      tags:
+      - Streams
+      x-xgen-changelog:
+        "2023-09-11": "The MongoDB Atlas Streams Processing API is now exposed as\
+          \ part of private preview, but is subject to change until GA."
+    get:
+      description: "Returns the details of one stream instance within the specified\
+        \ project. To use this resource, the requesting API Key must have the Project\
+        \ Read Only role."
+      operationId: getStreamInstance
+      parameters:
+      - $ref: '#/components/parameters/envelope'
+      - $ref: '#/components/parameters/groupId'
+      - description: Human-readable label that identifies the stream instance to return.
+        in: path
+        name: tenantName
+        required: true
+        schema:
+          type: string
+      - description: Flag to indicate whether connections information should be included
+          in the stream instance.
+        in: query
+        name: includeConnections
+        schema:
+          type: boolean
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              schema:
+                $ref: '#/components/schemas/StreamsTenant'
+              x-xgen-version: 2023-02-01
+          description: OK
+        "400":
+          $ref: '#/components/responses/badRequest'
+        "401":
+          $ref: '#/components/responses/unauthorized'
+        "404":
+          $ref: '#/components/responses/notFound'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Return One Stream Instance
+      tags:
+      - Streams
+      x-xgen-changelog:
+        "2023-09-11": "The MongoDB Atlas Streams Processing API is now exposed as\
+          \ part of private preview, but is subject to change until GA."
+    patch:
+      description: "Update one stream instance in the specified project. To use this\
+        \ resource, the requesting API Key must have the Project Owner roles."
+      operationId: updateStreamInstance
+      parameters:
+      - $ref: '#/components/parameters/envelope'
+      - $ref: '#/components/parameters/pretty'
+      - $ref: '#/components/parameters/groupId'
+      - description: Human-readable label that identifies the stream instance to update.
+        in: path
+        name: tenantName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/vnd.atlas.2023-02-01+json:
+            schema:
+              $ref: '#/components/schemas/StreamsDataProcessRegion'
+        description: Details of the new data process region to update in the streams
+          instance.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              schema:
+                $ref: '#/components/schemas/StreamsTenant'
+              x-xgen-version: 2023-02-01
+          description: OK
+        "400":
+          $ref: '#/components/responses/badRequest'
+        "401":
+          $ref: '#/components/responses/unauthorized'
+        "403":
+          $ref: '#/components/responses/forbidden'
+        "404":
+          $ref: '#/components/responses/notFound'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Update One Stream Instance
+      tags:
+      - Streams
+      x-xgen-changelog:
+        "2023-09-11": "The MongoDB Atlas Streams Processing API is now exposed as\
+          \ part of private preview, but is subject to change until GA."
+  /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections:
+    get:
+      description: Returns all connections of the stream instance for the specified
+        project.
+      operationId: listStreamConnections
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/envelope'
+      - $ref: '#/components/parameters/itemsPerPage'
+      - $ref: '#/components/parameters/pageNum'
+      - $ref: '#/components/parameters/pretty'
+      - description: Human-readable label that identifies the stream instance.
+        in: path
+        name: tenantName
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              schema:
+                $ref: '#/components/schemas/PaginatedApiStreamsConnectionView'
+              x-xgen-version: 2023-02-01
+          description: OK
+        "401":
+          $ref: '#/components/responses/unauthorized'
+        "404":
+          $ref: '#/components/responses/notFound'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Return All Connections Of The Stream Instances
+      tags:
+      - Streams
+      x-xgen-changelog:
+        "2023-09-11": "The MongoDB Atlas Streams Processing API is now exposed as\
+          \ part of private preview, but is subject to change until GA."
+    post:
+      description: "Creates one connection for a stream instance in the specified\
+        \ project. To use this resource, the requesting API Key must have the Project\
+        \ Owner roles."
+      operationId: createStreamConnection
+      parameters:
+      - $ref: '#/components/parameters/envelope'
+      - $ref: '#/components/parameters/pretty'
+      - $ref: '#/components/parameters/groupId'
+      - description: Human-readable label that identifies the stream instance.
+        in: path
+        name: tenantName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/vnd.atlas.2023-02-01+json:
+            schema:
+              $ref: '#/components/schemas/StreamsConnection'
+        description: Details to create one connection for a streams instance in the
+          specified project.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              schema:
+                $ref: '#/components/schemas/StreamsConnection'
+              x-xgen-version: 2023-02-01
+          description: OK
+        "400":
+          $ref: '#/components/responses/badRequest'
+        "401":
+          $ref: '#/components/responses/unauthorized'
+        "409":
+          $ref: '#/components/responses/unauthorized'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Create One Connection
+      tags:
+      - Streams
+      x-xgen-changelog:
+        "2023-09-11": "The MongoDB Atlas Streams Processing API is now exposed as\
+          \ part of private preview, but is subject to change until GA."
+  /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}:
+    delete:
+      description: "Delete one connection of the specified stream instance. To use\
+        \ this resource, the requesting API Key must have the Project Owner roles."
+      operationId: deleteStreamConnection
+      parameters:
+      - $ref: '#/components/parameters/envelope'
+      - $ref: '#/components/parameters/pretty'
+      - $ref: '#/components/parameters/groupId'
+      - description: Human-readable label that identifies the stream instance.
+        in: path
+        name: tenantName
+        required: true
+        schema:
+          type: string
+      - description: Human-readable label that identifies the stream connection.
+        in: path
+        name: connectionName
+        required: true
+        schema:
+          type: string
+      responses:
+        "202":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              schema:
+                $ref: '#/components/schemas/NoBody'
+              x-xgen-version: 2023-02-01
+          description: Accepted
+        "401":
+          $ref: '#/components/responses/unauthorized'
+        "403":
+          $ref: '#/components/responses/forbidden'
+        "404":
+          $ref: '#/components/responses/notFound'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Delete One Stream Connection
+      tags:
+      - Streams
+      x-xgen-changelog:
+        "2023-09-11": "The MongoDB Atlas Streams Processing API is now exposed as\
+          \ part of private preview, but is subject to change until GA."
+    get:
+      description: "Returns the details of one stream connection within the specified\
+        \ stream instance. To use this resource, the requesting API Key must have\
+        \ the Project Read Only role."
+      operationId: getStreamConnection
+      parameters:
+      - $ref: '#/components/parameters/envelope'
+      - $ref: '#/components/parameters/groupId'
+      - description: Human-readable label that identifies the stream instance to return.
+        in: path
+        name: tenantName
+        required: true
+        schema:
+          type: string
+      - description: Human-readable label that identifies the stream connection to
+          return.
+        in: path
+        name: connectionName
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              schema:
+                $ref: '#/components/schemas/StreamsConnection'
+              x-xgen-version: 2023-02-01
+          description: OK
+        "401":
+          $ref: '#/components/responses/unauthorized'
+        "404":
+          $ref: '#/components/responses/notFound'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Return One Stream Connection
+      tags:
+      - Streams
+      x-xgen-changelog:
+        "2023-09-11": "The MongoDB Atlas Streams Processing API is now exposed as\
+          \ part of private preview, but is subject to change until GA."
+    patch:
+      description: "Update one connection for the specified stream instance in the\
+        \ specified project. To use this resource, the requesting API Key must have\
+        \ the Project Owner roles."
+      operationId: updateStreamConnection
+      parameters:
+      - $ref: '#/components/parameters/envelope'
+      - $ref: '#/components/parameters/pretty'
+      - $ref: '#/components/parameters/groupId'
+      - description: Human-readable label that identifies the stream instance.
+        in: path
+        name: tenantName
+        required: true
+        schema:
+          type: string
+      - description: Human-readable label that identifies the stream connection.
+        in: path
+        name: connectionName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/vnd.atlas.2023-02-01+json:
+            schema:
+              $ref: '#/components/schemas/StreamsConnection'
+        description: Details to update one connection for a streams instance in the
+          specified project.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              schema:
+                $ref: '#/components/schemas/StreamsConnection'
+              x-xgen-version: 2023-02-01
+          description: OK
+        "400":
+          $ref: '#/components/responses/badRequest'
+        "401":
+          $ref: '#/components/responses/unauthorized'
+        "403":
+          $ref: '#/components/responses/forbidden'
+        "404":
+          $ref: '#/components/responses/notFound'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Update One Stream Connection
+      tags:
+      - Streams
+      x-xgen-changelog:
+        "2023-09-11": "The MongoDB Atlas Streams Processing API is now exposed as\
+          \ part of private preview, but is subject to change until GA."
   /api/atlas/v2/groups/{groupId}/teams:
     get:
       description: "Returns all teams to which the authenticated user has access in\
@@ -12601,7 +13035,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: '#/components/schemas/PaginatedApiAppUserView'
+                $ref: '#/components/schemas/PaginatedAppUserView'
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -12704,8 +13138,9 @@ paths:
       - Projects
   /api/atlas/v2/orgs:
     get:
-      description: "Returns all organizations to which you belong. To use this resource,\
-        \ the requesting API Key must have the Organization Member role."
+      description: "Returns all organizations to which the requesting API Key has\
+        \ access. To use this resource, the requesting API Key must have the Organization\
+        \ Member role."
       operationId: listOrganizations
       parameters:
       - $ref: '#/components/parameters/envelope'
@@ -12946,8 +13381,7 @@ paths:
           application/vnd.atlas.2023-01-01+json:
             schema:
               $ref: '#/components/schemas/CreateAtlasOrganizationApiKey'
-        description: Organization API Key to be created. This request requires both
-          body parameters.
+        description: Organization API Key to be created.
         required: true
       responses:
         "200":
@@ -13074,7 +13508,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: '#/components/schemas/CreateAtlasOrganizationApiKey'
+              $ref: '#/components/schemas/UpdateAtlasOrganizationApiKey'
         description: Organization API key to be updated. This request requires a minimum
           of one of the two body parameters.
         required: true
@@ -13306,6 +13740,88 @@ paths:
       summary: Return One Access List Entry for One Organization API Key
       tags:
       - Programmatic API Keys
+  /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage:
+    post:
+      description: Creates a query process within the Cost Explorer for the given
+        parameters. A token is returned that can be used to poll the status of the
+        query and eventually retrievethe results.
+      operationId: createCostExplorerQueryProcess
+      parameters:
+      - $ref: '#/components/parameters/orgId'
+      - $ref: '#/components/parameters/envelope'
+      requestBody:
+        content:
+          application/vnd.atlas.2023-01-01+json:
+            schema:
+              $ref: '#/components/schemas/CostExplorerFilterRequestBody'
+        description: Filter parameters for the Cost Explorer query.
+        required: true
+      responses:
+        "202":
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/CostExplorerFilterResponseView'
+              x-xgen-version: 2023-01-01
+          description: Accepted
+        "400":
+          $ref: '#/components/responses/badRequest'
+        "401":
+          $ref: '#/components/responses/unauthorized'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Create Cost Explorer query process
+      tags:
+      - Invoices
+  /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage/{token}:
+    get:
+      description: "Returns the usage details for a Cost Explorer query, if the query\
+        \ is finished and the data is ready to be viewed. If the data is not ready,\
+        \ a 'processing' response willindicate that another request should be sent\
+        \ later to view the data."
+      operationId: createCostExplorerQueryProcess_1
+      parameters:
+      - $ref: '#/components/parameters/orgId'
+      - $ref: '#/components/parameters/envelope'
+      - description: Unique 64 digit string that identifies the Cost Explorer query.
+        in: path
+        name: token
+        required: true
+        schema:
+          type: string
+          example: 4ABBE973862346D40F3AE859D4BE96E0F895764EB14EAB039E7B82F9D638C05C
+          maxLength: 64
+          minLength: 64
+      responses:
+        "102":
+          description: Processing
+        "200":
+          content:
+            application/vnd.atlas.2023-01-01+csv:
+              schema:
+                type: string
+              x-xgen-version: 2023-01-01
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/CostExplorerQueryResult'
+              x-xgen-version: 2023-01-01
+          description: OK
+        "400":
+          $ref: '#/components/responses/badRequest'
+        "401":
+          $ref: '#/components/responses/unauthorized'
+        "404":
+          $ref: '#/components/responses/notFound'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: "Return results from a given Cost Explorer query, or notify that the\
+        \ results are not ready yet."
+      tags:
+      - Invoices
   /api/atlas/v2/orgs/{orgId}/events:
     get:
       description: |-
@@ -17833,6 +18349,10 @@ components:
           type: string
           description: Value to match or exceed using the specified **matchers.operator**.
           example: event-replica-set
+      required:
+      - fieldName
+      - operator
+      - value
       title: Matchers
     AppServiceMetricMatcherField:
       type: string
@@ -17937,6 +18457,8 @@ components:
           - million
           - billion
           - ""
+      required:
+      - metricName
       title: App Services Metric Threshold
     AtlasClusterOutageSimulationOutageFilter:
       type: object
@@ -19929,7 +20451,6 @@ components:
       - CHARGE_PROCESSING
       - CHARGE_PENDING_REVERSAL
       - BRAINTREE_CHARGE_FAILED
-      - INVOICE_CLOSED
       - CHECK_PAYMENT_RECEIVED
       - WIRE_TRANSFER_PAYMENT_RECEIVED
       - DISCOUNT_APPLIED
@@ -19949,22 +20470,7 @@ components:
       - PROMO_CODE_APPLIED
       - PAYMENT_FORGIVEN
       - REFUND_ISSUED
-      - ACCOUNT_DOWNGRADED
-      - ACCOUNT_UPGRADED
-      - ACCOUNT_MODIFIED
-      - SUPPORT_PLAN_ACTIVATED
-      - SUPPORT_PLAN_CANCELLED
-      - SUPPORT_PLAN_CANCELLATION_SCHEDULED
-      - INITIATE_SALESFORCE_SERVICE_CLOUD_SYNC
-      - INVOICE_ADDRESS_CHANGED
-      - INVOICE_ADDRESS_ADDED
-      - PREPAID_PLAN_ACTIVATED
-      - ELASTIC_INVOICING_MODE_ACTIVATED
-      - ELASTIC_INVOICING_MODE_DEACTIVATED
       - TERMINATE_PAID_SERVICES
-      - BILLING_EMAIL_ADDRESS_ADDED
-      - BILLING_EMAIL_ADDRESS_CHANGED
-      - BILLING_EMAIL_ADDRESS_REMOVED
       example: CREDIT_CARD_CURRENT
       title: Billing Event Types
     BillingEventTypeViewForOrg:
@@ -20030,6 +20536,7 @@ components:
       - CREDIT_AZURE_SUBSCRIPTION_ID_MODIFIED
       - TARGETED_REBILL_EXECUTED
       - LEGACY_REBILL_EXECUTED
+      - PERPETUAL_DEAL_CANCELLED
       example: CHARGE_SUCCEEDED
       title: Billing Event Types
     BillingEventViewForNdsGroup:
@@ -22445,6 +22952,10 @@ components:
           type: string
           description: Value to match or exceed using the specified **matchers.operator**.
           example: event-replica-set
+      required:
+      - fieldName
+      - operator
+      - value
       title: Matchers
     ClusterMatcherField:
       type: string
@@ -23071,7 +23582,7 @@ components:
             - GLOBAL_STITCH_ADMIN
             - GLOBAL_CHARTS_ADMIN
             - GLOBAL_EVENT_ADMIN
-            - GLOBAL_EXPERIMENT_ASSIGNMENT_USER
+            - GLOBAL_EXPERIMENT_ASSIGNMENT_ADMIN
             - GLOBAL_STITCH_INTERNAL_ADMIN
             - GLOBAL_BAAS_FEATURE_ADMIN
             - GLOBAL_BAAS_SUPPORT
@@ -23119,6 +23630,102 @@ components:
       - domainRestrictionEnabled
       - identityProviderId
       - orgId
+    CostExplorerFilterRequestBody:
+      type: object
+      description: Request body for a cost explorer query.
+      properties:
+        clusters:
+          type: array
+          description: The list of projects to be included in the Cost Explorer Query.
+          example:
+          - 5feeac500000000000000000
+          - 61cfdfd00000000000000000
+          items:
+            type: string
+        endDate:
+          type: string
+          format: date
+          description: The exclusive ending date for the Cost Explorer query. The
+            date must be the start of a month.
+          example: 2022-02-01
+        groupBy:
+          type: string
+          description: The dimension to group the returned usage results by. At least
+            one filter value needs to be provided for a dimension to be used.
+          enum:
+          - organizations
+          - projects
+          - clusters
+          - services
+        includePartialMatches:
+          type: boolean
+          description: "Flag to control whether usage that matches the filter criteria,\
+            \ but does not have values for all filter criteria is included in response.\
+            \ Default is false, which excludes the partially matching data."
+        organizations:
+          type: array
+          description: The list of organizations to be included in the Cost Explorer
+            Query.
+          example:
+          - 5feeac500000000000000000
+          - 61cfdfd00000000000000000
+          items:
+            type: string
+        projects:
+          type: array
+          description: The list of projects to be included in the Cost Explorer Query.
+          example:
+          - 5feeac500000000000000000
+          - 61cfdfd00000000000000000
+          items:
+            type: string
+        services:
+          type: array
+          description: The list of projects to be included in the Cost Explorer Query.
+          example:
+          - Data Transfer
+          - Atlas Data Federation
+          items:
+            type: string
+            enum:
+            - Atlas
+            - Clusters
+            - Storage
+            - Serverless Instances
+            - Backup
+            - Data Transfer
+            - BI Connector
+            - Premium Features
+            - Atlas Data Federation
+            - App Services
+            - Charts
+            - Cloud Manager
+            - Cloud Manager Standard/Premium
+            - Legacy Backup
+            - Flex Consulting
+            - Support
+            - Credits
+        startDate:
+          type: string
+          format: date
+          description: The inclusive starting date for the Cost Explorer query. The
+            date must be the start of a month.
+          example: 2022-02-01
+      required:
+      - endDate
+      - startDate
+    CostExplorerFilterResponseView:
+      type: object
+      description: Response object to give information about created query.
+      properties:
+        token:
+          type: string
+          description: The token used to identify the created Cost Explorer query.
+          example: d9ab638a801efe182f98ae3e18ea4bb47b9fda808a28a8c7de205bb0e94f7d71
+          maxLength: 64
+          minLength: 64
+    CostExplorerQueryResult:
+      type: object
     CpsBackupEventTypeViewForNdsGroupAlertableWithThreshold:
       type: string
       description: Event type that triggers an alert.
@@ -23241,6 +23848,10 @@ components:
             - ORG_BILLING_ADMIN
             - ORG_READ_ONLY
             - ORG_TEAM_MEMBERS_ADMIN
+          minItems: 1
+      required:
+      - desc
+      - roles
     CreateAtlasProjectApiKey:
       type: object
       properties:
@@ -23277,6 +23888,10 @@ components:
             - GROUP_CHARTS_ADMIN
             - GROUP_CLUSTER_MANAGER
             - GROUP_SEARCH_INDEX_EDITOR
+          minItems: 1
+      required:
+      - desc
+      - roles
     CreateAzureEndpointRequest:
       type: object
       allOf:
@@ -24922,6 +25537,8 @@ components:
           description: "Value of metric that, when exceeded, triggers an alert."
         units:
           $ref: '#/components/schemas/DataMetricUnits'
+      required:
+      - metricName
     DataMetricUnits:
       type: string
       description: "Element used to express the quantity. This can be an element of\
@@ -27625,7 +28242,6 @@ components:
         - CHARGE_PROCESSING
         - CHARGE_PENDING_REVERSAL
         - BRAINTREE_CHARGE_FAILED
-        - INVOICE_CLOSED
         - CHECK_PAYMENT_RECEIVED
         - WIRE_TRANSFER_PAYMENT_RECEIVED
         - DISCOUNT_APPLIED
@@ -27645,22 +28261,7 @@ components:
         - PROMO_CODE_APPLIED
         - PAYMENT_FORGIVEN
         - REFUND_ISSUED
-        - ACCOUNT_DOWNGRADED
-        - ACCOUNT_UPGRADED
-        - ACCOUNT_MODIFIED
-        - SUPPORT_PLAN_ACTIVATED
-        - SUPPORT_PLAN_CANCELLED
-        - SUPPORT_PLAN_CANCELLATION_SCHEDULED
-        - INITIATE_SALESFORCE_SERVICE_CLOUD_SYNC
-        - INVOICE_ADDRESS_CHANGED
-        - INVOICE_ADDRESS_ADDED
-        - PREPAID_PLAN_ACTIVATED
-        - ELASTIC_INVOICING_MODE_ACTIVATED
-        - ELASTIC_INVOICING_MODE_DEACTIVATED
         - TERMINATE_PAID_SERVICES
-        - BILLING_EMAIL_ADDRESS_ADDED
-        - BILLING_EMAIL_ADDRESS_CHANGED
-        - BILLING_EMAIL_ADDRESS_REMOVED
         title: Billing Event Types
       - type: string
         enum:
@@ -28259,6 +28860,7 @@ components:
         - CREDIT_AZURE_SUBSCRIPTION_ID_MODIFIED
         - TARGETED_REBILL_EXECUTED
         - LEGACY_REBILL_EXECUTED
+        - PERPETUAL_DEAL_CANCELLED
         title: Billing Event Types
       - type: string
         enum:
@@ -30274,6 +30876,9 @@ components:
           - REGEX
         value:
           $ref: '#/components/schemas/MatcherHostType'
+      required:
+      - fieldName
+      - operator
       title: Matchers
     HostMatcherField:
       type: string
@@ -31220,6 +31825,8 @@ components:
           - million
           - billion
           - ""
+      required:
+      - metricName
       title: Host Metric Threshold
     HostMetricValue:
       type: object
@@ -34843,6 +35450,8 @@ components:
           description: "Value of metric that, when exceeded, triggers an alert."
         units:
           $ref: '#/components/schemas/NumberMetricUnits'
+      required:
+      - metricName
     NumberMetricUnits:
       type: string
       description: "Element used to express the quantity. This can be an element of\
@@ -36640,6 +37249,35 @@ components:
           description: Number of documents returned in this response.
           minimum: 0
           readOnly: true
+    PaginatedServiceAccounts:
+      type: object
+      description: List of the Service Accounts
+      properties:
+        links:
+          type: array
+          description: "List of one or more Uniform Resource Locators (URLs) that\
+            \ point to API sub-resources, related API resources, or both. RFC 5988\
+            \ outlines these relationships."
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: '#/components/schemas/Link'
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud providers when
+            completing this request.
+          items:
+            $ref: '#/components/schemas/ServiceAccountDetails'
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Number of documents returned in this response if **includeCount**
+            query param is true.
+          minimum: 0
+          readOnly: true
     PaginatedSnapshotView:
       type: object
       properties:
@@ -37378,6 +38016,8 @@ components:
           description: "Value of metric that, when exceeded, triggers an alert."
         units:
           $ref: '#/components/schemas/ServerlessMetricUnits'
+      required:
+      - metricName
     RawMetricAlertView:
       type: object
       properties:
@@ -37688,6 +38328,8 @@ components:
           description: "Value of metric that, when exceeded, triggers an alert."
         units:
           $ref: '#/components/schemas/RawMetricUnits'
+      required:
+      - metricName
     RawMetricUnits:
       type: string
       default: RAW
@@ -38061,6 +38703,10 @@ components:
           type: string
           description: Value to match or exceed using the specified **matchers.operator**.
           example: event-replica-set
+      required:
+      - fieldName
+      - operator
+      - value
       title: Matchers
     ReplicaSetMatcherField:
       type: string
@@ -39535,6 +40181,8 @@ components:
           - million
           - billion
           - ""
+      required:
+      - metricName
       title: Serverless Metric Threshold
     ServerlessMetricUnits:
       type: string
@@ -39659,6 +40307,241 @@ components:
           writeOnly: true
       required:
       - providerName
+    ServiceAccount:
+      type: object
+      properties:
+        accessList:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceAccountAccessList'
+          uniqueItems: true
+        description:
+          type: string
+          description: Description of the service account.
+        id:
+          type: string
+          description: ID for the service account.
+          pattern: "^mdb_sa_id_[a-fA-F\\d]{24}$"
+        name:
+          type: string
+          description: Name for service account.
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceAccountAccessRole'
+          uniqueItems: true
+        secrets:
+          type: array
+          description: List of secrets.
+          items:
+            $ref: '#/components/schemas/ServiceAccountSecret'
+          uniqueItems: true
+    ServiceAccountAccessList:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int32
+          description: Times it has been used.
+          readOnly: true
+        createdAt:
+          type: string
+          format: date-time
+          description: Time of creation.
+          readOnly: true
+        lastUsedAddress:
+          type: string
+          description: Last address where the service account was used from.
+          readOnly: true
+        lastUsedAt:
+          type: string
+          format: date-time
+          description: Last time the access list was used.
+          readOnly: true
+        networkAddress:
+          type: string
+          description: An IP address or CIDR notation.
+    ServiceAccountAccessRole:
+      type: object
+      properties:
+        groupId:
+          type: string
+          description: Project Id.
+        orgId:
+          type: string
+          description: Organization Id.
+        roleName:
+          type: string
+          description: Access Role.
+          enum:
+          - ORG_MEMBER
+          - ORG_READ_ONLY
+          - ORG_BILLING_ADMIN
+          - ORG_BILLING_READ_ONLY
+          - ORG_GROUP_CREATOR
+          - ORG_OWNER
+          - ORG_TEAM_MEMBERS_ADMIN
+          - GROUP_ATLAS_ADMIN
+          - GROUP_AUTOMATION_ADMIN
+          - GROUP_BACKUP_ADMIN
+          - GROUP_MONITORING_ADMIN
+          - GROUP_OWNER
+          - GROUP_READ_ONLY
+          - GROUP_USER_ADMIN
+          - GROUP_BILLING_ADMIN
+          - GROUP_DATA_ACCESS_ADMIN
+          - GROUP_DATA_ACCESS_READ_ONLY
+          - GROUP_DATA_ACCESS_READ_WRITE
+          - GROUP_CHARTS_ADMIN
+          - GROUP_CLUSTER_MANAGER
+          - GROUP_SEARCH_INDEX_EDITOR
+    ServiceAccountDetails:
+      type: object
+      properties:
+        accessList:
+          type: array
+          description: Service account access list.
+          items:
+            $ref: '#/components/schemas/ServiceAccountAccessList'
+          uniqueItems: true
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp representing creation time.
+        description:
+          type: string
+          description: Description of the service account.
+        id:
+          type: string
+          description: Service account client id.
+          pattern: "^mdb_sa_id_[a-fA-F\\d]{24}$"
+        name:
+          type: string
+          description: Service account name.
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceAccountAccessRole'
+          uniqueItems: true
+        secrets:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceAccountSecretDetails'
+          maxItems: 2
+          uniqueItems: true
+    ServiceAccountRequest:
+      type: object
+      properties:
+        accessList:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceAccountAccessList'
+          uniqueItems: true
+        description:
+          type: string
+          description: Human readable description for service account.
+        name:
+          type: string
+          description: Human readable name for service account.
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceAccountAccessRole'
+          uniqueItems: true
+      required:
+      - description
+      - name
+      - roles
+    ServiceAccountSecret:
+      type: object
+      properties:
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp representing creation time.
+          readOnly: true
+        expiresAt:
+          type: string
+          format: date-time
+          description: Timestamp representing secret expiration time.
+          readOnly: true
+        id:
+          type: string
+          description: Unique 24-hexadecimal character string that identifies the
+            secret.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        lastUsedAt:
+          type: string
+          format: date-time
+          description: Timestamp representing last time secret usage.
+          readOnly: true
+        secret:
+          type: string
+          description: Secret for the service account.
+          pattern: "^mdb_sa_sk_[0-9a-fA-F]{8}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{4}\\\
+            b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{12}$"
+      required:
+      - createdAt
+      - expiresAt
+      - id
+    ServiceAccountSecretDetails:
+      type: object
+      properties:
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp representing creation time.
+          readOnly: true
+        expiresAt:
+          type: string
+          format: date-time
+          description: Timestamp representing secret expiration time.
+          readOnly: true
+        id:
+          type: string
+          description: Unique 24-hexadecimal character string that identifies the
+            secret.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        lastUsedAt:
+          type: string
+          format: date-time
+          description: Timestamp representing last time secret usage.
+          readOnly: true
+        maskedSecretValue:
+          type: string
+          description: Value of client secret with masked values of the first 20 characters.
+          example: mdb_ic_sk_xxxxxxxx-xxxx-xxxx-xxxxxxxx12ce
+          readOnly: true
+      required:
+      - createdAt
+      - expiresAt
+      - id
+      - maskedSecretValue
+    ServiceAccountUpdateRequest:
+      type: object
+      properties:
+        accessList:
+          type: array
+          description: Service account access list.
+          items:
+            $ref: '#/components/schemas/ServiceAccountAccessList'
+          uniqueItems: true
+        description:
+          type: string
+          description: Description of the service account client.
+        name:
+          type: string
+          description: Client name for service account.
+        roles:
+          type: array
+          description: Service account access roles.
+          items:
+            $ref: '#/components/schemas/ServiceAccountAccessRole'
+          uniqueItems: true
     Slack:
       type: object
       description: Details to integrate one Slack account with one MongoDB Cloud project.
@@ -41036,6 +41919,8 @@ components:
           description: "Value of metric that, when exceeded, triggers an alert."
         units:
           $ref: '#/components/schemas/TimeMetricUnits'
+      required:
+      - metricName
     TimeMetricUnits:
       type: string
       default: HOURS
@@ -41078,6 +41963,64 @@ components:
           writeOnly: true
       required:
       - snapshotId
+    UpdateAtlasOrganizationApiKey:
+      type: object
+      properties:
+        desc:
+          type: string
+          description: Purpose or explanation provided when someone creates this organization
+            API key.
+          maxLength: 250
+          minLength: 1
+        roles:
+          type: array
+          description: "List of roles to grant this API key. If you provide this list,\
+            \ provide a minimum of one role and ensure each role applies to this organization."
+          items:
+            type: string
+            enum:
+            - ORG_OWNER
+            - ORG_MEMBER
+            - ORG_GROUP_CREATOR
+            - ORG_BILLING_ADMIN
+            - ORG_READ_ONLY
+            - ORG_TEAM_MEMBERS_ADMIN
+    UpdateAtlasProjectApiKey:
+      type: object
+      properties:
+        desc:
+          type: string
+          description: Purpose or explanation provided when someone creates this project
+            API key.
+          maxLength: 250
+          minLength: 1
+        roles:
+          type: array
+          description: "List of roles to grant this API key. If you provide this list,\
+            \ provide a minimum of one role and ensure each role applies to this project."
+          items:
+            type: string
+            enum:
+            - ORG_OWNER
+            - ORG_MEMBER
+            - ORG_GROUP_CREATOR
+            - ORG_BILLING_ADMIN
+            - ORG_READ_ONLY
+            - ORG_TEAM_MEMBERS_ADMIN
+            - GROUP_ATLAS_ADMIN
+            - GROUP_AUTOMATION_ADMIN
+            - GROUP_BACKUP_ADMIN
+            - GROUP_MONITORING_ADMIN
+            - GROUP_OWNER
+            - GROUP_READ_ONLY
+            - GROUP_USER_ADMIN
+            - GROUP_BILLING_ADMIN
+            - GROUP_DATA_ACCESS_ADMIN
+            - GROUP_DATA_ACCESS_READ_ONLY
+            - GROUP_DATA_ACCESS_READ_WRITE
+            - GROUP_CHARTS_ADMIN
+            - GROUP_CLUSTER_MANAGER
+            - GROUP_SEARCH_INDEX_EDITOR
     UpdateCustomDBRole:
       type: object
       properties:
@@ -42098,6 +43041,7 @@ components:
           - INFO
           - WARNING
           - ERROR
+          - CRITICAL
       readOnly: true
     tokenFilterasciiFolding:
       type: object

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
-**OrgRoles** | Pointer to **[]string** | List of objects that describe the user&#39;s roles. | [optional] [readonly] 
+**OrgRoles** | Pointer to **[]string** | One or more organization level roles to assign to the MongoDB Cloud user. | [optional] 
 
 ## Methods
 

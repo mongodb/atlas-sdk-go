@@ -152,6 +152,8 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
 *GlobalClustersApi* | [DeleteAllCustomZoneMappings](./docs/GlobalClustersApi.md#deleteallcustomzonemappings) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping | Remove All Custom Zone Mappings from One Global Multi-Cloud Cluster | Experimental
 *GlobalClustersApi* | [DeleteManagedNamespace](./docs/GlobalClustersApi.md#deletemanagednamespace) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces | Remove One Managed Namespace from One Global Multi-Cloud Cluster | Experimental
 *GlobalClustersApi* | [GetManagedNamespace](./docs/GlobalClustersApi.md#getmanagednamespace) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites | Return One Managed Namespace in One Global Multi-Cloud Cluster | Stable
+*InvoicesApi* | [CreateCostExplorerQueryProcess](./docs/InvoicesApi.md#createcostexplorerqueryprocess) | **Post** /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage | Create Cost Explorer query process | Experimental
+*InvoicesApi* | [CreateCostExplorerQueryProcess1](./docs/InvoicesApi.md#createcostexplorerqueryprocess1) | **Get** /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage/{token} | Return results from a given Cost Explorer query, or notify that the results are not ready yet. | Experimental
 *InvoicesApi* | [DownloadInvoiceCSV](./docs/InvoicesApi.md#downloadinvoicecsv) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/csv | Return One Organization Invoice as CSV | Experimental
 *InvoicesApi* | [GetInvoice](./docs/InvoicesApi.md#getinvoice) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId} | Return One Organization Invoice | Experimental
 *InvoicesApi* | [ListInvoices](./docs/InvoicesApi.md#listinvoices) | **Get** /api/atlas/v2/orgs/{orgId}/invoices | Return All Invoices for One Organization | Experimental
@@ -306,6 +308,16 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
 *SharedTierSnapshotsApi* | [DownloadSharedClusterBackup](./docs/SharedTierSnapshotsApi.md#downloadsharedclusterbackup) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/download | Download One M2 or M5 Cluster Snapshot | Experimental
 *SharedTierSnapshotsApi* | [GetSharedClusterBackup](./docs/SharedTierSnapshotsApi.md#getsharedclusterbackup) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/snapshots/{snapshotId} | Return One Snapshot for One M2 or M5 Cluster | Experimental
 *SharedTierSnapshotsApi* | [ListSharedClusterBackups](./docs/SharedTierSnapshotsApi.md#listsharedclusterbackups) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/tenant/snapshots | Return All Snapshots for One M2 or M5 Cluster | Experimental
+*StreamsApi* | [CreateStreamConnection](./docs/StreamsApi.md#createstreamconnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections | Create One Connection | Experimental
+*StreamsApi* | [CreateStreamInstance](./docs/StreamsApi.md#createstreaminstance) | **Post** /api/atlas/v2/groups/{groupId}/streams | Create One Stream Instance | Experimental
+*StreamsApi* | [DeleteStreamConnection](./docs/StreamsApi.md#deletestreamconnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Delete One Stream Connection | Experimental
+*StreamsApi* | [DeleteStreamInstance](./docs/StreamsApi.md#deletestreaminstance) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Delete One Stream Instance | Experimental
+*StreamsApi* | [GetStreamConnection](./docs/StreamsApi.md#getstreamconnection) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Return One Stream Connection | Experimental
+*StreamsApi* | [GetStreamInstance](./docs/StreamsApi.md#getstreaminstance) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Return One Stream Instance | Experimental
+*StreamsApi* | [ListStreamConnections](./docs/StreamsApi.md#liststreamconnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections | Return All Connections Of The Stream Instances | Experimental
+*StreamsApi* | [ListStreamInstances](./docs/StreamsApi.md#liststreaminstances) | **Get** /api/atlas/v2/groups/{groupId}/streams | Return All Project Stream Instances | Experimental
+*StreamsApi* | [UpdateStreamConnection](./docs/StreamsApi.md#updatestreamconnection) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Update One Stream Connection | Experimental
+*StreamsApi* | [UpdateStreamInstance](./docs/StreamsApi.md#updatestreaminstance) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Update One Stream Instance | Experimental
 *TeamsApi* | [AddAllTeamsToProject](./docs/TeamsApi.md#addallteamstoproject) | **Post** /api/atlas/v2/groups/{groupId}/teams | Add One or More Teams to One Project | Stable
 *TeamsApi* | [AddTeamUser](./docs/TeamsApi.md#addteamuser) | **Post** /api/atlas/v2/orgs/{orgId}/teams/{teamId}/users | Assign MongoDB Cloud Users from One Organization to One Team | Stable
 *TeamsApi* | [CreateTeam](./docs/TeamsApi.md#createteam) | **Post** /api/atlas/v2/orgs/{orgId}/teams | Create One Team in One Organization | Stable
@@ -407,6 +419,8 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [Collation](./docs/Collation.md)
  - [ComponentLabel](./docs/ComponentLabel.md)
  - [ConnectedOrgConfig](./docs/ConnectedOrgConfig.md)
+ - [CostExplorerFilterRequestBody](./docs/CostExplorerFilterRequestBody.md)
+ - [CostExplorerFilterResponse](./docs/CostExplorerFilterResponse.md)
  - [CreateAtlasOrganizationApiKey](./docs/CreateAtlasOrganizationApiKey.md)
  - [CreateAtlasProjectApiKey](./docs/CreateAtlasProjectApiKey.md)
  - [CreateEndpointRequest](./docs/CreateEndpointRequest.md)
@@ -460,7 +474,6 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [EndpointService](./docs/EndpointService.md)
  - [EventViewForNdsGroup](./docs/EventViewForNdsGroup.md)
  - [EventViewForOrg](./docs/EventViewForOrg.md)
- - [ExperimentRegistration](./docs/ExperimentRegistration.md)
  - [ExportStatus](./docs/ExportStatus.md)
  - [FTSMetric](./docs/FTSMetric.md)
  - [FederatedUser](./docs/FederatedUser.md)
@@ -479,9 +492,6 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [GroupName](./docs/GroupName.md)
  - [GroupPaginatedEvent](./docs/GroupPaginatedEvent.md)
  - [GroupSettings](./docs/GroupSettings.md)
- - [GroupStatus](./docs/GroupStatus.md)
- - [GroupStorageConfig](./docs/GroupStorageConfig.md)
- - [GroupSummaryStatistics](./docs/GroupSummaryStatistics.md)
  - [HardwareSpec](./docs/HardwareSpec.md)
  - [IndexOptions](./docs/IndexOptions.md)
  - [IngestionPipelineRun](./docs/IngestionPipelineRun.md)
@@ -537,6 +547,8 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [PaginatedApiAtlasServerlessBackupRestoreJob](./docs/PaginatedApiAtlasServerlessBackupRestoreJob.md)
  - [PaginatedApiAtlasServerlessBackupSnapshot](./docs/PaginatedApiAtlasServerlessBackupSnapshot.md)
  - [PaginatedApiInvoice](./docs/PaginatedApiInvoice.md)
+ - [PaginatedApiStreamsConnection](./docs/PaginatedApiStreamsConnection.md)
+ - [PaginatedApiStreamsTenant](./docs/PaginatedApiStreamsTenant.md)
  - [PaginatedApiUserAccessList](./docs/PaginatedApiUserAccessList.md)
  - [PaginatedAppUser](./docs/PaginatedAppUser.md)
  - [PaginatedAtlasGroup](./docs/PaginatedAtlasGroup.md)
@@ -575,12 +587,10 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [PerformanceAdvisorSlowQuery](./docs/PerformanceAdvisorSlowQuery.md)
  - [PerformanceAdvisorSlowQueryList](./docs/PerformanceAdvisorSlowQueryList.md)
  - [PipelineRunStats](./docs/PipelineRunStats.md)
- - [PreferredHostname](./docs/PreferredHostname.md)
  - [PrivateIPMode](./docs/PrivateIPMode.md)
  - [PrivateLinkEndpoint](./docs/PrivateLinkEndpoint.md)
  - [PrivateNetworkEndpointIdEntry](./docs/PrivateNetworkEndpointIdEntry.md)
  - [ProjectSettingItem](./docs/ProjectSettingItem.md)
- - [PrometheusConfig](./docs/PrometheusConfig.md)
  - [PushBasedLogExportProject](./docs/PushBasedLogExportProject.md)
  - [Raw](./docs/Raw.md)
  - [RegionSpec](./docs/RegionSpec.md)
@@ -605,6 +615,11 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [ServerlessTenantEndpoint](./docs/ServerlessTenantEndpoint.md)
  - [ServerlessTenantEndpointUpdate](./docs/ServerlessTenantEndpointUpdate.md)
  - [Source](./docs/Source.md)
+ - [StreamsConnection](./docs/StreamsConnection.md)
+ - [StreamsDataProcessRegion](./docs/StreamsDataProcessRegion.md)
+ - [StreamsKafkaAuthentication](./docs/StreamsKafkaAuthentication.md)
+ - [StreamsKafkaSecurity](./docs/StreamsKafkaSecurity.md)
+ - [StreamsTenant](./docs/StreamsTenant.md)
  - [SynonymSource](./docs/SynonymSource.md)
  - [SystemStatus](./docs/SystemStatus.md)
  - [TargetOrg](./docs/TargetOrg.md)
@@ -612,11 +627,11 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [Team](./docs/Team.md)
  - [TeamResponse](./docs/TeamResponse.md)
  - [TeamRole](./docs/TeamRole.md)
- - [TeamRoleAssignment](./docs/TeamRoleAssignment.md)
  - [TenantRestore](./docs/TenantRestore.md)
  - [ThridPartyIntegration](./docs/ThridPartyIntegration.md)
- - [ToggleableFeatureFlag](./docs/ToggleableFeatureFlag.md)
  - [TriggerIngestionPipelineRequest](./docs/TriggerIngestionPipelineRequest.md)
+ - [UpdateAtlasOrganizationApiKey](./docs/UpdateAtlasOrganizationApiKey.md)
+ - [UpdateAtlasProjectApiKey](./docs/UpdateAtlasProjectApiKey.md)
  - [UpdateCustomDBRole](./docs/UpdateCustomDBRole.md)
  - [UpdateGroupRolesForUser](./docs/UpdateGroupRolesForUser.md)
  - [UpdateOrgRolesForUser](./docs/UpdateOrgRolesForUser.md)

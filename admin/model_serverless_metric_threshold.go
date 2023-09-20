@@ -9,7 +9,7 @@ import (
 // ServerlessMetricThreshold Threshold for the metric that, when exceeded, triggers an alert. The metric threshold pertains to event types which reflects changes of measurements and metrics about the serverless database.
 type ServerlessMetricThreshold struct {
 	// Human-readable label that identifies the metric against which MongoDB Cloud checks the configured **metricThreshold.threshold**.
-	MetricName *string `json:"metricName,omitempty"`
+	MetricName string `json:"metricName"`
 	// MongoDB Cloud computes the current metric value as an average.
 	Mode *string `json:"mode,omitempty"`
 	// Comparison operator to apply when checking the current metric value.
@@ -24,8 +24,9 @@ type ServerlessMetricThreshold struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewServerlessMetricThreshold() *ServerlessMetricThreshold {
+func NewServerlessMetricThreshold(metricName string) *ServerlessMetricThreshold {
 	this := ServerlessMetricThreshold{}
+	this.MetricName = metricName
 	return &this
 }
 
@@ -37,37 +38,28 @@ func NewServerlessMetricThresholdWithDefaults() *ServerlessMetricThreshold {
 	return &this
 }
 
-// GetMetricName returns the MetricName field value if set, zero value otherwise
+// GetMetricName returns the MetricName field value
 func (o *ServerlessMetricThreshold) GetMetricName() string {
-	if o == nil || IsNil(o.MetricName) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.MetricName
+
+	return o.MetricName
 }
 
-// GetMetricNameOk returns a tuple with the MetricName field value if set, nil otherwise
+// GetMetricNameOk returns a tuple with the MetricName field value
 // and a boolean to check if the value has been set.
 func (o *ServerlessMetricThreshold) GetMetricNameOk() (*string, bool) {
-	if o == nil || IsNil(o.MetricName) {
+	if o == nil {
 		return nil, false
 	}
-
-	return o.MetricName, true
+	return &o.MetricName, true
 }
 
-// HasMetricName returns a boolean if a field has been set.
-func (o *ServerlessMetricThreshold) HasMetricName() bool {
-	if o != nil && !IsNil(o.MetricName) {
-		return true
-	}
-
-	return false
-}
-
-// SetMetricName gets a reference to the given string and assigns it to the MetricName field.
+// SetMetricName sets field value
 func (o *ServerlessMetricThreshold) SetMetricName(v string) {
-	o.MetricName = &v
+	o.MetricName = v
 }
 
 // GetMode returns the Mode field value if set, zero value otherwise
@@ -211,9 +203,7 @@ func (o ServerlessMetricThreshold) MarshalJSONWithoutReadOnly() ([]byte, error) 
 }
 func (o ServerlessMetricThreshold) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.MetricName) {
-		toSerialize["metricName"] = o.MetricName
-	}
+	toSerialize["metricName"] = o.MetricName
 	if !IsNil(o.Mode) {
 		toSerialize["mode"] = o.Mode
 	}
