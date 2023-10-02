@@ -21,7 +21,7 @@ jobs:
         run: |
           make clean_and_generate
       - name: Verify Changed files
-        uses: tj-actions/verify-changed-files@b7425dc4a49717a67584e41daffd6406900c6a96
+        uses: tj-actions/verify-changed-files@141fe36b0951f65646a8cf11786bef0ceab275bb
         id: verify-changed-files
         with:
           files: |

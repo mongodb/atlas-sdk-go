@@ -20,7 +20,7 @@ jobs:
           API_BASE_URL: ${{ secrets.MDB_CURRENT_API_PREVIEW_URL }}
           S3_BUCKET: ${{ secrets.MDB_CURRENT_API_PREVIEW_S3_BUCKET }}
       - name: Verify Changed files
-        uses: tj-actions/verify-changed-files@b7425dc4a49717a67584e41daffd6406900c6a96
+        uses: tj-actions/verify-changed-files@141fe36b0951f65646a8cf11786bef0ceab275bb
         id: verify-changed-files
         with:
           files: |
