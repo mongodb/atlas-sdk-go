@@ -57,6 +57,8 @@ Each pull request containing generated code also includes review instructions.
 
 > NOTE: SDK update PRs require team reviews before the merge
 
+A complete workflow of the process from Atlas API release to SDK release can be found in [SDK Generation Workflow](./tools/README.md#sdk-generation-workflow). 
+
 See [./tools/releaser](./tools/releaser) for more information.
 
 ## Examples
