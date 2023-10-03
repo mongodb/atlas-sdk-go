@@ -5,8 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AuthorizedEmail** | **string** | Email address of the user who authorized to updated the Backup Compliance Policy  settings. | 
-**AuthorizedUserFirstName** | Pointer to **string** | First name of the user who authorized to updated the Backup Compliance Policy  settings. | [optional] 
-**AuthorizedUserLastName** | Pointer to **string** | Last name of the user who authorized to updated the Backup Compliance Policy  settings. | [optional] 
 **CopyProtectionEnabled** | Pointer to **bool** | Flag that indicates whether to enable additional backup copies for the cluster. If unspecified, this value defaults to false. | [optional] [default to false]
 **EncryptionAtRestEnabled** | Pointer to **bool** | Flag that indicates whether Encryption at Rest using Customer Key  Management is required for all clusters with a Backup Compliance Policy. If unspecified, this value defaults to false. | [optional] [default to false]
 **OnDemandPolicyItem** | Pointer to [**DiskBackupApiPolicyItem**](DiskBackupApiPolicyItem.md) |  | [optional] 
@@ -56,54 +54,6 @@ and a boolean to check if the value has been set.
 
 SetAuthorizedEmail sets AuthorizedEmail field to given value.
 
-### GetAuthorizedUserFirstName
-
-`func (o *DataProtectionSettings) GetAuthorizedUserFirstName() string`
-
-GetAuthorizedUserFirstName returns the AuthorizedUserFirstName field if non-nil, zero value otherwise.
-
-### GetAuthorizedUserFirstNameOk
-
-`func (o *DataProtectionSettings) GetAuthorizedUserFirstNameOk() (*string, bool)`
-
-GetAuthorizedUserFirstNameOk returns a tuple with the AuthorizedUserFirstName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAuthorizedUserFirstName
-
-`func (o *DataProtectionSettings) SetAuthorizedUserFirstName(v string)`
-
-SetAuthorizedUserFirstName sets AuthorizedUserFirstName field to given value.
-
-### HasAuthorizedUserFirstName
-
-`func (o *DataProtectionSettings) HasAuthorizedUserFirstName() bool`
-
-HasAuthorizedUserFirstName returns a boolean if a field has been set.
-### GetAuthorizedUserLastName
-
-`func (o *DataProtectionSettings) GetAuthorizedUserLastName() string`
-
-GetAuthorizedUserLastName returns the AuthorizedUserLastName field if non-nil, zero value otherwise.
-
-### GetAuthorizedUserLastNameOk
-
-`func (o *DataProtectionSettings) GetAuthorizedUserLastNameOk() (*string, bool)`
-
-GetAuthorizedUserLastNameOk returns a tuple with the AuthorizedUserLastName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAuthorizedUserLastName
-
-`func (o *DataProtectionSettings) SetAuthorizedUserLastName(v string)`
-
-SetAuthorizedUserLastName sets AuthorizedUserLastName field to given value.
-
-### HasAuthorizedUserLastName
-
-`func (o *DataProtectionSettings) HasAuthorizedUserLastName() bool`
-
-HasAuthorizedUserLastName returns a boolean if a field has been set.
 ### GetCopyProtectionEnabled
 
 `func (o *DataProtectionSettings) GetCopyProtectionEnabled() bool`

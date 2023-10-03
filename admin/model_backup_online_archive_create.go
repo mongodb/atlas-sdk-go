@@ -15,10 +15,9 @@ type BackupOnlineArchiveCreate struct {
 	// Human-readable label that identifies the collection for which you created the online archive.
 	CollName string `json:"collName"`
 	// Classification of MongoDB database collection that you want to return.  If you set this parameter to `TIMESERIES`, set `\"criteria.type\" : \"date\"` and `\"criteria.dateFormat\" : \"ISODATE\"`.
-	CollectionType     *string             `json:"collectionType,omitempty"`
-	Criteria           Criteria            `json:"criteria"`
-	DataExpirationRule *DataExpirationRule `json:"dataExpirationRule,omitempty"`
-	DataProcessRegion  *DataProcessRegion  `json:"dataProcessRegion,omitempty"`
+	CollectionType    *string            `json:"collectionType,omitempty"`
+	Criteria          Criteria           `json:"criteria"`
+	DataProcessRegion *DataProcessRegion `json:"dataProcessRegion,omitempty"`
 	// Human-readable label that identifies the dataset that Atlas generates for this online archive.
 	DataSetName *string `json:"dataSetName,omitempty"`
 	// Human-readable label of the database that contains the collection that contains the online archive.
@@ -203,39 +202,6 @@ func (o *BackupOnlineArchiveCreate) GetCriteriaOk() (*Criteria, bool) {
 // SetCriteria sets field value
 func (o *BackupOnlineArchiveCreate) SetCriteria(v Criteria) {
 	o.Criteria = v
-}
-
-// GetDataExpirationRule returns the DataExpirationRule field value if set, zero value otherwise
-func (o *BackupOnlineArchiveCreate) GetDataExpirationRule() DataExpirationRule {
-	if o == nil || IsNil(o.DataExpirationRule) {
-		var ret DataExpirationRule
-		return ret
-	}
-	return *o.DataExpirationRule
-}
-
-// GetDataExpirationRuleOk returns a tuple with the DataExpirationRule field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BackupOnlineArchiveCreate) GetDataExpirationRuleOk() (*DataExpirationRule, bool) {
-	if o == nil || IsNil(o.DataExpirationRule) {
-		return nil, false
-	}
-
-	return o.DataExpirationRule, true
-}
-
-// HasDataExpirationRule returns a boolean if a field has been set.
-func (o *BackupOnlineArchiveCreate) HasDataExpirationRule() bool {
-	if o != nil && !IsNil(o.DataExpirationRule) {
-		return true
-	}
-
-	return false
-}
-
-// SetDataExpirationRule gets a reference to the given DataExpirationRule and assigns it to the DataExpirationRule field.
-func (o *BackupOnlineArchiveCreate) SetDataExpirationRule(v DataExpirationRule) {
-	o.DataExpirationRule = &v
 }
 
 // GetDataProcessRegion returns the DataProcessRegion field value if set, zero value otherwise
@@ -507,9 +473,6 @@ func (o BackupOnlineArchiveCreate) ToMap() (map[string]interface{}, error) {
 		toSerialize["collectionType"] = o.CollectionType
 	}
 	toSerialize["criteria"] = o.Criteria
-	if !IsNil(o.DataExpirationRule) {
-		toSerialize["dataExpirationRule"] = o.DataExpirationRule
-	}
 	if !IsNil(o.DataProcessRegion) {
 		toSerialize["dataProcessRegion"] = o.DataProcessRegion
 	}
