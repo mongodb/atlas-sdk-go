@@ -22,10 +22,11 @@ else
 	echo "Resource Version is not up to date. Changing major version."
 	NEW_MAJOR_VERSION="${NEW_RESOURCE_VERSION}001"
 	SDK_VERSION="v${NEW_MAJOR_VERSION}.0.0" 
-	echo "Modifying $NEW_RESOURCE_VERSION to $SDK_RESOURCE_VERSION Resource Version across the repository."
+	echo "Modifying all instances of version from $SDK_RESOURCE_VERSION to $NEW_RESOURCE_VERSION across the repository."
 	npm exec -c "replace-in-file /$SDK_MAJOR_VERSION/g $NEW_MAJOR_VERSION $VERSION_UPDATE_PATHS --isRegex"
-	echo "Creating empty breaking changes file for $SDK_MAJOR_VERSION"
-	touch "$script_path/../breaking_changes/${NEW_MAJOR_VERSION}.md"
+	echo "Creating empty breaking changes file for $NEW_MAJOR_VERSION"
+	echo "# Breaking Changes \n https://www.mongodb.com/docs/atlas/reference/api-resources-spec/changelog" \
+		> "$script_path/../breaking_changes/${BUMPED_MAJOR_VERSION}.md"
 fi 
 
 echo "Creating new version.go file with $SDK_VERSION and resource version: $NEW_RESOURCE_VERSION"
