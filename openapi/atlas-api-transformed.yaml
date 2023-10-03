@@ -23,8 +23,8 @@ info:
     url: https://creativecommons.org/licenses/by-nc-sa/3.0/us/
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
-  version: 2.0~6e54278ed8
-  x-xgen-sha: 6e54278ed80f8e54655f8d970425d6ee8247ae30
+  version: 2.0~25125b6b82
+  x-xgen-sha: 25125b6b82bba19248c3efaf514b32182c5adf84
 servers:
   - url: https://cloud.mongodb.com
 tags:
@@ -2273,19 +2273,19 @@ paths:
         - Cloud Backups
   "/api/atlas/v2/groups/{groupId}/backupCompliancePolicy":
     get:
-      description: Returns the Backup Compliance Policy settings with the specified
+      description: "Returns the Backup Compliance Policy settings with the specified
         project. To use this resource, the requesting API Key must have the
-        Project Owner role.
+        Project Owner role. Deprecated versions: v2-{2023-01-01}"
       operationId: getDataProtectionSettings
       parameters:
         - $ref: "#/components/parameters/groupId"
       responses:
         "200":
           content:
-            application/vnd.atlas.2023-01-01+json:
+            application/vnd.atlas.2023-10-01+json:
               schema:
                 $ref: "#/components/schemas/DataProtectionSettings"
-              x-xgen-version: 2023-01-01
+              x-xgen-version: 2023-10-01
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
@@ -2299,27 +2299,27 @@ paths:
       tags:
         - Cloud Backups
     put:
-      description: Updates the Backup Compliance Policy settings for the specified
+      description: "Updates the Backup Compliance Policy settings for the specified
         project. To use this resource, the requesting API Key must have the
-        Project Owner role.
+        Project Owner role. Deprecated versions: v2-{2023-01-01}"
       operationId: updateDataProtectionSettings
       parameters:
         - $ref: "#/components/parameters/groupId"
       requestBody:
         content:
-          application/vnd.atlas.2023-01-01+json:
+          application/vnd.atlas.2023-10-01+json:
             schema:
               $ref: "#/components/schemas/DataProtectionSettings"
-            x-xgen-version: 2023-01-01
+            x-xgen-version: 2023-10-01
         description: The new Backup Compliance Policy settings.
         required: true
       responses:
         "200":
           content:
-            application/vnd.atlas.2023-01-01+json:
+            application/vnd.atlas.2023-10-01+json:
               schema:
                 $ref: "#/components/schemas/DataProtectionSettings"
-              x-xgen-version: 2023-01-01
+              x-xgen-version: 2023-10-01
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
@@ -16529,6 +16529,8 @@ components:
             If you set this parameter to `TIMESERIES`, set `"criteria.type" : "date"` and `"criteria.dateFormat" : "ISODATE"`.
         criteria:
           $ref: "#/components/schemas/Criteria"
+        dataExpirationRule:
+          $ref: "#/components/schemas/DataExpirationRule"
         dataProcessRegion:
           $ref: "#/components/schemas/DataProcessRegion"
         dataSetName:
@@ -16638,6 +16640,8 @@ components:
             If you set this parameter to `TIMESERIES`, set `"criteria.type" : "date"` and `"criteria.dateFormat" : "ISODATE"`.
         criteria:
           $ref: "#/components/schemas/Criteria"
+        dataExpirationRule:
+          $ref: "#/components/schemas/DataExpirationRule"
         dataProcessRegion:
           $ref: "#/components/schemas/DataProcessRegion"
         dataSetName:
@@ -20333,6 +20337,14 @@ components:
           format: email
           description: Email address of the user who authorized to updated the Backup
             Compliance Policy  settings.
+        authorizedUserFirstName:
+          type: string
+          description: First name of the user who authorized to updated the Backup
+            Compliance Policy  settings.
+        authorizedUserLastName:
+          type: string
+          description: Last name of the user who authorized to updated the Backup
+            Compliance Policy  settings.
         copyProtectionEnabled:
           type: boolean
           default: false
@@ -21498,6 +21510,12 @@ components:
           writeOnly: true
         export:
           $ref: "#/components/schemas/AutoExportPolicy"
+        extraRetentionSettings:
+          type: array
+          description: List that contains a document for each extra retention setting item
+            in the desired backup policy.
+          items:
+            $ref: "#/components/schemas/ExtraRetentionSetting"
         links:
           type: array
           description: List of one or more Uniform Resource Locators (URLs) that point to
@@ -22109,6 +22127,17 @@ components:
           format: int32
           description: Total number of collections on the replica set to export.
           readOnly: true
+    ExtraRetentionSetting:
+      type: object
+      description: extra retention setting item in the desired backup policy.
+      properties:
+        frequencyType:
+          type: string
+          description: The frequency type for the extra retention settings for the cluster.
+        retentionDays:
+          type: integer
+          format: int32
+          description: The number of extra retention days for the cluster.
     FTSMetric:
       type: object
       description: Measurement of one Atlas Search status when MongoDB Atlas received
@@ -24992,34 +25021,6 @@ components:
           minLength: 24
           pattern: ^([a-f0-9]{24})$
           readOnly: true
-        endpointGroupName:
-          type: string
-          description: Human-readable label that identifies a set of endpoints.
-          externalDocs:
-            description: Google Cloud Forwarding Rule Concepts
-            url: https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts
-          readOnly: true
-        endpoints:
-          type: array
-          description: List of individual private endpoints that comprise this endpoint
-            group.
-          externalDocs:
-            description: Google Cloud Forwarding Rule Concepts
-            url: https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts
-          items:
-            $ref: "#/components/schemas/GCPConsumerForwardingRule"
-          readOnly: true
-        status:
-          type: string
-          description: >-
-            State of the Google Cloud network endpoint group when MongoDB Cloud
-            received this request.
-
-
-            Alternatively:
-
-            State of the Azure Private Link Service connection when MongoDB Cloud received this request.
-          readOnly: true
         privateEndpointConnectionName:
           type: string
           description: Human-readable label that MongoDB Cloud generates that identifies
@@ -25036,6 +25037,34 @@ components:
           description: Unique string that identifies the Azure private endpoint's network
             interface that someone added to this private endpoint service.
           example: /subscriptions/cba6d9c6-1d3f-3c11-03cb-c705d895e636/resourcegroups/qrRTqi4TSN)7yB5YLRjVDveH3.yLzpNR7Br0D3-SGrU3j0.0/providers/Microsoft.Network/privateEndpoints/pVP(vb(XeckpxtXzP0NaOsDjeWDbOK)DX8A2j2E_vBYL2.GEYIdln
+          readOnly: true
+        status:
+          type: string
+          description: >-
+            State of the Azure Private Link Service connection when MongoDB
+            Cloud received this request.
+
+
+            Alternatively:
+
+            State of the Google Cloud network endpoint group when MongoDB Cloud received this request.
+          readOnly: true
+        endpointGroupName:
+          type: string
+          description: Human-readable label that identifies a set of endpoints.
+          externalDocs:
+            description: Google Cloud Forwarding Rule Concepts
+            url: https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts
+          readOnly: true
+        endpoints:
+          type: array
+          description: List of individual private endpoints that comprise this endpoint
+            group.
+          externalDocs:
+            description: Google Cloud Forwarding Rule Concepts
+            url: https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts
+          items:
+            $ref: "#/components/schemas/GCPConsumerForwardingRule"
           readOnly: true
       required:
         - cloudProvider
@@ -27456,6 +27485,17 @@ components:
           description: 'Number of days after the value in the **criteria.dateField** when
             MongoDB Cloud archives data in the specified cluster. Set this
             parameter when you set **"criteria.type" : "DATE"**.'
+    DataExpirationRule:
+      type: object
+      description: Rule for specifying when data should be deleted from the archive.
+      properties:
+        expireAfterDays:
+          type: integer
+          format: int32
+          description: Number of days used in the date criteria for nominating documents
+            for deletion.
+          maximum: 9215
+          minimum: 7
     DataProcessRegion:
       type: object
       description: Settings to configure the region where you wish to store your
