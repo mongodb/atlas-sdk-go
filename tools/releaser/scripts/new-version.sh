@@ -25,7 +25,7 @@ else
 	echo "Modifying all instances of version from $SDK_RESOURCE_VERSION to $NEW_RESOURCE_VERSION across the repository."
 	npm exec -c "replace-in-file /$SDK_MAJOR_VERSION/g $NEW_MAJOR_VERSION $VERSION_UPDATE_PATHS --isRegex"
 	echo "Creating empty breaking changes file for $NEW_MAJOR_VERSION"
-	echo "# Breaking Changes \n https://www.mongodb.com/docs/atlas/reference/api-resources-spec/changelog" \
+	echo -e "# Breaking Changes \n https://www.mongodb.com/docs/atlas/reference/api-resources-spec/changelog" \
 		> "$script_path/../breaking_changes/${BUMPED_MAJOR_VERSION}.md"
 fi 
 

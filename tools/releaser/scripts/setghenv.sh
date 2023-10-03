@@ -25,7 +25,7 @@ RELEASE_NOTES=$(envsubst < "$script_path/../templates/RELEASE_NOTES.tmpl")
 breaking_changes_path="$script_path/../breaking_changes/${SDK_MAJOR_VERSION}.md"
 if [ -f "$breaking_changes_path" ]; then
    echo "Found breaking changes file for $SDK_MAJOR_VERSION"
-   BREAKING_CHANGES=$(cat $breaking_changes_path)
+   BREAKING_CHANGES=$(cat "$breaking_changes_path")
    RELEASE_NOTES=$(echo -e "${RELEASE_NOTES}\n\n${BREAKING_CHANGES}")
 fi
 
