@@ -23,6 +23,7 @@ if [ "$NEW_RESOURCE_VERSION" == "$SDK_RESOURCE_VERSION" ]; then
 	source "$script_path/breaking-changes.sh"
 	if [ -n "$BREAKING_CHANGES" ]; then
 		echo "BREAKING CHANGES DETECTED FOR NON MAJOR VERSION BUMP"
+		# shellcheck source=/dev/null
 		source "$script_path/update-version.sh"
 		exit 0;
 	fi
