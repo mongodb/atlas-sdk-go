@@ -64,7 +64,7 @@ jobs:
             ## Manual Review Procedure
 
             1. Review changes in the OpenAPI file (openapi/atlas-api.yaml)
-            2. If we see any breaking changes [without a new resource version](https://github.com/mongodb/atlas-sdk-go/blob/main/docs/doc_1_concepts.md#example-version-v2023020100100) .
+            2. If we see any breaking changes [without a new resource version](https://github.com/mongodb/atlas-sdk-go/tree/main/tools/releaser#new-resource-version) .
               - View the log of breaking changes in the `Detect Breaking Changes` action
               - Checkout PR locally and run `make update-version`
               - Provide breaking changes information in generated `./releaser/breaking_changes/{release_version}.md` file
