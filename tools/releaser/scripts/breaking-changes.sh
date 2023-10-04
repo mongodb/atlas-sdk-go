@@ -18,7 +18,6 @@ BREAKING_CHANGES=$("$GOPATH/bin/go-apidiff" "$GIT_BASE_REF" --compare-imports="f
 
 if [ -z "$BREAKING_CHANGES" ]; then
   echo "No breaking changes detected"
-  exit 0
 else
   if [ -z "$TARGET_BREAKING_CHANGES_FILE" ]; then
     echo "Breaking changes detected"
