@@ -7,8 +7,6 @@ GOPATH=$(go env GOPATH)
 # Usually "${{ github.event.pull_request.base.sha || github.event.merge_group.base_sha }}" 
 # TARGET_BREAKING_CHANGES_FILE - file to save breaking changes
 script_path=$(dirname "$0")
-# shellcheck source=/dev/null
-
 
 echo "Installing go-apidiff"
 go install github.com/joelanford/go-apidiff@latest
