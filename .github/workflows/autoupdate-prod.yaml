@@ -33,7 +33,7 @@ jobs:
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         working-directory: ./tools
         env: 
-          GIT_BASE_REF: ${{ github.event.pull_request.base.sha || github.event.merge_group.base_sha }}
+          GIT_BASE_REF: origin/main
         run: |
           make new-release  
       - uses: peter-evans/create-pull-request@v5

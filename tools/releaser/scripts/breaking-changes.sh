@@ -11,7 +11,9 @@ script_path=$(dirname "$0")
 echo "Installing go-apidiff"
 go install github.com/joelanford/go-apidiff@latest
 
-echo "Running breaking changes check"
+GIT_BASE_REF=${GIT_BASE_REF:-"origin/main"}
+
+echo "Running breaking changes check for $GIT_BASE_REF"
 BREAKING_CHANGES=$("$GOPATH/bin/go-apidiff" "$GIT_BASE_REF" --compare-imports="false" --print-compatible="false" --repo-path="../")
 
 if [ -z "$BREAKING_CHANGES" ]; then
