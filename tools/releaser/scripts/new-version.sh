@@ -31,8 +31,7 @@ else
 	# Update the SDK_VERSION
 	echo "Resource Version is not up to date. Changing major version."
 	NEW_MAJOR_VERSION="v${NEW_RESOURCE_VERSION}001"
-	SDK_VERSION="v${NEW_MAJOR_VERSION}.0.0" 
-
+	SDK_VERSION="${NEW_MAJOR_VERSION}.0.0" 
 	echo "generate breaking changes file"	
 	export TARGET_BREAKING_CHANGES_FILE=${NEW_MAJOR_VERSION}
 	# shellcheck source=/dev/null
