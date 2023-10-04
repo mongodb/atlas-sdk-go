@@ -39,7 +39,7 @@ For the new Resource Version introduced in the versions.json
 
 ### Breaking Changes Release
 
-In situations when breaking changes are present automation will recognize them and automatically create major version bump. 
+In situations when breaking changes are present automation will recognize them and automatically create major version bump.
 
 - Automatically bump the Major version in versions.go
 - Replace all occurrences of the Major version in the repository
