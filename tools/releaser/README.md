@@ -19,13 +19,6 @@ In situations where we do not want to perform automatic release please remove ch
 
 Manual release is possible by updating `./internal/core/version.go` file with minor version bump.
 
-## Manual Major Release
-
-For major releases (breaking changes) introduced outside new Resource Version.
-
-1. Run `make update-version` command
-2. Provide list of breaking changes in [BREAKING_CHANGES.md](https://github.com/mongodb/atlas-sdk-go/blob/main/BREAKING_CHANGES.md)
-
 ## Automation Process Internals
 
 Automation reads Resource Version in the `version.go` file and in the OpenAPI `versions.json`
@@ -37,17 +30,20 @@ For the new Resource Version introduced in the versions.json
 - Reset the minor version
 - Replace all occurrences of the Major version in the repository
 - Update versions in versions.go
+- Generate breaking changes file
 
-### New Generation
+### New SDK Generation without change in Rersource version
 
 - Issue new Minor release
 - Update versions in versions.go
 
-### Manual Breaking Changes Release
+### Breaking Changes Release
 
-- Read versions in versions.go
+In situations when breaking changes are present automation will recognize them and automatically create major version bump.
+
 - Automatically bump the Major version in versions.go
 - Replace all occurrences of the Major version in the repository
+- Generate breaking changes file
 
 ## Release Notes
 

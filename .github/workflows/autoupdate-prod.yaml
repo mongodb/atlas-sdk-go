@@ -32,6 +32,8 @@ jobs:
       - name: Release updates
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         working-directory: ./tools
+        env: 
+          GIT_BASE_REF: ${{ github.event.pull_request.base.sha || github.event.merge_group.base_sha }}
         run: |
           make new-release  
       - uses: peter-evans/create-pull-request@v5
@@ -64,14 +66,9 @@ jobs:
             ## Manual Review Procedure
 
             1. Review changes in the OpenAPI file (openapi/atlas-api.yaml)
-            2. If we see any breaking changes [without a new resource version](https://github.com/mongodb/atlas-sdk-go/tree/main/tools/releaser#new-resource-version).
-              - View the log of breaking changes in the `Detect Breaking Changes` action
-              - Checkout PR locally and run `make update-version`
-              - Provide breaking changes information in generated `./releaser/breaking_changes/{release_version}.md` file
-              - Push your changes directly to the automation PR. 
-            3. If we have a major version release request feedback from additional reviewers if possible.
-            4. Merge PR into the main branch 
-            5. After the merge automated release process will be triggered. 
+            2. Review breaking changes information in generated `./releaser/breaking_changes/{release_version}.md` file
+            3. Merge PR into the main branch 
+            4. After the merge automated release process will be triggered. 
             
           
 
