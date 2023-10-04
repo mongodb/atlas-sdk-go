@@ -30,7 +30,7 @@ if [ "$NEW_RESOURCE_VERSION" == "$SDK_RESOURCE_VERSION" ]; then
 else	 
 	# Update the SDK_VERSION
 	echo "Resource Version is not up to date. Changing major version."
-	NEW_MAJOR_VERSION="${NEW_RESOURCE_VERSION}001"
+	NEW_MAJOR_VERSION="v${NEW_RESOURCE_VERSION}001"
 	SDK_VERSION="v${NEW_MAJOR_VERSION}.0.0" 
 
 	echo "generate breaking changes file"	
@@ -40,7 +40,6 @@ else
 
 	echo "Modifying all instances of version from $SDK_RESOURCE_VERSION to $NEW_RESOURCE_VERSION across the repository."
 	npm exec -c "replace-in-file /$SDK_MAJOR_VERSION/g $NEW_MAJOR_VERSION $VERSION_UPDATE_PATHS --isRegex"
-	echo "Creating empty breaking changes file for $NEW_MAJOR_VERSION"
 fi 
 
 echo "Creating new version.go file with $SDK_VERSION and resource version: $NEW_RESOURCE_VERSION"
