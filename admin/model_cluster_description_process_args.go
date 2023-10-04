@@ -14,7 +14,8 @@ type ClusterDescriptionProcessArgs struct {
 	DefaultReadConcern *string `json:"defaultReadConcern,omitempty"`
 	// Default level of acknowledgment requested from MongoDB for write operations set for this cluster.  MongoDB 4.4 clusters default to `1`. MongoDB 5.0 and later clusters default to `majority`.
 	DefaultWriteConcern *string `json:"defaultWriteConcern,omitempty"`
-	// Flag that indicates whether you can insert or update documents where all indexed entries don't exceed 1024 bytes. If you set this to false, [mongod](https://docs.mongodb.com/upcoming/reference/program/mongod/#mongodb-binary-bin.mongod) writes documents that exceed this limit but doesn't index them.
+	// Flag that indicates whether you can insert or update documents where all indexed entries don't exceed 1024 bytes. If you set this to false, [mongod](https://docs.mongodb.com/upcoming/reference/program/mongod/#mongodb-binary-bin.mongod) writes documents that exceed this limit but doesn't index them. This parameter has been removed as of [MongoDB 4.4](https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.failIndexKeyTooLong).
+	// Deprecated
 	FailIndexKeyTooLong *bool `json:"failIndexKeyTooLong,omitempty"`
 	// Flag that indicates whether the cluster allows execution of operations that perform server-side executions of JavaScript.
 	JavascriptEnabled *bool `json:"javascriptEnabled,omitempty"`
@@ -187,6 +188,7 @@ func (o *ClusterDescriptionProcessArgs) SetDefaultWriteConcern(v string) {
 }
 
 // GetFailIndexKeyTooLong returns the FailIndexKeyTooLong field value if set, zero value otherwise
+// Deprecated
 func (o *ClusterDescriptionProcessArgs) GetFailIndexKeyTooLong() bool {
 	if o == nil || IsNil(o.FailIndexKeyTooLong) {
 		var ret bool
@@ -197,6 +199,7 @@ func (o *ClusterDescriptionProcessArgs) GetFailIndexKeyTooLong() bool {
 
 // GetFailIndexKeyTooLongOk returns a tuple with the FailIndexKeyTooLong field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *ClusterDescriptionProcessArgs) GetFailIndexKeyTooLongOk() (*bool, bool) {
 	if o == nil || IsNil(o.FailIndexKeyTooLong) {
 		return nil, false
@@ -215,6 +218,7 @@ func (o *ClusterDescriptionProcessArgs) HasFailIndexKeyTooLong() bool {
 }
 
 // SetFailIndexKeyTooLong gets a reference to the given bool and assigns it to the FailIndexKeyTooLong field.
+// Deprecated
 func (o *ClusterDescriptionProcessArgs) SetFailIndexKeyTooLong(v bool) {
 	o.FailIndexKeyTooLong = &v
 }

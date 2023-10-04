@@ -8,10 +8,12 @@ Name | Type | Description | Notes
 **BackupFrequencyType** | Pointer to **string** | Backup schedule interval of the Data Lake Pipeline. | [optional] [readonly] 
 **CreatedDate** | Pointer to **time.Time** | Timestamp that indicates when the pipeline run was created. | [optional] [readonly] 
 **DatasetName** | Pointer to **string** | Human-readable label that identifies the dataset that Atlas generates during this pipeline run. You can use this dataset as a &#x60;dataSource&#x60; in a Federated Database collection. | [optional] [readonly] 
+**DatasetRetentionPolicy** | Pointer to [**DatasetRetentionPolicy**](DatasetRetentionPolicy.md) |  | [optional] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the project. | [optional] [readonly] 
 **LastUpdatedDate** | Pointer to **time.Time** | Timestamp that indicates the last time that the pipeline run was updated. | [optional] [readonly] 
 **Phase** | Pointer to **string** | Processing phase of the Data Lake Pipeline. | [optional] [readonly] 
 **PipelineId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies a Data Lake Pipeline. | [optional] [readonly] 
+**ScheduledDeletionDate** | Pointer to **time.Time** | Timestamp that indicates when the pipeline run will expire and its dataset will be deleted. | [optional] [readonly] 
 **SnapshotId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the snapshot of a cluster. | [optional] [readonly] 
 **State** | Pointer to **string** | State of the pipeline run. | [optional] [readonly] 
 **Stats** | Pointer to [**PipelineRunStats**](PipelineRunStats.md) |  | [optional] 
@@ -131,6 +133,30 @@ SetDatasetName sets DatasetName field to given value.
 `func (o *IngestionPipelineRun) HasDatasetName() bool`
 
 HasDatasetName returns a boolean if a field has been set.
+### GetDatasetRetentionPolicy
+
+`func (o *IngestionPipelineRun) GetDatasetRetentionPolicy() DatasetRetentionPolicy`
+
+GetDatasetRetentionPolicy returns the DatasetRetentionPolicy field if non-nil, zero value otherwise.
+
+### GetDatasetRetentionPolicyOk
+
+`func (o *IngestionPipelineRun) GetDatasetRetentionPolicyOk() (*DatasetRetentionPolicy, bool)`
+
+GetDatasetRetentionPolicyOk returns a tuple with the DatasetRetentionPolicy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDatasetRetentionPolicy
+
+`func (o *IngestionPipelineRun) SetDatasetRetentionPolicy(v DatasetRetentionPolicy)`
+
+SetDatasetRetentionPolicy sets DatasetRetentionPolicy field to given value.
+
+### HasDatasetRetentionPolicy
+
+`func (o *IngestionPipelineRun) HasDatasetRetentionPolicy() bool`
+
+HasDatasetRetentionPolicy returns a boolean if a field has been set.
 ### GetGroupId
 
 `func (o *IngestionPipelineRun) GetGroupId() string`
@@ -227,6 +253,30 @@ SetPipelineId sets PipelineId field to given value.
 `func (o *IngestionPipelineRun) HasPipelineId() bool`
 
 HasPipelineId returns a boolean if a field has been set.
+### GetScheduledDeletionDate
+
+`func (o *IngestionPipelineRun) GetScheduledDeletionDate() time.Time`
+
+GetScheduledDeletionDate returns the ScheduledDeletionDate field if non-nil, zero value otherwise.
+
+### GetScheduledDeletionDateOk
+
+`func (o *IngestionPipelineRun) GetScheduledDeletionDateOk() (*time.Time, bool)`
+
+GetScheduledDeletionDateOk returns a tuple with the ScheduledDeletionDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScheduledDeletionDate
+
+`func (o *IngestionPipelineRun) SetScheduledDeletionDate(v time.Time)`
+
+SetScheduledDeletionDate sets ScheduledDeletionDate field to given value.
+
+### HasScheduledDeletionDate
+
+`func (o *IngestionPipelineRun) HasScheduledDeletionDate() bool`
+
+HasScheduledDeletionDate returns a boolean if a field has been set.
 ### GetSnapshotId
 
 `func (o *IngestionPipelineRun) GetSnapshotId() string`

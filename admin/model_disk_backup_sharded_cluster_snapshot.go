@@ -35,7 +35,7 @@ type DiskBackupShardedClusterSnapshot struct {
 	SnapshotType *string `json:"snapshotType,omitempty"`
 	// Human-readable label that indicates the stage of the backup process for this snapshot.
 	Status *string `json:"status,omitempty"`
-	// Number of bytes taken to store the backup snapshot.
+	// Number of bytes taken to store the backup at time of snapshot.
 	StorageSizeBytes *int64 `json:"storageSizeBytes,omitempty"`
 	// Human-readable label that categorizes the cluster as a replica set or sharded cluster.
 	Type *string `json:"type,omitempty"`
