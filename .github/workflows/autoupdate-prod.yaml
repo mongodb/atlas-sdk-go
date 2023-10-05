@@ -47,7 +47,7 @@ jobs:
         env:
           GIT_BASE_REF: ${{ github.sha }}
         run: |
-          make new-release  
+          npm install && make new-release  
       - uses: peter-evans/create-pull-request@v5
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         env:
