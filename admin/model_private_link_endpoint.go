@@ -18,18 +18,18 @@ type PrivateLinkEndpoint struct {
 	ConnectionStatus *string `json:"connectionStatus,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the interface endpoint.
 	InterfaceEndpointId *string `json:"interfaceEndpointId,omitempty"`
-	// Human-readable label that identifies a set of endpoints.
-	EndpointGroupName *string `json:"endpointGroupName,omitempty"`
-	// List of individual private endpoints that comprise this endpoint group.
-	Endpoints []GCPConsumerForwardingRule `json:"endpoints,omitempty"`
-	// State of the Google Cloud network endpoint group when MongoDB Cloud received this request.  Alternatively: State of the Azure Private Link Service connection when MongoDB Cloud received this request.
-	Status *string `json:"status,omitempty"`
 	// Human-readable label that MongoDB Cloud generates that identifies the private endpoint connection.
 	PrivateEndpointConnectionName *string `json:"privateEndpointConnectionName,omitempty"`
 	// IPv4 address of the private endpoint in your Azure VNet that someone added to this private endpoint service.
 	PrivateEndpointIPAddress *string `json:"privateEndpointIPAddress,omitempty"`
 	// Unique string that identifies the Azure private endpoint's network interface that someone added to this private endpoint service.
 	PrivateEndpointResourceId *string `json:"privateEndpointResourceId,omitempty"`
+	// State of the Azure Private Link Service connection when MongoDB Cloud received this request.  Alternatively: State of the Google Cloud network endpoint group when MongoDB Cloud received this request.
+	Status *string `json:"status,omitempty"`
+	// Human-readable label that identifies a set of endpoints.
+	EndpointGroupName *string `json:"endpointGroupName,omitempty"`
+	// List of individual private endpoints that comprise this endpoint group.
+	Endpoints []GCPConsumerForwardingRule `json:"endpoints,omitempty"`
 }
 
 // NewPrivateLinkEndpoint instantiates a new PrivateLinkEndpoint object
@@ -206,105 +206,6 @@ func (o *PrivateLinkEndpoint) SetInterfaceEndpointId(v string) {
 	o.InterfaceEndpointId = &v
 }
 
-// GetEndpointGroupName returns the EndpointGroupName field value if set, zero value otherwise
-func (o *PrivateLinkEndpoint) GetEndpointGroupName() string {
-	if o == nil || IsNil(o.EndpointGroupName) {
-		var ret string
-		return ret
-	}
-	return *o.EndpointGroupName
-}
-
-// GetEndpointGroupNameOk returns a tuple with the EndpointGroupName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PrivateLinkEndpoint) GetEndpointGroupNameOk() (*string, bool) {
-	if o == nil || IsNil(o.EndpointGroupName) {
-		return nil, false
-	}
-
-	return o.EndpointGroupName, true
-}
-
-// HasEndpointGroupName returns a boolean if a field has been set.
-func (o *PrivateLinkEndpoint) HasEndpointGroupName() bool {
-	if o != nil && !IsNil(o.EndpointGroupName) {
-		return true
-	}
-
-	return false
-}
-
-// SetEndpointGroupName gets a reference to the given string and assigns it to the EndpointGroupName field.
-func (o *PrivateLinkEndpoint) SetEndpointGroupName(v string) {
-	o.EndpointGroupName = &v
-}
-
-// GetEndpoints returns the Endpoints field value if set, zero value otherwise
-func (o *PrivateLinkEndpoint) GetEndpoints() []GCPConsumerForwardingRule {
-	if o == nil || IsNil(o.Endpoints) {
-		var ret []GCPConsumerForwardingRule
-		return ret
-	}
-	return o.Endpoints
-}
-
-// GetEndpointsOk returns a tuple with the Endpoints field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PrivateLinkEndpoint) GetEndpointsOk() ([]GCPConsumerForwardingRule, bool) {
-	if o == nil || IsNil(o.Endpoints) {
-		return nil, false
-	}
-
-	return o.Endpoints, true
-}
-
-// HasEndpoints returns a boolean if a field has been set.
-func (o *PrivateLinkEndpoint) HasEndpoints() bool {
-	if o != nil && !IsNil(o.Endpoints) {
-		return true
-	}
-
-	return false
-}
-
-// SetEndpoints gets a reference to the given []GCPConsumerForwardingRule and assigns it to the Endpoints field.
-func (o *PrivateLinkEndpoint) SetEndpoints(v []GCPConsumerForwardingRule) {
-	o.Endpoints = v
-}
-
-// GetStatus returns the Status field value if set, zero value otherwise
-func (o *PrivateLinkEndpoint) GetStatus() string {
-	if o == nil || IsNil(o.Status) {
-		var ret string
-		return ret
-	}
-	return *o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PrivateLinkEndpoint) GetStatusOk() (*string, bool) {
-	if o == nil || IsNil(o.Status) {
-		return nil, false
-	}
-
-	return o.Status, true
-}
-
-// HasStatus returns a boolean if a field has been set.
-func (o *PrivateLinkEndpoint) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *PrivateLinkEndpoint) SetStatus(v string) {
-	o.Status = &v
-}
-
 // GetPrivateEndpointConnectionName returns the PrivateEndpointConnectionName field value if set, zero value otherwise
 func (o *PrivateLinkEndpoint) GetPrivateEndpointConnectionName() string {
 	if o == nil || IsNil(o.PrivateEndpointConnectionName) {
@@ -402,6 +303,105 @@ func (o *PrivateLinkEndpoint) HasPrivateEndpointResourceId() bool {
 // SetPrivateEndpointResourceId gets a reference to the given string and assigns it to the PrivateEndpointResourceId field.
 func (o *PrivateLinkEndpoint) SetPrivateEndpointResourceId(v string) {
 	o.PrivateEndpointResourceId = &v
+}
+
+// GetStatus returns the Status field value if set, zero value otherwise
+func (o *PrivateLinkEndpoint) GetStatus() string {
+	if o == nil || IsNil(o.Status) {
+		var ret string
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PrivateLinkEndpoint) GetStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.Status) {
+		return nil, false
+	}
+
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *PrivateLinkEndpoint) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given string and assigns it to the Status field.
+func (o *PrivateLinkEndpoint) SetStatus(v string) {
+	o.Status = &v
+}
+
+// GetEndpointGroupName returns the EndpointGroupName field value if set, zero value otherwise
+func (o *PrivateLinkEndpoint) GetEndpointGroupName() string {
+	if o == nil || IsNil(o.EndpointGroupName) {
+		var ret string
+		return ret
+	}
+	return *o.EndpointGroupName
+}
+
+// GetEndpointGroupNameOk returns a tuple with the EndpointGroupName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PrivateLinkEndpoint) GetEndpointGroupNameOk() (*string, bool) {
+	if o == nil || IsNil(o.EndpointGroupName) {
+		return nil, false
+	}
+
+	return o.EndpointGroupName, true
+}
+
+// HasEndpointGroupName returns a boolean if a field has been set.
+func (o *PrivateLinkEndpoint) HasEndpointGroupName() bool {
+	if o != nil && !IsNil(o.EndpointGroupName) {
+		return true
+	}
+
+	return false
+}
+
+// SetEndpointGroupName gets a reference to the given string and assigns it to the EndpointGroupName field.
+func (o *PrivateLinkEndpoint) SetEndpointGroupName(v string) {
+	o.EndpointGroupName = &v
+}
+
+// GetEndpoints returns the Endpoints field value if set, zero value otherwise
+func (o *PrivateLinkEndpoint) GetEndpoints() []GCPConsumerForwardingRule {
+	if o == nil || IsNil(o.Endpoints) {
+		var ret []GCPConsumerForwardingRule
+		return ret
+	}
+	return o.Endpoints
+}
+
+// GetEndpointsOk returns a tuple with the Endpoints field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PrivateLinkEndpoint) GetEndpointsOk() ([]GCPConsumerForwardingRule, bool) {
+	if o == nil || IsNil(o.Endpoints) {
+		return nil, false
+	}
+
+	return o.Endpoints, true
+}
+
+// HasEndpoints returns a boolean if a field has been set.
+func (o *PrivateLinkEndpoint) HasEndpoints() bool {
+	if o != nil && !IsNil(o.Endpoints) {
+		return true
+	}
+
+	return false
+}
+
+// SetEndpoints gets a reference to the given []GCPConsumerForwardingRule and assigns it to the Endpoints field.
+func (o *PrivateLinkEndpoint) SetEndpoints(v []GCPConsumerForwardingRule) {
+	o.Endpoints = v
 }
 
 func (o PrivateLinkEndpoint) MarshalJSONWithoutReadOnly() ([]byte, error) {

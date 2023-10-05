@@ -20,6 +20,8 @@ type DiskBackupSnapshotSchedule struct {
 	// List that contains a document for each deleted copy setting whose backup copies you want to delete.
 	DeleteCopiedBackups []DeleteCopiedBackups `json:"deleteCopiedBackups,omitempty"`
 	Export              *AutoExportPolicy     `json:"export,omitempty"`
+	// List that contains a document for each extra retention setting item in the desired backup policy.
+	ExtraRetentionSettings []ExtraRetentionSetting `json:"extraRetentionSettings,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	Links []Link `json:"links,omitempty"`
 	// Date and time when MongoDB Cloud takes the next snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
@@ -251,6 +253,39 @@ func (o *DiskBackupSnapshotSchedule) HasExport() bool {
 // SetExport gets a reference to the given AutoExportPolicy and assigns it to the Export field.
 func (o *DiskBackupSnapshotSchedule) SetExport(v AutoExportPolicy) {
 	o.Export = &v
+}
+
+// GetExtraRetentionSettings returns the ExtraRetentionSettings field value if set, zero value otherwise
+func (o *DiskBackupSnapshotSchedule) GetExtraRetentionSettings() []ExtraRetentionSetting {
+	if o == nil || IsNil(o.ExtraRetentionSettings) {
+		var ret []ExtraRetentionSetting
+		return ret
+	}
+	return o.ExtraRetentionSettings
+}
+
+// GetExtraRetentionSettingsOk returns a tuple with the ExtraRetentionSettings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DiskBackupSnapshotSchedule) GetExtraRetentionSettingsOk() ([]ExtraRetentionSetting, bool) {
+	if o == nil || IsNil(o.ExtraRetentionSettings) {
+		return nil, false
+	}
+
+	return o.ExtraRetentionSettings, true
+}
+
+// HasExtraRetentionSettings returns a boolean if a field has been set.
+func (o *DiskBackupSnapshotSchedule) HasExtraRetentionSettings() bool {
+	if o != nil && !IsNil(o.ExtraRetentionSettings) {
+		return true
+	}
+
+	return false
+}
+
+// SetExtraRetentionSettings gets a reference to the given []ExtraRetentionSetting and assigns it to the ExtraRetentionSettings field.
+func (o *DiskBackupSnapshotSchedule) SetExtraRetentionSettings(v []ExtraRetentionSetting) {
+	o.ExtraRetentionSettings = v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -537,6 +572,9 @@ func (o DiskBackupSnapshotSchedule) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Export) {
 		toSerialize["export"] = o.Export
+	}
+	if !IsNil(o.ExtraRetentionSettings) {
+		toSerialize["extraRetentionSettings"] = o.ExtraRetentionSettings
 	}
 	if !IsNil(o.Policies) {
 		toSerialize["policies"] = o.Policies

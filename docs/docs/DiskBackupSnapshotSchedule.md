@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **CopySettings** | Pointer to [**[]DiskBackupCopySetting**](DiskBackupCopySetting.md) | List that contains a document for each copy setting item in the desired backup policy. | [optional] 
 **DeleteCopiedBackups** | Pointer to [**[]DeleteCopiedBackups**](DeleteCopiedBackups.md) | List that contains a document for each deleted copy setting whose backup copies you want to delete. | [optional] 
 **Export** | Pointer to [**AutoExportPolicy**](AutoExportPolicy.md) |  | [optional] 
+**ExtraRetentionSettings** | Pointer to [**[]ExtraRetentionSetting**](ExtraRetentionSetting.md) | List that contains a document for each extra retention setting item in the desired backup policy. | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **NextSnapshot** | Pointer to **time.Time** | Date and time when MongoDB Cloud takes the next snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **Policies** | Pointer to [**[]AdvancedDiskBackupSnapshotSchedulePolicy**](AdvancedDiskBackupSnapshotSchedulePolicy.md) | Rules set for this backup schedule. | [optional] 
@@ -182,6 +183,30 @@ SetExport sets Export field to given value.
 `func (o *DiskBackupSnapshotSchedule) HasExport() bool`
 
 HasExport returns a boolean if a field has been set.
+### GetExtraRetentionSettings
+
+`func (o *DiskBackupSnapshotSchedule) GetExtraRetentionSettings() []ExtraRetentionSetting`
+
+GetExtraRetentionSettings returns the ExtraRetentionSettings field if non-nil, zero value otherwise.
+
+### GetExtraRetentionSettingsOk
+
+`func (o *DiskBackupSnapshotSchedule) GetExtraRetentionSettingsOk() (*[]ExtraRetentionSetting, bool)`
+
+GetExtraRetentionSettingsOk returns a tuple with the ExtraRetentionSettings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtraRetentionSettings
+
+`func (o *DiskBackupSnapshotSchedule) SetExtraRetentionSettings(v []ExtraRetentionSetting)`
+
+SetExtraRetentionSettings sets ExtraRetentionSettings field to given value.
+
+### HasExtraRetentionSettings
+
+`func (o *DiskBackupSnapshotSchedule) HasExtraRetentionSettings() bool`
+
+HasExtraRetentionSettings returns a boolean if a field has been set.
 ### GetLinks
 
 `func (o *DiskBackupSnapshotSchedule) GetLinks() []Link`

@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Protocol** | Pointer to **string** | The protocol for the identity provider. | [optional] 
 **RequestBinding** | Pointer to **string** | SAML Authentication Request Protocol HTTP method binding (POST or REDIRECT) that Federated Authentication uses to send the authentication request. | [optional] 
 **ResponseSignatureAlgorithm** | Pointer to **string** | Signature algorithm that Federated Authentication uses to encrypt the identity provider signature. | [optional] 
+**Slug** | Pointer to **string** | Custom SSO Url for identity provider. | [optional] 
 **SsoDebugEnabled** | **bool** | Flag that indicates whether the identity provider has SSO debug enabled. | 
 **SsoUrl** | Pointer to **string** | Unique string that identifies the intended audience of the SAML assertion. | [optional] 
 **Status** | Pointer to **string** | String enum that indicates whether the identity provider is active. | [optional] 
@@ -227,6 +228,30 @@ SetResponseSignatureAlgorithm sets ResponseSignatureAlgorithm field to given val
 `func (o *SamlIdentityProviderUpdate) HasResponseSignatureAlgorithm() bool`
 
 HasResponseSignatureAlgorithm returns a boolean if a field has been set.
+### GetSlug
+
+`func (o *SamlIdentityProviderUpdate) GetSlug() string`
+
+GetSlug returns the Slug field if non-nil, zero value otherwise.
+
+### GetSlugOk
+
+`func (o *SamlIdentityProviderUpdate) GetSlugOk() (*string, bool)`
+
+GetSlugOk returns a tuple with the Slug field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSlug
+
+`func (o *SamlIdentityProviderUpdate) SetSlug(v string)`
+
+SetSlug sets Slug field to given value.
+
+### HasSlug
+
+`func (o *SamlIdentityProviderUpdate) HasSlug() bool`
+
+HasSlug returns a boolean if a field has been set.
 ### GetSsoDebugEnabled
 
 `func (o *SamlIdentityProviderUpdate) GetSsoDebugEnabled() bool`

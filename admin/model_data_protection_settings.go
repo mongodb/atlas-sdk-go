@@ -11,6 +11,10 @@ import (
 type DataProtectionSettings struct {
 	// Email address of the user who authorized to updated the Backup Compliance Policy  settings.
 	AuthorizedEmail string `json:"authorizedEmail"`
+	// First name of the user who authorized to updated the Backup Compliance Policy  settings.
+	AuthorizedUserFirstName *string `json:"authorizedUserFirstName,omitempty"`
+	// Last name of the user who authorized to updated the Backup Compliance Policy  settings.
+	AuthorizedUserLastName *string `json:"authorizedUserLastName,omitempty"`
 	// Flag that indicates whether to enable additional backup copies for the cluster. If unspecified, this value defaults to false.
 	CopyProtectionEnabled *bool `json:"copyProtectionEnabled,omitempty"`
 	// Flag that indicates whether Encryption at Rest using Customer Key  Management is required for all clusters with a Backup Compliance Policy. If unspecified, this value defaults to false.
@@ -84,6 +88,72 @@ func (o *DataProtectionSettings) GetAuthorizedEmailOk() (*string, bool) {
 // SetAuthorizedEmail sets field value
 func (o *DataProtectionSettings) SetAuthorizedEmail(v string) {
 	o.AuthorizedEmail = v
+}
+
+// GetAuthorizedUserFirstName returns the AuthorizedUserFirstName field value if set, zero value otherwise
+func (o *DataProtectionSettings) GetAuthorizedUserFirstName() string {
+	if o == nil || IsNil(o.AuthorizedUserFirstName) {
+		var ret string
+		return ret
+	}
+	return *o.AuthorizedUserFirstName
+}
+
+// GetAuthorizedUserFirstNameOk returns a tuple with the AuthorizedUserFirstName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DataProtectionSettings) GetAuthorizedUserFirstNameOk() (*string, bool) {
+	if o == nil || IsNil(o.AuthorizedUserFirstName) {
+		return nil, false
+	}
+
+	return o.AuthorizedUserFirstName, true
+}
+
+// HasAuthorizedUserFirstName returns a boolean if a field has been set.
+func (o *DataProtectionSettings) HasAuthorizedUserFirstName() bool {
+	if o != nil && !IsNil(o.AuthorizedUserFirstName) {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthorizedUserFirstName gets a reference to the given string and assigns it to the AuthorizedUserFirstName field.
+func (o *DataProtectionSettings) SetAuthorizedUserFirstName(v string) {
+	o.AuthorizedUserFirstName = &v
+}
+
+// GetAuthorizedUserLastName returns the AuthorizedUserLastName field value if set, zero value otherwise
+func (o *DataProtectionSettings) GetAuthorizedUserLastName() string {
+	if o == nil || IsNil(o.AuthorizedUserLastName) {
+		var ret string
+		return ret
+	}
+	return *o.AuthorizedUserLastName
+}
+
+// GetAuthorizedUserLastNameOk returns a tuple with the AuthorizedUserLastName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DataProtectionSettings) GetAuthorizedUserLastNameOk() (*string, bool) {
+	if o == nil || IsNil(o.AuthorizedUserLastName) {
+		return nil, false
+	}
+
+	return o.AuthorizedUserLastName, true
+}
+
+// HasAuthorizedUserLastName returns a boolean if a field has been set.
+func (o *DataProtectionSettings) HasAuthorizedUserLastName() bool {
+	if o != nil && !IsNil(o.AuthorizedUserLastName) {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthorizedUserLastName gets a reference to the given string and assigns it to the AuthorizedUserLastName field.
+func (o *DataProtectionSettings) SetAuthorizedUserLastName(v string) {
+	o.AuthorizedUserLastName = &v
 }
 
 // GetCopyProtectionEnabled returns the CopyProtectionEnabled field value if set, zero value otherwise
@@ -426,6 +496,12 @@ func (o DataProtectionSettings) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o DataProtectionSettings) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["authorizedEmail"] = o.AuthorizedEmail
+	if !IsNil(o.AuthorizedUserFirstName) {
+		toSerialize["authorizedUserFirstName"] = o.AuthorizedUserFirstName
+	}
+	if !IsNil(o.AuthorizedUserLastName) {
+		toSerialize["authorizedUserLastName"] = o.AuthorizedUserLastName
+	}
 	if !IsNil(o.CopyProtectionEnabled) {
 		toSerialize["copyProtectionEnabled"] = o.CopyProtectionEnabled
 	}

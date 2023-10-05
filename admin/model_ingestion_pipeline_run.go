@@ -16,7 +16,8 @@ type IngestionPipelineRun struct {
 	// Timestamp that indicates when the pipeline run was created.
 	CreatedDate *time.Time `json:"createdDate,omitempty"`
 	// Human-readable label that identifies the dataset that Atlas generates during this pipeline run. You can use this dataset as a `dataSource` in a Federated Database collection.
-	DatasetName *string `json:"datasetName,omitempty"`
+	DatasetName            *string                 `json:"datasetName,omitempty"`
+	DatasetRetentionPolicy *DatasetRetentionPolicy `json:"datasetRetentionPolicy,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project.
 	GroupId *string `json:"groupId,omitempty"`
 	// Timestamp that indicates the last time that the pipeline run was updated.
@@ -25,6 +26,8 @@ type IngestionPipelineRun struct {
 	Phase *string `json:"phase,omitempty"`
 	// Unique 24-hexadecimal character string that identifies a Data Lake Pipeline.
 	PipelineId *string `json:"pipelineId,omitempty"`
+	// Timestamp that indicates when the pipeline run will expire and its dataset will be deleted.
+	ScheduledDeletionDate *time.Time `json:"scheduledDeletionDate,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the snapshot of a cluster.
 	SnapshotId *string `json:"snapshotId,omitempty"`
 	// State of the pipeline run.
@@ -181,6 +184,39 @@ func (o *IngestionPipelineRun) SetDatasetName(v string) {
 	o.DatasetName = &v
 }
 
+// GetDatasetRetentionPolicy returns the DatasetRetentionPolicy field value if set, zero value otherwise
+func (o *IngestionPipelineRun) GetDatasetRetentionPolicy() DatasetRetentionPolicy {
+	if o == nil || IsNil(o.DatasetRetentionPolicy) {
+		var ret DatasetRetentionPolicy
+		return ret
+	}
+	return *o.DatasetRetentionPolicy
+}
+
+// GetDatasetRetentionPolicyOk returns a tuple with the DatasetRetentionPolicy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IngestionPipelineRun) GetDatasetRetentionPolicyOk() (*DatasetRetentionPolicy, bool) {
+	if o == nil || IsNil(o.DatasetRetentionPolicy) {
+		return nil, false
+	}
+
+	return o.DatasetRetentionPolicy, true
+}
+
+// HasDatasetRetentionPolicy returns a boolean if a field has been set.
+func (o *IngestionPipelineRun) HasDatasetRetentionPolicy() bool {
+	if o != nil && !IsNil(o.DatasetRetentionPolicy) {
+		return true
+	}
+
+	return false
+}
+
+// SetDatasetRetentionPolicy gets a reference to the given DatasetRetentionPolicy and assigns it to the DatasetRetentionPolicy field.
+func (o *IngestionPipelineRun) SetDatasetRetentionPolicy(v DatasetRetentionPolicy) {
+	o.DatasetRetentionPolicy = &v
+}
+
 // GetGroupId returns the GroupId field value if set, zero value otherwise
 func (o *IngestionPipelineRun) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
@@ -313,6 +349,39 @@ func (o *IngestionPipelineRun) SetPipelineId(v string) {
 	o.PipelineId = &v
 }
 
+// GetScheduledDeletionDate returns the ScheduledDeletionDate field value if set, zero value otherwise
+func (o *IngestionPipelineRun) GetScheduledDeletionDate() time.Time {
+	if o == nil || IsNil(o.ScheduledDeletionDate) {
+		var ret time.Time
+		return ret
+	}
+	return *o.ScheduledDeletionDate
+}
+
+// GetScheduledDeletionDateOk returns a tuple with the ScheduledDeletionDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IngestionPipelineRun) GetScheduledDeletionDateOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.ScheduledDeletionDate) {
+		return nil, false
+	}
+
+	return o.ScheduledDeletionDate, true
+}
+
+// HasScheduledDeletionDate returns a boolean if a field has been set.
+func (o *IngestionPipelineRun) HasScheduledDeletionDate() bool {
+	if o != nil && !IsNil(o.ScheduledDeletionDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetScheduledDeletionDate gets a reference to the given time.Time and assigns it to the ScheduledDeletionDate field.
+func (o *IngestionPipelineRun) SetScheduledDeletionDate(v time.Time) {
+	o.ScheduledDeletionDate = &v
+}
+
 // GetSnapshotId returns the SnapshotId field value if set, zero value otherwise
 func (o *IngestionPipelineRun) GetSnapshotId() string {
 	if o == nil || IsNil(o.SnapshotId) {
@@ -421,6 +490,9 @@ func (o IngestionPipelineRun) MarshalJSONWithoutReadOnly() ([]byte, error) {
 }
 func (o IngestionPipelineRun) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.DatasetRetentionPolicy) {
+		toSerialize["datasetRetentionPolicy"] = o.DatasetRetentionPolicy
+	}
 	if !IsNil(o.Stats) {
 		toSerialize["stats"] = o.Stats
 	}

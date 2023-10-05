@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Roles** | Pointer to **[]string** | One or more organization or project level roles to assign to the MongoDB Cloud user. | [optional] 
+**GroupRoleAssignments** | Pointer to [**[]OrganizationInvitationGroupRoleAssignmentsRequest**](OrganizationInvitationGroupRoleAssignmentsRequest.md) |  | [optional] 
+**Roles** | Pointer to **[]string** | One or more organization level roles to assign to the MongoDB Cloud user. | [optional] 
 **TeamIds** | Pointer to **[]string** | List of teams to which you want to invite the desired MongoDB Cloud user. | [optional] 
 **Username** | Pointer to **string** | Email address that belongs to the desired MongoDB Cloud user. | [optional] 
 
@@ -27,6 +28,30 @@ NewOrganizationInvitationRequestWithDefaults instantiates a new OrganizationInvi
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetGroupRoleAssignments
+
+`func (o *OrganizationInvitationRequest) GetGroupRoleAssignments() []OrganizationInvitationGroupRoleAssignmentsRequest`
+
+GetGroupRoleAssignments returns the GroupRoleAssignments field if non-nil, zero value otherwise.
+
+### GetGroupRoleAssignmentsOk
+
+`func (o *OrganizationInvitationRequest) GetGroupRoleAssignmentsOk() (*[]OrganizationInvitationGroupRoleAssignmentsRequest, bool)`
+
+GetGroupRoleAssignmentsOk returns a tuple with the GroupRoleAssignments field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroupRoleAssignments
+
+`func (o *OrganizationInvitationRequest) SetGroupRoleAssignments(v []OrganizationInvitationGroupRoleAssignmentsRequest)`
+
+SetGroupRoleAssignments sets GroupRoleAssignments field to given value.
+
+### HasGroupRoleAssignments
+
+`func (o *OrganizationInvitationRequest) HasGroupRoleAssignments() bool`
+
+HasGroupRoleAssignments returns a boolean if a field has been set.
 ### GetRoles
 
 `func (o *OrganizationInvitationRequest) GetRoles() []string`

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **CollName** | Pointer to **string** | Human-readable label that identifies the collection for which you created the online archive. | [optional] 
 **CollectionType** | Pointer to **string** | Classification of MongoDB database collection that you want to return.  If you set this parameter to &#x60;TIMESERIES&#x60;, set &#x60;\&quot;criteria.type\&quot; : \&quot;date\&quot;&#x60; and &#x60;\&quot;criteria.dateFormat\&quot; : \&quot;ISODATE\&quot;&#x60;. | [optional] [default to "STANDARD"]
 **Criteria** | Pointer to [**Criteria**](Criteria.md) |  | [optional] 
+**DataExpirationRule** | Pointer to [**DataExpirationRule**](DataExpirationRule.md) |  | [optional] 
 **DataProcessRegion** | Pointer to [**DataProcessRegion**](DataProcessRegion.md) |  | [optional] 
 **DataSetName** | Pointer to **string** | Human-readable label that identifies the dataset that Atlas generates for this online archive. | [optional] [readonly] 
 **DbName** | Pointer to **string** | Human-readable label of the database that contains the collection that contains the online archive. | [optional] 
@@ -157,6 +158,30 @@ SetCriteria sets Criteria field to given value.
 `func (o *BackupOnlineArchive) HasCriteria() bool`
 
 HasCriteria returns a boolean if a field has been set.
+### GetDataExpirationRule
+
+`func (o *BackupOnlineArchive) GetDataExpirationRule() DataExpirationRule`
+
+GetDataExpirationRule returns the DataExpirationRule field if non-nil, zero value otherwise.
+
+### GetDataExpirationRuleOk
+
+`func (o *BackupOnlineArchive) GetDataExpirationRuleOk() (*DataExpirationRule, bool)`
+
+GetDataExpirationRuleOk returns a tuple with the DataExpirationRule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDataExpirationRule
+
+`func (o *BackupOnlineArchive) SetDataExpirationRule(v DataExpirationRule)`
+
+SetDataExpirationRule sets DataExpirationRule field to given value.
+
+### HasDataExpirationRule
+
+`func (o *BackupOnlineArchive) HasDataExpirationRule() bool`
+
+HasDataExpirationRule returns a boolean if a field has been set.
 ### GetDataProcessRegion
 
 `func (o *BackupOnlineArchive) GetDataProcessRegion() DataProcessRegion`
