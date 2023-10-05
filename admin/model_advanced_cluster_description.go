@@ -27,7 +27,8 @@ type AdvancedClusterDescription struct {
 	GroupId *string `json:"groupId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the replication object for a zone in a Global Cluster. If you include existing zones in the request, you must specify this parameter. If you add a new zone to an existing Global Cluster, you may specify this parameter. The request deletes any existing zones in a Global Cluster that you exclude from the request.
 	Id *string `json:"id,omitempty"`
-	// Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels.  Cluster labels will be deprecated in a future release. We strongly recommend that you use [resource tags](https://dochub.mongodb.org/core/add-cluster-tag-atlas) instead.
+	// Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels.  Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use [resource tags](https://dochub.mongodb.org/core/add-cluster-tag-atlas) instead.
+	// Deprecated
 	Labels []ComponentLabel `json:"labels,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	Links []Link `json:"links,omitempty"`
@@ -423,6 +424,7 @@ func (o *AdvancedClusterDescription) SetId(v string) {
 }
 
 // GetLabels returns the Labels field value if set, zero value otherwise
+// Deprecated
 func (o *AdvancedClusterDescription) GetLabels() []ComponentLabel {
 	if o == nil || IsNil(o.Labels) {
 		var ret []ComponentLabel
@@ -433,6 +435,7 @@ func (o *AdvancedClusterDescription) GetLabels() []ComponentLabel {
 
 // GetLabelsOk returns a tuple with the Labels field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *AdvancedClusterDescription) GetLabelsOk() ([]ComponentLabel, bool) {
 	if o == nil || IsNil(o.Labels) {
 		return nil, false
@@ -451,6 +454,7 @@ func (o *AdvancedClusterDescription) HasLabels() bool {
 }
 
 // SetLabels gets a reference to the given []ComponentLabel and assigns it to the Labels field.
+// Deprecated
 func (o *AdvancedClusterDescription) SetLabels(v []ComponentLabel) {
 	o.Labels = v
 }

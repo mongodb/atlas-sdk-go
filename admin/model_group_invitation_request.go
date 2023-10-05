@@ -8,7 +8,7 @@ import (
 
 // GroupInvitationRequest struct for GroupInvitationRequest
 type GroupInvitationRequest struct {
-	// One or more organization or project level roles to assign to the MongoDB Cloud user.
+	// One or more project level roles to assign to the MongoDB Cloud user.
 	Roles []string `json:"roles,omitempty"`
 	// Email address of the MongoDB Cloud user invited to the specified project.
 	Username *string `json:"username,omitempty"`

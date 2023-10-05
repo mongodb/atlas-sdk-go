@@ -265,6 +265,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
 *ProjectIPAccessListApi* | [GetProjectIpAccessListStatus](./docs/ProjectIPAccessListApi.md#getprojectipaccessliststatus) | **Get** /api/atlas/v2/groups/{groupId}/accessList/{entryValue}/status | Return Status of One Project IP Access List Entry | Experimental
 *ProjectIPAccessListApi* | [GetProjectIpList](./docs/ProjectIPAccessListApi.md#getprojectiplist) | **Get** /api/atlas/v2/groups/{groupId}/accessList/{entryValue} | Return One Project IP Access List Entry | Stable
 *ProjectIPAccessListApi* | [ListProjectIpAccessLists](./docs/ProjectIPAccessListApi.md#listprojectipaccesslists) | **Get** /api/atlas/v2/groups/{groupId}/accessList | Return Project IP Access List | Stable
+*ProjectsApi* | [AddUserToProject](./docs/ProjectsApi.md#addusertoproject) | **Post** /api/atlas/v2/groups/{groupId}/access | Add One MongoDB Cloud User to One Project | Experimental
 *ProjectsApi* | [CreateProject](./docs/ProjectsApi.md#createproject) | **Post** /api/atlas/v2/groups | Create One Project | Stable
 *ProjectsApi* | [CreateProjectInvitation](./docs/ProjectsApi.md#createprojectinvitation) | **Post** /api/atlas/v2/groups/{groupId}/invites | Invite One MongoDB Cloud User to Join One Project | Stable
 *ProjectsApi* | [DeleteProject](./docs/ProjectsApi.md#deleteproject) | **Delete** /api/atlas/v2/groups/{groupId} | Remove One Project | Stable
@@ -429,6 +430,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [CreateOrganizationResponse](./docs/CreateOrganizationResponse.md)
  - [Criteria](./docs/Criteria.md)
  - [DBUserTLSX509Settings](./docs/DBUserTLSX509Settings.md)
+ - [DataExpirationRule](./docs/DataExpirationRule.md)
  - [DataFederationLimit](./docs/DataFederationLimit.md)
  - [DataFederationTenantQueryLimit](./docs/DataFederationTenantQueryLimit.md)
  - [DataLakeAWSCloudProviderConfig](./docs/DataLakeAWSCloudProviderConfig.md)
@@ -453,6 +455,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [DatabasePrivilegeAction](./docs/DatabasePrivilegeAction.md)
  - [DatabaseRollingIndexRequest](./docs/DatabaseRollingIndexRequest.md)
  - [DatabaseUserRole](./docs/DatabaseUserRole.md)
+ - [DatasetRetentionPolicy](./docs/DatasetRetentionPolicy.md)
  - [DedicatedHardwareSpec](./docs/DedicatedHardwareSpec.md)
  - [DeleteCopiedBackups](./docs/DeleteCopiedBackups.md)
  - [Destination](./docs/Destination.md)
@@ -475,6 +478,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [EventViewForNdsGroup](./docs/EventViewForNdsGroup.md)
  - [EventViewForOrg](./docs/EventViewForOrg.md)
  - [ExportStatus](./docs/ExportStatus.md)
+ - [ExtraRetentionSetting](./docs/ExtraRetentionSetting.md)
  - [FTSMetric](./docs/FTSMetric.md)
  - [FederatedUser](./docs/FederatedUser.md)
  - [FederationIdentityProvider](./docs/FederationIdentityProvider.md)
@@ -491,6 +495,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [GroupMaintenanceWindow](./docs/GroupMaintenanceWindow.md)
  - [GroupName](./docs/GroupName.md)
  - [GroupPaginatedEvent](./docs/GroupPaginatedEvent.md)
+ - [GroupRole](./docs/GroupRole.md)
  - [GroupSettings](./docs/GroupSettings.md)
  - [HardwareSpec](./docs/HardwareSpec.md)
  - [IndexOptions](./docs/IndexOptions.md)
@@ -532,6 +537,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [OrgGroup](./docs/OrgGroup.md)
  - [OrgPaginatedEvent](./docs/OrgPaginatedEvent.md)
  - [OrganizationInvitation](./docs/OrganizationInvitation.md)
+ - [OrganizationInvitationGroupRoleAssignmentsRequest](./docs/OrganizationInvitationGroupRoleAssignmentsRequest.md)
  - [OrganizationInvitationRequest](./docs/OrganizationInvitationRequest.md)
  - [OrganizationInvitationUpdateRequest](./docs/OrganizationInvitationUpdateRequest.md)
  - [OrganizationSettings](./docs/OrganizationSettings.md)

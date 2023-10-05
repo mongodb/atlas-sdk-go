@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CreatedAt** | Pointer to **time.Time** | Date and time when MongoDB Cloud sent the invitation. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC. | [optional] [readonly] 
 **ExpiresAt** | Pointer to **time.Time** | Date and time when the invitation from MongoDB Cloud expires. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC. | [optional] [readonly] 
+**GroupRoleAssignments** | Pointer to [**[]GroupRole**](GroupRole.md) |  | [optional] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies this organization. | [optional] [readonly] 
 **InviterUsername** | Pointer to **string** | Email address of the MongoDB Cloud user who sent the invitation to join the organization. | [optional] [readonly] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
@@ -82,6 +83,30 @@ SetExpiresAt sets ExpiresAt field to given value.
 `func (o *OrganizationInvitation) HasExpiresAt() bool`
 
 HasExpiresAt returns a boolean if a field has been set.
+### GetGroupRoleAssignments
+
+`func (o *OrganizationInvitation) GetGroupRoleAssignments() []GroupRole`
+
+GetGroupRoleAssignments returns the GroupRoleAssignments field if non-nil, zero value otherwise.
+
+### GetGroupRoleAssignmentsOk
+
+`func (o *OrganizationInvitation) GetGroupRoleAssignmentsOk() (*[]GroupRole, bool)`
+
+GetGroupRoleAssignmentsOk returns a tuple with the GroupRoleAssignments field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroupRoleAssignments
+
+`func (o *OrganizationInvitation) SetGroupRoleAssignments(v []GroupRole)`
+
+SetGroupRoleAssignments sets GroupRoleAssignments field to given value.
+
+### HasGroupRoleAssignments
+
+`func (o *OrganizationInvitation) HasGroupRoleAssignments() bool`
+
+HasGroupRoleAssignments returns a boolean if a field has been set.
 ### GetId
 
 `func (o *OrganizationInvitation) GetId() string`

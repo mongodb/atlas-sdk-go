@@ -12,7 +12,8 @@ type DataLakeIngestionPipeline struct {
 	// Unique 24-hexadecimal digit string that identifies the Data Lake Pipeline.
 	Id *string `json:"_id,omitempty"`
 	// Timestamp that indicates when the Data Lake Pipeline was created.
-	CreatedDate *time.Time `json:"createdDate,omitempty"`
+	CreatedDate            *time.Time              `json:"createdDate,omitempty"`
+	DatasetRetentionPolicy *DatasetRetentionPolicy `json:"datasetRetentionPolicy,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the group.
 	GroupId *string `json:"groupId,omitempty"`
 	// Timestamp that indicates the last time that the Data Lake Pipeline was updated.
@@ -108,6 +109,39 @@ func (o *DataLakeIngestionPipeline) HasCreatedDate() bool {
 // SetCreatedDate gets a reference to the given time.Time and assigns it to the CreatedDate field.
 func (o *DataLakeIngestionPipeline) SetCreatedDate(v time.Time) {
 	o.CreatedDate = &v
+}
+
+// GetDatasetRetentionPolicy returns the DatasetRetentionPolicy field value if set, zero value otherwise
+func (o *DataLakeIngestionPipeline) GetDatasetRetentionPolicy() DatasetRetentionPolicy {
+	if o == nil || IsNil(o.DatasetRetentionPolicy) {
+		var ret DatasetRetentionPolicy
+		return ret
+	}
+	return *o.DatasetRetentionPolicy
+}
+
+// GetDatasetRetentionPolicyOk returns a tuple with the DatasetRetentionPolicy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DataLakeIngestionPipeline) GetDatasetRetentionPolicyOk() (*DatasetRetentionPolicy, bool) {
+	if o == nil || IsNil(o.DatasetRetentionPolicy) {
+		return nil, false
+	}
+
+	return o.DatasetRetentionPolicy, true
+}
+
+// HasDatasetRetentionPolicy returns a boolean if a field has been set.
+func (o *DataLakeIngestionPipeline) HasDatasetRetentionPolicy() bool {
+	if o != nil && !IsNil(o.DatasetRetentionPolicy) {
+		return true
+	}
+
+	return false
+}
+
+// SetDatasetRetentionPolicy gets a reference to the given DatasetRetentionPolicy and assigns it to the DatasetRetentionPolicy field.
+func (o *DataLakeIngestionPipeline) SetDatasetRetentionPolicy(v DatasetRetentionPolicy) {
+	o.DatasetRetentionPolicy = &v
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -350,6 +384,9 @@ func (o DataLakeIngestionPipeline) MarshalJSONWithoutReadOnly() ([]byte, error) 
 }
 func (o DataLakeIngestionPipeline) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.DatasetRetentionPolicy) {
+		toSerialize["datasetRetentionPolicy"] = o.DatasetRetentionPolicy
+	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}

@@ -14,6 +14,29 @@ import (
 type ProjectsApi interface {
 
 	/*
+		AddUserToProject Add One MongoDB Cloud User to One Project
+
+		[experimental] Adds one MongoDB Cloud user to the specified project. If the MongoDB Cloud user is not a member of the project's organization, then the user must accept their invitation to the organization to access information within the specified project. To use this resource, the requesting API Key must have the Group User Admin role.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@return AddUserToProjectApiRequest
+	*/
+	AddUserToProject(ctx context.Context, groupId string, groupInvitationRequest *GroupInvitationRequest) AddUserToProjectApiRequest
+	/*
+		AddUserToProject Add One MongoDB Cloud User to One Project
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param AddUserToProjectApiParams - Parameters for the request
+		@return AddUserToProjectApiRequest
+	*/
+	AddUserToProjectWithParams(ctx context.Context, args *AddUserToProjectApiParams) AddUserToProjectApiRequest
+
+	// Interface only available internally
+	addUserToProjectExecute(r AddUserToProjectApiRequest) (*OrganizationInvitation, *http.Response, error)
+
+	/*
 		CreateProject Create One Project
 
 		Creates one project. Projects group clusters into logical collections that support an application environment, workload, or both. Each project can have its own users, teams, security, and alert settings. To use this resource, the requesting API Key must have the Read Write role.
@@ -43,6 +66,8 @@ type ProjectsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return CreateProjectInvitationApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsApi
 	*/
 	CreateProjectInvitation(ctx context.Context, groupId string, groupInvitationRequest *GroupInvitationRequest) CreateProjectInvitationApiRequest
 	/*
@@ -52,6 +77,8 @@ type ProjectsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param CreateProjectInvitationApiParams - Parameters for the request
 		@return CreateProjectInvitationApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsApi
 	*/
 	CreateProjectInvitationWithParams(ctx context.Context, args *CreateProjectInvitationApiParams) CreateProjectInvitationApiRequest
 
@@ -90,6 +117,8 @@ type ProjectsApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param invitationId Unique 24-hexadecimal digit string that identifies the invitation.
 		@return DeleteProjectInvitationApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsApi
 	*/
 	DeleteProjectInvitation(ctx context.Context, groupId string, invitationId string) DeleteProjectInvitationApiRequest
 	/*
@@ -99,6 +128,8 @@ type ProjectsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param DeleteProjectInvitationApiParams - Parameters for the request
 		@return DeleteProjectInvitationApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsApi
 	*/
 	DeleteProjectInvitationWithParams(ctx context.Context, args *DeleteProjectInvitationApiParams) DeleteProjectInvitationApiRequest
 
@@ -184,6 +215,8 @@ type ProjectsApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param invitationId Unique 24-hexadecimal digit string that identifies the invitation.
 		@return GetProjectInvitationApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsApi
 	*/
 	GetProjectInvitation(ctx context.Context, groupId string, invitationId string) GetProjectInvitationApiRequest
 	/*
@@ -193,6 +226,8 @@ type ProjectsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param GetProjectInvitationApiParams - Parameters for the request
 		@return GetProjectInvitationApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsApi
 	*/
 	GetProjectInvitationWithParams(ctx context.Context, args *GetProjectInvitationApiParams) GetProjectInvitationApiRequest
 
@@ -254,6 +289,8 @@ type ProjectsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return ListProjectInvitationsApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsApi
 	*/
 	ListProjectInvitations(ctx context.Context, groupId string) ListProjectInvitationsApiRequest
 	/*
@@ -263,6 +300,8 @@ type ProjectsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param ListProjectInvitationsApiParams - Parameters for the request
 		@return ListProjectInvitationsApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsApi
 	*/
 	ListProjectInvitationsWithParams(ctx context.Context, args *ListProjectInvitationsApiParams) ListProjectInvitationsApiRequest
 
@@ -418,6 +457,8 @@ type ProjectsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return UpdateProjectInvitationApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsApi
 	*/
 	UpdateProjectInvitation(ctx context.Context, groupId string, groupInvitationRequest *GroupInvitationRequest) UpdateProjectInvitationApiRequest
 	/*
@@ -427,6 +468,8 @@ type ProjectsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param UpdateProjectInvitationApiParams - Parameters for the request
 		@return UpdateProjectInvitationApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsApi
 	*/
 	UpdateProjectInvitationWithParams(ctx context.Context, args *UpdateProjectInvitationApiParams) UpdateProjectInvitationApiRequest
 
@@ -442,6 +485,8 @@ type ProjectsApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param invitationId Unique 24-hexadecimal digit string that identifies the invitation.
 		@return UpdateProjectInvitationByIdApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsApi
 	*/
 	UpdateProjectInvitationById(ctx context.Context, groupId string, invitationId string, groupInvitationUpdateRequest *GroupInvitationUpdateRequest) UpdateProjectInvitationByIdApiRequest
 	/*
@@ -451,6 +496,8 @@ type ProjectsApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param UpdateProjectInvitationByIdApiParams - Parameters for the request
 		@return UpdateProjectInvitationByIdApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsApi
 	*/
 	UpdateProjectInvitationByIdWithParams(ctx context.Context, args *UpdateProjectInvitationByIdApiParams) UpdateProjectInvitationByIdApiRequest
 
@@ -507,6 +554,145 @@ type ProjectsApi interface {
 
 // ProjectsApiService ProjectsApi service
 type ProjectsApiService service
+
+type AddUserToProjectApiRequest struct {
+	ctx                    context.Context
+	ApiService             ProjectsApi
+	groupId                string
+	groupInvitationRequest *GroupInvitationRequest
+}
+
+type AddUserToProjectApiParams struct {
+	GroupId                string
+	GroupInvitationRequest *GroupInvitationRequest
+}
+
+func (a *ProjectsApiService) AddUserToProjectWithParams(ctx context.Context, args *AddUserToProjectApiParams) AddUserToProjectApiRequest {
+	return AddUserToProjectApiRequest{
+		ApiService:             a,
+		ctx:                    ctx,
+		groupId:                args.GroupId,
+		groupInvitationRequest: args.GroupInvitationRequest,
+	}
+}
+
+func (r AddUserToProjectApiRequest) Execute() (*OrganizationInvitation, *http.Response, error) {
+	return r.ApiService.addUserToProjectExecute(r)
+}
+
+/*
+AddUserToProject Add One MongoDB Cloud User to One Project
+
+[experimental] Adds one MongoDB Cloud user to the specified project. If the MongoDB Cloud user is not a member of the project's organization, then the user must accept their invitation to the organization to access information within the specified project. To use this resource, the requesting API Key must have the Group User Admin role.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return AddUserToProjectApiRequest
+*/
+func (a *ProjectsApiService) AddUserToProject(ctx context.Context, groupId string, groupInvitationRequest *GroupInvitationRequest) AddUserToProjectApiRequest {
+	return AddUserToProjectApiRequest{
+		ApiService:             a,
+		ctx:                    ctx,
+		groupId:                groupId,
+		groupInvitationRequest: groupInvitationRequest,
+	}
+}
+
+// Execute executes the request
+//
+//	@return OrganizationInvitation
+func (a *ProjectsApiService) addUserToProjectExecute(r AddUserToProjectApiRequest) (*OrganizationInvitation, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *OrganizationInvitation
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.AddUserToProject")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/access"
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if strlen(r.groupId) < 24 {
+		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
+	}
+	if strlen(r.groupId) > 24 {
+		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
+	}
+	if r.groupInvitationRequest == nil {
+		return localVarReturnValue, nil, reportError("groupInvitationRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-02-01+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-02-01+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.groupInvitationRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		var v ApiError
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
+		newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
 
 type CreateProjectApiRequest struct {
 	ctx            context.Context
@@ -680,6 +866,8 @@ Invites one MongoDB Cloud user to join the specified project. The MongoDB Cloud 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateProjectInvitationApiRequest
+
+Deprecated
 */
 func (a *ProjectsApiService) CreateProjectInvitation(ctx context.Context, groupId string, groupInvitationRequest *GroupInvitationRequest) CreateProjectInvitationApiRequest {
 	return CreateProjectInvitationApiRequest{
@@ -693,6 +881,8 @@ func (a *ProjectsApiService) CreateProjectInvitation(ctx context.Context, groupI
 // Execute executes the request
 //
 //	@return GroupInvitation
+//
+// Deprecated
 func (a *ProjectsApiService) createProjectInvitationExecute(r CreateProjectInvitationApiRequest) (*GroupInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -950,6 +1140,8 @@ Cancels one pending invitation sent to the specified MongoDB Cloud user to join 
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param invitationId Unique 24-hexadecimal digit string that identifies the invitation.
 	@return DeleteProjectInvitationApiRequest
+
+Deprecated
 */
 func (a *ProjectsApiService) DeleteProjectInvitation(ctx context.Context, groupId string, invitationId string) DeleteProjectInvitationApiRequest {
 	return DeleteProjectInvitationApiRequest{
@@ -963,6 +1155,8 @@ func (a *ProjectsApiService) DeleteProjectInvitation(ctx context.Context, groupI
 // Execute executes the request
 //
 //	@return map[string]interface{}
+//
+// Deprecated
 func (a *ProjectsApiService) deleteProjectInvitationExecute(r DeleteProjectInvitationApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
@@ -1488,6 +1682,8 @@ Returns the details of one pending invitation to the specified project. To use t
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param invitationId Unique 24-hexadecimal digit string that identifies the invitation.
 	@return GetProjectInvitationApiRequest
+
+Deprecated
 */
 func (a *ProjectsApiService) GetProjectInvitation(ctx context.Context, groupId string, invitationId string) GetProjectInvitationApiRequest {
 	return GetProjectInvitationApiRequest{
@@ -1501,6 +1697,8 @@ func (a *ProjectsApiService) GetProjectInvitation(ctx context.Context, groupId s
 // Execute executes the request
 //
 //	@return GroupInvitation
+//
+// Deprecated
 func (a *ProjectsApiService) getProjectInvitationExecute(r GetProjectInvitationApiRequest) (*GroupInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1901,6 +2099,8 @@ Returns all pending invitations to the specified project. To use this resource, 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListProjectInvitationsApiRequest
+
+Deprecated
 */
 func (a *ProjectsApiService) ListProjectInvitations(ctx context.Context, groupId string) ListProjectInvitationsApiRequest {
 	return ListProjectInvitationsApiRequest{
@@ -1913,6 +2113,8 @@ func (a *ProjectsApiService) ListProjectInvitations(ctx context.Context, groupId
 // Execute executes the request
 //
 //	@return []GroupInvitation
+//
+// Deprecated
 func (a *ProjectsApiService) listProjectInvitationsExecute(r ListProjectInvitationsApiRequest) ([]GroupInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2959,6 +3161,8 @@ Updates the details of one pending invitation to the specified project. To speci
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return UpdateProjectInvitationApiRequest
+
+Deprecated
 */
 func (a *ProjectsApiService) UpdateProjectInvitation(ctx context.Context, groupId string, groupInvitationRequest *GroupInvitationRequest) UpdateProjectInvitationApiRequest {
 	return UpdateProjectInvitationApiRequest{
@@ -2972,6 +3176,8 @@ func (a *ProjectsApiService) UpdateProjectInvitation(ctx context.Context, groupI
 // Execute executes the request
 //
 //	@return GroupInvitation
+//
+// Deprecated
 func (a *ProjectsApiService) updateProjectInvitationExecute(r UpdateProjectInvitationApiRequest) (*GroupInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -3102,6 +3308,8 @@ Updates the details of one pending invitation to the specified project. To speci
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param invitationId Unique 24-hexadecimal digit string that identifies the invitation.
 	@return UpdateProjectInvitationByIdApiRequest
+
+Deprecated
 */
 func (a *ProjectsApiService) UpdateProjectInvitationById(ctx context.Context, groupId string, invitationId string, groupInvitationUpdateRequest *GroupInvitationUpdateRequest) UpdateProjectInvitationByIdApiRequest {
 	return UpdateProjectInvitationByIdApiRequest{
@@ -3116,6 +3324,8 @@ func (a *ProjectsApiService) UpdateProjectInvitationById(ctx context.Context, gr
 // Execute executes the request
 //
 //	@return GroupInvitation
+//
+// Deprecated
 func (a *ProjectsApiService) updateProjectInvitationByIdExecute(r UpdateProjectInvitationByIdApiRequest) (*GroupInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
