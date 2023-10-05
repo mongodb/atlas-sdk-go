@@ -22,6 +22,7 @@ export TARGET_BREAKING_CHANGES_FILE=${BUMPED_MAJOR_VERSION}
 source "$script_path/breaking-changes.sh"
 
 echo "Modifying $SDK_MAJOR_VERSION to $BUMPED_MAJOR_VERSION Resource Version across the repository."
+npm install
 npm exec -c "replace-in-file /$SDK_MAJOR_VERSION/g $BUMPED_MAJOR_VERSION $VERSION_UPDATE_PATHS --isRegex"
 
 ## Explicitly update version.go file
