@@ -8,7 +8,8 @@ import (
 
 // OrganizationInvitationUpdateRequest struct for OrganizationInvitationUpdateRequest
 type OrganizationInvitationUpdateRequest struct {
-	// One or more organization or project level roles to assign to the MongoDB Cloud user.
+	GroupRoleAssignments []OrganizationInvitationGroupRoleAssignmentsRequest `json:"groupRoleAssignments,omitempty"`
+	// One or more organization level roles to assign to the MongoDB Cloud user.
 	Roles []string `json:"roles,omitempty"`
 	// List of teams to which you want to invite the desired MongoDB Cloud user.
 	TeamIds []string `json:"teamIds,omitempty"`
@@ -29,6 +30,39 @@ func NewOrganizationInvitationUpdateRequest() *OrganizationInvitationUpdateReque
 func NewOrganizationInvitationUpdateRequestWithDefaults() *OrganizationInvitationUpdateRequest {
 	this := OrganizationInvitationUpdateRequest{}
 	return &this
+}
+
+// GetGroupRoleAssignments returns the GroupRoleAssignments field value if set, zero value otherwise
+func (o *OrganizationInvitationUpdateRequest) GetGroupRoleAssignments() []OrganizationInvitationGroupRoleAssignmentsRequest {
+	if o == nil || IsNil(o.GroupRoleAssignments) {
+		var ret []OrganizationInvitationGroupRoleAssignmentsRequest
+		return ret
+	}
+	return o.GroupRoleAssignments
+}
+
+// GetGroupRoleAssignmentsOk returns a tuple with the GroupRoleAssignments field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrganizationInvitationUpdateRequest) GetGroupRoleAssignmentsOk() ([]OrganizationInvitationGroupRoleAssignmentsRequest, bool) {
+	if o == nil || IsNil(o.GroupRoleAssignments) {
+		return nil, false
+	}
+
+	return o.GroupRoleAssignments, true
+}
+
+// HasGroupRoleAssignments returns a boolean if a field has been set.
+func (o *OrganizationInvitationUpdateRequest) HasGroupRoleAssignments() bool {
+	if o != nil && !IsNil(o.GroupRoleAssignments) {
+		return true
+	}
+
+	return false
+}
+
+// SetGroupRoleAssignments gets a reference to the given []OrganizationInvitationGroupRoleAssignmentsRequest and assigns it to the GroupRoleAssignments field.
+func (o *OrganizationInvitationUpdateRequest) SetGroupRoleAssignments(v []OrganizationInvitationGroupRoleAssignmentsRequest) {
+	o.GroupRoleAssignments = v
 }
 
 // GetRoles returns the Roles field value if set, zero value otherwise
@@ -106,6 +140,9 @@ func (o OrganizationInvitationUpdateRequest) MarshalJSONWithoutReadOnly() ([]byt
 }
 func (o OrganizationInvitationUpdateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.GroupRoleAssignments) {
+		toSerialize["groupRoleAssignments"] = o.GroupRoleAssignments
+	}
 	if !IsNil(o.Roles) {
 		toSerialize["roles"] = o.Roles
 	}

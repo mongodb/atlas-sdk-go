@@ -980,7 +980,7 @@ Name | Type | Description  | Notes
 
 ## GetDataProtectionSettings
 
-> DataProtectionSettings GetDataProtectionSettings(ctx, groupId).Execute()
+> DataProtectionSettings20231001 GetDataProtectionSettings(ctx, groupId).Execute()
 
 Return the Backup Compliance Policy settings
 
@@ -1012,7 +1012,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetDataProtectionSettings`: DataProtectionSettings
+    // response from `GetDataProtectionSettings`: DataProtectionSettings20231001
     fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.GetDataProtectionSettings`: %v\n", resp)
 }
 ```
@@ -1036,7 +1036,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DataProtectionSettings**](DataProtectionSettings.md)
+[**DataProtectionSettings20231001**](DataProtectionSettings20231001.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -1044,7 +1044,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Accept**: application/vnd.atlas.2023-10-01+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -2176,7 +2176,7 @@ Name | Type | Description  | Notes
 
 ## UpdateDataProtectionSettings
 
-> DataProtectionSettings UpdateDataProtectionSettings(ctx, groupId, dataProtectionSettings DataProtectionSettings).Execute()
+> DataProtectionSettings20231001 UpdateDataProtectionSettings(ctx, groupId, dataProtectionSettings20231001 DataProtectionSettings20231001).Execute()
 
 Update or enable the Backup Compliance Policy settings
 
@@ -2201,15 +2201,15 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    dataProtectionSettings := *openapiclient.NewDataProtectionSettings("AuthorizedEmail_example") // DataProtectionSettings | 
+    dataProtectionSettings20231001 := *openapiclient.NewDataProtectionSettings20231001("AuthorizedEmail_example", "AuthorizedUserFirstName_example", "AuthorizedUserLastName_example") // DataProtectionSettings20231001 | 
 
-    resp, r, err := sdk.CloudBackupsApi.UpdateDataProtectionSettings(context.Background(), groupId, &dataProtectionSettings).Execute()
+    resp, r, err := sdk.CloudBackupsApi.UpdateDataProtectionSettings(context.Background(), groupId, &dataProtectionSettings20231001).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.UpdateDataProtectionSettings``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `UpdateDataProtectionSettings`: DataProtectionSettings
+    // response from `UpdateDataProtectionSettings`: DataProtectionSettings20231001
     fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.UpdateDataProtectionSettings`: %v\n", resp)
 }
 ```
@@ -2230,19 +2230,19 @@ Other parameters are passed through a pointer to a apiUpdateDataProtectionSettin
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **dataProtectionSettings** | [**DataProtectionSettings**](DataProtectionSettings.md) | The new Backup Compliance Policy settings. | 
+ **dataProtectionSettings20231001** | [**DataProtectionSettings20231001**](DataProtectionSettings20231001.md) | The new Backup Compliance Policy settings. | 
 
 ### Return type
 
-[**DataProtectionSettings**](DataProtectionSettings.md)
+[**DataProtectionSettings20231001**](DataProtectionSettings20231001.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
 
 ### HTTP request headers
 
-- **Content-Type**: application/vnd.atlas.2023-01-01+json
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Content-Type**: application/vnd.atlas.2023-10-01+json
+- **Accept**: application/vnd.atlas.2023-10-01+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

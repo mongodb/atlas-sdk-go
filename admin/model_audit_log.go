@@ -9,24 +9,25 @@ import (
 // AuditLog struct for AuditLog
 type AuditLog struct {
 	// Flag that indicates whether someone set auditing to track successful authentications. This only applies to the `\"atype\" : \"authCheck\"` audit filter. Setting this parameter to `true` degrades cluster performance.
-	AuditAuthorizationSuccess bool `json:"auditAuthorizationSuccess"`
+	AuditAuthorizationSuccess *bool `json:"auditAuthorizationSuccess,omitempty"`
 	// JSON document that specifies which events to record. Escape any characters that may prevent parsing, such as single or double quotes, using a backslash (`\\`).
-	AuditFilter string `json:"auditFilter"`
+	AuditFilter *string `json:"auditFilter,omitempty"`
 	// Human-readable label that displays how to configure the audit filter.
 	ConfigurationType *string `json:"configurationType,omitempty"`
 	// Flag that indicates whether someone enabled database auditing for the specified project.
-	Enabled bool `json:"enabled"`
+	Enabled *bool `json:"enabled,omitempty"`
 }
 
 // NewAuditLog instantiates a new AuditLog object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAuditLog(auditAuthorizationSuccess bool, auditFilter string, enabled bool) *AuditLog {
+func NewAuditLog() *AuditLog {
 	this := AuditLog{}
-	this.AuditAuthorizationSuccess = auditAuthorizationSuccess
-	this.AuditFilter = auditFilter
-	this.Enabled = enabled
+	var auditAuthorizationSuccess bool = false
+	this.AuditAuthorizationSuccess = &auditAuthorizationSuccess
+	var enabled bool = false
+	this.Enabled = &enabled
 	return &this
 }
 
@@ -36,58 +37,76 @@ func NewAuditLog(auditAuthorizationSuccess bool, auditFilter string, enabled boo
 func NewAuditLogWithDefaults() *AuditLog {
 	this := AuditLog{}
 	var auditAuthorizationSuccess bool = false
-	this.AuditAuthorizationSuccess = auditAuthorizationSuccess
+	this.AuditAuthorizationSuccess = &auditAuthorizationSuccess
 	var enabled bool = false
-	this.Enabled = enabled
+	this.Enabled = &enabled
 	return &this
 }
 
-// GetAuditAuthorizationSuccess returns the AuditAuthorizationSuccess field value
+// GetAuditAuthorizationSuccess returns the AuditAuthorizationSuccess field value if set, zero value otherwise
 func (o *AuditLog) GetAuditAuthorizationSuccess() bool {
-	if o == nil {
+	if o == nil || IsNil(o.AuditAuthorizationSuccess) {
 		var ret bool
 		return ret
 	}
-
-	return o.AuditAuthorizationSuccess
+	return *o.AuditAuthorizationSuccess
 }
 
-// GetAuditAuthorizationSuccessOk returns a tuple with the AuditAuthorizationSuccess field value
+// GetAuditAuthorizationSuccessOk returns a tuple with the AuditAuthorizationSuccess field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuditLog) GetAuditAuthorizationSuccessOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AuditAuthorizationSuccess) {
 		return nil, false
 	}
-	return &o.AuditAuthorizationSuccess, true
+
+	return o.AuditAuthorizationSuccess, true
 }
 
-// SetAuditAuthorizationSuccess sets field value
+// HasAuditAuthorizationSuccess returns a boolean if a field has been set.
+func (o *AuditLog) HasAuditAuthorizationSuccess() bool {
+	if o != nil && !IsNil(o.AuditAuthorizationSuccess) {
+		return true
+	}
+
+	return false
+}
+
+// SetAuditAuthorizationSuccess gets a reference to the given bool and assigns it to the AuditAuthorizationSuccess field.
 func (o *AuditLog) SetAuditAuthorizationSuccess(v bool) {
-	o.AuditAuthorizationSuccess = v
+	o.AuditAuthorizationSuccess = &v
 }
 
-// GetAuditFilter returns the AuditFilter field value
+// GetAuditFilter returns the AuditFilter field value if set, zero value otherwise
 func (o *AuditLog) GetAuditFilter() string {
-	if o == nil {
+	if o == nil || IsNil(o.AuditFilter) {
 		var ret string
 		return ret
 	}
-
-	return o.AuditFilter
+	return *o.AuditFilter
 }
 
-// GetAuditFilterOk returns a tuple with the AuditFilter field value
+// GetAuditFilterOk returns a tuple with the AuditFilter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuditLog) GetAuditFilterOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AuditFilter) {
 		return nil, false
 	}
-	return &o.AuditFilter, true
+
+	return o.AuditFilter, true
 }
 
-// SetAuditFilter sets field value
+// HasAuditFilter returns a boolean if a field has been set.
+func (o *AuditLog) HasAuditFilter() bool {
+	if o != nil && !IsNil(o.AuditFilter) {
+		return true
+	}
+
+	return false
+}
+
+// SetAuditFilter gets a reference to the given string and assigns it to the AuditFilter field.
 func (o *AuditLog) SetAuditFilter(v string) {
-	o.AuditFilter = v
+	o.AuditFilter = &v
 }
 
 // GetConfigurationType returns the ConfigurationType field value if set, zero value otherwise
@@ -123,28 +142,37 @@ func (o *AuditLog) SetConfigurationType(v string) {
 	o.ConfigurationType = &v
 }
 
-// GetEnabled returns the Enabled field value
+// GetEnabled returns the Enabled field value if set, zero value otherwise
 func (o *AuditLog) GetEnabled() bool {
-	if o == nil {
+	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
 	}
-
-	return o.Enabled
+	return *o.Enabled
 }
 
-// GetEnabledOk returns a tuple with the Enabled field value
+// GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AuditLog) GetEnabledOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
-	return &o.Enabled, true
+
+	return o.Enabled, true
 }
 
-// SetEnabled sets field value
+// HasEnabled returns a boolean if a field has been set.
+func (o *AuditLog) HasEnabled() bool {
+	if o != nil && !IsNil(o.Enabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *AuditLog) SetEnabled(v bool) {
-	o.Enabled = v
+	o.Enabled = &v
 }
 
 func (o AuditLog) MarshalJSONWithoutReadOnly() ([]byte, error) {
@@ -156,8 +184,14 @@ func (o AuditLog) MarshalJSONWithoutReadOnly() ([]byte, error) {
 }
 func (o AuditLog) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["auditAuthorizationSuccess"] = o.AuditAuthorizationSuccess
-	toSerialize["auditFilter"] = o.AuditFilter
-	toSerialize["enabled"] = o.Enabled
+	if !IsNil(o.AuditAuthorizationSuccess) {
+		toSerialize["auditAuthorizationSuccess"] = o.AuditAuthorizationSuccess
+	}
+	if !IsNil(o.AuditFilter) {
+		toSerialize["auditFilter"] = o.AuditFilter
+	}
+	if !IsNil(o.Enabled) {
+		toSerialize["enabled"] = o.Enabled
+	}
 	return toSerialize, nil
 }

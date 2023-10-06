@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the Data Lake Pipeline. | [optional] [readonly] 
 **CreatedDate** | Pointer to **time.Time** | Timestamp that indicates when the Data Lake Pipeline was created. | [optional] [readonly] 
+**DatasetRetentionPolicy** | Pointer to [**DatasetRetentionPolicy**](DatasetRetentionPolicy.md) |  | [optional] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the group. | [optional] [readonly] 
 **LastUpdatedDate** | Pointer to **time.Time** | Timestamp that indicates the last time that the Data Lake Pipeline was updated. | [optional] [readonly] 
 **Name** | Pointer to **string** | Name of this Data Lake Pipeline. | [optional] 
@@ -81,6 +82,30 @@ SetCreatedDate sets CreatedDate field to given value.
 `func (o *DataLakeIngestionPipeline) HasCreatedDate() bool`
 
 HasCreatedDate returns a boolean if a field has been set.
+### GetDatasetRetentionPolicy
+
+`func (o *DataLakeIngestionPipeline) GetDatasetRetentionPolicy() DatasetRetentionPolicy`
+
+GetDatasetRetentionPolicy returns the DatasetRetentionPolicy field if non-nil, zero value otherwise.
+
+### GetDatasetRetentionPolicyOk
+
+`func (o *DataLakeIngestionPipeline) GetDatasetRetentionPolicyOk() (*DatasetRetentionPolicy, bool)`
+
+GetDatasetRetentionPolicyOk returns a tuple with the DatasetRetentionPolicy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDatasetRetentionPolicy
+
+`func (o *DataLakeIngestionPipeline) SetDatasetRetentionPolicy(v DatasetRetentionPolicy)`
+
+SetDatasetRetentionPolicy sets DatasetRetentionPolicy field to given value.
+
+### HasDatasetRetentionPolicy
+
+`func (o *DataLakeIngestionPipeline) HasDatasetRetentionPolicy() bool`
+
+HasDatasetRetentionPolicy returns a boolean if a field has been set.
 ### GetGroupId
 
 `func (o *DataLakeIngestionPipeline) GetGroupId() string`

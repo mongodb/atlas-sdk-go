@@ -1,10 +1,12 @@
-# DataProtectionSettings
+# DataProtectionSettings20231001
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AuthorizedEmail** | **string** | Email address of the user who authorized to updated the Backup Compliance Policy  settings. | 
+**AuthorizedUserFirstName** | **string** | First name of the user who authorized to updated the Backup Compliance Policy  settings. | 
+**AuthorizedUserLastName** | **string** | Last name of the user who authorized to updated the Backup Compliance Policy  settings. | 
 **CopyProtectionEnabled** | Pointer to **bool** | Flag that indicates whether to enable additional backup copies for the cluster. If unspecified, this value defaults to false. | [optional] [default to false]
 **EncryptionAtRestEnabled** | Pointer to **bool** | Flag that indicates whether Encryption at Rest using Customer Key  Management is required for all clusters with a Backup Compliance Policy. If unspecified, this value defaults to false. | [optional] [default to false]
 **OnDemandPolicyItem** | Pointer to [**DiskBackupApiPolicyItem**](DiskBackupApiPolicyItem.md) |  | [optional] 
@@ -18,280 +20,318 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewDataProtectionSettings
+### NewDataProtectionSettings20231001
 
-`func NewDataProtectionSettings(authorizedEmail string, ) *DataProtectionSettings`
+`func NewDataProtectionSettings20231001(authorizedEmail string, authorizedUserFirstName string, authorizedUserLastName string, ) *DataProtectionSettings20231001`
 
-NewDataProtectionSettings instantiates a new DataProtectionSettings object
+NewDataProtectionSettings20231001 instantiates a new DataProtectionSettings20231001 object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewDataProtectionSettingsWithDefaults
+### NewDataProtectionSettings20231001WithDefaults
 
-`func NewDataProtectionSettingsWithDefaults() *DataProtectionSettings`
+`func NewDataProtectionSettings20231001WithDefaults() *DataProtectionSettings20231001`
 
-NewDataProtectionSettingsWithDefaults instantiates a new DataProtectionSettings object
+NewDataProtectionSettings20231001WithDefaults instantiates a new DataProtectionSettings20231001 object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetAuthorizedEmail
 
-`func (o *DataProtectionSettings) GetAuthorizedEmail() string`
+`func (o *DataProtectionSettings20231001) GetAuthorizedEmail() string`
 
 GetAuthorizedEmail returns the AuthorizedEmail field if non-nil, zero value otherwise.
 
 ### GetAuthorizedEmailOk
 
-`func (o *DataProtectionSettings) GetAuthorizedEmailOk() (*string, bool)`
+`func (o *DataProtectionSettings20231001) GetAuthorizedEmailOk() (*string, bool)`
 
 GetAuthorizedEmailOk returns a tuple with the AuthorizedEmail field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthorizedEmail
 
-`func (o *DataProtectionSettings) SetAuthorizedEmail(v string)`
+`func (o *DataProtectionSettings20231001) SetAuthorizedEmail(v string)`
 
 SetAuthorizedEmail sets AuthorizedEmail field to given value.
 
+### GetAuthorizedUserFirstName
+
+`func (o *DataProtectionSettings20231001) GetAuthorizedUserFirstName() string`
+
+GetAuthorizedUserFirstName returns the AuthorizedUserFirstName field if non-nil, zero value otherwise.
+
+### GetAuthorizedUserFirstNameOk
+
+`func (o *DataProtectionSettings20231001) GetAuthorizedUserFirstNameOk() (*string, bool)`
+
+GetAuthorizedUserFirstNameOk returns a tuple with the AuthorizedUserFirstName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthorizedUserFirstName
+
+`func (o *DataProtectionSettings20231001) SetAuthorizedUserFirstName(v string)`
+
+SetAuthorizedUserFirstName sets AuthorizedUserFirstName field to given value.
+
+### GetAuthorizedUserLastName
+
+`func (o *DataProtectionSettings20231001) GetAuthorizedUserLastName() string`
+
+GetAuthorizedUserLastName returns the AuthorizedUserLastName field if non-nil, zero value otherwise.
+
+### GetAuthorizedUserLastNameOk
+
+`func (o *DataProtectionSettings20231001) GetAuthorizedUserLastNameOk() (*string, bool)`
+
+GetAuthorizedUserLastNameOk returns a tuple with the AuthorizedUserLastName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthorizedUserLastName
+
+`func (o *DataProtectionSettings20231001) SetAuthorizedUserLastName(v string)`
+
+SetAuthorizedUserLastName sets AuthorizedUserLastName field to given value.
+
 ### GetCopyProtectionEnabled
 
-`func (o *DataProtectionSettings) GetCopyProtectionEnabled() bool`
+`func (o *DataProtectionSettings20231001) GetCopyProtectionEnabled() bool`
 
 GetCopyProtectionEnabled returns the CopyProtectionEnabled field if non-nil, zero value otherwise.
 
 ### GetCopyProtectionEnabledOk
 
-`func (o *DataProtectionSettings) GetCopyProtectionEnabledOk() (*bool, bool)`
+`func (o *DataProtectionSettings20231001) GetCopyProtectionEnabledOk() (*bool, bool)`
 
 GetCopyProtectionEnabledOk returns a tuple with the CopyProtectionEnabled field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCopyProtectionEnabled
 
-`func (o *DataProtectionSettings) SetCopyProtectionEnabled(v bool)`
+`func (o *DataProtectionSettings20231001) SetCopyProtectionEnabled(v bool)`
 
 SetCopyProtectionEnabled sets CopyProtectionEnabled field to given value.
 
 ### HasCopyProtectionEnabled
 
-`func (o *DataProtectionSettings) HasCopyProtectionEnabled() bool`
+`func (o *DataProtectionSettings20231001) HasCopyProtectionEnabled() bool`
 
 HasCopyProtectionEnabled returns a boolean if a field has been set.
 ### GetEncryptionAtRestEnabled
 
-`func (o *DataProtectionSettings) GetEncryptionAtRestEnabled() bool`
+`func (o *DataProtectionSettings20231001) GetEncryptionAtRestEnabled() bool`
 
 GetEncryptionAtRestEnabled returns the EncryptionAtRestEnabled field if non-nil, zero value otherwise.
 
 ### GetEncryptionAtRestEnabledOk
 
-`func (o *DataProtectionSettings) GetEncryptionAtRestEnabledOk() (*bool, bool)`
+`func (o *DataProtectionSettings20231001) GetEncryptionAtRestEnabledOk() (*bool, bool)`
 
 GetEncryptionAtRestEnabledOk returns a tuple with the EncryptionAtRestEnabled field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEncryptionAtRestEnabled
 
-`func (o *DataProtectionSettings) SetEncryptionAtRestEnabled(v bool)`
+`func (o *DataProtectionSettings20231001) SetEncryptionAtRestEnabled(v bool)`
 
 SetEncryptionAtRestEnabled sets EncryptionAtRestEnabled field to given value.
 
 ### HasEncryptionAtRestEnabled
 
-`func (o *DataProtectionSettings) HasEncryptionAtRestEnabled() bool`
+`func (o *DataProtectionSettings20231001) HasEncryptionAtRestEnabled() bool`
 
 HasEncryptionAtRestEnabled returns a boolean if a field has been set.
 ### GetOnDemandPolicyItem
 
-`func (o *DataProtectionSettings) GetOnDemandPolicyItem() DiskBackupApiPolicyItem`
+`func (o *DataProtectionSettings20231001) GetOnDemandPolicyItem() DiskBackupApiPolicyItem`
 
 GetOnDemandPolicyItem returns the OnDemandPolicyItem field if non-nil, zero value otherwise.
 
 ### GetOnDemandPolicyItemOk
 
-`func (o *DataProtectionSettings) GetOnDemandPolicyItemOk() (*DiskBackupApiPolicyItem, bool)`
+`func (o *DataProtectionSettings20231001) GetOnDemandPolicyItemOk() (*DiskBackupApiPolicyItem, bool)`
 
 GetOnDemandPolicyItemOk returns a tuple with the OnDemandPolicyItem field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOnDemandPolicyItem
 
-`func (o *DataProtectionSettings) SetOnDemandPolicyItem(v DiskBackupApiPolicyItem)`
+`func (o *DataProtectionSettings20231001) SetOnDemandPolicyItem(v DiskBackupApiPolicyItem)`
 
 SetOnDemandPolicyItem sets OnDemandPolicyItem field to given value.
 
 ### HasOnDemandPolicyItem
 
-`func (o *DataProtectionSettings) HasOnDemandPolicyItem() bool`
+`func (o *DataProtectionSettings20231001) HasOnDemandPolicyItem() bool`
 
 HasOnDemandPolicyItem returns a boolean if a field has been set.
 ### GetPitEnabled
 
-`func (o *DataProtectionSettings) GetPitEnabled() bool`
+`func (o *DataProtectionSettings20231001) GetPitEnabled() bool`
 
 GetPitEnabled returns the PitEnabled field if non-nil, zero value otherwise.
 
 ### GetPitEnabledOk
 
-`func (o *DataProtectionSettings) GetPitEnabledOk() (*bool, bool)`
+`func (o *DataProtectionSettings20231001) GetPitEnabledOk() (*bool, bool)`
 
 GetPitEnabledOk returns a tuple with the PitEnabled field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPitEnabled
 
-`func (o *DataProtectionSettings) SetPitEnabled(v bool)`
+`func (o *DataProtectionSettings20231001) SetPitEnabled(v bool)`
 
 SetPitEnabled sets PitEnabled field to given value.
 
 ### HasPitEnabled
 
-`func (o *DataProtectionSettings) HasPitEnabled() bool`
+`func (o *DataProtectionSettings20231001) HasPitEnabled() bool`
 
 HasPitEnabled returns a boolean if a field has been set.
 ### GetProjectId
 
-`func (o *DataProtectionSettings) GetProjectId() string`
+`func (o *DataProtectionSettings20231001) GetProjectId() string`
 
 GetProjectId returns the ProjectId field if non-nil, zero value otherwise.
 
 ### GetProjectIdOk
 
-`func (o *DataProtectionSettings) GetProjectIdOk() (*string, bool)`
+`func (o *DataProtectionSettings20231001) GetProjectIdOk() (*string, bool)`
 
 GetProjectIdOk returns a tuple with the ProjectId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProjectId
 
-`func (o *DataProtectionSettings) SetProjectId(v string)`
+`func (o *DataProtectionSettings20231001) SetProjectId(v string)`
 
 SetProjectId sets ProjectId field to given value.
 
 ### HasProjectId
 
-`func (o *DataProtectionSettings) HasProjectId() bool`
+`func (o *DataProtectionSettings20231001) HasProjectId() bool`
 
 HasProjectId returns a boolean if a field has been set.
 ### GetRestoreWindowDays
 
-`func (o *DataProtectionSettings) GetRestoreWindowDays() int`
+`func (o *DataProtectionSettings20231001) GetRestoreWindowDays() int`
 
 GetRestoreWindowDays returns the RestoreWindowDays field if non-nil, zero value otherwise.
 
 ### GetRestoreWindowDaysOk
 
-`func (o *DataProtectionSettings) GetRestoreWindowDaysOk() (*int, bool)`
+`func (o *DataProtectionSettings20231001) GetRestoreWindowDaysOk() (*int, bool)`
 
 GetRestoreWindowDaysOk returns a tuple with the RestoreWindowDays field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRestoreWindowDays
 
-`func (o *DataProtectionSettings) SetRestoreWindowDays(v int)`
+`func (o *DataProtectionSettings20231001) SetRestoreWindowDays(v int)`
 
 SetRestoreWindowDays sets RestoreWindowDays field to given value.
 
 ### HasRestoreWindowDays
 
-`func (o *DataProtectionSettings) HasRestoreWindowDays() bool`
+`func (o *DataProtectionSettings20231001) HasRestoreWindowDays() bool`
 
 HasRestoreWindowDays returns a boolean if a field has been set.
 ### GetScheduledPolicyItems
 
-`func (o *DataProtectionSettings) GetScheduledPolicyItems() []DiskBackupApiPolicyItem`
+`func (o *DataProtectionSettings20231001) GetScheduledPolicyItems() []DiskBackupApiPolicyItem`
 
 GetScheduledPolicyItems returns the ScheduledPolicyItems field if non-nil, zero value otherwise.
 
 ### GetScheduledPolicyItemsOk
 
-`func (o *DataProtectionSettings) GetScheduledPolicyItemsOk() (*[]DiskBackupApiPolicyItem, bool)`
+`func (o *DataProtectionSettings20231001) GetScheduledPolicyItemsOk() (*[]DiskBackupApiPolicyItem, bool)`
 
 GetScheduledPolicyItemsOk returns a tuple with the ScheduledPolicyItems field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetScheduledPolicyItems
 
-`func (o *DataProtectionSettings) SetScheduledPolicyItems(v []DiskBackupApiPolicyItem)`
+`func (o *DataProtectionSettings20231001) SetScheduledPolicyItems(v []DiskBackupApiPolicyItem)`
 
 SetScheduledPolicyItems sets ScheduledPolicyItems field to given value.
 
 ### HasScheduledPolicyItems
 
-`func (o *DataProtectionSettings) HasScheduledPolicyItems() bool`
+`func (o *DataProtectionSettings20231001) HasScheduledPolicyItems() bool`
 
 HasScheduledPolicyItems returns a boolean if a field has been set.
 ### GetState
 
-`func (o *DataProtectionSettings) GetState() string`
+`func (o *DataProtectionSettings20231001) GetState() string`
 
 GetState returns the State field if non-nil, zero value otherwise.
 
 ### GetStateOk
 
-`func (o *DataProtectionSettings) GetStateOk() (*string, bool)`
+`func (o *DataProtectionSettings20231001) GetStateOk() (*string, bool)`
 
 GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetState
 
-`func (o *DataProtectionSettings) SetState(v string)`
+`func (o *DataProtectionSettings20231001) SetState(v string)`
 
 SetState sets State field to given value.
 
 ### HasState
 
-`func (o *DataProtectionSettings) HasState() bool`
+`func (o *DataProtectionSettings20231001) HasState() bool`
 
 HasState returns a boolean if a field has been set.
 ### GetUpdatedDate
 
-`func (o *DataProtectionSettings) GetUpdatedDate() time.Time`
+`func (o *DataProtectionSettings20231001) GetUpdatedDate() time.Time`
 
 GetUpdatedDate returns the UpdatedDate field if non-nil, zero value otherwise.
 
 ### GetUpdatedDateOk
 
-`func (o *DataProtectionSettings) GetUpdatedDateOk() (*time.Time, bool)`
+`func (o *DataProtectionSettings20231001) GetUpdatedDateOk() (*time.Time, bool)`
 
 GetUpdatedDateOk returns a tuple with the UpdatedDate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedDate
 
-`func (o *DataProtectionSettings) SetUpdatedDate(v time.Time)`
+`func (o *DataProtectionSettings20231001) SetUpdatedDate(v time.Time)`
 
 SetUpdatedDate sets UpdatedDate field to given value.
 
 ### HasUpdatedDate
 
-`func (o *DataProtectionSettings) HasUpdatedDate() bool`
+`func (o *DataProtectionSettings20231001) HasUpdatedDate() bool`
 
 HasUpdatedDate returns a boolean if a field has been set.
 ### GetUpdatedUser
 
-`func (o *DataProtectionSettings) GetUpdatedUser() string`
+`func (o *DataProtectionSettings20231001) GetUpdatedUser() string`
 
 GetUpdatedUser returns the UpdatedUser field if non-nil, zero value otherwise.
 
 ### GetUpdatedUserOk
 
-`func (o *DataProtectionSettings) GetUpdatedUserOk() (*string, bool)`
+`func (o *DataProtectionSettings20231001) GetUpdatedUserOk() (*string, bool)`
 
 GetUpdatedUserOk returns a tuple with the UpdatedUser field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedUser
 
-`func (o *DataProtectionSettings) SetUpdatedUser(v string)`
+`func (o *DataProtectionSettings20231001) SetUpdatedUser(v string)`
 
 SetUpdatedUser sets UpdatedUser field to given value.
 
 ### HasUpdatedUser
 
-`func (o *DataProtectionSettings) HasUpdatedUser() bool`
+`func (o *DataProtectionSettings20231001) HasUpdatedUser() bool`
 
 HasUpdatedUser returns a boolean if a field has been set.
 
