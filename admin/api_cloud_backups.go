@@ -310,7 +310,7 @@ type CloudBackupsApi interface {
 	/*
 		GetDataProtectionSettings Return the Backup Compliance Policy settings
 
-		Returns the Backup Compliance Policy settings with the specified project. To use this resource, the requesting API Key must have the Project Owner role.
+		Returns the Backup Compliance Policy settings with the specified project. To use this resource, the requesting API Key must have the Project Owner role. Deprecated versions: v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -328,7 +328,7 @@ type CloudBackupsApi interface {
 	GetDataProtectionSettingsWithParams(ctx context.Context, args *GetDataProtectionSettingsApiParams) GetDataProtectionSettingsApiRequest
 
 	// Interface only available internally
-	getDataProtectionSettingsExecute(r GetDataProtectionSettingsApiRequest) (*DataProtectionSettings, *http.Response, error)
+	getDataProtectionSettingsExecute(r GetDataProtectionSettingsApiRequest) (*DataProtectionSettings20231001, *http.Response, error)
 
 	/*
 		GetExportBucket Return One AWS S3 Bucket Used for Cloud Backup Snapshot Exports
@@ -674,13 +674,13 @@ type CloudBackupsApi interface {
 	/*
 		UpdateDataProtectionSettings Update or enable the Backup Compliance Policy settings
 
-		Updates the Backup Compliance Policy settings for the specified project. To use this resource, the requesting API Key must have the Project Owner role.
+		Updates the Backup Compliance Policy settings for the specified project. To use this resource, the requesting API Key must have the Project Owner role. Deprecated versions: v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return UpdateDataProtectionSettingsApiRequest
 	*/
-	UpdateDataProtectionSettings(ctx context.Context, groupId string, dataProtectionSettings *DataProtectionSettings) UpdateDataProtectionSettingsApiRequest
+	UpdateDataProtectionSettings(ctx context.Context, groupId string, dataProtectionSettings20231001 *DataProtectionSettings20231001) UpdateDataProtectionSettingsApiRequest
 	/*
 		UpdateDataProtectionSettings Update or enable the Backup Compliance Policy settings
 
@@ -692,7 +692,7 @@ type CloudBackupsApi interface {
 	UpdateDataProtectionSettingsWithParams(ctx context.Context, args *UpdateDataProtectionSettingsApiParams) UpdateDataProtectionSettingsApiRequest
 
 	// Interface only available internally
-	updateDataProtectionSettingsExecute(r UpdateDataProtectionSettingsApiRequest) (*DataProtectionSettings, *http.Response, error)
+	updateDataProtectionSettingsExecute(r UpdateDataProtectionSettingsApiRequest) (*DataProtectionSettings20231001, *http.Response, error)
 
 	/*
 		UpdateSnapshotRetention Change Expiration Date for One Cloud Backup
@@ -2525,14 +2525,14 @@ func (a *CloudBackupsApiService) GetDataProtectionSettingsWithParams(ctx context
 	}
 }
 
-func (r GetDataProtectionSettingsApiRequest) Execute() (*DataProtectionSettings, *http.Response, error) {
+func (r GetDataProtectionSettingsApiRequest) Execute() (*DataProtectionSettings20231001, *http.Response, error) {
 	return r.ApiService.getDataProtectionSettingsExecute(r)
 }
 
 /*
 GetDataProtectionSettings Return the Backup Compliance Policy settings
 
-Returns the Backup Compliance Policy settings with the specified project. To use this resource, the requesting API Key must have the Project Owner role.
+Returns the Backup Compliance Policy settings with the specified project. To use this resource, the requesting API Key must have the Project Owner role. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -2548,13 +2548,13 @@ func (a *CloudBackupsApiService) GetDataProtectionSettings(ctx context.Context, 
 
 // Execute executes the request
 //
-//	@return DataProtectionSettings
-func (a *CloudBackupsApiService) getDataProtectionSettingsExecute(r GetDataProtectionSettingsApiRequest) (*DataProtectionSettings, *http.Response, error) {
+//	@return DataProtectionSettings20231001
+func (a *CloudBackupsApiService) getDataProtectionSettingsExecute(r GetDataProtectionSettingsApiRequest) (*DataProtectionSettings20231001, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *DataProtectionSettings
+		localVarReturnValue *DataProtectionSettings20231001
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.GetDataProtectionSettings")
@@ -2585,7 +2585,7 @@ func (a *CloudBackupsApiService) getDataProtectionSettingsExecute(r GetDataProte
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-10-01+json", "application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -4970,57 +4970,57 @@ func (a *CloudBackupsApiService) updateBackupScheduleExecute(r UpdateBackupSched
 }
 
 type UpdateDataProtectionSettingsApiRequest struct {
-	ctx                    context.Context
-	ApiService             CloudBackupsApi
-	groupId                string
-	dataProtectionSettings *DataProtectionSettings
+	ctx                            context.Context
+	ApiService                     CloudBackupsApi
+	groupId                        string
+	dataProtectionSettings20231001 *DataProtectionSettings20231001
 }
 
 type UpdateDataProtectionSettingsApiParams struct {
-	GroupId                string
-	DataProtectionSettings *DataProtectionSettings
+	GroupId                        string
+	DataProtectionSettings20231001 *DataProtectionSettings20231001
 }
 
 func (a *CloudBackupsApiService) UpdateDataProtectionSettingsWithParams(ctx context.Context, args *UpdateDataProtectionSettingsApiParams) UpdateDataProtectionSettingsApiRequest {
 	return UpdateDataProtectionSettingsApiRequest{
-		ApiService:             a,
-		ctx:                    ctx,
-		groupId:                args.GroupId,
-		dataProtectionSettings: args.DataProtectionSettings,
+		ApiService:                     a,
+		ctx:                            ctx,
+		groupId:                        args.GroupId,
+		dataProtectionSettings20231001: args.DataProtectionSettings20231001,
 	}
 }
 
-func (r UpdateDataProtectionSettingsApiRequest) Execute() (*DataProtectionSettings, *http.Response, error) {
+func (r UpdateDataProtectionSettingsApiRequest) Execute() (*DataProtectionSettings20231001, *http.Response, error) {
 	return r.ApiService.updateDataProtectionSettingsExecute(r)
 }
 
 /*
 UpdateDataProtectionSettings Update or enable the Backup Compliance Policy settings
 
-Updates the Backup Compliance Policy settings for the specified project. To use this resource, the requesting API Key must have the Project Owner role.
+Updates the Backup Compliance Policy settings for the specified project. To use this resource, the requesting API Key must have the Project Owner role. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return UpdateDataProtectionSettingsApiRequest
 */
-func (a *CloudBackupsApiService) UpdateDataProtectionSettings(ctx context.Context, groupId string, dataProtectionSettings *DataProtectionSettings) UpdateDataProtectionSettingsApiRequest {
+func (a *CloudBackupsApiService) UpdateDataProtectionSettings(ctx context.Context, groupId string, dataProtectionSettings20231001 *DataProtectionSettings20231001) UpdateDataProtectionSettingsApiRequest {
 	return UpdateDataProtectionSettingsApiRequest{
-		ApiService:             a,
-		ctx:                    ctx,
-		groupId:                groupId,
-		dataProtectionSettings: dataProtectionSettings,
+		ApiService:                     a,
+		ctx:                            ctx,
+		groupId:                        groupId,
+		dataProtectionSettings20231001: dataProtectionSettings20231001,
 	}
 }
 
 // Execute executes the request
 //
-//	@return DataProtectionSettings
-func (a *CloudBackupsApiService) updateDataProtectionSettingsExecute(r UpdateDataProtectionSettingsApiRequest) (*DataProtectionSettings, *http.Response, error) {
+//	@return DataProtectionSettings20231001
+func (a *CloudBackupsApiService) updateDataProtectionSettingsExecute(r UpdateDataProtectionSettingsApiRequest) (*DataProtectionSettings20231001, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *DataProtectionSettings
+		localVarReturnValue *DataProtectionSettings20231001
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudBackupsApiService.UpdateDataProtectionSettings")
@@ -5040,12 +5040,12 @@ func (a *CloudBackupsApiService) updateDataProtectionSettingsExecute(r UpdateDat
 	if strlen(r.groupId) > 24 {
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
-	if r.dataProtectionSettings == nil {
-		return localVarReturnValue, nil, reportError("dataProtectionSettings is required and must be specified")
+	if r.dataProtectionSettings20231001 == nil {
+		return localVarReturnValue, nil, reportError("dataProtectionSettings20231001 is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-10-01+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -5054,7 +5054,7 @@ func (a *CloudBackupsApiService) updateDataProtectionSettingsExecute(r UpdateDat
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-10-01+json", "application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -5062,7 +5062,7 @@ func (a *CloudBackupsApiService) updateDataProtectionSettingsExecute(r UpdateDat
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.dataProtectionSettings
+	localVarPostBody = r.dataProtectionSettings20231001
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

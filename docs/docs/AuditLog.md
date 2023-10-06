@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AuditAuthorizationSuccess** | **bool** | Flag that indicates whether someone set auditing to track successful authentications. This only applies to the &#x60;\&quot;atype\&quot; : \&quot;authCheck\&quot;&#x60; audit filter. Setting this parameter to &#x60;true&#x60; degrades cluster performance. | [default to false]
-**AuditFilter** | **string** | JSON document that specifies which events to record. Escape any characters that may prevent parsing, such as single or double quotes, using a backslash (&#x60;\\&#x60;). | 
+**AuditAuthorizationSuccess** | Pointer to **bool** | Flag that indicates whether someone set auditing to track successful authentications. This only applies to the &#x60;\&quot;atype\&quot; : \&quot;authCheck\&quot;&#x60; audit filter. Setting this parameter to &#x60;true&#x60; degrades cluster performance. | [optional] [default to false]
+**AuditFilter** | Pointer to **string** | JSON document that specifies which events to record. Escape any characters that may prevent parsing, such as single or double quotes, using a backslash (&#x60;\\&#x60;). | [optional] 
 **ConfigurationType** | Pointer to **string** | Human-readable label that displays how to configure the audit filter. | [optional] [readonly] 
-**Enabled** | **bool** | Flag that indicates whether someone enabled database auditing for the specified project. | [default to false]
+**Enabled** | Pointer to **bool** | Flag that indicates whether someone enabled database auditing for the specified project. | [optional] [default to false]
 
 ## Methods
 
 ### NewAuditLog
 
-`func NewAuditLog(auditAuthorizationSuccess bool, auditFilter string, enabled bool, ) *AuditLog`
+`func NewAuditLog() *AuditLog`
 
 NewAuditLog instantiates a new AuditLog object
 This constructor will assign default values to properties that have it defined,
@@ -47,6 +47,11 @@ and a boolean to check if the value has been set.
 
 SetAuditAuthorizationSuccess sets AuditAuthorizationSuccess field to given value.
 
+### HasAuditAuthorizationSuccess
+
+`func (o *AuditLog) HasAuditAuthorizationSuccess() bool`
+
+HasAuditAuthorizationSuccess returns a boolean if a field has been set.
 ### GetAuditFilter
 
 `func (o *AuditLog) GetAuditFilter() string`
@@ -66,6 +71,11 @@ and a boolean to check if the value has been set.
 
 SetAuditFilter sets AuditFilter field to given value.
 
+### HasAuditFilter
+
+`func (o *AuditLog) HasAuditFilter() bool`
+
+HasAuditFilter returns a boolean if a field has been set.
 ### GetConfigurationType
 
 `func (o *AuditLog) GetConfigurationType() string`
@@ -109,6 +119,11 @@ and a boolean to check if the value has been set.
 
 SetEnabled sets Enabled field to given value.
 
+### HasEnabled
+
+`func (o *AuditLog) HasEnabled() bool`
+
+HasEnabled returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

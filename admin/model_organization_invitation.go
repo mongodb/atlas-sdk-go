@@ -12,7 +12,8 @@ type OrganizationInvitation struct {
 	// Date and time when MongoDB Cloud sent the invitation. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// Date and time when the invitation from MongoDB Cloud expires. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
-	ExpiresAt *time.Time `json:"expiresAt,omitempty"`
+	ExpiresAt            *time.Time  `json:"expiresAt,omitempty"`
+	GroupRoleAssignments []GroupRole `json:"groupRoleAssignments,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies this organization.
 	Id *string `json:"id,omitempty"`
 	// Email address of the MongoDB Cloud user who sent the invitation to join the organization.
@@ -113,6 +114,39 @@ func (o *OrganizationInvitation) HasExpiresAt() bool {
 // SetExpiresAt gets a reference to the given time.Time and assigns it to the ExpiresAt field.
 func (o *OrganizationInvitation) SetExpiresAt(v time.Time) {
 	o.ExpiresAt = &v
+}
+
+// GetGroupRoleAssignments returns the GroupRoleAssignments field value if set, zero value otherwise
+func (o *OrganizationInvitation) GetGroupRoleAssignments() []GroupRole {
+	if o == nil || IsNil(o.GroupRoleAssignments) {
+		var ret []GroupRole
+		return ret
+	}
+	return o.GroupRoleAssignments
+}
+
+// GetGroupRoleAssignmentsOk returns a tuple with the GroupRoleAssignments field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrganizationInvitation) GetGroupRoleAssignmentsOk() ([]GroupRole, bool) {
+	if o == nil || IsNil(o.GroupRoleAssignments) {
+		return nil, false
+	}
+
+	return o.GroupRoleAssignments, true
+}
+
+// HasGroupRoleAssignments returns a boolean if a field has been set.
+func (o *OrganizationInvitation) HasGroupRoleAssignments() bool {
+	if o != nil && !IsNil(o.GroupRoleAssignments) {
+		return true
+	}
+
+	return false
+}
+
+// SetGroupRoleAssignments gets a reference to the given []GroupRole and assigns it to the GroupRoleAssignments field.
+func (o *OrganizationInvitation) SetGroupRoleAssignments(v []GroupRole) {
+	o.GroupRoleAssignments = v
 }
 
 // GetId returns the Id field value if set, zero value otherwise
@@ -379,6 +413,9 @@ func (o OrganizationInvitation) MarshalJSONWithoutReadOnly() ([]byte, error) {
 }
 func (o OrganizationInvitation) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.GroupRoleAssignments) {
+		toSerialize["groupRoleAssignments"] = o.GroupRoleAssignments
+	}
 	toSerialize["orgName"] = o.OrgName
 	if !IsNil(o.Roles) {
 		toSerialize["roles"] = o.Roles

@@ -26,7 +26,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201008/admin"
+    "go.mongodb.org/atlas-sdk/v20231001001/admin"
 )
 
 func main() {
@@ -99,7 +99,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201008/admin"
+    "go.mongodb.org/atlas-sdk/v20231001001/admin"
 )
 
 func main() {
@@ -109,7 +109,7 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    auditLog := *openapiclient.NewAuditLog(false, "AuditFilter_example", false) // AuditLog | 
+    auditLog := *openapiclient.NewAuditLog() // AuditLog | 
 
     resp, r, err := sdk.AuditingApi.UpdateAuditingConfiguration(context.Background(), groupId, &auditLog).Execute()
     if err != nil {

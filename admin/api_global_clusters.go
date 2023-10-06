@@ -23,7 +23,7 @@ type GlobalClustersApi interface {
 		@param clusterName Human-readable label that identifies this advanced cluster.
 		@return CreateCustomZoneMappingApiRequest
 	*/
-	CreateCustomZoneMapping(ctx context.Context, groupId string, clusterName string, geoSharding *GeoSharding) CreateCustomZoneMappingApiRequest
+	CreateCustomZoneMapping(ctx context.Context, groupId string, clusterName string, customZoneMappings *CustomZoneMappings) CreateCustomZoneMappingApiRequest
 	/*
 		CreateCustomZoneMapping Add One Entry to One Custom Zone Mapping
 
@@ -138,26 +138,26 @@ type GlobalClustersApi interface {
 type GlobalClustersApiService service
 
 type CreateCustomZoneMappingApiRequest struct {
-	ctx         context.Context
-	ApiService  GlobalClustersApi
-	groupId     string
-	clusterName string
-	geoSharding *GeoSharding
+	ctx                context.Context
+	ApiService         GlobalClustersApi
+	groupId            string
+	clusterName        string
+	customZoneMappings *CustomZoneMappings
 }
 
 type CreateCustomZoneMappingApiParams struct {
-	GroupId     string
-	ClusterName string
-	GeoSharding *GeoSharding
+	GroupId            string
+	ClusterName        string
+	CustomZoneMappings *CustomZoneMappings
 }
 
 func (a *GlobalClustersApiService) CreateCustomZoneMappingWithParams(ctx context.Context, args *CreateCustomZoneMappingApiParams) CreateCustomZoneMappingApiRequest {
 	return CreateCustomZoneMappingApiRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		groupId:     args.GroupId,
-		clusterName: args.ClusterName,
-		geoSharding: args.GeoSharding,
+		ApiService:         a,
+		ctx:                ctx,
+		groupId:            args.GroupId,
+		clusterName:        args.ClusterName,
+		customZoneMappings: args.CustomZoneMappings,
 	}
 }
 
@@ -175,13 +175,13 @@ CreateCustomZoneMapping Add One Entry to One Custom Zone Mapping
 	@param clusterName Human-readable label that identifies this advanced cluster.
 	@return CreateCustomZoneMappingApiRequest
 */
-func (a *GlobalClustersApiService) CreateCustomZoneMapping(ctx context.Context, groupId string, clusterName string, geoSharding *GeoSharding) CreateCustomZoneMappingApiRequest {
+func (a *GlobalClustersApiService) CreateCustomZoneMapping(ctx context.Context, groupId string, clusterName string, customZoneMappings *CustomZoneMappings) CreateCustomZoneMappingApiRequest {
 	return CreateCustomZoneMappingApiRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		groupId:     groupId,
-		clusterName: clusterName,
-		geoSharding: geoSharding,
+		ApiService:         a,
+		ctx:                ctx,
+		groupId:            groupId,
+		clusterName:        clusterName,
+		customZoneMappings: customZoneMappings,
 	}
 }
 
@@ -220,8 +220,8 @@ func (a *GlobalClustersApiService) createCustomZoneMappingExecute(r CreateCustom
 	if strlen(r.clusterName) > 64 {
 		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
 	}
-	if r.geoSharding == nil {
-		return localVarReturnValue, nil, reportError("geoSharding is required and must be specified")
+	if r.customZoneMappings == nil {
+		return localVarReturnValue, nil, reportError("customZoneMappings is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -242,7 +242,7 @@ func (a *GlobalClustersApiService) createCustomZoneMappingExecute(r CreateCustom
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.geoSharding
+	localVarPostBody = r.customZoneMappings
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

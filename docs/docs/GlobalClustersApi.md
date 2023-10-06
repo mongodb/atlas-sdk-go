@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CreateCustomZoneMapping
 
-> GeoSharding CreateCustomZoneMapping(ctx, groupId, clusterName, geoSharding GeoSharding).Execute()
+> GeoSharding CreateCustomZoneMapping(ctx, groupId, clusterName, customZoneMappings CustomZoneMappings).Execute()
 
 Add One Entry to One Custom Zone Mapping
 
@@ -34,7 +34,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201008/admin"
+    "go.mongodb.org/atlas-sdk/v20231001001/admin"
 )
 
 func main() {
@@ -45,9 +45,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
-    geoSharding := *openapiclient.NewGeoSharding() // GeoSharding | 
+    customZoneMappings := *openapiclient.NewCustomZoneMappings() // CustomZoneMappings | 
 
-    resp, r, err := sdk.GlobalClustersApi.CreateCustomZoneMapping(context.Background(), groupId, clusterName, &geoSharding).Execute()
+    resp, r, err := sdk.GlobalClustersApi.CreateCustomZoneMapping(context.Background(), groupId, clusterName, &customZoneMappings).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GlobalClustersApi.CreateCustomZoneMapping``: %v\n", err)
         apiError := admin.AsError(err)
@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **geoSharding** | [**GeoSharding**](GeoSharding.md) | Custom zone mapping to add to the specified global cluster. | 
+ **customZoneMappings** | [**CustomZoneMappings**](CustomZoneMappings.md) | Custom zone mapping to add to the specified global cluster. | 
 
 ### Return type
 
@@ -117,7 +117,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201008/admin"
+    "go.mongodb.org/atlas-sdk/v20231001001/admin"
 )
 
 func main() {
@@ -200,7 +200,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201008/admin"
+    "go.mongodb.org/atlas-sdk/v20231001001/admin"
 )
 
 func main() {
@@ -281,7 +281,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201008/admin"
+    "go.mongodb.org/atlas-sdk/v20231001001/admin"
 )
 
 func main() {
@@ -361,7 +361,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20230201008/admin"
+    "go.mongodb.org/atlas-sdk/v20231001001/admin"
 )
 
 func main() {
