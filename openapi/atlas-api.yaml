@@ -18,8 +18,8 @@ info:
     url: https://creativecommons.org/licenses/by-nc-sa/3.0/us/
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
-  version: 2.0~6e54278ed8
-  x-xgen-sha: 6e54278ed80f8e54655f8d970425d6ee8247ae30
+  version: "2.0"
+  x-xgen-sha: 06c21141c5a079d3bc59583f490c6b222da388f8
 servers:
 - url: https://cloud.mongodb.com
 tags:
@@ -1021,6 +1021,42 @@ paths:
       security:
       - DigestAuth: []
       summary: Update One Project Name
+      tags:
+      - Projects
+  /api/atlas/v2/groups/{groupId}/access:
+    post:
+      description: "Adds one MongoDB Cloud user to the specified project. If the MongoDB\
+        \ Cloud user is not a member of the project's organization, then the user\
+        \ must accept their invitation to the organization to access information within\
+        \ the specified project. To use this resource, the requesting API Key must\
+        \ have the Group User Admin role."
+      operationId: addUserToProject
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/pretty'
+      - $ref: '#/components/parameters/envelope'
+      requestBody:
+        content:
+          application/vnd.atlas.2023-02-01+json:
+            schema:
+              $ref: '#/components/schemas/GroupInvitationRequest'
+        description: Adds one MongoDB Cloud user to the specified project.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-02-01+json:
+              schema:
+                $ref: '#/components/schemas/OrganizationInvitation'
+              x-xgen-version: 2023-02-01
+          description: OK
+        "401":
+          $ref: '#/components/responses/unauthorized'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Add One MongoDB Cloud User to One Project
       tags:
       - Projects
   /api/atlas/v2/groups/{groupId}/accessList:
@@ -2242,7 +2278,7 @@ paths:
     get:
       description: "Returns the Backup Compliance Policy settings with the specified\
         \ project. To use this resource, the requesting API Key must have the Project\
-        \ Owner role."
+        \ Owner role. Deprecated versions: v2-{2023-01-01}"
       operationId: getDataProtectionSettings
       parameters:
       - $ref: '#/components/parameters/envelope'
@@ -2251,10 +2287,10 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.atlas.2023-01-01+json:
+            application/vnd.atlas.2023-10-01+json:
               schema:
-                $ref: '#/components/schemas/DataProtectionSettings'
-              x-xgen-version: 2023-01-01
+                $ref: '#/components/schemas/DataProtectionSettings20231001'
+              x-xgen-version: 2023-10-01
           description: OK
         "401":
           $ref: '#/components/responses/unauthorized'
@@ -2270,7 +2306,7 @@ paths:
     put:
       description: "Updates the Backup Compliance Policy settings for the specified\
         \ project. To use this resource, the requesting API Key must have the Project\
-        \ Owner role."
+        \ Owner role. Deprecated versions: v2-{2023-01-01}"
       operationId: updateDataProtectionSettings
       parameters:
       - $ref: '#/components/parameters/envelope'
@@ -2278,19 +2314,19 @@ paths:
       - $ref: '#/components/parameters/pretty'
       requestBody:
         content:
-          application/vnd.atlas.2023-01-01+json:
+          application/vnd.atlas.2023-10-01+json:
             schema:
-              $ref: '#/components/schemas/DataProtectionSettings'
-            x-xgen-version: 2023-01-01
+              $ref: '#/components/schemas/DataProtectionSettings20231001'
+            x-xgen-version: 2023-10-01
         description: The new Backup Compliance Policy settings.
         required: true
       responses:
         "200":
           content:
-            application/vnd.atlas.2023-01-01+json:
+            application/vnd.atlas.2023-10-01+json:
               schema:
-                $ref: '#/components/schemas/DataProtectionSettings'
-              x-xgen-version: 2023-01-01
+                $ref: '#/components/schemas/DataProtectionSettings20231001'
+              x-xgen-version: 2023-10-01
           description: OK
         "401":
           $ref: '#/components/responses/unauthorized'
@@ -2556,9 +2592,8 @@ paths:
               Multi Cloud Cluster:
                 description: Multi Cloud Cluster
                 value:
-                  clusterType: REPLICASET
-                  links: []
                   name: multiCloud
+                  clusterType: REPLICASET
                   replicationSpecs:
                   - numShards: 1
                     regionConfigs:
@@ -2585,6 +2620,7 @@ paths:
                           scaleDownEnabled: true
                         diskGB:
                           enabled: true
+                      providerName: AWS
                       electableSpecs:
                         instanceSize: M30
                         nodeCount: 3
@@ -2592,7 +2628,6 @@ paths:
                         instanceSize: M30
                         nodeCount: 0
                       priority: 7
-                      providerName: AWS
                       readOnlySpecs:
                         instanceSize: M30
                         nodeCount: 0
@@ -2620,6 +2655,7 @@ paths:
                           scaleDownEnabled: true
                         diskGB:
                           enabled: true
+                      providerName: GCP
                       electableSpecs:
                         instanceSize: M30
                         nodeCount: 2
@@ -2627,12 +2663,12 @@ paths:
                         instanceSize: M30
                         nodeCount: 0
                       priority: 6
-                      providerName: GCP
                       readOnlySpecs:
                         instanceSize: M30
                         nodeCount: 0
                       regionName: EASTERN_US
                     zoneName: Zone 1
+                  links: []
             schema:
               $ref: '#/components/schemas/AdvancedClusterDescription'
         description: Cluster to create in the specific project.
@@ -4482,7 +4518,7 @@ paths:
         content:
           application/vnd.atlas.2023-02-01+json:
             schema:
-              $ref: '#/components/schemas/GeoSharding'
+              $ref: '#/components/schemas/CustomZoneMappings'
         description: Custom zone mapping to add to the specified global cluster.
         required: true
       responses:
@@ -5804,7 +5840,7 @@ paths:
         required: true
         schema:
           type: string
-          pattern: "^([0-9]{1,3}\\.){3}[0-9]{1,3}|([0-9a-f]{1,4}\\:){7}([0-9a-f]{1,4})|(([a-z0-9]+\\\
+          pattern: "^([0-9]{1,3}\\.){3}[0-9]{1,3}|([0-9a-f]{1,4}:){7}([0-9a-f]{1,4})|(([a-z0-9]+\\\
             .){1,10}[a-z]+)?$"
       - description: "Human-readable label that identifies the log file that you want\
           \ to return. To return audit logs, enable *Database Auditing* for the specified\
@@ -6833,9 +6869,8 @@ paths:
               AWS IAM Authentication:
                 description: AWS IAM Authentication
                 value:
-                  awsIAMType: USER
                   databaseName: $external
-                  groupId: 32b6e34b3d91647abb20e7b8
+                  awsIAMType: USER
                   roles:
                   - databaseName: sales
                     roleName: readWrite
@@ -6844,12 +6879,12 @@ paths:
                   scopes:
                   - name: myCluster
                     type: CLUSTER
+                  groupId: 32b6e34b3d91647abb20e7b8
                   username: arn:aws:iam::358363220050:user/mongodb-aws-iam-auth-test-user
               Federated Authentication:
                 description: Federated Authentication
                 value:
                   databaseName: admin
-                  groupId: 32b6e34b3d91647abb20e7b8
                   oidcAuthType: IDP_GROUP
                   roles:
                   - databaseName: sales
@@ -6859,12 +6894,12 @@ paths:
                   scopes:
                   - name: myCluster
                     type: CLUSTER
+                  groupId: 32b6e34b3d91647abb20e7b8
                   username: 5dd7496c7a3e5a648454341c/sales
               LDAP Authentication:
                 description: LDAP Authentication
                 value:
                   databaseName: admin
-                  groupId: 32b6e34b3d91647abb20e7b8
                   ldapAuthType: GROUP
                   roles:
                   - databaseName: sales
@@ -6874,12 +6909,12 @@ paths:
                   scopes:
                   - name: myCluster
                     type: CLUSTER
+                  groupId: 32b6e34b3d91647abb20e7b8
                   username: "CN=marketing,OU=groups,DC=example,DC=com"
               SCRAM-SHA Authentication:
                 description: SCRAM-SHA Authentication
                 value:
                   databaseName: admin
-                  groupId: 32b6e34b3d91647abb20e7b8
                   password: changeme123
                   roles:
                   - databaseName: sales
@@ -6889,12 +6924,13 @@ paths:
                   scopes:
                   - name: myCluster
                     type: CLUSTER
+                  groupId: 32b6e34b3d91647abb20e7b8
                   username: david
               X509 Authentication:
                 description: X509 Authentication
                 value:
                   databaseName: $external
-                  groupId: 32b6e34b3d91647abb20e7b8
+                  x509Type: CUSTOMER
                   roles:
                   - databaseName: sales
                     roleName: readWrite
@@ -6903,8 +6939,8 @@ paths:
                   scopes:
                   - name: myCluster
                     type: CLUSTER
+                  groupId: 32b6e34b3d91647abb20e7b8
                   username: "CN=david@example.com,OU=users,DC=example,DC=com"
-                  x509Type: CUSTOMER
             schema:
               $ref: '#/components/schemas/CloudDatabaseUser'
         description: Creates one database user in the specified project.
@@ -7267,8 +7303,7 @@ paths:
         name: ipAddress
         schema:
           type: string
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
       - description: Maximum number of lines from the log to return.
         in: query
         name: nLogs
@@ -7347,8 +7382,7 @@ paths:
         name: ipAddress
         schema:
           type: string
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
       - description: Maximum number of lines from the log to return.
         in: query
         name: nLogs
@@ -8080,6 +8114,7 @@ paths:
       - Third-Party Integrations
   /api/atlas/v2/groups/{groupId}/invites:
     get:
+      deprecated: true
       description: "Returns all pending invitations to the specified project. To use\
         \ this resource, the requesting API Key must have the Project Owner role."
       operationId: listProjectInvitations
@@ -8112,7 +8147,9 @@ paths:
       summary: Return All Project Invitations
       tags:
       - Projects
+      x-sunset: 2024-10-04
     patch:
+      deprecated: true
       description: "Updates the details of one pending invitation to the specified\
         \ project. To specify which invitation to update, provide the username of\
         \ the invited user. To use this resource, the requesting API Key must have\
@@ -8151,7 +8188,9 @@ paths:
       summary: Update One Project Invitation
       tags:
       - Projects
+      x-sunset: 2024-10-04
     post:
+      deprecated: true
       description: "Invites one MongoDB Cloud user to join the specified project.\
         \ The MongoDB Cloud user must accept the invitation to access information\
         \ within the specified project. To use this resource, the requesting API Key\
@@ -8185,8 +8224,10 @@ paths:
       summary: Invite One MongoDB Cloud User to Join One Project
       tags:
       - Projects
+      x-sunset: 2024-10-04
   /api/atlas/v2/groups/{groupId}/invites/{invitationId}:
     delete:
+      deprecated: true
       description: "Cancels one pending invitation sent to the specified MongoDB Cloud\
         \ user to join a project. You can't cancel an invitation that the user accepted.\
         \ To use this resource, the requesting API Key must have the Project Owner\
@@ -8221,7 +8262,9 @@ paths:
       summary: Cancel One Project Invitation
       tags:
       - Projects
+      x-sunset: 2024-10-04
     get:
+      deprecated: true
       description: "Returns the details of one pending invitation to the specified\
         \ project. To use this resource, the requesting API Key must have the Project\
         \ Owner role."
@@ -8258,7 +8301,9 @@ paths:
       summary: Return One Project Invitation
       tags:
       - Projects
+      x-sunset: 2024-10-04
     patch:
+      deprecated: true
       description: "Updates the details of one pending invitation to the specified\
         \ project. To specify which invitation to update, provide the unique identification\
         \ string for that invitation. Use the Return All Project Invitations endpoint\
@@ -8306,6 +8351,7 @@ paths:
       summary: Update One Project Invitation by Invitation ID
       tags:
       - Projects
+      x-sunset: 2024-10-04
   /api/atlas/v2/groups/{groupId}/limits:
     get:
       description: "Returns all the limits for the specified project. To use this\
@@ -9432,7 +9478,7 @@ paths:
         schema:
           type: string
           format: date-time
-          example: 2022-01-01T00:00:00Z
+          example: 2022-01-01T00:00:00.000Z
       - description: Human-readable label that identifies the Data Lake Pipeline.
         in: path
         name: pipelineName
@@ -9556,7 +9602,7 @@ paths:
         schema:
           type: string
           format: date-time
-          example: 2022-01-01T00:00:00Z
+          example: 2022-01-01T00:00:00.000Z
       - description: Human-readable label that identifies the Data Lake Pipeline.
         in: path
         name: pipelineName
@@ -13872,7 +13918,7 @@ paths:
         schema:
           type: string
           format: date-time
-          example: 2021-11-17T23:15:00.06Z
+          example: 2021-11-17T23:15:00.060Z
       responses:
         "200":
           content:
@@ -15597,8 +15643,7 @@ components:
                You can also create a new project and create a network peering connection to set the desired MongoDB Cloud network peering container CIDR block for that project. MongoDB Cloud limits the number of MongoDB nodes per network peering connection based on the CIDR block and the region selected for the project.
 
                **Example:** A project in an Amazon Web Services (AWS) region supporting three availability zones and an MongoDB CIDR network peering container block of limit of `/24` equals 27 three-node replica sets.
-            pattern: "^((([0-9]{1,3}\\.){3}[0-9]{1,3})|([\\:]{0,2}([0-9a-f]{1,4}\\\
-              :){0,7}[0-9a-f]{1,4}[\\:]{0,2}))((%2[fF]|\\/)[0-9]{1,3})+$"
+            pattern: "^((([0-9]{1,3}\\.){3}[0-9]{1,3})|(:{0,2}([0-9a-f]{1,4}:){0,7}[0-9a-f]{1,4}[:]{0,2}))((%2[fF]|/)[0-9]{1,3})+$"
           regionName:
             type: string
             description: Geographic area that Amazon Web Services (AWS) defines to
@@ -16141,14 +16186,12 @@ components:
           type: string
           description: Range of IP addresses in Classless Inter-Domain Routing (CIDR)
             notation that found in this project's access list.
-          pattern: "^((([0-9]{1,3}\\.){3}[0-9]{1,3})|([\\:]{0,2}([0-9a-f]{1,4}\\:){0,7}[0-9a-f]{1,4}[\\\
-            :]{0,2}))((%2[fF]|\\/)[0-9]{1,3})+$"
+          pattern: "^((([0-9]{1,3}\\.){3}[0-9]{1,3})|(:{0,2}([0-9a-f]{1,4}:){0,7}[0-9a-f]{1,4}[:]{0,2}))((%2[fF]|/)[0-9]{1,3})+$"
           readOnly: true
         ipAddress:
           type: string
           description: IP address included in the API access list.
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
           readOnly: true
       required:
       - ipAddress
@@ -16269,10 +16312,11 @@ components:
           readOnly: true
         labels:
           type: array
+          deprecated: true
           description: |-
             Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels.
 
-            Cluster labels will be deprecated in a future release. We strongly recommend that you use [resource tags](https://dochub.mongodb.org/core/add-cluster-tag-atlas) instead.
+            Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use [resource tags](https://dochub.mongodb.org/core/add-cluster-tag-atlas) instead.
           items:
             $ref: '#/components/schemas/ComponentLabel'
         links:
@@ -16494,8 +16538,7 @@ components:
           type: string
           description: IPv4 or IPv6 address from which the user triggered this event.
           example: 216.172.40.186
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
           readOnly: true
         userId:
           type: string
@@ -16617,8 +16660,7 @@ components:
           type: string
           description: IPv4 or IPv6 address from which the user triggered this event.
           example: 216.172.40.186
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
           readOnly: true
         userId:
           type: string
@@ -17401,7 +17443,7 @@ components:
           description: "Hostname, fully qualified domain name (FQDN), or Internet\
             \ Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process\
             \ (`mongod` or `mongos`)."
-          pattern: "^([0-9]{1,3}\\.){3}[0-9]{1,3}|([0-9a-f]{1,4}\\:){7}([0-9a-f]{1,4})|(([a-z0-9]+\\\
+          pattern: "^([0-9]{1,3}\\.){3}[0-9]{1,3}|([0-9a-f]{1,4}:){7}([0-9a-f]{1,4})|(([a-z0-9]+\\\
             .){1,10}[a-z]+)?$"
           readOnly: true
         id:
@@ -17800,8 +17842,7 @@ components:
           type: string
           description: IPv4 or IPv6 address from which the user triggered this event.
           example: 216.172.40.186
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
           readOnly: true
         userId:
           type: string
@@ -17908,8 +17949,7 @@ components:
           type: string
           description: IPv4 or IPv6 address from which the user triggered this event.
           example: 216.172.40.186
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
           readOnly: true
         userId:
           type: string
@@ -18553,10 +18593,6 @@ components:
           default: false
           description: Flag that indicates whether someone enabled database auditing
             for the specified project.
-      required:
-      - auditAuthorizationSuccess
-      - auditFilter
-      - enabled
     AuthFederationRoleMapping:
       type: object
       description: Mapping settings that link one IdP and MongoDB Cloud.
@@ -18694,8 +18730,7 @@ components:
           type: string
           description: IPv4 or IPv6 address from which the user triggered this event.
           example: 216.172.40.186
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
           readOnly: true
         userId:
           type: string
@@ -18872,8 +18907,7 @@ components:
           description: Internet Protocol (IP) addresses expressed in Classless Inter-Domain
             Routing (CIDR) notation of the VPC's subnet that you want to peer with
             the MongoDB Cloud VPC.
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
         statusName:
           type: string
           description: State of the network peering connection at the time you made
@@ -18920,8 +18954,7 @@ components:
                You can also create a new project and create a network peering connection to set the desired MongoDB Cloud network peering container CIDR block for that project. MongoDB Cloud limits the number of MongoDB nodes per network peering connection based on the CIDR block and the region selected for the project.
 
                **Example:** A project in an Amazon Web Services (AWS) region supporting three availability zones and an MongoDB CIDR network peering container block of limit of `/24` equals 27 three-node replica sets.
-            pattern: "^((([0-9]{1,3}\\.){3}[0-9]{1,3})|([\\:]{0,2}([0-9a-f]{1,4}\\\
-              :){0,7}[0-9a-f]{1,4}[\\:]{0,2}))((%2[fF]|\\/)[0-9]{1,3})+$"
+            pattern: "^((([0-9]{1,3}\\.){3}[0-9]{1,3})|(:{0,2}([0-9a-f]{1,4}:){0,7}[0-9a-f]{1,4}[:]{0,2}))((%2[fF]|/)[0-9]{1,3})+$"
           azureSubscriptionId:
             type: string
             description: Unique string that identifies the Azure subscription in which
@@ -19388,8 +19421,7 @@ components:
           type: string
           description: IPv4 address of the private endpoint in your Azure VNet that
             someone added to this private endpoint service.
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
         privateEndpointResourceId:
           type: string
           description: Unique string that identifies the Azure private endpoint's
@@ -19548,6 +19580,8 @@ components:
           - STANDARD
         criteria:
           $ref: '#/components/schemas/CriteriaView'
+        dataExpirationRule:
+          $ref: '#/components/schemas/DataExpirationRuleView'
         dataProcessRegion:
           $ref: '#/components/schemas/DataProcessRegionView'
         dataSetName:
@@ -19654,6 +19688,8 @@ components:
           - STANDARD
         criteria:
           $ref: '#/components/schemas/CriteriaView'
+        dataExpirationRule:
+          $ref: '#/components/schemas/DataExpirationRuleView'
         dataProcessRegion:
           $ref: '#/components/schemas/DataProcessRegionView'
         dataSetName:
@@ -20446,31 +20482,6 @@ components:
       - PENDING_INVOICE_OVER_THRESHOLD
       - DAILY_BILL_UNDER_THRESHOLD
       - DAILY_BILL_OVER_THRESHOLD
-      - CHARGE_SUCCEEDED
-      - CHARGE_FAILED
-      - CHARGE_PROCESSING
-      - CHARGE_PENDING_REVERSAL
-      - BRAINTREE_CHARGE_FAILED
-      - CHECK_PAYMENT_RECEIVED
-      - WIRE_TRANSFER_PAYMENT_RECEIVED
-      - DISCOUNT_APPLIED
-      - CREDIT_ISSUED
-      - CREDIT_PULLED_FWD
-      - CREDIT_START_DATE_MODIFIED
-      - CREDIT_END_DATE_MODIFIED
-      - CREDIT_ELASTIC_INVOICING_MODIFIED
-      - CREDIT_TYPE_MODIFIED
-      - CREDIT_AMOUNT_CENTS_MODIFIED
-      - CREDIT_AMOUNT_REMAINING_CENTS_MODIFIED
-      - CREDIT_TOTAL_BILLED_CENTS_MODIFIED
-      - CREDIT_AWS_CUSTOMER_ID_MODIFIED
-      - CREDIT_AWS_PRODUCT_CODE_MODIFIED
-      - CREDIT_GCP_MARKETPLACE_ENTITLEMENT_ID_MODIFIED
-      - CREDIT_AZURE_SUBSCRIPTION_ID_MODIFIED
-      - PROMO_CODE_APPLIED
-      - PAYMENT_FORGIVEN
-      - REFUND_ISSUED
-      - TERMINATE_PAID_SERVICES
       example: CREDIT_CARD_CURRENT
       title: Billing Event Types
     BillingEventTypeViewForOrg:
@@ -20512,7 +20523,6 @@ components:
       - GCP_BILLING_ACCOUNT_CREDIT_ISSUED
       - CREDIT_SFOLI_MODIFIED
       - CREDIT_SFOLID_MODIFIED
-      - CREDIT_AMOUNT_MODIFIED
       - PREPAID_PLAN_MODIFIED
       - AWS_USAGE_REPORTED
       - AZURE_USAGE_REPORTED
@@ -20639,8 +20649,7 @@ components:
           type: string
           description: IPv4 or IPv6 address from which the user triggered this event.
           example: 216.172.40.186
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
           readOnly: true
         userId:
           type: string
@@ -20765,8 +20774,7 @@ components:
           type: string
           description: IPv4 or IPv6 address from which the user triggered this event.
           example: 216.172.40.186
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
           readOnly: true
         userId:
           type: string
@@ -22707,10 +22715,12 @@ components:
         failIndexKeyTooLong:
           type: boolean
           default: true
+          deprecated: true
           description: "Flag that indicates whether you can insert or update documents\
             \ where all indexed entries don't exceed 1024 bytes. If you set this to\
             \ false, [mongod](https://docs.mongodb.com/upcoming/reference/program/mongod/#mongodb-binary-bin.mongod)\
-            \ writes documents that exceed this limit but doesn't index them."
+            \ writes documents that exceed this limit but doesn't index them. This\
+            \ parameter has been removed as of [MongoDB 4.4](https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.failIndexKeyTooLong)."
           externalDocs:
             description: This option corresponds to the `failIndexKeyTooLong` `mongod`
               configuration file option.
@@ -23908,8 +23918,7 @@ components:
             type: string
             description: IPv4 address of the private endpoint in your Azure VNet that
               someone added to this private endpoint service.
-            pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-              :){7}[0-9a-f]{1,4}$"
+            pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
       description: Group of Private Endpoint settings.
       required:
       - id
@@ -23970,8 +23979,7 @@ components:
           type: string
           description: One Private Internet Protocol version 4 (IPv4) address to which
             this Google Cloud consumer forwarding rule resolves.
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
           writeOnly: true
       title: GCP Forwarding Rules
     CreateOrganizationRequest:
@@ -24167,6 +24175,17 @@ components:
             minimum: 0
       required:
       - type
+    DataExpirationRuleView:
+      type: object
+      description: Rule for specifying when data should be deleted from the archive.
+      properties:
+        expireAfterDays:
+          type: integer
+          format: int32
+          description: Number of days used in the date criteria for nominating documents
+            for deletion.
+          maximum: 9215
+          minimum: 7
     DataExplorerAccessedEventTypeView:
       type: string
       description: Unique identifier of event type.
@@ -24281,8 +24300,7 @@ components:
           type: string
           description: IPv4 or IPv6 address from which the user triggered this event.
           example: 216.172.40.186
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
           readOnly: true
         userId:
           type: string
@@ -24990,6 +25008,8 @@ components:
           format: date-time
           description: Timestamp that indicates when the Data Lake Pipeline was created.
           readOnly: true
+        datasetRetentionPolicy:
+          $ref: '#/components/schemas/DatasetRetentionPolicy'
         groupId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the group.
@@ -25481,8 +25501,7 @@ components:
           type: string
           description: IPv4 or IPv6 address from which the user triggered this event.
           example: 216.172.40.186
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
           readOnly: true
         replicaSetName:
           type: string
@@ -25602,6 +25621,14 @@ components:
           format: email
           description: Email address of the user who authorized to updated the Backup
             Compliance Policy  settings.
+        authorizedUserFirstName:
+          type: string
+          description: First name of the user who authorized to updated the Backup
+            Compliance Policy  settings.
+        authorizedUserLastName:
+          type: string
+          description: Last name of the user who authorized to updated the Backup
+            Compliance Policy  settings.
         copyProtectionEnabled:
           type: boolean
           default: false
@@ -25675,6 +25702,97 @@ components:
           readOnly: true
       required:
       - authorizedEmail
+    DataProtectionSettings20231001:
+      type: object
+      properties:
+        authorizedEmail:
+          type: string
+          format: email
+          description: Email address of the user who authorized to updated the Backup
+            Compliance Policy  settings.
+        authorizedUserFirstName:
+          type: string
+          description: First name of the user who authorized to updated the Backup
+            Compliance Policy  settings.
+        authorizedUserLastName:
+          type: string
+          description: Last name of the user who authorized to updated the Backup
+            Compliance Policy  settings.
+        copyProtectionEnabled:
+          type: boolean
+          default: false
+          description: "Flag that indicates whether to enable additional backup copies\
+            \ for the cluster. If unspecified, this value defaults to false."
+        encryptionAtRestEnabled:
+          type: boolean
+          default: false
+          description: "Flag that indicates whether Encryption at Rest using Customer\
+            \ Key  Management is required for all clusters with a Backup Compliance\
+            \ Policy. If unspecified, this value defaults to false."
+          externalDocs:
+            description: Encryption at Rest using Customer Key Management
+            url: https://www.mongodb.com/docs/atlas/security-kms-encryption/
+        onDemandPolicyItem:
+          $ref: '#/components/schemas/DiskBackupApiPolicyItem'
+        pitEnabled:
+          type: boolean
+          default: false
+          description: "Flag that indicates whether the cluster uses Continuous Cloud\
+            \ Backups with a Backup Compliance Policy. If unspecified, this value\
+            \ defaults to false."
+          externalDocs:
+            description: Continuous Cloud Backups
+            url: https://docs.atlas.mongodb.com/backup/cloud-backup/overview/
+        projectId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the project
+            for the Backup Compliance Policy.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+        restoreWindowDays:
+          type: integer
+          format: int32
+          description: "Number of previous days that you can restore back to with\
+            \ Continuous Cloud Backup with a Backup Compliance Policy. You must specify\
+            \ a positive, non-zero integer, and the maximum retention window can't\
+            \ exceed the hourly retention time. This parameter applies only to Continuous\
+            \ Cloud Backups with a Backup Compliance Policy."
+        scheduledPolicyItems:
+          type: array
+          description: List that contains the specifications for one scheduled policy.
+          items:
+            $ref: '#/components/schemas/DiskBackupApiPolicyItem'
+        state:
+          type: string
+          description: Label that indicates the state of the Backup Compliance Policy
+            settings. MongoDB Cloud ignores this setting when you enable or update
+            the Backup Compliance Policy settings.
+          enum:
+          - ACTIVE
+          - ENABLING
+          - UPDATING
+          - DISABLING
+          readOnly: true
+        updatedDate:
+          type: string
+          format: date-time
+          description: ISO 8601 timestamp format in UTC that indicates when the user
+            updated the Data Protection Policy settings. MongoDB Cloud ignores this
+            setting when you enable or update the Backup Compliance Policy settings.
+          readOnly: true
+        updatedUser:
+          type: string
+          format: email
+          description: Email address that identifies the user who updated the Backup
+            Compliance Policy settings. MongoDB Cloud ignores this email setting when
+            you enable or update the Backup Compliance Policy settings.
+          readOnly: true
+      required:
+      - authorizedEmail
+      - authorizedUserFirstName
+      - authorizedUserLastName
     DatabaseInheritedRole:
       type: object
       description: Role inherited from another context for this database user.
@@ -25966,6 +26084,32 @@ components:
       required:
       - typeName
       title: Datadog Notification
+    DatasetRetentionPolicy:
+      type: object
+      description: Dataset Retention Policy for a Scheduled Data Lake Pipeline.
+      properties:
+        lastModifiedDate:
+          type: string
+          format: date-time
+          description: Date when retention policy was last modified.
+          readOnly: true
+        units:
+          type: string
+          description: Quantity of time in which the Data Lake Pipeline measures dataset
+            retention.
+          enum:
+          - DAYS
+          - WEEKS
+          - MONTHS
+        value:
+          type: integer
+          format: int32
+          description: "Number that indicates the amount of days, weeks, or months\
+            \ that the Data Lake Pipeline will retain datasets."
+      required:
+      - units
+      - value
+      title: Dataset Retention Policy
     DateCriteriaView:
       type: object
       allOf:
@@ -26685,8 +26829,7 @@ components:
           type: string
           description: IPv4 or IPv6 address from which the user triggered this event.
           example: 216.172.40.186
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
           readOnly: true
         userId:
           type: string
@@ -26806,13 +26949,6 @@ components:
             title: Partner Event Types
           - type: string
             enum:
-            - ORG_POLICY_CREATED
-            - ORG_POLICY_DELETED
-            - ORG_POLICY_EDITED
-            - ORG_POLICY_CLONED
-            title: Policy Event Types
-          - type: string
-            enum:
             - SUPPORT_EMAILS_SENT_SUCCESSFULLY
             - SUPPORT_EMAILS_SENT_FAILURE
             title: Support Event Types
@@ -26873,8 +27009,7 @@ components:
           type: string
           description: IPv4 or IPv6 address from which the user triggered this event.
           example: 216.172.40.186
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
           readOnly: true
         userId:
           type: string
@@ -27415,7 +27550,7 @@ components:
         storageSizeBytes:
           type: integer
           format: int64
-          description: Number of bytes taken to store the backup snapshot.
+          description: Number of bytes taken to store the backup at time of snapshot.
           readOnly: true
         type:
           type: string
@@ -27547,7 +27682,7 @@ components:
         storageSizeBytes:
           type: integer
           format: int64
-          description: Number of bytes taken to store the backup snapshot.
+          description: Number of bytes taken to store the backup at time of snapshot.
           readOnly: true
         type:
           type: string
@@ -27688,7 +27823,7 @@ components:
         storageSizeBytes:
           type: integer
           format: int64
-          description: Number of bytes taken to store the backup snapshot.
+          description: Number of bytes taken to store the backup at time of snapshot.
           readOnly: true
         type:
           type: string
@@ -27915,6 +28050,12 @@ components:
           writeOnly: true
         export:
           $ref: '#/components/schemas/AutoExportPolicyView'
+        extraRetentionSettings:
+          type: array
+          description: List that contains a document for each extra retention setting
+            item in the desired backup policy.
+          items:
+            $ref: '#/components/schemas/ExtraRetentionSetting'
         links:
           type: array
           description: "List of one or more Uniform Resource Locators (URLs) that\
@@ -27987,7 +28128,7 @@ components:
           type: string
           format: email
           description: |-
-            Email address to which MongoDB Cloud sends alert notifications. The resource requires this parameter when `"notifications.[n].typeName" : "EMAIL"`. You don’t need to set this value to send emails to individual or groups of MongoDB Cloud users including:
+            Email address to which MongoDB Cloud sends alert notifications. The resource requires this parameter when `"notifications.[n].typeName" : "EMAIL"`. You don't need to set this value to send emails to individual or groups of MongoDB Cloud users including:
 
             - specific MongoDB Cloud users (`"notifications.[n].typeName" : "USER"`)
             - MongoDB Cloud users with specific project roles (`"notifications.[n].typeName" : "GROUP"`)
@@ -28237,31 +28378,6 @@ components:
         - PENDING_INVOICE_OVER_THRESHOLD
         - DAILY_BILL_UNDER_THRESHOLD
         - DAILY_BILL_OVER_THRESHOLD
-        - CHARGE_SUCCEEDED
-        - CHARGE_FAILED
-        - CHARGE_PROCESSING
-        - CHARGE_PENDING_REVERSAL
-        - BRAINTREE_CHARGE_FAILED
-        - CHECK_PAYMENT_RECEIVED
-        - WIRE_TRANSFER_PAYMENT_RECEIVED
-        - DISCOUNT_APPLIED
-        - CREDIT_ISSUED
-        - CREDIT_PULLED_FWD
-        - CREDIT_START_DATE_MODIFIED
-        - CREDIT_END_DATE_MODIFIED
-        - CREDIT_ELASTIC_INVOICING_MODIFIED
-        - CREDIT_TYPE_MODIFIED
-        - CREDIT_AMOUNT_CENTS_MODIFIED
-        - CREDIT_AMOUNT_REMAINING_CENTS_MODIFIED
-        - CREDIT_TOTAL_BILLED_CENTS_MODIFIED
-        - CREDIT_AWS_CUSTOMER_ID_MODIFIED
-        - CREDIT_AWS_PRODUCT_CODE_MODIFIED
-        - CREDIT_GCP_MARKETPLACE_ENTITLEMENT_ID_MODIFIED
-        - CREDIT_AZURE_SUBSCRIPTION_ID_MODIFIED
-        - PROMO_CODE_APPLIED
-        - PAYMENT_FORGIVEN
-        - REFUND_ISSUED
-        - TERMINATE_PAID_SERVICES
         title: Billing Event Types
       - type: string
         enum:
@@ -28568,6 +28684,7 @@ components:
         - ADMIN_NOTE_UPDATED
         - GROUP_AUTOMATION_CONFIG_PUBLISHED
         - CLUSTER_AUTOMATION_CONFIG_PUBLISHED
+        - SET_ENSURE_CLUSTER_CONNECTIVITY_AFTER_FOR_CLUSTER
         - CLUSTER_LINKED_TO_VERCEL
         - CLUSTER_UNLINKED_FROM_VERCEL
         - INGESTION_PIPELINE_DELETED
@@ -28603,6 +28720,7 @@ components:
         - PUSH_BASED_LOG_EXPORT_CONFIGURATION_UPDATED
         - PUSH_BASED_LOG_EXPORT_DISABLED
         - AZURE_CLUSTER_PREFERRED_STORAGE_TYPE_UPDATED
+        - CONTAINER_DELETED
         title: NDS Audit Types
       - type: string
         enum:
@@ -28836,7 +28954,6 @@ components:
         - GCP_BILLING_ACCOUNT_CREDIT_ISSUED
         - CREDIT_SFOLI_MODIFIED
         - CREDIT_SFOLID_MODIFIED
-        - CREDIT_AMOUNT_MODIFIED
         - PREPAID_PLAN_MODIFIED
         - AWS_USAGE_REPORTED
         - AZURE_USAGE_REPORTED
@@ -28982,13 +29099,6 @@ components:
         title: Partner Event Types
       - type: string
         enum:
-        - ORG_POLICY_CREATED
-        - ORG_POLICY_DELETED
-        - ORG_POLICY_EDITED
-        - ORG_POLICY_CLONED
-        title: Policy Event Types
-      - type: string
-        enum:
         - SUPPORT_EMAILS_SENT_SUCCESSFULLY
         - SUPPORT_EMAILS_SENT_FAILURE
         title: Support Event Types
@@ -29117,6 +29227,24 @@ components:
           format: int32
           description: Total number of collections on the replica set to export.
           readOnly: true
+    ExtraRetentionSetting:
+      type: object
+      description: extra retention setting item in the desired backup policy.
+      properties:
+        frequencyType:
+          type: string
+          description: The frequency type for the extra retention settings for the
+            cluster.
+          enum:
+          - HOURLY
+          - DAILY
+          - WEEKLY
+          - MONTHLY
+          - ON_DEMAND
+        retentionDays:
+          type: integer
+          format: int32
+          description: The number of extra retention days for the cluster.
     FTSIndexAuditTypeView:
       type: string
       description: Unique identifier of event type.
@@ -29211,8 +29339,7 @@ components:
           type: string
           description: IPv4 or IPv6 address from which the user triggered this event.
           example: 216.172.40.186
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
           readOnly: true
         userId:
           type: string
@@ -29508,8 +29635,7 @@ components:
                You can also create a new project and create a network peering connection to set the desired MongoDB Cloud network peering container CIDR block for that project. MongoDB Cloud limits the number of MongoDB nodes per network peering connection based on the CIDR block and the region selected for the project.
 
                **Example:** A project in an Google Cloud (GCP) region supporting three availability zones and an MongoDB CIDR network peering container block of limit of `/24` equals 27 three-node replica sets.
-            pattern: "^((([0-9]{1,3}\\.){3}[0-9]{1,3})|([\\:]{0,2}([0-9a-f]{1,4}\\\
-              :){0,7}[0-9a-f]{1,4}[\\:]{0,2}))((%2[fF]|\\/)[0-9]{1,3})+$"
+            pattern: "^((([0-9]{1,3}\\.){3}[0-9]{1,3})|(:{0,2}([0-9a-f]{1,4}:){0,7}[0-9a-f]{1,4}[:]{0,2}))((%2[fF]|/)[0-9]{1,3})+$"
           gcpProjectId:
             type: string
             description: Unique string that identifies the GCP project in which MongoDB
@@ -29656,8 +29782,7 @@ components:
           type: string
           description: One Private Internet Protocol version 4 (IPv4) address to which
             this Google Cloud consumer forwarding rule resolves.
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
           readOnly: true
         status:
           type: string
@@ -30206,8 +30331,8 @@ components:
       properties:
         roles:
           type: array
-          description: One or more organization or project level roles to assign to
-            the MongoDB Cloud user.
+          description: One or more project level roles to assign to the MongoDB Cloud
+            user.
           items:
             type: string
             enum:
@@ -30391,6 +30516,40 @@ components:
             query param is true.
           minimum: 0
           readOnly: true
+    GroupRole:
+      type: object
+      properties:
+        groupId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the project
+            to which this role belongs.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+        groupRole:
+          type: string
+          description: |+
+            Human-readable label that identifies the collection of privileges that MongoDB Cloud grants a specific API key, MongoDB Cloud user, or MongoDB Cloud team. These roles include project-level roles.
+
+            Project Roles
+
+            * GROUP_CLUSTER_MANAGER
+            * GROUP_DATA_ACCESS_ADMIN
+            * GROUP_DATA_ACCESS_READ_ONLY
+            * GROUP_DATA_ACCESS_READ_WRITE
+            * GROUP_OWNER
+            * GROUP_READ_ONLY
+            * GROUP_SEARCH_INDEX_EDITOR
+
+          enum:
+          - GROUP_CLUSTER_MANAGER
+          - GROUP_DATA_ACCESS_ADMIN
+          - GROUP_DATA_ACCESS_READ_ONLY
+          - GROUP_DATA_ACCESS_READ_WRITE
+          - GROUP_OWNER
+          - GROUP_READ_ONLY
+          - GROUP_SEARCH_INDEX_EDITOR
     GroupSettings:
       type: object
       description: Collection of settings that configures the project.
@@ -30819,8 +30978,7 @@ components:
           type: string
           description: IPv4 or IPv6 address from which the user triggered this event.
           example: 216.172.40.186
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
           readOnly: true
         replicaSetName:
           type: string
@@ -31552,8 +31710,7 @@ components:
           type: string
           description: IPv4 or IPv6 address from which the user triggered this event.
           example: 216.172.40.186
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
           readOnly: true
         replicaSetName:
           type: string
@@ -32093,6 +32250,8 @@ components:
             in a Federated Database collection.
           example: v1$atlas$snapshot$Cluster0$myDatabase$myCollection$19700101T000000Z
           readOnly: true
+        datasetRetentionPolicy:
+          $ref: '#/components/schemas/DatasetRetentionPolicy'
         groupId:
           type: string
           description: Unique 24-hexadecimal character string that identifies the
@@ -32124,6 +32283,12 @@ components:
           maxLength: 24
           minLength: 24
           pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        scheduledDeletionDate:
+          type: string
+          format: date-time
+          description: Timestamp that indicates when the pipeline run will expire
+            and its dataset will be deleted.
           readOnly: true
         snapshotId:
           type: string
@@ -32669,7 +32834,7 @@ components:
             Protocol (IP) address of the Lightweight Directory Access Protocol (LDAP)
             host. This host must have access to the internet or have a Virtual Private
             Cloud (VPC) peering connection to your cluster.
-          pattern: "^([0-9]{1,3}\\.){3}[0-9]{1,3}|([0-9a-f]{1,4}\\:){7}([0-9a-f]{1,4})|(([a-z0-9]+\\\
+          pattern: "^([0-9]{1,3}\\.){3}[0-9]{1,3}|([0-9a-f]{1,4}:){7}([0-9a-f]{1,4})|(([a-z0-9]+\\\
             .){1,10}[a-z]+)?$"
         links:
           type: array
@@ -32791,7 +32956,7 @@ components:
             Protocol (IP) address of the Lightweight Directory Access Protocol (LDAP)
             host. This host must have access to the internet or have a Virtual Private
             Cloud (VPC) peering connection to your cluster.
-          pattern: "^([0-9]{1,3}\\.){3}[0-9]{1,3}|([0-9a-f]{1,4}\\:){7}([0-9a-f]{1,4})|(([a-z0-9]+\\\
+          pattern: "^([0-9]{1,3}\\.){3}[0-9]{1,3}|([0-9a-f]{1,4}:){7}([0-9a-f]{1,4})|(([a-z0-9]+\\\
             .){1,10}[a-z]+)?$"
         links:
           type: array
@@ -32932,10 +33097,11 @@ components:
           readOnly: true
         labels:
           type: array
+          deprecated: true
           description: |-
             Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels.
 
-            Cluster labels will be deprecated in a future release. We strongly recommend that you use [resource tags](https://dochub.mongodb.org/core/add-cluster-tag-atlas) instead.
+            Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use [resource tags](https://dochub.mongodb.org/core/add-cluster-tag-atlas) instead.
           items:
             $ref: '#/components/schemas/ComponentLabel'
         links:
@@ -33424,7 +33590,7 @@ components:
             description: One host running a MongoDB Agent. This Agent can transfer
               your MongoDB data between one source and one target cluster.
             example: vm001.example.com
-            pattern: "^([0-9]{1,3}\\.){3}[0-9]{1,3}|([0-9a-f]{1,4}\\:){7}([0-9a-f]{1,4})|(([a-z0-9]+\\\
+            pattern: "^([0-9]{1,3}\\.){3}[0-9]{1,3}|([0-9a-f]{1,4}:){7}([0-9a-f]{1,4})|(([a-z0-9]+\\\
               .){1,10}[a-z]+)?$"
           readOnly: true
         readyForCutover:
@@ -33982,8 +34148,7 @@ components:
           type: string
           description: Internet Protocol address that attempted to authenticate with
             the database.
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
           readOnly: true
         logLine:
           type: string
@@ -34192,6 +34357,7 @@ components:
       - ADMIN_NOTE_UPDATED
       - GROUP_AUTOMATION_CONFIG_PUBLISHED
       - CLUSTER_AUTOMATION_CONFIG_PUBLISHED
+      - SET_ENSURE_CLUSTER_CONNECTIVITY_AFTER_FOR_CLUSTER
       - CLUSTER_LINKED_TO_VERCEL
       - CLUSTER_UNLINKED_FROM_VERCEL
       - INGESTION_PIPELINE_DELETED
@@ -34227,6 +34393,7 @@ components:
       - PUSH_BASED_LOG_EXPORT_CONFIGURATION_UPDATED
       - PUSH_BASED_LOG_EXPORT_DISABLED
       - AZURE_CLUSTER_PREFERRED_STORAGE_TYPE_UPDATED
+      - CONTAINER_DELETED
       example: CLUSTER_CREATED
       title: NDS Audit Types
     NDSAuditTypeViewForOrg:
@@ -34323,8 +34490,7 @@ components:
           type: string
           description: IPv4 or IPv6 address from which the user triggered this event.
           example: 216.172.40.186
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
           readOnly: true
         userId:
           type: string
@@ -34442,8 +34608,7 @@ components:
           type: string
           description: IPv4 or IPv6 address from which the user triggered this event.
           example: 216.172.40.186
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
           readOnly: true
         userId:
           type: string
@@ -34565,8 +34730,7 @@ components:
           type: string
           description: IPv4 or IPv6 address from which the user triggered this event.
           example: 216.172.40.186
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
           readOnly: true
         userId:
           type: string
@@ -34726,8 +34890,7 @@ components:
           type: string
           description: IPv4 or IPv6 address from which the user triggered this event.
           example: 216.172.40.186
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
           readOnly: true
         userId:
           type: string
@@ -34864,8 +35027,7 @@ components:
           type: string
           description: IPv4 or IPv6 address from which the user triggered this event.
           example: 216.172.40.186
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
           readOnly: true
         userId:
           type: string
@@ -35015,7 +35177,7 @@ components:
             \ for your project before you can add an AWS security group to an IP access\
             \ list. You cannot set AWS security groups as temporary access list entries.\
             \ Don't set this parameter if you set **cidrBlock** or **ipAddress**."
-          pattern: "^([0-9]*\\/)?sg-([0-9]*)"
+          pattern: "^([0-9]*/)?sg-([0-9]*)"
         cidrBlock:
           type: string
           description: "Range of IP addresses in Classless Inter-Domain Routing (CIDR)\
@@ -35055,8 +35217,7 @@ components:
             \ list. Your IP access list entry can be one **awsSecurityGroup**, one\
             \ **cidrBlock**, or one **ipAddress**. Don't set this parameter if you\
             \ set **awsSecurityGroup** or **cidrBlock**."
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
         links:
           type: array
           description: "List of one or more Uniform Resource Locators (URLs) that\
@@ -35394,8 +35555,7 @@ components:
           type: string
           description: IPv4 or IPv6 address from which the user triggered this event.
           example: 216.172.40.186
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
           readOnly: true
         replicaSetName:
           type: string
@@ -35765,8 +35925,7 @@ components:
           type: string
           description: IPv4 or IPv6 address from which the user triggered this event.
           example: 216.172.40.186
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
           readOnly: true
         userId:
           type: string
@@ -35998,6 +36157,11 @@ components:
           description: Date and time when the invitation from MongoDB Cloud expires.
             MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
           readOnly: true
+        groupRoleAssignments:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupRole'
+          uniqueItems: true
         id:
           type: string
           description: Unique 24-hexadecimal digit string that identifies this organization.
@@ -36074,13 +36238,42 @@ components:
             organization.
       required:
       - orgName
+    OrganizationInvitationGroupRoleAssignmentsRequest:
+      type: object
+      properties:
+        groupId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the project
+            to which these roles belong.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+        roles:
+          type: array
+          description: One or more project level roles to assign to the MongoDB Cloud
+            user.
+          items:
+            type: string
+            enum:
+            - GROUP_CLUSTER_MANAGER
+            - GROUP_DATA_ACCESS_ADMIN
+            - GROUP_DATA_ACCESS_READ_ONLY
+            - GROUP_DATA_ACCESS_READ_WRITE
+            - GROUP_OWNER
+            - GROUP_READ_ONLY
+          uniqueItems: true
     OrganizationInvitationRequest:
       type: object
       properties:
+        groupRoleAssignments:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrganizationInvitationGroupRoleAssignmentsRequest'
         roles:
           type: array
-          description: One or more organization or project level roles to assign to
-            the MongoDB Cloud user.
+          description: One or more organization level roles to assign to the MongoDB
+            Cloud user.
           items:
             type: string
             enum:
@@ -36109,10 +36302,14 @@ components:
     OrganizationInvitationUpdateRequest:
       type: object
       properties:
+        groupRoleAssignments:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrganizationInvitationGroupRoleAssignmentsRequest'
         roles:
           type: array
-          description: One or more organization or project level roles to assign to
-            the MongoDB Cloud user.
+          description: One or more organization level roles to assign to the MongoDB
+            Cloud user.
           items:
             type: string
             enum:
@@ -37819,8 +38016,8 @@ components:
       discriminator:
         mapping:
           AWS: '#/components/schemas/AWSInterfaceEndpoint'
-          AZURE: '#/components/schemas/PrivateGCPEndpointGroup'
-          GCP: '#/components/schemas/AzurePrivateEndpoint'
+          AZURE: '#/components/schemas/AzurePrivateEndpoint'
+          GCP: '#/components/schemas/PrivateGCPEndpointGroup'
         propertyName: cloudProvider
       properties:
         cloudProvider:
@@ -38272,8 +38469,7 @@ components:
           type: string
           description: IPv4 or IPv6 address from which the user triggered this event.
           example: 216.172.40.186
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
           readOnly: true
         replicaSetName:
           type: string
@@ -38942,8 +39138,7 @@ components:
           type: string
           description: IPv4 or IPv6 address from which the user triggered this event.
           example: 216.172.40.186
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
           readOnly: true
         resourceId:
           type: string
@@ -39063,8 +39258,7 @@ components:
           type: string
           description: IPv4 or IPv6 address from which the user triggered this event.
           example: 216.172.40.186
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
           readOnly: true
         resourceId:
           type: string
@@ -39290,6 +39484,9 @@ components:
           enum:
           - SHA-1
           - SHA-256
+        slug:
+          type: string
+          description: Custom SSO Url for identity provider.
         ssoDebugEnabled:
           type: boolean
           description: Flag that indicates whether the identity provider has SSO debug
@@ -39438,7 +39635,7 @@ components:
           type: string
           description: Unique string that identifies the private endpoint's network
             interface.
-          pattern: "^(vpce-[0-9a-f]{17}$"
+          pattern: "^vpce-[0-9a-f]{17}$"
           readOnly: true
         comment:
           type: string
@@ -39486,7 +39683,7 @@ components:
             type: string
             description: Unique string that identifies the private endpoint's network
               interface.
-            pattern: "^(vpce-[0-9a-f]{17}$"
+            pattern: "^vpce-[0-9a-f]{17}$"
             writeOnly: true
       description: Updates to a serverless AWS tenant endpoint.
       required:
@@ -39509,9 +39706,8 @@ components:
           type: string
           description: Unique string that identifies the Azure private endpoint's
             network interface that someone added to this private endpoint service.
-          pattern: "^\\/subscriptions\\/[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12}\\\
-            /resource[gG]roups\\/private[Ll]ink\\/providers\\/Microsoft\\.Network\\\
-            /privateEndpoints\\/[-\\w._()]+)$"
+          pattern: "^/subscriptions/[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12}/resource[gG]roups/private[Ll]ink/providers/Microsoft\\\
+            .Network/privateEndpoints/[-\\w._()]+$"
           readOnly: true
         comment:
           type: string
@@ -39533,10 +39729,7 @@ components:
           type: string
           description: IPv4 address of the private endpoint in your Azure VNet that
             someone added to this private endpoint service.
-          maxLength: 24
-          minLength: 24
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
           readOnly: true
         privateLinkServiceResourceId:
           type: string
@@ -39573,16 +39766,14 @@ components:
             type: string
             description: Unique string that identifies the Azure private endpoint's
               network interface for this private endpoint service.
-            pattern: "^\\/subscriptions\\/[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12}\\\
-              /resource[gG]roups\\/private[Ll]ink\\/providers\\/Microsoft\\.Network\\\
-              /privateEndpoints\\/[-\\w._()]+)$"
+            pattern: "^/subscriptions/[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12}/resource[gG]roups/private[Ll]ink/providers/Microsoft\\\
+              .Network/privateEndpoints/[-\\w._()]+$"
             writeOnly: true
           privateEndpointIpAddress:
             type: string
             description: IPv4 address of the private endpoint in your Azure VNet that
               someone added to this private endpoint service.
-            pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-              :){7}[0-9a-f]{1,4}$"
+            pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
             writeOnly: true
       description: Updates to a serverless Azure tenant endpoint.
       required:
@@ -40315,6 +40506,10 @@ components:
           items:
             $ref: '#/components/schemas/ServiceAccountAccessList'
           uniqueItems: true
+        createdAt:
+          type: string
+          format: date-time
+          description: Service account creation time.
         description:
           type: string
           description: Description of the service account.
@@ -40326,10 +40521,7 @@ components:
           type: string
           description: Name for service account.
         roles:
-          type: array
-          items:
-            $ref: '#/components/schemas/ServiceAccountAccessRole'
-          uniqueItems: true
+          $ref: '#/components/schemas/ServiceAccountAccessRole'
         secrets:
           type: array
           description: List of secrets.
@@ -40339,11 +40531,6 @@ components:
     ServiceAccountAccessList:
       type: object
       properties:
-        count:
-          type: integer
-          format: int32
-          description: Times it has been used.
-          readOnly: true
         createdAt:
           type: string
           format: date-time
@@ -40361,40 +40548,34 @@ components:
         networkAddress:
           type: string
           description: An IP address or CIDR notation.
+        requestCount:
+          type: integer
+          format: int64
+          description: Count of requests using this network address.
+          readOnly: true
     ServiceAccountAccessRole:
       type: object
+      description: Service account access roles.
       properties:
-        groupId:
-          type: string
-          description: Project Id.
-        orgId:
-          type: string
-          description: Organization Id.
-        roleName:
-          type: string
-          description: Access Role.
-          enum:
-          - ORG_MEMBER
-          - ORG_READ_ONLY
-          - ORG_BILLING_ADMIN
-          - ORG_BILLING_READ_ONLY
-          - ORG_GROUP_CREATOR
-          - ORG_OWNER
-          - ORG_TEAM_MEMBERS_ADMIN
-          - GROUP_ATLAS_ADMIN
-          - GROUP_AUTOMATION_ADMIN
-          - GROUP_BACKUP_ADMIN
-          - GROUP_MONITORING_ADMIN
-          - GROUP_OWNER
-          - GROUP_READ_ONLY
-          - GROUP_USER_ADMIN
-          - GROUP_BILLING_ADMIN
-          - GROUP_DATA_ACCESS_ADMIN
-          - GROUP_DATA_ACCESS_READ_ONLY
-          - GROUP_DATA_ACCESS_READ_WRITE
-          - GROUP_CHARTS_ADMIN
-          - GROUP_CLUSTER_MANAGER
-          - GROUP_SEARCH_INDEX_EDITOR
+        groups:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceAccountProjectAccessRole'
+          uniqueItems: true
+        org:
+          type: array
+          items:
+            type: string
+            description: Access Role for the organization
+            enum:
+            - ORG_MEMBER
+            - ORG_READ_ONLY
+            - ORG_BILLING_ADMIN
+            - ORG_BILLING_READ_ONLY
+            - ORG_GROUP_CREATOR
+            - ORG_OWNER
+            - ORG_TEAM_MEMBERS_ADMIN
+          uniqueItems: true
     ServiceAccountDetails:
       type: object
       properties:
@@ -40419,16 +40600,45 @@ components:
           type: string
           description: Service account name.
         roles:
-          type: array
-          items:
-            $ref: '#/components/schemas/ServiceAccountAccessRole'
-          uniqueItems: true
+          $ref: '#/components/schemas/ServiceAccountAccessRole'
         secrets:
           type: array
           items:
             $ref: '#/components/schemas/ServiceAccountSecretDetails'
           maxItems: 2
           uniqueItems: true
+    ServiceAccountProjectAccessRole:
+      type: object
+      description: Group access roles
+      properties:
+        groupId:
+          type: string
+          description: Id of the group.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: "^([a-f0-9]{24})$"
+        roleNames:
+          type: array
+          items:
+            type: string
+            description: Group access roles.
+            enum:
+            - GROUP_ATLAS_ADMIN
+            - GROUP_AUTOMATION_ADMIN
+            - GROUP_BACKUP_ADMIN
+            - GROUP_MONITORING_ADMIN
+            - GROUP_OWNER
+            - GROUP_READ_ONLY
+            - GROUP_USER_ADMIN
+            - GROUP_BILLING_ADMIN
+            - GROUP_DATA_ACCESS_ADMIN
+            - GROUP_DATA_ACCESS_READ_ONLY
+            - GROUP_DATA_ACCESS_READ_WRITE
+            - GROUP_CHARTS_ADMIN
+            - GROUP_CLUSTER_MANAGER
+            - GROUP_SEARCH_INDEX_EDITOR
+          uniqueItems: true
+      required:
+      - groupId
     ServiceAccountRequest:
       type: object
       properties:
@@ -40444,14 +40654,16 @@ components:
           type: string
           description: Human readable name for service account.
         roles:
-          type: array
-          items:
-            $ref: '#/components/schemas/ServiceAccountAccessRole'
-          uniqueItems: true
+          $ref: '#/components/schemas/ServiceAccountAccessRole'
+        secretExpiresAt:
+          type: string
+          format: date-time
+          description: Secret expiration time.
       required:
       - description
       - name
       - roles
+      - secretExpiresAt
     ServiceAccountSecret:
       type: object
       properties:
@@ -40521,6 +40733,13 @@ components:
       - expiresAt
       - id
       - maskedSecretValue
+    ServiceAccountSecretRequest:
+      type: object
+      properties:
+        expiresAt:
+          type: string
+          format: date-time
+          description: Timestamp representing creation time for secret.
     ServiceAccountUpdateRequest:
       type: object
       properties:
@@ -40537,11 +40756,7 @@ components:
           type: string
           description: Client name for service account.
         roles:
-          type: array
-          description: Service account access roles.
-          items:
-            $ref: '#/components/schemas/ServiceAccountAccessRole'
-          uniqueItems: true
+          $ref: '#/components/schemas/ServiceAccountAccessRole'
     Slack:
       type: object
       description: Details to integrate one Slack account with one MongoDB Cloud project.
@@ -40912,7 +41127,7 @@ components:
           type: string
           format: email
           description: |-
-            Email address to which MongoDB Cloud sends alert notifications. The resource requires this parameter when `"notifications.[n].typeName" : "EMAIL"`. You don’t need to set this value to send emails to individual or groups of MongoDB Cloud users including:
+            Email address to which MongoDB Cloud sends alert notifications. The resource requires this parameter when `"notifications.[n].typeName" : "EMAIL"`. You don't need to set this value to send emails to individual or groups of MongoDB Cloud users including:
 
             - specific MongoDB Cloud users (`"notifications.[n].typeName" : "USER"`)
             - MongoDB Cloud users with specific project roles (`"notifications.[n].typeName" : "GROUP"`)
@@ -41129,8 +41344,7 @@ components:
           type: string
           description: IPv4 or IPv6 address from which the user triggered this event.
           example: 216.172.40.186
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
           readOnly: true
         teamId:
           type: string
@@ -41268,8 +41482,7 @@ components:
           type: string
           description: IPv4 or IPv6 address from which the user triggered this event.
           example: 216.172.40.186
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
           readOnly: true
         teamId:
           type: string
@@ -41863,8 +42076,7 @@ components:
           type: string
           description: IPv4 or IPv6 address from which the user triggered this event.
           example: 216.172.40.186
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
           readOnly: true
         replicaSetName:
           type: string
@@ -42372,8 +42584,7 @@ components:
           type: string
           description: IPv4 or IPv6 address from which the user triggered this event.
           example: 216.172.40.186
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
           readOnly: true
         targetUsername:
           type: string
@@ -42487,8 +42698,7 @@ components:
           type: string
           description: IPv4 or IPv6 address from which the user triggered this event.
           example: 216.172.40.186
-          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}\\\
-            :){7}[0-9a-f]{1,4}$"
+          pattern: "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)(\\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$"
           readOnly: true
         targetUsername:
           type: string
