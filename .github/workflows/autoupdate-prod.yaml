@@ -21,7 +21,7 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
           git add .
-          git commit -m "fix: update OpenAPI spec"
+          git commit --allow-empty -m "fix: update OpenAPI spec"
       - name: Run generation
         working-directory: ./tools
         run: |
