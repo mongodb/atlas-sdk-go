@@ -19,7 +19,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 06c21141c5a079d3bc59583f490c6b222da388f8
+  x-xgen-sha: e4b64bb81696bc3cd4f242df4befad45bf855578
 servers:
 - url: https://cloud.mongodb.com
 tags:
@@ -486,9 +486,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/AuthFederationRoleMapping'
+                $ref: '#/components/schemas/PaginatedRoleMappingView'
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -26673,7 +26671,17 @@ components:
             enum:
             - DB_CHECK_SUBMITTED
             - DB_CHECK_UPDATED
+            - CLUSTER_SAMPLED_FOR_DB_CHECK
+            - DB_CHECK_SCHEDULED_FOR_CLUSTER
+            - DB_CHECK_DEFERRED_FOR_CLUSTER
+            - CLUSTER_OPTED_OUT_OF_DB_CHECK
             title: NDS DB Check Audit Types
+          - type: string
+            enum:
+            - CLUSTER_SAMPLED_FOR_DATA_VALIDATION
+            - DATA_VALIDATION_SUBMITTED_FOR_CLUSTER
+            - CLUSTER_OPTED_OUT_OF_DATA_VALIDATION
+            title: NDS Data Validation Audit Types
           - type: string
             enum:
             - MAINTENANCE_IN_ADVANCED
@@ -28726,7 +28734,17 @@ components:
         enum:
         - DB_CHECK_SUBMITTED
         - DB_CHECK_UPDATED
+        - CLUSTER_SAMPLED_FOR_DB_CHECK
+        - DB_CHECK_SCHEDULED_FOR_CLUSTER
+        - DB_CHECK_DEFERRED_FOR_CLUSTER
+        - CLUSTER_OPTED_OUT_OF_DB_CHECK
         title: NDS DB Check Audit Types
+      - type: string
+        enum:
+        - CLUSTER_SAMPLED_FOR_DATA_VALIDATION
+        - DATA_VALIDATION_SUBMITTED_FOR_CLUSTER
+        - CLUSTER_OPTED_OUT_OF_DATA_VALIDATION
+        title: NDS Data Validation Audit Types
       - type: string
         enum:
         - COMPUTE_AUTO_SCALE_INITIATED
@@ -37412,6 +37430,35 @@ components:
             completing this request.
           items:
             $ref: '#/components/schemas/BackupRestoreJob'
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Number of documents returned in this response.
+          minimum: 0
+          readOnly: true
+    PaginatedRoleMappingView:
+      type: object
+      description: List role mappings from the specified organization in the specified
+        federation.
+      properties:
+        links:
+          type: array
+          description: "List of one or more Uniform Resource Locators (URLs) that\
+            \ point to API sub-resources, related API resources, or both. RFC 5988\
+            \ outlines these relationships."
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: '#/components/schemas/Link'
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud providers when
+            completing this request.
+          items:
+            $ref: '#/components/schemas/AuthFederationRoleMapping'
           readOnly: true
         totalCount:
           type: integer
