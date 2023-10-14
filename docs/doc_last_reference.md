@@ -577,6 +577,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [PaginatedPipelineRun](./docs/PaginatedPipelineRun.md)
  - [PaginatedPrivateNetworkEndpointIdEntry](./docs/PaginatedPrivateNetworkEndpointIdEntry.md)
  - [PaginatedRestoreJob](./docs/PaginatedRestoreJob.md)
+ - [PaginatedRoleMapping](./docs/PaginatedRoleMapping.md)
  - [PaginatedServerlessInstanceDescription](./docs/PaginatedServerlessInstanceDescription.md)
  - [PaginatedSnapshot](./docs/PaginatedSnapshot.md)
  - [PaginatedTeam](./docs/PaginatedTeam.md)

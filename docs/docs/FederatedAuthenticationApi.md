@@ -826,7 +826,7 @@ Name | Type | Description  | Notes
 
 ## ListRoleMappings
 
-> []AuthFederationRoleMapping ListRoleMappings(ctx, federationSettingsId, orgId).Execute()
+> PaginatedRoleMapping ListRoleMappings(ctx, federationSettingsId, orgId).Execute()
 
 Return All Role Mappings from One Organization
 
@@ -864,7 +864,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `ListRoleMappings`: []AuthFederationRoleMapping
+    // response from `ListRoleMappings`: PaginatedRoleMapping
     fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.ListRoleMappings`: %v\n", resp)
 }
 ```
@@ -890,7 +890,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]AuthFederationRoleMapping**](AuthFederationRoleMapping.md)
+[**PaginatedRoleMapping**](PaginatedRoleMapping.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
