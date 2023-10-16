@@ -273,7 +273,7 @@ type FederatedAuthenticationApi interface {
 	ListRoleMappingsWithParams(ctx context.Context, args *ListRoleMappingsApiParams) ListRoleMappingsApiRequest
 
 	// Interface only available internally
-	listRoleMappingsExecute(r ListRoleMappingsApiRequest) ([]AuthFederationRoleMapping, *http.Response, error)
+	listRoleMappingsExecute(r ListRoleMappingsApiRequest) (*PaginatedRoleMapping, *http.Response, error)
 
 	/*
 		RemoveConnectedOrgConfig Remove One Org Config Connected to One Federation
@@ -1784,7 +1784,7 @@ func (a *FederatedAuthenticationApiService) ListRoleMappingsWithParams(ctx conte
 	}
 }
 
-func (r ListRoleMappingsApiRequest) Execute() ([]AuthFederationRoleMapping, *http.Response, error) {
+func (r ListRoleMappingsApiRequest) Execute() (*PaginatedRoleMapping, *http.Response, error) {
 	return r.ApiService.listRoleMappingsExecute(r)
 }
 
@@ -1809,13 +1809,13 @@ func (a *FederatedAuthenticationApiService) ListRoleMappings(ctx context.Context
 
 // Execute executes the request
 //
-//	@return []AuthFederationRoleMapping
-func (a *FederatedAuthenticationApiService) listRoleMappingsExecute(r ListRoleMappingsApiRequest) ([]AuthFederationRoleMapping, *http.Response, error) {
+//	@return PaginatedRoleMapping
+func (a *FederatedAuthenticationApiService) listRoleMappingsExecute(r ListRoleMappingsApiRequest) (*PaginatedRoleMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []AuthFederationRoleMapping
+		localVarReturnValue *PaginatedRoleMapping
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.ListRoleMappings")
