@@ -2,15 +2,10 @@
 
 package admin
 
-import (
-	"time"
-)
-
 // X509Certificate struct for X509Certificate
 type X509Certificate struct {
 	 
-	NotAfter  *time.Time `json:"notAfter,omitempty"`
-	NotBefore *time.Time `json:"notBefore,omitempty"`
+
 }
 
 // NewX509Certificate instantiates a new X509Certificate object
