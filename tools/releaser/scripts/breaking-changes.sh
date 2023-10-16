@@ -15,9 +15,9 @@ GIT_BASE_REF=${GIT_BASE_REF:-git rev-parse head || echo}
 
 echo "Running breaking changes check for $GIT_BASE_REF"
 
-pushd "$script_path/../../" ## workaround for --repo-path="../" not working
+pushd "$script_path/../../" || exit ## workaround for --repo-path="../" not working
 BREAKING_CHANGES=$("$GOPATH/bin/go-apidiff" "$GIT_BASE_REF" --compare-imports="false" --print-compatible="false")
-popd
+popd || exit
 
 if [ -z "$BREAKING_CHANGES" ]; then
   echo "No breaking changes detected"
