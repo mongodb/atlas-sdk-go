@@ -3,6 +3,9 @@ on:
  schedule:
    - cron: '30 8 * * *'
  workflow_dispatch:
+ push:
+    branches:
+      - CLOUDP-206550
   
 jobs:
   generate-client:
@@ -13,9 +16,9 @@ jobs:
       - uses: actions/setup-go@v4
         with:
           go-version-file: 'go.mod'
-      - name: Fetch changes
-        working-directory: ./tools
-        run: make fetch_openapi
+      # - name: Fetch changes
+      #   working-directory: ./tools
+      #   run: make fetch_openapi
       - name: Commit OpenAPI changes
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
