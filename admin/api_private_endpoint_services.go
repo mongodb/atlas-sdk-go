@@ -95,10 +95,10 @@ type PrivateEndpointServicesApi interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param cloudProvider Cloud service provider that manages this private endpoint service.
-		@param endpointServiceId Unique 24-hexadecimal digit string that identifies the private endpoint service that you want to delete.
+		@param endpointServiceIdNEWCHECK Unique 24-hexadecimal digit string that identifies the private endpoint service that you want to delete.
 		@return DeletePrivateEndpointServiceApiRequest
 	*/
-	DeletePrivateEndpointService(ctx context.Context, groupId string, cloudProvider string, endpointServiceId string) DeletePrivateEndpointServiceApiRequest
+	DeletePrivateEndpointService(ctx context.Context, groupId string, cloudProvider string, endpointServiceIdNEWCHECK string) DeletePrivateEndpointServiceApiRequest
 	/*
 		DeletePrivateEndpointService Remove One Private Endpoint Service for One Provider
 
@@ -688,26 +688,26 @@ func (a *PrivateEndpointServicesApiService) deletePrivateEndpointExecute(r Delet
 }
 
 type DeletePrivateEndpointServiceApiRequest struct {
-	ctx               context.Context
-	ApiService        PrivateEndpointServicesApi
-	groupId           string
-	cloudProvider     string
-	endpointServiceId string
+	ctx                       context.Context
+	ApiService                PrivateEndpointServicesApi
+	groupId                   string
+	cloudProvider             string
+	endpointServiceIdNEWCHECK string
 }
 
 type DeletePrivateEndpointServiceApiParams struct {
-	GroupId           string
-	CloudProvider     string
-	EndpointServiceId string
+	GroupId                   string
+	CloudProvider             string
+	EndpointServiceIdNEWCHECK string
 }
 
 func (a *PrivateEndpointServicesApiService) DeletePrivateEndpointServiceWithParams(ctx context.Context, args *DeletePrivateEndpointServiceApiParams) DeletePrivateEndpointServiceApiRequest {
 	return DeletePrivateEndpointServiceApiRequest{
-		ApiService:        a,
-		ctx:               ctx,
-		groupId:           args.GroupId,
-		cloudProvider:     args.CloudProvider,
-		endpointServiceId: args.EndpointServiceId,
+		ApiService:                a,
+		ctx:                       ctx,
+		groupId:                   args.GroupId,
+		cloudProvider:             args.CloudProvider,
+		endpointServiceIdNEWCHECK: args.EndpointServiceIdNEWCHECK,
 	}
 }
 
@@ -723,16 +723,16 @@ Removes one private endpoint service from the specified project. This cloud serv
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param cloudProvider Cloud service provider that manages this private endpoint service.
-	@param endpointServiceId Unique 24-hexadecimal digit string that identifies the private endpoint service that you want to delete.
+	@param endpointServiceIdNEWCHECK Unique 24-hexadecimal digit string that identifies the private endpoint service that you want to delete.
 	@return DeletePrivateEndpointServiceApiRequest
 */
-func (a *PrivateEndpointServicesApiService) DeletePrivateEndpointService(ctx context.Context, groupId string, cloudProvider string, endpointServiceId string) DeletePrivateEndpointServiceApiRequest {
+func (a *PrivateEndpointServicesApiService) DeletePrivateEndpointService(ctx context.Context, groupId string, cloudProvider string, endpointServiceIdNEWCHECK string) DeletePrivateEndpointServiceApiRequest {
 	return DeletePrivateEndpointServiceApiRequest{
-		ApiService:        a,
-		ctx:               ctx,
-		groupId:           groupId,
-		cloudProvider:     cloudProvider,
-		endpointServiceId: endpointServiceId,
+		ApiService:                a,
+		ctx:                       ctx,
+		groupId:                   groupId,
+		cloudProvider:             cloudProvider,
+		endpointServiceIdNEWCHECK: endpointServiceIdNEWCHECK,
 	}
 }
 
@@ -755,7 +755,7 @@ func (a *PrivateEndpointServicesApiService) deletePrivateEndpointServiceExecute(
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"cloudProvider"+"}", url.PathEscape(parameterValueToString(r.cloudProvider, "cloudProvider")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"endpointServiceId"+"}", url.PathEscape(parameterValueToString(r.endpointServiceId, "endpointServiceId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"endpointServiceIdNEWCHECK"+"}", url.PathEscape(parameterValueToString(r.endpointServiceIdNEWCHECK, "endpointServiceIdNEWCHECK")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -766,11 +766,11 @@ func (a *PrivateEndpointServicesApiService) deletePrivateEndpointServiceExecute(
 	if strlen(r.groupId) > 24 {
 		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
 	}
-	if strlen(r.endpointServiceId) < 24 {
-		return localVarReturnValue, nil, reportError("endpointServiceId must have at least 24 elements")
+	if strlen(r.endpointServiceIdNEWCHECK) < 24 {
+		return localVarReturnValue, nil, reportError("endpointServiceIdNEWCHECK must have at least 24 elements")
 	}
-	if strlen(r.endpointServiceId) > 24 {
-		return localVarReturnValue, nil, reportError("endpointServiceId must have less than 24 elements")
+	if strlen(r.endpointServiceIdNEWCHECK) > 24 {
+		return localVarReturnValue, nil, reportError("endpointServiceIdNEWCHECK must have less than 24 elements")
 	}
 
 	// to determine the Content-Type header

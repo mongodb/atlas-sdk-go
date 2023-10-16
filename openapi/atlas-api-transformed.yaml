@@ -9983,7 +9983,7 @@ paths:
         - description: Unique 24-hexadecimal digit string that identifies the private
             endpoint service that you want to delete.
           in: path
-          name: endpointServiceId
+          name: endpointServiceIdNEWCHECK
           required: true
           schema:
             type: string

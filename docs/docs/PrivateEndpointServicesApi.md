@@ -256,7 +256,7 @@ Name | Type | Description  | Notes
 
 ## DeletePrivateEndpointService
 
-> map[string]interface{} DeletePrivateEndpointService(ctx, groupId, cloudProvider, endpointServiceId).Execute()
+> map[string]interface{} DeletePrivateEndpointService(ctx, groupId, cloudProvider, endpointServiceIdNEWCHECK).Execute()
 
 Remove One Private Endpoint Service for One Provider
 
@@ -282,9 +282,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     cloudProvider := "cloudProvider_example" // string |  (default to "AWS")
-    endpointServiceId := "endpointServiceId_example" // string | 
+    endpointServiceIdNEWCHECK := "endpointServiceIdNEWCHECK_example" // string | 
 
-    resp, r, err := sdk.PrivateEndpointServicesApi.DeletePrivateEndpointService(context.Background(), groupId, cloudProvider, endpointServiceId).Execute()
+    resp, r, err := sdk.PrivateEndpointServicesApi.DeletePrivateEndpointService(context.Background(), groupId, cloudProvider, endpointServiceIdNEWCHECK).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PrivateEndpointServicesApi.DeletePrivateEndpointService``: %v\n", err)
         apiError := admin.AsError(err)
@@ -303,7 +303,7 @@ Name | Type | Description  | Notes
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
 **cloudProvider** | **string** | Cloud service provider that manages this private endpoint service. | [default to &quot;AWS&quot;]
-**endpointServiceId** | **string** | Unique 24-hexadecimal digit string that identifies the private endpoint service that you want to delete. | 
+**endpointServiceIdNEWCHECK** | **string** | Unique 24-hexadecimal digit string that identifies the private endpoint service that you want to delete. | 
 
 ### Other Parameters
 
