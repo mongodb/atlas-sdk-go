@@ -24,7 +24,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: e4b64bb81696bc3cd4f242df4befad45bf855578
+  x-xgen-sha: fc3a91a089ac3a3f5faca4de2d4776e08f51f83d
 servers:
   - url: https://cloud.mongodb.com
 tags:
@@ -701,12 +701,19 @@ paths:
       x-xgen-experimental: true
   "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders":
     get:
-      description: Returns all identity providers in the specified federation. To use
-        this resource, the requesting API Key must have the Organization Owner
-        role in one of the connected organizations.
+      description: Returns all identity providers with the provided protocol in the
+        specified federation. If no protocol is specified, only SAML identity
+        providers will be returned. To use this resource, the requesting API Key
+        must have the Organization Owner role in one of the connected
+        organizations.
       operationId: listIdentityProviders
       parameters:
         - $ref: "#/components/parameters/federationSettingsId"
+        - description: The protocols of the target identity providers.
+          in: query
+          name: protocol
+          schema:
+            type: string
       responses:
         "200":
           content:
@@ -733,9 +740,9 @@ paths:
       x-xgen-experimental: true
   "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}":
     get:
-      description: Returns one identity provider from the specified federation. To use
-        this resource, the requesting API Key must have the Organization Owner
-        role in one of the connected organizations.
+      description: Returns one SAML identity provider from the specified federation.
+        To use this resource, the requesting API Key must have the Organization
+        Owner role in one of the connected organizations.
       operationId: getIdentityProvider
       parameters:
         - $ref: "#/components/parameters/federationSettingsId"
@@ -745,7 +752,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/FederationIdentityProvider"
+                $ref: "#/components/schemas/FederationSamlIdentityProvider"
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -758,14 +765,14 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Return one identity provider from the specified federation.
+      summary: Return one SAML identity provider from the specified federation.
       tags:
         - Federated Authentication
       x-xgen-experimental: true
     patch:
-      description: Updates one identity provider in the specified federation. To use
-        this resource, the requesting API Key must have the Organization Owner
-        role in one of the connected organizations.
+      description: Updates one SAML identity provider in the specified federation. To
+        use this resource, the requesting API Key must have the Organization
+        Owner role in one of the connected organizations.
       operationId: updateIdentityProvider
       parameters:
         - $ref: "#/components/parameters/federationSettingsId"
@@ -782,7 +789,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                $ref: "#/components/schemas/FederationIdentityProvider"
+                $ref: "#/components/schemas/FederationSamlIdentityProvider"
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -795,7 +802,7 @@ paths:
           $ref: "#/components/responses/internalServerError"
       security:
         - DigestAuth: []
-      summary: Update the identity provider.
+      summary: Update the SAML identity provider.
       tags:
         - Federated Authentication
       x-xgen-experimental: true
@@ -2232,8 +2239,10 @@ paths:
   "/api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId}":
     delete:
       description: Revoke MongoDB Cloud access to the specified AWS S3 bucket. This
-        prevents this bucket to receive Atlas Cloud Backup snapshots. To use
-        this resource, the requesting API Key must have the Project Owner role.
+        prevents this bucket to receive Atlas Cloud Backup snapshots. Auto
+        export must be disabled on all clusters in this project exporting to
+        this bucket before revoking access. To use this resource, the requesting
+        API Key must have the Project Owner role.
       operationId: deleteExportBucket
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -2763,7 +2772,7 @@ paths:
         content:
           application/vnd.atlas.2023-01-01+json:
             schema:
-              $ref: "#/components/schemas/LegacyAtlasCluster"
+              $ref: "#/components/schemas/LegacyAtlasTenantClusterUpgradeRequest"
         description: Details of the shared-tier cluster upgrade in the specified project.
         required: true
       responses:
@@ -8224,6 +8233,35 @@ paths:
       tags:
         - Projects
       x-sunset: 2024-10-04
+  "/api/atlas/v2/groups/{groupId}/ipAddresses":
+    get:
+      description: Returns all IP addresses for this project. To use this resource,
+        the requesting API Key must have the Project Read Only role.
+      operationId: returnAllIPAddresses
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GroupIPAddresses"
+              x-xgen-version: 2023-01-01
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Return All IP Addresses for One Project
+      tags:
+        - Projects
+      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/limits":
     get:
       description: Returns all the limits for the specified project. To use this
@@ -8475,6 +8513,8 @@ paths:
          Please make sure to [validate](#tag/Cloud-Migration-Service/operation/validateOneMigration) your migration before initiating it.
 
          You can use this API endpoint for push live migrations only. Your API Key must have the Organization Owner role to successfully call this resource.
+
+         **NOTE**: Migrating time-series collections is not yet supported on MongoDB v6.0 or higher. Migrations on MongoDB v6.0 or higher will skip any time-series collections on the source cluster.
       operationId: createPushMigration
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -11179,137 +11219,6 @@ paths:
       summary: Return Suggested Indexes
       tags:
         - Performance Advisor
-  "/api/atlas/v2/groups/{groupId}/pushBasedLogExport":
-    delete:
-      description: Disables the push-based log export feature by resetting the project
-        level settings to its default configuration.
-      operationId: deletePushBasedLogConfiguration
-      parameters:
-        - $ref: "#/components/parameters/groupId"
-      responses:
-        "200":
-          content:
-            application/vnd.atlas.2023-01-01+json:
-              x-xgen-version: 2023-01-01
-          description: OK
-        "400":
-          $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
-        "500":
-          $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
-      summary: Disable the push-based log export feature for a project
-      tags:
-        - Push-Based Log Export
-      x-xgen-experimental: true
-    get:
-      description: Fetches the current project level settings for the push-based log
-        export feature.
-      operationId: getPushBasedLogConfiguration
-      parameters:
-        - $ref: "#/components/parameters/groupId"
-      responses:
-        "200":
-          content:
-            application/vnd.atlas.2023-01-01+json:
-              schema:
-                $ref: "#/components/schemas/PushBasedLogExportProject"
-              x-xgen-version: 2023-01-01
-          description: OK
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
-        "500":
-          $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
-      summary: Get the push-based log export configuration for a project
-      tags:
-        - Push-Based Log Export
-      x-xgen-experimental: true
-    patch:
-      description: Updates the project level settings for the push-based log export feature.
-      operationId: updatePushBasedLogConfiguration
-      parameters:
-        - $ref: "#/components/parameters/groupId"
-      requestBody:
-        content:
-          application/vnd.atlas.2023-01-01+json:
-            schema:
-              $ref: "#/components/schemas/PushBasedLogExportProject"
-            x-xgen-version: 2023-01-01
-        description: The project configuration details. The S3 bucket name, IAM role ID,
-          and prefix path fields are the only fields that may be specified.
-          Fields left unspecified will not be modified.
-        required: true
-      responses:
-        "200":
-          content:
-            application/vnd.atlas.2023-01-01+json:
-              x-xgen-version: 2023-01-01
-          description: OK
-        "400":
-          $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
-        "500":
-          $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
-      summary: Update the push-based log export feature for a project
-      tags:
-        - Push-Based Log Export
-      x-xgen-experimental: true
-    post:
-      description: Configures the project level settings for the push-based log export
-        feature.
-      operationId: createPushBasedLogConfiguration
-      parameters:
-        - $ref: "#/components/parameters/groupId"
-      requestBody:
-        content:
-          application/vnd.atlas.2023-01-01+json:
-            schema:
-              $ref: "#/components/schemas/PushBasedLogExportProject"
-            x-xgen-version: 2023-01-01
-        description: The project configuration details. The S3 bucket name, IAM role ID,
-          and prefix path fields are required.
-        required: true
-      responses:
-        "200":
-          content:
-            application/vnd.atlas.2023-01-01+json:
-              x-xgen-version: 2023-01-01
-          description: OK
-        "400":
-          $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
-        "500":
-          $ref: "#/components/responses/internalServerError"
-      security:
-        - DigestAuth: []
-      summary: Enable the push-based log export feature for a project
-      tags:
-        - Push-Based Log Export
-      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/sampleDatasetLoad/{name}":
     post:
       description: Requests loading the MongoDB sample dataset into the specified
@@ -14110,6 +14019,232 @@ paths:
       summary: Create One Link-Token
       tags:
         - Cloud Migration Service
+  "/api/atlas/v2/orgs/{orgId}/serviceAccounts":
+    get:
+      description: Returns list of Service Accounts with service account details.
+      operationId: listServiceAccounts
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/pageNum"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-10-01+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedServiceAccounts"
+              x-xgen-version: 2023-10-01
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Return All Service Accounts
+      tags:
+        - Organizations
+      x-xgen-experimental: true
+    post:
+      description: Create Service Account containing client id and client secrets.
+      operationId: createServiceAccount
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+      requestBody:
+        content:
+          application/vnd.atlas.2023-10-01+json:
+            schema:
+              $ref: "#/components/schemas/ServiceAccountRequest"
+        description: Details to create service account in the specified organization.
+        required: true
+      responses:
+        "201":
+          content:
+            application/vnd.atlas.2023-10-01+json:
+              schema:
+                $ref: "#/components/schemas/ServiceAccount"
+              x-xgen-version: 2023-10-01
+          description: Created
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Service Account Creation
+      tags:
+        - Organizations
+      x-xgen-experimental: true
+  "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{serviceAccountId}":
+    delete:
+      description: Delete Service Account.
+      operationId: deleteServiceAccount
+      parameters:
+        - description: Id of the service account.
+          in: path
+          name: serviceAccountId
+          required: true
+          schema:
+            type: string
+        - $ref: "#/components/parameters/orgId"
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2023-10-01+json:
+              x-xgen-version: 2023-10-01
+          description: This endpoint does not return a response body.
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Service Account Deletion.
+      tags:
+        - Organizations
+      x-xgen-experimental: true
+    get:
+      description: Get Service Account.
+      operationId: getServiceAccount
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - description: Id of the service account.
+          in: path
+          name: serviceAccountId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-10-01+json:
+              schema:
+                $ref: "#/components/schemas/ServiceAccountDetails"
+              x-xgen-version: 2023-10-01
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Service Account Fetching
+      tags:
+        - Organizations
+      x-xgen-experimental: true
+    patch:
+      description: Update Service Account.
+      operationId: updateServiceAccount
+      parameters:
+        - description: Id of the service account.
+          in: path
+          name: serviceAccountId
+          required: true
+          schema:
+            type: string
+        - $ref: "#/components/parameters/orgId"
+      requestBody:
+        content:
+          application/vnd.atlas.2023-10-01+json:
+            schema:
+              $ref: "#/components/schemas/ServiceAccountUpdateRequest"
+        description: Details to update service account in the specified organization.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-10-01+json:
+              schema:
+                $ref: "#/components/schemas/ServiceAccountDetails"
+              x-xgen-version: 2023-10-01
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Service Account Update
+      tags:
+        - Organizations
+      x-xgen-experimental: true
+  "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{serviceAccountId}/secrets":
+    post:
+      description: Create Service Account secret.
+      operationId: createServiceAccountSecret
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - description: Id of the service account.
+          in: path
+          name: serviceAccountId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/vnd.atlas.2023-10-01+json:
+            schema:
+              $ref: "#/components/schemas/ServiceAccountSecretRequest"
+        description: Details to create secret in the specified service account.
+        required: true
+      responses:
+        "201":
+          content:
+            application/vnd.atlas.2023-10-01+json:
+              schema:
+                $ref: "#/components/schemas/ServiceAccountSecret"
+              x-xgen-version: 2023-10-01
+          description: Created
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Service Account Secret Creation
+      tags:
+        - Organizations
+      x-xgen-experimental: true
+  "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{serviceAccountId}/secrets/{secretId}":
+    delete:
+      description: Delete Service Account Secret.
+      operationId: deleteServiceAccountSecret
+      parameters:
+        - description: Id of the service account.
+          in: path
+          name: serviceAccountId
+          required: true
+          schema:
+            type: string
+        - description: Id of the secret.
+          in: path
+          name: secretId
+          required: true
+          schema:
+            type: string
+        - $ref: "#/components/parameters/orgId"
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2023-10-01+json:
+              x-xgen-version: 2023-10-01
+          description: This endpoint does not return a response body.
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Service Account Secret Deletion.
+      tags:
+        - Organizations
+      x-xgen-experimental: true
   "/api/atlas/v2/orgs/{orgId}/settings":
     get:
       description: Returns details about the specified organization's settings. To use
@@ -16349,7 +16484,7 @@ components:
         externalGroupName:
           type: string
           description: Unique human-readable label that identifies the identity provider
-            group to whichthis role mapping applies.
+            group to which this role mapping applies.
           maxLength: 200
           minLength: 1
         id:
@@ -18605,8 +18740,8 @@ components:
           type: string
           description: Cloud service provider on which MongoDB Cloud provisioned the
             multi-tenant cluster. The resource returns this parameter when
-            **providerSettings.providerName** is `TENANT` and
-            **providerSetting.instanceSizeName** is `M2` or `M5`.
+            **providerName** is `TENANT` and **electableSpecs.instanceSize** is
+            `M0`, `M2` or `M5`.
       title: Cloud Service Provider Settings for Multi-Cloud Clusters
     CloudSearchMetrics:
       type: object
@@ -19054,6 +19189,27 @@ components:
           description: Collection of settings that configures how a cluster might scale
             its cluster tier and whether the cluster can scale down.
           title: Tenant
+    ClusterIPAddresses:
+      type: object
+      description: List of IP addresses in a cluster.
+      properties:
+        clusterName:
+          type: string
+          description: Human-readable label that identifies the cluster.
+          readOnly: true
+        inbound:
+          type: array
+          description: List of inbound IP addresses associated with the cluster.
+          items:
+            type: string
+          readOnly: true
+        outbound:
+          type: array
+          description: List of outbound IP addresses associated with the cluster.
+          items:
+            type: string
+          readOnly: true
+      title: Cluster IP Addresses
     ClusterOutageSimulation:
       type: object
       properties:
@@ -19187,7 +19343,8 @@ components:
             default Input/Output Operations per Second (IOPS) rate for the
             selected volume size (`STANDARD`), or must fall within the allowable
             Input/Output Operations per Second (IOPS) range for the selected
-            volume size (`PROVISIONED`).
+            volume size (`PROVISIONED`). You must set this value to
+            (`PROVISIONED`) for NVMe clusters.
         diskTypeName:
           type: string
           description: Disk type that corresponds to the host's root volume for Azure
@@ -19201,7 +19358,7 @@ components:
           description: Cloud service provider on which MongoDB Cloud provisioned the
             multi-tenant host. The resource returns this parameter when
             **providerSettings.providerName** is `TENANT` and
-            **providerSetting.instanceSizeName** is `M2` or `M5`.
+            **providerSetting.instanceSizeName** is `M0`, `M2` or `M5`.
       required:
         - providerName
       title: Cloud Service Provider Settings for a Cluster
@@ -20364,6 +20521,12 @@ components:
     DataLakeTenant:
       type: object
       properties:
+        _privateEndpointHostnames:
+          type: array
+          description: List that contains the sets of private endpoints and hostnames.
+          items:
+            $ref: "#/components/schemas/PrivateEndpointHostname"
+          readOnly: true
         cloudProviderConfig:
           $ref: "#/components/schemas/DataLakeCloudProviderConfig"
         dataProcessRegion:
@@ -20399,7 +20562,7 @@ components:
         authorizedEmail:
           type: string
           format: email
-          description: Email address of the user who authorized to updated the Backup
+          description: Email address of the user who authorized to update the Backup
             Compliance Policy  settings.
         authorizedUserFirstName:
           type: string
@@ -20412,8 +20575,9 @@ components:
         copyProtectionEnabled:
           type: boolean
           default: false
-          description: Flag that indicates whether to enable additional backup copies for
-            the cluster. If unspecified, this value defaults to false.
+          description: Flag that indicates whether to prevent cluster users from deleting
+            backups copied to other regions, even if those additional snapshot
+            regions are removed. If unspecified, this value defaults to false.
         encryptionAtRestEnabled:
           type: boolean
           default: false
@@ -20639,6 +20803,7 @@ components:
           format: int32
           description: Number that indicates the amount of days, weeks, or months that the
             Data Lake Pipeline will retain datasets.
+          minimum: 1
       required:
         - units
         - value
@@ -20690,7 +20855,7 @@ components:
             - `STANDARD` volume types can't exceed the default input/output operations per second (IOPS) rate for the selected volume size. 
 
 
-            - `PROVISIONED` volume types must fall within the allowable IOPS range for the selected volume size.
+            - `PROVISIONED` volume types must fall within the allowable IOPS range for the selected volume size. You must set this value to (`PROVISIONED`) for NVMe clusters.
         instanceSize:
           type: string
           description: Hardware specification for the instance sizes in this region. Each
@@ -22284,9 +22449,6 @@ components:
     FederationIdentityProvider:
       type: object
       properties:
-        acsUrl:
-          type: string
-          description: URL that points to where to send the SAML response.
         associatedDomains:
           type: array
           description: List that contains the domains associated with the identity provider.
@@ -22300,13 +22462,21 @@ components:
           items:
             $ref: "#/components/schemas/ConnectedOrgConfig"
           uniqueItems: true
-        audienceUri:
+        description:
           type: string
-          description: Unique string that identifies the intended audience of the SAML
-            assertion.
+          description: The description of the identity provider.
         displayName:
           type: string
           description: Human-readable label that identifies the identity provider.
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the identity
+            provider.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
         issuerUri:
           type: string
           description: Unique string that identifies the issuer of the SAML Assertion.
@@ -22317,6 +22487,16 @@ components:
           maxLength: 20
           minLength: 20
           pattern: ^([a-f0-9]{20})$
+        protocol:
+          type: string
+          description: The protocol of the identity provider.
+        acsUrl:
+          type: string
+          description: URL that points to where to send the SAML response.
+        audienceUri:
+          type: string
+          description: Unique string that identifies the intended audience of the SAML
+            assertion.
         pemFileInfo:
           $ref: "#/components/schemas/PemFileInfo"
         requestBinding:
@@ -22338,7 +22518,103 @@ components:
         status:
           type: string
           description: String enum that indicates whether the identity provider is active.
+        audienceClaim:
+          type: array
+          description: Identifier of the intended recipient of the token.
+          items:
+            type: string
+        clientId:
+          type: string
+          description: Client identifier that is assigned to an application by the
+            Identity Provider.
+        groupsClaim:
+          type: string
+          description: Identifier of the claim which contains IdP Group IDs in the token.
+        requestedScopes:
+          type: array
+          description: The description of an IdP, configured by customers.
+          items:
+            type: string
+        userClaim:
+          type: string
+          description: Identifier of the claim which contains the user ID in the token.
       required:
+        - id
+        - oktaIdpId
+    FederationSamlIdentityProvider:
+      type: object
+      properties:
+        acsUrl:
+          type: string
+          description: URL that points to where to send the SAML response.
+        associatedDomains:
+          type: array
+          description: List that contains the domains associated with the identity provider.
+          items:
+            type: string
+          uniqueItems: true
+        associatedOrgs:
+          type: array
+          description: List that contains the connected organization configurations
+            associated with the identity provider.
+          items:
+            $ref: "#/components/schemas/ConnectedOrgConfig"
+          uniqueItems: true
+        audienceUri:
+          type: string
+          description: Unique string that identifies the intended audience of the SAML
+            assertion.
+        description:
+          type: string
+          description: The description of the identity provider.
+        displayName:
+          type: string
+          description: Human-readable label that identifies the identity provider.
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the identity
+            provider.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        issuerUri:
+          type: string
+          description: Unique string that identifies the issuer of the SAML Assertion.
+        oktaIdpId:
+          type: string
+          description: Unique 20-hexadecimal digit string that identifies the identity
+            provider.
+          maxLength: 20
+          minLength: 20
+          pattern: ^([a-f0-9]{20})$
+        pemFileInfo:
+          $ref: "#/components/schemas/PemFileInfo"
+        protocol:
+          type: string
+          description: The protocol of the identity provider.
+        requestBinding:
+          type: string
+          description: SAML Authentication Request Protocol HTTP method binding (POST or
+            REDIRECT) that Federated Authentication uses to send the
+            authentication request.
+        responseSignatureAlgorithm:
+          type: string
+          description: Signature algorithm that Federated Authentication uses to encrypt
+            the identity provider signature.
+        ssoDebugEnabled:
+          type: boolean
+          description: Flag that indicates whether the identity provider has SSO debug
+            enabled.
+        ssoUrl:
+          type: string
+          description: URL that points to the receiver of the SAML authentication request.
+        status:
+          type: string
+          description: String enum that indicates whether the identity provider is active.
+      required:
+        - id
         - oktaIdpId
     FieldTransformation:
       type: object
@@ -22650,6 +22926,22 @@ components:
           $ref: "#/components/schemas/ServerlessMetricThreshold"
         threshold:
           $ref: "#/components/schemas/GreaterThanRawThreshold"
+    GroupIPAddresses:
+      type: object
+      description: List of IP addresses in a project.
+      properties:
+        groupId:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the MongoDB
+            Cloud project.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        services:
+          $ref: "#/components/schemas/GroupService"
+      title: Group IP Address
     GroupInvitation:
       type: object
       properties:
@@ -22839,6 +23131,18 @@ components:
 
             * GROUP_SEARCH_INDEX_EDITOR
 
+    GroupService:
+      type: object
+      description: List of IP addresses in a project categorized by services.
+      properties:
+        clusters:
+          type: array
+          description: IP addresses of clusters.
+          items:
+            $ref: "#/components/schemas/ClusterIPAddresses"
+          readOnly: true
+      readOnly: true
+      title: Group Service IP Addresses
     GroupSettings:
       type: object
       description: Collection of settings that configures the project.
@@ -22909,7 +23213,7 @@ components:
             - `STANDARD` volume types can't exceed the default input/output operations per second (IOPS) rate for the selected volume size. 
 
 
-            - `PROVISIONED` volume types must fall within the allowable IOPS range for the selected volume size.
+            - `PROVISIONED` volume types must fall within the allowable IOPS range for the selected volume size. You must set this value to (`PROVISIONED`) for NVMe clusters.
         instanceSize:
           type: string
           description: Hardware specification for the instance sizes in this region. Each
@@ -23862,6 +24166,246 @@ components:
           description: Method by which the cluster maintains the MongoDB versions. If
             value is `CONTINUOUS`, you must not specify **mongoDBMajorVersion**.
       title: Cluster Description
+    LegacyAtlasTenantClusterUpgradeRequest:
+      type: object
+      description: Request containing target state of tenant cluster to be upgraded
+      properties:
+        acceptDataRisksAndForceReplicaSetReconfig:
+          type: string
+          format: date-time
+          description: If reconfiguration is necessary to regain a primary due to a
+            regional outage, submit this field alongside your topology
+            reconfiguration to request a new regional outage resistant topology.
+            Forced reconfigurations during an outage of the majority of
+            electable nodes carry a risk of data loss if replicated writes (even
+            majority committed writes) have not been replicated to the new
+            primary node. MongoDB Atlas docs contain more information. To
+            proceed with an operation which carries that risk, set
+            **acceptDataRisksAndForceReplicaSetReconfig** to the current date.
+          externalDocs:
+            description: Reconfiguring a Replica Set during a regional outage
+            url: https://dochub.mongodb.org/core/regional-outage-reconfigure-replica-set
+        autoScaling:
+          $ref: "#/components/schemas/ClusterAutoScalingSettings"
+        backupEnabled:
+          type: boolean
+          description: Flag that indicates whether the cluster can perform backups. If set
+            to `true`, the cluster can perform backups. You must set this value
+            to `true` for NVMe clusters. Backup uses Cloud Backups for dedicated
+            clusters and Shared Cluster Backups for tenant clusters. If set to
+            `false`, the cluster doesn't use MongoDB Cloud backups.
+        biConnector:
+          $ref: "#/components/schemas/BiConnector"
+        clusterType:
+          type: string
+          description: Configuration of nodes that comprise the cluster.
+        connectionStrings:
+          $ref: "#/components/schemas/ClusterConnectionStrings"
+        createDate:
+          type: string
+          format: date-time
+          description: Date and time when MongoDB Cloud created this serverless instance.
+            MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
+          readOnly: true
+        diskSizeGB:
+          type: number
+          format: double
+          description: Storage capacity that the host's root volume possesses expressed in
+            gigabytes. Increase this number to add capacity. MongoDB Cloud
+            requires this parameter if you set **replicationSpecs**. If you
+            specify a disk size below the minimum (10 GB), this parameter
+            defaults to the minimum disk size value. Storage charge calculations
+            depend on whether you choose the default value or a custom
+            value.  The maximum value for disk storage cannot exceed 50 times
+            the maximum RAM for the selected cluster. If you require more
+            storage space, consider upgrading your cluster to a higher tier.
+          maximum: 4096
+          minimum: 10
+        encryptionAtRestProvider:
+          type: string
+          description: Cloud service provider that manages your customer keys to provide
+            an additional layer of Encryption at Rest for the cluster.
+          externalDocs:
+            description: Encryption at Rest using Customer Key Management
+            url: https://www.mongodb.com/docs/atlas/security-kms-encryption/
+        groupId:
+          type: string
+          description: Unique 24-hexadecimal character string that identifies the project.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the cluster.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        labels:
+          type: array
+          deprecated: true
+          description: >-
+            Collection of key-value pairs between 1 to 255 characters in length
+            that tag and categorize the cluster. The MongoDB Cloud console
+            doesn't display your labels.
+
+
+            Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use [resource tags](https://dochub.mongodb.org/core/add-cluster-tag-atlas) instead.
+          items:
+            $ref: "#/components/schemas/ComponentLabel"
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        mongoDBMajorVersion:
+          type: string
+          default: "6.0"
+          description: Major MongoDB version of the cluster. MongoDB Cloud deploys the
+            cluster with the latest stable release of the specified version.
+        mongoDBVersion:
+          type: string
+          description: Version of MongoDB that the cluster runs.
+          pattern: ([\d]+\.[\d]+\.[\d]+)
+        mongoURI:
+          type: string
+          description: Base connection string that you can use to connect to the cluster.
+            MongoDB Cloud displays the string only after the cluster starts, not
+            while it builds the cluster.
+          externalDocs:
+            description: Connection string URI format.
+            url: https://docs.mongodb.com/manual/reference/connection-string/
+          readOnly: true
+        mongoURIUpdated:
+          type: string
+          format: date-time
+          description: Date and time when someone last updated the connection string.
+            MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
+          readOnly: true
+        mongoURIWithOptions:
+          type: string
+          description: Connection string that you can use to connect to the cluster
+            including the `replicaSet`, `ssl`, and `authSource` query parameters
+            with values appropriate for the cluster. You may need to add MongoDB
+            database users. The response returns this parameter once the cluster
+            can receive requests, not while it builds the cluster.
+          externalDocs:
+            description: Connection string URI format.
+            url: https://docs.mongodb.com/manual/reference/connection-string/
+          readOnly: true
+        name:
+          type: string
+          description: Human-readable label that identifies the cluster.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+        numShards:
+          type: integer
+          format: int32
+          default: 1
+          description: Number of shards up to 50 to deploy for a sharded cluster. The
+            resource returns `1` to indicate a replica set and values of `2` and
+            higher to indicate a sharded cluster. The returned value equals the
+            number of shards in the cluster.
+          externalDocs:
+            description: Sharding
+            url: https://docs.mongodb.com/manual/sharding/
+          maximum: 50
+          minimum: 1
+        paused:
+          type: boolean
+          description: Flag that indicates whether the cluster is paused.
+        pitEnabled:
+          type: boolean
+          description: Flag that indicates whether the cluster uses continuous cloud
+            backups.
+          externalDocs:
+            description: Continuous Cloud Backups
+            url: https://docs.atlas.mongodb.com/backup/cloud-backup/overview/
+        providerBackupEnabled:
+          type: boolean
+          description: Flag that indicates whether the M10 or higher cluster can perform
+            Cloud Backups. If set to `true`, the cluster can perform backups. If
+            this and **backupEnabled** are set to `false`, the cluster doesn't
+            use MongoDB Cloud backups.
+        providerSettings:
+          $ref: "#/components/schemas/ClusterProviderSettings"
+        replicationFactor:
+          type: integer
+          format: int32
+          default: 3
+          deprecated: true
+          description: Number of members that belong to the replica set. Each member
+            retains a copy of your databases, providing high availability and
+            data redundancy. Use **replicationSpecs** instead.
+        replicationSpec:
+          type: object
+          additionalProperties:
+            $ref: "#/components/schemas/RegionSpec"
+          description: Physical location where MongoDB Cloud provisions cluster nodes.
+          title: Region Configuration
+        replicationSpecs:
+          type: array
+          description: >-
+            List of settings that configure your cluster regions.
+
+
+            - For Global Clusters, each object in the array represents one zone where MongoDB Cloud deploys your clusters nodes.
+
+            - For non-Global sharded clusters and replica sets, the single object represents where MongoDB Cloud deploys your clusters nodes.
+          items:
+            $ref: "#/components/schemas/LegacyReplicationSpec"
+        rootCertType:
+          type: string
+          default: ISRGROOTX1
+          description: Root Certificate Authority that MongoDB Atlas clusters uses.
+            MongoDB Cloud supports Internet Security Research Group.
+        srvAddress:
+          type: string
+          description: Connection string that you can use to connect to the cluster. The
+            `+srv` modifier forces the connection to use Transport Layer
+            Security (TLS). The `mongoURI` parameter lists additional options.
+          externalDocs:
+            description: Connection string URI format.
+            url: https://docs.mongodb.com/manual/reference/connection-string/
+          readOnly: true
+        stateName:
+          type: string
+          description: Human-readable label that indicates the current operating condition
+            of the cluster.
+          readOnly: true
+        tags:
+          type: array
+          description: List that contains key-value pairs between 1 to 255 characters in
+            length for tagging and categorizing the cluster.
+          externalDocs:
+            description: Resource Tags
+            url: https://dochub.mongodb.org/core/add-cluster-tag-atlas
+          items:
+            $ref: "#/components/schemas/ResourceTag"
+        terminationProtectionEnabled:
+          type: boolean
+          default: false
+          description: Flag that indicates whether termination protection is enabled on
+            the cluster. If set to `true`, MongoDB Cloud won't delete the
+            cluster. If set to `false`, MongoDB Cloud will delete the cluster.
+        versionReleaseSystem:
+          type: string
+          default: LTS
+          description: Method by which the cluster maintains the MongoDB versions. If
+            value is `CONTINUOUS`, you must not specify **mongoDBMajorVersion**.
+      required:
+        - name
+      title: Tenant Cluster Upgrade Request
     LegacyReplicationSpec:
       type: object
       properties:
@@ -24949,6 +25493,35 @@ components:
           description: Number of documents returned in this response.
           minimum: 0
           readOnly: true
+    PaginatedServiceAccounts:
+      type: object
+      description: List of the Service Accounts
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud providers when
+            completing this request.
+          items:
+            $ref: "#/components/schemas/ServiceAccountDetails"
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Number of documents returned in this response if **includeCount**
+            query param is true.
+          minimum: 0
+          readOnly: true
     PemFileInfo:
       type: object
       description: PEM file information for the identity provider's certificates.
@@ -25151,6 +25724,19 @@ components:
           readOnly: true
       readOnly: true
       title: Data Lake Pipeline Run Statistics
+    PrivateEndpointHostname:
+      type: object
+      description: Set of Private endpoint and hostnames.
+      properties:
+        hostname:
+          type: string
+          description: Human-readable label that identifies the hostname.
+          readOnly: true
+        privateEndpoint:
+          type: string
+          description: Human-readable label that identifies private endpoint.
+          readOnly: true
+      readOnly: true
     PrivateLinkEndpoint:
       type: object
       properties:
@@ -25236,6 +25822,9 @@ components:
         comment:
           type: string
           description: Human-readable string to associate with this private endpoint.
+        customerEndpointDNSName:
+          type: string
+          description: Human-readable label to identify customer's VPC endpoint DNS name.
         endpointId:
           type: string
           description: Unique 22-character alphanumeric string that identifies the private
@@ -25253,6 +25842,10 @@ components:
           default: AWS
           description: Human-readable label that identifies the cloud service provider.
             Atlas Data Lake supports Amazon Web Services only.
+        region:
+          type: string
+          description: Human-readable label to identify the region of customer's VPC
+            endpoint.
         type:
           type: string
           default: DATA_LAKE
@@ -25260,39 +25853,6 @@ components:
             with this private endpoint.
       required:
         - endpointId
-    PushBasedLogExportProject:
-      type: object
-      properties:
-        bucketName:
-          type: string
-          description: The name of the bucket to which the agent will send the logs to.
-        createDate:
-          type: string
-          format: date-time
-          description: Date and time that this feature was enabled on.
-          readOnly: true
-        iamRoleId:
-          type: string
-          description: ID of the AWS IAM role that will be used to write to the S3 bucket.
-        links:
-          type: array
-          description: List of one or more Uniform Resource Locators (URLs) that point to
-            API sub-resources, related API resources, or both. RFC 5988 outlines
-            these relationships.
-          externalDocs:
-            description: Web Linking Specification (RFC 5988)
-            url: https://datatracker.ietf.org/doc/html/rfc5988
-          items:
-            $ref: "#/components/schemas/Link"
-          readOnly: true
-        prefixPath:
-          type: string
-          description: S3 directory in which vector will write to in order to store the
-            logs.
-        state:
-          type: string
-          description: Describes whether or not the feature is enabled and what status it
-            is in.
     RawMetricUnits:
       type: string
       default: RAW
@@ -26194,6 +26754,239 @@ components:
           writeOnly: true
       required:
         - providerName
+    ServiceAccount:
+      type: object
+      properties:
+        accessList:
+          type: array
+          items:
+            $ref: "#/components/schemas/ServiceAccountAccessList"
+          uniqueItems: true
+        createdAt:
+          type: string
+          format: date-time
+          description: Service account creation time.
+        description:
+          type: string
+          description: Description of the service account.
+        id:
+          type: string
+          description: ID for the service account.
+          pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
+        name:
+          type: string
+          description: Name for service account.
+        roles:
+          $ref: "#/components/schemas/ServiceAccountAccessRole"
+        secrets:
+          type: array
+          description: List of secrets.
+          items:
+            $ref: "#/components/schemas/ServiceAccountSecret"
+          uniqueItems: true
+    ServiceAccountAccessList:
+      type: object
+      properties:
+        createdAt:
+          type: string
+          format: date-time
+          description: Time of creation.
+          readOnly: true
+        lastUsedAddress:
+          type: string
+          description: Last address where the service account was used from.
+          readOnly: true
+        lastUsedAt:
+          type: string
+          format: date-time
+          description: Last time the access list was used.
+          readOnly: true
+        networkAddress:
+          type: string
+          description: An IP address or CIDR notation.
+        requestCount:
+          type: integer
+          format: int64
+          description: Count of requests using this network address.
+          readOnly: true
+    ServiceAccountAccessRole:
+      type: object
+      description: Service account access roles.
+      properties:
+        groups:
+          type: array
+          items:
+            $ref: "#/components/schemas/ServiceAccountProjectAccessRole"
+          uniqueItems: true
+        org:
+          type: array
+          items:
+            type: string
+            description: Access Role for the organization
+          uniqueItems: true
+    ServiceAccountDetails:
+      type: object
+      properties:
+        accessList:
+          type: array
+          description: Service account access list.
+          items:
+            $ref: "#/components/schemas/ServiceAccountAccessList"
+          uniqueItems: true
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp representing creation time.
+        description:
+          type: string
+          description: Description of the service account.
+        id:
+          type: string
+          description: Service account client id.
+          pattern: ^mdb_sa_id_[a-fA-F\d]{24}$
+        name:
+          type: string
+          description: Service account name.
+        roles:
+          $ref: "#/components/schemas/ServiceAccountAccessRole"
+        secrets:
+          type: array
+          items:
+            $ref: "#/components/schemas/ServiceAccountSecretDetails"
+          maxItems: 2
+          uniqueItems: true
+    ServiceAccountProjectAccessRole:
+      type: object
+      description: Group access roles
+      properties:
+        groupId:
+          type: string
+          description: Id of the group.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
+        roleNames:
+          type: array
+          items:
+            type: string
+            description: Group access roles.
+          uniqueItems: true
+      required:
+        - groupId
+    ServiceAccountRequest:
+      type: object
+      properties:
+        accessList:
+          type: array
+          items:
+            $ref: "#/components/schemas/ServiceAccountAccessList"
+          uniqueItems: true
+        description:
+          type: string
+          description: Human readable description for service account.
+        name:
+          type: string
+          description: Human readable name for service account.
+        roles:
+          $ref: "#/components/schemas/ServiceAccountAccessRole"
+        secretExpiresAt:
+          type: string
+          format: date-time
+          description: Secret expiration time.
+      required:
+        - description
+        - name
+        - roles
+        - secretExpiresAt
+    ServiceAccountSecret:
+      type: object
+      properties:
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp representing creation time.
+          readOnly: true
+        expiresAt:
+          type: string
+          format: date-time
+          description: Timestamp representing secret expiration time.
+          readOnly: true
+        id:
+          type: string
+          description: Unique 24-hexadecimal character string that identifies the secret.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        lastUsedAt:
+          type: string
+          format: date-time
+          description: Timestamp representing last time secret usage.
+          readOnly: true
+        secret:
+          type: string
+          description: Secret for the service account.
+          pattern: ^mdb_sa_sk_[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
+      required:
+        - createdAt
+        - expiresAt
+        - id
+    ServiceAccountSecretDetails:
+      type: object
+      properties:
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp representing creation time.
+          readOnly: true
+        expiresAt:
+          type: string
+          format: date-time
+          description: Timestamp representing secret expiration time.
+          readOnly: true
+        id:
+          type: string
+          description: Unique 24-hexadecimal character string that identifies the secret.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+        lastUsedAt:
+          type: string
+          format: date-time
+          description: Timestamp representing last time secret usage.
+          readOnly: true
+        maskedSecretValue:
+          type: string
+          description: Value of client secret with masked values of the first 20 characters.
+          example: mdb_ic_sk_xxxxxxxx-xxxx-xxxx-xxxxxxxx12ce
+          readOnly: true
+      required:
+        - createdAt
+        - expiresAt
+        - id
+        - maskedSecretValue
+    ServiceAccountSecretRequest:
+      type: object
+      properties:
+        expiresAt:
+          type: string
+          format: date-time
+          description: Timestamp representing creation time for secret.
+    ServiceAccountUpdateRequest:
+      type: object
+      properties:
+        accessList:
+          type: array
+          description: Service account access list.
+          items:
+            $ref: "#/components/schemas/ServiceAccountAccessList"
+          uniqueItems: true
+        description:
+          type: string
+          description: Description of the service account client.
+        name:
+          type: string
+          description: Client name for service account.
+        roles:
+          $ref: "#/components/schemas/ServiceAccountAccessRole"
     Source:
       type: object
       description: Document that describes the source of the migration.
@@ -26923,6 +27716,8 @@ components:
     TriggerIngestionPipelineRequest:
       type: object
       properties:
+        datasetRetentionPolicy:
+          $ref: "#/components/schemas/DatasetRetentionPolicy"
         snapshotId:
           type: string
           description: Unique 24-hexadecimal character string that identifies the snapshot.

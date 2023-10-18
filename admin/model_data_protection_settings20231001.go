@@ -9,13 +9,13 @@ import (
 
 // DataProtectionSettings20231001 struct for DataProtectionSettings20231001
 type DataProtectionSettings20231001 struct {
-	// Email address of the user who authorized to updated the Backup Compliance Policy  settings.
+	// Email address of the user who authorized to update the Backup Compliance Policy  settings.
 	AuthorizedEmail string `json:"authorizedEmail"`
 	// First name of the user who authorized to updated the Backup Compliance Policy  settings.
 	AuthorizedUserFirstName string `json:"authorizedUserFirstName"`
 	// Last name of the user who authorized to updated the Backup Compliance Policy  settings.
 	AuthorizedUserLastName string `json:"authorizedUserLastName"`
-	// Flag that indicates whether to enable additional backup copies for the cluster. If unspecified, this value defaults to false.
+	// Flag that indicates whether to prevent cluster users from deleting backups copied to other regions, even if those additional snapshot regions are removed. If unspecified, this value defaults to false.
 	CopyProtectionEnabled *bool `json:"copyProtectionEnabled,omitempty"`
 	// Flag that indicates whether Encryption at Rest using Customer Key  Management is required for all clusters with a Backup Compliance Policy. If unspecified, this value defaults to false.
 	EncryptionAtRestEnabled *bool                    `json:"encryptionAtRestEnabled,omitempty"`
