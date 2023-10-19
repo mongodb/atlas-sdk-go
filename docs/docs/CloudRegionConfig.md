@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **AnalyticsSpecs** | Pointer to [**DedicatedHardwareSpec**](DedicatedHardwareSpec.md) |  | [optional] 
 **AutoScaling** | Pointer to [**AdvancedAutoScalingSettings**](AdvancedAutoScalingSettings.md) |  | [optional] 
 **ReadOnlySpecs** | Pointer to [**DedicatedHardwareSpec**](DedicatedHardwareSpec.md) |  | [optional] 
-**BackingProviderName** | Pointer to **string** | Cloud service provider on which MongoDB Cloud provisioned the multi-tenant cluster. The resource returns this parameter when **providerSettings.providerName** is &#x60;TENANT&#x60; and **providerSetting.instanceSizeName** is &#x60;M2&#x60; or &#x60;M5&#x60;. | [optional] 
+**BackingProviderName** | Pointer to **string** | Cloud service provider on which MongoDB Cloud provisioned the multi-tenant cluster. The resource returns this parameter when **providerName** is &#x60;TENANT&#x60; and **electableSpecs.instanceSize** is &#x60;M0&#x60;, &#x60;M2&#x60; or &#x60;M5&#x60;. | [optional] 
 
 ## Methods
 

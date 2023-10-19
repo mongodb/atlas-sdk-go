@@ -20,6 +20,7 @@ Method | HTTP request | Description
 [**ListProjectUsers**](ProjectsApi.md#ListProjectUsers) | **Get** /api/atlas/v2/groups/{groupId}/users | Return All Users in One Project
 [**ListProjects**](ProjectsApi.md#ListProjects) | **Get** /api/atlas/v2/groups | Return All Projects
 [**RemoveProjectUser**](ProjectsApi.md#RemoveProjectUser) | **Delete** /api/atlas/v2/groups/{groupId}/users/{userId} | Remove One User from One Project
+[**ReturnAllIPAddresses**](ProjectsApi.md#ReturnAllIPAddresses) | **Get** /api/atlas/v2/groups/{groupId}/ipAddresses | Return All IP Addresses for One Project
 [**SetProjectLimit**](ProjectsApi.md#SetProjectLimit) | **Patch** /api/atlas/v2/groups/{groupId}/limits/{limitName} | Set One Project Limit
 [**UpdateProject**](ProjectsApi.md#UpdateProject) | **Patch** /api/atlas/v2/groups/{groupId} | Update One Project Name
 [**UpdateProjectInvitation**](ProjectsApi.md#UpdateProjectInvitation) | **Patch** /api/atlas/v2/groups/{groupId}/invites | Update One Project Invitation
@@ -51,7 +52,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {
@@ -126,7 +127,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {
@@ -197,7 +198,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {
@@ -272,7 +273,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {
@@ -345,7 +346,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {
@@ -426,7 +427,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {
@@ -502,7 +503,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {
@@ -575,7 +576,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {
@@ -648,7 +649,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {
@@ -729,7 +730,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {
@@ -805,7 +806,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {
@@ -878,7 +879,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {
@@ -958,7 +959,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {
@@ -1031,7 +1032,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {
@@ -1114,7 +1115,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {
@@ -1187,7 +1188,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {
@@ -1244,6 +1245,84 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ReturnAllIPAddresses
+
+> []GroupIPAddresses ReturnAllIPAddresses(ctx, groupId).Execute()
+
+Return All IP Addresses for One Project
+
+
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+
+    resp, r, err := sdk.ProjectsApi.ReturnAllIPAddresses(context.Background(), groupId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.ReturnAllIPAddresses``: %v\n", err)
+        apiError := admin.AsError(err)
+        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+    }
+    // response from `ReturnAllIPAddresses`: []GroupIPAddresses
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.ReturnAllIPAddresses`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiReturnAllIPAddressesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]GroupIPAddresses**](GroupIPAddresses.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## SetProjectLimit
 
 > DataFederationLimit SetProjectLimit(ctx, limitName, groupId, dataFederationLimit DataFederationLimit).Execute()
@@ -1266,7 +1345,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {
@@ -1349,7 +1428,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {
@@ -1424,7 +1503,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {
@@ -1499,7 +1578,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {
@@ -1582,7 +1661,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {
@@ -1660,7 +1739,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {

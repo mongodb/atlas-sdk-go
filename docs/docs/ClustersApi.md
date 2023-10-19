@@ -39,7 +39,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {
@@ -114,7 +114,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {
@@ -190,7 +190,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {
@@ -266,7 +266,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {
@@ -347,7 +347,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {
@@ -423,7 +423,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {
@@ -499,7 +499,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {
@@ -582,7 +582,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {
@@ -668,7 +668,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {
@@ -741,7 +741,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {
@@ -817,7 +817,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {
@@ -891,7 +891,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {
@@ -969,7 +969,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {
@@ -1032,7 +1032,7 @@ Name | Type | Description  | Notes
 
 ## UpgradeSharedCluster
 
-> LegacyAtlasCluster UpgradeSharedCluster(ctx, groupId, legacyAtlasCluster LegacyAtlasCluster).Execute()
+> LegacyAtlasCluster UpgradeSharedCluster(ctx, groupId, legacyAtlasTenantClusterUpgradeRequest LegacyAtlasTenantClusterUpgradeRequest).Execute()
 
 Upgrade One Shared-tier Cluster
 
@@ -1052,7 +1052,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {
@@ -1062,9 +1062,9 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    legacyAtlasCluster := *openapiclient.NewLegacyAtlasCluster() // LegacyAtlasCluster | 
+    legacyAtlasTenantClusterUpgradeRequest := *openapiclient.NewLegacyAtlasTenantClusterUpgradeRequest("Name_example") // LegacyAtlasTenantClusterUpgradeRequest | 
 
-    resp, r, err := sdk.ClustersApi.UpgradeSharedCluster(context.Background(), groupId, &legacyAtlasCluster).Execute()
+    resp, r, err := sdk.ClustersApi.UpgradeSharedCluster(context.Background(), groupId, &legacyAtlasTenantClusterUpgradeRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ClustersApi.UpgradeSharedCluster``: %v\n", err)
         apiError := admin.AsError(err)
@@ -1091,7 +1091,7 @@ Other parameters are passed through a pointer to a apiUpgradeSharedClusterReques
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **legacyAtlasCluster** | [**LegacyAtlasCluster**](LegacyAtlasCluster.md) | Details of the shared-tier cluster upgrade in the specified project. | 
+ **legacyAtlasTenantClusterUpgradeRequest** | [**LegacyAtlasTenantClusterUpgradeRequest**](LegacyAtlasTenantClusterUpgradeRequest.md) | Details of the shared-tier cluster upgrade in the specified project. | 
 
 ### Return type
 
@@ -1132,7 +1132,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001001/admin"
+    "go.mongodb.org/atlas-sdk/v20231001002/admin"
 )
 
 func main() {

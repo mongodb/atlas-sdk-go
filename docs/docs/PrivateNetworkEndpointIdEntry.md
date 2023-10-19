@@ -5,8 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Comment** | Pointer to **string** | Human-readable string to associate with this private endpoint. | [optional] 
+**CustomerEndpointDNSName** | Pointer to **string** | Human-readable label to identify customer&#39;s VPC endpoint DNS name. | [optional] 
 **EndpointId** | **string** | Unique 22-character alphanumeric string that identifies the private endpoint. | 
 **Provider** | Pointer to **string** | Human-readable label that identifies the cloud service provider. Atlas Data Lake supports Amazon Web Services only. | [optional] [default to "AWS"]
+**Region** | Pointer to **string** | Human-readable label to identify the region of customer&#39;s VPC endpoint. | [optional] 
 **Type** | Pointer to **string** | Human-readable label that identifies the resource type associated with this private endpoint. | [optional] [default to "DATA_LAKE"]
 
 ## Methods
@@ -52,6 +54,30 @@ SetComment sets Comment field to given value.
 `func (o *PrivateNetworkEndpointIdEntry) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
+### GetCustomerEndpointDNSName
+
+`func (o *PrivateNetworkEndpointIdEntry) GetCustomerEndpointDNSName() string`
+
+GetCustomerEndpointDNSName returns the CustomerEndpointDNSName field if non-nil, zero value otherwise.
+
+### GetCustomerEndpointDNSNameOk
+
+`func (o *PrivateNetworkEndpointIdEntry) GetCustomerEndpointDNSNameOk() (*string, bool)`
+
+GetCustomerEndpointDNSNameOk returns a tuple with the CustomerEndpointDNSName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCustomerEndpointDNSName
+
+`func (o *PrivateNetworkEndpointIdEntry) SetCustomerEndpointDNSName(v string)`
+
+SetCustomerEndpointDNSName sets CustomerEndpointDNSName field to given value.
+
+### HasCustomerEndpointDNSName
+
+`func (o *PrivateNetworkEndpointIdEntry) HasCustomerEndpointDNSName() bool`
+
+HasCustomerEndpointDNSName returns a boolean if a field has been set.
 ### GetEndpointId
 
 `func (o *PrivateNetworkEndpointIdEntry) GetEndpointId() string`
@@ -95,6 +121,30 @@ SetProvider sets Provider field to given value.
 `func (o *PrivateNetworkEndpointIdEntry) HasProvider() bool`
 
 HasProvider returns a boolean if a field has been set.
+### GetRegion
+
+`func (o *PrivateNetworkEndpointIdEntry) GetRegion() string`
+
+GetRegion returns the Region field if non-nil, zero value otherwise.
+
+### GetRegionOk
+
+`func (o *PrivateNetworkEndpointIdEntry) GetRegionOk() (*string, bool)`
+
+GetRegionOk returns a tuple with the Region field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRegion
+
+`func (o *PrivateNetworkEndpointIdEntry) SetRegion(v string)`
+
+SetRegion sets Region field to given value.
+
+### HasRegion
+
+`func (o *PrivateNetworkEndpointIdEntry) HasRegion() bool`
+
+HasRegion returns a boolean if a field has been set.
 ### GetType
 
 `func (o *PrivateNetworkEndpointIdEntry) GetType() string`

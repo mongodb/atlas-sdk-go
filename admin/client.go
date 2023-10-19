@@ -108,8 +108,6 @@ type APIClient struct {
 
 	ProjectsApi ProjectsApi
 
-	PushBasedLogExportApi PushBasedLogExportApi
-
 	RollingIndexApi RollingIndexApi
 
 	RootApi RootApi
@@ -181,7 +179,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ProgrammaticAPIKeysApi = (*ProgrammaticAPIKeysApiService)(&c.common)
 	c.ProjectIPAccessListApi = (*ProjectIPAccessListApiService)(&c.common)
 	c.ProjectsApi = (*ProjectsApiService)(&c.common)
-	c.PushBasedLogExportApi = (*PushBasedLogExportApiService)(&c.common)
 	c.RollingIndexApi = (*RollingIndexApiService)(&c.common)
 	c.RootApi = (*RootApiService)(&c.common)
 	c.ServerlessInstancesApi = (*ServerlessInstancesApiService)(&c.common)

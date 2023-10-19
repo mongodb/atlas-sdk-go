@@ -133,9 +133,9 @@ type FederatedAuthenticationApi interface {
 	getFederationSettingsExecute(r GetFederationSettingsApiRequest) (*OrgFederationSettings, *http.Response, error)
 
 	/*
-		GetIdentityProvider Return one identity provider from the specified federation.
+		GetIdentityProvider Return one SAML identity provider from the specified federation.
 
-		[experimental] Returns one identity provider from the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
+		[experimental] Returns one SAML identity provider from the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
@@ -144,7 +144,7 @@ type FederatedAuthenticationApi interface {
 	*/
 	GetIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string) GetIdentityProviderApiRequest
 	/*
-		GetIdentityProvider Return one identity provider from the specified federation.
+		GetIdentityProvider Return one SAML identity provider from the specified federation.
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -154,7 +154,7 @@ type FederatedAuthenticationApi interface {
 	GetIdentityProviderWithParams(ctx context.Context, args *GetIdentityProviderApiParams) GetIdentityProviderApiRequest
 
 	// Interface only available internally
-	getIdentityProviderExecute(r GetIdentityProviderApiRequest) (*FederationIdentityProvider, *http.Response, error)
+	getIdentityProviderExecute(r GetIdentityProviderApiRequest) (*FederationSamlIdentityProvider, *http.Response, error)
 
 	/*
 		GetIdentityProviderMetadata Return the metadata of one identity provider in the specified federation.
@@ -231,7 +231,7 @@ type FederatedAuthenticationApi interface {
 	/*
 		ListIdentityProviders Return all identity providers from the specified federation.
 
-		[experimental] Returns all identity providers in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
+		[experimental] Returns all identity providers with the provided protocol in the specified federation. If no protocol is specified, only SAML identity providers will be returned. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
@@ -330,9 +330,9 @@ type FederatedAuthenticationApi interface {
 	updateConnectedOrgConfigExecute(r UpdateConnectedOrgConfigApiRequest) (*ConnectedOrgConfig, *http.Response, error)
 
 	/*
-		UpdateIdentityProvider Update the identity provider.
+		UpdateIdentityProvider Update the SAML identity provider.
 
-		[experimental] Updates one identity provider in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
+		[experimental] Updates one SAML identity provider in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
@@ -341,7 +341,7 @@ type FederatedAuthenticationApi interface {
 	*/
 	UpdateIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string, samlIdentityProviderUpdate *SamlIdentityProviderUpdate) UpdateIdentityProviderApiRequest
 	/*
-		UpdateIdentityProvider Update the identity provider.
+		UpdateIdentityProvider Update the SAML identity provider.
 
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -351,7 +351,7 @@ type FederatedAuthenticationApi interface {
 	UpdateIdentityProviderWithParams(ctx context.Context, args *UpdateIdentityProviderApiParams) UpdateIdentityProviderApiRequest
 
 	// Interface only available internally
-	updateIdentityProviderExecute(r UpdateIdentityProviderApiRequest) (*FederationIdentityProvider, *http.Response, error)
+	updateIdentityProviderExecute(r UpdateIdentityProviderApiRequest) (*FederationSamlIdentityProvider, *http.Response, error)
 
 	/*
 		UpdateRoleMapping Update One Role Mapping in One Organization
@@ -1086,14 +1086,14 @@ func (a *FederatedAuthenticationApiService) GetIdentityProviderWithParams(ctx co
 	}
 }
 
-func (r GetIdentityProviderApiRequest) Execute() (*FederationIdentityProvider, *http.Response, error) {
+func (r GetIdentityProviderApiRequest) Execute() (*FederationSamlIdentityProvider, *http.Response, error) {
 	return r.ApiService.getIdentityProviderExecute(r)
 }
 
 /*
-GetIdentityProvider Return one identity provider from the specified federation.
+GetIdentityProvider Return one SAML identity provider from the specified federation.
 
-[experimental] Returns one identity provider from the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
+[experimental] Returns one SAML identity provider from the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
@@ -1111,13 +1111,13 @@ func (a *FederatedAuthenticationApiService) GetIdentityProvider(ctx context.Cont
 
 // Execute executes the request
 //
-//	@return FederationIdentityProvider
-func (a *FederatedAuthenticationApiService) getIdentityProviderExecute(r GetIdentityProviderApiRequest) (*FederationIdentityProvider, *http.Response, error) {
+//	@return FederationSamlIdentityProvider
+func (a *FederatedAuthenticationApiService) getIdentityProviderExecute(r GetIdentityProviderApiRequest) (*FederationSamlIdentityProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *FederationIdentityProvider
+		localVarReturnValue *FederationSamlIdentityProvider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.GetIdentityProvider")
@@ -1637,10 +1637,12 @@ type ListIdentityProvidersApiRequest struct {
 	ctx                  context.Context
 	ApiService           FederatedAuthenticationApi
 	federationSettingsId string
+	protocol             *string
 }
 
 type ListIdentityProvidersApiParams struct {
 	FederationSettingsId string
+	Protocol             *string
 }
 
 func (a *FederatedAuthenticationApiService) ListIdentityProvidersWithParams(ctx context.Context, args *ListIdentityProvidersApiParams) ListIdentityProvidersApiRequest {
@@ -1648,7 +1650,14 @@ func (a *FederatedAuthenticationApiService) ListIdentityProvidersWithParams(ctx 
 		ApiService:           a,
 		ctx:                  ctx,
 		federationSettingsId: args.FederationSettingsId,
+		protocol:             args.Protocol,
 	}
+}
+
+// The protocols of the target identity providers.
+func (r ListIdentityProvidersApiRequest) Protocol(protocol string) ListIdentityProvidersApiRequest {
+	r.protocol = &protocol
+	return r
 }
 
 func (r ListIdentityProvidersApiRequest) Execute() ([]FederationIdentityProvider, *http.Response, error) {
@@ -1658,7 +1667,7 @@ func (r ListIdentityProvidersApiRequest) Execute() ([]FederationIdentityProvider
 /*
 ListIdentityProviders Return all identity providers from the specified federation.
 
-[experimental] Returns all identity providers in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
+[experimental] Returns all identity providers with the provided protocol in the specified federation. If no protocol is specified, only SAML identity providers will be returned. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
@@ -1701,6 +1710,9 @@ func (a *FederatedAuthenticationApiService) listIdentityProvidersExecute(r ListI
 		return localVarReturnValue, nil, reportError("federationSettingsId must have less than 24 elements")
 	}
 
+	if r.protocol != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "protocol", r.protocol, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -2228,14 +2240,14 @@ func (a *FederatedAuthenticationApiService) UpdateIdentityProviderWithParams(ctx
 	}
 }
 
-func (r UpdateIdentityProviderApiRequest) Execute() (*FederationIdentityProvider, *http.Response, error) {
+func (r UpdateIdentityProviderApiRequest) Execute() (*FederationSamlIdentityProvider, *http.Response, error) {
 	return r.ApiService.updateIdentityProviderExecute(r)
 }
 
 /*
-UpdateIdentityProvider Update the identity provider.
+UpdateIdentityProvider Update the SAML identity provider.
 
-[experimental] Updates one identity provider in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
+[experimental] Updates one SAML identity provider in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
@@ -2254,13 +2266,13 @@ func (a *FederatedAuthenticationApiService) UpdateIdentityProvider(ctx context.C
 
 // Execute executes the request
 //
-//	@return FederationIdentityProvider
-func (a *FederatedAuthenticationApiService) updateIdentityProviderExecute(r UpdateIdentityProviderApiRequest) (*FederationIdentityProvider, *http.Response, error) {
+//	@return FederationSamlIdentityProvider
+func (a *FederatedAuthenticationApiService) updateIdentityProviderExecute(r UpdateIdentityProviderApiRequest) (*FederationSamlIdentityProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *FederationIdentityProvider
+		localVarReturnValue *FederationSamlIdentityProvider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.UpdateIdentityProvider")

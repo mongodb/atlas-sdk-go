@@ -8,7 +8,7 @@ import (
 
 // AuthFederationRoleMapping Mapping settings that link one IdP and MongoDB Cloud.
 type AuthFederationRoleMapping struct {
-	// Unique human-readable label that identifies the identity provider group to whichthis role mapping applies.
+	// Unique human-readable label that identifies the identity provider group to which this role mapping applies.
 	ExternalGroupName string `json:"externalGroupName"`
 	// Unique 24-hexadecimal digit string that identifies this role mapping.
 	Id *string `json:"id,omitempty"`

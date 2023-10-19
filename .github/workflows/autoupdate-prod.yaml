@@ -45,6 +45,11 @@ jobs:
           GIT_BASE_REF: ${{ github.sha }}
         run: |
           make new-release  
+      - name: Ensure all markdown code is formatted
+        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        working-directory: ./tools
+        run: |
+          npm run format
       - uses: peter-evans/create-pull-request@v5
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         env:

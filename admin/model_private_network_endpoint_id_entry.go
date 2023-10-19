@@ -10,10 +10,14 @@ import (
 type PrivateNetworkEndpointIdEntry struct {
 	// Human-readable string to associate with this private endpoint.
 	Comment *string `json:"comment,omitempty"`
+	// Human-readable label to identify customer's VPC endpoint DNS name.
+	CustomerEndpointDNSName *string `json:"customerEndpointDNSName,omitempty"`
 	// Unique 22-character alphanumeric string that identifies the private endpoint.
 	EndpointId string `json:"endpointId"`
 	// Human-readable label that identifies the cloud service provider. Atlas Data Lake supports Amazon Web Services only.
 	Provider *string `json:"provider,omitempty"`
+	// Human-readable label to identify the region of customer's VPC endpoint.
+	Region *string `json:"region,omitempty"`
 	// Human-readable label that identifies the resource type associated with this private endpoint.
 	Type *string `json:"type,omitempty"`
 }
@@ -77,6 +81,39 @@ func (o *PrivateNetworkEndpointIdEntry) SetComment(v string) {
 	o.Comment = &v
 }
 
+// GetCustomerEndpointDNSName returns the CustomerEndpointDNSName field value if set, zero value otherwise
+func (o *PrivateNetworkEndpointIdEntry) GetCustomerEndpointDNSName() string {
+	if o == nil || IsNil(o.CustomerEndpointDNSName) {
+		var ret string
+		return ret
+	}
+	return *o.CustomerEndpointDNSName
+}
+
+// GetCustomerEndpointDNSNameOk returns a tuple with the CustomerEndpointDNSName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PrivateNetworkEndpointIdEntry) GetCustomerEndpointDNSNameOk() (*string, bool) {
+	if o == nil || IsNil(o.CustomerEndpointDNSName) {
+		return nil, false
+	}
+
+	return o.CustomerEndpointDNSName, true
+}
+
+// HasCustomerEndpointDNSName returns a boolean if a field has been set.
+func (o *PrivateNetworkEndpointIdEntry) HasCustomerEndpointDNSName() bool {
+	if o != nil && !IsNil(o.CustomerEndpointDNSName) {
+		return true
+	}
+
+	return false
+}
+
+// SetCustomerEndpointDNSName gets a reference to the given string and assigns it to the CustomerEndpointDNSName field.
+func (o *PrivateNetworkEndpointIdEntry) SetCustomerEndpointDNSName(v string) {
+	o.CustomerEndpointDNSName = &v
+}
+
 // GetEndpointId returns the EndpointId field value
 func (o *PrivateNetworkEndpointIdEntry) GetEndpointId() string {
 	if o == nil {
@@ -134,6 +171,39 @@ func (o *PrivateNetworkEndpointIdEntry) SetProvider(v string) {
 	o.Provider = &v
 }
 
+// GetRegion returns the Region field value if set, zero value otherwise
+func (o *PrivateNetworkEndpointIdEntry) GetRegion() string {
+	if o == nil || IsNil(o.Region) {
+		var ret string
+		return ret
+	}
+	return *o.Region
+}
+
+// GetRegionOk returns a tuple with the Region field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PrivateNetworkEndpointIdEntry) GetRegionOk() (*string, bool) {
+	if o == nil || IsNil(o.Region) {
+		return nil, false
+	}
+
+	return o.Region, true
+}
+
+// HasRegion returns a boolean if a field has been set.
+func (o *PrivateNetworkEndpointIdEntry) HasRegion() bool {
+	if o != nil && !IsNil(o.Region) {
+		return true
+	}
+
+	return false
+}
+
+// SetRegion gets a reference to the given string and assigns it to the Region field.
+func (o *PrivateNetworkEndpointIdEntry) SetRegion(v string) {
+	o.Region = &v
+}
+
 // GetType returns the Type field value if set, zero value otherwise
 func (o *PrivateNetworkEndpointIdEntry) GetType() string {
 	if o == nil || IsNil(o.Type) {
@@ -179,9 +249,15 @@ func (o PrivateNetworkEndpointIdEntry) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Comment) {
 		toSerialize["comment"] = o.Comment
 	}
+	if !IsNil(o.CustomerEndpointDNSName) {
+		toSerialize["customerEndpointDNSName"] = o.CustomerEndpointDNSName
+	}
 	toSerialize["endpointId"] = o.EndpointId
 	if !IsNil(o.Provider) {
 		toSerialize["provider"] = o.Provider
+	}
+	if !IsNil(o.Region) {
+		toSerialize["region"] = o.Region
 	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type

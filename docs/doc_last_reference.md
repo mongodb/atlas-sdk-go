@@ -137,7 +137,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
 *FederatedAuthenticationApi* | [DeleteRoleMapping](./docs/FederatedAuthenticationApi.md#deleterolemapping) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id} | Remove One Role Mapping from One Organization | Experimental
 *FederatedAuthenticationApi* | [GetConnectedOrgConfig](./docs/FederatedAuthenticationApi.md#getconnectedorgconfig) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Return One Org Config Connected to One Federation | Experimental
 *FederatedAuthenticationApi* | [GetFederationSettings](./docs/FederatedAuthenticationApi.md#getfederationsettings) | **Get** /api/atlas/v2/orgs/{orgId}/federationSettings | Return Federation Settings for One Organization | Experimental
-*FederatedAuthenticationApi* | [GetIdentityProvider](./docs/FederatedAuthenticationApi.md#getidentityprovider) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Return one identity provider from the specified federation. | Experimental
+*FederatedAuthenticationApi* | [GetIdentityProvider](./docs/FederatedAuthenticationApi.md#getidentityprovider) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Return one SAML identity provider from the specified federation. | Experimental
 *FederatedAuthenticationApi* | [GetIdentityProviderMetadata](./docs/FederatedAuthenticationApi.md#getidentityprovidermetadata) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/metadata.xml | Return the metadata of one identity provider in the specified federation. | Experimental
 *FederatedAuthenticationApi* | [GetRoleMapping](./docs/FederatedAuthenticationApi.md#getrolemapping) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id} | Return One Role Mapping from One Organization | Experimental
 *FederatedAuthenticationApi* | [ListConnectedOrgConfigs](./docs/FederatedAuthenticationApi.md#listconnectedorgconfigs) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs | Return All Connected Org Configs from the Federation | Experimental
@@ -145,7 +145,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
 *FederatedAuthenticationApi* | [ListRoleMappings](./docs/FederatedAuthenticationApi.md#listrolemappings) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings | Return All Role Mappings from One Organization | Experimental
 *FederatedAuthenticationApi* | [RemoveConnectedOrgConfig](./docs/FederatedAuthenticationApi.md#removeconnectedorgconfig) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Remove One Org Config Connected to One Federation | Experimental
 *FederatedAuthenticationApi* | [UpdateConnectedOrgConfig](./docs/FederatedAuthenticationApi.md#updateconnectedorgconfig) | **Patch** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Update One Org Config Connected to One Federation | Experimental
-*FederatedAuthenticationApi* | [UpdateIdentityProvider](./docs/FederatedAuthenticationApi.md#updateidentityprovider) | **Patch** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Update the identity provider. | Experimental
+*FederatedAuthenticationApi* | [UpdateIdentityProvider](./docs/FederatedAuthenticationApi.md#updateidentityprovider) | **Patch** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Update the SAML identity provider. | Experimental
 *FederatedAuthenticationApi* | [UpdateRoleMapping](./docs/FederatedAuthenticationApi.md#updaterolemapping) | **Put** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id} | Update One Role Mapping in One Organization | Experimental
 *GlobalClustersApi* | [CreateCustomZoneMapping](./docs/GlobalClustersApi.md#createcustomzonemapping) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping | Add One Entry to One Custom Zone Mapping | Experimental
 *GlobalClustersApi* | [CreateManagedNamespace](./docs/GlobalClustersApi.md#createmanagednamespace) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces | Create One Managed Namespace in One Global Multi-Cloud Cluster | Experimental
@@ -281,16 +281,13 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
 *ProjectsApi* | [ListProjectUsers](./docs/ProjectsApi.md#listprojectusers) | **Get** /api/atlas/v2/groups/{groupId}/users | Return All Users in One Project | Stable
 *ProjectsApi* | [ListProjects](./docs/ProjectsApi.md#listprojects) | **Get** /api/atlas/v2/groups | Return All Projects | Stable
 *ProjectsApi* | [RemoveProjectUser](./docs/ProjectsApi.md#removeprojectuser) | **Delete** /api/atlas/v2/groups/{groupId}/users/{userId} | Remove One User from One Project | Stable
+*ProjectsApi* | [ReturnAllIPAddresses](./docs/ProjectsApi.md#returnallipaddresses) | **Get** /api/atlas/v2/groups/{groupId}/ipAddresses | Return All IP Addresses for One Project | Experimental
 *ProjectsApi* | [SetProjectLimit](./docs/ProjectsApi.md#setprojectlimit) | **Patch** /api/atlas/v2/groups/{groupId}/limits/{limitName} | Set One Project Limit | Experimental
 *ProjectsApi* | [UpdateProject](./docs/ProjectsApi.md#updateproject) | **Patch** /api/atlas/v2/groups/{groupId} | Update One Project Name | Experimental
 *ProjectsApi* | [UpdateProjectInvitation](./docs/ProjectsApi.md#updateprojectinvitation) | **Patch** /api/atlas/v2/groups/{groupId}/invites | Update One Project Invitation | Stable
 *ProjectsApi* | [UpdateProjectInvitationById](./docs/ProjectsApi.md#updateprojectinvitationbyid) | **Patch** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Update One Project Invitation by Invitation ID | Stable
 *ProjectsApi* | [UpdateProjectRoles](./docs/ProjectsApi.md#updateprojectroles) | **Put** /api/atlas/v2/groups/{groupId}/users/{userId}/roles | Update Project Roles for One MongoDB Cloud User | Experimental
 *ProjectsApi* | [UpdateProjectSettings](./docs/ProjectsApi.md#updateprojectsettings) | **Patch** /api/atlas/v2/groups/{groupId}/settings | Update One Project Settings | Stable
-*PushBasedLogExportApi* | [CreatePushBasedLogConfiguration](./docs/PushBasedLogExportApi.md#createpushbasedlogconfiguration) | **Post** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Enable the push-based log export feature for a project | Experimental
-*PushBasedLogExportApi* | [DeletePushBasedLogConfiguration](./docs/PushBasedLogExportApi.md#deletepushbasedlogconfiguration) | **Delete** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Disable the push-based log export feature for a project | Experimental
-*PushBasedLogExportApi* | [GetPushBasedLogConfiguration](./docs/PushBasedLogExportApi.md#getpushbasedlogconfiguration) | **Get** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Get the push-based log export configuration for a project | Experimental
-*PushBasedLogExportApi* | [UpdatePushBasedLogConfiguration](./docs/PushBasedLogExportApi.md#updatepushbasedlogconfiguration) | **Patch** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Update the push-based log export feature for a project | Experimental
 *RollingIndexApi* | [CreateRollingIndex](./docs/RollingIndexApi.md#createrollingindex) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/index | Create One Rolling Index | Stable
 *RootApi* | [GetSystemStatus](./docs/RootApi.md#getsystemstatus) | **Get** /api/atlas/v2 | Return the status of this MongoDB application | Experimental
 *ServerlessInstancesApi* | [CreateServerlessInstance](./docs/ServerlessInstancesApi.md#createserverlessinstance) | **Post** /api/atlas/v2/groups/{groupId}/serverless | Create One Serverless Instance in One Project | Stable
@@ -412,6 +409,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [ClusterDescriptionConnectionStringsPrivateEndpointEndpoint](./docs/ClusterDescriptionConnectionStringsPrivateEndpointEndpoint.md)
  - [ClusterDescriptionProcessArgs](./docs/ClusterDescriptionProcessArgs.md)
  - [ClusterFreeAutoScaling](./docs/ClusterFreeAutoScaling.md)
+ - [ClusterIPAddresses](./docs/ClusterIPAddresses.md)
  - [ClusterOutageSimulation](./docs/ClusterOutageSimulation.md)
  - [ClusterProviderSettings](./docs/ClusterProviderSettings.md)
  - [ClusterSearchIndex](./docs/ClusterSearchIndex.md)
@@ -483,6 +481,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [FTSMetric](./docs/FTSMetric.md)
  - [FederatedUser](./docs/FederatedUser.md)
  - [FederationIdentityProvider](./docs/FederationIdentityProvider.md)
+ - [FederationSamlIdentityProvider](./docs/FederationSamlIdentityProvider.md)
  - [FieldTransformation](./docs/FieldTransformation.md)
  - [GCPConsumerForwardingRule](./docs/GCPConsumerForwardingRule.md)
  - [GeoSharding](./docs/GeoSharding.md)
@@ -490,6 +489,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [GreaterThanRawThreshold](./docs/GreaterThanRawThreshold.md)
  - [Group](./docs/Group.md)
  - [GroupAlertsConfig](./docs/GroupAlertsConfig.md)
+ - [GroupIPAddresses](./docs/GroupIPAddresses.md)
  - [GroupInvitation](./docs/GroupInvitation.md)
  - [GroupInvitationRequest](./docs/GroupInvitationRequest.md)
  - [GroupInvitationUpdateRequest](./docs/GroupInvitationUpdateRequest.md)
@@ -497,6 +497,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [GroupName](./docs/GroupName.md)
  - [GroupPaginatedEvent](./docs/GroupPaginatedEvent.md)
  - [GroupRole](./docs/GroupRole.md)
+ - [GroupService](./docs/GroupService.md)
  - [GroupSettings](./docs/GroupSettings.md)
  - [HardwareSpec](./docs/HardwareSpec.md)
  - [IndexOptions](./docs/IndexOptions.md)
@@ -509,6 +510,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [LDAPVerifyConnectivityJobRequestParams](./docs/LDAPVerifyConnectivityJobRequestParams.md)
  - [LDAPVerifyConnectivityJobRequestValidation](./docs/LDAPVerifyConnectivityJobRequestValidation.md)
  - [LegacyAtlasCluster](./docs/LegacyAtlasCluster.md)
+ - [LegacyAtlasTenantClusterUpgradeRequest](./docs/LegacyAtlasTenantClusterUpgradeRequest.md)
  - [LegacyReplicationSpec](./docs/LegacyReplicationSpec.md)
  - [Link](./docs/Link.md)
  - [LinkAtlas](./docs/LinkAtlas.md)
@@ -599,7 +601,6 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [PrivateLinkEndpoint](./docs/PrivateLinkEndpoint.md)
  - [PrivateNetworkEndpointIdEntry](./docs/PrivateNetworkEndpointIdEntry.md)
  - [ProjectSettingItem](./docs/ProjectSettingItem.md)
- - [PushBasedLogExportProject](./docs/PushBasedLogExportProject.md)
  - [Raw](./docs/Raw.md)
  - [RegionSpec](./docs/RegionSpec.md)
  - [ReplicationSpec](./docs/ReplicationSpec.md)
