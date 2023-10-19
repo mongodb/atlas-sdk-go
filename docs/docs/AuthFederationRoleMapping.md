@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ExternalGroupName** | **string** | Unique human-readable label that identifies the identity provider group to whichthis role mapping applies. | 
+**ExternalGroupName** | **string** | Unique human-readable label that identifies the identity provider group to which this role mapping applies. | 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies this role mapping. | [optional] [readonly] 
 **RoleAssignments** | Pointer to [**[]RoleAssignment**](RoleAssignment.md) | Atlas roles and the unique identifiers of the groups and organizations associated with each role. | [optional] 
 

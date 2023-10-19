@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**DeleteRoleMapping**](FederatedAuthenticationApi.md#DeleteRoleMapping) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id} | Remove One Role Mapping from One Organization
 [**GetConnectedOrgConfig**](FederatedAuthenticationApi.md#GetConnectedOrgConfig) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Return One Org Config Connected to One Federation
 [**GetFederationSettings**](FederatedAuthenticationApi.md#GetFederationSettings) | **Get** /api/atlas/v2/orgs/{orgId}/federationSettings | Return Federation Settings for One Organization
-[**GetIdentityProvider**](FederatedAuthenticationApi.md#GetIdentityProvider) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Return one identity provider from the specified federation.
+[**GetIdentityProvider**](FederatedAuthenticationApi.md#GetIdentityProvider) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Return one SAML identity provider from the specified federation.
 [**GetIdentityProviderMetadata**](FederatedAuthenticationApi.md#GetIdentityProviderMetadata) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/metadata.xml | Return the metadata of one identity provider in the specified federation.
 [**GetRoleMapping**](FederatedAuthenticationApi.md#GetRoleMapping) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id} | Return One Role Mapping from One Organization
 [**ListConnectedOrgConfigs**](FederatedAuthenticationApi.md#ListConnectedOrgConfigs) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs | Return All Connected Org Configs from the Federation
@@ -17,7 +17,7 @@ Method | HTTP request | Description
 [**ListRoleMappings**](FederatedAuthenticationApi.md#ListRoleMappings) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings | Return All Role Mappings from One Organization
 [**RemoveConnectedOrgConfig**](FederatedAuthenticationApi.md#RemoveConnectedOrgConfig) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Remove One Org Config Connected to One Federation
 [**UpdateConnectedOrgConfig**](FederatedAuthenticationApi.md#UpdateConnectedOrgConfig) | **Patch** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Update One Org Config Connected to One Federation
-[**UpdateIdentityProvider**](FederatedAuthenticationApi.md#UpdateIdentityProvider) | **Patch** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Update the identity provider.
+[**UpdateIdentityProvider**](FederatedAuthenticationApi.md#UpdateIdentityProvider) | **Patch** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Update the SAML identity provider.
 [**UpdateRoleMapping**](FederatedAuthenticationApi.md#UpdateRoleMapping) | **Put** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id} | Update One Role Mapping in One Organization
 
 
@@ -424,9 +424,9 @@ Name | Type | Description  | Notes
 
 ## GetIdentityProvider
 
-> FederationIdentityProvider GetIdentityProvider(ctx, federationSettingsId, identityProviderId).Execute()
+> FederationSamlIdentityProvider GetIdentityProvider(ctx, federationSettingsId, identityProviderId).Execute()
 
-Return one identity provider from the specified federation.
+Return one SAML identity provider from the specified federation.
 
 
 ## Experimental
@@ -462,7 +462,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetIdentityProvider`: FederationIdentityProvider
+    // response from `GetIdentityProvider`: FederationSamlIdentityProvider
     fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.GetIdentityProvider`: %v\n", resp)
 }
 ```
@@ -488,7 +488,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FederationIdentityProvider**](FederationIdentityProvider.md)
+[**FederationSamlIdentityProvider**](FederationSamlIdentityProvider.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -748,7 +748,7 @@ Name | Type | Description  | Notes
 
 ## ListIdentityProviders
 
-> []FederationIdentityProvider ListIdentityProviders(ctx, federationSettingsId).Execute()
+> []FederationIdentityProvider ListIdentityProviders(ctx, federationSettingsId).Protocol(protocol).Execute()
 
 Return all identity providers from the specified federation.
 
@@ -778,8 +778,9 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
+    protocol := "protocol_example" // string |  (optional)
 
-    resp, r, err := sdk.FederatedAuthenticationApi.ListIdentityProviders(context.Background(), federationSettingsId).Execute()
+    resp, r, err := sdk.FederatedAuthenticationApi.ListIdentityProviders(context.Background(), federationSettingsId).Protocol(protocol).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.ListIdentityProviders``: %v\n", err)
         apiError := admin.AsError(err)
@@ -806,6 +807,7 @@ Other parameters are passed through a pointer to a apiListIdentityProvidersReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **protocol** | **string** | The protocols of the target identity providers. | 
 
 ### Return type
 
@@ -1071,9 +1073,9 @@ Name | Type | Description  | Notes
 
 ## UpdateIdentityProvider
 
-> FederationIdentityProvider UpdateIdentityProvider(ctx, federationSettingsId, identityProviderId, samlIdentityProviderUpdate SamlIdentityProviderUpdate).Execute()
+> FederationSamlIdentityProvider UpdateIdentityProvider(ctx, federationSettingsId, identityProviderId, samlIdentityProviderUpdate SamlIdentityProviderUpdate).Execute()
 
-Update the identity provider.
+Update the SAML identity provider.
 
 
 ## Experimental
@@ -1110,7 +1112,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `UpdateIdentityProvider`: FederationIdentityProvider
+    // response from `UpdateIdentityProvider`: FederationSamlIdentityProvider
     fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.UpdateIdentityProvider`: %v\n", resp)
 }
 ```
@@ -1137,7 +1139,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FederationIdentityProvider**](FederationIdentityProvider.md)
+[**FederationSamlIdentityProvider**](FederationSamlIdentityProvider.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

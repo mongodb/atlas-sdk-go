@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DatasetRetentionPolicy** | Pointer to [**DatasetRetentionPolicy**](DatasetRetentionPolicy.md) |  | [optional] 
 **SnapshotId** | **string** | Unique 24-hexadecimal character string that identifies the snapshot. | 
 
 ## Methods
@@ -25,6 +26,30 @@ NewTriggerIngestionPipelineRequestWithDefaults instantiates a new TriggerIngesti
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetDatasetRetentionPolicy
+
+`func (o *TriggerIngestionPipelineRequest) GetDatasetRetentionPolicy() DatasetRetentionPolicy`
+
+GetDatasetRetentionPolicy returns the DatasetRetentionPolicy field if non-nil, zero value otherwise.
+
+### GetDatasetRetentionPolicyOk
+
+`func (o *TriggerIngestionPipelineRequest) GetDatasetRetentionPolicyOk() (*DatasetRetentionPolicy, bool)`
+
+GetDatasetRetentionPolicyOk returns a tuple with the DatasetRetentionPolicy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDatasetRetentionPolicy
+
+`func (o *TriggerIngestionPipelineRequest) SetDatasetRetentionPolicy(v DatasetRetentionPolicy)`
+
+SetDatasetRetentionPolicy sets DatasetRetentionPolicy field to given value.
+
+### HasDatasetRetentionPolicy
+
+`func (o *TriggerIngestionPipelineRequest) HasDatasetRetentionPolicy() bool`
+
+HasDatasetRetentionPolicy returns a boolean if a field has been set.
 ### GetSnapshotId
 
 `func (o *TriggerIngestionPipelineRequest) GetSnapshotId() string`
