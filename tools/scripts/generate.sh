@@ -23,7 +23,6 @@ echo "# Running transformation based on $OPENAPI_FILE_NAME to the $transformed_f
 cp "$OPENAPI_FOLDER/$OPENAPI_FILE_NAME" "$openapiFileLocation"
 
 npm install
-npm version
 npm run sdk:transform -- "$openapiFileLocation"
 
 echo "# Running OpenAPI generator validation"
