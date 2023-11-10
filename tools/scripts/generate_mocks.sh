@@ -11,10 +11,10 @@ if [[ -z $MOQ_INSTALLED ]]; then
 fi
 
 
-FILES=$(find $MOCK_FOLDER -type f -name "api*.go")
+FILES=$(find "$MOCK_FOLDER" -type f -name "api*.go")
 
 for FILE in $FILES; do
-  FILENAME=$(basename $FILE)
+  FILENAME=$(basename "$FILE")
   FILENAME_API="${FILENAME%.*}API"
   FILENAME_MOCK="${FILENAME%.*}_mock.go"
   
