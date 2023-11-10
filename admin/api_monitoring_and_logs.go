@@ -8,7 +8,6 @@ import (
 	"io"
 	"net/http"
 	"net/url"
-	"os"
 	"reflect"
 	"strings"
 	"time"
@@ -144,7 +143,7 @@ type MonitoringAndLogsApi interface {
 	GetHostLogsWithParams(ctx context.Context, args *GetHostLogsApiParams) GetHostLogsApiRequest
 
 	// Interface only available internally
-	getHostLogsExecute(r GetHostLogsApiRequest) (*os.File, *http.Response, error)
+	getHostLogsExecute(r GetHostLogsApiRequest) (io.ReadCloser, *http.Response, error)
 
 	/*
 		GetHostMeasurements Return Measurements for One MongoDB Process
@@ -1118,7 +1117,7 @@ func (r GetHostLogsApiRequest) StartDate(startDate int64) GetHostLogsApiRequest 
 	return r
 }
 
-func (r GetHostLogsApiRequest) Execute() (*os.File, *http.Response, error) {
+func (r GetHostLogsApiRequest) Execute() (io.ReadCloser, *http.Response, error) {
 	return r.ApiService.getHostLogsExecute(r)
 }
 
@@ -1145,13 +1144,13 @@ func (a *MonitoringAndLogsApiService) GetHostLogs(ctx context.Context, groupId s
 
 // Execute executes the request
 //
-//	@return *os.File
-func (a *MonitoringAndLogsApiService) getHostLogsExecute(r GetHostLogsApiRequest) (*os.File, *http.Response, error) {
+//	@return io.ReadCloser
+func (a *MonitoringAndLogsApiService) getHostLogsExecute(r GetHostLogsApiRequest) (io.ReadCloser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *os.File
+		localVarReturnValue io.ReadCloser
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MonitoringAndLogsApiService.GetHostLogs")

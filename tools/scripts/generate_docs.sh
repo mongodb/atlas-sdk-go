@@ -24,6 +24,7 @@ npm exec openapi-generator-cli -- generate \
     -c "./config/config.yaml" -i "$openapiFileLocation" -o "$DOC_FOLDER" \
     --package-name="$client_package" \
     --type-mappings=integer=int \
+    --type-mappings=file=io.ReadCloser \
     --ignore-file-override=config/.go-ignore-docs
 
 mv "$DOC_FOLDER"/README.md "$DOC_FOLDER"/doc_last_reference.md
