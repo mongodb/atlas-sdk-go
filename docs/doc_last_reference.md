@@ -22,10 +22,14 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
 *AlertsApi* | [GetAlert](./docs/AlertsApi.md#getalert) | **Get** /api/atlas/v2/groups/{groupId}/alerts/{alertId} | Return One Alert from One Project | Stable
 *AlertsApi* | [ListAlerts](./docs/AlertsApi.md#listalerts) | **Get** /api/atlas/v2/groups/{groupId}/alerts | Return All Alerts from One Project | Stable
 *AlertsApi* | [ListAlertsByAlertConfigurationId](./docs/AlertsApi.md#listalertsbyalertconfigurationid) | **Get** /api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId}/alerts | Return All Open Alerts for Alert Configuration | Experimental
+*AtlasSearchApi* | [CreateAtlasSearchDeployment](./docs/AtlasSearchApi.md#createatlassearchdeployment) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment | Create Search Nodes | Experimental
 *AtlasSearchApi* | [CreateAtlasSearchIndex](./docs/AtlasSearchApi.md#createatlassearchindex) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes | Create One Atlas Search Index | Stable
+*AtlasSearchApi* | [DeleteAtlasSearchDeployment](./docs/AtlasSearchApi.md#deleteatlassearchdeployment) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment | Delete Search Nodes | Experimental
 *AtlasSearchApi* | [DeleteAtlasSearchIndex](./docs/AtlasSearchApi.md#deleteatlassearchindex) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{indexId} | Remove One Atlas Search Index | Stable
+*AtlasSearchApi* | [GetAtlasSearchDeployment](./docs/AtlasSearchApi.md#getatlassearchdeployment) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment | Return Search Nodes | Experimental
 *AtlasSearchApi* | [GetAtlasSearchIndex](./docs/AtlasSearchApi.md#getatlassearchindex) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{indexId} | Return One Atlas Search Index | Stable
 *AtlasSearchApi* | [ListAtlasSearchIndexes](./docs/AtlasSearchApi.md#listatlassearchindexes) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{databaseName}/{collectionName} | Return All Atlas Search Indexes for One Collection | Stable
+*AtlasSearchApi* | [UpdateAtlasSearchDeployment](./docs/AtlasSearchApi.md#updateatlassearchdeployment) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment | Update Search Nodes | Experimental
 *AtlasSearchApi* | [UpdateAtlasSearchIndex](./docs/AtlasSearchApi.md#updateatlassearchindex) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{indexId} | Update One Atlas Search Index | Stable
 *AuditingApi* | [GetAuditingConfiguration](./docs/AuditingApi.md#getauditingconfiguration) | **Get** /api/atlas/v2/groups/{groupId}/auditLog | Return the Auditing Configuration for One Project | Stable
 *AuditingApi* | [UpdateAuditingConfiguration](./docs/AuditingApi.md#updateauditingconfiguration) | **Patch** /api/atlas/v2/groups/{groupId}/auditLog | Update Auditing Configuration for One Project | Stable
@@ -137,7 +141,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
 *FederatedAuthenticationApi* | [DeleteRoleMapping](./docs/FederatedAuthenticationApi.md#deleterolemapping) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id} | Remove One Role Mapping from One Organization | Experimental
 *FederatedAuthenticationApi* | [GetConnectedOrgConfig](./docs/FederatedAuthenticationApi.md#getconnectedorgconfig) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Return One Org Config Connected to One Federation | Experimental
 *FederatedAuthenticationApi* | [GetFederationSettings](./docs/FederatedAuthenticationApi.md#getfederationsettings) | **Get** /api/atlas/v2/orgs/{orgId}/federationSettings | Return Federation Settings for One Organization | Experimental
-*FederatedAuthenticationApi* | [GetIdentityProvider](./docs/FederatedAuthenticationApi.md#getidentityprovider) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Return one SAML identity provider from the specified federation. | Experimental
+*FederatedAuthenticationApi* | [GetIdentityProvider](./docs/FederatedAuthenticationApi.md#getidentityprovider) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Return one identity provider from the specified federation by id. | Experimental
 *FederatedAuthenticationApi* | [GetIdentityProviderMetadata](./docs/FederatedAuthenticationApi.md#getidentityprovidermetadata) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/metadata.xml | Return the metadata of one identity provider in the specified federation. | Experimental
 *FederatedAuthenticationApi* | [GetRoleMapping](./docs/FederatedAuthenticationApi.md#getrolemapping) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id} | Return One Role Mapping from One Organization | Experimental
 *FederatedAuthenticationApi* | [ListConnectedOrgConfigs](./docs/FederatedAuthenticationApi.md#listconnectedorgconfigs) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs | Return All Connected Org Configs from the Federation | Experimental
@@ -145,7 +149,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
 *FederatedAuthenticationApi* | [ListRoleMappings](./docs/FederatedAuthenticationApi.md#listrolemappings) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings | Return All Role Mappings from One Organization | Experimental
 *FederatedAuthenticationApi* | [RemoveConnectedOrgConfig](./docs/FederatedAuthenticationApi.md#removeconnectedorgconfig) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Remove One Org Config Connected to One Federation | Experimental
 *FederatedAuthenticationApi* | [UpdateConnectedOrgConfig](./docs/FederatedAuthenticationApi.md#updateconnectedorgconfig) | **Patch** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Update One Org Config Connected to One Federation | Experimental
-*FederatedAuthenticationApi* | [UpdateIdentityProvider](./docs/FederatedAuthenticationApi.md#updateidentityprovider) | **Patch** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Update the SAML identity provider. | Experimental
+*FederatedAuthenticationApi* | [UpdateIdentityProvider](./docs/FederatedAuthenticationApi.md#updateidentityprovider) | **Patch** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Update the identity provider. | Experimental
 *FederatedAuthenticationApi* | [UpdateRoleMapping](./docs/FederatedAuthenticationApi.md#updaterolemapping) | **Put** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id} | Update One Role Mapping in One Organization | Experimental
 *GlobalClustersApi* | [CreateCustomZoneMapping](./docs/GlobalClustersApi.md#createcustomzonemapping) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping | Add One Entry to One Custom Zone Mapping | Experimental
 *GlobalClustersApi* | [CreateManagedNamespace](./docs/GlobalClustersApi.md#createmanagednamespace) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces | Create One Managed Namespace in One Global Multi-Cloud Cluster | Experimental
@@ -364,6 +368,9 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [ApiKey](./docs/ApiKey.md)
  - [ApiKeyUserDetails](./docs/ApiKeyUserDetails.md)
  - [ApiMeasurementsGeneralViewAtlas](./docs/ApiMeasurementsGeneralViewAtlas.md)
+ - [ApiSearchDeploymentRequest](./docs/ApiSearchDeploymentRequest.md)
+ - [ApiSearchDeploymentResponse](./docs/ApiSearchDeploymentResponse.md)
+ - [ApiSearchDeploymentSpec](./docs/ApiSearchDeploymentSpec.md)
  - [AtlasClusterOutageSimulationOutageFilter](./docs/AtlasClusterOutageSimulationOutageFilter.md)
  - [AtlasOrganization](./docs/AtlasOrganization.md)
  - [AuditLog](./docs/AuditLog.md)
@@ -372,6 +379,8 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [AvailableCloudProviderRegion](./docs/AvailableCloudProviderRegion.md)
  - [AvailableClustersDeployment](./docs/AvailableClustersDeployment.md)
  - [AzureKeyVault](./docs/AzureKeyVault.md)
+ - [BackupComplianceOnDemandPolicyItem](./docs/BackupComplianceOnDemandPolicyItem.md)
+ - [BackupComplianceScheduledPolicyItem](./docs/BackupComplianceScheduledPolicyItem.md)
  - [BackupLabel](./docs/BackupLabel.md)
  - [BackupOnlineArchive](./docs/BackupOnlineArchive.md)
  - [BackupOnlineArchiveCreate](./docs/BackupOnlineArchiveCreate.md)
@@ -481,7 +490,6 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [FTSMetric](./docs/FTSMetric.md)
  - [FederatedUser](./docs/FederatedUser.md)
  - [FederationIdentityProvider](./docs/FederationIdentityProvider.md)
- - [FederationSamlIdentityProvider](./docs/FederationSamlIdentityProvider.md)
  - [FieldTransformation](./docs/FieldTransformation.md)
  - [GCPConsumerForwardingRule](./docs/GCPConsumerForwardingRule.md)
  - [GeoSharding](./docs/GeoSharding.md)
@@ -500,6 +508,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [GroupService](./docs/GroupService.md)
  - [GroupSettings](./docs/GroupSettings.md)
  - [HardwareSpec](./docs/HardwareSpec.md)
+ - [IdentityProviderUpdate](./docs/IdentityProviderUpdate.md)
  - [IndexOptions](./docs/IndexOptions.md)
  - [IngestionPipelineRun](./docs/IngestionPipelineRun.md)
  - [IngestionSink](./docs/IngestionSink.md)
@@ -597,6 +606,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [PerformanceAdvisorSlowQuery](./docs/PerformanceAdvisorSlowQuery.md)
  - [PerformanceAdvisorSlowQueryList](./docs/PerformanceAdvisorSlowQueryList.md)
  - [PipelineRunStats](./docs/PipelineRunStats.md)
+ - [PrivateEndpointHostname](./docs/PrivateEndpointHostname.md)
  - [PrivateIPMode](./docs/PrivateIPMode.md)
  - [PrivateLinkEndpoint](./docs/PrivateLinkEndpoint.md)
  - [PrivateNetworkEndpointIdEntry](./docs/PrivateNetworkEndpointIdEntry.md)
@@ -607,7 +617,6 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [ResourceTag](./docs/ResourceTag.md)
  - [RestoreJobFileHash](./docs/RestoreJobFileHash.md)
  - [RoleAssignment](./docs/RoleAssignment.md)
- - [SamlIdentityProviderUpdate](./docs/SamlIdentityProviderUpdate.md)
  - [SampleDatasetStatus](./docs/SampleDatasetStatus.md)
  - [SearchSynonymMappingDefinition](./docs/SearchSynonymMappingDefinition.md)
  - [ServerlessBackupRestoreJob](./docs/ServerlessBackupRestoreJob.md)

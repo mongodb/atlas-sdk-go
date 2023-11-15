@@ -4,16 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Analyzer** | Pointer to **string** | Specific pre-defined method chosen to convert database field text into searchable words. This conversion reduces the text of fields into the smallest units of text. These units are called a **term** or **token**. This process, known as tokenization, involves a variety of changes made to the text in fields:  - extracting words - removing punctuation - removing accents - changing to lowercase - removing common words - reducing words to their root form (stemming) - changing words to their base form (lemmatization)  MongoDB Cloud uses the selected process to build the Atlas Search index. | [optional] [default to "lucene.standard"]
-**Analyzers** | Pointer to [**[]ApiAtlasFTSAnalyzers**](ApiAtlasFTSAnalyzers.md) | List of user-defined methods to convert database field text into searchable words. | [optional] 
 **CollectionName** | **string** | Human-readable label that identifies the collection that contains one or more Atlas Search indexes. | 
 **Database** | **string** | Human-readable label that identifies the database that contains the collection with one or more Atlas Search indexes. | 
 **IndexID** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies this Atlas Search index. | [optional] [readonly] 
-**Mappings** | Pointer to [**ApiAtlasFTSMappings**](ApiAtlasFTSMappings.md) |  | [optional] 
 **Name** | **string** | Human-readable label that identifies this index. Within each namespace, names of all indexes in the namespace must be unique. | 
-**SearchAnalyzer** | Pointer to **string** | Method applied to identify words when searching this index. | [optional] [default to "lucene.standard"]
 **Status** | Pointer to **string** | Condition of the search index when you made this request.  | Status | Index Condition |  |---|---|  | IN_PROGRESS | Atlas is building or re-building the index after an edit. |  | STEADY | You can use this search index. |  | FAILED | Atlas could not build the index. |  | MIGRATING | Atlas is upgrading the underlying cluster tier and migrating indexes. |  | PAUSED | The cluster is paused. |  | [optional] [readonly] 
+**Type** | Pointer to **string** | Type of the index. Warning: vectorSearch is not yet generally available. Default type is search. | [optional] 
+**Analyzer** | Pointer to **string** | Specific pre-defined method chosen to convert database field text into searchable words. This conversion reduces the text of fields into the smallest units of text. These units are called a **term** or **token**. This process, known as tokenization, involves a variety of changes made to the text in fields:  - extracting words - removing punctuation - removing accents - changing to lowercase - removing common words - reducing words to their root form (stemming) - changing words to their base form (lemmatization)  MongoDB Cloud uses the selected process to build the Atlas Search index. | [optional] [default to "lucene.standard"]
+**Analyzers** | Pointer to [**[]ApiAtlasFTSAnalyzers**](ApiAtlasFTSAnalyzers.md) | List of user-defined methods to convert database field text into searchable words. | [optional] 
+**Mappings** | Pointer to [**ApiAtlasFTSMappings**](ApiAtlasFTSMappings.md) |  | [optional] 
+**SearchAnalyzer** | Pointer to **string** | Method applied to identify words when searching this index. | [optional] [default to "lucene.standard"]
 **Synonyms** | Pointer to [**[]SearchSynonymMappingDefinition**](SearchSynonymMappingDefinition.md) | Rule sets that map words to their synonyms in this index. | [optional] 
+**Fields** | Pointer to **[]map[string]interface{}** |  | [optional] 
 
 ## Methods
 
@@ -34,54 +36,6 @@ NewClusterSearchIndexWithDefaults instantiates a new ClusterSearchIndex object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetAnalyzer
-
-`func (o *ClusterSearchIndex) GetAnalyzer() string`
-
-GetAnalyzer returns the Analyzer field if non-nil, zero value otherwise.
-
-### GetAnalyzerOk
-
-`func (o *ClusterSearchIndex) GetAnalyzerOk() (*string, bool)`
-
-GetAnalyzerOk returns a tuple with the Analyzer field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAnalyzer
-
-`func (o *ClusterSearchIndex) SetAnalyzer(v string)`
-
-SetAnalyzer sets Analyzer field to given value.
-
-### HasAnalyzer
-
-`func (o *ClusterSearchIndex) HasAnalyzer() bool`
-
-HasAnalyzer returns a boolean if a field has been set.
-### GetAnalyzers
-
-`func (o *ClusterSearchIndex) GetAnalyzers() []ApiAtlasFTSAnalyzers`
-
-GetAnalyzers returns the Analyzers field if non-nil, zero value otherwise.
-
-### GetAnalyzersOk
-
-`func (o *ClusterSearchIndex) GetAnalyzersOk() (*[]ApiAtlasFTSAnalyzers, bool)`
-
-GetAnalyzersOk returns a tuple with the Analyzers field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAnalyzers
-
-`func (o *ClusterSearchIndex) SetAnalyzers(v []ApiAtlasFTSAnalyzers)`
-
-SetAnalyzers sets Analyzers field to given value.
-
-### HasAnalyzers
-
-`func (o *ClusterSearchIndex) HasAnalyzers() bool`
-
-HasAnalyzers returns a boolean if a field has been set.
 ### GetCollectionName
 
 `func (o *ClusterSearchIndex) GetCollectionName() string`
@@ -144,30 +98,6 @@ SetIndexID sets IndexID field to given value.
 `func (o *ClusterSearchIndex) HasIndexID() bool`
 
 HasIndexID returns a boolean if a field has been set.
-### GetMappings
-
-`func (o *ClusterSearchIndex) GetMappings() ApiAtlasFTSMappings`
-
-GetMappings returns the Mappings field if non-nil, zero value otherwise.
-
-### GetMappingsOk
-
-`func (o *ClusterSearchIndex) GetMappingsOk() (*ApiAtlasFTSMappings, bool)`
-
-GetMappingsOk returns a tuple with the Mappings field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMappings
-
-`func (o *ClusterSearchIndex) SetMappings(v ApiAtlasFTSMappings)`
-
-SetMappings sets Mappings field to given value.
-
-### HasMappings
-
-`func (o *ClusterSearchIndex) HasMappings() bool`
-
-HasMappings returns a boolean if a field has been set.
 ### GetName
 
 `func (o *ClusterSearchIndex) GetName() string`
@@ -187,30 +117,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### GetSearchAnalyzer
-
-`func (o *ClusterSearchIndex) GetSearchAnalyzer() string`
-
-GetSearchAnalyzer returns the SearchAnalyzer field if non-nil, zero value otherwise.
-
-### GetSearchAnalyzerOk
-
-`func (o *ClusterSearchIndex) GetSearchAnalyzerOk() (*string, bool)`
-
-GetSearchAnalyzerOk returns a tuple with the SearchAnalyzer field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSearchAnalyzer
-
-`func (o *ClusterSearchIndex) SetSearchAnalyzer(v string)`
-
-SetSearchAnalyzer sets SearchAnalyzer field to given value.
-
-### HasSearchAnalyzer
-
-`func (o *ClusterSearchIndex) HasSearchAnalyzer() bool`
-
-HasSearchAnalyzer returns a boolean if a field has been set.
 ### GetStatus
 
 `func (o *ClusterSearchIndex) GetStatus() string`
@@ -235,6 +141,126 @@ SetStatus sets Status field to given value.
 `func (o *ClusterSearchIndex) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+### GetType
+
+`func (o *ClusterSearchIndex) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *ClusterSearchIndex) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *ClusterSearchIndex) SetType(v string)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *ClusterSearchIndex) HasType() bool`
+
+HasType returns a boolean if a field has been set.
+### GetAnalyzer
+
+`func (o *ClusterSearchIndex) GetAnalyzer() string`
+
+GetAnalyzer returns the Analyzer field if non-nil, zero value otherwise.
+
+### GetAnalyzerOk
+
+`func (o *ClusterSearchIndex) GetAnalyzerOk() (*string, bool)`
+
+GetAnalyzerOk returns a tuple with the Analyzer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAnalyzer
+
+`func (o *ClusterSearchIndex) SetAnalyzer(v string)`
+
+SetAnalyzer sets Analyzer field to given value.
+
+### HasAnalyzer
+
+`func (o *ClusterSearchIndex) HasAnalyzer() bool`
+
+HasAnalyzer returns a boolean if a field has been set.
+### GetAnalyzers
+
+`func (o *ClusterSearchIndex) GetAnalyzers() []ApiAtlasFTSAnalyzers`
+
+GetAnalyzers returns the Analyzers field if non-nil, zero value otherwise.
+
+### GetAnalyzersOk
+
+`func (o *ClusterSearchIndex) GetAnalyzersOk() (*[]ApiAtlasFTSAnalyzers, bool)`
+
+GetAnalyzersOk returns a tuple with the Analyzers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAnalyzers
+
+`func (o *ClusterSearchIndex) SetAnalyzers(v []ApiAtlasFTSAnalyzers)`
+
+SetAnalyzers sets Analyzers field to given value.
+
+### HasAnalyzers
+
+`func (o *ClusterSearchIndex) HasAnalyzers() bool`
+
+HasAnalyzers returns a boolean if a field has been set.
+### GetMappings
+
+`func (o *ClusterSearchIndex) GetMappings() ApiAtlasFTSMappings`
+
+GetMappings returns the Mappings field if non-nil, zero value otherwise.
+
+### GetMappingsOk
+
+`func (o *ClusterSearchIndex) GetMappingsOk() (*ApiAtlasFTSMappings, bool)`
+
+GetMappingsOk returns a tuple with the Mappings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMappings
+
+`func (o *ClusterSearchIndex) SetMappings(v ApiAtlasFTSMappings)`
+
+SetMappings sets Mappings field to given value.
+
+### HasMappings
+
+`func (o *ClusterSearchIndex) HasMappings() bool`
+
+HasMappings returns a boolean if a field has been set.
+### GetSearchAnalyzer
+
+`func (o *ClusterSearchIndex) GetSearchAnalyzer() string`
+
+GetSearchAnalyzer returns the SearchAnalyzer field if non-nil, zero value otherwise.
+
+### GetSearchAnalyzerOk
+
+`func (o *ClusterSearchIndex) GetSearchAnalyzerOk() (*string, bool)`
+
+GetSearchAnalyzerOk returns a tuple with the SearchAnalyzer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSearchAnalyzer
+
+`func (o *ClusterSearchIndex) SetSearchAnalyzer(v string)`
+
+SetSearchAnalyzer sets SearchAnalyzer field to given value.
+
+### HasSearchAnalyzer
+
+`func (o *ClusterSearchIndex) HasSearchAnalyzer() bool`
+
+HasSearchAnalyzer returns a boolean if a field has been set.
 ### GetSynonyms
 
 `func (o *ClusterSearchIndex) GetSynonyms() []SearchSynonymMappingDefinition`
@@ -259,6 +285,30 @@ SetSynonyms sets Synonyms field to given value.
 `func (o *ClusterSearchIndex) HasSynonyms() bool`
 
 HasSynonyms returns a boolean if a field has been set.
+### GetFields
+
+`func (o *ClusterSearchIndex) GetFields() []map[string]interface{}`
+
+GetFields returns the Fields field if non-nil, zero value otherwise.
+
+### GetFieldsOk
+
+`func (o *ClusterSearchIndex) GetFieldsOk() (*[]map[string]interface{}, bool)`
+
+GetFieldsOk returns a tuple with the Fields field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFields
+
+`func (o *ClusterSearchIndex) SetFields(v []map[string]interface{})`
+
+SetFields sets Fields field to given value.
+
+### HasFields
+
+`func (o *ClusterSearchIndex) HasFields() bool`
+
+HasFields returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

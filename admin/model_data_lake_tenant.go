@@ -8,8 +8,10 @@ import (
 
 // DataLakeTenant struct for DataLakeTenant
 type DataLakeTenant struct {
-	CloudProviderConfig *DataLakeCloudProviderConfig `json:"cloudProviderConfig,omitempty"`
-	DataProcessRegion   *DataLakeDataProcessRegion   `json:"dataProcessRegion,omitempty"`
+	// List that contains the sets of private endpoints and hostnames.
+	PrivateEndpointHostnames []PrivateEndpointHostname    `json:"_privateEndpointHostnames,omitempty"`
+	CloudProviderConfig      *DataLakeCloudProviderConfig `json:"cloudProviderConfig,omitempty"`
+	DataProcessRegion        *DataLakeDataProcessRegion   `json:"dataProcessRegion,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project.
 	GroupId *string `json:"groupId,omitempty"`
 	// List that contains the hostnames assigned to the Data Lake instance.
@@ -36,6 +38,39 @@ func NewDataLakeTenant() *DataLakeTenant {
 func NewDataLakeTenantWithDefaults() *DataLakeTenant {
 	this := DataLakeTenant{}
 	return &this
+}
+
+// GetPrivateEndpointHostnames returns the PrivateEndpointHostnames field value if set, zero value otherwise
+func (o *DataLakeTenant) GetPrivateEndpointHostnames() []PrivateEndpointHostname {
+	if o == nil || IsNil(o.PrivateEndpointHostnames) {
+		var ret []PrivateEndpointHostname
+		return ret
+	}
+	return o.PrivateEndpointHostnames
+}
+
+// GetPrivateEndpointHostnamesOk returns a tuple with the PrivateEndpointHostnames field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DataLakeTenant) GetPrivateEndpointHostnamesOk() ([]PrivateEndpointHostname, bool) {
+	if o == nil || IsNil(o.PrivateEndpointHostnames) {
+		return nil, false
+	}
+
+	return o.PrivateEndpointHostnames, true
+}
+
+// HasPrivateEndpointHostnames returns a boolean if a field has been set.
+func (o *DataLakeTenant) HasPrivateEndpointHostnames() bool {
+	if o != nil && !IsNil(o.PrivateEndpointHostnames) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivateEndpointHostnames gets a reference to the given []PrivateEndpointHostname and assigns it to the PrivateEndpointHostnames field.
+func (o *DataLakeTenant) SetPrivateEndpointHostnames(v []PrivateEndpointHostname) {
+	o.PrivateEndpointHostnames = v
 }
 
 // GetCloudProviderConfig returns the CloudProviderConfig field value if set, zero value otherwise
