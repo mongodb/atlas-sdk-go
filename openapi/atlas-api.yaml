@@ -19,7 +19,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 2ec43e4d98716112dd9de51045ad79946d352f8c
+  x-xgen-sha: 9d9ea45891265dc59d8ea0cdf5f7f88084e89ad6
 servers:
 - url: https://cloud.mongodb.com
 tags:
@@ -194,6 +194,8 @@ tags:
     description: Self-Managed X.509 Certificates
     url: https://www.mongodb.com/docs/atlas/security-self-managed-x509/
   name: X.509 Authentication
+- description: Salesforce Opportunity change / credit rebill related endpoints.
+  name: Opportunity Change
 paths:
   /api/atlas/v2:
     get:
@@ -711,9 +713,10 @@ paths:
       - Federated Authentication
   /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}:
     get:
-      description: "Returns one SAML identity provider from the specified federation.\
-        \ To use this resource, the requesting API Key must have the Organization\
-        \ Owner role in one of the connected organizations."
+      description: "Returns one identity provider in the specified federation by the\
+        \ identity provider's id. To use this resource, the requesting API Key must\
+        \ have the Organization Owner role in one of the connected organizations.\
+        \ Deprecated versions: v2-{2023-01-01}"
       operationId: getIdentityProvider
       parameters:
       - $ref: '#/components/parameters/federationSettingsId'
@@ -722,28 +725,30 @@ paths:
       responses:
         "200":
           content:
-            application/vnd.atlas.2023-01-01+json:
+            application/vnd.atlas.2023-11-15+json:
               schema:
-                $ref: '#/components/schemas/FederationSamlIdentityProvider'
-              x-xgen-version: 2023-01-01
+                $ref: '#/components/schemas/FederationIdentityProvider'
+              x-xgen-version: 2023-11-15
           description: OK
         "400":
           $ref: '#/components/responses/badRequest'
         "401":
           $ref: '#/components/responses/unauthorized'
+        "403":
+          $ref: '#/components/responses/forbidden'
         "404":
           $ref: '#/components/responses/notFound'
         "500":
           $ref: '#/components/responses/internalServerError'
       security:
       - DigestAuth: []
-      summary: Return one SAML identity provider from the specified federation.
+      summary: Return one identity provider from the specified federation by id.
       tags:
       - Federated Authentication
     patch:
-      description: "Updates one SAML identity provider in the specified federation.\
-        \ To use this resource, the requesting API Key must have the Organization\
-        \ Owner role in one of the connected organizations."
+      description: "Updates one identity provider in the specified federation. To\
+        \ use this resource, the requesting API Key must have the Organization Owner\
+        \ role in one of the connected organizations. Deprecated versions: v2-{2023-01-01}"
       operationId: updateIdentityProvider
       parameters:
       - $ref: '#/components/parameters/federationSettingsId'
@@ -751,18 +756,18 @@ paths:
       - $ref: '#/components/parameters/envelope'
       requestBody:
         content:
-          application/vnd.atlas.2023-01-01+json:
+          application/vnd.atlas.2023-11-15+json:
             schema:
-              $ref: '#/components/schemas/SamlIdentityProviderUpdate'
+              $ref: '#/components/schemas/IdentityProviderUpdate'
         description: The identity provider that you want to update.
         required: true
       responses:
         "200":
           content:
-            application/vnd.atlas.2023-01-01+json:
+            application/vnd.atlas.2023-11-15+json:
               schema:
-                $ref: '#/components/schemas/FederationSamlIdentityProvider'
-              x-xgen-version: 2023-01-01
+                $ref: '#/components/schemas/FederationIdentityProvider'
+              x-xgen-version: 2023-11-15
           description: OK
         "400":
           $ref: '#/components/responses/badRequest'
@@ -774,7 +779,7 @@ paths:
           $ref: '#/components/responses/internalServerError'
       security:
       - DigestAuth: []
-      summary: Update the SAML identity provider.
+      summary: Update the identity provider.
       tags:
       - Federated Authentication
   /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/metadata.xml:
@@ -2207,8 +2212,10 @@ paths:
   /api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId}:
     delete:
       description: "Revoke MongoDB Cloud access to the specified AWS S3 bucket. This\
-        \ prevents this bucket to receive Atlas Cloud Backup snapshots. To use this\
-        \ resource, the requesting API Key must have the Project Owner role."
+        \ prevents this bucket to receive Atlas Cloud Backup snapshots. Auto export\
+        \ must be disabled on all clusters in this project exporting to this bucket\
+        \ before revoking access. To use this resource, the requesting API Key must\
+        \ have the Project Owner role."
       operationId: deleteExportBucket
       parameters:
       - $ref: '#/components/parameters/envelope'
@@ -2599,8 +2606,9 @@ paths:
               Multi Cloud Cluster:
                 description: Multi Cloud Cluster
                 value:
-                  name: multiCloud
                   clusterType: REPLICASET
+                  links: []
+                  name: multiCloud
                   replicationSpecs:
                   - numShards: 1
                     regionConfigs:
@@ -2627,7 +2635,6 @@ paths:
                           scaleDownEnabled: true
                         diskGB:
                           enabled: true
-                      providerName: AWS
                       electableSpecs:
                         instanceSize: M30
                         nodeCount: 3
@@ -2635,6 +2642,7 @@ paths:
                         instanceSize: M30
                         nodeCount: 0
                       priority: 7
+                      providerName: AWS
                       readOnlySpecs:
                         instanceSize: M30
                         nodeCount: 0
@@ -2662,7 +2670,6 @@ paths:
                           scaleDownEnabled: true
                         diskGB:
                           enabled: true
-                      providerName: GCP
                       electableSpecs:
                         instanceSize: M30
                         nodeCount: 2
@@ -2670,12 +2677,12 @@ paths:
                         instanceSize: M30
                         nodeCount: 0
                       priority: 6
+                      providerName: GCP
                       readOnlySpecs:
                         instanceSize: M30
                         nodeCount: 0
                       regionName: EASTERN_US
                     zoneName: Zone 1
-                  links: []
             schema:
               $ref: '#/components/schemas/AdvancedClusterDescription'
         description: Cluster to create in the specific project.
@@ -5476,6 +5483,161 @@ paths:
       summary: Return One Legacy Backup Restore Job
       tags:
       - Legacy Backup
+  /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment:
+    delete:
+      description: Deletes the search nodes for the specified cluster.
+      operationId: deleteAtlasSearchDeployment
+      parameters:
+      - $ref: '#/components/parameters/envelope'
+      - $ref: '#/components/parameters/pretty'
+      - $ref: '#/components/parameters/groupId'
+      - description: Label that identifies the cluster to delete.
+        in: path
+        name: clusterName
+        required: true
+        schema:
+          type: string
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9][a-zA-Z0-9-]*$"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              x-xgen-version: 2023-01-01
+          description: OK
+        "400":
+          $ref: '#/components/responses/badRequest'
+        "404":
+          $ref: '#/components/responses/notFound'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Delete Search Nodes
+      tags:
+      - Atlas Search
+    get:
+      description: Return the search nodes for the specified cluster.
+      operationId: getAtlasSearchDeployment
+      parameters:
+      - $ref: '#/components/parameters/envelope'
+      - $ref: '#/components/parameters/pretty'
+      - $ref: '#/components/parameters/groupId'
+      - description: Label that identifies the cluster to return the search nodes
+          for.
+        in: path
+        name: clusterName
+        required: true
+        schema:
+          type: string
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9][a-zA-Z0-9-]*$"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/ApiSearchDeploymentResponseView'
+              x-xgen-version: 2023-01-01
+          description: OK
+        "400":
+          $ref: '#/components/responses/badRequest'
+        "404":
+          $ref: '#/components/responses/notFound'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Return Search Nodes
+      tags:
+      - Atlas Search
+    patch:
+      description: Updates the search nodes for the specified cluster.
+      operationId: updateAtlasSearchDeployment
+      parameters:
+      - $ref: '#/components/parameters/envelope'
+      - $ref: '#/components/parameters/pretty'
+      - $ref: '#/components/parameters/groupId'
+      - description: Label that identifies the cluster to update the search nodes
+          for.
+        in: path
+        name: clusterName
+        required: true
+        schema:
+          type: string
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9][a-zA-Z0-9-]*$"
+      requestBody:
+        content:
+          application/vnd.atlas.2023-01-01+json:
+            schema:
+              $ref: '#/components/schemas/ApiSearchDeploymentRequestView'
+        description: Updates the search nodes for the specified cluster.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/ApiSearchDeploymentResponseView'
+              x-xgen-version: 2023-01-01
+          description: OK
+        "400":
+          $ref: '#/components/responses/badRequest'
+        "404":
+          $ref: '#/components/responses/notFound'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Update Search Nodes
+      tags:
+      - Atlas Search
+    post:
+      description: Creates search nodes for the specified cluster.
+      operationId: createAtlasSearchDeployment
+      parameters:
+      - $ref: '#/components/parameters/envelope'
+      - $ref: '#/components/parameters/pretty'
+      - $ref: '#/components/parameters/groupId'
+      - description: Label that identifies the cluster to create search nodes for.
+        in: path
+        name: clusterName
+        required: true
+        schema:
+          type: string
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9][a-zA-Z0-9-]*$"
+      requestBody:
+        content:
+          application/vnd.atlas.2023-01-01+json:
+            schema:
+              $ref: '#/components/schemas/ApiSearchDeploymentRequestView'
+        description: Creates search nodes for the specified cluster.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: '#/components/schemas/ApiSearchDeploymentResponseView'
+              x-xgen-version: 2023-01-01
+          description: OK
+        "400":
+          $ref: '#/components/responses/badRequest'
+        "404":
+          $ref: '#/components/responses/notFound'
+        "500":
+          $ref: '#/components/responses/internalServerError'
+      security:
+      - DigestAuth: []
+      summary: Create Search Nodes
+      tags:
+      - Atlas Search
   /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshotSchedule:
     get:
       deprecated: true
@@ -6876,8 +7038,9 @@ paths:
               AWS IAM Authentication:
                 description: AWS IAM Authentication
                 value:
-                  databaseName: $external
                   awsIAMType: USER
+                  databaseName: $external
+                  groupId: 32b6e34b3d91647abb20e7b8
                   roles:
                   - databaseName: sales
                     roleName: readWrite
@@ -6886,12 +7049,12 @@ paths:
                   scopes:
                   - name: myCluster
                     type: CLUSTER
-                  groupId: 32b6e34b3d91647abb20e7b8
                   username: arn:aws:iam::358363220050:user/mongodb-aws-iam-auth-test-user
               Federated Authentication:
                 description: Federated Authentication
                 value:
                   databaseName: admin
+                  groupId: 32b6e34b3d91647abb20e7b8
                   oidcAuthType: IDP_GROUP
                   roles:
                   - databaseName: sales
@@ -6901,12 +7064,12 @@ paths:
                   scopes:
                   - name: myCluster
                     type: CLUSTER
-                  groupId: 32b6e34b3d91647abb20e7b8
                   username: 5dd7496c7a3e5a648454341c/sales
               LDAP Authentication:
                 description: LDAP Authentication
                 value:
                   databaseName: admin
+                  groupId: 32b6e34b3d91647abb20e7b8
                   ldapAuthType: GROUP
                   roles:
                   - databaseName: sales
@@ -6916,12 +7079,12 @@ paths:
                   scopes:
                   - name: myCluster
                     type: CLUSTER
-                  groupId: 32b6e34b3d91647abb20e7b8
                   username: "CN=marketing,OU=groups,DC=example,DC=com"
               SCRAM-SHA Authentication:
                 description: SCRAM-SHA Authentication
                 value:
                   databaseName: admin
+                  groupId: 32b6e34b3d91647abb20e7b8
                   password: changeme123
                   roles:
                   - databaseName: sales
@@ -6931,13 +7094,12 @@ paths:
                   scopes:
                   - name: myCluster
                     type: CLUSTER
-                  groupId: 32b6e34b3d91647abb20e7b8
                   username: david
               X509 Authentication:
                 description: X509 Authentication
                 value:
                   databaseName: $external
-                  x509Type: CUSTOMER
+                  groupId: 32b6e34b3d91647abb20e7b8
                   roles:
                   - databaseName: sales
                     roleName: readWrite
@@ -6946,8 +7108,8 @@ paths:
                   scopes:
                   - name: myCluster
                     type: CLUSTER
-                  groupId: 32b6e34b3d91647abb20e7b8
                   username: "CN=david@example.com,OU=users,DC=example,DC=com"
+                  x509Type: CUSTOMER
             schema:
               $ref: '#/components/schemas/CloudDatabaseUser'
         description: Creates one database user in the specified project.
@@ -7835,6 +7997,7 @@ paths:
             - FTS_PROCESS_VIRTUAL_MEMORY
             - JVM_CURRENT_MEMORY
             - JVM_MAX_MEMORY
+            - PAGE_FAULTS
           maxItems: 10
           uniqueItems: true
         style: form
@@ -9517,7 +9680,7 @@ paths:
         schema:
           type: string
           format: date-time
-          example: 2022-01-01T00:00:00.000Z
+          example: 2022-01-01T00:00:00Z
       - description: Human-readable label that identifies the Data Lake Pipeline.
         in: path
         name: pipelineName
@@ -9641,7 +9804,7 @@ paths:
         schema:
           type: string
           format: date-time
-          example: 2022-01-01T00:00:00.000Z
+          example: 2022-01-01T00:00:00Z
       - description: Human-readable label that identifies the Data Lake Pipeline.
         in: path
         name: pipelineName
@@ -13821,7 +13984,7 @@ paths:
         schema:
           type: string
           format: date-time
-          example: 2021-11-17T23:15:00.060Z
+          example: 2021-11-17T23:15:00.06Z
       responses:
         "200":
           content:
@@ -17610,6 +17773,82 @@ components:
             \ and **period** in the same request. This parameter expresses its value\
             \ in the ISO 8601 timestamp format in UTC."
           readOnly: true
+    ApiSearchDeploymentRequestView:
+      type: object
+      properties:
+        specs:
+          type: array
+          description: List of settings that configure the search nodes for your cluster.
+          items:
+            $ref: '#/components/schemas/ApiSearchDeploymentSpecView'
+    ApiSearchDeploymentResponseView:
+      type: object
+      properties:
+        groupId:
+          type: string
+          description: Unique 24-hexadecimal character string that identifies the
+            project.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies the search
+            deployment.
+          example: 32b6e34b3d91647abb20e7b8
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        specs:
+          type: array
+          description: List of settings that configure the search nodes for your cluster.
+          items:
+            $ref: '#/components/schemas/ApiSearchDeploymentSpecView'
+          readOnly: true
+        stateName:
+          type: string
+          description: Human-readable label that indicates the current operating condition
+            of this search deployment.
+          enum:
+          - IDLE
+          - PAUSED
+          - UPDATING
+          readOnly: true
+    ApiSearchDeploymentSpecView:
+      type: object
+      properties:
+        instanceSize:
+          type: string
+          description: Hardware specification for the search node instance sizes.
+          enum:
+          - S20_HIGHCPU_NVME
+          - S30_HIGHCPU_NVME
+          - S40_HIGHCPU_NVME
+          - S50_HIGHCPU_NVME
+          - S60_HIGHCPU_NVME
+          - S70_HIGHCPU_NVME
+          - S80_HIGHCPU_NVME
+          - S30_LOWCPU_NVME
+          - S40_LOWCPU_NVME
+          - S50_LOWCPU_NVME
+          - S60_LOWCPU_NVME
+          - S80_LOWCPU_NVME
+          - S90_LOWCPU_NVME
+          - S100_LOWCPU_NVME
+          - S110_LOWCPU_NVME
+        nodeCount:
+          type: integer
+          format: int32
+          description: Number of search nodes in the cluster.
+          example: 2
+          maximum: 32
+          minimum: 2
+      required:
+      - instanceSize
+      - nodeCount
     ApiStreamsAWSRegionView:
       type: string
       description: Atlas Streams AWS Regions.
@@ -19435,6 +19674,163 @@ components:
       description: Details that explain how MongoDB Cloud replicates data in one region
         on the specified MongoDB database.
       title: Azure Regional Replication Specifications
+    BackupComplianceOnDemandPolicyItem:
+      type: object
+      description: Specifications for on-demand policy.
+      properties:
+        frequencyInterval:
+          type: integer
+          format: int32
+          description: Number that indicates the frequency interval for a set of snapshots.
+            MongoDB Cloud ignores this setting for non-hourly policy items in Backup
+            Compliance Policy settings.
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+          - 10
+          - 11
+          - 12
+          - 13
+          - 14
+          - 15
+          - 16
+          - 17
+          - 18
+          - 19
+          - 20
+          - 21
+          - 22
+          - 23
+          - 24
+          - 25
+          - 26
+          - 27
+          - 28
+          - 40
+        frequencyType:
+          type: string
+          description: Human-readable label that identifies the frequency type associated
+            with the backup policy.
+          enum:
+          - ondemand
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies this backup
+            policy item.
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        retentionUnit:
+          type: string
+          description: Unit of time in which MongoDB Cloud measures snapshot retention.
+          enum:
+          - days
+          - weeks
+          - months
+        retentionValue:
+          type: integer
+          format: int32
+          description: |-
+            Duration in days, weeks, or months that MongoDB Cloud retains the snapshot. For less frequent policy items, MongoDB Cloud requires that you specify a value greater than or equal to the value specified for more frequent policy items.
+
+            For example: If the hourly policy item specifies a retention of two days, you must specify two days or greater for the retention of the weekly policy item.
+      required:
+      - frequencyInterval
+      - frequencyType
+      - retentionUnit
+      - retentionValue
+    BackupComplianceScheduledPolicyItem:
+      type: object
+      description: Specifications for scheduled policy.
+      properties:
+        frequencyInterval:
+          type: integer
+          format: int32
+          description: |-
+            Number that indicates the frequency interval for a set of snapshots. A value of `1` specifies the first instance of the corresponding `frequencyType`.
+
+            - In a monthly policy item, `1` indicates that the monthly snapshot occurs on the first day of the month and `40` indicates the last day of the month.
+
+            - In a weekly policy item, `1` indicates that the weekly snapshot occurs on Monday and `7` indicates Sunday.
+
+            - In an hourly policy item, you can set the frequency interval to `1`, `2`, `4`, `6`, `8`, or `12`. For hourly policy items for NVMe clusters, MongoDB Cloud accepts only `12` as the frequency interval value.
+
+             MongoDB Cloud ignores this setting for non-hourly policy items in Backup Compliance Policy settings.
+          enum:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+          - 10
+          - 11
+          - 12
+          - 13
+          - 14
+          - 15
+          - 16
+          - 17
+          - 18
+          - 19
+          - 20
+          - 21
+          - 22
+          - 23
+          - 24
+          - 25
+          - 26
+          - 27
+          - 28
+          - 40
+        frequencyType:
+          type: string
+          description: Human-readable label that identifies the frequency type associated
+            with the backup policy.
+          enum:
+          - daily
+          - hourly
+          - monthly
+          - weekly
+        id:
+          type: string
+          description: Unique 24-hexadecimal digit string that identifies this backup
+            policy item.
+          maxLength: 24
+          minLength: 24
+          pattern: "^([a-f0-9]{24})$"
+          readOnly: true
+        retentionUnit:
+          type: string
+          description: Unit of time in which MongoDB Cloud measures snapshot retention.
+          enum:
+          - days
+          - weeks
+          - months
+        retentionValue:
+          type: integer
+          format: int32
+          description: |-
+            Duration in days, weeks, or months that MongoDB Cloud retains the snapshot. For less frequent policy items, MongoDB Cloud requires that you specify a value greater than or equal to the value specified for more frequent policy items.
+
+            For example: If the hourly policy item specifies a retention of two days, you must specify two days or greater for the retention of the weekly policy item.
+      required:
+      - frequencyInterval
+      - frequencyType
+      - retentionUnit
+      - retentionValue
     BackupLabel:
       type: object
       description: Collection of key-value pairs that represent custom data to add
@@ -20341,7 +20737,13 @@ components:
         readOnly: true
       readOnly: true
     BasicDBObject:
-      $ref: '#/components/schemas/ApiAtlasFTSMappingsViewManual'
+      type: object
+      additionalProperties:
+        type: object
+        description: List that contains the fields to configure in this vectorSearch
+          index. This parameter must contain at least one "vector" type field.
+      description: List that contains the fields to configure in this vectorSearch
+        index. This parameter must contain at least one "vector" type field.
     BiConnector:
       type: object
       description: Settings needed to configure the MongoDB Connector for Business
@@ -21102,6 +21504,7 @@ components:
             * GROUP_OWNER
             * GROUP_READ_ONLY
             * GROUP_SEARCH_INDEX_EDITOR
+            * GROUP_STREAM_PROCESSING_OWNER
 
           enum:
           - ORG_OWNER
@@ -21116,6 +21519,7 @@ components:
           - GROUP_OWNER
           - GROUP_READ_ONLY
           - GROUP_SEARCH_INDEX_EDITOR
+          - GROUP_STREAM_PROCESSING_OWNER
       title: Role Assignment
     CloudAppUser:
       type: object
@@ -22687,6 +23091,18 @@ components:
               `mongod` configuration file option.
             url: https://docs.mongodb.com/upcoming/reference/configuration-options/#mongodb-setting-replication.oplogSizeMB
           nullable: true
+        queryStatsLogVerbosity:
+          type: integer
+          format: int32
+          default: 1
+          description: "May be set to 1 (disabled) or 3 (enabled). When set to 3,\
+            \ Atlas will include redacted and anonymized $queryStats output in MongoDB\
+            \ logs. $queryStats output does not contain literals or field values.\
+            \ Enabling this setting might impact the performance of your cluster."
+          externalDocs:
+            description: This option corresponds to the queryStats component for the
+              logComponentVerbosity server parameter.
+            url: https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.logComponentVerbosity
         sampleRefreshIntervalBIConnector:
           type: integer
           format: int32
@@ -22987,80 +23403,12 @@ components:
       title: Cloud Service Provider Settings for a Cluster
     ClusterSearchIndex:
       type: object
+      discriminator:
+        mapping:
+          search: '#/components/schemas/SearchIndex'
+          vectorSearch: '#/components/schemas/VectorSearchIndex'
+        propertyName: type
       properties:
-        analyzer:
-          type: string
-          default: lucene.standard
-          description: |-
-            Specific pre-defined method chosen to convert database field text into searchable words. This conversion reduces the text of fields into the smallest units of text. These units are called a **term** or **token**. This process, known as tokenization, involves a variety of changes made to the text in fields:
-
-            - extracting words
-            - removing punctuation
-            - removing accents
-            - changing to lowercase
-            - removing common words
-            - reducing words to their root form (stemming)
-            - changing words to their base form (lemmatization)
-             MongoDB Cloud uses the selected process to build the Atlas Search index.
-          enum:
-          - lucene.standard
-          - lucene.simple
-          - lucene.whitespace
-          - lucene.keyword
-          - lucene.arabic
-          - lucene.armenian
-          - lucene.basque
-          - lucene.bengali
-          - lucene.brazilian
-          - lucene.bulgarian
-          - lucene.catalan
-          - lucene.chinese
-          - lucene.cjk
-          - lucene.czech
-          - lucene.danish
-          - lucene.dutch
-          - lucene.english
-          - lucene.finnish
-          - lucene.french
-          - lucene.galician
-          - lucene.german
-          - lucene.greek
-          - lucene.hindi
-          - lucene.hungarian
-          - lucene.indonesian
-          - lucene.irish
-          - lucene.italian
-          - lucene.japanese
-          - lucene.korean
-          - lucene.kuromoji
-          - lucene.latvian
-          - lucene.lithuanian
-          - lucene.morfologik
-          - lucene.nori
-          - lucene.norwegian
-          - lucene.persian
-          - lucene.portuguese
-          - lucene.romanian
-          - lucene.russian
-          - lucene.smartcn
-          - lucene.sorani
-          - lucene.spanish
-          - lucene.swedish
-          - lucene.thai
-          - lucene.turkish
-          - lucene.ukrainian
-          externalDocs:
-            description: Atlas Search Analyzers
-            url: https://docs.atlas.mongodb.com/atlas-search/analyzers/
-        analyzers:
-          type: array
-          description: List of user-defined methods to convert database field text
-            into searchable words.
-          externalDocs:
-            description: Custom Atlas Search Analyzers
-            url: https://docs.atlas.mongodb.com/atlas-search/analyzers/custom/
-          items:
-            $ref: '#/components/schemas/ApiAtlasFTSAnalyzersViewManual'
         collectionName:
           type: string
           description: Human-readable label that identifies the collection that contains
@@ -23078,63 +23426,10 @@ components:
           minLength: 24
           pattern: "^([a-f0-9]{24})$"
           readOnly: true
-        mappings:
-          $ref: '#/components/schemas/ApiAtlasFTSMappingsViewManual'
         name:
           type: string
           description: "Human-readable label that identifies this index. Within each\
             \ namespace, names of all indexes in the namespace must be unique."
-        searchAnalyzer:
-          type: string
-          default: lucene.standard
-          description: Method applied to identify words when searching this index.
-          enum:
-          - lucene.standard
-          - lucene.simple
-          - lucene.whitespace
-          - lucene.keyword
-          - lucene.arabic
-          - lucene.armenian
-          - lucene.basque
-          - lucene.bengali
-          - lucene.brazilian
-          - lucene.bulgarian
-          - lucene.catalan
-          - lucene.chinese
-          - lucene.cjk
-          - lucene.czech
-          - lucene.danish
-          - lucene.dutch
-          - lucene.english
-          - lucene.finnish
-          - lucene.french
-          - lucene.galician
-          - lucene.german
-          - lucene.greek
-          - lucene.hindi
-          - lucene.hungarian
-          - lucene.indonesian
-          - lucene.irish
-          - lucene.italian
-          - lucene.japanese
-          - lucene.korean
-          - lucene.kuromoji
-          - lucene.latvian
-          - lucene.lithuanian
-          - lucene.morfologik
-          - lucene.nori
-          - lucene.norwegian
-          - lucene.persian
-          - lucene.portuguese
-          - lucene.romanian
-          - lucene.russian
-          - lucene.smartcn
-          - lucene.sorani
-          - lucene.spanish
-          - lucene.swedish
-          - lucene.thai
-          - lucene.turkish
-          - lucene.ukrainian
         status:
           type: string
           description: |
@@ -23155,14 +23450,13 @@ components:
           - STALE
           - PAUSED
           readOnly: true
-        synonyms:
-          type: array
-          description: Rule sets that map words to their synonyms in this index.
-          externalDocs:
-            description: Synonym Mapping
-            url: https://docs.atlas.mongodb.com/atlas-search/synonyms/
-          items:
-            $ref: '#/components/schemas/SearchSynonymMappingDefinition'
+        type:
+          type: string
+          description: "Type of the index. Warning: vectorSearch is not yet generally\
+            \ available. Default type is search."
+          enum:
+          - search
+          - vectorSearch
       required:
       - collectionName
       - database
@@ -23529,6 +23823,7 @@ components:
             - GLOBAL_SALESFORCE_ADMIN
             - GLOBAL_SALESFORCE_READ_ONLY
             - GLOBAL_APP_SERVICES_CLUSTER_DEBUG_DATA_ACCESS
+            - GLOBAL_CRASH_LOG_ANALYST
             - ORG_MEMBER
             - ORG_READ_ONLY
             - ORG_BILLING_ADMIN
@@ -23549,6 +23844,7 @@ components:
             - GROUP_CHARTS_ADMIN
             - GROUP_CLUSTER_MANAGER
             - GROUP_SEARCH_INDEX_EDITOR
+            - GROUP_STREAM_PROCESSING_OWNER
           uniqueItems: true
         roleMappings:
           type: array
@@ -23824,6 +24120,7 @@ components:
             - GROUP_CHARTS_ADMIN
             - GROUP_CLUSTER_MANAGER
             - GROUP_SEARCH_INDEX_EDITOR
+            - GROUP_STREAM_PROCESSING_OWNER
           minItems: 1
       required:
       - desc
@@ -25138,6 +25435,12 @@ components:
     DataLakeTenant:
       type: object
       properties:
+        _privateEndpointHostnames:
+          type: array
+          description: List that contains the sets of private endpoints and hostnames.
+          items:
+            $ref: '#/components/schemas/PrivateEndpointHostname'
+          readOnly: true
         cloudProviderConfig:
           $ref: '#/components/schemas/DataLakeCloudProviderConfig'
         dataProcessRegion:
@@ -25545,21 +25848,22 @@ components:
         authorizedEmail:
           type: string
           format: email
-          description: Email address of the user who authorized to updated the Backup
+          description: Email address of the user who authorized to update the Backup
             Compliance Policy  settings.
         authorizedUserFirstName:
           type: string
-          description: First name of the user who authorized to updated the Backup
+          description: First name of the user who authorized to update the Backup
             Compliance Policy  settings.
         authorizedUserLastName:
           type: string
-          description: Last name of the user who authorized to updated the Backup
-            Compliance Policy  settings.
+          description: Last name of the user who authorized to update the Backup Compliance
+            Policy  settings.
         copyProtectionEnabled:
           type: boolean
           default: false
-          description: "Flag that indicates whether to enable additional backup copies\
-            \ for the cluster. If unspecified, this value defaults to false."
+          description: "Flag that indicates whether to prevent cluster users from\
+            \ deleting backups copied to other regions, even if those additional snapshot\
+            \ regions are removed. If unspecified, this value defaults to false."
         encryptionAtRestEnabled:
           type: boolean
           default: false
@@ -25570,7 +25874,7 @@ components:
             description: Encryption at Rest using Customer Key Management
             url: https://www.mongodb.com/docs/atlas/security-kms-encryption/
         onDemandPolicyItem:
-          $ref: '#/components/schemas/DiskBackupApiPolicyItem'
+          $ref: '#/components/schemas/BackupComplianceOnDemandPolicyItem'
         pitEnabled:
           type: boolean
           default: false
@@ -25600,7 +25904,7 @@ components:
           type: array
           description: List that contains the specifications for one scheduled policy.
           items:
-            $ref: '#/components/schemas/DiskBackupApiPolicyItem'
+            $ref: '#/components/schemas/BackupComplianceScheduledPolicyItem'
         state:
           type: string
           description: Label that indicates the state of the Backup Compliance Policy
@@ -25634,7 +25938,7 @@ components:
         authorizedEmail:
           type: string
           format: email
-          description: Email address of the user who authorized to updated the Backup
+          description: Email address of the user who authorized to update the Backup
             Compliance Policy  settings.
         authorizedUserFirstName:
           type: string
@@ -25647,8 +25951,9 @@ components:
         copyProtectionEnabled:
           type: boolean
           default: false
-          description: "Flag that indicates whether to enable additional backup copies\
-            \ for the cluster. If unspecified, this value defaults to false."
+          description: "Flag that indicates whether to prevent cluster users from\
+            \ deleting backups copied to other regions, even if those additional snapshot\
+            \ regions are removed. If unspecified, this value defaults to false."
         encryptionAtRestEnabled:
           type: boolean
           default: false
@@ -25659,7 +25964,7 @@ components:
             description: Encryption at Rest using Customer Key Management
             url: https://www.mongodb.com/docs/atlas/security-kms-encryption/
         onDemandPolicyItem:
-          $ref: '#/components/schemas/DiskBackupApiPolicyItem'
+          $ref: '#/components/schemas/BackupComplianceOnDemandPolicyItem'
         pitEnabled:
           type: boolean
           default: false
@@ -25689,7 +25994,7 @@ components:
           type: array
           description: List that contains the specifications for one scheduled policy.
           items:
-            $ref: '#/components/schemas/DiskBackupApiPolicyItem'
+            $ref: '#/components/schemas/BackupComplianceScheduledPolicyItem'
         state:
           type: string
           description: Label that indicates the state of the Backup Compliance Policy
@@ -28397,6 +28702,7 @@ components:
         - FTS_INDEX_CREATED
         - FTS_INDEX_UPDATED
         - FTS_INDEX_DELETED
+        - FTS_INDEX_CLEANED_UP
         - FTS_INDEXES_RESTORED
         - FTS_INDEXES_RESTORE_FAILED
         title: FTS Index Audit Types
@@ -28995,6 +29301,7 @@ components:
         - ORG_OVERRIDE_PAYMENT_METHOD_ADDED
         - ORG_ACTIVATED
         - ORG_TEMPORARILY_ACTIVATED
+        - ORG_SUSPENSION_DATE_CHANGED
         - ORG_SUSPENDED
         - ORG_ADMIN_SUSPENDED
         - ORG_ADMIN_LOCKED
@@ -29202,6 +29509,7 @@ components:
       - FTS_INDEX_CREATED
       - FTS_INDEX_UPDATED
       - FTS_INDEX_DELETED
+      - FTS_INDEX_CLEANED_UP
       - FTS_INDEXES_RESTORED
       - FTS_INDEXES_RESTORE_FAILED
       example: FTS_INDEX_CREATED
@@ -29341,6 +29649,7 @@ components:
           - FTS_PROCESS_VIRTUAL_MEMORY
           - JVM_CURRENT_MEMORY
           - JVM_MAX_MEMORY
+          - PAGE_FAULTS
           readOnly: true
         units:
           type: string
@@ -29490,88 +29799,49 @@ components:
       - oktaIdpId
     FederationSamlIdentityProvider:
       type: object
-      properties:
-        acsUrl:
-          type: string
-          description: URL that points to where to send the SAML response.
-        associatedDomains:
-          type: array
-          description: List that contains the domains associated with the identity
-            provider.
-          items:
+      allOf:
+      - $ref: '#/components/schemas/FederationIdentityProvider'
+      - type: object
+        properties:
+          acsUrl:
             type: string
-          uniqueItems: true
-        associatedOrgs:
-          type: array
-          description: List that contains the connected organization configurations
-            associated with the identity provider.
-          items:
-            $ref: '#/components/schemas/ConnectedOrgConfig'
-          uniqueItems: true
-        audienceUri:
-          type: string
-          description: Unique string that identifies the intended audience of the
-            SAML assertion.
-        description:
-          type: string
-          description: The description of the identity provider.
-        displayName:
-          type: string
-          description: Human-readable label that identifies the identity provider.
-        id:
-          type: string
-          description: Unique 24-hexadecimal digit string that identifies the identity
-            provider.
-          example: 32b6e34b3d91647abb20e7b8
-          maxLength: 24
-          minLength: 24
-          pattern: "^([a-f0-9]{24})$"
-          readOnly: true
-        issuerUri:
-          type: string
-          description: Unique string that identifies the issuer of the SAML Assertion.
-        oktaIdpId:
-          type: string
-          description: Unique 20-hexadecimal digit string that identifies the identity
-            provider.
-          maxLength: 20
-          minLength: 20
-          pattern: "^([a-f0-9]{20})$"
-        pemFileInfo:
-          $ref: '#/components/schemas/PemFileInfo'
-        protocol:
-          type: string
-          description: The protocol of the identity provider.
-        requestBinding:
-          type: string
-          description: SAML Authentication Request Protocol HTTP method binding (POST
-            or REDIRECT) that Federated Authentication uses to send the authentication
-            request.
-          enum:
-          - HTTP-POST
-          - HTTP-REDIRECT
-        responseSignatureAlgorithm:
-          type: string
-          description: Signature algorithm that Federated Authentication uses to encrypt
-            the identity provider signature.
-          enum:
-          - SHA-1
-          - SHA-256
-        ssoDebugEnabled:
-          type: boolean
-          description: Flag that indicates whether the identity provider has SSO debug
-            enabled.
-        ssoUrl:
-          type: string
-          description: URL that points to the receiver of the SAML authentication
-            request.
-        status:
-          type: string
-          description: String enum that indicates whether the identity provider is
-            active.
-          enum:
-          - ACTIVE
-          - INACTIVE
+            description: URL that points to where to send the SAML response.
+          audienceUri:
+            type: string
+            description: Unique string that identifies the intended audience of the
+              SAML assertion.
+          pemFileInfo:
+            $ref: '#/components/schemas/PemFileInfo'
+          requestBinding:
+            type: string
+            description: SAML Authentication Request Protocol HTTP method binding
+              (POST or REDIRECT) that Federated Authentication uses to send the authentication
+              request.
+            enum:
+            - HTTP-POST
+            - HTTP-REDIRECT
+          responseSignatureAlgorithm:
+            type: string
+            description: Signature algorithm that Federated Authentication uses to
+              encrypt the identity provider signature.
+            enum:
+            - SHA-1
+            - SHA-256
+          ssoDebugEnabled:
+            type: boolean
+            description: Flag that indicates whether the identity provider has SSO
+              debug enabled.
+          ssoUrl:
+            type: string
+            description: URL that points to the receiver of the SAML authentication
+              request.
+          status:
+            type: string
+            description: String enum that indicates whether the identity provider
+              is active.
+            enum:
+            - ACTIVE
+            - INACTIVE
       required:
       - id
       - oktaIdpId
@@ -30607,6 +30877,7 @@ components:
             * GROUP_OWNER
             * GROUP_READ_ONLY
             * GROUP_SEARCH_INDEX_EDITOR
+            * GROUP_STREAM_PROCESSING_OWNER
 
           enum:
           - GROUP_CLUSTER_MANAGER
@@ -30616,6 +30887,7 @@ components:
           - GROUP_OWNER
           - GROUP_READ_ONLY
           - GROUP_SEARCH_INDEX_EDITOR
+          - GROUP_STREAM_PROCESSING_OWNER
     GroupService:
       type: object
       description: List of IP addresses in a project categorized by services.
@@ -32115,6 +32387,36 @@ components:
           - ""
           readOnly: true
       readOnly: true
+    IdentityProviderUpdate:
+      type: object
+      discriminator:
+        mapping:
+          OIDC: '#/components/schemas/OidcIdentityProviderUpdate'
+          SAML: '#/components/schemas/SamlIdentityProviderUpdate'
+        propertyName: protocol
+      properties:
+        associatedDomains:
+          type: array
+          description: List that contains the domains associated with the identity
+            provider.
+          items:
+            type: string
+          uniqueItems: true
+        description:
+          type: string
+          description: The description for the identity provider.
+        displayName:
+          type: string
+          description: Human-readable label that identifies the identity provider.
+          maxLength: 50
+          minLength: 1
+        issuerUri:
+          type: string
+          description: Unique string that identifies the issuer of the SAML Assertion.
+          example: urn:idp:default
+        protocol:
+          type: string
+          description: The protocol for the identity provider.
     IndexOptions:
       type: object
       description: One or more settings that determine how the MongoDB Cloud creates
@@ -32562,6 +32864,14 @@ components:
           - ATLAS_AWS_SEARCH_INSTANCE_S60_COMPUTE_NVME
           - ATLAS_AWS_SEARCH_INSTANCE_S70_COMPUTE_NVME
           - ATLAS_AWS_SEARCH_INSTANCE_S80_COMPUTE_NVME
+          - ATLAS_AWS_SEARCH_INSTANCE_S30_MEMORY_NVME
+          - ATLAS_AWS_SEARCH_INSTANCE_S40_MEMORY_NVME
+          - ATLAS_AWS_SEARCH_INSTANCE_S50_MEMORY_NVME
+          - ATLAS_AWS_SEARCH_INSTANCE_S60_MEMORY_NVME
+          - ATLAS_AWS_SEARCH_INSTANCE_S80_MEMORY_NVME
+          - ATLAS_AWS_SEARCH_INSTANCE_S90_MEMORY_NVME
+          - ATLAS_AWS_SEARCH_INSTANCE_S100_MEMORY_NVME
+          - ATLAS_AWS_SEARCH_INSTANCE_S110_MEMORY_NVME
           - ATLAS_AWS_STORAGE_PROVISIONED
           - ATLAS_AWS_STORAGE_STANDARD
           - ATLAS_AWS_STORAGE_STANDARD_GP3
@@ -32696,6 +33006,12 @@ components:
           - ATLAS_AZURE_BACKUP_DOWNLOAD_VM_STORAGE_P30
           - ATLAS_AZURE_BACKUP_DOWNLOAD_VM_STORAGE_P40
           - ATLAS_AZURE_BACKUP_DOWNLOAD_VM_STORAGE_P50
+          - ATLAS_AZURE_STANDARD_STORAGE
+          - ATLAS_AZURE_EXTENDED_STANDARD_IOPS
+          - ATLAS_AZURE_BACKUP_DOWNLOAD_VM_STORAGE
+          - ATLAS_AZURE_BACKUP_DOWNLOAD_VM_STORAGE_EXTENDED_IOPS
+          - ATLAS_AZURE_SNAPSHOT_EXPORT_VM_STORAGE
+          - ATLAS_AZURE_SNAPSHOT_EXPORT_VM_STORAGE_EXTENDED_IOPS
           - ATLAS_BI_CONNECTOR
           - ATLAS_ADVANCED_SECURITY
           - ATLAS_ENTERPRISE_AUDITING
@@ -35985,6 +36301,31 @@ components:
     ObjectCreated:
       type: object
       description: Created
+    OidcIdentityProviderUpdate:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/IdentityProviderUpdate'
+      - type: object
+        properties:
+          audienceClaim:
+            type: array
+            description: Audience claim for the identity provider.
+            items:
+              type: string
+          clientId:
+            type: string
+            description: Client ID for the identity provider.
+          groupsClaim:
+            type: string
+            description: Groups claim for the identity provider.
+          requestedScopes:
+            type: array
+            description: Requested scopes for the identity provider.
+            items:
+              type: string
+          userClaim:
+            type: string
+            description: User claim for the identity provider.
     OnDemandCpsSnapshotSource:
       type: object
       allOf:
@@ -36144,6 +36485,7 @@ components:
       - ORG_OVERRIDE_PAYMENT_METHOD_ADDED
       - ORG_ACTIVATED
       - ORG_TEMPORARILY_ACTIVATED
+      - ORG_SUSPENSION_DATE_CHANGED
       - ORG_SUSPENDED
       - ORG_ADMIN_SUSPENDED
       - ORG_ADMIN_LOCKED
@@ -37820,35 +38162,6 @@ components:
           description: Number of documents returned in this response.
           minimum: 0
           readOnly: true
-    PaginatedServiceAccounts:
-      type: object
-      description: List of the Service Accounts
-      properties:
-        links:
-          type: array
-          description: "List of one or more Uniform Resource Locators (URLs) that\
-            \ point to API sub-resources, related API resources, or both. RFC 5988\
-            \ outlines these relationships."
-          externalDocs:
-            description: Web Linking Specification (RFC 5988)
-            url: https://datatracker.ietf.org/doc/html/rfc5988
-          items:
-            $ref: '#/components/schemas/Link'
-          readOnly: true
-        results:
-          type: array
-          description: List of returned documents that MongoDB Cloud providers when
-            completing this request.
-          items:
-            $ref: '#/components/schemas/ServiceAccountDetails'
-          readOnly: true
-        totalCount:
-          type: integer
-          format: int32
-          description: Number of documents returned in this response if **includeCount**
-            query param is true.
-          minimum: 0
-          readOnly: true
     PaginatedSnapshotView:
       type: object
       properties:
@@ -38323,6 +38636,19 @@ components:
           readOnly: true
       readOnly: true
       title: Data Lake Pipeline Run Statistics
+    PrivateEndpointHostname:
+      type: object
+      description: Set of Private endpoint and hostnames.
+      properties:
+        hostname:
+          type: string
+          description: Human-readable label that identifies the hostname.
+          readOnly: true
+        privateEndpoint:
+          type: string
+          description: Human-readable label that identifies private endpoint.
+          readOnly: true
+      readOnly: true
     PrivateGCPEndpointGroup:
       type: object
       description: Group of Private Endpoint settings.
@@ -39730,6 +40056,7 @@ components:
             * GROUP_OWNER
             * GROUP_READ_ONLY
             * GROUP_SEARCH_INDEX_EDITOR
+            * GROUP_STREAM_PROCESSING_OWNER
 
           enum:
           - ORG_OWNER
@@ -39744,6 +40071,7 @@ components:
           - GROUP_OWNER
           - GROUP_READ_ONLY
           - GROUP_SEARCH_INDEX_EDITOR
+          - GROUP_STREAM_PROCESSING_OWNER
     SMSNotification:
       type: object
       description: SMS notification configuration for MongoDB Cloud to send information
@@ -39784,65 +40112,46 @@ components:
       title: SMS Notification
     SamlIdentityProviderUpdate:
       type: object
-      properties:
-        associatedDomains:
-          type: array
-          description: List that contains the domains associated with the identity
-            provider.
-          items:
+      allOf:
+      - $ref: '#/components/schemas/IdentityProviderUpdate'
+      - type: object
+        properties:
+          pemFileInfo:
+            $ref: '#/components/schemas/PemFileInfo'
+          requestBinding:
             type: string
-          uniqueItems: true
-        description:
-          type: string
-          description: The description for the identity provider.
-        displayName:
-          type: string
-          description: Human-readable label that identifies the identity provider.
-          maxLength: 50
-          minLength: 1
-        issuerUri:
-          type: string
-          description: Unique string that identifies the issuer of the SAML Assertion.
-          example: urn:idp:default
-        pemFileInfo:
-          $ref: '#/components/schemas/PemFileInfo'
-        protocol:
-          type: string
-          description: The protocol for the identity provider.
-        requestBinding:
-          type: string
-          description: SAML Authentication Request Protocol HTTP method binding (POST
-            or REDIRECT) that Federated Authentication uses to send the authentication
-            request.
-          enum:
-          - HTTP-POST
-          - HTTP-REDIRECT
-        responseSignatureAlgorithm:
-          type: string
-          description: Signature algorithm that Federated Authentication uses to encrypt
-            the identity provider signature.
-          enum:
-          - SHA-1
-          - SHA-256
-        slug:
-          type: string
-          description: Custom SSO Url for identity provider.
-        ssoDebugEnabled:
-          type: boolean
-          description: Flag that indicates whether the identity provider has SSO debug
-            enabled.
-        ssoUrl:
-          type: string
-          description: Unique string that identifies the intended audience of the
-            SAML assertion.
-          example: https://example.com
-        status:
-          type: string
-          description: String enum that indicates whether the identity provider is
-            active.
-          enum:
-          - ACTIVE
-          - INACTIVE
+            description: SAML Authentication Request Protocol HTTP method binding
+              (POST or REDIRECT) that Federated Authentication uses to send the authentication
+              request.
+            enum:
+            - HTTP-POST
+            - HTTP-REDIRECT
+          responseSignatureAlgorithm:
+            type: string
+            description: Signature algorithm that Federated Authentication uses to
+              encrypt the identity provider signature.
+            enum:
+            - SHA-1
+            - SHA-256
+          slug:
+            type: string
+            description: Custom SSO Url for identity provider.
+          ssoDebugEnabled:
+            type: boolean
+            description: Flag that indicates whether the identity provider has SSO
+              debug enabled.
+          ssoUrl:
+            type: string
+            description: Unique string that identifies the intended audience of the
+              SAML assertion.
+            example: https://example.com
+          status:
+            type: string
+            description: String enum that indicates whether the identity provider
+              is active.
+            enum:
+            - ACTIVE
+            - INACTIVE
       required:
       - ssoDebugEnabled
     SampleDatasetStatus:
@@ -39891,6 +40200,150 @@ components:
           - FAILED
           - COMPLETED
           readOnly: true
+    SearchIndex:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/ClusterSearchIndex'
+      - type: object
+        properties:
+          analyzer:
+            type: string
+            default: lucene.standard
+            description: |-
+              Specific pre-defined method chosen to convert database field text into searchable words. This conversion reduces the text of fields into the smallest units of text. These units are called a **term** or **token**. This process, known as tokenization, involves a variety of changes made to the text in fields:
+
+              - extracting words
+              - removing punctuation
+              - removing accents
+              - changing to lowercase
+              - removing common words
+              - reducing words to their root form (stemming)
+              - changing words to their base form (lemmatization)
+               MongoDB Cloud uses the selected process to build the Atlas Search index.
+            enum:
+            - lucene.standard
+            - lucene.simple
+            - lucene.whitespace
+            - lucene.keyword
+            - lucene.arabic
+            - lucene.armenian
+            - lucene.basque
+            - lucene.bengali
+            - lucene.brazilian
+            - lucene.bulgarian
+            - lucene.catalan
+            - lucene.chinese
+            - lucene.cjk
+            - lucene.czech
+            - lucene.danish
+            - lucene.dutch
+            - lucene.english
+            - lucene.finnish
+            - lucene.french
+            - lucene.galician
+            - lucene.german
+            - lucene.greek
+            - lucene.hindi
+            - lucene.hungarian
+            - lucene.indonesian
+            - lucene.irish
+            - lucene.italian
+            - lucene.japanese
+            - lucene.korean
+            - lucene.kuromoji
+            - lucene.latvian
+            - lucene.lithuanian
+            - lucene.morfologik
+            - lucene.nori
+            - lucene.norwegian
+            - lucene.persian
+            - lucene.portuguese
+            - lucene.romanian
+            - lucene.russian
+            - lucene.smartcn
+            - lucene.sorani
+            - lucene.spanish
+            - lucene.swedish
+            - lucene.thai
+            - lucene.turkish
+            - lucene.ukrainian
+            externalDocs:
+              description: Atlas Search Analyzers
+              url: https://docs.atlas.mongodb.com/atlas-search/analyzers/
+          analyzers:
+            type: array
+            description: List of user-defined methods to convert database field text
+              into searchable words.
+            externalDocs:
+              description: Custom Atlas Search Analyzers
+              url: https://docs.atlas.mongodb.com/atlas-search/analyzers/custom/
+            items:
+              $ref: '#/components/schemas/ApiAtlasFTSAnalyzersViewManual'
+          mappings:
+            $ref: '#/components/schemas/ApiAtlasFTSMappingsViewManual'
+          searchAnalyzer:
+            type: string
+            default: lucene.standard
+            description: Method applied to identify words when searching this index.
+            enum:
+            - lucene.standard
+            - lucene.simple
+            - lucene.whitespace
+            - lucene.keyword
+            - lucene.arabic
+            - lucene.armenian
+            - lucene.basque
+            - lucene.bengali
+            - lucene.brazilian
+            - lucene.bulgarian
+            - lucene.catalan
+            - lucene.chinese
+            - lucene.cjk
+            - lucene.czech
+            - lucene.danish
+            - lucene.dutch
+            - lucene.english
+            - lucene.finnish
+            - lucene.french
+            - lucene.galician
+            - lucene.german
+            - lucene.greek
+            - lucene.hindi
+            - lucene.hungarian
+            - lucene.indonesian
+            - lucene.irish
+            - lucene.italian
+            - lucene.japanese
+            - lucene.korean
+            - lucene.kuromoji
+            - lucene.latvian
+            - lucene.lithuanian
+            - lucene.morfologik
+            - lucene.nori
+            - lucene.norwegian
+            - lucene.persian
+            - lucene.portuguese
+            - lucene.romanian
+            - lucene.russian
+            - lucene.smartcn
+            - lucene.sorani
+            - lucene.spanish
+            - lucene.swedish
+            - lucene.thai
+            - lucene.turkish
+            - lucene.ukrainian
+          synonyms:
+            type: array
+            description: Rule sets that map words to their synonyms in this index.
+            externalDocs:
+              description: Synonym Mapping
+              url: https://docs.atlas.mongodb.com/atlas-search/synonyms/
+            items:
+              $ref: '#/components/schemas/SearchSynonymMappingDefinition'
+      required:
+      - collectionName
+      - database
+      - name
     SearchSynonymMappingDefinition:
       type: object
       description: Synonyms used for this full text index.
@@ -40838,265 +41291,6 @@ components:
           writeOnly: true
       required:
       - providerName
-    ServiceAccount:
-      type: object
-      properties:
-        accessList:
-          type: array
-          items:
-            $ref: '#/components/schemas/ServiceAccountAccessList'
-          uniqueItems: true
-        createdAt:
-          type: string
-          format: date-time
-          description: Service account creation time.
-        description:
-          type: string
-          description: Description of the service account.
-        id:
-          type: string
-          description: ID for the service account.
-          pattern: "^mdb_sa_id_[a-fA-F\\d]{24}$"
-        name:
-          type: string
-          description: Name for service account.
-        roles:
-          $ref: '#/components/schemas/ServiceAccountAccessRole'
-        secrets:
-          type: array
-          description: List of secrets.
-          items:
-            $ref: '#/components/schemas/ServiceAccountSecret'
-          uniqueItems: true
-    ServiceAccountAccessList:
-      type: object
-      properties:
-        createdAt:
-          type: string
-          format: date-time
-          description: Time of creation.
-          readOnly: true
-        lastUsedAddress:
-          type: string
-          description: Last address where the service account was used from.
-          readOnly: true
-        lastUsedAt:
-          type: string
-          format: date-time
-          description: Last time the access list was used.
-          readOnly: true
-        networkAddress:
-          type: string
-          description: An IP address or CIDR notation.
-        requestCount:
-          type: integer
-          format: int64
-          description: Count of requests using this network address.
-          readOnly: true
-    ServiceAccountAccessRole:
-      type: object
-      description: Service account access roles.
-      properties:
-        groups:
-          type: array
-          items:
-            $ref: '#/components/schemas/ServiceAccountProjectAccessRole'
-          uniqueItems: true
-        org:
-          type: array
-          items:
-            type: string
-            description: Access Role for the organization
-            enum:
-            - ORG_MEMBER
-            - ORG_READ_ONLY
-            - ORG_BILLING_ADMIN
-            - ORG_BILLING_READ_ONLY
-            - ORG_GROUP_CREATOR
-            - ORG_OWNER
-            - ORG_TEAM_MEMBERS_ADMIN
-          uniqueItems: true
-    ServiceAccountDetails:
-      type: object
-      properties:
-        accessList:
-          type: array
-          description: Service account access list.
-          items:
-            $ref: '#/components/schemas/ServiceAccountAccessList'
-          uniqueItems: true
-        createdAt:
-          type: string
-          format: date-time
-          description: Timestamp representing creation time.
-        description:
-          type: string
-          description: Description of the service account.
-        id:
-          type: string
-          description: Service account client id.
-          pattern: "^mdb_sa_id_[a-fA-F\\d]{24}$"
-        name:
-          type: string
-          description: Service account name.
-        roles:
-          $ref: '#/components/schemas/ServiceAccountAccessRole'
-        secrets:
-          type: array
-          items:
-            $ref: '#/components/schemas/ServiceAccountSecretDetails'
-          maxItems: 2
-          uniqueItems: true
-    ServiceAccountProjectAccessRole:
-      type: object
-      description: Group access roles
-      properties:
-        groupId:
-          type: string
-          description: Id of the group.
-          example: 32b6e34b3d91647abb20e7b8
-          pattern: "^([a-f0-9]{24})$"
-        roleNames:
-          type: array
-          items:
-            type: string
-            description: Group access roles.
-            enum:
-            - GROUP_ATLAS_ADMIN
-            - GROUP_AUTOMATION_ADMIN
-            - GROUP_BACKUP_ADMIN
-            - GROUP_MONITORING_ADMIN
-            - GROUP_OWNER
-            - GROUP_READ_ONLY
-            - GROUP_USER_ADMIN
-            - GROUP_BILLING_ADMIN
-            - GROUP_DATA_ACCESS_ADMIN
-            - GROUP_DATA_ACCESS_READ_ONLY
-            - GROUP_DATA_ACCESS_READ_WRITE
-            - GROUP_CHARTS_ADMIN
-            - GROUP_CLUSTER_MANAGER
-            - GROUP_SEARCH_INDEX_EDITOR
-          uniqueItems: true
-      required:
-      - groupId
-    ServiceAccountRequest:
-      type: object
-      properties:
-        accessList:
-          type: array
-          items:
-            $ref: '#/components/schemas/ServiceAccountAccessList'
-          uniqueItems: true
-        description:
-          type: string
-          description: Human readable description for service account.
-        name:
-          type: string
-          description: Human readable name for service account.
-        roles:
-          $ref: '#/components/schemas/ServiceAccountAccessRole'
-        secretExpiresAt:
-          type: string
-          format: date-time
-          description: Secret expiration time.
-      required:
-      - description
-      - name
-      - roles
-      - secretExpiresAt
-    ServiceAccountSecret:
-      type: object
-      properties:
-        createdAt:
-          type: string
-          format: date-time
-          description: Timestamp representing creation time.
-          readOnly: true
-        expiresAt:
-          type: string
-          format: date-time
-          description: Timestamp representing secret expiration time.
-          readOnly: true
-        id:
-          type: string
-          description: Unique 24-hexadecimal character string that identifies the
-            secret.
-          example: 32b6e34b3d91647abb20e7b8
-          pattern: "^([a-f0-9]{24})$"
-          readOnly: true
-        lastUsedAt:
-          type: string
-          format: date-time
-          description: Timestamp representing last time secret usage.
-          readOnly: true
-        secret:
-          type: string
-          description: Secret for the service account.
-          pattern: "^mdb_sa_sk_[0-9a-fA-F]{8}\\b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{4}\\\
-            b-[0-9a-fA-F]{4}\\b-[0-9a-fA-F]{12}$"
-      required:
-      - createdAt
-      - expiresAt
-      - id
-    ServiceAccountSecretDetails:
-      type: object
-      properties:
-        createdAt:
-          type: string
-          format: date-time
-          description: Timestamp representing creation time.
-          readOnly: true
-        expiresAt:
-          type: string
-          format: date-time
-          description: Timestamp representing secret expiration time.
-          readOnly: true
-        id:
-          type: string
-          description: Unique 24-hexadecimal character string that identifies the
-            secret.
-          example: 32b6e34b3d91647abb20e7b8
-          pattern: "^([a-f0-9]{24})$"
-          readOnly: true
-        lastUsedAt:
-          type: string
-          format: date-time
-          description: Timestamp representing last time secret usage.
-          readOnly: true
-        maskedSecretValue:
-          type: string
-          description: Value of client secret with masked values of the first 20 characters.
-          example: mdb_ic_sk_xxxxxxxx-xxxx-xxxx-xxxxxxxx12ce
-          readOnly: true
-      required:
-      - createdAt
-      - expiresAt
-      - id
-      - maskedSecretValue
-    ServiceAccountSecretRequest:
-      type: object
-      properties:
-        expiresAt:
-          type: string
-          format: date-time
-          description: Timestamp representing creation time for secret.
-    ServiceAccountUpdateRequest:
-      type: object
-      properties:
-        accessList:
-          type: array
-          description: Service account access list.
-          items:
-            $ref: '#/components/schemas/ServiceAccountAccessList'
-          uniqueItems: true
-        description:
-          type: string
-          description: Description of the service account client.
-        name:
-          type: string
-          description: Client name for service account.
-        roles:
-          $ref: '#/components/schemas/ServiceAccountAccessRole'
     Slack:
       type: object
       description: Details to integrate one Slack account with one MongoDB Cloud project.
@@ -42576,6 +42770,7 @@ components:
             - GROUP_CHARTS_ADMIN
             - GROUP_CLUSTER_MANAGER
             - GROUP_SEARCH_INDEX_EDITOR
+            - GROUP_STREAM_PROCESSING_OWNER
     UpdateCustomDBRole:
       type: object
       properties:
@@ -42607,6 +42802,7 @@ components:
             - GROUP_OWNER
             - GROUP_READ_ONLY
             - GROUP_SEARCH_INDEX_EDITOR
+            - GROUP_STREAM_PROCESSING_OWNER
           uniqueItems: true
         links:
           type: array
@@ -42736,6 +42932,7 @@ components:
             - GROUP_DATA_ACCESS_READ_ONLY
             - GROUP_DATA_ACCESS_READ_WRITE
             - GROUP_SEARCH_INDEX_EDITOR
+            - GROUP_STREAM_PROCESSING_OWNER
             - GROUP_OWNER
             - GROUP_READ_ONLY
     UserCert:
@@ -43146,6 +43343,7 @@ components:
           enum:
           - CLUSTER
           - DATA_LAKE
+          - STREAM
       required:
       - name
       - type
@@ -43197,6 +43395,20 @@ components:
       required:
       - match
       title: User to Distinguished Name Mapping
+    VectorSearchIndex:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/ClusterSearchIndex'
+      - type: object
+        properties:
+          fields:
+            type: array
+            items:
+              $ref: '#/components/schemas/BasicDBObject'
+      required:
+      - collectionName
+      - database
+      - name
     VictorOps:
       type: object
       description: Details to integrate one Splunk On-Call account with one MongoDB
