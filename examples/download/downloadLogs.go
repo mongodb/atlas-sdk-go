@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"io"
 	"log"
 	"os"
@@ -41,7 +40,7 @@ func main() {
 	if projects.GetTotalCount() == 0 {
 		log.Fatal("account should have at least single project")
 	}
-	var out io.Writer
+	var out io.Writer = os.Stdout
 	projectId := projects.GetResults()[0].GetId()
 
 	// -- 2. Get first Process
@@ -59,6 +58,9 @@ func main() {
 
 	logs, response, err := sdk.MonitoringAndLogsApi.GetHostLogsWithParams(ctx, params).Execute()
 	examples.HandleErr(err, response)
+	defer func() {
+		_ = logs.Close()
+	}()
 	_, err = io.Copy(out, logs)
-	fmt.Println(err)
+	examples.HandleErr(err, nil)
 }

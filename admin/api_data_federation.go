@@ -8,7 +8,6 @@ import (
 	"io"
 	"net/http"
 	"net/url"
-	"os"
 	"strings"
 )
 
@@ -198,7 +197,7 @@ type DataFederationApi interface {
 	DownloadFederatedDatabaseQueryLogsWithParams(ctx context.Context, args *DownloadFederatedDatabaseQueryLogsApiParams) DownloadFederatedDatabaseQueryLogsApiRequest
 
 	// Interface only available internally
-	downloadFederatedDatabaseQueryLogsExecute(r DownloadFederatedDatabaseQueryLogsApiRequest) (*os.File, *http.Response, error)
+	downloadFederatedDatabaseQueryLogsExecute(r DownloadFederatedDatabaseQueryLogsApiRequest) (io.ReadCloser, *http.Response, error)
 
 	/*
 		GetDataFederationPrivateEndpoint Return One Federated Database Instance and Online Archive Private Endpoint in One Project
@@ -1293,7 +1292,7 @@ func (r DownloadFederatedDatabaseQueryLogsApiRequest) StartDate(startDate int64)
 	return r
 }
 
-func (r DownloadFederatedDatabaseQueryLogsApiRequest) Execute() (*os.File, *http.Response, error) {
+func (r DownloadFederatedDatabaseQueryLogsApiRequest) Execute() (io.ReadCloser, *http.Response, error) {
 	return r.ApiService.downloadFederatedDatabaseQueryLogsExecute(r)
 }
 
@@ -1318,13 +1317,13 @@ func (a *DataFederationApiService) DownloadFederatedDatabaseQueryLogs(ctx contex
 
 // Execute executes the request
 //
-//	@return *os.File
-func (a *DataFederationApiService) downloadFederatedDatabaseQueryLogsExecute(r DownloadFederatedDatabaseQueryLogsApiRequest) (*os.File, *http.Response, error) {
+//	@return io.ReadCloser
+func (a *DataFederationApiService) downloadFederatedDatabaseQueryLogsExecute(r DownloadFederatedDatabaseQueryLogsApiRequest) (io.ReadCloser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *os.File
+		localVarReturnValue io.ReadCloser
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationApiService.DownloadFederatedDatabaseQueryLogs")

@@ -361,7 +361,7 @@ Name | Type | Description  | Notes
 
 ## GetHostLogs
 
-> *os.File GetHostLogs(ctx, groupId, hostName, logName).EndDate(endDate).StartDate(startDate).Execute()
+> io.ReadCloser GetHostLogs(ctx, groupId, hostName, logName).EndDate(endDate).StartDate(startDate).Execute()
 
 Download Logs for One Cluster Host in One Project
 
@@ -397,7 +397,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetHostLogs`: *os.File
+    // response from `GetHostLogs`: io.ReadCloser
     fmt.Fprintf(os.Stdout, "Response from `MonitoringAndLogsApi.GetHostLogs`: %v\n", resp)
 }
 ```
@@ -427,7 +427,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[***os.File**](*os.File.md)
+[**io.ReadCloser**](io.ReadCloser.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

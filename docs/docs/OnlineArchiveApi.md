@@ -172,7 +172,7 @@ Name | Type | Description  | Notes
 
 ## DownloadOnlineArchiveQueryLogs
 
-> *os.File DownloadOnlineArchiveQueryLogs(ctx, groupId, clusterName).StartDate(startDate).EndDate(endDate).ArchiveOnly(archiveOnly).Execute()
+> io.ReadCloser DownloadOnlineArchiveQueryLogs(ctx, groupId, clusterName).StartDate(startDate).EndDate(endDate).ArchiveOnly(archiveOnly).Execute()
 
 Download Online Archive Query Logs
 
@@ -213,7 +213,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DownloadOnlineArchiveQueryLogs`: *os.File
+    // response from `DownloadOnlineArchiveQueryLogs`: io.ReadCloser
     fmt.Fprintf(os.Stdout, "Response from `OnlineArchiveApi.DownloadOnlineArchiveQueryLogs`: %v\n", resp)
 }
 ```
@@ -242,7 +242,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[***os.File**](*os.File.md)
+[**io.ReadCloser**](io.ReadCloser.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

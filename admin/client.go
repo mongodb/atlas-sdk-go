@@ -514,36 +514,15 @@ func (c *APIClient) decode(v interface{}, b []byte, contentType string) (err err
 		*s = string(b)
 		return nil
 	}
-	if _, ok := v.(*os.File); ok {
-		f, err1 := os.CreateTemp("", "HttpClientFile")
-		if err1 != nil {
-			if c.cfg.Debug {
-				log.Printf("\n%s\n", err1)
-			}
-			return
-		}
-		_, err1 = f.Write(b)
-		if err != nil {
-			if c.cfg.Debug {
-				log.Printf("\n%s\n", err1)
-			}
-			return
-		}
-
-		_, _ = f.Seek(0, io.SeekStart)
-		return
+	if r, ok := v.(*io.ReadCloser); ok {
+		reader := io.NopCloser(bytes.NewReader(b))
+		*r = reader
+		return nil
 	}
-	if f, ok := v.(**os.File); ok {
-		*f, err = os.CreateTemp("", "HttpClientFile")
-		if err != nil {
-			return
-		}
-		_, err = (*f).Write(b)
-		if err != nil {
-			return
-		}
-		_, err = (*f).Seek(0, io.SeekStart)
-		return
+	if r, ok := v.(**io.ReadCloser); ok {
+		reader := io.NopCloser(bytes.NewReader(b))
+		*r = &reader
+		return nil
 	}
 	if xmlCheck.MatchString(contentType) {
 		return xml.Unmarshal(b, v)
@@ -598,8 +577,8 @@ func setBody(body interface{}, contentType string) (bodyBuf *bytes.Buffer, err e
 
 	if reader, ok := body.(io.Reader); ok {
 		_, err = bodyBuf.ReadFrom(reader)
-	} else if fp, ok := body.(*os.File); ok {
-		_, err = bodyBuf.ReadFrom(fp)
+	} else if fp, ok := body.(*io.ReadCloser); ok {
+		_, err = bodyBuf.ReadFrom(*fp)
 	} else if b, ok := body.([]byte); ok {
 		_, err = bodyBuf.Write(b)
 	} else if s, ok := body.(string); ok {

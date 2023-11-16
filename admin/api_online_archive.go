@@ -8,7 +8,6 @@ import (
 	"io"
 	"net/http"
 	"net/url"
-	"os"
 	"strings"
 )
 
@@ -85,7 +84,7 @@ type OnlineArchiveApi interface {
 	DownloadOnlineArchiveQueryLogsWithParams(ctx context.Context, args *DownloadOnlineArchiveQueryLogsApiParams) DownloadOnlineArchiveQueryLogsApiRequest
 
 	// Interface only available internally
-	downloadOnlineArchiveQueryLogsExecute(r DownloadOnlineArchiveQueryLogsApiRequest) (*os.File, *http.Response, error)
+	downloadOnlineArchiveQueryLogsExecute(r DownloadOnlineArchiveQueryLogsApiRequest) (io.ReadCloser, *http.Response, error)
 
 	/*
 		GetOnlineArchive Return One Online Archive
@@ -518,7 +517,7 @@ func (r DownloadOnlineArchiveQueryLogsApiRequest) ArchiveOnly(archiveOnly bool) 
 	return r
 }
 
-func (r DownloadOnlineArchiveQueryLogsApiRequest) Execute() (*os.File, *http.Response, error) {
+func (r DownloadOnlineArchiveQueryLogsApiRequest) Execute() (io.ReadCloser, *http.Response, error) {
 	return r.ApiService.downloadOnlineArchiveQueryLogsExecute(r)
 }
 
@@ -543,13 +542,13 @@ func (a *OnlineArchiveApiService) DownloadOnlineArchiveQueryLogs(ctx context.Con
 
 // Execute executes the request
 //
-//	@return *os.File
-func (a *OnlineArchiveApiService) downloadOnlineArchiveQueryLogsExecute(r DownloadOnlineArchiveQueryLogsApiRequest) (*os.File, *http.Response, error) {
+//	@return io.ReadCloser
+func (a *OnlineArchiveApiService) downloadOnlineArchiveQueryLogsExecute(r DownloadOnlineArchiveQueryLogsApiRequest) (io.ReadCloser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *os.File
+		localVarReturnValue io.ReadCloser
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OnlineArchiveApiService.DownloadOnlineArchiveQueryLogs")

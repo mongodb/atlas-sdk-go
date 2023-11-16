@@ -487,7 +487,7 @@ Name | Type | Description  | Notes
 
 ## DownloadFederatedDatabaseQueryLogs
 
-> *os.File DownloadFederatedDatabaseQueryLogs(ctx, groupId, tenantName).EndDate(endDate).StartDate(startDate).Execute()
+> io.ReadCloser DownloadFederatedDatabaseQueryLogs(ctx, groupId, tenantName).EndDate(endDate).StartDate(startDate).Execute()
 
 Download Query Logs for One Federated Database Instance
 
@@ -522,7 +522,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `DownloadFederatedDatabaseQueryLogs`: *os.File
+    // response from `DownloadFederatedDatabaseQueryLogs`: io.ReadCloser
     fmt.Fprintf(os.Stdout, "Response from `DataFederationApi.DownloadFederatedDatabaseQueryLogs`: %v\n", resp)
 }
 ```
@@ -550,7 +550,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[***os.File**](*os.File.md)
+[**io.ReadCloser**](io.ReadCloser.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
