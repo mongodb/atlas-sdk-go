@@ -45,6 +45,18 @@ In situations when breaking changes are present automation will recognize them a
 - Replace all occurrences of the Major version in the repository
 - Generate breaking changes file
 
+### Manual Breaking Changes Release
+
+When introducing breaking changes outside generation process we need to manually run script:
+
+1. Run
+
+`make update-version`
+
+2. Add breaking changes information to `./breaking _changes/{major_version}`
+3. Run `npm run format` to ensure that file contains correct release notes.
+4. Commit all the changes.
+
 ## Release Notes
 
 If the release contains breaking changes (it is a major release)

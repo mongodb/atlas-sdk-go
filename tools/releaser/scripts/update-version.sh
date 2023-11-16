@@ -18,7 +18,7 @@ major_version_bump=$(printf "%03d" "$major_version_bump")
 BUMPED_MAJOR_VERSION="v${SDK_RESOURCE_VERSION}${major_version_bump}"
 
 export TARGET_BREAKING_CHANGES_FILE=${BUMPED_MAJOR_VERSION}
-echo -e "# Breaking Changes\n## SDK changes\n TODO \n## API Changelog\n https://www.mongodb.com/docs/atlas/reference/api-resources-spec/changelog" \
+echo -e "# Breaking Changes\n## SDK changes\n ${BREAKING_CHANGES:-TODO} \n## API Changelog\n https://www.mongodb.com/docs/atlas/reference/api-resources-spec/changelog" \
 		> "$script_path/../breaking_changes/${TARGET_BREAKING_CHANGES_FILE}.md"
 
 echo "Modifying $SDK_MAJOR_VERSION to $BUMPED_MAJOR_VERSION Resource Version across the repository."
