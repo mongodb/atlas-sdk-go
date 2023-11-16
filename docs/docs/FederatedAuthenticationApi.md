@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**DeleteRoleMapping**](FederatedAuthenticationApi.md#DeleteRoleMapping) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id} | Remove One Role Mapping from One Organization
 [**GetConnectedOrgConfig**](FederatedAuthenticationApi.md#GetConnectedOrgConfig) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Return One Org Config Connected to One Federation
 [**GetFederationSettings**](FederatedAuthenticationApi.md#GetFederationSettings) | **Get** /api/atlas/v2/orgs/{orgId}/federationSettings | Return Federation Settings for One Organization
-[**GetIdentityProvider**](FederatedAuthenticationApi.md#GetIdentityProvider) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Return one SAML identity provider from the specified federation.
+[**GetIdentityProvider**](FederatedAuthenticationApi.md#GetIdentityProvider) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Return one identity provider from the specified federation by id.
 [**GetIdentityProviderMetadata**](FederatedAuthenticationApi.md#GetIdentityProviderMetadata) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/metadata.xml | Return the metadata of one identity provider in the specified federation.
 [**GetRoleMapping**](FederatedAuthenticationApi.md#GetRoleMapping) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id} | Return One Role Mapping from One Organization
 [**ListConnectedOrgConfigs**](FederatedAuthenticationApi.md#ListConnectedOrgConfigs) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs | Return All Connected Org Configs from the Federation
@@ -17,7 +17,7 @@ Method | HTTP request | Description
 [**ListRoleMappings**](FederatedAuthenticationApi.md#ListRoleMappings) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings | Return All Role Mappings from One Organization
 [**RemoveConnectedOrgConfig**](FederatedAuthenticationApi.md#RemoveConnectedOrgConfig) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Remove One Org Config Connected to One Federation
 [**UpdateConnectedOrgConfig**](FederatedAuthenticationApi.md#UpdateConnectedOrgConfig) | **Patch** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Update One Org Config Connected to One Federation
-[**UpdateIdentityProvider**](FederatedAuthenticationApi.md#UpdateIdentityProvider) | **Patch** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Update the SAML identity provider.
+[**UpdateIdentityProvider**](FederatedAuthenticationApi.md#UpdateIdentityProvider) | **Patch** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Update the identity provider.
 [**UpdateRoleMapping**](FederatedAuthenticationApi.md#UpdateRoleMapping) | **Put** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id} | Update One Role Mapping in One Organization
 
 
@@ -44,7 +44,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001002/admin"
+    "go.mongodb.org/atlas-sdk/v20231115001/admin"
 )
 
 func main() {
@@ -127,7 +127,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001002/admin"
+    "go.mongodb.org/atlas-sdk/v20231115001/admin"
 )
 
 func main() {
@@ -203,7 +203,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001002/admin"
+    "go.mongodb.org/atlas-sdk/v20231115001/admin"
 )
 
 func main() {
@@ -285,7 +285,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001002/admin"
+    "go.mongodb.org/atlas-sdk/v20231115001/admin"
 )
 
 func main() {
@@ -366,7 +366,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001002/admin"
+    "go.mongodb.org/atlas-sdk/v20231115001/admin"
 )
 
 func main() {
@@ -424,9 +424,9 @@ Name | Type | Description  | Notes
 
 ## GetIdentityProvider
 
-> FederationSamlIdentityProvider GetIdentityProvider(ctx, federationSettingsId, identityProviderId).Execute()
+> FederationIdentityProvider GetIdentityProvider(ctx, federationSettingsId, identityProviderId).Execute()
 
-Return one SAML identity provider from the specified federation.
+Return one identity provider from the specified federation by id.
 
 
 ## Experimental
@@ -444,7 +444,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001002/admin"
+    "go.mongodb.org/atlas-sdk/v20231115001/admin"
 )
 
 func main() {
@@ -462,7 +462,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `GetIdentityProvider`: FederationSamlIdentityProvider
+    // response from `GetIdentityProvider`: FederationIdentityProvider
     fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.GetIdentityProvider`: %v\n", resp)
 }
 ```
@@ -488,7 +488,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FederationSamlIdentityProvider**](FederationSamlIdentityProvider.md)
+[**FederationIdentityProvider**](FederationIdentityProvider.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -496,7 +496,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Accept**: application/vnd.atlas.2023-11-15+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -525,7 +525,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001002/admin"
+    "go.mongodb.org/atlas-sdk/v20231115001/admin"
 )
 
 func main() {
@@ -606,7 +606,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001002/admin"
+    "go.mongodb.org/atlas-sdk/v20231115001/admin"
 )
 
 func main() {
@@ -690,7 +690,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001002/admin"
+    "go.mongodb.org/atlas-sdk/v20231115001/admin"
 )
 
 func main() {
@@ -768,7 +768,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001002/admin"
+    "go.mongodb.org/atlas-sdk/v20231115001/admin"
 )
 
 func main() {
@@ -848,7 +848,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001002/admin"
+    "go.mongodb.org/atlas-sdk/v20231115001/admin"
 )
 
 func main() {
@@ -929,7 +929,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001002/admin"
+    "go.mongodb.org/atlas-sdk/v20231115001/admin"
 )
 
 func main() {
@@ -1010,7 +1010,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001002/admin"
+    "go.mongodb.org/atlas-sdk/v20231115001/admin"
 )
 
 func main() {
@@ -1073,9 +1073,9 @@ Name | Type | Description  | Notes
 
 ## UpdateIdentityProvider
 
-> FederationSamlIdentityProvider UpdateIdentityProvider(ctx, federationSettingsId, identityProviderId, samlIdentityProviderUpdate SamlIdentityProviderUpdate).Execute()
+> FederationIdentityProvider UpdateIdentityProvider(ctx, federationSettingsId, identityProviderId, identityProviderUpdate IdentityProviderUpdate).Execute()
 
-Update the SAML identity provider.
+Update the identity provider.
 
 
 ## Experimental
@@ -1093,7 +1093,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001002/admin"
+    "go.mongodb.org/atlas-sdk/v20231115001/admin"
 )
 
 func main() {
@@ -1104,15 +1104,15 @@ func main() {
 
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     identityProviderId := "c2777a9eca931f29fc2f" // string | 
-    samlIdentityProviderUpdate := *openapiclient.NewSamlIdentityProviderUpdate(false) // SamlIdentityProviderUpdate | 
+    identityProviderUpdate := *openapiclient.NewIdentityProviderUpdate() // IdentityProviderUpdate | 
 
-    resp, r, err := sdk.FederatedAuthenticationApi.UpdateIdentityProvider(context.Background(), federationSettingsId, identityProviderId, &samlIdentityProviderUpdate).Execute()
+    resp, r, err := sdk.FederatedAuthenticationApi.UpdateIdentityProvider(context.Background(), federationSettingsId, identityProviderId, &identityProviderUpdate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.UpdateIdentityProvider``: %v\n", err)
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `UpdateIdentityProvider`: FederationSamlIdentityProvider
+    // response from `UpdateIdentityProvider`: FederationIdentityProvider
     fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.UpdateIdentityProvider`: %v\n", resp)
 }
 ```
@@ -1135,19 +1135,19 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **samlIdentityProviderUpdate** | [**SamlIdentityProviderUpdate**](SamlIdentityProviderUpdate.md) | The identity provider that you want to update. | 
+ **identityProviderUpdate** | [**IdentityProviderUpdate**](IdentityProviderUpdate.md) | The identity provider that you want to update. | 
 
 ### Return type
 
-[**FederationSamlIdentityProvider**](FederationSamlIdentityProvider.md)
+[**FederationIdentityProvider**](FederationIdentityProvider.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
 
 ### HTTP request headers
 
-- **Content-Type**: application/vnd.atlas.2023-01-01+json
-- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+- **Content-Type**: application/vnd.atlas.2023-11-15+json
+- **Accept**: application/vnd.atlas.2023-11-15+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1176,7 +1176,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231001002/admin"
+    "go.mongodb.org/atlas-sdk/v20231115001/admin"
 )
 
 func main() {

@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AuthorizedEmail** | **string** | Email address of the user who authorized to updated the Backup Compliance Policy  settings. | 
+**AuthorizedEmail** | **string** | Email address of the user who authorized to update the Backup Compliance Policy  settings. | 
 **AuthorizedUserFirstName** | **string** | First name of the user who authorized to updated the Backup Compliance Policy  settings. | 
 **AuthorizedUserLastName** | **string** | Last name of the user who authorized to updated the Backup Compliance Policy  settings. | 
-**CopyProtectionEnabled** | Pointer to **bool** | Flag that indicates whether to enable additional backup copies for the cluster. If unspecified, this value defaults to false. | [optional] [default to false]
+**CopyProtectionEnabled** | Pointer to **bool** | Flag that indicates whether to prevent cluster users from deleting backups copied to other regions, even if those additional snapshot regions are removed. If unspecified, this value defaults to false. | [optional] [default to false]
 **EncryptionAtRestEnabled** | Pointer to **bool** | Flag that indicates whether Encryption at Rest using Customer Key  Management is required for all clusters with a Backup Compliance Policy. If unspecified, this value defaults to false. | [optional] [default to false]
-**OnDemandPolicyItem** | Pointer to [**DiskBackupApiPolicyItem**](DiskBackupApiPolicyItem.md) |  | [optional] 
+**OnDemandPolicyItem** | Pointer to [**BackupComplianceOnDemandPolicyItem**](BackupComplianceOnDemandPolicyItem.md) |  | [optional] 
 **PitEnabled** | Pointer to **bool** | Flag that indicates whether the cluster uses Continuous Cloud Backups with a Backup Compliance Policy. If unspecified, this value defaults to false. | [optional] [default to false]
 **ProjectId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the project for the Backup Compliance Policy. | [optional] 
 **RestoreWindowDays** | Pointer to **int** | Number of previous days that you can restore back to with Continuous Cloud Backup with a Backup Compliance Policy. You must specify a positive, non-zero integer, and the maximum retention window can&#39;t exceed the hourly retention time. This parameter applies only to Continuous Cloud Backups with a Backup Compliance Policy. | [optional] 
-**ScheduledPolicyItems** | Pointer to [**[]DiskBackupApiPolicyItem**](DiskBackupApiPolicyItem.md) | List that contains the specifications for one scheduled policy. | [optional] 
+**ScheduledPolicyItems** | Pointer to [**[]BackupComplianceScheduledPolicyItem**](BackupComplianceScheduledPolicyItem.md) | List that contains the specifications for one scheduled policy. | [optional] 
 **State** | Pointer to **string** | Label that indicates the state of the Backup Compliance Policy settings. MongoDB Cloud ignores this setting when you enable or update the Backup Compliance Policy settings. | [optional] [readonly] 
 **UpdatedDate** | Pointer to **time.Time** | ISO 8601 timestamp format in UTC that indicates when the user updated the Data Protection Policy settings. MongoDB Cloud ignores this setting when you enable or update the Backup Compliance Policy settings. | [optional] [readonly] 
 **UpdatedUser** | Pointer to **string** | Email address that identifies the user who updated the Backup Compliance Policy settings. MongoDB Cloud ignores this email setting when you enable or update the Backup Compliance Policy settings. | [optional] [readonly] 
@@ -144,20 +144,20 @@ SetEncryptionAtRestEnabled sets EncryptionAtRestEnabled field to given value.
 HasEncryptionAtRestEnabled returns a boolean if a field has been set.
 ### GetOnDemandPolicyItem
 
-`func (o *DataProtectionSettings20231001) GetOnDemandPolicyItem() DiskBackupApiPolicyItem`
+`func (o *DataProtectionSettings20231001) GetOnDemandPolicyItem() BackupComplianceOnDemandPolicyItem`
 
 GetOnDemandPolicyItem returns the OnDemandPolicyItem field if non-nil, zero value otherwise.
 
 ### GetOnDemandPolicyItemOk
 
-`func (o *DataProtectionSettings20231001) GetOnDemandPolicyItemOk() (*DiskBackupApiPolicyItem, bool)`
+`func (o *DataProtectionSettings20231001) GetOnDemandPolicyItemOk() (*BackupComplianceOnDemandPolicyItem, bool)`
 
 GetOnDemandPolicyItemOk returns a tuple with the OnDemandPolicyItem field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOnDemandPolicyItem
 
-`func (o *DataProtectionSettings20231001) SetOnDemandPolicyItem(v DiskBackupApiPolicyItem)`
+`func (o *DataProtectionSettings20231001) SetOnDemandPolicyItem(v BackupComplianceOnDemandPolicyItem)`
 
 SetOnDemandPolicyItem sets OnDemandPolicyItem field to given value.
 
@@ -240,20 +240,20 @@ SetRestoreWindowDays sets RestoreWindowDays field to given value.
 HasRestoreWindowDays returns a boolean if a field has been set.
 ### GetScheduledPolicyItems
 
-`func (o *DataProtectionSettings20231001) GetScheduledPolicyItems() []DiskBackupApiPolicyItem`
+`func (o *DataProtectionSettings20231001) GetScheduledPolicyItems() []BackupComplianceScheduledPolicyItem`
 
 GetScheduledPolicyItems returns the ScheduledPolicyItems field if non-nil, zero value otherwise.
 
 ### GetScheduledPolicyItemsOk
 
-`func (o *DataProtectionSettings20231001) GetScheduledPolicyItemsOk() (*[]DiskBackupApiPolicyItem, bool)`
+`func (o *DataProtectionSettings20231001) GetScheduledPolicyItemsOk() (*[]BackupComplianceScheduledPolicyItem, bool)`
 
 GetScheduledPolicyItemsOk returns a tuple with the ScheduledPolicyItems field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetScheduledPolicyItems
 
-`func (o *DataProtectionSettings20231001) SetScheduledPolicyItems(v []DiskBackupApiPolicyItem)`
+`func (o *DataProtectionSettings20231001) SetScheduledPolicyItems(v []BackupComplianceScheduledPolicyItem)`
 
 SetScheduledPolicyItems sets ScheduledPolicyItems field to given value.
 

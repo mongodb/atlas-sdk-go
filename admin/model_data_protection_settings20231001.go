@@ -9,17 +9,17 @@ import (
 
 // DataProtectionSettings20231001 struct for DataProtectionSettings20231001
 type DataProtectionSettings20231001 struct {
-	// Email address of the user who authorized to updated the Backup Compliance Policy  settings.
+	// Email address of the user who authorized to update the Backup Compliance Policy  settings.
 	AuthorizedEmail string `json:"authorizedEmail"`
 	// First name of the user who authorized to updated the Backup Compliance Policy  settings.
 	AuthorizedUserFirstName string `json:"authorizedUserFirstName"`
 	// Last name of the user who authorized to updated the Backup Compliance Policy  settings.
 	AuthorizedUserLastName string `json:"authorizedUserLastName"`
-	// Flag that indicates whether to enable additional backup copies for the cluster. If unspecified, this value defaults to false.
+	// Flag that indicates whether to prevent cluster users from deleting backups copied to other regions, even if those additional snapshot regions are removed. If unspecified, this value defaults to false.
 	CopyProtectionEnabled *bool `json:"copyProtectionEnabled,omitempty"`
 	// Flag that indicates whether Encryption at Rest using Customer Key  Management is required for all clusters with a Backup Compliance Policy. If unspecified, this value defaults to false.
-	EncryptionAtRestEnabled *bool                    `json:"encryptionAtRestEnabled,omitempty"`
-	OnDemandPolicyItem      *DiskBackupApiPolicyItem `json:"onDemandPolicyItem,omitempty"`
+	EncryptionAtRestEnabled *bool                               `json:"encryptionAtRestEnabled,omitempty"`
+	OnDemandPolicyItem      *BackupComplianceOnDemandPolicyItem `json:"onDemandPolicyItem,omitempty"`
 	// Flag that indicates whether the cluster uses Continuous Cloud Backups with a Backup Compliance Policy. If unspecified, this value defaults to false.
 	PitEnabled *bool `json:"pitEnabled,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project for the Backup Compliance Policy.
@@ -27,7 +27,7 @@ type DataProtectionSettings20231001 struct {
 	// Number of previous days that you can restore back to with Continuous Cloud Backup with a Backup Compliance Policy. You must specify a positive, non-zero integer, and the maximum retention window can't exceed the hourly retention time. This parameter applies only to Continuous Cloud Backups with a Backup Compliance Policy.
 	RestoreWindowDays *int `json:"restoreWindowDays,omitempty"`
 	// List that contains the specifications for one scheduled policy.
-	ScheduledPolicyItems []DiskBackupApiPolicyItem `json:"scheduledPolicyItems,omitempty"`
+	ScheduledPolicyItems []BackupComplianceScheduledPolicyItem `json:"scheduledPolicyItems,omitempty"`
 	// Label that indicates the state of the Backup Compliance Policy settings. MongoDB Cloud ignores this setting when you enable or update the Backup Compliance Policy settings.
 	State *string `json:"state,omitempty"`
 	// ISO 8601 timestamp format in UTC that indicates when the user updated the Data Protection Policy settings. MongoDB Cloud ignores this setting when you enable or update the Backup Compliance Policy settings.
@@ -207,9 +207,9 @@ func (o *DataProtectionSettings20231001) SetEncryptionAtRestEnabled(v bool) {
 }
 
 // GetOnDemandPolicyItem returns the OnDemandPolicyItem field value if set, zero value otherwise
-func (o *DataProtectionSettings20231001) GetOnDemandPolicyItem() DiskBackupApiPolicyItem {
+func (o *DataProtectionSettings20231001) GetOnDemandPolicyItem() BackupComplianceOnDemandPolicyItem {
 	if o == nil || IsNil(o.OnDemandPolicyItem) {
-		var ret DiskBackupApiPolicyItem
+		var ret BackupComplianceOnDemandPolicyItem
 		return ret
 	}
 	return *o.OnDemandPolicyItem
@@ -217,7 +217,7 @@ func (o *DataProtectionSettings20231001) GetOnDemandPolicyItem() DiskBackupApiPo
 
 // GetOnDemandPolicyItemOk returns a tuple with the OnDemandPolicyItem field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DataProtectionSettings20231001) GetOnDemandPolicyItemOk() (*DiskBackupApiPolicyItem, bool) {
+func (o *DataProtectionSettings20231001) GetOnDemandPolicyItemOk() (*BackupComplianceOnDemandPolicyItem, bool) {
 	if o == nil || IsNil(o.OnDemandPolicyItem) {
 		return nil, false
 	}
@@ -234,8 +234,8 @@ func (o *DataProtectionSettings20231001) HasOnDemandPolicyItem() bool {
 	return false
 }
 
-// SetOnDemandPolicyItem gets a reference to the given DiskBackupApiPolicyItem and assigns it to the OnDemandPolicyItem field.
-func (o *DataProtectionSettings20231001) SetOnDemandPolicyItem(v DiskBackupApiPolicyItem) {
+// SetOnDemandPolicyItem gets a reference to the given BackupComplianceOnDemandPolicyItem and assigns it to the OnDemandPolicyItem field.
+func (o *DataProtectionSettings20231001) SetOnDemandPolicyItem(v BackupComplianceOnDemandPolicyItem) {
 	o.OnDemandPolicyItem = &v
 }
 
@@ -339,9 +339,9 @@ func (o *DataProtectionSettings20231001) SetRestoreWindowDays(v int) {
 }
 
 // GetScheduledPolicyItems returns the ScheduledPolicyItems field value if set, zero value otherwise
-func (o *DataProtectionSettings20231001) GetScheduledPolicyItems() []DiskBackupApiPolicyItem {
+func (o *DataProtectionSettings20231001) GetScheduledPolicyItems() []BackupComplianceScheduledPolicyItem {
 	if o == nil || IsNil(o.ScheduledPolicyItems) {
-		var ret []DiskBackupApiPolicyItem
+		var ret []BackupComplianceScheduledPolicyItem
 		return ret
 	}
 	return o.ScheduledPolicyItems
@@ -349,7 +349,7 @@ func (o *DataProtectionSettings20231001) GetScheduledPolicyItems() []DiskBackupA
 
 // GetScheduledPolicyItemsOk returns a tuple with the ScheduledPolicyItems field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DataProtectionSettings20231001) GetScheduledPolicyItemsOk() ([]DiskBackupApiPolicyItem, bool) {
+func (o *DataProtectionSettings20231001) GetScheduledPolicyItemsOk() ([]BackupComplianceScheduledPolicyItem, bool) {
 	if o == nil || IsNil(o.ScheduledPolicyItems) {
 		return nil, false
 	}
@@ -366,8 +366,8 @@ func (o *DataProtectionSettings20231001) HasScheduledPolicyItems() bool {
 	return false
 }
 
-// SetScheduledPolicyItems gets a reference to the given []DiskBackupApiPolicyItem and assigns it to the ScheduledPolicyItems field.
-func (o *DataProtectionSettings20231001) SetScheduledPolicyItems(v []DiskBackupApiPolicyItem) {
+// SetScheduledPolicyItems gets a reference to the given []BackupComplianceScheduledPolicyItem and assigns it to the ScheduledPolicyItems field.
+func (o *DataProtectionSettings20231001) SetScheduledPolicyItems(v []BackupComplianceScheduledPolicyItem) {
 	o.ScheduledPolicyItems = v
 }
 

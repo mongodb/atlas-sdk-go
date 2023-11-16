@@ -27,6 +27,8 @@ type ClusterDescriptionProcessArgs struct {
 	OplogMinRetentionHours *float64 `json:"oplogMinRetentionHours,omitempty"`
 	// Storage limit of cluster's oplog expressed in megabytes. A value of null indicates that the cluster uses the default oplog size that MongoDB Cloud calculates.
 	OplogSizeMB *int `json:"oplogSizeMB,omitempty"`
+	// May be set to 1 (disabled) or 3 (enabled). When set to 3, Atlas will include redacted and anonymized $queryStats output in MongoDB logs. $queryStats output does not contain literals or field values. Enabling this setting might impact the performance of your cluster.
+	QueryStatsLogVerbosity *int `json:"queryStatsLogVerbosity,omitempty"`
 	// Interval in seconds at which the mongosqld process re-samples data to create its relational schema.
 	SampleRefreshIntervalBIConnector *int `json:"sampleRefreshIntervalBIConnector,omitempty"`
 	// Number of documents per database to sample when gathering schema information.
@@ -53,6 +55,8 @@ func NewClusterDescriptionProcessArgs() *ClusterDescriptionProcessArgs {
 	this.JavascriptEnabled = &javascriptEnabled
 	var noTableScan bool = false
 	this.NoTableScan = &noTableScan
+	var queryStatsLogVerbosity int = 1
+	this.QueryStatsLogVerbosity = &queryStatsLogVerbosity
 	var sampleRefreshIntervalBIConnector int = 0
 	this.SampleRefreshIntervalBIConnector = &sampleRefreshIntervalBIConnector
 	var sampleSizeBIConnector int = 1000
@@ -79,6 +83,8 @@ func NewClusterDescriptionProcessArgsWithDefaults() *ClusterDescriptionProcessAr
 	this.JavascriptEnabled = &javascriptEnabled
 	var noTableScan bool = false
 	this.NoTableScan = &noTableScan
+	var queryStatsLogVerbosity int = 1
+	this.QueryStatsLogVerbosity = &queryStatsLogVerbosity
 	var sampleRefreshIntervalBIConnector int = 0
 	this.SampleRefreshIntervalBIConnector = &sampleRefreshIntervalBIConnector
 	var sampleSizeBIConnector int = 1000
@@ -388,6 +394,39 @@ func (o *ClusterDescriptionProcessArgs) SetOplogSizeMB(v int) {
 	o.OplogSizeMB = &v
 }
 
+// GetQueryStatsLogVerbosity returns the QueryStatsLogVerbosity field value if set, zero value otherwise
+func (o *ClusterDescriptionProcessArgs) GetQueryStatsLogVerbosity() int {
+	if o == nil || IsNil(o.QueryStatsLogVerbosity) {
+		var ret int
+		return ret
+	}
+	return *o.QueryStatsLogVerbosity
+}
+
+// GetQueryStatsLogVerbosityOk returns a tuple with the QueryStatsLogVerbosity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterDescriptionProcessArgs) GetQueryStatsLogVerbosityOk() (*int, bool) {
+	if o == nil || IsNil(o.QueryStatsLogVerbosity) {
+		return nil, false
+	}
+
+	return o.QueryStatsLogVerbosity, true
+}
+
+// HasQueryStatsLogVerbosity returns a boolean if a field has been set.
+func (o *ClusterDescriptionProcessArgs) HasQueryStatsLogVerbosity() bool {
+	if o != nil && !IsNil(o.QueryStatsLogVerbosity) {
+		return true
+	}
+
+	return false
+}
+
+// SetQueryStatsLogVerbosity gets a reference to the given int and assigns it to the QueryStatsLogVerbosity field.
+func (o *ClusterDescriptionProcessArgs) SetQueryStatsLogVerbosity(v int) {
+	o.QueryStatsLogVerbosity = &v
+}
+
 // GetSampleRefreshIntervalBIConnector returns the SampleRefreshIntervalBIConnector field value if set, zero value otherwise
 func (o *ClusterDescriptionProcessArgs) GetSampleRefreshIntervalBIConnector() int {
 	if o == nil || IsNil(o.SampleRefreshIntervalBIConnector) {
@@ -522,6 +561,9 @@ func (o ClusterDescriptionProcessArgs) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.OplogSizeMB) {
 		toSerialize["oplogSizeMB"] = o.OplogSizeMB
+	}
+	if !IsNil(o.QueryStatsLogVerbosity) {
+		toSerialize["queryStatsLogVerbosity"] = o.QueryStatsLogVerbosity
 	}
 	if !IsNil(o.SampleRefreshIntervalBIConnector) {
 		toSerialize["sampleRefreshIntervalBIConnector"] = o.SampleRefreshIntervalBIConnector

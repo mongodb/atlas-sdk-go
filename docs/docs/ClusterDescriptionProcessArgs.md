@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **NoTableScan** | Pointer to **bool** | Flag that indicates whether the cluster disables executing any query that requires a collection scan to return results. | [optional] [default to false]
 **OplogMinRetentionHours** | Pointer to **float64** | Minimum retention window for cluster&#39;s oplog expressed in hours. A value of null indicates that the cluster uses the default minimum oplog window that MongoDB Cloud calculates. | [optional] 
 **OplogSizeMB** | Pointer to **int** | Storage limit of cluster&#39;s oplog expressed in megabytes. A value of null indicates that the cluster uses the default oplog size that MongoDB Cloud calculates. | [optional] 
+**QueryStatsLogVerbosity** | Pointer to **int** | May be set to 1 (disabled) or 3 (enabled). When set to 3, Atlas will include redacted and anonymized $queryStats output in MongoDB logs. $queryStats output does not contain literals or field values. Enabling this setting might impact the performance of your cluster. | [optional] [default to 1]
 **SampleRefreshIntervalBIConnector** | Pointer to **int** | Interval in seconds at which the mongosqld process re-samples data to create its relational schema. | [optional] [default to 0]
 **SampleSizeBIConnector** | Pointer to **int** | Number of documents per database to sample when gathering schema information. | [optional] [default to 1000]
 **TransactionLifetimeLimitSeconds** | Pointer to **int64** | Lifetime, in seconds, of multi-document transactions. Atlas considers the transactions that exceed this limit as expired and so aborts them through a periodic cleanup process. | [optional] [default to 60]
@@ -252,6 +253,30 @@ SetOplogSizeMB sets OplogSizeMB field to given value.
 `func (o *ClusterDescriptionProcessArgs) HasOplogSizeMB() bool`
 
 HasOplogSizeMB returns a boolean if a field has been set.
+### GetQueryStatsLogVerbosity
+
+`func (o *ClusterDescriptionProcessArgs) GetQueryStatsLogVerbosity() int`
+
+GetQueryStatsLogVerbosity returns the QueryStatsLogVerbosity field if non-nil, zero value otherwise.
+
+### GetQueryStatsLogVerbosityOk
+
+`func (o *ClusterDescriptionProcessArgs) GetQueryStatsLogVerbosityOk() (*int, bool)`
+
+GetQueryStatsLogVerbosityOk returns a tuple with the QueryStatsLogVerbosity field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetQueryStatsLogVerbosity
+
+`func (o *ClusterDescriptionProcessArgs) SetQueryStatsLogVerbosity(v int)`
+
+SetQueryStatsLogVerbosity sets QueryStatsLogVerbosity field to given value.
+
+### HasQueryStatsLogVerbosity
+
+`func (o *ClusterDescriptionProcessArgs) HasQueryStatsLogVerbosity() bool`
+
+HasQueryStatsLogVerbosity returns a boolean if a field has been set.
 ### GetSampleRefreshIntervalBIConnector
 
 `func (o *ClusterDescriptionProcessArgs) GetSampleRefreshIntervalBIConnector() int`
