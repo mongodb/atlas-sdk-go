@@ -10,7 +10,7 @@ Errors are represented by [ApiErrorObject](https://github.com/mongodb/atlas-sdk-
 To fetch the error object, execute the following:
 
 ```go
-import "go.mongodb.org/atlas-sdk/v20231115001/admin"
+import "go.mongodb.org/atlas-sdk/v20231115002/admin"
 
 projects, response, err := admin.ProjectsApi.ListProjects(ctx).Execute()
 apiError, ok := admin.AsError(err)
@@ -22,7 +22,7 @@ fmt.Println(apiError)
 To check for the existence of a specific error code, execute the following:
 
 ```go
-import admin "go.mongodb.org/atlas-sdk/v20231115001/admin"
+import admin "go.mongodb.org/atlas-sdk/v20231115002/admin"
 
 projects, response, err := admin.ProjectsApi.ListProjects(ctx).Execute()
 if admin.IsErrorCode(err, "code"){
