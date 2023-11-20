@@ -12,6 +12,9 @@ updates:
       day: monday
     reviewers:
       - "mongodb/APIx1"
+    ignore: 
+      ## We use this action as util. It should be updated manually.
+      -  "tj-actions/verify-changed-files"
   - package-ecosystem: npm
     directory: "/"
     schedule:
