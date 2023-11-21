@@ -49,7 +49,7 @@ jobs:
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         working-directory: ./tools
         run: |
-          npm run format
+          npm install && npm run format
       - uses: peter-evans/create-pull-request@v5
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         env:
