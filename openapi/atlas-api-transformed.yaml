@@ -24,7 +24,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 9d9ea45891265dc59d8ea0cdf5f7f88084e89ad6
+  x-xgen-sha: 3710477668012519a21034ce7c15e886a3bd6067
 servers:
   - url: https://cloud.mongodb.com
 tags:
@@ -222,8 +222,6 @@ tags:
       description: Self-Managed X.509 Certificates
       url: https://www.mongodb.com/docs/atlas/security-self-managed-x509/
     name: X.509 Authentication
-  - description: Salesforce Opportunity change / credit rebill related endpoints.
-    name: Opportunity Change
 paths:
   /api/atlas/v2:
     get:
@@ -11374,6 +11372,137 @@ paths:
       summary: Return Suggested Indexes
       tags:
         - Performance Advisor
+  "/api/atlas/v2/groups/{groupId}/pushBasedLogExport":
+    delete:
+      description: Disables the push-based log export feature by resetting the project
+        level settings to its default configuration.
+      operationId: deletePushBasedLogConfiguration
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              x-xgen-version: 2023-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Disable the push-based log export feature for a project
+      tags:
+        - Push-Based Log Export
+      x-xgen-experimental: true
+    get:
+      description: Fetches the current project level settings for the push-based log
+        export feature.
+      operationId: getPushBasedLogConfiguration
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              schema:
+                $ref: "#/components/schemas/PushBasedLogExportProject"
+              x-xgen-version: 2023-01-01
+          description: OK
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Get the push-based log export configuration for a project
+      tags:
+        - Push-Based Log Export
+      x-xgen-experimental: true
+    patch:
+      description: Updates the project level settings for the push-based log export feature.
+      operationId: updatePushBasedLogConfiguration
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+      requestBody:
+        content:
+          application/vnd.atlas.2023-01-01+json:
+            schema:
+              $ref: "#/components/schemas/PushBasedLogExportProject"
+            x-xgen-version: 2023-01-01
+        description: The project configuration details. The S3 bucket name, IAM role ID,
+          and prefix path fields are the only fields that may be specified.
+          Fields left unspecified will not be modified.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              x-xgen-version: 2023-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Update the push-based log export feature for a project
+      tags:
+        - Push-Based Log Export
+      x-xgen-experimental: true
+    post:
+      description: Configures the project level settings for the push-based log export
+        feature.
+      operationId: createPushBasedLogConfiguration
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+      requestBody:
+        content:
+          application/vnd.atlas.2023-01-01+json:
+            schema:
+              $ref: "#/components/schemas/PushBasedLogExportProject"
+            x-xgen-version: 2023-01-01
+        description: The project configuration details. The S3 bucket name, IAM role ID,
+          and prefix path fields are required.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-01-01+json:
+              x-xgen-version: 2023-01-01
+          description: OK
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
+      summary: Enable the push-based log export feature for a project
+      tags:
+        - Push-Based Log Export
+      x-xgen-experimental: true
   "/api/atlas/v2/groups/{groupId}/sampleDatasetLoad/{name}":
     post:
       description: Requests loading the MongoDB sample dataset into the specified
@@ -20573,12 +20702,6 @@ components:
     DataLakeTenant:
       type: object
       properties:
-        _privateEndpointHostnames:
-          type: array
-          description: List that contains the sets of private endpoints and hostnames.
-          items:
-            $ref: "#/components/schemas/PrivateEndpointHostname"
-          readOnly: true
         cloudProviderConfig:
           $ref: "#/components/schemas/DataLakeCloudProviderConfig"
         dataProcessRegion:
@@ -20602,6 +20725,12 @@ components:
         name:
           type: string
           description: Human-readable label that identifies the data lake.
+        privateEndpointHostnames:
+          type: array
+          description: List that contains the sets of private endpoints and hostnames.
+          items:
+            $ref: "#/components/schemas/PrivateEndpointHostname"
+          readOnly: true
         state:
           type: string
           description: Label that indicates the status of the Data Lake instance.
@@ -25872,6 +26001,39 @@ components:
             with this private endpoint.
       required:
         - endpointId
+    PushBasedLogExportProject:
+      type: object
+      properties:
+        bucketName:
+          type: string
+          description: The name of the bucket to which the agent will send the logs to.
+        createDate:
+          type: string
+          format: date-time
+          description: Date and time that this feature was enabled on.
+          readOnly: true
+        iamRoleId:
+          type: string
+          description: ID of the AWS IAM role that will be used to write to the S3 bucket.
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        prefixPath:
+          type: string
+          description: S3 directory in which vector will write to in order to store the
+            logs.
+        state:
+          type: string
+          description: Describes whether or not the feature is enabled and what status it
+            is in.
     RawMetricUnits:
       type: string
       default: RAW

@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PrivateEndpointHostnames** | Pointer to [**[]PrivateEndpointHostname**](PrivateEndpointHostname.md) | List that contains the sets of private endpoints and hostnames. | [optional] [readonly] 
 **CloudProviderConfig** | Pointer to [**DataLakeCloudProviderConfig**](DataLakeCloudProviderConfig.md) |  | [optional] 
 **DataProcessRegion** | Pointer to [**DataLakeDataProcessRegion**](DataLakeDataProcessRegion.md) |  | [optional] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the project. | [optional] [readonly] 
 **Hostnames** | Pointer to **[]string** | List that contains the hostnames assigned to the Data Lake instance. | [optional] [readonly] 
 **Name** | Pointer to **string** | Human-readable label that identifies the data lake. | [optional] 
+**PrivateEndpointHostnames** | Pointer to [**[]PrivateEndpointHostname**](PrivateEndpointHostname.md) | List that contains the sets of private endpoints and hostnames. | [optional] [readonly] 
 **State** | Pointer to **string** | Label that indicates the status of the Data Lake instance. | [optional] [readonly] 
 **Storage** | Pointer to [**DataLakeStorage**](DataLakeStorage.md) |  | [optional] 
 
@@ -32,30 +32,6 @@ NewDataLakeTenantWithDefaults instantiates a new DataLakeTenant object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetPrivateEndpointHostnames
-
-`func (o *DataLakeTenant) GetPrivateEndpointHostnames() []PrivateEndpointHostname`
-
-GetPrivateEndpointHostnames returns the PrivateEndpointHostnames field if non-nil, zero value otherwise.
-
-### GetPrivateEndpointHostnamesOk
-
-`func (o *DataLakeTenant) GetPrivateEndpointHostnamesOk() (*[]PrivateEndpointHostname, bool)`
-
-GetPrivateEndpointHostnamesOk returns a tuple with the PrivateEndpointHostnames field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPrivateEndpointHostnames
-
-`func (o *DataLakeTenant) SetPrivateEndpointHostnames(v []PrivateEndpointHostname)`
-
-SetPrivateEndpointHostnames sets PrivateEndpointHostnames field to given value.
-
-### HasPrivateEndpointHostnames
-
-`func (o *DataLakeTenant) HasPrivateEndpointHostnames() bool`
-
-HasPrivateEndpointHostnames returns a boolean if a field has been set.
 ### GetCloudProviderConfig
 
 `func (o *DataLakeTenant) GetCloudProviderConfig() DataLakeCloudProviderConfig`
@@ -176,6 +152,30 @@ SetName sets Name field to given value.
 `func (o *DataLakeTenant) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+### GetPrivateEndpointHostnames
+
+`func (o *DataLakeTenant) GetPrivateEndpointHostnames() []PrivateEndpointHostname`
+
+GetPrivateEndpointHostnames returns the PrivateEndpointHostnames field if non-nil, zero value otherwise.
+
+### GetPrivateEndpointHostnamesOk
+
+`func (o *DataLakeTenant) GetPrivateEndpointHostnamesOk() (*[]PrivateEndpointHostname, bool)`
+
+GetPrivateEndpointHostnamesOk returns a tuple with the PrivateEndpointHostnames field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrivateEndpointHostnames
+
+`func (o *DataLakeTenant) SetPrivateEndpointHostnames(v []PrivateEndpointHostname)`
+
+SetPrivateEndpointHostnames sets PrivateEndpointHostnames field to given value.
+
+### HasPrivateEndpointHostnames
+
+`func (o *DataLakeTenant) HasPrivateEndpointHostnames() bool`
+
+HasPrivateEndpointHostnames returns a boolean if a field has been set.
 ### GetState
 
 `func (o *DataLakeTenant) GetState() string`
