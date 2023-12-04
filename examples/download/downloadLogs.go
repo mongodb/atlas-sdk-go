@@ -40,7 +40,6 @@ func main() {
 	if projects.GetTotalCount() == 0 {
 		log.Fatal("account should have at least single project")
 	}
-	var out io.Writer = os.Stdout
 	projectId := projects.GetResults()[0].GetId()
 
 	// -- 2. Get first Process
@@ -61,6 +60,6 @@ func main() {
 	defer func() {
 		_ = logs.Close()
 	}()
-	_, err = io.Copy(out, logs)
+	_, err = io.Copy(os.Stdout, logs)
 	examples.HandleErr(err, nil)
 }
