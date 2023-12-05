@@ -56,13 +56,15 @@ When you have confirmed that the `time.Time pointer` is non-nil, you can safely 
 
 ## Working with Binary Responses
 
-In the Atlas Go SDK, the `io.ReadCloser` type is used to return binary data from APIs. 
+In the Atlas Go SDK, the `io.ReadCloser` type is used to return binary data using the APIs. 
 
-1. Use `io.Copy` if the intention is to store on a file or pass through another steam
+- Use `io.Copy` to store on a file or pass through another steam.
 
-2. Use `io.ReadAll` if the intention is to read all bytes in memory
+- Use `io.ReadAll` to read all bytes in memory.
 
-3. Call the `.Close()` function after done reading the data
+- Call the `.Close()` function after reading the data
+
+Note: see example in [examples/download/downloadLogs.go](../examples/download/downloadLogs.go)
 
 ## Use Method for Creating Models
 
