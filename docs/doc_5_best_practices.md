@@ -28,7 +28,7 @@ if test != ""
     requestBody.StringPointerValue = test
 ```
 
-## Working with Arrays
+## Working with Arrays and Slices
 
 When working with arrays in Golang we need to consider various scenarios such as the absence of a struct property  or property being null.
 Specifically for Atlas API null values aren't allowed which requires developers to specify array objects in specific format.
