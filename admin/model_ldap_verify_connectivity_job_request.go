@@ -11,14 +11,14 @@ type LDAPVerifyConnectivityJobRequest struct {
 	// Unique 24-hexadecimal digit string that identifies the project associated with this Lightweight Directory Access Protocol (LDAP) over Transport Layer Security (TLS) configuration.
 	GroupId *string `json:"groupId,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links   []Link                                  `json:"links,omitempty"`
+	Links   []Link                                  `json:"links"`
 	Request *LDAPVerifyConnectivityJobRequestParams `json:"request,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies this request to verify an Lightweight Directory Access Protocol (LDAP) configuration.
 	RequestId *string `json:"requestId,omitempty"`
 	// Human-readable string that indicates the status of the Lightweight Directory Access Protocol (LDAP) over Transport Layer Security (TLS) configuration.
 	Status *string `json:"status,omitempty"`
 	// List that contains the validation messages related to the verification of the provided Lightweight Directory Access Protocol (LDAP) over Transport Layer Security (TLS) configuration details. The list contains a document for each test that MongoDB Cloud runs. MongoDB Cloud stops running tests after the first failure.
-	Validations []LDAPVerifyConnectivityJobRequestValidation `json:"validations,omitempty"`
+	Validations []LDAPVerifyConnectivityJobRequestValidation `json:"validations"`
 }
 
 // NewLDAPVerifyConnectivityJobRequest instantiates a new LDAPVerifyConnectivityJobRequest object

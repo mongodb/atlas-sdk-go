@@ -22,7 +22,7 @@ type NetworkPermissionEntry struct {
 	// IP address that you want to add to the project's IP access list. Your IP access list entry can be one **awsSecurityGroup**, one **cidrBlock**, or one **ipAddress**. Don't set this parameter if you set **awsSecurityGroup** or **cidrBlock**.
 	IpAddress *string `json:"ipAddress,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 }
 
 // NewNetworkPermissionEntry instantiates a new NetworkPermissionEntry object

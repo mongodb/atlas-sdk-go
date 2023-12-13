@@ -21,17 +21,17 @@ type EndpointService struct {
 	// Unique string that identifies the Amazon Web Services (AWS) PrivateLink endpoint service. MongoDB Cloud returns null while it creates the endpoint service.
 	EndpointServiceName *string `json:"endpointServiceName,omitempty"`
 	// List of strings that identify private endpoint interfaces applied to the specified project.
-	InterfaceEndpoints []string `json:"interfaceEndpoints,omitempty"`
+	InterfaceEndpoints []string `json:"interfaceEndpoints"`
 	// List of private endpoints assigned to this Azure Private Link Service.
-	PrivateEndpoints []string `json:"privateEndpoints,omitempty"`
+	PrivateEndpoints []string `json:"privateEndpoints"`
 	// Unique string that identifies the Azure Private Link Service that MongoDB Cloud manages.
 	PrivateLinkServiceName *string `json:"privateLinkServiceName,omitempty"`
 	// Root-relative path that identifies of the Azure Private Link Service that MongoDB Cloud manages. Use this value to create a private endpoint connection to an Azure VNet.
 	PrivateLinkServiceResourceId *string `json:"privateLinkServiceResourceId,omitempty"`
 	// List of Google Cloud network endpoint groups that corresponds to the Private Service Connect endpoint service.
-	EndpointGroupNames []string `json:"endpointGroupNames,omitempty"`
+	EndpointGroupNames []string `json:"endpointGroupNames"`
 	// List of Uniform Resource Locators (URLs) that identifies endpoints that MongoDB Cloud can use to access one Google Cloud Service across a Google Cloud Virtual Private Connection (VPC) network.
-	ServiceAttachmentNames []string `json:"serviceAttachmentNames,omitempty"`
+	ServiceAttachmentNames []string `json:"serviceAttachmentNames"`
 }
 
 // NewEndpointService instantiates a new EndpointService object

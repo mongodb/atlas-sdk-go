@@ -11,7 +11,7 @@ type StreamsDataProcessRegion struct {
 	// Label that identifies the cloud service provider where MongoDB Cloud performs stream processing. Currently, this parameter supports AWS only.
 	CloudProvider string `json:"cloudProvider"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 	// Name of the cloud provider region hosting Atlas Stream Processing.
 	Region string `json:"region"`
 }

@@ -22,7 +22,7 @@ type UserAccessList struct {
 	// Network address that issued the most recent request to the API. This parameter requires the address to be expressed as one Internet Protocol version 4 or version 6 address. The resource returns this parameter after this IP address made at least one request.
 	LastUsedAddress *string `json:"lastUsedAddress,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 }
 
 // NewUserAccessList instantiates a new UserAccessList object

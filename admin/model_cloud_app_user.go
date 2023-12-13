@@ -24,15 +24,15 @@ type CloudAppUser struct {
 	// Last name, family name, or surname that belongs to the MongoDB Cloud user.
 	LastName string `json:"lastName"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 	// Mobile phone number that belongs to the MongoDB Cloud user.
 	MobileNumber string `json:"mobileNumber"`
 	// Password applied with the username to log in to MongoDB Cloud. MongoDB Cloud does not return this parameter except in response to creating a new MongoDB Cloud user. Only the MongoDB Cloud user can update their password after it has been set from the MongoDB Cloud console.
 	Password string `json:"password"`
 	// List of objects that display the MongoDB Cloud user's roles and the corresponding organization or project to which that role applies. A role can apply to one organization or one project but not both.
-	Roles []CloudAccessRoleAssignment `json:"roles,omitempty"`
+	Roles []CloudAccessRoleAssignment `json:"roles"`
 	// List of unique 24-hexadecimal digit strings that identifies the teams to which this MongoDB Cloud user belongs.
-	TeamIds []string `json:"teamIds,omitempty"`
+	TeamIds []string `json:"teamIds"`
 	// Email address that represents the username of the MongoDB Cloud user.
 	Username string `json:"username"`
 }

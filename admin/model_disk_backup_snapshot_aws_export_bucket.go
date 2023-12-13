@@ -17,7 +17,7 @@ type DiskBackupSnapshotAWSExportBucket struct {
 	// Unique 24-hexadecimal character string that identifies the AWS IAM role that MongoDB Cloud uses to access the AWS S3 bucket.
 	IamRoleId *string `json:"iamRoleId,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 }
 
 // NewDiskBackupSnapshotAWSExportBucket instantiates a new DiskBackupSnapshotAWSExportBucket object

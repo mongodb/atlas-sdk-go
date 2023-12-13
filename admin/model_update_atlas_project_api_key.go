@@ -11,7 +11,7 @@ type UpdateAtlasProjectApiKey struct {
 	// Purpose or explanation provided when someone creates this project API key.
 	Desc *string `json:"desc,omitempty"`
 	// List of roles to grant this API key. If you provide this list, provide a minimum of one role and ensure each role applies to this project.
-	Roles []string `json:"roles,omitempty"`
+	Roles []string `json:"roles"`
 }
 
 // NewUpdateAtlasProjectApiKey instantiates a new UpdateAtlasProjectApiKey object

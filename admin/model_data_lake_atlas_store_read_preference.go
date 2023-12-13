@@ -13,7 +13,7 @@ type DataLakeAtlasStoreReadPreference struct {
 	// Read preference mode that specifies to which replica set member to route the read requests.
 	Mode *string `json:"mode,omitempty"`
 	// List that contains tag sets or tag specification documents. If specified, Atlas Data Lake routes read requests to replica set member or members that are associated with the specified tags.
-	TagSets [][]DataLakeAtlasStoreReadPreferenceTag `json:"tagSets,omitempty"`
+	TagSets [][]DataLakeAtlasStoreReadPreferenceTag `json:"tagSets"`
 }
 
 // NewDataLakeAtlasStoreReadPreference instantiates a new DataLakeAtlasStoreReadPreference object

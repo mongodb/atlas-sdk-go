@@ -11,7 +11,7 @@ type AdvancedDiskBackupSnapshotSchedulePolicy struct {
 	// Unique 24-hexadecimal digit string that identifies this backup policy.
 	Id *string `json:"id,omitempty"`
 	// List that contains the specifications for one policy.
-	PolicyItems []DiskBackupApiPolicyItem `json:"policyItems,omitempty"`
+	PolicyItems []DiskBackupApiPolicyItem `json:"policyItems"`
 }
 
 // NewAdvancedDiskBackupSnapshotSchedulePolicy instantiates a new AdvancedDiskBackupSnapshotSchedulePolicy object

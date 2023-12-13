@@ -9,7 +9,7 @@ import (
 // StreamsKafkaAuthentication User credentials required to connect to a Kafka Cluster. Includes the authentication type, as well as the parameters for that authentication mode.
 type StreamsKafkaAuthentication struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 	// Style of authentication. Can be one of PLAIN, SCRAM-256, or SCRAM-512.
 	Mechanism *string `json:"mechanism,omitempty"`
 	// Password of the account to connect to the Kafka cluster.

@@ -30,9 +30,9 @@ type LegacyAtlasTenantClusterUpgradeRequest struct {
 	Id *string `json:"id,omitempty"`
 	// Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels.  Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use [resource tags](https://dochub.mongodb.org/core/add-cluster-tag-atlas) instead.
 	// Deprecated
-	Labels []ComponentLabel `json:"labels,omitempty"`
+	Labels []ComponentLabel `json:"labels"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 	// Major MongoDB version of the cluster. MongoDB Cloud deploys the cluster with the latest stable release of the specified version.
 	MongoDBMajorVersion *string `json:"mongoDBMajorVersion,omitempty"`
 	// Version of MongoDB that the cluster runs.
@@ -60,7 +60,7 @@ type LegacyAtlasTenantClusterUpgradeRequest struct {
 	// Physical location where MongoDB Cloud provisions cluster nodes.
 	ReplicationSpec *map[string]RegionSpec `json:"replicationSpec,omitempty"`
 	// List of settings that configure your cluster regions.  - For Global Clusters, each object in the array represents one zone where MongoDB Cloud deploys your clusters nodes. - For non-Global sharded clusters and replica sets, the single object represents where MongoDB Cloud deploys your clusters nodes.
-	ReplicationSpecs []LegacyReplicationSpec `json:"replicationSpecs,omitempty"`
+	ReplicationSpecs []LegacyReplicationSpec `json:"replicationSpecs"`
 	// Root Certificate Authority that MongoDB Atlas clusters uses. MongoDB Cloud supports Internet Security Research Group.
 	RootCertType *string `json:"rootCertType,omitempty"`
 	// Connection string that you can use to connect to the cluster. The `+srv` modifier forces the connection to use Transport Layer Security (TLS). The `mongoURI` parameter lists additional options.
@@ -68,7 +68,7 @@ type LegacyAtlasTenantClusterUpgradeRequest struct {
 	// Human-readable label that indicates the current operating condition of the cluster.
 	StateName *string `json:"stateName,omitempty"`
 	// List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the cluster.
-	Tags []ResourceTag `json:"tags,omitempty"`
+	Tags []ResourceTag `json:"tags"`
 	// Flag that indicates whether termination protection is enabled on the cluster. If set to `true`, MongoDB Cloud won't delete the cluster. If set to `false`, MongoDB Cloud will delete the cluster.
 	TerminationProtectionEnabled *bool `json:"terminationProtectionEnabled,omitempty"`
 	// Method by which the cluster maintains the MongoDB versions. If value is `CONTINUOUS`, you must not specify **mongoDBMajorVersion**.

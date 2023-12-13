@@ -9,7 +9,7 @@ import (
 // GroupService List of IP addresses in a project categorized by services.
 type GroupService struct {
 	// IP addresses of clusters.
-	Clusters []ClusterIPAddresses `json:"clusters,omitempty"`
+	Clusters []ClusterIPAddresses `json:"clusters"`
 }
 
 // NewGroupService instantiates a new GroupService object

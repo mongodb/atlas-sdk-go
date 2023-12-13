@@ -20,9 +20,9 @@ type ApiMeasurementsGeneralViewAtlas struct {
 	// Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
 	HostId *string `json:"hostId,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []LinkAtlas `json:"links,omitempty"`
+	Links []LinkAtlas `json:"links"`
 	// List that contains measurements and their data points.
-	Measurements []MetricsMeasurementAtlas `json:"measurements,omitempty"`
+	Measurements []MetricsMeasurementAtlas `json:"measurements"`
 	// Human-readable label of the disk or partition to which the measurements apply.
 	PartitionName *string `json:"partitionName,omitempty"`
 	// Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.

@@ -9,9 +9,9 @@ import (
 // PaginatedServerlessInstanceDescription struct for PaginatedServerlessInstanceDescription
 type PaginatedServerlessInstanceDescription struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 	// List of returned documents that MongoDB Cloud providers when completing this request.
-	Results []ServerlessInstanceDescription `json:"results,omitempty"`
+	Results []ServerlessInstanceDescription `json:"results"`
 	// Number of documents returned in this response.
 	TotalCount *int `json:"totalCount,omitempty"`
 }

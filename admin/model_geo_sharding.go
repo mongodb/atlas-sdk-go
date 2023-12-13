@@ -11,7 +11,7 @@ type GeoSharding struct {
 	// List that contains comma-separated key value pairs to map zones to geographic regions. These pairs map an ISO 3166-1a2 location code, with an ISO 3166-2 subdivision code when possible, to a unique 24-hexadecimal string that identifies the custom zone.  This parameter returns an empty object if no custom zones exist.
 	CustomZoneMapping *map[string]string `json:"customZoneMapping,omitempty"`
 	// List that contains a namespace for a Global Cluster. MongoDB Cloud manages this cluster.
-	ManagedNamespaces []ManagedNamespaces `json:"managedNamespaces,omitempty"`
+	ManagedNamespaces []ManagedNamespaces `json:"managedNamespaces"`
 }
 
 // NewGeoSharding instantiates a new GeoSharding object

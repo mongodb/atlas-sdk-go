@@ -9,7 +9,7 @@ import (
 // OrgFederationSettings Details that define how to connect one MongoDB Cloud organization to one federated authentication service.
 type OrgFederationSettings struct {
 	// List of domains associated with the organization's identity provider.
-	FederatedDomains []string `json:"federatedDomains,omitempty"`
+	FederatedDomains []string `json:"federatedDomains"`
 	// Flag that indicates whether this organization has role mappings configured.
 	HasRoleMappings *bool `json:"hasRoleMappings,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies this federation.

@@ -10,13 +10,13 @@ import (
 // DiskBackupExportJob struct for DiskBackupExportJob
 type DiskBackupExportJob struct {
 	// Information on the export job for each replica set in the sharded cluster.
-	Components []DiskBackupBaseRestoreMember `json:"components,omitempty"`
+	Components []DiskBackupBaseRestoreMember `json:"components"`
 	// Date and time when someone created this export job. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// Collection of key-value pairs that represent custom data for the metadata file that MongoDB Cloud uploads to the bucket when the export job finishes.
-	CustomData []BackupLabel `json:"customData,omitempty"`
+	CustomData []BackupLabel `json:"customData"`
 	// One or more Uniform Resource Locators (URLs) that point to the compressed snapshot files for manual download. MongoDB Cloud returns this parameter when `\"deliveryType\" : \"download\"`.
-	DeliveryUrl []string `json:"deliveryUrl,omitempty"`
+	DeliveryUrl []string `json:"deliveryUrl"`
 	// Unique 24-hexadecimal character string that identifies the AWS bucket to which MongoDB Cloud exports the Cloud Backup snapshot.
 	ExportBucketId string        `json:"exportBucketId"`
 	ExportStatus   *ExportStatus `json:"exportStatus,omitempty"`
@@ -25,7 +25,7 @@ type DiskBackupExportJob struct {
 	// Unique 24-hexadecimal character string that identifies the restore job.
 	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 	// Full path on the cloud provider bucket to the folder where the snapshot is exported.
 	Prefix *string `json:"prefix,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the snapshot.

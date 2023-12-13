@@ -13,13 +13,13 @@ type ApiKeyUserDetails struct {
 	// Unique 24-hexadecimal digit string that identifies this organization API key assigned to this project.
 	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 	// Redacted private key returned for this organization API key. This key displays unredacted when first created.
 	PrivateKey *string `json:"privateKey,omitempty"`
 	// Public API key value set for the specified organization API key.
 	PublicKey *string `json:"publicKey,omitempty"`
 	// List that contains the roles that the API key needs to have. All roles you provide must be valid for the specified project or organization. Each request must include a minimum of one valid role. The resource returns all project and organization roles assigned to the API key.
-	Roles []CloudAccessRoleAssignment `json:"roles,omitempty"`
+	Roles []CloudAccessRoleAssignment `json:"roles"`
 }
 
 // NewApiKeyUserDetails instantiates a new ApiKeyUserDetails object

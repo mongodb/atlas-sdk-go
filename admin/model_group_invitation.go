@@ -22,9 +22,9 @@ type GroupInvitation struct {
 	// Email address of the MongoDB Cloud user who sent the invitation.
 	InviterUsername *string `json:"inviterUsername,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 	// One or more organization or project level roles to assign to the MongoDB Cloud user.
-	Roles []string `json:"roles,omitempty"`
+	Roles []string `json:"roles"`
 	// Email address of the MongoDB Cloud user invited to join the project.
 	Username *string `json:"username,omitempty"`
 }

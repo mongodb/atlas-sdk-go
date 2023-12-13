@@ -18,7 +18,7 @@ type TenantRestore struct {
 	// Unique 24-hexadecimal digit string that identifies the restore job.
 	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 	// Unique 24-hexadecimal digit string that identifies the project from which the restore job originated.
 	ProjectId *string `json:"projectId,omitempty"`
 	// Date and time when MongoDB Cloud completed writing this snapshot. MongoDB Cloud changes the status of the restore job to `CLOSED`. This parameter expresses its value in the ISO 8601 timestamp format in UTC.

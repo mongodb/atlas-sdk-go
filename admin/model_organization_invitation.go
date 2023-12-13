@@ -13,21 +13,21 @@ type OrganizationInvitation struct {
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// Date and time when the invitation from MongoDB Cloud expires. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
 	ExpiresAt            *time.Time  `json:"expiresAt,omitempty"`
-	GroupRoleAssignments []GroupRole `json:"groupRoleAssignments,omitempty"`
+	GroupRoleAssignments []GroupRole `json:"groupRoleAssignments"`
 	// Unique 24-hexadecimal digit string that identifies this organization.
 	Id *string `json:"id,omitempty"`
 	// Email address of the MongoDB Cloud user who sent the invitation to join the organization.
 	InviterUsername *string `json:"inviterUsername,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 	// Unique 24-hexadecimal digit string that identifies the organization.
 	OrgId *string `json:"orgId,omitempty"`
 	// Human-readable label that identifies this organization.
 	OrgName string `json:"orgName"`
 	// One or more organization or project level roles to assign to the MongoDB Cloud user.
-	Roles []string `json:"roles,omitempty"`
+	Roles []string `json:"roles"`
 	// List of unique 24-hexadecimal digit strings that identifies each team.
-	TeamIds []string `json:"teamIds,omitempty"`
+	TeamIds []string `json:"teamIds"`
 	// Email address of the MongoDB Cloud user invited to join the organization.
 	Username *string `json:"username,omitempty"`
 }

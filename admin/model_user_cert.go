@@ -16,7 +16,7 @@ type UserCert struct {
 	// Unique 24-hexadecimal character string that identifies the project.
 	GroupId *string `json:"groupId,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 	// Number of months that the certificate remains valid until it expires.
 	MonthsUntilExpiration *int `json:"monthsUntilExpiration,omitempty"`
 	// Date and time when this certificate expires. This parameter expresses its value in the ISO 8601 timestamp format in UTC.

@@ -24,17 +24,17 @@ type BillingInvoice struct {
 	// Unique 24-hexadecimal digit string that identifies the invoice submitted to the specified organization. Charges typically post the next day.
 	Id *string `json:"id,omitempty"`
 	// List that contains individual services included in this invoice.
-	LineItems []InvoiceLineItem `json:"lineItems,omitempty"`
+	LineItems []InvoiceLineItem `json:"lineItems"`
 	// List that contains the invoices for organizations linked to the paying organization.
-	LinkedInvoices []BillingInvoice `json:"linkedInvoices,omitempty"`
+	LinkedInvoices []BillingInvoice `json:"linkedInvoices"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 	// Unique 24-hexadecimal digit string that identifies the organization charged for services consumed from MongoDB Cloud.
 	OrgId *string `json:"orgId,omitempty"`
 	// List that contains funds transferred to MongoDB to cover the specified service noted in this invoice.
-	Payments []BillingPayment `json:"payments,omitempty"`
+	Payments []BillingPayment `json:"payments"`
 	// List that contains payments that MongoDB returned to the organization for this invoice.
-	Refunds []BillingRefund `json:"refunds,omitempty"`
+	Refunds []BillingRefund `json:"refunds"`
 	// Sum of sales tax applied to this invoice. This parameter expresses its value in cents (100ths of one US Dollar).
 	SalesTaxCents *int64 `json:"salesTaxCents,omitempty"`
 	// Date and time when MongoDB Cloud began the billing period that this invoice covers. This parameter expresses its value in the ISO 8601 timestamp format in UTC.

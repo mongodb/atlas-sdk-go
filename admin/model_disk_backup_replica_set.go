@@ -12,7 +12,7 @@ type DiskBackupReplicaSet struct {
 	// Human-readable label that identifies the cloud provider that stores this snapshot. The resource returns this parameter when `\"type\": \"replicaSet\"`.
 	CloudProvider *string `json:"cloudProvider,omitempty"`
 	// List that identifies the regions to which MongoDB Cloud copies the snapshot.
-	CopyRegions []string `json:"copyRegions,omitempty"`
+	CopyRegions []string `json:"copyRegions"`
 	// Date and time when MongoDB Cloud took the snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// Human-readable phrase or sentence that explains the purpose of the snapshot. The resource returns this parameter when `\"status\": \"onDemand\"`.
@@ -24,13 +24,13 @@ type DiskBackupReplicaSet struct {
 	// Unique 24-hexadecimal digit string that identifies the snapshot.
 	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 	// Unique string that identifies the Amazon Web Services (AWS) Key Management Service (KMS) Customer Master Key (CMK) used to encrypt the snapshot. The resource returns this value when `\"encryptionEnabled\" : true`.
 	MasterKeyUUID *string `json:"masterKeyUUID,omitempty"`
 	// Version of the MongoDB host that this snapshot backs up.
 	MongodVersion *string `json:"mongodVersion,omitempty"`
 	// List that contains unique identifiers for the policy items.
-	PolicyItems []string `json:"policyItems,omitempty"`
+	PolicyItems []string `json:"policyItems"`
 	// Human-readable label that identifies the replica set from which MongoDB Cloud took this snapshot. The resource returns this parameter when `\"type\": \"replicaSet\"`.
 	ReplicaSetName *string `json:"replicaSetName,omitempty"`
 	// Human-readable label that identifies when this snapshot triggers.

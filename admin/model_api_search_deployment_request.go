@@ -9,7 +9,7 @@ import (
 // ApiSearchDeploymentRequest struct for ApiSearchDeploymentRequest
 type ApiSearchDeploymentRequest struct {
 	// List of settings that configure the search nodes for your cluster.
-	Specs []ApiSearchDeploymentSpec `json:"specs,omitempty"`
+	Specs []ApiSearchDeploymentSpec `json:"specs"`
 }
 
 // NewApiSearchDeploymentRequest instantiates a new ApiSearchDeploymentRequest object

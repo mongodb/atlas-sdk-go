@@ -14,7 +14,7 @@ type SystemStatus struct {
 	// Unique 40-hexadecimal digit hash that identifies the latest git commit merged for this application.
 	Build string `json:"build"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 	// Flag that indicates whether someone enabled throttling on this service.
 	Throttling bool `json:"throttling"`
 }

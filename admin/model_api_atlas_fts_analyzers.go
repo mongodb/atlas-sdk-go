@@ -9,11 +9,11 @@ import (
 // ApiAtlasFTSAnalyzers Settings that describe one Atlas Search custom analyzer.
 type ApiAtlasFTSAnalyzers struct {
 	// Filters that examine text one character at a time and perform filtering operations.
-	CharFilters []interface{} `json:"charFilters,omitempty"`
+	CharFilters []interface{} `json:"charFilters"`
 	// Human-readable name that identifies the custom analyzer. Names must be unique within an index, and must not start with any of the following strings: - `lucene.` - `builtin.` - `mongodb.`
 	Name string `json:"name"`
 	// Filter that performs operations such as:  - Stemming, which reduces related words, such as \"talking\", \"talked\", and \"talks\" to their root word \"talk\".  - Redaction, the removal of sensitive information from public documents.
-	TokenFilters []interface{}                 `json:"tokenFilters,omitempty"`
+	TokenFilters []interface{}                 `json:"tokenFilters"`
 	Tokenizer    ApiAtlasFTSAnalyzersTokenizer `json:"tokenizer"`
 }
 

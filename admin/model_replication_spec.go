@@ -13,7 +13,7 @@ type ReplicationSpec struct {
 	// Positive integer that specifies the number of shards to deploy in each specified zone. If you set this value to `1` and **clusterType** is `SHARDED`, MongoDB Cloud deploys a single-shard sharded cluster. Don't create a sharded cluster with a single shard for production environments. Single-shard sharded clusters don't provide the same benefits as multi-shard configurations.
 	NumShards *int `json:"numShards,omitempty"`
 	// Hardware specifications for nodes set for a given region. Each **regionConfigs** object describes the region's priority in elections and the number and type of MongoDB nodes that MongoDB Cloud deploys to the region. Each **regionConfigs** object must have either an **analyticsSpecs** object, **electableSpecs** object, or **readOnlySpecs** object. Tenant clusters only require **electableSpecs. Dedicated** clusters can specify any of these specifications, but must have at least one **electableSpecs** object within a **replicationSpec**. Every hardware specification must use the same **instanceSize**.  **Example:**  If you set `\"replicationSpecs[n].regionConfigs[m].analyticsSpecs.instanceSize\" : \"M30\"`, set `\"replicationSpecs[n].regionConfigs[m].electableSpecs.instanceSize\" : `\"M30\"` if you have electable nodes and `\"replicationSpecs[n].regionConfigs[m].readOnlySpecs.instanceSize\" : `\"M30\"` if you have read-only nodes.
-	RegionConfigs []CloudRegionConfig `json:"regionConfigs,omitempty"`
+	RegionConfigs []CloudRegionConfig `json:"regionConfigs"`
 	// Human-readable label that identifies the zone in a Global Cluster. Provide this value only if `\"clusterType\" : \"GEOSHARDED\"`.
 	ZoneName *string `json:"zoneName,omitempty"`
 }

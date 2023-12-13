@@ -22,7 +22,7 @@ type EventViewForNdsGroup struct {
 	// Flag that indicates whether a MongoDB employee triggered the specified event.
 	IsGlobalAdmin *bool `json:"isGlobalAdmin,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 	// Unique 24-hexadecimal digit string that identifies the organization to which these events apply.
 	OrgId *string `json:"orgId,omitempty"`
 	// Public part of the [API Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key) that triggered the event. If this resource returns this parameter, it doesn't return the **username** parameter.

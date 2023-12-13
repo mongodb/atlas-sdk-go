@@ -26,9 +26,9 @@ type BackupSnapshot struct {
 	Incremental               *bool             `json:"incremental,omitempty"`
 	LastOplogAppliedTimestamp *ApiBSONTimestamp `json:"lastOplogAppliedTimestamp,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 	// Metadata that describes the complete snapshot.  - For a replica set, this array contains a single document. - For a sharded cluster, this array contains one document for each shard plus one document for the config host.
-	Parts []BackupSnapshotPart `json:"parts,omitempty"`
+	Parts []BackupSnapshotPart `json:"parts"`
 }
 
 // NewBackupSnapshot instantiates a new BackupSnapshot object

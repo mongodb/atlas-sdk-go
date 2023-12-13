@@ -18,7 +18,7 @@ type CloudProviderAccessAWSIAMRole struct {
 	// Date and time when someone created this role for the specified cloud service provider. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	CreatedDate *time.Time `json:"createdDate,omitempty"`
 	// List that contains application features associated with this Amazon Web Services (AWS) Identity and Access Management (IAM) role.
-	FeatureUsages []CloudProviderAccessFeatureUsage `json:"featureUsages,omitempty"`
+	FeatureUsages []CloudProviderAccessFeatureUsage `json:"featureUsages"`
 	// Amazon Resource Name (ARN) that identifies the Amazon Web Services (AWS) Identity and Access Management (IAM) role that MongoDB Cloud assumes when it accesses resources in your AWS account.
 	IamAssumedRoleArn *string `json:"iamAssumedRoleArn,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the role.

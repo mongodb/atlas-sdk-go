@@ -9,9 +9,9 @@ import (
 // ConnectedOrgConfig struct for ConnectedOrgConfig
 type ConnectedOrgConfig struct {
 	// The collection of unique ids of the identity providers for org's data access.
-	DataAccessIdentityProviderIds []string `json:"dataAccessIdentityProviderIds,omitempty"`
+	DataAccessIdentityProviderIds []string `json:"dataAccessIdentityProviderIds"`
 	// Approved domains that restrict users who can join the organization based on their email address.
-	DomainAllowList []string `json:"domainAllowList,omitempty"`
+	DomainAllowList []string `json:"domainAllowList"`
 	// Value that indicates whether domain restriction is enabled for this connected org.
 	DomainRestrictionEnabled bool `json:"domainRestrictionEnabled"`
 	// Unique 20-hexadecimal digit string that identifies the identity provider that this connected org config is associated with.
@@ -19,11 +19,11 @@ type ConnectedOrgConfig struct {
 	// Unique 24-hexadecimal digit string that identifies the connected organization configuration.
 	OrgId string `json:"orgId"`
 	// Atlas roles that are granted to a user in this organization after authenticating.
-	PostAuthRoleGrants []string `json:"postAuthRoleGrants,omitempty"`
+	PostAuthRoleGrants []string `json:"postAuthRoleGrants"`
 	// Role mappings that are configured in this organization.
-	RoleMappings []AuthFederationRoleMapping `json:"roleMappings,omitempty"`
+	RoleMappings []AuthFederationRoleMapping `json:"roleMappings"`
 	// List that contains the users who have an email address that doesn't match any domain on the allowed list.
-	UserConflicts []FederatedUser `json:"userConflicts,omitempty"`
+	UserConflicts []FederatedUser `json:"userConflicts"`
 }
 
 // NewConnectedOrgConfig instantiates a new ConnectedOrgConfig object

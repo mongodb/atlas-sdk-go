@@ -9,13 +9,13 @@ import (
 // DataLakeDatabaseInstance Database associated with this data lake. Databases contain collections and views.
 type DataLakeDatabaseInstance struct {
 	// Array of collections and data sources that map to a ``stores`` data store.
-	Collections []DataLakeDatabaseCollection `json:"collections,omitempty"`
+	Collections []DataLakeDatabaseCollection `json:"collections"`
 	// Maximum number of wildcard collections in the database. This only applies to S3 data sources.
 	MaxWildcardCollections *int `json:"maxWildcardCollections,omitempty"`
 	// Human-readable label that identifies the database to which the data lake maps data.
 	Name *string `json:"name,omitempty"`
 	// Array of aggregation pipelines that apply to the collection. This only applies to S3 data sources.
-	Views []DataLakeApiBase `json:"views,omitempty"`
+	Views []DataLakeApiBase `json:"views"`
 }
 
 // NewDataLakeDatabaseInstance instantiates a new DataLakeDatabaseInstance object

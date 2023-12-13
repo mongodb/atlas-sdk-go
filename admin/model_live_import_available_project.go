@@ -9,9 +9,9 @@ import (
 // LiveImportAvailableProject struct for LiveImportAvailableProject
 type LiveImportAvailableProject struct {
 	// List of clusters that can be migrated to MongoDB Cloud.
-	Deployments []AvailableClustersDeployment `json:"deployments,omitempty"`
+	Deployments []AvailableClustersDeployment `json:"deployments"`
 	// Hostname of MongoDB Agent list that you configured to perform a migration.
-	MigrationHosts []string `json:"migrationHosts,omitempty"`
+	MigrationHosts []string `json:"migrationHosts"`
 	// Human-readable label that identifies this project.
 	Name string `json:"name"`
 	// Unique 24-hexadecimal digit string that identifies the project to be migrated.

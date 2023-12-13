@@ -9,7 +9,7 @@ import (
 // StreamsConnection Settings that define a connection to an external data store.
 type StreamsConnection struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 	// Human-readable label that identifies the stream connection.
 	Name *string `json:"name,omitempty"`
 	// Type of the connection. Can be either Cluster or Kafka.

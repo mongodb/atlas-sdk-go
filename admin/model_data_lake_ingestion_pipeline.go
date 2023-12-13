@@ -25,7 +25,7 @@ type DataLakeIngestionPipeline struct {
 	// State of this Data Lake Pipeline.
 	State *string `json:"state,omitempty"`
 	// Fields to be excluded for this Data Lake Pipeline.
-	Transformations []FieldTransformation `json:"transformations,omitempty"`
+	Transformations []FieldTransformation `json:"transformations"`
 }
 
 // NewDataLakeIngestionPipeline instantiates a new DataLakeIngestionPipeline object

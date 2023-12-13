@@ -11,15 +11,15 @@ type CloudSearchMetrics struct {
 	// Unique 24-hexadecimal digit string that identifies the project.
 	GroupId string `json:"groupId"`
 	// List that contains all host compute, memory, and storage utilization dedicated to Atlas Search when MongoDB Atlas received this request.
-	HardwareMetrics []FTSMetric `json:"hardwareMetrics,omitempty"`
+	HardwareMetrics []FTSMetric `json:"hardwareMetrics"`
 	// List that contains all performance and utilization measurements that Atlas Search index performed by the time MongoDB Atlas received this request.
-	IndexMetrics []FTSMetric `json:"indexMetrics,omitempty"`
+	IndexMetrics []FTSMetric `json:"indexMetrics"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 	// Hostname and port that identifies the process.
 	ProcessId string `json:"processId"`
 	// List that contains all available Atlas Search status metrics when MongoDB Atlas received this request.
-	StatusMetrics []FTSMetric `json:"statusMetrics,omitempty"`
+	StatusMetrics []FTSMetric `json:"statusMetrics"`
 }
 
 // NewCloudSearchMetrics instantiates a new CloudSearchMetrics object

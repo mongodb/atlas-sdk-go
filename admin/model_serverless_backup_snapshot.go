@@ -18,7 +18,7 @@ type ServerlessBackupSnapshot struct {
 	// Unique 24-hexadecimal digit string that identifies the snapshot.
 	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 	// Version of the MongoDB host that this snapshot backs up.
 	MongodVersion *string `json:"mongodVersion,omitempty"`
 	// Human-readable label given to the serverless instance from which MongoDB Cloud took this snapshot.

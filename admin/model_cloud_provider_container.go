@@ -27,7 +27,7 @@ type CloudProviderContainer struct {
 	// Human-readable label that identifies the network in which MongoDB Cloud clusters in this network peering container exist. MongoDB Cloud returns **null** if no clusters exist in this network peering container.
 	NetworkName *string `json:"networkName,omitempty"`
 	// List of GCP regions to which you want to deploy this MongoDB Cloud network peering container.  In this MongoDB Cloud project, you can deploy clusters only to the GCP regions in this list. To deploy MongoDB Cloud clusters to other GCP regions, create additional projects.
-	Regions []string `json:"regions,omitempty"`
+	Regions []string `json:"regions"`
 	// Geographic area that Amazon Web Services (AWS) defines to which MongoDB Cloud deployed this network peering container.
 	RegionName *string `json:"regionName,omitempty"`
 	// Unique string that identifies the MongoDB Cloud VPC on AWS.

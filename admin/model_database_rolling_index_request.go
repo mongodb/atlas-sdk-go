@@ -14,7 +14,7 @@ type DatabaseRollingIndexRequest struct {
 	// Human-readable label of the database that holds the collection on which MongoDB Cloud creates an index.
 	Db string `json:"db"`
 	// List that contains one or more objects that describe the parameters that you want to index.
-	Keys    []map[string]string `json:"keys,omitempty"`
+	Keys    []map[string]string `json:"keys"`
 	Options *IndexOptions       `json:"options,omitempty"`
 }
 

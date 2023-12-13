@@ -9,7 +9,7 @@ import (
 // CostExplorerFilterRequestBody Request body for a cost explorer query.
 type CostExplorerFilterRequestBody struct {
 	// The list of projects to be included in the Cost Explorer Query.
-	Clusters []string `json:"clusters,omitempty"`
+	Clusters []string `json:"clusters"`
 	// The exclusive ending date for the Cost Explorer query. The date must be the start of a month.
 	EndDate string `json:"endDate"`
 	// The dimension to group the returned usage results by. At least one filter value needs to be provided for a dimension to be used.
@@ -17,11 +17,11 @@ type CostExplorerFilterRequestBody struct {
 	// Flag to control whether usage that matches the filter criteria, but does not have values for all filter criteria is included in response. Default is false, which excludes the partially matching data.
 	IncludePartialMatches *bool `json:"includePartialMatches,omitempty"`
 	// The list of organizations to be included in the Cost Explorer Query.
-	Organizations []string `json:"organizations,omitempty"`
+	Organizations []string `json:"organizations"`
 	// The list of projects to be included in the Cost Explorer Query.
-	Projects []string `json:"projects,omitempty"`
+	Projects []string `json:"projects"`
 	// The list of projects to be included in the Cost Explorer Query.
-	Services []string `json:"services,omitempty"`
+	Services []string `json:"services"`
 	// The inclusive starting date for the Cost Explorer query. The date must be the start of a month.
 	StartDate string `json:"startDate"`
 }

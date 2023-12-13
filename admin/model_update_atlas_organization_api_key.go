@@ -11,7 +11,7 @@ type UpdateAtlasOrganizationApiKey struct {
 	// Purpose or explanation provided when someone creates this organization API key.
 	Desc *string `json:"desc,omitempty"`
 	// List of roles to grant this API key. If you provide this list, provide a minimum of one role and ensure each role applies to this organization.
-	Roles []string `json:"roles,omitempty"`
+	Roles []string `json:"roles"`
 }
 
 // NewUpdateAtlasOrganizationApiKey instantiates a new UpdateAtlasOrganizationApiKey object

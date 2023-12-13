@@ -16,15 +16,15 @@ type MeasurementsNonIndex struct {
 	// Unique 24-hexadecimal digit string that identifies the project. The project contains MongoDB processes that you want to return. The MongoDB process can be either the `mongod` or `mongos`.
 	GroupId *string `json:"groupId,omitempty"`
 	// List that contains the Atlas Search hardware measurements.
-	HardwareMeasurements []MetricsMeasurement `json:"hardwareMeasurements,omitempty"`
+	HardwareMeasurements []MetricsMeasurement `json:"hardwareMeasurements"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 	// Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
 	ProcessId *string `json:"processId,omitempty"`
 	// Date and time that specifies when to start retrieving measurements. If you set **start**, you must set **end**. You can't set this parameter and **period** in the same request. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	Start *time.Time `json:"start,omitempty"`
 	// List that contains the Atlas Search status measurements.
-	StatusMeasurements []MetricsMeasurement `json:"statusMeasurements,omitempty"`
+	StatusMeasurements []MetricsMeasurement `json:"statusMeasurements"`
 }
 
 // NewMeasurementsNonIndex instantiates a new MeasurementsNonIndex object

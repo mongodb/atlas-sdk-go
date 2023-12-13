@@ -11,14 +11,14 @@ type StreamsTenant struct {
 	// Unique 24-hexadecimal character string that identifies the project.
 	Id *string `json:"_id,omitempty"`
 	// List of connections configured in the stream instance.
-	Connections       []StreamsConnection       `json:"connections,omitempty"`
+	Connections       []StreamsConnection       `json:"connections"`
 	DataProcessRegion *StreamsDataProcessRegion `json:"dataProcessRegion,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project.
 	GroupId *string `json:"groupId,omitempty"`
 	// List that contains the hostnames assigned to the stream instance.
-	Hostnames []string `json:"hostnames,omitempty"`
+	Hostnames []string `json:"hostnames"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 	// Human-readable label that identifies the stream instance.
 	Name *string `json:"name,omitempty"`
 }

@@ -9,9 +9,9 @@ import (
 // UpdateCustomDBRole struct for UpdateCustomDBRole
 type UpdateCustomDBRole struct {
 	// List of the individual privilege actions that the role grants.
-	Actions []DatabasePrivilegeAction `json:"actions,omitempty"`
+	Actions []DatabasePrivilegeAction `json:"actions"`
 	// List of the built-in roles that this custom role inherits.
-	InheritedRoles []DatabaseInheritedRole `json:"inheritedRoles,omitempty"`
+	InheritedRoles []DatabaseInheritedRole `json:"inheritedRoles"`
 }
 
 // NewUpdateCustomDBRole instantiates a new UpdateCustomDBRole object

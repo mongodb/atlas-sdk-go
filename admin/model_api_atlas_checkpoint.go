@@ -18,9 +18,9 @@ type ApiAtlasCheckpoint struct {
 	// Unique 24-hexadecimal digit string that identifies checkpoint.
 	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 	// Metadata that describes the complete snapshot.  - For a replica set, this array contains a single document. - For a sharded cluster, this array contains one document for each shard plus one document for the config host.
-	Parts []ApiCheckpointPart `json:"parts,omitempty"`
+	Parts []ApiCheckpointPart `json:"parts"`
 	// Flag that indicates whether MongoDB Cloud can use the checkpoint for a restore.
 	Restorable *bool `json:"restorable,omitempty"`
 	// Date and time when the balancer stopped and began the checkpoint. This parameter expresses its value in the ISO 8601 timestamp format in UTC.

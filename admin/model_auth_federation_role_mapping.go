@@ -13,7 +13,7 @@ type AuthFederationRoleMapping struct {
 	// Unique 24-hexadecimal digit string that identifies this role mapping.
 	Id *string `json:"id,omitempty"`
 	// Atlas roles and the unique identifiers of the groups and organizations associated with each role.
-	RoleAssignments []RoleAssignment `json:"roleAssignments,omitempty"`
+	RoleAssignments []RoleAssignment `json:"roleAssignments"`
 }
 
 // NewAuthFederationRoleMapping instantiates a new AuthFederationRoleMapping object

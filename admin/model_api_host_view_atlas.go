@@ -20,7 +20,7 @@ type ApiHostViewAtlas struct {
 	// Date and time when MongoDB Cloud received the last ping for this MongoDB process. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	LastPing *time.Time `json:"lastPing,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []LinkAtlas `json:"links,omitempty"`
+	Links []LinkAtlas `json:"links"`
 	// Internet Assigned Numbers Authority (IANA) port on which the MongoDB process listens for requests.
 	Port *int `json:"port,omitempty"`
 	// Human-readable label that identifies the replica set that contains this process. This resource returns this parameter if this process belongs to a replica set.

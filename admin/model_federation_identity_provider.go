@@ -9,9 +9,9 @@ import (
 // FederationIdentityProvider struct for FederationIdentityProvider
 type FederationIdentityProvider struct {
 	// List that contains the domains associated with the identity provider.
-	AssociatedDomains []string `json:"associatedDomains,omitempty"`
+	AssociatedDomains []string `json:"associatedDomains"`
 	// List that contains the connected organization configurations associated with the identity provider.
-	AssociatedOrgs []ConnectedOrgConfig `json:"associatedOrgs,omitempty"`
+	AssociatedOrgs []ConnectedOrgConfig `json:"associatedOrgs"`
 	// The description of the identity provider.
 	Description *string `json:"description,omitempty"`
 	// Human-readable label that identifies the identity provider.
@@ -40,13 +40,13 @@ type FederationIdentityProvider struct {
 	// String enum that indicates whether the identity provider is active.
 	Status *string `json:"status,omitempty"`
 	// Identifier of the intended recipient of the token.
-	AudienceClaim []string `json:"audienceClaim,omitempty"`
+	AudienceClaim []string `json:"audienceClaim"`
 	// Client identifier that is assigned to an application by the Identity Provider.
 	ClientId *string `json:"clientId,omitempty"`
 	// Identifier of the claim which contains IdP Group IDs in the token.
 	GroupsClaim *string `json:"groupsClaim,omitempty"`
 	// The description of an IdP, configured by customers.
-	RequestedScopes []string `json:"requestedScopes,omitempty"`
+	RequestedScopes []string `json:"requestedScopes"`
 	// Identifier of the claim which contains the user ID in the token.
 	UserClaim *string `json:"userClaim,omitempty"`
 }

@@ -17,7 +17,7 @@ type ServerlessInstanceDescription struct {
 	// Unique 24-hexadecimal digit string that identifies the serverless instance.
 	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 	// Version of MongoDB that the serverless instance runs.
 	MongoDBVersion *string `json:"mongoDBVersion,omitempty"`
 	// Human-readable label that identifies the serverless instance.
@@ -27,7 +27,7 @@ type ServerlessInstanceDescription struct {
 	// Human-readable label that indicates the current operating condition of the serverless instance.
 	StateName *string `json:"stateName,omitempty"`
 	// List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the serverless instance.
-	Tags []ResourceTag `json:"tags,omitempty"`
+	Tags []ResourceTag `json:"tags"`
 	// Flag that indicates whether termination protection is enabled on the serverless instance. If set to `true`, MongoDB Cloud won't delete the serverless instance. If set to `false`, MongoDB Cloud will delete the serverless instance.
 	TerminationProtectionEnabled *bool `json:"terminationProtectionEnabled,omitempty"`
 }

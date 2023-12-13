@@ -16,7 +16,7 @@ type PushBasedLogExportProject struct {
 	// ID of the AWS IAM role that will be used to write to the S3 bucket.
 	IamRoleId *string `json:"iamRoleId,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 	// S3 directory in which vector will write to in order to store the logs.
 	PrefixPath *string `json:"prefixPath,omitempty"`
 	// Describes whether or not the feature is enabled and what status it is in.

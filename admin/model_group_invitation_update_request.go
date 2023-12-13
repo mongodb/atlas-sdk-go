@@ -9,7 +9,7 @@ import (
 // GroupInvitationUpdateRequest struct for GroupInvitationUpdateRequest
 type GroupInvitationUpdateRequest struct {
 	// One or more organization or project level roles to assign to the MongoDB Cloud user.
-	Roles []string `json:"roles,omitempty"`
+	Roles []string `json:"roles"`
 }
 
 // NewGroupInvitationUpdateRequest instantiates a new GroupInvitationUpdateRequest object

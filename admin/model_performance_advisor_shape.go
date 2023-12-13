@@ -19,7 +19,7 @@ type PerformanceAdvisorShape struct {
 	// Human-readable label that identifies the namespace on the specified host. The resource expresses this parameter value as `<database>.<collection>`.
 	Namespace *string `json:"namespace,omitempty"`
 	// List that contains specific about individual queries.
-	Operations []PerformanceAdvisorOperation `json:"operations,omitempty"`
+	Operations []PerformanceAdvisorOperation `json:"operations"`
 }
 
 // NewPerformanceAdvisorShape instantiates a new PerformanceAdvisorShape object

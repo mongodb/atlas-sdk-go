@@ -9,9 +9,9 @@ import (
 // PaginatedHostViewAtlas struct for PaginatedHostViewAtlas
 type PaginatedHostViewAtlas struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []LinkAtlas `json:"links,omitempty"`
+	Links []LinkAtlas `json:"links"`
 	// List of returned documents that MongoDB Cloud providers when completing this request.
-	Results []ApiHostViewAtlas `json:"results,omitempty"`
+	Results []ApiHostViewAtlas `json:"results"`
 	// Number of documents returned in this response.
 	TotalCount *int `json:"totalCount,omitempty"`
 }

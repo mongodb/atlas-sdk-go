@@ -8,7 +8,7 @@ import (
 
 // PemFileInfo PEM file information for the identity provider's certificates.
 type PemFileInfo struct {
-	Certificates []X509Certificate `json:"certificates,omitempty"`
+	Certificates []X509Certificate `json:"certificates"`
 	FileName     *string           `json:"fileName,omitempty"`
 }
 

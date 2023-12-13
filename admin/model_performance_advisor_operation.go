@@ -9,7 +9,7 @@ import (
 // PerformanceAdvisorOperation struct for PerformanceAdvisorOperation
 type PerformanceAdvisorOperation struct {
 	// List that contains the search criteria that the query uses. To use the values in key-value pairs in these predicates requires **Project Data Access Read Only** permissions or greater. Otherwise, MongoDB Cloud redacts these values.
-	Predicates []map[string]interface{}   `json:"predicates,omitempty"`
+	Predicates []map[string]interface{}   `json:"predicates"`
 	Stats      *PerformanceAdvisorOpStats `json:"stats,omitempty"`
 }
 

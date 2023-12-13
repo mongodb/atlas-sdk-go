@@ -9,9 +9,9 @@ import (
 // UserCustomDBRole struct for UserCustomDBRole
 type UserCustomDBRole struct {
 	// List of the individual privilege actions that the role grants.
-	Actions []DatabasePrivilegeAction `json:"actions,omitempty"`
+	Actions []DatabasePrivilegeAction `json:"actions"`
 	// List of the built-in roles that this custom role inherits.
-	InheritedRoles []DatabaseInheritedRole `json:"inheritedRoles,omitempty"`
+	InheritedRoles []DatabaseInheritedRole `json:"inheritedRoles"`
 	// Human-readable label that identifies the role for the request. This name must be unique for this custom role in this project.
 	RoleName string `json:"roleName"`
 }

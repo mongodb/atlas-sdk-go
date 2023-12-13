@@ -23,13 +23,13 @@ type ClusterSearchIndex struct {
 	// Specific pre-defined method chosen to convert database field text into searchable words. This conversion reduces the text of fields into the smallest units of text. These units are called a **term** or **token**. This process, known as tokenization, involves a variety of changes made to the text in fields:  - extracting words - removing punctuation - removing accents - changing to lowercase - removing common words - reducing words to their root form (stemming) - changing words to their base form (lemmatization)  MongoDB Cloud uses the selected process to build the Atlas Search index.
 	Analyzer *string `json:"analyzer,omitempty"`
 	// List of user-defined methods to convert database field text into searchable words.
-	Analyzers []ApiAtlasFTSAnalyzers `json:"analyzers,omitempty"`
+	Analyzers []ApiAtlasFTSAnalyzers `json:"analyzers"`
 	Mappings  *ApiAtlasFTSMappings   `json:"mappings,omitempty"`
 	// Method applied to identify words when searching this index.
 	SearchAnalyzer *string `json:"searchAnalyzer,omitempty"`
 	// Rule sets that map words to their synonyms in this index.
-	Synonyms []SearchSynonymMappingDefinition `json:"synonyms,omitempty"`
-	Fields   []map[string]interface{}         `json:"fields,omitempty"`
+	Synonyms []SearchSynonymMappingDefinition `json:"synonyms"`
+	Fields   []map[string]interface{}         `json:"fields"`
 }
 
 // NewClusterSearchIndex instantiates a new ClusterSearchIndex object

@@ -20,13 +20,13 @@ type DiskBackupSnapshot struct {
 	// Unique 24-hexadecimal digit string that identifies the snapshot.
 	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 	// Unique string that identifies the Amazon Web Services (AWS) Key Management Service (KMS) Customer Master Key (CMK) used to encrypt the snapshot. The resource returns this value when `\"encryptionEnabled\" : true`.
 	MasterKeyUUID *string `json:"masterKeyUUID,omitempty"`
 	// Version of the MongoDB host that this snapshot backs up.
 	MongodVersion *string `json:"mongodVersion,omitempty"`
 	// List that contains unique identifiers for the policy items.
-	PolicyItems []string `json:"policyItems,omitempty"`
+	PolicyItems []string `json:"policyItems"`
 	// Human-readable label that identifies when this snapshot triggers.
 	SnapshotType *string `json:"snapshotType,omitempty"`
 	// Human-readable label that indicates the stage of the backup process for this snapshot.
@@ -38,13 +38,13 @@ type DiskBackupSnapshot struct {
 	// Human-readable label that identifies the cloud provider that stores this snapshot. The resource returns this parameter when `\"type\": \"replicaSet\"`.
 	CloudProvider *string `json:"cloudProvider,omitempty"`
 	// List that identifies the regions to which MongoDB Cloud copies the snapshot.
-	CopyRegions []string `json:"copyRegions,omitempty"`
+	CopyRegions []string `json:"copyRegions"`
 	// Human-readable label that identifies the replica set from which MongoDB Cloud took this snapshot. The resource returns this parameter when `\"type\": \"replicaSet\"`.
 	ReplicaSetName *string `json:"replicaSetName,omitempty"`
 	// List that includes the snapshots and the cloud provider that stores the snapshots. The resource returns this parameter when `\"type\" : \"SHARDED_CLUSTER\"`.
-	Members []DiskBackupShardedClusterSnapshotMember `json:"members,omitempty"`
+	Members []DiskBackupShardedClusterSnapshotMember `json:"members"`
 	// List that contains the unique identifiers of the snapshots created for the shards and config host for a sharded cluster. The resource returns this parameter when `\"type\": \"SHARDED_CLUSTER\"`. These identifiers should match the ones specified in the **members[n].id** parameters. This allows you to map a snapshot to its shard or config host name.
-	SnapshotIds []string `json:"snapshotIds,omitempty"`
+	SnapshotIds []string `json:"snapshotIds"`
 }
 
 // NewDiskBackupSnapshot instantiates a new DiskBackupSnapshot object

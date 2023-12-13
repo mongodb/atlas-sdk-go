@@ -14,7 +14,7 @@ type ServerlessBackupRestoreJob struct {
 	// Human-readable label that categorizes the restore job to create.
 	DeliveryType string `json:"deliveryType"`
 	// One or more Uniform Resource Locators (URLs) that point to the compressed snapshot files for manual download. MongoDB Cloud returns this parameter when `\"deliveryType\" : \"download\"`.
-	DeliveryUrl      []string          `json:"deliveryUrl,omitempty"`
+	DeliveryUrl      []string          `json:"deliveryUrl"`
 	DesiredTimestamp *ApiBSONTimestamp `json:"desiredTimestamp,omitempty"`
 	// Flag that indicates whether the restore job expired.
 	Expired *bool `json:"expired,omitempty"`
@@ -27,7 +27,7 @@ type ServerlessBackupRestoreJob struct {
 	// Unique 24-hexadecimal character string that identifies the restore job.
 	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 	// Oplog operation number from which you want to restore this snapshot. This number represents the second part of an Oplog timestamp. The resource returns this parameter when `\"deliveryType\" : \"pointInTime\"` and **oplogTs** exceeds `0`.
 	OplogInc *int `json:"oplogInc,omitempty"`
 	// Date and time from which you want to restore this snapshot. This parameter expresses this timestamp in the number of seconds that have elapsed since the UNIX epoch. This number represents the first part of an Oplog timestamp. The resource returns this parameter when `\"deliveryType\" : \"pointInTime\"` and **oplogTs** exceeds `0`.

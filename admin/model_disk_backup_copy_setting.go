@@ -11,7 +11,7 @@ type DiskBackupCopySetting struct {
 	// Human-readable label that identifies the cloud provider that stores the snapshot copy.
 	CloudProvider *string `json:"cloudProvider,omitempty"`
 	// List that describes which types of snapshots to copy.
-	Frequencies []string `json:"frequencies,omitempty"`
+	Frequencies []string `json:"frequencies"`
 	// Target region to copy snapshots belonging to replicationSpecId to. Please supply the 'Atlas Region' which can be found under [Cloud Providers](https://www.mongodb.com/docs/atlas/reference/cloud-providers/) 'regions' link.
 	RegionName *string `json:"regionName,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the replication object for a zone in a cluster. For global clusters, there can be multiple zones to choose from. For sharded clusters and replica set clusters, there is only one zone in the cluster. To find the Replication Spec Id, do a GET request to Return One Cluster in One Project and consult the replicationSpecs array [Return One Cluster in One Project](#operation/getLegacyCluster).

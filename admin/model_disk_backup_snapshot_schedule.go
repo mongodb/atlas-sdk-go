@@ -16,18 +16,18 @@ type DiskBackupSnapshotSchedule struct {
 	// Human-readable label that identifies the cluster with the snapshot you want to return.
 	ClusterName *string `json:"clusterName,omitempty"`
 	// List that contains a document for each copy setting item in the desired backup policy.
-	CopySettings []DiskBackupCopySetting `json:"copySettings,omitempty"`
+	CopySettings []DiskBackupCopySetting `json:"copySettings"`
 	// List that contains a document for each deleted copy setting whose backup copies you want to delete.
-	DeleteCopiedBackups []DeleteCopiedBackups `json:"deleteCopiedBackups,omitempty"`
+	DeleteCopiedBackups []DeleteCopiedBackups `json:"deleteCopiedBackups"`
 	Export              *AutoExportPolicy     `json:"export,omitempty"`
 	// List that contains a document for each extra retention setting item in the desired backup policy.
-	ExtraRetentionSettings []ExtraRetentionSetting `json:"extraRetentionSettings,omitempty"`
+	ExtraRetentionSettings []ExtraRetentionSetting `json:"extraRetentionSettings"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 	// Date and time when MongoDB Cloud takes the next snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	NextSnapshot *time.Time `json:"nextSnapshot,omitempty"`
 	// Rules set for this backup schedule.
-	Policies []AdvancedDiskBackupSnapshotSchedulePolicy `json:"policies,omitempty"`
+	Policies []AdvancedDiskBackupSnapshotSchedulePolicy `json:"policies"`
 	// Hour of day in Coordinated Universal Time (UTC) that represents when MongoDB Cloud takes the snapshot.
 	ReferenceHourOfDay *int `json:"referenceHourOfDay,omitempty"`
 	// Minute of the **referenceHourOfDay** that represents when MongoDB Cloud takes the snapshot.

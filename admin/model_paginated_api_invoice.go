@@ -9,9 +9,9 @@ import (
 // PaginatedApiInvoice struct for PaginatedApiInvoice
 type PaginatedApiInvoice struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 	// List of returned documents that MongoDB Cloud providers when completing this request.
-	Results []BillingInvoice `json:"results,omitempty"`
+	Results []BillingInvoice `json:"results"`
 	// Number of documents returned in this response.
 	TotalCount *int `json:"totalCount,omitempty"`
 }

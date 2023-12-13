@@ -11,9 +11,9 @@ type ClusterIPAddresses struct {
 	// Human-readable label that identifies the cluster.
 	ClusterName *string `json:"clusterName,omitempty"`
 	// List of inbound IP addresses associated with the cluster.
-	Inbound []string `json:"inbound,omitempty"`
+	Inbound []string `json:"inbound"`
 	// List of outbound IP addresses associated with the cluster.
-	Outbound []string `json:"outbound,omitempty"`
+	Outbound []string `json:"outbound"`
 }
 
 // NewClusterIPAddresses instantiates a new ClusterIPAddresses object

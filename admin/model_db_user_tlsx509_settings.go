@@ -11,7 +11,7 @@ type DBUserTLSX509Settings struct {
 	// Concatenated list of customer certificate authority (CA) certificates needed to authenticate database users. MongoDB Cloud expects this as a PEM-formatted certificate.
 	Cas *string `json:"cas,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 }
 
 // NewDBUserTLSX509Settings instantiates a new DBUserTLSX509Settings object

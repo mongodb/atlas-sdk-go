@@ -15,7 +15,7 @@ type ApiError struct {
 	// Application error code returned with this error.
 	ErrorCode *string `json:"errorCode,omitempty"`
 	// Parameter uses to give more information about the error.
-	Parameters []interface{} `json:"parameters,omitempty"`
+	Parameters []interface{} `json:"parameters"`
 	// Application error message returned with this error.
 	Reason *string `json:"reason,omitempty"`
 }

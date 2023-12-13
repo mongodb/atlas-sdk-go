@@ -15,7 +15,7 @@ type IngestionSink struct {
 	// Target cloud provider region for this Data Lake Pipeline.
 	MetadataRegion *string `json:"metadataRegion,omitempty"`
 	// Ordered fields used to physically organize data in the destination.
-	PartitionFields []DataLakePipelinesPartitionField `json:"partitionFields,omitempty"`
+	PartitionFields []DataLakePipelinesPartitionField `json:"partitionFields"`
 }
 
 // NewIngestionSink instantiates a new IngestionSink object

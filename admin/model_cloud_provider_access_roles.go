@@ -9,7 +9,7 @@ import (
 // CloudProviderAccessRoles struct for CloudProviderAccessRoles
 type CloudProviderAccessRoles struct {
 	// List that contains the Amazon Web Services (AWS) IAM roles registered and authorized with MongoDB Cloud.
-	AwsIamRoles []CloudProviderAccessAWSIAMRole `json:"awsIamRoles,omitempty"`
+	AwsIamRoles []CloudProviderAccessAWSIAMRole `json:"awsIamRoles"`
 }
 
 // NewCloudProviderAccessRoles instantiates a new CloudProviderAccessRoles object

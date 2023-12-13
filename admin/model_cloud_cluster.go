@@ -29,7 +29,7 @@ type CloudCluster struct {
 	// Human-readable label that indicates the cluster type.
 	Type *string `json:"type,omitempty"`
 	// List that contains the versions of MongoDB that each node in the cluster runs.
-	Versions []string `json:"versions,omitempty"`
+	Versions []string `json:"versions"`
 }
 
 // NewCloudCluster instantiates a new CloudCluster object

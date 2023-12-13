@@ -11,7 +11,7 @@ type DatabasePrivilegeAction struct {
 	// Human-readable label that identifies the privilege action.
 	Action string `json:"action"`
 	// List of resources on which you grant the action.
-	Resources []DatabasePermittedNamespaceResource `json:"resources,omitempty"`
+	Resources []DatabasePermittedNamespaceResource `json:"resources"`
 }
 
 // NewDatabasePrivilegeAction instantiates a new DatabasePrivilegeAction object

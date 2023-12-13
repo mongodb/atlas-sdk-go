@@ -13,7 +13,7 @@ type RestoreJobFileHash struct {
 	// Hashed checksum that maps to the restore file.
 	Hash *string `json:"hash,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 	// Human-readable label that identifies the hashing algorithm used to compute the hash value.
 	TypeName *string `json:"typeName,omitempty"`
 }

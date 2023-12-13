@@ -13,9 +13,9 @@ type PerformanceAdvisorIndex struct {
 	// Unique 24-hexadecimal digit string that identifies this index.
 	Id *string `json:"id,omitempty"`
 	// List that contains unique 24-hexadecimal character string that identifies the query shapes in this response that the Performance Advisor suggests.
-	Impact []string `json:"impact,omitempty"`
+	Impact []string `json:"impact"`
 	// List that contains documents that specify a key in the index and its sort order.
-	Index []map[string]int `json:"index,omitempty"`
+	Index []map[string]int `json:"index"`
 	// Human-readable label that identifies the namespace on the specified host. The resource expresses this parameter value as `<database>.<collection>`.
 	Namespace *string `json:"namespace,omitempty"`
 	// Estimated performance improvement that the suggested index provides. This value corresponds to **Impact** in the Performance Advisor user interface.

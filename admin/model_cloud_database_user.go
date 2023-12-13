@@ -18,19 +18,19 @@ type CloudDatabaseUser struct {
 	// Unique 24-hexadecimal digit string that identifies the project.
 	GroupId string `json:"groupId"`
 	// List that contains the key-value pairs for tagging and categorizing the MongoDB database user. The labels that you define do not appear in the console.
-	Labels []ComponentLabel `json:"labels,omitempty"`
+	Labels []ComponentLabel `json:"labels"`
 	// Part of the Lightweight Directory Access Protocol (LDAP) record that the database uses to authenticate this database user on the LDAP host.
 	LdapAuthType *string `json:"ldapAuthType,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 	// Human-readable label that indicates whether the new database user authenticates with OIDC federated authentication. To create a federated authentication user, specify the value of IDP_GROUP for this field.
 	OidcAuthType *string `json:"oidcAuthType,omitempty"`
 	// Alphanumeric string that authenticates this database user against the database specified in `databaseName`. To authenticate with SCRAM-SHA, you must specify this parameter. This parameter doesn't appear in this response.
 	Password *string `json:"password,omitempty"`
 	// List that provides the pairings of one role with one applicable database.
-	Roles []DatabaseUserRole `json:"roles,omitempty"`
+	Roles []DatabaseUserRole `json:"roles"`
 	// List that contains clusters and MongoDB Atlas Data Lakes that this database user can access. If omitted, MongoDB Cloud grants the database user access to all the clusters and MongoDB Atlas Data Lakes in the project.
-	Scopes []UserScope `json:"scopes,omitempty"`
+	Scopes []UserScope `json:"scopes"`
 	// Human-readable label that represents the user that authenticates to MongoDB. The format of this label depends on the method of authentication:  | Authentication Method | Parameter Needed | Parameter Value | username Format | |---|---|---|---| | AWS IAM | awsType | ROLE | <abbr title=\"Amazon Resource Name\">ARN</abbr> | | AWS IAM | awsType | USER | <abbr title=\"Amazon Resource Name\">ARN</abbr> | | x.509 | x509Type | CUSTOMER | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | x.509 | x509Type | MANAGED | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | LDAP | ldapAuthType | USER | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | LDAP | ldapAuthType | GROUP | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | OIDC | oidcAuthType | IDP_GROUP | Atlas OIDC IdP ID (found in federation settings), followed by a '/', followed by the IdP group name | | SCRAM-SHA | awsType, x509Type, ldapAuthType, oidcAuthType | NONE | Alphanumeric string |
 	Username string `json:"username"`
 	// X.509 method that MongoDB Cloud uses to authenticate the database user.  - For application-managed X.509, specify `MANAGED`. - For self-managed X.509, specify `CUSTOMER`.  Users created with the `CUSTOMER` method require a Common Name (CN) in the **username** parameter. You must create externally authenticated users on the `$external` database.

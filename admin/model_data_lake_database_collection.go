@@ -9,7 +9,7 @@ import (
 // DataLakeDatabaseCollection A collection and data sources that map to a “stores“ data store.
 type DataLakeDatabaseCollection struct {
 	// Array that contains the data stores that map to a collection for this data lake.
-	DataSources []DataLakeDatabaseDataSourceSettings `json:"dataSources,omitempty"`
+	DataSources []DataLakeDatabaseDataSourceSettings `json:"dataSources"`
 	// Human-readable label that identifies the collection to which MongoDB Cloud maps the data in the data stores.
 	Name *string `json:"name,omitempty"`
 }

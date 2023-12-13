@@ -8,11 +8,11 @@ import (
 
 // OrganizationInvitationRequest struct for OrganizationInvitationRequest
 type OrganizationInvitationRequest struct {
-	GroupRoleAssignments []OrganizationInvitationGroupRoleAssignmentsRequest `json:"groupRoleAssignments,omitempty"`
+	GroupRoleAssignments []OrganizationInvitationGroupRoleAssignmentsRequest `json:"groupRoleAssignments"`
 	// One or more organization level roles to assign to the MongoDB Cloud user.
-	Roles []string `json:"roles,omitempty"`
+	Roles []string `json:"roles"`
 	// List of teams to which you want to invite the desired MongoDB Cloud user.
-	TeamIds []string `json:"teamIds,omitempty"`
+	TeamIds []string `json:"teamIds"`
 	// Email address that belongs to the desired MongoDB Cloud user.
 	Username *string `json:"username,omitempty"`
 }

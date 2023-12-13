@@ -9,7 +9,7 @@ import (
 // OrgGroup struct for OrgGroup
 type OrgGroup struct {
 	// Settings that describe the clusters in each project that the API key is authorized to view.
-	Clusters []CloudCluster `json:"clusters,omitempty"`
+	Clusters []CloudCluster `json:"clusters"`
 	// Unique 24-hexadecimal character string that identifies the project.
 	GroupId *string `json:"groupId,omitempty"`
 	// Human-readable label that identifies the project.
@@ -21,7 +21,7 @@ type OrgGroup struct {
 	// Human-readable label that indicates the plan type.
 	PlanType *string `json:"planType,omitempty"`
 	// List of human-readable labels that categorize the specified project. MongoDB Cloud returns an empty array.
-	Tags []string `json:"tags,omitempty"`
+	Tags []string `json:"tags"`
 }
 
 // NewOrgGroup instantiates a new OrgGroup object

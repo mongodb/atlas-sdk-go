@@ -9,9 +9,9 @@ import (
 // TeamRole struct for TeamRole
 type TeamRole struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 	// One or more organization- or project-level roles to assign to the MongoDB Cloud user.
-	RoleNames []string `json:"roleNames,omitempty"`
+	RoleNames []string `json:"roleNames"`
 	// Unique 24-hexadecimal character string that identifies the team.
 	TeamId *string `json:"teamId,omitempty"`
 }

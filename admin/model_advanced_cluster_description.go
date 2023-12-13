@@ -29,9 +29,9 @@ type AdvancedClusterDescription struct {
 	Id *string `json:"id,omitempty"`
 	// Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels.  Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use [resource tags](https://dochub.mongodb.org/core/add-cluster-tag-atlas) instead.
 	// Deprecated
-	Labels []ComponentLabel `json:"labels,omitempty"`
+	Labels []ComponentLabel `json:"labels"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 	// Major MongoDB version of the cluster. MongoDB Cloud deploys the cluster with the latest stable release of the specified version.
 	MongoDBMajorVersion *string `json:"mongoDBMajorVersion,omitempty"`
 	// Version of MongoDB that the cluster runs.
@@ -43,13 +43,13 @@ type AdvancedClusterDescription struct {
 	// Flag that indicates whether the cluster uses continuous cloud backups.
 	PitEnabled *bool `json:"pitEnabled,omitempty"`
 	// List of settings that configure your cluster regions. For Global Clusters, each object in the array represents a zone where your clusters nodes deploy. For non-Global sharded clusters and replica sets, this array has one object representing where your clusters nodes deploy.
-	ReplicationSpecs []ReplicationSpec `json:"replicationSpecs,omitempty"`
+	ReplicationSpecs []ReplicationSpec `json:"replicationSpecs"`
 	// Root Certificate Authority that MongoDB Cloud cluster uses. MongoDB Cloud supports Internet Security Research Group.
 	RootCertType *string `json:"rootCertType,omitempty"`
 	// Human-readable label that indicates the current operating condition of this cluster.
 	StateName *string `json:"stateName,omitempty"`
 	// List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the cluster.
-	Tags []ResourceTag `json:"tags,omitempty"`
+	Tags []ResourceTag `json:"tags"`
 	// Flag that indicates whether termination protection is enabled on the cluster. If set to `true`, MongoDB Cloud won't delete the cluster. If set to `false`, MongoDB Cloud will delete the cluster.
 	TerminationProtectionEnabled *bool `json:"terminationProtectionEnabled,omitempty"`
 	// Method by which the cluster maintains the MongoDB versions. If value is `CONTINUOUS`, you must not specify **mongoDBMajorVersion**.

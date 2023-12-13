@@ -15,7 +15,7 @@ type CreateEndpointRequest struct {
 	// Human-readable label that identifies a set of endpoints.
 	EndpointGroupName *string `json:"endpointGroupName,omitempty"`
 	// List of individual private endpoints that comprise this endpoint group.
-	Endpoints []CreateGCPForwardingRuleRequest `json:"endpoints,omitempty"`
+	Endpoints []CreateGCPForwardingRuleRequest `json:"endpoints"`
 	// Unique string that identifies the Google Cloud project in which you created the endpoints.
 	GcpProjectId *string `json:"gcpProjectId,omitempty"`
 }

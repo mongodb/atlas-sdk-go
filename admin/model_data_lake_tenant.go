@@ -13,11 +13,11 @@ type DataLakeTenant struct {
 	// Unique 24-hexadecimal character string that identifies the project.
 	GroupId *string `json:"groupId,omitempty"`
 	// List that contains the hostnames assigned to the Data Lake instance.
-	Hostnames []string `json:"hostnames,omitempty"`
+	Hostnames []string `json:"hostnames"`
 	// Human-readable label that identifies the data lake.
 	Name *string `json:"name,omitempty"`
 	// List that contains the sets of private endpoints and hostnames.
-	PrivateEndpointHostnames []PrivateEndpointHostname `json:"privateEndpointHostnames,omitempty"`
+	PrivateEndpointHostnames []PrivateEndpointHostname `json:"privateEndpointHostnames"`
 	// Label that indicates the status of the Data Lake instance.
 	State   *string          `json:"state,omitempty"`
 	Storage *DataLakeStorage `json:"storage,omitempty"`

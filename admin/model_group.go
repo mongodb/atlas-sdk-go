@@ -16,7 +16,7 @@ type Group struct {
 	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud project.
 	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 	// Human-readable label that identifies the project included in the MongoDB Cloud organization.
 	Name string `json:"name"`
 	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud organization to which the project belongs.

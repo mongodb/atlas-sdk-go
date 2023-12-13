@@ -17,7 +17,7 @@ type ApiAtlasSnapshotSchedule struct {
 	// Unique 24-hexadecimal digit string that identifies the project that contains the cluster.
 	GroupId string `json:"groupId"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 	// Number of months that MongoDB Cloud must keep monthly snapshots. Set this value to `0` to disable monthly snapshot retention.
 	MonthlySnapshotRetentionMonths int `json:"monthlySnapshotRetentionMonths"`
 	// Number of hours before the current time from which MongoDB Cloud can create a Continuous Cloud Backup snapshot.

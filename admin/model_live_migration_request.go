@@ -14,7 +14,7 @@ type LiveMigrationRequest struct {
 	// Flag that indicates whether the migration process drops all collections from the destination cluster before the migration starts.
 	DropEnabled bool `json:"dropEnabled"`
 	// List of migration hosts used for this migration.
-	MigrationHosts []string `json:"migrationHosts,omitempty"`
+	MigrationHosts []string `json:"migrationHosts"`
 	Source         Source   `json:"source"`
 }
 

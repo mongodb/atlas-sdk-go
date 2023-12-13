@@ -23,11 +23,11 @@ type LDAPSecuritySettings struct {
 	// Human-readable label that identifies the hostname or Internet Protocol (IP) address of the Lightweight Directory Access Protocol (LDAP) host. This host must have access to the internet or have a Virtual Private Cloud (VPC) peering connection to your cluster.
 	Hostname *string `json:"hostname,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links []Link `json:"links"`
 	// Port to which the Lightweight Directory Access Protocol (LDAP) host listens for client connections.
 	Port *int `json:"port,omitempty"`
 	// User-to-Distinguished Name (DN) map that MongoDB Cloud uses to transform a Lightweight Directory Access Protocol (LDAP) username into an LDAP DN.
-	UserToDNMapping []UserToDNMapping `json:"userToDNMapping,omitempty"`
+	UserToDNMapping []UserToDNMapping `json:"userToDNMapping"`
 }
 
 // NewLDAPSecuritySettings instantiates a new LDAPSecuritySettings object

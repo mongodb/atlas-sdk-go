@@ -9,7 +9,7 @@ import (
 // TargetOrgRequest struct for TargetOrgRequest
 type TargetOrgRequest struct {
 	// IP address access list entries associated with the API key.
-	AccessListIps []string `json:"accessListIps,omitempty"`
+	AccessListIps []string `json:"accessListIps"`
 }
 
 // NewTargetOrgRequest instantiates a new TargetOrgRequest object

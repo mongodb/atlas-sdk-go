@@ -29,7 +29,7 @@ type PrivateLinkEndpoint struct {
 	// Human-readable label that identifies a set of endpoints.
 	EndpointGroupName *string `json:"endpointGroupName,omitempty"`
 	// List of individual private endpoints that comprise this endpoint group.
-	Endpoints []GCPConsumerForwardingRule `json:"endpoints,omitempty"`
+	Endpoints []GCPConsumerForwardingRule `json:"endpoints"`
 }
 
 // NewPrivateLinkEndpoint instantiates a new PrivateLinkEndpoint object

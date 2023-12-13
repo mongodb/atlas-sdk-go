@@ -9,7 +9,7 @@ import (
 // ServerlessInstanceDescriptionConnectionStrings Collection of Uniform Resource Locators that point to the MongoDB database.
 type ServerlessInstanceDescriptionConnectionStrings struct {
 	// List of private endpoint-aware connection strings that you can use to connect to this serverless instance through a private endpoint. This parameter returns only if you created a private endpoint for this serverless instance and it is AVAILABLE.
-	PrivateEndpoint []ServerlessConnectionStringsPrivateEndpointList `json:"privateEndpoint,omitempty"`
+	PrivateEndpoint []ServerlessConnectionStringsPrivateEndpointList `json:"privateEndpoint"`
 	// Public connection string that you can use to connect to this serverless instance. This connection string uses the `mongodb+srv://` protocol.
 	StandardSrv *string `json:"standardSrv,omitempty"`
 }

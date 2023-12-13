@@ -12,7 +12,7 @@ type DataLakeStoreSettings struct {
 	Name     *string `json:"name,omitempty"`
 	Provider string  `json:"provider"`
 	// Collection of AWS S3 [storage classes](https://aws.amazon.com/s3/storage-classes/). Atlas Data Lake includes the files in these storage classes in the query results.
-	AdditionalStorageClasses []string `json:"additionalStorageClasses,omitempty"`
+	AdditionalStorageClasses []string `json:"additionalStorageClasses"`
 	// Human-readable label that identifies the AWS S3 bucket. This label must exactly match the name of an S3 bucket that the data lake can access with the configured AWS Identity and Access Management (IAM) credentials.
 	Bucket *string `json:"bucket,omitempty"`
 	// The delimiter that separates **databases.[n].collections.[n].dataSources.[n].path** segments in the data store. MongoDB Cloud uses the delimiter to efficiently traverse S3 buckets with a hierarchical directory structure. You can specify any character supported by the S3 object keys as the delimiter. For example, you can specify an underscore (_) or a plus sign (+) or multiple characters, such as double underscores (__) as the delimiter. If omitted, defaults to `/`.
@@ -36,7 +36,7 @@ type DataLakeStoreSettings struct {
 	// Default format that Data Lake assumes if it encounters a file without an extension while searching the `storeName`. If omitted, Data Lake attempts to detect the file type by processing a few bytes of the file. The specified format only applies to the URLs specified in the **databases.[n].collections.[n].dataSources** object.
 	DefaultFormat *string `json:"defaultFormat,omitempty"`
 	// Comma-separated list of publicly accessible HTTP URLs where data is stored. You can't specify URLs that require authentication.
-	Urls []string `json:"urls,omitempty"`
+	Urls []string `json:"urls"`
 }
 
 // NewDataLakeStoreSettings instantiates a new DataLakeStoreSettings object

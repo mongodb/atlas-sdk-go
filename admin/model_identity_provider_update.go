@@ -9,7 +9,7 @@ import (
 // IdentityProviderUpdate struct for IdentityProviderUpdate
 type IdentityProviderUpdate struct {
 	// List that contains the domains associated with the identity provider.
-	AssociatedDomains []string `json:"associatedDomains,omitempty"`
+	AssociatedDomains []string `json:"associatedDomains"`
 	// The description for the identity provider.
 	Description *string `json:"description,omitempty"`
 	// Human-readable label that identifies the identity provider.
@@ -19,13 +19,13 @@ type IdentityProviderUpdate struct {
 	// The protocol for the identity provider.
 	Protocol *string `json:"protocol,omitempty"`
 	// Audience claim for the identity provider.
-	AudienceClaim []string `json:"audienceClaim,omitempty"`
+	AudienceClaim []string `json:"audienceClaim"`
 	// Client ID for the identity provider.
 	ClientId *string `json:"clientId,omitempty"`
 	// Groups claim for the identity provider.
 	GroupsClaim *string `json:"groupsClaim,omitempty"`
 	// Requested scopes for the identity provider.
-	RequestedScopes []string `json:"requestedScopes,omitempty"`
+	RequestedScopes []string `json:"requestedScopes"`
 	// User claim for the identity provider.
 	UserClaim   *string      `json:"userClaim,omitempty"`
 	PemFileInfo *PemFileInfo `json:"pemFileInfo,omitempty"`
