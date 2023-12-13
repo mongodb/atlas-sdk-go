@@ -28,6 +28,45 @@ if test != ""
     requestBody.StringPointerValue = test
 ```
 
+## Working with Arrays
+
+When working with arrays in Golang we need to consider various scenarios such as the absence of a struct property  or property being null.
+Specifically for Atlas API null values aren't allowed which requires developers to specify array objects in specific format.
+Cases for handling arrays for Atlas SDK and API.
+
+1. Update request containing empty array (reset of the field values)
+
+If a struct property is explicitly set to an empty array SDK will send empty array request to the Atlas API.
+
+```golang
+data := Data{
+    dataField: []string{}
+}
+```
+
+2. Update request without updating array field
+
+When performing update operation we recomend the struct property to not present. 
+
+> NOTE: Property definition as nil would trigger error or invalid behaviour
+
+ ```golang
+data := Data{
+    // we cannot have dataField defined
+    //dataField: []string{}
+}
+```
+ 
+3. Struct with Data
+
+When performing update operation we need to specify non nil values of the data.
+
+ ```golang
+data := Data{
+    dataField: []string{"label"}
+}
+```
+
 ## Working with Date Fields
 
 In the Atlas Go SDK, the `*time.Time` type represents date fields for handling time-related data. 
