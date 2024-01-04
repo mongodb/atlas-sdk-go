@@ -63,6 +63,7 @@ func (o *CloudAccessRoleAssignment) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *CloudAccessRoleAssignment) SetGroupId(v string) {
+
 	o.GroupId = &v
 }
 
@@ -96,6 +97,7 @@ func (o *CloudAccessRoleAssignment) HasOrgId() bool {
 
 // SetOrgId gets a reference to the given string and assigns it to the OrgId field.
 func (o *CloudAccessRoleAssignment) SetOrgId(v string) {
+
 	o.OrgId = &v
 }
 
@@ -129,6 +131,7 @@ func (o *CloudAccessRoleAssignment) HasRoleName() bool {
 
 // SetRoleName gets a reference to the given string and assigns it to the RoleName field.
 func (o *CloudAccessRoleAssignment) SetRoleName(v string) {
+
 	o.RoleName = &v
 }
 

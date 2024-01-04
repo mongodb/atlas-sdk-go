@@ -61,6 +61,7 @@ func (o *AutoExportPolicy) HasExportBucketId() bool {
 
 // SetExportBucketId gets a reference to the given string and assigns it to the ExportBucketId field.
 func (o *AutoExportPolicy) SetExportBucketId(v string) {
+
 	o.ExportBucketId = &v
 }
 
@@ -94,6 +95,7 @@ func (o *AutoExportPolicy) HasFrequencyType() bool {
 
 // SetFrequencyType gets a reference to the given string and assigns it to the FrequencyType field.
 func (o *AutoExportPolicy) SetFrequencyType(v string) {
+
 	o.FrequencyType = &v
 }
 

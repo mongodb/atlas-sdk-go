@@ -11,7 +11,7 @@ type UpdateAtlasOrganizationApiKey struct {
 	// Purpose or explanation provided when someone creates this organization API key.
 	Desc *string `json:"desc,omitempty"`
 	// List of roles to grant this API key. If you provide this list, provide a minimum of one role and ensure each role applies to this organization.
-	Roles []string `json:"roles,omitempty"`
+	Roles *[]string `json:"roles,omitempty"`
 }
 
 // NewUpdateAtlasOrganizationApiKey instantiates a new UpdateAtlasOrganizationApiKey object
@@ -61,6 +61,7 @@ func (o *UpdateAtlasOrganizationApiKey) HasDesc() bool {
 
 // SetDesc gets a reference to the given string and assigns it to the Desc field.
 func (o *UpdateAtlasOrganizationApiKey) SetDesc(v string) {
+
 	o.Desc = &v
 }
 
@@ -70,12 +71,12 @@ func (o *UpdateAtlasOrganizationApiKey) GetRoles() []string {
 		var ret []string
 		return ret
 	}
-	return o.Roles
+	return *o.Roles
 }
 
 // GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateAtlasOrganizationApiKey) GetRolesOk() ([]string, bool) {
+func (o *UpdateAtlasOrganizationApiKey) GetRolesOk() (*[]string, bool) {
 	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
@@ -94,7 +95,8 @@ func (o *UpdateAtlasOrganizationApiKey) HasRoles() bool {
 
 // SetRoles gets a reference to the given []string and assigns it to the Roles field.
 func (o *UpdateAtlasOrganizationApiKey) SetRoles(v []string) {
-	o.Roles = v
+
+	o.Roles = &v
 }
 
 func (o UpdateAtlasOrganizationApiKey) MarshalJSONWithoutReadOnly() ([]byte, error) {

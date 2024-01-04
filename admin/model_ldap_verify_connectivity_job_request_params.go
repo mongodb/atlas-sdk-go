@@ -19,7 +19,7 @@ type LDAPVerifyConnectivityJobRequestParams struct {
 	// Human-readable label that identifies the hostname or Internet Protocol (IP) address of the Lightweight Directory Access Protocol (LDAP) host. This host must have access to the internet or have a Virtual Private Cloud (VPC) peering connection to your cluster.
 	Hostname string `json:"hostname"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// IANA port to which the Lightweight Directory Access Protocol (LDAP) host listens for client connections.
 	Port int `json:"port"`
 }
@@ -81,6 +81,7 @@ func (o *LDAPVerifyConnectivityJobRequestParams) HasAuthzQueryTemplate() bool {
 
 // SetAuthzQueryTemplate gets a reference to the given string and assigns it to the AuthzQueryTemplate field.
 func (o *LDAPVerifyConnectivityJobRequestParams) SetAuthzQueryTemplate(v string) {
+
 	o.AuthzQueryTemplate = &v
 }
 
@@ -162,6 +163,7 @@ func (o *LDAPVerifyConnectivityJobRequestParams) HasCaCertificate() bool {
 
 // SetCaCertificate gets a reference to the given string and assigns it to the CaCertificate field.
 func (o *LDAPVerifyConnectivityJobRequestParams) SetCaCertificate(v string) {
+
 	o.CaCertificate = &v
 }
 
@@ -195,12 +197,12 @@ func (o *LDAPVerifyConnectivityJobRequestParams) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LDAPVerifyConnectivityJobRequestParams) GetLinksOk() ([]Link, bool) {
+func (o *LDAPVerifyConnectivityJobRequestParams) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -219,7 +221,8 @@ func (o *LDAPVerifyConnectivityJobRequestParams) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *LDAPVerifyConnectivityJobRequestParams) SetLinks(v []Link) {
-	o.Links = v
+
+	o.Links = &v
 }
 
 // GetPort returns the Port field value

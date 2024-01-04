@@ -11,7 +11,7 @@ type DiskBackupOnDemandSnapshotRequest struct {
 	// Human-readable phrase or sentence that explains the purpose of the snapshot. The resource returns this parameter when `\"status\" : \"onDemand\"`.
 	Description *string `json:"description,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Number of days that MongoDB Cloud should retain the on-demand snapshot. Must be at least **1**.
 	RetentionInDays *int `json:"retentionInDays,omitempty"`
 }
@@ -63,6 +63,7 @@ func (o *DiskBackupOnDemandSnapshotRequest) HasDescription() bool {
 
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *DiskBackupOnDemandSnapshotRequest) SetDescription(v string) {
+
 	o.Description = &v
 }
 
@@ -72,12 +73,12 @@ func (o *DiskBackupOnDemandSnapshotRequest) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupOnDemandSnapshotRequest) GetLinksOk() ([]Link, bool) {
+func (o *DiskBackupOnDemandSnapshotRequest) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -96,7 +97,8 @@ func (o *DiskBackupOnDemandSnapshotRequest) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *DiskBackupOnDemandSnapshotRequest) SetLinks(v []Link) {
-	o.Links = v
+
+	o.Links = &v
 }
 
 // GetRetentionInDays returns the RetentionInDays field value if set, zero value otherwise
@@ -129,6 +131,7 @@ func (o *DiskBackupOnDemandSnapshotRequest) HasRetentionInDays() bool {
 
 // SetRetentionInDays gets a reference to the given int and assigns it to the RetentionInDays field.
 func (o *DiskBackupOnDemandSnapshotRequest) SetRetentionInDays(v int) {
+
 	o.RetentionInDays = &v
 }
 

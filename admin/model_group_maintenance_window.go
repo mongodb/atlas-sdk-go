@@ -67,6 +67,7 @@ func (o *GroupMaintenanceWindow) HasAutoDeferOnceEnabled() bool {
 
 // SetAutoDeferOnceEnabled gets a reference to the given bool and assigns it to the AutoDeferOnceEnabled field.
 func (o *GroupMaintenanceWindow) SetAutoDeferOnceEnabled(v bool) {
+
 	o.AutoDeferOnceEnabled = &v
 }
 
@@ -148,6 +149,7 @@ func (o *GroupMaintenanceWindow) HasStartASAP() bool {
 
 // SetStartASAP gets a reference to the given bool and assigns it to the StartASAP field.
 func (o *GroupMaintenanceWindow) SetStartASAP(v bool) {
+
 	o.StartASAP = &v
 }
 

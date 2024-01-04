@@ -13,7 +13,7 @@ type RestoreJobFileHash struct {
 	// Hashed checksum that maps to the restore file.
 	Hash *string `json:"hash,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Human-readable label that identifies the hashing algorithm used to compute the hash value.
 	TypeName *string `json:"typeName,omitempty"`
 }
@@ -65,6 +65,7 @@ func (o *RestoreJobFileHash) HasFileName() bool {
 
 // SetFileName gets a reference to the given string and assigns it to the FileName field.
 func (o *RestoreJobFileHash) SetFileName(v string) {
+
 	o.FileName = &v
 }
 
@@ -98,6 +99,7 @@ func (o *RestoreJobFileHash) HasHash() bool {
 
 // SetHash gets a reference to the given string and assigns it to the Hash field.
 func (o *RestoreJobFileHash) SetHash(v string) {
+
 	o.Hash = &v
 }
 
@@ -107,12 +109,12 @@ func (o *RestoreJobFileHash) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RestoreJobFileHash) GetLinksOk() ([]Link, bool) {
+func (o *RestoreJobFileHash) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -131,7 +133,8 @@ func (o *RestoreJobFileHash) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *RestoreJobFileHash) SetLinks(v []Link) {
-	o.Links = v
+
+	o.Links = &v
 }
 
 // GetTypeName returns the TypeName field value if set, zero value otherwise
@@ -164,6 +167,7 @@ func (o *RestoreJobFileHash) HasTypeName() bool {
 
 // SetTypeName gets a reference to the given string and assigns it to the TypeName field.
 func (o *RestoreJobFileHash) SetTypeName(v string) {
+
 	o.TypeName = &v
 }
 

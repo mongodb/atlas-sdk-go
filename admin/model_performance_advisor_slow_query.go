@@ -61,6 +61,7 @@ func (o *PerformanceAdvisorSlowQuery) HasLine() bool {
 
 // SetLine gets a reference to the given string and assigns it to the Line field.
 func (o *PerformanceAdvisorSlowQuery) SetLine(v string) {
+
 	o.Line = &v
 }
 
@@ -94,6 +95,7 @@ func (o *PerformanceAdvisorSlowQuery) HasNamespace() bool {
 
 // SetNamespace gets a reference to the given string and assigns it to the Namespace field.
 func (o *PerformanceAdvisorSlowQuery) SetNamespace(v string) {
+
 	o.Namespace = &v
 }
 

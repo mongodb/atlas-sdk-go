@@ -11,7 +11,7 @@ type OrganizationInvitationGroupRoleAssignmentsRequest struct {
 	// Unique 24-hexadecimal digit string that identifies the project to which these roles belong.
 	GroupId *string `json:"groupId,omitempty"`
 	// One or more project level roles to assign to the MongoDB Cloud user.
-	Roles []string `json:"roles,omitempty"`
+	Roles *[]string `json:"roles,omitempty"`
 }
 
 // NewOrganizationInvitationGroupRoleAssignmentsRequest instantiates a new OrganizationInvitationGroupRoleAssignmentsRequest object
@@ -61,6 +61,7 @@ func (o *OrganizationInvitationGroupRoleAssignmentsRequest) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *OrganizationInvitationGroupRoleAssignmentsRequest) SetGroupId(v string) {
+
 	o.GroupId = &v
 }
 
@@ -70,12 +71,12 @@ func (o *OrganizationInvitationGroupRoleAssignmentsRequest) GetRoles() []string 
 		var ret []string
 		return ret
 	}
-	return o.Roles
+	return *o.Roles
 }
 
 // GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrganizationInvitationGroupRoleAssignmentsRequest) GetRolesOk() ([]string, bool) {
+func (o *OrganizationInvitationGroupRoleAssignmentsRequest) GetRolesOk() (*[]string, bool) {
 	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
@@ -94,7 +95,8 @@ func (o *OrganizationInvitationGroupRoleAssignmentsRequest) HasRoles() bool {
 
 // SetRoles gets a reference to the given []string and assigns it to the Roles field.
 func (o *OrganizationInvitationGroupRoleAssignmentsRequest) SetRoles(v []string) {
-	o.Roles = v
+
+	o.Roles = &v
 }
 
 func (o OrganizationInvitationGroupRoleAssignmentsRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {

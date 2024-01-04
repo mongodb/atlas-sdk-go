@@ -9,7 +9,7 @@ import (
 // MetricsMeasurementAtlas struct for MetricsMeasurementAtlas
 type MetricsMeasurementAtlas struct {
 	// List that contains the value of, and metadata provided for, one data point generated at a particular moment in time. If no data point exists for a particular moment in time, the `value` parameter returns `null`.
-	DataPoints []MetricDataPointAtlas `json:"dataPoints,omitempty"`
+	DataPoints *[]MetricDataPointAtlas `json:"dataPoints,omitempty"`
 	// Human-readable label of the measurement that this data point covers.
 	Name *string `json:"name,omitempty"`
 	// Element used to quantify the measurement. The resource returns units of throughput, storage, and time.
@@ -39,12 +39,12 @@ func (o *MetricsMeasurementAtlas) GetDataPoints() []MetricDataPointAtlas {
 		var ret []MetricDataPointAtlas
 		return ret
 	}
-	return o.DataPoints
+	return *o.DataPoints
 }
 
 // GetDataPointsOk returns a tuple with the DataPoints field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MetricsMeasurementAtlas) GetDataPointsOk() ([]MetricDataPointAtlas, bool) {
+func (o *MetricsMeasurementAtlas) GetDataPointsOk() (*[]MetricDataPointAtlas, bool) {
 	if o == nil || IsNil(o.DataPoints) {
 		return nil, false
 	}
@@ -63,7 +63,8 @@ func (o *MetricsMeasurementAtlas) HasDataPoints() bool {
 
 // SetDataPoints gets a reference to the given []MetricDataPointAtlas and assigns it to the DataPoints field.
 func (o *MetricsMeasurementAtlas) SetDataPoints(v []MetricDataPointAtlas) {
-	o.DataPoints = v
+
+	o.DataPoints = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise
@@ -96,6 +97,7 @@ func (o *MetricsMeasurementAtlas) HasName() bool {
 
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *MetricsMeasurementAtlas) SetName(v string) {
+
 	o.Name = &v
 }
 
@@ -129,6 +131,7 @@ func (o *MetricsMeasurementAtlas) HasUnits() bool {
 
 // SetUnits gets a reference to the given string and assigns it to the Units field.
 func (o *MetricsMeasurementAtlas) SetUnits(v string) {
+
 	o.Units = &v
 }
 

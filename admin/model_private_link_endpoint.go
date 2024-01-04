@@ -29,7 +29,7 @@ type PrivateLinkEndpoint struct {
 	// Human-readable label that identifies a set of endpoints.
 	EndpointGroupName *string `json:"endpointGroupName,omitempty"`
 	// List of individual private endpoints that comprise this endpoint group.
-	Endpoints []GCPConsumerForwardingRule `json:"endpoints,omitempty"`
+	Endpoints *[]GCPConsumerForwardingRule `json:"endpoints,omitempty"`
 }
 
 // NewPrivateLinkEndpoint instantiates a new PrivateLinkEndpoint object
@@ -104,6 +104,7 @@ func (o *PrivateLinkEndpoint) HasDeleteRequested() bool {
 
 // SetDeleteRequested gets a reference to the given bool and assigns it to the DeleteRequested field.
 func (o *PrivateLinkEndpoint) SetDeleteRequested(v bool) {
+
 	o.DeleteRequested = &v
 }
 
@@ -137,6 +138,7 @@ func (o *PrivateLinkEndpoint) HasErrorMessage() bool {
 
 // SetErrorMessage gets a reference to the given string and assigns it to the ErrorMessage field.
 func (o *PrivateLinkEndpoint) SetErrorMessage(v string) {
+
 	o.ErrorMessage = &v
 }
 
@@ -170,6 +172,7 @@ func (o *PrivateLinkEndpoint) HasConnectionStatus() bool {
 
 // SetConnectionStatus gets a reference to the given string and assigns it to the ConnectionStatus field.
 func (o *PrivateLinkEndpoint) SetConnectionStatus(v string) {
+
 	o.ConnectionStatus = &v
 }
 
@@ -203,6 +206,7 @@ func (o *PrivateLinkEndpoint) HasInterfaceEndpointId() bool {
 
 // SetInterfaceEndpointId gets a reference to the given string and assigns it to the InterfaceEndpointId field.
 func (o *PrivateLinkEndpoint) SetInterfaceEndpointId(v string) {
+
 	o.InterfaceEndpointId = &v
 }
 
@@ -236,6 +240,7 @@ func (o *PrivateLinkEndpoint) HasPrivateEndpointConnectionName() bool {
 
 // SetPrivateEndpointConnectionName gets a reference to the given string and assigns it to the PrivateEndpointConnectionName field.
 func (o *PrivateLinkEndpoint) SetPrivateEndpointConnectionName(v string) {
+
 	o.PrivateEndpointConnectionName = &v
 }
 
@@ -269,6 +274,7 @@ func (o *PrivateLinkEndpoint) HasPrivateEndpointIPAddress() bool {
 
 // SetPrivateEndpointIPAddress gets a reference to the given string and assigns it to the PrivateEndpointIPAddress field.
 func (o *PrivateLinkEndpoint) SetPrivateEndpointIPAddress(v string) {
+
 	o.PrivateEndpointIPAddress = &v
 }
 
@@ -302,6 +308,7 @@ func (o *PrivateLinkEndpoint) HasPrivateEndpointResourceId() bool {
 
 // SetPrivateEndpointResourceId gets a reference to the given string and assigns it to the PrivateEndpointResourceId field.
 func (o *PrivateLinkEndpoint) SetPrivateEndpointResourceId(v string) {
+
 	o.PrivateEndpointResourceId = &v
 }
 
@@ -335,6 +342,7 @@ func (o *PrivateLinkEndpoint) HasStatus() bool {
 
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *PrivateLinkEndpoint) SetStatus(v string) {
+
 	o.Status = &v
 }
 
@@ -368,6 +376,7 @@ func (o *PrivateLinkEndpoint) HasEndpointGroupName() bool {
 
 // SetEndpointGroupName gets a reference to the given string and assigns it to the EndpointGroupName field.
 func (o *PrivateLinkEndpoint) SetEndpointGroupName(v string) {
+
 	o.EndpointGroupName = &v
 }
 
@@ -377,12 +386,12 @@ func (o *PrivateLinkEndpoint) GetEndpoints() []GCPConsumerForwardingRule {
 		var ret []GCPConsumerForwardingRule
 		return ret
 	}
-	return o.Endpoints
+	return *o.Endpoints
 }
 
 // GetEndpointsOk returns a tuple with the Endpoints field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PrivateLinkEndpoint) GetEndpointsOk() ([]GCPConsumerForwardingRule, bool) {
+func (o *PrivateLinkEndpoint) GetEndpointsOk() (*[]GCPConsumerForwardingRule, bool) {
 	if o == nil || IsNil(o.Endpoints) {
 		return nil, false
 	}
@@ -401,7 +410,8 @@ func (o *PrivateLinkEndpoint) HasEndpoints() bool {
 
 // SetEndpoints gets a reference to the given []GCPConsumerForwardingRule and assigns it to the Endpoints field.
 func (o *PrivateLinkEndpoint) SetEndpoints(v []GCPConsumerForwardingRule) {
-	o.Endpoints = v
+
+	o.Endpoints = &v
 }
 
 func (o PrivateLinkEndpoint) MarshalJSONWithoutReadOnly() ([]byte, error) {

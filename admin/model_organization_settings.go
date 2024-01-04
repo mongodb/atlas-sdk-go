@@ -63,6 +63,7 @@ func (o *OrganizationSettings) HasApiAccessListRequired() bool {
 
 // SetApiAccessListRequired gets a reference to the given bool and assigns it to the ApiAccessListRequired field.
 func (o *OrganizationSettings) SetApiAccessListRequired(v bool) {
+
 	o.ApiAccessListRequired = &v
 }
 
@@ -96,6 +97,7 @@ func (o *OrganizationSettings) HasMultiFactorAuthRequired() bool {
 
 // SetMultiFactorAuthRequired gets a reference to the given bool and assigns it to the MultiFactorAuthRequired field.
 func (o *OrganizationSettings) SetMultiFactorAuthRequired(v bool) {
+
 	o.MultiFactorAuthRequired = &v
 }
 
@@ -129,6 +131,7 @@ func (o *OrganizationSettings) HasRestrictEmployeeAccess() bool {
 
 // SetRestrictEmployeeAccess gets a reference to the given bool and assigns it to the RestrictEmployeeAccess field.
 func (o *OrganizationSettings) SetRestrictEmployeeAccess(v bool) {
+
 	o.RestrictEmployeeAccess = &v
 }
 

@@ -11,7 +11,7 @@ type AdvancedDiskBackupSnapshotSchedulePolicy struct {
 	// Unique 24-hexadecimal digit string that identifies this backup policy.
 	Id *string `json:"id,omitempty"`
 	// List that contains the specifications for one policy.
-	PolicyItems []DiskBackupApiPolicyItem `json:"policyItems,omitempty"`
+	PolicyItems *[]DiskBackupApiPolicyItem `json:"policyItems,omitempty"`
 }
 
 // NewAdvancedDiskBackupSnapshotSchedulePolicy instantiates a new AdvancedDiskBackupSnapshotSchedulePolicy object
@@ -61,6 +61,7 @@ func (o *AdvancedDiskBackupSnapshotSchedulePolicy) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *AdvancedDiskBackupSnapshotSchedulePolicy) SetId(v string) {
+
 	o.Id = &v
 }
 
@@ -70,12 +71,12 @@ func (o *AdvancedDiskBackupSnapshotSchedulePolicy) GetPolicyItems() []DiskBackup
 		var ret []DiskBackupApiPolicyItem
 		return ret
 	}
-	return o.PolicyItems
+	return *o.PolicyItems
 }
 
 // GetPolicyItemsOk returns a tuple with the PolicyItems field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AdvancedDiskBackupSnapshotSchedulePolicy) GetPolicyItemsOk() ([]DiskBackupApiPolicyItem, bool) {
+func (o *AdvancedDiskBackupSnapshotSchedulePolicy) GetPolicyItemsOk() (*[]DiskBackupApiPolicyItem, bool) {
 	if o == nil || IsNil(o.PolicyItems) {
 		return nil, false
 	}
@@ -94,7 +95,8 @@ func (o *AdvancedDiskBackupSnapshotSchedulePolicy) HasPolicyItems() bool {
 
 // SetPolicyItems gets a reference to the given []DiskBackupApiPolicyItem and assigns it to the PolicyItems field.
 func (o *AdvancedDiskBackupSnapshotSchedulePolicy) SetPolicyItems(v []DiskBackupApiPolicyItem) {
-	o.PolicyItems = v
+
+	o.PolicyItems = &v
 }
 
 func (o AdvancedDiskBackupSnapshotSchedulePolicy) MarshalJSONWithoutReadOnly() ([]byte, error) {

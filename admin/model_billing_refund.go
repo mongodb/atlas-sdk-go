@@ -66,6 +66,7 @@ func (o *BillingRefund) HasAmountCents() bool {
 
 // SetAmountCents gets a reference to the given int64 and assigns it to the AmountCents field.
 func (o *BillingRefund) SetAmountCents(v int64) {
+
 	o.AmountCents = &v
 }
 
@@ -99,6 +100,7 @@ func (o *BillingRefund) HasCreated() bool {
 
 // SetCreated gets a reference to the given time.Time and assigns it to the Created field.
 func (o *BillingRefund) SetCreated(v time.Time) {
+
 	o.Created = &v
 }
 
@@ -132,6 +134,7 @@ func (o *BillingRefund) HasPaymentId() bool {
 
 // SetPaymentId gets a reference to the given string and assigns it to the PaymentId field.
 func (o *BillingRefund) SetPaymentId(v string) {
+
 	o.PaymentId = &v
 }
 
@@ -165,6 +168,7 @@ func (o *BillingRefund) HasReason() bool {
 
 // SetReason gets a reference to the given string and assigns it to the Reason field.
 func (o *BillingRefund) SetReason(v string) {
+
 	o.Reason = &v
 }
 

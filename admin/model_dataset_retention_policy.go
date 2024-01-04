@@ -66,6 +66,7 @@ func (o *DatasetRetentionPolicy) HasLastModifiedDate() bool {
 
 // SetLastModifiedDate gets a reference to the given time.Time and assigns it to the LastModifiedDate field.
 func (o *DatasetRetentionPolicy) SetLastModifiedDate(v time.Time) {
+
 	o.LastModifiedDate = &v
 }
 

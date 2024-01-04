@@ -9,9 +9,9 @@ import (
 // PaginatedIntegration struct for PaginatedIntegration
 type PaginatedIntegration struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud providers when completing this request.
-	Results []ThridPartyIntegration `json:"results,omitempty"`
+	Results *[]ThridPartyIntegration `json:"results,omitempty"`
 	// Number of documents returned in this response if **includeCount** query param is true.
 	TotalCount *int `json:"totalCount,omitempty"`
 }
@@ -39,12 +39,12 @@ func (o *PaginatedIntegration) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedIntegration) GetLinksOk() ([]Link, bool) {
+func (o *PaginatedIntegration) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -63,7 +63,8 @@ func (o *PaginatedIntegration) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PaginatedIntegration) SetLinks(v []Link) {
-	o.Links = v
+
+	o.Links = &v
 }
 
 // GetResults returns the Results field value if set, zero value otherwise
@@ -72,12 +73,12 @@ func (o *PaginatedIntegration) GetResults() []ThridPartyIntegration {
 		var ret []ThridPartyIntegration
 		return ret
 	}
-	return o.Results
+	return *o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedIntegration) GetResultsOk() ([]ThridPartyIntegration, bool) {
+func (o *PaginatedIntegration) GetResultsOk() (*[]ThridPartyIntegration, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -96,7 +97,8 @@ func (o *PaginatedIntegration) HasResults() bool {
 
 // SetResults gets a reference to the given []ThridPartyIntegration and assigns it to the Results field.
 func (o *PaginatedIntegration) SetResults(v []ThridPartyIntegration) {
-	o.Results = v
+
+	o.Results = &v
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise
@@ -129,6 +131,7 @@ func (o *PaginatedIntegration) HasTotalCount() bool {
 
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
 func (o *PaginatedIntegration) SetTotalCount(v int) {
+
 	o.TotalCount = &v
 }
 

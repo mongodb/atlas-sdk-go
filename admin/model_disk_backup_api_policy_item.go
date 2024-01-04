@@ -119,6 +119,7 @@ func (o *DiskBackupApiPolicyItem) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *DiskBackupApiPolicyItem) SetId(v string) {
+
 	o.Id = &v
 }
 

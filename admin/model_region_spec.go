@@ -65,6 +65,7 @@ func (o *RegionSpec) HasAnalyticsNodes() bool {
 
 // SetAnalyticsNodes gets a reference to the given int and assigns it to the AnalyticsNodes field.
 func (o *RegionSpec) SetAnalyticsNodes(v int) {
+
 	o.AnalyticsNodes = &v
 }
 
@@ -98,6 +99,7 @@ func (o *RegionSpec) HasElectableNodes() bool {
 
 // SetElectableNodes gets a reference to the given int and assigns it to the ElectableNodes field.
 func (o *RegionSpec) SetElectableNodes(v int) {
+
 	o.ElectableNodes = &v
 }
 
@@ -131,6 +133,7 @@ func (o *RegionSpec) HasPriority() bool {
 
 // SetPriority gets a reference to the given int and assigns it to the Priority field.
 func (o *RegionSpec) SetPriority(v int) {
+
 	o.Priority = &v
 }
 
@@ -164,6 +167,7 @@ func (o *RegionSpec) HasReadOnlyNodes() bool {
 
 // SetReadOnlyNodes gets a reference to the given int and assigns it to the ReadOnlyNodes field.
 func (o *RegionSpec) SetReadOnlyNodes(v int) {
+
 	o.ReadOnlyNodes = &v
 }
 

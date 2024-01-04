@@ -61,6 +61,7 @@ func (o *ClusterComputeAutoScaling) HasEnabled() bool {
 
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *ClusterComputeAutoScaling) SetEnabled(v bool) {
+
 	o.Enabled = &v
 }
 
@@ -94,6 +95,7 @@ func (o *ClusterComputeAutoScaling) HasScaleDownEnabled() bool {
 
 // SetScaleDownEnabled gets a reference to the given bool and assigns it to the ScaleDownEnabled field.
 func (o *ClusterComputeAutoScaling) SetScaleDownEnabled(v bool) {
+
 	o.ScaleDownEnabled = &v
 }
 

@@ -17,7 +17,7 @@ type ServerlessInstanceDescription struct {
 	// Unique 24-hexadecimal digit string that identifies the serverless instance.
 	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Version of MongoDB that the serverless instance runs.
 	MongoDBVersion *string `json:"mongoDBVersion,omitempty"`
 	// Human-readable label that identifies the serverless instance.
@@ -27,7 +27,7 @@ type ServerlessInstanceDescription struct {
 	// Human-readable label that indicates the current operating condition of the serverless instance.
 	StateName *string `json:"stateName,omitempty"`
 	// List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the serverless instance.
-	Tags []ResourceTag `json:"tags,omitempty"`
+	Tags *[]ResourceTag `json:"tags,omitempty"`
 	// Flag that indicates whether termination protection is enabled on the serverless instance. If set to `true`, MongoDB Cloud won't delete the serverless instance. If set to `false`, MongoDB Cloud will delete the serverless instance.
 	TerminationProtectionEnabled *bool `json:"terminationProtectionEnabled,omitempty"`
 }
@@ -84,6 +84,7 @@ func (o *ServerlessInstanceDescription) HasConnectionStrings() bool {
 
 // SetConnectionStrings gets a reference to the given ServerlessInstanceDescriptionConnectionStrings and assigns it to the ConnectionStrings field.
 func (o *ServerlessInstanceDescription) SetConnectionStrings(v ServerlessInstanceDescriptionConnectionStrings) {
+
 	o.ConnectionStrings = &v
 }
 
@@ -117,6 +118,7 @@ func (o *ServerlessInstanceDescription) HasCreateDate() bool {
 
 // SetCreateDate gets a reference to the given time.Time and assigns it to the CreateDate field.
 func (o *ServerlessInstanceDescription) SetCreateDate(v time.Time) {
+
 	o.CreateDate = &v
 }
 
@@ -150,6 +152,7 @@ func (o *ServerlessInstanceDescription) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *ServerlessInstanceDescription) SetGroupId(v string) {
+
 	o.GroupId = &v
 }
 
@@ -183,6 +186,7 @@ func (o *ServerlessInstanceDescription) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ServerlessInstanceDescription) SetId(v string) {
+
 	o.Id = &v
 }
 
@@ -192,12 +196,12 @@ func (o *ServerlessInstanceDescription) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServerlessInstanceDescription) GetLinksOk() ([]Link, bool) {
+func (o *ServerlessInstanceDescription) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -216,7 +220,8 @@ func (o *ServerlessInstanceDescription) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *ServerlessInstanceDescription) SetLinks(v []Link) {
-	o.Links = v
+
+	o.Links = &v
 }
 
 // GetMongoDBVersion returns the MongoDBVersion field value if set, zero value otherwise
@@ -249,6 +254,7 @@ func (o *ServerlessInstanceDescription) HasMongoDBVersion() bool {
 
 // SetMongoDBVersion gets a reference to the given string and assigns it to the MongoDBVersion field.
 func (o *ServerlessInstanceDescription) SetMongoDBVersion(v string) {
+
 	o.MongoDBVersion = &v
 }
 
@@ -282,6 +288,7 @@ func (o *ServerlessInstanceDescription) HasName() bool {
 
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ServerlessInstanceDescription) SetName(v string) {
+
 	o.Name = &v
 }
 
@@ -339,6 +346,7 @@ func (o *ServerlessInstanceDescription) HasServerlessBackupOptions() bool {
 
 // SetServerlessBackupOptions gets a reference to the given ClusterServerlessBackupOptions and assigns it to the ServerlessBackupOptions field.
 func (o *ServerlessInstanceDescription) SetServerlessBackupOptions(v ClusterServerlessBackupOptions) {
+
 	o.ServerlessBackupOptions = &v
 }
 
@@ -372,6 +380,7 @@ func (o *ServerlessInstanceDescription) HasStateName() bool {
 
 // SetStateName gets a reference to the given string and assigns it to the StateName field.
 func (o *ServerlessInstanceDescription) SetStateName(v string) {
+
 	o.StateName = &v
 }
 
@@ -381,12 +390,12 @@ func (o *ServerlessInstanceDescription) GetTags() []ResourceTag {
 		var ret []ResourceTag
 		return ret
 	}
-	return o.Tags
+	return *o.Tags
 }
 
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServerlessInstanceDescription) GetTagsOk() ([]ResourceTag, bool) {
+func (o *ServerlessInstanceDescription) GetTagsOk() (*[]ResourceTag, bool) {
 	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
@@ -405,7 +414,8 @@ func (o *ServerlessInstanceDescription) HasTags() bool {
 
 // SetTags gets a reference to the given []ResourceTag and assigns it to the Tags field.
 func (o *ServerlessInstanceDescription) SetTags(v []ResourceTag) {
-	o.Tags = v
+
+	o.Tags = &v
 }
 
 // GetTerminationProtectionEnabled returns the TerminationProtectionEnabled field value if set, zero value otherwise
@@ -438,6 +448,7 @@ func (o *ServerlessInstanceDescription) HasTerminationProtectionEnabled() bool {
 
 // SetTerminationProtectionEnabled gets a reference to the given bool and assigns it to the TerminationProtectionEnabled field.
 func (o *ServerlessInstanceDescription) SetTerminationProtectionEnabled(v bool) {
+
 	o.TerminationProtectionEnabled = &v
 }
 

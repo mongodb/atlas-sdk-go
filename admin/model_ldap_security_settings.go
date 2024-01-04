@@ -23,11 +23,11 @@ type LDAPSecuritySettings struct {
 	// Human-readable label that identifies the hostname or Internet Protocol (IP) address of the Lightweight Directory Access Protocol (LDAP) host. This host must have access to the internet or have a Virtual Private Cloud (VPC) peering connection to your cluster.
 	Hostname *string `json:"hostname,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Port to which the Lightweight Directory Access Protocol (LDAP) host listens for client connections.
 	Port *int `json:"port,omitempty"`
 	// User-to-Distinguished Name (DN) map that MongoDB Cloud uses to transform a Lightweight Directory Access Protocol (LDAP) username into an LDAP DN.
-	UserToDNMapping []UserToDNMapping `json:"userToDNMapping,omitempty"`
+	UserToDNMapping *[]UserToDNMapping `json:"userToDNMapping,omitempty"`
 }
 
 // NewLDAPSecuritySettings instantiates a new LDAPSecuritySettings object
@@ -85,6 +85,7 @@ func (o *LDAPSecuritySettings) HasAuthenticationEnabled() bool {
 
 // SetAuthenticationEnabled gets a reference to the given bool and assigns it to the AuthenticationEnabled field.
 func (o *LDAPSecuritySettings) SetAuthenticationEnabled(v bool) {
+
 	o.AuthenticationEnabled = &v
 }
 
@@ -118,6 +119,7 @@ func (o *LDAPSecuritySettings) HasAuthorizationEnabled() bool {
 
 // SetAuthorizationEnabled gets a reference to the given bool and assigns it to the AuthorizationEnabled field.
 func (o *LDAPSecuritySettings) SetAuthorizationEnabled(v bool) {
+
 	o.AuthorizationEnabled = &v
 }
 
@@ -151,6 +153,7 @@ func (o *LDAPSecuritySettings) HasAuthzQueryTemplate() bool {
 
 // SetAuthzQueryTemplate gets a reference to the given string and assigns it to the AuthzQueryTemplate field.
 func (o *LDAPSecuritySettings) SetAuthzQueryTemplate(v string) {
+
 	o.AuthzQueryTemplate = &v
 }
 
@@ -184,6 +187,7 @@ func (o *LDAPSecuritySettings) HasBindPassword() bool {
 
 // SetBindPassword gets a reference to the given string and assigns it to the BindPassword field.
 func (o *LDAPSecuritySettings) SetBindPassword(v string) {
+
 	o.BindPassword = &v
 }
 
@@ -217,6 +221,7 @@ func (o *LDAPSecuritySettings) HasBindUsername() bool {
 
 // SetBindUsername gets a reference to the given string and assigns it to the BindUsername field.
 func (o *LDAPSecuritySettings) SetBindUsername(v string) {
+
 	o.BindUsername = &v
 }
 
@@ -250,6 +255,7 @@ func (o *LDAPSecuritySettings) HasCaCertificate() bool {
 
 // SetCaCertificate gets a reference to the given string and assigns it to the CaCertificate field.
 func (o *LDAPSecuritySettings) SetCaCertificate(v string) {
+
 	o.CaCertificate = &v
 }
 
@@ -283,6 +289,7 @@ func (o *LDAPSecuritySettings) HasHostname() bool {
 
 // SetHostname gets a reference to the given string and assigns it to the Hostname field.
 func (o *LDAPSecuritySettings) SetHostname(v string) {
+
 	o.Hostname = &v
 }
 
@@ -292,12 +299,12 @@ func (o *LDAPSecuritySettings) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LDAPSecuritySettings) GetLinksOk() ([]Link, bool) {
+func (o *LDAPSecuritySettings) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -316,7 +323,8 @@ func (o *LDAPSecuritySettings) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *LDAPSecuritySettings) SetLinks(v []Link) {
-	o.Links = v
+
+	o.Links = &v
 }
 
 // GetPort returns the Port field value if set, zero value otherwise
@@ -349,6 +357,7 @@ func (o *LDAPSecuritySettings) HasPort() bool {
 
 // SetPort gets a reference to the given int and assigns it to the Port field.
 func (o *LDAPSecuritySettings) SetPort(v int) {
+
 	o.Port = &v
 }
 
@@ -358,12 +367,12 @@ func (o *LDAPSecuritySettings) GetUserToDNMapping() []UserToDNMapping {
 		var ret []UserToDNMapping
 		return ret
 	}
-	return o.UserToDNMapping
+	return *o.UserToDNMapping
 }
 
 // GetUserToDNMappingOk returns a tuple with the UserToDNMapping field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LDAPSecuritySettings) GetUserToDNMappingOk() ([]UserToDNMapping, bool) {
+func (o *LDAPSecuritySettings) GetUserToDNMappingOk() (*[]UserToDNMapping, bool) {
 	if o == nil || IsNil(o.UserToDNMapping) {
 		return nil, false
 	}
@@ -382,7 +391,8 @@ func (o *LDAPSecuritySettings) HasUserToDNMapping() bool {
 
 // SetUserToDNMapping gets a reference to the given []UserToDNMapping and assigns it to the UserToDNMapping field.
 func (o *LDAPSecuritySettings) SetUserToDNMapping(v []UserToDNMapping) {
-	o.UserToDNMapping = v
+
+	o.UserToDNMapping = &v
 }
 
 func (o LDAPSecuritySettings) MarshalJSONWithoutReadOnly() ([]byte, error) {

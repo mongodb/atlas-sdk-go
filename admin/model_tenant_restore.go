@@ -18,7 +18,7 @@ type TenantRestore struct {
 	// Unique 24-hexadecimal digit string that identifies the restore job.
 	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project from which the restore job originated.
 	ProjectId *string `json:"projectId,omitempty"`
 	// Date and time when MongoDB Cloud completed writing this snapshot. MongoDB Cloud changes the status of the restore job to `CLOSED`. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
@@ -88,6 +88,7 @@ func (o *TenantRestore) HasClusterName() bool {
 
 // SetClusterName gets a reference to the given string and assigns it to the ClusterName field.
 func (o *TenantRestore) SetClusterName(v string) {
+
 	o.ClusterName = &v
 }
 
@@ -121,6 +122,7 @@ func (o *TenantRestore) HasDeliveryType() bool {
 
 // SetDeliveryType gets a reference to the given string and assigns it to the DeliveryType field.
 func (o *TenantRestore) SetDeliveryType(v string) {
+
 	o.DeliveryType = &v
 }
 
@@ -154,6 +156,7 @@ func (o *TenantRestore) HasExpirationDate() bool {
 
 // SetExpirationDate gets a reference to the given time.Time and assigns it to the ExpirationDate field.
 func (o *TenantRestore) SetExpirationDate(v time.Time) {
+
 	o.ExpirationDate = &v
 }
 
@@ -187,6 +190,7 @@ func (o *TenantRestore) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *TenantRestore) SetId(v string) {
+
 	o.Id = &v
 }
 
@@ -196,12 +200,12 @@ func (o *TenantRestore) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TenantRestore) GetLinksOk() ([]Link, bool) {
+func (o *TenantRestore) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -220,7 +224,8 @@ func (o *TenantRestore) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *TenantRestore) SetLinks(v []Link) {
-	o.Links = v
+
+	o.Links = &v
 }
 
 // GetProjectId returns the ProjectId field value if set, zero value otherwise
@@ -253,6 +258,7 @@ func (o *TenantRestore) HasProjectId() bool {
 
 // SetProjectId gets a reference to the given string and assigns it to the ProjectId field.
 func (o *TenantRestore) SetProjectId(v string) {
+
 	o.ProjectId = &v
 }
 
@@ -286,6 +292,7 @@ func (o *TenantRestore) HasRestoreFinishedDate() bool {
 
 // SetRestoreFinishedDate gets a reference to the given time.Time and assigns it to the RestoreFinishedDate field.
 func (o *TenantRestore) SetRestoreFinishedDate(v time.Time) {
+
 	o.RestoreFinishedDate = &v
 }
 
@@ -319,6 +326,7 @@ func (o *TenantRestore) HasRestoreScheduledDate() bool {
 
 // SetRestoreScheduledDate gets a reference to the given time.Time and assigns it to the RestoreScheduledDate field.
 func (o *TenantRestore) SetRestoreScheduledDate(v time.Time) {
+
 	o.RestoreScheduledDate = &v
 }
 
@@ -352,6 +360,7 @@ func (o *TenantRestore) HasSnapshotFinishedDate() bool {
 
 // SetSnapshotFinishedDate gets a reference to the given time.Time and assigns it to the SnapshotFinishedDate field.
 func (o *TenantRestore) SetSnapshotFinishedDate(v time.Time) {
+
 	o.SnapshotFinishedDate = &v
 }
 
@@ -409,6 +418,7 @@ func (o *TenantRestore) HasSnapshotUrl() bool {
 
 // SetSnapshotUrl gets a reference to the given string and assigns it to the SnapshotUrl field.
 func (o *TenantRestore) SetSnapshotUrl(v string) {
+
 	o.SnapshotUrl = &v
 }
 
@@ -442,6 +452,7 @@ func (o *TenantRestore) HasStatus() bool {
 
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *TenantRestore) SetStatus(v string) {
+
 	o.Status = &v
 }
 
@@ -499,6 +510,7 @@ func (o *TenantRestore) HasTargetProjectId() bool {
 
 // SetTargetProjectId gets a reference to the given string and assigns it to the TargetProjectId field.
 func (o *TenantRestore) SetTargetProjectId(v string) {
+
 	o.TargetProjectId = &v
 }
 

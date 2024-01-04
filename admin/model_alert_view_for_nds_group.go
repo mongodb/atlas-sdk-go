@@ -28,7 +28,7 @@ type AlertViewForNdsGroup struct {
 	// Date and time that any notifications were last sent for this alert. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC. The resource returns this parameter if MongoDB Cloud has sent notifications for this alert.
 	LastNotified *time.Time `json:"lastNotified,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the organization that owns the project to which this alert applies.
 	OrgId *string `json:"orgId,omitempty"`
 	// Date and time that this alert changed to `\"status\" : \"CLOSED\"`. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC. The resource returns this parameter once `\"status\" : \"CLOSED\"`.
@@ -47,7 +47,7 @@ type AlertViewForNdsGroup struct {
 	// Name of the metric against which Atlas checks the configured `metricThreshold.threshold`.  To learn more about the available metrics, see <a href=\"https://www.mongodb.com/docs/atlas/reference/alert-host-metrics/#std-label-measurement-types\" target=\"_blank\">Host Metrics</a>.  **NOTE**: If you set eventTypeName to OUTSIDE_SERVERLESS_METRIC_THRESHOLD, you can specify only metrics available for serverless. To learn more, see <a href=\"https://dochub.mongodb.org/core/alert-config-serverless-measurements\" target=\"_blank\">Serverless Measurements</a>.
 	MetricName *string `json:"metricName,omitempty"`
 	// List of unique 24-hexadecimal character strings that identify the replica set members that are not in PRIMARY nor SECONDARY state.
-	NonRunningHostIds []string `json:"nonRunningHostIds,omitempty"`
+	NonRunningHostIds *[]string `json:"nonRunningHostIds,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the parent cluster to which this alert applies. The parent cluster contains the sharded nodes. MongoDB Cloud returns this parameter only for alerts of events impacting sharded clusters.
 	ParentClusterId *string `json:"parentClusterId,omitempty"`
 }
@@ -99,6 +99,7 @@ func (o *AlertViewForNdsGroup) HasAcknowledgedUntil() bool {
 
 // SetAcknowledgedUntil gets a reference to the given time.Time and assigns it to the AcknowledgedUntil field.
 func (o *AlertViewForNdsGroup) SetAcknowledgedUntil(v time.Time) {
+
 	o.AcknowledgedUntil = &v
 }
 
@@ -132,6 +133,7 @@ func (o *AlertViewForNdsGroup) HasAcknowledgementComment() bool {
 
 // SetAcknowledgementComment gets a reference to the given string and assigns it to the AcknowledgementComment field.
 func (o *AlertViewForNdsGroup) SetAcknowledgementComment(v string) {
+
 	o.AcknowledgementComment = &v
 }
 
@@ -165,6 +167,7 @@ func (o *AlertViewForNdsGroup) HasAcknowledgingUsername() bool {
 
 // SetAcknowledgingUsername gets a reference to the given string and assigns it to the AcknowledgingUsername field.
 func (o *AlertViewForNdsGroup) SetAcknowledgingUsername(v string) {
+
 	o.AcknowledgingUsername = &v
 }
 
@@ -198,6 +201,7 @@ func (o *AlertViewForNdsGroup) HasAlertConfigId() bool {
 
 // SetAlertConfigId gets a reference to the given string and assigns it to the AlertConfigId field.
 func (o *AlertViewForNdsGroup) SetAlertConfigId(v string) {
+
 	o.AlertConfigId = &v
 }
 
@@ -231,6 +235,7 @@ func (o *AlertViewForNdsGroup) HasCreated() bool {
 
 // SetCreated gets a reference to the given time.Time and assigns it to the Created field.
 func (o *AlertViewForNdsGroup) SetCreated(v time.Time) {
+
 	o.Created = &v
 }
 
@@ -264,6 +269,7 @@ func (o *AlertViewForNdsGroup) HasEventTypeName() bool {
 
 // SetEventTypeName gets a reference to the given string and assigns it to the EventTypeName field.
 func (o *AlertViewForNdsGroup) SetEventTypeName(v string) {
+
 	o.EventTypeName = &v
 }
 
@@ -297,6 +303,7 @@ func (o *AlertViewForNdsGroup) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *AlertViewForNdsGroup) SetGroupId(v string) {
+
 	o.GroupId = &v
 }
 
@@ -330,6 +337,7 @@ func (o *AlertViewForNdsGroup) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *AlertViewForNdsGroup) SetId(v string) {
+
 	o.Id = &v
 }
 
@@ -363,6 +371,7 @@ func (o *AlertViewForNdsGroup) HasLastNotified() bool {
 
 // SetLastNotified gets a reference to the given time.Time and assigns it to the LastNotified field.
 func (o *AlertViewForNdsGroup) SetLastNotified(v time.Time) {
+
 	o.LastNotified = &v
 }
 
@@ -372,12 +381,12 @@ func (o *AlertViewForNdsGroup) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AlertViewForNdsGroup) GetLinksOk() ([]Link, bool) {
+func (o *AlertViewForNdsGroup) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -396,7 +405,8 @@ func (o *AlertViewForNdsGroup) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *AlertViewForNdsGroup) SetLinks(v []Link) {
-	o.Links = v
+
+	o.Links = &v
 }
 
 // GetOrgId returns the OrgId field value if set, zero value otherwise
@@ -429,6 +439,7 @@ func (o *AlertViewForNdsGroup) HasOrgId() bool {
 
 // SetOrgId gets a reference to the given string and assigns it to the OrgId field.
 func (o *AlertViewForNdsGroup) SetOrgId(v string) {
+
 	o.OrgId = &v
 }
 
@@ -462,6 +473,7 @@ func (o *AlertViewForNdsGroup) HasResolved() bool {
 
 // SetResolved gets a reference to the given time.Time and assigns it to the Resolved field.
 func (o *AlertViewForNdsGroup) SetResolved(v time.Time) {
+
 	o.Resolved = &v
 }
 
@@ -495,6 +507,7 @@ func (o *AlertViewForNdsGroup) HasStatus() bool {
 
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *AlertViewForNdsGroup) SetStatus(v string) {
+
 	o.Status = &v
 }
 
@@ -528,6 +541,7 @@ func (o *AlertViewForNdsGroup) HasUpdated() bool {
 
 // SetUpdated gets a reference to the given time.Time and assigns it to the Updated field.
 func (o *AlertViewForNdsGroup) SetUpdated(v time.Time) {
+
 	o.Updated = &v
 }
 
@@ -561,6 +575,7 @@ func (o *AlertViewForNdsGroup) HasClusterName() bool {
 
 // SetClusterName gets a reference to the given string and assigns it to the ClusterName field.
 func (o *AlertViewForNdsGroup) SetClusterName(v string) {
+
 	o.ClusterName = &v
 }
 
@@ -594,6 +609,7 @@ func (o *AlertViewForNdsGroup) HasHostnameAndPort() bool {
 
 // SetHostnameAndPort gets a reference to the given string and assigns it to the HostnameAndPort field.
 func (o *AlertViewForNdsGroup) SetHostnameAndPort(v string) {
+
 	o.HostnameAndPort = &v
 }
 
@@ -627,6 +643,7 @@ func (o *AlertViewForNdsGroup) HasReplicaSetName() bool {
 
 // SetReplicaSetName gets a reference to the given string and assigns it to the ReplicaSetName field.
 func (o *AlertViewForNdsGroup) SetReplicaSetName(v string) {
+
 	o.ReplicaSetName = &v
 }
 
@@ -660,6 +677,7 @@ func (o *AlertViewForNdsGroup) HasCurrentValue() bool {
 
 // SetCurrentValue gets a reference to the given NumberMetricValue and assigns it to the CurrentValue field.
 func (o *AlertViewForNdsGroup) SetCurrentValue(v NumberMetricValue) {
+
 	o.CurrentValue = &v
 }
 
@@ -693,6 +711,7 @@ func (o *AlertViewForNdsGroup) HasMetricName() bool {
 
 // SetMetricName gets a reference to the given string and assigns it to the MetricName field.
 func (o *AlertViewForNdsGroup) SetMetricName(v string) {
+
 	o.MetricName = &v
 }
 
@@ -702,12 +721,12 @@ func (o *AlertViewForNdsGroup) GetNonRunningHostIds() []string {
 		var ret []string
 		return ret
 	}
-	return o.NonRunningHostIds
+	return *o.NonRunningHostIds
 }
 
 // GetNonRunningHostIdsOk returns a tuple with the NonRunningHostIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AlertViewForNdsGroup) GetNonRunningHostIdsOk() ([]string, bool) {
+func (o *AlertViewForNdsGroup) GetNonRunningHostIdsOk() (*[]string, bool) {
 	if o == nil || IsNil(o.NonRunningHostIds) {
 		return nil, false
 	}
@@ -726,7 +745,8 @@ func (o *AlertViewForNdsGroup) HasNonRunningHostIds() bool {
 
 // SetNonRunningHostIds gets a reference to the given []string and assigns it to the NonRunningHostIds field.
 func (o *AlertViewForNdsGroup) SetNonRunningHostIds(v []string) {
-	o.NonRunningHostIds = v
+
+	o.NonRunningHostIds = &v
 }
 
 // GetParentClusterId returns the ParentClusterId field value if set, zero value otherwise
@@ -759,6 +779,7 @@ func (o *AlertViewForNdsGroup) HasParentClusterId() bool {
 
 // SetParentClusterId gets a reference to the given string and assigns it to the ParentClusterId field.
 func (o *AlertViewForNdsGroup) SetParentClusterId(v string) {
+
 	o.ParentClusterId = &v
 }
 

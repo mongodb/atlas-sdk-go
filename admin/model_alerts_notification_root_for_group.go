@@ -25,7 +25,7 @@ type AlertsNotificationRootForGroup struct {
 	// Flag that indicates whether MongoDB Cloud should send email notifications. The resource requires this parameter when one of the following values have been set:  - `\"notifications.[n].typeName\" : \"ORG\"` - `\"notifications.[n].typeName\" : \"GROUP\"` - `\"notifications.[n].typeName\" : \"USER\"`
 	EmailEnabled *bool `json:"emailEnabled,omitempty"`
 	// List that contains the one or more [organization](https://dochub.mongodb.org/core/atlas-org-roles) or [project roles](https://dochub.mongodb.org/core/atlas-proj-roles) that receive the configured alert. The resource requires this parameter when `\"notifications.[n].typeName\" : \"GROUP\"` or `\"notifications.[n].typeName\" : \"ORG\"`. If you include this parameter, MongoDB Cloud sends alerts only to users assigned the roles you specify in the array. If you omit this parameter, MongoDB Cloud sends alerts to users assigned any role.
-	Roles []string `json:"roles,omitempty"`
+	Roles *[]string `json:"roles,omitempty"`
 	// Flag that indicates whether MongoDB Cloud should send text message notifications. The resource requires this parameter when one of the following values have been set:  - `\"notifications.[n].typeName\" : \"ORG\"` - `\"notifications.[n].typeName\" : \"GROUP\"` - `\"notifications.[n].typeName\" : \"USER\"`
 	SmsEnabled *bool `json:"smsEnabled,omitempty"`
 	// HipChat API token that MongoDB Cloud needs to send alert notifications to HipChat. The resource requires this parameter when `\"notifications.[n].typeName\" : \"HIP_CHAT\"`\". If the token later becomes invalid, MongoDB Cloud sends an email to the project owners. If the token remains invalid, MongoDB Cloud removes it.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.
@@ -123,6 +123,7 @@ func (o *AlertsNotificationRootForGroup) HasDatadogApiKey() bool {
 
 // SetDatadogApiKey gets a reference to the given string and assigns it to the DatadogApiKey field.
 func (o *AlertsNotificationRootForGroup) SetDatadogApiKey(v string) {
+
 	o.DatadogApiKey = &v
 }
 
@@ -156,6 +157,7 @@ func (o *AlertsNotificationRootForGroup) HasDatadogRegion() bool {
 
 // SetDatadogRegion gets a reference to the given string and assigns it to the DatadogRegion field.
 func (o *AlertsNotificationRootForGroup) SetDatadogRegion(v string) {
+
 	o.DatadogRegion = &v
 }
 
@@ -189,6 +191,7 @@ func (o *AlertsNotificationRootForGroup) HasDelayMin() bool {
 
 // SetDelayMin gets a reference to the given int and assigns it to the DelayMin field.
 func (o *AlertsNotificationRootForGroup) SetDelayMin(v int) {
+
 	o.DelayMin = &v
 }
 
@@ -222,6 +225,7 @@ func (o *AlertsNotificationRootForGroup) HasIntervalMin() bool {
 
 // SetIntervalMin gets a reference to the given int and assigns it to the IntervalMin field.
 func (o *AlertsNotificationRootForGroup) SetIntervalMin(v int) {
+
 	o.IntervalMin = &v
 }
 
@@ -255,6 +259,7 @@ func (o *AlertsNotificationRootForGroup) HasNotifierId() bool {
 
 // SetNotifierId gets a reference to the given string and assigns it to the NotifierId field.
 func (o *AlertsNotificationRootForGroup) SetNotifierId(v string) {
+
 	o.NotifierId = &v
 }
 
@@ -288,6 +293,7 @@ func (o *AlertsNotificationRootForGroup) HasTypeName() bool {
 
 // SetTypeName gets a reference to the given string and assigns it to the TypeName field.
 func (o *AlertsNotificationRootForGroup) SetTypeName(v string) {
+
 	o.TypeName = &v
 }
 
@@ -321,6 +327,7 @@ func (o *AlertsNotificationRootForGroup) HasEmailAddress() bool {
 
 // SetEmailAddress gets a reference to the given string and assigns it to the EmailAddress field.
 func (o *AlertsNotificationRootForGroup) SetEmailAddress(v string) {
+
 	o.EmailAddress = &v
 }
 
@@ -354,6 +361,7 @@ func (o *AlertsNotificationRootForGroup) HasEmailEnabled() bool {
 
 // SetEmailEnabled gets a reference to the given bool and assigns it to the EmailEnabled field.
 func (o *AlertsNotificationRootForGroup) SetEmailEnabled(v bool) {
+
 	o.EmailEnabled = &v
 }
 
@@ -363,12 +371,12 @@ func (o *AlertsNotificationRootForGroup) GetRoles() []string {
 		var ret []string
 		return ret
 	}
-	return o.Roles
+	return *o.Roles
 }
 
 // GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AlertsNotificationRootForGroup) GetRolesOk() ([]string, bool) {
+func (o *AlertsNotificationRootForGroup) GetRolesOk() (*[]string, bool) {
 	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
@@ -387,7 +395,8 @@ func (o *AlertsNotificationRootForGroup) HasRoles() bool {
 
 // SetRoles gets a reference to the given []string and assigns it to the Roles field.
 func (o *AlertsNotificationRootForGroup) SetRoles(v []string) {
-	o.Roles = v
+
+	o.Roles = &v
 }
 
 // GetSmsEnabled returns the SmsEnabled field value if set, zero value otherwise
@@ -420,6 +429,7 @@ func (o *AlertsNotificationRootForGroup) HasSmsEnabled() bool {
 
 // SetSmsEnabled gets a reference to the given bool and assigns it to the SmsEnabled field.
 func (o *AlertsNotificationRootForGroup) SetSmsEnabled(v bool) {
+
 	o.SmsEnabled = &v
 }
 
@@ -453,6 +463,7 @@ func (o *AlertsNotificationRootForGroup) HasNotificationToken() bool {
 
 // SetNotificationToken gets a reference to the given string and assigns it to the NotificationToken field.
 func (o *AlertsNotificationRootForGroup) SetNotificationToken(v string) {
+
 	o.NotificationToken = &v
 }
 
@@ -486,6 +497,7 @@ func (o *AlertsNotificationRootForGroup) HasRoomName() bool {
 
 // SetRoomName gets a reference to the given string and assigns it to the RoomName field.
 func (o *AlertsNotificationRootForGroup) SetRoomName(v string) {
+
 	o.RoomName = &v
 }
 
@@ -519,6 +531,7 @@ func (o *AlertsNotificationRootForGroup) HasMicrosoftTeamsWebhookUrl() bool {
 
 // SetMicrosoftTeamsWebhookUrl gets a reference to the given string and assigns it to the MicrosoftTeamsWebhookUrl field.
 func (o *AlertsNotificationRootForGroup) SetMicrosoftTeamsWebhookUrl(v string) {
+
 	o.MicrosoftTeamsWebhookUrl = &v
 }
 
@@ -552,6 +565,7 @@ func (o *AlertsNotificationRootForGroup) HasOpsGenieApiKey() bool {
 
 // SetOpsGenieApiKey gets a reference to the given string and assigns it to the OpsGenieApiKey field.
 func (o *AlertsNotificationRootForGroup) SetOpsGenieApiKey(v string) {
+
 	o.OpsGenieApiKey = &v
 }
 
@@ -585,6 +599,7 @@ func (o *AlertsNotificationRootForGroup) HasOpsGenieRegion() bool {
 
 // SetOpsGenieRegion gets a reference to the given string and assigns it to the OpsGenieRegion field.
 func (o *AlertsNotificationRootForGroup) SetOpsGenieRegion(v string) {
+
 	o.OpsGenieRegion = &v
 }
 
@@ -618,6 +633,7 @@ func (o *AlertsNotificationRootForGroup) HasRegion() bool {
 
 // SetRegion gets a reference to the given string and assigns it to the Region field.
 func (o *AlertsNotificationRootForGroup) SetRegion(v string) {
+
 	o.Region = &v
 }
 
@@ -651,6 +667,7 @@ func (o *AlertsNotificationRootForGroup) HasServiceKey() bool {
 
 // SetServiceKey gets a reference to the given string and assigns it to the ServiceKey field.
 func (o *AlertsNotificationRootForGroup) SetServiceKey(v string) {
+
 	o.ServiceKey = &v
 }
 
@@ -684,6 +701,7 @@ func (o *AlertsNotificationRootForGroup) HasApiToken() bool {
 
 // SetApiToken gets a reference to the given string and assigns it to the ApiToken field.
 func (o *AlertsNotificationRootForGroup) SetApiToken(v string) {
+
 	o.ApiToken = &v
 }
 
@@ -717,6 +735,7 @@ func (o *AlertsNotificationRootForGroup) HasChannelName() bool {
 
 // SetChannelName gets a reference to the given string and assigns it to the ChannelName field.
 func (o *AlertsNotificationRootForGroup) SetChannelName(v string) {
+
 	o.ChannelName = &v
 }
 
@@ -750,6 +769,7 @@ func (o *AlertsNotificationRootForGroup) HasMobileNumber() bool {
 
 // SetMobileNumber gets a reference to the given string and assigns it to the MobileNumber field.
 func (o *AlertsNotificationRootForGroup) SetMobileNumber(v string) {
+
 	o.MobileNumber = &v
 }
 
@@ -783,6 +803,7 @@ func (o *AlertsNotificationRootForGroup) HasTeamId() bool {
 
 // SetTeamId gets a reference to the given string and assigns it to the TeamId field.
 func (o *AlertsNotificationRootForGroup) SetTeamId(v string) {
+
 	o.TeamId = &v
 }
 
@@ -816,6 +837,7 @@ func (o *AlertsNotificationRootForGroup) HasTeamName() bool {
 
 // SetTeamName gets a reference to the given string and assigns it to the TeamName field.
 func (o *AlertsNotificationRootForGroup) SetTeamName(v string) {
+
 	o.TeamName = &v
 }
 
@@ -849,6 +871,7 @@ func (o *AlertsNotificationRootForGroup) HasUsername() bool {
 
 // SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *AlertsNotificationRootForGroup) SetUsername(v string) {
+
 	o.Username = &v
 }
 
@@ -882,6 +905,7 @@ func (o *AlertsNotificationRootForGroup) HasVictorOpsApiKey() bool {
 
 // SetVictorOpsApiKey gets a reference to the given string and assigns it to the VictorOpsApiKey field.
 func (o *AlertsNotificationRootForGroup) SetVictorOpsApiKey(v string) {
+
 	o.VictorOpsApiKey = &v
 }
 
@@ -915,6 +939,7 @@ func (o *AlertsNotificationRootForGroup) HasVictorOpsRoutingKey() bool {
 
 // SetVictorOpsRoutingKey gets a reference to the given string and assigns it to the VictorOpsRoutingKey field.
 func (o *AlertsNotificationRootForGroup) SetVictorOpsRoutingKey(v string) {
+
 	o.VictorOpsRoutingKey = &v
 }
 
@@ -948,6 +973,7 @@ func (o *AlertsNotificationRootForGroup) HasWebhookSecret() bool {
 
 // SetWebhookSecret gets a reference to the given string and assigns it to the WebhookSecret field.
 func (o *AlertsNotificationRootForGroup) SetWebhookSecret(v string) {
+
 	o.WebhookSecret = &v
 }
 
@@ -981,6 +1007,7 @@ func (o *AlertsNotificationRootForGroup) HasWebhookUrl() bool {
 
 // SetWebhookUrl gets a reference to the given string and assigns it to the WebhookUrl field.
 func (o *AlertsNotificationRootForGroup) SetWebhookUrl(v string) {
+
 	o.WebhookUrl = &v
 }
 

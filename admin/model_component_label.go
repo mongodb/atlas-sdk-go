@@ -61,6 +61,7 @@ func (o *ComponentLabel) HasKey() bool {
 
 // SetKey gets a reference to the given string and assigns it to the Key field.
 func (o *ComponentLabel) SetKey(v string) {
+
 	o.Key = &v
 }
 
@@ -94,6 +95,7 @@ func (o *ComponentLabel) HasValue() bool {
 
 // SetValue gets a reference to the given string and assigns it to the Value field.
 func (o *ComponentLabel) SetValue(v string) {
+
 	o.Value = &v
 }
 

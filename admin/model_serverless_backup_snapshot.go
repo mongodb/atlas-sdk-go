@@ -18,7 +18,7 @@ type ServerlessBackupSnapshot struct {
 	// Unique 24-hexadecimal digit string that identifies the snapshot.
 	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Version of the MongoDB host that this snapshot backs up.
 	MongodVersion *string `json:"mongodVersion,omitempty"`
 	// Human-readable label given to the serverless instance from which MongoDB Cloud took this snapshot.
@@ -78,6 +78,7 @@ func (o *ServerlessBackupSnapshot) HasCreatedAt() bool {
 
 // SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
 func (o *ServerlessBackupSnapshot) SetCreatedAt(v time.Time) {
+
 	o.CreatedAt = &v
 }
 
@@ -111,6 +112,7 @@ func (o *ServerlessBackupSnapshot) HasExpiresAt() bool {
 
 // SetExpiresAt gets a reference to the given time.Time and assigns it to the ExpiresAt field.
 func (o *ServerlessBackupSnapshot) SetExpiresAt(v time.Time) {
+
 	o.ExpiresAt = &v
 }
 
@@ -144,6 +146,7 @@ func (o *ServerlessBackupSnapshot) HasFrequencyType() bool {
 
 // SetFrequencyType gets a reference to the given string and assigns it to the FrequencyType field.
 func (o *ServerlessBackupSnapshot) SetFrequencyType(v string) {
+
 	o.FrequencyType = &v
 }
 
@@ -177,6 +180,7 @@ func (o *ServerlessBackupSnapshot) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ServerlessBackupSnapshot) SetId(v string) {
+
 	o.Id = &v
 }
 
@@ -186,12 +190,12 @@ func (o *ServerlessBackupSnapshot) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServerlessBackupSnapshot) GetLinksOk() ([]Link, bool) {
+func (o *ServerlessBackupSnapshot) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -210,7 +214,8 @@ func (o *ServerlessBackupSnapshot) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *ServerlessBackupSnapshot) SetLinks(v []Link) {
-	o.Links = v
+
+	o.Links = &v
 }
 
 // GetMongodVersion returns the MongodVersion field value if set, zero value otherwise
@@ -243,6 +248,7 @@ func (o *ServerlessBackupSnapshot) HasMongodVersion() bool {
 
 // SetMongodVersion gets a reference to the given string and assigns it to the MongodVersion field.
 func (o *ServerlessBackupSnapshot) SetMongodVersion(v string) {
+
 	o.MongodVersion = &v
 }
 
@@ -276,6 +282,7 @@ func (o *ServerlessBackupSnapshot) HasServerlessInstanceName() bool {
 
 // SetServerlessInstanceName gets a reference to the given string and assigns it to the ServerlessInstanceName field.
 func (o *ServerlessBackupSnapshot) SetServerlessInstanceName(v string) {
+
 	o.ServerlessInstanceName = &v
 }
 
@@ -309,6 +316,7 @@ func (o *ServerlessBackupSnapshot) HasSnapshotType() bool {
 
 // SetSnapshotType gets a reference to the given string and assigns it to the SnapshotType field.
 func (o *ServerlessBackupSnapshot) SetSnapshotType(v string) {
+
 	o.SnapshotType = &v
 }
 
@@ -342,6 +350,7 @@ func (o *ServerlessBackupSnapshot) HasStatus() bool {
 
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *ServerlessBackupSnapshot) SetStatus(v string) {
+
 	o.Status = &v
 }
 
@@ -375,6 +384,7 @@ func (o *ServerlessBackupSnapshot) HasStorageSizeBytes() bool {
 
 // SetStorageSizeBytes gets a reference to the given int64 and assigns it to the StorageSizeBytes field.
 func (o *ServerlessBackupSnapshot) SetStorageSizeBytes(v int64) {
+
 	o.StorageSizeBytes = &v
 }
 

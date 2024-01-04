@@ -9,9 +9,9 @@ import (
 // ConnectedOrgConfig struct for ConnectedOrgConfig
 type ConnectedOrgConfig struct {
 	// The collection of unique ids of the identity providers for org's data access.
-	DataAccessIdentityProviderIds []string `json:"dataAccessIdentityProviderIds,omitempty"`
+	DataAccessIdentityProviderIds *[]string `json:"dataAccessIdentityProviderIds,omitempty"`
 	// Approved domains that restrict users who can join the organization based on their email address.
-	DomainAllowList []string `json:"domainAllowList,omitempty"`
+	DomainAllowList *[]string `json:"domainAllowList,omitempty"`
 	// Value that indicates whether domain restriction is enabled for this connected org.
 	DomainRestrictionEnabled bool `json:"domainRestrictionEnabled"`
 	// Unique 20-hexadecimal digit string that identifies the identity provider that this connected org config is associated with.
@@ -19,11 +19,11 @@ type ConnectedOrgConfig struct {
 	// Unique 24-hexadecimal digit string that identifies the connected organization configuration.
 	OrgId string `json:"orgId"`
 	// Atlas roles that are granted to a user in this organization after authenticating.
-	PostAuthRoleGrants []string `json:"postAuthRoleGrants,omitempty"`
+	PostAuthRoleGrants *[]string `json:"postAuthRoleGrants,omitempty"`
 	// Role mappings that are configured in this organization.
-	RoleMappings []AuthFederationRoleMapping `json:"roleMappings,omitempty"`
+	RoleMappings *[]AuthFederationRoleMapping `json:"roleMappings,omitempty"`
 	// List that contains the users who have an email address that doesn't match any domain on the allowed list.
-	UserConflicts []FederatedUser `json:"userConflicts,omitempty"`
+	UserConflicts *[]FederatedUser `json:"userConflicts,omitempty"`
 }
 
 // NewConnectedOrgConfig instantiates a new ConnectedOrgConfig object
@@ -52,12 +52,12 @@ func (o *ConnectedOrgConfig) GetDataAccessIdentityProviderIds() []string {
 		var ret []string
 		return ret
 	}
-	return o.DataAccessIdentityProviderIds
+	return *o.DataAccessIdentityProviderIds
 }
 
 // GetDataAccessIdentityProviderIdsOk returns a tuple with the DataAccessIdentityProviderIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ConnectedOrgConfig) GetDataAccessIdentityProviderIdsOk() ([]string, bool) {
+func (o *ConnectedOrgConfig) GetDataAccessIdentityProviderIdsOk() (*[]string, bool) {
 	if o == nil || IsNil(o.DataAccessIdentityProviderIds) {
 		return nil, false
 	}
@@ -76,7 +76,8 @@ func (o *ConnectedOrgConfig) HasDataAccessIdentityProviderIds() bool {
 
 // SetDataAccessIdentityProviderIds gets a reference to the given []string and assigns it to the DataAccessIdentityProviderIds field.
 func (o *ConnectedOrgConfig) SetDataAccessIdentityProviderIds(v []string) {
-	o.DataAccessIdentityProviderIds = v
+
+	o.DataAccessIdentityProviderIds = &v
 }
 
 // GetDomainAllowList returns the DomainAllowList field value if set, zero value otherwise
@@ -85,12 +86,12 @@ func (o *ConnectedOrgConfig) GetDomainAllowList() []string {
 		var ret []string
 		return ret
 	}
-	return o.DomainAllowList
+	return *o.DomainAllowList
 }
 
 // GetDomainAllowListOk returns a tuple with the DomainAllowList field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ConnectedOrgConfig) GetDomainAllowListOk() ([]string, bool) {
+func (o *ConnectedOrgConfig) GetDomainAllowListOk() (*[]string, bool) {
 	if o == nil || IsNil(o.DomainAllowList) {
 		return nil, false
 	}
@@ -109,7 +110,8 @@ func (o *ConnectedOrgConfig) HasDomainAllowList() bool {
 
 // SetDomainAllowList gets a reference to the given []string and assigns it to the DomainAllowList field.
 func (o *ConnectedOrgConfig) SetDomainAllowList(v []string) {
-	o.DomainAllowList = v
+
+	o.DomainAllowList = &v
 }
 
 // GetDomainRestrictionEnabled returns the DomainRestrictionEnabled field value
@@ -190,12 +192,12 @@ func (o *ConnectedOrgConfig) GetPostAuthRoleGrants() []string {
 		var ret []string
 		return ret
 	}
-	return o.PostAuthRoleGrants
+	return *o.PostAuthRoleGrants
 }
 
 // GetPostAuthRoleGrantsOk returns a tuple with the PostAuthRoleGrants field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ConnectedOrgConfig) GetPostAuthRoleGrantsOk() ([]string, bool) {
+func (o *ConnectedOrgConfig) GetPostAuthRoleGrantsOk() (*[]string, bool) {
 	if o == nil || IsNil(o.PostAuthRoleGrants) {
 		return nil, false
 	}
@@ -214,7 +216,8 @@ func (o *ConnectedOrgConfig) HasPostAuthRoleGrants() bool {
 
 // SetPostAuthRoleGrants gets a reference to the given []string and assigns it to the PostAuthRoleGrants field.
 func (o *ConnectedOrgConfig) SetPostAuthRoleGrants(v []string) {
-	o.PostAuthRoleGrants = v
+
+	o.PostAuthRoleGrants = &v
 }
 
 // GetRoleMappings returns the RoleMappings field value if set, zero value otherwise
@@ -223,12 +226,12 @@ func (o *ConnectedOrgConfig) GetRoleMappings() []AuthFederationRoleMapping {
 		var ret []AuthFederationRoleMapping
 		return ret
 	}
-	return o.RoleMappings
+	return *o.RoleMappings
 }
 
 // GetRoleMappingsOk returns a tuple with the RoleMappings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ConnectedOrgConfig) GetRoleMappingsOk() ([]AuthFederationRoleMapping, bool) {
+func (o *ConnectedOrgConfig) GetRoleMappingsOk() (*[]AuthFederationRoleMapping, bool) {
 	if o == nil || IsNil(o.RoleMappings) {
 		return nil, false
 	}
@@ -247,7 +250,8 @@ func (o *ConnectedOrgConfig) HasRoleMappings() bool {
 
 // SetRoleMappings gets a reference to the given []AuthFederationRoleMapping and assigns it to the RoleMappings field.
 func (o *ConnectedOrgConfig) SetRoleMappings(v []AuthFederationRoleMapping) {
-	o.RoleMappings = v
+
+	o.RoleMappings = &v
 }
 
 // GetUserConflicts returns the UserConflicts field value if set, zero value otherwise
@@ -256,12 +260,12 @@ func (o *ConnectedOrgConfig) GetUserConflicts() []FederatedUser {
 		var ret []FederatedUser
 		return ret
 	}
-	return o.UserConflicts
+	return *o.UserConflicts
 }
 
 // GetUserConflictsOk returns a tuple with the UserConflicts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ConnectedOrgConfig) GetUserConflictsOk() ([]FederatedUser, bool) {
+func (o *ConnectedOrgConfig) GetUserConflictsOk() (*[]FederatedUser, bool) {
 	if o == nil || IsNil(o.UserConflicts) {
 		return nil, false
 	}
@@ -280,7 +284,8 @@ func (o *ConnectedOrgConfig) HasUserConflicts() bool {
 
 // SetUserConflicts gets a reference to the given []FederatedUser and assigns it to the UserConflicts field.
 func (o *ConnectedOrgConfig) SetUserConflicts(v []FederatedUser) {
-	o.UserConflicts = v
+
+	o.UserConflicts = &v
 }
 
 func (o ConnectedOrgConfig) MarshalJSONWithoutReadOnly() ([]byte, error) {

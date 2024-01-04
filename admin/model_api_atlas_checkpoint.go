@@ -18,9 +18,9 @@ type ApiAtlasCheckpoint struct {
 	// Unique 24-hexadecimal digit string that identifies checkpoint.
 	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Metadata that describes the complete snapshot.  - For a replica set, this array contains a single document. - For a sharded cluster, this array contains one document for each shard plus one document for the config host.
-	Parts []ApiCheckpointPart `json:"parts,omitempty"`
+	Parts *[]ApiCheckpointPart `json:"parts,omitempty"`
 	// Flag that indicates whether MongoDB Cloud can use the checkpoint for a restore.
 	Restorable *bool `json:"restorable,omitempty"`
 	// Date and time when the balancer stopped and began the checkpoint. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
@@ -76,6 +76,7 @@ func (o *ApiAtlasCheckpoint) HasClusterId() bool {
 
 // SetClusterId gets a reference to the given string and assigns it to the ClusterId field.
 func (o *ApiAtlasCheckpoint) SetClusterId(v string) {
+
 	o.ClusterId = &v
 }
 
@@ -109,6 +110,7 @@ func (o *ApiAtlasCheckpoint) HasCompleted() bool {
 
 // SetCompleted gets a reference to the given time.Time and assigns it to the Completed field.
 func (o *ApiAtlasCheckpoint) SetCompleted(v time.Time) {
+
 	o.Completed = &v
 }
 
@@ -142,6 +144,7 @@ func (o *ApiAtlasCheckpoint) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *ApiAtlasCheckpoint) SetGroupId(v string) {
+
 	o.GroupId = &v
 }
 
@@ -175,6 +178,7 @@ func (o *ApiAtlasCheckpoint) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ApiAtlasCheckpoint) SetId(v string) {
+
 	o.Id = &v
 }
 
@@ -184,12 +188,12 @@ func (o *ApiAtlasCheckpoint) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiAtlasCheckpoint) GetLinksOk() ([]Link, bool) {
+func (o *ApiAtlasCheckpoint) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -208,7 +212,8 @@ func (o *ApiAtlasCheckpoint) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *ApiAtlasCheckpoint) SetLinks(v []Link) {
-	o.Links = v
+
+	o.Links = &v
 }
 
 // GetParts returns the Parts field value if set, zero value otherwise
@@ -217,12 +222,12 @@ func (o *ApiAtlasCheckpoint) GetParts() []ApiCheckpointPart {
 		var ret []ApiCheckpointPart
 		return ret
 	}
-	return o.Parts
+	return *o.Parts
 }
 
 // GetPartsOk returns a tuple with the Parts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiAtlasCheckpoint) GetPartsOk() ([]ApiCheckpointPart, bool) {
+func (o *ApiAtlasCheckpoint) GetPartsOk() (*[]ApiCheckpointPart, bool) {
 	if o == nil || IsNil(o.Parts) {
 		return nil, false
 	}
@@ -241,7 +246,8 @@ func (o *ApiAtlasCheckpoint) HasParts() bool {
 
 // SetParts gets a reference to the given []ApiCheckpointPart and assigns it to the Parts field.
 func (o *ApiAtlasCheckpoint) SetParts(v []ApiCheckpointPart) {
-	o.Parts = v
+
+	o.Parts = &v
 }
 
 // GetRestorable returns the Restorable field value if set, zero value otherwise
@@ -274,6 +280,7 @@ func (o *ApiAtlasCheckpoint) HasRestorable() bool {
 
 // SetRestorable gets a reference to the given bool and assigns it to the Restorable field.
 func (o *ApiAtlasCheckpoint) SetRestorable(v bool) {
+
 	o.Restorable = &v
 }
 
@@ -307,6 +314,7 @@ func (o *ApiAtlasCheckpoint) HasStarted() bool {
 
 // SetStarted gets a reference to the given time.Time and assigns it to the Started field.
 func (o *ApiAtlasCheckpoint) SetStarted(v time.Time) {
+
 	o.Started = &v
 }
 
@@ -340,6 +348,7 @@ func (o *ApiAtlasCheckpoint) HasTimestamp() bool {
 
 // SetTimestamp gets a reference to the given time.Time and assigns it to the Timestamp field.
 func (o *ApiAtlasCheckpoint) SetTimestamp(v time.Time) {
+
 	o.Timestamp = &v
 }
 

@@ -13,13 +13,13 @@ type ApiKeyUserDetails struct {
 	// Unique 24-hexadecimal digit string that identifies this organization API key assigned to this project.
 	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Redacted private key returned for this organization API key. This key displays unredacted when first created.
 	PrivateKey *string `json:"privateKey,omitempty"`
 	// Public API key value set for the specified organization API key.
 	PublicKey *string `json:"publicKey,omitempty"`
 	// List that contains the roles that the API key needs to have. All roles you provide must be valid for the specified project or organization. Each request must include a minimum of one valid role. The resource returns all project and organization roles assigned to the API key.
-	Roles []CloudAccessRoleAssignment `json:"roles,omitempty"`
+	Roles *[]CloudAccessRoleAssignment `json:"roles,omitempty"`
 }
 
 // NewApiKeyUserDetails instantiates a new ApiKeyUserDetails object
@@ -69,6 +69,7 @@ func (o *ApiKeyUserDetails) HasDesc() bool {
 
 // SetDesc gets a reference to the given string and assigns it to the Desc field.
 func (o *ApiKeyUserDetails) SetDesc(v string) {
+
 	o.Desc = &v
 }
 
@@ -102,6 +103,7 @@ func (o *ApiKeyUserDetails) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ApiKeyUserDetails) SetId(v string) {
+
 	o.Id = &v
 }
 
@@ -111,12 +113,12 @@ func (o *ApiKeyUserDetails) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiKeyUserDetails) GetLinksOk() ([]Link, bool) {
+func (o *ApiKeyUserDetails) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -135,7 +137,8 @@ func (o *ApiKeyUserDetails) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *ApiKeyUserDetails) SetLinks(v []Link) {
-	o.Links = v
+
+	o.Links = &v
 }
 
 // GetPrivateKey returns the PrivateKey field value if set, zero value otherwise
@@ -168,6 +171,7 @@ func (o *ApiKeyUserDetails) HasPrivateKey() bool {
 
 // SetPrivateKey gets a reference to the given string and assigns it to the PrivateKey field.
 func (o *ApiKeyUserDetails) SetPrivateKey(v string) {
+
 	o.PrivateKey = &v
 }
 
@@ -201,6 +205,7 @@ func (o *ApiKeyUserDetails) HasPublicKey() bool {
 
 // SetPublicKey gets a reference to the given string and assigns it to the PublicKey field.
 func (o *ApiKeyUserDetails) SetPublicKey(v string) {
+
 	o.PublicKey = &v
 }
 
@@ -210,12 +215,12 @@ func (o *ApiKeyUserDetails) GetRoles() []CloudAccessRoleAssignment {
 		var ret []CloudAccessRoleAssignment
 		return ret
 	}
-	return o.Roles
+	return *o.Roles
 }
 
 // GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiKeyUserDetails) GetRolesOk() ([]CloudAccessRoleAssignment, bool) {
+func (o *ApiKeyUserDetails) GetRolesOk() (*[]CloudAccessRoleAssignment, bool) {
 	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
@@ -234,7 +239,8 @@ func (o *ApiKeyUserDetails) HasRoles() bool {
 
 // SetRoles gets a reference to the given []CloudAccessRoleAssignment and assigns it to the Roles field.
 func (o *ApiKeyUserDetails) SetRoles(v []CloudAccessRoleAssignment) {
-	o.Roles = v
+
+	o.Roles = &v
 }
 
 func (o ApiKeyUserDetails) MarshalJSONWithoutReadOnly() ([]byte, error) {

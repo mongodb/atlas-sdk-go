@@ -26,9 +26,9 @@ type BackupSnapshot struct {
 	Incremental               *bool             `json:"incremental,omitempty"`
 	LastOplogAppliedTimestamp *ApiBSONTimestamp `json:"lastOplogAppliedTimestamp,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Metadata that describes the complete snapshot.  - For a replica set, this array contains a single document. - For a sharded cluster, this array contains one document for each shard plus one document for the config host.
-	Parts []BackupSnapshotPart `json:"parts,omitempty"`
+	Parts *[]BackupSnapshotPart `json:"parts,omitempty"`
 }
 
 // NewBackupSnapshot instantiates a new BackupSnapshot object
@@ -78,6 +78,7 @@ func (o *BackupSnapshot) HasClusterId() bool {
 
 // SetClusterId gets a reference to the given string and assigns it to the ClusterId field.
 func (o *BackupSnapshot) SetClusterId(v string) {
+
 	o.ClusterId = &v
 }
 
@@ -111,6 +112,7 @@ func (o *BackupSnapshot) HasComplete() bool {
 
 // SetComplete gets a reference to the given bool and assigns it to the Complete field.
 func (o *BackupSnapshot) SetComplete(v bool) {
+
 	o.Complete = &v
 }
 
@@ -144,6 +146,7 @@ func (o *BackupSnapshot) HasCreated() bool {
 
 // SetCreated gets a reference to the given ApiBSONTimestamp and assigns it to the Created field.
 func (o *BackupSnapshot) SetCreated(v ApiBSONTimestamp) {
+
 	o.Created = &v
 }
 
@@ -177,6 +180,7 @@ func (o *BackupSnapshot) HasDoNotDelete() bool {
 
 // SetDoNotDelete gets a reference to the given bool and assigns it to the DoNotDelete field.
 func (o *BackupSnapshot) SetDoNotDelete(v bool) {
+
 	o.DoNotDelete = &v
 }
 
@@ -210,6 +214,7 @@ func (o *BackupSnapshot) HasExpires() bool {
 
 // SetExpires gets a reference to the given time.Time and assigns it to the Expires field.
 func (o *BackupSnapshot) SetExpires(v time.Time) {
+
 	o.Expires = &v
 }
 
@@ -243,6 +248,7 @@ func (o *BackupSnapshot) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *BackupSnapshot) SetGroupId(v string) {
+
 	o.GroupId = &v
 }
 
@@ -276,6 +282,7 @@ func (o *BackupSnapshot) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *BackupSnapshot) SetId(v string) {
+
 	o.Id = &v
 }
 
@@ -309,6 +316,7 @@ func (o *BackupSnapshot) HasIncremental() bool {
 
 // SetIncremental gets a reference to the given bool and assigns it to the Incremental field.
 func (o *BackupSnapshot) SetIncremental(v bool) {
+
 	o.Incremental = &v
 }
 
@@ -342,6 +350,7 @@ func (o *BackupSnapshot) HasLastOplogAppliedTimestamp() bool {
 
 // SetLastOplogAppliedTimestamp gets a reference to the given ApiBSONTimestamp and assigns it to the LastOplogAppliedTimestamp field.
 func (o *BackupSnapshot) SetLastOplogAppliedTimestamp(v ApiBSONTimestamp) {
+
 	o.LastOplogAppliedTimestamp = &v
 }
 
@@ -351,12 +360,12 @@ func (o *BackupSnapshot) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BackupSnapshot) GetLinksOk() ([]Link, bool) {
+func (o *BackupSnapshot) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -375,7 +384,8 @@ func (o *BackupSnapshot) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *BackupSnapshot) SetLinks(v []Link) {
-	o.Links = v
+
+	o.Links = &v
 }
 
 // GetParts returns the Parts field value if set, zero value otherwise
@@ -384,12 +394,12 @@ func (o *BackupSnapshot) GetParts() []BackupSnapshotPart {
 		var ret []BackupSnapshotPart
 		return ret
 	}
-	return o.Parts
+	return *o.Parts
 }
 
 // GetPartsOk returns a tuple with the Parts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BackupSnapshot) GetPartsOk() ([]BackupSnapshotPart, bool) {
+func (o *BackupSnapshot) GetPartsOk() (*[]BackupSnapshotPart, bool) {
 	if o == nil || IsNil(o.Parts) {
 		return nil, false
 	}
@@ -408,7 +418,8 @@ func (o *BackupSnapshot) HasParts() bool {
 
 // SetParts gets a reference to the given []BackupSnapshotPart and assigns it to the Parts field.
 func (o *BackupSnapshot) SetParts(v []BackupSnapshotPart) {
-	o.Parts = v
+
+	o.Parts = &v
 }
 
 func (o BackupSnapshot) MarshalJSONWithoutReadOnly() ([]byte, error) {

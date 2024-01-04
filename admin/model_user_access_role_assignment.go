@@ -11,7 +11,7 @@ type UserAccessRoleAssignment struct {
 	// Unique 24-hexadecimal digit string that identifies the organization API key.
 	ApiUserId *string `json:"apiUserId,omitempty"`
 	// List of roles to grant this API key. If you provide this list, provide a minimum of one role and ensure each role applies to this project.
-	Roles []string `json:"roles,omitempty"`
+	Roles *[]string `json:"roles,omitempty"`
 }
 
 // NewUserAccessRoleAssignment instantiates a new UserAccessRoleAssignment object
@@ -61,6 +61,7 @@ func (o *UserAccessRoleAssignment) HasApiUserId() bool {
 
 // SetApiUserId gets a reference to the given string and assigns it to the ApiUserId field.
 func (o *UserAccessRoleAssignment) SetApiUserId(v string) {
+
 	o.ApiUserId = &v
 }
 
@@ -70,12 +71,12 @@ func (o *UserAccessRoleAssignment) GetRoles() []string {
 		var ret []string
 		return ret
 	}
-	return o.Roles
+	return *o.Roles
 }
 
 // GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserAccessRoleAssignment) GetRolesOk() ([]string, bool) {
+func (o *UserAccessRoleAssignment) GetRolesOk() (*[]string, bool) {
 	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
@@ -94,7 +95,8 @@ func (o *UserAccessRoleAssignment) HasRoles() bool {
 
 // SetRoles gets a reference to the given []string and assigns it to the Roles field.
 func (o *UserAccessRoleAssignment) SetRoles(v []string) {
-	o.Roles = v
+
+	o.Roles = &v
 }
 
 func (o UserAccessRoleAssignment) MarshalJSONWithoutReadOnly() ([]byte, error) {

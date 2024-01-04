@@ -61,6 +61,7 @@ func (o *FieldTransformation) HasField() bool {
 
 // SetField gets a reference to the given string and assigns it to the Field field.
 func (o *FieldTransformation) SetField(v string) {
+
 	o.Field = &v
 }
 
@@ -94,6 +95,7 @@ func (o *FieldTransformation) HasType() bool {
 
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *FieldTransformation) SetType(v string) {
+
 	o.Type = &v
 }
 

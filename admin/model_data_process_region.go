@@ -61,6 +61,7 @@ func (o *DataProcessRegion) HasCloudProvider() bool {
 
 // SetCloudProvider gets a reference to the given string and assigns it to the CloudProvider field.
 func (o *DataProcessRegion) SetCloudProvider(v string) {
+
 	o.CloudProvider = &v
 }
 
@@ -94,6 +95,7 @@ func (o *DataProcessRegion) HasRegion() bool {
 
 // SetRegion gets a reference to the given string and assigns it to the Region field.
 func (o *DataProcessRegion) SetRegion(v string) {
+
 	o.Region = &v
 }
 

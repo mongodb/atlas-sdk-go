@@ -137,6 +137,7 @@ func (o *IndexOptions) HasVar2dsphereIndexVersion() bool {
 
 // SetVar2dsphereIndexVersion gets a reference to the given int and assigns it to the Var2dsphereIndexVersion field.
 func (o *IndexOptions) SetVar2dsphereIndexVersion(v int) {
+
 	o.Var2dsphereIndexVersion = &v
 }
 
@@ -170,6 +171,7 @@ func (o *IndexOptions) HasBackground() bool {
 
 // SetBackground gets a reference to the given bool and assigns it to the Background field.
 func (o *IndexOptions) SetBackground(v bool) {
+
 	o.Background = &v
 }
 
@@ -203,6 +205,7 @@ func (o *IndexOptions) HasBits() bool {
 
 // SetBits gets a reference to the given int and assigns it to the Bits field.
 func (o *IndexOptions) SetBits(v int) {
+
 	o.Bits = &v
 }
 
@@ -236,6 +239,7 @@ func (o *IndexOptions) HasBucketSize() bool {
 
 // SetBucketSize gets a reference to the given int and assigns it to the BucketSize field.
 func (o *IndexOptions) SetBucketSize(v int) {
+
 	o.BucketSize = &v
 }
 
@@ -269,6 +273,7 @@ func (o *IndexOptions) HasColumnstoreProjection() bool {
 
 // SetColumnstoreProjection gets a reference to the given map[string]int and assigns it to the ColumnstoreProjection field.
 func (o *IndexOptions) SetColumnstoreProjection(v map[string]int) {
+
 	o.ColumnstoreProjection = &v
 }
 
@@ -302,6 +307,7 @@ func (o *IndexOptions) HasDefaultLanguage() bool {
 
 // SetDefaultLanguage gets a reference to the given string and assigns it to the DefaultLanguage field.
 func (o *IndexOptions) SetDefaultLanguage(v string) {
+
 	o.DefaultLanguage = &v
 }
 
@@ -335,6 +341,7 @@ func (o *IndexOptions) HasExpireAfterSeconds() bool {
 
 // SetExpireAfterSeconds gets a reference to the given int and assigns it to the ExpireAfterSeconds field.
 func (o *IndexOptions) SetExpireAfterSeconds(v int) {
+
 	o.ExpireAfterSeconds = &v
 }
 
@@ -368,6 +375,7 @@ func (o *IndexOptions) HasHidden() bool {
 
 // SetHidden gets a reference to the given bool and assigns it to the Hidden field.
 func (o *IndexOptions) SetHidden(v bool) {
+
 	o.Hidden = &v
 }
 
@@ -401,6 +409,7 @@ func (o *IndexOptions) HasLanguageOverride() bool {
 
 // SetLanguageOverride gets a reference to the given string and assigns it to the LanguageOverride field.
 func (o *IndexOptions) SetLanguageOverride(v string) {
+
 	o.LanguageOverride = &v
 }
 
@@ -434,6 +443,7 @@ func (o *IndexOptions) HasMax() bool {
 
 // SetMax gets a reference to the given int and assigns it to the Max field.
 func (o *IndexOptions) SetMax(v int) {
+
 	o.Max = &v
 }
 
@@ -467,6 +477,7 @@ func (o *IndexOptions) HasMin() bool {
 
 // SetMin gets a reference to the given int and assigns it to the Min field.
 func (o *IndexOptions) SetMin(v int) {
+
 	o.Min = &v
 }
 
@@ -500,6 +511,7 @@ func (o *IndexOptions) HasName() bool {
 
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *IndexOptions) SetName(v string) {
+
 	o.Name = &v
 }
 
@@ -533,6 +545,7 @@ func (o *IndexOptions) HasPartialFilterExpression() bool {
 
 // SetPartialFilterExpression gets a reference to the given map[string]interface{} and assigns it to the PartialFilterExpression field.
 func (o *IndexOptions) SetPartialFilterExpression(v map[string]interface{}) {
+
 	o.PartialFilterExpression = v
 }
 
@@ -566,6 +579,7 @@ func (o *IndexOptions) HasSparse() bool {
 
 // SetSparse gets a reference to the given bool and assigns it to the Sparse field.
 func (o *IndexOptions) SetSparse(v bool) {
+
 	o.Sparse = &v
 }
 
@@ -599,6 +613,7 @@ func (o *IndexOptions) HasStorageEngine() bool {
 
 // SetStorageEngine gets a reference to the given map[string]interface{} and assigns it to the StorageEngine field.
 func (o *IndexOptions) SetStorageEngine(v map[string]interface{}) {
+
 	o.StorageEngine = v
 }
 
@@ -632,6 +647,7 @@ func (o *IndexOptions) HasTextIndexVersion() bool {
 
 // SetTextIndexVersion gets a reference to the given int and assigns it to the TextIndexVersion field.
 func (o *IndexOptions) SetTextIndexVersion(v int) {
+
 	o.TextIndexVersion = &v
 }
 
@@ -665,6 +681,7 @@ func (o *IndexOptions) HasUnique() bool {
 
 // SetUnique gets a reference to the given bool and assigns it to the Unique field.
 func (o *IndexOptions) SetUnique(v bool) {
+
 	o.Unique = &v
 }
 
@@ -698,6 +715,7 @@ func (o *IndexOptions) HasWeights() bool {
 
 // SetWeights gets a reference to the given map[string]interface{} and assigns it to the Weights field.
 func (o *IndexOptions) SetWeights(v map[string]interface{}) {
+
 	o.Weights = v
 }
 

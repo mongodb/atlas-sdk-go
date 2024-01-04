@@ -13,7 +13,7 @@ type LiveMigrationResponse struct {
 	// Replication lag between the source and destination clusters. Atlas returns this setting only during an active migration, before the cutover phase.
 	LagTimeSeconds *int64 `json:"lagTimeSeconds,omitempty"`
 	// List of hosts running MongoDB Agents. These Agents can transfer your MongoDB data between one source and one target cluster.
-	MigrationHosts []string `json:"migrationHosts,omitempty"`
+	MigrationHosts *[]string `json:"migrationHosts,omitempty"`
 	// Flag that indicates the migrated cluster can be cut over to MongoDB Atlas.
 	ReadyForCutover *bool `json:"readyForCutover,omitempty"`
 	// Progress made in migrating one cluster to MongoDB Atlas.  | Status   | Explanation | |----------|-------------| | NEW      | Someone scheduled a local cluster migration to MongoDB Atlas. | | FAILED   | The cluster migration to MongoDB Atlas failed.                | | COMPLETE | The cluster migration to MongoDB Atlas succeeded.             | | EXPIRED  | MongoDB Atlas prepares to begin the cut over of the migrating cluster when source and target clusters have almost synchronized. If `\"readyForCutover\" : true`, this synchronization starts a timer of 120 hours. You can extend this timer. If the timer expires, MongoDB Atlas returns this status. | | WORKING  | The cluster migration to MongoDB Atlas is performing one of the following tasks:<ul><li>Preparing connections to source and target clusters</li><li>Replicating data from source to target</li><li>Verifying MongoDB Atlas connection settings</li><li>Stopping replication after the cut over</li></ul> |
@@ -67,6 +67,7 @@ func (o *LiveMigrationResponse) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *LiveMigrationResponse) SetId(v string) {
+
 	o.Id = &v
 }
 
@@ -100,6 +101,7 @@ func (o *LiveMigrationResponse) HasLagTimeSeconds() bool {
 
 // SetLagTimeSeconds gets a reference to the given int64 and assigns it to the LagTimeSeconds field.
 func (o *LiveMigrationResponse) SetLagTimeSeconds(v int64) {
+
 	o.LagTimeSeconds = &v
 }
 
@@ -109,12 +111,12 @@ func (o *LiveMigrationResponse) GetMigrationHosts() []string {
 		var ret []string
 		return ret
 	}
-	return o.MigrationHosts
+	return *o.MigrationHosts
 }
 
 // GetMigrationHostsOk returns a tuple with the MigrationHosts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LiveMigrationResponse) GetMigrationHostsOk() ([]string, bool) {
+func (o *LiveMigrationResponse) GetMigrationHostsOk() (*[]string, bool) {
 	if o == nil || IsNil(o.MigrationHosts) {
 		return nil, false
 	}
@@ -133,7 +135,8 @@ func (o *LiveMigrationResponse) HasMigrationHosts() bool {
 
 // SetMigrationHosts gets a reference to the given []string and assigns it to the MigrationHosts field.
 func (o *LiveMigrationResponse) SetMigrationHosts(v []string) {
-	o.MigrationHosts = v
+
+	o.MigrationHosts = &v
 }
 
 // GetReadyForCutover returns the ReadyForCutover field value if set, zero value otherwise
@@ -166,6 +169,7 @@ func (o *LiveMigrationResponse) HasReadyForCutover() bool {
 
 // SetReadyForCutover gets a reference to the given bool and assigns it to the ReadyForCutover field.
 func (o *LiveMigrationResponse) SetReadyForCutover(v bool) {
+
 	o.ReadyForCutover = &v
 }
 
@@ -199,6 +203,7 @@ func (o *LiveMigrationResponse) HasStatus() bool {
 
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *LiveMigrationResponse) SetStatus(v string) {
+
 	o.Status = &v
 }
 

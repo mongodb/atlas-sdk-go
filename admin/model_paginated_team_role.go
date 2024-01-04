@@ -9,9 +9,9 @@ import (
 // PaginatedTeamRole struct for PaginatedTeamRole
 type PaginatedTeamRole struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud providers when completing this request.
-	Results []TeamRole `json:"results,omitempty"`
+	Results *[]TeamRole `json:"results,omitempty"`
 	// Number of documents returned in this response.
 	TotalCount *int `json:"totalCount,omitempty"`
 }
@@ -39,12 +39,12 @@ func (o *PaginatedTeamRole) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedTeamRole) GetLinksOk() ([]Link, bool) {
+func (o *PaginatedTeamRole) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -63,7 +63,8 @@ func (o *PaginatedTeamRole) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PaginatedTeamRole) SetLinks(v []Link) {
-	o.Links = v
+
+	o.Links = &v
 }
 
 // GetResults returns the Results field value if set, zero value otherwise
@@ -72,12 +73,12 @@ func (o *PaginatedTeamRole) GetResults() []TeamRole {
 		var ret []TeamRole
 		return ret
 	}
-	return o.Results
+	return *o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedTeamRole) GetResultsOk() ([]TeamRole, bool) {
+func (o *PaginatedTeamRole) GetResultsOk() (*[]TeamRole, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -96,7 +97,8 @@ func (o *PaginatedTeamRole) HasResults() bool {
 
 // SetResults gets a reference to the given []TeamRole and assigns it to the Results field.
 func (o *PaginatedTeamRole) SetResults(v []TeamRole) {
-	o.Results = v
+
+	o.Results = &v
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise
@@ -129,6 +131,7 @@ func (o *PaginatedTeamRole) HasTotalCount() bool {
 
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
 func (o *PaginatedTeamRole) SetTotalCount(v int) {
+
 	o.TotalCount = &v
 }
 

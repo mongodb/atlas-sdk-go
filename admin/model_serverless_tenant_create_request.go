@@ -59,6 +59,7 @@ func (o *ServerlessTenantCreateRequest) HasComment() bool {
 
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *ServerlessTenantCreateRequest) SetComment(v string) {
+
 	o.Comment = &v
 }
 

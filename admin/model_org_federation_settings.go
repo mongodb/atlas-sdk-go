@@ -9,7 +9,7 @@ import (
 // OrgFederationSettings Details that define how to connect one MongoDB Cloud organization to one federated authentication service.
 type OrgFederationSettings struct {
 	// List of domains associated with the organization's identity provider.
-	FederatedDomains []string `json:"federatedDomains,omitempty"`
+	FederatedDomains *[]string `json:"federatedDomains,omitempty"`
 	// Flag that indicates whether this organization has role mappings configured.
 	HasRoleMappings *bool `json:"hasRoleMappings,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies this federation.
@@ -43,12 +43,12 @@ func (o *OrgFederationSettings) GetFederatedDomains() []string {
 		var ret []string
 		return ret
 	}
-	return o.FederatedDomains
+	return *o.FederatedDomains
 }
 
 // GetFederatedDomainsOk returns a tuple with the FederatedDomains field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrgFederationSettings) GetFederatedDomainsOk() ([]string, bool) {
+func (o *OrgFederationSettings) GetFederatedDomainsOk() (*[]string, bool) {
 	if o == nil || IsNil(o.FederatedDomains) {
 		return nil, false
 	}
@@ -67,7 +67,8 @@ func (o *OrgFederationSettings) HasFederatedDomains() bool {
 
 // SetFederatedDomains gets a reference to the given []string and assigns it to the FederatedDomains field.
 func (o *OrgFederationSettings) SetFederatedDomains(v []string) {
-	o.FederatedDomains = v
+
+	o.FederatedDomains = &v
 }
 
 // GetHasRoleMappings returns the HasRoleMappings field value if set, zero value otherwise
@@ -100,6 +101,7 @@ func (o *OrgFederationSettings) HasHasRoleMappings() bool {
 
 // SetHasRoleMappings gets a reference to the given bool and assigns it to the HasRoleMappings field.
 func (o *OrgFederationSettings) SetHasRoleMappings(v bool) {
+
 	o.HasRoleMappings = &v
 }
 
@@ -133,6 +135,7 @@ func (o *OrgFederationSettings) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *OrgFederationSettings) SetId(v string) {
+
 	o.Id = &v
 }
 
@@ -166,6 +169,7 @@ func (o *OrgFederationSettings) HasIdentityProviderId() bool {
 
 // SetIdentityProviderId gets a reference to the given string and assigns it to the IdentityProviderId field.
 func (o *OrgFederationSettings) SetIdentityProviderId(v string) {
+
 	o.IdentityProviderId = &v
 }
 
@@ -199,6 +203,7 @@ func (o *OrgFederationSettings) HasIdentityProviderStatus() bool {
 
 // SetIdentityProviderStatus gets a reference to the given string and assigns it to the IdentityProviderStatus field.
 func (o *OrgFederationSettings) SetIdentityProviderStatus(v string) {
+
 	o.IdentityProviderStatus = &v
 }
 

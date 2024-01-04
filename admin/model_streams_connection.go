@@ -9,7 +9,7 @@ import (
 // StreamsConnection Settings that define a connection to an external data store.
 type StreamsConnection struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Human-readable label that identifies the stream connection.
 	Name *string `json:"name,omitempty"`
 	// Type of the connection. Can be either Cluster or Kafka.
@@ -47,12 +47,12 @@ func (o *StreamsConnection) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StreamsConnection) GetLinksOk() ([]Link, bool) {
+func (o *StreamsConnection) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -71,7 +71,8 @@ func (o *StreamsConnection) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *StreamsConnection) SetLinks(v []Link) {
-	o.Links = v
+
+	o.Links = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise
@@ -104,6 +105,7 @@ func (o *StreamsConnection) HasName() bool {
 
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *StreamsConnection) SetName(v string) {
+
 	o.Name = &v
 }
 
@@ -137,6 +139,7 @@ func (o *StreamsConnection) HasType() bool {
 
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *StreamsConnection) SetType(v string) {
+
 	o.Type = &v
 }
 
@@ -170,6 +173,7 @@ func (o *StreamsConnection) HasClusterName() bool {
 
 // SetClusterName gets a reference to the given string and assigns it to the ClusterName field.
 func (o *StreamsConnection) SetClusterName(v string) {
+
 	o.ClusterName = &v
 }
 
@@ -203,6 +207,7 @@ func (o *StreamsConnection) HasAuthentication() bool {
 
 // SetAuthentication gets a reference to the given StreamsKafkaAuthentication and assigns it to the Authentication field.
 func (o *StreamsConnection) SetAuthentication(v StreamsKafkaAuthentication) {
+
 	o.Authentication = &v
 }
 
@@ -236,6 +241,7 @@ func (o *StreamsConnection) HasBootstrapServers() bool {
 
 // SetBootstrapServers gets a reference to the given string and assigns it to the BootstrapServers field.
 func (o *StreamsConnection) SetBootstrapServers(v string) {
+
 	o.BootstrapServers = &v
 }
 
@@ -269,6 +275,7 @@ func (o *StreamsConnection) HasConfig() bool {
 
 // SetConfig gets a reference to the given map[string]string and assigns it to the Config field.
 func (o *StreamsConnection) SetConfig(v map[string]string) {
+
 	o.Config = &v
 }
 
@@ -302,6 +309,7 @@ func (o *StreamsConnection) HasSecurity() bool {
 
 // SetSecurity gets a reference to the given StreamsKafkaSecurity and assigns it to the Security field.
 func (o *StreamsConnection) SetSecurity(v StreamsKafkaSecurity) {
+
 	o.Security = &v
 }
 

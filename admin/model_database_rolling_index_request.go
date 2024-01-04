@@ -14,8 +14,8 @@ type DatabaseRollingIndexRequest struct {
 	// Human-readable label of the database that holds the collection on which MongoDB Cloud creates an index.
 	Db string `json:"db"`
 	// List that contains one or more objects that describe the parameters that you want to index.
-	Keys    []map[string]string `json:"keys,omitempty"`
-	Options *IndexOptions       `json:"options,omitempty"`
+	Keys    *[]map[string]string `json:"keys,omitempty"`
+	Options *IndexOptions        `json:"options,omitempty"`
 }
 
 // NewDatabaseRollingIndexRequest instantiates a new DatabaseRollingIndexRequest object
@@ -67,6 +67,7 @@ func (o *DatabaseRollingIndexRequest) HasCollation() bool {
 
 // SetCollation gets a reference to the given Collation and assigns it to the Collation field.
 func (o *DatabaseRollingIndexRequest) SetCollation(v Collation) {
+
 	o.Collation = &v
 }
 
@@ -124,12 +125,12 @@ func (o *DatabaseRollingIndexRequest) GetKeys() []map[string]string {
 		var ret []map[string]string
 		return ret
 	}
-	return o.Keys
+	return *o.Keys
 }
 
 // GetKeysOk returns a tuple with the Keys field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DatabaseRollingIndexRequest) GetKeysOk() ([]map[string]string, bool) {
+func (o *DatabaseRollingIndexRequest) GetKeysOk() (*[]map[string]string, bool) {
 	if o == nil || IsNil(o.Keys) {
 		return nil, false
 	}
@@ -148,7 +149,8 @@ func (o *DatabaseRollingIndexRequest) HasKeys() bool {
 
 // SetKeys gets a reference to the given []map[string]string and assigns it to the Keys field.
 func (o *DatabaseRollingIndexRequest) SetKeys(v []map[string]string) {
-	o.Keys = v
+
+	o.Keys = &v
 }
 
 // GetOptions returns the Options field value if set, zero value otherwise
@@ -181,6 +183,7 @@ func (o *DatabaseRollingIndexRequest) HasOptions() bool {
 
 // SetOptions gets a reference to the given IndexOptions and assigns it to the Options field.
 func (o *DatabaseRollingIndexRequest) SetOptions(v IndexOptions) {
+
 	o.Options = &v
 }
 

@@ -69,6 +69,7 @@ func (o *DataLakeAWSCloudProviderConfig) HasExternalId() bool {
 
 // SetExternalId gets a reference to the given string and assigns it to the ExternalId field.
 func (o *DataLakeAWSCloudProviderConfig) SetExternalId(v string) {
+
 	o.ExternalId = &v
 }
 
@@ -102,6 +103,7 @@ func (o *DataLakeAWSCloudProviderConfig) HasIamAssumedRoleARN() bool {
 
 // SetIamAssumedRoleARN gets a reference to the given string and assigns it to the IamAssumedRoleARN field.
 func (o *DataLakeAWSCloudProviderConfig) SetIamAssumedRoleARN(v string) {
+
 	o.IamAssumedRoleARN = &v
 }
 
@@ -135,6 +137,7 @@ func (o *DataLakeAWSCloudProviderConfig) HasIamUserARN() bool {
 
 // SetIamUserARN gets a reference to the given string and assigns it to the IamUserARN field.
 func (o *DataLakeAWSCloudProviderConfig) SetIamUserARN(v string) {
+
 	o.IamUserARN = &v
 }
 

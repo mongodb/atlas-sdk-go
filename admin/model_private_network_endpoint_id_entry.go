@@ -78,6 +78,7 @@ func (o *PrivateNetworkEndpointIdEntry) HasComment() bool {
 
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *PrivateNetworkEndpointIdEntry) SetComment(v string) {
+
 	o.Comment = &v
 }
 
@@ -111,6 +112,7 @@ func (o *PrivateNetworkEndpointIdEntry) HasCustomerEndpointDNSName() bool {
 
 // SetCustomerEndpointDNSName gets a reference to the given string and assigns it to the CustomerEndpointDNSName field.
 func (o *PrivateNetworkEndpointIdEntry) SetCustomerEndpointDNSName(v string) {
+
 	o.CustomerEndpointDNSName = &v
 }
 
@@ -168,6 +170,7 @@ func (o *PrivateNetworkEndpointIdEntry) HasProvider() bool {
 
 // SetProvider gets a reference to the given string and assigns it to the Provider field.
 func (o *PrivateNetworkEndpointIdEntry) SetProvider(v string) {
+
 	o.Provider = &v
 }
 
@@ -201,6 +204,7 @@ func (o *PrivateNetworkEndpointIdEntry) HasRegion() bool {
 
 // SetRegion gets a reference to the given string and assigns it to the Region field.
 func (o *PrivateNetworkEndpointIdEntry) SetRegion(v string) {
+
 	o.Region = &v
 }
 
@@ -234,6 +238,7 @@ func (o *PrivateNetworkEndpointIdEntry) HasType() bool {
 
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *PrivateNetworkEndpointIdEntry) SetType(v string) {
+
 	o.Type = &v
 }
 

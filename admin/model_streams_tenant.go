@@ -11,14 +11,14 @@ type StreamsTenant struct {
 	// Unique 24-hexadecimal character string that identifies the project.
 	Id *string `json:"_id,omitempty"`
 	// List of connections configured in the stream instance.
-	Connections       []StreamsConnection       `json:"connections,omitempty"`
+	Connections       *[]StreamsConnection      `json:"connections,omitempty"`
 	DataProcessRegion *StreamsDataProcessRegion `json:"dataProcessRegion,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project.
 	GroupId *string `json:"groupId,omitempty"`
 	// List that contains the hostnames assigned to the stream instance.
-	Hostnames []string `json:"hostnames,omitempty"`
+	Hostnames *[]string `json:"hostnames,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Human-readable label that identifies the stream instance.
 	Name *string `json:"name,omitempty"`
 }
@@ -70,6 +70,7 @@ func (o *StreamsTenant) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *StreamsTenant) SetId(v string) {
+
 	o.Id = &v
 }
 
@@ -79,12 +80,12 @@ func (o *StreamsTenant) GetConnections() []StreamsConnection {
 		var ret []StreamsConnection
 		return ret
 	}
-	return o.Connections
+	return *o.Connections
 }
 
 // GetConnectionsOk returns a tuple with the Connections field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StreamsTenant) GetConnectionsOk() ([]StreamsConnection, bool) {
+func (o *StreamsTenant) GetConnectionsOk() (*[]StreamsConnection, bool) {
 	if o == nil || IsNil(o.Connections) {
 		return nil, false
 	}
@@ -103,7 +104,8 @@ func (o *StreamsTenant) HasConnections() bool {
 
 // SetConnections gets a reference to the given []StreamsConnection and assigns it to the Connections field.
 func (o *StreamsTenant) SetConnections(v []StreamsConnection) {
-	o.Connections = v
+
+	o.Connections = &v
 }
 
 // GetDataProcessRegion returns the DataProcessRegion field value if set, zero value otherwise
@@ -136,6 +138,7 @@ func (o *StreamsTenant) HasDataProcessRegion() bool {
 
 // SetDataProcessRegion gets a reference to the given StreamsDataProcessRegion and assigns it to the DataProcessRegion field.
 func (o *StreamsTenant) SetDataProcessRegion(v StreamsDataProcessRegion) {
+
 	o.DataProcessRegion = &v
 }
 
@@ -169,6 +172,7 @@ func (o *StreamsTenant) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *StreamsTenant) SetGroupId(v string) {
+
 	o.GroupId = &v
 }
 
@@ -178,12 +182,12 @@ func (o *StreamsTenant) GetHostnames() []string {
 		var ret []string
 		return ret
 	}
-	return o.Hostnames
+	return *o.Hostnames
 }
 
 // GetHostnamesOk returns a tuple with the Hostnames field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StreamsTenant) GetHostnamesOk() ([]string, bool) {
+func (o *StreamsTenant) GetHostnamesOk() (*[]string, bool) {
 	if o == nil || IsNil(o.Hostnames) {
 		return nil, false
 	}
@@ -202,7 +206,8 @@ func (o *StreamsTenant) HasHostnames() bool {
 
 // SetHostnames gets a reference to the given []string and assigns it to the Hostnames field.
 func (o *StreamsTenant) SetHostnames(v []string) {
-	o.Hostnames = v
+
+	o.Hostnames = &v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -211,12 +216,12 @@ func (o *StreamsTenant) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StreamsTenant) GetLinksOk() ([]Link, bool) {
+func (o *StreamsTenant) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -235,7 +240,8 @@ func (o *StreamsTenant) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *StreamsTenant) SetLinks(v []Link) {
-	o.Links = v
+
+	o.Links = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise
@@ -268,6 +274,7 @@ func (o *StreamsTenant) HasName() bool {
 
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *StreamsTenant) SetName(v string) {
+
 	o.Name = &v
 }
 

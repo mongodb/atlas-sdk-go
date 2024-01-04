@@ -60,6 +60,7 @@ func (o *GroupIPAddresses) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *GroupIPAddresses) SetGroupId(v string) {
+
 	o.GroupId = &v
 }
 
@@ -93,6 +94,7 @@ func (o *GroupIPAddresses) HasServices() bool {
 
 // SetServices gets a reference to the given GroupService and assigns it to the Services field.
 func (o *GroupIPAddresses) SetServices(v GroupService) {
+
 	o.Services = &v
 }
 

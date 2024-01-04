@@ -65,6 +65,7 @@ func (o *GoogleCloudKMS) HasEnabled() bool {
 
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *GoogleCloudKMS) SetEnabled(v bool) {
+
 	o.Enabled = &v
 }
 
@@ -98,6 +99,7 @@ func (o *GoogleCloudKMS) HasKeyVersionResourceID() bool {
 
 // SetKeyVersionResourceID gets a reference to the given string and assigns it to the KeyVersionResourceID field.
 func (o *GoogleCloudKMS) SetKeyVersionResourceID(v string) {
+
 	o.KeyVersionResourceID = &v
 }
 
@@ -131,6 +133,7 @@ func (o *GoogleCloudKMS) HasServiceAccountKey() bool {
 
 // SetServiceAccountKey gets a reference to the given string and assigns it to the ServiceAccountKey field.
 func (o *GoogleCloudKMS) SetServiceAccountKey(v string) {
+
 	o.ServiceAccountKey = &v
 }
 
@@ -164,6 +167,7 @@ func (o *GoogleCloudKMS) HasValid() bool {
 
 // SetValid gets a reference to the given bool and assigns it to the Valid field.
 func (o *GoogleCloudKMS) SetValid(v bool) {
+
 	o.Valid = &v
 }
 

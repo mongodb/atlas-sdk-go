@@ -59,6 +59,7 @@ func (o *GroupName) HasName() bool {
 
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *GroupName) SetName(v string) {
+
 	o.Name = &v
 }
 

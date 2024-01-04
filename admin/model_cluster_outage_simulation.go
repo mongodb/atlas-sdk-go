@@ -16,7 +16,7 @@ type ClusterOutageSimulation struct {
 	// Unique 24-hexadecimal character string that identifies the outage simulation.
 	Id *string `json:"id,omitempty"`
 	// List of settings that specify the type of cluster outage simulation.
-	OutageFilters []AtlasClusterOutageSimulationOutageFilter `json:"outageFilters,omitempty"`
+	OutageFilters *[]AtlasClusterOutageSimulationOutageFilter `json:"outageFilters,omitempty"`
 	// Date and time when MongoDB Cloud started the regional outage simulation.
 	StartRequestDate *time.Time `json:"startRequestDate,omitempty"`
 	// Phase of the outage simulation.  | State       | Indication | |-------------|------------| | `START_REQUESTED`    | User has requested cluster outage simulation.| | `STARTING`           | MongoDB Cloud is starting cluster outage simulation.| | `SIMULATING`         | MongoDB Cloud is simulating cluster outage.| | `RECOVERY_REQUESTED` | User has requested recovery from the simulated outage.| | `RECOVERING`         | MongoDB Cloud is recovering the cluster from the simulated outage.| | `COMPLETE`           | MongoDB Cloud has completed the cluster outage simulation.|
@@ -70,6 +70,7 @@ func (o *ClusterOutageSimulation) HasClusterName() bool {
 
 // SetClusterName gets a reference to the given string and assigns it to the ClusterName field.
 func (o *ClusterOutageSimulation) SetClusterName(v string) {
+
 	o.ClusterName = &v
 }
 
@@ -103,6 +104,7 @@ func (o *ClusterOutageSimulation) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *ClusterOutageSimulation) SetGroupId(v string) {
+
 	o.GroupId = &v
 }
 
@@ -136,6 +138,7 @@ func (o *ClusterOutageSimulation) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ClusterOutageSimulation) SetId(v string) {
+
 	o.Id = &v
 }
 
@@ -145,12 +148,12 @@ func (o *ClusterOutageSimulation) GetOutageFilters() []AtlasClusterOutageSimulat
 		var ret []AtlasClusterOutageSimulationOutageFilter
 		return ret
 	}
-	return o.OutageFilters
+	return *o.OutageFilters
 }
 
 // GetOutageFiltersOk returns a tuple with the OutageFilters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterOutageSimulation) GetOutageFiltersOk() ([]AtlasClusterOutageSimulationOutageFilter, bool) {
+func (o *ClusterOutageSimulation) GetOutageFiltersOk() (*[]AtlasClusterOutageSimulationOutageFilter, bool) {
 	if o == nil || IsNil(o.OutageFilters) {
 		return nil, false
 	}
@@ -169,7 +172,8 @@ func (o *ClusterOutageSimulation) HasOutageFilters() bool {
 
 // SetOutageFilters gets a reference to the given []AtlasClusterOutageSimulationOutageFilter and assigns it to the OutageFilters field.
 func (o *ClusterOutageSimulation) SetOutageFilters(v []AtlasClusterOutageSimulationOutageFilter) {
-	o.OutageFilters = v
+
+	o.OutageFilters = &v
 }
 
 // GetStartRequestDate returns the StartRequestDate field value if set, zero value otherwise
@@ -202,6 +206,7 @@ func (o *ClusterOutageSimulation) HasStartRequestDate() bool {
 
 // SetStartRequestDate gets a reference to the given time.Time and assigns it to the StartRequestDate field.
 func (o *ClusterOutageSimulation) SetStartRequestDate(v time.Time) {
+
 	o.StartRequestDate = &v
 }
 
@@ -235,6 +240,7 @@ func (o *ClusterOutageSimulation) HasState() bool {
 
 // SetState gets a reference to the given string and assigns it to the State field.
 func (o *ClusterOutageSimulation) SetState(v string) {
+
 	o.State = &v
 }
 

@@ -59,6 +59,7 @@ func (o *DiskGBAutoScaling) HasEnabled() bool {
 
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *DiskGBAutoScaling) SetEnabled(v bool) {
+
 	o.Enabled = &v
 }
 

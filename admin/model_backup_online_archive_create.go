@@ -26,7 +26,7 @@ type BackupOnlineArchiveCreate struct {
 	// Unique 24-hexadecimal digit string that identifies the project that contains the specified cluster. The specified cluster contains the collection for which to create the online archive.
 	GroupId *string `json:"groupId,omitempty"`
 	// List that contains document parameters to use to logically divide data within a collection. Partitions provide a coarse level of filtering of the underlying collection data. To divide your data, specify parameters that you frequently query. If you \"specified :criteria.type\": \"DATE\" in the CREATE ONE ONLINE ARCHIVE endpoint, then you can specify up to three parameters by which to query. One of these parameters must be the DATE value, which is required in this case. If you \"specified :criteria.type\": \"CUSTOM\" in the CREATE ONE ONLINE ARCHIVE endpoint, then you can specify up to two parameters by which to query. Queries that don't use \":criteria.type\": \"DATE\" or \":criteria.type\": \"CUSTOM\" parameters cause MongoDB to scan a full collection of all archived documents. This takes more time and increases your costs.
-	PartitionFields []PartitionField `json:"partitionFields,omitempty"`
+	PartitionFields *[]PartitionField `json:"partitionFields,omitempty"`
 	// Flag that indicates whether this online archive exists in the paused state. A request to resume fails if the collection has another active online archive. To pause an active online archive or resume a paused online archive, you must include this parameter. To pause an active archive, set this to **true**. To resume a paused archive, set this to **false**.
 	Paused   *bool                  `json:"paused,omitempty"`
 	Schedule *OnlineArchiveSchedule `json:"schedule,omitempty"`
@@ -88,6 +88,7 @@ func (o *BackupOnlineArchiveCreate) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *BackupOnlineArchiveCreate) SetId(v string) {
+
 	o.Id = &v
 }
 
@@ -121,6 +122,7 @@ func (o *BackupOnlineArchiveCreate) HasClusterName() bool {
 
 // SetClusterName gets a reference to the given string and assigns it to the ClusterName field.
 func (o *BackupOnlineArchiveCreate) SetClusterName(v string) {
+
 	o.ClusterName = &v
 }
 
@@ -178,6 +180,7 @@ func (o *BackupOnlineArchiveCreate) HasCollectionType() bool {
 
 // SetCollectionType gets a reference to the given string and assigns it to the CollectionType field.
 func (o *BackupOnlineArchiveCreate) SetCollectionType(v string) {
+
 	o.CollectionType = &v
 }
 
@@ -235,6 +238,7 @@ func (o *BackupOnlineArchiveCreate) HasDataExpirationRule() bool {
 
 // SetDataExpirationRule gets a reference to the given DataExpirationRule and assigns it to the DataExpirationRule field.
 func (o *BackupOnlineArchiveCreate) SetDataExpirationRule(v DataExpirationRule) {
+
 	o.DataExpirationRule = &v
 }
 
@@ -268,6 +272,7 @@ func (o *BackupOnlineArchiveCreate) HasDataProcessRegion() bool {
 
 // SetDataProcessRegion gets a reference to the given DataProcessRegion and assigns it to the DataProcessRegion field.
 func (o *BackupOnlineArchiveCreate) SetDataProcessRegion(v DataProcessRegion) {
+
 	o.DataProcessRegion = &v
 }
 
@@ -301,6 +306,7 @@ func (o *BackupOnlineArchiveCreate) HasDataSetName() bool {
 
 // SetDataSetName gets a reference to the given string and assigns it to the DataSetName field.
 func (o *BackupOnlineArchiveCreate) SetDataSetName(v string) {
+
 	o.DataSetName = &v
 }
 
@@ -358,6 +364,7 @@ func (o *BackupOnlineArchiveCreate) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *BackupOnlineArchiveCreate) SetGroupId(v string) {
+
 	o.GroupId = &v
 }
 
@@ -367,12 +374,12 @@ func (o *BackupOnlineArchiveCreate) GetPartitionFields() []PartitionField {
 		var ret []PartitionField
 		return ret
 	}
-	return o.PartitionFields
+	return *o.PartitionFields
 }
 
 // GetPartitionFieldsOk returns a tuple with the PartitionFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BackupOnlineArchiveCreate) GetPartitionFieldsOk() ([]PartitionField, bool) {
+func (o *BackupOnlineArchiveCreate) GetPartitionFieldsOk() (*[]PartitionField, bool) {
 	if o == nil || IsNil(o.PartitionFields) {
 		return nil, false
 	}
@@ -391,7 +398,8 @@ func (o *BackupOnlineArchiveCreate) HasPartitionFields() bool {
 
 // SetPartitionFields gets a reference to the given []PartitionField and assigns it to the PartitionFields field.
 func (o *BackupOnlineArchiveCreate) SetPartitionFields(v []PartitionField) {
-	o.PartitionFields = v
+
+	o.PartitionFields = &v
 }
 
 // GetPaused returns the Paused field value if set, zero value otherwise
@@ -424,6 +432,7 @@ func (o *BackupOnlineArchiveCreate) HasPaused() bool {
 
 // SetPaused gets a reference to the given bool and assigns it to the Paused field.
 func (o *BackupOnlineArchiveCreate) SetPaused(v bool) {
+
 	o.Paused = &v
 }
 
@@ -457,6 +466,7 @@ func (o *BackupOnlineArchiveCreate) HasSchedule() bool {
 
 // SetSchedule gets a reference to the given OnlineArchiveSchedule and assigns it to the Schedule field.
 func (o *BackupOnlineArchiveCreate) SetSchedule(v OnlineArchiveSchedule) {
+
 	o.Schedule = &v
 }
 
@@ -490,6 +500,7 @@ func (o *BackupOnlineArchiveCreate) HasState() bool {
 
 // SetState gets a reference to the given string and assigns it to the State field.
 func (o *BackupOnlineArchiveCreate) SetState(v string) {
+
 	o.State = &v
 }
 

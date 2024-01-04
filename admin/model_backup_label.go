@@ -61,6 +61,7 @@ func (o *BackupLabel) HasKey() bool {
 
 // SetKey gets a reference to the given string and assigns it to the Key field.
 func (o *BackupLabel) SetKey(v string) {
+
 	o.Key = &v
 }
 
@@ -94,6 +95,7 @@ func (o *BackupLabel) HasValue() bool {
 
 // SetValue gets a reference to the given string and assigns it to the Value field.
 func (o *BackupLabel) SetValue(v string) {
+
 	o.Value = &v
 }
 

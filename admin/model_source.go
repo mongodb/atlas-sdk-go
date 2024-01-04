@@ -75,6 +75,7 @@ func (o *Source) HasCaCertificatePath() bool {
 
 // SetCaCertificatePath gets a reference to the given string and assigns it to the CaCertificatePath field.
 func (o *Source) SetCaCertificatePath(v string) {
+
 	o.CaCertificatePath = &v
 }
 
@@ -180,6 +181,7 @@ func (o *Source) HasPassword() bool {
 
 // SetPassword gets a reference to the given string and assigns it to the Password field.
 func (o *Source) SetPassword(v string) {
+
 	o.Password = &v
 }
 
@@ -237,6 +239,7 @@ func (o *Source) HasUsername() bool {
 
 // SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *Source) SetUsername(v string) {
+
 	o.Username = &v
 }
 

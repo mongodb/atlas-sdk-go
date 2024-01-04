@@ -61,6 +61,7 @@ func (o *ExportStatus) HasExportedCollections() bool {
 
 // SetExportedCollections gets a reference to the given int and assigns it to the ExportedCollections field.
 func (o *ExportStatus) SetExportedCollections(v int) {
+
 	o.ExportedCollections = &v
 }
 
@@ -94,6 +95,7 @@ func (o *ExportStatus) HasTotalCollections() bool {
 
 // SetTotalCollections gets a reference to the given int and assigns it to the TotalCollections field.
 func (o *ExportStatus) SetTotalCollections(v int) {
+
 	o.TotalCollections = &v
 }
 

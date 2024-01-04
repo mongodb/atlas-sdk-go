@@ -20,7 +20,7 @@ type ApiHostViewAtlas struct {
 	// Date and time when MongoDB Cloud received the last ping for this MongoDB process. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	LastPing *time.Time `json:"lastPing,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []LinkAtlas `json:"links,omitempty"`
+	Links *[]LinkAtlas `json:"links,omitempty"`
 	// Internet Assigned Numbers Authority (IANA) port on which the MongoDB process listens for requests.
 	Port *int `json:"port,omitempty"`
 	// Human-readable label that identifies the replica set that contains this process. This resource returns this parameter if this process belongs to a replica set.
@@ -82,6 +82,7 @@ func (o *ApiHostViewAtlas) HasCreated() bool {
 
 // SetCreated gets a reference to the given time.Time and assigns it to the Created field.
 func (o *ApiHostViewAtlas) SetCreated(v time.Time) {
+
 	o.Created = &v
 }
 
@@ -115,6 +116,7 @@ func (o *ApiHostViewAtlas) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *ApiHostViewAtlas) SetGroupId(v string) {
+
 	o.GroupId = &v
 }
 
@@ -148,6 +150,7 @@ func (o *ApiHostViewAtlas) HasHostname() bool {
 
 // SetHostname gets a reference to the given string and assigns it to the Hostname field.
 func (o *ApiHostViewAtlas) SetHostname(v string) {
+
 	o.Hostname = &v
 }
 
@@ -181,6 +184,7 @@ func (o *ApiHostViewAtlas) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ApiHostViewAtlas) SetId(v string) {
+
 	o.Id = &v
 }
 
@@ -214,6 +218,7 @@ func (o *ApiHostViewAtlas) HasLastPing() bool {
 
 // SetLastPing gets a reference to the given time.Time and assigns it to the LastPing field.
 func (o *ApiHostViewAtlas) SetLastPing(v time.Time) {
+
 	o.LastPing = &v
 }
 
@@ -223,12 +228,12 @@ func (o *ApiHostViewAtlas) GetLinks() []LinkAtlas {
 		var ret []LinkAtlas
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiHostViewAtlas) GetLinksOk() ([]LinkAtlas, bool) {
+func (o *ApiHostViewAtlas) GetLinksOk() (*[]LinkAtlas, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -247,7 +252,8 @@ func (o *ApiHostViewAtlas) HasLinks() bool {
 
 // SetLinks gets a reference to the given []LinkAtlas and assigns it to the Links field.
 func (o *ApiHostViewAtlas) SetLinks(v []LinkAtlas) {
-	o.Links = v
+
+	o.Links = &v
 }
 
 // GetPort returns the Port field value if set, zero value otherwise
@@ -280,6 +286,7 @@ func (o *ApiHostViewAtlas) HasPort() bool {
 
 // SetPort gets a reference to the given int and assigns it to the Port field.
 func (o *ApiHostViewAtlas) SetPort(v int) {
+
 	o.Port = &v
 }
 
@@ -313,6 +320,7 @@ func (o *ApiHostViewAtlas) HasReplicaSetName() bool {
 
 // SetReplicaSetName gets a reference to the given string and assigns it to the ReplicaSetName field.
 func (o *ApiHostViewAtlas) SetReplicaSetName(v string) {
+
 	o.ReplicaSetName = &v
 }
 
@@ -346,6 +354,7 @@ func (o *ApiHostViewAtlas) HasShardName() bool {
 
 // SetShardName gets a reference to the given string and assigns it to the ShardName field.
 func (o *ApiHostViewAtlas) SetShardName(v string) {
+
 	o.ShardName = &v
 }
 
@@ -379,6 +388,7 @@ func (o *ApiHostViewAtlas) HasTypeName() bool {
 
 // SetTypeName gets a reference to the given string and assigns it to the TypeName field.
 func (o *ApiHostViewAtlas) SetTypeName(v string) {
+
 	o.TypeName = &v
 }
 
@@ -412,6 +422,7 @@ func (o *ApiHostViewAtlas) HasUserAlias() bool {
 
 // SetUserAlias gets a reference to the given string and assigns it to the UserAlias field.
 func (o *ApiHostViewAtlas) SetUserAlias(v string) {
+
 	o.UserAlias = &v
 }
 
@@ -445,6 +456,7 @@ func (o *ApiHostViewAtlas) HasVersion() bool {
 
 // SetVersion gets a reference to the given string and assigns it to the Version field.
 func (o *ApiHostViewAtlas) SetVersion(v string) {
+
 	o.Version = &v
 }
 

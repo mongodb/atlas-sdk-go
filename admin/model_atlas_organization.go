@@ -13,7 +13,7 @@ type AtlasOrganization struct {
 	// Flag that indicates whether this organization has been deleted.
 	IsDeleted *bool `json:"isDeleted,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Human-readable label that identifies the organization.
 	Name string `json:"name"`
 }
@@ -66,6 +66,7 @@ func (o *AtlasOrganization) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *AtlasOrganization) SetId(v string) {
+
 	o.Id = &v
 }
 
@@ -99,6 +100,7 @@ func (o *AtlasOrganization) HasIsDeleted() bool {
 
 // SetIsDeleted gets a reference to the given bool and assigns it to the IsDeleted field.
 func (o *AtlasOrganization) SetIsDeleted(v bool) {
+
 	o.IsDeleted = &v
 }
 
@@ -108,12 +110,12 @@ func (o *AtlasOrganization) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AtlasOrganization) GetLinksOk() ([]Link, bool) {
+func (o *AtlasOrganization) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -132,7 +134,8 @@ func (o *AtlasOrganization) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *AtlasOrganization) SetLinks(v []Link) {
-	o.Links = v
+
+	o.Links = &v
 }
 
 // GetName returns the Name field value

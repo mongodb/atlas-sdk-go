@@ -30,9 +30,9 @@ type LegacyAtlasTenantClusterUpgradeRequest struct {
 	Id *string `json:"id,omitempty"`
 	// Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels.  Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use [resource tags](https://dochub.mongodb.org/core/add-cluster-tag-atlas) instead.
 	// Deprecated
-	Labels []ComponentLabel `json:"labels,omitempty"`
+	Labels *[]ComponentLabel `json:"labels,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Major MongoDB version of the cluster. MongoDB Cloud deploys the cluster with the latest stable release of the specified version.
 	MongoDBMajorVersion *string `json:"mongoDBMajorVersion,omitempty"`
 	// Version of MongoDB that the cluster runs.
@@ -60,7 +60,7 @@ type LegacyAtlasTenantClusterUpgradeRequest struct {
 	// Physical location where MongoDB Cloud provisions cluster nodes.
 	ReplicationSpec *map[string]RegionSpec `json:"replicationSpec,omitempty"`
 	// List of settings that configure your cluster regions.  - For Global Clusters, each object in the array represents one zone where MongoDB Cloud deploys your clusters nodes. - For non-Global sharded clusters and replica sets, the single object represents where MongoDB Cloud deploys your clusters nodes.
-	ReplicationSpecs []LegacyReplicationSpec `json:"replicationSpecs,omitempty"`
+	ReplicationSpecs *[]LegacyReplicationSpec `json:"replicationSpecs,omitempty"`
 	// Root Certificate Authority that MongoDB Atlas clusters uses. MongoDB Cloud supports Internet Security Research Group.
 	RootCertType *string `json:"rootCertType,omitempty"`
 	// Connection string that you can use to connect to the cluster. The `+srv` modifier forces the connection to use Transport Layer Security (TLS). The `mongoURI` parameter lists additional options.
@@ -68,7 +68,7 @@ type LegacyAtlasTenantClusterUpgradeRequest struct {
 	// Human-readable label that indicates the current operating condition of the cluster.
 	StateName *string `json:"stateName,omitempty"`
 	// List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the cluster.
-	Tags []ResourceTag `json:"tags,omitempty"`
+	Tags *[]ResourceTag `json:"tags,omitempty"`
 	// Flag that indicates whether termination protection is enabled on the cluster. If set to `true`, MongoDB Cloud won't delete the cluster. If set to `false`, MongoDB Cloud will delete the cluster.
 	TerminationProtectionEnabled *bool `json:"terminationProtectionEnabled,omitempty"`
 	// Method by which the cluster maintains the MongoDB versions. If value is `CONTINUOUS`, you must not specify **mongoDBMajorVersion**.
@@ -147,6 +147,7 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasAcceptDataRisksAndForceRepli
 
 // SetAcceptDataRisksAndForceReplicaSetReconfig gets a reference to the given time.Time and assigns it to the AcceptDataRisksAndForceReplicaSetReconfig field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetAcceptDataRisksAndForceReplicaSetReconfig(v time.Time) {
+
 	o.AcceptDataRisksAndForceReplicaSetReconfig = &v
 }
 
@@ -180,6 +181,7 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasAutoScaling() bool {
 
 // SetAutoScaling gets a reference to the given ClusterAutoScalingSettings and assigns it to the AutoScaling field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetAutoScaling(v ClusterAutoScalingSettings) {
+
 	o.AutoScaling = &v
 }
 
@@ -213,6 +215,7 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasBackupEnabled() bool {
 
 // SetBackupEnabled gets a reference to the given bool and assigns it to the BackupEnabled field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetBackupEnabled(v bool) {
+
 	o.BackupEnabled = &v
 }
 
@@ -246,6 +249,7 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasBiConnector() bool {
 
 // SetBiConnector gets a reference to the given BiConnector and assigns it to the BiConnector field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetBiConnector(v BiConnector) {
+
 	o.BiConnector = &v
 }
 
@@ -279,6 +283,7 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasClusterType() bool {
 
 // SetClusterType gets a reference to the given string and assigns it to the ClusterType field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetClusterType(v string) {
+
 	o.ClusterType = &v
 }
 
@@ -312,6 +317,7 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasConnectionStrings() bool {
 
 // SetConnectionStrings gets a reference to the given ClusterConnectionStrings and assigns it to the ConnectionStrings field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetConnectionStrings(v ClusterConnectionStrings) {
+
 	o.ConnectionStrings = &v
 }
 
@@ -345,6 +351,7 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasCreateDate() bool {
 
 // SetCreateDate gets a reference to the given time.Time and assigns it to the CreateDate field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetCreateDate(v time.Time) {
+
 	o.CreateDate = &v
 }
 
@@ -378,6 +385,7 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasDiskSizeGB() bool {
 
 // SetDiskSizeGB gets a reference to the given float64 and assigns it to the DiskSizeGB field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetDiskSizeGB(v float64) {
+
 	o.DiskSizeGB = &v
 }
 
@@ -411,6 +419,7 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasEncryptionAtRestProvider() b
 
 // SetEncryptionAtRestProvider gets a reference to the given string and assigns it to the EncryptionAtRestProvider field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetEncryptionAtRestProvider(v string) {
+
 	o.EncryptionAtRestProvider = &v
 }
 
@@ -444,6 +453,7 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetGroupId(v string) {
+
 	o.GroupId = &v
 }
 
@@ -477,6 +487,7 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetId(v string) {
+
 	o.Id = &v
 }
 
@@ -487,13 +498,13 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) GetLabels() []ComponentLabel {
 		var ret []ComponentLabel
 		return ret
 	}
-	return o.Labels
+	return *o.Labels
 }
 
 // GetLabelsOk returns a tuple with the Labels field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // Deprecated
-func (o *LegacyAtlasTenantClusterUpgradeRequest) GetLabelsOk() ([]ComponentLabel, bool) {
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetLabelsOk() (*[]ComponentLabel, bool) {
 	if o == nil || IsNil(o.Labels) {
 		return nil, false
 	}
@@ -513,7 +524,8 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasLabels() bool {
 // SetLabels gets a reference to the given []ComponentLabel and assigns it to the Labels field.
 // Deprecated
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetLabels(v []ComponentLabel) {
-	o.Labels = v
+
+	o.Labels = &v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -522,12 +534,12 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LegacyAtlasTenantClusterUpgradeRequest) GetLinksOk() ([]Link, bool) {
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -546,7 +558,8 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetLinks(v []Link) {
-	o.Links = v
+
+	o.Links = &v
 }
 
 // GetMongoDBMajorVersion returns the MongoDBMajorVersion field value if set, zero value otherwise
@@ -579,6 +592,7 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasMongoDBMajorVersion() bool {
 
 // SetMongoDBMajorVersion gets a reference to the given string and assigns it to the MongoDBMajorVersion field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetMongoDBMajorVersion(v string) {
+
 	o.MongoDBMajorVersion = &v
 }
 
@@ -612,6 +626,7 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasMongoDBVersion() bool {
 
 // SetMongoDBVersion gets a reference to the given string and assigns it to the MongoDBVersion field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetMongoDBVersion(v string) {
+
 	o.MongoDBVersion = &v
 }
 
@@ -645,6 +660,7 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasMongoURI() bool {
 
 // SetMongoURI gets a reference to the given string and assigns it to the MongoURI field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetMongoURI(v string) {
+
 	o.MongoURI = &v
 }
 
@@ -678,6 +694,7 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasMongoURIUpdated() bool {
 
 // SetMongoURIUpdated gets a reference to the given time.Time and assigns it to the MongoURIUpdated field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetMongoURIUpdated(v time.Time) {
+
 	o.MongoURIUpdated = &v
 }
 
@@ -711,6 +728,7 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasMongoURIWithOptions() bool {
 
 // SetMongoURIWithOptions gets a reference to the given string and assigns it to the MongoURIWithOptions field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetMongoURIWithOptions(v string) {
+
 	o.MongoURIWithOptions = &v
 }
 
@@ -768,6 +786,7 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasNumShards() bool {
 
 // SetNumShards gets a reference to the given int and assigns it to the NumShards field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetNumShards(v int) {
+
 	o.NumShards = &v
 }
 
@@ -801,6 +820,7 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasPaused() bool {
 
 // SetPaused gets a reference to the given bool and assigns it to the Paused field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetPaused(v bool) {
+
 	o.Paused = &v
 }
 
@@ -834,6 +854,7 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasPitEnabled() bool {
 
 // SetPitEnabled gets a reference to the given bool and assigns it to the PitEnabled field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetPitEnabled(v bool) {
+
 	o.PitEnabled = &v
 }
 
@@ -867,6 +888,7 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasProviderBackupEnabled() bool
 
 // SetProviderBackupEnabled gets a reference to the given bool and assigns it to the ProviderBackupEnabled field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetProviderBackupEnabled(v bool) {
+
 	o.ProviderBackupEnabled = &v
 }
 
@@ -900,6 +922,7 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasProviderSettings() bool {
 
 // SetProviderSettings gets a reference to the given ClusterProviderSettings and assigns it to the ProviderSettings field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetProviderSettings(v ClusterProviderSettings) {
+
 	o.ProviderSettings = &v
 }
 
@@ -936,6 +959,7 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasReplicationFactor() bool {
 // SetReplicationFactor gets a reference to the given int and assigns it to the ReplicationFactor field.
 // Deprecated
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetReplicationFactor(v int) {
+
 	o.ReplicationFactor = &v
 }
 
@@ -969,6 +993,7 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasReplicationSpec() bool {
 
 // SetReplicationSpec gets a reference to the given map[string]RegionSpec and assigns it to the ReplicationSpec field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetReplicationSpec(v map[string]RegionSpec) {
+
 	o.ReplicationSpec = &v
 }
 
@@ -978,12 +1003,12 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) GetReplicationSpecs() []LegacyR
 		var ret []LegacyReplicationSpec
 		return ret
 	}
-	return o.ReplicationSpecs
+	return *o.ReplicationSpecs
 }
 
 // GetReplicationSpecsOk returns a tuple with the ReplicationSpecs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LegacyAtlasTenantClusterUpgradeRequest) GetReplicationSpecsOk() ([]LegacyReplicationSpec, bool) {
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetReplicationSpecsOk() (*[]LegacyReplicationSpec, bool) {
 	if o == nil || IsNil(o.ReplicationSpecs) {
 		return nil, false
 	}
@@ -1002,7 +1027,8 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasReplicationSpecs() bool {
 
 // SetReplicationSpecs gets a reference to the given []LegacyReplicationSpec and assigns it to the ReplicationSpecs field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetReplicationSpecs(v []LegacyReplicationSpec) {
-	o.ReplicationSpecs = v
+
+	o.ReplicationSpecs = &v
 }
 
 // GetRootCertType returns the RootCertType field value if set, zero value otherwise
@@ -1035,6 +1061,7 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasRootCertType() bool {
 
 // SetRootCertType gets a reference to the given string and assigns it to the RootCertType field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetRootCertType(v string) {
+
 	o.RootCertType = &v
 }
 
@@ -1068,6 +1095,7 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasSrvAddress() bool {
 
 // SetSrvAddress gets a reference to the given string and assigns it to the SrvAddress field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetSrvAddress(v string) {
+
 	o.SrvAddress = &v
 }
 
@@ -1101,6 +1129,7 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasStateName() bool {
 
 // SetStateName gets a reference to the given string and assigns it to the StateName field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetStateName(v string) {
+
 	o.StateName = &v
 }
 
@@ -1110,12 +1139,12 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) GetTags() []ResourceTag {
 		var ret []ResourceTag
 		return ret
 	}
-	return o.Tags
+	return *o.Tags
 }
 
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LegacyAtlasTenantClusterUpgradeRequest) GetTagsOk() ([]ResourceTag, bool) {
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetTagsOk() (*[]ResourceTag, bool) {
 	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
@@ -1134,7 +1163,8 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasTags() bool {
 
 // SetTags gets a reference to the given []ResourceTag and assigns it to the Tags field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetTags(v []ResourceTag) {
-	o.Tags = v
+
+	o.Tags = &v
 }
 
 // GetTerminationProtectionEnabled returns the TerminationProtectionEnabled field value if set, zero value otherwise
@@ -1167,6 +1197,7 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasTerminationProtectionEnabled
 
 // SetTerminationProtectionEnabled gets a reference to the given bool and assigns it to the TerminationProtectionEnabled field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetTerminationProtectionEnabled(v bool) {
+
 	o.TerminationProtectionEnabled = &v
 }
 
@@ -1200,6 +1231,7 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasVersionReleaseSystem() bool 
 
 // SetVersionReleaseSystem gets a reference to the given string and assigns it to the VersionReleaseSystem field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetVersionReleaseSystem(v string) {
+
 	o.VersionReleaseSystem = &v
 }
 

@@ -96,6 +96,7 @@ func (o *OnlineArchiveSchedule) HasEndHour() bool {
 
 // SetEndHour gets a reference to the given int and assigns it to the EndHour field.
 func (o *OnlineArchiveSchedule) SetEndHour(v int) {
+
 	o.EndHour = &v
 }
 
@@ -129,6 +130,7 @@ func (o *OnlineArchiveSchedule) HasEndMinute() bool {
 
 // SetEndMinute gets a reference to the given int and assigns it to the EndMinute field.
 func (o *OnlineArchiveSchedule) SetEndMinute(v int) {
+
 	o.EndMinute = &v
 }
 
@@ -162,6 +164,7 @@ func (o *OnlineArchiveSchedule) HasStartHour() bool {
 
 // SetStartHour gets a reference to the given int and assigns it to the StartHour field.
 func (o *OnlineArchiveSchedule) SetStartHour(v int) {
+
 	o.StartHour = &v
 }
 
@@ -195,6 +198,7 @@ func (o *OnlineArchiveSchedule) HasStartMinute() bool {
 
 // SetStartMinute gets a reference to the given int and assigns it to the StartMinute field.
 func (o *OnlineArchiveSchedule) SetStartMinute(v int) {
+
 	o.StartMinute = &v
 }
 
@@ -228,6 +232,7 @@ func (o *OnlineArchiveSchedule) HasDayOfWeek() bool {
 
 // SetDayOfWeek gets a reference to the given int and assigns it to the DayOfWeek field.
 func (o *OnlineArchiveSchedule) SetDayOfWeek(v int) {
+
 	o.DayOfWeek = &v
 }
 
@@ -261,6 +266,7 @@ func (o *OnlineArchiveSchedule) HasDayOfMonth() bool {
 
 // SetDayOfMonth gets a reference to the given int and assigns it to the DayOfMonth field.
 func (o *OnlineArchiveSchedule) SetDayOfMonth(v int) {
+
 	o.DayOfMonth = &v
 }
 

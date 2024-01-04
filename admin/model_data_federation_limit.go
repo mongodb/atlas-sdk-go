@@ -74,6 +74,7 @@ func (o *DataFederationLimit) HasCurrentUsage() bool {
 
 // SetCurrentUsage gets a reference to the given int64 and assigns it to the CurrentUsage field.
 func (o *DataFederationLimit) SetCurrentUsage(v int64) {
+
 	o.CurrentUsage = &v
 }
 
@@ -107,6 +108,7 @@ func (o *DataFederationLimit) HasDefaultLimit() bool {
 
 // SetDefaultLimit gets a reference to the given int64 and assigns it to the DefaultLimit field.
 func (o *DataFederationLimit) SetDefaultLimit(v int64) {
+
 	o.DefaultLimit = &v
 }
 
@@ -140,6 +142,7 @@ func (o *DataFederationLimit) HasMaximumLimit() bool {
 
 // SetMaximumLimit gets a reference to the given int64 and assigns it to the MaximumLimit field.
 func (o *DataFederationLimit) SetMaximumLimit(v int64) {
+
 	o.MaximumLimit = &v
 }
 
@@ -221,6 +224,7 @@ func (o *DataFederationLimit) HasLastModifiedDate() bool {
 
 // SetLastModifiedDate gets a reference to the given time.Time and assigns it to the LastModifiedDate field.
 func (o *DataFederationLimit) SetLastModifiedDate(v time.Time) {
+
 	o.LastModifiedDate = &v
 }
 
@@ -254,6 +258,7 @@ func (o *DataFederationLimit) HasOverrunPolicy() bool {
 
 // SetOverrunPolicy gets a reference to the given string and assigns it to the OverrunPolicy field.
 func (o *DataFederationLimit) SetOverrunPolicy(v string) {
+
 	o.OverrunPolicy = &v
 }
 

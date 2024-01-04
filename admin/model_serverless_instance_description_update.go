@@ -10,7 +10,7 @@ import (
 type ServerlessInstanceDescriptionUpdate struct {
 	ServerlessBackupOptions *ClusterServerlessBackupOptions `json:"serverlessBackupOptions,omitempty"`
 	// List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the serverless instance.
-	Tags []ResourceTag `json:"tags,omitempty"`
+	Tags *[]ResourceTag `json:"tags,omitempty"`
 	// Flag that indicates whether termination protection is enabled on the serverless instance. If set to `true`, MongoDB Cloud won't delete the serverless instance. If set to `false`, MongoDB Cloud will delete the serverless instance.
 	TerminationProtectionEnabled *bool `json:"terminationProtectionEnabled,omitempty"`
 }
@@ -66,6 +66,7 @@ func (o *ServerlessInstanceDescriptionUpdate) HasServerlessBackupOptions() bool 
 
 // SetServerlessBackupOptions gets a reference to the given ClusterServerlessBackupOptions and assigns it to the ServerlessBackupOptions field.
 func (o *ServerlessInstanceDescriptionUpdate) SetServerlessBackupOptions(v ClusterServerlessBackupOptions) {
+
 	o.ServerlessBackupOptions = &v
 }
 
@@ -75,12 +76,12 @@ func (o *ServerlessInstanceDescriptionUpdate) GetTags() []ResourceTag {
 		var ret []ResourceTag
 		return ret
 	}
-	return o.Tags
+	return *o.Tags
 }
 
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServerlessInstanceDescriptionUpdate) GetTagsOk() ([]ResourceTag, bool) {
+func (o *ServerlessInstanceDescriptionUpdate) GetTagsOk() (*[]ResourceTag, bool) {
 	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
@@ -99,7 +100,8 @@ func (o *ServerlessInstanceDescriptionUpdate) HasTags() bool {
 
 // SetTags gets a reference to the given []ResourceTag and assigns it to the Tags field.
 func (o *ServerlessInstanceDescriptionUpdate) SetTags(v []ResourceTag) {
-	o.Tags = v
+
+	o.Tags = &v
 }
 
 // GetTerminationProtectionEnabled returns the TerminationProtectionEnabled field value if set, zero value otherwise
@@ -132,6 +134,7 @@ func (o *ServerlessInstanceDescriptionUpdate) HasTerminationProtectionEnabled() 
 
 // SetTerminationProtectionEnabled gets a reference to the given bool and assigns it to the TerminationProtectionEnabled field.
 func (o *ServerlessInstanceDescriptionUpdate) SetTerminationProtectionEnabled(v bool) {
+
 	o.TerminationProtectionEnabled = &v
 }
 

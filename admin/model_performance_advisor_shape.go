@@ -19,7 +19,7 @@ type PerformanceAdvisorShape struct {
 	// Human-readable label that identifies the namespace on the specified host. The resource expresses this parameter value as `<database>.<collection>`.
 	Namespace *string `json:"namespace,omitempty"`
 	// List that contains specific about individual queries.
-	Operations []PerformanceAdvisorOperation `json:"operations,omitempty"`
+	Operations *[]PerformanceAdvisorOperation `json:"operations,omitempty"`
 }
 
 // NewPerformanceAdvisorShape instantiates a new PerformanceAdvisorShape object
@@ -69,6 +69,7 @@ func (o *PerformanceAdvisorShape) HasAvgMs() bool {
 
 // SetAvgMs gets a reference to the given int64 and assigns it to the AvgMs field.
 func (o *PerformanceAdvisorShape) SetAvgMs(v int64) {
+
 	o.AvgMs = &v
 }
 
@@ -102,6 +103,7 @@ func (o *PerformanceAdvisorShape) HasCount() bool {
 
 // SetCount gets a reference to the given int64 and assigns it to the Count field.
 func (o *PerformanceAdvisorShape) SetCount(v int64) {
+
 	o.Count = &v
 }
 
@@ -135,6 +137,7 @@ func (o *PerformanceAdvisorShape) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *PerformanceAdvisorShape) SetId(v string) {
+
 	o.Id = &v
 }
 
@@ -168,6 +171,7 @@ func (o *PerformanceAdvisorShape) HasInefficiencyScore() bool {
 
 // SetInefficiencyScore gets a reference to the given int64 and assigns it to the InefficiencyScore field.
 func (o *PerformanceAdvisorShape) SetInefficiencyScore(v int64) {
+
 	o.InefficiencyScore = &v
 }
 
@@ -201,6 +205,7 @@ func (o *PerformanceAdvisorShape) HasNamespace() bool {
 
 // SetNamespace gets a reference to the given string and assigns it to the Namespace field.
 func (o *PerformanceAdvisorShape) SetNamespace(v string) {
+
 	o.Namespace = &v
 }
 
@@ -210,12 +215,12 @@ func (o *PerformanceAdvisorShape) GetOperations() []PerformanceAdvisorOperation 
 		var ret []PerformanceAdvisorOperation
 		return ret
 	}
-	return o.Operations
+	return *o.Operations
 }
 
 // GetOperationsOk returns a tuple with the Operations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PerformanceAdvisorShape) GetOperationsOk() ([]PerformanceAdvisorOperation, bool) {
+func (o *PerformanceAdvisorShape) GetOperationsOk() (*[]PerformanceAdvisorOperation, bool) {
 	if o == nil || IsNil(o.Operations) {
 		return nil, false
 	}
@@ -234,7 +239,8 @@ func (o *PerformanceAdvisorShape) HasOperations() bool {
 
 // SetOperations gets a reference to the given []PerformanceAdvisorOperation and assigns it to the Operations field.
 func (o *PerformanceAdvisorShape) SetOperations(v []PerformanceAdvisorOperation) {
-	o.Operations = v
+
+	o.Operations = &v
 }
 
 func (o PerformanceAdvisorShape) MarshalJSONWithoutReadOnly() ([]byte, error) {

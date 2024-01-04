@@ -67,6 +67,7 @@ func (o *GreaterThanRawThreshold) HasOperator() bool {
 
 // SetOperator gets a reference to the given string and assigns it to the Operator field.
 func (o *GreaterThanRawThreshold) SetOperator(v string) {
+
 	o.Operator = &v
 }
 
@@ -100,6 +101,7 @@ func (o *GreaterThanRawThreshold) HasThreshold() bool {
 
 // SetThreshold gets a reference to the given int and assigns it to the Threshold field.
 func (o *GreaterThanRawThreshold) SetThreshold(v int) {
+
 	o.Threshold = &v
 }
 
@@ -133,6 +135,7 @@ func (o *GreaterThanRawThreshold) HasUnits() bool {
 
 // SetUnits gets a reference to the given string and assigns it to the Units field.
 func (o *GreaterThanRawThreshold) SetUnits(v string) {
+
 	o.Units = &v
 }
 

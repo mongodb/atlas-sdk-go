@@ -11,14 +11,14 @@ type LDAPVerifyConnectivityJobRequest struct {
 	// Unique 24-hexadecimal digit string that identifies the project associated with this Lightweight Directory Access Protocol (LDAP) over Transport Layer Security (TLS) configuration.
 	GroupId *string `json:"groupId,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links   []Link                                  `json:"links,omitempty"`
+	Links   *[]Link                                 `json:"links,omitempty"`
 	Request *LDAPVerifyConnectivityJobRequestParams `json:"request,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies this request to verify an Lightweight Directory Access Protocol (LDAP) configuration.
 	RequestId *string `json:"requestId,omitempty"`
 	// Human-readable string that indicates the status of the Lightweight Directory Access Protocol (LDAP) over Transport Layer Security (TLS) configuration.
 	Status *string `json:"status,omitempty"`
 	// List that contains the validation messages related to the verification of the provided Lightweight Directory Access Protocol (LDAP) over Transport Layer Security (TLS) configuration details. The list contains a document for each test that MongoDB Cloud runs. MongoDB Cloud stops running tests after the first failure.
-	Validations []LDAPVerifyConnectivityJobRequestValidation `json:"validations,omitempty"`
+	Validations *[]LDAPVerifyConnectivityJobRequestValidation `json:"validations,omitempty"`
 }
 
 // NewLDAPVerifyConnectivityJobRequest instantiates a new LDAPVerifyConnectivityJobRequest object
@@ -68,6 +68,7 @@ func (o *LDAPVerifyConnectivityJobRequest) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *LDAPVerifyConnectivityJobRequest) SetGroupId(v string) {
+
 	o.GroupId = &v
 }
 
@@ -77,12 +78,12 @@ func (o *LDAPVerifyConnectivityJobRequest) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LDAPVerifyConnectivityJobRequest) GetLinksOk() ([]Link, bool) {
+func (o *LDAPVerifyConnectivityJobRequest) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -101,7 +102,8 @@ func (o *LDAPVerifyConnectivityJobRequest) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *LDAPVerifyConnectivityJobRequest) SetLinks(v []Link) {
-	o.Links = v
+
+	o.Links = &v
 }
 
 // GetRequest returns the Request field value if set, zero value otherwise
@@ -134,6 +136,7 @@ func (o *LDAPVerifyConnectivityJobRequest) HasRequest() bool {
 
 // SetRequest gets a reference to the given LDAPVerifyConnectivityJobRequestParams and assigns it to the Request field.
 func (o *LDAPVerifyConnectivityJobRequest) SetRequest(v LDAPVerifyConnectivityJobRequestParams) {
+
 	o.Request = &v
 }
 
@@ -167,6 +170,7 @@ func (o *LDAPVerifyConnectivityJobRequest) HasRequestId() bool {
 
 // SetRequestId gets a reference to the given string and assigns it to the RequestId field.
 func (o *LDAPVerifyConnectivityJobRequest) SetRequestId(v string) {
+
 	o.RequestId = &v
 }
 
@@ -200,6 +204,7 @@ func (o *LDAPVerifyConnectivityJobRequest) HasStatus() bool {
 
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *LDAPVerifyConnectivityJobRequest) SetStatus(v string) {
+
 	o.Status = &v
 }
 
@@ -209,12 +214,12 @@ func (o *LDAPVerifyConnectivityJobRequest) GetValidations() []LDAPVerifyConnecti
 		var ret []LDAPVerifyConnectivityJobRequestValidation
 		return ret
 	}
-	return o.Validations
+	return *o.Validations
 }
 
 // GetValidationsOk returns a tuple with the Validations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LDAPVerifyConnectivityJobRequest) GetValidationsOk() ([]LDAPVerifyConnectivityJobRequestValidation, bool) {
+func (o *LDAPVerifyConnectivityJobRequest) GetValidationsOk() (*[]LDAPVerifyConnectivityJobRequestValidation, bool) {
 	if o == nil || IsNil(o.Validations) {
 		return nil, false
 	}
@@ -233,7 +238,8 @@ func (o *LDAPVerifyConnectivityJobRequest) HasValidations() bool {
 
 // SetValidations gets a reference to the given []LDAPVerifyConnectivityJobRequestValidation and assigns it to the Validations field.
 func (o *LDAPVerifyConnectivityJobRequest) SetValidations(v []LDAPVerifyConnectivityJobRequestValidation) {
-	o.Validations = v
+
+	o.Validations = &v
 }
 
 func (o LDAPVerifyConnectivityJobRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {

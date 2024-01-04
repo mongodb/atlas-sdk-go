@@ -60,9 +60,8 @@ func update(current *admin.CloudDatabaseUser) *admin.CloudDatabaseUser {
 	current.GroupId = "groupId"
 	current.Username = "user"
 	current.Password = admin.PtrString("password")
-	current.Scopes = make([]admin.UserScope, 0)
-	current.Roles = make([]admin.DatabaseUserRole, 0)
-	current.Roles = append(current.Roles, *admin.NewDatabaseUserRole(AdminDB, "readWrite"))
+	current.Scopes = &[]admin.UserScope{}
+	current.Roles = &[]admin.DatabaseUserRole{*admin.NewDatabaseUserRole(AdminDB, "readWrite")}
 	current.DatabaseName = getAuthDB(current)
 	return current
 }

@@ -75,6 +75,7 @@ func (o *MongoDBAccessLogs) HasAuthResult() bool {
 
 // SetAuthResult gets a reference to the given bool and assigns it to the AuthResult field.
 func (o *MongoDBAccessLogs) SetAuthResult(v bool) {
+
 	o.AuthResult = &v
 }
 
@@ -108,6 +109,7 @@ func (o *MongoDBAccessLogs) HasAuthSource() bool {
 
 // SetAuthSource gets a reference to the given string and assigns it to the AuthSource field.
 func (o *MongoDBAccessLogs) SetAuthSource(v string) {
+
 	o.AuthSource = &v
 }
 
@@ -141,6 +143,7 @@ func (o *MongoDBAccessLogs) HasFailureReason() bool {
 
 // SetFailureReason gets a reference to the given string and assigns it to the FailureReason field.
 func (o *MongoDBAccessLogs) SetFailureReason(v string) {
+
 	o.FailureReason = &v
 }
 
@@ -174,6 +177,7 @@ func (o *MongoDBAccessLogs) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *MongoDBAccessLogs) SetGroupId(v string) {
+
 	o.GroupId = &v
 }
 
@@ -207,6 +211,7 @@ func (o *MongoDBAccessLogs) HasHostname() bool {
 
 // SetHostname gets a reference to the given string and assigns it to the Hostname field.
 func (o *MongoDBAccessLogs) SetHostname(v string) {
+
 	o.Hostname = &v
 }
 
@@ -240,6 +245,7 @@ func (o *MongoDBAccessLogs) HasIpAddress() bool {
 
 // SetIpAddress gets a reference to the given string and assigns it to the IpAddress field.
 func (o *MongoDBAccessLogs) SetIpAddress(v string) {
+
 	o.IpAddress = &v
 }
 
@@ -273,6 +279,7 @@ func (o *MongoDBAccessLogs) HasLogLine() bool {
 
 // SetLogLine gets a reference to the given string and assigns it to the LogLine field.
 func (o *MongoDBAccessLogs) SetLogLine(v string) {
+
 	o.LogLine = &v
 }
 
@@ -306,6 +313,7 @@ func (o *MongoDBAccessLogs) HasTimestamp() bool {
 
 // SetTimestamp gets a reference to the given string and assigns it to the Timestamp field.
 func (o *MongoDBAccessLogs) SetTimestamp(v string) {
+
 	o.Timestamp = &v
 }
 
@@ -339,6 +347,7 @@ func (o *MongoDBAccessLogs) HasUsername() bool {
 
 // SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *MongoDBAccessLogs) SetUsername(v string) {
+
 	o.Username = &v
 }
 

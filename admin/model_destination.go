@@ -142,6 +142,7 @@ func (o *Destination) HasPrivateLinkId() bool {
 
 // SetPrivateLinkId gets a reference to the given string and assigns it to the PrivateLinkId field.
 func (o *Destination) SetPrivateLinkId(v string) {
+
 	o.PrivateLinkId = &v
 }
 

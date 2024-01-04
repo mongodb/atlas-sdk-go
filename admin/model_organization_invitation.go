@@ -12,22 +12,22 @@ type OrganizationInvitation struct {
 	// Date and time when MongoDB Cloud sent the invitation. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// Date and time when the invitation from MongoDB Cloud expires. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
-	ExpiresAt            *time.Time  `json:"expiresAt,omitempty"`
-	GroupRoleAssignments []GroupRole `json:"groupRoleAssignments,omitempty"`
+	ExpiresAt            *time.Time   `json:"expiresAt,omitempty"`
+	GroupRoleAssignments *[]GroupRole `json:"groupRoleAssignments,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies this organization.
 	Id *string `json:"id,omitempty"`
 	// Email address of the MongoDB Cloud user who sent the invitation to join the organization.
 	InviterUsername *string `json:"inviterUsername,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the organization.
 	OrgId *string `json:"orgId,omitempty"`
 	// Human-readable label that identifies this organization.
 	OrgName string `json:"orgName"`
 	// One or more organization or project level roles to assign to the MongoDB Cloud user.
-	Roles []string `json:"roles,omitempty"`
+	Roles *[]string `json:"roles,omitempty"`
 	// List of unique 24-hexadecimal digit strings that identifies each team.
-	TeamIds []string `json:"teamIds,omitempty"`
+	TeamIds *[]string `json:"teamIds,omitempty"`
 	// Email address of the MongoDB Cloud user invited to join the organization.
 	Username *string `json:"username,omitempty"`
 }
@@ -80,6 +80,7 @@ func (o *OrganizationInvitation) HasCreatedAt() bool {
 
 // SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
 func (o *OrganizationInvitation) SetCreatedAt(v time.Time) {
+
 	o.CreatedAt = &v
 }
 
@@ -113,6 +114,7 @@ func (o *OrganizationInvitation) HasExpiresAt() bool {
 
 // SetExpiresAt gets a reference to the given time.Time and assigns it to the ExpiresAt field.
 func (o *OrganizationInvitation) SetExpiresAt(v time.Time) {
+
 	o.ExpiresAt = &v
 }
 
@@ -122,12 +124,12 @@ func (o *OrganizationInvitation) GetGroupRoleAssignments() []GroupRole {
 		var ret []GroupRole
 		return ret
 	}
-	return o.GroupRoleAssignments
+	return *o.GroupRoleAssignments
 }
 
 // GetGroupRoleAssignmentsOk returns a tuple with the GroupRoleAssignments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrganizationInvitation) GetGroupRoleAssignmentsOk() ([]GroupRole, bool) {
+func (o *OrganizationInvitation) GetGroupRoleAssignmentsOk() (*[]GroupRole, bool) {
 	if o == nil || IsNil(o.GroupRoleAssignments) {
 		return nil, false
 	}
@@ -146,7 +148,8 @@ func (o *OrganizationInvitation) HasGroupRoleAssignments() bool {
 
 // SetGroupRoleAssignments gets a reference to the given []GroupRole and assigns it to the GroupRoleAssignments field.
 func (o *OrganizationInvitation) SetGroupRoleAssignments(v []GroupRole) {
-	o.GroupRoleAssignments = v
+
+	o.GroupRoleAssignments = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise
@@ -179,6 +182,7 @@ func (o *OrganizationInvitation) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *OrganizationInvitation) SetId(v string) {
+
 	o.Id = &v
 }
 
@@ -212,6 +216,7 @@ func (o *OrganizationInvitation) HasInviterUsername() bool {
 
 // SetInviterUsername gets a reference to the given string and assigns it to the InviterUsername field.
 func (o *OrganizationInvitation) SetInviterUsername(v string) {
+
 	o.InviterUsername = &v
 }
 
@@ -221,12 +226,12 @@ func (o *OrganizationInvitation) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrganizationInvitation) GetLinksOk() ([]Link, bool) {
+func (o *OrganizationInvitation) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -245,7 +250,8 @@ func (o *OrganizationInvitation) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *OrganizationInvitation) SetLinks(v []Link) {
-	o.Links = v
+
+	o.Links = &v
 }
 
 // GetOrgId returns the OrgId field value if set, zero value otherwise
@@ -278,6 +284,7 @@ func (o *OrganizationInvitation) HasOrgId() bool {
 
 // SetOrgId gets a reference to the given string and assigns it to the OrgId field.
 func (o *OrganizationInvitation) SetOrgId(v string) {
+
 	o.OrgId = &v
 }
 
@@ -311,12 +318,12 @@ func (o *OrganizationInvitation) GetRoles() []string {
 		var ret []string
 		return ret
 	}
-	return o.Roles
+	return *o.Roles
 }
 
 // GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrganizationInvitation) GetRolesOk() ([]string, bool) {
+func (o *OrganizationInvitation) GetRolesOk() (*[]string, bool) {
 	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
@@ -335,7 +342,8 @@ func (o *OrganizationInvitation) HasRoles() bool {
 
 // SetRoles gets a reference to the given []string and assigns it to the Roles field.
 func (o *OrganizationInvitation) SetRoles(v []string) {
-	o.Roles = v
+
+	o.Roles = &v
 }
 
 // GetTeamIds returns the TeamIds field value if set, zero value otherwise
@@ -344,12 +352,12 @@ func (o *OrganizationInvitation) GetTeamIds() []string {
 		var ret []string
 		return ret
 	}
-	return o.TeamIds
+	return *o.TeamIds
 }
 
 // GetTeamIdsOk returns a tuple with the TeamIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrganizationInvitation) GetTeamIdsOk() ([]string, bool) {
+func (o *OrganizationInvitation) GetTeamIdsOk() (*[]string, bool) {
 	if o == nil || IsNil(o.TeamIds) {
 		return nil, false
 	}
@@ -368,7 +376,8 @@ func (o *OrganizationInvitation) HasTeamIds() bool {
 
 // SetTeamIds gets a reference to the given []string and assigns it to the TeamIds field.
 func (o *OrganizationInvitation) SetTeamIds(v []string) {
-	o.TeamIds = v
+
+	o.TeamIds = &v
 }
 
 // GetUsername returns the Username field value if set, zero value otherwise
@@ -401,6 +410,7 @@ func (o *OrganizationInvitation) HasUsername() bool {
 
 // SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *OrganizationInvitation) SetUsername(v string) {
+
 	o.Username = &v
 }
 

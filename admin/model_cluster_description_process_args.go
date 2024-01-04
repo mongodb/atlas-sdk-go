@@ -124,6 +124,7 @@ func (o *ClusterDescriptionProcessArgs) HasChunkMigrationConcurrency() bool {
 
 // SetChunkMigrationConcurrency gets a reference to the given int and assigns it to the ChunkMigrationConcurrency field.
 func (o *ClusterDescriptionProcessArgs) SetChunkMigrationConcurrency(v int) {
+
 	o.ChunkMigrationConcurrency = &v
 }
 
@@ -157,6 +158,7 @@ func (o *ClusterDescriptionProcessArgs) HasDefaultReadConcern() bool {
 
 // SetDefaultReadConcern gets a reference to the given string and assigns it to the DefaultReadConcern field.
 func (o *ClusterDescriptionProcessArgs) SetDefaultReadConcern(v string) {
+
 	o.DefaultReadConcern = &v
 }
 
@@ -190,6 +192,7 @@ func (o *ClusterDescriptionProcessArgs) HasDefaultWriteConcern() bool {
 
 // SetDefaultWriteConcern gets a reference to the given string and assigns it to the DefaultWriteConcern field.
 func (o *ClusterDescriptionProcessArgs) SetDefaultWriteConcern(v string) {
+
 	o.DefaultWriteConcern = &v
 }
 
@@ -226,6 +229,7 @@ func (o *ClusterDescriptionProcessArgs) HasFailIndexKeyTooLong() bool {
 // SetFailIndexKeyTooLong gets a reference to the given bool and assigns it to the FailIndexKeyTooLong field.
 // Deprecated
 func (o *ClusterDescriptionProcessArgs) SetFailIndexKeyTooLong(v bool) {
+
 	o.FailIndexKeyTooLong = &v
 }
 
@@ -259,6 +263,7 @@ func (o *ClusterDescriptionProcessArgs) HasJavascriptEnabled() bool {
 
 // SetJavascriptEnabled gets a reference to the given bool and assigns it to the JavascriptEnabled field.
 func (o *ClusterDescriptionProcessArgs) SetJavascriptEnabled(v bool) {
+
 	o.JavascriptEnabled = &v
 }
 
@@ -292,6 +297,7 @@ func (o *ClusterDescriptionProcessArgs) HasMinimumEnabledTlsProtocol() bool {
 
 // SetMinimumEnabledTlsProtocol gets a reference to the given string and assigns it to the MinimumEnabledTlsProtocol field.
 func (o *ClusterDescriptionProcessArgs) SetMinimumEnabledTlsProtocol(v string) {
+
 	o.MinimumEnabledTlsProtocol = &v
 }
 
@@ -325,6 +331,7 @@ func (o *ClusterDescriptionProcessArgs) HasNoTableScan() bool {
 
 // SetNoTableScan gets a reference to the given bool and assigns it to the NoTableScan field.
 func (o *ClusterDescriptionProcessArgs) SetNoTableScan(v bool) {
+
 	o.NoTableScan = &v
 }
 
@@ -358,6 +365,7 @@ func (o *ClusterDescriptionProcessArgs) HasOplogMinRetentionHours() bool {
 
 // SetOplogMinRetentionHours gets a reference to the given float64 and assigns it to the OplogMinRetentionHours field.
 func (o *ClusterDescriptionProcessArgs) SetOplogMinRetentionHours(v float64) {
+
 	o.OplogMinRetentionHours = &v
 }
 
@@ -391,6 +399,7 @@ func (o *ClusterDescriptionProcessArgs) HasOplogSizeMB() bool {
 
 // SetOplogSizeMB gets a reference to the given int and assigns it to the OplogSizeMB field.
 func (o *ClusterDescriptionProcessArgs) SetOplogSizeMB(v int) {
+
 	o.OplogSizeMB = &v
 }
 
@@ -424,6 +433,7 @@ func (o *ClusterDescriptionProcessArgs) HasQueryStatsLogVerbosity() bool {
 
 // SetQueryStatsLogVerbosity gets a reference to the given int and assigns it to the QueryStatsLogVerbosity field.
 func (o *ClusterDescriptionProcessArgs) SetQueryStatsLogVerbosity(v int) {
+
 	o.QueryStatsLogVerbosity = &v
 }
 
@@ -457,6 +467,7 @@ func (o *ClusterDescriptionProcessArgs) HasSampleRefreshIntervalBIConnector() bo
 
 // SetSampleRefreshIntervalBIConnector gets a reference to the given int and assigns it to the SampleRefreshIntervalBIConnector field.
 func (o *ClusterDescriptionProcessArgs) SetSampleRefreshIntervalBIConnector(v int) {
+
 	o.SampleRefreshIntervalBIConnector = &v
 }
 
@@ -490,6 +501,7 @@ func (o *ClusterDescriptionProcessArgs) HasSampleSizeBIConnector() bool {
 
 // SetSampleSizeBIConnector gets a reference to the given int and assigns it to the SampleSizeBIConnector field.
 func (o *ClusterDescriptionProcessArgs) SetSampleSizeBIConnector(v int) {
+
 	o.SampleSizeBIConnector = &v
 }
 
@@ -523,6 +535,7 @@ func (o *ClusterDescriptionProcessArgs) HasTransactionLifetimeLimitSeconds() boo
 
 // SetTransactionLifetimeLimitSeconds gets a reference to the given int64 and assigns it to the TransactionLifetimeLimitSeconds field.
 func (o *ClusterDescriptionProcessArgs) SetTransactionLifetimeLimitSeconds(v int64) {
+
 	o.TransactionLifetimeLimitSeconds = &v
 }
 

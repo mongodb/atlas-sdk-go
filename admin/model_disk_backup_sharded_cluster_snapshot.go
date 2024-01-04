@@ -20,17 +20,17 @@ type DiskBackupShardedClusterSnapshot struct {
 	// Unique 24-hexadecimal digit string that identifies the snapshot.
 	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Unique string that identifies the Amazon Web Services (AWS) Key Management Service (KMS) Customer Master Key (CMK) used to encrypt the snapshot. The resource returns this value when `\"encryptionEnabled\" : true`.
 	MasterKeyUUID *string `json:"masterKeyUUID,omitempty"`
 	// List that includes the snapshots and the cloud provider that stores the snapshots. The resource returns this parameter when `\"type\" : \"SHARDED_CLUSTER\"`.
-	Members []DiskBackupShardedClusterSnapshotMember `json:"members,omitempty"`
+	Members *[]DiskBackupShardedClusterSnapshotMember `json:"members,omitempty"`
 	// Version of the MongoDB host that this snapshot backs up.
 	MongodVersion *string `json:"mongodVersion,omitempty"`
 	// List that contains unique identifiers for the policy items.
-	PolicyItems []string `json:"policyItems,omitempty"`
+	PolicyItems *[]string `json:"policyItems,omitempty"`
 	// List that contains the unique identifiers of the snapshots created for the shards and config host for a sharded cluster. The resource returns this parameter when `\"type\": \"SHARDED_CLUSTER\"`. These identifiers should match the ones specified in the **members[n].id** parameters. This allows you to map a snapshot to its shard or config host name.
-	SnapshotIds []string `json:"snapshotIds,omitempty"`
+	SnapshotIds *[]string `json:"snapshotIds,omitempty"`
 	// Human-readable label that identifies when this snapshot triggers.
 	SnapshotType *string `json:"snapshotType,omitempty"`
 	// Human-readable label that indicates the stage of the backup process for this snapshot.
@@ -88,6 +88,7 @@ func (o *DiskBackupShardedClusterSnapshot) HasCreatedAt() bool {
 
 // SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
 func (o *DiskBackupShardedClusterSnapshot) SetCreatedAt(v time.Time) {
+
 	o.CreatedAt = &v
 }
 
@@ -121,6 +122,7 @@ func (o *DiskBackupShardedClusterSnapshot) HasDescription() bool {
 
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *DiskBackupShardedClusterSnapshot) SetDescription(v string) {
+
 	o.Description = &v
 }
 
@@ -154,6 +156,7 @@ func (o *DiskBackupShardedClusterSnapshot) HasExpiresAt() bool {
 
 // SetExpiresAt gets a reference to the given time.Time and assigns it to the ExpiresAt field.
 func (o *DiskBackupShardedClusterSnapshot) SetExpiresAt(v time.Time) {
+
 	o.ExpiresAt = &v
 }
 
@@ -187,6 +190,7 @@ func (o *DiskBackupShardedClusterSnapshot) HasFrequencyType() bool {
 
 // SetFrequencyType gets a reference to the given string and assigns it to the FrequencyType field.
 func (o *DiskBackupShardedClusterSnapshot) SetFrequencyType(v string) {
+
 	o.FrequencyType = &v
 }
 
@@ -220,6 +224,7 @@ func (o *DiskBackupShardedClusterSnapshot) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *DiskBackupShardedClusterSnapshot) SetId(v string) {
+
 	o.Id = &v
 }
 
@@ -229,12 +234,12 @@ func (o *DiskBackupShardedClusterSnapshot) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupShardedClusterSnapshot) GetLinksOk() ([]Link, bool) {
+func (o *DiskBackupShardedClusterSnapshot) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -253,7 +258,8 @@ func (o *DiskBackupShardedClusterSnapshot) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *DiskBackupShardedClusterSnapshot) SetLinks(v []Link) {
-	o.Links = v
+
+	o.Links = &v
 }
 
 // GetMasterKeyUUID returns the MasterKeyUUID field value if set, zero value otherwise
@@ -286,6 +292,7 @@ func (o *DiskBackupShardedClusterSnapshot) HasMasterKeyUUID() bool {
 
 // SetMasterKeyUUID gets a reference to the given string and assigns it to the MasterKeyUUID field.
 func (o *DiskBackupShardedClusterSnapshot) SetMasterKeyUUID(v string) {
+
 	o.MasterKeyUUID = &v
 }
 
@@ -295,12 +302,12 @@ func (o *DiskBackupShardedClusterSnapshot) GetMembers() []DiskBackupShardedClust
 		var ret []DiskBackupShardedClusterSnapshotMember
 		return ret
 	}
-	return o.Members
+	return *o.Members
 }
 
 // GetMembersOk returns a tuple with the Members field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupShardedClusterSnapshot) GetMembersOk() ([]DiskBackupShardedClusterSnapshotMember, bool) {
+func (o *DiskBackupShardedClusterSnapshot) GetMembersOk() (*[]DiskBackupShardedClusterSnapshotMember, bool) {
 	if o == nil || IsNil(o.Members) {
 		return nil, false
 	}
@@ -319,7 +326,8 @@ func (o *DiskBackupShardedClusterSnapshot) HasMembers() bool {
 
 // SetMembers gets a reference to the given []DiskBackupShardedClusterSnapshotMember and assigns it to the Members field.
 func (o *DiskBackupShardedClusterSnapshot) SetMembers(v []DiskBackupShardedClusterSnapshotMember) {
-	o.Members = v
+
+	o.Members = &v
 }
 
 // GetMongodVersion returns the MongodVersion field value if set, zero value otherwise
@@ -352,6 +360,7 @@ func (o *DiskBackupShardedClusterSnapshot) HasMongodVersion() bool {
 
 // SetMongodVersion gets a reference to the given string and assigns it to the MongodVersion field.
 func (o *DiskBackupShardedClusterSnapshot) SetMongodVersion(v string) {
+
 	o.MongodVersion = &v
 }
 
@@ -361,12 +370,12 @@ func (o *DiskBackupShardedClusterSnapshot) GetPolicyItems() []string {
 		var ret []string
 		return ret
 	}
-	return o.PolicyItems
+	return *o.PolicyItems
 }
 
 // GetPolicyItemsOk returns a tuple with the PolicyItems field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupShardedClusterSnapshot) GetPolicyItemsOk() ([]string, bool) {
+func (o *DiskBackupShardedClusterSnapshot) GetPolicyItemsOk() (*[]string, bool) {
 	if o == nil || IsNil(o.PolicyItems) {
 		return nil, false
 	}
@@ -385,7 +394,8 @@ func (o *DiskBackupShardedClusterSnapshot) HasPolicyItems() bool {
 
 // SetPolicyItems gets a reference to the given []string and assigns it to the PolicyItems field.
 func (o *DiskBackupShardedClusterSnapshot) SetPolicyItems(v []string) {
-	o.PolicyItems = v
+
+	o.PolicyItems = &v
 }
 
 // GetSnapshotIds returns the SnapshotIds field value if set, zero value otherwise
@@ -394,12 +404,12 @@ func (o *DiskBackupShardedClusterSnapshot) GetSnapshotIds() []string {
 		var ret []string
 		return ret
 	}
-	return o.SnapshotIds
+	return *o.SnapshotIds
 }
 
 // GetSnapshotIdsOk returns a tuple with the SnapshotIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupShardedClusterSnapshot) GetSnapshotIdsOk() ([]string, bool) {
+func (o *DiskBackupShardedClusterSnapshot) GetSnapshotIdsOk() (*[]string, bool) {
 	if o == nil || IsNil(o.SnapshotIds) {
 		return nil, false
 	}
@@ -418,7 +428,8 @@ func (o *DiskBackupShardedClusterSnapshot) HasSnapshotIds() bool {
 
 // SetSnapshotIds gets a reference to the given []string and assigns it to the SnapshotIds field.
 func (o *DiskBackupShardedClusterSnapshot) SetSnapshotIds(v []string) {
-	o.SnapshotIds = v
+
+	o.SnapshotIds = &v
 }
 
 // GetSnapshotType returns the SnapshotType field value if set, zero value otherwise
@@ -451,6 +462,7 @@ func (o *DiskBackupShardedClusterSnapshot) HasSnapshotType() bool {
 
 // SetSnapshotType gets a reference to the given string and assigns it to the SnapshotType field.
 func (o *DiskBackupShardedClusterSnapshot) SetSnapshotType(v string) {
+
 	o.SnapshotType = &v
 }
 
@@ -484,6 +496,7 @@ func (o *DiskBackupShardedClusterSnapshot) HasStatus() bool {
 
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *DiskBackupShardedClusterSnapshot) SetStatus(v string) {
+
 	o.Status = &v
 }
 
@@ -517,6 +530,7 @@ func (o *DiskBackupShardedClusterSnapshot) HasStorageSizeBytes() bool {
 
 // SetStorageSizeBytes gets a reference to the given int64 and assigns it to the StorageSizeBytes field.
 func (o *DiskBackupShardedClusterSnapshot) SetStorageSizeBytes(v int64) {
+
 	o.StorageSizeBytes = &v
 }
 
@@ -550,6 +564,7 @@ func (o *DiskBackupShardedClusterSnapshot) HasType() bool {
 
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *DiskBackupShardedClusterSnapshot) SetType(v string) {
+
 	o.Type = &v
 }
 

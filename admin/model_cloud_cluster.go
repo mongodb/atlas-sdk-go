@@ -29,7 +29,7 @@ type CloudCluster struct {
 	// Human-readable label that indicates the cluster type.
 	Type *string `json:"type,omitempty"`
 	// List that contains the versions of MongoDB that each node in the cluster runs.
-	Versions []string `json:"versions,omitempty"`
+	Versions *[]string `json:"versions,omitempty"`
 }
 
 // NewCloudCluster instantiates a new CloudCluster object
@@ -79,6 +79,7 @@ func (o *CloudCluster) HasAlertCount() bool {
 
 // SetAlertCount gets a reference to the given int and assigns it to the AlertCount field.
 func (o *CloudCluster) SetAlertCount(v int) {
+
 	o.AlertCount = &v
 }
 
@@ -112,6 +113,7 @@ func (o *CloudCluster) HasAuthEnabled() bool {
 
 // SetAuthEnabled gets a reference to the given bool and assigns it to the AuthEnabled field.
 func (o *CloudCluster) SetAuthEnabled(v bool) {
+
 	o.AuthEnabled = &v
 }
 
@@ -145,6 +147,7 @@ func (o *CloudCluster) HasAvailability() bool {
 
 // SetAvailability gets a reference to the given string and assigns it to the Availability field.
 func (o *CloudCluster) SetAvailability(v string) {
+
 	o.Availability = &v
 }
 
@@ -178,6 +181,7 @@ func (o *CloudCluster) HasBackupEnabled() bool {
 
 // SetBackupEnabled gets a reference to the given bool and assigns it to the BackupEnabled field.
 func (o *CloudCluster) SetBackupEnabled(v bool) {
+
 	o.BackupEnabled = &v
 }
 
@@ -211,6 +215,7 @@ func (o *CloudCluster) HasClusterId() bool {
 
 // SetClusterId gets a reference to the given string and assigns it to the ClusterId field.
 func (o *CloudCluster) SetClusterId(v string) {
+
 	o.ClusterId = &v
 }
 
@@ -244,6 +249,7 @@ func (o *CloudCluster) HasDataSizeBytes() bool {
 
 // SetDataSizeBytes gets a reference to the given int64 and assigns it to the DataSizeBytes field.
 func (o *CloudCluster) SetDataSizeBytes(v int64) {
+
 	o.DataSizeBytes = &v
 }
 
@@ -277,6 +283,7 @@ func (o *CloudCluster) HasName() bool {
 
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CloudCluster) SetName(v string) {
+
 	o.Name = &v
 }
 
@@ -310,6 +317,7 @@ func (o *CloudCluster) HasNodeCount() bool {
 
 // SetNodeCount gets a reference to the given int and assigns it to the NodeCount field.
 func (o *CloudCluster) SetNodeCount(v int) {
+
 	o.NodeCount = &v
 }
 
@@ -343,6 +351,7 @@ func (o *CloudCluster) HasSslEnabled() bool {
 
 // SetSslEnabled gets a reference to the given bool and assigns it to the SslEnabled field.
 func (o *CloudCluster) SetSslEnabled(v bool) {
+
 	o.SslEnabled = &v
 }
 
@@ -376,6 +385,7 @@ func (o *CloudCluster) HasType() bool {
 
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *CloudCluster) SetType(v string) {
+
 	o.Type = &v
 }
 
@@ -385,12 +395,12 @@ func (o *CloudCluster) GetVersions() []string {
 		var ret []string
 		return ret
 	}
-	return o.Versions
+	return *o.Versions
 }
 
 // GetVersionsOk returns a tuple with the Versions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudCluster) GetVersionsOk() ([]string, bool) {
+func (o *CloudCluster) GetVersionsOk() (*[]string, bool) {
 	if o == nil || IsNil(o.Versions) {
 		return nil, false
 	}
@@ -409,7 +419,8 @@ func (o *CloudCluster) HasVersions() bool {
 
 // SetVersions gets a reference to the given []string and assigns it to the Versions field.
 func (o *CloudCluster) SetVersions(v []string) {
-	o.Versions = v
+
+	o.Versions = &v
 }
 
 func (o CloudCluster) MarshalJSONWithoutReadOnly() ([]byte, error) {

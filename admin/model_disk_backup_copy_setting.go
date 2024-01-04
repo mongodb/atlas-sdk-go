@@ -11,7 +11,7 @@ type DiskBackupCopySetting struct {
 	// Human-readable label that identifies the cloud provider that stores the snapshot copy.
 	CloudProvider *string `json:"cloudProvider,omitempty"`
 	// List that describes which types of snapshots to copy.
-	Frequencies []string `json:"frequencies,omitempty"`
+	Frequencies *[]string `json:"frequencies,omitempty"`
 	// Target region to copy snapshots belonging to replicationSpecId to. Please supply the 'Atlas Region' which can be found under [Cloud Providers](https://www.mongodb.com/docs/atlas/reference/cloud-providers/) 'regions' link.
 	RegionName *string `json:"regionName,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the replication object for a zone in a cluster. For global clusters, there can be multiple zones to choose from. For sharded clusters and replica set clusters, there is only one zone in the cluster. To find the Replication Spec Id, do a GET request to Return One Cluster in One Project and consult the replicationSpecs array [Return One Cluster in One Project](#operation/getLegacyCluster).
@@ -67,6 +67,7 @@ func (o *DiskBackupCopySetting) HasCloudProvider() bool {
 
 // SetCloudProvider gets a reference to the given string and assigns it to the CloudProvider field.
 func (o *DiskBackupCopySetting) SetCloudProvider(v string) {
+
 	o.CloudProvider = &v
 }
 
@@ -76,12 +77,12 @@ func (o *DiskBackupCopySetting) GetFrequencies() []string {
 		var ret []string
 		return ret
 	}
-	return o.Frequencies
+	return *o.Frequencies
 }
 
 // GetFrequenciesOk returns a tuple with the Frequencies field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupCopySetting) GetFrequenciesOk() ([]string, bool) {
+func (o *DiskBackupCopySetting) GetFrequenciesOk() (*[]string, bool) {
 	if o == nil || IsNil(o.Frequencies) {
 		return nil, false
 	}
@@ -100,7 +101,8 @@ func (o *DiskBackupCopySetting) HasFrequencies() bool {
 
 // SetFrequencies gets a reference to the given []string and assigns it to the Frequencies field.
 func (o *DiskBackupCopySetting) SetFrequencies(v []string) {
-	o.Frequencies = v
+
+	o.Frequencies = &v
 }
 
 // GetRegionName returns the RegionName field value if set, zero value otherwise
@@ -133,6 +135,7 @@ func (o *DiskBackupCopySetting) HasRegionName() bool {
 
 // SetRegionName gets a reference to the given string and assigns it to the RegionName field.
 func (o *DiskBackupCopySetting) SetRegionName(v string) {
+
 	o.RegionName = &v
 }
 
@@ -166,6 +169,7 @@ func (o *DiskBackupCopySetting) HasReplicationSpecId() bool {
 
 // SetReplicationSpecId gets a reference to the given string and assigns it to the ReplicationSpecId field.
 func (o *DiskBackupCopySetting) SetReplicationSpecId(v string) {
+
 	o.ReplicationSpecId = &v
 }
 
@@ -199,6 +203,7 @@ func (o *DiskBackupCopySetting) HasShouldCopyOplogs() bool {
 
 // SetShouldCopyOplogs gets a reference to the given bool and assigns it to the ShouldCopyOplogs field.
 func (o *DiskBackupCopySetting) SetShouldCopyOplogs(v bool) {
+
 	o.ShouldCopyOplogs = &v
 }
 

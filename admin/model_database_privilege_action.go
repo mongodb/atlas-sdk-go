@@ -11,7 +11,7 @@ type DatabasePrivilegeAction struct {
 	// Human-readable label that identifies the privilege action.
 	Action string `json:"action"`
 	// List of resources on which you grant the action.
-	Resources []DatabasePermittedNamespaceResource `json:"resources,omitempty"`
+	Resources *[]DatabasePermittedNamespaceResource `json:"resources,omitempty"`
 }
 
 // NewDatabasePrivilegeAction instantiates a new DatabasePrivilegeAction object
@@ -62,12 +62,12 @@ func (o *DatabasePrivilegeAction) GetResources() []DatabasePermittedNamespaceRes
 		var ret []DatabasePermittedNamespaceResource
 		return ret
 	}
-	return o.Resources
+	return *o.Resources
 }
 
 // GetResourcesOk returns a tuple with the Resources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DatabasePrivilegeAction) GetResourcesOk() ([]DatabasePermittedNamespaceResource, bool) {
+func (o *DatabasePrivilegeAction) GetResourcesOk() (*[]DatabasePermittedNamespaceResource, bool) {
 	if o == nil || IsNil(o.Resources) {
 		return nil, false
 	}
@@ -86,7 +86,8 @@ func (o *DatabasePrivilegeAction) HasResources() bool {
 
 // SetResources gets a reference to the given []DatabasePermittedNamespaceResource and assigns it to the Resources field.
 func (o *DatabasePrivilegeAction) SetResources(v []DatabasePermittedNamespaceResource) {
-	o.Resources = v
+
+	o.Resources = &v
 }
 
 func (o DatabasePrivilegeAction) MarshalJSONWithoutReadOnly() ([]byte, error) {

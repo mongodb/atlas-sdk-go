@@ -11,7 +11,7 @@ type StreamsKafkaSecurity struct {
 	// A trusted, public x509 certificate for connecting to Kafka over SSL.
 	BrokerPublicCertificate *string `json:"brokerPublicCertificate,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Describes the transport type. Can be either PLAINTEXT or SSL.
 	Protocol *string `json:"protocol,omitempty"`
 }
@@ -63,6 +63,7 @@ func (o *StreamsKafkaSecurity) HasBrokerPublicCertificate() bool {
 
 // SetBrokerPublicCertificate gets a reference to the given string and assigns it to the BrokerPublicCertificate field.
 func (o *StreamsKafkaSecurity) SetBrokerPublicCertificate(v string) {
+
 	o.BrokerPublicCertificate = &v
 }
 
@@ -72,12 +73,12 @@ func (o *StreamsKafkaSecurity) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StreamsKafkaSecurity) GetLinksOk() ([]Link, bool) {
+func (o *StreamsKafkaSecurity) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -96,7 +97,8 @@ func (o *StreamsKafkaSecurity) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *StreamsKafkaSecurity) SetLinks(v []Link) {
-	o.Links = v
+
+	o.Links = &v
 }
 
 // GetProtocol returns the Protocol field value if set, zero value otherwise
@@ -129,6 +131,7 @@ func (o *StreamsKafkaSecurity) HasProtocol() bool {
 
 // SetProtocol gets a reference to the given string and assigns it to the Protocol field.
 func (o *StreamsKafkaSecurity) SetProtocol(v string) {
+
 	o.Protocol = &v
 }
 

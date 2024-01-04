@@ -11,7 +11,7 @@ type ClusterDescriptionConnectionStringsPrivateEndpoint struct {
 	// Private endpoint-aware connection string that uses the `mongodb://` protocol to connect to MongoDB Cloud through a private endpoint.
 	ConnectionString *string `json:"connectionString,omitempty"`
 	// List that contains the private endpoints through which you connect to MongoDB Cloud when you use **connectionStrings.privateEndpoint[n].connectionString** or **connectionStrings.privateEndpoint[n].srvConnectionString**.
-	Endpoints []ClusterDescriptionConnectionStringsPrivateEndpointEndpoint `json:"endpoints,omitempty"`
+	Endpoints *[]ClusterDescriptionConnectionStringsPrivateEndpointEndpoint `json:"endpoints,omitempty"`
 	// Private endpoint-aware connection string that uses the `mongodb+srv://` protocol to connect to MongoDB Cloud through a private endpoint. The `mongodb+srv` protocol tells the driver to look up the seed list of hosts in the Domain Name System (DNS). This list synchronizes with the nodes in a cluster. If the connection string uses this Uniform Resource Identifier (URI) format, you don't need to append the seed list or change the Uniform Resource Identifier (URI) if the nodes change. Use this Uniform Resource Identifier (URI) format if your application supports it. If it doesn't, use connectionStrings.privateEndpoint[n].connectionString.
 	SrvConnectionString *string `json:"srvConnectionString,omitempty"`
 	// Private endpoint-aware connection string optimized for sharded clusters that uses the `mongodb+srv://` protocol to connect to MongoDB Cloud through a private endpoint. If the connection string uses this Uniform Resource Identifier (URI) format, you don't need to change the Uniform Resource Identifier (URI) if the nodes change. Use this Uniform Resource Identifier (URI) format if your application and Atlas cluster supports it. If it doesn't, use and consult the documentation for connectionStrings.privateEndpoint[n].srvConnectionString.
@@ -67,6 +67,7 @@ func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) HasConnectionString
 
 // SetConnectionString gets a reference to the given string and assigns it to the ConnectionString field.
 func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) SetConnectionString(v string) {
+
 	o.ConnectionString = &v
 }
 
@@ -76,12 +77,12 @@ func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) GetEndpoints() []Cl
 		var ret []ClusterDescriptionConnectionStringsPrivateEndpointEndpoint
 		return ret
 	}
-	return o.Endpoints
+	return *o.Endpoints
 }
 
 // GetEndpointsOk returns a tuple with the Endpoints field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) GetEndpointsOk() ([]ClusterDescriptionConnectionStringsPrivateEndpointEndpoint, bool) {
+func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) GetEndpointsOk() (*[]ClusterDescriptionConnectionStringsPrivateEndpointEndpoint, bool) {
 	if o == nil || IsNil(o.Endpoints) {
 		return nil, false
 	}
@@ -100,7 +101,8 @@ func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) HasEndpoints() bool
 
 // SetEndpoints gets a reference to the given []ClusterDescriptionConnectionStringsPrivateEndpointEndpoint and assigns it to the Endpoints field.
 func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) SetEndpoints(v []ClusterDescriptionConnectionStringsPrivateEndpointEndpoint) {
-	o.Endpoints = v
+
+	o.Endpoints = &v
 }
 
 // GetSrvConnectionString returns the SrvConnectionString field value if set, zero value otherwise
@@ -133,6 +135,7 @@ func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) HasSrvConnectionStr
 
 // SetSrvConnectionString gets a reference to the given string and assigns it to the SrvConnectionString field.
 func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) SetSrvConnectionString(v string) {
+
 	o.SrvConnectionString = &v
 }
 
@@ -166,6 +169,7 @@ func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) HasSrvShardOptimize
 
 // SetSrvShardOptimizedConnectionString gets a reference to the given string and assigns it to the SrvShardOptimizedConnectionString field.
 func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) SetSrvShardOptimizedConnectionString(v string) {
+
 	o.SrvShardOptimizedConnectionString = &v
 }
 
@@ -199,6 +203,7 @@ func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) HasType() bool {
 
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) SetType(v string) {
+
 	o.Type = &v
 }
 

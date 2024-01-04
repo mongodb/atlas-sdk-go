@@ -104,6 +104,7 @@ func (o *Collation) HasAlternate() bool {
 
 // SetAlternate gets a reference to the given string and assigns it to the Alternate field.
 func (o *Collation) SetAlternate(v string) {
+
 	o.Alternate = &v
 }
 
@@ -137,6 +138,7 @@ func (o *Collation) HasBackwards() bool {
 
 // SetBackwards gets a reference to the given bool and assigns it to the Backwards field.
 func (o *Collation) SetBackwards(v bool) {
+
 	o.Backwards = &v
 }
 
@@ -170,6 +172,7 @@ func (o *Collation) HasCaseFirst() bool {
 
 // SetCaseFirst gets a reference to the given string and assigns it to the CaseFirst field.
 func (o *Collation) SetCaseFirst(v string) {
+
 	o.CaseFirst = &v
 }
 
@@ -203,6 +206,7 @@ func (o *Collation) HasCaseLevel() bool {
 
 // SetCaseLevel gets a reference to the given bool and assigns it to the CaseLevel field.
 func (o *Collation) SetCaseLevel(v bool) {
+
 	o.CaseLevel = &v
 }
 
@@ -260,6 +264,7 @@ func (o *Collation) HasMaxVariable() bool {
 
 // SetMaxVariable gets a reference to the given string and assigns it to the MaxVariable field.
 func (o *Collation) SetMaxVariable(v string) {
+
 	o.MaxVariable = &v
 }
 
@@ -293,6 +298,7 @@ func (o *Collation) HasNormalization() bool {
 
 // SetNormalization gets a reference to the given bool and assigns it to the Normalization field.
 func (o *Collation) SetNormalization(v bool) {
+
 	o.Normalization = &v
 }
 
@@ -326,6 +332,7 @@ func (o *Collation) HasNumericOrdering() bool {
 
 // SetNumericOrdering gets a reference to the given bool and assigns it to the NumericOrdering field.
 func (o *Collation) SetNumericOrdering(v bool) {
+
 	o.NumericOrdering = &v
 }
 
@@ -359,6 +366,7 @@ func (o *Collation) HasStrength() bool {
 
 // SetStrength gets a reference to the given int and assigns it to the Strength field.
 func (o *Collation) SetStrength(v int) {
+
 	o.Strength = &v
 }
 

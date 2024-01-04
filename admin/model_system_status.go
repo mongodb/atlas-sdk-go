@@ -14,7 +14,7 @@ type SystemStatus struct {
 	// Unique 40-hexadecimal digit hash that identifies the latest git commit merged for this application.
 	Build string `json:"build"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Flag that indicates whether someone enabled throttling on this service.
 	Throttling bool `json:"throttling"`
 }
@@ -118,12 +118,12 @@ func (o *SystemStatus) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SystemStatus) GetLinksOk() ([]Link, bool) {
+func (o *SystemStatus) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -142,7 +142,8 @@ func (o *SystemStatus) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *SystemStatus) SetLinks(v []Link) {
-	o.Links = v
+
+	o.Links = &v
 }
 
 // GetThrottling returns the Throttling field value

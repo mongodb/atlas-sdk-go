@@ -69,11 +69,11 @@ func (o *CreateAtlasOrganizationApiKey) GetRoles() []string {
 
 // GetRolesOk returns a tuple with the Roles field value
 // and a boolean to check if the value has been set.
-func (o *CreateAtlasOrganizationApiKey) GetRolesOk() ([]string, bool) {
+func (o *CreateAtlasOrganizationApiKey) GetRolesOk() (*[]string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Roles, true
+	return &o.Roles, true
 }
 
 // SetRoles sets field value

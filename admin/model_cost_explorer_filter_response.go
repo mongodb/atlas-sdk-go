@@ -59,6 +59,7 @@ func (o *CostExplorerFilterResponse) HasToken() bool {
 
 // SetToken gets a reference to the given string and assigns it to the Token field.
 func (o *CostExplorerFilterResponse) SetToken(v string) {
+
 	o.Token = &v
 }
 

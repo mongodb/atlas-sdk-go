@@ -9,9 +9,9 @@ import (
 // PaginatedRoleMapping List role mappings from the specified organization in the specified federation.
 type PaginatedRoleMapping struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud providers when completing this request.
-	Results []AuthFederationRoleMapping `json:"results,omitempty"`
+	Results *[]AuthFederationRoleMapping `json:"results,omitempty"`
 	// Number of documents returned in this response.
 	TotalCount *int `json:"totalCount,omitempty"`
 }
@@ -39,12 +39,12 @@ func (o *PaginatedRoleMapping) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedRoleMapping) GetLinksOk() ([]Link, bool) {
+func (o *PaginatedRoleMapping) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -63,7 +63,8 @@ func (o *PaginatedRoleMapping) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PaginatedRoleMapping) SetLinks(v []Link) {
-	o.Links = v
+
+	o.Links = &v
 }
 
 // GetResults returns the Results field value if set, zero value otherwise
@@ -72,12 +73,12 @@ func (o *PaginatedRoleMapping) GetResults() []AuthFederationRoleMapping {
 		var ret []AuthFederationRoleMapping
 		return ret
 	}
-	return o.Results
+	return *o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedRoleMapping) GetResultsOk() ([]AuthFederationRoleMapping, bool) {
+func (o *PaginatedRoleMapping) GetResultsOk() (*[]AuthFederationRoleMapping, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -96,7 +97,8 @@ func (o *PaginatedRoleMapping) HasResults() bool {
 
 // SetResults gets a reference to the given []AuthFederationRoleMapping and assigns it to the Results field.
 func (o *PaginatedRoleMapping) SetResults(v []AuthFederationRoleMapping) {
-	o.Results = v
+
+	o.Results = &v
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise
@@ -129,6 +131,7 @@ func (o *PaginatedRoleMapping) HasTotalCount() bool {
 
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
 func (o *PaginatedRoleMapping) SetTotalCount(v int) {
+
 	o.TotalCount = &v
 }
 

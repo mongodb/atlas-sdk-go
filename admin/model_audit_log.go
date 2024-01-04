@@ -73,6 +73,7 @@ func (o *AuditLog) HasAuditAuthorizationSuccess() bool {
 
 // SetAuditAuthorizationSuccess gets a reference to the given bool and assigns it to the AuditAuthorizationSuccess field.
 func (o *AuditLog) SetAuditAuthorizationSuccess(v bool) {
+
 	o.AuditAuthorizationSuccess = &v
 }
 
@@ -106,6 +107,7 @@ func (o *AuditLog) HasAuditFilter() bool {
 
 // SetAuditFilter gets a reference to the given string and assigns it to the AuditFilter field.
 func (o *AuditLog) SetAuditFilter(v string) {
+
 	o.AuditFilter = &v
 }
 
@@ -139,6 +141,7 @@ func (o *AuditLog) HasConfigurationType() bool {
 
 // SetConfigurationType gets a reference to the given string and assigns it to the ConfigurationType field.
 func (o *AuditLog) SetConfigurationType(v string) {
+
 	o.ConfigurationType = &v
 }
 
@@ -172,6 +175,7 @@ func (o *AuditLog) HasEnabled() bool {
 
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *AuditLog) SetEnabled(v bool) {
+
 	o.Enabled = &v
 }
 

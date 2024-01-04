@@ -22,7 +22,7 @@ type UserAccessList struct {
 	// Network address that issued the most recent request to the API. This parameter requires the address to be expressed as one Internet Protocol version 4 or version 6 address. The resource returns this parameter after this IP address made at least one request.
 	LastUsedAddress *string `json:"lastUsedAddress,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 }
 
 // NewUserAccessList instantiates a new UserAccessList object
@@ -72,6 +72,7 @@ func (o *UserAccessList) HasCidrBlock() bool {
 
 // SetCidrBlock gets a reference to the given string and assigns it to the CidrBlock field.
 func (o *UserAccessList) SetCidrBlock(v string) {
+
 	o.CidrBlock = &v
 }
 
@@ -105,6 +106,7 @@ func (o *UserAccessList) HasCount() bool {
 
 // SetCount gets a reference to the given int and assigns it to the Count field.
 func (o *UserAccessList) SetCount(v int) {
+
 	o.Count = &v
 }
 
@@ -138,6 +140,7 @@ func (o *UserAccessList) HasCreated() bool {
 
 // SetCreated gets a reference to the given time.Time and assigns it to the Created field.
 func (o *UserAccessList) SetCreated(v time.Time) {
+
 	o.Created = &v
 }
 
@@ -171,6 +174,7 @@ func (o *UserAccessList) HasIpAddress() bool {
 
 // SetIpAddress gets a reference to the given string and assigns it to the IpAddress field.
 func (o *UserAccessList) SetIpAddress(v string) {
+
 	o.IpAddress = &v
 }
 
@@ -204,6 +208,7 @@ func (o *UserAccessList) HasLastUsed() bool {
 
 // SetLastUsed gets a reference to the given time.Time and assigns it to the LastUsed field.
 func (o *UserAccessList) SetLastUsed(v time.Time) {
+
 	o.LastUsed = &v
 }
 
@@ -237,6 +242,7 @@ func (o *UserAccessList) HasLastUsedAddress() bool {
 
 // SetLastUsedAddress gets a reference to the given string and assigns it to the LastUsedAddress field.
 func (o *UserAccessList) SetLastUsedAddress(v string) {
+
 	o.LastUsedAddress = &v
 }
 
@@ -246,12 +252,12 @@ func (o *UserAccessList) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserAccessList) GetLinksOk() ([]Link, bool) {
+func (o *UserAccessList) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -270,7 +276,8 @@ func (o *UserAccessList) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *UserAccessList) SetLinks(v []Link) {
-	o.Links = v
+
+	o.Links = &v
 }
 
 func (o UserAccessList) MarshalJSONWithoutReadOnly() ([]byte, error) {

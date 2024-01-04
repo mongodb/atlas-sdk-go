@@ -60,6 +60,7 @@ func (o *CloudProviderAccessFeatureUsage) HasFeatureType() bool {
 
 // SetFeatureType gets a reference to the given string and assigns it to the FeatureType field.
 func (o *CloudProviderAccessFeatureUsage) SetFeatureType(v string) {
+
 	o.FeatureType = &v
 }
 
@@ -93,6 +94,7 @@ func (o *CloudProviderAccessFeatureUsage) HasFeatureId() bool {
 
 // SetFeatureId gets a reference to the given CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId and assigns it to the FeatureId field.
 func (o *CloudProviderAccessFeatureUsage) SetFeatureId(v CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId) {
+
 	o.FeatureId = &v
 }
 

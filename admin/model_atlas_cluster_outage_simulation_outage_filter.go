@@ -63,6 +63,7 @@ func (o *AtlasClusterOutageSimulationOutageFilter) HasCloudProvider() bool {
 
 // SetCloudProvider gets a reference to the given string and assigns it to the CloudProvider field.
 func (o *AtlasClusterOutageSimulationOutageFilter) SetCloudProvider(v string) {
+
 	o.CloudProvider = &v
 }
 
@@ -96,6 +97,7 @@ func (o *AtlasClusterOutageSimulationOutageFilter) HasRegionName() bool {
 
 // SetRegionName gets a reference to the given string and assigns it to the RegionName field.
 func (o *AtlasClusterOutageSimulationOutageFilter) SetRegionName(v string) {
+
 	o.RegionName = &v
 }
 
@@ -129,6 +131,7 @@ func (o *AtlasClusterOutageSimulationOutageFilter) HasType() bool {
 
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *AtlasClusterOutageSimulationOutageFilter) SetType(v string) {
+
 	o.Type = &v
 }
 

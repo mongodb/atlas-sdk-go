@@ -15,7 +15,7 @@ type ApiError struct {
 	// Application error code returned with this error.
 	ErrorCode *string `json:"errorCode,omitempty"`
 	// Parameter uses to give more information about the error.
-	Parameters []interface{} `json:"parameters,omitempty"`
+	Parameters *[]interface{} `json:"parameters,omitempty"`
 	// Application error message returned with this error.
 	Reason *string `json:"reason,omitempty"`
 }
@@ -67,6 +67,7 @@ func (o *ApiError) HasDetail() bool {
 
 // SetDetail gets a reference to the given string and assigns it to the Detail field.
 func (o *ApiError) SetDetail(v string) {
+
 	o.Detail = &v
 }
 
@@ -100,6 +101,7 @@ func (o *ApiError) HasError() bool {
 
 // SetError gets a reference to the given int and assigns it to the Error field.
 func (o *ApiError) SetError(v int) {
+
 	o.Error = &v
 }
 
@@ -133,6 +135,7 @@ func (o *ApiError) HasErrorCode() bool {
 
 // SetErrorCode gets a reference to the given string and assigns it to the ErrorCode field.
 func (o *ApiError) SetErrorCode(v string) {
+
 	o.ErrorCode = &v
 }
 
@@ -142,12 +145,12 @@ func (o *ApiError) GetParameters() []interface{} {
 		var ret []interface{}
 		return ret
 	}
-	return o.Parameters
+	return *o.Parameters
 }
 
 // GetParametersOk returns a tuple with the Parameters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiError) GetParametersOk() ([]interface{}, bool) {
+func (o *ApiError) GetParametersOk() (*[]interface{}, bool) {
 	if o == nil || IsNil(o.Parameters) {
 		return nil, false
 	}
@@ -166,7 +169,8 @@ func (o *ApiError) HasParameters() bool {
 
 // SetParameters gets a reference to the given []interface{} and assigns it to the Parameters field.
 func (o *ApiError) SetParameters(v []interface{}) {
-	o.Parameters = v
+
+	o.Parameters = &v
 }
 
 // GetReason returns the Reason field value if set, zero value otherwise
@@ -199,6 +203,7 @@ func (o *ApiError) HasReason() bool {
 
 // SetReason gets a reference to the given string and assigns it to the Reason field.
 func (o *ApiError) SetReason(v string) {
+
 	o.Reason = &v
 }
 

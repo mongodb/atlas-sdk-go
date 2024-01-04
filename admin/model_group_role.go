@@ -61,6 +61,7 @@ func (o *GroupRole) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *GroupRole) SetGroupId(v string) {
+
 	o.GroupId = &v
 }
 
@@ -94,6 +95,7 @@ func (o *GroupRole) HasGroupRole() bool {
 
 // SetGroupRole gets a reference to the given string and assigns it to the GroupRole field.
 func (o *GroupRole) SetGroupRole(v string) {
+
 	o.GroupRole = &v
 }
 

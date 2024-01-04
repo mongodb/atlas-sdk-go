@@ -61,6 +61,7 @@ func (o *TriggerIngestionPipelineRequest) HasDatasetRetentionPolicy() bool {
 
 // SetDatasetRetentionPolicy gets a reference to the given DatasetRetentionPolicy and assigns it to the DatasetRetentionPolicy field.
 func (o *TriggerIngestionPipelineRequest) SetDatasetRetentionPolicy(v DatasetRetentionPolicy) {
+
 	o.DatasetRetentionPolicy = &v
 }
 

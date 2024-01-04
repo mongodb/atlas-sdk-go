@@ -10,13 +10,13 @@ import (
 // DiskBackupExportJob struct for DiskBackupExportJob
 type DiskBackupExportJob struct {
 	// Information on the export job for each replica set in the sharded cluster.
-	Components []DiskBackupBaseRestoreMember `json:"components,omitempty"`
+	Components *[]DiskBackupBaseRestoreMember `json:"components,omitempty"`
 	// Date and time when someone created this export job. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// Collection of key-value pairs that represent custom data for the metadata file that MongoDB Cloud uploads to the bucket when the export job finishes.
-	CustomData []BackupLabel `json:"customData,omitempty"`
+	CustomData *[]BackupLabel `json:"customData,omitempty"`
 	// One or more Uniform Resource Locators (URLs) that point to the compressed snapshot files for manual download. MongoDB Cloud returns this parameter when `\"deliveryType\" : \"download\"`.
-	DeliveryUrl []string `json:"deliveryUrl,omitempty"`
+	DeliveryUrl *[]string `json:"deliveryUrl,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the AWS bucket to which MongoDB Cloud exports the Cloud Backup snapshot.
 	ExportBucketId string        `json:"exportBucketId"`
 	ExportStatus   *ExportStatus `json:"exportStatus,omitempty"`
@@ -25,7 +25,7 @@ type DiskBackupExportJob struct {
 	// Unique 24-hexadecimal character string that identifies the restore job.
 	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Full path on the cloud provider bucket to the folder where the snapshot is exported.
 	Prefix *string `json:"prefix,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the snapshot.
@@ -58,12 +58,12 @@ func (o *DiskBackupExportJob) GetComponents() []DiskBackupBaseRestoreMember {
 		var ret []DiskBackupBaseRestoreMember
 		return ret
 	}
-	return o.Components
+	return *o.Components
 }
 
 // GetComponentsOk returns a tuple with the Components field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupExportJob) GetComponentsOk() ([]DiskBackupBaseRestoreMember, bool) {
+func (o *DiskBackupExportJob) GetComponentsOk() (*[]DiskBackupBaseRestoreMember, bool) {
 	if o == nil || IsNil(o.Components) {
 		return nil, false
 	}
@@ -82,7 +82,8 @@ func (o *DiskBackupExportJob) HasComponents() bool {
 
 // SetComponents gets a reference to the given []DiskBackupBaseRestoreMember and assigns it to the Components field.
 func (o *DiskBackupExportJob) SetComponents(v []DiskBackupBaseRestoreMember) {
-	o.Components = v
+
+	o.Components = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise
@@ -115,6 +116,7 @@ func (o *DiskBackupExportJob) HasCreatedAt() bool {
 
 // SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
 func (o *DiskBackupExportJob) SetCreatedAt(v time.Time) {
+
 	o.CreatedAt = &v
 }
 
@@ -124,12 +126,12 @@ func (o *DiskBackupExportJob) GetCustomData() []BackupLabel {
 		var ret []BackupLabel
 		return ret
 	}
-	return o.CustomData
+	return *o.CustomData
 }
 
 // GetCustomDataOk returns a tuple with the CustomData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupExportJob) GetCustomDataOk() ([]BackupLabel, bool) {
+func (o *DiskBackupExportJob) GetCustomDataOk() (*[]BackupLabel, bool) {
 	if o == nil || IsNil(o.CustomData) {
 		return nil, false
 	}
@@ -148,7 +150,8 @@ func (o *DiskBackupExportJob) HasCustomData() bool {
 
 // SetCustomData gets a reference to the given []BackupLabel and assigns it to the CustomData field.
 func (o *DiskBackupExportJob) SetCustomData(v []BackupLabel) {
-	o.CustomData = v
+
+	o.CustomData = &v
 }
 
 // GetDeliveryUrl returns the DeliveryUrl field value if set, zero value otherwise
@@ -157,12 +160,12 @@ func (o *DiskBackupExportJob) GetDeliveryUrl() []string {
 		var ret []string
 		return ret
 	}
-	return o.DeliveryUrl
+	return *o.DeliveryUrl
 }
 
 // GetDeliveryUrlOk returns a tuple with the DeliveryUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupExportJob) GetDeliveryUrlOk() ([]string, bool) {
+func (o *DiskBackupExportJob) GetDeliveryUrlOk() (*[]string, bool) {
 	if o == nil || IsNil(o.DeliveryUrl) {
 		return nil, false
 	}
@@ -181,7 +184,8 @@ func (o *DiskBackupExportJob) HasDeliveryUrl() bool {
 
 // SetDeliveryUrl gets a reference to the given []string and assigns it to the DeliveryUrl field.
 func (o *DiskBackupExportJob) SetDeliveryUrl(v []string) {
-	o.DeliveryUrl = v
+
+	o.DeliveryUrl = &v
 }
 
 // GetExportBucketId returns the ExportBucketId field value
@@ -238,6 +242,7 @@ func (o *DiskBackupExportJob) HasExportStatus() bool {
 
 // SetExportStatus gets a reference to the given ExportStatus and assigns it to the ExportStatus field.
 func (o *DiskBackupExportJob) SetExportStatus(v ExportStatus) {
+
 	o.ExportStatus = &v
 }
 
@@ -271,6 +276,7 @@ func (o *DiskBackupExportJob) HasFinishedAt() bool {
 
 // SetFinishedAt gets a reference to the given time.Time and assigns it to the FinishedAt field.
 func (o *DiskBackupExportJob) SetFinishedAt(v time.Time) {
+
 	o.FinishedAt = &v
 }
 
@@ -304,6 +310,7 @@ func (o *DiskBackupExportJob) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *DiskBackupExportJob) SetId(v string) {
+
 	o.Id = &v
 }
 
@@ -313,12 +320,12 @@ func (o *DiskBackupExportJob) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupExportJob) GetLinksOk() ([]Link, bool) {
+func (o *DiskBackupExportJob) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -337,7 +344,8 @@ func (o *DiskBackupExportJob) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *DiskBackupExportJob) SetLinks(v []Link) {
-	o.Links = v
+
+	o.Links = &v
 }
 
 // GetPrefix returns the Prefix field value if set, zero value otherwise
@@ -370,6 +378,7 @@ func (o *DiskBackupExportJob) HasPrefix() bool {
 
 // SetPrefix gets a reference to the given string and assigns it to the Prefix field.
 func (o *DiskBackupExportJob) SetPrefix(v string) {
+
 	o.Prefix = &v
 }
 
@@ -403,6 +412,7 @@ func (o *DiskBackupExportJob) HasSnapshotId() bool {
 
 // SetSnapshotId gets a reference to the given string and assigns it to the SnapshotId field.
 func (o *DiskBackupExportJob) SetSnapshotId(v string) {
+
 	o.SnapshotId = &v
 }
 
@@ -436,6 +446,7 @@ func (o *DiskBackupExportJob) HasState() bool {
 
 // SetState gets a reference to the given string and assigns it to the State field.
 func (o *DiskBackupExportJob) SetState(v string) {
+
 	o.State = &v
 }
 

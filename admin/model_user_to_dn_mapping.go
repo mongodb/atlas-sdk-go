@@ -64,6 +64,7 @@ func (o *UserToDNMapping) HasLdapQuery() bool {
 
 // SetLdapQuery gets a reference to the given string and assigns it to the LdapQuery field.
 func (o *UserToDNMapping) SetLdapQuery(v string) {
+
 	o.LdapQuery = &v
 }
 
@@ -121,6 +122,7 @@ func (o *UserToDNMapping) HasSubstitution() bool {
 
 // SetSubstitution gets a reference to the given string and assigns it to the Substitution field.
 func (o *UserToDNMapping) SetSubstitution(v string) {
+
 	o.Substitution = &v
 }
 

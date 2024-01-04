@@ -16,7 +16,7 @@ type Group struct {
 	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud project.
 	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Human-readable label that identifies the project included in the MongoDB Cloud organization.
 	Name string `json:"name"`
 	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud organization to which the project belongs.
@@ -130,6 +130,7 @@ func (o *Group) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *Group) SetId(v string) {
+
 	o.Id = &v
 }
 
@@ -139,12 +140,12 @@ func (o *Group) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Group) GetLinksOk() ([]Link, bool) {
+func (o *Group) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -163,7 +164,8 @@ func (o *Group) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *Group) SetLinks(v []Link) {
-	o.Links = v
+
+	o.Links = &v
 }
 
 // GetName returns the Name field value
@@ -244,6 +246,7 @@ func (o *Group) HasRegionUsageRestrictions() bool {
 
 // SetRegionUsageRestrictions gets a reference to the given string and assigns it to the RegionUsageRestrictions field.
 func (o *Group) SetRegionUsageRestrictions(v string) {
+
 	o.RegionUsageRestrictions = &v
 }
 
@@ -277,6 +280,7 @@ func (o *Group) HasWithDefaultAlertsSettings() bool {
 
 // SetWithDefaultAlertsSettings gets a reference to the given bool and assigns it to the WithDefaultAlertsSettings field.
 func (o *Group) SetWithDefaultAlertsSettings(v bool) {
+
 	o.WithDefaultAlertsSettings = &v
 }
 

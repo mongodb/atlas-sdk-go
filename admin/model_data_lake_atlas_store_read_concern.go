@@ -59,6 +59,7 @@ func (o *DataLakeAtlasStoreReadConcern) HasLevel() bool {
 
 // SetLevel gets a reference to the given string and assigns it to the Level field.
 func (o *DataLakeAtlasStoreReadConcern) SetLevel(v string) {
+
 	o.Level = &v
 }
 

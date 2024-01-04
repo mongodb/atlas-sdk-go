@@ -65,6 +65,7 @@ func (o *DatabaseUserRole) HasCollectionName() bool {
 
 // SetCollectionName gets a reference to the given string and assigns it to the CollectionName field.
 func (o *DatabaseUserRole) SetCollectionName(v string) {
+
 	o.CollectionName = &v
 }
 

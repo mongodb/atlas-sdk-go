@@ -105,6 +105,7 @@ func (o *ThridPartyIntegration) HasType() bool {
 
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *ThridPartyIntegration) SetType(v string) {
+
 	o.Type = &v
 }
 
@@ -138,6 +139,7 @@ func (o *ThridPartyIntegration) HasApiKey() bool {
 
 // SetApiKey gets a reference to the given string and assigns it to the ApiKey field.
 func (o *ThridPartyIntegration) SetApiKey(v string) {
+
 	o.ApiKey = &v
 }
 
@@ -171,6 +173,7 @@ func (o *ThridPartyIntegration) HasRegion() bool {
 
 // SetRegion gets a reference to the given string and assigns it to the Region field.
 func (o *ThridPartyIntegration) SetRegion(v string) {
+
 	o.Region = &v
 }
 
@@ -204,6 +207,7 @@ func (o *ThridPartyIntegration) HasMicrosoftTeamsWebhookUrl() bool {
 
 // SetMicrosoftTeamsWebhookUrl gets a reference to the given string and assigns it to the MicrosoftTeamsWebhookUrl field.
 func (o *ThridPartyIntegration) SetMicrosoftTeamsWebhookUrl(v string) {
+
 	o.MicrosoftTeamsWebhookUrl = &v
 }
 
@@ -237,6 +241,7 @@ func (o *ThridPartyIntegration) HasAccountId() bool {
 
 // SetAccountId gets a reference to the given string and assigns it to the AccountId field.
 func (o *ThridPartyIntegration) SetAccountId(v string) {
+
 	o.AccountId = &v
 }
 
@@ -270,6 +275,7 @@ func (o *ThridPartyIntegration) HasLicenseKey() bool {
 
 // SetLicenseKey gets a reference to the given string and assigns it to the LicenseKey field.
 func (o *ThridPartyIntegration) SetLicenseKey(v string) {
+
 	o.LicenseKey = &v
 }
 
@@ -303,6 +309,7 @@ func (o *ThridPartyIntegration) HasReadToken() bool {
 
 // SetReadToken gets a reference to the given string and assigns it to the ReadToken field.
 func (o *ThridPartyIntegration) SetReadToken(v string) {
+
 	o.ReadToken = &v
 }
 
@@ -336,6 +343,7 @@ func (o *ThridPartyIntegration) HasWriteToken() bool {
 
 // SetWriteToken gets a reference to the given string and assigns it to the WriteToken field.
 func (o *ThridPartyIntegration) SetWriteToken(v string) {
+
 	o.WriteToken = &v
 }
 
@@ -369,6 +377,7 @@ func (o *ThridPartyIntegration) HasServiceKey() bool {
 
 // SetServiceKey gets a reference to the given string and assigns it to the ServiceKey field.
 func (o *ThridPartyIntegration) SetServiceKey(v string) {
+
 	o.ServiceKey = &v
 }
 
@@ -402,6 +411,7 @@ func (o *ThridPartyIntegration) HasEnabled() bool {
 
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *ThridPartyIntegration) SetEnabled(v bool) {
+
 	o.Enabled = &v
 }
 
@@ -435,6 +445,7 @@ func (o *ThridPartyIntegration) HasListenAddress() bool {
 
 // SetListenAddress gets a reference to the given string and assigns it to the ListenAddress field.
 func (o *ThridPartyIntegration) SetListenAddress(v string) {
+
 	o.ListenAddress = &v
 }
 
@@ -468,6 +479,7 @@ func (o *ThridPartyIntegration) HasPassword() bool {
 
 // SetPassword gets a reference to the given string and assigns it to the Password field.
 func (o *ThridPartyIntegration) SetPassword(v string) {
+
 	o.Password = &v
 }
 
@@ -501,6 +513,7 @@ func (o *ThridPartyIntegration) HasRateLimitInterval() bool {
 
 // SetRateLimitInterval gets a reference to the given int and assigns it to the RateLimitInterval field.
 func (o *ThridPartyIntegration) SetRateLimitInterval(v int) {
+
 	o.RateLimitInterval = &v
 }
 
@@ -534,6 +547,7 @@ func (o *ThridPartyIntegration) HasScheme() bool {
 
 // SetScheme gets a reference to the given string and assigns it to the Scheme field.
 func (o *ThridPartyIntegration) SetScheme(v string) {
+
 	o.Scheme = &v
 }
 
@@ -567,6 +581,7 @@ func (o *ThridPartyIntegration) HasServiceDiscovery() bool {
 
 // SetServiceDiscovery gets a reference to the given string and assigns it to the ServiceDiscovery field.
 func (o *ThridPartyIntegration) SetServiceDiscovery(v string) {
+
 	o.ServiceDiscovery = &v
 }
 
@@ -600,6 +615,7 @@ func (o *ThridPartyIntegration) HasTlsPemPath() bool {
 
 // SetTlsPemPath gets a reference to the given string and assigns it to the TlsPemPath field.
 func (o *ThridPartyIntegration) SetTlsPemPath(v string) {
+
 	o.TlsPemPath = &v
 }
 
@@ -633,6 +649,7 @@ func (o *ThridPartyIntegration) HasUsername() bool {
 
 // SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *ThridPartyIntegration) SetUsername(v string) {
+
 	o.Username = &v
 }
 
@@ -666,6 +683,7 @@ func (o *ThridPartyIntegration) HasApiToken() bool {
 
 // SetApiToken gets a reference to the given string and assigns it to the ApiToken field.
 func (o *ThridPartyIntegration) SetApiToken(v string) {
+
 	o.ApiToken = &v
 }
 
@@ -699,6 +717,7 @@ func (o *ThridPartyIntegration) HasChannelName() bool {
 
 // SetChannelName gets a reference to the given string and assigns it to the ChannelName field.
 func (o *ThridPartyIntegration) SetChannelName(v string) {
+
 	o.ChannelName = &v
 }
 
@@ -732,6 +751,7 @@ func (o *ThridPartyIntegration) HasTeamName() bool {
 
 // SetTeamName gets a reference to the given string and assigns it to the TeamName field.
 func (o *ThridPartyIntegration) SetTeamName(v string) {
+
 	o.TeamName = &v
 }
 
@@ -765,6 +785,7 @@ func (o *ThridPartyIntegration) HasRoutingKey() bool {
 
 // SetRoutingKey gets a reference to the given string and assigns it to the RoutingKey field.
 func (o *ThridPartyIntegration) SetRoutingKey(v string) {
+
 	o.RoutingKey = &v
 }
 
@@ -798,6 +819,7 @@ func (o *ThridPartyIntegration) HasSecret() bool {
 
 // SetSecret gets a reference to the given string and assigns it to the Secret field.
 func (o *ThridPartyIntegration) SetSecret(v string) {
+
 	o.Secret = &v
 }
 
@@ -831,6 +853,7 @@ func (o *ThridPartyIntegration) HasUrl() bool {
 
 // SetUrl gets a reference to the given string and assigns it to the Url field.
 func (o *ThridPartyIntegration) SetUrl(v string) {
+
 	o.Url = &v
 }
 

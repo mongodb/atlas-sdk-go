@@ -11,7 +11,7 @@ type GeoSharding struct {
 	// List that contains comma-separated key value pairs to map zones to geographic regions. These pairs map an ISO 3166-1a2 location code, with an ISO 3166-2 subdivision code when possible, to a unique 24-hexadecimal string that identifies the custom zone.  This parameter returns an empty object if no custom zones exist.
 	CustomZoneMapping *map[string]string `json:"customZoneMapping,omitempty"`
 	// List that contains a namespace for a Global Cluster. MongoDB Cloud manages this cluster.
-	ManagedNamespaces []ManagedNamespaces `json:"managedNamespaces,omitempty"`
+	ManagedNamespaces *[]ManagedNamespaces `json:"managedNamespaces,omitempty"`
 }
 
 // NewGeoSharding instantiates a new GeoSharding object
@@ -61,6 +61,7 @@ func (o *GeoSharding) HasCustomZoneMapping() bool {
 
 // SetCustomZoneMapping gets a reference to the given map[string]string and assigns it to the CustomZoneMapping field.
 func (o *GeoSharding) SetCustomZoneMapping(v map[string]string) {
+
 	o.CustomZoneMapping = &v
 }
 
@@ -70,12 +71,12 @@ func (o *GeoSharding) GetManagedNamespaces() []ManagedNamespaces {
 		var ret []ManagedNamespaces
 		return ret
 	}
-	return o.ManagedNamespaces
+	return *o.ManagedNamespaces
 }
 
 // GetManagedNamespacesOk returns a tuple with the ManagedNamespaces field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GeoSharding) GetManagedNamespacesOk() ([]ManagedNamespaces, bool) {
+func (o *GeoSharding) GetManagedNamespacesOk() (*[]ManagedNamespaces, bool) {
 	if o == nil || IsNil(o.ManagedNamespaces) {
 		return nil, false
 	}
@@ -94,7 +95,8 @@ func (o *GeoSharding) HasManagedNamespaces() bool {
 
 // SetManagedNamespaces gets a reference to the given []ManagedNamespaces and assigns it to the ManagedNamespaces field.
 func (o *GeoSharding) SetManagedNamespaces(v []ManagedNamespaces) {
-	o.ManagedNamespaces = v
+
+	o.ManagedNamespaces = &v
 }
 
 func (o GeoSharding) MarshalJSONWithoutReadOnly() ([]byte, error) {

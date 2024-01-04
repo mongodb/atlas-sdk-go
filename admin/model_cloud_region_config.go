@@ -70,6 +70,7 @@ func (o *CloudRegionConfig) HasElectableSpecs() bool {
 
 // SetElectableSpecs gets a reference to the given HardwareSpec and assigns it to the ElectableSpecs field.
 func (o *CloudRegionConfig) SetElectableSpecs(v HardwareSpec) {
+
 	o.ElectableSpecs = &v
 }
 
@@ -103,6 +104,7 @@ func (o *CloudRegionConfig) HasPriority() bool {
 
 // SetPriority gets a reference to the given int and assigns it to the Priority field.
 func (o *CloudRegionConfig) SetPriority(v int) {
+
 	o.Priority = &v
 }
 
@@ -136,6 +138,7 @@ func (o *CloudRegionConfig) HasProviderName() bool {
 
 // SetProviderName gets a reference to the given string and assigns it to the ProviderName field.
 func (o *CloudRegionConfig) SetProviderName(v string) {
+
 	o.ProviderName = &v
 }
 
@@ -169,6 +172,7 @@ func (o *CloudRegionConfig) HasRegionName() bool {
 
 // SetRegionName gets a reference to the given string and assigns it to the RegionName field.
 func (o *CloudRegionConfig) SetRegionName(v string) {
+
 	o.RegionName = &v
 }
 
@@ -202,6 +206,7 @@ func (o *CloudRegionConfig) HasAnalyticsAutoScaling() bool {
 
 // SetAnalyticsAutoScaling gets a reference to the given AdvancedAutoScalingSettings and assigns it to the AnalyticsAutoScaling field.
 func (o *CloudRegionConfig) SetAnalyticsAutoScaling(v AdvancedAutoScalingSettings) {
+
 	o.AnalyticsAutoScaling = &v
 }
 
@@ -235,6 +240,7 @@ func (o *CloudRegionConfig) HasAnalyticsSpecs() bool {
 
 // SetAnalyticsSpecs gets a reference to the given DedicatedHardwareSpec and assigns it to the AnalyticsSpecs field.
 func (o *CloudRegionConfig) SetAnalyticsSpecs(v DedicatedHardwareSpec) {
+
 	o.AnalyticsSpecs = &v
 }
 
@@ -268,6 +274,7 @@ func (o *CloudRegionConfig) HasAutoScaling() bool {
 
 // SetAutoScaling gets a reference to the given AdvancedAutoScalingSettings and assigns it to the AutoScaling field.
 func (o *CloudRegionConfig) SetAutoScaling(v AdvancedAutoScalingSettings) {
+
 	o.AutoScaling = &v
 }
 
@@ -301,6 +308,7 @@ func (o *CloudRegionConfig) HasReadOnlySpecs() bool {
 
 // SetReadOnlySpecs gets a reference to the given DedicatedHardwareSpec and assigns it to the ReadOnlySpecs field.
 func (o *CloudRegionConfig) SetReadOnlySpecs(v DedicatedHardwareSpec) {
+
 	o.ReadOnlySpecs = &v
 }
 
@@ -334,6 +342,7 @@ func (o *CloudRegionConfig) HasBackingProviderName() bool {
 
 // SetBackingProviderName gets a reference to the given string and assigns it to the BackingProviderName field.
 func (o *CloudRegionConfig) SetBackingProviderName(v string) {
+
 	o.BackingProviderName = &v
 }
 

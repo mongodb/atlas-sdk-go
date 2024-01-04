@@ -61,6 +61,7 @@ func (o *X509Certificate) HasContent() bool {
 
 // SetContent gets a reference to the given string and assigns it to the Content field.
 func (o *X509Certificate) SetContent(v string) {
+
 	o.Content = &v
 }
 
@@ -94,6 +95,7 @@ func (o *X509Certificate) HasNotAfter() bool {
 
 // SetNotAfter gets a reference to the given time.Time and assigns it to the NotAfter field.
 func (o *X509Certificate) SetNotAfter(v time.Time) {
+
 	o.NotAfter = &v
 }
 
@@ -127,6 +129,7 @@ func (o *X509Certificate) HasNotBefore() bool {
 
 // SetNotBefore gets a reference to the given time.Time and assigns it to the NotBefore field.
 func (o *X509Certificate) SetNotBefore(v time.Time) {
+
 	o.NotBefore = &v
 }
 

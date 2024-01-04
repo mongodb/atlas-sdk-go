@@ -59,6 +59,7 @@ func (o *DiskBackupBaseRestoreMember) HasReplicaSetName() bool {
 
 // SetReplicaSetName gets a reference to the given string and assigns it to the ReplicaSetName field.
 func (o *DiskBackupBaseRestoreMember) SetReplicaSetName(v string) {
+
 	o.ReplicaSetName = &v
 }
 

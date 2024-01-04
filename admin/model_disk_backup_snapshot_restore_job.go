@@ -12,11 +12,11 @@ type DiskBackupSnapshotRestoreJob struct {
 	// Flag that indicates whether someone canceled this restore job.
 	Cancelled *bool `json:"cancelled,omitempty"`
 	// Information on the restore job for each replica set in the sharded cluster.
-	Components []DiskBackupBaseRestoreMember `json:"components,omitempty"`
+	Components *[]DiskBackupBaseRestoreMember `json:"components,omitempty"`
 	// Human-readable label that categorizes the restore job to create.
 	DeliveryType string `json:"deliveryType"`
 	// One or more Uniform Resource Locators (URLs) that point to the compressed snapshot files for manual download. MongoDB Cloud returns this parameter when `\"deliveryType\" : \"download\"`.
-	DeliveryUrl      []string          `json:"deliveryUrl,omitempty"`
+	DeliveryUrl      *[]string         `json:"deliveryUrl,omitempty"`
 	DesiredTimestamp *ApiBSONTimestamp `json:"desiredTimestamp,omitempty"`
 	// Flag that indicates whether the restore job expired.
 	Expired *bool `json:"expired,omitempty"`
@@ -29,7 +29,7 @@ type DiskBackupSnapshotRestoreJob struct {
 	// Unique 24-hexadecimal character string that identifies the restore job.
 	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Oplog operation number from which you want to restore this snapshot. This number represents the second part of an Oplog timestamp. The resource returns this parameter when `\"deliveryType\" : \"pointInTime\"` and **oplogTs** exceeds `0`.
 	OplogInc *int `json:"oplogInc,omitempty"`
 	// Date and time from which you want to restore this snapshot. This parameter expresses this timestamp in the number of seconds that have elapsed since the UNIX epoch. This number represents the first part of an Oplog timestamp. The resource returns this parameter when `\"deliveryType\" : \"pointInTime\"` and **oplogTs** exceeds `0`.
@@ -94,6 +94,7 @@ func (o *DiskBackupSnapshotRestoreJob) HasCancelled() bool {
 
 // SetCancelled gets a reference to the given bool and assigns it to the Cancelled field.
 func (o *DiskBackupSnapshotRestoreJob) SetCancelled(v bool) {
+
 	o.Cancelled = &v
 }
 
@@ -103,12 +104,12 @@ func (o *DiskBackupSnapshotRestoreJob) GetComponents() []DiskBackupBaseRestoreMe
 		var ret []DiskBackupBaseRestoreMember
 		return ret
 	}
-	return o.Components
+	return *o.Components
 }
 
 // GetComponentsOk returns a tuple with the Components field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupSnapshotRestoreJob) GetComponentsOk() ([]DiskBackupBaseRestoreMember, bool) {
+func (o *DiskBackupSnapshotRestoreJob) GetComponentsOk() (*[]DiskBackupBaseRestoreMember, bool) {
 	if o == nil || IsNil(o.Components) {
 		return nil, false
 	}
@@ -127,7 +128,8 @@ func (o *DiskBackupSnapshotRestoreJob) HasComponents() bool {
 
 // SetComponents gets a reference to the given []DiskBackupBaseRestoreMember and assigns it to the Components field.
 func (o *DiskBackupSnapshotRestoreJob) SetComponents(v []DiskBackupBaseRestoreMember) {
-	o.Components = v
+
+	o.Components = &v
 }
 
 // GetDeliveryType returns the DeliveryType field value
@@ -160,12 +162,12 @@ func (o *DiskBackupSnapshotRestoreJob) GetDeliveryUrl() []string {
 		var ret []string
 		return ret
 	}
-	return o.DeliveryUrl
+	return *o.DeliveryUrl
 }
 
 // GetDeliveryUrlOk returns a tuple with the DeliveryUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupSnapshotRestoreJob) GetDeliveryUrlOk() ([]string, bool) {
+func (o *DiskBackupSnapshotRestoreJob) GetDeliveryUrlOk() (*[]string, bool) {
 	if o == nil || IsNil(o.DeliveryUrl) {
 		return nil, false
 	}
@@ -184,7 +186,8 @@ func (o *DiskBackupSnapshotRestoreJob) HasDeliveryUrl() bool {
 
 // SetDeliveryUrl gets a reference to the given []string and assigns it to the DeliveryUrl field.
 func (o *DiskBackupSnapshotRestoreJob) SetDeliveryUrl(v []string) {
-	o.DeliveryUrl = v
+
+	o.DeliveryUrl = &v
 }
 
 // GetDesiredTimestamp returns the DesiredTimestamp field value if set, zero value otherwise
@@ -217,6 +220,7 @@ func (o *DiskBackupSnapshotRestoreJob) HasDesiredTimestamp() bool {
 
 // SetDesiredTimestamp gets a reference to the given ApiBSONTimestamp and assigns it to the DesiredTimestamp field.
 func (o *DiskBackupSnapshotRestoreJob) SetDesiredTimestamp(v ApiBSONTimestamp) {
+
 	o.DesiredTimestamp = &v
 }
 
@@ -250,6 +254,7 @@ func (o *DiskBackupSnapshotRestoreJob) HasExpired() bool {
 
 // SetExpired gets a reference to the given bool and assigns it to the Expired field.
 func (o *DiskBackupSnapshotRestoreJob) SetExpired(v bool) {
+
 	o.Expired = &v
 }
 
@@ -283,6 +288,7 @@ func (o *DiskBackupSnapshotRestoreJob) HasExpiresAt() bool {
 
 // SetExpiresAt gets a reference to the given time.Time and assigns it to the ExpiresAt field.
 func (o *DiskBackupSnapshotRestoreJob) SetExpiresAt(v time.Time) {
+
 	o.ExpiresAt = &v
 }
 
@@ -316,6 +322,7 @@ func (o *DiskBackupSnapshotRestoreJob) HasFailed() bool {
 
 // SetFailed gets a reference to the given bool and assigns it to the Failed field.
 func (o *DiskBackupSnapshotRestoreJob) SetFailed(v bool) {
+
 	o.Failed = &v
 }
 
@@ -349,6 +356,7 @@ func (o *DiskBackupSnapshotRestoreJob) HasFinishedAt() bool {
 
 // SetFinishedAt gets a reference to the given time.Time and assigns it to the FinishedAt field.
 func (o *DiskBackupSnapshotRestoreJob) SetFinishedAt(v time.Time) {
+
 	o.FinishedAt = &v
 }
 
@@ -382,6 +390,7 @@ func (o *DiskBackupSnapshotRestoreJob) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *DiskBackupSnapshotRestoreJob) SetId(v string) {
+
 	o.Id = &v
 }
 
@@ -391,12 +400,12 @@ func (o *DiskBackupSnapshotRestoreJob) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupSnapshotRestoreJob) GetLinksOk() ([]Link, bool) {
+func (o *DiskBackupSnapshotRestoreJob) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -415,7 +424,8 @@ func (o *DiskBackupSnapshotRestoreJob) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *DiskBackupSnapshotRestoreJob) SetLinks(v []Link) {
-	o.Links = v
+
+	o.Links = &v
 }
 
 // GetOplogInc returns the OplogInc field value if set, zero value otherwise
@@ -448,6 +458,7 @@ func (o *DiskBackupSnapshotRestoreJob) HasOplogInc() bool {
 
 // SetOplogInc gets a reference to the given int and assigns it to the OplogInc field.
 func (o *DiskBackupSnapshotRestoreJob) SetOplogInc(v int) {
+
 	o.OplogInc = &v
 }
 
@@ -481,6 +492,7 @@ func (o *DiskBackupSnapshotRestoreJob) HasOplogTs() bool {
 
 // SetOplogTs gets a reference to the given int and assigns it to the OplogTs field.
 func (o *DiskBackupSnapshotRestoreJob) SetOplogTs(v int) {
+
 	o.OplogTs = &v
 }
 
@@ -514,6 +526,7 @@ func (o *DiskBackupSnapshotRestoreJob) HasPointInTimeUTCSeconds() bool {
 
 // SetPointInTimeUTCSeconds gets a reference to the given int and assigns it to the PointInTimeUTCSeconds field.
 func (o *DiskBackupSnapshotRestoreJob) SetPointInTimeUTCSeconds(v int) {
+
 	o.PointInTimeUTCSeconds = &v
 }
 
@@ -547,6 +560,7 @@ func (o *DiskBackupSnapshotRestoreJob) HasSnapshotId() bool {
 
 // SetSnapshotId gets a reference to the given string and assigns it to the SnapshotId field.
 func (o *DiskBackupSnapshotRestoreJob) SetSnapshotId(v string) {
+
 	o.SnapshotId = &v
 }
 
@@ -580,6 +594,7 @@ func (o *DiskBackupSnapshotRestoreJob) HasTargetClusterName() bool {
 
 // SetTargetClusterName gets a reference to the given string and assigns it to the TargetClusterName field.
 func (o *DiskBackupSnapshotRestoreJob) SetTargetClusterName(v string) {
+
 	o.TargetClusterName = &v
 }
 
@@ -613,6 +628,7 @@ func (o *DiskBackupSnapshotRestoreJob) HasTargetGroupId() bool {
 
 // SetTargetGroupId gets a reference to the given string and assigns it to the TargetGroupId field.
 func (o *DiskBackupSnapshotRestoreJob) SetTargetGroupId(v string) {
+
 	o.TargetGroupId = &v
 }
 
@@ -646,6 +662,7 @@ func (o *DiskBackupSnapshotRestoreJob) HasTimestamp() bool {
 
 // SetTimestamp gets a reference to the given time.Time and assigns it to the Timestamp field.
 func (o *DiskBackupSnapshotRestoreJob) SetTimestamp(v time.Time) {
+
 	o.Timestamp = &v
 }
 

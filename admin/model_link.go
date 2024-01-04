@@ -61,6 +61,7 @@ func (o *Link) HasHref() bool {
 
 // SetHref gets a reference to the given string and assigns it to the Href field.
 func (o *Link) SetHref(v string) {
+
 	o.Href = &v
 }
 
@@ -94,6 +95,7 @@ func (o *Link) HasRel() bool {
 
 // SetRel gets a reference to the given string and assigns it to the Rel field.
 func (o *Link) SetRel(v string) {
+
 	o.Rel = &v
 }
 

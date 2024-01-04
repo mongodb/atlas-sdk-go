@@ -62,6 +62,7 @@ func (o *ApiBSONTimestamp) HasDate() bool {
 
 // SetDate gets a reference to the given time.Time and assigns it to the Date field.
 func (o *ApiBSONTimestamp) SetDate(v time.Time) {
+
 	o.Date = &v
 }
 
@@ -95,6 +96,7 @@ func (o *ApiBSONTimestamp) HasIncrement() bool {
 
 // SetIncrement gets a reference to the given int and assigns it to the Increment field.
 func (o *ApiBSONTimestamp) SetIncrement(v int) {
+
 	o.Increment = &v
 }
 

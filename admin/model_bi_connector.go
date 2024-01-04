@@ -61,6 +61,7 @@ func (o *BiConnector) HasEnabled() bool {
 
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *BiConnector) SetEnabled(v bool) {
+
 	o.Enabled = &v
 }
 
@@ -94,6 +95,7 @@ func (o *BiConnector) HasReadPreference() bool {
 
 // SetReadPreference gets a reference to the given string and assigns it to the ReadPreference field.
 func (o *BiConnector) SetReadPreference(v string) {
+
 	o.ReadPreference = &v
 }
 

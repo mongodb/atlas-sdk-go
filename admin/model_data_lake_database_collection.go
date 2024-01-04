@@ -9,7 +9,7 @@ import (
 // DataLakeDatabaseCollection A collection and data sources that map to a “stores“ data store.
 type DataLakeDatabaseCollection struct {
 	// Array that contains the data stores that map to a collection for this data lake.
-	DataSources []DataLakeDatabaseDataSourceSettings `json:"dataSources,omitempty"`
+	DataSources *[]DataLakeDatabaseDataSourceSettings `json:"dataSources,omitempty"`
 	// Human-readable label that identifies the collection to which MongoDB Cloud maps the data in the data stores.
 	Name *string `json:"name,omitempty"`
 }
@@ -37,12 +37,12 @@ func (o *DataLakeDatabaseCollection) GetDataSources() []DataLakeDatabaseDataSour
 		var ret []DataLakeDatabaseDataSourceSettings
 		return ret
 	}
-	return o.DataSources
+	return *o.DataSources
 }
 
 // GetDataSourcesOk returns a tuple with the DataSources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DataLakeDatabaseCollection) GetDataSourcesOk() ([]DataLakeDatabaseDataSourceSettings, bool) {
+func (o *DataLakeDatabaseCollection) GetDataSourcesOk() (*[]DataLakeDatabaseDataSourceSettings, bool) {
 	if o == nil || IsNil(o.DataSources) {
 		return nil, false
 	}
@@ -61,7 +61,8 @@ func (o *DataLakeDatabaseCollection) HasDataSources() bool {
 
 // SetDataSources gets a reference to the given []DataLakeDatabaseDataSourceSettings and assigns it to the DataSources field.
 func (o *DataLakeDatabaseCollection) SetDataSources(v []DataLakeDatabaseDataSourceSettings) {
-	o.DataSources = v
+
+	o.DataSources = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise
@@ -94,6 +95,7 @@ func (o *DataLakeDatabaseCollection) HasName() bool {
 
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *DataLakeDatabaseCollection) SetName(v string) {
+
 	o.Name = &v
 }
 

@@ -9,7 +9,7 @@ import (
 // PerformanceAdvisorSlowQueryList struct for PerformanceAdvisorSlowQueryList
 type PerformanceAdvisorSlowQueryList struct {
 	// List of operations that the Performance Advisor detected that took longer to execute than a specified threshold.
-	SlowQueries []PerformanceAdvisorSlowQuery `json:"slowQueries,omitempty"`
+	SlowQueries *[]PerformanceAdvisorSlowQuery `json:"slowQueries,omitempty"`
 }
 
 // NewPerformanceAdvisorSlowQueryList instantiates a new PerformanceAdvisorSlowQueryList object
@@ -35,12 +35,12 @@ func (o *PerformanceAdvisorSlowQueryList) GetSlowQueries() []PerformanceAdvisorS
 		var ret []PerformanceAdvisorSlowQuery
 		return ret
 	}
-	return o.SlowQueries
+	return *o.SlowQueries
 }
 
 // GetSlowQueriesOk returns a tuple with the SlowQueries field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PerformanceAdvisorSlowQueryList) GetSlowQueriesOk() ([]PerformanceAdvisorSlowQuery, bool) {
+func (o *PerformanceAdvisorSlowQueryList) GetSlowQueriesOk() (*[]PerformanceAdvisorSlowQuery, bool) {
 	if o == nil || IsNil(o.SlowQueries) {
 		return nil, false
 	}
@@ -59,7 +59,8 @@ func (o *PerformanceAdvisorSlowQueryList) HasSlowQueries() bool {
 
 // SetSlowQueries gets a reference to the given []PerformanceAdvisorSlowQuery and assigns it to the SlowQueries field.
 func (o *PerformanceAdvisorSlowQueryList) SetSlowQueries(v []PerformanceAdvisorSlowQuery) {
-	o.SlowQueries = v
+
+	o.SlowQueries = &v
 }
 
 func (o PerformanceAdvisorSlowQueryList) MarshalJSONWithoutReadOnly() ([]byte, error) {

@@ -61,6 +61,7 @@ func (o *NumberMetricValue) HasNumber() bool {
 
 // SetNumber gets a reference to the given float64 and assigns it to the Number field.
 func (o *NumberMetricValue) SetNumber(v float64) {
+
 	o.Number = &v
 }
 
@@ -94,6 +95,7 @@ func (o *NumberMetricValue) HasUnits() bool {
 
 // SetUnits gets a reference to the given string and assigns it to the Units field.
 func (o *NumberMetricValue) SetUnits(v string) {
+
 	o.Units = &v
 }
 

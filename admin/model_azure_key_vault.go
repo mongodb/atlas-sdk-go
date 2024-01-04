@@ -77,6 +77,7 @@ func (o *AzureKeyVault) HasAzureEnvironment() bool {
 
 // SetAzureEnvironment gets a reference to the given string and assigns it to the AzureEnvironment field.
 func (o *AzureKeyVault) SetAzureEnvironment(v string) {
+
 	o.AzureEnvironment = &v
 }
 
@@ -110,6 +111,7 @@ func (o *AzureKeyVault) HasClientID() bool {
 
 // SetClientID gets a reference to the given string and assigns it to the ClientID field.
 func (o *AzureKeyVault) SetClientID(v string) {
+
 	o.ClientID = &v
 }
 
@@ -143,6 +145,7 @@ func (o *AzureKeyVault) HasEnabled() bool {
 
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *AzureKeyVault) SetEnabled(v bool) {
+
 	o.Enabled = &v
 }
 
@@ -176,6 +179,7 @@ func (o *AzureKeyVault) HasKeyIdentifier() bool {
 
 // SetKeyIdentifier gets a reference to the given string and assigns it to the KeyIdentifier field.
 func (o *AzureKeyVault) SetKeyIdentifier(v string) {
+
 	o.KeyIdentifier = &v
 }
 
@@ -209,6 +213,7 @@ func (o *AzureKeyVault) HasKeyVaultName() bool {
 
 // SetKeyVaultName gets a reference to the given string and assigns it to the KeyVaultName field.
 func (o *AzureKeyVault) SetKeyVaultName(v string) {
+
 	o.KeyVaultName = &v
 }
 
@@ -242,6 +247,7 @@ func (o *AzureKeyVault) HasResourceGroupName() bool {
 
 // SetResourceGroupName gets a reference to the given string and assigns it to the ResourceGroupName field.
 func (o *AzureKeyVault) SetResourceGroupName(v string) {
+
 	o.ResourceGroupName = &v
 }
 
@@ -275,6 +281,7 @@ func (o *AzureKeyVault) HasSecret() bool {
 
 // SetSecret gets a reference to the given string and assigns it to the Secret field.
 func (o *AzureKeyVault) SetSecret(v string) {
+
 	o.Secret = &v
 }
 
@@ -308,6 +315,7 @@ func (o *AzureKeyVault) HasSubscriptionID() bool {
 
 // SetSubscriptionID gets a reference to the given string and assigns it to the SubscriptionID field.
 func (o *AzureKeyVault) SetSubscriptionID(v string) {
+
 	o.SubscriptionID = &v
 }
 
@@ -341,6 +349,7 @@ func (o *AzureKeyVault) HasTenantID() bool {
 
 // SetTenantID gets a reference to the given string and assigns it to the TenantID field.
 func (o *AzureKeyVault) SetTenantID(v string) {
+
 	o.TenantID = &v
 }
 
@@ -374,6 +383,7 @@ func (o *AzureKeyVault) HasValid() bool {
 
 // SetValid gets a reference to the given bool and assigns it to the Valid field.
 func (o *AzureKeyVault) SetValid(v bool) {
+
 	o.Valid = &v
 }
 

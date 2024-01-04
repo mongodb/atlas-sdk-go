@@ -85,6 +85,7 @@ func (o *AvailableClustersDeployment) HasAgentVersion() bool {
 
 // SetAgentVersion gets a reference to the given string and assigns it to the AgentVersion field.
 func (o *AvailableClustersDeployment) SetAgentVersion(v string) {
+
 	o.AgentVersion = &v
 }
 
@@ -118,6 +119,7 @@ func (o *AvailableClustersDeployment) HasClusterId() bool {
 
 // SetClusterId gets a reference to the given string and assigns it to the ClusterId field.
 func (o *AvailableClustersDeployment) SetClusterId(v string) {
+
 	o.ClusterId = &v
 }
 
@@ -151,6 +153,7 @@ func (o *AvailableClustersDeployment) HasDbSizeBytes() bool {
 
 // SetDbSizeBytes gets a reference to the given int64 and assigns it to the DbSizeBytes field.
 func (o *AvailableClustersDeployment) SetDbSizeBytes(v int64) {
+
 	o.DbSizeBytes = &v
 }
 
@@ -280,6 +283,7 @@ func (o *AvailableClustersDeployment) HasOplogSizeMB() bool {
 
 // SetOplogSizeMB gets a reference to the given int and assigns it to the OplogSizeMB field.
 func (o *AvailableClustersDeployment) SetOplogSizeMB(v int) {
+
 	o.OplogSizeMB = &v
 }
 
@@ -337,6 +341,7 @@ func (o *AvailableClustersDeployment) HasShardsSize() bool {
 
 // SetShardsSize gets a reference to the given int and assigns it to the ShardsSize field.
 func (o *AvailableClustersDeployment) SetShardsSize(v int) {
+
 	o.ShardsSize = &v
 }
 

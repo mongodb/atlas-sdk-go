@@ -69,6 +69,7 @@ func (o *DedicatedHardwareSpec) HasNodeCount() bool {
 
 // SetNodeCount gets a reference to the given int and assigns it to the NodeCount field.
 func (o *DedicatedHardwareSpec) SetNodeCount(v int) {
+
 	o.NodeCount = &v
 }
 
@@ -102,6 +103,7 @@ func (o *DedicatedHardwareSpec) HasDiskIOPS() bool {
 
 // SetDiskIOPS gets a reference to the given int and assigns it to the DiskIOPS field.
 func (o *DedicatedHardwareSpec) SetDiskIOPS(v int) {
+
 	o.DiskIOPS = &v
 }
 
@@ -135,6 +137,7 @@ func (o *DedicatedHardwareSpec) HasEbsVolumeType() bool {
 
 // SetEbsVolumeType gets a reference to the given string and assigns it to the EbsVolumeType field.
 func (o *DedicatedHardwareSpec) SetEbsVolumeType(v string) {
+
 	o.EbsVolumeType = &v
 }
 
@@ -168,6 +171,7 @@ func (o *DedicatedHardwareSpec) HasInstanceSize() bool {
 
 // SetInstanceSize gets a reference to the given string and assigns it to the InstanceSize field.
 func (o *DedicatedHardwareSpec) SetInstanceSize(v string) {
+
 	o.InstanceSize = &v
 }
 

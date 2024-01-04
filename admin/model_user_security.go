@@ -11,7 +11,7 @@ type UserSecurity struct {
 	CustomerX509 *DBUserTLSX509Settings `json:"customerX509,omitempty"`
 	Ldap         *LDAPSecuritySettings  `json:"ldap,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 }
 
 // NewUserSecurity instantiates a new UserSecurity object
@@ -61,6 +61,7 @@ func (o *UserSecurity) HasCustomerX509() bool {
 
 // SetCustomerX509 gets a reference to the given DBUserTLSX509Settings and assigns it to the CustomerX509 field.
 func (o *UserSecurity) SetCustomerX509(v DBUserTLSX509Settings) {
+
 	o.CustomerX509 = &v
 }
 
@@ -94,6 +95,7 @@ func (o *UserSecurity) HasLdap() bool {
 
 // SetLdap gets a reference to the given LDAPSecuritySettings and assigns it to the Ldap field.
 func (o *UserSecurity) SetLdap(v LDAPSecuritySettings) {
+
 	o.Ldap = &v
 }
 
@@ -103,12 +105,12 @@ func (o *UserSecurity) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserSecurity) GetLinksOk() ([]Link, bool) {
+func (o *UserSecurity) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -127,7 +129,8 @@ func (o *UserSecurity) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *UserSecurity) SetLinks(v []Link) {
-	o.Links = v
+
+	o.Links = &v
 }
 
 func (o UserSecurity) MarshalJSONWithoutReadOnly() ([]byte, error) {

@@ -66,6 +66,7 @@ func (o *ServerlessTenantEndpointUpdate) HasComment() bool {
 
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *ServerlessTenantEndpointUpdate) SetComment(v string) {
+
 	o.Comment = &v
 }
 
@@ -123,6 +124,7 @@ func (o *ServerlessTenantEndpointUpdate) HasCloudProviderEndpointId() bool {
 
 // SetCloudProviderEndpointId gets a reference to the given string and assigns it to the CloudProviderEndpointId field.
 func (o *ServerlessTenantEndpointUpdate) SetCloudProviderEndpointId(v string) {
+
 	o.CloudProviderEndpointId = &v
 }
 
@@ -156,6 +158,7 @@ func (o *ServerlessTenantEndpointUpdate) HasPrivateEndpointIpAddress() bool {
 
 // SetPrivateEndpointIpAddress gets a reference to the given string and assigns it to the PrivateEndpointIpAddress field.
 func (o *ServerlessTenantEndpointUpdate) SetPrivateEndpointIpAddress(v string) {
+
 	o.PrivateEndpointIpAddress = &v
 }
 

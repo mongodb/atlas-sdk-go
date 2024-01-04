@@ -22,7 +22,7 @@ type EventViewForNdsGroup struct {
 	// Flag that indicates whether a MongoDB employee triggered the specified event.
 	IsGlobalAdmin *bool `json:"isGlobalAdmin,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the organization to which these events apply.
 	OrgId *string `json:"orgId,omitempty"`
 	// Public part of the [API Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key) that triggered the event. If this resource returns this parameter, it doesn't return the **username** parameter.
@@ -122,6 +122,7 @@ func (o *EventViewForNdsGroup) HasApiKeyId() bool {
 
 // SetApiKeyId gets a reference to the given string and assigns it to the ApiKeyId field.
 func (o *EventViewForNdsGroup) SetApiKeyId(v string) {
+
 	o.ApiKeyId = &v
 }
 
@@ -155,6 +156,7 @@ func (o *EventViewForNdsGroup) HasCreated() bool {
 
 // SetCreated gets a reference to the given time.Time and assigns it to the Created field.
 func (o *EventViewForNdsGroup) SetCreated(v time.Time) {
+
 	o.Created = &v
 }
 
@@ -188,6 +190,7 @@ func (o *EventViewForNdsGroup) HasEventTypeName() bool {
 
 // SetEventTypeName gets a reference to the given string and assigns it to the EventTypeName field.
 func (o *EventViewForNdsGroup) SetEventTypeName(v string) {
+
 	o.EventTypeName = &v
 }
 
@@ -221,6 +224,7 @@ func (o *EventViewForNdsGroup) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *EventViewForNdsGroup) SetGroupId(v string) {
+
 	o.GroupId = &v
 }
 
@@ -254,6 +258,7 @@ func (o *EventViewForNdsGroup) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *EventViewForNdsGroup) SetId(v string) {
+
 	o.Id = &v
 }
 
@@ -287,6 +292,7 @@ func (o *EventViewForNdsGroup) HasIsGlobalAdmin() bool {
 
 // SetIsGlobalAdmin gets a reference to the given bool and assigns it to the IsGlobalAdmin field.
 func (o *EventViewForNdsGroup) SetIsGlobalAdmin(v bool) {
+
 	o.IsGlobalAdmin = &v
 }
 
@@ -296,12 +302,12 @@ func (o *EventViewForNdsGroup) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EventViewForNdsGroup) GetLinksOk() ([]Link, bool) {
+func (o *EventViewForNdsGroup) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -320,7 +326,8 @@ func (o *EventViewForNdsGroup) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *EventViewForNdsGroup) SetLinks(v []Link) {
-	o.Links = v
+
+	o.Links = &v
 }
 
 // GetOrgId returns the OrgId field value if set, zero value otherwise
@@ -353,6 +360,7 @@ func (o *EventViewForNdsGroup) HasOrgId() bool {
 
 // SetOrgId gets a reference to the given string and assigns it to the OrgId field.
 func (o *EventViewForNdsGroup) SetOrgId(v string) {
+
 	o.OrgId = &v
 }
 
@@ -386,6 +394,7 @@ func (o *EventViewForNdsGroup) HasPublicKey() bool {
 
 // SetPublicKey gets a reference to the given string and assigns it to the PublicKey field.
 func (o *EventViewForNdsGroup) SetPublicKey(v string) {
+
 	o.PublicKey = &v
 }
 
@@ -419,6 +428,7 @@ func (o *EventViewForNdsGroup) HasRaw() bool {
 
 // SetRaw gets a reference to the given Raw and assigns it to the Raw field.
 func (o *EventViewForNdsGroup) SetRaw(v Raw) {
+
 	o.Raw = &v
 }
 
@@ -452,6 +462,7 @@ func (o *EventViewForNdsGroup) HasRemoteAddress() bool {
 
 // SetRemoteAddress gets a reference to the given string and assigns it to the RemoteAddress field.
 func (o *EventViewForNdsGroup) SetRemoteAddress(v string) {
+
 	o.RemoteAddress = &v
 }
 
@@ -485,6 +496,7 @@ func (o *EventViewForNdsGroup) HasUserId() bool {
 
 // SetUserId gets a reference to the given string and assigns it to the UserId field.
 func (o *EventViewForNdsGroup) SetUserId(v string) {
+
 	o.UserId = &v
 }
 
@@ -518,6 +530,7 @@ func (o *EventViewForNdsGroup) HasUsername() bool {
 
 // SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *EventViewForNdsGroup) SetUsername(v string) {
+
 	o.Username = &v
 }
 
@@ -551,6 +564,7 @@ func (o *EventViewForNdsGroup) HasAlertId() bool {
 
 // SetAlertId gets a reference to the given string and assigns it to the AlertId field.
 func (o *EventViewForNdsGroup) SetAlertId(v string) {
+
 	o.AlertId = &v
 }
 
@@ -584,6 +598,7 @@ func (o *EventViewForNdsGroup) HasAlertConfigId() bool {
 
 // SetAlertConfigId gets a reference to the given string and assigns it to the AlertConfigId field.
 func (o *EventViewForNdsGroup) SetAlertConfigId(v string) {
+
 	o.AlertConfigId = &v
 }
 
@@ -617,6 +632,7 @@ func (o *EventViewForNdsGroup) HasInvoiceId() bool {
 
 // SetInvoiceId gets a reference to the given string and assigns it to the InvoiceId field.
 func (o *EventViewForNdsGroup) SetInvoiceId(v string) {
+
 	o.InvoiceId = &v
 }
 
@@ -650,6 +666,7 @@ func (o *EventViewForNdsGroup) HasPaymentId() bool {
 
 // SetPaymentId gets a reference to the given string and assigns it to the PaymentId field.
 func (o *EventViewForNdsGroup) SetPaymentId(v string) {
+
 	o.PaymentId = &v
 }
 
@@ -683,6 +700,7 @@ func (o *EventViewForNdsGroup) HasShardName() bool {
 
 // SetShardName gets a reference to the given string and assigns it to the ShardName field.
 func (o *EventViewForNdsGroup) SetShardName(v string) {
+
 	o.ShardName = &v
 }
 
@@ -716,6 +734,7 @@ func (o *EventViewForNdsGroup) HasCollection() bool {
 
 // SetCollection gets a reference to the given string and assigns it to the Collection field.
 func (o *EventViewForNdsGroup) SetCollection(v string) {
+
 	o.Collection = &v
 }
 
@@ -749,6 +768,7 @@ func (o *EventViewForNdsGroup) HasDatabase() bool {
 
 // SetDatabase gets a reference to the given string and assigns it to the Database field.
 func (o *EventViewForNdsGroup) SetDatabase(v string) {
+
 	o.Database = &v
 }
 
@@ -782,6 +802,7 @@ func (o *EventViewForNdsGroup) HasOpType() bool {
 
 // SetOpType gets a reference to the given string and assigns it to the OpType field.
 func (o *EventViewForNdsGroup) SetOpType(v string) {
+
 	o.OpType = &v
 }
 
@@ -815,6 +836,7 @@ func (o *EventViewForNdsGroup) HasPort() bool {
 
 // SetPort gets a reference to the given int and assigns it to the Port field.
 func (o *EventViewForNdsGroup) SetPort(v int) {
+
 	o.Port = &v
 }
 
@@ -848,6 +870,7 @@ func (o *EventViewForNdsGroup) HasReplicaSetName() bool {
 
 // SetReplicaSetName gets a reference to the given string and assigns it to the ReplicaSetName field.
 func (o *EventViewForNdsGroup) SetReplicaSetName(v string) {
+
 	o.ReplicaSetName = &v
 }
 
@@ -881,6 +904,7 @@ func (o *EventViewForNdsGroup) HasCurrentValue() bool {
 
 // SetCurrentValue gets a reference to the given NumberMetricValue and assigns it to the CurrentValue field.
 func (o *EventViewForNdsGroup) SetCurrentValue(v NumberMetricValue) {
+
 	o.CurrentValue = &v
 }
 
@@ -914,6 +938,7 @@ func (o *EventViewForNdsGroup) HasMetricName() bool {
 
 // SetMetricName gets a reference to the given string and assigns it to the MetricName field.
 func (o *EventViewForNdsGroup) SetMetricName(v string) {
+
 	o.MetricName = &v
 }
 
@@ -947,6 +972,7 @@ func (o *EventViewForNdsGroup) HasDbUserUsername() bool {
 
 // SetDbUserUsername gets a reference to the given string and assigns it to the DbUserUsername field.
 func (o *EventViewForNdsGroup) SetDbUserUsername(v string) {
+
 	o.DbUserUsername = &v
 }
 
@@ -980,6 +1006,7 @@ func (o *EventViewForNdsGroup) HasWhitelistEntry() bool {
 
 // SetWhitelistEntry gets a reference to the given string and assigns it to the WhitelistEntry field.
 func (o *EventViewForNdsGroup) SetWhitelistEntry(v string) {
+
 	o.WhitelistEntry = &v
 }
 
@@ -1013,6 +1040,7 @@ func (o *EventViewForNdsGroup) HasEndpointId() bool {
 
 // SetEndpointId gets a reference to the given string and assigns it to the EndpointId field.
 func (o *EventViewForNdsGroup) SetEndpointId(v string) {
+
 	o.EndpointId = &v
 }
 
@@ -1046,6 +1074,7 @@ func (o *EventViewForNdsGroup) HasProviderEndpointId() bool {
 
 // SetProviderEndpointId gets a reference to the given string and assigns it to the ProviderEndpointId field.
 func (o *EventViewForNdsGroup) SetProviderEndpointId(v string) {
+
 	o.ProviderEndpointId = &v
 }
 
@@ -1079,6 +1108,7 @@ func (o *EventViewForNdsGroup) HasTeamId() bool {
 
 // SetTeamId gets a reference to the given string and assigns it to the TeamId field.
 func (o *EventViewForNdsGroup) SetTeamId(v string) {
+
 	o.TeamId = &v
 }
 
@@ -1112,6 +1142,7 @@ func (o *EventViewForNdsGroup) HasTargetUsername() bool {
 
 // SetTargetUsername gets a reference to the given string and assigns it to the TargetUsername field.
 func (o *EventViewForNdsGroup) SetTargetUsername(v string) {
+
 	o.TargetUsername = &v
 }
 
@@ -1145,6 +1176,7 @@ func (o *EventViewForNdsGroup) HasResourceId() bool {
 
 // SetResourceId gets a reference to the given string and assigns it to the ResourceId field.
 func (o *EventViewForNdsGroup) SetResourceId(v string) {
+
 	o.ResourceId = &v
 }
 
@@ -1178,6 +1210,7 @@ func (o *EventViewForNdsGroup) HasResourceType() bool {
 
 // SetResourceType gets a reference to the given string and assigns it to the ResourceType field.
 func (o *EventViewForNdsGroup) SetResourceType(v string) {
+
 	o.ResourceType = &v
 }
 

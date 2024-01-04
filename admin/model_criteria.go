@@ -71,6 +71,7 @@ func (o *Criteria) HasType() bool {
 
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *Criteria) SetType(v string) {
+
 	o.Type = &v
 }
 
@@ -104,6 +105,7 @@ func (o *Criteria) HasQuery() bool {
 
 // SetQuery gets a reference to the given string and assigns it to the Query field.
 func (o *Criteria) SetQuery(v string) {
+
 	o.Query = &v
 }
 
@@ -137,6 +139,7 @@ func (o *Criteria) HasDateField() bool {
 
 // SetDateField gets a reference to the given string and assigns it to the DateField field.
 func (o *Criteria) SetDateField(v string) {
+
 	o.DateField = &v
 }
 
@@ -170,6 +173,7 @@ func (o *Criteria) HasDateFormat() bool {
 
 // SetDateFormat gets a reference to the given string and assigns it to the DateFormat field.
 func (o *Criteria) SetDateFormat(v string) {
+
 	o.DateFormat = &v
 }
 
@@ -203,6 +207,7 @@ func (o *Criteria) HasExpireAfterDays() bool {
 
 // SetExpireAfterDays gets a reference to the given int and assigns it to the ExpireAfterDays field.
 func (o *Criteria) SetExpireAfterDays(v int) {
+
 	o.ExpireAfterDays = &v
 }
 

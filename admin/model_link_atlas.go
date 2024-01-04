@@ -61,6 +61,7 @@ func (o *LinkAtlas) HasHref() bool {
 
 // SetHref gets a reference to the given string and assigns it to the Href field.
 func (o *LinkAtlas) SetHref(v string) {
+
 	o.Href = &v
 }
 
@@ -94,6 +95,7 @@ func (o *LinkAtlas) HasRel() bool {
 
 // SetRel gets a reference to the given string and assigns it to the Rel field.
 func (o *LinkAtlas) SetRel(v string) {
+
 	o.Rel = &v
 }
 

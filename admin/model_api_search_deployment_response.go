@@ -13,7 +13,7 @@ type ApiSearchDeploymentResponse struct {
 	// Unique 24-hexadecimal digit string that identifies the search deployment.
 	Id *string `json:"id,omitempty"`
 	// List of settings that configure the search nodes for your cluster.
-	Specs []ApiSearchDeploymentSpec `json:"specs,omitempty"`
+	Specs *[]ApiSearchDeploymentSpec `json:"specs,omitempty"`
 	// Human-readable label that indicates the current operating condition of this search deployment.
 	StateName *string `json:"stateName,omitempty"`
 }
@@ -65,6 +65,7 @@ func (o *ApiSearchDeploymentResponse) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *ApiSearchDeploymentResponse) SetGroupId(v string) {
+
 	o.GroupId = &v
 }
 
@@ -98,6 +99,7 @@ func (o *ApiSearchDeploymentResponse) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ApiSearchDeploymentResponse) SetId(v string) {
+
 	o.Id = &v
 }
 
@@ -107,12 +109,12 @@ func (o *ApiSearchDeploymentResponse) GetSpecs() []ApiSearchDeploymentSpec {
 		var ret []ApiSearchDeploymentSpec
 		return ret
 	}
-	return o.Specs
+	return *o.Specs
 }
 
 // GetSpecsOk returns a tuple with the Specs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiSearchDeploymentResponse) GetSpecsOk() ([]ApiSearchDeploymentSpec, bool) {
+func (o *ApiSearchDeploymentResponse) GetSpecsOk() (*[]ApiSearchDeploymentSpec, bool) {
 	if o == nil || IsNil(o.Specs) {
 		return nil, false
 	}
@@ -131,7 +133,8 @@ func (o *ApiSearchDeploymentResponse) HasSpecs() bool {
 
 // SetSpecs gets a reference to the given []ApiSearchDeploymentSpec and assigns it to the Specs field.
 func (o *ApiSearchDeploymentResponse) SetSpecs(v []ApiSearchDeploymentSpec) {
-	o.Specs = v
+
+	o.Specs = &v
 }
 
 // GetStateName returns the StateName field value if set, zero value otherwise
@@ -164,6 +167,7 @@ func (o *ApiSearchDeploymentResponse) HasStateName() bool {
 
 // SetStateName gets a reference to the given string and assigns it to the StateName field.
 func (o *ApiSearchDeploymentResponse) SetStateName(v string) {
+
 	o.StateName = &v
 }
 

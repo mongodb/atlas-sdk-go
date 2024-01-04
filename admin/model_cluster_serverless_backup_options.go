@@ -63,6 +63,7 @@ func (o *ClusterServerlessBackupOptions) HasServerlessContinuousBackupEnabled() 
 
 // SetServerlessContinuousBackupEnabled gets a reference to the given bool and assigns it to the ServerlessContinuousBackupEnabled field.
 func (o *ClusterServerlessBackupOptions) SetServerlessContinuousBackupEnabled(v bool) {
+
 	o.ServerlessContinuousBackupEnabled = &v
 }
 

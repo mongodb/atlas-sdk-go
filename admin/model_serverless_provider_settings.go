@@ -93,6 +93,7 @@ func (o *ServerlessProviderSettings) HasProviderName() bool {
 
 // SetProviderName gets a reference to the given string and assigns it to the ProviderName field.
 func (o *ServerlessProviderSettings) SetProviderName(v string) {
+
 	o.ProviderName = &v
 }
 

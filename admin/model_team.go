@@ -11,11 +11,11 @@ type Team struct {
 	// Unique 24-hexadecimal digit string that identifies this team.
 	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Human-readable label that identifies the team.
 	Name string `json:"name"`
 	// List that contains the MongoDB Cloud users in this team.
-	Usernames []string `json:"usernames,omitempty"`
+	Usernames *[]string `json:"usernames,omitempty"`
 }
 
 // NewTeam instantiates a new Team object
@@ -66,6 +66,7 @@ func (o *Team) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *Team) SetId(v string) {
+
 	o.Id = &v
 }
 
@@ -75,12 +76,12 @@ func (o *Team) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Team) GetLinksOk() ([]Link, bool) {
+func (o *Team) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -99,7 +100,8 @@ func (o *Team) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *Team) SetLinks(v []Link) {
-	o.Links = v
+
+	o.Links = &v
 }
 
 // GetName returns the Name field value
@@ -132,12 +134,12 @@ func (o *Team) GetUsernames() []string {
 		var ret []string
 		return ret
 	}
-	return o.Usernames
+	return *o.Usernames
 }
 
 // GetUsernamesOk returns a tuple with the Usernames field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Team) GetUsernamesOk() ([]string, bool) {
+func (o *Team) GetUsernamesOk() (*[]string, bool) {
 	if o == nil || IsNil(o.Usernames) {
 		return nil, false
 	}
@@ -156,7 +158,8 @@ func (o *Team) HasUsernames() bool {
 
 // SetUsernames gets a reference to the given []string and assigns it to the Usernames field.
 func (o *Team) SetUsernames(v []string) {
-	o.Usernames = v
+
+	o.Usernames = &v
 }
 
 func (o Team) MarshalJSONWithoutReadOnly() ([]byte, error) {

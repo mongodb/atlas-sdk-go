@@ -18,7 +18,7 @@ type CloudProviderAccessAWSIAMRoleAllOf struct {
 	// Date and time when someone created this role for the specified cloud service provider. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	CreatedDate *time.Time `json:"createdDate,omitempty"`
 	// List that contains application features associated with this Amazon Web Services (AWS) Identity and Access Management (IAM) role.
-	FeatureUsages []CloudProviderAccessFeatureUsage `json:"featureUsages,omitempty"`
+	FeatureUsages *[]CloudProviderAccessFeatureUsage `json:"featureUsages,omitempty"`
 	// Amazon Resource Name (ARN) that identifies the Amazon Web Services (AWS) Identity and Access Management (IAM) role that MongoDB Cloud assumes when it accesses resources in your AWS account.
 	IamAssumedRoleArn *string `json:"iamAssumedRoleArn,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the role.
@@ -72,6 +72,7 @@ func (o *CloudProviderAccessAWSIAMRoleAllOf) HasAtlasAWSAccountArn() bool {
 
 // SetAtlasAWSAccountArn gets a reference to the given string and assigns it to the AtlasAWSAccountArn field.
 func (o *CloudProviderAccessAWSIAMRoleAllOf) SetAtlasAWSAccountArn(v string) {
+
 	o.AtlasAWSAccountArn = &v
 }
 
@@ -105,6 +106,7 @@ func (o *CloudProviderAccessAWSIAMRoleAllOf) HasAtlasAssumedRoleExternalId() boo
 
 // SetAtlasAssumedRoleExternalId gets a reference to the given string and assigns it to the AtlasAssumedRoleExternalId field.
 func (o *CloudProviderAccessAWSIAMRoleAllOf) SetAtlasAssumedRoleExternalId(v string) {
+
 	o.AtlasAssumedRoleExternalId = &v
 }
 
@@ -138,6 +140,7 @@ func (o *CloudProviderAccessAWSIAMRoleAllOf) HasAuthorizedDate() bool {
 
 // SetAuthorizedDate gets a reference to the given time.Time and assigns it to the AuthorizedDate field.
 func (o *CloudProviderAccessAWSIAMRoleAllOf) SetAuthorizedDate(v time.Time) {
+
 	o.AuthorizedDate = &v
 }
 
@@ -171,6 +174,7 @@ func (o *CloudProviderAccessAWSIAMRoleAllOf) HasCreatedDate() bool {
 
 // SetCreatedDate gets a reference to the given time.Time and assigns it to the CreatedDate field.
 func (o *CloudProviderAccessAWSIAMRoleAllOf) SetCreatedDate(v time.Time) {
+
 	o.CreatedDate = &v
 }
 
@@ -180,12 +184,12 @@ func (o *CloudProviderAccessAWSIAMRoleAllOf) GetFeatureUsages() []CloudProviderA
 		var ret []CloudProviderAccessFeatureUsage
 		return ret
 	}
-	return o.FeatureUsages
+	return *o.FeatureUsages
 }
 
 // GetFeatureUsagesOk returns a tuple with the FeatureUsages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudProviderAccessAWSIAMRoleAllOf) GetFeatureUsagesOk() ([]CloudProviderAccessFeatureUsage, bool) {
+func (o *CloudProviderAccessAWSIAMRoleAllOf) GetFeatureUsagesOk() (*[]CloudProviderAccessFeatureUsage, bool) {
 	if o == nil || IsNil(o.FeatureUsages) {
 		return nil, false
 	}
@@ -204,7 +208,8 @@ func (o *CloudProviderAccessAWSIAMRoleAllOf) HasFeatureUsages() bool {
 
 // SetFeatureUsages gets a reference to the given []CloudProviderAccessFeatureUsage and assigns it to the FeatureUsages field.
 func (o *CloudProviderAccessAWSIAMRoleAllOf) SetFeatureUsages(v []CloudProviderAccessFeatureUsage) {
-	o.FeatureUsages = v
+
+	o.FeatureUsages = &v
 }
 
 // GetIamAssumedRoleArn returns the IamAssumedRoleArn field value if set, zero value otherwise
@@ -237,6 +242,7 @@ func (o *CloudProviderAccessAWSIAMRoleAllOf) HasIamAssumedRoleArn() bool {
 
 // SetIamAssumedRoleArn gets a reference to the given string and assigns it to the IamAssumedRoleArn field.
 func (o *CloudProviderAccessAWSIAMRoleAllOf) SetIamAssumedRoleArn(v string) {
+
 	o.IamAssumedRoleArn = &v
 }
 
@@ -270,6 +276,7 @@ func (o *CloudProviderAccessAWSIAMRoleAllOf) HasRoleId() bool {
 
 // SetRoleId gets a reference to the given string and assigns it to the RoleId field.
 func (o *CloudProviderAccessAWSIAMRoleAllOf) SetRoleId(v string) {
+
 	o.RoleId = &v
 }
 

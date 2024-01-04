@@ -9,9 +9,9 @@ import (
 // TeamRole struct for TeamRole
 type TeamRole struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// One or more organization- or project-level roles to assign to the MongoDB Cloud user.
-	RoleNames []string `json:"roleNames,omitempty"`
+	RoleNames *[]string `json:"roleNames,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the team.
 	TeamId *string `json:"teamId,omitempty"`
 }
@@ -39,12 +39,12 @@ func (o *TeamRole) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TeamRole) GetLinksOk() ([]Link, bool) {
+func (o *TeamRole) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -63,7 +63,8 @@ func (o *TeamRole) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *TeamRole) SetLinks(v []Link) {
-	o.Links = v
+
+	o.Links = &v
 }
 
 // GetRoleNames returns the RoleNames field value if set, zero value otherwise
@@ -72,12 +73,12 @@ func (o *TeamRole) GetRoleNames() []string {
 		var ret []string
 		return ret
 	}
-	return o.RoleNames
+	return *o.RoleNames
 }
 
 // GetRoleNamesOk returns a tuple with the RoleNames field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TeamRole) GetRoleNamesOk() ([]string, bool) {
+func (o *TeamRole) GetRoleNamesOk() (*[]string, bool) {
 	if o == nil || IsNil(o.RoleNames) {
 		return nil, false
 	}
@@ -96,7 +97,8 @@ func (o *TeamRole) HasRoleNames() bool {
 
 // SetRoleNames gets a reference to the given []string and assigns it to the RoleNames field.
 func (o *TeamRole) SetRoleNames(v []string) {
-	o.RoleNames = v
+
+	o.RoleNames = &v
 }
 
 // GetTeamId returns the TeamId field value if set, zero value otherwise
@@ -129,6 +131,7 @@ func (o *TeamRole) HasTeamId() bool {
 
 // SetTeamId gets a reference to the given string and assigns it to the TeamId field.
 func (o *TeamRole) SetTeamId(v string) {
+
 	o.TeamId = &v
 }
 

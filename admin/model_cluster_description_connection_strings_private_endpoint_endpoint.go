@@ -63,6 +63,7 @@ func (o *ClusterDescriptionConnectionStringsPrivateEndpointEndpoint) HasEndpoint
 
 // SetEndpointId gets a reference to the given string and assigns it to the EndpointId field.
 func (o *ClusterDescriptionConnectionStringsPrivateEndpointEndpoint) SetEndpointId(v string) {
+
 	o.EndpointId = &v
 }
 
@@ -96,6 +97,7 @@ func (o *ClusterDescriptionConnectionStringsPrivateEndpointEndpoint) HasProvider
 
 // SetProviderName gets a reference to the given string and assigns it to the ProviderName field.
 func (o *ClusterDescriptionConnectionStringsPrivateEndpointEndpoint) SetProviderName(v string) {
+
 	o.ProviderName = &v
 }
 
@@ -129,6 +131,7 @@ func (o *ClusterDescriptionConnectionStringsPrivateEndpointEndpoint) HasRegion()
 
 // SetRegion gets a reference to the given string and assigns it to the Region field.
 func (o *ClusterDescriptionConnectionStringsPrivateEndpointEndpoint) SetRegion(v string) {
+
 	o.Region = &v
 }
 

@@ -15,7 +15,7 @@ type CreateEndpointRequest struct {
 	// Human-readable label that identifies a set of endpoints.
 	EndpointGroupName *string `json:"endpointGroupName,omitempty"`
 	// List of individual private endpoints that comprise this endpoint group.
-	Endpoints []CreateGCPForwardingRuleRequest `json:"endpoints,omitempty"`
+	Endpoints *[]CreateGCPForwardingRuleRequest `json:"endpoints,omitempty"`
 	// Unique string that identifies the Google Cloud project in which you created the endpoints.
 	GcpProjectId *string `json:"gcpProjectId,omitempty"`
 }
@@ -67,6 +67,7 @@ func (o *CreateEndpointRequest) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *CreateEndpointRequest) SetId(v string) {
+
 	o.Id = &v
 }
 
@@ -100,6 +101,7 @@ func (o *CreateEndpointRequest) HasPrivateEndpointIPAddress() bool {
 
 // SetPrivateEndpointIPAddress gets a reference to the given string and assigns it to the PrivateEndpointIPAddress field.
 func (o *CreateEndpointRequest) SetPrivateEndpointIPAddress(v string) {
+
 	o.PrivateEndpointIPAddress = &v
 }
 
@@ -133,6 +135,7 @@ func (o *CreateEndpointRequest) HasEndpointGroupName() bool {
 
 // SetEndpointGroupName gets a reference to the given string and assigns it to the EndpointGroupName field.
 func (o *CreateEndpointRequest) SetEndpointGroupName(v string) {
+
 	o.EndpointGroupName = &v
 }
 
@@ -142,12 +145,12 @@ func (o *CreateEndpointRequest) GetEndpoints() []CreateGCPForwardingRuleRequest 
 		var ret []CreateGCPForwardingRuleRequest
 		return ret
 	}
-	return o.Endpoints
+	return *o.Endpoints
 }
 
 // GetEndpointsOk returns a tuple with the Endpoints field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateEndpointRequest) GetEndpointsOk() ([]CreateGCPForwardingRuleRequest, bool) {
+func (o *CreateEndpointRequest) GetEndpointsOk() (*[]CreateGCPForwardingRuleRequest, bool) {
 	if o == nil || IsNil(o.Endpoints) {
 		return nil, false
 	}
@@ -166,7 +169,8 @@ func (o *CreateEndpointRequest) HasEndpoints() bool {
 
 // SetEndpoints gets a reference to the given []CreateGCPForwardingRuleRequest and assigns it to the Endpoints field.
 func (o *CreateEndpointRequest) SetEndpoints(v []CreateGCPForwardingRuleRequest) {
-	o.Endpoints = v
+
+	o.Endpoints = &v
 }
 
 // GetGcpProjectId returns the GcpProjectId field value if set, zero value otherwise
@@ -199,6 +203,7 @@ func (o *CreateEndpointRequest) HasGcpProjectId() bool {
 
 // SetGcpProjectId gets a reference to the given string and assigns it to the GcpProjectId field.
 func (o *CreateEndpointRequest) SetGcpProjectId(v string) {
+
 	o.GcpProjectId = &v
 }
 

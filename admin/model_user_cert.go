@@ -16,7 +16,7 @@ type UserCert struct {
 	// Unique 24-hexadecimal character string that identifies the project.
 	GroupId *string `json:"groupId,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Number of months that the certificate remains valid until it expires.
 	MonthsUntilExpiration *int `json:"monthsUntilExpiration,omitempty"`
 	// Date and time when this certificate expires. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
@@ -76,6 +76,7 @@ func (o *UserCert) HasId() bool {
 
 // SetId gets a reference to the given int64 and assigns it to the Id field.
 func (o *UserCert) SetId(v int64) {
+
 	o.Id = &v
 }
 
@@ -109,6 +110,7 @@ func (o *UserCert) HasCreatedAt() bool {
 
 // SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
 func (o *UserCert) SetCreatedAt(v time.Time) {
+
 	o.CreatedAt = &v
 }
 
@@ -142,6 +144,7 @@ func (o *UserCert) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *UserCert) SetGroupId(v string) {
+
 	o.GroupId = &v
 }
 
@@ -151,12 +154,12 @@ func (o *UserCert) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserCert) GetLinksOk() ([]Link, bool) {
+func (o *UserCert) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -175,7 +178,8 @@ func (o *UserCert) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *UserCert) SetLinks(v []Link) {
-	o.Links = v
+
+	o.Links = &v
 }
 
 // GetMonthsUntilExpiration returns the MonthsUntilExpiration field value if set, zero value otherwise
@@ -208,6 +212,7 @@ func (o *UserCert) HasMonthsUntilExpiration() bool {
 
 // SetMonthsUntilExpiration gets a reference to the given int and assigns it to the MonthsUntilExpiration field.
 func (o *UserCert) SetMonthsUntilExpiration(v int) {
+
 	o.MonthsUntilExpiration = &v
 }
 
@@ -241,6 +246,7 @@ func (o *UserCert) HasNotAfter() bool {
 
 // SetNotAfter gets a reference to the given time.Time and assigns it to the NotAfter field.
 func (o *UserCert) SetNotAfter(v time.Time) {
+
 	o.NotAfter = &v
 }
 
@@ -274,6 +280,7 @@ func (o *UserCert) HasSubject() bool {
 
 // SetSubject gets a reference to the given string and assigns it to the Subject field.
 func (o *UserCert) SetSubject(v string) {
+
 	o.Subject = &v
 }
 

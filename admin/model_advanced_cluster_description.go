@@ -29,9 +29,9 @@ type AdvancedClusterDescription struct {
 	Id *string `json:"id,omitempty"`
 	// Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels.  Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use [resource tags](https://dochub.mongodb.org/core/add-cluster-tag-atlas) instead.
 	// Deprecated
-	Labels []ComponentLabel `json:"labels,omitempty"`
+	Labels *[]ComponentLabel `json:"labels,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Major MongoDB version of the cluster. MongoDB Cloud deploys the cluster with the latest stable release of the specified version.
 	MongoDBMajorVersion *string `json:"mongoDBMajorVersion,omitempty"`
 	// Version of MongoDB that the cluster runs.
@@ -43,13 +43,13 @@ type AdvancedClusterDescription struct {
 	// Flag that indicates whether the cluster uses continuous cloud backups.
 	PitEnabled *bool `json:"pitEnabled,omitempty"`
 	// List of settings that configure your cluster regions. For Global Clusters, each object in the array represents a zone where your clusters nodes deploy. For non-Global sharded clusters and replica sets, this array has one object representing where your clusters nodes deploy.
-	ReplicationSpecs []ReplicationSpec `json:"replicationSpecs,omitempty"`
+	ReplicationSpecs *[]ReplicationSpec `json:"replicationSpecs,omitempty"`
 	// Root Certificate Authority that MongoDB Cloud cluster uses. MongoDB Cloud supports Internet Security Research Group.
 	RootCertType *string `json:"rootCertType,omitempty"`
 	// Human-readable label that indicates the current operating condition of this cluster.
 	StateName *string `json:"stateName,omitempty"`
 	// List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the cluster.
-	Tags []ResourceTag `json:"tags,omitempty"`
+	Tags *[]ResourceTag `json:"tags,omitempty"`
 	// Flag that indicates whether termination protection is enabled on the cluster. If set to `true`, MongoDB Cloud won't delete the cluster. If set to `false`, MongoDB Cloud will delete the cluster.
 	TerminationProtectionEnabled *bool `json:"terminationProtectionEnabled,omitempty"`
 	// Method by which the cluster maintains the MongoDB versions. If value is `CONTINUOUS`, you must not specify **mongoDBMajorVersion**.
@@ -123,6 +123,7 @@ func (o *AdvancedClusterDescription) HasAcceptDataRisksAndForceReplicaSetReconfi
 
 // SetAcceptDataRisksAndForceReplicaSetReconfig gets a reference to the given time.Time and assigns it to the AcceptDataRisksAndForceReplicaSetReconfig field.
 func (o *AdvancedClusterDescription) SetAcceptDataRisksAndForceReplicaSetReconfig(v time.Time) {
+
 	o.AcceptDataRisksAndForceReplicaSetReconfig = &v
 }
 
@@ -156,6 +157,7 @@ func (o *AdvancedClusterDescription) HasBackupEnabled() bool {
 
 // SetBackupEnabled gets a reference to the given bool and assigns it to the BackupEnabled field.
 func (o *AdvancedClusterDescription) SetBackupEnabled(v bool) {
+
 	o.BackupEnabled = &v
 }
 
@@ -189,6 +191,7 @@ func (o *AdvancedClusterDescription) HasBiConnector() bool {
 
 // SetBiConnector gets a reference to the given BiConnector and assigns it to the BiConnector field.
 func (o *AdvancedClusterDescription) SetBiConnector(v BiConnector) {
+
 	o.BiConnector = &v
 }
 
@@ -222,6 +225,7 @@ func (o *AdvancedClusterDescription) HasClusterType() bool {
 
 // SetClusterType gets a reference to the given string and assigns it to the ClusterType field.
 func (o *AdvancedClusterDescription) SetClusterType(v string) {
+
 	o.ClusterType = &v
 }
 
@@ -255,6 +259,7 @@ func (o *AdvancedClusterDescription) HasConnectionStrings() bool {
 
 // SetConnectionStrings gets a reference to the given ClusterConnectionStrings and assigns it to the ConnectionStrings field.
 func (o *AdvancedClusterDescription) SetConnectionStrings(v ClusterConnectionStrings) {
+
 	o.ConnectionStrings = &v
 }
 
@@ -288,6 +293,7 @@ func (o *AdvancedClusterDescription) HasCreateDate() bool {
 
 // SetCreateDate gets a reference to the given time.Time and assigns it to the CreateDate field.
 func (o *AdvancedClusterDescription) SetCreateDate(v time.Time) {
+
 	o.CreateDate = &v
 }
 
@@ -321,6 +327,7 @@ func (o *AdvancedClusterDescription) HasDiskSizeGB() bool {
 
 // SetDiskSizeGB gets a reference to the given float64 and assigns it to the DiskSizeGB field.
 func (o *AdvancedClusterDescription) SetDiskSizeGB(v float64) {
+
 	o.DiskSizeGB = &v
 }
 
@@ -354,6 +361,7 @@ func (o *AdvancedClusterDescription) HasEncryptionAtRestProvider() bool {
 
 // SetEncryptionAtRestProvider gets a reference to the given string and assigns it to the EncryptionAtRestProvider field.
 func (o *AdvancedClusterDescription) SetEncryptionAtRestProvider(v string) {
+
 	o.EncryptionAtRestProvider = &v
 }
 
@@ -387,6 +395,7 @@ func (o *AdvancedClusterDescription) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *AdvancedClusterDescription) SetGroupId(v string) {
+
 	o.GroupId = &v
 }
 
@@ -420,6 +429,7 @@ func (o *AdvancedClusterDescription) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *AdvancedClusterDescription) SetId(v string) {
+
 	o.Id = &v
 }
 
@@ -430,13 +440,13 @@ func (o *AdvancedClusterDescription) GetLabels() []ComponentLabel {
 		var ret []ComponentLabel
 		return ret
 	}
-	return o.Labels
+	return *o.Labels
 }
 
 // GetLabelsOk returns a tuple with the Labels field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // Deprecated
-func (o *AdvancedClusterDescription) GetLabelsOk() ([]ComponentLabel, bool) {
+func (o *AdvancedClusterDescription) GetLabelsOk() (*[]ComponentLabel, bool) {
 	if o == nil || IsNil(o.Labels) {
 		return nil, false
 	}
@@ -456,7 +466,8 @@ func (o *AdvancedClusterDescription) HasLabels() bool {
 // SetLabels gets a reference to the given []ComponentLabel and assigns it to the Labels field.
 // Deprecated
 func (o *AdvancedClusterDescription) SetLabels(v []ComponentLabel) {
-	o.Labels = v
+
+	o.Labels = &v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -465,12 +476,12 @@ func (o *AdvancedClusterDescription) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AdvancedClusterDescription) GetLinksOk() ([]Link, bool) {
+func (o *AdvancedClusterDescription) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -489,7 +500,8 @@ func (o *AdvancedClusterDescription) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *AdvancedClusterDescription) SetLinks(v []Link) {
-	o.Links = v
+
+	o.Links = &v
 }
 
 // GetMongoDBMajorVersion returns the MongoDBMajorVersion field value if set, zero value otherwise
@@ -522,6 +534,7 @@ func (o *AdvancedClusterDescription) HasMongoDBMajorVersion() bool {
 
 // SetMongoDBMajorVersion gets a reference to the given string and assigns it to the MongoDBMajorVersion field.
 func (o *AdvancedClusterDescription) SetMongoDBMajorVersion(v string) {
+
 	o.MongoDBMajorVersion = &v
 }
 
@@ -555,6 +568,7 @@ func (o *AdvancedClusterDescription) HasMongoDBVersion() bool {
 
 // SetMongoDBVersion gets a reference to the given string and assigns it to the MongoDBVersion field.
 func (o *AdvancedClusterDescription) SetMongoDBVersion(v string) {
+
 	o.MongoDBVersion = &v
 }
 
@@ -588,6 +602,7 @@ func (o *AdvancedClusterDescription) HasName() bool {
 
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *AdvancedClusterDescription) SetName(v string) {
+
 	o.Name = &v
 }
 
@@ -621,6 +636,7 @@ func (o *AdvancedClusterDescription) HasPaused() bool {
 
 // SetPaused gets a reference to the given bool and assigns it to the Paused field.
 func (o *AdvancedClusterDescription) SetPaused(v bool) {
+
 	o.Paused = &v
 }
 
@@ -654,6 +670,7 @@ func (o *AdvancedClusterDescription) HasPitEnabled() bool {
 
 // SetPitEnabled gets a reference to the given bool and assigns it to the PitEnabled field.
 func (o *AdvancedClusterDescription) SetPitEnabled(v bool) {
+
 	o.PitEnabled = &v
 }
 
@@ -663,12 +680,12 @@ func (o *AdvancedClusterDescription) GetReplicationSpecs() []ReplicationSpec {
 		var ret []ReplicationSpec
 		return ret
 	}
-	return o.ReplicationSpecs
+	return *o.ReplicationSpecs
 }
 
 // GetReplicationSpecsOk returns a tuple with the ReplicationSpecs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AdvancedClusterDescription) GetReplicationSpecsOk() ([]ReplicationSpec, bool) {
+func (o *AdvancedClusterDescription) GetReplicationSpecsOk() (*[]ReplicationSpec, bool) {
 	if o == nil || IsNil(o.ReplicationSpecs) {
 		return nil, false
 	}
@@ -687,7 +704,8 @@ func (o *AdvancedClusterDescription) HasReplicationSpecs() bool {
 
 // SetReplicationSpecs gets a reference to the given []ReplicationSpec and assigns it to the ReplicationSpecs field.
 func (o *AdvancedClusterDescription) SetReplicationSpecs(v []ReplicationSpec) {
-	o.ReplicationSpecs = v
+
+	o.ReplicationSpecs = &v
 }
 
 // GetRootCertType returns the RootCertType field value if set, zero value otherwise
@@ -720,6 +738,7 @@ func (o *AdvancedClusterDescription) HasRootCertType() bool {
 
 // SetRootCertType gets a reference to the given string and assigns it to the RootCertType field.
 func (o *AdvancedClusterDescription) SetRootCertType(v string) {
+
 	o.RootCertType = &v
 }
 
@@ -753,6 +772,7 @@ func (o *AdvancedClusterDescription) HasStateName() bool {
 
 // SetStateName gets a reference to the given string and assigns it to the StateName field.
 func (o *AdvancedClusterDescription) SetStateName(v string) {
+
 	o.StateName = &v
 }
 
@@ -762,12 +782,12 @@ func (o *AdvancedClusterDescription) GetTags() []ResourceTag {
 		var ret []ResourceTag
 		return ret
 	}
-	return o.Tags
+	return *o.Tags
 }
 
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AdvancedClusterDescription) GetTagsOk() ([]ResourceTag, bool) {
+func (o *AdvancedClusterDescription) GetTagsOk() (*[]ResourceTag, bool) {
 	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
@@ -786,7 +806,8 @@ func (o *AdvancedClusterDescription) HasTags() bool {
 
 // SetTags gets a reference to the given []ResourceTag and assigns it to the Tags field.
 func (o *AdvancedClusterDescription) SetTags(v []ResourceTag) {
-	o.Tags = v
+
+	o.Tags = &v
 }
 
 // GetTerminationProtectionEnabled returns the TerminationProtectionEnabled field value if set, zero value otherwise
@@ -819,6 +840,7 @@ func (o *AdvancedClusterDescription) HasTerminationProtectionEnabled() bool {
 
 // SetTerminationProtectionEnabled gets a reference to the given bool and assigns it to the TerminationProtectionEnabled field.
 func (o *AdvancedClusterDescription) SetTerminationProtectionEnabled(v bool) {
+
 	o.TerminationProtectionEnabled = &v
 }
 
@@ -852,6 +874,7 @@ func (o *AdvancedClusterDescription) HasVersionReleaseSystem() bool {
 
 // SetVersionReleaseSystem gets a reference to the given string and assigns it to the VersionReleaseSystem field.
 func (o *AdvancedClusterDescription) SetVersionReleaseSystem(v string) {
+
 	o.VersionReleaseSystem = &v
 }
 

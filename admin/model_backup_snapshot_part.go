@@ -77,6 +77,7 @@ func (o *BackupSnapshotPart) HasClusterId() bool {
 
 // SetClusterId gets a reference to the given string and assigns it to the ClusterId field.
 func (o *BackupSnapshotPart) SetClusterId(v string) {
+
 	o.ClusterId = &v
 }
 
@@ -110,6 +111,7 @@ func (o *BackupSnapshotPart) HasCompressionSetting() bool {
 
 // SetCompressionSetting gets a reference to the given string and assigns it to the CompressionSetting field.
 func (o *BackupSnapshotPart) SetCompressionSetting(v string) {
+
 	o.CompressionSetting = &v
 }
 
@@ -143,6 +145,7 @@ func (o *BackupSnapshotPart) HasDataSizeBytes() bool {
 
 // SetDataSizeBytes gets a reference to the given int64 and assigns it to the DataSizeBytes field.
 func (o *BackupSnapshotPart) SetDataSizeBytes(v int64) {
+
 	o.DataSizeBytes = &v
 }
 
@@ -176,6 +179,7 @@ func (o *BackupSnapshotPart) HasEncryptionEnabled() bool {
 
 // SetEncryptionEnabled gets a reference to the given bool and assigns it to the EncryptionEnabled field.
 func (o *BackupSnapshotPart) SetEncryptionEnabled(v bool) {
+
 	o.EncryptionEnabled = &v
 }
 
@@ -209,6 +213,7 @@ func (o *BackupSnapshotPart) HasFileSizeBytes() bool {
 
 // SetFileSizeBytes gets a reference to the given int64 and assigns it to the FileSizeBytes field.
 func (o *BackupSnapshotPart) SetFileSizeBytes(v int64) {
+
 	o.FileSizeBytes = &v
 }
 
@@ -242,6 +247,7 @@ func (o *BackupSnapshotPart) HasMasterKeyUUID() bool {
 
 // SetMasterKeyUUID gets a reference to the given string and assigns it to the MasterKeyUUID field.
 func (o *BackupSnapshotPart) SetMasterKeyUUID(v string) {
+
 	o.MasterKeyUUID = &v
 }
 
@@ -275,6 +281,7 @@ func (o *BackupSnapshotPart) HasMongodVersion() bool {
 
 // SetMongodVersion gets a reference to the given string and assigns it to the MongodVersion field.
 func (o *BackupSnapshotPart) SetMongodVersion(v string) {
+
 	o.MongodVersion = &v
 }
 
@@ -308,6 +315,7 @@ func (o *BackupSnapshotPart) HasReplicaSetName() bool {
 
 // SetReplicaSetName gets a reference to the given string and assigns it to the ReplicaSetName field.
 func (o *BackupSnapshotPart) SetReplicaSetName(v string) {
+
 	o.ReplicaSetName = &v
 }
 
@@ -341,6 +349,7 @@ func (o *BackupSnapshotPart) HasStorageSizeBytes() bool {
 
 // SetStorageSizeBytes gets a reference to the given int64 and assigns it to the StorageSizeBytes field.
 func (o *BackupSnapshotPart) SetStorageSizeBytes(v int64) {
+
 	o.StorageSizeBytes = &v
 }
 
@@ -374,6 +383,7 @@ func (o *BackupSnapshotPart) HasTypeName() bool {
 
 // SetTypeName gets a reference to the given string and assigns it to the TypeName field.
 func (o *BackupSnapshotPart) SetTypeName(v string) {
+
 	o.TypeName = &v
 }
 

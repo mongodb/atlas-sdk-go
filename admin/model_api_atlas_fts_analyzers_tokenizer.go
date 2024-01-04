@@ -73,6 +73,7 @@ func (o *ApiAtlasFTSAnalyzersTokenizer) HasMaxGram() bool {
 
 // SetMaxGram gets a reference to the given int and assigns it to the MaxGram field.
 func (o *ApiAtlasFTSAnalyzersTokenizer) SetMaxGram(v int) {
+
 	o.MaxGram = &v
 }
 
@@ -106,6 +107,7 @@ func (o *ApiAtlasFTSAnalyzersTokenizer) HasMinGram() bool {
 
 // SetMinGram gets a reference to the given int and assigns it to the MinGram field.
 func (o *ApiAtlasFTSAnalyzersTokenizer) SetMinGram(v int) {
+
 	o.MinGram = &v
 }
 
@@ -139,6 +141,7 @@ func (o *ApiAtlasFTSAnalyzersTokenizer) HasType() bool {
 
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *ApiAtlasFTSAnalyzersTokenizer) SetType(v string) {
+
 	o.Type = &v
 }
 
@@ -172,6 +175,7 @@ func (o *ApiAtlasFTSAnalyzersTokenizer) HasGroup() bool {
 
 // SetGroup gets a reference to the given int and assigns it to the Group field.
 func (o *ApiAtlasFTSAnalyzersTokenizer) SetGroup(v int) {
+
 	o.Group = &v
 }
 
@@ -205,6 +209,7 @@ func (o *ApiAtlasFTSAnalyzersTokenizer) HasPattern() bool {
 
 // SetPattern gets a reference to the given string and assigns it to the Pattern field.
 func (o *ApiAtlasFTSAnalyzersTokenizer) SetPattern(v string) {
+
 	o.Pattern = &v
 }
 
@@ -238,6 +243,7 @@ func (o *ApiAtlasFTSAnalyzersTokenizer) HasMaxTokenLength() bool {
 
 // SetMaxTokenLength gets a reference to the given int and assigns it to the MaxTokenLength field.
 func (o *ApiAtlasFTSAnalyzersTokenizer) SetMaxTokenLength(v int) {
+
 	o.MaxTokenLength = &v
 }
 

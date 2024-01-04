@@ -11,15 +11,15 @@ type CloudSearchMetrics struct {
 	// Unique 24-hexadecimal digit string that identifies the project.
 	GroupId string `json:"groupId"`
 	// List that contains all host compute, memory, and storage utilization dedicated to Atlas Search when MongoDB Atlas received this request.
-	HardwareMetrics []FTSMetric `json:"hardwareMetrics,omitempty"`
+	HardwareMetrics *[]FTSMetric `json:"hardwareMetrics,omitempty"`
 	// List that contains all performance and utilization measurements that Atlas Search index performed by the time MongoDB Atlas received this request.
-	IndexMetrics []FTSMetric `json:"indexMetrics,omitempty"`
+	IndexMetrics *[]FTSMetric `json:"indexMetrics,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Hostname and port that identifies the process.
 	ProcessId string `json:"processId"`
 	// List that contains all available Atlas Search status metrics when MongoDB Atlas received this request.
-	StatusMetrics []FTSMetric `json:"statusMetrics,omitempty"`
+	StatusMetrics *[]FTSMetric `json:"statusMetrics,omitempty"`
 }
 
 // NewCloudSearchMetrics instantiates a new CloudSearchMetrics object
@@ -71,12 +71,12 @@ func (o *CloudSearchMetrics) GetHardwareMetrics() []FTSMetric {
 		var ret []FTSMetric
 		return ret
 	}
-	return o.HardwareMetrics
+	return *o.HardwareMetrics
 }
 
 // GetHardwareMetricsOk returns a tuple with the HardwareMetrics field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudSearchMetrics) GetHardwareMetricsOk() ([]FTSMetric, bool) {
+func (o *CloudSearchMetrics) GetHardwareMetricsOk() (*[]FTSMetric, bool) {
 	if o == nil || IsNil(o.HardwareMetrics) {
 		return nil, false
 	}
@@ -95,7 +95,8 @@ func (o *CloudSearchMetrics) HasHardwareMetrics() bool {
 
 // SetHardwareMetrics gets a reference to the given []FTSMetric and assigns it to the HardwareMetrics field.
 func (o *CloudSearchMetrics) SetHardwareMetrics(v []FTSMetric) {
-	o.HardwareMetrics = v
+
+	o.HardwareMetrics = &v
 }
 
 // GetIndexMetrics returns the IndexMetrics field value if set, zero value otherwise
@@ -104,12 +105,12 @@ func (o *CloudSearchMetrics) GetIndexMetrics() []FTSMetric {
 		var ret []FTSMetric
 		return ret
 	}
-	return o.IndexMetrics
+	return *o.IndexMetrics
 }
 
 // GetIndexMetricsOk returns a tuple with the IndexMetrics field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudSearchMetrics) GetIndexMetricsOk() ([]FTSMetric, bool) {
+func (o *CloudSearchMetrics) GetIndexMetricsOk() (*[]FTSMetric, bool) {
 	if o == nil || IsNil(o.IndexMetrics) {
 		return nil, false
 	}
@@ -128,7 +129,8 @@ func (o *CloudSearchMetrics) HasIndexMetrics() bool {
 
 // SetIndexMetrics gets a reference to the given []FTSMetric and assigns it to the IndexMetrics field.
 func (o *CloudSearchMetrics) SetIndexMetrics(v []FTSMetric) {
-	o.IndexMetrics = v
+
+	o.IndexMetrics = &v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -137,12 +139,12 @@ func (o *CloudSearchMetrics) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudSearchMetrics) GetLinksOk() ([]Link, bool) {
+func (o *CloudSearchMetrics) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -161,7 +163,8 @@ func (o *CloudSearchMetrics) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *CloudSearchMetrics) SetLinks(v []Link) {
-	o.Links = v
+
+	o.Links = &v
 }
 
 // GetProcessId returns the ProcessId field value
@@ -194,12 +197,12 @@ func (o *CloudSearchMetrics) GetStatusMetrics() []FTSMetric {
 		var ret []FTSMetric
 		return ret
 	}
-	return o.StatusMetrics
+	return *o.StatusMetrics
 }
 
 // GetStatusMetricsOk returns a tuple with the StatusMetrics field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudSearchMetrics) GetStatusMetricsOk() ([]FTSMetric, bool) {
+func (o *CloudSearchMetrics) GetStatusMetricsOk() (*[]FTSMetric, bool) {
 	if o == nil || IsNil(o.StatusMetrics) {
 		return nil, false
 	}
@@ -218,7 +221,8 @@ func (o *CloudSearchMetrics) HasStatusMetrics() bool {
 
 // SetStatusMetrics gets a reference to the given []FTSMetric and assigns it to the StatusMetrics field.
 func (o *CloudSearchMetrics) SetStatusMetrics(v []FTSMetric) {
-	o.StatusMetrics = v
+
+	o.StatusMetrics = &v
 }
 
 func (o CloudSearchMetrics) MarshalJSONWithoutReadOnly() ([]byte, error) {

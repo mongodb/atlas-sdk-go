@@ -22,7 +22,7 @@ type NetworkPermissionEntry struct {
 	// IP address that you want to add to the project's IP access list. Your IP access list entry can be one **awsSecurityGroup**, one **cidrBlock**, or one **ipAddress**. Don't set this parameter if you set **awsSecurityGroup** or **cidrBlock**.
 	IpAddress *string `json:"ipAddress,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 }
 
 // NewNetworkPermissionEntry instantiates a new NetworkPermissionEntry object
@@ -72,6 +72,7 @@ func (o *NetworkPermissionEntry) HasAwsSecurityGroup() bool {
 
 // SetAwsSecurityGroup gets a reference to the given string and assigns it to the AwsSecurityGroup field.
 func (o *NetworkPermissionEntry) SetAwsSecurityGroup(v string) {
+
 	o.AwsSecurityGroup = &v
 }
 
@@ -105,6 +106,7 @@ func (o *NetworkPermissionEntry) HasCidrBlock() bool {
 
 // SetCidrBlock gets a reference to the given string and assigns it to the CidrBlock field.
 func (o *NetworkPermissionEntry) SetCidrBlock(v string) {
+
 	o.CidrBlock = &v
 }
 
@@ -138,6 +140,7 @@ func (o *NetworkPermissionEntry) HasComment() bool {
 
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *NetworkPermissionEntry) SetComment(v string) {
+
 	o.Comment = &v
 }
 
@@ -171,6 +174,7 @@ func (o *NetworkPermissionEntry) HasDeleteAfterDate() bool {
 
 // SetDeleteAfterDate gets a reference to the given time.Time and assigns it to the DeleteAfterDate field.
 func (o *NetworkPermissionEntry) SetDeleteAfterDate(v time.Time) {
+
 	o.DeleteAfterDate = &v
 }
 
@@ -204,6 +208,7 @@ func (o *NetworkPermissionEntry) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *NetworkPermissionEntry) SetGroupId(v string) {
+
 	o.GroupId = &v
 }
 
@@ -237,6 +242,7 @@ func (o *NetworkPermissionEntry) HasIpAddress() bool {
 
 // SetIpAddress gets a reference to the given string and assigns it to the IpAddress field.
 func (o *NetworkPermissionEntry) SetIpAddress(v string) {
+
 	o.IpAddress = &v
 }
 
@@ -246,12 +252,12 @@ func (o *NetworkPermissionEntry) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NetworkPermissionEntry) GetLinksOk() ([]Link, bool) {
+func (o *NetworkPermissionEntry) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -270,7 +276,8 @@ func (o *NetworkPermissionEntry) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *NetworkPermissionEntry) SetLinks(v []Link) {
-	o.Links = v
+
+	o.Links = &v
 }
 
 func (o NetworkPermissionEntry) MarshalJSONWithoutReadOnly() ([]byte, error) {

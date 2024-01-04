@@ -65,6 +65,7 @@ func (o *PerformanceAdvisorOpStats) HasMs() bool {
 
 // SetMs gets a reference to the given int64 and assigns it to the Ms field.
 func (o *PerformanceAdvisorOpStats) SetMs(v int64) {
+
 	o.Ms = &v
 }
 
@@ -98,6 +99,7 @@ func (o *PerformanceAdvisorOpStats) HasNReturned() bool {
 
 // SetNReturned gets a reference to the given int64 and assigns it to the NReturned field.
 func (o *PerformanceAdvisorOpStats) SetNReturned(v int64) {
+
 	o.NReturned = &v
 }
 
@@ -131,6 +133,7 @@ func (o *PerformanceAdvisorOpStats) HasNScanned() bool {
 
 // SetNScanned gets a reference to the given int64 and assigns it to the NScanned field.
 func (o *PerformanceAdvisorOpStats) SetNScanned(v int64) {
+
 	o.NScanned = &v
 }
 
@@ -164,6 +167,7 @@ func (o *PerformanceAdvisorOpStats) HasTs() bool {
 
 // SetTs gets a reference to the given int64 and assigns it to the Ts field.
 func (o *PerformanceAdvisorOpStats) SetTs(v int64) {
+
 	o.Ts = &v
 }
 
