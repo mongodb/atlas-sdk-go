@@ -9,10 +9,10 @@ import (
 // MeasurementDiskPartition struct for MeasurementDiskPartition
 type MeasurementDiskPartition struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field
+	// Read only field.
 	Links []Link `json:"links,omitempty"`
 	// Human-readable label of the disk or partition to which the measurements apply.
-	// Read only field
+	// Read only field.
 	PartitionName *string `json:"partitionName,omitempty"`
 }
 

@@ -11,7 +11,7 @@ type StreamsKafkaSecurity struct {
 	// A trusted, public x509 certificate for connecting to Kafka over SSL.
 	BrokerPublicCertificate *string `json:"brokerPublicCertificate,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field
+	// Read only field.
 	Links []Link `json:"links,omitempty"`
 	// Describes the transport type. Can be either PLAINTEXT or SSL.
 	Protocol *string `json:"protocol,omitempty"`

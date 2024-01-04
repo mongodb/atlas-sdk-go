@@ -10,21 +10,21 @@ import (
 // DataFederationLimit Details of user managed limits.
 type DataFederationLimit struct {
 	// Amount that indicates the current usage of the limit.
-	// Read only field
+	// Read only field.
 	CurrentUsage *int64 `json:"currentUsage,omitempty"`
 	// Default value of the limit.
-	// Read only field
+	// Read only field.
 	DefaultLimit *int64 `json:"defaultLimit,omitempty"`
 	// Maximum value of the limit.
-	// Read only field
+	// Read only field.
 	MaximumLimit *int64 `json:"maximumLimit,omitempty"`
 	// Human-readable label that identifies the user-managed limit to modify.
-	// Read only field
+	// Read only field.
 	Name string `json:"name"`
 	// Amount to set the limit to.
 	Value int64 `json:"value"`
 	// Only used for Data Federation limits. Timestamp that indicates when this usage limit was last modified. This field uses the ISO 8601 timestamp format in UTC.
-	// Read only field
+	// Read only field.
 	LastModifiedDate *time.Time `json:"lastModifiedDate,omitempty"`
 	// Only used for Data Federation limits. Action to take when the usage limit is exceeded. If limit span is set to QUERY, this is ignored because MongoDB Cloud stops the query when it exceeds the usage limit.
 	OverrunPolicy *string `json:"overrunPolicy,omitempty"`

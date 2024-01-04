@@ -10,25 +10,25 @@ import (
 // UserCert struct for UserCert
 type UserCert struct {
 	// Unique 24-hexadecimal character string that identifies this certificate.
-	// Read only field
+	// Read only field.
 	Id *int64 `json:"_id,omitempty"`
 	// Date and time when MongoDB Cloud created this certificate. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-	// Read only field
+	// Read only field.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project.
-	// Read only field
+	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field
+	// Read only field.
 	Links []Link `json:"links,omitempty"`
 	// Number of months that the certificate remains valid until it expires.
-	// Write only field
+	// Write only field.
 	MonthsUntilExpiration *int `json:"monthsUntilExpiration,omitempty"`
 	// Date and time when this certificate expires. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-	// Read only field
+	// Read only field.
 	NotAfter *time.Time `json:"notAfter,omitempty"`
 	// Subject Alternative Name associated with this certificate. This parameter expresses its value as a distinguished name as defined in [RFC 2253](https://tools.ietf.org/html/2253).
-	// Read only field
+	// Read only field.
 	Subject *string `json:"subject,omitempty"`
 }
 

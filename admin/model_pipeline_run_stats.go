@@ -9,10 +9,10 @@ import (
 // PipelineRunStats Runtime statistics for this Data Lake Pipeline run.
 type PipelineRunStats struct {
 	// Total data size in bytes exported for this pipeline run.
-	// Read only field
+	// Read only field.
 	BytesExported *int64 `json:"bytesExported,omitempty"`
 	// Number of docs ingested for a this pipeline run.
-	// Read only field
+	// Read only field.
 	NumDocs *int64 `json:"numDocs,omitempty"`
 }
 

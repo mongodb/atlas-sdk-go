@@ -9,7 +9,7 @@ import (
 // IngestionSink Ingestion destination of a Data Lake Pipeline.
 type IngestionSink struct {
 	// Type of ingestion destination of this Data Lake Pipeline.
-	// Read only field
+	// Read only field.
 	Type *string `json:"type,omitempty"`
 	// Target cloud provider for this Data Lake Pipeline.
 	MetadataProvider *string `json:"metadataProvider,omitempty"`

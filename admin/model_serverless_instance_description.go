@@ -11,27 +11,27 @@ import (
 type ServerlessInstanceDescription struct {
 	ConnectionStrings *ServerlessInstanceDescriptionConnectionStrings `json:"connectionStrings,omitempty"`
 	// Date and time when MongoDB Cloud created this serverless instance. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
-	// Read only field
+	// Read only field.
 	CreateDate *time.Time `json:"createDate,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project.
-	// Read only field
+	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the serverless instance.
-	// Read only field
+	// Read only field.
 	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field
+	// Read only field.
 	Links []Link `json:"links,omitempty"`
 	// Version of MongoDB that the serverless instance runs.
-	// Read only field
+	// Read only field.
 	MongoDBVersion *string `json:"mongoDBVersion,omitempty"`
 	// Human-readable label that identifies the serverless instance.
-	// Read only field
+	// Read only field.
 	Name                    *string                         `json:"name,omitempty"`
 	ProviderSettings        ServerlessProviderSettings      `json:"providerSettings"`
 	ServerlessBackupOptions *ClusterServerlessBackupOptions `json:"serverlessBackupOptions,omitempty"`
 	// Human-readable label that indicates the current operating condition of the serverless instance.
-	// Read only field
+	// Read only field.
 	StateName *string `json:"stateName,omitempty"`
 	// List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the serverless instance.
 	Tags []ResourceTag `json:"tags,omitempty"`

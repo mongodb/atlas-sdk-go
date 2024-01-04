@@ -10,57 +10,57 @@ import (
 // InvoiceLineItem One service included in this invoice.
 type InvoiceLineItem struct {
 	// Human-readable label that identifies the cluster that incurred the charge.
-	// Read only field
+	// Read only field.
 	ClusterName *string `json:"clusterName,omitempty"`
 	// Date and time when MongoDB Cloud created this line item. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-	// Read only field
+	// Read only field.
 	Created *time.Time `json:"created,omitempty"`
 	// Sum by which MongoDB discounted this line item. MongoDB Cloud expresses this value in cents (100ths of one US Dollar). The resource returns this parameter when a discount applies.
-	// Read only field
+	// Read only field.
 	DiscountCents *int64 `json:"discountCents,omitempty"`
 	// Date and time when when MongoDB Cloud finished charging for this line item. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-	// Read only field
+	// Read only field.
 	EndDate *time.Time `json:"endDate,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project associated to this line item.
-	// Read only field
+	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
 	// Human-readable label that identifies the project.
 	GroupName *string `json:"groupName,omitempty"`
 	// Comment that applies to this line item.
-	// Read only field
+	// Read only field.
 	Note *string `json:"note,omitempty"`
 	// Percentage by which MongoDB discounted this line item. The resource returns this parameter when a discount applies.
-	// Read only field
+	// Read only field.
 	PercentDiscount *float32 `json:"percentDiscount,omitempty"`
 	// Number of units included for the line item. These can be expressions of storage (GB), time (hours), or other units.
-	// Read only field
+	// Read only field.
 	Quantity *float64 `json:"quantity,omitempty"`
 	// Human-readable description of the service that this line item provided. This Stock Keeping Unit (SKU) could be the instance type, a support charge, advanced security, or another service.
-	// Read only field
+	// Read only field.
 	Sku *string `json:"sku,omitempty"`
 	// Date and time when MongoDB Cloud began charging for this line item. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-	// Read only field
+	// Read only field.
 	StartDate *time.Time `json:"startDate,omitempty"`
 	// Human-readable label that identifies the Atlas App Services application associated with this line item.
-	// Read only field
+	// Read only field.
 	StitchAppName *string `json:"stitchAppName,omitempty"`
 	// A map of key-value pairs corresponding to the tags associated with the line item resource.
-	// Read only field
+	// Read only field.
 	Tags *map[string][]string `json:"tags,omitempty"`
 	// Lower bound for usage amount range in current SKU tier.   **NOTE**: **lineItems[n].tierLowerBound** appears only if your **lineItems[n].sku** is tiered.
-	// Read only field
+	// Read only field.
 	TierLowerBound *float64 `json:"tierLowerBound,omitempty"`
 	// Upper bound for usage amount range in current SKU tier.   **NOTE**: **lineItems[n].tierUpperBound** appears only if your **lineItems[n].sku** is tiered.
-	// Read only field
+	// Read only field.
 	TierUpperBound *float64 `json:"tierUpperBound,omitempty"`
 	// Sum of the cost set for this line item. MongoDB Cloud expresses this value in cents (100ths of one US Dollar) and calculates this value as **unitPriceDollars** × **quantity** × 100.
-	// Read only field
+	// Read only field.
 	TotalPriceCents *int64 `json:"totalPriceCents,omitempty"`
 	// Element used to express what **quantity** this line item measures. This value can be elements of time, storage capacity, and the like.
-	// Read only field
+	// Read only field.
 	Unit *string `json:"unit,omitempty"`
 	// Value per **unit** for this line item expressed in US Dollars.
-	// Read only field
+	// Read only field.
 	UnitPriceDollars *float64 `json:"unitPriceDollars,omitempty"`
 }
 

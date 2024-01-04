@@ -10,31 +10,31 @@ import (
 // ServerlessBackupRestoreJob struct for ServerlessBackupRestoreJob
 type ServerlessBackupRestoreJob struct {
 	// Flag that indicates whether someone canceled this restore job.
-	// Read only field
+	// Read only field.
 	Cancelled *bool `json:"cancelled,omitempty"`
 	// Human-readable label that categorizes the restore job to create.
 	DeliveryType string `json:"deliveryType"`
 	// One or more Uniform Resource Locators (URLs) that point to the compressed snapshot files for manual download. MongoDB Cloud returns this parameter when `\"deliveryType\" : \"download\"`.
-	// Read only field
+	// Read only field.
 	DeliveryUrl      []string          `json:"deliveryUrl,omitempty"`
 	DesiredTimestamp *ApiBSONTimestamp `json:"desiredTimestamp,omitempty"`
 	// Flag that indicates whether the restore job expired.
-	// Read only field
+	// Read only field.
 	Expired *bool `json:"expired,omitempty"`
 	// Date and time when the restore job expires. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-	// Read only field
+	// Read only field.
 	ExpiresAt *time.Time `json:"expiresAt,omitempty"`
 	// Flag that indicates whether the restore job failed.
-	// Read only field
+	// Read only field.
 	Failed *bool `json:"failed,omitempty"`
 	// Date and time when the restore job completed. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-	// Read only field
+	// Read only field.
 	FinishedAt *time.Time `json:"finishedAt,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the restore job.
-	// Read only field
+	// Read only field.
 	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field
+	// Read only field.
 	Links []Link `json:"links,omitempty"`
 	// Oplog operation number from which you want to restore this snapshot. This number represents the second part of an Oplog timestamp. The resource returns this parameter when `\"deliveryType\" : \"pointInTime\"` and **oplogTs** exceeds `0`.
 	OplogInc *int `json:"oplogInc,omitempty"`
@@ -49,7 +49,7 @@ type ServerlessBackupRestoreJob struct {
 	// Unique 24-hexadecimal digit string that identifies the target project for the specified **targetClusterName**.
 	TargetGroupId string `json:"targetGroupId"`
 	// Date and time when MongoDB Cloud took the snapshot associated with **snapshotId**. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-	// Read only field
+	// Read only field.
 	Timestamp *time.Time `json:"timestamp,omitempty"`
 }
 

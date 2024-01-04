@@ -9,10 +9,10 @@ import (
 // BackupOnlineArchive struct for BackupOnlineArchive
 type BackupOnlineArchive struct {
 	// Unique 24-hexadecimal digit string that identifies the online archive.
-	// Read only field
+	// Read only field.
 	Id *string `json:"_id,omitempty"`
 	// Human-readable label that identifies the cluster that contains the collection for which you want to create an online archive.
-	// Read only field
+	// Read only field.
 	ClusterName *string `json:"clusterName,omitempty"`
 	// Human-readable label that identifies the collection for which you created the online archive.
 	CollName *string `json:"collName,omitempty"`
@@ -22,12 +22,12 @@ type BackupOnlineArchive struct {
 	DataExpirationRule *DataExpirationRule `json:"dataExpirationRule,omitempty"`
 	DataProcessRegion  *DataProcessRegion  `json:"dataProcessRegion,omitempty"`
 	// Human-readable label that identifies the dataset that Atlas generates for this online archive.
-	// Read only field
+	// Read only field.
 	DataSetName *string `json:"dataSetName,omitempty"`
 	// Human-readable label of the database that contains the collection that contains the online archive.
 	DbName *string `json:"dbName,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project that contains the specified cluster. The specified cluster contains the collection for which to create the online archive.
-	// Read only field
+	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
 	// List that contains document parameters to use to logically divide data within a collection. Partitions provide a coarse level of filtering of the underlying collection data. To divide your data, specify parameters that you frequently query. If you \"specified :criteria.type\": \"DATE\" in the CREATE ONE ONLINE ARCHIVE endpoint, then you can specify up to three parameters by which to query. One of these parameters must be the DATE value, which is required in this case. If you \"specified :criteria.type\": \"CUSTOM\" in the CREATE ONE ONLINE ARCHIVE endpoint, then you can specify up to two parameters by which to query. Queries that don't use \":criteria.type\": \"DATE\" or \":criteria.type\": \"CUSTOM\" parameters cause MongoDB to scan a full collection of all archived documents. This takes more time and increases your costs.
 	PartitionFields []PartitionField `json:"partitionFields,omitempty"`
@@ -35,7 +35,7 @@ type BackupOnlineArchive struct {
 	Paused   *bool                  `json:"paused,omitempty"`
 	Schedule *OnlineArchiveSchedule `json:"schedule,omitempty"`
 	// Phase of the process to create this online archive when you made this request.  | State       | Indication | |-------------|------------| | `PENDING`   | MongoDB Cloud has queued documents for archive. Archiving hasn't started. | | `ARCHIVING` | MongoDB Cloud started archiving documents that meet the archival criteria. | | `IDLE`      | MongoDB Cloud waits to start the next archival job. | | `PAUSING`   | Someone chose to stop archiving. MongoDB Cloud finishes the running archival job then changes the state to `PAUSED` when that job completes. | | `PAUSED`    | MongoDB Cloud has stopped archiving. Archived documents can be queried. The specified archiving operation on the active cluster cannot archive additional documents. You can resume archiving for paused archives at any time. | | `ORPHANED`  | Someone has deleted the collection associated with an active or paused archive. MongoDB Cloud doesn't delete the archived data. You must manually delete the online archives associated with the deleted collection. | | `DELETED`   | Someone has deleted the archive was deleted. When someone deletes an online archive, MongoDB Cloud removes all associated archived documents from the cloud object storage. |
-	// Read only field
+	// Read only field.
 	State *string `json:"state,omitempty"`
 }
 

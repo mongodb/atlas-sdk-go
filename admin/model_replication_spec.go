@@ -9,7 +9,7 @@ import (
 // ReplicationSpec Details that explain how MongoDB Cloud replicates data on the specified MongoDB database.
 type ReplicationSpec struct {
 	// Unique 24-hexadecimal digit string that identifies the replication object for a zone in a Multi-Cloud Cluster. If you include existing zones in the request, you must specify this parameter. If you add a new zone to an existing Multi-Cloud Cluster, you may specify this parameter. The request deletes any existing zones in the Multi-Cloud Cluster that you exclude from the request.
-	// Read only field
+	// Read only field.
 	Id *string `json:"id,omitempty"`
 	// Positive integer that specifies the number of shards to deploy in each specified zone. If you set this value to `1` and **clusterType** is `SHARDED`, MongoDB Cloud deploys a single-shard sharded cluster. Don't create a sharded cluster with a single shard for production environments. Single-shard sharded clusters don't provide the same benefits as multi-shard configurations.
 	NumShards *int `json:"numShards,omitempty"`

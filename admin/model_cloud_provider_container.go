@@ -9,35 +9,35 @@ import (
 // CloudProviderContainer Collection of settings that configures the network container for a virtual private connection on Amazon Web Services.
 type CloudProviderContainer struct {
 	// Unique 24-hexadecimal digit string that identifies the network peering container.
-	// Read only field
+	// Read only field.
 	Id *string `json:"id,omitempty"`
 	// Cloud service provider that serves the requested network peering containers.
 	ProviderName *string `json:"providerName,omitempty"`
 	// Flag that indicates whether MongoDB Cloud clusters exist in the specified network peering container.
-	// Read only field
+	// Read only field.
 	Provisioned *bool `json:"provisioned,omitempty"`
 	// IP addresses expressed in Classless Inter-Domain Routing (CIDR) notation that MongoDB Cloud uses for the network peering containers in your project. MongoDB Cloud assigns all of the project's clusters deployed to this cloud provider an IP address from this range. MongoDB Cloud locks this value if an M10 or greater cluster or a network peering connection exists in this project.  These CIDR blocks must fall within the ranges reserved per RFC 1918. AWS and Azure further limit the block to between the `/24` and  `/21` ranges.  To modify the CIDR block, the target project cannot have:  - Any M10 or greater clusters - Any other VPC peering connections   You can also create a new project and create a network peering connection to set the desired MongoDB Cloud network peering container CIDR block for that project. MongoDB Cloud limits the number of MongoDB nodes per network peering connection based on the CIDR block and the region selected for the project.   **Example:** A project in an Amazon Web Services (AWS) region supporting three availability zones and an MongoDB CIDR network peering container block of limit of `/24` equals 27 three-node replica sets.  Alternatively: IP addresses expressed in Classless Inter-Domain Routing (CIDR) notation that MongoDB Cloud uses for the network peering containers in your project. MongoDB Cloud assigns all of the project's clusters deployed to this cloud provider an IP address from this range. MongoDB Cloud locks this value if an M10 or greater cluster or a network peering connection exists in this project.  These CIDR blocks must fall within the ranges reserved per RFC 1918. GCP further limits the block to a lower bound of the `/18` range.  To modify the CIDR block, the target project cannot have:  - Any M10 or greater clusters - Any other VPC peering connections   You can also create a new project and create a network peering connection to set the desired MongoDB Cloud network peering container CIDR block for that project. MongoDB Cloud limits the number of MongoDB nodes per network peering connection based on the CIDR block and the region selected for the project.   **Example:** A project in an Google Cloud (GCP) region supporting three availability zones and an MongoDB CIDR network peering container block of limit of `/24` equals 27 three-node replica sets.  Alternatively: IP addresses expressed in Classless Inter-Domain Routing (CIDR) notation that MongoDB Cloud uses for the network peering containers in your project. MongoDB Cloud assigns all of the project's clusters deployed to this cloud provider an IP address from this range. MongoDB Cloud locks this value if an M10 or greater cluster or a network peering connection exists in this project.  These CIDR blocks must fall within the ranges reserved per RFC 1918. AWS and Azure further limit the block to between the `/24` and  `/21` ranges.  To modify the CIDR block, the target project cannot have:  - Any M10 or greater clusters - Any other VPC peering connections   You can also create a new project and create a network peering connection to set the desired MongoDB Cloud network peering container CIDR block for that project. MongoDB Cloud limits the number of MongoDB nodes per network peering connection based on the CIDR block and the region selected for the project.   **Example:** A project in an Amazon Web Services (AWS) region supporting three availability zones and an MongoDB CIDR network peering container block of limit of `/24` equals 27 three-node replica sets.
 	AtlasCidrBlock *string `json:"atlasCidrBlock,omitempty"`
 	// Unique string that identifies the Azure subscription in which the MongoDB Cloud VNet resides.
-	// Read only field
+	// Read only field.
 	AzureSubscriptionId *string `json:"azureSubscriptionId,omitempty"`
 	// Azure region to which MongoDB Cloud deployed this network peering container.
 	Region *string `json:"region,omitempty"`
 	// Unique string that identifies the Azure VNet in which MongoDB Cloud clusters in this network peering container exist. The response returns **null** if no clusters exist in this network peering container.
-	// Read only field
+	// Read only field.
 	VnetName *string `json:"vnetName,omitempty"`
 	// Unique string that identifies the GCP project in which MongoDB Cloud clusters in this network peering container exist. The response returns **null** if no clusters exist in this network peering container.
-	// Read only field
+	// Read only field.
 	GcpProjectId *string `json:"gcpProjectId,omitempty"`
 	// Human-readable label that identifies the network in which MongoDB Cloud clusters in this network peering container exist. MongoDB Cloud returns **null** if no clusters exist in this network peering container.
-	// Read only field
+	// Read only field.
 	NetworkName *string `json:"networkName,omitempty"`
 	// List of GCP regions to which you want to deploy this MongoDB Cloud network peering container.  In this MongoDB Cloud project, you can deploy clusters only to the GCP regions in this list. To deploy MongoDB Cloud clusters to other GCP regions, create additional projects.
 	Regions []string `json:"regions,omitempty"`
 	// Geographic area that Amazon Web Services (AWS) defines to which MongoDB Cloud deployed this network peering container.
 	RegionName *string `json:"regionName,omitempty"`
 	// Unique string that identifies the MongoDB Cloud VPC on AWS.
-	// Read only field
+	// Read only field.
 	VpcId *string `json:"vpcId,omitempty"`
 }
 

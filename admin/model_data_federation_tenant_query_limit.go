@@ -10,24 +10,24 @@ import (
 // DataFederationTenantQueryLimit Details of a tenant-level query limit for Data Federation. Query limit is the limit on the amount of usage during a time period based on cost.
 type DataFederationTenantQueryLimit struct {
 	// Amount that indicates the current usage of the limit.
-	// Read only field
+	// Read only field.
 	CurrentUsage *int64 `json:"currentUsage,omitempty"`
 	// Default value of the limit.
-	// Read only field
+	// Read only field.
 	DefaultLimit *int64 `json:"defaultLimit,omitempty"`
 	// Only used for Data Federation limits. Timestamp that indicates when this usage limit was last modified. This field uses the ISO 8601 timestamp format in UTC.
-	// Read only field
+	// Read only field.
 	LastModifiedDate *time.Time `json:"lastModifiedDate,omitempty"`
 	// Maximum value of the limit.
-	// Read only field
+	// Read only field.
 	MaximumLimit *int64 `json:"maximumLimit,omitempty"`
 	// Human-readable label that identifies the user-managed limit to modify.
-	// Read only field
+	// Read only field.
 	Name string `json:"name"`
 	// Only used for Data Federation limits. Action to take when the usage limit is exceeded. If limit span is set to QUERY, this is ignored because MongoDB Cloud stops the query when it exceeds the usage limit.
 	OverrunPolicy *string `json:"overrunPolicy,omitempty"`
 	// Human-readable label that identifies the Federated Database Instance. If specified, the usage limit is for the specified federated database instance only. If omitted, the usage limit is for all federated database instances in the project.
-	// Read only field
+	// Read only field.
 	TenantName *string `json:"tenantName,omitempty"`
 	// Amount to set the limit to.
 	Value int64 `json:"value"`

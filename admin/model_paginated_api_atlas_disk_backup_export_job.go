@@ -9,13 +9,13 @@ import (
 // PaginatedApiAtlasDiskBackupExportJob struct for PaginatedApiAtlasDiskBackupExportJob
 type PaginatedApiAtlasDiskBackupExportJob struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field
+	// Read only field.
 	Links []Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud providers when completing this request.
-	// Read only field
+	// Read only field.
 	Results []DiskBackupExportJob `json:"results,omitempty"`
 	// Number of documents returned in this response.
-	// Read only field
+	// Read only field.
 	TotalCount *int `json:"totalCount,omitempty"`
 }
 

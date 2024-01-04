@@ -9,20 +9,20 @@ import (
 // StreamsTenant struct for StreamsTenant
 type StreamsTenant struct {
 	// Unique 24-hexadecimal character string that identifies the project.
-	// Read only field
+	// Read only field.
 	Id *string `json:"_id,omitempty"`
 	// List of connections configured in the stream instance.
-	// Read only field
+	// Read only field.
 	Connections       []StreamsConnection       `json:"connections,omitempty"`
 	DataProcessRegion *StreamsDataProcessRegion `json:"dataProcessRegion,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project.
-	// Read only field
+	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
 	// List that contains the hostnames assigned to the stream instance.
-	// Read only field
+	// Read only field.
 	Hostnames []string `json:"hostnames,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field
+	// Read only field.
 	Links []Link `json:"links,omitempty"`
 	// Human-readable label that identifies the stream instance.
 	Name *string `json:"name,omitempty"`

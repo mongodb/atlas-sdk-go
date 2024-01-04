@@ -10,30 +10,30 @@ import (
 // GroupInvitation struct for GroupInvitation
 type GroupInvitation struct {
 	// Date and time when MongoDB Cloud sent the invitation. This parameter expresses its value in ISO 8601 format in UTC.
-	// Read only field
+	// Read only field.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// Date and time when MongoDB Cloud expires the invitation. This parameter expresses its value in ISO 8601 format in UTC.
-	// Read only field
+	// Read only field.
 	ExpiresAt *time.Time `json:"expiresAt,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project.
-	// Read only field
+	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
 	// Human-readable label that identifies the project to which you invited the MongoDB Cloud user.
-	// Read only field
+	// Read only field.
 	GroupName *string `json:"groupName,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the invitation.
-	// Read only field
+	// Read only field.
 	Id *string `json:"id,omitempty"`
 	// Email address of the MongoDB Cloud user who sent the invitation.
-	// Read only field
+	// Read only field.
 	InviterUsername *string `json:"inviterUsername,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field
+	// Read only field.
 	Links []Link `json:"links,omitempty"`
 	// One or more organization or project level roles to assign to the MongoDB Cloud user.
 	Roles []string `json:"roles,omitempty"`
 	// Email address of the MongoDB Cloud user invited to join the project.
-	// Read only field
+	// Read only field.
 	Username *string `json:"username,omitempty"`
 }
 

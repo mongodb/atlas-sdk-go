@@ -9,7 +9,7 @@ import (
 // Namespaces struct for Namespaces
 type Namespaces struct {
 	// List that contains each combination of database, collection, and type on the specified host.
-	// Read only field
+	// Read only field.
 	Namespaces []NamespaceObj `json:"namespaces,omitempty"`
 }
 

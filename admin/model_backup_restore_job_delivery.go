@@ -10,22 +10,22 @@ import (
 // BackupRestoreJobDelivery Method and details that indicate how to deliver the restored snapshot data.
 type BackupRestoreJobDelivery struct {
 	// Header name to use when downloading the restore, used with `\"delivery.methodName\" : \"HTTP\"`.
-	// Read only field
+	// Read only field.
 	AuthHeader *string `json:"authHeader,omitempty"`
 	// Header value to use when downloading the restore, used with `\"delivery.methodName\" : \"HTTP\"`.
-	// Read only field
+	// Read only field.
 	AuthValue *string `json:"authValue,omitempty"`
 	// Number of hours after the restore job completes that indicates when the Uniform Resource Locator (URL) for the snapshot download file expires. The resource returns this parameter when `\"delivery.methodName\" : \"HTTP\"`.
 	ExpirationHours *int `json:"expirationHours,omitempty"`
 	// Date and time when the Uniform Resource Locator (URL) for the snapshot download file expires. This parameter expresses its value in the ISO 8601 timestamp format in UTC. The resource returns this parameter when `\"delivery.methodName\" : \"HTTP\"`.
-	// Read only field
+	// Read only field.
 	Expires *time.Time `json:"expires,omitempty"`
 	// Positive integer that indicates how many times you can use the Uniform Resource Locator (URL) for the snapshot download file. The resource returns this parameter when `\"delivery.methodName\" : \"HTTP\"`.
 	MaxDownloads *int `json:"maxDownloads,omitempty"`
 	// Human-readable label that identifies the means for delivering the data. If you set `\"delivery.methodName\" : \"AUTOMATED_RESTORE\"`, you must also set: **delivery.targetGroupId** and **delivery.targetClusterName** or **delivery.targetClusterId**. The response returns `\"delivery.methodName\" : \"HTTP\"` as an automated restore uses HyperText Transport Protocol (HTTP) to deliver the restore job to the target host.
 	MethodName string `json:"methodName"`
 	// State of the downloadable snapshot file when MongoDB Cloud received this request.
-	// Read only field
+	// Read only field.
 	StatusName *string `json:"statusName,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the target cluster. Use the **clusterId** returned in the response body of the **Get All Snapshots** and **Get a Snapshot** endpoints. This parameter applies when `\"delivery.methodName\" : \"AUTOMATED_RESTORE\"`.   If the target cluster doesn't have backup enabled, two resources return parameters with empty values:  - **Get All Snapshots** endpoint returns an empty results array without **clusterId** elements - **Get a Snapshot** endpoint doesn't return a **clusterId** parameter.  To return a response with the **clusterId** parameter, either use the **delivery.targetClusterName** parameter or enable backup on the target cluster.
 	TargetClusterId *string `json:"targetClusterId,omitempty"`
@@ -34,11 +34,11 @@ type BackupRestoreJobDelivery struct {
 	// Unique 24-hexadecimal digit string that identifies the project that contains the destination cluster for the restore job. The resource returns this parameter when `\"delivery.methodName\" : \"AUTOMATED_RESTORE\"`.
 	TargetGroupId *string `json:"targetGroupId,omitempty"`
 	// Uniform Resource Locator (URL) from which you can download the restored snapshot data. Url includes the verification key. The resource returns this parameter when `\"delivery.methodName\" : \"HTTP\"`.
-	// Read only field
+	// Read only field.
 	// Deprecated
 	Url *string `json:"url,omitempty"`
 	// Uniform Resource Locator (URL) from which you can download the restored snapshot data. This should be preferred over **url**. The verification key must be sent as an HTTP header. The resource returns this parameter when `\"delivery.methodName\" : \"HTTP\"`.
-	// Read only field
+	// Read only field.
 	UrlV2 *string `json:"urlV2,omitempty"`
 }
 

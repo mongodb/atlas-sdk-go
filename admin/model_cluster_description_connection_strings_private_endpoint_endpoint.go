@@ -9,13 +9,13 @@ import (
 // ClusterDescriptionConnectionStringsPrivateEndpointEndpoint Details of a private endpoint deployed for this cluster.
 type ClusterDescriptionConnectionStringsPrivateEndpointEndpoint struct {
 	// Unique string that the cloud provider uses to identify the private endpoint.
-	// Read only field
+	// Read only field.
 	EndpointId *string `json:"endpointId,omitempty"`
 	// Cloud provider in which MongoDB Cloud deploys the private endpoint.
-	// Read only field
+	// Read only field.
 	ProviderName *string `json:"providerName,omitempty"`
 	// Region where the private endpoint is deployed.
-	// Read only field
+	// Read only field.
 	Region *string `json:"region,omitempty"`
 }
 

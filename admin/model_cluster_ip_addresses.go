@@ -9,13 +9,13 @@ import (
 // ClusterIPAddresses List of IP addresses in a cluster.
 type ClusterIPAddresses struct {
 	// Human-readable label that identifies the cluster.
-	// Read only field
+	// Read only field.
 	ClusterName *string `json:"clusterName,omitempty"`
 	// List of inbound IP addresses associated with the cluster.
-	// Read only field
+	// Read only field.
 	Inbound []string `json:"inbound,omitempty"`
 	// List of outbound IP addresses associated with the cluster.
-	// Read only field
+	// Read only field.
 	Outbound []string `json:"outbound,omitempty"`
 }
 

@@ -10,34 +10,34 @@ import (
 // ServerlessBackupSnapshot struct for ServerlessBackupSnapshot
 type ServerlessBackupSnapshot struct {
 	// Date and time when MongoDB Cloud took the snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-	// Read only field
+	// Read only field.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// Date and time when MongoDB Cloud deletes the snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-	// Read only field
+	// Read only field.
 	ExpiresAt *time.Time `json:"expiresAt,omitempty"`
 	// Human-readable label that identifies how often this snapshot triggers.
-	// Read only field
+	// Read only field.
 	FrequencyType *string `json:"frequencyType,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the snapshot.
-	// Read only field
+	// Read only field.
 	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field
+	// Read only field.
 	Links []Link `json:"links,omitempty"`
 	// Version of the MongoDB host that this snapshot backs up.
-	// Read only field
+	// Read only field.
 	MongodVersion *string `json:"mongodVersion,omitempty"`
 	// Human-readable label given to the serverless instance from which MongoDB Cloud took this snapshot.
-	// Read only field
+	// Read only field.
 	ServerlessInstanceName *string `json:"serverlessInstanceName,omitempty"`
 	// Human-readable label that identifies when this snapshot triggers.
-	// Read only field
+	// Read only field.
 	SnapshotType *string `json:"snapshotType,omitempty"`
 	// Human-readable label that indicates the stage of the backup process for this snapshot.
-	// Read only field
+	// Read only field.
 	Status *string `json:"status,omitempty"`
 	// Number of bytes taken to store the backup snapshot.
-	// Read only field
+	// Read only field.
 	StorageSizeBytes *int64 `json:"storageSizeBytes,omitempty"`
 }
 

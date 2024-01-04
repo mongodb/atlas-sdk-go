@@ -18,28 +18,28 @@ type AdvancedClusterDescription struct {
 	ClusterType       *string                   `json:"clusterType,omitempty"`
 	ConnectionStrings *ClusterConnectionStrings `json:"connectionStrings,omitempty"`
 	// Date and time when MongoDB Cloud created this cluster. This parameter expresses its value in ISO 8601 format in UTC.
-	// Read only field
+	// Read only field.
 	CreateDate *time.Time `json:"createDate,omitempty"`
 	// Storage capacity that the host's root volume possesses expressed in gigabytes. Increase this number to add capacity. MongoDB Cloud requires this parameter if you set **replicationSpecs**. If you specify a disk size below the minimum (10 GB), this parameter defaults to the minimum disk size value. Storage charge calculations depend on whether you choose the default value or a custom value.  The maximum value for disk storage cannot exceed 50 times the maximum RAM for the selected cluster. If you require more storage space, consider upgrading your cluster to a higher tier.
 	DiskSizeGB *float64 `json:"diskSizeGB,omitempty"`
 	// Cloud service provider that manages your customer keys to provide an additional layer of encryption at rest for the cluster. To enable customer key management for encryption at rest, the cluster **replicationSpecs[n].regionConfigs[m].{type}Specs.instanceSize** setting must be `M10` or higher and `\"backupEnabled\" : false` or omitted entirely.
 	EncryptionAtRestProvider *string `json:"encryptionAtRestProvider,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project.
-	// Read only field
+	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the replication object for a zone in a Global Cluster. If you include existing zones in the request, you must specify this parameter. If you add a new zone to an existing Global Cluster, you may specify this parameter. The request deletes any existing zones in a Global Cluster that you exclude from the request.
-	// Read only field
+	// Read only field.
 	Id *string `json:"id,omitempty"`
 	// Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels.  Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use [resource tags](https://dochub.mongodb.org/core/add-cluster-tag-atlas) instead.
 	// Deprecated
 	Labels []ComponentLabel `json:"labels,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field
+	// Read only field.
 	Links []Link `json:"links,omitempty"`
 	// Major MongoDB version of the cluster. MongoDB Cloud deploys the cluster with the latest stable release of the specified version.
 	MongoDBMajorVersion *string `json:"mongoDBMajorVersion,omitempty"`
 	// Version of MongoDB that the cluster runs.
-	// Read only field
+	// Read only field.
 	MongoDBVersion *string `json:"mongoDBVersion,omitempty"`
 	// Human-readable label that identifies the advanced cluster.
 	Name *string `json:"name,omitempty"`
@@ -52,7 +52,7 @@ type AdvancedClusterDescription struct {
 	// Root Certificate Authority that MongoDB Cloud cluster uses. MongoDB Cloud supports Internet Security Research Group.
 	RootCertType *string `json:"rootCertType,omitempty"`
 	// Human-readable label that indicates the current operating condition of this cluster.
-	// Read only field
+	// Read only field.
 	StateName *string `json:"stateName,omitempty"`
 	// List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the cluster.
 	Tags []ResourceTag `json:"tags,omitempty"`

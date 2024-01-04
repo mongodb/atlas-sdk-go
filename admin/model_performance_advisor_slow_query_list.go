@@ -9,7 +9,7 @@ import (
 // PerformanceAdvisorSlowQueryList struct for PerformanceAdvisorSlowQueryList
 type PerformanceAdvisorSlowQueryList struct {
 	// List of operations that the Performance Advisor detected that took longer to execute than a specified threshold.
-	// Read only field
+	// Read only field.
 	SlowQueries []PerformanceAdvisorSlowQuery `json:"slowQueries,omitempty"`
 }
 

@@ -19,36 +19,36 @@ type LegacyAtlasTenantClusterUpgradeRequest struct {
 	ClusterType       *string                   `json:"clusterType,omitempty"`
 	ConnectionStrings *ClusterConnectionStrings `json:"connectionStrings,omitempty"`
 	// Date and time when MongoDB Cloud created this serverless instance. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
-	// Read only field
+	// Read only field.
 	CreateDate *time.Time `json:"createDate,omitempty"`
 	// Storage capacity that the host's root volume possesses expressed in gigabytes. Increase this number to add capacity. MongoDB Cloud requires this parameter if you set **replicationSpecs**. If you specify a disk size below the minimum (10 GB), this parameter defaults to the minimum disk size value. Storage charge calculations depend on whether you choose the default value or a custom value.  The maximum value for disk storage cannot exceed 50 times the maximum RAM for the selected cluster. If you require more storage space, consider upgrading your cluster to a higher tier.
 	DiskSizeGB *float64 `json:"diskSizeGB,omitempty"`
 	// Cloud service provider that manages your customer keys to provide an additional layer of Encryption at Rest for the cluster.
 	EncryptionAtRestProvider *string `json:"encryptionAtRestProvider,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project.
-	// Read only field
+	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the cluster.
-	// Read only field
+	// Read only field.
 	Id *string `json:"id,omitempty"`
 	// Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels.  Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use [resource tags](https://dochub.mongodb.org/core/add-cluster-tag-atlas) instead.
 	// Deprecated
 	Labels []ComponentLabel `json:"labels,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field
+	// Read only field.
 	Links []Link `json:"links,omitempty"`
 	// Major MongoDB version of the cluster. MongoDB Cloud deploys the cluster with the latest stable release of the specified version.
 	MongoDBMajorVersion *string `json:"mongoDBMajorVersion,omitempty"`
 	// Version of MongoDB that the cluster runs.
 	MongoDBVersion *string `json:"mongoDBVersion,omitempty"`
 	// Base connection string that you can use to connect to the cluster. MongoDB Cloud displays the string only after the cluster starts, not while it builds the cluster.
-	// Read only field
+	// Read only field.
 	MongoURI *string `json:"mongoURI,omitempty"`
 	// Date and time when someone last updated the connection string. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
-	// Read only field
+	// Read only field.
 	MongoURIUpdated *time.Time `json:"mongoURIUpdated,omitempty"`
 	// Connection string that you can use to connect to the cluster including the `replicaSet`, `ssl`, and `authSource` query parameters with values appropriate for the cluster. You may need to add MongoDB database users. The response returns this parameter once the cluster can receive requests, not while it builds the cluster.
-	// Read only field
+	// Read only field.
 	MongoURIWithOptions *string `json:"mongoURIWithOptions,omitempty"`
 	// Human-readable label that identifies the cluster.
 	Name string `json:"name"`
@@ -71,10 +71,10 @@ type LegacyAtlasTenantClusterUpgradeRequest struct {
 	// Root Certificate Authority that MongoDB Atlas clusters uses. MongoDB Cloud supports Internet Security Research Group.
 	RootCertType *string `json:"rootCertType,omitempty"`
 	// Connection string that you can use to connect to the cluster. The `+srv` modifier forces the connection to use Transport Layer Security (TLS). The `mongoURI` parameter lists additional options.
-	// Read only field
+	// Read only field.
 	SrvAddress *string `json:"srvAddress,omitempty"`
 	// Human-readable label that indicates the current operating condition of the cluster.
-	// Read only field
+	// Read only field.
 	StateName *string `json:"stateName,omitempty"`
 	// List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the cluster.
 	Tags []ResourceTag `json:"tags,omitempty"`

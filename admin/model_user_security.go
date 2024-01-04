@@ -11,7 +11,7 @@ type UserSecurity struct {
 	CustomerX509 *DBUserTLSX509Settings `json:"customerX509,omitempty"`
 	Ldap         *LDAPSecuritySettings  `json:"ldap,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field
+	// Read only field.
 	Links []Link `json:"links,omitempty"`
 }
 

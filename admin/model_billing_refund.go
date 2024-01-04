@@ -10,16 +10,16 @@ import (
 // BillingRefund One payment that MongoDB returned to the organization for this invoice.
 type BillingRefund struct {
 	// Sum of the funds returned to the specified organization expressed in cents (100th of US Dollar).
-	// Read only field
+	// Read only field.
 	AmountCents *int64 `json:"amountCents,omitempty"`
 	// Date and time when MongoDB Cloud created this refund. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-	// Read only field
+	// Read only field.
 	Created *time.Time `json:"created,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the payment that the organization had made.
-	// Read only field
+	// Read only field.
 	PaymentId *string `json:"paymentId,omitempty"`
 	// Justification that MongoDB accepted to return funds to the organization.
-	// Read only field
+	// Read only field.
 	Reason *string `json:"reason,omitempty"`
 }
 

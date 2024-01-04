@@ -17,7 +17,7 @@ type FederatedUser struct {
 	// Last name, family name, or surname that belongs to the MongoDB Cloud user.
 	LastName string `json:"lastName"`
 	// Unique 24-hexadecimal digit string that identifies this user.
-	// Read only field
+	// Read only field.
 	UserId *string `json:"userId,omitempty"`
 }
 

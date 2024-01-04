@@ -10,28 +10,28 @@ import (
 // BackupTenantSnapshot struct for BackupTenantSnapshot
 type BackupTenantSnapshot struct {
 	// Date and time when the download link no longer works. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-	// Read only field
+	// Read only field.
 	Expiration *time.Time `json:"expiration,omitempty"`
 	// Date and time when MongoDB Cloud completed writing this snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-	// Read only field
+	// Read only field.
 	FinishTime *time.Time `json:"finishTime,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the restore job.
-	// Read only field
+	// Read only field.
 	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field
+	// Read only field.
 	Links []Link `json:"links,omitempty"`
 	// MongoDB host version that the snapshot runs.
-	// Read only field
+	// Read only field.
 	MongoDBVersion *string `json:"mongoDBVersion,omitempty"`
 	// Date and time when MongoDB Cloud will take the snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-	// Read only field
+	// Read only field.
 	ScheduledTime *time.Time `json:"scheduledTime,omitempty"`
 	// Date and time when MongoDB Cloud began taking the snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-	// Read only field
+	// Read only field.
 	StartTime *time.Time `json:"startTime,omitempty"`
 	// Phase of the workflow for this snapshot at the time this resource made this request.
-	// Read only field
+	// Read only field.
 	Status *string `json:"status,omitempty"`
 }
 
