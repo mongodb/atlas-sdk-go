@@ -9,8 +9,10 @@ import (
 // ClusterCloudProviderInstanceSize List of instances sizes that this cloud provider supports.
 type ClusterCloudProviderInstanceSize struct {
 	// List of regions that this cloud provider supports for this instance size.
+	// Read only field.
 	AvailableRegions *[]AvailableCloudProviderRegion `json:"availableRegions,omitempty"`
 	// Human-readable label that identifies the instance size or cluster tier.
+	// Read only field.
 	Name *string `json:"name,omitempty"`
 }
 

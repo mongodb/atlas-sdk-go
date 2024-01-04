@@ -10,12 +10,16 @@ import (
 // Group struct for Group
 type Group struct {
 	// Quantity of MongoDB Cloud clusters deployed in this project.
+	// Read only field.
 	ClusterCount int64 `json:"clusterCount"`
 	// Date and time when MongoDB Cloud created this project. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+	// Read only field.
 	Created time.Time `json:"created"`
 	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud project.
+	// Read only field.
 	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// Human-readable label that identifies the project included in the MongoDB Cloud organization.
 	Name string `json:"name"`
@@ -24,6 +28,7 @@ type Group struct {
 	// Region usage restrictions that designate the project's AWS region.
 	RegionUsageRestrictions *string `json:"regionUsageRestrictions,omitempty"`
 	// Flag that indicates whether to create the project with default alert settings.
+	// Write only field.
 	WithDefaultAlertsSettings *bool `json:"withDefaultAlertsSettings,omitempty"`
 }
 

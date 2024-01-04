@@ -9,12 +9,16 @@ import (
 // ApiKey Details contained in one API key.
 type ApiKey struct {
 	// List of network addresses granted access to this API using this API key.
+	// Read only field.
 	AccessList *[]AccessListItem `json:"accessList,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies this organization API key.
+	// Read only field.
 	Id string `json:"id"`
 	// Public API key value set for the specified organization API key.
+	// Read only field.
 	PublicKey string `json:"publicKey"`
 	// List that contains roles that the API key needs to have. All roles you provide must be valid for the specified project or organization. Each request must include a minimum of one valid role. The resource returns all project and organization roles assigned to the Cloud user.
+	// Read only field.
 	Roles *[]CloudAccessRoleAssignment `json:"roles,omitempty"`
 }
 

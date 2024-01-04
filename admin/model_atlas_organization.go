@@ -9,10 +9,13 @@ import (
 // AtlasOrganization struct for AtlasOrganization
 type AtlasOrganization struct {
 	// Unique 24-hexadecimal digit string that identifies the organization.
+	// Read only field.
 	Id *string `json:"id,omitempty"`
 	// Flag that indicates whether this organization has been deleted.
+	// Read only field.
 	IsDeleted *bool `json:"isDeleted,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// Human-readable label that identifies the organization.
 	Name string `json:"name"`

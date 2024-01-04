@@ -9,6 +9,7 @@ import (
 // UpdateOrgRolesForUser struct for UpdateOrgRolesForUser
 type UpdateOrgRolesForUser struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// One or more organization level roles to assign to the MongoDB Cloud user.
 	OrgRoles *[]string `json:"orgRoles,omitempty"`
