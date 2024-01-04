@@ -63,7 +63,6 @@ func (o *PaginatedBackupSnapshot) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PaginatedBackupSnapshot) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -97,7 +96,6 @@ func (o *PaginatedBackupSnapshot) HasResults() bool {
 
 // SetResults gets a reference to the given []DiskBackupSnapshot and assigns it to the Results field.
 func (o *PaginatedBackupSnapshot) SetResults(v []DiskBackupSnapshot) {
-
 	o.Results = &v
 }
 
@@ -131,7 +129,6 @@ func (o *PaginatedBackupSnapshot) HasTotalCount() bool {
 
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
 func (o *PaginatedBackupSnapshot) SetTotalCount(v int) {
-
 	o.TotalCount = &v
 }
 

@@ -61,7 +61,6 @@ func (o *LDAPVerifyConnectivityJobRequestValidation) HasStatus() bool {
 
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *LDAPVerifyConnectivityJobRequestValidation) SetStatus(v string) {
-
 	o.Status = &v
 }
 
@@ -95,7 +94,6 @@ func (o *LDAPVerifyConnectivityJobRequestValidation) HasValidationType() bool {
 
 // SetValidationType gets a reference to the given string and assigns it to the ValidationType field.
 func (o *LDAPVerifyConnectivityJobRequestValidation) SetValidationType(v string) {
-
 	o.ValidationType = &v
 }
 

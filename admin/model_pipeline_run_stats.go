@@ -61,7 +61,6 @@ func (o *PipelineRunStats) HasBytesExported() bool {
 
 // SetBytesExported gets a reference to the given int64 and assigns it to the BytesExported field.
 func (o *PipelineRunStats) SetBytesExported(v int64) {
-
 	o.BytesExported = &v
 }
 
@@ -95,7 +94,6 @@ func (o *PipelineRunStats) HasNumDocs() bool {
 
 // SetNumDocs gets a reference to the given int64 and assigns it to the NumDocs field.
 func (o *PipelineRunStats) SetNumDocs(v int64) {
-
 	o.NumDocs = &v
 }
 

@@ -61,7 +61,6 @@ func (o *MeasurementDiskPartition) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *MeasurementDiskPartition) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -95,7 +94,6 @@ func (o *MeasurementDiskPartition) HasPartitionName() bool {
 
 // SetPartitionName gets a reference to the given string and assigns it to the PartitionName field.
 func (o *MeasurementDiskPartition) SetPartitionName(v string) {
-
 	o.PartitionName = &v
 }
 

@@ -61,7 +61,6 @@ func (o *DataLakeDatabaseCollection) HasDataSources() bool {
 
 // SetDataSources gets a reference to the given []DataLakeDatabaseDataSourceSettings and assigns it to the DataSources field.
 func (o *DataLakeDatabaseCollection) SetDataSources(v []DataLakeDatabaseDataSourceSettings) {
-
 	o.DataSources = &v
 }
 
@@ -95,7 +94,6 @@ func (o *DataLakeDatabaseCollection) HasName() bool {
 
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *DataLakeDatabaseCollection) SetName(v string) {
-
 	o.Name = &v
 }
 

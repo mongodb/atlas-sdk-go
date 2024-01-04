@@ -61,7 +61,6 @@ func (o *PerformanceAdvisorResponse) HasShapes() bool {
 
 // SetShapes gets a reference to the given []PerformanceAdvisorShape and assigns it to the Shapes field.
 func (o *PerformanceAdvisorResponse) SetShapes(v []PerformanceAdvisorShape) {
-
 	o.Shapes = &v
 }
 
@@ -95,7 +94,6 @@ func (o *PerformanceAdvisorResponse) HasSuggestedIndexes() bool {
 
 // SetSuggestedIndexes gets a reference to the given []PerformanceAdvisorIndex and assigns it to the SuggestedIndexes field.
 func (o *PerformanceAdvisorResponse) SetSuggestedIndexes(v []PerformanceAdvisorIndex) {
-
 	o.SuggestedIndexes = &v
 }
 

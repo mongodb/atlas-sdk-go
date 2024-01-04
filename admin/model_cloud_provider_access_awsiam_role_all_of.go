@@ -72,7 +72,6 @@ func (o *CloudProviderAccessAWSIAMRoleAllOf) HasAtlasAWSAccountArn() bool {
 
 // SetAtlasAWSAccountArn gets a reference to the given string and assigns it to the AtlasAWSAccountArn field.
 func (o *CloudProviderAccessAWSIAMRoleAllOf) SetAtlasAWSAccountArn(v string) {
-
 	o.AtlasAWSAccountArn = &v
 }
 
@@ -106,7 +105,6 @@ func (o *CloudProviderAccessAWSIAMRoleAllOf) HasAtlasAssumedRoleExternalId() boo
 
 // SetAtlasAssumedRoleExternalId gets a reference to the given string and assigns it to the AtlasAssumedRoleExternalId field.
 func (o *CloudProviderAccessAWSIAMRoleAllOf) SetAtlasAssumedRoleExternalId(v string) {
-
 	o.AtlasAssumedRoleExternalId = &v
 }
 
@@ -140,7 +138,6 @@ func (o *CloudProviderAccessAWSIAMRoleAllOf) HasAuthorizedDate() bool {
 
 // SetAuthorizedDate gets a reference to the given time.Time and assigns it to the AuthorizedDate field.
 func (o *CloudProviderAccessAWSIAMRoleAllOf) SetAuthorizedDate(v time.Time) {
-
 	o.AuthorizedDate = &v
 }
 
@@ -174,7 +171,6 @@ func (o *CloudProviderAccessAWSIAMRoleAllOf) HasCreatedDate() bool {
 
 // SetCreatedDate gets a reference to the given time.Time and assigns it to the CreatedDate field.
 func (o *CloudProviderAccessAWSIAMRoleAllOf) SetCreatedDate(v time.Time) {
-
 	o.CreatedDate = &v
 }
 
@@ -208,7 +204,6 @@ func (o *CloudProviderAccessAWSIAMRoleAllOf) HasFeatureUsages() bool {
 
 // SetFeatureUsages gets a reference to the given []CloudProviderAccessFeatureUsage and assigns it to the FeatureUsages field.
 func (o *CloudProviderAccessAWSIAMRoleAllOf) SetFeatureUsages(v []CloudProviderAccessFeatureUsage) {
-
 	o.FeatureUsages = &v
 }
 
@@ -242,7 +237,6 @@ func (o *CloudProviderAccessAWSIAMRoleAllOf) HasIamAssumedRoleArn() bool {
 
 // SetIamAssumedRoleArn gets a reference to the given string and assigns it to the IamAssumedRoleArn field.
 func (o *CloudProviderAccessAWSIAMRoleAllOf) SetIamAssumedRoleArn(v string) {
-
 	o.IamAssumedRoleArn = &v
 }
 
@@ -276,7 +270,6 @@ func (o *CloudProviderAccessAWSIAMRoleAllOf) HasRoleId() bool {
 
 // SetRoleId gets a reference to the given string and assigns it to the RoleId field.
 func (o *CloudProviderAccessAWSIAMRoleAllOf) SetRoleId(v string) {
-
 	o.RoleId = &v
 }
 

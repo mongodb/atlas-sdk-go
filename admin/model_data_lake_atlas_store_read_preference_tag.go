@@ -61,7 +61,6 @@ func (o *DataLakeAtlasStoreReadPreferenceTag) HasName() bool {
 
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *DataLakeAtlasStoreReadPreferenceTag) SetName(v string) {
-
 	o.Name = &v
 }
 
@@ -95,7 +94,6 @@ func (o *DataLakeAtlasStoreReadPreferenceTag) HasValue() bool {
 
 // SetValue gets a reference to the given string and assigns it to the Value field.
 func (o *DataLakeAtlasStoreReadPreferenceTag) SetValue(v string) {
-
 	o.Value = &v
 }
 

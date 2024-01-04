@@ -63,7 +63,6 @@ func (o *PaginatedCloudBackupRestoreJob) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PaginatedCloudBackupRestoreJob) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -97,7 +96,6 @@ func (o *PaginatedCloudBackupRestoreJob) HasResults() bool {
 
 // SetResults gets a reference to the given []DiskBackupSnapshotRestoreJob and assigns it to the Results field.
 func (o *PaginatedCloudBackupRestoreJob) SetResults(v []DiskBackupSnapshotRestoreJob) {
-
 	o.Results = &v
 }
 
@@ -131,7 +129,6 @@ func (o *PaginatedCloudBackupRestoreJob) HasTotalCount() bool {
 
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
 func (o *PaginatedCloudBackupRestoreJob) SetTotalCount(v int) {
-
 	o.TotalCount = &v
 }
 

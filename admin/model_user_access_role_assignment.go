@@ -61,7 +61,6 @@ func (o *UserAccessRoleAssignment) HasApiUserId() bool {
 
 // SetApiUserId gets a reference to the given string and assigns it to the ApiUserId field.
 func (o *UserAccessRoleAssignment) SetApiUserId(v string) {
-
 	o.ApiUserId = &v
 }
 
@@ -95,7 +94,6 @@ func (o *UserAccessRoleAssignment) HasRoles() bool {
 
 // SetRoles gets a reference to the given []string and assigns it to the Roles field.
 func (o *UserAccessRoleAssignment) SetRoles(v []string) {
-
 	o.Roles = &v
 }
 

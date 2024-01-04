@@ -63,7 +63,6 @@ func (o *StreamsKafkaSecurity) HasBrokerPublicCertificate() bool {
 
 // SetBrokerPublicCertificate gets a reference to the given string and assigns it to the BrokerPublicCertificate field.
 func (o *StreamsKafkaSecurity) SetBrokerPublicCertificate(v string) {
-
 	o.BrokerPublicCertificate = &v
 }
 
@@ -97,7 +96,6 @@ func (o *StreamsKafkaSecurity) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *StreamsKafkaSecurity) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -131,7 +129,6 @@ func (o *StreamsKafkaSecurity) HasProtocol() bool {
 
 // SetProtocol gets a reference to the given string and assigns it to the Protocol field.
 func (o *StreamsKafkaSecurity) SetProtocol(v string) {
-
 	o.Protocol = &v
 }
 

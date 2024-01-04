@@ -67,7 +67,6 @@ func (o *DiskBackupExportJobRequest) HasCustomData() bool {
 
 // SetCustomData gets a reference to the given []BackupLabel and assigns it to the CustomData field.
 func (o *DiskBackupExportJobRequest) SetCustomData(v []BackupLabel) {
-
 	o.CustomData = &v
 }
 
@@ -125,7 +124,6 @@ func (o *DiskBackupExportJobRequest) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *DiskBackupExportJobRequest) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 

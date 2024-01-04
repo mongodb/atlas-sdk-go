@@ -70,7 +70,6 @@ func (o *DataLakeTenant) HasCloudProviderConfig() bool {
 
 // SetCloudProviderConfig gets a reference to the given DataLakeCloudProviderConfig and assigns it to the CloudProviderConfig field.
 func (o *DataLakeTenant) SetCloudProviderConfig(v DataLakeCloudProviderConfig) {
-
 	o.CloudProviderConfig = &v
 }
 
@@ -104,7 +103,6 @@ func (o *DataLakeTenant) HasDataProcessRegion() bool {
 
 // SetDataProcessRegion gets a reference to the given DataLakeDataProcessRegion and assigns it to the DataProcessRegion field.
 func (o *DataLakeTenant) SetDataProcessRegion(v DataLakeDataProcessRegion) {
-
 	o.DataProcessRegion = &v
 }
 
@@ -138,7 +136,6 @@ func (o *DataLakeTenant) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *DataLakeTenant) SetGroupId(v string) {
-
 	o.GroupId = &v
 }
 
@@ -172,7 +169,6 @@ func (o *DataLakeTenant) HasHostnames() bool {
 
 // SetHostnames gets a reference to the given []string and assigns it to the Hostnames field.
 func (o *DataLakeTenant) SetHostnames(v []string) {
-
 	o.Hostnames = &v
 }
 
@@ -206,7 +202,6 @@ func (o *DataLakeTenant) HasName() bool {
 
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *DataLakeTenant) SetName(v string) {
-
 	o.Name = &v
 }
 
@@ -240,7 +235,6 @@ func (o *DataLakeTenant) HasPrivateEndpointHostnames() bool {
 
 // SetPrivateEndpointHostnames gets a reference to the given []PrivateEndpointHostname and assigns it to the PrivateEndpointHostnames field.
 func (o *DataLakeTenant) SetPrivateEndpointHostnames(v []PrivateEndpointHostname) {
-
 	o.PrivateEndpointHostnames = &v
 }
 
@@ -274,7 +268,6 @@ func (o *DataLakeTenant) HasState() bool {
 
 // SetState gets a reference to the given string and assigns it to the State field.
 func (o *DataLakeTenant) SetState(v string) {
-
 	o.State = &v
 }
 
@@ -308,7 +301,6 @@ func (o *DataLakeTenant) HasStorage() bool {
 
 // SetStorage gets a reference to the given DataLakeStorage and assigns it to the Storage field.
 func (o *DataLakeTenant) SetStorage(v DataLakeStorage) {
-
 	o.Storage = &v
 }
 

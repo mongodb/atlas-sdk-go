@@ -106,7 +106,6 @@ func (o *EndpointService) HasErrorMessage() bool {
 
 // SetErrorMessage gets a reference to the given string and assigns it to the ErrorMessage field.
 func (o *EndpointService) SetErrorMessage(v string) {
-
 	o.ErrorMessage = &v
 }
 
@@ -140,7 +139,6 @@ func (o *EndpointService) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *EndpointService) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -174,7 +172,6 @@ func (o *EndpointService) HasRegionName() bool {
 
 // SetRegionName gets a reference to the given string and assigns it to the RegionName field.
 func (o *EndpointService) SetRegionName(v string) {
-
 	o.RegionName = &v
 }
 
@@ -208,7 +205,6 @@ func (o *EndpointService) HasStatus() bool {
 
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *EndpointService) SetStatus(v string) {
-
 	o.Status = &v
 }
 
@@ -242,7 +238,6 @@ func (o *EndpointService) HasEndpointServiceName() bool {
 
 // SetEndpointServiceName gets a reference to the given string and assigns it to the EndpointServiceName field.
 func (o *EndpointService) SetEndpointServiceName(v string) {
-
 	o.EndpointServiceName = &v
 }
 
@@ -276,7 +271,6 @@ func (o *EndpointService) HasInterfaceEndpoints() bool {
 
 // SetInterfaceEndpoints gets a reference to the given []string and assigns it to the InterfaceEndpoints field.
 func (o *EndpointService) SetInterfaceEndpoints(v []string) {
-
 	o.InterfaceEndpoints = &v
 }
 
@@ -310,7 +304,6 @@ func (o *EndpointService) HasPrivateEndpoints() bool {
 
 // SetPrivateEndpoints gets a reference to the given []string and assigns it to the PrivateEndpoints field.
 func (o *EndpointService) SetPrivateEndpoints(v []string) {
-
 	o.PrivateEndpoints = &v
 }
 
@@ -344,7 +337,6 @@ func (o *EndpointService) HasPrivateLinkServiceName() bool {
 
 // SetPrivateLinkServiceName gets a reference to the given string and assigns it to the PrivateLinkServiceName field.
 func (o *EndpointService) SetPrivateLinkServiceName(v string) {
-
 	o.PrivateLinkServiceName = &v
 }
 
@@ -378,7 +370,6 @@ func (o *EndpointService) HasPrivateLinkServiceResourceId() bool {
 
 // SetPrivateLinkServiceResourceId gets a reference to the given string and assigns it to the PrivateLinkServiceResourceId field.
 func (o *EndpointService) SetPrivateLinkServiceResourceId(v string) {
-
 	o.PrivateLinkServiceResourceId = &v
 }
 
@@ -412,7 +403,6 @@ func (o *EndpointService) HasEndpointGroupNames() bool {
 
 // SetEndpointGroupNames gets a reference to the given []string and assigns it to the EndpointGroupNames field.
 func (o *EndpointService) SetEndpointGroupNames(v []string) {
-
 	o.EndpointGroupNames = &v
 }
 
@@ -446,7 +436,6 @@ func (o *EndpointService) HasServiceAttachmentNames() bool {
 
 // SetServiceAttachmentNames gets a reference to the given []string and assigns it to the ServiceAttachmentNames field.
 func (o *EndpointService) SetServiceAttachmentNames(v []string) {
-
 	o.ServiceAttachmentNames = &v
 }
 

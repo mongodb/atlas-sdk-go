@@ -78,7 +78,6 @@ func (o *ApiMeasurementsGeneralViewAtlas) HasDatabaseName() bool {
 
 // SetDatabaseName gets a reference to the given string and assigns it to the DatabaseName field.
 func (o *ApiMeasurementsGeneralViewAtlas) SetDatabaseName(v string) {
-
 	o.DatabaseName = &v
 }
 
@@ -112,7 +111,6 @@ func (o *ApiMeasurementsGeneralViewAtlas) HasEnd() bool {
 
 // SetEnd gets a reference to the given time.Time and assigns it to the End field.
 func (o *ApiMeasurementsGeneralViewAtlas) SetEnd(v time.Time) {
-
 	o.End = &v
 }
 
@@ -146,7 +144,6 @@ func (o *ApiMeasurementsGeneralViewAtlas) HasGranularity() bool {
 
 // SetGranularity gets a reference to the given string and assigns it to the Granularity field.
 func (o *ApiMeasurementsGeneralViewAtlas) SetGranularity(v string) {
-
 	o.Granularity = &v
 }
 
@@ -180,7 +177,6 @@ func (o *ApiMeasurementsGeneralViewAtlas) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *ApiMeasurementsGeneralViewAtlas) SetGroupId(v string) {
-
 	o.GroupId = &v
 }
 
@@ -214,7 +210,6 @@ func (o *ApiMeasurementsGeneralViewAtlas) HasHostId() bool {
 
 // SetHostId gets a reference to the given string and assigns it to the HostId field.
 func (o *ApiMeasurementsGeneralViewAtlas) SetHostId(v string) {
-
 	o.HostId = &v
 }
 
@@ -248,7 +243,6 @@ func (o *ApiMeasurementsGeneralViewAtlas) HasLinks() bool {
 
 // SetLinks gets a reference to the given []LinkAtlas and assigns it to the Links field.
 func (o *ApiMeasurementsGeneralViewAtlas) SetLinks(v []LinkAtlas) {
-
 	o.Links = &v
 }
 
@@ -282,7 +276,6 @@ func (o *ApiMeasurementsGeneralViewAtlas) HasMeasurements() bool {
 
 // SetMeasurements gets a reference to the given []MetricsMeasurementAtlas and assigns it to the Measurements field.
 func (o *ApiMeasurementsGeneralViewAtlas) SetMeasurements(v []MetricsMeasurementAtlas) {
-
 	o.Measurements = &v
 }
 
@@ -316,7 +309,6 @@ func (o *ApiMeasurementsGeneralViewAtlas) HasPartitionName() bool {
 
 // SetPartitionName gets a reference to the given string and assigns it to the PartitionName field.
 func (o *ApiMeasurementsGeneralViewAtlas) SetPartitionName(v string) {
-
 	o.PartitionName = &v
 }
 
@@ -350,7 +342,6 @@ func (o *ApiMeasurementsGeneralViewAtlas) HasProcessId() bool {
 
 // SetProcessId gets a reference to the given string and assigns it to the ProcessId field.
 func (o *ApiMeasurementsGeneralViewAtlas) SetProcessId(v string) {
-
 	o.ProcessId = &v
 }
 
@@ -384,7 +375,6 @@ func (o *ApiMeasurementsGeneralViewAtlas) HasStart() bool {
 
 // SetStart gets a reference to the given time.Time and assigns it to the Start field.
 func (o *ApiMeasurementsGeneralViewAtlas) SetStart(v time.Time) {
-
 	o.Start = &v
 }
 

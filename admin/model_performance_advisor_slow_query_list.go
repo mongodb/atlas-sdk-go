@@ -59,7 +59,6 @@ func (o *PerformanceAdvisorSlowQueryList) HasSlowQueries() bool {
 
 // SetSlowQueries gets a reference to the given []PerformanceAdvisorSlowQuery and assigns it to the SlowQueries field.
 func (o *PerformanceAdvisorSlowQueryList) SetSlowQueries(v []PerformanceAdvisorSlowQuery) {
-
 	o.SlowQueries = &v
 }
 

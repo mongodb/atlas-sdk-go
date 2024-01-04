@@ -63,7 +63,6 @@ func (o *PaginatedApiAtlasCheckpoint) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PaginatedApiAtlasCheckpoint) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -97,7 +96,6 @@ func (o *PaginatedApiAtlasCheckpoint) HasResults() bool {
 
 // SetResults gets a reference to the given []ApiAtlasCheckpoint and assigns it to the Results field.
 func (o *PaginatedApiAtlasCheckpoint) SetResults(v []ApiAtlasCheckpoint) {
-
 	o.Results = &v
 }
 
@@ -131,7 +129,6 @@ func (o *PaginatedApiAtlasCheckpoint) HasTotalCount() bool {
 
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
 func (o *PaginatedApiAtlasCheckpoint) SetTotalCount(v int) {
-
 	o.TotalCount = &v
 }
 

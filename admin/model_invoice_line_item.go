@@ -94,7 +94,6 @@ func (o *InvoiceLineItem) HasClusterName() bool {
 
 // SetClusterName gets a reference to the given string and assigns it to the ClusterName field.
 func (o *InvoiceLineItem) SetClusterName(v string) {
-
 	o.ClusterName = &v
 }
 
@@ -128,7 +127,6 @@ func (o *InvoiceLineItem) HasCreated() bool {
 
 // SetCreated gets a reference to the given time.Time and assigns it to the Created field.
 func (o *InvoiceLineItem) SetCreated(v time.Time) {
-
 	o.Created = &v
 }
 
@@ -162,7 +160,6 @@ func (o *InvoiceLineItem) HasDiscountCents() bool {
 
 // SetDiscountCents gets a reference to the given int64 and assigns it to the DiscountCents field.
 func (o *InvoiceLineItem) SetDiscountCents(v int64) {
-
 	o.DiscountCents = &v
 }
 
@@ -196,7 +193,6 @@ func (o *InvoiceLineItem) HasEndDate() bool {
 
 // SetEndDate gets a reference to the given time.Time and assigns it to the EndDate field.
 func (o *InvoiceLineItem) SetEndDate(v time.Time) {
-
 	o.EndDate = &v
 }
 
@@ -230,7 +226,6 @@ func (o *InvoiceLineItem) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *InvoiceLineItem) SetGroupId(v string) {
-
 	o.GroupId = &v
 }
 
@@ -264,7 +259,6 @@ func (o *InvoiceLineItem) HasGroupName() bool {
 
 // SetGroupName gets a reference to the given string and assigns it to the GroupName field.
 func (o *InvoiceLineItem) SetGroupName(v string) {
-
 	o.GroupName = &v
 }
 
@@ -298,7 +292,6 @@ func (o *InvoiceLineItem) HasNote() bool {
 
 // SetNote gets a reference to the given string and assigns it to the Note field.
 func (o *InvoiceLineItem) SetNote(v string) {
-
 	o.Note = &v
 }
 
@@ -332,7 +325,6 @@ func (o *InvoiceLineItem) HasPercentDiscount() bool {
 
 // SetPercentDiscount gets a reference to the given float32 and assigns it to the PercentDiscount field.
 func (o *InvoiceLineItem) SetPercentDiscount(v float32) {
-
 	o.PercentDiscount = &v
 }
 
@@ -366,7 +358,6 @@ func (o *InvoiceLineItem) HasQuantity() bool {
 
 // SetQuantity gets a reference to the given float64 and assigns it to the Quantity field.
 func (o *InvoiceLineItem) SetQuantity(v float64) {
-
 	o.Quantity = &v
 }
 
@@ -400,7 +391,6 @@ func (o *InvoiceLineItem) HasSku() bool {
 
 // SetSku gets a reference to the given string and assigns it to the Sku field.
 func (o *InvoiceLineItem) SetSku(v string) {
-
 	o.Sku = &v
 }
 
@@ -434,7 +424,6 @@ func (o *InvoiceLineItem) HasStartDate() bool {
 
 // SetStartDate gets a reference to the given time.Time and assigns it to the StartDate field.
 func (o *InvoiceLineItem) SetStartDate(v time.Time) {
-
 	o.StartDate = &v
 }
 
@@ -468,7 +457,6 @@ func (o *InvoiceLineItem) HasStitchAppName() bool {
 
 // SetStitchAppName gets a reference to the given string and assigns it to the StitchAppName field.
 func (o *InvoiceLineItem) SetStitchAppName(v string) {
-
 	o.StitchAppName = &v
 }
 
@@ -502,7 +490,6 @@ func (o *InvoiceLineItem) HasTags() bool {
 
 // SetTags gets a reference to the given map[string][]string and assigns it to the Tags field.
 func (o *InvoiceLineItem) SetTags(v map[string][]string) {
-
 	o.Tags = &v
 }
 
@@ -536,7 +523,6 @@ func (o *InvoiceLineItem) HasTierLowerBound() bool {
 
 // SetTierLowerBound gets a reference to the given float64 and assigns it to the TierLowerBound field.
 func (o *InvoiceLineItem) SetTierLowerBound(v float64) {
-
 	o.TierLowerBound = &v
 }
 
@@ -570,7 +556,6 @@ func (o *InvoiceLineItem) HasTierUpperBound() bool {
 
 // SetTierUpperBound gets a reference to the given float64 and assigns it to the TierUpperBound field.
 func (o *InvoiceLineItem) SetTierUpperBound(v float64) {
-
 	o.TierUpperBound = &v
 }
 
@@ -604,7 +589,6 @@ func (o *InvoiceLineItem) HasTotalPriceCents() bool {
 
 // SetTotalPriceCents gets a reference to the given int64 and assigns it to the TotalPriceCents field.
 func (o *InvoiceLineItem) SetTotalPriceCents(v int64) {
-
 	o.TotalPriceCents = &v
 }
 
@@ -638,7 +622,6 @@ func (o *InvoiceLineItem) HasUnit() bool {
 
 // SetUnit gets a reference to the given string and assigns it to the Unit field.
 func (o *InvoiceLineItem) SetUnit(v string) {
-
 	o.Unit = &v
 }
 
@@ -672,7 +655,6 @@ func (o *InvoiceLineItem) HasUnitPriceDollars() bool {
 
 // SetUnitPriceDollars gets a reference to the given float64 and assigns it to the UnitPriceDollars field.
 func (o *InvoiceLineItem) SetUnitPriceDollars(v float64) {
-
 	o.UnitPriceDollars = &v
 }
 

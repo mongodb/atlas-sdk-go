@@ -103,7 +103,6 @@ func (o *ClusterProviderSettings) HasAutoScaling() bool {
 
 // SetAutoScaling gets a reference to the given ClusterFreeAutoScaling and assigns it to the AutoScaling field.
 func (o *ClusterProviderSettings) SetAutoScaling(v ClusterFreeAutoScaling) {
-
 	o.AutoScaling = &v
 }
 
@@ -137,7 +136,6 @@ func (o *ClusterProviderSettings) HasDiskIOPS() bool {
 
 // SetDiskIOPS gets a reference to the given int and assigns it to the DiskIOPS field.
 func (o *ClusterProviderSettings) SetDiskIOPS(v int) {
-
 	o.DiskIOPS = &v
 }
 
@@ -174,7 +172,6 @@ func (o *ClusterProviderSettings) HasEncryptEBSVolume() bool {
 // SetEncryptEBSVolume gets a reference to the given bool and assigns it to the EncryptEBSVolume field.
 // Deprecated
 func (o *ClusterProviderSettings) SetEncryptEBSVolume(v bool) {
-
 	o.EncryptEBSVolume = &v
 }
 
@@ -208,7 +205,6 @@ func (o *ClusterProviderSettings) HasInstanceSizeName() bool {
 
 // SetInstanceSizeName gets a reference to the given string and assigns it to the InstanceSizeName field.
 func (o *ClusterProviderSettings) SetInstanceSizeName(v string) {
-
 	o.InstanceSizeName = &v
 }
 
@@ -242,7 +238,6 @@ func (o *ClusterProviderSettings) HasRegionName() bool {
 
 // SetRegionName gets a reference to the given string and assigns it to the RegionName field.
 func (o *ClusterProviderSettings) SetRegionName(v string) {
-
 	o.RegionName = &v
 }
 
@@ -276,7 +271,6 @@ func (o *ClusterProviderSettings) HasVolumeType() bool {
 
 // SetVolumeType gets a reference to the given string and assigns it to the VolumeType field.
 func (o *ClusterProviderSettings) SetVolumeType(v string) {
-
 	o.VolumeType = &v
 }
 
@@ -310,7 +304,6 @@ func (o *ClusterProviderSettings) HasDiskTypeName() bool {
 
 // SetDiskTypeName gets a reference to the given string and assigns it to the DiskTypeName field.
 func (o *ClusterProviderSettings) SetDiskTypeName(v string) {
-
 	o.DiskTypeName = &v
 }
 
@@ -344,7 +337,6 @@ func (o *ClusterProviderSettings) HasBackingProviderName() bool {
 
 // SetBackingProviderName gets a reference to the given string and assigns it to the BackingProviderName field.
 func (o *ClusterProviderSettings) SetBackingProviderName(v string) {
-
 	o.BackingProviderName = &v
 }
 

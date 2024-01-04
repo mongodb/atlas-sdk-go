@@ -65,7 +65,6 @@ func (o *AdvancedComputeAutoScaling) HasEnabled() bool {
 
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *AdvancedComputeAutoScaling) SetEnabled(v bool) {
-
 	o.Enabled = &v
 }
 
@@ -99,7 +98,6 @@ func (o *AdvancedComputeAutoScaling) HasMaxInstanceSize() bool {
 
 // SetMaxInstanceSize gets a reference to the given string and assigns it to the MaxInstanceSize field.
 func (o *AdvancedComputeAutoScaling) SetMaxInstanceSize(v string) {
-
 	o.MaxInstanceSize = &v
 }
 
@@ -133,7 +131,6 @@ func (o *AdvancedComputeAutoScaling) HasMinInstanceSize() bool {
 
 // SetMinInstanceSize gets a reference to the given string and assigns it to the MinInstanceSize field.
 func (o *AdvancedComputeAutoScaling) SetMinInstanceSize(v string) {
-
 	o.MinInstanceSize = &v
 }
 
@@ -167,7 +164,6 @@ func (o *AdvancedComputeAutoScaling) HasScaleDownEnabled() bool {
 
 // SetScaleDownEnabled gets a reference to the given bool and assigns it to the ScaleDownEnabled field.
 func (o *AdvancedComputeAutoScaling) SetScaleDownEnabled(v bool) {
-
 	o.ScaleDownEnabled = &v
 }
 

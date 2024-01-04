@@ -62,7 +62,6 @@ func (o *AccessListItem) HasCidrBlock() bool {
 
 // SetCidrBlock gets a reference to the given string and assigns it to the CidrBlock field.
 func (o *AccessListItem) SetCidrBlock(v string) {
-
 	o.CidrBlock = &v
 }
 

@@ -74,7 +74,6 @@ func (o *MeasurementsNonIndex) HasEnd() bool {
 
 // SetEnd gets a reference to the given time.Time and assigns it to the End field.
 func (o *MeasurementsNonIndex) SetEnd(v time.Time) {
-
 	o.End = &v
 }
 
@@ -108,7 +107,6 @@ func (o *MeasurementsNonIndex) HasGranularity() bool {
 
 // SetGranularity gets a reference to the given string and assigns it to the Granularity field.
 func (o *MeasurementsNonIndex) SetGranularity(v string) {
-
 	o.Granularity = &v
 }
 
@@ -142,7 +140,6 @@ func (o *MeasurementsNonIndex) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *MeasurementsNonIndex) SetGroupId(v string) {
-
 	o.GroupId = &v
 }
 
@@ -176,7 +173,6 @@ func (o *MeasurementsNonIndex) HasHardwareMeasurements() bool {
 
 // SetHardwareMeasurements gets a reference to the given []MetricsMeasurement and assigns it to the HardwareMeasurements field.
 func (o *MeasurementsNonIndex) SetHardwareMeasurements(v []MetricsMeasurement) {
-
 	o.HardwareMeasurements = &v
 }
 
@@ -210,7 +206,6 @@ func (o *MeasurementsNonIndex) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *MeasurementsNonIndex) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -244,7 +239,6 @@ func (o *MeasurementsNonIndex) HasProcessId() bool {
 
 // SetProcessId gets a reference to the given string and assigns it to the ProcessId field.
 func (o *MeasurementsNonIndex) SetProcessId(v string) {
-
 	o.ProcessId = &v
 }
 
@@ -278,7 +272,6 @@ func (o *MeasurementsNonIndex) HasStart() bool {
 
 // SetStart gets a reference to the given time.Time and assigns it to the Start field.
 func (o *MeasurementsNonIndex) SetStart(v time.Time) {
-
 	o.Start = &v
 }
 
@@ -312,7 +305,6 @@ func (o *MeasurementsNonIndex) HasStatusMeasurements() bool {
 
 // SetStatusMeasurements gets a reference to the given []MetricsMeasurement and assigns it to the StatusMeasurements field.
 func (o *MeasurementsNonIndex) SetStatusMeasurements(v []MetricsMeasurement) {
-
 	o.StatusMeasurements = &v
 }
 

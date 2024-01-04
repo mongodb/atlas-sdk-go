@@ -82,7 +82,6 @@ func (o *IngestionPipelineRun) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *IngestionPipelineRun) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -116,7 +115,6 @@ func (o *IngestionPipelineRun) HasBackupFrequencyType() bool {
 
 // SetBackupFrequencyType gets a reference to the given string and assigns it to the BackupFrequencyType field.
 func (o *IngestionPipelineRun) SetBackupFrequencyType(v string) {
-
 	o.BackupFrequencyType = &v
 }
 
@@ -150,7 +148,6 @@ func (o *IngestionPipelineRun) HasCreatedDate() bool {
 
 // SetCreatedDate gets a reference to the given time.Time and assigns it to the CreatedDate field.
 func (o *IngestionPipelineRun) SetCreatedDate(v time.Time) {
-
 	o.CreatedDate = &v
 }
 
@@ -184,7 +181,6 @@ func (o *IngestionPipelineRun) HasDatasetName() bool {
 
 // SetDatasetName gets a reference to the given string and assigns it to the DatasetName field.
 func (o *IngestionPipelineRun) SetDatasetName(v string) {
-
 	o.DatasetName = &v
 }
 
@@ -218,7 +214,6 @@ func (o *IngestionPipelineRun) HasDatasetRetentionPolicy() bool {
 
 // SetDatasetRetentionPolicy gets a reference to the given DatasetRetentionPolicy and assigns it to the DatasetRetentionPolicy field.
 func (o *IngestionPipelineRun) SetDatasetRetentionPolicy(v DatasetRetentionPolicy) {
-
 	o.DatasetRetentionPolicy = &v
 }
 
@@ -252,7 +247,6 @@ func (o *IngestionPipelineRun) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *IngestionPipelineRun) SetGroupId(v string) {
-
 	o.GroupId = &v
 }
 
@@ -286,7 +280,6 @@ func (o *IngestionPipelineRun) HasLastUpdatedDate() bool {
 
 // SetLastUpdatedDate gets a reference to the given time.Time and assigns it to the LastUpdatedDate field.
 func (o *IngestionPipelineRun) SetLastUpdatedDate(v time.Time) {
-
 	o.LastUpdatedDate = &v
 }
 
@@ -320,7 +313,6 @@ func (o *IngestionPipelineRun) HasPhase() bool {
 
 // SetPhase gets a reference to the given string and assigns it to the Phase field.
 func (o *IngestionPipelineRun) SetPhase(v string) {
-
 	o.Phase = &v
 }
 
@@ -354,7 +346,6 @@ func (o *IngestionPipelineRun) HasPipelineId() bool {
 
 // SetPipelineId gets a reference to the given string and assigns it to the PipelineId field.
 func (o *IngestionPipelineRun) SetPipelineId(v string) {
-
 	o.PipelineId = &v
 }
 
@@ -388,7 +379,6 @@ func (o *IngestionPipelineRun) HasScheduledDeletionDate() bool {
 
 // SetScheduledDeletionDate gets a reference to the given time.Time and assigns it to the ScheduledDeletionDate field.
 func (o *IngestionPipelineRun) SetScheduledDeletionDate(v time.Time) {
-
 	o.ScheduledDeletionDate = &v
 }
 
@@ -422,7 +412,6 @@ func (o *IngestionPipelineRun) HasSnapshotId() bool {
 
 // SetSnapshotId gets a reference to the given string and assigns it to the SnapshotId field.
 func (o *IngestionPipelineRun) SetSnapshotId(v string) {
-
 	o.SnapshotId = &v
 }
 
@@ -456,7 +445,6 @@ func (o *IngestionPipelineRun) HasState() bool {
 
 // SetState gets a reference to the given string and assigns it to the State field.
 func (o *IngestionPipelineRun) SetState(v string) {
-
 	o.State = &v
 }
 
@@ -490,7 +478,6 @@ func (o *IngestionPipelineRun) HasStats() bool {
 
 // SetStats gets a reference to the given PipelineRunStats and assigns it to the Stats field.
 func (o *IngestionPipelineRun) SetStats(v PipelineRunStats) {
-
 	o.Stats = &v
 }
 

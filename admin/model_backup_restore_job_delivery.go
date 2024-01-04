@@ -84,7 +84,6 @@ func (o *BackupRestoreJobDelivery) HasAuthHeader() bool {
 
 // SetAuthHeader gets a reference to the given string and assigns it to the AuthHeader field.
 func (o *BackupRestoreJobDelivery) SetAuthHeader(v string) {
-
 	o.AuthHeader = &v
 }
 
@@ -118,7 +117,6 @@ func (o *BackupRestoreJobDelivery) HasAuthValue() bool {
 
 // SetAuthValue gets a reference to the given string and assigns it to the AuthValue field.
 func (o *BackupRestoreJobDelivery) SetAuthValue(v string) {
-
 	o.AuthValue = &v
 }
 
@@ -152,7 +150,6 @@ func (o *BackupRestoreJobDelivery) HasExpirationHours() bool {
 
 // SetExpirationHours gets a reference to the given int and assigns it to the ExpirationHours field.
 func (o *BackupRestoreJobDelivery) SetExpirationHours(v int) {
-
 	o.ExpirationHours = &v
 }
 
@@ -186,7 +183,6 @@ func (o *BackupRestoreJobDelivery) HasExpires() bool {
 
 // SetExpires gets a reference to the given time.Time and assigns it to the Expires field.
 func (o *BackupRestoreJobDelivery) SetExpires(v time.Time) {
-
 	o.Expires = &v
 }
 
@@ -220,7 +216,6 @@ func (o *BackupRestoreJobDelivery) HasMaxDownloads() bool {
 
 // SetMaxDownloads gets a reference to the given int and assigns it to the MaxDownloads field.
 func (o *BackupRestoreJobDelivery) SetMaxDownloads(v int) {
-
 	o.MaxDownloads = &v
 }
 
@@ -278,7 +273,6 @@ func (o *BackupRestoreJobDelivery) HasStatusName() bool {
 
 // SetStatusName gets a reference to the given string and assigns it to the StatusName field.
 func (o *BackupRestoreJobDelivery) SetStatusName(v string) {
-
 	o.StatusName = &v
 }
 
@@ -312,7 +306,6 @@ func (o *BackupRestoreJobDelivery) HasTargetClusterId() bool {
 
 // SetTargetClusterId gets a reference to the given string and assigns it to the TargetClusterId field.
 func (o *BackupRestoreJobDelivery) SetTargetClusterId(v string) {
-
 	o.TargetClusterId = &v
 }
 
@@ -346,7 +339,6 @@ func (o *BackupRestoreJobDelivery) HasTargetClusterName() bool {
 
 // SetTargetClusterName gets a reference to the given string and assigns it to the TargetClusterName field.
 func (o *BackupRestoreJobDelivery) SetTargetClusterName(v string) {
-
 	o.TargetClusterName = &v
 }
 
@@ -380,7 +372,6 @@ func (o *BackupRestoreJobDelivery) HasTargetGroupId() bool {
 
 // SetTargetGroupId gets a reference to the given string and assigns it to the TargetGroupId field.
 func (o *BackupRestoreJobDelivery) SetTargetGroupId(v string) {
-
 	o.TargetGroupId = &v
 }
 
@@ -417,7 +408,6 @@ func (o *BackupRestoreJobDelivery) HasUrl() bool {
 // SetUrl gets a reference to the given string and assigns it to the Url field.
 // Deprecated
 func (o *BackupRestoreJobDelivery) SetUrl(v string) {
-
 	o.Url = &v
 }
 
@@ -451,7 +441,6 @@ func (o *BackupRestoreJobDelivery) HasUrlV2() bool {
 
 // SetUrlV2 gets a reference to the given string and assigns it to the UrlV2 field.
 func (o *BackupRestoreJobDelivery) SetUrlV2(v string) {
-
 	o.UrlV2 = &v
 }
 

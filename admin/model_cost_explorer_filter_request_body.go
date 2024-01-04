@@ -75,7 +75,6 @@ func (o *CostExplorerFilterRequestBody) HasClusters() bool {
 
 // SetClusters gets a reference to the given []string and assigns it to the Clusters field.
 func (o *CostExplorerFilterRequestBody) SetClusters(v []string) {
-
 	o.Clusters = &v
 }
 
@@ -133,7 +132,6 @@ func (o *CostExplorerFilterRequestBody) HasGroupBy() bool {
 
 // SetGroupBy gets a reference to the given string and assigns it to the GroupBy field.
 func (o *CostExplorerFilterRequestBody) SetGroupBy(v string) {
-
 	o.GroupBy = &v
 }
 
@@ -167,7 +165,6 @@ func (o *CostExplorerFilterRequestBody) HasIncludePartialMatches() bool {
 
 // SetIncludePartialMatches gets a reference to the given bool and assigns it to the IncludePartialMatches field.
 func (o *CostExplorerFilterRequestBody) SetIncludePartialMatches(v bool) {
-
 	o.IncludePartialMatches = &v
 }
 
@@ -201,7 +198,6 @@ func (o *CostExplorerFilterRequestBody) HasOrganizations() bool {
 
 // SetOrganizations gets a reference to the given []string and assigns it to the Organizations field.
 func (o *CostExplorerFilterRequestBody) SetOrganizations(v []string) {
-
 	o.Organizations = &v
 }
 
@@ -235,7 +231,6 @@ func (o *CostExplorerFilterRequestBody) HasProjects() bool {
 
 // SetProjects gets a reference to the given []string and assigns it to the Projects field.
 func (o *CostExplorerFilterRequestBody) SetProjects(v []string) {
-
 	o.Projects = &v
 }
 
@@ -269,7 +264,6 @@ func (o *CostExplorerFilterRequestBody) HasServices() bool {
 
 // SetServices gets a reference to the given []string and assigns it to the Services field.
 func (o *CostExplorerFilterRequestBody) SetServices(v []string) {
-
 	o.Services = &v
 }
 

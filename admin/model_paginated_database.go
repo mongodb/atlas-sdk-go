@@ -63,7 +63,6 @@ func (o *PaginatedDatabase) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PaginatedDatabase) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -97,7 +96,6 @@ func (o *PaginatedDatabase) HasResults() bool {
 
 // SetResults gets a reference to the given []MesurementsDatabase and assigns it to the Results field.
 func (o *PaginatedDatabase) SetResults(v []MesurementsDatabase) {
-
 	o.Results = &v
 }
 
@@ -131,7 +129,6 @@ func (o *PaginatedDatabase) HasTotalCount() bool {
 
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
 func (o *PaginatedDatabase) SetTotalCount(v int) {
-
 	o.TotalCount = &v
 }
 

@@ -67,7 +67,6 @@ func (o *OrgFederationSettings) HasFederatedDomains() bool {
 
 // SetFederatedDomains gets a reference to the given []string and assigns it to the FederatedDomains field.
 func (o *OrgFederationSettings) SetFederatedDomains(v []string) {
-
 	o.FederatedDomains = &v
 }
 
@@ -101,7 +100,6 @@ func (o *OrgFederationSettings) HasHasRoleMappings() bool {
 
 // SetHasRoleMappings gets a reference to the given bool and assigns it to the HasRoleMappings field.
 func (o *OrgFederationSettings) SetHasRoleMappings(v bool) {
-
 	o.HasRoleMappings = &v
 }
 
@@ -135,7 +133,6 @@ func (o *OrgFederationSettings) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *OrgFederationSettings) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -169,7 +166,6 @@ func (o *OrgFederationSettings) HasIdentityProviderId() bool {
 
 // SetIdentityProviderId gets a reference to the given string and assigns it to the IdentityProviderId field.
 func (o *OrgFederationSettings) SetIdentityProviderId(v string) {
-
 	o.IdentityProviderId = &v
 }
 
@@ -203,7 +199,6 @@ func (o *OrgFederationSettings) HasIdentityProviderStatus() bool {
 
 // SetIdentityProviderStatus gets a reference to the given string and assigns it to the IdentityProviderStatus field.
 func (o *OrgFederationSettings) SetIdentityProviderStatus(v string) {
-
 	o.IdentityProviderStatus = &v
 }
 

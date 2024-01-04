@@ -71,7 +71,6 @@ func (o *OrgGroup) HasClusters() bool {
 
 // SetClusters gets a reference to the given []CloudCluster and assigns it to the Clusters field.
 func (o *OrgGroup) SetClusters(v []CloudCluster) {
-
 	o.Clusters = &v
 }
 
@@ -105,7 +104,6 @@ func (o *OrgGroup) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *OrgGroup) SetGroupId(v string) {
-
 	o.GroupId = &v
 }
 
@@ -139,7 +137,6 @@ func (o *OrgGroup) HasGroupName() bool {
 
 // SetGroupName gets a reference to the given string and assigns it to the GroupName field.
 func (o *OrgGroup) SetGroupName(v string) {
-
 	o.GroupName = &v
 }
 
@@ -173,7 +170,6 @@ func (o *OrgGroup) HasOrgId() bool {
 
 // SetOrgId gets a reference to the given string and assigns it to the OrgId field.
 func (o *OrgGroup) SetOrgId(v string) {
-
 	o.OrgId = &v
 }
 
@@ -207,7 +203,6 @@ func (o *OrgGroup) HasOrgName() bool {
 
 // SetOrgName gets a reference to the given string and assigns it to the OrgName field.
 func (o *OrgGroup) SetOrgName(v string) {
-
 	o.OrgName = &v
 }
 
@@ -241,7 +236,6 @@ func (o *OrgGroup) HasPlanType() bool {
 
 // SetPlanType gets a reference to the given string and assigns it to the PlanType field.
 func (o *OrgGroup) SetPlanType(v string) {
-
 	o.PlanType = &v
 }
 
@@ -275,7 +269,6 @@ func (o *OrgGroup) HasTags() bool {
 
 // SetTags gets a reference to the given []string and assigns it to the Tags field.
 func (o *OrgGroup) SetTags(v []string) {
-
 	o.Tags = &v
 }
 

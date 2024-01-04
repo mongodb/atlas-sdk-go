@@ -61,7 +61,6 @@ func (o *AdvancedDiskBackupSnapshotSchedulePolicy) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *AdvancedDiskBackupSnapshotSchedulePolicy) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -95,7 +94,6 @@ func (o *AdvancedDiskBackupSnapshotSchedulePolicy) HasPolicyItems() bool {
 
 // SetPolicyItems gets a reference to the given []DiskBackupApiPolicyItem and assigns it to the PolicyItems field.
 func (o *AdvancedDiskBackupSnapshotSchedulePolicy) SetPolicyItems(v []DiskBackupApiPolicyItem) {
-
 	o.PolicyItems = &v
 }
 

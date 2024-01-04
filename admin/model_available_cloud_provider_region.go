@@ -61,7 +61,6 @@ func (o *AvailableCloudProviderRegion) HasDefault() bool {
 
 // SetDefault gets a reference to the given bool and assigns it to the Default field.
 func (o *AvailableCloudProviderRegion) SetDefault(v bool) {
-
 	o.Default = &v
 }
 
@@ -95,7 +94,6 @@ func (o *AvailableCloudProviderRegion) HasName() bool {
 
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *AvailableCloudProviderRegion) SetName(v string) {
-
 	o.Name = &v
 }
 

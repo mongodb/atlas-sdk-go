@@ -63,7 +63,6 @@ func (o *ServerlessConnectionStringsPrivateEndpointItem) HasEndpointId() bool {
 
 // SetEndpointId gets a reference to the given string and assigns it to the EndpointId field.
 func (o *ServerlessConnectionStringsPrivateEndpointItem) SetEndpointId(v string) {
-
 	o.EndpointId = &v
 }
 
@@ -97,7 +96,6 @@ func (o *ServerlessConnectionStringsPrivateEndpointItem) HasProviderName() bool 
 
 // SetProviderName gets a reference to the given string and assigns it to the ProviderName field.
 func (o *ServerlessConnectionStringsPrivateEndpointItem) SetProviderName(v string) {
-
 	o.ProviderName = &v
 }
 
@@ -131,7 +129,6 @@ func (o *ServerlessConnectionStringsPrivateEndpointItem) HasRegion() bool {
 
 // SetRegion gets a reference to the given string and assigns it to the Region field.
 func (o *ServerlessConnectionStringsPrivateEndpointItem) SetRegion(v string) {
-
 	o.Region = &v
 }
 

@@ -69,7 +69,6 @@ func (o *IngestionSource) HasType() bool {
 
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *IngestionSource) SetType(v string) {
-
 	o.Type = &v
 }
 
@@ -103,7 +102,6 @@ func (o *IngestionSource) HasClusterName() bool {
 
 // SetClusterName gets a reference to the given string and assigns it to the ClusterName field.
 func (o *IngestionSource) SetClusterName(v string) {
-
 	o.ClusterName = &v
 }
 
@@ -137,7 +135,6 @@ func (o *IngestionSource) HasCollectionName() bool {
 
 // SetCollectionName gets a reference to the given string and assigns it to the CollectionName field.
 func (o *IngestionSource) SetCollectionName(v string) {
-
 	o.CollectionName = &v
 }
 
@@ -171,7 +168,6 @@ func (o *IngestionSource) HasDatabaseName() bool {
 
 // SetDatabaseName gets a reference to the given string and assigns it to the DatabaseName field.
 func (o *IngestionSource) SetDatabaseName(v string) {
-
 	o.DatabaseName = &v
 }
 
@@ -205,7 +201,6 @@ func (o *IngestionSource) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *IngestionSource) SetGroupId(v string) {
-
 	o.GroupId = &v
 }
 
@@ -239,7 +234,6 @@ func (o *IngestionSource) HasPolicyItemId() bool {
 
 // SetPolicyItemId gets a reference to the given string and assigns it to the PolicyItemId field.
 func (o *IngestionSource) SetPolicyItemId(v string) {
-
 	o.PolicyItemId = &v
 }
 

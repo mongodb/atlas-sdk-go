@@ -182,7 +182,6 @@ func (o *ApiAtlasSnapshotSchedule) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *ApiAtlasSnapshotSchedule) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 

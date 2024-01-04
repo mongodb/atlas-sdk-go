@@ -63,7 +63,6 @@ func (o *ClusterIPAddresses) HasClusterName() bool {
 
 // SetClusterName gets a reference to the given string and assigns it to the ClusterName field.
 func (o *ClusterIPAddresses) SetClusterName(v string) {
-
 	o.ClusterName = &v
 }
 
@@ -97,7 +96,6 @@ func (o *ClusterIPAddresses) HasInbound() bool {
 
 // SetInbound gets a reference to the given []string and assigns it to the Inbound field.
 func (o *ClusterIPAddresses) SetInbound(v []string) {
-
 	o.Inbound = &v
 }
 
@@ -131,7 +129,6 @@ func (o *ClusterIPAddresses) HasOutbound() bool {
 
 // SetOutbound gets a reference to the given []string and assigns it to the Outbound field.
 func (o *ClusterIPAddresses) SetOutbound(v []string) {
-
 	o.Outbound = &v
 }
 

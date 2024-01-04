@@ -63,7 +63,6 @@ func (o *PaginatedNetworkAccess) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PaginatedNetworkAccess) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -97,7 +96,6 @@ func (o *PaginatedNetworkAccess) HasResults() bool {
 
 // SetResults gets a reference to the given []NetworkPermissionEntry and assigns it to the Results field.
 func (o *PaginatedNetworkAccess) SetResults(v []NetworkPermissionEntry) {
-
 	o.Results = &v
 }
 
@@ -131,7 +129,6 @@ func (o *PaginatedNetworkAccess) HasTotalCount() bool {
 
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
 func (o *PaginatedNetworkAccess) SetTotalCount(v int) {
-
 	o.TotalCount = &v
 }
 

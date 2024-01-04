@@ -67,7 +67,6 @@ func (o *LiveImportValidation) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *LiveImportValidation) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -101,7 +100,6 @@ func (o *LiveImportValidation) HasErrorMessage() bool {
 
 // SetErrorMessage gets a reference to the given string and assigns it to the ErrorMessage field.
 func (o *LiveImportValidation) SetErrorMessage(v string) {
-
 	o.ErrorMessage = &v
 }
 
@@ -135,7 +133,6 @@ func (o *LiveImportValidation) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *LiveImportValidation) SetGroupId(v string) {
-
 	o.GroupId = &v
 }
 
@@ -169,7 +166,6 @@ func (o *LiveImportValidation) HasSourceGroupId() bool {
 
 // SetSourceGroupId gets a reference to the given string and assigns it to the SourceGroupId field.
 func (o *LiveImportValidation) SetSourceGroupId(v string) {
-
 	o.SourceGroupId = &v
 }
 
@@ -203,7 +199,6 @@ func (o *LiveImportValidation) HasStatus() bool {
 
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *LiveImportValidation) SetStatus(v string) {
-
 	o.Status = &v
 }
 

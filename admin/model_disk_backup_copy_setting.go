@@ -67,7 +67,6 @@ func (o *DiskBackupCopySetting) HasCloudProvider() bool {
 
 // SetCloudProvider gets a reference to the given string and assigns it to the CloudProvider field.
 func (o *DiskBackupCopySetting) SetCloudProvider(v string) {
-
 	o.CloudProvider = &v
 }
 
@@ -101,7 +100,6 @@ func (o *DiskBackupCopySetting) HasFrequencies() bool {
 
 // SetFrequencies gets a reference to the given []string and assigns it to the Frequencies field.
 func (o *DiskBackupCopySetting) SetFrequencies(v []string) {
-
 	o.Frequencies = &v
 }
 
@@ -135,7 +133,6 @@ func (o *DiskBackupCopySetting) HasRegionName() bool {
 
 // SetRegionName gets a reference to the given string and assigns it to the RegionName field.
 func (o *DiskBackupCopySetting) SetRegionName(v string) {
-
 	o.RegionName = &v
 }
 
@@ -169,7 +166,6 @@ func (o *DiskBackupCopySetting) HasReplicationSpecId() bool {
 
 // SetReplicationSpecId gets a reference to the given string and assigns it to the ReplicationSpecId field.
 func (o *DiskBackupCopySetting) SetReplicationSpecId(v string) {
-
 	o.ReplicationSpecId = &v
 }
 
@@ -203,7 +199,6 @@ func (o *DiskBackupCopySetting) HasShouldCopyOplogs() bool {
 
 // SetShouldCopyOplogs gets a reference to the given bool and assigns it to the ShouldCopyOplogs field.
 func (o *DiskBackupCopySetting) SetShouldCopyOplogs(v bool) {
-
 	o.ShouldCopyOplogs = &v
 }
 

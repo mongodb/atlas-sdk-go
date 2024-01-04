@@ -65,7 +65,6 @@ func (o *RestoreJobFileHash) HasFileName() bool {
 
 // SetFileName gets a reference to the given string and assigns it to the FileName field.
 func (o *RestoreJobFileHash) SetFileName(v string) {
-
 	o.FileName = &v
 }
 
@@ -99,7 +98,6 @@ func (o *RestoreJobFileHash) HasHash() bool {
 
 // SetHash gets a reference to the given string and assigns it to the Hash field.
 func (o *RestoreJobFileHash) SetHash(v string) {
-
 	o.Hash = &v
 }
 
@@ -133,7 +131,6 @@ func (o *RestoreJobFileHash) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *RestoreJobFileHash) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -167,7 +164,6 @@ func (o *RestoreJobFileHash) HasTypeName() bool {
 
 // SetTypeName gets a reference to the given string and assigns it to the TypeName field.
 func (o *RestoreJobFileHash) SetTypeName(v string) {
-
 	o.TypeName = &v
 }
 

@@ -67,7 +67,6 @@ func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) HasConnectionString
 
 // SetConnectionString gets a reference to the given string and assigns it to the ConnectionString field.
 func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) SetConnectionString(v string) {
-
 	o.ConnectionString = &v
 }
 
@@ -101,7 +100,6 @@ func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) HasEndpoints() bool
 
 // SetEndpoints gets a reference to the given []ClusterDescriptionConnectionStringsPrivateEndpointEndpoint and assigns it to the Endpoints field.
 func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) SetEndpoints(v []ClusterDescriptionConnectionStringsPrivateEndpointEndpoint) {
-
 	o.Endpoints = &v
 }
 
@@ -135,7 +133,6 @@ func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) HasSrvConnectionStr
 
 // SetSrvConnectionString gets a reference to the given string and assigns it to the SrvConnectionString field.
 func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) SetSrvConnectionString(v string) {
-
 	o.SrvConnectionString = &v
 }
 
@@ -169,7 +166,6 @@ func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) HasSrvShardOptimize
 
 // SetSrvShardOptimizedConnectionString gets a reference to the given string and assigns it to the SrvShardOptimizedConnectionString field.
 func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) SetSrvShardOptimizedConnectionString(v string) {
-
 	o.SrvShardOptimizedConnectionString = &v
 }
 
@@ -203,7 +199,6 @@ func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) HasType() bool {
 
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) SetType(v string) {
-
 	o.Type = &v
 }
 

@@ -71,7 +71,6 @@ func (o *AWSKMSConfiguration) HasAccessKeyID() bool {
 
 // SetAccessKeyID gets a reference to the given string and assigns it to the AccessKeyID field.
 func (o *AWSKMSConfiguration) SetAccessKeyID(v string) {
-
 	o.AccessKeyID = &v
 }
 
@@ -105,7 +104,6 @@ func (o *AWSKMSConfiguration) HasCustomerMasterKeyID() bool {
 
 // SetCustomerMasterKeyID gets a reference to the given string and assigns it to the CustomerMasterKeyID field.
 func (o *AWSKMSConfiguration) SetCustomerMasterKeyID(v string) {
-
 	o.CustomerMasterKeyID = &v
 }
 
@@ -139,7 +137,6 @@ func (o *AWSKMSConfiguration) HasEnabled() bool {
 
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *AWSKMSConfiguration) SetEnabled(v bool) {
-
 	o.Enabled = &v
 }
 
@@ -173,7 +170,6 @@ func (o *AWSKMSConfiguration) HasRegion() bool {
 
 // SetRegion gets a reference to the given string and assigns it to the Region field.
 func (o *AWSKMSConfiguration) SetRegion(v string) {
-
 	o.Region = &v
 }
 
@@ -207,7 +203,6 @@ func (o *AWSKMSConfiguration) HasRoleId() bool {
 
 // SetRoleId gets a reference to the given string and assigns it to the RoleId field.
 func (o *AWSKMSConfiguration) SetRoleId(v string) {
-
 	o.RoleId = &v
 }
 
@@ -241,7 +236,6 @@ func (o *AWSKMSConfiguration) HasSecretAccessKey() bool {
 
 // SetSecretAccessKey gets a reference to the given string and assigns it to the SecretAccessKey field.
 func (o *AWSKMSConfiguration) SetSecretAccessKey(v string) {
-
 	o.SecretAccessKey = &v
 }
 
@@ -275,7 +269,6 @@ func (o *AWSKMSConfiguration) HasValid() bool {
 
 // SetValid gets a reference to the given bool and assigns it to the Valid field.
 func (o *AWSKMSConfiguration) SetValid(v bool) {
-
 	o.Valid = &v
 }
 

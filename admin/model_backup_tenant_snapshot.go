@@ -74,7 +74,6 @@ func (o *BackupTenantSnapshot) HasExpiration() bool {
 
 // SetExpiration gets a reference to the given time.Time and assigns it to the Expiration field.
 func (o *BackupTenantSnapshot) SetExpiration(v time.Time) {
-
 	o.Expiration = &v
 }
 
@@ -108,7 +107,6 @@ func (o *BackupTenantSnapshot) HasFinishTime() bool {
 
 // SetFinishTime gets a reference to the given time.Time and assigns it to the FinishTime field.
 func (o *BackupTenantSnapshot) SetFinishTime(v time.Time) {
-
 	o.FinishTime = &v
 }
 
@@ -142,7 +140,6 @@ func (o *BackupTenantSnapshot) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *BackupTenantSnapshot) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -176,7 +173,6 @@ func (o *BackupTenantSnapshot) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *BackupTenantSnapshot) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -210,7 +206,6 @@ func (o *BackupTenantSnapshot) HasMongoDBVersion() bool {
 
 // SetMongoDBVersion gets a reference to the given string and assigns it to the MongoDBVersion field.
 func (o *BackupTenantSnapshot) SetMongoDBVersion(v string) {
-
 	o.MongoDBVersion = &v
 }
 
@@ -244,7 +239,6 @@ func (o *BackupTenantSnapshot) HasScheduledTime() bool {
 
 // SetScheduledTime gets a reference to the given time.Time and assigns it to the ScheduledTime field.
 func (o *BackupTenantSnapshot) SetScheduledTime(v time.Time) {
-
 	o.ScheduledTime = &v
 }
 
@@ -278,7 +272,6 @@ func (o *BackupTenantSnapshot) HasStartTime() bool {
 
 // SetStartTime gets a reference to the given time.Time and assigns it to the StartTime field.
 func (o *BackupTenantSnapshot) SetStartTime(v time.Time) {
-
 	o.StartTime = &v
 }
 
@@ -312,7 +305,6 @@ func (o *BackupTenantSnapshot) HasStatus() bool {
 
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *BackupTenantSnapshot) SetStatus(v string) {
-
 	o.Status = &v
 }
 

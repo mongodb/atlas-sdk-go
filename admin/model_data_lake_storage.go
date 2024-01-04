@@ -61,7 +61,6 @@ func (o *DataLakeStorage) HasDatabases() bool {
 
 // SetDatabases gets a reference to the given []DataLakeDatabaseInstance and assigns it to the Databases field.
 func (o *DataLakeStorage) SetDatabases(v []DataLakeDatabaseInstance) {
-
 	o.Databases = &v
 }
 
@@ -95,7 +94,6 @@ func (o *DataLakeStorage) HasStores() bool {
 
 // SetStores gets a reference to the given []DataLakeStoreSettings and assigns it to the Stores field.
 func (o *DataLakeStorage) SetStores(v []DataLakeStoreSettings) {
-
 	o.Stores = &v
 }
 

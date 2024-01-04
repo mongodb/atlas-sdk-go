@@ -62,7 +62,6 @@ func (o *MetricDataPoint) HasTimestamp() bool {
 
 // SetTimestamp gets a reference to the given time.Time and assigns it to the Timestamp field.
 func (o *MetricDataPoint) SetTimestamp(v time.Time) {
-
 	o.Timestamp = &v
 }
 
@@ -96,7 +95,6 @@ func (o *MetricDataPoint) HasValue() bool {
 
 // SetValue gets a reference to the given float32 and assigns it to the Value field.
 func (o *MetricDataPoint) SetValue(v float32) {
-
 	o.Value = &v
 }
 

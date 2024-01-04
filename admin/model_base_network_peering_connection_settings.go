@@ -120,7 +120,6 @@ func (o *BaseNetworkPeeringConnectionSettings) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *BaseNetworkPeeringConnectionSettings) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -154,7 +153,6 @@ func (o *BaseNetworkPeeringConnectionSettings) HasProviderName() bool {
 
 // SetProviderName gets a reference to the given string and assigns it to the ProviderName field.
 func (o *BaseNetworkPeeringConnectionSettings) SetProviderName(v string) {
-
 	o.ProviderName = &v
 }
 
@@ -188,7 +186,6 @@ func (o *BaseNetworkPeeringConnectionSettings) HasAccepterRegionName() bool {
 
 // SetAccepterRegionName gets a reference to the given string and assigns it to the AccepterRegionName field.
 func (o *BaseNetworkPeeringConnectionSettings) SetAccepterRegionName(v string) {
-
 	o.AccepterRegionName = &v
 }
 
@@ -222,7 +219,6 @@ func (o *BaseNetworkPeeringConnectionSettings) HasAwsAccountId() bool {
 
 // SetAwsAccountId gets a reference to the given string and assigns it to the AwsAccountId field.
 func (o *BaseNetworkPeeringConnectionSettings) SetAwsAccountId(v string) {
-
 	o.AwsAccountId = &v
 }
 
@@ -256,7 +252,6 @@ func (o *BaseNetworkPeeringConnectionSettings) HasConnectionId() bool {
 
 // SetConnectionId gets a reference to the given string and assigns it to the ConnectionId field.
 func (o *BaseNetworkPeeringConnectionSettings) SetConnectionId(v string) {
-
 	o.ConnectionId = &v
 }
 
@@ -290,7 +285,6 @@ func (o *BaseNetworkPeeringConnectionSettings) HasErrorStateName() bool {
 
 // SetErrorStateName gets a reference to the given string and assigns it to the ErrorStateName field.
 func (o *BaseNetworkPeeringConnectionSettings) SetErrorStateName(v string) {
-
 	o.ErrorStateName = &v
 }
 
@@ -324,7 +318,6 @@ func (o *BaseNetworkPeeringConnectionSettings) HasRouteTableCidrBlock() bool {
 
 // SetRouteTableCidrBlock gets a reference to the given string and assigns it to the RouteTableCidrBlock field.
 func (o *BaseNetworkPeeringConnectionSettings) SetRouteTableCidrBlock(v string) {
-
 	o.RouteTableCidrBlock = &v
 }
 
@@ -358,7 +351,6 @@ func (o *BaseNetworkPeeringConnectionSettings) HasStatusName() bool {
 
 // SetStatusName gets a reference to the given string and assigns it to the StatusName field.
 func (o *BaseNetworkPeeringConnectionSettings) SetStatusName(v string) {
-
 	o.StatusName = &v
 }
 
@@ -392,7 +384,6 @@ func (o *BaseNetworkPeeringConnectionSettings) HasVpcId() bool {
 
 // SetVpcId gets a reference to the given string and assigns it to the VpcId field.
 func (o *BaseNetworkPeeringConnectionSettings) SetVpcId(v string) {
-
 	o.VpcId = &v
 }
 
@@ -426,7 +417,6 @@ func (o *BaseNetworkPeeringConnectionSettings) HasAzureDirectoryId() bool {
 
 // SetAzureDirectoryId gets a reference to the given string and assigns it to the AzureDirectoryId field.
 func (o *BaseNetworkPeeringConnectionSettings) SetAzureDirectoryId(v string) {
-
 	o.AzureDirectoryId = &v
 }
 
@@ -460,7 +450,6 @@ func (o *BaseNetworkPeeringConnectionSettings) HasAzureSubscriptionId() bool {
 
 // SetAzureSubscriptionId gets a reference to the given string and assigns it to the AzureSubscriptionId field.
 func (o *BaseNetworkPeeringConnectionSettings) SetAzureSubscriptionId(v string) {
-
 	o.AzureSubscriptionId = &v
 }
 
@@ -494,7 +483,6 @@ func (o *BaseNetworkPeeringConnectionSettings) HasErrorState() bool {
 
 // SetErrorState gets a reference to the given string and assigns it to the ErrorState field.
 func (o *BaseNetworkPeeringConnectionSettings) SetErrorState(v string) {
-
 	o.ErrorState = &v
 }
 
@@ -528,7 +516,6 @@ func (o *BaseNetworkPeeringConnectionSettings) HasResourceGroupName() bool {
 
 // SetResourceGroupName gets a reference to the given string and assigns it to the ResourceGroupName field.
 func (o *BaseNetworkPeeringConnectionSettings) SetResourceGroupName(v string) {
-
 	o.ResourceGroupName = &v
 }
 
@@ -562,7 +549,6 @@ func (o *BaseNetworkPeeringConnectionSettings) HasStatus() bool {
 
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *BaseNetworkPeeringConnectionSettings) SetStatus(v string) {
-
 	o.Status = &v
 }
 
@@ -596,7 +582,6 @@ func (o *BaseNetworkPeeringConnectionSettings) HasVnetName() bool {
 
 // SetVnetName gets a reference to the given string and assigns it to the VnetName field.
 func (o *BaseNetworkPeeringConnectionSettings) SetVnetName(v string) {
-
 	o.VnetName = &v
 }
 
@@ -630,7 +615,6 @@ func (o *BaseNetworkPeeringConnectionSettings) HasErrorMessage() bool {
 
 // SetErrorMessage gets a reference to the given string and assigns it to the ErrorMessage field.
 func (o *BaseNetworkPeeringConnectionSettings) SetErrorMessage(v string) {
-
 	o.ErrorMessage = &v
 }
 
@@ -664,7 +648,6 @@ func (o *BaseNetworkPeeringConnectionSettings) HasGcpProjectId() bool {
 
 // SetGcpProjectId gets a reference to the given string and assigns it to the GcpProjectId field.
 func (o *BaseNetworkPeeringConnectionSettings) SetGcpProjectId(v string) {
-
 	o.GcpProjectId = &v
 }
 
@@ -698,7 +681,6 @@ func (o *BaseNetworkPeeringConnectionSettings) HasNetworkName() bool {
 
 // SetNetworkName gets a reference to the given string and assigns it to the NetworkName field.
 func (o *BaseNetworkPeeringConnectionSettings) SetNetworkName(v string) {
-
 	o.NetworkName = &v
 }
 

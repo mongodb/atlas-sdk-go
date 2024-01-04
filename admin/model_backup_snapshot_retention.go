@@ -65,7 +65,6 @@ func (o *BackupSnapshotRetention) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *BackupSnapshotRetention) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 

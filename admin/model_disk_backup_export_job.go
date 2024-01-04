@@ -82,7 +82,6 @@ func (o *DiskBackupExportJob) HasComponents() bool {
 
 // SetComponents gets a reference to the given []DiskBackupBaseRestoreMember and assigns it to the Components field.
 func (o *DiskBackupExportJob) SetComponents(v []DiskBackupBaseRestoreMember) {
-
 	o.Components = &v
 }
 
@@ -116,7 +115,6 @@ func (o *DiskBackupExportJob) HasCreatedAt() bool {
 
 // SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
 func (o *DiskBackupExportJob) SetCreatedAt(v time.Time) {
-
 	o.CreatedAt = &v
 }
 
@@ -150,7 +148,6 @@ func (o *DiskBackupExportJob) HasCustomData() bool {
 
 // SetCustomData gets a reference to the given []BackupLabel and assigns it to the CustomData field.
 func (o *DiskBackupExportJob) SetCustomData(v []BackupLabel) {
-
 	o.CustomData = &v
 }
 
@@ -184,7 +181,6 @@ func (o *DiskBackupExportJob) HasDeliveryUrl() bool {
 
 // SetDeliveryUrl gets a reference to the given []string and assigns it to the DeliveryUrl field.
 func (o *DiskBackupExportJob) SetDeliveryUrl(v []string) {
-
 	o.DeliveryUrl = &v
 }
 
@@ -242,7 +238,6 @@ func (o *DiskBackupExportJob) HasExportStatus() bool {
 
 // SetExportStatus gets a reference to the given ExportStatus and assigns it to the ExportStatus field.
 func (o *DiskBackupExportJob) SetExportStatus(v ExportStatus) {
-
 	o.ExportStatus = &v
 }
 
@@ -276,7 +271,6 @@ func (o *DiskBackupExportJob) HasFinishedAt() bool {
 
 // SetFinishedAt gets a reference to the given time.Time and assigns it to the FinishedAt field.
 func (o *DiskBackupExportJob) SetFinishedAt(v time.Time) {
-
 	o.FinishedAt = &v
 }
 
@@ -310,7 +304,6 @@ func (o *DiskBackupExportJob) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *DiskBackupExportJob) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -344,7 +337,6 @@ func (o *DiskBackupExportJob) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *DiskBackupExportJob) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -378,7 +370,6 @@ func (o *DiskBackupExportJob) HasPrefix() bool {
 
 // SetPrefix gets a reference to the given string and assigns it to the Prefix field.
 func (o *DiskBackupExportJob) SetPrefix(v string) {
-
 	o.Prefix = &v
 }
 
@@ -412,7 +403,6 @@ func (o *DiskBackupExportJob) HasSnapshotId() bool {
 
 // SetSnapshotId gets a reference to the given string and assigns it to the SnapshotId field.
 func (o *DiskBackupExportJob) SetSnapshotId(v string) {
-
 	o.SnapshotId = &v
 }
 
@@ -446,7 +436,6 @@ func (o *DiskBackupExportJob) HasState() bool {
 
 // SetState gets a reference to the given string and assigns it to the State field.
 func (o *DiskBackupExportJob) SetState(v string) {
-
 	o.State = &v
 }
 

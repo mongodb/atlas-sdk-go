@@ -65,7 +65,6 @@ func (o *IngestionSink) HasType() bool {
 
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *IngestionSink) SetType(v string) {
-
 	o.Type = &v
 }
 
@@ -99,7 +98,6 @@ func (o *IngestionSink) HasMetadataProvider() bool {
 
 // SetMetadataProvider gets a reference to the given string and assigns it to the MetadataProvider field.
 func (o *IngestionSink) SetMetadataProvider(v string) {
-
 	o.MetadataProvider = &v
 }
 
@@ -133,7 +131,6 @@ func (o *IngestionSink) HasMetadataRegion() bool {
 
 // SetMetadataRegion gets a reference to the given string and assigns it to the MetadataRegion field.
 func (o *IngestionSink) SetMetadataRegion(v string) {
-
 	o.MetadataRegion = &v
 }
 
@@ -167,7 +164,6 @@ func (o *IngestionSink) HasPartitionFields() bool {
 
 // SetPartitionFields gets a reference to the given []DataLakePipelinesPartitionField and assigns it to the PartitionFields field.
 func (o *IngestionSink) SetPartitionFields(v []DataLakePipelinesPartitionField) {
-
 	o.PartitionFields = &v
 }
 

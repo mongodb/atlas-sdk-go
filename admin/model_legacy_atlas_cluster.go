@@ -146,7 +146,6 @@ func (o *LegacyAtlasCluster) HasAcceptDataRisksAndForceReplicaSetReconfig() bool
 
 // SetAcceptDataRisksAndForceReplicaSetReconfig gets a reference to the given time.Time and assigns it to the AcceptDataRisksAndForceReplicaSetReconfig field.
 func (o *LegacyAtlasCluster) SetAcceptDataRisksAndForceReplicaSetReconfig(v time.Time) {
-
 	o.AcceptDataRisksAndForceReplicaSetReconfig = &v
 }
 
@@ -180,7 +179,6 @@ func (o *LegacyAtlasCluster) HasAutoScaling() bool {
 
 // SetAutoScaling gets a reference to the given ClusterAutoScalingSettings and assigns it to the AutoScaling field.
 func (o *LegacyAtlasCluster) SetAutoScaling(v ClusterAutoScalingSettings) {
-
 	o.AutoScaling = &v
 }
 
@@ -214,7 +212,6 @@ func (o *LegacyAtlasCluster) HasBackupEnabled() bool {
 
 // SetBackupEnabled gets a reference to the given bool and assigns it to the BackupEnabled field.
 func (o *LegacyAtlasCluster) SetBackupEnabled(v bool) {
-
 	o.BackupEnabled = &v
 }
 
@@ -248,7 +245,6 @@ func (o *LegacyAtlasCluster) HasBiConnector() bool {
 
 // SetBiConnector gets a reference to the given BiConnector and assigns it to the BiConnector field.
 func (o *LegacyAtlasCluster) SetBiConnector(v BiConnector) {
-
 	o.BiConnector = &v
 }
 
@@ -282,7 +278,6 @@ func (o *LegacyAtlasCluster) HasClusterType() bool {
 
 // SetClusterType gets a reference to the given string and assigns it to the ClusterType field.
 func (o *LegacyAtlasCluster) SetClusterType(v string) {
-
 	o.ClusterType = &v
 }
 
@@ -316,7 +311,6 @@ func (o *LegacyAtlasCluster) HasConnectionStrings() bool {
 
 // SetConnectionStrings gets a reference to the given ClusterConnectionStrings and assigns it to the ConnectionStrings field.
 func (o *LegacyAtlasCluster) SetConnectionStrings(v ClusterConnectionStrings) {
-
 	o.ConnectionStrings = &v
 }
 
@@ -350,7 +344,6 @@ func (o *LegacyAtlasCluster) HasCreateDate() bool {
 
 // SetCreateDate gets a reference to the given time.Time and assigns it to the CreateDate field.
 func (o *LegacyAtlasCluster) SetCreateDate(v time.Time) {
-
 	o.CreateDate = &v
 }
 
@@ -384,7 +377,6 @@ func (o *LegacyAtlasCluster) HasDiskSizeGB() bool {
 
 // SetDiskSizeGB gets a reference to the given float64 and assigns it to the DiskSizeGB field.
 func (o *LegacyAtlasCluster) SetDiskSizeGB(v float64) {
-
 	o.DiskSizeGB = &v
 }
 
@@ -418,7 +410,6 @@ func (o *LegacyAtlasCluster) HasEncryptionAtRestProvider() bool {
 
 // SetEncryptionAtRestProvider gets a reference to the given string and assigns it to the EncryptionAtRestProvider field.
 func (o *LegacyAtlasCluster) SetEncryptionAtRestProvider(v string) {
-
 	o.EncryptionAtRestProvider = &v
 }
 
@@ -452,7 +443,6 @@ func (o *LegacyAtlasCluster) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *LegacyAtlasCluster) SetGroupId(v string) {
-
 	o.GroupId = &v
 }
 
@@ -486,7 +476,6 @@ func (o *LegacyAtlasCluster) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *LegacyAtlasCluster) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -523,7 +512,6 @@ func (o *LegacyAtlasCluster) HasLabels() bool {
 // SetLabels gets a reference to the given []ComponentLabel and assigns it to the Labels field.
 // Deprecated
 func (o *LegacyAtlasCluster) SetLabels(v []ComponentLabel) {
-
 	o.Labels = &v
 }
 
@@ -557,7 +545,6 @@ func (o *LegacyAtlasCluster) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *LegacyAtlasCluster) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -591,7 +578,6 @@ func (o *LegacyAtlasCluster) HasMongoDBMajorVersion() bool {
 
 // SetMongoDBMajorVersion gets a reference to the given string and assigns it to the MongoDBMajorVersion field.
 func (o *LegacyAtlasCluster) SetMongoDBMajorVersion(v string) {
-
 	o.MongoDBMajorVersion = &v
 }
 
@@ -625,7 +611,6 @@ func (o *LegacyAtlasCluster) HasMongoDBVersion() bool {
 
 // SetMongoDBVersion gets a reference to the given string and assigns it to the MongoDBVersion field.
 func (o *LegacyAtlasCluster) SetMongoDBVersion(v string) {
-
 	o.MongoDBVersion = &v
 }
 
@@ -659,7 +644,6 @@ func (o *LegacyAtlasCluster) HasMongoURI() bool {
 
 // SetMongoURI gets a reference to the given string and assigns it to the MongoURI field.
 func (o *LegacyAtlasCluster) SetMongoURI(v string) {
-
 	o.MongoURI = &v
 }
 
@@ -693,7 +677,6 @@ func (o *LegacyAtlasCluster) HasMongoURIUpdated() bool {
 
 // SetMongoURIUpdated gets a reference to the given time.Time and assigns it to the MongoURIUpdated field.
 func (o *LegacyAtlasCluster) SetMongoURIUpdated(v time.Time) {
-
 	o.MongoURIUpdated = &v
 }
 
@@ -727,7 +710,6 @@ func (o *LegacyAtlasCluster) HasMongoURIWithOptions() bool {
 
 // SetMongoURIWithOptions gets a reference to the given string and assigns it to the MongoURIWithOptions field.
 func (o *LegacyAtlasCluster) SetMongoURIWithOptions(v string) {
-
 	o.MongoURIWithOptions = &v
 }
 
@@ -761,7 +743,6 @@ func (o *LegacyAtlasCluster) HasName() bool {
 
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *LegacyAtlasCluster) SetName(v string) {
-
 	o.Name = &v
 }
 
@@ -795,7 +776,6 @@ func (o *LegacyAtlasCluster) HasNumShards() bool {
 
 // SetNumShards gets a reference to the given int and assigns it to the NumShards field.
 func (o *LegacyAtlasCluster) SetNumShards(v int) {
-
 	o.NumShards = &v
 }
 
@@ -829,7 +809,6 @@ func (o *LegacyAtlasCluster) HasPaused() bool {
 
 // SetPaused gets a reference to the given bool and assigns it to the Paused field.
 func (o *LegacyAtlasCluster) SetPaused(v bool) {
-
 	o.Paused = &v
 }
 
@@ -863,7 +842,6 @@ func (o *LegacyAtlasCluster) HasPitEnabled() bool {
 
 // SetPitEnabled gets a reference to the given bool and assigns it to the PitEnabled field.
 func (o *LegacyAtlasCluster) SetPitEnabled(v bool) {
-
 	o.PitEnabled = &v
 }
 
@@ -897,7 +875,6 @@ func (o *LegacyAtlasCluster) HasProviderBackupEnabled() bool {
 
 // SetProviderBackupEnabled gets a reference to the given bool and assigns it to the ProviderBackupEnabled field.
 func (o *LegacyAtlasCluster) SetProviderBackupEnabled(v bool) {
-
 	o.ProviderBackupEnabled = &v
 }
 
@@ -931,7 +908,6 @@ func (o *LegacyAtlasCluster) HasProviderSettings() bool {
 
 // SetProviderSettings gets a reference to the given ClusterProviderSettings and assigns it to the ProviderSettings field.
 func (o *LegacyAtlasCluster) SetProviderSettings(v ClusterProviderSettings) {
-
 	o.ProviderSettings = &v
 }
 
@@ -968,7 +944,6 @@ func (o *LegacyAtlasCluster) HasReplicationFactor() bool {
 // SetReplicationFactor gets a reference to the given int and assigns it to the ReplicationFactor field.
 // Deprecated
 func (o *LegacyAtlasCluster) SetReplicationFactor(v int) {
-
 	o.ReplicationFactor = &v
 }
 
@@ -1002,7 +977,6 @@ func (o *LegacyAtlasCluster) HasReplicationSpec() bool {
 
 // SetReplicationSpec gets a reference to the given map[string]RegionSpec and assigns it to the ReplicationSpec field.
 func (o *LegacyAtlasCluster) SetReplicationSpec(v map[string]RegionSpec) {
-
 	o.ReplicationSpec = &v
 }
 
@@ -1036,7 +1010,6 @@ func (o *LegacyAtlasCluster) HasReplicationSpecs() bool {
 
 // SetReplicationSpecs gets a reference to the given []LegacyReplicationSpec and assigns it to the ReplicationSpecs field.
 func (o *LegacyAtlasCluster) SetReplicationSpecs(v []LegacyReplicationSpec) {
-
 	o.ReplicationSpecs = &v
 }
 
@@ -1070,7 +1043,6 @@ func (o *LegacyAtlasCluster) HasRootCertType() bool {
 
 // SetRootCertType gets a reference to the given string and assigns it to the RootCertType field.
 func (o *LegacyAtlasCluster) SetRootCertType(v string) {
-
 	o.RootCertType = &v
 }
 
@@ -1104,7 +1076,6 @@ func (o *LegacyAtlasCluster) HasSrvAddress() bool {
 
 // SetSrvAddress gets a reference to the given string and assigns it to the SrvAddress field.
 func (o *LegacyAtlasCluster) SetSrvAddress(v string) {
-
 	o.SrvAddress = &v
 }
 
@@ -1138,7 +1109,6 @@ func (o *LegacyAtlasCluster) HasStateName() bool {
 
 // SetStateName gets a reference to the given string and assigns it to the StateName field.
 func (o *LegacyAtlasCluster) SetStateName(v string) {
-
 	o.StateName = &v
 }
 
@@ -1172,7 +1142,6 @@ func (o *LegacyAtlasCluster) HasTags() bool {
 
 // SetTags gets a reference to the given []ResourceTag and assigns it to the Tags field.
 func (o *LegacyAtlasCluster) SetTags(v []ResourceTag) {
-
 	o.Tags = &v
 }
 
@@ -1206,7 +1175,6 @@ func (o *LegacyAtlasCluster) HasTerminationProtectionEnabled() bool {
 
 // SetTerminationProtectionEnabled gets a reference to the given bool and assigns it to the TerminationProtectionEnabled field.
 func (o *LegacyAtlasCluster) SetTerminationProtectionEnabled(v bool) {
-
 	o.TerminationProtectionEnabled = &v
 }
 
@@ -1240,7 +1208,6 @@ func (o *LegacyAtlasCluster) HasVersionReleaseSystem() bool {
 
 // SetVersionReleaseSystem gets a reference to the given string and assigns it to the VersionReleaseSystem field.
 func (o *LegacyAtlasCluster) SetVersionReleaseSystem(v string) {
-
 	o.VersionReleaseSystem = &v
 }
 

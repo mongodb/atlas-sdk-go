@@ -67,7 +67,6 @@ func (o *CreateEndpointRequest) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *CreateEndpointRequest) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -101,7 +100,6 @@ func (o *CreateEndpointRequest) HasPrivateEndpointIPAddress() bool {
 
 // SetPrivateEndpointIPAddress gets a reference to the given string and assigns it to the PrivateEndpointIPAddress field.
 func (o *CreateEndpointRequest) SetPrivateEndpointIPAddress(v string) {
-
 	o.PrivateEndpointIPAddress = &v
 }
 
@@ -135,7 +133,6 @@ func (o *CreateEndpointRequest) HasEndpointGroupName() bool {
 
 // SetEndpointGroupName gets a reference to the given string and assigns it to the EndpointGroupName field.
 func (o *CreateEndpointRequest) SetEndpointGroupName(v string) {
-
 	o.EndpointGroupName = &v
 }
 
@@ -169,7 +166,6 @@ func (o *CreateEndpointRequest) HasEndpoints() bool {
 
 // SetEndpoints gets a reference to the given []CreateGCPForwardingRuleRequest and assigns it to the Endpoints field.
 func (o *CreateEndpointRequest) SetEndpoints(v []CreateGCPForwardingRuleRequest) {
-
 	o.Endpoints = &v
 }
 
@@ -203,7 +199,6 @@ func (o *CreateEndpointRequest) HasGcpProjectId() bool {
 
 // SetGcpProjectId gets a reference to the given string and assigns it to the GcpProjectId field.
 func (o *CreateEndpointRequest) SetGcpProjectId(v string) {
-
 	o.GcpProjectId = &v
 }
 

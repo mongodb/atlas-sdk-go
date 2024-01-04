@@ -59,7 +59,6 @@ func (o *AdvancedAutoScalingSettings) HasCompute() bool {
 
 // SetCompute gets a reference to the given AdvancedComputeAutoScaling and assigns it to the Compute field.
 func (o *AdvancedAutoScalingSettings) SetCompute(v AdvancedComputeAutoScaling) {
-
 	o.Compute = &v
 }
 
@@ -93,7 +92,6 @@ func (o *AdvancedAutoScalingSettings) HasDiskGB() bool {
 
 // SetDiskGB gets a reference to the given DiskGBAutoScaling and assigns it to the DiskGB field.
 func (o *AdvancedAutoScalingSettings) SetDiskGB(v DiskGBAutoScaling) {
-
 	o.DiskGB = &v
 }
 

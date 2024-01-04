@@ -63,7 +63,6 @@ func (o *DiskBackupOnDemandSnapshotRequest) HasDescription() bool {
 
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *DiskBackupOnDemandSnapshotRequest) SetDescription(v string) {
-
 	o.Description = &v
 }
 
@@ -97,7 +96,6 @@ func (o *DiskBackupOnDemandSnapshotRequest) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *DiskBackupOnDemandSnapshotRequest) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -131,7 +129,6 @@ func (o *DiskBackupOnDemandSnapshotRequest) HasRetentionInDays() bool {
 
 // SetRetentionInDays gets a reference to the given int and assigns it to the RetentionInDays field.
 func (o *DiskBackupOnDemandSnapshotRequest) SetRetentionInDays(v int) {
-
 	o.RetentionInDays = &v
 }
 

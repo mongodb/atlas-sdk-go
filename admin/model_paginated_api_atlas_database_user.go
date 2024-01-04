@@ -63,7 +63,6 @@ func (o *PaginatedApiAtlasDatabaseUser) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PaginatedApiAtlasDatabaseUser) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -97,7 +96,6 @@ func (o *PaginatedApiAtlasDatabaseUser) HasResults() bool {
 
 // SetResults gets a reference to the given []CloudDatabaseUser and assigns it to the Results field.
 func (o *PaginatedApiAtlasDatabaseUser) SetResults(v []CloudDatabaseUser) {
-
 	o.Results = &v
 }
 
@@ -131,7 +129,6 @@ func (o *PaginatedApiAtlasDatabaseUser) HasTotalCount() bool {
 
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
 func (o *PaginatedApiAtlasDatabaseUser) SetTotalCount(v int) {
-
 	o.TotalCount = &v
 }
 

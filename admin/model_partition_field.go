@@ -91,7 +91,6 @@ func (o *PartitionField) HasFieldType() bool {
 
 // SetFieldType gets a reference to the given string and assigns it to the FieldType field.
 func (o *PartitionField) SetFieldType(v string) {
-
 	o.FieldType = &v
 }
 

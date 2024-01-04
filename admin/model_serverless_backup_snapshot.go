@@ -78,7 +78,6 @@ func (o *ServerlessBackupSnapshot) HasCreatedAt() bool {
 
 // SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
 func (o *ServerlessBackupSnapshot) SetCreatedAt(v time.Time) {
-
 	o.CreatedAt = &v
 }
 
@@ -112,7 +111,6 @@ func (o *ServerlessBackupSnapshot) HasExpiresAt() bool {
 
 // SetExpiresAt gets a reference to the given time.Time and assigns it to the ExpiresAt field.
 func (o *ServerlessBackupSnapshot) SetExpiresAt(v time.Time) {
-
 	o.ExpiresAt = &v
 }
 
@@ -146,7 +144,6 @@ func (o *ServerlessBackupSnapshot) HasFrequencyType() bool {
 
 // SetFrequencyType gets a reference to the given string and assigns it to the FrequencyType field.
 func (o *ServerlessBackupSnapshot) SetFrequencyType(v string) {
-
 	o.FrequencyType = &v
 }
 
@@ -180,7 +177,6 @@ func (o *ServerlessBackupSnapshot) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ServerlessBackupSnapshot) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -214,7 +210,6 @@ func (o *ServerlessBackupSnapshot) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *ServerlessBackupSnapshot) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -248,7 +243,6 @@ func (o *ServerlessBackupSnapshot) HasMongodVersion() bool {
 
 // SetMongodVersion gets a reference to the given string and assigns it to the MongodVersion field.
 func (o *ServerlessBackupSnapshot) SetMongodVersion(v string) {
-
 	o.MongodVersion = &v
 }
 
@@ -282,7 +276,6 @@ func (o *ServerlessBackupSnapshot) HasServerlessInstanceName() bool {
 
 // SetServerlessInstanceName gets a reference to the given string and assigns it to the ServerlessInstanceName field.
 func (o *ServerlessBackupSnapshot) SetServerlessInstanceName(v string) {
-
 	o.ServerlessInstanceName = &v
 }
 
@@ -316,7 +309,6 @@ func (o *ServerlessBackupSnapshot) HasSnapshotType() bool {
 
 // SetSnapshotType gets a reference to the given string and assigns it to the SnapshotType field.
 func (o *ServerlessBackupSnapshot) SetSnapshotType(v string) {
-
 	o.SnapshotType = &v
 }
 
@@ -350,7 +342,6 @@ func (o *ServerlessBackupSnapshot) HasStatus() bool {
 
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *ServerlessBackupSnapshot) SetStatus(v string) {
-
 	o.Status = &v
 }
 
@@ -384,7 +375,6 @@ func (o *ServerlessBackupSnapshot) HasStorageSizeBytes() bool {
 
 // SetStorageSizeBytes gets a reference to the given int64 and assigns it to the StorageSizeBytes field.
 func (o *ServerlessBackupSnapshot) SetStorageSizeBytes(v int64) {
-
 	o.StorageSizeBytes = &v
 }
 

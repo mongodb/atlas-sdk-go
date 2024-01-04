@@ -78,7 +78,6 @@ func (o *MeasurementsIndexes) HasCollectionName() bool {
 
 // SetCollectionName gets a reference to the given string and assigns it to the CollectionName field.
 func (o *MeasurementsIndexes) SetCollectionName(v string) {
-
 	o.CollectionName = &v
 }
 
@@ -112,7 +111,6 @@ func (o *MeasurementsIndexes) HasDatabaseName() bool {
 
 // SetDatabaseName gets a reference to the given string and assigns it to the DatabaseName field.
 func (o *MeasurementsIndexes) SetDatabaseName(v string) {
-
 	o.DatabaseName = &v
 }
 
@@ -146,7 +144,6 @@ func (o *MeasurementsIndexes) HasEnd() bool {
 
 // SetEnd gets a reference to the given time.Time and assigns it to the End field.
 func (o *MeasurementsIndexes) SetEnd(v time.Time) {
-
 	o.End = &v
 }
 
@@ -180,7 +177,6 @@ func (o *MeasurementsIndexes) HasGranularity() bool {
 
 // SetGranularity gets a reference to the given string and assigns it to the Granularity field.
 func (o *MeasurementsIndexes) SetGranularity(v string) {
-
 	o.Granularity = &v
 }
 
@@ -214,7 +210,6 @@ func (o *MeasurementsIndexes) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *MeasurementsIndexes) SetGroupId(v string) {
-
 	o.GroupId = &v
 }
 
@@ -248,7 +243,6 @@ func (o *MeasurementsIndexes) HasIndexIds() bool {
 
 // SetIndexIds gets a reference to the given []string and assigns it to the IndexIds field.
 func (o *MeasurementsIndexes) SetIndexIds(v []string) {
-
 	o.IndexIds = &v
 }
 
@@ -282,7 +276,6 @@ func (o *MeasurementsIndexes) HasIndexStatsMeasurements() bool {
 
 // SetIndexStatsMeasurements gets a reference to the given []MetricsMeasurement and assigns it to the IndexStatsMeasurements field.
 func (o *MeasurementsIndexes) SetIndexStatsMeasurements(v []MetricsMeasurement) {
-
 	o.IndexStatsMeasurements = &v
 }
 
@@ -316,7 +309,6 @@ func (o *MeasurementsIndexes) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *MeasurementsIndexes) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -350,7 +342,6 @@ func (o *MeasurementsIndexes) HasProcessId() bool {
 
 // SetProcessId gets a reference to the given string and assigns it to the ProcessId field.
 func (o *MeasurementsIndexes) SetProcessId(v string) {
-
 	o.ProcessId = &v
 }
 
@@ -384,7 +375,6 @@ func (o *MeasurementsIndexes) HasStart() bool {
 
 // SetStart gets a reference to the given time.Time and assigns it to the Start field.
 func (o *MeasurementsIndexes) SetStart(v time.Time) {
-
 	o.Start = &v
 }
 

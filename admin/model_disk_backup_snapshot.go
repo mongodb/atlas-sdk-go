@@ -94,7 +94,6 @@ func (o *DiskBackupSnapshot) HasCreatedAt() bool {
 
 // SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
 func (o *DiskBackupSnapshot) SetCreatedAt(v time.Time) {
-
 	o.CreatedAt = &v
 }
 
@@ -128,7 +127,6 @@ func (o *DiskBackupSnapshot) HasDescription() bool {
 
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *DiskBackupSnapshot) SetDescription(v string) {
-
 	o.Description = &v
 }
 
@@ -162,7 +160,6 @@ func (o *DiskBackupSnapshot) HasExpiresAt() bool {
 
 // SetExpiresAt gets a reference to the given time.Time and assigns it to the ExpiresAt field.
 func (o *DiskBackupSnapshot) SetExpiresAt(v time.Time) {
-
 	o.ExpiresAt = &v
 }
 
@@ -196,7 +193,6 @@ func (o *DiskBackupSnapshot) HasFrequencyType() bool {
 
 // SetFrequencyType gets a reference to the given string and assigns it to the FrequencyType field.
 func (o *DiskBackupSnapshot) SetFrequencyType(v string) {
-
 	o.FrequencyType = &v
 }
 
@@ -230,7 +226,6 @@ func (o *DiskBackupSnapshot) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *DiskBackupSnapshot) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -264,7 +259,6 @@ func (o *DiskBackupSnapshot) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *DiskBackupSnapshot) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -298,7 +292,6 @@ func (o *DiskBackupSnapshot) HasMasterKeyUUID() bool {
 
 // SetMasterKeyUUID gets a reference to the given string and assigns it to the MasterKeyUUID field.
 func (o *DiskBackupSnapshot) SetMasterKeyUUID(v string) {
-
 	o.MasterKeyUUID = &v
 }
 
@@ -332,7 +325,6 @@ func (o *DiskBackupSnapshot) HasMongodVersion() bool {
 
 // SetMongodVersion gets a reference to the given string and assigns it to the MongodVersion field.
 func (o *DiskBackupSnapshot) SetMongodVersion(v string) {
-
 	o.MongodVersion = &v
 }
 
@@ -366,7 +358,6 @@ func (o *DiskBackupSnapshot) HasPolicyItems() bool {
 
 // SetPolicyItems gets a reference to the given []string and assigns it to the PolicyItems field.
 func (o *DiskBackupSnapshot) SetPolicyItems(v []string) {
-
 	o.PolicyItems = &v
 }
 
@@ -400,7 +391,6 @@ func (o *DiskBackupSnapshot) HasSnapshotType() bool {
 
 // SetSnapshotType gets a reference to the given string and assigns it to the SnapshotType field.
 func (o *DiskBackupSnapshot) SetSnapshotType(v string) {
-
 	o.SnapshotType = &v
 }
 
@@ -434,7 +424,6 @@ func (o *DiskBackupSnapshot) HasStatus() bool {
 
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *DiskBackupSnapshot) SetStatus(v string) {
-
 	o.Status = &v
 }
 
@@ -468,7 +457,6 @@ func (o *DiskBackupSnapshot) HasStorageSizeBytes() bool {
 
 // SetStorageSizeBytes gets a reference to the given int64 and assigns it to the StorageSizeBytes field.
 func (o *DiskBackupSnapshot) SetStorageSizeBytes(v int64) {
-
 	o.StorageSizeBytes = &v
 }
 
@@ -502,7 +490,6 @@ func (o *DiskBackupSnapshot) HasType() bool {
 
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *DiskBackupSnapshot) SetType(v string) {
-
 	o.Type = &v
 }
 
@@ -536,7 +523,6 @@ func (o *DiskBackupSnapshot) HasCloudProvider() bool {
 
 // SetCloudProvider gets a reference to the given string and assigns it to the CloudProvider field.
 func (o *DiskBackupSnapshot) SetCloudProvider(v string) {
-
 	o.CloudProvider = &v
 }
 
@@ -570,7 +556,6 @@ func (o *DiskBackupSnapshot) HasCopyRegions() bool {
 
 // SetCopyRegions gets a reference to the given []string and assigns it to the CopyRegions field.
 func (o *DiskBackupSnapshot) SetCopyRegions(v []string) {
-
 	o.CopyRegions = &v
 }
 
@@ -604,7 +589,6 @@ func (o *DiskBackupSnapshot) HasReplicaSetName() bool {
 
 // SetReplicaSetName gets a reference to the given string and assigns it to the ReplicaSetName field.
 func (o *DiskBackupSnapshot) SetReplicaSetName(v string) {
-
 	o.ReplicaSetName = &v
 }
 
@@ -638,7 +622,6 @@ func (o *DiskBackupSnapshot) HasMembers() bool {
 
 // SetMembers gets a reference to the given []DiskBackupShardedClusterSnapshotMember and assigns it to the Members field.
 func (o *DiskBackupSnapshot) SetMembers(v []DiskBackupShardedClusterSnapshotMember) {
-
 	o.Members = &v
 }
 
@@ -672,7 +655,6 @@ func (o *DiskBackupSnapshot) HasSnapshotIds() bool {
 
 // SetSnapshotIds gets a reference to the given []string and assigns it to the SnapshotIds field.
 func (o *DiskBackupSnapshot) SetSnapshotIds(v []string) {
-
 	o.SnapshotIds = &v
 }
 

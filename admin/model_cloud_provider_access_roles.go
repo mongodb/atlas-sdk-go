@@ -59,7 +59,6 @@ func (o *CloudProviderAccessRoles) HasAwsIamRoles() bool {
 
 // SetAwsIamRoles gets a reference to the given []CloudProviderAccessAWSIAMRole and assigns it to the AwsIamRoles field.
 func (o *CloudProviderAccessRoles) SetAwsIamRoles(v []CloudProviderAccessAWSIAMRole) {
-
 	o.AwsIamRoles = &v
 }
 

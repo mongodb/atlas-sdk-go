@@ -70,7 +70,6 @@ func (o *StreamsTenant) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *StreamsTenant) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -104,7 +103,6 @@ func (o *StreamsTenant) HasConnections() bool {
 
 // SetConnections gets a reference to the given []StreamsConnection and assigns it to the Connections field.
 func (o *StreamsTenant) SetConnections(v []StreamsConnection) {
-
 	o.Connections = &v
 }
 
@@ -138,7 +136,6 @@ func (o *StreamsTenant) HasDataProcessRegion() bool {
 
 // SetDataProcessRegion gets a reference to the given StreamsDataProcessRegion and assigns it to the DataProcessRegion field.
 func (o *StreamsTenant) SetDataProcessRegion(v StreamsDataProcessRegion) {
-
 	o.DataProcessRegion = &v
 }
 
@@ -172,7 +169,6 @@ func (o *StreamsTenant) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *StreamsTenant) SetGroupId(v string) {
-
 	o.GroupId = &v
 }
 
@@ -206,7 +202,6 @@ func (o *StreamsTenant) HasHostnames() bool {
 
 // SetHostnames gets a reference to the given []string and assigns it to the Hostnames field.
 func (o *StreamsTenant) SetHostnames(v []string) {
-
 	o.Hostnames = &v
 }
 
@@ -240,7 +235,6 @@ func (o *StreamsTenant) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *StreamsTenant) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -274,7 +268,6 @@ func (o *StreamsTenant) HasName() bool {
 
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *StreamsTenant) SetName(v string) {
-
 	o.Name = &v
 }
 

@@ -71,7 +71,6 @@ func (o *ClusterConnectionStrings) HasAwsPrivateLink() bool {
 
 // SetAwsPrivateLink gets a reference to the given map[string]string and assigns it to the AwsPrivateLink field.
 func (o *ClusterConnectionStrings) SetAwsPrivateLink(v map[string]string) {
-
 	o.AwsPrivateLink = &v
 }
 
@@ -105,7 +104,6 @@ func (o *ClusterConnectionStrings) HasAwsPrivateLinkSrv() bool {
 
 // SetAwsPrivateLinkSrv gets a reference to the given map[string]string and assigns it to the AwsPrivateLinkSrv field.
 func (o *ClusterConnectionStrings) SetAwsPrivateLinkSrv(v map[string]string) {
-
 	o.AwsPrivateLinkSrv = &v
 }
 
@@ -139,7 +137,6 @@ func (o *ClusterConnectionStrings) HasPrivate() bool {
 
 // SetPrivate gets a reference to the given string and assigns it to the Private field.
 func (o *ClusterConnectionStrings) SetPrivate(v string) {
-
 	o.Private = &v
 }
 
@@ -173,7 +170,6 @@ func (o *ClusterConnectionStrings) HasPrivateEndpoint() bool {
 
 // SetPrivateEndpoint gets a reference to the given []ClusterDescriptionConnectionStringsPrivateEndpoint and assigns it to the PrivateEndpoint field.
 func (o *ClusterConnectionStrings) SetPrivateEndpoint(v []ClusterDescriptionConnectionStringsPrivateEndpoint) {
-
 	o.PrivateEndpoint = &v
 }
 
@@ -207,7 +203,6 @@ func (o *ClusterConnectionStrings) HasPrivateSrv() bool {
 
 // SetPrivateSrv gets a reference to the given string and assigns it to the PrivateSrv field.
 func (o *ClusterConnectionStrings) SetPrivateSrv(v string) {
-
 	o.PrivateSrv = &v
 }
 
@@ -241,7 +236,6 @@ func (o *ClusterConnectionStrings) HasStandard() bool {
 
 // SetStandard gets a reference to the given string and assigns it to the Standard field.
 func (o *ClusterConnectionStrings) SetStandard(v string) {
-
 	o.Standard = &v
 }
 
@@ -275,7 +269,6 @@ func (o *ClusterConnectionStrings) HasStandardSrv() bool {
 
 // SetStandardSrv gets a reference to the given string and assigns it to the StandardSrv field.
 func (o *ClusterConnectionStrings) SetStandardSrv(v string) {
-
 	o.StandardSrv = &v
 }
 

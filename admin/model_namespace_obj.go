@@ -61,7 +61,6 @@ func (o *NamespaceObj) HasNamespace() bool {
 
 // SetNamespace gets a reference to the given string and assigns it to the Namespace field.
 func (o *NamespaceObj) SetNamespace(v string) {
-
 	o.Namespace = &v
 }
 
@@ -95,7 +94,6 @@ func (o *NamespaceObj) HasType() bool {
 
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *NamespaceObj) SetType(v string) {
-
 	o.Type = &v
 }
 

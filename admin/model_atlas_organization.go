@@ -66,7 +66,6 @@ func (o *AtlasOrganization) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *AtlasOrganization) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -100,7 +99,6 @@ func (o *AtlasOrganization) HasIsDeleted() bool {
 
 // SetIsDeleted gets a reference to the given bool and assigns it to the IsDeleted field.
 func (o *AtlasOrganization) SetIsDeleted(v bool) {
-
 	o.IsDeleted = &v
 }
 
@@ -134,7 +132,6 @@ func (o *AtlasOrganization) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *AtlasOrganization) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 

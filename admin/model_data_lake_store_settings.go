@@ -99,7 +99,6 @@ func (o *DataLakeStoreSettings) HasName() bool {
 
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *DataLakeStoreSettings) SetName(v string) {
-
 	o.Name = &v
 }
 
@@ -157,7 +156,6 @@ func (o *DataLakeStoreSettings) HasAdditionalStorageClasses() bool {
 
 // SetAdditionalStorageClasses gets a reference to the given []string and assigns it to the AdditionalStorageClasses field.
 func (o *DataLakeStoreSettings) SetAdditionalStorageClasses(v []string) {
-
 	o.AdditionalStorageClasses = &v
 }
 
@@ -191,7 +189,6 @@ func (o *DataLakeStoreSettings) HasBucket() bool {
 
 // SetBucket gets a reference to the given string and assigns it to the Bucket field.
 func (o *DataLakeStoreSettings) SetBucket(v string) {
-
 	o.Bucket = &v
 }
 
@@ -225,7 +222,6 @@ func (o *DataLakeStoreSettings) HasDelimiter() bool {
 
 // SetDelimiter gets a reference to the given string and assigns it to the Delimiter field.
 func (o *DataLakeStoreSettings) SetDelimiter(v string) {
-
 	o.Delimiter = &v
 }
 
@@ -259,7 +255,6 @@ func (o *DataLakeStoreSettings) HasIncludeTags() bool {
 
 // SetIncludeTags gets a reference to the given bool and assigns it to the IncludeTags field.
 func (o *DataLakeStoreSettings) SetIncludeTags(v bool) {
-
 	o.IncludeTags = &v
 }
 
@@ -293,7 +288,6 @@ func (o *DataLakeStoreSettings) HasPrefix() bool {
 
 // SetPrefix gets a reference to the given string and assigns it to the Prefix field.
 func (o *DataLakeStoreSettings) SetPrefix(v string) {
-
 	o.Prefix = &v
 }
 
@@ -327,7 +321,6 @@ func (o *DataLakeStoreSettings) HasPublic() bool {
 
 // SetPublic gets a reference to the given bool and assigns it to the Public field.
 func (o *DataLakeStoreSettings) SetPublic(v bool) {
-
 	o.Public = &v
 }
 
@@ -361,7 +354,6 @@ func (o *DataLakeStoreSettings) HasRegion() bool {
 
 // SetRegion gets a reference to the given string and assigns it to the Region field.
 func (o *DataLakeStoreSettings) SetRegion(v string) {
-
 	o.Region = &v
 }
 
@@ -395,7 +387,6 @@ func (o *DataLakeStoreSettings) HasClusterName() bool {
 
 // SetClusterName gets a reference to the given string and assigns it to the ClusterName field.
 func (o *DataLakeStoreSettings) SetClusterName(v string) {
-
 	o.ClusterName = &v
 }
 
@@ -429,7 +420,6 @@ func (o *DataLakeStoreSettings) HasProjectId() bool {
 
 // SetProjectId gets a reference to the given string and assigns it to the ProjectId field.
 func (o *DataLakeStoreSettings) SetProjectId(v string) {
-
 	o.ProjectId = &v
 }
 
@@ -463,7 +453,6 @@ func (o *DataLakeStoreSettings) HasReadConcern() bool {
 
 // SetReadConcern gets a reference to the given DataLakeAtlasStoreReadConcern and assigns it to the ReadConcern field.
 func (o *DataLakeStoreSettings) SetReadConcern(v DataLakeAtlasStoreReadConcern) {
-
 	o.ReadConcern = &v
 }
 
@@ -497,7 +486,6 @@ func (o *DataLakeStoreSettings) HasReadPreference() bool {
 
 // SetReadPreference gets a reference to the given DataLakeAtlasStoreReadPreference and assigns it to the ReadPreference field.
 func (o *DataLakeStoreSettings) SetReadPreference(v DataLakeAtlasStoreReadPreference) {
-
 	o.ReadPreference = &v
 }
 
@@ -531,7 +519,6 @@ func (o *DataLakeStoreSettings) HasAllowInsecure() bool {
 
 // SetAllowInsecure gets a reference to the given bool and assigns it to the AllowInsecure field.
 func (o *DataLakeStoreSettings) SetAllowInsecure(v bool) {
-
 	o.AllowInsecure = &v
 }
 
@@ -565,7 +552,6 @@ func (o *DataLakeStoreSettings) HasDefaultFormat() bool {
 
 // SetDefaultFormat gets a reference to the given string and assigns it to the DefaultFormat field.
 func (o *DataLakeStoreSettings) SetDefaultFormat(v string) {
-
 	o.DefaultFormat = &v
 }
 
@@ -599,7 +585,6 @@ func (o *DataLakeStoreSettings) HasUrls() bool {
 
 // SetUrls gets a reference to the given []string and assigns it to the Urls field.
 func (o *DataLakeStoreSettings) SetUrls(v []string) {
-
 	o.Urls = &v
 }
 

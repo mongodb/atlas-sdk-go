@@ -95,7 +95,6 @@ func (o *CloudSearchMetrics) HasHardwareMetrics() bool {
 
 // SetHardwareMetrics gets a reference to the given []FTSMetric and assigns it to the HardwareMetrics field.
 func (o *CloudSearchMetrics) SetHardwareMetrics(v []FTSMetric) {
-
 	o.HardwareMetrics = &v
 }
 
@@ -129,7 +128,6 @@ func (o *CloudSearchMetrics) HasIndexMetrics() bool {
 
 // SetIndexMetrics gets a reference to the given []FTSMetric and assigns it to the IndexMetrics field.
 func (o *CloudSearchMetrics) SetIndexMetrics(v []FTSMetric) {
-
 	o.IndexMetrics = &v
 }
 
@@ -163,7 +161,6 @@ func (o *CloudSearchMetrics) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *CloudSearchMetrics) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -221,7 +218,6 @@ func (o *CloudSearchMetrics) HasStatusMetrics() bool {
 
 // SetStatusMetrics gets a reference to the given []FTSMetric and assigns it to the StatusMetrics field.
 func (o *CloudSearchMetrics) SetStatusMetrics(v []FTSMetric) {
-
 	o.StatusMetrics = &v
 }
 

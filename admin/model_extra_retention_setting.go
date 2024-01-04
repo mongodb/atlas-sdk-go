@@ -61,7 +61,6 @@ func (o *ExtraRetentionSetting) HasFrequencyType() bool {
 
 // SetFrequencyType gets a reference to the given string and assigns it to the FrequencyType field.
 func (o *ExtraRetentionSetting) SetFrequencyType(v string) {
-
 	o.FrequencyType = &v
 }
 
@@ -95,7 +94,6 @@ func (o *ExtraRetentionSetting) HasRetentionDays() bool {
 
 // SetRetentionDays gets a reference to the given int and assigns it to the RetentionDays field.
 func (o *ExtraRetentionSetting) SetRetentionDays(v int) {
-
 	o.RetentionDays = &v
 }
 

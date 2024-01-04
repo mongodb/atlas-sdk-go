@@ -61,7 +61,6 @@ func (o *CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId) HasBucketNa
 
 // SetBucketName gets a reference to the given string and assigns it to the BucketName field.
 func (o *CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId) SetBucketName(v string) {
-
 	o.BucketName = &v
 }
 
@@ -95,7 +94,6 @@ func (o *CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId) HasGroupId(
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId) SetGroupId(v string) {
-
 	o.GroupId = &v
 }
 

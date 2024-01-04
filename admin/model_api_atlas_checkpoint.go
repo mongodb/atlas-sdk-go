@@ -76,7 +76,6 @@ func (o *ApiAtlasCheckpoint) HasClusterId() bool {
 
 // SetClusterId gets a reference to the given string and assigns it to the ClusterId field.
 func (o *ApiAtlasCheckpoint) SetClusterId(v string) {
-
 	o.ClusterId = &v
 }
 
@@ -110,7 +109,6 @@ func (o *ApiAtlasCheckpoint) HasCompleted() bool {
 
 // SetCompleted gets a reference to the given time.Time and assigns it to the Completed field.
 func (o *ApiAtlasCheckpoint) SetCompleted(v time.Time) {
-
 	o.Completed = &v
 }
 
@@ -144,7 +142,6 @@ func (o *ApiAtlasCheckpoint) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *ApiAtlasCheckpoint) SetGroupId(v string) {
-
 	o.GroupId = &v
 }
 
@@ -178,7 +175,6 @@ func (o *ApiAtlasCheckpoint) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ApiAtlasCheckpoint) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -212,7 +208,6 @@ func (o *ApiAtlasCheckpoint) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *ApiAtlasCheckpoint) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -246,7 +241,6 @@ func (o *ApiAtlasCheckpoint) HasParts() bool {
 
 // SetParts gets a reference to the given []ApiCheckpointPart and assigns it to the Parts field.
 func (o *ApiAtlasCheckpoint) SetParts(v []ApiCheckpointPart) {
-
 	o.Parts = &v
 }
 
@@ -280,7 +274,6 @@ func (o *ApiAtlasCheckpoint) HasRestorable() bool {
 
 // SetRestorable gets a reference to the given bool and assigns it to the Restorable field.
 func (o *ApiAtlasCheckpoint) SetRestorable(v bool) {
-
 	o.Restorable = &v
 }
 
@@ -314,7 +307,6 @@ func (o *ApiAtlasCheckpoint) HasStarted() bool {
 
 // SetStarted gets a reference to the given time.Time and assigns it to the Started field.
 func (o *ApiAtlasCheckpoint) SetStarted(v time.Time) {
-
 	o.Started = &v
 }
 
@@ -348,7 +340,6 @@ func (o *ApiAtlasCheckpoint) HasTimestamp() bool {
 
 // SetTimestamp gets a reference to the given time.Time and assigns it to the Timestamp field.
 func (o *ApiAtlasCheckpoint) SetTimestamp(v time.Time) {
-
 	o.Timestamp = &v
 }
 

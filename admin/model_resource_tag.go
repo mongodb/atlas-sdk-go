@@ -61,7 +61,6 @@ func (o *ResourceTag) HasKey() bool {
 
 // SetKey gets a reference to the given string and assigns it to the Key field.
 func (o *ResourceTag) SetKey(v string) {
-
 	o.Key = &v
 }
 
@@ -95,7 +94,6 @@ func (o *ResourceTag) HasValue() bool {
 
 // SetValue gets a reference to the given string and assigns it to the Value field.
 func (o *ResourceTag) SetValue(v string) {
-
 	o.Value = &v
 }
 

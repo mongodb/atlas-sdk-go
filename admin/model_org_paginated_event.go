@@ -63,7 +63,6 @@ func (o *OrgPaginatedEvent) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *OrgPaginatedEvent) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -97,7 +96,6 @@ func (o *OrgPaginatedEvent) HasResults() bool {
 
 // SetResults gets a reference to the given []EventViewForOrg and assigns it to the Results field.
 func (o *OrgPaginatedEvent) SetResults(v []EventViewForOrg) {
-
 	o.Results = &v
 }
 
@@ -131,7 +129,6 @@ func (o *OrgPaginatedEvent) HasTotalCount() bool {
 
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
 func (o *OrgPaginatedEvent) SetTotalCount(v int) {
-
 	o.TotalCount = &v
 }
 

@@ -65,7 +65,6 @@ func (o *ApiAtlasFTSMappings) HasDynamic() bool {
 
 // SetDynamic gets a reference to the given bool and assigns it to the Dynamic field.
 func (o *ApiAtlasFTSMappings) SetDynamic(v bool) {
-
 	o.Dynamic = &v
 }
 
@@ -99,7 +98,6 @@ func (o *ApiAtlasFTSMappings) HasFields() bool {
 
 // SetFields gets a reference to the given map[string]interface{} and assigns it to the Fields field.
 func (o *ApiAtlasFTSMappings) SetFields(v map[string]interface{}) {
-
 	o.Fields = v
 }
 

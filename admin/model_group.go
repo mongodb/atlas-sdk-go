@@ -130,7 +130,6 @@ func (o *Group) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *Group) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -164,7 +163,6 @@ func (o *Group) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *Group) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -246,7 +244,6 @@ func (o *Group) HasRegionUsageRestrictions() bool {
 
 // SetRegionUsageRestrictions gets a reference to the given string and assigns it to the RegionUsageRestrictions field.
 func (o *Group) SetRegionUsageRestrictions(v string) {
-
 	o.RegionUsageRestrictions = &v
 }
 
@@ -280,7 +277,6 @@ func (o *Group) HasWithDefaultAlertsSettings() bool {
 
 // SetWithDefaultAlertsSettings gets a reference to the given bool and assigns it to the WithDefaultAlertsSettings field.
 func (o *Group) SetWithDefaultAlertsSettings(v bool) {
-
 	o.WithDefaultAlertsSettings = &v
 }
 

@@ -59,7 +59,6 @@ func (o *Namespaces) HasNamespaces() bool {
 
 // SetNamespaces gets a reference to the given []NamespaceObj and assigns it to the Namespaces field.
 func (o *Namespaces) SetNamespaces(v []NamespaceObj) {
-
 	o.Namespaces = &v
 }
 

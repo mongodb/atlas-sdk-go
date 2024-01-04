@@ -67,7 +67,6 @@ func (o *LiveImportAvailableProject) HasDeployments() bool {
 
 // SetDeployments gets a reference to the given []AvailableClustersDeployment and assigns it to the Deployments field.
 func (o *LiveImportAvailableProject) SetDeployments(v []AvailableClustersDeployment) {
-
 	o.Deployments = &v
 }
 
@@ -101,7 +100,6 @@ func (o *LiveImportAvailableProject) HasMigrationHosts() bool {
 
 // SetMigrationHosts gets a reference to the given []string and assigns it to the MigrationHosts field.
 func (o *LiveImportAvailableProject) SetMigrationHosts(v []string) {
-
 	o.MigrationHosts = &v
 }
 

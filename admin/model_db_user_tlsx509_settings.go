@@ -61,7 +61,6 @@ func (o *DBUserTLSX509Settings) HasCas() bool {
 
 // SetCas gets a reference to the given string and assigns it to the Cas field.
 func (o *DBUserTLSX509Settings) SetCas(v string) {
-
 	o.Cas = &v
 }
 
@@ -95,7 +94,6 @@ func (o *DBUserTLSX509Settings) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *DBUserTLSX509Settings) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 

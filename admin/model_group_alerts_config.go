@@ -82,7 +82,6 @@ func (o *GroupAlertsConfig) HasCreated() bool {
 
 // SetCreated gets a reference to the given time.Time and assigns it to the Created field.
 func (o *GroupAlertsConfig) SetCreated(v time.Time) {
-
 	o.Created = &v
 }
 
@@ -116,7 +115,6 @@ func (o *GroupAlertsConfig) HasEnabled() bool {
 
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *GroupAlertsConfig) SetEnabled(v bool) {
-
 	o.Enabled = &v
 }
 
@@ -150,7 +148,6 @@ func (o *GroupAlertsConfig) HasEventTypeName() bool {
 
 // SetEventTypeName gets a reference to the given string and assigns it to the EventTypeName field.
 func (o *GroupAlertsConfig) SetEventTypeName(v string) {
-
 	o.EventTypeName = &v
 }
 
@@ -184,7 +181,6 @@ func (o *GroupAlertsConfig) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *GroupAlertsConfig) SetGroupId(v string) {
-
 	o.GroupId = &v
 }
 
@@ -218,7 +214,6 @@ func (o *GroupAlertsConfig) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *GroupAlertsConfig) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -252,7 +247,6 @@ func (o *GroupAlertsConfig) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *GroupAlertsConfig) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -286,7 +280,6 @@ func (o *GroupAlertsConfig) HasMatchers() bool {
 
 // SetMatchers gets a reference to the given []map[string]interface{} and assigns it to the Matchers field.
 func (o *GroupAlertsConfig) SetMatchers(v []map[string]interface{}) {
-
 	o.Matchers = &v
 }
 
@@ -320,7 +313,6 @@ func (o *GroupAlertsConfig) HasNotifications() bool {
 
 // SetNotifications gets a reference to the given []AlertsNotificationRootForGroup and assigns it to the Notifications field.
 func (o *GroupAlertsConfig) SetNotifications(v []AlertsNotificationRootForGroup) {
-
 	o.Notifications = &v
 }
 
@@ -354,7 +346,6 @@ func (o *GroupAlertsConfig) HasUpdated() bool {
 
 // SetUpdated gets a reference to the given time.Time and assigns it to the Updated field.
 func (o *GroupAlertsConfig) SetUpdated(v time.Time) {
-
 	o.Updated = &v
 }
 
@@ -388,7 +379,6 @@ func (o *GroupAlertsConfig) HasMetricThreshold() bool {
 
 // SetMetricThreshold gets a reference to the given ServerlessMetricThreshold and assigns it to the MetricThreshold field.
 func (o *GroupAlertsConfig) SetMetricThreshold(v ServerlessMetricThreshold) {
-
 	o.MetricThreshold = &v
 }
 
@@ -422,7 +412,6 @@ func (o *GroupAlertsConfig) HasThreshold() bool {
 
 // SetThreshold gets a reference to the given GreaterThanRawThreshold and assigns it to the Threshold field.
 func (o *GroupAlertsConfig) SetThreshold(v GreaterThanRawThreshold) {
-
 	o.Threshold = &v
 }
 

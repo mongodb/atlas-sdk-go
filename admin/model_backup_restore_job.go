@@ -93,7 +93,6 @@ func (o *BackupRestoreJob) HasBatchId() bool {
 
 // SetBatchId gets a reference to the given string and assigns it to the BatchId field.
 func (o *BackupRestoreJob) SetBatchId(v string) {
-
 	o.BatchId = &v
 }
 
@@ -127,7 +126,6 @@ func (o *BackupRestoreJob) HasCheckpointId() bool {
 
 // SetCheckpointId gets a reference to the given string and assigns it to the CheckpointId field.
 func (o *BackupRestoreJob) SetCheckpointId(v string) {
-
 	o.CheckpointId = &v
 }
 
@@ -161,7 +159,6 @@ func (o *BackupRestoreJob) HasClusterId() bool {
 
 // SetClusterId gets a reference to the given string and assigns it to the ClusterId field.
 func (o *BackupRestoreJob) SetClusterId(v string) {
-
 	o.ClusterId = &v
 }
 
@@ -195,7 +192,6 @@ func (o *BackupRestoreJob) HasClusterName() bool {
 
 // SetClusterName gets a reference to the given string and assigns it to the ClusterName field.
 func (o *BackupRestoreJob) SetClusterName(v string) {
-
 	o.ClusterName = &v
 }
 
@@ -229,7 +225,6 @@ func (o *BackupRestoreJob) HasCreated() bool {
 
 // SetCreated gets a reference to the given time.Time and assigns it to the Created field.
 func (o *BackupRestoreJob) SetCreated(v time.Time) {
-
 	o.Created = &v
 }
 
@@ -287,7 +282,6 @@ func (o *BackupRestoreJob) HasEncryptionEnabled() bool {
 
 // SetEncryptionEnabled gets a reference to the given bool and assigns it to the EncryptionEnabled field.
 func (o *BackupRestoreJob) SetEncryptionEnabled(v bool) {
-
 	o.EncryptionEnabled = &v
 }
 
@@ -321,7 +315,6 @@ func (o *BackupRestoreJob) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *BackupRestoreJob) SetGroupId(v string) {
-
 	o.GroupId = &v
 }
 
@@ -355,7 +348,6 @@ func (o *BackupRestoreJob) HasHashes() bool {
 
 // SetHashes gets a reference to the given []RestoreJobFileHash and assigns it to the Hashes field.
 func (o *BackupRestoreJob) SetHashes(v []RestoreJobFileHash) {
-
 	o.Hashes = &v
 }
 
@@ -389,7 +381,6 @@ func (o *BackupRestoreJob) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *BackupRestoreJob) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -423,7 +414,6 @@ func (o *BackupRestoreJob) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *BackupRestoreJob) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -457,7 +447,6 @@ func (o *BackupRestoreJob) HasMasterKeyUUID() bool {
 
 // SetMasterKeyUUID gets a reference to the given string and assigns it to the MasterKeyUUID field.
 func (o *BackupRestoreJob) SetMasterKeyUUID(v string) {
-
 	o.MasterKeyUUID = &v
 }
 
@@ -491,7 +480,6 @@ func (o *BackupRestoreJob) HasOplogInc() bool {
 
 // SetOplogInc gets a reference to the given int and assigns it to the OplogInc field.
 func (o *BackupRestoreJob) SetOplogInc(v int) {
-
 	o.OplogInc = &v
 }
 
@@ -525,7 +513,6 @@ func (o *BackupRestoreJob) HasOplogTs() bool {
 
 // SetOplogTs gets a reference to the given string and assigns it to the OplogTs field.
 func (o *BackupRestoreJob) SetOplogTs(v string) {
-
 	o.OplogTs = &v
 }
 
@@ -559,7 +546,6 @@ func (o *BackupRestoreJob) HasPointInTimeUTCMillis() bool {
 
 // SetPointInTimeUTCMillis gets a reference to the given int64 and assigns it to the PointInTimeUTCMillis field.
 func (o *BackupRestoreJob) SetPointInTimeUTCMillis(v int64) {
-
 	o.PointInTimeUTCMillis = &v
 }
 
@@ -593,7 +579,6 @@ func (o *BackupRestoreJob) HasSnapshotId() bool {
 
 // SetSnapshotId gets a reference to the given string and assigns it to the SnapshotId field.
 func (o *BackupRestoreJob) SetSnapshotId(v string) {
-
 	o.SnapshotId = &v
 }
 
@@ -627,7 +612,6 @@ func (o *BackupRestoreJob) HasStatusName() bool {
 
 // SetStatusName gets a reference to the given string and assigns it to the StatusName field.
 func (o *BackupRestoreJob) SetStatusName(v string) {
-
 	o.StatusName = &v
 }
 
@@ -661,7 +645,6 @@ func (o *BackupRestoreJob) HasTimestamp() bool {
 
 // SetTimestamp gets a reference to the given ApiBSONTimestamp and assigns it to the Timestamp field.
 func (o *BackupRestoreJob) SetTimestamp(v ApiBSONTimestamp) {
-
 	o.Timestamp = &v
 }
 

@@ -88,7 +88,6 @@ func (o *DiskBackupShardedClusterSnapshot) HasCreatedAt() bool {
 
 // SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
 func (o *DiskBackupShardedClusterSnapshot) SetCreatedAt(v time.Time) {
-
 	o.CreatedAt = &v
 }
 
@@ -122,7 +121,6 @@ func (o *DiskBackupShardedClusterSnapshot) HasDescription() bool {
 
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *DiskBackupShardedClusterSnapshot) SetDescription(v string) {
-
 	o.Description = &v
 }
 
@@ -156,7 +154,6 @@ func (o *DiskBackupShardedClusterSnapshot) HasExpiresAt() bool {
 
 // SetExpiresAt gets a reference to the given time.Time and assigns it to the ExpiresAt field.
 func (o *DiskBackupShardedClusterSnapshot) SetExpiresAt(v time.Time) {
-
 	o.ExpiresAt = &v
 }
 
@@ -190,7 +187,6 @@ func (o *DiskBackupShardedClusterSnapshot) HasFrequencyType() bool {
 
 // SetFrequencyType gets a reference to the given string and assigns it to the FrequencyType field.
 func (o *DiskBackupShardedClusterSnapshot) SetFrequencyType(v string) {
-
 	o.FrequencyType = &v
 }
 
@@ -224,7 +220,6 @@ func (o *DiskBackupShardedClusterSnapshot) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *DiskBackupShardedClusterSnapshot) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -258,7 +253,6 @@ func (o *DiskBackupShardedClusterSnapshot) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *DiskBackupShardedClusterSnapshot) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -292,7 +286,6 @@ func (o *DiskBackupShardedClusterSnapshot) HasMasterKeyUUID() bool {
 
 // SetMasterKeyUUID gets a reference to the given string and assigns it to the MasterKeyUUID field.
 func (o *DiskBackupShardedClusterSnapshot) SetMasterKeyUUID(v string) {
-
 	o.MasterKeyUUID = &v
 }
 
@@ -326,7 +319,6 @@ func (o *DiskBackupShardedClusterSnapshot) HasMembers() bool {
 
 // SetMembers gets a reference to the given []DiskBackupShardedClusterSnapshotMember and assigns it to the Members field.
 func (o *DiskBackupShardedClusterSnapshot) SetMembers(v []DiskBackupShardedClusterSnapshotMember) {
-
 	o.Members = &v
 }
 
@@ -360,7 +352,6 @@ func (o *DiskBackupShardedClusterSnapshot) HasMongodVersion() bool {
 
 // SetMongodVersion gets a reference to the given string and assigns it to the MongodVersion field.
 func (o *DiskBackupShardedClusterSnapshot) SetMongodVersion(v string) {
-
 	o.MongodVersion = &v
 }
 
@@ -394,7 +385,6 @@ func (o *DiskBackupShardedClusterSnapshot) HasPolicyItems() bool {
 
 // SetPolicyItems gets a reference to the given []string and assigns it to the PolicyItems field.
 func (o *DiskBackupShardedClusterSnapshot) SetPolicyItems(v []string) {
-
 	o.PolicyItems = &v
 }
 
@@ -428,7 +418,6 @@ func (o *DiskBackupShardedClusterSnapshot) HasSnapshotIds() bool {
 
 // SetSnapshotIds gets a reference to the given []string and assigns it to the SnapshotIds field.
 func (o *DiskBackupShardedClusterSnapshot) SetSnapshotIds(v []string) {
-
 	o.SnapshotIds = &v
 }
 
@@ -462,7 +451,6 @@ func (o *DiskBackupShardedClusterSnapshot) HasSnapshotType() bool {
 
 // SetSnapshotType gets a reference to the given string and assigns it to the SnapshotType field.
 func (o *DiskBackupShardedClusterSnapshot) SetSnapshotType(v string) {
-
 	o.SnapshotType = &v
 }
 
@@ -496,7 +484,6 @@ func (o *DiskBackupShardedClusterSnapshot) HasStatus() bool {
 
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *DiskBackupShardedClusterSnapshot) SetStatus(v string) {
-
 	o.Status = &v
 }
 
@@ -530,7 +517,6 @@ func (o *DiskBackupShardedClusterSnapshot) HasStorageSizeBytes() bool {
 
 // SetStorageSizeBytes gets a reference to the given int64 and assigns it to the StorageSizeBytes field.
 func (o *DiskBackupShardedClusterSnapshot) SetStorageSizeBytes(v int64) {
-
 	o.StorageSizeBytes = &v
 }
 
@@ -564,7 +550,6 @@ func (o *DiskBackupShardedClusterSnapshot) HasType() bool {
 
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *DiskBackupShardedClusterSnapshot) SetType(v string) {
-
 	o.Type = &v
 }
 

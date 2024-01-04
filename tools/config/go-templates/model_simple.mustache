@@ -159,7 +159,6 @@ func (o *{{classname}}) Has{{name}}() bool {
 // Deprecated
 {{/deprecated}}
 func (o *{{classname}}) Set{{name}}(v {{vendorExtensions.x-go-base-type}}) {
-
 	o.{{name}} = {{^isFreeFormObject}}&{{/isFreeFormObject}}v
 }
 

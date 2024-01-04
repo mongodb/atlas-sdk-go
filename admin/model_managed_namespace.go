@@ -83,7 +83,6 @@ func (o *ManagedNamespace) HasCollection() bool {
 
 // SetCollection gets a reference to the given string and assigns it to the Collection field.
 func (o *ManagedNamespace) SetCollection(v string) {
-
 	o.Collection = &v
 }
 
@@ -117,7 +116,6 @@ func (o *ManagedNamespace) HasCustomShardKey() bool {
 
 // SetCustomShardKey gets a reference to the given string and assigns it to the CustomShardKey field.
 func (o *ManagedNamespace) SetCustomShardKey(v string) {
-
 	o.CustomShardKey = &v
 }
 
@@ -151,7 +149,6 @@ func (o *ManagedNamespace) HasDb() bool {
 
 // SetDb gets a reference to the given string and assigns it to the Db field.
 func (o *ManagedNamespace) SetDb(v string) {
-
 	o.Db = &v
 }
 
@@ -185,7 +182,6 @@ func (o *ManagedNamespace) HasIsCustomShardKeyHashed() bool {
 
 // SetIsCustomShardKeyHashed gets a reference to the given bool and assigns it to the IsCustomShardKeyHashed field.
 func (o *ManagedNamespace) SetIsCustomShardKeyHashed(v bool) {
-
 	o.IsCustomShardKeyHashed = &v
 }
 
@@ -219,7 +215,6 @@ func (o *ManagedNamespace) HasIsShardKeyUnique() bool {
 
 // SetIsShardKeyUnique gets a reference to the given bool and assigns it to the IsShardKeyUnique field.
 func (o *ManagedNamespace) SetIsShardKeyUnique(v bool) {
-
 	o.IsShardKeyUnique = &v
 }
 
@@ -253,7 +248,6 @@ func (o *ManagedNamespace) HasNumInitialChunks() bool {
 
 // SetNumInitialChunks gets a reference to the given int64 and assigns it to the NumInitialChunks field.
 func (o *ManagedNamespace) SetNumInitialChunks(v int64) {
-
 	o.NumInitialChunks = &v
 }
 
@@ -287,7 +281,6 @@ func (o *ManagedNamespace) HasPresplitHashedZones() bool {
 
 // SetPresplitHashedZones gets a reference to the given bool and assigns it to the PresplitHashedZones field.
 func (o *ManagedNamespace) SetPresplitHashedZones(v bool) {
-
 	o.PresplitHashedZones = &v
 }
 

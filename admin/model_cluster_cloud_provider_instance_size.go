@@ -61,7 +61,6 @@ func (o *ClusterCloudProviderInstanceSize) HasAvailableRegions() bool {
 
 // SetAvailableRegions gets a reference to the given []AvailableCloudProviderRegion and assigns it to the AvailableRegions field.
 func (o *ClusterCloudProviderInstanceSize) SetAvailableRegions(v []AvailableCloudProviderRegion) {
-
 	o.AvailableRegions = &v
 }
 
@@ -95,7 +94,6 @@ func (o *ClusterCloudProviderInstanceSize) HasName() bool {
 
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ClusterCloudProviderInstanceSize) SetName(v string) {
-
 	o.Name = &v
 }
 

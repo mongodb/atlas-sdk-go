@@ -123,7 +123,6 @@ func (o *AdvancedClusterDescription) HasAcceptDataRisksAndForceReplicaSetReconfi
 
 // SetAcceptDataRisksAndForceReplicaSetReconfig gets a reference to the given time.Time and assigns it to the AcceptDataRisksAndForceReplicaSetReconfig field.
 func (o *AdvancedClusterDescription) SetAcceptDataRisksAndForceReplicaSetReconfig(v time.Time) {
-
 	o.AcceptDataRisksAndForceReplicaSetReconfig = &v
 }
 
@@ -157,7 +156,6 @@ func (o *AdvancedClusterDescription) HasBackupEnabled() bool {
 
 // SetBackupEnabled gets a reference to the given bool and assigns it to the BackupEnabled field.
 func (o *AdvancedClusterDescription) SetBackupEnabled(v bool) {
-
 	o.BackupEnabled = &v
 }
 
@@ -191,7 +189,6 @@ func (o *AdvancedClusterDescription) HasBiConnector() bool {
 
 // SetBiConnector gets a reference to the given BiConnector and assigns it to the BiConnector field.
 func (o *AdvancedClusterDescription) SetBiConnector(v BiConnector) {
-
 	o.BiConnector = &v
 }
 
@@ -225,7 +222,6 @@ func (o *AdvancedClusterDescription) HasClusterType() bool {
 
 // SetClusterType gets a reference to the given string and assigns it to the ClusterType field.
 func (o *AdvancedClusterDescription) SetClusterType(v string) {
-
 	o.ClusterType = &v
 }
 
@@ -259,7 +255,6 @@ func (o *AdvancedClusterDescription) HasConnectionStrings() bool {
 
 // SetConnectionStrings gets a reference to the given ClusterConnectionStrings and assigns it to the ConnectionStrings field.
 func (o *AdvancedClusterDescription) SetConnectionStrings(v ClusterConnectionStrings) {
-
 	o.ConnectionStrings = &v
 }
 
@@ -293,7 +288,6 @@ func (o *AdvancedClusterDescription) HasCreateDate() bool {
 
 // SetCreateDate gets a reference to the given time.Time and assigns it to the CreateDate field.
 func (o *AdvancedClusterDescription) SetCreateDate(v time.Time) {
-
 	o.CreateDate = &v
 }
 
@@ -327,7 +321,6 @@ func (o *AdvancedClusterDescription) HasDiskSizeGB() bool {
 
 // SetDiskSizeGB gets a reference to the given float64 and assigns it to the DiskSizeGB field.
 func (o *AdvancedClusterDescription) SetDiskSizeGB(v float64) {
-
 	o.DiskSizeGB = &v
 }
 
@@ -361,7 +354,6 @@ func (o *AdvancedClusterDescription) HasEncryptionAtRestProvider() bool {
 
 // SetEncryptionAtRestProvider gets a reference to the given string and assigns it to the EncryptionAtRestProvider field.
 func (o *AdvancedClusterDescription) SetEncryptionAtRestProvider(v string) {
-
 	o.EncryptionAtRestProvider = &v
 }
 
@@ -395,7 +387,6 @@ func (o *AdvancedClusterDescription) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *AdvancedClusterDescription) SetGroupId(v string) {
-
 	o.GroupId = &v
 }
 
@@ -429,7 +420,6 @@ func (o *AdvancedClusterDescription) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *AdvancedClusterDescription) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -466,7 +456,6 @@ func (o *AdvancedClusterDescription) HasLabels() bool {
 // SetLabels gets a reference to the given []ComponentLabel and assigns it to the Labels field.
 // Deprecated
 func (o *AdvancedClusterDescription) SetLabels(v []ComponentLabel) {
-
 	o.Labels = &v
 }
 
@@ -500,7 +489,6 @@ func (o *AdvancedClusterDescription) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *AdvancedClusterDescription) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -534,7 +522,6 @@ func (o *AdvancedClusterDescription) HasMongoDBMajorVersion() bool {
 
 // SetMongoDBMajorVersion gets a reference to the given string and assigns it to the MongoDBMajorVersion field.
 func (o *AdvancedClusterDescription) SetMongoDBMajorVersion(v string) {
-
 	o.MongoDBMajorVersion = &v
 }
 
@@ -568,7 +555,6 @@ func (o *AdvancedClusterDescription) HasMongoDBVersion() bool {
 
 // SetMongoDBVersion gets a reference to the given string and assigns it to the MongoDBVersion field.
 func (o *AdvancedClusterDescription) SetMongoDBVersion(v string) {
-
 	o.MongoDBVersion = &v
 }
 
@@ -602,7 +588,6 @@ func (o *AdvancedClusterDescription) HasName() bool {
 
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *AdvancedClusterDescription) SetName(v string) {
-
 	o.Name = &v
 }
 
@@ -636,7 +621,6 @@ func (o *AdvancedClusterDescription) HasPaused() bool {
 
 // SetPaused gets a reference to the given bool and assigns it to the Paused field.
 func (o *AdvancedClusterDescription) SetPaused(v bool) {
-
 	o.Paused = &v
 }
 
@@ -670,7 +654,6 @@ func (o *AdvancedClusterDescription) HasPitEnabled() bool {
 
 // SetPitEnabled gets a reference to the given bool and assigns it to the PitEnabled field.
 func (o *AdvancedClusterDescription) SetPitEnabled(v bool) {
-
 	o.PitEnabled = &v
 }
 
@@ -704,7 +687,6 @@ func (o *AdvancedClusterDescription) HasReplicationSpecs() bool {
 
 // SetReplicationSpecs gets a reference to the given []ReplicationSpec and assigns it to the ReplicationSpecs field.
 func (o *AdvancedClusterDescription) SetReplicationSpecs(v []ReplicationSpec) {
-
 	o.ReplicationSpecs = &v
 }
 
@@ -738,7 +720,6 @@ func (o *AdvancedClusterDescription) HasRootCertType() bool {
 
 // SetRootCertType gets a reference to the given string and assigns it to the RootCertType field.
 func (o *AdvancedClusterDescription) SetRootCertType(v string) {
-
 	o.RootCertType = &v
 }
 
@@ -772,7 +753,6 @@ func (o *AdvancedClusterDescription) HasStateName() bool {
 
 // SetStateName gets a reference to the given string and assigns it to the StateName field.
 func (o *AdvancedClusterDescription) SetStateName(v string) {
-
 	o.StateName = &v
 }
 
@@ -806,7 +786,6 @@ func (o *AdvancedClusterDescription) HasTags() bool {
 
 // SetTags gets a reference to the given []ResourceTag and assigns it to the Tags field.
 func (o *AdvancedClusterDescription) SetTags(v []ResourceTag) {
-
 	o.Tags = &v
 }
 
@@ -840,7 +819,6 @@ func (o *AdvancedClusterDescription) HasTerminationProtectionEnabled() bool {
 
 // SetTerminationProtectionEnabled gets a reference to the given bool and assigns it to the TerminationProtectionEnabled field.
 func (o *AdvancedClusterDescription) SetTerminationProtectionEnabled(v bool) {
-
 	o.TerminationProtectionEnabled = &v
 }
 
@@ -874,7 +852,6 @@ func (o *AdvancedClusterDescription) HasVersionReleaseSystem() bool {
 
 // SetVersionReleaseSystem gets a reference to the given string and assigns it to the VersionReleaseSystem field.
 func (o *AdvancedClusterDescription) SetVersionReleaseSystem(v string) {
-
 	o.VersionReleaseSystem = &v
 }
 

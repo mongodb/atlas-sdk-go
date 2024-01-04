@@ -66,7 +66,6 @@ func (o *ApiAtlasFTSAnalyzers) HasCharFilters() bool {
 
 // SetCharFilters gets a reference to the given []interface{} and assigns it to the CharFilters field.
 func (o *ApiAtlasFTSAnalyzers) SetCharFilters(v []interface{}) {
-
 	o.CharFilters = &v
 }
 
@@ -124,7 +123,6 @@ func (o *ApiAtlasFTSAnalyzers) HasTokenFilters() bool {
 
 // SetTokenFilters gets a reference to the given []interface{} and assigns it to the TokenFilters field.
 func (o *ApiAtlasFTSAnalyzers) SetTokenFilters(v []interface{}) {
-
 	o.TokenFilters = &v
 }
 

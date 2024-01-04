@@ -61,7 +61,6 @@ func (o *GeoSharding) HasCustomZoneMapping() bool {
 
 // SetCustomZoneMapping gets a reference to the given map[string]string and assigns it to the CustomZoneMapping field.
 func (o *GeoSharding) SetCustomZoneMapping(v map[string]string) {
-
 	o.CustomZoneMapping = &v
 }
 
@@ -95,7 +94,6 @@ func (o *GeoSharding) HasManagedNamespaces() bool {
 
 // SetManagedNamespaces gets a reference to the given []ManagedNamespaces and assigns it to the ManagedNamespaces field.
 func (o *GeoSharding) SetManagedNamespaces(v []ManagedNamespaces) {
-
 	o.ManagedNamespaces = &v
 }
 

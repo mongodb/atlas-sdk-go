@@ -76,7 +76,6 @@ func (o *GroupInvitation) HasCreatedAt() bool {
 
 // SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
 func (o *GroupInvitation) SetCreatedAt(v time.Time) {
-
 	o.CreatedAt = &v
 }
 
@@ -110,7 +109,6 @@ func (o *GroupInvitation) HasExpiresAt() bool {
 
 // SetExpiresAt gets a reference to the given time.Time and assigns it to the ExpiresAt field.
 func (o *GroupInvitation) SetExpiresAt(v time.Time) {
-
 	o.ExpiresAt = &v
 }
 
@@ -144,7 +142,6 @@ func (o *GroupInvitation) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *GroupInvitation) SetGroupId(v string) {
-
 	o.GroupId = &v
 }
 
@@ -178,7 +175,6 @@ func (o *GroupInvitation) HasGroupName() bool {
 
 // SetGroupName gets a reference to the given string and assigns it to the GroupName field.
 func (o *GroupInvitation) SetGroupName(v string) {
-
 	o.GroupName = &v
 }
 
@@ -212,7 +208,6 @@ func (o *GroupInvitation) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *GroupInvitation) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -246,7 +241,6 @@ func (o *GroupInvitation) HasInviterUsername() bool {
 
 // SetInviterUsername gets a reference to the given string and assigns it to the InviterUsername field.
 func (o *GroupInvitation) SetInviterUsername(v string) {
-
 	o.InviterUsername = &v
 }
 
@@ -280,7 +274,6 @@ func (o *GroupInvitation) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *GroupInvitation) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -314,7 +307,6 @@ func (o *GroupInvitation) HasRoles() bool {
 
 // SetRoles gets a reference to the given []string and assigns it to the Roles field.
 func (o *GroupInvitation) SetRoles(v []string) {
-
 	o.Roles = &v
 }
 
@@ -348,7 +340,6 @@ func (o *GroupInvitation) HasUsername() bool {
 
 // SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *GroupInvitation) SetUsername(v string) {
-
 	o.Username = &v
 }
 

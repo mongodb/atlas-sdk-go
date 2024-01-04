@@ -109,7 +109,6 @@ func (o *CloudProviderAccessRole) HasAtlasAWSAccountArn() bool {
 
 // SetAtlasAWSAccountArn gets a reference to the given string and assigns it to the AtlasAWSAccountArn field.
 func (o *CloudProviderAccessRole) SetAtlasAWSAccountArn(v string) {
-
 	o.AtlasAWSAccountArn = &v
 }
 
@@ -143,7 +142,6 @@ func (o *CloudProviderAccessRole) HasAtlasAssumedRoleExternalId() bool {
 
 // SetAtlasAssumedRoleExternalId gets a reference to the given string and assigns it to the AtlasAssumedRoleExternalId field.
 func (o *CloudProviderAccessRole) SetAtlasAssumedRoleExternalId(v string) {
-
 	o.AtlasAssumedRoleExternalId = &v
 }
 
@@ -177,7 +175,6 @@ func (o *CloudProviderAccessRole) HasAuthorizedDate() bool {
 
 // SetAuthorizedDate gets a reference to the given time.Time and assigns it to the AuthorizedDate field.
 func (o *CloudProviderAccessRole) SetAuthorizedDate(v time.Time) {
-
 	o.AuthorizedDate = &v
 }
 
@@ -211,7 +208,6 @@ func (o *CloudProviderAccessRole) HasCreatedDate() bool {
 
 // SetCreatedDate gets a reference to the given time.Time and assigns it to the CreatedDate field.
 func (o *CloudProviderAccessRole) SetCreatedDate(v time.Time) {
-
 	o.CreatedDate = &v
 }
 
@@ -245,7 +241,6 @@ func (o *CloudProviderAccessRole) HasFeatureUsages() bool {
 
 // SetFeatureUsages gets a reference to the given []CloudProviderAccessFeatureUsage and assigns it to the FeatureUsages field.
 func (o *CloudProviderAccessRole) SetFeatureUsages(v []CloudProviderAccessFeatureUsage) {
-
 	o.FeatureUsages = &v
 }
 
@@ -279,7 +274,6 @@ func (o *CloudProviderAccessRole) HasIamAssumedRoleArn() bool {
 
 // SetIamAssumedRoleArn gets a reference to the given string and assigns it to the IamAssumedRoleArn field.
 func (o *CloudProviderAccessRole) SetIamAssumedRoleArn(v string) {
-
 	o.IamAssumedRoleArn = &v
 }
 
@@ -313,7 +307,6 @@ func (o *CloudProviderAccessRole) HasRoleId() bool {
 
 // SetRoleId gets a reference to the given string and assigns it to the RoleId field.
 func (o *CloudProviderAccessRole) SetRoleId(v string) {
-
 	o.RoleId = &v
 }
 
@@ -347,7 +340,6 @@ func (o *CloudProviderAccessRole) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *CloudProviderAccessRole) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -381,7 +373,6 @@ func (o *CloudProviderAccessRole) HasAtlasAzureAppId() bool {
 
 // SetAtlasAzureAppId gets a reference to the given string and assigns it to the AtlasAzureAppId field.
 func (o *CloudProviderAccessRole) SetAtlasAzureAppId(v string) {
-
 	o.AtlasAzureAppId = &v
 }
 
@@ -415,7 +406,6 @@ func (o *CloudProviderAccessRole) HasLastUpdatedDate() bool {
 
 // SetLastUpdatedDate gets a reference to the given time.Time and assigns it to the LastUpdatedDate field.
 func (o *CloudProviderAccessRole) SetLastUpdatedDate(v time.Time) {
-
 	o.LastUpdatedDate = &v
 }
 
@@ -449,7 +439,6 @@ func (o *CloudProviderAccessRole) HasServicePrincipalId() bool {
 
 // SetServicePrincipalId gets a reference to the given string and assigns it to the ServicePrincipalId field.
 func (o *CloudProviderAccessRole) SetServicePrincipalId(v string) {
-
 	o.ServicePrincipalId = &v
 }
 
@@ -483,7 +472,6 @@ func (o *CloudProviderAccessRole) HasTenantId() bool {
 
 // SetTenantId gets a reference to the given string and assigns it to the TenantId field.
 func (o *CloudProviderAccessRole) SetTenantId(v string) {
-
 	o.TenantId = &v
 }
 

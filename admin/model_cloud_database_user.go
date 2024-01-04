@@ -105,7 +105,6 @@ func (o *CloudDatabaseUser) HasAwsIAMType() bool {
 
 // SetAwsIAMType gets a reference to the given string and assigns it to the AwsIAMType field.
 func (o *CloudDatabaseUser) SetAwsIAMType(v string) {
-
 	o.AwsIAMType = &v
 }
 
@@ -163,7 +162,6 @@ func (o *CloudDatabaseUser) HasDeleteAfterDate() bool {
 
 // SetDeleteAfterDate gets a reference to the given time.Time and assigns it to the DeleteAfterDate field.
 func (o *CloudDatabaseUser) SetDeleteAfterDate(v time.Time) {
-
 	o.DeleteAfterDate = &v
 }
 
@@ -221,7 +219,6 @@ func (o *CloudDatabaseUser) HasLabels() bool {
 
 // SetLabels gets a reference to the given []ComponentLabel and assigns it to the Labels field.
 func (o *CloudDatabaseUser) SetLabels(v []ComponentLabel) {
-
 	o.Labels = &v
 }
 
@@ -255,7 +252,6 @@ func (o *CloudDatabaseUser) HasLdapAuthType() bool {
 
 // SetLdapAuthType gets a reference to the given string and assigns it to the LdapAuthType field.
 func (o *CloudDatabaseUser) SetLdapAuthType(v string) {
-
 	o.LdapAuthType = &v
 }
 
@@ -289,7 +285,6 @@ func (o *CloudDatabaseUser) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *CloudDatabaseUser) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -323,7 +318,6 @@ func (o *CloudDatabaseUser) HasOidcAuthType() bool {
 
 // SetOidcAuthType gets a reference to the given string and assigns it to the OidcAuthType field.
 func (o *CloudDatabaseUser) SetOidcAuthType(v string) {
-
 	o.OidcAuthType = &v
 }
 
@@ -357,7 +351,6 @@ func (o *CloudDatabaseUser) HasPassword() bool {
 
 // SetPassword gets a reference to the given string and assigns it to the Password field.
 func (o *CloudDatabaseUser) SetPassword(v string) {
-
 	o.Password = &v
 }
 
@@ -391,7 +384,6 @@ func (o *CloudDatabaseUser) HasRoles() bool {
 
 // SetRoles gets a reference to the given []DatabaseUserRole and assigns it to the Roles field.
 func (o *CloudDatabaseUser) SetRoles(v []DatabaseUserRole) {
-
 	o.Roles = &v
 }
 
@@ -425,7 +417,6 @@ func (o *CloudDatabaseUser) HasScopes() bool {
 
 // SetScopes gets a reference to the given []UserScope and assigns it to the Scopes field.
 func (o *CloudDatabaseUser) SetScopes(v []UserScope) {
-
 	o.Scopes = &v
 }
 
@@ -483,7 +474,6 @@ func (o *CloudDatabaseUser) HasX509Type() bool {
 
 // SetX509Type gets a reference to the given string and assigns it to the X509Type field.
 func (o *CloudDatabaseUser) SetX509Type(v string) {
-
 	o.X509Type = &v
 }
 

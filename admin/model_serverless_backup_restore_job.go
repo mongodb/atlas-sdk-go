@@ -94,7 +94,6 @@ func (o *ServerlessBackupRestoreJob) HasCancelled() bool {
 
 // SetCancelled gets a reference to the given bool and assigns it to the Cancelled field.
 func (o *ServerlessBackupRestoreJob) SetCancelled(v bool) {
-
 	o.Cancelled = &v
 }
 
@@ -152,7 +151,6 @@ func (o *ServerlessBackupRestoreJob) HasDeliveryUrl() bool {
 
 // SetDeliveryUrl gets a reference to the given []string and assigns it to the DeliveryUrl field.
 func (o *ServerlessBackupRestoreJob) SetDeliveryUrl(v []string) {
-
 	o.DeliveryUrl = &v
 }
 
@@ -186,7 +184,6 @@ func (o *ServerlessBackupRestoreJob) HasDesiredTimestamp() bool {
 
 // SetDesiredTimestamp gets a reference to the given ApiBSONTimestamp and assigns it to the DesiredTimestamp field.
 func (o *ServerlessBackupRestoreJob) SetDesiredTimestamp(v ApiBSONTimestamp) {
-
 	o.DesiredTimestamp = &v
 }
 
@@ -220,7 +217,6 @@ func (o *ServerlessBackupRestoreJob) HasExpired() bool {
 
 // SetExpired gets a reference to the given bool and assigns it to the Expired field.
 func (o *ServerlessBackupRestoreJob) SetExpired(v bool) {
-
 	o.Expired = &v
 }
 
@@ -254,7 +250,6 @@ func (o *ServerlessBackupRestoreJob) HasExpiresAt() bool {
 
 // SetExpiresAt gets a reference to the given time.Time and assigns it to the ExpiresAt field.
 func (o *ServerlessBackupRestoreJob) SetExpiresAt(v time.Time) {
-
 	o.ExpiresAt = &v
 }
 
@@ -288,7 +283,6 @@ func (o *ServerlessBackupRestoreJob) HasFailed() bool {
 
 // SetFailed gets a reference to the given bool and assigns it to the Failed field.
 func (o *ServerlessBackupRestoreJob) SetFailed(v bool) {
-
 	o.Failed = &v
 }
 
@@ -322,7 +316,6 @@ func (o *ServerlessBackupRestoreJob) HasFinishedAt() bool {
 
 // SetFinishedAt gets a reference to the given time.Time and assigns it to the FinishedAt field.
 func (o *ServerlessBackupRestoreJob) SetFinishedAt(v time.Time) {
-
 	o.FinishedAt = &v
 }
 
@@ -356,7 +349,6 @@ func (o *ServerlessBackupRestoreJob) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ServerlessBackupRestoreJob) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -390,7 +382,6 @@ func (o *ServerlessBackupRestoreJob) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *ServerlessBackupRestoreJob) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -424,7 +415,6 @@ func (o *ServerlessBackupRestoreJob) HasOplogInc() bool {
 
 // SetOplogInc gets a reference to the given int and assigns it to the OplogInc field.
 func (o *ServerlessBackupRestoreJob) SetOplogInc(v int) {
-
 	o.OplogInc = &v
 }
 
@@ -458,7 +448,6 @@ func (o *ServerlessBackupRestoreJob) HasOplogTs() bool {
 
 // SetOplogTs gets a reference to the given int and assigns it to the OplogTs field.
 func (o *ServerlessBackupRestoreJob) SetOplogTs(v int) {
-
 	o.OplogTs = &v
 }
 
@@ -492,7 +481,6 @@ func (o *ServerlessBackupRestoreJob) HasPointInTimeUTCSeconds() bool {
 
 // SetPointInTimeUTCSeconds gets a reference to the given int and assigns it to the PointInTimeUTCSeconds field.
 func (o *ServerlessBackupRestoreJob) SetPointInTimeUTCSeconds(v int) {
-
 	o.PointInTimeUTCSeconds = &v
 }
 
@@ -526,7 +514,6 @@ func (o *ServerlessBackupRestoreJob) HasSnapshotId() bool {
 
 // SetSnapshotId gets a reference to the given string and assigns it to the SnapshotId field.
 func (o *ServerlessBackupRestoreJob) SetSnapshotId(v string) {
-
 	o.SnapshotId = &v
 }
 
@@ -608,7 +595,6 @@ func (o *ServerlessBackupRestoreJob) HasTimestamp() bool {
 
 // SetTimestamp gets a reference to the given time.Time and assigns it to the Timestamp field.
 func (o *ServerlessBackupRestoreJob) SetTimestamp(v time.Time) {
-
 	o.Timestamp = &v
 }
 

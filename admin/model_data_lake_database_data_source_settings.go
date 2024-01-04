@@ -87,7 +87,6 @@ func (o *DataLakeDatabaseDataSourceSettings) HasAllowInsecure() bool {
 
 // SetAllowInsecure gets a reference to the given bool and assigns it to the AllowInsecure field.
 func (o *DataLakeDatabaseDataSourceSettings) SetAllowInsecure(v bool) {
-
 	o.AllowInsecure = &v
 }
 
@@ -121,7 +120,6 @@ func (o *DataLakeDatabaseDataSourceSettings) HasCollection() bool {
 
 // SetCollection gets a reference to the given string and assigns it to the Collection field.
 func (o *DataLakeDatabaseDataSourceSettings) SetCollection(v string) {
-
 	o.Collection = &v
 }
 
@@ -155,7 +153,6 @@ func (o *DataLakeDatabaseDataSourceSettings) HasCollectionRegex() bool {
 
 // SetCollectionRegex gets a reference to the given string and assigns it to the CollectionRegex field.
 func (o *DataLakeDatabaseDataSourceSettings) SetCollectionRegex(v string) {
-
 	o.CollectionRegex = &v
 }
 
@@ -189,7 +186,6 @@ func (o *DataLakeDatabaseDataSourceSettings) HasDatabase() bool {
 
 // SetDatabase gets a reference to the given string and assigns it to the Database field.
 func (o *DataLakeDatabaseDataSourceSettings) SetDatabase(v string) {
-
 	o.Database = &v
 }
 
@@ -223,7 +219,6 @@ func (o *DataLakeDatabaseDataSourceSettings) HasDatabaseRegex() bool {
 
 // SetDatabaseRegex gets a reference to the given string and assigns it to the DatabaseRegex field.
 func (o *DataLakeDatabaseDataSourceSettings) SetDatabaseRegex(v string) {
-
 	o.DatabaseRegex = &v
 }
 
@@ -257,7 +252,6 @@ func (o *DataLakeDatabaseDataSourceSettings) HasDatasetName() bool {
 
 // SetDatasetName gets a reference to the given string and assigns it to the DatasetName field.
 func (o *DataLakeDatabaseDataSourceSettings) SetDatasetName(v string) {
-
 	o.DatasetName = &v
 }
 
@@ -291,7 +285,6 @@ func (o *DataLakeDatabaseDataSourceSettings) HasDatasetPrefix() bool {
 
 // SetDatasetPrefix gets a reference to the given string and assigns it to the DatasetPrefix field.
 func (o *DataLakeDatabaseDataSourceSettings) SetDatasetPrefix(v string) {
-
 	o.DatasetPrefix = &v
 }
 
@@ -325,7 +318,6 @@ func (o *DataLakeDatabaseDataSourceSettings) HasDefaultFormat() bool {
 
 // SetDefaultFormat gets a reference to the given string and assigns it to the DefaultFormat field.
 func (o *DataLakeDatabaseDataSourceSettings) SetDefaultFormat(v string) {
-
 	o.DefaultFormat = &v
 }
 
@@ -359,7 +351,6 @@ func (o *DataLakeDatabaseDataSourceSettings) HasPath() bool {
 
 // SetPath gets a reference to the given string and assigns it to the Path field.
 func (o *DataLakeDatabaseDataSourceSettings) SetPath(v string) {
-
 	o.Path = &v
 }
 
@@ -393,7 +384,6 @@ func (o *DataLakeDatabaseDataSourceSettings) HasProvenanceFieldName() bool {
 
 // SetProvenanceFieldName gets a reference to the given string and assigns it to the ProvenanceFieldName field.
 func (o *DataLakeDatabaseDataSourceSettings) SetProvenanceFieldName(v string) {
-
 	o.ProvenanceFieldName = &v
 }
 
@@ -427,7 +417,6 @@ func (o *DataLakeDatabaseDataSourceSettings) HasStoreName() bool {
 
 // SetStoreName gets a reference to the given string and assigns it to the StoreName field.
 func (o *DataLakeDatabaseDataSourceSettings) SetStoreName(v string) {
-
 	o.StoreName = &v
 }
 
@@ -461,7 +450,6 @@ func (o *DataLakeDatabaseDataSourceSettings) HasTrimLevel() bool {
 
 // SetTrimLevel gets a reference to the given int and assigns it to the TrimLevel field.
 func (o *DataLakeDatabaseDataSourceSettings) SetTrimLevel(v int) {
-
 	o.TrimLevel = &v
 }
 
@@ -495,7 +483,6 @@ func (o *DataLakeDatabaseDataSourceSettings) HasUrls() bool {
 
 // SetUrls gets a reference to the given []string and assigns it to the Urls field.
 func (o *DataLakeDatabaseDataSourceSettings) SetUrls(v []string) {
-
 	o.Urls = &v
 }
 

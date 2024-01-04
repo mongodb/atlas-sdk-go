@@ -61,7 +61,6 @@ func (o *ClusterStatus) HasChangeStatus() bool {
 
 // SetChangeStatus gets a reference to the given string and assigns it to the ChangeStatus field.
 func (o *ClusterStatus) SetChangeStatus(v string) {
-
 	o.ChangeStatus = &v
 }
 
@@ -95,7 +94,6 @@ func (o *ClusterStatus) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *ClusterStatus) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 

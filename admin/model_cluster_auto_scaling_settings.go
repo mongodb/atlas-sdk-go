@@ -60,7 +60,6 @@ func (o *ClusterAutoScalingSettings) HasCompute() bool {
 
 // SetCompute gets a reference to the given ClusterComputeAutoScaling and assigns it to the Compute field.
 func (o *ClusterAutoScalingSettings) SetCompute(v ClusterComputeAutoScaling) {
-
 	o.Compute = &v
 }
 
@@ -94,7 +93,6 @@ func (o *ClusterAutoScalingSettings) HasDiskGBEnabled() bool {
 
 // SetDiskGBEnabled gets a reference to the given bool and assigns it to the DiskGBEnabled field.
 func (o *ClusterAutoScalingSettings) SetDiskGBEnabled(v bool) {
-
 	o.DiskGBEnabled = &v
 }
 

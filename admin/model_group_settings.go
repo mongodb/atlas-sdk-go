@@ -69,7 +69,6 @@ func (o *GroupSettings) HasIsCollectDatabaseSpecificsStatisticsEnabled() bool {
 
 // SetIsCollectDatabaseSpecificsStatisticsEnabled gets a reference to the given bool and assigns it to the IsCollectDatabaseSpecificsStatisticsEnabled field.
 func (o *GroupSettings) SetIsCollectDatabaseSpecificsStatisticsEnabled(v bool) {
-
 	o.IsCollectDatabaseSpecificsStatisticsEnabled = &v
 }
 
@@ -103,7 +102,6 @@ func (o *GroupSettings) HasIsDataExplorerEnabled() bool {
 
 // SetIsDataExplorerEnabled gets a reference to the given bool and assigns it to the IsDataExplorerEnabled field.
 func (o *GroupSettings) SetIsDataExplorerEnabled(v bool) {
-
 	o.IsDataExplorerEnabled = &v
 }
 
@@ -137,7 +135,6 @@ func (o *GroupSettings) HasIsExtendedStorageSizesEnabled() bool {
 
 // SetIsExtendedStorageSizesEnabled gets a reference to the given bool and assigns it to the IsExtendedStorageSizesEnabled field.
 func (o *GroupSettings) SetIsExtendedStorageSizesEnabled(v bool) {
-
 	o.IsExtendedStorageSizesEnabled = &v
 }
 
@@ -171,7 +168,6 @@ func (o *GroupSettings) HasIsPerformanceAdvisorEnabled() bool {
 
 // SetIsPerformanceAdvisorEnabled gets a reference to the given bool and assigns it to the IsPerformanceAdvisorEnabled field.
 func (o *GroupSettings) SetIsPerformanceAdvisorEnabled(v bool) {
-
 	o.IsPerformanceAdvisorEnabled = &v
 }
 
@@ -205,7 +201,6 @@ func (o *GroupSettings) HasIsRealtimePerformancePanelEnabled() bool {
 
 // SetIsRealtimePerformancePanelEnabled gets a reference to the given bool and assigns it to the IsRealtimePerformancePanelEnabled field.
 func (o *GroupSettings) SetIsRealtimePerformancePanelEnabled(v bool) {
-
 	o.IsRealtimePerformancePanelEnabled = &v
 }
 
@@ -239,7 +234,6 @@ func (o *GroupSettings) HasIsSchemaAdvisorEnabled() bool {
 
 // SetIsSchemaAdvisorEnabled gets a reference to the given bool and assigns it to the IsSchemaAdvisorEnabled field.
 func (o *GroupSettings) SetIsSchemaAdvisorEnabled(v bool) {
-
 	o.IsSchemaAdvisorEnabled = &v
 }
 

@@ -69,7 +69,6 @@ func (o *DataLakeDatabaseInstance) HasCollections() bool {
 
 // SetCollections gets a reference to the given []DataLakeDatabaseCollection and assigns it to the Collections field.
 func (o *DataLakeDatabaseInstance) SetCollections(v []DataLakeDatabaseCollection) {
-
 	o.Collections = &v
 }
 
@@ -103,7 +102,6 @@ func (o *DataLakeDatabaseInstance) HasMaxWildcardCollections() bool {
 
 // SetMaxWildcardCollections gets a reference to the given int and assigns it to the MaxWildcardCollections field.
 func (o *DataLakeDatabaseInstance) SetMaxWildcardCollections(v int) {
-
 	o.MaxWildcardCollections = &v
 }
 
@@ -137,7 +135,6 @@ func (o *DataLakeDatabaseInstance) HasName() bool {
 
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *DataLakeDatabaseInstance) SetName(v string) {
-
 	o.Name = &v
 }
 
@@ -171,7 +168,6 @@ func (o *DataLakeDatabaseInstance) HasViews() bool {
 
 // SetViews gets a reference to the given []DataLakeApiBase and assigns it to the Views field.
 func (o *DataLakeDatabaseInstance) SetViews(v []DataLakeApiBase) {
-
 	o.Views = &v
 }
 

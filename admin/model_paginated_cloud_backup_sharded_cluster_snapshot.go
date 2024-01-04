@@ -63,7 +63,6 @@ func (o *PaginatedCloudBackupShardedClusterSnapshot) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PaginatedCloudBackupShardedClusterSnapshot) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -97,7 +96,6 @@ func (o *PaginatedCloudBackupShardedClusterSnapshot) HasResults() bool {
 
 // SetResults gets a reference to the given []DiskBackupShardedClusterSnapshot and assigns it to the Results field.
 func (o *PaginatedCloudBackupShardedClusterSnapshot) SetResults(v []DiskBackupShardedClusterSnapshot) {
-
 	o.Results = &v
 }
 
@@ -131,7 +129,6 @@ func (o *PaginatedCloudBackupShardedClusterSnapshot) HasTotalCount() bool {
 
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
 func (o *PaginatedCloudBackupShardedClusterSnapshot) SetTotalCount(v int) {
-
 	o.TotalCount = &v
 }
 

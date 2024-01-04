@@ -63,7 +63,6 @@ func (o *GCPConsumerForwardingRule) HasEndpointName() bool {
 
 // SetEndpointName gets a reference to the given string and assigns it to the EndpointName field.
 func (o *GCPConsumerForwardingRule) SetEndpointName(v string) {
-
 	o.EndpointName = &v
 }
 
@@ -97,7 +96,6 @@ func (o *GCPConsumerForwardingRule) HasIpAddress() bool {
 
 // SetIpAddress gets a reference to the given string and assigns it to the IpAddress field.
 func (o *GCPConsumerForwardingRule) SetIpAddress(v string) {
-
 	o.IpAddress = &v
 }
 
@@ -131,7 +129,6 @@ func (o *GCPConsumerForwardingRule) HasStatus() bool {
 
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *GCPConsumerForwardingRule) SetStatus(v string) {
-
 	o.Status = &v
 }
 

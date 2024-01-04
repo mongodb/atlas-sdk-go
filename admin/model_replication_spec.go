@@ -65,7 +65,6 @@ func (o *ReplicationSpec) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ReplicationSpec) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -99,7 +98,6 @@ func (o *ReplicationSpec) HasNumShards() bool {
 
 // SetNumShards gets a reference to the given int and assigns it to the NumShards field.
 func (o *ReplicationSpec) SetNumShards(v int) {
-
 	o.NumShards = &v
 }
 
@@ -133,7 +131,6 @@ func (o *ReplicationSpec) HasRegionConfigs() bool {
 
 // SetRegionConfigs gets a reference to the given []CloudRegionConfig and assigns it to the RegionConfigs field.
 func (o *ReplicationSpec) SetRegionConfigs(v []CloudRegionConfig) {
-
 	o.RegionConfigs = &v
 }
 
@@ -167,7 +164,6 @@ func (o *ReplicationSpec) HasZoneName() bool {
 
 // SetZoneName gets a reference to the given string and assigns it to the ZoneName field.
 func (o *ReplicationSpec) SetZoneName(v string) {
-
 	o.ZoneName = &v
 }
 

@@ -61,7 +61,6 @@ func (o *CloudProviderRegions) HasInstanceSizes() bool {
 
 // SetInstanceSizes gets a reference to the given []ClusterCloudProviderInstanceSize and assigns it to the InstanceSizes field.
 func (o *CloudProviderRegions) SetInstanceSizes(v []ClusterCloudProviderInstanceSize) {
-
 	o.InstanceSizes = &v
 }
 
@@ -95,7 +94,6 @@ func (o *CloudProviderRegions) HasProvider() bool {
 
 // SetProvider gets a reference to the given string and assigns it to the Provider field.
 func (o *CloudProviderRegions) SetProvider(v string) {
-
 	o.Provider = &v
 }
 

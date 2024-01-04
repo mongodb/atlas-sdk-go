@@ -63,7 +63,6 @@ func (o *PaginatedApiAppUser) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PaginatedApiAppUser) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -97,7 +96,6 @@ func (o *PaginatedApiAppUser) HasResults() bool {
 
 // SetResults gets a reference to the given []CloudAppUser and assigns it to the Results field.
 func (o *PaginatedApiAppUser) SetResults(v []CloudAppUser) {
-
 	o.Results = &v
 }
 
@@ -131,7 +129,6 @@ func (o *PaginatedApiAppUser) HasTotalCount() bool {
 
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
 func (o *PaginatedApiAppUser) SetTotalCount(v int) {
-
 	o.TotalCount = &v
 }
 

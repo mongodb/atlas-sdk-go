@@ -94,7 +94,6 @@ func (o *DiskBackupSnapshotRestoreJob) HasCancelled() bool {
 
 // SetCancelled gets a reference to the given bool and assigns it to the Cancelled field.
 func (o *DiskBackupSnapshotRestoreJob) SetCancelled(v bool) {
-
 	o.Cancelled = &v
 }
 
@@ -128,7 +127,6 @@ func (o *DiskBackupSnapshotRestoreJob) HasComponents() bool {
 
 // SetComponents gets a reference to the given []DiskBackupBaseRestoreMember and assigns it to the Components field.
 func (o *DiskBackupSnapshotRestoreJob) SetComponents(v []DiskBackupBaseRestoreMember) {
-
 	o.Components = &v
 }
 
@@ -186,7 +184,6 @@ func (o *DiskBackupSnapshotRestoreJob) HasDeliveryUrl() bool {
 
 // SetDeliveryUrl gets a reference to the given []string and assigns it to the DeliveryUrl field.
 func (o *DiskBackupSnapshotRestoreJob) SetDeliveryUrl(v []string) {
-
 	o.DeliveryUrl = &v
 }
 
@@ -220,7 +217,6 @@ func (o *DiskBackupSnapshotRestoreJob) HasDesiredTimestamp() bool {
 
 // SetDesiredTimestamp gets a reference to the given ApiBSONTimestamp and assigns it to the DesiredTimestamp field.
 func (o *DiskBackupSnapshotRestoreJob) SetDesiredTimestamp(v ApiBSONTimestamp) {
-
 	o.DesiredTimestamp = &v
 }
 
@@ -254,7 +250,6 @@ func (o *DiskBackupSnapshotRestoreJob) HasExpired() bool {
 
 // SetExpired gets a reference to the given bool and assigns it to the Expired field.
 func (o *DiskBackupSnapshotRestoreJob) SetExpired(v bool) {
-
 	o.Expired = &v
 }
 
@@ -288,7 +283,6 @@ func (o *DiskBackupSnapshotRestoreJob) HasExpiresAt() bool {
 
 // SetExpiresAt gets a reference to the given time.Time and assigns it to the ExpiresAt field.
 func (o *DiskBackupSnapshotRestoreJob) SetExpiresAt(v time.Time) {
-
 	o.ExpiresAt = &v
 }
 
@@ -322,7 +316,6 @@ func (o *DiskBackupSnapshotRestoreJob) HasFailed() bool {
 
 // SetFailed gets a reference to the given bool and assigns it to the Failed field.
 func (o *DiskBackupSnapshotRestoreJob) SetFailed(v bool) {
-
 	o.Failed = &v
 }
 
@@ -356,7 +349,6 @@ func (o *DiskBackupSnapshotRestoreJob) HasFinishedAt() bool {
 
 // SetFinishedAt gets a reference to the given time.Time and assigns it to the FinishedAt field.
 func (o *DiskBackupSnapshotRestoreJob) SetFinishedAt(v time.Time) {
-
 	o.FinishedAt = &v
 }
 
@@ -390,7 +382,6 @@ func (o *DiskBackupSnapshotRestoreJob) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *DiskBackupSnapshotRestoreJob) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -424,7 +415,6 @@ func (o *DiskBackupSnapshotRestoreJob) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *DiskBackupSnapshotRestoreJob) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -458,7 +448,6 @@ func (o *DiskBackupSnapshotRestoreJob) HasOplogInc() bool {
 
 // SetOplogInc gets a reference to the given int and assigns it to the OplogInc field.
 func (o *DiskBackupSnapshotRestoreJob) SetOplogInc(v int) {
-
 	o.OplogInc = &v
 }
 
@@ -492,7 +481,6 @@ func (o *DiskBackupSnapshotRestoreJob) HasOplogTs() bool {
 
 // SetOplogTs gets a reference to the given int and assigns it to the OplogTs field.
 func (o *DiskBackupSnapshotRestoreJob) SetOplogTs(v int) {
-
 	o.OplogTs = &v
 }
 
@@ -526,7 +514,6 @@ func (o *DiskBackupSnapshotRestoreJob) HasPointInTimeUTCSeconds() bool {
 
 // SetPointInTimeUTCSeconds gets a reference to the given int and assigns it to the PointInTimeUTCSeconds field.
 func (o *DiskBackupSnapshotRestoreJob) SetPointInTimeUTCSeconds(v int) {
-
 	o.PointInTimeUTCSeconds = &v
 }
 
@@ -560,7 +547,6 @@ func (o *DiskBackupSnapshotRestoreJob) HasSnapshotId() bool {
 
 // SetSnapshotId gets a reference to the given string and assigns it to the SnapshotId field.
 func (o *DiskBackupSnapshotRestoreJob) SetSnapshotId(v string) {
-
 	o.SnapshotId = &v
 }
 
@@ -594,7 +580,6 @@ func (o *DiskBackupSnapshotRestoreJob) HasTargetClusterName() bool {
 
 // SetTargetClusterName gets a reference to the given string and assigns it to the TargetClusterName field.
 func (o *DiskBackupSnapshotRestoreJob) SetTargetClusterName(v string) {
-
 	o.TargetClusterName = &v
 }
 
@@ -628,7 +613,6 @@ func (o *DiskBackupSnapshotRestoreJob) HasTargetGroupId() bool {
 
 // SetTargetGroupId gets a reference to the given string and assigns it to the TargetGroupId field.
 func (o *DiskBackupSnapshotRestoreJob) SetTargetGroupId(v string) {
-
 	o.TargetGroupId = &v
 }
 
@@ -662,7 +646,6 @@ func (o *DiskBackupSnapshotRestoreJob) HasTimestamp() bool {
 
 // SetTimestamp gets a reference to the given time.Time and assigns it to the Timestamp field.
 func (o *DiskBackupSnapshotRestoreJob) SetTimestamp(v time.Time) {
-
 	o.Timestamp = &v
 }
 

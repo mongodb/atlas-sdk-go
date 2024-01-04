@@ -61,7 +61,6 @@ func (o *PrivateEndpointHostname) HasHostname() bool {
 
 // SetHostname gets a reference to the given string and assigns it to the Hostname field.
 func (o *PrivateEndpointHostname) SetHostname(v string) {
-
 	o.Hostname = &v
 }
 
@@ -95,7 +94,6 @@ func (o *PrivateEndpointHostname) HasPrivateEndpoint() bool {
 
 // SetPrivateEndpoint gets a reference to the given string and assigns it to the PrivateEndpoint field.
 func (o *PrivateEndpointHostname) SetPrivateEndpoint(v string) {
-
 	o.PrivateEndpoint = &v
 }
 

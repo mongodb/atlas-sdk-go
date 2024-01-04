@@ -61,7 +61,6 @@ func (o *ServerlessInstanceDescriptionConnectionStrings) HasPrivateEndpoint() bo
 
 // SetPrivateEndpoint gets a reference to the given []ServerlessConnectionStringsPrivateEndpointList and assigns it to the PrivateEndpoint field.
 func (o *ServerlessInstanceDescriptionConnectionStrings) SetPrivateEndpoint(v []ServerlessConnectionStringsPrivateEndpointList) {
-
 	o.PrivateEndpoint = &v
 }
 
@@ -95,7 +94,6 @@ func (o *ServerlessInstanceDescriptionConnectionStrings) HasStandardSrv() bool {
 
 // SetStandardSrv gets a reference to the given string and assigns it to the StandardSrv field.
 func (o *ServerlessInstanceDescriptionConnectionStrings) SetStandardSrv(v string) {
-
 	o.StandardSrv = &v
 }
 

@@ -63,7 +63,6 @@ func (o *PaginatedPrivateNetworkEndpointIdEntry) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PaginatedPrivateNetworkEndpointIdEntry) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -97,7 +96,6 @@ func (o *PaginatedPrivateNetworkEndpointIdEntry) HasResults() bool {
 
 // SetResults gets a reference to the given []PrivateNetworkEndpointIdEntry and assigns it to the Results field.
 func (o *PaginatedPrivateNetworkEndpointIdEntry) SetResults(v []PrivateNetworkEndpointIdEntry) {
-
 	o.Results = &v
 }
 
@@ -131,7 +129,6 @@ func (o *PaginatedPrivateNetworkEndpointIdEntry) HasTotalCount() bool {
 
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
 func (o *PaginatedPrivateNetworkEndpointIdEntry) SetTotalCount(v int) {
-
 	o.TotalCount = &v
 }
 

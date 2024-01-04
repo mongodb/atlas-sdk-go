@@ -67,7 +67,6 @@ func (o *DatabaseRollingIndexRequest) HasCollation() bool {
 
 // SetCollation gets a reference to the given Collation and assigns it to the Collation field.
 func (o *DatabaseRollingIndexRequest) SetCollation(v Collation) {
-
 	o.Collation = &v
 }
 
@@ -149,7 +148,6 @@ func (o *DatabaseRollingIndexRequest) HasKeys() bool {
 
 // SetKeys gets a reference to the given []map[string]string and assigns it to the Keys field.
 func (o *DatabaseRollingIndexRequest) SetKeys(v []map[string]string) {
-
 	o.Keys = &v
 }
 
@@ -183,7 +181,6 @@ func (o *DatabaseRollingIndexRequest) HasOptions() bool {
 
 // SetOptions gets a reference to the given IndexOptions and assigns it to the Options field.
 func (o *DatabaseRollingIndexRequest) SetOptions(v IndexOptions) {
-
 	o.Options = &v
 }
 

@@ -138,7 +138,6 @@ func (o *ClusterSearchIndex) HasIndexID() bool {
 
 // SetIndexID gets a reference to the given string and assigns it to the IndexID field.
 func (o *ClusterSearchIndex) SetIndexID(v string) {
-
 	o.IndexID = &v
 }
 
@@ -196,7 +195,6 @@ func (o *ClusterSearchIndex) HasStatus() bool {
 
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *ClusterSearchIndex) SetStatus(v string) {
-
 	o.Status = &v
 }
 
@@ -230,7 +228,6 @@ func (o *ClusterSearchIndex) HasType() bool {
 
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *ClusterSearchIndex) SetType(v string) {
-
 	o.Type = &v
 }
 
@@ -264,7 +261,6 @@ func (o *ClusterSearchIndex) HasAnalyzer() bool {
 
 // SetAnalyzer gets a reference to the given string and assigns it to the Analyzer field.
 func (o *ClusterSearchIndex) SetAnalyzer(v string) {
-
 	o.Analyzer = &v
 }
 
@@ -298,7 +294,6 @@ func (o *ClusterSearchIndex) HasAnalyzers() bool {
 
 // SetAnalyzers gets a reference to the given []ApiAtlasFTSAnalyzers and assigns it to the Analyzers field.
 func (o *ClusterSearchIndex) SetAnalyzers(v []ApiAtlasFTSAnalyzers) {
-
 	o.Analyzers = &v
 }
 
@@ -332,7 +327,6 @@ func (o *ClusterSearchIndex) HasMappings() bool {
 
 // SetMappings gets a reference to the given ApiAtlasFTSMappings and assigns it to the Mappings field.
 func (o *ClusterSearchIndex) SetMappings(v ApiAtlasFTSMappings) {
-
 	o.Mappings = &v
 }
 
@@ -366,7 +360,6 @@ func (o *ClusterSearchIndex) HasSearchAnalyzer() bool {
 
 // SetSearchAnalyzer gets a reference to the given string and assigns it to the SearchAnalyzer field.
 func (o *ClusterSearchIndex) SetSearchAnalyzer(v string) {
-
 	o.SearchAnalyzer = &v
 }
 
@@ -400,7 +393,6 @@ func (o *ClusterSearchIndex) HasSynonyms() bool {
 
 // SetSynonyms gets a reference to the given []SearchSynonymMappingDefinition and assigns it to the Synonyms field.
 func (o *ClusterSearchIndex) SetSynonyms(v []SearchSynonymMappingDefinition) {
-
 	o.Synonyms = &v
 }
 
@@ -434,7 +426,6 @@ func (o *ClusterSearchIndex) HasFields() bool {
 
 // SetFields gets a reference to the given []map[string]interface{} and assigns it to the Fields field.
 func (o *ClusterSearchIndex) SetFields(v []map[string]interface{}) {
-
 	o.Fields = &v
 }
 

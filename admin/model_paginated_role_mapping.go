@@ -63,7 +63,6 @@ func (o *PaginatedRoleMapping) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PaginatedRoleMapping) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -97,7 +96,6 @@ func (o *PaginatedRoleMapping) HasResults() bool {
 
 // SetResults gets a reference to the given []AuthFederationRoleMapping and assigns it to the Results field.
 func (o *PaginatedRoleMapping) SetResults(v []AuthFederationRoleMapping) {
-
 	o.Results = &v
 }
 
@@ -131,7 +129,6 @@ func (o *PaginatedRoleMapping) HasTotalCount() bool {
 
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
 func (o *PaginatedRoleMapping) SetTotalCount(v int) {
-
 	o.TotalCount = &v
 }
 

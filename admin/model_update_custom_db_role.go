@@ -61,7 +61,6 @@ func (o *UpdateCustomDBRole) HasActions() bool {
 
 // SetActions gets a reference to the given []DatabasePrivilegeAction and assigns it to the Actions field.
 func (o *UpdateCustomDBRole) SetActions(v []DatabasePrivilegeAction) {
-
 	o.Actions = &v
 }
 
@@ -95,7 +94,6 @@ func (o *UpdateCustomDBRole) HasInheritedRoles() bool {
 
 // SetInheritedRoles gets a reference to the given []DatabaseInheritedRole and assigns it to the InheritedRoles field.
 func (o *UpdateCustomDBRole) SetInheritedRoles(v []DatabaseInheritedRole) {
-
 	o.InheritedRoles = &v
 }
 

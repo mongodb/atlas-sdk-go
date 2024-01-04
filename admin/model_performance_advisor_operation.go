@@ -60,7 +60,6 @@ func (o *PerformanceAdvisorOperation) HasPredicates() bool {
 
 // SetPredicates gets a reference to the given []map[string]interface{} and assigns it to the Predicates field.
 func (o *PerformanceAdvisorOperation) SetPredicates(v []map[string]interface{}) {
-
 	o.Predicates = &v
 }
 
@@ -94,7 +93,6 @@ func (o *PerformanceAdvisorOperation) HasStats() bool {
 
 // SetStats gets a reference to the given PerformanceAdvisorOpStats and assigns it to the Stats field.
 func (o *PerformanceAdvisorOperation) SetStats(v PerformanceAdvisorOpStats) {
-
 	o.Stats = &v
 }
 

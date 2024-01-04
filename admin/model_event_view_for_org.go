@@ -103,7 +103,6 @@ func (o *EventViewForOrg) HasApiKeyId() bool {
 
 // SetApiKeyId gets a reference to the given string and assigns it to the ApiKeyId field.
 func (o *EventViewForOrg) SetApiKeyId(v string) {
-
 	o.ApiKeyId = &v
 }
 
@@ -137,7 +136,6 @@ func (o *EventViewForOrg) HasCreated() bool {
 
 // SetCreated gets a reference to the given time.Time and assigns it to the Created field.
 func (o *EventViewForOrg) SetCreated(v time.Time) {
-
 	o.Created = &v
 }
 
@@ -171,7 +169,6 @@ func (o *EventViewForOrg) HasEventTypeName() bool {
 
 // SetEventTypeName gets a reference to the given string and assigns it to the EventTypeName field.
 func (o *EventViewForOrg) SetEventTypeName(v string) {
-
 	o.EventTypeName = &v
 }
 
@@ -205,7 +202,6 @@ func (o *EventViewForOrg) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *EventViewForOrg) SetGroupId(v string) {
-
 	o.GroupId = &v
 }
 
@@ -239,7 +235,6 @@ func (o *EventViewForOrg) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *EventViewForOrg) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -273,7 +268,6 @@ func (o *EventViewForOrg) HasIsGlobalAdmin() bool {
 
 // SetIsGlobalAdmin gets a reference to the given bool and assigns it to the IsGlobalAdmin field.
 func (o *EventViewForOrg) SetIsGlobalAdmin(v bool) {
-
 	o.IsGlobalAdmin = &v
 }
 
@@ -307,7 +301,6 @@ func (o *EventViewForOrg) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *EventViewForOrg) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -341,7 +334,6 @@ func (o *EventViewForOrg) HasOrgId() bool {
 
 // SetOrgId gets a reference to the given string and assigns it to the OrgId field.
 func (o *EventViewForOrg) SetOrgId(v string) {
-
 	o.OrgId = &v
 }
 
@@ -375,7 +367,6 @@ func (o *EventViewForOrg) HasPublicKey() bool {
 
 // SetPublicKey gets a reference to the given string and assigns it to the PublicKey field.
 func (o *EventViewForOrg) SetPublicKey(v string) {
-
 	o.PublicKey = &v
 }
 
@@ -409,7 +400,6 @@ func (o *EventViewForOrg) HasRaw() bool {
 
 // SetRaw gets a reference to the given Raw and assigns it to the Raw field.
 func (o *EventViewForOrg) SetRaw(v Raw) {
-
 	o.Raw = &v
 }
 
@@ -443,7 +433,6 @@ func (o *EventViewForOrg) HasRemoteAddress() bool {
 
 // SetRemoteAddress gets a reference to the given string and assigns it to the RemoteAddress field.
 func (o *EventViewForOrg) SetRemoteAddress(v string) {
-
 	o.RemoteAddress = &v
 }
 
@@ -477,7 +466,6 @@ func (o *EventViewForOrg) HasUserId() bool {
 
 // SetUserId gets a reference to the given string and assigns it to the UserId field.
 func (o *EventViewForOrg) SetUserId(v string) {
-
 	o.UserId = &v
 }
 
@@ -511,7 +499,6 @@ func (o *EventViewForOrg) HasUsername() bool {
 
 // SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *EventViewForOrg) SetUsername(v string) {
-
 	o.Username = &v
 }
 
@@ -545,7 +532,6 @@ func (o *EventViewForOrg) HasAlertId() bool {
 
 // SetAlertId gets a reference to the given string and assigns it to the AlertId field.
 func (o *EventViewForOrg) SetAlertId(v string) {
-
 	o.AlertId = &v
 }
 
@@ -579,7 +565,6 @@ func (o *EventViewForOrg) HasAlertConfigId() bool {
 
 // SetAlertConfigId gets a reference to the given string and assigns it to the AlertConfigId field.
 func (o *EventViewForOrg) SetAlertConfigId(v string) {
-
 	o.AlertConfigId = &v
 }
 
@@ -613,7 +598,6 @@ func (o *EventViewForOrg) HasInvoiceId() bool {
 
 // SetInvoiceId gets a reference to the given string and assigns it to the InvoiceId field.
 func (o *EventViewForOrg) SetInvoiceId(v string) {
-
 	o.InvoiceId = &v
 }
 
@@ -647,7 +631,6 @@ func (o *EventViewForOrg) HasPaymentId() bool {
 
 // SetPaymentId gets a reference to the given string and assigns it to the PaymentId field.
 func (o *EventViewForOrg) SetPaymentId(v string) {
-
 	o.PaymentId = &v
 }
 
@@ -681,7 +664,6 @@ func (o *EventViewForOrg) HasDbUserUsername() bool {
 
 // SetDbUserUsername gets a reference to the given string and assigns it to the DbUserUsername field.
 func (o *EventViewForOrg) SetDbUserUsername(v string) {
-
 	o.DbUserUsername = &v
 }
 
@@ -715,7 +697,6 @@ func (o *EventViewForOrg) HasWhitelistEntry() bool {
 
 // SetWhitelistEntry gets a reference to the given string and assigns it to the WhitelistEntry field.
 func (o *EventViewForOrg) SetWhitelistEntry(v string) {
-
 	o.WhitelistEntry = &v
 }
 
@@ -749,7 +730,6 @@ func (o *EventViewForOrg) HasTeamId() bool {
 
 // SetTeamId gets a reference to the given string and assigns it to the TeamId field.
 func (o *EventViewForOrg) SetTeamId(v string) {
-
 	o.TeamId = &v
 }
 
@@ -783,7 +763,6 @@ func (o *EventViewForOrg) HasTargetUsername() bool {
 
 // SetTargetUsername gets a reference to the given string and assigns it to the TargetUsername field.
 func (o *EventViewForOrg) SetTargetUsername(v string) {
-
 	o.TargetUsername = &v
 }
 
@@ -817,7 +796,6 @@ func (o *EventViewForOrg) HasResourceId() bool {
 
 // SetResourceId gets a reference to the given string and assigns it to the ResourceId field.
 func (o *EventViewForOrg) SetResourceId(v string) {
-
 	o.ResourceId = &v
 }
 
@@ -851,7 +829,6 @@ func (o *EventViewForOrg) HasResourceType() bool {
 
 // SetResourceType gets a reference to the given string and assigns it to the ResourceType field.
 func (o *EventViewForOrg) SetResourceType(v string) {
-
 	o.ResourceType = &v
 }
 

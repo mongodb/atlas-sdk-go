@@ -85,7 +85,6 @@ func (o *BackupOnlineArchive) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *BackupOnlineArchive) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -119,7 +118,6 @@ func (o *BackupOnlineArchive) HasClusterName() bool {
 
 // SetClusterName gets a reference to the given string and assigns it to the ClusterName field.
 func (o *BackupOnlineArchive) SetClusterName(v string) {
-
 	o.ClusterName = &v
 }
 
@@ -153,7 +151,6 @@ func (o *BackupOnlineArchive) HasCollName() bool {
 
 // SetCollName gets a reference to the given string and assigns it to the CollName field.
 func (o *BackupOnlineArchive) SetCollName(v string) {
-
 	o.CollName = &v
 }
 
@@ -187,7 +184,6 @@ func (o *BackupOnlineArchive) HasCollectionType() bool {
 
 // SetCollectionType gets a reference to the given string and assigns it to the CollectionType field.
 func (o *BackupOnlineArchive) SetCollectionType(v string) {
-
 	o.CollectionType = &v
 }
 
@@ -221,7 +217,6 @@ func (o *BackupOnlineArchive) HasCriteria() bool {
 
 // SetCriteria gets a reference to the given Criteria and assigns it to the Criteria field.
 func (o *BackupOnlineArchive) SetCriteria(v Criteria) {
-
 	o.Criteria = &v
 }
 
@@ -255,7 +250,6 @@ func (o *BackupOnlineArchive) HasDataExpirationRule() bool {
 
 // SetDataExpirationRule gets a reference to the given DataExpirationRule and assigns it to the DataExpirationRule field.
 func (o *BackupOnlineArchive) SetDataExpirationRule(v DataExpirationRule) {
-
 	o.DataExpirationRule = &v
 }
 
@@ -289,7 +283,6 @@ func (o *BackupOnlineArchive) HasDataProcessRegion() bool {
 
 // SetDataProcessRegion gets a reference to the given DataProcessRegion and assigns it to the DataProcessRegion field.
 func (o *BackupOnlineArchive) SetDataProcessRegion(v DataProcessRegion) {
-
 	o.DataProcessRegion = &v
 }
 
@@ -323,7 +316,6 @@ func (o *BackupOnlineArchive) HasDataSetName() bool {
 
 // SetDataSetName gets a reference to the given string and assigns it to the DataSetName field.
 func (o *BackupOnlineArchive) SetDataSetName(v string) {
-
 	o.DataSetName = &v
 }
 
@@ -357,7 +349,6 @@ func (o *BackupOnlineArchive) HasDbName() bool {
 
 // SetDbName gets a reference to the given string and assigns it to the DbName field.
 func (o *BackupOnlineArchive) SetDbName(v string) {
-
 	o.DbName = &v
 }
 
@@ -391,7 +382,6 @@ func (o *BackupOnlineArchive) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *BackupOnlineArchive) SetGroupId(v string) {
-
 	o.GroupId = &v
 }
 
@@ -425,7 +415,6 @@ func (o *BackupOnlineArchive) HasPartitionFields() bool {
 
 // SetPartitionFields gets a reference to the given []PartitionField and assigns it to the PartitionFields field.
 func (o *BackupOnlineArchive) SetPartitionFields(v []PartitionField) {
-
 	o.PartitionFields = &v
 }
 
@@ -459,7 +448,6 @@ func (o *BackupOnlineArchive) HasPaused() bool {
 
 // SetPaused gets a reference to the given bool and assigns it to the Paused field.
 func (o *BackupOnlineArchive) SetPaused(v bool) {
-
 	o.Paused = &v
 }
 
@@ -493,7 +481,6 @@ func (o *BackupOnlineArchive) HasSchedule() bool {
 
 // SetSchedule gets a reference to the given OnlineArchiveSchedule and assigns it to the Schedule field.
 func (o *BackupOnlineArchive) SetSchedule(v OnlineArchiveSchedule) {
-
 	o.Schedule = &v
 }
 
@@ -527,7 +514,6 @@ func (o *BackupOnlineArchive) HasState() bool {
 
 // SetState gets a reference to the given string and assigns it to the State field.
 func (o *BackupOnlineArchive) SetState(v string) {
-
 	o.State = &v
 }
 

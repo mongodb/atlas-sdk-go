@@ -72,7 +72,6 @@ func (o *UserAccessList) HasCidrBlock() bool {
 
 // SetCidrBlock gets a reference to the given string and assigns it to the CidrBlock field.
 func (o *UserAccessList) SetCidrBlock(v string) {
-
 	o.CidrBlock = &v
 }
 
@@ -106,7 +105,6 @@ func (o *UserAccessList) HasCount() bool {
 
 // SetCount gets a reference to the given int and assigns it to the Count field.
 func (o *UserAccessList) SetCount(v int) {
-
 	o.Count = &v
 }
 
@@ -140,7 +138,6 @@ func (o *UserAccessList) HasCreated() bool {
 
 // SetCreated gets a reference to the given time.Time and assigns it to the Created field.
 func (o *UserAccessList) SetCreated(v time.Time) {
-
 	o.Created = &v
 }
 
@@ -174,7 +171,6 @@ func (o *UserAccessList) HasIpAddress() bool {
 
 // SetIpAddress gets a reference to the given string and assigns it to the IpAddress field.
 func (o *UserAccessList) SetIpAddress(v string) {
-
 	o.IpAddress = &v
 }
 
@@ -208,7 +204,6 @@ func (o *UserAccessList) HasLastUsed() bool {
 
 // SetLastUsed gets a reference to the given time.Time and assigns it to the LastUsed field.
 func (o *UserAccessList) SetLastUsed(v time.Time) {
-
 	o.LastUsed = &v
 }
 
@@ -242,7 +237,6 @@ func (o *UserAccessList) HasLastUsedAddress() bool {
 
 // SetLastUsedAddress gets a reference to the given string and assigns it to the LastUsedAddress field.
 func (o *UserAccessList) SetLastUsedAddress(v string) {
-
 	o.LastUsedAddress = &v
 }
 
@@ -276,7 +270,6 @@ func (o *UserAccessList) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *UserAccessList) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 

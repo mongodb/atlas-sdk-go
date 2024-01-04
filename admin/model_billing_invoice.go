@@ -96,7 +96,6 @@ func (o *BillingInvoice) HasAmountBilledCents() bool {
 
 // SetAmountBilledCents gets a reference to the given int64 and assigns it to the AmountBilledCents field.
 func (o *BillingInvoice) SetAmountBilledCents(v int64) {
-
 	o.AmountBilledCents = &v
 }
 
@@ -130,7 +129,6 @@ func (o *BillingInvoice) HasAmountPaidCents() bool {
 
 // SetAmountPaidCents gets a reference to the given int64 and assigns it to the AmountPaidCents field.
 func (o *BillingInvoice) SetAmountPaidCents(v int64) {
-
 	o.AmountPaidCents = &v
 }
 
@@ -164,7 +162,6 @@ func (o *BillingInvoice) HasCreated() bool {
 
 // SetCreated gets a reference to the given time.Time and assigns it to the Created field.
 func (o *BillingInvoice) SetCreated(v time.Time) {
-
 	o.Created = &v
 }
 
@@ -198,7 +195,6 @@ func (o *BillingInvoice) HasCreditsCents() bool {
 
 // SetCreditsCents gets a reference to the given int64 and assigns it to the CreditsCents field.
 func (o *BillingInvoice) SetCreditsCents(v int64) {
-
 	o.CreditsCents = &v
 }
 
@@ -232,7 +228,6 @@ func (o *BillingInvoice) HasEndDate() bool {
 
 // SetEndDate gets a reference to the given time.Time and assigns it to the EndDate field.
 func (o *BillingInvoice) SetEndDate(v time.Time) {
-
 	o.EndDate = &v
 }
 
@@ -266,7 +261,6 @@ func (o *BillingInvoice) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *BillingInvoice) SetGroupId(v string) {
-
 	o.GroupId = &v
 }
 
@@ -300,7 +294,6 @@ func (o *BillingInvoice) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *BillingInvoice) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -334,7 +327,6 @@ func (o *BillingInvoice) HasLineItems() bool {
 
 // SetLineItems gets a reference to the given []InvoiceLineItem and assigns it to the LineItems field.
 func (o *BillingInvoice) SetLineItems(v []InvoiceLineItem) {
-
 	o.LineItems = &v
 }
 
@@ -368,7 +360,6 @@ func (o *BillingInvoice) HasLinkedInvoices() bool {
 
 // SetLinkedInvoices gets a reference to the given []BillingInvoice and assigns it to the LinkedInvoices field.
 func (o *BillingInvoice) SetLinkedInvoices(v []BillingInvoice) {
-
 	o.LinkedInvoices = &v
 }
 
@@ -402,7 +393,6 @@ func (o *BillingInvoice) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *BillingInvoice) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -436,7 +426,6 @@ func (o *BillingInvoice) HasOrgId() bool {
 
 // SetOrgId gets a reference to the given string and assigns it to the OrgId field.
 func (o *BillingInvoice) SetOrgId(v string) {
-
 	o.OrgId = &v
 }
 
@@ -470,7 +459,6 @@ func (o *BillingInvoice) HasPayments() bool {
 
 // SetPayments gets a reference to the given []BillingPayment and assigns it to the Payments field.
 func (o *BillingInvoice) SetPayments(v []BillingPayment) {
-
 	o.Payments = &v
 }
 
@@ -504,7 +492,6 @@ func (o *BillingInvoice) HasRefunds() bool {
 
 // SetRefunds gets a reference to the given []BillingRefund and assigns it to the Refunds field.
 func (o *BillingInvoice) SetRefunds(v []BillingRefund) {
-
 	o.Refunds = &v
 }
 
@@ -538,7 +525,6 @@ func (o *BillingInvoice) HasSalesTaxCents() bool {
 
 // SetSalesTaxCents gets a reference to the given int64 and assigns it to the SalesTaxCents field.
 func (o *BillingInvoice) SetSalesTaxCents(v int64) {
-
 	o.SalesTaxCents = &v
 }
 
@@ -572,7 +558,6 @@ func (o *BillingInvoice) HasStartDate() bool {
 
 // SetStartDate gets a reference to the given time.Time and assigns it to the StartDate field.
 func (o *BillingInvoice) SetStartDate(v time.Time) {
-
 	o.StartDate = &v
 }
 
@@ -606,7 +591,6 @@ func (o *BillingInvoice) HasStartingBalanceCents() bool {
 
 // SetStartingBalanceCents gets a reference to the given int64 and assigns it to the StartingBalanceCents field.
 func (o *BillingInvoice) SetStartingBalanceCents(v int64) {
-
 	o.StartingBalanceCents = &v
 }
 
@@ -640,7 +624,6 @@ func (o *BillingInvoice) HasStatusName() bool {
 
 // SetStatusName gets a reference to the given string and assigns it to the StatusName field.
 func (o *BillingInvoice) SetStatusName(v string) {
-
 	o.StatusName = &v
 }
 
@@ -674,7 +657,6 @@ func (o *BillingInvoice) HasSubtotalCents() bool {
 
 // SetSubtotalCents gets a reference to the given int64 and assigns it to the SubtotalCents field.
 func (o *BillingInvoice) SetSubtotalCents(v int64) {
-
 	o.SubtotalCents = &v
 }
 
@@ -708,7 +690,6 @@ func (o *BillingInvoice) HasUpdated() bool {
 
 // SetUpdated gets a reference to the given time.Time and assigns it to the Updated field.
 func (o *BillingInvoice) SetUpdated(v time.Time) {
-
 	o.Updated = &v
 }
 

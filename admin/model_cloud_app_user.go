@@ -115,7 +115,6 @@ func (o *CloudAppUser) HasCreatedAt() bool {
 
 // SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
 func (o *CloudAppUser) SetCreatedAt(v time.Time) {
-
 	o.CreatedAt = &v
 }
 
@@ -197,7 +196,6 @@ func (o *CloudAppUser) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *CloudAppUser) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -231,7 +229,6 @@ func (o *CloudAppUser) HasLastAuth() bool {
 
 // SetLastAuth gets a reference to the given time.Time and assigns it to the LastAuth field.
 func (o *CloudAppUser) SetLastAuth(v time.Time) {
-
 	o.LastAuth = &v
 }
 
@@ -289,7 +286,6 @@ func (o *CloudAppUser) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *CloudAppUser) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -371,7 +367,6 @@ func (o *CloudAppUser) HasRoles() bool {
 
 // SetRoles gets a reference to the given []CloudAccessRoleAssignment and assigns it to the Roles field.
 func (o *CloudAppUser) SetRoles(v []CloudAccessRoleAssignment) {
-
 	o.Roles = &v
 }
 
@@ -405,7 +400,6 @@ func (o *CloudAppUser) HasTeamIds() bool {
 
 // SetTeamIds gets a reference to the given []string and assigns it to the TeamIds field.
 func (o *CloudAppUser) SetTeamIds(v []string) {
-
 	o.TeamIds = &v
 }
 

@@ -59,7 +59,6 @@ func (o *DataExpirationRule) HasExpireAfterDays() bool {
 
 // SetExpireAfterDays gets a reference to the given int and assigns it to the ExpireAfterDays field.
 func (o *DataExpirationRule) SetExpireAfterDays(v int) {
-
 	o.ExpireAfterDays = &v
 }
 

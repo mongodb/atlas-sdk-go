@@ -69,7 +69,6 @@ func (o *LegacyReplicationSpec) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *LegacyReplicationSpec) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -103,7 +102,6 @@ func (o *LegacyReplicationSpec) HasNumShards() bool {
 
 // SetNumShards gets a reference to the given int and assigns it to the NumShards field.
 func (o *LegacyReplicationSpec) SetNumShards(v int) {
-
 	o.NumShards = &v
 }
 
@@ -137,7 +135,6 @@ func (o *LegacyReplicationSpec) HasRegionsConfig() bool {
 
 // SetRegionsConfig gets a reference to the given map[string]RegionSpec and assigns it to the RegionsConfig field.
 func (o *LegacyReplicationSpec) SetRegionsConfig(v map[string]RegionSpec) {
-
 	o.RegionsConfig = &v
 }
 
@@ -171,7 +168,6 @@ func (o *LegacyReplicationSpec) HasZoneName() bool {
 
 // SetZoneName gets a reference to the given string and assigns it to the ZoneName field.
 func (o *LegacyReplicationSpec) SetZoneName(v string) {
-
 	o.ZoneName = &v
 }
 

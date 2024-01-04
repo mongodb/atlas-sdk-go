@@ -63,7 +63,6 @@ func (o *DataLakeAtlasStoreReadPreference) HasMaxStalenessSeconds() bool {
 
 // SetMaxStalenessSeconds gets a reference to the given int and assigns it to the MaxStalenessSeconds field.
 func (o *DataLakeAtlasStoreReadPreference) SetMaxStalenessSeconds(v int) {
-
 	o.MaxStalenessSeconds = &v
 }
 
@@ -97,7 +96,6 @@ func (o *DataLakeAtlasStoreReadPreference) HasMode() bool {
 
 // SetMode gets a reference to the given string and assigns it to the Mode field.
 func (o *DataLakeAtlasStoreReadPreference) SetMode(v string) {
-
 	o.Mode = &v
 }
 
@@ -131,7 +129,6 @@ func (o *DataLakeAtlasStoreReadPreference) HasTagSets() bool {
 
 // SetTagSets gets a reference to the given [][]DataLakeAtlasStoreReadPreferenceTag and assigns it to the TagSets field.
 func (o *DataLakeAtlasStoreReadPreference) SetTagSets(v [][]DataLakeAtlasStoreReadPreferenceTag) {
-
 	o.TagSets = &v
 }
 

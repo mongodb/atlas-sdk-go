@@ -167,7 +167,6 @@ func (o *FederatedUser) HasUserId() bool {
 
 // SetUserId gets a reference to the given string and assigns it to the UserId field.
 func (o *FederatedUser) SetUserId(v string) {
-
 	o.UserId = &v
 }
 

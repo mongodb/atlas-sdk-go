@@ -61,7 +61,6 @@ func (o *UserSecurity) HasCustomerX509() bool {
 
 // SetCustomerX509 gets a reference to the given DBUserTLSX509Settings and assigns it to the CustomerX509 field.
 func (o *UserSecurity) SetCustomerX509(v DBUserTLSX509Settings) {
-
 	o.CustomerX509 = &v
 }
 
@@ -95,7 +94,6 @@ func (o *UserSecurity) HasLdap() bool {
 
 // SetLdap gets a reference to the given LDAPSecuritySettings and assigns it to the Ldap field.
 func (o *UserSecurity) SetLdap(v LDAPSecuritySettings) {
-
 	o.Ldap = &v
 }
 
@@ -129,7 +127,6 @@ func (o *UserSecurity) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *UserSecurity) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 

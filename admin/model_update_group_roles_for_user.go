@@ -61,7 +61,6 @@ func (o *UpdateGroupRolesForUser) HasGroupRoles() bool {
 
 // SetGroupRoles gets a reference to the given []string and assigns it to the GroupRoles field.
 func (o *UpdateGroupRolesForUser) SetGroupRoles(v []string) {
-
 	o.GroupRoles = &v
 }
 
@@ -95,7 +94,6 @@ func (o *UpdateGroupRolesForUser) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *UpdateGroupRolesForUser) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 

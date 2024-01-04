@@ -75,7 +75,6 @@ func (o *ServerlessTenantEndpoint) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ServerlessTenantEndpoint) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -109,7 +108,6 @@ func (o *ServerlessTenantEndpoint) HasCloudProviderEndpointId() bool {
 
 // SetCloudProviderEndpointId gets a reference to the given string and assigns it to the CloudProviderEndpointId field.
 func (o *ServerlessTenantEndpoint) SetCloudProviderEndpointId(v string) {
-
 	o.CloudProviderEndpointId = &v
 }
 
@@ -143,7 +141,6 @@ func (o *ServerlessTenantEndpoint) HasComment() bool {
 
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *ServerlessTenantEndpoint) SetComment(v string) {
-
 	o.Comment = &v
 }
 
@@ -177,7 +174,6 @@ func (o *ServerlessTenantEndpoint) HasEndpointServiceName() bool {
 
 // SetEndpointServiceName gets a reference to the given string and assigns it to the EndpointServiceName field.
 func (o *ServerlessTenantEndpoint) SetEndpointServiceName(v string) {
-
 	o.EndpointServiceName = &v
 }
 
@@ -211,7 +207,6 @@ func (o *ServerlessTenantEndpoint) HasErrorMessage() bool {
 
 // SetErrorMessage gets a reference to the given string and assigns it to the ErrorMessage field.
 func (o *ServerlessTenantEndpoint) SetErrorMessage(v string) {
-
 	o.ErrorMessage = &v
 }
 
@@ -245,7 +240,6 @@ func (o *ServerlessTenantEndpoint) HasStatus() bool {
 
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *ServerlessTenantEndpoint) SetStatus(v string) {
-
 	o.Status = &v
 }
 
@@ -279,7 +273,6 @@ func (o *ServerlessTenantEndpoint) HasProviderName() bool {
 
 // SetProviderName gets a reference to the given string and assigns it to the ProviderName field.
 func (o *ServerlessTenantEndpoint) SetProviderName(v string) {
-
 	o.ProviderName = &v
 }
 
@@ -313,7 +306,6 @@ func (o *ServerlessTenantEndpoint) HasPrivateEndpointIpAddress() bool {
 
 // SetPrivateEndpointIpAddress gets a reference to the given string and assigns it to the PrivateEndpointIpAddress field.
 func (o *ServerlessTenantEndpoint) SetPrivateEndpointIpAddress(v string) {
-
 	o.PrivateEndpointIpAddress = &v
 }
 
@@ -347,7 +339,6 @@ func (o *ServerlessTenantEndpoint) HasPrivateLinkServiceResourceId() bool {
 
 // SetPrivateLinkServiceResourceId gets a reference to the given string and assigns it to the PrivateLinkServiceResourceId field.
 func (o *ServerlessTenantEndpoint) SetPrivateLinkServiceResourceId(v string) {
-
 	o.PrivateLinkServiceResourceId = &v
 }
 

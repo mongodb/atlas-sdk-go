@@ -61,7 +61,6 @@ func (o *GroupInvitationRequest) HasRoles() bool {
 
 // SetRoles gets a reference to the given []string and assigns it to the Roles field.
 func (o *GroupInvitationRequest) SetRoles(v []string) {
-
 	o.Roles = &v
 }
 
@@ -95,7 +94,6 @@ func (o *GroupInvitationRequest) HasUsername() bool {
 
 // SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *GroupInvitationRequest) SetUsername(v string) {
-
 	o.Username = &v
 }
 

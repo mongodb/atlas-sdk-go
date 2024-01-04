@@ -59,7 +59,6 @@ func (o *ApiSearchDeploymentRequest) HasSpecs() bool {
 
 // SetSpecs gets a reference to the given []ApiSearchDeploymentSpec and assigns it to the Specs field.
 func (o *ApiSearchDeploymentRequest) SetSpecs(v []ApiSearchDeploymentSpec) {
-
 	o.Specs = &v
 }
 

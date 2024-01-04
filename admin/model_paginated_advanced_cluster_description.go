@@ -63,7 +63,6 @@ func (o *PaginatedAdvancedClusterDescription) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PaginatedAdvancedClusterDescription) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -97,7 +96,6 @@ func (o *PaginatedAdvancedClusterDescription) HasResults() bool {
 
 // SetResults gets a reference to the given []AdvancedClusterDescription and assigns it to the Results field.
 func (o *PaginatedAdvancedClusterDescription) SetResults(v []AdvancedClusterDescription) {
-
 	o.Results = &v
 }
 
@@ -131,7 +129,6 @@ func (o *PaginatedAdvancedClusterDescription) HasTotalCount() bool {
 
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
 func (o *PaginatedAdvancedClusterDescription) SetTotalCount(v int) {
-
 	o.TotalCount = &v
 }
 

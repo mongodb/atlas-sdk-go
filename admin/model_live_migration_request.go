@@ -68,7 +68,6 @@ func (o *LiveMigrationRequest) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *LiveMigrationRequest) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -150,7 +149,6 @@ func (o *LiveMigrationRequest) HasMigrationHosts() bool {
 
 // SetMigrationHosts gets a reference to the given []string and assigns it to the MigrationHosts field.
 func (o *LiveMigrationRequest) SetMigrationHosts(v []string) {
-
 	o.MigrationHosts = &v
 }
 

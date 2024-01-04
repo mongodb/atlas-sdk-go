@@ -63,7 +63,6 @@ func (o *MetricsMeasurement) HasDataPoints() bool {
 
 // SetDataPoints gets a reference to the given []MetricDataPoint and assigns it to the DataPoints field.
 func (o *MetricsMeasurement) SetDataPoints(v []MetricDataPoint) {
-
 	o.DataPoints = &v
 }
 
@@ -97,7 +96,6 @@ func (o *MetricsMeasurement) HasName() bool {
 
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *MetricsMeasurement) SetName(v string) {
-
 	o.Name = &v
 }
 
@@ -131,7 +129,6 @@ func (o *MetricsMeasurement) HasUnits() bool {
 
 // SetUnits gets a reference to the given string and assigns it to the Units field.
 func (o *MetricsMeasurement) SetUnits(v string) {
-
 	o.Units = &v
 }
 

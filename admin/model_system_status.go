@@ -142,7 +142,6 @@ func (o *SystemStatus) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *SystemStatus) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 

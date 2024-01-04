@@ -59,7 +59,6 @@ func (o *MongoDBAccessLogsList) HasAccessLogs() bool {
 
 // SetAccessLogs gets a reference to the given []MongoDBAccessLogs and assigns it to the AccessLogs field.
 func (o *MongoDBAccessLogsList) SetAccessLogs(v []MongoDBAccessLogs) {
-
 	o.AccessLogs = &v
 }
 

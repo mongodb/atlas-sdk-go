@@ -59,7 +59,6 @@ func (o *AlertsToggle) HasEnabled() bool {
 
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *AlertsToggle) SetEnabled(v bool) {
-
 	o.Enabled = &v
 }
 

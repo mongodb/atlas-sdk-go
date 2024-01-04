@@ -81,7 +81,6 @@ func (o *LDAPVerifyConnectivityJobRequestParams) HasAuthzQueryTemplate() bool {
 
 // SetAuthzQueryTemplate gets a reference to the given string and assigns it to the AuthzQueryTemplate field.
 func (o *LDAPVerifyConnectivityJobRequestParams) SetAuthzQueryTemplate(v string) {
-
 	o.AuthzQueryTemplate = &v
 }
 
@@ -163,7 +162,6 @@ func (o *LDAPVerifyConnectivityJobRequestParams) HasCaCertificate() bool {
 
 // SetCaCertificate gets a reference to the given string and assigns it to the CaCertificate field.
 func (o *LDAPVerifyConnectivityJobRequestParams) SetCaCertificate(v string) {
-
 	o.CaCertificate = &v
 }
 
@@ -221,7 +219,6 @@ func (o *LDAPVerifyConnectivityJobRequestParams) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *LDAPVerifyConnectivityJobRequestParams) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 

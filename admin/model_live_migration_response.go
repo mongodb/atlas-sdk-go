@@ -67,7 +67,6 @@ func (o *LiveMigrationResponse) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *LiveMigrationResponse) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -101,7 +100,6 @@ func (o *LiveMigrationResponse) HasLagTimeSeconds() bool {
 
 // SetLagTimeSeconds gets a reference to the given int64 and assigns it to the LagTimeSeconds field.
 func (o *LiveMigrationResponse) SetLagTimeSeconds(v int64) {
-
 	o.LagTimeSeconds = &v
 }
 
@@ -135,7 +133,6 @@ func (o *LiveMigrationResponse) HasMigrationHosts() bool {
 
 // SetMigrationHosts gets a reference to the given []string and assigns it to the MigrationHosts field.
 func (o *LiveMigrationResponse) SetMigrationHosts(v []string) {
-
 	o.MigrationHosts = &v
 }
 
@@ -169,7 +166,6 @@ func (o *LiveMigrationResponse) HasReadyForCutover() bool {
 
 // SetReadyForCutover gets a reference to the given bool and assigns it to the ReadyForCutover field.
 func (o *LiveMigrationResponse) SetReadyForCutover(v bool) {
-
 	o.ReadyForCutover = &v
 }
 
@@ -203,7 +199,6 @@ func (o *LiveMigrationResponse) HasStatus() bool {
 
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *LiveMigrationResponse) SetStatus(v string) {
-
 	o.Status = &v
 }
 

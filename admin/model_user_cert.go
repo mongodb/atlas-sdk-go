@@ -76,7 +76,6 @@ func (o *UserCert) HasId() bool {
 
 // SetId gets a reference to the given int64 and assigns it to the Id field.
 func (o *UserCert) SetId(v int64) {
-
 	o.Id = &v
 }
 
@@ -110,7 +109,6 @@ func (o *UserCert) HasCreatedAt() bool {
 
 // SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
 func (o *UserCert) SetCreatedAt(v time.Time) {
-
 	o.CreatedAt = &v
 }
 
@@ -144,7 +142,6 @@ func (o *UserCert) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *UserCert) SetGroupId(v string) {
-
 	o.GroupId = &v
 }
 
@@ -178,7 +175,6 @@ func (o *UserCert) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *UserCert) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -212,7 +208,6 @@ func (o *UserCert) HasMonthsUntilExpiration() bool {
 
 // SetMonthsUntilExpiration gets a reference to the given int and assigns it to the MonthsUntilExpiration field.
 func (o *UserCert) SetMonthsUntilExpiration(v int) {
-
 	o.MonthsUntilExpiration = &v
 }
 
@@ -246,7 +241,6 @@ func (o *UserCert) HasNotAfter() bool {
 
 // SetNotAfter gets a reference to the given time.Time and assigns it to the NotAfter field.
 func (o *UserCert) SetNotAfter(v time.Time) {
-
 	o.NotAfter = &v
 }
 
@@ -280,7 +274,6 @@ func (o *UserCert) HasSubject() bool {
 
 // SetSubject gets a reference to the given string and assigns it to the Subject field.
 func (o *UserCert) SetSubject(v string) {
-
 	o.Subject = &v
 }
 

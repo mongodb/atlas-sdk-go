@@ -119,7 +119,6 @@ func (o *BackupComplianceOnDemandPolicyItem) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *BackupComplianceOnDemandPolicyItem) SetId(v string) {
-
 	o.Id = &v
 }
 

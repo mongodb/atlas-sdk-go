@@ -69,7 +69,6 @@ func (o *ApiKeyUserDetails) HasDesc() bool {
 
 // SetDesc gets a reference to the given string and assigns it to the Desc field.
 func (o *ApiKeyUserDetails) SetDesc(v string) {
-
 	o.Desc = &v
 }
 
@@ -103,7 +102,6 @@ func (o *ApiKeyUserDetails) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ApiKeyUserDetails) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -137,7 +135,6 @@ func (o *ApiKeyUserDetails) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *ApiKeyUserDetails) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -171,7 +168,6 @@ func (o *ApiKeyUserDetails) HasPrivateKey() bool {
 
 // SetPrivateKey gets a reference to the given string and assigns it to the PrivateKey field.
 func (o *ApiKeyUserDetails) SetPrivateKey(v string) {
-
 	o.PrivateKey = &v
 }
 
@@ -205,7 +201,6 @@ func (o *ApiKeyUserDetails) HasPublicKey() bool {
 
 // SetPublicKey gets a reference to the given string and assigns it to the PublicKey field.
 func (o *ApiKeyUserDetails) SetPublicKey(v string) {
-
 	o.PublicKey = &v
 }
 
@@ -239,7 +234,6 @@ func (o *ApiKeyUserDetails) HasRoles() bool {
 
 // SetRoles gets a reference to the given []CloudAccessRoleAssignment and assigns it to the Roles field.
 func (o *ApiKeyUserDetails) SetRoles(v []CloudAccessRoleAssignment) {
-
 	o.Roles = &v
 }
 

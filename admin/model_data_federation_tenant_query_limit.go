@@ -76,7 +76,6 @@ func (o *DataFederationTenantQueryLimit) HasCurrentUsage() bool {
 
 // SetCurrentUsage gets a reference to the given int64 and assigns it to the CurrentUsage field.
 func (o *DataFederationTenantQueryLimit) SetCurrentUsage(v int64) {
-
 	o.CurrentUsage = &v
 }
 
@@ -110,7 +109,6 @@ func (o *DataFederationTenantQueryLimit) HasDefaultLimit() bool {
 
 // SetDefaultLimit gets a reference to the given int64 and assigns it to the DefaultLimit field.
 func (o *DataFederationTenantQueryLimit) SetDefaultLimit(v int64) {
-
 	o.DefaultLimit = &v
 }
 
@@ -144,7 +142,6 @@ func (o *DataFederationTenantQueryLimit) HasLastModifiedDate() bool {
 
 // SetLastModifiedDate gets a reference to the given time.Time and assigns it to the LastModifiedDate field.
 func (o *DataFederationTenantQueryLimit) SetLastModifiedDate(v time.Time) {
-
 	o.LastModifiedDate = &v
 }
 
@@ -178,7 +175,6 @@ func (o *DataFederationTenantQueryLimit) HasMaximumLimit() bool {
 
 // SetMaximumLimit gets a reference to the given int64 and assigns it to the MaximumLimit field.
 func (o *DataFederationTenantQueryLimit) SetMaximumLimit(v int64) {
-
 	o.MaximumLimit = &v
 }
 
@@ -236,7 +232,6 @@ func (o *DataFederationTenantQueryLimit) HasOverrunPolicy() bool {
 
 // SetOverrunPolicy gets a reference to the given string and assigns it to the OverrunPolicy field.
 func (o *DataFederationTenantQueryLimit) SetOverrunPolicy(v string) {
-
 	o.OverrunPolicy = &v
 }
 
@@ -270,7 +265,6 @@ func (o *DataFederationTenantQueryLimit) HasTenantName() bool {
 
 // SetTenantName gets a reference to the given string and assigns it to the TenantName field.
 func (o *DataFederationTenantQueryLimit) SetTenantName(v string) {
-
 	o.TenantName = &v
 }
 

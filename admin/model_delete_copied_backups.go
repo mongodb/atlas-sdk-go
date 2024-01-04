@@ -63,7 +63,6 @@ func (o *DeleteCopiedBackups) HasCloudProvider() bool {
 
 // SetCloudProvider gets a reference to the given string and assigns it to the CloudProvider field.
 func (o *DeleteCopiedBackups) SetCloudProvider(v string) {
-
 	o.CloudProvider = &v
 }
 
@@ -97,7 +96,6 @@ func (o *DeleteCopiedBackups) HasRegionName() bool {
 
 // SetRegionName gets a reference to the given string and assigns it to the RegionName field.
 func (o *DeleteCopiedBackups) SetRegionName(v string) {
-
 	o.RegionName = &v
 }
 
@@ -131,7 +129,6 @@ func (o *DeleteCopiedBackups) HasReplicationSpecId() bool {
 
 // SetReplicationSpecId gets a reference to the given string and assigns it to the ReplicationSpecId field.
 func (o *DeleteCopiedBackups) SetReplicationSpecId(v string) {
-
 	o.ReplicationSpecId = &v
 }
 

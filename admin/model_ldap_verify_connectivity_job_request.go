@@ -68,7 +68,6 @@ func (o *LDAPVerifyConnectivityJobRequest) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *LDAPVerifyConnectivityJobRequest) SetGroupId(v string) {
-
 	o.GroupId = &v
 }
 
@@ -102,7 +101,6 @@ func (o *LDAPVerifyConnectivityJobRequest) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *LDAPVerifyConnectivityJobRequest) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -136,7 +134,6 @@ func (o *LDAPVerifyConnectivityJobRequest) HasRequest() bool {
 
 // SetRequest gets a reference to the given LDAPVerifyConnectivityJobRequestParams and assigns it to the Request field.
 func (o *LDAPVerifyConnectivityJobRequest) SetRequest(v LDAPVerifyConnectivityJobRequestParams) {
-
 	o.Request = &v
 }
 
@@ -170,7 +167,6 @@ func (o *LDAPVerifyConnectivityJobRequest) HasRequestId() bool {
 
 // SetRequestId gets a reference to the given string and assigns it to the RequestId field.
 func (o *LDAPVerifyConnectivityJobRequest) SetRequestId(v string) {
-
 	o.RequestId = &v
 }
 
@@ -204,7 +200,6 @@ func (o *LDAPVerifyConnectivityJobRequest) HasStatus() bool {
 
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *LDAPVerifyConnectivityJobRequest) SetStatus(v string) {
-
 	o.Status = &v
 }
 
@@ -238,7 +233,6 @@ func (o *LDAPVerifyConnectivityJobRequest) HasValidations() bool {
 
 // SetValidations gets a reference to the given []LDAPVerifyConnectivityJobRequestValidation and assigns it to the Validations field.
 func (o *LDAPVerifyConnectivityJobRequest) SetValidations(v []LDAPVerifyConnectivityJobRequestValidation) {
-
 	o.Validations = &v
 }
 

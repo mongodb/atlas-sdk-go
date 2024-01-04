@@ -63,7 +63,6 @@ func (o *PaginatedCloudProviderContainer) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PaginatedCloudProviderContainer) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -97,7 +96,6 @@ func (o *PaginatedCloudProviderContainer) HasResults() bool {
 
 // SetResults gets a reference to the given []CloudProviderContainer and assigns it to the Results field.
 func (o *PaginatedCloudProviderContainer) SetResults(v []CloudProviderContainer) {
-
 	o.Results = &v
 }
 
@@ -131,7 +129,6 @@ func (o *PaginatedCloudProviderContainer) HasTotalCount() bool {
 
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
 func (o *PaginatedCloudProviderContainer) SetTotalCount(v int) {
-
 	o.TotalCount = &v
 }
 

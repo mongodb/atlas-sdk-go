@@ -59,7 +59,6 @@ func (o *CustomZoneMappings) HasCustomZoneMappings() bool {
 
 // SetCustomZoneMappings gets a reference to the given []ZoneMapping and assigns it to the CustomZoneMappings field.
 func (o *CustomZoneMappings) SetCustomZoneMappings(v []ZoneMapping) {
-
 	o.CustomZoneMappings = &v
 }
 

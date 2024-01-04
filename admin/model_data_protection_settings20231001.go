@@ -170,7 +170,6 @@ func (o *DataProtectionSettings20231001) HasCopyProtectionEnabled() bool {
 
 // SetCopyProtectionEnabled gets a reference to the given bool and assigns it to the CopyProtectionEnabled field.
 func (o *DataProtectionSettings20231001) SetCopyProtectionEnabled(v bool) {
-
 	o.CopyProtectionEnabled = &v
 }
 
@@ -204,7 +203,6 @@ func (o *DataProtectionSettings20231001) HasEncryptionAtRestEnabled() bool {
 
 // SetEncryptionAtRestEnabled gets a reference to the given bool and assigns it to the EncryptionAtRestEnabled field.
 func (o *DataProtectionSettings20231001) SetEncryptionAtRestEnabled(v bool) {
-
 	o.EncryptionAtRestEnabled = &v
 }
 
@@ -238,7 +236,6 @@ func (o *DataProtectionSettings20231001) HasOnDemandPolicyItem() bool {
 
 // SetOnDemandPolicyItem gets a reference to the given BackupComplianceOnDemandPolicyItem and assigns it to the OnDemandPolicyItem field.
 func (o *DataProtectionSettings20231001) SetOnDemandPolicyItem(v BackupComplianceOnDemandPolicyItem) {
-
 	o.OnDemandPolicyItem = &v
 }
 
@@ -272,7 +269,6 @@ func (o *DataProtectionSettings20231001) HasPitEnabled() bool {
 
 // SetPitEnabled gets a reference to the given bool and assigns it to the PitEnabled field.
 func (o *DataProtectionSettings20231001) SetPitEnabled(v bool) {
-
 	o.PitEnabled = &v
 }
 
@@ -306,7 +302,6 @@ func (o *DataProtectionSettings20231001) HasProjectId() bool {
 
 // SetProjectId gets a reference to the given string and assigns it to the ProjectId field.
 func (o *DataProtectionSettings20231001) SetProjectId(v string) {
-
 	o.ProjectId = &v
 }
 
@@ -340,7 +335,6 @@ func (o *DataProtectionSettings20231001) HasRestoreWindowDays() bool {
 
 // SetRestoreWindowDays gets a reference to the given int and assigns it to the RestoreWindowDays field.
 func (o *DataProtectionSettings20231001) SetRestoreWindowDays(v int) {
-
 	o.RestoreWindowDays = &v
 }
 
@@ -374,7 +368,6 @@ func (o *DataProtectionSettings20231001) HasScheduledPolicyItems() bool {
 
 // SetScheduledPolicyItems gets a reference to the given []BackupComplianceScheduledPolicyItem and assigns it to the ScheduledPolicyItems field.
 func (o *DataProtectionSettings20231001) SetScheduledPolicyItems(v []BackupComplianceScheduledPolicyItem) {
-
 	o.ScheduledPolicyItems = &v
 }
 
@@ -408,7 +401,6 @@ func (o *DataProtectionSettings20231001) HasState() bool {
 
 // SetState gets a reference to the given string and assigns it to the State field.
 func (o *DataProtectionSettings20231001) SetState(v string) {
-
 	o.State = &v
 }
 
@@ -442,7 +434,6 @@ func (o *DataProtectionSettings20231001) HasUpdatedDate() bool {
 
 // SetUpdatedDate gets a reference to the given time.Time and assigns it to the UpdatedDate field.
 func (o *DataProtectionSettings20231001) SetUpdatedDate(v time.Time) {
-
 	o.UpdatedDate = &v
 }
 
@@ -476,7 +467,6 @@ func (o *DataProtectionSettings20231001) HasUpdatedUser() bool {
 
 // SetUpdatedUser gets a reference to the given string and assigns it to the UpdatedUser field.
 func (o *DataProtectionSettings20231001) SetUpdatedUser(v string) {
-
 	o.UpdatedUser = &v
 }
 

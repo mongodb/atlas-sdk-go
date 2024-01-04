@@ -86,7 +86,6 @@ func (o *DatabasePrivilegeAction) HasResources() bool {
 
 // SetResources gets a reference to the given []DatabasePermittedNamespaceResource and assigns it to the Resources field.
 func (o *DatabasePrivilegeAction) SetResources(v []DatabasePermittedNamespaceResource) {
-
 	o.Resources = &v
 }
 

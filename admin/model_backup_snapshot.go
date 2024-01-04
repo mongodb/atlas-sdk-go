@@ -78,7 +78,6 @@ func (o *BackupSnapshot) HasClusterId() bool {
 
 // SetClusterId gets a reference to the given string and assigns it to the ClusterId field.
 func (o *BackupSnapshot) SetClusterId(v string) {
-
 	o.ClusterId = &v
 }
 
@@ -112,7 +111,6 @@ func (o *BackupSnapshot) HasComplete() bool {
 
 // SetComplete gets a reference to the given bool and assigns it to the Complete field.
 func (o *BackupSnapshot) SetComplete(v bool) {
-
 	o.Complete = &v
 }
 
@@ -146,7 +144,6 @@ func (o *BackupSnapshot) HasCreated() bool {
 
 // SetCreated gets a reference to the given ApiBSONTimestamp and assigns it to the Created field.
 func (o *BackupSnapshot) SetCreated(v ApiBSONTimestamp) {
-
 	o.Created = &v
 }
 
@@ -180,7 +177,6 @@ func (o *BackupSnapshot) HasDoNotDelete() bool {
 
 // SetDoNotDelete gets a reference to the given bool and assigns it to the DoNotDelete field.
 func (o *BackupSnapshot) SetDoNotDelete(v bool) {
-
 	o.DoNotDelete = &v
 }
 
@@ -214,7 +210,6 @@ func (o *BackupSnapshot) HasExpires() bool {
 
 // SetExpires gets a reference to the given time.Time and assigns it to the Expires field.
 func (o *BackupSnapshot) SetExpires(v time.Time) {
-
 	o.Expires = &v
 }
 
@@ -248,7 +243,6 @@ func (o *BackupSnapshot) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *BackupSnapshot) SetGroupId(v string) {
-
 	o.GroupId = &v
 }
 
@@ -282,7 +276,6 @@ func (o *BackupSnapshot) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *BackupSnapshot) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -316,7 +309,6 @@ func (o *BackupSnapshot) HasIncremental() bool {
 
 // SetIncremental gets a reference to the given bool and assigns it to the Incremental field.
 func (o *BackupSnapshot) SetIncremental(v bool) {
-
 	o.Incremental = &v
 }
 
@@ -350,7 +342,6 @@ func (o *BackupSnapshot) HasLastOplogAppliedTimestamp() bool {
 
 // SetLastOplogAppliedTimestamp gets a reference to the given ApiBSONTimestamp and assigns it to the LastOplogAppliedTimestamp field.
 func (o *BackupSnapshot) SetLastOplogAppliedTimestamp(v ApiBSONTimestamp) {
-
 	o.LastOplogAppliedTimestamp = &v
 }
 
@@ -384,7 +375,6 @@ func (o *BackupSnapshot) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *BackupSnapshot) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -418,7 +408,6 @@ func (o *BackupSnapshot) HasParts() bool {
 
 // SetParts gets a reference to the given []BackupSnapshotPart and assigns it to the Parts field.
 func (o *BackupSnapshot) SetParts(v []BackupSnapshotPart) {
-
 	o.Parts = &v
 }
 

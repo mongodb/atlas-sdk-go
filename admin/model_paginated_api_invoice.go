@@ -63,7 +63,6 @@ func (o *PaginatedApiInvoice) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PaginatedApiInvoice) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -97,7 +96,6 @@ func (o *PaginatedApiInvoice) HasResults() bool {
 
 // SetResults gets a reference to the given []BillingInvoice and assigns it to the Results field.
 func (o *PaginatedApiInvoice) SetResults(v []BillingInvoice) {
-
 	o.Results = &v
 }
 
@@ -131,7 +129,6 @@ func (o *PaginatedApiInvoice) HasTotalCount() bool {
 
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
 func (o *PaginatedApiInvoice) SetTotalCount(v int) {
-
 	o.TotalCount = &v
 }
 

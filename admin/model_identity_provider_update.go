@@ -90,7 +90,6 @@ func (o *IdentityProviderUpdate) HasAssociatedDomains() bool {
 
 // SetAssociatedDomains gets a reference to the given []string and assigns it to the AssociatedDomains field.
 func (o *IdentityProviderUpdate) SetAssociatedDomains(v []string) {
-
 	o.AssociatedDomains = &v
 }
 
@@ -124,7 +123,6 @@ func (o *IdentityProviderUpdate) HasDescription() bool {
 
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *IdentityProviderUpdate) SetDescription(v string) {
-
 	o.Description = &v
 }
 
@@ -158,7 +156,6 @@ func (o *IdentityProviderUpdate) HasDisplayName() bool {
 
 // SetDisplayName gets a reference to the given string and assigns it to the DisplayName field.
 func (o *IdentityProviderUpdate) SetDisplayName(v string) {
-
 	o.DisplayName = &v
 }
 
@@ -192,7 +189,6 @@ func (o *IdentityProviderUpdate) HasIssuerUri() bool {
 
 // SetIssuerUri gets a reference to the given string and assigns it to the IssuerUri field.
 func (o *IdentityProviderUpdate) SetIssuerUri(v string) {
-
 	o.IssuerUri = &v
 }
 
@@ -226,7 +222,6 @@ func (o *IdentityProviderUpdate) HasProtocol() bool {
 
 // SetProtocol gets a reference to the given string and assigns it to the Protocol field.
 func (o *IdentityProviderUpdate) SetProtocol(v string) {
-
 	o.Protocol = &v
 }
 
@@ -260,7 +255,6 @@ func (o *IdentityProviderUpdate) HasAudienceClaim() bool {
 
 // SetAudienceClaim gets a reference to the given []string and assigns it to the AudienceClaim field.
 func (o *IdentityProviderUpdate) SetAudienceClaim(v []string) {
-
 	o.AudienceClaim = &v
 }
 
@@ -294,7 +288,6 @@ func (o *IdentityProviderUpdate) HasClientId() bool {
 
 // SetClientId gets a reference to the given string and assigns it to the ClientId field.
 func (o *IdentityProviderUpdate) SetClientId(v string) {
-
 	o.ClientId = &v
 }
 
@@ -328,7 +321,6 @@ func (o *IdentityProviderUpdate) HasGroupsClaim() bool {
 
 // SetGroupsClaim gets a reference to the given string and assigns it to the GroupsClaim field.
 func (o *IdentityProviderUpdate) SetGroupsClaim(v string) {
-
 	o.GroupsClaim = &v
 }
 
@@ -362,7 +354,6 @@ func (o *IdentityProviderUpdate) HasRequestedScopes() bool {
 
 // SetRequestedScopes gets a reference to the given []string and assigns it to the RequestedScopes field.
 func (o *IdentityProviderUpdate) SetRequestedScopes(v []string) {
-
 	o.RequestedScopes = &v
 }
 
@@ -396,7 +387,6 @@ func (o *IdentityProviderUpdate) HasUserClaim() bool {
 
 // SetUserClaim gets a reference to the given string and assigns it to the UserClaim field.
 func (o *IdentityProviderUpdate) SetUserClaim(v string) {
-
 	o.UserClaim = &v
 }
 
@@ -430,7 +420,6 @@ func (o *IdentityProviderUpdate) HasPemFileInfo() bool {
 
 // SetPemFileInfo gets a reference to the given PemFileInfo and assigns it to the PemFileInfo field.
 func (o *IdentityProviderUpdate) SetPemFileInfo(v PemFileInfo) {
-
 	o.PemFileInfo = &v
 }
 
@@ -464,7 +453,6 @@ func (o *IdentityProviderUpdate) HasRequestBinding() bool {
 
 // SetRequestBinding gets a reference to the given string and assigns it to the RequestBinding field.
 func (o *IdentityProviderUpdate) SetRequestBinding(v string) {
-
 	o.RequestBinding = &v
 }
 
@@ -498,7 +486,6 @@ func (o *IdentityProviderUpdate) HasResponseSignatureAlgorithm() bool {
 
 // SetResponseSignatureAlgorithm gets a reference to the given string and assigns it to the ResponseSignatureAlgorithm field.
 func (o *IdentityProviderUpdate) SetResponseSignatureAlgorithm(v string) {
-
 	o.ResponseSignatureAlgorithm = &v
 }
 
@@ -532,7 +519,6 @@ func (o *IdentityProviderUpdate) HasSlug() bool {
 
 // SetSlug gets a reference to the given string and assigns it to the Slug field.
 func (o *IdentityProviderUpdate) SetSlug(v string) {
-
 	o.Slug = &v
 }
 
@@ -566,7 +552,6 @@ func (o *IdentityProviderUpdate) HasSsoDebugEnabled() bool {
 
 // SetSsoDebugEnabled gets a reference to the given bool and assigns it to the SsoDebugEnabled field.
 func (o *IdentityProviderUpdate) SetSsoDebugEnabled(v bool) {
-
 	o.SsoDebugEnabled = &v
 }
 
@@ -600,7 +585,6 @@ func (o *IdentityProviderUpdate) HasSsoUrl() bool {
 
 // SetSsoUrl gets a reference to the given string and assigns it to the SsoUrl field.
 func (o *IdentityProviderUpdate) SetSsoUrl(v string) {
-
 	o.SsoUrl = &v
 }
 
@@ -634,7 +618,6 @@ func (o *IdentityProviderUpdate) HasStatus() bool {
 
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *IdentityProviderUpdate) SetStatus(v string) {
-
 	o.Status = &v
 }
 

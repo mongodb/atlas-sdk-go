@@ -63,7 +63,6 @@ func (o *PaginatedOnlineArchive) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PaginatedOnlineArchive) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -97,7 +96,6 @@ func (o *PaginatedOnlineArchive) HasResults() bool {
 
 // SetResults gets a reference to the given []BackupOnlineArchive and assigns it to the Results field.
 func (o *PaginatedOnlineArchive) SetResults(v []BackupOnlineArchive) {
-
 	o.Results = &v
 }
 
@@ -131,7 +129,6 @@ func (o *PaginatedOnlineArchive) HasTotalCount() bool {
 
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
 func (o *PaginatedOnlineArchive) SetTotalCount(v int) {
-
 	o.TotalCount = &v
 }
 

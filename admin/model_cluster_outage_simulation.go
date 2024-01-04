@@ -70,7 +70,6 @@ func (o *ClusterOutageSimulation) HasClusterName() bool {
 
 // SetClusterName gets a reference to the given string and assigns it to the ClusterName field.
 func (o *ClusterOutageSimulation) SetClusterName(v string) {
-
 	o.ClusterName = &v
 }
 
@@ -104,7 +103,6 @@ func (o *ClusterOutageSimulation) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *ClusterOutageSimulation) SetGroupId(v string) {
-
 	o.GroupId = &v
 }
 
@@ -138,7 +136,6 @@ func (o *ClusterOutageSimulation) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ClusterOutageSimulation) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -172,7 +169,6 @@ func (o *ClusterOutageSimulation) HasOutageFilters() bool {
 
 // SetOutageFilters gets a reference to the given []AtlasClusterOutageSimulationOutageFilter and assigns it to the OutageFilters field.
 func (o *ClusterOutageSimulation) SetOutageFilters(v []AtlasClusterOutageSimulationOutageFilter) {
-
 	o.OutageFilters = &v
 }
 
@@ -206,7 +202,6 @@ func (o *ClusterOutageSimulation) HasStartRequestDate() bool {
 
 // SetStartRequestDate gets a reference to the given time.Time and assigns it to the StartRequestDate field.
 func (o *ClusterOutageSimulation) SetStartRequestDate(v time.Time) {
-
 	o.StartRequestDate = &v
 }
 
@@ -240,7 +235,6 @@ func (o *ClusterOutageSimulation) HasState() bool {
 
 // SetState gets a reference to the given string and assigns it to the State field.
 func (o *ClusterOutageSimulation) SetState(v string) {
-
 	o.State = &v
 }
 

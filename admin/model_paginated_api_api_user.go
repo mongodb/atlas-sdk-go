@@ -63,7 +63,6 @@ func (o *PaginatedApiApiUser) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PaginatedApiApiUser) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -97,7 +96,6 @@ func (o *PaginatedApiApiUser) HasResults() bool {
 
 // SetResults gets a reference to the given []ApiKeyUserDetails and assigns it to the Results field.
 func (o *PaginatedApiApiUser) SetResults(v []ApiKeyUserDetails) {
-
 	o.Results = &v
 }
 
@@ -131,7 +129,6 @@ func (o *PaginatedApiApiUser) HasTotalCount() bool {
 
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
 func (o *PaginatedApiApiUser) SetTotalCount(v int) {
-
 	o.TotalCount = &v
 }
 

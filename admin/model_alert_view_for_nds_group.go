@@ -99,7 +99,6 @@ func (o *AlertViewForNdsGroup) HasAcknowledgedUntil() bool {
 
 // SetAcknowledgedUntil gets a reference to the given time.Time and assigns it to the AcknowledgedUntil field.
 func (o *AlertViewForNdsGroup) SetAcknowledgedUntil(v time.Time) {
-
 	o.AcknowledgedUntil = &v
 }
 
@@ -133,7 +132,6 @@ func (o *AlertViewForNdsGroup) HasAcknowledgementComment() bool {
 
 // SetAcknowledgementComment gets a reference to the given string and assigns it to the AcknowledgementComment field.
 func (o *AlertViewForNdsGroup) SetAcknowledgementComment(v string) {
-
 	o.AcknowledgementComment = &v
 }
 
@@ -167,7 +165,6 @@ func (o *AlertViewForNdsGroup) HasAcknowledgingUsername() bool {
 
 // SetAcknowledgingUsername gets a reference to the given string and assigns it to the AcknowledgingUsername field.
 func (o *AlertViewForNdsGroup) SetAcknowledgingUsername(v string) {
-
 	o.AcknowledgingUsername = &v
 }
 
@@ -201,7 +198,6 @@ func (o *AlertViewForNdsGroup) HasAlertConfigId() bool {
 
 // SetAlertConfigId gets a reference to the given string and assigns it to the AlertConfigId field.
 func (o *AlertViewForNdsGroup) SetAlertConfigId(v string) {
-
 	o.AlertConfigId = &v
 }
 
@@ -235,7 +231,6 @@ func (o *AlertViewForNdsGroup) HasCreated() bool {
 
 // SetCreated gets a reference to the given time.Time and assigns it to the Created field.
 func (o *AlertViewForNdsGroup) SetCreated(v time.Time) {
-
 	o.Created = &v
 }
 
@@ -269,7 +264,6 @@ func (o *AlertViewForNdsGroup) HasEventTypeName() bool {
 
 // SetEventTypeName gets a reference to the given string and assigns it to the EventTypeName field.
 func (o *AlertViewForNdsGroup) SetEventTypeName(v string) {
-
 	o.EventTypeName = &v
 }
 
@@ -303,7 +297,6 @@ func (o *AlertViewForNdsGroup) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *AlertViewForNdsGroup) SetGroupId(v string) {
-
 	o.GroupId = &v
 }
 
@@ -337,7 +330,6 @@ func (o *AlertViewForNdsGroup) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *AlertViewForNdsGroup) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -371,7 +363,6 @@ func (o *AlertViewForNdsGroup) HasLastNotified() bool {
 
 // SetLastNotified gets a reference to the given time.Time and assigns it to the LastNotified field.
 func (o *AlertViewForNdsGroup) SetLastNotified(v time.Time) {
-
 	o.LastNotified = &v
 }
 
@@ -405,7 +396,6 @@ func (o *AlertViewForNdsGroup) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *AlertViewForNdsGroup) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -439,7 +429,6 @@ func (o *AlertViewForNdsGroup) HasOrgId() bool {
 
 // SetOrgId gets a reference to the given string and assigns it to the OrgId field.
 func (o *AlertViewForNdsGroup) SetOrgId(v string) {
-
 	o.OrgId = &v
 }
 
@@ -473,7 +462,6 @@ func (o *AlertViewForNdsGroup) HasResolved() bool {
 
 // SetResolved gets a reference to the given time.Time and assigns it to the Resolved field.
 func (o *AlertViewForNdsGroup) SetResolved(v time.Time) {
-
 	o.Resolved = &v
 }
 
@@ -507,7 +495,6 @@ func (o *AlertViewForNdsGroup) HasStatus() bool {
 
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *AlertViewForNdsGroup) SetStatus(v string) {
-
 	o.Status = &v
 }
 
@@ -541,7 +528,6 @@ func (o *AlertViewForNdsGroup) HasUpdated() bool {
 
 // SetUpdated gets a reference to the given time.Time and assigns it to the Updated field.
 func (o *AlertViewForNdsGroup) SetUpdated(v time.Time) {
-
 	o.Updated = &v
 }
 
@@ -575,7 +561,6 @@ func (o *AlertViewForNdsGroup) HasClusterName() bool {
 
 // SetClusterName gets a reference to the given string and assigns it to the ClusterName field.
 func (o *AlertViewForNdsGroup) SetClusterName(v string) {
-
 	o.ClusterName = &v
 }
 
@@ -609,7 +594,6 @@ func (o *AlertViewForNdsGroup) HasHostnameAndPort() bool {
 
 // SetHostnameAndPort gets a reference to the given string and assigns it to the HostnameAndPort field.
 func (o *AlertViewForNdsGroup) SetHostnameAndPort(v string) {
-
 	o.HostnameAndPort = &v
 }
 
@@ -643,7 +627,6 @@ func (o *AlertViewForNdsGroup) HasReplicaSetName() bool {
 
 // SetReplicaSetName gets a reference to the given string and assigns it to the ReplicaSetName field.
 func (o *AlertViewForNdsGroup) SetReplicaSetName(v string) {
-
 	o.ReplicaSetName = &v
 }
 
@@ -677,7 +660,6 @@ func (o *AlertViewForNdsGroup) HasCurrentValue() bool {
 
 // SetCurrentValue gets a reference to the given NumberMetricValue and assigns it to the CurrentValue field.
 func (o *AlertViewForNdsGroup) SetCurrentValue(v NumberMetricValue) {
-
 	o.CurrentValue = &v
 }
 
@@ -711,7 +693,6 @@ func (o *AlertViewForNdsGroup) HasMetricName() bool {
 
 // SetMetricName gets a reference to the given string and assigns it to the MetricName field.
 func (o *AlertViewForNdsGroup) SetMetricName(v string) {
-
 	o.MetricName = &v
 }
 
@@ -745,7 +726,6 @@ func (o *AlertViewForNdsGroup) HasNonRunningHostIds() bool {
 
 // SetNonRunningHostIds gets a reference to the given []string and assigns it to the NonRunningHostIds field.
 func (o *AlertViewForNdsGroup) SetNonRunningHostIds(v []string) {
-
 	o.NonRunningHostIds = &v
 }
 
@@ -779,7 +759,6 @@ func (o *AlertViewForNdsGroup) HasParentClusterId() bool {
 
 // SetParentClusterId gets a reference to the given string and assigns it to the ParentClusterId field.
 func (o *AlertViewForNdsGroup) SetParentClusterId(v string) {
-
 	o.ParentClusterId = &v
 }
 

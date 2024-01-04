@@ -63,7 +63,6 @@ func (o *TeamResponse) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *TeamResponse) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -97,7 +96,6 @@ func (o *TeamResponse) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *TeamResponse) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -131,7 +129,6 @@ func (o *TeamResponse) HasName() bool {
 
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *TeamResponse) SetName(v string) {
-
 	o.Name = &v
 }
 

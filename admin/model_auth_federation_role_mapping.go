@@ -88,7 +88,6 @@ func (o *AuthFederationRoleMapping) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *AuthFederationRoleMapping) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -122,7 +121,6 @@ func (o *AuthFederationRoleMapping) HasRoleAssignments() bool {
 
 // SetRoleAssignments gets a reference to the given []RoleAssignment and assigns it to the RoleAssignments field.
 func (o *AuthFederationRoleMapping) SetRoleAssignments(v []RoleAssignment) {
-
 	o.RoleAssignments = &v
 }
 

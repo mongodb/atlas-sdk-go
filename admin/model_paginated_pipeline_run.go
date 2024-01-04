@@ -63,7 +63,6 @@ func (o *PaginatedPipelineRun) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PaginatedPipelineRun) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -97,7 +96,6 @@ func (o *PaginatedPipelineRun) HasResults() bool {
 
 // SetResults gets a reference to the given []IngestionPipelineRun and assigns it to the Results field.
 func (o *PaginatedPipelineRun) SetResults(v []IngestionPipelineRun) {
-
 	o.Results = &v
 }
 
@@ -131,7 +129,6 @@ func (o *PaginatedPipelineRun) HasTotalCount() bool {
 
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
 func (o *PaginatedPipelineRun) SetTotalCount(v int) {
-
 	o.TotalCount = &v
 }
 

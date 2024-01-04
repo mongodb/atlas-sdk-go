@@ -76,7 +76,6 @@ func (o *ConnectedOrgConfig) HasDataAccessIdentityProviderIds() bool {
 
 // SetDataAccessIdentityProviderIds gets a reference to the given []string and assigns it to the DataAccessIdentityProviderIds field.
 func (o *ConnectedOrgConfig) SetDataAccessIdentityProviderIds(v []string) {
-
 	o.DataAccessIdentityProviderIds = &v
 }
 
@@ -110,7 +109,6 @@ func (o *ConnectedOrgConfig) HasDomainAllowList() bool {
 
 // SetDomainAllowList gets a reference to the given []string and assigns it to the DomainAllowList field.
 func (o *ConnectedOrgConfig) SetDomainAllowList(v []string) {
-
 	o.DomainAllowList = &v
 }
 
@@ -216,7 +214,6 @@ func (o *ConnectedOrgConfig) HasPostAuthRoleGrants() bool {
 
 // SetPostAuthRoleGrants gets a reference to the given []string and assigns it to the PostAuthRoleGrants field.
 func (o *ConnectedOrgConfig) SetPostAuthRoleGrants(v []string) {
-
 	o.PostAuthRoleGrants = &v
 }
 
@@ -250,7 +247,6 @@ func (o *ConnectedOrgConfig) HasRoleMappings() bool {
 
 // SetRoleMappings gets a reference to the given []AuthFederationRoleMapping and assigns it to the RoleMappings field.
 func (o *ConnectedOrgConfig) SetRoleMappings(v []AuthFederationRoleMapping) {
-
 	o.RoleMappings = &v
 }
 
@@ -284,7 +280,6 @@ func (o *ConnectedOrgConfig) HasUserConflicts() bool {
 
 // SetUserConflicts gets a reference to the given []FederatedUser and assigns it to the UserConflicts field.
 func (o *ConnectedOrgConfig) SetUserConflicts(v []FederatedUser) {
-
 	o.UserConflicts = &v
 }
 

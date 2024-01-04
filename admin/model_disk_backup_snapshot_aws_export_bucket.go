@@ -67,7 +67,6 @@ func (o *DiskBackupSnapshotAWSExportBucket) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *DiskBackupSnapshotAWSExportBucket) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -101,7 +100,6 @@ func (o *DiskBackupSnapshotAWSExportBucket) HasBucketName() bool {
 
 // SetBucketName gets a reference to the given string and assigns it to the BucketName field.
 func (o *DiskBackupSnapshotAWSExportBucket) SetBucketName(v string) {
-
 	o.BucketName = &v
 }
 
@@ -135,7 +133,6 @@ func (o *DiskBackupSnapshotAWSExportBucket) HasCloudProvider() bool {
 
 // SetCloudProvider gets a reference to the given string and assigns it to the CloudProvider field.
 func (o *DiskBackupSnapshotAWSExportBucket) SetCloudProvider(v string) {
-
 	o.CloudProvider = &v
 }
 
@@ -169,7 +166,6 @@ func (o *DiskBackupSnapshotAWSExportBucket) HasIamRoleId() bool {
 
 // SetIamRoleId gets a reference to the given string and assigns it to the IamRoleId field.
 func (o *DiskBackupSnapshotAWSExportBucket) SetIamRoleId(v string) {
-
 	o.IamRoleId = &v
 }
 
@@ -203,7 +199,6 @@ func (o *DiskBackupSnapshotAWSExportBucket) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *DiskBackupSnapshotAWSExportBucket) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 

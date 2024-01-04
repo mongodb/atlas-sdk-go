@@ -75,7 +75,6 @@ func (o *DataLakeIngestionPipeline) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *DataLakeIngestionPipeline) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -109,7 +108,6 @@ func (o *DataLakeIngestionPipeline) HasCreatedDate() bool {
 
 // SetCreatedDate gets a reference to the given time.Time and assigns it to the CreatedDate field.
 func (o *DataLakeIngestionPipeline) SetCreatedDate(v time.Time) {
-
 	o.CreatedDate = &v
 }
 
@@ -143,7 +141,6 @@ func (o *DataLakeIngestionPipeline) HasDatasetRetentionPolicy() bool {
 
 // SetDatasetRetentionPolicy gets a reference to the given DatasetRetentionPolicy and assigns it to the DatasetRetentionPolicy field.
 func (o *DataLakeIngestionPipeline) SetDatasetRetentionPolicy(v DatasetRetentionPolicy) {
-
 	o.DatasetRetentionPolicy = &v
 }
 
@@ -177,7 +174,6 @@ func (o *DataLakeIngestionPipeline) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *DataLakeIngestionPipeline) SetGroupId(v string) {
-
 	o.GroupId = &v
 }
 
@@ -211,7 +207,6 @@ func (o *DataLakeIngestionPipeline) HasLastUpdatedDate() bool {
 
 // SetLastUpdatedDate gets a reference to the given time.Time and assigns it to the LastUpdatedDate field.
 func (o *DataLakeIngestionPipeline) SetLastUpdatedDate(v time.Time) {
-
 	o.LastUpdatedDate = &v
 }
 
@@ -245,7 +240,6 @@ func (o *DataLakeIngestionPipeline) HasName() bool {
 
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *DataLakeIngestionPipeline) SetName(v string) {
-
 	o.Name = &v
 }
 
@@ -279,7 +273,6 @@ func (o *DataLakeIngestionPipeline) HasSink() bool {
 
 // SetSink gets a reference to the given IngestionSink and assigns it to the Sink field.
 func (o *DataLakeIngestionPipeline) SetSink(v IngestionSink) {
-
 	o.Sink = &v
 }
 
@@ -313,7 +306,6 @@ func (o *DataLakeIngestionPipeline) HasSource() bool {
 
 // SetSource gets a reference to the given IngestionSource and assigns it to the Source field.
 func (o *DataLakeIngestionPipeline) SetSource(v IngestionSource) {
-
 	o.Source = &v
 }
 
@@ -347,7 +339,6 @@ func (o *DataLakeIngestionPipeline) HasState() bool {
 
 // SetState gets a reference to the given string and assigns it to the State field.
 func (o *DataLakeIngestionPipeline) SetState(v string) {
-
 	o.State = &v
 }
 
@@ -381,7 +372,6 @@ func (o *DataLakeIngestionPipeline) HasTransformations() bool {
 
 // SetTransformations gets a reference to the given []FieldTransformation and assigns it to the Transformations field.
 func (o *DataLakeIngestionPipeline) SetTransformations(v []FieldTransformation) {
-
 	o.Transformations = &v
 }
 

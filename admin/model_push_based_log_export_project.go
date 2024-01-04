@@ -70,7 +70,6 @@ func (o *PushBasedLogExportProject) HasBucketName() bool {
 
 // SetBucketName gets a reference to the given string and assigns it to the BucketName field.
 func (o *PushBasedLogExportProject) SetBucketName(v string) {
-
 	o.BucketName = &v
 }
 
@@ -104,7 +103,6 @@ func (o *PushBasedLogExportProject) HasCreateDate() bool {
 
 // SetCreateDate gets a reference to the given time.Time and assigns it to the CreateDate field.
 func (o *PushBasedLogExportProject) SetCreateDate(v time.Time) {
-
 	o.CreateDate = &v
 }
 
@@ -138,7 +136,6 @@ func (o *PushBasedLogExportProject) HasIamRoleId() bool {
 
 // SetIamRoleId gets a reference to the given string and assigns it to the IamRoleId field.
 func (o *PushBasedLogExportProject) SetIamRoleId(v string) {
-
 	o.IamRoleId = &v
 }
 
@@ -172,7 +169,6 @@ func (o *PushBasedLogExportProject) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PushBasedLogExportProject) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -206,7 +202,6 @@ func (o *PushBasedLogExportProject) HasPrefixPath() bool {
 
 // SetPrefixPath gets a reference to the given string and assigns it to the PrefixPath field.
 func (o *PushBasedLogExportProject) SetPrefixPath(v string) {
-
 	o.PrefixPath = &v
 }
 
@@ -240,7 +235,6 @@ func (o *PushBasedLogExportProject) HasState() bool {
 
 // SetState gets a reference to the given string and assigns it to the State field.
 func (o *PushBasedLogExportProject) SetState(v string) {
-
 	o.State = &v
 }
 

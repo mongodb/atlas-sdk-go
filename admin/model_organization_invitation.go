@@ -80,7 +80,6 @@ func (o *OrganizationInvitation) HasCreatedAt() bool {
 
 // SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
 func (o *OrganizationInvitation) SetCreatedAt(v time.Time) {
-
 	o.CreatedAt = &v
 }
 
@@ -114,7 +113,6 @@ func (o *OrganizationInvitation) HasExpiresAt() bool {
 
 // SetExpiresAt gets a reference to the given time.Time and assigns it to the ExpiresAt field.
 func (o *OrganizationInvitation) SetExpiresAt(v time.Time) {
-
 	o.ExpiresAt = &v
 }
 
@@ -148,7 +146,6 @@ func (o *OrganizationInvitation) HasGroupRoleAssignments() bool {
 
 // SetGroupRoleAssignments gets a reference to the given []GroupRole and assigns it to the GroupRoleAssignments field.
 func (o *OrganizationInvitation) SetGroupRoleAssignments(v []GroupRole) {
-
 	o.GroupRoleAssignments = &v
 }
 
@@ -182,7 +179,6 @@ func (o *OrganizationInvitation) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *OrganizationInvitation) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -216,7 +212,6 @@ func (o *OrganizationInvitation) HasInviterUsername() bool {
 
 // SetInviterUsername gets a reference to the given string and assigns it to the InviterUsername field.
 func (o *OrganizationInvitation) SetInviterUsername(v string) {
-
 	o.InviterUsername = &v
 }
 
@@ -250,7 +245,6 @@ func (o *OrganizationInvitation) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *OrganizationInvitation) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -284,7 +278,6 @@ func (o *OrganizationInvitation) HasOrgId() bool {
 
 // SetOrgId gets a reference to the given string and assigns it to the OrgId field.
 func (o *OrganizationInvitation) SetOrgId(v string) {
-
 	o.OrgId = &v
 }
 
@@ -342,7 +335,6 @@ func (o *OrganizationInvitation) HasRoles() bool {
 
 // SetRoles gets a reference to the given []string and assigns it to the Roles field.
 func (o *OrganizationInvitation) SetRoles(v []string) {
-
 	o.Roles = &v
 }
 
@@ -376,7 +368,6 @@ func (o *OrganizationInvitation) HasTeamIds() bool {
 
 // SetTeamIds gets a reference to the given []string and assigns it to the TeamIds field.
 func (o *OrganizationInvitation) SetTeamIds(v []string) {
-
 	o.TeamIds = &v
 }
 
@@ -410,7 +401,6 @@ func (o *OrganizationInvitation) HasUsername() bool {
 
 // SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *OrganizationInvitation) SetUsername(v string) {
-
 	o.Username = &v
 }
 

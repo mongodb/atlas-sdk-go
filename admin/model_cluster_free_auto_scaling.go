@@ -59,7 +59,6 @@ func (o *ClusterFreeAutoScaling) HasCompute() bool {
 
 // SetCompute gets a reference to the given string and assigns it to the Compute field.
 func (o *ClusterFreeAutoScaling) SetCompute(v string) {
-
 	o.Compute = &v
 }
 

@@ -59,7 +59,6 @@ func (o *GroupService) HasClusters() bool {
 
 // SetClusters gets a reference to the given []ClusterIPAddresses and assigns it to the Clusters field.
 func (o *GroupService) SetClusters(v []ClusterIPAddresses) {
-
 	o.Clusters = &v
 }
 

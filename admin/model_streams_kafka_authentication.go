@@ -65,7 +65,6 @@ func (o *StreamsKafkaAuthentication) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *StreamsKafkaAuthentication) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -99,7 +98,6 @@ func (o *StreamsKafkaAuthentication) HasMechanism() bool {
 
 // SetMechanism gets a reference to the given string and assigns it to the Mechanism field.
 func (o *StreamsKafkaAuthentication) SetMechanism(v string) {
-
 	o.Mechanism = &v
 }
 
@@ -133,7 +131,6 @@ func (o *StreamsKafkaAuthentication) HasPassword() bool {
 
 // SetPassword gets a reference to the given string and assigns it to the Password field.
 func (o *StreamsKafkaAuthentication) SetPassword(v string) {
-
 	o.Password = &v
 }
 
@@ -167,7 +164,6 @@ func (o *StreamsKafkaAuthentication) HasUsername() bool {
 
 // SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *StreamsKafkaAuthentication) SetUsername(v string) {
-
 	o.Username = &v
 }
 

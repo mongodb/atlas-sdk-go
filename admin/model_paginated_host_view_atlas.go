@@ -63,7 +63,6 @@ func (o *PaginatedHostViewAtlas) HasLinks() bool {
 
 // SetLinks gets a reference to the given []LinkAtlas and assigns it to the Links field.
 func (o *PaginatedHostViewAtlas) SetLinks(v []LinkAtlas) {
-
 	o.Links = &v
 }
 
@@ -97,7 +96,6 @@ func (o *PaginatedHostViewAtlas) HasResults() bool {
 
 // SetResults gets a reference to the given []ApiHostViewAtlas and assigns it to the Results field.
 func (o *PaginatedHostViewAtlas) SetResults(v []ApiHostViewAtlas) {
-
 	o.Results = &v
 }
 
@@ -131,7 +129,6 @@ func (o *PaginatedHostViewAtlas) HasTotalCount() bool {
 
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
 func (o *PaginatedHostViewAtlas) SetTotalCount(v int) {
-
 	o.TotalCount = &v
 }
 

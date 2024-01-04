@@ -92,7 +92,6 @@ func (o *ServerlessMetricThreshold) HasMode() bool {
 
 // SetMode gets a reference to the given string and assigns it to the Mode field.
 func (o *ServerlessMetricThreshold) SetMode(v string) {
-
 	o.Mode = &v
 }
 
@@ -126,7 +125,6 @@ func (o *ServerlessMetricThreshold) HasOperator() bool {
 
 // SetOperator gets a reference to the given string and assigns it to the Operator field.
 func (o *ServerlessMetricThreshold) SetOperator(v string) {
-
 	o.Operator = &v
 }
 
@@ -160,7 +158,6 @@ func (o *ServerlessMetricThreshold) HasThreshold() bool {
 
 // SetThreshold gets a reference to the given float64 and assigns it to the Threshold field.
 func (o *ServerlessMetricThreshold) SetThreshold(v float64) {
-
 	o.Threshold = &v
 }
 
@@ -194,7 +191,6 @@ func (o *ServerlessMetricThreshold) HasUnits() bool {
 
 // SetUnits gets a reference to the given string and assigns it to the Units field.
 func (o *ServerlessMetricThreshold) SetUnits(v string) {
-
 	o.Units = &v
 }
 

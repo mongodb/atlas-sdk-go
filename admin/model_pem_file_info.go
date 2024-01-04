@@ -59,7 +59,6 @@ func (o *PemFileInfo) HasCertificates() bool {
 
 // SetCertificates gets a reference to the given []X509Certificate and assigns it to the Certificates field.
 func (o *PemFileInfo) SetCertificates(v []X509Certificate) {
-
 	o.Certificates = &v
 }
 
@@ -93,7 +92,6 @@ func (o *PemFileInfo) HasFileName() bool {
 
 // SetFileName gets a reference to the given string and assigns it to the FileName field.
 func (o *PemFileInfo) SetFileName(v string) {
-
 	o.FileName = &v
 }
 

@@ -61,7 +61,6 @@ func (o *CreateGCPForwardingRuleRequest) HasEndpointName() bool {
 
 // SetEndpointName gets a reference to the given string and assigns it to the EndpointName field.
 func (o *CreateGCPForwardingRuleRequest) SetEndpointName(v string) {
-
 	o.EndpointName = &v
 }
 
@@ -95,7 +94,6 @@ func (o *CreateGCPForwardingRuleRequest) HasIpAddress() bool {
 
 // SetIpAddress gets a reference to the given string and assigns it to the IpAddress field.
 func (o *CreateGCPForwardingRuleRequest) SetIpAddress(v string) {
-
 	o.IpAddress = &v
 }
 

@@ -121,7 +121,6 @@ func (o *ServerlessInstanceDescriptionCreate) HasServerlessBackupOptions() bool 
 
 // SetServerlessBackupOptions gets a reference to the given ClusterServerlessBackupOptions and assigns it to the ServerlessBackupOptions field.
 func (o *ServerlessInstanceDescriptionCreate) SetServerlessBackupOptions(v ClusterServerlessBackupOptions) {
-
 	o.ServerlessBackupOptions = &v
 }
 
@@ -155,7 +154,6 @@ func (o *ServerlessInstanceDescriptionCreate) HasStateName() bool {
 
 // SetStateName gets a reference to the given string and assigns it to the StateName field.
 func (o *ServerlessInstanceDescriptionCreate) SetStateName(v string) {
-
 	o.StateName = &v
 }
 
@@ -189,7 +187,6 @@ func (o *ServerlessInstanceDescriptionCreate) HasTags() bool {
 
 // SetTags gets a reference to the given []ResourceTag and assigns it to the Tags field.
 func (o *ServerlessInstanceDescriptionCreate) SetTags(v []ResourceTag) {
-
 	o.Tags = &v
 }
 
@@ -223,7 +220,6 @@ func (o *ServerlessInstanceDescriptionCreate) HasTerminationProtectionEnabled() 
 
 // SetTerminationProtectionEnabled gets a reference to the given bool and assigns it to the TerminationProtectionEnabled field.
 func (o *ServerlessInstanceDescriptionCreate) SetTerminationProtectionEnabled(v bool) {
-
 	o.TerminationProtectionEnabled = &v
 }
 

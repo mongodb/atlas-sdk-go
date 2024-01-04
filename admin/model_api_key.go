@@ -67,7 +67,6 @@ func (o *ApiKey) HasAccessList() bool {
 
 // SetAccessList gets a reference to the given []AccessListItem and assigns it to the AccessList field.
 func (o *ApiKey) SetAccessList(v []AccessListItem) {
-
 	o.AccessList = &v
 }
 
@@ -149,7 +148,6 @@ func (o *ApiKey) HasRoles() bool {
 
 // SetRoles gets a reference to the given []CloudAccessRoleAssignment and assigns it to the Roles field.
 func (o *ApiKey) SetRoles(v []CloudAccessRoleAssignment) {
-
 	o.Roles = &v
 }
 

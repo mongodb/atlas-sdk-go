@@ -77,7 +77,6 @@ func (o *Raw) HasT() bool {
 
 // SetT gets a reference to the given string and assigns it to the T field.
 func (o *Raw) SetT(v string) {
-
 	o.T = &v
 }
 
@@ -111,7 +110,6 @@ func (o *Raw) HasAlertConfigId() bool {
 
 // SetAlertConfigId gets a reference to the given string and assigns it to the AlertConfigId field.
 func (o *Raw) SetAlertConfigId(v string) {
-
 	o.AlertConfigId = &v
 }
 
@@ -145,7 +143,6 @@ func (o *Raw) HasCid() bool {
 
 // SetCid gets a reference to the given string and assigns it to the Cid field.
 func (o *Raw) SetCid(v string) {
-
 	o.Cid = &v
 }
 
@@ -179,7 +176,6 @@ func (o *Raw) HasCre() bool {
 
 // SetCre gets a reference to the given time.Time and assigns it to the Cre field.
 func (o *Raw) SetCre(v time.Time) {
-
 	o.Cre = &v
 }
 
@@ -213,7 +209,6 @@ func (o *Raw) HasDescription() bool {
 
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *Raw) SetDescription(v string) {
-
 	o.Description = &v
 }
 
@@ -247,7 +242,6 @@ func (o *Raw) HasGn() bool {
 
 // SetGn gets a reference to the given string and assigns it to the Gn field.
 func (o *Raw) SetGn(v string) {
-
 	o.Gn = &v
 }
 
@@ -281,7 +275,6 @@ func (o *Raw) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *Raw) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -315,7 +308,6 @@ func (o *Raw) HasOrgId() bool {
 
 // SetOrgId gets a reference to the given string and assigns it to the OrgId field.
 func (o *Raw) SetOrgId(v string) {
-
 	o.OrgId = &v
 }
 
@@ -349,7 +341,6 @@ func (o *Raw) HasOrgName() bool {
 
 // SetOrgName gets a reference to the given string and assigns it to the OrgName field.
 func (o *Raw) SetOrgName(v string) {
-
 	o.OrgName = &v
 }
 
@@ -383,7 +374,6 @@ func (o *Raw) HasSeverity() bool {
 
 // SetSeverity gets a reference to the given string and assigns it to the Severity field.
 func (o *Raw) SetSeverity(v string) {
-
 	o.Severity = &v
 }
 

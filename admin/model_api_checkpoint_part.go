@@ -66,7 +66,6 @@ func (o *ApiCheckpointPart) HasReplicaSetName() bool {
 
 // SetReplicaSetName gets a reference to the given string and assigns it to the ReplicaSetName field.
 func (o *ApiCheckpointPart) SetReplicaSetName(v string) {
-
 	o.ReplicaSetName = &v
 }
 
@@ -100,7 +99,6 @@ func (o *ApiCheckpointPart) HasShardName() bool {
 
 // SetShardName gets a reference to the given string and assigns it to the ShardName field.
 func (o *ApiCheckpointPart) SetShardName(v string) {
-
 	o.ShardName = &v
 }
 
@@ -134,7 +132,6 @@ func (o *ApiCheckpointPart) HasTokenDiscovered() bool {
 
 // SetTokenDiscovered gets a reference to the given bool and assigns it to the TokenDiscovered field.
 func (o *ApiCheckpointPart) SetTokenDiscovered(v bool) {
-
 	o.TokenDiscovered = &v
 }
 
@@ -168,7 +165,6 @@ func (o *ApiCheckpointPart) HasTokenTimestamp() bool {
 
 // SetTokenTimestamp gets a reference to the given ApiBSONTimestamp and assigns it to the TokenTimestamp field.
 func (o *ApiCheckpointPart) SetTokenTimestamp(v ApiBSONTimestamp) {
-
 	o.TokenTimestamp = &v
 }
 
@@ -202,7 +198,6 @@ func (o *ApiCheckpointPart) HasTypeName() bool {
 
 // SetTypeName gets a reference to the given string and assigns it to the TypeName field.
 func (o *ApiCheckpointPart) SetTypeName(v string) {
-
 	o.TypeName = &v
 }
 

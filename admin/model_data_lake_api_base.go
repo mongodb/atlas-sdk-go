@@ -63,7 +63,6 @@ func (o *DataLakeApiBase) HasName() bool {
 
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *DataLakeApiBase) SetName(v string) {
-
 	o.Name = &v
 }
 
@@ -97,7 +96,6 @@ func (o *DataLakeApiBase) HasPipeline() bool {
 
 // SetPipeline gets a reference to the given string and assigns it to the Pipeline field.
 func (o *DataLakeApiBase) SetPipeline(v string) {
-
 	o.Pipeline = &v
 }
 
@@ -131,7 +129,6 @@ func (o *DataLakeApiBase) HasSource() bool {
 
 // SetSource gets a reference to the given string and assigns it to the Source field.
 func (o *DataLakeApiBase) SetSource(v string) {
-
 	o.Source = &v
 }
 

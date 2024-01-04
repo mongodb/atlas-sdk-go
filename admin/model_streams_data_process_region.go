@@ -89,7 +89,6 @@ func (o *StreamsDataProcessRegion) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *StreamsDataProcessRegion) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 

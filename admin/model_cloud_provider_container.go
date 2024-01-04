@@ -81,7 +81,6 @@ func (o *CloudProviderContainer) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *CloudProviderContainer) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -115,7 +114,6 @@ func (o *CloudProviderContainer) HasProviderName() bool {
 
 // SetProviderName gets a reference to the given string and assigns it to the ProviderName field.
 func (o *CloudProviderContainer) SetProviderName(v string) {
-
 	o.ProviderName = &v
 }
 
@@ -149,7 +147,6 @@ func (o *CloudProviderContainer) HasProvisioned() bool {
 
 // SetProvisioned gets a reference to the given bool and assigns it to the Provisioned field.
 func (o *CloudProviderContainer) SetProvisioned(v bool) {
-
 	o.Provisioned = &v
 }
 
@@ -183,7 +180,6 @@ func (o *CloudProviderContainer) HasAtlasCidrBlock() bool {
 
 // SetAtlasCidrBlock gets a reference to the given string and assigns it to the AtlasCidrBlock field.
 func (o *CloudProviderContainer) SetAtlasCidrBlock(v string) {
-
 	o.AtlasCidrBlock = &v
 }
 
@@ -217,7 +213,6 @@ func (o *CloudProviderContainer) HasAzureSubscriptionId() bool {
 
 // SetAzureSubscriptionId gets a reference to the given string and assigns it to the AzureSubscriptionId field.
 func (o *CloudProviderContainer) SetAzureSubscriptionId(v string) {
-
 	o.AzureSubscriptionId = &v
 }
 
@@ -251,7 +246,6 @@ func (o *CloudProviderContainer) HasRegion() bool {
 
 // SetRegion gets a reference to the given string and assigns it to the Region field.
 func (o *CloudProviderContainer) SetRegion(v string) {
-
 	o.Region = &v
 }
 
@@ -285,7 +279,6 @@ func (o *CloudProviderContainer) HasVnetName() bool {
 
 // SetVnetName gets a reference to the given string and assigns it to the VnetName field.
 func (o *CloudProviderContainer) SetVnetName(v string) {
-
 	o.VnetName = &v
 }
 
@@ -319,7 +312,6 @@ func (o *CloudProviderContainer) HasGcpProjectId() bool {
 
 // SetGcpProjectId gets a reference to the given string and assigns it to the GcpProjectId field.
 func (o *CloudProviderContainer) SetGcpProjectId(v string) {
-
 	o.GcpProjectId = &v
 }
 
@@ -353,7 +345,6 @@ func (o *CloudProviderContainer) HasNetworkName() bool {
 
 // SetNetworkName gets a reference to the given string and assigns it to the NetworkName field.
 func (o *CloudProviderContainer) SetNetworkName(v string) {
-
 	o.NetworkName = &v
 }
 
@@ -387,7 +378,6 @@ func (o *CloudProviderContainer) HasRegions() bool {
 
 // SetRegions gets a reference to the given []string and assigns it to the Regions field.
 func (o *CloudProviderContainer) SetRegions(v []string) {
-
 	o.Regions = &v
 }
 
@@ -421,7 +411,6 @@ func (o *CloudProviderContainer) HasRegionName() bool {
 
 // SetRegionName gets a reference to the given string and assigns it to the RegionName field.
 func (o *CloudProviderContainer) SetRegionName(v string) {
-
 	o.RegionName = &v
 }
 
@@ -455,7 +444,6 @@ func (o *CloudProviderContainer) HasVpcId() bool {
 
 // SetVpcId gets a reference to the given string and assigns it to the VpcId field.
 func (o *CloudProviderContainer) SetVpcId(v string) {
-
 	o.VpcId = &v
 }
 

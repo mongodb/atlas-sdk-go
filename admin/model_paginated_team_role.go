@@ -63,7 +63,6 @@ func (o *PaginatedTeamRole) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PaginatedTeamRole) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -97,7 +96,6 @@ func (o *PaginatedTeamRole) HasResults() bool {
 
 // SetResults gets a reference to the given []TeamRole and assigns it to the Results field.
 func (o *PaginatedTeamRole) SetResults(v []TeamRole) {
-
 	o.Results = &v
 }
 
@@ -131,7 +129,6 @@ func (o *PaginatedTeamRole) HasTotalCount() bool {
 
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
 func (o *PaginatedTeamRole) SetTotalCount(v int) {
-
 	o.TotalCount = &v
 }
 

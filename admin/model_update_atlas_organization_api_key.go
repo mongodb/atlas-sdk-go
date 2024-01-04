@@ -61,7 +61,6 @@ func (o *UpdateAtlasOrganizationApiKey) HasDesc() bool {
 
 // SetDesc gets a reference to the given string and assigns it to the Desc field.
 func (o *UpdateAtlasOrganizationApiKey) SetDesc(v string) {
-
 	o.Desc = &v
 }
 
@@ -95,7 +94,6 @@ func (o *UpdateAtlasOrganizationApiKey) HasRoles() bool {
 
 // SetRoles gets a reference to the given []string and assigns it to the Roles field.
 func (o *UpdateAtlasOrganizationApiKey) SetRoles(v []string) {
-
 	o.Roles = &v
 }
 

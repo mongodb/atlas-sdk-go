@@ -63,7 +63,6 @@ func (o *ServerlessConnectionStringsPrivateEndpointList) HasEndpoints() bool {
 
 // SetEndpoints gets a reference to the given []ServerlessConnectionStringsPrivateEndpointItem and assigns it to the Endpoints field.
 func (o *ServerlessConnectionStringsPrivateEndpointList) SetEndpoints(v []ServerlessConnectionStringsPrivateEndpointItem) {
-
 	o.Endpoints = &v
 }
 
@@ -97,7 +96,6 @@ func (o *ServerlessConnectionStringsPrivateEndpointList) HasSrvConnectionString(
 
 // SetSrvConnectionString gets a reference to the given string and assigns it to the SrvConnectionString field.
 func (o *ServerlessConnectionStringsPrivateEndpointList) SetSrvConnectionString(v string) {
-
 	o.SrvConnectionString = &v
 }
 
@@ -131,7 +129,6 @@ func (o *ServerlessConnectionStringsPrivateEndpointList) HasType() bool {
 
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *ServerlessConnectionStringsPrivateEndpointList) SetType(v string) {
-
 	o.Type = &v
 }
 

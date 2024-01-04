@@ -65,7 +65,6 @@ func (o *ApiSearchDeploymentResponse) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *ApiSearchDeploymentResponse) SetGroupId(v string) {
-
 	o.GroupId = &v
 }
 
@@ -99,7 +98,6 @@ func (o *ApiSearchDeploymentResponse) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ApiSearchDeploymentResponse) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -133,7 +131,6 @@ func (o *ApiSearchDeploymentResponse) HasSpecs() bool {
 
 // SetSpecs gets a reference to the given []ApiSearchDeploymentSpec and assigns it to the Specs field.
 func (o *ApiSearchDeploymentResponse) SetSpecs(v []ApiSearchDeploymentSpec) {
-
 	o.Specs = &v
 }
 
@@ -167,7 +164,6 @@ func (o *ApiSearchDeploymentResponse) HasStateName() bool {
 
 // SetStateName gets a reference to the given string and assigns it to the StateName field.
 func (o *ApiSearchDeploymentResponse) SetStateName(v string) {
-
 	o.StateName = &v
 }
 

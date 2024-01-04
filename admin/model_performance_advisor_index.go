@@ -69,7 +69,6 @@ func (o *PerformanceAdvisorIndex) HasAvgObjSize() bool {
 
 // SetAvgObjSize gets a reference to the given float64 and assigns it to the AvgObjSize field.
 func (o *PerformanceAdvisorIndex) SetAvgObjSize(v float64) {
-
 	o.AvgObjSize = &v
 }
 
@@ -103,7 +102,6 @@ func (o *PerformanceAdvisorIndex) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *PerformanceAdvisorIndex) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -137,7 +135,6 @@ func (o *PerformanceAdvisorIndex) HasImpact() bool {
 
 // SetImpact gets a reference to the given []string and assigns it to the Impact field.
 func (o *PerformanceAdvisorIndex) SetImpact(v []string) {
-
 	o.Impact = &v
 }
 
@@ -171,7 +168,6 @@ func (o *PerformanceAdvisorIndex) HasIndex() bool {
 
 // SetIndex gets a reference to the given []map[string]int and assigns it to the Index field.
 func (o *PerformanceAdvisorIndex) SetIndex(v []map[string]int) {
-
 	o.Index = &v
 }
 
@@ -205,7 +201,6 @@ func (o *PerformanceAdvisorIndex) HasNamespace() bool {
 
 // SetNamespace gets a reference to the given string and assigns it to the Namespace field.
 func (o *PerformanceAdvisorIndex) SetNamespace(v string) {
-
 	o.Namespace = &v
 }
 
@@ -239,7 +234,6 @@ func (o *PerformanceAdvisorIndex) HasWeight() bool {
 
 // SetWeight gets a reference to the given float64 and assigns it to the Weight field.
 func (o *PerformanceAdvisorIndex) SetWeight(v float64) {
-
 	o.Weight = &v
 }
 

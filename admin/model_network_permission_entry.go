@@ -72,7 +72,6 @@ func (o *NetworkPermissionEntry) HasAwsSecurityGroup() bool {
 
 // SetAwsSecurityGroup gets a reference to the given string and assigns it to the AwsSecurityGroup field.
 func (o *NetworkPermissionEntry) SetAwsSecurityGroup(v string) {
-
 	o.AwsSecurityGroup = &v
 }
 
@@ -106,7 +105,6 @@ func (o *NetworkPermissionEntry) HasCidrBlock() bool {
 
 // SetCidrBlock gets a reference to the given string and assigns it to the CidrBlock field.
 func (o *NetworkPermissionEntry) SetCidrBlock(v string) {
-
 	o.CidrBlock = &v
 }
 
@@ -140,7 +138,6 @@ func (o *NetworkPermissionEntry) HasComment() bool {
 
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *NetworkPermissionEntry) SetComment(v string) {
-
 	o.Comment = &v
 }
 
@@ -174,7 +171,6 @@ func (o *NetworkPermissionEntry) HasDeleteAfterDate() bool {
 
 // SetDeleteAfterDate gets a reference to the given time.Time and assigns it to the DeleteAfterDate field.
 func (o *NetworkPermissionEntry) SetDeleteAfterDate(v time.Time) {
-
 	o.DeleteAfterDate = &v
 }
 
@@ -208,7 +204,6 @@ func (o *NetworkPermissionEntry) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *NetworkPermissionEntry) SetGroupId(v string) {
-
 	o.GroupId = &v
 }
 
@@ -242,7 +237,6 @@ func (o *NetworkPermissionEntry) HasIpAddress() bool {
 
 // SetIpAddress gets a reference to the given string and assigns it to the IpAddress field.
 func (o *NetworkPermissionEntry) SetIpAddress(v string) {
-
 	o.IpAddress = &v
 }
 
@@ -276,7 +270,6 @@ func (o *NetworkPermissionEntry) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *NetworkPermissionEntry) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 

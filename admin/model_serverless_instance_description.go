@@ -84,7 +84,6 @@ func (o *ServerlessInstanceDescription) HasConnectionStrings() bool {
 
 // SetConnectionStrings gets a reference to the given ServerlessInstanceDescriptionConnectionStrings and assigns it to the ConnectionStrings field.
 func (o *ServerlessInstanceDescription) SetConnectionStrings(v ServerlessInstanceDescriptionConnectionStrings) {
-
 	o.ConnectionStrings = &v
 }
 
@@ -118,7 +117,6 @@ func (o *ServerlessInstanceDescription) HasCreateDate() bool {
 
 // SetCreateDate gets a reference to the given time.Time and assigns it to the CreateDate field.
 func (o *ServerlessInstanceDescription) SetCreateDate(v time.Time) {
-
 	o.CreateDate = &v
 }
 
@@ -152,7 +150,6 @@ func (o *ServerlessInstanceDescription) HasGroupId() bool {
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *ServerlessInstanceDescription) SetGroupId(v string) {
-
 	o.GroupId = &v
 }
 
@@ -186,7 +183,6 @@ func (o *ServerlessInstanceDescription) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ServerlessInstanceDescription) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -220,7 +216,6 @@ func (o *ServerlessInstanceDescription) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *ServerlessInstanceDescription) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -254,7 +249,6 @@ func (o *ServerlessInstanceDescription) HasMongoDBVersion() bool {
 
 // SetMongoDBVersion gets a reference to the given string and assigns it to the MongoDBVersion field.
 func (o *ServerlessInstanceDescription) SetMongoDBVersion(v string) {
-
 	o.MongoDBVersion = &v
 }
 
@@ -288,7 +282,6 @@ func (o *ServerlessInstanceDescription) HasName() bool {
 
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ServerlessInstanceDescription) SetName(v string) {
-
 	o.Name = &v
 }
 
@@ -346,7 +339,6 @@ func (o *ServerlessInstanceDescription) HasServerlessBackupOptions() bool {
 
 // SetServerlessBackupOptions gets a reference to the given ClusterServerlessBackupOptions and assigns it to the ServerlessBackupOptions field.
 func (o *ServerlessInstanceDescription) SetServerlessBackupOptions(v ClusterServerlessBackupOptions) {
-
 	o.ServerlessBackupOptions = &v
 }
 
@@ -380,7 +372,6 @@ func (o *ServerlessInstanceDescription) HasStateName() bool {
 
 // SetStateName gets a reference to the given string and assigns it to the StateName field.
 func (o *ServerlessInstanceDescription) SetStateName(v string) {
-
 	o.StateName = &v
 }
 
@@ -414,7 +405,6 @@ func (o *ServerlessInstanceDescription) HasTags() bool {
 
 // SetTags gets a reference to the given []ResourceTag and assigns it to the Tags field.
 func (o *ServerlessInstanceDescription) SetTags(v []ResourceTag) {
-
 	o.Tags = &v
 }
 
@@ -448,7 +438,6 @@ func (o *ServerlessInstanceDescription) HasTerminationProtectionEnabled() bool {
 
 // SetTerminationProtectionEnabled gets a reference to the given bool and assigns it to the TerminationProtectionEnabled field.
 func (o *ServerlessInstanceDescription) SetTerminationProtectionEnabled(v bool) {
-
 	o.TerminationProtectionEnabled = &v
 }
 

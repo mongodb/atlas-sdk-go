@@ -59,7 +59,6 @@ func (o *GroupInvitationUpdateRequest) HasRoles() bool {
 
 // SetRoles gets a reference to the given []string and assigns it to the Roles field.
 func (o *GroupInvitationUpdateRequest) SetRoles(v []string) {
-
 	o.Roles = &v
 }
 

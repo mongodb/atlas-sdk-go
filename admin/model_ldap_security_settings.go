@@ -85,7 +85,6 @@ func (o *LDAPSecuritySettings) HasAuthenticationEnabled() bool {
 
 // SetAuthenticationEnabled gets a reference to the given bool and assigns it to the AuthenticationEnabled field.
 func (o *LDAPSecuritySettings) SetAuthenticationEnabled(v bool) {
-
 	o.AuthenticationEnabled = &v
 }
 
@@ -119,7 +118,6 @@ func (o *LDAPSecuritySettings) HasAuthorizationEnabled() bool {
 
 // SetAuthorizationEnabled gets a reference to the given bool and assigns it to the AuthorizationEnabled field.
 func (o *LDAPSecuritySettings) SetAuthorizationEnabled(v bool) {
-
 	o.AuthorizationEnabled = &v
 }
 
@@ -153,7 +151,6 @@ func (o *LDAPSecuritySettings) HasAuthzQueryTemplate() bool {
 
 // SetAuthzQueryTemplate gets a reference to the given string and assigns it to the AuthzQueryTemplate field.
 func (o *LDAPSecuritySettings) SetAuthzQueryTemplate(v string) {
-
 	o.AuthzQueryTemplate = &v
 }
 
@@ -187,7 +184,6 @@ func (o *LDAPSecuritySettings) HasBindPassword() bool {
 
 // SetBindPassword gets a reference to the given string and assigns it to the BindPassword field.
 func (o *LDAPSecuritySettings) SetBindPassword(v string) {
-
 	o.BindPassword = &v
 }
 
@@ -221,7 +217,6 @@ func (o *LDAPSecuritySettings) HasBindUsername() bool {
 
 // SetBindUsername gets a reference to the given string and assigns it to the BindUsername field.
 func (o *LDAPSecuritySettings) SetBindUsername(v string) {
-
 	o.BindUsername = &v
 }
 
@@ -255,7 +250,6 @@ func (o *LDAPSecuritySettings) HasCaCertificate() bool {
 
 // SetCaCertificate gets a reference to the given string and assigns it to the CaCertificate field.
 func (o *LDAPSecuritySettings) SetCaCertificate(v string) {
-
 	o.CaCertificate = &v
 }
 
@@ -289,7 +283,6 @@ func (o *LDAPSecuritySettings) HasHostname() bool {
 
 // SetHostname gets a reference to the given string and assigns it to the Hostname field.
 func (o *LDAPSecuritySettings) SetHostname(v string) {
-
 	o.Hostname = &v
 }
 
@@ -323,7 +316,6 @@ func (o *LDAPSecuritySettings) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *LDAPSecuritySettings) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -357,7 +349,6 @@ func (o *LDAPSecuritySettings) HasPort() bool {
 
 // SetPort gets a reference to the given int and assigns it to the Port field.
 func (o *LDAPSecuritySettings) SetPort(v int) {
-
 	o.Port = &v
 }
 
@@ -391,7 +382,6 @@ func (o *LDAPSecuritySettings) HasUserToDNMapping() bool {
 
 // SetUserToDNMapping gets a reference to the given []UserToDNMapping and assigns it to the UserToDNMapping field.
 func (o *LDAPSecuritySettings) SetUserToDNMapping(v []UserToDNMapping) {
-
 	o.UserToDNMapping = &v
 }
 

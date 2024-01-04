@@ -63,7 +63,6 @@ func (o *PaginatedIntegration) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PaginatedIntegration) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -97,7 +96,6 @@ func (o *PaginatedIntegration) HasResults() bool {
 
 // SetResults gets a reference to the given []ThridPartyIntegration and assigns it to the Results field.
 func (o *PaginatedIntegration) SetResults(v []ThridPartyIntegration) {
-
 	o.Results = &v
 }
 
@@ -131,7 +129,6 @@ func (o *PaginatedIntegration) HasTotalCount() bool {
 
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
 func (o *PaginatedIntegration) SetTotalCount(v int) {
-
 	o.TotalCount = &v
 }
 

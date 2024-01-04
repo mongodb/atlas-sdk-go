@@ -63,7 +63,6 @@ func (o *CreateOrganizationResponse) HasApiKey() bool {
 
 // SetApiKey gets a reference to the given ApiKeyUserDetails and assigns it to the ApiKey field.
 func (o *CreateOrganizationResponse) SetApiKey(v ApiKeyUserDetails) {
-
 	o.ApiKey = &v
 }
 
@@ -97,7 +96,6 @@ func (o *CreateOrganizationResponse) HasFederationSettingsId() bool {
 
 // SetFederationSettingsId gets a reference to the given string and assigns it to the FederationSettingsId field.
 func (o *CreateOrganizationResponse) SetFederationSettingsId(v string) {
-
 	o.FederationSettingsId = &v
 }
 
@@ -131,7 +129,6 @@ func (o *CreateOrganizationResponse) HasOrgOwnerId() bool {
 
 // SetOrgOwnerId gets a reference to the given string and assigns it to the OrgOwnerId field.
 func (o *CreateOrganizationResponse) SetOrgOwnerId(v string) {
-
 	o.OrgOwnerId = &v
 }
 
@@ -165,7 +162,6 @@ func (o *CreateOrganizationResponse) HasOrganization() bool {
 
 // SetOrganization gets a reference to the given AtlasOrganization and assigns it to the Organization field.
 func (o *CreateOrganizationResponse) SetOrganization(v AtlasOrganization) {
-
 	o.Organization = &v
 }
 

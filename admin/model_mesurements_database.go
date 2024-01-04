@@ -61,7 +61,6 @@ func (o *MesurementsDatabase) HasDatabaseName() bool {
 
 // SetDatabaseName gets a reference to the given string and assigns it to the DatabaseName field.
 func (o *MesurementsDatabase) SetDatabaseName(v string) {
-
 	o.DatabaseName = &v
 }
 
@@ -95,7 +94,6 @@ func (o *MesurementsDatabase) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *MesurementsDatabase) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 

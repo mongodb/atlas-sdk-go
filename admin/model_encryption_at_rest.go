@@ -60,7 +60,6 @@ func (o *EncryptionAtRest) HasAwsKms() bool {
 
 // SetAwsKms gets a reference to the given AWSKMSConfiguration and assigns it to the AwsKms field.
 func (o *EncryptionAtRest) SetAwsKms(v AWSKMSConfiguration) {
-
 	o.AwsKms = &v
 }
 
@@ -94,7 +93,6 @@ func (o *EncryptionAtRest) HasAzureKeyVault() bool {
 
 // SetAzureKeyVault gets a reference to the given AzureKeyVault and assigns it to the AzureKeyVault field.
 func (o *EncryptionAtRest) SetAzureKeyVault(v AzureKeyVault) {
-
 	o.AzureKeyVault = &v
 }
 
@@ -128,7 +126,6 @@ func (o *EncryptionAtRest) HasGoogleCloudKms() bool {
 
 // SetGoogleCloudKms gets a reference to the given GoogleCloudKMS and assigns it to the GoogleCloudKms field.
 func (o *EncryptionAtRest) SetGoogleCloudKms(v GoogleCloudKMS) {
-
 	o.GoogleCloudKms = &v
 }
 

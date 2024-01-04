@@ -63,7 +63,6 @@ func (o *PaginatedAtlasGroup) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PaginatedAtlasGroup) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -97,7 +96,6 @@ func (o *PaginatedAtlasGroup) HasResults() bool {
 
 // SetResults gets a reference to the given []Group and assigns it to the Results field.
 func (o *PaginatedAtlasGroup) SetResults(v []Group) {
-
 	o.Results = &v
 }
 
@@ -131,7 +129,6 @@ func (o *PaginatedAtlasGroup) HasTotalCount() bool {
 
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
 func (o *PaginatedAtlasGroup) SetTotalCount(v int) {
-
 	o.TotalCount = &v
 }
 

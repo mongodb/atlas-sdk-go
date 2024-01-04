@@ -70,7 +70,6 @@ func (o *SampleDatasetStatus) HasId() bool {
 
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *SampleDatasetStatus) SetId(v string) {
-
 	o.Id = &v
 }
 
@@ -104,7 +103,6 @@ func (o *SampleDatasetStatus) HasClusterName() bool {
 
 // SetClusterName gets a reference to the given string and assigns it to the ClusterName field.
 func (o *SampleDatasetStatus) SetClusterName(v string) {
-
 	o.ClusterName = &v
 }
 
@@ -138,7 +136,6 @@ func (o *SampleDatasetStatus) HasCompleteDate() bool {
 
 // SetCompleteDate gets a reference to the given time.Time and assigns it to the CompleteDate field.
 func (o *SampleDatasetStatus) SetCompleteDate(v time.Time) {
-
 	o.CompleteDate = &v
 }
 
@@ -172,7 +169,6 @@ func (o *SampleDatasetStatus) HasCreateDate() bool {
 
 // SetCreateDate gets a reference to the given time.Time and assigns it to the CreateDate field.
 func (o *SampleDatasetStatus) SetCreateDate(v time.Time) {
-
 	o.CreateDate = &v
 }
 
@@ -206,7 +202,6 @@ func (o *SampleDatasetStatus) HasErrorMessage() bool {
 
 // SetErrorMessage gets a reference to the given string and assigns it to the ErrorMessage field.
 func (o *SampleDatasetStatus) SetErrorMessage(v string) {
-
 	o.ErrorMessage = &v
 }
 
@@ -240,7 +235,6 @@ func (o *SampleDatasetStatus) HasState() bool {
 
 // SetState gets a reference to the given string and assigns it to the State field.
 func (o *SampleDatasetStatus) SetState(v string) {
-
 	o.State = &v
 }
 

@@ -63,7 +63,6 @@ func (o *PaginatedApiAtlasServerlessBackupRestoreJob) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PaginatedApiAtlasServerlessBackupRestoreJob) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -97,7 +96,6 @@ func (o *PaginatedApiAtlasServerlessBackupRestoreJob) HasResults() bool {
 
 // SetResults gets a reference to the given []ServerlessBackupRestoreJob and assigns it to the Results field.
 func (o *PaginatedApiAtlasServerlessBackupRestoreJob) SetResults(v []ServerlessBackupRestoreJob) {
-
 	o.Results = &v
 }
 
@@ -131,7 +129,6 @@ func (o *PaginatedApiAtlasServerlessBackupRestoreJob) HasTotalCount() bool {
 
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
 func (o *PaginatedApiAtlasServerlessBackupRestoreJob) SetTotalCount(v int) {
-
 	o.TotalCount = &v
 }
 

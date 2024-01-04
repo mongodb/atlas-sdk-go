@@ -63,7 +63,6 @@ func (o *PaginatedAlertConfig) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PaginatedAlertConfig) SetLinks(v []Link) {
-
 	o.Links = &v
 }
 
@@ -97,7 +96,6 @@ func (o *PaginatedAlertConfig) HasResults() bool {
 
 // SetResults gets a reference to the given []GroupAlertsConfig and assigns it to the Results field.
 func (o *PaginatedAlertConfig) SetResults(v []GroupAlertsConfig) {
-
 	o.Results = &v
 }
 
@@ -131,7 +129,6 @@ func (o *PaginatedAlertConfig) HasTotalCount() bool {
 
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
 func (o *PaginatedAlertConfig) SetTotalCount(v int) {
-
 	o.TotalCount = &v
 }
 
