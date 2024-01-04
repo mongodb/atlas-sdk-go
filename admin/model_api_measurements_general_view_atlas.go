@@ -20,9 +20,9 @@ type ApiMeasurementsGeneralViewAtlas struct {
 	// Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
 	HostId *string `json:"hostId,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []LinkAtlas `json:"links,omitempty"`
+	Links *[]LinkAtlas `json:"links,omitempty"`
 	// List that contains measurements and their data points.
-	Measurements []MetricsMeasurementAtlas `json:"measurements,omitempty"`
+	Measurements *[]MetricsMeasurementAtlas `json:"measurements,omitempty"`
 	// Human-readable label of the disk or partition to which the measurements apply.
 	PartitionName *string `json:"partitionName,omitempty"`
 	// Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
@@ -219,12 +219,12 @@ func (o *ApiMeasurementsGeneralViewAtlas) GetLinks() []LinkAtlas {
 		var ret []LinkAtlas
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiMeasurementsGeneralViewAtlas) GetLinksOk() ([]LinkAtlas, bool) {
+func (o *ApiMeasurementsGeneralViewAtlas) GetLinksOk() (*[]LinkAtlas, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -243,7 +243,7 @@ func (o *ApiMeasurementsGeneralViewAtlas) HasLinks() bool {
 
 // SetLinks gets a reference to the given []LinkAtlas and assigns it to the Links field.
 func (o *ApiMeasurementsGeneralViewAtlas) SetLinks(v []LinkAtlas) {
-	o.Links = v
+	o.Links = &v
 }
 
 // GetMeasurements returns the Measurements field value if set, zero value otherwise
@@ -252,12 +252,12 @@ func (o *ApiMeasurementsGeneralViewAtlas) GetMeasurements() []MetricsMeasurement
 		var ret []MetricsMeasurementAtlas
 		return ret
 	}
-	return o.Measurements
+	return *o.Measurements
 }
 
 // GetMeasurementsOk returns a tuple with the Measurements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiMeasurementsGeneralViewAtlas) GetMeasurementsOk() ([]MetricsMeasurementAtlas, bool) {
+func (o *ApiMeasurementsGeneralViewAtlas) GetMeasurementsOk() (*[]MetricsMeasurementAtlas, bool) {
 	if o == nil || IsNil(o.Measurements) {
 		return nil, false
 	}
@@ -276,7 +276,7 @@ func (o *ApiMeasurementsGeneralViewAtlas) HasMeasurements() bool {
 
 // SetMeasurements gets a reference to the given []MetricsMeasurementAtlas and assigns it to the Measurements field.
 func (o *ApiMeasurementsGeneralViewAtlas) SetMeasurements(v []MetricsMeasurementAtlas) {
-	o.Measurements = v
+	o.Measurements = &v
 }
 
 // GetPartitionName returns the PartitionName field value if set, zero value otherwise

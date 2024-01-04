@@ -11,7 +11,7 @@ type TeamResponse struct {
 	// Unique 24-hexadecimal digit string that identifies this team.
 	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Human-readable label that identifies the team.
 	Name *string `json:"name,omitempty"`
 }
@@ -72,12 +72,12 @@ func (o *TeamResponse) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TeamResponse) GetLinksOk() ([]Link, bool) {
+func (o *TeamResponse) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -96,7 +96,7 @@ func (o *TeamResponse) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *TeamResponse) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise

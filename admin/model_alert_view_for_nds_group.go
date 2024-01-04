@@ -28,7 +28,7 @@ type AlertViewForNdsGroup struct {
 	// Date and time that any notifications were last sent for this alert. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC. The resource returns this parameter if MongoDB Cloud has sent notifications for this alert.
 	LastNotified *time.Time `json:"lastNotified,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the organization that owns the project to which this alert applies.
 	OrgId *string `json:"orgId,omitempty"`
 	// Date and time that this alert changed to `\"status\" : \"CLOSED\"`. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC. The resource returns this parameter once `\"status\" : \"CLOSED\"`.
@@ -47,7 +47,7 @@ type AlertViewForNdsGroup struct {
 	// Name of the metric against which Atlas checks the configured `metricThreshold.threshold`.  To learn more about the available metrics, see <a href=\"https://www.mongodb.com/docs/atlas/reference/alert-host-metrics/#std-label-measurement-types\" target=\"_blank\">Host Metrics</a>.  **NOTE**: If you set eventTypeName to OUTSIDE_SERVERLESS_METRIC_THRESHOLD, you can specify only metrics available for serverless. To learn more, see <a href=\"https://dochub.mongodb.org/core/alert-config-serverless-measurements\" target=\"_blank\">Serverless Measurements</a>.
 	MetricName *string `json:"metricName,omitempty"`
 	// List of unique 24-hexadecimal character strings that identify the replica set members that are not in PRIMARY nor SECONDARY state.
-	NonRunningHostIds []string `json:"nonRunningHostIds,omitempty"`
+	NonRunningHostIds *[]string `json:"nonRunningHostIds,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the parent cluster to which this alert applies. The parent cluster contains the sharded nodes. MongoDB Cloud returns this parameter only for alerts of events impacting sharded clusters.
 	ParentClusterId *string `json:"parentClusterId,omitempty"`
 }
@@ -372,12 +372,12 @@ func (o *AlertViewForNdsGroup) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AlertViewForNdsGroup) GetLinksOk() ([]Link, bool) {
+func (o *AlertViewForNdsGroup) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -396,7 +396,7 @@ func (o *AlertViewForNdsGroup) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *AlertViewForNdsGroup) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 // GetOrgId returns the OrgId field value if set, zero value otherwise
@@ -702,12 +702,12 @@ func (o *AlertViewForNdsGroup) GetNonRunningHostIds() []string {
 		var ret []string
 		return ret
 	}
-	return o.NonRunningHostIds
+	return *o.NonRunningHostIds
 }
 
 // GetNonRunningHostIdsOk returns a tuple with the NonRunningHostIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AlertViewForNdsGroup) GetNonRunningHostIdsOk() ([]string, bool) {
+func (o *AlertViewForNdsGroup) GetNonRunningHostIdsOk() (*[]string, bool) {
 	if o == nil || IsNil(o.NonRunningHostIds) {
 		return nil, false
 	}
@@ -726,7 +726,7 @@ func (o *AlertViewForNdsGroup) HasNonRunningHostIds() bool {
 
 // SetNonRunningHostIds gets a reference to the given []string and assigns it to the NonRunningHostIds field.
 func (o *AlertViewForNdsGroup) SetNonRunningHostIds(v []string) {
-	o.NonRunningHostIds = v
+	o.NonRunningHostIds = &v
 }
 
 // GetParentClusterId returns the ParentClusterId field value if set, zero value otherwise

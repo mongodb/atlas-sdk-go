@@ -9,7 +9,7 @@ import (
 // ApiSearchDeploymentRequest struct for ApiSearchDeploymentRequest
 type ApiSearchDeploymentRequest struct {
 	// List of settings that configure the search nodes for your cluster.
-	Specs []ApiSearchDeploymentSpec `json:"specs,omitempty"`
+	Specs *[]ApiSearchDeploymentSpec `json:"specs,omitempty"`
 }
 
 // NewApiSearchDeploymentRequest instantiates a new ApiSearchDeploymentRequest object
@@ -35,12 +35,12 @@ func (o *ApiSearchDeploymentRequest) GetSpecs() []ApiSearchDeploymentSpec {
 		var ret []ApiSearchDeploymentSpec
 		return ret
 	}
-	return o.Specs
+	return *o.Specs
 }
 
 // GetSpecsOk returns a tuple with the Specs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiSearchDeploymentRequest) GetSpecsOk() ([]ApiSearchDeploymentSpec, bool) {
+func (o *ApiSearchDeploymentRequest) GetSpecsOk() (*[]ApiSearchDeploymentSpec, bool) {
 	if o == nil || IsNil(o.Specs) {
 		return nil, false
 	}
@@ -59,7 +59,7 @@ func (o *ApiSearchDeploymentRequest) HasSpecs() bool {
 
 // SetSpecs gets a reference to the given []ApiSearchDeploymentSpec and assigns it to the Specs field.
 func (o *ApiSearchDeploymentRequest) SetSpecs(v []ApiSearchDeploymentSpec) {
-	o.Specs = v
+	o.Specs = &v
 }
 
 func (o ApiSearchDeploymentRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {

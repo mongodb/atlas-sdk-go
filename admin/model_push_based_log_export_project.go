@@ -16,7 +16,7 @@ type PushBasedLogExportProject struct {
 	// ID of the AWS IAM role that will be used to write to the S3 bucket.
 	IamRoleId *string `json:"iamRoleId,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// S3 directory in which vector will write to in order to store the logs.
 	PrefixPath *string `json:"prefixPath,omitempty"`
 	// Describes whether or not the feature is enabled and what status it is in.
@@ -145,12 +145,12 @@ func (o *PushBasedLogExportProject) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PushBasedLogExportProject) GetLinksOk() ([]Link, bool) {
+func (o *PushBasedLogExportProject) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -169,7 +169,7 @@ func (o *PushBasedLogExportProject) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PushBasedLogExportProject) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 // GetPrefixPath returns the PrefixPath field value if set, zero value otherwise

@@ -9,9 +9,9 @@ import (
 // PaginatedOrgGroup struct for PaginatedOrgGroup
 type PaginatedOrgGroup struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud providers when completing this request.
-	Results []OrgGroup `json:"results,omitempty"`
+	Results *[]OrgGroup `json:"results,omitempty"`
 	// Number of documents returned in this response.
 	TotalCount *int `json:"totalCount,omitempty"`
 }
@@ -39,12 +39,12 @@ func (o *PaginatedOrgGroup) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedOrgGroup) GetLinksOk() ([]Link, bool) {
+func (o *PaginatedOrgGroup) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -63,7 +63,7 @@ func (o *PaginatedOrgGroup) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PaginatedOrgGroup) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 // GetResults returns the Results field value if set, zero value otherwise
@@ -72,12 +72,12 @@ func (o *PaginatedOrgGroup) GetResults() []OrgGroup {
 		var ret []OrgGroup
 		return ret
 	}
-	return o.Results
+	return *o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedOrgGroup) GetResultsOk() ([]OrgGroup, bool) {
+func (o *PaginatedOrgGroup) GetResultsOk() (*[]OrgGroup, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -96,7 +96,7 @@ func (o *PaginatedOrgGroup) HasResults() bool {
 
 // SetResults gets a reference to the given []OrgGroup and assigns it to the Results field.
 func (o *PaginatedOrgGroup) SetResults(v []OrgGroup) {
-	o.Results = v
+	o.Results = &v
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise

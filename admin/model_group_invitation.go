@@ -22,9 +22,9 @@ type GroupInvitation struct {
 	// Email address of the MongoDB Cloud user who sent the invitation.
 	InviterUsername *string `json:"inviterUsername,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// One or more organization or project level roles to assign to the MongoDB Cloud user.
-	Roles []string `json:"roles,omitempty"`
+	Roles *[]string `json:"roles,omitempty"`
 	// Email address of the MongoDB Cloud user invited to join the project.
 	Username *string `json:"username,omitempty"`
 }
@@ -250,12 +250,12 @@ func (o *GroupInvitation) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupInvitation) GetLinksOk() ([]Link, bool) {
+func (o *GroupInvitation) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -274,7 +274,7 @@ func (o *GroupInvitation) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *GroupInvitation) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 // GetRoles returns the Roles field value if set, zero value otherwise
@@ -283,12 +283,12 @@ func (o *GroupInvitation) GetRoles() []string {
 		var ret []string
 		return ret
 	}
-	return o.Roles
+	return *o.Roles
 }
 
 // GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupInvitation) GetRolesOk() ([]string, bool) {
+func (o *GroupInvitation) GetRolesOk() (*[]string, bool) {
 	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
@@ -307,7 +307,7 @@ func (o *GroupInvitation) HasRoles() bool {
 
 // SetRoles gets a reference to the given []string and assigns it to the Roles field.
 func (o *GroupInvitation) SetRoles(v []string) {
-	o.Roles = v
+	o.Roles = &v
 }
 
 // GetUsername returns the Username field value if set, zero value otherwise

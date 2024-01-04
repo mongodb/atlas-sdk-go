@@ -25,11 +25,11 @@ type BackupRestoreJob struct {
 	// Unique 24-hexadecimal digit string that identifies the project that owns the snapshots.
 	GroupId *string `json:"groupId,omitempty"`
 	// List that contains documents mapping each restore file to a hashed checksum. This parameter applies after you download the corresponding **delivery.url**. If `\"methodName\" : \"HTTP\"`, this list contains one object that represents the hash of the **.tar.gz** file.
-	Hashes []RestoreJobFileHash `json:"hashes,omitempty"`
+	Hashes *[]RestoreJobFileHash `json:"hashes,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the restore job.
 	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Universally Unique Identifier (UUID) that identifies the Key Management Interoperability (KMIP) master key used to encrypt the snapshot data. This parameter applies only when `\"encryptionEnabled\" : \"true\"`.
 	MasterKeyUUID *string `json:"masterKeyUUID,omitempty"`
 	// Thirty-two-bit incrementing ordinal that represents operations within a given second. When paired with **oplogTs**, this represents the point in time to which MongoDB Cloud restores your data. This parameter applies when `\"delivery.methodName\" : \"AUTOMATED_RESTORE\"`.  - If you set **oplogInc**, you must set **oplogTs**, and can't set **checkpointId**, **snapshotId**, or **pointInTimeUTCMillis**. - If you provide this parameter, this endpoint restores all data up to and including this Oplog timestamp to the database you specified in the **delivery** object.
@@ -324,12 +324,12 @@ func (o *BackupRestoreJob) GetHashes() []RestoreJobFileHash {
 		var ret []RestoreJobFileHash
 		return ret
 	}
-	return o.Hashes
+	return *o.Hashes
 }
 
 // GetHashesOk returns a tuple with the Hashes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BackupRestoreJob) GetHashesOk() ([]RestoreJobFileHash, bool) {
+func (o *BackupRestoreJob) GetHashesOk() (*[]RestoreJobFileHash, bool) {
 	if o == nil || IsNil(o.Hashes) {
 		return nil, false
 	}
@@ -348,7 +348,7 @@ func (o *BackupRestoreJob) HasHashes() bool {
 
 // SetHashes gets a reference to the given []RestoreJobFileHash and assigns it to the Hashes field.
 func (o *BackupRestoreJob) SetHashes(v []RestoreJobFileHash) {
-	o.Hashes = v
+	o.Hashes = &v
 }
 
 // GetId returns the Id field value if set, zero value otherwise
@@ -390,12 +390,12 @@ func (o *BackupRestoreJob) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BackupRestoreJob) GetLinksOk() ([]Link, bool) {
+func (o *BackupRestoreJob) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -414,7 +414,7 @@ func (o *BackupRestoreJob) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *BackupRestoreJob) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 // GetMasterKeyUUID returns the MasterKeyUUID field value if set, zero value otherwise

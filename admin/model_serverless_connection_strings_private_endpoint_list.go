@@ -9,7 +9,7 @@ import (
 // ServerlessConnectionStringsPrivateEndpointList Private endpoint connection string that you can use to connect to this serverless instance through a private endpoint.
 type ServerlessConnectionStringsPrivateEndpointList struct {
 	// List that contains the private endpoints through which you connect to MongoDB Cloud when you use **connectionStrings.privateEndpoint[n].srvConnectionString**.
-	Endpoints []ServerlessConnectionStringsPrivateEndpointItem `json:"endpoints,omitempty"`
+	Endpoints *[]ServerlessConnectionStringsPrivateEndpointItem `json:"endpoints,omitempty"`
 	// Private endpoint-aware connection string that uses the `mongodb+srv://` protocol to connect to MongoDB Cloud through a private endpoint. The `mongodb+srv` protocol tells the driver to look up the seed list of hosts in the Domain Name System (DNS).
 	SrvConnectionString *string `json:"srvConnectionString,omitempty"`
 	// MongoDB process type to which your application connects.
@@ -39,12 +39,12 @@ func (o *ServerlessConnectionStringsPrivateEndpointList) GetEndpoints() []Server
 		var ret []ServerlessConnectionStringsPrivateEndpointItem
 		return ret
 	}
-	return o.Endpoints
+	return *o.Endpoints
 }
 
 // GetEndpointsOk returns a tuple with the Endpoints field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServerlessConnectionStringsPrivateEndpointList) GetEndpointsOk() ([]ServerlessConnectionStringsPrivateEndpointItem, bool) {
+func (o *ServerlessConnectionStringsPrivateEndpointList) GetEndpointsOk() (*[]ServerlessConnectionStringsPrivateEndpointItem, bool) {
 	if o == nil || IsNil(o.Endpoints) {
 		return nil, false
 	}
@@ -63,7 +63,7 @@ func (o *ServerlessConnectionStringsPrivateEndpointList) HasEndpoints() bool {
 
 // SetEndpoints gets a reference to the given []ServerlessConnectionStringsPrivateEndpointItem and assigns it to the Endpoints field.
 func (o *ServerlessConnectionStringsPrivateEndpointList) SetEndpoints(v []ServerlessConnectionStringsPrivateEndpointItem) {
-	o.Endpoints = v
+	o.Endpoints = &v
 }
 
 // GetSrvConnectionString returns the SrvConnectionString field value if set, zero value otherwise

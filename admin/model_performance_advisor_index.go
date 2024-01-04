@@ -13,9 +13,9 @@ type PerformanceAdvisorIndex struct {
 	// Unique 24-hexadecimal digit string that identifies this index.
 	Id *string `json:"id,omitempty"`
 	// List that contains unique 24-hexadecimal character string that identifies the query shapes in this response that the Performance Advisor suggests.
-	Impact []string `json:"impact,omitempty"`
+	Impact *[]string `json:"impact,omitempty"`
 	// List that contains documents that specify a key in the index and its sort order.
-	Index []map[string]int `json:"index,omitempty"`
+	Index *[]map[string]int `json:"index,omitempty"`
 	// Human-readable label that identifies the namespace on the specified host. The resource expresses this parameter value as `<database>.<collection>`.
 	Namespace *string `json:"namespace,omitempty"`
 	// Estimated performance improvement that the suggested index provides. This value corresponds to **Impact** in the Performance Advisor user interface.
@@ -111,12 +111,12 @@ func (o *PerformanceAdvisorIndex) GetImpact() []string {
 		var ret []string
 		return ret
 	}
-	return o.Impact
+	return *o.Impact
 }
 
 // GetImpactOk returns a tuple with the Impact field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PerformanceAdvisorIndex) GetImpactOk() ([]string, bool) {
+func (o *PerformanceAdvisorIndex) GetImpactOk() (*[]string, bool) {
 	if o == nil || IsNil(o.Impact) {
 		return nil, false
 	}
@@ -135,7 +135,7 @@ func (o *PerformanceAdvisorIndex) HasImpact() bool {
 
 // SetImpact gets a reference to the given []string and assigns it to the Impact field.
 func (o *PerformanceAdvisorIndex) SetImpact(v []string) {
-	o.Impact = v
+	o.Impact = &v
 }
 
 // GetIndex returns the Index field value if set, zero value otherwise
@@ -144,12 +144,12 @@ func (o *PerformanceAdvisorIndex) GetIndex() []map[string]int {
 		var ret []map[string]int
 		return ret
 	}
-	return o.Index
+	return *o.Index
 }
 
 // GetIndexOk returns a tuple with the Index field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PerformanceAdvisorIndex) GetIndexOk() ([]map[string]int, bool) {
+func (o *PerformanceAdvisorIndex) GetIndexOk() (*[]map[string]int, bool) {
 	if o == nil || IsNil(o.Index) {
 		return nil, false
 	}
@@ -168,7 +168,7 @@ func (o *PerformanceAdvisorIndex) HasIndex() bool {
 
 // SetIndex gets a reference to the given []map[string]int and assigns it to the Index field.
 func (o *PerformanceAdvisorIndex) SetIndex(v []map[string]int) {
-	o.Index = v
+	o.Index = &v
 }
 
 // GetNamespace returns the Namespace field value if set, zero value otherwise

@@ -20,7 +20,7 @@ type ApiHostViewAtlas struct {
 	// Date and time when MongoDB Cloud received the last ping for this MongoDB process. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	LastPing *time.Time `json:"lastPing,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []LinkAtlas `json:"links,omitempty"`
+	Links *[]LinkAtlas `json:"links,omitempty"`
 	// Internet Assigned Numbers Authority (IANA) port on which the MongoDB process listens for requests.
 	Port *int `json:"port,omitempty"`
 	// Human-readable label that identifies the replica set that contains this process. This resource returns this parameter if this process belongs to a replica set.
@@ -223,12 +223,12 @@ func (o *ApiHostViewAtlas) GetLinks() []LinkAtlas {
 		var ret []LinkAtlas
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiHostViewAtlas) GetLinksOk() ([]LinkAtlas, bool) {
+func (o *ApiHostViewAtlas) GetLinksOk() (*[]LinkAtlas, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -247,7 +247,7 @@ func (o *ApiHostViewAtlas) HasLinks() bool {
 
 // SetLinks gets a reference to the given []LinkAtlas and assigns it to the Links field.
 func (o *ApiHostViewAtlas) SetLinks(v []LinkAtlas) {
-	o.Links = v
+	o.Links = &v
 }
 
 // GetPort returns the Port field value if set, zero value otherwise

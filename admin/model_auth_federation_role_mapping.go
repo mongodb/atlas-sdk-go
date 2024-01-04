@@ -13,7 +13,7 @@ type AuthFederationRoleMapping struct {
 	// Unique 24-hexadecimal digit string that identifies this role mapping.
 	Id *string `json:"id,omitempty"`
 	// Atlas roles and the unique identifiers of the groups and organizations associated with each role.
-	RoleAssignments []RoleAssignment `json:"roleAssignments,omitempty"`
+	RoleAssignments *[]RoleAssignment `json:"roleAssignments,omitempty"`
 }
 
 // NewAuthFederationRoleMapping instantiates a new AuthFederationRoleMapping object
@@ -97,12 +97,12 @@ func (o *AuthFederationRoleMapping) GetRoleAssignments() []RoleAssignment {
 		var ret []RoleAssignment
 		return ret
 	}
-	return o.RoleAssignments
+	return *o.RoleAssignments
 }
 
 // GetRoleAssignmentsOk returns a tuple with the RoleAssignments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthFederationRoleMapping) GetRoleAssignmentsOk() ([]RoleAssignment, bool) {
+func (o *AuthFederationRoleMapping) GetRoleAssignmentsOk() (*[]RoleAssignment, bool) {
 	if o == nil || IsNil(o.RoleAssignments) {
 		return nil, false
 	}
@@ -121,7 +121,7 @@ func (o *AuthFederationRoleMapping) HasRoleAssignments() bool {
 
 // SetRoleAssignments gets a reference to the given []RoleAssignment and assigns it to the RoleAssignments field.
 func (o *AuthFederationRoleMapping) SetRoleAssignments(v []RoleAssignment) {
-	o.RoleAssignments = v
+	o.RoleAssignments = &v
 }
 
 func (o AuthFederationRoleMapping) MarshalJSONWithoutReadOnly() ([]byte, error) {

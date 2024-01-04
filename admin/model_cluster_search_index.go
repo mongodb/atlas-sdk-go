@@ -23,13 +23,13 @@ type ClusterSearchIndex struct {
 	// Specific pre-defined method chosen to convert database field text into searchable words. This conversion reduces the text of fields into the smallest units of text. These units are called a **term** or **token**. This process, known as tokenization, involves a variety of changes made to the text in fields:  - extracting words - removing punctuation - removing accents - changing to lowercase - removing common words - reducing words to their root form (stemming) - changing words to their base form (lemmatization)  MongoDB Cloud uses the selected process to build the Atlas Search index.
 	Analyzer *string `json:"analyzer,omitempty"`
 	// List of user-defined methods to convert database field text into searchable words.
-	Analyzers []ApiAtlasFTSAnalyzers `json:"analyzers,omitempty"`
-	Mappings  *ApiAtlasFTSMappings   `json:"mappings,omitempty"`
+	Analyzers *[]ApiAtlasFTSAnalyzers `json:"analyzers,omitempty"`
+	Mappings  *ApiAtlasFTSMappings    `json:"mappings,omitempty"`
 	// Method applied to identify words when searching this index.
 	SearchAnalyzer *string `json:"searchAnalyzer,omitempty"`
 	// Rule sets that map words to their synonyms in this index.
-	Synonyms []SearchSynonymMappingDefinition `json:"synonyms,omitempty"`
-	Fields   []map[string]interface{}         `json:"fields,omitempty"`
+	Synonyms *[]SearchSynonymMappingDefinition `json:"synonyms,omitempty"`
+	Fields   *[]map[string]interface{}         `json:"fields,omitempty"`
 }
 
 // NewClusterSearchIndex instantiates a new ClusterSearchIndex object
@@ -270,12 +270,12 @@ func (o *ClusterSearchIndex) GetAnalyzers() []ApiAtlasFTSAnalyzers {
 		var ret []ApiAtlasFTSAnalyzers
 		return ret
 	}
-	return o.Analyzers
+	return *o.Analyzers
 }
 
 // GetAnalyzersOk returns a tuple with the Analyzers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterSearchIndex) GetAnalyzersOk() ([]ApiAtlasFTSAnalyzers, bool) {
+func (o *ClusterSearchIndex) GetAnalyzersOk() (*[]ApiAtlasFTSAnalyzers, bool) {
 	if o == nil || IsNil(o.Analyzers) {
 		return nil, false
 	}
@@ -294,7 +294,7 @@ func (o *ClusterSearchIndex) HasAnalyzers() bool {
 
 // SetAnalyzers gets a reference to the given []ApiAtlasFTSAnalyzers and assigns it to the Analyzers field.
 func (o *ClusterSearchIndex) SetAnalyzers(v []ApiAtlasFTSAnalyzers) {
-	o.Analyzers = v
+	o.Analyzers = &v
 }
 
 // GetMappings returns the Mappings field value if set, zero value otherwise
@@ -369,12 +369,12 @@ func (o *ClusterSearchIndex) GetSynonyms() []SearchSynonymMappingDefinition {
 		var ret []SearchSynonymMappingDefinition
 		return ret
 	}
-	return o.Synonyms
+	return *o.Synonyms
 }
 
 // GetSynonymsOk returns a tuple with the Synonyms field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterSearchIndex) GetSynonymsOk() ([]SearchSynonymMappingDefinition, bool) {
+func (o *ClusterSearchIndex) GetSynonymsOk() (*[]SearchSynonymMappingDefinition, bool) {
 	if o == nil || IsNil(o.Synonyms) {
 		return nil, false
 	}
@@ -393,7 +393,7 @@ func (o *ClusterSearchIndex) HasSynonyms() bool {
 
 // SetSynonyms gets a reference to the given []SearchSynonymMappingDefinition and assigns it to the Synonyms field.
 func (o *ClusterSearchIndex) SetSynonyms(v []SearchSynonymMappingDefinition) {
-	o.Synonyms = v
+	o.Synonyms = &v
 }
 
 // GetFields returns the Fields field value if set, zero value otherwise
@@ -402,12 +402,12 @@ func (o *ClusterSearchIndex) GetFields() []map[string]interface{} {
 		var ret []map[string]interface{}
 		return ret
 	}
-	return o.Fields
+	return *o.Fields
 }
 
 // GetFieldsOk returns a tuple with the Fields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterSearchIndex) GetFieldsOk() ([]map[string]interface{}, bool) {
+func (o *ClusterSearchIndex) GetFieldsOk() (*[]map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Fields) {
 		return nil, false
 	}
@@ -426,7 +426,7 @@ func (o *ClusterSearchIndex) HasFields() bool {
 
 // SetFields gets a reference to the given []map[string]interface{} and assigns it to the Fields field.
 func (o *ClusterSearchIndex) SetFields(v []map[string]interface{}) {
-	o.Fields = v
+	o.Fields = &v
 }
 
 func (o ClusterSearchIndex) MarshalJSONWithoutReadOnly() ([]byte, error) {

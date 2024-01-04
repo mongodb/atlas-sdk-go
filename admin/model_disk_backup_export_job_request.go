@@ -9,11 +9,11 @@ import (
 // DiskBackupExportJobRequest struct for DiskBackupExportJobRequest
 type DiskBackupExportJobRequest struct {
 	// Collection of key-value pairs that represent custom data to add to the metadata file that MongoDB Cloud uploads to the bucket when the export job finishes.
-	CustomData []BackupLabel `json:"customData,omitempty"`
+	CustomData *[]BackupLabel `json:"customData,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the AWS bucket to which MongoDB Cloud exports the Cloud Backup snapshot.
 	ExportBucketId string `json:"exportBucketId"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the Cloud Backup snasphot to export.
 	SnapshotId string `json:"snapshotId"`
 }
@@ -43,12 +43,12 @@ func (o *DiskBackupExportJobRequest) GetCustomData() []BackupLabel {
 		var ret []BackupLabel
 		return ret
 	}
-	return o.CustomData
+	return *o.CustomData
 }
 
 // GetCustomDataOk returns a tuple with the CustomData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupExportJobRequest) GetCustomDataOk() ([]BackupLabel, bool) {
+func (o *DiskBackupExportJobRequest) GetCustomDataOk() (*[]BackupLabel, bool) {
 	if o == nil || IsNil(o.CustomData) {
 		return nil, false
 	}
@@ -67,7 +67,7 @@ func (o *DiskBackupExportJobRequest) HasCustomData() bool {
 
 // SetCustomData gets a reference to the given []BackupLabel and assigns it to the CustomData field.
 func (o *DiskBackupExportJobRequest) SetCustomData(v []BackupLabel) {
-	o.CustomData = v
+	o.CustomData = &v
 }
 
 // GetExportBucketId returns the ExportBucketId field value
@@ -100,12 +100,12 @@ func (o *DiskBackupExportJobRequest) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupExportJobRequest) GetLinksOk() ([]Link, bool) {
+func (o *DiskBackupExportJobRequest) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -124,7 +124,7 @@ func (o *DiskBackupExportJobRequest) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *DiskBackupExportJobRequest) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 // GetSnapshotId returns the SnapshotId field value

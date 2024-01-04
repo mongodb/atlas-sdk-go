@@ -11,9 +11,9 @@ type ClusterIPAddresses struct {
 	// Human-readable label that identifies the cluster.
 	ClusterName *string `json:"clusterName,omitempty"`
 	// List of inbound IP addresses associated with the cluster.
-	Inbound []string `json:"inbound,omitempty"`
+	Inbound *[]string `json:"inbound,omitempty"`
 	// List of outbound IP addresses associated with the cluster.
-	Outbound []string `json:"outbound,omitempty"`
+	Outbound *[]string `json:"outbound,omitempty"`
 }
 
 // NewClusterIPAddresses instantiates a new ClusterIPAddresses object
@@ -72,12 +72,12 @@ func (o *ClusterIPAddresses) GetInbound() []string {
 		var ret []string
 		return ret
 	}
-	return o.Inbound
+	return *o.Inbound
 }
 
 // GetInboundOk returns a tuple with the Inbound field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterIPAddresses) GetInboundOk() ([]string, bool) {
+func (o *ClusterIPAddresses) GetInboundOk() (*[]string, bool) {
 	if o == nil || IsNil(o.Inbound) {
 		return nil, false
 	}
@@ -96,7 +96,7 @@ func (o *ClusterIPAddresses) HasInbound() bool {
 
 // SetInbound gets a reference to the given []string and assigns it to the Inbound field.
 func (o *ClusterIPAddresses) SetInbound(v []string) {
-	o.Inbound = v
+	o.Inbound = &v
 }
 
 // GetOutbound returns the Outbound field value if set, zero value otherwise
@@ -105,12 +105,12 @@ func (o *ClusterIPAddresses) GetOutbound() []string {
 		var ret []string
 		return ret
 	}
-	return o.Outbound
+	return *o.Outbound
 }
 
 // GetOutboundOk returns a tuple with the Outbound field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterIPAddresses) GetOutboundOk() ([]string, bool) {
+func (o *ClusterIPAddresses) GetOutboundOk() (*[]string, bool) {
 	if o == nil || IsNil(o.Outbound) {
 		return nil, false
 	}
@@ -129,7 +129,7 @@ func (o *ClusterIPAddresses) HasOutbound() bool {
 
 // SetOutbound gets a reference to the given []string and assigns it to the Outbound field.
 func (o *ClusterIPAddresses) SetOutbound(v []string) {
-	o.Outbound = v
+	o.Outbound = &v
 }
 
 func (o ClusterIPAddresses) MarshalJSONWithoutReadOnly() ([]byte, error) {

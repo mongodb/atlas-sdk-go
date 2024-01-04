@@ -29,7 +29,7 @@ type CloudCluster struct {
 	// Human-readable label that indicates the cluster type.
 	Type *string `json:"type,omitempty"`
 	// List that contains the versions of MongoDB that each node in the cluster runs.
-	Versions []string `json:"versions,omitempty"`
+	Versions *[]string `json:"versions,omitempty"`
 }
 
 // NewCloudCluster instantiates a new CloudCluster object
@@ -385,12 +385,12 @@ func (o *CloudCluster) GetVersions() []string {
 		var ret []string
 		return ret
 	}
-	return o.Versions
+	return *o.Versions
 }
 
 // GetVersionsOk returns a tuple with the Versions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudCluster) GetVersionsOk() ([]string, bool) {
+func (o *CloudCluster) GetVersionsOk() (*[]string, bool) {
 	if o == nil || IsNil(o.Versions) {
 		return nil, false
 	}
@@ -409,7 +409,7 @@ func (o *CloudCluster) HasVersions() bool {
 
 // SetVersions gets a reference to the given []string and assigns it to the Versions field.
 func (o *CloudCluster) SetVersions(v []string) {
-	o.Versions = v
+	o.Versions = &v
 }
 
 func (o CloudCluster) MarshalJSONWithoutReadOnly() ([]byte, error) {

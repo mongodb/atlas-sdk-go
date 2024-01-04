@@ -9,7 +9,7 @@ import (
 // IdentityProviderUpdate struct for IdentityProviderUpdate
 type IdentityProviderUpdate struct {
 	// List that contains the domains associated with the identity provider.
-	AssociatedDomains []string `json:"associatedDomains,omitempty"`
+	AssociatedDomains *[]string `json:"associatedDomains,omitempty"`
 	// The description for the identity provider.
 	Description *string `json:"description,omitempty"`
 	// Human-readable label that identifies the identity provider.
@@ -19,13 +19,13 @@ type IdentityProviderUpdate struct {
 	// The protocol for the identity provider.
 	Protocol *string `json:"protocol,omitempty"`
 	// Audience claim for the identity provider.
-	AudienceClaim []string `json:"audienceClaim,omitempty"`
+	AudienceClaim *[]string `json:"audienceClaim,omitempty"`
 	// Client ID for the identity provider.
 	ClientId *string `json:"clientId,omitempty"`
 	// Groups claim for the identity provider.
 	GroupsClaim *string `json:"groupsClaim,omitempty"`
 	// Requested scopes for the identity provider.
-	RequestedScopes []string `json:"requestedScopes,omitempty"`
+	RequestedScopes *[]string `json:"requestedScopes,omitempty"`
 	// User claim for the identity provider.
 	UserClaim   *string      `json:"userClaim,omitempty"`
 	PemFileInfo *PemFileInfo `json:"pemFileInfo,omitempty"`
@@ -66,12 +66,12 @@ func (o *IdentityProviderUpdate) GetAssociatedDomains() []string {
 		var ret []string
 		return ret
 	}
-	return o.AssociatedDomains
+	return *o.AssociatedDomains
 }
 
 // GetAssociatedDomainsOk returns a tuple with the AssociatedDomains field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityProviderUpdate) GetAssociatedDomainsOk() ([]string, bool) {
+func (o *IdentityProviderUpdate) GetAssociatedDomainsOk() (*[]string, bool) {
 	if o == nil || IsNil(o.AssociatedDomains) {
 		return nil, false
 	}
@@ -90,7 +90,7 @@ func (o *IdentityProviderUpdate) HasAssociatedDomains() bool {
 
 // SetAssociatedDomains gets a reference to the given []string and assigns it to the AssociatedDomains field.
 func (o *IdentityProviderUpdate) SetAssociatedDomains(v []string) {
-	o.AssociatedDomains = v
+	o.AssociatedDomains = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise
@@ -231,12 +231,12 @@ func (o *IdentityProviderUpdate) GetAudienceClaim() []string {
 		var ret []string
 		return ret
 	}
-	return o.AudienceClaim
+	return *o.AudienceClaim
 }
 
 // GetAudienceClaimOk returns a tuple with the AudienceClaim field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityProviderUpdate) GetAudienceClaimOk() ([]string, bool) {
+func (o *IdentityProviderUpdate) GetAudienceClaimOk() (*[]string, bool) {
 	if o == nil || IsNil(o.AudienceClaim) {
 		return nil, false
 	}
@@ -255,7 +255,7 @@ func (o *IdentityProviderUpdate) HasAudienceClaim() bool {
 
 // SetAudienceClaim gets a reference to the given []string and assigns it to the AudienceClaim field.
 func (o *IdentityProviderUpdate) SetAudienceClaim(v []string) {
-	o.AudienceClaim = v
+	o.AudienceClaim = &v
 }
 
 // GetClientId returns the ClientId field value if set, zero value otherwise
@@ -330,12 +330,12 @@ func (o *IdentityProviderUpdate) GetRequestedScopes() []string {
 		var ret []string
 		return ret
 	}
-	return o.RequestedScopes
+	return *o.RequestedScopes
 }
 
 // GetRequestedScopesOk returns a tuple with the RequestedScopes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityProviderUpdate) GetRequestedScopesOk() ([]string, bool) {
+func (o *IdentityProviderUpdate) GetRequestedScopesOk() (*[]string, bool) {
 	if o == nil || IsNil(o.RequestedScopes) {
 		return nil, false
 	}
@@ -354,7 +354,7 @@ func (o *IdentityProviderUpdate) HasRequestedScopes() bool {
 
 // SetRequestedScopes gets a reference to the given []string and assigns it to the RequestedScopes field.
 func (o *IdentityProviderUpdate) SetRequestedScopes(v []string) {
-	o.RequestedScopes = v
+	o.RequestedScopes = &v
 }
 
 // GetUserClaim returns the UserClaim field value if set, zero value otherwise

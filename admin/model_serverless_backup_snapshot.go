@@ -18,7 +18,7 @@ type ServerlessBackupSnapshot struct {
 	// Unique 24-hexadecimal digit string that identifies the snapshot.
 	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Version of the MongoDB host that this snapshot backs up.
 	MongodVersion *string `json:"mongodVersion,omitempty"`
 	// Human-readable label given to the serverless instance from which MongoDB Cloud took this snapshot.
@@ -186,12 +186,12 @@ func (o *ServerlessBackupSnapshot) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServerlessBackupSnapshot) GetLinksOk() ([]Link, bool) {
+func (o *ServerlessBackupSnapshot) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -210,7 +210,7 @@ func (o *ServerlessBackupSnapshot) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *ServerlessBackupSnapshot) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 // GetMongodVersion returns the MongodVersion field value if set, zero value otherwise

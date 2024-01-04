@@ -9,7 +9,7 @@ import (
 // CloudProviderAccessRoles struct for CloudProviderAccessRoles
 type CloudProviderAccessRoles struct {
 	// List that contains the Amazon Web Services (AWS) IAM roles registered and authorized with MongoDB Cloud.
-	AwsIamRoles []CloudProviderAccessAWSIAMRole `json:"awsIamRoles,omitempty"`
+	AwsIamRoles *[]CloudProviderAccessAWSIAMRole `json:"awsIamRoles,omitempty"`
 }
 
 // NewCloudProviderAccessRoles instantiates a new CloudProviderAccessRoles object
@@ -35,12 +35,12 @@ func (o *CloudProviderAccessRoles) GetAwsIamRoles() []CloudProviderAccessAWSIAMR
 		var ret []CloudProviderAccessAWSIAMRole
 		return ret
 	}
-	return o.AwsIamRoles
+	return *o.AwsIamRoles
 }
 
 // GetAwsIamRolesOk returns a tuple with the AwsIamRoles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudProviderAccessRoles) GetAwsIamRolesOk() ([]CloudProviderAccessAWSIAMRole, bool) {
+func (o *CloudProviderAccessRoles) GetAwsIamRolesOk() (*[]CloudProviderAccessAWSIAMRole, bool) {
 	if o == nil || IsNil(o.AwsIamRoles) {
 		return nil, false
 	}
@@ -59,7 +59,7 @@ func (o *CloudProviderAccessRoles) HasAwsIamRoles() bool {
 
 // SetAwsIamRoles gets a reference to the given []CloudProviderAccessAWSIAMRole and assigns it to the AwsIamRoles field.
 func (o *CloudProviderAccessRoles) SetAwsIamRoles(v []CloudProviderAccessAWSIAMRole) {
-	o.AwsIamRoles = v
+	o.AwsIamRoles = &v
 }
 
 func (o CloudProviderAccessRoles) MarshalJSONWithoutReadOnly() ([]byte, error) {

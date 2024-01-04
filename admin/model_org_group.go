@@ -9,7 +9,7 @@ import (
 // OrgGroup struct for OrgGroup
 type OrgGroup struct {
 	// Settings that describe the clusters in each project that the API key is authorized to view.
-	Clusters []CloudCluster `json:"clusters,omitempty"`
+	Clusters *[]CloudCluster `json:"clusters,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project.
 	GroupId *string `json:"groupId,omitempty"`
 	// Human-readable label that identifies the project.
@@ -21,7 +21,7 @@ type OrgGroup struct {
 	// Human-readable label that indicates the plan type.
 	PlanType *string `json:"planType,omitempty"`
 	// List of human-readable labels that categorize the specified project. MongoDB Cloud returns an empty array.
-	Tags []string `json:"tags,omitempty"`
+	Tags *[]string `json:"tags,omitempty"`
 }
 
 // NewOrgGroup instantiates a new OrgGroup object
@@ -47,12 +47,12 @@ func (o *OrgGroup) GetClusters() []CloudCluster {
 		var ret []CloudCluster
 		return ret
 	}
-	return o.Clusters
+	return *o.Clusters
 }
 
 // GetClustersOk returns a tuple with the Clusters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrgGroup) GetClustersOk() ([]CloudCluster, bool) {
+func (o *OrgGroup) GetClustersOk() (*[]CloudCluster, bool) {
 	if o == nil || IsNil(o.Clusters) {
 		return nil, false
 	}
@@ -71,7 +71,7 @@ func (o *OrgGroup) HasClusters() bool {
 
 // SetClusters gets a reference to the given []CloudCluster and assigns it to the Clusters field.
 func (o *OrgGroup) SetClusters(v []CloudCluster) {
-	o.Clusters = v
+	o.Clusters = &v
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -245,12 +245,12 @@ func (o *OrgGroup) GetTags() []string {
 		var ret []string
 		return ret
 	}
-	return o.Tags
+	return *o.Tags
 }
 
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrgGroup) GetTagsOk() ([]string, bool) {
+func (o *OrgGroup) GetTagsOk() (*[]string, bool) {
 	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
@@ -269,7 +269,7 @@ func (o *OrgGroup) HasTags() bool {
 
 // SetTags gets a reference to the given []string and assigns it to the Tags field.
 func (o *OrgGroup) SetTags(v []string) {
-	o.Tags = v
+	o.Tags = &v
 }
 
 func (o OrgGroup) MarshalJSONWithoutReadOnly() ([]byte, error) {

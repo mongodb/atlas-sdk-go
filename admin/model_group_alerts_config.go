@@ -20,11 +20,11 @@ type GroupAlertsConfig struct {
 	// Unique 24-hexadecimal digit string that identifies this alert configuration.
 	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// No matchers are available for these alert types. The list is always empty.  Alternatively: List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster.  Alternatively: List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster.  Alternatively: No matchers are available for these alert types. The list is always empty.  Alternatively: List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster.  Alternatively: No matchers are available for these alert types. The list is always empty.  Alternatively: No matchers are available for these alert types. The list is always empty.  Alternatively: List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster.  Alternatively: List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster.  Alternatively: No matchers are available for these alert types. The list is always empty.  Alternatively: List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster.  Alternatively: List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster.  Alternatively: No matchers are available for these alert types. The list is always empty.
-	Matchers []map[string]interface{} `json:"matchers,omitempty"`
+	Matchers *[]map[string]interface{} `json:"matchers,omitempty"`
 	// List that contains the targets that MongoDB Cloud sends notifications.
-	Notifications []AlertsNotificationRootForGroup `json:"notifications,omitempty"`
+	Notifications *[]AlertsNotificationRootForGroup `json:"notifications,omitempty"`
 	// Date and time when someone last updated this alert configuration. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC.
 	Updated         *time.Time                 `json:"updated,omitempty"`
 	MetricThreshold *ServerlessMetricThreshold `json:"metricThreshold,omitempty"`
@@ -223,12 +223,12 @@ func (o *GroupAlertsConfig) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupAlertsConfig) GetLinksOk() ([]Link, bool) {
+func (o *GroupAlertsConfig) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -247,7 +247,7 @@ func (o *GroupAlertsConfig) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *GroupAlertsConfig) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 // GetMatchers returns the Matchers field value if set, zero value otherwise
@@ -256,12 +256,12 @@ func (o *GroupAlertsConfig) GetMatchers() []map[string]interface{} {
 		var ret []map[string]interface{}
 		return ret
 	}
-	return o.Matchers
+	return *o.Matchers
 }
 
 // GetMatchersOk returns a tuple with the Matchers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupAlertsConfig) GetMatchersOk() ([]map[string]interface{}, bool) {
+func (o *GroupAlertsConfig) GetMatchersOk() (*[]map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Matchers) {
 		return nil, false
 	}
@@ -280,7 +280,7 @@ func (o *GroupAlertsConfig) HasMatchers() bool {
 
 // SetMatchers gets a reference to the given []map[string]interface{} and assigns it to the Matchers field.
 func (o *GroupAlertsConfig) SetMatchers(v []map[string]interface{}) {
-	o.Matchers = v
+	o.Matchers = &v
 }
 
 // GetNotifications returns the Notifications field value if set, zero value otherwise
@@ -289,12 +289,12 @@ func (o *GroupAlertsConfig) GetNotifications() []AlertsNotificationRootForGroup 
 		var ret []AlertsNotificationRootForGroup
 		return ret
 	}
-	return o.Notifications
+	return *o.Notifications
 }
 
 // GetNotificationsOk returns a tuple with the Notifications field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupAlertsConfig) GetNotificationsOk() ([]AlertsNotificationRootForGroup, bool) {
+func (o *GroupAlertsConfig) GetNotificationsOk() (*[]AlertsNotificationRootForGroup, bool) {
 	if o == nil || IsNil(o.Notifications) {
 		return nil, false
 	}
@@ -313,7 +313,7 @@ func (o *GroupAlertsConfig) HasNotifications() bool {
 
 // SetNotifications gets a reference to the given []AlertsNotificationRootForGroup and assigns it to the Notifications field.
 func (o *GroupAlertsConfig) SetNotifications(v []AlertsNotificationRootForGroup) {
-	o.Notifications = v
+	o.Notifications = &v
 }
 
 // GetUpdated returns the Updated field value if set, zero value otherwise

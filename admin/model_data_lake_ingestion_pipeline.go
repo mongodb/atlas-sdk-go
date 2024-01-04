@@ -25,7 +25,7 @@ type DataLakeIngestionPipeline struct {
 	// State of this Data Lake Pipeline.
 	State *string `json:"state,omitempty"`
 	// Fields to be excluded for this Data Lake Pipeline.
-	Transformations []FieldTransformation `json:"transformations,omitempty"`
+	Transformations *[]FieldTransformation `json:"transformations,omitempty"`
 }
 
 // NewDataLakeIngestionPipeline instantiates a new DataLakeIngestionPipeline object
@@ -348,12 +348,12 @@ func (o *DataLakeIngestionPipeline) GetTransformations() []FieldTransformation {
 		var ret []FieldTransformation
 		return ret
 	}
-	return o.Transformations
+	return *o.Transformations
 }
 
 // GetTransformationsOk returns a tuple with the Transformations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DataLakeIngestionPipeline) GetTransformationsOk() ([]FieldTransformation, bool) {
+func (o *DataLakeIngestionPipeline) GetTransformationsOk() (*[]FieldTransformation, bool) {
 	if o == nil || IsNil(o.Transformations) {
 		return nil, false
 	}
@@ -372,7 +372,7 @@ func (o *DataLakeIngestionPipeline) HasTransformations() bool {
 
 // SetTransformations gets a reference to the given []FieldTransformation and assigns it to the Transformations field.
 func (o *DataLakeIngestionPipeline) SetTransformations(v []FieldTransformation) {
-	o.Transformations = v
+	o.Transformations = &v
 }
 
 func (o DataLakeIngestionPipeline) MarshalJSONWithoutReadOnly() ([]byte, error) {

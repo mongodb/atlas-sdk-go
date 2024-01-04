@@ -104,7 +104,7 @@ func createDatabaseUserRequest(sdk *admin.APIClient, groupId string) *admin.Clou
 		Username:     username,
 		Password:     &password,
 		DatabaseName: databaseName,
-		Roles: []admin.DatabaseUserRole{
+		Roles: &[]admin.DatabaseUserRole{
 			{
 				DatabaseName:   databaseName,
 				CollectionName: &collectionName,
@@ -132,10 +132,10 @@ func createClusterRequest(projectId string) *admin.AdvancedClusterDescription {
 	return &admin.AdvancedClusterDescription{
 		Name:        &clusterName,
 		ClusterType: &clusterType,
-		ReplicationSpecs: []admin.ReplicationSpec{
+		ReplicationSpecs: &[]admin.ReplicationSpec{
 			{
 				NumShards: &numShards,
-				RegionConfigs: []admin.CloudRegionConfig{
+				RegionConfigs: &[]admin.CloudRegionConfig{
 					{
 						ProviderName: &providerName,
 						Priority:     &priority,

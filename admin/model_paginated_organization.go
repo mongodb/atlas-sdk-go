@@ -9,9 +9,9 @@ import (
 // PaginatedOrganization struct for PaginatedOrganization
 type PaginatedOrganization struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud providers when completing this request.
-	Results []AtlasOrganization `json:"results,omitempty"`
+	Results *[]AtlasOrganization `json:"results,omitempty"`
 	// Number of documents returned in this response.
 	TotalCount *int `json:"totalCount,omitempty"`
 }
@@ -39,12 +39,12 @@ func (o *PaginatedOrganization) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedOrganization) GetLinksOk() ([]Link, bool) {
+func (o *PaginatedOrganization) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -63,7 +63,7 @@ func (o *PaginatedOrganization) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PaginatedOrganization) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 // GetResults returns the Results field value if set, zero value otherwise
@@ -72,12 +72,12 @@ func (o *PaginatedOrganization) GetResults() []AtlasOrganization {
 		var ret []AtlasOrganization
 		return ret
 	}
-	return o.Results
+	return *o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedOrganization) GetResultsOk() ([]AtlasOrganization, bool) {
+func (o *PaginatedOrganization) GetResultsOk() (*[]AtlasOrganization, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -96,7 +96,7 @@ func (o *PaginatedOrganization) HasResults() bool {
 
 // SetResults gets a reference to the given []AtlasOrganization and assigns it to the Results field.
 func (o *PaginatedOrganization) SetResults(v []AtlasOrganization) {
-	o.Results = v
+	o.Results = &v
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise

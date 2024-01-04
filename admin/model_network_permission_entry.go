@@ -22,7 +22,7 @@ type NetworkPermissionEntry struct {
 	// IP address that you want to add to the project's IP access list. Your IP access list entry can be one **awsSecurityGroup**, one **cidrBlock**, or one **ipAddress**. Don't set this parameter if you set **awsSecurityGroup** or **cidrBlock**.
 	IpAddress *string `json:"ipAddress,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 }
 
 // NewNetworkPermissionEntry instantiates a new NetworkPermissionEntry object
@@ -246,12 +246,12 @@ func (o *NetworkPermissionEntry) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NetworkPermissionEntry) GetLinksOk() ([]Link, bool) {
+func (o *NetworkPermissionEntry) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -270,7 +270,7 @@ func (o *NetworkPermissionEntry) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *NetworkPermissionEntry) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 func (o NetworkPermissionEntry) MarshalJSONWithoutReadOnly() ([]byte, error) {

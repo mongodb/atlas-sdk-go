@@ -18,7 +18,7 @@ type TenantRestore struct {
 	// Unique 24-hexadecimal digit string that identifies the restore job.
 	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project from which the restore job originated.
 	ProjectId *string `json:"projectId,omitempty"`
 	// Date and time when MongoDB Cloud completed writing this snapshot. MongoDB Cloud changes the status of the restore job to `CLOSED`. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
@@ -196,12 +196,12 @@ func (o *TenantRestore) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TenantRestore) GetLinksOk() ([]Link, bool) {
+func (o *TenantRestore) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -220,7 +220,7 @@ func (o *TenantRestore) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *TenantRestore) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 // GetProjectId returns the ProjectId field value if set, zero value otherwise

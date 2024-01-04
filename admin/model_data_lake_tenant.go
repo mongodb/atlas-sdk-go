@@ -13,11 +13,11 @@ type DataLakeTenant struct {
 	// Unique 24-hexadecimal character string that identifies the project.
 	GroupId *string `json:"groupId,omitempty"`
 	// List that contains the hostnames assigned to the Data Lake instance.
-	Hostnames []string `json:"hostnames,omitempty"`
+	Hostnames *[]string `json:"hostnames,omitempty"`
 	// Human-readable label that identifies the data lake.
 	Name *string `json:"name,omitempty"`
 	// List that contains the sets of private endpoints and hostnames.
-	PrivateEndpointHostnames []PrivateEndpointHostname `json:"privateEndpointHostnames,omitempty"`
+	PrivateEndpointHostnames *[]PrivateEndpointHostname `json:"privateEndpointHostnames,omitempty"`
 	// Label that indicates the status of the Data Lake instance.
 	State   *string          `json:"state,omitempty"`
 	Storage *DataLakeStorage `json:"storage,omitempty"`
@@ -145,12 +145,12 @@ func (o *DataLakeTenant) GetHostnames() []string {
 		var ret []string
 		return ret
 	}
-	return o.Hostnames
+	return *o.Hostnames
 }
 
 // GetHostnamesOk returns a tuple with the Hostnames field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DataLakeTenant) GetHostnamesOk() ([]string, bool) {
+func (o *DataLakeTenant) GetHostnamesOk() (*[]string, bool) {
 	if o == nil || IsNil(o.Hostnames) {
 		return nil, false
 	}
@@ -169,7 +169,7 @@ func (o *DataLakeTenant) HasHostnames() bool {
 
 // SetHostnames gets a reference to the given []string and assigns it to the Hostnames field.
 func (o *DataLakeTenant) SetHostnames(v []string) {
-	o.Hostnames = v
+	o.Hostnames = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise
@@ -211,12 +211,12 @@ func (o *DataLakeTenant) GetPrivateEndpointHostnames() []PrivateEndpointHostname
 		var ret []PrivateEndpointHostname
 		return ret
 	}
-	return o.PrivateEndpointHostnames
+	return *o.PrivateEndpointHostnames
 }
 
 // GetPrivateEndpointHostnamesOk returns a tuple with the PrivateEndpointHostnames field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DataLakeTenant) GetPrivateEndpointHostnamesOk() ([]PrivateEndpointHostname, bool) {
+func (o *DataLakeTenant) GetPrivateEndpointHostnamesOk() (*[]PrivateEndpointHostname, bool) {
 	if o == nil || IsNil(o.PrivateEndpointHostnames) {
 		return nil, false
 	}
@@ -235,7 +235,7 @@ func (o *DataLakeTenant) HasPrivateEndpointHostnames() bool {
 
 // SetPrivateEndpointHostnames gets a reference to the given []PrivateEndpointHostname and assigns it to the PrivateEndpointHostnames field.
 func (o *DataLakeTenant) SetPrivateEndpointHostnames(v []PrivateEndpointHostname) {
-	o.PrivateEndpointHostnames = v
+	o.PrivateEndpointHostnames = &v
 }
 
 // GetState returns the State field value if set, zero value otherwise

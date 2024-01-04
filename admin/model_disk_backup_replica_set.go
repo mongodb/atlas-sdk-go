@@ -12,7 +12,7 @@ type DiskBackupReplicaSet struct {
 	// Human-readable label that identifies the cloud provider that stores this snapshot. The resource returns this parameter when `\"type\": \"replicaSet\"`.
 	CloudProvider *string `json:"cloudProvider,omitempty"`
 	// List that identifies the regions to which MongoDB Cloud copies the snapshot.
-	CopyRegions []string `json:"copyRegions,omitempty"`
+	CopyRegions *[]string `json:"copyRegions,omitempty"`
 	// Date and time when MongoDB Cloud took the snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// Human-readable phrase or sentence that explains the purpose of the snapshot. The resource returns this parameter when `\"status\": \"onDemand\"`.
@@ -24,13 +24,13 @@ type DiskBackupReplicaSet struct {
 	// Unique 24-hexadecimal digit string that identifies the snapshot.
 	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Unique string that identifies the Amazon Web Services (AWS) Key Management Service (KMS) Customer Master Key (CMK) used to encrypt the snapshot. The resource returns this value when `\"encryptionEnabled\" : true`.
 	MasterKeyUUID *string `json:"masterKeyUUID,omitempty"`
 	// Version of the MongoDB host that this snapshot backs up.
 	MongodVersion *string `json:"mongodVersion,omitempty"`
 	// List that contains unique identifiers for the policy items.
-	PolicyItems []string `json:"policyItems,omitempty"`
+	PolicyItems *[]string `json:"policyItems,omitempty"`
 	// Human-readable label that identifies the replica set from which MongoDB Cloud took this snapshot. The resource returns this parameter when `\"type\": \"replicaSet\"`.
 	ReplicaSetName *string `json:"replicaSetName,omitempty"`
 	// Human-readable label that identifies when this snapshot triggers.
@@ -99,12 +99,12 @@ func (o *DiskBackupReplicaSet) GetCopyRegions() []string {
 		var ret []string
 		return ret
 	}
-	return o.CopyRegions
+	return *o.CopyRegions
 }
 
 // GetCopyRegionsOk returns a tuple with the CopyRegions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupReplicaSet) GetCopyRegionsOk() ([]string, bool) {
+func (o *DiskBackupReplicaSet) GetCopyRegionsOk() (*[]string, bool) {
 	if o == nil || IsNil(o.CopyRegions) {
 		return nil, false
 	}
@@ -123,7 +123,7 @@ func (o *DiskBackupReplicaSet) HasCopyRegions() bool {
 
 // SetCopyRegions gets a reference to the given []string and assigns it to the CopyRegions field.
 func (o *DiskBackupReplicaSet) SetCopyRegions(v []string) {
-	o.CopyRegions = v
+	o.CopyRegions = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise
@@ -297,12 +297,12 @@ func (o *DiskBackupReplicaSet) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupReplicaSet) GetLinksOk() ([]Link, bool) {
+func (o *DiskBackupReplicaSet) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -321,7 +321,7 @@ func (o *DiskBackupReplicaSet) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *DiskBackupReplicaSet) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 // GetMasterKeyUUID returns the MasterKeyUUID field value if set, zero value otherwise
@@ -396,12 +396,12 @@ func (o *DiskBackupReplicaSet) GetPolicyItems() []string {
 		var ret []string
 		return ret
 	}
-	return o.PolicyItems
+	return *o.PolicyItems
 }
 
 // GetPolicyItemsOk returns a tuple with the PolicyItems field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupReplicaSet) GetPolicyItemsOk() ([]string, bool) {
+func (o *DiskBackupReplicaSet) GetPolicyItemsOk() (*[]string, bool) {
 	if o == nil || IsNil(o.PolicyItems) {
 		return nil, false
 	}
@@ -420,7 +420,7 @@ func (o *DiskBackupReplicaSet) HasPolicyItems() bool {
 
 // SetPolicyItems gets a reference to the given []string and assigns it to the PolicyItems field.
 func (o *DiskBackupReplicaSet) SetPolicyItems(v []string) {
-	o.PolicyItems = v
+	o.PolicyItems = &v
 }
 
 // GetReplicaSetName returns the ReplicaSetName field value if set, zero value otherwise

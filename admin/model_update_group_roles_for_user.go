@@ -9,9 +9,9 @@ import (
 // UpdateGroupRolesForUser struct for UpdateGroupRolesForUser
 type UpdateGroupRolesForUser struct {
 	// One or more project level roles to assign to the MongoDB Cloud user.
-	GroupRoles []string `json:"groupRoles,omitempty"`
+	GroupRoles *[]string `json:"groupRoles,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 }
 
 // NewUpdateGroupRolesForUser instantiates a new UpdateGroupRolesForUser object
@@ -37,12 +37,12 @@ func (o *UpdateGroupRolesForUser) GetGroupRoles() []string {
 		var ret []string
 		return ret
 	}
-	return o.GroupRoles
+	return *o.GroupRoles
 }
 
 // GetGroupRolesOk returns a tuple with the GroupRoles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateGroupRolesForUser) GetGroupRolesOk() ([]string, bool) {
+func (o *UpdateGroupRolesForUser) GetGroupRolesOk() (*[]string, bool) {
 	if o == nil || IsNil(o.GroupRoles) {
 		return nil, false
 	}
@@ -61,7 +61,7 @@ func (o *UpdateGroupRolesForUser) HasGroupRoles() bool {
 
 // SetGroupRoles gets a reference to the given []string and assigns it to the GroupRoles field.
 func (o *UpdateGroupRolesForUser) SetGroupRoles(v []string) {
-	o.GroupRoles = v
+	o.GroupRoles = &v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -70,12 +70,12 @@ func (o *UpdateGroupRolesForUser) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateGroupRolesForUser) GetLinksOk() ([]Link, bool) {
+func (o *UpdateGroupRolesForUser) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -94,7 +94,7 @@ func (o *UpdateGroupRolesForUser) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *UpdateGroupRolesForUser) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 func (o UpdateGroupRolesForUser) MarshalJSONWithoutReadOnly() ([]byte, error) {

@@ -9,7 +9,7 @@ import (
 // MongoDBAccessLogsList struct for MongoDBAccessLogsList
 type MongoDBAccessLogsList struct {
 	// Authentication attempt, one per object, made against the cluster.
-	AccessLogs []MongoDBAccessLogs `json:"accessLogs,omitempty"`
+	AccessLogs *[]MongoDBAccessLogs `json:"accessLogs,omitempty"`
 }
 
 // NewMongoDBAccessLogsList instantiates a new MongoDBAccessLogsList object
@@ -35,12 +35,12 @@ func (o *MongoDBAccessLogsList) GetAccessLogs() []MongoDBAccessLogs {
 		var ret []MongoDBAccessLogs
 		return ret
 	}
-	return o.AccessLogs
+	return *o.AccessLogs
 }
 
 // GetAccessLogsOk returns a tuple with the AccessLogs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MongoDBAccessLogsList) GetAccessLogsOk() ([]MongoDBAccessLogs, bool) {
+func (o *MongoDBAccessLogsList) GetAccessLogsOk() (*[]MongoDBAccessLogs, bool) {
 	if o == nil || IsNil(o.AccessLogs) {
 		return nil, false
 	}
@@ -59,7 +59,7 @@ func (o *MongoDBAccessLogsList) HasAccessLogs() bool {
 
 // SetAccessLogs gets a reference to the given []MongoDBAccessLogs and assigns it to the AccessLogs field.
 func (o *MongoDBAccessLogsList) SetAccessLogs(v []MongoDBAccessLogs) {
-	o.AccessLogs = v
+	o.AccessLogs = &v
 }
 
 func (o MongoDBAccessLogsList) MarshalJSONWithoutReadOnly() ([]byte, error) {

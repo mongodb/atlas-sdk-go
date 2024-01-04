@@ -18,7 +18,7 @@ type CloudProviderAccessAWSIAMRole struct {
 	// Date and time when someone created this role for the specified cloud service provider. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	CreatedDate *time.Time `json:"createdDate,omitempty"`
 	// List that contains application features associated with this Amazon Web Services (AWS) Identity and Access Management (IAM) role.
-	FeatureUsages []CloudProviderAccessFeatureUsage `json:"featureUsages,omitempty"`
+	FeatureUsages *[]CloudProviderAccessFeatureUsage `json:"featureUsages,omitempty"`
 	// Amazon Resource Name (ARN) that identifies the Amazon Web Services (AWS) Identity and Access Management (IAM) role that MongoDB Cloud assumes when it accesses resources in your AWS account.
 	IamAssumedRoleArn *string `json:"iamAssumedRoleArn,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the role.
@@ -193,12 +193,12 @@ func (o *CloudProviderAccessAWSIAMRole) GetFeatureUsages() []CloudProviderAccess
 		var ret []CloudProviderAccessFeatureUsage
 		return ret
 	}
-	return o.FeatureUsages
+	return *o.FeatureUsages
 }
 
 // GetFeatureUsagesOk returns a tuple with the FeatureUsages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudProviderAccessAWSIAMRole) GetFeatureUsagesOk() ([]CloudProviderAccessFeatureUsage, bool) {
+func (o *CloudProviderAccessAWSIAMRole) GetFeatureUsagesOk() (*[]CloudProviderAccessFeatureUsage, bool) {
 	if o == nil || IsNil(o.FeatureUsages) {
 		return nil, false
 	}
@@ -217,7 +217,7 @@ func (o *CloudProviderAccessAWSIAMRole) HasFeatureUsages() bool {
 
 // SetFeatureUsages gets a reference to the given []CloudProviderAccessFeatureUsage and assigns it to the FeatureUsages field.
 func (o *CloudProviderAccessAWSIAMRole) SetFeatureUsages(v []CloudProviderAccessFeatureUsage) {
-	o.FeatureUsages = v
+	o.FeatureUsages = &v
 }
 
 // GetIamAssumedRoleArn returns the IamAssumedRoleArn field value if set, zero value otherwise

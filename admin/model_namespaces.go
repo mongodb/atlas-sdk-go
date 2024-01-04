@@ -9,7 +9,7 @@ import (
 // Namespaces struct for Namespaces
 type Namespaces struct {
 	// List that contains each combination of database, collection, and type on the specified host.
-	Namespaces []NamespaceObj `json:"namespaces,omitempty"`
+	Namespaces *[]NamespaceObj `json:"namespaces,omitempty"`
 }
 
 // NewNamespaces instantiates a new Namespaces object
@@ -35,12 +35,12 @@ func (o *Namespaces) GetNamespaces() []NamespaceObj {
 		var ret []NamespaceObj
 		return ret
 	}
-	return o.Namespaces
+	return *o.Namespaces
 }
 
 // GetNamespacesOk returns a tuple with the Namespaces field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Namespaces) GetNamespacesOk() ([]NamespaceObj, bool) {
+func (o *Namespaces) GetNamespacesOk() (*[]NamespaceObj, bool) {
 	if o == nil || IsNil(o.Namespaces) {
 		return nil, false
 	}
@@ -59,7 +59,7 @@ func (o *Namespaces) HasNamespaces() bool {
 
 // SetNamespaces gets a reference to the given []NamespaceObj and assigns it to the Namespaces field.
 func (o *Namespaces) SetNamespaces(v []NamespaceObj) {
-	o.Namespaces = v
+	o.Namespaces = &v
 }
 
 func (o Namespaces) MarshalJSONWithoutReadOnly() ([]byte, error) {

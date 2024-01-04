@@ -9,9 +9,9 @@ import (
 // PaginatedApiStreamsConnection struct for PaginatedApiStreamsConnection
 type PaginatedApiStreamsConnection struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud providers when completing this request.
-	Results []StreamsConnection `json:"results,omitempty"`
+	Results *[]StreamsConnection `json:"results,omitempty"`
 	// Number of documents returned in this response if **includeCount** query param is true.
 	TotalCount *int `json:"totalCount,omitempty"`
 }
@@ -39,12 +39,12 @@ func (o *PaginatedApiStreamsConnection) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedApiStreamsConnection) GetLinksOk() ([]Link, bool) {
+func (o *PaginatedApiStreamsConnection) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -63,7 +63,7 @@ func (o *PaginatedApiStreamsConnection) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PaginatedApiStreamsConnection) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 // GetResults returns the Results field value if set, zero value otherwise
@@ -72,12 +72,12 @@ func (o *PaginatedApiStreamsConnection) GetResults() []StreamsConnection {
 		var ret []StreamsConnection
 		return ret
 	}
-	return o.Results
+	return *o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedApiStreamsConnection) GetResultsOk() ([]StreamsConnection, bool) {
+func (o *PaginatedApiStreamsConnection) GetResultsOk() (*[]StreamsConnection, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -96,7 +96,7 @@ func (o *PaginatedApiStreamsConnection) HasResults() bool {
 
 // SetResults gets a reference to the given []StreamsConnection and assigns it to the Results field.
 func (o *PaginatedApiStreamsConnection) SetResults(v []StreamsConnection) {
-	o.Results = v
+	o.Results = &v
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise

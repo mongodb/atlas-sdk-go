@@ -9,9 +9,9 @@ import (
 // LiveImportAvailableProject struct for LiveImportAvailableProject
 type LiveImportAvailableProject struct {
 	// List of clusters that can be migrated to MongoDB Cloud.
-	Deployments []AvailableClustersDeployment `json:"deployments,omitempty"`
+	Deployments *[]AvailableClustersDeployment `json:"deployments,omitempty"`
 	// Hostname of MongoDB Agent list that you configured to perform a migration.
-	MigrationHosts []string `json:"migrationHosts,omitempty"`
+	MigrationHosts *[]string `json:"migrationHosts,omitempty"`
 	// Human-readable label that identifies this project.
 	Name string `json:"name"`
 	// Unique 24-hexadecimal digit string that identifies the project to be migrated.
@@ -43,12 +43,12 @@ func (o *LiveImportAvailableProject) GetDeployments() []AvailableClustersDeploym
 		var ret []AvailableClustersDeployment
 		return ret
 	}
-	return o.Deployments
+	return *o.Deployments
 }
 
 // GetDeploymentsOk returns a tuple with the Deployments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LiveImportAvailableProject) GetDeploymentsOk() ([]AvailableClustersDeployment, bool) {
+func (o *LiveImportAvailableProject) GetDeploymentsOk() (*[]AvailableClustersDeployment, bool) {
 	if o == nil || IsNil(o.Deployments) {
 		return nil, false
 	}
@@ -67,7 +67,7 @@ func (o *LiveImportAvailableProject) HasDeployments() bool {
 
 // SetDeployments gets a reference to the given []AvailableClustersDeployment and assigns it to the Deployments field.
 func (o *LiveImportAvailableProject) SetDeployments(v []AvailableClustersDeployment) {
-	o.Deployments = v
+	o.Deployments = &v
 }
 
 // GetMigrationHosts returns the MigrationHosts field value if set, zero value otherwise
@@ -76,12 +76,12 @@ func (o *LiveImportAvailableProject) GetMigrationHosts() []string {
 		var ret []string
 		return ret
 	}
-	return o.MigrationHosts
+	return *o.MigrationHosts
 }
 
 // GetMigrationHostsOk returns a tuple with the MigrationHosts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LiveImportAvailableProject) GetMigrationHostsOk() ([]string, bool) {
+func (o *LiveImportAvailableProject) GetMigrationHostsOk() (*[]string, bool) {
 	if o == nil || IsNil(o.MigrationHosts) {
 		return nil, false
 	}
@@ -100,7 +100,7 @@ func (o *LiveImportAvailableProject) HasMigrationHosts() bool {
 
 // SetMigrationHosts gets a reference to the given []string and assigns it to the MigrationHosts field.
 func (o *LiveImportAvailableProject) SetMigrationHosts(v []string) {
-	o.MigrationHosts = v
+	o.MigrationHosts = &v
 }
 
 // GetName returns the Name field value

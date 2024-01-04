@@ -9,13 +9,13 @@ import (
 // DataLakeDatabaseInstance Database associated with this data lake. Databases contain collections and views.
 type DataLakeDatabaseInstance struct {
 	// Array of collections and data sources that map to a ``stores`` data store.
-	Collections []DataLakeDatabaseCollection `json:"collections,omitempty"`
+	Collections *[]DataLakeDatabaseCollection `json:"collections,omitempty"`
 	// Maximum number of wildcard collections in the database. This only applies to S3 data sources.
 	MaxWildcardCollections *int `json:"maxWildcardCollections,omitempty"`
 	// Human-readable label that identifies the database to which the data lake maps data.
 	Name *string `json:"name,omitempty"`
 	// Array of aggregation pipelines that apply to the collection. This only applies to S3 data sources.
-	Views []DataLakeApiBase `json:"views,omitempty"`
+	Views *[]DataLakeApiBase `json:"views,omitempty"`
 }
 
 // NewDataLakeDatabaseInstance instantiates a new DataLakeDatabaseInstance object
@@ -45,12 +45,12 @@ func (o *DataLakeDatabaseInstance) GetCollections() []DataLakeDatabaseCollection
 		var ret []DataLakeDatabaseCollection
 		return ret
 	}
-	return o.Collections
+	return *o.Collections
 }
 
 // GetCollectionsOk returns a tuple with the Collections field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DataLakeDatabaseInstance) GetCollectionsOk() ([]DataLakeDatabaseCollection, bool) {
+func (o *DataLakeDatabaseInstance) GetCollectionsOk() (*[]DataLakeDatabaseCollection, bool) {
 	if o == nil || IsNil(o.Collections) {
 		return nil, false
 	}
@@ -69,7 +69,7 @@ func (o *DataLakeDatabaseInstance) HasCollections() bool {
 
 // SetCollections gets a reference to the given []DataLakeDatabaseCollection and assigns it to the Collections field.
 func (o *DataLakeDatabaseInstance) SetCollections(v []DataLakeDatabaseCollection) {
-	o.Collections = v
+	o.Collections = &v
 }
 
 // GetMaxWildcardCollections returns the MaxWildcardCollections field value if set, zero value otherwise
@@ -144,12 +144,12 @@ func (o *DataLakeDatabaseInstance) GetViews() []DataLakeApiBase {
 		var ret []DataLakeApiBase
 		return ret
 	}
-	return o.Views
+	return *o.Views
 }
 
 // GetViewsOk returns a tuple with the Views field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DataLakeDatabaseInstance) GetViewsOk() ([]DataLakeApiBase, bool) {
+func (o *DataLakeDatabaseInstance) GetViewsOk() (*[]DataLakeApiBase, bool) {
 	if o == nil || IsNil(o.Views) {
 		return nil, false
 	}
@@ -168,7 +168,7 @@ func (o *DataLakeDatabaseInstance) HasViews() bool {
 
 // SetViews gets a reference to the given []DataLakeApiBase and assigns it to the Views field.
 func (o *DataLakeDatabaseInstance) SetViews(v []DataLakeApiBase) {
-	o.Views = v
+	o.Views = &v
 }
 
 func (o DataLakeDatabaseInstance) MarshalJSONWithoutReadOnly() ([]byte, error) {

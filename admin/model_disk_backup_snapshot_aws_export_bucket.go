@@ -17,7 +17,7 @@ type DiskBackupSnapshotAWSExportBucket struct {
 	// Unique 24-hexadecimal character string that identifies the AWS IAM role that MongoDB Cloud uses to access the AWS S3 bucket.
 	IamRoleId *string `json:"iamRoleId,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 }
 
 // NewDiskBackupSnapshotAWSExportBucket instantiates a new DiskBackupSnapshotAWSExportBucket object
@@ -175,12 +175,12 @@ func (o *DiskBackupSnapshotAWSExportBucket) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DiskBackupSnapshotAWSExportBucket) GetLinksOk() ([]Link, bool) {
+func (o *DiskBackupSnapshotAWSExportBucket) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -199,7 +199,7 @@ func (o *DiskBackupSnapshotAWSExportBucket) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *DiskBackupSnapshotAWSExportBucket) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 func (o DiskBackupSnapshotAWSExportBucket) MarshalJSONWithoutReadOnly() ([]byte, error) {

@@ -30,9 +30,9 @@ type LegacyAtlasCluster struct {
 	Id *string `json:"id,omitempty"`
 	// Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels.  Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use [resource tags](https://dochub.mongodb.org/core/add-cluster-tag-atlas) instead.
 	// Deprecated
-	Labels []ComponentLabel `json:"labels,omitempty"`
+	Labels *[]ComponentLabel `json:"labels,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Major MongoDB version of the cluster. MongoDB Cloud deploys the cluster with the latest stable release of the specified version.
 	MongoDBMajorVersion *string `json:"mongoDBMajorVersion,omitempty"`
 	// Version of MongoDB that the cluster runs.
@@ -60,7 +60,7 @@ type LegacyAtlasCluster struct {
 	// Physical location where MongoDB Cloud provisions cluster nodes.
 	ReplicationSpec *map[string]RegionSpec `json:"replicationSpec,omitempty"`
 	// List of settings that configure your cluster regions.  - For Global Clusters, each object in the array represents one zone where MongoDB Cloud deploys your clusters nodes. - For non-Global sharded clusters and replica sets, the single object represents where MongoDB Cloud deploys your clusters nodes.
-	ReplicationSpecs []LegacyReplicationSpec `json:"replicationSpecs,omitempty"`
+	ReplicationSpecs *[]LegacyReplicationSpec `json:"replicationSpecs,omitempty"`
 	// Root Certificate Authority that MongoDB Atlas clusters uses. MongoDB Cloud supports Internet Security Research Group.
 	RootCertType *string `json:"rootCertType,omitempty"`
 	// Connection string that you can use to connect to the cluster. The `+srv` modifier forces the connection to use Transport Layer Security (TLS). The `mongoURI` parameter lists additional options.
@@ -68,7 +68,7 @@ type LegacyAtlasCluster struct {
 	// Human-readable label that indicates the current operating condition of the cluster.
 	StateName *string `json:"stateName,omitempty"`
 	// List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the cluster.
-	Tags []ResourceTag `json:"tags,omitempty"`
+	Tags *[]ResourceTag `json:"tags,omitempty"`
 	// Flag that indicates whether termination protection is enabled on the cluster. If set to `true`, MongoDB Cloud won't delete the cluster. If set to `false`, MongoDB Cloud will delete the cluster.
 	TerminationProtectionEnabled *bool `json:"terminationProtectionEnabled,omitempty"`
 	// Method by which the cluster maintains the MongoDB versions. If value is `CONTINUOUS`, you must not specify **mongoDBMajorVersion**.
@@ -486,13 +486,13 @@ func (o *LegacyAtlasCluster) GetLabels() []ComponentLabel {
 		var ret []ComponentLabel
 		return ret
 	}
-	return o.Labels
+	return *o.Labels
 }
 
 // GetLabelsOk returns a tuple with the Labels field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // Deprecated
-func (o *LegacyAtlasCluster) GetLabelsOk() ([]ComponentLabel, bool) {
+func (o *LegacyAtlasCluster) GetLabelsOk() (*[]ComponentLabel, bool) {
 	if o == nil || IsNil(o.Labels) {
 		return nil, false
 	}
@@ -512,7 +512,7 @@ func (o *LegacyAtlasCluster) HasLabels() bool {
 // SetLabels gets a reference to the given []ComponentLabel and assigns it to the Labels field.
 // Deprecated
 func (o *LegacyAtlasCluster) SetLabels(v []ComponentLabel) {
-	o.Labels = v
+	o.Labels = &v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -521,12 +521,12 @@ func (o *LegacyAtlasCluster) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LegacyAtlasCluster) GetLinksOk() ([]Link, bool) {
+func (o *LegacyAtlasCluster) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -545,7 +545,7 @@ func (o *LegacyAtlasCluster) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *LegacyAtlasCluster) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 // GetMongoDBMajorVersion returns the MongoDBMajorVersion field value if set, zero value otherwise
@@ -986,12 +986,12 @@ func (o *LegacyAtlasCluster) GetReplicationSpecs() []LegacyReplicationSpec {
 		var ret []LegacyReplicationSpec
 		return ret
 	}
-	return o.ReplicationSpecs
+	return *o.ReplicationSpecs
 }
 
 // GetReplicationSpecsOk returns a tuple with the ReplicationSpecs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LegacyAtlasCluster) GetReplicationSpecsOk() ([]LegacyReplicationSpec, bool) {
+func (o *LegacyAtlasCluster) GetReplicationSpecsOk() (*[]LegacyReplicationSpec, bool) {
 	if o == nil || IsNil(o.ReplicationSpecs) {
 		return nil, false
 	}
@@ -1010,7 +1010,7 @@ func (o *LegacyAtlasCluster) HasReplicationSpecs() bool {
 
 // SetReplicationSpecs gets a reference to the given []LegacyReplicationSpec and assigns it to the ReplicationSpecs field.
 func (o *LegacyAtlasCluster) SetReplicationSpecs(v []LegacyReplicationSpec) {
-	o.ReplicationSpecs = v
+	o.ReplicationSpecs = &v
 }
 
 // GetRootCertType returns the RootCertType field value if set, zero value otherwise
@@ -1118,12 +1118,12 @@ func (o *LegacyAtlasCluster) GetTags() []ResourceTag {
 		var ret []ResourceTag
 		return ret
 	}
-	return o.Tags
+	return *o.Tags
 }
 
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LegacyAtlasCluster) GetTagsOk() ([]ResourceTag, bool) {
+func (o *LegacyAtlasCluster) GetTagsOk() (*[]ResourceTag, bool) {
 	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
@@ -1142,7 +1142,7 @@ func (o *LegacyAtlasCluster) HasTags() bool {
 
 // SetTags gets a reference to the given []ResourceTag and assigns it to the Tags field.
 func (o *LegacyAtlasCluster) SetTags(v []ResourceTag) {
-	o.Tags = v
+	o.Tags = &v
 }
 
 // GetTerminationProtectionEnabled returns the TerminationProtectionEnabled field value if set, zero value otherwise

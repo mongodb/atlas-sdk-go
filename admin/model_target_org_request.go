@@ -9,7 +9,7 @@ import (
 // TargetOrgRequest struct for TargetOrgRequest
 type TargetOrgRequest struct {
 	// IP address access list entries associated with the API key.
-	AccessListIps []string `json:"accessListIps,omitempty"`
+	AccessListIps *[]string `json:"accessListIps,omitempty"`
 }
 
 // NewTargetOrgRequest instantiates a new TargetOrgRequest object
@@ -35,12 +35,12 @@ func (o *TargetOrgRequest) GetAccessListIps() []string {
 		var ret []string
 		return ret
 	}
-	return o.AccessListIps
+	return *o.AccessListIps
 }
 
 // GetAccessListIpsOk returns a tuple with the AccessListIps field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TargetOrgRequest) GetAccessListIpsOk() ([]string, bool) {
+func (o *TargetOrgRequest) GetAccessListIpsOk() (*[]string, bool) {
 	if o == nil || IsNil(o.AccessListIps) {
 		return nil, false
 	}
@@ -59,7 +59,7 @@ func (o *TargetOrgRequest) HasAccessListIps() bool {
 
 // SetAccessListIps gets a reference to the given []string and assigns it to the AccessListIps field.
 func (o *TargetOrgRequest) SetAccessListIps(v []string) {
-	o.AccessListIps = v
+	o.AccessListIps = &v
 }
 
 func (o TargetOrgRequest) MarshalJSONWithoutReadOnly() ([]byte, error) {

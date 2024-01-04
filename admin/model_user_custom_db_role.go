@@ -9,9 +9,9 @@ import (
 // UserCustomDBRole struct for UserCustomDBRole
 type UserCustomDBRole struct {
 	// List of the individual privilege actions that the role grants.
-	Actions []DatabasePrivilegeAction `json:"actions,omitempty"`
+	Actions *[]DatabasePrivilegeAction `json:"actions,omitempty"`
 	// List of the built-in roles that this custom role inherits.
-	InheritedRoles []DatabaseInheritedRole `json:"inheritedRoles,omitempty"`
+	InheritedRoles *[]DatabaseInheritedRole `json:"inheritedRoles,omitempty"`
 	// Human-readable label that identifies the role for the request. This name must be unique for this custom role in this project.
 	RoleName string `json:"roleName"`
 }
@@ -40,12 +40,12 @@ func (o *UserCustomDBRole) GetActions() []DatabasePrivilegeAction {
 		var ret []DatabasePrivilegeAction
 		return ret
 	}
-	return o.Actions
+	return *o.Actions
 }
 
 // GetActionsOk returns a tuple with the Actions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserCustomDBRole) GetActionsOk() ([]DatabasePrivilegeAction, bool) {
+func (o *UserCustomDBRole) GetActionsOk() (*[]DatabasePrivilegeAction, bool) {
 	if o == nil || IsNil(o.Actions) {
 		return nil, false
 	}
@@ -64,7 +64,7 @@ func (o *UserCustomDBRole) HasActions() bool {
 
 // SetActions gets a reference to the given []DatabasePrivilegeAction and assigns it to the Actions field.
 func (o *UserCustomDBRole) SetActions(v []DatabasePrivilegeAction) {
-	o.Actions = v
+	o.Actions = &v
 }
 
 // GetInheritedRoles returns the InheritedRoles field value if set, zero value otherwise
@@ -73,12 +73,12 @@ func (o *UserCustomDBRole) GetInheritedRoles() []DatabaseInheritedRole {
 		var ret []DatabaseInheritedRole
 		return ret
 	}
-	return o.InheritedRoles
+	return *o.InheritedRoles
 }
 
 // GetInheritedRolesOk returns a tuple with the InheritedRoles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserCustomDBRole) GetInheritedRolesOk() ([]DatabaseInheritedRole, bool) {
+func (o *UserCustomDBRole) GetInheritedRolesOk() (*[]DatabaseInheritedRole, bool) {
 	if o == nil || IsNil(o.InheritedRoles) {
 		return nil, false
 	}
@@ -97,7 +97,7 @@ func (o *UserCustomDBRole) HasInheritedRoles() bool {
 
 // SetInheritedRoles gets a reference to the given []DatabaseInheritedRole and assigns it to the InheritedRoles field.
 func (o *UserCustomDBRole) SetInheritedRoles(v []DatabaseInheritedRole) {
-	o.InheritedRoles = v
+	o.InheritedRoles = &v
 }
 
 // GetRoleName returns the RoleName field value

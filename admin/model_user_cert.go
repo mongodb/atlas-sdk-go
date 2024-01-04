@@ -16,7 +16,7 @@ type UserCert struct {
 	// Unique 24-hexadecimal character string that identifies the project.
 	GroupId *string `json:"groupId,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Number of months that the certificate remains valid until it expires.
 	MonthsUntilExpiration *int `json:"monthsUntilExpiration,omitempty"`
 	// Date and time when this certificate expires. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
@@ -151,12 +151,12 @@ func (o *UserCert) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserCert) GetLinksOk() ([]Link, bool) {
+func (o *UserCert) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -175,7 +175,7 @@ func (o *UserCert) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *UserCert) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 // GetMonthsUntilExpiration returns the MonthsUntilExpiration field value if set, zero value otherwise
