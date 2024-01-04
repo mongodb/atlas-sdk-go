@@ -9,12 +9,16 @@ import (
 // RestoreJobFileHash Key and value pair that map one restore file to one hashed checksum. This parameter applies after you download the corresponding **delivery.url**.
 type RestoreJobFileHash struct {
 	// Human-readable label that identifies the hashed file.
+	// Read only field.
 	FileName *string `json:"fileName,omitempty"`
 	// Hashed checksum that maps to the restore file.
+	// Read only field.
 	Hash *string `json:"hash,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// Human-readable label that identifies the hashing algorithm used to compute the hash value.
+	// Read only field.
 	TypeName *string `json:"typeName,omitempty"`
 }
 

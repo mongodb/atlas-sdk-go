@@ -9,26 +9,37 @@ import (
 // CloudCluster Settings that describe the clusters in each project that the API key is authorized to view.
 type CloudCluster struct {
 	// Whole number that indicates the quantity of alerts open on the cluster.
+	// Read only field.
 	AlertCount *int `json:"alertCount,omitempty"`
 	// Flag that indicates whether authentication is required to access the nodes in this cluster.
+	// Read only field.
 	AuthEnabled *bool `json:"authEnabled,omitempty"`
 	// Term that expresses how many nodes of the cluster can be accessed when MongoDB Cloud receives this request. This parameter returns `available` when all nodes are accessible, `warning` only when some nodes in the cluster can be accessed, `unavailable` when the cluster can't be accessed, or `dead` when the cluster has been deactivated.
+	// Read only field.
 	Availability *string `json:"availability,omitempty"`
 	// Flag that indicates whether the cluster can perform backups. If set to `true`, the cluster can perform backups. You must set this value to `true` for NVMe clusters. Backup uses Cloud Backups for dedicated clusters and Shared Cluster Backups for tenant clusters. If set to `false`, the cluster doesn't use MongoDB Cloud backups.
+	// Read only field.
 	BackupEnabled *bool `json:"backupEnabled,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the cluster.
+	// Read only field.
 	ClusterId *string `json:"clusterId,omitempty"`
 	// Total size of the data stored on each node in the cluster. The resource expresses this value in bytes.
+	// Read only field.
 	DataSizeBytes *int64 `json:"dataSizeBytes,omitempty"`
 	// Human-readable label that identifies the cluster.
+	// Read only field.
 	Name *string `json:"name,omitempty"`
 	// Whole number that indicates the quantity of nodes that comprise the cluster.
+	// Read only field.
 	NodeCount *int `json:"nodeCount,omitempty"`
 	// Flag that indicates whether TLS authentication is required to access the nodes in this cluster.
+	// Read only field.
 	SslEnabled *bool `json:"sslEnabled,omitempty"`
 	// Human-readable label that indicates the cluster type.
+	// Read only field.
 	Type *string `json:"type,omitempty"`
 	// List that contains the versions of MongoDB that each node in the cluster runs.
+	// Read only field.
 	Versions *[]string `json:"versions,omitempty"`
 }
 

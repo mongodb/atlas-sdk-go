@@ -9,6 +9,7 @@ import (
 // DiskBackupBaseRestoreMember struct for DiskBackupBaseRestoreMember
 type DiskBackupBaseRestoreMember struct {
 	// Human-readable label that identifies the replica set on the sharded cluster.
+	// Read only field.
 	ReplicaSetName *string `json:"replicaSetName,omitempty"`
 }
 

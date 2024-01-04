@@ -10,16 +10,22 @@ import (
 // SampleDatasetStatus struct for SampleDatasetStatus
 type SampleDatasetStatus struct {
 	// Unique 24-hexadecimal character string that identifies this sample dataset.
+	// Read only field.
 	Id *string `json:"_id,omitempty"`
 	// Human-readable label that identifies the cluster into which you loaded the sample dataset.
+	// Read only field.
 	ClusterName *string `json:"clusterName,omitempty"`
 	// Date and time when the sample dataset load job completed. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
+	// Read only field.
 	CompleteDate *time.Time `json:"completeDate,omitempty"`
 	// Date and time when you started the sample dataset load job. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
+	// Read only field.
 	CreateDate *time.Time `json:"createDate,omitempty"`
 	// Details of the error returned when MongoDB Cloud loads the sample dataset. This endpoint returns null if state has a value other than FAILED.
+	// Read only field.
 	ErrorMessage *string `json:"errorMessage,omitempty"`
 	// Status of the sample dataset load job.
+	// Read only field.
 	State *string `json:"state,omitempty"`
 }
 

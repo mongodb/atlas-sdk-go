@@ -9,8 +9,10 @@ import (
 // CreateGCPForwardingRuleRequest struct for CreateGCPForwardingRuleRequest
 type CreateGCPForwardingRuleRequest struct {
 	// Human-readable label that identifies the Google Cloud consumer forwarding rule that you created.
+	// Write only field.
 	EndpointName *string `json:"endpointName,omitempty"`
 	// One Private Internet Protocol version 4 (IPv4) address to which this Google Cloud consumer forwarding rule resolves.
+	// Write only field.
 	IpAddress *string `json:"ipAddress,omitempty"`
 }
 

@@ -10,8 +10,10 @@ import (
 // ApiBSONTimestamp BSON timestamp that indicates when the checkpoint token entry in the oplog occurred.
 type ApiBSONTimestamp struct {
 	// Date and time when the oplog recorded this database operation. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+	// Read only field.
 	Date *time.Time `json:"date,omitempty"`
 	// Order of the database operation that the oplog recorded at specific date and time.
+	// Read only field.
 	Increment *int `json:"increment,omitempty"`
 }
 

@@ -17,10 +17,12 @@ type Source struct {
 	// Flag that indicates whether MongoDB Automation manages authentication to the source cluster. If true, do not provide values for username and password.
 	ManagedAuthentication bool `json:"managedAuthentication"`
 	// Password that authenticates the username to the source cluster.
+	// Write only field.
 	Password *string `json:"password,omitempty"`
 	// Flag that indicates whether you have SSL enabled.
 	Ssl bool `json:"ssl"`
 	// Label that identifies the SCRAM-SHA user that connects to the source cluster.
+	// Write only field.
 	Username *string `json:"username,omitempty"`
 }
 

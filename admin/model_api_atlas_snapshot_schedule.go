@@ -15,8 +15,10 @@ type ApiAtlasSnapshotSchedule struct {
 	// Quantity of time to keep daily snapshots. MongoDB Cloud expresses this value in days. Set this value to `0` to disable daily snapshot retention.
 	DailySnapshotRetentionDays int `json:"dailySnapshotRetentionDays"`
 	// Unique 24-hexadecimal digit string that identifies the project that contains the cluster.
+	// Read only field.
 	GroupId string `json:"groupId"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// Number of months that MongoDB Cloud must keep monthly snapshots. Set this value to `0` to disable monthly snapshot retention.
 	MonthlySnapshotRetentionMonths int `json:"monthlySnapshotRetentionMonths"`

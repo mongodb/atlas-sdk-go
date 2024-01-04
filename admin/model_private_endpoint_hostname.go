@@ -9,8 +9,10 @@ import (
 // PrivateEndpointHostname Set of Private endpoint and hostnames.
 type PrivateEndpointHostname struct {
 	// Human-readable label that identifies the hostname.
+	// Read only field.
 	Hostname *string `json:"hostname,omitempty"`
 	// Human-readable label that identifies private endpoint.
+	// Read only field.
 	PrivateEndpoint *string `json:"privateEndpoint,omitempty"`
 }
 

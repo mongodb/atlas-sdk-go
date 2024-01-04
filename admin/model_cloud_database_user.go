@@ -16,16 +16,19 @@ type CloudDatabaseUser struct {
 	// Date and time when MongoDB Cloud deletes the user. This parameter expresses its value in the ISO 8601 timestamp format in UTC and can include the time zone designation. You must specify a future date that falls within one week of making the Application Programming Interface (API) request.
 	DeleteAfterDate *time.Time `json:"deleteAfterDate,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project.
+	// Write only field.
 	GroupId string `json:"groupId"`
 	// List that contains the key-value pairs for tagging and categorizing the MongoDB database user. The labels that you define do not appear in the console.
 	Labels *[]ComponentLabel `json:"labels,omitempty"`
 	// Part of the Lightweight Directory Access Protocol (LDAP) record that the database uses to authenticate this database user on the LDAP host.
 	LdapAuthType *string `json:"ldapAuthType,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// Human-readable label that indicates whether the new database user authenticates with OIDC federated authentication. To create a federated authentication user, specify the value of IDP_GROUP for this field.
 	OidcAuthType *string `json:"oidcAuthType,omitempty"`
 	// Alphanumeric string that authenticates this database user against the database specified in `databaseName`. To authenticate with SCRAM-SHA, you must specify this parameter. This parameter doesn't appear in this response.
+	// Write only field.
 	Password *string `json:"password,omitempty"`
 	// List that provides the pairings of one role with one applicable database.
 	Roles *[]DatabaseUserRole `json:"roles,omitempty"`

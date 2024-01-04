@@ -9,6 +9,7 @@ import (
 // MongoDBAccessLogsList struct for MongoDBAccessLogsList
 type MongoDBAccessLogsList struct {
 	// Authentication attempt, one per object, made against the cluster.
+	// Read only field.
 	AccessLogs *[]MongoDBAccessLogs `json:"accessLogs,omitempty"`
 }
 

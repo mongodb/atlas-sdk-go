@@ -10,27 +10,38 @@ import (
 // IngestionPipelineRun Run details of a Data Lake Pipeline.
 type IngestionPipelineRun struct {
 	// Unique 24-hexadecimal character string that identifies a Data Lake Pipeline run.
+	// Read only field.
 	Id *string `json:"_id,omitempty"`
 	// Backup schedule interval of the Data Lake Pipeline.
+	// Read only field.
 	BackupFrequencyType *string `json:"backupFrequencyType,omitempty"`
 	// Timestamp that indicates when the pipeline run was created.
+	// Read only field.
 	CreatedDate *time.Time `json:"createdDate,omitempty"`
 	// Human-readable label that identifies the dataset that Atlas generates during this pipeline run. You can use this dataset as a `dataSource` in a Federated Database collection.
+	// Read only field.
 	DatasetName            *string                 `json:"datasetName,omitempty"`
 	DatasetRetentionPolicy *DatasetRetentionPolicy `json:"datasetRetentionPolicy,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project.
+	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
 	// Timestamp that indicates the last time that the pipeline run was updated.
+	// Read only field.
 	LastUpdatedDate *time.Time `json:"lastUpdatedDate,omitempty"`
 	// Processing phase of the Data Lake Pipeline.
+	// Read only field.
 	Phase *string `json:"phase,omitempty"`
 	// Unique 24-hexadecimal character string that identifies a Data Lake Pipeline.
+	// Read only field.
 	PipelineId *string `json:"pipelineId,omitempty"`
 	// Timestamp that indicates when the pipeline run will expire and its dataset will be deleted.
+	// Read only field.
 	ScheduledDeletionDate *time.Time `json:"scheduledDeletionDate,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the snapshot of a cluster.
+	// Read only field.
 	SnapshotId *string `json:"snapshotId,omitempty"`
 	// State of the pipeline run.
+	// Read only field.
 	State *string           `json:"state,omitempty"`
 	Stats *PipelineRunStats `json:"stats,omitempty"`
 }

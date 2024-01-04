@@ -10,47 +10,67 @@ import (
 // EventViewForOrg struct for EventViewForOrg
 type EventViewForOrg struct {
 	// Unique 24-hexadecimal digit string that identifies the [API Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key) that triggered the event. If this resource returns this parameter, it doesn't return the **userId** parameter.
+	// Read only field.
 	ApiKeyId *string `json:"apiKeyId,omitempty"`
 	// Date and time when this event occurred. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC.
+	// Read only field.
 	Created *time.Time `json:"created,omitempty"`
 	// Unique identifier of event type.
 	EventTypeName *string `json:"eventTypeName,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The **eventId** identifies the specific event.
+	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the event.
+	// Read only field.
 	Id *string `json:"id,omitempty"`
 	// Flag that indicates whether a MongoDB employee triggered the specified event.
+	// Read only field.
 	IsGlobalAdmin *bool `json:"isGlobalAdmin,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the organization to which these events apply.
+	// Read only field.
 	OrgId *string `json:"orgId,omitempty"`
 	// Public part of the [API Key](https://dochub.mongodb.org/core/atlas-create-prog-api-key) that triggered the event. If this resource returns this parameter, it doesn't return the **username** parameter.
+	// Read only field.
 	PublicKey *string `json:"publicKey,omitempty"`
 	Raw       *Raw    `json:"raw,omitempty"`
 	// IPv4 or IPv6 address from which the user triggered this event.
+	// Read only field.
 	RemoteAddress *string `json:"remoteAddress,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the console user who triggered the event. If this resource returns this parameter, it doesn't return the **apiKeyId** parameter.
+	// Read only field.
 	UserId *string `json:"userId,omitempty"`
 	// Email address for the user who triggered this event. If this resource returns this parameter, it doesn't return the **publicApiKey** parameter.
+	// Read only field.
 	Username *string `json:"username,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the alert associated with the event.
+	// Read only field.
 	AlertId *string `json:"alertId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the alert configuration associated with the **alertId**.
+	// Read only field.
 	AlertConfigId *string `json:"alertConfigId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies of the invoice associated with the event.
+	// Read only field.
 	InvoiceId *string `json:"invoiceId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the invoice payment associated with this event.
+	// Read only field.
 	PaymentId *string `json:"paymentId,omitempty"`
 	// The username of the MongoDB User that was created, deleted, or edited.
+	// Read only field.
 	DbUserUsername *string `json:"dbUserUsername,omitempty"`
 	// Entry in the list of source host addresses that the API key accepts and this event targets.
+	// Read only field.
 	WhitelistEntry *string `json:"whitelistEntry,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the organization team associated with this event.
+	// Read only field.
 	TeamId *string `json:"teamId,omitempty"`
 	// Email address for the console user that this event targets. The resource returns this parameter when `\"eventTypeName\" : \"USER\"`.
+	// Read only field.
 	TargetUsername *string `json:"targetUsername,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the resource associated with the event.
+	// Read only field.
 	ResourceId *string `json:"resourceId,omitempty"`
 	// Unique identifier of resource type.
 	ResourceType *string `json:"resourceType,omitempty"`

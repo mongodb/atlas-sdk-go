@@ -29,9 +29,11 @@ type ThridPartyIntegration struct {
 	// Flag that indicates whether someone has activated the Prometheus integration.
 	Enabled *bool `json:"enabled,omitempty"`
 	// Combination of IPv4 address and Internet Assigned Numbers Authority (IANA) port or the IANA port alone to which Prometheus binds to ingest MongoDB metrics.
-	ListenAddress     *string `json:"listenAddress,omitempty"`
-	Password          *string `json:"password,omitempty"`
-	RateLimitInterval *int    `json:"rateLimitInterval,omitempty"`
+	ListenAddress *string `json:"listenAddress,omitempty"`
+	// Write only field.
+	Password *string `json:"password,omitempty"`
+	// Write only field.
+	RateLimitInterval *int `json:"rateLimitInterval,omitempty"`
 	// Security Scheme to apply to HyperText Transfer Protocol (HTTP) traffic between Prometheus and MongoDB Cloud.
 	Scheme *string `json:"scheme,omitempty"`
 	// Desired method to discover the Prometheus service.

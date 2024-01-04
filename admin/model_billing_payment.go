@@ -10,20 +10,27 @@ import (
 // BillingPayment Funds transferred to MongoDB to cover the specified service in this invoice.
 type BillingPayment struct {
 	// Sum of services that the specified organization consumed in the period covered in this invoice. This parameter expresses its value in cents (100ths of one US Dollar) and calculates its value as **subtotalCents** + **salesTaxCents** - **startingBalanceCents**.
+	// Read only field.
 	AmountBilledCents *int64 `json:"amountBilledCents,omitempty"`
 	// Sum that the specified organization paid toward the associated invoice. This parameter expresses its value in cents (100ths of one US Dollar).
+	// Read only field.
 	AmountPaidCents *int64 `json:"amountPaidCents,omitempty"`
 	// Date and time when the customer made this payment attempt. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+	// Read only field.
 	Created *time.Time `json:"created,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies this payment toward the associated invoice.
+	// Read only field.
 	Id *string `json:"id,omitempty"`
 	// Sum of sales tax applied to this invoice. This parameter expresses its value in cents (100ths of one US Dollar).
+	// Read only field.
 	SalesTaxCents *int64 `json:"salesTaxCents,omitempty"`
 	// Phase of payment processing for the associated invoice when you made this request.  These phases include:  | Phase Value | Reason | |---|---| | `CANCELLED` | Customer or MongoDB cancelled the payment. | | `ERROR` | Issue arose when attempting to complete payment. | | `FAILED` | MongoDB tried to charge the credit card without success. | | `FAILED_AUTHENTICATION` | Strong Customer Authentication has failed. Confirm that your payment method is authenticated. | | `FORGIVEN` | Customer initiated payment which MongoDB later forgave. | | `INVOICED` | MongoDB issued an invoice that included this line item. | | `NEW` | Customer provided a method of payment, but MongoDB hasn't tried to charge the credit card. | | `PAID` | Customer submitted a successful payment. | | `PARTIAL_PAID` | Customer paid for part of this line item. |
 	StatusName *string `json:"statusName,omitempty"`
 	// Sum of all positive invoice line items contained in this invoice. This parameter expresses its value in cents (100ths of one US Dollar).
+	// Read only field.
 	SubtotalCents *int64 `json:"subtotalCents,omitempty"`
 	// Date and time when the customer made an update to this payment attempt. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+	// Read only field.
 	Updated *time.Time `json:"updated,omitempty"`
 }
 

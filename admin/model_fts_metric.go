@@ -9,8 +9,10 @@ import (
 // FTSMetric Measurement of one Atlas Search status when MongoDB Atlas received this request.
 type FTSMetric struct {
 	// Human-readable label that identifies this Atlas Search hardware, status, or index measurement.
+	// Read only field.
 	MetricName string `json:"metricName"`
 	// Unit of measurement that applies to this Atlas Search metric.
+	// Read only field.
 	Units string `json:"units"`
 }
 

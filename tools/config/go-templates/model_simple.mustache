@@ -17,6 +17,12 @@ type {{classname}} struct {
 {{#description}}
 	// {{{.}}}
 {{/description}}
+{{#isReadOnly}}
+	// Read only field.
+{{/isReadOnly}}
+{{#isWriteOnly}}
+	// Write only field.
+{{/isWriteOnly}}
 {{#deprecated}}
 	// Deprecated
 {{/deprecated}}

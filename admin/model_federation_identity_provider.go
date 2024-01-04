@@ -17,6 +17,7 @@ type FederationIdentityProvider struct {
 	// Human-readable label that identifies the identity provider.
 	DisplayName *string `json:"displayName,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the identity provider.
+	// Read only field.
 	Id string `json:"id"`
 	// Unique string that identifies the issuer of the SAML Assertion.
 	IssuerUri *string `json:"issuerUri,omitempty"`

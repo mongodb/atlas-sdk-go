@@ -14,41 +14,59 @@ type AlertViewForNdsGroup struct {
 	// Comment that a MongoDB Cloud user submitted when acknowledging the alert.
 	AcknowledgementComment *string `json:"acknowledgementComment,omitempty"`
 	// MongoDB Cloud username of the person who acknowledged the alert. The response returns this parameter if a MongoDB Cloud user previously acknowledged this alert.
+	// Read only field.
 	AcknowledgingUsername *string `json:"acknowledgingUsername,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the alert configuration that sets this alert.
+	// Read only field.
 	AlertConfigId *string `json:"alertConfigId,omitempty"`
 	// Date and time when MongoDB Cloud created this alert. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC.
+	// Read only field.
 	Created *time.Time `json:"created,omitempty"`
 	// Incident that triggered this alert.
+	// Read only field.
 	EventTypeName *string `json:"eventTypeName,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project that owns this alert.
+	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies this alert.
+	// Read only field.
 	Id *string `json:"id,omitempty"`
 	// Date and time that any notifications were last sent for this alert. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC. The resource returns this parameter if MongoDB Cloud has sent notifications for this alert.
+	// Read only field.
 	LastNotified *time.Time `json:"lastNotified,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the organization that owns the project to which this alert applies.
+	// Read only field.
 	OrgId *string `json:"orgId,omitempty"`
 	// Date and time that this alert changed to `\"status\" : \"CLOSED\"`. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC. The resource returns this parameter once `\"status\" : \"CLOSED\"`.
+	// Read only field.
 	Resolved *time.Time `json:"resolved,omitempty"`
 	// State of this alert at the time you requested its details.
+	// Read only field.
 	Status *string `json:"status,omitempty"`
 	// Date and time when someone last updated this alert. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC.
+	// Read only field.
 	Updated *time.Time `json:"updated,omitempty"`
 	// Human-readable label that identifies the cluster to which this alert applies. This resource returns this parameter for alerts of events impacting backups, replica sets, or sharded clusters.
+	// Read only field.
 	ClusterName *string `json:"clusterName,omitempty"`
 	// Hostname and port of the host to which this alert applies. The resource returns this parameter for alerts of events impacting hosts or replica sets.
+	// Read only field.
 	HostnameAndPort *string `json:"hostnameAndPort,omitempty"`
 	// Name of the replica set to which this alert applies. The response returns this parameter for alerts of events impacting backups, hosts, or replica sets.
+	// Read only field.
 	ReplicaSetName *string            `json:"replicaSetName,omitempty"`
 	CurrentValue   *NumberMetricValue `json:"currentValue,omitempty"`
 	// Name of the metric against which Atlas checks the configured `metricThreshold.threshold`.  To learn more about the available metrics, see <a href=\"https://www.mongodb.com/docs/atlas/reference/alert-host-metrics/#std-label-measurement-types\" target=\"_blank\">Host Metrics</a>.  **NOTE**: If you set eventTypeName to OUTSIDE_SERVERLESS_METRIC_THRESHOLD, you can specify only metrics available for serverless. To learn more, see <a href=\"https://dochub.mongodb.org/core/alert-config-serverless-measurements\" target=\"_blank\">Serverless Measurements</a>.
+	// Read only field.
 	MetricName *string `json:"metricName,omitempty"`
 	// List of unique 24-hexadecimal character strings that identify the replica set members that are not in PRIMARY nor SECONDARY state.
+	// Read only field.
 	NonRunningHostIds *[]string `json:"nonRunningHostIds,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the parent cluster to which this alert applies. The parent cluster contains the sharded nodes. MongoDB Cloud returns this parameter only for alerts of events impacting sharded clusters.
+	// Read only field.
 	ParentClusterId *string `json:"parentClusterId,omitempty"`
 }
 

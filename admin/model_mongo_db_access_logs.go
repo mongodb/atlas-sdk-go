@@ -11,20 +11,28 @@ type MongoDBAccessLogs struct {
 	// Flag that indicates whether the response should return successful authentication attempts only.
 	AuthResult *bool `json:"authResult,omitempty"`
 	// Database against which someone attempted to authenticate.
+	// Read only field.
 	AuthSource *string `json:"authSource,omitempty"`
 	// Reason that the authentication failed. Null if authentication succeeded.
+	// Read only field.
 	FailureReason *string `json:"failureReason,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project.
+	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
 	// Human-readable label that identifies the hostname of the target node that received the authentication attempt.
+	// Read only field.
 	Hostname *string `json:"hostname,omitempty"`
 	// Internet Protocol address that attempted to authenticate with the database.
+	// Read only field.
 	IpAddress *string `json:"ipAddress,omitempty"`
 	// Text of the host log concerning the authentication attempt.
+	// Read only field.
 	LogLine *string `json:"logLine,omitempty"`
 	// Date and time when someone made this authentication attempt. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
+	// Read only field.
 	Timestamp *string `json:"timestamp,omitempty"`
 	// Username used to authenticate against the database.
+	// Read only field.
 	Username *string `json:"username,omitempty"`
 }
 

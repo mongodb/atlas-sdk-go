@@ -9,14 +9,18 @@ import (
 // DataLakeAWSCloudProviderConfig Name of the cloud service that hosts the data lake's data stores.
 type DataLakeAWSCloudProviderConfig struct {
 	// Unique identifier associated with the Identity and Access Management (IAM) role that the data lake assumes when accessing the data stores.
+	// Read only field.
 	ExternalId *string `json:"externalId,omitempty"`
 	// Amazon Resource Name (ARN) of the Identity and Access Management (IAM) role that the data lake assumes when accessing data stores.
+	// Read only field.
 	IamAssumedRoleARN *string `json:"iamAssumedRoleARN,omitempty"`
 	// Amazon Resource Name (ARN) of the user that the data lake assumes when accessing data stores.
+	// Read only field.
 	IamUserARN *string `json:"iamUserARN,omitempty"`
 	// Unique identifier of the role that the data lake can use to access the data stores.Required if specifying cloudProviderConfig.
 	RoleId string `json:"roleId"`
 	// Name of the S3 data bucket that the provided role ID is authorized to access.Required if specifying cloudProviderConfig.
+	// Write only field.
 	TestS3Bucket string `json:"testS3Bucket"`
 }
 

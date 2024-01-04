@@ -9,24 +9,34 @@ import (
 // BackupSnapshotPart Characteristics that identify this snapshot.
 type BackupSnapshotPart struct {
 	// Unique 24-hexadecimal digit string that identifies the cluster with the snapshots you want to return.
+	// Read only field.
 	ClusterId *string `json:"clusterId,omitempty"`
 	// Human-readable label that identifies the method of compression for the snapshot.
+	// Read only field.
 	CompressionSetting *string `json:"compressionSetting,omitempty"`
 	// Total size of the data stored on each node in the cluster. This parameter expresses its value in bytes.
+	// Read only field.
 	DataSizeBytes *int64 `json:"dataSizeBytes,omitempty"`
 	// Flag that indicates whether someone encrypted this snapshot.
+	// Read only field.
 	EncryptionEnabled *bool `json:"encryptionEnabled,omitempty"`
 	// Number that indicates the total size of the data files in bytes.
+	// Read only field.
 	FileSizeBytes *int64 `json:"fileSizeBytes,omitempty"`
 	// Unique string that identifies the Key Management Interoperability (KMIP) master key used to encrypt the snapshot data. The resource returns this parameter when `\"parts.encryptionEnabled\" : true`.
+	// Read only field.
 	MasterKeyUUID *string `json:"masterKeyUUID,omitempty"`
 	// Number that indicates the version of MongoDB that the replica set primary ran when MongoDB Cloud created the snapshot.
+	// Read only field.
 	MongodVersion *string `json:"mongodVersion,omitempty"`
 	// Human-readable label that identifies the replica set.
+	// Read only field.
 	ReplicaSetName *string `json:"replicaSetName,omitempty"`
 	// Number that indicates the total size of space allocated for document storage.
+	// Read only field.
 	StorageSizeBytes *int64 `json:"storageSizeBytes,omitempty"`
 	// Human-readable label that identifies the type of server from which MongoDB Cloud took this snapshot.
+	// Read only field.
 	TypeName *string `json:"typeName,omitempty"`
 }
 

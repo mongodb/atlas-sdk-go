@@ -9,8 +9,10 @@ import (
 // NamespaceObj Human-readable label that identifies the namespace on the specified host. The resource expresses this parameter value as `<database>.<collection>`.
 type NamespaceObj struct {
 	// Human-readable label that identifies the namespace on the specified host. The resource expresses this parameter value as `<database>.<collection>`.
+	// Read only field.
 	Namespace *string `json:"namespace,omitempty"`
 	// Human-readable label that identifies the type of namespace.
+	// Read only field.
 	Type *string `json:"type,omitempty"`
 }
 

@@ -9,8 +9,10 @@ import (
 // PerformanceAdvisorSlowQuery Details of one slow query that the Performance Advisor detected.
 type PerformanceAdvisorSlowQuery struct {
 	// Text of the MongoDB log related to this slow query.
+	// Read only field.
 	Line *string `json:"line,omitempty"`
 	// Human-readable label that identifies the namespace on the specified host. The resource expresses this parameter value as `<database>.<collection>`.
+	// Read only field.
 	Namespace *string `json:"namespace,omitempty"`
 }
 

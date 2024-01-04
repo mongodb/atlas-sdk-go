@@ -9,10 +9,13 @@ import (
 // ServerlessConnectionStringsPrivateEndpointItem Details of a private endpoint deployed for this serverless instance.
 type ServerlessConnectionStringsPrivateEndpointItem struct {
 	// Unique string that the cloud provider uses to identify the private endpoint.
+	// Read only field.
 	EndpointId *string `json:"endpointId,omitempty"`
 	// Cloud provider where the private endpoint is deployed.
+	// Read only field.
 	ProviderName *string `json:"providerName,omitempty"`
 	// Region where the private endpoint is deployed.
+	// Read only field.
 	Region *string `json:"region,omitempty"`
 }
 

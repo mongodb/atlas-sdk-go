@@ -13,10 +13,12 @@ type ClusterSearchIndex struct {
 	// Human-readable label that identifies the database that contains the collection with one or more Atlas Search indexes.
 	Database string `json:"database"`
 	// Unique 24-hexadecimal digit string that identifies this Atlas Search index.
+	// Read only field.
 	IndexID *string `json:"indexID,omitempty"`
 	// Human-readable label that identifies this index. Within each namespace, names of all indexes in the namespace must be unique.
 	Name string `json:"name"`
 	// Condition of the search index when you made this request.  | Status | Index Condition |  |---|---|  | IN_PROGRESS | Atlas is building or re-building the index after an edit. |  | STEADY | You can use this search index. |  | FAILED | Atlas could not build the index. |  | MIGRATING | Atlas is upgrading the underlying cluster tier and migrating indexes. |  | PAUSED | The cluster is paused. |
+	// Read only field.
 	Status *string `json:"status,omitempty"`
 	// Type of the index. Warning: vectorSearch is not yet generally available. Default type is search.
 	Type *string `json:"type,omitempty"`

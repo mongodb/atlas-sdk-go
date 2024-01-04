@@ -9,6 +9,7 @@ import (
 // CloudProviderAccessFeatureUsage MongoDB Cloud features associated with this Amazon Web Services (AWS) Identity and Access Management (IAM) role.
 type CloudProviderAccessFeatureUsage struct {
 	// Human-readable label that describes one MongoDB Cloud feature linked to this Amazon Web Services (AWS) Identity and Access Management (IAM) role.
+	// Read only field.
 	FeatureType *string                                                     `json:"featureType,omitempty"`
 	FeatureId   *CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId `json:"featureId,omitempty"`
 }

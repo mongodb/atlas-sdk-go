@@ -10,8 +10,10 @@ import (
 type CreateOrganizationResponse struct {
 	ApiKey *ApiKeyUserDetails `json:"apiKey,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the federation that you linked the newly created organization to.
+	// Read only field.
 	FederationSettingsId *string `json:"federationSettingsId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud user that you assigned the Organization Owner role in the new organization.
+	// Read only field.
 	OrgOwnerId   *string            `json:"orgOwnerId,omitempty"`
 	Organization *AtlasOrganization `json:"organization,omitempty"`
 }

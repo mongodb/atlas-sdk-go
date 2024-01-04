@@ -9,14 +9,18 @@ import (
 // LiveImportValidation struct for LiveImportValidation
 type LiveImportValidation struct {
 	// Unique 24-hexadecimal digit string that identifies the validation.
+	// Read only field.
 	Id *string `json:"_id,omitempty"`
 	// Reason why the validation job failed.
+	// Read only field.
 	ErrorMessage *string `json:"errorMessage,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project to validate.
+	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the source project.
 	SourceGroupId *string `json:"sourceGroupId,omitempty"`
 	// State of the specified validation job returned at the time of the request.
+	// Read only field.
 	Status *string `json:"status,omitempty"`
 }
 

@@ -9,22 +9,31 @@ import (
 // ServerlessTenantEndpoint struct for ServerlessTenantEndpoint
 type ServerlessTenantEndpoint struct {
 	// Unique 24-hexadecimal digit string that identifies the private endpoint.
+	// Read only field.
 	Id *string `json:"_id,omitempty"`
 	// Unique string that identifies the private endpoint's network interface.  Alternatively: Unique string that identifies the Azure private endpoint's network interface that someone added to this private endpoint service.
+	// Read only field.
 	CloudProviderEndpointId *string `json:"cloudProviderEndpointId,omitempty"`
 	// Human-readable comment associated with the private endpoint.
+	// Read only field.
 	Comment *string `json:"comment,omitempty"`
 	// Unique string that identifies the PrivateLink endpoint service. MongoDB Cloud returns null while it creates the endpoint service.  Alternatively: Unique string that identifies the Amazon Web Services (AWS) PrivateLink endpoint service. MongoDB Cloud returns null while it creates the endpoint service.  Alternatively: Unique string that identifies the Azure private endpoint service. MongoDB Cloud returns null while it creates the endpoint service.
+	// Read only field.
 	EndpointServiceName *string `json:"endpointServiceName,omitempty"`
 	// Human-readable error message that indicates error condition associated with establishing the private endpoint connection.
+	// Read only field.
 	ErrorMessage *string `json:"errorMessage,omitempty"`
 	// Human-readable label that indicates the current operating status of the private endpoint.
+	// Read only field.
 	Status *string `json:"status,omitempty"`
 	// Human-readable label that identifies the cloud service provider.
+	// Read only field.
 	ProviderName *string `json:"providerName,omitempty"`
 	// IPv4 address of the private endpoint in your Azure VNet that someone added to this private endpoint service.
+	// Read only field.
 	PrivateEndpointIpAddress *string `json:"privateEndpointIpAddress,omitempty"`
 	// Root-relative path that identifies the Azure Private Link Service that MongoDB Cloud manages. MongoDB Cloud returns null while it creates the endpoint service.
+	// Read only field.
 	PrivateLinkServiceResourceId *string `json:"privateLinkServiceResourceId,omitempty"`
 }
 

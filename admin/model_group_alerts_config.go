@@ -10,22 +10,28 @@ import (
 // GroupAlertsConfig struct for GroupAlertsConfig
 type GroupAlertsConfig struct {
 	// Date and time when MongoDB Cloud created the alert configuration. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC.
+	// Read only field.
 	Created *time.Time `json:"created,omitempty"`
 	// Flag that indicates whether someone enabled this alert configuration for the specified project.
 	Enabled *bool `json:"enabled,omitempty"`
 	// Event type that triggers an alert.
 	EventTypeName *string `json:"eventTypeName,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project that owns this alert configuration.
+	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies this alert configuration.
+	// Read only field.
 	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// No matchers are available for these alert types. The list is always empty.  Alternatively: List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster.  Alternatively: List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster.  Alternatively: No matchers are available for these alert types. The list is always empty.  Alternatively: List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster.  Alternatively: No matchers are available for these alert types. The list is always empty.  Alternatively: No matchers are available for these alert types. The list is always empty.  Alternatively: List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster.  Alternatively: List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster.  Alternatively: No matchers are available for these alert types. The list is always empty.  Alternatively: List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster.  Alternatively: List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. You can filter using the matchers array if the **eventTypeName** specifies an event for a host, replica set, or sharded cluster.  Alternatively: No matchers are available for these alert types. The list is always empty.
+	// Read only field.
 	Matchers *[]map[string]interface{} `json:"matchers,omitempty"`
 	// List that contains the targets that MongoDB Cloud sends notifications.
 	Notifications *[]AlertsNotificationRootForGroup `json:"notifications,omitempty"`
 	// Date and time when someone last updated this alert configuration. This parameter expresses its value in the <a href=\"https://en.wikipedia.org/wiki/ISO_8601\" target=\"_blank\" rel=\"noopener noreferrer\">ISO 8601</a> timestamp format in UTC.
+	// Read only field.
 	Updated         *time.Time                 `json:"updated,omitempty"`
 	MetricThreshold *ServerlessMetricThreshold `json:"metricThreshold,omitempty"`
 	Threshold       *GreaterThanRawThreshold   `json:"threshold,omitempty"`

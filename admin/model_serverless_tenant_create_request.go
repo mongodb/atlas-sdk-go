@@ -9,6 +9,7 @@ import (
 // ServerlessTenantCreateRequest struct for ServerlessTenantCreateRequest
 type ServerlessTenantCreateRequest struct {
 	// Human-readable comment associated with the private endpoint.
+	// Write only field.
 	Comment *string `json:"comment,omitempty"`
 }
 

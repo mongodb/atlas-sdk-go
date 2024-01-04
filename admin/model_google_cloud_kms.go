@@ -13,8 +13,10 @@ type GoogleCloudKMS struct {
 	// Resource path that displays the key version resource ID for your Google Cloud KMS.
 	KeyVersionResourceID *string `json:"keyVersionResourceID,omitempty"`
 	// JavaScript Object Notation (JSON) object that contains the Google Cloud Key Management Service (KMS). Format the JSON as a string and not as an object.
+	// Write only field.
 	ServiceAccountKey *string `json:"serviceAccountKey,omitempty"`
 	// Flag that indicates whether the Google Cloud Key Management Service (KMS) encryption key can encrypt and decrypt data.
+	// Read only field.
 	Valid *bool `json:"valid,omitempty"`
 }
 

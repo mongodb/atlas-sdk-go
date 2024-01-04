@@ -9,8 +9,10 @@ import (
 // CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId Identifying characteristics about the Amazon Web Services (AWS) Simple Storage Service (S3) export bucket linked to this AWS Identity and Access Management (IAM) role.
 type CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId struct {
 	// Name of the AWS S3 bucket to which your logs will be exported to.
+	// Read only field.
 	BucketName *string `json:"bucketName,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies your project.
+	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
 }
 

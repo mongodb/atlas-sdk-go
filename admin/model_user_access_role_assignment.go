@@ -9,6 +9,7 @@ import (
 // UserAccessRoleAssignment struct for UserAccessRoleAssignment
 type UserAccessRoleAssignment struct {
 	// Unique 24-hexadecimal digit string that identifies the organization API key.
+	// Read only field.
 	ApiUserId *string `json:"apiUserId,omitempty"`
 	// List of roles to grant this API key. If you provide this list, provide a minimum of one role and ensure each role applies to this project.
 	Roles *[]string `json:"roles,omitempty"`

@@ -9,6 +9,7 @@ import (
 // CloudProviderRegions struct for CloudProviderRegions
 type CloudProviderRegions struct {
 	// List of instances sizes that this cloud provider supports.
+	// Read only field.
 	InstanceSizes *[]ClusterCloudProviderInstanceSize `json:"instanceSizes,omitempty"`
 	// Human-readable label that identifies the Cloud provider.
 	Provider *string `json:"provider,omitempty"`

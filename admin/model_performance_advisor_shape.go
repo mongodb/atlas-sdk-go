@@ -9,16 +9,22 @@ import (
 // PerformanceAdvisorShape struct for PerformanceAdvisorShape
 type PerformanceAdvisorShape struct {
 	// Average duration in milliseconds for the queries examined that match this shape.
+	// Read only field.
 	AvgMs *int64 `json:"avgMs,omitempty"`
 	// Number of queries examined that match this shape.
+	// Read only field.
 	Count *int64 `json:"count,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies this shape. This string exists only for the duration of this API request.
+	// Read only field.
 	Id *string `json:"id,omitempty"`
 	// Average number of documents read for every document that the query returns.
+	// Read only field.
 	InefficiencyScore *int64 `json:"inefficiencyScore,omitempty"`
 	// Human-readable label that identifies the namespace on the specified host. The resource expresses this parameter value as `<database>.<collection>`.
+	// Read only field.
 	Namespace *string `json:"namespace,omitempty"`
 	// List that contains specific about individual queries.
+	// Read only field.
 	Operations *[]PerformanceAdvisorOperation `json:"operations,omitempty"`
 }
 

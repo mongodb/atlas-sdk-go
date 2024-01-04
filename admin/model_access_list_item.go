@@ -9,8 +9,10 @@ import (
 // AccessListItem struct for AccessListItem
 type AccessListItem struct {
 	// Range of IP addresses in Classless Inter-Domain Routing (CIDR) notation that found in this project's access list.
+	// Read only field.
 	CidrBlock *string `json:"cidrBlock,omitempty"`
 	// IP address included in the API access list.
+	// Read only field.
 	IpAddress string `json:"ipAddress"`
 }
 
