@@ -9,8 +9,10 @@ import (
 // CloudProviderEndpointServiceRequest struct for CloudProviderEndpointServiceRequest
 type CloudProviderEndpointServiceRequest struct {
 	// Human-readable label that identifies the cloud service provider for which you want to create the private endpoint service.
+	// Write only field
 	ProviderName string `json:"providerName"`
 	// Cloud provider region in which you want to create the private endpoint service. Regions accepted as values differ for [Amazon Web Services](https://docs.atlas.mongodb.com/reference/amazon-aws/), [Google Cloud Platform](https://docs.atlas.mongodb.com/reference/google-gcp/), and [Microsoft Azure](https://docs.atlas.mongodb.com/reference/microsoft-azure/).
+	// Write only field
 	Region string `json:"region"`
 }
 

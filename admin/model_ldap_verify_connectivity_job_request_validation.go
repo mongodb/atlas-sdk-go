@@ -9,8 +9,10 @@ import (
 // LDAPVerifyConnectivityJobRequestValidation One test that MongoDB Cloud runs to test verification of the provided Lightweight Directory Access Protocol (LDAP) over Transport Layer Security (TLS) configuration details.
 type LDAPVerifyConnectivityJobRequestValidation struct {
 	// Human-readable string that indicates the result of this verification test.
+	// Read only field
 	Status *string `json:"status,omitempty"`
 	// Human-readable label that identifies this verification test that MongoDB Cloud runs.
+	// Read only field
 	ValidationType *string `json:"validationType,omitempty"`
 }
 

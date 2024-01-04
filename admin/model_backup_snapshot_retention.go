@@ -9,6 +9,7 @@ import (
 // BackupSnapshotRetention struct for BackupSnapshotRetention
 type BackupSnapshotRetention struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+	// Read only field
 	Links []Link `json:"links,omitempty"`
 	// Quantity of time in which MongoDB Cloud measures snapshot retention.
 	RetentionUnit string `json:"retentionUnit"`

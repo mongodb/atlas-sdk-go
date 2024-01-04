@@ -28,6 +28,7 @@ type DataLakeStoreSettings struct {
 	// Human-readable label of the MongoDB Cloud cluster on which the store is based.
 	ClusterName *string `json:"clusterName,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project.
+	// Read only field
 	ProjectId      *string                           `json:"projectId,omitempty"`
 	ReadConcern    *DataLakeAtlasStoreReadConcern    `json:"readConcern,omitempty"`
 	ReadPreference *DataLakeAtlasStoreReadPreference `json:"readPreference,omitempty"`

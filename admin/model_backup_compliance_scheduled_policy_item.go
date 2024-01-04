@@ -13,6 +13,7 @@ type BackupComplianceScheduledPolicyItem struct {
 	// Human-readable label that identifies the frequency type associated with the backup policy.
 	FrequencyType string `json:"frequencyType"`
 	// Unique 24-hexadecimal digit string that identifies this backup policy item.
+	// Read only field
 	Id *string `json:"id,omitempty"`
 	// Unit of time in which MongoDB Cloud measures snapshot retention.
 	RetentionUnit string `json:"retentionUnit"`

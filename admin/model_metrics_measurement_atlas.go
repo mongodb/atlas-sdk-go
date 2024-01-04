@@ -9,10 +9,13 @@ import (
 // MetricsMeasurementAtlas struct for MetricsMeasurementAtlas
 type MetricsMeasurementAtlas struct {
 	// List that contains the value of, and metadata provided for, one data point generated at a particular moment in time. If no data point exists for a particular moment in time, the `value` parameter returns `null`.
+	// Read only field
 	DataPoints []MetricDataPointAtlas `json:"dataPoints,omitempty"`
 	// Human-readable label of the measurement that this data point covers.
+	// Read only field
 	Name *string `json:"name,omitempty"`
 	// Element used to quantify the measurement. The resource returns units of throughput, storage, and time.
+	// Read only field
 	Units *string `json:"units,omitempty"`
 }
 

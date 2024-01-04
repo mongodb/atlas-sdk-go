@@ -9,13 +9,17 @@ import (
 // ApiCheckpointPart Metadata contained in one document that describes the complete snapshot taken for this node.
 type ApiCheckpointPart struct {
 	// Human-readable label that identifies the replica set to which this checkpoint applies.
+	// Read only field
 	ReplicaSetName *string `json:"replicaSetName,omitempty"`
 	// Human-readable label that identifies the shard to which this checkpoint applies.
+	// Read only field
 	ShardName *string `json:"shardName,omitempty"`
 	// Flag that indicates whether the token exists.
+	// Read only field
 	TokenDiscovered *bool             `json:"tokenDiscovered,omitempty"`
 	TokenTimestamp  *ApiBSONTimestamp `json:"tokenTimestamp,omitempty"`
 	// Human-readable label that identifies the type of host that the part represents.
+	// Read only field
 	TypeName *string `json:"typeName,omitempty"`
 }
 

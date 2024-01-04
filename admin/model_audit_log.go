@@ -13,6 +13,7 @@ type AuditLog struct {
 	// JSON document that specifies which events to record. Escape any characters that may prevent parsing, such as single or double quotes, using a backslash (`\\`).
 	AuditFilter *string `json:"auditFilter,omitempty"`
 	// Human-readable label that displays how to configure the audit filter.
+	// Read only field
 	ConfigurationType *string `json:"configurationType,omitempty"`
 	// Flag that indicates whether someone enabled database auditing for the specified project.
 	Enabled *bool `json:"enabled,omitempty"`

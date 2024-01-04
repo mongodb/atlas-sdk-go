@@ -13,8 +13,10 @@ type LiveImportAvailableProject struct {
 	// Hostname of MongoDB Agent list that you configured to perform a migration.
 	MigrationHosts []string `json:"migrationHosts,omitempty"`
 	// Human-readable label that identifies this project.
+	// Read only field
 	Name string `json:"name"`
 	// Unique 24-hexadecimal digit string that identifies the project to be migrated.
+	// Read only field
 	ProjectId string `json:"projectId"`
 }
 

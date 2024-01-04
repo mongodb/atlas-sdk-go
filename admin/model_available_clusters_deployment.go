@@ -9,26 +9,37 @@ import (
 // AvailableClustersDeployment Deployments that can be migrated to MongoDB Atlas.
 type AvailableClustersDeployment struct {
 	// Version of MongoDB Agent that monitors/manages the cluster.
+	// Read only field
 	AgentVersion *string `json:"agentVersion,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the cluster.
+	// Read only field
 	ClusterId *string `json:"clusterId,omitempty"`
 	// Size of this database on disk at the time of the request expressed in bytes.
+	// Read only field
 	DbSizeBytes *int64 `json:"dbSizeBytes,omitempty"`
 	// Version of MongoDB [features](https://docs.mongodb.com/manual/reference/command/setFeatureCompatibilityVersion) that this cluster supports.
+	// Read only field
 	FeatureCompatibilityVersion string `json:"featureCompatibilityVersion"`
 	// Flag that indicates whether Automation manages this cluster.
+	// Read only field
 	Managed bool `json:"managed"`
 	// Version of MongoDB that this cluster runs.
+	// Read only field
 	MongoDBVersion string `json:"mongoDBVersion"`
 	// Human-readable label that identifies this cluster.
+	// Read only field
 	Name string `json:"name"`
 	// Size of the Oplog on disk at the time of the request expressed in MB.
+	// Read only field
 	OplogSizeMB *int `json:"oplogSizeMB,omitempty"`
 	// Flag that indicates whether someone configured this cluster as a sharded cluster.  - If `true`, this cluster serves as a sharded cluster. - If `false`, this cluster serves as a replica set.
+	// Read only field
 	Sharded bool `json:"sharded"`
 	// Number of shards that comprise this cluster.
+	// Read only field
 	ShardsSize *int `json:"shardsSize,omitempty"`
 	// Flag that indicates whether someone enabled TLS for this cluster.
+	// Read only field
 	TlsEnabled bool `json:"tlsEnabled"`
 }
 

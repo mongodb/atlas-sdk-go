@@ -17,6 +17,7 @@ type ConnectedOrgConfig struct {
 	// Unique 20-hexadecimal digit string that identifies the identity provider that this connected org config is associated with.
 	IdentityProviderId string `json:"identityProviderId"`
 	// Unique 24-hexadecimal digit string that identifies the connected organization configuration.
+	// Read only field
 	OrgId string `json:"orgId"`
 	// Atlas roles that are granted to a user in this organization after authenticating.
 	PostAuthRoleGrants []string `json:"postAuthRoleGrants,omitempty"`

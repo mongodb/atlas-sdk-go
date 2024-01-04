@@ -9,6 +9,7 @@ import (
 // GroupIPAddresses List of IP addresses in a project.
 type GroupIPAddresses struct {
 	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud project.
+	// Read only field
 	GroupId  *string       `json:"groupId,omitempty"`
 	Services *GroupService `json:"services,omitempty"`
 }

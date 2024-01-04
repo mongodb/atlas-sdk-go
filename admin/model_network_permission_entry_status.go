@@ -9,6 +9,7 @@ import (
 // NetworkPermissionEntryStatus struct for NetworkPermissionEntryStatus
 type NetworkPermissionEntryStatus struct {
 	// State of the access list entry when MongoDB Cloud made this request.  | Status | Activity | |---|---| | `ACTIVE` | This access list entry applies to all relevant cloud providers. | | `PENDING` | MongoDB Cloud has started to add access list entry. This access list entry may not apply to all cloud providers at the time of this request. | | `FAILED` | MongoDB Cloud didn't succeed in adding this access list entry. |
+	// Read only field
 	STATUS string `json:"STATUS"`
 }
 

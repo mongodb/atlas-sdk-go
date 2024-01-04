@@ -9,10 +9,13 @@ import (
 // DiskBackupShardedClusterSnapshotMember struct for DiskBackupShardedClusterSnapshotMember
 type DiskBackupShardedClusterSnapshotMember struct {
 	// Human-readable label that identifies the cloud provider that stores this snapshot. The resource returns this parameter when `\"type\": \"replicaSet\"`.
+	// Read only field
 	CloudProvider string `json:"cloudProvider"`
 	// Unique 24-hexadecimal digit string that identifies the snapshot.
+	// Read only field
 	Id string `json:"id"`
 	// Human-readable label that identifies the shard or config host from which MongoDB Cloud took this snapshot.
+	// Read only field
 	ReplicaSetName string `json:"replicaSetName"`
 }
 

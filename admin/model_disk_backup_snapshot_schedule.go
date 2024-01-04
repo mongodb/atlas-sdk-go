@@ -12,19 +12,24 @@ type DiskBackupSnapshotSchedule struct {
 	// Flag that indicates whether MongoDB Cloud automatically exports cloud backup snapshots to the AWS bucket.
 	AutoExportEnabled *bool `json:"autoExportEnabled,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the cluster with the snapshot you want to return.
+	// Read only field
 	ClusterId *string `json:"clusterId,omitempty"`
 	// Human-readable label that identifies the cluster with the snapshot you want to return.
+	// Read only field
 	ClusterName *string `json:"clusterName,omitempty"`
 	// List that contains a document for each copy setting item in the desired backup policy.
 	CopySettings []DiskBackupCopySetting `json:"copySettings,omitempty"`
 	// List that contains a document for each deleted copy setting whose backup copies you want to delete.
+	// Write only field
 	DeleteCopiedBackups []DeleteCopiedBackups `json:"deleteCopiedBackups,omitempty"`
 	Export              *AutoExportPolicy     `json:"export,omitempty"`
 	// List that contains a document for each extra retention setting item in the desired backup policy.
 	ExtraRetentionSettings []ExtraRetentionSetting `json:"extraRetentionSettings,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+	// Read only field
 	Links []Link `json:"links,omitempty"`
 	// Date and time when MongoDB Cloud takes the next snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+	// Read only field
 	NextSnapshot *time.Time `json:"nextSnapshot,omitempty"`
 	// Rules set for this backup schedule.
 	Policies []AdvancedDiskBackupSnapshotSchedulePolicy `json:"policies,omitempty"`
@@ -35,6 +40,7 @@ type DiskBackupSnapshotSchedule struct {
 	// Number of previous days that you can restore back to with Continuous Cloud Backup accuracy. You must specify a positive, non-zero integer. This parameter applies to continuous cloud backups only.
 	RestoreWindowDays *int `json:"restoreWindowDays,omitempty"`
 	// Flag that indicates whether to apply the retention changes in the updated backup policy to snapshots that MongoDB Cloud took previously.
+	// Write only field
 	UpdateSnapshots *bool `json:"updateSnapshots,omitempty"`
 	// Flag that indicates whether to use organization and project names instead of organization and project UUIDs in the path to the metadata files that MongoDB Cloud uploads to your AWS bucket.
 	UseOrgAndGroupNamesInExportPrefix *bool `json:"useOrgAndGroupNamesInExportPrefix,omitempty"`

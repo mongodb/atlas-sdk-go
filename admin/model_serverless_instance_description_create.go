@@ -9,10 +9,12 @@ import (
 // ServerlessInstanceDescriptionCreate Settings that you can specify when you create a serverless instance.
 type ServerlessInstanceDescriptionCreate struct {
 	// Human-readable label that identifies the serverless instance.
+	// Write only field
 	Name                    string                          `json:"name"`
 	ProviderSettings        ServerlessProviderSettings      `json:"providerSettings"`
 	ServerlessBackupOptions *ClusterServerlessBackupOptions `json:"serverlessBackupOptions,omitempty"`
 	// Human-readable label that indicates the current operating condition of the serverless instance.
+	// Read only field
 	StateName *string `json:"stateName,omitempty"`
 	// List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the serverless instance.
 	Tags []ResourceTag `json:"tags,omitempty"`

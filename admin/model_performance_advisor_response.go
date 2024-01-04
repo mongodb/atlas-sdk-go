@@ -9,8 +9,10 @@ import (
 // PerformanceAdvisorResponse struct for PerformanceAdvisorResponse
 type PerformanceAdvisorResponse struct {
 	// List of query predicates, sorts, and projections that the Performance Advisor suggests.
+	// Read only field
 	Shapes []PerformanceAdvisorShape `json:"shapes,omitempty"`
 	// List that contains the documents with information about the indexes that the Performance Advisor suggests.
+	// Read only field
 	SuggestedIndexes []PerformanceAdvisorIndex `json:"suggestedIndexes,omitempty"`
 }
 

@@ -17,6 +17,7 @@ type IngestionSource struct {
 	// Human-readable name that identifies the database.
 	DatabaseName *string `json:"databaseName,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project.
+	// Read only field
 	GroupId *string `json:"groupId,omitempty"`
 	// Unique 24-hexadecimal character string that identifies a policy item.
 	PolicyItemId *string `json:"policyItemId,omitempty"`

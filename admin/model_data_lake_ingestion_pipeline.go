@@ -10,19 +10,24 @@ import (
 // DataLakeIngestionPipeline Details of a Data Lake Pipeline.
 type DataLakeIngestionPipeline struct {
 	// Unique 24-hexadecimal digit string that identifies the Data Lake Pipeline.
+	// Read only field
 	Id *string `json:"_id,omitempty"`
 	// Timestamp that indicates when the Data Lake Pipeline was created.
+	// Read only field
 	CreatedDate            *time.Time              `json:"createdDate,omitempty"`
 	DatasetRetentionPolicy *DatasetRetentionPolicy `json:"datasetRetentionPolicy,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the group.
+	// Read only field
 	GroupId *string `json:"groupId,omitempty"`
 	// Timestamp that indicates the last time that the Data Lake Pipeline was updated.
+	// Read only field
 	LastUpdatedDate *time.Time `json:"lastUpdatedDate,omitempty"`
 	// Name of this Data Lake Pipeline.
 	Name   *string          `json:"name,omitempty"`
 	Sink   *IngestionSink   `json:"sink,omitempty"`
 	Source *IngestionSource `json:"source,omitempty"`
 	// State of this Data Lake Pipeline.
+	// Read only field
 	State *string `json:"state,omitempty"`
 	// Fields to be excluded for this Data Lake Pipeline.
 	Transformations []FieldTransformation `json:"transformations,omitempty"`

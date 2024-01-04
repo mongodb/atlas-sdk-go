@@ -17,10 +17,13 @@ type AWSKMSConfiguration struct {
 	// Physical location where MongoDB Cloud deploys your AWS-hosted MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. MongoDB Cloud assigns the VPC a CIDR block. To limit a new VPC peering connection to one CIDR block and region, create the connection first. Deploy the cluster after the connection starts.
 	Region *string `json:"region,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies an Amazon Web Services (AWS) Identity and Access Management (IAM) role. This IAM role has the permissions required to manage your AWS customer master key.
+	// Write only field
 	RoleId *string `json:"roleId,omitempty"`
 	// Human-readable label of the Identity and Access Management (IAM) secret access key with permissions required to access your Amazon Web Services (AWS) customer master key.
+	// Write only field
 	SecretAccessKey *string `json:"secretAccessKey,omitempty"`
 	// Flag that indicates whether the Amazon Web Services (AWS) Key Management Service (KMS) encryption key can encrypt and decrypt data.
+	// Read only field
 	Valid *bool `json:"valid,omitempty"`
 }
 

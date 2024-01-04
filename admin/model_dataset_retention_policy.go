@@ -10,6 +10,7 @@ import (
 // DatasetRetentionPolicy Dataset Retention Policy for a Scheduled Data Lake Pipeline.
 type DatasetRetentionPolicy struct {
 	// Date when retention policy was last modified.
+	// Read only field
 	LastModifiedDate *time.Time `json:"lastModifiedDate,omitempty"`
 	// Quantity of time in which the Data Lake Pipeline measures dataset retention.
 	Units string `json:"units"`

@@ -21,12 +21,14 @@ type AzureKeyVault struct {
 	// Name of the Azure resource group that contains your Azure Key Vault.
 	ResourceGroupName *string `json:"resourceGroupName,omitempty"`
 	// Private data that you need secured and that belongs to the specified Azure Key Vault (AKV) tenant (**azureKeyVault.tenantID**). This data can include any type of sensitive data such as passwords, database connection strings, API keys, and the like. AKV stores this information as encrypted binary data.
+	// Write only field
 	Secret *string `json:"secret,omitempty"`
 	// Unique 36-hexadecimal character string that identifies your Azure subscription.
 	SubscriptionID *string `json:"subscriptionID,omitempty"`
 	// Unique 36-hexadecimal character string that identifies the Azure Active Directory tenant within your Azure subscription.
 	TenantID *string `json:"tenantID,omitempty"`
 	// Flag that indicates whether the Azure encryption key can encrypt and decrypt data.
+	// Read only field
 	Valid *bool `json:"valid,omitempty"`
 }
 

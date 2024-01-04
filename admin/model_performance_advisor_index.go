@@ -9,16 +9,22 @@ import (
 // PerformanceAdvisorIndex struct for PerformanceAdvisorIndex
 type PerformanceAdvisorIndex struct {
 	// The average size of an object in the collection of this index.
+	// Read only field
 	AvgObjSize *float64 `json:"avgObjSize,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies this index.
+	// Read only field
 	Id *string `json:"id,omitempty"`
 	// List that contains unique 24-hexadecimal character string that identifies the query shapes in this response that the Performance Advisor suggests.
+	// Read only field
 	Impact []string `json:"impact,omitempty"`
 	// List that contains documents that specify a key in the index and its sort order.
+	// Read only field
 	Index []map[string]int `json:"index,omitempty"`
 	// Human-readable label that identifies the namespace on the specified host. The resource expresses this parameter value as `<database>.<collection>`.
+	// Read only field
 	Namespace *string `json:"namespace,omitempty"`
 	// Estimated performance improvement that the suggested index provides. This value corresponds to **Impact** in the Performance Advisor user interface.
+	// Read only field
 	Weight *float64 `json:"weight,omitempty"`
 }
 

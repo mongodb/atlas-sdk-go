@@ -10,16 +10,21 @@ import (
 // ClusterOutageSimulation struct for ClusterOutageSimulation
 type ClusterOutageSimulation struct {
 	// Human-readable label that identifies the cluster that undergoes outage simulation.
+	// Read only field
 	ClusterName *string `json:"clusterName,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project that contains the cluster to undergo outage simulation.
+	// Read only field
 	GroupId *string `json:"groupId,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the outage simulation.
+	// Read only field
 	Id *string `json:"id,omitempty"`
 	// List of settings that specify the type of cluster outage simulation.
 	OutageFilters []AtlasClusterOutageSimulationOutageFilter `json:"outageFilters,omitempty"`
 	// Date and time when MongoDB Cloud started the regional outage simulation.
+	// Read only field
 	StartRequestDate *time.Time `json:"startRequestDate,omitempty"`
 	// Phase of the outage simulation.  | State       | Indication | |-------------|------------| | `START_REQUESTED`    | User has requested cluster outage simulation.| | `STARTING`           | MongoDB Cloud is starting cluster outage simulation.| | `SIMULATING`         | MongoDB Cloud is simulating cluster outage.| | `RECOVERY_REQUESTED` | User has requested recovery from the simulated outage.| | `RECOVERING`         | MongoDB Cloud is recovering the cluster from the simulated outage.| | `COMPLETE`           | MongoDB Cloud has completed the cluster outage simulation.|
+	// Read only field
 	State *string `json:"state,omitempty"`
 }
 

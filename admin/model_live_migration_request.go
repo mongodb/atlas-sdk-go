@@ -9,9 +9,11 @@ import (
 // LiveMigrationRequest struct for LiveMigrationRequest
 type LiveMigrationRequest struct {
 	// Unique 24-hexadecimal digit string that identifies the migration request.
+	// Read only field
 	Id          *string     `json:"_id,omitempty"`
 	Destination Destination `json:"destination"`
 	// Flag that indicates whether the migration process drops all collections from the destination cluster before the migration starts.
+	// Write only field
 	DropEnabled bool `json:"dropEnabled"`
 	// List of migration hosts used for this migration.
 	MigrationHosts []string `json:"migrationHosts,omitempty"`

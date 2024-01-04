@@ -9,24 +9,34 @@ import (
 // EndpointService struct for EndpointService
 type EndpointService struct {
 	// Cloud service provider that serves the requested endpoint service.
+	// Read only field
 	CloudProvider string `json:"cloudProvider"`
 	// Error message returned when requesting private connection resource. The resource returns `null` if the request succeeded.
+	// Read only field
 	ErrorMessage *string `json:"errorMessage,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the Private Endpoint Service.
+	// Read only field
 	Id *string `json:"id,omitempty"`
 	// Cloud provider region that manages this Private Endpoint Service.
+	// Read only field
 	RegionName *string `json:"regionName,omitempty"`
 	// State of the Private Endpoint Service connection when MongoDB Cloud received this request.
+	// Read only field
 	Status *string `json:"status,omitempty"`
 	// Unique string that identifies the Amazon Web Services (AWS) PrivateLink endpoint service. MongoDB Cloud returns null while it creates the endpoint service.
+	// Read only field
 	EndpointServiceName *string `json:"endpointServiceName,omitempty"`
 	// List of strings that identify private endpoint interfaces applied to the specified project.
+	// Read only field
 	InterfaceEndpoints []string `json:"interfaceEndpoints,omitempty"`
 	// List of private endpoints assigned to this Azure Private Link Service.
+	// Read only field
 	PrivateEndpoints []string `json:"privateEndpoints,omitempty"`
 	// Unique string that identifies the Azure Private Link Service that MongoDB Cloud manages.
+	// Read only field
 	PrivateLinkServiceName *string `json:"privateLinkServiceName,omitempty"`
 	// Root-relative path that identifies of the Azure Private Link Service that MongoDB Cloud manages. Use this value to create a private endpoint connection to an Azure VNet.
+	// Read only field
 	PrivateLinkServiceResourceId *string `json:"privateLinkServiceResourceId,omitempty"`
 	// List of Google Cloud network endpoint groups that corresponds to the Private Service Connect endpoint service.
 	EndpointGroupNames []string `json:"endpointGroupNames,omitempty"`

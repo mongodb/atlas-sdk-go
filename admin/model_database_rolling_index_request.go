@@ -10,10 +10,13 @@ import (
 type DatabaseRollingIndexRequest struct {
 	Collation *Collation `json:"collation,omitempty"`
 	// Human-readable label of the collection for which MongoDB Cloud creates an index.
+	// Write only field
 	Collection string `json:"collection"`
 	// Human-readable label of the database that holds the collection on which MongoDB Cloud creates an index.
+	// Write only field
 	Db string `json:"db"`
 	// List that contains one or more objects that describe the parameters that you want to index.
+	// Write only field
 	Keys    []map[string]string `json:"keys,omitempty"`
 	Options *IndexOptions       `json:"options,omitempty"`
 }

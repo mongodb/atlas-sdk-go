@@ -9,10 +9,13 @@ import (
 // GCPConsumerForwardingRule struct for GCPConsumerForwardingRule
 type GCPConsumerForwardingRule struct {
 	// Human-readable label that identifies the Google Cloud consumer forwarding rule that you created.
+	// Read only field
 	EndpointName *string `json:"endpointName,omitempty"`
 	// One Private Internet Protocol version 4 (IPv4) address to which this Google Cloud consumer forwarding rule resolves.
+	// Read only field
 	IpAddress *string `json:"ipAddress,omitempty"`
 	// State of the MongoDB Cloud endpoint group when MongoDB Cloud received this request.
+	// Read only field
 	Status *string `json:"status,omitempty"`
 }
 

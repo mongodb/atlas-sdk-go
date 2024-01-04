@@ -11,16 +11,21 @@ type ManagedNamespaces struct {
 	// Human-readable label of the collection to manage for this Global Cluster.
 	Collection string `json:"collection"`
 	// Database parameter used to divide the *collection* into shards. Global clusters require a compound shard key. This compound shard key combines the location parameter and the user-selected custom key.
+	// Read only field
 	CustomShardKey string `json:"customShardKey"`
 	// Human-readable label of the database to manage for this Global Cluster.
 	Db string `json:"db"`
 	// Flag that indicates whether someone hashed the custom shard key for the specified collection. If you set this value to `false`, MongoDB Cloud uses ranged sharding.
+	// Write only field
 	IsCustomShardKeyHashed *bool `json:"isCustomShardKeyHashed,omitempty"`
 	// Flag that indicates whether someone [hashed](https://www.mongodb.com/docs/manual/reference/method/sh.shardCollection/#hashed-shard-keys) the custom shard key. If this parameter returns `false`, this cluster uses [ranged sharding](https://www.mongodb.com/docs/manual/core/ranged-sharding/).
+	// Write only field
 	IsShardKeyUnique *bool `json:"isShardKeyUnique,omitempty"`
 	// Minimum number of chunks to create initially when sharding an empty collection with a [hashed shard key](https://www.mongodb.com/docs/manual/core/hashed-sharding/).
+	// Write only field
 	NumInitialChunks *int64 `json:"numInitialChunks,omitempty"`
 	// Flag that indicates whether MongoDB Cloud should create and distribute initial chunks for an empty or non-existing collection. MongoDB Cloud distributes data based on the defined zones and zone ranges for the collection.
+	// Write only field
 	PresplitHashedZones *bool `json:"presplitHashedZones,omitempty"`
 }
 

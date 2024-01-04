@@ -12,18 +12,22 @@ type CloudAppUser struct {
 	// Two alphabet characters that identifies MongoDB Cloud user's geographic location. This parameter uses the ISO 3166-1a2 code format.
 	Country string `json:"country"`
 	// Date and time when the current account is created. This value is in the ISO 8601 timestamp format in UTC.
+	// Read only field
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// Email address that belongs to the MongoDB Cloud user.
 	EmailAddress string `json:"emailAddress"`
 	// First or given name that belongs to the MongoDB Cloud user.
 	FirstName string `json:"firstName"`
 	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud user.
+	// Read only field
 	Id *string `json:"id,omitempty"`
 	// Date and time when the current account last authenticated. This value is in the ISO 8601 timestamp format in UTC.
+	// Read only field
 	LastAuth *time.Time `json:"lastAuth,omitempty"`
 	// Last name, family name, or surname that belongs to the MongoDB Cloud user.
 	LastName string `json:"lastName"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+	// Read only field
 	Links []Link `json:"links,omitempty"`
 	// Mobile phone number that belongs to the MongoDB Cloud user.
 	MobileNumber string `json:"mobileNumber"`
@@ -32,6 +36,7 @@ type CloudAppUser struct {
 	// List of objects that display the MongoDB Cloud user's roles and the corresponding organization or project to which that role applies. A role can apply to one organization or one project but not both.
 	Roles []CloudAccessRoleAssignment `json:"roles,omitempty"`
 	// List of unique 24-hexadecimal digit strings that identifies the teams to which this MongoDB Cloud user belongs.
+	// Read only field
 	TeamIds []string `json:"teamIds,omitempty"`
 	// Email address that represents the username of the MongoDB Cloud user.
 	Username string `json:"username"`

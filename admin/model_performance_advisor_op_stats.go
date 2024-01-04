@@ -9,12 +9,16 @@ import (
 // PerformanceAdvisorOpStats Details that this resource returned about the specified query.
 type PerformanceAdvisorOpStats struct {
 	// Length of time expressed during which the query finds suggested indexes among the managed namespaces in the cluster. This parameter expresses its value in milliseconds. This parameter relates to the **duration** query parameter.
+	// Read only field
 	Ms *int64 `json:"ms,omitempty"`
 	// Number of results that the query returns.
+	// Read only field
 	NReturned *int64 `json:"nReturned,omitempty"`
 	// Number of documents that the query read.
+	// Read only field
 	NScanned *int64 `json:"nScanned,omitempty"`
 	// Date and time from which the query retrieves the suggested indexes. This parameter expresses its value in the number of seconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time). This parameter relates to the **since** query parameter.
+	// Read only field
 	Ts *int64 `json:"ts,omitempty"`
 }
 

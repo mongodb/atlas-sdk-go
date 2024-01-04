@@ -9,14 +9,19 @@ import (
 // ClusterDescriptionConnectionStringsPrivateEndpoint Private endpoint-aware connection string that you can use to connect to this cluster through a private endpoint.
 type ClusterDescriptionConnectionStringsPrivateEndpoint struct {
 	// Private endpoint-aware connection string that uses the `mongodb://` protocol to connect to MongoDB Cloud through a private endpoint.
+	// Read only field
 	ConnectionString *string `json:"connectionString,omitempty"`
 	// List that contains the private endpoints through which you connect to MongoDB Cloud when you use **connectionStrings.privateEndpoint[n].connectionString** or **connectionStrings.privateEndpoint[n].srvConnectionString**.
+	// Read only field
 	Endpoints []ClusterDescriptionConnectionStringsPrivateEndpointEndpoint `json:"endpoints,omitempty"`
 	// Private endpoint-aware connection string that uses the `mongodb+srv://` protocol to connect to MongoDB Cloud through a private endpoint. The `mongodb+srv` protocol tells the driver to look up the seed list of hosts in the Domain Name System (DNS). This list synchronizes with the nodes in a cluster. If the connection string uses this Uniform Resource Identifier (URI) format, you don't need to append the seed list or change the Uniform Resource Identifier (URI) if the nodes change. Use this Uniform Resource Identifier (URI) format if your application supports it. If it doesn't, use connectionStrings.privateEndpoint[n].connectionString.
+	// Read only field
 	SrvConnectionString *string `json:"srvConnectionString,omitempty"`
 	// Private endpoint-aware connection string optimized for sharded clusters that uses the `mongodb+srv://` protocol to connect to MongoDB Cloud through a private endpoint. If the connection string uses this Uniform Resource Identifier (URI) format, you don't need to change the Uniform Resource Identifier (URI) if the nodes change. Use this Uniform Resource Identifier (URI) format if your application and Atlas cluster supports it. If it doesn't, use and consult the documentation for connectionStrings.privateEndpoint[n].srvConnectionString.
+	// Read only field
 	SrvShardOptimizedConnectionString *string `json:"srvShardOptimizedConnectionString,omitempty"`
 	// MongoDB process type to which your application connects. Use `MONGOD` for replica sets and `MONGOS` for sharded clusters.
+	// Read only field
 	Type *string `json:"type,omitempty"`
 }
 
