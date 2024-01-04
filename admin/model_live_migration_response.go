@@ -9,19 +9,14 @@ import (
 // LiveMigrationResponse struct for LiveMigrationResponse
 type LiveMigrationResponse struct {
 	// Unique 24-hexadecimal digit string that identifies the migration job.
-	// Read only field.
 	Id *string `json:"_id,omitempty"`
 	// Replication lag between the source and destination clusters. Atlas returns this setting only during an active migration, before the cutover phase.
-	// Read only field.
 	LagTimeSeconds *int64 `json:"lagTimeSeconds,omitempty"`
 	// List of hosts running MongoDB Agents. These Agents can transfer your MongoDB data between one source and one target cluster.
-	// Read only field.
-	MigrationHosts []string `json:"migrationHosts,omitempty"`
+	MigrationHosts *[]string `json:"migrationHosts,omitempty"`
 	// Flag that indicates the migrated cluster can be cut over to MongoDB Atlas.
-	// Read only field.
 	ReadyForCutover *bool `json:"readyForCutover,omitempty"`
 	// Progress made in migrating one cluster to MongoDB Atlas.  | Status   | Explanation | |----------|-------------| | NEW      | Someone scheduled a local cluster migration to MongoDB Atlas. | | FAILED   | The cluster migration to MongoDB Atlas failed.                | | COMPLETE | The cluster migration to MongoDB Atlas succeeded.             | | EXPIRED  | MongoDB Atlas prepares to begin the cut over of the migrating cluster when source and target clusters have almost synchronized. If `\"readyForCutover\" : true`, this synchronization starts a timer of 120 hours. You can extend this timer. If the timer expires, MongoDB Atlas returns this status. | | WORKING  | The cluster migration to MongoDB Atlas is performing one of the following tasks:<ul><li>Preparing connections to source and target clusters</li><li>Replicating data from source to target</li><li>Verifying MongoDB Atlas connection settings</li><li>Stopping replication after the cut over</li></ul> |
-	// Read only field.
 	Status *string `json:"status,omitempty"`
 }
 
@@ -114,12 +109,12 @@ func (o *LiveMigrationResponse) GetMigrationHosts() []string {
 		var ret []string
 		return ret
 	}
-	return o.MigrationHosts
+	return *o.MigrationHosts
 }
 
 // GetMigrationHostsOk returns a tuple with the MigrationHosts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LiveMigrationResponse) GetMigrationHostsOk() ([]string, bool) {
+func (o *LiveMigrationResponse) GetMigrationHostsOk() (*[]string, bool) {
 	if o == nil || IsNil(o.MigrationHosts) {
 		return nil, false
 	}
@@ -138,7 +133,7 @@ func (o *LiveMigrationResponse) HasMigrationHosts() bool {
 
 // SetMigrationHosts gets a reference to the given []string and assigns it to the MigrationHosts field.
 func (o *LiveMigrationResponse) SetMigrationHosts(v []string) {
-	o.MigrationHosts = v
+	o.MigrationHosts = &v
 }
 
 // GetReadyForCutover returns the ReadyForCutover field value if set, zero value otherwise

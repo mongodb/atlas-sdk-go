@@ -11,7 +11,7 @@ type UpdateAtlasProjectApiKey struct {
 	// Purpose or explanation provided when someone creates this project API key.
 	Desc *string `json:"desc,omitempty"`
 	// List of roles to grant this API key. If you provide this list, provide a minimum of one role and ensure each role applies to this project.
-	Roles []string `json:"roles,omitempty"`
+	Roles *[]string `json:"roles,omitempty"`
 }
 
 // NewUpdateAtlasProjectApiKey instantiates a new UpdateAtlasProjectApiKey object
@@ -70,12 +70,12 @@ func (o *UpdateAtlasProjectApiKey) GetRoles() []string {
 		var ret []string
 		return ret
 	}
-	return o.Roles
+	return *o.Roles
 }
 
 // GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateAtlasProjectApiKey) GetRolesOk() ([]string, bool) {
+func (o *UpdateAtlasProjectApiKey) GetRolesOk() (*[]string, bool) {
 	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
@@ -94,7 +94,7 @@ func (o *UpdateAtlasProjectApiKey) HasRoles() bool {
 
 // SetRoles gets a reference to the given []string and assigns it to the Roles field.
 func (o *UpdateAtlasProjectApiKey) SetRoles(v []string) {
-	o.Roles = v
+	o.Roles = &v
 }
 
 func (o UpdateAtlasProjectApiKey) MarshalJSONWithoutReadOnly() ([]byte, error) {

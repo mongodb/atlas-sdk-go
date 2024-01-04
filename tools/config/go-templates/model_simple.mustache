@@ -26,7 +26,7 @@ type {{classname}} struct {
 {{#deprecated}}
 	// Deprecated
 {{/deprecated}}
-	{{name}} {{^required}}{{^isArray}}{{^isFreeFormObject}}*{{/isFreeFormObject}}{{/isArray}}{{/required}}{{{dataType}}} `json:"{{baseName}}{{^required}},omitempty{{/required}}"{{#withXml}} xml:"{{baseName}}{{#isXmlAttribute}},attr{{/isXmlAttribute}}"{{/withXml}}{{#vendorExtensions.x-go-custom-tag}} {{{.}}}{{/vendorExtensions.x-go-custom-tag}}`
+	{{name}} {{^required}}{{^isFreeFormObject}}*{{/isFreeFormObject}}{{/required}}{{{dataType}}} `json:"{{baseName}}{{^required}},omitempty{{/required}}"{{#withXml}} xml:"{{baseName}}{{#isXmlAttribute}},attr{{/isXmlAttribute}}"{{/withXml}}{{#vendorExtensions.x-go-custom-tag}} {{{.}}}{{/vendorExtensions.x-go-custom-tag}}`
 {{/vars}}
 {{#isAdditionalPropertiesTrue}}
 	AdditionalProperties map[string]interface{}
@@ -99,7 +99,7 @@ func (o *{{classname}}) Get{{name}}() {{vendorExtensions.x-go-base-type}} {
 {{#deprecated}}
 // Deprecated
 {{/deprecated}}
-func (o *{{classname}}) Get{{name}}Ok() ({{^isArray}}{{^isFreeFormObject}}*{{/isFreeFormObject}}{{/isArray}}{{vendorExtensions.x-go-base-type}}, bool) {
+func (o *{{classname}}) Get{{name}}Ok() ({{^isFreeFormObject}}*{{/isFreeFormObject}}{{vendorExtensions.x-go-base-type}}, bool) {
 	if o == nil { 
 	{{^isFreeFormObject}}
 		return nil, false
@@ -108,7 +108,7 @@ func (o *{{classname}}) Get{{name}}Ok() ({{^isArray}}{{^isFreeFormObject}}*{{/is
 		return {{vendorExtensions.x-go-base-type}}{}, false
 	{{/isFreeFormObject}}
 	}
-	return {{^isArray}}{{^isFreeFormObject}}&{{/isFreeFormObject}}{{/isArray}}o.{{name}}, true
+	return {{^isFreeFormObject}}&{{/isFreeFormObject}}o.{{name}}, true
 }
 
 // Set{{name}} sets field value
@@ -116,7 +116,7 @@ func (o *{{classname}}) Get{{name}}Ok() ({{^isArray}}{{^isFreeFormObject}}*{{/is
 // Deprecated
 {{/deprecated}}
 func (o *{{classname}}) Set{{name}}(v {{vendorExtensions.x-go-base-type}}) {
-	o.{{name}} = v
+	o.{{name}} = {{^required}}{{#isArray}}&{{/isArray}}{{/required}}v
 }
 
 {{/required}}
@@ -130,7 +130,7 @@ func (o *{{classname}}) Get{{name}}() {{vendorExtensions.x-go-base-type}} {
 		var ret {{vendorExtensions.x-go-base-type}}
 		return ret
 	}
-	return {{^isArray}}{{^isFreeFormObject}}*{{/isFreeFormObject}}{{/isArray}}o.{{name}}
+	return {{^isFreeFormObject}}*{{/isFreeFormObject}}o.{{name}}
 }
 
 // Get{{name}}Ok returns a tuple with the {{name}} field value if set, nil otherwise
@@ -138,7 +138,7 @@ func (o *{{classname}}) Get{{name}}() {{vendorExtensions.x-go-base-type}} {
 {{#deprecated}}
 // Deprecated
 {{/deprecated}}
-func (o *{{classname}}) Get{{name}}Ok() ({{^isArray}}{{^isFreeFormObject}}*{{/isFreeFormObject}}{{/isArray}}{{vendorExtensions.x-go-base-type}}, bool) {
+func (o *{{classname}}) Get{{name}}Ok() ({{^isFreeFormObject}}*{{/isFreeFormObject}}{{vendorExtensions.x-go-base-type}}, bool) {
 	if o == nil || IsNil(o.{{name}}) {
 	{{^isFreeFormObject}}
 		return nil, false
@@ -165,7 +165,7 @@ func (o *{{classname}}) Has{{name}}() bool {
 // Deprecated
 {{/deprecated}}
 func (o *{{classname}}) Set{{name}}(v {{vendorExtensions.x-go-base-type}}) {
-	o.{{name}} = {{^isArray}}{{^isFreeFormObject}}&{{/isFreeFormObject}}{{/isArray}}v
+	o.{{name}} = {{^isFreeFormObject}}&{{/isFreeFormObject}}v
 }
 
 {{/required}}
@@ -234,7 +234,7 @@ func (o *{{{classname}}}) UnmarshalJSON(bytes []byte) (err error) {
 	{{#deprecated}}
 		// Deprecated
 	{{/deprecated}}
-		{{name}} {{^required}}{{^isArray}}{{^isFreeFormObject}}*{{/isFreeFormObject}}{{/isArray}}{{/required}}{{{dataType}}} `json:"{{baseName}}{{^required}},omitempty{{/required}}"{{#withXml}} xml:"{{baseName}}{{#isXmlAttribute}},attr{{/isXmlAttribute}}"{{/withXml}}{{#vendorExtensions.x-go-custom-tag}} {{{.}}}{{/vendorExtensions.x-go-custom-tag}}`
+		{{name}} {{^required}}{{^isFreeFormObject}}*{{/isFreeFormObject}}{{/required}}{{{dataType}}} `json:"{{baseName}}{{^required}},omitempty{{/required}}"{{#withXml}} xml:"{{baseName}}{{#isXmlAttribute}},attr{{/isXmlAttribute}}"{{/withXml}}{{#vendorExtensions.x-go-custom-tag}} {{{.}}}{{/vendorExtensions.x-go-custom-tag}}`
 	{{/vars}}
 	}
 

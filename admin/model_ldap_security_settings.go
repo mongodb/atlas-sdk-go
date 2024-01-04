@@ -15,7 +15,6 @@ type LDAPSecuritySettings struct {
 	// Lightweight Directory Access Protocol (LDAP) query template that MongoDB Cloud runs to obtain the LDAP groups associated with the authenticated user. MongoDB Cloud uses this parameter only for user authorization. Use the `{USER}` placeholder in the Uniform Resource Locator (URL) to substitute the authenticated username. The query relates to the host specified with the hostname. Format this query according to [RFC 4515](https://tools.ietf.org/search/rfc4515) and [RFC 4516](https://datatracker.ietf.org/doc/html/rfc4516).
 	AuthzQueryTemplate *string `json:"authzQueryTemplate,omitempty"`
 	// Password that MongoDB Cloud uses to authenticate the **bindUsername**.
-	// Write only field.
 	BindPassword *string `json:"bindPassword,omitempty"`
 	// Full Distinguished Name (DN) of the Lightweight Directory Access Protocol (LDAP) user that MongoDB Cloud uses to connect to the LDAP host. LDAP distinguished names must be formatted according to RFC 2253.
 	BindUsername *string `json:"bindUsername,omitempty"`
@@ -24,12 +23,11 @@ type LDAPSecuritySettings struct {
 	// Human-readable label that identifies the hostname or Internet Protocol (IP) address of the Lightweight Directory Access Protocol (LDAP) host. This host must have access to the internet or have a Virtual Private Cloud (VPC) peering connection to your cluster.
 	Hostname *string `json:"hostname,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Port to which the Lightweight Directory Access Protocol (LDAP) host listens for client connections.
 	Port *int `json:"port,omitempty"`
 	// User-to-Distinguished Name (DN) map that MongoDB Cloud uses to transform a Lightweight Directory Access Protocol (LDAP) username into an LDAP DN.
-	UserToDNMapping []UserToDNMapping `json:"userToDNMapping,omitempty"`
+	UserToDNMapping *[]UserToDNMapping `json:"userToDNMapping,omitempty"`
 }
 
 // NewLDAPSecuritySettings instantiates a new LDAPSecuritySettings object
@@ -294,12 +292,12 @@ func (o *LDAPSecuritySettings) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LDAPSecuritySettings) GetLinksOk() ([]Link, bool) {
+func (o *LDAPSecuritySettings) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -318,7 +316,7 @@ func (o *LDAPSecuritySettings) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *LDAPSecuritySettings) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 // GetPort returns the Port field value if set, zero value otherwise
@@ -360,12 +358,12 @@ func (o *LDAPSecuritySettings) GetUserToDNMapping() []UserToDNMapping {
 		var ret []UserToDNMapping
 		return ret
 	}
-	return o.UserToDNMapping
+	return *o.UserToDNMapping
 }
 
 // GetUserToDNMappingOk returns a tuple with the UserToDNMapping field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LDAPSecuritySettings) GetUserToDNMappingOk() ([]UserToDNMapping, bool) {
+func (o *LDAPSecuritySettings) GetUserToDNMappingOk() (*[]UserToDNMapping, bool) {
 	if o == nil || IsNil(o.UserToDNMapping) {
 		return nil, false
 	}
@@ -384,7 +382,7 @@ func (o *LDAPSecuritySettings) HasUserToDNMapping() bool {
 
 // SetUserToDNMapping gets a reference to the given []UserToDNMapping and assigns it to the UserToDNMapping field.
 func (o *LDAPSecuritySettings) SetUserToDNMapping(v []UserToDNMapping) {
-	o.UserToDNMapping = v
+	o.UserToDNMapping = &v
 }
 
 func (o LDAPSecuritySettings) MarshalJSONWithoutReadOnly() ([]byte, error) {

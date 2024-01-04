@@ -12,32 +12,27 @@ type CloudAppUser struct {
 	// Two alphabet characters that identifies MongoDB Cloud user's geographic location. This parameter uses the ISO 3166-1a2 code format.
 	Country string `json:"country"`
 	// Date and time when the current account is created. This value is in the ISO 8601 timestamp format in UTC.
-	// Read only field.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// Email address that belongs to the MongoDB Cloud user.
 	EmailAddress string `json:"emailAddress"`
 	// First or given name that belongs to the MongoDB Cloud user.
 	FirstName string `json:"firstName"`
 	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud user.
-	// Read only field.
 	Id *string `json:"id,omitempty"`
 	// Date and time when the current account last authenticated. This value is in the ISO 8601 timestamp format in UTC.
-	// Read only field.
 	LastAuth *time.Time `json:"lastAuth,omitempty"`
 	// Last name, family name, or surname that belongs to the MongoDB Cloud user.
 	LastName string `json:"lastName"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Mobile phone number that belongs to the MongoDB Cloud user.
 	MobileNumber string `json:"mobileNumber"`
 	// Password applied with the username to log in to MongoDB Cloud. MongoDB Cloud does not return this parameter except in response to creating a new MongoDB Cloud user. Only the MongoDB Cloud user can update their password after it has been set from the MongoDB Cloud console.
 	Password string `json:"password"`
 	// List of objects that display the MongoDB Cloud user's roles and the corresponding organization or project to which that role applies. A role can apply to one organization or one project but not both.
-	Roles []CloudAccessRoleAssignment `json:"roles,omitempty"`
+	Roles *[]CloudAccessRoleAssignment `json:"roles,omitempty"`
 	// List of unique 24-hexadecimal digit strings that identifies the teams to which this MongoDB Cloud user belongs.
-	// Read only field.
-	TeamIds []string `json:"teamIds,omitempty"`
+	TeamIds *[]string `json:"teamIds,omitempty"`
 	// Email address that represents the username of the MongoDB Cloud user.
 	Username string `json:"username"`
 }
@@ -267,12 +262,12 @@ func (o *CloudAppUser) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudAppUser) GetLinksOk() ([]Link, bool) {
+func (o *CloudAppUser) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -291,7 +286,7 @@ func (o *CloudAppUser) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *CloudAppUser) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 // GetMobileNumber returns the MobileNumber field value
@@ -348,12 +343,12 @@ func (o *CloudAppUser) GetRoles() []CloudAccessRoleAssignment {
 		var ret []CloudAccessRoleAssignment
 		return ret
 	}
-	return o.Roles
+	return *o.Roles
 }
 
 // GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudAppUser) GetRolesOk() ([]CloudAccessRoleAssignment, bool) {
+func (o *CloudAppUser) GetRolesOk() (*[]CloudAccessRoleAssignment, bool) {
 	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
@@ -372,7 +367,7 @@ func (o *CloudAppUser) HasRoles() bool {
 
 // SetRoles gets a reference to the given []CloudAccessRoleAssignment and assigns it to the Roles field.
 func (o *CloudAppUser) SetRoles(v []CloudAccessRoleAssignment) {
-	o.Roles = v
+	o.Roles = &v
 }
 
 // GetTeamIds returns the TeamIds field value if set, zero value otherwise
@@ -381,12 +376,12 @@ func (o *CloudAppUser) GetTeamIds() []string {
 		var ret []string
 		return ret
 	}
-	return o.TeamIds
+	return *o.TeamIds
 }
 
 // GetTeamIdsOk returns a tuple with the TeamIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudAppUser) GetTeamIdsOk() ([]string, bool) {
+func (o *CloudAppUser) GetTeamIdsOk() (*[]string, bool) {
 	if o == nil || IsNil(o.TeamIds) {
 		return nil, false
 	}
@@ -405,7 +400,7 @@ func (o *CloudAppUser) HasTeamIds() bool {
 
 // SetTeamIds gets a reference to the given []string and assigns it to the TeamIds field.
 func (o *CloudAppUser) SetTeamIds(v []string) {
-	o.TeamIds = v
+	o.TeamIds = &v
 }
 
 // GetUsername returns the Username field value

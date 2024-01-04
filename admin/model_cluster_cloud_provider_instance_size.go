@@ -9,10 +9,8 @@ import (
 // ClusterCloudProviderInstanceSize List of instances sizes that this cloud provider supports.
 type ClusterCloudProviderInstanceSize struct {
 	// List of regions that this cloud provider supports for this instance size.
-	// Read only field.
-	AvailableRegions []AvailableCloudProviderRegion `json:"availableRegions,omitempty"`
+	AvailableRegions *[]AvailableCloudProviderRegion `json:"availableRegions,omitempty"`
 	// Human-readable label that identifies the instance size or cluster tier.
-	// Read only field.
 	Name *string `json:"name,omitempty"`
 }
 
@@ -39,12 +37,12 @@ func (o *ClusterCloudProviderInstanceSize) GetAvailableRegions() []AvailableClou
 		var ret []AvailableCloudProviderRegion
 		return ret
 	}
-	return o.AvailableRegions
+	return *o.AvailableRegions
 }
 
 // GetAvailableRegionsOk returns a tuple with the AvailableRegions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterCloudProviderInstanceSize) GetAvailableRegionsOk() ([]AvailableCloudProviderRegion, bool) {
+func (o *ClusterCloudProviderInstanceSize) GetAvailableRegionsOk() (*[]AvailableCloudProviderRegion, bool) {
 	if o == nil || IsNil(o.AvailableRegions) {
 		return nil, false
 	}
@@ -63,7 +61,7 @@ func (o *ClusterCloudProviderInstanceSize) HasAvailableRegions() bool {
 
 // SetAvailableRegions gets a reference to the given []AvailableCloudProviderRegion and assigns it to the AvailableRegions field.
 func (o *ClusterCloudProviderInstanceSize) SetAvailableRegions(v []AvailableCloudProviderRegion) {
-	o.AvailableRegions = v
+	o.AvailableRegions = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise

@@ -9,13 +9,10 @@ import (
 // PaginatedApiUserAccessList struct for PaginatedApiUserAccessList
 type PaginatedApiUserAccessList struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud providers when completing this request.
-	// Read only field.
-	Results []UserAccessList `json:"results,omitempty"`
+	Results *[]UserAccessList `json:"results,omitempty"`
 	// Number of documents returned in this response.
-	// Read only field.
 	TotalCount *int `json:"totalCount,omitempty"`
 }
 
@@ -42,12 +39,12 @@ func (o *PaginatedApiUserAccessList) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedApiUserAccessList) GetLinksOk() ([]Link, bool) {
+func (o *PaginatedApiUserAccessList) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -66,7 +63,7 @@ func (o *PaginatedApiUserAccessList) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PaginatedApiUserAccessList) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 // GetResults returns the Results field value if set, zero value otherwise
@@ -75,12 +72,12 @@ func (o *PaginatedApiUserAccessList) GetResults() []UserAccessList {
 		var ret []UserAccessList
 		return ret
 	}
-	return o.Results
+	return *o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedApiUserAccessList) GetResultsOk() ([]UserAccessList, bool) {
+func (o *PaginatedApiUserAccessList) GetResultsOk() (*[]UserAccessList, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -99,7 +96,7 @@ func (o *PaginatedApiUserAccessList) HasResults() bool {
 
 // SetResults gets a reference to the given []UserAccessList and assigns it to the Results field.
 func (o *PaginatedApiUserAccessList) SetResults(v []UserAccessList) {
-	o.Results = v
+	o.Results = &v
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise

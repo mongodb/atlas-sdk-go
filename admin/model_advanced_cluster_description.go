@@ -18,28 +18,23 @@ type AdvancedClusterDescription struct {
 	ClusterType       *string                   `json:"clusterType,omitempty"`
 	ConnectionStrings *ClusterConnectionStrings `json:"connectionStrings,omitempty"`
 	// Date and time when MongoDB Cloud created this cluster. This parameter expresses its value in ISO 8601 format in UTC.
-	// Read only field.
 	CreateDate *time.Time `json:"createDate,omitempty"`
 	// Storage capacity that the host's root volume possesses expressed in gigabytes. Increase this number to add capacity. MongoDB Cloud requires this parameter if you set **replicationSpecs**. If you specify a disk size below the minimum (10 GB), this parameter defaults to the minimum disk size value. Storage charge calculations depend on whether you choose the default value or a custom value.  The maximum value for disk storage cannot exceed 50 times the maximum RAM for the selected cluster. If you require more storage space, consider upgrading your cluster to a higher tier.
 	DiskSizeGB *float64 `json:"diskSizeGB,omitempty"`
 	// Cloud service provider that manages your customer keys to provide an additional layer of encryption at rest for the cluster. To enable customer key management for encryption at rest, the cluster **replicationSpecs[n].regionConfigs[m].{type}Specs.instanceSize** setting must be `M10` or higher and `\"backupEnabled\" : false` or omitted entirely.
 	EncryptionAtRestProvider *string `json:"encryptionAtRestProvider,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project.
-	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the replication object for a zone in a Global Cluster. If you include existing zones in the request, you must specify this parameter. If you add a new zone to an existing Global Cluster, you may specify this parameter. The request deletes any existing zones in a Global Cluster that you exclude from the request.
-	// Read only field.
 	Id *string `json:"id,omitempty"`
 	// Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels.  Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use [resource tags](https://dochub.mongodb.org/core/add-cluster-tag-atlas) instead.
 	// Deprecated
-	Labels []ComponentLabel `json:"labels,omitempty"`
+	Labels *[]ComponentLabel `json:"labels,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Major MongoDB version of the cluster. MongoDB Cloud deploys the cluster with the latest stable release of the specified version.
 	MongoDBMajorVersion *string `json:"mongoDBMajorVersion,omitempty"`
 	// Version of MongoDB that the cluster runs.
-	// Read only field.
 	MongoDBVersion *string `json:"mongoDBVersion,omitempty"`
 	// Human-readable label that identifies the advanced cluster.
 	Name *string `json:"name,omitempty"`
@@ -48,14 +43,13 @@ type AdvancedClusterDescription struct {
 	// Flag that indicates whether the cluster uses continuous cloud backups.
 	PitEnabled *bool `json:"pitEnabled,omitempty"`
 	// List of settings that configure your cluster regions. For Global Clusters, each object in the array represents a zone where your clusters nodes deploy. For non-Global sharded clusters and replica sets, this array has one object representing where your clusters nodes deploy.
-	ReplicationSpecs []ReplicationSpec `json:"replicationSpecs,omitempty"`
+	ReplicationSpecs *[]ReplicationSpec `json:"replicationSpecs,omitempty"`
 	// Root Certificate Authority that MongoDB Cloud cluster uses. MongoDB Cloud supports Internet Security Research Group.
 	RootCertType *string `json:"rootCertType,omitempty"`
 	// Human-readable label that indicates the current operating condition of this cluster.
-	// Read only field.
 	StateName *string `json:"stateName,omitempty"`
 	// List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the cluster.
-	Tags []ResourceTag `json:"tags,omitempty"`
+	Tags *[]ResourceTag `json:"tags,omitempty"`
 	// Flag that indicates whether termination protection is enabled on the cluster. If set to `true`, MongoDB Cloud won't delete the cluster. If set to `false`, MongoDB Cloud will delete the cluster.
 	TerminationProtectionEnabled *bool `json:"terminationProtectionEnabled,omitempty"`
 	// Method by which the cluster maintains the MongoDB versions. If value is `CONTINUOUS`, you must not specify **mongoDBMajorVersion**.
@@ -436,13 +430,13 @@ func (o *AdvancedClusterDescription) GetLabels() []ComponentLabel {
 		var ret []ComponentLabel
 		return ret
 	}
-	return o.Labels
+	return *o.Labels
 }
 
 // GetLabelsOk returns a tuple with the Labels field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // Deprecated
-func (o *AdvancedClusterDescription) GetLabelsOk() ([]ComponentLabel, bool) {
+func (o *AdvancedClusterDescription) GetLabelsOk() (*[]ComponentLabel, bool) {
 	if o == nil || IsNil(o.Labels) {
 		return nil, false
 	}
@@ -462,7 +456,7 @@ func (o *AdvancedClusterDescription) HasLabels() bool {
 // SetLabels gets a reference to the given []ComponentLabel and assigns it to the Labels field.
 // Deprecated
 func (o *AdvancedClusterDescription) SetLabels(v []ComponentLabel) {
-	o.Labels = v
+	o.Labels = &v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -471,12 +465,12 @@ func (o *AdvancedClusterDescription) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AdvancedClusterDescription) GetLinksOk() ([]Link, bool) {
+func (o *AdvancedClusterDescription) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -495,7 +489,7 @@ func (o *AdvancedClusterDescription) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *AdvancedClusterDescription) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 // GetMongoDBMajorVersion returns the MongoDBMajorVersion field value if set, zero value otherwise
@@ -669,12 +663,12 @@ func (o *AdvancedClusterDescription) GetReplicationSpecs() []ReplicationSpec {
 		var ret []ReplicationSpec
 		return ret
 	}
-	return o.ReplicationSpecs
+	return *o.ReplicationSpecs
 }
 
 // GetReplicationSpecsOk returns a tuple with the ReplicationSpecs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AdvancedClusterDescription) GetReplicationSpecsOk() ([]ReplicationSpec, bool) {
+func (o *AdvancedClusterDescription) GetReplicationSpecsOk() (*[]ReplicationSpec, bool) {
 	if o == nil || IsNil(o.ReplicationSpecs) {
 		return nil, false
 	}
@@ -693,7 +687,7 @@ func (o *AdvancedClusterDescription) HasReplicationSpecs() bool {
 
 // SetReplicationSpecs gets a reference to the given []ReplicationSpec and assigns it to the ReplicationSpecs field.
 func (o *AdvancedClusterDescription) SetReplicationSpecs(v []ReplicationSpec) {
-	o.ReplicationSpecs = v
+	o.ReplicationSpecs = &v
 }
 
 // GetRootCertType returns the RootCertType field value if set, zero value otherwise
@@ -768,12 +762,12 @@ func (o *AdvancedClusterDescription) GetTags() []ResourceTag {
 		var ret []ResourceTag
 		return ret
 	}
-	return o.Tags
+	return *o.Tags
 }
 
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AdvancedClusterDescription) GetTagsOk() ([]ResourceTag, bool) {
+func (o *AdvancedClusterDescription) GetTagsOk() (*[]ResourceTag, bool) {
 	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
@@ -792,7 +786,7 @@ func (o *AdvancedClusterDescription) HasTags() bool {
 
 // SetTags gets a reference to the given []ResourceTag and assigns it to the Tags field.
 func (o *AdvancedClusterDescription) SetTags(v []ResourceTag) {
-	o.Tags = v
+	o.Tags = &v
 }
 
 // GetTerminationProtectionEnabled returns the TerminationProtectionEnabled field value if set, zero value otherwise

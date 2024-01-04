@@ -9,8 +9,7 @@ import (
 // CloudProviderRegions struct for CloudProviderRegions
 type CloudProviderRegions struct {
 	// List of instances sizes that this cloud provider supports.
-	// Read only field.
-	InstanceSizes []ClusterCloudProviderInstanceSize `json:"instanceSizes,omitempty"`
+	InstanceSizes *[]ClusterCloudProviderInstanceSize `json:"instanceSizes,omitempty"`
 	// Human-readable label that identifies the Cloud provider.
 	Provider *string `json:"provider,omitempty"`
 }
@@ -38,12 +37,12 @@ func (o *CloudProviderRegions) GetInstanceSizes() []ClusterCloudProviderInstance
 		var ret []ClusterCloudProviderInstanceSize
 		return ret
 	}
-	return o.InstanceSizes
+	return *o.InstanceSizes
 }
 
 // GetInstanceSizesOk returns a tuple with the InstanceSizes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudProviderRegions) GetInstanceSizesOk() ([]ClusterCloudProviderInstanceSize, bool) {
+func (o *CloudProviderRegions) GetInstanceSizesOk() (*[]ClusterCloudProviderInstanceSize, bool) {
 	if o == nil || IsNil(o.InstanceSizes) {
 		return nil, false
 	}
@@ -62,7 +61,7 @@ func (o *CloudProviderRegions) HasInstanceSizes() bool {
 
 // SetInstanceSizes gets a reference to the given []ClusterCloudProviderInstanceSize and assigns it to the InstanceSizes field.
 func (o *CloudProviderRegions) SetInstanceSizes(v []ClusterCloudProviderInstanceSize) {
-	o.InstanceSizes = v
+	o.InstanceSizes = &v
 }
 
 // GetProvider returns the Provider field value if set, zero value otherwise

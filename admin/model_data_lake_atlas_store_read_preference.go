@@ -13,7 +13,7 @@ type DataLakeAtlasStoreReadPreference struct {
 	// Read preference mode that specifies to which replica set member to route the read requests.
 	Mode *string `json:"mode,omitempty"`
 	// List that contains tag sets or tag specification documents. If specified, Atlas Data Lake routes read requests to replica set member or members that are associated with the specified tags.
-	TagSets [][]DataLakeAtlasStoreReadPreferenceTag `json:"tagSets,omitempty"`
+	TagSets *[][]DataLakeAtlasStoreReadPreferenceTag `json:"tagSets,omitempty"`
 }
 
 // NewDataLakeAtlasStoreReadPreference instantiates a new DataLakeAtlasStoreReadPreference object
@@ -105,12 +105,12 @@ func (o *DataLakeAtlasStoreReadPreference) GetTagSets() [][]DataLakeAtlasStoreRe
 		var ret [][]DataLakeAtlasStoreReadPreferenceTag
 		return ret
 	}
-	return o.TagSets
+	return *o.TagSets
 }
 
 // GetTagSetsOk returns a tuple with the TagSets field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DataLakeAtlasStoreReadPreference) GetTagSetsOk() ([][]DataLakeAtlasStoreReadPreferenceTag, bool) {
+func (o *DataLakeAtlasStoreReadPreference) GetTagSetsOk() (*[][]DataLakeAtlasStoreReadPreferenceTag, bool) {
 	if o == nil || IsNil(o.TagSets) {
 		return nil, false
 	}
@@ -129,7 +129,7 @@ func (o *DataLakeAtlasStoreReadPreference) HasTagSets() bool {
 
 // SetTagSets gets a reference to the given [][]DataLakeAtlasStoreReadPreferenceTag and assigns it to the TagSets field.
 func (o *DataLakeAtlasStoreReadPreference) SetTagSets(v [][]DataLakeAtlasStoreReadPreferenceTag) {
-	o.TagSets = v
+	o.TagSets = &v
 }
 
 func (o DataLakeAtlasStoreReadPreference) MarshalJSONWithoutReadOnly() ([]byte, error) {

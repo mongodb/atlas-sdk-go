@@ -16,24 +16,21 @@ type CloudDatabaseUser struct {
 	// Date and time when MongoDB Cloud deletes the user. This parameter expresses its value in the ISO 8601 timestamp format in UTC and can include the time zone designation. You must specify a future date that falls within one week of making the Application Programming Interface (API) request.
 	DeleteAfterDate *time.Time `json:"deleteAfterDate,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project.
-	// Write only field.
 	GroupId string `json:"groupId"`
 	// List that contains the key-value pairs for tagging and categorizing the MongoDB database user. The labels that you define do not appear in the console.
-	Labels []ComponentLabel `json:"labels,omitempty"`
+	Labels *[]ComponentLabel `json:"labels,omitempty"`
 	// Part of the Lightweight Directory Access Protocol (LDAP) record that the database uses to authenticate this database user on the LDAP host.
 	LdapAuthType *string `json:"ldapAuthType,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Human-readable label that indicates whether the new database user authenticates with OIDC federated authentication. To create a federated authentication user, specify the value of IDP_GROUP for this field.
 	OidcAuthType *string `json:"oidcAuthType,omitempty"`
 	// Alphanumeric string that authenticates this database user against the database specified in `databaseName`. To authenticate with SCRAM-SHA, you must specify this parameter. This parameter doesn't appear in this response.
-	// Write only field.
 	Password *string `json:"password,omitempty"`
 	// List that provides the pairings of one role with one applicable database.
-	Roles []DatabaseUserRole `json:"roles,omitempty"`
+	Roles *[]DatabaseUserRole `json:"roles,omitempty"`
 	// List that contains clusters and MongoDB Atlas Data Lakes that this database user can access. If omitted, MongoDB Cloud grants the database user access to all the clusters and MongoDB Atlas Data Lakes in the project.
-	Scopes []UserScope `json:"scopes,omitempty"`
+	Scopes *[]UserScope `json:"scopes,omitempty"`
 	// Human-readable label that represents the user that authenticates to MongoDB. The format of this label depends on the method of authentication:  | Authentication Method | Parameter Needed | Parameter Value | username Format | |---|---|---|---| | AWS IAM | awsType | ROLE | <abbr title=\"Amazon Resource Name\">ARN</abbr> | | AWS IAM | awsType | USER | <abbr title=\"Amazon Resource Name\">ARN</abbr> | | x.509 | x509Type | CUSTOMER | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | x.509 | x509Type | MANAGED | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | LDAP | ldapAuthType | USER | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | LDAP | ldapAuthType | GROUP | [RFC 2253](https://tools.ietf.org/html/2253) Distinguished Name | | OIDC | oidcAuthType | IDP_GROUP | Atlas OIDC IdP ID (found in federation settings), followed by a '/', followed by the IdP group name | | SCRAM-SHA | awsType, x509Type, ldapAuthType, oidcAuthType | NONE | Alphanumeric string |
 	Username string `json:"username"`
 	// X.509 method that MongoDB Cloud uses to authenticate the database user.  - For application-managed X.509, specify `MANAGED`. - For self-managed X.509, specify `CUSTOMER`.  Users created with the `CUSTOMER` method require a Common Name (CN) in the **username** parameter. You must create externally authenticated users on the `$external` database.
@@ -198,12 +195,12 @@ func (o *CloudDatabaseUser) GetLabels() []ComponentLabel {
 		var ret []ComponentLabel
 		return ret
 	}
-	return o.Labels
+	return *o.Labels
 }
 
 // GetLabelsOk returns a tuple with the Labels field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudDatabaseUser) GetLabelsOk() ([]ComponentLabel, bool) {
+func (o *CloudDatabaseUser) GetLabelsOk() (*[]ComponentLabel, bool) {
 	if o == nil || IsNil(o.Labels) {
 		return nil, false
 	}
@@ -222,7 +219,7 @@ func (o *CloudDatabaseUser) HasLabels() bool {
 
 // SetLabels gets a reference to the given []ComponentLabel and assigns it to the Labels field.
 func (o *CloudDatabaseUser) SetLabels(v []ComponentLabel) {
-	o.Labels = v
+	o.Labels = &v
 }
 
 // GetLdapAuthType returns the LdapAuthType field value if set, zero value otherwise
@@ -264,12 +261,12 @@ func (o *CloudDatabaseUser) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudDatabaseUser) GetLinksOk() ([]Link, bool) {
+func (o *CloudDatabaseUser) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -288,7 +285,7 @@ func (o *CloudDatabaseUser) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *CloudDatabaseUser) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 // GetOidcAuthType returns the OidcAuthType field value if set, zero value otherwise
@@ -363,12 +360,12 @@ func (o *CloudDatabaseUser) GetRoles() []DatabaseUserRole {
 		var ret []DatabaseUserRole
 		return ret
 	}
-	return o.Roles
+	return *o.Roles
 }
 
 // GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudDatabaseUser) GetRolesOk() ([]DatabaseUserRole, bool) {
+func (o *CloudDatabaseUser) GetRolesOk() (*[]DatabaseUserRole, bool) {
 	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
@@ -387,7 +384,7 @@ func (o *CloudDatabaseUser) HasRoles() bool {
 
 // SetRoles gets a reference to the given []DatabaseUserRole and assigns it to the Roles field.
 func (o *CloudDatabaseUser) SetRoles(v []DatabaseUserRole) {
-	o.Roles = v
+	o.Roles = &v
 }
 
 // GetScopes returns the Scopes field value if set, zero value otherwise
@@ -396,12 +393,12 @@ func (o *CloudDatabaseUser) GetScopes() []UserScope {
 		var ret []UserScope
 		return ret
 	}
-	return o.Scopes
+	return *o.Scopes
 }
 
 // GetScopesOk returns a tuple with the Scopes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudDatabaseUser) GetScopesOk() ([]UserScope, bool) {
+func (o *CloudDatabaseUser) GetScopesOk() (*[]UserScope, bool) {
 	if o == nil || IsNil(o.Scopes) {
 		return nil, false
 	}
@@ -420,7 +417,7 @@ func (o *CloudDatabaseUser) HasScopes() bool {
 
 // SetScopes gets a reference to the given []UserScope and assigns it to the Scopes field.
 func (o *CloudDatabaseUser) SetScopes(v []UserScope) {
-	o.Scopes = v
+	o.Scopes = &v
 }
 
 // GetUsername returns the Username field value

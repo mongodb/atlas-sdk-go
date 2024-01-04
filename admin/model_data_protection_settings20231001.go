@@ -27,7 +27,7 @@ type DataProtectionSettings20231001 struct {
 	// Number of previous days that you can restore back to with Continuous Cloud Backup with a Backup Compliance Policy. You must specify a positive, non-zero integer, and the maximum retention window can't exceed the hourly retention time. This parameter applies only to Continuous Cloud Backups with a Backup Compliance Policy.
 	RestoreWindowDays *int `json:"restoreWindowDays,omitempty"`
 	// List that contains the specifications for one scheduled policy.
-	ScheduledPolicyItems []BackupComplianceScheduledPolicyItem `json:"scheduledPolicyItems,omitempty"`
+	ScheduledPolicyItems *[]BackupComplianceScheduledPolicyItem `json:"scheduledPolicyItems,omitempty"`
 	// Label that indicates the state of the Backup Compliance Policy settings. MongoDB Cloud ignores this setting when you enable or update the Backup Compliance Policy settings.
 	// Read only field.
 	State *string `json:"state,omitempty"`
@@ -347,12 +347,12 @@ func (o *DataProtectionSettings20231001) GetScheduledPolicyItems() []BackupCompl
 		var ret []BackupComplianceScheduledPolicyItem
 		return ret
 	}
-	return o.ScheduledPolicyItems
+	return *o.ScheduledPolicyItems
 }
 
 // GetScheduledPolicyItemsOk returns a tuple with the ScheduledPolicyItems field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DataProtectionSettings20231001) GetScheduledPolicyItemsOk() ([]BackupComplianceScheduledPolicyItem, bool) {
+func (o *DataProtectionSettings20231001) GetScheduledPolicyItemsOk() (*[]BackupComplianceScheduledPolicyItem, bool) {
 	if o == nil || IsNil(o.ScheduledPolicyItems) {
 		return nil, false
 	}
@@ -371,7 +371,7 @@ func (o *DataProtectionSettings20231001) HasScheduledPolicyItems() bool {
 
 // SetScheduledPolicyItems gets a reference to the given []BackupComplianceScheduledPolicyItem and assigns it to the ScheduledPolicyItems field.
 func (o *DataProtectionSettings20231001) SetScheduledPolicyItems(v []BackupComplianceScheduledPolicyItem) {
-	o.ScheduledPolicyItems = v
+	o.ScheduledPolicyItems = &v
 }
 
 // GetState returns the State field value if set, zero value otherwise

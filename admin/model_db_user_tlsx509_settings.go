@@ -11,8 +11,7 @@ type DBUserTLSX509Settings struct {
 	// Concatenated list of customer certificate authority (CA) certificates needed to authenticate database users. MongoDB Cloud expects this as a PEM-formatted certificate.
 	Cas *string `json:"cas,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 }
 
 // NewDBUserTLSX509Settings instantiates a new DBUserTLSX509Settings object
@@ -71,12 +70,12 @@ func (o *DBUserTLSX509Settings) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DBUserTLSX509Settings) GetLinksOk() ([]Link, bool) {
+func (o *DBUserTLSX509Settings) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -95,7 +94,7 @@ func (o *DBUserTLSX509Settings) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *DBUserTLSX509Settings) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 func (o DBUserTLSX509Settings) MarshalJSONWithoutReadOnly() ([]byte, error) {

@@ -9,16 +9,12 @@ import (
 // ApiSearchDeploymentResponse struct for ApiSearchDeploymentResponse
 type ApiSearchDeploymentResponse struct {
 	// Unique 24-hexadecimal character string that identifies the project.
-	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the search deployment.
-	// Read only field.
 	Id *string `json:"id,omitempty"`
 	// List of settings that configure the search nodes for your cluster.
-	// Read only field.
-	Specs []ApiSearchDeploymentSpec `json:"specs,omitempty"`
+	Specs *[]ApiSearchDeploymentSpec `json:"specs,omitempty"`
 	// Human-readable label that indicates the current operating condition of this search deployment.
-	// Read only field.
 	StateName *string `json:"stateName,omitempty"`
 }
 
@@ -111,12 +107,12 @@ func (o *ApiSearchDeploymentResponse) GetSpecs() []ApiSearchDeploymentSpec {
 		var ret []ApiSearchDeploymentSpec
 		return ret
 	}
-	return o.Specs
+	return *o.Specs
 }
 
 // GetSpecsOk returns a tuple with the Specs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiSearchDeploymentResponse) GetSpecsOk() ([]ApiSearchDeploymentSpec, bool) {
+func (o *ApiSearchDeploymentResponse) GetSpecsOk() (*[]ApiSearchDeploymentSpec, bool) {
 	if o == nil || IsNil(o.Specs) {
 		return nil, false
 	}
@@ -135,7 +131,7 @@ func (o *ApiSearchDeploymentResponse) HasSpecs() bool {
 
 // SetSpecs gets a reference to the given []ApiSearchDeploymentSpec and assigns it to the Specs field.
 func (o *ApiSearchDeploymentResponse) SetSpecs(v []ApiSearchDeploymentSpec) {
-	o.Specs = v
+	o.Specs = &v
 }
 
 // GetStateName returns the StateName field value if set, zero value otherwise

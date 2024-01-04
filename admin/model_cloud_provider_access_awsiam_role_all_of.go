@@ -10,24 +10,18 @@ import (
 // CloudProviderAccessAWSIAMRoleAllOf struct for CloudProviderAccessAWSIAMRoleAllOf
 type CloudProviderAccessAWSIAMRoleAllOf struct {
 	// Amazon Resource Name that identifies the Amazon Web Services (AWS) user account that MongoDB Cloud uses when it assumes the Identity and Access Management (IAM) role.
-	// Read only field.
 	AtlasAWSAccountArn *string `json:"atlasAWSAccountArn,omitempty"`
 	// Unique external ID that MongoDB Cloud uses when it assumes the IAM role in your Amazon Web Services (AWS) account.
-	// Read only field.
 	AtlasAssumedRoleExternalId *string `json:"atlasAssumedRoleExternalId,omitempty"`
 	// Date and time when someone authorized this role for the specified cloud service provider. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-	// Read only field.
 	AuthorizedDate *time.Time `json:"authorizedDate,omitempty"`
 	// Date and time when someone created this role for the specified cloud service provider. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-	// Read only field.
 	CreatedDate *time.Time `json:"createdDate,omitempty"`
 	// List that contains application features associated with this Amazon Web Services (AWS) Identity and Access Management (IAM) role.
-	// Read only field.
-	FeatureUsages []CloudProviderAccessFeatureUsage `json:"featureUsages,omitempty"`
+	FeatureUsages *[]CloudProviderAccessFeatureUsage `json:"featureUsages,omitempty"`
 	// Amazon Resource Name (ARN) that identifies the Amazon Web Services (AWS) Identity and Access Management (IAM) role that MongoDB Cloud assumes when it accesses resources in your AWS account.
 	IamAssumedRoleArn *string `json:"iamAssumedRoleArn,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the role.
-	// Read only field.
 	RoleId *string `json:"roleId,omitempty"`
 }
 
@@ -186,12 +180,12 @@ func (o *CloudProviderAccessAWSIAMRoleAllOf) GetFeatureUsages() []CloudProviderA
 		var ret []CloudProviderAccessFeatureUsage
 		return ret
 	}
-	return o.FeatureUsages
+	return *o.FeatureUsages
 }
 
 // GetFeatureUsagesOk returns a tuple with the FeatureUsages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudProviderAccessAWSIAMRoleAllOf) GetFeatureUsagesOk() ([]CloudProviderAccessFeatureUsage, bool) {
+func (o *CloudProviderAccessAWSIAMRoleAllOf) GetFeatureUsagesOk() (*[]CloudProviderAccessFeatureUsage, bool) {
 	if o == nil || IsNil(o.FeatureUsages) {
 		return nil, false
 	}
@@ -210,7 +204,7 @@ func (o *CloudProviderAccessAWSIAMRoleAllOf) HasFeatureUsages() bool {
 
 // SetFeatureUsages gets a reference to the given []CloudProviderAccessFeatureUsage and assigns it to the FeatureUsages field.
 func (o *CloudProviderAccessAWSIAMRoleAllOf) SetFeatureUsages(v []CloudProviderAccessFeatureUsage) {
-	o.FeatureUsages = v
+	o.FeatureUsages = &v
 }
 
 // GetIamAssumedRoleArn returns the IamAssumedRoleArn field value if set, zero value otherwise

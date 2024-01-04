@@ -9,7 +9,7 @@ import (
 // GroupInvitationRequest struct for GroupInvitationRequest
 type GroupInvitationRequest struct {
 	// One or more project level roles to assign to the MongoDB Cloud user.
-	Roles []string `json:"roles,omitempty"`
+	Roles *[]string `json:"roles,omitempty"`
 	// Email address of the MongoDB Cloud user invited to the specified project.
 	Username *string `json:"username,omitempty"`
 }
@@ -37,12 +37,12 @@ func (o *GroupInvitationRequest) GetRoles() []string {
 		var ret []string
 		return ret
 	}
-	return o.Roles
+	return *o.Roles
 }
 
 // GetRolesOk returns a tuple with the Roles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupInvitationRequest) GetRolesOk() ([]string, bool) {
+func (o *GroupInvitationRequest) GetRolesOk() (*[]string, bool) {
 	if o == nil || IsNil(o.Roles) {
 		return nil, false
 	}
@@ -61,7 +61,7 @@ func (o *GroupInvitationRequest) HasRoles() bool {
 
 // SetRoles gets a reference to the given []string and assigns it to the Roles field.
 func (o *GroupInvitationRequest) SetRoles(v []string) {
-	o.Roles = v
+	o.Roles = &v
 }
 
 // GetUsername returns the Username field value if set, zero value otherwise

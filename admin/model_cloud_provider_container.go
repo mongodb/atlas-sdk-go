@@ -33,7 +33,7 @@ type CloudProviderContainer struct {
 	// Read only field.
 	NetworkName *string `json:"networkName,omitempty"`
 	// List of GCP regions to which you want to deploy this MongoDB Cloud network peering container.  In this MongoDB Cloud project, you can deploy clusters only to the GCP regions in this list. To deploy MongoDB Cloud clusters to other GCP regions, create additional projects.
-	Regions []string `json:"regions,omitempty"`
+	Regions *[]string `json:"regions,omitempty"`
 	// Geographic area that Amazon Web Services (AWS) defines to which MongoDB Cloud deployed this network peering container.
 	RegionName *string `json:"regionName,omitempty"`
 	// Unique string that identifies the MongoDB Cloud VPC on AWS.
@@ -361,12 +361,12 @@ func (o *CloudProviderContainer) GetRegions() []string {
 		var ret []string
 		return ret
 	}
-	return o.Regions
+	return *o.Regions
 }
 
 // GetRegionsOk returns a tuple with the Regions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudProviderContainer) GetRegionsOk() ([]string, bool) {
+func (o *CloudProviderContainer) GetRegionsOk() (*[]string, bool) {
 	if o == nil || IsNil(o.Regions) {
 		return nil, false
 	}
@@ -385,7 +385,7 @@ func (o *CloudProviderContainer) HasRegions() bool {
 
 // SetRegions gets a reference to the given []string and assigns it to the Regions field.
 func (o *CloudProviderContainer) SetRegions(v []string) {
-	o.Regions = v
+	o.Regions = &v
 }
 
 // GetRegionName returns the RegionName field value if set, zero value otherwise

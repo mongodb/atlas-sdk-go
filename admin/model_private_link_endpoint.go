@@ -9,37 +9,27 @@ import (
 // PrivateLinkEndpoint struct for PrivateLinkEndpoint
 type PrivateLinkEndpoint struct {
 	// Cloud service provider that serves the requested endpoint.
-	// Read only field.
 	CloudProvider string `json:"cloudProvider"`
 	// Flag that indicates whether MongoDB Cloud received a request to remove the specified private endpoint from the private endpoint service.
-	// Read only field.
 	DeleteRequested *bool `json:"deleteRequested,omitempty"`
 	// Error message returned when requesting private connection resource. The resource returns `null` if the request succeeded.
-	// Read only field.
 	ErrorMessage *string `json:"errorMessage,omitempty"`
 	// State of the Amazon Web Service PrivateLink connection when MongoDB Cloud received this request.
-	// Read only field.
 	ConnectionStatus *string `json:"connectionStatus,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the interface endpoint.
-	// Read only field.
 	InterfaceEndpointId *string `json:"interfaceEndpointId,omitempty"`
 	// Human-readable label that MongoDB Cloud generates that identifies the private endpoint connection.
-	// Read only field.
 	PrivateEndpointConnectionName *string `json:"privateEndpointConnectionName,omitempty"`
 	// IPv4 address of the private endpoint in your Azure VNet that someone added to this private endpoint service.
 	PrivateEndpointIPAddress *string `json:"privateEndpointIPAddress,omitempty"`
 	// Unique string that identifies the Azure private endpoint's network interface that someone added to this private endpoint service.
-	// Read only field.
 	PrivateEndpointResourceId *string `json:"privateEndpointResourceId,omitempty"`
 	// State of the Azure Private Link Service connection when MongoDB Cloud received this request.  Alternatively: State of the Google Cloud network endpoint group when MongoDB Cloud received this request.
-	// Read only field.
 	Status *string `json:"status,omitempty"`
 	// Human-readable label that identifies a set of endpoints.
-	// Read only field.
 	EndpointGroupName *string `json:"endpointGroupName,omitempty"`
 	// List of individual private endpoints that comprise this endpoint group.
-	// Read only field.
-	Endpoints []GCPConsumerForwardingRule `json:"endpoints,omitempty"`
+	Endpoints *[]GCPConsumerForwardingRule `json:"endpoints,omitempty"`
 }
 
 // NewPrivateLinkEndpoint instantiates a new PrivateLinkEndpoint object
@@ -387,12 +377,12 @@ func (o *PrivateLinkEndpoint) GetEndpoints() []GCPConsumerForwardingRule {
 		var ret []GCPConsumerForwardingRule
 		return ret
 	}
-	return o.Endpoints
+	return *o.Endpoints
 }
 
 // GetEndpointsOk returns a tuple with the Endpoints field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PrivateLinkEndpoint) GetEndpointsOk() ([]GCPConsumerForwardingRule, bool) {
+func (o *PrivateLinkEndpoint) GetEndpointsOk() (*[]GCPConsumerForwardingRule, bool) {
 	if o == nil || IsNil(o.Endpoints) {
 		return nil, false
 	}
@@ -411,7 +401,7 @@ func (o *PrivateLinkEndpoint) HasEndpoints() bool {
 
 // SetEndpoints gets a reference to the given []GCPConsumerForwardingRule and assigns it to the Endpoints field.
 func (o *PrivateLinkEndpoint) SetEndpoints(v []GCPConsumerForwardingRule) {
-	o.Endpoints = v
+	o.Endpoints = &v
 }
 
 func (o PrivateLinkEndpoint) MarshalJSONWithoutReadOnly() ([]byte, error) {

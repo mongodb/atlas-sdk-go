@@ -18,13 +18,11 @@ type NetworkPermissionEntry struct {
 	// Date and time after which MongoDB Cloud deletes the temporary access list entry. This parameter expresses its value in the ISO 8601 timestamp format in UTC and can include the time zone designation. The date must be later than the current date but no later than one week after you submit this request. The resource returns this parameter if you specified an expiration date when creating this IP access list entry.
 	DeleteAfterDate *time.Time `json:"deleteAfterDate,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project that contains the IP access list to which you want to add one or more entries.
-	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
 	// IP address that you want to add to the project's IP access list. Your IP access list entry can be one **awsSecurityGroup**, one **cidrBlock**, or one **ipAddress**. Don't set this parameter if you set **awsSecurityGroup** or **cidrBlock**.
 	IpAddress *string `json:"ipAddress,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 }
 
 // NewNetworkPermissionEntry instantiates a new NetworkPermissionEntry object
@@ -248,12 +246,12 @@ func (o *NetworkPermissionEntry) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NetworkPermissionEntry) GetLinksOk() ([]Link, bool) {
+func (o *NetworkPermissionEntry) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -272,7 +270,7 @@ func (o *NetworkPermissionEntry) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *NetworkPermissionEntry) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 func (o NetworkPermissionEntry) MarshalJSONWithoutReadOnly() ([]byte, error) {

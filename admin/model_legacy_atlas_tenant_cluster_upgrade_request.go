@@ -19,36 +19,29 @@ type LegacyAtlasTenantClusterUpgradeRequest struct {
 	ClusterType       *string                   `json:"clusterType,omitempty"`
 	ConnectionStrings *ClusterConnectionStrings `json:"connectionStrings,omitempty"`
 	// Date and time when MongoDB Cloud created this serverless instance. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
-	// Read only field.
 	CreateDate *time.Time `json:"createDate,omitempty"`
 	// Storage capacity that the host's root volume possesses expressed in gigabytes. Increase this number to add capacity. MongoDB Cloud requires this parameter if you set **replicationSpecs**. If you specify a disk size below the minimum (10 GB), this parameter defaults to the minimum disk size value. Storage charge calculations depend on whether you choose the default value or a custom value.  The maximum value for disk storage cannot exceed 50 times the maximum RAM for the selected cluster. If you require more storage space, consider upgrading your cluster to a higher tier.
 	DiskSizeGB *float64 `json:"diskSizeGB,omitempty"`
 	// Cloud service provider that manages your customer keys to provide an additional layer of Encryption at Rest for the cluster.
 	EncryptionAtRestProvider *string `json:"encryptionAtRestProvider,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project.
-	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the cluster.
-	// Read only field.
 	Id *string `json:"id,omitempty"`
 	// Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels.  Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use [resource tags](https://dochub.mongodb.org/core/add-cluster-tag-atlas) instead.
 	// Deprecated
-	Labels []ComponentLabel `json:"labels,omitempty"`
+	Labels *[]ComponentLabel `json:"labels,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Major MongoDB version of the cluster. MongoDB Cloud deploys the cluster with the latest stable release of the specified version.
 	MongoDBMajorVersion *string `json:"mongoDBMajorVersion,omitempty"`
 	// Version of MongoDB that the cluster runs.
 	MongoDBVersion *string `json:"mongoDBVersion,omitempty"`
 	// Base connection string that you can use to connect to the cluster. MongoDB Cloud displays the string only after the cluster starts, not while it builds the cluster.
-	// Read only field.
 	MongoURI *string `json:"mongoURI,omitempty"`
 	// Date and time when someone last updated the connection string. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
-	// Read only field.
 	MongoURIUpdated *time.Time `json:"mongoURIUpdated,omitempty"`
 	// Connection string that you can use to connect to the cluster including the `replicaSet`, `ssl`, and `authSource` query parameters with values appropriate for the cluster. You may need to add MongoDB database users. The response returns this parameter once the cluster can receive requests, not while it builds the cluster.
-	// Read only field.
 	MongoURIWithOptions *string `json:"mongoURIWithOptions,omitempty"`
 	// Human-readable label that identifies the cluster.
 	Name string `json:"name"`
@@ -67,17 +60,15 @@ type LegacyAtlasTenantClusterUpgradeRequest struct {
 	// Physical location where MongoDB Cloud provisions cluster nodes.
 	ReplicationSpec *map[string]RegionSpec `json:"replicationSpec,omitempty"`
 	// List of settings that configure your cluster regions.  - For Global Clusters, each object in the array represents one zone where MongoDB Cloud deploys your clusters nodes. - For non-Global sharded clusters and replica sets, the single object represents where MongoDB Cloud deploys your clusters nodes.
-	ReplicationSpecs []LegacyReplicationSpec `json:"replicationSpecs,omitempty"`
+	ReplicationSpecs *[]LegacyReplicationSpec `json:"replicationSpecs,omitempty"`
 	// Root Certificate Authority that MongoDB Atlas clusters uses. MongoDB Cloud supports Internet Security Research Group.
 	RootCertType *string `json:"rootCertType,omitempty"`
 	// Connection string that you can use to connect to the cluster. The `+srv` modifier forces the connection to use Transport Layer Security (TLS). The `mongoURI` parameter lists additional options.
-	// Read only field.
 	SrvAddress *string `json:"srvAddress,omitempty"`
 	// Human-readable label that indicates the current operating condition of the cluster.
-	// Read only field.
 	StateName *string `json:"stateName,omitempty"`
 	// List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the cluster.
-	Tags []ResourceTag `json:"tags,omitempty"`
+	Tags *[]ResourceTag `json:"tags,omitempty"`
 	// Flag that indicates whether termination protection is enabled on the cluster. If set to `true`, MongoDB Cloud won't delete the cluster. If set to `false`, MongoDB Cloud will delete the cluster.
 	TerminationProtectionEnabled *bool `json:"terminationProtectionEnabled,omitempty"`
 	// Method by which the cluster maintains the MongoDB versions. If value is `CONTINUOUS`, you must not specify **mongoDBMajorVersion**.
@@ -496,13 +487,13 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) GetLabels() []ComponentLabel {
 		var ret []ComponentLabel
 		return ret
 	}
-	return o.Labels
+	return *o.Labels
 }
 
 // GetLabelsOk returns a tuple with the Labels field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // Deprecated
-func (o *LegacyAtlasTenantClusterUpgradeRequest) GetLabelsOk() ([]ComponentLabel, bool) {
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetLabelsOk() (*[]ComponentLabel, bool) {
 	if o == nil || IsNil(o.Labels) {
 		return nil, false
 	}
@@ -522,7 +513,7 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasLabels() bool {
 // SetLabels gets a reference to the given []ComponentLabel and assigns it to the Labels field.
 // Deprecated
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetLabels(v []ComponentLabel) {
-	o.Labels = v
+	o.Labels = &v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -531,12 +522,12 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LegacyAtlasTenantClusterUpgradeRequest) GetLinksOk() ([]Link, bool) {
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -555,7 +546,7 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 // GetMongoDBMajorVersion returns the MongoDBMajorVersion field value if set, zero value otherwise
@@ -987,12 +978,12 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) GetReplicationSpecs() []LegacyR
 		var ret []LegacyReplicationSpec
 		return ret
 	}
-	return o.ReplicationSpecs
+	return *o.ReplicationSpecs
 }
 
 // GetReplicationSpecsOk returns a tuple with the ReplicationSpecs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LegacyAtlasTenantClusterUpgradeRequest) GetReplicationSpecsOk() ([]LegacyReplicationSpec, bool) {
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetReplicationSpecsOk() (*[]LegacyReplicationSpec, bool) {
 	if o == nil || IsNil(o.ReplicationSpecs) {
 		return nil, false
 	}
@@ -1011,7 +1002,7 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasReplicationSpecs() bool {
 
 // SetReplicationSpecs gets a reference to the given []LegacyReplicationSpec and assigns it to the ReplicationSpecs field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetReplicationSpecs(v []LegacyReplicationSpec) {
-	o.ReplicationSpecs = v
+	o.ReplicationSpecs = &v
 }
 
 // GetRootCertType returns the RootCertType field value if set, zero value otherwise
@@ -1119,12 +1110,12 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) GetTags() []ResourceTag {
 		var ret []ResourceTag
 		return ret
 	}
-	return o.Tags
+	return *o.Tags
 }
 
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LegacyAtlasTenantClusterUpgradeRequest) GetTagsOk() ([]ResourceTag, bool) {
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetTagsOk() (*[]ResourceTag, bool) {
 	if o == nil || IsNil(o.Tags) {
 		return nil, false
 	}
@@ -1143,7 +1134,7 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) HasTags() bool {
 
 // SetTags gets a reference to the given []ResourceTag and assigns it to the Tags field.
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetTags(v []ResourceTag) {
-	o.Tags = v
+	o.Tags = &v
 }
 
 // GetTerminationProtectionEnabled returns the TerminationProtectionEnabled field value if set, zero value otherwise

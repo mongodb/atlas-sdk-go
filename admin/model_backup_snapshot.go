@@ -10,10 +10,8 @@ import (
 // BackupSnapshot struct for BackupSnapshot
 type BackupSnapshot struct {
 	// Unique 24-hexadecimal digit string that identifies the cluster with the snapshots you want to return.
-	// Read only field.
 	ClusterId *string `json:"clusterId,omitempty"`
 	// Flag that indicates whether the snapshot exists. This flag returns `false` while MongoDB Cloud creates the snapshot.
-	// Read only field.
 	Complete *bool             `json:"complete,omitempty"`
 	Created  *ApiBSONTimestamp `json:"created,omitempty"`
 	// Flag that indicates whether someone can delete this snapshot. You can't set `\"doNotDelete\" : true` and set a timestamp for **expires** in the same request.
@@ -21,21 +19,16 @@ type BackupSnapshot struct {
 	// Date and time when MongoDB Cloud deletes the snapshot. If `\"doNotDelete\" : true`, MongoDB Cloud removes any value set for this parameter.
 	Expires *time.Time `json:"expires,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project that owns the snapshots.
-	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the snapshot.
-	// Read only field.
 	Id *string `json:"id,omitempty"`
 	// Flag indicating if this is an incremental or a full snapshot.
-	// Read only field.
 	Incremental               *bool             `json:"incremental,omitempty"`
 	LastOplogAppliedTimestamp *ApiBSONTimestamp `json:"lastOplogAppliedTimestamp,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Metadata that describes the complete snapshot.  - For a replica set, this array contains a single document. - For a sharded cluster, this array contains one document for each shard plus one document for the config host.
-	// Read only field.
-	Parts []BackupSnapshotPart `json:"parts,omitempty"`
+	Parts *[]BackupSnapshotPart `json:"parts,omitempty"`
 }
 
 // NewBackupSnapshot instantiates a new BackupSnapshot object
@@ -358,12 +351,12 @@ func (o *BackupSnapshot) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BackupSnapshot) GetLinksOk() ([]Link, bool) {
+func (o *BackupSnapshot) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -382,7 +375,7 @@ func (o *BackupSnapshot) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *BackupSnapshot) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 // GetParts returns the Parts field value if set, zero value otherwise
@@ -391,12 +384,12 @@ func (o *BackupSnapshot) GetParts() []BackupSnapshotPart {
 		var ret []BackupSnapshotPart
 		return ret
 	}
-	return o.Parts
+	return *o.Parts
 }
 
 // GetPartsOk returns a tuple with the Parts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BackupSnapshot) GetPartsOk() ([]BackupSnapshotPart, bool) {
+func (o *BackupSnapshot) GetPartsOk() (*[]BackupSnapshotPart, bool) {
 	if o == nil || IsNil(o.Parts) {
 		return nil, false
 	}
@@ -415,7 +408,7 @@ func (o *BackupSnapshot) HasParts() bool {
 
 // SetParts gets a reference to the given []BackupSnapshotPart and assigns it to the Parts field.
 func (o *BackupSnapshot) SetParts(v []BackupSnapshotPart) {
-	o.Parts = v
+	o.Parts = &v
 }
 
 func (o BackupSnapshot) MarshalJSONWithoutReadOnly() ([]byte, error) {

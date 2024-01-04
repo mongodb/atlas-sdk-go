@@ -16,8 +16,8 @@ type LiveMigrationRequest struct {
 	// Write only field.
 	DropEnabled bool `json:"dropEnabled"`
 	// List of migration hosts used for this migration.
-	MigrationHosts []string `json:"migrationHosts,omitempty"`
-	Source         Source   `json:"source"`
+	MigrationHosts *[]string `json:"migrationHosts,omitempty"`
+	Source         Source    `json:"source"`
 }
 
 // NewLiveMigrationRequest instantiates a new LiveMigrationRequest object
@@ -127,12 +127,12 @@ func (o *LiveMigrationRequest) GetMigrationHosts() []string {
 		var ret []string
 		return ret
 	}
-	return o.MigrationHosts
+	return *o.MigrationHosts
 }
 
 // GetMigrationHostsOk returns a tuple with the MigrationHosts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LiveMigrationRequest) GetMigrationHostsOk() ([]string, bool) {
+func (o *LiveMigrationRequest) GetMigrationHostsOk() (*[]string, bool) {
 	if o == nil || IsNil(o.MigrationHosts) {
 		return nil, false
 	}
@@ -151,7 +151,7 @@ func (o *LiveMigrationRequest) HasMigrationHosts() bool {
 
 // SetMigrationHosts gets a reference to the given []string and assigns it to the MigrationHosts field.
 func (o *LiveMigrationRequest) SetMigrationHosts(v []string) {
-	o.MigrationHosts = v
+	o.MigrationHosts = &v
 }
 
 // GetSource returns the Source field value

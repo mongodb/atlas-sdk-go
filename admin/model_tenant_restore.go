@@ -10,39 +10,28 @@ import (
 // TenantRestore struct for TenantRestore
 type TenantRestore struct {
 	// Human-readable label that identifies the source cluster.
-	// Read only field.
 	ClusterName *string `json:"clusterName,omitempty"`
 	// Means by which this resource returns the snapshot to the requesting MongoDB Cloud user.
-	// Read only field.
 	DeliveryType *string `json:"deliveryType,omitempty"`
 	// Date and time when the download link no longer works. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-	// Read only field.
 	ExpirationDate *time.Time `json:"expirationDate,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the restore job.
-	// Read only field.
 	Id *string `json:"id,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project from which the restore job originated.
-	// Read only field.
 	ProjectId *string `json:"projectId,omitempty"`
 	// Date and time when MongoDB Cloud completed writing this snapshot. MongoDB Cloud changes the status of the restore job to `CLOSED`. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-	// Read only field.
 	RestoreFinishedDate *time.Time `json:"restoreFinishedDate,omitempty"`
 	// Date and time when MongoDB Cloud will restore this snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-	// Read only field.
 	RestoreScheduledDate *time.Time `json:"restoreScheduledDate,omitempty"`
 	// Date and time when MongoDB Cloud completed writing this snapshot. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-	// Read only field.
 	SnapshotFinishedDate *time.Time `json:"snapshotFinishedDate,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the snapshot to restore.
 	SnapshotId string `json:"snapshotId"`
 	// Internet address from which you can download the compressed snapshot files. The resource returns this parameter when  `\"deliveryType\" : \"DOWNLOAD\"`.
-	// Read only field.
 	SnapshotUrl *string `json:"snapshotUrl,omitempty"`
 	// Phase of the restore workflow for this job at the time this resource made this request.
-	// Read only field.
 	Status *string `json:"status,omitempty"`
 	// Human-readable label that identifies the cluster on the target project to which you want to restore the snapshot. You can restore the snapshot to a cluster tier *M2* or greater.
 	TargetDeploymentItemName string `json:"targetDeploymentItemName"`
@@ -207,12 +196,12 @@ func (o *TenantRestore) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TenantRestore) GetLinksOk() ([]Link, bool) {
+func (o *TenantRestore) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -231,7 +220,7 @@ func (o *TenantRestore) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *TenantRestore) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 // GetProjectId returns the ProjectId field value if set, zero value otherwise

@@ -33,7 +33,7 @@ type DataLakeDatabaseDataSourceSettings struct {
 	// Unsigned integer that specifies how many fields of the dataset name to trim from the left of the dataset name before mapping the remaining fields to a wildcard collection name.
 	TrimLevel *int `json:"trimLevel,omitempty"`
 	// URLs of the publicly accessible data files. You can't specify URLs that require authentication. Atlas Data Lake creates a partition for each URL. If empty or omitted, Data Lake uses the URLs from the store specified in the **dataSources.storeName** parameter.
-	Urls []string `json:"urls,omitempty"`
+	Urls *[]string `json:"urls,omitempty"`
 }
 
 // NewDataLakeDatabaseDataSourceSettings instantiates a new DataLakeDatabaseDataSourceSettings object
@@ -459,12 +459,12 @@ func (o *DataLakeDatabaseDataSourceSettings) GetUrls() []string {
 		var ret []string
 		return ret
 	}
-	return o.Urls
+	return *o.Urls
 }
 
 // GetUrlsOk returns a tuple with the Urls field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DataLakeDatabaseDataSourceSettings) GetUrlsOk() ([]string, bool) {
+func (o *DataLakeDatabaseDataSourceSettings) GetUrlsOk() (*[]string, bool) {
 	if o == nil || IsNil(o.Urls) {
 		return nil, false
 	}
@@ -483,7 +483,7 @@ func (o *DataLakeDatabaseDataSourceSettings) HasUrls() bool {
 
 // SetUrls gets a reference to the given []string and assigns it to the Urls field.
 func (o *DataLakeDatabaseDataSourceSettings) SetUrls(v []string) {
-	o.Urls = v
+	o.Urls = &v
 }
 
 func (o DataLakeDatabaseDataSourceSettings) MarshalJSONWithoutReadOnly() ([]byte, error) {

@@ -9,10 +9,8 @@ import (
 // MeasurementDiskPartition struct for MeasurementDiskPartition
 type MeasurementDiskPartition struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Human-readable label of the disk or partition to which the measurements apply.
-	// Read only field.
 	PartitionName *string `json:"partitionName,omitempty"`
 }
 
@@ -39,12 +37,12 @@ func (o *MeasurementDiskPartition) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MeasurementDiskPartition) GetLinksOk() ([]Link, bool) {
+func (o *MeasurementDiskPartition) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -63,7 +61,7 @@ func (o *MeasurementDiskPartition) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *MeasurementDiskPartition) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 // GetPartitionName returns the PartitionName field value if set, zero value otherwise

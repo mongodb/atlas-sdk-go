@@ -12,7 +12,7 @@ type DataLakeStoreSettings struct {
 	Name     *string `json:"name,omitempty"`
 	Provider string  `json:"provider"`
 	// Collection of AWS S3 [storage classes](https://aws.amazon.com/s3/storage-classes/). Atlas Data Lake includes the files in these storage classes in the query results.
-	AdditionalStorageClasses []string `json:"additionalStorageClasses,omitempty"`
+	AdditionalStorageClasses *[]string `json:"additionalStorageClasses,omitempty"`
 	// Human-readable label that identifies the AWS S3 bucket. This label must exactly match the name of an S3 bucket that the data lake can access with the configured AWS Identity and Access Management (IAM) credentials.
 	Bucket *string `json:"bucket,omitempty"`
 	// The delimiter that separates **databases.[n].collections.[n].dataSources.[n].path** segments in the data store. MongoDB Cloud uses the delimiter to efficiently traverse S3 buckets with a hierarchical directory structure. You can specify any character supported by the S3 object keys as the delimiter. For example, you can specify an underscore (_) or a plus sign (+) or multiple characters, such as double underscores (__) as the delimiter. If omitted, defaults to `/`.
@@ -37,7 +37,7 @@ type DataLakeStoreSettings struct {
 	// Default format that Data Lake assumes if it encounters a file without an extension while searching the `storeName`. If omitted, Data Lake attempts to detect the file type by processing a few bytes of the file. The specified format only applies to the URLs specified in the **databases.[n].collections.[n].dataSources** object.
 	DefaultFormat *string `json:"defaultFormat,omitempty"`
 	// Comma-separated list of publicly accessible HTTP URLs where data is stored. You can't specify URLs that require authentication.
-	Urls []string `json:"urls,omitempty"`
+	Urls *[]string `json:"urls,omitempty"`
 }
 
 // NewDataLakeStoreSettings instantiates a new DataLakeStoreSettings object
@@ -133,12 +133,12 @@ func (o *DataLakeStoreSettings) GetAdditionalStorageClasses() []string {
 		var ret []string
 		return ret
 	}
-	return o.AdditionalStorageClasses
+	return *o.AdditionalStorageClasses
 }
 
 // GetAdditionalStorageClassesOk returns a tuple with the AdditionalStorageClasses field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DataLakeStoreSettings) GetAdditionalStorageClassesOk() ([]string, bool) {
+func (o *DataLakeStoreSettings) GetAdditionalStorageClassesOk() (*[]string, bool) {
 	if o == nil || IsNil(o.AdditionalStorageClasses) {
 		return nil, false
 	}
@@ -157,7 +157,7 @@ func (o *DataLakeStoreSettings) HasAdditionalStorageClasses() bool {
 
 // SetAdditionalStorageClasses gets a reference to the given []string and assigns it to the AdditionalStorageClasses field.
 func (o *DataLakeStoreSettings) SetAdditionalStorageClasses(v []string) {
-	o.AdditionalStorageClasses = v
+	o.AdditionalStorageClasses = &v
 }
 
 // GetBucket returns the Bucket field value if set, zero value otherwise
@@ -562,12 +562,12 @@ func (o *DataLakeStoreSettings) GetUrls() []string {
 		var ret []string
 		return ret
 	}
-	return o.Urls
+	return *o.Urls
 }
 
 // GetUrlsOk returns a tuple with the Urls field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DataLakeStoreSettings) GetUrlsOk() ([]string, bool) {
+func (o *DataLakeStoreSettings) GetUrlsOk() (*[]string, bool) {
 	if o == nil || IsNil(o.Urls) {
 		return nil, false
 	}
@@ -586,7 +586,7 @@ func (o *DataLakeStoreSettings) HasUrls() bool {
 
 // SetUrls gets a reference to the given []string and assigns it to the Urls field.
 func (o *DataLakeStoreSettings) SetUrls(v []string) {
-	o.Urls = v
+	o.Urls = &v
 }
 
 func (o DataLakeStoreSettings) MarshalJSONWithoutReadOnly() ([]byte, error) {

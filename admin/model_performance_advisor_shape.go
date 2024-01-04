@@ -9,23 +9,17 @@ import (
 // PerformanceAdvisorShape struct for PerformanceAdvisorShape
 type PerformanceAdvisorShape struct {
 	// Average duration in milliseconds for the queries examined that match this shape.
-	// Read only field.
 	AvgMs *int64 `json:"avgMs,omitempty"`
 	// Number of queries examined that match this shape.
-	// Read only field.
 	Count *int64 `json:"count,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies this shape. This string exists only for the duration of this API request.
-	// Read only field.
 	Id *string `json:"id,omitempty"`
 	// Average number of documents read for every document that the query returns.
-	// Read only field.
 	InefficiencyScore *int64 `json:"inefficiencyScore,omitempty"`
 	// Human-readable label that identifies the namespace on the specified host. The resource expresses this parameter value as `<database>.<collection>`.
-	// Read only field.
 	Namespace *string `json:"namespace,omitempty"`
 	// List that contains specific about individual queries.
-	// Read only field.
-	Operations []PerformanceAdvisorOperation `json:"operations,omitempty"`
+	Operations *[]PerformanceAdvisorOperation `json:"operations,omitempty"`
 }
 
 // NewPerformanceAdvisorShape instantiates a new PerformanceAdvisorShape object
@@ -216,12 +210,12 @@ func (o *PerformanceAdvisorShape) GetOperations() []PerformanceAdvisorOperation 
 		var ret []PerformanceAdvisorOperation
 		return ret
 	}
-	return o.Operations
+	return *o.Operations
 }
 
 // GetOperationsOk returns a tuple with the Operations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PerformanceAdvisorShape) GetOperationsOk() ([]PerformanceAdvisorOperation, bool) {
+func (o *PerformanceAdvisorShape) GetOperationsOk() (*[]PerformanceAdvisorOperation, bool) {
 	if o == nil || IsNil(o.Operations) {
 		return nil, false
 	}
@@ -240,7 +234,7 @@ func (o *PerformanceAdvisorShape) HasOperations() bool {
 
 // SetOperations gets a reference to the given []PerformanceAdvisorOperation and assigns it to the Operations field.
 func (o *PerformanceAdvisorShape) SetOperations(v []PerformanceAdvisorOperation) {
-	o.Operations = v
+	o.Operations = &v
 }
 
 func (o PerformanceAdvisorShape) MarshalJSONWithoutReadOnly() ([]byte, error) {

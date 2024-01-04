@@ -11,8 +11,7 @@ type StreamsDataProcessRegion struct {
 	// Label that identifies the cloud service provider where MongoDB Cloud performs stream processing. Currently, this parameter supports AWS only.
 	CloudProvider string `json:"cloudProvider"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Name of the cloud provider region hosting Atlas Stream Processing.
 	Region string `json:"region"`
 }
@@ -66,12 +65,12 @@ func (o *StreamsDataProcessRegion) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StreamsDataProcessRegion) GetLinksOk() ([]Link, bool) {
+func (o *StreamsDataProcessRegion) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -90,7 +89,7 @@ func (o *StreamsDataProcessRegion) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *StreamsDataProcessRegion) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 // GetRegion returns the Region field value

@@ -9,9 +9,9 @@ import (
 // FederationIdentityProvider struct for FederationIdentityProvider
 type FederationIdentityProvider struct {
 	// List that contains the domains associated with the identity provider.
-	AssociatedDomains []string `json:"associatedDomains,omitempty"`
+	AssociatedDomains *[]string `json:"associatedDomains,omitempty"`
 	// List that contains the connected organization configurations associated with the identity provider.
-	AssociatedOrgs []ConnectedOrgConfig `json:"associatedOrgs,omitempty"`
+	AssociatedOrgs *[]ConnectedOrgConfig `json:"associatedOrgs,omitempty"`
 	// The description of the identity provider.
 	Description *string `json:"description,omitempty"`
 	// Human-readable label that identifies the identity provider.
@@ -41,13 +41,13 @@ type FederationIdentityProvider struct {
 	// String enum that indicates whether the identity provider is active.
 	Status *string `json:"status,omitempty"`
 	// Identifier of the intended recipient of the token.
-	AudienceClaim []string `json:"audienceClaim,omitempty"`
+	AudienceClaim *[]string `json:"audienceClaim,omitempty"`
 	// Client identifier that is assigned to an application by the Identity Provider.
 	ClientId *string `json:"clientId,omitempty"`
 	// Identifier of the claim which contains IdP Group IDs in the token.
 	GroupsClaim *string `json:"groupsClaim,omitempty"`
 	// The description of an IdP, configured by customers.
-	RequestedScopes []string `json:"requestedScopes,omitempty"`
+	RequestedScopes *[]string `json:"requestedScopes,omitempty"`
 	// Identifier of the claim which contains the user ID in the token.
 	UserClaim *string `json:"userClaim,omitempty"`
 }
@@ -77,12 +77,12 @@ func (o *FederationIdentityProvider) GetAssociatedDomains() []string {
 		var ret []string
 		return ret
 	}
-	return o.AssociatedDomains
+	return *o.AssociatedDomains
 }
 
 // GetAssociatedDomainsOk returns a tuple with the AssociatedDomains field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FederationIdentityProvider) GetAssociatedDomainsOk() ([]string, bool) {
+func (o *FederationIdentityProvider) GetAssociatedDomainsOk() (*[]string, bool) {
 	if o == nil || IsNil(o.AssociatedDomains) {
 		return nil, false
 	}
@@ -101,7 +101,7 @@ func (o *FederationIdentityProvider) HasAssociatedDomains() bool {
 
 // SetAssociatedDomains gets a reference to the given []string and assigns it to the AssociatedDomains field.
 func (o *FederationIdentityProvider) SetAssociatedDomains(v []string) {
-	o.AssociatedDomains = v
+	o.AssociatedDomains = &v
 }
 
 // GetAssociatedOrgs returns the AssociatedOrgs field value if set, zero value otherwise
@@ -110,12 +110,12 @@ func (o *FederationIdentityProvider) GetAssociatedOrgs() []ConnectedOrgConfig {
 		var ret []ConnectedOrgConfig
 		return ret
 	}
-	return o.AssociatedOrgs
+	return *o.AssociatedOrgs
 }
 
 // GetAssociatedOrgsOk returns a tuple with the AssociatedOrgs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FederationIdentityProvider) GetAssociatedOrgsOk() ([]ConnectedOrgConfig, bool) {
+func (o *FederationIdentityProvider) GetAssociatedOrgsOk() (*[]ConnectedOrgConfig, bool) {
 	if o == nil || IsNil(o.AssociatedOrgs) {
 		return nil, false
 	}
@@ -134,7 +134,7 @@ func (o *FederationIdentityProvider) HasAssociatedOrgs() bool {
 
 // SetAssociatedOrgs gets a reference to the given []ConnectedOrgConfig and assigns it to the AssociatedOrgs field.
 func (o *FederationIdentityProvider) SetAssociatedOrgs(v []ConnectedOrgConfig) {
-	o.AssociatedOrgs = v
+	o.AssociatedOrgs = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise
@@ -587,12 +587,12 @@ func (o *FederationIdentityProvider) GetAudienceClaim() []string {
 		var ret []string
 		return ret
 	}
-	return o.AudienceClaim
+	return *o.AudienceClaim
 }
 
 // GetAudienceClaimOk returns a tuple with the AudienceClaim field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FederationIdentityProvider) GetAudienceClaimOk() ([]string, bool) {
+func (o *FederationIdentityProvider) GetAudienceClaimOk() (*[]string, bool) {
 	if o == nil || IsNil(o.AudienceClaim) {
 		return nil, false
 	}
@@ -611,7 +611,7 @@ func (o *FederationIdentityProvider) HasAudienceClaim() bool {
 
 // SetAudienceClaim gets a reference to the given []string and assigns it to the AudienceClaim field.
 func (o *FederationIdentityProvider) SetAudienceClaim(v []string) {
-	o.AudienceClaim = v
+	o.AudienceClaim = &v
 }
 
 // GetClientId returns the ClientId field value if set, zero value otherwise
@@ -686,12 +686,12 @@ func (o *FederationIdentityProvider) GetRequestedScopes() []string {
 		var ret []string
 		return ret
 	}
-	return o.RequestedScopes
+	return *o.RequestedScopes
 }
 
 // GetRequestedScopesOk returns a tuple with the RequestedScopes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FederationIdentityProvider) GetRequestedScopesOk() ([]string, bool) {
+func (o *FederationIdentityProvider) GetRequestedScopesOk() (*[]string, bool) {
 	if o == nil || IsNil(o.RequestedScopes) {
 		return nil, false
 	}
@@ -710,7 +710,7 @@ func (o *FederationIdentityProvider) HasRequestedScopes() bool {
 
 // SetRequestedScopes gets a reference to the given []string and assigns it to the RequestedScopes field.
 func (o *FederationIdentityProvider) SetRequestedScopes(v []string) {
-	o.RequestedScopes = v
+	o.RequestedScopes = &v
 }
 
 // GetUserClaim returns the UserClaim field value if set, zero value otherwise

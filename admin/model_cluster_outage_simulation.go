@@ -19,7 +19,7 @@ type ClusterOutageSimulation struct {
 	// Read only field.
 	Id *string `json:"id,omitempty"`
 	// List of settings that specify the type of cluster outage simulation.
-	OutageFilters []AtlasClusterOutageSimulationOutageFilter `json:"outageFilters,omitempty"`
+	OutageFilters *[]AtlasClusterOutageSimulationOutageFilter `json:"outageFilters,omitempty"`
 	// Date and time when MongoDB Cloud started the regional outage simulation.
 	// Read only field.
 	StartRequestDate *time.Time `json:"startRequestDate,omitempty"`
@@ -150,12 +150,12 @@ func (o *ClusterOutageSimulation) GetOutageFilters() []AtlasClusterOutageSimulat
 		var ret []AtlasClusterOutageSimulationOutageFilter
 		return ret
 	}
-	return o.OutageFilters
+	return *o.OutageFilters
 }
 
 // GetOutageFiltersOk returns a tuple with the OutageFilters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterOutageSimulation) GetOutageFiltersOk() ([]AtlasClusterOutageSimulationOutageFilter, bool) {
+func (o *ClusterOutageSimulation) GetOutageFiltersOk() (*[]AtlasClusterOutageSimulationOutageFilter, bool) {
 	if o == nil || IsNil(o.OutageFilters) {
 		return nil, false
 	}
@@ -174,7 +174,7 @@ func (o *ClusterOutageSimulation) HasOutageFilters() bool {
 
 // SetOutageFilters gets a reference to the given []AtlasClusterOutageSimulationOutageFilter and assigns it to the OutageFilters field.
 func (o *ClusterOutageSimulation) SetOutageFilters(v []AtlasClusterOutageSimulationOutageFilter) {
-	o.OutageFilters = v
+	o.OutageFilters = &v
 }
 
 // GetStartRequestDate returns the StartRequestDate field value if set, zero value otherwise

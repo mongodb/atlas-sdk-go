@@ -10,25 +10,18 @@ import (
 // UserCert struct for UserCert
 type UserCert struct {
 	// Unique 24-hexadecimal character string that identifies this certificate.
-	// Read only field.
 	Id *int64 `json:"_id,omitempty"`
 	// Date and time when MongoDB Cloud created this certificate. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-	// Read only field.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project.
-	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Number of months that the certificate remains valid until it expires.
-	// Write only field.
 	MonthsUntilExpiration *int `json:"monthsUntilExpiration,omitempty"`
 	// Date and time when this certificate expires. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-	// Read only field.
 	NotAfter *time.Time `json:"notAfter,omitempty"`
 	// Subject Alternative Name associated with this certificate. This parameter expresses its value as a distinguished name as defined in [RFC 2253](https://tools.ietf.org/html/2253).
-	// Read only field.
 	Subject *string `json:"subject,omitempty"`
 }
 
@@ -158,12 +151,12 @@ func (o *UserCert) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserCert) GetLinksOk() ([]Link, bool) {
+func (o *UserCert) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -182,7 +175,7 @@ func (o *UserCert) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *UserCert) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 // GetMonthsUntilExpiration returns the MonthsUntilExpiration field value if set, zero value otherwise

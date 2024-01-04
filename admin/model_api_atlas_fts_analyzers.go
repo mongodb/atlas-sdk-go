@@ -9,11 +9,11 @@ import (
 // ApiAtlasFTSAnalyzers Settings that describe one Atlas Search custom analyzer.
 type ApiAtlasFTSAnalyzers struct {
 	// Filters that examine text one character at a time and perform filtering operations.
-	CharFilters []interface{} `json:"charFilters,omitempty"`
+	CharFilters *[]interface{} `json:"charFilters,omitempty"`
 	// Human-readable name that identifies the custom analyzer. Names must be unique within an index, and must not start with any of the following strings: - `lucene.` - `builtin.` - `mongodb.`
 	Name string `json:"name"`
 	// Filter that performs operations such as:  - Stemming, which reduces related words, such as \"talking\", \"talked\", and \"talks\" to their root word \"talk\".  - Redaction, the removal of sensitive information from public documents.
-	TokenFilters []interface{}                 `json:"tokenFilters,omitempty"`
+	TokenFilters *[]interface{}                `json:"tokenFilters,omitempty"`
 	Tokenizer    ApiAtlasFTSAnalyzersTokenizer `json:"tokenizer"`
 }
 
@@ -42,12 +42,12 @@ func (o *ApiAtlasFTSAnalyzers) GetCharFilters() []interface{} {
 		var ret []interface{}
 		return ret
 	}
-	return o.CharFilters
+	return *o.CharFilters
 }
 
 // GetCharFiltersOk returns a tuple with the CharFilters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiAtlasFTSAnalyzers) GetCharFiltersOk() ([]interface{}, bool) {
+func (o *ApiAtlasFTSAnalyzers) GetCharFiltersOk() (*[]interface{}, bool) {
 	if o == nil || IsNil(o.CharFilters) {
 		return nil, false
 	}
@@ -66,7 +66,7 @@ func (o *ApiAtlasFTSAnalyzers) HasCharFilters() bool {
 
 // SetCharFilters gets a reference to the given []interface{} and assigns it to the CharFilters field.
 func (o *ApiAtlasFTSAnalyzers) SetCharFilters(v []interface{}) {
-	o.CharFilters = v
+	o.CharFilters = &v
 }
 
 // GetName returns the Name field value
@@ -99,12 +99,12 @@ func (o *ApiAtlasFTSAnalyzers) GetTokenFilters() []interface{} {
 		var ret []interface{}
 		return ret
 	}
-	return o.TokenFilters
+	return *o.TokenFilters
 }
 
 // GetTokenFiltersOk returns a tuple with the TokenFilters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiAtlasFTSAnalyzers) GetTokenFiltersOk() ([]interface{}, bool) {
+func (o *ApiAtlasFTSAnalyzers) GetTokenFiltersOk() (*[]interface{}, bool) {
 	if o == nil || IsNil(o.TokenFilters) {
 		return nil, false
 	}
@@ -123,7 +123,7 @@ func (o *ApiAtlasFTSAnalyzers) HasTokenFilters() bool {
 
 // SetTokenFilters gets a reference to the given []interface{} and assigns it to the TokenFilters field.
 func (o *ApiAtlasFTSAnalyzers) SetTokenFilters(v []interface{}) {
-	o.TokenFilters = v
+	o.TokenFilters = &v
 }
 
 // GetTokenizer returns the Tokenizer field value

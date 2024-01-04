@@ -16,7 +16,7 @@ type IngestionSink struct {
 	// Target cloud provider region for this Data Lake Pipeline.
 	MetadataRegion *string `json:"metadataRegion,omitempty"`
 	// Ordered fields used to physically organize data in the destination.
-	PartitionFields []DataLakePipelinesPartitionField `json:"partitionFields,omitempty"`
+	PartitionFields *[]DataLakePipelinesPartitionField `json:"partitionFields,omitempty"`
 }
 
 // NewIngestionSink instantiates a new IngestionSink object
@@ -141,12 +141,12 @@ func (o *IngestionSink) GetPartitionFields() []DataLakePipelinesPartitionField {
 		var ret []DataLakePipelinesPartitionField
 		return ret
 	}
-	return o.PartitionFields
+	return *o.PartitionFields
 }
 
 // GetPartitionFieldsOk returns a tuple with the PartitionFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IngestionSink) GetPartitionFieldsOk() ([]DataLakePipelinesPartitionField, bool) {
+func (o *IngestionSink) GetPartitionFieldsOk() (*[]DataLakePipelinesPartitionField, bool) {
 	if o == nil || IsNil(o.PartitionFields) {
 		return nil, false
 	}
@@ -165,7 +165,7 @@ func (o *IngestionSink) HasPartitionFields() bool {
 
 // SetPartitionFields gets a reference to the given []DataLakePipelinesPartitionField and assigns it to the PartitionFields field.
 func (o *IngestionSink) SetPartitionFields(v []DataLakePipelinesPartitionField) {
-	o.PartitionFields = v
+	o.PartitionFields = &v
 }
 
 func (o IngestionSink) MarshalJSONWithoutReadOnly() ([]byte, error) {

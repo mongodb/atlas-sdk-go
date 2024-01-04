@@ -9,13 +9,10 @@ import (
 // PaginatedApiAppUser struct for PaginatedApiAppUser
 type PaginatedApiAppUser struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud providers when completing this request.
-	// Read only field.
-	Results []CloudAppUser `json:"results,omitempty"`
+	Results *[]CloudAppUser `json:"results,omitempty"`
 	// Number of documents returned in this response.
-	// Read only field.
 	TotalCount *int `json:"totalCount,omitempty"`
 }
 
@@ -42,12 +39,12 @@ func (o *PaginatedApiAppUser) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedApiAppUser) GetLinksOk() ([]Link, bool) {
+func (o *PaginatedApiAppUser) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -66,7 +63,7 @@ func (o *PaginatedApiAppUser) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PaginatedApiAppUser) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 // GetResults returns the Results field value if set, zero value otherwise
@@ -75,12 +72,12 @@ func (o *PaginatedApiAppUser) GetResults() []CloudAppUser {
 		var ret []CloudAppUser
 		return ret
 	}
-	return o.Results
+	return *o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedApiAppUser) GetResultsOk() ([]CloudAppUser, bool) {
+func (o *PaginatedApiAppUser) GetResultsOk() (*[]CloudAppUser, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -99,7 +96,7 @@ func (o *PaginatedApiAppUser) HasResults() bool {
 
 // SetResults gets a reference to the given []CloudAppUser and assigns it to the Results field.
 func (o *PaginatedApiAppUser) SetResults(v []CloudAppUser) {
-	o.Results = v
+	o.Results = &v
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise

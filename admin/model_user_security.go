@@ -11,8 +11,7 @@ type UserSecurity struct {
 	CustomerX509 *DBUserTLSX509Settings `json:"customerX509,omitempty"`
 	Ldap         *LDAPSecuritySettings  `json:"ldap,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 }
 
 // NewUserSecurity instantiates a new UserSecurity object
@@ -104,12 +103,12 @@ func (o *UserSecurity) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UserSecurity) GetLinksOk() ([]Link, bool) {
+func (o *UserSecurity) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -128,7 +127,7 @@ func (o *UserSecurity) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *UserSecurity) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 func (o UserSecurity) MarshalJSONWithoutReadOnly() ([]byte, error) {

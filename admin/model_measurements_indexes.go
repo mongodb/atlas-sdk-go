@@ -10,34 +10,24 @@ import (
 // MeasurementsIndexes struct for MeasurementsIndexes
 type MeasurementsIndexes struct {
 	// Human-readable label that identifies the collection.
-	// Read only field.
 	CollectionName *string `json:"collectionName,omitempty"`
 	// Human-readable label that identifies the database that the specified MongoDB process serves.
-	// Read only field.
 	DatabaseName *string `json:"databaseName,omitempty"`
 	// Date and time that specifies when to stop retrieving measurements. If you set **end**, you must set **start**. You can't set this parameter and **period** in the same request. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-	// Read only field.
 	End *time.Time `json:"end,omitempty"`
 	// Duration that specifies the interval between measurement data points. The parameter expresses its value in ISO 8601 timestamp format in UTC. If you set this parameter, you must set either **period** or **start** and **end**.
-	// Read only field.
 	Granularity *string `json:"granularity,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project. The project contains MongoDB processes that you want to return. The MongoDB process can be either the `mongod` or `mongos`.
-	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
 	// List that contains the Atlas Search index identifiers.
-	// Read only field.
-	IndexIds []string `json:"indexIds,omitempty"`
+	IndexIds *[]string `json:"indexIds,omitempty"`
 	// List that contains the Atlas Search index stats measurements.
-	// Read only field.
-	IndexStatsMeasurements []MetricsMeasurement `json:"indexStatsMeasurements,omitempty"`
+	IndexStatsMeasurements *[]MetricsMeasurement `json:"indexStatsMeasurements,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
-	// Read only field.
 	ProcessId *string `json:"processId,omitempty"`
 	// Date and time that specifies when to start retrieving measurements. If you set **start**, you must set **end**. You can't set this parameter and **period** in the same request. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-	// Read only field.
 	Start *time.Time `json:"start,omitempty"`
 }
 
@@ -229,12 +219,12 @@ func (o *MeasurementsIndexes) GetIndexIds() []string {
 		var ret []string
 		return ret
 	}
-	return o.IndexIds
+	return *o.IndexIds
 }
 
 // GetIndexIdsOk returns a tuple with the IndexIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MeasurementsIndexes) GetIndexIdsOk() ([]string, bool) {
+func (o *MeasurementsIndexes) GetIndexIdsOk() (*[]string, bool) {
 	if o == nil || IsNil(o.IndexIds) {
 		return nil, false
 	}
@@ -253,7 +243,7 @@ func (o *MeasurementsIndexes) HasIndexIds() bool {
 
 // SetIndexIds gets a reference to the given []string and assigns it to the IndexIds field.
 func (o *MeasurementsIndexes) SetIndexIds(v []string) {
-	o.IndexIds = v
+	o.IndexIds = &v
 }
 
 // GetIndexStatsMeasurements returns the IndexStatsMeasurements field value if set, zero value otherwise
@@ -262,12 +252,12 @@ func (o *MeasurementsIndexes) GetIndexStatsMeasurements() []MetricsMeasurement {
 		var ret []MetricsMeasurement
 		return ret
 	}
-	return o.IndexStatsMeasurements
+	return *o.IndexStatsMeasurements
 }
 
 // GetIndexStatsMeasurementsOk returns a tuple with the IndexStatsMeasurements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MeasurementsIndexes) GetIndexStatsMeasurementsOk() ([]MetricsMeasurement, bool) {
+func (o *MeasurementsIndexes) GetIndexStatsMeasurementsOk() (*[]MetricsMeasurement, bool) {
 	if o == nil || IsNil(o.IndexStatsMeasurements) {
 		return nil, false
 	}
@@ -286,7 +276,7 @@ func (o *MeasurementsIndexes) HasIndexStatsMeasurements() bool {
 
 // SetIndexStatsMeasurements gets a reference to the given []MetricsMeasurement and assigns it to the IndexStatsMeasurements field.
 func (o *MeasurementsIndexes) SetIndexStatsMeasurements(v []MetricsMeasurement) {
-	o.IndexStatsMeasurements = v
+	o.IndexStatsMeasurements = &v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -295,12 +285,12 @@ func (o *MeasurementsIndexes) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MeasurementsIndexes) GetLinksOk() ([]Link, bool) {
+func (o *MeasurementsIndexes) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -319,7 +309,7 @@ func (o *MeasurementsIndexes) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *MeasurementsIndexes) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 // GetProcessId returns the ProcessId field value if set, zero value otherwise

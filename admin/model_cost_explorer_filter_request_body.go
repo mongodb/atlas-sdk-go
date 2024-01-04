@@ -9,7 +9,7 @@ import (
 // CostExplorerFilterRequestBody Request body for a cost explorer query.
 type CostExplorerFilterRequestBody struct {
 	// The list of projects to be included in the Cost Explorer Query.
-	Clusters []string `json:"clusters,omitempty"`
+	Clusters *[]string `json:"clusters,omitempty"`
 	// The exclusive ending date for the Cost Explorer query. The date must be the start of a month.
 	EndDate string `json:"endDate"`
 	// The dimension to group the returned usage results by. At least one filter value needs to be provided for a dimension to be used.
@@ -17,11 +17,11 @@ type CostExplorerFilterRequestBody struct {
 	// Flag to control whether usage that matches the filter criteria, but does not have values for all filter criteria is included in response. Default is false, which excludes the partially matching data.
 	IncludePartialMatches *bool `json:"includePartialMatches,omitempty"`
 	// The list of organizations to be included in the Cost Explorer Query.
-	Organizations []string `json:"organizations,omitempty"`
+	Organizations *[]string `json:"organizations,omitempty"`
 	// The list of projects to be included in the Cost Explorer Query.
-	Projects []string `json:"projects,omitempty"`
+	Projects *[]string `json:"projects,omitempty"`
 	// The list of projects to be included in the Cost Explorer Query.
-	Services []string `json:"services,omitempty"`
+	Services *[]string `json:"services,omitempty"`
 	// The inclusive starting date for the Cost Explorer query. The date must be the start of a month.
 	StartDate string `json:"startDate"`
 }
@@ -51,12 +51,12 @@ func (o *CostExplorerFilterRequestBody) GetClusters() []string {
 		var ret []string
 		return ret
 	}
-	return o.Clusters
+	return *o.Clusters
 }
 
 // GetClustersOk returns a tuple with the Clusters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CostExplorerFilterRequestBody) GetClustersOk() ([]string, bool) {
+func (o *CostExplorerFilterRequestBody) GetClustersOk() (*[]string, bool) {
 	if o == nil || IsNil(o.Clusters) {
 		return nil, false
 	}
@@ -75,7 +75,7 @@ func (o *CostExplorerFilterRequestBody) HasClusters() bool {
 
 // SetClusters gets a reference to the given []string and assigns it to the Clusters field.
 func (o *CostExplorerFilterRequestBody) SetClusters(v []string) {
-	o.Clusters = v
+	o.Clusters = &v
 }
 
 // GetEndDate returns the EndDate field value
@@ -174,12 +174,12 @@ func (o *CostExplorerFilterRequestBody) GetOrganizations() []string {
 		var ret []string
 		return ret
 	}
-	return o.Organizations
+	return *o.Organizations
 }
 
 // GetOrganizationsOk returns a tuple with the Organizations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CostExplorerFilterRequestBody) GetOrganizationsOk() ([]string, bool) {
+func (o *CostExplorerFilterRequestBody) GetOrganizationsOk() (*[]string, bool) {
 	if o == nil || IsNil(o.Organizations) {
 		return nil, false
 	}
@@ -198,7 +198,7 @@ func (o *CostExplorerFilterRequestBody) HasOrganizations() bool {
 
 // SetOrganizations gets a reference to the given []string and assigns it to the Organizations field.
 func (o *CostExplorerFilterRequestBody) SetOrganizations(v []string) {
-	o.Organizations = v
+	o.Organizations = &v
 }
 
 // GetProjects returns the Projects field value if set, zero value otherwise
@@ -207,12 +207,12 @@ func (o *CostExplorerFilterRequestBody) GetProjects() []string {
 		var ret []string
 		return ret
 	}
-	return o.Projects
+	return *o.Projects
 }
 
 // GetProjectsOk returns a tuple with the Projects field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CostExplorerFilterRequestBody) GetProjectsOk() ([]string, bool) {
+func (o *CostExplorerFilterRequestBody) GetProjectsOk() (*[]string, bool) {
 	if o == nil || IsNil(o.Projects) {
 		return nil, false
 	}
@@ -231,7 +231,7 @@ func (o *CostExplorerFilterRequestBody) HasProjects() bool {
 
 // SetProjects gets a reference to the given []string and assigns it to the Projects field.
 func (o *CostExplorerFilterRequestBody) SetProjects(v []string) {
-	o.Projects = v
+	o.Projects = &v
 }
 
 // GetServices returns the Services field value if set, zero value otherwise
@@ -240,12 +240,12 @@ func (o *CostExplorerFilterRequestBody) GetServices() []string {
 		var ret []string
 		return ret
 	}
-	return o.Services
+	return *o.Services
 }
 
 // GetServicesOk returns a tuple with the Services field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CostExplorerFilterRequestBody) GetServicesOk() ([]string, bool) {
+func (o *CostExplorerFilterRequestBody) GetServicesOk() (*[]string, bool) {
 	if o == nil || IsNil(o.Services) {
 		return nil, false
 	}
@@ -264,7 +264,7 @@ func (o *CostExplorerFilterRequestBody) HasServices() bool {
 
 // SetServices gets a reference to the given []string and assigns it to the Services field.
 func (o *CostExplorerFilterRequestBody) SetServices(v []string) {
-	o.Services = v
+	o.Services = &v
 }
 
 // GetStartDate returns the StartDate field value

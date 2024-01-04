@@ -10,34 +10,24 @@ import (
 // ApiMeasurementsGeneralViewAtlas struct for ApiMeasurementsGeneralViewAtlas
 type ApiMeasurementsGeneralViewAtlas struct {
 	// Human-readable label that identifies the database that the specified MongoDB process serves.
-	// Read only field.
 	DatabaseName *string `json:"databaseName,omitempty"`
 	// Date and time that specifies when to stop retrieving measurements. If you set **end**, you must set **start**. You can't set this parameter and **period** in the same request. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-	// Read only field.
 	End *time.Time `json:"end,omitempty"`
 	// Duration that specifies the interval between measurement data points. The parameter expresses its value in ISO 8601 timestamp format in UTC. If you set this parameter, you must set either **period** or **start** and **end**.
-	// Read only field.
 	Granularity *string `json:"granularity,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project. The project contains MongoDB processes that you want to return. The MongoDB process can be either the `mongod` or `mongos`.
-	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
 	// Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
-	// Read only field.
 	HostId *string `json:"hostId,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field.
-	Links []LinkAtlas `json:"links,omitempty"`
+	Links *[]LinkAtlas `json:"links,omitempty"`
 	// List that contains measurements and their data points.
-	// Read only field.
-	Measurements []MetricsMeasurementAtlas `json:"measurements,omitempty"`
+	Measurements *[]MetricsMeasurementAtlas `json:"measurements,omitempty"`
 	// Human-readable label of the disk or partition to which the measurements apply.
-	// Read only field.
 	PartitionName *string `json:"partitionName,omitempty"`
 	// Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
-	// Read only field.
 	ProcessId *string `json:"processId,omitempty"`
 	// Date and time that specifies when to start retrieving measurements. If you set **start**, you must set **end**. You can't set this parameter and **period** in the same request. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-	// Read only field.
 	Start *time.Time `json:"start,omitempty"`
 }
 
@@ -229,12 +219,12 @@ func (o *ApiMeasurementsGeneralViewAtlas) GetLinks() []LinkAtlas {
 		var ret []LinkAtlas
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiMeasurementsGeneralViewAtlas) GetLinksOk() ([]LinkAtlas, bool) {
+func (o *ApiMeasurementsGeneralViewAtlas) GetLinksOk() (*[]LinkAtlas, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -253,7 +243,7 @@ func (o *ApiMeasurementsGeneralViewAtlas) HasLinks() bool {
 
 // SetLinks gets a reference to the given []LinkAtlas and assigns it to the Links field.
 func (o *ApiMeasurementsGeneralViewAtlas) SetLinks(v []LinkAtlas) {
-	o.Links = v
+	o.Links = &v
 }
 
 // GetMeasurements returns the Measurements field value if set, zero value otherwise
@@ -262,12 +252,12 @@ func (o *ApiMeasurementsGeneralViewAtlas) GetMeasurements() []MetricsMeasurement
 		var ret []MetricsMeasurementAtlas
 		return ret
 	}
-	return o.Measurements
+	return *o.Measurements
 }
 
 // GetMeasurementsOk returns a tuple with the Measurements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiMeasurementsGeneralViewAtlas) GetMeasurementsOk() ([]MetricsMeasurementAtlas, bool) {
+func (o *ApiMeasurementsGeneralViewAtlas) GetMeasurementsOk() (*[]MetricsMeasurementAtlas, bool) {
 	if o == nil || IsNil(o.Measurements) {
 		return nil, false
 	}
@@ -286,7 +276,7 @@ func (o *ApiMeasurementsGeneralViewAtlas) HasMeasurements() bool {
 
 // SetMeasurements gets a reference to the given []MetricsMeasurementAtlas and assigns it to the Measurements field.
 func (o *ApiMeasurementsGeneralViewAtlas) SetMeasurements(v []MetricsMeasurementAtlas) {
-	o.Measurements = v
+	o.Measurements = &v
 }
 
 // GetPartitionName returns the PartitionName field value if set, zero value otherwise

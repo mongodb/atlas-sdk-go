@@ -9,10 +9,8 @@ import (
 // ServerlessInstanceDescriptionConnectionStrings Collection of Uniform Resource Locators that point to the MongoDB database.
 type ServerlessInstanceDescriptionConnectionStrings struct {
 	// List of private endpoint-aware connection strings that you can use to connect to this serverless instance through a private endpoint. This parameter returns only if you created a private endpoint for this serverless instance and it is AVAILABLE.
-	// Read only field.
-	PrivateEndpoint []ServerlessConnectionStringsPrivateEndpointList `json:"privateEndpoint,omitempty"`
+	PrivateEndpoint *[]ServerlessConnectionStringsPrivateEndpointList `json:"privateEndpoint,omitempty"`
 	// Public connection string that you can use to connect to this serverless instance. This connection string uses the `mongodb+srv://` protocol.
-	// Read only field.
 	StandardSrv *string `json:"standardSrv,omitempty"`
 }
 
@@ -39,12 +37,12 @@ func (o *ServerlessInstanceDescriptionConnectionStrings) GetPrivateEndpoint() []
 		var ret []ServerlessConnectionStringsPrivateEndpointList
 		return ret
 	}
-	return o.PrivateEndpoint
+	return *o.PrivateEndpoint
 }
 
 // GetPrivateEndpointOk returns a tuple with the PrivateEndpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServerlessInstanceDescriptionConnectionStrings) GetPrivateEndpointOk() ([]ServerlessConnectionStringsPrivateEndpointList, bool) {
+func (o *ServerlessInstanceDescriptionConnectionStrings) GetPrivateEndpointOk() (*[]ServerlessConnectionStringsPrivateEndpointList, bool) {
 	if o == nil || IsNil(o.PrivateEndpoint) {
 		return nil, false
 	}
@@ -63,7 +61,7 @@ func (o *ServerlessInstanceDescriptionConnectionStrings) HasPrivateEndpoint() bo
 
 // SetPrivateEndpoint gets a reference to the given []ServerlessConnectionStringsPrivateEndpointList and assigns it to the PrivateEndpoint field.
 func (o *ServerlessInstanceDescriptionConnectionStrings) SetPrivateEndpoint(v []ServerlessConnectionStringsPrivateEndpointList) {
-	o.PrivateEndpoint = v
+	o.PrivateEndpoint = &v
 }
 
 // GetStandardSrv returns the StandardSrv field value if set, zero value otherwise

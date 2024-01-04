@@ -8,8 +8,8 @@ import (
 
 // PemFileInfo PEM file information for the identity provider's certificates.
 type PemFileInfo struct {
-	Certificates []X509Certificate `json:"certificates,omitempty"`
-	FileName     *string           `json:"fileName,omitempty"`
+	Certificates *[]X509Certificate `json:"certificates,omitempty"`
+	FileName     *string            `json:"fileName,omitempty"`
 }
 
 // NewPemFileInfo instantiates a new PemFileInfo object
@@ -35,12 +35,12 @@ func (o *PemFileInfo) GetCertificates() []X509Certificate {
 		var ret []X509Certificate
 		return ret
 	}
-	return o.Certificates
+	return *o.Certificates
 }
 
 // GetCertificatesOk returns a tuple with the Certificates field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PemFileInfo) GetCertificatesOk() ([]X509Certificate, bool) {
+func (o *PemFileInfo) GetCertificatesOk() (*[]X509Certificate, bool) {
 	if o == nil || IsNil(o.Certificates) {
 		return nil, false
 	}
@@ -59,7 +59,7 @@ func (o *PemFileInfo) HasCertificates() bool {
 
 // SetCertificates gets a reference to the given []X509Certificate and assigns it to the Certificates field.
 func (o *PemFileInfo) SetCertificates(v []X509Certificate) {
-	o.Certificates = v
+	o.Certificates = &v
 }
 
 // GetFileName returns the FileName field value if set, zero value otherwise

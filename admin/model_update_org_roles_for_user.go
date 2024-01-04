@@ -9,10 +9,9 @@ import (
 // UpdateOrgRolesForUser struct for UpdateOrgRolesForUser
 type UpdateOrgRolesForUser struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// One or more organization level roles to assign to the MongoDB Cloud user.
-	OrgRoles []string `json:"orgRoles,omitempty"`
+	OrgRoles *[]string `json:"orgRoles,omitempty"`
 }
 
 // NewUpdateOrgRolesForUser instantiates a new UpdateOrgRolesForUser object
@@ -38,12 +37,12 @@ func (o *UpdateOrgRolesForUser) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateOrgRolesForUser) GetLinksOk() ([]Link, bool) {
+func (o *UpdateOrgRolesForUser) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -62,7 +61,7 @@ func (o *UpdateOrgRolesForUser) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *UpdateOrgRolesForUser) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 // GetOrgRoles returns the OrgRoles field value if set, zero value otherwise
@@ -71,12 +70,12 @@ func (o *UpdateOrgRolesForUser) GetOrgRoles() []string {
 		var ret []string
 		return ret
 	}
-	return o.OrgRoles
+	return *o.OrgRoles
 }
 
 // GetOrgRolesOk returns a tuple with the OrgRoles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateOrgRolesForUser) GetOrgRolesOk() ([]string, bool) {
+func (o *UpdateOrgRolesForUser) GetOrgRolesOk() (*[]string, bool) {
 	if o == nil || IsNil(o.OrgRoles) {
 		return nil, false
 	}
@@ -95,7 +94,7 @@ func (o *UpdateOrgRolesForUser) HasOrgRoles() bool {
 
 // SetOrgRoles gets a reference to the given []string and assigns it to the OrgRoles field.
 func (o *UpdateOrgRolesForUser) SetOrgRoles(v []string) {
-	o.OrgRoles = v
+	o.OrgRoles = &v
 }
 
 func (o UpdateOrgRolesForUser) MarshalJSONWithoutReadOnly() ([]byte, error) {

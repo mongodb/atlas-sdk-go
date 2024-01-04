@@ -9,13 +9,10 @@ import (
 // PaginatedUserCert struct for PaginatedUserCert
 type PaginatedUserCert struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud providers when completing this request.
-	// Read only field.
-	Results []UserCert `json:"results,omitempty"`
+	Results *[]UserCert `json:"results,omitempty"`
 	// Number of documents returned in this response.
-	// Read only field.
 	TotalCount *int `json:"totalCount,omitempty"`
 }
 
@@ -42,12 +39,12 @@ func (o *PaginatedUserCert) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedUserCert) GetLinksOk() ([]Link, bool) {
+func (o *PaginatedUserCert) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -66,7 +63,7 @@ func (o *PaginatedUserCert) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PaginatedUserCert) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 // GetResults returns the Results field value if set, zero value otherwise
@@ -75,12 +72,12 @@ func (o *PaginatedUserCert) GetResults() []UserCert {
 		var ret []UserCert
 		return ret
 	}
-	return o.Results
+	return *o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedUserCert) GetResultsOk() ([]UserCert, bool) {
+func (o *PaginatedUserCert) GetResultsOk() (*[]UserCert, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -99,7 +96,7 @@ func (o *PaginatedUserCert) HasResults() bool {
 
 // SetResults gets a reference to the given []UserCert and assigns it to the Results field.
 func (o *PaginatedUserCert) SetResults(v []UserCert) {
-	o.Results = v
+	o.Results = &v
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise

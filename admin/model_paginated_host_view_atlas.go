@@ -9,13 +9,10 @@ import (
 // PaginatedHostViewAtlas struct for PaginatedHostViewAtlas
 type PaginatedHostViewAtlas struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field.
-	Links []LinkAtlas `json:"links,omitempty"`
+	Links *[]LinkAtlas `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud providers when completing this request.
-	// Read only field.
-	Results []ApiHostViewAtlas `json:"results,omitempty"`
+	Results *[]ApiHostViewAtlas `json:"results,omitempty"`
 	// Number of documents returned in this response.
-	// Read only field.
 	TotalCount *int `json:"totalCount,omitempty"`
 }
 
@@ -42,12 +39,12 @@ func (o *PaginatedHostViewAtlas) GetLinks() []LinkAtlas {
 		var ret []LinkAtlas
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedHostViewAtlas) GetLinksOk() ([]LinkAtlas, bool) {
+func (o *PaginatedHostViewAtlas) GetLinksOk() (*[]LinkAtlas, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -66,7 +63,7 @@ func (o *PaginatedHostViewAtlas) HasLinks() bool {
 
 // SetLinks gets a reference to the given []LinkAtlas and assigns it to the Links field.
 func (o *PaginatedHostViewAtlas) SetLinks(v []LinkAtlas) {
-	o.Links = v
+	o.Links = &v
 }
 
 // GetResults returns the Results field value if set, zero value otherwise
@@ -75,12 +72,12 @@ func (o *PaginatedHostViewAtlas) GetResults() []ApiHostViewAtlas {
 		var ret []ApiHostViewAtlas
 		return ret
 	}
-	return o.Results
+	return *o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedHostViewAtlas) GetResultsOk() ([]ApiHostViewAtlas, bool) {
+func (o *PaginatedHostViewAtlas) GetResultsOk() (*[]ApiHostViewAtlas, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -99,7 +96,7 @@ func (o *PaginatedHostViewAtlas) HasResults() bool {
 
 // SetResults gets a reference to the given []ApiHostViewAtlas and assigns it to the Results field.
 func (o *PaginatedHostViewAtlas) SetResults(v []ApiHostViewAtlas) {
-	o.Results = v
+	o.Results = &v
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise

@@ -9,39 +9,29 @@ import (
 // EndpointService struct for EndpointService
 type EndpointService struct {
 	// Cloud service provider that serves the requested endpoint service.
-	// Read only field.
 	CloudProvider string `json:"cloudProvider"`
 	// Error message returned when requesting private connection resource. The resource returns `null` if the request succeeded.
-	// Read only field.
 	ErrorMessage *string `json:"errorMessage,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the Private Endpoint Service.
-	// Read only field.
 	Id *string `json:"id,omitempty"`
 	// Cloud provider region that manages this Private Endpoint Service.
-	// Read only field.
 	RegionName *string `json:"regionName,omitempty"`
 	// State of the Private Endpoint Service connection when MongoDB Cloud received this request.
-	// Read only field.
 	Status *string `json:"status,omitempty"`
 	// Unique string that identifies the Amazon Web Services (AWS) PrivateLink endpoint service. MongoDB Cloud returns null while it creates the endpoint service.
-	// Read only field.
 	EndpointServiceName *string `json:"endpointServiceName,omitempty"`
 	// List of strings that identify private endpoint interfaces applied to the specified project.
-	// Read only field.
-	InterfaceEndpoints []string `json:"interfaceEndpoints,omitempty"`
+	InterfaceEndpoints *[]string `json:"interfaceEndpoints,omitempty"`
 	// List of private endpoints assigned to this Azure Private Link Service.
-	// Read only field.
-	PrivateEndpoints []string `json:"privateEndpoints,omitempty"`
+	PrivateEndpoints *[]string `json:"privateEndpoints,omitempty"`
 	// Unique string that identifies the Azure Private Link Service that MongoDB Cloud manages.
-	// Read only field.
 	PrivateLinkServiceName *string `json:"privateLinkServiceName,omitempty"`
 	// Root-relative path that identifies of the Azure Private Link Service that MongoDB Cloud manages. Use this value to create a private endpoint connection to an Azure VNet.
-	// Read only field.
 	PrivateLinkServiceResourceId *string `json:"privateLinkServiceResourceId,omitempty"`
 	// List of Google Cloud network endpoint groups that corresponds to the Private Service Connect endpoint service.
-	EndpointGroupNames []string `json:"endpointGroupNames,omitempty"`
+	EndpointGroupNames *[]string `json:"endpointGroupNames,omitempty"`
 	// List of Uniform Resource Locators (URLs) that identifies endpoints that MongoDB Cloud can use to access one Google Cloud Service across a Google Cloud Virtual Private Connection (VPC) network.
-	ServiceAttachmentNames []string `json:"serviceAttachmentNames,omitempty"`
+	ServiceAttachmentNames *[]string `json:"serviceAttachmentNames,omitempty"`
 }
 
 // NewEndpointService instantiates a new EndpointService object
@@ -257,12 +247,12 @@ func (o *EndpointService) GetInterfaceEndpoints() []string {
 		var ret []string
 		return ret
 	}
-	return o.InterfaceEndpoints
+	return *o.InterfaceEndpoints
 }
 
 // GetInterfaceEndpointsOk returns a tuple with the InterfaceEndpoints field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EndpointService) GetInterfaceEndpointsOk() ([]string, bool) {
+func (o *EndpointService) GetInterfaceEndpointsOk() (*[]string, bool) {
 	if o == nil || IsNil(o.InterfaceEndpoints) {
 		return nil, false
 	}
@@ -281,7 +271,7 @@ func (o *EndpointService) HasInterfaceEndpoints() bool {
 
 // SetInterfaceEndpoints gets a reference to the given []string and assigns it to the InterfaceEndpoints field.
 func (o *EndpointService) SetInterfaceEndpoints(v []string) {
-	o.InterfaceEndpoints = v
+	o.InterfaceEndpoints = &v
 }
 
 // GetPrivateEndpoints returns the PrivateEndpoints field value if set, zero value otherwise
@@ -290,12 +280,12 @@ func (o *EndpointService) GetPrivateEndpoints() []string {
 		var ret []string
 		return ret
 	}
-	return o.PrivateEndpoints
+	return *o.PrivateEndpoints
 }
 
 // GetPrivateEndpointsOk returns a tuple with the PrivateEndpoints field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EndpointService) GetPrivateEndpointsOk() ([]string, bool) {
+func (o *EndpointService) GetPrivateEndpointsOk() (*[]string, bool) {
 	if o == nil || IsNil(o.PrivateEndpoints) {
 		return nil, false
 	}
@@ -314,7 +304,7 @@ func (o *EndpointService) HasPrivateEndpoints() bool {
 
 // SetPrivateEndpoints gets a reference to the given []string and assigns it to the PrivateEndpoints field.
 func (o *EndpointService) SetPrivateEndpoints(v []string) {
-	o.PrivateEndpoints = v
+	o.PrivateEndpoints = &v
 }
 
 // GetPrivateLinkServiceName returns the PrivateLinkServiceName field value if set, zero value otherwise
@@ -389,12 +379,12 @@ func (o *EndpointService) GetEndpointGroupNames() []string {
 		var ret []string
 		return ret
 	}
-	return o.EndpointGroupNames
+	return *o.EndpointGroupNames
 }
 
 // GetEndpointGroupNamesOk returns a tuple with the EndpointGroupNames field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EndpointService) GetEndpointGroupNamesOk() ([]string, bool) {
+func (o *EndpointService) GetEndpointGroupNamesOk() (*[]string, bool) {
 	if o == nil || IsNil(o.EndpointGroupNames) {
 		return nil, false
 	}
@@ -413,7 +403,7 @@ func (o *EndpointService) HasEndpointGroupNames() bool {
 
 // SetEndpointGroupNames gets a reference to the given []string and assigns it to the EndpointGroupNames field.
 func (o *EndpointService) SetEndpointGroupNames(v []string) {
-	o.EndpointGroupNames = v
+	o.EndpointGroupNames = &v
 }
 
 // GetServiceAttachmentNames returns the ServiceAttachmentNames field value if set, zero value otherwise
@@ -422,12 +412,12 @@ func (o *EndpointService) GetServiceAttachmentNames() []string {
 		var ret []string
 		return ret
 	}
-	return o.ServiceAttachmentNames
+	return *o.ServiceAttachmentNames
 }
 
 // GetServiceAttachmentNamesOk returns a tuple with the ServiceAttachmentNames field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EndpointService) GetServiceAttachmentNamesOk() ([]string, bool) {
+func (o *EndpointService) GetServiceAttachmentNamesOk() (*[]string, bool) {
 	if o == nil || IsNil(o.ServiceAttachmentNames) {
 		return nil, false
 	}
@@ -446,7 +436,7 @@ func (o *EndpointService) HasServiceAttachmentNames() bool {
 
 // SetServiceAttachmentNames gets a reference to the given []string and assigns it to the ServiceAttachmentNames field.
 func (o *EndpointService) SetServiceAttachmentNames(v []string) {
-	o.ServiceAttachmentNames = v
+	o.ServiceAttachmentNames = &v
 }
 
 func (o EndpointService) MarshalJSONWithoutReadOnly() ([]byte, error) {

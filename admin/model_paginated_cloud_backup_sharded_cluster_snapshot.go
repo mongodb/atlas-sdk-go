@@ -9,13 +9,10 @@ import (
 // PaginatedCloudBackupShardedClusterSnapshot struct for PaginatedCloudBackupShardedClusterSnapshot
 type PaginatedCloudBackupShardedClusterSnapshot struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud providers when completing this request.
-	// Read only field.
-	Results []DiskBackupShardedClusterSnapshot `json:"results,omitempty"`
+	Results *[]DiskBackupShardedClusterSnapshot `json:"results,omitempty"`
 	// Number of documents returned in this response.
-	// Read only field.
 	TotalCount *int `json:"totalCount,omitempty"`
 }
 
@@ -42,12 +39,12 @@ func (o *PaginatedCloudBackupShardedClusterSnapshot) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedCloudBackupShardedClusterSnapshot) GetLinksOk() ([]Link, bool) {
+func (o *PaginatedCloudBackupShardedClusterSnapshot) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -66,7 +63,7 @@ func (o *PaginatedCloudBackupShardedClusterSnapshot) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PaginatedCloudBackupShardedClusterSnapshot) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 // GetResults returns the Results field value if set, zero value otherwise
@@ -75,12 +72,12 @@ func (o *PaginatedCloudBackupShardedClusterSnapshot) GetResults() []DiskBackupSh
 		var ret []DiskBackupShardedClusterSnapshot
 		return ret
 	}
-	return o.Results
+	return *o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedCloudBackupShardedClusterSnapshot) GetResultsOk() ([]DiskBackupShardedClusterSnapshot, bool) {
+func (o *PaginatedCloudBackupShardedClusterSnapshot) GetResultsOk() (*[]DiskBackupShardedClusterSnapshot, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -99,7 +96,7 @@ func (o *PaginatedCloudBackupShardedClusterSnapshot) HasResults() bool {
 
 // SetResults gets a reference to the given []DiskBackupShardedClusterSnapshot and assigns it to the Results field.
 func (o *PaginatedCloudBackupShardedClusterSnapshot) SetResults(v []DiskBackupShardedClusterSnapshot) {
-	o.Results = v
+	o.Results = &v
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise

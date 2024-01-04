@@ -9,7 +9,7 @@ import (
 // OrgFederationSettings Details that define how to connect one MongoDB Cloud organization to one federated authentication service.
 type OrgFederationSettings struct {
 	// List of domains associated with the organization's identity provider.
-	FederatedDomains []string `json:"federatedDomains,omitempty"`
+	FederatedDomains *[]string `json:"federatedDomains,omitempty"`
 	// Flag that indicates whether this organization has role mappings configured.
 	HasRoleMappings *bool `json:"hasRoleMappings,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies this federation.
@@ -44,12 +44,12 @@ func (o *OrgFederationSettings) GetFederatedDomains() []string {
 		var ret []string
 		return ret
 	}
-	return o.FederatedDomains
+	return *o.FederatedDomains
 }
 
 // GetFederatedDomainsOk returns a tuple with the FederatedDomains field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrgFederationSettings) GetFederatedDomainsOk() ([]string, bool) {
+func (o *OrgFederationSettings) GetFederatedDomainsOk() (*[]string, bool) {
 	if o == nil || IsNil(o.FederatedDomains) {
 		return nil, false
 	}
@@ -68,7 +68,7 @@ func (o *OrgFederationSettings) HasFederatedDomains() bool {
 
 // SetFederatedDomains gets a reference to the given []string and assigns it to the FederatedDomains field.
 func (o *OrgFederationSettings) SetFederatedDomains(v []string) {
-	o.FederatedDomains = v
+	o.FederatedDomains = &v
 }
 
 // GetHasRoleMappings returns the HasRoleMappings field value if set, zero value otherwise

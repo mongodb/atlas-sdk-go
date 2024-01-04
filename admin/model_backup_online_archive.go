@@ -30,7 +30,7 @@ type BackupOnlineArchive struct {
 	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
 	// List that contains document parameters to use to logically divide data within a collection. Partitions provide a coarse level of filtering of the underlying collection data. To divide your data, specify parameters that you frequently query. If you \"specified :criteria.type\": \"DATE\" in the CREATE ONE ONLINE ARCHIVE endpoint, then you can specify up to three parameters by which to query. One of these parameters must be the DATE value, which is required in this case. If you \"specified :criteria.type\": \"CUSTOM\" in the CREATE ONE ONLINE ARCHIVE endpoint, then you can specify up to two parameters by which to query. Queries that don't use \":criteria.type\": \"DATE\" or \":criteria.type\": \"CUSTOM\" parameters cause MongoDB to scan a full collection of all archived documents. This takes more time and increases your costs.
-	PartitionFields []PartitionField `json:"partitionFields,omitempty"`
+	PartitionFields *[]PartitionField `json:"partitionFields,omitempty"`
 	// Flag that indicates whether this online archive exists in the paused state. A request to resume fails if the collection has another active online archive. To pause an active online archive or resume a paused online archive, you must include this parameter. To pause an active archive, set this to **true**. To resume a paused archive, set this to **false**.
 	Paused   *bool                  `json:"paused,omitempty"`
 	Schedule *OnlineArchiveSchedule `json:"schedule,omitempty"`
@@ -396,12 +396,12 @@ func (o *BackupOnlineArchive) GetPartitionFields() []PartitionField {
 		var ret []PartitionField
 		return ret
 	}
-	return o.PartitionFields
+	return *o.PartitionFields
 }
 
 // GetPartitionFieldsOk returns a tuple with the PartitionFields field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BackupOnlineArchive) GetPartitionFieldsOk() ([]PartitionField, bool) {
+func (o *BackupOnlineArchive) GetPartitionFieldsOk() (*[]PartitionField, bool) {
 	if o == nil || IsNil(o.PartitionFields) {
 		return nil, false
 	}
@@ -420,7 +420,7 @@ func (o *BackupOnlineArchive) HasPartitionFields() bool {
 
 // SetPartitionFields gets a reference to the given []PartitionField and assigns it to the PartitionFields field.
 func (o *BackupOnlineArchive) SetPartitionFields(v []PartitionField) {
-	o.PartitionFields = v
+	o.PartitionFields = &v
 }
 
 // GetPaused returns the Paused field value if set, zero value otherwise

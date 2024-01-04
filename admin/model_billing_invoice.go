@@ -10,60 +10,42 @@ import (
 // BillingInvoice struct for BillingInvoice
 type BillingInvoice struct {
 	// Sum of services that the specified organization consumed in the period covered in this invoice. This parameter expresses its value in cents (100ths of one US Dollar) and calculates its value as **subtotalCents** + **salesTaxCents** - **startingBalanceCents**.
-	// Read only field.
 	AmountBilledCents *int64 `json:"amountBilledCents,omitempty"`
 	// Sum that the specified organization paid toward this invoice. This parameter expresses its value in cents (100ths of one US Dollar).
-	// Read only field.
 	AmountPaidCents *int64 `json:"amountPaidCents,omitempty"`
 	// Date and time when MongoDB Cloud created this invoice. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-	// Read only field.
 	Created *time.Time `json:"created,omitempty"`
 	// Sum that MongoDB credited the specified organization toward this invoice. This parameter expresses its value in cents (100ths of one US Dollar).
-	// Read only field.
 	CreditsCents *int64 `json:"creditsCents,omitempty"`
 	// Date and time when MongoDB Cloud finished the billing period that this invoice covers. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-	// Read only field.
 	EndDate *time.Time `json:"endDate,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project associated to this invoice. This identifying string doesn't appear on all invoices.
-	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the invoice submitted to the specified organization. Charges typically post the next day.
-	// Read only field.
 	Id *string `json:"id,omitempty"`
 	// List that contains individual services included in this invoice.
-	// Read only field.
-	LineItems []InvoiceLineItem `json:"lineItems,omitempty"`
+	LineItems *[]InvoiceLineItem `json:"lineItems,omitempty"`
 	// List that contains the invoices for organizations linked to the paying organization.
-	// Read only field.
-	LinkedInvoices []BillingInvoice `json:"linkedInvoices,omitempty"`
+	LinkedInvoices *[]BillingInvoice `json:"linkedInvoices,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-	// Read only field.
-	Links []Link `json:"links,omitempty"`
+	Links *[]Link `json:"links,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the organization charged for services consumed from MongoDB Cloud.
-	// Read only field.
 	OrgId *string `json:"orgId,omitempty"`
 	// List that contains funds transferred to MongoDB to cover the specified service noted in this invoice.
-	// Read only field.
-	Payments []BillingPayment `json:"payments,omitempty"`
+	Payments *[]BillingPayment `json:"payments,omitempty"`
 	// List that contains payments that MongoDB returned to the organization for this invoice.
-	// Read only field.
-	Refunds []BillingRefund `json:"refunds,omitempty"`
+	Refunds *[]BillingRefund `json:"refunds,omitempty"`
 	// Sum of sales tax applied to this invoice. This parameter expresses its value in cents (100ths of one US Dollar).
-	// Read only field.
 	SalesTaxCents *int64 `json:"salesTaxCents,omitempty"`
 	// Date and time when MongoDB Cloud began the billing period that this invoice covers. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-	// Read only field.
 	StartDate *time.Time `json:"startDate,omitempty"`
 	// Sum that the specified organization owed to MongoDB when MongoDB issued this invoice. This parameter expresses its value in US Dollars.
-	// Read only field.
 	StartingBalanceCents *int64 `json:"startingBalanceCents,omitempty"`
 	// Phase of payment processing in which this invoice exists when you made this request. Accepted phases include:  | Phase Value | Reason | |---|---| | CLOSED | MongoDB finalized all charges in the billing cycle but has yet to charge the customer. | | FAILED | MongoDB attempted to charge the provided credit card but charge for that amount failed. | | FORGIVEN | Customer initiated payment which MongoDB later forgave. | | FREE | All charges totalled zero so the customer won't be charged. | | INVOICED | MongoDB handled these charges using elastic invoicing. | | PAID | MongoDB succeeded in charging the provided credit card. | | PENDING | Invoice includes charges for the current billing cycle. | | PREPAID | Customer has a pre-paid plan so they won't be charged. |
 	StatusName *string `json:"statusName,omitempty"`
 	// Sum of all positive invoice line items contained in this invoice. This parameter expresses its value in cents (100ths of one US Dollar).
-	// Read only field.
 	SubtotalCents *int64 `json:"subtotalCents,omitempty"`
 	// Date and time when MongoDB Cloud last updated the value of this payment. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-	// Read only field.
 	Updated *time.Time `json:"updated,omitempty"`
 }
 
@@ -321,12 +303,12 @@ func (o *BillingInvoice) GetLineItems() []InvoiceLineItem {
 		var ret []InvoiceLineItem
 		return ret
 	}
-	return o.LineItems
+	return *o.LineItems
 }
 
 // GetLineItemsOk returns a tuple with the LineItems field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BillingInvoice) GetLineItemsOk() ([]InvoiceLineItem, bool) {
+func (o *BillingInvoice) GetLineItemsOk() (*[]InvoiceLineItem, bool) {
 	if o == nil || IsNil(o.LineItems) {
 		return nil, false
 	}
@@ -345,7 +327,7 @@ func (o *BillingInvoice) HasLineItems() bool {
 
 // SetLineItems gets a reference to the given []InvoiceLineItem and assigns it to the LineItems field.
 func (o *BillingInvoice) SetLineItems(v []InvoiceLineItem) {
-	o.LineItems = v
+	o.LineItems = &v
 }
 
 // GetLinkedInvoices returns the LinkedInvoices field value if set, zero value otherwise
@@ -354,12 +336,12 @@ func (o *BillingInvoice) GetLinkedInvoices() []BillingInvoice {
 		var ret []BillingInvoice
 		return ret
 	}
-	return o.LinkedInvoices
+	return *o.LinkedInvoices
 }
 
 // GetLinkedInvoicesOk returns a tuple with the LinkedInvoices field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BillingInvoice) GetLinkedInvoicesOk() ([]BillingInvoice, bool) {
+func (o *BillingInvoice) GetLinkedInvoicesOk() (*[]BillingInvoice, bool) {
 	if o == nil || IsNil(o.LinkedInvoices) {
 		return nil, false
 	}
@@ -378,7 +360,7 @@ func (o *BillingInvoice) HasLinkedInvoices() bool {
 
 // SetLinkedInvoices gets a reference to the given []BillingInvoice and assigns it to the LinkedInvoices field.
 func (o *BillingInvoice) SetLinkedInvoices(v []BillingInvoice) {
-	o.LinkedInvoices = v
+	o.LinkedInvoices = &v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -387,12 +369,12 @@ func (o *BillingInvoice) GetLinks() []Link {
 		var ret []Link
 		return ret
 	}
-	return o.Links
+	return *o.Links
 }
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BillingInvoice) GetLinksOk() ([]Link, bool) {
+func (o *BillingInvoice) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -411,7 +393,7 @@ func (o *BillingInvoice) HasLinks() bool {
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *BillingInvoice) SetLinks(v []Link) {
-	o.Links = v
+	o.Links = &v
 }
 
 // GetOrgId returns the OrgId field value if set, zero value otherwise
@@ -453,12 +435,12 @@ func (o *BillingInvoice) GetPayments() []BillingPayment {
 		var ret []BillingPayment
 		return ret
 	}
-	return o.Payments
+	return *o.Payments
 }
 
 // GetPaymentsOk returns a tuple with the Payments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BillingInvoice) GetPaymentsOk() ([]BillingPayment, bool) {
+func (o *BillingInvoice) GetPaymentsOk() (*[]BillingPayment, bool) {
 	if o == nil || IsNil(o.Payments) {
 		return nil, false
 	}
@@ -477,7 +459,7 @@ func (o *BillingInvoice) HasPayments() bool {
 
 // SetPayments gets a reference to the given []BillingPayment and assigns it to the Payments field.
 func (o *BillingInvoice) SetPayments(v []BillingPayment) {
-	o.Payments = v
+	o.Payments = &v
 }
 
 // GetRefunds returns the Refunds field value if set, zero value otherwise
@@ -486,12 +468,12 @@ func (o *BillingInvoice) GetRefunds() []BillingRefund {
 		var ret []BillingRefund
 		return ret
 	}
-	return o.Refunds
+	return *o.Refunds
 }
 
 // GetRefundsOk returns a tuple with the Refunds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BillingInvoice) GetRefundsOk() ([]BillingRefund, bool) {
+func (o *BillingInvoice) GetRefundsOk() (*[]BillingRefund, bool) {
 	if o == nil || IsNil(o.Refunds) {
 		return nil, false
 	}
@@ -510,7 +492,7 @@ func (o *BillingInvoice) HasRefunds() bool {
 
 // SetRefunds gets a reference to the given []BillingRefund and assigns it to the Refunds field.
 func (o *BillingInvoice) SetRefunds(v []BillingRefund) {
-	o.Refunds = v
+	o.Refunds = &v
 }
 
 // GetSalesTaxCents returns the SalesTaxCents field value if set, zero value otherwise
