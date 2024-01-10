@@ -12,6 +12,11 @@ Name | Type | Description | Notes
 **IssuerUri** | Pointer to **string** | Unique string that identifies the issuer of the SAML Assertion. | [optional] 
 **OktaIdpId** | **string** | Unique 20-hexadecimal digit string that identifies the identity provider. | 
 **Protocol** | Pointer to **string** | The protocol of the identity provider. | [optional] 
+**AudienceClaim** | Pointer to **[]string** | Identifier of the intended recipient of the token. | [optional] 
+**ClientId** | Pointer to **string** | Client identifier that is assigned to an application by the Identity Provider. | [optional] 
+**GroupsClaim** | Pointer to **string** | Identifier of the claim which contains IdP Group IDs in the token. | [optional] 
+**RequestedScopes** | Pointer to **[]string** | The description of an IdP, configured by customers. | [optional] 
+**UserClaim** | Pointer to **string** | Identifier of the claim which contains the user ID in the token. | [optional] 
 **AcsUrl** | Pointer to **string** | URL that points to where to send the SAML response. | [optional] 
 **AudienceUri** | Pointer to **string** | Unique string that identifies the intended audience of the SAML assertion. | [optional] 
 **PemFileInfo** | Pointer to [**PemFileInfo**](PemFileInfo.md) |  | [optional] 
@@ -20,11 +25,6 @@ Name | Type | Description | Notes
 **SsoDebugEnabled** | Pointer to **bool** | Flag that indicates whether the identity provider has SSO debug enabled. | [optional] 
 **SsoUrl** | Pointer to **string** | URL that points to the receiver of the SAML authentication request. | [optional] 
 **Status** | Pointer to **string** | String enum that indicates whether the identity provider is active. | [optional] 
-**AudienceClaim** | Pointer to **[]string** | Identifier of the intended recipient of the token. | [optional] 
-**ClientId** | Pointer to **string** | Client identifier that is assigned to an application by the Identity Provider. | [optional] 
-**GroupsClaim** | Pointer to **string** | Identifier of the claim which contains IdP Group IDs in the token. | [optional] 
-**RequestedScopes** | Pointer to **[]string** | The description of an IdP, configured by customers. | [optional] 
-**UserClaim** | Pointer to **string** | Identifier of the claim which contains the user ID in the token. | [optional] 
 
 ## Methods
 
@@ -227,6 +227,126 @@ SetProtocol sets Protocol field to given value.
 `func (o *FederationIdentityProvider) HasProtocol() bool`
 
 HasProtocol returns a boolean if a field has been set.
+### GetAudienceClaim
+
+`func (o *FederationIdentityProvider) GetAudienceClaim() []string`
+
+GetAudienceClaim returns the AudienceClaim field if non-nil, zero value otherwise.
+
+### GetAudienceClaimOk
+
+`func (o *FederationIdentityProvider) GetAudienceClaimOk() (*[]string, bool)`
+
+GetAudienceClaimOk returns a tuple with the AudienceClaim field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAudienceClaim
+
+`func (o *FederationIdentityProvider) SetAudienceClaim(v []string)`
+
+SetAudienceClaim sets AudienceClaim field to given value.
+
+### HasAudienceClaim
+
+`func (o *FederationIdentityProvider) HasAudienceClaim() bool`
+
+HasAudienceClaim returns a boolean if a field has been set.
+### GetClientId
+
+`func (o *FederationIdentityProvider) GetClientId() string`
+
+GetClientId returns the ClientId field if non-nil, zero value otherwise.
+
+### GetClientIdOk
+
+`func (o *FederationIdentityProvider) GetClientIdOk() (*string, bool)`
+
+GetClientIdOk returns a tuple with the ClientId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientId
+
+`func (o *FederationIdentityProvider) SetClientId(v string)`
+
+SetClientId sets ClientId field to given value.
+
+### HasClientId
+
+`func (o *FederationIdentityProvider) HasClientId() bool`
+
+HasClientId returns a boolean if a field has been set.
+### GetGroupsClaim
+
+`func (o *FederationIdentityProvider) GetGroupsClaim() string`
+
+GetGroupsClaim returns the GroupsClaim field if non-nil, zero value otherwise.
+
+### GetGroupsClaimOk
+
+`func (o *FederationIdentityProvider) GetGroupsClaimOk() (*string, bool)`
+
+GetGroupsClaimOk returns a tuple with the GroupsClaim field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroupsClaim
+
+`func (o *FederationIdentityProvider) SetGroupsClaim(v string)`
+
+SetGroupsClaim sets GroupsClaim field to given value.
+
+### HasGroupsClaim
+
+`func (o *FederationIdentityProvider) HasGroupsClaim() bool`
+
+HasGroupsClaim returns a boolean if a field has been set.
+### GetRequestedScopes
+
+`func (o *FederationIdentityProvider) GetRequestedScopes() []string`
+
+GetRequestedScopes returns the RequestedScopes field if non-nil, zero value otherwise.
+
+### GetRequestedScopesOk
+
+`func (o *FederationIdentityProvider) GetRequestedScopesOk() (*[]string, bool)`
+
+GetRequestedScopesOk returns a tuple with the RequestedScopes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequestedScopes
+
+`func (o *FederationIdentityProvider) SetRequestedScopes(v []string)`
+
+SetRequestedScopes sets RequestedScopes field to given value.
+
+### HasRequestedScopes
+
+`func (o *FederationIdentityProvider) HasRequestedScopes() bool`
+
+HasRequestedScopes returns a boolean if a field has been set.
+### GetUserClaim
+
+`func (o *FederationIdentityProvider) GetUserClaim() string`
+
+GetUserClaim returns the UserClaim field if non-nil, zero value otherwise.
+
+### GetUserClaimOk
+
+`func (o *FederationIdentityProvider) GetUserClaimOk() (*string, bool)`
+
+GetUserClaimOk returns a tuple with the UserClaim field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserClaim
+
+`func (o *FederationIdentityProvider) SetUserClaim(v string)`
+
+SetUserClaim sets UserClaim field to given value.
+
+### HasUserClaim
+
+`func (o *FederationIdentityProvider) HasUserClaim() bool`
+
+HasUserClaim returns a boolean if a field has been set.
 ### GetAcsUrl
 
 `func (o *FederationIdentityProvider) GetAcsUrl() string`
@@ -419,126 +539,6 @@ SetStatus sets Status field to given value.
 `func (o *FederationIdentityProvider) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
-### GetAudienceClaim
-
-`func (o *FederationIdentityProvider) GetAudienceClaim() []string`
-
-GetAudienceClaim returns the AudienceClaim field if non-nil, zero value otherwise.
-
-### GetAudienceClaimOk
-
-`func (o *FederationIdentityProvider) GetAudienceClaimOk() (*[]string, bool)`
-
-GetAudienceClaimOk returns a tuple with the AudienceClaim field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAudienceClaim
-
-`func (o *FederationIdentityProvider) SetAudienceClaim(v []string)`
-
-SetAudienceClaim sets AudienceClaim field to given value.
-
-### HasAudienceClaim
-
-`func (o *FederationIdentityProvider) HasAudienceClaim() bool`
-
-HasAudienceClaim returns a boolean if a field has been set.
-### GetClientId
-
-`func (o *FederationIdentityProvider) GetClientId() string`
-
-GetClientId returns the ClientId field if non-nil, zero value otherwise.
-
-### GetClientIdOk
-
-`func (o *FederationIdentityProvider) GetClientIdOk() (*string, bool)`
-
-GetClientIdOk returns a tuple with the ClientId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetClientId
-
-`func (o *FederationIdentityProvider) SetClientId(v string)`
-
-SetClientId sets ClientId field to given value.
-
-### HasClientId
-
-`func (o *FederationIdentityProvider) HasClientId() bool`
-
-HasClientId returns a boolean if a field has been set.
-### GetGroupsClaim
-
-`func (o *FederationIdentityProvider) GetGroupsClaim() string`
-
-GetGroupsClaim returns the GroupsClaim field if non-nil, zero value otherwise.
-
-### GetGroupsClaimOk
-
-`func (o *FederationIdentityProvider) GetGroupsClaimOk() (*string, bool)`
-
-GetGroupsClaimOk returns a tuple with the GroupsClaim field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGroupsClaim
-
-`func (o *FederationIdentityProvider) SetGroupsClaim(v string)`
-
-SetGroupsClaim sets GroupsClaim field to given value.
-
-### HasGroupsClaim
-
-`func (o *FederationIdentityProvider) HasGroupsClaim() bool`
-
-HasGroupsClaim returns a boolean if a field has been set.
-### GetRequestedScopes
-
-`func (o *FederationIdentityProvider) GetRequestedScopes() []string`
-
-GetRequestedScopes returns the RequestedScopes field if non-nil, zero value otherwise.
-
-### GetRequestedScopesOk
-
-`func (o *FederationIdentityProvider) GetRequestedScopesOk() (*[]string, bool)`
-
-GetRequestedScopesOk returns a tuple with the RequestedScopes field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRequestedScopes
-
-`func (o *FederationIdentityProvider) SetRequestedScopes(v []string)`
-
-SetRequestedScopes sets RequestedScopes field to given value.
-
-### HasRequestedScopes
-
-`func (o *FederationIdentityProvider) HasRequestedScopes() bool`
-
-HasRequestedScopes returns a boolean if a field has been set.
-### GetUserClaim
-
-`func (o *FederationIdentityProvider) GetUserClaim() string`
-
-GetUserClaim returns the UserClaim field if non-nil, zero value otherwise.
-
-### GetUserClaimOk
-
-`func (o *FederationIdentityProvider) GetUserClaimOk() (*string, bool)`
-
-GetUserClaimOk returns a tuple with the UserClaim field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUserClaim
-
-`func (o *FederationIdentityProvider) SetUserClaim(v string)`
-
-SetUserClaim sets UserClaim field to given value.
-
-### HasUserClaim
-
-`func (o *FederationIdentityProvider) HasUserClaim() bool`
-
-HasUserClaim returns a boolean if a field has been set.
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -6,10 +6,12 @@ import (
 	"encoding/json"
 )
 
-// PemFileInfo PEM file information for the identity provider's certificates.
+// PemFileInfo PEM file information for the identity provider's current certificates.
 type PemFileInfo struct {
+	// List of certificates in the file.
 	Certificates *[]X509Certificate `json:"certificates,omitempty"`
-	FileName     *string            `json:"fileName,omitempty"`
+	// Human-readable label given to the file.
+	FileName *string `json:"fileName,omitempty"`
 }
 
 // NewPemFileInfo instantiates a new PemFileInfo object

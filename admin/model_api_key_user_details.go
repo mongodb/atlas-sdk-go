@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 )
 
-// ApiKeyUserDetails struct for ApiKeyUserDetails
+// ApiKeyUserDetails Details of the Programmatic API Keys.
 type ApiKeyUserDetails struct {
 	// Purpose or explanation provided when someone created this organization API key.
 	Desc *string `json:"desc,omitempty"`

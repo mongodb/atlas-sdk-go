@@ -4,9 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Content** | Pointer to **string** |  | [optional] 
-**NotAfter** | Pointer to **time.Time** |  | [optional] 
-**NotBefore** | Pointer to **time.Time** |  | [optional] 
+**NotAfter** | Pointer to **time.Time** | Latest date that the certificate is valid. | [optional] 
+**NotBefore** | Pointer to **time.Time** | Earliest date that the certificate is valid. | [optional] 
 
 ## Methods
 
@@ -27,30 +26,6 @@ NewX509CertificateWithDefaults instantiates a new X509Certificate object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetContent
-
-`func (o *X509Certificate) GetContent() string`
-
-GetContent returns the Content field if non-nil, zero value otherwise.
-
-### GetContentOk
-
-`func (o *X509Certificate) GetContentOk() (*string, bool)`
-
-GetContentOk returns a tuple with the Content field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetContent
-
-`func (o *X509Certificate) SetContent(v string)`
-
-SetContent sets Content field to given value.
-
-### HasContent
-
-`func (o *X509Certificate) HasContent() bool`
-
-HasContent returns a boolean if a field has been set.
 ### GetNotAfter
 
 `func (o *X509Certificate) GetNotAfter() time.Time`

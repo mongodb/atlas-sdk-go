@@ -5,6 +5,7 @@
    * [Fetching Data from the Back End](./doc_1_concepts.md#fetching-data-from-the-back-end)
    * [Performing Data Modification](./doc_1_concepts.md#performing-data-modification)
    * [Experimental Methods](./doc_1_concepts.md#experimental-methods)
+   * [Read Only and Write Only Fields](./doc_1_concepts.md#read-only-and-write-only-fields)
    * [Example](./doc_1_concepts.md#example)
    * [Release Strategy (Semantic Versioning)](./doc_1_concepts.md#release-strategy-semantic-versioning)
       * [Versioning Rules](./doc_1_concepts.md#versioning-rules)

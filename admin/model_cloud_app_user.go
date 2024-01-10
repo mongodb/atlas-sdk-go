@@ -15,6 +15,8 @@ type CloudAppUser struct {
 	// Read only field.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// Email address that belongs to the MongoDB Cloud user.
+	// Read only field.
+	// Deprecated
 	EmailAddress string `json:"emailAddress"`
 	// First or given name that belongs to the MongoDB Cloud user.
 	FirstName string `json:"firstName"`
@@ -124,6 +126,7 @@ func (o *CloudAppUser) SetCreatedAt(v time.Time) {
 }
 
 // GetEmailAddress returns the EmailAddress field value
+// Deprecated
 func (o *CloudAppUser) GetEmailAddress() string {
 	if o == nil {
 		var ret string
@@ -135,6 +138,7 @@ func (o *CloudAppUser) GetEmailAddress() string {
 
 // GetEmailAddressOk returns a tuple with the EmailAddress field value
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *CloudAppUser) GetEmailAddressOk() (*string, bool) {
 	if o == nil {
 		return nil, false
@@ -143,6 +147,7 @@ func (o *CloudAppUser) GetEmailAddressOk() (*string, bool) {
 }
 
 // SetEmailAddress sets field value
+// Deprecated
 func (o *CloudAppUser) SetEmailAddress(v string) {
 	o.EmailAddress = v
 }
@@ -442,7 +447,6 @@ func (o CloudAppUser) MarshalJSONWithoutReadOnly() ([]byte, error) {
 func (o CloudAppUser) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["country"] = o.Country
-	toSerialize["emailAddress"] = o.EmailAddress
 	toSerialize["firstName"] = o.FirstName
 	toSerialize["lastName"] = o.LastName
 	toSerialize["mobileNumber"] = o.MobileNumber

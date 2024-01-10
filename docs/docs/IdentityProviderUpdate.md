@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **GroupsClaim** | Pointer to **string** | Groups claim for the identity provider. | [optional] 
 **RequestedScopes** | Pointer to **[]string** | Requested scopes for the identity provider. | [optional] 
 **UserClaim** | Pointer to **string** | User claim for the identity provider. | [optional] 
-**PemFileInfo** | Pointer to [**PemFileInfo**](PemFileInfo.md) |  | [optional] 
+**PemFileInfo** | Pointer to [**PemFileInfoUpdate**](PemFileInfoUpdate.md) |  | [optional] 
 **RequestBinding** | Pointer to **string** | SAML Authentication Request Protocol HTTP method binding (POST or REDIRECT) that Federated Authentication uses to send the authentication request. | [optional] 
 **ResponseSignatureAlgorithm** | Pointer to **string** | Signature algorithm that Federated Authentication uses to encrypt the identity provider signature. | [optional] 
 **Slug** | Pointer to **string** | Custom SSO Url for identity provider. | [optional] 
@@ -283,20 +283,20 @@ SetUserClaim sets UserClaim field to given value.
 HasUserClaim returns a boolean if a field has been set.
 ### GetPemFileInfo
 
-`func (o *IdentityProviderUpdate) GetPemFileInfo() PemFileInfo`
+`func (o *IdentityProviderUpdate) GetPemFileInfo() PemFileInfoUpdate`
 
 GetPemFileInfo returns the PemFileInfo field if non-nil, zero value otherwise.
 
 ### GetPemFileInfoOk
 
-`func (o *IdentityProviderUpdate) GetPemFileInfoOk() (*PemFileInfo, bool)`
+`func (o *IdentityProviderUpdate) GetPemFileInfoOk() (*PemFileInfoUpdate, bool)`
 
 GetPemFileInfoOk returns a tuple with the PemFileInfo field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPemFileInfo
 
-`func (o *IdentityProviderUpdate) SetPemFileInfo(v PemFileInfo)`
+`func (o *IdentityProviderUpdate) SetPemFileInfo(v PemFileInfoUpdate)`
 
 SetPemFileInfo sets PemFileInfo field to given value.
 

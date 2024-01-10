@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 )
 
-// CreateAtlasOrganizationApiKey struct for CreateAtlasOrganizationApiKey
+// CreateAtlasOrganizationApiKey Details of the programmatic API key to be created.
 type CreateAtlasOrganizationApiKey struct {
 	// Purpose or explanation provided when someone created this organization API key.
 	Desc string `json:"desc"`

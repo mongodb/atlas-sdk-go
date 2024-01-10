@@ -6,15 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the online archive. | [optional] [readonly] 
 **ClusterName** | Pointer to **string** | Human-readable label that identifies the cluster that contains the collection for which you want to create an online archive. | [optional] [readonly] 
-**CollName** | Pointer to **string** | Human-readable label that identifies the collection for which you created the online archive. | [optional] 
-**CollectionType** | Pointer to **string** | Classification of MongoDB database collection that you want to return.  If you set this parameter to &#x60;TIMESERIES&#x60;, set &#x60;\&quot;criteria.type\&quot; : \&quot;date\&quot;&#x60; and &#x60;\&quot;criteria.dateFormat\&quot; : \&quot;ISODATE\&quot;&#x60;. | [optional] [default to "STANDARD"]
+**CollName** | Pointer to **string** | Human-readable label that identifies the collection for which you created the online archive. | [optional] [readonly] 
+**CollectionType** | Pointer to **string** | Classification of MongoDB database collection that you want to return.  If you set this parameter to &#x60;TIMESERIES&#x60;, set &#x60;\&quot;criteria.type\&quot; : \&quot;date\&quot;&#x60; and &#x60;\&quot;criteria.dateFormat\&quot; : \&quot;ISODATE\&quot;&#x60;. | [optional] [readonly] [default to "STANDARD"]
 **Criteria** | Pointer to [**Criteria**](Criteria.md) |  | [optional] 
 **DataExpirationRule** | Pointer to [**DataExpirationRule**](DataExpirationRule.md) |  | [optional] 
-**DataProcessRegion** | Pointer to [**DataProcessRegion**](DataProcessRegion.md) |  | [optional] 
 **DataSetName** | Pointer to **string** | Human-readable label that identifies the dataset that Atlas generates for this online archive. | [optional] [readonly] 
-**DbName** | Pointer to **string** | Human-readable label of the database that contains the collection that contains the online archive. | [optional] 
+**DbName** | Pointer to **string** | Human-readable label of the database that contains the collection that contains the online archive. | [optional] [readonly] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the project that contains the specified cluster. The specified cluster contains the collection for which to create the online archive. | [optional] [readonly] 
-**PartitionFields** | Pointer to [**[]PartitionField**](PartitionField.md) | List that contains document parameters to use to logically divide data within a collection. Partitions provide a coarse level of filtering of the underlying collection data. To divide your data, specify parameters that you frequently query. If you \&quot;specified :criteria.type\&quot;: \&quot;DATE\&quot; in the CREATE ONE ONLINE ARCHIVE endpoint, then you can specify up to three parameters by which to query. One of these parameters must be the DATE value, which is required in this case. If you \&quot;specified :criteria.type\&quot;: \&quot;CUSTOM\&quot; in the CREATE ONE ONLINE ARCHIVE endpoint, then you can specify up to two parameters by which to query. Queries that don&#39;t use \&quot;:criteria.type\&quot;: \&quot;DATE\&quot; or \&quot;:criteria.type\&quot;: \&quot;CUSTOM\&quot; parameters cause MongoDB to scan a full collection of all archived documents. This takes more time and increases your costs. | [optional] 
+**PartitionFields** | Pointer to [**[]PartitionField**](PartitionField.md) | List that contains document parameters to use to logically divide data within a collection. Partitions provide a coarse level of filtering of the underlying collection data. To divide your data, specify parameters that you frequently query. If you \&quot;specified :criteria.type\&quot;: \&quot;DATE\&quot; in the CREATE ONE ONLINE ARCHIVE endpoint, then you can specify up to three parameters by which to query. One of these parameters must be the DATE value, which is required in this case. If you \&quot;specified :criteria.type\&quot;: \&quot;CUSTOM\&quot; in the CREATE ONE ONLINE ARCHIVE endpoint, then you can specify up to two parameters by which to query. Queries that don&#39;t use \&quot;:criteria.type\&quot;: \&quot;DATE\&quot; or \&quot;:criteria.type\&quot;: \&quot;CUSTOM\&quot; parameters cause MongoDB to scan a full collection of all archived documents. This takes more time and increases your costs. | [optional] [readonly] 
 **Paused** | Pointer to **bool** | Flag that indicates whether this online archive exists in the paused state. A request to resume fails if the collection has another active online archive. To pause an active online archive or resume a paused online archive, you must include this parameter. To pause an active archive, set this to **true**. To resume a paused archive, set this to **false**. | [optional] 
 **Schedule** | Pointer to [**OnlineArchiveSchedule**](OnlineArchiveSchedule.md) |  | [optional] 
 **State** | Pointer to **string** | Phase of the process to create this online archive when you made this request.  | State       | Indication | |-------------|------------| | &#x60;PENDING&#x60;   | MongoDB Cloud has queued documents for archive. Archiving hasn&#39;t started. | | &#x60;ARCHIVING&#x60; | MongoDB Cloud started archiving documents that meet the archival criteria. | | &#x60;IDLE&#x60;      | MongoDB Cloud waits to start the next archival job. | | &#x60;PAUSING&#x60;   | Someone chose to stop archiving. MongoDB Cloud finishes the running archival job then changes the state to &#x60;PAUSED&#x60; when that job completes. | | &#x60;PAUSED&#x60;    | MongoDB Cloud has stopped archiving. Archived documents can be queried. The specified archiving operation on the active cluster cannot archive additional documents. You can resume archiving for paused archives at any time. | | &#x60;ORPHANED&#x60;  | Someone has deleted the collection associated with an active or paused archive. MongoDB Cloud doesn&#39;t delete the archived data. You must manually delete the online archives associated with the deleted collection. | | &#x60;DELETED&#x60;   | Someone has deleted the archive was deleted. When someone deletes an online archive, MongoDB Cloud removes all associated archived documents from the cloud object storage. | | [optional] [readonly] 
@@ -182,30 +181,6 @@ SetDataExpirationRule sets DataExpirationRule field to given value.
 `func (o *BackupOnlineArchive) HasDataExpirationRule() bool`
 
 HasDataExpirationRule returns a boolean if a field has been set.
-### GetDataProcessRegion
-
-`func (o *BackupOnlineArchive) GetDataProcessRegion() DataProcessRegion`
-
-GetDataProcessRegion returns the DataProcessRegion field if non-nil, zero value otherwise.
-
-### GetDataProcessRegionOk
-
-`func (o *BackupOnlineArchive) GetDataProcessRegionOk() (*DataProcessRegion, bool)`
-
-GetDataProcessRegionOk returns a tuple with the DataProcessRegion field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDataProcessRegion
-
-`func (o *BackupOnlineArchive) SetDataProcessRegion(v DataProcessRegion)`
-
-SetDataProcessRegion sets DataProcessRegion field to given value.
-
-### HasDataProcessRegion
-
-`func (o *BackupOnlineArchive) HasDataProcessRegion() bool`
-
-HasDataProcessRegion returns a boolean if a field has been set.
 ### GetDataSetName
 
 `func (o *BackupOnlineArchive) GetDataSetName() string`

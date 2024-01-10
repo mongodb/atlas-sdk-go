@@ -8,7 +8,7 @@ import (
 
 // ConnectedOrgConfig struct for ConnectedOrgConfig
 type ConnectedOrgConfig struct {
-	// The collection of unique ids of the identity providers for org's data access.
+	// The collection of unique ids representing the identity providers that can be used for data access in this organization.
 	DataAccessIdentityProviderIds *[]string `json:"dataAccessIdentityProviderIds,omitempty"`
 	// Approved domains that restrict users who can join the organization based on their email address.
 	DomainAllowList *[]string `json:"domainAllowList,omitempty"`
@@ -19,7 +19,7 @@ type ConnectedOrgConfig struct {
 	// Unique 24-hexadecimal digit string that identifies the connected organization configuration.
 	// Read only field.
 	OrgId string `json:"orgId"`
-	// Atlas roles that are granted to a user in this organization after authenticating.
+	// Atlas roles that are granted to a user in this organization after authenticating. Roles are a human-readable label that identifies the collection of privileges that MongoDB Cloud grants a specific MongoDB Cloud user. These roles can only be organization specific roles.
 	PostAuthRoleGrants *[]string `json:"postAuthRoleGrants,omitempty"`
 	// Role mappings that are configured in this organization.
 	RoleMappings *[]AuthFederationRoleMapping `json:"roleMappings,omitempty"`

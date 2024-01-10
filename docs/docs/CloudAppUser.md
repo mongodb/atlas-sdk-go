@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Country** | **string** | Two alphabet characters that identifies MongoDB Cloud user&#39;s geographic location. This parameter uses the ISO 3166-1a2 code format. | 
 **CreatedAt** | Pointer to **time.Time** | Date and time when the current account is created. This value is in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
-**EmailAddress** | **string** | Email address that belongs to the MongoDB Cloud user. | 
+**EmailAddress** | **string** | Email address that belongs to the MongoDB Cloud user. | [readonly] 
 **FirstName** | **string** | First or given name that belongs to the MongoDB Cloud user. | 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the MongoDB Cloud user. | [optional] [readonly] 
 **LastAuth** | Pointer to **time.Time** | Date and time when the current account last authenticated. This value is in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 

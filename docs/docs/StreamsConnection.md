@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | Human-readable label that identifies the stream connection. | [optional] 
 **Type** | Pointer to **string** | Type of the connection. Can be either Cluster or Kafka. | [optional] 
 **ClusterName** | Pointer to **string** | Name of the cluster configured for this connection. | [optional] 
+**DbRoleToExecute** | Pointer to [**DBRoleToExecute**](DBRoleToExecute.md) |  | [optional] 
 **Authentication** | Pointer to [**StreamsKafkaAuthentication**](StreamsKafkaAuthentication.md) |  | [optional] 
 **BootstrapServers** | Pointer to **string** | Comma separated list of server addresses. | [optional] 
 **Config** | Pointer to **map[string]string** | A map of Kafka key-value pairs for optional configuration. This is a flat object, and keys can have &#39;.&#39; characters. | [optional] 
@@ -128,6 +129,30 @@ SetClusterName sets ClusterName field to given value.
 `func (o *StreamsConnection) HasClusterName() bool`
 
 HasClusterName returns a boolean if a field has been set.
+### GetDbRoleToExecute
+
+`func (o *StreamsConnection) GetDbRoleToExecute() DBRoleToExecute`
+
+GetDbRoleToExecute returns the DbRoleToExecute field if non-nil, zero value otherwise.
+
+### GetDbRoleToExecuteOk
+
+`func (o *StreamsConnection) GetDbRoleToExecuteOk() (*DBRoleToExecute, bool)`
+
+GetDbRoleToExecuteOk returns a tuple with the DbRoleToExecute field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDbRoleToExecute
+
+`func (o *StreamsConnection) SetDbRoleToExecute(v DBRoleToExecute)`
+
+SetDbRoleToExecute sets DbRoleToExecute field to given value.
+
+### HasDbRoleToExecute
+
+`func (o *StreamsConnection) HasDbRoleToExecute() bool`
+
+HasDbRoleToExecute returns a boolean if a field has been set.
 ### GetAuthentication
 
 `func (o *StreamsConnection) GetAuthentication() StreamsKafkaAuthentication`

@@ -20,7 +20,7 @@ type ClusterSearchIndex struct {
 	// Condition of the search index when you made this request.  | Status | Index Condition |  |---|---|  | IN_PROGRESS | Atlas is building or re-building the index after an edit. |  | STEADY | You can use this search index. |  | FAILED | Atlas could not build the index. |  | MIGRATING | Atlas is upgrading the underlying cluster tier and migrating indexes. |  | PAUSED | The cluster is paused. |
 	// Read only field.
 	Status *string `json:"status,omitempty"`
-	// Type of the index. Warning: vectorSearch is not yet generally available. Default type is search.
+	// Type of the index. Default type is search.
 	Type *string `json:"type,omitempty"`
 	// Specific pre-defined method chosen to convert database field text into searchable words. This conversion reduces the text of fields into the smallest units of text. These units are called a **term** or **token**. This process, known as tokenization, involves a variety of changes made to the text in fields:  - extracting words - removing punctuation - removing accents - changing to lowercase - removing common words - reducing words to their root form (stemming) - changing words to their base form (lemmatization)  MongoDB Cloud uses the selected process to build the Atlas Search index.
 	Analyzer *string `json:"analyzer,omitempty"`

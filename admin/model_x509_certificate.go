@@ -9,8 +9,9 @@ import (
 
 // X509Certificate struct for X509Certificate
 type X509Certificate struct {
-	Content   *string    `json:"content,omitempty"`
-	NotAfter  *time.Time `json:"notAfter,omitempty"`
+	// Latest date that the certificate is valid.
+	NotAfter *time.Time `json:"notAfter,omitempty"`
+	// Earliest date that the certificate is valid.
 	NotBefore *time.Time `json:"notBefore,omitempty"`
 }
 
@@ -29,39 +30,6 @@ func NewX509Certificate() *X509Certificate {
 func NewX509CertificateWithDefaults() *X509Certificate {
 	this := X509Certificate{}
 	return &this
-}
-
-// GetContent returns the Content field value if set, zero value otherwise
-func (o *X509Certificate) GetContent() string {
-	if o == nil || IsNil(o.Content) {
-		var ret string
-		return ret
-	}
-	return *o.Content
-}
-
-// GetContentOk returns a tuple with the Content field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *X509Certificate) GetContentOk() (*string, bool) {
-	if o == nil || IsNil(o.Content) {
-		return nil, false
-	}
-
-	return o.Content, true
-}
-
-// HasContent returns a boolean if a field has been set.
-func (o *X509Certificate) HasContent() bool {
-	if o != nil && !IsNil(o.Content) {
-		return true
-	}
-
-	return false
-}
-
-// SetContent gets a reference to the given string and assigns it to the Content field.
-func (o *X509Certificate) SetContent(v string) {
-	o.Content = &v
 }
 
 // GetNotAfter returns the NotAfter field value if set, zero value otherwise
@@ -139,9 +107,6 @@ func (o X509Certificate) MarshalJSONWithoutReadOnly() ([]byte, error) {
 }
 func (o X509Certificate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Content) {
-		toSerialize["content"] = o.Content
-	}
 	if !IsNil(o.NotAfter) {
 		toSerialize["notAfter"] = o.NotAfter
 	}

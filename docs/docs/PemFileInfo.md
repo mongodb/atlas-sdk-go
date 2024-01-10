@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Certificates** | Pointer to [**[]X509Certificate**](X509Certificate.md) |  | [optional] 
-**FileName** | Pointer to **string** |  | [optional] 
+**Certificates** | Pointer to [**[]X509Certificate**](X509Certificate.md) | List of certificates in the file. | [optional] 
+**FileName** | Pointer to **string** | Human-readable label given to the file. | [optional] 
 
 ## Methods
 

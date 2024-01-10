@@ -16,8 +16,9 @@ type StreamsConnection struct {
 	// Type of the connection. Can be either Cluster or Kafka.
 	Type *string `json:"type,omitempty"`
 	// Name of the cluster configured for this connection.
-	ClusterName    *string                     `json:"clusterName,omitempty"`
-	Authentication *StreamsKafkaAuthentication `json:"authentication,omitempty"`
+	ClusterName     *string                     `json:"clusterName,omitempty"`
+	DbRoleToExecute *DBRoleToExecute            `json:"dbRoleToExecute,omitempty"`
+	Authentication  *StreamsKafkaAuthentication `json:"authentication,omitempty"`
 	// Comma separated list of server addresses.
 	BootstrapServers *string `json:"bootstrapServers,omitempty"`
 	// A map of Kafka key-value pairs for optional configuration. This is a flat object, and keys can have '.' characters.
@@ -174,6 +175,39 @@ func (o *StreamsConnection) SetClusterName(v string) {
 	o.ClusterName = &v
 }
 
+// GetDbRoleToExecute returns the DbRoleToExecute field value if set, zero value otherwise
+func (o *StreamsConnection) GetDbRoleToExecute() DBRoleToExecute {
+	if o == nil || IsNil(o.DbRoleToExecute) {
+		var ret DBRoleToExecute
+		return ret
+	}
+	return *o.DbRoleToExecute
+}
+
+// GetDbRoleToExecuteOk returns a tuple with the DbRoleToExecute field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsConnection) GetDbRoleToExecuteOk() (*DBRoleToExecute, bool) {
+	if o == nil || IsNil(o.DbRoleToExecute) {
+		return nil, false
+	}
+
+	return o.DbRoleToExecute, true
+}
+
+// HasDbRoleToExecute returns a boolean if a field has been set.
+func (o *StreamsConnection) HasDbRoleToExecute() bool {
+	if o != nil && !IsNil(o.DbRoleToExecute) {
+		return true
+	}
+
+	return false
+}
+
+// SetDbRoleToExecute gets a reference to the given DBRoleToExecute and assigns it to the DbRoleToExecute field.
+func (o *StreamsConnection) SetDbRoleToExecute(v DBRoleToExecute) {
+	o.DbRoleToExecute = &v
+}
+
 // GetAuthentication returns the Authentication field value if set, zero value otherwise
 func (o *StreamsConnection) GetAuthentication() StreamsKafkaAuthentication {
 	if o == nil || IsNil(o.Authentication) {
@@ -323,6 +357,9 @@ func (o StreamsConnection) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ClusterName) {
 		toSerialize["clusterName"] = o.ClusterName
+	}
+	if !IsNil(o.DbRoleToExecute) {
+		toSerialize["dbRoleToExecute"] = o.DbRoleToExecute
 	}
 	if !IsNil(o.Authentication) {
 		toSerialize["authentication"] = o.Authentication

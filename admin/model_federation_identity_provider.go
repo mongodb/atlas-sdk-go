@@ -25,6 +25,16 @@ type FederationIdentityProvider struct {
 	OktaIdpId string `json:"oktaIdpId"`
 	// The protocol of the identity provider.
 	Protocol *string `json:"protocol,omitempty"`
+	// Identifier of the intended recipient of the token.
+	AudienceClaim *[]string `json:"audienceClaim,omitempty"`
+	// Client identifier that is assigned to an application by the Identity Provider.
+	ClientId *string `json:"clientId,omitempty"`
+	// Identifier of the claim which contains IdP Group IDs in the token.
+	GroupsClaim *string `json:"groupsClaim,omitempty"`
+	// The description of an IdP, configured by customers.
+	RequestedScopes *[]string `json:"requestedScopes,omitempty"`
+	// Identifier of the claim which contains the user ID in the token.
+	UserClaim *string `json:"userClaim,omitempty"`
 	// URL that points to where to send the SAML response.
 	AcsUrl *string `json:"acsUrl,omitempty"`
 	// Unique string that identifies the intended audience of the SAML assertion.
@@ -40,16 +50,6 @@ type FederationIdentityProvider struct {
 	SsoUrl *string `json:"ssoUrl,omitempty"`
 	// String enum that indicates whether the identity provider is active.
 	Status *string `json:"status,omitempty"`
-	// Identifier of the intended recipient of the token.
-	AudienceClaim *[]string `json:"audienceClaim,omitempty"`
-	// Client identifier that is assigned to an application by the Identity Provider.
-	ClientId *string `json:"clientId,omitempty"`
-	// Identifier of the claim which contains IdP Group IDs in the token.
-	GroupsClaim *string `json:"groupsClaim,omitempty"`
-	// The description of an IdP, configured by customers.
-	RequestedScopes *[]string `json:"requestedScopes,omitempty"`
-	// Identifier of the claim which contains the user ID in the token.
-	UserClaim *string `json:"userClaim,omitempty"`
 }
 
 // NewFederationIdentityProvider instantiates a new FederationIdentityProvider object
@@ -317,6 +317,171 @@ func (o *FederationIdentityProvider) SetProtocol(v string) {
 	o.Protocol = &v
 }
 
+// GetAudienceClaim returns the AudienceClaim field value if set, zero value otherwise
+func (o *FederationIdentityProvider) GetAudienceClaim() []string {
+	if o == nil || IsNil(o.AudienceClaim) {
+		var ret []string
+		return ret
+	}
+	return *o.AudienceClaim
+}
+
+// GetAudienceClaimOk returns a tuple with the AudienceClaim field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FederationIdentityProvider) GetAudienceClaimOk() (*[]string, bool) {
+	if o == nil || IsNil(o.AudienceClaim) {
+		return nil, false
+	}
+
+	return o.AudienceClaim, true
+}
+
+// HasAudienceClaim returns a boolean if a field has been set.
+func (o *FederationIdentityProvider) HasAudienceClaim() bool {
+	if o != nil && !IsNil(o.AudienceClaim) {
+		return true
+	}
+
+	return false
+}
+
+// SetAudienceClaim gets a reference to the given []string and assigns it to the AudienceClaim field.
+func (o *FederationIdentityProvider) SetAudienceClaim(v []string) {
+	o.AudienceClaim = &v
+}
+
+// GetClientId returns the ClientId field value if set, zero value otherwise
+func (o *FederationIdentityProvider) GetClientId() string {
+	if o == nil || IsNil(o.ClientId) {
+		var ret string
+		return ret
+	}
+	return *o.ClientId
+}
+
+// GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FederationIdentityProvider) GetClientIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ClientId) {
+		return nil, false
+	}
+
+	return o.ClientId, true
+}
+
+// HasClientId returns a boolean if a field has been set.
+func (o *FederationIdentityProvider) HasClientId() bool {
+	if o != nil && !IsNil(o.ClientId) {
+		return true
+	}
+
+	return false
+}
+
+// SetClientId gets a reference to the given string and assigns it to the ClientId field.
+func (o *FederationIdentityProvider) SetClientId(v string) {
+	o.ClientId = &v
+}
+
+// GetGroupsClaim returns the GroupsClaim field value if set, zero value otherwise
+func (o *FederationIdentityProvider) GetGroupsClaim() string {
+	if o == nil || IsNil(o.GroupsClaim) {
+		var ret string
+		return ret
+	}
+	return *o.GroupsClaim
+}
+
+// GetGroupsClaimOk returns a tuple with the GroupsClaim field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FederationIdentityProvider) GetGroupsClaimOk() (*string, bool) {
+	if o == nil || IsNil(o.GroupsClaim) {
+		return nil, false
+	}
+
+	return o.GroupsClaim, true
+}
+
+// HasGroupsClaim returns a boolean if a field has been set.
+func (o *FederationIdentityProvider) HasGroupsClaim() bool {
+	if o != nil && !IsNil(o.GroupsClaim) {
+		return true
+	}
+
+	return false
+}
+
+// SetGroupsClaim gets a reference to the given string and assigns it to the GroupsClaim field.
+func (o *FederationIdentityProvider) SetGroupsClaim(v string) {
+	o.GroupsClaim = &v
+}
+
+// GetRequestedScopes returns the RequestedScopes field value if set, zero value otherwise
+func (o *FederationIdentityProvider) GetRequestedScopes() []string {
+	if o == nil || IsNil(o.RequestedScopes) {
+		var ret []string
+		return ret
+	}
+	return *o.RequestedScopes
+}
+
+// GetRequestedScopesOk returns a tuple with the RequestedScopes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FederationIdentityProvider) GetRequestedScopesOk() (*[]string, bool) {
+	if o == nil || IsNil(o.RequestedScopes) {
+		return nil, false
+	}
+
+	return o.RequestedScopes, true
+}
+
+// HasRequestedScopes returns a boolean if a field has been set.
+func (o *FederationIdentityProvider) HasRequestedScopes() bool {
+	if o != nil && !IsNil(o.RequestedScopes) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequestedScopes gets a reference to the given []string and assigns it to the RequestedScopes field.
+func (o *FederationIdentityProvider) SetRequestedScopes(v []string) {
+	o.RequestedScopes = &v
+}
+
+// GetUserClaim returns the UserClaim field value if set, zero value otherwise
+func (o *FederationIdentityProvider) GetUserClaim() string {
+	if o == nil || IsNil(o.UserClaim) {
+		var ret string
+		return ret
+	}
+	return *o.UserClaim
+}
+
+// GetUserClaimOk returns a tuple with the UserClaim field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FederationIdentityProvider) GetUserClaimOk() (*string, bool) {
+	if o == nil || IsNil(o.UserClaim) {
+		return nil, false
+	}
+
+	return o.UserClaim, true
+}
+
+// HasUserClaim returns a boolean if a field has been set.
+func (o *FederationIdentityProvider) HasUserClaim() bool {
+	if o != nil && !IsNil(o.UserClaim) {
+		return true
+	}
+
+	return false
+}
+
+// SetUserClaim gets a reference to the given string and assigns it to the UserClaim field.
+func (o *FederationIdentityProvider) SetUserClaim(v string) {
+	o.UserClaim = &v
+}
+
 // GetAcsUrl returns the AcsUrl field value if set, zero value otherwise
 func (o *FederationIdentityProvider) GetAcsUrl() string {
 	if o == nil || IsNil(o.AcsUrl) {
@@ -581,171 +746,6 @@ func (o *FederationIdentityProvider) SetStatus(v string) {
 	o.Status = &v
 }
 
-// GetAudienceClaim returns the AudienceClaim field value if set, zero value otherwise
-func (o *FederationIdentityProvider) GetAudienceClaim() []string {
-	if o == nil || IsNil(o.AudienceClaim) {
-		var ret []string
-		return ret
-	}
-	return *o.AudienceClaim
-}
-
-// GetAudienceClaimOk returns a tuple with the AudienceClaim field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FederationIdentityProvider) GetAudienceClaimOk() (*[]string, bool) {
-	if o == nil || IsNil(o.AudienceClaim) {
-		return nil, false
-	}
-
-	return o.AudienceClaim, true
-}
-
-// HasAudienceClaim returns a boolean if a field has been set.
-func (o *FederationIdentityProvider) HasAudienceClaim() bool {
-	if o != nil && !IsNil(o.AudienceClaim) {
-		return true
-	}
-
-	return false
-}
-
-// SetAudienceClaim gets a reference to the given []string and assigns it to the AudienceClaim field.
-func (o *FederationIdentityProvider) SetAudienceClaim(v []string) {
-	o.AudienceClaim = &v
-}
-
-// GetClientId returns the ClientId field value if set, zero value otherwise
-func (o *FederationIdentityProvider) GetClientId() string {
-	if o == nil || IsNil(o.ClientId) {
-		var ret string
-		return ret
-	}
-	return *o.ClientId
-}
-
-// GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FederationIdentityProvider) GetClientIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ClientId) {
-		return nil, false
-	}
-
-	return o.ClientId, true
-}
-
-// HasClientId returns a boolean if a field has been set.
-func (o *FederationIdentityProvider) HasClientId() bool {
-	if o != nil && !IsNil(o.ClientId) {
-		return true
-	}
-
-	return false
-}
-
-// SetClientId gets a reference to the given string and assigns it to the ClientId field.
-func (o *FederationIdentityProvider) SetClientId(v string) {
-	o.ClientId = &v
-}
-
-// GetGroupsClaim returns the GroupsClaim field value if set, zero value otherwise
-func (o *FederationIdentityProvider) GetGroupsClaim() string {
-	if o == nil || IsNil(o.GroupsClaim) {
-		var ret string
-		return ret
-	}
-	return *o.GroupsClaim
-}
-
-// GetGroupsClaimOk returns a tuple with the GroupsClaim field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FederationIdentityProvider) GetGroupsClaimOk() (*string, bool) {
-	if o == nil || IsNil(o.GroupsClaim) {
-		return nil, false
-	}
-
-	return o.GroupsClaim, true
-}
-
-// HasGroupsClaim returns a boolean if a field has been set.
-func (o *FederationIdentityProvider) HasGroupsClaim() bool {
-	if o != nil && !IsNil(o.GroupsClaim) {
-		return true
-	}
-
-	return false
-}
-
-// SetGroupsClaim gets a reference to the given string and assigns it to the GroupsClaim field.
-func (o *FederationIdentityProvider) SetGroupsClaim(v string) {
-	o.GroupsClaim = &v
-}
-
-// GetRequestedScopes returns the RequestedScopes field value if set, zero value otherwise
-func (o *FederationIdentityProvider) GetRequestedScopes() []string {
-	if o == nil || IsNil(o.RequestedScopes) {
-		var ret []string
-		return ret
-	}
-	return *o.RequestedScopes
-}
-
-// GetRequestedScopesOk returns a tuple with the RequestedScopes field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FederationIdentityProvider) GetRequestedScopesOk() (*[]string, bool) {
-	if o == nil || IsNil(o.RequestedScopes) {
-		return nil, false
-	}
-
-	return o.RequestedScopes, true
-}
-
-// HasRequestedScopes returns a boolean if a field has been set.
-func (o *FederationIdentityProvider) HasRequestedScopes() bool {
-	if o != nil && !IsNil(o.RequestedScopes) {
-		return true
-	}
-
-	return false
-}
-
-// SetRequestedScopes gets a reference to the given []string and assigns it to the RequestedScopes field.
-func (o *FederationIdentityProvider) SetRequestedScopes(v []string) {
-	o.RequestedScopes = &v
-}
-
-// GetUserClaim returns the UserClaim field value if set, zero value otherwise
-func (o *FederationIdentityProvider) GetUserClaim() string {
-	if o == nil || IsNil(o.UserClaim) {
-		var ret string
-		return ret
-	}
-	return *o.UserClaim
-}
-
-// GetUserClaimOk returns a tuple with the UserClaim field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FederationIdentityProvider) GetUserClaimOk() (*string, bool) {
-	if o == nil || IsNil(o.UserClaim) {
-		return nil, false
-	}
-
-	return o.UserClaim, true
-}
-
-// HasUserClaim returns a boolean if a field has been set.
-func (o *FederationIdentityProvider) HasUserClaim() bool {
-	if o != nil && !IsNil(o.UserClaim) {
-		return true
-	}
-
-	return false
-}
-
-// SetUserClaim gets a reference to the given string and assigns it to the UserClaim field.
-func (o *FederationIdentityProvider) SetUserClaim(v string) {
-	o.UserClaim = &v
-}
-
 func (o FederationIdentityProvider) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -774,6 +774,21 @@ func (o FederationIdentityProvider) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Protocol) {
 		toSerialize["protocol"] = o.Protocol
 	}
+	if !IsNil(o.AudienceClaim) {
+		toSerialize["audienceClaim"] = o.AudienceClaim
+	}
+	if !IsNil(o.ClientId) {
+		toSerialize["clientId"] = o.ClientId
+	}
+	if !IsNil(o.GroupsClaim) {
+		toSerialize["groupsClaim"] = o.GroupsClaim
+	}
+	if !IsNil(o.RequestedScopes) {
+		toSerialize["requestedScopes"] = o.RequestedScopes
+	}
+	if !IsNil(o.UserClaim) {
+		toSerialize["userClaim"] = o.UserClaim
+	}
 	if !IsNil(o.AcsUrl) {
 		toSerialize["acsUrl"] = o.AcsUrl
 	}
@@ -797,21 +812,6 @@ func (o FederationIdentityProvider) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
-	}
-	if !IsNil(o.AudienceClaim) {
-		toSerialize["audienceClaim"] = o.AudienceClaim
-	}
-	if !IsNil(o.ClientId) {
-		toSerialize["clientId"] = o.ClientId
-	}
-	if !IsNil(o.GroupsClaim) {
-		toSerialize["groupsClaim"] = o.GroupsClaim
-	}
-	if !IsNil(o.RequestedScopes) {
-		toSerialize["requestedScopes"] = o.RequestedScopes
-	}
-	if !IsNil(o.UserClaim) {
-		toSerialize["userClaim"] = o.UserClaim
 	}
 	return toSerialize, nil
 }

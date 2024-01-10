@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClusterName** | Pointer to **string** | Human-readable label that identifies the cluster. | [optional] [readonly] 
-**Inbound** | Pointer to **[]string** | List of inbound IP addresses associated with the cluster. | [optional] [readonly] 
-**Outbound** | Pointer to **[]string** | List of outbound IP addresses associated with the cluster. | [optional] [readonly] 
+**Inbound** | Pointer to **[]string** | List of inbound IP addresses associated with the cluster. If your network allows outbound HTTP requests only to specific IP addresses, you must allow access to the following IP addresses so that your application can connect to your Atlas cluster. | [optional] [readonly] 
+**Outbound** | Pointer to **[]string** | List of outbound IP addresses associated with the cluster. If your network allows inbound HTTP requests only from specific IP addresses, you must allow access from the following IP addresses so that your Atlas cluster can communicate with your webhooks and KMS. | [optional] [readonly] 
 
 ## Methods
 

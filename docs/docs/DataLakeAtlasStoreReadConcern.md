@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Level** | Pointer to **string** | [Read Concern level](https://www.mongodb.com/docs/manual/reference/read-concern/#read-concern-levels) that specifies the consistency and availability of the data read. | [optional] 
+**Level** | Pointer to **string** | Read Concern level that specifies the consistency and availability of the data read. | [optional] 
 
 ## Methods
 

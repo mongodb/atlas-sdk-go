@@ -14,7 +14,8 @@ type OrganizationInvitation struct {
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// Date and time when the invitation from MongoDB Cloud expires. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
 	// Read only field.
-	ExpiresAt            *time.Time   `json:"expiresAt,omitempty"`
+	ExpiresAt *time.Time `json:"expiresAt,omitempty"`
+	// List of projects that the user will be added to when they accept their invitation to the organization.
 	GroupRoleAssignments *[]GroupRole `json:"groupRoleAssignments,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies this organization.
 	// Read only field.

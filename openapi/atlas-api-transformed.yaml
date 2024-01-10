@@ -24,7 +24,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 3710477668012519a21034ce7c15e886a3bd6067
+  x-xgen-sha: d05d140a757e46f9ce25ee52b17ae91335003c32
 servers:
   - url: https://cloud.mongodb.com
 tags:
@@ -243,6 +243,8 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
       summary: Return the status of this MongoDB application
       tags:
         - Root
@@ -359,6 +361,8 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
       summary: Return All Connected Org Configs from the Federation
       tags:
         - Federated Authentication
@@ -867,6 +871,8 @@ paths:
           $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
       summary: Return All Projects
       tags:
         - Projects
@@ -956,6 +962,8 @@ paths:
           $ref: "#/components/responses/conflict"
         "500":
           $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
       summary: Return One Project using Its Name
       tags:
         - Projects
@@ -1861,7 +1869,7 @@ paths:
         specified project. Users with the Project Owner role in the project
         associated with the API key can use the organization API key to access
         the resources. To use this resource, the requesting API Key must have
-        the Project User Admin role.
+        the Project Owner role.
       externalDocs:
         description: Programmatic API Keys
         url: https://docs.atlas.mongodb.com/configure-api-access/#std-label-atlas-prog-api-key
@@ -1893,7 +1901,7 @@ paths:
         specified project. Users with the Project Owner role in the project
         associated with the API key can use the organization API key to access
         the resources. To use this resource, the requesting API Key must have
-        the Project User Admin role.
+        the Project Owner role.
       operationId: createProjectApiKey
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -1925,8 +1933,7 @@ paths:
   "/api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId}":
     delete:
       description: Removes one organization API key from the specified project. To use
-        this resource, the requesting API Key must have the Project User Admin
-        role.
+        this resource, the requesting API Key must have the Project Owner role.
       externalDocs:
         description: Programmatic API Keys
         url: https://docs.atlas.mongodb.com/configure-api-access/#std-label-atlas-prog-api-key
@@ -2016,7 +2023,7 @@ paths:
         project. Users with the Project Owner role in the project associated
         with the API key can then use the organization API key to access the
         resources. To use this resource, the requesting API Key must have the
-        Project User Admin role.
+        Project Owner role.
       operationId: addProjectApiKey
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -7021,7 +7028,7 @@ paths:
         description: Creates one database user in the specified project.
         required: true
       responses:
-        "200":
+        "201":
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
@@ -7347,7 +7354,7 @@ paths:
         description: Generates one X.509 certificate for the specified MongoDB user.
         required: true
       responses:
-        "200":
+        "201":
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
@@ -8667,7 +8674,7 @@ paths:
 
          You can use this API endpoint for push live migrations only. Your API Key must have the Organization Owner role to successfully call this resource.
 
-         **NOTE**: Migrating time-series collections is not yet supported on MongoDB v6.0 or higher. Migrations on MongoDB v6.0 or higher will skip any time-series collections on the source cluster.
+         **NOTE**: Migrating time-series collections is not yet supported on MongoDB 6.0 or higher. Migrations on MongoDB 6.0 or higher will skip any time-series collections on the source cluster.
       operationId: createPushMigration
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -10876,6 +10883,8 @@ paths:
           $ref: "#/components/responses/unauthorized"
         "500":
           $ref: "#/components/responses/internalServerError"
+      security:
+        - DigestAuth: []
       summary: Return Measurements of One Database for One MongoDB Process
       tags:
         - Monitoring and Logs
@@ -14901,6 +14910,25 @@ paths:
       tags:
         - Organizations
       x-xgen-experimental: true
+  /api/atlas/v2/unauth/controlPlaneIPAddresses:
+    get:
+      description: Returns all control plane IP addresses.
+      operationId: returnAllControlPlaneIPAddresses
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2023-11-15+json:
+              schema:
+                $ref: "#/components/schemas/ControlPlaneIPAddresses"
+              x-xgen-version: 2023-11-15
+          description: OK
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      security:
+        - Unauthenticated: []
+      summary: Return All Control Plane IP Addresses
+      x-xgen-experimental: true
   /api/atlas/v2/users:
     post:
       description: >-
@@ -16319,6 +16347,7 @@ components:
         - publicKey
     ApiKeyUserDetails:
       type: object
+      description: Details of the Programmatic API Keys.
       properties:
         desc:
           type: string
@@ -16473,6 +16502,7 @@ components:
             | `REGION`   | Simulates a cluster outage for a region.|
     AtlasOrganization:
       type: object
+      description: Details that describe the organization.
       properties:
         id:
           type: string
@@ -16847,6 +16877,7 @@ components:
           type: string
           description: Human-readable label that identifies the collection for which you
             created the online archive.
+          readOnly: true
         collectionType:
           type: string
           default: STANDARD
@@ -16856,12 +16887,11 @@ components:
 
 
             If you set this parameter to `TIMESERIES`, set `"criteria.type" : "date"` and `"criteria.dateFormat" : "ISODATE"`.
+          readOnly: true
         criteria:
           $ref: "#/components/schemas/Criteria"
         dataExpirationRule:
           $ref: "#/components/schemas/DataExpirationRule"
-        dataProcessRegion:
-          $ref: "#/components/schemas/DataProcessRegion"
         dataSetName:
           type: string
           description: Human-readable label that identifies the dataset that Atlas
@@ -16871,6 +16901,7 @@ components:
           type: string
           description: Human-readable label of the database that contains the collection
             that contains the online archive.
+          readOnly: true
         groupId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the project that
@@ -16899,6 +16930,7 @@ components:
           items:
             $ref: "#/components/schemas/PartitionField"
           minItems: 1
+          readOnly: true
         paused:
           type: boolean
           description: Flag that indicates whether this online archive exists in the
@@ -18112,7 +18144,9 @@ components:
         emailAddress:
           type: string
           format: email
+          deprecated: true
           description: Email address that belongs to the MongoDB Cloud user.
+          readOnly: true
         firstName:
           type: string
           description: First or given name that belongs to the MongoDB Cloud user.
@@ -19372,13 +19406,19 @@ components:
           readOnly: true
         inbound:
           type: array
-          description: List of inbound IP addresses associated with the cluster.
+          description: List of inbound IP addresses associated with the cluster. If your
+            network allows outbound HTTP requests only to specific IP addresses,
+            you must allow access to the following IP addresses so that your
+            application can connect to your Atlas cluster.
           items:
             type: string
           readOnly: true
         outbound:
           type: array
-          description: List of outbound IP addresses associated with the cluster.
+          description: List of outbound IP addresses associated with the cluster. If your
+            network allows inbound HTTP requests only from specific IP
+            addresses, you must allow access from the following IP addresses so
+            that your Atlas cluster can communicate with your webhooks and KMS.
           items:
             type: string
           readOnly: true
@@ -19575,8 +19615,7 @@ components:
           readOnly: true
         type:
           type: string
-          description: "Type of the index. Warning: vectorSearch is not yet generally
-            available. Default type is search."
+          description: Type of the index. Default type is search.
         analyzer:
           type: string
           default: lucene.standard
@@ -19828,12 +19867,13 @@ components:
       properties:
         dataAccessIdentityProviderIds:
           type: array
-          description: The collection of unique ids of the identity providers for org's
-            data access.
+          description: The collection of unique ids representing the identity providers
+            that can be used for data access in this organization.
           items:
             type: string
-            description: Unique 24-hexadecimal digit string that identifies the id of the
-              identity provider for org's data access.
+            description: Unique 24-hexadecimal digit string that represents the id of the
+              identity providers that can be used for data access in this
+              organization.
             example: 32b6e34b3d91647abb20e7b8
             maxLength: 24
             minLength: 24
@@ -19869,10 +19909,12 @@ components:
         postAuthRoleGrants:
           type: array
           description: Atlas roles that are granted to a user in this organization after
-            authenticating.
+            authenticating. Roles are a human-readable label that identifies the
+            collection of privileges that MongoDB Cloud grants a specific
+            MongoDB Cloud user. These roles can only be organization specific
+            roles.
           items:
             type: string
-            description: Organization role the user has in Atlas.
           uniqueItems: true
         roleMappings:
           type: array
@@ -19890,6 +19932,15 @@ components:
         - domainRestrictionEnabled
         - identityProviderId
         - orgId
+    ControlPlaneIPAddresses:
+      type: object
+      description: List of IP addresses in the Atlas control plane.
+      properties:
+        inbound:
+          $ref: "#/components/schemas/InboundControlPlaneCloudProviderIPAddresses"
+        outbound:
+          $ref: "#/components/schemas/OutboundControlPlaneCloudProviderIPAddresses"
+      title: Control Plane IP Addresses
     CostExplorerFilterRequestBody:
       type: object
       description: Request body for a cost explorer query.
@@ -19955,6 +20006,7 @@ components:
       type: object
     CreateAtlasOrganizationApiKey:
       type: object
+      description: Details of the programmatic API key to be created.
       properties:
         desc:
           type: string
@@ -20128,6 +20180,28 @@ components:
             This parameter returns an empty object if no custom zones exist.
           items:
             $ref: "#/components/schemas/ZoneMapping"
+    DBRoleToExecute:
+      type: object
+      description: The name of a Built in or Custom DB Role to connect to an Atlas Cluster.
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        role:
+          type: string
+          description: The name of the role to use. Can be a built in role or a custom role.
+        type:
+          type: string
+          description: Type of the DB role. Can be either BuiltIn or Custom.
+          title: DB Role Type
     DBUserTLSX509Settings:
       type: object
       description: Settings to configure TLS Certificates for database users.
@@ -20309,10 +20383,11 @@ components:
       properties:
         level:
           type: string
-          description: "[Read Concern
-            level](https://www.mongodb.com/docs/manual/reference/read-concern/#\
-            read-concern-levels) that specifies the consistency and availability
-            of the data read."
+          description: Read Concern level that specifies the consistency and availability
+            of the data read.
+          externalDocs:
+            description: Read Concern Level
+            url: https://www.mongodb.com/docs/manual/reference/read-concern/#read-concern-levels
     DataLakeAtlasStoreReadPreference:
       type: object
       description: MongoDB Cloud cluster read preference, which describes how to route
@@ -22671,6 +22746,26 @@ components:
         protocol:
           type: string
           description: The protocol of the identity provider.
+        audienceClaim:
+          type: array
+          description: Identifier of the intended recipient of the token.
+          items:
+            type: string
+        clientId:
+          type: string
+          description: Client identifier that is assigned to an application by the
+            Identity Provider.
+        groupsClaim:
+          type: string
+          description: Identifier of the claim which contains IdP Group IDs in the token.
+        requestedScopes:
+          type: array
+          description: The description of an IdP, configured by customers.
+          items:
+            type: string
+        userClaim:
+          type: string
+          description: Identifier of the claim which contains the user ID in the token.
         acsUrl:
           type: string
           description: URL that points to where to send the SAML response.
@@ -22699,26 +22794,6 @@ components:
         status:
           type: string
           description: String enum that indicates whether the identity provider is active.
-        audienceClaim:
-          type: array
-          description: Identifier of the intended recipient of the token.
-          items:
-            type: string
-        clientId:
-          type: string
-          description: Client identifier that is assigned to an application by the
-            Identity Provider.
-        groupsClaim:
-          type: string
-          description: Identifier of the claim which contains IdP Group IDs in the token.
-        requestedScopes:
-          type: array
-          description: The description of an IdP, configured by customers.
-          items:
-            type: string
-        userClaim:
-          type: string
-          description: Identifier of the claim which contains the user ID in the token.
       required:
         - id
         - oktaIdpId
@@ -23378,7 +23453,7 @@ components:
           type: string
           description: User claim for the identity provider.
         pemFileInfo:
-          $ref: "#/components/schemas/PemFileInfo"
+          $ref: "#/components/schemas/PemFileInfoUpdate"
         requestBinding:
           type: string
           description: SAML Authentication Request Protocol HTTP method binding (POST or
@@ -23403,6 +23478,70 @@ components:
         status:
           type: string
           description: String enum that indicates whether the identity provider is active.
+    InboundControlPlaneCloudProviderIPAddresses:
+      type: object
+      description: List of inbound IP addresses to the Atlas control plane,
+        categorized by cloud provider. If your application allows outbound HTTP
+        requests only to specific IP addresses, you must allow access to the
+        following IP addresses so that your API requests can reach the Atlas
+        control plane.
+      properties:
+        aws:
+          type: object
+          additionalProperties:
+            type: array
+            description: Control plane IP addresses in AWS. Each key identifies an Amazon
+              Web Services (AWS) region. Each value identifies control plane IP
+              addresses in the AWS region.
+            items:
+              type: string
+              description: Control plane IP addresses in AWS. Each key identifies an Amazon
+                Web Services (AWS) region. Each value identifies control plane
+                IP addresses in the AWS region.
+              readOnly: true
+            readOnly: true
+          description: Control plane IP addresses in AWS. Each key identifies an Amazon
+            Web Services (AWS) region. Each value identifies control plane IP
+            addresses in the AWS region.
+          readOnly: true
+        azure:
+          type: object
+          additionalProperties:
+            type: array
+            description: Control plane IP addresses in Azure. Each key identifies an Azure
+              region. Each value identifies control plane IP addresses in the
+              Azure region.
+            items:
+              type: string
+              description: Control plane IP addresses in Azure. Each key identifies an Azure
+                region. Each value identifies control plane IP addresses in the
+                Azure region.
+              readOnly: true
+            readOnly: true
+          description: Control plane IP addresses in Azure. Each key identifies an Azure
+            region. Each value identifies control plane IP addresses in the
+            Azure region.
+          readOnly: true
+        gcp:
+          type: object
+          additionalProperties:
+            type: array
+            description: Control plane IP addresses in GCP. Each key identifies a Google
+              Cloud (GCP) region. Each value identifies control plane IP
+              addresses in the GCP region.
+            items:
+              type: string
+              description: Control plane IP addresses in GCP. Each key identifies a Google
+                Cloud (GCP) region. Each value identifies control plane IP
+                addresses in the GCP region.
+              readOnly: true
+            readOnly: true
+          description: Control plane IP addresses in GCP. Each key identifies a Google
+            Cloud (GCP) region. Each value identifies control plane IP addresses
+            in the GCP region.
+          readOnly: true
+      readOnly: true
+      title: Inbound Control Plane IP Addresses By Cloud Provider
     IndexOptions:
       type: object
       description: One or more settings that determine how the MongoDB Cloud creates
@@ -25478,6 +25617,8 @@ components:
           readOnly: true
         groupRoleAssignments:
           type: array
+          description: List of projects that the user will be added to when they accept
+            their invitation to the organization.
           items:
             $ref: "#/components/schemas/GroupRole"
           uniqueItems: true
@@ -25567,6 +25708,8 @@ components:
       properties:
         groupRoleAssignments:
           type: array
+          description: List of projects that the user will be added to when they accept
+            their invitation to the organization.
           items:
             $ref: "#/components/schemas/OrganizationInvitationGroupRoleAssignmentsRequest"
         roles:
@@ -25597,6 +25740,8 @@ components:
       properties:
         groupRoleAssignments:
           type: array
+          description: List of projects that the user will be added to when they accept
+            their invitation to the organization.
           items:
             $ref: "#/components/schemas/OrganizationInvitationGroupRoleAssignmentsRequest"
         roles:
@@ -25643,6 +25788,70 @@ components:
             the Atlas deployment to resolve support issues. To learn more, see:
             https://www.mongodb.com/docs/atlas/security-restrict-support-access\
             /."
+    OutboundControlPlaneCloudProviderIPAddresses:
+      type: object
+      description: List of outbound IP addresses from the Atlas control plane,
+        categorized by cloud provider. If your network allows inbound HTTP
+        requests only from specific IP addresses, you must allow access from the
+        following IP addresses so that Atlas can communicate with your webhooks
+        and KMS.
+      properties:
+        aws:
+          type: object
+          additionalProperties:
+            type: array
+            description: Control plane IP addresses in AWS. Each key identifies an Amazon
+              Web Services (AWS) region. Each value identifies control plane IP
+              addresses in the AWS region.
+            items:
+              type: string
+              description: Control plane IP addresses in AWS. Each key identifies an Amazon
+                Web Services (AWS) region. Each value identifies control plane
+                IP addresses in the AWS region.
+              readOnly: true
+            readOnly: true
+          description: Control plane IP addresses in AWS. Each key identifies an Amazon
+            Web Services (AWS) region. Each value identifies control plane IP
+            addresses in the AWS region.
+          readOnly: true
+        azure:
+          type: object
+          additionalProperties:
+            type: array
+            description: Control plane IP addresses in Azure. Each key identifies an Azure
+              region. Each value identifies control plane IP addresses in the
+              Azure region.
+            items:
+              type: string
+              description: Control plane IP addresses in Azure. Each key identifies an Azure
+                region. Each value identifies control plane IP addresses in the
+                Azure region.
+              readOnly: true
+            readOnly: true
+          description: Control plane IP addresses in Azure. Each key identifies an Azure
+            region. Each value identifies control plane IP addresses in the
+            Azure region.
+          readOnly: true
+        gcp:
+          type: object
+          additionalProperties:
+            type: array
+            description: Control plane IP addresses in GCP. Each key identifies a Google
+              Cloud (GCP) region. Each value identifies control plane IP
+              addresses in the GCP region.
+            items:
+              type: string
+              description: Control plane IP addresses in GCP. Each key identifies a Google
+                Cloud (GCP) region. Each value identifies control plane IP
+                addresses in the GCP region.
+              readOnly: true
+            readOnly: true
+          description: Control plane IP addresses in GCP. Each key identifies a Google
+            Cloud (GCP) region. Each value identifies control plane IP addresses
+            in the GCP region.
+          readOnly: true
+      readOnly: true
+      title: Outbound Control Plane IP Addresses By Cloud Provider
     PaginatedHostView_Atlas:
       type: object
       properties:
@@ -25672,14 +25881,28 @@ components:
           readOnly: true
     PemFileInfo:
       type: object
-      description: PEM file information for the identity provider's certificates.
+      description: PEM file information for the identity provider's current certificates.
       properties:
         certificates:
           type: array
+          description: List of certificates in the file.
           items:
             $ref: "#/components/schemas/X509Certificate"
         fileName:
           type: string
+          description: Human-readable label given to the file.
+    PemFileInfoUpdate:
+      type: object
+      description: PEM file information for the identity provider's certificates.
+      properties:
+        certificates:
+          type: array
+          description: List of certificates in the file.
+          items:
+            $ref: "#/components/schemas/X509CertificateUpdate"
+        fileName:
+          type: string
+          description: Human-readable label given to the file.
     PerformanceAdvisorIndex:
       type: object
       properties:
@@ -26950,6 +27173,8 @@ components:
         clusterName:
           type: string
           description: Name of the cluster configured for this connection.
+        dbRoleToExecute:
+          $ref: "#/components/schemas/DBRoleToExecute"
         authentication:
           $ref: "#/components/schemas/StreamsKafkaAuthentication"
         bootstrapServers:
@@ -26972,6 +27197,8 @@ components:
       readOnly: true
     StreamsDataProcessRegion:
       type: object
+      description: Information about the cloud provider region in which MongoDB Cloud
+        processes the stream.
       properties:
         cloudProvider:
           type: string
@@ -27529,31 +27756,14 @@ components:
           type: boolean
           description: Flag that indicates whether someone has activated the Prometheus
             integration.
-        listenAddress:
-          type: string
-          default: :9216
-          description: Combination of IPv4 address and Internet Assigned Numbers Authority
-            (IANA) port or the IANA port alone to which Prometheus binds to
-            ingest MongoDB metrics.
         password:
           type: string
+          description: Password needed to allow MongoDB Cloud to access your Prometheus
+            account.
           writeOnly: true
-        rateLimitInterval:
-          type: integer
-          format: int32
-          writeOnly: true
-        scheme:
-          type: string
-          description: Security Scheme to apply to HyperText Transfer Protocol (HTTP)
-            traffic between Prometheus and MongoDB Cloud.
         serviceDiscovery:
           type: string
           description: Desired method to discover the Prometheus service.
-        tlsPemPath:
-          type: string
-          description: Root-relative path to the Transport Layer Security (TLS) Privacy
-            Enhanced Mail (PEM) key and certificate file on the host.
-          example: /path/to/file
         username:
           type: string
           description: Human-readable label that identifies your Prometheus incoming
@@ -27945,14 +28155,28 @@ components:
     X509Certificate:
       type: object
       properties:
-        content:
-          type: string
         notAfter:
           type: string
           format: date-time
+          description: Latest date that the certificate is valid.
         notBefore:
           type: string
           format: date-time
+          description: Earliest date that the certificate is valid.
+    X509CertificateUpdate:
+      type: object
+      properties:
+        content:
+          type: string
+          description: Certificate content.
+        notAfter:
+          type: string
+          format: date-time
+          description: Latest date that the certificate is valid.
+        notBefore:
+          type: string
+          format: date-time
+          description: Earliest date that the certificate is valid.
     ZoneMapping:
       type: object
       description: Human-readable label that identifies the subset of a global cluster.
@@ -28043,6 +28267,7 @@ components:
           minLength: 1
         severity:
           type: string
+          description: Severity of the event.
       readOnly: true
     AWSCustomDNSEnabled:
       type: object

@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 )
 
-// StreamsDataProcessRegion struct for StreamsDataProcessRegion
+// StreamsDataProcessRegion Information about the cloud provider region in which MongoDB Cloud processes the stream.
 type StreamsDataProcessRegion struct {
 	// Label that identifies the cloud service provider where MongoDB Cloud performs stream processing. Currently, this parameter supports AWS only.
 	CloudProvider string `json:"cloudProvider"`

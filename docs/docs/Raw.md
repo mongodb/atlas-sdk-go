@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the event. | [optional] [readonly] 
 **OrgId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the organization to which these events apply. | [optional] [readonly] 
 **OrgName** | Pointer to **string** | Human-readable label that identifies the organization that contains the project. | [optional] 
-**Severity** | Pointer to **string** |  | [optional] 
+**Severity** | Pointer to **string** | Severity of the event. | [optional] 
 
 ## Methods
 

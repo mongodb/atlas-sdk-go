@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**GroupRoleAssignments** | Pointer to [**[]OrganizationInvitationGroupRoleAssignmentsRequest**](OrganizationInvitationGroupRoleAssignmentsRequest.md) |  | [optional] 
+**GroupRoleAssignments** | Pointer to [**[]OrganizationInvitationGroupRoleAssignmentsRequest**](OrganizationInvitationGroupRoleAssignmentsRequest.md) | List of projects that the user will be added to when they accept their invitation to the organization. | [optional] 
 **Roles** | Pointer to **[]string** | One or more organization level roles to assign to the MongoDB Cloud user. | [optional] 
 **TeamIds** | Pointer to **[]string** | List of teams to which you want to invite the desired MongoDB Cloud user. | [optional] 
 **Username** | Pointer to **string** | Email address that belongs to the desired MongoDB Cloud user. | [optional] 
