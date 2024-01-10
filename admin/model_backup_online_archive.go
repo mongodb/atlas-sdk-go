@@ -15,21 +15,24 @@ type BackupOnlineArchive struct {
 	// Read only field.
 	ClusterName *string `json:"clusterName,omitempty"`
 	// Human-readable label that identifies the collection for which you created the online archive.
+	// Read only field.
 	CollName *string `json:"collName,omitempty"`
 	// Classification of MongoDB database collection that you want to return.  If you set this parameter to `TIMESERIES`, set `\"criteria.type\" : \"date\"` and `\"criteria.dateFormat\" : \"ISODATE\"`.
+	// Read only field.
 	CollectionType     *string             `json:"collectionType,omitempty"`
 	Criteria           *Criteria           `json:"criteria,omitempty"`
 	DataExpirationRule *DataExpirationRule `json:"dataExpirationRule,omitempty"`
-	DataProcessRegion  *DataProcessRegion  `json:"dataProcessRegion,omitempty"`
 	// Human-readable label that identifies the dataset that Atlas generates for this online archive.
 	// Read only field.
 	DataSetName *string `json:"dataSetName,omitempty"`
 	// Human-readable label of the database that contains the collection that contains the online archive.
+	// Read only field.
 	DbName *string `json:"dbName,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project that contains the specified cluster. The specified cluster contains the collection for which to create the online archive.
 	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
 	// List that contains document parameters to use to logically divide data within a collection. Partitions provide a coarse level of filtering of the underlying collection data. To divide your data, specify parameters that you frequently query. If you \"specified :criteria.type\": \"DATE\" in the CREATE ONE ONLINE ARCHIVE endpoint, then you can specify up to three parameters by which to query. One of these parameters must be the DATE value, which is required in this case. If you \"specified :criteria.type\": \"CUSTOM\" in the CREATE ONE ONLINE ARCHIVE endpoint, then you can specify up to two parameters by which to query. Queries that don't use \":criteria.type\": \"DATE\" or \":criteria.type\": \"CUSTOM\" parameters cause MongoDB to scan a full collection of all archived documents. This takes more time and increases your costs.
+	// Read only field.
 	PartitionFields *[]PartitionField `json:"partitionFields,omitempty"`
 	// Flag that indicates whether this online archive exists in the paused state. A request to resume fails if the collection has another active online archive. To pause an active online archive or resume a paused online archive, you must include this parameter. To pause an active archive, set this to **true**. To resume a paused archive, set this to **false**.
 	Paused   *bool                  `json:"paused,omitempty"`
@@ -45,8 +48,6 @@ type BackupOnlineArchive struct {
 // will change when the set of required properties is changed
 func NewBackupOnlineArchive() *BackupOnlineArchive {
 	this := BackupOnlineArchive{}
-	var collectionType string = "STANDARD"
-	this.CollectionType = &collectionType
 	return &this
 }
 
@@ -55,8 +56,6 @@ func NewBackupOnlineArchive() *BackupOnlineArchive {
 // but it doesn't guarantee that properties required by API are set
 func NewBackupOnlineArchiveWithDefaults() *BackupOnlineArchive {
 	this := BackupOnlineArchive{}
-	var collectionType string = "STANDARD"
-	this.CollectionType = &collectionType
 	return &this
 }
 
@@ -256,39 +255,6 @@ func (o *BackupOnlineArchive) HasDataExpirationRule() bool {
 // SetDataExpirationRule gets a reference to the given DataExpirationRule and assigns it to the DataExpirationRule field.
 func (o *BackupOnlineArchive) SetDataExpirationRule(v DataExpirationRule) {
 	o.DataExpirationRule = &v
-}
-
-// GetDataProcessRegion returns the DataProcessRegion field value if set, zero value otherwise
-func (o *BackupOnlineArchive) GetDataProcessRegion() DataProcessRegion {
-	if o == nil || IsNil(o.DataProcessRegion) {
-		var ret DataProcessRegion
-		return ret
-	}
-	return *o.DataProcessRegion
-}
-
-// GetDataProcessRegionOk returns a tuple with the DataProcessRegion field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BackupOnlineArchive) GetDataProcessRegionOk() (*DataProcessRegion, bool) {
-	if o == nil || IsNil(o.DataProcessRegion) {
-		return nil, false
-	}
-
-	return o.DataProcessRegion, true
-}
-
-// HasDataProcessRegion returns a boolean if a field has been set.
-func (o *BackupOnlineArchive) HasDataProcessRegion() bool {
-	if o != nil && !IsNil(o.DataProcessRegion) {
-		return true
-	}
-
-	return false
-}
-
-// SetDataProcessRegion gets a reference to the given DataProcessRegion and assigns it to the DataProcessRegion field.
-func (o *BackupOnlineArchive) SetDataProcessRegion(v DataProcessRegion) {
-	o.DataProcessRegion = &v
 }
 
 // GetDataSetName returns the DataSetName field value if set, zero value otherwise
@@ -531,26 +497,11 @@ func (o BackupOnlineArchive) MarshalJSONWithoutReadOnly() ([]byte, error) {
 }
 func (o BackupOnlineArchive) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CollName) {
-		toSerialize["collName"] = o.CollName
-	}
-	if !IsNil(o.CollectionType) {
-		toSerialize["collectionType"] = o.CollectionType
-	}
 	if !IsNil(o.Criteria) {
 		toSerialize["criteria"] = o.Criteria
 	}
 	if !IsNil(o.DataExpirationRule) {
 		toSerialize["dataExpirationRule"] = o.DataExpirationRule
-	}
-	if !IsNil(o.DataProcessRegion) {
-		toSerialize["dataProcessRegion"] = o.DataProcessRegion
-	}
-	if !IsNil(o.DbName) {
-		toSerialize["dbName"] = o.DbName
-	}
-	if !IsNil(o.PartitionFields) {
-		toSerialize["partitionFields"] = o.PartitionFields
 	}
 	if !IsNil(o.Paused) {
 		toSerialize["paused"] = o.Paused

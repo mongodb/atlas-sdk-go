@@ -28,18 +28,11 @@ type ThridPartyIntegration struct {
 	ServiceKey *string `json:"serviceKey,omitempty"`
 	// Flag that indicates whether someone has activated the Prometheus integration.
 	Enabled *bool `json:"enabled,omitempty"`
-	// Combination of IPv4 address and Internet Assigned Numbers Authority (IANA) port or the IANA port alone to which Prometheus binds to ingest MongoDB metrics.
-	ListenAddress *string `json:"listenAddress,omitempty"`
+	// Password needed to allow MongoDB Cloud to access your Prometheus account.
 	// Write only field.
 	Password *string `json:"password,omitempty"`
-	// Write only field.
-	RateLimitInterval *int `json:"rateLimitInterval,omitempty"`
-	// Security Scheme to apply to HyperText Transfer Protocol (HTTP) traffic between Prometheus and MongoDB Cloud.
-	Scheme *string `json:"scheme,omitempty"`
 	// Desired method to discover the Prometheus service.
 	ServiceDiscovery *string `json:"serviceDiscovery,omitempty"`
-	// Root-relative path to the Transport Layer Security (TLS) Privacy Enhanced Mail (PEM) key and certificate file on the host.
-	TlsPemPath *string `json:"tlsPemPath,omitempty"`
 	// Human-readable label that identifies your Prometheus incoming webhook.
 	Username *string `json:"username,omitempty"`
 	// Key that allows MongoDB Cloud to access your Slack account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.  **IMPORTANT**: Slack integrations now use the OAuth2 verification method and must  be initially configured, or updated from a legacy integration, through the Atlas  third-party service integrations page. Legacy tokens will soon no longer be  supported.
@@ -62,8 +55,6 @@ type ThridPartyIntegration struct {
 // will change when the set of required properties is changed
 func NewThridPartyIntegration() *ThridPartyIntegration {
 	this := ThridPartyIntegration{}
-	var listenAddress string = ":9216"
-	this.ListenAddress = &listenAddress
 	return &this
 }
 
@@ -72,8 +63,6 @@ func NewThridPartyIntegration() *ThridPartyIntegration {
 // but it doesn't guarantee that properties required by API are set
 func NewThridPartyIntegrationWithDefaults() *ThridPartyIntegration {
 	this := ThridPartyIntegration{}
-	var listenAddress string = ":9216"
-	this.ListenAddress = &listenAddress
 	return &this
 }
 
@@ -407,39 +396,6 @@ func (o *ThridPartyIntegration) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
-// GetListenAddress returns the ListenAddress field value if set, zero value otherwise
-func (o *ThridPartyIntegration) GetListenAddress() string {
-	if o == nil || IsNil(o.ListenAddress) {
-		var ret string
-		return ret
-	}
-	return *o.ListenAddress
-}
-
-// GetListenAddressOk returns a tuple with the ListenAddress field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ThridPartyIntegration) GetListenAddressOk() (*string, bool) {
-	if o == nil || IsNil(o.ListenAddress) {
-		return nil, false
-	}
-
-	return o.ListenAddress, true
-}
-
-// HasListenAddress returns a boolean if a field has been set.
-func (o *ThridPartyIntegration) HasListenAddress() bool {
-	if o != nil && !IsNil(o.ListenAddress) {
-		return true
-	}
-
-	return false
-}
-
-// SetListenAddress gets a reference to the given string and assigns it to the ListenAddress field.
-func (o *ThridPartyIntegration) SetListenAddress(v string) {
-	o.ListenAddress = &v
-}
-
 // GetPassword returns the Password field value if set, zero value otherwise
 func (o *ThridPartyIntegration) GetPassword() string {
 	if o == nil || IsNil(o.Password) {
@@ -473,72 +429,6 @@ func (o *ThridPartyIntegration) SetPassword(v string) {
 	o.Password = &v
 }
 
-// GetRateLimitInterval returns the RateLimitInterval field value if set, zero value otherwise
-func (o *ThridPartyIntegration) GetRateLimitInterval() int {
-	if o == nil || IsNil(o.RateLimitInterval) {
-		var ret int
-		return ret
-	}
-	return *o.RateLimitInterval
-}
-
-// GetRateLimitIntervalOk returns a tuple with the RateLimitInterval field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ThridPartyIntegration) GetRateLimitIntervalOk() (*int, bool) {
-	if o == nil || IsNil(o.RateLimitInterval) {
-		return nil, false
-	}
-
-	return o.RateLimitInterval, true
-}
-
-// HasRateLimitInterval returns a boolean if a field has been set.
-func (o *ThridPartyIntegration) HasRateLimitInterval() bool {
-	if o != nil && !IsNil(o.RateLimitInterval) {
-		return true
-	}
-
-	return false
-}
-
-// SetRateLimitInterval gets a reference to the given int and assigns it to the RateLimitInterval field.
-func (o *ThridPartyIntegration) SetRateLimitInterval(v int) {
-	o.RateLimitInterval = &v
-}
-
-// GetScheme returns the Scheme field value if set, zero value otherwise
-func (o *ThridPartyIntegration) GetScheme() string {
-	if o == nil || IsNil(o.Scheme) {
-		var ret string
-		return ret
-	}
-	return *o.Scheme
-}
-
-// GetSchemeOk returns a tuple with the Scheme field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ThridPartyIntegration) GetSchemeOk() (*string, bool) {
-	if o == nil || IsNil(o.Scheme) {
-		return nil, false
-	}
-
-	return o.Scheme, true
-}
-
-// HasScheme returns a boolean if a field has been set.
-func (o *ThridPartyIntegration) HasScheme() bool {
-	if o != nil && !IsNil(o.Scheme) {
-		return true
-	}
-
-	return false
-}
-
-// SetScheme gets a reference to the given string and assigns it to the Scheme field.
-func (o *ThridPartyIntegration) SetScheme(v string) {
-	o.Scheme = &v
-}
-
 // GetServiceDiscovery returns the ServiceDiscovery field value if set, zero value otherwise
 func (o *ThridPartyIntegration) GetServiceDiscovery() string {
 	if o == nil || IsNil(o.ServiceDiscovery) {
@@ -570,39 +460,6 @@ func (o *ThridPartyIntegration) HasServiceDiscovery() bool {
 // SetServiceDiscovery gets a reference to the given string and assigns it to the ServiceDiscovery field.
 func (o *ThridPartyIntegration) SetServiceDiscovery(v string) {
 	o.ServiceDiscovery = &v
-}
-
-// GetTlsPemPath returns the TlsPemPath field value if set, zero value otherwise
-func (o *ThridPartyIntegration) GetTlsPemPath() string {
-	if o == nil || IsNil(o.TlsPemPath) {
-		var ret string
-		return ret
-	}
-	return *o.TlsPemPath
-}
-
-// GetTlsPemPathOk returns a tuple with the TlsPemPath field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ThridPartyIntegration) GetTlsPemPathOk() (*string, bool) {
-	if o == nil || IsNil(o.TlsPemPath) {
-		return nil, false
-	}
-
-	return o.TlsPemPath, true
-}
-
-// HasTlsPemPath returns a boolean if a field has been set.
-func (o *ThridPartyIntegration) HasTlsPemPath() bool {
-	if o != nil && !IsNil(o.TlsPemPath) {
-		return true
-	}
-
-	return false
-}
-
-// SetTlsPemPath gets a reference to the given string and assigns it to the TlsPemPath field.
-func (o *ThridPartyIntegration) SetTlsPemPath(v string) {
-	o.TlsPemPath = &v
 }
 
 // GetUsername returns the Username field value if set, zero value otherwise
@@ -875,23 +732,11 @@ func (o ThridPartyIntegration) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if !IsNil(o.ListenAddress) {
-		toSerialize["listenAddress"] = o.ListenAddress
-	}
 	if !IsNil(o.Password) {
 		toSerialize["password"] = o.Password
 	}
-	if !IsNil(o.RateLimitInterval) {
-		toSerialize["rateLimitInterval"] = o.RateLimitInterval
-	}
-	if !IsNil(o.Scheme) {
-		toSerialize["scheme"] = o.Scheme
-	}
 	if !IsNil(o.ServiceDiscovery) {
 		toSerialize["serviceDiscovery"] = o.ServiceDiscovery
-	}
-	if !IsNil(o.TlsPemPath) {
-		toSerialize["tlsPemPath"] = o.TlsPemPath
 	}
 	if !IsNil(o.Username) {
 		toSerialize["username"] = o.Username

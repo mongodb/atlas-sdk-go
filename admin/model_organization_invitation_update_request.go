@@ -8,6 +8,7 @@ import (
 
 // OrganizationInvitationUpdateRequest struct for OrganizationInvitationUpdateRequest
 type OrganizationInvitationUpdateRequest struct {
+	// List of projects that the user will be added to when they accept their invitation to the organization.
 	GroupRoleAssignments *[]OrganizationInvitationGroupRoleAssignmentsRequest `json:"groupRoleAssignments,omitempty"`
 	// One or more organization level roles to assign to the MongoDB Cloud user.
 	Roles *[]string `json:"roles,omitempty"`

@@ -6,35 +6,35 @@ import (
 	"encoding/json"
 )
 
-// PemFileInfo PEM file information for the identity provider's current certificates.
-type PemFileInfo struct {
+// PemFileInfoUpdate PEM file information for the identity provider's certificates.
+type PemFileInfoUpdate struct {
 	// List of certificates in the file.
-	Certificates *[]X509Certificate `json:"certificates,omitempty"`
+	Certificates *[]X509CertificateUpdate `json:"certificates,omitempty"`
 	// Human-readable label given to the file.
 	FileName *string `json:"fileName,omitempty"`
 }
 
-// NewPemFileInfo instantiates a new PemFileInfo object
+// NewPemFileInfoUpdate instantiates a new PemFileInfoUpdate object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPemFileInfo() *PemFileInfo {
-	this := PemFileInfo{}
+func NewPemFileInfoUpdate() *PemFileInfoUpdate {
+	this := PemFileInfoUpdate{}
 	return &this
 }
 
-// NewPemFileInfoWithDefaults instantiates a new PemFileInfo object
+// NewPemFileInfoUpdateWithDefaults instantiates a new PemFileInfoUpdate object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewPemFileInfoWithDefaults() *PemFileInfo {
-	this := PemFileInfo{}
+func NewPemFileInfoUpdateWithDefaults() *PemFileInfoUpdate {
+	this := PemFileInfoUpdate{}
 	return &this
 }
 
 // GetCertificates returns the Certificates field value if set, zero value otherwise
-func (o *PemFileInfo) GetCertificates() []X509Certificate {
+func (o *PemFileInfoUpdate) GetCertificates() []X509CertificateUpdate {
 	if o == nil || IsNil(o.Certificates) {
-		var ret []X509Certificate
+		var ret []X509CertificateUpdate
 		return ret
 	}
 	return *o.Certificates
@@ -42,7 +42,7 @@ func (o *PemFileInfo) GetCertificates() []X509Certificate {
 
 // GetCertificatesOk returns a tuple with the Certificates field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PemFileInfo) GetCertificatesOk() (*[]X509Certificate, bool) {
+func (o *PemFileInfoUpdate) GetCertificatesOk() (*[]X509CertificateUpdate, bool) {
 	if o == nil || IsNil(o.Certificates) {
 		return nil, false
 	}
@@ -51,7 +51,7 @@ func (o *PemFileInfo) GetCertificatesOk() (*[]X509Certificate, bool) {
 }
 
 // HasCertificates returns a boolean if a field has been set.
-func (o *PemFileInfo) HasCertificates() bool {
+func (o *PemFileInfoUpdate) HasCertificates() bool {
 	if o != nil && !IsNil(o.Certificates) {
 		return true
 	}
@@ -59,13 +59,13 @@ func (o *PemFileInfo) HasCertificates() bool {
 	return false
 }
 
-// SetCertificates gets a reference to the given []X509Certificate and assigns it to the Certificates field.
-func (o *PemFileInfo) SetCertificates(v []X509Certificate) {
+// SetCertificates gets a reference to the given []X509CertificateUpdate and assigns it to the Certificates field.
+func (o *PemFileInfoUpdate) SetCertificates(v []X509CertificateUpdate) {
 	o.Certificates = &v
 }
 
 // GetFileName returns the FileName field value if set, zero value otherwise
-func (o *PemFileInfo) GetFileName() string {
+func (o *PemFileInfoUpdate) GetFileName() string {
 	if o == nil || IsNil(o.FileName) {
 		var ret string
 		return ret
@@ -75,7 +75,7 @@ func (o *PemFileInfo) GetFileName() string {
 
 // GetFileNameOk returns a tuple with the FileName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PemFileInfo) GetFileNameOk() (*string, bool) {
+func (o *PemFileInfoUpdate) GetFileNameOk() (*string, bool) {
 	if o == nil || IsNil(o.FileName) {
 		return nil, false
 	}
@@ -84,7 +84,7 @@ func (o *PemFileInfo) GetFileNameOk() (*string, bool) {
 }
 
 // HasFileName returns a boolean if a field has been set.
-func (o *PemFileInfo) HasFileName() bool {
+func (o *PemFileInfoUpdate) HasFileName() bool {
 	if o != nil && !IsNil(o.FileName) {
 		return true
 	}
@@ -93,18 +93,18 @@ func (o *PemFileInfo) HasFileName() bool {
 }
 
 // SetFileName gets a reference to the given string and assigns it to the FileName field.
-func (o *PemFileInfo) SetFileName(v string) {
+func (o *PemFileInfoUpdate) SetFileName(v string) {
 	o.FileName = &v
 }
 
-func (o PemFileInfo) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o PemFileInfoUpdate) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o PemFileInfo) ToMap() (map[string]interface{}, error) {
+func (o PemFileInfoUpdate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Certificates) {
 		toSerialize["certificates"] = o.Certificates

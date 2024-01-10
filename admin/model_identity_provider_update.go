@@ -27,8 +27,8 @@ type IdentityProviderUpdate struct {
 	// Requested scopes for the identity provider.
 	RequestedScopes *[]string `json:"requestedScopes,omitempty"`
 	// User claim for the identity provider.
-	UserClaim   *string      `json:"userClaim,omitempty"`
-	PemFileInfo *PemFileInfo `json:"pemFileInfo,omitempty"`
+	UserClaim   *string            `json:"userClaim,omitempty"`
+	PemFileInfo *PemFileInfoUpdate `json:"pemFileInfo,omitempty"`
 	// SAML Authentication Request Protocol HTTP method binding (POST or REDIRECT) that Federated Authentication uses to send the authentication request.
 	RequestBinding *string `json:"requestBinding,omitempty"`
 	// Signature algorithm that Federated Authentication uses to encrypt the identity provider signature.
@@ -391,9 +391,9 @@ func (o *IdentityProviderUpdate) SetUserClaim(v string) {
 }
 
 // GetPemFileInfo returns the PemFileInfo field value if set, zero value otherwise
-func (o *IdentityProviderUpdate) GetPemFileInfo() PemFileInfo {
+func (o *IdentityProviderUpdate) GetPemFileInfo() PemFileInfoUpdate {
 	if o == nil || IsNil(o.PemFileInfo) {
-		var ret PemFileInfo
+		var ret PemFileInfoUpdate
 		return ret
 	}
 	return *o.PemFileInfo
@@ -401,7 +401,7 @@ func (o *IdentityProviderUpdate) GetPemFileInfo() PemFileInfo {
 
 // GetPemFileInfoOk returns a tuple with the PemFileInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentityProviderUpdate) GetPemFileInfoOk() (*PemFileInfo, bool) {
+func (o *IdentityProviderUpdate) GetPemFileInfoOk() (*PemFileInfoUpdate, bool) {
 	if o == nil || IsNil(o.PemFileInfo) {
 		return nil, false
 	}
@@ -418,8 +418,8 @@ func (o *IdentityProviderUpdate) HasPemFileInfo() bool {
 	return false
 }
 
-// SetPemFileInfo gets a reference to the given PemFileInfo and assigns it to the PemFileInfo field.
-func (o *IdentityProviderUpdate) SetPemFileInfo(v PemFileInfo) {
+// SetPemFileInfo gets a reference to the given PemFileInfoUpdate and assigns it to the PemFileInfo field.
+func (o *IdentityProviderUpdate) SetPemFileInfo(v PemFileInfoUpdate) {
 	o.PemFileInfo = &v
 }
 

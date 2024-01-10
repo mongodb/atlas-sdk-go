@@ -130,6 +130,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
 *DatabaseUsersApi* | [GetDatabaseUser](./docs/DatabaseUsersApi.md#getdatabaseuser) | **Get** /api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username} | Return One Database User from One Project | Stable
 *DatabaseUsersApi* | [ListDatabaseUsers](./docs/DatabaseUsersApi.md#listdatabaseusers) | **Get** /api/atlas/v2/groups/{groupId}/databaseUsers | Return All Database Users from One Project | Stable
 *DatabaseUsersApi* | [UpdateDatabaseUser](./docs/DatabaseUsersApi.md#updatedatabaseuser) | **Patch** /api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username} | Update One Database User in One Project | Stable
+*DefaultApi* | [ReturnAllControlPlaneIPAddresses](./docs/DefaultApi.md#returnallcontrolplaneipaddresses) | **Get** /api/atlas/v2/unauth/controlPlaneIPAddresses | Return All Control Plane IP Addresses | Experimental
 *EncryptionAtRestUsingCustomerKeyManagementApi* | [GetEncryptionAtRest](./docs/EncryptionAtRestUsingCustomerKeyManagementApi.md#getencryptionatrest) | **Get** /api/atlas/v2/groups/{groupId}/encryptionAtRest | Return One Configuration for Encryption at Rest using Customer-Managed Keys for One Project | Stable
 *EncryptionAtRestUsingCustomerKeyManagementApi* | [UpdateEncryptionAtRest](./docs/EncryptionAtRestUsingCustomerKeyManagementApi.md#updateencryptionatrest) | **Patch** /api/atlas/v2/groups/{groupId}/encryptionAtRest | Update Configuration for Encryption at Rest using Customer-Managed Keys for One Project | Experimental
 *EventsApi* | [GetOrganizationEvent](./docs/EventsApi.md#getorganizationevent) | **Get** /api/atlas/v2/orgs/{orgId}/events/{eventId} | Return One Event from One Organization | Experimental
@@ -431,6 +432,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [Collation](./docs/Collation.md)
  - [ComponentLabel](./docs/ComponentLabel.md)
  - [ConnectedOrgConfig](./docs/ConnectedOrgConfig.md)
+ - [ControlPlaneIPAddresses](./docs/ControlPlaneIPAddresses.md)
  - [CostExplorerFilterRequestBody](./docs/CostExplorerFilterRequestBody.md)
  - [CostExplorerFilterResponse](./docs/CostExplorerFilterResponse.md)
  - [CreateAtlasOrganizationApiKey](./docs/CreateAtlasOrganizationApiKey.md)
@@ -441,6 +443,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [CreateOrganizationResponse](./docs/CreateOrganizationResponse.md)
  - [Criteria](./docs/Criteria.md)
  - [CustomZoneMappings](./docs/CustomZoneMappings.md)
+ - [DBRoleToExecute](./docs/DBRoleToExecute.md)
  - [DBUserTLSX509Settings](./docs/DBUserTLSX509Settings.md)
  - [DataExpirationRule](./docs/DataExpirationRule.md)
  - [DataFederationLimit](./docs/DataFederationLimit.md)
@@ -513,6 +516,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [GroupSettings](./docs/GroupSettings.md)
  - [HardwareSpec](./docs/HardwareSpec.md)
  - [IdentityProviderUpdate](./docs/IdentityProviderUpdate.md)
+ - [InboundControlPlaneCloudProviderIPAddresses](./docs/InboundControlPlaneCloudProviderIPAddresses.md)
  - [IndexOptions](./docs/IndexOptions.md)
  - [IngestionPipelineRun](./docs/IngestionPipelineRun.md)
  - [IngestionSink](./docs/IngestionSink.md)
@@ -557,6 +561,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [OrganizationInvitationRequest](./docs/OrganizationInvitationRequest.md)
  - [OrganizationInvitationUpdateRequest](./docs/OrganizationInvitationUpdateRequest.md)
  - [OrganizationSettings](./docs/OrganizationSettings.md)
+ - [OutboundControlPlaneCloudProviderIPAddresses](./docs/OutboundControlPlaneCloudProviderIPAddresses.md)
  - [PaginatedAdvancedClusterDescription](./docs/PaginatedAdvancedClusterDescription.md)
  - [PaginatedAlert](./docs/PaginatedAlert.md)
  - [PaginatedAlertConfig](./docs/PaginatedAlertConfig.md)
@@ -602,6 +607,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [PaginatedUserCert](./docs/PaginatedUserCert.md)
  - [PartitionField](./docs/PartitionField.md)
  - [PemFileInfo](./docs/PemFileInfo.md)
+ - [PemFileInfoUpdate](./docs/PemFileInfoUpdate.md)
  - [PerformanceAdvisorIndex](./docs/PerformanceAdvisorIndex.md)
  - [PerformanceAdvisorOpStats](./docs/PerformanceAdvisorOpStats.md)
  - [PerformanceAdvisorOperation](./docs/PerformanceAdvisorOperation.md)
@@ -666,6 +672,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [UserSecurity](./docs/UserSecurity.md)
  - [UserToDNMapping](./docs/UserToDNMapping.md)
  - [X509Certificate](./docs/X509Certificate.md)
+ - [X509CertificateUpdate](./docs/X509CertificateUpdate.md)
  - [ZoneMapping](./docs/ZoneMapping.md)
 
 

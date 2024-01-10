@@ -7,33 +7,68 @@ import (
 	"time"
 )
 
-// X509Certificate struct for X509Certificate
-type X509Certificate struct {
+// X509CertificateUpdate struct for X509CertificateUpdate
+type X509CertificateUpdate struct {
+	// Certificate content.
+	Content *string `json:"content,omitempty"`
 	// Latest date that the certificate is valid.
 	NotAfter *time.Time `json:"notAfter,omitempty"`
 	// Earliest date that the certificate is valid.
 	NotBefore *time.Time `json:"notBefore,omitempty"`
 }
 
-// NewX509Certificate instantiates a new X509Certificate object
+// NewX509CertificateUpdate instantiates a new X509CertificateUpdate object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewX509Certificate() *X509Certificate {
-	this := X509Certificate{}
+func NewX509CertificateUpdate() *X509CertificateUpdate {
+	this := X509CertificateUpdate{}
 	return &this
 }
 
-// NewX509CertificateWithDefaults instantiates a new X509Certificate object
+// NewX509CertificateUpdateWithDefaults instantiates a new X509CertificateUpdate object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewX509CertificateWithDefaults() *X509Certificate {
-	this := X509Certificate{}
+func NewX509CertificateUpdateWithDefaults() *X509CertificateUpdate {
+	this := X509CertificateUpdate{}
 	return &this
+}
+
+// GetContent returns the Content field value if set, zero value otherwise
+func (o *X509CertificateUpdate) GetContent() string {
+	if o == nil || IsNil(o.Content) {
+		var ret string
+		return ret
+	}
+	return *o.Content
+}
+
+// GetContentOk returns a tuple with the Content field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *X509CertificateUpdate) GetContentOk() (*string, bool) {
+	if o == nil || IsNil(o.Content) {
+		return nil, false
+	}
+
+	return o.Content, true
+}
+
+// HasContent returns a boolean if a field has been set.
+func (o *X509CertificateUpdate) HasContent() bool {
+	if o != nil && !IsNil(o.Content) {
+		return true
+	}
+
+	return false
+}
+
+// SetContent gets a reference to the given string and assigns it to the Content field.
+func (o *X509CertificateUpdate) SetContent(v string) {
+	o.Content = &v
 }
 
 // GetNotAfter returns the NotAfter field value if set, zero value otherwise
-func (o *X509Certificate) GetNotAfter() time.Time {
+func (o *X509CertificateUpdate) GetNotAfter() time.Time {
 	if o == nil || IsNil(o.NotAfter) {
 		var ret time.Time
 		return ret
@@ -43,7 +78,7 @@ func (o *X509Certificate) GetNotAfter() time.Time {
 
 // GetNotAfterOk returns a tuple with the NotAfter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *X509Certificate) GetNotAfterOk() (*time.Time, bool) {
+func (o *X509CertificateUpdate) GetNotAfterOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.NotAfter) {
 		return nil, false
 	}
@@ -52,7 +87,7 @@ func (o *X509Certificate) GetNotAfterOk() (*time.Time, bool) {
 }
 
 // HasNotAfter returns a boolean if a field has been set.
-func (o *X509Certificate) HasNotAfter() bool {
+func (o *X509CertificateUpdate) HasNotAfter() bool {
 	if o != nil && !IsNil(o.NotAfter) {
 		return true
 	}
@@ -61,12 +96,12 @@ func (o *X509Certificate) HasNotAfter() bool {
 }
 
 // SetNotAfter gets a reference to the given time.Time and assigns it to the NotAfter field.
-func (o *X509Certificate) SetNotAfter(v time.Time) {
+func (o *X509CertificateUpdate) SetNotAfter(v time.Time) {
 	o.NotAfter = &v
 }
 
 // GetNotBefore returns the NotBefore field value if set, zero value otherwise
-func (o *X509Certificate) GetNotBefore() time.Time {
+func (o *X509CertificateUpdate) GetNotBefore() time.Time {
 	if o == nil || IsNil(o.NotBefore) {
 		var ret time.Time
 		return ret
@@ -76,7 +111,7 @@ func (o *X509Certificate) GetNotBefore() time.Time {
 
 // GetNotBeforeOk returns a tuple with the NotBefore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *X509Certificate) GetNotBeforeOk() (*time.Time, bool) {
+func (o *X509CertificateUpdate) GetNotBeforeOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.NotBefore) {
 		return nil, false
 	}
@@ -85,7 +120,7 @@ func (o *X509Certificate) GetNotBeforeOk() (*time.Time, bool) {
 }
 
 // HasNotBefore returns a boolean if a field has been set.
-func (o *X509Certificate) HasNotBefore() bool {
+func (o *X509CertificateUpdate) HasNotBefore() bool {
 	if o != nil && !IsNil(o.NotBefore) {
 		return true
 	}
@@ -94,19 +129,22 @@ func (o *X509Certificate) HasNotBefore() bool {
 }
 
 // SetNotBefore gets a reference to the given time.Time and assigns it to the NotBefore field.
-func (o *X509Certificate) SetNotBefore(v time.Time) {
+func (o *X509CertificateUpdate) SetNotBefore(v time.Time) {
 	o.NotBefore = &v
 }
 
-func (o X509Certificate) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o X509CertificateUpdate) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o X509Certificate) ToMap() (map[string]interface{}, error) {
+func (o X509CertificateUpdate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Content) {
+		toSerialize["content"] = o.Content
+	}
 	if !IsNil(o.NotAfter) {
 		toSerialize["notAfter"] = o.NotAfter
 	}

@@ -11,10 +11,10 @@ type ClusterIPAddresses struct {
 	// Human-readable label that identifies the cluster.
 	// Read only field.
 	ClusterName *string `json:"clusterName,omitempty"`
-	// List of inbound IP addresses associated with the cluster.
+	// List of inbound IP addresses associated with the cluster. If your network allows outbound HTTP requests only to specific IP addresses, you must allow access to the following IP addresses so that your application can connect to your Atlas cluster.
 	// Read only field.
 	Inbound *[]string `json:"inbound,omitempty"`
-	// List of outbound IP addresses associated with the cluster.
+	// List of outbound IP addresses associated with the cluster. If your network allows inbound HTTP requests only from specific IP addresses, you must allow access from the following IP addresses so that your Atlas cluster can communicate with your webhooks and KMS.
 	// Read only field.
 	Outbound *[]string `json:"outbound,omitempty"`
 }

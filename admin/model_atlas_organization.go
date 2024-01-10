@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 )
 
-// AtlasOrganization struct for AtlasOrganization
+// AtlasOrganization Details that describe the organization.
 type AtlasOrganization struct {
 	// Unique 24-hexadecimal digit string that identifies the organization.
 	// Read only field.

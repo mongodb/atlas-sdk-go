@@ -14,12 +14,8 @@ Name | Type | Description | Notes
 **WriteToken** | Pointer to **string** | Insert key associated with your New Relic account. | [optional] 
 **ServiceKey** | Pointer to **string** | Service key associated with your PagerDuty account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API. | [optional] 
 **Enabled** | Pointer to **bool** | Flag that indicates whether someone has activated the Prometheus integration. | [optional] 
-**ListenAddress** | Pointer to **string** | Combination of IPv4 address and Internet Assigned Numbers Authority (IANA) port or the IANA port alone to which Prometheus binds to ingest MongoDB metrics. | [optional] [default to ":9216"]
-**Password** | Pointer to **string** |  | [optional] 
-**RateLimitInterval** | Pointer to **int** |  | [optional] 
-**Scheme** | Pointer to **string** | Security Scheme to apply to HyperText Transfer Protocol (HTTP) traffic between Prometheus and MongoDB Cloud. | [optional] 
+**Password** | Pointer to **string** | Password needed to allow MongoDB Cloud to access your Prometheus account. | [optional] 
 **ServiceDiscovery** | Pointer to **string** | Desired method to discover the Prometheus service. | [optional] 
-**TlsPemPath** | Pointer to **string** | Root-relative path to the Transport Layer Security (TLS) Privacy Enhanced Mail (PEM) key and certificate file on the host. | [optional] 
 **Username** | Pointer to **string** | Human-readable label that identifies your Prometheus incoming webhook. | [optional] 
 **ApiToken** | Pointer to **string** | Key that allows MongoDB Cloud to access your Slack account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.  **IMPORTANT**: Slack integrations now use the OAuth2 verification method and must  be initially configured, or updated from a legacy integration, through the Atlas  third-party service integrations page. Legacy tokens will soon no longer be  supported. | [optional] 
 **ChannelName** | Pointer to **string** | Name of the Slack channel to which MongoDB Cloud sends alert notifications. | [optional] 
@@ -287,30 +283,6 @@ SetEnabled sets Enabled field to given value.
 `func (o *ThridPartyIntegration) HasEnabled() bool`
 
 HasEnabled returns a boolean if a field has been set.
-### GetListenAddress
-
-`func (o *ThridPartyIntegration) GetListenAddress() string`
-
-GetListenAddress returns the ListenAddress field if non-nil, zero value otherwise.
-
-### GetListenAddressOk
-
-`func (o *ThridPartyIntegration) GetListenAddressOk() (*string, bool)`
-
-GetListenAddressOk returns a tuple with the ListenAddress field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetListenAddress
-
-`func (o *ThridPartyIntegration) SetListenAddress(v string)`
-
-SetListenAddress sets ListenAddress field to given value.
-
-### HasListenAddress
-
-`func (o *ThridPartyIntegration) HasListenAddress() bool`
-
-HasListenAddress returns a boolean if a field has been set.
 ### GetPassword
 
 `func (o *ThridPartyIntegration) GetPassword() string`
@@ -335,54 +307,6 @@ SetPassword sets Password field to given value.
 `func (o *ThridPartyIntegration) HasPassword() bool`
 
 HasPassword returns a boolean if a field has been set.
-### GetRateLimitInterval
-
-`func (o *ThridPartyIntegration) GetRateLimitInterval() int`
-
-GetRateLimitInterval returns the RateLimitInterval field if non-nil, zero value otherwise.
-
-### GetRateLimitIntervalOk
-
-`func (o *ThridPartyIntegration) GetRateLimitIntervalOk() (*int, bool)`
-
-GetRateLimitIntervalOk returns a tuple with the RateLimitInterval field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRateLimitInterval
-
-`func (o *ThridPartyIntegration) SetRateLimitInterval(v int)`
-
-SetRateLimitInterval sets RateLimitInterval field to given value.
-
-### HasRateLimitInterval
-
-`func (o *ThridPartyIntegration) HasRateLimitInterval() bool`
-
-HasRateLimitInterval returns a boolean if a field has been set.
-### GetScheme
-
-`func (o *ThridPartyIntegration) GetScheme() string`
-
-GetScheme returns the Scheme field if non-nil, zero value otherwise.
-
-### GetSchemeOk
-
-`func (o *ThridPartyIntegration) GetSchemeOk() (*string, bool)`
-
-GetSchemeOk returns a tuple with the Scheme field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetScheme
-
-`func (o *ThridPartyIntegration) SetScheme(v string)`
-
-SetScheme sets Scheme field to given value.
-
-### HasScheme
-
-`func (o *ThridPartyIntegration) HasScheme() bool`
-
-HasScheme returns a boolean if a field has been set.
 ### GetServiceDiscovery
 
 `func (o *ThridPartyIntegration) GetServiceDiscovery() string`
@@ -407,30 +331,6 @@ SetServiceDiscovery sets ServiceDiscovery field to given value.
 `func (o *ThridPartyIntegration) HasServiceDiscovery() bool`
 
 HasServiceDiscovery returns a boolean if a field has been set.
-### GetTlsPemPath
-
-`func (o *ThridPartyIntegration) GetTlsPemPath() string`
-
-GetTlsPemPath returns the TlsPemPath field if non-nil, zero value otherwise.
-
-### GetTlsPemPathOk
-
-`func (o *ThridPartyIntegration) GetTlsPemPathOk() (*string, bool)`
-
-GetTlsPemPathOk returns a tuple with the TlsPemPath field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTlsPemPath
-
-`func (o *ThridPartyIntegration) SetTlsPemPath(v string)`
-
-SetTlsPemPath sets TlsPemPath field to given value.
-
-### HasTlsPemPath
-
-`func (o *ThridPartyIntegration) HasTlsPemPath() bool`
-
-HasTlsPemPath returns a boolean if a field has been set.
 ### GetUsername
 
 `func (o *ThridPartyIntegration) GetUsername() string`

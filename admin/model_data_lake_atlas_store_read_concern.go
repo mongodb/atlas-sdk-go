@@ -8,7 +8,7 @@ import (
 
 // DataLakeAtlasStoreReadConcern MongoDB Cloud cluster read concern, which determines the consistency and isolation properties of the data read from an Atlas cluster.
 type DataLakeAtlasStoreReadConcern struct {
-	// [Read Concern level](https://www.mongodb.com/docs/manual/reference/read-concern/#read-concern-levels) that specifies the consistency and availability of the data read.
+	// Read Concern level that specifies the consistency and availability of the data read.
 	Level *string `json:"level,omitempty"`
 }
 

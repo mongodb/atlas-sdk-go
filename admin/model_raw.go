@@ -31,7 +31,8 @@ type Raw struct {
 	// Read only field.
 	OrgId *string `json:"orgId,omitempty"`
 	// Human-readable label that identifies the organization that contains the project.
-	OrgName  *string `json:"orgName,omitempty"`
+	OrgName *string `json:"orgName,omitempty"`
+	// Severity of the event.
 	Severity *string `json:"severity,omitempty"`
 }
 
