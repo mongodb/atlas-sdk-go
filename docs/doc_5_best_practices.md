@@ -54,6 +54,55 @@ When you have confirmed that the `time.Time pointer` is non-nil, you can safely 
     }
 ```
 
+## Working with Pointers
+
+SDK pointers are utilized to denote optional values in the Go programming language:
+
+```golang
+type Data struct {
+    // Represents an optional name
+    Name *string `json:"results,omitempty"`
+}
+```
+
+In the example above, the string value is optional, and it won't be sent to the server if not explicitly set.
+
+## Working with Arrays
+
+All arrays in the SDK are represented as pointers:
+
+```golang
+type Data struct {
+    Results *[]DataRole `json:"results,omitempty"`
+}
+```
+
+Scenarios for using pointers with arrays:
+
+1. Update request containing an empty array (resetting the field values):
+
+If a struct property is explicitly set to an empty array, the SDK will send an empty array request to the Atlas API.
+
+```golang
+data := Data{
+    // Sending an empty array
+    Results: &[]DataRole{}
+}
+```
+
+2. Update request without updating the array field:
+
+When performing an update operation, we recommend the struct property not to be present.
+
+```golang
+data := Data{
+    // Sending an empty array by not setting field values (value is nil)
+    // Results: &[]DataRole{}
+}
+```
+
+These practices ensure accurate handling of optional values and array updates in the SDK when working with pointers in Golang.
+
 ## Working with Binary Responses
 
 In the Atlas Go SDK, the `io.ReadCloser` type is used to return binary data using the APIs. 
