@@ -614,12 +614,6 @@ func (a *OrganizationsApiService) createOrganizationInvitationExecute(r CreateOr
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
 	if r.organizationInvitationRequest == nil {
 		return localVarReturnValue, nil, reportError("organizationInvitationRequest is required and must be specified")
 	}
@@ -754,12 +748,6 @@ func (a *OrganizationsApiService) deleteOrganizationExecute(r DeleteOrganization
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -890,12 +878,6 @@ func (a *OrganizationsApiService) deleteOrganizationInvitationExecute(r DeleteOr
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1020,12 +1002,6 @@ func (a *OrganizationsApiService) getOrganizationExecute(r GetOrganizationApiReq
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1156,18 +1132,6 @@ func (a *OrganizationsApiService) getOrganizationInvitationExecute(r GetOrganiza
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
-	if strlen(r.invitationId) < 24 {
-		return localVarReturnValue, nil, reportError("invitationId must have at least 24 elements")
-	}
-	if strlen(r.invitationId) > 24 {
-		return localVarReturnValue, nil, reportError("invitationId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1292,12 +1256,6 @@ func (a *OrganizationsApiService) getOrganizationSettingsExecute(r GetOrganizati
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1431,12 +1389,6 @@ func (a *OrganizationsApiService) listOrganizationInvitationsExecute(r ListOrgan
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
 
 	if r.username != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "username", r.username, "")
@@ -1607,12 +1559,6 @@ func (a *OrganizationsApiService) listOrganizationProjectsExecute(r ListOrganiza
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
 
 	if r.includeCount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
@@ -1788,12 +1734,6 @@ func (a *OrganizationsApiService) listOrganizationUsersExecute(r ListOrganizatio
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
 
 	if r.includeCount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
@@ -2123,18 +2063,6 @@ func (a *OrganizationsApiService) removeOrganizationUserExecute(r RemoveOrganiza
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
-	if strlen(r.userId) < 24 {
-		return localVarReturnValue, nil, reportError("userId must have at least 24 elements")
-	}
-	if strlen(r.userId) > 24 {
-		return localVarReturnValue, nil, reportError("userId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2263,12 +2191,6 @@ func (a *OrganizationsApiService) renameOrganizationExecute(r RenameOrganization
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
 	if r.atlasOrganization == nil {
 		return localVarReturnValue, nil, reportError("atlasOrganization is required and must be specified")
 	}
@@ -2402,12 +2324,6 @@ func (a *OrganizationsApiService) updateOrganizationInvitationExecute(r UpdateOr
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
 	if r.organizationInvitationRequest == nil {
 		return localVarReturnValue, nil, reportError("organizationInvitationRequest is required and must be specified")
 	}
@@ -2547,18 +2463,6 @@ func (a *OrganizationsApiService) updateOrganizationInvitationByIdExecute(r Upda
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
-	if strlen(r.invitationId) < 24 {
-		return localVarReturnValue, nil, reportError("invitationId must have at least 24 elements")
-	}
-	if strlen(r.invitationId) > 24 {
-		return localVarReturnValue, nil, reportError("invitationId must have less than 24 elements")
-	}
 	if r.organizationInvitationUpdateRequest == nil {
 		return localVarReturnValue, nil, reportError("organizationInvitationUpdateRequest is required and must be specified")
 	}
@@ -2698,18 +2602,6 @@ func (a *OrganizationsApiService) updateOrganizationRolesExecute(r UpdateOrganiz
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
-	if strlen(r.userId) < 24 {
-		return localVarReturnValue, nil, reportError("userId must have at least 24 elements")
-	}
-	if strlen(r.userId) > 24 {
-		return localVarReturnValue, nil, reportError("userId must have less than 24 elements")
-	}
 	if r.updateOrgRolesForUser == nil {
 		return localVarReturnValue, nil, reportError("updateOrgRolesForUser is required and must be specified")
 	}
@@ -2843,12 +2735,6 @@ func (a *OrganizationsApiService) updateOrganizationSettingsExecute(r UpdateOrga
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
 	if r.organizationSettings == nil {
 		return localVarReturnValue, nil, reportError("organizationSettings is required and must be specified")
 	}

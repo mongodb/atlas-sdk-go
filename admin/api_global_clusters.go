@@ -208,18 +208,6 @@ func (a *GlobalClustersApiService) createCustomZoneMappingExecute(r CreateCustom
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.clusterName) < 1 {
-		return localVarReturnValue, nil, reportError("clusterName must have at least 1 elements")
-	}
-	if strlen(r.clusterName) > 64 {
-		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
-	}
 	if r.customZoneMappings == nil {
 		return localVarReturnValue, nil, reportError("customZoneMappings is required and must be specified")
 	}
@@ -359,18 +347,6 @@ func (a *GlobalClustersApiService) createManagedNamespaceExecute(r CreateManaged
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.clusterName) < 1 {
-		return localVarReturnValue, nil, reportError("clusterName must have at least 1 elements")
-	}
-	if strlen(r.clusterName) > 64 {
-		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
-	}
 	if r.managedNamespace == nil {
 		return localVarReturnValue, nil, reportError("managedNamespace is required and must be specified")
 	}
@@ -506,18 +482,6 @@ func (a *GlobalClustersApiService) deleteAllCustomZoneMappingsExecute(r DeleteAl
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.clusterName) < 1 {
-		return localVarReturnValue, nil, reportError("clusterName must have at least 1 elements")
-	}
-	if strlen(r.clusterName) > 64 {
-		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -666,18 +630,6 @@ func (a *GlobalClustersApiService) deleteManagedNamespaceExecute(r DeleteManaged
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.clusterName) < 1 {
-		return localVarReturnValue, nil, reportError("clusterName must have at least 1 elements")
-	}
-	if strlen(r.clusterName) > 64 {
-		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
-	}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 
 	if r.db != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "db", r.db, "")
@@ -814,18 +766,6 @@ func (a *GlobalClustersApiService) getManagedNamespaceExecute(r GetManagedNamesp
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.clusterName) < 1 {
-		return localVarReturnValue, nil, reportError("clusterName must have at least 1 elements")
-	}
-	if strlen(r.clusterName) > 64 {
-		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

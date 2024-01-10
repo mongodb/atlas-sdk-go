@@ -387,24 +387,6 @@ func (a *LegacyBackupApiService) deleteLegacySnapshotExecute(r DeleteLegacySnaps
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.clusterName) < 1 {
-		return localVarReturnValue, nil, reportError("clusterName must have at least 1 elements")
-	}
-	if strlen(r.clusterName) > 64 {
-		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
-	}
-	if strlen(r.snapshotId) < 24 {
-		return localVarReturnValue, nil, reportError("snapshotId must have at least 24 elements")
-	}
-	if strlen(r.snapshotId) > 24 {
-		return localVarReturnValue, nil, reportError("snapshotId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -545,24 +527,6 @@ func (a *LegacyBackupApiService) getLegacyBackupCheckpointExecute(r GetLegacyBac
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.checkpointId) < 24 {
-		return localVarReturnValue, nil, reportError("checkpointId must have at least 24 elements")
-	}
-	if strlen(r.checkpointId) > 24 {
-		return localVarReturnValue, nil, reportError("checkpointId must have less than 24 elements")
-	}
-	if strlen(r.clusterName) < 1 {
-		return localVarReturnValue, nil, reportError("clusterName must have at least 1 elements")
-	}
-	if strlen(r.clusterName) > 64 {
-		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -705,24 +669,6 @@ func (a *LegacyBackupApiService) getLegacyBackupRestoreJobExecute(r GetLegacyBac
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.clusterName) < 1 {
-		return localVarReturnValue, nil, reportError("clusterName must have at least 1 elements")
-	}
-	if strlen(r.clusterName) > 64 {
-		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
-	}
-	if strlen(r.jobId) < 24 {
-		return localVarReturnValue, nil, reportError("jobId must have at least 24 elements")
-	}
-	if strlen(r.jobId) > 24 {
-		return localVarReturnValue, nil, reportError("jobId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -863,24 +809,6 @@ func (a *LegacyBackupApiService) getLegacySnapshotExecute(r GetLegacySnapshotApi
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.clusterName) < 1 {
-		return localVarReturnValue, nil, reportError("clusterName must have at least 1 elements")
-	}
-	if strlen(r.clusterName) > 64 {
-		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
-	}
-	if strlen(r.snapshotId) < 24 {
-		return localVarReturnValue, nil, reportError("snapshotId must have at least 24 elements")
-	}
-	if strlen(r.snapshotId) > 24 {
-		return localVarReturnValue, nil, reportError("snapshotId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1017,18 +945,6 @@ func (a *LegacyBackupApiService) getLegacySnapshotScheduleExecute(r GetLegacySna
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.clusterName) < 1 {
-		return localVarReturnValue, nil, reportError("clusterName must have at least 1 elements")
-	}
-	if strlen(r.clusterName) > 64 {
-		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1190,18 +1106,6 @@ func (a *LegacyBackupApiService) listLegacyBackupCheckpointsExecute(r ListLegacy
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.clusterName) < 1 {
-		return localVarReturnValue, nil, reportError("clusterName must have at least 1 elements")
-	}
-	if strlen(r.clusterName) > 64 {
-		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
-	}
 
 	if r.includeCount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
@@ -1395,18 +1299,6 @@ func (a *LegacyBackupApiService) listLegacyBackupRestoreJobsExecute(r ListLegacy
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.clusterName) < 1 {
-		return localVarReturnValue, nil, reportError("clusterName must have at least 1 elements")
-	}
-	if strlen(r.clusterName) > 64 {
-		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
-	}
 
 	if r.includeCount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
@@ -1601,18 +1493,6 @@ func (a *LegacyBackupApiService) listLegacySnapshotsExecute(r ListLegacySnapshot
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.clusterName) < 1 {
-		return localVarReturnValue, nil, reportError("clusterName must have at least 1 elements")
-	}
-	if strlen(r.clusterName) > 64 {
-		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
-	}
 
 	if r.includeCount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
@@ -1785,24 +1665,6 @@ func (a *LegacyBackupApiService) updateLegacySnapshotRetentionExecute(r UpdateLe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.clusterName) < 1 {
-		return localVarReturnValue, nil, reportError("clusterName must have at least 1 elements")
-	}
-	if strlen(r.clusterName) > 64 {
-		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
-	}
-	if strlen(r.snapshotId) < 24 {
-		return localVarReturnValue, nil, reportError("snapshotId must have at least 24 elements")
-	}
-	if strlen(r.snapshotId) > 24 {
-		return localVarReturnValue, nil, reportError("snapshotId must have less than 24 elements")
-	}
 	if r.backupSnapshot == nil {
 		return localVarReturnValue, nil, reportError("backupSnapshot is required and must be specified")
 	}
@@ -1948,18 +1810,6 @@ func (a *LegacyBackupApiService) updateLegacySnapshotScheduleExecute(r UpdateLeg
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.clusterName) < 1 {
-		return localVarReturnValue, nil, reportError("clusterName must have at least 1 elements")
-	}
-	if strlen(r.clusterName) > 64 {
-		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
-	}
 	if r.apiAtlasSnapshotSchedule == nil {
 		return localVarReturnValue, nil, reportError("apiAtlasSnapshotSchedule is required and must be specified")
 	}

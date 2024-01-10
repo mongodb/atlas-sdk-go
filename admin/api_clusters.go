@@ -436,12 +436,6 @@ func (a *ClustersApiService) createClusterExecute(r CreateClusterApiRequest) (*A
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 	if r.advancedClusterDescription == nil {
 		return localVarReturnValue, nil, reportError("advancedClusterDescription is required and must be specified")
 	}
@@ -583,18 +577,6 @@ func (a *ClustersApiService) deleteClusterExecute(r DeleteClusterApiRequest) (*h
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.clusterName) < 1 {
-		return nil, reportError("clusterName must have at least 1 elements")
-	}
-	if strlen(r.clusterName) > 64 {
-		return nil, reportError("clusterName must have less than 64 elements")
-	}
 
 	if r.retainBackups != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "retainBackups", r.retainBackups, "")
@@ -719,18 +701,6 @@ func (a *ClustersApiService) getClusterExecute(r GetClusterApiRequest) (*Advance
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.clusterName) < 1 {
-		return localVarReturnValue, nil, reportError("clusterName must have at least 1 elements")
-	}
-	if strlen(r.clusterName) > 64 {
-		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -861,18 +831,6 @@ func (a *ClustersApiService) getClusterAdvancedConfigurationExecute(r GetCluster
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.clusterName) < 1 {
-		return localVarReturnValue, nil, reportError("clusterName must have at least 1 elements")
-	}
-	if strlen(r.clusterName) > 64 {
-		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1003,18 +961,6 @@ func (a *ClustersApiService) getClusterStatusExecute(r GetClusterStatusApiReques
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.clusterName) < 1 {
-		return localVarReturnValue, nil, reportError("clusterName must have at least 1 elements")
-	}
-	if strlen(r.clusterName) > 64 {
-		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1145,18 +1091,6 @@ func (a *ClustersApiService) getSampleDatasetLoadStatusExecute(r GetSampleDatase
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.sampleDatasetId) < 24 {
-		return localVarReturnValue, nil, reportError("sampleDatasetId must have at least 24 elements")
-	}
-	if strlen(r.sampleDatasetId) > 24 {
-		return localVarReturnValue, nil, reportError("sampleDatasetId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1326,12 +1260,6 @@ func (a *ClustersApiService) listCloudProviderRegionsExecute(r ListCloudProvider
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 
 	if r.includeCount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
@@ -1523,12 +1451,6 @@ func (a *ClustersApiService) listClustersExecute(r ListClustersApiRequest) (*Pag
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 
 	if r.includeCount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
@@ -1853,18 +1775,6 @@ func (a *ClustersApiService) loadSampleDatasetExecute(r LoadSampleDatasetApiRequ
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.name) < 1 {
-		return localVarReturnValue, nil, reportError("name must have at least 1 elements")
-	}
-	if strlen(r.name) > 64 {
-		return localVarReturnValue, nil, reportError("name must have less than 64 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1992,18 +1902,6 @@ func (a *ClustersApiService) testFailoverExecute(r TestFailoverApiRequest) (*htt
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.clusterName) < 1 {
-		return nil, reportError("clusterName must have at least 1 elements")
-	}
-	if strlen(r.clusterName) > 64 {
-		return nil, reportError("clusterName must have less than 64 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2129,18 +2027,6 @@ func (a *ClustersApiService) updateClusterExecute(r UpdateClusterApiRequest) (*A
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.clusterName) < 1 {
-		return localVarReturnValue, nil, reportError("clusterName must have at least 1 elements")
-	}
-	if strlen(r.clusterName) > 64 {
-		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
-	}
 	if r.advancedClusterDescription == nil {
 		return localVarReturnValue, nil, reportError("advancedClusterDescription is required and must be specified")
 	}
@@ -2280,18 +2166,6 @@ func (a *ClustersApiService) updateClusterAdvancedConfigurationExecute(r UpdateC
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.clusterName) < 1 {
-		return localVarReturnValue, nil, reportError("clusterName must have at least 1 elements")
-	}
-	if strlen(r.clusterName) > 64 {
-		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
-	}
 	if r.clusterDescriptionProcessArgs == nil {
 		return localVarReturnValue, nil, reportError("clusterDescriptionProcessArgs is required and must be specified")
 	}
@@ -2425,12 +2299,6 @@ func (a *ClustersApiService) upgradeSharedClusterExecute(r UpgradeSharedClusterA
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 	if r.legacyAtlasTenantClusterUpgradeRequest == nil {
 		return localVarReturnValue, nil, reportError("legacyAtlasTenantClusterUpgradeRequest is required and must be specified")
 	}
@@ -2564,12 +2432,6 @@ func (a *ClustersApiService) upgradeSharedClusterToServerlessExecute(r UpgradeSh
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 	if r.serverlessInstanceDescription == nil {
 		return localVarReturnValue, nil, reportError("serverlessInstanceDescription is required and must be specified")
 	}

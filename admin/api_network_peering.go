@@ -395,12 +395,6 @@ func (a *NetworkPeeringApiService) createPeeringConnectionExecute(r CreatePeerin
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 	if r.baseNetworkPeeringConnectionSettings == nil {
 		return localVarReturnValue, nil, reportError("baseNetworkPeeringConnectionSettings is required and must be specified")
 	}
@@ -534,12 +528,6 @@ func (a *NetworkPeeringApiService) createPeeringContainerExecute(r CreatePeering
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 	if r.cloudProviderContainer == nil {
 		return localVarReturnValue, nil, reportError("cloudProviderContainer is required and must be specified")
 	}
@@ -675,18 +663,6 @@ func (a *NetworkPeeringApiService) deletePeeringConnectionExecute(r DeletePeerin
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.peerId) < 24 {
-		return localVarReturnValue, nil, reportError("peerId must have at least 24 elements")
-	}
-	if strlen(r.peerId) > 24 {
-		return localVarReturnValue, nil, reportError("peerId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -817,18 +793,6 @@ func (a *NetworkPeeringApiService) deletePeeringContainerExecute(r DeletePeering
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.containerId) < 24 {
-		return localVarReturnValue, nil, reportError("containerId must have at least 24 elements")
-	}
-	if strlen(r.containerId) > 24 {
-		return localVarReturnValue, nil, reportError("containerId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -961,12 +925,6 @@ func (a *NetworkPeeringApiService) disablePeeringExecute(r DisablePeeringApiRequ
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 	if r.privateIPMode == nil {
 		return localVarReturnValue, nil, reportError("privateIPMode is required and must be specified")
 	}
@@ -1102,18 +1060,6 @@ func (a *NetworkPeeringApiService) getPeeringConnectionExecute(r GetPeeringConne
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.peerId) < 24 {
-		return localVarReturnValue, nil, reportError("peerId must have at least 24 elements")
-	}
-	if strlen(r.peerId) > 24 {
-		return localVarReturnValue, nil, reportError("peerId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1244,18 +1190,6 @@ func (a *NetworkPeeringApiService) getPeeringContainerExecute(r GetPeeringContai
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.containerId) < 24 {
-		return localVarReturnValue, nil, reportError("containerId must have at least 24 elements")
-	}
-	if strlen(r.containerId) > 24 {
-		return localVarReturnValue, nil, reportError("containerId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1416,12 +1350,6 @@ func (a *NetworkPeeringApiService) listPeeringConnectionsExecute(r ListPeeringCo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 
 	if r.includeCount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
@@ -1610,12 +1538,6 @@ func (a *NetworkPeeringApiService) listPeeringContainerByCloudProviderExecute(r 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 	if r.providerName == nil {
 		return localVarReturnValue, nil, reportError("providerName is required and must be specified")
 	}
@@ -1792,12 +1714,6 @@ func (a *NetworkPeeringApiService) listPeeringContainersExecute(r ListPeeringCon
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 
 	if r.includeCount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
@@ -1953,18 +1869,6 @@ func (a *NetworkPeeringApiService) updatePeeringConnectionExecute(r UpdatePeerin
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.peerId) < 24 {
-		return localVarReturnValue, nil, reportError("peerId must have at least 24 elements")
-	}
-	if strlen(r.peerId) > 24 {
-		return localVarReturnValue, nil, reportError("peerId must have less than 24 elements")
-	}
 	if r.baseNetworkPeeringConnectionSettings == nil {
 		return localVarReturnValue, nil, reportError("baseNetworkPeeringConnectionSettings is required and must be specified")
 	}
@@ -2104,18 +2008,6 @@ func (a *NetworkPeeringApiService) updatePeeringContainerExecute(r UpdatePeering
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.containerId) < 24 {
-		return localVarReturnValue, nil, reportError("containerId must have at least 24 elements")
-	}
-	if strlen(r.containerId) > 24 {
-		return localVarReturnValue, nil, reportError("containerId must have less than 24 elements")
-	}
 	if r.cloudProviderContainer == nil {
 		return localVarReturnValue, nil, reportError("cloudProviderContainer is required and must be specified")
 	}
@@ -2249,12 +2141,6 @@ func (a *NetworkPeeringApiService) verifyConnectViaPeeringOnlyModeForOneProjectE
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

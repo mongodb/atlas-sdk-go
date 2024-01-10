@@ -215,15 +215,6 @@ func (a *ServerlessPrivateEndpointsApiService) createServerlessPrivateEndpointEx
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.instanceName) > 64 {
-		return localVarReturnValue, nil, reportError("instanceName must have less than 64 elements")
-	}
 	if r.serverlessTenantCreateRequest == nil {
 		return localVarReturnValue, nil, reportError("serverlessTenantCreateRequest is required and must be specified")
 	}
@@ -365,21 +356,6 @@ func (a *ServerlessPrivateEndpointsApiService) deleteServerlessPrivateEndpointEx
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.instanceName) > 64 {
-		return localVarReturnValue, nil, reportError("instanceName must have less than 64 elements")
-	}
-	if strlen(r.endpointId) < 24 {
-		return localVarReturnValue, nil, reportError("endpointId must have at least 24 elements")
-	}
-	if strlen(r.endpointId) > 24 {
-		return localVarReturnValue, nil, reportError("endpointId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -516,21 +492,6 @@ func (a *ServerlessPrivateEndpointsApiService) getServerlessPrivateEndpointExecu
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.instanceName) > 64 {
-		return localVarReturnValue, nil, reportError("instanceName must have less than 64 elements")
-	}
-	if strlen(r.endpointId) < 24 {
-		return localVarReturnValue, nil, reportError("endpointId must have at least 24 elements")
-	}
-	if strlen(r.endpointId) > 24 {
-		return localVarReturnValue, nil, reportError("endpointId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -661,15 +622,6 @@ func (a *ServerlessPrivateEndpointsApiService) listServerlessPrivateEndpointsExe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.instanceName) > 64 {
-		return localVarReturnValue, nil, reportError("instanceName must have less than 64 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -810,21 +762,6 @@ func (a *ServerlessPrivateEndpointsApiService) updateServerlessPrivateEndpointEx
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.instanceName) > 64 {
-		return localVarReturnValue, nil, reportError("instanceName must have less than 64 elements")
-	}
-	if strlen(r.endpointId) < 24 {
-		return localVarReturnValue, nil, reportError("endpointId must have at least 24 elements")
-	}
-	if strlen(r.endpointId) > 24 {
-		return localVarReturnValue, nil, reportError("endpointId must have less than 24 elements")
-	}
 	if r.serverlessTenantEndpointUpdate == nil {
 		return localVarReturnValue, nil, reportError("serverlessTenantEndpointUpdate is required and must be specified")
 	}

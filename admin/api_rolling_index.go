@@ -109,18 +109,6 @@ func (a *RollingIndexApiService) createRollingIndexExecute(r CreateRollingIndexA
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.clusterName) < 1 {
-		return nil, reportError("clusterName must have at least 1 elements")
-	}
-	if strlen(r.clusterName) > 64 {
-		return nil, reportError("clusterName must have less than 64 elements")
-	}
 	if r.databaseRollingIndexRequest == nil {
 		return nil, reportError("databaseRollingIndexRequest is required and must be specified")
 	}

@@ -223,12 +223,6 @@ func (a *InvoicesApiService) createCostExplorerQueryProcessExecute(r CreateCostE
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
 	if r.costExplorerFilterRequestBody == nil {
 		return localVarReturnValue, nil, reportError("costExplorerFilterRequestBody is required and must be specified")
 	}
@@ -364,18 +358,6 @@ func (a *InvoicesApiService) createCostExplorerQueryProcess1Execute(r CreateCost
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
-	if strlen(r.token) < 64 {
-		return localVarReturnValue, nil, reportError("token must have at least 64 elements")
-	}
-	if strlen(r.token) > 64 {
-		return localVarReturnValue, nil, reportError("token must have less than 64 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -506,12 +488,6 @@ func (a *InvoicesApiService) downloadInvoiceCSVExecute(r DownloadInvoiceCSVApiRe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -642,18 +618,6 @@ func (a *InvoicesApiService) getInvoiceExecute(r GetInvoiceApiRequest) (string, 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
-	if strlen(r.invoiceId) < 24 {
-		return localVarReturnValue, nil, reportError("invoiceId must have at least 24 elements")
-	}
-	if strlen(r.invoiceId) > 24 {
-		return localVarReturnValue, nil, reportError("invoiceId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -805,12 +769,6 @@ func (a *InvoicesApiService) listInvoicesExecute(r ListInvoicesApiRequest) (*Pag
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
 
 	if r.includeCount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
@@ -956,12 +914,6 @@ func (a *InvoicesApiService) listPendingInvoicesExecute(r ListPendingInvoicesApi
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

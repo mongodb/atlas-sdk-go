@@ -395,12 +395,6 @@ func (a *DataLakePipelinesApiService) createPipelineExecute(r CreatePipelineApiR
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 	if r.dataLakeIngestionPipeline == nil {
 		return localVarReturnValue, nil, reportError("dataLakeIngestionPipeline is required and must be specified")
 	}
@@ -536,18 +530,6 @@ func (a *DataLakePipelinesApiService) deletePipelineExecute(r DeletePipelineApiR
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.pipelineName) < 1 {
-		return localVarReturnValue, nil, reportError("pipelineName must have at least 1 elements")
-	}
-	if strlen(r.pipelineName) > 64 {
-		return localVarReturnValue, nil, reportError("pipelineName must have less than 64 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -684,24 +666,6 @@ func (a *DataLakePipelinesApiService) deletePipelineRunDatasetExecute(r DeletePi
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.pipelineName) < 1 {
-		return localVarReturnValue, nil, reportError("pipelineName must have at least 1 elements")
-	}
-	if strlen(r.pipelineName) > 64 {
-		return localVarReturnValue, nil, reportError("pipelineName must have less than 64 elements")
-	}
-	if strlen(r.pipelineRunId) < 24 {
-		return localVarReturnValue, nil, reportError("pipelineRunId must have at least 24 elements")
-	}
-	if strlen(r.pipelineRunId) > 24 {
-		return localVarReturnValue, nil, reportError("pipelineRunId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -832,18 +796,6 @@ func (a *DataLakePipelinesApiService) getPipelineExecute(r GetPipelineApiRequest
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.pipelineName) < 1 {
-		return localVarReturnValue, nil, reportError("pipelineName must have at least 1 elements")
-	}
-	if strlen(r.pipelineName) > 64 {
-		return localVarReturnValue, nil, reportError("pipelineName must have less than 64 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -980,24 +932,6 @@ func (a *DataLakePipelinesApiService) getPipelineRunExecute(r GetPipelineRunApiR
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.pipelineName) < 1 {
-		return localVarReturnValue, nil, reportError("pipelineName must have at least 1 elements")
-	}
-	if strlen(r.pipelineName) > 64 {
-		return localVarReturnValue, nil, reportError("pipelineName must have less than 64 elements")
-	}
-	if strlen(r.pipelineRunId) < 24 {
-		return localVarReturnValue, nil, reportError("pipelineRunId must have at least 24 elements")
-	}
-	if strlen(r.pipelineRunId) > 24 {
-		return localVarReturnValue, nil, reportError("pipelineRunId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1164,18 +1098,6 @@ func (a *DataLakePipelinesApiService) listPipelineRunsExecute(r ListPipelineRuns
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.pipelineName) < 1 {
-		return localVarReturnValue, nil, reportError("pipelineName must have at least 1 elements")
-	}
-	if strlen(r.pipelineName) > 64 {
-		return localVarReturnValue, nil, reportError("pipelineName must have less than 64 elements")
-	}
 
 	if r.includeCount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
@@ -1330,18 +1252,6 @@ func (a *DataLakePipelinesApiService) listPipelineSchedulesExecute(r ListPipelin
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.pipelineName) < 1 {
-		return localVarReturnValue, nil, reportError("pipelineName must have at least 1 elements")
-	}
-	if strlen(r.pipelineName) > 64 {
-		return localVarReturnValue, nil, reportError("pipelineName must have less than 64 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1508,18 +1418,6 @@ func (a *DataLakePipelinesApiService) listPipelineSnapshotsExecute(r ListPipelin
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.pipelineName) < 1 {
-		return localVarReturnValue, nil, reportError("pipelineName must have at least 1 elements")
-	}
-	if strlen(r.pipelineName) > 64 {
-		return localVarReturnValue, nil, reportError("pipelineName must have less than 64 elements")
-	}
 
 	if r.includeCount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
@@ -1668,12 +1566,6 @@ func (a *DataLakePipelinesApiService) listPipelinesExecute(r ListPipelinesApiReq
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1804,18 +1696,6 @@ func (a *DataLakePipelinesApiService) pausePipelineExecute(r PausePipelineApiReq
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.pipelineName) < 1 {
-		return localVarReturnValue, nil, reportError("pipelineName must have at least 1 elements")
-	}
-	if strlen(r.pipelineName) > 64 {
-		return localVarReturnValue, nil, reportError("pipelineName must have less than 64 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1946,18 +1826,6 @@ func (a *DataLakePipelinesApiService) resumePipelineExecute(r ResumePipelineApiR
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.pipelineName) < 1 {
-		return localVarReturnValue, nil, reportError("pipelineName must have at least 1 elements")
-	}
-	if strlen(r.pipelineName) > 64 {
-		return localVarReturnValue, nil, reportError("pipelineName must have less than 64 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2092,18 +1960,6 @@ func (a *DataLakePipelinesApiService) triggerSnapshotIngestionExecute(r TriggerS
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.pipelineName) < 1 {
-		return localVarReturnValue, nil, reportError("pipelineName must have at least 1 elements")
-	}
-	if strlen(r.pipelineName) > 64 {
-		return localVarReturnValue, nil, reportError("pipelineName must have less than 64 elements")
-	}
 	if r.triggerIngestionPipelineRequest == nil {
 		return localVarReturnValue, nil, reportError("triggerIngestionPipelineRequest is required and must be specified")
 	}
@@ -2243,18 +2099,6 @@ func (a *DataLakePipelinesApiService) updatePipelineExecute(r UpdatePipelineApiR
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.pipelineName) < 1 {
-		return localVarReturnValue, nil, reportError("pipelineName must have at least 1 elements")
-	}
-	if strlen(r.pipelineName) > 64 {
-		return localVarReturnValue, nil, reportError("pipelineName must have less than 64 elements")
-	}
 	if r.dataLakeIngestionPipeline == nil {
 		return localVarReturnValue, nil, reportError("dataLakeIngestionPipeline is required and must be specified")
 	}

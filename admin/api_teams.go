@@ -391,12 +391,6 @@ func (a *TeamsApiService) addAllTeamsToProjectExecute(r AddAllTeamsToProjectApiR
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 	if r.teamRole == nil {
 		return localVarReturnValue, nil, reportError("teamRole is required and must be specified")
 	}
@@ -536,18 +530,6 @@ func (a *TeamsApiService) addTeamUserExecute(r AddTeamUserApiRequest) (*Paginate
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
-	if strlen(r.teamId) < 24 {
-		return localVarReturnValue, nil, reportError("teamId must have at least 24 elements")
-	}
-	if strlen(r.teamId) > 24 {
-		return localVarReturnValue, nil, reportError("teamId must have less than 24 elements")
-	}
 	if r.addUserToTeam == nil {
 		return localVarReturnValue, nil, reportError("addUserToTeam is required and must be specified")
 	}
@@ -681,12 +663,6 @@ func (a *TeamsApiService) createTeamExecute(r CreateTeamApiRequest) (*Team, *htt
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
 	if r.team == nil {
 		return localVarReturnValue, nil, reportError("team is required and must be specified")
 	}
@@ -822,18 +798,6 @@ func (a *TeamsApiService) deleteTeamExecute(r DeleteTeamApiRequest) (map[string]
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
-	if strlen(r.teamId) < 24 {
-		return localVarReturnValue, nil, reportError("teamId must have at least 24 elements")
-	}
-	if strlen(r.teamId) > 24 {
-		return localVarReturnValue, nil, reportError("teamId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -964,18 +928,6 @@ func (a *TeamsApiService) getTeamByIdExecute(r GetTeamByIdApiRequest) (*TeamResp
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
-	if strlen(r.teamId) < 24 {
-		return localVarReturnValue, nil, reportError("teamId must have at least 24 elements")
-	}
-	if strlen(r.teamId) > 24 {
-		return localVarReturnValue, nil, reportError("teamId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1106,12 +1058,6 @@ func (a *TeamsApiService) getTeamByNameExecute(r GetTeamByNameApiRequest) (*Team
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1263,12 +1209,6 @@ func (a *TeamsApiService) listOrganizationTeamsExecute(r ListOrganizationTeamsAp
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
 
 	if r.itemsPerPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
@@ -1441,12 +1381,6 @@ func (a *TeamsApiService) listProjectTeamsExecute(r ListProjectTeamsApiRequest) 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 
 	if r.includeCount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
@@ -1616,18 +1550,6 @@ func (a *TeamsApiService) listTeamUsersExecute(r ListTeamUsersApiRequest) (*Pagi
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
-	if strlen(r.teamId) < 24 {
-		return localVarReturnValue, nil, reportError("teamId must have at least 24 elements")
-	}
-	if strlen(r.teamId) > 24 {
-		return localVarReturnValue, nil, reportError("teamId must have less than 24 elements")
-	}
 
 	if r.itemsPerPage != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
@@ -1769,18 +1691,6 @@ func (a *TeamsApiService) removeProjectTeamExecute(r RemoveProjectTeamApiRequest
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.teamId) < 24 {
-		return nil, reportError("teamId must have at least 24 elements")
-	}
-	if strlen(r.teamId) > 24 {
-		return nil, reportError("teamId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1905,24 +1815,6 @@ func (a *TeamsApiService) removeTeamUserExecute(r RemoveTeamUserApiRequest) (*ht
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return nil, reportError("orgId must have less than 24 elements")
-	}
-	if strlen(r.teamId) < 24 {
-		return nil, reportError("teamId must have at least 24 elements")
-	}
-	if strlen(r.teamId) > 24 {
-		return nil, reportError("teamId must have less than 24 elements")
-	}
-	if strlen(r.userId) < 24 {
-		return nil, reportError("userId must have at least 24 elements")
-	}
-	if strlen(r.userId) > 24 {
-		return nil, reportError("userId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2048,18 +1940,6 @@ func (a *TeamsApiService) renameTeamExecute(r RenameTeamApiRequest) (*TeamRespon
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
-	if strlen(r.teamId) < 24 {
-		return localVarReturnValue, nil, reportError("teamId must have at least 24 elements")
-	}
-	if strlen(r.teamId) > 24 {
-		return localVarReturnValue, nil, reportError("teamId must have less than 24 elements")
-	}
 	if r.team == nil {
 		return localVarReturnValue, nil, reportError("team is required and must be specified")
 	}
@@ -2199,18 +2079,6 @@ func (a *TeamsApiService) updateTeamRolesExecute(r UpdateTeamRolesApiRequest) (*
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.teamId) < 24 {
-		return localVarReturnValue, nil, reportError("teamId must have at least 24 elements")
-	}
-	if strlen(r.teamId) > 24 {
-		return localVarReturnValue, nil, reportError("teamId must have less than 24 elements")
-	}
 	if r.teamRole == nil {
 		return localVarReturnValue, nil, reportError("teamRole is required and must be specified")
 	}

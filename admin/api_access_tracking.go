@@ -177,18 +177,6 @@ func (a *AccessTrackingApiService) listAccessLogsByClusterNameExecute(r ListAcce
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.clusterName) < 1 {
-		return localVarReturnValue, nil, reportError("clusterName must have at least 1 elements")
-	}
-	if strlen(r.clusterName) > 64 {
-		return localVarReturnValue, nil, reportError("clusterName must have less than 64 elements")
-	}
 
 	if r.authResult != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "authResult", r.authResult, "")
@@ -383,12 +371,6 @@ func (a *AccessTrackingApiService) listAccessLogsByHostnameExecute(r ListAccessL
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 
 	if r.authResult != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "authResult", r.authResult, "")

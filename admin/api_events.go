@@ -199,18 +199,6 @@ func (a *EventsApiService) getOrganizationEventExecute(r GetOrganizationEventApi
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
-	if strlen(r.eventId) < 24 {
-		return localVarReturnValue, nil, reportError("eventId must have at least 24 elements")
-	}
-	if strlen(r.eventId) > 24 {
-		return localVarReturnValue, nil, reportError("eventId must have less than 24 elements")
-	}
 
 	if r.includeRaw != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeRaw", r.includeRaw, "")
@@ -359,18 +347,6 @@ func (a *EventsApiService) getProjectEventExecute(r GetProjectEventApiRequest) (
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.eventId) < 24 {
-		return localVarReturnValue, nil, reportError("eventId must have at least 24 elements")
-	}
-	if strlen(r.eventId) > 24 {
-		return localVarReturnValue, nil, reportError("eventId must have less than 24 elements")
-	}
 
 	if r.includeRaw != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeRaw", r.includeRaw, "")
@@ -567,12 +543,6 @@ func (a *EventsApiService) listOrganizationEventsExecute(r ListOrganizationEvent
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
 
 	if r.includeCount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
@@ -821,12 +791,6 @@ func (a *EventsApiService) listProjectEventsExecute(r ListProjectEventsApiReques
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 
 	if r.includeCount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")

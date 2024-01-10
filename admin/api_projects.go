@@ -643,12 +643,6 @@ func (a *ProjectsApiService) addUserToProjectExecute(r AddUserToProjectApiReques
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 	if r.groupInvitationRequest == nil {
 		return localVarReturnValue, nil, reportError("groupInvitationRequest is required and must be specified")
 	}
@@ -925,12 +919,6 @@ func (a *ProjectsApiService) createProjectInvitationExecute(r CreateProjectInvit
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 	if r.groupInvitationRequest == nil {
 		return localVarReturnValue, nil, reportError("groupInvitationRequest is required and must be specified")
 	}
@@ -1060,12 +1048,6 @@ func (a *ProjectsApiService) deleteProjectExecute(r DeleteProjectApiRequest) (ma
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1200,18 +1182,6 @@ func (a *ProjectsApiService) deleteProjectInvitationExecute(r DeleteProjectInvit
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.invitationId) < 24 {
-		return localVarReturnValue, nil, reportError("invitationId must have at least 24 elements")
-	}
-	if strlen(r.invitationId) > 24 {
-		return localVarReturnValue, nil, reportError("invitationId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1342,12 +1312,6 @@ func (a *ProjectsApiService) deleteProjectLimitExecute(r DeleteProjectLimitApiRe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1472,12 +1436,6 @@ func (a *ProjectsApiService) getProjectExecute(r GetProjectApiRequest) (*Group, 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1602,12 +1560,6 @@ func (a *ProjectsApiService) getProjectByNameExecute(r GetProjectByNameApiReques
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupName) < 1 {
-		return localVarReturnValue, nil, reportError("groupName must have at least 1 elements")
-	}
-	if strlen(r.groupName) > 64 {
-		return localVarReturnValue, nil, reportError("groupName must have less than 64 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1742,18 +1694,6 @@ func (a *ProjectsApiService) getProjectInvitationExecute(r GetProjectInvitationA
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.invitationId) < 24 {
-		return localVarReturnValue, nil, reportError("invitationId must have at least 24 elements")
-	}
-	if strlen(r.invitationId) > 24 {
-		return localVarReturnValue, nil, reportError("invitationId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1884,12 +1824,6 @@ func (a *ProjectsApiService) getProjectLimitExecute(r GetProjectLimitApiRequest)
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2014,12 +1948,6 @@ func (a *ProjectsApiService) getProjectSettingsExecute(r GetProjectSettingsApiRe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2157,12 +2085,6 @@ func (a *ProjectsApiService) listProjectInvitationsExecute(r ListProjectInvitati
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 
 	if r.username != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "username", r.username, "")
@@ -2290,12 +2212,6 @@ func (a *ProjectsApiService) listProjectLimitsExecute(r ListProjectLimitsApiRequ
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2465,12 +2381,6 @@ func (a *ProjectsApiService) listProjectUsersExecute(r ListProjectUsersApiReques
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 
 	if r.includeCount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
@@ -2799,18 +2709,6 @@ func (a *ProjectsApiService) removeProjectUserExecute(r RemoveProjectUserApiRequ
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.userId) < 24 {
-		return nil, reportError("userId must have at least 24 elements")
-	}
-	if strlen(r.userId) > 24 {
-		return nil, reportError("userId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2926,12 +2824,6 @@ func (a *ProjectsApiService) returnAllIPAddressesExecute(r ReturnAllIPAddressesA
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3068,12 +2960,6 @@ func (a *ProjectsApiService) setProjectLimitExecute(r SetProjectLimitApiRequest)
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 	if r.dataFederationLimit == nil {
 		return localVarReturnValue, nil, reportError("dataFederationLimit is required and must be specified")
 	}
@@ -3207,12 +3093,6 @@ func (a *ProjectsApiService) updateProjectExecute(r UpdateProjectApiRequest) (*G
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 	if r.groupName == nil {
 		return localVarReturnValue, nil, reportError("groupName is required and must be specified")
 	}
@@ -3350,12 +3230,6 @@ func (a *ProjectsApiService) updateProjectInvitationExecute(r UpdateProjectInvit
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 	if r.groupInvitationRequest == nil {
 		return localVarReturnValue, nil, reportError("groupInvitationRequest is required and must be specified")
 	}
@@ -3499,18 +3373,6 @@ func (a *ProjectsApiService) updateProjectInvitationByIdExecute(r UpdateProjectI
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.invitationId) < 24 {
-		return localVarReturnValue, nil, reportError("invitationId must have at least 24 elements")
-	}
-	if strlen(r.invitationId) > 24 {
-		return localVarReturnValue, nil, reportError("invitationId must have less than 24 elements")
-	}
 	if r.groupInvitationUpdateRequest == nil {
 		return localVarReturnValue, nil, reportError("groupInvitationUpdateRequest is required and must be specified")
 	}
@@ -3650,18 +3512,6 @@ func (a *ProjectsApiService) updateProjectRolesExecute(r UpdateProjectRolesApiRe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.userId) < 24 {
-		return localVarReturnValue, nil, reportError("userId must have at least 24 elements")
-	}
-	if strlen(r.userId) > 24 {
-		return localVarReturnValue, nil, reportError("userId must have less than 24 elements")
-	}
 	if r.updateGroupRolesForUser == nil {
 		return localVarReturnValue, nil, reportError("updateGroupRolesForUser is required and must be specified")
 	}
@@ -3795,12 +3645,6 @@ func (a *ProjectsApiService) updateProjectSettingsExecute(r UpdateProjectSetting
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 	if r.groupSettings == nil {
 		return localVarReturnValue, nil, reportError("groupSettings is required and must be specified")
 	}

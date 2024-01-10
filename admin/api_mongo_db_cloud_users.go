@@ -281,12 +281,6 @@ func (a *MongoDBCloudUsersApiService) getUserExecute(r GetUserApiRequest) (*Clou
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.userId) < 24 {
-		return localVarReturnValue, nil, reportError("userId must have at least 24 elements")
-	}
-	if strlen(r.userId) > 24 {
-		return localVarReturnValue, nil, reportError("userId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
