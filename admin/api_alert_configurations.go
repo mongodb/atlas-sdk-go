@@ -290,12 +290,6 @@ func (a *AlertConfigurationsApiService) createAlertConfigurationExecute(r Create
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 	if r.groupAlertsConfig == nil {
 		return localVarReturnValue, nil, reportError("groupAlertsConfig is required and must be specified")
 	}
@@ -430,18 +424,6 @@ func (a *AlertConfigurationsApiService) deleteAlertConfigurationExecute(r Delete
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.alertConfigId) < 24 {
-		return nil, reportError("alertConfigId must have at least 24 elements")
-	}
-	if strlen(r.alertConfigId) > 24 {
-		return nil, reportError("alertConfigId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -565,18 +547,6 @@ func (a *AlertConfigurationsApiService) getAlertConfigurationExecute(r GetAlertC
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.alertConfigId) < 24 {
-		return localVarReturnValue, nil, reportError("alertConfigId must have at least 24 elements")
-	}
-	if strlen(r.alertConfigId) > 24 {
-		return localVarReturnValue, nil, reportError("alertConfigId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -848,12 +818,6 @@ func (a *AlertConfigurationsApiService) listAlertConfigurationsExecute(r ListAle
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 
 	if r.includeCount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
@@ -1034,18 +998,6 @@ func (a *AlertConfigurationsApiService) listAlertConfigurationsByAlertIdExecute(
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.alertId) < 24 {
-		return localVarReturnValue, nil, reportError("alertId must have at least 24 elements")
-	}
-	if strlen(r.alertId) > 24 {
-		return localVarReturnValue, nil, reportError("alertId must have less than 24 elements")
-	}
 
 	if r.includeCount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
@@ -1205,18 +1157,6 @@ func (a *AlertConfigurationsApiService) toggleAlertConfigurationExecute(r Toggle
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.alertConfigId) < 24 {
-		return localVarReturnValue, nil, reportError("alertConfigId must have at least 24 elements")
-	}
-	if strlen(r.alertConfigId) > 24 {
-		return localVarReturnValue, nil, reportError("alertConfigId must have less than 24 elements")
-	}
 	if r.alertsToggle == nil {
 		return localVarReturnValue, nil, reportError("alertsToggle is required and must be specified")
 	}
@@ -1360,18 +1300,6 @@ func (a *AlertConfigurationsApiService) updateAlertConfigurationExecute(r Update
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.alertConfigId) < 24 {
-		return localVarReturnValue, nil, reportError("alertConfigId must have at least 24 elements")
-	}
-	if strlen(r.alertConfigId) > 24 {
-		return localVarReturnValue, nil, reportError("alertConfigId must have less than 24 elements")
-	}
 	if r.groupAlertsConfig == nil {
 		return localVarReturnValue, nil, reportError("groupAlertsConfig is required and must be specified")
 	}

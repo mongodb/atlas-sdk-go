@@ -207,18 +207,6 @@ func (a *CloudProviderAccessApiService) authorizeCloudProviderAccessRoleExecute(
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.roleId) < 24 {
-		return localVarReturnValue, nil, reportError("roleId must have at least 24 elements")
-	}
-	if strlen(r.roleId) > 24 {
-		return localVarReturnValue, nil, reportError("roleId must have less than 24 elements")
-	}
 	if r.cloudProviderAccessRole == nil {
 		return localVarReturnValue, nil, reportError("cloudProviderAccessRole is required and must be specified")
 	}
@@ -352,12 +340,6 @@ func (a *CloudProviderAccessApiService) createCloudProviderAccessRoleExecute(r C
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 	if r.cloudProviderAccessRole == nil {
 		return localVarReturnValue, nil, reportError("cloudProviderAccessRole is required and must be specified")
 	}
@@ -496,18 +478,6 @@ func (a *CloudProviderAccessApiService) deauthorizeCloudProviderAccessRoleExecut
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.roleId) < 24 {
-		return nil, reportError("roleId must have at least 24 elements")
-	}
-	if strlen(r.roleId) > 24 {
-		return nil, reportError("roleId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -629,18 +599,6 @@ func (a *CloudProviderAccessApiService) getCloudProviderAccessRoleExecute(r GetC
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.roleId) < 24 {
-		return localVarReturnValue, nil, reportError("roleId must have at least 24 elements")
-	}
-	if strlen(r.roleId) > 24 {
-		return localVarReturnValue, nil, reportError("roleId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -765,12 +723,6 @@ func (a *CloudProviderAccessApiService) listCloudProviderAccessRolesExecute(r Li
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

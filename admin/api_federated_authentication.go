@@ -453,18 +453,6 @@ func (a *FederatedAuthenticationApiService) createRoleMappingExecute(r CreateRol
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.federationSettingsId) < 24 {
-		return localVarReturnValue, nil, reportError("federationSettingsId must have at least 24 elements")
-	}
-	if strlen(r.federationSettingsId) > 24 {
-		return localVarReturnValue, nil, reportError("federationSettingsId must have less than 24 elements")
-	}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
 	if r.authFederationRoleMapping == nil {
 		return localVarReturnValue, nil, reportError("authFederationRoleMapping is required and must be specified")
 	}
@@ -591,12 +579,6 @@ func (a *FederatedAuthenticationApiService) deleteFederationAppExecute(r DeleteF
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.federationSettingsId) < 24 {
-		return nil, reportError("federationSettingsId must have at least 24 elements")
-	}
-	if strlen(r.federationSettingsId) > 24 {
-		return nil, reportError("federationSettingsId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -721,24 +703,6 @@ func (a *FederatedAuthenticationApiService) deleteRoleMappingExecute(r DeleteRol
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.federationSettingsId) < 24 {
-		return nil, reportError("federationSettingsId must have at least 24 elements")
-	}
-	if strlen(r.federationSettingsId) > 24 {
-		return nil, reportError("federationSettingsId must have less than 24 elements")
-	}
-	if strlen(r.id) < 24 {
-		return nil, reportError("id must have at least 24 elements")
-	}
-	if strlen(r.id) > 24 {
-		return nil, reportError("id must have less than 24 elements")
-	}
-	if strlen(r.orgId) < 24 {
-		return nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return nil, reportError("orgId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -860,18 +824,6 @@ func (a *FederatedAuthenticationApiService) getConnectedOrgConfigExecute(r GetCo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.federationSettingsId) < 24 {
-		return localVarReturnValue, nil, reportError("federationSettingsId must have at least 24 elements")
-	}
-	if strlen(r.federationSettingsId) > 24 {
-		return localVarReturnValue, nil, reportError("federationSettingsId must have less than 24 elements")
-	}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -996,12 +948,6 @@ func (a *FederatedAuthenticationApiService) getFederationSettingsExecute(r GetFe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1132,18 +1078,6 @@ func (a *FederatedAuthenticationApiService) getIdentityProviderExecute(r GetIden
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.federationSettingsId) < 24 {
-		return localVarReturnValue, nil, reportError("federationSettingsId must have at least 24 elements")
-	}
-	if strlen(r.federationSettingsId) > 24 {
-		return localVarReturnValue, nil, reportError("federationSettingsId must have less than 24 elements")
-	}
-	if strlen(r.identityProviderId) < 20 {
-		return localVarReturnValue, nil, reportError("identityProviderId must have at least 20 elements")
-	}
-	if strlen(r.identityProviderId) > 20 {
-		return localVarReturnValue, nil, reportError("identityProviderId must have less than 20 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1274,18 +1208,6 @@ func (a *FederatedAuthenticationApiService) getIdentityProviderMetadataExecute(r
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.federationSettingsId) < 24 {
-		return localVarReturnValue, nil, reportError("federationSettingsId must have at least 24 elements")
-	}
-	if strlen(r.federationSettingsId) > 24 {
-		return localVarReturnValue, nil, reportError("federationSettingsId must have less than 24 elements")
-	}
-	if strlen(r.identityProviderId) < 20 {
-		return localVarReturnValue, nil, reportError("identityProviderId must have at least 20 elements")
-	}
-	if strlen(r.identityProviderId) > 20 {
-		return localVarReturnValue, nil, reportError("identityProviderId must have less than 20 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1422,24 +1344,6 @@ func (a *FederatedAuthenticationApiService) getRoleMappingExecute(r GetRoleMappi
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.federationSettingsId) < 24 {
-		return localVarReturnValue, nil, reportError("federationSettingsId must have at least 24 elements")
-	}
-	if strlen(r.federationSettingsId) > 24 {
-		return localVarReturnValue, nil, reportError("federationSettingsId must have less than 24 elements")
-	}
-	if strlen(r.id) < 24 {
-		return localVarReturnValue, nil, reportError("id must have at least 24 elements")
-	}
-	if strlen(r.id) > 24 {
-		return localVarReturnValue, nil, reportError("id must have less than 24 elements")
-	}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1564,12 +1468,6 @@ func (a *FederatedAuthenticationApiService) listConnectedOrgConfigsExecute(r Lis
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.federationSettingsId) < 24 {
-		return localVarReturnValue, nil, reportError("federationSettingsId must have at least 24 elements")
-	}
-	if strlen(r.federationSettingsId) > 24 {
-		return localVarReturnValue, nil, reportError("federationSettingsId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1703,12 +1601,6 @@ func (a *FederatedAuthenticationApiService) listIdentityProvidersExecute(r ListI
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.federationSettingsId) < 24 {
-		return localVarReturnValue, nil, reportError("federationSettingsId must have at least 24 elements")
-	}
-	if strlen(r.federationSettingsId) > 24 {
-		return localVarReturnValue, nil, reportError("federationSettingsId must have less than 24 elements")
-	}
 
 	if r.protocol != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "protocol", r.protocol, "")
@@ -1842,18 +1734,6 @@ func (a *FederatedAuthenticationApiService) listRoleMappingsExecute(r ListRoleMa
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.federationSettingsId) < 24 {
-		return localVarReturnValue, nil, reportError("federationSettingsId must have at least 24 elements")
-	}
-	if strlen(r.federationSettingsId) > 24 {
-		return localVarReturnValue, nil, reportError("federationSettingsId must have less than 24 elements")
-	}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1984,18 +1864,6 @@ func (a *FederatedAuthenticationApiService) removeConnectedOrgConfigExecute(r Re
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.federationSettingsId) < 24 {
-		return localVarReturnValue, nil, reportError("federationSettingsId must have at least 24 elements")
-	}
-	if strlen(r.federationSettingsId) > 24 {
-		return localVarReturnValue, nil, reportError("federationSettingsId must have less than 24 elements")
-	}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2136,18 +2004,6 @@ func (a *FederatedAuthenticationApiService) updateConnectedOrgConfigExecute(r Up
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.federationSettingsId) < 24 {
-		return localVarReturnValue, nil, reportError("federationSettingsId must have at least 24 elements")
-	}
-	if strlen(r.federationSettingsId) > 24 {
-		return localVarReturnValue, nil, reportError("federationSettingsId must have less than 24 elements")
-	}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
 	if r.connectedOrgConfig == nil {
 		return localVarReturnValue, nil, reportError("connectedOrgConfig is required and must be specified")
 	}
@@ -2287,18 +2143,6 @@ func (a *FederatedAuthenticationApiService) updateIdentityProviderExecute(r Upda
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.federationSettingsId) < 24 {
-		return localVarReturnValue, nil, reportError("federationSettingsId must have at least 24 elements")
-	}
-	if strlen(r.federationSettingsId) > 24 {
-		return localVarReturnValue, nil, reportError("federationSettingsId must have less than 24 elements")
-	}
-	if strlen(r.identityProviderId) < 20 {
-		return localVarReturnValue, nil, reportError("identityProviderId must have at least 20 elements")
-	}
-	if strlen(r.identityProviderId) > 20 {
-		return localVarReturnValue, nil, reportError("identityProviderId must have less than 20 elements")
-	}
 	if r.identityProviderUpdate == nil {
 		return localVarReturnValue, nil, reportError("identityProviderUpdate is required and must be specified")
 	}
@@ -2444,24 +2288,6 @@ func (a *FederatedAuthenticationApiService) updateRoleMappingExecute(r UpdateRol
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.federationSettingsId) < 24 {
-		return localVarReturnValue, nil, reportError("federationSettingsId must have at least 24 elements")
-	}
-	if strlen(r.federationSettingsId) > 24 {
-		return localVarReturnValue, nil, reportError("federationSettingsId must have less than 24 elements")
-	}
-	if strlen(r.id) < 24 {
-		return localVarReturnValue, nil, reportError("id must have at least 24 elements")
-	}
-	if strlen(r.id) > 24 {
-		return localVarReturnValue, nil, reportError("id must have less than 24 elements")
-	}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
 	if r.authFederationRoleMapping == nil {
 		return localVarReturnValue, nil, reportError("authFederationRoleMapping is required and must be specified")
 	}

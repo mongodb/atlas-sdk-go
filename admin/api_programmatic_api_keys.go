@@ -422,18 +422,6 @@ func (a *ProgrammaticAPIKeysApiService) addProjectApiKeyExecute(r AddProjectApiK
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.apiUserId) < 24 {
-		return localVarReturnValue, nil, reportError("apiUserId must have at least 24 elements")
-	}
-	if strlen(r.apiUserId) > 24 {
-		return localVarReturnValue, nil, reportError("apiUserId must have less than 24 elements")
-	}
 	if r.userAccessRoleAssignment == nil {
 		return localVarReturnValue, nil, reportError("userAccessRoleAssignment is required and must be specified")
 	}
@@ -567,12 +555,6 @@ func (a *ProgrammaticAPIKeysApiService) createApiKeyExecute(r CreateApiKeyApiReq
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
 	if r.createAtlasOrganizationApiKey == nil {
 		return localVarReturnValue, nil, reportError("createAtlasOrganizationApiKey is required and must be specified")
 	}
@@ -739,18 +721,6 @@ func (a *ProgrammaticAPIKeysApiService) createApiKeyAccessListExecute(r CreateAp
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
-	if strlen(r.apiUserId) < 24 {
-		return localVarReturnValue, nil, reportError("apiUserId must have at least 24 elements")
-	}
-	if strlen(r.apiUserId) > 24 {
-		return localVarReturnValue, nil, reportError("apiUserId must have less than 24 elements")
-	}
 	if r.userAccessList == nil {
 		return localVarReturnValue, nil, reportError("userAccessList is required and must be specified")
 	}
@@ -905,12 +875,6 @@ func (a *ProgrammaticAPIKeysApiService) createProjectApiKeyExecute(r CreateProje
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 	if r.createAtlasProjectApiKey == nil {
 		return localVarReturnValue, nil, reportError("createAtlasProjectApiKey is required and must be specified")
 	}
@@ -1046,18 +1010,6 @@ func (a *ProgrammaticAPIKeysApiService) deleteApiKeyExecute(r DeleteApiKeyApiReq
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
-	if strlen(r.apiUserId) < 24 {
-		return localVarReturnValue, nil, reportError("apiUserId must have at least 24 elements")
-	}
-	if strlen(r.apiUserId) > 24 {
-		return localVarReturnValue, nil, reportError("apiUserId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1194,18 +1146,6 @@ func (a *ProgrammaticAPIKeysApiService) deleteApiKeyAccessListEntryExecute(r Del
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
-	if strlen(r.apiUserId) < 24 {
-		return localVarReturnValue, nil, reportError("apiUserId must have at least 24 elements")
-	}
-	if strlen(r.apiUserId) > 24 {
-		return localVarReturnValue, nil, reportError("apiUserId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1336,18 +1276,6 @@ func (a *ProgrammaticAPIKeysApiService) getApiKeyExecute(r GetApiKeyApiRequest) 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
-	if strlen(r.apiUserId) < 24 {
-		return localVarReturnValue, nil, reportError("apiUserId must have at least 24 elements")
-	}
-	if strlen(r.apiUserId) > 24 {
-		return localVarReturnValue, nil, reportError("apiUserId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1484,18 +1412,6 @@ func (a *ProgrammaticAPIKeysApiService) getApiKeyAccessListExecute(r GetApiKeyAc
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
-	if strlen(r.apiUserId) < 24 {
-		return localVarReturnValue, nil, reportError("apiUserId must have at least 24 elements")
-	}
-	if strlen(r.apiUserId) > 24 {
-		return localVarReturnValue, nil, reportError("apiUserId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1653,18 +1569,6 @@ func (a *ProgrammaticAPIKeysApiService) listApiKeyAccessListsEntriesExecute(r Li
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
-	if strlen(r.apiUserId) < 24 {
-		return localVarReturnValue, nil, reportError("apiUserId must have at least 24 elements")
-	}
-	if strlen(r.apiUserId) > 24 {
-		return localVarReturnValue, nil, reportError("apiUserId must have less than 24 elements")
-	}
 
 	if r.includeCount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
@@ -1837,12 +1741,6 @@ func (a *ProgrammaticAPIKeysApiService) listApiKeysExecute(r ListApiKeysApiReque
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
 
 	if r.includeCount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
@@ -2015,12 +1913,6 @@ func (a *ProgrammaticAPIKeysApiService) listProjectApiKeysExecute(r ListProjectA
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 
 	if r.includeCount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
@@ -2172,18 +2064,6 @@ func (a *ProgrammaticAPIKeysApiService) removeProjectApiKeyExecute(r RemoveProje
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.apiUserId) < 24 {
-		return localVarReturnValue, nil, reportError("apiUserId must have at least 24 elements")
-	}
-	if strlen(r.apiUserId) > 24 {
-		return localVarReturnValue, nil, reportError("apiUserId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2318,18 +2198,6 @@ func (a *ProgrammaticAPIKeysApiService) updateApiKeyExecute(r UpdateApiKeyApiReq
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
-	if strlen(r.apiUserId) < 24 {
-		return localVarReturnValue, nil, reportError("apiUserId must have at least 24 elements")
-	}
-	if strlen(r.apiUserId) > 24 {
-		return localVarReturnValue, nil, reportError("apiUserId must have less than 24 elements")
-	}
 	if r.updateAtlasOrganizationApiKey == nil {
 		return localVarReturnValue, nil, reportError("updateAtlasOrganizationApiKey is required and must be specified")
 	}
@@ -2496,18 +2364,6 @@ func (a *ProgrammaticAPIKeysApiService) updateApiKeyRolesExecute(r UpdateApiKeyR
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.apiUserId) < 24 {
-		return localVarReturnValue, nil, reportError("apiUserId must have at least 24 elements")
-	}
-	if strlen(r.apiUserId) > 24 {
-		return localVarReturnValue, nil, reportError("apiUserId must have less than 24 elements")
-	}
 	if r.updateAtlasProjectApiKey == nil {
 		return localVarReturnValue, nil, reportError("updateAtlasProjectApiKey is required and must be specified")
 	}

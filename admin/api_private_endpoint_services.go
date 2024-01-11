@@ -314,18 +314,6 @@ func (a *PrivateEndpointServicesApiService) createPrivateEndpointExecute(r Creat
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.endpointServiceId) < 24 {
-		return localVarReturnValue, nil, reportError("endpointServiceId must have at least 24 elements")
-	}
-	if strlen(r.endpointServiceId) > 24 {
-		return localVarReturnValue, nil, reportError("endpointServiceId must have less than 24 elements")
-	}
 	if r.createEndpointRequest == nil {
 		return localVarReturnValue, nil, reportError("createEndpointRequest is required and must be specified")
 	}
@@ -459,12 +447,6 @@ func (a *PrivateEndpointServicesApiService) createPrivateEndpointServiceExecute(
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 	if r.cloudProviderEndpointServiceRequest == nil {
 		return localVarReturnValue, nil, reportError("cloudProviderEndpointServiceRequest is required and must be specified")
 	}
@@ -612,18 +594,6 @@ func (a *PrivateEndpointServicesApiService) deletePrivateEndpointExecute(r Delet
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.endpointServiceId) < 24 {
-		return localVarReturnValue, nil, reportError("endpointServiceId must have at least 24 elements")
-	}
-	if strlen(r.endpointServiceId) > 24 {
-		return localVarReturnValue, nil, reportError("endpointServiceId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -760,18 +730,6 @@ func (a *PrivateEndpointServicesApiService) deletePrivateEndpointServiceExecute(
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.endpointServiceId) < 24 {
-		return localVarReturnValue, nil, reportError("endpointServiceId must have at least 24 elements")
-	}
-	if strlen(r.endpointServiceId) > 24 {
-		return localVarReturnValue, nil, reportError("endpointServiceId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -914,18 +872,6 @@ func (a *PrivateEndpointServicesApiService) getPrivateEndpointExecute(r GetPriva
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.endpointServiceId) < 24 {
-		return localVarReturnValue, nil, reportError("endpointServiceId must have at least 24 elements")
-	}
-	if strlen(r.endpointServiceId) > 24 {
-		return localVarReturnValue, nil, reportError("endpointServiceId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1062,18 +1008,6 @@ func (a *PrivateEndpointServicesApiService) getPrivateEndpointServiceExecute(r G
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.endpointServiceId) < 24 {
-		return localVarReturnValue, nil, reportError("endpointServiceId must have at least 24 elements")
-	}
-	if strlen(r.endpointServiceId) > 24 {
-		return localVarReturnValue, nil, reportError("endpointServiceId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1198,12 +1132,6 @@ func (a *PrivateEndpointServicesApiService) getRegionalizedPrivateEndpointSettin
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1334,12 +1262,6 @@ func (a *PrivateEndpointServicesApiService) listPrivateEndpointServicesExecute(r
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1468,12 +1390,6 @@ func (a *PrivateEndpointServicesApiService) toggleRegionalizedPrivateEndpointSet
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 	if r.projectSettingItem == nil {
 		return localVarReturnValue, nil, reportError("projectSettingItem is required and must be specified")
 	}

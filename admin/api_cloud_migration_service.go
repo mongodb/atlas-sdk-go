@@ -275,12 +275,6 @@ func (a *CloudMigrationServiceApiService) createLinkTokenExecute(r CreateLinkTok
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
 	if r.targetOrgRequest == nil {
 		return localVarReturnValue, nil, reportError("targetOrgRequest is required and must be specified")
 	}
@@ -420,12 +414,6 @@ func (a *CloudMigrationServiceApiService) createPushMigrationExecute(r CreatePus
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 	if r.liveMigrationRequest == nil {
 		return localVarReturnValue, nil, reportError("liveMigrationRequest is required and must be specified")
 	}
@@ -558,18 +546,6 @@ func (a *CloudMigrationServiceApiService) cutoverMigrationExecute(r CutoverMigra
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.liveMigrationId) < 24 {
-		return nil, reportError("liveMigrationId must have at least 24 elements")
-	}
-	if strlen(r.liveMigrationId) > 24 {
-		return nil, reportError("liveMigrationId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -685,12 +661,6 @@ func (a *CloudMigrationServiceApiService) deleteLinkTokenExecute(r DeleteLinkTok
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -821,18 +791,6 @@ func (a *CloudMigrationServiceApiService) getPushMigrationExecute(r GetPushMigra
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.liveMigrationId) < 24 {
-		return localVarReturnValue, nil, reportError("liveMigrationId must have at least 24 elements")
-	}
-	if strlen(r.liveMigrationId) > 24 {
-		return localVarReturnValue, nil, reportError("liveMigrationId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -963,18 +921,6 @@ func (a *CloudMigrationServiceApiService) getValidationStatusExecute(r GetValida
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.validationId) < 24 {
-		return localVarReturnValue, nil, reportError("validationId must have at least 24 elements")
-	}
-	if strlen(r.validationId) > 24 {
-		return localVarReturnValue, nil, reportError("validationId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1099,12 +1045,6 @@ func (a *CloudMigrationServiceApiService) listSourceProjectsExecute(r ListSource
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.orgId) < 24 {
-		return localVarReturnValue, nil, reportError("orgId must have at least 24 elements")
-	}
-	if strlen(r.orgId) > 24 {
-		return localVarReturnValue, nil, reportError("orgId must have less than 24 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1233,12 +1173,6 @@ func (a *CloudMigrationServiceApiService) validateMigrationExecute(r ValidateMig
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 	if r.liveMigrationRequest == nil {
 		return localVarReturnValue, nil, reportError("liveMigrationRequest is required and must be specified")
 	}

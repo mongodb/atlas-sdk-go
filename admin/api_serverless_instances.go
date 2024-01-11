@@ -200,12 +200,6 @@ func (a *ServerlessInstancesApiService) createServerlessInstanceExecute(r Create
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 	if r.serverlessInstanceDescriptionCreate == nil {
 		return localVarReturnValue, nil, reportError("serverlessInstanceDescriptionCreate is required and must be specified")
 	}
@@ -341,18 +335,6 @@ func (a *ServerlessInstancesApiService) deleteServerlessInstanceExecute(r Delete
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.name) < 1 {
-		return localVarReturnValue, nil, reportError("name must have at least 1 elements")
-	}
-	if strlen(r.name) > 64 {
-		return localVarReturnValue, nil, reportError("name must have less than 64 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -483,18 +465,6 @@ func (a *ServerlessInstancesApiService) getServerlessInstanceExecute(r GetServer
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.name) < 1 {
-		return localVarReturnValue, nil, reportError("name must have at least 1 elements")
-	}
-	if strlen(r.name) > 64 {
-		return localVarReturnValue, nil, reportError("name must have less than 64 elements")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -646,12 +616,6 @@ func (a *ServerlessInstancesApiService) listServerlessInstancesExecute(r ListSer
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
 
 	if r.includeCount != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
@@ -807,18 +771,6 @@ func (a *ServerlessInstancesApiService) updateServerlessInstanceExecute(r Update
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if strlen(r.groupId) < 24 {
-		return localVarReturnValue, nil, reportError("groupId must have at least 24 elements")
-	}
-	if strlen(r.groupId) > 24 {
-		return localVarReturnValue, nil, reportError("groupId must have less than 24 elements")
-	}
-	if strlen(r.name) < 1 {
-		return localVarReturnValue, nil, reportError("name must have at least 1 elements")
-	}
-	if strlen(r.name) > 64 {
-		return localVarReturnValue, nil, reportError("name must have less than 64 elements")
-	}
 	if r.serverlessInstanceDescriptionUpdate == nil {
 		return localVarReturnValue, nil, reportError("serverlessInstanceDescriptionUpdate is required and must be specified")
 	}

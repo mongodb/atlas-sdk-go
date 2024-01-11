@@ -21,7 +21,6 @@ import (
 	"strconv"
 	"strings"
 	"time"
-	"unicode/utf8"
 
 	{{#hasOAuthMethods}}
 	"golang.org/x/oauth2"
@@ -588,11 +587,6 @@ func detectContentType(body interface{}) string {
 	}
 
 	return contentType
-}
-
-
-func strlen(s string) int {
-	return utf8.RuneCountInString(s)
 }
 
 // GenericOpenAPIError Provides access to the body, error and model on returned errors.
