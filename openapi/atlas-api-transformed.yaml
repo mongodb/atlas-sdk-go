@@ -12,7 +12,7 @@ info:
 
     curl --user "{PUBLIC-KEY}:{PRIVATE-KEY}" \
       --digest \
-      --header "Accept: application/vnd.atlas.2023-02-01+json" \
+      --header "Accept: application/vnd.atlas.2023-11-15+json" \
       GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/dbAccessHistory/clusters/{clusterName}?pretty=true"
     ```
 
@@ -24,7 +24,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: d05d140a757e46f9ce25ee52b17ae91335003c32
+  x-xgen-sha: a0f262b705068fe2d4162c050d418a93c33d333b
 servers:
   - url: https://cloud.mongodb.com
 tags:
@@ -462,7 +462,10 @@ paths:
         **Note**: The domainRestrictionEnabled field defaults to false if not provided in the request. 
 
 
-        **Note**: If the identityProviderId field is not provided, you will disconnect the organization and the identity provider.
+        **Note**: If the identityProviderId field is not provided, you will disconnect the organization and the identity provider. 
+
+
+        **Note**: Currently connected data access identity providers missing from the dataAccessIdentityProviderIds field will be disconnected.
       operationId: updateConnectedOrgConfig
       parameters:
         - $ref: "#/components/parameters/federationSettingsId"
@@ -723,9 +726,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/FederationIdentityProvider"
+                $ref: "#/components/schemas/PaginatedFederationIdentityProvider"
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -789,7 +790,7 @@ paths:
         content:
           application/vnd.atlas.2023-11-15+json:
             schema:
-              $ref: "#/components/schemas/IdentityProviderUpdate"
+              $ref: "#/components/schemas/FederationIdentityProviderUpdate"
         description: The identity provider that you want to update.
         required: true
       responses:
@@ -8405,9 +8406,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/GroupIPAddresses"
+                $ref: "#/components/schemas/GroupIPAddresses"
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -14212,6 +14211,8 @@ paths:
           description: OK
         "401":
           $ref: "#/components/responses/unauthorized"
+        "404":
+          $ref: "#/components/responses/notFound"
         "500":
           $ref: "#/components/responses/internalServerError"
       security:
@@ -15523,6 +15524,13 @@ components:
             storage space, consider upgrading your cluster to a higher tier.
           maximum: 4096
           minimum: 10
+        diskWarmingMode:
+          type: string
+          default: FULLY_WARMED
+          description: Disk warming mode selection.
+          externalDocs:
+            description: Reduce Secondary Disk Warming Impact
+            url: https://docs.atlas.mongodb.com/reference/replica-set-tags/#reduce-secondary-disk-warming-impact
         encryptionAtRestProvider:
           type: string
           description: 'Cloud service provider that manages your customer keys to provide
@@ -16892,6 +16900,8 @@ components:
           $ref: "#/components/schemas/Criteria"
         dataExpirationRule:
           $ref: "#/components/schemas/DataExpirationRule"
+        dataProcessRegion:
+          $ref: "#/components/schemas/DataProcessRegion"
         dataSetName:
           type: string
           description: Human-readable label that identifies the dataset that Atlas
@@ -16990,6 +17000,7 @@ components:
           type: string
           description: Human-readable label that identifies the collection for which you
             created the online archive.
+          writeOnly: true
         collectionType:
           type: string
           default: STANDARD
@@ -16999,12 +17010,13 @@ components:
 
 
             If you set this parameter to `TIMESERIES`, set `"criteria.type" : "date"` and `"criteria.dateFormat" : "ISODATE"`.
+          writeOnly: true
         criteria:
           $ref: "#/components/schemas/Criteria"
         dataExpirationRule:
           $ref: "#/components/schemas/DataExpirationRule"
         dataProcessRegion:
-          $ref: "#/components/schemas/DataProcessRegion"
+          $ref: "#/components/schemas/CreateDataProcessRegion"
         dataSetName:
           type: string
           description: Human-readable label that identifies the dataset that Atlas
@@ -17014,6 +17026,7 @@ components:
           type: string
           description: Human-readable label of the database that contains the collection
             that contains the online archive.
+          writeOnly: true
         groupId:
           type: string
           description: Unique 24-hexadecimal digit string that identifies the project that
@@ -17042,6 +17055,7 @@ components:
           items:
             $ref: "#/components/schemas/PartitionField"
           minItems: 1
+          writeOnly: true
         paused:
           type: boolean
           description: Flag that indicates whether this online archive exists in the
@@ -17747,10 +17761,10 @@ components:
     BasicDBObject:
       type: object
       additionalProperties:
-        description: List that contains the fields to configure in this vectorSearch
-          index. This parameter must contain at least one "vector" type field.
-      description: List that contains the fields to configure in this vectorSearch
-        index. This parameter must contain at least one "vector" type field.
+        description: Fields to index for vector search.
+        title: Field
+      description: Fields to index for vector search.
+      title: Field
     BiConnector:
       type: object
       description: Settings needed to configure the MongoDB Connector for Business
@@ -18912,15 +18926,16 @@ components:
           type: string
           description: Physical location of your MongoDB cluster nodes. The region you
             choose can affect network latency for clients accessing your
-            databases. When MongoDB Cloud deploys a dedicated cluster, it checks
-            if a VPC or VPC connection exists for that provider and region. If
-            not, MongoDB Cloud creates them as part of the deployment. It
-            assigns the VPC a Classless Inter-Domain Routing (CIDR) block. To
-            limit a new VPC peering connection to one Classless Inter-Domain
-            Routing (CIDR) block and region, create the connection first. Deploy
-            the cluster after the connection starts. GCP Clusters and
-            Multi-region clusters require one VPC peering connection for each
-            region. MongoDB nodes can use only the peering connection that
+            databases. The region name is only returned in the response for
+            single-region clusters. When MongoDB Cloud deploys a dedicated
+            cluster, it checks if a VPC or VPC connection exists for that
+            provider and region. If not, MongoDB Cloud creates them as part of
+            the deployment. It assigns the VPC a Classless Inter-Domain Routing
+            (CIDR) block. To limit a new VPC peering connection to one Classless
+            Inter-Domain Routing (CIDR) block and region, create the connection
+            first. Deploy the cluster after the connection starts. GCP Clusters
+            and Multi-region clusters require one VPC peering connection for
+            each region. MongoDB nodes can use only the peering connection that
             resides in the same region as the nodes to communicate with the
             peered VPC.
         analyticsAutoScaling:
@@ -19669,6 +19684,12 @@ components:
             $ref: "#/components/schemas/SearchSynonymMappingDefinition"
         fields:
           type: array
+          description: Settings that configure the fields, one per object, to index. You
+            must define at least one "vector" type field. You can optionally
+            define "filter" type fields also.
+          externalDocs:
+            description: Vector Search Fields
+            url: https://dochub.mongodb.org/core/avs-vector-type
           items:
             $ref: "#/components/schemas/BasicDBObject"
       required:
@@ -19892,8 +19913,8 @@ components:
             connected org.
         identityProviderId:
           type: string
-          description: Unique 20-hexadecimal digit string that identifies the identity
-            provider that this connected org config is associated with.
+          description: Unique 20-hexadecimal digit string that identifies the UI access
+            identity provider that this connected org config is associated with.
           maxLength: 20
           minLength: 20
           pattern: ^([a-f0-9]{20})$
@@ -22705,12 +22726,6 @@ components:
     FederationIdentityProvider:
       type: object
       properties:
-        associatedDomains:
-          type: array
-          description: List that contains the domains associated with the identity provider.
-          items:
-            type: string
-          uniqueItems: true
         associatedOrgs:
           type: array
           description: List that contains the connected organization configurations
@@ -22718,6 +22733,11 @@ components:
           items:
             $ref: "#/components/schemas/ConnectedOrgConfig"
           uniqueItems: true
+        createdAt:
+          type: string
+          format: date-time
+          description: Date that the identity provider was created on.
+          readOnly: true
         description:
           type: string
           description: The description of the identity provider.
@@ -22735,7 +22755,8 @@ components:
           readOnly: true
         issuerUri:
           type: string
-          description: Unique string that identifies the issuer of the SAML Assertion.
+          description: Unique string that identifies the issuer of the SAML Assertion or
+            OIDC metadata/discovery document URL.
         oktaIdpId:
           type: string
           description: Unique 20-hexadecimal digit string that identifies the identity
@@ -22745,30 +22766,21 @@ components:
           pattern: ^([a-f0-9]{20})$
         protocol:
           type: string
-          description: The protocol of the identity provider.
-        audienceClaim:
-          type: array
-          description: Identifier of the intended recipient of the token.
-          items:
-            type: string
-        clientId:
+          description: The protocol of the identity provider. Either SAML or OIDC.
+        updatedAt:
           type: string
-          description: Client identifier that is assigned to an application by the
-            Identity Provider.
-        groupsClaim:
-          type: string
-          description: Identifier of the claim which contains IdP Group IDs in the token.
-        requestedScopes:
-          type: array
-          description: The description of an IdP, configured by customers.
-          items:
-            type: string
-        userClaim:
-          type: string
-          description: Identifier of the claim which contains the user ID in the token.
+          format: date-time
+          description: Date that the identity provider was last updated on.
+          readOnly: true
         acsUrl:
           type: string
           description: URL that points to where to send the SAML response.
+        associatedDomains:
+          type: array
+          description: List that contains the domains associated with the identity provider.
+          items:
+            type: string
+          uniqueItems: true
         audienceUri:
           type: string
           description: Unique string that identifies the intended audience of the SAML
@@ -22784,6 +22796,9 @@ components:
           type: string
           description: Signature algorithm that Federated Authentication uses to encrypt
             the identity provider signature.
+        slug:
+          type: string
+          description: Custom SSO Url for the identity provider.
         ssoDebugEnabled:
           type: boolean
           description: Flag that indicates whether the identity provider has SSO debug
@@ -22794,9 +22809,101 @@ components:
         status:
           type: string
           description: String enum that indicates whether the identity provider is active.
+        audienceClaim:
+          type: array
+          description: Identifier of the intended recipient of the token.
+          items:
+            type: string
+        clientId:
+          type: string
+          description: Client identifier that is assigned to an application by the
+            Identity Provider.
+        groupsClaim:
+          type: string
+          description: Identifier of the claim which contains IdP Group IDs in the token.
+        requestedScopes:
+          type: array
+          description: Scopes that MongoDB applications will request from the
+            authorization endpoint.
+          items:
+            type: string
+        userClaim:
+          type: string
+          description: Identifier of the claim which contains the user ID in the token.
       required:
         - id
         - oktaIdpId
+    FederationIdentityProviderUpdate:
+      type: object
+      properties:
+        description:
+          type: string
+          description: The description of the identity provider.
+        displayName:
+          type: string
+          description: Human-readable label that identifies the identity provider.
+          maxLength: 50
+          minLength: 1
+        issuerUri:
+          type: string
+          description: Unique string that identifies the issuer of the SAML Assertion or
+            OIDC metadata/discovery document URL.
+          example: urn:idp:default
+        protocol:
+          type: string
+          description: The protocol of the identity provider. Either SAML or OIDC.
+        associatedDomains:
+          type: array
+          description: List that contains the domains associated with the identity provider.
+          items:
+            type: string
+          uniqueItems: true
+        pemFileInfo:
+          $ref: "#/components/schemas/PemFileInfoUpdate"
+        requestBinding:
+          type: string
+          description: SAML Authentication Request Protocol HTTP method binding (POST or
+            REDIRECT) that Federated Authentication uses to send the
+            authentication request.
+        responseSignatureAlgorithm:
+          type: string
+          description: Signature algorithm that Federated Authentication uses to encrypt
+            the identity provider signature.
+        slug:
+          type: string
+          description: Custom SSO Url for the identity provider.
+        ssoDebugEnabled:
+          type: boolean
+          description: Flag that indicates whether the identity provider has SSO debug
+            enabled.
+        ssoUrl:
+          type: string
+          description: URL that points to the receiver of the SAML authentication request.
+          example: https://example.com
+        status:
+          type: string
+          description: String enum that indicates whether the identity provider is active.
+        audienceClaim:
+          type: array
+          description: Identifier of the intended recipient of the token.
+          items:
+            type: string
+        clientId:
+          type: string
+          description: Client identifier that is assigned to an application by the
+            Identity Provider.
+        groupsClaim:
+          type: string
+          description: Identifier of the claim which contains IdP Group IDs in the token.
+        requestedScopes:
+          type: array
+          description: Scopes that MongoDB applications will request from the
+            authorization endpoint.
+          items:
+            type: string
+        userClaim:
+          type: string
+          description: Identifier of the claim which contains the user ID in the token.
     FieldTransformation:
       type: object
       description: Field Transformations during ingestion of a Data Lake Pipeline.
@@ -23409,75 +23516,6 @@ components:
           format: int32
           description: Number of nodes of the given type for MongoDB Cloud to deploy to
             the region.
-    IdentityProviderUpdate:
-      type: object
-      properties:
-        associatedDomains:
-          type: array
-          description: List that contains the domains associated with the identity provider.
-          items:
-            type: string
-          uniqueItems: true
-        description:
-          type: string
-          description: The description for the identity provider.
-        displayName:
-          type: string
-          description: Human-readable label that identifies the identity provider.
-          maxLength: 50
-          minLength: 1
-        issuerUri:
-          type: string
-          description: Unique string that identifies the issuer of the SAML Assertion.
-          example: urn:idp:default
-        protocol:
-          type: string
-          description: The protocol for the identity provider.
-        audienceClaim:
-          type: array
-          description: Audience claim for the identity provider.
-          items:
-            type: string
-        clientId:
-          type: string
-          description: Client ID for the identity provider.
-        groupsClaim:
-          type: string
-          description: Groups claim for the identity provider.
-        requestedScopes:
-          type: array
-          description: Requested scopes for the identity provider.
-          items:
-            type: string
-        userClaim:
-          type: string
-          description: User claim for the identity provider.
-        pemFileInfo:
-          $ref: "#/components/schemas/PemFileInfoUpdate"
-        requestBinding:
-          type: string
-          description: SAML Authentication Request Protocol HTTP method binding (POST or
-            REDIRECT) that Federated Authentication uses to send the
-            authentication request.
-        responseSignatureAlgorithm:
-          type: string
-          description: Signature algorithm that Federated Authentication uses to encrypt
-            the identity provider signature.
-        slug:
-          type: string
-          description: Custom SSO Url for identity provider.
-        ssoDebugEnabled:
-          type: boolean
-          description: Flag that indicates whether the identity provider has SSO debug
-            enabled.
-        ssoUrl:
-          type: string
-          description: Unique string that identifies the intended audience of the SAML
-            assertion.
-          example: https://example.com
-        status:
-          type: string
-          description: String enum that indicates whether the identity provider is active.
     InboundControlPlaneCloudProviderIPAddresses:
       type: object
       description: List of inbound IP addresses to the Atlas control plane,
@@ -24299,6 +24337,13 @@ components:
             storage space, consider upgrading your cluster to a higher tier.
           maximum: 4096
           minimum: 10
+        diskWarmingMode:
+          type: string
+          default: FULLY_WARMED
+          description: Disk warming mode selection.
+          externalDocs:
+            description: Reduce Secondary Disk Warming Impact
+            url: https://docs.atlas.mongodb.com/reference/replica-set-tags/#reduce-secondary-disk-warming-impact
         encryptionAtRestProvider:
           type: string
           description: Cloud service provider that manages your customer keys to provide
@@ -24537,6 +24582,13 @@ components:
             storage space, consider upgrading your cluster to a higher tier.
           maximum: 4096
           minimum: 10
+        diskWarmingMode:
+          type: string
+          default: FULLY_WARMED
+          description: Disk warming mode selection.
+          externalDocs:
+            description: Reduce Secondary Disk Warming Impact
+            url: https://docs.atlas.mongodb.com/reference/replica-set-tags/#reduce-secondary-disk-warming-impact
         encryptionAtRestProvider:
           type: string
           description: Cloud service provider that manages your customer keys to provide
@@ -25852,6 +25904,34 @@ components:
           readOnly: true
       readOnly: true
       title: Outbound Control Plane IP Addresses By Cloud Provider
+    PaginatedFederationIdentityProvider:
+      type: object
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud providers when
+            completing this request.
+          items:
+            $ref: "#/components/schemas/FederationIdentityProvider"
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Number of documents returned in this response if **includeCount**
+            query param is true.
+          minimum: 0
+          readOnly: true
     PaginatedHostView_Atlas:
       type: object
       properties:
@@ -25893,7 +25973,7 @@ components:
           description: Human-readable label given to the file.
     PemFileInfoUpdate:
       type: object
-      description: PEM file information for the identity provider's certificates.
+      description: PEM file information for the identity provider's current certificates.
       properties:
         certificates:
           type: array
@@ -27149,6 +27229,26 @@ components:
         - groupId
         - managedAuthentication
         - ssl
+    StreamConfig:
+      type: object
+      description: Configuration options for an Atlas Stream Processing Instance.
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        tier:
+          type: string
+          description: Selected tier for the Stream Instance. Configures Memory / VCPU
+            allowances.
+          title: Stream Instance Tier
     StreamsConnection:
       type: object
       description: Settings that define a connection to an external data store.
@@ -27321,6 +27421,8 @@ components:
         name:
           type: string
           description: Human-readable label that identifies the stream instance.
+        streamConfig:
+          $ref: "#/components/schemas/StreamConfig"
     SynonymSource:
       type: object
       description: Data set that stores the mapping one or more words map to one or
@@ -28586,6 +28688,20 @@ components:
           example: d9ab638a801efe182f98ae3e18ea4bb47b9fda808a28a8c7de205bb0e94f7d71
           maxLength: 64
           minLength: 64
+    CreateDataProcessRegion:
+      type: object
+      description: Settings to configure the region where you wish to store your
+        archived data.
+      properties:
+        cloudProvider:
+          type: string
+          description: Human-readable label that identifies the Cloud service provider
+            where you wish to store your archived data.
+        region:
+          type: string
+          description: Human-readable label that identifies the geographic location of the
+            region where you wish to store your archived data.
+      writeOnly: true
     Criteria:
       type: object
       description: >-
@@ -28651,17 +28767,19 @@ components:
           minimum: 7
     DataProcessRegion:
       type: object
-      description: Settings to configure the region where you wish to store your
-        archived data.
+      description: Settings related to the region where you to store your archived data.
       properties:
         cloudProvider:
           type: string
           description: Human-readable label that identifies the Cloud service provider
-            where you wish to store your archived data.
+            where you store your archived data.
+          readOnly: true
         region:
           type: string
           description: Human-readable label that identifies the geographic location of the
-            region where you wish to store your archived data.
+            region where you store your archived data.
+          readOnly: true
+      readOnly: true
     GroupPaginatedEvent:
       type: object
       properties:

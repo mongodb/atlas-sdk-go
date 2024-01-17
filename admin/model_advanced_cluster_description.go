@@ -22,6 +22,8 @@ type AdvancedClusterDescription struct {
 	CreateDate *time.Time `json:"createDate,omitempty"`
 	// Storage capacity that the host's root volume possesses expressed in gigabytes. Increase this number to add capacity. MongoDB Cloud requires this parameter if you set **replicationSpecs**. If you specify a disk size below the minimum (10 GB), this parameter defaults to the minimum disk size value. Storage charge calculations depend on whether you choose the default value or a custom value.  The maximum value for disk storage cannot exceed 50 times the maximum RAM for the selected cluster. If you require more storage space, consider upgrading your cluster to a higher tier.
 	DiskSizeGB *float64 `json:"diskSizeGB,omitempty"`
+	// Disk warming mode selection.
+	DiskWarmingMode *string `json:"diskWarmingMode,omitempty"`
 	// Cloud service provider that manages your customer keys to provide an additional layer of encryption at rest for the cluster. To enable customer key management for encryption at rest, the cluster **replicationSpecs[n].regionConfigs[m].{type}Specs.instanceSize** setting must be `M10` or higher and `\"backupEnabled\" : false` or omitted entirely.
 	EncryptionAtRestProvider *string `json:"encryptionAtRestProvider,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the project.
@@ -70,6 +72,8 @@ func NewAdvancedClusterDescription() *AdvancedClusterDescription {
 	this := AdvancedClusterDescription{}
 	var backupEnabled bool = false
 	this.BackupEnabled = &backupEnabled
+	var diskWarmingMode string = "FULLY_WARMED"
+	this.DiskWarmingMode = &diskWarmingMode
 	var mongoDBMajorVersion string = "6.0"
 	this.MongoDBMajorVersion = &mongoDBMajorVersion
 	var rootCertType string = "ISRGROOTX1"
@@ -88,6 +92,8 @@ func NewAdvancedClusterDescriptionWithDefaults() *AdvancedClusterDescription {
 	this := AdvancedClusterDescription{}
 	var backupEnabled bool = false
 	this.BackupEnabled = &backupEnabled
+	var diskWarmingMode string = "FULLY_WARMED"
+	this.DiskWarmingMode = &diskWarmingMode
 	var mongoDBMajorVersion string = "6.0"
 	this.MongoDBMajorVersion = &mongoDBMajorVersion
 	var rootCertType string = "ISRGROOTX1"
@@ -328,6 +334,39 @@ func (o *AdvancedClusterDescription) HasDiskSizeGB() bool {
 // SetDiskSizeGB gets a reference to the given float64 and assigns it to the DiskSizeGB field.
 func (o *AdvancedClusterDescription) SetDiskSizeGB(v float64) {
 	o.DiskSizeGB = &v
+}
+
+// GetDiskWarmingMode returns the DiskWarmingMode field value if set, zero value otherwise
+func (o *AdvancedClusterDescription) GetDiskWarmingMode() string {
+	if o == nil || IsNil(o.DiskWarmingMode) {
+		var ret string
+		return ret
+	}
+	return *o.DiskWarmingMode
+}
+
+// GetDiskWarmingModeOk returns a tuple with the DiskWarmingMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdvancedClusterDescription) GetDiskWarmingModeOk() (*string, bool) {
+	if o == nil || IsNil(o.DiskWarmingMode) {
+		return nil, false
+	}
+
+	return o.DiskWarmingMode, true
+}
+
+// HasDiskWarmingMode returns a boolean if a field has been set.
+func (o *AdvancedClusterDescription) HasDiskWarmingMode() bool {
+	if o != nil && !IsNil(o.DiskWarmingMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetDiskWarmingMode gets a reference to the given string and assigns it to the DiskWarmingMode field.
+func (o *AdvancedClusterDescription) SetDiskWarmingMode(v string) {
+	o.DiskWarmingMode = &v
 }
 
 // GetEncryptionAtRestProvider returns the EncryptionAtRestProvider field value if set, zero value otherwise
@@ -887,6 +926,9 @@ func (o AdvancedClusterDescription) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DiskSizeGB) {
 		toSerialize["diskSizeGB"] = o.DiskSizeGB
+	}
+	if !IsNil(o.DiskWarmingMode) {
+		toSerialize["diskWarmingMode"] = o.DiskWarmingMode
 	}
 	if !IsNil(o.EncryptionAtRestProvider) {
 		toSerialize["encryptionAtRestProvider"] = o.EncryptionAtRestProvider

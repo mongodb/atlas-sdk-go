@@ -25,7 +25,8 @@ type StreamsTenant struct {
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// Human-readable label that identifies the stream instance.
-	Name *string `json:"name,omitempty"`
+	Name         *string       `json:"name,omitempty"`
+	StreamConfig *StreamConfig `json:"streamConfig,omitempty"`
 }
 
 // NewStreamsTenant instantiates a new StreamsTenant object
@@ -276,6 +277,39 @@ func (o *StreamsTenant) SetName(v string) {
 	o.Name = &v
 }
 
+// GetStreamConfig returns the StreamConfig field value if set, zero value otherwise
+func (o *StreamsTenant) GetStreamConfig() StreamConfig {
+	if o == nil || IsNil(o.StreamConfig) {
+		var ret StreamConfig
+		return ret
+	}
+	return *o.StreamConfig
+}
+
+// GetStreamConfigOk returns a tuple with the StreamConfig field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsTenant) GetStreamConfigOk() (*StreamConfig, bool) {
+	if o == nil || IsNil(o.StreamConfig) {
+		return nil, false
+	}
+
+	return o.StreamConfig, true
+}
+
+// HasStreamConfig returns a boolean if a field has been set.
+func (o *StreamsTenant) HasStreamConfig() bool {
+	if o != nil && !IsNil(o.StreamConfig) {
+		return true
+	}
+
+	return false
+}
+
+// SetStreamConfig gets a reference to the given StreamConfig and assigns it to the StreamConfig field.
+func (o *StreamsTenant) SetStreamConfig(v StreamConfig) {
+	o.StreamConfig = &v
+}
+
 func (o StreamsTenant) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -290,6 +324,9 @@ func (o StreamsTenant) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
+	}
+	if !IsNil(o.StreamConfig) {
+		toSerialize["streamConfig"] = o.StreamConfig
 	}
 	return toSerialize, nil
 }

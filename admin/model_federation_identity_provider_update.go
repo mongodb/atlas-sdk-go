@@ -4,39 +4,21 @@ package admin
 
 import (
 	"encoding/json"
-	"time"
 )
 
-// FederationIdentityProvider struct for FederationIdentityProvider
-type FederationIdentityProvider struct {
-	// List that contains the connected organization configurations associated with the identity provider.
-	AssociatedOrgs *[]ConnectedOrgConfig `json:"associatedOrgs,omitempty"`
-	// Date that the identity provider was created on.
-	// Read only field.
-	CreatedAt *time.Time `json:"createdAt,omitempty"`
+// FederationIdentityProviderUpdate struct for FederationIdentityProviderUpdate
+type FederationIdentityProviderUpdate struct {
 	// The description of the identity provider.
 	Description *string `json:"description,omitempty"`
 	// Human-readable label that identifies the identity provider.
 	DisplayName *string `json:"displayName,omitempty"`
-	// Unique 24-hexadecimal digit string that identifies the identity provider.
-	// Read only field.
-	Id string `json:"id"`
 	// Unique string that identifies the issuer of the SAML Assertion or OIDC metadata/discovery document URL.
 	IssuerUri *string `json:"issuerUri,omitempty"`
-	// Unique 20-hexadecimal digit string that identifies the identity provider.
-	OktaIdpId string `json:"oktaIdpId"`
 	// The protocol of the identity provider. Either SAML or OIDC.
 	Protocol *string `json:"protocol,omitempty"`
-	// Date that the identity provider was last updated on.
-	// Read only field.
-	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
-	// URL that points to where to send the SAML response.
-	AcsUrl *string `json:"acsUrl,omitempty"`
 	// List that contains the domains associated with the identity provider.
-	AssociatedDomains *[]string `json:"associatedDomains,omitempty"`
-	// Unique string that identifies the intended audience of the SAML assertion.
-	AudienceUri *string      `json:"audienceUri,omitempty"`
-	PemFileInfo *PemFileInfo `json:"pemFileInfo,omitempty"`
+	AssociatedDomains *[]string          `json:"associatedDomains,omitempty"`
+	PemFileInfo       *PemFileInfoUpdate `json:"pemFileInfo,omitempty"`
 	// SAML Authentication Request Protocol HTTP method binding (POST or REDIRECT) that Federated Authentication uses to send the authentication request.
 	RequestBinding *string `json:"requestBinding,omitempty"`
 	// Signature algorithm that Federated Authentication uses to encrypt the identity provider signature.
@@ -61,93 +43,25 @@ type FederationIdentityProvider struct {
 	UserClaim *string `json:"userClaim,omitempty"`
 }
 
-// NewFederationIdentityProvider instantiates a new FederationIdentityProvider object
+// NewFederationIdentityProviderUpdate instantiates a new FederationIdentityProviderUpdate object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFederationIdentityProvider(id string, oktaIdpId string) *FederationIdentityProvider {
-	this := FederationIdentityProvider{}
-	this.Id = id
-	this.OktaIdpId = oktaIdpId
+func NewFederationIdentityProviderUpdate() *FederationIdentityProviderUpdate {
+	this := FederationIdentityProviderUpdate{}
 	return &this
 }
 
-// NewFederationIdentityProviderWithDefaults instantiates a new FederationIdentityProvider object
+// NewFederationIdentityProviderUpdateWithDefaults instantiates a new FederationIdentityProviderUpdate object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewFederationIdentityProviderWithDefaults() *FederationIdentityProvider {
-	this := FederationIdentityProvider{}
+func NewFederationIdentityProviderUpdateWithDefaults() *FederationIdentityProviderUpdate {
+	this := FederationIdentityProviderUpdate{}
 	return &this
-}
-
-// GetAssociatedOrgs returns the AssociatedOrgs field value if set, zero value otherwise
-func (o *FederationIdentityProvider) GetAssociatedOrgs() []ConnectedOrgConfig {
-	if o == nil || IsNil(o.AssociatedOrgs) {
-		var ret []ConnectedOrgConfig
-		return ret
-	}
-	return *o.AssociatedOrgs
-}
-
-// GetAssociatedOrgsOk returns a tuple with the AssociatedOrgs field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FederationIdentityProvider) GetAssociatedOrgsOk() (*[]ConnectedOrgConfig, bool) {
-	if o == nil || IsNil(o.AssociatedOrgs) {
-		return nil, false
-	}
-
-	return o.AssociatedOrgs, true
-}
-
-// HasAssociatedOrgs returns a boolean if a field has been set.
-func (o *FederationIdentityProvider) HasAssociatedOrgs() bool {
-	if o != nil && !IsNil(o.AssociatedOrgs) {
-		return true
-	}
-
-	return false
-}
-
-// SetAssociatedOrgs gets a reference to the given []ConnectedOrgConfig and assigns it to the AssociatedOrgs field.
-func (o *FederationIdentityProvider) SetAssociatedOrgs(v []ConnectedOrgConfig) {
-	o.AssociatedOrgs = &v
-}
-
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise
-func (o *FederationIdentityProvider) GetCreatedAt() time.Time {
-	if o == nil || IsNil(o.CreatedAt) {
-		var ret time.Time
-		return ret
-	}
-	return *o.CreatedAt
-}
-
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FederationIdentityProvider) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
-		return nil, false
-	}
-
-	return o.CreatedAt, true
-}
-
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *FederationIdentityProvider) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
-func (o *FederationIdentityProvider) SetCreatedAt(v time.Time) {
-	o.CreatedAt = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise
-func (o *FederationIdentityProvider) GetDescription() string {
+func (o *FederationIdentityProviderUpdate) GetDescription() string {
 	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
@@ -157,7 +71,7 @@ func (o *FederationIdentityProvider) GetDescription() string {
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FederationIdentityProvider) GetDescriptionOk() (*string, bool) {
+func (o *FederationIdentityProviderUpdate) GetDescriptionOk() (*string, bool) {
 	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
@@ -166,7 +80,7 @@ func (o *FederationIdentityProvider) GetDescriptionOk() (*string, bool) {
 }
 
 // HasDescription returns a boolean if a field has been set.
-func (o *FederationIdentityProvider) HasDescription() bool {
+func (o *FederationIdentityProviderUpdate) HasDescription() bool {
 	if o != nil && !IsNil(o.Description) {
 		return true
 	}
@@ -175,12 +89,12 @@ func (o *FederationIdentityProvider) HasDescription() bool {
 }
 
 // SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *FederationIdentityProvider) SetDescription(v string) {
+func (o *FederationIdentityProviderUpdate) SetDescription(v string) {
 	o.Description = &v
 }
 
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise
-func (o *FederationIdentityProvider) GetDisplayName() string {
+func (o *FederationIdentityProviderUpdate) GetDisplayName() string {
 	if o == nil || IsNil(o.DisplayName) {
 		var ret string
 		return ret
@@ -190,7 +104,7 @@ func (o *FederationIdentityProvider) GetDisplayName() string {
 
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FederationIdentityProvider) GetDisplayNameOk() (*string, bool) {
+func (o *FederationIdentityProviderUpdate) GetDisplayNameOk() (*string, bool) {
 	if o == nil || IsNil(o.DisplayName) {
 		return nil, false
 	}
@@ -199,7 +113,7 @@ func (o *FederationIdentityProvider) GetDisplayNameOk() (*string, bool) {
 }
 
 // HasDisplayName returns a boolean if a field has been set.
-func (o *FederationIdentityProvider) HasDisplayName() bool {
+func (o *FederationIdentityProviderUpdate) HasDisplayName() bool {
 	if o != nil && !IsNil(o.DisplayName) {
 		return true
 	}
@@ -208,36 +122,12 @@ func (o *FederationIdentityProvider) HasDisplayName() bool {
 }
 
 // SetDisplayName gets a reference to the given string and assigns it to the DisplayName field.
-func (o *FederationIdentityProvider) SetDisplayName(v string) {
+func (o *FederationIdentityProviderUpdate) SetDisplayName(v string) {
 	o.DisplayName = &v
 }
 
-// GetId returns the Id field value
-func (o *FederationIdentityProvider) GetId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *FederationIdentityProvider) GetIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Id, true
-}
-
-// SetId sets field value
-func (o *FederationIdentityProvider) SetId(v string) {
-	o.Id = v
-}
-
 // GetIssuerUri returns the IssuerUri field value if set, zero value otherwise
-func (o *FederationIdentityProvider) GetIssuerUri() string {
+func (o *FederationIdentityProviderUpdate) GetIssuerUri() string {
 	if o == nil || IsNil(o.IssuerUri) {
 		var ret string
 		return ret
@@ -247,7 +137,7 @@ func (o *FederationIdentityProvider) GetIssuerUri() string {
 
 // GetIssuerUriOk returns a tuple with the IssuerUri field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FederationIdentityProvider) GetIssuerUriOk() (*string, bool) {
+func (o *FederationIdentityProviderUpdate) GetIssuerUriOk() (*string, bool) {
 	if o == nil || IsNil(o.IssuerUri) {
 		return nil, false
 	}
@@ -256,7 +146,7 @@ func (o *FederationIdentityProvider) GetIssuerUriOk() (*string, bool) {
 }
 
 // HasIssuerUri returns a boolean if a field has been set.
-func (o *FederationIdentityProvider) HasIssuerUri() bool {
+func (o *FederationIdentityProviderUpdate) HasIssuerUri() bool {
 	if o != nil && !IsNil(o.IssuerUri) {
 		return true
 	}
@@ -265,36 +155,12 @@ func (o *FederationIdentityProvider) HasIssuerUri() bool {
 }
 
 // SetIssuerUri gets a reference to the given string and assigns it to the IssuerUri field.
-func (o *FederationIdentityProvider) SetIssuerUri(v string) {
+func (o *FederationIdentityProviderUpdate) SetIssuerUri(v string) {
 	o.IssuerUri = &v
 }
 
-// GetOktaIdpId returns the OktaIdpId field value
-func (o *FederationIdentityProvider) GetOktaIdpId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.OktaIdpId
-}
-
-// GetOktaIdpIdOk returns a tuple with the OktaIdpId field value
-// and a boolean to check if the value has been set.
-func (o *FederationIdentityProvider) GetOktaIdpIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.OktaIdpId, true
-}
-
-// SetOktaIdpId sets field value
-func (o *FederationIdentityProvider) SetOktaIdpId(v string) {
-	o.OktaIdpId = v
-}
-
 // GetProtocol returns the Protocol field value if set, zero value otherwise
-func (o *FederationIdentityProvider) GetProtocol() string {
+func (o *FederationIdentityProviderUpdate) GetProtocol() string {
 	if o == nil || IsNil(o.Protocol) {
 		var ret string
 		return ret
@@ -304,7 +170,7 @@ func (o *FederationIdentityProvider) GetProtocol() string {
 
 // GetProtocolOk returns a tuple with the Protocol field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FederationIdentityProvider) GetProtocolOk() (*string, bool) {
+func (o *FederationIdentityProviderUpdate) GetProtocolOk() (*string, bool) {
 	if o == nil || IsNil(o.Protocol) {
 		return nil, false
 	}
@@ -313,7 +179,7 @@ func (o *FederationIdentityProvider) GetProtocolOk() (*string, bool) {
 }
 
 // HasProtocol returns a boolean if a field has been set.
-func (o *FederationIdentityProvider) HasProtocol() bool {
+func (o *FederationIdentityProviderUpdate) HasProtocol() bool {
 	if o != nil && !IsNil(o.Protocol) {
 		return true
 	}
@@ -322,78 +188,12 @@ func (o *FederationIdentityProvider) HasProtocol() bool {
 }
 
 // SetProtocol gets a reference to the given string and assigns it to the Protocol field.
-func (o *FederationIdentityProvider) SetProtocol(v string) {
+func (o *FederationIdentityProviderUpdate) SetProtocol(v string) {
 	o.Protocol = &v
 }
 
-// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise
-func (o *FederationIdentityProvider) GetUpdatedAt() time.Time {
-	if o == nil || IsNil(o.UpdatedAt) {
-		var ret time.Time
-		return ret
-	}
-	return *o.UpdatedAt
-}
-
-// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FederationIdentityProvider) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.UpdatedAt) {
-		return nil, false
-	}
-
-	return o.UpdatedAt, true
-}
-
-// HasUpdatedAt returns a boolean if a field has been set.
-func (o *FederationIdentityProvider) HasUpdatedAt() bool {
-	if o != nil && !IsNil(o.UpdatedAt) {
-		return true
-	}
-
-	return false
-}
-
-// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
-func (o *FederationIdentityProvider) SetUpdatedAt(v time.Time) {
-	o.UpdatedAt = &v
-}
-
-// GetAcsUrl returns the AcsUrl field value if set, zero value otherwise
-func (o *FederationIdentityProvider) GetAcsUrl() string {
-	if o == nil || IsNil(o.AcsUrl) {
-		var ret string
-		return ret
-	}
-	return *o.AcsUrl
-}
-
-// GetAcsUrlOk returns a tuple with the AcsUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FederationIdentityProvider) GetAcsUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.AcsUrl) {
-		return nil, false
-	}
-
-	return o.AcsUrl, true
-}
-
-// HasAcsUrl returns a boolean if a field has been set.
-func (o *FederationIdentityProvider) HasAcsUrl() bool {
-	if o != nil && !IsNil(o.AcsUrl) {
-		return true
-	}
-
-	return false
-}
-
-// SetAcsUrl gets a reference to the given string and assigns it to the AcsUrl field.
-func (o *FederationIdentityProvider) SetAcsUrl(v string) {
-	o.AcsUrl = &v
-}
-
 // GetAssociatedDomains returns the AssociatedDomains field value if set, zero value otherwise
-func (o *FederationIdentityProvider) GetAssociatedDomains() []string {
+func (o *FederationIdentityProviderUpdate) GetAssociatedDomains() []string {
 	if o == nil || IsNil(o.AssociatedDomains) {
 		var ret []string
 		return ret
@@ -403,7 +203,7 @@ func (o *FederationIdentityProvider) GetAssociatedDomains() []string {
 
 // GetAssociatedDomainsOk returns a tuple with the AssociatedDomains field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FederationIdentityProvider) GetAssociatedDomainsOk() (*[]string, bool) {
+func (o *FederationIdentityProviderUpdate) GetAssociatedDomainsOk() (*[]string, bool) {
 	if o == nil || IsNil(o.AssociatedDomains) {
 		return nil, false
 	}
@@ -412,7 +212,7 @@ func (o *FederationIdentityProvider) GetAssociatedDomainsOk() (*[]string, bool) 
 }
 
 // HasAssociatedDomains returns a boolean if a field has been set.
-func (o *FederationIdentityProvider) HasAssociatedDomains() bool {
+func (o *FederationIdentityProviderUpdate) HasAssociatedDomains() bool {
 	if o != nil && !IsNil(o.AssociatedDomains) {
 		return true
 	}
@@ -421,47 +221,14 @@ func (o *FederationIdentityProvider) HasAssociatedDomains() bool {
 }
 
 // SetAssociatedDomains gets a reference to the given []string and assigns it to the AssociatedDomains field.
-func (o *FederationIdentityProvider) SetAssociatedDomains(v []string) {
+func (o *FederationIdentityProviderUpdate) SetAssociatedDomains(v []string) {
 	o.AssociatedDomains = &v
 }
 
-// GetAudienceUri returns the AudienceUri field value if set, zero value otherwise
-func (o *FederationIdentityProvider) GetAudienceUri() string {
-	if o == nil || IsNil(o.AudienceUri) {
-		var ret string
-		return ret
-	}
-	return *o.AudienceUri
-}
-
-// GetAudienceUriOk returns a tuple with the AudienceUri field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *FederationIdentityProvider) GetAudienceUriOk() (*string, bool) {
-	if o == nil || IsNil(o.AudienceUri) {
-		return nil, false
-	}
-
-	return o.AudienceUri, true
-}
-
-// HasAudienceUri returns a boolean if a field has been set.
-func (o *FederationIdentityProvider) HasAudienceUri() bool {
-	if o != nil && !IsNil(o.AudienceUri) {
-		return true
-	}
-
-	return false
-}
-
-// SetAudienceUri gets a reference to the given string and assigns it to the AudienceUri field.
-func (o *FederationIdentityProvider) SetAudienceUri(v string) {
-	o.AudienceUri = &v
-}
-
 // GetPemFileInfo returns the PemFileInfo field value if set, zero value otherwise
-func (o *FederationIdentityProvider) GetPemFileInfo() PemFileInfo {
+func (o *FederationIdentityProviderUpdate) GetPemFileInfo() PemFileInfoUpdate {
 	if o == nil || IsNil(o.PemFileInfo) {
-		var ret PemFileInfo
+		var ret PemFileInfoUpdate
 		return ret
 	}
 	return *o.PemFileInfo
@@ -469,7 +236,7 @@ func (o *FederationIdentityProvider) GetPemFileInfo() PemFileInfo {
 
 // GetPemFileInfoOk returns a tuple with the PemFileInfo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FederationIdentityProvider) GetPemFileInfoOk() (*PemFileInfo, bool) {
+func (o *FederationIdentityProviderUpdate) GetPemFileInfoOk() (*PemFileInfoUpdate, bool) {
 	if o == nil || IsNil(o.PemFileInfo) {
 		return nil, false
 	}
@@ -478,7 +245,7 @@ func (o *FederationIdentityProvider) GetPemFileInfoOk() (*PemFileInfo, bool) {
 }
 
 // HasPemFileInfo returns a boolean if a field has been set.
-func (o *FederationIdentityProvider) HasPemFileInfo() bool {
+func (o *FederationIdentityProviderUpdate) HasPemFileInfo() bool {
 	if o != nil && !IsNil(o.PemFileInfo) {
 		return true
 	}
@@ -486,13 +253,13 @@ func (o *FederationIdentityProvider) HasPemFileInfo() bool {
 	return false
 }
 
-// SetPemFileInfo gets a reference to the given PemFileInfo and assigns it to the PemFileInfo field.
-func (o *FederationIdentityProvider) SetPemFileInfo(v PemFileInfo) {
+// SetPemFileInfo gets a reference to the given PemFileInfoUpdate and assigns it to the PemFileInfo field.
+func (o *FederationIdentityProviderUpdate) SetPemFileInfo(v PemFileInfoUpdate) {
 	o.PemFileInfo = &v
 }
 
 // GetRequestBinding returns the RequestBinding field value if set, zero value otherwise
-func (o *FederationIdentityProvider) GetRequestBinding() string {
+func (o *FederationIdentityProviderUpdate) GetRequestBinding() string {
 	if o == nil || IsNil(o.RequestBinding) {
 		var ret string
 		return ret
@@ -502,7 +269,7 @@ func (o *FederationIdentityProvider) GetRequestBinding() string {
 
 // GetRequestBindingOk returns a tuple with the RequestBinding field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FederationIdentityProvider) GetRequestBindingOk() (*string, bool) {
+func (o *FederationIdentityProviderUpdate) GetRequestBindingOk() (*string, bool) {
 	if o == nil || IsNil(o.RequestBinding) {
 		return nil, false
 	}
@@ -511,7 +278,7 @@ func (o *FederationIdentityProvider) GetRequestBindingOk() (*string, bool) {
 }
 
 // HasRequestBinding returns a boolean if a field has been set.
-func (o *FederationIdentityProvider) HasRequestBinding() bool {
+func (o *FederationIdentityProviderUpdate) HasRequestBinding() bool {
 	if o != nil && !IsNil(o.RequestBinding) {
 		return true
 	}
@@ -520,12 +287,12 @@ func (o *FederationIdentityProvider) HasRequestBinding() bool {
 }
 
 // SetRequestBinding gets a reference to the given string and assigns it to the RequestBinding field.
-func (o *FederationIdentityProvider) SetRequestBinding(v string) {
+func (o *FederationIdentityProviderUpdate) SetRequestBinding(v string) {
 	o.RequestBinding = &v
 }
 
 // GetResponseSignatureAlgorithm returns the ResponseSignatureAlgorithm field value if set, zero value otherwise
-func (o *FederationIdentityProvider) GetResponseSignatureAlgorithm() string {
+func (o *FederationIdentityProviderUpdate) GetResponseSignatureAlgorithm() string {
 	if o == nil || IsNil(o.ResponseSignatureAlgorithm) {
 		var ret string
 		return ret
@@ -535,7 +302,7 @@ func (o *FederationIdentityProvider) GetResponseSignatureAlgorithm() string {
 
 // GetResponseSignatureAlgorithmOk returns a tuple with the ResponseSignatureAlgorithm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FederationIdentityProvider) GetResponseSignatureAlgorithmOk() (*string, bool) {
+func (o *FederationIdentityProviderUpdate) GetResponseSignatureAlgorithmOk() (*string, bool) {
 	if o == nil || IsNil(o.ResponseSignatureAlgorithm) {
 		return nil, false
 	}
@@ -544,7 +311,7 @@ func (o *FederationIdentityProvider) GetResponseSignatureAlgorithmOk() (*string,
 }
 
 // HasResponseSignatureAlgorithm returns a boolean if a field has been set.
-func (o *FederationIdentityProvider) HasResponseSignatureAlgorithm() bool {
+func (o *FederationIdentityProviderUpdate) HasResponseSignatureAlgorithm() bool {
 	if o != nil && !IsNil(o.ResponseSignatureAlgorithm) {
 		return true
 	}
@@ -553,12 +320,12 @@ func (o *FederationIdentityProvider) HasResponseSignatureAlgorithm() bool {
 }
 
 // SetResponseSignatureAlgorithm gets a reference to the given string and assigns it to the ResponseSignatureAlgorithm field.
-func (o *FederationIdentityProvider) SetResponseSignatureAlgorithm(v string) {
+func (o *FederationIdentityProviderUpdate) SetResponseSignatureAlgorithm(v string) {
 	o.ResponseSignatureAlgorithm = &v
 }
 
 // GetSlug returns the Slug field value if set, zero value otherwise
-func (o *FederationIdentityProvider) GetSlug() string {
+func (o *FederationIdentityProviderUpdate) GetSlug() string {
 	if o == nil || IsNil(o.Slug) {
 		var ret string
 		return ret
@@ -568,7 +335,7 @@ func (o *FederationIdentityProvider) GetSlug() string {
 
 // GetSlugOk returns a tuple with the Slug field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FederationIdentityProvider) GetSlugOk() (*string, bool) {
+func (o *FederationIdentityProviderUpdate) GetSlugOk() (*string, bool) {
 	if o == nil || IsNil(o.Slug) {
 		return nil, false
 	}
@@ -577,7 +344,7 @@ func (o *FederationIdentityProvider) GetSlugOk() (*string, bool) {
 }
 
 // HasSlug returns a boolean if a field has been set.
-func (o *FederationIdentityProvider) HasSlug() bool {
+func (o *FederationIdentityProviderUpdate) HasSlug() bool {
 	if o != nil && !IsNil(o.Slug) {
 		return true
 	}
@@ -586,12 +353,12 @@ func (o *FederationIdentityProvider) HasSlug() bool {
 }
 
 // SetSlug gets a reference to the given string and assigns it to the Slug field.
-func (o *FederationIdentityProvider) SetSlug(v string) {
+func (o *FederationIdentityProviderUpdate) SetSlug(v string) {
 	o.Slug = &v
 }
 
 // GetSsoDebugEnabled returns the SsoDebugEnabled field value if set, zero value otherwise
-func (o *FederationIdentityProvider) GetSsoDebugEnabled() bool {
+func (o *FederationIdentityProviderUpdate) GetSsoDebugEnabled() bool {
 	if o == nil || IsNil(o.SsoDebugEnabled) {
 		var ret bool
 		return ret
@@ -601,7 +368,7 @@ func (o *FederationIdentityProvider) GetSsoDebugEnabled() bool {
 
 // GetSsoDebugEnabledOk returns a tuple with the SsoDebugEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FederationIdentityProvider) GetSsoDebugEnabledOk() (*bool, bool) {
+func (o *FederationIdentityProviderUpdate) GetSsoDebugEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.SsoDebugEnabled) {
 		return nil, false
 	}
@@ -610,7 +377,7 @@ func (o *FederationIdentityProvider) GetSsoDebugEnabledOk() (*bool, bool) {
 }
 
 // HasSsoDebugEnabled returns a boolean if a field has been set.
-func (o *FederationIdentityProvider) HasSsoDebugEnabled() bool {
+func (o *FederationIdentityProviderUpdate) HasSsoDebugEnabled() bool {
 	if o != nil && !IsNil(o.SsoDebugEnabled) {
 		return true
 	}
@@ -619,12 +386,12 @@ func (o *FederationIdentityProvider) HasSsoDebugEnabled() bool {
 }
 
 // SetSsoDebugEnabled gets a reference to the given bool and assigns it to the SsoDebugEnabled field.
-func (o *FederationIdentityProvider) SetSsoDebugEnabled(v bool) {
+func (o *FederationIdentityProviderUpdate) SetSsoDebugEnabled(v bool) {
 	o.SsoDebugEnabled = &v
 }
 
 // GetSsoUrl returns the SsoUrl field value if set, zero value otherwise
-func (o *FederationIdentityProvider) GetSsoUrl() string {
+func (o *FederationIdentityProviderUpdate) GetSsoUrl() string {
 	if o == nil || IsNil(o.SsoUrl) {
 		var ret string
 		return ret
@@ -634,7 +401,7 @@ func (o *FederationIdentityProvider) GetSsoUrl() string {
 
 // GetSsoUrlOk returns a tuple with the SsoUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FederationIdentityProvider) GetSsoUrlOk() (*string, bool) {
+func (o *FederationIdentityProviderUpdate) GetSsoUrlOk() (*string, bool) {
 	if o == nil || IsNil(o.SsoUrl) {
 		return nil, false
 	}
@@ -643,7 +410,7 @@ func (o *FederationIdentityProvider) GetSsoUrlOk() (*string, bool) {
 }
 
 // HasSsoUrl returns a boolean if a field has been set.
-func (o *FederationIdentityProvider) HasSsoUrl() bool {
+func (o *FederationIdentityProviderUpdate) HasSsoUrl() bool {
 	if o != nil && !IsNil(o.SsoUrl) {
 		return true
 	}
@@ -652,12 +419,12 @@ func (o *FederationIdentityProvider) HasSsoUrl() bool {
 }
 
 // SetSsoUrl gets a reference to the given string and assigns it to the SsoUrl field.
-func (o *FederationIdentityProvider) SetSsoUrl(v string) {
+func (o *FederationIdentityProviderUpdate) SetSsoUrl(v string) {
 	o.SsoUrl = &v
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise
-func (o *FederationIdentityProvider) GetStatus() string {
+func (o *FederationIdentityProviderUpdate) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
@@ -667,7 +434,7 @@ func (o *FederationIdentityProvider) GetStatus() string {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FederationIdentityProvider) GetStatusOk() (*string, bool) {
+func (o *FederationIdentityProviderUpdate) GetStatusOk() (*string, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
@@ -676,7 +443,7 @@ func (o *FederationIdentityProvider) GetStatusOk() (*string, bool) {
 }
 
 // HasStatus returns a boolean if a field has been set.
-func (o *FederationIdentityProvider) HasStatus() bool {
+func (o *FederationIdentityProviderUpdate) HasStatus() bool {
 	if o != nil && !IsNil(o.Status) {
 		return true
 	}
@@ -685,12 +452,12 @@ func (o *FederationIdentityProvider) HasStatus() bool {
 }
 
 // SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *FederationIdentityProvider) SetStatus(v string) {
+func (o *FederationIdentityProviderUpdate) SetStatus(v string) {
 	o.Status = &v
 }
 
 // GetAudienceClaim returns the AudienceClaim field value if set, zero value otherwise
-func (o *FederationIdentityProvider) GetAudienceClaim() []string {
+func (o *FederationIdentityProviderUpdate) GetAudienceClaim() []string {
 	if o == nil || IsNil(o.AudienceClaim) {
 		var ret []string
 		return ret
@@ -700,7 +467,7 @@ func (o *FederationIdentityProvider) GetAudienceClaim() []string {
 
 // GetAudienceClaimOk returns a tuple with the AudienceClaim field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FederationIdentityProvider) GetAudienceClaimOk() (*[]string, bool) {
+func (o *FederationIdentityProviderUpdate) GetAudienceClaimOk() (*[]string, bool) {
 	if o == nil || IsNil(o.AudienceClaim) {
 		return nil, false
 	}
@@ -709,7 +476,7 @@ func (o *FederationIdentityProvider) GetAudienceClaimOk() (*[]string, bool) {
 }
 
 // HasAudienceClaim returns a boolean if a field has been set.
-func (o *FederationIdentityProvider) HasAudienceClaim() bool {
+func (o *FederationIdentityProviderUpdate) HasAudienceClaim() bool {
 	if o != nil && !IsNil(o.AudienceClaim) {
 		return true
 	}
@@ -718,12 +485,12 @@ func (o *FederationIdentityProvider) HasAudienceClaim() bool {
 }
 
 // SetAudienceClaim gets a reference to the given []string and assigns it to the AudienceClaim field.
-func (o *FederationIdentityProvider) SetAudienceClaim(v []string) {
+func (o *FederationIdentityProviderUpdate) SetAudienceClaim(v []string) {
 	o.AudienceClaim = &v
 }
 
 // GetClientId returns the ClientId field value if set, zero value otherwise
-func (o *FederationIdentityProvider) GetClientId() string {
+func (o *FederationIdentityProviderUpdate) GetClientId() string {
 	if o == nil || IsNil(o.ClientId) {
 		var ret string
 		return ret
@@ -733,7 +500,7 @@ func (o *FederationIdentityProvider) GetClientId() string {
 
 // GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FederationIdentityProvider) GetClientIdOk() (*string, bool) {
+func (o *FederationIdentityProviderUpdate) GetClientIdOk() (*string, bool) {
 	if o == nil || IsNil(o.ClientId) {
 		return nil, false
 	}
@@ -742,7 +509,7 @@ func (o *FederationIdentityProvider) GetClientIdOk() (*string, bool) {
 }
 
 // HasClientId returns a boolean if a field has been set.
-func (o *FederationIdentityProvider) HasClientId() bool {
+func (o *FederationIdentityProviderUpdate) HasClientId() bool {
 	if o != nil && !IsNil(o.ClientId) {
 		return true
 	}
@@ -751,12 +518,12 @@ func (o *FederationIdentityProvider) HasClientId() bool {
 }
 
 // SetClientId gets a reference to the given string and assigns it to the ClientId field.
-func (o *FederationIdentityProvider) SetClientId(v string) {
+func (o *FederationIdentityProviderUpdate) SetClientId(v string) {
 	o.ClientId = &v
 }
 
 // GetGroupsClaim returns the GroupsClaim field value if set, zero value otherwise
-func (o *FederationIdentityProvider) GetGroupsClaim() string {
+func (o *FederationIdentityProviderUpdate) GetGroupsClaim() string {
 	if o == nil || IsNil(o.GroupsClaim) {
 		var ret string
 		return ret
@@ -766,7 +533,7 @@ func (o *FederationIdentityProvider) GetGroupsClaim() string {
 
 // GetGroupsClaimOk returns a tuple with the GroupsClaim field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FederationIdentityProvider) GetGroupsClaimOk() (*string, bool) {
+func (o *FederationIdentityProviderUpdate) GetGroupsClaimOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupsClaim) {
 		return nil, false
 	}
@@ -775,7 +542,7 @@ func (o *FederationIdentityProvider) GetGroupsClaimOk() (*string, bool) {
 }
 
 // HasGroupsClaim returns a boolean if a field has been set.
-func (o *FederationIdentityProvider) HasGroupsClaim() bool {
+func (o *FederationIdentityProviderUpdate) HasGroupsClaim() bool {
 	if o != nil && !IsNil(o.GroupsClaim) {
 		return true
 	}
@@ -784,12 +551,12 @@ func (o *FederationIdentityProvider) HasGroupsClaim() bool {
 }
 
 // SetGroupsClaim gets a reference to the given string and assigns it to the GroupsClaim field.
-func (o *FederationIdentityProvider) SetGroupsClaim(v string) {
+func (o *FederationIdentityProviderUpdate) SetGroupsClaim(v string) {
 	o.GroupsClaim = &v
 }
 
 // GetRequestedScopes returns the RequestedScopes field value if set, zero value otherwise
-func (o *FederationIdentityProvider) GetRequestedScopes() []string {
+func (o *FederationIdentityProviderUpdate) GetRequestedScopes() []string {
 	if o == nil || IsNil(o.RequestedScopes) {
 		var ret []string
 		return ret
@@ -799,7 +566,7 @@ func (o *FederationIdentityProvider) GetRequestedScopes() []string {
 
 // GetRequestedScopesOk returns a tuple with the RequestedScopes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FederationIdentityProvider) GetRequestedScopesOk() (*[]string, bool) {
+func (o *FederationIdentityProviderUpdate) GetRequestedScopesOk() (*[]string, bool) {
 	if o == nil || IsNil(o.RequestedScopes) {
 		return nil, false
 	}
@@ -808,7 +575,7 @@ func (o *FederationIdentityProvider) GetRequestedScopesOk() (*[]string, bool) {
 }
 
 // HasRequestedScopes returns a boolean if a field has been set.
-func (o *FederationIdentityProvider) HasRequestedScopes() bool {
+func (o *FederationIdentityProviderUpdate) HasRequestedScopes() bool {
 	if o != nil && !IsNil(o.RequestedScopes) {
 		return true
 	}
@@ -817,12 +584,12 @@ func (o *FederationIdentityProvider) HasRequestedScopes() bool {
 }
 
 // SetRequestedScopes gets a reference to the given []string and assigns it to the RequestedScopes field.
-func (o *FederationIdentityProvider) SetRequestedScopes(v []string) {
+func (o *FederationIdentityProviderUpdate) SetRequestedScopes(v []string) {
 	o.RequestedScopes = &v
 }
 
 // GetUserClaim returns the UserClaim field value if set, zero value otherwise
-func (o *FederationIdentityProvider) GetUserClaim() string {
+func (o *FederationIdentityProviderUpdate) GetUserClaim() string {
 	if o == nil || IsNil(o.UserClaim) {
 		var ret string
 		return ret
@@ -832,7 +599,7 @@ func (o *FederationIdentityProvider) GetUserClaim() string {
 
 // GetUserClaimOk returns a tuple with the UserClaim field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *FederationIdentityProvider) GetUserClaimOk() (*string, bool) {
+func (o *FederationIdentityProviderUpdate) GetUserClaimOk() (*string, bool) {
 	if o == nil || IsNil(o.UserClaim) {
 		return nil, false
 	}
@@ -841,7 +608,7 @@ func (o *FederationIdentityProvider) GetUserClaimOk() (*string, bool) {
 }
 
 // HasUserClaim returns a boolean if a field has been set.
-func (o *FederationIdentityProvider) HasUserClaim() bool {
+func (o *FederationIdentityProviderUpdate) HasUserClaim() bool {
 	if o != nil && !IsNil(o.UserClaim) {
 		return true
 	}
@@ -850,22 +617,19 @@ func (o *FederationIdentityProvider) HasUserClaim() bool {
 }
 
 // SetUserClaim gets a reference to the given string and assigns it to the UserClaim field.
-func (o *FederationIdentityProvider) SetUserClaim(v string) {
+func (o *FederationIdentityProviderUpdate) SetUserClaim(v string) {
 	o.UserClaim = &v
 }
 
-func (o FederationIdentityProvider) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o FederationIdentityProviderUpdate) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o FederationIdentityProvider) ToMap() (map[string]interface{}, error) {
+func (o FederationIdentityProviderUpdate) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AssociatedOrgs) {
-		toSerialize["associatedOrgs"] = o.AssociatedOrgs
-	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
@@ -875,18 +639,11 @@ func (o FederationIdentityProvider) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IssuerUri) {
 		toSerialize["issuerUri"] = o.IssuerUri
 	}
-	toSerialize["oktaIdpId"] = o.OktaIdpId
 	if !IsNil(o.Protocol) {
 		toSerialize["protocol"] = o.Protocol
 	}
-	if !IsNil(o.AcsUrl) {
-		toSerialize["acsUrl"] = o.AcsUrl
-	}
 	if !IsNil(o.AssociatedDomains) {
 		toSerialize["associatedDomains"] = o.AssociatedDomains
-	}
-	if !IsNil(o.AudienceUri) {
-		toSerialize["audienceUri"] = o.AudienceUri
 	}
 	if !IsNil(o.PemFileInfo) {
 		toSerialize["pemFileInfo"] = o.PemFileInfo
