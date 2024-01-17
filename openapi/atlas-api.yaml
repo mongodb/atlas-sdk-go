@@ -19,7 +19,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: d05d140a757e46f9ce25ee52b17ae91335003c32
+  x-xgen-sha: 7bc31264af333683767c1f62624f02306b548aa4
 servers:
 - url: https://cloud.mongodb.com
 tags:
@@ -16502,6 +16502,16 @@ components:
             \ higher tier."
           maximum: 4096
           minimum: 10
+        diskWarmingMode:
+          type: string
+          default: FULLY_WARMED
+          description: Disk warming mode selection.
+          enum:
+          - FULLY_WARMED
+          - VISIBLE_EARLIER
+          externalDocs:
+            description: Reduce Secondary Disk Warming Impact
+            url: https://docs.atlas.mongodb.com/reference/replica-set-tags/#reduce-secondary-disk-warming-impact
         encryptionAtRestProvider:
           type: string
           description: "Cloud service provider that manages your customer keys to\
@@ -27111,6 +27121,7 @@ components:
             - SERVERLESS_MTM_DRAIN_REQUESTED
             - SERVERLESS_MTM_DRAIN_INITIATED
             - SERVERLESS_MTM_DRAIN_COMPLETED
+            - SERVERLESS_MTM_DRAIN_STOPPED
             title: NDS Serverless Auto Scaling Audit Types
           - type: string
             enum:
@@ -29200,6 +29211,7 @@ components:
         - SERVERLESS_MTM_DRAIN_REQUESTED
         - SERVERLESS_MTM_DRAIN_INITIATED
         - SERVERLESS_MTM_DRAIN_COMPLETED
+        - SERVERLESS_MTM_DRAIN_STOPPED
         title: NDS Serverless Auto Scaling Audit Types
       - type: string
         enum:
@@ -33732,6 +33744,16 @@ components:
             \ higher tier."
           maximum: 4096
           minimum: 10
+        diskWarmingMode:
+          type: string
+          default: FULLY_WARMED
+          description: Disk warming mode selection.
+          enum:
+          - FULLY_WARMED
+          - VISIBLE_EARLIER
+          externalDocs:
+            description: Reduce Secondary Disk Warming Impact
+            url: https://docs.atlas.mongodb.com/reference/replica-set-tags/#reduce-secondary-disk-warming-impact
         encryptionAtRestProvider:
           type: string
           description: Cloud service provider that manages your customer keys to provide
@@ -33995,6 +34017,16 @@ components:
             \ higher tier."
           maximum: 4096
           minimum: 10
+        diskWarmingMode:
+          type: string
+          default: FULLY_WARMED
+          description: Disk warming mode selection.
+          enum:
+          - FULLY_WARMED
+          - VISIBLE_EARLIER
+          externalDocs:
+            description: Reduce Secondary Disk Warming Impact
+            url: https://docs.atlas.mongodb.com/reference/replica-set-tags/#reduce-secondary-disk-warming-impact
         encryptionAtRestProvider:
           type: string
           description: Cloud service provider that manages your customer keys to provide
