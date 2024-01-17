@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **ConnectionStrings** | Pointer to [**ClusterConnectionStrings**](ClusterConnectionStrings.md) |  | [optional] 
 **CreateDate** | Pointer to **time.Time** | Date and time when MongoDB Cloud created this cluster. This parameter expresses its value in ISO 8601 format in UTC. | [optional] [readonly] 
 **DiskSizeGB** | Pointer to **float64** | Storage capacity that the host&#39;s root volume possesses expressed in gigabytes. Increase this number to add capacity. MongoDB Cloud requires this parameter if you set **replicationSpecs**. If you specify a disk size below the minimum (10 GB), this parameter defaults to the minimum disk size value. Storage charge calculations depend on whether you choose the default value or a custom value.  The maximum value for disk storage cannot exceed 50 times the maximum RAM for the selected cluster. If you require more storage space, consider upgrading your cluster to a higher tier. | [optional] 
+**DiskWarmingMode** | Pointer to **string** | Disk warming mode selection. | [optional] [default to "FULLY_WARMED"]
 **EncryptionAtRestProvider** | Pointer to **string** | Cloud service provider that manages your customer keys to provide an additional layer of encryption at rest for the cluster. To enable customer key management for encryption at rest, the cluster **replicationSpecs[n].regionConfigs[m].{type}Specs.instanceSize** setting must be &#x60;M10&#x60; or higher and &#x60;\&quot;backupEnabled\&quot; : false&#x60; or omitted entirely. | [optional] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the project. | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the replication object for a zone in a Global Cluster. If you include existing zones in the request, you must specify this parameter. If you add a new zone to an existing Global Cluster, you may specify this parameter. The request deletes any existing zones in a Global Cluster that you exclude from the request. | [optional] [readonly] 
@@ -215,6 +216,30 @@ SetDiskSizeGB sets DiskSizeGB field to given value.
 `func (o *AdvancedClusterDescription) HasDiskSizeGB() bool`
 
 HasDiskSizeGB returns a boolean if a field has been set.
+### GetDiskWarmingMode
+
+`func (o *AdvancedClusterDescription) GetDiskWarmingMode() string`
+
+GetDiskWarmingMode returns the DiskWarmingMode field if non-nil, zero value otherwise.
+
+### GetDiskWarmingModeOk
+
+`func (o *AdvancedClusterDescription) GetDiskWarmingModeOk() (*string, bool)`
+
+GetDiskWarmingModeOk returns a tuple with the DiskWarmingMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDiskWarmingMode
+
+`func (o *AdvancedClusterDescription) SetDiskWarmingMode(v string)`
+
+SetDiskWarmingMode sets DiskWarmingMode field to given value.
+
+### HasDiskWarmingMode
+
+`func (o *AdvancedClusterDescription) HasDiskWarmingMode() bool`
+
+HasDiskWarmingMode returns a boolean if a field has been set.
 ### GetEncryptionAtRestProvider
 
 `func (o *AdvancedClusterDescription) GetEncryptionAtRestProvider() string`
