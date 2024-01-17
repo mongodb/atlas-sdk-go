@@ -108,7 +108,7 @@ function transformOneOfProperties(parentObject, api) {
           "OpenAPI object is missing properties or allOf field. This is usually an error in the OpenAPI spec."
         );
         console.error(
-          "Please ensure that elements of oneOf schema are objects (classes) instead of single types."
+          "Please ensure that elements of oneOf schema are objects (classes) instead of single types (bool, string etc.)."
         );
         throw new Error(`${JSON.stringify(childObject, "", 2)}`);
       }
