@@ -421,7 +421,7 @@ type ProjectsApi interface {
 	ReturnAllIPAddressesWithParams(ctx context.Context, args *ReturnAllIPAddressesApiParams) ReturnAllIPAddressesApiRequest
 
 	// Interface only available internally
-	returnAllIPAddressesExecute(r ReturnAllIPAddressesApiRequest) ([]GroupIPAddresses, *http.Response, error)
+	returnAllIPAddressesExecute(r ReturnAllIPAddressesApiRequest) (*GroupIPAddresses, *http.Response, error)
 
 	/*
 		SetProjectLimit Set One Project Limit
@@ -2781,7 +2781,7 @@ func (a *ProjectsApiService) ReturnAllIPAddressesWithParams(ctx context.Context,
 	}
 }
 
-func (r ReturnAllIPAddressesApiRequest) Execute() ([]GroupIPAddresses, *http.Response, error) {
+func (r ReturnAllIPAddressesApiRequest) Execute() (*GroupIPAddresses, *http.Response, error) {
 	return r.ApiService.returnAllIPAddressesExecute(r)
 }
 
@@ -2804,13 +2804,13 @@ func (a *ProjectsApiService) ReturnAllIPAddresses(ctx context.Context, groupId s
 
 // Execute executes the request
 //
-//	@return []GroupIPAddresses
-func (a *ProjectsApiService) returnAllIPAddressesExecute(r ReturnAllIPAddressesApiRequest) ([]GroupIPAddresses, *http.Response, error) {
+//	@return GroupIPAddresses
+func (a *ProjectsApiService) returnAllIPAddressesExecute(r ReturnAllIPAddressesApiRequest) (*GroupIPAddresses, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []GroupIPAddresses
+		localVarReturnValue *GroupIPAddresses
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.ReturnAllIPAddresses")

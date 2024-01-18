@@ -1247,7 +1247,7 @@ Name | Type | Description  | Notes
 
 ## ReturnAllIPAddresses
 
-> []GroupIPAddresses ReturnAllIPAddresses(ctx, groupId).Execute()
+> GroupIPAddresses ReturnAllIPAddresses(ctx, groupId).Execute()
 
 Return All IP Addresses for One Project
 
@@ -1284,7 +1284,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `ReturnAllIPAddresses`: []GroupIPAddresses
+    // response from `ReturnAllIPAddresses`: GroupIPAddresses
     fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.ReturnAllIPAddresses`: %v\n", resp)
 }
 ```
@@ -1308,7 +1308,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]GroupIPAddresses**](GroupIPAddresses.md)
+[**GroupIPAddresses**](GroupIPAddresses.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

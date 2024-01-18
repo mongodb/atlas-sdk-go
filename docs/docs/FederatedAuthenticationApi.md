@@ -748,7 +748,7 @@ Name | Type | Description  | Notes
 
 ## ListIdentityProviders
 
-> []FederationIdentityProvider ListIdentityProviders(ctx, federationSettingsId).Protocol(protocol).Execute()
+> PaginatedFederationIdentityProvider ListIdentityProviders(ctx, federationSettingsId).Protocol(protocol).Execute()
 
 Return all identity providers from the specified federation.
 
@@ -786,7 +786,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `ListIdentityProviders`: []FederationIdentityProvider
+    // response from `ListIdentityProviders`: PaginatedFederationIdentityProvider
     fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.ListIdentityProviders`: %v\n", resp)
 }
 ```
@@ -811,7 +811,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]FederationIdentityProvider**](FederationIdentityProvider.md)
+[**PaginatedFederationIdentityProvider**](PaginatedFederationIdentityProvider.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

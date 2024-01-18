@@ -24,7 +24,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 7bc31264af333683767c1f62624f02306b548aa4
+  x-xgen-sha: d1abee1b64122c0283cb6c1b42372d009e54afeb
 servers:
   - url: https://cloud.mongodb.com
 tags:
@@ -723,9 +723,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/FederationIdentityProvider"
+                $ref: "#/components/schemas/PaginatedFederationIdentityProvider"
               x-xgen-version: 2023-01-01
           description: OK
         "400":
@@ -8405,9 +8403,7 @@ paths:
           content:
             application/vnd.atlas.2023-01-01+json:
               schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/GroupIPAddresses"
+                $ref: "#/components/schemas/GroupIPAddresses"
               x-xgen-version: 2023-01-01
           description: OK
         "401":
@@ -25873,6 +25869,34 @@ components:
           readOnly: true
       readOnly: true
       title: Outbound Control Plane IP Addresses By Cloud Provider
+    PaginatedFederationIdentityProvider:
+      type: object
+      properties:
+        links:
+          type: array
+          description: List of one or more Uniform Resource Locators (URLs) that point to
+            API sub-resources, related API resources, or both. RFC 5988 outlines
+            these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+        results:
+          type: array
+          description: List of returned documents that MongoDB Cloud providers when
+            completing this request.
+          items:
+            $ref: "#/components/schemas/FederationIdentityProvider"
+          readOnly: true
+        totalCount:
+          type: integer
+          format: int32
+          description: Number of documents returned in this response if **includeCount**
+            query param is true.
+          minimum: 0
+          readOnly: true
     PaginatedHostView_Atlas:
       type: object
       properties:
