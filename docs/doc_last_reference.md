@@ -588,6 +588,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [PaginatedContainerPeer](./docs/PaginatedContainerPeer.md)
  - [PaginatedDatabase](./docs/PaginatedDatabase.md)
  - [PaginatedDiskPartition](./docs/PaginatedDiskPartition.md)
+ - [PaginatedFederationIdentityProvider](./docs/PaginatedFederationIdentityProvider.md)
  - [PaginatedHostViewAtlas](./docs/PaginatedHostViewAtlas.md)
  - [PaginatedIntegration](./docs/PaginatedIntegration.md)
  - [PaginatedNetworkAccess](./docs/PaginatedNetworkAccess.md)

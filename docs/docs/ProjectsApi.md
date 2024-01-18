@@ -52,7 +52,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115003/admin"
+    "go.mongodb.org/atlas-sdk/v20231115004/admin"
 )
 
 func main() {
@@ -127,7 +127,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115003/admin"
+    "go.mongodb.org/atlas-sdk/v20231115004/admin"
 )
 
 func main() {
@@ -198,7 +198,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115003/admin"
+    "go.mongodb.org/atlas-sdk/v20231115004/admin"
 )
 
 func main() {
@@ -273,7 +273,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115003/admin"
+    "go.mongodb.org/atlas-sdk/v20231115004/admin"
 )
 
 func main() {
@@ -346,7 +346,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115003/admin"
+    "go.mongodb.org/atlas-sdk/v20231115004/admin"
 )
 
 func main() {
@@ -427,7 +427,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115003/admin"
+    "go.mongodb.org/atlas-sdk/v20231115004/admin"
 )
 
 func main() {
@@ -503,7 +503,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115003/admin"
+    "go.mongodb.org/atlas-sdk/v20231115004/admin"
 )
 
 func main() {
@@ -576,7 +576,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115003/admin"
+    "go.mongodb.org/atlas-sdk/v20231115004/admin"
 )
 
 func main() {
@@ -649,7 +649,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115003/admin"
+    "go.mongodb.org/atlas-sdk/v20231115004/admin"
 )
 
 func main() {
@@ -730,7 +730,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115003/admin"
+    "go.mongodb.org/atlas-sdk/v20231115004/admin"
 )
 
 func main() {
@@ -806,7 +806,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115003/admin"
+    "go.mongodb.org/atlas-sdk/v20231115004/admin"
 )
 
 func main() {
@@ -879,7 +879,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115003/admin"
+    "go.mongodb.org/atlas-sdk/v20231115004/admin"
 )
 
 func main() {
@@ -959,7 +959,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115003/admin"
+    "go.mongodb.org/atlas-sdk/v20231115004/admin"
 )
 
 func main() {
@@ -1032,7 +1032,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115003/admin"
+    "go.mongodb.org/atlas-sdk/v20231115004/admin"
 )
 
 func main() {
@@ -1115,7 +1115,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115003/admin"
+    "go.mongodb.org/atlas-sdk/v20231115004/admin"
 )
 
 func main() {
@@ -1188,7 +1188,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115003/admin"
+    "go.mongodb.org/atlas-sdk/v20231115004/admin"
 )
 
 func main() {
@@ -1247,7 +1247,7 @@ Name | Type | Description  | Notes
 
 ## ReturnAllIPAddresses
 
-> []GroupIPAddresses ReturnAllIPAddresses(ctx, groupId).Execute()
+> GroupIPAddresses ReturnAllIPAddresses(ctx, groupId).Execute()
 
 Return All IP Addresses for One Project
 
@@ -1267,7 +1267,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115003/admin"
+    "go.mongodb.org/atlas-sdk/v20231115004/admin"
 )
 
 func main() {
@@ -1284,7 +1284,7 @@ func main() {
         apiError := admin.AsError(err)
         fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
     }
-    // response from `ReturnAllIPAddresses`: []GroupIPAddresses
+    // response from `ReturnAllIPAddresses`: GroupIPAddresses
     fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.ReturnAllIPAddresses`: %v\n", resp)
 }
 ```
@@ -1308,7 +1308,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]GroupIPAddresses**](GroupIPAddresses.md)
+[**GroupIPAddresses**](GroupIPAddresses.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -1345,7 +1345,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115003/admin"
+    "go.mongodb.org/atlas-sdk/v20231115004/admin"
 )
 
 func main() {
@@ -1428,7 +1428,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115003/admin"
+    "go.mongodb.org/atlas-sdk/v20231115004/admin"
 )
 
 func main() {
@@ -1503,7 +1503,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115003/admin"
+    "go.mongodb.org/atlas-sdk/v20231115004/admin"
 )
 
 func main() {
@@ -1578,7 +1578,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115003/admin"
+    "go.mongodb.org/atlas-sdk/v20231115004/admin"
 )
 
 func main() {
@@ -1661,7 +1661,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115003/admin"
+    "go.mongodb.org/atlas-sdk/v20231115004/admin"
 )
 
 func main() {
@@ -1739,7 +1739,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115003/admin"
+    "go.mongodb.org/atlas-sdk/v20231115004/admin"
 )
 
 func main() {

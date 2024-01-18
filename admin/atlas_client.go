@@ -1,4 +1,4 @@
-package admin // import "go.mongodb.org/atlas-sdk/v20231115003/admin"
+package admin // import "go.mongodb.org/atlas-sdk/v20231115004/admin"
 
 import (
 	"errors"
@@ -8,7 +8,7 @@ import (
 	"strings"
 
 	"github.com/mongodb-forks/digest"
-	"go.mongodb.org/atlas-sdk/v20231115003/internal/core"
+	"go.mongodb.org/atlas-sdk/v20231115004/internal/core"
 )
 
 const (

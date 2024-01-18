@@ -249,7 +249,7 @@ type FederatedAuthenticationApi interface {
 	ListIdentityProvidersWithParams(ctx context.Context, args *ListIdentityProvidersApiParams) ListIdentityProvidersApiRequest
 
 	// Interface only available internally
-	listIdentityProvidersExecute(r ListIdentityProvidersApiRequest) ([]FederationIdentityProvider, *http.Response, error)
+	listIdentityProvidersExecute(r ListIdentityProvidersApiRequest) (*PaginatedFederationIdentityProvider, *http.Response, error)
 
 	/*
 		ListRoleMappings Return All Role Mappings from One Organization
@@ -1558,7 +1558,7 @@ func (r ListIdentityProvidersApiRequest) Protocol(protocol string) ListIdentityP
 	return r
 }
 
-func (r ListIdentityProvidersApiRequest) Execute() ([]FederationIdentityProvider, *http.Response, error) {
+func (r ListIdentityProvidersApiRequest) Execute() (*PaginatedFederationIdentityProvider, *http.Response, error) {
 	return r.ApiService.listIdentityProvidersExecute(r)
 }
 
@@ -1581,13 +1581,13 @@ func (a *FederatedAuthenticationApiService) ListIdentityProviders(ctx context.Co
 
 // Execute executes the request
 //
-//	@return []FederationIdentityProvider
-func (a *FederatedAuthenticationApiService) listIdentityProvidersExecute(r ListIdentityProvidersApiRequest) ([]FederationIdentityProvider, *http.Response, error) {
+//	@return PaginatedFederationIdentityProvider
+func (a *FederatedAuthenticationApiService) listIdentityProvidersExecute(r ListIdentityProvidersApiRequest) (*PaginatedFederationIdentityProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []FederationIdentityProvider
+		localVarReturnValue *PaginatedFederationIdentityProvider
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.ListIdentityProviders")
