@@ -33,7 +33,7 @@ type CloudMigrationServiceApi interface {
 	*/
 	CreateLinkTokenWithParams(ctx context.Context, args *CreateLinkTokenApiParams) CreateLinkTokenApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateLinkTokenExecute(r CreateLinkTokenApiRequest) (*TargetOrg, *http.Response, error)
 
 	/*
@@ -62,7 +62,7 @@ type CloudMigrationServiceApi interface {
 	*/
 	CreatePushMigrationWithParams(ctx context.Context, args *CreatePushMigrationApiParams) CreatePushMigrationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreatePushMigrationExecute(r CreatePushMigrationApiRequest) (*LiveMigrationResponse, *http.Response, error)
 
 	/*
@@ -86,7 +86,7 @@ type CloudMigrationServiceApi interface {
 	*/
 	CutoverMigrationWithParams(ctx context.Context, args *CutoverMigrationApiParams) CutoverMigrationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CutoverMigrationExecute(r CutoverMigrationApiRequest) (*http.Response, error)
 
 	/*
@@ -109,7 +109,7 @@ type CloudMigrationServiceApi interface {
 	*/
 	DeleteLinkTokenWithParams(ctx context.Context, args *DeleteLinkTokenApiParams) DeleteLinkTokenApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeleteLinkTokenExecute(r DeleteLinkTokenApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
@@ -133,7 +133,7 @@ type CloudMigrationServiceApi interface {
 	*/
 	GetPushMigrationWithParams(ctx context.Context, args *GetPushMigrationApiParams) GetPushMigrationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetPushMigrationExecute(r GetPushMigrationApiRequest) (*LiveMigrationResponse, *http.Response, error)
 
 	/*
@@ -157,7 +157,7 @@ type CloudMigrationServiceApi interface {
 	*/
 	GetValidationStatusWithParams(ctx context.Context, args *GetValidationStatusApiParams) GetValidationStatusApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetValidationStatusExecute(r GetValidationStatusApiRequest) (*LiveImportValidation, *http.Response, error)
 
 	/*
@@ -180,7 +180,7 @@ type CloudMigrationServiceApi interface {
 	*/
 	ListSourceProjectsWithParams(ctx context.Context, args *ListSourceProjectsApiParams) ListSourceProjectsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListSourceProjectsExecute(r ListSourceProjectsApiRequest) ([]LiveImportAvailableProject, *http.Response, error)
 
 	/*
@@ -203,7 +203,7 @@ type CloudMigrationServiceApi interface {
 	*/
 	ValidateMigrationWithParams(ctx context.Context, args *ValidateMigrationApiParams) ValidateMigrationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ValidateMigrationExecute(r ValidateMigrationApiRequest) (*LiveImportValidation, *http.Response, error)
 }
 

@@ -34,7 +34,7 @@ type OnlineArchiveApi interface {
 	*/
 	CreateOnlineArchiveWithParams(ctx context.Context, args *CreateOnlineArchiveApiParams) CreateOnlineArchiveApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateOnlineArchiveExecute(r CreateOnlineArchiveApiRequest) (*BackupOnlineArchive, *http.Response, error)
 
 	/*
@@ -59,7 +59,7 @@ type OnlineArchiveApi interface {
 	*/
 	DeleteOnlineArchiveWithParams(ctx context.Context, args *DeleteOnlineArchiveApiParams) DeleteOnlineArchiveApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeleteOnlineArchiveExecute(r DeleteOnlineArchiveApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
@@ -83,7 +83,7 @@ type OnlineArchiveApi interface {
 	*/
 	DownloadOnlineArchiveQueryLogsWithParams(ctx context.Context, args *DownloadOnlineArchiveQueryLogsApiParams) DownloadOnlineArchiveQueryLogsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DownloadOnlineArchiveQueryLogsExecute(r DownloadOnlineArchiveQueryLogsApiRequest) (io.ReadCloser, *http.Response, error)
 
 	/*
@@ -108,7 +108,7 @@ type OnlineArchiveApi interface {
 	*/
 	GetOnlineArchiveWithParams(ctx context.Context, args *GetOnlineArchiveApiParams) GetOnlineArchiveApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetOnlineArchiveExecute(r GetOnlineArchiveApiRequest) (*BackupOnlineArchive, *http.Response, error)
 
 	/*
@@ -132,7 +132,7 @@ type OnlineArchiveApi interface {
 	*/
 	ListOnlineArchivesWithParams(ctx context.Context, args *ListOnlineArchivesApiParams) ListOnlineArchivesApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListOnlineArchivesExecute(r ListOnlineArchivesApiRequest) (*PaginatedOnlineArchive, *http.Response, error)
 
 	/*
@@ -157,7 +157,7 @@ type OnlineArchiveApi interface {
 	*/
 	UpdateOnlineArchiveWithParams(ctx context.Context, args *UpdateOnlineArchiveApiParams) UpdateOnlineArchiveApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateOnlineArchiveExecute(r UpdateOnlineArchiveApiRequest) (*BackupOnlineArchive, *http.Response, error)
 }
 

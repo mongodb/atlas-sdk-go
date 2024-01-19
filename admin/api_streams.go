@@ -34,7 +34,7 @@ type StreamsApi interface {
 	*/
 	CreateStreamConnectionWithParams(ctx context.Context, args *CreateStreamConnectionApiParams) CreateStreamConnectionApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateStreamConnectionExecute(r CreateStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error)
 
 	/*
@@ -57,7 +57,7 @@ type StreamsApi interface {
 	*/
 	CreateStreamInstanceWithParams(ctx context.Context, args *CreateStreamInstanceApiParams) CreateStreamInstanceApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateStreamInstanceExecute(r CreateStreamInstanceApiRequest) (*StreamsTenant, *http.Response, error)
 
 	/*
@@ -82,7 +82,7 @@ type StreamsApi interface {
 	*/
 	DeleteStreamConnectionWithParams(ctx context.Context, args *DeleteStreamConnectionApiParams) DeleteStreamConnectionApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeleteStreamConnectionExecute(r DeleteStreamConnectionApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
@@ -106,7 +106,7 @@ type StreamsApi interface {
 	*/
 	DeleteStreamInstanceWithParams(ctx context.Context, args *DeleteStreamInstanceApiParams) DeleteStreamInstanceApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeleteStreamInstanceExecute(r DeleteStreamInstanceApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
@@ -131,7 +131,7 @@ type StreamsApi interface {
 	*/
 	GetStreamConnectionWithParams(ctx context.Context, args *GetStreamConnectionApiParams) GetStreamConnectionApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetStreamConnectionExecute(r GetStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error)
 
 	/*
@@ -155,7 +155,7 @@ type StreamsApi interface {
 	*/
 	GetStreamInstanceWithParams(ctx context.Context, args *GetStreamInstanceApiParams) GetStreamInstanceApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetStreamInstanceExecute(r GetStreamInstanceApiRequest) (*StreamsTenant, *http.Response, error)
 
 	/*
@@ -179,7 +179,7 @@ type StreamsApi interface {
 	*/
 	ListStreamConnectionsWithParams(ctx context.Context, args *ListStreamConnectionsApiParams) ListStreamConnectionsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListStreamConnectionsExecute(r ListStreamConnectionsApiRequest) (*PaginatedApiStreamsConnection, *http.Response, error)
 
 	/*
@@ -202,7 +202,7 @@ type StreamsApi interface {
 	*/
 	ListStreamInstancesWithParams(ctx context.Context, args *ListStreamInstancesApiParams) ListStreamInstancesApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListStreamInstancesExecute(r ListStreamInstancesApiRequest) (*PaginatedApiStreamsTenant, *http.Response, error)
 
 	/*
@@ -227,7 +227,7 @@ type StreamsApi interface {
 	*/
 	UpdateStreamConnectionWithParams(ctx context.Context, args *UpdateStreamConnectionApiParams) UpdateStreamConnectionApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateStreamConnectionExecute(r UpdateStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error)
 
 	/*
@@ -251,7 +251,7 @@ type StreamsApi interface {
 	*/
 	UpdateStreamInstanceWithParams(ctx context.Context, args *UpdateStreamInstanceApiParams) UpdateStreamInstanceApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateStreamInstanceExecute(r UpdateStreamInstanceApiRequest) (*StreamsTenant, *http.Response, error)
 }
 

@@ -33,7 +33,7 @@ type AuditingApi interface {
 	*/
 	GetAuditingConfigurationWithParams(ctx context.Context, args *GetAuditingConfigurationApiParams) GetAuditingConfigurationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetAuditingConfigurationExecute(r GetAuditingConfigurationApiRequest) (*AuditLog, *http.Response, error)
 
 	/*
@@ -56,7 +56,7 @@ type AuditingApi interface {
 	*/
 	UpdateAuditingConfigurationWithParams(ctx context.Context, args *UpdateAuditingConfigurationApiParams) UpdateAuditingConfigurationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateAuditingConfigurationExecute(r UpdateAuditingConfigurationApiRequest) (*AuditLog, *http.Response, error)
 }
 

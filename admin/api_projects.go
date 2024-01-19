@@ -33,7 +33,7 @@ type ProjectsApi interface {
 	*/
 	AddUserToProjectWithParams(ctx context.Context, args *AddUserToProjectApiParams) AddUserToProjectApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	AddUserToProjectExecute(r AddUserToProjectApiRequest) (*OrganizationInvitation, *http.Response, error)
 
 	/*
@@ -55,7 +55,7 @@ type ProjectsApi interface {
 	*/
 	CreateProjectWithParams(ctx context.Context, args *CreateProjectApiParams) CreateProjectApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateProjectExecute(r CreateProjectApiRequest) (*Group, *http.Response, error)
 
 	/*
@@ -82,7 +82,7 @@ type ProjectsApi interface {
 	*/
 	CreateProjectInvitationWithParams(ctx context.Context, args *CreateProjectInvitationApiParams) CreateProjectInvitationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateProjectInvitationExecute(r CreateProjectInvitationApiRequest) (*GroupInvitation, *http.Response, error)
 
 	/*
@@ -105,7 +105,7 @@ type ProjectsApi interface {
 	*/
 	DeleteProjectWithParams(ctx context.Context, args *DeleteProjectApiParams) DeleteProjectApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeleteProjectExecute(r DeleteProjectApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
@@ -133,7 +133,7 @@ type ProjectsApi interface {
 	*/
 	DeleteProjectInvitationWithParams(ctx context.Context, args *DeleteProjectInvitationApiParams) DeleteProjectInvitationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeleteProjectInvitationExecute(r DeleteProjectInvitationApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
@@ -157,7 +157,7 @@ type ProjectsApi interface {
 	*/
 	DeleteProjectLimitWithParams(ctx context.Context, args *DeleteProjectLimitApiParams) DeleteProjectLimitApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeleteProjectLimitExecute(r DeleteProjectLimitApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
@@ -180,7 +180,7 @@ type ProjectsApi interface {
 	*/
 	GetProjectWithParams(ctx context.Context, args *GetProjectApiParams) GetProjectApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetProjectExecute(r GetProjectApiRequest) (*Group, *http.Response, error)
 
 	/*
@@ -203,7 +203,7 @@ type ProjectsApi interface {
 	*/
 	GetProjectByNameWithParams(ctx context.Context, args *GetProjectByNameApiParams) GetProjectByNameApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetProjectByNameExecute(r GetProjectByNameApiRequest) (*Group, *http.Response, error)
 
 	/*
@@ -231,7 +231,7 @@ type ProjectsApi interface {
 	*/
 	GetProjectInvitationWithParams(ctx context.Context, args *GetProjectInvitationApiParams) GetProjectInvitationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetProjectInvitationExecute(r GetProjectInvitationApiRequest) (*GroupInvitation, *http.Response, error)
 
 	/*
@@ -255,7 +255,7 @@ type ProjectsApi interface {
 	*/
 	GetProjectLimitWithParams(ctx context.Context, args *GetProjectLimitApiParams) GetProjectLimitApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetProjectLimitExecute(r GetProjectLimitApiRequest) (*DataFederationLimit, *http.Response, error)
 
 	/*
@@ -278,7 +278,7 @@ type ProjectsApi interface {
 	*/
 	GetProjectSettingsWithParams(ctx context.Context, args *GetProjectSettingsApiParams) GetProjectSettingsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetProjectSettingsExecute(r GetProjectSettingsApiRequest) (*GroupSettings, *http.Response, error)
 
 	/*
@@ -305,7 +305,7 @@ type ProjectsApi interface {
 	*/
 	ListProjectInvitationsWithParams(ctx context.Context, args *ListProjectInvitationsApiParams) ListProjectInvitationsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListProjectInvitationsExecute(r ListProjectInvitationsApiRequest) ([]GroupInvitation, *http.Response, error)
 
 	/*
@@ -328,7 +328,7 @@ type ProjectsApi interface {
 	*/
 	ListProjectLimitsWithParams(ctx context.Context, args *ListProjectLimitsApiParams) ListProjectLimitsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListProjectLimitsExecute(r ListProjectLimitsApiRequest) ([]DataFederationLimit, *http.Response, error)
 
 	/*
@@ -351,7 +351,7 @@ type ProjectsApi interface {
 	*/
 	ListProjectUsersWithParams(ctx context.Context, args *ListProjectUsersApiParams) ListProjectUsersApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListProjectUsersExecute(r ListProjectUsersApiRequest) (*PaginatedAppUser, *http.Response, error)
 
 	/*
@@ -373,7 +373,7 @@ type ProjectsApi interface {
 	*/
 	ListProjectsWithParams(ctx context.Context, args *ListProjectsApiParams) ListProjectsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListProjectsExecute(r ListProjectsApiRequest) (*PaginatedAtlasGroup, *http.Response, error)
 
 	/*
@@ -397,7 +397,7 @@ type ProjectsApi interface {
 	*/
 	RemoveProjectUserWithParams(ctx context.Context, args *RemoveProjectUserApiParams) RemoveProjectUserApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	RemoveProjectUserExecute(r RemoveProjectUserApiRequest) (*http.Response, error)
 
 	/*
@@ -420,7 +420,7 @@ type ProjectsApi interface {
 	*/
 	ReturnAllIPAddressesWithParams(ctx context.Context, args *ReturnAllIPAddressesApiParams) ReturnAllIPAddressesApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ReturnAllIPAddressesExecute(r ReturnAllIPAddressesApiRequest) (*GroupIPAddresses, *http.Response, error)
 
 	/*
@@ -446,7 +446,7 @@ type ProjectsApi interface {
 	*/
 	SetProjectLimitWithParams(ctx context.Context, args *SetProjectLimitApiParams) SetProjectLimitApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	SetProjectLimitExecute(r SetProjectLimitApiRequest) (*DataFederationLimit, *http.Response, error)
 
 	/*
@@ -469,7 +469,7 @@ type ProjectsApi interface {
 	*/
 	UpdateProjectWithParams(ctx context.Context, args *UpdateProjectApiParams) UpdateProjectApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateProjectExecute(r UpdateProjectApiRequest) (*Group, *http.Response, error)
 
 	/*
@@ -496,7 +496,7 @@ type ProjectsApi interface {
 	*/
 	UpdateProjectInvitationWithParams(ctx context.Context, args *UpdateProjectInvitationApiParams) UpdateProjectInvitationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateProjectInvitationExecute(r UpdateProjectInvitationApiRequest) (*GroupInvitation, *http.Response, error)
 
 	/*
@@ -524,7 +524,7 @@ type ProjectsApi interface {
 	*/
 	UpdateProjectInvitationByIdWithParams(ctx context.Context, args *UpdateProjectInvitationByIdApiParams) UpdateProjectInvitationByIdApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateProjectInvitationByIdExecute(r UpdateProjectInvitationByIdApiRequest) (*GroupInvitation, *http.Response, error)
 
 	/*
@@ -548,7 +548,7 @@ type ProjectsApi interface {
 	*/
 	UpdateProjectRolesWithParams(ctx context.Context, args *UpdateProjectRolesApiParams) UpdateProjectRolesApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateProjectRolesExecute(r UpdateProjectRolesApiRequest) (*UpdateGroupRolesForUser, *http.Response, error)
 
 	/*
@@ -571,7 +571,7 @@ type ProjectsApi interface {
 	*/
 	UpdateProjectSettingsWithParams(ctx context.Context, args *UpdateProjectSettingsApiParams) UpdateProjectSettingsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateProjectSettingsExecute(r UpdateProjectSettingsApiRequest) (*GroupSettings, *http.Response, error)
 }
 

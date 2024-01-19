@@ -34,7 +34,7 @@ type ThirdPartyIntegrationsApi interface {
 	*/
 	CreateThirdPartyIntegrationWithParams(ctx context.Context, args *CreateThirdPartyIntegrationApiParams) CreateThirdPartyIntegrationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateThirdPartyIntegrationExecute(r CreateThirdPartyIntegrationApiRequest) (*PaginatedIntegration, *http.Response, error)
 
 	/*
@@ -58,7 +58,7 @@ type ThirdPartyIntegrationsApi interface {
 	*/
 	DeleteThirdPartyIntegrationWithParams(ctx context.Context, args *DeleteThirdPartyIntegrationApiParams) DeleteThirdPartyIntegrationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeleteThirdPartyIntegrationExecute(r DeleteThirdPartyIntegrationApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
@@ -82,7 +82,7 @@ type ThirdPartyIntegrationsApi interface {
 	*/
 	GetThirdPartyIntegrationWithParams(ctx context.Context, args *GetThirdPartyIntegrationApiParams) GetThirdPartyIntegrationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetThirdPartyIntegrationExecute(r GetThirdPartyIntegrationApiRequest) (*ThridPartyIntegration, *http.Response, error)
 
 	/*
@@ -105,7 +105,7 @@ type ThirdPartyIntegrationsApi interface {
 	*/
 	ListThirdPartyIntegrationsWithParams(ctx context.Context, args *ListThirdPartyIntegrationsApiParams) ListThirdPartyIntegrationsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListThirdPartyIntegrationsExecute(r ListThirdPartyIntegrationsApiRequest) (*PaginatedIntegration, *http.Response, error)
 
 	/*
@@ -129,7 +129,7 @@ type ThirdPartyIntegrationsApi interface {
 	*/
 	UpdateThirdPartyIntegrationWithParams(ctx context.Context, args *UpdateThirdPartyIntegrationApiParams) UpdateThirdPartyIntegrationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateThirdPartyIntegrationExecute(r UpdateThirdPartyIntegrationApiRequest) (*PaginatedIntegration, *http.Response, error)
 }
 

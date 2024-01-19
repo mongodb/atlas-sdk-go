@@ -35,7 +35,7 @@ type EncryptionAtRestUsingCustomerKeyManagementApi interface {
 	*/
 	GetEncryptionAtRestWithParams(ctx context.Context, args *GetEncryptionAtRestApiParams) GetEncryptionAtRestApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetEncryptionAtRestExecute(r GetEncryptionAtRestApiRequest) (*EncryptionAtRest, *http.Response, error)
 
 	/*
@@ -60,7 +60,7 @@ type EncryptionAtRestUsingCustomerKeyManagementApi interface {
 	*/
 	UpdateEncryptionAtRestWithParams(ctx context.Context, args *UpdateEncryptionAtRestApiParams) UpdateEncryptionAtRestApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateEncryptionAtRestExecute(r UpdateEncryptionAtRestApiRequest) (*EncryptionAtRest, *http.Response, error)
 }
 

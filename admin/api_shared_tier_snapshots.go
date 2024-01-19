@@ -34,7 +34,7 @@ type SharedTierSnapshotsApi interface {
 	*/
 	DownloadSharedClusterBackupWithParams(ctx context.Context, args *DownloadSharedClusterBackupApiParams) DownloadSharedClusterBackupApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DownloadSharedClusterBackupExecute(r DownloadSharedClusterBackupApiRequest) (*TenantRestore, *http.Response, error)
 
 	/*
@@ -59,7 +59,7 @@ type SharedTierSnapshotsApi interface {
 	*/
 	GetSharedClusterBackupWithParams(ctx context.Context, args *GetSharedClusterBackupApiParams) GetSharedClusterBackupApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetSharedClusterBackupExecute(r GetSharedClusterBackupApiRequest) (*BackupTenantSnapshot, *http.Response, error)
 
 	/*
@@ -83,7 +83,7 @@ type SharedTierSnapshotsApi interface {
 	*/
 	ListSharedClusterBackupsWithParams(ctx context.Context, args *ListSharedClusterBackupsApiParams) ListSharedClusterBackupsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListSharedClusterBackupsExecute(r ListSharedClusterBackupsApiRequest) (*PaginatedTenantSnapshot, *http.Response, error)
 }
 

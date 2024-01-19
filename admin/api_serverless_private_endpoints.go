@@ -36,7 +36,7 @@ type ServerlessPrivateEndpointsApi interface {
 	*/
 	CreateServerlessPrivateEndpointWithParams(ctx context.Context, args *CreateServerlessPrivateEndpointApiParams) CreateServerlessPrivateEndpointApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateServerlessPrivateEndpointExecute(r CreateServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error)
 
 	/*
@@ -61,7 +61,7 @@ type ServerlessPrivateEndpointsApi interface {
 	*/
 	DeleteServerlessPrivateEndpointWithParams(ctx context.Context, args *DeleteServerlessPrivateEndpointApiParams) DeleteServerlessPrivateEndpointApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeleteServerlessPrivateEndpointExecute(r DeleteServerlessPrivateEndpointApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
@@ -86,7 +86,7 @@ type ServerlessPrivateEndpointsApi interface {
 	*/
 	GetServerlessPrivateEndpointWithParams(ctx context.Context, args *GetServerlessPrivateEndpointApiParams) GetServerlessPrivateEndpointApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetServerlessPrivateEndpointExecute(r GetServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error)
 
 	/*
@@ -110,7 +110,7 @@ type ServerlessPrivateEndpointsApi interface {
 	*/
 	ListServerlessPrivateEndpointsWithParams(ctx context.Context, args *ListServerlessPrivateEndpointsApiParams) ListServerlessPrivateEndpointsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListServerlessPrivateEndpointsExecute(r ListServerlessPrivateEndpointsApiRequest) ([]ServerlessTenantEndpoint, *http.Response, error)
 
 	/*
@@ -135,7 +135,7 @@ type ServerlessPrivateEndpointsApi interface {
 	*/
 	UpdateServerlessPrivateEndpointWithParams(ctx context.Context, args *UpdateServerlessPrivateEndpointApiParams) UpdateServerlessPrivateEndpointApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateServerlessPrivateEndpointExecute(r UpdateServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error)
 }
 

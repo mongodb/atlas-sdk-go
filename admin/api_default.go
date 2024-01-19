@@ -31,7 +31,7 @@ type DefaultApi interface {
 	*/
 	ReturnAllControlPlaneIPAddressesWithParams(ctx context.Context, args *ReturnAllControlPlaneIPAddressesApiParams) ReturnAllControlPlaneIPAddressesApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ReturnAllControlPlaneIPAddressesExecute(r ReturnAllControlPlaneIPAddressesApiRequest) (*ControlPlaneIPAddresses, *http.Response, error)
 }
 

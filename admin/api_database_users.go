@@ -33,7 +33,7 @@ type DatabaseUsersApi interface {
 	*/
 	CreateDatabaseUserWithParams(ctx context.Context, args *CreateDatabaseUserApiParams) CreateDatabaseUserApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateDatabaseUserExecute(r CreateDatabaseUserApiRequest) (*CloudDatabaseUser, *http.Response, error)
 
 	/*
@@ -58,7 +58,7 @@ type DatabaseUsersApi interface {
 	*/
 	DeleteDatabaseUserWithParams(ctx context.Context, args *DeleteDatabaseUserApiParams) DeleteDatabaseUserApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeleteDatabaseUserExecute(r DeleteDatabaseUserApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
@@ -83,7 +83,7 @@ type DatabaseUsersApi interface {
 	*/
 	GetDatabaseUserWithParams(ctx context.Context, args *GetDatabaseUserApiParams) GetDatabaseUserApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetDatabaseUserExecute(r GetDatabaseUserApiRequest) (*CloudDatabaseUser, *http.Response, error)
 
 	/*
@@ -106,7 +106,7 @@ type DatabaseUsersApi interface {
 	*/
 	ListDatabaseUsersWithParams(ctx context.Context, args *ListDatabaseUsersApiParams) ListDatabaseUsersApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListDatabaseUsersExecute(r ListDatabaseUsersApiRequest) (*PaginatedApiAtlasDatabaseUser, *http.Response, error)
 
 	/*
@@ -131,7 +131,7 @@ type DatabaseUsersApi interface {
 	*/
 	UpdateDatabaseUserWithParams(ctx context.Context, args *UpdateDatabaseUserApiParams) UpdateDatabaseUserApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateDatabaseUserExecute(r UpdateDatabaseUserApiRequest) (*CloudDatabaseUser, *http.Response, error)
 }
 

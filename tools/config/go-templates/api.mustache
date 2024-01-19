@@ -47,7 +47,7 @@ type {{classname}} interface {
 	*/
 	{{nickname}}WithParams(ctx context.Context, args *{{operationId}}ApiParams) {{operationId}}ApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	{{{nickname}}}Execute(r {{operationId}}ApiRequest) ({{#returnType}}{{^isArray}}{{^returnTypeIsPrimitive}}{{^isResponseFile}}*{{/isResponseFile}}{{/returnTypeIsPrimitive}}{{/isArray}}{{{.}}}, {{/returnType}}*http.Response, error)
 	{{/operation}}
 }

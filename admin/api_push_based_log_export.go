@@ -33,7 +33,7 @@ type PushBasedLogExportApi interface {
 	*/
 	CreatePushBasedLogConfigurationWithParams(ctx context.Context, args *CreatePushBasedLogConfigurationApiParams) CreatePushBasedLogConfigurationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreatePushBasedLogConfigurationExecute(r CreatePushBasedLogConfigurationApiRequest) (*http.Response, error)
 
 	/*
@@ -56,7 +56,7 @@ type PushBasedLogExportApi interface {
 	*/
 	DeletePushBasedLogConfigurationWithParams(ctx context.Context, args *DeletePushBasedLogConfigurationApiParams) DeletePushBasedLogConfigurationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeletePushBasedLogConfigurationExecute(r DeletePushBasedLogConfigurationApiRequest) (*http.Response, error)
 
 	/*
@@ -79,7 +79,7 @@ type PushBasedLogExportApi interface {
 	*/
 	GetPushBasedLogConfigurationWithParams(ctx context.Context, args *GetPushBasedLogConfigurationApiParams) GetPushBasedLogConfigurationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetPushBasedLogConfigurationExecute(r GetPushBasedLogConfigurationApiRequest) (*PushBasedLogExportProject, *http.Response, error)
 
 	/*
@@ -102,7 +102,7 @@ type PushBasedLogExportApi interface {
 	*/
 	UpdatePushBasedLogConfigurationWithParams(ctx context.Context, args *UpdatePushBasedLogConfigurationApiParams) UpdatePushBasedLogConfigurationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdatePushBasedLogConfigurationExecute(r UpdatePushBasedLogConfigurationApiRequest) (*http.Response, error)
 }
 

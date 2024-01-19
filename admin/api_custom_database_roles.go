@@ -33,7 +33,7 @@ type CustomDatabaseRolesApi interface {
 	*/
 	CreateCustomDatabaseRoleWithParams(ctx context.Context, args *CreateCustomDatabaseRoleApiParams) CreateCustomDatabaseRoleApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateCustomDatabaseRoleExecute(r CreateCustomDatabaseRoleApiRequest) (*UserCustomDBRole, *http.Response, error)
 
 	/*
@@ -57,7 +57,7 @@ type CustomDatabaseRolesApi interface {
 	*/
 	DeleteCustomDatabaseRoleWithParams(ctx context.Context, args *DeleteCustomDatabaseRoleApiParams) DeleteCustomDatabaseRoleApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeleteCustomDatabaseRoleExecute(r DeleteCustomDatabaseRoleApiRequest) (*http.Response, error)
 
 	/*
@@ -81,7 +81,7 @@ type CustomDatabaseRolesApi interface {
 	*/
 	GetCustomDatabaseRoleWithParams(ctx context.Context, args *GetCustomDatabaseRoleApiParams) GetCustomDatabaseRoleApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetCustomDatabaseRoleExecute(r GetCustomDatabaseRoleApiRequest) (*UserCustomDBRole, *http.Response, error)
 
 	/*
@@ -104,7 +104,7 @@ type CustomDatabaseRolesApi interface {
 	*/
 	ListCustomDatabaseRolesWithParams(ctx context.Context, args *ListCustomDatabaseRolesApiParams) ListCustomDatabaseRolesApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListCustomDatabaseRolesExecute(r ListCustomDatabaseRolesApiRequest) ([]UserCustomDBRole, *http.Response, error)
 
 	/*
@@ -128,7 +128,7 @@ type CustomDatabaseRolesApi interface {
 	*/
 	UpdateCustomDatabaseRoleWithParams(ctx context.Context, args *UpdateCustomDatabaseRoleApiParams) UpdateCustomDatabaseRoleApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateCustomDatabaseRoleExecute(r UpdateCustomDatabaseRoleApiRequest) (*UserCustomDBRole, *http.Response, error)
 }
 

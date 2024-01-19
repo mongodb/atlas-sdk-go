@@ -35,7 +35,7 @@ type CloudBackupsApi interface {
 	*/
 	CancelBackupRestoreJobWithParams(ctx context.Context, args *CancelBackupRestoreJobApiParams) CancelBackupRestoreJobApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CancelBackupRestoreJobExecute(r CancelBackupRestoreJobApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
@@ -59,7 +59,7 @@ type CloudBackupsApi interface {
 	*/
 	CreateBackupExportJobWithParams(ctx context.Context, args *CreateBackupExportJobApiParams) CreateBackupExportJobApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateBackupExportJobExecute(r CreateBackupExportJobApiRequest) (*DiskBackupExportJob, *http.Response, error)
 
 	/*
@@ -85,7 +85,7 @@ type CloudBackupsApi interface {
 	*/
 	CreateBackupRestoreJobWithParams(ctx context.Context, args *CreateBackupRestoreJobApiParams) CreateBackupRestoreJobApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateBackupRestoreJobExecute(r CreateBackupRestoreJobApiRequest) (*DiskBackupSnapshotRestoreJob, *http.Response, error)
 
 	/*
@@ -108,7 +108,7 @@ type CloudBackupsApi interface {
 	*/
 	CreateExportBucketWithParams(ctx context.Context, args *CreateExportBucketApiParams) CreateExportBucketApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateExportBucketExecute(r CreateExportBucketApiRequest) (*DiskBackupSnapshotAWSExportBucket, *http.Response, error)
 
 	/*
@@ -132,7 +132,7 @@ type CloudBackupsApi interface {
 	*/
 	CreateServerlessBackupRestoreJobWithParams(ctx context.Context, args *CreateServerlessBackupRestoreJobApiParams) CreateServerlessBackupRestoreJobApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateServerlessBackupRestoreJobExecute(r CreateServerlessBackupRestoreJobApiRequest) (*ServerlessBackupRestoreJob, *http.Response, error)
 
 	/*
@@ -156,7 +156,7 @@ type CloudBackupsApi interface {
 	*/
 	DeleteAllBackupSchedulesWithParams(ctx context.Context, args *DeleteAllBackupSchedulesApiParams) DeleteAllBackupSchedulesApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeleteAllBackupSchedulesExecute(r DeleteAllBackupSchedulesApiRequest) (*DiskBackupSnapshotSchedule, *http.Response, error)
 
 	/*
@@ -180,7 +180,7 @@ type CloudBackupsApi interface {
 	*/
 	DeleteExportBucketWithParams(ctx context.Context, args *DeleteExportBucketApiParams) DeleteExportBucketApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeleteExportBucketExecute(r DeleteExportBucketApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
@@ -205,7 +205,7 @@ type CloudBackupsApi interface {
 	*/
 	DeleteReplicaSetBackupWithParams(ctx context.Context, args *DeleteReplicaSetBackupApiParams) DeleteReplicaSetBackupApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeleteReplicaSetBackupExecute(r DeleteReplicaSetBackupApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
@@ -230,7 +230,7 @@ type CloudBackupsApi interface {
 	*/
 	DeleteShardedClusterBackupWithParams(ctx context.Context, args *DeleteShardedClusterBackupApiParams) DeleteShardedClusterBackupApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeleteShardedClusterBackupExecute(r DeleteShardedClusterBackupApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
@@ -255,7 +255,7 @@ type CloudBackupsApi interface {
 	*/
 	GetBackupExportJobWithParams(ctx context.Context, args *GetBackupExportJobApiParams) GetBackupExportJobApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetBackupExportJobExecute(r GetBackupExportJobApiRequest) (*DiskBackupExportJob, *http.Response, error)
 
 	/*
@@ -280,7 +280,7 @@ type CloudBackupsApi interface {
 	*/
 	GetBackupRestoreJobWithParams(ctx context.Context, args *GetBackupRestoreJobApiParams) GetBackupRestoreJobApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetBackupRestoreJobExecute(r GetBackupRestoreJobApiRequest) (*DiskBackupSnapshotRestoreJob, *http.Response, error)
 
 	/*
@@ -304,7 +304,7 @@ type CloudBackupsApi interface {
 	*/
 	GetBackupScheduleWithParams(ctx context.Context, args *GetBackupScheduleApiParams) GetBackupScheduleApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetBackupScheduleExecute(r GetBackupScheduleApiRequest) (*DiskBackupSnapshotSchedule, *http.Response, error)
 
 	/*
@@ -327,7 +327,7 @@ type CloudBackupsApi interface {
 	*/
 	GetDataProtectionSettingsWithParams(ctx context.Context, args *GetDataProtectionSettingsApiParams) GetDataProtectionSettingsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetDataProtectionSettingsExecute(r GetDataProtectionSettingsApiRequest) (*DataProtectionSettings20231001, *http.Response, error)
 
 	/*
@@ -351,7 +351,7 @@ type CloudBackupsApi interface {
 	*/
 	GetExportBucketWithParams(ctx context.Context, args *GetExportBucketApiParams) GetExportBucketApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetExportBucketExecute(r GetExportBucketApiRequest) (*DiskBackupSnapshotAWSExportBucket, *http.Response, error)
 
 	/*
@@ -376,7 +376,7 @@ type CloudBackupsApi interface {
 	*/
 	GetReplicaSetBackupWithParams(ctx context.Context, args *GetReplicaSetBackupApiParams) GetReplicaSetBackupApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetReplicaSetBackupExecute(r GetReplicaSetBackupApiRequest) (*DiskBackupReplicaSet, *http.Response, error)
 
 	/*
@@ -401,7 +401,7 @@ type CloudBackupsApi interface {
 	*/
 	GetServerlessBackupWithParams(ctx context.Context, args *GetServerlessBackupApiParams) GetServerlessBackupApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetServerlessBackupExecute(r GetServerlessBackupApiRequest) (*ServerlessBackupSnapshot, *http.Response, error)
 
 	/*
@@ -426,7 +426,7 @@ type CloudBackupsApi interface {
 	*/
 	GetServerlessBackupRestoreJobWithParams(ctx context.Context, args *GetServerlessBackupRestoreJobApiParams) GetServerlessBackupRestoreJobApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetServerlessBackupRestoreJobExecute(r GetServerlessBackupRestoreJobApiRequest) (*ServerlessBackupRestoreJob, *http.Response, error)
 
 	/*
@@ -451,7 +451,7 @@ type CloudBackupsApi interface {
 	*/
 	GetShardedClusterBackupWithParams(ctx context.Context, args *GetShardedClusterBackupApiParams) GetShardedClusterBackupApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetShardedClusterBackupExecute(r GetShardedClusterBackupApiRequest) (*DiskBackupShardedClusterSnapshot, *http.Response, error)
 
 	/*
@@ -475,7 +475,7 @@ type CloudBackupsApi interface {
 	*/
 	ListBackupExportJobsWithParams(ctx context.Context, args *ListBackupExportJobsApiParams) ListBackupExportJobsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListBackupExportJobsExecute(r ListBackupExportJobsApiRequest) (*PaginatedApiAtlasDiskBackupExportJob, *http.Response, error)
 
 	/*
@@ -499,7 +499,7 @@ type CloudBackupsApi interface {
 	*/
 	ListBackupRestoreJobsWithParams(ctx context.Context, args *ListBackupRestoreJobsApiParams) ListBackupRestoreJobsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListBackupRestoreJobsExecute(r ListBackupRestoreJobsApiRequest) (*PaginatedCloudBackupRestoreJob, *http.Response, error)
 
 	/*
@@ -522,7 +522,7 @@ type CloudBackupsApi interface {
 	*/
 	ListExportBucketsWithParams(ctx context.Context, args *ListExportBucketsApiParams) ListExportBucketsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListExportBucketsExecute(r ListExportBucketsApiRequest) (*PaginatedBackupSnapshotExportBucket, *http.Response, error)
 
 	/*
@@ -546,7 +546,7 @@ type CloudBackupsApi interface {
 	*/
 	ListReplicaSetBackupsWithParams(ctx context.Context, args *ListReplicaSetBackupsApiParams) ListReplicaSetBackupsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListReplicaSetBackupsExecute(r ListReplicaSetBackupsApiRequest) (*PaginatedCloudBackupReplicaSet, *http.Response, error)
 
 	/*
@@ -570,7 +570,7 @@ type CloudBackupsApi interface {
 	*/
 	ListServerlessBackupRestoreJobsWithParams(ctx context.Context, args *ListServerlessBackupRestoreJobsApiParams) ListServerlessBackupRestoreJobsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListServerlessBackupRestoreJobsExecute(r ListServerlessBackupRestoreJobsApiRequest) (*PaginatedApiAtlasServerlessBackupRestoreJob, *http.Response, error)
 
 	/*
@@ -594,7 +594,7 @@ type CloudBackupsApi interface {
 	*/
 	ListServerlessBackupsWithParams(ctx context.Context, args *ListServerlessBackupsApiParams) ListServerlessBackupsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListServerlessBackupsExecute(r ListServerlessBackupsApiRequest) (*PaginatedApiAtlasServerlessBackupSnapshot, *http.Response, error)
 
 	/*
@@ -618,7 +618,7 @@ type CloudBackupsApi interface {
 	*/
 	ListShardedClusterBackupsWithParams(ctx context.Context, args *ListShardedClusterBackupsApiParams) ListShardedClusterBackupsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListShardedClusterBackupsExecute(r ListShardedClusterBackupsApiRequest) (*PaginatedCloudBackupShardedClusterSnapshot, *http.Response, error)
 
 	/*
@@ -644,7 +644,7 @@ type CloudBackupsApi interface {
 	*/
 	TakeSnapshotWithParams(ctx context.Context, args *TakeSnapshotApiParams) TakeSnapshotApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	TakeSnapshotExecute(r TakeSnapshotApiRequest) (*DiskBackupSnapshot, *http.Response, error)
 
 	/*
@@ -668,7 +668,7 @@ type CloudBackupsApi interface {
 	*/
 	UpdateBackupScheduleWithParams(ctx context.Context, args *UpdateBackupScheduleApiParams) UpdateBackupScheduleApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateBackupScheduleExecute(r UpdateBackupScheduleApiRequest) (*DiskBackupSnapshotSchedule, *http.Response, error)
 
 	/*
@@ -691,7 +691,7 @@ type CloudBackupsApi interface {
 	*/
 	UpdateDataProtectionSettingsWithParams(ctx context.Context, args *UpdateDataProtectionSettingsApiParams) UpdateDataProtectionSettingsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateDataProtectionSettingsExecute(r UpdateDataProtectionSettingsApiRequest) (*DataProtectionSettings20231001, *http.Response, error)
 
 	/*
@@ -716,7 +716,7 @@ type CloudBackupsApi interface {
 	*/
 	UpdateSnapshotRetentionWithParams(ctx context.Context, args *UpdateSnapshotRetentionApiParams) UpdateSnapshotRetentionApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateSnapshotRetentionExecute(r UpdateSnapshotRetentionApiRequest) (*DiskBackupReplicaSet, *http.Response, error)
 }
 

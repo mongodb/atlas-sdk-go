@@ -33,7 +33,7 @@ type ProjectIPAccessListApi interface {
 	*/
 	CreateProjectIpAccessListWithParams(ctx context.Context, args *CreateProjectIpAccessListApiParams) CreateProjectIpAccessListApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateProjectIpAccessListExecute(r CreateProjectIpAccessListApiRequest) (*PaginatedNetworkAccess, *http.Response, error)
 
 	/*
@@ -57,7 +57,7 @@ type ProjectIPAccessListApi interface {
 	*/
 	DeleteProjectIpAccessListWithParams(ctx context.Context, args *DeleteProjectIpAccessListApiParams) DeleteProjectIpAccessListApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeleteProjectIpAccessListExecute(r DeleteProjectIpAccessListApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
@@ -81,7 +81,7 @@ type ProjectIPAccessListApi interface {
 	*/
 	GetProjectIpAccessListStatusWithParams(ctx context.Context, args *GetProjectIpAccessListStatusApiParams) GetProjectIpAccessListStatusApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetProjectIpAccessListStatusExecute(r GetProjectIpAccessListStatusApiRequest) (*NetworkPermissionEntryStatus, *http.Response, error)
 
 	/*
@@ -105,7 +105,7 @@ type ProjectIPAccessListApi interface {
 	*/
 	GetProjectIpListWithParams(ctx context.Context, args *GetProjectIpListApiParams) GetProjectIpListApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetProjectIpListExecute(r GetProjectIpListApiRequest) (*NetworkPermissionEntry, *http.Response, error)
 
 	/*
@@ -128,7 +128,7 @@ type ProjectIPAccessListApi interface {
 	*/
 	ListProjectIpAccessListsWithParams(ctx context.Context, args *ListProjectIpAccessListsApiParams) ListProjectIpAccessListsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListProjectIpAccessListsExecute(r ListProjectIpAccessListsApiRequest) (*PaginatedNetworkAccess, *http.Response, error)
 }
 

@@ -34,7 +34,7 @@ type FederatedAuthenticationApi interface {
 	*/
 	CreateRoleMappingWithParams(ctx context.Context, args *CreateRoleMappingApiParams) CreateRoleMappingApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateRoleMappingExecute(r CreateRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error)
 
 	/*
@@ -57,7 +57,7 @@ type FederatedAuthenticationApi interface {
 	*/
 	DeleteFederationAppWithParams(ctx context.Context, args *DeleteFederationAppApiParams) DeleteFederationAppApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeleteFederationAppExecute(r DeleteFederationAppApiRequest) (*http.Response, error)
 
 	/*
@@ -82,7 +82,7 @@ type FederatedAuthenticationApi interface {
 	*/
 	DeleteRoleMappingWithParams(ctx context.Context, args *DeleteRoleMappingApiParams) DeleteRoleMappingApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeleteRoleMappingExecute(r DeleteRoleMappingApiRequest) (*http.Response, error)
 
 	/*
@@ -106,7 +106,7 @@ type FederatedAuthenticationApi interface {
 	*/
 	GetConnectedOrgConfigWithParams(ctx context.Context, args *GetConnectedOrgConfigApiParams) GetConnectedOrgConfigApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetConnectedOrgConfigExecute(r GetConnectedOrgConfigApiRequest) (*ConnectedOrgConfig, *http.Response, error)
 
 	/*
@@ -129,7 +129,7 @@ type FederatedAuthenticationApi interface {
 	*/
 	GetFederationSettingsWithParams(ctx context.Context, args *GetFederationSettingsApiParams) GetFederationSettingsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetFederationSettingsExecute(r GetFederationSettingsApiRequest) (*OrgFederationSettings, *http.Response, error)
 
 	/*
@@ -153,7 +153,7 @@ type FederatedAuthenticationApi interface {
 	*/
 	GetIdentityProviderWithParams(ctx context.Context, args *GetIdentityProviderApiParams) GetIdentityProviderApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetIdentityProviderExecute(r GetIdentityProviderApiRequest) (*FederationIdentityProvider, *http.Response, error)
 
 	/*
@@ -177,7 +177,7 @@ type FederatedAuthenticationApi interface {
 	*/
 	GetIdentityProviderMetadataWithParams(ctx context.Context, args *GetIdentityProviderMetadataApiParams) GetIdentityProviderMetadataApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetIdentityProviderMetadataExecute(r GetIdentityProviderMetadataApiRequest) (string, *http.Response, error)
 
 	/*
@@ -202,7 +202,7 @@ type FederatedAuthenticationApi interface {
 	*/
 	GetRoleMappingWithParams(ctx context.Context, args *GetRoleMappingApiParams) GetRoleMappingApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetRoleMappingExecute(r GetRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error)
 
 	/*
@@ -225,7 +225,7 @@ type FederatedAuthenticationApi interface {
 	*/
 	ListConnectedOrgConfigsWithParams(ctx context.Context, args *ListConnectedOrgConfigsApiParams) ListConnectedOrgConfigsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListConnectedOrgConfigsExecute(r ListConnectedOrgConfigsApiRequest) ([]ConnectedOrgConfig, *http.Response, error)
 
 	/*
@@ -248,7 +248,7 @@ type FederatedAuthenticationApi interface {
 	*/
 	ListIdentityProvidersWithParams(ctx context.Context, args *ListIdentityProvidersApiParams) ListIdentityProvidersApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListIdentityProvidersExecute(r ListIdentityProvidersApiRequest) (*PaginatedFederationIdentityProvider, *http.Response, error)
 
 	/*
@@ -272,7 +272,7 @@ type FederatedAuthenticationApi interface {
 	*/
 	ListRoleMappingsWithParams(ctx context.Context, args *ListRoleMappingsApiParams) ListRoleMappingsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListRoleMappingsExecute(r ListRoleMappingsApiRequest) (*PaginatedRoleMapping, *http.Response, error)
 
 	/*
@@ -296,7 +296,7 @@ type FederatedAuthenticationApi interface {
 	*/
 	RemoveConnectedOrgConfigWithParams(ctx context.Context, args *RemoveConnectedOrgConfigApiParams) RemoveConnectedOrgConfigApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	RemoveConnectedOrgConfigExecute(r RemoveConnectedOrgConfigApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
@@ -326,7 +326,7 @@ type FederatedAuthenticationApi interface {
 	*/
 	UpdateConnectedOrgConfigWithParams(ctx context.Context, args *UpdateConnectedOrgConfigApiParams) UpdateConnectedOrgConfigApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateConnectedOrgConfigExecute(r UpdateConnectedOrgConfigApiRequest) (*ConnectedOrgConfig, *http.Response, error)
 
 	/*
@@ -350,7 +350,7 @@ type FederatedAuthenticationApi interface {
 	*/
 	UpdateIdentityProviderWithParams(ctx context.Context, args *UpdateIdentityProviderApiParams) UpdateIdentityProviderApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateIdentityProviderExecute(r UpdateIdentityProviderApiRequest) (*FederationIdentityProvider, *http.Response, error)
 
 	/*
@@ -375,7 +375,7 @@ type FederatedAuthenticationApi interface {
 	*/
 	UpdateRoleMappingWithParams(ctx context.Context, args *UpdateRoleMappingApiParams) UpdateRoleMappingApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateRoleMappingExecute(r UpdateRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error)
 }
 

@@ -31,7 +31,7 @@ type RootApi interface {
 	*/
 	GetSystemStatusWithParams(ctx context.Context, args *GetSystemStatusApiParams) GetSystemStatusApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetSystemStatusExecute(r GetSystemStatusApiRequest) (*SystemStatus, *http.Response, error)
 }
 

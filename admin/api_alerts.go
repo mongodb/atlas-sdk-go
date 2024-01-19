@@ -36,7 +36,7 @@ type AlertsApi interface {
 	*/
 	AcknowledgeAlertWithParams(ctx context.Context, args *AcknowledgeAlertApiParams) AcknowledgeAlertApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	AcknowledgeAlertExecute(r AcknowledgeAlertApiRequest) (*AlertViewForNdsGroup, *http.Response, error)
 
 	/*
@@ -62,7 +62,7 @@ type AlertsApi interface {
 	*/
 	GetAlertWithParams(ctx context.Context, args *GetAlertApiParams) GetAlertApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetAlertExecute(r GetAlertApiRequest) (*AlertViewForNdsGroup, *http.Response, error)
 
 	/*
@@ -87,7 +87,7 @@ type AlertsApi interface {
 	*/
 	ListAlertsWithParams(ctx context.Context, args *ListAlertsApiParams) ListAlertsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListAlertsExecute(r ListAlertsApiRequest) (*PaginatedAlert, *http.Response, error)
 
 	/*
@@ -113,7 +113,7 @@ type AlertsApi interface {
 	*/
 	ListAlertsByAlertConfigurationIdWithParams(ctx context.Context, args *ListAlertsByAlertConfigurationIdApiParams) ListAlertsByAlertConfigurationIdApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListAlertsByAlertConfigurationIdExecute(r ListAlertsByAlertConfigurationIdApiRequest) (*PaginatedAlert, *http.Response, error)
 }
 

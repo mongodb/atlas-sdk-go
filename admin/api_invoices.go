@@ -33,7 +33,7 @@ type InvoicesApi interface {
 	*/
 	CreateCostExplorerQueryProcessWithParams(ctx context.Context, args *CreateCostExplorerQueryProcessApiParams) CreateCostExplorerQueryProcessApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateCostExplorerQueryProcessExecute(r CreateCostExplorerQueryProcessApiRequest) (*CostExplorerFilterResponse, *http.Response, error)
 
 	/*
@@ -57,7 +57,7 @@ type InvoicesApi interface {
 	*/
 	CreateCostExplorerQueryProcess1WithParams(ctx context.Context, args *CreateCostExplorerQueryProcess1ApiParams) CreateCostExplorerQueryProcess1ApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateCostExplorerQueryProcess1Execute(r CreateCostExplorerQueryProcess1ApiRequest) (string, *http.Response, error)
 
 	/*
@@ -81,7 +81,7 @@ type InvoicesApi interface {
 	*/
 	DownloadInvoiceCSVWithParams(ctx context.Context, args *DownloadInvoiceCSVApiParams) DownloadInvoiceCSVApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DownloadInvoiceCSVExecute(r DownloadInvoiceCSVApiRequest) (string, *http.Response, error)
 
 	/*
@@ -105,7 +105,7 @@ type InvoicesApi interface {
 	*/
 	GetInvoiceWithParams(ctx context.Context, args *GetInvoiceApiParams) GetInvoiceApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetInvoiceExecute(r GetInvoiceApiRequest) (string, *http.Response, error)
 
 	/*
@@ -128,7 +128,7 @@ type InvoicesApi interface {
 	*/
 	ListInvoicesWithParams(ctx context.Context, args *ListInvoicesApiParams) ListInvoicesApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListInvoicesExecute(r ListInvoicesApiRequest) (*PaginatedApiInvoice, *http.Response, error)
 
 	/*
@@ -151,7 +151,7 @@ type InvoicesApi interface {
 	*/
 	ListPendingInvoicesWithParams(ctx context.Context, args *ListPendingInvoicesApiParams) ListPendingInvoicesApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListPendingInvoicesExecute(r ListPendingInvoicesApiRequest) (*PaginatedApiInvoice, *http.Response, error)
 }
 

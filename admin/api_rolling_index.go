@@ -34,7 +34,7 @@ type RollingIndexApi interface {
 	*/
 	CreateRollingIndexWithParams(ctx context.Context, args *CreateRollingIndexApiParams) CreateRollingIndexApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateRollingIndexExecute(r CreateRollingIndexApiRequest) (*http.Response, error)
 }
 

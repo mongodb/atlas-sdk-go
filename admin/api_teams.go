@@ -33,7 +33,7 @@ type TeamsApi interface {
 	*/
 	AddAllTeamsToProjectWithParams(ctx context.Context, args *AddAllTeamsToProjectApiParams) AddAllTeamsToProjectApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	AddAllTeamsToProjectExecute(r AddAllTeamsToProjectApiRequest) (*PaginatedTeamRole, *http.Response, error)
 
 	/*
@@ -57,7 +57,7 @@ type TeamsApi interface {
 	*/
 	AddTeamUserWithParams(ctx context.Context, args *AddTeamUserApiParams) AddTeamUserApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	AddTeamUserExecute(r AddTeamUserApiRequest) (*PaginatedApiAppUser, *http.Response, error)
 
 	/*
@@ -80,7 +80,7 @@ type TeamsApi interface {
 	*/
 	CreateTeamWithParams(ctx context.Context, args *CreateTeamApiParams) CreateTeamApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateTeamExecute(r CreateTeamApiRequest) (*Team, *http.Response, error)
 
 	/*
@@ -104,7 +104,7 @@ type TeamsApi interface {
 	*/
 	DeleteTeamWithParams(ctx context.Context, args *DeleteTeamApiParams) DeleteTeamApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeleteTeamExecute(r DeleteTeamApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
@@ -128,7 +128,7 @@ type TeamsApi interface {
 	*/
 	GetTeamByIdWithParams(ctx context.Context, args *GetTeamByIdApiParams) GetTeamByIdApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetTeamByIdExecute(r GetTeamByIdApiRequest) (*TeamResponse, *http.Response, error)
 
 	/*
@@ -152,7 +152,7 @@ type TeamsApi interface {
 	*/
 	GetTeamByNameWithParams(ctx context.Context, args *GetTeamByNameApiParams) GetTeamByNameApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetTeamByNameExecute(r GetTeamByNameApiRequest) (*TeamResponse, *http.Response, error)
 
 	/*
@@ -175,7 +175,7 @@ type TeamsApi interface {
 	*/
 	ListOrganizationTeamsWithParams(ctx context.Context, args *ListOrganizationTeamsApiParams) ListOrganizationTeamsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListOrganizationTeamsExecute(r ListOrganizationTeamsApiRequest) (*PaginatedTeam, *http.Response, error)
 
 	/*
@@ -198,7 +198,7 @@ type TeamsApi interface {
 	*/
 	ListProjectTeamsWithParams(ctx context.Context, args *ListProjectTeamsApiParams) ListProjectTeamsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListProjectTeamsExecute(r ListProjectTeamsApiRequest) (*PaginatedTeamRole, *http.Response, error)
 
 	/*
@@ -222,7 +222,7 @@ type TeamsApi interface {
 	*/
 	ListTeamUsersWithParams(ctx context.Context, args *ListTeamUsersApiParams) ListTeamUsersApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListTeamUsersExecute(r ListTeamUsersApiRequest) (*PaginatedApiAppUser, *http.Response, error)
 
 	/*
@@ -246,7 +246,7 @@ type TeamsApi interface {
 	*/
 	RemoveProjectTeamWithParams(ctx context.Context, args *RemoveProjectTeamApiParams) RemoveProjectTeamApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	RemoveProjectTeamExecute(r RemoveProjectTeamApiRequest) (*http.Response, error)
 
 	/*
@@ -271,7 +271,7 @@ type TeamsApi interface {
 	*/
 	RemoveTeamUserWithParams(ctx context.Context, args *RemoveTeamUserApiParams) RemoveTeamUserApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	RemoveTeamUserExecute(r RemoveTeamUserApiRequest) (*http.Response, error)
 
 	/*
@@ -295,7 +295,7 @@ type TeamsApi interface {
 	*/
 	RenameTeamWithParams(ctx context.Context, args *RenameTeamApiParams) RenameTeamApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	RenameTeamExecute(r RenameTeamApiRequest) (*TeamResponse, *http.Response, error)
 
 	/*
@@ -319,7 +319,7 @@ type TeamsApi interface {
 	*/
 	UpdateTeamRolesWithParams(ctx context.Context, args *UpdateTeamRolesApiParams) UpdateTeamRolesApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateTeamRolesExecute(r UpdateTeamRolesApiRequest) (*PaginatedTeamRole, *http.Response, error)
 }
 

@@ -33,7 +33,7 @@ type LDAPConfigurationApi interface {
 	*/
 	DeleteLDAPConfigurationWithParams(ctx context.Context, args *DeleteLDAPConfigurationApiParams) DeleteLDAPConfigurationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeleteLDAPConfigurationExecute(r DeleteLDAPConfigurationApiRequest) (*UserSecurity, *http.Response, error)
 
 	/*
@@ -56,7 +56,7 @@ type LDAPConfigurationApi interface {
 	*/
 	GetLDAPConfigurationWithParams(ctx context.Context, args *GetLDAPConfigurationApiParams) GetLDAPConfigurationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetLDAPConfigurationExecute(r GetLDAPConfigurationApiRequest) (*UserSecurity, *http.Response, error)
 
 	/*
@@ -80,7 +80,7 @@ type LDAPConfigurationApi interface {
 	*/
 	GetLDAPConfigurationStatusWithParams(ctx context.Context, args *GetLDAPConfigurationStatusApiParams) GetLDAPConfigurationStatusApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetLDAPConfigurationStatusExecute(r GetLDAPConfigurationStatusApiRequest) (*LDAPVerifyConnectivityJobRequest, *http.Response, error)
 
 	/*
@@ -105,7 +105,7 @@ type LDAPConfigurationApi interface {
 	*/
 	SaveLDAPConfigurationWithParams(ctx context.Context, args *SaveLDAPConfigurationApiParams) SaveLDAPConfigurationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	SaveLDAPConfigurationExecute(r SaveLDAPConfigurationApiRequest) (*UserSecurity, *http.Response, error)
 
 	/*
@@ -128,7 +128,7 @@ type LDAPConfigurationApi interface {
 	*/
 	VerifyLDAPConfigurationWithParams(ctx context.Context, args *VerifyLDAPConfigurationApiParams) VerifyLDAPConfigurationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	VerifyLDAPConfigurationExecute(r VerifyLDAPConfigurationApiRequest) (*LDAPVerifyConnectivityJobRequest, *http.Response, error)
 }
 

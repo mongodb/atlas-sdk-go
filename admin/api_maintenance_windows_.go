@@ -33,7 +33,7 @@ type MaintenanceWindowsApi interface {
 	*/
 	DeferMaintenanceWindowWithParams(ctx context.Context, args *DeferMaintenanceWindowApiParams) DeferMaintenanceWindowApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeferMaintenanceWindowExecute(r DeferMaintenanceWindowApiRequest) (*http.Response, error)
 
 	/*
@@ -56,7 +56,7 @@ type MaintenanceWindowsApi interface {
 	*/
 	GetMaintenanceWindowWithParams(ctx context.Context, args *GetMaintenanceWindowApiParams) GetMaintenanceWindowApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetMaintenanceWindowExecute(r GetMaintenanceWindowApiRequest) (*GroupMaintenanceWindow, *http.Response, error)
 
 	/*
@@ -79,7 +79,7 @@ type MaintenanceWindowsApi interface {
 	*/
 	ResetMaintenanceWindowWithParams(ctx context.Context, args *ResetMaintenanceWindowApiParams) ResetMaintenanceWindowApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ResetMaintenanceWindowExecute(r ResetMaintenanceWindowApiRequest) (*http.Response, error)
 
 	/*
@@ -102,7 +102,7 @@ type MaintenanceWindowsApi interface {
 	*/
 	ToggleMaintenanceAutoDeferWithParams(ctx context.Context, args *ToggleMaintenanceAutoDeferApiParams) ToggleMaintenanceAutoDeferApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ToggleMaintenanceAutoDeferExecute(r ToggleMaintenanceAutoDeferApiRequest) (*http.Response, error)
 
 	/*
@@ -125,7 +125,7 @@ type MaintenanceWindowsApi interface {
 	*/
 	UpdateMaintenanceWindowWithParams(ctx context.Context, args *UpdateMaintenanceWindowApiParams) UpdateMaintenanceWindowApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateMaintenanceWindowExecute(r UpdateMaintenanceWindowApiRequest) (map[string]interface{}, *http.Response, error)
 }
 

@@ -38,7 +38,7 @@ type LegacyBackupRestoreJobsApi interface {
 	*/
 	CreateLegacyBackupRestoreJobWithParams(ctx context.Context, args *CreateLegacyBackupRestoreJobApiParams) CreateLegacyBackupRestoreJobApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateLegacyBackupRestoreJobExecute(r CreateLegacyBackupRestoreJobApiRequest) (*PaginatedRestoreJob, *http.Response, error)
 }
 

@@ -32,7 +32,7 @@ type OrganizationsApi interface {
 	*/
 	CreateOrganizationWithParams(ctx context.Context, args *CreateOrganizationApiParams) CreateOrganizationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateOrganizationExecute(r CreateOrganizationApiRequest) (*CreateOrganizationResponse, *http.Response, error)
 
 	/*
@@ -55,7 +55,7 @@ type OrganizationsApi interface {
 	*/
 	CreateOrganizationInvitationWithParams(ctx context.Context, args *CreateOrganizationInvitationApiParams) CreateOrganizationInvitationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateOrganizationInvitationExecute(r CreateOrganizationInvitationApiRequest) (*OrganizationInvitation, *http.Response, error)
 
 	/*
@@ -82,7 +82,7 @@ type OrganizationsApi interface {
 	*/
 	DeleteOrganizationWithParams(ctx context.Context, args *DeleteOrganizationApiParams) DeleteOrganizationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeleteOrganizationExecute(r DeleteOrganizationApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
@@ -106,7 +106,7 @@ type OrganizationsApi interface {
 	*/
 	DeleteOrganizationInvitationWithParams(ctx context.Context, args *DeleteOrganizationInvitationApiParams) DeleteOrganizationInvitationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeleteOrganizationInvitationExecute(r DeleteOrganizationInvitationApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
@@ -129,7 +129,7 @@ type OrganizationsApi interface {
 	*/
 	GetOrganizationWithParams(ctx context.Context, args *GetOrganizationApiParams) GetOrganizationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetOrganizationExecute(r GetOrganizationApiRequest) (*AtlasOrganization, *http.Response, error)
 
 	/*
@@ -153,7 +153,7 @@ type OrganizationsApi interface {
 	*/
 	GetOrganizationInvitationWithParams(ctx context.Context, args *GetOrganizationInvitationApiParams) GetOrganizationInvitationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetOrganizationInvitationExecute(r GetOrganizationInvitationApiRequest) (*OrganizationInvitation, *http.Response, error)
 
 	/*
@@ -176,7 +176,7 @@ type OrganizationsApi interface {
 	*/
 	GetOrganizationSettingsWithParams(ctx context.Context, args *GetOrganizationSettingsApiParams) GetOrganizationSettingsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetOrganizationSettingsExecute(r GetOrganizationSettingsApiRequest) (*OrganizationSettings, *http.Response, error)
 
 	/*
@@ -199,7 +199,7 @@ type OrganizationsApi interface {
 	*/
 	ListOrganizationInvitationsWithParams(ctx context.Context, args *ListOrganizationInvitationsApiParams) ListOrganizationInvitationsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListOrganizationInvitationsExecute(r ListOrganizationInvitationsApiRequest) ([]OrganizationInvitation, *http.Response, error)
 
 	/*
@@ -229,7 +229,7 @@ type OrganizationsApi interface {
 	*/
 	ListOrganizationProjectsWithParams(ctx context.Context, args *ListOrganizationProjectsApiParams) ListOrganizationProjectsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListOrganizationProjectsExecute(r ListOrganizationProjectsApiRequest) (*PaginatedAtlasGroup, *http.Response, error)
 
 	/*
@@ -252,7 +252,7 @@ type OrganizationsApi interface {
 	*/
 	ListOrganizationUsersWithParams(ctx context.Context, args *ListOrganizationUsersApiParams) ListOrganizationUsersApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListOrganizationUsersExecute(r ListOrganizationUsersApiRequest) (*PaginatedAppUser, *http.Response, error)
 
 	/*
@@ -274,7 +274,7 @@ type OrganizationsApi interface {
 	*/
 	ListOrganizationsWithParams(ctx context.Context, args *ListOrganizationsApiParams) ListOrganizationsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListOrganizationsExecute(r ListOrganizationsApiRequest) (*PaginatedOrganization, *http.Response, error)
 
 	/*
@@ -298,7 +298,7 @@ type OrganizationsApi interface {
 	*/
 	RemoveOrganizationUserWithParams(ctx context.Context, args *RemoveOrganizationUserApiParams) RemoveOrganizationUserApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	RemoveOrganizationUserExecute(r RemoveOrganizationUserApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
@@ -321,7 +321,7 @@ type OrganizationsApi interface {
 	*/
 	RenameOrganizationWithParams(ctx context.Context, args *RenameOrganizationApiParams) RenameOrganizationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	RenameOrganizationExecute(r RenameOrganizationApiRequest) (*AtlasOrganization, *http.Response, error)
 
 	/*
@@ -344,7 +344,7 @@ type OrganizationsApi interface {
 	*/
 	UpdateOrganizationInvitationWithParams(ctx context.Context, args *UpdateOrganizationInvitationApiParams) UpdateOrganizationInvitationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateOrganizationInvitationExecute(r UpdateOrganizationInvitationApiRequest) (*OrganizationInvitation, *http.Response, error)
 
 	/*
@@ -368,7 +368,7 @@ type OrganizationsApi interface {
 	*/
 	UpdateOrganizationInvitationByIdWithParams(ctx context.Context, args *UpdateOrganizationInvitationByIdApiParams) UpdateOrganizationInvitationByIdApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateOrganizationInvitationByIdExecute(r UpdateOrganizationInvitationByIdApiRequest) (*OrganizationInvitation, *http.Response, error)
 
 	/*
@@ -392,7 +392,7 @@ type OrganizationsApi interface {
 	*/
 	UpdateOrganizationRolesWithParams(ctx context.Context, args *UpdateOrganizationRolesApiParams) UpdateOrganizationRolesApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateOrganizationRolesExecute(r UpdateOrganizationRolesApiRequest) (*UpdateOrgRolesForUser, *http.Response, error)
 
 	/*
@@ -415,7 +415,7 @@ type OrganizationsApi interface {
 	*/
 	UpdateOrganizationSettingsWithParams(ctx context.Context, args *UpdateOrganizationSettingsApiParams) UpdateOrganizationSettingsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateOrganizationSettingsExecute(r UpdateOrganizationSettingsApiRequest) (*OrganizationSettings, *http.Response, error)
 }
 

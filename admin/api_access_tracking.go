@@ -34,7 +34,7 @@ type AccessTrackingApi interface {
 	*/
 	ListAccessLogsByClusterNameWithParams(ctx context.Context, args *ListAccessLogsByClusterNameApiParams) ListAccessLogsByClusterNameApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListAccessLogsByClusterNameExecute(r ListAccessLogsByClusterNameApiRequest) (*MongoDBAccessLogsList, *http.Response, error)
 
 	/*
@@ -58,7 +58,7 @@ type AccessTrackingApi interface {
 	*/
 	ListAccessLogsByHostnameWithParams(ctx context.Context, args *ListAccessLogsByHostnameApiParams) ListAccessLogsByHostnameApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListAccessLogsByHostnameExecute(r ListAccessLogsByHostnameApiRequest) (*MongoDBAccessLogsList, *http.Response, error)
 }
 

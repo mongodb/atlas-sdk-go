@@ -34,7 +34,7 @@ type ClustersApi interface {
 	*/
 	CreateClusterWithParams(ctx context.Context, args *CreateClusterApiParams) CreateClusterApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateClusterExecute(r CreateClusterApiRequest) (*AdvancedClusterDescription, *http.Response, error)
 
 	/*
@@ -58,7 +58,7 @@ type ClustersApi interface {
 	*/
 	DeleteClusterWithParams(ctx context.Context, args *DeleteClusterApiParams) DeleteClusterApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeleteClusterExecute(r DeleteClusterApiRequest) (*http.Response, error)
 
 	/*
@@ -82,7 +82,7 @@ type ClustersApi interface {
 	*/
 	GetClusterWithParams(ctx context.Context, args *GetClusterApiParams) GetClusterApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetClusterExecute(r GetClusterApiRequest) (*AdvancedClusterDescription, *http.Response, error)
 
 	/*
@@ -106,7 +106,7 @@ type ClustersApi interface {
 	*/
 	GetClusterAdvancedConfigurationWithParams(ctx context.Context, args *GetClusterAdvancedConfigurationApiParams) GetClusterAdvancedConfigurationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetClusterAdvancedConfigurationExecute(r GetClusterAdvancedConfigurationApiRequest) (*ClusterDescriptionProcessArgs, *http.Response, error)
 
 	/*
@@ -130,7 +130,7 @@ type ClustersApi interface {
 	*/
 	GetClusterStatusWithParams(ctx context.Context, args *GetClusterStatusApiParams) GetClusterStatusApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetClusterStatusExecute(r GetClusterStatusApiRequest) (*ClusterStatus, *http.Response, error)
 
 	/*
@@ -154,7 +154,7 @@ type ClustersApi interface {
 	*/
 	GetSampleDatasetLoadStatusWithParams(ctx context.Context, args *GetSampleDatasetLoadStatusApiParams) GetSampleDatasetLoadStatusApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetSampleDatasetLoadStatusExecute(r GetSampleDatasetLoadStatusApiRequest) (*SampleDatasetStatus, *http.Response, error)
 
 	/*
@@ -177,7 +177,7 @@ type ClustersApi interface {
 	*/
 	ListCloudProviderRegionsWithParams(ctx context.Context, args *ListCloudProviderRegionsApiParams) ListCloudProviderRegionsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListCloudProviderRegionsExecute(r ListCloudProviderRegionsApiRequest) (*PaginatedApiAtlasProviderRegions, *http.Response, error)
 
 	/*
@@ -200,7 +200,7 @@ type ClustersApi interface {
 	*/
 	ListClustersWithParams(ctx context.Context, args *ListClustersApiParams) ListClustersApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListClustersExecute(r ListClustersApiRequest) (*PaginatedAdvancedClusterDescription, *http.Response, error)
 
 	/*
@@ -222,7 +222,7 @@ type ClustersApi interface {
 	*/
 	ListClustersForAllProjectsWithParams(ctx context.Context, args *ListClustersForAllProjectsApiParams) ListClustersForAllProjectsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListClustersForAllProjectsExecute(r ListClustersForAllProjectsApiRequest) (*PaginatedOrgGroup, *http.Response, error)
 
 	/*
@@ -246,7 +246,7 @@ type ClustersApi interface {
 	*/
 	LoadSampleDatasetWithParams(ctx context.Context, args *LoadSampleDatasetApiParams) LoadSampleDatasetApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	LoadSampleDatasetExecute(r LoadSampleDatasetApiRequest) (*SampleDatasetStatus, *http.Response, error)
 
 	/*
@@ -270,7 +270,7 @@ type ClustersApi interface {
 	*/
 	TestFailoverWithParams(ctx context.Context, args *TestFailoverApiParams) TestFailoverApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	TestFailoverExecute(r TestFailoverApiRequest) (*http.Response, error)
 
 	/*
@@ -294,7 +294,7 @@ type ClustersApi interface {
 	*/
 	UpdateClusterWithParams(ctx context.Context, args *UpdateClusterApiParams) UpdateClusterApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateClusterExecute(r UpdateClusterApiRequest) (*AdvancedClusterDescription, *http.Response, error)
 
 	/*
@@ -318,7 +318,7 @@ type ClustersApi interface {
 	*/
 	UpdateClusterAdvancedConfigurationWithParams(ctx context.Context, args *UpdateClusterAdvancedConfigurationApiParams) UpdateClusterAdvancedConfigurationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateClusterAdvancedConfigurationExecute(r UpdateClusterAdvancedConfigurationApiRequest) (*ClusterDescriptionProcessArgs, *http.Response, error)
 
 	/*
@@ -341,7 +341,7 @@ type ClustersApi interface {
 	*/
 	UpgradeSharedClusterWithParams(ctx context.Context, args *UpgradeSharedClusterApiParams) UpgradeSharedClusterApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpgradeSharedClusterExecute(r UpgradeSharedClusterApiRequest) (*LegacyAtlasCluster, *http.Response, error)
 
 	/*
@@ -364,7 +364,7 @@ type ClustersApi interface {
 	*/
 	UpgradeSharedClusterToServerlessWithParams(ctx context.Context, args *UpgradeSharedClusterToServerlessApiParams) UpgradeSharedClusterToServerlessApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpgradeSharedClusterToServerlessExecute(r UpgradeSharedClusterToServerlessApiRequest) (*ServerlessInstanceDescription, *http.Response, error)
 }
 

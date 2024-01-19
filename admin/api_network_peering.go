@@ -33,7 +33,7 @@ type NetworkPeeringApi interface {
 	*/
 	CreatePeeringConnectionWithParams(ctx context.Context, args *CreatePeeringConnectionApiParams) CreatePeeringConnectionApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreatePeeringConnectionExecute(r CreatePeeringConnectionApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error)
 
 	/*
@@ -56,7 +56,7 @@ type NetworkPeeringApi interface {
 	*/
 	CreatePeeringContainerWithParams(ctx context.Context, args *CreatePeeringContainerApiParams) CreatePeeringContainerApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreatePeeringContainerExecute(r CreatePeeringContainerApiRequest) (*CloudProviderContainer, *http.Response, error)
 
 	/*
@@ -80,7 +80,7 @@ type NetworkPeeringApi interface {
 	*/
 	DeletePeeringConnectionWithParams(ctx context.Context, args *DeletePeeringConnectionApiParams) DeletePeeringConnectionApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeletePeeringConnectionExecute(r DeletePeeringConnectionApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
@@ -104,7 +104,7 @@ type NetworkPeeringApi interface {
 	*/
 	DeletePeeringContainerWithParams(ctx context.Context, args *DeletePeeringContainerApiParams) DeletePeeringContainerApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeletePeeringContainerExecute(r DeletePeeringContainerApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
@@ -131,7 +131,7 @@ type NetworkPeeringApi interface {
 	*/
 	DisablePeeringWithParams(ctx context.Context, args *DisablePeeringApiParams) DisablePeeringApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DisablePeeringExecute(r DisablePeeringApiRequest) (*PrivateIPMode, *http.Response, error)
 
 	/*
@@ -155,7 +155,7 @@ type NetworkPeeringApi interface {
 	*/
 	GetPeeringConnectionWithParams(ctx context.Context, args *GetPeeringConnectionApiParams) GetPeeringConnectionApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetPeeringConnectionExecute(r GetPeeringConnectionApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error)
 
 	/*
@@ -179,7 +179,7 @@ type NetworkPeeringApi interface {
 	*/
 	GetPeeringContainerWithParams(ctx context.Context, args *GetPeeringContainerApiParams) GetPeeringContainerApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetPeeringContainerExecute(r GetPeeringContainerApiRequest) (*CloudProviderContainer, *http.Response, error)
 
 	/*
@@ -202,7 +202,7 @@ type NetworkPeeringApi interface {
 	*/
 	ListPeeringConnectionsWithParams(ctx context.Context, args *ListPeeringConnectionsApiParams) ListPeeringConnectionsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListPeeringConnectionsExecute(r ListPeeringConnectionsApiRequest) (*PaginatedContainerPeer, *http.Response, error)
 
 	/*
@@ -225,7 +225,7 @@ type NetworkPeeringApi interface {
 	*/
 	ListPeeringContainerByCloudProviderWithParams(ctx context.Context, args *ListPeeringContainerByCloudProviderApiParams) ListPeeringContainerByCloudProviderApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListPeeringContainerByCloudProviderExecute(r ListPeeringContainerByCloudProviderApiRequest) (*PaginatedCloudProviderContainer, *http.Response, error)
 
 	/*
@@ -248,7 +248,7 @@ type NetworkPeeringApi interface {
 	*/
 	ListPeeringContainersWithParams(ctx context.Context, args *ListPeeringContainersApiParams) ListPeeringContainersApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListPeeringContainersExecute(r ListPeeringContainersApiRequest) (*PaginatedCloudProviderContainer, *http.Response, error)
 
 	/*
@@ -272,7 +272,7 @@ type NetworkPeeringApi interface {
 	*/
 	UpdatePeeringConnectionWithParams(ctx context.Context, args *UpdatePeeringConnectionApiParams) UpdatePeeringConnectionApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdatePeeringConnectionExecute(r UpdatePeeringConnectionApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error)
 
 	/*
@@ -296,7 +296,7 @@ type NetworkPeeringApi interface {
 	*/
 	UpdatePeeringContainerWithParams(ctx context.Context, args *UpdatePeeringContainerApiParams) UpdatePeeringContainerApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdatePeeringContainerExecute(r UpdatePeeringContainerApiRequest) (*CloudProviderContainer, *http.Response, error)
 
 	/*
@@ -323,7 +323,7 @@ type NetworkPeeringApi interface {
 	*/
 	VerifyConnectViaPeeringOnlyModeForOneProjectWithParams(ctx context.Context, args *VerifyConnectViaPeeringOnlyModeForOneProjectApiParams) VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	VerifyConnectViaPeeringOnlyModeForOneProjectExecute(r VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest) (*PrivateIPMode, *http.Response, error)
 }
 

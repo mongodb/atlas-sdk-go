@@ -51,7 +51,7 @@ type DataFederationApi interface {
 	*/
 	CreateDataFederationPrivateEndpointWithParams(ctx context.Context, args *CreateDataFederationPrivateEndpointApiParams) CreateDataFederationPrivateEndpointApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateDataFederationPrivateEndpointExecute(r CreateDataFederationPrivateEndpointApiRequest) (*PaginatedPrivateNetworkEndpointIdEntry, *http.Response, error)
 
 	/*
@@ -74,7 +74,7 @@ type DataFederationApi interface {
 	*/
 	CreateFederatedDatabaseWithParams(ctx context.Context, args *CreateFederatedDatabaseApiParams) CreateFederatedDatabaseApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateFederatedDatabaseExecute(r CreateFederatedDatabaseApiRequest) (*DataLakeTenant, *http.Response, error)
 
 	/*
@@ -99,7 +99,7 @@ type DataFederationApi interface {
 	*/
 	CreateOneDataFederationQueryLimitWithParams(ctx context.Context, args *CreateOneDataFederationQueryLimitApiParams) CreateOneDataFederationQueryLimitApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateOneDataFederationQueryLimitExecute(r CreateOneDataFederationQueryLimitApiRequest) (*DataFederationTenantQueryLimit, *http.Response, error)
 
 	/*
@@ -123,7 +123,7 @@ type DataFederationApi interface {
 	*/
 	DeleteDataFederationPrivateEndpointWithParams(ctx context.Context, args *DeleteDataFederationPrivateEndpointApiParams) DeleteDataFederationPrivateEndpointApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeleteDataFederationPrivateEndpointExecute(r DeleteDataFederationPrivateEndpointApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
@@ -147,7 +147,7 @@ type DataFederationApi interface {
 	*/
 	DeleteFederatedDatabaseWithParams(ctx context.Context, args *DeleteFederatedDatabaseApiParams) DeleteFederatedDatabaseApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeleteFederatedDatabaseExecute(r DeleteFederatedDatabaseApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
@@ -172,7 +172,7 @@ type DataFederationApi interface {
 	*/
 	DeleteOneDataFederationInstanceQueryLimitWithParams(ctx context.Context, args *DeleteOneDataFederationInstanceQueryLimitApiParams) DeleteOneDataFederationInstanceQueryLimitApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeleteOneDataFederationInstanceQueryLimitExecute(r DeleteOneDataFederationInstanceQueryLimitApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
@@ -196,7 +196,7 @@ type DataFederationApi interface {
 	*/
 	DownloadFederatedDatabaseQueryLogsWithParams(ctx context.Context, args *DownloadFederatedDatabaseQueryLogsApiParams) DownloadFederatedDatabaseQueryLogsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DownloadFederatedDatabaseQueryLogsExecute(r DownloadFederatedDatabaseQueryLogsApiRequest) (io.ReadCloser, *http.Response, error)
 
 	/*
@@ -220,7 +220,7 @@ type DataFederationApi interface {
 	*/
 	GetDataFederationPrivateEndpointWithParams(ctx context.Context, args *GetDataFederationPrivateEndpointApiParams) GetDataFederationPrivateEndpointApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetDataFederationPrivateEndpointExecute(r GetDataFederationPrivateEndpointApiRequest) (*PrivateNetworkEndpointIdEntry, *http.Response, error)
 
 	/*
@@ -244,7 +244,7 @@ type DataFederationApi interface {
 	*/
 	GetFederatedDatabaseWithParams(ctx context.Context, args *GetFederatedDatabaseApiParams) GetFederatedDatabaseApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetFederatedDatabaseExecute(r GetFederatedDatabaseApiRequest) (*DataLakeTenant, *http.Response, error)
 
 	/*
@@ -267,7 +267,7 @@ type DataFederationApi interface {
 	*/
 	ListDataFederationPrivateEndpointsWithParams(ctx context.Context, args *ListDataFederationPrivateEndpointsApiParams) ListDataFederationPrivateEndpointsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListDataFederationPrivateEndpointsExecute(r ListDataFederationPrivateEndpointsApiRequest) (*PaginatedPrivateNetworkEndpointIdEntry, *http.Response, error)
 
 	/*
@@ -290,7 +290,7 @@ type DataFederationApi interface {
 	*/
 	ListFederatedDatabasesWithParams(ctx context.Context, args *ListFederatedDatabasesApiParams) ListFederatedDatabasesApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListFederatedDatabasesExecute(r ListFederatedDatabasesApiRequest) ([]DataLakeTenant, *http.Response, error)
 
 	/*
@@ -315,7 +315,7 @@ type DataFederationApi interface {
 	*/
 	ReturnFederatedDatabaseQueryLimitWithParams(ctx context.Context, args *ReturnFederatedDatabaseQueryLimitApiParams) ReturnFederatedDatabaseQueryLimitApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ReturnFederatedDatabaseQueryLimitExecute(r ReturnFederatedDatabaseQueryLimitApiRequest) (*DataFederationTenantQueryLimit, *http.Response, error)
 
 	/*
@@ -339,7 +339,7 @@ type DataFederationApi interface {
 	*/
 	ReturnFederatedDatabaseQueryLimitsWithParams(ctx context.Context, args *ReturnFederatedDatabaseQueryLimitsApiParams) ReturnFederatedDatabaseQueryLimitsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ReturnFederatedDatabaseQueryLimitsExecute(r ReturnFederatedDatabaseQueryLimitsApiRequest) ([]DataFederationTenantQueryLimit, *http.Response, error)
 
 	/*
@@ -363,7 +363,7 @@ type DataFederationApi interface {
 	*/
 	UpdateFederatedDatabaseWithParams(ctx context.Context, args *UpdateFederatedDatabaseApiParams) UpdateFederatedDatabaseApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateFederatedDatabaseExecute(r UpdateFederatedDatabaseApiRequest) (*DataLakeTenant, *http.Response, error)
 }
 

@@ -39,7 +39,7 @@ type LegacyBackupApi interface {
 	*/
 	DeleteLegacySnapshotWithParams(ctx context.Context, args *DeleteLegacySnapshotApiParams) DeleteLegacySnapshotApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeleteLegacySnapshotExecute(r DeleteLegacySnapshotApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
@@ -68,7 +68,7 @@ type LegacyBackupApi interface {
 	*/
 	GetLegacyBackupCheckpointWithParams(ctx context.Context, args *GetLegacyBackupCheckpointApiParams) GetLegacyBackupCheckpointApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetLegacyBackupCheckpointExecute(r GetLegacyBackupCheckpointApiRequest) (*ApiAtlasCheckpoint, *http.Response, error)
 
 	/*
@@ -99,7 +99,7 @@ type LegacyBackupApi interface {
 	*/
 	GetLegacyBackupRestoreJobWithParams(ctx context.Context, args *GetLegacyBackupRestoreJobApiParams) GetLegacyBackupRestoreJobApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetLegacyBackupRestoreJobExecute(r GetLegacyBackupRestoreJobApiRequest) (*BackupRestoreJob, *http.Response, error)
 
 	/*
@@ -128,7 +128,7 @@ type LegacyBackupApi interface {
 	*/
 	GetLegacySnapshotWithParams(ctx context.Context, args *GetLegacySnapshotApiParams) GetLegacySnapshotApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetLegacySnapshotExecute(r GetLegacySnapshotApiRequest) (*BackupSnapshot, *http.Response, error)
 
 	/*
@@ -158,7 +158,7 @@ type LegacyBackupApi interface {
 	*/
 	GetLegacySnapshotScheduleWithParams(ctx context.Context, args *GetLegacySnapshotScheduleApiParams) GetLegacySnapshotScheduleApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetLegacySnapshotScheduleExecute(r GetLegacySnapshotScheduleApiRequest) (*ApiAtlasSnapshotSchedule, *http.Response, error)
 
 	/*
@@ -186,7 +186,7 @@ type LegacyBackupApi interface {
 	*/
 	ListLegacyBackupCheckpointsWithParams(ctx context.Context, args *ListLegacyBackupCheckpointsApiParams) ListLegacyBackupCheckpointsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListLegacyBackupCheckpointsExecute(r ListLegacyBackupCheckpointsApiRequest) (*PaginatedApiAtlasCheckpoint, *http.Response, error)
 
 	/*
@@ -216,7 +216,7 @@ type LegacyBackupApi interface {
 	*/
 	ListLegacyBackupRestoreJobsWithParams(ctx context.Context, args *ListLegacyBackupRestoreJobsApiParams) ListLegacyBackupRestoreJobsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListLegacyBackupRestoreJobsExecute(r ListLegacyBackupRestoreJobsApiRequest) (*PaginatedRestoreJob, *http.Response, error)
 
 	/*
@@ -244,7 +244,7 @@ type LegacyBackupApi interface {
 	*/
 	ListLegacySnapshotsWithParams(ctx context.Context, args *ListLegacySnapshotsApiParams) ListLegacySnapshotsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListLegacySnapshotsExecute(r ListLegacySnapshotsApiRequest) (*PaginatedSnapshot, *http.Response, error)
 
 	/*
@@ -273,7 +273,7 @@ type LegacyBackupApi interface {
 	*/
 	UpdateLegacySnapshotRetentionWithParams(ctx context.Context, args *UpdateLegacySnapshotRetentionApiParams) UpdateLegacySnapshotRetentionApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateLegacySnapshotRetentionExecute(r UpdateLegacySnapshotRetentionApiRequest) (*BackupSnapshot, *http.Response, error)
 
 	/*
@@ -303,7 +303,7 @@ type LegacyBackupApi interface {
 	*/
 	UpdateLegacySnapshotScheduleWithParams(ctx context.Context, args *UpdateLegacySnapshotScheduleApiParams) UpdateLegacySnapshotScheduleApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateLegacySnapshotScheduleExecute(r UpdateLegacySnapshotScheduleApiRequest) (*ApiAtlasSnapshotSchedule, *http.Response, error)
 }
 

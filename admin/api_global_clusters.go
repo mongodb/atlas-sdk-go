@@ -34,7 +34,7 @@ type GlobalClustersApi interface {
 	*/
 	CreateCustomZoneMappingWithParams(ctx context.Context, args *CreateCustomZoneMappingApiParams) CreateCustomZoneMappingApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateCustomZoneMappingExecute(r CreateCustomZoneMappingApiRequest) (*GeoSharding, *http.Response, error)
 
 	/*
@@ -58,7 +58,7 @@ type GlobalClustersApi interface {
 	*/
 	CreateManagedNamespaceWithParams(ctx context.Context, args *CreateManagedNamespaceApiParams) CreateManagedNamespaceApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateManagedNamespaceExecute(r CreateManagedNamespaceApiRequest) (*GeoSharding, *http.Response, error)
 
 	/*
@@ -82,7 +82,7 @@ type GlobalClustersApi interface {
 	*/
 	DeleteAllCustomZoneMappingsWithParams(ctx context.Context, args *DeleteAllCustomZoneMappingsApiParams) DeleteAllCustomZoneMappingsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeleteAllCustomZoneMappingsExecute(r DeleteAllCustomZoneMappingsApiRequest) (*GeoSharding, *http.Response, error)
 
 	/*
@@ -106,7 +106,7 @@ type GlobalClustersApi interface {
 	*/
 	DeleteManagedNamespaceWithParams(ctx context.Context, args *DeleteManagedNamespaceApiParams) DeleteManagedNamespaceApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeleteManagedNamespaceExecute(r DeleteManagedNamespaceApiRequest) (*GeoSharding, *http.Response, error)
 
 	/*
@@ -130,7 +130,7 @@ type GlobalClustersApi interface {
 	*/
 	GetManagedNamespaceWithParams(ctx context.Context, args *GetManagedNamespaceApiParams) GetManagedNamespaceApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetManagedNamespaceExecute(r GetManagedNamespaceApiRequest) (*GeoSharding, *http.Response, error)
 }
 

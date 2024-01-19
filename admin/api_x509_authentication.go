@@ -38,7 +38,7 @@ type X509AuthenticationApi interface {
 	*/
 	CreateDatabaseUserCertificateWithParams(ctx context.Context, args *CreateDatabaseUserCertificateApiParams) CreateDatabaseUserCertificateApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateDatabaseUserCertificateExecute(r CreateDatabaseUserCertificateApiRequest) (string, *http.Response, error)
 
 	/*
@@ -63,7 +63,7 @@ type X509AuthenticationApi interface {
 	*/
 	DisableCustomerManagedX509WithParams(ctx context.Context, args *DisableCustomerManagedX509ApiParams) DisableCustomerManagedX509ApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DisableCustomerManagedX509Execute(r DisableCustomerManagedX509ApiRequest) (*UserSecurity, *http.Response, error)
 
 	/*
@@ -87,7 +87,7 @@ type X509AuthenticationApi interface {
 	*/
 	ListDatabaseUserCertificatesWithParams(ctx context.Context, args *ListDatabaseUserCertificatesApiParams) ListDatabaseUserCertificatesApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListDatabaseUserCertificatesExecute(r ListDatabaseUserCertificatesApiRequest) (*PaginatedUserCert, *http.Response, error)
 }
 

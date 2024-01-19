@@ -34,7 +34,7 @@ type ClusterOutageSimulationApi interface {
 	*/
 	EndOutageSimulationWithParams(ctx context.Context, args *EndOutageSimulationApiParams) EndOutageSimulationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	EndOutageSimulationExecute(r EndOutageSimulationApiRequest) (*ClusterOutageSimulation, *http.Response, error)
 
 	/*
@@ -58,7 +58,7 @@ type ClusterOutageSimulationApi interface {
 	*/
 	GetOutageSimulationWithParams(ctx context.Context, args *GetOutageSimulationApiParams) GetOutageSimulationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetOutageSimulationExecute(r GetOutageSimulationApiRequest) (*ClusterOutageSimulation, *http.Response, error)
 
 	/*
@@ -82,7 +82,7 @@ type ClusterOutageSimulationApi interface {
 	*/
 	StartOutageSimulationWithParams(ctx context.Context, args *StartOutageSimulationApiParams) StartOutageSimulationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	StartOutageSimulationExecute(r StartOutageSimulationApiRequest) (*ClusterOutageSimulation, *http.Response, error)
 }
 

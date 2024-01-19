@@ -35,7 +35,7 @@ type PrivateEndpointServicesApi interface {
 	*/
 	CreatePrivateEndpointWithParams(ctx context.Context, args *CreatePrivateEndpointApiParams) CreatePrivateEndpointApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreatePrivateEndpointExecute(r CreatePrivateEndpointApiRequest) (*PrivateLinkEndpoint, *http.Response, error)
 
 	/*
@@ -58,7 +58,7 @@ type PrivateEndpointServicesApi interface {
 	*/
 	CreatePrivateEndpointServiceWithParams(ctx context.Context, args *CreatePrivateEndpointServiceApiParams) CreatePrivateEndpointServiceApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreatePrivateEndpointServiceExecute(r CreatePrivateEndpointServiceApiRequest) (*EndpointService, *http.Response, error)
 
 	/*
@@ -84,7 +84,7 @@ type PrivateEndpointServicesApi interface {
 	*/
 	DeletePrivateEndpointWithParams(ctx context.Context, args *DeletePrivateEndpointApiParams) DeletePrivateEndpointApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeletePrivateEndpointExecute(r DeletePrivateEndpointApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
@@ -109,7 +109,7 @@ type PrivateEndpointServicesApi interface {
 	*/
 	DeletePrivateEndpointServiceWithParams(ctx context.Context, args *DeletePrivateEndpointServiceApiParams) DeletePrivateEndpointServiceApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeletePrivateEndpointServiceExecute(r DeletePrivateEndpointServiceApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
@@ -135,7 +135,7 @@ type PrivateEndpointServicesApi interface {
 	*/
 	GetPrivateEndpointWithParams(ctx context.Context, args *GetPrivateEndpointApiParams) GetPrivateEndpointApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetPrivateEndpointExecute(r GetPrivateEndpointApiRequest) (*PrivateLinkEndpoint, *http.Response, error)
 
 	/*
@@ -160,7 +160,7 @@ type PrivateEndpointServicesApi interface {
 	*/
 	GetPrivateEndpointServiceWithParams(ctx context.Context, args *GetPrivateEndpointServiceApiParams) GetPrivateEndpointServiceApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetPrivateEndpointServiceExecute(r GetPrivateEndpointServiceApiRequest) (*EndpointService, *http.Response, error)
 
 	/*
@@ -183,7 +183,7 @@ type PrivateEndpointServicesApi interface {
 	*/
 	GetRegionalizedPrivateEndpointSettingWithParams(ctx context.Context, args *GetRegionalizedPrivateEndpointSettingApiParams) GetRegionalizedPrivateEndpointSettingApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetRegionalizedPrivateEndpointSettingExecute(r GetRegionalizedPrivateEndpointSettingApiRequest) (*ProjectSettingItem, *http.Response, error)
 
 	/*
@@ -207,7 +207,7 @@ type PrivateEndpointServicesApi interface {
 	*/
 	ListPrivateEndpointServicesWithParams(ctx context.Context, args *ListPrivateEndpointServicesApiParams) ListPrivateEndpointServicesApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListPrivateEndpointServicesExecute(r ListPrivateEndpointServicesApiRequest) ([]EndpointService, *http.Response, error)
 
 	/*
@@ -230,7 +230,7 @@ type PrivateEndpointServicesApi interface {
 	*/
 	ToggleRegionalizedPrivateEndpointSettingWithParams(ctx context.Context, args *ToggleRegionalizedPrivateEndpointSettingApiParams) ToggleRegionalizedPrivateEndpointSettingApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ToggleRegionalizedPrivateEndpointSettingExecute(r ToggleRegionalizedPrivateEndpointSettingApiRequest) (*ProjectSettingItem, *http.Response, error)
 }
 

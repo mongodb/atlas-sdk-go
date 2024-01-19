@@ -34,7 +34,7 @@ type SharedTierRestoreJobsApi interface {
 	*/
 	CreateSharedClusterBackupRestoreJobWithParams(ctx context.Context, args *CreateSharedClusterBackupRestoreJobApiParams) CreateSharedClusterBackupRestoreJobApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateSharedClusterBackupRestoreJobExecute(r CreateSharedClusterBackupRestoreJobApiRequest) (*TenantRestore, *http.Response, error)
 
 	/*
@@ -59,7 +59,7 @@ type SharedTierRestoreJobsApi interface {
 	*/
 	GetSharedClusterBackupRestoreJobWithParams(ctx context.Context, args *GetSharedClusterBackupRestoreJobApiParams) GetSharedClusterBackupRestoreJobApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetSharedClusterBackupRestoreJobExecute(r GetSharedClusterBackupRestoreJobApiRequest) (*TenantRestore, *http.Response, error)
 
 	/*
@@ -83,7 +83,7 @@ type SharedTierRestoreJobsApi interface {
 	*/
 	ListSharedClusterBackupRestoreJobsWithParams(ctx context.Context, args *ListSharedClusterBackupRestoreJobsApiParams) ListSharedClusterBackupRestoreJobsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListSharedClusterBackupRestoreJobsExecute(r ListSharedClusterBackupRestoreJobsApiRequest) (*PaginatedTenantRestore, *http.Response, error)
 }
 

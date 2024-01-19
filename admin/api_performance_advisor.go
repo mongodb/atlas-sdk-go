@@ -34,7 +34,7 @@ type PerformanceAdvisorApi interface {
 	*/
 	DisableSlowOperationThresholdingWithParams(ctx context.Context, args *DisableSlowOperationThresholdingApiParams) DisableSlowOperationThresholdingApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DisableSlowOperationThresholdingExecute(r DisableSlowOperationThresholdingApiRequest) (*http.Response, error)
 
 	/*
@@ -57,7 +57,7 @@ type PerformanceAdvisorApi interface {
 	*/
 	EnableSlowOperationThresholdingWithParams(ctx context.Context, args *EnableSlowOperationThresholdingApiParams) EnableSlowOperationThresholdingApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	EnableSlowOperationThresholdingExecute(r EnableSlowOperationThresholdingApiRequest) (*http.Response, error)
 
 	/*
@@ -81,7 +81,7 @@ type PerformanceAdvisorApi interface {
 	*/
 	ListSlowQueriesWithParams(ctx context.Context, args *ListSlowQueriesApiParams) ListSlowQueriesApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListSlowQueriesExecute(r ListSlowQueriesApiRequest) (*PerformanceAdvisorSlowQueryList, *http.Response, error)
 
 	/*
@@ -105,7 +105,7 @@ type PerformanceAdvisorApi interface {
 	*/
 	ListSlowQueryNamespacesWithParams(ctx context.Context, args *ListSlowQueryNamespacesApiParams) ListSlowQueryNamespacesApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListSlowQueryNamespacesExecute(r ListSlowQueryNamespacesApiRequest) (*Namespaces, *http.Response, error)
 
 	/*
@@ -129,7 +129,7 @@ type PerformanceAdvisorApi interface {
 	*/
 	ListSuggestedIndexesWithParams(ctx context.Context, args *ListSuggestedIndexesApiParams) ListSuggestedIndexesApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListSuggestedIndexesExecute(r ListSuggestedIndexesApiRequest) (*PerformanceAdvisorResponse, *http.Response, error)
 }
 

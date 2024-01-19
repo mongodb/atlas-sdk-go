@@ -34,7 +34,7 @@ type AtlasSearchApi interface {
 	*/
 	CreateAtlasSearchDeploymentWithParams(ctx context.Context, args *CreateAtlasSearchDeploymentApiParams) CreateAtlasSearchDeploymentApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateAtlasSearchDeploymentExecute(r CreateAtlasSearchDeploymentApiRequest) (*ApiSearchDeploymentResponse, *http.Response, error)
 
 	/*
@@ -58,7 +58,7 @@ type AtlasSearchApi interface {
 	*/
 	CreateAtlasSearchIndexWithParams(ctx context.Context, args *CreateAtlasSearchIndexApiParams) CreateAtlasSearchIndexApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateAtlasSearchIndexExecute(r CreateAtlasSearchIndexApiRequest) (*ClusterSearchIndex, *http.Response, error)
 
 	/*
@@ -82,7 +82,7 @@ type AtlasSearchApi interface {
 	*/
 	DeleteAtlasSearchDeploymentWithParams(ctx context.Context, args *DeleteAtlasSearchDeploymentApiParams) DeleteAtlasSearchDeploymentApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeleteAtlasSearchDeploymentExecute(r DeleteAtlasSearchDeploymentApiRequest) (*http.Response, error)
 
 	/*
@@ -107,7 +107,7 @@ type AtlasSearchApi interface {
 	*/
 	DeleteAtlasSearchIndexWithParams(ctx context.Context, args *DeleteAtlasSearchIndexApiParams) DeleteAtlasSearchIndexApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeleteAtlasSearchIndexExecute(r DeleteAtlasSearchIndexApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
@@ -131,7 +131,7 @@ type AtlasSearchApi interface {
 	*/
 	GetAtlasSearchDeploymentWithParams(ctx context.Context, args *GetAtlasSearchDeploymentApiParams) GetAtlasSearchDeploymentApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetAtlasSearchDeploymentExecute(r GetAtlasSearchDeploymentApiRequest) (*ApiSearchDeploymentResponse, *http.Response, error)
 
 	/*
@@ -156,7 +156,7 @@ type AtlasSearchApi interface {
 	*/
 	GetAtlasSearchIndexWithParams(ctx context.Context, args *GetAtlasSearchIndexApiParams) GetAtlasSearchIndexApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetAtlasSearchIndexExecute(r GetAtlasSearchIndexApiRequest) (*ClusterSearchIndex, *http.Response, error)
 
 	/*
@@ -182,7 +182,7 @@ type AtlasSearchApi interface {
 	*/
 	ListAtlasSearchIndexesWithParams(ctx context.Context, args *ListAtlasSearchIndexesApiParams) ListAtlasSearchIndexesApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListAtlasSearchIndexesExecute(r ListAtlasSearchIndexesApiRequest) ([]ClusterSearchIndex, *http.Response, error)
 
 	/*
@@ -206,7 +206,7 @@ type AtlasSearchApi interface {
 	*/
 	UpdateAtlasSearchDeploymentWithParams(ctx context.Context, args *UpdateAtlasSearchDeploymentApiParams) UpdateAtlasSearchDeploymentApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateAtlasSearchDeploymentExecute(r UpdateAtlasSearchDeploymentApiRequest) (*ApiSearchDeploymentResponse, *http.Response, error)
 
 	/*
@@ -231,7 +231,7 @@ type AtlasSearchApi interface {
 	*/
 	UpdateAtlasSearchIndexWithParams(ctx context.Context, args *UpdateAtlasSearchIndexApiParams) UpdateAtlasSearchIndexApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateAtlasSearchIndexExecute(r UpdateAtlasSearchIndexApiRequest) (*ClusterSearchIndex, *http.Response, error)
 }
 

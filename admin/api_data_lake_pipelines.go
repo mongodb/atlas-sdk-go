@@ -34,7 +34,7 @@ type DataLakePipelinesApi interface {
 	*/
 	CreatePipelineWithParams(ctx context.Context, args *CreatePipelineApiParams) CreatePipelineApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreatePipelineExecute(r CreatePipelineApiRequest) (*DataLakeIngestionPipeline, *http.Response, error)
 
 	/*
@@ -58,7 +58,7 @@ type DataLakePipelinesApi interface {
 	*/
 	DeletePipelineWithParams(ctx context.Context, args *DeletePipelineApiParams) DeletePipelineApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeletePipelineExecute(r DeletePipelineApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
@@ -83,7 +83,7 @@ type DataLakePipelinesApi interface {
 	*/
 	DeletePipelineRunDatasetWithParams(ctx context.Context, args *DeletePipelineRunDatasetApiParams) DeletePipelineRunDatasetApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeletePipelineRunDatasetExecute(r DeletePipelineRunDatasetApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
@@ -107,7 +107,7 @@ type DataLakePipelinesApi interface {
 	*/
 	GetPipelineWithParams(ctx context.Context, args *GetPipelineApiParams) GetPipelineApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetPipelineExecute(r GetPipelineApiRequest) (*DataLakeIngestionPipeline, *http.Response, error)
 
 	/*
@@ -132,7 +132,7 @@ type DataLakePipelinesApi interface {
 	*/
 	GetPipelineRunWithParams(ctx context.Context, args *GetPipelineRunApiParams) GetPipelineRunApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetPipelineRunExecute(r GetPipelineRunApiRequest) (*IngestionPipelineRun, *http.Response, error)
 
 	/*
@@ -156,7 +156,7 @@ type DataLakePipelinesApi interface {
 	*/
 	ListPipelineRunsWithParams(ctx context.Context, args *ListPipelineRunsApiParams) ListPipelineRunsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListPipelineRunsExecute(r ListPipelineRunsApiRequest) (*PaginatedPipelineRun, *http.Response, error)
 
 	/*
@@ -180,7 +180,7 @@ type DataLakePipelinesApi interface {
 	*/
 	ListPipelineSchedulesWithParams(ctx context.Context, args *ListPipelineSchedulesApiParams) ListPipelineSchedulesApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListPipelineSchedulesExecute(r ListPipelineSchedulesApiRequest) ([]DiskBackupApiPolicyItem, *http.Response, error)
 
 	/*
@@ -204,7 +204,7 @@ type DataLakePipelinesApi interface {
 	*/
 	ListPipelineSnapshotsWithParams(ctx context.Context, args *ListPipelineSnapshotsApiParams) ListPipelineSnapshotsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListPipelineSnapshotsExecute(r ListPipelineSnapshotsApiRequest) (*PaginatedBackupSnapshot, *http.Response, error)
 
 	/*
@@ -227,7 +227,7 @@ type DataLakePipelinesApi interface {
 	*/
 	ListPipelinesWithParams(ctx context.Context, args *ListPipelinesApiParams) ListPipelinesApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListPipelinesExecute(r ListPipelinesApiRequest) ([]DataLakeIngestionPipeline, *http.Response, error)
 
 	/*
@@ -251,7 +251,7 @@ type DataLakePipelinesApi interface {
 	*/
 	PausePipelineWithParams(ctx context.Context, args *PausePipelineApiParams) PausePipelineApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	PausePipelineExecute(r PausePipelineApiRequest) (*DataLakeIngestionPipeline, *http.Response, error)
 
 	/*
@@ -275,7 +275,7 @@ type DataLakePipelinesApi interface {
 	*/
 	ResumePipelineWithParams(ctx context.Context, args *ResumePipelineApiParams) ResumePipelineApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ResumePipelineExecute(r ResumePipelineApiRequest) (*DataLakeIngestionPipeline, *http.Response, error)
 
 	/*
@@ -299,7 +299,7 @@ type DataLakePipelinesApi interface {
 	*/
 	TriggerSnapshotIngestionWithParams(ctx context.Context, args *TriggerSnapshotIngestionApiParams) TriggerSnapshotIngestionApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	TriggerSnapshotIngestionExecute(r TriggerSnapshotIngestionApiRequest) (*IngestionPipelineRun, *http.Response, error)
 
 	/*
@@ -323,7 +323,7 @@ type DataLakePipelinesApi interface {
 	*/
 	UpdatePipelineWithParams(ctx context.Context, args *UpdatePipelineApiParams) UpdatePipelineApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdatePipelineExecute(r UpdatePipelineApiRequest) (*DataLakeIngestionPipeline, *http.Response, error)
 }
 

@@ -38,7 +38,7 @@ type EventsApi interface {
 	*/
 	GetOrganizationEventWithParams(ctx context.Context, args *GetOrganizationEventApiParams) GetOrganizationEventApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetOrganizationEventExecute(r GetOrganizationEventApiRequest) (*EventViewForOrg, *http.Response, error)
 
 	/*
@@ -64,7 +64,7 @@ type EventsApi interface {
 	*/
 	GetProjectEventWithParams(ctx context.Context, args *GetProjectEventApiParams) GetProjectEventApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetProjectEventExecute(r GetProjectEventApiRequest) (*EventViewForNdsGroup, *http.Response, error)
 
 	/*
@@ -89,7 +89,7 @@ type EventsApi interface {
 	*/
 	ListOrganizationEventsWithParams(ctx context.Context, args *ListOrganizationEventsApiParams) ListOrganizationEventsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListOrganizationEventsExecute(r ListOrganizationEventsApiRequest) (*OrgPaginatedEvent, *http.Response, error)
 
 	/*
@@ -114,7 +114,7 @@ type EventsApi interface {
 	*/
 	ListProjectEventsWithParams(ctx context.Context, args *ListProjectEventsApiParams) ListProjectEventsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListProjectEventsExecute(r ListProjectEventsApiRequest) (*GroupPaginatedEvent, *http.Response, error)
 }
 

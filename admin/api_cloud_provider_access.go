@@ -34,7 +34,7 @@ type CloudProviderAccessApi interface {
 	*/
 	AuthorizeCloudProviderAccessRoleWithParams(ctx context.Context, args *AuthorizeCloudProviderAccessRoleApiParams) AuthorizeCloudProviderAccessRoleApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	AuthorizeCloudProviderAccessRoleExecute(r AuthorizeCloudProviderAccessRoleApiRequest) (*CloudProviderAccessRole, *http.Response, error)
 
 	/*
@@ -57,7 +57,7 @@ type CloudProviderAccessApi interface {
 	*/
 	CreateCloudProviderAccessRoleWithParams(ctx context.Context, args *CreateCloudProviderAccessRoleApiParams) CreateCloudProviderAccessRoleApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateCloudProviderAccessRoleExecute(r CreateCloudProviderAccessRoleApiRequest) (*CloudProviderAccessRole, *http.Response, error)
 
 	/*
@@ -82,7 +82,7 @@ type CloudProviderAccessApi interface {
 	*/
 	DeauthorizeCloudProviderAccessRoleWithParams(ctx context.Context, args *DeauthorizeCloudProviderAccessRoleApiParams) DeauthorizeCloudProviderAccessRoleApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeauthorizeCloudProviderAccessRoleExecute(r DeauthorizeCloudProviderAccessRoleApiRequest) (*http.Response, error)
 
 	/*
@@ -106,7 +106,7 @@ type CloudProviderAccessApi interface {
 	*/
 	GetCloudProviderAccessRoleWithParams(ctx context.Context, args *GetCloudProviderAccessRoleApiParams) GetCloudProviderAccessRoleApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetCloudProviderAccessRoleExecute(r GetCloudProviderAccessRoleApiRequest) (*CloudProviderAccessRole, *http.Response, error)
 
 	/*
@@ -129,7 +129,7 @@ type CloudProviderAccessApi interface {
 	*/
 	ListCloudProviderAccessRolesWithParams(ctx context.Context, args *ListCloudProviderAccessRolesApiParams) ListCloudProviderAccessRolesApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListCloudProviderAccessRolesExecute(r ListCloudProviderAccessRolesApiRequest) (*CloudProviderAccessRoles, *http.Response, error)
 }
 

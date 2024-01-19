@@ -36,7 +36,7 @@ type MongoDBCloudUsersApi interface {
 	*/
 	CreateUserWithParams(ctx context.Context, args *CreateUserApiParams) CreateUserApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateUserExecute(r CreateUserApiRequest) (*CloudAppUser, *http.Response, error)
 
 	/*
@@ -59,7 +59,7 @@ type MongoDBCloudUsersApi interface {
 	*/
 	GetUserWithParams(ctx context.Context, args *GetUserApiParams) GetUserApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetUserExecute(r GetUserApiRequest) (*CloudAppUser, *http.Response, error)
 
 	/*
@@ -82,7 +82,7 @@ type MongoDBCloudUsersApi interface {
 	*/
 	GetUserByUsernameWithParams(ctx context.Context, args *GetUserByUsernameApiParams) GetUserByUsernameApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetUserByUsernameExecute(r GetUserByUsernameApiRequest) (*CloudAppUser, *http.Response, error)
 }
 

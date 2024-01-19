@@ -33,7 +33,7 @@ type ServerlessInstancesApi interface {
 	*/
 	CreateServerlessInstanceWithParams(ctx context.Context, args *CreateServerlessInstanceApiParams) CreateServerlessInstanceApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateServerlessInstanceExecute(r CreateServerlessInstanceApiRequest) (*ServerlessInstanceDescription, *http.Response, error)
 
 	/*
@@ -57,7 +57,7 @@ type ServerlessInstancesApi interface {
 	*/
 	DeleteServerlessInstanceWithParams(ctx context.Context, args *DeleteServerlessInstanceApiParams) DeleteServerlessInstanceApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeleteServerlessInstanceExecute(r DeleteServerlessInstanceApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
@@ -81,7 +81,7 @@ type ServerlessInstancesApi interface {
 	*/
 	GetServerlessInstanceWithParams(ctx context.Context, args *GetServerlessInstanceApiParams) GetServerlessInstanceApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetServerlessInstanceExecute(r GetServerlessInstanceApiRequest) (*ServerlessInstanceDescription, *http.Response, error)
 
 	/*
@@ -104,7 +104,7 @@ type ServerlessInstancesApi interface {
 	*/
 	ListServerlessInstancesWithParams(ctx context.Context, args *ListServerlessInstancesApiParams) ListServerlessInstancesApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListServerlessInstancesExecute(r ListServerlessInstancesApiRequest) (*PaginatedServerlessInstanceDescription, *http.Response, error)
 
 	/*
@@ -128,7 +128,7 @@ type ServerlessInstancesApi interface {
 	*/
 	UpdateServerlessInstanceWithParams(ctx context.Context, args *UpdateServerlessInstanceApiParams) UpdateServerlessInstanceApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateServerlessInstanceExecute(r UpdateServerlessInstanceApiRequest) (*ServerlessInstanceDescription, *http.Response, error)
 }
 

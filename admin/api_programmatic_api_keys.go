@@ -34,7 +34,7 @@ type ProgrammaticAPIKeysApi interface {
 	*/
 	AddProjectApiKeyWithParams(ctx context.Context, args *AddProjectApiKeyApiParams) AddProjectApiKeyApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	AddProjectApiKeyExecute(r AddProjectApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error)
 
 	/*
@@ -57,7 +57,7 @@ type ProgrammaticAPIKeysApi interface {
 	*/
 	CreateApiKeyWithParams(ctx context.Context, args *CreateApiKeyApiParams) CreateApiKeyApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateApiKeyExecute(r CreateApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error)
 
 	/*
@@ -81,7 +81,7 @@ type ProgrammaticAPIKeysApi interface {
 	*/
 	CreateApiKeyAccessListWithParams(ctx context.Context, args *CreateApiKeyAccessListApiParams) CreateApiKeyAccessListApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateApiKeyAccessListExecute(r CreateApiKeyAccessListApiRequest) (*PaginatedApiUserAccessList, *http.Response, error)
 
 	/*
@@ -104,7 +104,7 @@ type ProgrammaticAPIKeysApi interface {
 	*/
 	CreateProjectApiKeyWithParams(ctx context.Context, args *CreateProjectApiKeyApiParams) CreateProjectApiKeyApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateProjectApiKeyExecute(r CreateProjectApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error)
 
 	/*
@@ -128,7 +128,7 @@ type ProgrammaticAPIKeysApi interface {
 	*/
 	DeleteApiKeyWithParams(ctx context.Context, args *DeleteApiKeyApiParams) DeleteApiKeyApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeleteApiKeyExecute(r DeleteApiKeyApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
@@ -153,7 +153,7 @@ type ProgrammaticAPIKeysApi interface {
 	*/
 	DeleteApiKeyAccessListEntryWithParams(ctx context.Context, args *DeleteApiKeyAccessListEntryApiParams) DeleteApiKeyAccessListEntryApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeleteApiKeyAccessListEntryExecute(r DeleteApiKeyAccessListEntryApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
@@ -177,7 +177,7 @@ type ProgrammaticAPIKeysApi interface {
 	*/
 	GetApiKeyWithParams(ctx context.Context, args *GetApiKeyApiParams) GetApiKeyApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetApiKeyExecute(r GetApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error)
 
 	/*
@@ -202,7 +202,7 @@ type ProgrammaticAPIKeysApi interface {
 	*/
 	GetApiKeyAccessListWithParams(ctx context.Context, args *GetApiKeyAccessListApiParams) GetApiKeyAccessListApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetApiKeyAccessListExecute(r GetApiKeyAccessListApiRequest) (*UserAccessList, *http.Response, error)
 
 	/*
@@ -226,7 +226,7 @@ type ProgrammaticAPIKeysApi interface {
 	*/
 	ListApiKeyAccessListsEntriesWithParams(ctx context.Context, args *ListApiKeyAccessListsEntriesApiParams) ListApiKeyAccessListsEntriesApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListApiKeyAccessListsEntriesExecute(r ListApiKeyAccessListsEntriesApiRequest) (*PaginatedApiUserAccessList, *http.Response, error)
 
 	/*
@@ -249,7 +249,7 @@ type ProgrammaticAPIKeysApi interface {
 	*/
 	ListApiKeysWithParams(ctx context.Context, args *ListApiKeysApiParams) ListApiKeysApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListApiKeysExecute(r ListApiKeysApiRequest) (*PaginatedApiApiUser, *http.Response, error)
 
 	/*
@@ -272,7 +272,7 @@ type ProgrammaticAPIKeysApi interface {
 	*/
 	ListProjectApiKeysWithParams(ctx context.Context, args *ListProjectApiKeysApiParams) ListProjectApiKeysApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListProjectApiKeysExecute(r ListProjectApiKeysApiRequest) (*PaginatedApiApiUser, *http.Response, error)
 
 	/*
@@ -296,7 +296,7 @@ type ProgrammaticAPIKeysApi interface {
 	*/
 	RemoveProjectApiKeyWithParams(ctx context.Context, args *RemoveProjectApiKeyApiParams) RemoveProjectApiKeyApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	RemoveProjectApiKeyExecute(r RemoveProjectApiKeyApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
@@ -320,7 +320,7 @@ type ProgrammaticAPIKeysApi interface {
 	*/
 	UpdateApiKeyWithParams(ctx context.Context, args *UpdateApiKeyApiParams) UpdateApiKeyApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateApiKeyExecute(r UpdateApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error)
 
 	/*
@@ -344,7 +344,7 @@ type ProgrammaticAPIKeysApi interface {
 	*/
 	UpdateApiKeyRolesWithParams(ctx context.Context, args *UpdateApiKeyRolesApiParams) UpdateApiKeyRolesApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateApiKeyRolesExecute(r UpdateApiKeyRolesApiRequest) (*ApiKeyUserDetails, *http.Response, error)
 }
 

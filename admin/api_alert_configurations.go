@@ -35,7 +35,7 @@ type AlertConfigurationsApi interface {
 	*/
 	CreateAlertConfigurationWithParams(ctx context.Context, args *CreateAlertConfigurationApiParams) CreateAlertConfigurationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	CreateAlertConfigurationExecute(r CreateAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error)
 
 	/*
@@ -61,7 +61,7 @@ type AlertConfigurationsApi interface {
 	*/
 	DeleteAlertConfigurationWithParams(ctx context.Context, args *DeleteAlertConfigurationApiParams) DeleteAlertConfigurationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	DeleteAlertConfigurationExecute(r DeleteAlertConfigurationApiRequest) (*http.Response, error)
 
 	/*
@@ -87,7 +87,7 @@ type AlertConfigurationsApi interface {
 	*/
 	GetAlertConfigurationWithParams(ctx context.Context, args *GetAlertConfigurationApiParams) GetAlertConfigurationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetAlertConfigurationExecute(r GetAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error)
 
 	/*
@@ -109,7 +109,7 @@ type AlertConfigurationsApi interface {
 	*/
 	ListAlertConfigurationMatchersFieldNamesWithParams(ctx context.Context, args *ListAlertConfigurationMatchersFieldNamesApiParams) ListAlertConfigurationMatchersFieldNamesApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListAlertConfigurationMatchersFieldNamesExecute(r ListAlertConfigurationMatchersFieldNamesApiRequest) ([]string, *http.Response, error)
 
 	/*
@@ -134,7 +134,7 @@ type AlertConfigurationsApi interface {
 	*/
 	ListAlertConfigurationsWithParams(ctx context.Context, args *ListAlertConfigurationsApiParams) ListAlertConfigurationsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListAlertConfigurationsExecute(r ListAlertConfigurationsApiRequest) (*PaginatedAlertConfig, *http.Response, error)
 
 	/*
@@ -160,7 +160,7 @@ type AlertConfigurationsApi interface {
 	*/
 	ListAlertConfigurationsByAlertIdWithParams(ctx context.Context, args *ListAlertConfigurationsByAlertIdApiParams) ListAlertConfigurationsByAlertIdApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListAlertConfigurationsByAlertIdExecute(r ListAlertConfigurationsByAlertIdApiRequest) (*PaginatedAlertConfig, *http.Response, error)
 
 	/*
@@ -188,7 +188,7 @@ type AlertConfigurationsApi interface {
 	*/
 	ToggleAlertConfigurationWithParams(ctx context.Context, args *ToggleAlertConfigurationApiParams) ToggleAlertConfigurationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ToggleAlertConfigurationExecute(r ToggleAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error)
 
 	/*
@@ -216,7 +216,7 @@ type AlertConfigurationsApi interface {
 	*/
 	UpdateAlertConfigurationWithParams(ctx context.Context, args *UpdateAlertConfigurationApiParams) UpdateAlertConfigurationApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	UpdateAlertConfigurationExecute(r UpdateAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error)
 }
 

@@ -33,7 +33,7 @@ type AWSClustersDNSApi interface {
 	*/
 	GetAWSCustomDNSWithParams(ctx context.Context, args *GetAWSCustomDNSApiParams) GetAWSCustomDNSApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetAWSCustomDNSExecute(r GetAWSCustomDNSApiRequest) (*AWSCustomDNSEnabled, *http.Response, error)
 
 	/*
@@ -56,7 +56,7 @@ type AWSClustersDNSApi interface {
 	*/
 	ToggleAWSCustomDNSWithParams(ctx context.Context, args *ToggleAWSCustomDNSApiParams) ToggleAWSCustomDNSApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ToggleAWSCustomDNSExecute(r ToggleAWSCustomDNSApiRequest) (*AWSCustomDNSEnabled, *http.Response, error)
 }
 

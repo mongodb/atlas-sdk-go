@@ -36,7 +36,7 @@ type MonitoringAndLogsApi interface {
 	*/
 	GetAtlasProcessWithParams(ctx context.Context, args *GetAtlasProcessApiParams) GetAtlasProcessApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetAtlasProcessExecute(r GetAtlasProcessApiRequest) (*ApiHostViewAtlas, *http.Response, error)
 
 	/*
@@ -61,7 +61,7 @@ type MonitoringAndLogsApi interface {
 	*/
 	GetDatabaseWithParams(ctx context.Context, args *GetDatabaseApiParams) GetDatabaseApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetDatabaseExecute(r GetDatabaseApiRequest) (*MesurementsDatabase, *http.Response, error)
 
 	/*
@@ -86,7 +86,7 @@ type MonitoringAndLogsApi interface {
 	*/
 	GetDatabaseMeasurementsWithParams(ctx context.Context, args *GetDatabaseMeasurementsApiParams) GetDatabaseMeasurementsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetDatabaseMeasurementsExecute(r GetDatabaseMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error)
 
 	/*
@@ -117,7 +117,7 @@ type MonitoringAndLogsApi interface {
 	*/
 	GetDiskMeasurementsWithParams(ctx context.Context, args *GetDiskMeasurementsApiParams) GetDiskMeasurementsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetDiskMeasurementsExecute(r GetDiskMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error)
 
 	/*
@@ -142,7 +142,7 @@ type MonitoringAndLogsApi interface {
 	*/
 	GetHostLogsWithParams(ctx context.Context, args *GetHostLogsApiParams) GetHostLogsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetHostLogsExecute(r GetHostLogsApiRequest) (io.ReadCloser, *http.Response, error)
 
 	/*
@@ -173,7 +173,7 @@ type MonitoringAndLogsApi interface {
 	*/
 	GetHostMeasurementsWithParams(ctx context.Context, args *GetHostMeasurementsApiParams) GetHostMeasurementsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetHostMeasurementsExecute(r GetHostMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error)
 
 	/*
@@ -200,7 +200,7 @@ type MonitoringAndLogsApi interface {
 	*/
 	GetIndexMetricsWithParams(ctx context.Context, args *GetIndexMetricsApiParams) GetIndexMetricsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetIndexMetricsExecute(r GetIndexMetricsApiRequest) (*MeasurementsIndexes, *http.Response, error)
 
 	/*
@@ -224,7 +224,7 @@ type MonitoringAndLogsApi interface {
 	*/
 	GetMeasurementsWithParams(ctx context.Context, args *GetMeasurementsApiParams) GetMeasurementsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	GetMeasurementsExecute(r GetMeasurementsApiRequest) (*MeasurementsNonIndex, *http.Response, error)
 
 	/*
@@ -247,7 +247,7 @@ type MonitoringAndLogsApi interface {
 	*/
 	ListAtlasProcessesWithParams(ctx context.Context, args *ListAtlasProcessesApiParams) ListAtlasProcessesApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListAtlasProcessesExecute(r ListAtlasProcessesApiRequest) (*PaginatedHostViewAtlas, *http.Response, error)
 
 	/*
@@ -271,7 +271,7 @@ type MonitoringAndLogsApi interface {
 	*/
 	ListDatabasesWithParams(ctx context.Context, args *ListDatabasesApiParams) ListDatabasesApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListDatabasesExecute(r ListDatabasesApiRequest) (*PaginatedDatabase, *http.Response, error)
 
 	/*
@@ -296,7 +296,7 @@ type MonitoringAndLogsApi interface {
 	*/
 	ListDiskMeasurementsWithParams(ctx context.Context, args *ListDiskMeasurementsApiParams) ListDiskMeasurementsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListDiskMeasurementsExecute(r ListDiskMeasurementsApiRequest) (*MeasurementDiskPartition, *http.Response, error)
 
 	/*
@@ -320,7 +320,7 @@ type MonitoringAndLogsApi interface {
 	*/
 	ListDiskPartitionsWithParams(ctx context.Context, args *ListDiskPartitionsApiParams) ListDiskPartitionsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListDiskPartitionsExecute(r ListDiskPartitionsApiRequest) (*PaginatedDiskPartition, *http.Response, error)
 
 	/*
@@ -346,7 +346,7 @@ type MonitoringAndLogsApi interface {
 	*/
 	ListIndexMetricsWithParams(ctx context.Context, args *ListIndexMetricsApiParams) ListIndexMetricsApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListIndexMetricsExecute(r ListIndexMetricsApiRequest) (*MeasurementsIndexes, *http.Response, error)
 
 	/*
@@ -370,7 +370,7 @@ type MonitoringAndLogsApi interface {
 	*/
 	ListMetricTypesWithParams(ctx context.Context, args *ListMetricTypesApiParams) ListMetricTypesApiRequest
 
-	// Interface only available internally
+	// Method available only for mocking purposes
 	ListMetricTypesExecute(r ListMetricTypesApiRequest) (*CloudSearchMetrics, *http.Response, error)
 }
 
