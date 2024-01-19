@@ -35,7 +35,7 @@ type CloudProviderAccessApi interface {
 	AuthorizeCloudProviderAccessRoleWithParams(ctx context.Context, args *AuthorizeCloudProviderAccessRoleApiParams) AuthorizeCloudProviderAccessRoleApiRequest
 
 	// Interface only available internally
-	authorizeCloudProviderAccessRoleExecute(r AuthorizeCloudProviderAccessRoleApiRequest) (*CloudProviderAccessRole, *http.Response, error)
+	AuthorizeCloudProviderAccessRoleExecute(r AuthorizeCloudProviderAccessRoleApiRequest) (*CloudProviderAccessRole, *http.Response, error)
 
 	/*
 		CreateCloudProviderAccessRole Create One Cloud Provider Access Role
@@ -58,7 +58,7 @@ type CloudProviderAccessApi interface {
 	CreateCloudProviderAccessRoleWithParams(ctx context.Context, args *CreateCloudProviderAccessRoleApiParams) CreateCloudProviderAccessRoleApiRequest
 
 	// Interface only available internally
-	createCloudProviderAccessRoleExecute(r CreateCloudProviderAccessRoleApiRequest) (*CloudProviderAccessRole, *http.Response, error)
+	CreateCloudProviderAccessRoleExecute(r CreateCloudProviderAccessRoleApiRequest) (*CloudProviderAccessRole, *http.Response, error)
 
 	/*
 		DeauthorizeCloudProviderAccessRole Deauthorize One Cloud Provider Access Role
@@ -83,7 +83,7 @@ type CloudProviderAccessApi interface {
 	DeauthorizeCloudProviderAccessRoleWithParams(ctx context.Context, args *DeauthorizeCloudProviderAccessRoleApiParams) DeauthorizeCloudProviderAccessRoleApiRequest
 
 	// Interface only available internally
-	deauthorizeCloudProviderAccessRoleExecute(r DeauthorizeCloudProviderAccessRoleApiRequest) (*http.Response, error)
+	DeauthorizeCloudProviderAccessRoleExecute(r DeauthorizeCloudProviderAccessRoleApiRequest) (*http.Response, error)
 
 	/*
 		GetCloudProviderAccessRole Return specified Cloud Provider Access Role
@@ -107,7 +107,7 @@ type CloudProviderAccessApi interface {
 	GetCloudProviderAccessRoleWithParams(ctx context.Context, args *GetCloudProviderAccessRoleApiParams) GetCloudProviderAccessRoleApiRequest
 
 	// Interface only available internally
-	getCloudProviderAccessRoleExecute(r GetCloudProviderAccessRoleApiRequest) (*CloudProviderAccessRole, *http.Response, error)
+	GetCloudProviderAccessRoleExecute(r GetCloudProviderAccessRoleApiRequest) (*CloudProviderAccessRole, *http.Response, error)
 
 	/*
 		ListCloudProviderAccessRoles Return All Cloud Provider Access Roles
@@ -130,7 +130,7 @@ type CloudProviderAccessApi interface {
 	ListCloudProviderAccessRolesWithParams(ctx context.Context, args *ListCloudProviderAccessRolesApiParams) ListCloudProviderAccessRolesApiRequest
 
 	// Interface only available internally
-	listCloudProviderAccessRolesExecute(r ListCloudProviderAccessRolesApiRequest) (*CloudProviderAccessRoles, *http.Response, error)
+	ListCloudProviderAccessRolesExecute(r ListCloudProviderAccessRolesApiRequest) (*CloudProviderAccessRoles, *http.Response, error)
 }
 
 // CloudProviderAccessApiService CloudProviderAccessApi service
@@ -161,7 +161,7 @@ func (a *CloudProviderAccessApiService) AuthorizeCloudProviderAccessRoleWithPara
 }
 
 func (r AuthorizeCloudProviderAccessRoleApiRequest) Execute() (*CloudProviderAccessRole, *http.Response, error) {
-	return r.ApiService.authorizeCloudProviderAccessRoleExecute(r)
+	return r.ApiService.AuthorizeCloudProviderAccessRoleExecute(r)
 }
 
 /*
@@ -187,7 +187,7 @@ func (a *CloudProviderAccessApiService) AuthorizeCloudProviderAccessRole(ctx con
 // Execute executes the request
 //
 //	@return CloudProviderAccessRole
-func (a *CloudProviderAccessApiService) authorizeCloudProviderAccessRoleExecute(r AuthorizeCloudProviderAccessRoleApiRequest) (*CloudProviderAccessRole, *http.Response, error) {
+func (a *CloudProviderAccessApiService) AuthorizeCloudProviderAccessRoleExecute(r AuthorizeCloudProviderAccessRoleApiRequest) (*CloudProviderAccessRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -297,7 +297,7 @@ func (a *CloudProviderAccessApiService) CreateCloudProviderAccessRoleWithParams(
 }
 
 func (r CreateCloudProviderAccessRoleApiRequest) Execute() (*CloudProviderAccessRole, *http.Response, error) {
-	return r.ApiService.createCloudProviderAccessRoleExecute(r)
+	return r.ApiService.CreateCloudProviderAccessRoleExecute(r)
 }
 
 /*
@@ -321,7 +321,7 @@ func (a *CloudProviderAccessApiService) CreateCloudProviderAccessRole(ctx contex
 // Execute executes the request
 //
 //	@return CloudProviderAccessRole
-func (a *CloudProviderAccessApiService) createCloudProviderAccessRoleExecute(r CreateCloudProviderAccessRoleApiRequest) (*CloudProviderAccessRole, *http.Response, error) {
+func (a *CloudProviderAccessApiService) CreateCloudProviderAccessRoleExecute(r CreateCloudProviderAccessRoleApiRequest) (*CloudProviderAccessRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -433,7 +433,7 @@ func (a *CloudProviderAccessApiService) DeauthorizeCloudProviderAccessRoleWithPa
 }
 
 func (r DeauthorizeCloudProviderAccessRoleApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.deauthorizeCloudProviderAccessRoleExecute(r)
+	return r.ApiService.DeauthorizeCloudProviderAccessRoleExecute(r)
 }
 
 /*
@@ -458,7 +458,7 @@ func (a *CloudProviderAccessApiService) DeauthorizeCloudProviderAccessRole(ctx c
 }
 
 // Execute executes the request
-func (a *CloudProviderAccessApiService) deauthorizeCloudProviderAccessRoleExecute(r DeauthorizeCloudProviderAccessRoleApiRequest) (*http.Response, error) {
+func (a *CloudProviderAccessApiService) DeauthorizeCloudProviderAccessRoleExecute(r DeauthorizeCloudProviderAccessRoleApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
@@ -554,7 +554,7 @@ func (a *CloudProviderAccessApiService) GetCloudProviderAccessRoleWithParams(ctx
 }
 
 func (r GetCloudProviderAccessRoleApiRequest) Execute() (*CloudProviderAccessRole, *http.Response, error) {
-	return r.ApiService.getCloudProviderAccessRoleExecute(r)
+	return r.ApiService.GetCloudProviderAccessRoleExecute(r)
 }
 
 /*
@@ -579,7 +579,7 @@ func (a *CloudProviderAccessApiService) GetCloudProviderAccessRole(ctx context.C
 // Execute executes the request
 //
 //	@return CloudProviderAccessRole
-func (a *CloudProviderAccessApiService) getCloudProviderAccessRoleExecute(r GetCloudProviderAccessRoleApiRequest) (*CloudProviderAccessRole, *http.Response, error) {
+func (a *CloudProviderAccessApiService) GetCloudProviderAccessRoleExecute(r GetCloudProviderAccessRoleApiRequest) (*CloudProviderAccessRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -681,7 +681,7 @@ func (a *CloudProviderAccessApiService) ListCloudProviderAccessRolesWithParams(c
 }
 
 func (r ListCloudProviderAccessRolesApiRequest) Execute() (*CloudProviderAccessRoles, *http.Response, error) {
-	return r.ApiService.listCloudProviderAccessRolesExecute(r)
+	return r.ApiService.ListCloudProviderAccessRolesExecute(r)
 }
 
 /*
@@ -704,7 +704,7 @@ func (a *CloudProviderAccessApiService) ListCloudProviderAccessRoles(ctx context
 // Execute executes the request
 //
 //	@return CloudProviderAccessRoles
-func (a *CloudProviderAccessApiService) listCloudProviderAccessRolesExecute(r ListCloudProviderAccessRolesApiRequest) (*CloudProviderAccessRoles, *http.Response, error) {
+func (a *CloudProviderAccessApiService) ListCloudProviderAccessRolesExecute(r ListCloudProviderAccessRolesApiRequest) (*CloudProviderAccessRoles, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}

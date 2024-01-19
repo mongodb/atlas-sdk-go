@@ -34,7 +34,7 @@ type ProjectIPAccessListApi interface {
 	CreateProjectIpAccessListWithParams(ctx context.Context, args *CreateProjectIpAccessListApiParams) CreateProjectIpAccessListApiRequest
 
 	// Interface only available internally
-	createProjectIpAccessListExecute(r CreateProjectIpAccessListApiRequest) (*PaginatedNetworkAccess, *http.Response, error)
+	CreateProjectIpAccessListExecute(r CreateProjectIpAccessListApiRequest) (*PaginatedNetworkAccess, *http.Response, error)
 
 	/*
 		DeleteProjectIpAccessList Remove One Entry from One Project IP Access List
@@ -58,7 +58,7 @@ type ProjectIPAccessListApi interface {
 	DeleteProjectIpAccessListWithParams(ctx context.Context, args *DeleteProjectIpAccessListApiParams) DeleteProjectIpAccessListApiRequest
 
 	// Interface only available internally
-	deleteProjectIpAccessListExecute(r DeleteProjectIpAccessListApiRequest) (map[string]interface{}, *http.Response, error)
+	DeleteProjectIpAccessListExecute(r DeleteProjectIpAccessListApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
 		GetProjectIpAccessListStatus Return Status of One Project IP Access List Entry
@@ -82,7 +82,7 @@ type ProjectIPAccessListApi interface {
 	GetProjectIpAccessListStatusWithParams(ctx context.Context, args *GetProjectIpAccessListStatusApiParams) GetProjectIpAccessListStatusApiRequest
 
 	// Interface only available internally
-	getProjectIpAccessListStatusExecute(r GetProjectIpAccessListStatusApiRequest) (*NetworkPermissionEntryStatus, *http.Response, error)
+	GetProjectIpAccessListStatusExecute(r GetProjectIpAccessListStatusApiRequest) (*NetworkPermissionEntryStatus, *http.Response, error)
 
 	/*
 		GetProjectIpList Return One Project IP Access List Entry
@@ -106,7 +106,7 @@ type ProjectIPAccessListApi interface {
 	GetProjectIpListWithParams(ctx context.Context, args *GetProjectIpListApiParams) GetProjectIpListApiRequest
 
 	// Interface only available internally
-	getProjectIpListExecute(r GetProjectIpListApiRequest) (*NetworkPermissionEntry, *http.Response, error)
+	GetProjectIpListExecute(r GetProjectIpListApiRequest) (*NetworkPermissionEntry, *http.Response, error)
 
 	/*
 		ListProjectIpAccessLists Return Project IP Access List
@@ -129,7 +129,7 @@ type ProjectIPAccessListApi interface {
 	ListProjectIpAccessListsWithParams(ctx context.Context, args *ListProjectIpAccessListsApiParams) ListProjectIpAccessListsApiRequest
 
 	// Interface only available internally
-	listProjectIpAccessListsExecute(r ListProjectIpAccessListsApiRequest) (*PaginatedNetworkAccess, *http.Response, error)
+	ListProjectIpAccessListsExecute(r ListProjectIpAccessListsApiRequest) (*PaginatedNetworkAccess, *http.Response, error)
 }
 
 // ProjectIPAccessListApiService ProjectIPAccessListApi service
@@ -184,7 +184,7 @@ func (r CreateProjectIpAccessListApiRequest) PageNum(pageNum int) CreateProjectI
 }
 
 func (r CreateProjectIpAccessListApiRequest) Execute() (*PaginatedNetworkAccess, *http.Response, error) {
-	return r.ApiService.createProjectIpAccessListExecute(r)
+	return r.ApiService.CreateProjectIpAccessListExecute(r)
 }
 
 /*
@@ -208,7 +208,7 @@ func (a *ProjectIPAccessListApiService) CreateProjectIpAccessList(ctx context.Co
 // Execute executes the request
 //
 //	@return PaginatedNetworkAccess
-func (a *ProjectIPAccessListApiService) createProjectIpAccessListExecute(r CreateProjectIpAccessListApiRequest) (*PaginatedNetworkAccess, *http.Response, error) {
+func (a *ProjectIPAccessListApiService) CreateProjectIpAccessListExecute(r CreateProjectIpAccessListApiRequest) (*PaginatedNetworkAccess, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -338,7 +338,7 @@ func (a *ProjectIPAccessListApiService) DeleteProjectIpAccessListWithParams(ctx 
 }
 
 func (r DeleteProjectIpAccessListApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.deleteProjectIpAccessListExecute(r)
+	return r.ApiService.DeleteProjectIpAccessListExecute(r)
 }
 
 /*
@@ -363,7 +363,7 @@ func (a *ProjectIPAccessListApiService) DeleteProjectIpAccessList(ctx context.Co
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *ProjectIPAccessListApiService) deleteProjectIpAccessListExecute(r DeleteProjectIpAccessListApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *ProjectIPAccessListApiService) DeleteProjectIpAccessListExecute(r DeleteProjectIpAccessListApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -468,7 +468,7 @@ func (a *ProjectIPAccessListApiService) GetProjectIpAccessListStatusWithParams(c
 }
 
 func (r GetProjectIpAccessListStatusApiRequest) Execute() (*NetworkPermissionEntryStatus, *http.Response, error) {
-	return r.ApiService.getProjectIpAccessListStatusExecute(r)
+	return r.ApiService.GetProjectIpAccessListStatusExecute(r)
 }
 
 /*
@@ -493,7 +493,7 @@ func (a *ProjectIPAccessListApiService) GetProjectIpAccessListStatus(ctx context
 // Execute executes the request
 //
 //	@return NetworkPermissionEntryStatus
-func (a *ProjectIPAccessListApiService) getProjectIpAccessListStatusExecute(r GetProjectIpAccessListStatusApiRequest) (*NetworkPermissionEntryStatus, *http.Response, error) {
+func (a *ProjectIPAccessListApiService) GetProjectIpAccessListStatusExecute(r GetProjectIpAccessListStatusApiRequest) (*NetworkPermissionEntryStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -598,7 +598,7 @@ func (a *ProjectIPAccessListApiService) GetProjectIpListWithParams(ctx context.C
 }
 
 func (r GetProjectIpListApiRequest) Execute() (*NetworkPermissionEntry, *http.Response, error) {
-	return r.ApiService.getProjectIpListExecute(r)
+	return r.ApiService.GetProjectIpListExecute(r)
 }
 
 /*
@@ -623,7 +623,7 @@ func (a *ProjectIPAccessListApiService) GetProjectIpList(ctx context.Context, gr
 // Execute executes the request
 //
 //	@return NetworkPermissionEntry
-func (a *ProjectIPAccessListApiService) getProjectIpListExecute(r GetProjectIpListApiRequest) (*NetworkPermissionEntry, *http.Response, error) {
+func (a *ProjectIPAccessListApiService) GetProjectIpListExecute(r GetProjectIpListApiRequest) (*NetworkPermissionEntry, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -752,7 +752,7 @@ func (r ListProjectIpAccessListsApiRequest) PageNum(pageNum int) ListProjectIpAc
 }
 
 func (r ListProjectIpAccessListsApiRequest) Execute() (*PaginatedNetworkAccess, *http.Response, error) {
-	return r.ApiService.listProjectIpAccessListsExecute(r)
+	return r.ApiService.ListProjectIpAccessListsExecute(r)
 }
 
 /*
@@ -775,7 +775,7 @@ func (a *ProjectIPAccessListApiService) ListProjectIpAccessLists(ctx context.Con
 // Execute executes the request
 //
 //	@return PaginatedNetworkAccess
-func (a *ProjectIPAccessListApiService) listProjectIpAccessListsExecute(r ListProjectIpAccessListsApiRequest) (*PaginatedNetworkAccess, *http.Response, error) {
+func (a *ProjectIPAccessListApiService) ListProjectIpAccessListsExecute(r ListProjectIpAccessListsApiRequest) (*PaginatedNetworkAccess, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}

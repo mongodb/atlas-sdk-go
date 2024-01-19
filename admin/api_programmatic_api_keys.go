@@ -35,7 +35,7 @@ type ProgrammaticAPIKeysApi interface {
 	AddProjectApiKeyWithParams(ctx context.Context, args *AddProjectApiKeyApiParams) AddProjectApiKeyApiRequest
 
 	// Interface only available internally
-	addProjectApiKeyExecute(r AddProjectApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error)
+	AddProjectApiKeyExecute(r AddProjectApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error)
 
 	/*
 		CreateApiKey Create One Organization API Key
@@ -58,7 +58,7 @@ type ProgrammaticAPIKeysApi interface {
 	CreateApiKeyWithParams(ctx context.Context, args *CreateApiKeyApiParams) CreateApiKeyApiRequest
 
 	// Interface only available internally
-	createApiKeyExecute(r CreateApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error)
+	CreateApiKeyExecute(r CreateApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error)
 
 	/*
 		CreateApiKeyAccessList Create Access List Entries for One Organization API Key
@@ -82,7 +82,7 @@ type ProgrammaticAPIKeysApi interface {
 	CreateApiKeyAccessListWithParams(ctx context.Context, args *CreateApiKeyAccessListApiParams) CreateApiKeyAccessListApiRequest
 
 	// Interface only available internally
-	createApiKeyAccessListExecute(r CreateApiKeyAccessListApiRequest) (*PaginatedApiUserAccessList, *http.Response, error)
+	CreateApiKeyAccessListExecute(r CreateApiKeyAccessListApiRequest) (*PaginatedApiUserAccessList, *http.Response, error)
 
 	/*
 		CreateProjectApiKey Create and Assign One Organization API Key to One Project
@@ -105,7 +105,7 @@ type ProgrammaticAPIKeysApi interface {
 	CreateProjectApiKeyWithParams(ctx context.Context, args *CreateProjectApiKeyApiParams) CreateProjectApiKeyApiRequest
 
 	// Interface only available internally
-	createProjectApiKeyExecute(r CreateProjectApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error)
+	CreateProjectApiKeyExecute(r CreateProjectApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error)
 
 	/*
 		DeleteApiKey Remove One Organization API Key
@@ -129,7 +129,7 @@ type ProgrammaticAPIKeysApi interface {
 	DeleteApiKeyWithParams(ctx context.Context, args *DeleteApiKeyApiParams) DeleteApiKeyApiRequest
 
 	// Interface only available internally
-	deleteApiKeyExecute(r DeleteApiKeyApiRequest) (map[string]interface{}, *http.Response, error)
+	DeleteApiKeyExecute(r DeleteApiKeyApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
 		DeleteApiKeyAccessListEntry Remove One Access List Entry for One Organization API Key
@@ -154,7 +154,7 @@ type ProgrammaticAPIKeysApi interface {
 	DeleteApiKeyAccessListEntryWithParams(ctx context.Context, args *DeleteApiKeyAccessListEntryApiParams) DeleteApiKeyAccessListEntryApiRequest
 
 	// Interface only available internally
-	deleteApiKeyAccessListEntryExecute(r DeleteApiKeyAccessListEntryApiRequest) (map[string]interface{}, *http.Response, error)
+	DeleteApiKeyAccessListEntryExecute(r DeleteApiKeyAccessListEntryApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
 		GetApiKey Return One Organization API Key
@@ -178,7 +178,7 @@ type ProgrammaticAPIKeysApi interface {
 	GetApiKeyWithParams(ctx context.Context, args *GetApiKeyApiParams) GetApiKeyApiRequest
 
 	// Interface only available internally
-	getApiKeyExecute(r GetApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error)
+	GetApiKeyExecute(r GetApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error)
 
 	/*
 		GetApiKeyAccessList Return One Access List Entry for One Organization API Key
@@ -203,7 +203,7 @@ type ProgrammaticAPIKeysApi interface {
 	GetApiKeyAccessListWithParams(ctx context.Context, args *GetApiKeyAccessListApiParams) GetApiKeyAccessListApiRequest
 
 	// Interface only available internally
-	getApiKeyAccessListExecute(r GetApiKeyAccessListApiRequest) (*UserAccessList, *http.Response, error)
+	GetApiKeyAccessListExecute(r GetApiKeyAccessListApiRequest) (*UserAccessList, *http.Response, error)
 
 	/*
 		ListApiKeyAccessListsEntries Return All Access List Entries for One Organization API Key
@@ -227,7 +227,7 @@ type ProgrammaticAPIKeysApi interface {
 	ListApiKeyAccessListsEntriesWithParams(ctx context.Context, args *ListApiKeyAccessListsEntriesApiParams) ListApiKeyAccessListsEntriesApiRequest
 
 	// Interface only available internally
-	listApiKeyAccessListsEntriesExecute(r ListApiKeyAccessListsEntriesApiRequest) (*PaginatedApiUserAccessList, *http.Response, error)
+	ListApiKeyAccessListsEntriesExecute(r ListApiKeyAccessListsEntriesApiRequest) (*PaginatedApiUserAccessList, *http.Response, error)
 
 	/*
 		ListApiKeys Return All Organization API Keys
@@ -250,7 +250,7 @@ type ProgrammaticAPIKeysApi interface {
 	ListApiKeysWithParams(ctx context.Context, args *ListApiKeysApiParams) ListApiKeysApiRequest
 
 	// Interface only available internally
-	listApiKeysExecute(r ListApiKeysApiRequest) (*PaginatedApiApiUser, *http.Response, error)
+	ListApiKeysExecute(r ListApiKeysApiRequest) (*PaginatedApiApiUser, *http.Response, error)
 
 	/*
 		ListProjectApiKeys Return All Organization API Keys Assigned to One Project
@@ -273,7 +273,7 @@ type ProgrammaticAPIKeysApi interface {
 	ListProjectApiKeysWithParams(ctx context.Context, args *ListProjectApiKeysApiParams) ListProjectApiKeysApiRequest
 
 	// Interface only available internally
-	listProjectApiKeysExecute(r ListProjectApiKeysApiRequest) (*PaginatedApiApiUser, *http.Response, error)
+	ListProjectApiKeysExecute(r ListProjectApiKeysApiRequest) (*PaginatedApiApiUser, *http.Response, error)
 
 	/*
 		RemoveProjectApiKey Unassign One Organization API Key from One Project
@@ -297,7 +297,7 @@ type ProgrammaticAPIKeysApi interface {
 	RemoveProjectApiKeyWithParams(ctx context.Context, args *RemoveProjectApiKeyApiParams) RemoveProjectApiKeyApiRequest
 
 	// Interface only available internally
-	removeProjectApiKeyExecute(r RemoveProjectApiKeyApiRequest) (map[string]interface{}, *http.Response, error)
+	RemoveProjectApiKeyExecute(r RemoveProjectApiKeyApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
 		UpdateApiKey Update One Organization API Key
@@ -321,7 +321,7 @@ type ProgrammaticAPIKeysApi interface {
 	UpdateApiKeyWithParams(ctx context.Context, args *UpdateApiKeyApiParams) UpdateApiKeyApiRequest
 
 	// Interface only available internally
-	updateApiKeyExecute(r UpdateApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error)
+	UpdateApiKeyExecute(r UpdateApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error)
 
 	/*
 		UpdateApiKeyRoles Update Roles of One Organization API Key to One Project
@@ -345,7 +345,7 @@ type ProgrammaticAPIKeysApi interface {
 	UpdateApiKeyRolesWithParams(ctx context.Context, args *UpdateApiKeyRolesApiParams) UpdateApiKeyRolesApiRequest
 
 	// Interface only available internally
-	updateApiKeyRolesExecute(r UpdateApiKeyRolesApiRequest) (*ApiKeyUserDetails, *http.Response, error)
+	UpdateApiKeyRolesExecute(r UpdateApiKeyRolesApiRequest) (*ApiKeyUserDetails, *http.Response, error)
 }
 
 // ProgrammaticAPIKeysApiService ProgrammaticAPIKeysApi service
@@ -376,7 +376,7 @@ func (a *ProgrammaticAPIKeysApiService) AddProjectApiKeyWithParams(ctx context.C
 }
 
 func (r AddProjectApiKeyApiRequest) Execute() (*ApiKeyUserDetails, *http.Response, error) {
-	return r.ApiService.addProjectApiKeyExecute(r)
+	return r.ApiService.AddProjectApiKeyExecute(r)
 }
 
 /*
@@ -402,7 +402,7 @@ func (a *ProgrammaticAPIKeysApiService) AddProjectApiKey(ctx context.Context, gr
 // Execute executes the request
 //
 //	@return ApiKeyUserDetails
-func (a *ProgrammaticAPIKeysApiService) addProjectApiKeyExecute(r AddProjectApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error) {
+func (a *ProgrammaticAPIKeysApiService) AddProjectApiKeyExecute(r AddProjectApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -512,7 +512,7 @@ func (a *ProgrammaticAPIKeysApiService) CreateApiKeyWithParams(ctx context.Conte
 }
 
 func (r CreateApiKeyApiRequest) Execute() (*ApiKeyUserDetails, *http.Response, error) {
-	return r.ApiService.createApiKeyExecute(r)
+	return r.ApiService.CreateApiKeyExecute(r)
 }
 
 /*
@@ -536,7 +536,7 @@ func (a *ProgrammaticAPIKeysApiService) CreateApiKey(ctx context.Context, orgId 
 // Execute executes the request
 //
 //	@return ApiKeyUserDetails
-func (a *ProgrammaticAPIKeysApiService) createApiKeyExecute(r CreateApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error) {
+func (a *ProgrammaticAPIKeysApiService) CreateApiKeyExecute(r CreateApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -675,7 +675,7 @@ func (r CreateApiKeyAccessListApiRequest) PageNum(pageNum int) CreateApiKeyAcces
 }
 
 func (r CreateApiKeyAccessListApiRequest) Execute() (*PaginatedApiUserAccessList, *http.Response, error) {
-	return r.ApiService.createApiKeyAccessListExecute(r)
+	return r.ApiService.CreateApiKeyAccessListExecute(r)
 }
 
 /*
@@ -701,7 +701,7 @@ func (a *ProgrammaticAPIKeysApiService) CreateApiKeyAccessList(ctx context.Conte
 // Execute executes the request
 //
 //	@return PaginatedApiUserAccessList
-func (a *ProgrammaticAPIKeysApiService) createApiKeyAccessListExecute(r CreateApiKeyAccessListApiRequest) (*PaginatedApiUserAccessList, *http.Response, error) {
+func (a *ProgrammaticAPIKeysApiService) CreateApiKeyAccessListExecute(r CreateApiKeyAccessListApiRequest) (*PaginatedApiUserAccessList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -832,7 +832,7 @@ func (a *ProgrammaticAPIKeysApiService) CreateProjectApiKeyWithParams(ctx contex
 }
 
 func (r CreateProjectApiKeyApiRequest) Execute() (*ApiKeyUserDetails, *http.Response, error) {
-	return r.ApiService.createProjectApiKeyExecute(r)
+	return r.ApiService.CreateProjectApiKeyExecute(r)
 }
 
 /*
@@ -856,7 +856,7 @@ func (a *ProgrammaticAPIKeysApiService) CreateProjectApiKey(ctx context.Context,
 // Execute executes the request
 //
 //	@return ApiKeyUserDetails
-func (a *ProgrammaticAPIKeysApiService) createProjectApiKeyExecute(r CreateProjectApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error) {
+func (a *ProgrammaticAPIKeysApiService) CreateProjectApiKeyExecute(r CreateProjectApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -965,7 +965,7 @@ func (a *ProgrammaticAPIKeysApiService) DeleteApiKeyWithParams(ctx context.Conte
 }
 
 func (r DeleteApiKeyApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.deleteApiKeyExecute(r)
+	return r.ApiService.DeleteApiKeyExecute(r)
 }
 
 /*
@@ -990,7 +990,7 @@ func (a *ProgrammaticAPIKeysApiService) DeleteApiKey(ctx context.Context, orgId 
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *ProgrammaticAPIKeysApiService) deleteApiKeyExecute(r DeleteApiKeyApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *ProgrammaticAPIKeysApiService) DeleteApiKeyExecute(r DeleteApiKeyApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -1098,7 +1098,7 @@ func (a *ProgrammaticAPIKeysApiService) DeleteApiKeyAccessListEntryWithParams(ct
 }
 
 func (r DeleteApiKeyAccessListEntryApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.deleteApiKeyAccessListEntryExecute(r)
+	return r.ApiService.DeleteApiKeyAccessListEntryExecute(r)
 }
 
 /*
@@ -1125,7 +1125,7 @@ func (a *ProgrammaticAPIKeysApiService) DeleteApiKeyAccessListEntry(ctx context.
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *ProgrammaticAPIKeysApiService) deleteApiKeyAccessListEntryExecute(r DeleteApiKeyAccessListEntryApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *ProgrammaticAPIKeysApiService) DeleteApiKeyAccessListEntryExecute(r DeleteApiKeyAccessListEntryApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -1231,7 +1231,7 @@ func (a *ProgrammaticAPIKeysApiService) GetApiKeyWithParams(ctx context.Context,
 }
 
 func (r GetApiKeyApiRequest) Execute() (*ApiKeyUserDetails, *http.Response, error) {
-	return r.ApiService.getApiKeyExecute(r)
+	return r.ApiService.GetApiKeyExecute(r)
 }
 
 /*
@@ -1256,7 +1256,7 @@ func (a *ProgrammaticAPIKeysApiService) GetApiKey(ctx context.Context, orgId str
 // Execute executes the request
 //
 //	@return ApiKeyUserDetails
-func (a *ProgrammaticAPIKeysApiService) getApiKeyExecute(r GetApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error) {
+func (a *ProgrammaticAPIKeysApiService) GetApiKeyExecute(r GetApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1364,7 +1364,7 @@ func (a *ProgrammaticAPIKeysApiService) GetApiKeyAccessListWithParams(ctx contex
 }
 
 func (r GetApiKeyAccessListApiRequest) Execute() (*UserAccessList, *http.Response, error) {
-	return r.ApiService.getApiKeyAccessListExecute(r)
+	return r.ApiService.GetApiKeyAccessListExecute(r)
 }
 
 /*
@@ -1391,7 +1391,7 @@ func (a *ProgrammaticAPIKeysApiService) GetApiKeyAccessList(ctx context.Context,
 // Execute executes the request
 //
 //	@return UserAccessList
-func (a *ProgrammaticAPIKeysApiService) getApiKeyAccessListExecute(r GetApiKeyAccessListApiRequest) (*UserAccessList, *http.Response, error) {
+func (a *ProgrammaticAPIKeysApiService) GetApiKeyAccessListExecute(r GetApiKeyAccessListApiRequest) (*UserAccessList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1524,7 +1524,7 @@ func (r ListApiKeyAccessListsEntriesApiRequest) PageNum(pageNum int) ListApiKeyA
 }
 
 func (r ListApiKeyAccessListsEntriesApiRequest) Execute() (*PaginatedApiUserAccessList, *http.Response, error) {
-	return r.ApiService.listApiKeyAccessListsEntriesExecute(r)
+	return r.ApiService.ListApiKeyAccessListsEntriesExecute(r)
 }
 
 /*
@@ -1549,7 +1549,7 @@ func (a *ProgrammaticAPIKeysApiService) ListApiKeyAccessListsEntries(ctx context
 // Execute executes the request
 //
 //	@return PaginatedApiUserAccessList
-func (a *ProgrammaticAPIKeysApiService) listApiKeyAccessListsEntriesExecute(r ListApiKeyAccessListsEntriesApiRequest) (*PaginatedApiUserAccessList, *http.Response, error) {
+func (a *ProgrammaticAPIKeysApiService) ListApiKeyAccessListsEntriesExecute(r ListApiKeyAccessListsEntriesApiRequest) (*PaginatedApiUserAccessList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1699,7 +1699,7 @@ func (r ListApiKeysApiRequest) PageNum(pageNum int) ListApiKeysApiRequest {
 }
 
 func (r ListApiKeysApiRequest) Execute() (*PaginatedApiApiUser, *http.Response, error) {
-	return r.ApiService.listApiKeysExecute(r)
+	return r.ApiService.ListApiKeysExecute(r)
 }
 
 /*
@@ -1722,7 +1722,7 @@ func (a *ProgrammaticAPIKeysApiService) ListApiKeys(ctx context.Context, orgId s
 // Execute executes the request
 //
 //	@return PaginatedApiApiUser
-func (a *ProgrammaticAPIKeysApiService) listApiKeysExecute(r ListApiKeysApiRequest) (*PaginatedApiApiUser, *http.Response, error) {
+func (a *ProgrammaticAPIKeysApiService) ListApiKeysExecute(r ListApiKeysApiRequest) (*PaginatedApiApiUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1871,7 +1871,7 @@ func (r ListProjectApiKeysApiRequest) PageNum(pageNum int) ListProjectApiKeysApi
 }
 
 func (r ListProjectApiKeysApiRequest) Execute() (*PaginatedApiApiUser, *http.Response, error) {
-	return r.ApiService.listProjectApiKeysExecute(r)
+	return r.ApiService.ListProjectApiKeysExecute(r)
 }
 
 /*
@@ -1894,7 +1894,7 @@ func (a *ProgrammaticAPIKeysApiService) ListProjectApiKeys(ctx context.Context, 
 // Execute executes the request
 //
 //	@return PaginatedApiApiUser
-func (a *ProgrammaticAPIKeysApiService) listProjectApiKeysExecute(r ListProjectApiKeysApiRequest) (*PaginatedApiApiUser, *http.Response, error) {
+func (a *ProgrammaticAPIKeysApiService) ListProjectApiKeysExecute(r ListProjectApiKeysApiRequest) (*PaginatedApiApiUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2019,7 +2019,7 @@ func (a *ProgrammaticAPIKeysApiService) RemoveProjectApiKeyWithParams(ctx contex
 }
 
 func (r RemoveProjectApiKeyApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.removeProjectApiKeyExecute(r)
+	return r.ApiService.RemoveProjectApiKeyExecute(r)
 }
 
 /*
@@ -2044,7 +2044,7 @@ func (a *ProgrammaticAPIKeysApiService) RemoveProjectApiKey(ctx context.Context,
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *ProgrammaticAPIKeysApiService) removeProjectApiKeyExecute(r RemoveProjectApiKeyApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *ProgrammaticAPIKeysApiService) RemoveProjectApiKeyExecute(r RemoveProjectApiKeyApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -2152,7 +2152,7 @@ func (a *ProgrammaticAPIKeysApiService) UpdateApiKeyWithParams(ctx context.Conte
 }
 
 func (r UpdateApiKeyApiRequest) Execute() (*ApiKeyUserDetails, *http.Response, error) {
-	return r.ApiService.updateApiKeyExecute(r)
+	return r.ApiService.UpdateApiKeyExecute(r)
 }
 
 /*
@@ -2178,7 +2178,7 @@ func (a *ProgrammaticAPIKeysApiService) UpdateApiKey(ctx context.Context, orgId 
 // Execute executes the request
 //
 //	@return ApiKeyUserDetails
-func (a *ProgrammaticAPIKeysApiService) updateApiKeyExecute(r UpdateApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error) {
+func (a *ProgrammaticAPIKeysApiService) UpdateApiKeyExecute(r UpdateApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -2318,7 +2318,7 @@ func (r UpdateApiKeyRolesApiRequest) IncludeCount(includeCount bool) UpdateApiKe
 }
 
 func (r UpdateApiKeyRolesApiRequest) Execute() (*ApiKeyUserDetails, *http.Response, error) {
-	return r.ApiService.updateApiKeyRolesExecute(r)
+	return r.ApiService.UpdateApiKeyRolesExecute(r)
 }
 
 /*
@@ -2344,7 +2344,7 @@ func (a *ProgrammaticAPIKeysApiService) UpdateApiKeyRoles(ctx context.Context, g
 // Execute executes the request
 //
 //	@return ApiKeyUserDetails
-func (a *ProgrammaticAPIKeysApiService) updateApiKeyRolesExecute(r UpdateApiKeyRolesApiRequest) (*ApiKeyUserDetails, *http.Response, error) {
+func (a *ProgrammaticAPIKeysApiService) UpdateApiKeyRolesExecute(r UpdateApiKeyRolesApiRequest) (*ApiKeyUserDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}

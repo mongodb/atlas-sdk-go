@@ -35,7 +35,7 @@ type OnlineArchiveApi interface {
 	CreateOnlineArchiveWithParams(ctx context.Context, args *CreateOnlineArchiveApiParams) CreateOnlineArchiveApiRequest
 
 	// Interface only available internally
-	createOnlineArchiveExecute(r CreateOnlineArchiveApiRequest) (*BackupOnlineArchive, *http.Response, error)
+	CreateOnlineArchiveExecute(r CreateOnlineArchiveApiRequest) (*BackupOnlineArchive, *http.Response, error)
 
 	/*
 		DeleteOnlineArchive Remove One Online Archive
@@ -60,7 +60,7 @@ type OnlineArchiveApi interface {
 	DeleteOnlineArchiveWithParams(ctx context.Context, args *DeleteOnlineArchiveApiParams) DeleteOnlineArchiveApiRequest
 
 	// Interface only available internally
-	deleteOnlineArchiveExecute(r DeleteOnlineArchiveApiRequest) (map[string]interface{}, *http.Response, error)
+	DeleteOnlineArchiveExecute(r DeleteOnlineArchiveApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
 		DownloadOnlineArchiveQueryLogs Download Online Archive Query Logs
@@ -84,7 +84,7 @@ type OnlineArchiveApi interface {
 	DownloadOnlineArchiveQueryLogsWithParams(ctx context.Context, args *DownloadOnlineArchiveQueryLogsApiParams) DownloadOnlineArchiveQueryLogsApiRequest
 
 	// Interface only available internally
-	downloadOnlineArchiveQueryLogsExecute(r DownloadOnlineArchiveQueryLogsApiRequest) (io.ReadCloser, *http.Response, error)
+	DownloadOnlineArchiveQueryLogsExecute(r DownloadOnlineArchiveQueryLogsApiRequest) (io.ReadCloser, *http.Response, error)
 
 	/*
 		GetOnlineArchive Return One Online Archive
@@ -109,7 +109,7 @@ type OnlineArchiveApi interface {
 	GetOnlineArchiveWithParams(ctx context.Context, args *GetOnlineArchiveApiParams) GetOnlineArchiveApiRequest
 
 	// Interface only available internally
-	getOnlineArchiveExecute(r GetOnlineArchiveApiRequest) (*BackupOnlineArchive, *http.Response, error)
+	GetOnlineArchiveExecute(r GetOnlineArchiveApiRequest) (*BackupOnlineArchive, *http.Response, error)
 
 	/*
 		ListOnlineArchives Return All Online Archives for One Cluster
@@ -133,7 +133,7 @@ type OnlineArchiveApi interface {
 	ListOnlineArchivesWithParams(ctx context.Context, args *ListOnlineArchivesApiParams) ListOnlineArchivesApiRequest
 
 	// Interface only available internally
-	listOnlineArchivesExecute(r ListOnlineArchivesApiRequest) (*PaginatedOnlineArchive, *http.Response, error)
+	ListOnlineArchivesExecute(r ListOnlineArchivesApiRequest) (*PaginatedOnlineArchive, *http.Response, error)
 
 	/*
 		UpdateOnlineArchive Update One Online Archive
@@ -158,7 +158,7 @@ type OnlineArchiveApi interface {
 	UpdateOnlineArchiveWithParams(ctx context.Context, args *UpdateOnlineArchiveApiParams) UpdateOnlineArchiveApiRequest
 
 	// Interface only available internally
-	updateOnlineArchiveExecute(r UpdateOnlineArchiveApiRequest) (*BackupOnlineArchive, *http.Response, error)
+	UpdateOnlineArchiveExecute(r UpdateOnlineArchiveApiRequest) (*BackupOnlineArchive, *http.Response, error)
 }
 
 // OnlineArchiveApiService OnlineArchiveApi service
@@ -189,7 +189,7 @@ func (a *OnlineArchiveApiService) CreateOnlineArchiveWithParams(ctx context.Cont
 }
 
 func (r CreateOnlineArchiveApiRequest) Execute() (*BackupOnlineArchive, *http.Response, error) {
-	return r.ApiService.createOnlineArchiveExecute(r)
+	return r.ApiService.CreateOnlineArchiveExecute(r)
 }
 
 /*
@@ -215,7 +215,7 @@ func (a *OnlineArchiveApiService) CreateOnlineArchive(ctx context.Context, group
 // Execute executes the request
 //
 //	@return BackupOnlineArchive
-func (a *OnlineArchiveApiService) createOnlineArchiveExecute(r CreateOnlineArchiveApiRequest) (*BackupOnlineArchive, *http.Response, error) {
+func (a *OnlineArchiveApiService) CreateOnlineArchiveExecute(r CreateOnlineArchiveApiRequest) (*BackupOnlineArchive, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -328,7 +328,7 @@ func (a *OnlineArchiveApiService) DeleteOnlineArchiveWithParams(ctx context.Cont
 }
 
 func (r DeleteOnlineArchiveApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.deleteOnlineArchiveExecute(r)
+	return r.ApiService.DeleteOnlineArchiveExecute(r)
 }
 
 /*
@@ -355,7 +355,7 @@ func (a *OnlineArchiveApiService) DeleteOnlineArchive(ctx context.Context, group
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *OnlineArchiveApiService) deleteOnlineArchiveExecute(r DeleteOnlineArchiveApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *OnlineArchiveApiService) DeleteOnlineArchiveExecute(r DeleteOnlineArchiveApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -488,7 +488,7 @@ func (r DownloadOnlineArchiveQueryLogsApiRequest) ArchiveOnly(archiveOnly bool) 
 }
 
 func (r DownloadOnlineArchiveQueryLogsApiRequest) Execute() (io.ReadCloser, *http.Response, error) {
-	return r.ApiService.downloadOnlineArchiveQueryLogsExecute(r)
+	return r.ApiService.DownloadOnlineArchiveQueryLogsExecute(r)
 }
 
 /*
@@ -513,7 +513,7 @@ func (a *OnlineArchiveApiService) DownloadOnlineArchiveQueryLogs(ctx context.Con
 // Execute executes the request
 //
 //	@return io.ReadCloser
-func (a *OnlineArchiveApiService) downloadOnlineArchiveQueryLogsExecute(r DownloadOnlineArchiveQueryLogsApiRequest) (io.ReadCloser, *http.Response, error) {
+func (a *OnlineArchiveApiService) DownloadOnlineArchiveQueryLogsExecute(r DownloadOnlineArchiveQueryLogsApiRequest) (io.ReadCloser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -634,7 +634,7 @@ func (a *OnlineArchiveApiService) GetOnlineArchiveWithParams(ctx context.Context
 }
 
 func (r GetOnlineArchiveApiRequest) Execute() (*BackupOnlineArchive, *http.Response, error) {
-	return r.ApiService.getOnlineArchiveExecute(r)
+	return r.ApiService.GetOnlineArchiveExecute(r)
 }
 
 /*
@@ -661,7 +661,7 @@ func (a *OnlineArchiveApiService) GetOnlineArchive(ctx context.Context, groupId 
 // Execute executes the request
 //
 //	@return BackupOnlineArchive
-func (a *OnlineArchiveApiService) getOnlineArchiveExecute(r GetOnlineArchiveApiRequest) (*BackupOnlineArchive, *http.Response, error) {
+func (a *OnlineArchiveApiService) GetOnlineArchiveExecute(r GetOnlineArchiveApiRequest) (*BackupOnlineArchive, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -794,7 +794,7 @@ func (r ListOnlineArchivesApiRequest) PageNum(pageNum int) ListOnlineArchivesApi
 }
 
 func (r ListOnlineArchivesApiRequest) Execute() (*PaginatedOnlineArchive, *http.Response, error) {
-	return r.ApiService.listOnlineArchivesExecute(r)
+	return r.ApiService.ListOnlineArchivesExecute(r)
 }
 
 /*
@@ -819,7 +819,7 @@ func (a *OnlineArchiveApiService) ListOnlineArchives(ctx context.Context, groupI
 // Execute executes the request
 //
 //	@return PaginatedOnlineArchive
-func (a *OnlineArchiveApiService) listOnlineArchivesExecute(r ListOnlineArchivesApiRequest) (*PaginatedOnlineArchive, *http.Response, error) {
+func (a *OnlineArchiveApiService) ListOnlineArchivesExecute(r ListOnlineArchivesApiRequest) (*PaginatedOnlineArchive, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -951,7 +951,7 @@ func (a *OnlineArchiveApiService) UpdateOnlineArchiveWithParams(ctx context.Cont
 }
 
 func (r UpdateOnlineArchiveApiRequest) Execute() (*BackupOnlineArchive, *http.Response, error) {
-	return r.ApiService.updateOnlineArchiveExecute(r)
+	return r.ApiService.UpdateOnlineArchiveExecute(r)
 }
 
 /*
@@ -979,7 +979,7 @@ func (a *OnlineArchiveApiService) UpdateOnlineArchive(ctx context.Context, group
 // Execute executes the request
 //
 //	@return BackupOnlineArchive
-func (a *OnlineArchiveApiService) updateOnlineArchiveExecute(r UpdateOnlineArchiveApiRequest) (*BackupOnlineArchive, *http.Response, error) {
+func (a *OnlineArchiveApiService) UpdateOnlineArchiveExecute(r UpdateOnlineArchiveApiRequest) (*BackupOnlineArchive, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}

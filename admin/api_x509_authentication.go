@@ -39,7 +39,7 @@ type X509AuthenticationApi interface {
 	CreateDatabaseUserCertificateWithParams(ctx context.Context, args *CreateDatabaseUserCertificateApiParams) CreateDatabaseUserCertificateApiRequest
 
 	// Interface only available internally
-	createDatabaseUserCertificateExecute(r CreateDatabaseUserCertificateApiRequest) (string, *http.Response, error)
+	CreateDatabaseUserCertificateExecute(r CreateDatabaseUserCertificateApiRequest) (string, *http.Response, error)
 
 	/*
 		DisableCustomerManagedX509 Disable Customer-Managed X.509
@@ -64,7 +64,7 @@ type X509AuthenticationApi interface {
 	DisableCustomerManagedX509WithParams(ctx context.Context, args *DisableCustomerManagedX509ApiParams) DisableCustomerManagedX509ApiRequest
 
 	// Interface only available internally
-	disableCustomerManagedX509Execute(r DisableCustomerManagedX509ApiRequest) (*UserSecurity, *http.Response, error)
+	DisableCustomerManagedX509Execute(r DisableCustomerManagedX509ApiRequest) (*UserSecurity, *http.Response, error)
 
 	/*
 		ListDatabaseUserCertificates Return All X.509 Certificates Assigned to One MongoDB User
@@ -88,7 +88,7 @@ type X509AuthenticationApi interface {
 	ListDatabaseUserCertificatesWithParams(ctx context.Context, args *ListDatabaseUserCertificatesApiParams) ListDatabaseUserCertificatesApiRequest
 
 	// Interface only available internally
-	listDatabaseUserCertificatesExecute(r ListDatabaseUserCertificatesApiRequest) (*PaginatedUserCert, *http.Response, error)
+	ListDatabaseUserCertificatesExecute(r ListDatabaseUserCertificatesApiRequest) (*PaginatedUserCert, *http.Response, error)
 }
 
 // X509AuthenticationApiService X509AuthenticationApi service
@@ -119,7 +119,7 @@ func (a *X509AuthenticationApiService) CreateDatabaseUserCertificateWithParams(c
 }
 
 func (r CreateDatabaseUserCertificateApiRequest) Execute() (string, *http.Response, error) {
-	return r.ApiService.createDatabaseUserCertificateExecute(r)
+	return r.ApiService.CreateDatabaseUserCertificateExecute(r)
 }
 
 /*
@@ -149,7 +149,7 @@ func (a *X509AuthenticationApiService) CreateDatabaseUserCertificate(ctx context
 // Execute executes the request
 //
 //	@return string
-func (a *X509AuthenticationApiService) createDatabaseUserCertificateExecute(r CreateDatabaseUserCertificateApiRequest) (string, *http.Response, error) {
+func (a *X509AuthenticationApiService) CreateDatabaseUserCertificateExecute(r CreateDatabaseUserCertificateApiRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -256,7 +256,7 @@ func (a *X509AuthenticationApiService) DisableCustomerManagedX509WithParams(ctx 
 }
 
 func (r DisableCustomerManagedX509ApiRequest) Execute() (*UserSecurity, *http.Response, error) {
-	return r.ApiService.disableCustomerManagedX509Execute(r)
+	return r.ApiService.DisableCustomerManagedX509Execute(r)
 }
 
 /*
@@ -281,7 +281,7 @@ func (a *X509AuthenticationApiService) DisableCustomerManagedX509(ctx context.Co
 // Execute executes the request
 //
 //	@return UserSecurity
-func (a *X509AuthenticationApiService) disableCustomerManagedX509Execute(r DisableCustomerManagedX509ApiRequest) (*UserSecurity, *http.Response, error) {
+func (a *X509AuthenticationApiService) DisableCustomerManagedX509Execute(r DisableCustomerManagedX509ApiRequest) (*UserSecurity, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -412,7 +412,7 @@ func (r ListDatabaseUserCertificatesApiRequest) PageNum(pageNum int) ListDatabas
 }
 
 func (r ListDatabaseUserCertificatesApiRequest) Execute() (*PaginatedUserCert, *http.Response, error) {
-	return r.ApiService.listDatabaseUserCertificatesExecute(r)
+	return r.ApiService.ListDatabaseUserCertificatesExecute(r)
 }
 
 /*
@@ -437,7 +437,7 @@ func (a *X509AuthenticationApiService) ListDatabaseUserCertificates(ctx context.
 // Execute executes the request
 //
 //	@return PaginatedUserCert
-func (a *X509AuthenticationApiService) listDatabaseUserCertificatesExecute(r ListDatabaseUserCertificatesApiRequest) (*PaginatedUserCert, *http.Response, error) {
+func (a *X509AuthenticationApiService) ListDatabaseUserCertificatesExecute(r ListDatabaseUserCertificatesApiRequest) (*PaginatedUserCert, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}

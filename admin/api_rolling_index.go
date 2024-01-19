@@ -35,7 +35,7 @@ type RollingIndexApi interface {
 	CreateRollingIndexWithParams(ctx context.Context, args *CreateRollingIndexApiParams) CreateRollingIndexApiRequest
 
 	// Interface only available internally
-	createRollingIndexExecute(r CreateRollingIndexApiRequest) (*http.Response, error)
+	CreateRollingIndexExecute(r CreateRollingIndexApiRequest) (*http.Response, error)
 }
 
 // RollingIndexApiService RollingIndexApi service
@@ -66,7 +66,7 @@ func (a *RollingIndexApiService) CreateRollingIndexWithParams(ctx context.Contex
 }
 
 func (r CreateRollingIndexApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.createRollingIndexExecute(r)
+	return r.ApiService.CreateRollingIndexExecute(r)
 }
 
 /*
@@ -90,7 +90,7 @@ func (a *RollingIndexApiService) CreateRollingIndex(ctx context.Context, groupId
 }
 
 // Execute executes the request
-func (a *RollingIndexApiService) createRollingIndexExecute(r CreateRollingIndexApiRequest) (*http.Response, error) {
+func (a *RollingIndexApiService) CreateRollingIndexExecute(r CreateRollingIndexApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}

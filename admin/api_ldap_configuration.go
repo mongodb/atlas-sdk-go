@@ -34,7 +34,7 @@ type LDAPConfigurationApi interface {
 	DeleteLDAPConfigurationWithParams(ctx context.Context, args *DeleteLDAPConfigurationApiParams) DeleteLDAPConfigurationApiRequest
 
 	// Interface only available internally
-	deleteLDAPConfigurationExecute(r DeleteLDAPConfigurationApiRequest) (*UserSecurity, *http.Response, error)
+	DeleteLDAPConfigurationExecute(r DeleteLDAPConfigurationApiRequest) (*UserSecurity, *http.Response, error)
 
 	/*
 		GetLDAPConfiguration Return the Current LDAP or X.509 Configuration
@@ -57,7 +57,7 @@ type LDAPConfigurationApi interface {
 	GetLDAPConfigurationWithParams(ctx context.Context, args *GetLDAPConfigurationApiParams) GetLDAPConfigurationApiRequest
 
 	// Interface only available internally
-	getLDAPConfigurationExecute(r GetLDAPConfigurationApiRequest) (*UserSecurity, *http.Response, error)
+	GetLDAPConfigurationExecute(r GetLDAPConfigurationApiRequest) (*UserSecurity, *http.Response, error)
 
 	/*
 		GetLDAPConfigurationStatus Return the Status of One Verify LDAP Configuration Request
@@ -81,7 +81,7 @@ type LDAPConfigurationApi interface {
 	GetLDAPConfigurationStatusWithParams(ctx context.Context, args *GetLDAPConfigurationStatusApiParams) GetLDAPConfigurationStatusApiRequest
 
 	// Interface only available internally
-	getLDAPConfigurationStatusExecute(r GetLDAPConfigurationStatusApiRequest) (*LDAPVerifyConnectivityJobRequest, *http.Response, error)
+	GetLDAPConfigurationStatusExecute(r GetLDAPConfigurationStatusApiRequest) (*LDAPVerifyConnectivityJobRequest, *http.Response, error)
 
 	/*
 		SaveLDAPConfiguration Edit the LDAP or X.509 Configuration
@@ -106,7 +106,7 @@ type LDAPConfigurationApi interface {
 	SaveLDAPConfigurationWithParams(ctx context.Context, args *SaveLDAPConfigurationApiParams) SaveLDAPConfigurationApiRequest
 
 	// Interface only available internally
-	saveLDAPConfigurationExecute(r SaveLDAPConfigurationApiRequest) (*UserSecurity, *http.Response, error)
+	SaveLDAPConfigurationExecute(r SaveLDAPConfigurationApiRequest) (*UserSecurity, *http.Response, error)
 
 	/*
 		VerifyLDAPConfiguration Verify the LDAP Configuration in One Project
@@ -129,7 +129,7 @@ type LDAPConfigurationApi interface {
 	VerifyLDAPConfigurationWithParams(ctx context.Context, args *VerifyLDAPConfigurationApiParams) VerifyLDAPConfigurationApiRequest
 
 	// Interface only available internally
-	verifyLDAPConfigurationExecute(r VerifyLDAPConfigurationApiRequest) (*LDAPVerifyConnectivityJobRequest, *http.Response, error)
+	VerifyLDAPConfigurationExecute(r VerifyLDAPConfigurationApiRequest) (*LDAPVerifyConnectivityJobRequest, *http.Response, error)
 }
 
 // LDAPConfigurationApiService LDAPConfigurationApi service
@@ -154,7 +154,7 @@ func (a *LDAPConfigurationApiService) DeleteLDAPConfigurationWithParams(ctx cont
 }
 
 func (r DeleteLDAPConfigurationApiRequest) Execute() (*UserSecurity, *http.Response, error) {
-	return r.ApiService.deleteLDAPConfigurationExecute(r)
+	return r.ApiService.DeleteLDAPConfigurationExecute(r)
 }
 
 /*
@@ -177,7 +177,7 @@ func (a *LDAPConfigurationApiService) DeleteLDAPConfiguration(ctx context.Contex
 // Execute executes the request
 //
 //	@return UserSecurity
-func (a *LDAPConfigurationApiService) deleteLDAPConfigurationExecute(r DeleteLDAPConfigurationApiRequest) (*UserSecurity, *http.Response, error) {
+func (a *LDAPConfigurationApiService) DeleteLDAPConfigurationExecute(r DeleteLDAPConfigurationApiRequest) (*UserSecurity, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -278,7 +278,7 @@ func (a *LDAPConfigurationApiService) GetLDAPConfigurationWithParams(ctx context
 }
 
 func (r GetLDAPConfigurationApiRequest) Execute() (*UserSecurity, *http.Response, error) {
-	return r.ApiService.getLDAPConfigurationExecute(r)
+	return r.ApiService.GetLDAPConfigurationExecute(r)
 }
 
 /*
@@ -301,7 +301,7 @@ func (a *LDAPConfigurationApiService) GetLDAPConfiguration(ctx context.Context, 
 // Execute executes the request
 //
 //	@return UserSecurity
-func (a *LDAPConfigurationApiService) getLDAPConfigurationExecute(r GetLDAPConfigurationApiRequest) (*UserSecurity, *http.Response, error) {
+func (a *LDAPConfigurationApiService) GetLDAPConfigurationExecute(r GetLDAPConfigurationApiRequest) (*UserSecurity, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -405,7 +405,7 @@ func (a *LDAPConfigurationApiService) GetLDAPConfigurationStatusWithParams(ctx c
 }
 
 func (r GetLDAPConfigurationStatusApiRequest) Execute() (*LDAPVerifyConnectivityJobRequest, *http.Response, error) {
-	return r.ApiService.getLDAPConfigurationStatusExecute(r)
+	return r.ApiService.GetLDAPConfigurationStatusExecute(r)
 }
 
 /*
@@ -430,7 +430,7 @@ func (a *LDAPConfigurationApiService) GetLDAPConfigurationStatus(ctx context.Con
 // Execute executes the request
 //
 //	@return LDAPVerifyConnectivityJobRequest
-func (a *LDAPConfigurationApiService) getLDAPConfigurationStatusExecute(r GetLDAPConfigurationStatusApiRequest) (*LDAPVerifyConnectivityJobRequest, *http.Response, error) {
+func (a *LDAPConfigurationApiService) GetLDAPConfigurationStatusExecute(r GetLDAPConfigurationStatusApiRequest) (*LDAPVerifyConnectivityJobRequest, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -535,7 +535,7 @@ func (a *LDAPConfigurationApiService) SaveLDAPConfigurationWithParams(ctx contex
 }
 
 func (r SaveLDAPConfigurationApiRequest) Execute() (*UserSecurity, *http.Response, error) {
-	return r.ApiService.saveLDAPConfigurationExecute(r)
+	return r.ApiService.SaveLDAPConfigurationExecute(r)
 }
 
 /*
@@ -561,7 +561,7 @@ func (a *LDAPConfigurationApiService) SaveLDAPConfiguration(ctx context.Context,
 // Execute executes the request
 //
 //	@return UserSecurity
-func (a *LDAPConfigurationApiService) saveLDAPConfigurationExecute(r SaveLDAPConfigurationApiRequest) (*UserSecurity, *http.Response, error) {
+func (a *LDAPConfigurationApiService) SaveLDAPConfigurationExecute(r SaveLDAPConfigurationApiRequest) (*UserSecurity, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -670,7 +670,7 @@ func (a *LDAPConfigurationApiService) VerifyLDAPConfigurationWithParams(ctx cont
 }
 
 func (r VerifyLDAPConfigurationApiRequest) Execute() (*LDAPVerifyConnectivityJobRequest, *http.Response, error) {
-	return r.ApiService.verifyLDAPConfigurationExecute(r)
+	return r.ApiService.VerifyLDAPConfigurationExecute(r)
 }
 
 /*
@@ -694,7 +694,7 @@ func (a *LDAPConfigurationApiService) VerifyLDAPConfiguration(ctx context.Contex
 // Execute executes the request
 //
 //	@return LDAPVerifyConnectivityJobRequest
-func (a *LDAPConfigurationApiService) verifyLDAPConfigurationExecute(r VerifyLDAPConfigurationApiRequest) (*LDAPVerifyConnectivityJobRequest, *http.Response, error) {
+func (a *LDAPConfigurationApiService) VerifyLDAPConfigurationExecute(r VerifyLDAPConfigurationApiRequest) (*LDAPVerifyConnectivityJobRequest, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}

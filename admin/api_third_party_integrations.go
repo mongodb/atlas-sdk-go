@@ -35,7 +35,7 @@ type ThirdPartyIntegrationsApi interface {
 	CreateThirdPartyIntegrationWithParams(ctx context.Context, args *CreateThirdPartyIntegrationApiParams) CreateThirdPartyIntegrationApiRequest
 
 	// Interface only available internally
-	createThirdPartyIntegrationExecute(r CreateThirdPartyIntegrationApiRequest) (*PaginatedIntegration, *http.Response, error)
+	CreateThirdPartyIntegrationExecute(r CreateThirdPartyIntegrationApiRequest) (*PaginatedIntegration, *http.Response, error)
 
 	/*
 		DeleteThirdPartyIntegration Remove One Third-Party Service Integration
@@ -59,7 +59,7 @@ type ThirdPartyIntegrationsApi interface {
 	DeleteThirdPartyIntegrationWithParams(ctx context.Context, args *DeleteThirdPartyIntegrationApiParams) DeleteThirdPartyIntegrationApiRequest
 
 	// Interface only available internally
-	deleteThirdPartyIntegrationExecute(r DeleteThirdPartyIntegrationApiRequest) (map[string]interface{}, *http.Response, error)
+	DeleteThirdPartyIntegrationExecute(r DeleteThirdPartyIntegrationApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
 		GetThirdPartyIntegration Return One Third-Party Service Integration
@@ -83,7 +83,7 @@ type ThirdPartyIntegrationsApi interface {
 	GetThirdPartyIntegrationWithParams(ctx context.Context, args *GetThirdPartyIntegrationApiParams) GetThirdPartyIntegrationApiRequest
 
 	// Interface only available internally
-	getThirdPartyIntegrationExecute(r GetThirdPartyIntegrationApiRequest) (*ThridPartyIntegration, *http.Response, error)
+	GetThirdPartyIntegrationExecute(r GetThirdPartyIntegrationApiRequest) (*ThridPartyIntegration, *http.Response, error)
 
 	/*
 		ListThirdPartyIntegrations Return All Active Third-Party Service Integrations
@@ -106,7 +106,7 @@ type ThirdPartyIntegrationsApi interface {
 	ListThirdPartyIntegrationsWithParams(ctx context.Context, args *ListThirdPartyIntegrationsApiParams) ListThirdPartyIntegrationsApiRequest
 
 	// Interface only available internally
-	listThirdPartyIntegrationsExecute(r ListThirdPartyIntegrationsApiRequest) (*PaginatedIntegration, *http.Response, error)
+	ListThirdPartyIntegrationsExecute(r ListThirdPartyIntegrationsApiRequest) (*PaginatedIntegration, *http.Response, error)
 
 	/*
 		UpdateThirdPartyIntegration Update One Third-Party Service Integration
@@ -130,7 +130,7 @@ type ThirdPartyIntegrationsApi interface {
 	UpdateThirdPartyIntegrationWithParams(ctx context.Context, args *UpdateThirdPartyIntegrationApiParams) UpdateThirdPartyIntegrationApiRequest
 
 	// Interface only available internally
-	updateThirdPartyIntegrationExecute(r UpdateThirdPartyIntegrationApiRequest) (*PaginatedIntegration, *http.Response, error)
+	UpdateThirdPartyIntegrationExecute(r UpdateThirdPartyIntegrationApiRequest) (*PaginatedIntegration, *http.Response, error)
 }
 
 // ThirdPartyIntegrationsApiService ThirdPartyIntegrationsApi service
@@ -188,7 +188,7 @@ func (r CreateThirdPartyIntegrationApiRequest) PageNum(pageNum int) CreateThirdP
 }
 
 func (r CreateThirdPartyIntegrationApiRequest) Execute() (*PaginatedIntegration, *http.Response, error) {
-	return r.ApiService.createThirdPartyIntegrationExecute(r)
+	return r.ApiService.CreateThirdPartyIntegrationExecute(r)
 }
 
 /*
@@ -214,7 +214,7 @@ func (a *ThirdPartyIntegrationsApiService) CreateThirdPartyIntegration(ctx conte
 // Execute executes the request
 //
 //	@return PaginatedIntegration
-func (a *ThirdPartyIntegrationsApiService) createThirdPartyIntegrationExecute(r CreateThirdPartyIntegrationApiRequest) (*PaginatedIntegration, *http.Response, error) {
+func (a *ThirdPartyIntegrationsApiService) CreateThirdPartyIntegrationExecute(r CreateThirdPartyIntegrationApiRequest) (*PaginatedIntegration, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -345,7 +345,7 @@ func (a *ThirdPartyIntegrationsApiService) DeleteThirdPartyIntegrationWithParams
 }
 
 func (r DeleteThirdPartyIntegrationApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.deleteThirdPartyIntegrationExecute(r)
+	return r.ApiService.DeleteThirdPartyIntegrationExecute(r)
 }
 
 /*
@@ -370,7 +370,7 @@ func (a *ThirdPartyIntegrationsApiService) DeleteThirdPartyIntegration(ctx conte
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *ThirdPartyIntegrationsApiService) deleteThirdPartyIntegrationExecute(r DeleteThirdPartyIntegrationApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *ThirdPartyIntegrationsApiService) DeleteThirdPartyIntegrationExecute(r DeleteThirdPartyIntegrationApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -475,7 +475,7 @@ func (a *ThirdPartyIntegrationsApiService) GetThirdPartyIntegrationWithParams(ct
 }
 
 func (r GetThirdPartyIntegrationApiRequest) Execute() (*ThridPartyIntegration, *http.Response, error) {
-	return r.ApiService.getThirdPartyIntegrationExecute(r)
+	return r.ApiService.GetThirdPartyIntegrationExecute(r)
 }
 
 /*
@@ -500,7 +500,7 @@ func (a *ThirdPartyIntegrationsApiService) GetThirdPartyIntegration(ctx context.
 // Execute executes the request
 //
 //	@return ThridPartyIntegration
-func (a *ThirdPartyIntegrationsApiService) getThirdPartyIntegrationExecute(r GetThirdPartyIntegrationApiRequest) (*ThridPartyIntegration, *http.Response, error) {
+func (a *ThirdPartyIntegrationsApiService) GetThirdPartyIntegrationExecute(r GetThirdPartyIntegrationApiRequest) (*ThridPartyIntegration, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -629,7 +629,7 @@ func (r ListThirdPartyIntegrationsApiRequest) PageNum(pageNum int) ListThirdPart
 }
 
 func (r ListThirdPartyIntegrationsApiRequest) Execute() (*PaginatedIntegration, *http.Response, error) {
-	return r.ApiService.listThirdPartyIntegrationsExecute(r)
+	return r.ApiService.ListThirdPartyIntegrationsExecute(r)
 }
 
 /*
@@ -652,7 +652,7 @@ func (a *ThirdPartyIntegrationsApiService) ListThirdPartyIntegrations(ctx contex
 // Execute executes the request
 //
 //	@return PaginatedIntegration
-func (a *ThirdPartyIntegrationsApiService) listThirdPartyIntegrationsExecute(r ListThirdPartyIntegrationsApiRequest) (*PaginatedIntegration, *http.Response, error) {
+func (a *ThirdPartyIntegrationsApiService) ListThirdPartyIntegrationsExecute(r ListThirdPartyIntegrationsApiRequest) (*PaginatedIntegration, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -807,7 +807,7 @@ func (r UpdateThirdPartyIntegrationApiRequest) PageNum(pageNum int) UpdateThirdP
 }
 
 func (r UpdateThirdPartyIntegrationApiRequest) Execute() (*PaginatedIntegration, *http.Response, error) {
-	return r.ApiService.updateThirdPartyIntegrationExecute(r)
+	return r.ApiService.UpdateThirdPartyIntegrationExecute(r)
 }
 
 /*
@@ -833,7 +833,7 @@ func (a *ThirdPartyIntegrationsApiService) UpdateThirdPartyIntegration(ctx conte
 // Execute executes the request
 //
 //	@return PaginatedIntegration
-func (a *ThirdPartyIntegrationsApiService) updateThirdPartyIntegrationExecute(r UpdateThirdPartyIntegrationApiRequest) (*PaginatedIntegration, *http.Response, error) {
+func (a *ThirdPartyIntegrationsApiService) UpdateThirdPartyIntegrationExecute(r UpdateThirdPartyIntegrationApiRequest) (*PaginatedIntegration, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}

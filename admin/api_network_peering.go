@@ -34,7 +34,7 @@ type NetworkPeeringApi interface {
 	CreatePeeringConnectionWithParams(ctx context.Context, args *CreatePeeringConnectionApiParams) CreatePeeringConnectionApiRequest
 
 	// Interface only available internally
-	createPeeringConnectionExecute(r CreatePeeringConnectionApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error)
+	CreatePeeringConnectionExecute(r CreatePeeringConnectionApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error)
 
 	/*
 		CreatePeeringContainer Create One New Network Peering Container
@@ -57,7 +57,7 @@ type NetworkPeeringApi interface {
 	CreatePeeringContainerWithParams(ctx context.Context, args *CreatePeeringContainerApiParams) CreatePeeringContainerApiRequest
 
 	// Interface only available internally
-	createPeeringContainerExecute(r CreatePeeringContainerApiRequest) (*CloudProviderContainer, *http.Response, error)
+	CreatePeeringContainerExecute(r CreatePeeringContainerApiRequest) (*CloudProviderContainer, *http.Response, error)
 
 	/*
 		DeletePeeringConnection Remove One Existing Network Peering Connection
@@ -81,7 +81,7 @@ type NetworkPeeringApi interface {
 	DeletePeeringConnectionWithParams(ctx context.Context, args *DeletePeeringConnectionApiParams) DeletePeeringConnectionApiRequest
 
 	// Interface only available internally
-	deletePeeringConnectionExecute(r DeletePeeringConnectionApiRequest) (map[string]interface{}, *http.Response, error)
+	DeletePeeringConnectionExecute(r DeletePeeringConnectionApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
 		DeletePeeringContainer Remove One Network Peering Container
@@ -105,7 +105,7 @@ type NetworkPeeringApi interface {
 	DeletePeeringContainerWithParams(ctx context.Context, args *DeletePeeringContainerApiParams) DeletePeeringContainerApiRequest
 
 	// Interface only available internally
-	deletePeeringContainerExecute(r DeletePeeringContainerApiRequest) (map[string]interface{}, *http.Response, error)
+	DeletePeeringContainerExecute(r DeletePeeringContainerApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
 		DisablePeering Disable Connect via Peering Only Mode for One Project
@@ -132,7 +132,7 @@ type NetworkPeeringApi interface {
 	DisablePeeringWithParams(ctx context.Context, args *DisablePeeringApiParams) DisablePeeringApiRequest
 
 	// Interface only available internally
-	disablePeeringExecute(r DisablePeeringApiRequest) (*PrivateIPMode, *http.Response, error)
+	DisablePeeringExecute(r DisablePeeringApiRequest) (*PrivateIPMode, *http.Response, error)
 
 	/*
 		GetPeeringConnection Return One Network Peering Connection in One Project
@@ -156,7 +156,7 @@ type NetworkPeeringApi interface {
 	GetPeeringConnectionWithParams(ctx context.Context, args *GetPeeringConnectionApiParams) GetPeeringConnectionApiRequest
 
 	// Interface only available internally
-	getPeeringConnectionExecute(r GetPeeringConnectionApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error)
+	GetPeeringConnectionExecute(r GetPeeringConnectionApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error)
 
 	/*
 		GetPeeringContainer Return One Network Peering Container
@@ -180,7 +180,7 @@ type NetworkPeeringApi interface {
 	GetPeeringContainerWithParams(ctx context.Context, args *GetPeeringContainerApiParams) GetPeeringContainerApiRequest
 
 	// Interface only available internally
-	getPeeringContainerExecute(r GetPeeringContainerApiRequest) (*CloudProviderContainer, *http.Response, error)
+	GetPeeringContainerExecute(r GetPeeringContainerApiRequest) (*CloudProviderContainer, *http.Response, error)
 
 	/*
 		ListPeeringConnections Return All Network Peering Connections in One Project
@@ -203,7 +203,7 @@ type NetworkPeeringApi interface {
 	ListPeeringConnectionsWithParams(ctx context.Context, args *ListPeeringConnectionsApiParams) ListPeeringConnectionsApiRequest
 
 	// Interface only available internally
-	listPeeringConnectionsExecute(r ListPeeringConnectionsApiRequest) (*PaginatedContainerPeer, *http.Response, error)
+	ListPeeringConnectionsExecute(r ListPeeringConnectionsApiRequest) (*PaginatedContainerPeer, *http.Response, error)
 
 	/*
 		ListPeeringContainerByCloudProvider Return All Network Peering Containers in One Project for One Cloud Provider
@@ -226,7 +226,7 @@ type NetworkPeeringApi interface {
 	ListPeeringContainerByCloudProviderWithParams(ctx context.Context, args *ListPeeringContainerByCloudProviderApiParams) ListPeeringContainerByCloudProviderApiRequest
 
 	// Interface only available internally
-	listPeeringContainerByCloudProviderExecute(r ListPeeringContainerByCloudProviderApiRequest) (*PaginatedCloudProviderContainer, *http.Response, error)
+	ListPeeringContainerByCloudProviderExecute(r ListPeeringContainerByCloudProviderApiRequest) (*PaginatedCloudProviderContainer, *http.Response, error)
 
 	/*
 		ListPeeringContainers Return All Network Peering Containers in One Project
@@ -249,7 +249,7 @@ type NetworkPeeringApi interface {
 	ListPeeringContainersWithParams(ctx context.Context, args *ListPeeringContainersApiParams) ListPeeringContainersApiRequest
 
 	// Interface only available internally
-	listPeeringContainersExecute(r ListPeeringContainersApiRequest) (*PaginatedCloudProviderContainer, *http.Response, error)
+	ListPeeringContainersExecute(r ListPeeringContainersApiRequest) (*PaginatedCloudProviderContainer, *http.Response, error)
 
 	/*
 		UpdatePeeringConnection Update One New Network Peering Connection
@@ -273,7 +273,7 @@ type NetworkPeeringApi interface {
 	UpdatePeeringConnectionWithParams(ctx context.Context, args *UpdatePeeringConnectionApiParams) UpdatePeeringConnectionApiRequest
 
 	// Interface only available internally
-	updatePeeringConnectionExecute(r UpdatePeeringConnectionApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error)
+	UpdatePeeringConnectionExecute(r UpdatePeeringConnectionApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error)
 
 	/*
 		UpdatePeeringContainer Update One Network Peering Container
@@ -297,7 +297,7 @@ type NetworkPeeringApi interface {
 	UpdatePeeringContainerWithParams(ctx context.Context, args *UpdatePeeringContainerApiParams) UpdatePeeringContainerApiRequest
 
 	// Interface only available internally
-	updatePeeringContainerExecute(r UpdatePeeringContainerApiRequest) (*CloudProviderContainer, *http.Response, error)
+	UpdatePeeringContainerExecute(r UpdatePeeringContainerApiRequest) (*CloudProviderContainer, *http.Response, error)
 
 	/*
 		VerifyConnectViaPeeringOnlyModeForOneProject Verify Connect via Peering Only Mode for One Project
@@ -324,7 +324,7 @@ type NetworkPeeringApi interface {
 	VerifyConnectViaPeeringOnlyModeForOneProjectWithParams(ctx context.Context, args *VerifyConnectViaPeeringOnlyModeForOneProjectApiParams) VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest
 
 	// Interface only available internally
-	verifyConnectViaPeeringOnlyModeForOneProjectExecute(r VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest) (*PrivateIPMode, *http.Response, error)
+	VerifyConnectViaPeeringOnlyModeForOneProjectExecute(r VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest) (*PrivateIPMode, *http.Response, error)
 }
 
 // NetworkPeeringApiService NetworkPeeringApi service
@@ -352,7 +352,7 @@ func (a *NetworkPeeringApiService) CreatePeeringConnectionWithParams(ctx context
 }
 
 func (r CreatePeeringConnectionApiRequest) Execute() (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
-	return r.ApiService.createPeeringConnectionExecute(r)
+	return r.ApiService.CreatePeeringConnectionExecute(r)
 }
 
 /*
@@ -376,7 +376,7 @@ func (a *NetworkPeeringApiService) CreatePeeringConnection(ctx context.Context, 
 // Execute executes the request
 //
 //	@return BaseNetworkPeeringConnectionSettings
-func (a *NetworkPeeringApiService) createPeeringConnectionExecute(r CreatePeeringConnectionApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
+func (a *NetworkPeeringApiService) CreatePeeringConnectionExecute(r CreatePeeringConnectionApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -485,7 +485,7 @@ func (a *NetworkPeeringApiService) CreatePeeringContainerWithParams(ctx context.
 }
 
 func (r CreatePeeringContainerApiRequest) Execute() (*CloudProviderContainer, *http.Response, error) {
-	return r.ApiService.createPeeringContainerExecute(r)
+	return r.ApiService.CreatePeeringContainerExecute(r)
 }
 
 /*
@@ -509,7 +509,7 @@ func (a *NetworkPeeringApiService) CreatePeeringContainer(ctx context.Context, g
 // Execute executes the request
 //
 //	@return CloudProviderContainer
-func (a *NetworkPeeringApiService) createPeeringContainerExecute(r CreatePeeringContainerApiRequest) (*CloudProviderContainer, *http.Response, error) {
+func (a *NetworkPeeringApiService) CreatePeeringContainerExecute(r CreatePeeringContainerApiRequest) (*CloudProviderContainer, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -618,7 +618,7 @@ func (a *NetworkPeeringApiService) DeletePeeringConnectionWithParams(ctx context
 }
 
 func (r DeletePeeringConnectionApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.deletePeeringConnectionExecute(r)
+	return r.ApiService.DeletePeeringConnectionExecute(r)
 }
 
 /*
@@ -643,7 +643,7 @@ func (a *NetworkPeeringApiService) DeletePeeringConnection(ctx context.Context, 
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *NetworkPeeringApiService) deletePeeringConnectionExecute(r DeletePeeringConnectionApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *NetworkPeeringApiService) DeletePeeringConnectionExecute(r DeletePeeringConnectionApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -748,7 +748,7 @@ func (a *NetworkPeeringApiService) DeletePeeringContainerWithParams(ctx context.
 }
 
 func (r DeletePeeringContainerApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.deletePeeringContainerExecute(r)
+	return r.ApiService.DeletePeeringContainerExecute(r)
 }
 
 /*
@@ -773,7 +773,7 @@ func (a *NetworkPeeringApiService) DeletePeeringContainer(ctx context.Context, g
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *NetworkPeeringApiService) deletePeeringContainerExecute(r DeletePeeringContainerApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *NetworkPeeringApiService) DeletePeeringContainerExecute(r DeletePeeringContainerApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -878,7 +878,7 @@ func (a *NetworkPeeringApiService) DisablePeeringWithParams(ctx context.Context,
 }
 
 func (r DisablePeeringApiRequest) Execute() (*PrivateIPMode, *http.Response, error) {
-	return r.ApiService.disablePeeringExecute(r)
+	return r.ApiService.DisablePeeringExecute(r)
 }
 
 /*
@@ -906,7 +906,7 @@ func (a *NetworkPeeringApiService) DisablePeering(ctx context.Context, groupId s
 //	@return PrivateIPMode
 //
 // Deprecated
-func (a *NetworkPeeringApiService) disablePeeringExecute(r DisablePeeringApiRequest) (*PrivateIPMode, *http.Response, error) {
+func (a *NetworkPeeringApiService) DisablePeeringExecute(r DisablePeeringApiRequest) (*PrivateIPMode, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -1015,7 +1015,7 @@ func (a *NetworkPeeringApiService) GetPeeringConnectionWithParams(ctx context.Co
 }
 
 func (r GetPeeringConnectionApiRequest) Execute() (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
-	return r.ApiService.getPeeringConnectionExecute(r)
+	return r.ApiService.GetPeeringConnectionExecute(r)
 }
 
 /*
@@ -1040,7 +1040,7 @@ func (a *NetworkPeeringApiService) GetPeeringConnection(ctx context.Context, gro
 // Execute executes the request
 //
 //	@return BaseNetworkPeeringConnectionSettings
-func (a *NetworkPeeringApiService) getPeeringConnectionExecute(r GetPeeringConnectionApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
+func (a *NetworkPeeringApiService) GetPeeringConnectionExecute(r GetPeeringConnectionApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1145,7 +1145,7 @@ func (a *NetworkPeeringApiService) GetPeeringContainerWithParams(ctx context.Con
 }
 
 func (r GetPeeringContainerApiRequest) Execute() (*CloudProviderContainer, *http.Response, error) {
-	return r.ApiService.getPeeringContainerExecute(r)
+	return r.ApiService.GetPeeringContainerExecute(r)
 }
 
 /*
@@ -1170,7 +1170,7 @@ func (a *NetworkPeeringApiService) GetPeeringContainer(ctx context.Context, grou
 // Execute executes the request
 //
 //	@return CloudProviderContainer
-func (a *NetworkPeeringApiService) getPeeringContainerExecute(r GetPeeringContainerApiRequest) (*CloudProviderContainer, *http.Response, error) {
+func (a *NetworkPeeringApiService) GetPeeringContainerExecute(r GetPeeringContainerApiRequest) (*CloudProviderContainer, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1308,7 +1308,7 @@ func (r ListPeeringConnectionsApiRequest) ProviderName(providerName string) List
 }
 
 func (r ListPeeringConnectionsApiRequest) Execute() (*PaginatedContainerPeer, *http.Response, error) {
-	return r.ApiService.listPeeringConnectionsExecute(r)
+	return r.ApiService.ListPeeringConnectionsExecute(r)
 }
 
 /*
@@ -1331,7 +1331,7 @@ func (a *NetworkPeeringApiService) ListPeeringConnections(ctx context.Context, g
 // Execute executes the request
 //
 //	@return PaginatedContainerPeer
-func (a *NetworkPeeringApiService) listPeeringConnectionsExecute(r ListPeeringConnectionsApiRequest) (*PaginatedContainerPeer, *http.Response, error) {
+func (a *NetworkPeeringApiService) ListPeeringConnectionsExecute(r ListPeeringConnectionsApiRequest) (*PaginatedContainerPeer, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1496,7 +1496,7 @@ func (r ListPeeringContainerByCloudProviderApiRequest) PageNum(pageNum int) List
 }
 
 func (r ListPeeringContainerByCloudProviderApiRequest) Execute() (*PaginatedCloudProviderContainer, *http.Response, error) {
-	return r.ApiService.listPeeringContainerByCloudProviderExecute(r)
+	return r.ApiService.ListPeeringContainerByCloudProviderExecute(r)
 }
 
 /*
@@ -1519,7 +1519,7 @@ func (a *NetworkPeeringApiService) ListPeeringContainerByCloudProvider(ctx conte
 // Execute executes the request
 //
 //	@return PaginatedCloudProviderContainer
-func (a *NetworkPeeringApiService) listPeeringContainerByCloudProviderExecute(r ListPeeringContainerByCloudProviderApiRequest) (*PaginatedCloudProviderContainer, *http.Response, error) {
+func (a *NetworkPeeringApiService) ListPeeringContainerByCloudProviderExecute(r ListPeeringContainerByCloudProviderApiRequest) (*PaginatedCloudProviderContainer, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1672,7 +1672,7 @@ func (r ListPeeringContainersApiRequest) PageNum(pageNum int) ListPeeringContain
 }
 
 func (r ListPeeringContainersApiRequest) Execute() (*PaginatedCloudProviderContainer, *http.Response, error) {
-	return r.ApiService.listPeeringContainersExecute(r)
+	return r.ApiService.ListPeeringContainersExecute(r)
 }
 
 /*
@@ -1695,7 +1695,7 @@ func (a *NetworkPeeringApiService) ListPeeringContainers(ctx context.Context, gr
 // Execute executes the request
 //
 //	@return PaginatedCloudProviderContainer
-func (a *NetworkPeeringApiService) listPeeringContainersExecute(r ListPeeringContainersApiRequest) (*PaginatedCloudProviderContainer, *http.Response, error) {
+func (a *NetworkPeeringApiService) ListPeeringContainersExecute(r ListPeeringContainersApiRequest) (*PaginatedCloudProviderContainer, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1823,7 +1823,7 @@ func (a *NetworkPeeringApiService) UpdatePeeringConnectionWithParams(ctx context
 }
 
 func (r UpdatePeeringConnectionApiRequest) Execute() (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
-	return r.ApiService.updatePeeringConnectionExecute(r)
+	return r.ApiService.UpdatePeeringConnectionExecute(r)
 }
 
 /*
@@ -1849,7 +1849,7 @@ func (a *NetworkPeeringApiService) UpdatePeeringConnection(ctx context.Context, 
 // Execute executes the request
 //
 //	@return BaseNetworkPeeringConnectionSettings
-func (a *NetworkPeeringApiService) updatePeeringConnectionExecute(r UpdatePeeringConnectionApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
+func (a *NetworkPeeringApiService) UpdatePeeringConnectionExecute(r UpdatePeeringConnectionApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -1962,7 +1962,7 @@ func (a *NetworkPeeringApiService) UpdatePeeringContainerWithParams(ctx context.
 }
 
 func (r UpdatePeeringContainerApiRequest) Execute() (*CloudProviderContainer, *http.Response, error) {
-	return r.ApiService.updatePeeringContainerExecute(r)
+	return r.ApiService.UpdatePeeringContainerExecute(r)
 }
 
 /*
@@ -1988,7 +1988,7 @@ func (a *NetworkPeeringApiService) UpdatePeeringContainer(ctx context.Context, g
 // Execute executes the request
 //
 //	@return CloudProviderContainer
-func (a *NetworkPeeringApiService) updatePeeringContainerExecute(r UpdatePeeringContainerApiRequest) (*CloudProviderContainer, *http.Response, error) {
+func (a *NetworkPeeringApiService) UpdatePeeringContainerExecute(r UpdatePeeringContainerApiRequest) (*CloudProviderContainer, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -2095,7 +2095,7 @@ func (a *NetworkPeeringApiService) VerifyConnectViaPeeringOnlyModeForOneProjectW
 }
 
 func (r VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest) Execute() (*PrivateIPMode, *http.Response, error) {
-	return r.ApiService.verifyConnectViaPeeringOnlyModeForOneProjectExecute(r)
+	return r.ApiService.VerifyConnectViaPeeringOnlyModeForOneProjectExecute(r)
 }
 
 /*
@@ -2122,7 +2122,7 @@ func (a *NetworkPeeringApiService) VerifyConnectViaPeeringOnlyModeForOneProject(
 //	@return PrivateIPMode
 //
 // Deprecated
-func (a *NetworkPeeringApiService) verifyConnectViaPeeringOnlyModeForOneProjectExecute(r VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest) (*PrivateIPMode, *http.Response, error) {
+func (a *NetworkPeeringApiService) VerifyConnectViaPeeringOnlyModeForOneProjectExecute(r VerifyConnectViaPeeringOnlyModeForOneProjectApiRequest) (*PrivateIPMode, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}

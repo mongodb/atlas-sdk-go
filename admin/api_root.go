@@ -32,7 +32,7 @@ type RootApi interface {
 	GetSystemStatusWithParams(ctx context.Context, args *GetSystemStatusApiParams) GetSystemStatusApiRequest
 
 	// Interface only available internally
-	getSystemStatusExecute(r GetSystemStatusApiRequest) (*SystemStatus, *http.Response, error)
+	GetSystemStatusExecute(r GetSystemStatusApiRequest) (*SystemStatus, *http.Response, error)
 }
 
 // RootApiService RootApi service
@@ -54,7 +54,7 @@ func (a *RootApiService) GetSystemStatusWithParams(ctx context.Context, args *Ge
 }
 
 func (r GetSystemStatusApiRequest) Execute() (*SystemStatus, *http.Response, error) {
-	return r.ApiService.getSystemStatusExecute(r)
+	return r.ApiService.GetSystemStatusExecute(r)
 }
 
 /*
@@ -75,7 +75,7 @@ func (a *RootApiService) GetSystemStatus(ctx context.Context) GetSystemStatusApi
 // Execute executes the request
 //
 //	@return SystemStatus
-func (a *RootApiService) getSystemStatusExecute(r GetSystemStatusApiRequest) (*SystemStatus, *http.Response, error) {
+func (a *RootApiService) GetSystemStatusExecute(r GetSystemStatusApiRequest) (*SystemStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}

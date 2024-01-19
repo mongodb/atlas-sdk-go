@@ -34,7 +34,7 @@ type AuditingApi interface {
 	GetAuditingConfigurationWithParams(ctx context.Context, args *GetAuditingConfigurationApiParams) GetAuditingConfigurationApiRequest
 
 	// Interface only available internally
-	getAuditingConfigurationExecute(r GetAuditingConfigurationApiRequest) (*AuditLog, *http.Response, error)
+	GetAuditingConfigurationExecute(r GetAuditingConfigurationApiRequest) (*AuditLog, *http.Response, error)
 
 	/*
 		UpdateAuditingConfiguration Update Auditing Configuration for One Project
@@ -57,7 +57,7 @@ type AuditingApi interface {
 	UpdateAuditingConfigurationWithParams(ctx context.Context, args *UpdateAuditingConfigurationApiParams) UpdateAuditingConfigurationApiRequest
 
 	// Interface only available internally
-	updateAuditingConfigurationExecute(r UpdateAuditingConfigurationApiRequest) (*AuditLog, *http.Response, error)
+	UpdateAuditingConfigurationExecute(r UpdateAuditingConfigurationApiRequest) (*AuditLog, *http.Response, error)
 }
 
 // AuditingApiService AuditingApi service
@@ -82,7 +82,7 @@ func (a *AuditingApiService) GetAuditingConfigurationWithParams(ctx context.Cont
 }
 
 func (r GetAuditingConfigurationApiRequest) Execute() (*AuditLog, *http.Response, error) {
-	return r.ApiService.getAuditingConfigurationExecute(r)
+	return r.ApiService.GetAuditingConfigurationExecute(r)
 }
 
 /*
@@ -105,7 +105,7 @@ func (a *AuditingApiService) GetAuditingConfiguration(ctx context.Context, group
 // Execute executes the request
 //
 //	@return AuditLog
-func (a *AuditingApiService) getAuditingConfigurationExecute(r GetAuditingConfigurationApiRequest) (*AuditLog, *http.Response, error) {
+func (a *AuditingApiService) GetAuditingConfigurationExecute(r GetAuditingConfigurationApiRequest) (*AuditLog, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -209,7 +209,7 @@ func (a *AuditingApiService) UpdateAuditingConfigurationWithParams(ctx context.C
 }
 
 func (r UpdateAuditingConfigurationApiRequest) Execute() (*AuditLog, *http.Response, error) {
-	return r.ApiService.updateAuditingConfigurationExecute(r)
+	return r.ApiService.UpdateAuditingConfigurationExecute(r)
 }
 
 /*
@@ -233,7 +233,7 @@ func (a *AuditingApiService) UpdateAuditingConfiguration(ctx context.Context, gr
 // Execute executes the request
 //
 //	@return AuditLog
-func (a *AuditingApiService) updateAuditingConfigurationExecute(r UpdateAuditingConfigurationApiRequest) (*AuditLog, *http.Response, error) {
+func (a *AuditingApiService) UpdateAuditingConfigurationExecute(r UpdateAuditingConfigurationApiRequest) (*AuditLog, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}

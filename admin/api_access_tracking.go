@@ -35,7 +35,7 @@ type AccessTrackingApi interface {
 	ListAccessLogsByClusterNameWithParams(ctx context.Context, args *ListAccessLogsByClusterNameApiParams) ListAccessLogsByClusterNameApiRequest
 
 	// Interface only available internally
-	listAccessLogsByClusterNameExecute(r ListAccessLogsByClusterNameApiRequest) (*MongoDBAccessLogsList, *http.Response, error)
+	ListAccessLogsByClusterNameExecute(r ListAccessLogsByClusterNameApiRequest) (*MongoDBAccessLogsList, *http.Response, error)
 
 	/*
 		ListAccessLogsByHostname Return Database Access History for One Cluster using Its Hostname
@@ -59,7 +59,7 @@ type AccessTrackingApi interface {
 	ListAccessLogsByHostnameWithParams(ctx context.Context, args *ListAccessLogsByHostnameApiParams) ListAccessLogsByHostnameApiRequest
 
 	// Interface only available internally
-	listAccessLogsByHostnameExecute(r ListAccessLogsByHostnameApiRequest) (*MongoDBAccessLogsList, *http.Response, error)
+	ListAccessLogsByHostnameExecute(r ListAccessLogsByHostnameApiRequest) (*MongoDBAccessLogsList, *http.Response, error)
 }
 
 // AccessTrackingApiService AccessTrackingApi service
@@ -132,7 +132,7 @@ func (r ListAccessLogsByClusterNameApiRequest) Start(start int64) ListAccessLogs
 }
 
 func (r ListAccessLogsByClusterNameApiRequest) Execute() (*MongoDBAccessLogsList, *http.Response, error) {
-	return r.ApiService.listAccessLogsByClusterNameExecute(r)
+	return r.ApiService.ListAccessLogsByClusterNameExecute(r)
 }
 
 /*
@@ -157,7 +157,7 @@ func (a *AccessTrackingApiService) ListAccessLogsByClusterName(ctx context.Conte
 // Execute executes the request
 //
 //	@return MongoDBAccessLogsList
-func (a *AccessTrackingApiService) listAccessLogsByClusterNameExecute(r ListAccessLogsByClusterNameApiRequest) (*MongoDBAccessLogsList, *http.Response, error) {
+func (a *AccessTrackingApiService) ListAccessLogsByClusterNameExecute(r ListAccessLogsByClusterNameApiRequest) (*MongoDBAccessLogsList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -326,7 +326,7 @@ func (r ListAccessLogsByHostnameApiRequest) Start(start int64) ListAccessLogsByH
 }
 
 func (r ListAccessLogsByHostnameApiRequest) Execute() (*MongoDBAccessLogsList, *http.Response, error) {
-	return r.ApiService.listAccessLogsByHostnameExecute(r)
+	return r.ApiService.ListAccessLogsByHostnameExecute(r)
 }
 
 /*
@@ -351,7 +351,7 @@ func (a *AccessTrackingApiService) ListAccessLogsByHostname(ctx context.Context,
 // Execute executes the request
 //
 //	@return MongoDBAccessLogsList
-func (a *AccessTrackingApiService) listAccessLogsByHostnameExecute(r ListAccessLogsByHostnameApiRequest) (*MongoDBAccessLogsList, *http.Response, error) {
+func (a *AccessTrackingApiService) ListAccessLogsByHostnameExecute(r ListAccessLogsByHostnameApiRequest) (*MongoDBAccessLogsList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}

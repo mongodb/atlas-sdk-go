@@ -40,7 +40,7 @@ type LegacyBackupApi interface {
 	DeleteLegacySnapshotWithParams(ctx context.Context, args *DeleteLegacySnapshotApiParams) DeleteLegacySnapshotApiRequest
 
 	// Interface only available internally
-	deleteLegacySnapshotExecute(r DeleteLegacySnapshotApiRequest) (map[string]interface{}, *http.Response, error)
+	DeleteLegacySnapshotExecute(r DeleteLegacySnapshotApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
 		GetLegacyBackupCheckpoint Return One Legacy Backup Checkpoint
@@ -69,7 +69,7 @@ type LegacyBackupApi interface {
 	GetLegacyBackupCheckpointWithParams(ctx context.Context, args *GetLegacyBackupCheckpointApiParams) GetLegacyBackupCheckpointApiRequest
 
 	// Interface only available internally
-	getLegacyBackupCheckpointExecute(r GetLegacyBackupCheckpointApiRequest) (*ApiAtlasCheckpoint, *http.Response, error)
+	GetLegacyBackupCheckpointExecute(r GetLegacyBackupCheckpointApiRequest) (*ApiAtlasCheckpoint, *http.Response, error)
 
 	/*
 		GetLegacyBackupRestoreJob Return One Legacy Backup Restore Job
@@ -100,7 +100,7 @@ type LegacyBackupApi interface {
 	GetLegacyBackupRestoreJobWithParams(ctx context.Context, args *GetLegacyBackupRestoreJobApiParams) GetLegacyBackupRestoreJobApiRequest
 
 	// Interface only available internally
-	getLegacyBackupRestoreJobExecute(r GetLegacyBackupRestoreJobApiRequest) (*BackupRestoreJob, *http.Response, error)
+	GetLegacyBackupRestoreJobExecute(r GetLegacyBackupRestoreJobApiRequest) (*BackupRestoreJob, *http.Response, error)
 
 	/*
 		GetLegacySnapshot Return One Legacy Backup Snapshot
@@ -129,7 +129,7 @@ type LegacyBackupApi interface {
 	GetLegacySnapshotWithParams(ctx context.Context, args *GetLegacySnapshotApiParams) GetLegacySnapshotApiRequest
 
 	// Interface only available internally
-	getLegacySnapshotExecute(r GetLegacySnapshotApiRequest) (*BackupSnapshot, *http.Response, error)
+	GetLegacySnapshotExecute(r GetLegacySnapshotApiRequest) (*BackupSnapshot, *http.Response, error)
 
 	/*
 		GetLegacySnapshotSchedule Return One Snapshot Schedule
@@ -159,7 +159,7 @@ type LegacyBackupApi interface {
 	GetLegacySnapshotScheduleWithParams(ctx context.Context, args *GetLegacySnapshotScheduleApiParams) GetLegacySnapshotScheduleApiRequest
 
 	// Interface only available internally
-	getLegacySnapshotScheduleExecute(r GetLegacySnapshotScheduleApiRequest) (*ApiAtlasSnapshotSchedule, *http.Response, error)
+	GetLegacySnapshotScheduleExecute(r GetLegacySnapshotScheduleApiRequest) (*ApiAtlasSnapshotSchedule, *http.Response, error)
 
 	/*
 		ListLegacyBackupCheckpoints Return All Legacy Backup Checkpoints
@@ -187,7 +187,7 @@ type LegacyBackupApi interface {
 	ListLegacyBackupCheckpointsWithParams(ctx context.Context, args *ListLegacyBackupCheckpointsApiParams) ListLegacyBackupCheckpointsApiRequest
 
 	// Interface only available internally
-	listLegacyBackupCheckpointsExecute(r ListLegacyBackupCheckpointsApiRequest) (*PaginatedApiAtlasCheckpoint, *http.Response, error)
+	ListLegacyBackupCheckpointsExecute(r ListLegacyBackupCheckpointsApiRequest) (*PaginatedApiAtlasCheckpoint, *http.Response, error)
 
 	/*
 		ListLegacyBackupRestoreJobs Return All Legacy Backup Restore Jobs
@@ -217,7 +217,7 @@ type LegacyBackupApi interface {
 	ListLegacyBackupRestoreJobsWithParams(ctx context.Context, args *ListLegacyBackupRestoreJobsApiParams) ListLegacyBackupRestoreJobsApiRequest
 
 	// Interface only available internally
-	listLegacyBackupRestoreJobsExecute(r ListLegacyBackupRestoreJobsApiRequest) (*PaginatedRestoreJob, *http.Response, error)
+	ListLegacyBackupRestoreJobsExecute(r ListLegacyBackupRestoreJobsApiRequest) (*PaginatedRestoreJob, *http.Response, error)
 
 	/*
 		ListLegacySnapshots Return All Legacy Backup Snapshots
@@ -245,7 +245,7 @@ type LegacyBackupApi interface {
 	ListLegacySnapshotsWithParams(ctx context.Context, args *ListLegacySnapshotsApiParams) ListLegacySnapshotsApiRequest
 
 	// Interface only available internally
-	listLegacySnapshotsExecute(r ListLegacySnapshotsApiRequest) (*PaginatedSnapshot, *http.Response, error)
+	ListLegacySnapshotsExecute(r ListLegacySnapshotsApiRequest) (*PaginatedSnapshot, *http.Response, error)
 
 	/*
 		UpdateLegacySnapshotRetention Change One Legacy Backup Snapshot Expiration
@@ -274,7 +274,7 @@ type LegacyBackupApi interface {
 	UpdateLegacySnapshotRetentionWithParams(ctx context.Context, args *UpdateLegacySnapshotRetentionApiParams) UpdateLegacySnapshotRetentionApiRequest
 
 	// Interface only available internally
-	updateLegacySnapshotRetentionExecute(r UpdateLegacySnapshotRetentionApiRequest) (*BackupSnapshot, *http.Response, error)
+	UpdateLegacySnapshotRetentionExecute(r UpdateLegacySnapshotRetentionApiRequest) (*BackupSnapshot, *http.Response, error)
 
 	/*
 		UpdateLegacySnapshotSchedule Update Snapshot Schedule for One Cluster
@@ -304,7 +304,7 @@ type LegacyBackupApi interface {
 	UpdateLegacySnapshotScheduleWithParams(ctx context.Context, args *UpdateLegacySnapshotScheduleApiParams) UpdateLegacySnapshotScheduleApiRequest
 
 	// Interface only available internally
-	updateLegacySnapshotScheduleExecute(r UpdateLegacySnapshotScheduleApiRequest) (*ApiAtlasSnapshotSchedule, *http.Response, error)
+	UpdateLegacySnapshotScheduleExecute(r UpdateLegacySnapshotScheduleApiRequest) (*ApiAtlasSnapshotSchedule, *http.Response, error)
 }
 
 // LegacyBackupApiService LegacyBackupApi service
@@ -335,7 +335,7 @@ func (a *LegacyBackupApiService) DeleteLegacySnapshotWithParams(ctx context.Cont
 }
 
 func (r DeleteLegacySnapshotApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.deleteLegacySnapshotExecute(r)
+	return r.ApiService.DeleteLegacySnapshotExecute(r)
 }
 
 /*
@@ -366,7 +366,7 @@ func (a *LegacyBackupApiService) DeleteLegacySnapshot(ctx context.Context, group
 //	@return map[string]interface{}
 //
 // Deprecated
-func (a *LegacyBackupApiService) deleteLegacySnapshotExecute(r DeleteLegacySnapshotApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *LegacyBackupApiService) DeleteLegacySnapshotExecute(r DeleteLegacySnapshotApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -475,7 +475,7 @@ func (a *LegacyBackupApiService) GetLegacyBackupCheckpointWithParams(ctx context
 }
 
 func (r GetLegacyBackupCheckpointApiRequest) Execute() (*ApiAtlasCheckpoint, *http.Response, error) {
-	return r.ApiService.getLegacyBackupCheckpointExecute(r)
+	return r.ApiService.GetLegacyBackupCheckpointExecute(r)
 }
 
 /*
@@ -506,7 +506,7 @@ func (a *LegacyBackupApiService) GetLegacyBackupCheckpoint(ctx context.Context, 
 //	@return ApiAtlasCheckpoint
 //
 // Deprecated
-func (a *LegacyBackupApiService) getLegacyBackupCheckpointExecute(r GetLegacyBackupCheckpointApiRequest) (*ApiAtlasCheckpoint, *http.Response, error) {
+func (a *LegacyBackupApiService) GetLegacyBackupCheckpointExecute(r GetLegacyBackupCheckpointApiRequest) (*ApiAtlasCheckpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -615,7 +615,7 @@ func (a *LegacyBackupApiService) GetLegacyBackupRestoreJobWithParams(ctx context
 }
 
 func (r GetLegacyBackupRestoreJobApiRequest) Execute() (*BackupRestoreJob, *http.Response, error) {
-	return r.ApiService.getLegacyBackupRestoreJobExecute(r)
+	return r.ApiService.GetLegacyBackupRestoreJobExecute(r)
 }
 
 /*
@@ -648,7 +648,7 @@ func (a *LegacyBackupApiService) GetLegacyBackupRestoreJob(ctx context.Context, 
 //	@return BackupRestoreJob
 //
 // Deprecated
-func (a *LegacyBackupApiService) getLegacyBackupRestoreJobExecute(r GetLegacyBackupRestoreJobApiRequest) (*BackupRestoreJob, *http.Response, error) {
+func (a *LegacyBackupApiService) GetLegacyBackupRestoreJobExecute(r GetLegacyBackupRestoreJobApiRequest) (*BackupRestoreJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -757,7 +757,7 @@ func (a *LegacyBackupApiService) GetLegacySnapshotWithParams(ctx context.Context
 }
 
 func (r GetLegacySnapshotApiRequest) Execute() (*BackupSnapshot, *http.Response, error) {
-	return r.ApiService.getLegacySnapshotExecute(r)
+	return r.ApiService.GetLegacySnapshotExecute(r)
 }
 
 /*
@@ -788,7 +788,7 @@ func (a *LegacyBackupApiService) GetLegacySnapshot(ctx context.Context, groupId 
 //	@return BackupSnapshot
 //
 // Deprecated
-func (a *LegacyBackupApiService) getLegacySnapshotExecute(r GetLegacySnapshotApiRequest) (*BackupSnapshot, *http.Response, error) {
+func (a *LegacyBackupApiService) GetLegacySnapshotExecute(r GetLegacySnapshotApiRequest) (*BackupSnapshot, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -894,7 +894,7 @@ func (a *LegacyBackupApiService) GetLegacySnapshotScheduleWithParams(ctx context
 }
 
 func (r GetLegacySnapshotScheduleApiRequest) Execute() (*ApiAtlasSnapshotSchedule, *http.Response, error) {
-	return r.ApiService.getLegacySnapshotScheduleExecute(r)
+	return r.ApiService.GetLegacySnapshotScheduleExecute(r)
 }
 
 /*
@@ -925,7 +925,7 @@ func (a *LegacyBackupApiService) GetLegacySnapshotSchedule(ctx context.Context, 
 //	@return ApiAtlasSnapshotSchedule
 //
 // Deprecated
-func (a *LegacyBackupApiService) getLegacySnapshotScheduleExecute(r GetLegacySnapshotScheduleApiRequest) (*ApiAtlasSnapshotSchedule, *http.Response, error) {
+func (a *LegacyBackupApiService) GetLegacySnapshotScheduleExecute(r GetLegacySnapshotScheduleApiRequest) (*ApiAtlasSnapshotSchedule, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1057,7 +1057,7 @@ func (r ListLegacyBackupCheckpointsApiRequest) PageNum(pageNum int) ListLegacyBa
 }
 
 func (r ListLegacyBackupCheckpointsApiRequest) Execute() (*PaginatedApiAtlasCheckpoint, *http.Response, error) {
-	return r.ApiService.listLegacyBackupCheckpointsExecute(r)
+	return r.ApiService.ListLegacyBackupCheckpointsExecute(r)
 }
 
 /*
@@ -1086,7 +1086,7 @@ func (a *LegacyBackupApiService) ListLegacyBackupCheckpoints(ctx context.Context
 //	@return PaginatedApiAtlasCheckpoint
 //
 // Deprecated
-func (a *LegacyBackupApiService) listLegacyBackupCheckpointsExecute(r ListLegacyBackupCheckpointsApiRequest) (*PaginatedApiAtlasCheckpoint, *http.Response, error) {
+func (a *LegacyBackupApiService) ListLegacyBackupCheckpointsExecute(r ListLegacyBackupCheckpointsApiRequest) (*PaginatedApiAtlasCheckpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1248,7 +1248,7 @@ func (r ListLegacyBackupRestoreJobsApiRequest) BatchId(batchId string) ListLegac
 }
 
 func (r ListLegacyBackupRestoreJobsApiRequest) Execute() (*PaginatedRestoreJob, *http.Response, error) {
-	return r.ApiService.listLegacyBackupRestoreJobsExecute(r)
+	return r.ApiService.ListLegacyBackupRestoreJobsExecute(r)
 }
 
 /*
@@ -1279,7 +1279,7 @@ func (a *LegacyBackupApiService) ListLegacyBackupRestoreJobs(ctx context.Context
 //	@return PaginatedRestoreJob
 //
 // Deprecated
-func (a *LegacyBackupApiService) listLegacyBackupRestoreJobsExecute(r ListLegacyBackupRestoreJobsApiRequest) (*PaginatedRestoreJob, *http.Response, error) {
+func (a *LegacyBackupApiService) ListLegacyBackupRestoreJobsExecute(r ListLegacyBackupRestoreJobsApiRequest) (*PaginatedRestoreJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1444,7 +1444,7 @@ func (r ListLegacySnapshotsApiRequest) Completed(completed string) ListLegacySna
 }
 
 func (r ListLegacySnapshotsApiRequest) Execute() (*PaginatedSnapshot, *http.Response, error) {
-	return r.ApiService.listLegacySnapshotsExecute(r)
+	return r.ApiService.ListLegacySnapshotsExecute(r)
 }
 
 /*
@@ -1473,7 +1473,7 @@ func (a *LegacyBackupApiService) ListLegacySnapshots(ctx context.Context, groupI
 //	@return PaginatedSnapshot
 //
 // Deprecated
-func (a *LegacyBackupApiService) listLegacySnapshotsExecute(r ListLegacySnapshotsApiRequest) (*PaginatedSnapshot, *http.Response, error) {
+func (a *LegacyBackupApiService) ListLegacySnapshotsExecute(r ListLegacySnapshotsApiRequest) (*PaginatedSnapshot, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1612,7 +1612,7 @@ func (a *LegacyBackupApiService) UpdateLegacySnapshotRetentionWithParams(ctx con
 }
 
 func (r UpdateLegacySnapshotRetentionApiRequest) Execute() (*BackupSnapshot, *http.Response, error) {
-	return r.ApiService.updateLegacySnapshotRetentionExecute(r)
+	return r.ApiService.UpdateLegacySnapshotRetentionExecute(r)
 }
 
 /*
@@ -1644,7 +1644,7 @@ func (a *LegacyBackupApiService) UpdateLegacySnapshotRetention(ctx context.Conte
 //	@return BackupSnapshot
 //
 // Deprecated
-func (a *LegacyBackupApiService) updateLegacySnapshotRetentionExecute(r UpdateLegacySnapshotRetentionApiRequest) (*BackupSnapshot, *http.Response, error) {
+func (a *LegacyBackupApiService) UpdateLegacySnapshotRetentionExecute(r UpdateLegacySnapshotRetentionApiRequest) (*BackupSnapshot, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -1758,7 +1758,7 @@ func (a *LegacyBackupApiService) UpdateLegacySnapshotScheduleWithParams(ctx cont
 }
 
 func (r UpdateLegacySnapshotScheduleApiRequest) Execute() (*ApiAtlasSnapshotSchedule, *http.Response, error) {
-	return r.ApiService.updateLegacySnapshotScheduleExecute(r)
+	return r.ApiService.UpdateLegacySnapshotScheduleExecute(r)
 }
 
 /*
@@ -1790,7 +1790,7 @@ func (a *LegacyBackupApiService) UpdateLegacySnapshotSchedule(ctx context.Contex
 //	@return ApiAtlasSnapshotSchedule
 //
 // Deprecated
-func (a *LegacyBackupApiService) updateLegacySnapshotScheduleExecute(r UpdateLegacySnapshotScheduleApiRequest) (*ApiAtlasSnapshotSchedule, *http.Response, error) {
+func (a *LegacyBackupApiService) UpdateLegacySnapshotScheduleExecute(r UpdateLegacySnapshotScheduleApiRequest) (*ApiAtlasSnapshotSchedule, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}

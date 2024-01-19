@@ -37,7 +37,7 @@ type ServerlessPrivateEndpointsApi interface {
 	CreateServerlessPrivateEndpointWithParams(ctx context.Context, args *CreateServerlessPrivateEndpointApiParams) CreateServerlessPrivateEndpointApiRequest
 
 	// Interface only available internally
-	createServerlessPrivateEndpointExecute(r CreateServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error)
+	CreateServerlessPrivateEndpointExecute(r CreateServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error)
 
 	/*
 		DeleteServerlessPrivateEndpoint Remove One Private Endpoint for One Serverless Instance
@@ -62,7 +62,7 @@ type ServerlessPrivateEndpointsApi interface {
 	DeleteServerlessPrivateEndpointWithParams(ctx context.Context, args *DeleteServerlessPrivateEndpointApiParams) DeleteServerlessPrivateEndpointApiRequest
 
 	// Interface only available internally
-	deleteServerlessPrivateEndpointExecute(r DeleteServerlessPrivateEndpointApiRequest) (map[string]interface{}, *http.Response, error)
+	DeleteServerlessPrivateEndpointExecute(r DeleteServerlessPrivateEndpointApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
 		GetServerlessPrivateEndpoint Return One Private Endpoint for One Serverless Instance
@@ -87,7 +87,7 @@ type ServerlessPrivateEndpointsApi interface {
 	GetServerlessPrivateEndpointWithParams(ctx context.Context, args *GetServerlessPrivateEndpointApiParams) GetServerlessPrivateEndpointApiRequest
 
 	// Interface only available internally
-	getServerlessPrivateEndpointExecute(r GetServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error)
+	GetServerlessPrivateEndpointExecute(r GetServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error)
 
 	/*
 		ListServerlessPrivateEndpoints Return All Private Endpoints for One Serverless Instance
@@ -111,7 +111,7 @@ type ServerlessPrivateEndpointsApi interface {
 	ListServerlessPrivateEndpointsWithParams(ctx context.Context, args *ListServerlessPrivateEndpointsApiParams) ListServerlessPrivateEndpointsApiRequest
 
 	// Interface only available internally
-	listServerlessPrivateEndpointsExecute(r ListServerlessPrivateEndpointsApiRequest) ([]ServerlessTenantEndpoint, *http.Response, error)
+	ListServerlessPrivateEndpointsExecute(r ListServerlessPrivateEndpointsApiRequest) ([]ServerlessTenantEndpoint, *http.Response, error)
 
 	/*
 		UpdateServerlessPrivateEndpoint Update One Private Endpoint for One Serverless Instance
@@ -136,7 +136,7 @@ type ServerlessPrivateEndpointsApi interface {
 	UpdateServerlessPrivateEndpointWithParams(ctx context.Context, args *UpdateServerlessPrivateEndpointApiParams) UpdateServerlessPrivateEndpointApiRequest
 
 	// Interface only available internally
-	updateServerlessPrivateEndpointExecute(r UpdateServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error)
+	UpdateServerlessPrivateEndpointExecute(r UpdateServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error)
 }
 
 // ServerlessPrivateEndpointsApiService ServerlessPrivateEndpointsApi service
@@ -167,7 +167,7 @@ func (a *ServerlessPrivateEndpointsApiService) CreateServerlessPrivateEndpointWi
 }
 
 func (r CreateServerlessPrivateEndpointApiRequest) Execute() (*ServerlessTenantEndpoint, *http.Response, error) {
-	return r.ApiService.createServerlessPrivateEndpointExecute(r)
+	return r.ApiService.CreateServerlessPrivateEndpointExecute(r)
 }
 
 /*
@@ -195,7 +195,7 @@ func (a *ServerlessPrivateEndpointsApiService) CreateServerlessPrivateEndpoint(c
 // Execute executes the request
 //
 //	@return ServerlessTenantEndpoint
-func (a *ServerlessPrivateEndpointsApiService) createServerlessPrivateEndpointExecute(r CreateServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error) {
+func (a *ServerlessPrivateEndpointsApiService) CreateServerlessPrivateEndpointExecute(r CreateServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -308,7 +308,7 @@ func (a *ServerlessPrivateEndpointsApiService) DeleteServerlessPrivateEndpointWi
 }
 
 func (r DeleteServerlessPrivateEndpointApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.deleteServerlessPrivateEndpointExecute(r)
+	return r.ApiService.DeleteServerlessPrivateEndpointExecute(r)
 }
 
 /*
@@ -335,7 +335,7 @@ func (a *ServerlessPrivateEndpointsApiService) DeleteServerlessPrivateEndpoint(c
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *ServerlessPrivateEndpointsApiService) deleteServerlessPrivateEndpointExecute(r DeleteServerlessPrivateEndpointApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *ServerlessPrivateEndpointsApiService) DeleteServerlessPrivateEndpointExecute(r DeleteServerlessPrivateEndpointApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -444,7 +444,7 @@ func (a *ServerlessPrivateEndpointsApiService) GetServerlessPrivateEndpointWithP
 }
 
 func (r GetServerlessPrivateEndpointApiRequest) Execute() (*ServerlessTenantEndpoint, *http.Response, error) {
-	return r.ApiService.getServerlessPrivateEndpointExecute(r)
+	return r.ApiService.GetServerlessPrivateEndpointExecute(r)
 }
 
 /*
@@ -471,7 +471,7 @@ func (a *ServerlessPrivateEndpointsApiService) GetServerlessPrivateEndpoint(ctx 
 // Execute executes the request
 //
 //	@return ServerlessTenantEndpoint
-func (a *ServerlessPrivateEndpointsApiService) getServerlessPrivateEndpointExecute(r GetServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error) {
+func (a *ServerlessPrivateEndpointsApiService) GetServerlessPrivateEndpointExecute(r GetServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -577,7 +577,7 @@ func (a *ServerlessPrivateEndpointsApiService) ListServerlessPrivateEndpointsWit
 }
 
 func (r ListServerlessPrivateEndpointsApiRequest) Execute() ([]ServerlessTenantEndpoint, *http.Response, error) {
-	return r.ApiService.listServerlessPrivateEndpointsExecute(r)
+	return r.ApiService.ListServerlessPrivateEndpointsExecute(r)
 }
 
 /*
@@ -602,7 +602,7 @@ func (a *ServerlessPrivateEndpointsApiService) ListServerlessPrivateEndpoints(ct
 // Execute executes the request
 //
 //	@return []ServerlessTenantEndpoint
-func (a *ServerlessPrivateEndpointsApiService) listServerlessPrivateEndpointsExecute(r ListServerlessPrivateEndpointsApiRequest) ([]ServerlessTenantEndpoint, *http.Response, error) {
+func (a *ServerlessPrivateEndpointsApiService) ListServerlessPrivateEndpointsExecute(r ListServerlessPrivateEndpointsApiRequest) ([]ServerlessTenantEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -713,7 +713,7 @@ func (a *ServerlessPrivateEndpointsApiService) UpdateServerlessPrivateEndpointWi
 }
 
 func (r UpdateServerlessPrivateEndpointApiRequest) Execute() (*ServerlessTenantEndpoint, *http.Response, error) {
-	return r.ApiService.updateServerlessPrivateEndpointExecute(r)
+	return r.ApiService.UpdateServerlessPrivateEndpointExecute(r)
 }
 
 /*
@@ -741,7 +741,7 @@ func (a *ServerlessPrivateEndpointsApiService) UpdateServerlessPrivateEndpoint(c
 // Execute executes the request
 //
 //	@return ServerlessTenantEndpoint
-func (a *ServerlessPrivateEndpointsApiService) updateServerlessPrivateEndpointExecute(r UpdateServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error) {
+func (a *ServerlessPrivateEndpointsApiService) UpdateServerlessPrivateEndpointExecute(r UpdateServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}

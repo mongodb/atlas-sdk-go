@@ -37,7 +37,7 @@ type MonitoringAndLogsApi interface {
 	GetAtlasProcessWithParams(ctx context.Context, args *GetAtlasProcessApiParams) GetAtlasProcessApiRequest
 
 	// Interface only available internally
-	getAtlasProcessExecute(r GetAtlasProcessApiRequest) (*ApiHostViewAtlas, *http.Response, error)
+	GetAtlasProcessExecute(r GetAtlasProcessApiRequest) (*ApiHostViewAtlas, *http.Response, error)
 
 	/*
 		GetDatabase Return One Database for a MongoDB Process
@@ -62,7 +62,7 @@ type MonitoringAndLogsApi interface {
 	GetDatabaseWithParams(ctx context.Context, args *GetDatabaseApiParams) GetDatabaseApiRequest
 
 	// Interface only available internally
-	getDatabaseExecute(r GetDatabaseApiRequest) (*MesurementsDatabase, *http.Response, error)
+	GetDatabaseExecute(r GetDatabaseApiRequest) (*MesurementsDatabase, *http.Response, error)
 
 	/*
 		GetDatabaseMeasurements Return Measurements of One Database for One MongoDB Process
@@ -87,7 +87,7 @@ type MonitoringAndLogsApi interface {
 	GetDatabaseMeasurementsWithParams(ctx context.Context, args *GetDatabaseMeasurementsApiParams) GetDatabaseMeasurementsApiRequest
 
 	// Interface only available internally
-	getDatabaseMeasurementsExecute(r GetDatabaseMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error)
+	GetDatabaseMeasurementsExecute(r GetDatabaseMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error)
 
 	/*
 		GetDiskMeasurements Return Measurements of One Disk for One MongoDB Process
@@ -118,7 +118,7 @@ type MonitoringAndLogsApi interface {
 	GetDiskMeasurementsWithParams(ctx context.Context, args *GetDiskMeasurementsApiParams) GetDiskMeasurementsApiRequest
 
 	// Interface only available internally
-	getDiskMeasurementsExecute(r GetDiskMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error)
+	GetDiskMeasurementsExecute(r GetDiskMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error)
 
 	/*
 		GetHostLogs Download Logs for One Cluster Host in One Project
@@ -143,7 +143,7 @@ type MonitoringAndLogsApi interface {
 	GetHostLogsWithParams(ctx context.Context, args *GetHostLogsApiParams) GetHostLogsApiRequest
 
 	// Interface only available internally
-	getHostLogsExecute(r GetHostLogsApiRequest) (io.ReadCloser, *http.Response, error)
+	GetHostLogsExecute(r GetHostLogsApiRequest) (io.ReadCloser, *http.Response, error)
 
 	/*
 		GetHostMeasurements Return Measurements for One MongoDB Process
@@ -174,7 +174,7 @@ type MonitoringAndLogsApi interface {
 	GetHostMeasurementsWithParams(ctx context.Context, args *GetHostMeasurementsApiParams) GetHostMeasurementsApiRequest
 
 	// Interface only available internally
-	getHostMeasurementsExecute(r GetHostMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error)
+	GetHostMeasurementsExecute(r GetHostMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error)
 
 	/*
 		GetIndexMetrics Return Atlas Search Metrics for One Index in One Specified Namespace
@@ -201,7 +201,7 @@ type MonitoringAndLogsApi interface {
 	GetIndexMetricsWithParams(ctx context.Context, args *GetIndexMetricsApiParams) GetIndexMetricsApiRequest
 
 	// Interface only available internally
-	getIndexMetricsExecute(r GetIndexMetricsApiRequest) (*MeasurementsIndexes, *http.Response, error)
+	GetIndexMetricsExecute(r GetIndexMetricsApiRequest) (*MeasurementsIndexes, *http.Response, error)
 
 	/*
 		GetMeasurements Return Atlas Search Hardware and Status Metrics
@@ -225,7 +225,7 @@ type MonitoringAndLogsApi interface {
 	GetMeasurementsWithParams(ctx context.Context, args *GetMeasurementsApiParams) GetMeasurementsApiRequest
 
 	// Interface only available internally
-	getMeasurementsExecute(r GetMeasurementsApiRequest) (*MeasurementsNonIndex, *http.Response, error)
+	GetMeasurementsExecute(r GetMeasurementsApiRequest) (*MeasurementsNonIndex, *http.Response, error)
 
 	/*
 		ListAtlasProcesses Return All MongoDB Processes in One Project
@@ -248,7 +248,7 @@ type MonitoringAndLogsApi interface {
 	ListAtlasProcessesWithParams(ctx context.Context, args *ListAtlasProcessesApiParams) ListAtlasProcessesApiRequest
 
 	// Interface only available internally
-	listAtlasProcessesExecute(r ListAtlasProcessesApiRequest) (*PaginatedHostViewAtlas, *http.Response, error)
+	ListAtlasProcessesExecute(r ListAtlasProcessesApiRequest) (*PaginatedHostViewAtlas, *http.Response, error)
 
 	/*
 		ListDatabases Return Available Databases for One MongoDB Process
@@ -272,7 +272,7 @@ type MonitoringAndLogsApi interface {
 	ListDatabasesWithParams(ctx context.Context, args *ListDatabasesApiParams) ListDatabasesApiRequest
 
 	// Interface only available internally
-	listDatabasesExecute(r ListDatabasesApiRequest) (*PaginatedDatabase, *http.Response, error)
+	ListDatabasesExecute(r ListDatabasesApiRequest) (*PaginatedDatabase, *http.Response, error)
 
 	/*
 		ListDiskMeasurements Return Measurements of One Disk
@@ -297,7 +297,7 @@ type MonitoringAndLogsApi interface {
 	ListDiskMeasurementsWithParams(ctx context.Context, args *ListDiskMeasurementsApiParams) ListDiskMeasurementsApiRequest
 
 	// Interface only available internally
-	listDiskMeasurementsExecute(r ListDiskMeasurementsApiRequest) (*MeasurementDiskPartition, *http.Response, error)
+	ListDiskMeasurementsExecute(r ListDiskMeasurementsApiRequest) (*MeasurementDiskPartition, *http.Response, error)
 
 	/*
 		ListDiskPartitions Return Available Disks for One MongoDB Process
@@ -321,7 +321,7 @@ type MonitoringAndLogsApi interface {
 	ListDiskPartitionsWithParams(ctx context.Context, args *ListDiskPartitionsApiParams) ListDiskPartitionsApiRequest
 
 	// Interface only available internally
-	listDiskPartitionsExecute(r ListDiskPartitionsApiRequest) (*PaginatedDiskPartition, *http.Response, error)
+	ListDiskPartitionsExecute(r ListDiskPartitionsApiRequest) (*PaginatedDiskPartition, *http.Response, error)
 
 	/*
 		ListIndexMetrics Return All Atlas Search Index Metrics for One Namespace
@@ -347,7 +347,7 @@ type MonitoringAndLogsApi interface {
 	ListIndexMetricsWithParams(ctx context.Context, args *ListIndexMetricsApiParams) ListIndexMetricsApiRequest
 
 	// Interface only available internally
-	listIndexMetricsExecute(r ListIndexMetricsApiRequest) (*MeasurementsIndexes, *http.Response, error)
+	ListIndexMetricsExecute(r ListIndexMetricsApiRequest) (*MeasurementsIndexes, *http.Response, error)
 
 	/*
 		ListMetricTypes Return All Atlas Search Metric Types for One Process
@@ -371,7 +371,7 @@ type MonitoringAndLogsApi interface {
 	ListMetricTypesWithParams(ctx context.Context, args *ListMetricTypesApiParams) ListMetricTypesApiRequest
 
 	// Interface only available internally
-	listMetricTypesExecute(r ListMetricTypesApiRequest) (*CloudSearchMetrics, *http.Response, error)
+	ListMetricTypesExecute(r ListMetricTypesApiRequest) (*CloudSearchMetrics, *http.Response, error)
 }
 
 // MonitoringAndLogsApiService MonitoringAndLogsApi service
@@ -399,7 +399,7 @@ func (a *MonitoringAndLogsApiService) GetAtlasProcessWithParams(ctx context.Cont
 }
 
 func (r GetAtlasProcessApiRequest) Execute() (*ApiHostViewAtlas, *http.Response, error) {
-	return r.ApiService.getAtlasProcessExecute(r)
+	return r.ApiService.GetAtlasProcessExecute(r)
 }
 
 /*
@@ -424,7 +424,7 @@ func (a *MonitoringAndLogsApiService) GetAtlasProcess(ctx context.Context, group
 // Execute executes the request
 //
 //	@return ApiHostViewAtlas
-func (a *MonitoringAndLogsApiService) getAtlasProcessExecute(r GetAtlasProcessApiRequest) (*ApiHostViewAtlas, *http.Response, error) {
+func (a *MonitoringAndLogsApiService) GetAtlasProcessExecute(r GetAtlasProcessApiRequest) (*ApiHostViewAtlas, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -532,7 +532,7 @@ func (a *MonitoringAndLogsApiService) GetDatabaseWithParams(ctx context.Context,
 }
 
 func (r GetDatabaseApiRequest) Execute() (*MesurementsDatabase, *http.Response, error) {
-	return r.ApiService.getDatabaseExecute(r)
+	return r.ApiService.GetDatabaseExecute(r)
 }
 
 /*
@@ -559,7 +559,7 @@ func (a *MonitoringAndLogsApiService) GetDatabase(ctx context.Context, groupId s
 // Execute executes the request
 //
 //	@return MesurementsDatabase
-func (a *MonitoringAndLogsApiService) getDatabaseExecute(r GetDatabaseApiRequest) (*MesurementsDatabase, *http.Response, error) {
+func (a *MonitoringAndLogsApiService) GetDatabaseExecute(r GetDatabaseApiRequest) (*MesurementsDatabase, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -713,7 +713,7 @@ func (r GetDatabaseMeasurementsApiRequest) End(end time.Time) GetDatabaseMeasure
 }
 
 func (r GetDatabaseMeasurementsApiRequest) Execute() (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
-	return r.ApiService.getDatabaseMeasurementsExecute(r)
+	return r.ApiService.GetDatabaseMeasurementsExecute(r)
 }
 
 /*
@@ -740,7 +740,7 @@ func (a *MonitoringAndLogsApiService) GetDatabaseMeasurements(ctx context.Contex
 // Execute executes the request
 //
 //	@return ApiMeasurementsGeneralViewAtlas
-func (a *MonitoringAndLogsApiService) getDatabaseMeasurementsExecute(r GetDatabaseMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
+func (a *MonitoringAndLogsApiService) GetDatabaseMeasurementsExecute(r GetDatabaseMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -914,7 +914,7 @@ func (r GetDiskMeasurementsApiRequest) End(end time.Time) GetDiskMeasurementsApi
 }
 
 func (r GetDiskMeasurementsApiRequest) Execute() (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
-	return r.ApiService.getDiskMeasurementsExecute(r)
+	return r.ApiService.GetDiskMeasurementsExecute(r)
 }
 
 /*
@@ -947,7 +947,7 @@ func (a *MonitoringAndLogsApiService) GetDiskMeasurements(ctx context.Context, g
 // Execute executes the request
 //
 //	@return ApiMeasurementsGeneralViewAtlas
-func (a *MonitoringAndLogsApiService) getDiskMeasurementsExecute(r GetDiskMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
+func (a *MonitoringAndLogsApiService) GetDiskMeasurementsExecute(r GetDiskMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1094,7 +1094,7 @@ func (r GetHostLogsApiRequest) StartDate(startDate int64) GetHostLogsApiRequest 
 }
 
 func (r GetHostLogsApiRequest) Execute() (io.ReadCloser, *http.Response, error) {
-	return r.ApiService.getHostLogsExecute(r)
+	return r.ApiService.GetHostLogsExecute(r)
 }
 
 /*
@@ -1121,7 +1121,7 @@ func (a *MonitoringAndLogsApiService) GetHostLogs(ctx context.Context, groupId s
 // Execute executes the request
 //
 //	@return io.ReadCloser
-func (a *MonitoringAndLogsApiService) getHostLogsExecute(r GetHostLogsApiRequest) (io.ReadCloser, *http.Response, error) {
+func (a *MonitoringAndLogsApiService) GetHostLogsExecute(r GetHostLogsApiRequest) (io.ReadCloser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1278,7 +1278,7 @@ func (r GetHostMeasurementsApiRequest) End(end time.Time) GetHostMeasurementsApi
 }
 
 func (r GetHostMeasurementsApiRequest) Execute() (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
-	return r.ApiService.getHostMeasurementsExecute(r)
+	return r.ApiService.GetHostMeasurementsExecute(r)
 }
 
 /*
@@ -1310,7 +1310,7 @@ func (a *MonitoringAndLogsApiService) GetHostMeasurements(ctx context.Context, g
 // Execute executes the request
 //
 //	@return ApiMeasurementsGeneralViewAtlas
-func (a *MonitoringAndLogsApiService) getHostMeasurementsExecute(r GetHostMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
+func (a *MonitoringAndLogsApiService) GetHostMeasurementsExecute(r GetHostMeasurementsApiRequest) (*ApiMeasurementsGeneralViewAtlas, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1489,7 +1489,7 @@ func (r GetIndexMetricsApiRequest) End(end time.Time) GetIndexMetricsApiRequest 
 }
 
 func (r GetIndexMetricsApiRequest) Execute() (*MeasurementsIndexes, *http.Response, error) {
-	return r.ApiService.getIndexMetricsExecute(r)
+	return r.ApiService.GetIndexMetricsExecute(r)
 }
 
 /*
@@ -1520,7 +1520,7 @@ func (a *MonitoringAndLogsApiService) GetIndexMetrics(ctx context.Context, proce
 // Execute executes the request
 //
 //	@return MeasurementsIndexes
-func (a *MonitoringAndLogsApiService) getIndexMetricsExecute(r GetIndexMetricsApiRequest) (*MeasurementsIndexes, *http.Response, error) {
+func (a *MonitoringAndLogsApiService) GetIndexMetricsExecute(r GetIndexMetricsApiRequest) (*MeasurementsIndexes, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1695,7 +1695,7 @@ func (r GetMeasurementsApiRequest) End(end time.Time) GetMeasurementsApiRequest 
 }
 
 func (r GetMeasurementsApiRequest) Execute() (*MeasurementsNonIndex, *http.Response, error) {
-	return r.ApiService.getMeasurementsExecute(r)
+	return r.ApiService.GetMeasurementsExecute(r)
 }
 
 /*
@@ -1720,7 +1720,7 @@ func (a *MonitoringAndLogsApiService) GetMeasurements(ctx context.Context, proce
 // Execute executes the request
 //
 //	@return MeasurementsNonIndex
-func (a *MonitoringAndLogsApiService) getMeasurementsExecute(r GetMeasurementsApiRequest) (*MeasurementsNonIndex, *http.Response, error) {
+func (a *MonitoringAndLogsApiService) GetMeasurementsExecute(r GetMeasurementsApiRequest) (*MeasurementsNonIndex, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1871,7 +1871,7 @@ func (r ListAtlasProcessesApiRequest) PageNum(pageNum int) ListAtlasProcessesApi
 }
 
 func (r ListAtlasProcessesApiRequest) Execute() (*PaginatedHostViewAtlas, *http.Response, error) {
-	return r.ApiService.listAtlasProcessesExecute(r)
+	return r.ApiService.ListAtlasProcessesExecute(r)
 }
 
 /*
@@ -1894,7 +1894,7 @@ func (a *MonitoringAndLogsApiService) ListAtlasProcesses(ctx context.Context, gr
 // Execute executes the request
 //
 //	@return PaginatedHostViewAtlas
-func (a *MonitoringAndLogsApiService) listAtlasProcessesExecute(r ListAtlasProcessesApiRequest) (*PaginatedHostViewAtlas, *http.Response, error) {
+func (a *MonitoringAndLogsApiService) ListAtlasProcessesExecute(r ListAtlasProcessesApiRequest) (*PaginatedHostViewAtlas, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2046,7 +2046,7 @@ func (r ListDatabasesApiRequest) PageNum(pageNum int) ListDatabasesApiRequest {
 }
 
 func (r ListDatabasesApiRequest) Execute() (*PaginatedDatabase, *http.Response, error) {
-	return r.ApiService.listDatabasesExecute(r)
+	return r.ApiService.ListDatabasesExecute(r)
 }
 
 /*
@@ -2071,7 +2071,7 @@ func (a *MonitoringAndLogsApiService) ListDatabases(ctx context.Context, groupId
 // Execute executes the request
 //
 //	@return PaginatedDatabase
-func (a *MonitoringAndLogsApiService) listDatabasesExecute(r ListDatabasesApiRequest) (*PaginatedDatabase, *http.Response, error) {
+func (a *MonitoringAndLogsApiService) ListDatabasesExecute(r ListDatabasesApiRequest) (*PaginatedDatabase, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2200,7 +2200,7 @@ func (a *MonitoringAndLogsApiService) ListDiskMeasurementsWithParams(ctx context
 }
 
 func (r ListDiskMeasurementsApiRequest) Execute() (*MeasurementDiskPartition, *http.Response, error) {
-	return r.ApiService.listDiskMeasurementsExecute(r)
+	return r.ApiService.ListDiskMeasurementsExecute(r)
 }
 
 /*
@@ -2227,7 +2227,7 @@ func (a *MonitoringAndLogsApiService) ListDiskMeasurements(ctx context.Context, 
 // Execute executes the request
 //
 //	@return MeasurementDiskPartition
-func (a *MonitoringAndLogsApiService) listDiskMeasurementsExecute(r ListDiskMeasurementsApiRequest) (*MeasurementDiskPartition, *http.Response, error) {
+func (a *MonitoringAndLogsApiService) ListDiskMeasurementsExecute(r ListDiskMeasurementsApiRequest) (*MeasurementDiskPartition, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2360,7 +2360,7 @@ func (r ListDiskPartitionsApiRequest) PageNum(pageNum int) ListDiskPartitionsApi
 }
 
 func (r ListDiskPartitionsApiRequest) Execute() (*PaginatedDiskPartition, *http.Response, error) {
-	return r.ApiService.listDiskPartitionsExecute(r)
+	return r.ApiService.ListDiskPartitionsExecute(r)
 }
 
 /*
@@ -2385,7 +2385,7 @@ func (a *MonitoringAndLogsApiService) ListDiskPartitions(ctx context.Context, gr
 // Execute executes the request
 //
 //	@return PaginatedDiskPartition
-func (a *MonitoringAndLogsApiService) listDiskPartitionsExecute(r ListDiskPartitionsApiRequest) (*PaginatedDiskPartition, *http.Response, error) {
+func (a *MonitoringAndLogsApiService) ListDiskPartitionsExecute(r ListDiskPartitionsApiRequest) (*PaginatedDiskPartition, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2562,7 +2562,7 @@ func (r ListIndexMetricsApiRequest) End(end time.Time) ListIndexMetricsApiReques
 }
 
 func (r ListIndexMetricsApiRequest) Execute() (*MeasurementsIndexes, *http.Response, error) {
-	return r.ApiService.listIndexMetricsExecute(r)
+	return r.ApiService.ListIndexMetricsExecute(r)
 }
 
 /*
@@ -2591,7 +2591,7 @@ func (a *MonitoringAndLogsApiService) ListIndexMetrics(ctx context.Context, proc
 // Execute executes the request
 //
 //	@return MeasurementsIndexes
-func (a *MonitoringAndLogsApiService) listIndexMetricsExecute(r ListIndexMetricsApiRequest) (*MeasurementsIndexes, *http.Response, error) {
+func (a *MonitoringAndLogsApiService) ListIndexMetricsExecute(r ListIndexMetricsApiRequest) (*MeasurementsIndexes, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2720,7 +2720,7 @@ func (a *MonitoringAndLogsApiService) ListMetricTypesWithParams(ctx context.Cont
 }
 
 func (r ListMetricTypesApiRequest) Execute() (*CloudSearchMetrics, *http.Response, error) {
-	return r.ApiService.listMetricTypesExecute(r)
+	return r.ApiService.ListMetricTypesExecute(r)
 }
 
 /*
@@ -2745,7 +2745,7 @@ func (a *MonitoringAndLogsApiService) ListMetricTypes(ctx context.Context, proce
 // Execute executes the request
 //
 //	@return CloudSearchMetrics
-func (a *MonitoringAndLogsApiService) listMetricTypesExecute(r ListMetricTypesApiRequest) (*CloudSearchMetrics, *http.Response, error) {
+func (a *MonitoringAndLogsApiService) ListMetricTypesExecute(r ListMetricTypesApiRequest) (*CloudSearchMetrics, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}

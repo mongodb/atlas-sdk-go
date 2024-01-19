@@ -35,7 +35,7 @@ type StreamsApi interface {
 	CreateStreamConnectionWithParams(ctx context.Context, args *CreateStreamConnectionApiParams) CreateStreamConnectionApiRequest
 
 	// Interface only available internally
-	createStreamConnectionExecute(r CreateStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error)
+	CreateStreamConnectionExecute(r CreateStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error)
 
 	/*
 		CreateStreamInstance Create One Stream Instance
@@ -58,7 +58,7 @@ type StreamsApi interface {
 	CreateStreamInstanceWithParams(ctx context.Context, args *CreateStreamInstanceApiParams) CreateStreamInstanceApiRequest
 
 	// Interface only available internally
-	createStreamInstanceExecute(r CreateStreamInstanceApiRequest) (*StreamsTenant, *http.Response, error)
+	CreateStreamInstanceExecute(r CreateStreamInstanceApiRequest) (*StreamsTenant, *http.Response, error)
 
 	/*
 		DeleteStreamConnection Delete One Stream Connection
@@ -83,7 +83,7 @@ type StreamsApi interface {
 	DeleteStreamConnectionWithParams(ctx context.Context, args *DeleteStreamConnectionApiParams) DeleteStreamConnectionApiRequest
 
 	// Interface only available internally
-	deleteStreamConnectionExecute(r DeleteStreamConnectionApiRequest) (map[string]interface{}, *http.Response, error)
+	DeleteStreamConnectionExecute(r DeleteStreamConnectionApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
 		DeleteStreamInstance Delete One Stream Instance
@@ -107,7 +107,7 @@ type StreamsApi interface {
 	DeleteStreamInstanceWithParams(ctx context.Context, args *DeleteStreamInstanceApiParams) DeleteStreamInstanceApiRequest
 
 	// Interface only available internally
-	deleteStreamInstanceExecute(r DeleteStreamInstanceApiRequest) (map[string]interface{}, *http.Response, error)
+	DeleteStreamInstanceExecute(r DeleteStreamInstanceApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
 		GetStreamConnection Return One Stream Connection
@@ -132,7 +132,7 @@ type StreamsApi interface {
 	GetStreamConnectionWithParams(ctx context.Context, args *GetStreamConnectionApiParams) GetStreamConnectionApiRequest
 
 	// Interface only available internally
-	getStreamConnectionExecute(r GetStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error)
+	GetStreamConnectionExecute(r GetStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error)
 
 	/*
 		GetStreamInstance Return One Stream Instance
@@ -156,7 +156,7 @@ type StreamsApi interface {
 	GetStreamInstanceWithParams(ctx context.Context, args *GetStreamInstanceApiParams) GetStreamInstanceApiRequest
 
 	// Interface only available internally
-	getStreamInstanceExecute(r GetStreamInstanceApiRequest) (*StreamsTenant, *http.Response, error)
+	GetStreamInstanceExecute(r GetStreamInstanceApiRequest) (*StreamsTenant, *http.Response, error)
 
 	/*
 		ListStreamConnections Return All Connections Of The Stream Instances
@@ -180,7 +180,7 @@ type StreamsApi interface {
 	ListStreamConnectionsWithParams(ctx context.Context, args *ListStreamConnectionsApiParams) ListStreamConnectionsApiRequest
 
 	// Interface only available internally
-	listStreamConnectionsExecute(r ListStreamConnectionsApiRequest) (*PaginatedApiStreamsConnection, *http.Response, error)
+	ListStreamConnectionsExecute(r ListStreamConnectionsApiRequest) (*PaginatedApiStreamsConnection, *http.Response, error)
 
 	/*
 		ListStreamInstances Return All Project Stream Instances
@@ -203,7 +203,7 @@ type StreamsApi interface {
 	ListStreamInstancesWithParams(ctx context.Context, args *ListStreamInstancesApiParams) ListStreamInstancesApiRequest
 
 	// Interface only available internally
-	listStreamInstancesExecute(r ListStreamInstancesApiRequest) (*PaginatedApiStreamsTenant, *http.Response, error)
+	ListStreamInstancesExecute(r ListStreamInstancesApiRequest) (*PaginatedApiStreamsTenant, *http.Response, error)
 
 	/*
 		UpdateStreamConnection Update One Stream Connection
@@ -228,7 +228,7 @@ type StreamsApi interface {
 	UpdateStreamConnectionWithParams(ctx context.Context, args *UpdateStreamConnectionApiParams) UpdateStreamConnectionApiRequest
 
 	// Interface only available internally
-	updateStreamConnectionExecute(r UpdateStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error)
+	UpdateStreamConnectionExecute(r UpdateStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error)
 
 	/*
 		UpdateStreamInstance Update One Stream Instance
@@ -252,7 +252,7 @@ type StreamsApi interface {
 	UpdateStreamInstanceWithParams(ctx context.Context, args *UpdateStreamInstanceApiParams) UpdateStreamInstanceApiRequest
 
 	// Interface only available internally
-	updateStreamInstanceExecute(r UpdateStreamInstanceApiRequest) (*StreamsTenant, *http.Response, error)
+	UpdateStreamInstanceExecute(r UpdateStreamInstanceApiRequest) (*StreamsTenant, *http.Response, error)
 }
 
 // StreamsApiService StreamsApi service
@@ -283,7 +283,7 @@ func (a *StreamsApiService) CreateStreamConnectionWithParams(ctx context.Context
 }
 
 func (r CreateStreamConnectionApiRequest) Execute() (*StreamsConnection, *http.Response, error) {
-	return r.ApiService.createStreamConnectionExecute(r)
+	return r.ApiService.CreateStreamConnectionExecute(r)
 }
 
 /*
@@ -309,7 +309,7 @@ func (a *StreamsApiService) CreateStreamConnection(ctx context.Context, groupId 
 // Execute executes the request
 //
 //	@return StreamsConnection
-func (a *StreamsApiService) createStreamConnectionExecute(r CreateStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
+func (a *StreamsApiService) CreateStreamConnectionExecute(r CreateStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -419,7 +419,7 @@ func (a *StreamsApiService) CreateStreamInstanceWithParams(ctx context.Context, 
 }
 
 func (r CreateStreamInstanceApiRequest) Execute() (*StreamsTenant, *http.Response, error) {
-	return r.ApiService.createStreamInstanceExecute(r)
+	return r.ApiService.CreateStreamInstanceExecute(r)
 }
 
 /*
@@ -443,7 +443,7 @@ func (a *StreamsApiService) CreateStreamInstance(ctx context.Context, groupId st
 // Execute executes the request
 //
 //	@return StreamsTenant
-func (a *StreamsApiService) createStreamInstanceExecute(r CreateStreamInstanceApiRequest) (*StreamsTenant, *http.Response, error) {
+func (a *StreamsApiService) CreateStreamInstanceExecute(r CreateStreamInstanceApiRequest) (*StreamsTenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -555,7 +555,7 @@ func (a *StreamsApiService) DeleteStreamConnectionWithParams(ctx context.Context
 }
 
 func (r DeleteStreamConnectionApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.deleteStreamConnectionExecute(r)
+	return r.ApiService.DeleteStreamConnectionExecute(r)
 }
 
 /*
@@ -582,7 +582,7 @@ func (a *StreamsApiService) DeleteStreamConnection(ctx context.Context, groupId 
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *StreamsApiService) deleteStreamConnectionExecute(r DeleteStreamConnectionApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *StreamsApiService) DeleteStreamConnectionExecute(r DeleteStreamConnectionApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -688,7 +688,7 @@ func (a *StreamsApiService) DeleteStreamInstanceWithParams(ctx context.Context, 
 }
 
 func (r DeleteStreamInstanceApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.deleteStreamInstanceExecute(r)
+	return r.ApiService.DeleteStreamInstanceExecute(r)
 }
 
 /*
@@ -713,7 +713,7 @@ func (a *StreamsApiService) DeleteStreamInstance(ctx context.Context, groupId st
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *StreamsApiService) deleteStreamInstanceExecute(r DeleteStreamInstanceApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *StreamsApiService) DeleteStreamInstanceExecute(r DeleteStreamInstanceApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -821,7 +821,7 @@ func (a *StreamsApiService) GetStreamConnectionWithParams(ctx context.Context, a
 }
 
 func (r GetStreamConnectionApiRequest) Execute() (*StreamsConnection, *http.Response, error) {
-	return r.ApiService.getStreamConnectionExecute(r)
+	return r.ApiService.GetStreamConnectionExecute(r)
 }
 
 /*
@@ -848,7 +848,7 @@ func (a *StreamsApiService) GetStreamConnection(ctx context.Context, groupId str
 // Execute executes the request
 //
 //	@return StreamsConnection
-func (a *StreamsApiService) getStreamConnectionExecute(r GetStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
+func (a *StreamsApiService) GetStreamConnectionExecute(r GetStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -963,7 +963,7 @@ func (r GetStreamInstanceApiRequest) IncludeConnections(includeConnections bool)
 }
 
 func (r GetStreamInstanceApiRequest) Execute() (*StreamsTenant, *http.Response, error) {
-	return r.ApiService.getStreamInstanceExecute(r)
+	return r.ApiService.GetStreamInstanceExecute(r)
 }
 
 /*
@@ -988,7 +988,7 @@ func (a *StreamsApiService) GetStreamInstance(ctx context.Context, groupId strin
 // Execute executes the request
 //
 //	@return StreamsTenant
-func (a *StreamsApiService) getStreamInstanceExecute(r GetStreamInstanceApiRequest) (*StreamsTenant, *http.Response, error) {
+func (a *StreamsApiService) GetStreamInstanceExecute(r GetStreamInstanceApiRequest) (*StreamsTenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1114,7 +1114,7 @@ func (r ListStreamConnectionsApiRequest) PageNum(pageNum int) ListStreamConnecti
 }
 
 func (r ListStreamConnectionsApiRequest) Execute() (*PaginatedApiStreamsConnection, *http.Response, error) {
-	return r.ApiService.listStreamConnectionsExecute(r)
+	return r.ApiService.ListStreamConnectionsExecute(r)
 }
 
 /*
@@ -1139,7 +1139,7 @@ func (a *StreamsApiService) ListStreamConnections(ctx context.Context, groupId s
 // Execute executes the request
 //
 //	@return PaginatedApiStreamsConnection
-func (a *StreamsApiService) listStreamConnectionsExecute(r ListStreamConnectionsApiRequest) (*PaginatedApiStreamsConnection, *http.Response, error) {
+func (a *StreamsApiService) ListStreamConnectionsExecute(r ListStreamConnectionsApiRequest) (*PaginatedApiStreamsConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1273,7 +1273,7 @@ func (r ListStreamInstancesApiRequest) PageNum(pageNum int) ListStreamInstancesA
 }
 
 func (r ListStreamInstancesApiRequest) Execute() (*PaginatedApiStreamsTenant, *http.Response, error) {
-	return r.ApiService.listStreamInstancesExecute(r)
+	return r.ApiService.ListStreamInstancesExecute(r)
 }
 
 /*
@@ -1296,7 +1296,7 @@ func (a *StreamsApiService) ListStreamInstances(ctx context.Context, groupId str
 // Execute executes the request
 //
 //	@return PaginatedApiStreamsTenant
-func (a *StreamsApiService) listStreamInstancesExecute(r ListStreamInstancesApiRequest) (*PaginatedApiStreamsTenant, *http.Response, error) {
+func (a *StreamsApiService) ListStreamInstancesExecute(r ListStreamInstancesApiRequest) (*PaginatedApiStreamsTenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1420,7 +1420,7 @@ func (a *StreamsApiService) UpdateStreamConnectionWithParams(ctx context.Context
 }
 
 func (r UpdateStreamConnectionApiRequest) Execute() (*StreamsConnection, *http.Response, error) {
-	return r.ApiService.updateStreamConnectionExecute(r)
+	return r.ApiService.UpdateStreamConnectionExecute(r)
 }
 
 /*
@@ -1448,7 +1448,7 @@ func (a *StreamsApiService) UpdateStreamConnection(ctx context.Context, groupId 
 // Execute executes the request
 //
 //	@return StreamsConnection
-func (a *StreamsApiService) updateStreamConnectionExecute(r UpdateStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
+func (a *StreamsApiService) UpdateStreamConnectionExecute(r UpdateStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -1562,7 +1562,7 @@ func (a *StreamsApiService) UpdateStreamInstanceWithParams(ctx context.Context, 
 }
 
 func (r UpdateStreamInstanceApiRequest) Execute() (*StreamsTenant, *http.Response, error) {
-	return r.ApiService.updateStreamInstanceExecute(r)
+	return r.ApiService.UpdateStreamInstanceExecute(r)
 }
 
 /*
@@ -1588,7 +1588,7 @@ func (a *StreamsApiService) UpdateStreamInstance(ctx context.Context, groupId st
 // Execute executes the request
 //
 //	@return StreamsTenant
-func (a *StreamsApiService) updateStreamInstanceExecute(r UpdateStreamInstanceApiRequest) (*StreamsTenant, *http.Response, error) {
+func (a *StreamsApiService) UpdateStreamInstanceExecute(r UpdateStreamInstanceApiRequest) (*StreamsTenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}

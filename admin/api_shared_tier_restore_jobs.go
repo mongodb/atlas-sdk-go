@@ -35,7 +35,7 @@ type SharedTierRestoreJobsApi interface {
 	CreateSharedClusterBackupRestoreJobWithParams(ctx context.Context, args *CreateSharedClusterBackupRestoreJobApiParams) CreateSharedClusterBackupRestoreJobApiRequest
 
 	// Interface only available internally
-	createSharedClusterBackupRestoreJobExecute(r CreateSharedClusterBackupRestoreJobApiRequest) (*TenantRestore, *http.Response, error)
+	CreateSharedClusterBackupRestoreJobExecute(r CreateSharedClusterBackupRestoreJobApiRequest) (*TenantRestore, *http.Response, error)
 
 	/*
 		GetSharedClusterBackupRestoreJob Return One Restore Job for One M2 or M5 Cluster
@@ -60,7 +60,7 @@ type SharedTierRestoreJobsApi interface {
 	GetSharedClusterBackupRestoreJobWithParams(ctx context.Context, args *GetSharedClusterBackupRestoreJobApiParams) GetSharedClusterBackupRestoreJobApiRequest
 
 	// Interface only available internally
-	getSharedClusterBackupRestoreJobExecute(r GetSharedClusterBackupRestoreJobApiRequest) (*TenantRestore, *http.Response, error)
+	GetSharedClusterBackupRestoreJobExecute(r GetSharedClusterBackupRestoreJobApiRequest) (*TenantRestore, *http.Response, error)
 
 	/*
 		ListSharedClusterBackupRestoreJobs Return All Restore Jobs for One M2 or M5 Cluster
@@ -84,7 +84,7 @@ type SharedTierRestoreJobsApi interface {
 	ListSharedClusterBackupRestoreJobsWithParams(ctx context.Context, args *ListSharedClusterBackupRestoreJobsApiParams) ListSharedClusterBackupRestoreJobsApiRequest
 
 	// Interface only available internally
-	listSharedClusterBackupRestoreJobsExecute(r ListSharedClusterBackupRestoreJobsApiRequest) (*PaginatedTenantRestore, *http.Response, error)
+	ListSharedClusterBackupRestoreJobsExecute(r ListSharedClusterBackupRestoreJobsApiRequest) (*PaginatedTenantRestore, *http.Response, error)
 }
 
 // SharedTierRestoreJobsApiService SharedTierRestoreJobsApi service
@@ -115,7 +115,7 @@ func (a *SharedTierRestoreJobsApiService) CreateSharedClusterBackupRestoreJobWit
 }
 
 func (r CreateSharedClusterBackupRestoreJobApiRequest) Execute() (*TenantRestore, *http.Response, error) {
-	return r.ApiService.createSharedClusterBackupRestoreJobExecute(r)
+	return r.ApiService.CreateSharedClusterBackupRestoreJobExecute(r)
 }
 
 /*
@@ -141,7 +141,7 @@ func (a *SharedTierRestoreJobsApiService) CreateSharedClusterBackupRestoreJob(ct
 // Execute executes the request
 //
 //	@return TenantRestore
-func (a *SharedTierRestoreJobsApiService) createSharedClusterBackupRestoreJobExecute(r CreateSharedClusterBackupRestoreJobApiRequest) (*TenantRestore, *http.Response, error) {
+func (a *SharedTierRestoreJobsApiService) CreateSharedClusterBackupRestoreJobExecute(r CreateSharedClusterBackupRestoreJobApiRequest) (*TenantRestore, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -254,7 +254,7 @@ func (a *SharedTierRestoreJobsApiService) GetSharedClusterBackupRestoreJobWithPa
 }
 
 func (r GetSharedClusterBackupRestoreJobApiRequest) Execute() (*TenantRestore, *http.Response, error) {
-	return r.ApiService.getSharedClusterBackupRestoreJobExecute(r)
+	return r.ApiService.GetSharedClusterBackupRestoreJobExecute(r)
 }
 
 /*
@@ -281,7 +281,7 @@ func (a *SharedTierRestoreJobsApiService) GetSharedClusterBackupRestoreJob(ctx c
 // Execute executes the request
 //
 //	@return TenantRestore
-func (a *SharedTierRestoreJobsApiService) getSharedClusterBackupRestoreJobExecute(r GetSharedClusterBackupRestoreJobApiRequest) (*TenantRestore, *http.Response, error) {
+func (a *SharedTierRestoreJobsApiService) GetSharedClusterBackupRestoreJobExecute(r GetSharedClusterBackupRestoreJobApiRequest) (*TenantRestore, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -387,7 +387,7 @@ func (a *SharedTierRestoreJobsApiService) ListSharedClusterBackupRestoreJobsWith
 }
 
 func (r ListSharedClusterBackupRestoreJobsApiRequest) Execute() (*PaginatedTenantRestore, *http.Response, error) {
-	return r.ApiService.listSharedClusterBackupRestoreJobsExecute(r)
+	return r.ApiService.ListSharedClusterBackupRestoreJobsExecute(r)
 }
 
 /*
@@ -412,7 +412,7 @@ func (a *SharedTierRestoreJobsApiService) ListSharedClusterBackupRestoreJobs(ctx
 // Execute executes the request
 //
 //	@return PaginatedTenantRestore
-func (a *SharedTierRestoreJobsApiService) listSharedClusterBackupRestoreJobsExecute(r ListSharedClusterBackupRestoreJobsApiRequest) (*PaginatedTenantRestore, *http.Response, error) {
+func (a *SharedTierRestoreJobsApiService) ListSharedClusterBackupRestoreJobsExecute(r ListSharedClusterBackupRestoreJobsApiRequest) (*PaginatedTenantRestore, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
