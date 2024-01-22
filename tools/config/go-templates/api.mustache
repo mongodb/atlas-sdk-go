@@ -47,8 +47,8 @@ type {{classname}} interface {
 	*/
 	{{nickname}}WithParams(ctx context.Context, args *{{operationId}}ApiParams) {{operationId}}ApiRequest
 
-	// Interface only available internally
-	{{#lambda.camelcase}}{{{nickname}}}{{/lambda.camelcase}}Execute(r {{operationId}}ApiRequest) ({{#returnType}}{{^isArray}}{{^returnTypeIsPrimitive}}{{^isResponseFile}}*{{/isResponseFile}}{{/returnTypeIsPrimitive}}{{/isArray}}{{{.}}}, {{/returnType}}*http.Response, error)
+	// Method available only for mocking purposes
+	{{{nickname}}}Execute(r {{operationId}}ApiRequest) ({{#returnType}}{{^isArray}}{{^returnTypeIsPrimitive}}{{^isResponseFile}}*{{/isResponseFile}}{{/returnTypeIsPrimitive}}{{/isArray}}{{{.}}}, {{/returnType}}*http.Response, error)
 	{{/operation}}
 }
 {{/generateInterfaces}}
@@ -102,7 +102,7 @@ func (r {{operationId}}ApiRequest) {{vendorExtensions.x-export-param-name}}({{pa
 {{/isPathParam}}
 {{/allParams}}
 func (r {{operationId}}ApiRequest) Execute() ({{#returnType}}{{^isArray}}{{^returnTypeIsPrimitive}}{{^isResponseFile}}*{{/isResponseFile}}{{/returnTypeIsPrimitive}}{{/isArray}}{{{.}}}, {{/returnType}}*http.Response, error) {
-	return r.ApiService.{{#lambda.camelcase}}{{{nickname}}}{{/lambda.camelcase}}Execute(r)
+	return r.ApiService.{{{nickname}}}Execute(r)
 }
 
 /*
@@ -138,7 +138,7 @@ func (a *{{{classname}}}Service) {{{nickname}}}(ctx context.Context{{#pathParams
 {{#isDeprecated}}
 // Deprecated
 {{/isDeprecated}}
-func (a *{{{classname}}}Service) {{#lambda.camelcase}}{{{nickname}}}{{/lambda.camelcase}}Execute(r {{operationId}}ApiRequest) ({{#returnType}}{{^isArray}}{{^returnTypeIsPrimitive}}{{^isResponseFile}}*{{/isResponseFile}}{{/returnTypeIsPrimitive}}{{/isArray}}{{{.}}}, {{/returnType}}*http.Response, error) {
+func (a *{{{classname}}}Service) {{{nickname}}}Execute(r {{operationId}}ApiRequest) ({{#returnType}}{{^isArray}}{{^returnTypeIsPrimitive}}{{^isResponseFile}}*{{/isResponseFile}}{{/returnTypeIsPrimitive}}{{/isArray}}{{{.}}}, {{/returnType}}*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.Method{{httpMethod}}
 		localVarPostBody     interface{}

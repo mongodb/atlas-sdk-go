@@ -33,8 +33,8 @@ type MaintenanceWindowsApi interface {
 	*/
 	DeferMaintenanceWindowWithParams(ctx context.Context, args *DeferMaintenanceWindowApiParams) DeferMaintenanceWindowApiRequest
 
-	// Interface only available internally
-	deferMaintenanceWindowExecute(r DeferMaintenanceWindowApiRequest) (*http.Response, error)
+	// Method available only for mocking purposes
+	DeferMaintenanceWindowExecute(r DeferMaintenanceWindowApiRequest) (*http.Response, error)
 
 	/*
 		GetMaintenanceWindow Return One Maintenance Window for One Project
@@ -56,8 +56,8 @@ type MaintenanceWindowsApi interface {
 	*/
 	GetMaintenanceWindowWithParams(ctx context.Context, args *GetMaintenanceWindowApiParams) GetMaintenanceWindowApiRequest
 
-	// Interface only available internally
-	getMaintenanceWindowExecute(r GetMaintenanceWindowApiRequest) (*GroupMaintenanceWindow, *http.Response, error)
+	// Method available only for mocking purposes
+	GetMaintenanceWindowExecute(r GetMaintenanceWindowApiRequest) (*GroupMaintenanceWindow, *http.Response, error)
 
 	/*
 		ResetMaintenanceWindow Reset One Maintenance Window for One Project
@@ -79,8 +79,8 @@ type MaintenanceWindowsApi interface {
 	*/
 	ResetMaintenanceWindowWithParams(ctx context.Context, args *ResetMaintenanceWindowApiParams) ResetMaintenanceWindowApiRequest
 
-	// Interface only available internally
-	resetMaintenanceWindowExecute(r ResetMaintenanceWindowApiRequest) (*http.Response, error)
+	// Method available only for mocking purposes
+	ResetMaintenanceWindowExecute(r ResetMaintenanceWindowApiRequest) (*http.Response, error)
 
 	/*
 		ToggleMaintenanceAutoDefer Toggle Automatic Deferral of Maintenance for One Project
@@ -102,8 +102,8 @@ type MaintenanceWindowsApi interface {
 	*/
 	ToggleMaintenanceAutoDeferWithParams(ctx context.Context, args *ToggleMaintenanceAutoDeferApiParams) ToggleMaintenanceAutoDeferApiRequest
 
-	// Interface only available internally
-	toggleMaintenanceAutoDeferExecute(r ToggleMaintenanceAutoDeferApiRequest) (*http.Response, error)
+	// Method available only for mocking purposes
+	ToggleMaintenanceAutoDeferExecute(r ToggleMaintenanceAutoDeferApiRequest) (*http.Response, error)
 
 	/*
 		UpdateMaintenanceWindow Update Maintenance Window for One Project
@@ -125,8 +125,8 @@ type MaintenanceWindowsApi interface {
 	*/
 	UpdateMaintenanceWindowWithParams(ctx context.Context, args *UpdateMaintenanceWindowApiParams) UpdateMaintenanceWindowApiRequest
 
-	// Interface only available internally
-	updateMaintenanceWindowExecute(r UpdateMaintenanceWindowApiRequest) (map[string]interface{}, *http.Response, error)
+	// Method available only for mocking purposes
+	UpdateMaintenanceWindowExecute(r UpdateMaintenanceWindowApiRequest) (map[string]interface{}, *http.Response, error)
 }
 
 // MaintenanceWindowsApiService MaintenanceWindowsApi service
@@ -151,7 +151,7 @@ func (a *MaintenanceWindowsApiService) DeferMaintenanceWindowWithParams(ctx cont
 }
 
 func (r DeferMaintenanceWindowApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.deferMaintenanceWindowExecute(r)
+	return r.ApiService.DeferMaintenanceWindowExecute(r)
 }
 
 /*
@@ -172,7 +172,7 @@ func (a *MaintenanceWindowsApiService) DeferMaintenanceWindow(ctx context.Contex
 }
 
 // Execute executes the request
-func (a *MaintenanceWindowsApiService) deferMaintenanceWindowExecute(r DeferMaintenanceWindowApiRequest) (*http.Response, error) {
+func (a *MaintenanceWindowsApiService) DeferMaintenanceWindowExecute(r DeferMaintenanceWindowApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
@@ -263,7 +263,7 @@ func (a *MaintenanceWindowsApiService) GetMaintenanceWindowWithParams(ctx contex
 }
 
 func (r GetMaintenanceWindowApiRequest) Execute() (*GroupMaintenanceWindow, *http.Response, error) {
-	return r.ApiService.getMaintenanceWindowExecute(r)
+	return r.ApiService.GetMaintenanceWindowExecute(r)
 }
 
 /*
@@ -286,7 +286,7 @@ func (a *MaintenanceWindowsApiService) GetMaintenanceWindow(ctx context.Context,
 // Execute executes the request
 //
 //	@return GroupMaintenanceWindow
-func (a *MaintenanceWindowsApiService) getMaintenanceWindowExecute(r GetMaintenanceWindowApiRequest) (*GroupMaintenanceWindow, *http.Response, error) {
+func (a *MaintenanceWindowsApiService) GetMaintenanceWindowExecute(r GetMaintenanceWindowApiRequest) (*GroupMaintenanceWindow, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -387,7 +387,7 @@ func (a *MaintenanceWindowsApiService) ResetMaintenanceWindowWithParams(ctx cont
 }
 
 func (r ResetMaintenanceWindowApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.resetMaintenanceWindowExecute(r)
+	return r.ApiService.ResetMaintenanceWindowExecute(r)
 }
 
 /*
@@ -408,7 +408,7 @@ func (a *MaintenanceWindowsApiService) ResetMaintenanceWindow(ctx context.Contex
 }
 
 // Execute executes the request
-func (a *MaintenanceWindowsApiService) resetMaintenanceWindowExecute(r ResetMaintenanceWindowApiRequest) (*http.Response, error) {
+func (a *MaintenanceWindowsApiService) ResetMaintenanceWindowExecute(r ResetMaintenanceWindowApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
@@ -499,7 +499,7 @@ func (a *MaintenanceWindowsApiService) ToggleMaintenanceAutoDeferWithParams(ctx 
 }
 
 func (r ToggleMaintenanceAutoDeferApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.toggleMaintenanceAutoDeferExecute(r)
+	return r.ApiService.ToggleMaintenanceAutoDeferExecute(r)
 }
 
 /*
@@ -520,7 +520,7 @@ func (a *MaintenanceWindowsApiService) ToggleMaintenanceAutoDefer(ctx context.Co
 }
 
 // Execute executes the request
-func (a *MaintenanceWindowsApiService) toggleMaintenanceAutoDeferExecute(r ToggleMaintenanceAutoDeferApiRequest) (*http.Response, error) {
+func (a *MaintenanceWindowsApiService) ToggleMaintenanceAutoDeferExecute(r ToggleMaintenanceAutoDeferApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
@@ -614,7 +614,7 @@ func (a *MaintenanceWindowsApiService) UpdateMaintenanceWindowWithParams(ctx con
 }
 
 func (r UpdateMaintenanceWindowApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.updateMaintenanceWindowExecute(r)
+	return r.ApiService.UpdateMaintenanceWindowExecute(r)
 }
 
 /*
@@ -638,7 +638,7 @@ func (a *MaintenanceWindowsApiService) UpdateMaintenanceWindow(ctx context.Conte
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *MaintenanceWindowsApiService) updateMaintenanceWindowExecute(r UpdateMaintenanceWindowApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *MaintenanceWindowsApiService) UpdateMaintenanceWindowExecute(r UpdateMaintenanceWindowApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}

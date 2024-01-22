@@ -35,8 +35,8 @@ type AlertConfigurationsApi interface {
 	*/
 	CreateAlertConfigurationWithParams(ctx context.Context, args *CreateAlertConfigurationApiParams) CreateAlertConfigurationApiRequest
 
-	// Interface only available internally
-	createAlertConfigurationExecute(r CreateAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error)
+	// Method available only for mocking purposes
+	CreateAlertConfigurationExecute(r CreateAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error)
 
 	/*
 		DeleteAlertConfiguration Remove One Alert Configuration from One Project
@@ -61,8 +61,8 @@ type AlertConfigurationsApi interface {
 	*/
 	DeleteAlertConfigurationWithParams(ctx context.Context, args *DeleteAlertConfigurationApiParams) DeleteAlertConfigurationApiRequest
 
-	// Interface only available internally
-	deleteAlertConfigurationExecute(r DeleteAlertConfigurationApiRequest) (*http.Response, error)
+	// Method available only for mocking purposes
+	DeleteAlertConfigurationExecute(r DeleteAlertConfigurationApiRequest) (*http.Response, error)
 
 	/*
 		GetAlertConfiguration Return One Alert Configuration from One Project
@@ -87,8 +87,8 @@ type AlertConfigurationsApi interface {
 	*/
 	GetAlertConfigurationWithParams(ctx context.Context, args *GetAlertConfigurationApiParams) GetAlertConfigurationApiRequest
 
-	// Interface only available internally
-	getAlertConfigurationExecute(r GetAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error)
+	// Method available only for mocking purposes
+	GetAlertConfigurationExecute(r GetAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error)
 
 	/*
 		ListAlertConfigurationMatchersFieldNames Get All Alert Configuration Matchers Field Names
@@ -109,8 +109,8 @@ type AlertConfigurationsApi interface {
 	*/
 	ListAlertConfigurationMatchersFieldNamesWithParams(ctx context.Context, args *ListAlertConfigurationMatchersFieldNamesApiParams) ListAlertConfigurationMatchersFieldNamesApiRequest
 
-	// Interface only available internally
-	listAlertConfigurationMatchersFieldNamesExecute(r ListAlertConfigurationMatchersFieldNamesApiRequest) ([]string, *http.Response, error)
+	// Method available only for mocking purposes
+	ListAlertConfigurationMatchersFieldNamesExecute(r ListAlertConfigurationMatchersFieldNamesApiRequest) ([]string, *http.Response, error)
 
 	/*
 		ListAlertConfigurations Return All Alert Configurations for One Project
@@ -134,8 +134,8 @@ type AlertConfigurationsApi interface {
 	*/
 	ListAlertConfigurationsWithParams(ctx context.Context, args *ListAlertConfigurationsApiParams) ListAlertConfigurationsApiRequest
 
-	// Interface only available internally
-	listAlertConfigurationsExecute(r ListAlertConfigurationsApiRequest) (*PaginatedAlertConfig, *http.Response, error)
+	// Method available only for mocking purposes
+	ListAlertConfigurationsExecute(r ListAlertConfigurationsApiRequest) (*PaginatedAlertConfig, *http.Response, error)
 
 	/*
 		ListAlertConfigurationsByAlertId Return All Alert Configurations Set for One Alert
@@ -160,8 +160,8 @@ type AlertConfigurationsApi interface {
 	*/
 	ListAlertConfigurationsByAlertIdWithParams(ctx context.Context, args *ListAlertConfigurationsByAlertIdApiParams) ListAlertConfigurationsByAlertIdApiRequest
 
-	// Interface only available internally
-	listAlertConfigurationsByAlertIdExecute(r ListAlertConfigurationsByAlertIdApiRequest) (*PaginatedAlertConfig, *http.Response, error)
+	// Method available only for mocking purposes
+	ListAlertConfigurationsByAlertIdExecute(r ListAlertConfigurationsByAlertIdApiRequest) (*PaginatedAlertConfig, *http.Response, error)
 
 	/*
 		ToggleAlertConfiguration Toggle One State of One Alert Configuration in One Project
@@ -188,8 +188,8 @@ type AlertConfigurationsApi interface {
 	*/
 	ToggleAlertConfigurationWithParams(ctx context.Context, args *ToggleAlertConfigurationApiParams) ToggleAlertConfigurationApiRequest
 
-	// Interface only available internally
-	toggleAlertConfigurationExecute(r ToggleAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error)
+	// Method available only for mocking purposes
+	ToggleAlertConfigurationExecute(r ToggleAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error)
 
 	/*
 		UpdateAlertConfiguration Update One Alert Configuration for One Project
@@ -216,8 +216,8 @@ type AlertConfigurationsApi interface {
 	*/
 	UpdateAlertConfigurationWithParams(ctx context.Context, args *UpdateAlertConfigurationApiParams) UpdateAlertConfigurationApiRequest
 
-	// Interface only available internally
-	updateAlertConfigurationExecute(r UpdateAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error)
+	// Method available only for mocking purposes
+	UpdateAlertConfigurationExecute(r UpdateAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error)
 }
 
 // AlertConfigurationsApiService AlertConfigurationsApi service
@@ -245,7 +245,7 @@ func (a *AlertConfigurationsApiService) CreateAlertConfigurationWithParams(ctx c
 }
 
 func (r CreateAlertConfigurationApiRequest) Execute() (*GroupAlertsConfig, *http.Response, error) {
-	return r.ApiService.createAlertConfigurationExecute(r)
+	return r.ApiService.CreateAlertConfigurationExecute(r)
 }
 
 /*
@@ -271,7 +271,7 @@ func (a *AlertConfigurationsApiService) CreateAlertConfiguration(ctx context.Con
 // Execute executes the request
 //
 //	@return GroupAlertsConfig
-func (a *AlertConfigurationsApiService) createAlertConfigurationExecute(r CreateAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error) {
+func (a *AlertConfigurationsApiService) CreateAlertConfigurationExecute(r CreateAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -380,7 +380,7 @@ func (a *AlertConfigurationsApiService) DeleteAlertConfigurationWithParams(ctx c
 }
 
 func (r DeleteAlertConfigurationApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.deleteAlertConfigurationExecute(r)
+	return r.ApiService.DeleteAlertConfigurationExecute(r)
 }
 
 /*
@@ -405,7 +405,7 @@ func (a *AlertConfigurationsApiService) DeleteAlertConfiguration(ctx context.Con
 }
 
 // Execute executes the request
-func (a *AlertConfigurationsApiService) deleteAlertConfigurationExecute(r DeleteAlertConfigurationApiRequest) (*http.Response, error) {
+func (a *AlertConfigurationsApiService) DeleteAlertConfigurationExecute(r DeleteAlertConfigurationApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
@@ -500,7 +500,7 @@ func (a *AlertConfigurationsApiService) GetAlertConfigurationWithParams(ctx cont
 }
 
 func (r GetAlertConfigurationApiRequest) Execute() (*GroupAlertsConfig, *http.Response, error) {
-	return r.ApiService.getAlertConfigurationExecute(r)
+	return r.ApiService.GetAlertConfigurationExecute(r)
 }
 
 /*
@@ -527,7 +527,7 @@ func (a *AlertConfigurationsApiService) GetAlertConfiguration(ctx context.Contex
 // Execute executes the request
 //
 //	@return GroupAlertsConfig
-func (a *AlertConfigurationsApiService) getAlertConfigurationExecute(r GetAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error) {
+func (a *AlertConfigurationsApiService) GetAlertConfigurationExecute(r GetAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -626,7 +626,7 @@ func (a *AlertConfigurationsApiService) ListAlertConfigurationMatchersFieldNames
 }
 
 func (r ListAlertConfigurationMatchersFieldNamesApiRequest) Execute() ([]string, *http.Response, error) {
-	return r.ApiService.listAlertConfigurationMatchersFieldNamesExecute(r)
+	return r.ApiService.ListAlertConfigurationMatchersFieldNamesExecute(r)
 }
 
 /*
@@ -647,7 +647,7 @@ func (a *AlertConfigurationsApiService) ListAlertConfigurationMatchersFieldNames
 // Execute executes the request
 //
 //	@return []string
-func (a *AlertConfigurationsApiService) listAlertConfigurationMatchersFieldNamesExecute(r ListAlertConfigurationMatchersFieldNamesApiRequest) ([]string, *http.Response, error) {
+func (a *AlertConfigurationsApiService) ListAlertConfigurationMatchersFieldNamesExecute(r ListAlertConfigurationMatchersFieldNamesApiRequest) ([]string, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -774,7 +774,7 @@ func (r ListAlertConfigurationsApiRequest) PageNum(pageNum int) ListAlertConfigu
 }
 
 func (r ListAlertConfigurationsApiRequest) Execute() (*PaginatedAlertConfig, *http.Response, error) {
-	return r.ApiService.listAlertConfigurationsExecute(r)
+	return r.ApiService.ListAlertConfigurationsExecute(r)
 }
 
 /*
@@ -799,7 +799,7 @@ func (a *AlertConfigurationsApiService) ListAlertConfigurations(ctx context.Cont
 // Execute executes the request
 //
 //	@return PaginatedAlertConfig
-func (a *AlertConfigurationsApiService) listAlertConfigurationsExecute(r ListAlertConfigurationsApiRequest) (*PaginatedAlertConfig, *http.Response, error) {
+func (a *AlertConfigurationsApiService) ListAlertConfigurationsExecute(r ListAlertConfigurationsApiRequest) (*PaginatedAlertConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -951,7 +951,7 @@ func (r ListAlertConfigurationsByAlertIdApiRequest) PageNum(pageNum int) ListAle
 }
 
 func (r ListAlertConfigurationsByAlertIdApiRequest) Execute() (*PaginatedAlertConfig, *http.Response, error) {
-	return r.ApiService.listAlertConfigurationsByAlertIdExecute(r)
+	return r.ApiService.ListAlertConfigurationsByAlertIdExecute(r)
 }
 
 /*
@@ -978,7 +978,7 @@ func (a *AlertConfigurationsApiService) ListAlertConfigurationsByAlertId(ctx con
 // Execute executes the request
 //
 //	@return PaginatedAlertConfig
-func (a *AlertConfigurationsApiService) listAlertConfigurationsByAlertIdExecute(r ListAlertConfigurationsByAlertIdApiRequest) (*PaginatedAlertConfig, *http.Response, error) {
+func (a *AlertConfigurationsApiService) ListAlertConfigurationsByAlertIdExecute(r ListAlertConfigurationsByAlertIdApiRequest) (*PaginatedAlertConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1107,7 +1107,7 @@ func (a *AlertConfigurationsApiService) ToggleAlertConfigurationWithParams(ctx c
 }
 
 func (r ToggleAlertConfigurationApiRequest) Execute() (*GroupAlertsConfig, *http.Response, error) {
-	return r.ApiService.toggleAlertConfigurationExecute(r)
+	return r.ApiService.ToggleAlertConfigurationExecute(r)
 }
 
 /*
@@ -1137,7 +1137,7 @@ func (a *AlertConfigurationsApiService) ToggleAlertConfiguration(ctx context.Con
 // Execute executes the request
 //
 //	@return GroupAlertsConfig
-func (a *AlertConfigurationsApiService) toggleAlertConfigurationExecute(r ToggleAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error) {
+func (a *AlertConfigurationsApiService) ToggleAlertConfigurationExecute(r ToggleAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -1250,7 +1250,7 @@ func (a *AlertConfigurationsApiService) UpdateAlertConfigurationWithParams(ctx c
 }
 
 func (r UpdateAlertConfigurationApiRequest) Execute() (*GroupAlertsConfig, *http.Response, error) {
-	return r.ApiService.updateAlertConfigurationExecute(r)
+	return r.ApiService.UpdateAlertConfigurationExecute(r)
 }
 
 /*
@@ -1280,7 +1280,7 @@ func (a *AlertConfigurationsApiService) UpdateAlertConfiguration(ctx context.Con
 // Execute executes the request
 //
 //	@return GroupAlertsConfig
-func (a *AlertConfigurationsApiService) updateAlertConfigurationExecute(r UpdateAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error) {
+func (a *AlertConfigurationsApiService) UpdateAlertConfigurationExecute(r UpdateAlertConfigurationApiRequest) (*GroupAlertsConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}

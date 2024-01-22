@@ -34,8 +34,8 @@ type ClusterOutageSimulationApi interface {
 	*/
 	EndOutageSimulationWithParams(ctx context.Context, args *EndOutageSimulationApiParams) EndOutageSimulationApiRequest
 
-	// Interface only available internally
-	endOutageSimulationExecute(r EndOutageSimulationApiRequest) (*ClusterOutageSimulation, *http.Response, error)
+	// Method available only for mocking purposes
+	EndOutageSimulationExecute(r EndOutageSimulationApiRequest) (*ClusterOutageSimulation, *http.Response, error)
 
 	/*
 		GetOutageSimulation Return One Outage Simulation
@@ -58,8 +58,8 @@ type ClusterOutageSimulationApi interface {
 	*/
 	GetOutageSimulationWithParams(ctx context.Context, args *GetOutageSimulationApiParams) GetOutageSimulationApiRequest
 
-	// Interface only available internally
-	getOutageSimulationExecute(r GetOutageSimulationApiRequest) (*ClusterOutageSimulation, *http.Response, error)
+	// Method available only for mocking purposes
+	GetOutageSimulationExecute(r GetOutageSimulationApiRequest) (*ClusterOutageSimulation, *http.Response, error)
 
 	/*
 		StartOutageSimulation Start an Outage Simulation
@@ -82,8 +82,8 @@ type ClusterOutageSimulationApi interface {
 	*/
 	StartOutageSimulationWithParams(ctx context.Context, args *StartOutageSimulationApiParams) StartOutageSimulationApiRequest
 
-	// Interface only available internally
-	startOutageSimulationExecute(r StartOutageSimulationApiRequest) (*ClusterOutageSimulation, *http.Response, error)
+	// Method available only for mocking purposes
+	StartOutageSimulationExecute(r StartOutageSimulationApiRequest) (*ClusterOutageSimulation, *http.Response, error)
 }
 
 // ClusterOutageSimulationApiService ClusterOutageSimulationApi service
@@ -111,7 +111,7 @@ func (a *ClusterOutageSimulationApiService) EndOutageSimulationWithParams(ctx co
 }
 
 func (r EndOutageSimulationApiRequest) Execute() (*ClusterOutageSimulation, *http.Response, error) {
-	return r.ApiService.endOutageSimulationExecute(r)
+	return r.ApiService.EndOutageSimulationExecute(r)
 }
 
 /*
@@ -136,7 +136,7 @@ func (a *ClusterOutageSimulationApiService) EndOutageSimulation(ctx context.Cont
 // Execute executes the request
 //
 //	@return ClusterOutageSimulation
-func (a *ClusterOutageSimulationApiService) endOutageSimulationExecute(r EndOutageSimulationApiRequest) (*ClusterOutageSimulation, *http.Response, error) {
+func (a *ClusterOutageSimulationApiService) EndOutageSimulationExecute(r EndOutageSimulationApiRequest) (*ClusterOutageSimulation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -241,7 +241,7 @@ func (a *ClusterOutageSimulationApiService) GetOutageSimulationWithParams(ctx co
 }
 
 func (r GetOutageSimulationApiRequest) Execute() (*ClusterOutageSimulation, *http.Response, error) {
-	return r.ApiService.getOutageSimulationExecute(r)
+	return r.ApiService.GetOutageSimulationExecute(r)
 }
 
 /*
@@ -266,7 +266,7 @@ func (a *ClusterOutageSimulationApiService) GetOutageSimulation(ctx context.Cont
 // Execute executes the request
 //
 //	@return ClusterOutageSimulation
-func (a *ClusterOutageSimulationApiService) getOutageSimulationExecute(r GetOutageSimulationApiRequest) (*ClusterOutageSimulation, *http.Response, error) {
+func (a *ClusterOutageSimulationApiService) GetOutageSimulationExecute(r GetOutageSimulationApiRequest) (*ClusterOutageSimulation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -374,7 +374,7 @@ func (a *ClusterOutageSimulationApiService) StartOutageSimulationWithParams(ctx 
 }
 
 func (r StartOutageSimulationApiRequest) Execute() (*ClusterOutageSimulation, *http.Response, error) {
-	return r.ApiService.startOutageSimulationExecute(r)
+	return r.ApiService.StartOutageSimulationExecute(r)
 }
 
 /*
@@ -400,7 +400,7 @@ func (a *ClusterOutageSimulationApiService) StartOutageSimulation(ctx context.Co
 // Execute executes the request
 //
 //	@return ClusterOutageSimulation
-func (a *ClusterOutageSimulationApiService) startOutageSimulationExecute(r StartOutageSimulationApiRequest) (*ClusterOutageSimulation, *http.Response, error) {
+func (a *ClusterOutageSimulationApiService) StartOutageSimulationExecute(r StartOutageSimulationApiRequest) (*ClusterOutageSimulation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}

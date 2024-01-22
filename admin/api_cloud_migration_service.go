@@ -33,8 +33,8 @@ type CloudMigrationServiceApi interface {
 	*/
 	CreateLinkTokenWithParams(ctx context.Context, args *CreateLinkTokenApiParams) CreateLinkTokenApiRequest
 
-	// Interface only available internally
-	createLinkTokenExecute(r CreateLinkTokenApiRequest) (*TargetOrg, *http.Response, error)
+	// Method available only for mocking purposes
+	CreateLinkTokenExecute(r CreateLinkTokenApiRequest) (*TargetOrg, *http.Response, error)
 
 	/*
 		CreatePushMigration Migrate One Local Managed Cluster to MongoDB Atlas
@@ -62,8 +62,8 @@ type CloudMigrationServiceApi interface {
 	*/
 	CreatePushMigrationWithParams(ctx context.Context, args *CreatePushMigrationApiParams) CreatePushMigrationApiRequest
 
-	// Interface only available internally
-	createPushMigrationExecute(r CreatePushMigrationApiRequest) (*LiveMigrationResponse, *http.Response, error)
+	// Method available only for mocking purposes
+	CreatePushMigrationExecute(r CreatePushMigrationApiRequest) (*LiveMigrationResponse, *http.Response, error)
 
 	/*
 		CutoverMigration Cut Over the Migrated Cluster
@@ -86,8 +86,8 @@ type CloudMigrationServiceApi interface {
 	*/
 	CutoverMigrationWithParams(ctx context.Context, args *CutoverMigrationApiParams) CutoverMigrationApiRequest
 
-	// Interface only available internally
-	cutoverMigrationExecute(r CutoverMigrationApiRequest) (*http.Response, error)
+	// Method available only for mocking purposes
+	CutoverMigrationExecute(r CutoverMigrationApiRequest) (*http.Response, error)
 
 	/*
 		DeleteLinkToken Remove One Link-Token
@@ -109,8 +109,8 @@ type CloudMigrationServiceApi interface {
 	*/
 	DeleteLinkTokenWithParams(ctx context.Context, args *DeleteLinkTokenApiParams) DeleteLinkTokenApiRequest
 
-	// Interface only available internally
-	deleteLinkTokenExecute(r DeleteLinkTokenApiRequest) (map[string]interface{}, *http.Response, error)
+	// Method available only for mocking purposes
+	DeleteLinkTokenExecute(r DeleteLinkTokenApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
 		GetPushMigration Return One Migration Job
@@ -133,8 +133,8 @@ type CloudMigrationServiceApi interface {
 	*/
 	GetPushMigrationWithParams(ctx context.Context, args *GetPushMigrationApiParams) GetPushMigrationApiRequest
 
-	// Interface only available internally
-	getPushMigrationExecute(r GetPushMigrationApiRequest) (*LiveMigrationResponse, *http.Response, error)
+	// Method available only for mocking purposes
+	GetPushMigrationExecute(r GetPushMigrationApiRequest) (*LiveMigrationResponse, *http.Response, error)
 
 	/*
 		GetValidationStatus Return One Migration Validation Job
@@ -157,8 +157,8 @@ type CloudMigrationServiceApi interface {
 	*/
 	GetValidationStatusWithParams(ctx context.Context, args *GetValidationStatusApiParams) GetValidationStatusApiRequest
 
-	// Interface only available internally
-	getValidationStatusExecute(r GetValidationStatusApiRequest) (*LiveImportValidation, *http.Response, error)
+	// Method available only for mocking purposes
+	GetValidationStatusExecute(r GetValidationStatusApiRequest) (*LiveImportValidation, *http.Response, error)
 
 	/*
 		ListSourceProjects Return All Projects Available for Migration
@@ -180,8 +180,8 @@ type CloudMigrationServiceApi interface {
 	*/
 	ListSourceProjectsWithParams(ctx context.Context, args *ListSourceProjectsApiParams) ListSourceProjectsApiRequest
 
-	// Interface only available internally
-	listSourceProjectsExecute(r ListSourceProjectsApiRequest) ([]LiveImportAvailableProject, *http.Response, error)
+	// Method available only for mocking purposes
+	ListSourceProjectsExecute(r ListSourceProjectsApiRequest) ([]LiveImportAvailableProject, *http.Response, error)
 
 	/*
 		ValidateMigration Validate One Migration Request
@@ -203,8 +203,8 @@ type CloudMigrationServiceApi interface {
 	*/
 	ValidateMigrationWithParams(ctx context.Context, args *ValidateMigrationApiParams) ValidateMigrationApiRequest
 
-	// Interface only available internally
-	validateMigrationExecute(r ValidateMigrationApiRequest) (*LiveImportValidation, *http.Response, error)
+	// Method available only for mocking purposes
+	ValidateMigrationExecute(r ValidateMigrationApiRequest) (*LiveImportValidation, *http.Response, error)
 }
 
 // CloudMigrationServiceApiService CloudMigrationServiceApi service
@@ -232,7 +232,7 @@ func (a *CloudMigrationServiceApiService) CreateLinkTokenWithParams(ctx context.
 }
 
 func (r CreateLinkTokenApiRequest) Execute() (*TargetOrg, *http.Response, error) {
-	return r.ApiService.createLinkTokenExecute(r)
+	return r.ApiService.CreateLinkTokenExecute(r)
 }
 
 /*
@@ -256,7 +256,7 @@ func (a *CloudMigrationServiceApiService) CreateLinkToken(ctx context.Context, o
 // Execute executes the request
 //
 //	@return TargetOrg
-func (a *CloudMigrationServiceApiService) createLinkTokenExecute(r CreateLinkTokenApiRequest) (*TargetOrg, *http.Response, error) {
+func (a *CloudMigrationServiceApiService) CreateLinkTokenExecute(r CreateLinkTokenApiRequest) (*TargetOrg, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -365,7 +365,7 @@ func (a *CloudMigrationServiceApiService) CreatePushMigrationWithParams(ctx cont
 }
 
 func (r CreatePushMigrationApiRequest) Execute() (*LiveMigrationResponse, *http.Response, error) {
-	return r.ApiService.createPushMigrationExecute(r)
+	return r.ApiService.CreatePushMigrationExecute(r)
 }
 
 /*
@@ -395,7 +395,7 @@ func (a *CloudMigrationServiceApiService) CreatePushMigration(ctx context.Contex
 // Execute executes the request
 //
 //	@return LiveMigrationResponse
-func (a *CloudMigrationServiceApiService) createPushMigrationExecute(r CreatePushMigrationApiRequest) (*LiveMigrationResponse, *http.Response, error) {
+func (a *CloudMigrationServiceApiService) CreatePushMigrationExecute(r CreatePushMigrationApiRequest) (*LiveMigrationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -504,7 +504,7 @@ func (a *CloudMigrationServiceApiService) CutoverMigrationWithParams(ctx context
 }
 
 func (r CutoverMigrationApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.cutoverMigrationExecute(r)
+	return r.ApiService.CutoverMigrationExecute(r)
 }
 
 /*
@@ -527,7 +527,7 @@ func (a *CloudMigrationServiceApiService) CutoverMigration(ctx context.Context, 
 }
 
 // Execute executes the request
-func (a *CloudMigrationServiceApiService) cutoverMigrationExecute(r CutoverMigrationApiRequest) (*http.Response, error) {
+func (a *CloudMigrationServiceApiService) CutoverMigrationExecute(r CutoverMigrationApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPut
 		localVarPostBody   interface{}
@@ -619,7 +619,7 @@ func (a *CloudMigrationServiceApiService) DeleteLinkTokenWithParams(ctx context.
 }
 
 func (r DeleteLinkTokenApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.deleteLinkTokenExecute(r)
+	return r.ApiService.DeleteLinkTokenExecute(r)
 }
 
 /*
@@ -642,7 +642,7 @@ func (a *CloudMigrationServiceApiService) DeleteLinkToken(ctx context.Context, o
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *CloudMigrationServiceApiService) deleteLinkTokenExecute(r DeleteLinkTokenApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *CloudMigrationServiceApiService) DeleteLinkTokenExecute(r DeleteLinkTokenApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -746,7 +746,7 @@ func (a *CloudMigrationServiceApiService) GetPushMigrationWithParams(ctx context
 }
 
 func (r GetPushMigrationApiRequest) Execute() (*LiveMigrationResponse, *http.Response, error) {
-	return r.ApiService.getPushMigrationExecute(r)
+	return r.ApiService.GetPushMigrationExecute(r)
 }
 
 /*
@@ -771,7 +771,7 @@ func (a *CloudMigrationServiceApiService) GetPushMigration(ctx context.Context, 
 // Execute executes the request
 //
 //	@return LiveMigrationResponse
-func (a *CloudMigrationServiceApiService) getPushMigrationExecute(r GetPushMigrationApiRequest) (*LiveMigrationResponse, *http.Response, error) {
+func (a *CloudMigrationServiceApiService) GetPushMigrationExecute(r GetPushMigrationApiRequest) (*LiveMigrationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -876,7 +876,7 @@ func (a *CloudMigrationServiceApiService) GetValidationStatusWithParams(ctx cont
 }
 
 func (r GetValidationStatusApiRequest) Execute() (*LiveImportValidation, *http.Response, error) {
-	return r.ApiService.getValidationStatusExecute(r)
+	return r.ApiService.GetValidationStatusExecute(r)
 }
 
 /*
@@ -901,7 +901,7 @@ func (a *CloudMigrationServiceApiService) GetValidationStatus(ctx context.Contex
 // Execute executes the request
 //
 //	@return LiveImportValidation
-func (a *CloudMigrationServiceApiService) getValidationStatusExecute(r GetValidationStatusApiRequest) (*LiveImportValidation, *http.Response, error) {
+func (a *CloudMigrationServiceApiService) GetValidationStatusExecute(r GetValidationStatusApiRequest) (*LiveImportValidation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1003,7 +1003,7 @@ func (a *CloudMigrationServiceApiService) ListSourceProjectsWithParams(ctx conte
 }
 
 func (r ListSourceProjectsApiRequest) Execute() ([]LiveImportAvailableProject, *http.Response, error) {
-	return r.ApiService.listSourceProjectsExecute(r)
+	return r.ApiService.ListSourceProjectsExecute(r)
 }
 
 /*
@@ -1026,7 +1026,7 @@ func (a *CloudMigrationServiceApiService) ListSourceProjects(ctx context.Context
 // Execute executes the request
 //
 //	@return []LiveImportAvailableProject
-func (a *CloudMigrationServiceApiService) listSourceProjectsExecute(r ListSourceProjectsApiRequest) ([]LiveImportAvailableProject, *http.Response, error) {
+func (a *CloudMigrationServiceApiService) ListSourceProjectsExecute(r ListSourceProjectsApiRequest) ([]LiveImportAvailableProject, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1130,7 +1130,7 @@ func (a *CloudMigrationServiceApiService) ValidateMigrationWithParams(ctx contex
 }
 
 func (r ValidateMigrationApiRequest) Execute() (*LiveImportValidation, *http.Response, error) {
-	return r.ApiService.validateMigrationExecute(r)
+	return r.ApiService.ValidateMigrationExecute(r)
 }
 
 /*
@@ -1154,7 +1154,7 @@ func (a *CloudMigrationServiceApiService) ValidateMigration(ctx context.Context,
 // Execute executes the request
 //
 //	@return LiveImportValidation
-func (a *CloudMigrationServiceApiService) validateMigrationExecute(r ValidateMigrationApiRequest) (*LiveImportValidation, *http.Response, error) {
+func (a *CloudMigrationServiceApiService) ValidateMigrationExecute(r ValidateMigrationApiRequest) (*LiveImportValidation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}

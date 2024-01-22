@@ -33,8 +33,8 @@ type TeamsApi interface {
 	*/
 	AddAllTeamsToProjectWithParams(ctx context.Context, args *AddAllTeamsToProjectApiParams) AddAllTeamsToProjectApiRequest
 
-	// Interface only available internally
-	addAllTeamsToProjectExecute(r AddAllTeamsToProjectApiRequest) (*PaginatedTeamRole, *http.Response, error)
+	// Method available only for mocking purposes
+	AddAllTeamsToProjectExecute(r AddAllTeamsToProjectApiRequest) (*PaginatedTeamRole, *http.Response, error)
 
 	/*
 		AddTeamUser Assign MongoDB Cloud Users from One Organization to One Team
@@ -57,8 +57,8 @@ type TeamsApi interface {
 	*/
 	AddTeamUserWithParams(ctx context.Context, args *AddTeamUserApiParams) AddTeamUserApiRequest
 
-	// Interface only available internally
-	addTeamUserExecute(r AddTeamUserApiRequest) (*PaginatedApiAppUser, *http.Response, error)
+	// Method available only for mocking purposes
+	AddTeamUserExecute(r AddTeamUserApiRequest) (*PaginatedApiAppUser, *http.Response, error)
 
 	/*
 		CreateTeam Create One Team in One Organization
@@ -80,8 +80,8 @@ type TeamsApi interface {
 	*/
 	CreateTeamWithParams(ctx context.Context, args *CreateTeamApiParams) CreateTeamApiRequest
 
-	// Interface only available internally
-	createTeamExecute(r CreateTeamApiRequest) (*Team, *http.Response, error)
+	// Method available only for mocking purposes
+	CreateTeamExecute(r CreateTeamApiRequest) (*Team, *http.Response, error)
 
 	/*
 		DeleteTeam Remove One Team from One Organization
@@ -104,8 +104,8 @@ type TeamsApi interface {
 	*/
 	DeleteTeamWithParams(ctx context.Context, args *DeleteTeamApiParams) DeleteTeamApiRequest
 
-	// Interface only available internally
-	deleteTeamExecute(r DeleteTeamApiRequest) (map[string]interface{}, *http.Response, error)
+	// Method available only for mocking purposes
+	DeleteTeamExecute(r DeleteTeamApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
 		GetTeamById Return One Team using its ID
@@ -128,8 +128,8 @@ type TeamsApi interface {
 	*/
 	GetTeamByIdWithParams(ctx context.Context, args *GetTeamByIdApiParams) GetTeamByIdApiRequest
 
-	// Interface only available internally
-	getTeamByIdExecute(r GetTeamByIdApiRequest) (*TeamResponse, *http.Response, error)
+	// Method available only for mocking purposes
+	GetTeamByIdExecute(r GetTeamByIdApiRequest) (*TeamResponse, *http.Response, error)
 
 	/*
 		GetTeamByName Return One Team using its Name
@@ -152,8 +152,8 @@ type TeamsApi interface {
 	*/
 	GetTeamByNameWithParams(ctx context.Context, args *GetTeamByNameApiParams) GetTeamByNameApiRequest
 
-	// Interface only available internally
-	getTeamByNameExecute(r GetTeamByNameApiRequest) (*TeamResponse, *http.Response, error)
+	// Method available only for mocking purposes
+	GetTeamByNameExecute(r GetTeamByNameApiRequest) (*TeamResponse, *http.Response, error)
 
 	/*
 		ListOrganizationTeams Return All Teams in One Organization
@@ -175,8 +175,8 @@ type TeamsApi interface {
 	*/
 	ListOrganizationTeamsWithParams(ctx context.Context, args *ListOrganizationTeamsApiParams) ListOrganizationTeamsApiRequest
 
-	// Interface only available internally
-	listOrganizationTeamsExecute(r ListOrganizationTeamsApiRequest) (*PaginatedTeam, *http.Response, error)
+	// Method available only for mocking purposes
+	ListOrganizationTeamsExecute(r ListOrganizationTeamsApiRequest) (*PaginatedTeam, *http.Response, error)
 
 	/*
 		ListProjectTeams Return All Teams in One Project
@@ -198,8 +198,8 @@ type TeamsApi interface {
 	*/
 	ListProjectTeamsWithParams(ctx context.Context, args *ListProjectTeamsApiParams) ListProjectTeamsApiRequest
 
-	// Interface only available internally
-	listProjectTeamsExecute(r ListProjectTeamsApiRequest) (*PaginatedTeamRole, *http.Response, error)
+	// Method available only for mocking purposes
+	ListProjectTeamsExecute(r ListProjectTeamsApiRequest) (*PaginatedTeamRole, *http.Response, error)
 
 	/*
 		ListTeamUsers Return All MongoDB Cloud Users Assigned to One Team
@@ -222,8 +222,8 @@ type TeamsApi interface {
 	*/
 	ListTeamUsersWithParams(ctx context.Context, args *ListTeamUsersApiParams) ListTeamUsersApiRequest
 
-	// Interface only available internally
-	listTeamUsersExecute(r ListTeamUsersApiRequest) (*PaginatedApiAppUser, *http.Response, error)
+	// Method available only for mocking purposes
+	ListTeamUsersExecute(r ListTeamUsersApiRequest) (*PaginatedApiAppUser, *http.Response, error)
 
 	/*
 		RemoveProjectTeam Remove One Team from One Project
@@ -246,8 +246,8 @@ type TeamsApi interface {
 	*/
 	RemoveProjectTeamWithParams(ctx context.Context, args *RemoveProjectTeamApiParams) RemoveProjectTeamApiRequest
 
-	// Interface only available internally
-	removeProjectTeamExecute(r RemoveProjectTeamApiRequest) (*http.Response, error)
+	// Method available only for mocking purposes
+	RemoveProjectTeamExecute(r RemoveProjectTeamApiRequest) (*http.Response, error)
 
 	/*
 		RemoveTeamUser Remove One MongoDB Cloud User from One Team
@@ -271,8 +271,8 @@ type TeamsApi interface {
 	*/
 	RemoveTeamUserWithParams(ctx context.Context, args *RemoveTeamUserApiParams) RemoveTeamUserApiRequest
 
-	// Interface only available internally
-	removeTeamUserExecute(r RemoveTeamUserApiRequest) (*http.Response, error)
+	// Method available only for mocking purposes
+	RemoveTeamUserExecute(r RemoveTeamUserApiRequest) (*http.Response, error)
 
 	/*
 		RenameTeam Rename One Team
@@ -295,8 +295,8 @@ type TeamsApi interface {
 	*/
 	RenameTeamWithParams(ctx context.Context, args *RenameTeamApiParams) RenameTeamApiRequest
 
-	// Interface only available internally
-	renameTeamExecute(r RenameTeamApiRequest) (*TeamResponse, *http.Response, error)
+	// Method available only for mocking purposes
+	RenameTeamExecute(r RenameTeamApiRequest) (*TeamResponse, *http.Response, error)
 
 	/*
 		UpdateTeamRoles Update Team Roles in One Project
@@ -319,8 +319,8 @@ type TeamsApi interface {
 	*/
 	UpdateTeamRolesWithParams(ctx context.Context, args *UpdateTeamRolesApiParams) UpdateTeamRolesApiRequest
 
-	// Interface only available internally
-	updateTeamRolesExecute(r UpdateTeamRolesApiRequest) (*PaginatedTeamRole, *http.Response, error)
+	// Method available only for mocking purposes
+	UpdateTeamRolesExecute(r UpdateTeamRolesApiRequest) (*PaginatedTeamRole, *http.Response, error)
 }
 
 // TeamsApiService TeamsApi service
@@ -348,7 +348,7 @@ func (a *TeamsApiService) AddAllTeamsToProjectWithParams(ctx context.Context, ar
 }
 
 func (r AddAllTeamsToProjectApiRequest) Execute() (*PaginatedTeamRole, *http.Response, error) {
-	return r.ApiService.addAllTeamsToProjectExecute(r)
+	return r.ApiService.AddAllTeamsToProjectExecute(r)
 }
 
 /*
@@ -372,7 +372,7 @@ func (a *TeamsApiService) AddAllTeamsToProject(ctx context.Context, groupId stri
 // Execute executes the request
 //
 //	@return PaginatedTeamRole
-func (a *TeamsApiService) addAllTeamsToProjectExecute(r AddAllTeamsToProjectApiRequest) (*PaginatedTeamRole, *http.Response, error) {
+func (a *TeamsApiService) AddAllTeamsToProjectExecute(r AddAllTeamsToProjectApiRequest) (*PaginatedTeamRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -484,7 +484,7 @@ func (a *TeamsApiService) AddTeamUserWithParams(ctx context.Context, args *AddTe
 }
 
 func (r AddTeamUserApiRequest) Execute() (*PaginatedApiAppUser, *http.Response, error) {
-	return r.ApiService.addTeamUserExecute(r)
+	return r.ApiService.AddTeamUserExecute(r)
 }
 
 /*
@@ -510,7 +510,7 @@ func (a *TeamsApiService) AddTeamUser(ctx context.Context, orgId string, teamId 
 // Execute executes the request
 //
 //	@return PaginatedApiAppUser
-func (a *TeamsApiService) addTeamUserExecute(r AddTeamUserApiRequest) (*PaginatedApiAppUser, *http.Response, error) {
+func (a *TeamsApiService) AddTeamUserExecute(r AddTeamUserApiRequest) (*PaginatedApiAppUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -620,7 +620,7 @@ func (a *TeamsApiService) CreateTeamWithParams(ctx context.Context, args *Create
 }
 
 func (r CreateTeamApiRequest) Execute() (*Team, *http.Response, error) {
-	return r.ApiService.createTeamExecute(r)
+	return r.ApiService.CreateTeamExecute(r)
 }
 
 /*
@@ -644,7 +644,7 @@ func (a *TeamsApiService) CreateTeam(ctx context.Context, orgId string, team *Te
 // Execute executes the request
 //
 //	@return Team
-func (a *TeamsApiService) createTeamExecute(r CreateTeamApiRequest) (*Team, *http.Response, error) {
+func (a *TeamsApiService) CreateTeamExecute(r CreateTeamApiRequest) (*Team, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -753,7 +753,7 @@ func (a *TeamsApiService) DeleteTeamWithParams(ctx context.Context, args *Delete
 }
 
 func (r DeleteTeamApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.deleteTeamExecute(r)
+	return r.ApiService.DeleteTeamExecute(r)
 }
 
 /*
@@ -778,7 +778,7 @@ func (a *TeamsApiService) DeleteTeam(ctx context.Context, orgId string, teamId s
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *TeamsApiService) deleteTeamExecute(r DeleteTeamApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *TeamsApiService) DeleteTeamExecute(r DeleteTeamApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -883,7 +883,7 @@ func (a *TeamsApiService) GetTeamByIdWithParams(ctx context.Context, args *GetTe
 }
 
 func (r GetTeamByIdApiRequest) Execute() (*TeamResponse, *http.Response, error) {
-	return r.ApiService.getTeamByIdExecute(r)
+	return r.ApiService.GetTeamByIdExecute(r)
 }
 
 /*
@@ -908,7 +908,7 @@ func (a *TeamsApiService) GetTeamById(ctx context.Context, orgId string, teamId 
 // Execute executes the request
 //
 //	@return TeamResponse
-func (a *TeamsApiService) getTeamByIdExecute(r GetTeamByIdApiRequest) (*TeamResponse, *http.Response, error) {
+func (a *TeamsApiService) GetTeamByIdExecute(r GetTeamByIdApiRequest) (*TeamResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1013,7 +1013,7 @@ func (a *TeamsApiService) GetTeamByNameWithParams(ctx context.Context, args *Get
 }
 
 func (r GetTeamByNameApiRequest) Execute() (*TeamResponse, *http.Response, error) {
-	return r.ApiService.getTeamByNameExecute(r)
+	return r.ApiService.GetTeamByNameExecute(r)
 }
 
 /*
@@ -1038,7 +1038,7 @@ func (a *TeamsApiService) GetTeamByName(ctx context.Context, orgId string, teamN
 // Execute executes the request
 //
 //	@return TeamResponse
-func (a *TeamsApiService) getTeamByNameExecute(r GetTeamByNameApiRequest) (*TeamResponse, *http.Response, error) {
+func (a *TeamsApiService) GetTeamByNameExecute(r GetTeamByNameApiRequest) (*TeamResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1167,7 +1167,7 @@ func (r ListOrganizationTeamsApiRequest) PageNum(pageNum int) ListOrganizationTe
 }
 
 func (r ListOrganizationTeamsApiRequest) Execute() (*PaginatedTeam, *http.Response, error) {
-	return r.ApiService.listOrganizationTeamsExecute(r)
+	return r.ApiService.ListOrganizationTeamsExecute(r)
 }
 
 /*
@@ -1190,7 +1190,7 @@ func (a *TeamsApiService) ListOrganizationTeams(ctx context.Context, orgId strin
 // Execute executes the request
 //
 //	@return PaginatedTeam
-func (a *TeamsApiService) listOrganizationTeamsExecute(r ListOrganizationTeamsApiRequest) (*PaginatedTeam, *http.Response, error) {
+func (a *TeamsApiService) ListOrganizationTeamsExecute(r ListOrganizationTeamsApiRequest) (*PaginatedTeam, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1339,7 +1339,7 @@ func (r ListProjectTeamsApiRequest) PageNum(pageNum int) ListProjectTeamsApiRequ
 }
 
 func (r ListProjectTeamsApiRequest) Execute() (*PaginatedTeamRole, *http.Response, error) {
-	return r.ApiService.listProjectTeamsExecute(r)
+	return r.ApiService.ListProjectTeamsExecute(r)
 }
 
 /*
@@ -1362,7 +1362,7 @@ func (a *TeamsApiService) ListProjectTeams(ctx context.Context, groupId string) 
 // Execute executes the request
 //
 //	@return PaginatedTeamRole
-func (a *TeamsApiService) listProjectTeamsExecute(r ListProjectTeamsApiRequest) (*PaginatedTeamRole, *http.Response, error) {
+func (a *TeamsApiService) ListProjectTeamsExecute(r ListProjectTeamsApiRequest) (*PaginatedTeamRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1505,7 +1505,7 @@ func (r ListTeamUsersApiRequest) PageNum(pageNum int) ListTeamUsersApiRequest {
 }
 
 func (r ListTeamUsersApiRequest) Execute() (*PaginatedApiAppUser, *http.Response, error) {
-	return r.ApiService.listTeamUsersExecute(r)
+	return r.ApiService.ListTeamUsersExecute(r)
 }
 
 /*
@@ -1530,7 +1530,7 @@ func (a *TeamsApiService) ListTeamUsers(ctx context.Context, orgId string, teamI
 // Execute executes the request
 //
 //	@return PaginatedApiAppUser
-func (a *TeamsApiService) listTeamUsersExecute(r ListTeamUsersApiRequest) (*PaginatedApiAppUser, *http.Response, error) {
+func (a *TeamsApiService) ListTeamUsersExecute(r ListTeamUsersApiRequest) (*PaginatedApiAppUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1649,7 +1649,7 @@ func (a *TeamsApiService) RemoveProjectTeamWithParams(ctx context.Context, args 
 }
 
 func (r RemoveProjectTeamApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.removeProjectTeamExecute(r)
+	return r.ApiService.RemoveProjectTeamExecute(r)
 }
 
 /*
@@ -1672,7 +1672,7 @@ func (a *TeamsApiService) RemoveProjectTeam(ctx context.Context, groupId string,
 }
 
 // Execute executes the request
-func (a *TeamsApiService) removeProjectTeamExecute(r RemoveProjectTeamApiRequest) (*http.Response, error) {
+func (a *TeamsApiService) RemoveProjectTeamExecute(r RemoveProjectTeamApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
@@ -1770,7 +1770,7 @@ func (a *TeamsApiService) RemoveTeamUserWithParams(ctx context.Context, args *Re
 }
 
 func (r RemoveTeamUserApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.removeTeamUserExecute(r)
+	return r.ApiService.RemoveTeamUserExecute(r)
 }
 
 /*
@@ -1795,7 +1795,7 @@ func (a *TeamsApiService) RemoveTeamUser(ctx context.Context, orgId string, team
 }
 
 // Execute executes the request
-func (a *TeamsApiService) removeTeamUserExecute(r RemoveTeamUserApiRequest) (*http.Response, error) {
+func (a *TeamsApiService) RemoveTeamUserExecute(r RemoveTeamUserApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
@@ -1894,7 +1894,7 @@ func (a *TeamsApiService) RenameTeamWithParams(ctx context.Context, args *Rename
 }
 
 func (r RenameTeamApiRequest) Execute() (*TeamResponse, *http.Response, error) {
-	return r.ApiService.renameTeamExecute(r)
+	return r.ApiService.RenameTeamExecute(r)
 }
 
 /*
@@ -1920,7 +1920,7 @@ func (a *TeamsApiService) RenameTeam(ctx context.Context, orgId string, teamId s
 // Execute executes the request
 //
 //	@return TeamResponse
-func (a *TeamsApiService) renameTeamExecute(r RenameTeamApiRequest) (*TeamResponse, *http.Response, error) {
+func (a *TeamsApiService) RenameTeamExecute(r RenameTeamApiRequest) (*TeamResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -2033,7 +2033,7 @@ func (a *TeamsApiService) UpdateTeamRolesWithParams(ctx context.Context, args *U
 }
 
 func (r UpdateTeamRolesApiRequest) Execute() (*PaginatedTeamRole, *http.Response, error) {
-	return r.ApiService.updateTeamRolesExecute(r)
+	return r.ApiService.UpdateTeamRolesExecute(r)
 }
 
 /*
@@ -2059,7 +2059,7 @@ func (a *TeamsApiService) UpdateTeamRoles(ctx context.Context, groupId string, t
 // Execute executes the request
 //
 //	@return PaginatedTeamRole
-func (a *TeamsApiService) updateTeamRolesExecute(r UpdateTeamRolesApiRequest) (*PaginatedTeamRole, *http.Response, error) {
+func (a *TeamsApiService) UpdateTeamRolesExecute(r UpdateTeamRolesApiRequest) (*PaginatedTeamRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}

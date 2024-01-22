@@ -31,8 +31,8 @@ type DefaultApi interface {
 	*/
 	ReturnAllControlPlaneIPAddressesWithParams(ctx context.Context, args *ReturnAllControlPlaneIPAddressesApiParams) ReturnAllControlPlaneIPAddressesApiRequest
 
-	// Interface only available internally
-	returnAllControlPlaneIPAddressesExecute(r ReturnAllControlPlaneIPAddressesApiRequest) (*ControlPlaneIPAddresses, *http.Response, error)
+	// Method available only for mocking purposes
+	ReturnAllControlPlaneIPAddressesExecute(r ReturnAllControlPlaneIPAddressesApiRequest) (*ControlPlaneIPAddresses, *http.Response, error)
 }
 
 // DefaultApiService DefaultApi service
@@ -54,7 +54,7 @@ func (a *DefaultApiService) ReturnAllControlPlaneIPAddressesWithParams(ctx conte
 }
 
 func (r ReturnAllControlPlaneIPAddressesApiRequest) Execute() (*ControlPlaneIPAddresses, *http.Response, error) {
-	return r.ApiService.returnAllControlPlaneIPAddressesExecute(r)
+	return r.ApiService.ReturnAllControlPlaneIPAddressesExecute(r)
 }
 
 /*
@@ -75,7 +75,7 @@ func (a *DefaultApiService) ReturnAllControlPlaneIPAddresses(ctx context.Context
 // Execute executes the request
 //
 //	@return ControlPlaneIPAddresses
-func (a *DefaultApiService) returnAllControlPlaneIPAddressesExecute(r ReturnAllControlPlaneIPAddressesApiRequest) (*ControlPlaneIPAddresses, *http.Response, error) {
+func (a *DefaultApiService) ReturnAllControlPlaneIPAddressesExecute(r ReturnAllControlPlaneIPAddressesApiRequest) (*ControlPlaneIPAddresses, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}

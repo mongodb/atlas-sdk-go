@@ -33,8 +33,8 @@ type InvoicesApi interface {
 	*/
 	CreateCostExplorerQueryProcessWithParams(ctx context.Context, args *CreateCostExplorerQueryProcessApiParams) CreateCostExplorerQueryProcessApiRequest
 
-	// Interface only available internally
-	createCostExplorerQueryProcessExecute(r CreateCostExplorerQueryProcessApiRequest) (*CostExplorerFilterResponse, *http.Response, error)
+	// Method available only for mocking purposes
+	CreateCostExplorerQueryProcessExecute(r CreateCostExplorerQueryProcessApiRequest) (*CostExplorerFilterResponse, *http.Response, error)
 
 	/*
 		CreateCostExplorerQueryProcess1 Return results from a given Cost Explorer query, or notify that the results are not ready yet.
@@ -57,8 +57,8 @@ type InvoicesApi interface {
 	*/
 	CreateCostExplorerQueryProcess1WithParams(ctx context.Context, args *CreateCostExplorerQueryProcess1ApiParams) CreateCostExplorerQueryProcess1ApiRequest
 
-	// Interface only available internally
-	createCostExplorerQueryProcess1Execute(r CreateCostExplorerQueryProcess1ApiRequest) (string, *http.Response, error)
+	// Method available only for mocking purposes
+	CreateCostExplorerQueryProcess1Execute(r CreateCostExplorerQueryProcess1ApiRequest) (string, *http.Response, error)
 
 	/*
 		DownloadInvoiceCSV Return One Organization Invoice as CSV
@@ -81,8 +81,8 @@ type InvoicesApi interface {
 	*/
 	DownloadInvoiceCSVWithParams(ctx context.Context, args *DownloadInvoiceCSVApiParams) DownloadInvoiceCSVApiRequest
 
-	// Interface only available internally
-	downloadInvoiceCSVExecute(r DownloadInvoiceCSVApiRequest) (string, *http.Response, error)
+	// Method available only for mocking purposes
+	DownloadInvoiceCSVExecute(r DownloadInvoiceCSVApiRequest) (string, *http.Response, error)
 
 	/*
 		GetInvoice Return One Organization Invoice
@@ -105,8 +105,8 @@ type InvoicesApi interface {
 	*/
 	GetInvoiceWithParams(ctx context.Context, args *GetInvoiceApiParams) GetInvoiceApiRequest
 
-	// Interface only available internally
-	getInvoiceExecute(r GetInvoiceApiRequest) (string, *http.Response, error)
+	// Method available only for mocking purposes
+	GetInvoiceExecute(r GetInvoiceApiRequest) (string, *http.Response, error)
 
 	/*
 		ListInvoices Return All Invoices for One Organization
@@ -128,8 +128,8 @@ type InvoicesApi interface {
 	*/
 	ListInvoicesWithParams(ctx context.Context, args *ListInvoicesApiParams) ListInvoicesApiRequest
 
-	// Interface only available internally
-	listInvoicesExecute(r ListInvoicesApiRequest) (*PaginatedApiInvoice, *http.Response, error)
+	// Method available only for mocking purposes
+	ListInvoicesExecute(r ListInvoicesApiRequest) (*PaginatedApiInvoice, *http.Response, error)
 
 	/*
 		ListPendingInvoices Return All Pending Invoices for One Organization
@@ -151,8 +151,8 @@ type InvoicesApi interface {
 	*/
 	ListPendingInvoicesWithParams(ctx context.Context, args *ListPendingInvoicesApiParams) ListPendingInvoicesApiRequest
 
-	// Interface only available internally
-	listPendingInvoicesExecute(r ListPendingInvoicesApiRequest) (*PaginatedApiInvoice, *http.Response, error)
+	// Method available only for mocking purposes
+	ListPendingInvoicesExecute(r ListPendingInvoicesApiRequest) (*PaginatedApiInvoice, *http.Response, error)
 }
 
 // InvoicesApiService InvoicesApi service
@@ -180,7 +180,7 @@ func (a *InvoicesApiService) CreateCostExplorerQueryProcessWithParams(ctx contex
 }
 
 func (r CreateCostExplorerQueryProcessApiRequest) Execute() (*CostExplorerFilterResponse, *http.Response, error) {
-	return r.ApiService.createCostExplorerQueryProcessExecute(r)
+	return r.ApiService.CreateCostExplorerQueryProcessExecute(r)
 }
 
 /*
@@ -204,7 +204,7 @@ func (a *InvoicesApiService) CreateCostExplorerQueryProcess(ctx context.Context,
 // Execute executes the request
 //
 //	@return CostExplorerFilterResponse
-func (a *InvoicesApiService) createCostExplorerQueryProcessExecute(r CreateCostExplorerQueryProcessApiRequest) (*CostExplorerFilterResponse, *http.Response, error) {
+func (a *InvoicesApiService) CreateCostExplorerQueryProcessExecute(r CreateCostExplorerQueryProcessApiRequest) (*CostExplorerFilterResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -313,7 +313,7 @@ func (a *InvoicesApiService) CreateCostExplorerQueryProcess1WithParams(ctx conte
 }
 
 func (r CreateCostExplorerQueryProcess1ApiRequest) Execute() (string, *http.Response, error) {
-	return r.ApiService.createCostExplorerQueryProcess1Execute(r)
+	return r.ApiService.CreateCostExplorerQueryProcess1Execute(r)
 }
 
 /*
@@ -338,7 +338,7 @@ func (a *InvoicesApiService) CreateCostExplorerQueryProcess1(ctx context.Context
 // Execute executes the request
 //
 //	@return string
-func (a *InvoicesApiService) createCostExplorerQueryProcess1Execute(r CreateCostExplorerQueryProcess1ApiRequest) (string, *http.Response, error) {
+func (a *InvoicesApiService) CreateCostExplorerQueryProcess1Execute(r CreateCostExplorerQueryProcess1ApiRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -443,7 +443,7 @@ func (a *InvoicesApiService) DownloadInvoiceCSVWithParams(ctx context.Context, a
 }
 
 func (r DownloadInvoiceCSVApiRequest) Execute() (string, *http.Response, error) {
-	return r.ApiService.downloadInvoiceCSVExecute(r)
+	return r.ApiService.DownloadInvoiceCSVExecute(r)
 }
 
 /*
@@ -468,7 +468,7 @@ func (a *InvoicesApiService) DownloadInvoiceCSV(ctx context.Context, orgId strin
 // Execute executes the request
 //
 //	@return string
-func (a *InvoicesApiService) downloadInvoiceCSVExecute(r DownloadInvoiceCSVApiRequest) (string, *http.Response, error) {
+func (a *InvoicesApiService) DownloadInvoiceCSVExecute(r DownloadInvoiceCSVApiRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -573,7 +573,7 @@ func (a *InvoicesApiService) GetInvoiceWithParams(ctx context.Context, args *Get
 }
 
 func (r GetInvoiceApiRequest) Execute() (string, *http.Response, error) {
-	return r.ApiService.getInvoiceExecute(r)
+	return r.ApiService.GetInvoiceExecute(r)
 }
 
 /*
@@ -598,7 +598,7 @@ func (a *InvoicesApiService) GetInvoice(ctx context.Context, orgId string, invoi
 // Execute executes the request
 //
 //	@return string
-func (a *InvoicesApiService) getInvoiceExecute(r GetInvoiceApiRequest) (string, *http.Response, error) {
+func (a *InvoicesApiService) GetInvoiceExecute(r GetInvoiceApiRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -727,7 +727,7 @@ func (r ListInvoicesApiRequest) PageNum(pageNum int) ListInvoicesApiRequest {
 }
 
 func (r ListInvoicesApiRequest) Execute() (*PaginatedApiInvoice, *http.Response, error) {
-	return r.ApiService.listInvoicesExecute(r)
+	return r.ApiService.ListInvoicesExecute(r)
 }
 
 /*
@@ -750,7 +750,7 @@ func (a *InvoicesApiService) ListInvoices(ctx context.Context, orgId string) Lis
 // Execute executes the request
 //
 //	@return PaginatedApiInvoice
-func (a *InvoicesApiService) listInvoicesExecute(r ListInvoicesApiRequest) (*PaginatedApiInvoice, *http.Response, error) {
+func (a *InvoicesApiService) ListInvoicesExecute(r ListInvoicesApiRequest) (*PaginatedApiInvoice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -872,7 +872,7 @@ func (a *InvoicesApiService) ListPendingInvoicesWithParams(ctx context.Context, 
 }
 
 func (r ListPendingInvoicesApiRequest) Execute() (*PaginatedApiInvoice, *http.Response, error) {
-	return r.ApiService.listPendingInvoicesExecute(r)
+	return r.ApiService.ListPendingInvoicesExecute(r)
 }
 
 /*
@@ -895,7 +895,7 @@ func (a *InvoicesApiService) ListPendingInvoices(ctx context.Context, orgId stri
 // Execute executes the request
 //
 //	@return PaginatedApiInvoice
-func (a *InvoicesApiService) listPendingInvoicesExecute(r ListPendingInvoicesApiRequest) (*PaginatedApiInvoice, *http.Response, error) {
+func (a *InvoicesApiService) ListPendingInvoicesExecute(r ListPendingInvoicesApiRequest) (*PaginatedApiInvoice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}

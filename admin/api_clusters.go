@@ -34,8 +34,8 @@ type ClustersApi interface {
 	*/
 	CreateClusterWithParams(ctx context.Context, args *CreateClusterApiParams) CreateClusterApiRequest
 
-	// Interface only available internally
-	createClusterExecute(r CreateClusterApiRequest) (*AdvancedClusterDescription, *http.Response, error)
+	// Method available only for mocking purposes
+	CreateClusterExecute(r CreateClusterApiRequest) (*AdvancedClusterDescription, *http.Response, error)
 
 	/*
 		DeleteCluster Remove One Multi-Cloud Cluster from One Project
@@ -58,8 +58,8 @@ type ClustersApi interface {
 	*/
 	DeleteClusterWithParams(ctx context.Context, args *DeleteClusterApiParams) DeleteClusterApiRequest
 
-	// Interface only available internally
-	deleteClusterExecute(r DeleteClusterApiRequest) (*http.Response, error)
+	// Method available only for mocking purposes
+	DeleteClusterExecute(r DeleteClusterApiRequest) (*http.Response, error)
 
 	/*
 		GetCluster Return One Multi-Cloud Cluster from One Project
@@ -82,8 +82,8 @@ type ClustersApi interface {
 	*/
 	GetClusterWithParams(ctx context.Context, args *GetClusterApiParams) GetClusterApiRequest
 
-	// Interface only available internally
-	getClusterExecute(r GetClusterApiRequest) (*AdvancedClusterDescription, *http.Response, error)
+	// Method available only for mocking purposes
+	GetClusterExecute(r GetClusterApiRequest) (*AdvancedClusterDescription, *http.Response, error)
 
 	/*
 		GetClusterAdvancedConfiguration Return One Advanced Configuration Options for One Cluster
@@ -106,8 +106,8 @@ type ClustersApi interface {
 	*/
 	GetClusterAdvancedConfigurationWithParams(ctx context.Context, args *GetClusterAdvancedConfigurationApiParams) GetClusterAdvancedConfigurationApiRequest
 
-	// Interface only available internally
-	getClusterAdvancedConfigurationExecute(r GetClusterAdvancedConfigurationApiRequest) (*ClusterDescriptionProcessArgs, *http.Response, error)
+	// Method available only for mocking purposes
+	GetClusterAdvancedConfigurationExecute(r GetClusterAdvancedConfigurationApiRequest) (*ClusterDescriptionProcessArgs, *http.Response, error)
 
 	/*
 		GetClusterStatus Return Status of All Cluster Operations
@@ -130,8 +130,8 @@ type ClustersApi interface {
 	*/
 	GetClusterStatusWithParams(ctx context.Context, args *GetClusterStatusApiParams) GetClusterStatusApiRequest
 
-	// Interface only available internally
-	getClusterStatusExecute(r GetClusterStatusApiRequest) (*ClusterStatus, *http.Response, error)
+	// Method available only for mocking purposes
+	GetClusterStatusExecute(r GetClusterStatusApiRequest) (*ClusterStatus, *http.Response, error)
 
 	/*
 		GetSampleDatasetLoadStatus Check Status of Cluster Sample Dataset Request
@@ -154,8 +154,8 @@ type ClustersApi interface {
 	*/
 	GetSampleDatasetLoadStatusWithParams(ctx context.Context, args *GetSampleDatasetLoadStatusApiParams) GetSampleDatasetLoadStatusApiRequest
 
-	// Interface only available internally
-	getSampleDatasetLoadStatusExecute(r GetSampleDatasetLoadStatusApiRequest) (*SampleDatasetStatus, *http.Response, error)
+	// Method available only for mocking purposes
+	GetSampleDatasetLoadStatusExecute(r GetSampleDatasetLoadStatusApiRequest) (*SampleDatasetStatus, *http.Response, error)
 
 	/*
 		ListCloudProviderRegions Return All Cloud Provider Regions
@@ -177,8 +177,8 @@ type ClustersApi interface {
 	*/
 	ListCloudProviderRegionsWithParams(ctx context.Context, args *ListCloudProviderRegionsApiParams) ListCloudProviderRegionsApiRequest
 
-	// Interface only available internally
-	listCloudProviderRegionsExecute(r ListCloudProviderRegionsApiRequest) (*PaginatedApiAtlasProviderRegions, *http.Response, error)
+	// Method available only for mocking purposes
+	ListCloudProviderRegionsExecute(r ListCloudProviderRegionsApiRequest) (*PaginatedApiAtlasProviderRegions, *http.Response, error)
 
 	/*
 		ListClusters Return All Clusters in One Project
@@ -200,8 +200,8 @@ type ClustersApi interface {
 	*/
 	ListClustersWithParams(ctx context.Context, args *ListClustersApiParams) ListClustersApiRequest
 
-	// Interface only available internally
-	listClustersExecute(r ListClustersApiRequest) (*PaginatedAdvancedClusterDescription, *http.Response, error)
+	// Method available only for mocking purposes
+	ListClustersExecute(r ListClustersApiRequest) (*PaginatedAdvancedClusterDescription, *http.Response, error)
 
 	/*
 		ListClustersForAllProjects Return All Authorized Clusters in All Projects
@@ -222,8 +222,8 @@ type ClustersApi interface {
 	*/
 	ListClustersForAllProjectsWithParams(ctx context.Context, args *ListClustersForAllProjectsApiParams) ListClustersForAllProjectsApiRequest
 
-	// Interface only available internally
-	listClustersForAllProjectsExecute(r ListClustersForAllProjectsApiRequest) (*PaginatedOrgGroup, *http.Response, error)
+	// Method available only for mocking purposes
+	ListClustersForAllProjectsExecute(r ListClustersForAllProjectsApiRequest) (*PaginatedOrgGroup, *http.Response, error)
 
 	/*
 		LoadSampleDataset Load Sample Dataset Request into Cluster
@@ -246,8 +246,8 @@ type ClustersApi interface {
 	*/
 	LoadSampleDatasetWithParams(ctx context.Context, args *LoadSampleDatasetApiParams) LoadSampleDatasetApiRequest
 
-	// Interface only available internally
-	loadSampleDatasetExecute(r LoadSampleDatasetApiRequest) (*SampleDatasetStatus, *http.Response, error)
+	// Method available only for mocking purposes
+	LoadSampleDatasetExecute(r LoadSampleDatasetApiRequest) (*SampleDatasetStatus, *http.Response, error)
 
 	/*
 		TestFailover Test Failover for One Multi-Cloud Cluster
@@ -270,8 +270,8 @@ type ClustersApi interface {
 	*/
 	TestFailoverWithParams(ctx context.Context, args *TestFailoverApiParams) TestFailoverApiRequest
 
-	// Interface only available internally
-	testFailoverExecute(r TestFailoverApiRequest) (*http.Response, error)
+	// Method available only for mocking purposes
+	TestFailoverExecute(r TestFailoverApiRequest) (*http.Response, error)
 
 	/*
 		UpdateCluster Modify One Multi-Cloud Cluster from One Project
@@ -294,8 +294,8 @@ type ClustersApi interface {
 	*/
 	UpdateClusterWithParams(ctx context.Context, args *UpdateClusterApiParams) UpdateClusterApiRequest
 
-	// Interface only available internally
-	updateClusterExecute(r UpdateClusterApiRequest) (*AdvancedClusterDescription, *http.Response, error)
+	// Method available only for mocking purposes
+	UpdateClusterExecute(r UpdateClusterApiRequest) (*AdvancedClusterDescription, *http.Response, error)
 
 	/*
 		UpdateClusterAdvancedConfiguration Update Advanced Configuration Options for One Cluster
@@ -318,8 +318,8 @@ type ClustersApi interface {
 	*/
 	UpdateClusterAdvancedConfigurationWithParams(ctx context.Context, args *UpdateClusterAdvancedConfigurationApiParams) UpdateClusterAdvancedConfigurationApiRequest
 
-	// Interface only available internally
-	updateClusterAdvancedConfigurationExecute(r UpdateClusterAdvancedConfigurationApiRequest) (*ClusterDescriptionProcessArgs, *http.Response, error)
+	// Method available only for mocking purposes
+	UpdateClusterAdvancedConfigurationExecute(r UpdateClusterAdvancedConfigurationApiRequest) (*ClusterDescriptionProcessArgs, *http.Response, error)
 
 	/*
 		UpgradeSharedCluster Upgrade One Shared-tier Cluster
@@ -341,8 +341,8 @@ type ClustersApi interface {
 	*/
 	UpgradeSharedClusterWithParams(ctx context.Context, args *UpgradeSharedClusterApiParams) UpgradeSharedClusterApiRequest
 
-	// Interface only available internally
-	upgradeSharedClusterExecute(r UpgradeSharedClusterApiRequest) (*LegacyAtlasCluster, *http.Response, error)
+	// Method available only for mocking purposes
+	UpgradeSharedClusterExecute(r UpgradeSharedClusterApiRequest) (*LegacyAtlasCluster, *http.Response, error)
 
 	/*
 		UpgradeSharedClusterToServerless Upgrades One Shared-Tier Cluster to the Serverless Instance
@@ -364,8 +364,8 @@ type ClustersApi interface {
 	*/
 	UpgradeSharedClusterToServerlessWithParams(ctx context.Context, args *UpgradeSharedClusterToServerlessApiParams) UpgradeSharedClusterToServerlessApiRequest
 
-	// Interface only available internally
-	upgradeSharedClusterToServerlessExecute(r UpgradeSharedClusterToServerlessApiRequest) (*ServerlessInstanceDescription, *http.Response, error)
+	// Method available only for mocking purposes
+	UpgradeSharedClusterToServerlessExecute(r UpgradeSharedClusterToServerlessApiRequest) (*ServerlessInstanceDescription, *http.Response, error)
 }
 
 // ClustersApiService ClustersApi service
@@ -393,7 +393,7 @@ func (a *ClustersApiService) CreateClusterWithParams(ctx context.Context, args *
 }
 
 func (r CreateClusterApiRequest) Execute() (*AdvancedClusterDescription, *http.Response, error) {
-	return r.ApiService.createClusterExecute(r)
+	return r.ApiService.CreateClusterExecute(r)
 }
 
 /*
@@ -417,7 +417,7 @@ func (a *ClustersApiService) CreateCluster(ctx context.Context, groupId string, 
 // Execute executes the request
 //
 //	@return AdvancedClusterDescription
-func (a *ClustersApiService) createClusterExecute(r CreateClusterApiRequest) (*AdvancedClusterDescription, *http.Response, error) {
+func (a *ClustersApiService) CreateClusterExecute(r CreateClusterApiRequest) (*AdvancedClusterDescription, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -535,7 +535,7 @@ func (r DeleteClusterApiRequest) RetainBackups(retainBackups bool) DeleteCluster
 }
 
 func (r DeleteClusterApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.deleteClusterExecute(r)
+	return r.ApiService.DeleteClusterExecute(r)
 }
 
 /*
@@ -558,7 +558,7 @@ func (a *ClustersApiService) DeleteCluster(ctx context.Context, groupId string, 
 }
 
 // Execute executes the request
-func (a *ClustersApiService) deleteClusterExecute(r DeleteClusterApiRequest) (*http.Response, error) {
+func (a *ClustersApiService) DeleteClusterExecute(r DeleteClusterApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
@@ -656,7 +656,7 @@ func (a *ClustersApiService) GetClusterWithParams(ctx context.Context, args *Get
 }
 
 func (r GetClusterApiRequest) Execute() (*AdvancedClusterDescription, *http.Response, error) {
-	return r.ApiService.getClusterExecute(r)
+	return r.ApiService.GetClusterExecute(r)
 }
 
 /*
@@ -681,7 +681,7 @@ func (a *ClustersApiService) GetCluster(ctx context.Context, groupId string, clu
 // Execute executes the request
 //
 //	@return AdvancedClusterDescription
-func (a *ClustersApiService) getClusterExecute(r GetClusterApiRequest) (*AdvancedClusterDescription, *http.Response, error) {
+func (a *ClustersApiService) GetClusterExecute(r GetClusterApiRequest) (*AdvancedClusterDescription, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -786,7 +786,7 @@ func (a *ClustersApiService) GetClusterAdvancedConfigurationWithParams(ctx conte
 }
 
 func (r GetClusterAdvancedConfigurationApiRequest) Execute() (*ClusterDescriptionProcessArgs, *http.Response, error) {
-	return r.ApiService.getClusterAdvancedConfigurationExecute(r)
+	return r.ApiService.GetClusterAdvancedConfigurationExecute(r)
 }
 
 /*
@@ -811,7 +811,7 @@ func (a *ClustersApiService) GetClusterAdvancedConfiguration(ctx context.Context
 // Execute executes the request
 //
 //	@return ClusterDescriptionProcessArgs
-func (a *ClustersApiService) getClusterAdvancedConfigurationExecute(r GetClusterAdvancedConfigurationApiRequest) (*ClusterDescriptionProcessArgs, *http.Response, error) {
+func (a *ClustersApiService) GetClusterAdvancedConfigurationExecute(r GetClusterAdvancedConfigurationApiRequest) (*ClusterDescriptionProcessArgs, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -916,7 +916,7 @@ func (a *ClustersApiService) GetClusterStatusWithParams(ctx context.Context, arg
 }
 
 func (r GetClusterStatusApiRequest) Execute() (*ClusterStatus, *http.Response, error) {
-	return r.ApiService.getClusterStatusExecute(r)
+	return r.ApiService.GetClusterStatusExecute(r)
 }
 
 /*
@@ -941,7 +941,7 @@ func (a *ClustersApiService) GetClusterStatus(ctx context.Context, groupId strin
 // Execute executes the request
 //
 //	@return ClusterStatus
-func (a *ClustersApiService) getClusterStatusExecute(r GetClusterStatusApiRequest) (*ClusterStatus, *http.Response, error) {
+func (a *ClustersApiService) GetClusterStatusExecute(r GetClusterStatusApiRequest) (*ClusterStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1046,7 +1046,7 @@ func (a *ClustersApiService) GetSampleDatasetLoadStatusWithParams(ctx context.Co
 }
 
 func (r GetSampleDatasetLoadStatusApiRequest) Execute() (*SampleDatasetStatus, *http.Response, error) {
-	return r.ApiService.getSampleDatasetLoadStatusExecute(r)
+	return r.ApiService.GetSampleDatasetLoadStatusExecute(r)
 }
 
 /*
@@ -1071,7 +1071,7 @@ func (a *ClustersApiService) GetSampleDatasetLoadStatus(ctx context.Context, gro
 // Execute executes the request
 //
 //	@return SampleDatasetStatus
-func (a *ClustersApiService) getSampleDatasetLoadStatusExecute(r GetSampleDatasetLoadStatusApiRequest) (*SampleDatasetStatus, *http.Response, error) {
+func (a *ClustersApiService) GetSampleDatasetLoadStatusExecute(r GetSampleDatasetLoadStatusApiRequest) (*SampleDatasetStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1218,7 +1218,7 @@ func (r ListCloudProviderRegionsApiRequest) Tier(tier string) ListCloudProviderR
 }
 
 func (r ListCloudProviderRegionsApiRequest) Execute() (*PaginatedApiAtlasProviderRegions, *http.Response, error) {
-	return r.ApiService.listCloudProviderRegionsExecute(r)
+	return r.ApiService.ListCloudProviderRegionsExecute(r)
 }
 
 /*
@@ -1241,7 +1241,7 @@ func (a *ClustersApiService) ListCloudProviderRegions(ctx context.Context, group
 // Execute executes the request
 //
 //	@return PaginatedApiAtlasProviderRegions
-func (a *ClustersApiService) listCloudProviderRegionsExecute(r ListCloudProviderRegionsApiRequest) (*PaginatedApiAtlasProviderRegions, *http.Response, error) {
+func (a *ClustersApiService) ListCloudProviderRegionsExecute(r ListCloudProviderRegionsApiRequest) (*PaginatedApiAtlasProviderRegions, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1409,7 +1409,7 @@ func (r ListClustersApiRequest) IncludeDeletedWithRetainedBackups(includeDeleted
 }
 
 func (r ListClustersApiRequest) Execute() (*PaginatedAdvancedClusterDescription, *http.Response, error) {
-	return r.ApiService.listClustersExecute(r)
+	return r.ApiService.ListClustersExecute(r)
 }
 
 /*
@@ -1432,7 +1432,7 @@ func (a *ClustersApiService) ListClusters(ctx context.Context, groupId string) L
 // Execute executes the request
 //
 //	@return PaginatedAdvancedClusterDescription
-func (a *ClustersApiService) listClustersExecute(r ListClustersApiRequest) (*PaginatedAdvancedClusterDescription, *http.Response, error) {
+func (a *ClustersApiService) ListClustersExecute(r ListClustersApiRequest) (*PaginatedAdvancedClusterDescription, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1585,7 +1585,7 @@ func (r ListClustersForAllProjectsApiRequest) PageNum(pageNum int) ListClustersF
 }
 
 func (r ListClustersForAllProjectsApiRequest) Execute() (*PaginatedOrgGroup, *http.Response, error) {
-	return r.ApiService.listClustersForAllProjectsExecute(r)
+	return r.ApiService.ListClustersForAllProjectsExecute(r)
 }
 
 /*
@@ -1606,7 +1606,7 @@ func (a *ClustersApiService) ListClustersForAllProjects(ctx context.Context) Lis
 // Execute executes the request
 //
 //	@return PaginatedOrgGroup
-func (a *ClustersApiService) listClustersForAllProjectsExecute(r ListClustersForAllProjectsApiRequest) (*PaginatedOrgGroup, *http.Response, error) {
+func (a *ClustersApiService) ListClustersForAllProjectsExecute(r ListClustersForAllProjectsApiRequest) (*PaginatedOrgGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1730,7 +1730,7 @@ func (a *ClustersApiService) LoadSampleDatasetWithParams(ctx context.Context, ar
 }
 
 func (r LoadSampleDatasetApiRequest) Execute() (*SampleDatasetStatus, *http.Response, error) {
-	return r.ApiService.loadSampleDatasetExecute(r)
+	return r.ApiService.LoadSampleDatasetExecute(r)
 }
 
 /*
@@ -1755,7 +1755,7 @@ func (a *ClustersApiService) LoadSampleDataset(ctx context.Context, groupId stri
 // Execute executes the request
 //
 //	@return SampleDatasetStatus
-func (a *ClustersApiService) loadSampleDatasetExecute(r LoadSampleDatasetApiRequest) (*SampleDatasetStatus, *http.Response, error) {
+func (a *ClustersApiService) LoadSampleDatasetExecute(r LoadSampleDatasetApiRequest) (*SampleDatasetStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -1860,7 +1860,7 @@ func (a *ClustersApiService) TestFailoverWithParams(ctx context.Context, args *T
 }
 
 func (r TestFailoverApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.testFailoverExecute(r)
+	return r.ApiService.TestFailoverExecute(r)
 }
 
 /*
@@ -1883,7 +1883,7 @@ func (a *ClustersApiService) TestFailover(ctx context.Context, groupId string, c
 }
 
 // Execute executes the request
-func (a *ClustersApiService) testFailoverExecute(r TestFailoverApiRequest) (*http.Response, error) {
+func (a *ClustersApiService) TestFailoverExecute(r TestFailoverApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
@@ -1981,7 +1981,7 @@ func (a *ClustersApiService) UpdateClusterWithParams(ctx context.Context, args *
 }
 
 func (r UpdateClusterApiRequest) Execute() (*AdvancedClusterDescription, *http.Response, error) {
-	return r.ApiService.updateClusterExecute(r)
+	return r.ApiService.UpdateClusterExecute(r)
 }
 
 /*
@@ -2007,7 +2007,7 @@ func (a *ClustersApiService) UpdateCluster(ctx context.Context, groupId string, 
 // Execute executes the request
 //
 //	@return AdvancedClusterDescription
-func (a *ClustersApiService) updateClusterExecute(r UpdateClusterApiRequest) (*AdvancedClusterDescription, *http.Response, error) {
+func (a *ClustersApiService) UpdateClusterExecute(r UpdateClusterApiRequest) (*AdvancedClusterDescription, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -2120,7 +2120,7 @@ func (a *ClustersApiService) UpdateClusterAdvancedConfigurationWithParams(ctx co
 }
 
 func (r UpdateClusterAdvancedConfigurationApiRequest) Execute() (*ClusterDescriptionProcessArgs, *http.Response, error) {
-	return r.ApiService.updateClusterAdvancedConfigurationExecute(r)
+	return r.ApiService.UpdateClusterAdvancedConfigurationExecute(r)
 }
 
 /*
@@ -2146,7 +2146,7 @@ func (a *ClustersApiService) UpdateClusterAdvancedConfiguration(ctx context.Cont
 // Execute executes the request
 //
 //	@return ClusterDescriptionProcessArgs
-func (a *ClustersApiService) updateClusterAdvancedConfigurationExecute(r UpdateClusterAdvancedConfigurationApiRequest) (*ClusterDescriptionProcessArgs, *http.Response, error) {
+func (a *ClustersApiService) UpdateClusterAdvancedConfigurationExecute(r UpdateClusterAdvancedConfigurationApiRequest) (*ClusterDescriptionProcessArgs, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -2256,7 +2256,7 @@ func (a *ClustersApiService) UpgradeSharedClusterWithParams(ctx context.Context,
 }
 
 func (r UpgradeSharedClusterApiRequest) Execute() (*LegacyAtlasCluster, *http.Response, error) {
-	return r.ApiService.upgradeSharedClusterExecute(r)
+	return r.ApiService.UpgradeSharedClusterExecute(r)
 }
 
 /*
@@ -2280,7 +2280,7 @@ func (a *ClustersApiService) UpgradeSharedCluster(ctx context.Context, groupId s
 // Execute executes the request
 //
 //	@return LegacyAtlasCluster
-func (a *ClustersApiService) upgradeSharedClusterExecute(r UpgradeSharedClusterApiRequest) (*LegacyAtlasCluster, *http.Response, error) {
+func (a *ClustersApiService) UpgradeSharedClusterExecute(r UpgradeSharedClusterApiRequest) (*LegacyAtlasCluster, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -2389,7 +2389,7 @@ func (a *ClustersApiService) UpgradeSharedClusterToServerlessWithParams(ctx cont
 }
 
 func (r UpgradeSharedClusterToServerlessApiRequest) Execute() (*ServerlessInstanceDescription, *http.Response, error) {
-	return r.ApiService.upgradeSharedClusterToServerlessExecute(r)
+	return r.ApiService.UpgradeSharedClusterToServerlessExecute(r)
 }
 
 /*
@@ -2413,7 +2413,7 @@ func (a *ClustersApiService) UpgradeSharedClusterToServerless(ctx context.Contex
 // Execute executes the request
 //
 //	@return ServerlessInstanceDescription
-func (a *ClustersApiService) upgradeSharedClusterToServerlessExecute(r UpgradeSharedClusterToServerlessApiRequest) (*ServerlessInstanceDescription, *http.Response, error) {
+func (a *ClustersApiService) UpgradeSharedClusterToServerlessExecute(r UpgradeSharedClusterToServerlessApiRequest) (*ServerlessInstanceDescription, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}

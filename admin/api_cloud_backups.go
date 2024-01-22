@@ -35,8 +35,8 @@ type CloudBackupsApi interface {
 	*/
 	CancelBackupRestoreJobWithParams(ctx context.Context, args *CancelBackupRestoreJobApiParams) CancelBackupRestoreJobApiRequest
 
-	// Interface only available internally
-	cancelBackupRestoreJobExecute(r CancelBackupRestoreJobApiRequest) (map[string]interface{}, *http.Response, error)
+	// Method available only for mocking purposes
+	CancelBackupRestoreJobExecute(r CancelBackupRestoreJobApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
 		CreateBackupExportJob Create One Cloud Backup Snapshot Export Job
@@ -59,8 +59,8 @@ type CloudBackupsApi interface {
 	*/
 	CreateBackupExportJobWithParams(ctx context.Context, args *CreateBackupExportJobApiParams) CreateBackupExportJobApiRequest
 
-	// Interface only available internally
-	createBackupExportJobExecute(r CreateBackupExportJobApiRequest) (*DiskBackupExportJob, *http.Response, error)
+	// Method available only for mocking purposes
+	CreateBackupExportJobExecute(r CreateBackupExportJobApiRequest) (*DiskBackupExportJob, *http.Response, error)
 
 	/*
 		CreateBackupRestoreJob Restore One Snapshot of One Cluster
@@ -85,8 +85,8 @@ type CloudBackupsApi interface {
 	*/
 	CreateBackupRestoreJobWithParams(ctx context.Context, args *CreateBackupRestoreJobApiParams) CreateBackupRestoreJobApiRequest
 
-	// Interface only available internally
-	createBackupRestoreJobExecute(r CreateBackupRestoreJobApiRequest) (*DiskBackupSnapshotRestoreJob, *http.Response, error)
+	// Method available only for mocking purposes
+	CreateBackupRestoreJobExecute(r CreateBackupRestoreJobApiRequest) (*DiskBackupSnapshotRestoreJob, *http.Response, error)
 
 	/*
 		CreateExportBucket Grant Access to AWS S3 Bucket for Cloud Backup Snapshot Exports
@@ -108,8 +108,8 @@ type CloudBackupsApi interface {
 	*/
 	CreateExportBucketWithParams(ctx context.Context, args *CreateExportBucketApiParams) CreateExportBucketApiRequest
 
-	// Interface only available internally
-	createExportBucketExecute(r CreateExportBucketApiRequest) (*DiskBackupSnapshotAWSExportBucket, *http.Response, error)
+	// Method available only for mocking purposes
+	CreateExportBucketExecute(r CreateExportBucketApiRequest) (*DiskBackupSnapshotAWSExportBucket, *http.Response, error)
 
 	/*
 		CreateServerlessBackupRestoreJob Restore One Snapshot of One Serverless Instance
@@ -132,8 +132,8 @@ type CloudBackupsApi interface {
 	*/
 	CreateServerlessBackupRestoreJobWithParams(ctx context.Context, args *CreateServerlessBackupRestoreJobApiParams) CreateServerlessBackupRestoreJobApiRequest
 
-	// Interface only available internally
-	createServerlessBackupRestoreJobExecute(r CreateServerlessBackupRestoreJobApiRequest) (*ServerlessBackupRestoreJob, *http.Response, error)
+	// Method available only for mocking purposes
+	CreateServerlessBackupRestoreJobExecute(r CreateServerlessBackupRestoreJobApiRequest) (*ServerlessBackupRestoreJob, *http.Response, error)
 
 	/*
 		DeleteAllBackupSchedules Remove All Cloud Backup Schedules
@@ -156,8 +156,8 @@ type CloudBackupsApi interface {
 	*/
 	DeleteAllBackupSchedulesWithParams(ctx context.Context, args *DeleteAllBackupSchedulesApiParams) DeleteAllBackupSchedulesApiRequest
 
-	// Interface only available internally
-	deleteAllBackupSchedulesExecute(r DeleteAllBackupSchedulesApiRequest) (*DiskBackupSnapshotSchedule, *http.Response, error)
+	// Method available only for mocking purposes
+	DeleteAllBackupSchedulesExecute(r DeleteAllBackupSchedulesApiRequest) (*DiskBackupSnapshotSchedule, *http.Response, error)
 
 	/*
 		DeleteExportBucket Revoke Access to AWS S3 Bucket for Cloud Backup Snapshot Exports
@@ -180,8 +180,8 @@ type CloudBackupsApi interface {
 	*/
 	DeleteExportBucketWithParams(ctx context.Context, args *DeleteExportBucketApiParams) DeleteExportBucketApiRequest
 
-	// Interface only available internally
-	deleteExportBucketExecute(r DeleteExportBucketApiRequest) (map[string]interface{}, *http.Response, error)
+	// Method available only for mocking purposes
+	DeleteExportBucketExecute(r DeleteExportBucketApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
 		DeleteReplicaSetBackup Remove One Replica Set Cloud Backup
@@ -205,8 +205,8 @@ type CloudBackupsApi interface {
 	*/
 	DeleteReplicaSetBackupWithParams(ctx context.Context, args *DeleteReplicaSetBackupApiParams) DeleteReplicaSetBackupApiRequest
 
-	// Interface only available internally
-	deleteReplicaSetBackupExecute(r DeleteReplicaSetBackupApiRequest) (map[string]interface{}, *http.Response, error)
+	// Method available only for mocking purposes
+	DeleteReplicaSetBackupExecute(r DeleteReplicaSetBackupApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
 		DeleteShardedClusterBackup Remove One Sharded Cluster Cloud Backup
@@ -230,8 +230,8 @@ type CloudBackupsApi interface {
 	*/
 	DeleteShardedClusterBackupWithParams(ctx context.Context, args *DeleteShardedClusterBackupApiParams) DeleteShardedClusterBackupApiRequest
 
-	// Interface only available internally
-	deleteShardedClusterBackupExecute(r DeleteShardedClusterBackupApiRequest) (map[string]interface{}, *http.Response, error)
+	// Method available only for mocking purposes
+	DeleteShardedClusterBackupExecute(r DeleteShardedClusterBackupApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
 		GetBackupExportJob Return One Cloud Backup Snapshot Export Job
@@ -255,8 +255,8 @@ type CloudBackupsApi interface {
 	*/
 	GetBackupExportJobWithParams(ctx context.Context, args *GetBackupExportJobApiParams) GetBackupExportJobApiRequest
 
-	// Interface only available internally
-	getBackupExportJobExecute(r GetBackupExportJobApiRequest) (*DiskBackupExportJob, *http.Response, error)
+	// Method available only for mocking purposes
+	GetBackupExportJobExecute(r GetBackupExportJobApiRequest) (*DiskBackupExportJob, *http.Response, error)
 
 	/*
 		GetBackupRestoreJob Return One Restore Job of One Cluster
@@ -280,8 +280,8 @@ type CloudBackupsApi interface {
 	*/
 	GetBackupRestoreJobWithParams(ctx context.Context, args *GetBackupRestoreJobApiParams) GetBackupRestoreJobApiRequest
 
-	// Interface only available internally
-	getBackupRestoreJobExecute(r GetBackupRestoreJobApiRequest) (*DiskBackupSnapshotRestoreJob, *http.Response, error)
+	// Method available only for mocking purposes
+	GetBackupRestoreJobExecute(r GetBackupRestoreJobApiRequest) (*DiskBackupSnapshotRestoreJob, *http.Response, error)
 
 	/*
 		GetBackupSchedule Return One Cloud Backup Schedule
@@ -304,8 +304,8 @@ type CloudBackupsApi interface {
 	*/
 	GetBackupScheduleWithParams(ctx context.Context, args *GetBackupScheduleApiParams) GetBackupScheduleApiRequest
 
-	// Interface only available internally
-	getBackupScheduleExecute(r GetBackupScheduleApiRequest) (*DiskBackupSnapshotSchedule, *http.Response, error)
+	// Method available only for mocking purposes
+	GetBackupScheduleExecute(r GetBackupScheduleApiRequest) (*DiskBackupSnapshotSchedule, *http.Response, error)
 
 	/*
 		GetDataProtectionSettings Return the Backup Compliance Policy settings
@@ -327,8 +327,8 @@ type CloudBackupsApi interface {
 	*/
 	GetDataProtectionSettingsWithParams(ctx context.Context, args *GetDataProtectionSettingsApiParams) GetDataProtectionSettingsApiRequest
 
-	// Interface only available internally
-	getDataProtectionSettingsExecute(r GetDataProtectionSettingsApiRequest) (*DataProtectionSettings20231001, *http.Response, error)
+	// Method available only for mocking purposes
+	GetDataProtectionSettingsExecute(r GetDataProtectionSettingsApiRequest) (*DataProtectionSettings20231001, *http.Response, error)
 
 	/*
 		GetExportBucket Return One AWS S3 Bucket Used for Cloud Backup Snapshot Exports
@@ -351,8 +351,8 @@ type CloudBackupsApi interface {
 	*/
 	GetExportBucketWithParams(ctx context.Context, args *GetExportBucketApiParams) GetExportBucketApiRequest
 
-	// Interface only available internally
-	getExportBucketExecute(r GetExportBucketApiRequest) (*DiskBackupSnapshotAWSExportBucket, *http.Response, error)
+	// Method available only for mocking purposes
+	GetExportBucketExecute(r GetExportBucketApiRequest) (*DiskBackupSnapshotAWSExportBucket, *http.Response, error)
 
 	/*
 		GetReplicaSetBackup Return One Replica Set Cloud Backup
@@ -376,8 +376,8 @@ type CloudBackupsApi interface {
 	*/
 	GetReplicaSetBackupWithParams(ctx context.Context, args *GetReplicaSetBackupApiParams) GetReplicaSetBackupApiRequest
 
-	// Interface only available internally
-	getReplicaSetBackupExecute(r GetReplicaSetBackupApiRequest) (*DiskBackupReplicaSet, *http.Response, error)
+	// Method available only for mocking purposes
+	GetReplicaSetBackupExecute(r GetReplicaSetBackupApiRequest) (*DiskBackupReplicaSet, *http.Response, error)
 
 	/*
 		GetServerlessBackup Return One Snapshot of One Serverless Instance
@@ -401,8 +401,8 @@ type CloudBackupsApi interface {
 	*/
 	GetServerlessBackupWithParams(ctx context.Context, args *GetServerlessBackupApiParams) GetServerlessBackupApiRequest
 
-	// Interface only available internally
-	getServerlessBackupExecute(r GetServerlessBackupApiRequest) (*ServerlessBackupSnapshot, *http.Response, error)
+	// Method available only for mocking purposes
+	GetServerlessBackupExecute(r GetServerlessBackupApiRequest) (*ServerlessBackupSnapshot, *http.Response, error)
 
 	/*
 		GetServerlessBackupRestoreJob Return One Restore Job for One Serverless Instance
@@ -426,8 +426,8 @@ type CloudBackupsApi interface {
 	*/
 	GetServerlessBackupRestoreJobWithParams(ctx context.Context, args *GetServerlessBackupRestoreJobApiParams) GetServerlessBackupRestoreJobApiRequest
 
-	// Interface only available internally
-	getServerlessBackupRestoreJobExecute(r GetServerlessBackupRestoreJobApiRequest) (*ServerlessBackupRestoreJob, *http.Response, error)
+	// Method available only for mocking purposes
+	GetServerlessBackupRestoreJobExecute(r GetServerlessBackupRestoreJobApiRequest) (*ServerlessBackupRestoreJob, *http.Response, error)
 
 	/*
 		GetShardedClusterBackup Return One Sharded Cluster Cloud Backup
@@ -451,8 +451,8 @@ type CloudBackupsApi interface {
 	*/
 	GetShardedClusterBackupWithParams(ctx context.Context, args *GetShardedClusterBackupApiParams) GetShardedClusterBackupApiRequest
 
-	// Interface only available internally
-	getShardedClusterBackupExecute(r GetShardedClusterBackupApiRequest) (*DiskBackupShardedClusterSnapshot, *http.Response, error)
+	// Method available only for mocking purposes
+	GetShardedClusterBackupExecute(r GetShardedClusterBackupApiRequest) (*DiskBackupShardedClusterSnapshot, *http.Response, error)
 
 	/*
 		ListBackupExportJobs Return All Cloud Backup Snapshot Export Jobs
@@ -475,8 +475,8 @@ type CloudBackupsApi interface {
 	*/
 	ListBackupExportJobsWithParams(ctx context.Context, args *ListBackupExportJobsApiParams) ListBackupExportJobsApiRequest
 
-	// Interface only available internally
-	listBackupExportJobsExecute(r ListBackupExportJobsApiRequest) (*PaginatedApiAtlasDiskBackupExportJob, *http.Response, error)
+	// Method available only for mocking purposes
+	ListBackupExportJobsExecute(r ListBackupExportJobsApiRequest) (*PaginatedApiAtlasDiskBackupExportJob, *http.Response, error)
 
 	/*
 		ListBackupRestoreJobs Return All Restore Jobs for One Cluster
@@ -499,8 +499,8 @@ type CloudBackupsApi interface {
 	*/
 	ListBackupRestoreJobsWithParams(ctx context.Context, args *ListBackupRestoreJobsApiParams) ListBackupRestoreJobsApiRequest
 
-	// Interface only available internally
-	listBackupRestoreJobsExecute(r ListBackupRestoreJobsApiRequest) (*PaginatedCloudBackupRestoreJob, *http.Response, error)
+	// Method available only for mocking purposes
+	ListBackupRestoreJobsExecute(r ListBackupRestoreJobsApiRequest) (*PaginatedCloudBackupRestoreJob, *http.Response, error)
 
 	/*
 		ListExportBuckets Return All AWS S3 Buckets Used for Cloud Backup Snapshot Exports
@@ -522,8 +522,8 @@ type CloudBackupsApi interface {
 	*/
 	ListExportBucketsWithParams(ctx context.Context, args *ListExportBucketsApiParams) ListExportBucketsApiRequest
 
-	// Interface only available internally
-	listExportBucketsExecute(r ListExportBucketsApiRequest) (*PaginatedBackupSnapshotExportBucket, *http.Response, error)
+	// Method available only for mocking purposes
+	ListExportBucketsExecute(r ListExportBucketsApiRequest) (*PaginatedBackupSnapshotExportBucket, *http.Response, error)
 
 	/*
 		ListReplicaSetBackups Return All Replica Set Cloud Backups
@@ -546,8 +546,8 @@ type CloudBackupsApi interface {
 	*/
 	ListReplicaSetBackupsWithParams(ctx context.Context, args *ListReplicaSetBackupsApiParams) ListReplicaSetBackupsApiRequest
 
-	// Interface only available internally
-	listReplicaSetBackupsExecute(r ListReplicaSetBackupsApiRequest) (*PaginatedCloudBackupReplicaSet, *http.Response, error)
+	// Method available only for mocking purposes
+	ListReplicaSetBackupsExecute(r ListReplicaSetBackupsApiRequest) (*PaginatedCloudBackupReplicaSet, *http.Response, error)
 
 	/*
 		ListServerlessBackupRestoreJobs Return All Restore Jobs for One Serverless Instance
@@ -570,8 +570,8 @@ type CloudBackupsApi interface {
 	*/
 	ListServerlessBackupRestoreJobsWithParams(ctx context.Context, args *ListServerlessBackupRestoreJobsApiParams) ListServerlessBackupRestoreJobsApiRequest
 
-	// Interface only available internally
-	listServerlessBackupRestoreJobsExecute(r ListServerlessBackupRestoreJobsApiRequest) (*PaginatedApiAtlasServerlessBackupRestoreJob, *http.Response, error)
+	// Method available only for mocking purposes
+	ListServerlessBackupRestoreJobsExecute(r ListServerlessBackupRestoreJobsApiRequest) (*PaginatedApiAtlasServerlessBackupRestoreJob, *http.Response, error)
 
 	/*
 		ListServerlessBackups Return All Snapshots of One Serverless Instance
@@ -594,8 +594,8 @@ type CloudBackupsApi interface {
 	*/
 	ListServerlessBackupsWithParams(ctx context.Context, args *ListServerlessBackupsApiParams) ListServerlessBackupsApiRequest
 
-	// Interface only available internally
-	listServerlessBackupsExecute(r ListServerlessBackupsApiRequest) (*PaginatedApiAtlasServerlessBackupSnapshot, *http.Response, error)
+	// Method available only for mocking purposes
+	ListServerlessBackupsExecute(r ListServerlessBackupsApiRequest) (*PaginatedApiAtlasServerlessBackupSnapshot, *http.Response, error)
 
 	/*
 		ListShardedClusterBackups Return All Sharded Cluster Cloud Backups
@@ -618,8 +618,8 @@ type CloudBackupsApi interface {
 	*/
 	ListShardedClusterBackupsWithParams(ctx context.Context, args *ListShardedClusterBackupsApiParams) ListShardedClusterBackupsApiRequest
 
-	// Interface only available internally
-	listShardedClusterBackupsExecute(r ListShardedClusterBackupsApiRequest) (*PaginatedCloudBackupShardedClusterSnapshot, *http.Response, error)
+	// Method available only for mocking purposes
+	ListShardedClusterBackupsExecute(r ListShardedClusterBackupsApiRequest) (*PaginatedCloudBackupShardedClusterSnapshot, *http.Response, error)
 
 	/*
 		TakeSnapshot Take One On-Demand Snapshot
@@ -644,8 +644,8 @@ type CloudBackupsApi interface {
 	*/
 	TakeSnapshotWithParams(ctx context.Context, args *TakeSnapshotApiParams) TakeSnapshotApiRequest
 
-	// Interface only available internally
-	takeSnapshotExecute(r TakeSnapshotApiRequest) (*DiskBackupSnapshot, *http.Response, error)
+	// Method available only for mocking purposes
+	TakeSnapshotExecute(r TakeSnapshotApiRequest) (*DiskBackupSnapshot, *http.Response, error)
 
 	/*
 		UpdateBackupSchedule Update Cloud Backup Schedule for One Cluster
@@ -668,8 +668,8 @@ type CloudBackupsApi interface {
 	*/
 	UpdateBackupScheduleWithParams(ctx context.Context, args *UpdateBackupScheduleApiParams) UpdateBackupScheduleApiRequest
 
-	// Interface only available internally
-	updateBackupScheduleExecute(r UpdateBackupScheduleApiRequest) (*DiskBackupSnapshotSchedule, *http.Response, error)
+	// Method available only for mocking purposes
+	UpdateBackupScheduleExecute(r UpdateBackupScheduleApiRequest) (*DiskBackupSnapshotSchedule, *http.Response, error)
 
 	/*
 		UpdateDataProtectionSettings Update or enable the Backup Compliance Policy settings
@@ -691,8 +691,8 @@ type CloudBackupsApi interface {
 	*/
 	UpdateDataProtectionSettingsWithParams(ctx context.Context, args *UpdateDataProtectionSettingsApiParams) UpdateDataProtectionSettingsApiRequest
 
-	// Interface only available internally
-	updateDataProtectionSettingsExecute(r UpdateDataProtectionSettingsApiRequest) (*DataProtectionSettings20231001, *http.Response, error)
+	// Method available only for mocking purposes
+	UpdateDataProtectionSettingsExecute(r UpdateDataProtectionSettingsApiRequest) (*DataProtectionSettings20231001, *http.Response, error)
 
 	/*
 		UpdateSnapshotRetention Change Expiration Date for One Cloud Backup
@@ -716,8 +716,8 @@ type CloudBackupsApi interface {
 	*/
 	UpdateSnapshotRetentionWithParams(ctx context.Context, args *UpdateSnapshotRetentionApiParams) UpdateSnapshotRetentionApiRequest
 
-	// Interface only available internally
-	updateSnapshotRetentionExecute(r UpdateSnapshotRetentionApiRequest) (*DiskBackupReplicaSet, *http.Response, error)
+	// Method available only for mocking purposes
+	UpdateSnapshotRetentionExecute(r UpdateSnapshotRetentionApiRequest) (*DiskBackupReplicaSet, *http.Response, error)
 }
 
 // CloudBackupsApiService CloudBackupsApi service
@@ -748,7 +748,7 @@ func (a *CloudBackupsApiService) CancelBackupRestoreJobWithParams(ctx context.Co
 }
 
 func (r CancelBackupRestoreJobApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.cancelBackupRestoreJobExecute(r)
+	return r.ApiService.CancelBackupRestoreJobExecute(r)
 }
 
 /*
@@ -775,7 +775,7 @@ func (a *CloudBackupsApiService) CancelBackupRestoreJob(ctx context.Context, gro
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *CloudBackupsApiService) cancelBackupRestoreJobExecute(r CancelBackupRestoreJobApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *CloudBackupsApiService) CancelBackupRestoreJobExecute(r CancelBackupRestoreJobApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -884,7 +884,7 @@ func (a *CloudBackupsApiService) CreateBackupExportJobWithParams(ctx context.Con
 }
 
 func (r CreateBackupExportJobApiRequest) Execute() (*DiskBackupExportJob, *http.Response, error) {
-	return r.ApiService.createBackupExportJobExecute(r)
+	return r.ApiService.CreateBackupExportJobExecute(r)
 }
 
 /*
@@ -910,7 +910,7 @@ func (a *CloudBackupsApiService) CreateBackupExportJob(ctx context.Context, grou
 // Execute executes the request
 //
 //	@return DiskBackupExportJob
-func (a *CloudBackupsApiService) createBackupExportJobExecute(r CreateBackupExportJobApiRequest) (*DiskBackupExportJob, *http.Response, error) {
+func (a *CloudBackupsApiService) CreateBackupExportJobExecute(r CreateBackupExportJobApiRequest) (*DiskBackupExportJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -1023,7 +1023,7 @@ func (a *CloudBackupsApiService) CreateBackupRestoreJobWithParams(ctx context.Co
 }
 
 func (r CreateBackupRestoreJobApiRequest) Execute() (*DiskBackupSnapshotRestoreJob, *http.Response, error) {
-	return r.ApiService.createBackupRestoreJobExecute(r)
+	return r.ApiService.CreateBackupRestoreJobExecute(r)
 }
 
 /*
@@ -1051,7 +1051,7 @@ func (a *CloudBackupsApiService) CreateBackupRestoreJob(ctx context.Context, gro
 // Execute executes the request
 //
 //	@return DiskBackupSnapshotRestoreJob
-func (a *CloudBackupsApiService) createBackupRestoreJobExecute(r CreateBackupRestoreJobApiRequest) (*DiskBackupSnapshotRestoreJob, *http.Response, error) {
+func (a *CloudBackupsApiService) CreateBackupRestoreJobExecute(r CreateBackupRestoreJobApiRequest) (*DiskBackupSnapshotRestoreJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -1161,7 +1161,7 @@ func (a *CloudBackupsApiService) CreateExportBucketWithParams(ctx context.Contex
 }
 
 func (r CreateExportBucketApiRequest) Execute() (*DiskBackupSnapshotAWSExportBucket, *http.Response, error) {
-	return r.ApiService.createExportBucketExecute(r)
+	return r.ApiService.CreateExportBucketExecute(r)
 }
 
 /*
@@ -1185,7 +1185,7 @@ func (a *CloudBackupsApiService) CreateExportBucket(ctx context.Context, groupId
 // Execute executes the request
 //
 //	@return DiskBackupSnapshotAWSExportBucket
-func (a *CloudBackupsApiService) createExportBucketExecute(r CreateExportBucketApiRequest) (*DiskBackupSnapshotAWSExportBucket, *http.Response, error) {
+func (a *CloudBackupsApiService) CreateExportBucketExecute(r CreateExportBucketApiRequest) (*DiskBackupSnapshotAWSExportBucket, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -1297,7 +1297,7 @@ func (a *CloudBackupsApiService) CreateServerlessBackupRestoreJobWithParams(ctx 
 }
 
 func (r CreateServerlessBackupRestoreJobApiRequest) Execute() (*ServerlessBackupRestoreJob, *http.Response, error) {
-	return r.ApiService.createServerlessBackupRestoreJobExecute(r)
+	return r.ApiService.CreateServerlessBackupRestoreJobExecute(r)
 }
 
 /*
@@ -1323,7 +1323,7 @@ func (a *CloudBackupsApiService) CreateServerlessBackupRestoreJob(ctx context.Co
 // Execute executes the request
 //
 //	@return ServerlessBackupRestoreJob
-func (a *CloudBackupsApiService) createServerlessBackupRestoreJobExecute(r CreateServerlessBackupRestoreJobApiRequest) (*ServerlessBackupRestoreJob, *http.Response, error) {
+func (a *CloudBackupsApiService) CreateServerlessBackupRestoreJobExecute(r CreateServerlessBackupRestoreJobApiRequest) (*ServerlessBackupRestoreJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -1433,7 +1433,7 @@ func (a *CloudBackupsApiService) DeleteAllBackupSchedulesWithParams(ctx context.
 }
 
 func (r DeleteAllBackupSchedulesApiRequest) Execute() (*DiskBackupSnapshotSchedule, *http.Response, error) {
-	return r.ApiService.deleteAllBackupSchedulesExecute(r)
+	return r.ApiService.DeleteAllBackupSchedulesExecute(r)
 }
 
 /*
@@ -1458,7 +1458,7 @@ func (a *CloudBackupsApiService) DeleteAllBackupSchedules(ctx context.Context, g
 // Execute executes the request
 //
 //	@return DiskBackupSnapshotSchedule
-func (a *CloudBackupsApiService) deleteAllBackupSchedulesExecute(r DeleteAllBackupSchedulesApiRequest) (*DiskBackupSnapshotSchedule, *http.Response, error) {
+func (a *CloudBackupsApiService) DeleteAllBackupSchedulesExecute(r DeleteAllBackupSchedulesApiRequest) (*DiskBackupSnapshotSchedule, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -1563,7 +1563,7 @@ func (a *CloudBackupsApiService) DeleteExportBucketWithParams(ctx context.Contex
 }
 
 func (r DeleteExportBucketApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.deleteExportBucketExecute(r)
+	return r.ApiService.DeleteExportBucketExecute(r)
 }
 
 /*
@@ -1588,7 +1588,7 @@ func (a *CloudBackupsApiService) DeleteExportBucket(ctx context.Context, groupId
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *CloudBackupsApiService) deleteExportBucketExecute(r DeleteExportBucketApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *CloudBackupsApiService) DeleteExportBucketExecute(r DeleteExportBucketApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -1696,7 +1696,7 @@ func (a *CloudBackupsApiService) DeleteReplicaSetBackupWithParams(ctx context.Co
 }
 
 func (r DeleteReplicaSetBackupApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.deleteReplicaSetBackupExecute(r)
+	return r.ApiService.DeleteReplicaSetBackupExecute(r)
 }
 
 /*
@@ -1723,7 +1723,7 @@ func (a *CloudBackupsApiService) DeleteReplicaSetBackup(ctx context.Context, gro
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *CloudBackupsApiService) deleteReplicaSetBackupExecute(r DeleteReplicaSetBackupApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *CloudBackupsApiService) DeleteReplicaSetBackupExecute(r DeleteReplicaSetBackupApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -1832,7 +1832,7 @@ func (a *CloudBackupsApiService) DeleteShardedClusterBackupWithParams(ctx contex
 }
 
 func (r DeleteShardedClusterBackupApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.deleteShardedClusterBackupExecute(r)
+	return r.ApiService.DeleteShardedClusterBackupExecute(r)
 }
 
 /*
@@ -1859,7 +1859,7 @@ func (a *CloudBackupsApiService) DeleteShardedClusterBackup(ctx context.Context,
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *CloudBackupsApiService) deleteShardedClusterBackupExecute(r DeleteShardedClusterBackupApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *CloudBackupsApiService) DeleteShardedClusterBackupExecute(r DeleteShardedClusterBackupApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -1968,7 +1968,7 @@ func (a *CloudBackupsApiService) GetBackupExportJobWithParams(ctx context.Contex
 }
 
 func (r GetBackupExportJobApiRequest) Execute() (*DiskBackupExportJob, *http.Response, error) {
-	return r.ApiService.getBackupExportJobExecute(r)
+	return r.ApiService.GetBackupExportJobExecute(r)
 }
 
 /*
@@ -1995,7 +1995,7 @@ func (a *CloudBackupsApiService) GetBackupExportJob(ctx context.Context, groupId
 // Execute executes the request
 //
 //	@return DiskBackupExportJob
-func (a *CloudBackupsApiService) getBackupExportJobExecute(r GetBackupExportJobApiRequest) (*DiskBackupExportJob, *http.Response, error) {
+func (a *CloudBackupsApiService) GetBackupExportJobExecute(r GetBackupExportJobApiRequest) (*DiskBackupExportJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2104,7 +2104,7 @@ func (a *CloudBackupsApiService) GetBackupRestoreJobWithParams(ctx context.Conte
 }
 
 func (r GetBackupRestoreJobApiRequest) Execute() (*DiskBackupSnapshotRestoreJob, *http.Response, error) {
-	return r.ApiService.getBackupRestoreJobExecute(r)
+	return r.ApiService.GetBackupRestoreJobExecute(r)
 }
 
 /*
@@ -2131,7 +2131,7 @@ func (a *CloudBackupsApiService) GetBackupRestoreJob(ctx context.Context, groupI
 // Execute executes the request
 //
 //	@return DiskBackupSnapshotRestoreJob
-func (a *CloudBackupsApiService) getBackupRestoreJobExecute(r GetBackupRestoreJobApiRequest) (*DiskBackupSnapshotRestoreJob, *http.Response, error) {
+func (a *CloudBackupsApiService) GetBackupRestoreJobExecute(r GetBackupRestoreJobApiRequest) (*DiskBackupSnapshotRestoreJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2237,7 +2237,7 @@ func (a *CloudBackupsApiService) GetBackupScheduleWithParams(ctx context.Context
 }
 
 func (r GetBackupScheduleApiRequest) Execute() (*DiskBackupSnapshotSchedule, *http.Response, error) {
-	return r.ApiService.getBackupScheduleExecute(r)
+	return r.ApiService.GetBackupScheduleExecute(r)
 }
 
 /*
@@ -2262,7 +2262,7 @@ func (a *CloudBackupsApiService) GetBackupSchedule(ctx context.Context, groupId 
 // Execute executes the request
 //
 //	@return DiskBackupSnapshotSchedule
-func (a *CloudBackupsApiService) getBackupScheduleExecute(r GetBackupScheduleApiRequest) (*DiskBackupSnapshotSchedule, *http.Response, error) {
+func (a *CloudBackupsApiService) GetBackupScheduleExecute(r GetBackupScheduleApiRequest) (*DiskBackupSnapshotSchedule, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2364,7 +2364,7 @@ func (a *CloudBackupsApiService) GetDataProtectionSettingsWithParams(ctx context
 }
 
 func (r GetDataProtectionSettingsApiRequest) Execute() (*DataProtectionSettings20231001, *http.Response, error) {
-	return r.ApiService.getDataProtectionSettingsExecute(r)
+	return r.ApiService.GetDataProtectionSettingsExecute(r)
 }
 
 /*
@@ -2387,7 +2387,7 @@ func (a *CloudBackupsApiService) GetDataProtectionSettings(ctx context.Context, 
 // Execute executes the request
 //
 //	@return DataProtectionSettings20231001
-func (a *CloudBackupsApiService) getDataProtectionSettingsExecute(r GetDataProtectionSettingsApiRequest) (*DataProtectionSettings20231001, *http.Response, error) {
+func (a *CloudBackupsApiService) GetDataProtectionSettingsExecute(r GetDataProtectionSettingsApiRequest) (*DataProtectionSettings20231001, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2491,7 +2491,7 @@ func (a *CloudBackupsApiService) GetExportBucketWithParams(ctx context.Context, 
 }
 
 func (r GetExportBucketApiRequest) Execute() (*DiskBackupSnapshotAWSExportBucket, *http.Response, error) {
-	return r.ApiService.getExportBucketExecute(r)
+	return r.ApiService.GetExportBucketExecute(r)
 }
 
 /*
@@ -2516,7 +2516,7 @@ func (a *CloudBackupsApiService) GetExportBucket(ctx context.Context, groupId st
 // Execute executes the request
 //
 //	@return DiskBackupSnapshotAWSExportBucket
-func (a *CloudBackupsApiService) getExportBucketExecute(r GetExportBucketApiRequest) (*DiskBackupSnapshotAWSExportBucket, *http.Response, error) {
+func (a *CloudBackupsApiService) GetExportBucketExecute(r GetExportBucketApiRequest) (*DiskBackupSnapshotAWSExportBucket, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2624,7 +2624,7 @@ func (a *CloudBackupsApiService) GetReplicaSetBackupWithParams(ctx context.Conte
 }
 
 func (r GetReplicaSetBackupApiRequest) Execute() (*DiskBackupReplicaSet, *http.Response, error) {
-	return r.ApiService.getReplicaSetBackupExecute(r)
+	return r.ApiService.GetReplicaSetBackupExecute(r)
 }
 
 /*
@@ -2651,7 +2651,7 @@ func (a *CloudBackupsApiService) GetReplicaSetBackup(ctx context.Context, groupI
 // Execute executes the request
 //
 //	@return DiskBackupReplicaSet
-func (a *CloudBackupsApiService) getReplicaSetBackupExecute(r GetReplicaSetBackupApiRequest) (*DiskBackupReplicaSet, *http.Response, error) {
+func (a *CloudBackupsApiService) GetReplicaSetBackupExecute(r GetReplicaSetBackupApiRequest) (*DiskBackupReplicaSet, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2760,7 +2760,7 @@ func (a *CloudBackupsApiService) GetServerlessBackupWithParams(ctx context.Conte
 }
 
 func (r GetServerlessBackupApiRequest) Execute() (*ServerlessBackupSnapshot, *http.Response, error) {
-	return r.ApiService.getServerlessBackupExecute(r)
+	return r.ApiService.GetServerlessBackupExecute(r)
 }
 
 /*
@@ -2787,7 +2787,7 @@ func (a *CloudBackupsApiService) GetServerlessBackup(ctx context.Context, groupI
 // Execute executes the request
 //
 //	@return ServerlessBackupSnapshot
-func (a *CloudBackupsApiService) getServerlessBackupExecute(r GetServerlessBackupApiRequest) (*ServerlessBackupSnapshot, *http.Response, error) {
+func (a *CloudBackupsApiService) GetServerlessBackupExecute(r GetServerlessBackupApiRequest) (*ServerlessBackupSnapshot, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -2896,7 +2896,7 @@ func (a *CloudBackupsApiService) GetServerlessBackupRestoreJobWithParams(ctx con
 }
 
 func (r GetServerlessBackupRestoreJobApiRequest) Execute() (*ServerlessBackupRestoreJob, *http.Response, error) {
-	return r.ApiService.getServerlessBackupRestoreJobExecute(r)
+	return r.ApiService.GetServerlessBackupRestoreJobExecute(r)
 }
 
 /*
@@ -2923,7 +2923,7 @@ func (a *CloudBackupsApiService) GetServerlessBackupRestoreJob(ctx context.Conte
 // Execute executes the request
 //
 //	@return ServerlessBackupRestoreJob
-func (a *CloudBackupsApiService) getServerlessBackupRestoreJobExecute(r GetServerlessBackupRestoreJobApiRequest) (*ServerlessBackupRestoreJob, *http.Response, error) {
+func (a *CloudBackupsApiService) GetServerlessBackupRestoreJobExecute(r GetServerlessBackupRestoreJobApiRequest) (*ServerlessBackupRestoreJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -3032,7 +3032,7 @@ func (a *CloudBackupsApiService) GetShardedClusterBackupWithParams(ctx context.C
 }
 
 func (r GetShardedClusterBackupApiRequest) Execute() (*DiskBackupShardedClusterSnapshot, *http.Response, error) {
-	return r.ApiService.getShardedClusterBackupExecute(r)
+	return r.ApiService.GetShardedClusterBackupExecute(r)
 }
 
 /*
@@ -3059,7 +3059,7 @@ func (a *CloudBackupsApiService) GetShardedClusterBackup(ctx context.Context, gr
 // Execute executes the request
 //
 //	@return DiskBackupShardedClusterSnapshot
-func (a *CloudBackupsApiService) getShardedClusterBackupExecute(r GetShardedClusterBackupApiRequest) (*DiskBackupShardedClusterSnapshot, *http.Response, error) {
+func (a *CloudBackupsApiService) GetShardedClusterBackupExecute(r GetShardedClusterBackupApiRequest) (*DiskBackupShardedClusterSnapshot, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -3192,7 +3192,7 @@ func (r ListBackupExportJobsApiRequest) PageNum(pageNum int) ListBackupExportJob
 }
 
 func (r ListBackupExportJobsApiRequest) Execute() (*PaginatedApiAtlasDiskBackupExportJob, *http.Response, error) {
-	return r.ApiService.listBackupExportJobsExecute(r)
+	return r.ApiService.ListBackupExportJobsExecute(r)
 }
 
 /*
@@ -3217,7 +3217,7 @@ func (a *CloudBackupsApiService) ListBackupExportJobs(ctx context.Context, group
 // Execute executes the request
 //
 //	@return PaginatedApiAtlasDiskBackupExportJob
-func (a *CloudBackupsApiService) listBackupExportJobsExecute(r ListBackupExportJobsApiRequest) (*PaginatedApiAtlasDiskBackupExportJob, *http.Response, error) {
+func (a *CloudBackupsApiService) ListBackupExportJobsExecute(r ListBackupExportJobsApiRequest) (*PaginatedApiAtlasDiskBackupExportJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -3370,7 +3370,7 @@ func (r ListBackupRestoreJobsApiRequest) PageNum(pageNum int) ListBackupRestoreJ
 }
 
 func (r ListBackupRestoreJobsApiRequest) Execute() (*PaginatedCloudBackupRestoreJob, *http.Response, error) {
-	return r.ApiService.listBackupRestoreJobsExecute(r)
+	return r.ApiService.ListBackupRestoreJobsExecute(r)
 }
 
 /*
@@ -3395,7 +3395,7 @@ func (a *CloudBackupsApiService) ListBackupRestoreJobs(ctx context.Context, grou
 // Execute executes the request
 //
 //	@return PaginatedCloudBackupRestoreJob
-func (a *CloudBackupsApiService) listBackupRestoreJobsExecute(r ListBackupRestoreJobsApiRequest) (*PaginatedCloudBackupRestoreJob, *http.Response, error) {
+func (a *CloudBackupsApiService) ListBackupRestoreJobsExecute(r ListBackupRestoreJobsApiRequest) (*PaginatedCloudBackupRestoreJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -3545,7 +3545,7 @@ func (r ListExportBucketsApiRequest) PageNum(pageNum int) ListExportBucketsApiRe
 }
 
 func (r ListExportBucketsApiRequest) Execute() (*PaginatedBackupSnapshotExportBucket, *http.Response, error) {
-	return r.ApiService.listExportBucketsExecute(r)
+	return r.ApiService.ListExportBucketsExecute(r)
 }
 
 /*
@@ -3568,7 +3568,7 @@ func (a *CloudBackupsApiService) ListExportBuckets(ctx context.Context, groupId 
 // Execute executes the request
 //
 //	@return PaginatedBackupSnapshotExportBucket
-func (a *CloudBackupsApiService) listExportBucketsExecute(r ListExportBucketsApiRequest) (*PaginatedBackupSnapshotExportBucket, *http.Response, error) {
+func (a *CloudBackupsApiService) ListExportBucketsExecute(r ListExportBucketsApiRequest) (*PaginatedBackupSnapshotExportBucket, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -3720,7 +3720,7 @@ func (r ListReplicaSetBackupsApiRequest) PageNum(pageNum int) ListReplicaSetBack
 }
 
 func (r ListReplicaSetBackupsApiRequest) Execute() (*PaginatedCloudBackupReplicaSet, *http.Response, error) {
-	return r.ApiService.listReplicaSetBackupsExecute(r)
+	return r.ApiService.ListReplicaSetBackupsExecute(r)
 }
 
 /*
@@ -3745,7 +3745,7 @@ func (a *CloudBackupsApiService) ListReplicaSetBackups(ctx context.Context, grou
 // Execute executes the request
 //
 //	@return PaginatedCloudBackupReplicaSet
-func (a *CloudBackupsApiService) listReplicaSetBackupsExecute(r ListReplicaSetBackupsApiRequest) (*PaginatedCloudBackupReplicaSet, *http.Response, error) {
+func (a *CloudBackupsApiService) ListReplicaSetBackupsExecute(r ListReplicaSetBackupsApiRequest) (*PaginatedCloudBackupReplicaSet, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -3898,7 +3898,7 @@ func (r ListServerlessBackupRestoreJobsApiRequest) PageNum(pageNum int) ListServ
 }
 
 func (r ListServerlessBackupRestoreJobsApiRequest) Execute() (*PaginatedApiAtlasServerlessBackupRestoreJob, *http.Response, error) {
-	return r.ApiService.listServerlessBackupRestoreJobsExecute(r)
+	return r.ApiService.ListServerlessBackupRestoreJobsExecute(r)
 }
 
 /*
@@ -3923,7 +3923,7 @@ func (a *CloudBackupsApiService) ListServerlessBackupRestoreJobs(ctx context.Con
 // Execute executes the request
 //
 //	@return PaginatedApiAtlasServerlessBackupRestoreJob
-func (a *CloudBackupsApiService) listServerlessBackupRestoreJobsExecute(r ListServerlessBackupRestoreJobsApiRequest) (*PaginatedApiAtlasServerlessBackupRestoreJob, *http.Response, error) {
+func (a *CloudBackupsApiService) ListServerlessBackupRestoreJobsExecute(r ListServerlessBackupRestoreJobsApiRequest) (*PaginatedApiAtlasServerlessBackupRestoreJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -4076,7 +4076,7 @@ func (r ListServerlessBackupsApiRequest) PageNum(pageNum int) ListServerlessBack
 }
 
 func (r ListServerlessBackupsApiRequest) Execute() (*PaginatedApiAtlasServerlessBackupSnapshot, *http.Response, error) {
-	return r.ApiService.listServerlessBackupsExecute(r)
+	return r.ApiService.ListServerlessBackupsExecute(r)
 }
 
 /*
@@ -4101,7 +4101,7 @@ func (a *CloudBackupsApiService) ListServerlessBackups(ctx context.Context, grou
 // Execute executes the request
 //
 //	@return PaginatedApiAtlasServerlessBackupSnapshot
-func (a *CloudBackupsApiService) listServerlessBackupsExecute(r ListServerlessBackupsApiRequest) (*PaginatedApiAtlasServerlessBackupSnapshot, *http.Response, error) {
+func (a *CloudBackupsApiService) ListServerlessBackupsExecute(r ListServerlessBackupsApiRequest) (*PaginatedApiAtlasServerlessBackupSnapshot, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -4227,7 +4227,7 @@ func (a *CloudBackupsApiService) ListShardedClusterBackupsWithParams(ctx context
 }
 
 func (r ListShardedClusterBackupsApiRequest) Execute() (*PaginatedCloudBackupShardedClusterSnapshot, *http.Response, error) {
-	return r.ApiService.listShardedClusterBackupsExecute(r)
+	return r.ApiService.ListShardedClusterBackupsExecute(r)
 }
 
 /*
@@ -4252,7 +4252,7 @@ func (a *CloudBackupsApiService) ListShardedClusterBackups(ctx context.Context, 
 // Execute executes the request
 //
 //	@return PaginatedCloudBackupShardedClusterSnapshot
-func (a *CloudBackupsApiService) listShardedClusterBackupsExecute(r ListShardedClusterBackupsApiRequest) (*PaginatedCloudBackupShardedClusterSnapshot, *http.Response, error) {
+func (a *CloudBackupsApiService) ListShardedClusterBackupsExecute(r ListShardedClusterBackupsApiRequest) (*PaginatedCloudBackupShardedClusterSnapshot, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -4360,7 +4360,7 @@ func (a *CloudBackupsApiService) TakeSnapshotWithParams(ctx context.Context, arg
 }
 
 func (r TakeSnapshotApiRequest) Execute() (*DiskBackupSnapshot, *http.Response, error) {
-	return r.ApiService.takeSnapshotExecute(r)
+	return r.ApiService.TakeSnapshotExecute(r)
 }
 
 /*
@@ -4388,7 +4388,7 @@ func (a *CloudBackupsApiService) TakeSnapshot(ctx context.Context, groupId strin
 // Execute executes the request
 //
 //	@return DiskBackupSnapshot
-func (a *CloudBackupsApiService) takeSnapshotExecute(r TakeSnapshotApiRequest) (*DiskBackupSnapshot, *http.Response, error) {
+func (a *CloudBackupsApiService) TakeSnapshotExecute(r TakeSnapshotApiRequest) (*DiskBackupSnapshot, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -4501,7 +4501,7 @@ func (a *CloudBackupsApiService) UpdateBackupScheduleWithParams(ctx context.Cont
 }
 
 func (r UpdateBackupScheduleApiRequest) Execute() (*DiskBackupSnapshotSchedule, *http.Response, error) {
-	return r.ApiService.updateBackupScheduleExecute(r)
+	return r.ApiService.UpdateBackupScheduleExecute(r)
 }
 
 /*
@@ -4527,7 +4527,7 @@ func (a *CloudBackupsApiService) UpdateBackupSchedule(ctx context.Context, group
 // Execute executes the request
 //
 //	@return DiskBackupSnapshotSchedule
-func (a *CloudBackupsApiService) updateBackupScheduleExecute(r UpdateBackupScheduleApiRequest) (*DiskBackupSnapshotSchedule, *http.Response, error) {
+func (a *CloudBackupsApiService) UpdateBackupScheduleExecute(r UpdateBackupScheduleApiRequest) (*DiskBackupSnapshotSchedule, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -4637,7 +4637,7 @@ func (a *CloudBackupsApiService) UpdateDataProtectionSettingsWithParams(ctx cont
 }
 
 func (r UpdateDataProtectionSettingsApiRequest) Execute() (*DataProtectionSettings20231001, *http.Response, error) {
-	return r.ApiService.updateDataProtectionSettingsExecute(r)
+	return r.ApiService.UpdateDataProtectionSettingsExecute(r)
 }
 
 /*
@@ -4661,7 +4661,7 @@ func (a *CloudBackupsApiService) UpdateDataProtectionSettings(ctx context.Contex
 // Execute executes the request
 //
 //	@return DataProtectionSettings20231001
-func (a *CloudBackupsApiService) updateDataProtectionSettingsExecute(r UpdateDataProtectionSettingsApiRequest) (*DataProtectionSettings20231001, *http.Response, error) {
+func (a *CloudBackupsApiService) UpdateDataProtectionSettingsExecute(r UpdateDataProtectionSettingsApiRequest) (*DataProtectionSettings20231001, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
@@ -4776,7 +4776,7 @@ func (a *CloudBackupsApiService) UpdateSnapshotRetentionWithParams(ctx context.C
 }
 
 func (r UpdateSnapshotRetentionApiRequest) Execute() (*DiskBackupReplicaSet, *http.Response, error) {
-	return r.ApiService.updateSnapshotRetentionExecute(r)
+	return r.ApiService.UpdateSnapshotRetentionExecute(r)
 }
 
 /*
@@ -4804,7 +4804,7 @@ func (a *CloudBackupsApiService) UpdateSnapshotRetention(ctx context.Context, gr
 // Execute executes the request
 //
 //	@return DiskBackupReplicaSet
-func (a *CloudBackupsApiService) updateSnapshotRetentionExecute(r UpdateSnapshotRetentionApiRequest) (*DiskBackupReplicaSet, *http.Response, error) {
+func (a *CloudBackupsApiService) UpdateSnapshotRetentionExecute(r UpdateSnapshotRetentionApiRequest) (*DiskBackupReplicaSet, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}

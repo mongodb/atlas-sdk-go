@@ -33,8 +33,8 @@ type ServerlessInstancesApi interface {
 	*/
 	CreateServerlessInstanceWithParams(ctx context.Context, args *CreateServerlessInstanceApiParams) CreateServerlessInstanceApiRequest
 
-	// Interface only available internally
-	createServerlessInstanceExecute(r CreateServerlessInstanceApiRequest) (*ServerlessInstanceDescription, *http.Response, error)
+	// Method available only for mocking purposes
+	CreateServerlessInstanceExecute(r CreateServerlessInstanceApiRequest) (*ServerlessInstanceDescription, *http.Response, error)
 
 	/*
 		DeleteServerlessInstance Remove One Serverless Instance from One Project
@@ -57,8 +57,8 @@ type ServerlessInstancesApi interface {
 	*/
 	DeleteServerlessInstanceWithParams(ctx context.Context, args *DeleteServerlessInstanceApiParams) DeleteServerlessInstanceApiRequest
 
-	// Interface only available internally
-	deleteServerlessInstanceExecute(r DeleteServerlessInstanceApiRequest) (map[string]interface{}, *http.Response, error)
+	// Method available only for mocking purposes
+	DeleteServerlessInstanceExecute(r DeleteServerlessInstanceApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
 		GetServerlessInstance Return One Serverless Instance from One Project
@@ -81,8 +81,8 @@ type ServerlessInstancesApi interface {
 	*/
 	GetServerlessInstanceWithParams(ctx context.Context, args *GetServerlessInstanceApiParams) GetServerlessInstanceApiRequest
 
-	// Interface only available internally
-	getServerlessInstanceExecute(r GetServerlessInstanceApiRequest) (*ServerlessInstanceDescription, *http.Response, error)
+	// Method available only for mocking purposes
+	GetServerlessInstanceExecute(r GetServerlessInstanceApiRequest) (*ServerlessInstanceDescription, *http.Response, error)
 
 	/*
 		ListServerlessInstances Return All Serverless Instances from One Project
@@ -104,8 +104,8 @@ type ServerlessInstancesApi interface {
 	*/
 	ListServerlessInstancesWithParams(ctx context.Context, args *ListServerlessInstancesApiParams) ListServerlessInstancesApiRequest
 
-	// Interface only available internally
-	listServerlessInstancesExecute(r ListServerlessInstancesApiRequest) (*PaginatedServerlessInstanceDescription, *http.Response, error)
+	// Method available only for mocking purposes
+	ListServerlessInstancesExecute(r ListServerlessInstancesApiRequest) (*PaginatedServerlessInstanceDescription, *http.Response, error)
 
 	/*
 		UpdateServerlessInstance Update One Serverless Instance in One Project
@@ -128,8 +128,8 @@ type ServerlessInstancesApi interface {
 	*/
 	UpdateServerlessInstanceWithParams(ctx context.Context, args *UpdateServerlessInstanceApiParams) UpdateServerlessInstanceApiRequest
 
-	// Interface only available internally
-	updateServerlessInstanceExecute(r UpdateServerlessInstanceApiRequest) (*ServerlessInstanceDescription, *http.Response, error)
+	// Method available only for mocking purposes
+	UpdateServerlessInstanceExecute(r UpdateServerlessInstanceApiRequest) (*ServerlessInstanceDescription, *http.Response, error)
 }
 
 // ServerlessInstancesApiService ServerlessInstancesApi service
@@ -157,7 +157,7 @@ func (a *ServerlessInstancesApiService) CreateServerlessInstanceWithParams(ctx c
 }
 
 func (r CreateServerlessInstanceApiRequest) Execute() (*ServerlessInstanceDescription, *http.Response, error) {
-	return r.ApiService.createServerlessInstanceExecute(r)
+	return r.ApiService.CreateServerlessInstanceExecute(r)
 }
 
 /*
@@ -181,7 +181,7 @@ func (a *ServerlessInstancesApiService) CreateServerlessInstance(ctx context.Con
 // Execute executes the request
 //
 //	@return ServerlessInstanceDescription
-func (a *ServerlessInstancesApiService) createServerlessInstanceExecute(r CreateServerlessInstanceApiRequest) (*ServerlessInstanceDescription, *http.Response, error) {
+func (a *ServerlessInstancesApiService) CreateServerlessInstanceExecute(r CreateServerlessInstanceApiRequest) (*ServerlessInstanceDescription, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -290,7 +290,7 @@ func (a *ServerlessInstancesApiService) DeleteServerlessInstanceWithParams(ctx c
 }
 
 func (r DeleteServerlessInstanceApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.deleteServerlessInstanceExecute(r)
+	return r.ApiService.DeleteServerlessInstanceExecute(r)
 }
 
 /*
@@ -315,7 +315,7 @@ func (a *ServerlessInstancesApiService) DeleteServerlessInstance(ctx context.Con
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *ServerlessInstancesApiService) deleteServerlessInstanceExecute(r DeleteServerlessInstanceApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *ServerlessInstancesApiService) DeleteServerlessInstanceExecute(r DeleteServerlessInstanceApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -420,7 +420,7 @@ func (a *ServerlessInstancesApiService) GetServerlessInstanceWithParams(ctx cont
 }
 
 func (r GetServerlessInstanceApiRequest) Execute() (*ServerlessInstanceDescription, *http.Response, error) {
-	return r.ApiService.getServerlessInstanceExecute(r)
+	return r.ApiService.GetServerlessInstanceExecute(r)
 }
 
 /*
@@ -445,7 +445,7 @@ func (a *ServerlessInstancesApiService) GetServerlessInstance(ctx context.Contex
 // Execute executes the request
 //
 //	@return ServerlessInstanceDescription
-func (a *ServerlessInstancesApiService) getServerlessInstanceExecute(r GetServerlessInstanceApiRequest) (*ServerlessInstanceDescription, *http.Response, error) {
+func (a *ServerlessInstancesApiService) GetServerlessInstanceExecute(r GetServerlessInstanceApiRequest) (*ServerlessInstanceDescription, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -574,7 +574,7 @@ func (r ListServerlessInstancesApiRequest) PageNum(pageNum int) ListServerlessIn
 }
 
 func (r ListServerlessInstancesApiRequest) Execute() (*PaginatedServerlessInstanceDescription, *http.Response, error) {
-	return r.ApiService.listServerlessInstancesExecute(r)
+	return r.ApiService.ListServerlessInstancesExecute(r)
 }
 
 /*
@@ -597,7 +597,7 @@ func (a *ServerlessInstancesApiService) ListServerlessInstances(ctx context.Cont
 // Execute executes the request
 //
 //	@return PaginatedServerlessInstanceDescription
-func (a *ServerlessInstancesApiService) listServerlessInstancesExecute(r ListServerlessInstancesApiRequest) (*PaginatedServerlessInstanceDescription, *http.Response, error) {
+func (a *ServerlessInstancesApiService) ListServerlessInstancesExecute(r ListServerlessInstancesApiRequest) (*PaginatedServerlessInstanceDescription, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -725,7 +725,7 @@ func (a *ServerlessInstancesApiService) UpdateServerlessInstanceWithParams(ctx c
 }
 
 func (r UpdateServerlessInstanceApiRequest) Execute() (*ServerlessInstanceDescription, *http.Response, error) {
-	return r.ApiService.updateServerlessInstanceExecute(r)
+	return r.ApiService.UpdateServerlessInstanceExecute(r)
 }
 
 /*
@@ -751,7 +751,7 @@ func (a *ServerlessInstancesApiService) UpdateServerlessInstance(ctx context.Con
 // Execute executes the request
 //
 //	@return ServerlessInstanceDescription
-func (a *ServerlessInstancesApiService) updateServerlessInstanceExecute(r UpdateServerlessInstanceApiRequest) (*ServerlessInstanceDescription, *http.Response, error) {
+func (a *ServerlessInstancesApiService) UpdateServerlessInstanceExecute(r UpdateServerlessInstanceApiRequest) (*ServerlessInstanceDescription, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}

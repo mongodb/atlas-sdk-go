@@ -38,8 +38,8 @@ type LegacyBackupRestoreJobsApi interface {
 	*/
 	CreateLegacyBackupRestoreJobWithParams(ctx context.Context, args *CreateLegacyBackupRestoreJobApiParams) CreateLegacyBackupRestoreJobApiRequest
 
-	// Interface only available internally
-	createLegacyBackupRestoreJobExecute(r CreateLegacyBackupRestoreJobApiRequest) (*PaginatedRestoreJob, *http.Response, error)
+	// Method available only for mocking purposes
+	CreateLegacyBackupRestoreJobExecute(r CreateLegacyBackupRestoreJobApiRequest) (*PaginatedRestoreJob, *http.Response, error)
 }
 
 // LegacyBackupRestoreJobsApiService LegacyBackupRestoreJobsApi service
@@ -70,7 +70,7 @@ func (a *LegacyBackupRestoreJobsApiService) CreateLegacyBackupRestoreJobWithPara
 }
 
 func (r CreateLegacyBackupRestoreJobApiRequest) Execute() (*PaginatedRestoreJob, *http.Response, error) {
-	return r.ApiService.createLegacyBackupRestoreJobExecute(r)
+	return r.ApiService.CreateLegacyBackupRestoreJobExecute(r)
 }
 
 /*
@@ -100,7 +100,7 @@ func (a *LegacyBackupRestoreJobsApiService) CreateLegacyBackupRestoreJob(ctx con
 //	@return PaginatedRestoreJob
 //
 // Deprecated
-func (a *LegacyBackupRestoreJobsApiService) createLegacyBackupRestoreJobExecute(r CreateLegacyBackupRestoreJobApiRequest) (*PaginatedRestoreJob, *http.Response, error) {
+func (a *LegacyBackupRestoreJobsApiService) CreateLegacyBackupRestoreJobExecute(r CreateLegacyBackupRestoreJobApiRequest) (*PaginatedRestoreJob, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}

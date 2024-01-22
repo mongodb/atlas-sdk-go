@@ -34,8 +34,8 @@ type PerformanceAdvisorApi interface {
 	*/
 	DisableSlowOperationThresholdingWithParams(ctx context.Context, args *DisableSlowOperationThresholdingApiParams) DisableSlowOperationThresholdingApiRequest
 
-	// Interface only available internally
-	disableSlowOperationThresholdingExecute(r DisableSlowOperationThresholdingApiRequest) (*http.Response, error)
+	// Method available only for mocking purposes
+	DisableSlowOperationThresholdingExecute(r DisableSlowOperationThresholdingApiRequest) (*http.Response, error)
 
 	/*
 		EnableSlowOperationThresholding Enable Managed Slow Operation Threshold
@@ -57,8 +57,8 @@ type PerformanceAdvisorApi interface {
 	*/
 	EnableSlowOperationThresholdingWithParams(ctx context.Context, args *EnableSlowOperationThresholdingApiParams) EnableSlowOperationThresholdingApiRequest
 
-	// Interface only available internally
-	enableSlowOperationThresholdingExecute(r EnableSlowOperationThresholdingApiRequest) (*http.Response, error)
+	// Method available only for mocking purposes
+	EnableSlowOperationThresholdingExecute(r EnableSlowOperationThresholdingApiRequest) (*http.Response, error)
 
 	/*
 		ListSlowQueries Return Slow Queries
@@ -81,8 +81,8 @@ type PerformanceAdvisorApi interface {
 	*/
 	ListSlowQueriesWithParams(ctx context.Context, args *ListSlowQueriesApiParams) ListSlowQueriesApiRequest
 
-	// Interface only available internally
-	listSlowQueriesExecute(r ListSlowQueriesApiRequest) (*PerformanceAdvisorSlowQueryList, *http.Response, error)
+	// Method available only for mocking purposes
+	ListSlowQueriesExecute(r ListSlowQueriesApiRequest) (*PerformanceAdvisorSlowQueryList, *http.Response, error)
 
 	/*
 		ListSlowQueryNamespaces Return All Namespaces for One Host
@@ -105,8 +105,8 @@ type PerformanceAdvisorApi interface {
 	*/
 	ListSlowQueryNamespacesWithParams(ctx context.Context, args *ListSlowQueryNamespacesApiParams) ListSlowQueryNamespacesApiRequest
 
-	// Interface only available internally
-	listSlowQueryNamespacesExecute(r ListSlowQueryNamespacesApiRequest) (*Namespaces, *http.Response, error)
+	// Method available only for mocking purposes
+	ListSlowQueryNamespacesExecute(r ListSlowQueryNamespacesApiRequest) (*Namespaces, *http.Response, error)
 
 	/*
 		ListSuggestedIndexes Return Suggested Indexes
@@ -129,8 +129,8 @@ type PerformanceAdvisorApi interface {
 	*/
 	ListSuggestedIndexesWithParams(ctx context.Context, args *ListSuggestedIndexesApiParams) ListSuggestedIndexesApiRequest
 
-	// Interface only available internally
-	listSuggestedIndexesExecute(r ListSuggestedIndexesApiRequest) (*PerformanceAdvisorResponse, *http.Response, error)
+	// Method available only for mocking purposes
+	ListSuggestedIndexesExecute(r ListSuggestedIndexesApiRequest) (*PerformanceAdvisorResponse, *http.Response, error)
 }
 
 // PerformanceAdvisorApiService PerformanceAdvisorApi service
@@ -155,7 +155,7 @@ func (a *PerformanceAdvisorApiService) DisableSlowOperationThresholdingWithParam
 }
 
 func (r DisableSlowOperationThresholdingApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.disableSlowOperationThresholdingExecute(r)
+	return r.ApiService.DisableSlowOperationThresholdingExecute(r)
 }
 
 /*
@@ -176,7 +176,7 @@ func (a *PerformanceAdvisorApiService) DisableSlowOperationThresholding(ctx cont
 }
 
 // Execute executes the request
-func (a *PerformanceAdvisorApiService) disableSlowOperationThresholdingExecute(r DisableSlowOperationThresholdingApiRequest) (*http.Response, error) {
+func (a *PerformanceAdvisorApiService) DisableSlowOperationThresholdingExecute(r DisableSlowOperationThresholdingApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
@@ -267,7 +267,7 @@ func (a *PerformanceAdvisorApiService) EnableSlowOperationThresholdingWithParams
 }
 
 func (r EnableSlowOperationThresholdingApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.enableSlowOperationThresholdingExecute(r)
+	return r.ApiService.EnableSlowOperationThresholdingExecute(r)
 }
 
 /*
@@ -288,7 +288,7 @@ func (a *PerformanceAdvisorApiService) EnableSlowOperationThresholding(ctx conte
 }
 
 // Execute executes the request
-func (a *PerformanceAdvisorApiService) enableSlowOperationThresholdingExecute(r EnableSlowOperationThresholdingApiRequest) (*http.Response, error) {
+func (a *PerformanceAdvisorApiService) EnableSlowOperationThresholdingExecute(r EnableSlowOperationThresholdingApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
@@ -418,7 +418,7 @@ func (r ListSlowQueriesApiRequest) Since(since int64) ListSlowQueriesApiRequest 
 }
 
 func (r ListSlowQueriesApiRequest) Execute() (*PerformanceAdvisorSlowQueryList, *http.Response, error) {
-	return r.ApiService.listSlowQueriesExecute(r)
+	return r.ApiService.ListSlowQueriesExecute(r)
 }
 
 /*
@@ -443,7 +443,7 @@ func (a *PerformanceAdvisorApiService) ListSlowQueries(ctx context.Context, grou
 // Execute executes the request
 //
 //	@return PerformanceAdvisorSlowQueryList
-func (a *PerformanceAdvisorApiService) listSlowQueriesExecute(r ListSlowQueriesApiRequest) (*PerformanceAdvisorSlowQueryList, *http.Response, error) {
+func (a *PerformanceAdvisorApiService) ListSlowQueriesExecute(r ListSlowQueriesApiRequest) (*PerformanceAdvisorSlowQueryList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -586,7 +586,7 @@ func (r ListSlowQueryNamespacesApiRequest) Since(since int64) ListSlowQueryNames
 }
 
 func (r ListSlowQueryNamespacesApiRequest) Execute() (*Namespaces, *http.Response, error) {
-	return r.ApiService.listSlowQueryNamespacesExecute(r)
+	return r.ApiService.ListSlowQueryNamespacesExecute(r)
 }
 
 /*
@@ -611,7 +611,7 @@ func (a *PerformanceAdvisorApiService) ListSlowQueryNamespaces(ctx context.Conte
 // Execute executes the request
 //
 //	@return Namespaces
-func (a *PerformanceAdvisorApiService) listSlowQueryNamespacesExecute(r ListSlowQueryNamespacesApiRequest) (*Namespaces, *http.Response, error) {
+func (a *PerformanceAdvisorApiService) ListSlowQueryNamespacesExecute(r ListSlowQueryNamespacesApiRequest) (*Namespaces, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -794,7 +794,7 @@ func (r ListSuggestedIndexesApiRequest) Since(since int64) ListSuggestedIndexesA
 }
 
 func (r ListSuggestedIndexesApiRequest) Execute() (*PerformanceAdvisorResponse, *http.Response, error) {
-	return r.ApiService.listSuggestedIndexesExecute(r)
+	return r.ApiService.ListSuggestedIndexesExecute(r)
 }
 
 /*
@@ -819,7 +819,7 @@ func (a *PerformanceAdvisorApiService) ListSuggestedIndexes(ctx context.Context,
 // Execute executes the request
 //
 //	@return PerformanceAdvisorResponse
-func (a *PerformanceAdvisorApiService) listSuggestedIndexesExecute(r ListSuggestedIndexesApiRequest) (*PerformanceAdvisorResponse, *http.Response, error) {
+func (a *PerformanceAdvisorApiService) ListSuggestedIndexesExecute(r ListSuggestedIndexesApiRequest) (*PerformanceAdvisorResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}

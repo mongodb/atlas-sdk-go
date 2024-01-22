@@ -35,8 +35,8 @@ type EncryptionAtRestUsingCustomerKeyManagementApi interface {
 	*/
 	GetEncryptionAtRestWithParams(ctx context.Context, args *GetEncryptionAtRestApiParams) GetEncryptionAtRestApiRequest
 
-	// Interface only available internally
-	getEncryptionAtRestExecute(r GetEncryptionAtRestApiRequest) (*EncryptionAtRest, *http.Response, error)
+	// Method available only for mocking purposes
+	GetEncryptionAtRestExecute(r GetEncryptionAtRestApiRequest) (*EncryptionAtRest, *http.Response, error)
 
 	/*
 		UpdateEncryptionAtRest Update Configuration for Encryption at Rest using Customer-Managed Keys for One Project
@@ -60,8 +60,8 @@ type EncryptionAtRestUsingCustomerKeyManagementApi interface {
 	*/
 	UpdateEncryptionAtRestWithParams(ctx context.Context, args *UpdateEncryptionAtRestApiParams) UpdateEncryptionAtRestApiRequest
 
-	// Interface only available internally
-	updateEncryptionAtRestExecute(r UpdateEncryptionAtRestApiRequest) (*EncryptionAtRest, *http.Response, error)
+	// Method available only for mocking purposes
+	UpdateEncryptionAtRestExecute(r UpdateEncryptionAtRestApiRequest) (*EncryptionAtRest, *http.Response, error)
 }
 
 // EncryptionAtRestUsingCustomerKeyManagementApiService EncryptionAtRestUsingCustomerKeyManagementApi service
@@ -86,7 +86,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) GetEncryptionAtRe
 }
 
 func (r GetEncryptionAtRestApiRequest) Execute() (*EncryptionAtRest, *http.Response, error) {
-	return r.ApiService.getEncryptionAtRestExecute(r)
+	return r.ApiService.GetEncryptionAtRestExecute(r)
 }
 
 /*
@@ -111,7 +111,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) GetEncryptionAtRe
 // Execute executes the request
 //
 //	@return EncryptionAtRest
-func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) getEncryptionAtRestExecute(r GetEncryptionAtRestApiRequest) (*EncryptionAtRest, *http.Response, error) {
+func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) GetEncryptionAtRestExecute(r GetEncryptionAtRestApiRequest) (*EncryptionAtRest, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -215,7 +215,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) UpdateEncryptionA
 }
 
 func (r UpdateEncryptionAtRestApiRequest) Execute() (*EncryptionAtRest, *http.Response, error) {
-	return r.ApiService.updateEncryptionAtRestExecute(r)
+	return r.ApiService.UpdateEncryptionAtRestExecute(r)
 }
 
 /*
@@ -241,7 +241,7 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) UpdateEncryptionA
 // Execute executes the request
 //
 //	@return EncryptionAtRest
-func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) updateEncryptionAtRestExecute(r UpdateEncryptionAtRestApiRequest) (*EncryptionAtRest, *http.Response, error) {
+func (a *EncryptionAtRestUsingCustomerKeyManagementApiService) UpdateEncryptionAtRestExecute(r UpdateEncryptionAtRestApiRequest) (*EncryptionAtRest, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}

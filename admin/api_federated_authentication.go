@@ -34,8 +34,8 @@ type FederatedAuthenticationApi interface {
 	*/
 	CreateRoleMappingWithParams(ctx context.Context, args *CreateRoleMappingApiParams) CreateRoleMappingApiRequest
 
-	// Interface only available internally
-	createRoleMappingExecute(r CreateRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error)
+	// Method available only for mocking purposes
+	CreateRoleMappingExecute(r CreateRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error)
 
 	/*
 		DeleteFederationApp Delete the federation settings instance.
@@ -57,8 +57,8 @@ type FederatedAuthenticationApi interface {
 	*/
 	DeleteFederationAppWithParams(ctx context.Context, args *DeleteFederationAppApiParams) DeleteFederationAppApiRequest
 
-	// Interface only available internally
-	deleteFederationAppExecute(r DeleteFederationAppApiRequest) (*http.Response, error)
+	// Method available only for mocking purposes
+	DeleteFederationAppExecute(r DeleteFederationAppApiRequest) (*http.Response, error)
 
 	/*
 		DeleteRoleMapping Remove One Role Mapping from One Organization
@@ -82,8 +82,8 @@ type FederatedAuthenticationApi interface {
 	*/
 	DeleteRoleMappingWithParams(ctx context.Context, args *DeleteRoleMappingApiParams) DeleteRoleMappingApiRequest
 
-	// Interface only available internally
-	deleteRoleMappingExecute(r DeleteRoleMappingApiRequest) (*http.Response, error)
+	// Method available only for mocking purposes
+	DeleteRoleMappingExecute(r DeleteRoleMappingApiRequest) (*http.Response, error)
 
 	/*
 		GetConnectedOrgConfig Return One Org Config Connected to One Federation
@@ -106,8 +106,8 @@ type FederatedAuthenticationApi interface {
 	*/
 	GetConnectedOrgConfigWithParams(ctx context.Context, args *GetConnectedOrgConfigApiParams) GetConnectedOrgConfigApiRequest
 
-	// Interface only available internally
-	getConnectedOrgConfigExecute(r GetConnectedOrgConfigApiRequest) (*ConnectedOrgConfig, *http.Response, error)
+	// Method available only for mocking purposes
+	GetConnectedOrgConfigExecute(r GetConnectedOrgConfigApiRequest) (*ConnectedOrgConfig, *http.Response, error)
 
 	/*
 		GetFederationSettings Return Federation Settings for One Organization
@@ -129,8 +129,8 @@ type FederatedAuthenticationApi interface {
 	*/
 	GetFederationSettingsWithParams(ctx context.Context, args *GetFederationSettingsApiParams) GetFederationSettingsApiRequest
 
-	// Interface only available internally
-	getFederationSettingsExecute(r GetFederationSettingsApiRequest) (*OrgFederationSettings, *http.Response, error)
+	// Method available only for mocking purposes
+	GetFederationSettingsExecute(r GetFederationSettingsApiRequest) (*OrgFederationSettings, *http.Response, error)
 
 	/*
 		GetIdentityProvider Return one identity provider from the specified federation by id.
@@ -153,8 +153,8 @@ type FederatedAuthenticationApi interface {
 	*/
 	GetIdentityProviderWithParams(ctx context.Context, args *GetIdentityProviderApiParams) GetIdentityProviderApiRequest
 
-	// Interface only available internally
-	getIdentityProviderExecute(r GetIdentityProviderApiRequest) (*FederationIdentityProvider, *http.Response, error)
+	// Method available only for mocking purposes
+	GetIdentityProviderExecute(r GetIdentityProviderApiRequest) (*FederationIdentityProvider, *http.Response, error)
 
 	/*
 		GetIdentityProviderMetadata Return the metadata of one identity provider in the specified federation.
@@ -177,8 +177,8 @@ type FederatedAuthenticationApi interface {
 	*/
 	GetIdentityProviderMetadataWithParams(ctx context.Context, args *GetIdentityProviderMetadataApiParams) GetIdentityProviderMetadataApiRequest
 
-	// Interface only available internally
-	getIdentityProviderMetadataExecute(r GetIdentityProviderMetadataApiRequest) (string, *http.Response, error)
+	// Method available only for mocking purposes
+	GetIdentityProviderMetadataExecute(r GetIdentityProviderMetadataApiRequest) (string, *http.Response, error)
 
 	/*
 		GetRoleMapping Return One Role Mapping from One Organization
@@ -202,8 +202,8 @@ type FederatedAuthenticationApi interface {
 	*/
 	GetRoleMappingWithParams(ctx context.Context, args *GetRoleMappingApiParams) GetRoleMappingApiRequest
 
-	// Interface only available internally
-	getRoleMappingExecute(r GetRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error)
+	// Method available only for mocking purposes
+	GetRoleMappingExecute(r GetRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error)
 
 	/*
 		ListConnectedOrgConfigs Return All Connected Org Configs from the Federation
@@ -225,8 +225,8 @@ type FederatedAuthenticationApi interface {
 	*/
 	ListConnectedOrgConfigsWithParams(ctx context.Context, args *ListConnectedOrgConfigsApiParams) ListConnectedOrgConfigsApiRequest
 
-	// Interface only available internally
-	listConnectedOrgConfigsExecute(r ListConnectedOrgConfigsApiRequest) ([]ConnectedOrgConfig, *http.Response, error)
+	// Method available only for mocking purposes
+	ListConnectedOrgConfigsExecute(r ListConnectedOrgConfigsApiRequest) ([]ConnectedOrgConfig, *http.Response, error)
 
 	/*
 		ListIdentityProviders Return all identity providers from the specified federation.
@@ -248,8 +248,8 @@ type FederatedAuthenticationApi interface {
 	*/
 	ListIdentityProvidersWithParams(ctx context.Context, args *ListIdentityProvidersApiParams) ListIdentityProvidersApiRequest
 
-	// Interface only available internally
-	listIdentityProvidersExecute(r ListIdentityProvidersApiRequest) (*PaginatedFederationIdentityProvider, *http.Response, error)
+	// Method available only for mocking purposes
+	ListIdentityProvidersExecute(r ListIdentityProvidersApiRequest) (*PaginatedFederationIdentityProvider, *http.Response, error)
 
 	/*
 		ListRoleMappings Return All Role Mappings from One Organization
@@ -272,8 +272,8 @@ type FederatedAuthenticationApi interface {
 	*/
 	ListRoleMappingsWithParams(ctx context.Context, args *ListRoleMappingsApiParams) ListRoleMappingsApiRequest
 
-	// Interface only available internally
-	listRoleMappingsExecute(r ListRoleMappingsApiRequest) (*PaginatedRoleMapping, *http.Response, error)
+	// Method available only for mocking purposes
+	ListRoleMappingsExecute(r ListRoleMappingsApiRequest) (*PaginatedRoleMapping, *http.Response, error)
 
 	/*
 		RemoveConnectedOrgConfig Remove One Org Config Connected to One Federation
@@ -296,8 +296,8 @@ type FederatedAuthenticationApi interface {
 	*/
 	RemoveConnectedOrgConfigWithParams(ctx context.Context, args *RemoveConnectedOrgConfigApiParams) RemoveConnectedOrgConfigApiRequest
 
-	// Interface only available internally
-	removeConnectedOrgConfigExecute(r RemoveConnectedOrgConfigApiRequest) (map[string]interface{}, *http.Response, error)
+	// Method available only for mocking purposes
+	RemoveConnectedOrgConfigExecute(r RemoveConnectedOrgConfigApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
 		UpdateConnectedOrgConfig Update One Org Config Connected to One Federation
@@ -326,8 +326,8 @@ type FederatedAuthenticationApi interface {
 	*/
 	UpdateConnectedOrgConfigWithParams(ctx context.Context, args *UpdateConnectedOrgConfigApiParams) UpdateConnectedOrgConfigApiRequest
 
-	// Interface only available internally
-	updateConnectedOrgConfigExecute(r UpdateConnectedOrgConfigApiRequest) (*ConnectedOrgConfig, *http.Response, error)
+	// Method available only for mocking purposes
+	UpdateConnectedOrgConfigExecute(r UpdateConnectedOrgConfigApiRequest) (*ConnectedOrgConfig, *http.Response, error)
 
 	/*
 		UpdateIdentityProvider Update the identity provider.
@@ -350,8 +350,8 @@ type FederatedAuthenticationApi interface {
 	*/
 	UpdateIdentityProviderWithParams(ctx context.Context, args *UpdateIdentityProviderApiParams) UpdateIdentityProviderApiRequest
 
-	// Interface only available internally
-	updateIdentityProviderExecute(r UpdateIdentityProviderApiRequest) (*FederationIdentityProvider, *http.Response, error)
+	// Method available only for mocking purposes
+	UpdateIdentityProviderExecute(r UpdateIdentityProviderApiRequest) (*FederationIdentityProvider, *http.Response, error)
 
 	/*
 		UpdateRoleMapping Update One Role Mapping in One Organization
@@ -375,8 +375,8 @@ type FederatedAuthenticationApi interface {
 	*/
 	UpdateRoleMappingWithParams(ctx context.Context, args *UpdateRoleMappingApiParams) UpdateRoleMappingApiRequest
 
-	// Interface only available internally
-	updateRoleMappingExecute(r UpdateRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error)
+	// Method available only for mocking purposes
+	UpdateRoleMappingExecute(r UpdateRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error)
 }
 
 // FederatedAuthenticationApiService FederatedAuthenticationApi service
@@ -407,7 +407,7 @@ func (a *FederatedAuthenticationApiService) CreateRoleMappingWithParams(ctx cont
 }
 
 func (r CreateRoleMappingApiRequest) Execute() (*AuthFederationRoleMapping, *http.Response, error) {
-	return r.ApiService.createRoleMappingExecute(r)
+	return r.ApiService.CreateRoleMappingExecute(r)
 }
 
 /*
@@ -433,7 +433,7 @@ func (a *FederatedAuthenticationApiService) CreateRoleMapping(ctx context.Contex
 // Execute executes the request
 //
 //	@return AuthFederationRoleMapping
-func (a *FederatedAuthenticationApiService) createRoleMappingExecute(r CreateRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error) {
+func (a *FederatedAuthenticationApiService) CreateRoleMappingExecute(r CreateRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -540,7 +540,7 @@ func (a *FederatedAuthenticationApiService) DeleteFederationAppWithParams(ctx co
 }
 
 func (r DeleteFederationAppApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.deleteFederationAppExecute(r)
+	return r.ApiService.DeleteFederationAppExecute(r)
 }
 
 /*
@@ -561,7 +561,7 @@ func (a *FederatedAuthenticationApiService) DeleteFederationApp(ctx context.Cont
 }
 
 // Execute executes the request
-func (a *FederatedAuthenticationApiService) deleteFederationAppExecute(r DeleteFederationAppApiRequest) (*http.Response, error) {
+func (a *FederatedAuthenticationApiService) DeleteFederationAppExecute(r DeleteFederationAppApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
@@ -658,7 +658,7 @@ func (a *FederatedAuthenticationApiService) DeleteRoleMappingWithParams(ctx cont
 }
 
 func (r DeleteRoleMappingApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.deleteRoleMappingExecute(r)
+	return r.ApiService.DeleteRoleMappingExecute(r)
 }
 
 /*
@@ -683,7 +683,7 @@ func (a *FederatedAuthenticationApiService) DeleteRoleMapping(ctx context.Contex
 }
 
 // Execute executes the request
-func (a *FederatedAuthenticationApiService) deleteRoleMappingExecute(r DeleteRoleMappingApiRequest) (*http.Response, error) {
+func (a *FederatedAuthenticationApiService) DeleteRoleMappingExecute(r DeleteRoleMappingApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
@@ -779,7 +779,7 @@ func (a *FederatedAuthenticationApiService) GetConnectedOrgConfigWithParams(ctx 
 }
 
 func (r GetConnectedOrgConfigApiRequest) Execute() (*ConnectedOrgConfig, *http.Response, error) {
-	return r.ApiService.getConnectedOrgConfigExecute(r)
+	return r.ApiService.GetConnectedOrgConfigExecute(r)
 }
 
 /*
@@ -804,7 +804,7 @@ func (a *FederatedAuthenticationApiService) GetConnectedOrgConfig(ctx context.Co
 // Execute executes the request
 //
 //	@return ConnectedOrgConfig
-func (a *FederatedAuthenticationApiService) getConnectedOrgConfigExecute(r GetConnectedOrgConfigApiRequest) (*ConnectedOrgConfig, *http.Response, error) {
+func (a *FederatedAuthenticationApiService) GetConnectedOrgConfigExecute(r GetConnectedOrgConfigApiRequest) (*ConnectedOrgConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -906,7 +906,7 @@ func (a *FederatedAuthenticationApiService) GetFederationSettingsWithParams(ctx 
 }
 
 func (r GetFederationSettingsApiRequest) Execute() (*OrgFederationSettings, *http.Response, error) {
-	return r.ApiService.getFederationSettingsExecute(r)
+	return r.ApiService.GetFederationSettingsExecute(r)
 }
 
 /*
@@ -929,7 +929,7 @@ func (a *FederatedAuthenticationApiService) GetFederationSettings(ctx context.Co
 // Execute executes the request
 //
 //	@return OrgFederationSettings
-func (a *FederatedAuthenticationApiService) getFederationSettingsExecute(r GetFederationSettingsApiRequest) (*OrgFederationSettings, *http.Response, error) {
+func (a *FederatedAuthenticationApiService) GetFederationSettingsExecute(r GetFederationSettingsApiRequest) (*OrgFederationSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1033,7 +1033,7 @@ func (a *FederatedAuthenticationApiService) GetIdentityProviderWithParams(ctx co
 }
 
 func (r GetIdentityProviderApiRequest) Execute() (*FederationIdentityProvider, *http.Response, error) {
-	return r.ApiService.getIdentityProviderExecute(r)
+	return r.ApiService.GetIdentityProviderExecute(r)
 }
 
 /*
@@ -1058,7 +1058,7 @@ func (a *FederatedAuthenticationApiService) GetIdentityProvider(ctx context.Cont
 // Execute executes the request
 //
 //	@return FederationIdentityProvider
-func (a *FederatedAuthenticationApiService) getIdentityProviderExecute(r GetIdentityProviderApiRequest) (*FederationIdentityProvider, *http.Response, error) {
+func (a *FederatedAuthenticationApiService) GetIdentityProviderExecute(r GetIdentityProviderApiRequest) (*FederationIdentityProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1163,7 +1163,7 @@ func (a *FederatedAuthenticationApiService) GetIdentityProviderMetadataWithParam
 }
 
 func (r GetIdentityProviderMetadataApiRequest) Execute() (string, *http.Response, error) {
-	return r.ApiService.getIdentityProviderMetadataExecute(r)
+	return r.ApiService.GetIdentityProviderMetadataExecute(r)
 }
 
 /*
@@ -1188,7 +1188,7 @@ func (a *FederatedAuthenticationApiService) GetIdentityProviderMetadata(ctx cont
 // Execute executes the request
 //
 //	@return string
-func (a *FederatedAuthenticationApiService) getIdentityProviderMetadataExecute(r GetIdentityProviderMetadataApiRequest) (string, *http.Response, error) {
+func (a *FederatedAuthenticationApiService) GetIdentityProviderMetadataExecute(r GetIdentityProviderMetadataApiRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1296,7 +1296,7 @@ func (a *FederatedAuthenticationApiService) GetRoleMappingWithParams(ctx context
 }
 
 func (r GetRoleMappingApiRequest) Execute() (*AuthFederationRoleMapping, *http.Response, error) {
-	return r.ApiService.getRoleMappingExecute(r)
+	return r.ApiService.GetRoleMappingExecute(r)
 }
 
 /*
@@ -1323,7 +1323,7 @@ func (a *FederatedAuthenticationApiService) GetRoleMapping(ctx context.Context, 
 // Execute executes the request
 //
 //	@return AuthFederationRoleMapping
-func (a *FederatedAuthenticationApiService) getRoleMappingExecute(r GetRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error) {
+func (a *FederatedAuthenticationApiService) GetRoleMappingExecute(r GetRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1426,7 +1426,7 @@ func (a *FederatedAuthenticationApiService) ListConnectedOrgConfigsWithParams(ct
 }
 
 func (r ListConnectedOrgConfigsApiRequest) Execute() ([]ConnectedOrgConfig, *http.Response, error) {
-	return r.ApiService.listConnectedOrgConfigsExecute(r)
+	return r.ApiService.ListConnectedOrgConfigsExecute(r)
 }
 
 /*
@@ -1449,7 +1449,7 @@ func (a *FederatedAuthenticationApiService) ListConnectedOrgConfigs(ctx context.
 // Execute executes the request
 //
 //	@return []ConnectedOrgConfig
-func (a *FederatedAuthenticationApiService) listConnectedOrgConfigsExecute(r ListConnectedOrgConfigsApiRequest) ([]ConnectedOrgConfig, *http.Response, error) {
+func (a *FederatedAuthenticationApiService) ListConnectedOrgConfigsExecute(r ListConnectedOrgConfigsApiRequest) ([]ConnectedOrgConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1559,7 +1559,7 @@ func (r ListIdentityProvidersApiRequest) Protocol(protocol string) ListIdentityP
 }
 
 func (r ListIdentityProvidersApiRequest) Execute() (*PaginatedFederationIdentityProvider, *http.Response, error) {
-	return r.ApiService.listIdentityProvidersExecute(r)
+	return r.ApiService.ListIdentityProvidersExecute(r)
 }
 
 /*
@@ -1582,7 +1582,7 @@ func (a *FederatedAuthenticationApiService) ListIdentityProviders(ctx context.Co
 // Execute executes the request
 //
 //	@return PaginatedFederationIdentityProvider
-func (a *FederatedAuthenticationApiService) listIdentityProvidersExecute(r ListIdentityProvidersApiRequest) (*PaginatedFederationIdentityProvider, *http.Response, error) {
+func (a *FederatedAuthenticationApiService) ListIdentityProvidersExecute(r ListIdentityProvidersApiRequest) (*PaginatedFederationIdentityProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1689,7 +1689,7 @@ func (a *FederatedAuthenticationApiService) ListRoleMappingsWithParams(ctx conte
 }
 
 func (r ListRoleMappingsApiRequest) Execute() (*PaginatedRoleMapping, *http.Response, error) {
-	return r.ApiService.listRoleMappingsExecute(r)
+	return r.ApiService.ListRoleMappingsExecute(r)
 }
 
 /*
@@ -1714,7 +1714,7 @@ func (a *FederatedAuthenticationApiService) ListRoleMappings(ctx context.Context
 // Execute executes the request
 //
 //	@return PaginatedRoleMapping
-func (a *FederatedAuthenticationApiService) listRoleMappingsExecute(r ListRoleMappingsApiRequest) (*PaginatedRoleMapping, *http.Response, error) {
+func (a *FederatedAuthenticationApiService) ListRoleMappingsExecute(r ListRoleMappingsApiRequest) (*PaginatedRoleMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1819,7 +1819,7 @@ func (a *FederatedAuthenticationApiService) RemoveConnectedOrgConfigWithParams(c
 }
 
 func (r RemoveConnectedOrgConfigApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.removeConnectedOrgConfigExecute(r)
+	return r.ApiService.RemoveConnectedOrgConfigExecute(r)
 }
 
 /*
@@ -1844,7 +1844,7 @@ func (a *FederatedAuthenticationApiService) RemoveConnectedOrgConfig(ctx context
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *FederatedAuthenticationApiService) removeConnectedOrgConfigExecute(r RemoveConnectedOrgConfigApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *FederatedAuthenticationApiService) RemoveConnectedOrgConfigExecute(r RemoveConnectedOrgConfigApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -1952,7 +1952,7 @@ func (a *FederatedAuthenticationApiService) UpdateConnectedOrgConfigWithParams(c
 }
 
 func (r UpdateConnectedOrgConfigApiRequest) Execute() (*ConnectedOrgConfig, *http.Response, error) {
-	return r.ApiService.updateConnectedOrgConfigExecute(r)
+	return r.ApiService.UpdateConnectedOrgConfigExecute(r)
 }
 
 /*
@@ -1984,7 +1984,7 @@ func (a *FederatedAuthenticationApiService) UpdateConnectedOrgConfig(ctx context
 // Execute executes the request
 //
 //	@return ConnectedOrgConfig
-func (a *FederatedAuthenticationApiService) updateConnectedOrgConfigExecute(r UpdateConnectedOrgConfigApiRequest) (*ConnectedOrgConfig, *http.Response, error) {
+func (a *FederatedAuthenticationApiService) UpdateConnectedOrgConfigExecute(r UpdateConnectedOrgConfigApiRequest) (*ConnectedOrgConfig, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -2097,7 +2097,7 @@ func (a *FederatedAuthenticationApiService) UpdateIdentityProviderWithParams(ctx
 }
 
 func (r UpdateIdentityProviderApiRequest) Execute() (*FederationIdentityProvider, *http.Response, error) {
-	return r.ApiService.updateIdentityProviderExecute(r)
+	return r.ApiService.UpdateIdentityProviderExecute(r)
 }
 
 /*
@@ -2123,7 +2123,7 @@ func (a *FederatedAuthenticationApiService) UpdateIdentityProvider(ctx context.C
 // Execute executes the request
 //
 //	@return FederationIdentityProvider
-func (a *FederatedAuthenticationApiService) updateIdentityProviderExecute(r UpdateIdentityProviderApiRequest) (*FederationIdentityProvider, *http.Response, error) {
+func (a *FederatedAuthenticationApiService) UpdateIdentityProviderExecute(r UpdateIdentityProviderApiRequest) (*FederationIdentityProvider, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -2239,7 +2239,7 @@ func (a *FederatedAuthenticationApiService) UpdateRoleMappingWithParams(ctx cont
 }
 
 func (r UpdateRoleMappingApiRequest) Execute() (*AuthFederationRoleMapping, *http.Response, error) {
-	return r.ApiService.updateRoleMappingExecute(r)
+	return r.ApiService.UpdateRoleMappingExecute(r)
 }
 
 /*
@@ -2267,7 +2267,7 @@ func (a *FederatedAuthenticationApiService) UpdateRoleMapping(ctx context.Contex
 // Execute executes the request
 //
 //	@return AuthFederationRoleMapping
-func (a *FederatedAuthenticationApiService) updateRoleMappingExecute(r UpdateRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error) {
+func (a *FederatedAuthenticationApiService) UpdateRoleMappingExecute(r UpdateRoleMappingApiRequest) (*AuthFederationRoleMapping, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}

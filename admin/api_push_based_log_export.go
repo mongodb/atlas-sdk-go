@@ -33,8 +33,8 @@ type PushBasedLogExportApi interface {
 	*/
 	CreatePushBasedLogConfigurationWithParams(ctx context.Context, args *CreatePushBasedLogConfigurationApiParams) CreatePushBasedLogConfigurationApiRequest
 
-	// Interface only available internally
-	createPushBasedLogConfigurationExecute(r CreatePushBasedLogConfigurationApiRequest) (*http.Response, error)
+	// Method available only for mocking purposes
+	CreatePushBasedLogConfigurationExecute(r CreatePushBasedLogConfigurationApiRequest) (*http.Response, error)
 
 	/*
 		DeletePushBasedLogConfiguration Disable the push-based log export feature for a project
@@ -56,8 +56,8 @@ type PushBasedLogExportApi interface {
 	*/
 	DeletePushBasedLogConfigurationWithParams(ctx context.Context, args *DeletePushBasedLogConfigurationApiParams) DeletePushBasedLogConfigurationApiRequest
 
-	// Interface only available internally
-	deletePushBasedLogConfigurationExecute(r DeletePushBasedLogConfigurationApiRequest) (*http.Response, error)
+	// Method available only for mocking purposes
+	DeletePushBasedLogConfigurationExecute(r DeletePushBasedLogConfigurationApiRequest) (*http.Response, error)
 
 	/*
 		GetPushBasedLogConfiguration Get the push-based log export configuration for a project
@@ -79,8 +79,8 @@ type PushBasedLogExportApi interface {
 	*/
 	GetPushBasedLogConfigurationWithParams(ctx context.Context, args *GetPushBasedLogConfigurationApiParams) GetPushBasedLogConfigurationApiRequest
 
-	// Interface only available internally
-	getPushBasedLogConfigurationExecute(r GetPushBasedLogConfigurationApiRequest) (*PushBasedLogExportProject, *http.Response, error)
+	// Method available only for mocking purposes
+	GetPushBasedLogConfigurationExecute(r GetPushBasedLogConfigurationApiRequest) (*PushBasedLogExportProject, *http.Response, error)
 
 	/*
 		UpdatePushBasedLogConfiguration Update the push-based log export feature for a project
@@ -102,8 +102,8 @@ type PushBasedLogExportApi interface {
 	*/
 	UpdatePushBasedLogConfigurationWithParams(ctx context.Context, args *UpdatePushBasedLogConfigurationApiParams) UpdatePushBasedLogConfigurationApiRequest
 
-	// Interface only available internally
-	updatePushBasedLogConfigurationExecute(r UpdatePushBasedLogConfigurationApiRequest) (*http.Response, error)
+	// Method available only for mocking purposes
+	UpdatePushBasedLogConfigurationExecute(r UpdatePushBasedLogConfigurationApiRequest) (*http.Response, error)
 }
 
 // PushBasedLogExportApiService PushBasedLogExportApi service
@@ -131,7 +131,7 @@ func (a *PushBasedLogExportApiService) CreatePushBasedLogConfigurationWithParams
 }
 
 func (r CreatePushBasedLogConfigurationApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.createPushBasedLogConfigurationExecute(r)
+	return r.ApiService.CreatePushBasedLogConfigurationExecute(r)
 }
 
 /*
@@ -153,7 +153,7 @@ func (a *PushBasedLogExportApiService) CreatePushBasedLogConfiguration(ctx conte
 }
 
 // Execute executes the request
-func (a *PushBasedLogExportApiService) createPushBasedLogConfigurationExecute(r CreatePushBasedLogConfigurationApiRequest) (*http.Response, error) {
+func (a *PushBasedLogExportApiService) CreatePushBasedLogConfigurationExecute(r CreatePushBasedLogConfigurationApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
@@ -249,7 +249,7 @@ func (a *PushBasedLogExportApiService) DeletePushBasedLogConfigurationWithParams
 }
 
 func (r DeletePushBasedLogConfigurationApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.deletePushBasedLogConfigurationExecute(r)
+	return r.ApiService.DeletePushBasedLogConfigurationExecute(r)
 }
 
 /*
@@ -270,7 +270,7 @@ func (a *PushBasedLogExportApiService) DeletePushBasedLogConfiguration(ctx conte
 }
 
 // Execute executes the request
-func (a *PushBasedLogExportApiService) deletePushBasedLogConfigurationExecute(r DeletePushBasedLogConfigurationApiRequest) (*http.Response, error) {
+func (a *PushBasedLogExportApiService) DeletePushBasedLogConfigurationExecute(r DeletePushBasedLogConfigurationApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
@@ -361,7 +361,7 @@ func (a *PushBasedLogExportApiService) GetPushBasedLogConfigurationWithParams(ct
 }
 
 func (r GetPushBasedLogConfigurationApiRequest) Execute() (*PushBasedLogExportProject, *http.Response, error) {
-	return r.ApiService.getPushBasedLogConfigurationExecute(r)
+	return r.ApiService.GetPushBasedLogConfigurationExecute(r)
 }
 
 /*
@@ -384,7 +384,7 @@ func (a *PushBasedLogExportApiService) GetPushBasedLogConfiguration(ctx context.
 // Execute executes the request
 //
 //	@return PushBasedLogExportProject
-func (a *PushBasedLogExportApiService) getPushBasedLogConfigurationExecute(r GetPushBasedLogConfigurationApiRequest) (*PushBasedLogExportProject, *http.Response, error) {
+func (a *PushBasedLogExportApiService) GetPushBasedLogConfigurationExecute(r GetPushBasedLogConfigurationApiRequest) (*PushBasedLogExportProject, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -488,7 +488,7 @@ func (a *PushBasedLogExportApiService) UpdatePushBasedLogConfigurationWithParams
 }
 
 func (r UpdatePushBasedLogConfigurationApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.updatePushBasedLogConfigurationExecute(r)
+	return r.ApiService.UpdatePushBasedLogConfigurationExecute(r)
 }
 
 /*
@@ -510,7 +510,7 @@ func (a *PushBasedLogExportApiService) UpdatePushBasedLogConfiguration(ctx conte
 }
 
 // Execute executes the request
-func (a *PushBasedLogExportApiService) updatePushBasedLogConfigurationExecute(r UpdatePushBasedLogConfigurationApiRequest) (*http.Response, error) {
+func (a *PushBasedLogExportApiService) UpdatePushBasedLogConfigurationExecute(r UpdatePushBasedLogConfigurationApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPatch
 		localVarPostBody   interface{}

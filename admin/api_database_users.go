@@ -33,8 +33,8 @@ type DatabaseUsersApi interface {
 	*/
 	CreateDatabaseUserWithParams(ctx context.Context, args *CreateDatabaseUserApiParams) CreateDatabaseUserApiRequest
 
-	// Interface only available internally
-	createDatabaseUserExecute(r CreateDatabaseUserApiRequest) (*CloudDatabaseUser, *http.Response, error)
+	// Method available only for mocking purposes
+	CreateDatabaseUserExecute(r CreateDatabaseUserApiRequest) (*CloudDatabaseUser, *http.Response, error)
 
 	/*
 		DeleteDatabaseUser Remove One Database User from One Project
@@ -58,8 +58,8 @@ type DatabaseUsersApi interface {
 	*/
 	DeleteDatabaseUserWithParams(ctx context.Context, args *DeleteDatabaseUserApiParams) DeleteDatabaseUserApiRequest
 
-	// Interface only available internally
-	deleteDatabaseUserExecute(r DeleteDatabaseUserApiRequest) (map[string]interface{}, *http.Response, error)
+	// Method available only for mocking purposes
+	DeleteDatabaseUserExecute(r DeleteDatabaseUserApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
 		GetDatabaseUser Return One Database User from One Project
@@ -83,8 +83,8 @@ type DatabaseUsersApi interface {
 	*/
 	GetDatabaseUserWithParams(ctx context.Context, args *GetDatabaseUserApiParams) GetDatabaseUserApiRequest
 
-	// Interface only available internally
-	getDatabaseUserExecute(r GetDatabaseUserApiRequest) (*CloudDatabaseUser, *http.Response, error)
+	// Method available only for mocking purposes
+	GetDatabaseUserExecute(r GetDatabaseUserApiRequest) (*CloudDatabaseUser, *http.Response, error)
 
 	/*
 		ListDatabaseUsers Return All Database Users from One Project
@@ -106,8 +106,8 @@ type DatabaseUsersApi interface {
 	*/
 	ListDatabaseUsersWithParams(ctx context.Context, args *ListDatabaseUsersApiParams) ListDatabaseUsersApiRequest
 
-	// Interface only available internally
-	listDatabaseUsersExecute(r ListDatabaseUsersApiRequest) (*PaginatedApiAtlasDatabaseUser, *http.Response, error)
+	// Method available only for mocking purposes
+	ListDatabaseUsersExecute(r ListDatabaseUsersApiRequest) (*PaginatedApiAtlasDatabaseUser, *http.Response, error)
 
 	/*
 		UpdateDatabaseUser Update One Database User in One Project
@@ -131,8 +131,8 @@ type DatabaseUsersApi interface {
 	*/
 	UpdateDatabaseUserWithParams(ctx context.Context, args *UpdateDatabaseUserApiParams) UpdateDatabaseUserApiRequest
 
-	// Interface only available internally
-	updateDatabaseUserExecute(r UpdateDatabaseUserApiRequest) (*CloudDatabaseUser, *http.Response, error)
+	// Method available only for mocking purposes
+	UpdateDatabaseUserExecute(r UpdateDatabaseUserApiRequest) (*CloudDatabaseUser, *http.Response, error)
 }
 
 // DatabaseUsersApiService DatabaseUsersApi service
@@ -160,7 +160,7 @@ func (a *DatabaseUsersApiService) CreateDatabaseUserWithParams(ctx context.Conte
 }
 
 func (r CreateDatabaseUserApiRequest) Execute() (*CloudDatabaseUser, *http.Response, error) {
-	return r.ApiService.createDatabaseUserExecute(r)
+	return r.ApiService.CreateDatabaseUserExecute(r)
 }
 
 /*
@@ -184,7 +184,7 @@ func (a *DatabaseUsersApiService) CreateDatabaseUser(ctx context.Context, groupI
 // Execute executes the request
 //
 //	@return CloudDatabaseUser
-func (a *DatabaseUsersApiService) createDatabaseUserExecute(r CreateDatabaseUserApiRequest) (*CloudDatabaseUser, *http.Response, error) {
+func (a *DatabaseUsersApiService) CreateDatabaseUserExecute(r CreateDatabaseUserApiRequest) (*CloudDatabaseUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -296,7 +296,7 @@ func (a *DatabaseUsersApiService) DeleteDatabaseUserWithParams(ctx context.Conte
 }
 
 func (r DeleteDatabaseUserApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.deleteDatabaseUserExecute(r)
+	return r.ApiService.DeleteDatabaseUserExecute(r)
 }
 
 /*
@@ -323,7 +323,7 @@ func (a *DatabaseUsersApiService) DeleteDatabaseUser(ctx context.Context, groupI
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *DatabaseUsersApiService) deleteDatabaseUserExecute(r DeleteDatabaseUserApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *DatabaseUsersApiService) DeleteDatabaseUserExecute(r DeleteDatabaseUserApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -432,7 +432,7 @@ func (a *DatabaseUsersApiService) GetDatabaseUserWithParams(ctx context.Context,
 }
 
 func (r GetDatabaseUserApiRequest) Execute() (*CloudDatabaseUser, *http.Response, error) {
-	return r.ApiService.getDatabaseUserExecute(r)
+	return r.ApiService.GetDatabaseUserExecute(r)
 }
 
 /*
@@ -459,7 +459,7 @@ func (a *DatabaseUsersApiService) GetDatabaseUser(ctx context.Context, groupId s
 // Execute executes the request
 //
 //	@return CloudDatabaseUser
-func (a *DatabaseUsersApiService) getDatabaseUserExecute(r GetDatabaseUserApiRequest) (*CloudDatabaseUser, *http.Response, error) {
+func (a *DatabaseUsersApiService) GetDatabaseUserExecute(r GetDatabaseUserApiRequest) (*CloudDatabaseUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -589,7 +589,7 @@ func (r ListDatabaseUsersApiRequest) PageNum(pageNum int) ListDatabaseUsersApiRe
 }
 
 func (r ListDatabaseUsersApiRequest) Execute() (*PaginatedApiAtlasDatabaseUser, *http.Response, error) {
-	return r.ApiService.listDatabaseUsersExecute(r)
+	return r.ApiService.ListDatabaseUsersExecute(r)
 }
 
 /*
@@ -612,7 +612,7 @@ func (a *DatabaseUsersApiService) ListDatabaseUsers(ctx context.Context, groupId
 // Execute executes the request
 //
 //	@return PaginatedApiAtlasDatabaseUser
-func (a *DatabaseUsersApiService) listDatabaseUsersExecute(r ListDatabaseUsersApiRequest) (*PaginatedApiAtlasDatabaseUser, *http.Response, error) {
+func (a *DatabaseUsersApiService) ListDatabaseUsersExecute(r ListDatabaseUsersApiRequest) (*PaginatedApiAtlasDatabaseUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -743,7 +743,7 @@ func (a *DatabaseUsersApiService) UpdateDatabaseUserWithParams(ctx context.Conte
 }
 
 func (r UpdateDatabaseUserApiRequest) Execute() (*CloudDatabaseUser, *http.Response, error) {
-	return r.ApiService.updateDatabaseUserExecute(r)
+	return r.ApiService.UpdateDatabaseUserExecute(r)
 }
 
 /*
@@ -771,7 +771,7 @@ func (a *DatabaseUsersApiService) UpdateDatabaseUser(ctx context.Context, groupI
 // Execute executes the request
 //
 //	@return CloudDatabaseUser
-func (a *DatabaseUsersApiService) updateDatabaseUserExecute(r UpdateDatabaseUserApiRequest) (*CloudDatabaseUser, *http.Response, error) {
+func (a *DatabaseUsersApiService) UpdateDatabaseUserExecute(r UpdateDatabaseUserApiRequest) (*CloudDatabaseUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}

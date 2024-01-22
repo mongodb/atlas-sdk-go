@@ -34,8 +34,8 @@ type AtlasSearchApi interface {
 	*/
 	CreateAtlasSearchDeploymentWithParams(ctx context.Context, args *CreateAtlasSearchDeploymentApiParams) CreateAtlasSearchDeploymentApiRequest
 
-	// Interface only available internally
-	createAtlasSearchDeploymentExecute(r CreateAtlasSearchDeploymentApiRequest) (*ApiSearchDeploymentResponse, *http.Response, error)
+	// Method available only for mocking purposes
+	CreateAtlasSearchDeploymentExecute(r CreateAtlasSearchDeploymentApiRequest) (*ApiSearchDeploymentResponse, *http.Response, error)
 
 	/*
 		CreateAtlasSearchIndex Create One Atlas Search Index
@@ -58,8 +58,8 @@ type AtlasSearchApi interface {
 	*/
 	CreateAtlasSearchIndexWithParams(ctx context.Context, args *CreateAtlasSearchIndexApiParams) CreateAtlasSearchIndexApiRequest
 
-	// Interface only available internally
-	createAtlasSearchIndexExecute(r CreateAtlasSearchIndexApiRequest) (*ClusterSearchIndex, *http.Response, error)
+	// Method available only for mocking purposes
+	CreateAtlasSearchIndexExecute(r CreateAtlasSearchIndexApiRequest) (*ClusterSearchIndex, *http.Response, error)
 
 	/*
 		DeleteAtlasSearchDeployment Delete Search Nodes
@@ -82,8 +82,8 @@ type AtlasSearchApi interface {
 	*/
 	DeleteAtlasSearchDeploymentWithParams(ctx context.Context, args *DeleteAtlasSearchDeploymentApiParams) DeleteAtlasSearchDeploymentApiRequest
 
-	// Interface only available internally
-	deleteAtlasSearchDeploymentExecute(r DeleteAtlasSearchDeploymentApiRequest) (*http.Response, error)
+	// Method available only for mocking purposes
+	DeleteAtlasSearchDeploymentExecute(r DeleteAtlasSearchDeploymentApiRequest) (*http.Response, error)
 
 	/*
 		DeleteAtlasSearchIndex Remove One Atlas Search Index
@@ -107,8 +107,8 @@ type AtlasSearchApi interface {
 	*/
 	DeleteAtlasSearchIndexWithParams(ctx context.Context, args *DeleteAtlasSearchIndexApiParams) DeleteAtlasSearchIndexApiRequest
 
-	// Interface only available internally
-	deleteAtlasSearchIndexExecute(r DeleteAtlasSearchIndexApiRequest) (map[string]interface{}, *http.Response, error)
+	// Method available only for mocking purposes
+	DeleteAtlasSearchIndexExecute(r DeleteAtlasSearchIndexApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
 		GetAtlasSearchDeployment Return Search Nodes
@@ -131,8 +131,8 @@ type AtlasSearchApi interface {
 	*/
 	GetAtlasSearchDeploymentWithParams(ctx context.Context, args *GetAtlasSearchDeploymentApiParams) GetAtlasSearchDeploymentApiRequest
 
-	// Interface only available internally
-	getAtlasSearchDeploymentExecute(r GetAtlasSearchDeploymentApiRequest) (*ApiSearchDeploymentResponse, *http.Response, error)
+	// Method available only for mocking purposes
+	GetAtlasSearchDeploymentExecute(r GetAtlasSearchDeploymentApiRequest) (*ApiSearchDeploymentResponse, *http.Response, error)
 
 	/*
 		GetAtlasSearchIndex Return One Atlas Search Index
@@ -156,8 +156,8 @@ type AtlasSearchApi interface {
 	*/
 	GetAtlasSearchIndexWithParams(ctx context.Context, args *GetAtlasSearchIndexApiParams) GetAtlasSearchIndexApiRequest
 
-	// Interface only available internally
-	getAtlasSearchIndexExecute(r GetAtlasSearchIndexApiRequest) (*ClusterSearchIndex, *http.Response, error)
+	// Method available only for mocking purposes
+	GetAtlasSearchIndexExecute(r GetAtlasSearchIndexApiRequest) (*ClusterSearchIndex, *http.Response, error)
 
 	/*
 		ListAtlasSearchIndexes Return All Atlas Search Indexes for One Collection
@@ -182,8 +182,8 @@ type AtlasSearchApi interface {
 	*/
 	ListAtlasSearchIndexesWithParams(ctx context.Context, args *ListAtlasSearchIndexesApiParams) ListAtlasSearchIndexesApiRequest
 
-	// Interface only available internally
-	listAtlasSearchIndexesExecute(r ListAtlasSearchIndexesApiRequest) ([]ClusterSearchIndex, *http.Response, error)
+	// Method available only for mocking purposes
+	ListAtlasSearchIndexesExecute(r ListAtlasSearchIndexesApiRequest) ([]ClusterSearchIndex, *http.Response, error)
 
 	/*
 		UpdateAtlasSearchDeployment Update Search Nodes
@@ -206,8 +206,8 @@ type AtlasSearchApi interface {
 	*/
 	UpdateAtlasSearchDeploymentWithParams(ctx context.Context, args *UpdateAtlasSearchDeploymentApiParams) UpdateAtlasSearchDeploymentApiRequest
 
-	// Interface only available internally
-	updateAtlasSearchDeploymentExecute(r UpdateAtlasSearchDeploymentApiRequest) (*ApiSearchDeploymentResponse, *http.Response, error)
+	// Method available only for mocking purposes
+	UpdateAtlasSearchDeploymentExecute(r UpdateAtlasSearchDeploymentApiRequest) (*ApiSearchDeploymentResponse, *http.Response, error)
 
 	/*
 		UpdateAtlasSearchIndex Update One Atlas Search Index
@@ -231,8 +231,8 @@ type AtlasSearchApi interface {
 	*/
 	UpdateAtlasSearchIndexWithParams(ctx context.Context, args *UpdateAtlasSearchIndexApiParams) UpdateAtlasSearchIndexApiRequest
 
-	// Interface only available internally
-	updateAtlasSearchIndexExecute(r UpdateAtlasSearchIndexApiRequest) (*ClusterSearchIndex, *http.Response, error)
+	// Method available only for mocking purposes
+	UpdateAtlasSearchIndexExecute(r UpdateAtlasSearchIndexApiRequest) (*ClusterSearchIndex, *http.Response, error)
 }
 
 // AtlasSearchApiService AtlasSearchApi service
@@ -263,7 +263,7 @@ func (a *AtlasSearchApiService) CreateAtlasSearchDeploymentWithParams(ctx contex
 }
 
 func (r CreateAtlasSearchDeploymentApiRequest) Execute() (*ApiSearchDeploymentResponse, *http.Response, error) {
-	return r.ApiService.createAtlasSearchDeploymentExecute(r)
+	return r.ApiService.CreateAtlasSearchDeploymentExecute(r)
 }
 
 /*
@@ -289,7 +289,7 @@ func (a *AtlasSearchApiService) CreateAtlasSearchDeployment(ctx context.Context,
 // Execute executes the request
 //
 //	@return ApiSearchDeploymentResponse
-func (a *AtlasSearchApiService) createAtlasSearchDeploymentExecute(r CreateAtlasSearchDeploymentApiRequest) (*ApiSearchDeploymentResponse, *http.Response, error) {
+func (a *AtlasSearchApiService) CreateAtlasSearchDeploymentExecute(r CreateAtlasSearchDeploymentApiRequest) (*ApiSearchDeploymentResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -402,7 +402,7 @@ func (a *AtlasSearchApiService) CreateAtlasSearchIndexWithParams(ctx context.Con
 }
 
 func (r CreateAtlasSearchIndexApiRequest) Execute() (*ClusterSearchIndex, *http.Response, error) {
-	return r.ApiService.createAtlasSearchIndexExecute(r)
+	return r.ApiService.CreateAtlasSearchIndexExecute(r)
 }
 
 /*
@@ -428,7 +428,7 @@ func (a *AtlasSearchApiService) CreateAtlasSearchIndex(ctx context.Context, grou
 // Execute executes the request
 //
 //	@return ClusterSearchIndex
-func (a *AtlasSearchApiService) createAtlasSearchIndexExecute(r CreateAtlasSearchIndexApiRequest) (*ClusterSearchIndex, *http.Response, error) {
+func (a *AtlasSearchApiService) CreateAtlasSearchIndexExecute(r CreateAtlasSearchIndexApiRequest) (*ClusterSearchIndex, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -538,7 +538,7 @@ func (a *AtlasSearchApiService) DeleteAtlasSearchDeploymentWithParams(ctx contex
 }
 
 func (r DeleteAtlasSearchDeploymentApiRequest) Execute() (*http.Response, error) {
-	return r.ApiService.deleteAtlasSearchDeploymentExecute(r)
+	return r.ApiService.DeleteAtlasSearchDeploymentExecute(r)
 }
 
 /*
@@ -561,7 +561,7 @@ func (a *AtlasSearchApiService) DeleteAtlasSearchDeployment(ctx context.Context,
 }
 
 // Execute executes the request
-func (a *AtlasSearchApiService) deleteAtlasSearchDeploymentExecute(r DeleteAtlasSearchDeploymentApiRequest) (*http.Response, error) {
+func (a *AtlasSearchApiService) DeleteAtlasSearchDeploymentExecute(r DeleteAtlasSearchDeploymentApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
@@ -659,7 +659,7 @@ func (a *AtlasSearchApiService) DeleteAtlasSearchIndexWithParams(ctx context.Con
 }
 
 func (r DeleteAtlasSearchIndexApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.deleteAtlasSearchIndexExecute(r)
+	return r.ApiService.DeleteAtlasSearchIndexExecute(r)
 }
 
 /*
@@ -686,7 +686,7 @@ func (a *AtlasSearchApiService) DeleteAtlasSearchIndex(ctx context.Context, grou
 // Execute executes the request
 //
 //	@return map[string]interface{}
-func (a *AtlasSearchApiService) deleteAtlasSearchIndexExecute(r DeleteAtlasSearchIndexApiRequest) (map[string]interface{}, *http.Response, error) {
+func (a *AtlasSearchApiService) DeleteAtlasSearchIndexExecute(r DeleteAtlasSearchIndexApiRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    interface{}
@@ -792,7 +792,7 @@ func (a *AtlasSearchApiService) GetAtlasSearchDeploymentWithParams(ctx context.C
 }
 
 func (r GetAtlasSearchDeploymentApiRequest) Execute() (*ApiSearchDeploymentResponse, *http.Response, error) {
-	return r.ApiService.getAtlasSearchDeploymentExecute(r)
+	return r.ApiService.GetAtlasSearchDeploymentExecute(r)
 }
 
 /*
@@ -817,7 +817,7 @@ func (a *AtlasSearchApiService) GetAtlasSearchDeployment(ctx context.Context, gr
 // Execute executes the request
 //
 //	@return ApiSearchDeploymentResponse
-func (a *AtlasSearchApiService) getAtlasSearchDeploymentExecute(r GetAtlasSearchDeploymentApiRequest) (*ApiSearchDeploymentResponse, *http.Response, error) {
+func (a *AtlasSearchApiService) GetAtlasSearchDeploymentExecute(r GetAtlasSearchDeploymentApiRequest) (*ApiSearchDeploymentResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -925,7 +925,7 @@ func (a *AtlasSearchApiService) GetAtlasSearchIndexWithParams(ctx context.Contex
 }
 
 func (r GetAtlasSearchIndexApiRequest) Execute() (*ClusterSearchIndex, *http.Response, error) {
-	return r.ApiService.getAtlasSearchIndexExecute(r)
+	return r.ApiService.GetAtlasSearchIndexExecute(r)
 }
 
 /*
@@ -952,7 +952,7 @@ func (a *AtlasSearchApiService) GetAtlasSearchIndex(ctx context.Context, groupId
 // Execute executes the request
 //
 //	@return ClusterSearchIndex
-func (a *AtlasSearchApiService) getAtlasSearchIndexExecute(r GetAtlasSearchIndexApiRequest) (*ClusterSearchIndex, *http.Response, error) {
+func (a *AtlasSearchApiService) GetAtlasSearchIndexExecute(r GetAtlasSearchIndexApiRequest) (*ClusterSearchIndex, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1064,7 +1064,7 @@ func (a *AtlasSearchApiService) ListAtlasSearchIndexesWithParams(ctx context.Con
 }
 
 func (r ListAtlasSearchIndexesApiRequest) Execute() ([]ClusterSearchIndex, *http.Response, error) {
-	return r.ApiService.listAtlasSearchIndexesExecute(r)
+	return r.ApiService.ListAtlasSearchIndexesExecute(r)
 }
 
 /*
@@ -1093,7 +1093,7 @@ func (a *AtlasSearchApiService) ListAtlasSearchIndexes(ctx context.Context, grou
 // Execute executes the request
 //
 //	@return []ClusterSearchIndex
-func (a *AtlasSearchApiService) listAtlasSearchIndexesExecute(r ListAtlasSearchIndexesApiRequest) ([]ClusterSearchIndex, *http.Response, error) {
+func (a *AtlasSearchApiService) ListAtlasSearchIndexesExecute(r ListAtlasSearchIndexesApiRequest) ([]ClusterSearchIndex, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -1203,7 +1203,7 @@ func (a *AtlasSearchApiService) UpdateAtlasSearchDeploymentWithParams(ctx contex
 }
 
 func (r UpdateAtlasSearchDeploymentApiRequest) Execute() (*ApiSearchDeploymentResponse, *http.Response, error) {
-	return r.ApiService.updateAtlasSearchDeploymentExecute(r)
+	return r.ApiService.UpdateAtlasSearchDeploymentExecute(r)
 }
 
 /*
@@ -1229,7 +1229,7 @@ func (a *AtlasSearchApiService) UpdateAtlasSearchDeployment(ctx context.Context,
 // Execute executes the request
 //
 //	@return ApiSearchDeploymentResponse
-func (a *AtlasSearchApiService) updateAtlasSearchDeploymentExecute(r UpdateAtlasSearchDeploymentApiRequest) (*ApiSearchDeploymentResponse, *http.Response, error) {
+func (a *AtlasSearchApiService) UpdateAtlasSearchDeploymentExecute(r UpdateAtlasSearchDeploymentApiRequest) (*ApiSearchDeploymentResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
@@ -1345,7 +1345,7 @@ func (a *AtlasSearchApiService) UpdateAtlasSearchIndexWithParams(ctx context.Con
 }
 
 func (r UpdateAtlasSearchIndexApiRequest) Execute() (*ClusterSearchIndex, *http.Response, error) {
-	return r.ApiService.updateAtlasSearchIndexExecute(r)
+	return r.ApiService.UpdateAtlasSearchIndexExecute(r)
 }
 
 /*
@@ -1373,7 +1373,7 @@ func (a *AtlasSearchApiService) UpdateAtlasSearchIndex(ctx context.Context, grou
 // Execute executes the request
 //
 //	@return ClusterSearchIndex
-func (a *AtlasSearchApiService) updateAtlasSearchIndexExecute(r UpdateAtlasSearchIndexApiRequest) (*ClusterSearchIndex, *http.Response, error) {
+func (a *AtlasSearchApiService) UpdateAtlasSearchIndexExecute(r UpdateAtlasSearchIndexApiRequest) (*ClusterSearchIndex, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
