@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **CollectionType** | Pointer to **string** | Classification of MongoDB database collection that you want to return.  If you set this parameter to &#x60;TIMESERIES&#x60;, set &#x60;\&quot;criteria.type\&quot; : \&quot;date\&quot;&#x60; and &#x60;\&quot;criteria.dateFormat\&quot; : \&quot;ISODATE\&quot;&#x60;. | [optional] [default to "STANDARD"]
 **Criteria** | [**Criteria**](Criteria.md) |  | 
 **DataExpirationRule** | Pointer to [**DataExpirationRule**](DataExpirationRule.md) |  | [optional] 
-**DataProcessRegion** | Pointer to [**DataProcessRegion**](DataProcessRegion.md) |  | [optional] 
+**DataProcessRegion** | Pointer to [**CreateDataProcessRegion**](CreateDataProcessRegion.md) |  | [optional] 
 **DataSetName** | Pointer to **string** | Human-readable label that identifies the dataset that Atlas generates for this online archive. | [optional] [readonly] 
 **DbName** | **string** | Human-readable label of the database that contains the collection that contains the online archive. | 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the project that contains the specified cluster. The specified cluster contains the collection for which to create the online archive. | [optional] [readonly] 
@@ -174,20 +174,20 @@ SetDataExpirationRule sets DataExpirationRule field to given value.
 HasDataExpirationRule returns a boolean if a field has been set.
 ### GetDataProcessRegion
 
-`func (o *BackupOnlineArchiveCreate) GetDataProcessRegion() DataProcessRegion`
+`func (o *BackupOnlineArchiveCreate) GetDataProcessRegion() CreateDataProcessRegion`
 
 GetDataProcessRegion returns the DataProcessRegion field if non-nil, zero value otherwise.
 
 ### GetDataProcessRegionOk
 
-`func (o *BackupOnlineArchiveCreate) GetDataProcessRegionOk() (*DataProcessRegion, bool)`
+`func (o *BackupOnlineArchiveCreate) GetDataProcessRegionOk() (*CreateDataProcessRegion, bool)`
 
 GetDataProcessRegionOk returns a tuple with the DataProcessRegion field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDataProcessRegion
 
-`func (o *BackupOnlineArchiveCreate) SetDataProcessRegion(v DataProcessRegion)`
+`func (o *BackupOnlineArchiveCreate) SetDataProcessRegion(v CreateDataProcessRegion)`
 
 SetDataProcessRegion sets DataProcessRegion field to given value.
 

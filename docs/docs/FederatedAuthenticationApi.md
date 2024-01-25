@@ -44,7 +44,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115004/admin"
+    "go.mongodb.org/atlas-sdk/v20231115005/admin"
 )
 
 func main() {
@@ -127,7 +127,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115004/admin"
+    "go.mongodb.org/atlas-sdk/v20231115005/admin"
 )
 
 func main() {
@@ -203,7 +203,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115004/admin"
+    "go.mongodb.org/atlas-sdk/v20231115005/admin"
 )
 
 func main() {
@@ -285,7 +285,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115004/admin"
+    "go.mongodb.org/atlas-sdk/v20231115005/admin"
 )
 
 func main() {
@@ -366,7 +366,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115004/admin"
+    "go.mongodb.org/atlas-sdk/v20231115005/admin"
 )
 
 func main() {
@@ -444,7 +444,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115004/admin"
+    "go.mongodb.org/atlas-sdk/v20231115005/admin"
 )
 
 func main() {
@@ -525,7 +525,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115004/admin"
+    "go.mongodb.org/atlas-sdk/v20231115005/admin"
 )
 
 func main() {
@@ -606,7 +606,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115004/admin"
+    "go.mongodb.org/atlas-sdk/v20231115005/admin"
 )
 
 func main() {
@@ -690,7 +690,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115004/admin"
+    "go.mongodb.org/atlas-sdk/v20231115005/admin"
 )
 
 func main() {
@@ -768,7 +768,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115004/admin"
+    "go.mongodb.org/atlas-sdk/v20231115005/admin"
 )
 
 func main() {
@@ -848,7 +848,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115004/admin"
+    "go.mongodb.org/atlas-sdk/v20231115005/admin"
 )
 
 func main() {
@@ -929,7 +929,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115004/admin"
+    "go.mongodb.org/atlas-sdk/v20231115005/admin"
 )
 
 func main() {
@@ -1010,7 +1010,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115004/admin"
+    "go.mongodb.org/atlas-sdk/v20231115005/admin"
 )
 
 func main() {
@@ -1073,7 +1073,7 @@ Name | Type | Description  | Notes
 
 ## UpdateIdentityProvider
 
-> FederationIdentityProvider UpdateIdentityProvider(ctx, federationSettingsId, identityProviderId, identityProviderUpdate IdentityProviderUpdate).Execute()
+> FederationIdentityProvider UpdateIdentityProvider(ctx, federationSettingsId, identityProviderId, federationIdentityProviderUpdate FederationIdentityProviderUpdate).Execute()
 
 Update the identity provider.
 
@@ -1093,7 +1093,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115004/admin"
+    "go.mongodb.org/atlas-sdk/v20231115005/admin"
 )
 
 func main() {
@@ -1104,9 +1104,9 @@ func main() {
 
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     identityProviderId := "c2777a9eca931f29fc2f" // string | 
-    identityProviderUpdate := *openapiclient.NewIdentityProviderUpdate() // IdentityProviderUpdate | 
+    federationIdentityProviderUpdate := *openapiclient.NewFederationIdentityProviderUpdate() // FederationIdentityProviderUpdate | 
 
-    resp, r, err := sdk.FederatedAuthenticationApi.UpdateIdentityProvider(context.Background(), federationSettingsId, identityProviderId, &identityProviderUpdate).Execute()
+    resp, r, err := sdk.FederatedAuthenticationApi.UpdateIdentityProvider(context.Background(), federationSettingsId, identityProviderId, &federationIdentityProviderUpdate).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.UpdateIdentityProvider``: %v\n", err)
         apiError := admin.AsError(err)
@@ -1135,7 +1135,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **identityProviderUpdate** | [**IdentityProviderUpdate**](IdentityProviderUpdate.md) | The identity provider that you want to update. | 
+ **federationIdentityProviderUpdate** | [**FederationIdentityProviderUpdate**](FederationIdentityProviderUpdate.md) | The identity provider that you want to update. | 
 
 ### Return type
 
@@ -1176,7 +1176,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20231115004/admin"
+    "go.mongodb.org/atlas-sdk/v20231115005/admin"
 )
 
 func main() {

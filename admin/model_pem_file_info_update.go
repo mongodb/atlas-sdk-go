@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 )
 
-// PemFileInfoUpdate PEM file information for the identity provider's certificates.
+// PemFileInfoUpdate PEM file information for the identity provider's current certificates.
 type PemFileInfoUpdate struct {
 	// List of certificates in the file.
 	Certificates *[]X509CertificateUpdate `json:"certificates,omitempty"`

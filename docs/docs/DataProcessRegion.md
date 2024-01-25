@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CloudProvider** | Pointer to **string** | Human-readable label that identifies the Cloud service provider where you wish to store your archived data. | [optional] 
-**Region** | Pointer to **string** | Human-readable label that identifies the geographic location of the region where you wish to store your archived data. | [optional] 
+**CloudProvider** | Pointer to **string** | Human-readable label that identifies the Cloud service provider where you store your archived data. | [optional] [readonly] 
+**Region** | Pointer to **string** | Human-readable label that identifies the geographic location of the region where you store your archived data. | [optional] [readonly] 
 
 ## Methods
 

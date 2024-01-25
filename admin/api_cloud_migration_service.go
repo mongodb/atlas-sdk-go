@@ -41,7 +41,7 @@ type CloudMigrationServiceApi interface {
 
 		Migrate one cluster that Cloud or Ops Manager manages to MongoDB Atlas.
 
-	 Please make sure to [validate](#tag/Cloud-Migration-Service/operation/validateOneMigration) your migration before initiating it.
+	 Please make sure to [validate](#tag/Cloud-Migration-Service/operation/validateMigration) your migration before initiating it.
 
 	 You can use this API endpoint for push live migrations only. Your API Key must have the Organization Owner role to successfully call this resource.
 
@@ -373,7 +373,7 @@ CreatePushMigration Migrate One Local Managed Cluster to MongoDB Atlas
 
 Migrate one cluster that Cloud or Ops Manager manages to MongoDB Atlas.
 
-	Please make sure to [validate](#tag/Cloud-Migration-Service/operation/validateOneMigration) your migration before initiating it.
+	Please make sure to [validate](#tag/Cloud-Migration-Service/operation/validateMigration) your migration before initiating it.
 
 	You can use this API endpoint for push live migrations only. Your API Key must have the Organization Owner role to successfully call this resource.
 

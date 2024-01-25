@@ -6,11 +6,13 @@ import (
 	"encoding/json"
 )
 
-// DataProcessRegion Settings to configure the region where you wish to store your archived data.
+// DataProcessRegion Settings related to the region where you to store your archived data.
 type DataProcessRegion struct {
-	// Human-readable label that identifies the Cloud service provider where you wish to store your archived data.
+	// Human-readable label that identifies the Cloud service provider where you store your archived data.
+	// Read only field.
 	CloudProvider *string `json:"cloudProvider,omitempty"`
-	// Human-readable label that identifies the geographic location of the region where you wish to store your archived data.
+	// Human-readable label that identifies the geographic location of the region where you store your archived data.
+	// Read only field.
 	Region *string `json:"region,omitempty"`
 }
 
@@ -106,11 +108,5 @@ func (o DataProcessRegion) MarshalJSONWithoutReadOnly() ([]byte, error) {
 }
 func (o DataProcessRegion) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CloudProvider) {
-		toSerialize["cloudProvider"] = o.CloudProvider
-	}
-	if !IsNil(o.Region) {
-		toSerialize["region"] = o.Region
-	}
 	return toSerialize, nil
 }

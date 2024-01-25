@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Destination** | [**Destination**](Destination.md) |  | 
 **DropEnabled** | **bool** | Flag that indicates whether the migration process drops all collections from the destination cluster before the migration starts. | 
 **MigrationHosts** | Pointer to **[]string** | List of migration hosts used for this migration. | [optional] 
+**Sharding** | Pointer to [**ShardingRequest**](ShardingRequest.md) |  | [optional] 
 **Source** | [**Source**](Source.md) |  | 
 
 ## Methods
@@ -115,6 +116,30 @@ SetMigrationHosts sets MigrationHosts field to given value.
 `func (o *LiveMigrationRequest) HasMigrationHosts() bool`
 
 HasMigrationHosts returns a boolean if a field has been set.
+### GetSharding
+
+`func (o *LiveMigrationRequest) GetSharding() ShardingRequest`
+
+GetSharding returns the Sharding field if non-nil, zero value otherwise.
+
+### GetShardingOk
+
+`func (o *LiveMigrationRequest) GetShardingOk() (*ShardingRequest, bool)`
+
+GetShardingOk returns a tuple with the Sharding field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSharding
+
+`func (o *LiveMigrationRequest) SetSharding(v ShardingRequest)`
+
+SetSharding sets Sharding field to given value.
+
+### HasSharding
+
+`func (o *LiveMigrationRequest) HasSharding() bool`
+
+HasSharding returns a boolean if a field has been set.
 ### GetSource
 
 `func (o *LiveMigrationRequest) GetSource() Source`
