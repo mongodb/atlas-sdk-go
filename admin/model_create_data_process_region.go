@@ -6,35 +6,33 @@ import (
 	"encoding/json"
 )
 
-// DataProcessRegion Settings related to the region where you to store your archived data.
-type DataProcessRegion struct {
-	// Human-readable label that identifies the Cloud service provider where you store your archived data.
-	// Read only field.
+// CreateDataProcessRegion Settings to configure the region where you wish to store your archived data.
+type CreateDataProcessRegion struct {
+	// Human-readable label that identifies the Cloud service provider where you wish to store your archived data.
 	CloudProvider *string `json:"cloudProvider,omitempty"`
-	// Human-readable label that identifies the geographic location of the region where you store your archived data.
-	// Read only field.
+	// Human-readable label that identifies the geographic location of the region where you wish to store your archived data.
 	Region *string `json:"region,omitempty"`
 }
 
-// NewDataProcessRegion instantiates a new DataProcessRegion object
+// NewCreateDataProcessRegion instantiates a new CreateDataProcessRegion object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDataProcessRegion() *DataProcessRegion {
-	this := DataProcessRegion{}
+func NewCreateDataProcessRegion() *CreateDataProcessRegion {
+	this := CreateDataProcessRegion{}
 	return &this
 }
 
-// NewDataProcessRegionWithDefaults instantiates a new DataProcessRegion object
+// NewCreateDataProcessRegionWithDefaults instantiates a new CreateDataProcessRegion object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewDataProcessRegionWithDefaults() *DataProcessRegion {
-	this := DataProcessRegion{}
+func NewCreateDataProcessRegionWithDefaults() *CreateDataProcessRegion {
+	this := CreateDataProcessRegion{}
 	return &this
 }
 
 // GetCloudProvider returns the CloudProvider field value if set, zero value otherwise
-func (o *DataProcessRegion) GetCloudProvider() string {
+func (o *CreateDataProcessRegion) GetCloudProvider() string {
 	if o == nil || IsNil(o.CloudProvider) {
 		var ret string
 		return ret
@@ -44,7 +42,7 @@ func (o *DataProcessRegion) GetCloudProvider() string {
 
 // GetCloudProviderOk returns a tuple with the CloudProvider field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DataProcessRegion) GetCloudProviderOk() (*string, bool) {
+func (o *CreateDataProcessRegion) GetCloudProviderOk() (*string, bool) {
 	if o == nil || IsNil(o.CloudProvider) {
 		return nil, false
 	}
@@ -53,7 +51,7 @@ func (o *DataProcessRegion) GetCloudProviderOk() (*string, bool) {
 }
 
 // HasCloudProvider returns a boolean if a field has been set.
-func (o *DataProcessRegion) HasCloudProvider() bool {
+func (o *CreateDataProcessRegion) HasCloudProvider() bool {
 	if o != nil && !IsNil(o.CloudProvider) {
 		return true
 	}
@@ -62,12 +60,12 @@ func (o *DataProcessRegion) HasCloudProvider() bool {
 }
 
 // SetCloudProvider gets a reference to the given string and assigns it to the CloudProvider field.
-func (o *DataProcessRegion) SetCloudProvider(v string) {
+func (o *CreateDataProcessRegion) SetCloudProvider(v string) {
 	o.CloudProvider = &v
 }
 
 // GetRegion returns the Region field value if set, zero value otherwise
-func (o *DataProcessRegion) GetRegion() string {
+func (o *CreateDataProcessRegion) GetRegion() string {
 	if o == nil || IsNil(o.Region) {
 		var ret string
 		return ret
@@ -77,7 +75,7 @@ func (o *DataProcessRegion) GetRegion() string {
 
 // GetRegionOk returns a tuple with the Region field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DataProcessRegion) GetRegionOk() (*string, bool) {
+func (o *CreateDataProcessRegion) GetRegionOk() (*string, bool) {
 	if o == nil || IsNil(o.Region) {
 		return nil, false
 	}
@@ -86,7 +84,7 @@ func (o *DataProcessRegion) GetRegionOk() (*string, bool) {
 }
 
 // HasRegion returns a boolean if a field has been set.
-func (o *DataProcessRegion) HasRegion() bool {
+func (o *CreateDataProcessRegion) HasRegion() bool {
 	if o != nil && !IsNil(o.Region) {
 		return true
 	}
@@ -95,18 +93,24 @@ func (o *DataProcessRegion) HasRegion() bool {
 }
 
 // SetRegion gets a reference to the given string and assigns it to the Region field.
-func (o *DataProcessRegion) SetRegion(v string) {
+func (o *CreateDataProcessRegion) SetRegion(v string) {
 	o.Region = &v
 }
 
-func (o DataProcessRegion) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o CreateDataProcessRegion) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o DataProcessRegion) ToMap() (map[string]interface{}, error) {
+func (o CreateDataProcessRegion) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.CloudProvider) {
+		toSerialize["cloudProvider"] = o.CloudProvider
+	}
+	if !IsNil(o.Region) {
+		toSerialize["region"] = o.Region
+	}
 	return toSerialize, nil
 }

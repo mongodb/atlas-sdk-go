@@ -31,7 +31,8 @@ type ClusterSearchIndex struct {
 	SearchAnalyzer *string `json:"searchAnalyzer,omitempty"`
 	// Rule sets that map words to their synonyms in this index.
 	Synonyms *[]SearchSynonymMappingDefinition `json:"synonyms,omitempty"`
-	Fields   *[]map[string]interface{}         `json:"fields,omitempty"`
+	// Settings that configure the fields, one per object, to index. You must define at least one \"vector\" type field. You can optionally define \"filter\" type fields also.
+	Fields *[]map[string]interface{} `json:"fields,omitempty"`
 }
 
 // NewClusterSearchIndex instantiates a new ClusterSearchIndex object

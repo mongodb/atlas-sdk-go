@@ -22,6 +22,7 @@ type BackupOnlineArchive struct {
 	CollectionType     *string             `json:"collectionType,omitempty"`
 	Criteria           *Criteria           `json:"criteria,omitempty"`
 	DataExpirationRule *DataExpirationRule `json:"dataExpirationRule,omitempty"`
+	DataProcessRegion  *DataProcessRegion  `json:"dataProcessRegion,omitempty"`
 	// Human-readable label that identifies the dataset that Atlas generates for this online archive.
 	// Read only field.
 	DataSetName *string `json:"dataSetName,omitempty"`
@@ -255,6 +256,39 @@ func (o *BackupOnlineArchive) HasDataExpirationRule() bool {
 // SetDataExpirationRule gets a reference to the given DataExpirationRule and assigns it to the DataExpirationRule field.
 func (o *BackupOnlineArchive) SetDataExpirationRule(v DataExpirationRule) {
 	o.DataExpirationRule = &v
+}
+
+// GetDataProcessRegion returns the DataProcessRegion field value if set, zero value otherwise
+func (o *BackupOnlineArchive) GetDataProcessRegion() DataProcessRegion {
+	if o == nil || IsNil(o.DataProcessRegion) {
+		var ret DataProcessRegion
+		return ret
+	}
+	return *o.DataProcessRegion
+}
+
+// GetDataProcessRegionOk returns a tuple with the DataProcessRegion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BackupOnlineArchive) GetDataProcessRegionOk() (*DataProcessRegion, bool) {
+	if o == nil || IsNil(o.DataProcessRegion) {
+		return nil, false
+	}
+
+	return o.DataProcessRegion, true
+}
+
+// HasDataProcessRegion returns a boolean if a field has been set.
+func (o *BackupOnlineArchive) HasDataProcessRegion() bool {
+	if o != nil && !IsNil(o.DataProcessRegion) {
+		return true
+	}
+
+	return false
+}
+
+// SetDataProcessRegion gets a reference to the given DataProcessRegion and assigns it to the DataProcessRegion field.
+func (o *BackupOnlineArchive) SetDataProcessRegion(v DataProcessRegion) {
+	o.DataProcessRegion = &v
 }
 
 // GetDataSetName returns the DataSetName field value if set, zero value otherwise
@@ -502,6 +536,9 @@ func (o BackupOnlineArchive) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DataExpirationRule) {
 		toSerialize["dataExpirationRule"] = o.DataExpirationRule
+	}
+	if !IsNil(o.DataProcessRegion) {
+		toSerialize["dataProcessRegion"] = o.DataProcessRegion
 	}
 	if !IsNil(o.Paused) {
 		toSerialize["paused"] = o.Paused

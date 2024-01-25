@@ -16,8 +16,9 @@ type LiveMigrationRequest struct {
 	// Write only field.
 	DropEnabled bool `json:"dropEnabled"`
 	// List of migration hosts used for this migration.
-	MigrationHosts *[]string `json:"migrationHosts,omitempty"`
-	Source         Source    `json:"source"`
+	MigrationHosts *[]string        `json:"migrationHosts,omitempty"`
+	Sharding       *ShardingRequest `json:"sharding,omitempty"`
+	Source         Source           `json:"source"`
 }
 
 // NewLiveMigrationRequest instantiates a new LiveMigrationRequest object
@@ -154,6 +155,39 @@ func (o *LiveMigrationRequest) SetMigrationHosts(v []string) {
 	o.MigrationHosts = &v
 }
 
+// GetSharding returns the Sharding field value if set, zero value otherwise
+func (o *LiveMigrationRequest) GetSharding() ShardingRequest {
+	if o == nil || IsNil(o.Sharding) {
+		var ret ShardingRequest
+		return ret
+	}
+	return *o.Sharding
+}
+
+// GetShardingOk returns a tuple with the Sharding field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LiveMigrationRequest) GetShardingOk() (*ShardingRequest, bool) {
+	if o == nil || IsNil(o.Sharding) {
+		return nil, false
+	}
+
+	return o.Sharding, true
+}
+
+// HasSharding returns a boolean if a field has been set.
+func (o *LiveMigrationRequest) HasSharding() bool {
+	if o != nil && !IsNil(o.Sharding) {
+		return true
+	}
+
+	return false
+}
+
+// SetSharding gets a reference to the given ShardingRequest and assigns it to the Sharding field.
+func (o *LiveMigrationRequest) SetSharding(v ShardingRequest) {
+	o.Sharding = &v
+}
+
 // GetSource returns the Source field value
 func (o *LiveMigrationRequest) GetSource() Source {
 	if o == nil {
@@ -191,6 +225,9 @@ func (o LiveMigrationRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["dropEnabled"] = o.DropEnabled
 	if !IsNil(o.MigrationHosts) {
 		toSerialize["migrationHosts"] = o.MigrationHosts
+	}
+	if !IsNil(o.Sharding) {
+		toSerialize["sharding"] = o.Sharding
 	}
 	toSerialize["source"] = o.Source
 	return toSerialize, nil

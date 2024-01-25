@@ -310,6 +310,8 @@ type FederatedAuthenticationApi interface {
 
 	**Note**: If the identityProviderId field is not provided, you will disconnect the organization and the identity provider.
 
+	**Note**: Currently connected data access identity providers missing from the dataAccessIdentityProviderIds field will be disconnected.
+
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
 		@param orgId Unique 24-hexadecimal digit string that identifies the connected organization configuration to update.
@@ -339,7 +341,7 @@ type FederatedAuthenticationApi interface {
 		@param identityProviderId Unique 20-hexadecimal digit string that identifies the identity provider.
 		@return UpdateIdentityProviderApiRequest
 	*/
-	UpdateIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string, identityProviderUpdate *IdentityProviderUpdate) UpdateIdentityProviderApiRequest
+	UpdateIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string, federationIdentityProviderUpdate *FederationIdentityProviderUpdate) UpdateIdentityProviderApiRequest
 	/*
 		UpdateIdentityProvider Update the identity provider.
 
@@ -1966,6 +1968,8 @@ UpdateConnectedOrgConfig Update One Org Config Connected to One Federation
 
 **Note**: If the identityProviderId field is not provided, you will disconnect the organization and the identity provider.
 
+**Note**: Currently connected data access identity providers missing from the dataAccessIdentityProviderIds field will be disconnected.
+
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
 	@param orgId Unique 24-hexadecimal digit string that identifies the connected organization configuration to update.
@@ -2073,26 +2077,26 @@ func (a *FederatedAuthenticationApiService) UpdateConnectedOrgConfigExecute(r Up
 }
 
 type UpdateIdentityProviderApiRequest struct {
-	ctx                    context.Context
-	ApiService             FederatedAuthenticationApi
-	federationSettingsId   string
-	identityProviderId     string
-	identityProviderUpdate *IdentityProviderUpdate
+	ctx                              context.Context
+	ApiService                       FederatedAuthenticationApi
+	federationSettingsId             string
+	identityProviderId               string
+	federationIdentityProviderUpdate *FederationIdentityProviderUpdate
 }
 
 type UpdateIdentityProviderApiParams struct {
-	FederationSettingsId   string
-	IdentityProviderId     string
-	IdentityProviderUpdate *IdentityProviderUpdate
+	FederationSettingsId             string
+	IdentityProviderId               string
+	FederationIdentityProviderUpdate *FederationIdentityProviderUpdate
 }
 
 func (a *FederatedAuthenticationApiService) UpdateIdentityProviderWithParams(ctx context.Context, args *UpdateIdentityProviderApiParams) UpdateIdentityProviderApiRequest {
 	return UpdateIdentityProviderApiRequest{
-		ApiService:             a,
-		ctx:                    ctx,
-		federationSettingsId:   args.FederationSettingsId,
-		identityProviderId:     args.IdentityProviderId,
-		identityProviderUpdate: args.IdentityProviderUpdate,
+		ApiService:                       a,
+		ctx:                              ctx,
+		federationSettingsId:             args.FederationSettingsId,
+		identityProviderId:               args.IdentityProviderId,
+		federationIdentityProviderUpdate: args.FederationIdentityProviderUpdate,
 	}
 }
 
@@ -2110,13 +2114,13 @@ UpdateIdentityProvider Update the identity provider.
 	@param identityProviderId Unique 20-hexadecimal digit string that identifies the identity provider.
 	@return UpdateIdentityProviderApiRequest
 */
-func (a *FederatedAuthenticationApiService) UpdateIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string, identityProviderUpdate *IdentityProviderUpdate) UpdateIdentityProviderApiRequest {
+func (a *FederatedAuthenticationApiService) UpdateIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string, federationIdentityProviderUpdate *FederationIdentityProviderUpdate) UpdateIdentityProviderApiRequest {
 	return UpdateIdentityProviderApiRequest{
-		ApiService:             a,
-		ctx:                    ctx,
-		federationSettingsId:   federationSettingsId,
-		identityProviderId:     identityProviderId,
-		identityProviderUpdate: identityProviderUpdate,
+		ApiService:                       a,
+		ctx:                              ctx,
+		federationSettingsId:             federationSettingsId,
+		identityProviderId:               identityProviderId,
+		federationIdentityProviderUpdate: federationIdentityProviderUpdate,
 	}
 }
 
@@ -2143,8 +2147,8 @@ func (a *FederatedAuthenticationApiService) UpdateIdentityProviderExecute(r Upda
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.identityProviderUpdate == nil {
-		return localVarReturnValue, nil, reportError("identityProviderUpdate is required and must be specified")
+	if r.federationIdentityProviderUpdate == nil {
+		return localVarReturnValue, nil, reportError("federationIdentityProviderUpdate is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2165,7 +2169,7 @@ func (a *FederatedAuthenticationApiService) UpdateIdentityProviderExecute(r Upda
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.identityProviderUpdate
+	localVarPostBody = r.federationIdentityProviderUpdate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
