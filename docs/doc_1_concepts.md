@@ -57,7 +57,7 @@ If you encounter any problems with methods marked as experimental, feel free to 
 
 ## Read Only and Write Only Fields
 
-Each SDK request and response might contain read or write only fields as identified by the [documentation](https://github.com/mongodb/atlas-sdk-go/blob/main/docs/doc_last_reference.md#documentation-for-models) and the Go doc comments.
+Each SDK request and response might contain read-only or write-only fields as identified by the [documentation](https://github.com/mongodb/atlas-sdk-go/blob/main/docs/doc_last_reference.md#documentation-for-models) and the Go doc comments.
 
 We use GoDoc comments to annotate fields as read and write only:
 
