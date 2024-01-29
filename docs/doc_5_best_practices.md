@@ -56,7 +56,7 @@ When you have confirmed that the `time.Time pointer` is non-nil, you can safely 
 
 ## Working with Pointers
 
-SDK pointers are utilized to denote optional values in the Go programming language:
+The Atlas Go SDK utilizes SDK pointers to denote optional values in the Go programming language:
 
 ```golang
 type Data struct {
@@ -65,11 +65,11 @@ type Data struct {
 }
 ```
 
-In the example above, the string value is optional, and it won't be sent to the server if not explicitly set.
+In the example above, the string value is optional, and it won't be sent to the server if you don't explicitly set it.
 
 ## Working with Arrays
 
-All arrays in the SDK are represented as pointers:
+The Atlas Go SDK represents all arrays as pointers:
 
 ```golang
 type Data struct {
@@ -77,11 +77,11 @@ type Data struct {
 }
 ```
 
-Scenarios for using pointers with arrays:
+The following scenarios use pointers with arrays:
 
-1. Update request containing an empty array (resetting the field values):
+1. Update a request containing an empty array (resetting the field values):
 
-If a struct property is explicitly set to an empty array, the SDK will send an empty array request to the Atlas API.
+If you explicitly set a struct property to an empty array, the SDK will send an empty array request to the Atlas API.
 
 ```golang
 data := Data{
@@ -90,9 +90,9 @@ data := Data{
 }
 ```
 
-2. Update request without updating the array field:
+2. Update a request without updating the array field:
 
-When performing an update operation, we recommend the struct property not to be present.
+When performing an update operation, we recommend that you don't set the struct property.
 
 ```golang
 data := Data{
@@ -101,7 +101,7 @@ data := Data{
 }
 ```
 
-These practices ensure accurate handling of optional values and array updates in the SDK when working with pointers in Golang.
+These practices ensure accurate handling of optional values and array updates in the SDK when you work with pointers in Golang.
 
 ## Working with Binary Responses
 
