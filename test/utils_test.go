@@ -15,38 +15,38 @@ type testCase[T comparable] struct {
 }
 
 //nolint:thelper // used to minimize duplication in test
-func assertSetOrDefault[T comparable](t *testing.T, tc testCase[T]) {
+func assertSetOrNil[T comparable](t *testing.T, tc testCase[T]) {
 	t.Run(tc.name, func(t *testing.T) {
-		ptr := admin.SetOrDefault(tc.val, tc.defaultValue)
+		ptr := admin.SetOrNil(tc.val, tc.defaultValue)
 		if gotNil := ptr == nil; gotNil != tc.wantNil {
 			t.Errorf("got nil %t, want %t", gotNil, tc.wantNil)
 		}
 	})
 }
 
-func TestSetOrDefault(t *testing.T) {
-	assertSetOrDefault(t, testCase[int]{
+func TestSetOrNil(t *testing.T) {
+	assertSetOrNil(t, testCase[int]{
 		name:         "non default int",
 		val:          1,
 		defaultValue: 0,
 		wantNil:      false,
 	})
 
-	assertSetOrDefault(t, testCase[int]{
+	assertSetOrNil(t, testCase[int]{
 		name:         "default int",
 		val:          0,
 		defaultValue: 0,
 		wantNil:      true,
 	})
 
-	assertSetOrDefault(t, testCase[string]{
+	assertSetOrNil(t, testCase[string]{
 		name:         "non default string",
 		val:          "hello",
 		defaultValue: "",
 		wantNil:      false,
 	})
 
-	assertSetOrDefault(t, testCase[string]{
+	assertSetOrNil(t, testCase[string]{
 		name:         "default string",
 		val:          "",
 		defaultValue: "",
