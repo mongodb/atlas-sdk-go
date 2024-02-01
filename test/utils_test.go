@@ -1,8 +1,10 @@
-package admin
+package test
 
 import (
 	"testing"
 	"time"
+
+	"go.mongodb.org/atlas-sdk/v20231115005/admin"
 )
 
 type testCase[T comparable] struct {
@@ -14,7 +16,7 @@ type testCase[T comparable] struct {
 
 func assertSetOrDefault[T comparable](t *testing.T, tc testCase[T]) {
 	t.Run(tc.name, func(t *testing.T) {
-		ptr := SetOrDefault(tc.val, tc.defaultValue)
+		ptr := admin.SetOrDefault(tc.val, tc.defaultValue)
 		if gotNil := ptr == nil; gotNil != tc.wantNil {
 			t.Errorf("got nil %t, want %t", gotNil, tc.wantNil)
 		}
@@ -85,7 +87,7 @@ func TestStringToTime(t *testing.T) {
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			gotErr := ""
-			got, err := StringToTime(tc.input)
+			got, err := admin.StringToTime(tc.input)
 			if err != nil {
 				gotErr = err.Error()
 			}
