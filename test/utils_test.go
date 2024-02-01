@@ -14,6 +14,7 @@ type testCase[T comparable] struct {
 	wantNil      bool
 }
 
+//nolint:thelper // used to minimize duplication in test
 func assertSetOrDefault[T comparable](t *testing.T, tc testCase[T]) {
 	t.Run(tc.name, func(t *testing.T) {
 		ptr := admin.SetOrDefault(tc.val, tc.defaultValue)
