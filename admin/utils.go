@@ -49,6 +49,14 @@ func IsNil(i interface{}) bool {
 	return false
 }
 
+// SetOrNil returns the address of the given value or nil if it equals defaultValue
+func SetOrNil[T comparable](val T, defaultValue T) *T {
+	if val == defaultValue {
+		return nil
+	}
+	return &val
+}
+
 // GetOrDefault returns the value of a pointer or a default value
 func GetOrDefault[T any](ptr *T, defaultValue T) T {
 	if ptr != nil {
@@ -72,6 +80,13 @@ func TimePtrToStringPtr(t *time.Time) *string {
 // Example formats: "2023-07-18T16:12:23Z", "2023-07-18T16:12:23.456Z"
 func TimeToString(t time.Time) string {
 	return t.UTC().Format(time.RFC3339Nano)
+}
+
+// StringToTime parses the given string and returns the resulting time.
+// The expected format is identical to the format returned by Atlas API, documented as ISO 8601 timestamp format in UTC.
+// Example formats: "2023-07-18T16:12:23Z", "2023-07-18T16:12:23.456Z"
+func StringToTime(val string) (time.Time, error) {
+	return time.Parse(time.RFC3339Nano, val)
 }
 
 // Int64PtrToIntPtr convert int64 to int pointer.
