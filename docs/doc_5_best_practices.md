@@ -33,12 +33,12 @@ if test != ""
 In the Atlas Go SDK, the `*time.Time` type represents date fields for handling time-related data. 
 When you compare values based on `time.Time`, either never compare pointers directly or do the following:
 
-1. Avoid using direct comparison operators (e.g., `myStruct.MyDateField == ""`) to check for equality. Comparing pointers directly will check if they refer to the same memory address rather than comparing the actual date values. Since each `time.Time` instance is allocated in different memory locations, direct comparisons might yield unexpected results.
+- Avoid using direct comparison operators (e.g., `myStruct.MyDateField == ""`) to check for equality. Comparing pointers directly will check if they refer to the same memory address rather than comparing the actual date values. Since each `time.Time` instance is allocated in different memory locations, direct comparisons might yield unexpected results.
 
-2. Use the `Has` function to check non-nil pointers:
+- Use the `Has` function to check non-nil pointers:
 The SDK provides a dedicated `HasFieldName` or `GetFieldName` function for each model to check if a `time.Time` pointer is non-nil before accessing its value. Always use this function to ensure that the pointer is valid before you perform any operations.
 
-3. Use `time.Time` methods to compare date values:
+- Use `time.Time` methods to compare date values:
 When you have confirmed that the `time.Time pointer` is non-nil, you can safely use `time.Time` methods to compare the actual date values. Commonly used methods for comparison include `Before`, `After`, and `Equal`:
 ```go
    if !sdkModel.HasSomeDateField() {
@@ -79,7 +79,7 @@ type Data struct {
 
 The following scenarios use pointers with arrays:
 
-1. Update a request containing an empty array (resetting the field values):
+- Update a request containing an empty array (resetting the field values):
 
 If you explicitly set a struct property to an empty array, the SDK will send an empty array request to the Atlas API.
 
@@ -90,7 +90,7 @@ data := Data{
 }
 ```
 
-2. Update a request without updating the array field:
+- Update a request without updating the array field:
 
 When performing an update operation, we recommend that you don't set the struct property.
 
@@ -113,7 +113,7 @@ In the Atlas Go SDK, the `io.ReadCloser` type is used to return binary data usin
 
 - Call the `.Close()` function after reading the data
 
-Note: see example in [examples/download/downloadLogs.go](../examples/download/downloadLogs.go)
+Note: see example in [examples/download/downloadLogs.go](https://github.com/mongodb/atlas-sdk-go/blob/main/examples/download/downloadLogs.go)
 
 ## Use Method for Creating Models
 
