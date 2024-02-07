@@ -1,7 +1,7 @@
 name: Generate SDK
 on:
  schedule:
-   - cron: '30 8 * * *'
+   - cron: '30 5 * * *'
  workflow_dispatch:
   
 jobs:
