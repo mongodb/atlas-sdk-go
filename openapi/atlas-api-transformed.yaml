@@ -24,7 +24,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 35210d4195b9c0c5dd50be547b32b560db68e27d
+  x-xgen-sha: 1e5415301ee9ca39eaf1406e632060b3f37aac54
 servers:
   - url: https://cloud.mongodb.com
 tags:
@@ -23364,6 +23364,12 @@ components:
             for midnight and `12` for noon.
           maximum: 23
           minimum: 0
+        numberOfDeferrals:
+          type: integer
+          format: int32
+          description: Number of times the current maintenance event for this project has
+            been deferred.
+          readOnly: true
         startASAP:
           type: boolean
           description: Flag that indicates whether MongoDB Cloud starts the maintenance
@@ -23374,7 +23380,6 @@ components:
             maintenance.
       required:
         - dayOfWeek
-        - hourOfDay
     GroupName:
       type: object
       description: Request view to update the group name.
