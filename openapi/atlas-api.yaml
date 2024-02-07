@@ -19,7 +19,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: 35210d4195b9c0c5dd50be547b32b560db68e27d
+  x-xgen-sha: 1e5415301ee9ca39eaf1406e632060b3f37aac54
 servers:
 - url: https://cloud.mongodb.com
 tags:
@@ -15905,6 +15905,8 @@ components:
             - AF_SOUTH_1
             - EU_SOUTH_1
             - EU_SOUTH_2
+            - IL_CENTRAL_1
+            - CA_WEST_1
             - GLOBAL
             - US_GOV_WEST_1
             - US_GOV_EAST_1
@@ -16014,6 +16016,8 @@ components:
             - AF_SOUTH_1
             - EU_SOUTH_1
             - EU_SOUTH_2
+            - IL_CENTRAL_1
+            - CA_WEST_1
             - GLOBAL
             externalDocs:
               description: AWS
@@ -16303,6 +16307,8 @@ components:
           - AF_SOUTH_1
           - EU_SOUTH_1
           - EU_SOUTH_2
+          - IL_CENTRAL_1
+          - CA_WEST_1
           - GLOBAL
           title: AWS Regions
         roleId:
@@ -22090,10 +22096,12 @@ components:
             - EUROPE_WEST_6
             - EUROPE_WEST_8
             - EUROPE_WEST_9
+            - EUROPE_WEST_10
             - EUROPE_WEST_12
             - EUROPE_SOUTHWEST_1
             - EUROPE_CENTRAL_2
             - MIDDLE_EAST_CENTRAL_1
+            - MIDDLE_EAST_CENTRAL_2
             - MIDDLE_EAST_WEST_1
             - AUSTRALIA_SOUTHEAST_1
             - AUSTRALIA_SOUTHEAST_2
@@ -22576,6 +22584,8 @@ components:
             - AF_SOUTH_1
             - EU_SOUTH_1
             - EU_SOUTH_2
+            - IL_CENTRAL_1
+            - CA_WEST_1
             - GLOBAL
             title: AWS Regions
           - type: string
@@ -22655,10 +22665,12 @@ components:
             - EUROPE_WEST_6
             - EUROPE_WEST_8
             - EUROPE_WEST_9
+            - EUROPE_WEST_10
             - EUROPE_WEST_12
             - EUROPE_SOUTHWEST_1
             - EUROPE_CENTRAL_2
             - MIDDLE_EAST_CENTRAL_1
+            - MIDDLE_EAST_CENTRAL_2
             - MIDDLE_EAST_WEST_1
             - AUSTRALIA_SOUTHEAST_1
             - AUSTRALIA_SOUTHEAST_2
@@ -25190,6 +25202,8 @@ components:
             - AF_SOUTH_1
             - EU_SOUTH_1
             - EU_SOUTH_2
+            - IL_CENTRAL_1
+            - CA_WEST_1
             - GLOBAL
             title: AWS Regions
     DataLakeDLSAzureStore:
@@ -25605,6 +25619,8 @@ components:
             - AF_SOUTH_1
             - EU_SOUTH_1
             - EU_SOUTH_2
+            - IL_CENTRAL_1
+            - CA_WEST_1
             - GLOBAL
             title: AWS Regions
     DataLakeStorage:
@@ -30524,8 +30540,10 @@ components:
               - EUROPE_WEST_3
               - EUROPE_WEST_4
               - EUROPE_WEST_6
+              - EUROPE_WEST_10
               - EUROPE_WEST_12
               - MIDDLE_EAST_CENTRAL_1
+              - MIDDLE_EAST_CENTRAL_2
               - MIDDLE_EAST_WEST_1
               - NORTH_AMERICA_NORTHEAST_1
               - NORTH_AMERICA_NORTHEAST_2
@@ -31251,6 +31269,12 @@ components:
             for midnight and `12` for noon.
           maximum: 23
           minimum: 0
+        numberOfDeferrals:
+          type: integer
+          format: int32
+          description: Number of times the current maintenance event for this project
+            has been deferred.
+          readOnly: true
         startASAP:
           type: boolean
           description: "Flag that indicates whether MongoDB Cloud starts the maintenance\
@@ -31260,7 +31284,6 @@ components:
             \ `false` after MongoDB Cloud completes maintenance."
       required:
       - dayOfWeek
-      - hourOfDay
     GroupName:
       type: object
       description: Request view to update the group name.
