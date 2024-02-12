@@ -309,21 +309,42 @@ func (_m *AtlasSearchApi) DeleteAtlasSearchIndexWithParams(ctx context.Context, 
 }
 
 // GetAtlasSearchDeployment provides a mock function with given fields: ctx, groupId, clusterName
-func (_m *AtlasSearchApi) GetAtlasSearchDeployment(ctx context.Context, groupId string, clusterName string) admin.GetAtlasSearchDeploymentApiRequest {
+func (_m *AtlasSearchApi) GetAtlasSearchDeployment(ctx context.Context, groupId string, clusterName string) (*admin.ApiSearchDeploymentResponse, *http.Response, error) {
 	ret := _m.Called(ctx, groupId, clusterName)
 
 	if len(ret) == 0 {
 		panic("no return value specified for GetAtlasSearchDeployment")
 	}
 
-	var r0 admin.GetAtlasSearchDeploymentApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetAtlasSearchDeploymentApiRequest); ok {
+	var r0 *admin.ApiSearchDeploymentResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) (*admin.ApiSearchDeploymentResponse, *http.Response, error)); ok {
+		return rf(ctx, groupId, clusterName)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) *admin.ApiSearchDeploymentResponse); ok {
 		r0 = rf(ctx, groupId, clusterName)
 	} else {
-		r0 = ret.Get(0).(admin.GetAtlasSearchDeploymentApiRequest)
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.ApiSearchDeploymentResponse)
+		}
 	}
 
-	return r0
+	if rf, ok := ret.Get(1).(func(context.Context, string, string) *http.Response); ok {
+		r1 = rf(ctx, groupId, clusterName)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(context.Context, string, string) error); ok {
+		r2 = rf(ctx, groupId, clusterName)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
 }
 
 // GetAtlasSearchDeploymentExecute provides a mock function with given fields: r
