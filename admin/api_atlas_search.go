@@ -120,7 +120,7 @@ type AtlasSearchApi interface {
 		@param clusterName Label that identifies the cluster to return the search nodes for.
 		@return GetAtlasSearchDeploymentApiRequest
 	*/
-	GetAtlasSearchDeployment(ctx context.Context, groupId string, clusterName string) GetAtlasSearchDeploymentApiRequest
+	GetAtlasSearchDeployment(ctx context.Context, groupId string, clusterName string) (*ApiSearchDeploymentResponse, *http.Response, error)
 	/*
 		GetAtlasSearchDeployment Return Search Nodes
 
@@ -805,13 +805,14 @@ GetAtlasSearchDeployment Return Search Nodes
 	@param clusterName Label that identifies the cluster to return the search nodes for.
 	@return GetAtlasSearchDeploymentApiRequest
 */
-func (a *AtlasSearchApiService) GetAtlasSearchDeployment(ctx context.Context, groupId string, clusterName string) GetAtlasSearchDeploymentApiRequest {
-	return GetAtlasSearchDeploymentApiRequest{
+func (a *AtlasSearchApiService) GetAtlasSearchDeployment(ctx context.Context, groupId string, clusterName string) (*ApiSearchDeploymentResponse, *http.Response, error) {
+	req := GetAtlasSearchDeploymentApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
 		groupId:     groupId,
 		clusterName: clusterName,
 	}
+	return a.GetAtlasSearchDeploymentExecute(req)
 }
 
 // Execute executes the request
