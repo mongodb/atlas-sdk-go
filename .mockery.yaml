@@ -1,0 +1,11 @@
+with-expecter: false
+disable-version-string: true
+dir: test/mockery/mocksvc
+outpkg: mocksvc
+filename: "{{ .InterfaceName | snakecase }}.go"
+mockname: "{{.InterfaceName}}"
+
+packages:
+  go.mongodb.org/atlas-sdk/v20231115006/admin:
+    interfaces:
+      AtlasSearchApi:
