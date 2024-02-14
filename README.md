@@ -11,7 +11,7 @@ Note that `atlas-sdk-go` only supports the two most recent major versions of Go.
 ### Adding Dependency
 
 ```terminal
-go get go.mongodb.org/atlas-sdk/v20231115006
+go get go.mongodb.org/atlas-sdk/v20231115007
 ```
 
 ### Using in the code
@@ -20,7 +20,7 @@ Construct a new Atlas SDK client, then use the various services on the client to
 access different parts of the Atlas API. For example:
 
 ```go
-import "go.mongodb.org/atlas-sdk/v20231115006/admin"
+import "go.mongodb.org/atlas-sdk/v20231115007/admin"
 
 func example() {
 	ctx := context.Background()
