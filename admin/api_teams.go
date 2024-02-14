@@ -284,7 +284,7 @@ type TeamsApi interface {
 		@param teamId Unique 24-hexadecimal digit string that identifies the team that you want to rename.
 		@return RenameTeamApiRequest
 	*/
-	RenameTeam(ctx context.Context, orgId string, teamId string, team *Team) RenameTeamApiRequest
+	RenameTeam(ctx context.Context, orgId string, teamId string, teamUpdate *TeamUpdate) RenameTeamApiRequest
 	/*
 		RenameTeam Rename One Team
 
@@ -1874,13 +1874,13 @@ type RenameTeamApiRequest struct {
 	ApiService TeamsApi
 	orgId      string
 	teamId     string
-	team       *Team
+	teamUpdate *TeamUpdate
 }
 
 type RenameTeamApiParams struct {
-	OrgId  string
-	TeamId string
-	Team   *Team
+	OrgId      string
+	TeamId     string
+	TeamUpdate *TeamUpdate
 }
 
 func (a *TeamsApiService) RenameTeamWithParams(ctx context.Context, args *RenameTeamApiParams) RenameTeamApiRequest {
@@ -1889,7 +1889,7 @@ func (a *TeamsApiService) RenameTeamWithParams(ctx context.Context, args *Rename
 		ctx:        ctx,
 		orgId:      args.OrgId,
 		teamId:     args.TeamId,
-		team:       args.Team,
+		teamUpdate: args.TeamUpdate,
 	}
 }
 
@@ -1907,13 +1907,13 @@ RenameTeam Rename One Team
 	@param teamId Unique 24-hexadecimal digit string that identifies the team that you want to rename.
 	@return RenameTeamApiRequest
 */
-func (a *TeamsApiService) RenameTeam(ctx context.Context, orgId string, teamId string, team *Team) RenameTeamApiRequest {
+func (a *TeamsApiService) RenameTeam(ctx context.Context, orgId string, teamId string, teamUpdate *TeamUpdate) RenameTeamApiRequest {
 	return RenameTeamApiRequest{
 		ApiService: a,
 		ctx:        ctx,
 		orgId:      orgId,
 		teamId:     teamId,
-		team:       team,
+		teamUpdate: teamUpdate,
 	}
 }
 
@@ -1940,8 +1940,8 @@ func (a *TeamsApiService) RenameTeamExecute(r RenameTeamApiRequest) (*TeamRespon
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.team == nil {
-		return localVarReturnValue, nil, reportError("team is required and must be specified")
+	if r.teamUpdate == nil {
+		return localVarReturnValue, nil, reportError("teamUpdate is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1962,7 +1962,7 @@ func (a *TeamsApiService) RenameTeamExecute(r RenameTeamApiRequest) (*TeamRespon
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.team
+	localVarPostBody = r.teamUpdate
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

@@ -6,9 +6,11 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**DisableSlowOperationThresholding**](PerformanceAdvisorApi.md#DisableSlowOperationThresholding) | **Delete** /api/atlas/v2/groups/{groupId}/managedSlowMs/disable | Disable Managed Slow Operation Threshold
 [**EnableSlowOperationThresholding**](PerformanceAdvisorApi.md#EnableSlowOperationThresholding) | **Post** /api/atlas/v2/groups/{groupId}/managedSlowMs/enable | Enable Managed Slow Operation Threshold
+[**GetServerlessAutoIndexing**](PerformanceAdvisorApi.md#GetServerlessAutoIndexing) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/performanceAdvisor/autoIndexing | Return Serverless Auto Indexing Enabled
 [**ListSlowQueries**](PerformanceAdvisorApi.md#ListSlowQueries) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/slowQueryLogs | Return Slow Queries
 [**ListSlowQueryNamespaces**](PerformanceAdvisorApi.md#ListSlowQueryNamespaces) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/namespaces | Return All Namespaces for One Host
 [**ListSuggestedIndexes**](PerformanceAdvisorApi.md#ListSuggestedIndexes) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/suggestedIndexes | Return Suggested Indexes
+[**SetServerlessAutoIndexing**](PerformanceAdvisorApi.md#SetServerlessAutoIndexing) | **Post** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/performanceAdvisor/autoIndexing | Set Serverless Auto Indexing
 
 
 
@@ -140,6 +142,87 @@ Name | Type | Description  | Notes
 ### Return type
 
  (empty response body)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetServerlessAutoIndexing
+
+> bool GetServerlessAutoIndexing(ctx, groupId, clusterName).Execute()
+
+Return Serverless Auto Indexing Enabled
+
+
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20231115006/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    clusterName := "clusterName_example" // string | 
+
+    resp, r, err := sdk.PerformanceAdvisorApi.GetServerlessAutoIndexing(context.Background(), groupId, clusterName).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.GetServerlessAutoIndexing``: %v\n", err)
+        apiError := admin.AsError(err)
+        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+    }
+    // response from `GetServerlessAutoIndexing`: bool
+    fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorApi.GetServerlessAutoIndexing`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**clusterName** | **string** | Human-readable label that identifies the cluster. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetServerlessAutoIndexingRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+**bool**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -396,6 +479,89 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PerformanceAdvisorResponse**](PerformanceAdvisorResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SetServerlessAutoIndexing
+
+> map[string]interface{} SetServerlessAutoIndexing(ctx, groupId, clusterName).Enable(enable).Execute()
+
+Set Serverless Auto Indexing
+
+
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20231115006/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    clusterName := "clusterName_example" // string | 
+    enable := true // bool | 
+
+    resp, r, err := sdk.PerformanceAdvisorApi.SetServerlessAutoIndexing(context.Background(), groupId, clusterName).Enable(enable).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorApi.SetServerlessAutoIndexing``: %v\n", err)
+        apiError := admin.AsError(err)
+        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+    }
+    // response from `SetServerlessAutoIndexing`: map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorApi.SetServerlessAutoIndexing`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**clusterName** | **string** | Human-readable label that identifies the cluster. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSetServerlessAutoIndexingRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **enable** | **bool** | Value that we want to set for the Serverless Auto Indexing toggle. | 
+
+### Return type
+
+**map[string]interface{}**
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)

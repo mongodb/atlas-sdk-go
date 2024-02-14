@@ -6,8 +6,8 @@ import (
 	"encoding/json"
 )
 
-// ThridPartyIntegration Collection of settings that describe third-party integrations.
-type ThridPartyIntegration struct {
+// ThirdPartyIntegration Collection of settings that describe third-party integrations.
+type ThirdPartyIntegration struct {
 	// Integration type  Alternatively: Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.  Alternatively: Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.  Alternatively: Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.  Alternatively: Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.  Alternatively: Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.  Alternatively: Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.  Alternatively: Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.  Alternatively: Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.  Alternatively: Human-readable label that identifies the service to which you want to integrate with MongoDB Cloud. The value must match the third-party service integration type.
 	Type *string `json:"type,omitempty"`
 	// Key that allows MongoDB Cloud to access your Datadog account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.  Alternatively: Key that allows MongoDB Cloud to access your Opsgenie account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.  Alternatively: Key that allows MongoDB Cloud to access your VictorOps account.  **NOTE**: After you create a notification which requires an API or integration key, the key appears partially redacted when you:  * View or edit the alert through the Atlas UI.  * Query the alert for the notification through the Atlas Administration API.
@@ -49,25 +49,25 @@ type ThridPartyIntegration struct {
 	Url *string `json:"url,omitempty"`
 }
 
-// NewThridPartyIntegration instantiates a new ThridPartyIntegration object
+// NewThirdPartyIntegration instantiates a new ThirdPartyIntegration object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewThridPartyIntegration() *ThridPartyIntegration {
-	this := ThridPartyIntegration{}
+func NewThirdPartyIntegration() *ThirdPartyIntegration {
+	this := ThirdPartyIntegration{}
 	return &this
 }
 
-// NewThridPartyIntegrationWithDefaults instantiates a new ThridPartyIntegration object
+// NewThirdPartyIntegrationWithDefaults instantiates a new ThirdPartyIntegration object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewThridPartyIntegrationWithDefaults() *ThridPartyIntegration {
-	this := ThridPartyIntegration{}
+func NewThirdPartyIntegrationWithDefaults() *ThirdPartyIntegration {
+	this := ThirdPartyIntegration{}
 	return &this
 }
 
 // GetType returns the Type field value if set, zero value otherwise
-func (o *ThridPartyIntegration) GetType() string {
+func (o *ThirdPartyIntegration) GetType() string {
 	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
@@ -77,7 +77,7 @@ func (o *ThridPartyIntegration) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ThridPartyIntegration) GetTypeOk() (*string, bool) {
+func (o *ThirdPartyIntegration) GetTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
@@ -86,7 +86,7 @@ func (o *ThridPartyIntegration) GetTypeOk() (*string, bool) {
 }
 
 // HasType returns a boolean if a field has been set.
-func (o *ThridPartyIntegration) HasType() bool {
+func (o *ThirdPartyIntegration) HasType() bool {
 	if o != nil && !IsNil(o.Type) {
 		return true
 	}
@@ -95,12 +95,12 @@ func (o *ThridPartyIntegration) HasType() bool {
 }
 
 // SetType gets a reference to the given string and assigns it to the Type field.
-func (o *ThridPartyIntegration) SetType(v string) {
+func (o *ThirdPartyIntegration) SetType(v string) {
 	o.Type = &v
 }
 
 // GetApiKey returns the ApiKey field value if set, zero value otherwise
-func (o *ThridPartyIntegration) GetApiKey() string {
+func (o *ThirdPartyIntegration) GetApiKey() string {
 	if o == nil || IsNil(o.ApiKey) {
 		var ret string
 		return ret
@@ -110,7 +110,7 @@ func (o *ThridPartyIntegration) GetApiKey() string {
 
 // GetApiKeyOk returns a tuple with the ApiKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ThridPartyIntegration) GetApiKeyOk() (*string, bool) {
+func (o *ThirdPartyIntegration) GetApiKeyOk() (*string, bool) {
 	if o == nil || IsNil(o.ApiKey) {
 		return nil, false
 	}
@@ -119,7 +119,7 @@ func (o *ThridPartyIntegration) GetApiKeyOk() (*string, bool) {
 }
 
 // HasApiKey returns a boolean if a field has been set.
-func (o *ThridPartyIntegration) HasApiKey() bool {
+func (o *ThirdPartyIntegration) HasApiKey() bool {
 	if o != nil && !IsNil(o.ApiKey) {
 		return true
 	}
@@ -128,12 +128,12 @@ func (o *ThridPartyIntegration) HasApiKey() bool {
 }
 
 // SetApiKey gets a reference to the given string and assigns it to the ApiKey field.
-func (o *ThridPartyIntegration) SetApiKey(v string) {
+func (o *ThirdPartyIntegration) SetApiKey(v string) {
 	o.ApiKey = &v
 }
 
 // GetRegion returns the Region field value if set, zero value otherwise
-func (o *ThridPartyIntegration) GetRegion() string {
+func (o *ThirdPartyIntegration) GetRegion() string {
 	if o == nil || IsNil(o.Region) {
 		var ret string
 		return ret
@@ -143,7 +143,7 @@ func (o *ThridPartyIntegration) GetRegion() string {
 
 // GetRegionOk returns a tuple with the Region field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ThridPartyIntegration) GetRegionOk() (*string, bool) {
+func (o *ThirdPartyIntegration) GetRegionOk() (*string, bool) {
 	if o == nil || IsNil(o.Region) {
 		return nil, false
 	}
@@ -152,7 +152,7 @@ func (o *ThridPartyIntegration) GetRegionOk() (*string, bool) {
 }
 
 // HasRegion returns a boolean if a field has been set.
-func (o *ThridPartyIntegration) HasRegion() bool {
+func (o *ThirdPartyIntegration) HasRegion() bool {
 	if o != nil && !IsNil(o.Region) {
 		return true
 	}
@@ -161,12 +161,12 @@ func (o *ThridPartyIntegration) HasRegion() bool {
 }
 
 // SetRegion gets a reference to the given string and assigns it to the Region field.
-func (o *ThridPartyIntegration) SetRegion(v string) {
+func (o *ThirdPartyIntegration) SetRegion(v string) {
 	o.Region = &v
 }
 
 // GetMicrosoftTeamsWebhookUrl returns the MicrosoftTeamsWebhookUrl field value if set, zero value otherwise
-func (o *ThridPartyIntegration) GetMicrosoftTeamsWebhookUrl() string {
+func (o *ThirdPartyIntegration) GetMicrosoftTeamsWebhookUrl() string {
 	if o == nil || IsNil(o.MicrosoftTeamsWebhookUrl) {
 		var ret string
 		return ret
@@ -176,7 +176,7 @@ func (o *ThridPartyIntegration) GetMicrosoftTeamsWebhookUrl() string {
 
 // GetMicrosoftTeamsWebhookUrlOk returns a tuple with the MicrosoftTeamsWebhookUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ThridPartyIntegration) GetMicrosoftTeamsWebhookUrlOk() (*string, bool) {
+func (o *ThirdPartyIntegration) GetMicrosoftTeamsWebhookUrlOk() (*string, bool) {
 	if o == nil || IsNil(o.MicrosoftTeamsWebhookUrl) {
 		return nil, false
 	}
@@ -185,7 +185,7 @@ func (o *ThridPartyIntegration) GetMicrosoftTeamsWebhookUrlOk() (*string, bool) 
 }
 
 // HasMicrosoftTeamsWebhookUrl returns a boolean if a field has been set.
-func (o *ThridPartyIntegration) HasMicrosoftTeamsWebhookUrl() bool {
+func (o *ThirdPartyIntegration) HasMicrosoftTeamsWebhookUrl() bool {
 	if o != nil && !IsNil(o.MicrosoftTeamsWebhookUrl) {
 		return true
 	}
@@ -194,12 +194,12 @@ func (o *ThridPartyIntegration) HasMicrosoftTeamsWebhookUrl() bool {
 }
 
 // SetMicrosoftTeamsWebhookUrl gets a reference to the given string and assigns it to the MicrosoftTeamsWebhookUrl field.
-func (o *ThridPartyIntegration) SetMicrosoftTeamsWebhookUrl(v string) {
+func (o *ThirdPartyIntegration) SetMicrosoftTeamsWebhookUrl(v string) {
 	o.MicrosoftTeamsWebhookUrl = &v
 }
 
 // GetAccountId returns the AccountId field value if set, zero value otherwise
-func (o *ThridPartyIntegration) GetAccountId() string {
+func (o *ThirdPartyIntegration) GetAccountId() string {
 	if o == nil || IsNil(o.AccountId) {
 		var ret string
 		return ret
@@ -209,7 +209,7 @@ func (o *ThridPartyIntegration) GetAccountId() string {
 
 // GetAccountIdOk returns a tuple with the AccountId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ThridPartyIntegration) GetAccountIdOk() (*string, bool) {
+func (o *ThirdPartyIntegration) GetAccountIdOk() (*string, bool) {
 	if o == nil || IsNil(o.AccountId) {
 		return nil, false
 	}
@@ -218,7 +218,7 @@ func (o *ThridPartyIntegration) GetAccountIdOk() (*string, bool) {
 }
 
 // HasAccountId returns a boolean if a field has been set.
-func (o *ThridPartyIntegration) HasAccountId() bool {
+func (o *ThirdPartyIntegration) HasAccountId() bool {
 	if o != nil && !IsNil(o.AccountId) {
 		return true
 	}
@@ -227,12 +227,12 @@ func (o *ThridPartyIntegration) HasAccountId() bool {
 }
 
 // SetAccountId gets a reference to the given string and assigns it to the AccountId field.
-func (o *ThridPartyIntegration) SetAccountId(v string) {
+func (o *ThirdPartyIntegration) SetAccountId(v string) {
 	o.AccountId = &v
 }
 
 // GetLicenseKey returns the LicenseKey field value if set, zero value otherwise
-func (o *ThridPartyIntegration) GetLicenseKey() string {
+func (o *ThirdPartyIntegration) GetLicenseKey() string {
 	if o == nil || IsNil(o.LicenseKey) {
 		var ret string
 		return ret
@@ -242,7 +242,7 @@ func (o *ThridPartyIntegration) GetLicenseKey() string {
 
 // GetLicenseKeyOk returns a tuple with the LicenseKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ThridPartyIntegration) GetLicenseKeyOk() (*string, bool) {
+func (o *ThirdPartyIntegration) GetLicenseKeyOk() (*string, bool) {
 	if o == nil || IsNil(o.LicenseKey) {
 		return nil, false
 	}
@@ -251,7 +251,7 @@ func (o *ThridPartyIntegration) GetLicenseKeyOk() (*string, bool) {
 }
 
 // HasLicenseKey returns a boolean if a field has been set.
-func (o *ThridPartyIntegration) HasLicenseKey() bool {
+func (o *ThirdPartyIntegration) HasLicenseKey() bool {
 	if o != nil && !IsNil(o.LicenseKey) {
 		return true
 	}
@@ -260,12 +260,12 @@ func (o *ThridPartyIntegration) HasLicenseKey() bool {
 }
 
 // SetLicenseKey gets a reference to the given string and assigns it to the LicenseKey field.
-func (o *ThridPartyIntegration) SetLicenseKey(v string) {
+func (o *ThirdPartyIntegration) SetLicenseKey(v string) {
 	o.LicenseKey = &v
 }
 
 // GetReadToken returns the ReadToken field value if set, zero value otherwise
-func (o *ThridPartyIntegration) GetReadToken() string {
+func (o *ThirdPartyIntegration) GetReadToken() string {
 	if o == nil || IsNil(o.ReadToken) {
 		var ret string
 		return ret
@@ -275,7 +275,7 @@ func (o *ThridPartyIntegration) GetReadToken() string {
 
 // GetReadTokenOk returns a tuple with the ReadToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ThridPartyIntegration) GetReadTokenOk() (*string, bool) {
+func (o *ThirdPartyIntegration) GetReadTokenOk() (*string, bool) {
 	if o == nil || IsNil(o.ReadToken) {
 		return nil, false
 	}
@@ -284,7 +284,7 @@ func (o *ThridPartyIntegration) GetReadTokenOk() (*string, bool) {
 }
 
 // HasReadToken returns a boolean if a field has been set.
-func (o *ThridPartyIntegration) HasReadToken() bool {
+func (o *ThirdPartyIntegration) HasReadToken() bool {
 	if o != nil && !IsNil(o.ReadToken) {
 		return true
 	}
@@ -293,12 +293,12 @@ func (o *ThridPartyIntegration) HasReadToken() bool {
 }
 
 // SetReadToken gets a reference to the given string and assigns it to the ReadToken field.
-func (o *ThridPartyIntegration) SetReadToken(v string) {
+func (o *ThirdPartyIntegration) SetReadToken(v string) {
 	o.ReadToken = &v
 }
 
 // GetWriteToken returns the WriteToken field value if set, zero value otherwise
-func (o *ThridPartyIntegration) GetWriteToken() string {
+func (o *ThirdPartyIntegration) GetWriteToken() string {
 	if o == nil || IsNil(o.WriteToken) {
 		var ret string
 		return ret
@@ -308,7 +308,7 @@ func (o *ThridPartyIntegration) GetWriteToken() string {
 
 // GetWriteTokenOk returns a tuple with the WriteToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ThridPartyIntegration) GetWriteTokenOk() (*string, bool) {
+func (o *ThirdPartyIntegration) GetWriteTokenOk() (*string, bool) {
 	if o == nil || IsNil(o.WriteToken) {
 		return nil, false
 	}
@@ -317,7 +317,7 @@ func (o *ThridPartyIntegration) GetWriteTokenOk() (*string, bool) {
 }
 
 // HasWriteToken returns a boolean if a field has been set.
-func (o *ThridPartyIntegration) HasWriteToken() bool {
+func (o *ThirdPartyIntegration) HasWriteToken() bool {
 	if o != nil && !IsNil(o.WriteToken) {
 		return true
 	}
@@ -326,12 +326,12 @@ func (o *ThridPartyIntegration) HasWriteToken() bool {
 }
 
 // SetWriteToken gets a reference to the given string and assigns it to the WriteToken field.
-func (o *ThridPartyIntegration) SetWriteToken(v string) {
+func (o *ThirdPartyIntegration) SetWriteToken(v string) {
 	o.WriteToken = &v
 }
 
 // GetServiceKey returns the ServiceKey field value if set, zero value otherwise
-func (o *ThridPartyIntegration) GetServiceKey() string {
+func (o *ThirdPartyIntegration) GetServiceKey() string {
 	if o == nil || IsNil(o.ServiceKey) {
 		var ret string
 		return ret
@@ -341,7 +341,7 @@ func (o *ThridPartyIntegration) GetServiceKey() string {
 
 // GetServiceKeyOk returns a tuple with the ServiceKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ThridPartyIntegration) GetServiceKeyOk() (*string, bool) {
+func (o *ThirdPartyIntegration) GetServiceKeyOk() (*string, bool) {
 	if o == nil || IsNil(o.ServiceKey) {
 		return nil, false
 	}
@@ -350,7 +350,7 @@ func (o *ThridPartyIntegration) GetServiceKeyOk() (*string, bool) {
 }
 
 // HasServiceKey returns a boolean if a field has been set.
-func (o *ThridPartyIntegration) HasServiceKey() bool {
+func (o *ThirdPartyIntegration) HasServiceKey() bool {
 	if o != nil && !IsNil(o.ServiceKey) {
 		return true
 	}
@@ -359,12 +359,12 @@ func (o *ThridPartyIntegration) HasServiceKey() bool {
 }
 
 // SetServiceKey gets a reference to the given string and assigns it to the ServiceKey field.
-func (o *ThridPartyIntegration) SetServiceKey(v string) {
+func (o *ThirdPartyIntegration) SetServiceKey(v string) {
 	o.ServiceKey = &v
 }
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise
-func (o *ThridPartyIntegration) GetEnabled() bool {
+func (o *ThirdPartyIntegration) GetEnabled() bool {
 	if o == nil || IsNil(o.Enabled) {
 		var ret bool
 		return ret
@@ -374,7 +374,7 @@ func (o *ThridPartyIntegration) GetEnabled() bool {
 
 // GetEnabledOk returns a tuple with the Enabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ThridPartyIntegration) GetEnabledOk() (*bool, bool) {
+func (o *ThirdPartyIntegration) GetEnabledOk() (*bool, bool) {
 	if o == nil || IsNil(o.Enabled) {
 		return nil, false
 	}
@@ -383,7 +383,7 @@ func (o *ThridPartyIntegration) GetEnabledOk() (*bool, bool) {
 }
 
 // HasEnabled returns a boolean if a field has been set.
-func (o *ThridPartyIntegration) HasEnabled() bool {
+func (o *ThirdPartyIntegration) HasEnabled() bool {
 	if o != nil && !IsNil(o.Enabled) {
 		return true
 	}
@@ -392,12 +392,12 @@ func (o *ThridPartyIntegration) HasEnabled() bool {
 }
 
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
-func (o *ThridPartyIntegration) SetEnabled(v bool) {
+func (o *ThirdPartyIntegration) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
 // GetPassword returns the Password field value if set, zero value otherwise
-func (o *ThridPartyIntegration) GetPassword() string {
+func (o *ThirdPartyIntegration) GetPassword() string {
 	if o == nil || IsNil(o.Password) {
 		var ret string
 		return ret
@@ -407,7 +407,7 @@ func (o *ThridPartyIntegration) GetPassword() string {
 
 // GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ThridPartyIntegration) GetPasswordOk() (*string, bool) {
+func (o *ThirdPartyIntegration) GetPasswordOk() (*string, bool) {
 	if o == nil || IsNil(o.Password) {
 		return nil, false
 	}
@@ -416,7 +416,7 @@ func (o *ThridPartyIntegration) GetPasswordOk() (*string, bool) {
 }
 
 // HasPassword returns a boolean if a field has been set.
-func (o *ThridPartyIntegration) HasPassword() bool {
+func (o *ThirdPartyIntegration) HasPassword() bool {
 	if o != nil && !IsNil(o.Password) {
 		return true
 	}
@@ -425,12 +425,12 @@ func (o *ThridPartyIntegration) HasPassword() bool {
 }
 
 // SetPassword gets a reference to the given string and assigns it to the Password field.
-func (o *ThridPartyIntegration) SetPassword(v string) {
+func (o *ThirdPartyIntegration) SetPassword(v string) {
 	o.Password = &v
 }
 
 // GetServiceDiscovery returns the ServiceDiscovery field value if set, zero value otherwise
-func (o *ThridPartyIntegration) GetServiceDiscovery() string {
+func (o *ThirdPartyIntegration) GetServiceDiscovery() string {
 	if o == nil || IsNil(o.ServiceDiscovery) {
 		var ret string
 		return ret
@@ -440,7 +440,7 @@ func (o *ThridPartyIntegration) GetServiceDiscovery() string {
 
 // GetServiceDiscoveryOk returns a tuple with the ServiceDiscovery field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ThridPartyIntegration) GetServiceDiscoveryOk() (*string, bool) {
+func (o *ThirdPartyIntegration) GetServiceDiscoveryOk() (*string, bool) {
 	if o == nil || IsNil(o.ServiceDiscovery) {
 		return nil, false
 	}
@@ -449,7 +449,7 @@ func (o *ThridPartyIntegration) GetServiceDiscoveryOk() (*string, bool) {
 }
 
 // HasServiceDiscovery returns a boolean if a field has been set.
-func (o *ThridPartyIntegration) HasServiceDiscovery() bool {
+func (o *ThirdPartyIntegration) HasServiceDiscovery() bool {
 	if o != nil && !IsNil(o.ServiceDiscovery) {
 		return true
 	}
@@ -458,12 +458,12 @@ func (o *ThridPartyIntegration) HasServiceDiscovery() bool {
 }
 
 // SetServiceDiscovery gets a reference to the given string and assigns it to the ServiceDiscovery field.
-func (o *ThridPartyIntegration) SetServiceDiscovery(v string) {
+func (o *ThirdPartyIntegration) SetServiceDiscovery(v string) {
 	o.ServiceDiscovery = &v
 }
 
 // GetUsername returns the Username field value if set, zero value otherwise
-func (o *ThridPartyIntegration) GetUsername() string {
+func (o *ThirdPartyIntegration) GetUsername() string {
 	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
@@ -473,7 +473,7 @@ func (o *ThridPartyIntegration) GetUsername() string {
 
 // GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ThridPartyIntegration) GetUsernameOk() (*string, bool) {
+func (o *ThirdPartyIntegration) GetUsernameOk() (*string, bool) {
 	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
@@ -482,7 +482,7 @@ func (o *ThridPartyIntegration) GetUsernameOk() (*string, bool) {
 }
 
 // HasUsername returns a boolean if a field has been set.
-func (o *ThridPartyIntegration) HasUsername() bool {
+func (o *ThirdPartyIntegration) HasUsername() bool {
 	if o != nil && !IsNil(o.Username) {
 		return true
 	}
@@ -491,12 +491,12 @@ func (o *ThridPartyIntegration) HasUsername() bool {
 }
 
 // SetUsername gets a reference to the given string and assigns it to the Username field.
-func (o *ThridPartyIntegration) SetUsername(v string) {
+func (o *ThirdPartyIntegration) SetUsername(v string) {
 	o.Username = &v
 }
 
 // GetApiToken returns the ApiToken field value if set, zero value otherwise
-func (o *ThridPartyIntegration) GetApiToken() string {
+func (o *ThirdPartyIntegration) GetApiToken() string {
 	if o == nil || IsNil(o.ApiToken) {
 		var ret string
 		return ret
@@ -506,7 +506,7 @@ func (o *ThridPartyIntegration) GetApiToken() string {
 
 // GetApiTokenOk returns a tuple with the ApiToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ThridPartyIntegration) GetApiTokenOk() (*string, bool) {
+func (o *ThirdPartyIntegration) GetApiTokenOk() (*string, bool) {
 	if o == nil || IsNil(o.ApiToken) {
 		return nil, false
 	}
@@ -515,7 +515,7 @@ func (o *ThridPartyIntegration) GetApiTokenOk() (*string, bool) {
 }
 
 // HasApiToken returns a boolean if a field has been set.
-func (o *ThridPartyIntegration) HasApiToken() bool {
+func (o *ThirdPartyIntegration) HasApiToken() bool {
 	if o != nil && !IsNil(o.ApiToken) {
 		return true
 	}
@@ -524,12 +524,12 @@ func (o *ThridPartyIntegration) HasApiToken() bool {
 }
 
 // SetApiToken gets a reference to the given string and assigns it to the ApiToken field.
-func (o *ThridPartyIntegration) SetApiToken(v string) {
+func (o *ThirdPartyIntegration) SetApiToken(v string) {
 	o.ApiToken = &v
 }
 
 // GetChannelName returns the ChannelName field value if set, zero value otherwise
-func (o *ThridPartyIntegration) GetChannelName() string {
+func (o *ThirdPartyIntegration) GetChannelName() string {
 	if o == nil || IsNil(o.ChannelName) {
 		var ret string
 		return ret
@@ -539,7 +539,7 @@ func (o *ThridPartyIntegration) GetChannelName() string {
 
 // GetChannelNameOk returns a tuple with the ChannelName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ThridPartyIntegration) GetChannelNameOk() (*string, bool) {
+func (o *ThirdPartyIntegration) GetChannelNameOk() (*string, bool) {
 	if o == nil || IsNil(o.ChannelName) {
 		return nil, false
 	}
@@ -548,7 +548,7 @@ func (o *ThridPartyIntegration) GetChannelNameOk() (*string, bool) {
 }
 
 // HasChannelName returns a boolean if a field has been set.
-func (o *ThridPartyIntegration) HasChannelName() bool {
+func (o *ThirdPartyIntegration) HasChannelName() bool {
 	if o != nil && !IsNil(o.ChannelName) {
 		return true
 	}
@@ -557,12 +557,12 @@ func (o *ThridPartyIntegration) HasChannelName() bool {
 }
 
 // SetChannelName gets a reference to the given string and assigns it to the ChannelName field.
-func (o *ThridPartyIntegration) SetChannelName(v string) {
+func (o *ThirdPartyIntegration) SetChannelName(v string) {
 	o.ChannelName = &v
 }
 
 // GetTeamName returns the TeamName field value if set, zero value otherwise
-func (o *ThridPartyIntegration) GetTeamName() string {
+func (o *ThirdPartyIntegration) GetTeamName() string {
 	if o == nil || IsNil(o.TeamName) {
 		var ret string
 		return ret
@@ -572,7 +572,7 @@ func (o *ThridPartyIntegration) GetTeamName() string {
 
 // GetTeamNameOk returns a tuple with the TeamName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ThridPartyIntegration) GetTeamNameOk() (*string, bool) {
+func (o *ThirdPartyIntegration) GetTeamNameOk() (*string, bool) {
 	if o == nil || IsNil(o.TeamName) {
 		return nil, false
 	}
@@ -581,7 +581,7 @@ func (o *ThridPartyIntegration) GetTeamNameOk() (*string, bool) {
 }
 
 // HasTeamName returns a boolean if a field has been set.
-func (o *ThridPartyIntegration) HasTeamName() bool {
+func (o *ThirdPartyIntegration) HasTeamName() bool {
 	if o != nil && !IsNil(o.TeamName) {
 		return true
 	}
@@ -590,12 +590,12 @@ func (o *ThridPartyIntegration) HasTeamName() bool {
 }
 
 // SetTeamName gets a reference to the given string and assigns it to the TeamName field.
-func (o *ThridPartyIntegration) SetTeamName(v string) {
+func (o *ThirdPartyIntegration) SetTeamName(v string) {
 	o.TeamName = &v
 }
 
 // GetRoutingKey returns the RoutingKey field value if set, zero value otherwise
-func (o *ThridPartyIntegration) GetRoutingKey() string {
+func (o *ThirdPartyIntegration) GetRoutingKey() string {
 	if o == nil || IsNil(o.RoutingKey) {
 		var ret string
 		return ret
@@ -605,7 +605,7 @@ func (o *ThridPartyIntegration) GetRoutingKey() string {
 
 // GetRoutingKeyOk returns a tuple with the RoutingKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ThridPartyIntegration) GetRoutingKeyOk() (*string, bool) {
+func (o *ThirdPartyIntegration) GetRoutingKeyOk() (*string, bool) {
 	if o == nil || IsNil(o.RoutingKey) {
 		return nil, false
 	}
@@ -614,7 +614,7 @@ func (o *ThridPartyIntegration) GetRoutingKeyOk() (*string, bool) {
 }
 
 // HasRoutingKey returns a boolean if a field has been set.
-func (o *ThridPartyIntegration) HasRoutingKey() bool {
+func (o *ThirdPartyIntegration) HasRoutingKey() bool {
 	if o != nil && !IsNil(o.RoutingKey) {
 		return true
 	}
@@ -623,12 +623,12 @@ func (o *ThridPartyIntegration) HasRoutingKey() bool {
 }
 
 // SetRoutingKey gets a reference to the given string and assigns it to the RoutingKey field.
-func (o *ThridPartyIntegration) SetRoutingKey(v string) {
+func (o *ThirdPartyIntegration) SetRoutingKey(v string) {
 	o.RoutingKey = &v
 }
 
 // GetSecret returns the Secret field value if set, zero value otherwise
-func (o *ThridPartyIntegration) GetSecret() string {
+func (o *ThirdPartyIntegration) GetSecret() string {
 	if o == nil || IsNil(o.Secret) {
 		var ret string
 		return ret
@@ -638,7 +638,7 @@ func (o *ThridPartyIntegration) GetSecret() string {
 
 // GetSecretOk returns a tuple with the Secret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ThridPartyIntegration) GetSecretOk() (*string, bool) {
+func (o *ThirdPartyIntegration) GetSecretOk() (*string, bool) {
 	if o == nil || IsNil(o.Secret) {
 		return nil, false
 	}
@@ -647,7 +647,7 @@ func (o *ThridPartyIntegration) GetSecretOk() (*string, bool) {
 }
 
 // HasSecret returns a boolean if a field has been set.
-func (o *ThridPartyIntegration) HasSecret() bool {
+func (o *ThirdPartyIntegration) HasSecret() bool {
 	if o != nil && !IsNil(o.Secret) {
 		return true
 	}
@@ -656,12 +656,12 @@ func (o *ThridPartyIntegration) HasSecret() bool {
 }
 
 // SetSecret gets a reference to the given string and assigns it to the Secret field.
-func (o *ThridPartyIntegration) SetSecret(v string) {
+func (o *ThirdPartyIntegration) SetSecret(v string) {
 	o.Secret = &v
 }
 
 // GetUrl returns the Url field value if set, zero value otherwise
-func (o *ThridPartyIntegration) GetUrl() string {
+func (o *ThirdPartyIntegration) GetUrl() string {
 	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
@@ -671,7 +671,7 @@ func (o *ThridPartyIntegration) GetUrl() string {
 
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ThridPartyIntegration) GetUrlOk() (*string, bool) {
+func (o *ThirdPartyIntegration) GetUrlOk() (*string, bool) {
 	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
@@ -680,7 +680,7 @@ func (o *ThridPartyIntegration) GetUrlOk() (*string, bool) {
 }
 
 // HasUrl returns a boolean if a field has been set.
-func (o *ThridPartyIntegration) HasUrl() bool {
+func (o *ThirdPartyIntegration) HasUrl() bool {
 	if o != nil && !IsNil(o.Url) {
 		return true
 	}
@@ -689,18 +689,18 @@ func (o *ThridPartyIntegration) HasUrl() bool {
 }
 
 // SetUrl gets a reference to the given string and assigns it to the Url field.
-func (o *ThridPartyIntegration) SetUrl(v string) {
+func (o *ThirdPartyIntegration) SetUrl(v string) {
 	o.Url = &v
 }
 
-func (o ThridPartyIntegration) MarshalJSONWithoutReadOnly() ([]byte, error) {
+func (o ThirdPartyIntegration) MarshalJSONWithoutReadOnly() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
 }
-func (o ThridPartyIntegration) ToMap() (map[string]interface{}, error) {
+func (o ThirdPartyIntegration) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type

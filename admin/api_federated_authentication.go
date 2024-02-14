@@ -14,6 +14,31 @@ import (
 type FederatedAuthenticationApi interface {
 
 	/*
+		CreateIdentityProvider Create one identity provider
+
+		[experimental] Creates one identity provider within the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
+
+	**Note**: This resource only supports the creation of OIDC identity providers.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
+		@return CreateIdentityProviderApiRequest
+	*/
+	CreateIdentityProvider(ctx context.Context, federationSettingsId string, federationOidcIdentityProviderUpdate *FederationOidcIdentityProviderUpdate) CreateIdentityProviderApiRequest
+	/*
+		CreateIdentityProvider Create one identity provider
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param CreateIdentityProviderApiParams - Parameters for the request
+		@return CreateIdentityProviderApiRequest
+	*/
+	CreateIdentityProviderWithParams(ctx context.Context, args *CreateIdentityProviderApiParams) CreateIdentityProviderApiRequest
+
+	// Method available only for mocking purposes
+	CreateIdentityProviderExecute(r CreateIdentityProviderApiRequest) (*FederationOidcIdentityProvider, *http.Response, error)
+
+	/*
 		CreateRoleMapping Add One Role Mapping to One Organization
 
 		[experimental] Adds one role mapping to the specified organization in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role.
@@ -59,6 +84,32 @@ type FederatedAuthenticationApi interface {
 
 	// Method available only for mocking purposes
 	DeleteFederationAppExecute(r DeleteFederationAppApiRequest) (*http.Response, error)
+
+	/*
+		DeleteIdentityProvider Delete the identity provider.
+
+		[experimental] Deletes one identity provider in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
+
+	**Note**: Requests to this resource will fail if the identity provider has any connected organizations. Before deleting an identity provider, disconnect all organizations and confirm that no organization in your account uses this identity provider. To learn more, see [Manage Organization Mapping for Federated Authentication](https://www.mongodb.com/docs/atlas/security/manage-org-mapping/).
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
+		@param identityProviderId Unique 24-hexadecimal digit string that identifies the identity provider to connect.
+		@return DeleteIdentityProviderApiRequest
+	*/
+	DeleteIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string) DeleteIdentityProviderApiRequest
+	/*
+		DeleteIdentityProvider Delete the identity provider.
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param DeleteIdentityProviderApiParams - Parameters for the request
+		@return DeleteIdentityProviderApiRequest
+	*/
+	DeleteIdentityProviderWithParams(ctx context.Context, args *DeleteIdentityProviderApiParams) DeleteIdentityProviderApiRequest
+
+	// Method available only for mocking purposes
+	DeleteIdentityProviderExecute(r DeleteIdentityProviderApiRequest) (*http.Response, error)
 
 	/*
 		DeleteRoleMapping Remove One Role Mapping from One Organization
@@ -139,7 +190,7 @@ type FederatedAuthenticationApi interface {
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
-		@param identityProviderId Unique 20-hexadecimal digit string that identifies the identity provider.
+		@param identityProviderId Unique string that identifies the identity provider to connect. If using an API version before 11-15-2023, use the 20-hexadecimal digit oktaIdpId. For all other versions, use the 24-hexadecimal digit id.
 		@return GetIdentityProviderApiRequest
 	*/
 	GetIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string) GetIdentityProviderApiRequest
@@ -231,7 +282,7 @@ type FederatedAuthenticationApi interface {
 	/*
 		ListIdentityProviders Return all identity providers from the specified federation.
 
-		[experimental] Returns all identity providers with the provided protocol in the specified federation. If no protocol is specified, only SAML identity providers will be returned. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
+		[experimental] Returns all identity providers with the provided protocol and type in the specified federation. If no protocol is specified, only SAML identity providers will be returned. If no idpType is specified, only WORKFORCE identity providers will be returned. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
@@ -300,6 +351,32 @@ type FederatedAuthenticationApi interface {
 	RemoveConnectedOrgConfigExecute(r RemoveConnectedOrgConfigApiRequest) (map[string]interface{}, *http.Response, error)
 
 	/*
+		RevokeJwksFromIdentityProvider Revoke the JWKS tokens from an OIDC identity provider.
+
+		[experimental] Revokes the JWKS tokens from the requested OIDC identity provider. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
+
+	**Note**: Revoking your JWKS tokens immediately refreshes your IdP public keys from all your Atlas clusters, invalidating previously signed access tokens and logging out all users. You may need to restart your MongoDB clients. All organizations connected to the identity provider will be affected. To learn more, see [Configure OIDC Authorization](https://www.mongodb.com/docs/atlas/security-oidc/#revoke-jwks).
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
+		@param identityProviderId Unique 24-hexadecimal digit string that identifies the identity provider to connect.
+		@return RevokeJwksFromIdentityProviderApiRequest
+	*/
+	RevokeJwksFromIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string) RevokeJwksFromIdentityProviderApiRequest
+	/*
+		RevokeJwksFromIdentityProvider Revoke the JWKS tokens from an OIDC identity provider.
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param RevokeJwksFromIdentityProviderApiParams - Parameters for the request
+		@return RevokeJwksFromIdentityProviderApiRequest
+	*/
+	RevokeJwksFromIdentityProviderWithParams(ctx context.Context, args *RevokeJwksFromIdentityProviderApiParams) RevokeJwksFromIdentityProviderApiRequest
+
+	// Method available only for mocking purposes
+	RevokeJwksFromIdentityProviderExecute(r RevokeJwksFromIdentityProviderApiRequest) (*http.Response, error)
+
+	/*
 		UpdateConnectedOrgConfig Update One Org Config Connected to One Federation
 
 		[experimental] Updates one connected organization configuration from the specified federation. To use this resource, the requesting API Key must have the Organization Owner role.
@@ -334,11 +411,13 @@ type FederatedAuthenticationApi interface {
 	/*
 		UpdateIdentityProvider Update the identity provider.
 
-		[experimental] Updates one identity provider in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations. Deprecated versions: v2-{2023-01-01}
+		[experimental] Updates one identity provider in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
+
+	**Note**: Changing authorization types and/or updating authorization claims can prevent current users and/or groups from accessing the database. Deprecated versions: v2-{2023-01-01}
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
-		@param identityProviderId Unique 20-hexadecimal digit string that identifies the identity provider.
+		@param identityProviderId Unique string that identifies the identity provider to connect. If using an API version before 11-15-2023, use the 20-hexadecimal digit oktaIdpId. For all other versions, use the 24-hexadecimal digit id.
 		@return UpdateIdentityProviderApiRequest
 	*/
 	UpdateIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string, federationIdentityProviderUpdate *FederationIdentityProviderUpdate) UpdateIdentityProviderApiRequest
@@ -383,6 +462,141 @@ type FederatedAuthenticationApi interface {
 
 // FederatedAuthenticationApiService FederatedAuthenticationApi service
 type FederatedAuthenticationApiService service
+
+type CreateIdentityProviderApiRequest struct {
+	ctx                                  context.Context
+	ApiService                           FederatedAuthenticationApi
+	federationSettingsId                 string
+	federationOidcIdentityProviderUpdate *FederationOidcIdentityProviderUpdate
+}
+
+type CreateIdentityProviderApiParams struct {
+	FederationSettingsId                 string
+	FederationOidcIdentityProviderUpdate *FederationOidcIdentityProviderUpdate
+}
+
+func (a *FederatedAuthenticationApiService) CreateIdentityProviderWithParams(ctx context.Context, args *CreateIdentityProviderApiParams) CreateIdentityProviderApiRequest {
+	return CreateIdentityProviderApiRequest{
+		ApiService:                           a,
+		ctx:                                  ctx,
+		federationSettingsId:                 args.FederationSettingsId,
+		federationOidcIdentityProviderUpdate: args.FederationOidcIdentityProviderUpdate,
+	}
+}
+
+func (r CreateIdentityProviderApiRequest) Execute() (*FederationOidcIdentityProvider, *http.Response, error) {
+	return r.ApiService.CreateIdentityProviderExecute(r)
+}
+
+/*
+CreateIdentityProvider Create one identity provider
+
+[experimental] Creates one identity provider within the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
+
+**Note**: This resource only supports the creation of OIDC identity providers.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
+	@return CreateIdentityProviderApiRequest
+*/
+func (a *FederatedAuthenticationApiService) CreateIdentityProvider(ctx context.Context, federationSettingsId string, federationOidcIdentityProviderUpdate *FederationOidcIdentityProviderUpdate) CreateIdentityProviderApiRequest {
+	return CreateIdentityProviderApiRequest{
+		ApiService:                           a,
+		ctx:                                  ctx,
+		federationSettingsId:                 federationSettingsId,
+		federationOidcIdentityProviderUpdate: federationOidcIdentityProviderUpdate,
+	}
+}
+
+// Execute executes the request
+//
+//	@return FederationOidcIdentityProvider
+func (a *FederatedAuthenticationApiService) CreateIdentityProviderExecute(r CreateIdentityProviderApiRequest) (*FederationOidcIdentityProvider, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *FederationOidcIdentityProvider
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.CreateIdentityProvider")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders"
+	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(parameterValueToString(r.federationSettingsId, "federationSettingsId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.federationOidcIdentityProviderUpdate == nil {
+		return localVarReturnValue, nil, reportError("federationOidcIdentityProviderUpdate is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-11-15+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-11-15+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.federationOidcIdentityProviderUpdate
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		var v ApiError
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
+		newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
 
 type CreateRoleMappingApiRequest struct {
 	ctx                       context.Context
@@ -593,6 +807,126 @@ func (a *FederatedAuthenticationApiService) DeleteFederationAppExecute(r DeleteF
 
 	// to determine the Accept header
 	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		var v ApiError
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
+		newErr.model = v
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type DeleteIdentityProviderApiRequest struct {
+	ctx                  context.Context
+	ApiService           FederatedAuthenticationApi
+	federationSettingsId string
+	identityProviderId   string
+}
+
+type DeleteIdentityProviderApiParams struct {
+	FederationSettingsId string
+	IdentityProviderId   string
+}
+
+func (a *FederatedAuthenticationApiService) DeleteIdentityProviderWithParams(ctx context.Context, args *DeleteIdentityProviderApiParams) DeleteIdentityProviderApiRequest {
+	return DeleteIdentityProviderApiRequest{
+		ApiService:           a,
+		ctx:                  ctx,
+		federationSettingsId: args.FederationSettingsId,
+		identityProviderId:   args.IdentityProviderId,
+	}
+}
+
+func (r DeleteIdentityProviderApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteIdentityProviderExecute(r)
+}
+
+/*
+DeleteIdentityProvider Delete the identity provider.
+
+[experimental] Deletes one identity provider in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
+
+**Note**: Requests to this resource will fail if the identity provider has any connected organizations. Before deleting an identity provider, disconnect all organizations and confirm that no organization in your account uses this identity provider. To learn more, see [Manage Organization Mapping for Federated Authentication](https://www.mongodb.com/docs/atlas/security/manage-org-mapping/).
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
+	@param identityProviderId Unique 24-hexadecimal digit string that identifies the identity provider to connect.
+	@return DeleteIdentityProviderApiRequest
+*/
+func (a *FederatedAuthenticationApiService) DeleteIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string) DeleteIdentityProviderApiRequest {
+	return DeleteIdentityProviderApiRequest{
+		ApiService:           a,
+		ctx:                  ctx,
+		federationSettingsId: federationSettingsId,
+		identityProviderId:   identityProviderId,
+	}
+}
+
+// Execute executes the request
+func (a *FederatedAuthenticationApiService) DeleteIdentityProviderExecute(r DeleteIdentityProviderApiRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.DeleteIdentityProvider")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(parameterValueToString(r.federationSettingsId, "federationSettingsId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"identityProviderId"+"}", url.PathEscape(parameterValueToString(r.identityProviderId, "identityProviderId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-11-15+json", "application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1045,7 +1379,7 @@ GetIdentityProvider Return one identity provider from the specified federation b
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
-	@param identityProviderId Unique 20-hexadecimal digit string that identifies the identity provider.
+	@param identityProviderId Unique string that identifies the identity provider to connect. If using an API version before 11-15-2023, use the 20-hexadecimal digit oktaIdpId. For all other versions, use the 24-hexadecimal digit id.
 	@return GetIdentityProviderApiRequest
 */
 func (a *FederatedAuthenticationApiService) GetIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string) GetIdentityProviderApiRequest {
@@ -1538,11 +1872,13 @@ type ListIdentityProvidersApiRequest struct {
 	ApiService           FederatedAuthenticationApi
 	federationSettingsId string
 	protocol             *string
+	idpType              *string
 }
 
 type ListIdentityProvidersApiParams struct {
 	FederationSettingsId string
 	Protocol             *string
+	IdpType              *string
 }
 
 func (a *FederatedAuthenticationApiService) ListIdentityProvidersWithParams(ctx context.Context, args *ListIdentityProvidersApiParams) ListIdentityProvidersApiRequest {
@@ -1551,12 +1887,19 @@ func (a *FederatedAuthenticationApiService) ListIdentityProvidersWithParams(ctx 
 		ctx:                  ctx,
 		federationSettingsId: args.FederationSettingsId,
 		protocol:             args.Protocol,
+		idpType:              args.IdpType,
 	}
 }
 
-// The protocols of the target identity providers.
+// The protocols of the target identity providers. Defaults to SAML.
 func (r ListIdentityProvidersApiRequest) Protocol(protocol string) ListIdentityProvidersApiRequest {
 	r.protocol = &protocol
+	return r
+}
+
+// The types of the target identity providers. Defaults to WORKFORCE.
+func (r ListIdentityProvidersApiRequest) IdpType(idpType string) ListIdentityProvidersApiRequest {
+	r.idpType = &idpType
 	return r
 }
 
@@ -1567,7 +1910,7 @@ func (r ListIdentityProvidersApiRequest) Execute() (*PaginatedFederationIdentity
 /*
 ListIdentityProviders Return all identity providers from the specified federation.
 
-[experimental] Returns all identity providers with the provided protocol in the specified federation. If no protocol is specified, only SAML identity providers will be returned. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
+[experimental] Returns all identity providers with the provided protocol and type in the specified federation. If no protocol is specified, only SAML identity providers will be returned. If no idpType is specified, only WORKFORCE identity providers will be returned. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
@@ -1606,6 +1949,9 @@ func (a *FederatedAuthenticationApiService) ListIdentityProvidersExecute(r ListI
 
 	if r.protocol != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "protocol", r.protocol, "")
+	}
+	if r.idpType != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "idpType", r.idpType, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1929,6 +2275,126 @@ func (a *FederatedAuthenticationApiService) RemoveConnectedOrgConfigExecute(r Re
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type RevokeJwksFromIdentityProviderApiRequest struct {
+	ctx                  context.Context
+	ApiService           FederatedAuthenticationApi
+	federationSettingsId string
+	identityProviderId   string
+}
+
+type RevokeJwksFromIdentityProviderApiParams struct {
+	FederationSettingsId string
+	IdentityProviderId   string
+}
+
+func (a *FederatedAuthenticationApiService) RevokeJwksFromIdentityProviderWithParams(ctx context.Context, args *RevokeJwksFromIdentityProviderApiParams) RevokeJwksFromIdentityProviderApiRequest {
+	return RevokeJwksFromIdentityProviderApiRequest{
+		ApiService:           a,
+		ctx:                  ctx,
+		federationSettingsId: args.FederationSettingsId,
+		identityProviderId:   args.IdentityProviderId,
+	}
+}
+
+func (r RevokeJwksFromIdentityProviderApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.RevokeJwksFromIdentityProviderExecute(r)
+}
+
+/*
+RevokeJwksFromIdentityProvider Revoke the JWKS tokens from an OIDC identity provider.
+
+[experimental] Revokes the JWKS tokens from the requested OIDC identity provider. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
+
+**Note**: Revoking your JWKS tokens immediately refreshes your IdP public keys from all your Atlas clusters, invalidating previously signed access tokens and logging out all users. You may need to restart your MongoDB clients. All organizations connected to the identity provider will be affected. To learn more, see [Configure OIDC Authorization](https://www.mongodb.com/docs/atlas/security-oidc/#revoke-jwks).
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
+	@param identityProviderId Unique 24-hexadecimal digit string that identifies the identity provider to connect.
+	@return RevokeJwksFromIdentityProviderApiRequest
+*/
+func (a *FederatedAuthenticationApiService) RevokeJwksFromIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string) RevokeJwksFromIdentityProviderApiRequest {
+	return RevokeJwksFromIdentityProviderApiRequest{
+		ApiService:           a,
+		ctx:                  ctx,
+		federationSettingsId: federationSettingsId,
+		identityProviderId:   identityProviderId,
+	}
+}
+
+// Execute executes the request
+func (a *FederatedAuthenticationApiService) RevokeJwksFromIdentityProviderExecute(r RevokeJwksFromIdentityProviderApiRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FederatedAuthenticationApiService.RevokeJwksFromIdentityProvider")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/jwks"
+	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(parameterValueToString(r.federationSettingsId, "federationSettingsId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"identityProviderId"+"}", url.PathEscape(parameterValueToString(r.identityProviderId, "identityProviderId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-11-15+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		var v ApiError
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
+		newErr.model = v
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type UpdateConnectedOrgConfigApiRequest struct {
 	ctx                  context.Context
 	ApiService           FederatedAuthenticationApi
@@ -2107,11 +2573,13 @@ func (r UpdateIdentityProviderApiRequest) Execute() (*FederationIdentityProvider
 /*
 UpdateIdentityProvider Update the identity provider.
 
-[experimental] Updates one identity provider in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations. Deprecated versions: v2-{2023-01-01}
+[experimental] Updates one identity provider in the specified federation. To use this resource, the requesting API Key must have the Organization Owner role in one of the connected organizations.
+
+**Note**: Changing authorization types and/or updating authorization claims can prevent current users and/or groups from accessing the database. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param federationSettingsId Unique 24-hexadecimal digit string that identifies your federation.
-	@param identityProviderId Unique 20-hexadecimal digit string that identifies the identity provider.
+	@param identityProviderId Unique string that identifies the identity provider to connect. If using an API version before 11-15-2023, use the 20-hexadecimal digit oktaIdpId. For all other versions, use the 24-hexadecimal digit id.
 	@return UpdateIdentityProviderApiRequest
 */
 func (a *FederatedAuthenticationApiService) UpdateIdentityProvider(ctx context.Context, federationSettingsId string, identityProviderId string, federationIdentityProviderUpdate *FederationIdentityProviderUpdate) UpdateIdentityProviderApiRequest {

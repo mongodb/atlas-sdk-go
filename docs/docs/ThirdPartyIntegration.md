@@ -1,4 +1,4 @@
-# ThridPartyIntegration
+# ThirdPartyIntegration
 
 ## Properties
 
@@ -26,477 +26,477 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewThridPartyIntegration
+### NewThirdPartyIntegration
 
-`func NewThridPartyIntegration() *ThridPartyIntegration`
+`func NewThirdPartyIntegration() *ThirdPartyIntegration`
 
-NewThridPartyIntegration instantiates a new ThridPartyIntegration object
+NewThirdPartyIntegration instantiates a new ThirdPartyIntegration object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewThridPartyIntegrationWithDefaults
+### NewThirdPartyIntegrationWithDefaults
 
-`func NewThridPartyIntegrationWithDefaults() *ThridPartyIntegration`
+`func NewThirdPartyIntegrationWithDefaults() *ThirdPartyIntegration`
 
-NewThridPartyIntegrationWithDefaults instantiates a new ThridPartyIntegration object
+NewThirdPartyIntegrationWithDefaults instantiates a new ThirdPartyIntegration object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetType
 
-`func (o *ThridPartyIntegration) GetType() string`
+`func (o *ThirdPartyIntegration) GetType() string`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *ThridPartyIntegration) GetTypeOk() (*string, bool)`
+`func (o *ThirdPartyIntegration) GetTypeOk() (*string, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *ThridPartyIntegration) SetType(v string)`
+`func (o *ThirdPartyIntegration) SetType(v string)`
 
 SetType sets Type field to given value.
 
 ### HasType
 
-`func (o *ThridPartyIntegration) HasType() bool`
+`func (o *ThirdPartyIntegration) HasType() bool`
 
 HasType returns a boolean if a field has been set.
 ### GetApiKey
 
-`func (o *ThridPartyIntegration) GetApiKey() string`
+`func (o *ThirdPartyIntegration) GetApiKey() string`
 
 GetApiKey returns the ApiKey field if non-nil, zero value otherwise.
 
 ### GetApiKeyOk
 
-`func (o *ThridPartyIntegration) GetApiKeyOk() (*string, bool)`
+`func (o *ThirdPartyIntegration) GetApiKeyOk() (*string, bool)`
 
 GetApiKeyOk returns a tuple with the ApiKey field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApiKey
 
-`func (o *ThridPartyIntegration) SetApiKey(v string)`
+`func (o *ThirdPartyIntegration) SetApiKey(v string)`
 
 SetApiKey sets ApiKey field to given value.
 
 ### HasApiKey
 
-`func (o *ThridPartyIntegration) HasApiKey() bool`
+`func (o *ThirdPartyIntegration) HasApiKey() bool`
 
 HasApiKey returns a boolean if a field has been set.
 ### GetRegion
 
-`func (o *ThridPartyIntegration) GetRegion() string`
+`func (o *ThirdPartyIntegration) GetRegion() string`
 
 GetRegion returns the Region field if non-nil, zero value otherwise.
 
 ### GetRegionOk
 
-`func (o *ThridPartyIntegration) GetRegionOk() (*string, bool)`
+`func (o *ThirdPartyIntegration) GetRegionOk() (*string, bool)`
 
 GetRegionOk returns a tuple with the Region field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRegion
 
-`func (o *ThridPartyIntegration) SetRegion(v string)`
+`func (o *ThirdPartyIntegration) SetRegion(v string)`
 
 SetRegion sets Region field to given value.
 
 ### HasRegion
 
-`func (o *ThridPartyIntegration) HasRegion() bool`
+`func (o *ThirdPartyIntegration) HasRegion() bool`
 
 HasRegion returns a boolean if a field has been set.
 ### GetMicrosoftTeamsWebhookUrl
 
-`func (o *ThridPartyIntegration) GetMicrosoftTeamsWebhookUrl() string`
+`func (o *ThirdPartyIntegration) GetMicrosoftTeamsWebhookUrl() string`
 
 GetMicrosoftTeamsWebhookUrl returns the MicrosoftTeamsWebhookUrl field if non-nil, zero value otherwise.
 
 ### GetMicrosoftTeamsWebhookUrlOk
 
-`func (o *ThridPartyIntegration) GetMicrosoftTeamsWebhookUrlOk() (*string, bool)`
+`func (o *ThirdPartyIntegration) GetMicrosoftTeamsWebhookUrlOk() (*string, bool)`
 
 GetMicrosoftTeamsWebhookUrlOk returns a tuple with the MicrosoftTeamsWebhookUrl field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMicrosoftTeamsWebhookUrl
 
-`func (o *ThridPartyIntegration) SetMicrosoftTeamsWebhookUrl(v string)`
+`func (o *ThirdPartyIntegration) SetMicrosoftTeamsWebhookUrl(v string)`
 
 SetMicrosoftTeamsWebhookUrl sets MicrosoftTeamsWebhookUrl field to given value.
 
 ### HasMicrosoftTeamsWebhookUrl
 
-`func (o *ThridPartyIntegration) HasMicrosoftTeamsWebhookUrl() bool`
+`func (o *ThirdPartyIntegration) HasMicrosoftTeamsWebhookUrl() bool`
 
 HasMicrosoftTeamsWebhookUrl returns a boolean if a field has been set.
 ### GetAccountId
 
-`func (o *ThridPartyIntegration) GetAccountId() string`
+`func (o *ThirdPartyIntegration) GetAccountId() string`
 
 GetAccountId returns the AccountId field if non-nil, zero value otherwise.
 
 ### GetAccountIdOk
 
-`func (o *ThridPartyIntegration) GetAccountIdOk() (*string, bool)`
+`func (o *ThirdPartyIntegration) GetAccountIdOk() (*string, bool)`
 
 GetAccountIdOk returns a tuple with the AccountId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccountId
 
-`func (o *ThridPartyIntegration) SetAccountId(v string)`
+`func (o *ThirdPartyIntegration) SetAccountId(v string)`
 
 SetAccountId sets AccountId field to given value.
 
 ### HasAccountId
 
-`func (o *ThridPartyIntegration) HasAccountId() bool`
+`func (o *ThirdPartyIntegration) HasAccountId() bool`
 
 HasAccountId returns a boolean if a field has been set.
 ### GetLicenseKey
 
-`func (o *ThridPartyIntegration) GetLicenseKey() string`
+`func (o *ThirdPartyIntegration) GetLicenseKey() string`
 
 GetLicenseKey returns the LicenseKey field if non-nil, zero value otherwise.
 
 ### GetLicenseKeyOk
 
-`func (o *ThridPartyIntegration) GetLicenseKeyOk() (*string, bool)`
+`func (o *ThirdPartyIntegration) GetLicenseKeyOk() (*string, bool)`
 
 GetLicenseKeyOk returns a tuple with the LicenseKey field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLicenseKey
 
-`func (o *ThridPartyIntegration) SetLicenseKey(v string)`
+`func (o *ThirdPartyIntegration) SetLicenseKey(v string)`
 
 SetLicenseKey sets LicenseKey field to given value.
 
 ### HasLicenseKey
 
-`func (o *ThridPartyIntegration) HasLicenseKey() bool`
+`func (o *ThirdPartyIntegration) HasLicenseKey() bool`
 
 HasLicenseKey returns a boolean if a field has been set.
 ### GetReadToken
 
-`func (o *ThridPartyIntegration) GetReadToken() string`
+`func (o *ThirdPartyIntegration) GetReadToken() string`
 
 GetReadToken returns the ReadToken field if non-nil, zero value otherwise.
 
 ### GetReadTokenOk
 
-`func (o *ThridPartyIntegration) GetReadTokenOk() (*string, bool)`
+`func (o *ThirdPartyIntegration) GetReadTokenOk() (*string, bool)`
 
 GetReadTokenOk returns a tuple with the ReadToken field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReadToken
 
-`func (o *ThridPartyIntegration) SetReadToken(v string)`
+`func (o *ThirdPartyIntegration) SetReadToken(v string)`
 
 SetReadToken sets ReadToken field to given value.
 
 ### HasReadToken
 
-`func (o *ThridPartyIntegration) HasReadToken() bool`
+`func (o *ThirdPartyIntegration) HasReadToken() bool`
 
 HasReadToken returns a boolean if a field has been set.
 ### GetWriteToken
 
-`func (o *ThridPartyIntegration) GetWriteToken() string`
+`func (o *ThirdPartyIntegration) GetWriteToken() string`
 
 GetWriteToken returns the WriteToken field if non-nil, zero value otherwise.
 
 ### GetWriteTokenOk
 
-`func (o *ThridPartyIntegration) GetWriteTokenOk() (*string, bool)`
+`func (o *ThirdPartyIntegration) GetWriteTokenOk() (*string, bool)`
 
 GetWriteTokenOk returns a tuple with the WriteToken field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetWriteToken
 
-`func (o *ThridPartyIntegration) SetWriteToken(v string)`
+`func (o *ThirdPartyIntegration) SetWriteToken(v string)`
 
 SetWriteToken sets WriteToken field to given value.
 
 ### HasWriteToken
 
-`func (o *ThridPartyIntegration) HasWriteToken() bool`
+`func (o *ThirdPartyIntegration) HasWriteToken() bool`
 
 HasWriteToken returns a boolean if a field has been set.
 ### GetServiceKey
 
-`func (o *ThridPartyIntegration) GetServiceKey() string`
+`func (o *ThirdPartyIntegration) GetServiceKey() string`
 
 GetServiceKey returns the ServiceKey field if non-nil, zero value otherwise.
 
 ### GetServiceKeyOk
 
-`func (o *ThridPartyIntegration) GetServiceKeyOk() (*string, bool)`
+`func (o *ThirdPartyIntegration) GetServiceKeyOk() (*string, bool)`
 
 GetServiceKeyOk returns a tuple with the ServiceKey field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetServiceKey
 
-`func (o *ThridPartyIntegration) SetServiceKey(v string)`
+`func (o *ThirdPartyIntegration) SetServiceKey(v string)`
 
 SetServiceKey sets ServiceKey field to given value.
 
 ### HasServiceKey
 
-`func (o *ThridPartyIntegration) HasServiceKey() bool`
+`func (o *ThirdPartyIntegration) HasServiceKey() bool`
 
 HasServiceKey returns a boolean if a field has been set.
 ### GetEnabled
 
-`func (o *ThridPartyIntegration) GetEnabled() bool`
+`func (o *ThirdPartyIntegration) GetEnabled() bool`
 
 GetEnabled returns the Enabled field if non-nil, zero value otherwise.
 
 ### GetEnabledOk
 
-`func (o *ThridPartyIntegration) GetEnabledOk() (*bool, bool)`
+`func (o *ThirdPartyIntegration) GetEnabledOk() (*bool, bool)`
 
 GetEnabledOk returns a tuple with the Enabled field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnabled
 
-`func (o *ThridPartyIntegration) SetEnabled(v bool)`
+`func (o *ThirdPartyIntegration) SetEnabled(v bool)`
 
 SetEnabled sets Enabled field to given value.
 
 ### HasEnabled
 
-`func (o *ThridPartyIntegration) HasEnabled() bool`
+`func (o *ThirdPartyIntegration) HasEnabled() bool`
 
 HasEnabled returns a boolean if a field has been set.
 ### GetPassword
 
-`func (o *ThridPartyIntegration) GetPassword() string`
+`func (o *ThirdPartyIntegration) GetPassword() string`
 
 GetPassword returns the Password field if non-nil, zero value otherwise.
 
 ### GetPasswordOk
 
-`func (o *ThridPartyIntegration) GetPasswordOk() (*string, bool)`
+`func (o *ThirdPartyIntegration) GetPasswordOk() (*string, bool)`
 
 GetPasswordOk returns a tuple with the Password field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPassword
 
-`func (o *ThridPartyIntegration) SetPassword(v string)`
+`func (o *ThirdPartyIntegration) SetPassword(v string)`
 
 SetPassword sets Password field to given value.
 
 ### HasPassword
 
-`func (o *ThridPartyIntegration) HasPassword() bool`
+`func (o *ThirdPartyIntegration) HasPassword() bool`
 
 HasPassword returns a boolean if a field has been set.
 ### GetServiceDiscovery
 
-`func (o *ThridPartyIntegration) GetServiceDiscovery() string`
+`func (o *ThirdPartyIntegration) GetServiceDiscovery() string`
 
 GetServiceDiscovery returns the ServiceDiscovery field if non-nil, zero value otherwise.
 
 ### GetServiceDiscoveryOk
 
-`func (o *ThridPartyIntegration) GetServiceDiscoveryOk() (*string, bool)`
+`func (o *ThirdPartyIntegration) GetServiceDiscoveryOk() (*string, bool)`
 
 GetServiceDiscoveryOk returns a tuple with the ServiceDiscovery field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetServiceDiscovery
 
-`func (o *ThridPartyIntegration) SetServiceDiscovery(v string)`
+`func (o *ThirdPartyIntegration) SetServiceDiscovery(v string)`
 
 SetServiceDiscovery sets ServiceDiscovery field to given value.
 
 ### HasServiceDiscovery
 
-`func (o *ThridPartyIntegration) HasServiceDiscovery() bool`
+`func (o *ThirdPartyIntegration) HasServiceDiscovery() bool`
 
 HasServiceDiscovery returns a boolean if a field has been set.
 ### GetUsername
 
-`func (o *ThridPartyIntegration) GetUsername() string`
+`func (o *ThirdPartyIntegration) GetUsername() string`
 
 GetUsername returns the Username field if non-nil, zero value otherwise.
 
 ### GetUsernameOk
 
-`func (o *ThridPartyIntegration) GetUsernameOk() (*string, bool)`
+`func (o *ThirdPartyIntegration) GetUsernameOk() (*string, bool)`
 
 GetUsernameOk returns a tuple with the Username field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUsername
 
-`func (o *ThridPartyIntegration) SetUsername(v string)`
+`func (o *ThirdPartyIntegration) SetUsername(v string)`
 
 SetUsername sets Username field to given value.
 
 ### HasUsername
 
-`func (o *ThridPartyIntegration) HasUsername() bool`
+`func (o *ThirdPartyIntegration) HasUsername() bool`
 
 HasUsername returns a boolean if a field has been set.
 ### GetApiToken
 
-`func (o *ThridPartyIntegration) GetApiToken() string`
+`func (o *ThirdPartyIntegration) GetApiToken() string`
 
 GetApiToken returns the ApiToken field if non-nil, zero value otherwise.
 
 ### GetApiTokenOk
 
-`func (o *ThridPartyIntegration) GetApiTokenOk() (*string, bool)`
+`func (o *ThirdPartyIntegration) GetApiTokenOk() (*string, bool)`
 
 GetApiTokenOk returns a tuple with the ApiToken field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetApiToken
 
-`func (o *ThridPartyIntegration) SetApiToken(v string)`
+`func (o *ThirdPartyIntegration) SetApiToken(v string)`
 
 SetApiToken sets ApiToken field to given value.
 
 ### HasApiToken
 
-`func (o *ThridPartyIntegration) HasApiToken() bool`
+`func (o *ThirdPartyIntegration) HasApiToken() bool`
 
 HasApiToken returns a boolean if a field has been set.
 ### GetChannelName
 
-`func (o *ThridPartyIntegration) GetChannelName() string`
+`func (o *ThirdPartyIntegration) GetChannelName() string`
 
 GetChannelName returns the ChannelName field if non-nil, zero value otherwise.
 
 ### GetChannelNameOk
 
-`func (o *ThridPartyIntegration) GetChannelNameOk() (*string, bool)`
+`func (o *ThirdPartyIntegration) GetChannelNameOk() (*string, bool)`
 
 GetChannelNameOk returns a tuple with the ChannelName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetChannelName
 
-`func (o *ThridPartyIntegration) SetChannelName(v string)`
+`func (o *ThirdPartyIntegration) SetChannelName(v string)`
 
 SetChannelName sets ChannelName field to given value.
 
 ### HasChannelName
 
-`func (o *ThridPartyIntegration) HasChannelName() bool`
+`func (o *ThirdPartyIntegration) HasChannelName() bool`
 
 HasChannelName returns a boolean if a field has been set.
 ### GetTeamName
 
-`func (o *ThridPartyIntegration) GetTeamName() string`
+`func (o *ThirdPartyIntegration) GetTeamName() string`
 
 GetTeamName returns the TeamName field if non-nil, zero value otherwise.
 
 ### GetTeamNameOk
 
-`func (o *ThridPartyIntegration) GetTeamNameOk() (*string, bool)`
+`func (o *ThirdPartyIntegration) GetTeamNameOk() (*string, bool)`
 
 GetTeamNameOk returns a tuple with the TeamName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTeamName
 
-`func (o *ThridPartyIntegration) SetTeamName(v string)`
+`func (o *ThirdPartyIntegration) SetTeamName(v string)`
 
 SetTeamName sets TeamName field to given value.
 
 ### HasTeamName
 
-`func (o *ThridPartyIntegration) HasTeamName() bool`
+`func (o *ThirdPartyIntegration) HasTeamName() bool`
 
 HasTeamName returns a boolean if a field has been set.
 ### GetRoutingKey
 
-`func (o *ThridPartyIntegration) GetRoutingKey() string`
+`func (o *ThirdPartyIntegration) GetRoutingKey() string`
 
 GetRoutingKey returns the RoutingKey field if non-nil, zero value otherwise.
 
 ### GetRoutingKeyOk
 
-`func (o *ThridPartyIntegration) GetRoutingKeyOk() (*string, bool)`
+`func (o *ThirdPartyIntegration) GetRoutingKeyOk() (*string, bool)`
 
 GetRoutingKeyOk returns a tuple with the RoutingKey field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRoutingKey
 
-`func (o *ThridPartyIntegration) SetRoutingKey(v string)`
+`func (o *ThirdPartyIntegration) SetRoutingKey(v string)`
 
 SetRoutingKey sets RoutingKey field to given value.
 
 ### HasRoutingKey
 
-`func (o *ThridPartyIntegration) HasRoutingKey() bool`
+`func (o *ThirdPartyIntegration) HasRoutingKey() bool`
 
 HasRoutingKey returns a boolean if a field has been set.
 ### GetSecret
 
-`func (o *ThridPartyIntegration) GetSecret() string`
+`func (o *ThirdPartyIntegration) GetSecret() string`
 
 GetSecret returns the Secret field if non-nil, zero value otherwise.
 
 ### GetSecretOk
 
-`func (o *ThridPartyIntegration) GetSecretOk() (*string, bool)`
+`func (o *ThirdPartyIntegration) GetSecretOk() (*string, bool)`
 
 GetSecretOk returns a tuple with the Secret field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSecret
 
-`func (o *ThridPartyIntegration) SetSecret(v string)`
+`func (o *ThirdPartyIntegration) SetSecret(v string)`
 
 SetSecret sets Secret field to given value.
 
 ### HasSecret
 
-`func (o *ThridPartyIntegration) HasSecret() bool`
+`func (o *ThirdPartyIntegration) HasSecret() bool`
 
 HasSecret returns a boolean if a field has been set.
 ### GetUrl
 
-`func (o *ThridPartyIntegration) GetUrl() string`
+`func (o *ThirdPartyIntegration) GetUrl() string`
 
 GetUrl returns the Url field if non-nil, zero value otherwise.
 
 ### GetUrlOk
 
-`func (o *ThridPartyIntegration) GetUrlOk() (*string, bool)`
+`func (o *ThirdPartyIntegration) GetUrlOk() (*string, bool)`
 
 GetUrlOk returns a tuple with the Url field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUrl
 
-`func (o *ThridPartyIntegration) SetUrl(v string)`
+`func (o *ThirdPartyIntegration) SetUrl(v string)`
 
 SetUrl sets Url field to given value.
 
 ### HasUrl
 
-`func (o *ThridPartyIntegration) HasUrl() bool`
+`func (o *ThirdPartyIntegration) HasUrl() bool`
 
 HasUrl returns a boolean if a field has been set.
 

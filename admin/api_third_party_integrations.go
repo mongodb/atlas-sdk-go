@@ -23,7 +23,7 @@ type ThirdPartyIntegrationsApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return CreateThirdPartyIntegrationApiRequest
 	*/
-	CreateThirdPartyIntegration(ctx context.Context, integrationType string, groupId string, thridPartyIntegration *ThridPartyIntegration) CreateThirdPartyIntegrationApiRequest
+	CreateThirdPartyIntegration(ctx context.Context, integrationType string, groupId string, thirdPartyIntegration *ThirdPartyIntegration) CreateThirdPartyIntegrationApiRequest
 	/*
 		CreateThirdPartyIntegration Configure One Third-Party Service Integration
 
@@ -83,7 +83,7 @@ type ThirdPartyIntegrationsApi interface {
 	GetThirdPartyIntegrationWithParams(ctx context.Context, args *GetThirdPartyIntegrationApiParams) GetThirdPartyIntegrationApiRequest
 
 	// Method available only for mocking purposes
-	GetThirdPartyIntegrationExecute(r GetThirdPartyIntegrationApiRequest) (*ThridPartyIntegration, *http.Response, error)
+	GetThirdPartyIntegrationExecute(r GetThirdPartyIntegrationApiRequest) (*ThirdPartyIntegration, *http.Response, error)
 
 	/*
 		ListThirdPartyIntegrations Return All Active Third-Party Service Integrations
@@ -118,7 +118,7 @@ type ThirdPartyIntegrationsApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return UpdateThirdPartyIntegrationApiRequest
 	*/
-	UpdateThirdPartyIntegration(ctx context.Context, integrationType string, groupId string, thridPartyIntegration *ThridPartyIntegration) UpdateThirdPartyIntegrationApiRequest
+	UpdateThirdPartyIntegration(ctx context.Context, integrationType string, groupId string, thirdPartyIntegration *ThirdPartyIntegration) UpdateThirdPartyIntegrationApiRequest
 	/*
 		UpdateThirdPartyIntegration Update One Third-Party Service Integration
 
@@ -141,7 +141,7 @@ type CreateThirdPartyIntegrationApiRequest struct {
 	ApiService            ThirdPartyIntegrationsApi
 	integrationType       string
 	groupId               string
-	thridPartyIntegration *ThridPartyIntegration
+	thirdPartyIntegration *ThirdPartyIntegration
 	includeCount          *bool
 	itemsPerPage          *int
 	pageNum               *int
@@ -150,7 +150,7 @@ type CreateThirdPartyIntegrationApiRequest struct {
 type CreateThirdPartyIntegrationApiParams struct {
 	IntegrationType       string
 	GroupId               string
-	ThridPartyIntegration *ThridPartyIntegration
+	ThirdPartyIntegration *ThirdPartyIntegration
 	IncludeCount          *bool
 	ItemsPerPage          *int
 	PageNum               *int
@@ -162,7 +162,7 @@ func (a *ThirdPartyIntegrationsApiService) CreateThirdPartyIntegrationWithParams
 		ctx:                   ctx,
 		integrationType:       args.IntegrationType,
 		groupId:               args.GroupId,
-		thridPartyIntegration: args.ThridPartyIntegration,
+		thirdPartyIntegration: args.ThirdPartyIntegration,
 		includeCount:          args.IncludeCount,
 		itemsPerPage:          args.ItemsPerPage,
 		pageNum:               args.PageNum,
@@ -201,13 +201,13 @@ Adds the settings for configuring one third-party service integration. These set
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateThirdPartyIntegrationApiRequest
 */
-func (a *ThirdPartyIntegrationsApiService) CreateThirdPartyIntegration(ctx context.Context, integrationType string, groupId string, thridPartyIntegration *ThridPartyIntegration) CreateThirdPartyIntegrationApiRequest {
+func (a *ThirdPartyIntegrationsApiService) CreateThirdPartyIntegration(ctx context.Context, integrationType string, groupId string, thirdPartyIntegration *ThirdPartyIntegration) CreateThirdPartyIntegrationApiRequest {
 	return CreateThirdPartyIntegrationApiRequest{
 		ApiService:            a,
 		ctx:                   ctx,
 		integrationType:       integrationType,
 		groupId:               groupId,
-		thridPartyIntegration: thridPartyIntegration,
+		thirdPartyIntegration: thirdPartyIntegration,
 	}
 }
 
@@ -234,8 +234,8 @@ func (a *ThirdPartyIntegrationsApiService) CreateThirdPartyIntegrationExecute(r 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.thridPartyIntegration == nil {
-		return localVarReturnValue, nil, reportError("thridPartyIntegration is required and must be specified")
+	if r.thirdPartyIntegration == nil {
+		return localVarReturnValue, nil, reportError("thirdPartyIntegration is required and must be specified")
 	}
 
 	if r.includeCount != nil {
@@ -277,7 +277,7 @@ func (a *ThirdPartyIntegrationsApiService) CreateThirdPartyIntegrationExecute(r 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.thridPartyIntegration
+	localVarPostBody = r.thirdPartyIntegration
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -474,7 +474,7 @@ func (a *ThirdPartyIntegrationsApiService) GetThirdPartyIntegrationWithParams(ct
 	}
 }
 
-func (r GetThirdPartyIntegrationApiRequest) Execute() (*ThridPartyIntegration, *http.Response, error) {
+func (r GetThirdPartyIntegrationApiRequest) Execute() (*ThirdPartyIntegration, *http.Response, error) {
 	return r.ApiService.GetThirdPartyIntegrationExecute(r)
 }
 
@@ -499,13 +499,13 @@ func (a *ThirdPartyIntegrationsApiService) GetThirdPartyIntegration(ctx context.
 
 // Execute executes the request
 //
-//	@return ThridPartyIntegration
-func (a *ThirdPartyIntegrationsApiService) GetThirdPartyIntegrationExecute(r GetThirdPartyIntegrationApiRequest) (*ThridPartyIntegration, *http.Response, error) {
+//	@return ThirdPartyIntegration
+func (a *ThirdPartyIntegrationsApiService) GetThirdPartyIntegrationExecute(r GetThirdPartyIntegrationApiRequest) (*ThirdPartyIntegration, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ThridPartyIntegration
+		localVarReturnValue *ThirdPartyIntegration
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ThirdPartyIntegrationsApiService.GetThirdPartyIntegration")
@@ -760,7 +760,7 @@ type UpdateThirdPartyIntegrationApiRequest struct {
 	ApiService            ThirdPartyIntegrationsApi
 	integrationType       string
 	groupId               string
-	thridPartyIntegration *ThridPartyIntegration
+	thirdPartyIntegration *ThirdPartyIntegration
 	includeCount          *bool
 	itemsPerPage          *int
 	pageNum               *int
@@ -769,7 +769,7 @@ type UpdateThirdPartyIntegrationApiRequest struct {
 type UpdateThirdPartyIntegrationApiParams struct {
 	IntegrationType       string
 	GroupId               string
-	ThridPartyIntegration *ThridPartyIntegration
+	ThirdPartyIntegration *ThirdPartyIntegration
 	IncludeCount          *bool
 	ItemsPerPage          *int
 	PageNum               *int
@@ -781,7 +781,7 @@ func (a *ThirdPartyIntegrationsApiService) UpdateThirdPartyIntegrationWithParams
 		ctx:                   ctx,
 		integrationType:       args.IntegrationType,
 		groupId:               args.GroupId,
-		thridPartyIntegration: args.ThridPartyIntegration,
+		thirdPartyIntegration: args.ThirdPartyIntegration,
 		includeCount:          args.IncludeCount,
 		itemsPerPage:          args.ItemsPerPage,
 		pageNum:               args.PageNum,
@@ -820,13 +820,13 @@ UpdateThirdPartyIntegration Update One Third-Party Service Integration
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return UpdateThirdPartyIntegrationApiRequest
 */
-func (a *ThirdPartyIntegrationsApiService) UpdateThirdPartyIntegration(ctx context.Context, integrationType string, groupId string, thridPartyIntegration *ThridPartyIntegration) UpdateThirdPartyIntegrationApiRequest {
+func (a *ThirdPartyIntegrationsApiService) UpdateThirdPartyIntegration(ctx context.Context, integrationType string, groupId string, thirdPartyIntegration *ThirdPartyIntegration) UpdateThirdPartyIntegrationApiRequest {
 	return UpdateThirdPartyIntegrationApiRequest{
 		ApiService:            a,
 		ctx:                   ctx,
 		integrationType:       integrationType,
 		groupId:               groupId,
-		thridPartyIntegration: thridPartyIntegration,
+		thirdPartyIntegration: thirdPartyIntegration,
 	}
 }
 
@@ -853,8 +853,8 @@ func (a *ThirdPartyIntegrationsApiService) UpdateThirdPartyIntegrationExecute(r 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.thridPartyIntegration == nil {
-		return localVarReturnValue, nil, reportError("thridPartyIntegration is required and must be specified")
+	if r.thirdPartyIntegration == nil {
+		return localVarReturnValue, nil, reportError("thirdPartyIntegration is required and must be specified")
 	}
 
 	if r.includeCount != nil {
@@ -896,7 +896,7 @@ func (a *ThirdPartyIntegrationsApiService) UpdateThirdPartyIntegrationExecute(r 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.thridPartyIntegration
+	localVarPostBody = r.thirdPartyIntegration
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

@@ -130,15 +130,16 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
 *DatabaseUsersApi* | [GetDatabaseUser](./docs/DatabaseUsersApi.md#getdatabaseuser) | **Get** /api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username} | Return One Database User from One Project | Stable
 *DatabaseUsersApi* | [ListDatabaseUsers](./docs/DatabaseUsersApi.md#listdatabaseusers) | **Get** /api/atlas/v2/groups/{groupId}/databaseUsers | Return All Database Users from One Project | Stable
 *DatabaseUsersApi* | [UpdateDatabaseUser](./docs/DatabaseUsersApi.md#updatedatabaseuser) | **Patch** /api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username} | Update One Database User in One Project | Stable
-*DefaultApi* | [ReturnAllControlPlaneIPAddresses](./docs/DefaultApi.md#returnallcontrolplaneipaddresses) | **Get** /api/atlas/v2/unauth/controlPlaneIPAddresses | Return All Control Plane IP Addresses | Experimental
 *EncryptionAtRestUsingCustomerKeyManagementApi* | [GetEncryptionAtRest](./docs/EncryptionAtRestUsingCustomerKeyManagementApi.md#getencryptionatrest) | **Get** /api/atlas/v2/groups/{groupId}/encryptionAtRest | Return One Configuration for Encryption at Rest using Customer-Managed Keys for One Project | Stable
 *EncryptionAtRestUsingCustomerKeyManagementApi* | [UpdateEncryptionAtRest](./docs/EncryptionAtRestUsingCustomerKeyManagementApi.md#updateencryptionatrest) | **Patch** /api/atlas/v2/groups/{groupId}/encryptionAtRest | Update Configuration for Encryption at Rest using Customer-Managed Keys for One Project | Experimental
 *EventsApi* | [GetOrganizationEvent](./docs/EventsApi.md#getorganizationevent) | **Get** /api/atlas/v2/orgs/{orgId}/events/{eventId} | Return One Event from One Organization | Experimental
 *EventsApi* | [GetProjectEvent](./docs/EventsApi.md#getprojectevent) | **Get** /api/atlas/v2/groups/{groupId}/events/{eventId} | Return One Event from One Project | Experimental
 *EventsApi* | [ListOrganizationEvents](./docs/EventsApi.md#listorganizationevents) | **Get** /api/atlas/v2/orgs/{orgId}/events | Return All Events from One Organization | Stable
 *EventsApi* | [ListProjectEvents](./docs/EventsApi.md#listprojectevents) | **Get** /api/atlas/v2/groups/{groupId}/events | Return All Events from One Project | Stable
+*FederatedAuthenticationApi* | [CreateIdentityProvider](./docs/FederatedAuthenticationApi.md#createidentityprovider) | **Post** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders | Create one identity provider | Experimental
 *FederatedAuthenticationApi* | [CreateRoleMapping](./docs/FederatedAuthenticationApi.md#createrolemapping) | **Post** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings | Add One Role Mapping to One Organization | Experimental
 *FederatedAuthenticationApi* | [DeleteFederationApp](./docs/FederatedAuthenticationApi.md#deletefederationapp) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId} | Delete the federation settings instance. | Experimental
+*FederatedAuthenticationApi* | [DeleteIdentityProvider](./docs/FederatedAuthenticationApi.md#deleteidentityprovider) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Delete the identity provider. | Experimental
 *FederatedAuthenticationApi* | [DeleteRoleMapping](./docs/FederatedAuthenticationApi.md#deleterolemapping) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id} | Remove One Role Mapping from One Organization | Experimental
 *FederatedAuthenticationApi* | [GetConnectedOrgConfig](./docs/FederatedAuthenticationApi.md#getconnectedorgconfig) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Return One Org Config Connected to One Federation | Experimental
 *FederatedAuthenticationApi* | [GetFederationSettings](./docs/FederatedAuthenticationApi.md#getfederationsettings) | **Get** /api/atlas/v2/orgs/{orgId}/federationSettings | Return Federation Settings for One Organization | Experimental
@@ -149,6 +150,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
 *FederatedAuthenticationApi* | [ListIdentityProviders](./docs/FederatedAuthenticationApi.md#listidentityproviders) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders | Return all identity providers from the specified federation. | Experimental
 *FederatedAuthenticationApi* | [ListRoleMappings](./docs/FederatedAuthenticationApi.md#listrolemappings) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings | Return All Role Mappings from One Organization | Experimental
 *FederatedAuthenticationApi* | [RemoveConnectedOrgConfig](./docs/FederatedAuthenticationApi.md#removeconnectedorgconfig) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Remove One Org Config Connected to One Federation | Experimental
+*FederatedAuthenticationApi* | [RevokeJwksFromIdentityProvider](./docs/FederatedAuthenticationApi.md#revokejwksfromidentityprovider) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/jwks | Revoke the JWKS tokens from an OIDC identity provider. | Experimental
 *FederatedAuthenticationApi* | [UpdateConnectedOrgConfig](./docs/FederatedAuthenticationApi.md#updateconnectedorgconfig) | **Patch** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Update One Org Config Connected to One Federation | Experimental
 *FederatedAuthenticationApi* | [UpdateIdentityProvider](./docs/FederatedAuthenticationApi.md#updateidentityprovider) | **Patch** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Update the identity provider. | Experimental
 *FederatedAuthenticationApi* | [UpdateRoleMapping](./docs/FederatedAuthenticationApi.md#updaterolemapping) | **Put** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id} | Update One Role Mapping in One Organization | Experimental
@@ -239,9 +241,11 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
 *OrganizationsApi* | [UpdateOrganizationSettings](./docs/OrganizationsApi.md#updateorganizationsettings) | **Patch** /api/atlas/v2/orgs/{orgId}/settings | Update Settings for One Organization | Experimental
 *PerformanceAdvisorApi* | [DisableSlowOperationThresholding](./docs/PerformanceAdvisorApi.md#disableslowoperationthresholding) | **Delete** /api/atlas/v2/groups/{groupId}/managedSlowMs/disable | Disable Managed Slow Operation Threshold | Stable
 *PerformanceAdvisorApi* | [EnableSlowOperationThresholding](./docs/PerformanceAdvisorApi.md#enableslowoperationthresholding) | **Post** /api/atlas/v2/groups/{groupId}/managedSlowMs/enable | Enable Managed Slow Operation Threshold | Stable
+*PerformanceAdvisorApi* | [GetServerlessAutoIndexing](./docs/PerformanceAdvisorApi.md#getserverlessautoindexing) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/performanceAdvisor/autoIndexing | Return Serverless Auto Indexing Enabled | Experimental
 *PerformanceAdvisorApi* | [ListSlowQueries](./docs/PerformanceAdvisorApi.md#listslowqueries) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/slowQueryLogs | Return Slow Queries | Stable
 *PerformanceAdvisorApi* | [ListSlowQueryNamespaces](./docs/PerformanceAdvisorApi.md#listslowquerynamespaces) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/namespaces | Return All Namespaces for One Host | Stable
 *PerformanceAdvisorApi* | [ListSuggestedIndexes](./docs/PerformanceAdvisorApi.md#listsuggestedindexes) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/performanceAdvisor/suggestedIndexes | Return Suggested Indexes | Stable
+*PerformanceAdvisorApi* | [SetServerlessAutoIndexing](./docs/PerformanceAdvisorApi.md#setserverlessautoindexing) | **Post** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/performanceAdvisor/autoIndexing | Set Serverless Auto Indexing | Experimental
 *PrivateEndpointServicesApi* | [CreatePrivateEndpoint](./docs/PrivateEndpointServicesApi.md#createprivateendpoint) | **Post** /api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId}/endpoint | Create One Private Endpoint for One Provider | Stable
 *PrivateEndpointServicesApi* | [CreatePrivateEndpointService](./docs/PrivateEndpointServicesApi.md#createprivateendpointservice) | **Post** /api/atlas/v2/groups/{groupId}/privateEndpoint/endpointService | Create One Private Endpoint Service for One Provider | Stable
 *PrivateEndpointServicesApi* | [DeletePrivateEndpoint](./docs/PrivateEndpointServicesApi.md#deleteprivateendpoint) | **Delete** /api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId}/endpoint/{endpointId} | Remove One Private Endpoint for One Provider | Stable
@@ -299,6 +303,7 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
 *PushBasedLogExportApi* | [UpdatePushBasedLogConfiguration](./docs/PushBasedLogExportApi.md#updatepushbasedlogconfiguration) | **Patch** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Update the push-based log export feature for a project | Experimental
 *RollingIndexApi* | [CreateRollingIndex](./docs/RollingIndexApi.md#createrollingindex) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/index | Create One Rolling Index | Stable
 *RootApi* | [GetSystemStatus](./docs/RootApi.md#getsystemstatus) | **Get** /api/atlas/v2 | Return the status of this MongoDB application | Experimental
+*RootApi* | [ReturnAllControlPlaneIPAddresses](./docs/RootApi.md#returnallcontrolplaneipaddresses) | **Get** /api/atlas/v2/unauth/controlPlaneIPAddresses | Return All Control Plane IP Addresses | Experimental
 *ServerlessInstancesApi* | [CreateServerlessInstance](./docs/ServerlessInstancesApi.md#createserverlessinstance) | **Post** /api/atlas/v2/groups/{groupId}/serverless | Create One Serverless Instance in One Project | Stable
 *ServerlessInstancesApi* | [DeleteServerlessInstance](./docs/ServerlessInstancesApi.md#deleteserverlessinstance) | **Delete** /api/atlas/v2/groups/{groupId}/serverless/{name} | Remove One Serverless Instance from One Project | Stable
 *ServerlessInstancesApi* | [GetServerlessInstance](./docs/ServerlessInstancesApi.md#getserverlessinstance) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{name} | Return One Serverless Instance from One Project | Stable
@@ -499,6 +504,8 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [FederatedUser](./docs/FederatedUser.md)
  - [FederationIdentityProvider](./docs/FederationIdentityProvider.md)
  - [FederationIdentityProviderUpdate](./docs/FederationIdentityProviderUpdate.md)
+ - [FederationOidcIdentityProvider](./docs/FederationOidcIdentityProvider.md)
+ - [FederationOidcIdentityProviderUpdate](./docs/FederationOidcIdentityProviderUpdate.md)
  - [FieldTransformation](./docs/FieldTransformation.md)
  - [GCPConsumerForwardingRule](./docs/GCPConsumerForwardingRule.md)
  - [GeoSharding](./docs/GeoSharding.md)
@@ -662,8 +669,9 @@ Class        | Method        | HTTP request  | Description   | [SDK Maturity](ht
  - [Team](./docs/Team.md)
  - [TeamResponse](./docs/TeamResponse.md)
  - [TeamRole](./docs/TeamRole.md)
+ - [TeamUpdate](./docs/TeamUpdate.md)
  - [TenantRestore](./docs/TenantRestore.md)
- - [ThridPartyIntegration](./docs/ThridPartyIntegration.md)
+ - [ThirdPartyIntegration](./docs/ThirdPartyIntegration.md)
  - [TriggerIngestionPipelineRequest](./docs/TriggerIngestionPipelineRequest.md)
  - [UpdateAtlasOrganizationApiKey](./docs/UpdateAtlasOrganizationApiKey.md)
  - [UpdateAtlasProjectApiKey](./docs/UpdateAtlasProjectApiKey.md)

@@ -61,6 +61,30 @@ type PerformanceAdvisorApi interface {
 	EnableSlowOperationThresholdingExecute(r EnableSlowOperationThresholdingApiRequest) (*http.Response, error)
 
 	/*
+		GetServerlessAutoIndexing Return Serverless Auto Indexing Enabled
+
+		[experimental] Get whether the Serverless Auto Indexing feature is enabled.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param clusterName Human-readable label that identifies the cluster.
+		@return GetServerlessAutoIndexingApiRequest
+	*/
+	GetServerlessAutoIndexing(ctx context.Context, groupId string, clusterName string) GetServerlessAutoIndexingApiRequest
+	/*
+		GetServerlessAutoIndexing Return Serverless Auto Indexing Enabled
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetServerlessAutoIndexingApiParams - Parameters for the request
+		@return GetServerlessAutoIndexingApiRequest
+	*/
+	GetServerlessAutoIndexingWithParams(ctx context.Context, args *GetServerlessAutoIndexingApiParams) GetServerlessAutoIndexingApiRequest
+
+	// Method available only for mocking purposes
+	GetServerlessAutoIndexingExecute(r GetServerlessAutoIndexingApiRequest) (bool, *http.Response, error)
+
+	/*
 		ListSlowQueries Return Slow Queries
 
 		Returns log lines for slow queries that the Performance Advisor and Query Profiler identified. The Performance Advisor monitors queries that MongoDB considers slow and suggests new indexes to improve query performance. MongoDB Cloud bases the threshold for slow queries on the average time of operations on your cluster. This enables workload-relevant recommendations. To use this resource, the requesting API Key must have the Project Data Access Read Write role.
@@ -131,6 +155,30 @@ type PerformanceAdvisorApi interface {
 
 	// Method available only for mocking purposes
 	ListSuggestedIndexesExecute(r ListSuggestedIndexesApiRequest) (*PerformanceAdvisorResponse, *http.Response, error)
+
+	/*
+		SetServerlessAutoIndexing Set Serverless Auto Indexing
+
+		[experimental] Set whether the Serverless Auto Indexing feature is enabled.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param clusterName Human-readable label that identifies the cluster.
+		@return SetServerlessAutoIndexingApiRequest
+	*/
+	SetServerlessAutoIndexing(ctx context.Context, groupId string, clusterName string) SetServerlessAutoIndexingApiRequest
+	/*
+		SetServerlessAutoIndexing Set Serverless Auto Indexing
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param SetServerlessAutoIndexingApiParams - Parameters for the request
+		@return SetServerlessAutoIndexingApiRequest
+	*/
+	SetServerlessAutoIndexingWithParams(ctx context.Context, args *SetServerlessAutoIndexingApiParams) SetServerlessAutoIndexingApiRequest
+
+	// Method available only for mocking purposes
+	SetServerlessAutoIndexingExecute(r SetServerlessAutoIndexingApiRequest) (map[string]interface{}, *http.Response, error)
 }
 
 // PerformanceAdvisorApiService PerformanceAdvisorApi service
@@ -358,6 +406,136 @@ func (a *PerformanceAdvisorApiService) EnableSlowOperationThresholdingExecute(r 
 	}
 
 	return localVarHTTPResponse, nil
+}
+
+type GetServerlessAutoIndexingApiRequest struct {
+	ctx         context.Context
+	ApiService  PerformanceAdvisorApi
+	groupId     string
+	clusterName string
+}
+
+type GetServerlessAutoIndexingApiParams struct {
+	GroupId     string
+	ClusterName string
+}
+
+func (a *PerformanceAdvisorApiService) GetServerlessAutoIndexingWithParams(ctx context.Context, args *GetServerlessAutoIndexingApiParams) GetServerlessAutoIndexingApiRequest {
+	return GetServerlessAutoIndexingApiRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     args.GroupId,
+		clusterName: args.ClusterName,
+	}
+}
+
+func (r GetServerlessAutoIndexingApiRequest) Execute() (bool, *http.Response, error) {
+	return r.ApiService.GetServerlessAutoIndexingExecute(r)
+}
+
+/*
+GetServerlessAutoIndexing Return Serverless Auto Indexing Enabled
+
+[experimental] Get whether the Serverless Auto Indexing feature is enabled.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies the cluster.
+	@return GetServerlessAutoIndexingApiRequest
+*/
+func (a *PerformanceAdvisorApiService) GetServerlessAutoIndexing(ctx context.Context, groupId string, clusterName string) GetServerlessAutoIndexingApiRequest {
+	return GetServerlessAutoIndexingApiRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     groupId,
+		clusterName: clusterName,
+	}
+}
+
+// Execute executes the request
+//
+//	@return bool
+func (a *PerformanceAdvisorApiService) GetServerlessAutoIndexingExecute(r GetServerlessAutoIndexingApiRequest) (bool, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue bool
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorApiService.GetServerlessAutoIndexing")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/serverless/{clusterName}/performanceAdvisor/autoIndexing"
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(parameterValueToString(r.clusterName, "clusterName")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		var v ApiError
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
+		newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ListSlowQueriesApiRequest struct {
@@ -884,6 +1062,149 @@ func (a *PerformanceAdvisorApiService) ListSuggestedIndexesExecute(r ListSuggest
 	if r.since != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "since", r.since, "")
 	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json", "application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		var v ApiError
+		err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			newErr.error = err.Error()
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, localVarHTTPMethod, localVarPath, v)
+		newErr.model = v
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type SetServerlessAutoIndexingApiRequest struct {
+	ctx         context.Context
+	ApiService  PerformanceAdvisorApi
+	groupId     string
+	clusterName string
+	enable      *bool
+}
+
+type SetServerlessAutoIndexingApiParams struct {
+	GroupId     string
+	ClusterName string
+	Enable      *bool
+}
+
+func (a *PerformanceAdvisorApiService) SetServerlessAutoIndexingWithParams(ctx context.Context, args *SetServerlessAutoIndexingApiParams) SetServerlessAutoIndexingApiRequest {
+	return SetServerlessAutoIndexingApiRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     args.GroupId,
+		clusterName: args.ClusterName,
+		enable:      args.Enable,
+	}
+}
+
+// Value that we want to set for the Serverless Auto Indexing toggle.
+func (r SetServerlessAutoIndexingApiRequest) Enable(enable bool) SetServerlessAutoIndexingApiRequest {
+	r.enable = &enable
+	return r
+}
+
+func (r SetServerlessAutoIndexingApiRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.SetServerlessAutoIndexingExecute(r)
+}
+
+/*
+SetServerlessAutoIndexing Set Serverless Auto Indexing
+
+[experimental] Set whether the Serverless Auto Indexing feature is enabled.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies the cluster.
+	@return SetServerlessAutoIndexingApiRequest
+*/
+func (a *PerformanceAdvisorApiService) SetServerlessAutoIndexing(ctx context.Context, groupId string, clusterName string) SetServerlessAutoIndexingApiRequest {
+	return SetServerlessAutoIndexingApiRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     groupId,
+		clusterName: clusterName,
+	}
+}
+
+// Execute executes the request
+//
+//	@return map[string]interface{}
+func (a *PerformanceAdvisorApiService) SetServerlessAutoIndexingExecute(r SetServerlessAutoIndexingApiRequest) (map[string]interface{}, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue map[string]interface{}
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorApiService.SetServerlessAutoIndexing")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/serverless/{clusterName}/performanceAdvisor/autoIndexing"
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(parameterValueToString(r.groupId, "groupId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(parameterValueToString(r.clusterName, "clusterName")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.enable == nil {
+		return localVarReturnValue, nil, reportError("enable is required and must be specified")
+	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "enable", r.enable, "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

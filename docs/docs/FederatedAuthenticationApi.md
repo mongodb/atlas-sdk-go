@@ -4,8 +4,10 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**CreateIdentityProvider**](FederatedAuthenticationApi.md#CreateIdentityProvider) | **Post** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders | Create one identity provider
 [**CreateRoleMapping**](FederatedAuthenticationApi.md#CreateRoleMapping) | **Post** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings | Add One Role Mapping to One Organization
 [**DeleteFederationApp**](FederatedAuthenticationApi.md#DeleteFederationApp) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId} | Delete the federation settings instance.
+[**DeleteIdentityProvider**](FederatedAuthenticationApi.md#DeleteIdentityProvider) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Delete the identity provider.
 [**DeleteRoleMapping**](FederatedAuthenticationApi.md#DeleteRoleMapping) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id} | Remove One Role Mapping from One Organization
 [**GetConnectedOrgConfig**](FederatedAuthenticationApi.md#GetConnectedOrgConfig) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Return One Org Config Connected to One Federation
 [**GetFederationSettings**](FederatedAuthenticationApi.md#GetFederationSettings) | **Get** /api/atlas/v2/orgs/{orgId}/federationSettings | Return Federation Settings for One Organization
@@ -16,10 +18,91 @@ Method | HTTP request | Description
 [**ListIdentityProviders**](FederatedAuthenticationApi.md#ListIdentityProviders) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders | Return all identity providers from the specified federation.
 [**ListRoleMappings**](FederatedAuthenticationApi.md#ListRoleMappings) | **Get** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings | Return All Role Mappings from One Organization
 [**RemoveConnectedOrgConfig**](FederatedAuthenticationApi.md#RemoveConnectedOrgConfig) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Remove One Org Config Connected to One Federation
+[**RevokeJwksFromIdentityProvider**](FederatedAuthenticationApi.md#RevokeJwksFromIdentityProvider) | **Delete** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId}/jwks | Revoke the JWKS tokens from an OIDC identity provider.
 [**UpdateConnectedOrgConfig**](FederatedAuthenticationApi.md#UpdateConnectedOrgConfig) | **Patch** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId} | Update One Org Config Connected to One Federation
 [**UpdateIdentityProvider**](FederatedAuthenticationApi.md#UpdateIdentityProvider) | **Patch** /api/atlas/v2/federationSettings/{federationSettingsId}/identityProviders/{identityProviderId} | Update the identity provider.
 [**UpdateRoleMapping**](FederatedAuthenticationApi.md#UpdateRoleMapping) | **Put** /api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs/{orgId}/roleMappings/{id} | Update One Role Mapping in One Organization
 
+
+
+## CreateIdentityProvider
+
+> FederationOidcIdentityProvider CreateIdentityProvider(ctx, federationSettingsId, federationOidcIdentityProviderUpdate FederationOidcIdentityProviderUpdate).Execute()
+
+Create one identity provider
+
+
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20231115006/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+
+    federationSettingsId := "55fa922fb343282757d9554e" // string | 
+    federationOidcIdentityProviderUpdate := *openapiclient.NewFederationOidcIdentityProviderUpdate() // FederationOidcIdentityProviderUpdate | 
+
+    resp, r, err := sdk.FederatedAuthenticationApi.CreateIdentityProvider(context.Background(), federationSettingsId, &federationOidcIdentityProviderUpdate).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.CreateIdentityProvider``: %v\n", err)
+        apiError := admin.AsError(err)
+        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+    }
+    // response from `CreateIdentityProvider`: FederationOidcIdentityProvider
+    fmt.Fprintf(os.Stdout, "Response from `FederatedAuthenticationApi.CreateIdentityProvider`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**federationSettingsId** | **string** | Unique 24-hexadecimal digit string that identifies your federation. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateIdentityProviderRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **federationOidcIdentityProviderUpdate** | [**FederationOidcIdentityProviderUpdate**](FederationOidcIdentityProviderUpdate.md) | The identity provider that you want to create. | 
+
+### Return type
+
+[**FederationOidcIdentityProvider**](FederationOidcIdentityProvider.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2023-11-15+json
+- **Accept**: application/vnd.atlas.2023-11-15+json, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## CreateRoleMapping
@@ -175,6 +258,85 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/vnd.atlas.2023-01-01+json, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteIdentityProvider
+
+> DeleteIdentityProvider(ctx, federationSettingsId, identityProviderId).Execute()
+
+Delete the identity provider.
+
+
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20231115006/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+
+    federationSettingsId := "55fa922fb343282757d9554e" // string | 
+    identityProviderId := "32b6e34b3d91647abb20e7b8" // string | 
+
+    r, err := sdk.FederatedAuthenticationApi.DeleteIdentityProvider(context.Background(), federationSettingsId, identityProviderId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.DeleteIdentityProvider``: %v\n", err)
+        apiError := admin.AsError(err)
+        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**federationSettingsId** | **string** | Unique 24-hexadecimal digit string that identifies your federation. | 
+**identityProviderId** | **string** | Unique 24-hexadecimal digit string that identifies the identity provider to connect. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteIdentityProviderRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2023-11-15+json, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -454,7 +616,7 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
-    identityProviderId := "c2777a9eca931f29fc2f" // string | 
+    identityProviderId := "32b6e34b3d91647abb20e7b8" // string | 
 
     resp, r, err := sdk.FederatedAuthenticationApi.GetIdentityProvider(context.Background(), federationSettingsId, identityProviderId).Execute()
     if err != nil {
@@ -474,7 +636,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **federationSettingsId** | **string** | Unique 24-hexadecimal digit string that identifies your federation. | 
-**identityProviderId** | **string** | Unique 20-hexadecimal digit string that identifies the identity provider. | 
+**identityProviderId** | **string** | Unique string that identifies the identity provider to connect. If using an API version before 11-15-2023, use the 20-hexadecimal digit oktaIdpId. For all other versions, use the 24-hexadecimal digit id. | 
 
 ### Other Parameters
 
@@ -748,7 +910,7 @@ Name | Type | Description  | Notes
 
 ## ListIdentityProviders
 
-> PaginatedFederationIdentityProvider ListIdentityProviders(ctx, federationSettingsId).Protocol(protocol).Execute()
+> PaginatedFederationIdentityProvider ListIdentityProviders(ctx, federationSettingsId).Protocol(protocol).IdpType(idpType).Execute()
 
 Return all identity providers from the specified federation.
 
@@ -779,8 +941,9 @@ func main() {
 
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
     protocol := "protocol_example" // string |  (optional)
+    idpType := "idpType_example" // string |  (optional)
 
-    resp, r, err := sdk.FederatedAuthenticationApi.ListIdentityProviders(context.Background(), federationSettingsId).Protocol(protocol).Execute()
+    resp, r, err := sdk.FederatedAuthenticationApi.ListIdentityProviders(context.Background(), federationSettingsId).Protocol(protocol).IdpType(idpType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.ListIdentityProviders``: %v\n", err)
         apiError := admin.AsError(err)
@@ -807,7 +970,8 @@ Other parameters are passed through a pointer to a apiListIdentityProvidersReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **protocol** | **string** | The protocols of the target identity providers. | 
+ **protocol** | **string** | The protocols of the target identity providers. Defaults to SAML. | 
+ **idpType** | **string** | The types of the target identity providers. Defaults to WORKFORCE. | 
 
 ### Return type
 
@@ -988,6 +1152,85 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## RevokeJwksFromIdentityProvider
+
+> RevokeJwksFromIdentityProvider(ctx, federationSettingsId, identityProviderId).Execute()
+
+Revoke the JWKS tokens from an OIDC identity provider.
+
+
+## Experimental
+
+This operation is marked as experimental. It might be changed in the future without compatibility guarantees.
+For more information see [ExperimentalMethods](../doc_1_concepts.md#experimental-methods)
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20231115006/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+
+    federationSettingsId := "55fa922fb343282757d9554e" // string | 
+    identityProviderId := "32b6e34b3d91647abb20e7b8" // string | 
+
+    r, err := sdk.FederatedAuthenticationApi.RevokeJwksFromIdentityProvider(context.Background(), federationSettingsId, identityProviderId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `FederatedAuthenticationApi.RevokeJwksFromIdentityProvider``: %v\n", err)
+        apiError := admin.AsError(err)
+        fmt.Fprintf(os.Stderr, "Error obj: %v\n", apiError)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**federationSettingsId** | **string** | Unique 24-hexadecimal digit string that identifies your federation. | 
+**identityProviderId** | **string** | Unique 24-hexadecimal digit string that identifies the identity provider to connect. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRevokeJwksFromIdentityProviderRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2023-11-15+json, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## UpdateConnectedOrgConfig
 
 > ConnectedOrgConfig UpdateConnectedOrgConfig(ctx, federationSettingsId, orgId, connectedOrgConfig ConnectedOrgConfig).Execute()
@@ -1103,7 +1346,7 @@ func main() {
     sdk := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
 
     federationSettingsId := "55fa922fb343282757d9554e" // string | 
-    identityProviderId := "c2777a9eca931f29fc2f" // string | 
+    identityProviderId := "32b6e34b3d91647abb20e7b8" // string | 
     federationIdentityProviderUpdate := *openapiclient.NewFederationIdentityProviderUpdate() // FederationIdentityProviderUpdate | 
 
     resp, r, err := sdk.FederatedAuthenticationApi.UpdateIdentityProvider(context.Background(), federationSettingsId, identityProviderId, &federationIdentityProviderUpdate).Execute()
@@ -1124,7 +1367,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **federationSettingsId** | **string** | Unique 24-hexadecimal digit string that identifies your federation. | 
-**identityProviderId** | **string** | Unique 20-hexadecimal digit string that identifies the identity provider. | 
+**identityProviderId** | **string** | Unique string that identifies the identity provider to connect. If using an API version before 11-15-2023, use the 20-hexadecimal digit oktaIdpId. For all other versions, use the 24-hexadecimal digit id. | 
 
 ### Other Parameters
 

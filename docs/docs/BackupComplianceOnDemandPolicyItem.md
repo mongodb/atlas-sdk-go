@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **FrequencyType** | **string** | Human-readable label that identifies the frequency type associated with the backup policy. | 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies this backup policy item. | [optional] [readonly] 
 **RetentionUnit** | **string** | Unit of time in which MongoDB Cloud measures snapshot retention. | 
-**RetentionValue** | **int** | Duration in days, weeks, or months that MongoDB Cloud retains the snapshot. For less frequent policy items, MongoDB Cloud requires that you specify a value greater than or equal to the value specified for more frequent policy items.  For example: If the hourly policy item specifies a retention of two days, you must specify two days or greater for the retention of the weekly policy item. | 
+**RetentionValue** | **int** | Duration in days, weeks, months, or years that MongoDB Cloud retains the snapshot. For less frequent policy items, MongoDB Cloud requires that you specify a value greater than or equal to the value specified for more frequent policy items.  For example: If the hourly policy item specifies a retention of two days, you must specify two days or greater for the retention of the weekly policy item. | 
 
 ## Methods
 

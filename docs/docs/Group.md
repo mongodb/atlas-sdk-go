@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Name** | **string** | Human-readable label that identifies the project included in the MongoDB Cloud organization. | 
 **OrgId** | **string** | Unique 24-hexadecimal digit string that identifies the MongoDB Cloud organization to which the project belongs. | 
 **RegionUsageRestrictions** | Pointer to **string** | Region usage restrictions that designate the project&#39;s AWS region. | [optional] [default to "NONE"]
+**Tags** | Pointer to [**[]ResourceTag**](ResourceTag.md) | List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the project. | [optional] 
 **WithDefaultAlertsSettings** | Pointer to **bool** | Flag that indicates whether to create the project with default alert settings. | [optional] 
 
 ## Methods
@@ -180,6 +181,30 @@ SetRegionUsageRestrictions sets RegionUsageRestrictions field to given value.
 `func (o *Group) HasRegionUsageRestrictions() bool`
 
 HasRegionUsageRestrictions returns a boolean if a field has been set.
+### GetTags
+
+`func (o *Group) GetTags() []ResourceTag`
+
+GetTags returns the Tags field if non-nil, zero value otherwise.
+
+### GetTagsOk
+
+`func (o *Group) GetTagsOk() (*[]ResourceTag, bool)`
+
+GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTags
+
+`func (o *Group) SetTags(v []ResourceTag)`
+
+SetTags sets Tags field to given value.
+
+### HasTags
+
+`func (o *Group) HasTags() bool`
+
+HasTags returns a boolean if a field has been set.
 ### GetWithDefaultAlertsSettings
 
 `func (o *Group) GetWithDefaultAlertsSettings() bool`

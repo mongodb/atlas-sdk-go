@@ -57,6 +57,9 @@ type DiskBackupSnapshot struct {
 	// Human-readable label that identifies the replica set from which MongoDB Cloud took this snapshot. The resource returns this parameter when `\"type\": \"replicaSet\"`.
 	// Read only field.
 	ReplicaSetName *string `json:"replicaSetName,omitempty"`
+	// Human-readable label that identifies the config server type for this snapshot.
+	// Read only field.
+	ConfigServerType *string `json:"configServerType,omitempty"`
 	// List that includes the snapshots and the cloud provider that stores the snapshots. The resource returns this parameter when `\"type\" : \"SHARDED_CLUSTER\"`.
 	// Read only field.
 	Members *[]DiskBackupShardedClusterSnapshotMember `json:"members,omitempty"`
@@ -608,6 +611,39 @@ func (o *DiskBackupSnapshot) HasReplicaSetName() bool {
 // SetReplicaSetName gets a reference to the given string and assigns it to the ReplicaSetName field.
 func (o *DiskBackupSnapshot) SetReplicaSetName(v string) {
 	o.ReplicaSetName = &v
+}
+
+// GetConfigServerType returns the ConfigServerType field value if set, zero value otherwise
+func (o *DiskBackupSnapshot) GetConfigServerType() string {
+	if o == nil || IsNil(o.ConfigServerType) {
+		var ret string
+		return ret
+	}
+	return *o.ConfigServerType
+}
+
+// GetConfigServerTypeOk returns a tuple with the ConfigServerType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DiskBackupSnapshot) GetConfigServerTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.ConfigServerType) {
+		return nil, false
+	}
+
+	return o.ConfigServerType, true
+}
+
+// HasConfigServerType returns a boolean if a field has been set.
+func (o *DiskBackupSnapshot) HasConfigServerType() bool {
+	if o != nil && !IsNil(o.ConfigServerType) {
+		return true
+	}
+
+	return false
+}
+
+// SetConfigServerType gets a reference to the given string and assigns it to the ConfigServerType field.
+func (o *DiskBackupSnapshot) SetConfigServerType(v string) {
+	o.ConfigServerType = &v
 }
 
 // GetMembers returns the Members field value if set, zero value otherwise
